@@ -15,18 +15,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: 36d3474c2b8dde0355a265c149fe6ba1920a9f22
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 948b91a9fabc3ab3c4d6708968a88cb9d203b171
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connectors-list"></a>Liste mit den Connectors
 Die in der Swagger-Beschreibung der einzelnen Connectors definierten Trigger und Aktionen sowie mögliche Connectoreinschränkungen finden Sie unter [Connectors](/connectors/).
 
 Connectors sind ein wesentlicher Bestandteil der Logik-App-Erstellung. Mithilfe dieser Connectors können Sie Ihre lokalen und cloudbasierten Anwendungen erweitern und neu erstellte oder bereits vorhandene Daten für verschiedenste Dinge nutzen. Die Connectors stehen entweder als integrierte Aktionen oder als verwaltete Connectors zur Verfügung.
 
-**Integrierte Aktionen:** Das Logic Apps-Modul bietet integrierte Aktionen für die Kommunikation mit Endpunkten und die Ausführung von Aufgaben. Mit diesen Aktionen können Sie beispielsweise HTTP-Endpunkte, Azure Functions und Azure API Management-Vorgänge aufrufen sowie Nachrichten mit Datenvorgängen und Variablen anpassen.
+
+            **Integrierte Aktionen:** Die Logic Apps-Engine bietet integrierte Aktionen für die Kommunikation mit Endpunkten und die Ausführung von Aufgaben. Mit diesen Aktionen können Sie beispielsweise HTTP-Endpunkte, Azure Functions und Azure API Management-Vorgänge aufrufen sowie Nachrichten mit Datenvorgängen und Variablen anpassen.
 
 **Verwaltete Connectors:** Diese ermöglichen den Zugriff auf APIs für verschiedene Dienste durch Erstellung von API-Verbindungen, die vom Logic Apps-Dienst gehostet und verwaltet werden. Bei verwalteten Connectors wird zwischen folgenden Kategorien unterschieden:
 
@@ -46,7 +47,7 @@ Weitere Informationen zu den Kosten finden Sie in den [Preisdetails](https://azu
 Es gibt Tausende von Anwendungen und Millionen von Ausführungen, die mithilfe dieser Connectors erfolgreich Daten und Informationen verarbeiten. 
 
 ### <a name="built-in-actions"></a>Integrierte Aktionen
-Das Logic Apps-Modul bietet Aktionen zum Bearbeiten von Daten, zum Kommunizieren über HTTP sowie zum Steuern des Ablaufs der Logik-App-Definition. Zu diesen Aktionen zählen beispielsweise folgende:
+Die Logic Apps-Engine bietet Aktionen zum Bearbeiten von Daten, zum Kommunizieren über HTTP sowie zum Steuern des Ablaufs der Logik-App-Definition. Zu diesen Aktionen zählen beispielsweise folgende:
 
 | |  |  |  |
 | --- | --- | --- | --- |
@@ -143,7 +144,7 @@ Zur Optimierung von Azure Logic Apps und Connectors können Sie auf der [Benutze
 Fehlt noch ein Connector-Thema oder Details, die Ihrer Meinung nach wichtig sind? Falls ja, dann helfen Sie uns, indem Sie unsere vorhandenen Themen ergänzen oder eigene erstellen. Unsere Dokumentation basiert auf Open Source und ist auf GitHub gehostet. Beginnen Sie mit unserem [GitHub-Repository](https://github.com/Microsoft/azure-docs). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen Ihrer ersten Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
+* [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](../logic-apps/logic-apps-create-api-app.md)
 * [Überwachen von Logik-Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 

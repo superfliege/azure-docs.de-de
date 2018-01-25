@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e1ca92b1d1ae015add539ef03a358f7a53bc3a6d
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 9b1118b0159437e179b09b179571ed1460c3daf6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-net-desktop-wpf-getting-started"></a>Erste Schritte mit .NET-Desktop (WPF) in Azure AD
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -74,7 +74,7 @@ Das Grundprinzip von ADAL ist wie folgt: Wann immer Ihre Anwendung ein Zugriffst
 
 * Öffnen Sie im Projekt `DirectorySearcher` die Datei `MainWindow.xaml.cs`, und suchen Sie die Methode `MainWindow()`.  Der erste Schritt ist die Initialisierung des `AuthenticationContext` Ihrer Anwendung – der primären Klasse von ADAL.  Dort übergeben Sie ADAL die zur Kommunikation mit Azure AD notwendigen Koordinaten und weisen es an, wie Token zwischengespeichert werden sollen.
 
-```C#
+```csharp
 public MainWindow()
 {
     InitializeComponent();
@@ -87,7 +87,7 @@ public MainWindow()
 
 * Suchen Sie jetzt die Methode `Search(...)` , die aufgerufen wird, wenn der Benutzer auf die Suchschaltfläche auf der Benutzeroberfläche der App klickt.  Diese Methode übergibt der Azure AD Graph-API eine GET-Anforderung für die Suche nach Benutzern, deren UPNs mit dem angegebenen Suchbegriff beginnen.  Für die Abfrage der Graph-API müssen Sie dem `Authorization`-Header der Anforderung jedoch ein Zugriffstoken hinzufügen – und hier kommt ADAL ins Spiel.
 
-```C#
+```csharp
 private async void Search(object sender, RoutedEventArgs e)
 {
     // Validate the Input String
@@ -121,7 +121,7 @@ private async void Search(object sender, RoutedEventArgs e)
 * Beachten Sie, dass das Objekt `AuthenticationResult` ein `UserInfo`-Objekt enthält, mit dem von Ihrer Anwendung benötigte Informationen erfasst werden können.  In DirectorySearcher wird `UserInfo` zum Einstellen der Benutzer-ID in der Benutzeroberfläche der Anwendung verwendet.
 * Nachdem der Benutzer auf die Abmeldeschaltfläche geklickt hat, soll sichergestellt sein, dass er beim nächsten Aufruf von `AcquireTokenAsync(...)` wieder zur Anmeldung aufgefordert wird.  In ADAL muss dazu lediglich der Tokencache gelöscht werden:
 
-```C#
+```csharp
 private void SignOut(object sender = null, RoutedEventArgs args = null)
 {
     // Clear the token cache
@@ -133,7 +133,7 @@ private void SignOut(object sender = null, RoutedEventArgs args = null)
 
 * Betätigt der Benutzer die Abmeldeschaltfläche hingegen nicht, so sollte die Benutzersitzung für die nächste Ausführung von DirectorySearcher erhalten bleiben.  Beim Starten der Anwendung kann der Tokencache von ADAL nach einem vorhandenen Token durchsucht und die Benutzeroberfläche entsprechend aktualisiert werden.  Rufen Sie in der `CheckForCachedToken()`-Methode ein weiteres Mal `AcquireTokenAsync(...)` auf. Übergeben Sie dieses Mal den `PromptBehavior.Never`-Parameter.  `PromptBehavior.Never` informiert ADAL, dass der Benutzer nicht zur Anmeldung aufgefordert werden soll, sondern dass ADAL stattdessen eine Ausnahme auslösen soll, wenn kein Token zurückgeben werden kann.
 
-```C#
+```csharp
 public async void CheckForCachedToken() 
 {
     // As the application starts, try to get an access token without prompting the user.  If one exists, show the user as signed in.

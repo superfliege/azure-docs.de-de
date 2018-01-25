@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: rest-api
 ms.topic: hero-article
-ms.date: 09/26/2017
+ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 5535bc0438c650fdf0e03229359bc8bf4a1f6990
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 9c12c5e016e6bfa5dceab6dc77086fe018c43f59
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Erstellen einer Azure Data Factory und einer Pipeline mithilfe der REST-API
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Version 2 – Vorschauversion](quickstart-create-data-factory-rest-api.md)
 
 Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können. 

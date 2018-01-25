@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 12/19/2016
 ms.author: LADocs; klam
-ms.openlocfilehash: a5bf24de1a7a2b6d4c1ae6416c95d83ef7506da3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34ce65ec272c9fe5be8f95371179de092c5df2f3
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-your-logic-apps-with-visual-studio-cloud-explorer"></a>Verwalten von Logik-Apps mit dem Cloud-Explorer von Visual Studio
 
@@ -85,7 +85,7 @@ Um den Ausführungsverlauf für eine Instanz und damit die Ausführungsergebniss
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen Ihrer ersten Logik-App](logic-apps-create-a-logic-app.md)
+* [Erstellen Ihrer ersten Logik-App](quickstart-create-first-logic-app-workflow.md)
 * [Design, build, and deploy logic apps in Visual Studio](logic-apps-deploy-from-vs.md) (Entwerfen, Erstellen und Bereitstellen von Logik-Apps in Visual Studio)
 * [Anzeigen allgemeiner Beispiele und Szenarien](logic-apps-examples-and-scenarios.md)
 * [Video: Automatisieren von Geschäftsprozessen mit Azure Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694)

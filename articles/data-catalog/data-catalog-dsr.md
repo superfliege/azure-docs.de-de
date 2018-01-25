@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 6589edd535b513f8d1eb47e69f4fbcdd96a2f10d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b76f3cc3d8538a50895f5be32a800cb469c81203
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Von Azure Data Catalog unterstützte Datenquellen
 
@@ -39,41 +39,41 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td>Azure Data Lake Store-Verzeichnis</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Azure Data Lake Store-Datei</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Azure-Blobspeicher</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>Azure Storage-Verzeichnis</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>Azure Storage-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td>
         <font size="2">
       </td>
@@ -83,96 +83,96 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td>HDFS-Verzeichnis</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>HDFS-Datei</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Hive-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel</td>
       <td></td>
     </tr>
     <tr>
       <td>Struktur anzeigen</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel</td>
       <td></td>
     </tr>
     <tr>
       <td>MySQL-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>MySQL-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>Oracle Database-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>Oracle Database-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>Anderes (generisches Objekt)</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Azure SQL Data Warehouse-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Data Warehouse-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Dimension</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
       <td></td>
@@ -180,94 +180,94 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     <tr>
       <td>SQL Server Analysis Services-KPI</td>
       <td>✓</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Measure</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services-Bericht</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>"Browser"</td>
       <td>Nur Server im nativen Modus. SharePoint-Modus wird nicht unterstützt.</td>
     </tr>
     <tr>
       <td>SQL Server-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
       <td></td>
     </tr>
     <tr>
       <td>Teradata-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel</td>
       <td></td>
     </tr>
     <tr>
       <td>Teradata-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel</td>
       <td></td>
     </tr>
     <tr>
       <td>SAP HANA-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>DB2-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>DB2-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Datei im Dateisystem</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -275,23 +275,23 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td>FTP-Verzeichnis</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>FTP-Datei</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>HTTP-Bericht</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -299,7 +299,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td>HTTP-Endpunkt</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -307,7 +307,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td>HTTP-Datei</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -315,7 +315,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td>OData-Entitätenmenge</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -323,7 +323,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td>OData-Funktion</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -331,23 +331,23 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td>PostgreSQL-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>PostgreSQL-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>SAP HANA-Sicht</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -355,15 +355,15 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td> Salesforce-Objekt</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>SharePoint-Liste </td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -371,72 +371,72 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
     <tr>
       <td>Azure Cosmos DB-Sammlung</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Generische ODBC-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Generische ODBC-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Cassandra-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td></td>
       <td>Als generisches ODBC-Objekt veröffentlichen</td>
     </tr>
     <tr>
       <td>Cassandra-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td></td>
       <td>Als generisches ODBC-Objekt veröffentlichen</td>
     </tr>
     <tr>
       <td>Sybase-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Sybase-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>MongoDB-Tabelle</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td></td>
       <td>Als generisches ODBC-Objekt veröffentlichen</td>
     </tr>
     <tr>
       <td>MongoDB-Sicht</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td></td>
       <td>Als generisches ODBC-Objekt veröffentlichen</td>

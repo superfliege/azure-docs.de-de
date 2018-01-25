@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 3a85e288fa6f7d6c7138b7fea8319bd8dee01c2c
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: e56b637858af27f9a09f70867e455d06dd122d92
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
@@ -43,7 +43,7 @@ Wählen Sie einen App-Namen wie *MyTestScaleWebApp*. Erstellen Sie eine neue Res
 
 Ihre Ressourcen sollten innerhalb weniger Minuten bereitgestellt werden. Im restlichen Teil dieses Tutorials verwenden Sie die Web-App und den zugehörigen App Service-Plan.
 
-    ![Create a new app service in the portal](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
+   ![Erstellen eines neuen App Service-Plans im Portal](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
 
 ## <a name="navigate-to-autoscale-settings"></a>Navigieren zu den Einstellungen für die automatische Skalierung
 1. Klicken Sie im linken Navigationsbereich auf die Option **Überwachen**. Nachdem die Seite geladen wurde, wählen Sie die Registerkarte **Automatisch skalieren**.

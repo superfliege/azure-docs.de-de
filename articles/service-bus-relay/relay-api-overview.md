@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 60413bd110fd4021b070f94d6338a50e1b321dea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc6db8aba887b186961da9b12e7c5f32afa4355b
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="available-relay-apis"></a>Verfügbare Relay-APIs
 
@@ -37,9 +37,11 @@ Der Abschnitt [Zusätzliche Informationen](#additional-information) enthält wei
 ### <a name="additional-information"></a>Zusätzliche Informationen
 
 #### <a name="net"></a>.NET
+
 Das .NET-Ökosystem enthält mehrere Laufzeiten, daher stehen mehrere .NET-Bibliotheken für Event Hubs zur Verfügung. Die .NET Standard-Bibliothek kann entweder mit .NET Core oder .NET Framework ausgeführt werden. Die .NET Framework-Bibliothek kann hingegen nur in einer .NET Framework-Umgebung ausgeführt werden. Weitere Informationen zu .NET Frameworks finden Sie unter [Framework-Versionen](/dotnet/articles/standard/frameworks#framework-versions).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Azure Relay finden Sie unter diesen Links:
 * [Was ist Azure Relay?](relay-what-is-it.md)
 * [Relay – Häufig gestellte Fragen](relay-faq.md)

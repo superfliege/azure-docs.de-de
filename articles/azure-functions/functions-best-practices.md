@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3ef75a2a157190b24c171309c4d5c39596b5045
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: d8088a8a83bcaefce17ac2756360a46119c8eb27
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -40,7 +40,7 @@ Nach Möglichkeit sollten Sie umfangreiche Funktionen durch Refactoring immer in
 
 ### <a name="cross-function-communication"></a>Funktionsübergreifende Kommunikation
 
-[Durable Functions](durable-functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) dienen zum Verwalten der Statusübergänge und der Kommunikation zwischen mehreren Funktionen.
+[Durable Functions](durable-functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-overview.md) dienen zum Verwalten der Statusübergänge und der Kommunikation zwischen mehreren Funktionen.
 
 Wenn weder Durable Functions noch Logic Apps zum Integrieren mit mehreren Funktionen verwendet werden, haben sich Speicherwarteschlangen für die funktionsübergreifende Kommunikation bewährt.  Der Hauptgrund ist, dass Speicherwarteschlangen kostengünstiger und deutlich einfacher bereitzustellen sind. 
 

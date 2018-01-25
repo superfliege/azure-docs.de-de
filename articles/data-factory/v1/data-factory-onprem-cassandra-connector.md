@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6e5c859d13ea8a10e1fa38340df52f189ec6cd4e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c8f61cb165b0bfffe2f42b060cdbd666fff3a8b3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Verschieben von Daten aus einer lokalen Cassandra-Datenbank mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-onprem-cassandra-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-onprem-cassandra-connector.md)
 > * [Version 2 – Vorschauversion](../connector-cassandra.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from Cassandra using Azure Data Factory](../connector-cassandra.md) (Kopieren von Daten aus Cassandra mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from Cassandra using Azure Data Factory](../connector-cassandra.md) (Kopieren von Daten aus Cassandra mit Azure Data Factory).
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen Cassandra-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
@@ -65,7 +65,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die speziell für den verknüpften Cassandra-Dienst gelten.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type |Die type-Eigenschaft muss auf **OnPremisesCassandra** |Ja |
 | host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
@@ -74,14 +74,14 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die speziell 
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | gatewayName |Der Name des Gateways, das zum Herstellen der Verbindung mit der lokalen Cassandra-Datenbank verwendet wird. |Ja |
-| encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden. |Nein |
+| encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden. |Nein  |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **CassandraTable** hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | keyspace |Name des Keyspace oder Schemas in der Cassandra-Datenbank. |Ja (wenn **query** für **CassandraSource** nicht definiert ist). |
 | tableName |Name der Tabelle in der Cassandra-Datenbank. |Ja (wenn **query** für **CassandraSource** nicht definiert ist). |
@@ -93,7 +93,7 @@ Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach
 
 Bei einer Quelle des Typs **SqlDWSource**sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn tableName und keyspace im Dataset definiert sind) |
 | consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Ausführliche Informationen finden Sie unter [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz). |Nein. Der Standardwert ist ONE. |
@@ -260,20 +260,20 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
 ### <a name="type-mapping-for-cassandra"></a>Typzuordnung für Cassandra
 | Cassandra-Typ | .NET-basierter Typ |
 | --- | --- |
-| ASCII |String |
+| ASCII |Zeichenfolge |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |BOOLEAN |
 | DECIMAL |DECIMAL |
 | DOUBLE |DOUBLE |
 | FLOAT |Single |
-| INET |String |
+| INET |Zeichenfolge |
 | INT |Int32 |
-| TEXT |String |
-| TIMESTAMP |DateTime |
-| TIMEUUID |GUID |
-| UUID |GUID |
-| VARCHAR |String |
+| TEXT |Zeichenfolge |
+| TIMESTAMP |Datetime |
+| TIMEUUID |Guid |
+| UUID |Guid |
+| VARCHAR |Zeichenfolge |
 | VARINT |DECIMAL |
 
 > [!NOTE]
@@ -335,10 +335,10 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 #### <a name="table-exampletablevtstringset"></a>Tabelle „ExampleTable_vt_StringSet“:
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |Eine  |
+| 1 |Eine Datei |
 | 1 |b |
 | 1 |C |
-| 3 |Eine  |
+| 3 |Eine Datei |
 | 3 |E |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten

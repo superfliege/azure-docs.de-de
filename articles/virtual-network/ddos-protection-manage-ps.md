@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Azure DDoS-Schutz Standard mithilfe von Azure PowerShell | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Azure DDoS-Schutz Standard mithilfe von Azure PowerShell verwalten.
+title: Verwalten des Azure DDoS-Schutzstandards mithilfe von Azure PowerShell | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Azure DDoS-Schutzstandard mithilfe von Azure PowerShell verwalten.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: baac97db61b84000557e7150a64ffb64d81ce00c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 33ff6cfcacd1632dc49b448e70361e1cb2ce1176
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/19/2018
 ---
-# <a name="manage-azure-ddos-protection-standard-using-azure-powershell"></a>Verwalten von Azure DDoS-Schutz Standard mithilfe von Azure PowerShell
+# <a name="manage-azure-ddos-protection-standard-using-azure-powershell"></a>Verwalten des Azure DDoS-Schutzstandards mithilfe von Azure PowerShell
 
 Erfahren Sie, wie Sie den DDoS-Schutz (Distributed Denial of Service) aktivieren oder deaktivieren und die Telemetrie von Azure DDoS-Schutz Standard verwenden, um einen DDoS-Angriff zu entschärfen. Der DDoS-Schutz Standard schützt Azure-Ressourcen wie virtuelle Computer, Lastenausgleichsmodule und Anwendungsgateways, denen eine [öffentliche Azure-IP-Adresse](virtual-network-public-ip-address.md) zugewiesen ist. Weitere Informationen zum DDoS-Schutz Standard und seinen Funktionen finden Sie unter [Übersicht über den DDoS-Schutz Standard](ddos-protection-overview.md). 
 
 >[!IMPORTANT]
->Der Azure DDoS-Schutz Standard (DDoS-Schutz) befindet sich derzeit in der Vorschauversion. Der DDoS-Schutz wird von einer begrenzten Anzahl von Azure-Ressourcen unterstützt und ist nur in ausgewählten Regionen verfügbar. Eine Liste der verfügbaren Regionen finden Sie unter [Übersicht über den DDoS-Schutz Standard](ddos-protection-overview.md). Sie müssen sich während der eingeschränkten Vorschau [für den Dienst registrieren](http://aka.ms/ddosprotection), um den DDoS-Schutz für Ihr Abonnement zu aktivieren. Nach der Registrierung setzt sich das DDoS-Team von Azure mit Ihnen in Verbindung und führt Sie durch den Aktivierungsprozess.
+>Der Azure DDoS-Schutzstandard (DDoS-Schutz) befindet sich derzeit in der Vorschauversion. Der DDoS-Schutz wird von einer begrenzten Anzahl von Azure-Ressourcen unterstützt und ist nur in ausgewählten Regionen verfügbar. Eine Liste der verfügbaren Regionen finden Sie unter [Übersicht über den DDoS-Schutz Standard](ddos-protection-overview.md). Sie müssen sich während der eingeschränkten Vorschau [für den Dienst registrieren](http://aka.ms/ddosprotection), um den DDoS-Schutz für Ihr Abonnement zu aktivieren. Nach der Registrierung setzt sich das DDoS-Team von Azure mit Ihnen in Verbindung und führt Sie durch den Aktivierungsprozess.
 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
@@ -127,7 +127,7 @@ Durch die Nutzung der Warnungskonfiguration von Azure Monitor können Sie jede d
     Get-AzureRmAlertRule -Name myMetricRuleWithEmail -ResourceGroup myresourcegroup -DetailedOutput 
     ```
 
-Sie können auch mehr über das [Konfigurieren von Webhooks](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und über [Logik-Apps](../logic-apps/logic-apps-what-are-logic-apps.md) für die Erstellung von Warnungen erfahren.
+Sie können auch mehr über das [Konfigurieren von Webhooks](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und über [Logik-Apps](../logic-apps/logic-apps-overview.md) für die Erstellung von Warnungen erfahren.
 
 ## <a name="configure-logging-on-ddos-protection-metrics"></a>Konfigurieren der Protokollierung in DDoS-Schutzmetriken
 

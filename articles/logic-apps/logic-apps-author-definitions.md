@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/29/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 7f9e5a10066df8a464c285273e77a85c0d562ebb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7dde5bc4733af1aba34199f332379d2faf566725
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-workflow-definitions-for-logic-apps-using-json"></a>Erstellen von Workflowdefinitionen für Logik-Apps per JSON-Code
 
-Sie können Workflowdefinitionen für [Azure Logic Apps](logic-apps-what-are-logic-apps.md) erstellen, indem Sie die einfache, deklarative JSON-Sprache verwenden. Falls Sie dies noch nicht getan haben, sollten Sie sich zuerst darüber informieren, wie Sie [Ihre erste Logik-App mit dem Logik-App-Designer erstellen](logic-apps-create-a-logic-app.md). Sehen Sie sich auch die [vollständige Referenz zur Definitionssprache für Workflows](http://aka.ms/logicappsdocs) an.
+Sie können Workflowdefinitionen für [Azure Logic Apps](logic-apps-overview.md) erstellen, indem Sie die einfache, deklarative JSON-Sprache verwenden. Falls Sie dies noch nicht getan haben, sollten Sie sich zuerst darüber informieren, wie Sie [Ihre erste Logik-App mit dem Logik-App-Designer erstellen](quickstart-create-first-logic-app-workflow.md). Sehen Sie sich auch die [vollständige Referenz zur Definitionssprache für Workflows](http://aka.ms/logicappsdocs) an.
 
 ## <a name="repeat-steps-over-a-list"></a>Wiederholen von Schritten für eine Liste
 
@@ -396,7 +396,7 @@ Zum Formatieren von Datumsangaben können wir Zeichenfolgenformatierer verwenden
 
 ## <a name="deployment-parameters-for-different-environments"></a>Bereitstellungsparameter für unterschiedliche Umgebungen
 
-Bereitstellungslebenszyklen verfügen normalerweise über eine Entwicklungsumgebung, eine Stagingumgebung und eine Produktionsumgebung. In all diesen Umgebungen können Sie beispielsweise die gleiche Definition, aber unterschiedliche Datenbanken verwenden. Ebenso können Sie die gleiche Definition übergreifend in verschiedenen Regionen verwenden, um eine hohe Verfügbarkeit zu erzielen. Die einzelnen Logik-App-Instanzen sollten aber mit der Datenbank der betreffenden Region kommunizieren.
+Bereitstellungslebenszyklen verfügen normalerweise über eine Entwicklungsumgebung, eine Stagingumgebung und eine Produktionsumgebung. In all diesen Umgebungen können Sie beispielsweise die gleiche Definition, aber unterschiedliche Datenbanken verwenden. Ebenso können Sie die gleiche Definition übergreifend in verschiedenen Regionen verwenden, um Hochverfügbarkeit zu erzielen. Die einzelnen Logik-App-Instanzen sollten aber mit der Datenbank der betreffenden Region kommunizieren.
 Dieses Szenario unterscheidet sich von der Verwendung von Parametern zur *Laufzeit*, wo Sie stattdessen wie im vorherigen Beispiel die Funktion `trigger()` verwenden sollten.
 
 Sie können mit einer einfachen Definition wie im folgenden Beispiel beginnen:

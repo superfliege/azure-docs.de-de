@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 4e5b1269e2bee31316cba99d69ea2a6d702faf05
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 468af385833395963ef8acad905b99a9b7e6b8fa
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Austauschen eines Skalierungseinheitknotens für ein in Azure Stack integriertes System
 
@@ -28,23 +28,23 @@ In diesem Artikel wird der allgemeine Vorgang zum Austauschen eines physischen C
 
 Das folgende Flussdiagramm zeigt den allgemeinen FRU-Vorgang zum Austauschen einer vollständigen Hardwarekomponente.
 
-![Flussdiagramm für den Vorgang des Knotenaustauschs](media/azure-stack-replace-node/ReplaceNodeFlow.PNG)
+![Flussdiagramm für den Vorgang des Knotenaustauschs](media/azure-stack-replace-node/replacenodeflow.png)
 
 *Diese Aktion ist abhängig vom physischen Zustand der Hardware möglicherweise nicht erforderlich.
 
 ## <a name="review-alert-information"></a>Überprüfen von Warnungsinformation
 
-Wenn ein Skalierungseinheitknoten nicht verfügbar ist, erhalten Sie die folgenden kritischen Warnungen:
+Wenn ein Knoten für Skalierungseinheiten nicht verfügbar ist, erhalten Sie die folgenden kritischen Warnungen:
 
 - Knoten ist nicht mit Netzwerkcontroller verbunden.
 - Auf Knoten kann für Platzierung des virtuellen Computers nicht zugegriffen werden.
 - Skalierungseinheitknoten ist offline.
 
-![Liste der Warnungen für nicht verfügbare Skalierungseinheit](media/azure-stack-replace-node/NodeDownAlerts.PNG)
+![Liste der Warnungen für nicht verfügbare Skalierungseinheit](media/azure-stack-replace-node/nodedownalerts.png)
 
-Wenn Sie die Warnung „Skalierungseinheitknoten ist offline“ öffnen, können Sie der Beschreibung der Warnung den Skalierungseinheitknoten entnehmen, auf den nicht zugegriffen werden kann. Möglicherweise erhalten Sie auch weitere Warnungen in der OEM-spezifischen Überwachungslösung, die auf dem Hardwarelebenszyklushost ausgeführt wird.
+Wenn Sie die Warnung **Skalierungseinheitknoten ist offline.** öffnen, können Sie der Beschreibung der Warnung den Skalierungseinheitknoten entnehmen, auf den nicht zugegriffen werden kann. Möglicherweise erhalten Sie auch weitere Warnungen in der OEM-spezifischen Überwachungslösung, die auf dem Hardwarelebenszyklushost ausgeführt wird.
 
-![Details der Warnung „Knoten offline“](media/azure-stack-replace-node/NodeOffline.PNG)
+![Details der Warnung „Knoten offline“](media/azure-stack-replace-node/nodeoffline.png)
 
 ## <a name="scale-unit-node-replacement-process"></a>Austauschvorgang des Skalierungeinheitknotens
 
@@ -53,7 +53,7 @@ Die folgenden Schritte werden als allgemeine Übersicht zum Austauschvorgang des
 1. Verwenden Sie die Aktion [Ausgleichen](azure-stack-node-actions.md#scale-unit-node-actions), um den Skalierungseinheitknoten in den Wartungsmodus zu versetzen. Diese Aktion ist abhängig vom physischen Zustand der Hardware möglicherweise nicht erforderlich.
 
    > [!NOTE]
-   > Auf jeden Fall kann nur jeweils ein Knoten ausgeglichen und ausgeschaltet werden, ohne dass SSD (Storage Spaces Direct) abgebrochen wird.
+   > Auf jeden Fall kann nur jeweils ein Knoten ausgeglichen und ausgeschaltet werden, ohne dass S2D (Storage Spaces Direct, Direkte Speicherplätze) unterbrochen wird.
 
 2. Wenn der Knoten noch an die Stromversorgung angeschlossen ist, verwenden Sie die Aktion [Ausschalten](azure-stack-node-actions.md#scale-unit-node-actions). Diese Aktion ist abhängig vom physischen Zustand der Hardware möglicherweise nicht erforderlich.
  
@@ -68,4 +68,4 @@ Die folgenden Schritte werden als allgemeine Übersicht zum Austauschvorgang des
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Ersetzen eines im laufenden Betrieb austauschbaren physischen Datenträgers finden Sie unter [Ersetzen eines Datenträgers](azure-stack-replace-disk.md). 
-- Informationen zum Ersetzen einer Hardwarekomponente, die nicht im laufenden Betrieb ausgetauscht werden kann, finden Sie unter [Ersetzen einer Hardwarekomponente](azure-stack-replace-component.md). 
+- Informationen zum Ersetzen einer Hardwarekomponente, die nicht im laufenden Betrieb ausgetauscht werden kann, finden Sie unter [Ersetzen einer Hardwarekomponente](azure-stack-replace-component.md).

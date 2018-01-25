@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 0f3274816e279a1aa57febaa2f8294914900799a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da863e0249cb46e4e569812a851f3199d57b2107
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-sharepoint-connector"></a>Erste Schritte mit dem SharePoint-Connector
 Der SharePoint-Connector bietet eine Methode zum Arbeiten mit Listen in SharePoint.
 
-Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
+Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
 
 ## <a name="create-a-connection-to-sharepoint"></a>Herstellen einer Verbindung mit SharePoint
 Erstellen Sie zum Verwenden des SharePoint-Connectors zunächst eine **Verbindung** , und geben Sie anschließend die Details für die folgenden Eigenschaften an: 
 
-| Eigenschaft | Erforderlich | Beschreibung |
+| Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
 | Tokenverschlüsselung |Ja |Bereitstellen von SharePoint-Anmeldeinformationen |
 

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: a33fedd765acde666eef280ba7dfa72536bf1bd2
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 271ccc126eeb9411646b68b32fd30ce32b5eef5c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Einführung in Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
 
-* **[Sehen Sie sich das Einführungsvideo an.](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**
+* **[Sehen Sie sich das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
 * **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
 * In der **[Kurzübersicht für SQL-Benutzer](https://aka.ms/sql-analytics)** finden Sie eine Übersetzung der gängigsten Sprachen.
 
@@ -134,7 +134,7 @@ Standardmäßig sind Ihre Abfragen auf die letzten 24 Stunden beschränkt. Doch 
 
 ![](./media/app-insights-analytics-tour/change-time-range.png)
 
-Überschreiben Sie den Zeitraum durch Schreiben einer Abfrage, in der `timestamp` in einer WHERE-Klausel erwähnt wird. Beispiel:
+Überschreiben Sie den Zeitraum durch Schreiben einer Abfrage, in der `timestamp` in einer WHERE-Klausel erwähnt wird. Beispiel: 
 
 ```AIQL
 
@@ -502,7 +502,7 @@ requests
 ```
 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funktionen
 
 Verwenden Sie *Let*, um eine Funktion zu definieren:
 
@@ -538,7 +538,7 @@ Wenn Ihre Anwendung [benutzerdefinierte Dimensionen (Eigenschaften) und benutzer
 
 Zum Beispiel kann Ihre App Folgendes einfügen:
 
-```C#
+```csharp
 
     var dimensions = new Dictionary<string, string>
                      {{"p1", "v1"},{"p2", "v2"}};
@@ -611,7 +611,7 @@ Wenn Sie Ihre eigenen Ereignisse über [TrackEvent()](app-insights-api-custom-ev
 
 Sehen wir uns ein Beispiel, in dem Ihr App-Code diese Zeilen enthält:
 
-```C#
+```csharp
 
     telemetry.TrackEvent("Query",
        new Dictionary<string,string> {{"query", sqlCmd}},
@@ -629,7 +629,7 @@ Extrahieren von Maßen und Dimensionen aus den Ereignissen:
 ![Anzeige der Rate benutzerdefinierter Ereignisse](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
 
 ### <a name="custom-metrics-table"></a>Tabelle „Benutzerdefinierte Metriken“
-Wenn Sie eigene Metrikwerte über [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) senden, finden Sie die Ergebnisse im Strom **CustomMetrics**. Beispiel:  
+Wenn Sie eigene Metrikwerte über [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) senden, finden Sie die Ergebnisse im Strom **CustomMetrics**. Beispiel:   
 
 ![Benutzerdefinierte Metriken in der Application Insights-Analyse](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
 

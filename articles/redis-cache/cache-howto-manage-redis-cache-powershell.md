@@ -3,8 +3,8 @@ title: Verwalten von Azure Redis Cache mit Azure PowerShell | Microsoft Docs
 description: "Erfahren Sie, wie Sie administrative Aufgaben für Azure-Redis-Cache mit Azure PowerShell ausführen."
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.author: sdanie
-ms.openlocfilehash: 5b65d513d6418f13a6f3e10644c1892eecbcba1d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: wesmc
+ms.openlocfilehash: 58f8601fa780ac86729f60e9e30f4c6a91c73deb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Verwalten von Azure-Redis-Cache mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -122,10 +122,10 @@ Weitere Informationen zu Microsoft Azure Deutschland finden Sie unter [Microsoft
 ### <a name="properties-used-for-azure-redis-cache-powershell"></a>Eigenschaften, die für Azure Redis Cache-PowerShell verwendet werden
 Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, die beim Erstellen und Verwalten Ihrer Azure Redis Cache-Instanzen mithilfe von Azure PowerShell häufig verwendet werden.
 
-| Parameter | Beschreibung | Standard |
+| Parameter | BESCHREIBUNG | Standard |
 | --- | --- | --- |
-| Name |Name des Caches | |
-| Ort |Ort des Caches | |
+| NAME |Name des Caches | |
+| Speicherort |Ort des Caches | |
 | ResourceGroupName |Name der Ressourcengruppe, in der der Cache erstellt werden soll | |
 | Größe |Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Die Anzahl der zu erstellenden Shards beim Erstellen eines Premium-Caches mit Clusterunterstützung. Gültige Werte sind: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
@@ -139,7 +139,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | KeyType |Gibt an, welcher Zugriffsschlüssel beim Erneuern der Zugriffsschlüssel neu generiert werden muss. Gültige Werte sind: Primary, Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration-Eigenschaften
-| Eigenschaft | Beschreibung | Tarife |
+| Eigenschaft | BESCHREIBUNG | Tarife |
 | --- | --- | --- |
 | rdb-backup-enabled |Gibt an, ob [Redis-Datenpersistenz](cache-how-to-premium-persistence.md) aktiviert ist |Nur Premium |
 | rdb-storage-connection-string |Die Verbindungszeichenfolge für das Speicherkonto für [Redis-Datenpersistenz](cache-how-to-premium-persistence.md) |Nur Premium |

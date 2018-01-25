@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/01/2017
+ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4094d054595e82a6ddc0e19784309131f0506d27
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 9eeb265e063e6642b90dd641d41d0a54cbc6951e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -413,7 +413,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung der Datenquelle, des Da
 
     Der Tabellenname ist ein Pseudoname. Für die Copy-Aktivität in der Pipeline wird eine SQL-Abfrage zum Laden der Daten anstelle der gesamten Tabelle verwendet.
 
-2. Führen Sie nun das **Set-AzureRmDataFactoryV2Dataset**-Cmdlet zum Erstellen des Datasets „SourceDataset“ aus.
+2. Führen Sie nun das Cmdlet **Set-AzureRmDataFactoryV2Dataset** zum Erstellen des Datasets „SourceDataset“ aus.
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -702,7 +702,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 
 ## <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Klicken Sie auf **Weitere Dienste**, führen Sie eine Suche mit dem Schlüsselwort *Data Factory* durch, und wählen Sie **Data Factorys** aus. 
 
@@ -728,7 +728,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 ## <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Führen Sie in SQL Server Management Studio die folgenden Abfragen für die SQL-Zieldatenbank aus, um sicherzustellen, dass die Daten aus den Quelltabellen in die Zieltabellen kopiert wurden: 
 
-**Abfragen** 
+**Abfrage** 
 ```sql
 select * from customer_table
 ```
@@ -745,7 +745,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from project_table
@@ -762,7 +762,7 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from watermarktable
@@ -814,7 +814,7 @@ VALUES
 ## <a name="review-the-final-results"></a>Überprüfen der Endergebnisse
 Führen Sie in SQL Server Management Studio die folgenden Abfragen für die Zieldatenbank aus, um sicherzustellen, dass die aktualisierten bzw. neuen Daten aus den Quelltabellen in die Zieltabellen kopiert wurden. 
 
-**Abfragen** 
+**Abfrage** 
 ```sql
 select * from customer_table
 ```
@@ -833,7 +833,7 @@ PersonID    Name    LastModifytime
 
 Beachten Sie die neuen Werte in **Name** und **LastModifytime** für **PersonID** für Nummer 3. 
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from project_table
@@ -853,7 +853,7 @@ NewProject  2017-10-01 00:00:00.000
 
 Beachten Sie, dass der Projekttabelle (project_table) der Eintrag **NewProject** hinzugefügt wurde. 
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from watermarktable

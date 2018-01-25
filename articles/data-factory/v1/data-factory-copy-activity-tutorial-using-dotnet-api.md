@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 29b413de12084766a43904f7291a35f2699a961b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d6ffaf132cf2407c3bd3a609b087508c94bb0e46
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der .NET-API
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -127,7 +127,7 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
    4. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Konsolenanwendung** aus.
    5. Geben Sie als Name **DataFactoryAPITestApp** ein.
    6. Wählen Sie als Speicherort **C:\ADFGetStarted** aus.
-   7. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+   7. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 2. Klicken Sie auf **Extras**, zeigen Sie auf **NuGet-Paket-Manager**, und klicken Sie auf **Paket-Manager-Konsole**.
 3. Führen Sie in der **Paket-Manager-Konsole** die folgenden Schritte aus:
    1. Führen Sie den folgenden Befehl zum Installieren des Data Factory-Pakets aus: `Install-Package Microsoft.Azure.Management.DataFactories`
@@ -208,7 +208,7 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
     );
     ```
 
-    Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten in Produktausgabedaten. In diesem Schritt erstellen wir zunächst die Data Factory.
+    Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten in Produktausgabedaten. In diesem Schritt erstellen wir zunächst die Data Factory.
 8. Fügen Sie der **Main**-Methode den folgenden Code hinzu, um einen **verknüpften Azure Storage-Dienst** zu erstellen:
 
    > [!IMPORTANT]
@@ -260,7 +260,7 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
     );
     ```
 
-    AzureSqlLinkedService verknüpft Azure SQL-Datenbank mit der Data Factory. Die aus Blob Storage kopierten Daten werden in dieser Datenbank gespeichert. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) die EMP-Tabelle in dieser Datenbank erstellt.
+    AzureSqlLinkedService verknüpft Azure SQL-Datenbank mit der Data Factory. Die aus Blob Storage kopierten Daten werden in dieser Datenbank gespeichert. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) die Tabelle „emp“ in dieser Datenbank erstellt.
 10. Fügen Sie den folgenden Code, mit dem **Eingabe- und Ausgabedatasets** erstellt werden, der **Main**-Methode hinzu.
 
     ```csharp

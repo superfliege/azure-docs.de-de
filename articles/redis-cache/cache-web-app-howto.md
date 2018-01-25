@@ -3,8 +3,8 @@ title: Erstellen einer Web-App mit Redis Cache | Microsoft Docs
 description: Hier erfahren Sie, wie Sie eine Web-App mit Redis Cache erstellen.
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/09/2017
-ms.author: sdanie
-ms.openlocfilehash: 21dc87b3e8c26bfbda36202b31b3b4d44be32179
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: wesmc
+ms.openlocfilehash: c0cf5baa71ce599cd5c20d34c42bd2c578114efe
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-create-a-web-app-with-redis-cache"></a>Gewusst wie: Erstellen einer Web-App mit Redis Cache
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * [Visual Studio 2017 mit dem Azure SDK für .NET](#visual-studio-2017-with-the-azure-sdk-for-net)
 
 ### <a name="azure-account"></a>Azure-Konto
-Sie benötigen ein Azure-Konto, um das Tutorial durchführen zu können. Sie können:
+Sie benötigen ein Azure-Konto, um das Tutorial durchführen zu können. Ihre Möglichkeiten:
 
 * [Kostenloses Anlegen eines Azure-Kontos](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Auch nachdem Sie das Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen.
 * [Aktivieren Sie Visual Studio-Abonnementvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
@@ -72,7 +72,7 @@ Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für V
     Falls Sie für diesen Vorgang Visual Studio 2015 nutzen, sollten Sie das Kontrollkästchen **In der Cloud hosten** deaktivieren. Die Schritte zum [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) und [Veröffentlichen der Anwendung für Azure](#publish-the-application-to-azure) werden im weiteren Verlauf des Tutorials ausgeführt. Ein Beispiel, in dem eine App Service-Web-App über Visual Studio mit aktiviertem Kontrollkästchen **In der Cloud hosten** bereitgestellt wird, finden Sie unter [Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio](../app-service/app-service-web-get-started-dotnet.md).
    
     ![Projektvorlage auswählen][cache-select-template]
-4. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+4. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 ## <a name="create-the-aspnet-mvc-application"></a>Erstellen der ASP.NET MVC-Anwendung
 In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und Anzeigen der Teamstatistik aus einer Datenbank erstellt.
@@ -102,7 +102,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
     ![Modellklasse hinzufügen][cache-model-add-class-dialog]
 3. Ersetzen Sie die Anweisungen vom Typ `using` (am Anfang der Datei `Team.cs`) durch folgende `using`-Anweisungen:
 
-    ```c#
+    ```csharp
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -112,7 +112,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
 
 1. Ersetzen Sie die Definition der `Team`-Klasse durch den folgenden Codeausschnitt. Dieser enthält eine aktualisierte Definition für die `Team`-Klasse sowie einige weitere Entity Framework-Hilfsklassen. Weitere Informationen zum in diesem Tutorial verwendeten Code First-Ansatz für Entity Framework finden Sie unter [Code First für eine neue Datenbank](https://msdn.microsoft.com/data/jj193542).
 
-    ```c#
+    ```csharp
     public class Team
     {
         public int ID { get; set; }
@@ -226,7 +226,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
     ![Global.asax.cs][cache-global-asax]
 6. Fügen Sie den `using`-Anweisungen am Anfang der Datei die beiden folgenden `using`-Anweisungen hinzu:
 
-    ```c#
+    ```csharp
     using System.Data.Entity;
     using ContosoTeamStats.Models;
     ```
@@ -234,7 +234,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
 
 1. Fügen Sie am Ende der `Application_Start` -Methode folgenden Code hinzu:
 
-    ```c#
+    ```csharp
     Database.SetInitializer<TeamContext>(new TeamInitializer());
     ```
 
@@ -244,7 +244,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
     ![RouteConfig.cs][cache-RouteConfig-cs]
 2. Ersetzen Sie `controller = "Home"` im folgenden Code der `RegisterRoutes`-Methode durch `controller = "Teams"`, wie im folgenden Beispiel gezeigt:
 
-    ```c#
+    ```csharp
     routes.MapRoute(
         name: "Default",
         url: "{controller}/{action}/{id}",
@@ -284,7 +284,7 @@ In diesem Abschnitt des Tutorials wird die Beispielanwendung zum Speichern und A
 
 ### <a name="configure-the-application-to-use-stackexchangeredis"></a>Konfigurieren der Anwendung für die Verwendung von „StackExchange.Redis“
 1. Gehen Sie wie folgt vor, um eine Clientanwendung in Visual Studio mit dem StackExchange.Redis-NuGet-Paket zu konfigurieren: Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
-2. Führen Sie im Fenster `Package Manager Console` den folgenden Befehl aus:
+2. Führen Sie im Fenster `Package Manager Console` den folgenden Befehl aus.
     
     ```
     Install-Package StackExchange.Redis
@@ -296,14 +296,14 @@ In diesem Abschnitt des Tutorials wird die Beispielanwendung zum Speichern und A
     ![Teamcontroller][cache-teamscontroller]
 4. Fügen Sie **TeamsController.cs** die beiden folgenden `using`-Anweisungen hinzu:
 
-    ```c#   
+    ```csharp   
     using System.Configuration;
     using StackExchange.Redis;
     ```
 
 5. Fügen Sie der `TeamsController` -Klasse die beiden folgenden Eigenschaften hinzu:
 
-    ```c#   
+    ```csharp   
     // Redis Connection string info
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
     {
@@ -351,14 +351,14 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
 
 1. Fügen Sie den `using`-Anweisungen am Anfang der Datei `TeamsController.cs` folgende weitere `using`-Anweisungen hinzu:
 
-    ```c#   
+    ```csharp   
     using System.Diagnostics;
     using Newtonsoft.Json;
     ```
 
 2. Ersetzen Sie die aktuelle Implementierung der `public ActionResult Index()`-Methode durch die folgende Implementierung:
 
-    ```c#
+    ```csharp
     // GET: Teams
     public ActionResult Index(string actionType, string resultType)
     {
@@ -417,7 +417,7 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
    
     Die `PlayGames` -Methode aktualisiert die Teamstatistik durch eine simulierte Spielesaison, speichert die Ergebnisse in der Datenbank und löscht die inzwischen veralteten Daten aus dem Cache.
 
-    ```c#
+    ```csharp
     void PlayGames()
     {
         ViewBag.msg += "Updating team statistics. ";
@@ -436,7 +436,7 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
 
     Die `RebuildDB` -Methode initialisiert die Datenbank mit dem Standardteamsatz neu, generiert die Statistik für die Teams und löscht die nun veralteten Daten aus dem Cache.
 
-    ```c#
+    ```csharp
     void RebuildDB()
     {
         ViewBag.msg += "Rebuilding DB. ";
@@ -451,7 +451,7 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
 
     Die `ClearCachedTeams` -Methode entfernt alle zwischengespeicherten Teamstatistikdaten aus dem Cache.
 
-    ```c#
+    ```csharp
     void ClearCachedTeams()
     {
         IDatabase cache = Connection.GetDatabase();
@@ -466,7 +466,7 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
    
     Die `GetFromDB` -Methode liest die Teamstatistik aus der Datenbank.
    
-    ```c#
+    ```csharp
     List<Team> GetFromDB()
     {
         ViewBag.msg += "Results read from DB. ";
@@ -480,7 +480,7 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
 
     Die `GetFromList`-Methode liest die Teamstatistik aus dem Cache als serialisierte Daten vom Typ `List<Team>`. Bei einem Cachefehler wird die Teamstatistik aus der Datenbank gelesen und für den nächsten Zugriff im Cache gespeichert. In diesem Beispiel verwenden wir die JSON.NET-Serialisierung, um die .NET-Objekte für den Cache zu serialisieren. Weitere Informationen finden Sie unter [Arbeiten mit .NET-Objekten im Cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
 
-    ```c#
+    ```csharp
     List<Team> GetFromList()
     {
         List<Team> teams = null;
@@ -508,7 +508,7 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
 
     Die `GetFromSortedSet` -Methode liest die Teamstatistik aus einem zwischengespeicherten sortierten Satz. Bei einem Cachefehler wird die Teamstatistik aus der Datenbank gelesen und im Cache als sortierter Satz gespeichert.
 
-    ```c#
+    ```csharp
     List<Team> GetFromSortedSet()
     {
         List<Team> teams = null;
@@ -545,7 +545,7 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
 
     Die `GetFromSortedSetTop5` -Methode liest die fünf besten Teams aus dem zwischengespeicherten sortierten Satz. Dabei wird zunächst geprüft, ob der `teamsSortedSet` -Schlüssel im Cache vorhanden ist. Ist der Schlüssel nicht vorhanden, wird die `GetFromSortedSet` -Methode aufgerufen, um die Teamstatistik zu lesen und im Cache zu speichern. Als Nächstes werden aus dem zwischengespeicherten sortierten Satz die fünf besten Teams abgefragt und zurückgegeben.
 
-    ```c#
+    ```csharp
     List<Team> GetFromSortedSetTop5()
     {
         List<Team> teams = null;
@@ -578,7 +578,7 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
 
 1. Navigieren Sie in der `TeamsController`-Klasse zur `Create(Team team)`-Methode. Fügen Sie einen Aufruf der `ClearCachedTeams` -Methode hinzu, wie im folgenden Beispiel zu sehen:
 
-    ```c#
+    ```csharp
     // POST: Teams/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -603,7 +603,7 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
 
 1. Navigieren Sie in der `TeamsController`-Klasse zur `Edit(Team team)`-Methode. Fügen Sie einen Aufruf der `ClearCachedTeams` -Methode hinzu, wie im folgenden Beispiel zu sehen:
 
-    ```c#
+    ```csharp
     // POST: Teams/Edit/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -627,7 +627,7 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
 
 1. Navigieren Sie in der `TeamsController`-Klasse zur `DeleteConfirmed(int id)`-Methode. Fügen Sie einen Aufruf der `ClearCachedTeams` -Methode hinzu, wie im folgenden Beispiel zu sehen:
 
-    ```c#
+    ```csharp
     // POST: Teams/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
@@ -760,7 +760,7 @@ In diesem Schritt des Tutorials wird Anwendung für Azure veröffentlicht und in
 
 In der folgenden Tabelle werden die einzelnen Aktionslinks aus der Beispielanwendung beschrieben:
 
-| Aktion | Beschreibung |
+| anzuzeigen. | BESCHREIBUNG |
 | --- | --- |
 | Create New |Erstellt ein neues Team. |
 | Play Season |Spielt eine Spielesaison durch, aktualisiert die Teamstatistik und entfernt veraltete Teamdaten aus dem Cache. |

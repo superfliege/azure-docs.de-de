@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3a94b02ad2296ba1be6a4194dc49c76bc7332e08
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8ab68fddfd93a92f0f4f5a2904b8e35c409299d1
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-odata-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-odata-connector.md)
 > * [Version 2 – Vorschauversion](../connector-odata.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from OData source using Azure Data Factory](../connector-odata.md) (Kopieren von Daten aus einer OData-Quelle mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from OData source using Azure Data Factory](../connector-odata.md) (Kopieren von Daten aus einer OData-Quelle mit Azure Data Factory).
 
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer OData-Quelle zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
@@ -62,15 +62,15 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit OData verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Typ |Die type-Eigenschaft muss auf **OData** |Ja |
+| type |Die type-Eigenschaft muss auf **OData** |Ja |
 | URL |Die URL des OData-Diensts. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der OData-Quelle. <br/><br/> Mögliche Werte für den cloudbasierten OData-Dienst sind „Anonymous“, „Basic“ und „OAuth“ (beachten Sie, dass Azure Data Factory derzeit nur Azure Active Directory-basiertes OAuth unterstützt). <br/><br/> Mögliche Werte für lokales OData sind „Anonymous“, „Basic“ und „Windows“. |Ja |
 | username |Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. |Ja (nur bei Verwendung der Standardauthentifizierung) |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Ja (nur bei Verwendung der Standardauthentifizierung) |
 | authorizedCredential |Klicken Sie, wenn Sie OAuth verwenden, im Assistenten zum Kopieren in Data Factory bzw. im Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Anschließend wird der Wert dieser Eigenschaft automatisch generiert. |Ja (nur bei Verwendung der OAuth-Authentifizierung) |
-| gatewayName |Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem lokalen OData-Dienst verwenden soll. Geben Sie diesen nur an, wenn Sie Daten aus einer lokalen OData-Quelle kopieren. |Nein |
+| gatewayName |Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem lokalen OData-Dienst verwenden soll. Geben Sie diesen nur an, wenn Sie Daten aus einer lokalen OData-Quelle kopieren. |Nein  |
 
 ### <a name="using-basic-authentication"></a>Verwenden der Standardauthentifizierung
 ```json
@@ -147,9 +147,9 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **ODataResource** (mit OData-Datasets) hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| path |Pfad zu der OData-Ressource |Nein |
+| path |Pfad zu der OData-Ressource |Nein  |
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
@@ -158,9 +158,9 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 
 Wenn eine Quelle des Typs **RelationalSource** (wozu OData gehört) verwendet wird, sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Beispiel | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Beispiel | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |"?$select=Name, Beschreibung&$top=5" |Nein |
+| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |"?$select=Name, Beschreibung&$top=5" |Nein  |
 
 ## <a name="type-mapping-for-odata"></a>Typzuordnung für OData
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
@@ -175,18 +175,18 @@ Beim Verschieben von Daten aus OData werden die folgenden Zuordnungen zwischen d
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
-| Edm.DateTime |DateTime |
-| Edm.Decimal |Decimal |
-| Edm.Double |Doppelt |
+| Edm.DateTime |Datetime |
+| Edm.Decimal |DECIMAL |
+| Edm.Double |Double |
 | Edm.Single |Single |
-| Edm.Guid |GUID |
+| Edm.Guid |Guid |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |String |
-| Edm.Time |TimeSpan |
-| Edm.DateTimeOffset |Datetimeoffset |
+| Edm.String |Zeichenfolge |
+| Edm.Time |Zeitraum |
+| Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]
 > Komplexe OData-Datentypen wie z.B. Objekt werden nicht unterstützt.

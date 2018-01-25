@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 7f29860519d4dce76f0b7f866852484b93ce7b02
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 55b201842503a879725fa77328a72c83fe0bbade
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -39,11 +39,13 @@ Der Reverseproxy macht einen oder mehrere Endpunkte auf dem lokalen Knoten für 
 
 ![Interne Kommunikation][1]
 
+> [!NOTE]
 > **Unterstützte Plattformen**
 >
 > Der Reverseproxy in Service Fabric unterstützt derzeit die folgenden Plattformen:
 > * *Windows-Cluster:* Windows 8 und höher oder Windows Server 2012 und höher
 > * *Linux-Cluster:* Der Reverseproxy ist derzeit für Linux-Cluster nicht verfügbar.
+>
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>Zugreifen auf Microservices von außerhalb des Clusters
 Das Standardmodell für die externe Kommunikation für Microservices ist ein Aktivierungsmodell, was bedeutet, dass externe Clients nicht direkt auf die einzelnen Dienste zugreifen können. [Azure Load Balancer](../load-balancer/load-balancer-overview.md) ist eine Netzwerkgrenze zwischen Microservices und externen Clients, und er übernimmt die Netzwerkadressübersetzung und leitet externe Anforderungen an interne IP:Port-Endpunkte weiter. Damit externe Clients direkt auf den Endpunkt eines Microservice zugreifen können, müssen Sie den Load Balancer zunächst zum Weiterleiten von Datenverkehr an die einzelnen Ports konfigurieren, die der Dienst im Cluster verwendet. Darüber hinaus sind die meisten Microservices, insbesondere zustandsbehaftete Microservices, nicht auf allen Knoten des Clusters aktiv. Die Microservices können bei einem Failover zwischen Knoten verschoben werden. In solchen Fällen kann Load Balancer die Position des Zielknotens der Replikate, an die der Datenverkehr weitergeleitet werden soll, nicht effektiv bestimmen.

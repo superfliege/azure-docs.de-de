@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: a3b8bb53c467ad6f595a52e2a2e8f805a8f062f6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1a1855cc3f83d7fcba749ce94167039feb5bebe1
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 Schützen Sie Ihre Daten, indem Sie in festgelegten Abständen Momentaufnahmen Ihrer Daten erstellen. Diese Momentaufnahmen werden als Wiederherstellungspunkte bezeichnet. Sie werden in Recovery Services-Tresoren gespeichert. Wenn es erforderlich ist, einen virtuellen Computer zu reparieren oder wiederherzustellen, können Sie den virtuellen Computer auf der Grundlage eines gespeicherten Wiederherstellungspunkts wiederherstellen. Beim Herstellen eines Wiederherstellungspunkts haben Sie folgende Möglichkeiten:
@@ -42,7 +42,7 @@ Das Wiederherstellen eines virtuellen Computers oder aller Datenträger aus eine
 * Auswählen des Wiederherstellungstyps, Erstellen eines neuen virtuellen Computers oder Wiederherstellen eines Datenträgers und Angeben der erforderlichen Parameter 
 
 ## <a name="select-a-restore-point-for-restore"></a>Auswählen eines Wiederherstellungspunkts für die Wiederherstellung
-1. Melden Sie sich auf dem [Azure-Portal](http://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
 
 2. Klicken Sie im Azure-Menü auf **Durchsuchen**. Geben Sie in der Liste mit den Diensten **Recovery Services** ein. Die Liste der Dienste wird während der Eingabe angepasst. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
 
@@ -196,7 +196,7 @@ Gehen Sie wie folgt vor, um die im Rahmen der Datenträgerwiederherstellung gene
    ![Übermitteln der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/submitting-template.png)
 
 ## <a name="post-restore-steps"></a>Schritte nach der Wiederherstellung
-* Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/linux/classic/reset-access.md) die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Es wird empfohlen, SSH-Schlüssel für diese Verteilungen zu verwenden, um das Zurücksetzen des Kennworts nach der Wiederherstellung zu vermeiden.
+* Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/linux/reset-password.md) die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Es wird empfohlen, SSH-Schlüssel für diese Verteilungen zu verwenden, um das Zurücksetzen des Kennworts nach der Wiederherstellung zu vermeiden.
 * Erweiterungen, die während der Konfiguration der Sicherung vorhanden waren, werden zwar installiert, aber nicht aktiviert. Falls ein Problem auftritt, installieren Sie die Erweiterungen neu. 
 * Wenn der gesicherte virtuelle Computer nach der Wiederherstellung über eine statische IP-Adresse verfügt, erhält der wiederhergestellte virtuelle Computer eine dynamische IP-Adresse, um Konflikte beim Erstellen eines wiederhergestellten virtuellen Computers zu vermeiden. Erfahren Sie mehr über das [Hinzufügen einer statischen IP-Adresse zu einem wiederhergestellten virtuellen Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 * Für wiederhergestellte virtuelle Computer ist kein Verfügbarkeitswert festgelegt. Es wird empfohlen, die Option zur Datenträgerwiederherstellung zu verwenden, um [eine Verfügbarkeitsgruppe hinzuzufügen](../virtual-machines/windows/tutorial-availability-sets.md), wenn Sie einen virtuellen Computer mithilfe von PowerShell oder Vorlagen und unter Verwendung von wiederhergestellten Datenträgern erstellen. 

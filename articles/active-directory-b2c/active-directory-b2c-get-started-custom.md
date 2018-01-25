@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja;parahk;gsacavdm
-ms.openlocfilehash: 826211dca59128a8b87ace44348dd5e2764bc0c3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 86b86c7c670b34b4f3303adbcb55aff8d5edb53a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: Erste Schritte mit benutzerdefinierten Richtlinien
 
@@ -67,7 +67,7 @@ Wenn Sie bereits über ein Facebook-Anwendungsgeheimnis verfügen, können Sie e
 
 ## <a name="register-identity-experience-framework-applications"></a>Registrieren von Identity Experience Framework-Anwendungen
 
-Azure AD B2C erfordert, dass Sie zwei zusätzliche Anwendungen registrieren, die vom Modul zur Registrierung und Anmeldung von Benutzern verwendet werden.
+Azure AD B2C erfordert, dass Sie zwei zusätzliche Anwendungen registrieren, die von der Engine zur Registrierung und Anmeldung von Benutzern verwendet werden.
 
 >[!NOTE]
 >Sie müssen zwei Anwendungen erstellen, welche die Anmeldung mit lokalen Konten ermöglichen: IdentityExperienceFramework (eine Web-App) und ProxyIdentityExperienceFramework (eine native App) mit delegierter Berechtigung von der IdentityExperienceFramework-App. Lokale Konten sind nur in Ihrem Mandanten vorhanden. Ihre Benutzer melden sich mit einer eindeutigen Kombination aus E-Mail-Adresse und Kennwort an, um auf Ihre bei Mandanten registrierten Anwendungen zuzugreifen.
@@ -145,19 +145,19 @@ Die einzelnen Starter Packs enthalten Folgendes:
    >[!NOTE]
    >`PolicyId` ist der Richtlinienname, der Ihnen im Portal angezeigt wird, und der Name, unter dem von anderen Richtliniendateien auf diese Richtliniendatei verwiesen wird.
 
-5. Speichern Sie die Datei.
-6. Öffnen Sie TrustFrameworkExtensions.xml. Nehmen Sie die gleichen zwei Änderungen vor, indem Sie `yourtenant.onmicrosoft.com` durch Ihren Azure AD B2C-Mandanten ersetzen. Führen Sie den gleichen Ersetzungsvorgang auch im `<TenantId>`-Element durch (insgesamt drei Änderungen). Speichern Sie die Datei.
-7. Öffnen Sie SignUpOrSignIn.xml. Nehmen Sie die gleichen Änderungen vor, indem Sie `yourtenant.onmicrosoft.com` an drei Stellen durch Ihren Azure AD B2C-Mandanten ersetzen. Speichern Sie die Datei.
+5. Speichern Sie die Datei .
+6. Öffnen Sie TrustFrameworkExtensions.xml. Nehmen Sie die gleichen zwei Änderungen vor, indem Sie `yourtenant.onmicrosoft.com` durch Ihren Azure AD B2C-Mandanten ersetzen. Führen Sie den gleichen Ersetzungsvorgang auch im `<TenantId>`-Element durch (insgesamt drei Änderungen). Speichern Sie die Datei .
+7. Öffnen Sie SignUpOrSignIn.xml. Nehmen Sie die gleichen Änderungen vor, indem Sie `yourtenant.onmicrosoft.com` an drei Stellen durch Ihren Azure AD B2C-Mandanten ersetzen. Speichern Sie die Datei .
 8. Öffnen Sie die Dateien zum Zurücksetzen des Kennworts und zur Bearbeitung des Profils. Nehmen Sie die gleichen Änderungen vor, indem Sie `yourtenant.onmicrosoft.com` an drei Stellen durch Ihren Azure AD B2C-Mandanten ersetzen. Speichern Sie die Dateien.
 
 ### <a name="add-the-application-ids-to-your-custom-policy"></a>Hinzufügen der Anwendungs-IDs zur benutzerdefinierten Richtlinie
 Fügen Sie die Anwendungs-IDs zur Datei mit den Erweiterungen hinzu (`TrustFrameworkExtensions.xml`):
 
 1. Suchen Sie in der Datei mit den Erweiterungen (TrustFrameworkExtensions.xml) nach dem Element `<TechnicalProfile Id="login-NonInteractive">`.
-2. Ersetzen Sie beide Instanzen von `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Identity Experience Framework-Anwendung, die Sie zuvor erstellt haben. Beispiel:
+2. Ersetzen Sie beide Instanzen von `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Identity Experience Framework-Anwendung, die Sie zuvor erstellt haben. Beispiel: 
 
    ```xml
-   <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
+   <Item Key="IdTokenAudience">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
    ```
 3. Ersetzen Sie beide Instanzen von `ProxyIdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Anwendung des Frameworks für die Identitätsfunktion, die Sie zuvor erstellt haben.
 4. Speichern Sie Ihre Erweiterungsdatei.

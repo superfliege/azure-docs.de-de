@@ -5,20 +5,15 @@ services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: backup-recovery
-ms.date: 10/30/2017
+ms.date: 01/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: aa7bb25387efbc603dac9aaa0a56b3e30d0bfb4d
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 939115aedd624dde637f00c02865b1adab47c7c4
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>Installieren von Mobility Service (VMware oder physisch in Azure)
 Azure Site Recovery Mobility Service erfasst Datenschreibvorgänge auf einem Computer und leitet sie dann an den Prozessserver weiter. Stellen Sie Mobility Service auf jedem Computer (VMware-VM oder physischer Server) bereit, den Sie in Azure replizieren möchten. Sie können die Mobility Service auf den Servern bereitstellen, die Sie mithilfe der folgenden Methoden schützen möchten:
@@ -92,7 +87,7 @@ Nachdem Mobility Service installiert wurde, klicken Sie im Azure-Portal auf die 
 ## <a name="update-mobility-service"></a>Dient zum Aktualisieren von Mobility Service.
 
 > [!WARNING]
-> Sicherstellen Sie sicher, dass der Konfigurationsserver, Prozessserver für horizontales Hochskalieren und alle Masterzielserver, die Teil der Bereitstellung sind, aktualisiert werden, bevor Sie mit der Aktualisierung des Mobility Service auf den geschützten Servern beginnen. Hier erhalten Sie weitere Informationen zum [Aktualisieren Ihres Konfigurationsservers](site-recovery-vmware-to-azure-manage-configuration-server.md#upgrading-a-configuration-server) und zum [Aktualisieren der Prozessserver für horizontales Hochskalieren](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#upgrading-a-scale-out-process-server).
+> Sicherstellen Sie sicher, dass der Konfigurationsserver, Prozessserver für horizontales Hochskalieren und alle Masterzielserver, die Teil der Bereitstellung sind, aktualisiert werden, bevor Sie mit der Aktualisierung des Mobility Service auf den geschützten Servern beginnen.
 
 1. Navigieren Sie im Azure-Portal zur Ansicht „<Your Vault> -> Replizierte Elemente“.
 2. Wenn der **Konfigurationsserver** bereits auf die neueste Version aktualisiert wurde, sollte eine Benachrichtigung angezeigt werden, dass ein *neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Klicken Sie zum Installieren*

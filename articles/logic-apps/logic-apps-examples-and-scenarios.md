@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 09/13/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5b2b82d90dee41e80233e5f52c960be23d89ee3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b88d0c1ccb7a729c95299bcdc3cba5fd73fcdeac
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gängige Szenarien, Beispiele, Tutorials und exemplarische Vorgehensweisen für Azure Logic Apps
 
-[Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) unterstützt Sie bei der Orchestrierung und Integration verschiedener Dienste durch die Bereitstellung von [mehr als 100 einsatzbereiten Connectors](../connectors/apis-list.md), die von lokalem SQL Server über SAP bis hin zu Microsoft Cognitive Services reichen. Der Logic Apps-Dienst arbeitet „serverlos“. Daher müssen Sie sich über Skalierung oder Instanzen keine Gedanken machen. Sie brauchen lediglich den Workflow mit einem Trigger und Aktionen definieren, die im Workflow ausgeführt werden. Die zugrundeliegende Plattform kümmert sich um Skalierung, Verfügbarkeit und Leistung. Logic Apps ist besonders nützlich für Anwendungsfälle und Szenarien, in denen Sie mehrere Aktionen auf verschiedenen Systemen koordinieren müssen.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt Sie bei der Orchestrierung und Integration verschiedener Dienste durch die Bereitstellung von [mehr als 100 einsatzbereiten Connectors](../connectors/apis-list.md), die von lokalem SQL Server über SAP bis hin zu Microsoft Cognitive Services reichen. Der Logic Apps-Dienst arbeitet „serverlos“. Daher müssen Sie sich über Skalierung oder Instanzen keine Gedanken machen. Sie brauchen lediglich den Workflow mit einem Trigger und Aktionen definieren, die im Workflow ausgeführt werden. Die zugrundeliegende Plattform kümmert sich um Skalierung, Verfügbarkeit und Leistung. Logic Apps ist besonders nützlich für Anwendungsfälle und Szenarien, in denen Sie mehrere Aktionen auf verschiedenen Systemen koordinieren müssen.
 
-Um mehr über die vielen Muster und Funktionen zu erfahren, die von [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) unterstützt werden, finden Sie hier einige gängige Beispiele und Szenarien.
+Um mehr über die vielen Muster und Funktionen zu erfahren, die von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt werden, finden Sie hier einige gängige Beispiele und Szenarien.
 
 ## <a name="popular-starting-points-for-logic-app-workflows"></a>Beliebte Ausgangspunkte für Logik-App-Workflows
 
-Jede Logik-App beginnt mit nur einem [*Trigger*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts), der Ihren Logik-App-Workflow startet und alle Daten als Teil dieses Triggers übergibt. Einige Connectors bieten Trigger, die einen der folgenden Typen haben:
+Jede Logik-App beginnt mit nur einem [*Trigger*](../logic-apps/logic-apps-overview.md#logic-app-concepts), der Ihren Logik-App-Workflow startet und alle Daten als Teil dieses Triggers übergibt. Einige Connectors bieten Trigger, die einen der folgenden Typen haben:
 
 * *Abruftrigger*: Fragt einen Dienstendpunkt regelmäßig auf neue Daten ab. Wenn neue Daten vorhanden sind, wird der Trigger erstellt, der eine neue Workflowinstanz mit den Daten als Eingabe ausführt.
 
@@ -86,7 +86,7 @@ Sie können Logic Apps mithilfe von Visual Studio, Visual Studio Team Services o
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>Inhaltstypen, Konvertierungen und Transformationen während der Ausführung
 
-Mithilfe der vielen Funktionen in der [Workflowdefinitionssprache](http://aka.ms/logicappsdocs) von Azure Logic Apps können Sie auf mehrere Inhaltstypen zugreifen, sie konvertieren und transformieren. Beispielsweise können Sie mit den Workflowausdrücken `@json()` und `@xml()` zwischen einer Zeichenfolge, JSON und XML konvertieren. Das Logic Apps-Modul behält Inhaltstypen bei, um die verlustfreie Übertragung von Inhalten zwischen Diensten zu unterstützen.
+Mithilfe der vielen Funktionen in der [Workflowdefinitionssprache](http://aka.ms/logicappsdocs) von Azure Logic Apps können Sie auf mehrere Inhaltstypen zugreifen, sie konvertieren und transformieren. Beispielsweise können Sie mit den Workflowausdrücken `@json()` und `@xml()` zwischen einer Zeichenfolge, JSON und XML konvertieren. Die Logic Apps-Engine behält Inhaltstypen bei, um die verlustfreie Übertragung von Inhalten zwischen Diensten zu unterstützen.
 
 * [Funktionsweise von Workflowausdrücken in Logic Apps](../logic-apps/logic-apps-author-definitions.md)
 * [Verarbeitung von nicht als JSON vorliegenden Inhaltstypen](../logic-apps/logic-apps-content-type.md), wie `application/xml`, `application/octet-stream` und `multipart/formdata`

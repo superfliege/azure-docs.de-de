@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: davidmu
-ms.openlocfilehash: bd1c860db026f948202cd1f3aa763b4547c597b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b82a70d1b654ff9601db501011d9aa21af8e36c2
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage
 In diesem Artikel wird gezeigt, wie Sie eine Azure Resource Manager-Vorlage mithilfe von C# bereitstellen. Mit der Vorlage, die Sie erstellen, wird ein einzelner virtueller Computer mit Windows Server in einem neuen virtuellen Netzwerk mit einem einzelnen Subnetz bereitgestellt.
@@ -32,7 +32,7 @@ Die Ausführung dieser Schritte dauert etwa 10 Minuten.
 
 In diesem Schritt stellen Sie sicher, dass Visual Studio installiert ist, und erstellen eine Konsolenanwendung, die zum Bereitstellen der Vorlage verwendet wird.
 
-1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“ **.NET-Desktopentwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung sehen Sie, dass **Entwicklungstools für .NET Framework 4 – 4.6** automatisch für Sie ausgewählt ist. Wenn Sie Visual Studio bereits installiert haben, können Sie die .NET-Workload mit dem Visual Studio-Startprogramm hinzufügen.
+1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“  **	.NET-Desktopentwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung sehen Sie, dass **Entwicklungstools für .NET Framework 4 – 4.6** automatisch für Sie ausgewählt ist. Wenn Sie Visual Studio bereits installiert haben, können Sie die .NET-Workload mit dem Visual Studio-Startprogramm hinzufügen.
 2. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
 3. Wählen Sie unter **Vorlagen** > **Visual C#** die Option **Konsolen-App (.NET Framework)** aus, geben Sie *myDotnetProject* als Name des Projekts ein, wählen Sie den Projektspeicherort, und klicken Sie dann auf **OK**.
 
@@ -249,7 +249,7 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
     .Create();
 ```
 
-## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Die Vorlage und Parameter werden über ein Speicherkonto in Azure bereitgestellt. In diesem Schritt erstellen Sie das Konto und laden die Dateien hoch. 
 
@@ -282,11 +282,11 @@ container.SetPermissionsAsync(containerPermissions).Wait();
 
 Console.WriteLine("Uploading template file...");
 var templateblob = container.GetBlockBlobReference("CreateVMTemplate.json");
-templateblob.UploadFromFile("..\\..\\CreateVMTemplate.json");
+templateblob.UploadFromFileAsync("..\\..\\CreateVMTemplate.json").Result();
 
 Console.WriteLine("Uploading parameters file...");
 var paramblob = container.GetBlockBlobReference("Parameters.json");
-paramblob.UploadFromFile("..\\..\\Parameters.json");
+paramblob.UploadFromFileAsync("..\\..\\Parameters.json").Result();
 ```
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage

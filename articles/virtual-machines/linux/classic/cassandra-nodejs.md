@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 9782df5a5c94169b42d476b0c478fedd3465e3d0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Ausführen eines Cassandra-Clusters unter Linux in Azure mit Node.js
 
@@ -292,7 +292,7 @@ Melden Sie sich am virtuellen Computer mit dem Hostnamen ("hk-cas-template.cloud
 Führen Sie die folgende Aktionssequenz aus, um das Image zu erfassen:
 
 ##### <a name="1-deprovision"></a>1. Aufheben der Bereitstellung
-Verwenden Sie den Befehl "sudo waagent –deprovision+user", um Informationen zu entfernen, die für die Instanz des virtuellen Computers spezifisch sind. Weitere Details zur Image-Erfassung finden Sie unter [Gewusst wie: Erfassen eines virtuellen Linux-Computers, um ihn als Vorlage zu verwenden](capture-image.md) .
+Verwenden Sie den Befehl "sudo waagent –deprovision+user", um Informationen zu entfernen, die für die Instanz des virtuellen Computers spezifisch sind. Weitere Details zur Image-Erfassung finden Sie unter [Gewusst wie: Erfassen eines virtuellen Linux-Computers, um ihn als Vorlage zu verwenden](capture-image-classic.md) .
 
 ##### <a name="2-shut-down-the-vm"></a>2. Herunterfahren des virtuellen Computers
 Stellen Sie sicher, dass der virtuelle Computer markiert ist, und klicken Sie dann unten auf der Befehlsleiste auf den Link "HERUNTERFAHREN".

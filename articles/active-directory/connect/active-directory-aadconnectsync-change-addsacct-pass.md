@@ -4,7 +4,7 @@ description: "In diesem Dokument wird die Aktualisierung von Azure AD Connect na
 services: active-directory
 keywords: AD DS-Konto, Active Directory-Konto, Kennwort
 documentationcenter: 
-author: cychua
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: bd2970a723aa6b9073e25fd19493232af50e7985
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bc296b594917f68f35d7d15653b7b0c60cde514
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Ändern des AD DS-Kontokennworts
 Die AD DS-Konto bezieht sich auf das Benutzerkonto, das von Azure AD Connect zur Kommunikation mit dem lokalen Active Directory verwendet. Wenn Sie das Kennwort des AD DS-Kontos ändern, müssen Sie den Azure AD Connect-Synchronisierungsdienst mit dem neuen Kennwort aktualisieren. Andernfalls kann die Synchronisierung mit dem lokalen Active Directory nicht mehr ordnungsgemäß durchgeführt werden, und es treten die folgenden Fehler auf:
@@ -32,7 +32,7 @@ Die AD DS-Konto bezieht sich auf das Benutzerkonto, das von Azure AD Connect zur
 ## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>Aktualisieren des Synchronisierungsdiensts mit dem neuen Kennwort für das AD DS-Konto
 So aktualisieren Sie den Synchronisierungsdienst mit dem neuen Kennwort
 
-1. Starten Sie Synchronization Service Manager („START“ > „Synchronization Service“).
+1. Starten Sie den Synchronization Service Manager („START“ > „Synchronisierungsdienst“).
 </br>![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)  
 
 2. Wechseln Sie zur Registerkarte **Connectors**.

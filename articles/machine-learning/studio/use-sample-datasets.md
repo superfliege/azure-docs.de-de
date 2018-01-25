@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 01/19/2018
 ms.author: garye
-ms.openlocfilehash: d93c7c0bdad930bba679d705b012f1567da1da8a
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 3339d3b3bab2c0ce210950c178ef03fc6c0ecab9
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
@@ -102,15 +102,6 @@ Die Spenderdaten beinhalten die Anzahl der Monate seit der letzten Spende, die H
 <b>Zugrunde liegende Untersuchungen:</b> Yeh, I. C., (2008). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science 
 <p></p>
 Yeh, I-Cheng, Yang, King-Jang und Ting, Tao-Ming, „Knowledge discovery on RFM model using Bernoulli sequence“, Expert Systems with Applications, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
-  </td>
-</tr>
-
-<tr>
-  <td>Buchbesprechungen von Amazon</td>
-  <td>
-Rezensionen zu Büchern bei Amazon, die von Forschern der University of Pennsylvania (<a href="http://www.cs.jhu.edu/~mdredze/datasets/sentiment/">sentiment</a>) von der Website "amazon.com" übernommen wurden. Weitere Informationen finden Sie im Forschungsbericht "Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification" von John Blitzer, Mark Dredze und Fernando Pereira; Association of Computational Linguistics (ACL), 2007.
-<p></p>
-Das ursprüngliche DataSet umfasst 975.000 Bewertungen mit den Einstufungen 1, 2, 3, 4 oder 5. Die Bewertungen wurden in Englisch verfasst und stammen aus dem Zeitraum 1997-2007. Dieses DataSet wurde auf 10.000 Bewertungen reduziert.
   </td>
 </tr>
 

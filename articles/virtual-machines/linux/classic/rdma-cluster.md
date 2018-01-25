@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: e09b472a53c02b39bcf7ad06d228049b0a392452
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 428dc1e8ba03ba17e348a33a33b5cf5e6118a43c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen
 Hier erfahren Sie, wie Sie in Azure einen Linux RDMA-Cluster mit [HPC-VM-Größen (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) einrichten, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Dieser Artikel enthält die Schritte, die ausgeführt werden müssen, um ein Linux-HPC-Image für die Ausführung von Intel MPI auf einem Cluster vorzubereiten. Im Anschluss an die Vorbereitung stellen Sie mithilfe dieses Images und einer der RDMA-fähigen Größen für virtuelle Azure-Computer (derzeit H16r, H16mr, A8 oder A9) einen Cluster mit virtuellen Computern bereit. Mit dem Cluster können Sie MPI-Anwendungen ausführen, die effizient mit geringer Latenz und hohem Durchsatz über ein RDMA-Netzwerk (Remote Direct Memory Access, Remotezugriff auf den direkten Speicher) kommunizieren.
@@ -151,7 +151,7 @@ Zum Erfassen des Images führen Sie zuerst den folgenden Befehl auf dem virtuell
 sudo waagent -deprovision
 ```
 
-Führen Sie auf Ihrem Clientcomputer die folgenden Azure CLI-Befehle zum Erfassen des Images aus. Weitere Informationen dazu finden Sie unter [Erfassen eines klassischen virtuellen Linux-Computers als Image](capture-image.md).  
+Führen Sie auf Ihrem Clientcomputer die folgenden Azure CLI-Befehle zum Erfassen des Images aus. Weitere Informationen dazu finden Sie unter [Erfassen eines klassischen virtuellen Linux-Computers als Image](capture-image-classic.md).  
 
 ```
 azure vm shutdown <vm-name>

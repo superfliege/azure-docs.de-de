@@ -3,7 +3,7 @@ title: Durch Azure AD Connect synchronisierte Attribute | Microsoft-Dokumentatio
 description: Listet die mit Azure Active Directory synchronisierten Attribute auf.
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 1fb5772f58511b33d6927c3d0ff155980ed756ad
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d935b73e1087d5ad858bdbee9af68dd1cf5cd1e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
@@ -36,7 +36,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 >
 
 ## <a name="office-365-proplus"></a>Office 365 ProPlus
-| Attributname | Benutzer | Kommentar |
+| Attributname | Benutzer | Comment |
 | --- |:---:| --- |
 | accountEnabled |X |Definiert, ob ein Konto aktiviert ist. |
 | cn |X | |
@@ -48,7 +48,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | userPrincipalName |X |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Attributname | Benutzer | Kontakt | Group | Kommentar |
+| Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | assistant |X |X | | |
@@ -60,7 +60,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | company |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| description |X |X |X | |
+| Beschreibung |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -172,7 +172,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| Attributname | Benutzer | Kontakt | Group | Kommentar |
+| Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | authOrig |X |X |X | |
@@ -182,7 +182,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | company |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| description |X |X |X | |
+| Beschreibung |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -248,13 +248,13 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
 | unauthOrig |X |X |X | |
-| url |X |X | | |
+| URL |X |X | | |
 | usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 | wWWHomePage |X |X | | |
 
 ## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (nachfolgend Skype for Business genannt)
-| Attributname | Benutzer | Kontakt | Group | Kommentar |
+| Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | c |X |X | | |
@@ -262,7 +262,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | co |X |X | | |
 | company |X |X | | |
 | department |X |X | | |
-| description |X |X |X | |
+| Beschreibung |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -303,7 +303,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Attributname | Benutzer | Kontakt | Group | Kommentar |
+| Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | cn |X | |X |Allgemeiner Name oder Alias. Meistens das Präfix des Werts [mail]. |
@@ -319,12 +319,12 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="intune"></a>Intune
-| Attributname | Benutzer | Kontakt | Group | Kommentar |
+| Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | c |X |X | | |
 | cn |X | |X | |
-| description |X |X |X | |
+| Beschreibung |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
@@ -338,7 +338,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Attributname | Benutzer | Kontakt | Group | Kommentar |
+| Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | c |X |X | | |
@@ -346,7 +346,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | co |X |X | | |
 | company |X |X | | |
 | countryCode |X |X | | |
-| description |X |X |X | |
+| Beschreibung |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
@@ -378,7 +378,7 @@ Diese Gruppe umfasst einen Satz von Attributen. Es handelt sich um die Attribute
 
 Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Office 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen.
 
-| Attributname | Benutzer | Kontakt | Group | Kommentar |
+| Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | cn |X | |X | |
@@ -399,7 +399,7 @@ Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, we
 ## <a name="windows-10"></a>Windows 10
 Bei unter Windows 10 per Domänenbeitritt in die Domäne eingebundenen Computern (Geräten) werden einige Attribute mit Azure AD synchronisiert. Weitere Informationen zu den Szenarien finden Sie unter [Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen](../active-directory-azureadjoin-devices-group-policy.md). Diese Attribute werden immer synchronisiert, und Windows 10 wird nicht als App angezeigt, für die Sie die Auswahl aufheben können. Ein unter Windows 10 in die Domäne eingebundener Computer wird dadurch identifiziert, dass das Attribut „userCertificate“ aufgefüllt ist.
 
-| Attributname | Gerät | Kommentar |
+| Attributname | Gerät | Comment |
 | --- |:---:| --- |
 | accountEnabled |X | |
 | deviceTrustType |X |Hardcodierter Wert für in die Domäne eingebundene Computer |
@@ -413,7 +413,7 @@ Bei unter Windows 10 per Domänenbeitritt in die Domäne eingebundenen Computern
 
 Diese Attribute für **Benutzer** ergänzen die anderen Apps, die Sie ausgewählt haben.  
 
-| Attributname | Benutzer | Kommentar |
+| Attributname | Benutzer | Comment |
 | --- |:---:| --- |
 | domainFQDN |X |Auch als „dnsDomainName“ bezeichnet. Beispiel: contoso.com. |
 | domainNetBios |X |Auch als „netBiosName“ bezeichnet. Beispiel: CONTOSO |
@@ -421,7 +421,7 @@ Diese Attribute für **Benutzer** ergänzen die anderen Apps, die Sie ausgewähl
 ## <a name="exchange-hybrid-writeback"></a>Exchange-Hybridrückschreiben  
 Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschrieben, wenn Sie **Exchange-Hybrid**aktivieren. Abhängig von Ihrer Exchange-Version werden möglicherweise weniger Attribute synchronisiert.
 
-| Attributname | Benutzer | Kontakt | Group | Kommentar |
+| Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | msDS-ExternalDirectoryObjectID |X | | |Abgeleitet von cloudAnchor in Azure AD. Dies ist ein neues Attribut in Exchange 2016 und Windows Server 2016 AD. |
 | msExchArchiveStatus |X | | |Online-Archiv: Ermöglicht Kunden, E-Mail-Nachrichten zu archivieren. |
@@ -433,10 +433,10 @@ Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschr
 | proxyAddresses |X |X |X |Nur die x500-Adresse von Exchange Online wird eingefügt. |
 | publicDelegates |X | | |Ermöglicht einem Exchange Online-Postfach, dass Benutzern mit lokalem Exchange-Postfach SendOnBehalfTo-Rechte erteilt werden. Erfordert Azure AD Connect Build 1.1.552.0 oder höher |
 
-## <a name="exchange-mail-public-folder"></a>Öffentliche Exchange-E-Mail-Ordner
+## <a name="exchange-mail-public-folder"></a>Öffentlicher Exchange-E-Mail-Ordner
 Diese Attribute werden vom lokalen Active Directory mit Azure AD synchronisiert, wenn Sie den **öffentlichen Exchange-E-Mail-Ordner** aktivieren.
 
-| Attributname | PublicFolder | Kommentar |
+| Attributname | PublicFolder | Comment |
 | --- | :---:| --- |
 | displayName | X |  |
 | mail | X |  |
@@ -448,7 +448,7 @@ Diese Attribute werden vom lokalen Active Directory mit Azure AD synchronisiert,
 ## <a name="device-writeback"></a>Geräterückschreiben
 Geräteobjekte werden in Active Directory erstellt. Bei diesen Objekten kann es sich um mit Azure AD verknüpfte Geräte oder um in eine Domäne eingebundene Windows 10-Computer handeln.
 
-| Attributname | Gerät | Kommentar |
+| Attributname | Gerät | Comment |
 | --- |:---:| --- |
 | altSecurityIdentities |X | |
 | displayName |X | |
@@ -465,7 +465,7 @@ Geräteobjekte werden in Active Directory erstellt. Bei diesen Objekten kann es 
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>Hinweise
+## <a name="notes"></a>Notizen
 * Bei Verwendung einer alternativen ID wird das lokale Attribut userPrincipalName mit dem Azure AD-Attribut onPremisesUserPrincipalName synchronisiert. Das alternative ID-Attribut, z.B. „mail“, wird mit dem Azure AD-Attribut userPrincipalName synchronisiert.
 * In den obigen Listen gilt der Objekttyp **Benutzer** auch für den Objekttyp **iNetOrgPerson**.
 

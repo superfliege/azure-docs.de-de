@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 3ebcb5b3b4a84f7a5c25caa3f6b245f97bc8049f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7775bad1503e62e1887e6d85f67c3107f48866bf
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Überlegungen zu Sicherheit und Datenschutz in Cloud App Discovery
 In diesem Thema wird erläutert, wie Daten in Azure Active Directory Cloud App Discovery gesammelt, verarbeitet und geschützt werden. Microsoft ist bestrebt, Ihre Privatsphäre zu schützen und Ihre Daten bestmöglich zu sichern. Microsoft verwendet beim Betreiben eines Diensts sichere Verfahren während des gesamten Lebenszyklus der Softwareentwicklung. Das Sichern und Schützen von Daten besitzt bei Microsoft höchste Priorität.
@@ -156,7 +156,7 @@ Administratoren können diesen Zugriff jedoch an andere Benutzer oder Gruppen de
 
 Jeder Benutzer, der auf die Daten im Portal zugreift, muss mit einer Azure AD Premium-Lizenz lizenziert sein.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 * [Wie ermittle ich nicht genehmigte Cloud-Apps, die in meiner Organisation verwendet werden?](active-directory-cloudappdiscovery-whatis.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 

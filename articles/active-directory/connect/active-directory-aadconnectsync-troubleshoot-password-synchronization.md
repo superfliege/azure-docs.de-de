@@ -3,7 +3,7 @@ title: Problembehandlung der Kennwortsynchronisierung mit der Azure AD Connect-S
 description: "Dieser Artikel enthält Informationen zur Behandlung von Problemen mit der Kennwortsynchronisierung."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 89e6fd07553570a13c134a94a25fc73f4fa8c99c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0bf07e80e575309fe7fa44661776c23da5db6dce
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung
 Dieses Thema enthält Schritte zum Behandeln von Problemen mit der Kennwortsynchronisierung. Wenn Kennwörter nicht wie erwartet synchronisiert werden, kann dies für eine Teilmenge von Benutzern oder für alle Benutzer der Fall sein.
@@ -187,7 +187,7 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert w
 
 2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
 
-3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
+3. Führen Sie `Import-Module ADSyncDiagnostics`aus.
 
 4. Führen Sie `Invoke-ADSyncDiagnostics -PasswordSync`aus.
 
@@ -206,13 +206,13 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter für einen Benut
 
 2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
 
-3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
+3. Führen Sie `Import-Module ADSyncDiagnostics`aus.
 
 4. Führen Sie das folgende Cmdlet aus:
    ```
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
-   Beispiel:
+   Beispiel: 
    ```
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
    ```
@@ -324,7 +324,7 @@ Sie können Probleme mit der Kennwortsynchronisierung einfach beheben, indem Sie
 ### <a name="password-sync-log"></a>Kennwortsynchronisierungsprotokoll
 Die Statusspalte kann die folgenden Werte enthalten:
 
-| Status | Beschreibung |
+| Status | BESCHREIBUNG |
 | --- | --- |
 | Erfolgreich |Das Kennwort wurde erfolgreich synchronisiert. |
 | FilteredByTarget |Das Kennwort wird auf **Benutzer muss Kennwort bei der nächsten Anmeldung ändern**festgelegt. Das Kennwort wurde nicht synchronisiert. |

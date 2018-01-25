@@ -3,7 +3,7 @@ title: "Azure AD Connect – Synchronization Service Manager-Vorgänge | Microso
 description: "Grundlagen zur Registerkarte „Vorgänge“ in Synchronization Service Manager für Azure AD Connect."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 97a26565-618f-4313-8711-5925eeb47cdc
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70086291e3a33f5a1f733e81d7a1d7bf76439cf0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 91210edc3306b834cbd68f0f028845a7f36dd0b5
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Verwenden der Registerkarte „Vorgänge“ von Synchronization Service Manager
 
@@ -32,7 +32,7 @@ Die obere Hälfte zeigt alle Ausführungen in chronologischer Reihenfolge. Stand
 
 Die Spalte **Status** zeigt die wichtigste Information und das schwerwiegendste Problem einer Ausführung an. Hier folgt eine kurze Zusammenfassung der häufigsten Status, in der Reihenfolge ihrer Untersuchungspriorität (bei „*“ gibt es mehrere mögliche Fehlerzeichenfolgen).
 
-| Status | Kommentar |
+| Status | Comment |
 | --- | --- |
 | stopped-* |Die Ausführung konnte nicht abgeschlossen werden. Beispielsweise, wenn das Remotesystem ausgefallen ist und nicht kontaktiert werden kann. |
 | stopped-error-limit |Es gibt mehr als 5.000 Fehler. Die Ausführung wurde aufgrund der großen Anzahl von Fehlern automatisch beendet. |

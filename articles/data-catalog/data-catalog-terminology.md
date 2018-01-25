@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 8cb24357bb24c48dceda714a040427fcc0c0ba4d
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b88abd01c2dbc302bfc0e783d1715710c6f8397c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog-Terminologie
 ## <a name="catalog"></a>Katalog
@@ -68,7 +68,7 @@ Jede dieser Perspektiven ist sehr wertvoll, und mit Azure Data Catalog kann jede
 ## <a name="expert"></a>Experten
 Ein Experte ist ein Benutzer, der in Bezug auf ein Datenasset über eine fundierte "Expertensicht" verfügt. Alle Benutzer können sich selbst oder andere Benutzer als Experten für ein Asset hinzufügen. Die Angabe als Experte ist in Azure Data Catalog nicht mit weiteren Privilegien verbunden. Sie ermöglicht Benutzern beim Prüfen der beschreibenden Metadaten eines Assets das einfache Finden der Angaben, die voraussichtlich am nützlichsten sind.
 
-## <a name="owner"></a>Besitzer
+## <a name="owner"></a>Owner (Besitzer)
 Ein Besitzer ist ein Benutzer mit zusätzlichen Berechtigungen zum Verwalten eines Datenassets in Azure Data Catalog. Benutzer können registrierte Datenassets in Besitz nehmen, und Besitzer können andere Benutzer als Mitbesitzer hinzufügen. Weitere Informationen finden Sie unter [Verwalten von Datenassets](data-catalog-how-to-manage.md).  
 
 > [!NOTE]
@@ -79,6 +79,6 @@ Ein Besitzer ist ein Benutzer mit zusätzlichen Berechtigungen zum Verwalten ein
 ## <a name="registration"></a>Registrierung
 Die Registrierung umfasst das Extrahieren der Metadaten eines Datenassets aus einer Datenquelle und das Kopieren in den Azure Data Catalog-Dienst. Datenassets, die registriert wurden, können dann mit Anmerkungen versehen und ermittelt werden.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Was ist Azure Data Catalog?](data-catalog-what-is-data-catalog.md) Dieser Artikel enthält einen Überblick über den Azure Data Catalog-Dienst, den damit verbundenen Nutzen sowie die unterstützten Szenarien.
 * [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) Dieser Artikel enthält ein umfassendes Lernprogramm zur Verwendung von Azure Data Catalog für die Ermittlung von Datenquellen.  

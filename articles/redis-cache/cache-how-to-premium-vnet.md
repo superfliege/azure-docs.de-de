@@ -3,8 +3,8 @@ title: "Konfigurieren eines virtuellen Netzwerks für einen Azure Redis Cache vo
 description: "Erfahren Sie, wie Sie die Unterstützung für virtuelle Netzwerke für Azure Redis Cache-Instanzen im Tarif \"Premium\" erstellen und verwalten."
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
-ms.author: sdanie
-ms.openlocfilehash: 59d46990e02c0719d2b4df01e216a97fd649c509
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 74ec104bebec2004a8b7116865c2394c02b12638
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"
 Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Redis Cache-Instanz mit einem VNet konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNet kann nur über virtuelle Computer und Anwendungen innerhalb des VNet zugegriffen werden. In diesem Artikel wird erläutert, wie die Unterstützung eines virtuellen Netzwerks für eine Azure Redis Cache-Instanz vom Typ „Premium“ konfiguriert wird.
@@ -154,7 +154,7 @@ Nachdem die Portanforderungen wie im vorherigen Abschnitt beschrieben konfigurie
 
 - [Starten Sie alle Cacheknoten neu](cache-administration.md#reboot). Wenn keine der erforderlichen Cacheabhängigkeiten erreicht werden kann (wie unter [Anforderungen für eingehende Ports](cache-how-to-premium-vnet.md#inbound-port-requirements) und [Anforderungen für ausgehende Ports](cache-how-to-premium-vnet.md#outbound-port-requirements) dokumentiert), kann der Cache nicht neu gestartet werden.
 - Nachdem die Cacheknoten neu gestartet wurden (wie durch den Cachestatus im Azure-Portal gemeldet wird), können Sie folgende Tests durchführen:
-  - Pingen Sie mit [Tcping](https://www.elifulkerson.com/projects/tcping.php) den Cacheendpunkt (über Port 6380) von einem Computer, der sich im selben VNET wie der Cache befindet. Beispiel:
+  - Pingen Sie mit [Tcping](https://www.elifulkerson.com/projects/tcping.php) den Cacheendpunkt (über Port 6380) von einem Computer, der sich im selben VNET wie der Cache befindet. Beispiel: 
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     

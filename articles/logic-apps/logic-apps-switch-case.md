@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: LADocs; deli
-ms.openlocfilehash: 338b6a5b549d7bf81186550295608438ac4aee32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a459fb131cb9f917f2b0cf79679b04da48d76c42
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="perform-different-actions-in-logic-apps-with-a-switch-statement"></a>Ausführen verschiedener Aktionen in Logik-Apps mit einer switch-Anweisung
 
@@ -34,7 +34,7 @@ Sie können diese Szenarios mit einer switch-Anweisung implementieren. Ihre Logi
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen oder [Logic Apps kostenlos](https://tryappservice.azure.com/) testen.
-- [Grundlegende Kenntnisse über Logik-Apps](logic-apps-what-are-logic-apps.md)
+- [Grundlegende Kenntnisse über Logik-Apps](logic-apps-overview.md)
 
 ## <a name="add-a-switch-statement-to-your-workflow"></a>Hinzufügen einer switch-Anweisung zum Workflow
 

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 39e283e4b0bb5e50d1268e1b2cac53bf9ee71028
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: e326a512bdb9c30068845b51e86795a410e6c9b3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -131,7 +131,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    * **Planen von Updates**, die zu einem bestimmten Zeitpunkt des Tages installiert werden
    * Anzeigen, wann das Gateway **zuletzt aktualisiert** wurde
    * Angeben des Zeitpunkts, an dem ein Update für das Gateway installiert werden kann
-8. Wechseln Sie zur Registerkarte **Einstellungen** . Das Zertifikat im Abschnitt **Zertifikat** dient zum Verschlüsseln/Entschlüsseln von Anmeldeinformationen für den lokalen Datenspeicher, den Sie im Portal angeben. (optional) Klicken Sie auf **Ändern** , um stattdessen Ihr eigenes Zertifikat zu verwenden. Standardmäßig verwendet das Gateway das Zertifikat, das vom Data Factory-Dienst automatisch generiert wird.
+8. Wechseln Sie zur Registerkarte **Einstellungen**. Das Zertifikat im Abschnitt **Zertifikat** dient zum Verschlüsseln/Entschlüsseln von Anmeldeinformationen für den lokalen Datenspeicher, den Sie im Portal angeben. (optional) Klicken Sie auf **Ändern** , um stattdessen Ihr eigenes Zertifikat zu verwenden. Standardmäßig verwendet das Gateway das Zertifikat, das vom Data Factory-Dienst automatisch generiert wird.
 
     ![Konfiguration des Gatewayzertifikats](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 

@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 320df0586d9f4391bb8ad6add80a48daa7979aa9
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4f517a4be012f88d9b7a5e19042ce22493cfe5f3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe von Visual Studio
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -162,9 +162,9 @@ Hier wird anstelle von „Datasets“ der Begriff „Tabellen“ verwendet. Eine
   ``` 
     Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-    | Eigenschaft | Beschreibung |
+    | Eigenschaft | BESCHREIBUNG |
     |:--- |:--- |
-    | Typ | Die Eigenschaft „type“ wird auf **AzureBlob** festgelegt, da sich Daten in Azure Blob Storage befinden. |
+    | type | Die Eigenschaft „type“ wird auf **AzureBlob** festgelegt, da sich Daten in Azure Blob Storage befinden. |
     | linkedServiceName | Diese Eigenschaft verweist auf den **AzureStorageLinkedService**-Dienst, den Sie zuvor erstellt haben. |
     | folderPath | Diese Eigenschaft gibt den **Blobcontainer** und den **Ordner** an, der Eingabeblobs enthält. In diesem Tutorial ist „adftutorial“ der Blobcontainer und „folder“ der Stammordner. | 
     | fileName | Diese Eigenschaft ist optional. Wenn Sie diese Eigenschaft nicht angeben, werden alle Dateien in „folderPath“ übernommen. In diesem Tutorial wurde **emp.txt** für „fileName“ angegeben. Daher wird nur diese Datei für die Verarbeitung gewählt. |
@@ -210,9 +210,9 @@ In diesem Schritt erstellen Sie ein Ausgabedataset namens **OutputDataset**. Die
     ```
     Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-    | Eigenschaft | Beschreibung |
+    | Eigenschaft | BESCHREIBUNG |
     |:--- |:--- |
-    | Typ | Die Eigenschaft „type“ wird auf **AzureSqlTable** festgelegt, da Daten in eine Tabelle in Azure SQL-Datenbank kopiert werden. |
+    | type | Die Eigenschaft „type“ wird auf **AzureSqlTable** festgelegt, da Daten in eine Tabelle in Azure SQL-Datenbank kopiert werden. |
     | linkedServiceName | Diese Eigenschaft verweist auf den **AzureSqlLinkedService**-Dienst, den Sie zuvor erstellt haben. |
     | tableName | Diese Eigenschaft gibt die **Tabelle** an, in die die Daten kopiert werden. | 
     | frequency/interval | „frequency“ wird auf **Hour** und „interval“ auf **1** festgelegt, was bedeutet, dass die Ausgabeslices innerhalb der Start- und Endzeit der Pipeline **stündlich** erstellt werden, nicht vor oder nach diesen Zeiten.  |

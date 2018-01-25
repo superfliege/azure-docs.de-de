@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: mcoskun
-ms.openlocfilehash: c14794b71ce7340d9e90a56d781c712e247ded06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0687baf12a48788d86467b1f1a822b5d9050e5d5
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Reliable Collection-Objektserialisierung in Azure Service Fabric
 Reliable Collection repliziert und speichert seine Elemente, um sicherzustellen, dass sie über Computer- und Stromausfälle hinaus erhalten bleiben.
@@ -39,10 +39,10 @@ Reliable State Manager verfügt über integrierte Serialisierungsprogramme für 
 - sbyte
 - Byte[]
 - char
-- string
-- Decimal
+- Zeichenfolge
+- decimal
 - double
-- float
+- Gleitkommawert
 - int
 - uint
 - lang
@@ -56,7 +56,7 @@ Benutzerdefinierte Serialisierungsprogramme werden häufig zum Steigern der Leis
 
 [IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer--1?Microsoft_ServiceFabric_Data_IReliableStateManager_TryAddStateSerializer__1_Microsoft_ServiceFabric_Data_IStateSerializer___0__) wird zum Registrieren eines benutzerdefinierten Serialisierungsprogramms für den angegebenen Typ T verwendet. Diese Registrierung sollte bei der Erstellung der StatefulServiceBase erfolgen, um sicherzustellen, dass vor Beginn der Wiederherstellung alle Reliable Collections über Zugriff auf die relevanten Serialisierungsprogramme zum Lesen ihrer persistenten Daten verfügen.
 
-```C#
+```csharp
 public StatefulBackendService(StatefulServiceContext context)
   : base(context)
   {
@@ -79,7 +79,7 @@ Ein benutzerdefiniertes Serialisierungsprogramm muss die [IStateSerializer<T>](h
 
 Es folgt ein Beispiel für einen benutzerdefinierten Typ „OrderKey“, der vier Eigenschaften enthält.
 
-```C#
+```csharp
 public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 {
     public byte Warehouse { get; set; }
@@ -98,7 +98,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 Im Folgenden finden Sie ein Beispiel für das Implementieren von IStateSerializer<OrderKey>.
 Beachten Sie, dass die Lese-/Schreibüberladungen, die den BaseValue erfassen, zur Aufwärtskompatibilität die entsprechende Überladung aufrufen.
 
-```C#
+```csharp
 public class OrderKeySerializer : IStateSerializer<OrderKey>
 {
   OrderKey IStateSerializer<OrderKey>.Read(BinaryReader reader)
@@ -153,5 +153,5 @@ Auf diese Weise kann jede Version so viel lesen wie möglich und den Rest des St
   * [Ihre Anwendung mit Visual Studio upgraden](service-fabric-application-upgrade-tutorial.md) beschreibt das Upgraden von Anwendungen mit Visual Studio.
   * [Upgrade Ihrer Anwendung mithilfe von PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) werden Sie schrittweise durch das Upgrade der Anwendung mithilfe von PowerShell geführt.
   * Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](service-fabric-application-upgrade-parameters.md).
-  * Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)darüber, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen.
+  * Erfahren Sie, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen, indem Sie sich mit den [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)beschäftigen.
   * Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).

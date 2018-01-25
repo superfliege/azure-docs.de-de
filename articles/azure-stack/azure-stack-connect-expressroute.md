@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.openlocfilehash: aa6973939c6cfe0688f5781fdcea5d39670249df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 248e9cb521975e9c982684668a68214ce5a1c827
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="connect-azure-stack-to-azure-using-expressroute"></a>Herstellen einer Verbindung von Azure Stack zu Azure mithilfe von ExpressRoute
 
@@ -88,7 +88,7 @@ Verwenden Sie die folgenden Verfahren, um die erforderlichen Netzwerkressourcen 
 
    |Feld  |Wert  |
    |---------|---------|
-   |Name     |Tenant1VNet1         |
+   |NAME     |Tenant1VNet1         |
    |Adressraum     |10.1.0.0/16|
    |Subnetzname     |Tenant1-Sub1|
    |Subnetzadressbereich     |10.1.1.0/24|
@@ -101,7 +101,7 @@ Verwenden Sie die folgenden Verfahren, um die erforderlichen Netzwerkressourcen 
 
     c. Klicken Sie auf **An Dashboard anheften**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
 
 
 
@@ -128,7 +128,7 @@ Verwenden Sie die folgenden Verfahren, um die erforderlichen Netzwerkressourcen 
 7. Geben Sie im Feld **Name** die Zeichenfolge **GW1-PiP** ein, und klicken Sie auf **OK**.
 8. Für **VPN-Typ** sollte standardmäßig **Routenbasiert** ausgewählt sein.
     Behalten Sie diese Einstellung bei.
-9. Vergewissern Sie sich, dass **Abonnement** und **Speicherort** korrekt sind. Die Ressource kann auf Wunsch an das Dashboard angeheftet werden. Klicken Sie auf **Erstellen**.
+9. Vergewissern Sie sich, dass **Abonnement** und **Speicherort** korrekt sind. Die Ressource kann auf Wunsch an das Dashboard angeheftet werden. Klicken Sie auf **Create**.
 
 #### <a name="create-the-local-network-gateway"></a>Erstellen des Gateways des lokalen Netzwerks
 
@@ -205,19 +205,22 @@ Der Router ist ein virtueller Windows Server-Computer (**AzS-BGPNAT01**), der di
    In den Beispieldiagrammen ist die *externe BGPNAT-Adresse* 10.10.0.62 und die *interne IP-Adresse* 192.168.102.1.
 
    ```
+   $ExtBgpNat = '<External BGPNAT address>'
+   $IntBgpNat = '<Internal IP address>'
+
    # Designate the external NAT address for the ports that use the IKE authentication.
    Invoke-Command `
     -ComputerName azs-bgpnat01 `
      {Add-NetNatExternalAddress `
       -NatName BGPNAT `
-      -IPAddress <External BGPNAT address> `
+      -IPAddress $Using:ExtBgpNat `
       -PortStart 499 `
       -PortEnd 501}
    Invoke-Command `
     -ComputerName azs-bgpnat01 `
      {Add-NetNatExternalAddress `
       -NatName BGPNAT `
-      -IPAddress <External BGPNAT address> `
+      -IPAddress $Using:ExtBgpNat `
       -PortStart 4499 `
       -PortEnd 4501}
    # create a static NAT mapping to map the external address to the Gateway
@@ -227,8 +230,8 @@ Der Router ist ein virtueller Windows Server-Computer (**AzS-BGPNAT01**), der di
      {Add-NetNatStaticMapping `
       -NatName BGPNAT `
       -Protocol UDP `
-      -ExternalIPAddress <External BGPNAT address> `
-      -InternalIPAddress <Internal IP address> `
+      -ExternalIPAddress $Using:ExtBgpNat `
+      -InternalIPAddress $Using:IntBgpNat `
       -ExternalPort 500 `
       -InternalPort 500}
    # Finally, configure NAT traversal which uses port 4500 to
@@ -238,8 +241,8 @@ Der Router ist ein virtueller Windows Server-Computer (**AzS-BGPNAT01**), der di
      {Add-NetNatStaticMapping `
       -NatName BGPNAT `
       -Protocol UDP `
-      -ExternalIPAddress <External BGPNAT address> `
-      -InternalIPAddress <Internal IP address> `
+      -ExternalIPAddress $Using:ExtBgpNat `
+      -InternalIPAddress $Using:IntBgpNat `
       -ExternalPort 4500 `
       -InternalPort 4500}
    ```

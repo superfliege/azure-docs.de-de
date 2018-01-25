@@ -3,7 +3,7 @@ title: "Azure AD Connect: Ausdrücke für die deklarative Bereitstellung | Micro
 description: "Erläutert die Ausdrücke für die deklarative Bereitstellung."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 83fe949468a67318c766f0070498c35300af4deb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 797c0949aceea415652a72df5ee23ef9888ab975
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung
 Die Azure AD Connect-Synchronisierung basiert auf der deklarativen Bereitstellung, die erstmals in Forefront Identity Manager 2010 eingeführt wurde. Sie ermöglicht Ihnen die Implementierung Ihrer gesamten Geschäftslogik zur Identitätsintegration, ohne kompilierten Code schreiben zu müssen.
@@ -38,7 +38,7 @@ Die Attribute sind stark typisiert. Eine Funktion akzeptiert nur Attribute des r
 * Boolesche Werte werden mit Konstanten ausgedrückt: True, False.
 * Integrierte Konstanten und Literale werden nur mit ihrem Namen ausgedrückt: NULL, CRLF, IgnoreThisFlow.
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funktionen
 Bei der deklarativen Bereitstellung werden viele Funktionen verwendet, um das Transformieren von Attributwerten zu ermöglichen. Diese Funktionen können geschachtelt werden, sodass das Ergebnis einer Funktion an eine andere Funktion übergeben wird.
 
 `Function1(Function2(Function3()))`
@@ -50,7 +50,7 @@ Ein Parameter wird entweder durch einen Connector oder einen Administrator unter
 
 Der Active Directory Connector stellt folgende Parameter für eingehende Synchronisierungsregeln bereit:
 
-| Parametername | Kommentar |
+| Parametername | Comment |
 | --- | --- |
 | Domain.Netbios |NetBIOS-Format der Domäne, die gerade importiert wird, z.B. „FABRIKAMSALES“ |
 | Domain.FQDN |FQDN-Format der Domäne, die gerade importiert wird, z.B. „sales.fabrikam.com“ |

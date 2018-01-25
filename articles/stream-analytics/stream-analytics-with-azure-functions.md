@@ -14,16 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/19/2017
 ms.author: sngun
-ms.openlocfilehash: ab095827dc9dbfee19284abfbac353b16d3239a7
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f2f4a8d8cda752dc6ed197b8402119f7cbcaf58f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>Ausführen von Azure Functions mit Azure Stream Analytics-Aufträgen 
- 
-> [!IMPORTANT]
-> Diese Funktion befindet sich in der Vorschauphase.
 
 Sie können Azure Functions mit Azure Stream Analytics ausführen, indem Sie Functions als eine der Ausgabesenken für den Stream Analytics-Auftrag konfigurieren. Functions ist eine ereignisgesteuerte On-Demand-Computeumgebung, mit der Sie Code implementieren können, der durch in Azure- oder Drittanbieterdiensten auftretende Ereignisse ausgelöst wird. Aufgrund der Möglichkeit, auf Trigger zu antworten, ist Functions die ideale Ausgabe für Stream Analytics-Aufträge.
 
@@ -62,7 +59,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
 2. Navigieren Sie zu der Funktion **run.csx**. Aktualisieren Sie sie mit dem folgenden Code. (Ersetzen Sie unbedingt „\<your redis cache connection string goes here\>“ durch die primäre Verbindungszeichenfolge von Azure Redis Cache, die Sie im vorherigen Abschnitt abgerufen haben.)  
 
-   ```c#
+   ```csharp
    using System;
    using System.Net;
    using System.Threading.Tasks;
@@ -113,7 +110,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
    Wenn Stream Analytics die Ausnahme „HTTP-Anforderungseinheit zu groß“ von der Funktion empfängt, verringert der Dienst die Größe der an Functions gesendeten Batches. Verwenden Sie in Ihrer Funktion den folgenden Code, um zu überprüfen, ob Stream Analytics zu große Batches sendet. Stellen Sie sicher, dass die Werte für die maximal zulässige Batchanzahl und -größe in der Funktion mit den Werten übereinstimmen, die im Stream Analytics-Portal eingegeben wurden.
 
-   ```c#
+   ```csharp
    if (dataArray.ToString().Length > 262144)
       {        
         return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);

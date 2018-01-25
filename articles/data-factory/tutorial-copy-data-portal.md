@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 7486e7c6816538fc120fd0b0a8bea0b006fb21f0
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 424a5ec49018e969edbf90c374a9da7e1d22395d
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory
 In diesem Tutorial erstellen Sie eine Data Factory über die Azure Data Factory-Benutzeroberfläche (User Interface, UI). Die Pipeline in dieser Data Factory kopiert Daten aus Azure Blob Storage in Azure SQL-Datenbank. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE]
-> - Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie die [Einführung in Azure Data Factory](introduction.md) lesen.
+> - Falls Sie noch nicht mit Azure Data Factory vertraut sind, ist es ratsam, den Artikel [Einführung in Azure Data Factory](introduction.md) zu lesen.
 >
 > - Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, lesen Sie die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
@@ -85,7 +85,7 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Azure Data Fac
 1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
    ![Neu -> Data Factory](./media/tutorial-copy-data-portal/new-azure-data-factory-menu.png)
-2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **ADFTutorialDataFactory** ein. 
+2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
       
      ![Seite „Neue Data Factory“](./media/tutorial-copy-data-portal/new-azure-data-factory.png)
  
@@ -416,4 +416,4 @@ Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von ei
 Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten von einem lokalen Speicherort in die Cloud kopieren: 
 
 > [!div class="nextstepaction"]
->[Kopieren von Daten aus lokalen Quellen in die Cloud](tutorial-hybrid-copy-data-tool.md)
+>[Kopieren von Daten aus lokalen Quellen in die Cloud](tutorial-hybrid-copy-portal.md)

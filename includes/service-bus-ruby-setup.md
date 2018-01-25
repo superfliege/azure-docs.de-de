@@ -1,5 +1,5 @@
 ## <a name="create-a-ruby-application"></a>Erstellen einer Ruby-Anwendung
-Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../articles/virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md).
+Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 Um Service Bus zu verwenden, müssen Sie das Azure-Ruby-Paket herunterladen und verwenden. Dieses enthält eine Reihe von Bibliotheken, die mit den Speicher-REST-Diensten kommunizieren.

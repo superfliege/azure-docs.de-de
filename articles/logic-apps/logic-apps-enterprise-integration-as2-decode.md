@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: a7920b2509fe368c6f7d55e17fe0bf0020c4562c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4acae9f1837069c494985ff1456979490485f609
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Decodieren von AS2-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack 
 
@@ -35,7 +35,7 @@ Sie benötigen Folgendes:
 
 ## <a name="decode-as2-messages"></a>Decodieren von AS2-Nachrichten
 
-1. [Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
+1. [Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 2. Da der Connector „AS2-Nachricht decodieren“ über keine Trigger verfügt, müssen Sie einen Trigger zum Starten Ihrer Logik-App hinzufügen (beispielsweise einen Anforderungstrigger). Fügen Sie im Logik-App-Designer einen Trigger hinzu, und fügen Sie anschließend Ihrer Logik-App eine Aktion hinzu.
 
@@ -62,7 +62,7 @@ Sie benötigen Folgendes:
    
     ![Integrationsverbindung erstellt](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage4.png) 
 
-    Beispiel:
+    Beispiel: 
 
     ![Wählen Sie bei den Ausgaben der Anforderung den Text und die Header aus.](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage5.png) 
 

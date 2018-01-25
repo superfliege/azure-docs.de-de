@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 6803e22a78e27c15ff4fec301cd5bdd55aacd3e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5cc6837ed0b0f4467e48c736f5d596a51a799fae
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Übersicht über Azure Serverless mit Funktionen und Logik-Apps
 
@@ -41,7 +41,7 @@ Unter [Erstellen Sie Ihre erste Funktion in Azure Functions](../azure-functions/
 
 Azure Logic Apps ermöglicht die Vereinfachung und die Implementierung skalierbarer Integrationen und Workflows in die Cloud. Es wird ein visueller Designer bereitgestellt, mit dem Sie Ihre Prozesse in Form von Schritten (als Workflow bezeichnet) modellieren und automatisieren können.  Es gibt [viele Connectors](../connectors/apis-list.md) für Cloud- und lokale Dienste, mit denen Sie schnell eine Verbindung zwischen einer serverlosen App und anderen APIs herstellen können.  Eine Logik-App beginnt mit einem Trigger (z.B. „Wenn Dynamics CRM ein Konto hinzugefügt wird“), und nach der Auslösung sind viele verschiedene Kombinationen von Aktionen, Konvertierungen und Bedingungslogikabläufen möglich.  Logic Apps ist eine gute Wahl zum sorgfältigen Organisieren verschiedener Azure Functions in einem Prozess – besonders, wenn der Prozess die Interaktion mit einem externen System oder einer API benötigt.
 
-Starten Sie zum Einstieg in Logic Apps mit dem [Erstellen Ihrer ersten Logik-App](logic-apps-create-a-logic-app.md).  Technische Informationen zu Logic Apps finden Sie in der [Entwicklerreferenz](logic-apps-workflow-actions-triggers.md).
+Starten Sie zum Einstieg in Logic Apps mit dem [Erstellen Ihrer ersten Logik-App](quickstart-create-first-logic-app-workflow.md).  Technische Informationen zu Logic Apps finden Sie in der [Entwicklerreferenz](logic-apps-workflow-actions-triggers.md).
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Wie kann ich serverlose Anwendungen in Azure erstellen und bereitstellen?
 

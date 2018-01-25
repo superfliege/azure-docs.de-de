@@ -3,7 +3,7 @@ title: 'Azure AD Connect Sync: Grundlagen der Architektur | Microsoft Docs'
 description: "In diesem Thema wird die Architektur von Azure AD Connect Sync beschrieben, und es werden die verwendeten Ausdrücke erläutert."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 465bcbe9-3bdd-4769-a8ca-f8905abf426d
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: cc6c772f8f5cc86f8b975ac7835ffff85ef3435c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6a6150dca80a137e9787d943bfe9abb4224e6fe6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect Sync: Grundlagen der Architektur
 In diesem Thema wird die grundlegende Architektur für Azure AD Connect Sync beschrieben. In vielen Punkten ähnelt sie den Vorgängern MIIS 2003, ILM 2007 und FIM 2010. Azure AD Connect Sync ist die Weiterentwicklung dieser Technologien. Wenn Sie sich mit einer dieser früheren Technologien auskennen, wird Ihnen auch der Inhalt dieses Themas vertraut sein. Dieses Thema ist für Sie auch geeignet, falls Sie sich mit der Synchronisierung noch nicht auskennen. Es ist jedoch nicht erforderlich, alle Details dieses Themas zu kennen, um erfolgreich Anpassungen an Azure AD Connect Sync (in diesem Thema als „Synchronisierungsmodul“ bezeichnet) vornehmen zu können.
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 Das Synchronisierungsmodul erstellt eine integrierte Ansicht der Objekte, die in mehreren verbundenen Datenquellen gespeichert sind, und verwaltet die Identitätsinformationen in diesen Datenquellen. Diese integrierte Ansicht wird anhand der Identitätsinformationen ermittelt, die aus verbundenen Datenquellen abgerufen werden, sowie mit einer Gruppe von Regeln, mit denen die Verarbeitung dieser Informationen bestimmt wird.
 
 ### <a name="connected-data-sources-and-connectors"></a>Verbundene Datenquellen und Connectors
-Das Synchronisierungsmodul verarbeitet Identitätsinformationen aus verschiedenen Datenrepositorys, z. B. Active Directory oder einer SQL Server-Datenbank. Jedes Datenrepository, das seine Daten in einem datenbankähnlichen Format organisiert und standardmäßige Methoden für den Datenzugriff bereitstellt, ist ein potenzieller Datenquellenkandidat für das Synchronisierungsmodul. Die Datenrepositorys, die vom Synchronisierungsmodul synchronisiert werden, werden als **verbundene Datenquellen** oder **verbundene Verzeichnisse** (Connected Directories, CD) bezeichnet.
+Das Synchronisierungsmodul verarbeitet Identitätsinformationen aus verschiedenen Datenrepositorys, z.B. Active Directory oder einer SQL Server-Datenbank. Jedes Datenrepository, das seine Daten in einem datenbankähnlichen Format organisiert und standardmäßige Methoden für den Datenzugriff bereitstellt, ist ein potenzieller Datenquellenkandidat für das Synchronisierungsmodul. Die Datenrepositorys, die vom Synchronisierungsmodul synchronisiert werden, werden als **verbundene Datenquellen** oder **verbundene Verzeichnisse** (Connected Directories, CD) bezeichnet.
 
 Das Synchronisierungsmodul kapselt die Interaktion mit einer verbundenen Datenquelle in einem Modul, das als **Connector**bezeichnet wird. Jede Art von verbundener Datenquelle verfügt über einen bestimmten Connector. Der Connector übersetzt einen erforderlichen Vorgang in das Format, das von der verbundenen Datenquelle verstanden wird.
 
@@ -107,7 +107,7 @@ Das Synchronisierungsmodul bestätigt den Export des Objekts, indem das Objekt e
 ### <a name="placeholders"></a>Platzhalter
 Das Synchronisierungsmodul verwendet zum Speichern von Objekten einen flachen Namespace. Für einige verbundene Datenquellen, z. B. Active Directory, wird aber ein hierarchischer Namespace verwendet. Beim Transformieren von Informationen aus einem hierarchischen Namespace in einen flachen Namespace nutzt das Synchronisierungsmodul Platzhalter, um die Hierarchie zu erhalten.
 
-Jeder Platzhalter stellt eine Komponente (z. B. eine Organisationseinheit) des hierarchischen Namens eines Objekts dar, die nicht in das Synchronisierungsmodul importiert wurde, aber zum Erstellen des hierarchischen Namens erforderlich ist. Hiermit werden Lücken gefüllt, die aufgrund von Verweisen in der verbundenen Datenquelle auf Objekte entstehen, bei denen es sich nicht um Stagingobjekte im Connectorbereich handelt.
+Jeder Platzhalter stellt eine Komponente (z.B. eine Organisationseinheit) des hierarchischen Namens eines Objekts dar, die nicht in das Synchronisierungsmodul importiert wurde, aber zum Erstellen des hierarchischen Namens erforderlich ist. Hiermit werden Lücken gefüllt, die aufgrund von Verweisen in der verbundenen Datenquelle auf Objekte entstehen, bei denen es sich nicht um Stagingobjekte im Connectorbereich handelt.
 
 Das Synchronisierungsmodul verwendet Platzhalter auch, um referenzierte Objekte zu speichern, die noch nicht importiert wurden. Wenn die Synchronisierung beispielsweise so konfiguriert ist, dass sie das manager-Attribut für das Objekt *Abbie Spencer* enthält, und der empfangene Wert für ein noch nicht importiertes Objekt steht, z.B. *CN=Lee Sperry,CN=Users,DC=fabrikam,DC=com*, gilt Folgendes: Die Managerinformationen werden als Platzhalter im Connectorbereich gespeichert. Wenn das manager-Objekt später importiert wird, wird das Platzhalterobjekt von dem Stagingobjekt überschrieben, das den Manager darstellt.
 
@@ -142,7 +142,7 @@ Ein Importobjekt wird als getrenntes Objekt erstellt. Ein Exportobjekt muss ein 
 ## <a name="sync-engine-identity-management-process"></a>Identitätsverwaltungsprozess des Synchronisierungsmoduls
 Der Identitätsverwaltungsprozess steuert, wie Identitätsinformationen zwischen unterschiedlichen verbundenen Datenquellen aktualisiert werden. Die Identitätsverwaltung umfasst drei Vorgänge:
 
-* Import
+* Importieren
 * Synchronisierung
 * Export
 
@@ -180,7 +180,7 @@ Stagingobjekte mit aktualisierten Daten werden mit der Kennzeichnung „Import s
 * **Hinzufügen**: Das Stagingobjekt ist ein neues Importobjekt im Connectorbereich. Vom Synchronisierungsmodul wird dieser Typ als ausstehender Import zur weiteren Verarbeitung im Metaverse gekennzeichnet.
 * **Aktualisieren**: Das Synchronisierungsmodul findet ein entsprechendes Stagingobjekt im Connectorbereich und kennzeichnet es als ausstehenden Import, sodass die Aktualisierungen der Attribute im Metaverse verarbeitet werden können. Die Aktualisierungen umfassen auch die Umbenennung von Objekten.
 * **Löschen**: Das Synchronisierungsmodul findet ein entsprechendes Stagingobjekt im Connectorbereich und kennzeichnet es als ausstehenden Import, damit das verknüpfte Objekt gelöscht werden kann.
-* **Löschen/Hinzufügen**: Das Synchronisierungsmodul findet ein entsprechendes Stagingobjekt im Connectorbereich, aber die Objekttypen stimmen nicht überein. In diesem Fall wird eine Änderung vom Typ „Löschen/Hinzufügen“ bereitgestellt. Bei einer Änderung vom Typ „Löschen/Hinzufügen“ wird für das Synchronisierungsmodul angegeben, dass eine vollständige Neusynchronisierung dieses Objekts durchgeführt werden muss. Bei einer Änderung vom Typ „Löschen/Hinzufügen“ wird für das Synchronisierungsmodul angegeben, dass eine vollständige Neusynchronisierung dieses Objekts durchgeführt werden muss. Der Grund ist, dass für dieses Objekt andere Regelsätze gelten, wenn sich der Objekttyp ändert.
+* **Löschen/Hinzufügen**: Das Synchronisierungsmodul findet ein entsprechendes Stagingobjekt im Connectorbereich, aber die Objekttypen stimmen nicht überein. In diesem Fall wird eine Änderung vom Typ „Löschen/Hinzufügen“ bereitgestellt. Bei einer Änderung vom Typ „Löschen/Hinzufügen“ wird für das Synchronisierungsmodul angegeben, dass eine vollständige Neusynchronisierung dieses Objekts durchgeführt werden muss. Der Grund ist, dass für dieses Objekt andere Regelsätze gelten, wenn sich der Objekttyp ändert.
 
 Durch das Festlegen des Status „Import steht aus“ für ein Stagingobjekt ist es möglich, die Menge der Daten, die während der Synchronisierung verarbeitet werden, erheblich zu reduzieren. Das System kann dann nur die Objekte verarbeiten, die über aktualisierte Daten verfügen.
 

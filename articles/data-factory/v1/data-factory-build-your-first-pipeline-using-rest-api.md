@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 2a6b52f56647a8bc018c4cf56e996877c1c0d2e6
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4caff18728f2f0f1246f4a05ac121cecdaaeaf04
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Tutorial: Erstellen der ersten Azure Data Factory mit der Data Factory-REST-API
 > [!div class="op_single_selector"]
@@ -121,7 +121,7 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
 
 Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | ClusterSize |Gibt die Größe des HDInsight-Clusters an. |
 | TimeToLive |Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird. |
@@ -167,12 +167,12 @@ Im JSON-Code wird ein Dataset mit dem Namen **AzureBlobInput**definiert, das Ein
 
 Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Typ |Die Type-Eigenschaft wird auf „AzureBlob“ festgelegt, da sich Daten im Azure-Blobspeicher befinden. |
+| type |Die Type-Eigenschaft wird auf „AzureBlob“ festgelegt, da sich Daten im Azure-Blobspeicher befinden. |
 | linkedServiceName |verweist auf den „StorageLinkedService“, den Sie zuvor erstellt haben. |
 | fileName |Diese Eigenschaft ist optional. Wenn Sie diese Eigenschaft nicht angeben, werden alle Dateien in „folderPath“ übernommen. In diesem Fall wird nur „input.log“ verarbeitet. |
-| Typ |Da die Protokolldateien im Textformat vorliegen, verwenden wir „TextFormat“. |
+| type |Da die Protokolldateien im Textformat vorliegen, verwenden wir „TextFormat“. |
 | columnDelimiter |Spalten werden in den Protokolldateien per Komma (,) voneinander getrennt. |
 | frequency/interval |„frequency“ wird auf „Month“ und „interval“ auf „1“ festgelegt, was bedeutet, dass die Eingabeslices monatlich verfügbar sind. |
 | external |Diese Eigenschaft wird auf „true“ festgelegt, wenn die Eingabedaten nicht vom Data Factory-Dienst generiert werden. |
@@ -293,7 +293,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
-In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **FirstDataFactoryREST**. Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Daten. Führen Sie die folgenden Befehle zum Erstellen der Data Factory aus:
+In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **FirstDataFactoryREST**. Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Daten. Führen Sie die folgenden Befehle zum Erstellen der Data Factory aus:
 
 1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu.
 
@@ -472,7 +472,7 @@ Führen Sie „Invoke-Command“ und den darauffolgenden Befehl aus, bis für de
 >
 >
 
-Sie können das Azure-Portal auch zum Überwachen von Slices und Durchführen der Problembehandlung verwenden. Informationen hierzu finden Sie unter [Überwachen von Pipelines mit dem Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline) .
+Sie können das Azure-Portal auch zum Überwachen von Slices und Durchführen der Problembehandlung verwenden. Informationen hierzu finden Sie unter [Überwachen von Pipelines mit dem Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) .
 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten erstellt, indem Sie ein Hive-Skript in einem HDInsight Hadoop-Cluster ausgeführt haben. Sie haben den Data Factory-Editor im Azure-Portal verwendet, um die folgenden Schritte auszuführen:
@@ -487,8 +487,8 @@ In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten e
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten Azure HDInsight-Cluster ausführt. Informationen zum Verwenden einer Kopieraktivität zum Kopieren von Daten aus einem Azure-Blob in Azure SQL finden Sie unter [Lernprogramm: Kopieren von Daten aus einem Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="see-also"></a>Weitere Informationen
-| Thema | Beschreibung |
+## <a name="see-also"></a>Siehe auch
+| Thema | BESCHREIBUNG |
 |:--- |:--- |
 | [Referenz zur Data Factory-REST-API](/rest/api/datafactory/) |Umfassende Dokumentation zu Data Factory-Cmdlets |
 | [Pipelines](data-factory-create-pipelines.md) |In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter End-to-End-Workflows für Ihr Szenario oder Ihr Unternehmen genutzt werden können. |

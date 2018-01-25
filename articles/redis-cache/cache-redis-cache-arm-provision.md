@@ -3,8 +3,8 @@ title: Bereitstellen eines Redis Cache mit Azure Resource Manager | Microsoft-Do
 description: Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um einen Azure Redis Cache bereitzustellen.
 services: app-service
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: sdanie
-ms.openlocfilehash: cce5d63e8bad2dd066cb4c28e2a8a9cb16c47953
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: b26116b974abbfe410b0a6ebc0186d73f4eea1bf
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>Erstellen einer Redis Cache-Instanz mithilfe einer Vorlage
 In diesem Thema erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, die einen Azure Redis Cache bereitstellt. Der Cache kann mit einem vorhandenen Speicherkonto verwendet werden, um Diagnosedaten aufzunehmen. Sie erfahren darüber hinaus, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.

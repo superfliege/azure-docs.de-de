@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: 276997bb6800fda9cb432384ebaaaa717b8426ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 254f1913f1b9cb1a165d007a1f4204f7783472c1
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -55,7 +55,7 @@ Durch einmaliges Anmelden können Benutzer mit nur einem Satz von Anmeldeinforma
 | Eine Einführung in den Verbund und andere Arten von Anmeldungen |[Einmaliges Anmelden mit Azure AD](active-directory-appssoaccess-whatis.md) |
 | Tausende von SaaS-Apps, die bereits in Azure AD integriert sind, mit vereinfachten Schritten zur Konfiguration der einmaligen Anmeldung |[Erste Schritte mit dem Azure AD-Anwendungskatalog](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Vollständige Liste der vorab integrierten Apps, die den Verbund unterstützen (in englischer Sprache)](http://aka.ms/aadfederatedapps)<br /><br />[Hinzufügen Ihrer App zum Azure AD-App-Katalog](active-directory-app-gallery-listing.md) |
 | Mehr als 150 App-Tutorials zur Konfiguration des einmaligen Anmeldens für Apps wie [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [Google Apps](active-directory-saas-google-apps-tutorial.md), [Workday](active-directory-saas-workday-tutorial.md) und viele mehr |[Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md) |
-| Vorgehensweise zum manuellen Einrichten und Anpassen Ihrer Konfiguration für einmaliges Anmelden |[Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Gewusst wie: Anpassen ausgestellter Ansprüche im SAML-Token für bereits integrierte Apps](active-directory-saml-claims-customization.md) |
+| Vorgehensweise zum manuellen Einrichten und Anpassen Ihrer Konfiguration für einmaliges Anmelden |[Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Anpassen ausgestellter Ansprüche im SAML-Token für vorintegrierte Apps](active-directory-saml-claims-customization.md) |
 | Handbuch zur Problembehandlung für Verbund-Apps, die das SAML-Protokoll verwenden |[Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md) |
 | Konfigurieren des Ablaufdatums für das Zertifikat Ihrer App und Erneuern von Zertifikaten |[Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](active-directory-sso-certs.md) |
 
@@ -203,7 +203,7 @@ Azure Active Directory bietet mehrere Berichte und Warnungen, mit denen Sie den 
 
 Um herauszufinden, welche Berichte in verschiedenen Editionen von Azure Active Directory enthalten sind, [klicken Sie hier](active-directory-view-access-usage-reports.md).
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Was ist Azure Active Directory?](active-directory-whatis.md)
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)

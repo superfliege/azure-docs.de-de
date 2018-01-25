@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 7c18c2b3b0d271f2dbe4f247c132850b49d8f1d9
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 7ebec89e1481ccc232403426c04bed0ffd6f4fe7
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="container-security"></a>Containersicherheit
 
@@ -53,7 +53,7 @@ Wenn Sie bereits über die Zertifikate im erforderlichen Format verfügen und ei
 
 Die Zertifikatdateien werden vom Containerdienst oder -prozess in den Container importiert. Für den Zertifikatimport können Sie Skripts vom Typ `setupentrypoint.sh` verwenden oder benutzerdefinierten Code innerhalb des Containers ausführen. C#-Beispielcode zum Importieren der PFX-Datei:
 
-```c#
+```csharp
     string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
     string passwordFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_Password");
     X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);

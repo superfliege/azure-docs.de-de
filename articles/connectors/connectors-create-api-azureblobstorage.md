@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/02/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: bc7908868828bd1628633cf9e57f8c44f8000827
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e12669abd41f09d161fab786af29955da54a1633
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-the-azure-blob-storage-connector-in-a-logic-app"></a>Verwenden des Azure Blob Storage-Connectors in einer Logik-App
 Mit dem Azure Blob Storage-Connector können Sie Blobs in Ihr(em) Speicherkonto hochladen, aktualisieren, abrufen und löschen – und all das in einer Logik-App.  
@@ -31,9 +31,7 @@ Azure-Blobspeicher ermöglicht Folgendes:
 
 In diesem Thema wird beschrieben, wie Sie den Blob Storage-Connector in einer Logik-App verwenden.
 
-Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../logic-apps/logic-apps-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/logic-apps-create-a-logic-app.md).
-
-Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../logic-apps/logic-apps-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/logic-apps-create-a-logic-app.md).
+Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../logic-apps/logic-apps-overview.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="connect-to-azure-blob-storage"></a>Herstellen einer Verbindung mit Azure Blob Storage
 Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Um eine Verbindung mit einem Speicherkonto herzustellen, müssen Sie beispielsweise zuerst eine Blob Storage-*Verbindung* erstellen. Hierzu geben Sie die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Geben Sie für Azure Storage also die Anmeldeinformationen Ihres Speicherkontos ein, um die Verbindung zu erstellen. 
@@ -42,7 +40,7 @@ Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst 
 > [!INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
 
 ## <a name="use-a-trigger"></a>Verwenden eines Triggers
-Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten – beispielsweise einen Wiederholungstrigger, einen HTTP-Webhook-Trigger oder einen Trigger eines anderen Connectors. Unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/logic-apps-create-a-logic-app.md) finden Sie ein Beispiel.
+Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten – beispielsweise einen Wiederholungstrigger, einen HTTP-Webhook-Trigger oder einen Trigger eines anderen Connectors. Unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/quickstart-create-first-logic-app-workflow.md) finden Sie ein Beispiel.
 
 ## <a name="use-an-action"></a>Verwenden einer Aktion
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird.
@@ -74,5 +72,5 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/azureblobconnector/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
+[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 

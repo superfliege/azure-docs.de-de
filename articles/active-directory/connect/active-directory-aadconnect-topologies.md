@@ -3,7 +3,7 @@ title: "Azure AD Connect: Unterstützte Topologien | Microsoft Docs"
 description: "In diesem Thema werden unterstützte und nicht unterstützte Topologien für Azure AD Connect behandelt."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 1034c000-59f2-4fc8-8137-2416fa5e4bfe
@@ -14,18 +14,18 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 152cb9daa8338da6cc85ffda6feb3bd7b4f1bc92
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 50cf58c7d2d9be4644ada4feae02d0d5219a3fd6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
 
 Legende für Bilder im Artikel:
 
-| Beschreibung | Symbol |
+| BESCHREIBUNG | Symbol |
 | --- | --- |
 | Lokale Active Directory-Gesamtstruktur |![Lokale Active Directory-Gesamtstruktur](./media/active-directory-aadconnect-topologies/LegendAD1.png) |
 | Lokales Active Directory mit gefiltertem Import |![Active Directory mit gefiltertem Import](./media/active-directory-aadconnect-topologies/LegendAD2.png) |

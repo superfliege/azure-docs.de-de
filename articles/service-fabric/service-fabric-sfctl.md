@@ -9,22 +9,22 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 2dd30470ee0f6c038a8601bfca73fc97091de2fa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 23adc7fa6ee53d1c5edd10b2772f8825dbcef2a8
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl"></a>sfctl 
 Befehle zum Verwalten von Service Fabric-Clustern und -Entitäten. Diese Version ist mit der Service Fabric 6.0 Runtime kompatibel. Befehle folgen dem Substantiv-Verb-Muster. Weitere Informationen finden Sie in den folgenden Untergruppen.
 
 ## <a name="subgroups"></a>Untergruppen
-|Untergruppe|Beschreibung|
+|Untergruppe|BESCHREIBUNG|
 | --- | --- |
 | [application](service-fabric-sfctl-application.md)| Ermöglicht es, Anwendungen und Anwendungstypen zu erstellen, zu löschen und zu verwalten.|
 | [chaos](service-fabric-sfctl-chaos.md)   | Ermöglicht es, den Chaos-Testdienst zu starten und zu beenden sowie seine Berichte anzuzeigen.|

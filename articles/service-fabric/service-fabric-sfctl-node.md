@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 76037c7b4a2f7ada314a9360e3990245e6fbc06c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b94c5a7d6c3c74e1dd66559dea288238c35d664c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 Ermöglicht es, Knoten zu verwalten, die einen Cluster bilden.
 
 ## <a name="commands"></a>Befehle
 
-|Befehl|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 |    disable       | Deaktiviert einen Service Fabric-Clusterknoten mit der angegebenen Deaktivierungsabsicht.|
 |    enable        | Aktiviert einen Service Fabric-Clusterknoten, der momentan deaktiviert ist.|
@@ -47,15 +47,15 @@ Deaktivieren Sie einen Service Fabric-Clusterknoten mit der angegebenen Deaktivi
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
-| --deactivation-intent | Beschreibt die Absicht oder den Grund für die Deaktivierung des Knotens. Die folgenden Werte sind möglich. – Pause: Gibt an, dass der Knoten angehalten werden soll. Der Wert ist gleich „1“. – Restart: Gibt an, dass die Absicht für den Knoten vorgesehen ist, der nach kurzer Zeit erneut gestartet werden soll. Der Wert ist gleich „2“. – RemoveData: Gibt an, dass die Absicht für den Knoten darin besteht, Daten zu entfernen. Der Wert ist gleich „3“. .|
+| --deactivation-intent | Beschreibt die Absicht oder den Grund für die Deaktivierung des Knotens. Die folgenden Werte sind möglich. – Pause: Gibt an, dass der Knoten angehalten werden soll. Der Wert ist gleich „1“. – Restart: Gibt an, dass die Absicht für den Knoten vorgesehen ist, der nach kurzer Zeit erneut gestartet werden soll. Der Wert ist gleich „2“. – RemoveData: Gibt an, dass die Absicht für den Knoten darin besteht, Daten zu entfernen. Der Wert ist gleich „3“. zu erstellen und zu verwalten.|
 | --timeout -t       | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug            | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h          | Zeigt diese Hilfemeldung an und beendet.|
@@ -70,14 +70,14 @@ Aktiviert einen Service Fabric-Clusterknoten, der momentan deaktiviert ist. Soba
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
 | --timeout -t       | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug            | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h          | Zeigt diese Hilfemeldung an und beendet.|
@@ -92,7 +92,7 @@ Ruft die Integrität eines Service Fabric-Knotens ab. Verwenden Sie „EventsHea
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
 | --events-health-state-filter| Ermöglicht das Filtern der Sammlung zurückgegebener HealthEvent-Objekte anhand des Integritätsstatus. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Ereignisse zurückgegeben, die dem Filter entsprechen. Alle Ereignisse werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine kennzeichenbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, werden alle Ereignisse zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warnung (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“. – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
@@ -100,7 +100,7 @@ Ruft die Integrität eines Service Fabric-Knotens ab. Verwenden Sie „EventsHea
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                  | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                | Zeigt diese Hilfemeldung an und beendet.|
@@ -115,14 +115,14 @@ Ruft die Informationen zu einem bestimmten Knoten im Service Fabric-Cluster ab. 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
 | --timeout -t       | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug            | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h          | Zeigt diese Hilfemeldung an und beendet.|
@@ -137,15 +137,15 @@ Der Knotenendpunkt gibt Informationen über die Knoten im Service Fabric-Cluster
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --continuation-token| Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen.      Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein.|
-| --node-status-filter| Ermöglicht ein Filtern des Knotens anhand des Knotenstatus (NodeStatus). Es werden nur die Knoten zurückgegeben, die dem angegebenen Filterwert entsprechen. Der Filterwert kann einer der folgenden Werte sein. – default: Dieser Filterwert stimmt mit allen Knoten außer denjenigen überein, die den Status „Unknown“ oder „Removed“ haben. – all: Dieser Filterwert entspricht allen Knoten. – up: Dieser Filterwert entspricht Knoten, die betriebsbereit (Up) sind. – down: Dieser Filterwert entspricht Knoten, die nicht betriebsbereit (Down) sind. – enabling: Dieser Filterwert entspricht Knoten, die derzeit die Schritte zum Aktivieren durchlaufen und den Status „Enabling“ haben. – disabling: Dieser Filterwert entspricht Knoten, die derzeit die Schritte zum Deaktivieren durchlaufen und den Status „Disabling“ haben. – disabled: Dieser Filterwert entspricht Knoten, die deaktiviert (Disabled) sind. – unknown: Dieser Filterwert entspricht Knoten, die den Status „Unbekannt“ (Unknown) haben. Ein Knoten hat den Status „Unbekannt“, wenn Service Fabric keine autoritativen Informationen zu diesem Knoten hat. Dies kann vorkommen, wenn das System zur Laufzeit von der Existenz eines Knotens erfährt. – removed: Dieser Filterwert entspricht Knoten, die den Status „Entfernt“ (Removed) haben. Hierbei handelt es sich um die Knoten, die mithilfe der RemoveNodeState-API aus dem Cluster entfernt wurden. .      Standardwert: default.|
+| --node-status-filter| Ermöglicht ein Filtern des Knotens anhand des Knotenstatus (NodeStatus). Es werden nur die Knoten zurückgegeben, die dem angegebenen Filterwert entsprechen. Der Filterwert kann einer der folgenden Werte sein. – default: Dieser Filterwert stimmt mit allen Knoten außer denjenigen überein, die den Status „Unknown“ oder „Removed“ haben. – all: Dieser Filterwert entspricht allen Knoten. – up: Dieser Filterwert entspricht Knoten, die betriebsbereit (Up) sind. – down: Dieser Filterwert entspricht Knoten, die nicht betriebsbereit (Down) sind. – enabling: Dieser Filterwert entspricht Knoten, die derzeit die Schritte zum Aktivieren durchlaufen und den Status „Enabling“ haben. – disabling: Dieser Filterwert entspricht Knoten, die derzeit die Schritte zum Deaktivieren durchlaufen und den Status „Disabling“ haben. – disabled: Dieser Filterwert entspricht Knoten, die deaktiviert (Disabled) sind. – unknown: Dieser Filterwert entspricht Knoten, die den Status „Unbekannt“ (Unknown) haben. Ein Knoten hat den Status „Unbekannt“, wenn Service Fabric keine autoritativen Informationen zu diesem Knoten hat. Dies kann vorkommen, wenn das System zur Laufzeit von der Existenz eines Knotens erfährt. – removed: Dieser Filterwert entspricht Knoten, die den Status „Entfernt“ (Removed) haben. Hierbei handelt es sich um die Knoten, die mithilfe der RemoveNodeState-API aus dem Cluster entfernt wurden. zu erstellen und zu verwalten.      Standardwert: default.|
 | --timeout -t     | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug          | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h        | Zeigt diese Hilfemeldung an und beendet.|
@@ -160,14 +160,14 @@ Ruft die Lastinformationen eines Service Fabric-Knotens ab.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
 | --timeout -t       | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug            | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h          | Zeigt diese Hilfemeldung an und beendet.|
@@ -182,7 +182,7 @@ Startet einen Service Fabric-Clusterknoten neu, der bereits gestartet ist.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
 | --create-fabric-dump  | Geben Sie „True“ an, um ein Speicherabbild des Fabric-Knotenprozesses zu erstellen. Hierbei muss die Groß-/Kleinschreibung beachtet werden.  Standardwert: False.|
@@ -191,7 +191,7 @@ Startet einen Service Fabric-Clusterknoten neu, der bereits gestartet ist.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug            | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h          | Zeigt diese Hilfemeldung an und beendet.|
@@ -203,22 +203,22 @@ Startet einen Service Fabric-Clusterknoten neu, der bereits gestartet ist.
 Startet oder beendet einen Clusterknoten.
 
 Startet oder beendet einen Clusterknoten.  Ein Clusterknoten ist ein Prozess, nicht die Betriebssysteminstanz selbst.
-Um einen Knoten zu starten, übergeben Sie „Start“ an den Parameter „NodeTransitionType“. Um einen Knoten zu beenden, übergeben Sie „Stop“ an den Parameter „NodeTransitionType“. Diese API startet den Vorgang. Wenn die API zurückkehrt, ist der Übergang des Knotens möglicherweise noch nicht abgeschlossen. Rufen Sie „GetNodeTransitionProgress“ mit derselben „OperationId“ auf, um den Fortschritt des Vorgangs abzurufen. .
+Um einen Knoten zu starten, übergeben Sie „Start“ an den Parameter „NodeTransitionType“. Um einen Knoten zu beenden, übergeben Sie „Stop“ an den Parameter „NodeTransitionType“. Diese API startet den Vorgang. Wenn die API zurückkehrt, ist der Übergang des Knotens möglicherweise noch nicht abgeschlossen. Rufen Sie „GetNodeTransitionProgress“ mit derselben „OperationId“ auf, um den Fortschritt des Vorgangs abzurufen. zu erstellen und zu verwalten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-instance-id [erforderlich]| Die Knoteninstanz-ID des Zielknotens. Diese ID kann über die GetNodeInfo-API bestimmt werden.|
 | --node-name [erforderlich]| Der Name des Knotens.|
-| --node-transition-type [erforderlich]| Gibt den Typ des auszuführenden Übergangs an.                       „NodeTransitionType.Start“ startet einen angehaltenen Knoten.                       „NodeTransitionType.Stop“ beendet einen Knoten, der betriebsbereit ist. – Invalid: Reserviert.  Übergeben Sie diesen Wert nicht an die API. – Start: Übergang eines angehaltenen Knotens zu betriebsbereit. – Stop: Übergang eines betriebsbereiten Knotens zu angehalten. .|
+| --node-transition-type [erforderlich]| Gibt den Typ des auszuführenden Übergangs an.                       „NodeTransitionType.Start“ startet einen angehaltenen Knoten.                       „NodeTransitionType.Stop“ beendet einen Knoten, der betriebsbereit ist. – Invalid: Reserviert.  Übergeben Sie diesen Wert nicht an die API. – Start: Übergang eines angehaltenen Knotens zu betriebsbereit. – Stop: Übergang eines betriebsbereiten Knotens zu angehalten. zu erstellen und zu verwalten.|
 | --operation-id [erforderlich]| Eine GUID, die einen Aufruf dieser API kennzeichnet.  Diese GUID wird in die entsprechende GetProgress-API übergeben.|
 | --stop-duration-in-seconds [erforderlich]| Die Dauer in Sekunden, die der Knoten angehalten bleiben soll.  Der Mindestwert ist 600, der Höchstwert 14400. Nach Ablauf dieser Zeit wird der Knoten automatisch wieder betriebsbereit.|
 | --timeout -t                      | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                           | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                         | Zeigt diese Hilfemeldung an und beendet.|

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: fdbf9b1b77c2c64b3ebfcdbc5463916f317e4881
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e823aeb4291b3e765b35181c24b41fa58c170cca
+ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-Diagnosetools
 
@@ -135,7 +135,7 @@ if($s)
    | WAS                     | WASPUBLIC              | WDS                |
 
 
-### <a name="collect-logs-using-a-graphical-user-interface"></a>Erfassen von Protokollen mithilfe einer grafischen Benutzeroberfläche
+### <a name="bkmk_gui"></a>Erfassen von Protokollen mithilfe einer grafischen Benutzeroberfläche
 Anstatt die erforderlichen Parameter für das Cmdlet Get-AzureStackLog zum Abrufen von Azure Stack-Protokollen bereitzustellen, können Sie auch die verfügbaren Open-Source-Tools für Azure Stack verwenden, die Sie im GitHub-Toolrepository unter http://aka.ms/AzureStackTools finden.
 
 Das PowerShell-Skript **ERCS_AzureStackLogs.ps1** ist im GitHub-Toolrepository enthalten und wird regelmäßig aktualisiert. Laden Sie es am besten direkt von http://aka.ms/ERCS herunter, um sicherzugehen, dass Sie über die neueste Version verfügen. Beim Start aus einer PowerShell-Administratorsitzung stellt das Skript eine Verbindung mit dem privilegierten Endpunkt her und führt Get-AzureStackLog mit den angegebenen Parametern aus. Wenn keine Parameter angegeben werden, fordert das Skript standardmäßig über eine grafische Benutzeroberfläche zur Eingabe von Parametern auf.
@@ -159,3 +159,4 @@ Weitere Informationen zum PowerShell-Skript „ERCS_AzureStackLogs.ps1“ erhalt
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Microsoft Azure Stack troubleshooting (Problembehandlung für Microsoft Azure Stack)](azure-stack-troubleshooting.md)
+

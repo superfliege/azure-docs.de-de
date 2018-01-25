@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 76070b5a9944b4cbb47ad337ba9a4e6171bf12a3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 97a8fa1779cd11830781528527ddfe998e0548b6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Visuelles Überwachen von Azure Data Factory
 Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können.
@@ -64,7 +64,7 @@ Die Listenansicht zeigt die Aktivitätsausführungen an, die der jeweiligen Pipe
 | Duration | Dauer der Ausführung (hh:mm:ss) |
 | Status | Fehlerhaft, Erfolgreich, In Bearbeitung |
 | Eingabe | Ein JSON-Array, das die Aktivitätseingaben beschreibt. |
-| Ausgabe | Ein JSON-Array, das die Aktivitätsausgaben beschreibt. |
+| Output | Ein JSON-Array, das die Aktivitätsausgaben beschreibt. |
 | Error | Fehler bei der Aktivitätsausführung (falls vorhanden) |
 
 ![Überwachung der Aktivitätsausführungen](media/monitor-visually/activity-runs.png)

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 01/23/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ba1bb02c27fa040cc2daef4baf5c9ecc827d323
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d951387882a5a8f5e0ebdc01841bb8384e4848ee
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich
 
@@ -54,7 +54,7 @@ Sie können Verwaltungslösungen aus Azure Marketplace installieren, indem Sie u
     ![Blatt „Überwachung und Verwaltung“](./media/log-analytics-add-solutions/management-solutions.png)  
 6. Überprüfen Sie auf dem Blatt mit der Verwaltungslösung die Informationen zur Verwaltungslösung, und klicken Sie dann auf **Erstellen**.
 7. Wählen Sie auf dem Blatt *Name der Verwaltungslösung* einen Arbeitsbereich aus, den Sie der Verwaltungslösung zuordnen möchten.
-8. Ändern Sie optional die Arbeitsbereichseinstellungen für das Azure-Abonnement, die Ressourcengruppe und den Standort. Sie können auch **Automatisierungsoptionen** auswählen. Klicken Sie auf **Erstellen**.  
+8. Ändern Sie optional die Arbeitsbereichseinstellungen für das Azure-Abonnement, die Ressourcengruppe und den Standort. Sie können auch **Automatisierungsoptionen** auswählen. Klicken Sie auf **Create**.  
     ![Lösungsarbeitsbereich](./media/log-analytics-add-solutions/solution-workspace.png)  
 9. Um die dem Arbeitsbereich hinzugefügte Verwaltungslösung zu verwenden, navigieren Sie zu **Log Analytics** > **Abonnements** > ***Name des Arbeitsbereichs*** > **Übersicht**. Eine neue Kachel für Ihre Verwaltungslösung wird angezeigt. Klicken Sie auf die Kachel, um sie zu öffnen, und verwenden Sie die Lösung, nachdem Daten für sie gesammelt wurden.
 
@@ -72,7 +72,7 @@ In der folgenden Tabelle erfahren Sie, welche Verwaltungslösungen zu den einzel
 In der Tabelle sind außerdem die verfügbaren Tarife für die einzelnen Verwaltungslösungen angegeben.
 Alle Lösungen in der folgenden Tabelle sind im Azure-Portal und im Lösungskatalog des Log Analytics-Portals verfügbar.
 
-| Verwaltungslösung                                                                       | Angebot                                                                     | Tarife<sup>1</sup>                                                 | Hinweise |
+| Verwaltungslösung                                                                       | Angebot                                                                     | Tarife<sup>1</sup>                                                 | Notizen |
 | ---                                                                                       | ---                                                                       | ---                                                                                                       | ---   |
 | [Aktivitätsprotokollanalyse](log-analytics-activity.md)                                                                   | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | Kostenloses Datenvolumen (90 Tage)<br>Daten unterliegen nicht der Obergrenze für den Free-Tarif |
 | [AD-Bewertung](log-analytics-ad-assessment.md)                                           | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | |
@@ -89,7 +89,7 @@ Alle Lösungen in der folgenden Tabelle sind im Azure-Portal und im Lösungskata
 | [Kapazität und Leistung (Vorschau)](log-analytics-capacity.md)                                                   | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | |
 | [Änderungsnachverfolgung](log-analytics-change-tracking.md)                                       | <ul><li>Automation & Control</li></ul>                                  | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                         | Erfordert die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit einem Automation-Konto |
 | [Container](log-analytics-containers.md)                                                 | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | |
-| [Symbol für den IT Service Management Connector](log-analytics-itsmc-overview.md)                                              | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
+| [IT Service Management Connector](log-analytics-itsmc-overview.md)                                                | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)     | |
 | HDInsight HBase-Überwachung <br>(Vorschau)                                                  | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | |
 | [Key Vault-Analysen](log-analytics-azure-key-vault.md)                   | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | |
 | [B2B-Logik-App-Verwaltung](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)                    | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | Steht über das Azure-Portal oder den Marketplace nicht zum Hinzufügen zur Verfügung. |
@@ -106,7 +106,7 @@ Alle Lösungen in der folgenden Tabelle sind im Azure-Portal und im Lösungskata
 | [System Center Operations Manager-Bewertung (Vorschau)](log-analytics-scom-assessment.md)  | <ul><li>Insight & Analytics</li><li>Log Analytics</li></ul>        | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | |
 | [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md)                                                                         | <ul><li>Automation & Control</li></ul>                                  | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                         | Erfordert die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit einem Automation-Konto |
 | [Updatekonformität (Vorschau)](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started)                                                             | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | Keine Gebühr für Daten oder Knoten<br>Daten unterliegen nicht der Obergrenze für den Free-Tarif.<br> Steht über das Azure-Portal oder den Marketplace nicht zum Hinzufügen zur Verfügung. |
-| [Upgradebereitschaft](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started)                                                          | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | Keine Gebühr für Daten oder Knoten<br>Daten unterliegen nicht der Obergrenze für den Free-Tarif.<br> Steht über das Azure-Portal oder den Marketplace nicht zum Hinzufügen zur Verfügung. |
+| [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started)                                                          | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | Keine Gebühr für Daten oder Knoten<br>Daten unterliegen nicht der Obergrenze für den Free-Tarif.<br> Steht über das Azure-Portal oder den Marketplace nicht zum Hinzufügen zur Verfügung. |
 | [VMware-Überwachung (Vorschau)](log-analytics-vmware.md)                                | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Standard<br> Premium&nbsp;(OMS)<br> Pro&nbsp;GB&nbsp;(eigenständig)<br> Pro&nbsp;Knoten&nbsp;(OMS)   | |
 | [Wire Data 2.0 (Vorschau)](log-analytics-wire-data.md)                                                                 | <ul><li>Insight & Analytics</li></ul>                                   | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)                                                                         | Verfügbar in den Regionen „USA, Osten“, „Europa, Westen“ und „USA, Westen-Mitte“ |
 
@@ -116,7 +116,7 @@ Alle Lösungen in der folgenden Tabelle sind im Azure-Portal und im Lösungskata
 
 Von der Community bereitgestellte Lösungen sind über den [Azure-Vorlagenkatalog](https://azure.microsoft.com/resources/templates/?term=Per&nbsp;Node&nbsp;(OMS)) sowie direkt bei den Autoren erhältlich.
 
-| Verwaltungslösung               | Angebot                                                                     | Tarife                         | Hinweise |
+| Verwaltungslösung               | Angebot                                                                     | Tarife                         | Notizen |
 | ---                               | ---                                                                       | ---                                   | ---   |
 | Alle von der Community bereitgestellten Lösungen  | <ul><li>Insight&nbsp;&&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Kostenlos<br> Pro&nbsp;Knoten&nbsp;(OMS)     |   Erfordert die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit einem Automation-Konto |
 
@@ -143,14 +143,14 @@ Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent s
 | AD Assessment |Windows |&#8226; |&#8226; |  |  |&#8226; |7 Tage |
 | AD Replication Status |Windows |&#8226; |&#8226; |  |  |&#8226; |5 Tage |
 | Agent-Integrität | Windows und Linux | &#8226; | &#8226; |   |   | &#8226; | 1 Minute |
-| Warnungsverwaltung (Nagios) |Linux |&#8226; |  |  |  |  |Bei Ankunft |
+| Warnungsverwaltung (Nagios) |Linux |&#8226; |  |  |  |  |Bei der Ankunft |
 | Warnungsverwaltung (Zabbix) |Linux |&#8226; |  |  |  |  |1 Minute |
 | Warnungsverwaltung (Operations Manager) |Windows |  |&#8226; |  |&#8226; |&#8226; |3 Minuten |
 | Application Insights-Connector (Vorschau) | Azure |   |   |   |   |   | Bei Benachrichtigung |
 | Azure Application Gateway-Analyse | Azure |   |   |   |   |   | Bei Benachrichtigung |
 | Azure-Netzwerksicherheitsgruppen-Analyse | Azure |   |   |   |   |   | Bei Benachrichtigung |
 | Azure SQL Analytics (Vorschau) |Windows |  |  |  |  |  | 10 Minuten |
-| Capacity Management |Windows |&#8226; |&#8226; |  |  |&#8226; |Bei Ankunft |
+| Capacity Management |Windows |&#8226; |&#8226; |  |  |&#8226; |Bei der Ankunft |
 | Container | Windows und Linux | &#8226; | &#8226; |   |   |   | 3 Minuten |
 | Key Vault-Analysen |Windows |  |  |  |  |  |Bei Benachrichtigung |
 | Netzwerkleistungsmonitor | Windows | &#8226; | &#8226; |   |   |   | TCP-Handshakes werden alle fünf Sekunden gesendet, Daten alle drei Minuten |
@@ -158,7 +158,7 @@ Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent s
 | Service Fabric-Analysen |Windows |  |  |&#8226; |  |  |5 Minuten |
 | Dienstzuordnung | Windows und Linux | &#8226; | &#8226; |   |   |   | 15 Sekunden |
 | SQL Assessment |Windows |&#8226; |&#8226; |  |  |&#8226; |7 Tage |
-| SurfaceHub |Windows |&#8226; |  |  |  |  |Bei Ankunft |
+| SurfaceHub |Windows |&#8226; |  |  |  |  |Bei der Ankunft |
 | System Center Operations Manager-Bewertung (Vorschau) | Windows | &#8226; | &#8226; |   |   | &#8226; | sieben Tage |
 | Upgradeanalyse (Vorschau) | Windows | &#8226; |   |   |   |   | 2 Tage |
 | VMware-Überwachung (Vorschau) | Linux | &#8226; |   |   |   |   | 3 Minuten |
@@ -194,7 +194,7 @@ Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent s
 
 | Verwaltungslösung | Plattform | Microsoft Monitoring Agent | Operations Manager-Agent | Azure-Speicher | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Sicherung | Azure |   |   |   |   |   | – |
+| Backup  | Azure |   |   |   |   |   | – |
 | Azure Site Recovery | Azure |   |   |   |   |   | – |
 
 
@@ -212,7 +212,7 @@ Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent s
 | Leistungsindikatoren |Linux |&#8226; |  |  |  |  |Gemäß Zeitplan, mindestens 10 Sekunden |
 | syslog |Linux |&#8226; |  |  |  |  |Von Azure-Speicher: 10 Minuten; von Agent: bei Ankunft |
 | Windows-Sicherheitsereignisprotokolle |Windows |&#8226; |&#8226; |&#8226; |  |  |Für Azure-Speicher: 10 Minuten; für Agent: bei Ankunft |
-| Windows-Firewallprotokolle |Windows |&#8226; |&#8226; |  |  |  |Bei Ankunft |
+| Windows-Firewallprotokolle |Windows |&#8226; |&#8226; |  |  |  |Bei der Ankunft |
 | Windows-Ereignisprotokolle |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; |Für Azure-Speicher: 10 Minuten; für Agent: bei Ankunft |
 
 

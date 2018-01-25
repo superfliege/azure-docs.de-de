@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: fbf538383a96fc1789f54994c1c4a1c1d9f96bec
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 74f96d2712c28c8b49e0b92ee88e560193428836
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Tutorial: Verwenden der REST-API zum Erstellen einer Azure Data Factory-Pipeline zum Kopieren von Daten 
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -176,9 +176,9 @@ Ausführliche Informationen zu JSON-Eigenschaften finden Sie unter [Mit Azure SQ
 
 Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Typ | Die Eigenschaft „type“ wird auf **AzureBlob** festgelegt, da sich Daten in Azure Blob Storage befinden. |
+| type | Die Eigenschaft „type“ wird auf **AzureBlob** festgelegt, da sich Daten in Azure Blob Storage befinden. |
 | linkedServiceName | Diese Eigenschaft verweist auf den **AzureStorageLinkedService**-Dienst, den Sie zuvor erstellt haben. |
 | folderPath | Diese Eigenschaft gibt den **Blobcontainer** und den **Ordner** an, der Eingabeblobs enthält. In diesem Tutorial ist „adftutorial“ der Blobcontainer und „folder“ der Stammordner. | 
 | fileName | Diese Eigenschaft ist optional. Wenn Sie diese Eigenschaft nicht angeben, werden alle Dateien in „folderPath“ übernommen. In diesem Tutorial wurde **emp.txt** für „fileName“ angegeben. Daher wird nur diese Datei für die Verarbeitung gewählt. |
@@ -219,9 +219,9 @@ Weitere Informationen zu diesen JSON-Eigenschaften finden Sie im Artikel [Azure 
 ```
 Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Typ | Die Eigenschaft „type“ wird auf **AzureSqlTable** festgelegt, da Daten in eine Tabelle in Azure SQL-Datenbank kopiert werden. |
+| type | Die Eigenschaft „type“ wird auf **AzureSqlTable** festgelegt, da Daten in eine Tabelle in Azure SQL-Datenbank kopiert werden. |
 | linkedServiceName | Diese Eigenschaft verweist auf den **AzureSqlLinkedService**-Dienst, den Sie zuvor erstellt haben. |
 | tableName | Diese Eigenschaft gibt die **Tabelle** an, in die die Daten kopiert werden. | 
 | frequency/interval | „frequency“ wird auf **Hour** und „interval“ auf **1** festgelegt, was bedeutet, dass die Ausgabeslices innerhalb der Start- und Endzeit der Pipeline **stündlich** erstellt werden, nicht vor oder nach diesen Zeiten.  |
@@ -327,7 +327,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ```
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
-In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **ADFCopyTutorialDF**. Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispiel: eine Kopieraktivität zum Kopieren von Daten aus einer Quelle an einen Zieldatenspeicher. Eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten in Produktausgabedaten. Führen Sie die folgenden Befehle zum Erstellen der Data Factory aus: 
+In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **ADFCopyTutorialDF**. Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispiel: eine Kopieraktivität zum Kopieren von Daten aus einer Quelle an einen Zieldatenspeicher. Eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten in Produktausgabedaten. Führen Sie die folgenden Befehle zum Erstellen der Data Factory aus: 
 
 1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu. 
    
@@ -356,8 +356,8 @@ Beachten Sie folgende Punkte:
   2. Ersetzen Sie im ersten Befehl an der Stelle, an der der Variablen **$cmd** ein Wert zugewiesen wird, „ADFCopyTutorialDF“ durch den neuen Namen, und führen Sie den Befehl aus. 
   3. Führen Sie die nächsten beiden Befehle zum Aufrufen der REST-API aus, um die Data Factory zu erstellen und die Ergebnisse des Vorgangs auszugeben. 
      
-     Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
-* Um Data Factory-Instanzen erstellen zu können, müssen Sie unter dem Azure-Abonnement ein Mitwirkender oder Administrator sein.
+     Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
+* Data Factory-Instanzen können nur von Mitwirkenden/Administratoren des Azure-Abonnements erstellt werden.
 * Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
 * Führen Sie einen der folgenden Schritte aus, wenn Sie eine Fehlermeldung wie**Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**erhalten, und versuchen Sie, die Veröffentlichung erneut durchzuführen: 
   
@@ -380,7 +380,7 @@ Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, 
 
 Die AzureStorageLinkedService-Instanz verknüpft Ihr Azure Storage-Konto mit der Data Factory. Dieses Speicherkonto ist das Konto, in dem Sie im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) einen Container erstellt und die Daten hochgeladen haben.   
 
-AzureSqlLinkedService verknüpft Azure SQL-Datenbank mit der Data Factory. Die aus Blob Storage kopierten Daten werden in dieser Datenbank gespeichert. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) die EMP-Tabelle in dieser Datenbank erstellt.  
+AzureSqlLinkedService verknüpft Azure SQL-Datenbank mit der Data Factory. Die aus Blob Storage kopierten Daten werden in dieser Datenbank gespeichert. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) die Tabelle „emp“ in dieser Datenbank erstellt.  
 
 ### <a name="create-azure-storage-linked-service"></a>Erstellen des mit Azure Storage verknüpften Diensts
 In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory. In diesem Abschnitt geben Sie Name und Schlüssel Ihres Azure Storage-Kontos an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure Storage verknüpften Diensts finden Sie unter [Mit Azure Storage verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service).  
@@ -519,7 +519,7 @@ Führen Sie „Invoke-Command“ und den darauffolgenden Befehl aus, bis für de
 Für jeden Slice werden zwei Zeilen mit Daten aus der Quelldatei in die Tabelle „emp“ in der Azure SQL-Datenbank kopiert. Aus diesem Grund sehen Sie in der Tabelle „emp“ 24 neue Datensätze, wenn alle Slices erfolgreich verarbeitet werden (Status „Bereit“). 
 
 ## <a name="summary"></a>Zusammenfassung
-In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, um Daten aus einem Azure-Blob in eine Azure SQL-Datenbank zu kopieren. Nachfolgend sind die allgemeinen Schritte aufgeführt, die Sie in diesem Tutorial ausgeführt haben:  
+In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, um Daten aus einem Azure-Blob in eine Azure SQL-Datenbank zu kopieren. Im Anschluss sind die allgemeinen Schritte aufgeführt, die Sie in diesem Tutorial ausgeführt haben:  
 
 1. Sie haben eine Azure **Data Factory**erstellt.
 2. Sie haben **verknüpfte Dienste**erstellt:

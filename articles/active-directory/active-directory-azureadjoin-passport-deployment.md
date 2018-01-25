@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: b5b48edda76bedc14d5528fa82f1d9b7bfffe53a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0aa16e3466b36b6d1d83308cf37623aa15d61fcb
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>Aktivieren von Windows Hello for Business in Ihrer Organisation
 Nach der [Verknüpfung von in die Domäne eingebundenen Windows 10-Geräten mit Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md) gehen Sie wie folgt vor, um Windows Hello for Business in Ihrer Organisation zu aktivieren:
@@ -57,7 +57,7 @@ Das Verwenden von System Center Configuration Manager ist die bevorzugte Methode
 5. Navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Windows Hello for Business**.
 6. Klicken Sie mit der rechten Maustaste auf **Windows Hello for Business aktivieren**, und wählen Sie dann **Bearbeiten** aus.
 7. Aktivieren Sie das Optionsfeld **Aktiviert**, und klicken Sie dann auf **Übernehmen**. Klicken Sie auf **OK**.
-8. Sie können das Gruppenrichtlinienobjekt jetzt mit einem Speicherort Ihrer Wahl verknüpfen. Um diese Richtlinie für alle in die Domäne eingebundenen Windows 10-Geräte in Ihrer Organisation zu aktivieren, verknüpfen Sie die Gruppenrichtlinie mit der Domäne. Beispiel:
+8. Sie können das Gruppenrichtlinienobjekt jetzt mit einem Speicherort Ihrer Wahl verknüpfen. Um diese Richtlinie für alle in die Domäne eingebundenen Windows 10-Geräte in Ihrer Organisation zu aktivieren, verknüpfen Sie die Gruppenrichtlinie mit der Domäne. Beispiel: 
    * Eine bestimmte Organisationseinheit in Active Directory, in der in die Domäne eingebundene Windows 10-Computer platziert werden
    * Eine bestimmte Sicherheitsgruppe mit in die Domäne eingebundenen Windows 10-Computern, die automatisch bei Azure AD registriert werden
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 1a885166e5c71f13da222bfc22b0fc579096c52f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 06ec1263046f7878871de628b6a0ac25682b2f83
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurieren eines Webhooks für eine Azure-Metrikwarnung
 Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, Fehler protokollieren, ein Team per Chat-/Messagingdienst benachrichtigen oder beliebige andere Aktionen ausführen. In diesem Artikel erfahren Sie, wie Sie einen Webhook für eine Azure-Metrikwarnung festlegen und wie die Nutzlast für den an einen Webhook gerichteten HTTP POST-Vorgang aussieht. Informationen zur Einrichtung und zum Schema einer Azure-Aktivitätsprotokollwarnung (Warnung für Ereignisse) finden Sie auf [dieser Seite](insights-auditlog-to-webhook-email.md).
@@ -40,46 +40,49 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 
 ```JSON
 {
-"status": "Activated",
-"context": {
+    "WebhookName": "Alert1515515157799",
+    "RequestBody": {
+        "status": "Activated",
+        "context": {
             "timestamp": "2015-08-14T22:26:41.9975398Z",
             "id": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.insights/alertrules/ruleName1",
             "name": "ruleName1",
             "description": "some description",
             "conditionType": "Metric",
             "condition": {
-                        "metricName": "Requests",
-                        "metricUnit": "Count",
-                        "metricValue": "10",
-                        "threshold": "10",
-                        "windowSize": "15",
-                        "timeAggregation": "Average",
-                        "operator": "GreaterThanOrEqual"
-                },
+                "metricName": "Requests",
+                "metricUnit": "Count",
+                "metricValue": "10",
+                "threshold": "10",
+                "windowSize": "15",
+                "timeAggregation": "Average",
+                "operator": "GreaterThanOrEqual"
+            },
             "subscriptionId": "s1",
-            "resourceGroupName": "useast",                                
+            "resourceGroupName": "useast",
             "resourceName": "mysite1",
             "resourceType": "microsoft.foo/sites",
             "resourceId": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1",
             "resourceRegion": "centralus",
             "portalLink": "https://portal.azure.com/#resource/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1"
-},
-"properties": {
-              "key1": "value1",
-              "key2": "value2"
-              }
+        },
+        "properties": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    }
 }
 ```
 
 
-| Feld | Erforderlich | Feste Gruppe von Werten | Hinweise |
+| Feld | Erforderlich | Feste Gruppe von Werten | Notizen |
 |:--- |:--- |:--- |:--- |
 | status |J |"Activated", "Resolved" |Status der Warnung auf der Grundlage der festgelegten Bedingungen. |
 | context |J | |Der Warnungskontext. |
 | timestamp |J | |Der Zeitpunkt, an dem die Warnung ausgelöst wurde. |
 | id |J | |Jeder Warnungsregel ist eine eindeutige ID zugewiesen. |
 | name |J | |Der Name der Warnung. |
-| description |J | |Beschreibung der Warnung. |
+| Beschreibung |J | |Beschreibung der Warnung. |
 | conditionType |J |"Metric", "Event" |Zwei Arten von Warnungen werden unterstützt. Warnungen auf der Grundlage einer Metrikbedingung und Warnungen auf der Grundlage eines Ereignisses im Aktivitätsprotokoll. Überprüfen Sie mithilfe dieses Werts, ob es sich um eine metrik- oder um eine ereignisbasierte Warnung handelt. |
 | condition |J | |Die spezifischen Felder, die basierend auf „conditionType“ überprüft werden. |
 | metricName |für Warnungen des Typs "Metric" | |Der Name der Metrik, die definiert, welche Elemente mit der Regel überwacht werden. |
@@ -93,10 +96,10 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 | resourceGroupName |J | |Name der Ressourcengruppe für die betroffene Ressource. |
 | resourceName |J | |Der Ressourcenname der betroffenen Ressource. |
 | resourceType |J | |Der Ressourcentyp der betroffenen Ressource. |
-| resourceId |J | |Ressourcen-ID der betroffenen Ressource. |
+| Ressourcen-ID |J | |Ressourcen-ID der betroffenen Ressource. |
 | resourceRegion |J | |Die Region oder der Standort der betroffenen Ressource. |
 | portalLink |J | |Direkter Link zur Ressourcenzusammenfassungsseite des Portals. |
-| properties |N |Optional |Eine Gruppe von `<Key, Value>`-Paaren (`Dictionary<String, String>`) mit Details zum Ereignis. Das Feld "properties" ist optional. Auf einer angepassten Benutzeroberfläche oder in einem Logik-App-basierenden Workflow können Benutzer Schlüssel und Werte eingeben, die über die Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften direkt über den Webhook-URI an den Webhook zurückgegeben werden (als Abfrageparameter). |
+| Eigenschaften |N |Optional |Eine Gruppe von `<Key, Value>`-Paaren (`Dictionary<String, String>`) mit Details zum Ereignis. Das Feld "properties" ist optional. Auf einer angepassten Benutzeroberfläche oder in einem Logik-App-basierenden Workflow können Benutzer Schlüssel und Werte eingeben, die über die Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften direkt über den Webhook-URI an den Webhook zurückgegeben werden (als Abfrageparameter). |
 
 > [!NOTE]
 > Das Feld „properties“ kann nur mithilfe der [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn933805.aspx) festgelegt werden.

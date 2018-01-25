@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2282a59c9dd5d5d76a5b3e19f602e9d3dcc0b4ef
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 8bc8c3a897363da2a8ebe7ac6bd8798c8e22ba04
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-windows-universal-platform-uwpxaml-getting-started"></a>Erste Schritte mit der universellen Windows-Plattform (UWP/XAML) in Azure AD
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -89,7 +89,7 @@ Das Grundprinzip der ADAL ist wie folgt: Wann immer die App ein Zugriffstoken be
 
 1. Initialisieren Sie den `AuthenticationContext` der App, bei dem es sich um die primäre ADAL-Klasse handelt. Diese Aktion übergibt an die ADAL die zur Kommunikation mit Azure AD notwendigen Koordinaten und weist sie an, wie Token zwischengespeichert werden sollen.
 
-    ```C#
+    ```csharp
     public MainPage()
     {
         ...
@@ -100,7 +100,7 @@ Das Grundprinzip der ADAL ist wie folgt: Wann immer die App ein Zugriffstoken be
 
 2. Suchen Sie die `Search(...)`-Methode, die aufgerufen wird, wenn Benutzer auf der Benutzeroberfläche der App auf die Schaltfläche **Suchen** klicken. Diese Methode übergibt an die Azure AD Graph-API eine GET-Anforderung zum Abfragen von Benutzern, deren UPN mit dem angegebenen Suchbegriff beginnt. Für die Abfrage der Graph-API müssen Sie dem **Authorization**-Header der Anforderung ein Zugriffstoken hinzufügen. An dieser Stelle tritt die ADAL auf den Plan.
 
-    ```C#
+    ```csharp
     private async void Search(object sender, RoutedEventArgs e)
     {
         ...
@@ -123,20 +123,20 @@ Das Grundprinzip der ADAL ist wie folgt: Wann immer die App ein Zugriffstoken be
     Wenn die App über einen `AcquireTokenAsync(...)`-Aufruf ein Token anfordert, versucht die ADAL, ein Token zurückzugeben, ohne den Benutzer nach seinen Anmeldeinformationen zu fragen. Wenn die ADAL feststellt, dass sich der Benutzer zum Abrufen eines Tokens anmelden muss, zeigt sie einen Anmeldedialog an, erfasst die Anmeldeinformationen des Benutzers und gibt nach erfolgreicher Authentifizierung ein Token zurück. Falls die ADAL aus welchem Grund auch immer kein Token zurückgeben kann, ist der Status von *AuthenticationResult* „Fehler“.
 3. An dieser Stelle wird das zuvor abgerufene Zugriffstoken benötigt. Hängen Sie in der `Search(...)`-Methode außerdem das Token an die Graph-API-GET-Anforderung im **Authorization**-Header an:
 
-    ```C#
+    ```csharp
     // Add the access token to the Authorization header of the call to the Graph API, and call the Graph API.
     httpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", result.AccessToken);
 
     ```
 4. Mit dem Objekt `AuthenticationResult` können Sie in der App auch Informationen zum Benutzer wie die Benutzer-ID anzeigen:
 
-    ```C#
+    ```csharp
     // Update the page UI to represent the signed-in user
     ActiveUser.Text = result.UserInfo.DisplayableId;
     ```
 5. Sie können mit der ADAL den Benutzer auch wieder von der Anwendung abmelden. Wenn der Benutzer auf die Schaltfläche **Abmelden** klickt, stellen Sie sicher, dass beim nächsten Aufruf von `AcquireTokenAsync(...)` ein Anmeldebildschirm angezeigt wird. Mithilfe der ADAL ist diese Aktion so einfach wie das Leeren des Tokencaches:
 
-    ```C#
+    ```csharp
     private void SignOut()
     {
         // Clear session state from the token cache.

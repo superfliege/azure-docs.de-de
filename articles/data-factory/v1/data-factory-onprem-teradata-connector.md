@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 860d32f26616c1e1a92254ef288df2e3367fdf1c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2f4ae056dfa1bf6b2faabcb100ac82b38da9e361
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Verschieben von Daten aus Teradate mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-onprem-teradata-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-onprem-teradata-connector.md)
 > * [Version 2 – Vorschauversion](../connector-teradata.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from Teradata using Azure Data Factory](../connector-teradata.md) (Kopieren von Daten aus Teradata mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from Teradata using Azure Data Factory](../connector-teradata.md) (Kopieren von Daten aus Teradata mit Azure Data Factory).
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen Teradata-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
@@ -63,13 +63,13 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Teradata verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Typ |Die "type"-Eigenschaft muss auf **OnPremisesTeradata** |Ja |
+| type |Die "type"-Eigenschaft muss auf **OnPremisesTeradata** |Ja |
 | server |Name des Teradata-Servers. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank. Mögliche Werte: Anonymous, Basic und Windows. |Ja |
-| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
-| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
+| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein  |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen Teradata-Datenbank verwenden soll. |Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -84,7 +84,7 @@ Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach
 
 Wenn die Quelle vom Typ **RelationalSource** (wozu Teradata gehört) ist, sind im Abschnitt **typeProperties** folgende Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Ja |
 
@@ -286,45 +286,45 @@ Beim Verschieben von Daten in Teradata werden die folgenden Zuordnungen zwischen
 
 | Typ "Teradata-Datenbank" | Typ ".NET Framework" |
 | --- | --- |
-| Char |String |
-| Clob |String |
-| Graphic |String |
-| VarChar |String |
-| VarGraphic |String |
+| Char |Zeichenfolge |
+| Clob |Zeichenfolge |
+| Graphic |Zeichenfolge |
+| VarChar |Zeichenfolge |
+| VarGraphic |Zeichenfolge |
 | Blob |Byte[] |
 | Byte |Byte[] |
 | VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Decimal |Decimal |
+| DECIMAL |DECIMAL |
 | Double |Double |
-| Integer |Int32 |
+| Ganze Zahl  |Int32 |
 | Number |Double |
 | SmallInt |Int16 |
-| Date |DateTime |
-| Time |TimeSpan |
-| Time With Time Zone |String |
-| Timestamp |DateTime |
+| Datum |Datetime |
+| Time |Zeitraum |
+| Time With Time Zone |Zeichenfolge |
+| Zeitstempel |Datetime |
 | Timestamp With Time Zone |DateTimeOffset |
-| Interval Day |TimeSpan |
-| Interval Day To Hour |TimeSpan |
-| Interval Day To Minute |TimeSpan |
-| Interval Day To Second |TimeSpan |
-| Interval Hour |TimeSpan |
-| Interval Hour To Minute |TimeSpan |
-| Interval Hour To Second |TimeSpan |
-| Interval Minute |TimeSpan |
-| Interval Minute To Second |TimeSpan |
-| Interval Second |TimeSpan |
-| Interval Year |String |
-| Interval Year To Month |String |
-| Interval Month |String |
-| Period(Date) |String |
-| Period(Time) |String |
-| Period(Time With Time Zone) |String |
-| Period(Timestamp) |String |
-| Period(Timestamp With Time Zone) |String |
-| Xml |String |
+| Interval Day |Zeitraum |
+| Interval Day To Hour |Zeitraum |
+| Interval Day To Minute |Zeitraum |
+| Interval Day To Second |Zeitraum |
+| Interval Hour |Zeitraum |
+| Interval Hour To Minute |Zeitraum |
+| Interval Hour To Second |Zeitraum |
+| Interval Minute |Zeitraum |
+| Interval Minute To Second |Zeitraum |
+| Interval Second |Zeitraum |
+| Interval Year |Zeichenfolge |
+| Interval Year To Month |Zeichenfolge |
+| Interval Month |Zeichenfolge |
+| Period(Date) |Zeichenfolge |
+| Period(Time) |Zeichenfolge |
+| Period(Time With Time Zone) |Zeichenfolge |
+| Period(Timestamp) |Zeichenfolge |
+| Period(Timestamp With Time Zone) |Zeichenfolge |
+| xml |Zeichenfolge |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).

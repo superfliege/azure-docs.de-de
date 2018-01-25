@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2017
 ms.author: LADocs; stepsic
-ms.openlocfilehash: e632c48ed31e82536db55a9c54438bece0c38fd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a3957ffcc149bdaf5c196960c7c7f23913f8b5c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-logic-apps-features"></a>Verwenden von Logik-App-Features
 
-In einem [vorherigen Thema](../logic-apps/logic-apps-create-a-logic-app.md) haben Sie Ihre erste Logik-App erstellt. Um Ihren Logik-App-Workflow zu steuern, können Sie unterschiedliche Pfade für die Ausführung der Logik-App angeben und festlegen, wie Daten in Arrays, Auflistungen und Batches verarbeitet werden. Sie können diese Elemente in Ihrem Logik-App-Workflow einschließen:
+In einem [vorherigen Thema](../logic-apps/quickstart-create-first-logic-app-workflow.md) haben Sie Ihre erste Logik-App erstellt. Um Ihren Logik-App-Workflow zu steuern, können Sie unterschiedliche Pfade für die Ausführung der Logik-App angeben und festlegen, wie Daten in Arrays, Auflistungen und Batches verarbeitet werden. Sie können diese Elemente in Ihrem Logik-App-Workflow einschließen:
 
 * Durch [switch-Anweisungen](../logic-apps/logic-apps-switch-case.md) und Bedingungen, kann Ihre Logik-App verschiedene Aktionen basierend darauf ausführen, ob bestimmte Bedingungen erfüllt sind.
 
@@ -48,7 +48,7 @@ Angenommen Sie verfügen über eine Logik-App, die Ihnen zu viele E-Mails über 
 2. Fügen Sie eine Bedingung zum gewünschten Workflow-Speicherort hinzu. 
 
    Um die Bedingung zwischen vorhandenen Schritten in den Logik-App-Workflow hinzuzufügen, bewegen Sie den Zeiger auf den Pfeil, zu dem Sie die Bedingung hinzufügen möchten. 
-   Wählen Sie das **Pluszeichen** (**+**) und dann **Bedingung hinzufügen** aus. Beispiel:
+   Wählen Sie das **Pluszeichen** (**+**) und dann **Bedingung hinzufügen** aus. Beispiel: 
 
    ![Hinzufügen einer Bedingung zur Logik-App](./media/logic-apps-use-logic-app-features/add-condition.png)
 
@@ -57,7 +57,7 @@ Angenommen Sie verfügen über eine Logik-App, die Ihnen zu viele E-Mails über 
 
 3. Definieren Sie nun die Bedingung. Geben Sie das Quellfeld an, das Sie auswerten möchten, den auszuführenden Vorgang und den Zielwert oder das Zielfeld. Um vorhandene Felder zu Ihrer Bedingung hinzuzufügen, wählen Sie aus der **Liste „Dynamischen Inhalt hinzufügen“** aus.
 
-   Beispiel:
+   Beispiel: 
 
    ![Bearbeiten einer Bedingung im Standardmodus](./media/logic-apps-use-logic-app-features/edit-condition-basic-mode.png)
 
@@ -66,13 +66,13 @@ Angenommen Sie verfügen über eine Logik-App, die Ihnen zu viele E-Mails über 
    ![Vollständige Bedingung](./media/logic-apps-use-logic-app-features/edit-condition-basic-mode-2.png)
 
    > [!TIP]
-   > Um die Bedingung im Code zu definieren, wählen Sie **Im erweiterten Modus bearbeiten**. Beispiel:
+   > Um die Bedingung im Code zu definieren, wählen Sie **Im erweiterten Modus bearbeiten**. Beispiel: 
    > 
    > ![Bearbeiten einer Bedingung im Code](./media/logic-apps-use-logic-app-features/edit-condition-advanced-mode.png)
 
 4. Fügen Sie unter **Wenn Ja** und **Wenn Nein** die auszuführenden Schritte basierend darauf hinzu, ob die Bedingung erfüllt ist.
 
-   Beispiel:
+   Beispiel: 
 
    ![Bedingung mit Ja- und Nein-Pfaden](./media/logic-apps-use-logic-app-features/condition-yes-no-path.png)
 

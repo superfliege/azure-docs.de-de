@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: f5349b0a72dd2bad348ab301745e00065bac310e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d092613d88a4186c17c8c91046bb598c4f60b307
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung
 In diesem Artikel erhalten Sie Hilfe bei den ersten Schritten zur Einführung von **Azure Data Catalog** in Ihrem Unternehmen. Konzentrieren Sie sich auf drei wichtige Punkte, um **Azure Data Catalog** erfolgreich einzuführen: Definieren Sie Ihre Vision, ermitteln Sie die zentralen geschäftlichen Anwendungsfälle in Ihrem Unternehmen, und wählen Sie ein Pilotprojekt.

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
-ms.openlocfilehash: 2bf1a3e80e96d76b15340f87166b2b4762271cf3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 29e78bbb8e3d4d4feb3f7d32cf0a5ef1b02a6268
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Erstellen einer OpenAPI-Definition für eine Funktion
 REST-APIs werden häufig mithilfe einer OpenAPI-Definition beschrieben (früher bezeichnet als [Swagger](http://swagger.io/)-Datei). Diese Definition enthält Informationen zu den in einer API verfügbaren Vorgängen sowie zur Strukturierung der Anforderungs- und Antwortdaten für die API.
@@ -62,7 +62,7 @@ In diesem Tutorial wird eine von HTTP ausgelöste Funktion verwendet, die zwei P
 
 1. Ersetzen Sie den Inhalt der Datei „run.csx“ durch den folgenden Code, und klicken Sie auf **Speichern**:
 
-    ```c#
+    ```csharp
     using System.Net;
 
     const double revenuePerkW = 0.12; 

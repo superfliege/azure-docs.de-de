@@ -3,7 +3,7 @@ title: Verwenden von MySQL-Datenbanken als PaaS in Azure Stack | Microsoft-Dokum
 description: Erfahren Sie, wie Sie den MySQL-Ressourcenanbieter bereitstellen und MySQL-Datenbanken als Dienst auf Azure Stack bereitstellen.
 services: azure-stack
 documentationCenter: 
-author: JeffGoldner
+author: mattbriggs
 manager: bradleyb
 editor: 
 ms.service: azure-stack
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: JeffGo
-ms.openlocfilehash: d0394fd1edf21cdbb863a88a1d3ecef118a7d886
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.author: mabrigg
+ms.openlocfilehash: 97344009ffb42d99824d053652594546f9f53374
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Verwenden von MySQL-Datenbanken in Microsoft Azure Stack
 
@@ -90,7 +90,7 @@ Das Systemkonto muss über die folgenden Berechtigungen verfügen:
 
 6. [Installieren Sie Azure PowerShell, Version 1.2.11](azure-stack-powershell-install.md).
 
-7. Führen Sie das Skript „DeploySqlProvider.ps1“ aus.
+7. Führen Sie das Skript `DeployMySqlProvider.ps1` aus.
 
 Mit diesem Skript werden folgende Schritte ausgeführt:
 
@@ -155,12 +155,12 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
  ```
 
 
-### <a name="deploysqlproviderps1-parameters"></a>Parameter „DeploySqlProvider.ps1“
+### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1-Parameter
 Sie können diese Parameter in der Befehlszeile angeben. Wenn sie nicht festgelegt werden oder eine Parameterüberprüfung fehlschlägt, werden Sie aufgefordert, die erforderlichen Parameter anzugeben.
 
 | Parametername | BESCHREIBUNG | Kommentar oder Standardwert |
 | --- | --- | --- |
-| **CloudAdminCredential** | Die Anmeldeinformationen für den Cloudadministrator sind für den Zugriff auf den privilegierten Endpunkt erforderlich. | _erforderlich_ |
+| **CloudAdminCredential** | Die Anmeldeinformationen für den Cloudadministrator, die für den Zugriff auf den privilegierten Endpunkt erforderlich sind. | _erforderlich_ |
 | **AzCredential** | Geben Sie die Anmeldeinformationen für das Azure Stack-Dienstadministratorkonto an. Verwenden Sie die gleichen Anmeldeinformationen wie für das Bereitstellen von Azure Stack. | _erforderlich_ |
 | **VMLocalCredential** | Definieren Sie die Anmeldeinformationen für das lokale Administratorkonto des virtuellen Computers mit dem MySQL-Ressourcenanbieter. | _erforderlich_ |
 | **PrivilegedEndpoint** | Geben Sie die IP-Adresse oder den DNS-Namen des privilegierten Endpunkts an. |  _erforderlich_ |

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 22a3972d7b2e9cf732f5dc75dd2b53b83570ee66
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 93df74da6e9db1bd03885179cd3917205ab3b4ee
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** aus der Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
@@ -194,7 +194,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit der Data Factory.
    ![Schaltfläche „Neue Verbindung“](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-connection-button-storage.png)
 2. Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Azure Blob Storage**, und klicken Sie dann auf **Weiter**. 
 
-   ![Auswählen von Azure Blob Storage](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png)
+   ![Auswählen von „Azure Blob Storage“](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png)
 3. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus: 
 
     1. Geben Sie unter **Name**  den Namen **AzureStorageLinkedService** ein. 
@@ -307,7 +307,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität, bei de
 
 
 ### <a name="run-the-full-copy-pipeline"></a>Ausführen der vollständigen Kopierpipeline
-Klicken Sie in der Symbolleiste der Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
+Klicken Sie auf der Symbolleiste der Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
 
 ![Menü „Trigger Now“ (Jetzt auslösen)](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
 
@@ -428,7 +428,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
         ![Schaltfläche "Veröffentlichen"](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Ausführen der inkrementellen Kopierpipeline
-Klicken Sie in der Symbolleiste der Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
+Klicken Sie auf der Symbolleiste der Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
 
 ![Menü „Trigger Now“ (Jetzt auslösen)](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
 
@@ -467,7 +467,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie mithilfe eines Spark-Clusters in Azure Daten transformieren:
 
 > [!div class="nextstepaction"]
->[Transform data using Spark cluster in cloud (Transformieren von Daten mit Spark-Cluster in der Cloud)](tutorial-transform-data-spark-powershell.md).
+>[Transform data using Spark cluster in cloud (Transformieren von Daten mit Spark-Cluster in der Cloud)](tutorial-transform-data-spark-portal.md).
 
 
 

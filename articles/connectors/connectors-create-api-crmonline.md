@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
 ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>Verbinden mit Dynamics 365 über Logik-App-Workflows
 
@@ -113,7 +113,7 @@ So können Sie beispielsweise eine Filterabfrage verwenden, um nur aktive Konten
 
 Wenn Sie einem Feld einen Wert hinzufügen, muss dieser dem Feldtyp entsprechen. Dabei spielt es keine Rolle, ob Sie einen Wert eingeben oder ihn aus der dynamischen Inhaltsliste auswählen.
 
-Feldtyp  |Verwendung  |Ort  |Name  |Datentyp  
+Feldtyp  |Verwendung  |Ort  |NAME  |Datentyp  
 ---------|---------|---------|---------|---------
 Textfelder|Textfelder erfordern eine einzelne Textzeile oder dynamischen Inhalt, bei dem es sich um ein Textfeld handelt. Beispiele: „Kategorie“ und „Unterkategorie“|Einstellungen > Anpassungen > System anpassen > Entitäten > Aufgabe > Felder |category |Einzelne Textzeile        
 Ganzzahlige Felder | Einige Felder erfordern eine ganze Zahl oder dynamischen Inhalt, bei dem es sich um ein ganzzahliges Feld handelt. Beispiele: „Prozent abgeschlossen“ und „Dauer“ |Einstellungen > Anpassungen > System anpassen > Entitäten > Aufgabe > Felder |percentcomplete |Ganze Zahl         

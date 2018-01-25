@@ -3,8 +3,8 @@ title: Verwalten von Azure Redis Cache | Microsoft Docs
 description: "Informationen zum Ausführen von Verwaltungsaufgaben wie Neustarten und Planen von Updates für Azure Redis Cache"
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: 8c915ae6-5322-4046-9938-8f7832403000
 ms.service: cache
@@ -13,28 +13,28 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 07/05/2017
-ms.author: sdanie
-ms.openlocfilehash: 3352fec59d7dfbfab9b0416992a60f11d0ec2402
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 37e7395a26ead737009ad9e285e9f88372b25d26
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Verwalten von Azure Redis Cache
 In diesem Thema erfahren Sie, wie Verwaltungsaufgaben wie das [Neustarten](#reboot) und [Planen von Updates](#schedule-updates) für Ihre Azure Redis Cache-Instanzen erfolgen.
 
-## <a name="reboot"></a>Neustart
+## <a name="reboot"></a>Reboot
 Auf dem Blatt **Neustart** können Sie einen oder mehrere Knoten Ihres Caches neu starten. Mit dieser Neustartfunktion können Sie Ihre Anwendung bei einem Ausfall eines Cacheknotens auf Resilienz testen.
 
-![Neustart](./media/cache-administration/redis-cache-administration-reboot.png)
+![Reboot](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Wählen Sie die Knoten, die neu gestartet werden sollen, und klicken Sie auf **Neustart**.
 
-![Neustart](./media/cache-administration/redis-cache-reboot.png)
+![Reboot](./media/cache-administration/redis-cache-reboot.png)
 
 Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, können Sie die Shards des Caches auswählen, die neu gestartet werden sollen.
 
-![Neustart](./media/cache-administration/redis-cache-reboot-cluster.png)
+![Reboot](./media/cache-administration/redis-cache-reboot-cluster.png)
 
 Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünschten Knoten aus und klicken auf **Neustart**. Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, wählen Sie die gewünschten Shards aus, die neu gestartet werden sollen, und klicken Sie dann auf **Neu starten**. Nach einigen Minuten werden die ausgewählten Knoten neu gestartet, die nur wenige Minuten später wieder online sind.
 

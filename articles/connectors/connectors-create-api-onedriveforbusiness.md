@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 783d6a640d9626508bcabc5f991dc5b6fc22eaf4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8bd447b59e8fd3573dad26ae6600e4b5c9cb7a7e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>Erste Schritte mit dem OneDrive for Business-Connector
 Stellen Sie eine Verbindung mit OneDrive for Business her und verwalten Sie dort Ihre Dateien. Sie mit den Dateien verschiedene Aktionen ausführen, z.B. Hochladen, Aktualisieren, Abrufen und Löschen.
 
-Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
+Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
 
 ## <a name="create-a-connection-to-onedrive-for-business"></a>Herstellen einer Verbindung mit OneDrive for Business
 Um Logik-Apps mit OneDrive for Business zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
-| Eigenschaft | Erforderlich | Beschreibung |
+| Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
 | Tokenverschlüsselung |Ja |Angeben der Anmeldeinformationen für OneDrive for Business |
 

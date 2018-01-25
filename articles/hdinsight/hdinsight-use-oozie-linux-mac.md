@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2017
+ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 7f341b550316b44f7b6677bf59f323b568007700
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 53c249c24af774499becdf18350ff75dbc2ab861
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -505,7 +505,7 @@ Mit der Oozie-REST-API können Sie eigene Tools erstellen, die mit Oozie arbeite
 
 * **URI**: Sie können unter `https://CLUSTERNAME.azurehdinsight.net/oozie` auf die REST-API von außerhalb des Clusters zugreifen.
 
-* **Authentifizierung**: Verwenden Sie die API mit dem HTTP-Clusteradministratorkonto und -kennwort, um sich zu authentifizieren. Beispiel:
+* **Authentifizierung**: Verwenden Sie die API mit dem HTTP-Clusteradministratorkonto und -kennwort, um sich zu authentifizieren. Beispiel: 
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions

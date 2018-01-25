@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 727041edf457ef55a39eb91ba2369c163f5b4712
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 17ffd0de41964736d2f59b0cf891d0c6b2e7d16b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-onprem-db2-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-onprem-db2-connector.md)
 > * [Version 2 – Vorschauversion](../connector-db2.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from DB2 using Azure Data Factory](../connector-db2.md) (Kopieren von Daten aus DB2 mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from DB2 using Azure Data Factory](../connector-db2.md) (Kopieren von Daten aus DB2 mit Azure Data Factory).
 
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen DB2-Datenbank in einen anderen Datenspeicher zu verschieben. Sie können Daten in einen beliebigen Speicher kopieren, der als unterstützte Senke im Artikel [Aktivitäten zur Datenverschiebung in Data Factory](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführt wird. Dieser Artikel baut auf dem Artikel zu Data Factory auf, der eine Übersicht zur Datenverschiebung mit der Kopieraktivität und unterstützten Datenspeicherkombinationen bietet. 
@@ -80,15 +80,15 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="db2-linked-service-properties"></a>Eigenschaften des mit DB2 verknüpften Diensts
 Die folgende Tabelle enthält die JSON-Eigenschaften, die spezifisch für einen mit DB2 verknüpften Dienst sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **type** |Diese Eigenschaft muss auf **OnPremisesDb2** festgelegt werden. |Ja |
 | **server** |Der Name des DB2-Servers |Ja |
 | **database** |Der Name der DB2-Datenbank |Ja |
-| **schema** |Der Name des Schemas in der DB2-Datenbank. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein |
+| **schema** |Der Name des Schemas in der DB2-Datenbank. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein  |
 | **authenticationType** |Der Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
-| **username** |Der Name für das Benutzerkonto, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
-| **password** |Das Kennwort für das Benutzerkonto |Nein |
+| **username** |Der Name für das Benutzerkonto, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
+| **password** |Das Kennwort für das Benutzerkonto |Nein  |
 | **gatewayName** |Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen DB2-Datenbank verwenden soll |Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -96,7 +96,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein DataSet vom Typ **RelationalTable** (das das DB2-DataSet einschließt) hat die folgende Eigenschaft:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **tableName** |Der Name der Tabelle in der DB2-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein (wenn die **query**-Eigenschaft einer Kopieraktivität vom Typ **RelationalSource** angegeben wurde) |
 
@@ -105,7 +105,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** aufweist (zu dem DB2 gehört), sind im Abschnitt **typeProperties** die folgenden Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | **query** |Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. |SQL-Abfragezeichenfolge. Beispiel: `"query": "select * from "MySchema"."MyTable""` |Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
 
@@ -310,45 +310,45 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | DB2-Datenbanktyp | Typ ".NET Framework" |
 | --- | --- |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| Ganze Zahl  |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numeric |Decimal |
-| Date |DateTime |
-| Time |TimeSpan |
+| DECIMAL |DECIMAL |
+| DecimalFloat |DECIMAL |
+| Numeric |DECIMAL |
+| Datum |Datetime |
+| Time |Zeitraum |
 | Timestamp |Datetime |
 | xml |Byte[] |
-| Char |String |
-| VarChar |String |
-| LongVarChar |String |
-| DB2DynArray |String |
+| Char |Zeichenfolge |
+| VarChar |Zeichenfolge |
+| LongVarChar |Zeichenfolge |
+| DB2DynArray |Zeichenfolge |
 | Binär |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |String |
-| VarGraphic |String |
-| LongVarGraphic |String |
-| Clob |String |
+| Graphic |Zeichenfolge |
+| VarGraphic |Zeichenfolge |
+| LongVarGraphic |Zeichenfolge |
+| Clob |Zeichenfolge |
 | Blob |Byte[] |
-| DbClob |String |
+| DbClob |Zeichenfolge |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| Ganze Zahl  |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numeric |Decimal |
-| Date |DateTime |
-| Time |TimeSpan |
+| DECIMAL |DECIMAL |
+| DecimalFloat |DECIMAL |
+| Numeric |DECIMAL |
+| Datum |Datetime |
+| Time |Zeitraum |
 | Timestamp |Datetime |
 | xml |Byte[] |
-| Char |String |
+| Char |Zeichenfolge |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 01/10/2018
 ms.author: shengc
-ms.openlocfilehash: db3be2120c998a0c8973a85d375b526f53e73247
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f242a8a15334818d83651cf0af55e8ec39bce212
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
@@ -98,26 +98,26 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 > 
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft                     | Beschreibung                              | Erforderlich |
+| Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
-| Typ                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand**fest. | Ja      |
+| type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand**fest. | Ja      |
 | clusterSize                  | Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten + 2 \* 4 = 8 für die Hauptknoten). Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) | Ja      |
 | linkedServiceName            | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzt. Der HDInsight-Cluster wird in der gleichen Region wie das Azure Storage-Konto erstellt. Die Gesamtanzahl von Kernen, die Sie in jeder von Azure HDInsight unterstützten Azure-Region verwenden können, ist begrenzt. Stellen Sie sicher, dass Sie über genügend Kernekontingente in dieser Azure-Region verfügen, um die Anforderungen von clusterSize zu erfüllen. Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters, der Azure Data Lake Store als Speicher verwendet, ist derzeit nicht möglich. Wenn Sie die Ergebnisdaten der HDInsight-Verarbeitung in einer Azure Data Lake Store-Instanz speichern möchten, kopieren Sie die Daten mittels einer Kopieraktivität aus der Azure Blob Storage-Instanz in die Azure Data Lake Store-Instanz. </p> | Ja      |
 | clusterResourceGroup         | Der HDInsight-Cluster wird in dieser Ressourcengruppe erstellt. | Ja      |
 | timetolive                   | Die zulässige Leerlaufzeit für den bedarfsgesteuerten HDInsight-Cluster. Gibt an, wie lange der bedarfsgesteuerte HDInsight-Cluster nach dem Abschluss einer Aktivitätsausführung aktiv bleibt, wenn keine anderen aktiven Aufträge im Cluster vorhanden sind. Der minimal zulässige Wert beträgt 5 Minuten (00:05:00).<br/><br/>Beispiel: Wenn eine Aktivitätsausführung 6 Minuten dauert und „timetolive“ auf 5 Minuten festgelegt ist, bleibt der Cluster für 5 Minuten nach den 6 Minuten für die Verarbeitung der Aktivitätsausführung aktiv. Wenn eine weitere Aktivitätsausführung mit einem Zeitfenster von 6 Minuten ausgeführt wird, wird sie von demselben Cluster verarbeitet.<br/><br/>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters ist ein aufwändiger Vorgang (er kann eine Weile dauern). Verwenden Sie daher diese Einstellung bei Bedarf, um die Leistung einer Data Factory zu verbessern, indem Sie einen bedarfsgesteuerten HDInsight-Cluster wiederverwenden.<br/><br/>Wenn der timetolive-Wert auf 0 festgelegt wird, wird der Cluster gelöscht, sobald die Aktivitätsausführung abgeschlossen ist. Wenn Sie hingegen einen hohen Wert festlegen, könnte der Cluster im Leerlauf bleiben, damit Sie sich zur Problembehandlung anmelden können, aber dies könnte hohe Kosten verursachen. Aus diesem Grund ist es wichtig, dass Sie den entsprechenden Wert basierend auf Ihren Anforderungen festlegen.<br/><br/>Wenn der Wert der Eigenschaft „timetolive“ ordnungsgemäß festgelegt wird, können mehrere Pipelines die Instanz des bedarfsgesteuerten HDInsight-Clusters verwenden. | Ja      |
-| clusterType                  | Der Typ des zu erstellenden HDInsight-Clusters. Zulässige Werte sind „hadoop“ und „spark“. Wenn Sie hier nichts angeben, lautet der Standardwert „hadoop“. | Nein       |
-| Version                      | Version des HDInsight-Clusters. Wenn nichts angegeben wird, ist dies die aktuelle definierte HDInsight-Standardversion. | Nein       |
-| hostSubscriptionId           | Die Azure-Abonnement-ID, die zum Erstellen des HDInsight-Clusters verwendet wird. Wenn nicht angegeben, wird die Abonnement-ID Ihres Azure-Anmeldungskontexts verwendet. | Nein       |
-| clusterNamePrefix           | Das Präfix des HDI-Clusternamens; am Ende des Clusternamens wird automatisch ein Zeitstempel angefügt.| Nein       |
-| sparkVersion                 | Die Spark-Version, wenn der Clustertyp „Spark“ ist. | Nein       |
-| additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. Diese Speicherkonten müssen sich in der gleichen Region befinden wie der HDInsight-Cluster, der in der gleichen Region erstellt wird wie das von „linkedServiceName“ angegebene Speicherkonto. | Nein       |
-| osType                       | Typ des Betriebssystems. Zulässige Werte sind: Linux und Windows (nur für HDInsight 3.3). Der Standardwert ist „Linux“. | Nein       |
-| hcatalogLinkedServiceName    | Der Name des mit Azure SQL verknüpften Diensts, der auf die HCatalog-Datenbank verweist. Der bedarfsgesteuerte HDInsight-Cluster wird mit der Azure SQL-Datenbank als Metastore erstellt. | Nein       |
-| connectVia                   | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften HDInsight-Dienst zugeteilt werden. Für einen bedarfsgesteuerten verknüpften HDInsight-Dienst wird nur Azure Integration Runtime unterstützt. Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. | Nein       |
-| clusterUserName                   | Der Benutzername zum Zugriff auf den Cluster. | Nein       |
-| clusterPassword                   | Das Kennwort als sichere Zeichenfolge zum Zugriff auf den Cluster. | Nein       |
-| clusterSshUserName         | Der Benutzername zum Herstellen einer SSH-Remoteverbindung mit dem Knoten des Clusters (für Linux). | Nein       |
-| clusterSshPassword         | Das Kennwort als sichere Zeichenfolge zum Herstellen einer SSH-Remoteverbindung mit dem Knoten des Clusters (für Linux). | Nein       |
+| clusterType                  | Der Typ des zu erstellenden HDInsight-Clusters. Zulässige Werte sind „hadoop“ und „spark“. Wenn Sie hier nichts angeben, lautet der Standardwert „hadoop“. | Nein        |
+| Version                      | Version des HDInsight-Clusters. Wenn nichts angegeben wird, ist dies die aktuelle definierte HDInsight-Standardversion. | Nein        |
+| hostSubscriptionId           | Die Azure-Abonnement-ID, die zum Erstellen des HDInsight-Clusters verwendet wird. Wenn nicht angegeben, wird die Abonnement-ID Ihres Azure-Anmeldungskontexts verwendet. | Nein        |
+| clusterNamePrefix           | Das Präfix des HDI-Clusternamens; am Ende des Clusternamens wird automatisch ein Zeitstempel angefügt.| Nein        |
+| sparkVersion                 | Die Spark-Version, wenn der Clustertyp „Spark“ ist. | Nein        |
+| additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. Diese Speicherkonten müssen sich in der gleichen Region befinden wie der HDInsight-Cluster, der in der gleichen Region erstellt wird wie das von „linkedServiceName“ angegebene Speicherkonto. | Nein        |
+| osType                       | Typ des Betriebssystems. Zulässige Werte sind: Linux und Windows (nur für HDInsight 3.3). Der Standardwert ist „Linux“. | Nein        |
+| hcatalogLinkedServiceName    | Der Name des mit Azure SQL verknüpften Diensts, der auf die HCatalog-Datenbank verweist. Der bedarfsgesteuerte HDInsight-Cluster wird mit der Azure SQL-Datenbank als Metastore erstellt. | Nein        |
+| connectVia                   | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften HDInsight-Dienst zugeteilt werden. Für einen bedarfsgesteuerten verknüpften HDInsight-Dienst wird nur Azure Integration Runtime unterstützt. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein        |
+| clusterUserName                   | Der Benutzername zum Zugriff auf den Cluster. | Nein        |
+| clusterPassword                   | Das Kennwort als sichere Zeichenfolge zum Zugriff auf den Cluster. | Nein        |
+| clusterSshUserName         | Der Benutzername zum Herstellen einer SSH-Remoteverbindung mit dem Knoten des Clusters (für Linux). | Nein        |
+| clusterSshPassword         | Das Kennwort als sichere Zeichenfolge zum Herstellen einer SSH-Remoteverbindung mit dem Knoten des Clusters (für Linux). | Nein        |
 
 
 > [!IMPORTANT]
@@ -144,7 +144,7 @@ Der verknüpfte, bedarfsgesteuerte HDInsight-Dienst erfordert eine Dienstprinzip
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft                | Beschreibung                              | Erforderlich |
+| Eigenschaft                | BESCHREIBUNG                              | Erforderlich |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Geben Sie die Client-ID der Anwendung an.     | Ja      |
 | **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | Ja      |
@@ -154,16 +154,16 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 
 Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters können Sie die folgenden Eigenschaften festlegen.
 
-| Eigenschaft               | Beschreibung                              | Erforderlich |
+| Eigenschaft               | BESCHREIBUNG                              | Erforderlich |
 | :--------------------- | :--------------------------------------- | :------- |
-| coreConfiguration      | Gibt die wichtigsten Konfigurationsparameter (wie in "core-site.xml") für den HDInsight-Cluster an, der erstellt werden soll. | Nein       |
-| hBaseConfiguration     | Gibt die HBase-Konfigurationsparameter (hbase-site.xml) für den HDInsight-Cluster an. | Nein       |
-| hdfsConfiguration      | Gibt die HDFS-Konfigurationsparameter (hdfs-site.xml) für den HDInsight-Cluster an. | Nein       |
-| hiveConfiguration      | Gibt die Hive-Konfigurationsparameter (hive-site.xml) für den HDInsight-Cluster an. | Nein       |
-| mapReduceConfiguration | Gibt die MapReduce-Konfigurationsparameter (mapred-site.xml) für den HDInsight-Cluster an. | Nein       |
-| oozieConfiguration     | Gibt die Oozie-Konfigurationsparameter (oozie-site.xml) für den HDInsight-Cluster an. | Nein       |
-| stormConfiguration     | Gibt die Storm-Konfigurationsparameter (storm-site.xml) für den HDInsight-Cluster an. | Nein       |
-| yarnConfiguration      | Gibt die Yarn-Konfigurationsparameter (yarn-site.xml) für den HDInsight-Cluster an. | Nein       |
+| coreConfiguration      | Gibt die wichtigsten Konfigurationsparameter (wie in "core-site.xml") für den HDInsight-Cluster an, der erstellt werden soll. | Nein        |
+| hBaseConfiguration     | Gibt die HBase-Konfigurationsparameter (hbase-site.xml) für den HDInsight-Cluster an. | Nein        |
+| hdfsConfiguration      | Gibt die HDFS-Konfigurationsparameter (hdfs-site.xml) für den HDInsight-Cluster an. | Nein        |
+| hiveConfiguration      | Gibt die Hive-Konfigurationsparameter (hive-site.xml) für den HDInsight-Cluster an. | Nein        |
+| mapReduceConfiguration | Gibt die MapReduce-Konfigurationsparameter (mapred-site.xml) für den HDInsight-Cluster an. | Nein        |
+| oozieConfiguration     | Gibt die Oozie-Konfigurationsparameter (oozie-site.xml) für den HDInsight-Cluster an. | Nein        |
+| stormConfiguration     | Gibt die Storm-Konfigurationsparameter (storm-site.xml) für den HDInsight-Cluster an. | Nein        |
+| yarnConfiguration      | Gibt die Yarn-Konfigurationsparameter (yarn-site.xml) für den HDInsight-Cluster an. | Nein        |
 
 #### <a name="example--on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>Beispiel: Konfiguration eines bedarfsgesteuerten HDInsight-Clusters mit erweiterten Eigenschaften
 
@@ -222,11 +222,11 @@ Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters kö
 ### <a name="node-sizes"></a>Knotengrößen
 Sie können die Größe der Head-, Daten- und Zookeeper-Knoten mit den folgenden Eigenschaften angeben: 
 
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Gibt die Größe des Hauptknotens an. Der Standardwert ist „Standard_D3“. Weitere Details finden Sie im Abschnitt **Knotengrößen angeben**. | Nein       |
-| dataNodeSize      | Gibt die Größe des Datenknotens an. Der Standardwert ist „Standard_D3“. | Nein       |
-| zookeeperNodeSize | Gibt die Größe des Zoo Keeper-Knotens an. Der Standardwert ist „Standard_D3“. | Nein       |
+| headNodeSize      | Gibt die Größe des Hauptknotens an. Der Standardwert ist „Standard_D3“. Weitere Details finden Sie im Abschnitt **Knotengrößen angeben**. | Nein        |
+| dataNodeSize      | Gibt die Größe des Datenknotens an. Der Standardwert ist „Standard_D3“. | Nein        |
+| zookeeperNodeSize | Gibt die Größe des Zoo Keeper-Knotens an. Der Standardwert ist „Standard_D3“. | Nein        |
 
 #### <a name="specifying-node-sizes"></a>Knotengrößen angeben
 Lesen Sie den Artikel [Größen von virtuellen Computern](../virtual-machines/linux/sizes.md), um Näheres zu Zeichenfolgenwerten zu erfahren, die Sie für die Eigenschaften angeben müssen, die im vorherigen Abschnitt erwähnt wurden. Die Werte müssen den **CMDLETs und APIs** entsprechen, auf die im Artikel verwiesen wird. Wie Sie in diesem Artikel sehen können, hat der Datenknoten „Large“ (Standard) 7 GB Arbeitsspeicher, was für Ihr Szenario möglicherweise nicht ausreichend ist. 
@@ -282,14 +282,14 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
-| Typ              | Legen Sie die Typeigenschaft auf **HDInsight**fest. | Ja      |
+| type              | Legen Sie die Typeigenschaft auf **HDInsight**fest. | Ja      |
 | clusterUri        | Der URI des HDInsight-Clusters.        | Ja      |
 | username          | Geben Sie den Namen des Benutzers ein, der mit einem vorhandenen HDInsight-Cluster verbunden werden soll. | Ja      |
 | password          | Geben Sie ein Kennwort für das Benutzerkonto an.   | Ja      |
 | linkedServiceName | Der Name des verknüpften Azure Storage-Diensts für die von diesem HDInsight-Cluster verwendete Azure Blob Storage-Instanz. <p>Derzeit können Sie keinen verknüpften Azure Data Lake Store-Dienst für diese Eigenschaft angeben. Sie können auf Daten in Azure Data Lake Store über Hive-/Pig-Skripts zugreifen, wenn der HDInsight-Cluster Zugriff auf die Data Lake Store-Instanz hat. </p> | Ja      |
-| connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. | Nein       |
+| connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein        |
 
 > [!IMPORTANT]
 > HDInsight unterstützt mehrere Hadoop-Clusterversionen, die bereitgestellt werden können. Jede ausgewählte Version erstellt eine bestimmte Version der HDP-Distribution (Hortonworks Data Platform) und eine Reihe von Komponenten innerhalb dieser Distribution. Die Liste der unterstützten Versionen von HDInsight wird ständig aktualisiert, um die aktuellsten Komponenten und Fixes für das Hadoop-Ökosystem bereitzustellen. Nutzen Sie unbedingt stets die aktuellsten Informationen über [Unterstützte HDInsight-Versionen](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions), um sicherzustellen, dass Sie die unterstützte Version von HDInsight verwenden. 
@@ -335,15 +335,15 @@ Lesen Sie die folgenden Themen, wenn Sie noch nicht mit dem Azure Batch-Dienst v
 
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
-| Typ              | Legen Sie die Typeigenschaft auf **AzureBatch**fest. | Ja      |
+| type              | Legen Sie die Typeigenschaft auf **AzureBatch**fest. | Ja      |
 | .<Name der Region       | Der Name des Azure Batch-Kontos.         | Ja      |
 | accessKey         | Der Zugriffsschlüssel für das Azure Batch-Konto.  | Ja      |
 | batchUri          | URL zu Ihrem Azure Batch-Konto im Format „https://*batchaccountname.region*. batch.azure.com“. | Ja      |
 | poolName          | Der Name des Pools mit virtuellen Computern.    | Ja      |
 | linkedServiceName | Der Name des verknüpften Azure Storage-Diensts, der diesem verknüpften Azure Batch-Dienst zugeordnet ist. Dieser verknüpfte Dienst wird für Stagingdateien verwendet, die für die Ausführung der Aktivität benötigt werden. | Ja      |
-| connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. | Nein       |
+| connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein        |
 
 ## <a name="azure-machine-learning-linked-service"></a>Mit Azure Machine Learning verknüpfter Dienst
 Sie können einen verknüpften Azure Machine Learning-Dienst erstellen, um einen Machine Learning-Batchbewertungsendpunkt für Data Factory zu registrieren.
@@ -371,16 +371,16 @@ Sie können einen verknüpften Azure Machine Learning-Dienst erstellen, um einen
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft               | Beschreibung                              | Erforderlich                                 |
+| Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Typ                   | Legen Sie die Typeigenschaft auf **AzureML**fest. | Ja                                      |
 | mlEndpoint             | Die Batchbewertungs-URL.                   | Ja                                      |
 | apiKey                 | Die veröffentlichte API des Arbeitsbereichsmodells.     | Ja                                      |
-| updateResourceEndpoint | Die Ressourcenupdate-URL für einen Azure ML-Webdienst-Endpunkt, mit der der Vorhersagewebdienst mit der Datei des trainierten Modells aktualisiert wird. | Nein                                       |
+| updateResourceEndpoint | Die Ressourcenupdate-URL für einen Azure ML-Webdienst-Endpunkt, mit der der Vorhersagewebdienst mit der Datei des trainierten Modells aktualisiert wird. | Nein                                        |
 | servicePrincipalId     | Geben Sie die Client-ID der Anwendung an.     | Erforderlich, wenn updateResourceEndpoint angegeben wird |
 | servicePrincipalKey    | Geben Sie den Schlüssel der Anwendung an.           | Erforderlich, wenn updateResourceEndpoint angegeben wird |
-| tenant                 | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Erforderlich, wenn updateResourceEndpoint angegeben wird |
-| connectVia             | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. | Nein                                       |
+| Mandant                 | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Erforderlich, wenn updateResourceEndpoint angegeben wird |
+| connectVia             | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein                                        |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Mit Azure Data Lake Analytics verknüpfter Dienst
 Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um einen Azure Data Lake Analytics-Computedienst mit einer Azure Data Factory zu verknüpfen. Die Data Lake Analytics-U-SQL-Aktivität in der Pipeline verweist auf diesen verknüpften Dienst. 
@@ -414,17 +414,17 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 ### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft             | Beschreibung                              | Erforderlich                                 |
+| Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| Typ                 | Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics**fest. | Ja                                      |
+| type                 | Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics**fest. | Ja                                      |
 | accountName          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
-| dataLakeAnalyticsUri | URI des Azure Data Lake Analytics-Kontos.           | Nein                                       |
+| dataLakeAnalyticsUri | URI des Azure Data Lake Analytics-Kontos.           | Nein                                        |
 | subscriptionId       | Azure-Abonnement-ID                    | Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). |
-| ResourceGroupName    | Azure-Ressourcengruppenname                | Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet). |
+| resourceGroupName    | Azure-Ressourcengruppenname                | Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet). |
 | servicePrincipalId   | Geben Sie die Client-ID der Anwendung an.     | Ja                                      |
 | servicePrincipalKey  | Geben Sie den Schlüssel der Anwendung an.           | Ja                                      |
-| tenant               | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja                                      |
-| connectVia           | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. | Nein                                       |
+| Mandant               | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja                                      |
+| connectVia           | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein                                        |
 
 
 
@@ -440,7 +440,7 @@ Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der
 ## <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – Benennungsregeln
 Die folgende Tabelle enthält Benennungsregeln für Data Factory-Artefakte.
 
-| Name                             | Eindeutigkeit des Namens                          | Überprüfungen                        |
+| NAME                             | Eindeutigkeit des Namens                          | Überprüfungen                        |
 | :------------------------------- | :--------------------------------------- | :--------------------------------------- |
 | Data Factory                     | Für Microsoft Azure eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt, sodass `MyDF` und `mydf` auf die gleiche Data Factory verweisen. | <ul><li>Jede Data Factory ist an genau ein Azure-Abonnement gebunden.</li><li>Objektnamen müssen mit einem Buchstaben oder einer Zahl beginnen und dürfen nur Buchstaben, Zahlen und Bindestriche (-) enthalten.</li><li>Jedem Bindestrich (-) muss unmittelbar ein Buchstabe oder eine Ziffer vorangestellt werden und er muss von diesen gefolgt sein. Aufeinanderfolgende Bindestriche sind in Containernamen nicht zulässig.</li><li>Namen können 3 bis 63 Zeichen lang sein.</li></ul> |
 | Verknüpfte Dienste/Tabellen/Pipelines | Innerhalb einer Data Factory eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | <ul><li>Maximale Anzahl von Zeichen in einem Tabellennamen: 260.</li><li>Objektnamen müssen mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |

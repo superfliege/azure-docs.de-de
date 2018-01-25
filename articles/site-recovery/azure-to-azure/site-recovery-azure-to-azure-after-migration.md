@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: ponatara
-ms.openlocfilehash: 7658bedc0bd5c4a289f3271504a006ba54c783b6
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 559e64ae3c16ed21bc09ac0c044281aa0a6e43df
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>Sie können mit Azure Site Recovery virtuelle Azure-Computer nach der Migration in Azure in einer anderen Region replizieren.
 
@@ -51,7 +51,7 @@ Nach der Migration müssen Sie kein Commit oder einen Löschvorgang für ein Fai
 2. Mit der Aktion **Migration abschließen** wird der Migrationsprozess abgeschlossen, die Replikation für den Computer wird entfernt, und die Site Recovery-Berechnung von Kosten für den Computer wird beendet.
 
 ### <a name="step-2-install-the-azure-vm-agent-on-the-virtual-machine"></a>Schritt 2: Installieren des Azure-VM-Agent auf dem virtuellen Computer
-Der [Azure-VM-Agent](../../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux) muss auf dem virtuellen Computer installiert werden, damit die Site Recovery-Erweiterung funktioniert und den virtuellen Computer schützen kann.
+Der [Azure-VM-Agent](../../virtual-machines/windows/agent-user-guide.md) muss auf dem virtuellen Computer installiert werden, damit die Site Recovery-Erweiterung funktioniert und den virtuellen Computer schützen kann.
 
 >[!IMPORTANT]
 >Ab Version 9.7.0.0 wird mit dem Mobility Service-Installationsprogramm auf virtuellen Windows-Computern auch der jeweils neueste verfügbare Azure-VM-Agent installiert. Bei der Migration erfüllt der virtuelle Computer die Voraussetzung der Agentinstallation für die Verwendung von VM-Erweiterungen, einschließlich der Site Recovery-Erweiterung. Der Azure-VM-Agent muss nur dann manuell installiert werden, wenn auf dem migrierten Computer Mobility Service mit Version 9.6 oder früher installiert ist.

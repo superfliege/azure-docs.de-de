@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/20/2017
+ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 8ae6c1eabf87b51dd04b6b6c9686bb89efff3bc0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 83065e6cacd784a3914cfac3ff2552a712688366
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Vergleich von Azure Data Factory V1 und V2
 In diesem Artikel wird Azure Data Factory V2 mit V1 verglichen. Eine Einführung in V1 finden Sie unter [Einführung in Azure Data Factory](v1/data-factory-introduction.md). Eine Einführung in V2 finden Sie [hier](introduction.md).
@@ -27,16 +27,16 @@ In der folgenden Tabelle werden die Funktionen von V1 und V2 verglichen.
 
 | Feature | Version 1 | Version 2 | 
 | ------- | --------- | --------- | 
-| DATASETS | Eine benannte Ansicht mit Daten, in der auf die Daten verwiesen wird, die Sie in Ihren Aktivitäten als Ein- und Ausgabe verwenden möchten. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Ein Azure Blob-Dataset gibt beispielsweise den Blobcontainer und -ordner in Azure Blob Storage an, aus dem die Aktivität die Daten lesen soll.<br/><br/>Mit **Verfügbarkeit** wird das Modell für die Aufteilung in Verarbeitungsfenster für das Dataset (beispielsweise stündlich, täglich usw.) definiert. | Datasets sind in V2 identisch. Sie müssen aber keine **Verfügbarkeits**zeitpläne für die Datasets definieren. Sie können eine Triggerressource definieren, mit der Pipelines über ein Taktplaner-Paradigma geplant werden können. Weitere Informationen finden Sie unter [Trigger](concepts-pipeline-execution-triggers.md#triggers) und [Datasets](concepts-datasets-linked-services.md). | 
+| Datasets | Eine benannte Ansicht mit Daten, in der auf die Daten verwiesen wird, die Sie in Ihren Aktivitäten als Ein- und Ausgabe verwenden möchten. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Ein Azure Blob-Dataset gibt beispielsweise den Blobcontainer und -ordner in Azure Blob Storage an, aus dem die Aktivität die Daten lesen soll.<br/><br/>Mit **Verfügbarkeit** wird das Modell für die Aufteilung in Verarbeitungsfenster für das Dataset (beispielsweise stündlich, täglich usw.) definiert. | Datasets sind in V2 identisch. Sie müssen aber keine **Verfügbarkeits**zeitpläne für die Datasets definieren. Sie können eine Triggerressource definieren, mit der Pipelines über ein Taktplaner-Paradigma geplant werden können. Weitere Informationen finden Sie unter [Trigger](concepts-pipeline-execution-triggers.md#triggers) und [Datasets](concepts-datasets-linked-services.md). | 
 | Verknüpfte Dienste | Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. | Verknüpfte Dienste haben sich im Vergleich zu Data Factory V1 nicht verändert, verfügen aber über eine neue **connectVia**-Eigenschaft für die Nutzung der Data Factory V2 Integration Runtime-Computeumgebung. Weitere Informationen finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md) sowie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). |
-| Pipelines | Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Zur Planung und Ausführung von Pipelines werden „startTime“, „endTime“ und „isPaused“ verwendet. | Bei Pipelines handelt es sich um Gruppen von Aktivitäten, die für Daten durchgeführt werden. Die Zeitplanung von Aktivitäten in der Pipeline wurde aber in neue Triggerressourcen unterteilt. Sie können sich Pipelines in Data Factory V2 eher als „Workfloweinheiten“ vorstellen, die Sie separat über Trigger planen. <br/><br/>Pipelines verfügen in Data Factory V2 nicht über „Fenster“ für die zeitabhängige Ausführung. Die Konzepte startTime, endTime und isPaused aus Data Factory V1 sind in Data Factory V2 nicht mehr vorhanden. Weitere Informationen finden Sie unter [Pipelineausführung und Trigger in Azure Data Factory](concepts-pipeline-execution-triggers.md) und [Pipelines und Aktivitäten in Azure Data Factory](concepts-pipelines-activities.md). |
+| Pipelines | Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Zur Planung und Ausführung von Pipelines werden „startTime“, „endTime“ und „isPaused“ verwendet. | Bei Pipelines handelt es sich um Gruppen von Aktivitäten, die für Daten durchgeführt werden. Die Zeitplanung von Aktivitäten in der Pipeline wurde aber in neue Triggerressourcen unterteilt. Sie können sich Pipelines in Data Factory V2 eher als „Workfloweinheiten“ vorstellen, die Sie separat über Trigger planen. <br/><br/>Pipelines verfügen in Data Factory V2 nicht über „Fenster“ für die zeitabhängige Ausführung. Die Konzepte startTime, endTime und isPaused aus Data Factory V1 sind in Data Factory V2 nicht mehr vorhanden. Weitere Informationen finden Sie unter [Pipelineausführung und Trigger in Azure Data Factory](concepts-pipeline-execution-triggers.md) und [Pipelines und Aktivitäten in Azure Data Factory](concepts-pipelines-activities.md). |
 | Aktivitäten | Mit Aktivitäten werden Aktionen definiert, die Sie auf Ihre Daten in einer Pipeline anwenden. Aktivitäten für die Datenverschiebung (Kopieraktivität) und Datentransformation (z.B. Hive, Pig und MapReduce) werden unterstützt. | In Data Factory V2 sind Aktivitäten weiterhin definierte Aktionen in einer Pipeline. In V2 werden neue [Aktivitäten für die Ablaufsteuerung](concepts-pipelines-activities.md#control-activities) eingeführt. Sie verwenden diese Aktivitäten in einer Ablaufsteuerung (für Schleifen und Verzweigungen). Aktivitäten für die Datenverschiebung und Datentransformation, die in V1 unterstützt wurden, werden auch in V2 unterstützt. Sie können Transformationsaktivitäten definieren, ohne Datasets in V2 zu verwenden. |
 | Hybriddatenverschiebung und Aktivitätsverteilung | Das [Datenverwaltungsgateway](v1/data-factory-data-management-gateway.md) wird nun als Integration Runtime bezeichnet und hat das Verschieben von Daten zwischen dem lokalen Standort und der Cloud unterstützt.| Das Datenverwaltungsgateway wird jetzt als selbstgehostete Integrationslaufzeit bezeichnet. Die Funktionen sind die gleichen wie in V1. <br/><br/> Die Azure-SSIS Integration Runtime in V2 unterstützt auch das Bereitstellung und Ausführen von SSIS-Paketen (SQL Server Integration Services) in der Cloud. Weitere Informationen finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).|
-| Parameter | NA | Parameter sind Schlüssel-Wert-Paare mit schreibgeschützten Konfigurationseinstellungen, die in Pipelines definiert sind. Beim manuellen Ausführen der Pipeline können Sie Argumente für die Parameter übergeben. Wenn Sie einen Planer-Trigger verwenden, kann der Trigger auch Werte für die Parameter übergeben. Die Parameterwerte werden von Aktivitäten in der Pipeline genutzt.  |
+| Parameter | Nicht verfügbar | Parameter sind Schlüssel-Wert-Paare mit schreibgeschützten Konfigurationseinstellungen, die in Pipelines definiert sind. Beim manuellen Ausführen der Pipeline können Sie Argumente für die Parameter übergeben. Wenn Sie einen Planer-Trigger verwenden, kann der Trigger auch Werte für die Parameter übergeben. Die Parameterwerte werden von Aktivitäten in der Pipeline genutzt.  |
 | Ausdrücke | In Data Factory V1 können Sie Funktionen und Systemvariablen in Datenauswahlabfragen und Aktivitäts-/Dataseteigenschaften verwenden. | In Data Factory V2 können Sie Ausdrücke in einem JSON-Zeichenfolgenwert beliebig anordnen. Weitere Informationen finden Sie unter [Ausdrücke und Funktionen in Azure Data Factory](control-flow-expression-language-functions.md).|
-| Pipelineausführungen | NA | Eine einzelne Instanz einer Pipelineausführung. Beispiel: Angenommen, Sie verfügen über eine Pipeline, die um 8:00, 9:00 und 10:00 Uhr ausgeführt wird. In diesem Fall erfolgen drei separate Ausführungen der Pipeline (Pipelineausführungen). Jede Pipelineausführung besitzt eine eindeutige Pipelineausführungs-ID. Die Pipelineausführungs-ID ist eine GUID, die die jeweilige Pipelineausführung eindeutig definiert. Zur Instanziierung von Pipelineausführungen werden in der Regel Argumente an in Pipelines definierte Parameter übergeben. |
-| Aktivitätsausführungen | NA | Eine Instanz einer Aktivitätsausführung in einer Pipeline. | 
-| Triggerausführungen | NA | Eine Instanz einer Triggerausführung. Weitere Informationen finden Sie unter [Trigger](concepts-pipeline-execution-triggers.md). |
+| Pipelineausführungen | Nicht verfügbar | Eine einzelne Instanz einer Pipelineausführung. Beispiel: Angenommen, Sie verfügen über eine Pipeline, die um 8:00, 9:00 und 10:00 Uhr ausgeführt wird. In diesem Fall erfolgen drei separate Ausführungen der Pipeline (Pipelineausführungen). Jede Pipelineausführung besitzt eine eindeutige Pipelineausführungs-ID. Die Pipelineausführungs-ID ist eine GUID, die die jeweilige Pipelineausführung eindeutig definiert. Zur Instanziierung von Pipelineausführungen werden in der Regel Argumente an in Pipelines definierte Parameter übergeben. |
+| Aktivitätsausführungen | Nicht verfügbar | Eine Instanz einer Aktivitätsausführung in einer Pipeline. | 
+| Triggerausführungen | Nicht verfügbar | Eine Instanz einer Triggerausführung. Weitere Informationen finden Sie unter [Trigger](concepts-pipeline-execution-triggers.md). |
 | Scheduling | Die Zeitplanung basiert auf der Start- und Endzeit der Pipeline und der Datasetverfügbarkeit. | Planer-Trigger oder Ausführung über externen Planer. Weitere Informationen finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md). |
 
 Die folgenden Abschnitte enthalten weitere Informationen zu den Funktionen von V2. 
@@ -73,7 +73,7 @@ Ein Anwendungsfall für Schlüssel in ETL-Mustern sind Deltaladevorgänge. Bei d
 ### <a name="other-control-flow-activities"></a>Weitere Aktivitäten der Ablaufsteuerung
 Im Anschluss finden Sie einige weitere Ablaufsteuerungsaktivitäten, die von Data Factory V2 unterstützt werden: 
 
-Steuerungsaktivität | Beschreibung
+Steuerungsaktivität | BESCHREIBUNG
 ---------------- | -----------
 [ForEach-Aktivität](control-flow-for-each-activity.md) | Definiert eine wiederholte Ablaufsteuerung in Ihrer Pipeline. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
 [Webaktivität](control-flow-web-activity.md) | Ruft einen benutzerdefinierten REST-Endpunkt über eine Data Factory-Pipeline auf. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben. 
@@ -128,7 +128,16 @@ Weitere Informationen finden Sie unter [Unterschied zwischen einer benutzerdefin
 Die für V2 aktualisierten SDKs sind nicht mit V1-Clients kompatibel. 
 
 ## <a name="authoring-experience"></a>Benutzeroberfläche für die Erstellung
-Mit Data Factory V1 können Sie Pipelines mithilfe des Data Factory-Editors im Azure-Portal erstellen. Mit Data Factory V2 können Data Factorys derzeit nur über programmgesteuerte Methoden (.NET SDK, REST-API, PowerShell, Python usw.) erstellt werden. Eine Benutzeroberfläche wird noch nicht unterstützt.  Data Factory V1 verfügt über Unterstützung für die Erstellung per SDK, REST und PowerShell.
+
+| &nbsp; | V2 | V1 |
+| ------ | -- | -- | 
+| Azure-Portal | [Ja](quickstart-create-data-factory-portal.md) | [Ja](data-factory-build-your-first-pipeline-using-editor.md) |
+| Azure PowerShell | [Ja](quickstart-create-data-factory-powershell.md) | [Ja](data-factory-build-your-first-pipeline-using-powershell.md) |
+| .NET SDK | [Ja](quickstart-create-data-factory-dot-net.md) | [Ja](data-factory-build-your-first-pipeline-using-vs.md) |
+| REST-API | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| Python SDK | [Ja](quickstart-create-data-factory-python.md) | Nein  |
+| Resource Manager-Vorlage | [Ja](quickstart-create-data-factory-resource-manager-template.md) | [Ja](data-factory-build-your-first-pipeline-using-arm.md) | 
+
 
 ## <a name="monitoring-experience"></a>Benutzeroberfläche für die Überwachung
 In V2 können Sie Data Factorys auch unterstützen, indem Sie [Azure Monitor](monitor-using-azure-monitor.md) verwenden. Die neuen PowerShell-Cmdlets unterstützen die Überwachung von [Integrationslaufzeiten](monitor-integration-runtime.md). Sowohl V1 als auch V2 unterstützen die visuelle Überwachung unter Verwendung einer Überwachungsanwendung, die über das Azure-Portal gestartet werden kann.

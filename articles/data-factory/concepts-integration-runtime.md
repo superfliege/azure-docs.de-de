@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/05/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 5c78f61074258c734cefade28d6aca1055519758
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 5285cddcb64e44cb61c99cc18f8a66d60cd1c0fc
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt:
@@ -28,7 +28,7 @@ Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Co
 
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 der Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (GA) ist, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (GA) ist, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
 
 In Data Factory wird mit einer Aktivität eine durchzuführende Aktion definiert. Mit einem verknüpften Dienst wird ein Zieldatenspeicher oder ein Computedienst definiert. Eine Integrationslaufzeit stellt die Brücke zwischen der Aktivität und verknüpften Diensten dar.  Vom verknüpften Dienst wird darauf verwiesen, und sie stellt die Computeumgebung bereit, in der die Aktivität entweder ausgeführt wird oder aus der sie verteilt wird.  Auf diese Weise kann die Aktivität in der Region durchgeführt werden, die dem Zieldatenspeicher bzw. dem Computedienst am nächsten liegt, und es kann die höchste Leistung erzielt werden, während gleichzeitig die Anforderungen an die Sicherheit und Konformität erfüllt werden.
 
@@ -91,7 +91,7 @@ Zur Erzielung von Hochverfügbarkeit und Skalierbarkeit können Sie die selbstge
 Für die Durchführung von Lift & Shift-Vorgängen für vorhandene SSIS-Workloads können Sie eine Azure-SSIS-Integrationslaufzeit erstellen, um SSIS-Pakete nativ auszuführen.
 
 ### <a name="network-environment"></a>Netzwerkumgebung
-Die Azure-SSIS--Integrationslaufzeit kann entweder im öffentlichen oder im privaten Netzwerk bereitgestellt werden.  Der lokale Datenzugriff wird unterstützt, indem Azure-SSIS-Integrationslaufzeit mit einem virtuellen Netzwerk (VNET) verknüpft wird, für das eine Verbindung mit Ihrem lokalen Netzwerk besteht. Derzeit wird nur das klassische VNET unterstützt. 
+Die Azure-SSIS--Integrationslaufzeit kann entweder im öffentlichen oder im privaten Netzwerk bereitgestellt werden.  Der lokale Datenzugriff wird unterstützt, indem Azure-SSIS-Integrationslaufzeit mit einem virtuellen Netzwerk (VNET) verknüpft wird, für das eine Verbindung mit Ihrem lokalen Netzwerk besteht.  
 
 ### <a name="compute-resource-and-scaling"></a>Computeressource und Skalierung
 Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit Azure-VMs, die speziell für die Ausführung von SSIS-Paketen bestimmt sind. Sie können Ihren eigenen Server mit Azure SQL-Datenbank oder einer verwalteten Instanz (private Vorschau) bereitstellen, um den Katalog mit SSIS-Projekten/-Paketen (SSISDB) zu hosten, der daran angefügt werden soll. Sie können die Computeleistung zentral hochskalieren, indem Sie die Knotengröße angeben und horizontal hochskalieren. Geben Sie hierzu die Anzahl von Knoten im Cluster an. Sie können die Kosten für die Ausführung Ihrer Azure-SSIS-Integrationslaufzeit verwalten, indem Sie sie je nach Bedarf anhalten und starten.
@@ -134,32 +134,32 @@ Für Data Factory wird eine Azure-Integrationslaufzeit in der Region, die der Se
 
 Geografie des Senkendatenspeichers | Standort des Senkendatenspeichers | Für Azure-Integrationslaufzeit verwendeter Standort
 -------------------------------| ----------------| ------------------
-USA | USA (Ost) | USA, Osten
-&nbsp; | USA, Osten 2 | USA, Osten 2
-&nbsp; | USA, Mitte | USA (Mitte)
+USA | USA (Ost) | USA (Ost)
+&nbsp; | USA, Osten 2 | USA (Ost) 2
+&nbsp; | USA (Mitte) | USA (Mitte)
 &nbsp; | USA Nord Mitte | USA Nord Mitte
-&nbsp; | USA, Süden-Mitte | USA Süd Mitte
+&nbsp; | USA Süd Mitte | USA Süd Mitte
 &nbsp; | USA, Westen-Mitte | USA, Westen-Mitte
-&nbsp; | USA (West) | USA (West)
+&nbsp; | USA (Westen) | USA (Westen)
 &nbsp; | USA, Westen 2 | USA, Westen 2
 Kanada | Kanada, Osten | Kanada, Mitte
 &nbsp; | Kanada, Mitte | Kanada, Mitte
 Brasilien | Brasilien Süd | Brasilien Süd
-Europa | Nordeuropa | Europa, Norden
-&nbsp; | Europa, Westen | Westeuropa
+Europa | Nordeuropa | Nordeuropa
+&nbsp; | Europa, Westen | Europa, Westen
 Vereinigtes Königreich | UK, Westen | UK, Süden
 &nbsp; | UK, Süden | UK, Süden
-Asien-Pazifik | Südostasien | Südostasien
-&nbsp; | Ostasien | Südostasien
-Australien | Australien (Osten) | Australien, Osten
-&nbsp; | Australien, Südosten | Australien (Südost)
-Japan | Japan Ost | Japan Ost
-&nbsp; | Japan, Westen | Japan Ost
+Asien-Pazifik | Südostasien | Asien, Südosten
+&nbsp; | Asien, Osten | Asien, Südosten
+Australien | Australien (Osten) | Australien (Osten)
+&nbsp; | Australien, Südosten | Australien, Südosten
+Japan | Japan, Osten | Japan, Osten
+&nbsp; | Japan, Westen | Japan, Osten
 Korea | Korea, Mitte | Korea, Mitte
 &nbsp; | Korea, Süden | Korea, Mitte
-Indien | Indien (Mitte) | Indien (Mitte)
-&nbsp; | Indien, Westen | Indien (Mitte)
-&nbsp; | Indien, Süden | Indien (Mitte)
+Indien | Indien, Mitte | Indien, Mitte
+&nbsp; | Indien, Westen | Indien, Mitte
+&nbsp; | Indien (Süden) | Indien, Mitte
 
 Sie können den Standort einer Azure-Integrationslaufzeit auch auf „Automatisch auflösen“ festlegen. Dies bedeutet, dass Data Factory versucht, basierend auf der Definition des verknüpften Diensts automatisch den besten Standort zu erkennen.
 

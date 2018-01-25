@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: e872062eddd4ae74f6148673a8f0b27751e37ca4
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: fe4481cf851fc021b3073a6d9d6254f546218785
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/24/2018
 ---
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/07/2017
 Mithilfe von Application Insights können Sie Ihre Benutzer durch eine Reihe von Produktnutzungstools überwachen und nachverfolgen: 
 * [Benutzer, Sitzungen, Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 * [Trichter](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-* [Aufbewahrung](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)
+* [Vermerkdauer](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)
 * Kohorten
 * [Arbeitsmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
@@ -52,7 +52,7 @@ Erstellen Sie einen Telemetrieinitialisierer, wie [hier](https://docs.microsoft.
 
 In diesem Beispiel wird die Benutzer-ID auf einen Bezeichner festgelegt, der nach der Sitzung abläuft. Wenn möglich, verwenden Sie eine Benutzer-ID, die sitzungsübergreifend beibehalten wird.
 
-```C#
+```csharp
 
     using System;
     using System.Web;
@@ -93,5 +93,5 @@ In diesem Beispiel wird die Benutzer-ID auf einen Bezeichner festgelegt, der nac
     * [Nutzungsübersicht](app-insights-usage-overview.md)
     * [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](app-insights-usage-segmentation.md)
     * [Trichter](usage-funnels.md)
-    * [Aufbewahrung](app-insights-usage-retention.md)
+    * [Vermerkdauer](app-insights-usage-retention.md)
     * [Arbeitsmappen](app-insights-usage-workbooks.md)

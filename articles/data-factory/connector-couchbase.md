@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 
 ms.author: jingwang
-ms.openlocfilehash: 009e7deedf1573db15fa94784c4c674d3aab0789
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: edef6987ce85127aff5c44ba526cbb5a3879fd90
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-beta"></a>Kopieren von Daten aus Couchbase mithilfe von Azure Data Factory (Beta)
 
@@ -37,7 +37,7 @@ Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Kon
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Couchbase-Connector verwendet werden.
 

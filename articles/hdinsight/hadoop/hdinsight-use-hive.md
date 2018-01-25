@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/23/2017
+ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: 2bcaa53ea0a97186b9617ae2ca757e3c806b325e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: ecf08b765ba17ac410f45bc3604a2aa0f3b4823e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Was sind Apache Hive und HiveQL in Azure HDInsight?
 
@@ -127,10 +127,11 @@ Die folgenden HiveQL-Anweisungen projizieren Spalten in die Datei `/example/data
 
 Im vorherigen Beispiel führen die HiveQL-Anweisungen die folgenden Aktionen aus:
 
-* `set hive.execution.engine=tez;`: Legt das Ausführungsmodul auf Tez fest. Durch die Verwendung von Tez anstelle von MapReduce kann eine höhere Abfrageleistung erreicht werden. Weitere Informationen zu Tez finden Sie im Abschnitt [Verwenden von Apache Tez zur Verbesserung der Leistung](#usetez) .
+* 
+            `set hive.execution.engine=tez;`: Legt die Ausführungs-Engine auf Tez fest. Durch die Verwendung von Tez anstelle von MapReduce kann eine höhere Abfrageleistung erreicht werden. Weitere Informationen zu Tez finden Sie im Abschnitt [Verwenden von Apache Tez zur Verbesserung der Leistung](#usetez) .
 
     > [!NOTE]
-    > Diese Anweisung ist nur erforderlich, wenn Sie einen Windows-basierten HDInsight-Cluster verwenden. Tez ist das Standardausführungsmodul für Linux-basiertes HDInsight.
+    > Diese Anweisung ist nur erforderlich, wenn Sie einen Windows-basierten HDInsight-Cluster verwenden. Tez ist die Standard-Ausführungs-Engine für Linux-basiertes HDInsight.
 
 * `DROP TABLE`: Wenn die Tabelle bereits vorhanden ist, wird sie gelöscht.
 
@@ -179,7 +180,7 @@ Diese Anweisungen führen die folgenden Aktionen aus:
 >
 > `set hive.execution.engine=tez;`
 >
-> Tez ist das Standardmodul für Linux-basierte HDInsight-Cluster.
+> Tez ist die Standard-Engine für Linux-basierte HDInsight-Cluster.
 
 Die [Hive mit Tez-Design-Dokumenten](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) enthalten Details zu Implementierungsauswahl und Konfigurationseinstellungen.
 

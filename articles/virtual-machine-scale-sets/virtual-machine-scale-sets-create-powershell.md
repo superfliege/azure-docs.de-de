@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 1a4c69427e0fa38e9206e2720c4746c97d922df1
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: c5ca90ae303d62c4ad453971f84da78866b0c599
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-azure-powershell"></a>Erstellen einer VM-Skalierungsgruppe mit Azure PowerShell
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung gemäß CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Artikel zu den ersten Schritten erstellen Sie eine VM-Skalierungsgruppe mit Azure PowerShell. Sie können eine Skalierungsgruppe auch per [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) oder mit dem [Azure-Portal](virtual-machine-scale-sets-create-portal.md) erstellen.
@@ -120,7 +120,7 @@ $ipConfig = New-AzureRmVmssIpConfig `
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Erstellen Sie nun mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvm) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, für die das Plattformimage *Windows Server 2016 Datacenter* verwendet wird. Das Objekt *vmssConfig* erstellt zwei VM-Instanzen für „East US“ (USA, Osten) mit den Anmeldeinformationen, die in den Variablen *adminUsername* und *securePassword* angegeben sind. Geben Sie Ihre eigenen Anmeldeinformationen ein, und erstellen Sie wie folgt eine Skalierungsgruppe:
+Erstellen Sie nun mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, für die das Plattformimage *Windows Server 2016 Datacenter* verwendet wird. Das Objekt *vmssConfig* erstellt zwei VM-Instanzen für „East US“ (USA, Osten) mit den Anmeldeinformationen, die in den Variablen *adminUsername* und *securePassword* angegeben sind. Geben Sie Ihre eigenen Anmeldeinformationen ein, und erstellen Sie wie folgt eine Skalierungsgruppe:
 
 ```azurepowershell-interactive
 # Provide your own secure password for use with the VM instances

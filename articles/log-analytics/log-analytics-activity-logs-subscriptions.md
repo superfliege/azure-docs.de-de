@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: d8c970b322be7f735e51c7b246b2421589c91813
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ded0b4cdcbac747d52435023a24b5719f3c58758
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics
 
@@ -27,7 +27,7 @@ Wenn der Log Analytics-Arbeitsbereich zum gleichen oder einem anderen Azure-Abon
 
 ## <a name="overview"></a>Übersicht
 
-Entsprechend der in diesem Szenario verwendeten Strategie soll das Azure-Aktivitätsprotokoll Ereignisse an einen [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) senden, während eine [Logik-App](../logic-apps/logic-apps-what-are-logic-apps.md) diese an Ihren Log Analytics-Arbeitsbereich sendet. 
+Entsprechend der in diesem Szenario verwendeten Strategie soll das Azure-Aktivitätsprotokoll Ereignisse an einen [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) senden, während eine [Logik-App](../logic-apps/logic-apps-overview.md) diese an Ihren Log Analytics-Arbeitsbereich sendet. 
 
 ![Datenfluss vom Aktivitätsprotokoll zu Log Analytics](media/log-analytics-activity-logs-subscriptions/data-flow-overview.png)
 
@@ -36,11 +36,11 @@ Vorteile dieses Ansatzes:
 - Es ist nur minimaler Code erforderlich, und es muss keine Serverinfrastruktur bereitgestellt werden.
 
 In diesem Artikel werden Sie durch folgende Aufgaben geführt:
-1. Erstellen eines Event Hubs 
+1. Erstellen Sie einen Event Hub. 
 2. Exportieren von Aktivitätsprotokollen in einen Event Hub mithilfe eines Exportprofils für das Azure-Aktivitätsprotokoll
 3. Erstellen einer Logik-App, die Ereignisse aus dem Event Hub liest und an Log Analytics sendet
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Nachfolgend sind die Anforderungen an die Azure-Ressourcen aufgeführt, die in diesem Szenario verwendet werden.
 
 - Der Event Hub-Namespace muss nicht zu dem Abonnement gehören, das die Protokolle ausgibt. Der Benutzer, der die Einstellung konfiguriert, benötigt die entsprechenden Zugriffsberechtigungen für beide Abonnements. Wenn Sie in einem Azure Active Directory über mehrere Abonnements verfügen, können Sie die Aktivitätsprotokolle für alle Abonnements an einen einzelnen Event Hub senden.
@@ -126,9 +126,9 @@ Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die un
 
     ![Erstellen einer Logik-App](media/log-analytics-activity-logs-subscriptions/create-logic-app.png)
 
-   |Einstellung | Beschreibung  |
+   |Einstellung | BESCHREIBUNG  |
    |:---|:---|
-   | Name           | Eindeutiger Name für die Logik-App. |
+   | NAME           | Eindeutiger Name für die Logik-App. |
    | Abonnement   | Wählen Sie das Azure-Abonnement aus, das die Logik-App enthalten soll. |
    | Ressourcengruppe | Wählen Sie für die Logik-App eine vorhandene Azure-Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. |
    | Speicherort       | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus. |
@@ -137,11 +137,11 @@ Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die un
     
 3. Klicken Sie auf **Erstellen**. Wenn die Benachrichtigung **Bereitstellung erfolgreich** angezeigt wird, klicken Sie auf **Zu Ressource wechseln**, um Ihre Logik-App zu öffnen.
 
-4. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App** aus. 
+4. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**. 
 
 Der Logik-App-Designer zeigt nun die verfügbaren Connectors und die dazugehörigen Trigger an, mit denen Sie den Logik-App-Workflow starten.
 
-<!-- Learn [how to create a logic app](../logic-apps/logic-apps-create-a-logic-app.md). -->
+<!-- Learn [how to create a logic app](../logic-apps/quickstart-create-first-logic-app-workflow.md). -->
 
 ### <a name="add-event-hub-trigger"></a>Hinzufügen des Event Hub-Triggers
 
@@ -293,7 +293,7 @@ Die Aktion [Datensammler von Azure Log Analytics](https://docs.microsoft.com/con
 
    ![Hinzufügen der Aktion zum Senden der Daten an Log Analytics in Logik-Apps](media/log-analytics-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Geben Sie einen Namen für die Verbindung ein, und fügen Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** für Ihren Log Analytics-Arbeitsbereich ein.  Klicken Sie auf **Erstellen**.
+3. Geben Sie einen Namen für die Verbindung ein, und fügen Sie die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** für Ihren Log Analytics-Arbeitsbereich ein.  Klicken Sie auf **Create**.
 
    ![Hinzufügen der Log Analytics-Verbindung in Logik-Apps](media/log-analytics-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
@@ -301,7 +301,7 @@ Die Aktion [Datensammler von Azure Log Analytics](https://docs.microsoft.com/con
 
     ![Konfigurieren der Aktion „Daten senden“](media/log-analytics-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |Einstellung        | Wert           | Beschreibung  |
+   |Einstellung        | Wert           | BESCHREIBUNG  |
    |---------------|---------------------------|--------------|
    |JSON-Anforderungstext  | **Ausgabe** von der **Compose**-Aktion | Ruft die Datensätze aus dem Text der Compose-Aktion ab. |
    | Name des benutzerdefinierten Protokolls | AzureActivity | Name der benutzerdefinierten Protokolltabelle, die in Log Analytics zur Aufnahme der importierten Daten erstellt werden soll. |

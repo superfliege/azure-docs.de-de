@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8adda0d9cd6af98c04f2432eeabbc003ad403719
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 49b4bbfda4518b03ef6080bec1e2a493933af4f5
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen
 
@@ -27,7 +27,7 @@ Damit Sie schneller mit dem Erstellen von Workflows beginnen können, werden von
 
 Hier sind einige Vorlagenkategorien angegeben:
 
-| Vorlagentyp | Beschreibung | 
+| Vorlagentyp | BESCHREIBUNG | 
 | ------------- | ----------- | 
 | Enterprise Cloud-Vorlagen | Dienen zum Integrieren von Azure Blob, Dynamics CRM, Salesforce, Box, Azure Blob und enthalten andere Connectors für die Anforderungen Ihrer Unternehmenscloud. Sie können diese Vorlagen beispielsweise verwenden, um geschäftliche Leads zu organisieren oder Ihre Unternehmensdateidaten zu sichern. | 
 | Persönliche Produktivitätsvorlagen | Dienen zum Verbessern der persönlichen Produktivität, indem tägliche Erinnerungen festgelegt, wichtige Arbeitselemente in Aufgabenlisten umgewandelt und langwierige Aufgaben bis hinunter zu einem Genehmigungsschritt durch einen einzelnen Benutzer automatisiert werden. | 
@@ -36,7 +36,7 @@ Hier sind einige Vorlagenkategorien angegeben:
 | Vorlagen für Protokollmuster | Dienen zum Implementieren von Protokollmustern, z.B. Anforderung/Antwort per HTTP und Integrationen per FTP und SFTP. Verwenden Sie diese Vorlagen unverändert, oder erweitern Sie sie, um komplexe Protokollmuster abzubilden. | 
 ||| 
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen. Weitere Informationen zum Erstellen einer Logik-App finden Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen. Weitere Informationen zum Erstellen einer Logik-App finden Sie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-logic-apps-from-templates"></a>Erstellen von Logik-Apps aus Vorlagen
 
@@ -50,12 +50,12 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
    ![Angeben von Details zur Logik-App](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **Name** | *Name Ihrer Logik-App* | Geben Sie einen eindeutigen Namen für die Logik-App an. | 
    | **Abonnement** | *Name-Ihres-Azure-Abonnements* | Wählen Sie das gewünschte Azure-Abonnement aus. | 
    | **Ressourcengruppe** | *Name-Ihrer-Azure-Ressourcengruppe* | Erstellen bzw. wählen Sie eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) für diese Logik-App und zum Organisieren aller Ressourcen, die der App zugeordnet sind. | 
-   | **Standort** | *Ihre-Azure-Datencenterregion* | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus, z.B. „USA, Westen“. | 
+   | **Location** | *Ihre-Azure-Datencenterregion* | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus, z.B. „USA, Westen“. | 
    | **Log Analytics** | **Aus** (Standard) oder **Ein** | Aktivieren Sie die [Diagnoseprotokollierung](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) für Ihre Logik-App über [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Hierfür ist es erforderlich, dass Sie bereits über einen [Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md)-Arbeitsbereich verfügen. | 
    |||| 
 
@@ -67,7 +67,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
    Nachdem Ihre Logik-App von Azure bereitgestellt wurde, wird der Designer für Logik-Apps geöffnet, und es wird eine Seite mit einem Einführungsvideo angezeigt. 
    Unterhalb des Videos sind Vorlagen für häufig verwendete Logik-App-Muster angegeben. 
 
-5. Scrollen Sie weiter, um die Option **Vorlagen** nach dem Einführungsvideo und den häufig verwendeten Triggern anzuzeigen. Wählen Sie eine vordefinierte Vorlage aus. Beispiel:
+5. Scrollen Sie weiter, um die Option **Vorlagen** nach dem Einführungsvideo und den häufig verwendeten Triggern anzuzeigen. Wählen Sie eine vordefinierte Vorlage aus. Beispiel: 
 
    ![Auswählen einer Logik-App-Vorlage](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
@@ -75,7 +75,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
    > Wählen Sie die Option **Leere Logik-App**, um Ihre Logik-App von Grund auf neu zu erstellen.
 
    Wenn Sie eine vordefinierte Vorlage auswählen, können Sie weitere Informationen zu dieser Vorlage anzeigen. 
-   Beispiel:
+   Beispiel: 
 
    ![Auswählen einer vordefinierten Vorlage](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
@@ -89,7 +89,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
    * Wählen Sie die Option **Weiter**, falls Sie diese Verbindung bereits eingerichtet haben.
 
-   Beispiel:
+   Beispiel: 
 
    ![Erstellen von Verbindungen](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
@@ -107,16 +107,16 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com "Azure-Portal") im Designer für Logik-Apps nach Ihrer Logik-App, und öffnen Sie sie.
 
-2. Wählen Sie in der Symbolleiste des Designers die Option **Vorlagen**. Bei dieser Aktion werden alle nicht gespeicherten Änderungen verworfen, und es wird eine Warnmeldung angezeigt, damit Sie das Fortfahren bestätigen können. Wählen Sie **OK**, um den Vorgang zu bestätigen. Beispiel:
+2. Wählen Sie in der Symbolleiste des Designers die Option **Vorlagen**. Bei dieser Aktion werden alle nicht gespeicherten Änderungen verworfen, und es wird eine Warnmeldung angezeigt, damit Sie das Fortfahren bestätigen können. Wählen Sie **OK**, um den Vorgang zu bestätigen. Beispiel: 
 
    ![Auswählen von „Vorlagen“](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
-3. Scrollen Sie weiter, um die Option **Vorlagen** nach dem Einführungsvideo und den häufig verwendeten Triggern anzuzeigen. Wählen Sie eine vordefinierte Vorlage aus. Beispiel:
+3. Scrollen Sie weiter, um die Option **Vorlagen** nach dem Einführungsvideo und den häufig verwendeten Triggern anzuzeigen. Wählen Sie eine vordefinierte Vorlage aus. Beispiel: 
 
    ![Auswählen einer Logik-App-Vorlage](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
    Wenn Sie eine vordefinierte Vorlage auswählen, können Sie weitere Informationen zu dieser Vorlage anzeigen. 
-   Beispiel:
+   Beispiel: 
 
    ![Auswählen einer vordefinierten Vorlage](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
@@ -146,14 +146,14 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
 Nachdem Sie Ihre Änderungen an der Vorlage vorgenommen haben, können Sie sie speichern. Bei dieser Aktion wird Ihre Logik-App auch automatisch veröffentlicht.
 
-Wählen Sie in der Symbolleiste des Designers **Speichern**.
+Wählen Sie auf der Symbolleiste des Designers **Speichern**.
 
 ![Speichern und Veröffentlichen Ihrer Logik-App](./media/logic-apps-create-logic-apps-from-templates/logic-app-save.png)  
 
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder Ihre Stimme abgeben möchten, können Sie dies auf der [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish) durchführen.
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

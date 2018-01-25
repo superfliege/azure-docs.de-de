@@ -3,7 +3,7 @@ title: 'Azure AD Connect: Automatisches Upgrade | Microsoft Docs'
 description: Dieses Thema beschreibt das integrierte automatische Upgradefeature in der Azure AD Connect-Synchronisierung.
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 49fc908006f19135b4c4553eef97d2f396db33ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddf23193e7b9c2fb7a69045be539841dbb6e6249
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatisches Upgrade
 Diese Funktion wurde mit Build 1.1.105.0 eingeführt (veröffentlicht im Februar 2016).
@@ -34,7 +34,7 @@ Das automatische Upgrade ist in folgenden Fällen standardmäßig aktiviert:
 
 Der aktuelle Zustand des automatischen Upgrades kann über das PowerShell-Cmdlet `Get-ADSyncAutoUpgrade`angezeigt werden. Folgende Zustände sind möglich:
 
-| Zustand | Kommentar |
+| State (Zustand) | Kommentar |
 | --- | --- |
 | Aktiviert |Das automatische Upgrade ist aktiviert. |
 | Ausgesetzt |Nur vom System festgelegt. Das System ist nicht mehr zum Erhalten automatischer Upgrades berechtigt. |
@@ -64,7 +64,7 @@ So können Sie alle Ereignisprotokolle anzeigen, die dem Status für das automat
 
 Der Ergebniscode hat ein Präfix mit einer Übersicht über den Status.
 
-| Ergebniscodepräfix | Beschreibung |
+| Ergebniscodepräfix | BESCHREIBUNG |
 | --- | --- |
 | Erfolgreich |Das Upgrade der Installation wurde erfolgreich durchgeführt. |
 | UpgradeAborted |Das Upgrade wurde durch ein temporäres Problem angehalten. Das Upgrade wird erneut ausgeführt, und es wird davon ausgegangen, dass es später erfolgreich durchgeführt werden kann. |
@@ -72,7 +72,7 @@ Der Ergebniscode hat ein Präfix mit einer Übersicht über den Status.
 
 Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt werden. Es werden nicht alle Meldungen aufgeführt, aber aus den Ergebnismeldungen wird das jeweilige Problem klar.
 
-| Ergebnismeldung | Beschreibung |
+| Ergebnismeldung | BESCHREIBUNG |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Es konnte nicht in die Registrierung geschrieben werden. |

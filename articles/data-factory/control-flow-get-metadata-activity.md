@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2017
+ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 99182b2ed91f6d60f499be0078077bf52fe8b366
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20f3d4bb876a46b67385dd4435296e149641149e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 Die Aktivität „Metadaten abrufen“ kann zum Abrufen von Metadaten für alle Daten in Azure Data Factory verwendet werden. Diese Aktivität wird nur für Data Factorys der Version 2 unterstützt. Sie kann in folgenden Szenarien verwendet werden:
@@ -77,7 +77,7 @@ Im folgenden Beispiel gibt die Aktivität „Metadaten abrufen“ Metadaten zu d
 }
 ```
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 ```json
 {
     "size": 1024,
@@ -94,10 +94,10 @@ Im folgenden Beispiel gibt die Aktivität „Metadaten abrufen“ Metadaten zu d
 ## <a name="type-properties"></a>Typeigenschaften
 Die Aktivität „Metadaten abrufen“ kann zurzeit die folgenden Typen von Metadateninformationen aus einem Azure-Speicherdataset abrufen.
 
-Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
+Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-fieldList | Listet die erforderlichen Typen der Metadateninformationen auf.  | <ul><li>size</li><li>structure</li><li>lastModified</li></ul> |    Nein<br/>Falls leer, gibt die Aktivität alle drei unterstützten Metadateninformationen zurück. 
-Dataset | Das Referenzdataset, dessen Metadatenaktivität von der Aktivität „Metadaten abrufen“ abgerufen werden soll. <br/><br/>Der derzeit unterstützte Datasettyp ist Azure-Blob. Die beiden untergeordneten Eigenschaften sind: <ul><li><b>referenceName</b>: Verweis auf ein vorhandenes Azure-Blobdataset</li><li><b>type</b>: Da auf das Dataset verwiesen wird, ist der Typ „DatasetReference“</li></ul> |    <ul><li>String</li><li>DatasetReference</li></ul> | Ja
+fieldList | Listet die erforderlichen Typen der Metadateninformationen auf.  | <ul><li>size</li><li>structure</li><li>lastModified</li></ul> |    Nein <br/>Falls leer, gibt die Aktivität alle drei unterstützten Metadateninformationen zurück. 
+dataset | Das Referenzdataset, dessen Metadatenaktivität von der Aktivität „Metadaten abrufen“ abgerufen werden soll. <br/><br/>Der derzeit unterstützte Datasettyp ist Azure-Blob. Die beiden untergeordneten Eigenschaften sind: <ul><li><b>referenceName</b>: Verweis auf ein vorhandenes Azure-Blobdataset</li><li><b>type</b>: Da auf das Dataset verwiesen wird, ist der Typ „DatasetReference“</li></ul> |    <ul><li>Zeichenfolge</li><li>DatasetReference</li></ul> | Ja
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 

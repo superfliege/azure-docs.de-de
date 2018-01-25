@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4b0af784ad8f18e7dba49a32320dd6a6a7c5ad99
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: fb2b534955a2cd0e1294df5425550ac6958ff3c2
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Verschieben von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-amazon-simple-storage-service-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-amazon-simple-storage-service-connector.md)
 > * [Version 2 – Vorschauversion](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from Amazon Simple Storage Service using Azure Data Factory](../connector-amazon-simple-storage-service.md) (Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from Amazon Simple Storage Service using Azure Data Factory](../connector-amazon-simple-storage-service.md) (Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory).
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Amazon Simple Storage Service (S3) zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
@@ -64,16 +64,16 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Ein verknüpfter Dienst verbindet einen Data Store mit einer Data Factory. Sie erstellen einen verknüpften Dienst vom Typ **AwsAccessKey**, um Ihren Amazon S3-Datenspeicher mit ihrer Data Factory zu verbinden. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Amazon S3 (AwsAccessKey) verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| accessKeyID |ID des geheimen Zugriffsschlüssels. |string |Ja |
+| accessKeyID |ID des geheimen Zugriffsschlüssels. |Zeichenfolge |Ja |
 | secretAccessKey |Der geheime Zugriffsschlüssel selbst. |Verschlüsselte geheime Zeichenfolge |Ja |
 
 >[!NOTE]
 >Dieser Connector erfordert Zugriffsschlüssel für ein IAM-Konto zum Kopieren von Daten aus Amazon S3. [Temporäre Sicherheitsanmeldeinformationen](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) werden nicht unterstützt.
 >
 
-Beispiel:
+Beispiel: 
 
 ```json
 {
@@ -93,14 +93,14 @@ Legen Sie die Typeigenschaft des Datasets auf **AmazonS3** fest, um ein Dataset 
 
 Abschnitte wie „structure“, „availability“ und „policy“ sind bei allen Dataset-Typen (wie etwa SQL-Datenbank, Azure-Blob und Azure-Tabelle) ähnlich. Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset vom Typ **AmazonS3** (mit dem Amazon S3-Dataset) hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| bucketName |Der Name des S3-Buckets. |string |Ja |
-| key |Der S3-Objektschlüssel. |string |Nein |
-| prefix |Präfix für den S3-Objektschlüssel. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. Gilt nur, wenn der Schlüssel leer ist. |string |Nein |
-| Version |Die Version des S3-Objekts, wenn die S3-Versionsverwaltung aktiviert ist. |String |Nein |
-| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den Formatabschnitt in den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein | |
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Die unterstützten Grade sind: **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein | |
+| bucketName |Der Name des S3-Buckets. |Zeichenfolge |Ja |
+| key |Der S3-Objektschlüssel. |Zeichenfolge |Nein  |
+| prefix |Präfix für den S3-Objektschlüssel. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. Gilt nur, wenn der Schlüssel leer ist. |Zeichenfolge |Nein  |
+| Version |Die Version des S3-Objekts, wenn die S3-Versionsverwaltung aktiviert ist. |Zeichenfolge |Nein  |
+| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den Formatabschnitt in den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein  | |
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Die unterstützten Grade sind: **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein  | |
 
 
 > [!NOTE]
@@ -174,9 +174,9 @@ Gleiches gilt für die Eigenschaft **prefix** eines Amazon S3-Datasets. Eine Lis
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar. Eigenschaften im Abschnitt **typeProperties** der Aktivität können je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken. Wenn es sich bei einer Quelle in der Kopieraktivität um eine Quelle vom Typ **FileSystemSource** handelt (zu dem Amazon S3 gehört), ist im Abschnitt **typeProperties** die folgende Eigenschaft verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| recursive |Gibt an, ob S3-Objekte rekursiv im Verzeichnis aufgelistet werden. |True/False |Nein |
+| recursive |Gibt an, ob S3-Objekte rekursiv im Verzeichnis aufgelistet werden. |True/False |Nein  |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON-Beispiel: Kopieren von Daten aus Amazon S3 in Azure Blob Storage
 Dieses Beispiel zeigt, wie Sie Daten aus Amazon S3 in Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Data Factory direkt in eine [beliebige der unterstützten Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) kopiert werden.

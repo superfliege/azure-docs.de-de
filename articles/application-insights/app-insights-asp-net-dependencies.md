@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: fe02adafbf96df22462683c69813b05c182d3106
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 060f1c9d2c74ed45e8077ec99503a1d7b885d325
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Einrichten von Application Insights: Abhängigkeitsüberwachung
 Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](app-insights-overview.md) misst, wie lange die Anwendung auf Abhängigkeiten wartet, und wie oft ein Abhängigkeitsaufruf nicht funktioniert. Sie können bestimmte Aufrufe untersuchen, und diese mit Anforderungen und Ausnahmen in Verbindung bringen.
@@ -62,7 +62,7 @@ Die Anwendungszuordnung dient als visuelle Hilfe zum Erkennen von Abhängigkeite
 * **Navigieren Sie aus den Feldern** zur relevanten Abhängigkeit und zu anderen Diagrammen.
 * **Heften Sie die Zuordnung** an das [Dashboard](app-insights-dashboards.md) an, wo sie voll funktionsfähig sein wird.
 
-[detaillierte Kapazitätsplanung](app-insights-app-map.md)
+[Weitere Informationen](app-insights-app-map.md).
 
 ## <a name="performance-and-failure-blades"></a>Blätter „Performance“ und „Failure“
 Das Blatt „Performance“ zeigt die Dauer von Abhängigkeitsaufrufen, die durch die Serveranwendung durchgeführt werden. Es gibt ein zusammenfassendes Diagramm und eine nach Aufrufen unterteilte Tabelle.
@@ -178,7 +178,7 @@ Sie können Code schreiben, der Abhängigkeitsinformationen unter Verwendung der
 
 Beispiel: Wenn Sie Ihren Code mit einer Assembly erstellen, die Sie nicht selbst geschrieben haben, könnten Sie die Zeit aller Aufrufe ermitteln, um herauszufinden, welchen Beitrag sie an Ihren Reaktionszeiten hat. Um diese Daten in den Abhängigkeitsdiagrammen in Application Insights anzuzeigen, senden Sie sie mit `TrackDependency`.
 
-```C#
+```csharp
 
             var startTime = DateTime.UtcNow;
             var timer = System.Diagnostics.Stopwatch.StartNew();
@@ -209,6 +209,6 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Exceptions](app-insights-asp-net-exceptions.md)
+* [Ausnahmen](app-insights-asp-net-exceptions.md)
 * [Daten zu Seiten und Benutzern](app-insights-javascript.md)
 * [Availability](app-insights-monitor-web-app-availability.md)

@@ -11,14 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 01/22/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 6a90ac77cd605a41f1fc7d0958662a7e752e3849
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: c471baa287c3a51e9787cc2103b23c2bab458db2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal
 
@@ -38,10 +38,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 2. Klicken Sie unter **Azure Databricks (Vorschauversion)** auf **Erstellen**.
 
-    > [!NOTE]
-    > Azure Databricks ist derzeit als eingeschränkte Vorschauversion verfügbar. Wenn Ihr Azure-Abonnement für die Teilnahme an der Vorschau in Betracht gezogen werden soll, füllen Sie das [Registrierungsformular](https://databricks.azurewebsites.net/) aus.
-
-2. Geben Sie für den **Azure Databricks-Dienst** folgende Werte an:
+3. Geben Sie für den **Azure Databricks-Dienst** folgende Werte an:
 
     ![Erstellen eines Azure Databricks-Arbeitsbereichs](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Erstellen eines Azure Databricks-Arbeitsbereichs")
 
@@ -50,7 +47,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
     * Geben Sie für **Ressourcengruppe** an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
     * Wählen Sie unter **Standort** die Option **USA, Osten 2** aus. Informationen zu weiteren verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 
-3. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Create**.
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Erstellen eines Spark-Clusters in Databricks
 
@@ -89,7 +86,7 @@ Gehen Sie wie folgt vor, um ein Notizbuch in Databricks zu erstellen, das Notizb
 
     ![Erstellen eines Notizbuchs in Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Erstellen eines Notizbuchs in Databricks")
 
-    Klicken Sie auf **Erstellen**.
+    Klicken Sie auf **Create**.
 
 3. Ersetzen Sie im folgenden Codeausschnitt `{YOUR STORAGE ACCOUNT NAME}` durch den Namen des Azure-Speicherkontos, das Sie erstellt haben, und `{YOUR STORAGE ACCOUNT ACCESS KEY}` durch Ihren Speicherkonto-Zugriffsschlüssel. Fügen Sie den Codeausschnitt in eine leere Zelle des Notizbuchs ein, und drücken Sie UMSCHALT+EINGABE, um die Codezelle auszuführen. Dieser Codeausschnitt konfiguriert das Notizbuch zum Lesen von Daten aus Azure Blob Storage.
 

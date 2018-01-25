@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 835f1804b204b988b86b13f48cd9143f6bc81cee
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 49fb249b6ff1169527829c77a6539926ec99b912
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Tutorial: Erstellen einer Data Factory mit Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/02/2017
 
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung von Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Erstellen einer Data Factory und Pipeline mit dem .NET SDK](../quickstart-create-data-factory-dot-net.md).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [Quickstart: Create a data factory using Azure Data Factory version 2 (Schnellstart: Erstellen einer Data Factory mithilfe von Version 2 von Azure Data Factory)](../quickstart-create-data-factory-dot-net.md).
 
 In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit Visual Studio erstellen. Sie erstellen ein Visual Studio-Projekt, indem Sie die Data Factory-Projektvorlage verwenden, Data Factory-Entitäten (verknüpfte Dienste, Datasets und Pipeline) im JSON-Format definieren und diese Entitäten anschließend in der Cloud veröffentlichen oder bereitstellen. 
 
@@ -119,7 +119,7 @@ Bei einem verknüpften bedarfsgesteuerten HDInsight-Dienst wird der HDInsight-Cl
 
     Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-    Eigenschaft | Beschreibung
+    Eigenschaft | BESCHREIBUNG
     -------- | ----------- 
     ClusterSize | Gibt die Größe des HDInsight-Hadoop-Clusters an.
     TimeToLive | Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird.
@@ -168,12 +168,12 @@ In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für 
 
     Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-    Eigenschaft | Beschreibung |
+    Eigenschaft | BESCHREIBUNG |
     -------- | ----------- |
-    Typ |Die Type-Eigenschaft wird auf **AzureBlob** festgelegt, da sich Daten in Azure Blob Storage befinden.
+    type |Die Type-Eigenschaft wird auf **AzureBlob** festgelegt, da sich Daten in Azure Blob Storage befinden.
     linkedServiceName | Verweist auf den „AzureStorageLinkedService1“, den Sie zuvor erstellt haben.
     fileName |Diese Eigenschaft ist optional. Wenn Sie diese Eigenschaft nicht angeben, werden alle Dateien in „folderPath“ übernommen. In diesem Fall wird nur „input.log“ verarbeitet.
-    Typ | Da die Protokolldateien im Textformat vorliegen, verwenden wir „TextFormat“. |
+    type | Da die Protokolldateien im Textformat vorliegen, verwenden wir „TextFormat“. |
     columnDelimiter | Spalten werden in den Protokolldateien per Komma (`,`) voneinander getrennt.
     frequency/interval | „frequency“ wird auf „Month“ und „interval“ auf „1“ festgelegt, was bedeutet, dass die Eingabeslices monatlich verfügbar sind.
     external | Diese Eigenschaft wird auf „true“ festgelegt, wenn die Eingabedaten für die Aktivität nicht von der Pipeline generiert werden. Die Eigenschaft wird nur für Eingabedatasets angegeben. Legen Sie sie für das Eingabedataset der ersten Aktivität immer auf „true“ fest.
@@ -405,7 +405,7 @@ Sie können die App „Überwachung und Verwaltung“ auch zum Überwachen Ihrer
 > Die Eingabedatei wird bei erfolgreicher Verarbeitung des Slice gelöscht. Wenn Sie den Slice erneut ausführen oder das Tutorial nochmals durchgehen möchten, laden Sie die Eingabedatei (input.log) daher in den Ordner `inputdata` des Containers `adfgetstarted` hoch.
 
 ### <a name="additional-notes"></a>Zusätzliche Hinweise
-- Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten. Informationen zu allen Quellen und Senken, die von der Kopieraktivität unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Eine Liste mit Computediensten, die von Data Factory unterstützt werden, finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md) .
+- Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten. Informationen zu allen Quellen und Senken, die von der Kopieraktivität unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Eine Liste mit Computediensten, die von Data Factory unterstützt werden, finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md) .
 - Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure Data Factory. Informationen zu allen Quellen und Senken, die von der Kopieraktivität unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Eine Liste mit den Computediensten, die von Data Factory unterstützt werden, und den [Transformationsaktivitäten](data-factory-data-transformation-activities.md), die darunter ausgeführt werden können, finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md).
 - Details zu JSON-Eigenschaften, die für die Definition von verknüpften Azure Storage-Diensten verwendet werden, finden Sie unter [Verschieben von Daten in einen und aus einem Azure-Blob mithilfe von Azure Data Factory](data-factory-azure-blob-connector.md#azure-storage-linked-service).
 - Anstelle eines bedarfsgesteuerten HDInsight-Clusters könnten Sie Ihren eigenen HDInsight-Cluster verwenden. Weitere Informationen finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md) .
@@ -561,8 +561,8 @@ In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (H
 Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Ausführliche Informationen finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
 
 
-## <a name="see-also"></a>Weitere Informationen
-| Thema | Beschreibung |
+## <a name="see-also"></a>Siehe auch
+| Thema | BESCHREIBUNG |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter Workflows für Ihr Szenario oder Ihr Unternehmen genutzt werden können. |
 | [Datasets](data-factory-create-datasets.md) |Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory. |

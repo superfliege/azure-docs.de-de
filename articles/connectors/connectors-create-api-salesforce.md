@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/05/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: c2e2efd356382df9404f5c4ed54f24758b2cd22b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2bb865924191418c12b9fea37edfbfb282f334eb
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-salesforce-connector"></a>Erste Schritte mit dem Salesforce-Connector
 Der Salesforce-Connector bietet eine API zum Verwenden von Salesforce-Objekten.
 
-Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
+Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
 
 ## <a name="connect-to-salesforce-connector"></a>Herstellen einer Verbindung mit dem Salesforce-Connector
 Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine *Verbindung* mit dem Dienst herstellen. Eine [Verbindung](connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.  
@@ -35,19 +35,19 @@ Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zun
 > 
 
 ## <a name="use-a-salesforce-connector-trigger"></a>Verwenden eines Triggers des Salesforce-Connectors
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 > [!INCLUDE [Steps to create a Salesforce trigger](../../includes/connectors-create-api-salesforce-trigger.md)]
 > 
 > 
 
-## <a name="add-a-condition"></a>Eine Bedingung hinzufügen
+## <a name="add-a-condition"></a>Bedingung hinzufügen
 > [!INCLUDE [Steps to create a Salesforce condition](../../includes/connectors-create-api-salesforce-condition.md)]
 > 
 > 
 
 ## <a name="use-a-salesforce-connector-action"></a>Verwenden einer Aktion des Salesforce-Connectors
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 > [!INCLUDE [Steps to create a Salesforce action](../../includes/connectors-create-api-salesforce-action.md)]
 > 
@@ -58,5 +58,5 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/salesforce/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
+[Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

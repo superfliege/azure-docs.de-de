@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4241aedebd388f24834e573fac7a8a61371e728a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e72cdee5b164fcd4944f4f1f95ff22bb5ceba6a4
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory Editor – Beispiele
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/03/2017
 ## <a name="samples-on-github"></a>Beispiele für GitHub
 Das [Azure-DataFactory-Repository auf GitHub](https://github.com/azure/azure-datafactory) enthält mehrere Beispiele, mit deren Hilfe Sie den Azure Data Factory-Dienst rasch in Betrieb nehmen können. Sie können die Skripts auch ändern, um sie in eigenen Anwendungen zu verwenden. Der Ordner "Samples\JSON" enthält JSON-Codeausschnitte für gängige Szenarien.
 
-| Beispiel | Beschreibung |
+| Beispiel | BESCHREIBUNG |
 |:--- |:--- |
 | [ADF: Exemplarische Vorgehensweise](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |Dieses Beispiel bietet eine umfassende exemplarische Vorgehensweise zur Verarbeitung von Protokolldateien mithilfe von Azure Data Factory, um sinnvolle Erkenntnisse aus den Protokolldateien zu gewinnen. <br/><br/>Bei dieser Vorgehensweise sammelt die Data Factory-Pipeline Beispielprotokolle, verarbeitet und ergänzt die Daten aus Protokollen durch Verweisdaten und transformiert die Daten zur Bewertung der Effektivität einer vor Kurzem gestarteten Marketingkampagne. |
 | [JSON-Beispiele](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |Dieses Beispiel enthält JSON-Beispiele für häufige Szenarien. |
@@ -49,7 +49,7 @@ Das [Azure-DataFactory-Repository auf GitHub](https://github.com/azure/azure-dat
 ## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 Auf GitHub finden Sie die folgenden Azure Resource Manager-Vorlagen für Data Factory.
 
-| Vorlage | Beschreibung |
+| Vorlage | BESCHREIBUNG |
 | --- | --- |
 | [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten aus der angegebenen Azure Blob Storage-Instanz in die Azure SQL-Datenbank kopiert. |
 | [Kopieren von Daten aus Salesforce in Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Durch die Bereitstellung dieser Vorlage wird eine Azure Data Factory-Instanz mit einer Pipeline erstellt, die Daten aus dem angegebenen Salesforce-Konto in die Azure Blob Storage-Instanz kopiert. |

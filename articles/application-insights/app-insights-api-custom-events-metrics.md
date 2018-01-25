@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: a94a7da29d9f3c6f745df7e91ec9e19b66435eae
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 7d797716fb98ac85f11f956e732e08820b56affc
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -158,7 +158,7 @@ So senden Sie einen einzelnen Metrikwert:
 
 *C#, Java*
 
-```C#
+```csharp
     var sample = new MetricTelemetry();
     sample.Name = "metric name";
     sample.Value = 42.3;
@@ -178,7 +178,7 @@ Hier ein Codebeispiel für das Aggregieren:
 
 *C#*
 
-```C#
+```csharp
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -422,7 +422,7 @@ Beim manuellen Nachverfolgen der Telemetriedaten besteht die einfachste Vorgehen
 
 *C#*
 
-```C#
+```csharp
 // Establish an operation context and associated telemetry item:
 using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operationName"))
 {
@@ -576,7 +576,7 @@ Wenn die [Stichprobenentnahme](app-insights-sampling.md) aktiv ist, wird für di
 ## <a name="trackdependency"></a>TrackDependency
 Verwenden Sie den TrackDependency-Aufruf zum Nachverfolgen der Antwortzeiten und der Erfolgsraten beim Aufrufen einer externen Codepassage. Die Ergebnisse werden in den Abhängigkeitsdiagrammen im Portal angezeigt.
 
-```C#
+```csharp
 var success = false;
 var startTime = DateTime.UtcNow;
 var timer = System.Diagnostics.Stopwatch.StartNew();
@@ -913,7 +913,7 @@ So können Sie die Sammlung und Übermittlung von Telemetriedaten *dynamisch bee
 
 *C#*
 
-```C#
+```csharp
 
     using  Microsoft.ApplicationInsights.Extensibility;
 

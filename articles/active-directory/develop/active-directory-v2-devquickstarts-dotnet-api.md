@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5d56e74c6344580760f55506d7d90dac3e90721d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 65f25e2496065ca1aaba443a9d6b3e29239e0218
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="secure-an-mvc-web-api"></a>Schützen einer MVC-Web-API
 Mit dem v2.0-Endpunkt von Azure Active Directory können Sie eine Web-API mit [OAuth 2.0](active-directory-v2-protocols.md) -Zugriffstoken schützen, sodass sowohl Benutzer mit persönlichen Microsoft-Konten als auch Benutzer mit Geschäfts-, Schul- oder Unikonten sicher auf Ihre Web-API zugreifen können.
 
 > [!NOTE]
-> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 >
 >
 
 Für ASP.NET-Web-APIs erreichen Sie das Gleiche durch die in .NET Framework 4.5 enthaltene OWIN-Middleware von Microsoft.  Hier verwenden wir OWIN zum Erstellen einer MVC-Web-API mit einer Aufgabenliste. Die Web-API ermöglicht Clients das Erstellen und Lesen von Aufgaben aus der Aufgabenliste eines Benutzers.  Die Web-API überprüft, ob eingehende Anforderungen ein gültiges Zugriffstoken enthalten, und lehnt alle Anforderungen ab, bei denen die Überprüfung für eine geschützte Route negativ ausfällt.  Dieses Beispiel wurde mit Visual Studio 2015 erstellt.
 
-## <a name="download"></a>Download
+## <a name="download"></a>Herunterladen
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet)verwaltet.  Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) oder das Gerüst klonen:
 
 ```
@@ -69,7 +69,7 @@ PM> Install-Package Microsoft.IdentityModel.Protocol.Extensions -ProjectName Tod
 * Fügen Sie dem Projekt „TodoListService“ eine OWIN-Startklasse mit dem Namen `Startup.cs`hinzu.  Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen**  --> **Neues Element**, und suchen Sie nach „OWIN“.  Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(…)` auf.
 * Ändern Sie die Klassendeklaration in `public partial class Startup` – einen Teil dieser Klasse haben wir bereits für Sie in einer anderen Datei implementiert.  Rufen Sie in der Methode `Configuration(…)` „ConfigureAuth(...)“ auf, um die Authentifizierung für Ihre Webanwendung einzurichten.
 
-```C#
+```csharp
 public partial class Startup
 {
     public void Configuration(IAppBuilder app)
@@ -81,7 +81,7 @@ public partial class Startup
 
 * Öffnen Sie die Datei `App_Start\Startup.Auth.cs` und implementieren Sie die `ConfigureAuth(…)`-Methode, die die Web-API so einrichtet, dass Token vom v2.0-Endpunkt akzeptiert werden.
 
-```C#
+```csharp
 public void ConfigureAuth(IAppBuilder app)
 {
         var tvps = new TokenValidationParameters
@@ -118,7 +118,7 @@ public void ConfigureAuth(IAppBuilder app)
 
 * Nun können Sie Ihre Controller und Aktionen mit `[Authorize]` -Attributen durch eine OAuth 2.0-Bearer-Authentifizierung schützen.  Geben Sie für die Klasse `Controllers\TodoListController.cs` ein Autorisierungstag an.  Dadurch wird der Benutzer gezwungen, sich vor dem Zugriff auf diese Seite anzumelden.
 
-```C#
+```csharp
 [Authorize]
 public class TodoListController : ApiController
 {
@@ -126,7 +126,7 @@ public class TodoListController : ApiController
 
 * Wenn ein autorisierter Aufrufer eine der `TodoListController` -APIs erfolgreich aufruft, muss die Aktion möglicherweise auf Informationen über den Aufrufer zugreifen können.  OWIN stellt über das Objekt `ClaimsPrincipal` Zugriff auf die Ansprüche innerhalb des Bearer-Tokens bereit.  
 
-```C#
+```csharp
 public IEnumerable<TodoItem> Get()
 {
     // You can use the ClaimsPrincipal to access information about the
@@ -157,7 +157,7 @@ Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswer
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können sich nun weiteren Themen zuwenden.  Wie wäre es zum Beispiel mit Folgendem:
+Sie können sich nun weiteren Themen zuwenden.  Sie können beispielsweise Folgendes testen:
 
 [Aufrufen einer Web-API über eine .NET-Web-App &gt;&gt;](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 

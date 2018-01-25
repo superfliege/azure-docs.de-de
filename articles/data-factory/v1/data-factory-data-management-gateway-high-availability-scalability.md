@@ -1,5 +1,5 @@
 ---
-title: "Hohe Verfügbarkeit mit Datenverwaltungsgateway in Azure Data Factory | Microsoft-Dokumentation"
+title: "Hochverfügbarkeit mit Datenverwaltungsgateway in Azure Data Factory | Microsoft-Dokumentation"
 description: "In diesem Artikel wird beschrieben, wie Sie ein Datenverwaltungsgateway horizontal hochskalieren können, indem Sie mehr Knoten hinzufügen. Außerdem erfahren Sie, wie Sie das zentrale Hochskalieren durchführen, indem Sie die Anzahl von gleichzeitigen Aufträgen erhöhen, die für einen Knoten ausgeführt werden können."
 services: data-factory
 documentationcenter: 
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: fda3c7a9a369eec1b9033ee7077a5f3770647c9f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 195a1a4810de478b77538716fa8d1362428864d8
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)
+# <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [self-hosted integration runtime in version 2 (Selbstgehostete Integration Runtime in Version 2)](../create-self-hosted-integration-runtime.md). 
 
@@ -43,10 +43,10 @@ Sie können auch die Anzahl von **gleichzeitigen Datenverschiebungsaufträgen** 
 
 Mit dem Azure-Portal können Sie den Status dieser Knoten überwachen, um leichter entscheiden zu können, ob ein Knoten dem logischen Gateway hinzugefügt oder daraus entfernt werden soll. 
 
-## <a name="architecture"></a>Architektur 
+## <a name="architecture"></a>Architecture 
 Das folgende Diagramm enthält die Architekturübersicht zur Skalierbarkeits- und Verfügbarkeitsfunktion des Datenverwaltungsgateways: 
 
-![Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
+![Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
 
 Ein **logisches Gateway** ist das Gateway, das Sie einer Data Factory im Azure-Portal hinzufügen. Bisher konnten Sie nur einen lokalen Windows-Computer mit installiertem Datenverwaltungsgateway einem logischen Gateway zuordnen. Dieser lokale Gatewaycomputer wird als Knoten bezeichnet. Jetzt können Sie einem logischen Gateway bis zu **vier physische Knoten** zuordnen. Ein logisches Gateway, das über mehrere Knoten verfügt, wird als **Gateway mit mehreren Knoten** bezeichnet.  
 
@@ -65,9 +65,9 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie die beiden folgenden Artike
 > [!NOTE]
 > Bevor Sie ein Datenverwaltungsgateway auf einem lokalen Windows-Computer installieren, sollten Sie sich mit den Voraussetzungen im [Hauptartikel](data-factory-data-management-gateway.md#prerequisites) vertraut machen.
 
-1. Aktivieren Sie in der [exemplarischen Vorgehensweise](data-factory-move-data-between-onprem-and-cloud.md#create-gateway) beim Erstellen eines logischen Gateways das Feature **Hohe Verfügbarkeit und Skalierbarkeit** . 
+1. Aktivieren Sie in der [exemplarischen Vorgehensweise](data-factory-move-data-between-onprem-and-cloud.md#create-gateway) beim Erstellen eines logischen Gateways das Feature **Hochverfügbarkeit und Skalierbarkeit**. 
 
-    ![Datenverwaltungsgateway – Aktivieren der hohen Verfügbarkeit und Skalierbarkeit](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png)
+    ![Datenverwaltungsgateway – Aktivieren der Hochverfügbarkeit und Skalierbarkeit](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png)
 2. Verwenden Sie auf der Seite **Konfigurieren** entweder den Link **Express-Setup** oder **Manuelles Setup**, um auf dem ersten Knoten (lokaler Windows-Computer) ein Gateway zu installieren.
 
     ![Datenverwaltungsgateway – Express-Setup oder manuelles Setup](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-express-manual-setup.png)
@@ -131,7 +131,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie die beiden folgenden Artike
 11. Klicken Sie zum Löschen eines Gatewayknotens in der Symbolleiste auf **Knoten löschen**, wählen Sie den zu löschenden Knoten aus, und klicken Sie dann in der Symbolleiste auf **Löschen**. Mit dieser Aktion wird der ausgewählte Knoten aus der Gruppe gelöscht. Beachten Sie Folgendes: Mit dieser Aktion wird die Datenverwaltungsgateway-Software nicht vom Knoten (lokaler Windows-Computer) deinstalliert. Verwenden Sie auf dem lokalen Computer in der Systemsteuerung die Option **Programme hinzufügen oder entfernen**, um das Gateway zu deinstallieren. Wenn Sie das Gateway vom Knoten deinstallieren, wird es im Portal automatisch gelöscht.   
 
 ## <a name="upgrade-an-existing-gateway"></a>Aktualisieren eines vorhandenen Gateways
-Sie können ein vorhandenes Gateway aktualisieren, um das Feature für hohe Verfügbarkeit und Skalierbarkeit zu verwenden. Dieses Feature funktioniert nur mit Knoten, die über das Datenverwaltungsgateway der Version >= 2.12.xxxx verfügen. Im Datenverwaltungsgateway-Konfigurations-Manager auf der Registerkarte **Hilfe** wird die Version des Datenverwaltungsgateways angezeigt, die auf einem Computer installiert ist. 
+Sie können ein vorhandenes Gateway aktualisieren, um das Feature für Hochverfügbarkeit und Skalierbarkeit zu verwenden. Dieses Feature funktioniert nur mit Knoten, die über das Datenverwaltungsgateway der Version >= 2.12.xxxx verfügen. Im Datenverwaltungsgateway-Konfigurations-Manager auf der Registerkarte **Hilfe** wird die Version des Datenverwaltungsgateways angezeigt, die auf einem Computer installiert ist. 
 
 1. Aktualisieren Sie das Gateway auf dem lokalen Computer auf die aktuelle Version, indem Sie über das [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) ein MSI-Setuppaket herunterladen und ausführen. Der Abschnitt [Installation](data-factory-data-management-gateway.md#installation) enthält entsprechende Details hierzu.  
 2. Navigieren Sie zum Azure-Portal. Starten Sie die **Data Factory-Seite** für Ihre Data Factory. Klicken Sie auf die Kachel „Verknüpfte Dienste“, um die **Seite „Verknüpfte Dienste“** zu starten. Wählen Sie das Gateway, um die **Seite „Gateway“** zu starten. Klicken Sie wie hier gezeigt auf **Vorschaufeature**, und aktivieren Sie die Option: 
@@ -156,7 +156,7 @@ Sie können ein vorhandenes Gateway aktualisieren, um das Feature für hohe Verf
 - Konfigurieren Sie den Energiesparplan auf dem Hostcomputer für das Gateway, sodass der Computer nicht in den Ruhezustand wechselt. Wenn sich der Hostcomputer im Ruhezustand befindet, reagiert das Gateway nicht auf Datenanforderungen.
 - Sichern Sie das Zertifikat, das dem Gateway zugeordnet ist.
 - Stellen Sie sicher, dass alle Knoten eine ähnliche Konfiguration aufweisen (empfohlen), um die bestmögliche Leistung zu erzielen. 
-- Fügen Sie mindestens zwei Knoten hinzu, um eine hohe Verfügbarkeit sicherzustellen.  
+- Fügen Sie mindestens zwei Knoten hinzu, um Hochverfügbarkeit sicherzustellen.  
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL-Zertifikatanforderungen
 Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schützen der Kommunikation zwischen Integration Runtime-Knoten verwendet wird:
@@ -184,9 +184,9 @@ Im Azure-Portal können Sie auf jedem Knoten nahezu in Echtzeit Momentaufnahmen 
 
 Sie können auf der Seite **Gateway** die Option **Erweiterte Einstellungen** aktivieren, um beispielsweise die folgenden erweiterten Metriken anzuzeigen: **Netzwerk** (Eingang/Ausgang), **Status von Rollen und Anmeldeinformationen**, die beim Debuggen von Gatewayproblemen hilfreich ist, und **Gleichzeitige Aufträge** (ausgeführt/Limit), die bei der Leistungsoptimierung modifiziert bzw. geändert werden kann. Die folgende Tabelle enthält Beschreibungen von Spalten in der Liste **Gatewayknoten**:  
 
-Überwachungseigenschaft | Beschreibung
+Überwachungseigenschaft | BESCHREIBUNG
 :------------------ | :---------- 
-Name | Name des logischen Gateways und der Knoten, die dem Gateway zugeordnet sind.  
+NAME | Name des logischen Gateways und der Knoten, die dem Gateway zugeordnet sind.  
 Status | Status des logischen Gateways und der Gatewayknoten. Beispiel: Online/Offline/Eingeschränkt usw. Informationen zu diesen Status finden Sie im Abschnitt [Gatewaystatus](#gateway-status). 
 Version | Zeigt die Version des logischen Gateways und jedes Gatewayknotens an. Die Version des logischen Gateways wird basierend auf der Version bestimmt, die die meisten Knoten der Gruppe aufweisen. Wenn Knoten mit unterschiedlichen Versionen am Setup des logischen Gateways beteiligt sind, funktionieren nur die Knoten mit der gleichen Versionsnummer wie beim logischen Gateway richtig. Andere Knoten befinden sich im eingeschränkten Modus und müssen manuell aktualisiert werden (nur für den Fall, dass die automatische Aktualisierung fehlschlägt). 
 Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Gatewayknoten. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/06/2017
+ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 182cf11061aff41ce5008294e58a7ff2b21c2541
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 9971eb9e069d9fe1148c293c3459a8b11d931c2a
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory
 In diesem Tutorial wird das **Kopieren von mehreren Tabellen aus einer Azure SQL-Datenbank in Azure SQL Data Warehouse** veranschaulicht. Sie können dieses Muster auch in anderen Kopierszenarios anwenden. So können Sie z.B. Tabellen aus SQL Server/Oracle in Azure SQL-Datenbank/Data Warehouse/Azure Blob kopieren oder verschiedene Pfade aus Blob in Azure SQL-Datenbanktabellen.
@@ -32,7 +32,7 @@ Das Tutorial umfasst die folgenden Schritte:
 > * Erstellen von Azure SQL-Datenbank, Azure SQL Data Warehouse und mit Azure Storage verknüpften Diensten.
 > * Erstellen von Datasets für Azure SQL-Datenbank und Azure SQL Data Warehouse.
 > * Erstellen einer Pipeline zum Abrufen der zu kopierenden Tabellen und einer weiteren Pipeline zur Durchführung des eigentlichen Kopiervorgangs. 
-> * Starten einer Pipelineausführung.
+> * Starten einer Pipelineausführung
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
 
 In diesem Tutorial wird Azure PowerShell verwendet. Informationen zur Verwendung von anderen Tools/SDKs zum Erstellen einer Data Factory finden Sie unter [Schnellstarts](quickstart-create-data-factory-dot-net.md). 
@@ -591,7 +591,7 @@ In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 > * Erstellen von Azure SQL-Datenbank, Azure SQL Data Warehouse und mit Azure Storage verknüpften Diensten.
 > * Erstellen von Datasets für Azure SQL-Datenbank und Azure SQL Data Warehouse.
 > * Erstellen einer Pipeline zum Abrufen der zu kopierenden Tabellen und einer weiteren Pipeline zur Durchführung des eigentlichen Kopiervorgangs. 
-> * Starten einer Pipelineausführung.
+> * Starten einer Pipelineausführung
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
 
 Fahren Sie nun mit dem folgenden Tutorial fort, um mehr über das inkrementelle Kopieren von Daten aus einer Quelle in ein Ziel zu erfahren:

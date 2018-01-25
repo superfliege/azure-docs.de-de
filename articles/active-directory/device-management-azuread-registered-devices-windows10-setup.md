@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1ff50a63aca93c4b9ba79eb113064a41a5e05cd7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2560e51d61506389e84288bf983b0ebcb5776ff2
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Einrichten von bei Azure Active Directory registrierten Windows 10-Geräten
 
@@ -51,7 +51,7 @@ Berücksichtigen Sie beim Registrieren eines Geräts Folgendes:
 
 Dieser Abschnitt enthält die Schritte zum Registrieren Ihres Windows 10-Geräts bei Azure AD. Wenn Sie Ihr Gerät in Azure AD registriert haben, wird im Dialogfeld **Auf Arbeits- oder Schulkonto zugreifen** der Eintrag **Geschäfts-, Schul- oder Unikonto** angezeigt.
 
-![Registrieren](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
+![Register ](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
 
 **So registrieren Sie Ihr Windows 10-Gerät:**
@@ -92,11 +92,11 @@ Dieser Abschnitt enthält die Schritte zum Registrieren Ihres Windows 10-Geräts
 
 Ob ein Gerät in eine Azure AD-Instanz eingebunden wurde, können Sie im Dialogfenster **Auf Arbeits- oder Schulkonto zugreifen** Ihres Geräts überprüfen.
 
-![Registrieren](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
+![Register ](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
 Alternativ können Sie die Geräteeinstellungen auch im Azure AD-Portal überprüfen.
 
-![Registrieren](./media/device-management-azuread-registered-devices-windows10-setup/09.png)
+![Register ](./media/device-management-azuread-registered-devices-windows10-setup/09.png)
 
 
 

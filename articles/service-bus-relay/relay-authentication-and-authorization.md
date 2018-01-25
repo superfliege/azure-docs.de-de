@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 4ef8cbf22f2fcd7017af16083240608e5ca0fb5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86a9cf2c1106180ba5c8c65849042784bfd2afcd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay-Authentifizierung und -Autorisierung
 
 Anwendungen können mithilfe der SAS-Authentifizierung (Shared Access Signature) bei Azure Relay authentifiziert werden. Die SAS-Authentifizierung ermöglicht Anwendungen die Authentifizierung beim Azure Relay-Dienst mithilfe eines Zugriffsschlüssels, der für den Namespace „Relay“ konfiguriert wird. Sie können diesen Schlüssel zum Generieren eines SAS-Tokens verwenden, das Clients für die Authentifizierung beim Relaydienst verwenden können.
 
 ## <a name="shared-access-signature-authentication"></a>SAS-Authentifizierung (Shared Access Signature)
+
 Mit der [SAS-Authentifizierung](../service-bus-messaging/service-bus-sas.md) können Sie einem Benutzer Zugriff auf Azure Relay-Ressourcen mit spezifischen Rechten gewähren. Die SAS-Authentifizierung umfasst die Konfiguration eines kryptografischen Schlüssels mit den zugehörigen Rechten für eine Ressource. Clients können Zugriff auf diese Ressource erlangen, indem sie ein SAS-Token bereitstellen. Dieses setzt sich aus dem Ressourcen-URI, auf den zugegriffen wird, und einer Ablaufangabe zusammen, die mit dem konfigurierten Schlüssel signiert wird.
 
 Sie können Schlüssel für SAS für einen Relaynamespace konfigurieren. Im Gegensatz zum Service Bus-Messaging unterstützen [Relay Hybrid Connections](relay-hybrid-connections-protocol.md) nicht autorisierte oder anonyme Sender. Wie in dem folgenden Screenshot des Portals gezeigt wird, können Sie den anonymen Zugriff auf die Entität bei der Erstellung aktivieren:
@@ -45,6 +46,7 @@ Für den Zugriff auf eine Entität erfordert der Client ein SAS-Token, das mithi
 Die Unterstützung der SAS-Authentifizierung für Azure Relay ist im Azure .NET SDK, Version 2.0 oder höher, inbegriffen. SAS umfasst Unterstützung für eine [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Alle APIs, die eine Verbindungszeichenfolge als Parameter akzeptieren, enthalten Unterstützung für SAS-Verbindungszeichenfolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Weitere Informationen zu SAS finden Sie unter [SAS-Authentifizierung (Shared Access Signature) bei Service Bus](../service-bus-messaging/service-bus-sas.md) .
 - Ausführliche Informationen zur Hybrid Connections-Funktion finden Sie im [Azure Relay Hybrid Connections-Protokollhandbuch](relay-hybrid-connections-protocol.md).
 - Die entsprechenden Informationen zur Authentifizierung und Autorisierung über das Service Bus-Messaging finden Sie unter [Service Bus-Authentifizierung und -Autorisierung](../service-bus-messaging/service-bus-authentication-and-authorization.md). 

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: f490aeef07b142b6a28319581b01c6cfc00054ba
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: be0bdf771327e57a75a4f95b513f9e80aeaef5a4
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -42,7 +42,7 @@ Sie verwenden Transformationsaktivitäten in einer Data Factory-[Pipeline](data-
 
 Sie können die Aktivität „Gespeicherte Prozedur“ verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer (VM) aufzurufen: 
 
-- Azure SQL-Datenbank
+- Azure SQL-Datenbank
 - Azure SQL Data Warehouse
 - SQL Server-Datenbank.  Wenn Sie SQL Server verwenden, müssen Sie das Datenverwaltungsgateway auf dem Computer installieren, der die Datenbank hostet, oder auf einem separaten Computer, der Zugriff auf die Datenbank hat. Das Datenverwaltungsgateway ist eine Komponente, die lokale Datenquellen/Datenquellen auf virtuellen Azure Computern mit Clouddiensten auf sichere und geschickte Weise verbindet. Ausführliche Informationen finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md).
 
@@ -309,15 +309,15 @@ So sieht das JSON-Format zum Definieren der Aktivität „Gespeicherte Prozedur�
 
 In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Name | Der Name der Aktivität |Ja |
-| Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
-| Typ | Muss festgelegt sein auf: **SqlServerStoredProcedure** | Ja |
-| inputs | Optional. Wenn Sie ein Eingabedataset angeben, muss es (im Status „Bereit“) verfügbar sein, damit die Aktivität „Gespeicherte Prozedur“ ausgeführt wird. Das Eingabedataset kann nicht als Parameter in der gespeicherten Prozedur genutzt werden. Es wird nur verwendet, um vor dem Start der Aktivität „Gespeicherte Prozedur“ die Abhängigkeit zu überprüfen. |Nein |
+| name | Der Name der Aktivität |Ja |
+| Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein  |
+| type | Muss festgelegt sein auf: **SqlServerStoredProcedure** | Ja |
+| inputs | Optional. Wenn Sie ein Eingabedataset angeben, muss es (im Status „Bereit“) verfügbar sein, damit die Aktivität „Gespeicherte Prozedur“ ausgeführt wird. Das Eingabedataset kann nicht als Parameter in der gespeicherten Prozedur genutzt werden. Es wird nur verwendet, um vor dem Start der Aktivität „Gespeicherte Prozedur“ die Abhängigkeit zu überprüfen. |Nein  |
 | outputs | Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben. Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). <br/><br/>Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, ein Azure SQL Data Warehouse oder eine SQL Server-Datenbank verweist, in der bzw. dem die gespeicherte Prozedur ausgeführt werden soll. <br/><br/>Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. <br/><br/>In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben. |Ja |
 | storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank oder dem Azure SQL Data Warehouse oder der SQL Server-Datenbank an, die bzw. das vom verknüpften Dienst dargestellt wird, den die Ausgabetabelle verwendet. |Ja |
-| storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein |
+| storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein  |
 
 ## <a name="passing-a-static-value"></a>Übergeben eines statischen Werts
 Lassen Sie uns nun der Tabelle eine weitere Spalte mit dem Namen "Scenario" hinzufügen, die den statischen Wert "Document sample" enthält.

@@ -8,17 +8,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 047cd9ff-17d3-4c15-9284-1b5cc61a3224
 ms.service: cosmos-db
-ms.workload: storage
+ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: b1ad9fc7b609209ca867e64226c3a0e393081408
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: decc6ffb38a4358d3593642f9cedb59d08f6bfef
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="how-to-use-azure-table-storage-with-ruby"></a>Verwenden von Azure Table Storage mit Ruby
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -32,7 +32,7 @@ In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Tab
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Erstellen einer Ruby-Anwendung
-Anweisungen zum Erstellen einer Ruby-Anwendung finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md).
+Anweisungen zum Erstellen einer Ruby-Anwendung finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../virtual-machines/linux/classic/ruby-rails-web-app.md).
 
 ## <a name="configure-your-application-to-access-storage"></a>Konfigurieren der Anwendung für den Zugriff auf Storage
 Um Azure Storage zu verwenden, müssen Sie das Ruby-Azure-Paket, das eine Reihe von Bibliotheken für die Kommunikation mit den Speicher-REST-Diensten herunterladen und verwenden.

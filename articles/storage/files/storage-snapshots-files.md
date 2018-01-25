@@ -3,7 +3,7 @@ title: "Übersicht über Freigabemomentaufnahmen für Azure Files (Vorschauversi
 description: "Eine Freigabemomentaufnahme ist eine schreibgeschützte Version einer Azure Files-Freigabe, die zu einem bestimmten Zeitpunkt erstellt wird, um die Freigabe zu sichern."
 services: storage
 documentationcenter: .net
-author: renash
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: 2504e180799164845a89a7f89ca6a6c61352304f
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: c309804f33fc0e5b2091e18dfe5fe3c9849a2709
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="overview-of-share-snapshots-for-azure-files-preview"></a>Übersicht über Freigabemomentaufnahmen für Azure Files (Vorschauversion)
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen (Vorschau) erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.

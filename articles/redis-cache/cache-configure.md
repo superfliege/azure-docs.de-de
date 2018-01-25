@@ -3,8 +3,8 @@ title: Konfigurieren von Azure Redis Cache | Microsoft Docs
 description: "Grundlagen der Redis-Standardkonfiguration für Azure Redis Cache und Informationen zur Konfiguration Ihrer Azure Redis Cache-Instanzen"
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
-ms.author: sdanie
-ms.openlocfilehash: 0274e58eb2e83202d4dbc58da0c67d0fdde22ede
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: a65832a30a570944ff30d02c2f173df345bde32c
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Gewusst wie: Konfigurieren von Azure Redis Cache
 In diesem Thema wird beschrieben, wie Sie die Konfiguration für Ihre Azure Redis Cache-Instanzen überprüfen und aktualisieren. Außerdem wird die standardmäßige Redis-Serverkonfiguration für Azure Redis Cache-Instanzen beschrieben.
@@ -252,14 +252,14 @@ Aktivieren Sie zum Angeben eines Wartungsfensters die Kontrollkästchen der gew�
 
 ### <a name="geo-replication"></a>Georeplikation
 
-Das Blatt **Georeplikation** bietet einen Mechanismus zum Verknüpfen von zwei Azure Redis Cache-Instanzen im Premium-Tarif. Ein Cache wird als primärer verknüpfter Cache festgelegt und der andere als sekundärer verknüpfter Cache. Der sekundäre verknüpfte Cache ist schreibgeschützt. Und die in den primären Cache geschriebenen Daten werden im sekundären verknüpften Cache repliziert. Über diese Funktion kann ein Cache über mehrere Azure-Regionen hinweg repliziert werden.
+Das Blatt **Georeplikation** bietet einen Mechanismus zum Verknüpfen von zwei Azure Redis Cache-Instanzen im Premium-Tarif. Ein Cache wird als primärer verknüpfter Cache festgelegt und der andere als sekundärer verknüpfter Cache. Der sekundäre verknüpfte Cache ist schreibgeschützt. Und die in den primären Cache geschriebenen Daten werden im sekundären verknüpften Cache repliziert. Über diese Funktion kann ein Cache über verschiedene Azure-Regionen hinweg repliziert werden.
 
 > [!IMPORTANT]
 > Die **Georeplikation** ist nur für Caches im Premium-Tarif verfügbar. Weitere Informationen und Anweisungen finden Sie unter [Konfigurieren der Georeplikation für Azure Redis Cache](cache-how-to-geo-replication.md).
 > 
 > 
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>Virtuelles Netzwerk
 Im Abschnitt **Virtuelles Netzwerk** können Sie die Einstellungen des virtuellen Netzwerks für Ihren Cache konfigurieren. Weitere Informationen zum Erstellen eines Premium-Caches mit VNET-Unterstützung sowie zum Aktualisieren der Einstellungen finden Sie unter [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ „Premium“](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -316,14 +316,14 @@ Mit der Exportfunktion können Sie die in Azure Redis Cache gespeicherten Daten 
 > 
 > 
 
-### <a name="reboot"></a>Neustart
+### <a name="reboot"></a>Reboot
 Auf dem Blatt **Neustart** können Sie die Knoten Ihres Caches neu starten. Mit dieser Neustartfunktion können Sie Ihre Anwendung bei einem Ausfall eines Cacheknotens auf Resilienz testen.
 
-![Neustart](./media/cache-configure/redis-cache-reboot.png)
+![Reboot](./media/cache-configure/redis-cache-reboot.png)
 
 Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, können Sie die Shards des Caches auswählen, die neu gestartet werden sollen.
 
-![Neustart](./media/cache-configure/redis-cache-reboot-cluster.png)
+![Reboot](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünschten Knoten aus und klicken auf **Neustart**. Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, wählen Sie die Shards aus, die neu gestartet werden sollen, und klicken Sie dann auf **Neustart**. Nach einigen Minuten werden die ausgewählten Knoten neu gestartet, die paar Minuten später wieder online sind.
 
@@ -337,7 +337,7 @@ Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünsch
 
 Im Abschnitt **Überwachung** können Sie die Diagnose und Überwachung für Ihren Redis Cache konfigurieren. Weitere Informationen zur Azure Redis Cache-Diagnose und -Überwachung finden Sie unter [Überwachen von Azure Redis Cache](cache-how-to-monitor.md).
 
-![Diagnose](./media/cache-configure/redis-cache-diagnostics.png)
+![Diagnostics](./media/cache-configure/redis-cache-diagnostics.png)
 
 * [Redis-Metriken](#redis-metrics)
 * [Warnregeln](#alert-rules)
@@ -350,7 +350,7 @@ Klicken Sie auf **Redis Metriken**, um für Ihren Cache [Metriken anzuzeigen](ca
 
 Klicken Sie auf **Warnregeln**, um Warnungen basierend auf Redis Cache-Metriken zu konfigurieren. Weitere Informationen finden Sie unter [Warnungen](cache-how-to-monitor.md#alerts).
 
-### <a name="diagnostics"></a>Diagnose
+### <a name="diagnostics"></a>Diagnostics
 
 Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, klicken Sie zum **Konfigurieren des Speicherkontos** für Cachediagnosedaten auf [Diagnose](cache-how-to-monitor.md#export-cache-metrics).
 
@@ -394,7 +394,7 @@ Neue Azure Redis Cache-Instanzen werden mit den folgenden standardmäßigen Redi
 > 
 > 
 
-| Einstellung | Standardwert | Beschreibung |
+| Einstellung | Standardwert | BESCHREIBUNG |
 | --- | --- | --- |
 | `databases` |16 |Die Standardanzahl von Datenbanken ist 16, Sie können aber basierend auf dem Tarif eine andere Anzahl konfigurieren.<sup>1</sup> Die Standarddatenbank ist „DB 0“. Sie können mithilfe von `connection.GetDatabase(dbid)` pro Verbindung eine andere Datenbank auswählen. Hierbei steht `dbid` für eine Zahl zwischen `0` und `databases - 1`. |
 | `maxclients` |Tarifabhängig<sup>2</sup> |Dies ist die maximale Anzahl von verbundenen Clients, die gleichzeitig zulässig sind. Sobald der Grenzwert erreicht ist, schließt Redis alle neuen Verbindungen und gibt den Fehler „max number of clients reached“ (Maximale Anzahl von Clients erreicht) zurück. |
@@ -402,7 +402,7 @@ Neue Azure Redis Cache-Instanzen werden mit den folgenden standardmäßigen Redi
 | `maxmemory-samples` |3 |Zur Einsparung von Arbeitsspeicher sind LRU- und minimale TTL-Algorithmen keine präzisen Algorithmen, sondern angenäherte Algorithmen. Standardmäßig werden von Redis drei Schlüssel geprüft, und es wird der Schlüssel ausgewählt, der vor längerer Zeit verwendet wurde. |
 | `lua-time-limit` |5.000 |Maximale Ausführungszeit eines Lua-Skripts in Millisekunden. Wenn die maximale Ausführungszeit erreicht wird, protokolliert Redis, dass ein Skript nach der maximal zulässigen Ausführungszeit weiterhin ausgeführt wird. Es wird dann damit begonnen, auf Abfragen mit einem Fehler zu antworten. |
 | `lua-event-limit` |500 |Maximale Größe der Skriptereigniswarteschlange. |
-| `client-output-buffer-limit``normalclient-output-buffer-limit``pubsub` |0 0 032mb 8mb 60 |Die Clientausgabepuffer-Grenzwerte können verwendet werden, um die Verbindungstrennung für Clients zu erzwingen, die aus einem bestimmten Grund Daten nicht schnell genug vom Server lesen. (Ein häufiger Grund ist, dass ein Pub/Sub-Client Nachrichten nicht so schnell verarbeiten kann, wie sie von der veröffentlichenden Stelle produziert werden.) Weitere Informationen finden Sie unter [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Die Clientausgabepuffer-Grenzwerte können verwendet werden, um die Verbindungstrennung für Clients zu erzwingen, die aus einem bestimmten Grund Daten nicht schnell genug vom Server lesen. (Ein häufiger Grund ist, dass ein Pub/Sub-Client Nachrichten nicht so schnell verarbeiten kann, wie sie von der veröffentlichenden Stelle produziert werden.) Weitere Informationen finden Sie unter [http://redis.io/topics/clients](http://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>Der Grenzwert für `databases` ist für jeden Azure Redis Cache-Tarif unterschiedlich und kann bei der Erstellung des Caches festgelegt werden. Wenn bei der Cacheerstellung keine Einstellung für `databases` angegeben wird, wird der Standardwert (16) verwendet.

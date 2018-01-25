@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8398a261ca33060b7709d818cb64bb1e8e2058b1
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3350645d4f173a6d0d007ff9095bb3115600a13b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
@@ -118,14 +118,14 @@ Nachdem die vorbereitenden Schritte abgeschlossen sind, kann jetzt die Kopierakt
 3. Gehen Sie auf dem Blatt **Neue Data Factory** wie folgt vor:
 
    1. Geben Sie **LoadIntoSQLDWDataFactory** als **Name** ein.
-       Der Name der Azure Data Factory muss global eindeutig sein. Ändern Sie bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar** den Namen der Data Factory (z.B.in „yournameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.  
+       Der Name der Azure Data Factory muss global eindeutig sein. Ändern Sie bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar** den Namen der Data Factory (z.B.in „yournameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
    2. Wählen Sie Ihr Azure- **Abonnement**aus.
    3. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus:
       1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
       2. Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
    4. Wählen Sie einen **Standort** für die Data Factory aus.
    5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.  
-   6. Klicken Sie auf **Erstellen**.
+   6. Klicken Sie auf **Create**.
 4. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
 
    ![Data Factory-Startseite](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -139,11 +139,12 @@ Nachdem die vorbereitenden Schritte abgeschlossen sind, kann jetzt die Kopierakt
 ## <a name="step-1-configure-data-loading-schedule"></a>Schritt 1: Konfigurieren des Zeitplans für das Laden von Daten
 Der erste Schritt ist das Konfigurieren des Zeitplans für das Laden von Daten.  
 
-Auf der Seite **Eigenschaften** :
+Auf der Seite **Eigenschaften**:
 
 1. Geben Sie unter **Aufgabenname** den Namen **CopyFromBlobToAzureSqlDataWarehouse** ein.
 2. Wählen Sie die Option **Run once now (Einmalig ausführen)** aus.   
-3. Klicken Sie auf **Weiter**.  
+3. Klicken Sie auf **Weiter**.
+  
 
     ![Kopier-Assistent – Eigenschaftsseite](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -186,6 +187,7 @@ Dieser Abschnitt beschreibt das Konfigurieren des Ziels: Tabelle `lineitem` in d
 ## <a name="step-4-performance-settings"></a>Schritt 4: Leistungseinstellungen
 
 **Allow polybase (Zulassen von PolyBase)** ist standardmäßig aktiviert.  Klicken Sie auf **Weiter**.
+
 
 ![Kopier-Assistent – Seite Zuordnung des Schemas](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 

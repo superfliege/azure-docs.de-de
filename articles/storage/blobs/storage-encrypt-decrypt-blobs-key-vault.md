@@ -2,23 +2,17 @@
 title: "Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault | Microsoft-Dokumentation"
 description: "Hier wird erläutert, wie Sie ein Blob mithilfe der clientseitigen Verschlüsselung für Microsoft Azure Storage mit Azure Key Vault verschlüsseln und entschlüsseln."
 services: storage
-documentationcenter: 
-author: adhurwit
-manager: jasonsav
-editor: tysonn
-ms.assetid: 027e8631-c1bf-48c1-9d9b-f6843e88b583
+author: tamram
+manager: jeconnoc
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 01/23/2017
 ms.author: adhurwit
-ms.openlocfilehash: fc4286b39ade5558a9dabd5832be05a7a0d6f0c7
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 405ccb44c9daf8d555946e6c68ef318ed2b82505
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault
 ## <a name="introduction"></a>Einführung
@@ -167,10 +161,6 @@ CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
-
-Unten sehen Sie einen Screenshot aus dem [klassischen Azure-Portal](https://manage.windowsazure.com) für ein Blob, das per clientseitiger Verschlüsselung mit einem in Key Vault gespeicherten Schlüssel verschlüsselt wurde. Die **KeyId**-Eigenschaft ist der URI für den Schlüssel in Key Vault, der als KEK fungiert. Die **EncryptedKey**-Eigenschaft enthält die verschlüsselte Version des CEK.
-
-![Screenshot mit Blob-Metadaten, die Verschlüsselungsmetadaten enthalten](./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png)
 
 > [!NOTE]
 > Wenn Sie sich den BlobEncryptionPolicy-Konstruktor ansehen, wird Ihnen auffallen, dass dafür ein Schlüssel und/oder ein Konfliktlöser (Resolver) verwendet werden kann. Denken Sie daran, dass Sie an diesem Punkt keinen Konfliktlöser für die Verschlüsselung verwenden können, weil dafür derzeit kein Standardschlüssel unterstützt wird.

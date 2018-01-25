@@ -3,7 +3,7 @@ title: 'Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfigurati
 description: Dieser Artikel beschreibt die Standardkonfiguration der Azure AD Connect-Synchronisierung.
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 6ba1739825a6f0898e417ca37fa6bf370ef17d6c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87f513ffd2e8854085d9dfcd399148082de37698
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
 In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
@@ -57,7 +57,7 @@ Die folgenden Benutzerobjekte werden **nicht** mit Azure AD synchronisiert:
   * Nicht universelle Sicherheitsgruppe (gilt nicht für Benutzer; nur aus Legacygründen vorhanden)
   * Postfachplan
   * Discoverypostfach
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Verhindert die Synchronisierung von Replikationsopferobjekten.
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Verhindert die Synchronisierung von Replikationsopferobjekten.
 
 Geltende Attributregeln:
 
@@ -76,12 +76,12 @@ Ein Kontaktobjekt muss Folgendes erfüllen, um synchronisiert zu werden:
 * Der Kontakt muss E-Mail-aktiviert sein. Die Überprüfung umfasst folgende Regeln:
   * `IsPresent([proxyAddresses]) = True)`. Das proxyAddresses-Attribut muss aufgefüllt sein.
   * Eine primäre E-Mail-Adresse befindet sich entweder im proxyAddresses-Attribut oder im mail-Attribut. Ob es sich bei dem Inhalt um eine E-Mail-Adresse handelt, wird anhand des Vorhandenseins eines @-Zeichens ermittelt. Eine der beiden Regeln muss „True“ ergeben:
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. Ist ein Eintrag mit „SMTP:“ vorhanden? Wenn ja, enthält die Zeichenfolge ein @-Zeichen?
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. Ist das E-Mail-Attribut aufgefüllt, und falls ja, enthält die Zeichenfolge ein @-Zeichen?
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Ist ein Eintrag mit „SMTP:“ vorhanden? Wenn ja, enthält die Zeichenfolge ein @-Zeichen?
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Ist das E-Mail-Attribut aufgefüllt, und falls ja, enthält die Zeichenfolge ein @-Zeichen?
 
 Die folgenden Kontaktobjekte werden **nicht** mit Azure AD synchronisiert:
 
-* `IsPresent([isCriticalSystemObject])`. Sorgt dafür, dass als kritisch markierte Kontaktobjekte nicht synchronisiert werden. Bei einer Standardkonfiguration sind für gewöhnlich keine solchen Objekte vorhanden.
+* `IsPresent([isCriticalSystemObject])`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Sorgt dafür, dass als kritisch markierte Kontaktobjekte nicht synchronisiert werden. Bei einer Standardkonfiguration sind für gewöhnlich keine solchen Objekte vorhanden.
 * `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`.
 * `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`. Diese Objekte wären nicht für Exchange Online geeignet.
 * `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Verhindert die Synchronisierung von Replikationsopferobjekten.
@@ -97,10 +97,10 @@ Ein Gruppenobjekt muss Folgendes erfüllen, um synchronisiert zu werden:
 
 Die folgenden Gruppenobjekte werden **nicht** mit Azure AD synchronisiert:
 
-* `IsPresent([isCriticalSystemObject])`. Sorgt dafür, dass viele vorkonfigurierte Objekte in Active Directory (wie etwa die integrierte Administratorgruppe) nicht synchronisiert werden.
+* `IsPresent([isCriticalSystemObject])`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Sorgt dafür, dass viele vorkonfigurierte Objekte in Active Directory (wie etwa die integrierte Administratorgruppe) nicht synchronisiert werden.
 * `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`. Von DirSync verwendete Legacygruppe.
 * `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`. Rollengruppe.
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Verhindert die Synchronisierung von Replikationsopferobjekten.
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Verhindert die Synchronisierung von Replikationsopferobjekten.
 
 ### <a name="foreignsecurityprincipal-out-of-box-rules"></a>Standardregeln für „ForeignSecurityPrincipal“
 FSPs werden im Metaverse zu einem any-Objekt (\*) verknüpft. In der Realität wird diese Verknüpfung aber nur für Benutzer und Sicherheitsgruppen durchgeführt. Mit dieser Konfiguration wird sichergestellt, dass gesamtstrukturübergreifende Mitgliedschaften richtig aufgelöst und korrekt in Azure AD dargestellt werden.
@@ -145,7 +145,7 @@ Da es sich hierbei um eine vordefinierte Regel handelt, erhalten Sie eine Warnun
 
 Eine Synchronisierungsregel verfügt über vier Konfigurationsabschnitte: Beschreibung, Bereichsfilter, Verknüpfungsregeln und Transformationen.
 
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 Der erste Bereich bietet grundlegende Informationen wie Name und Beschreibung.
 
 ![Registerkarte „Beschreibung“ im Synchronisierungsregel-Editor ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruledescription.png)
@@ -217,7 +217,7 @@ Die Rangfolge für Synchronisierungsregeln wird vom Installations-Assistenten in
 ### <a name="putting-it-all-together"></a>Zusammenfügen des Gesamtbilds
 Jetzt wissen wir genug über Synchronisierungsregeln, um die Funktionsweise der Konfiguration mit verschiedenen Synchronisierungsregeln zu verstehen. Wenn Sie einen Benutzer und die Attribute betrachten, die zum Metaverse beigetragen werden, werden die Regeln in der folgenden Reihenfolge angewendet:
 
-| Name | Kommentar |
+| NAME | Comment |
 |:--- |:--- |
 | Ein von AD – Benutzerverknüpfung |Regel für die Verknüpfung von Connectorbereichobjekten mit Metaverse. |
 | Ein von AD – Benutzer AccountEnabled |Erforderliche Attribute für eine Anmeldung bei Azure AD und Office 365. Diese Attribute sollen aus dem aktivierten Konto kommen. |

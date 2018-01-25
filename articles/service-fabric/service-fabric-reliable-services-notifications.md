@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: c6a53d851510ed5e6eec1f3ac0f636ad034a6d4c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b8a0aad23c6c4ceaf23dd3fbde5daef3519fdcf
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services – Benachrichtigungen
 Mit Benachrichtigungen können Clients Änderungen an einem Objekt verfolgen, an dem sie interessiert sind. Zwei Arten von Objekten unterstützen Benachrichtigungen: *Reliable State Manager* und *Reliable Dictionary*.
@@ -51,7 +51,7 @@ Die Sammlung des Reliable State Manager wird in drei Fällen neu erstellt:
 
 Um sich für Transaktionsbenachrichtigungen und/oder Zustands-Manager-Benachrichtigungen zu registrieren, müssen Sie sich bei den Ereignissen **TransactionChanged** oder **StateManagerChanged** im Reliable State Manager registrieren. Üblicherweise wird die Registrierung bei diesen Ereignishandlern im Konstruktor Ihres zustandsbehafteten Diensts durchgeführt. Wenn Sie sich auf dem Konstruktor registrieren, entgeht Ihnen keine Benachrichtigung, die durch eine Änderung während der Lebensdauer von **IReliableStateManager** verursacht wird.
 
-```C#
+```csharp
 public MyService(StatefulServiceContext context)
     : base(MyService.EndpointName, context, CreateReliableStateManager(context))
 {
@@ -69,7 +69,7 @@ Der **TransactionChanged**-Ereignishandler verwendet **NotifyTransactionChangedE
 
 Es folgt ein Beispiel für den **TransactionChanged** -Ereignishandler.
 
-```C#
+```csharp
 private void OnTransactionChangedHandler(object sender, NotifyTransactionChangedEventArgs e)
 {
     if (e.Action == NotifyTransactionChangedAction.Commit)
@@ -91,7 +91,7 @@ Sie verwenden die Action-Eigenschaft in **NotifyStateManagerChangedEventArgs**, 
 
 Es folgt ein Beispiel für einen **StateManagerChanged** -Benachrichtigungshandler.
 
-```C#
+```csharp
 public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChangedEventArgs e)
 {
     if (e.Action == NotifyStateManagerChangedAction.Rebuild)
@@ -117,7 +117,7 @@ Reliable Dictionary liefert Benachrichtigungen für folgende Ereignisse:
 Um Reliable Dictionary-Benachrichtigungen zu erhalten, müssen Sie sich mit dem **DictionaryChanged**-Ereignishandler bei **IReliableDictionary** registrieren. Üblicherweise wird die Registrierung bei diesen Ereignishandlern in der **ReliableStateManager.StateManagerChanged** -Hinzufügungsbenachrichtigung durchgeführt.
 Durch die Registrierung beim Hinzufügen von **IReliableDictionary** zu **IReliableStateManager** wird sichergestellt, dass Ihnen keine Benachrichtigungen entgehen.
 
-```C#
+```csharp
 private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChangedEventArgs e)
 {
     var operation = e as NotifyStateManagerSingleEntityChangedEventArgs;
@@ -142,7 +142,7 @@ private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChang
 
 Im vorherigen Code wird die **IReliableNotificationAsyncCallback**-Schnittstelle zusammen mit **DictionaryChanged** festgelegt. Da **NotifyDictionaryRebuildEventArgs** eine **IAsyncEnumerable**-Schnittstelle enthält, die asynchron aufgelistet werden muss, werden Neuerstellungsbenachrichtigungen nicht mit **OnDictionaryChangedHandler** ausgelöst, sondern mit **RebuildNotificationAsyncCallback**.
 
-```C#
+```csharp
 public async Task OnDictionaryRebuildNotificationHandlerAsync(
     IReliableDictionary<TKey, TValue> origin,
     NotifyDictionaryRebuildEventArgs<TKey, TValue> rebuildNotification)
@@ -171,7 +171,7 @@ Der **DictionaryChanged**-Ereignishandler verwendet **NotifyDictionaryChangedEve
 * **NotifyDictionaryChangedAction.Update**: **NotifyDictionaryItemUpdatedEventArgs**
 * **NotifyDictionaryChangedAction.Remove**: **NotifyDictionaryItemRemovedEventArgs**
 
-```C#
+```csharp
 public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEventArgs<TKey, TValue> e)
 {
     switch (e.Action)

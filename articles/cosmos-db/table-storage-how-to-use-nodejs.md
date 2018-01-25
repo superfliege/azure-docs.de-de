@@ -8,17 +8,17 @@ manager: jhubbard
 editor: tysonn
 ms.assetid: fc2e33d2-c5da-4861-8503-53fdc25750de
 ms.service: cosmos-db
-ms.workload: storage
+ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: 03cd5088b55e37b2ada78e0f531702705d45a4c0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0b412be8b93e1f871c09b7a4452141ac334d53ae
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Verwenden des Azure-Tabellenspeichers mit Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -85,7 +85,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 `result.created` ist `true`, wenn eine neue Tabelle erstellt wird, und `false`, wenn die Tabelle bereits vorhanden ist. `response` enthält Informationen über die Anforderung.
 
 ### <a name="filters"></a>Filter
-Auf die Vorgänge, die mit **TableService** ausgeführt werden, können optionale Filtervorgänge angewendet werden. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der folgenden Signatur implementieren:
+Auf die Vorgänge, die mit **TableService** ausgeführt werden, können optionale Filtervorgänge angewendet werden. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der Signatur implementieren:
 
 ```nodejs
 function handle (requestOptions, next)
@@ -189,7 +189,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Standardmäßig wird beim Aktualisieren einer Entität nicht überprüft, ob die aktualisierten Daten zuvor von einem anderen Prozess geändert wurden. Um gleichzeitige Aktualisierungen zu unterstützen, gehen Sie wie folgt vor:
 >
 > 1. Rufen Sie das Etag des aktualisierten Objekts ab. Es wird im Rahmen der `response` für jeden entitätsbezogenen Vorgang zurückgegeben und kann durch `response['.metadata'].etag` abgerufen werden.
-> 2. Wenn Sie einen Aktualisierungsvorgang für eine Entität ausführen, sollten Sie der neuen Entität die zuvor abgerufenen ETag-Informationen hinzufügen. Beispiel:
+> 2. Wenn Sie einen Aktualisierungsvorgang für eine Entität ausführen, sollten Sie der neuen Entität die zuvor abgerufenen ETag-Informationen hinzufügen. Beispiel: 
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Führen Sie den Aktualisierungsvorgang aus. Wurde die Entität seit dem Abruf des ETag-Werts beispielsweise durch eine andere Instanz Ihrer Anwendung geändert, wird ein `error` zurückgegeben, der besagt, dass die in der Anforderung angegebene Aktualisierungsbedingung nicht erfüllt ist.
@@ -448,5 +448,5 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
 
 * Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) -Repository auf GitHub (in englischer Sprache)
-* [Node.js Developer Center](/develop/nodejs/)
+* [Node.js Developer Center (in englischer Sprache)](/develop/nodejs/)
 * [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website](../app-service/app-service-web-get-started-nodejs.md)

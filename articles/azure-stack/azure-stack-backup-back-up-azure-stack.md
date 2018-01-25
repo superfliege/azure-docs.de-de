@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mabrigg
-ms.openlocfilehash: df1f4c6fadd08b17a1a1eb8bbe41ab71ae4729fc
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 955b286967ca2bc8450e8988ec16c6a5c352aa8a
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="back-up-azure-stack"></a>Sichern von Azure Stack
 
@@ -26,18 +26,27 @@ ms.lasthandoff: 01/02/2018
 
 Führen Sie eine bedarfsgesteuerte Sicherung von Azure Stack durch, indem Sie den integrierten Sicherungsdienst nutzen. Wenn Sie den Dienst für die Infrastruktursicherung aktivieren müssen, finden Sie weitere Informationen unter [Aktivieren der Sicherung für Azure Stack über das Verwaltungsportal](azure-stack-backup-enable-backup-console.md).
 
+> [!Note]  
+>  In den Azure Stack-Tools ist das Cmdlet **Start-AzSBackup** enthalten. Anleitungen zum Installieren der Tools finden Sie unter [Einrichten von PowerShell in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart).
+
 ## <a name="start-azure-stack-backup"></a>Starten der Azure Stack-Sicherung
 
-Öffnen Sie Windows PowerShell mit erhöhten Rechten, und führen Sie die folgenden Befehle aus:
+Öffnen Sie Windows PowerShell in der Umgebung für die Bedienerverwaltung mit erhöhten Rechten, und führen Sie die folgenden Befehle aus:
 
-   ```powershell
-   Start-AzSBackup -Location $location
-   ```
+```powershell
+    cd C:\tools\AzureStack-Tools-master\Connect
+    Import-Module .\AzureStack.Connect.psm1
+
+    cd C:\tools\AzureStack-Tools-master\Infrastructure
+    Import-Module .\AzureStack.Infra.psm1 
+    
+    Start-AzSBackup -Location $location.Name
+```
 
 ## <a name="confirm-backup-completed-in-the-administration-portal"></a>Bestätigen der erfolgreichen Sicherung im Verwaltungsportal
 
 1. Öffnen Sie das Azure Stack-Administratorportal unter [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
-2. Wählen Sie **Weitere Dienste** > **Infrastruktursicherung** aus. Klicken Sie auf der Registerkarte **Infrastruktursicherung** auf **Konfiguration**.
+2. Wählen Sie **Weitere Dienste** > **Infrastructure Backup** aus. Klicken Sie auf der Registerkarte **Infrastruktursicherung** auf **Konfiguration**.
 3. Suchen Sie in der Liste **Verfügbare Sicherungen** nach **Name** und **Abschlussdatum** der Sicherung.
 4. Überprüfen Sie, ob der **Status** als **Erfolgreich** angezeigt wird.
 

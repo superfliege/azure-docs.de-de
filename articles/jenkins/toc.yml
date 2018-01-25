@@ -9,7 +9,7 @@
   items:
     - name: Erstellen eines Jenkins-Servers
       href: /azure/jenkins/install-jenkins-solution-template
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: CI/CD in App Service
       href: /azure/jenkins/java-deploy-webapp-tutorial
@@ -40,16 +40,21 @@
       maintainContext: true
     - name: Verwenden von Jenkins mit VSTS
       href: 'https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins'
+    - name: Bereitstellen von Service Fabric-Apps
+      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+      maintainContext: true
 - name: Beispiele
   items:
     - name: Beispielaufträge und -skripts
       href: 'https://github.com/Azure/azure-devops-utils/tree/master/jenkins'
-- name: Ressourcen
+- name: angeben
   items:
     - name: Plug-Ins
       items:
         - name: Azure App Service-Plug-In
           href: 'https://plugins.jenkins.io/azure-app-service'
+        - name: Azure AD-Plug-In
+          href: 'https://plugins.jenkins.io/azure-ad'
         - name: Azure-Container-Agents-Plug-In
           href: 'https://plugins.jenkins.io/azure-container-agents'
         - name: Azure Container Service-Plug-In
@@ -58,10 +63,14 @@
           href: 'https://plugins.jenkins.io/azure-credentials'
         - name: Azure Functions-Plug-In
           href: 'https://plugins.jenkins.io/azure-function'
+        - name: Azure Service Fabric-Plug-In
+          href: 'https://plugins.jenkins.io/service-fabric'
         - name: Azure Storage-Plug-In
           href: 'https://plugins.jenkins.io/windows-azure-storage'
         - name: Azure VM Agents-Plug-In
           href: 'https://plugins.jenkins.io/azure-vm-agents'
+        - name: Azure VM Scale Sets-Plug-In
+          href: 'https://plugins.jenkins.io/azure-vmss'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Jenkins-Startseite

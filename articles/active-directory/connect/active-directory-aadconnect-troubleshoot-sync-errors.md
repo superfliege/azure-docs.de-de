@@ -3,8 +3,8 @@ title: "Azure AD Connect: Beheben von Fehlern während der Synchronisierung | Mi
 description: "Erläutert die Behebung von Fehlern während der Synchronisierung mit Azure AD Connect."
 services: active-directory
 documentationcenter: 
-author: karavar
-manager: samueld
+author: billmath
+manager: mtillman
 editor: curtand
 ms.assetid: 2209d5ce-0a64-447b-be3a-6f06d47995f8
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 5a319de69c4e142414ab8f2be980a6576acbf8bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaa374d5a11ef5b5860f83a87386ff981319189f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung
 Fehler können auftreten, wenn Identitätsdaten aus Windows Server Active Directory (AD DS) mit Azure Active Directory (Azure AD) synchronisiert werden. Dieser Artikel bietet einen Überblick über verschiedene Fehlertypen, die während der Synchronisierung auftreten können, einige der möglichen Szenarios, die solche Fehler verursachen, und Möglichkeiten, diese Fehler zu beheben. In diesem Artikel werden die häufigsten Fehlertypen behandelt, daher sind eventuell nicht alle möglichen Fehler enthalten.
@@ -39,7 +39,7 @@ Fehler, die während des Exportierens nach Azure AD auftreten, deuten an, dass d
 
 ## <a name="data-mismatch-errors"></a>Fehler durch Datenkonflikt
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch (Ungültiges Soft Match (mögliche Übereinstimmung))
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 * Wenn das \(Synchronisierungsmodul\) von Azure AD Connect die Anweisung an Azure Active Directory gibt, Objekte hinzuzufügen oder zu aktualisieren, untersucht Azure AD mithilfe des Attributs **sourceAnchor** das eingehende Objekt nach Übereinstimmungen mit dem Attribut **immutableId** von Objekten in Azure AD. Diese Übereinstimmung nennt man **Hard Match (genaue Übereinstimmung)**.
 * Wenn Azure AD **kein** Objekt findet, bei dem das Attribut **immutableID** mit dem Attribut **sourceAnchor** eines eingehenden Objekts übereinstimmt, bevor ein neues Objekt bereitgestellt wird, werden stattdessen die Attribute „ProxyAddresses“ und „UserPrincipalName“ verwendet, um eine Übereinstimmung zu finden. Diese Übereinstimmung nennt man **Soft Match (mögliche Übereinstimmung)**. Ein Soft Match soll Objekte, die sich bereits in Azure AD befinden (die Azure AD als Quelle haben), mit neuen Objekten abgleichen, die während der Synchronisierung hinzugefügt/aktualisiert werden, und lokal die gleiche Entität (Benutzer, Gruppen) darstellen.
 * Der Fehler **InvalidSoftMatch** tritt auf, wenn das Hard Match keine übereinstimmenden Objekte findet, **UND** das Soft Match ein übereinstimmendes Objekt findet, dieses Objekt aber einen anderen Wert für *immutableId* hat als *SourceAnchor* des eingehenden Objekts. Das bedeutet, dass das übereinstimmende Objekt mit einem anderen Objekt aus dem lokalen Active Directory synchronisiert wurde.
@@ -107,7 +107,7 @@ Beachten Sie, dass der Synchronisierungsfehlerbericht in Azure AD Connect Health
 * [Duplicate or invalid attributes prevent directory synchronization in Office 365 (Doppelte oder ungültige Attribute verhindern Verzeichnissynchronisation in Office 365)](https://support.microsoft.com/en-us/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch (Konflikt mit Objekttyp)
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 Wenn Azure AD versucht, ein Soft Match mit zwei Objekten durchzuführen, kann es vorkommen, dass zwei Objekte unterschiedlicher „Typen“ (z.B. Benutzer, Gruppe, Kontakt usw) den gleichen Wert für die Attribute haben, die für die Ausführung des Soft Matchs benötigt werden. Da die Duplizierung dieser Attribute in Azure AD nicht zulässig ist, kann bei diesem Vorgang ein Synchronisierungsfehler „ObjectTypeMismatch“ auftreten.
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>Beispielszenarios für ObjectTypeMismatch-Fehler
@@ -128,7 +128,7 @@ Der häufigste Grund für den Fehler „ObjectTypeMismatch“ ist, dass zwei Obj
 
 ## <a name="duplicate-attributes"></a>Duplizierte Attribute
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique (Wert für Attribut muss eindeutig sein)
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 Ein Azure Active Directory Schema lässt es nicht zu, dass zwei oder mehr Objekte denselben Wert für eines der folgenden Attribute haben. Das bedeutet, dass jedes Objekt in Azure AD einen eindeutigen Wert für diese Attribute bei einer jeweiligen Instanz haben muss.
 
 * ProxyAddresses
@@ -166,7 +166,7 @@ Die häufigste Ursache für den Fehler „AttributeValueMustBeUnique“ ist, das
 
 ## <a name="data-validation-failures"></a>Fehler bei der Datenüberprüfung
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed (Überprüfung von Identitätsdaten schlägt fehl)
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 Azure Active Directory erzwingt verschiedene Einschränkungen für die Daten selbst, bevor diese Daten in das Verzeichnis geschrieben werden können. Dadurch wird sichergestellt, dass Endbenutzer ein optimales Benutzererlebnis erfahren, wenn Sie die Anwendungen verwenden, die auf diesen Daten basieren.
 
 #### <a name="scenarios"></a>Szenarien
@@ -180,7 +180,7 @@ a. Stellen Sie sicher, dass das Attribut „UserPrincipalName“ nur unterstütz
 * [Vorbereiten von Benutzern auf die Bereitstellung in Office 365 über die Verzeichnissynchronisierung ](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 Dies ist ein spezieller Fall, bei dem der Synchronisierungsfehler **FederatedDomainChangeError** auftritt, wenn das Suffix des Attributs „UserPrincipalName“ eines Benutzers von einer Verbunddomäne in eine andere Verbunddomäne geändert wird.
 
 #### <a name="scenarios"></a>Szenarien
@@ -202,7 +202,7 @@ Wenn das UserPrincipalName-Suffix eines Benutzers von bob@**contoso.com** in bob
 * [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird.](https://support.microsoft.com/en-us/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
 
 ## <a name="largeobject"></a>LargeObject (Großes Objekt)
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Wenn ein Attribut die maximal zulässigen Grenzwerte für Größe, Länge oder Anzahl überschreitet, die durch das Azure Active Directory-Schema festgelegt sind, tritt beim Synchronisierungsvorgang der Synchronisierungsfehler **LargeObject** oder **ExceededAllowedLength** auf. In der Regel tritt dieser Fehler für die folgenden Attribute auf:
 
 * userCertificate

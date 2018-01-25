@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: sethm
-ms.openlocfilehash: e64e7d9f203debe19dfa222f501c7902cfe2ae98
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ba34938883ee342936b5c7a4568dae5e02684bb2
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
 In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus behandelt. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
@@ -48,7 +48,6 @@ Siehe [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus][
 ### <a name="what-should-i-know-before-creating-entities"></a>Was muss ich vor der Erstellung von Entitäten wissen?
 Die folgenden Eigenschaften einer Warteschlange und eines Themas sind unveränderlich. Berücksichtigen Sie diese Einschränkung beim Bereitstellen Ihrer Entitäten, da diese Eigenschaften nicht geändert werden können, ohne eine neue Ersatzentität zu erstellen.
 
-* Größe
 * Partitionierung
 * Sitzungen
 * Duplikaterkennung

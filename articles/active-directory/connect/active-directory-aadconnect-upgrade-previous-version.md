@@ -3,7 +3,7 @@ title: "Azure AD Connect: Aktualisieren von einer früheren Version | Microsoft 
 description: "Erfahren Sie etwas über die verschiedenen Methoden für das Upgrade auf die aktuelle Version von Azure Active Directory Connect, einschließlich des direkten Upgrades und der Swing-Migration."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: acce2e8f0c875d0211f132efab5f55d77a0def67
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4d431a9e0fab8d46b244fd40178ede594c095893
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure Active Directory (Azure AD) Connect-Installation auf die aktuelle Version zu aktualisieren. Es wird empfohlen, immer die aktuelle Version von Azure AD Connect zu nutzen. Sie können auch die unter [Swing-Migration](#swing-migration) beschriebenen Schritte ausführen, wenn Sie wesentliche Änderungen an der Konfiguration vornehmen.
@@ -27,7 +27,7 @@ Wenn Sie von DirSync aktualisieren möchten, lesen Sie stattdessen [Aktualisiere
 
 Es gibt verschiedene Strategien für das Upgrade von Azure AD Connect.
 
-| Methode | Beschreibung |
+| Methode | BESCHREIBUNG |
 | --- | --- |
 | [Automatisches Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) |Für Kunden mit einer Expressinstallation ist dies die einfachste Methode. |
 | [Direktes Upgrade](#in-place-upgrade) |Wenn Sie über einen einzelnen Server verfügen, können Sie die Installation direkt auf demselben Server aktualisieren. |

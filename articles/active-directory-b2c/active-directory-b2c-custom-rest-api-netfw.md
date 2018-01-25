@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
-ms.openlocfilehash: b7ce383b5297b0973f2999e7310fad94a0abe7dd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fd9c95ae78590aa772fde10c8c80914c905767a8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe
 Das Framework für die Identitätsfunktion, das Azure Active Directory B2C (Azure AD B2C) zugrunde liegt, ermöglicht Ihnen die Integration in eine User Journey per RESTful-API. In dieser exemplarischen Vorgehensweise erfahren Sie, wie Azure AD B2C mit .NET Framework-RESTful-Diensten (Web-API) interagiert.
@@ -88,7 +88,7 @@ Erstellen eines Modells, das Eingabeansprüche darstellt, indem es Folgendes aus
 
 3. Geben Sie der Klasse den Namen `InputClaimsModel`, und fügen Sie der `InputClaimsModel`-Klasse die folgenden Eigenschaften hinzu:
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class InputClaimsModel
@@ -102,7 +102,7 @@ Erstellen eines Modells, das Eingabeansprüche darstellt, indem es Folgendes aus
 
 4. Erstellen Sie das neue Modell `OutputClaimsModel`, und fügen Sie der `OutputClaimsModel`-Klasse die folgenden Eigenschaften hinzu:
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class OutputClaimsModel
@@ -114,7 +114,7 @@ Erstellen eines Modells, das Eingabeansprüche darstellt, indem es Folgendes aus
 
 5. Erstellen Sie ein weiteres Modell (`B2CResponseContent`), das Sie verwenden, um die Fehlermeldungen der Eingabevalidierung auszulösen. Fügen Sie der `B2CResponseContent`-Klasse die folgenden Eigenschaften hinzu, geben Sie die fehlenden Verweise an, und speichern Sie die Datei:
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class B2CResponseContent
@@ -152,7 +152,7 @@ In der Web-API ist ein _Controller_ ein Objekt zum Verarbeiten von HTTP-Anforder
 
 4. Wenn die Datei *IdentityController.cs* noch nicht geöffnet ist, doppelklicken Sie darauf, und ersetzen Sie dann den Code in der Datei durch folgenden Code:
 
-    ```C#
+    ```csharp
     using Contoso.AADB2C.API.Models;
     using Newtonsoft.Json;
     using System;

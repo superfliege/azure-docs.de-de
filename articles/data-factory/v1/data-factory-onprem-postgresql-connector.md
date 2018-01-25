@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 46a72a15ba35119ecb5640cb0b22cd2a0fc56a27
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 4cec177456b007fd7c6721380c00a622b43af677
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Verschieben von Daten aus PostgreSQL mithilfe von Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-onprem-postgresql-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-onprem-postgresql-connector.md)
 > * [Version 2 – Vorschauversion](../connector-postgresql.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from PostgreSQL using Azure Data Factory](../connector-postgresql.md) (Kopieren von Daten aus PostgreSQL mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from PostgreSQL using Azure Data Factory](../connector-postgresql.md) (Kopieren von Daten aus PostgreSQL mit Azure Data Factory).
 
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen PostgreSQL-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
@@ -73,15 +73,15 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit PostgreSQL verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Typ |Die "type"-Eigenschaft muss auf **OnPremisesPostgreSql** |Ja |
+| type |Die "type"-Eigenschaft muss auf **OnPremisesPostgreSql** |Ja |
 | server |Name des PostgreSQL-Servers. |Ja |
 | database |Name der PostgreSQL-Datenbank. |Ja |
-| schema |Name des Schemas in der Datenbank. Beim Schemanamen wird die Groß- und Kleinschreibung beachtet. |Nein |
+| schema |Name des Schemas in der Datenbank. Beim Schemanamen wird die Groß- und Kleinschreibung beachtet. |Nein  |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der PostgreSQL-Datenbank. Mögliche Werte: Anonymous, Basic und Windows. |Ja |
-| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
-| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
+| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein  |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen PostgreSQL-Datenbank verwenden soll. |Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -89,7 +89,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **RelationalTable** (wozu das PostgreSQL-Dataset gehört) hat folgende Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der PostgreSQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. |Nein (wenn **query** von **RelationalSource** angegeben ist) |
 
@@ -100,7 +100,7 @@ Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach
 
 Wenn eine Quelle vom Typ **RelationalSource** (wozu PostgreSQL gehört) verwendet wird, sind im Abschnitt typeProperties folgende Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nein (wenn **tableName** von **Dataset** angegeben ist) |
 
@@ -307,36 +307,36 @@ Beim Verschieben von Daten in PostgreSQL werden die folgenden Zuordnungen zwisch
 
 | Typ "PostgreSQL-Datenbank" | PostgreSQL-Aliase | Typ ".NET Framework" |
 | --- | --- | --- |
-| abstime | |Datetime | &nbsp;
+| abstime | |DateTime | &nbsp;
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[], String | &nbsp;
 | bit varying [ (n) ] |varbit |Byte[], String |
-| Boolescher Wert |bool |Boolescher Wert |
+| boolean |bool |Boolescher Wert |
 | box | |Byte[], String |&nbsp;
 | bytea | |Byte[], String |&nbsp;
-| character [(n)] |char [(n)] |String |
-| character varying [(n)] |varchar [(n)] |String |
-| cid | |String |&nbsp;
-| cidr | |String |&nbsp;
+| character [(n)] |char [(n)] |Zeichenfolge |
+| character varying [(n)] |varchar [(n)] |Zeichenfolge |
+| cid | |Zeichenfolge |&nbsp;
+| cidr | |Zeichenfolge |&nbsp;
 | circle | |Byte[], String |&nbsp;
-| date | |Datetime |&nbsp;
-| daterange | |String |&nbsp;
+| date | |DateTime |&nbsp;
+| daterange | |Zeichenfolge |&nbsp;
 | double precision |float8 |Double |
 | inet | |Byte[], String |&nbsp;
-| intarry | |String |&nbsp;
-| int4range | |String |&nbsp;
-| int8range | |String |&nbsp;
+| intarry | |Zeichenfolge |&nbsp;
+| int4range | |Zeichenfolge |&nbsp;
+| int8range | |Zeichenfolge |&nbsp;
 | integer |int, int4 |Int32 |
 | interval [fields] [(p)] | |Timespan |&nbsp;
-| json | |String |&nbsp;
+| json | |Zeichenfolge |&nbsp;
 | jsonb | |Byte[] |&nbsp;
 | line | |Byte[], String |&nbsp;
 | lseg | |Byte[], String |&nbsp;
 | macaddr | |Byte[], String |&nbsp;
-| money | |Decimal |&nbsp;
-| numeric [(p, s)] |decimal [(p, s)] |Decimal |
-| numrange | |String |&nbsp;
+| money | |DECIMAL |&nbsp;
+| numeric [(p, s)] |decimal [(p, s)] |DECIMAL |
+| numrange | |Zeichenfolge |&nbsp;
 | oid | |Int32 |&nbsp;
 | path | |Byte[], String |&nbsp;
 | pg_lsn | |Int64 |&nbsp;
@@ -346,7 +346,7 @@ Beim Verschieben von Daten in PostgreSQL werden die folgenden Zuordnungen zwisch
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| Text | |String |&nbsp;
+| text | |Zeichenfolge |&nbsp;
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).

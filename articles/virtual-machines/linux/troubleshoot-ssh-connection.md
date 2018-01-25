@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 3a282c8b2c2ba2749de6a2d3688bd57d75703b22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b7fe6dadb444ebbe6af6239562f507e451f9f605
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer
 Es gibt verschiedene Gründe dafür, dass SSH-Fehler (Secure Shell) oder SSH-Verbindungsfehler auftreten oder dass die SSH-Verbindung abgelehnt wird, wenn Sie versuchen, eine Verbindung mit einem virtuellen Azure-Computer unter Linux herzustellen. Dieser Artikel hilft Ihnen, diese Probleme zu ermitteln und zu beheben. Sie können das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder die VM-Zugriffserweiterung für Linux verwenden, um Verbindungsproblemen zu ermitteln und zu beheben.
@@ -234,7 +234,7 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
 * Stellen Sie den virtuellen Computer auf einem neuen Azure-Knoten erneut bereit. Informationen zum erneuten Bereitstellen eines virtuellen Computers finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
   
     Nach Beendigung dieses Vorgangs gehen kurzlebige Datenträgerdaten verloren, und dynamische IP-Adressen, die dem virtuellen Computer zugeordnet sind, werden aktualisiert.
-* Führen Sie die unter [Zurücksetzen des Kennworts oder des SSH-Schlüssels für Linux-basierte virtuelle Computer](classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) beschriebenen Anweisungen aus, um Folgendes zu erreichen:
+* Führen Sie die unter [Zurücksetzen des Kennworts oder des SSH-Schlüssels für Linux-basierte virtuelle Computer](classic/reset-access-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) beschriebenen Anweisungen aus, um Folgendes zu erreichen:
   
   * Zurücksetzen des Kennworts oder des SSH-Schlüssels
   * Erstellen eines *sudo*-Benutzerkontos
@@ -245,5 +245,5 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * Wenn Sie nach Ausführung der Schritte immer noch nicht keine SSH-Verbindung mit Ihrem virtuellen Computer herstellen können, finden Sie unter [Ausführliche Schritte zur Problembehandlung bei SSH](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weitere Hinweise, damit Sie das Problem lösen können.
 * Weitere Informationen zur Problembehandlung beim Anwendungszugriff finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Weitere Informationen zur Problembehandlung bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden, finden Sie unter [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für Linux-basierte virtuelle Computer](classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+* Weitere Informationen zur Problembehandlung bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden, finden Sie unter [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für Linux-basierte virtuelle Computer](classic/reset-access-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 

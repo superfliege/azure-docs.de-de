@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: jroth
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 67b328cb754e49fe1dea9d57f74dd31793acd93c
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 8602decfa35a21e88885fda1a4c70264bb38444b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (Klassische Bereitstellung)
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Die Weise, wie ein Client Verbindungen mit SQL Server auf einem virtuellen Compu
 > 
 
 ### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Verbinden mit SQL Server im selben Clouddienst
-Im gleichen Clouddienst können mehrere virtuelle Computer erstellt werden. Das Konzept dieses Szenarios mit virtuellen Computern ist unter [Verbinden virtueller Computer mit einem virtuellen Netzwerk oder Clouddienst](../classic/connect-vms.md#connect-vms-in-a-standalone-cloud-service)erläutert. In diesem Szenario versucht ein Client auf einem virtuellen Computer, eine Verbindung mit SQL Server auf einem anderen virtuellen Computer im selben Clouddienst herzustellen.
+Im gleichen Clouddienst können mehrere virtuelle Computer erstellt werden. Das Konzept dieses Szenarios mit virtuellen Computern ist unter [Verbinden virtueller Computer mit einem virtuellen Netzwerk oder Clouddienst](../classic/connect-vms-classic.md#connect-vms-in-a-standalone-cloud-service)erläutert. In diesem Szenario versucht ein Client auf einem virtuellen Computer, eine Verbindung mit SQL Server auf einem anderen virtuellen Computer im selben Clouddienst herzustellen.
 
 In diesem Szenario können Sie die Verbindung mit dem virtuellen Computer **Name** (im Portal auch als **Computername** oder **Hostname** dargestellt) herstellen. Dies ist der Name, den Sie für den virtuellen Computer während der Erstellung angegeben haben. Beispiel: Wenn Sie dem virtuellen SQL-Computer den Namen **mysqlvm**gegeben haben, könnte ein virtueller Clientcomputer im selben Clouddienst mit der folgenden Verbindungszeichenfolge eine Verbindung herstellen:
 

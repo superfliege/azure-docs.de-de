@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 3ef7a4054be80547b0d91ad1f13777d915005f8b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 128abd504785227c1f27debd329d46d358e6e516
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Nachverfolgen der B2B-Kommunikation in Microsoft Operations Management Suite (OMS)
 
@@ -30,9 +30,9 @@ Nach dem Einrichten der B2B-Kommunikation zwischen zwei laufenden Geschäftsproz
 * Ausführliche Fehlerbeschreibung für Fehler
 * Suchfunktionen
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
-* Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](logic-apps-create-a-logic-app.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+* Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen eines Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und das [Einrichten der Überwachung und Protokollierung für dieses Konto](../logic-apps/logic-apps-monitor-b2b-message.md).
 
@@ -47,7 +47,7 @@ Nach dem Einrichten der B2B-Kommunikation zwischen zwei laufenden Geschäftsproz
 
 Damit OMS für Ihre Logik-App B2B-Nachrichten nachverfolgt, müssen Sie die Lösung **B2B-Logik-App-Verwaltung** dem OMS-Portal hinzufügen. Informieren Sie sich über das [Hinzufügen von Lösungen zu OMS](../log-analytics/log-analytics-get-started.md).
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Weitere Dienste**. Suchen Sie nach „Log Analytics“, und wählen Sie die Option **Log Analytics** aus, wie hier zu sehen:
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Weitere Dienste** aus. Suchen Sie nach „Log Analytics“, und wählen Sie die Option **Log Analytics** aus, wie hier zu sehen:
 
    ![Suchen nach Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
@@ -147,7 +147,7 @@ Für jeden Nachrichtentyp sind hier die Eigenschaftsbeschreibungen und Namensfor
 
 Hier sind die Eigenschaftsbeschreibungen für die einzelnen AS2-Nachrichten aufgeführt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Sender | Der unter **Empfangseinstellungen** angegebene Gastpartner oder der unter **Sendeeinstellungen** angegebene Hostpartner für eine AS2-Vereinbarung |
 | Receiver | Der unter **Empfangseinstellungen** angegebene Hostpartner oder der unter **Sendeeinstellungen** angegebene Gastpartner für eine AS2-Vereinbarung |
@@ -178,7 +178,7 @@ Hier sind die Namensformate für die einzelnen heruntergeladenen AS2-Nachrichten
 
 Hier sind die Eigenschaftsbeschreibungen für die einzelnen X12-Nachrichten aufgeführt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Sender | Der unter **Empfangseinstellungen** angegebene Gastpartner oder der unter **Sendeeinstellungen** angegebene Hostpartner für eine X12-Vereinbarung |
 | Receiver | Der unter **Empfangseinstellungen** angegebene Hostpartner oder der unter **Sendeeinstellungen** angegebene Gastpartner für eine X12-Vereinbarung |
@@ -211,7 +211,7 @@ Hier sind die Namensformate für die einzelnen heruntergeladenen X12-Nachrichten
 
 Hier sind die Eigenschaftsbeschreibungen für die einzelnen EDIFACT-Nachrichten aufgeführt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Sender | Der unter **Empfangseinstellungen** angegebene Gastpartner oder der unter **Sendeeinstellungen** angegebene Hostpartner für eine EDIFACT-Vereinbarung |
 | Receiver | Der unter **Empfangseinstellungen** angegebene Hostpartner oder der unter **Sendeeinstellungen** angegebene Gastpartner für eine EDIFACT-Vereinbarung |

@@ -1,5 +1,5 @@
 ---
-title: "Handbuch zur Leistung und Optimierung der Kopieraktivität | Microsoft-Dokumentation"
+title: "Handbuch zur Leistung und Optimierung der Kopieraktivität | Microsoft Docs"
 description: "Hier erfahren Sie, welche Faktoren sich entscheidend auf die Leistung auswirken, wenn Sie Daten in Azure Data Factory mithilfe der Kopieraktivität verschieben."
 services: data-factory
 documentationcenter: 
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f774bb881c66ceeb9f3223b735b3f34462b6a8d
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 2bec612b1d67eceb0e62b28524b98e852d31ad0f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 > [!NOTE]
@@ -410,7 +410,7 @@ In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die ges
 
 ![Szenario 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Referenz
+## <a name="reference"></a>Verweis
 Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einige der unterstützten Datenspeicher:
 
 * Azure Storage (einschließlich Blob Storage und Table Storage): [Skalierbarkeits- und Leistungsziele für Azure Storage](../../storage/common/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../../storage/common/storage-performance-checklist.md)

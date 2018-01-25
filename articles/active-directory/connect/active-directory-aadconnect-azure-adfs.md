@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 954d161b3fbc66f594429f33d1bb5c88c2bc83b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7a2b2bd139443159607a0cef800737de6761e1c2
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Bereitstellen von Active Directory-Verbunddiensten in Azure
 AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche Hochverfügbarkeit mit wenig Aufwand erzielt werden.
@@ -124,10 +124,10 @@ Der nächste Schritt ist die Bereitstellung von virtuellen Computern, auf denen 
 
 | Computer | Rolle | Subnetz | Verfügbarkeitsgruppe | Speicherkonto | IP-Adresse |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| contosodc1 |DC/ADFS |INT |contosodcset |contososac1 |Statisch |
-| contosodc2 |DC/ADFS |INT |contosodcset |contososac2 |Statisch |
-| contosowap1 |WAP |DMZ |contosowapset |contososac1 |Statisch |
-| contosowap2 |WAP |DMZ |contosowapset |contososac2 |Statisch |
+| contosodc1 |DC/ADFS |INT |contosodcset |contososac1 |statischen |
+| contosodc2 |DC/ADFS |INT |contosodcset |contososac2 |statischen |
+| contosowap1 |WAP |DMZ |contosowapset |contososac1 |statischen |
+| contosowap2 |WAP |DMZ |contosowapset |contososac2 |statischen |
 
 Sie haben vielleicht bemerkt, dass keine NSG angegeben wurde. Dies liegt daran, dass Sie NSGs bei Azure auf Subnetzebene verwenden können. Anschließend können Sie den Computerdatenverkehr steuern, indem Sie die individuelle NSG verwenden, die entweder dem Subnetz oder dem NIC-Objekt zugeordnet ist. Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](https://aka.ms/Azure/NSG).
 Eine statische IP-Adresse wird empfohlen, wenn Sie das DNS verwalten. Sie können auch Azure DNS verwenden und in den DNS-Einträgen für Ihre Domäne über die Azure FQDNs auf die neuen Computer verweisen.
@@ -267,7 +267,7 @@ Führen Sie die gleichen Schritte wie für den ILB aus, um die Lastenausgleichsr
 
 Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient zu schützen (in der unten angegebenen Reihenfolge).
 
-| Regel | Beschreibung | Flow |
+| Regel | BESCHREIBUNG | Flow |
 |:--- |:--- |:---:|
 | AllowHTTPSFromDMZ |Mit dieser Regel wird die HTTPS-Kommunikation von der DMZ zugelassen. |Eingehend |
 | DenyInternetOutbound |Es besteht kein Zugriff auf das Internet. |Ausgehend |
@@ -278,14 +278,17 @@ Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient 
 
 **9.2. Schützen des DMZ-Subnetzes**
 
-| Regel | Beschreibung | Flow |
+| Regel | BESCHREIBUNG | Flow |
 |:--- |:--- |:---:|
 | AllowHTTPSFromInternet |HTTPS aus dem Internet an die DMZ zulassen |Eingehend |
 | DenyInternetOutbound |Alles außer HTTPS-Verbindungen ins Internet blockieren |Ausgehend |
 
 ![EXT-Zugriffsregeln (eingehend)](./media/active-directory-aadconnect-azure-adfs/nsg_dmz.png)
 
-[Kommentar]: <> (![EXT-Zugriffsregeln (eingehend)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png)) [Kommentar]: <> (![EXT-Zugriffsregeln (ausgehend)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
+<!--
+[comment]: <> (![EXT access rules (inbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png))
+[comment]: <> (![EXT access rules (outbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
+-->
 
 > [!NOTE]
 > Wenn eine Clientauthentifizierung mit Benutzerzertifikat (clientTLS-Authentifizierung mit X509-Benutzerzertifikaten) erforderlich ist, muss für AD FS der TCP-Port 49443 für eingehenden Zugriff aktiviert werden.
@@ -313,9 +316,9 @@ Durch die Vorlage wird eine Konfiguration mit sechs Computern (je zwei für Dom�
 
 Sie können ein vorhandenes virtuelles Netzwerk verwenden oder beim Bereitstellen der Vorlage ein neues VNet erstellen. Im Anschluss finden Sie eine Liste mit den verschiedenen verfügbaren Parametern, mit denen Sie die Bereitstellung anpassen können, sowie eine Beschreibung der jeweiligen Verwendung im Rahmen des Bereitstellungsprozesses. 
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |:--- |:--- |
-| Location |Die Region, in der die Ressourcen bereitgestellt werden sollen (beispielsweise „USA, Osten“). |
+| Speicherort |Die Region, in der die Ressourcen bereitgestellt werden sollen (beispielsweise „USA, Osten“). |
 | StorageAccountType |Die Art des zu erstellenden Speicherkontos. |
 | VirtualNetworkUsage |Gibt an, ob ein neues virtuelles Netzwerk erstellt oder ob ein bereits vorhandenes verwendet wird. |
 | VirtualNetworkName |Der Name des zu erstellenden virtuellen Netzwerks. Diese Angabe ist sowohl bei Verwendung eines vorhandenen virtuellen Netzwerks als auch bei Verwendung eines neuen virtuellen Netzwerks obligatorisch. |

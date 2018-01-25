@@ -3,7 +3,7 @@ title: 'Azure AD Connect: Voraussetzungen und Hardware | Microsoft Docs'
 description: "Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für Azure AD Connect."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 1dc33bbd686d97f21c7b9d61752d9f2c584a79fe
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c35e796cb823b2b059b726f099d658ee5e8192b
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für Azure AD Connect.
@@ -63,7 +63,7 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 * Wenn Sie eine separate SQL Server-Instanz verwenden, gelten die folgenden Anforderungen:
   * Azure AD Connect unterstützt sämtliche Versionen von Microsoft SQL Server – von SQL Server 2008 (mit dem neuesten Service Pack) bis SQL Server 2016 SP1. Microsoft Azure SQL-Datenbank wird als Datenbank **nicht unterstützt**.
   * Sie müssen eine SQL-Sortierung ohne Berücksichtigung der Groß- und Kleinschreibung verwenden. Diese Sortierungen werden durch „\_CI_“ in ihrem Namen bestimmt. Eine Sortierung mit Berücksichtigung der Groß- und Kleinschreibung und „\_CS_“ im Namen wird **nicht unterstützt**.
-  * Sie können jeweils nur ein Synchronisationsmodul pro SQL-Instanz haben. Die Freigabe einer SQL-Instanz mit FIM/MIM Sync, DirSync oder Azure AD Sync wird **nicht unterstützt** .
+  * Sie können jeweils nur ein Synchronisierungsmodul pro SQL-Instanz verwenden. Die Freigabe einer SQL-Instanz mit FIM/MIM Sync, DirSync oder Azure AD Sync wird **nicht unterstützt** .
 
 ### <a name="accounts"></a>Konten
 * Ein globales Azure AD-Administratorkonto für den Azure AD-Mandanten, in den die Integration erfolgen soll. Bei diesem Konto muss es sich um ein **Geschäfts-, Schul- oder Unikonto** handeln, und es darf kein **Microsoft-Konto** sein.
@@ -110,7 +110,7 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 Weitere Informationen zum [defaultProxy](https://msdn.microsoft.com/library/kd3cf2ex.aspx)-Element finden Sie bei MSDN.  
 Informationen zu Problemen mit der Konnektivität finden Sie unter [Beheben von Konnektivitätsproblemen](active-directory-aadconnect-troubleshoot-connectivity.md).
 
-### <a name="other"></a>Sonstige
+### <a name="other"></a>Andere
 * Optional: Ein Testbenutzerkonto zur Überprüfung der Synchronisierung.
 
 ## <a name="component-prerequisites"></a>Voraussetzungen an Komponenten

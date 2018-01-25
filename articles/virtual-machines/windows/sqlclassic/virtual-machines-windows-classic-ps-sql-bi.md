@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
-ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a010e60df2d86d2b1cc923b427aa7d7452f58089
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>SQL Server-Business Intelligence in Azure Virtual Machines
 > [!IMPORTANT] 
@@ -75,13 +75,13 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
 * SQL Server 2012 SP3 Enterprise
 * SQL Server 2012 SP3 Standard
 
-| BI-Funktion von SQL Server | In Katalogimage installiert | Hinweise |
+| BI-Funktion von SQL Server | In Katalogimage installiert | Notizen |
 | --- | --- | --- |
 | **Reporting Services – Einheitlicher Modus** |Ja |Installiert, erfordert aber eine Konfiguration, einschließlich Berichts-Manager-URL. Siehe Abschnitt [Konfigurieren von Reporting Services](#configure-reporting-services). |
-| **Reporting Services – SharePoint-Modus** |Nein |Das Image des Microsoft Azure Virtual Machine-Katalogs enthält weder SharePoint noch SharePoint-Installationsdateien. <sup>1</sup> |
+| **Reporting Services – SharePoint-Modus** |Nein  |Das Image des Microsoft Azure Virtual Machine-Katalogs enthält weder SharePoint noch SharePoint-Installationsdateien. <sup>1</sup> |
 | **Analysis Services – Mehrdimensional und Data Mining (OLAP)** |Ja |Als standardmäßige Analysis Services-Instanz installiert und konfiguriert |
-| **Analysis Services – Tabellarisch** |Nein |In SQL Server 2012-, 2014- und 2016-Images unterstützt, aber nicht standardmäßig installiert. Installieren Sie eine weitere Instanz von Analysis Services. Weitere Informationen hierzu finden Sie im Abschnitt „Installieren anderer SQL Server-Dienste und -Features“ in diesem Thema. |
-| **Analysis Services Power Pivot für SharePoint** |Nein |Das Image des Microsoft Azure Virtual Machine-Katalogs enthält weder SharePoint noch SharePoint-Installationsdateien. <sup>1</sup> |
+| **Analysis Services – Tabellarisch** |Nein  |In SQL Server 2012-, 2014- und 2016-Images unterstützt, aber nicht standardmäßig installiert. Installieren Sie eine weitere Instanz von Analysis Services. Weitere Informationen hierzu finden Sie im Abschnitt „Installieren anderer SQL Server-Dienste und -Features“ in diesem Thema. |
+| **Analysis Services Power Pivot für SharePoint** |Nein  |Das Image des Microsoft Azure Virtual Machine-Katalogs enthält weder SharePoint noch SharePoint-Installationsdateien. <sup>1</sup> |
 
 <sup>1</sup> Weitere Informationen zu SharePoint und virtuellen Azure-Computern finden Sie unter [Microsoft Azure-Architekturen für SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) und [SharePoint-Bereitstellung auf Microsoft Azure Virtual Machines](https://www.microsoft.com/download/details.aspx?id=34598).
 
@@ -98,13 +98,13 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
   * Die Laufwerk-Cacherichtlinie für das Standardlaufwerk **C:**ist für die Verwendung von Daten nicht optimal.
   * Das Laufwerk **D:** ist ein temporäres Laufwerk, das hauptsächlich für die Auslagerungsdatei verwendet wird. Das Laufwerk **D:** wird nicht beibehalten und nicht in Blob Storage gespeichert. Bei Verwaltungsaufgaben, z.B. einer Änderung der Größe des virtuellen Computers, wird das Laufwerk **D:** zurückgesetzt. Es wird empfohlen, das Laufwerk **D:** **NICHT** für Datenbankdateien zu verwenden, einschließlich „tempdb“.
     
-    Weitere Informationen zum Erstellen und Anfügen von Datenträgern finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+    Weitere Informationen zum Erstellen und Anfügen von Datenträgern finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Beenden oder deinstallieren Sie Dienste, die Sie nicht verwenden möchten. Beenden oder deinstallieren Sie beispielsweise Analysis Services und SQL Server Integration Services, falls der virtuelle Computer nur für Reporting Services verwendet wird. Die folgende Abbildung enthält ein Beispiel für die Dienste, die standardmäßig gestartet werden.
   
     ![SQL Server-Dienste](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
   
   > [!NOTE]
-  > Das SQL Server-Datenbankmodul ist in den unterstützten BI-Szenarios erforderlich. Bei einer VM-Topologie mit Einzelserver muss das Datenbankmodul auf demselben virtuellen Computer ausgeführt werden.
+  > Die SQL Server-Datenbank-Engine ist in den unterstützten BI-Szenarios erforderlich. Bei einer VM-Topologie mit Einzelserver muss die Datenbank-Engine auf demselben virtuellen Computer ausgeführt werden.
   
     Weitere Informationen finden Sie unter [Deinstallieren von Reporting Services](https://msdn.microsoft.com/library/hh479745.aspx) und [Deinstallieren einer Instanz von Analysis Services](https://msdn.microsoft.com/library/ms143687.aspx).
 * Prüfen Sie **Windows-Update** auf neue „Wichtige Updates“. Die Microsoft Azure Virtual Machine-Images werden häufig aktualisiert. Es kann aber sein, dass nach der letzten Aktualisierung des VM-Images unter **Windows-Update** wichtige Updates bereitgestellt werden.
@@ -113,24 +113,24 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
 Im Folgenden sind Beispielbereitstellungen angegeben, bei denen Microsoft Azure Virtual Machines verwendet werden. Die Topologien in diesen Diagrammen stellen nur einige der möglichen Topologien dar, die Sie mit SQL Server BI-Funktionen und Microsoft Azure Virtual Machines verwenden können.
 
 ### <a name="single-virtual-machine"></a>Einzelner virtueller Computer
-Analysis Services, Reporting Services, SQL Server-Datenbankmodul und Datenquellen auf einem einzelnen virtuellen Computer.
+Analysis Services, Reporting Services, SQL Server-Datenbank-Engine und Datenquellen auf einem einzelnen virtuellen Computer.
 
 ![BI-IaaS-Szenario mit 1 virtuellem Computer](./media/virtual-machines-windows-classic-ps-sql-bi/IC650108.gif)
 
 ### <a name="two-virtual-machines"></a>Zwei virtuelle Computer
-* Analysis Services, Reporting Services und SQL Server-Datenbankmodul auf einem einzelnen virtuellen Computer. Diese Bereitstellung enthält die Berichtsserver-Datenbanken.
-* Datenquellen auf einem zweiten virtuellen Computer. Der zweite virtuelle Computer enthält das SQL Server-Datenbankmodul als Datenquelle.
+* Analysis Services, Reporting Services und SQL Server-Datenbank-Engine auf einem einzelnen virtuellen Computer. Diese Bereitstellung enthält die Berichtsserver-Datenbanken.
+* Datenquellen auf einem zweiten virtuellen Computer. Der zweite virtuelle Computer enthält die SQL Server-Datenbank-Engine als Datenquelle.
 
 ![BI-IaaS-Szenario mit 2 virtuellen Computern](./media/virtual-machines-windows-classic-ps-sql-bi/IC650109.gif)
 
 ### <a name="mixed-azure--data-on-azure-sql-database"></a>Azur-Mischung – Daten in Azure SQL-Datenbank
-* Analysis Services, Reporting Services und SQL Server-Datenbankmodul auf einem einzelnen virtuellen Computer. Diese Bereitstellung enthält die Berichtsserver-Datenbanken.
+* Analysis Services, Reporting Services und SQL Server-Datenbank-Engine auf einem einzelnen virtuellen Computer. Diese Bereitstellung enthält die Berichtsserver-Datenbanken.
 * Die Datenquelle ist Azure SQL-Datenbank.
 
 ![BI-IaaS-Szenarios mit VM und Azure SQL als Datenquelle](./media/virtual-machines-windows-classic-ps-sql-bi/IC650110.gif)
 
 ### <a name="hybrid-data-on-premises"></a>Hybrid – Lokale Daten
-* In dieser Beispielbereitstellung werden Analysis Services, Reporting Services und das SQL Server-Datenbankmodul auf einem einzelnen virtuellen Computer ausgeführt. Der virtuelle Computer hostet die Berichtsserver-Datenbanken. Für den virtuellen Computer wird der Beitritt zu einer lokalen Domäne per Azure Virtual Networking oder mit einer anderen VPN-Tunnellösung durchgeführt.
+* In dieser Beispielbereitstellung werden Analysis Services, Reporting Services und die SQL Server-Datenbank-Engine auf einem einzelnen virtuellen Computer ausgeführt. Der virtuelle Computer hostet die Berichtsserver-Datenbanken. Für den virtuellen Computer wird der Beitritt zu einer lokalen Domäne per Azure Virtual Networking oder mit einer anderen VPN-Tunnellösung durchgeführt.
 * Die Datenquelle liegt lokal vor.
 
 ![BI-IaaS-Szenarios mit VM und lokalen Datenquellen](./media/virtual-machines-windows-classic-ps-sql-bi/IC654384.gif)
@@ -206,7 +206,7 @@ Oder:
 **Web-Portal-URL oder Berichts-Manager-URL für 2012 und 2014:**
 
 1. Klicken Sie im linken Bereich für 2014 und 2012 auf **Web-Portal-URL** oder **Berichts-Manager-URL**.
-2. Klicken Sie auf **Übernehmen**.
+2. Klicken Sie auf **Anwenden**.
 3. Überprüfen Sie im Bereich **Ergebnisse** , ob die Aktionen erfolgreich abgeschlossen wurden.
 4. Klicken Sie auf **Beenden**.
 
@@ -223,7 +223,7 @@ Wenn Sie über einen Remotecomputer eine Verbindung mit dem Webportal oder Beric
 
 1. Erstellen Sie einen Endpunkt für den virtuellen Computer von TCP-Port 80. Weitere Informationen finden Sie im Abschnitt [Endpunkte und Firewallports von virtuellen Computern](#virtual-machine-endpoints-and-firewall-ports) in diesem Dokument.
 2. Öffnen Sie Port 80 in der Firewall des virtuellen Computers.
-3. Navigieren Sie zum Webportal oder Berichts-Manager, indem Sie den **DNS-Namen** des virtuellen Azure-Computers als Servernamen in der URL verwenden. Beispiel:
+3. Navigieren Sie zum Webportal oder Berichts-Manager, indem Sie den **DNS-Namen** des virtuellen Azure-Computers als Servernamen in der URL verwenden. Beispiel: 
    
     **Berichtsserver:** http://uebi.cloudapp.net/reportserver **Webportal:** http://uebi.cloudapp.net/reports
    
@@ -316,7 +316,7 @@ In diesem Abschnitt werden die zu erstellenden Microsoft Azure Virtual Machine-E
   * Erstellen Sie die Endpunkte des virtuellen Computers für die genannten Ports (*).
 * Wenn für den virtuellen Computer der Beitritt zu einer Domäne mit einer VPN-Tunnellösung durchgeführt wird, z. B. Azure Virtual Networking, sind die Endpunkte nicht erforderlich. Öffnen Sie aber die Ports in der Firewall auf dem virtuellen Computer.
   
-  | Port | Typ | Beschreibung |
+  | Port | Typ | BESCHREIBUNG |
   | --- | --- | --- |
   | **80** |TCP |Remotezugriff auf den Berichtsserver (*). |
   | **1433** |TCP |SQL Server Management Studio (*). |
@@ -334,12 +334,12 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 ![Zu öffnende Ports für BI-Anwendungen in Azure-VMs](./media/virtual-machines-windows-classic-ps-sql-bi/IC654385.gif)
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 * Informieren Sie sich über die Unterstützungsrichtlinie für Microsoft-Serversoftware, die in der Azure Virtual Machine-Umgebung verwendet wird. Im folgenden Thema wird die Unterstützung für Features wie BitLocker, Failoverclustering und Netzwerklastenausgleich zusammengefasst. [Microsoft Server Software-Support für Microsoft Azure virtuelle Maschinen](http://support.microsoft.com/kb/2721672)
 * [Übersicht zu SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [Virtuelle Computer](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)
-* [Anfügen eines Datenträgers an einen virtuellen Computer](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Anfügen eines Datenträgers an einen virtuellen Computer](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 * [Bestimmen des Servermodus einer Analysis Services-Instanz](https://msdn.microsoft.com/library/gg471594.aspx)
 * [Mehrdimensionale Modellierung (Adventure Works-Tutorial)](https://technet.microsoft.com/library/ms170208.aspx)

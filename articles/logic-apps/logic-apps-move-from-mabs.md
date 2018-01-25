@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.openlocfilehash: df26e4669158e5aa9e3b9a7af888d0dbbba273dd
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 01c5376ac5ba9125eede9deb5ee0a7a006a91bb4
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="move-from-biztalk-services-to-logic-apps"></a>Verschieben von BizTalk Services nach Logic Apps
 
@@ -37,7 +37,7 @@ Für die EAI- und EDI-Bridge-basierte Integration stellt Logic Apps den Ersatz d
 
 Die folgende Tabelle enthält eine Gegenüberstellung der BizTalk Services-Funktionen zu Logic Apps.
 
-| BizTalk Services   | Logik-Apps            | Zweck                  |
+| BizTalk Services   | Logic Apps            | Zweck                  |
 | ------------------ | --------------------- | ---------------------------- |
 | Connector          | Connector             | Senden und Empfangen von Daten   |
 | Bridge             | Logik-App             | Pipelineprozessor           |
@@ -122,10 +122,10 @@ Neben der Handelspartnerverwaltung bot das dedizierte Portal für BizTalk Servic
 
 Logic Apps bietet umfangreichere Nachverfolgungs- und Überwachungsfunktionen im [Azure-Portal](../logic-apps/logic-apps-monitor-your-logic-apps.md) und über die [B2B-Lösung der Operations Management Suite](../logic-apps/logic-apps-monitor-b2b-message.md). Dies umfasst auch eine mobile App für die Überwachung von unterwegs.
 
-## <a name="high-availability"></a>Hohe Verfügbarkeit
-Um in BizTalk Services eine hohe Verfügbarkeit zu erzielen, verwenden Sie mehrere Instanzen in einer bestimmten Region, um die Verarbeitungslast aufzuteilen. Bei Logic Apps ist eine regionsweise hohe Verfügbarkeit bereits integriert – ohne dass dafür zusätzliche Kosten anfallen. Für die regionsübergreifende Notfallwiederherstellung für die B2B-Verarbeitung in BizTalk Services ist ein Prozess für die Sicherung und Wiederherstellung erforderlich. In Logic Apps wird eine regionsübergreifende, aktive/passive [Notfallwiederherstellungsfunktion](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md) bereitgestellt. Diese erlaubt die Synchronisierung von B2B-Daten über Integrationskonten hinweg in unterschiedlichen Regionen und damit eine hohe Geschäftskontinuität.
+## <a name="high-availability"></a>Hochverfügbarkeit
+Um in BizTalk Services Hochverfügbarkeit zu erzielen, verwenden Sie mehrere Instanzen in einer bestimmten Region, um die Verarbeitungslast aufzuteilen. Bei Logic Apps ist eine regionsweise hohe Verfügbarkeit bereits integriert – ohne dass dafür zusätzliche Kosten anfallen. Für die regionsübergreifende Notfallwiederherstellung für die B2B-Verarbeitung in BizTalk Services ist ein Prozess für die Sicherung und Wiederherstellung erforderlich. In Logic Apps wird eine regionsübergreifende, aktive/passive [Notfallwiederherstellungsfunktion](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md) bereitgestellt. Diese erlaubt die Synchronisierung von B2B-Daten über Integrationskonten hinweg in unterschiedlichen Regionen und damit eine hohe Geschäftskontinuität.
 
 ## <a name="next"></a>Next (Weiter)
-* [Was sind Logik-Apps?](logic-apps-what-are-logic-apps.md)
-* [Erstellen Ihres ersten Logik-App-Workflows zur Automatisierung von Prozessen zwischen Cloud-Apps und Cloud-Diensten](logic-apps-create-a-logic-app.md) oder [Konfigurieren eines Workflows mithilfe einer vorgefertigten Vorlage oder eines Musters für den schnellen Einstieg](logic-apps-create-logic-apps-from-templates.md)  
+* [Was sind Logik-Apps?](logic-apps-overview.md)
+* [Erstellen Ihres ersten Logik-App-Workflows zur Automatisierung von Prozessen zwischen Cloud-Apps und Cloud-Diensten](quickstart-create-first-logic-app-workflow.md) oder [Konfigurieren eines Workflows mithilfe einer vorgefertigten Vorlage oder eines Musters für den schnellen Einstieg](logic-apps-create-logic-apps-from-templates.md)  
 * [Liste mit den Connectors](../connectors/apis-list.md), die Sie in einer Logik-App verwenden können

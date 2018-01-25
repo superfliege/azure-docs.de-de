@@ -11,22 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b03be0df05f85ec9ecd1fca4042e87c838022c7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a6dad8242c709240b57b8a47acc44c5ddfdaa755
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-an-http-source-using-azure-data-factory"></a>Verschieben von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-http-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-http-connector.md)
 > * [Version 2 – Vorschauversion](../connector-http.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from HTTP endpoint using Azure Data Factory](../connector-http.md) (Kopieren von Daten von einem HTTP-Endpunkt mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from HTTP endpoint using Azure Data Factory](../connector-http.md) (Kopieren von Daten von einem HTTP-Endpunkt mit Azure Data Factory).
 
 
 Dieser Artikel beschreibt, wie die Kopieraktivität in Azure Data Factory verwendet wird, um Daten von einem lokalen bzw. einem in der Cloud gehosteten HTTP-Endpunkt in einen unterstützten Senkendatenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität und der als Quellen/Senken unterstützten Datenspeichern darstellt.
@@ -48,10 +48,10 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den verknüpften HTTP-Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Typ | Die Typeigenschaft muss auf `Http` festgelegt sein. | Ja |
-| url | Basis-URL zum Webserver | Ja |
+| type | Die Typeigenschaft muss auf `Http` festgelegt sein. | Ja |
+| URL | Basis-URL zum Webserver | Ja |
 | authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte: **Anonymous**, **Basic**, **Digest**, **Windows**, **ClientCertificate**. <br><br> Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen finden Sie in den Abschnitten nach dieser Tabelle. | Ja |
 | enableServerCertificateValidation | Angeben, ob die Überprüfung des SSL-Serverzertifikats aktiviert werden soll, wenn die Quelle ein HTTPS-Webserver ist | Nein. Der Standardwert ist TRUE. |
 | gatewayName | Name des Datenverwaltungsgateways für die Verbindung mit einer lokalen HTTP-Quelle | Ja beim Kopieren von Daten von einer lokalen HTTP-Quelle |
@@ -63,7 +63,7 @@ Ausführliche Informationen zum Festlegen von Anmeldeinformationen für eine lok
 
 Legen Sie für `authenticationType` die Option `Basic`, `Digest` oder `Windows` fest, und geben Sie zusätzlich zu den oben vorgestellten allgemeinen HTTP-Connectoreigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | username | Benutzername zum Zugreifen auf den HTTP-Endpunkt | Ja |
 | password | Kennwort für den Benutzer (username) | Ja |
@@ -91,11 +91,11 @@ Legen Sie für `authenticationType` die Option `Basic`, `Digest` oder `Windows` 
 
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `ClientCertificate` fest, und geben Sie zusätzlich zu den oben beschriebenen allgemeinen Eigenschaften des HTTP-Connectors die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | embeddedCertData | Der Base64-codierte Inhalt der Binärdaten der Personal Information Exchange-Datei (PFX) | Geben Sie entweder `embeddedCertData` oder `certThumbprint` an. |
 | certThumbprint | Der Fingerabdruck des Zertifikats, das im Zertifikatspeicher des Gatewaycomputers installiert wurde. Betrifft nur das Kopieren von Daten von einer lokalen HTTP-Quelle. | Geben Sie entweder `embeddedCertData` oder `certThumbprint` an. |
-| password | Das Kennwort des Zertifikats | Nein |
+| password | Das Kennwort des Zertifikats | Nein  |
 
 Wenn Sie `certThumbprint` für die Authentifizierung verwenden und das Zertifikat im persönlichen Speicher des lokalen Computers installiert wird, müssen Sie dem Gatewaydienst Leseberechtigungen gewähren:
 
@@ -150,15 +150,15 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **Http** hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Gibt an, dass der Datasettyp auf `Http` festgelegt werden muss. | Ja |
-| relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. <br><br> Zum Erstellen einer dynamischen URL können Sie [Data Factory – Funktionen und Systemvariablen](data-factory-functions-variables.md) verwenden, z.B. „relativeUrl“: „$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)“. | Nein |
+| type | Gibt an, dass der Datasettyp auf `Http` festgelegt werden muss. | Ja |
+| relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. <br><br> Zum Erstellen einer dynamischen URL können Sie [Data Factory – Funktionen und Systemvariablen](data-factory-functions-variables.md) verwenden, z.B. „relativeUrl“: „$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)“. | Nein  |
 | requestMethod | HTTP-Methode. Zulässige Werte: **GET** oder **POST** | Nein. Der Standardwert ist `GET`. |
-| additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
-| requestBody | Text für die HTTP-Anforderung | Nein |
-| format | Wenn Sie einfach **die Daten ohne Änderung von einem HTTP-Endpunkt abrufen** möchten, ohne sie zu analysieren, überspringen Sie diese Formateinstellungen. <br><br> Wenn der HTTP-Antwortinhalt während des Kopierens analysiert werden soll, werden die folgenden Formattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nein |
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Unterstützte Grade sind: **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein |
+| additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein  |
+| requestBody | Text für die HTTP-Anforderung | Nein  |
+| format | Wenn Sie einfach **die Daten ohne Änderung von einem HTTP-Endpunkt abrufen** möchten, ohne sie zu analysieren, überspringen Sie diese Formateinstellungen. <br><br> Wenn der HTTP-Antwortinhalt während des Kopierens analysiert werden soll, werden die folgenden Formattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nein  |
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Unterstützte Grade sind: **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein  |
 
 ### <a name="example-using-the-get-default-method"></a>Beispiel: Verwenden der GET-Methode (Standard)
 
@@ -210,7 +210,7 @@ Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je 
 
 Wenn bei der Kopieraktivität die Quelle den Typ **HttpSource** aufweist, werden derzeit die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | Das Timeout (TimeSpan) für die HTTP-Anforderung, um eine Antwort zu empfangen. Dabei handelt es sich um das Timeout zum Empfangen einer Antwort, nicht das Timeout zum Lesen von Antwortdaten. | Nein. Standardwert: 00:01:40 |
 

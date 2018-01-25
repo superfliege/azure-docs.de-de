@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/15/2017
+ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6205f64f11d9029adf1f7f96baf780b82738a44a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: bcd0535c689bfda02b3c100b4ae3ab8bacb932e3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-introduction.md)
+> * [Version 1: allgemein verfügbar](data-factory-introduction.md)
 > * [Version 2 – Vorschauversion](../introduction.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschauphase finden Sie weitere Informationen unter [Einführung in Data Factory V2](../introduction.md).
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschauphase finden Sie weitere Informationen unter [Einführung in Data Factory V2](../introduction.md).
 
 
 ## <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?
@@ -56,7 +56,7 @@ Dies ist eher eine EL- (Extract-and-Load) und TL-Plattform (Transform-and-Load) 
 Die Daten, die derzeit in Azure Data Factory von Workflows genutzt und erstellt werden, sind *Zeitsegmentdaten* (stündlich, täglich, wöchentlich usw.). Eine Pipeline kann beispielsweise unter Umständen einmal täglich Eingabedaten lesen, Daten verarbeiten und Ausgabedaten erstellen. Sie können einen Workflow auch nur einmal ausführen.  
   
 
-## <a name="how-does-it-work"></a>Wie funktioniert Application Insights? 
+## <a name="how-does-it-work"></a>Wie funktioniert dies? 
 Die Pipelines (datengesteuerten Workflows) in Azure Data Factory führen in der Regel die folgenden drei Schritte aus:
 
 ![Drei Phasen von Azure Data Factory](media/data-factory-introduction/three-information-production-stages.png)
@@ -102,7 +102,7 @@ Weitere Informationen finden Sie unter [Transformieren von Daten in Azure Data F
 ### <a name="custom-net-activities"></a>Benutzerdefinierte .NET-Aktivitäten
 Erstellen Sie eine benutzerdefinierte .NET-Aktivität, falls Sie Daten in einen bzw. aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, oder Daten mit Ihrer eigenen Logik transformieren möchten. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
 
-### <a name="datasets"></a>DATASETS
+### <a name="datasets"></a>Datasets
 Eine Aktivität verwendet keine oder mehrere Datasets als Eingaben und erzeugt mindestens ein Dataset als Ausgabe. Bei Datasets handelt es sich um Datenstrukturen in den Datenspeichern. Diese Strukturen zeigen bzw. verweisen auf die Daten, die Sie in Ihren Aktivitäten verwenden möchten (z.B. Ein- oder Ausgaben). 
 
 Ein Azure-Blob-Dataset kann beispielsweise den Blobcontainer und -ordner in Azure Blob Storage angeben, aus dem die Pipeline die Daten lesen soll. Oder ein Azure SQL-Tabellendataset gibt die Tabelle an, in die die Aktivität die Ausgabedaten schreibt. 
@@ -143,7 +143,7 @@ Verwenden Sie diese Tools oder APIs, um Datenpipelines in Azure Data Factory zu 
 
 Informationen zum Erstellen von Data Factorys mit Datenpipelines erhalten Sie anhand von Schritt-für-Schritt-Anleitungen in den folgenden Tutorials:
 
-| Lernprogramm: | Beschreibung |
+| Tutorial | BESCHREIBUNG |
 | --- | --- |
 | [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Erstellen Sie eine Pipeline, mit der Daten aus Blobspeicher in eine SQL-Datenbank verschoben werden. |
 | [Tutorial: Build your first pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters) |Erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline für die Datenverarbeitung, indem ein Hive-Skript in einem Azure HDInsight-Cluster (Hadoop) ausgeführt wird. |

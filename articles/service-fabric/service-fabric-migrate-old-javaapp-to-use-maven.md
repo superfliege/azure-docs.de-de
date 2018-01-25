@@ -3,7 +3,7 @@ title: "Migrieren von Java SDK zu Maven – Aktualisieren alter Azure Service Fa
 description: "Aktualisieren Sie ältere Java-Anwendungen, die das Service Fabric-Java-SDK verwendet haben, für den Abruf von Service Fabric-Java-Abhängigkeiten aus Maven. Nach Abschluss dieses Setups können Ihre älteren Java-Anwendungen erstellt werden."
 services: service-fabric
 documentationcenter: java
-author: sayantancs
+author: rapatchi
 manager: timlt
 editor: 
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
-ms.author: saysa
-ms.openlocfilehash: 2123c5f26d77045bd22af56a844fdbf222930e7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rapatchi
+ms.openlocfilehash: 229a2cd7c0bb355006349e80b12b0142de6b5cda
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualisieren Ihrer älteren Java Service Fabric-Anwendung für den Abruf von Java-Bibliotheken aus Maven
 Vor Kurzem wurden Service Fabric-Java-Binärdateien vom Service Fabric-Java-SDK auf Maven-Hosting umgestellt. Nun können Sie die neuesten Service Fabric-Java-Abhängigkeiten mithilfe von **mavencentral** abrufen. In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre vorhandenen Java-Anwendungen, die Sie zuvor für die Verwendung mit dem Service Fabric-Java-SDK erstellt haben, unter Verwendung einer Yeoman-Vorlage oder mithilfe von Eclipse aktualisieren, sodass sie mit dem Maven-basierten Build kompatibel sind.

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/06/2017
-ms.openlocfilehash: 7e489526fd1b6a7d38172d147df1f30d74119e95
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 3337ba9fa6845deb98813259821f77ff713f9eb1
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>Klassifizieren von Iris – Teil 2: Erstellen eines Modells
 Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten vorbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
@@ -326,7 +326,7 @@ Um Ihr Skript in einem Docker-Container auf einem Linux-Remotecomputer auszufüh
 3. Führen Sie den gleichen Befehl wie zuvor im CLI-Fenster aus, aber mit der Ausnahme, dass dieses Mal _myvm_ als Ziel angegeben wird:
    ```azurecli
    REM executes iris_sklearn.py in a remote Docker container
-   az ml experiment submit -c myvm .\iris_sklearn.py
+   az ml experiment submit -c myvm iris_sklearn.py
    ```
    Der Befehl wird genau wie in einer Umgebung vom Typ `docker-python` ausgeführt, aber jetzt erfolgt die Ausführung auf dem virtuellen Linux-Remotecomputer. Im CLI-Fenster werden die gleichen Ausgabeinformationen angezeigt.
 

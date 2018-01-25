@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 9605fc3a1096d053bfeffb2544499935601b2c0f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bc2e5c2b351fb87cb763459a9e24368a422ada1b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Decodieren von X12-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack
 
@@ -35,7 +35,7 @@ Sie benötigen Folgendes:
 
 ## <a name="decode-x12-messages"></a>Decodieren von X12-Nachrichten
 
-1. [Erstellen Sie eine Logik-App](logic-apps-create-a-logic-app.md).
+1. [Erstellen Sie eine Logik-App](quickstart-create-first-logic-app-workflow.md).
 
 2. Da der Connector „X12-Nachricht decodieren“ über keine Trigger verfügt, müssen Sie einen Trigger zum Starten Ihrer Logik-App hinzufügen (beispielsweise einen Anforderungstrigger). Fügen Sie im Logik-App-Designer einen Trigger hinzu, und fügen Sie anschließend Ihrer Logik-App eine Aktion hinzu.
 
@@ -62,7 +62,7 @@ Sie benötigen Folgendes:
 
     ![Integrationskontoverbindung erstellt](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
-    Beispiel:
+    Beispiel: 
 
     ![Zu decodierende X12-Flatfilenachricht auswählen](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 

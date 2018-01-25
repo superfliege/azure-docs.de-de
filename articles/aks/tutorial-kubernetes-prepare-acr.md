@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: d436e7d9046fa9c1bced890c005f98b40b372ef6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b50d3b091848776feb33c042c2cddfcf2a598fc9
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Bereitstellen und Verwenden von Azure Container Registry
 
@@ -42,7 +42,7 @@ Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourceng
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit dem Befehl [az acr create][az-acr-create] eine Azure Container Registry-Instanz. Der Name einer Containerregistrierung **muss eindeutig sein**.
+Erstellen Sie mit dem Befehl [az acr create][az-acr-create] eine Azure Container Registry-Instanz. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -153,7 +153,7 @@ Nach Abschluss des Tutorials ist das Containerimage in einer privaten Azure Cont
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde eine Azure Container Registry-Instanz für die Verwendung in einem AKS-Cluster vorbereitet. Die folgenden Schritte wurden ausgeführt:
+In diesem Tutorial wurde eine Azure Container Registry-Instanz für die Verwendung in einem AKS-Cluster vorbereitet. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
 > * Bereitstellen einer Azure Container Registry-Instanz

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 39cfd269ec7dd9e676a9d4296df1329dc3fbe0cc
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: de48d61af0e8056a749715343ef821cfc35cb93d
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, sendet die Pipeline eine E-Mail mit Details zum erfolgreichen Kopiervorgang (beispielsweise die geschriebene Datenmenge). War die Kopieraktivität nicht erfolgreich, sendet die Pipeline eine E-Mail mit Fehlerdetails (beispielsweise die Fehlermeldung). In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
@@ -61,7 +61,7 @@ In diesem Tutorial wird das Azure-Portal verwendet. Andere Mechanismen zur Inter
     3. Laden Sie die Datei **input.txt** in den Container hoch.
 
 ## <a name="create-email-workflow-endpoints"></a>Erstellen von E-Mail-Workflow-Endpunkten
-Um das Senden einer E-Mail auszulösen, definieren Sie den Workflow mithilfe von [Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md). Ausführliche Informationen zum Erstellen eines Logic-App-Workflows finden Sie unter [How to create a logic app (Vorgehensweise: Erstellen einer Logic-App)](../logic-apps/logic-apps-create-a-logic-app.md). 
+Um das Senden einer E-Mail auszulösen, definieren Sie den Workflow mithilfe von [Logic Apps](../logic-apps/logic-apps-overview.md). Ausführliche Informationen zum Erstellen eines Logic-App-Workflows finden Sie unter [How to create a logic app (Vorgehensweise: Erstellen einer Logic-App)](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
 ### <a name="success-email-workflow"></a>Erfolgs-E-Mail-Workflow 
 Erstellen Sie einen Logik-App-Workflow mit dem Namen `CopySuccessEmail`. Definieren Sie den Workflow-Trigger als `When an HTTP request is received`, und fügen Sie eine Aktion von `Office 365 Outlook – Send an email` hinzu.
@@ -132,7 +132,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
    ![Neu -> Data Factory](./media/tutorial-control-flow-portal/new-azure-data-factory-menu.png)
-2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **ADFTutorialDataFactory** ein. 
+2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
       
      ![Seite „Neue Data Factory“](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
  
@@ -306,7 +306,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Auslösen einer nicht erfolgreichen Pipelineausführung
 1. Wechseln Sie im linken Bereich zur Registerkarte **Bearbeiten**. 
-2. Um **Trigger** eine Pipeline ausgeführt wird, klicken Sie auf **Trigger** auf der Symbolleiste, und klicken Sie auf **Trigger jetzt**. 
+2. Klicken Sie auf der Symbolleiste auf **Trigger** und anschließend auf **Trigger Now** (Jetzt auslösen), um eine Pipelineausführung **auszulösen**. 
 3. Führen Sie im Fenster **Pipeline Run** (Pipelineausführung) die folgenden Schritte aus: 
 
     1. Geben Sie für den Parameter **sourceBlobContainer** die Zeichenfolge **adftutorial/dummy/input** ein. Stellen Sie sicher, dass der Ordner „dummy“ im Container „adftutorial“ nicht vorhanden ist. 
@@ -322,7 +322,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
 2. Klicken Sie für die Pipelineausführung auf den Link **Fehler**, um Fehlerdetails anzuzeigen. 
 
     ![Pipelinefehler](./media/tutorial-control-flow-portal/pipeline-error-message.png)
-2. Klicken **Sie zum Anzeigen von**Aktivitätsausführungen, die mit dieser Pipelineausführung verknüpft sind, in der Spalte **Aktionen** auf den ersten Link. Aktualisieren Sie die Liste mithilfe der Schaltfläche **Aktualisieren**. Beachten Sie, dass die Kopieraktivität in der Pipeline nicht erfolgreich war. Die Webaktivität hat erfolgreich eine Fehler-E-Mail an den angegebenen Empfänger gesendet. 
+2. Klicken **Sie zum Anzeigen von** Aktivitätsausführungen, die mit dieser Pipelineausführung verknüpft sind, in der Spalte **Aktionen** auf den ersten Link. Aktualisieren Sie die Liste mithilfe der Schaltfläche **Aktualisieren**. Beachten Sie, dass die Kopieraktivität in der Pipeline nicht erfolgreich war. Die Webaktivität hat erfolgreich eine Fehler-E-Mail an den angegebenen Empfänger gesendet. 
 
     ![Aktivitätsausführungen](./media/tutorial-control-flow-portal/activity-runs-failure.png)
 4. Klicken Sie in der Spalte **Aktionen** auf den Link **Fehler**, um Fehlerdetails anzuzeigen. 

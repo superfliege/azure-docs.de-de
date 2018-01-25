@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/06/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: bcf3095e8e66ea9b3c49919dadb8f7c342a49006
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 8259c1bd52cfd0641148dc09404debaf59640b45
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, wollen Sie die Details zum erfolgreichen Kopiervorgang (z.B. die geschriebene Datenmenge) in einer Erfolgsmail senden. Schlägt die Kopieraktivität fehl, wollen Sie die Details zum Fehler beim Kopieren (z.B. die Fehlermeldung) in einer Fehler-E-Mail senden. In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
@@ -69,7 +69,7 @@ Erstellen Sie mithilfe von Visual Studio 2015/2017 eine C# .NET-Konsolenanwendun
 2. Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**. .NET-Version 4.5.2 oder höher ist erforderlich.
 3. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Visual C#** -> **Konsolen-App (.NET Framework)** aus.
 4. Geben Sie **ADFv2BranchTutorial** für den Namen ein.
-5. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+5. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 ## <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen
 
@@ -292,7 +292,7 @@ Erstellen Sie im C#-Projekt eine Klasse mit dem Namen **EmailRequest**(E-Mail-An
     }
 ```
 ## <a name="create-email-workflow-endpoints"></a>Erstellen von E-Mail-Workflow-Endpunkten
-Um das Senden einer E-Mail auszulösen, verwenden Sie [Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) zum Definieren des Workflows. Ausführliche Informationen zum Erstellen eines Logic-App-Workflows finden Sie unter [How to create a logic app (Vorgehensweise: Erstellen einer Logic-App)](../logic-apps/logic-apps-create-a-logic-app.md). 
+Um das Senden einer E-Mail auszulösen, verwenden Sie [Logic Apps](../logic-apps/logic-apps-overview.md) zum Definieren des Workflows. Ausführliche Informationen zum Erstellen eines Logic-App-Workflows finden Sie unter [How to create a logic app (Vorgehensweise: Erstellen einer Logic-App)](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
 ### <a name="success-email-workflow"></a>Erfolgs-E-Mail-Workflow 
 Erstellen Sie einen Logik-App-Workflow mit dem Namen `CopySuccessEmail`. Definieren Sie den Workflow-Trigger als `When an HTTP request is received`, und fügen Sie eine Aktion von `Office 365 Outlook – Send an email` hinzu.
@@ -326,7 +326,7 @@ Ihre Anforderung sollte im Logik-App-Designer wie folgt aussehen:
 
 ![Logik-App-Designer: Anforderung](media/tutorial-control-flow/logic-app-designer-request.png)
 
-Für die **Send Email (E-Mail senden)**-Aktion, passen Sie die Formatierungseinstellungen der E-Mail Ihren Bedürfnissen an, indem Sie die Eigenschaften nutzen, die in der Textkörper JSON-Schema-Anforderung übergeben wurden. Beispiel:
+Für die **Send Email (E-Mail senden)**-Aktion, passen Sie die Formatierungseinstellungen der E-Mail Ihren Bedürfnissen an, indem Sie die Eigenschaften nutzen, die in der Textkörper JSON-Schema-Anforderung übergeben wurden. Beispiel: 
 
 ![Logik-App-Designer: E-Mail-Sendeaktion](media/tutorial-control-flow/send-email-action.png)
 
@@ -338,7 +338,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ## <a name="fail-email-workflow"></a>Fehler-E-Mail-Workflow 
-Klonen Sie Ihre **CopySuccessEmail** (E-Mail über den Kopiererfolg), und erstellen Sie einen anderen Logik-Apps Workflow von **CopyFailEmail (E-Mail über den fehlgeschlagenen Kopiervorgang)**. Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie einfach das Format Ihrer E-Mail wie den `Subject`, um diesen an eine Fehler-E-Mail anzupassen. Beispiel:
+Klonen Sie Ihre **CopySuccessEmail** (E-Mail über den Kopiererfolg), und erstellen Sie einen anderen Logik-Apps Workflow von **CopyFailEmail (E-Mail über den fehlgeschlagenen Kopiervorgang)**. Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie einfach das Format Ihrer E-Mail wie den `Subject`, um diesen an eine Fehler-E-Mail anzupassen. Beispiel: 
 
 ![Logik-App-Designer: Fehler-E-Mail-Workflow](media/tutorial-control-flow/fail-email-workflow.png)
 

@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d423304c84bd03477f5e9ee2edb4763e2ae8d5b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47a9feaa692eaf048371b4e534e6b2e8c4086997
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-amazon-redshift-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-amazon-redshift-connector.md)
 > * [Version 2 – Vorschauversion](../connector-amazon-redshift.md)
 
 > [!NOTE]
@@ -61,7 +61,7 @@ Die folgenden Abschnitte beschreiben die JSON-Eigenschaften, die zum Definieren 
 
 Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für einen mit Amazon Redshift verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **type** |Diese Eigenschaft muss auf **AmazonRedshift** festgelegt sein. |Ja |
 | **server** |Die IP-Adresse oder der Hostname des Amazon Redshift-Servers. |Ja |
@@ -76,7 +76,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset vom Typ **RelationalTable**, zu dem das Amazon Redshift-Dataset gehört, weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **tableName** |Der Name der Tabelle in der Amazon Redshift-Datenbank, auf die der verknüpfte Dienst verweist. |Nein (wenn die **query**-Eigenschaft einer Kopieraktivität vom Typ **RelationalSource** angegeben wurde) |
 
@@ -86,16 +86,16 @@ Eine Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten
 
 Wenn bei einer Kopieraktivität die Quelle den Typ **AmazonRedshiftSource** aufweist, sind im Abschnitt **typeProperties** die folgenden Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **query** | Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. |Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
-| **redshiftUnloadSettings** | Enthält bei Verwendung des Redshift-Befehls **UNLOAD** die Eigenschaftsgruppe. | Nein |
+| **redshiftUnloadSettings** | Enthält bei Verwendung des Redshift-Befehls **UNLOAD** die Eigenschaftsgruppe. | Nein  |
 | **s3LinkedServiceName** | Der Amazon S3-Speicher, der als vorläufiger Speicher verwendet werden soll. Der verknüpfte Dienst wird mithilfe eines Azure Data Factory-Namens des Typs **AwsAccessKey** angegeben. | Erforderlich, wenn Sie die **redshiftUnloadSettings**-Eigenschaft verwenden. |
 | **bucketName** | Gibt den zu verwendenden Amazon S3-Bucket zum Speichern der vorläufigen Daten an. Bei fehlender Angabe dieser Eigenschaft generiert die Kopieraktivität automatisch einen Bucket. | Erforderlich, wenn Sie die **RedshiftUnloadSettings**-Eigenschaft verwenden |
 
 Alternativ können Sie auch den Typ **RelationalSource**, der Amazon Redshift enthält, mit der folgenden Eigenschaft im Abschnitt **typeProperties** verwenden. Beachten Sie, dass dieser Quelltyp den Redshift-Befehl **UNLOAD** nicht unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **query** |Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. | Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
 
@@ -337,12 +337,12 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | DECIMAL |DECIMAL |
 | REAL |Single |
 | DOUBLE PRECISION |Double |
-| BOOLEAN |String |
-| CHAR |String |
-| VARCHAR |String |
-| DATE |DateTime |
-| TIMESTAMP |DateTime |
-| TEXT |String |
+| BOOLEAN |Zeichenfolge |
+| CHAR |Zeichenfolge |
+| VARCHAR |Zeichenfolge |
+| DATE |Datetime |
+| TIMESTAMP |Datetime |
+| TEXT |Zeichenfolge |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

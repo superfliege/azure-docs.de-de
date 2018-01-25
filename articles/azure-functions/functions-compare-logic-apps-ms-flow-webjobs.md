@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e61e664ef5cd9e296016c8fc572d67ec1d62c1f7
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 7ffe44828735a5687008ebc5a7d8d9f017f49daa
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Auswahl zwischen Flow, Logic Apps, Functions und WebJobs
 In diesem Artikel werden die folgenden Dienste in der Microsoft Cloud verglichen und gegenübergestellt, die alle zur Behebung von Integrationsproblemen und zur Automatisierung von Geschäftsprozessen dienen:
@@ -115,7 +115,7 @@ Sie können eine Logik-App in einem Fluss aufrufen. Sie können auch eine Funkti
 Machen Sie sich mit den einzelnen Diensten vertraut, indem Sie Ihren ersten Fluss, eine Logik-App, eine Funktionen-App oder einen Webauftrag erstellen. Klicken Sie auf einen der folgenden Links:
 
 * [Erste Schritte mit Microsoft Flow](https://flow.microsoft.com/en-us/documentation/getting-started/)
-* [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
+* [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)
 * [Bereitstellen von Webaufträgen mit Visual Studio](../app-service/websites-dotnet-deploy-webjobs.md)
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/20/2017
 ms.author: yoelh
-ms.openlocfilehash: 342e82071778156477d216c9b624a938c48cb37f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3a2310ae6266709df6677c55f11b15239c0425a2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien
 Mithilfe von benutzerdefinierten Azure Active Directory B2C-Richtlinien (Azure AD B2C) können Sie einen Parameter in einer Abfragezeichenfolge senden. Durch Übergeben des Parameters an Ihren HTML-Endpunkt können Sie den Seiteninhalt dynamisch ändern. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. 
@@ -39,7 +39,7 @@ In einer benutzerdefinierten Richtlinie definiert eine Inhaltsdefinition den HTM
 
 Der Abschnitt `ContentDefinitions` enthält eine Reihe von `ContentDefinition`-XML-Elementen. Das ID-Attribut des `ContentDefinition`-Elements gibt den Typ der Seite an, der mit der Inhaltsdefinition verknüpft ist. Das heißt, dass das Element den Kontext definiert, den eine benutzerdefinierte HTML5/CSS-Vorlage anwendet. In der folgenden Tabelle werden die Gruppe mit den IDs der Inhaltsdefinitionen, die von der IEF-Engine erkannt werden, und die entsprechenden Seitentypen beschrieben.
 
-| ID für Inhaltsdefinition | Standardmäßige HTML5-Vorlage| Beschreibung | 
+| ID für Inhaltsdefinition | Standardmäßige HTML5-Vorlage| BESCHREIBUNG | 
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fehlerseite**: Diese Seite wird angezeigt, wenn eine Ausnahme oder ein Fehler auftreten. |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Seite zur Auswahl des Identitätsanbieters**: Auf dieser Seite sind Identitätsanbieter aufgelistet, unter denen Benutzer bei der Anmeldung wählen können. Bei den Optionen handelt es sich normalerweise um Unternehmensidentitätsanbieter oder Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |
@@ -105,7 +105,7 @@ Ihre benutzerdefinierte HTML5-Vorlage basiert auf dem in der HTML5-Vorlage integ
 
 7. In dieser exemplarischen Vorgehensweise wird der Verweis auf die Layoutseite entfernt. Fügen Sie der Datei _unified.cshtml_ den folgenden Codeausschnitt hinzu:
 
-    ```C#
+    ```csharp
     @{
         Layout = null;
     }
@@ -264,7 +264,7 @@ Fügen Sie das `ContentDefinitionParameters`-Element mit den folgenden Schritten
 
 1. Öffnen Sie die Datei *Controllers\HomeController.cs*, und ändern Sie dann die `unified`-Methode durch Hinzufügen des folgenden Codeausschnitts:
 
-    ```C#
+    ```csharp
     public IActionResult unified(string campaignId)
     {
         // If campaign ID is Hawaii, show Hawaii background

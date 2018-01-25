@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: 0414ee0f93b71446992bb5687795b75cd2e32386
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 4b8f7a66f220b57ac914a9f5475c680679b8bf03
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem virtuellen Azure-Netzwerk (VNet) befindet. In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory 
+> * Erstellen einer Data Factory. 
 > * Erstellen einer selbstgehosteten Integration Runtime
 > * Erstellen verknüpfter Azure Storage- und HDInsight-Dienste
 > * Erstellen einer Pipeline mit Hive-Aktivität
@@ -159,7 +159,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste und stellen sie berei
 2. Wählen Sie im Fenster **Neuer verknüpfter Dienst** die Option **Azure Blob Storage** aus, und klicken Sie dann auf **Weiter**. 
 
    ![Auswählen von „Azure Blob Storage“](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
-3. Führen Sie im Fenster **Neuer verknüpfter Dienst** die folgenden Schritte aus:
+3. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
 
     1. Geben Sie unter **Name** die Zeichenfolge **AzureStorageLinkedService** ein.
     2. Wählen Sie unter **Connect via integration runtime** (Verbindung per Integration Runtime herstellen) die Option **MySelfHostedIR** aus.
@@ -234,7 +234,7 @@ Beachten Sie folgende Punkte:
 
 ## <a name="trigger-a-pipeline-run"></a>Auslösen einer Pipelineausführung
 
-1. Klicken Sie zum Überprüfen der Pipeline zunächst auf der Symbolleiste auf die Schaltfläche **Überprüfen**. Klicken Sie auf **>>** (Pfeil nach rechts), um das Fenster mit der Ausgabe der Pipelineüberprüfung**** zu schließen. 
+1. Klicken Sie zum Überprüfen der Pipeline zunächst auf der Symbolleiste auf die Schaltfläche **Überprüfen**. Klicken Sie auf **>>** (Pfeil nach rechts), um das Fenster mit der Ausgabe der **Pipelineüberprüfung** zu schließen. 
 
     ![Überprüfen der Pipeline](./media/tutorial-transform-data-using-hive-in-vnet-portal/validate-pipeline.png) 
 2. Klicken Sie auf der Symbolleiste auf „Trigger“ und anschließend auf „Trigger Now“ (Jetzt auslösen), um eine Pipelineausführung auszulösen. 
@@ -261,7 +261,7 @@ Beachten Sie folgende Punkte:
 In diesem Tutorial haben Sie die folgenden Schritte ausgeführt: 
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory 
+> * Erstellen einer Data Factory. 
 > * Erstellen einer selbstgehosteten Integration Runtime
 > * Erstellen verknüpfter Azure Storage- und HDInsight-Dienste
 > * Erstellen einer Pipeline mit Hive-Aktivität
@@ -272,7 +272,7 @@ In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie mithilfe eines Spark-Clusters in Azure Daten transformieren:
 
 > [!div class="nextstepaction"]
->[Branchen und Verketten der Data Factory-Ablaufsteuerung](tutorial-control-flow.md)
+>[Branchen und Verketten der Data Factory-Ablaufsteuerung](tutorial-control-flow-portal.md)
 
 
 

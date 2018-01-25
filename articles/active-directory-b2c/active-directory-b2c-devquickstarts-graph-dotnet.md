@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: d7d809570012b292877813c7350e55edf509183b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 33df6c4255d4ca672e65237c8be45b3f0bc7864e
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -43,7 +43,7 @@ Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung übe
 > [!IMPORTANT]
 > Um die Graph-API mit dem B2C-Mandanten zu verwenden, müssen Sie eine dedizierte Anwendung über das generische Menü *App-Registrierungen* im Azure-Portal registrieren, **NICHT** über das Menü *Anwendungen* in Azure AD B2C. Sie können Ihre bereits vorhandenen B2C-Anwendungen, die Sie im Menü *Anwendungen* von Azure AD B2C registriert haben, nicht wiederverwenden.
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie Ihren Azure AD B2C-Mandanten aus, indem Sie in der rechten oberen Ecke der Seite Ihr Konto auswählen.
 3. Wählen Sie im linken Navigationsbereich **Weitere Dienste**, und klicken Sie auf **App-Registrierungen** und auf **Hinzufügen**.
 4. Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. 
@@ -137,7 +137,7 @@ Alle Anforderungen an die Graph-API erfordern ein Zugriffstoken für die Authent
 
 Bei der Ausführung von `B2CGraphClient` wird eine Instanz der `B2CGraphClient`-Klasse erstellt. Mit dem Konstruktor für diese Klasse wird das Authentifizierungsgerüst für ADAL eingerichtet:
 
-```C#
+```csharp
 public B2CGraphClient(string clientId, string clientSecret, string tenant)
 {
     // The client_id, client_secret, and tenant are provided in Program.cs, which pulls the values from App.config
@@ -156,7 +156,7 @@ public B2CGraphClient(string clientId, string clientSecret, string tenant)
 
 Als Beispiel verwenden wir den Befehl `B2C Get-User` . Wenn `B2C Get-User` ohne zusätzliche Eingaben aufgerufen wird, ruft die Befehlszeilenschnittstelle die `B2CGraphClient.GetAllUsers(...)`-Methode auf. Diese Methode ruft `B2CGraphClient.SendGraphGetRequest(...)`auf, wodurch eine HTTP GET-Anforderung an die Graph-API gesendet wird. Bevor `B2CGraphClient.SendGraphGetRequest(...)` die GET-Anforderung sendet, wird per ADAL zuerst ein Zugriffstoken abgerufen:
 
-```C#
+```csharp
 public async Task<string> SendGraphGetRequest(string api, string query)
 {
     // First, use ADAL to acquire a token by using the app's identity (the credential)
@@ -190,7 +190,7 @@ Hierbei sind zwei wichtige Punkte zu beachten:
 
 Diese Details werden beide in der `B2CGraphClient.SendGraphGetRequest(...)` -Methode behandelt:
 
-```C#
+```csharp
 public async Task<string> SendGraphGetRequest(string api, string query)
 {
     ...

@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: f19cf8fddd9ffcf08b8ce18db070a7482ce012df
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: a3ab4713861d4d9681ad2ac5f084255fc29462ce
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="archive-azure-monitoring-data"></a>Archivieren von Azure-Überwachungsdaten
 
@@ -32,9 +32,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Zunächst müssen Sie ein Speicherkonto einrichten, in dem die Überwachungsdaten archiviert werden sollen. Führen Sie dazu [die hier beschriebenen Schritte](../storage/common/storage-create-storage-account.md) aus.
 
@@ -66,7 +66,7 @@ Zu Ihrem Abonnement gehörige Überwachungsdaten werden nun in das Speicherkonto
 
 Jetzt konfigurieren wir Daten auf Ressourcenebene (Ressourcenmetriken und Diagnoseprotokolle), die an das Speicherkonto weitergeleitet werden sollen, indem wir **Diagnoseeinstellungen für Ressourcen** vornehmen.
 
-1. Klicken Sie im Navigationsbereich auf der linken Seite auf die Schaltfläche **Überwachen** und dann auf **Diagnoseeinstellungen**. Es wird eine Liste aller Ressourcen in Ihrem Abonnement eingeblendet, die mithilfe von Azure Monitor Überwachungsdaten generieren. Wenn diese Liste keine Ressourcen enthält, können Sie, bevor Sie fortfahren, [eine Logik-App erstellen](../logic-apps/logic-apps-create-a-logic-app.md), damit Sie über eine Ressource verfügen, für die Sie eine Diagnoseeinstellung konfigurieren können.
+1. Klicken Sie im Navigationsbereich auf der linken Seite auf die Schaltfläche **Überwachen** und dann auf **Diagnoseeinstellungen**. Es wird eine Liste aller Ressourcen in Ihrem Abonnement eingeblendet, die mithilfe von Azure Monitor Überwachungsdaten generieren. Wenn diese Liste keine Ressourcen enthält, können Sie, bevor Sie fortfahren, [eine Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md), damit Sie über eine Ressource verfügen, für die Sie eine Diagnoseeinstellung konfigurieren können.
 
 2. Klicken Sie auf eine Ressource in der Liste und dann auf **Diagnose aktivieren**.
    

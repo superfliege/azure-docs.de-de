@@ -16,21 +16,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: estfan; LADocs
-ms.openlocfilehash: 2ca27fb8269d1796fb1181fc4d0a8744a592d548
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7f31c2c17d326d58ede0bb00cdc0f701069ea14
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>Überwachen, Empfangen und Senden von Ereignissen mit dem Event Hub-Connector
 
 Um eine Ereignisüberwachung so einzurichten, dass Ihre Logik-App Ereignisse erkennen, empfangen und senden kann, stellen Sie über Ihre Logik-App eine Verbindung zu einem [Azure Event Hub](https://azure.microsoft.com/services/event-hubs) her. Weitere Informationen zu [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 * Es muss ein [Event Hub-Namespace und Event Hub](../event-hubs/event-hubs-create.md) in Azure vorhanden sein. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen eines Event Hub-Namespace und eines Event Hubs](../event-hubs/event-hubs-create.md). 
 
-* Um [einen Connector](https://docs.microsoft.com/azure/connectors/apis-list) in Ihrer Logik-App zu verwenden, müssen Sie zuerst eine Logik-App erstellen. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
+* Um [einen Connector](https://docs.microsoft.com/azure/connectors/apis-list) in Ihrer Logik-App zu verwenden, müssen Sie zuerst eine Logik-App erstellen. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="permissions-connection-string"></a>
 ## <a name="check-event-hubs-namespace-permissions-and-find-the-connection-string"></a>Überprüfen von Berechtigungen für Event Hub-Namespaces und Suchen nach der Verbindungszeichenfolge
@@ -64,7 +64,7 @@ Um Ihre Berechtigungen zu überprüfen und die Verbindungszeichenfolge abzurufen
 
 ## <a name="start-workflow-when-your-event-hub-receives-new-events"></a>Starten des Workflows beim Empfangen neuer Ereignisse durch Ihren Event Hub
 
-Ein [*Trigger*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts) ist ein Ereignis, das einen Workflow in Ihrer Logik-App startet. Um einen Workflow zu starten, wenn neue Ereignisse an Ihren Event Hub gesendet werden, führen Sie diese Schritte zum Hinzufügen des Triggers durch, der dieses Ereignis erkennt.
+Ein [*Trigger*](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein Ereignis, das einen Workflow in Ihrer Logik-App startet. Um einen Workflow zu starten, wenn neue Ereignisse an Ihren Event Hub gesendet werden, führen Sie diese Schritte zum Hinzufügen des Triggers durch, der dieses Ereignis erkennt.
 
 1.  Navigieren Sie im [Azure-Portal](https://portal.azure.com "Azure-Portal") zu Ihrer vorhandenen Logik-App oder erstellen Sie eine leere Logik-App.
 
@@ -94,7 +94,7 @@ Ein [*Trigger*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concep
 
 ## <a name="send-events-to-your-event-hub-from-your-logic-app"></a>Senden von Ereignissen über Ihre Logik-App an Ihren Event Hub
 
-Eine [*Aktion*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts) ist eine Aufgabe, die von Ihrem Logik-App-Workflow ausgeführt wird. Nachdem Sie Ihrer Logik-App einen Trigger hinzugefügt haben, können Sie eine Aktion zum Ausführen von Vorgängen mit Daten hinzufügen, die von diesem Trigger generiert wurden. Um über Ihre Logik-App ein Ereignis an Ihren Event Hub zu senden, führen Sie folgende Schritte durch.
+Eine [*Aktion*](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist eine Aufgabe, die von Ihrem Logik-App-Workflow ausgeführt wird. Nachdem Sie Ihrer Logik-App einen Trigger hinzugefügt haben, können Sie eine Aktion zum Ausführen von Vorgängen mit Daten hinzufügen, die von diesem Trigger generiert wurden. Um über Ihre Logik-App ein Ereignis an Ihren Event Hub zu senden, führen Sie folgende Schritte durch.
 
 1.  Wählen Sie im Logik-App-Designer unter Ihrem Logik-App-Trigger **Neuer Schritt** > **Aktion hinzufügen** aus.
 

@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1379cbb0ea9b01a20d1974ed08e93b4872ffd92b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 765ca21c7c38fa116e0ca95b3c8dc6a6152834ce
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Verschieben von Daten in eine und aus einer Azure-Tabelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-azure-table-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-azure-table-connector.md)
 > * [Version 2 – Vorschauversion](../connector-azure-table-storage.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to or from Azure Table using Azure Data Factory](../connector-azure-table-storage.md) (Kopieren von Daten in oder aus Azure Table mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to or from Azure Table using Azure Data Factory](../connector-azure-table-storage.md) (Kopieren von Daten in oder aus Azure Table mit Azure Data Factory).
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus Azure Table Storage zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet. 
 
@@ -60,7 +60,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset des Typs **AzureTable** hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der Azure-Tabellendatenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja. Wenn ein Tabellenname ohne „AzureTableSourceQuery“ angegeben wird, werden alle Datensätze aus der Tabelle an das Ziel kopiert. Bei Angabe von „AzureTableSourceQuery“ werden nur Datensätze, die der Abfrage entsprechen, aus der Tabelle an das Ziel kopiert. |
 
@@ -79,10 +79,10 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 
 **AzureTableSource** unterstützt die folgenden Eigenschaften im Abschnitt "typeProperties":
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | AzureTableSourceQuery |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |Abfragezeichenfolge für Azure-Tabelle. Siehe Beispiele im nächsten Abschnitt. |Nein. Wenn ein Tabellenname ohne „AzureTableSourceQuery“ angegeben wird, werden alle Datensätze aus der Tabelle an das Ziel kopiert. Bei Angabe von „AzureTableSourceQuery“ werden nur Datensätze, die der Abfrage entsprechen, aus der Tabelle an das Ziel kopiert. |
-| azureTableSourceIgnoreTableNotFound |Gibt an, ob der Ausnahmefall, dass die Tabelle nicht vorhanden ist, ignoriert werden soll. |TRUE<br/>FALSE |Nein |
+| azureTableSourceIgnoreTableNotFound |Gibt an, ob der Ausnahmefall, dass die Tabelle nicht vorhanden ist, ignoriert werden soll. |TRUE<br/>FALSE |Nein  |
 
 ### <a name="azuretablesourcequery-examples"></a>Beispiele für azureTableSourceQuery
 Wenn die Spalte für die Azure-Tabelle vom Typ „Zeichenfolge“ ist:
@@ -99,12 +99,12 @@ Wenn die Spalte für die Azure-Tabelle vom Typ „datetime“ ist:
 
 **AzureTableSink** unterstützt die folgenden Eigenschaften im Abschnitt "typeProperties":
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |Standardmäßiger Partitionsschlüsselwert, der von der Senke verwendet werden kann. |Ein Zeichenfolgenwert. |Nein |
-| azureTablePartitionKeyName |Geben Sie den Namen der Spalte an, deren Werte als Partitionsschlüssel verwendet werden. Wenn dieser nicht angegeben ist, wird "AzureTableDefaultPartitionKeyValue" als Partitionsschlüssel verwendet. |Ein Spaltenname. |Nein |
-| azureTableRowKeyName |Geben Sie den Namen der Spalte an, deren Werte als Zeilenschlüssel verwendet werden. Wenn nicht angegeben, verwenden Sie für jede Zeile eine GUID. |Ein Spaltenname. |Nein |
-| azureTableInsertType |Der Modus zum Einfügen von Daten in eine Azure-Tabelle.<br/><br/>Diese Eigenschaft steuert, ob die Werte von vorhandenen Zeilen in der Ausgabetabelle, deren Partitions- und Zeilenschlüssel übereinstimmen, ersetzt oder zusammengeführt werden. <br/><br/>Informationen zur Funktionsweise dieser Einstellungen (Zusammenführen und Ersetzen) finden Sie in den Themen [Insert or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) (Entität einfügen oder zusammenführen) und [Insert or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) (Entität einfügen oder ersetzen). <br/><br> Diese Einstellung gilt auf Zeilenebene, nicht auf Tabellenebene, und keine der beiden Optionen löscht Zeilen in der Ausgabetabelle, die in der Eingabe nicht vorhanden sind. |merge (default)<br/>replace |Nein |
+| azureTableDefaultPartitionKeyValue |Standardmäßiger Partitionsschlüsselwert, der von der Senke verwendet werden kann. |Ein Zeichenfolgenwert. |Nein  |
+| azureTablePartitionKeyName |Geben Sie den Namen der Spalte an, deren Werte als Partitionsschlüssel verwendet werden. Wenn dieser nicht angegeben ist, wird "AzureTableDefaultPartitionKeyValue" als Partitionsschlüssel verwendet. |Ein Spaltenname. |Nein  |
+| azureTableRowKeyName |Geben Sie den Namen der Spalte an, deren Werte als Zeilenschlüssel verwendet werden. Wenn nicht angegeben, verwenden Sie für jede Zeile eine GUID. |Ein Spaltenname. |Nein  |
+| azureTableInsertType |Der Modus zum Einfügen von Daten in eine Azure-Tabelle.<br/><br/>Diese Eigenschaft steuert, ob die Werte von vorhandenen Zeilen in der Ausgabetabelle, deren Partitions- und Zeilenschlüssel übereinstimmen, ersetzt oder zusammengeführt werden. <br/><br/>Informationen zur Funktionsweise dieser Einstellungen (Zusammenführen und Ersetzen) finden Sie in den Themen [Insert or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) (Entität einfügen oder zusammenführen) und [Insert or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) (Entität einfügen oder ersetzen). <br/><br> Diese Einstellung gilt auf Zeilenebene, nicht auf Tabellenebene, und keine der beiden Optionen löscht Zeilen in der Ausgabetabelle, die in der Eingabe nicht vorhanden sind. |merge (default)<br/>replace |Nein  |
 | writeBatchSize |Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird. |Integer (Gesamtanzahl von Zeilen) |Nein (Standard = 10000) |
 | writeBatchTimeout |Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird. |Zeitraum<br/><br/>Beispiel: 00:20:00 (20 Minuten) |Nein (Standardmäßiger Timeoutwert von 90 Sekunden für Speicherclient) |
 
@@ -478,12 +478,12 @@ Beim Verschieben von Daten in die und aus der Azure-Tabelle werden die folgenden
 | --- | --- | --- |
 | Edm.Binary |Byte[] |Ein Array von Bytes mit einer Größe bis zu 64KB. |
 | Edm.Boolean |bool |Ein boolescher Wert. |
-| Edm.DateTime |DateTime |Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt um 00:00 Uhr, Mitternacht, 1. Januar, 1601 n. Chr. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
+| Edm.DateTime |Datetime |Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt um 00:00 Uhr, Mitternacht, 1. Januar, 1601 n. Chr. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
 | Edm.Double |double |Ein 64-Bit-Gleitkommawert. |
-| Edm.Guid |GUID |Ein 128-Bit-GUID. |
+| Edm.Guid |Guid |Ein 128-Bit-GUID. |
 | Edm.Int32 |Int32 |Eine 32-Bit-Ganzzahl. |
 | Edm.Int64 |Int64 |Eine 64-Bit-Ganzzahl. |
-| Edm.String |String |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64KB groß sein. |
+| Edm.String |Zeichenfolge |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64KB groß sein. |
 
 ### <a name="type-conversion-sample"></a>Beispiel für Typkonvertierung
 Im folgenden Beispiel wird das Kopieren von Daten aus einem Azure-Blob in eine Azure-Tabelle mit Typumwandlungen gezeigt.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: fbfef291334109c6dcfcde80741874549fb7929f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec407d72f90cf3616214d27c378dee0ff42f4c6f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-webhook-connector"></a>Erste Schritte mit dem Webhookconnector
 
@@ -79,7 +79,7 @@ Im Folgenden finden Sie weitere Details zu den von Webhooks unterstützten Trigg
 
 ## <a name="webhook-triggers"></a>Webhooktrigger
 
-| Aktion | Beschreibung |
+| anzuzeigen. | BESCHREIBUNG |
 | --- | --- |
 | HTTP-Webhook |Abonnieren Sie eine Rückruf-URL für einen Dienst, der die URL aufrufen kann, um die Logik-App nach Bedarf auszulösen. |
 
@@ -90,7 +90,7 @@ Im Folgenden finden Sie weitere Details zu den von Webhooks unterstützten Trigg
 Abonnieren Sie eine Rückruf-URL für einen Dienst, der die URL aufrufen kann, um die Logik-App nach Bedarf auszulösen.
 Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
 
-| Anzeigename | Eigenschaftenname | Beschreibung |
+| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
 | Abonnieren: Methode* |method |Für die Abonnementanforderung zu verwendende HTTP-Methode |
 | Abonnieren: URI* |uri |Für die Abonnementanforderung zu verwendender HTTP-URI |
@@ -98,7 +98,7 @@ Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
 | Abbestellen: URI* |uri |Für die Abbestellanforderung zu verwendender HTTP-URI |
 | Abonnieren: Text |body |HTTP-Anforderungstext für das Abonnement |
 | Abonnieren: Header |headers |HTTP-Anforderungsheader für das Abonnement |
-| Abonnieren: Authentifizierung |Authentifizierung |HTTP-Authentifizierung für das Abonnement. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
+| Abonnieren: Authentifizierung |authentication |HTTP-Authentifizierung für das Abonnement. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
 | Abbestellen: Text |body |HTTP-Anforderungstext für die Abbestellung |
 | Abbestellen: Header |headers |HTTP-Anforderungsheader für die Abbestellung |
 | Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
@@ -107,15 +107,15 @@ Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
 
 Webhookanforderung
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | headers |Objekt |Webhookanforderungsheader |
-| body |Objekt |Webhookanforderungsobjekt |
+| Body |object |Webhookanforderungsobjekt |
 | Statuscode |int |Statuscode der Webhookanforderung |
 
 ## <a name="webhook-actions"></a>Webhookaktionen
 
-| Aktion | Beschreibung |
+| anzuzeigen. | BESCHREIBUNG |
 | --- | --- |
 | HTTP-Webhook |Abonnieren Sie eine Rückruf-URL für einen Dienst, der die URL aufrufen kann, um einen Workflowschritt nach Bedarf fortzusetzen. |
 
@@ -126,7 +126,7 @@ Webhookanforderung
 Abonnieren Sie eine Rückruf-URL für einen Dienst, der die URL aufrufen kann, um einen Workflowschritt nach Bedarf fortzusetzen.
 Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
 
-| Anzeigename | Eigenschaftenname | Beschreibung |
+| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
 | Abonnieren: Methode* |method |Für die Abonnementanforderung zu verwendende HTTP-Methode |
 | Abonnieren: URI* |uri |Für die Abonnementanforderung zu verwendender HTTP-URI |
@@ -134,7 +134,7 @@ Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
 | Abbestellen: URI* |uri |Für die Abbestellanforderung zu verwendender HTTP-URI |
 | Abonnieren: Text |body |HTTP-Anforderungstext für das Abonnement |
 | Abonnieren: Header |headers |HTTP-Anforderungsheader für das Abonnement |
-| Abonnieren: Authentifizierung |Authentifizierung |HTTP-Authentifizierung für das Abonnement. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
+| Abonnieren: Authentifizierung |authentication |HTTP-Authentifizierung für das Abonnement. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
 | Abbestellen: Text |body |HTTP-Anforderungstext für die Abbestellung |
 | Abbestellen: Header |headers |HTTP-Anforderungsheader für die Abbestellung |
 | Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
@@ -143,13 +143,13 @@ Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
 
 Webhookanforderung
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | headers |Objekt |Webhookanforderungsheader |
-| body |Objekt |Webhookanforderungsobjekt |
+| Body |object |Webhookanforderungsobjekt |
 | Statuscode |int |Statuscode der Webhookanforderung |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
+* [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Andere Connectors](apis-list.md)

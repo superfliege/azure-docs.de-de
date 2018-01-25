@@ -3,7 +3,7 @@ title: Generischer LDAP-Connector | Microsoft Docs
 description: Dieser Artikel beschreibt die Konfiguration des generischen LDAP-Connectors von Microsoft.
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 984beeb0-4d91-4908-ad81-c19797c4891b
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: fe8db8f2a2412a3dfdf31201678c51e4fa0cee30
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6e2b7d23162673f0c66b1fd6c654336da42b8f6e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="generic-ldap-connector-technical-reference"></a>Technische Referenz für den generischen LDAP-Connector
 Dieser Artikel beschreibt den generischen LDAP-Connector. Der Artikel bezieht sich auf folgende Produkte:

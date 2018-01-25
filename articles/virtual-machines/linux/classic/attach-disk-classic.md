@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: a03c71d2691478b17864d6cc5ec4c0c55caef477
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: b47451bb8e53154760b893e452649f15ffdff7f9
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Linux-Computer
 > [!IMPORTANT] 
@@ -227,7 +227,7 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
 Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwenden von virtuellen Linux-Computern:
 
 * [Anmelden bei einem virtuellen Computer unter Linux][Logon]
-* [Trennen eines Datenträgers von einem virtuellen Linux-Computer](detach-disk.md)
+* [Trennen eines Datenträgers von einem virtuellen Linux-Computer](detach-disk-classic.md)
 * [Verwenden der Azure-Befehlszeilenschnittstelle beim klassischen Bereitstellungsmodell](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Konfigurieren von RAID auf einem virtuellen Linux-Computer in Azure](../configure-raid.md)
 * [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](../configure-lvm.md)

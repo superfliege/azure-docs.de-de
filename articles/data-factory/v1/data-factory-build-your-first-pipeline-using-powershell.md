@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: c5bc299e6efee2e74529b08b58fd913c6b329b06
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: cc26d314eb6406e14ab4267416cf7d7ec6bf4bbd
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Tutorial: Erstellen der ersten Azure Data Factory mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Die Pipeline in diesem Tutorial enthält eine Aktivität: **HDInsight-Hive-Aktiv
 * (optional) In diesem Artikel werden nicht alle Data Factory-Cmdlets behandelt. In der [Data Factory-Cmdlet-Referenz](/powershell/module/azurerm.datafactories) finden Sie eine umfassende Dokumentation zu Data Factory-Cmdlets.
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
-In diesem Schritt erstellen Sie mit Azure PowerShell eine Azure Data Factory namens **FirstDataFactoryPSH**. Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten. In diesem Schritt erstellen wir zunächst die Data Factory.
+In diesem Schritt erstellen Sie mit Azure PowerShell eine Azure Data Factory namens **FirstDataFactoryPSH**. Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispielsweise eine Kopieraktivität zum Kopieren von Daten aus einer Quelle in einen Zieldatenspeicher und eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten. In diesem Schritt erstellen wir zunächst die Data Factory.
 
 1. Starten Sie Azure PowerShell, und führen Sie den folgenden Befehl aus. Lassen Sie Azure PowerShell bis zum Ende dieses Tutorials geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen.
    * Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
@@ -159,7 +159,7 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
     ```
     Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-   | Eigenschaft | Beschreibung |
+   | Eigenschaft | BESCHREIBUNG |
    |:--- |:--- |
    | ClusterSize |Gibt die Größe des HDInsight-Clusters an. |
    | TimeToLive |Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird. |
@@ -213,12 +213,12 @@ In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für 
 
     Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-   | Eigenschaft | Beschreibung |
+   | Eigenschaft | BESCHREIBUNG |
    |:--- |:--- |
-   | Typ |Die Type-Eigenschaft wird auf „AzureBlob“ festgelegt, da sich Daten im Azure-Blobspeicher befinden. |
+   | type |Die Type-Eigenschaft wird auf „AzureBlob“ festgelegt, da sich Daten im Azure-Blobspeicher befinden. |
    | linkedServiceName |verweist auf den „StorageLinkedService“, den Sie zuvor erstellt haben. |
    | fileName |Diese Eigenschaft ist optional. Wenn Sie diese Eigenschaft nicht angeben, werden alle Dateien in „folderPath“ übernommen. In diesem Fall wird nur „input.log“ verarbeitet. |
-   | Typ |Da die Protokolldateien im Textformat vorliegen, verwenden wir „TextFormat“. |
+   | type |Da die Protokolldateien im Textformat vorliegen, verwenden wir „TextFormat“. |
    | columnDelimiter |Spalten werden in den Protokolldateien per Komma (,) voneinander getrennt. |
    | frequency/interval |„frequency“ wird auf „Month“ und „interval“ auf „1“ festgelegt, was bedeutet, dass die Eingabeslices monatlich verfügbar sind. |
    | external |Diese Eigenschaft wird auf „true“ festgelegt, wenn die Eingabedaten nicht vom Data Factory-Dienst generiert werden. |
@@ -412,8 +412,8 @@ In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten e
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten Azure HDInsight-Cluster ausführt. Informationen zum Verwenden einer Kopieraktivität zum Kopieren von Daten aus einem Azure-Blob in Azure SQL finden Sie unter [Lernprogramm: Kopieren von Daten aus einem Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="see-also"></a>Weitere Informationen
-| Thema | Beschreibung |
+## <a name="see-also"></a>Siehe auch
+| Thema | BESCHREIBUNG |
 |:--- |:--- |
 | [Cmdlet-Referenz zu Data Factory](/powershell/module/azurerm.datafactories) |Umfassende Dokumentation zu Data Factory-Cmdlets |
 | [Pipelines](data-factory-create-pipelines.md) |In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter End-to-End-Workflows für Ihr Szenario oder Ihr Unternehmen genutzt werden können. |

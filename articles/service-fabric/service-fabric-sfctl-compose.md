@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 3010c298cf227c761288365e3663ffe3fb67d863
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e35ac70125bc640114a4492498b12ea96800d42
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Ermöglicht es, Docker Compose-Bereitstellungen zu erstellen, zu löschen und zu verwalten.
 
 ## <a name="commands"></a>Befehle
 
-|Befehl|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 |    create| Stellt eine Service Fabric-Anwendung aus einer Compose-Datei bereit.|
 |    list  | Ruft die Liste der Compose-Bereitstellungen ab, die in dem Service Fabric-Cluster erstellt wurden.|
@@ -40,7 +40,7 @@ Erstellt eine Service Fabric-Compose-Bereitstellung.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --file-path [erforderlich]| Pfad zur Docker Compose-Zieldatei.|
  |   --deployment-name [erforderlich]| Der Name der Bereitstellung|
@@ -51,7 +51,7 @@ Erstellt eine Service Fabric-Compose-Bereitstellung.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                 | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h               | Zeigt diese Hilfemeldung an und beendet.|
@@ -66,7 +66,7 @@ Ruft den Status zu den Compose-Bereitstellungen ab, die im Service Fabric-Cluste
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --continuation-token| Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen.      Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein.|
 | --max-results    | Die maximale Anzahl von Ergebnissen, die als Teil der seitenweisen Abfragen zurückgegeben werden sollen.      Dieser Parameter definiert die obere Grenze für die Anzahl von zurückgegebenen Ergebnissen.      Es können weniger Ergebnisse zurückgegeben werden, als es dieser maximalen Anzahl entspricht. Dies ist der Fall, wenn die Ergebnisse wegen der Größenbeschränkungen, die für Meldungen in der Konfiguration definiert sind, nicht in die jeweilige Meldung passen. Ist dieser Parameter gleich null oder nicht angegeben, enthalten die seitenweisen Abfragen so viele Ergebnisse, wie in die Rückgabemeldung passen.|
@@ -74,7 +74,7 @@ Ruft den Status zu den Compose-Bereitstellungen ab, die im Service Fabric-Cluste
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug          | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h        | Zeigt diese Hilfemeldung an und beendet.|
@@ -89,14 +89,14 @@ Löscht eine vorhandene Service Fabric-Compose-Bereitstellung.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --deployment-name [erforderlich]| Die Identität (ID) der Bereitstellung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric:“.|
 | --timeout -t            | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                 | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h               | Zeigt diese Hilfemeldung an und beendet.|
@@ -111,14 +111,14 @@ Gibt den Status der Compose-Bereitstellung zurück, die im Service Fabric-Cluste
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --deployment-name [erforderlich]| Die Identität (ID) der Bereitstellung. |
 | --timeout -t            | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                 | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h               | Zeigt diese Hilfemeldung an und beendet.|
@@ -132,7 +132,7 @@ Startet ein Aktualisieren einer Compose-Bereitstellung im Service Fabric-Cluster
 Überprüft die für die Aktualisierung angegebenen Parameter und startet das Aktualisieren der Bereitstellung.
 
 ### <a name="arguments"></a>Argumente
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |    --file-path [erforderlich]| Pfad zur Docker Compose-Zieldatei.|
 |    --deployment-name [erforderlich]| Der Name der Bereitstellung|
@@ -156,7 +156,7 @@ Startet ein Aktualisieren einer Compose-Bereitstellung im Service Fabric-Cluster
 |    --warning-as-error           | Warnungen werden mit demselben Schweregrad berücksichtigt wie Fehler.|
 
 ### <a name="global-arguments"></a>Globale Argumente
- |Argument|Beschreibung|
+ |Argument|BESCHREIBUNG|
 | --- | --- |
 |   --debug                      | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 |    --help -h                    | Zeigt diese Hilfemeldung an und beendet.|

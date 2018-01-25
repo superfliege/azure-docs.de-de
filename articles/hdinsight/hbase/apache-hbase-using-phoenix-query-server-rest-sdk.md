@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: f3b29db2dd74e6b3c0c066045d05cb853d1541f8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: f57260b2ee280aa0f49f42cd145477205926cb0c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix Query Server REST SDK
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie das PQS REST SDK zum Erstellen von T
 
 Weitere Informationen finden Sie unter [Apache Calcite Avatica Protocol Buffers Reference](https://calcite.apache.org/avatica/docs/protobuf_reference.html) (Avatica-Protokollpuffer von Apache Calcite – Referenz).
 
-## <a name="install-the-sdk"></a>Installieren des SDK
+## <a name="install-the-sdk"></a>Installieren des SDKs
 
 Der Microsoft .NET-Treiber für Apache Phoenix Query Server wird als NuGet-Paket bereitgestellt, das mit dem folgenden Befehl über die **NuGet-Paket-Manager-Konsole** in Visual Studio installiert werden kann:
 
@@ -39,7 +39,7 @@ Der Microsoft .NET-Treiber für Apache Phoenix Query Server wird als NuGet-Paket
 
 Instanziieren Sie zum Verwenden der Bibliothek zunächst ein neues `PhoenixClient`-Objekt, und übergeben Sie `ClusterCredentials` mit dem `Uri` Ihre Clusters und dem Hadoop-Benutzernamen und -Kennwort des Clusters.
 
-```c#
+```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
 client = new PhoenixClient(credentials);
 ```
@@ -50,7 +50,7 @@ Ersetzen Sie CLUSTERNAME durch Ihren HDInsight HBase-Clusternamen, und USERNAME 
 
 Zum Senden von Anforderungen an PQS müssen Sie einen eindeutigen Verbindungsbezeichner einfügen, um die Anforderungen der Verbindung zuzuordnen.
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 ```
 
@@ -60,7 +60,7 @@ Für jedes Beispiel wird zuerst die `OpenConnectionRequestAsync`-Methode aufgeru
 
 Übergeben Sie zum Aufrufen von `ConnectionSyncRequestAsync` ein `ConnectionProperties`-Objekt.
 
-```c#
+```csharp
 ConnectionProperties connProperties = new ConnectionProperties
 {
     HasAutoCommit = true,
@@ -77,7 +77,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 Hier sind einige wichtige Eigenschaften aufgeführt:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | -- | -- |
 | AutoCommit | Ein boolescher Wert, mit dem angegeben wird, ob `autoCommit` für Phoenix-Transaktionen aktiviert ist. |
 | ReadOnly | Ein boolescher Wert, der angibt, ob die Verbindung schreibgeschützt ist. |
@@ -88,7 +88,7 @@ Hier sind einige wichtige Eigenschaften aufgeführt:
 
 Hier sind die `TransactionIsolation`-Werte aufgeführt:
 
-| Isolationswert | Beschreibung |
+| Isolationswert | BESCHREIBUNG |
 | -- | -- |
 | 0 | Transaktionen werden nicht unterstützt. |
 | 1 | Es können „Dirty Reads“, nicht wiederholbare Lesevorgänge und Phantomlesevorgänge auftreten. |
@@ -102,7 +102,7 @@ Bei HBase werden Daten in Tabellen gespeichert, wie dies bei allen Managementsys
 
 In diesem und allen nachfolgenden Beispielen wird das instanziierte `PhoenixClient`-Objekt gemäß der Definition unter [Instanziieren des neuen PhoenixClient-Objekts](#instantiate-new-phoenixclient-object) verwendet.
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 
@@ -172,13 +172,13 @@ Im vorherigen Beispiel wird eine neue Tabelle mit dem Namen `Customers` mithilfe
 
 In diesem Beispiel wird das individuelle Einfügen von Daten veranschaulicht, indem die Sammlung `List<string>` mit Abkürzungen amerikanischer Bundesstaaten und Gebiete verwendet wird:
 
-```c#
+```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
 Der Spaltenwert `StateProvince` der Tabelle wird in einem nachfolgenden Auswahlvorgang genutzt.
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 options.TimeoutMillis = 300000;
@@ -289,7 +289,7 @@ Die Struktur zum Ausführen einer INSERT-Anweisung ähnelt dem Erstellen einer n
 
 Der folgende Code ist nahezu identisch mit dem Code zum individuellen Einfügen von Daten. In diesem Beispiel wird das `UpdateBatch`-Objekt in einem Aufruf von `ExecuteBatchRequestAsync` verwendet, anstatt wiederholt `ExecuteRequestAsync` mit einer vorbereiteten Anweisung aufzurufen.
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 options.TimeoutMillis = 300000;
@@ -407,7 +407,7 @@ In diesem Beispiel wird veranschaulicht, wie Sie eine Verbindung zum Ausführen 
 2. Verwenden Sie eine SELECT-Anweisung für die Gesamtzahl von Zeilen, um das Ergebnis mit dem einzelnen Skalarwert abzurufen.
 3. Führen Sie eine SELECT-Anweisung aus, mit der die Gesamtzahl von Kunden pro Bundesstaat oder Gebiet zurückgegeben wird.
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 4214bc2a58a1ce6d0d329010ec7775a343e9d782
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: f5384b4fa0a1baaafd8b2dbf3ed4d7776f4d80ea
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Az
 > Dieser Artikel setzt voraus, dass Sie die [Einführung in Azure Data Factory](introduction.md) und das [Schnellstart-Tutorial](quickstart-create-data-factory-powershell.md) gelesen haben.
 
 ## <a name="overview"></a>Übersicht
-Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Eine Pipeline kann z.B. eine Gruppe von Aktivitäten enthalten, die Protokolldaten erfassen und bereinigen. Anschließend wird ein Spark-Auftrag in einem HDInsight-Cluster gestartet, um die Protokolldaten zu analysieren. Der Vorteil hierbei besteht darin, dass Sie mit der Pipeline nicht jede Aktivität einzeln verwalten müssen, sondern dies als Gruppe tun können. Beispielsweise können Sie die Pipeline bereitstellen und planen, anstatt dies für die Aktivitäten jeweils individuell durchzuführen.  
+Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Eine Pipeline kann z.B. eine Gruppe von Aktivitäten enthalten, die Protokolldaten erfassen und bereinigen. Anschließend wird ein Spark-Auftrag in einem HDInsight-Cluster gestartet, um die Protokolldaten zu analysieren. Der Vorteil hierbei besteht darin, dass Sie mit der Pipeline nicht jede Aktivität einzeln verwalten müssen, sondern dies als Gruppe tun können. Beispielsweise können Sie die Pipeline bereitstellen und planen, anstatt dies für die Aktivitäten jeweils individuell durchzuführen.  
 
 Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie dann eine Hive-Aktivität, die ein Hive-Skript auf einen Azure HDInsight-Cluster anwendet, um Daten aus dem Blob Storage zu verarbeiten/transformieren, um Ausgabedaten zu produzieren. Kopieren Sie die Ausgabedaten schließlich mit einer zweiten Kopieraktivität in ein Azure SQL Data Warehouse, auf Basis dessen Business Intelligence-Berichtslösungen (BI) erstellt werden.
 
@@ -68,7 +68,7 @@ Weitere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](t
 ## <a name="control-activities"></a>Steuerungsaktivitäten
 Die folgenden Steuerungsablaufaktivitäten werden unterstützt:
 
-Steuerungsaktivität | Beschreibung
+Steuerungsaktivität | BESCHREIBUNG
 ---------------- | -----------
 [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md) | Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline eine andere Pipeline aufrufen.
 [Aktivität „ForEach“](control-flow-for-each-activity.md) | Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
@@ -97,12 +97,12 @@ Eine Pipeline wird wie folgt im JSON-Format definiert:
 }
 ```
 
-Tag | Beschreibung | Typ | Erforderlich
+Tag | BESCHREIBUNG | Typ | Erforderlich
 --- | ----------- | ---- | --------
-name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) enden.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | String | Ja
-Beschreibung | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | String | Nein
+name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) enden.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Zeichenfolge | Ja
+Beschreibung | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | Zeichenfolge | Nein 
 Aktivitäten | Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Weitere Informationen zum JSON-Element der Aktivitäten finden Sie im Abschnitt [Aktivitäts-JSON](#activity-json). | Array | Ja
-Parameter | Im Abschnitt **Parameter** kann mindestens ein Parameter in der Pipeline definiert werden. Dadurch wird die Pipeline flexibel wiederverwendbar. | Auflisten | Nein
+Parameter | Im Abschnitt **Parameter** kann mindestens ein Parameter in der Pipeline definiert werden. Dadurch wird die Pipeline flexibel wiederverwendbar. | Auflisten | Nein 
 
 ## <a name="activity-json"></a>JSON-Definition der Aktivität
 Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Es gibt zwei Haupttypen von Aktivitäten: Ausführungs- und Steuerungsaktivitäten.
@@ -130,15 +130,15 @@ Ausführungsaktivitäten beinhalten [Datenverschiebungsaktivitäten](#data-movem
 
 In der folgenden Tabelle werden Eigenschaften in der JSON-Definition der Aktivität beschrieben:
 
-Tag | Beschreibung | Erforderlich
+Tag | BESCHREIBUNG | Erforderlich
 --- | ----------- | ---------
 name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) enden.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ja</li></ul>
 Beschreibung | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Ja
-Typ | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-activities). | Ja
+type | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-activities). | Ja
 linkedServiceName | Name des verknüpften Diensts, der von der Aktivität verwendet wird.<br/><br/>Für eine Aktivität kann es erforderlich sein, den verknüpften Dienst anzugeben, der mit der erforderlichen Computeumgebung verknüpft ist. | „Ja“ für HDInsight-Aktivität, Azure Machine Learning-Aktivität für die Batchbewertung und Aktivität vom Typ „Gespeicherte Prozedur“. <br/><br/>„Nein“ für alle übrigen
-typeProperties | Eigenschaften im Abschnitt „typeProperties“ sind abhängig vom jeweiligen Typ der Aktivität. Um Typeigenschaften für eine Aktivität anzuzeigen, klicken Sie auf die Links zur Aktivität im vorhergehenden Abschnitt. | Nein
-policy | Richtlinien, die das Laufzeitverhalten der Aktivität beeinflussen. Diese Eigenschaft enthält Zeitlimit- und Wiederholungsverhalten. Falls kein Wert angegeben wird, werden die Standardwerte verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsrichtlinie](#activity-policy). | Nein
-dependsOn | Diese Eigenschaft wird zur Definition von Aktivitätsabhängigkeiten und von Abhängigkeiten zwischen nachfolgenden und vorherigen Aktivitäten verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsabhängigkeit](#activity-dependency). | Nein
+typeProperties | Eigenschaften im Abschnitt „typeProperties“ sind abhängig vom jeweiligen Typ der Aktivität. Um Typeigenschaften für eine Aktivität anzuzeigen, klicken Sie auf die Links zur Aktivität im vorhergehenden Abschnitt. | Nein 
+policy | Richtlinien, die das Laufzeitverhalten der Aktivität beeinflussen. Diese Eigenschaft enthält Zeitlimit- und Wiederholungsverhalten. Falls kein Wert angegeben wird, werden die Standardwerte verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsrichtlinie](#activity-policy). | Nein 
+dependsOn | Diese Eigenschaft wird zur Definition von Aktivitätsabhängigkeiten und von Abhängigkeiten zwischen nachfolgenden und vorherigen Aktivitäten verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsabhängigkeit](#activity-dependency). | Nein 
 
 ### <a name="activity-policy"></a>Aktivitätsrichtlinie
 Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität und bieten Konfigurationsoptionen. Aktivitätsrichtlinien sind nur für Ausführungsaktivitäten verfügbar. 
@@ -169,11 +169,11 @@ Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität und bieten Konfi
     }
 }
 ```
-JSON-Name | Beschreibung | Zulässige Werte | Erforderlich
+JSON-Name | BESCHREIBUNG | Zulässige Werte | Erforderlich
 --------- | ----------- | -------------- | --------
 timeout | Gibt das Zeitlimit für die Ausführung der Aktivität an. | Timespan | Nein. Das Standard-Zeitlimit beträgt 7 Tage.
-retry | Maximale Anzahl der Wiederholungsversuche. | Integer | Nein. Der Standardwert ist 0.
-retryIntervalInSeconds | Verzögerung zwischen den Wiederholungsversuchen in Sekunden. | Integer | Nein. Der Standardwert ist 20 Sekunden.
+retry | Maximale Anzahl der Wiederholungsversuche. | Ganze Zahl  | Nein. Der Standardwert ist 0.
+retryIntervalInSeconds | Verzögerung zwischen den Wiederholungsversuchen in Sekunden. | Ganze Zahl  | Nein. Der Standardwert ist 20 Sekunden.
 
 ### <a name="control-activity"></a>Steuerungsaktivität
 Steuerungsaktivitäten besitzen auf oberster Ebene die folgende Struktur:
@@ -192,13 +192,13 @@ Steuerungsaktivitäten besitzen auf oberster Ebene die folgende Struktur:
 }
 ```
 
-Tag | Beschreibung | Erforderlich
+Tag | BESCHREIBUNG | Erforderlich
 --- | ----------- | --------
 name | Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, die die Aktivität durchführt.<br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) enden.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ja</li><ul> 
 Beschreibung | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Ja
-Typ | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-activities). | Ja
-typeProperties | Eigenschaften im Abschnitt „typeProperties“ sind abhängig vom jeweiligen Typ der Aktivität. Um Typeigenschaften für eine Aktivität anzuzeigen, klicken Sie auf die Links zur Aktivität im vorhergehenden Abschnitt. | Nein
-dependsOn | Diese Eigenschaft wird zur Definition der Aktivitätsabhängigkeit und von Abhängigkeiten zwischen nachfolgenden und vorherigen Aktivitäten verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsabhängigkeit](#activity-dependency). | Nein
+type | Der Typ der Aktivität. Die verschiedenen Aktivitätstypen finden Sie in den Abschnitten [Datenverschiebungsaktivitäten](#data-movement-activities), [Datentransformationsaktivitäten](#data-transformation-activities) und [Steuerungsaktivitäten](#control-activities). | Ja
+typeProperties | Eigenschaften im Abschnitt „typeProperties“ sind abhängig vom jeweiligen Typ der Aktivität. Um Typeigenschaften für eine Aktivität anzuzeigen, klicken Sie auf die Links zur Aktivität im vorhergehenden Abschnitt. | Nein 
+dependsOn | Diese Eigenschaft wird zur Definition der Aktivitätsabhängigkeit und von Abhängigkeiten zwischen nachfolgenden und vorherigen Aktivitäten verwendet. Weitere Informationen finden Sie im Abschnitt [Aktivitätsabhängigkeit](#activity-dependency). | Nein 
 
 ### <a name="activity-dependency"></a>Aktivitätsabhängigkeit
 Mit der Aktivitätsabhängigkeit wird definiert, wie nachfolgende Aktivitäten von vorherigen Aktivitäten abhängen. Dabei wird bestimmt, bei welcher Bedingung mit der nächsten Aufgabe fortgefahren wird. Eine Aktivität kann mit unterschiedlichen Abhängigkeitsbedingungen von einer oder mehreren vorherigen Aktivitäten abhängen. 

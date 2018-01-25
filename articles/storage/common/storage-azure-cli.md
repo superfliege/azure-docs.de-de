@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: tamram
-ms.openlocfilehash: 4f4070c5a02e559bd299033865aa5258532498aa
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 34780001afb309a2986cc21dae948d9d94f1a63f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Verwenden der Azure CLI 2.0 mit Azure Storage
 
@@ -35,7 +35,7 @@ Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Stor
 
 ### <a name="accounts"></a>Konten
 * **Azure-Konto**: Falls Sie noch kein Azure-Abonnement ´haben, können Sie ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/).
-* **Storage-Konto**: Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
+* **Storage-Konto**: Weitere Informationen finden Sie unter Informationen zu [Azure Storage-Konten](storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
 
 ### <a name="install-the-azure-cli-20"></a>Installieren der Azure CLI 2.0
 
@@ -196,9 +196,10 @@ az storage account create \
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
+```
 
-### <a name="set-default-azure-storage-account-environment-variables"></a>Festlegen eines Azure-Standardspeicherkontos in Umgebungsvariablen
-Sie können mehrere Speicherkonten in Ihrem Azure-Abonnement verwenden. Um eines für alle nachfolgenden Speicherbefehle auszuwählen, können Sie diese Umgebungsvariablen festlegen:
+### Set default Azure storage account environment variables
+You can have multiple storage accounts in your Azure subscription. To select one of them to use for all subsequent storage commands, you can set these environment variables:
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>

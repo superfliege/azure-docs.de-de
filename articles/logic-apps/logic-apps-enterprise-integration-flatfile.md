@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: bc3430624844cdeb92958433fba295f67a8ae0ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8795687c002282b68ebd1a4fa3fe18a9b102af4a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>Übersicht über die Unternehmensintegration mit Flatfiles
 
-Sie möchten XML-Inhalt ggf. codieren, bevor Sie ihn in einem B2B-Szenario (Business-to-Business) an einen Geschäftspartner senden. In einer Logik-App können Sie dazu den Flatfile-Codierungsconnector verwenden. Die Logik-App, die Sie erstellen, kann ihren XML-Inhalt aus einer Vielzahl von Quellen abrufen, beispielsweise über einen HTTP-Anforderungstrigger, aus einer anderen Anwendung oder über einen der zahlreichen [Connectors](../connectors/apis-list.md). Weitere Informationen zu Logik-Apps finden Sie in der [Logik-Apps-Dokumentation](logic-apps-what-are-logic-apps.md "Weitere Informationen zu Logik-Apps").  
+Sie möchten XML-Inhalt ggf. codieren, bevor Sie ihn in einem B2B-Szenario (Business-to-Business) an einen Geschäftspartner senden. In einer Logik-App können Sie dazu den Flatfile-Codierungsconnector verwenden. Die Logik-App, die Sie erstellen, kann ihren XML-Inhalt aus einer Vielzahl von Quellen abrufen, beispielsweise über einen HTTP-Anforderungstrigger, aus einer anderen Anwendung oder über einen der zahlreichen [Connectors](../connectors/apis-list.md). Weitere Informationen zu Logik-Apps finden Sie in der [Logik-Apps-Dokumentation](logic-apps-overview.md "Weitere Informationen zu Logik-Apps").  
 
 ## <a name="create-the-flat-file-encoding-connector"></a>Erstellen eines Flatfile-Codierungsconnectors
 Führen Sie diese Schritte aus, um der Logik-App einen Flatfile-Codierungsconnector hinzuzufügen.

@@ -3,8 +3,8 @@ title: "Migrieren von Managed Cache Service-Anwendungen zu Redis – Azure | Mic
 description: Hier erfahren Sie, wie Sie Managed Cache Service- und In-Role Cache-Anwendungen zu Azure Redis Cache migrieren.
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/30/2017
-ms.author: sdanie
-ms.openlocfilehash: 0fbfb945c66926794721f2ce8cc183dac51ecb27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 0d52454ae1c2159814d4601d07259aba319e8598
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>Migrieren von Managed Cache Service zu Azure Redis Cache
 Zum Migrieren von Anwendungen, die Azure Managed Cache Service verwenden, zu Azure Redis Cache, sind je nach den von Ihrer Cachinganwendung verwendeten Features nur minimale Änderungen an der Anwendung erforderlich. Sie APIs sind zwar nicht identisch, aber doch sehr ähnlich. Der vorhandene Code für die Verwendung von Managed Cache Service kann nach minimalen Änderungen für den Zugriff auf einen Cache wiederverwendet werden. In diesem Thema wird beschrieben, wie Sie die erforderlichen Änderungen an der Konfiguration und der Anwendung vornehmen, um Managed Cache Service-Anwendungen zur Verwendung von Azure Redis Cache zu migrieren, und wie Sie mit einigen der Features von Azure Redis Cache die Funktionen eines Managed Cache Service-Cache implementieren.
@@ -47,7 +47,7 @@ Azure Managed Cache Service und Azure Redis Cache sind zwar ähnlich, bei der Im
 | Managed Cache Service-Feature | Managed Cache Service-Unterstützung | Azure Redis Cache-Unterstützung |
 | --- | --- | --- |
 | Benannte Caches |Es ist ein Standardcache konfiguriert. Bei den Cacheangeboten „Standard“ und „Premium“ können bei Bedarf bis zu neun zusätzliche benannte Caches konfiguriert werden. |Für Azure Redis-Caches können 16 Datenbanken konfiguriert werden, die verwendet werden können, um Funktionalität ähnlich benannter Caches zu implementieren. Weitere Informationen finden Sie unter [Was sind Redis-Datenbanken?](cache-faq.md#what-are-redis-databases) und [Standardmäßige Redis-Serverkonfiguration](cache-configure.md#default-redis-server-configuration). |
-| Hohe Verfügbarkeit |Bietet bei den Cacheangeboten „Standard“ und „Premium“ hohe Verfügbarkeit für Elemente im Cache. Wenn Elemente aufgrund eines Fehlers verloren gehen, sind weiterhin Sicherungskopien der Elemente im Cache verfügbar. Schreibvorgänge im sekundären Cache werden synchron ausgeführt. |Hohe Verfügbarkeit ist bei den Cacheangeboten „Standard“ und „Premium“ erhältlich, die eine Primär/Replikat-Konfiguration mit zwei Knoten aufweisen. (Jeder Shard in einem Premium-Cache verfügt über ein Paar aus Primär-/Replikatknoten.) Schreibvorgänge im Replikat erfolgen asynchron. Weitere Informationen finden Sie unter [Azure Redis Cache – Preise](https://azure.microsoft.com/pricing/details/cache/). |
+| Hochverfügbarkeit |Bietet bei den Cacheangeboten „Standard“ und „Premium“ Hochverfügbarkeit für Elemente im Cache. Wenn Elemente aufgrund eines Fehlers verloren gehen, sind weiterhin Sicherungskopien der Elemente im Cache verfügbar. Schreibvorgänge im sekundären Cache werden synchron ausgeführt. |Hochverfügbarkeit ist bei den Cacheangeboten „Standard“ und „Premium“ erhältlich, die eine Primär-/Replikat-Konfiguration mit zwei Knoten aufweisen. (Jeder Shard in einem Premium-Cache verfügt über ein Paar aus Primär-/Replikatknoten.) Schreibvorgänge im Replikat erfolgen asynchron. Weitere Informationen finden Sie unter [Azure Redis Cache – Preise](https://azure.microsoft.com/pricing/details/cache/). |
 | Benachrichtigungen |Ermöglicht Clients den Empfang von asynchronen Benachrichtigungen, wenn verschiedene Cachevorgänge für einen benannten Cache auftreten. |Clientanwendungen können Redis-Pub/Sub- oder [Keyspace-Benachrichtigungen](cache-configure.md#keyspace-notifications-advanced-settings) verwenden, um eine ähnliche Benachrichtigungsfunktionalität zu erzielen. |
 | Lokaler Cache |Speichert eine Kopie der zwischengespeicherten Objekte lokal auf dem Client, um einen extrem schnellen Zugriff zu ermöglichen. |Clientanwendungen müssen diese Funktionalität mit einem Wörterbuch oder einer ähnlichen Datenstruktur implementieren. |
 | Entfernungsrichtlinie |Keine oder LRU. Die Standardrichtlinie ist LRU. |Azure Redis Cache unterstützt die folgenden Entfernungsrichtlinien: „volatile-lru“, „allkeys-lru“, „volatile-random“, „allkeys-random“, „volatile-ttl“ und „noeviction“. Die Standardrichtlinie ist „volatile-lru“. Weitere Informationen finden Sie unter [Standardmäßige Redis-Serverkonfiguration](cache-configure.md#default-redis-server-configuration). |
@@ -125,7 +125,7 @@ In Managed Cache Service werden Verbindungen mit dem Cache von den Klassen `Data
 
 Fügen Sie folgende using-Anweisung am Anfang jeder Datei ein, von der aus Sie auf den Cache zugreifen möchten.
 
-```c#
+```csharp
 using StackExchange.Redis
 ```
 
@@ -138,7 +138,7 @@ Wenn dieser Namespace nicht aufgelöst werden kann, vergewissern Sie sich, dass 
 
 Rufen Sie die statische `ConnectionMultiplexer.Connect` -Methode auf, und übergeben Sie den Endpunkt und den Schlüssel, um eine Verbindung mit einer Azure Redis Cache-Instanz herzustellen. Ein Ansatz zur Freigabe einer `ConnectionMultiplexer` -Instanz in Ihrer Anwendung ist das Verwenden einer statischen Eigenschaft, die wie im folgenden Beispiel eine verbundene Instanz zurückgibt. Dies ist eine threadsichere Möglichkeit, nur eine einzige verbundene `ConnectionMultiplexer` -Instanz zu initialisieren. In diesem Beispiel ist `abortConnect` auf „false“ festgelegt, was bedeutet, dass der Aufruf erfolgreich ist, auch wenn eine Verbindung mit dem Cache nicht hergestellt wird. Eine wichtige Funktion von `ConnectionMultiplexer` ist, dass die Verbindung mit dem Cache automatisch wiederhergestellt wird, sobald das Netzwerkproblem oder andere Ursachen beseitigt wurden.
 
-```c#
+```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
 {
     return ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
@@ -157,7 +157,7 @@ Cacheendpunkt, Schlüssel und Ports finden Sie auf dem Blatt **Redis Cache** der
 
 Nach dem Verbindungsaufbau können Sie einen Verweis auf diese Redis-Cachedatenbank zurückgeben, indem Sie die `ConnectionMultiplexer.GetDatabase` -Methode aufrufen. Das von der `GetDatabase` -Methode zurückgegebene Objekt ist ein einfaches Durchgangsobjekt und muss nicht gespeichert werden.
 
-```c#
+```csharp
 IDatabase cache = Connection.GetDatabase();
 
 // Perform cache operations using the cache object...
@@ -178,7 +178,7 @@ Beim Aufruf von `StringGet` wird das Objekt zurückgegeben, sofern es vorhanden 
 
 Um die Ablaufzeit eines Elements im Cache anzugeben, verwenden Sie den `TimeSpan`-Parameter von `StringSet`.
 
-```c#
+```csharp
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 ```
 

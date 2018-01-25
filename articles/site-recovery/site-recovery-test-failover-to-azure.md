@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/16/2017
 ms.author: pratshar
-ms.openlocfilehash: 1e85db7ce866943696979f61c0aa5104217acc62
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: a4555b1cc758e2d4bdd11a16776dc3bb209adee8
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="test--failover-to-azure-in-site-recovery"></a>Testfailover auf Azure in Site Recovery
 
@@ -50,7 +50,7 @@ Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan d
     - Wenn dieselbe IP-Adresse nicht im Subnetz verfügbar ist, erhält die VM im Subnetz eine andere verfügbare IP-Adresse. [Weitere Informationen](#creating-a-network-for-test-failover)
 4. Wenn Sie ein Failover auf Azure ausführen und die Datenverschlüsselung aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das beim Aktivieren der Verschlüsselung im Rahmen der Anbieterinstallation ausgestellt wurde. Sie können diesen Schritt ignorieren – Verschlüsselung ist nicht aktiviert.
 5. Verfolgen Sie den Verlauf des Failovers auf der Registerkarte **Aufträge** . Der Test-Replikatcomputer wird im Azure-Portal angezeigt.
-6. Zum Initiieren einer RDP-Verbindung mit der Azure-VM müssen Sie auf der Netzwerkschnittstelle der VM, für die ein Failover durchgeführt wurde, [eine öffentliche IP-Adresse hinzufügen](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine). 
+6. Zum Initiieren einer RDP-Verbindung mit der Azure-VM müssen Sie auf der Netzwerkschnittstelle der VM, für die ein Failover durchgeführt wurde, [eine öffentliche IP-Adresse hinzufügen](site-recovery-monitoring-and-troubleshooting.md). 
 7. Wenn alles wie erwartet funktioniert, klicken Sie auf **Testfailover bereinigen**. Dadurch werden die während des Testfailovers erstellten VMs gelöscht.
 8. Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Testfailover. 
 
@@ -113,9 +113,9 @@ Wenn Sie nach dem Failover per RDP eine Verbindung mit Azure-VMs herstellen möc
 **Failover** | **Location** | **Aktionen**
 --- | --- | ---
 **Virtueller Azure-Computer unter Windows** | Lokaler Computer vor dem Failover | Aktivieren Sie für den Zugriff auf die Azure-VM über das Internet RDP, stellen Sie sicher, dass TCP- und UDP-Regeln für **Öffentlich** hinzugefügt werden, und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.<br/><br/> Aktivieren Sie für den Zugriff auf die Azure-VM über eine Standort-zu-Standort-Verbindung RDP auf dem Computer, und stellen Sie sicher, dass RDP unter **Windows-Firewall** -> **Zugelassene Apps und Features** für Netzwerke vom Typ **Domäne und Privat** zugelassen ist.<br/><br/>  Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135)<br/><br/> Stellen Sie sicher, dass auf der VM keine ausstehenden Windows-Updates vorhanden sind, wenn Sie ein Failover auslösen. Ansonsten wird Windows Update möglicherweise während des Failovers gestartet, und Sie können sich nicht mehr bei der VM anmelden, bis das Update abgeschlossen ist. 
-**Virtueller Azure-Computer unter Windows** | Azure-VM nach einem Failover |  Fügen Sie der VM eine [öffentliche IP-Adresse](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine) hinzu.<br/><br/> In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den RDP-Port zulässig sein.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen.<br/><br/> Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob die VM ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
+**Virtueller Azure-Computer unter Windows** | Azure-VM nach einem Failover |  Fügen Sie der VM eine [öffentliche IP-Adresse](site-recovery-monitoring-and-troubleshooting.md) hinzu.<br/><br/> In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den RDP-Port zulässig sein.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen.<br/><br/> Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob die VM ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
 **Virtueller Azure-Computer unter Linux** | Lokaler Computer vor dem Failover | Stellen Sie sicher, dass der Secure Shell-Dienst auf der VM so festgelegt ist, dass er beim Systemstart automatisch gestartet wird.<br/><br/> Überprüfen Sie, ob die Firewallregeln eine SSH-Verbindung damit zulassen.
-**Virtueller Azure-Computer unter Linux** | Azure-VM nach einem Failover | In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den SSH-Port zulässig sein.<br/><br/> Fügen Sie der VM eine [öffentliche IP-Adresse](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine) hinzu.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen.<br/><br/>
+**Virtueller Azure-Computer unter Linux** | Azure-VM nach einem Failover | In den Netzwerksicherheitsgruppen-Regeln auf der VM nach dem Failover (und für das Azure-Subnetz, mit dem sie verbunden ist) müssen eingehende Verbindungen über den SSH-Port zulässig sein.<br/><br/> Fügen Sie der VM eine [öffentliche IP-Adresse](site-recovery-monitoring-and-troubleshooting.md) hinzu.<br/><br/> Aktivieren Sie die **Startdiagnose**, um einen Screenshot der VM anzuzeigen.<br/><br/>
 
 
 

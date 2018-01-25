@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/06/2017
+ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 85a8a3234c052828556ce5d8ba5841a5bf012971
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 0747ba79529bc2f12f1c5d74cbfcb7b62a62baa8
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die Daten aus Azure Blob Storage nach Azure SQL-Datenbank kopiert. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -94,7 +94,7 @@ Erstellen Sie mithilfe von Visual Studio 2015/2017 eine C# .NET-Konsolenanwendun
 2. Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**.
 3. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Visual C#** -> **Konsolen-App (.NET Framework)** aus. .NET-Version 4.5.2 oder höher ist erforderlich.
 4. Geben Sie **ADFv2Tutorial** als Namen ein.
-5. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+5. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 ## <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen
 
@@ -332,7 +332,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 ## <a name="create-a-pipeline-run"></a>Erstellen einer Pipelineausführung
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine **Pipelineausführung auslöst**.
+Fügen Sie der **Main**-Methode den folgenden Code hinzu, der **eine Pipelineausführung auslöst**.
 
 ```csharp
 // Create a pipeline run

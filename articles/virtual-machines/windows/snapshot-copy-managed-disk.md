@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: dba70db512d88dfc57107bade0df50d1834eb883
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 10b5eb0062e4a029b0f233ee8af17d590d59c8d4
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
 
@@ -34,7 +34,7 @@ Erstellen Sie eine Momentaufnahme eines Betriebssystem oder eines VHD-Datenträg
 6. Wählen Sie den Standort eines Azure-Rechenzentrums aus.  
 7. Wählen Sie für **Quelldatenträger** den verwalteten Datenträger aus, für den eine Momentaufnahme erstellt werden soll.
 8. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wir empfehlen **Standard_LRS**, es sei denn, Sie benötigen eine Speicherung auf einem Hochleistungsdatenträger.
-9. Klicken Sie auf **Erstellen**.
+9. Klicken Sie auf **Create**.
 
 ## <a name="use-powershell-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme mit PowerShell
 Die folgenden Schritte veranschaulichen das Abrufen des zu kopierenden VHD-Datenträgers, das Erstellen der Momentaufnahmenkonfigurationen und das Erstellen einer Momentaufnahme des Datenträgers mithilfe des Cmdlets [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot). 
@@ -42,7 +42,7 @@ Die folgenden Schritte veranschaulichen das Abrufen des zu kopierenden VHD-Daten
 Stellen Sie sicher, dass Sie die neueste Version des installierten AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
 
 ```
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM.Compute -MinimumVersion 2.6.0
 ```
 Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
 

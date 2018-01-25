@@ -3,7 +3,7 @@ title: "Azure Service Fabric-Plug-In für Eclipse | Microsoft-Dokumentation"
 description: "Enthält eine Beschreibung der ersten Schritte mit dem Service Fabric-Plug-In für Eclipse."
 services: service-fabric
 documentationcenter: java
-author: sayantancs
+author: rapatchi
 manager: timlt
 editor: 
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
@@ -13,18 +13,18 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2016
-ms.author: saysa
-ms.openlocfilehash: 90faa353a1f6b83ec0cd8b9ee2cd247905ef4524
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: rapatchi
+ms.openlocfilehash: 291bbd35d6e3c89eb9568130ad144831452142ad
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen
 Eclipse ist eine der am häufigsten genutzten IDEs (Integrated Development Environments) für Java-Entwickler. In diesem Artikel wird beschrieben, wie Sie Ihre Eclipse-Entwicklungsumgebung für Azure Service Fabric einrichten. Sie erfahren, wie Sie das Service Fabric-Plug-In installieren, eine Service Fabric-Anwendung erstellen und Ihre Service Fabric-Anwendung in einem lokalen Service Fabric-Cluster oder Service Fabric-Remotecluster in Eclipse Neon bereitstellen. 
 
 > [!NOTE]
-> Das Eclipse-Plug-In wird derzeit unter Windows nicht unterstützt. 
+> Das Eclipse-Plug-In wird unter Windows aktuell nicht unterstützt. 
 
 ## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse-neon"></a>Installieren oder Aktualisieren des Service Fabric-Plug-Ins in Eclipse Neon
 Sie können ein Service Fabric-Plug-In in Eclipse installieren. Das Plug-In kann dazu beitragen, den Prozess der Erstellung und Bereitstellung von Java-Diensten zu vereinfachen.

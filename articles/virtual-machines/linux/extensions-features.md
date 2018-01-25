@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 59f718e0e547ed9374152985e706acad4421b35b
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 30e606154830b867382ea1ea439b97749370a1f6
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -47,7 +47,7 @@ Für jede VM-Erweiterung gilt möglicherweise ein eigener Satz Voraussetzungen. 
 
 Der Azure VM-Agent verwaltet Interaktionen zwischen einem virtuellen Azure-Computer und dem Azure Fabric Controller. Der VM-Agent ist für viele funktionale Aspekte in Bezug auf die Bereitstellung und Verwaltung virtueller Azure-Computer verantwortlich. Dies umfasst auch das Ausführen von VM-Erweiterungen. Der Azure-VM-Agent ist in Images aus dem Azure Marketplace vorinstalliert und kann manuell auf unterstützten Betriebssystemen installiert werden.
 
-Informationen zu unterstützten Betriebssystemen und Installationshinweise finden Sie unter [Informationen zum Agent und zu Erweiterungen für virtuelle Computer](../windows/classic/agents-and-extensions.md).
+Informationen zu unterstützten Betriebssystemen und Installationshinweise finden Sie unter [Informationen zum Agent und zu Erweiterungen für virtuelle Computer](agent-user-guide.md).
 
 ## <a name="discover-vm-extensions"></a>Ermitteln von VM-Erweiterungen
 
@@ -235,7 +235,7 @@ Im Azure-Portal können Sie eine Erweiterung mithilfe der folgenden Schritte ent
 4. Wählen Sie **Deinstallieren** aus.
 
 ## <a name="common-vm-extension-reference"></a>Allgemeine VM-Erweiterungsreferenz
-| Name der Erweiterung | Beschreibung | Weitere Informationen |
+| Name der Erweiterung | BESCHREIBUNG | Weitere Informationen |
 | --- | --- | --- |
 | Benutzerdefinierte Skripterweiterung für Linux |Führt Skripts auf einem virtuellen Azure-Computer aus |[Benutzerdefinierte Skripterweiterung für Linux](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
 | Docker-Erweiterung |Installiert den Docker-Daemon zur Unterstützung von Docker-Remotebefehlen. |[Docker-VM-Erweiterung](dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |

@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 44691f7c06aede764c3bf0dcc99848a4f22ce08d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a23b3b1084cf6776cee8583891ae3d879183d072
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>Hinzufügen der Anmeldung zu einer .NET-MVC-Web-App
 Mit dem v2.0-Endpunkt können Sie schnell eine Authentifizierung zu Ihren Web-Apps hinzufügen, die sowohl persönliche Microsoft-Konten als auch Geschäfts-, Schul- oder Unikonten unterstützt.  Für ASP.NET-Webanwendungen erreichen Sie das Gleiche durch die in .NET Framework 4.5 enthaltenen OWIN-Middleware von Microsoft.
 
 > [!NOTE]
-> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 >
 >
 
  Hier erstellen wir eine Web-App, bei der OWIN zum Anmelden des Benutzers, zum Anzeigen von Informationen zum Benutzer und zum Abmelden des Benutzers von der Anwendung verwendet wird.
 
-## <a name="download"></a>Download
+## <a name="download"></a>Herunterladen
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet)verwaltet.  Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) oder das Gerüst klonen:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
@@ -64,7 +64,7 @@ Hier konfigurieren wir die OWIN-Middleware für die Verwendung des Authentifizie
 3. Fügen Sie dem Projekt eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Klicken Sie dazu mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen** --> **Neues Element** aus, und suchen Sie nach „OWIN“.  Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(...)` auf.
 4. Ändern Sie die Klassendeklaration in `public partial class Startup` – einen Teil dieser Klasse haben wir bereits für Sie in einer anderen Datei implementiert.  Rufen Sie in der Methode `Configuration(...)` „ConfigureAuth(...)“ auf, um die Authentifizierung für Ihre Web-App einzurichten.  
 
-        ```C#
+        ```csharp
         [assembly: OwinStartup(typeof(Startup))]
         
         namespace TodoList_WebApp
@@ -81,7 +81,7 @@ Hier konfigurieren wir die OWIN-Middleware für die Verwendung des Authentifizie
 
 5. Öffnen Sie die Datei `App_Start\Startup.Auth.cs`, und implementieren Sie die Methode `ConfigureAuth(...)`.  Die Parameter, die Sie in `OpenIdConnectAuthenticationOptions` bereitstellen, dienen als Koordinaten für Ihre Anwendung zur Kommunikation mit Azure AD.  Außerdem müssen Sie eine Cookie-Authentifizierung einrichten, da die Middleware OpenID Connect im Hintergrund Cookies verwendet.
 
-        ```C#
+        ```csharp
         public void ConfigureAuth(IAppBuilder app)
                      {
                              app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -118,7 +118,7 @@ Ihre Anwendung ist nun ordnungsgemäß für die Kommunikation mit dem v2.0-Endpu
 
 - Über Autorisierungstags in Ihren Controllern können Sie die Benutzer vor dem Zugriff auf eine bestimmte Seite zur Anmeldung zwingen.  Öffnen Sie `Controllers\HomeController.cs`, und fügen Sie dem Info-Controller den Tag `[Authorize]` hinzu.
         
-        ```C#
+        ```csharp
         [Authorize]
         public ActionResult About()
         {
@@ -127,7 +127,7 @@ Ihre Anwendung ist nun ordnungsgemäß für die Kommunikation mit dem v2.0-Endpu
 
 - Mit OWIN können Sie Authentifizierungsanforderungen auch direkt aus Ihrem Code ausgeben.  Öffnen Sie `Controllers\AccountController.cs`.  Geben Sie in den Aktionen „SignIn()“ und „SignOut()“ OpenID Connect-Challenge- und Abmeldeanforderungen ein.
 
-        ```C#
+        ```csharp
         public void SignIn()
         {
             // Send an OpenID Connect sign-in request.
@@ -178,7 +178,7 @@ Bei der Authentifizierung von Benutzern mit OpenID Connect gibt der v2.0-Endpunk
 
 - Öffnen Sie die Datei `Controllers\HomeController.cs` .  Auf die Ansprüche des Benutzers können Sie in Ihren Controllern über das Sicherheitsprinzipalobjekt `ClaimsPrincipal.Current` zugreifen.
 
-        ```C#
+        ```csharp
         [Authorize]
         public ActionResult About()
         {
@@ -206,7 +206,7 @@ Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswer
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können nun mit den Themen für fortgeschrittenere Benutzer fortfahren.  Wie wäre es zum Beispiel mit Folgendem:
+Sie können nun mit den Themen für fortgeschrittenere Benutzer fortfahren.  Sie können beispielsweise Folgendes testen:
 
 [Schützen einer Web-API mit dem v2.0-Endpunkt &gt;&gt;](active-directory-devquickstarts-webapi-dotnet.md)
 

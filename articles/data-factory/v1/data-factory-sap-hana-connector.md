@@ -11,22 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ee0564ad3eae3cc902ce596aceb5c218efabd43e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 108b6e3ae704a99e5c050fea07c72300ab948905
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Verschieben von Daten aus SAP HANA mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-sap-hana-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-sap-hana-connector.md)
 > * [Version 2 – Vorschauversion](../connector-sap-hana.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from SAP HANA using Azure Data Factory](../connector-sap-business-warehouse.md) (Kopieren von Daten aus SAP HANA mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from SAP HANA using Azure Data Factory](../connector-sap-business-warehouse.md) (Kopieren von Daten aus SAP HANA mit Azure Data Factory).
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen SAP HANA-Instanz zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
@@ -58,14 +58,14 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SAP HANA verknüpften Dienst spezifisch sind.
 
-Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
+Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-server | Der Name des Servers, auf dem sich die SAP HANA-Instanz befindet. Wenn Ihr Server einen benutzerdefinierten Port verwendet, geben Sie `server:port` an. | string | Ja
+server | Der Name des Servers, auf dem sich die SAP HANA-Instanz befindet. Wenn Ihr Server einen benutzerdefinierten Port verwendet, geben Sie `server:port` an. | Zeichenfolge | Ja
 authenticationType | Die Art der Authentifizierung. | string. „Basic“ oder „Windows“ | Ja 
-username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | string | Ja
-password | Kennwort für den Benutzer | string | Ja
-gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP HANA-Instanz verwenden soll | string | Ja
-encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | string | Nein
+username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
+password | Kennwort für den Benutzer | Zeichenfolge | Ja
+gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP HANA-Instanz verwenden soll | Zeichenfolge | Ja
+encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | Zeichenfolge | Nein 
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
@@ -80,7 +80,7 @@ Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je 
 
 Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** hat (zu dem SAP HANA gehört), sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | query | Gibt die SQL-Abfrage an, mit der Daten aus der SAP HANA-Instanz gelesen werden. | SQL-Abfrage | Ja |
 
@@ -290,17 +290,17 @@ INT | Int32
 BIGINT | Int64
 REAL | Single
 DOUBLE | Single
-DECIMAL | Decimal
+DECIMAL | DECIMAL
 BOOLEAN | Byte
-VARCHAR | string
-NVARCHAR | String
+VARCHAR | Zeichenfolge
+NVARCHAR | Zeichenfolge
 CLOB | Byte[]
-ALPHANUM | string
+ALPHANUM | Zeichenfolge
 BLOB | Byte[]
-DATE | DateTime
+DATE | Datetime
 TIME | Zeitraum
-TIMESTAMP | DateTime
-SECONDDATE | DateTime
+TIMESTAMP | Datetime
+SECONDDATE | Datetime
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 Es gibt einige bekannte Einschränkungen, wenn Daten aus SAP HANA kopiert werden:

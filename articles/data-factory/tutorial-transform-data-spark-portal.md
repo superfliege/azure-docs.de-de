@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: shengc
-ms.openlocfilehash: 8bd9382ed5a855368533c6bf2305682861c109c0
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: c2ec6706c92f229bb05ad9a19246c6ffe5f615c9
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Spark-Aktivität und eines bedarfsgesteuerten verknüpften HDInsight-Diensts transformiert. In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory 
+> * Erstellen einer Data Factory. 
 > * Erstellen einer Pipeline mit einer Spark-Aktivität
 > * Auslösen einer Pipelineausführung
 > * Überwachen der Pipelineausführung.
@@ -81,7 +81,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
    ![Neu -> Data Factory](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
-2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **ADFTutorialDataFactory** ein. 
+2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
       
      ![Seite „Neue Data Factory“](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
@@ -122,7 +122,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste:
 2. Klicken Sie im unteren Bereich des Fensters auf **Verbindungen** und anschließend auf **+ Neu**. 
 
     ![Schaltfläche für eine neue Verbindung](./media/tutorial-transform-data-spark-portal/new-connection.png)
-3. Wählen Sie im Fenster **Neuer verknüpfter Dienst** die Option **Azure Blob Storage** aus, und klicken Sie dann auf **Weiter**. 
+3. Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Azure Blob Storage**, und klicken Sie dann auf **Weiter**. 
 
     ![Auswählen von „Azure Blob Storage“](./media/tutorial-transform-data-spark-portal/select-azure-storage.png)
 4. Wählen Sie den Namen Ihres **Azure Storage-Kontos**aus, und klicken Sie auf **Speichern**. 
@@ -147,7 +147,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste:
     7. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, die Sie auch beim Erstellen der Data Factory verwendet haben. Der Spark-Cluster wird in dieser Ressourcengruppe erstellt. 
     8. Erweitern Sie **Betriebssystemtyp**.
     9. Geben Sie unter **Name** einen Namen für den **Benutzer** des Clusters ein. 
-    10. Geben Sie unter **Kennwort** das Kennwort für den Benutzer ein. 
+    10. Geben Sie das **Kennwort** für den Benutzer ein. 
     11. Klicken Sie auf **Speichern**. 
 
         ![Einstellungen für den verknüpften HDInsight-Dienst](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
@@ -180,6 +180,8 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste:
     
     ![Schaltfläche „Überprüfen“](./media/tutorial-transform-data-spark-portal/validate-button.png)
 7. Klicken Sie auf **Veröffentlichen**. Die Data Factory-Benutzeroberfläche veröffentlicht Entitäten (verknüpfte Dienste und Pipeline) für den Azure Data Factory-Dienst. 
+    
+    ![Schaltfläche "Veröffentlichen"](./media/tutorial-transform-data-spark-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Auslösen einer Pipelineausführung
 Klicken Sie auf der Symbolleiste auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
@@ -217,7 +219,7 @@ Die Datei sollte für jedes Wort aus der Eingabetextdatei angeben, wie oft es in
 Die Pipeline in diesem Beispiel transformiert Daten mithilfe einer Spark-Aktivität und eines bedarfsgesteuerten verknüpften HDInsight-Diensts. Es wurde Folgendes vermittelt: 
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory 
+> * Erstellen einer Data Factory. 
 > * Erstellen einer Pipeline mit einer Spark-Aktivität
 > * Auslösen einer Pipelineausführung
 > * Überwachen der Pipelineausführung.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d6dc1cddd6228d2841e1e77b6f2800f788e5e1bb
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: fd24881444846d3905f8db61356656960698b7eb
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Anleitung zur Konvertierung von Web- und Workerrollen in zustandslose Service Fabric-Dienste
 In diesem Artikel wird beschrieben, wie Sie Ihre Cloud Services-Web- und -Workerrollen zu zustandslosen Service Fabric-Diensten migrieren. Dies ist für Anwendungen, deren allgemeine Architektur weitgehend gleich bleibt, der einfachste Migrationspfad von Cloud Services zu Service Fabric.
@@ -40,7 +40,7 @@ In Bezug auf das Konzept stellt eine Workerrolle eine zustandslose Workload dar.
 
 | **Anwendung** | **Unterstützt** | **Migrationspfad** |
 | --- | --- | --- |
-| ASP.NET Web Forms |Nein |In ASP.NET Core 1 MVC konvertieren |
+| ASP.NET Web Forms |Nein  |In ASP.NET Core 1 MVC konvertieren |
 | ASP.NET MVC |Per Migration |Upgrade auf ASP.NET Core 1 MVC |
 | ASP.NET-Web-API |Per Migration |Selbst gehosteten Server oder ASP.NET Core 1 verwenden |
 | ASP.NET Core 1 |Ja |N/V |
@@ -53,10 +53,10 @@ APIs von Workerrollen und Service Fabric-Diensten verfügen über ähnliche Eins
 | Verarbeitung |`Run()` |`RunAsync()` |
 | VM starten |`OnStart()` |N/V |
 | VM beenden |`OnStop()` |N/V |
-| Listener für Clientanforderungen öffnen |– |<ul><li> Zustandslos: `CreateServiceInstanceListener()`</li><li>Zustandsbehaftet: `CreateServiceReplicaListener()`</li></ul> |
+| Listener für Clientanforderungen öffnen |N/V |<ul><li> Zustandslos: `CreateServiceInstanceListener()`</li><li>Zustandsbehaftet: `CreateServiceReplicaListener()`</li></ul> |
 
 ### <a name="worker-role"></a>Workerrolle
-```C#
+```csharp
 
 using Microsoft.WindowsAzure.ServiceRuntime;
 
@@ -81,7 +81,7 @@ namespace WorkerRole1
 ```
 
 ### <a name="service-fabric-stateless-service"></a>Zustandsloser Service Fabric-Dienst
-```C#
+```csharp
 
 using System.Collections.Generic;
 using System.Threading;
@@ -138,7 +138,7 @@ Diese Pakete können unabhängig voneinander mit einer Versionsangabe versehen u
 #### <a name="cloud-services"></a>Cloud Services
 Sie können auf die Konfigurationseinstellungen aus „ServiceConfiguration.*.cscfg“ über `RoleEnvironment`zugreifen. Diese Einstellungen sind für alle Rolleninstanzen einer Cloud Services-Bereitstellung global verfügbar.
 
-```C#
+```csharp
 
 string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 
@@ -149,7 +149,7 @@ Jeder Dienst verfügt über sein eigenes Konfigurationspaket. Es gibt keinen int
 
 Auf Konfigurationseinstellungen wird in jeder Dienstinstanz über das `CodePackageActivationContext`-Element des Diensts zugegriffen.
 
-```C#
+```csharp
 
 ConfigurationPackage configPackage = this.Context.CodePackageActivationContext.GetConfigurationPackageObject("Config");
 
@@ -170,7 +170,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 #### <a name="cloud-services"></a>Cloud Services
 Das `RoleEnvironment.Changed`-Ereignis wird für die Benachrichtigung aller Rolleninstanzen verwendet, wenn in der Umgebung eine Änderung vorgenommen wird, etwa eine Konfigurationsänderung. Es wird zum Nutzen von Konfigurationsupdates eingesetzt, ohne dass Rolleninstanzen wiederverwendet werden oder ein Workerprozess neu gestartet wird.
 
-```C#
+```csharp
 
 RoleEnvironment.Changed += RoleEnvironmentChanged;
 
@@ -191,7 +191,7 @@ Jeder der drei Pakettypen in einem Dienst – Code, Config und Data – verfügt
 
 Diese Ereignisse sind verfügbar, um Änderungen von Dienstpaketen zu verarbeiten, ohne die Dienstinstanz neu zu starten.
 
-```C#
+```csharp
 
 this.Context.CodePackageActivationContext.ConfigurationPackageModifiedEvent +=
                     this.CodePackageActivationContext_ConfigurationPackageModifiedEvent;

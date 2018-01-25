@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4896d9da456bcc17b1a4d92259ef3d57f8575d8b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ef3965adac03f21c386765a43290c93d58d1c18
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Logic Apps B2B – regionsübergreifende Notfallwiederherstellung
 
@@ -92,7 +92,7 @@ Um die Notfallwiederherstellung für eingehende Nachrichten zu aktivieren, wähl
 
 ![Auswählen der Einstellungen für die Überprüfung auf Duplikate](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
 
-1. Erstellen Sie eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) in einer sekundären Region.    
+1. Erstellen Sie eine [Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) in einer sekundären Region.    
 
 2. Suchen Sie nach **X12**, und wählen Sie **X12 – Bei Änderung einer Kontrollnummer** aus.   
 
@@ -147,7 +147,7 @@ Um die Notfallwiederherstellung für eingehende Nachrichten zu aktivieren, wähl
 
 ![Auswählen der Einstellungen für die Überprüfung auf Duplikate](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
-1. Erstellen Sie eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) in einer sekundären Region.    
+1. Erstellen Sie eine [Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) in einer sekundären Region.    
 
 2. Suchen Sie nach **EDIFACT**, und wählen Sie **EDIFACT – Bei Änderung einer Kontrollnummer** aus.
 
@@ -199,7 +199,7 @@ Die Geschäftskontinuität für Dokumente, die das AS2-Protokoll verwenden, basi
 > [!TIP]
 > Sie können Logik-Apps auch mithilfe der [AS2-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/pull/3302) erstellen. Als Voraussetzung für die Verwendung der Vorlage müssen Integrationskonten für die primäre und die sekundäre Region erstellt werden. Mit der Vorlage kann eine Logik-App mit einem Trigger und einer Aktion erstellt werden. Die Logik-App erstellt eine Verbindung zwischen einem Trigger und dem Integrationskonto einer primären Region sowie zwischen einer Aktion und dem Integrationskonto einer sekundären Region.
 
-1. Erstellen Sie eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) in der sekundären Region.  
+1. Erstellen Sie eine [Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) in der sekundären Region.  
 
 2. Suchen Sie nach **AS2**, und wählen Sie **AS2 – When a MIC value is created** (AS2 – Beim Erstellen eines MIC-Werts) aus.   
 

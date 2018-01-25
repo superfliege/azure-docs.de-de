@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: f5ffbb6c2d699da143e12c51c38cba602f5a8526
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: e23173fb6708104c39071145595e4eec3454ee76
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Konfigurieren von Service Map in Operations Management Suite
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -139,7 +139,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
 ## <a name="azure-vm-extension"></a>Azure-VM-Erweiterung
-Sie können den Dependency-Agent ganz einfach über eine [Azure-VM-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/classic/agents-and-extensions) auf Ihren Azure-VMs bereitstellen.  Mithilfe der Azure-VM-Erweiterung können Sie den Dependency-Agent auf Ihren VMs über ein PowerShell-Skript oder direkt in der Azure Resource Manager-Vorlage der VM bereitstellen.  Es ist eine Erweiterung für Windows (DependencyAgentWindows) und Linux (DependencyAgentLinux) verfügbar.  Wenn Sie die Bereitstellung über die Azure-VM-Erweiterung durchführen, können Ihre Agents automatisch auf die neuesten Versionen aktualisiert werden.
+Sie können den Dependency-Agent ganz einfach über eine [Azure-VM-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features) auf Ihren Azure-VMs bereitstellen.  Mithilfe der Azure-VM-Erweiterung können Sie den Dependency-Agent auf Ihren VMs über ein PowerShell-Skript oder direkt in der Azure Resource Manager-Vorlage der VM bereitstellen.  Es ist eine Erweiterung für Windows (DependencyAgentWindows) und Linux (DependencyAgentLinux) verfügbar.  Wenn Sie die Bereitstellung über die Azure-VM-Erweiterung durchführen, können Ihre Agents automatisch auf die neuesten Versionen aktualisiert werden.
 
 Um die Azure-VM-Erweiterung über PowerShell bereitzustellen, können Sie das folgende Beispiel verwenden:
 ```PowerShell

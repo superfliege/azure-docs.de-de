@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 346f19b01460aaa4aeb2c2d97c07ef11924ec80f
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 8ad1ed1b8a178cb8906e6233e6bd78f50d01c50c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -109,7 +109,7 @@ Die Anspruchanforderung ist im ```WWW-Authenticate```-Header enthalten. Durch ei
 
 Der Header ```WWW-Authenticate``` hat eine eindeutige Struktur und kann nicht einfach zum Extrahieren von Werten analysiert werden.  Hier sehen Sie eine kurze Methode, die den Vorgang erleichtert:
 
-```C#
+```csharp
         /// <summary>
         /// This method extracts the claims value from the 403 error response from MS Graph. 
         /// </summary>

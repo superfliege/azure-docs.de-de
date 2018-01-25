@@ -1,6 +1,6 @@
 ---
 title: "Aktivieren der Sicherung für Azure Stack mit PowerShell | Microsoft-Dokumentation"
-description: Aktivieren Sie den Infrastructure Backup-Dienst mit Windows PowerShell, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann.
+description: "Aktivieren Sie den Dienst für die Infrastruktursicherung mit Windows PowerShell, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann."
 services: azure-stack
 documentationcenter: 
 author: mattbriggs
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mabrigg
-ms.openlocfilehash: e0be5f1916ddb653550e6428201356290560c00e
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: cbec6242fb4e185c9801a93fc2c4b35721269c2f
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Aktivieren der Sicherung für Azure Stack mit PowerShell
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Aktivieren Sie den Infrastructure Backup-Dienst mit Windows PowerShell, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann. Sie können auf die PowerShell-Cmdlets zugreifen, um über den Endpunkt der Bedienerverwaltung die Sicherung zu aktivieren und zu starten sowie Sicherungsinformationen abzurufen.
+Aktivieren Sie den Dienst für die Infrastruktursicherung mit Windows PowerShell, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann. Sie können auf die PowerShell-Cmdlets zugreifen, um über den Endpunkt der Bedienerverwaltung die Sicherung zu aktivieren und zu starten sowie Sicherungsinformationen abzurufen.
 
 ## <a name="download-azure-stack-tools"></a>Herunterladen der Azure Stack-Tools
 
-PowerShell muss installiert und für Azure Stack und die Azure Stack-Tools konfiguriert sein. Weitere Informationen finden Sie unter [Einrichten von PowerShell in Azure Stack](https://review.docs.microsoft.com/en-us/azure/azure-stack/azure-stack-powershell-configure-quickstart).
+PowerShell muss installiert und für Azure Stack und die Azure Stack-Tools konfiguriert sein. Weitere Informationen finden Sie unter [Einrichten von PowerShell in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart).
 
 ##  <a name="load-the-connect-and-infrastructure-modules"></a>Laden der Connect- und Infrastructure-Module
 
@@ -90,6 +90,9 @@ Führen Sie in der gleichen PowerShell-Sitzung die folgenden Befehle aus:
    $encryptionkey = New-EncryptionKeyBase64
    ```
 
+> [!Warning]  
+> Sie müssen die AzureStack-Tools zum Generieren des Schlüssels verwenden.
+
 ## <a name="provide-the-backup-share-credentials-and-encryption-key-to-enable-backup"></a>Angeben der Sicherungsfreigabe, der Anmeldeinformationen und des Verschlüsselungsschlüssels zum Aktivieren der Sicherung
 
 Bearbeiten Sie in der gleichen PowerShell-Sitzung das folgende PowerShell-Skript durch Hinzufügen der Variablen für Ihre Umgebung. Führen Sie das aktualisierte Skript aus, um die Sicherungsfreigabe, die Anmeldeinformationen und den Verschlüsselungsschlüssel für den Infrastructure Backup-Dienst anzugeben.
@@ -101,15 +104,15 @@ Bearbeiten Sie in der gleichen PowerShell-Sitzung das folgende PowerShell-Skript
 | $sharepath      | Geben Sie den Pfad zu dem **Sicherungsspeicherort** ein. Für den Pfad zu einer auf einem separaten Gerät gehosteten Dateifreigabe müssen Sie eine UNC-Zeichenfolge (Universal Naming Convention) verwenden. Eine UNC-Zeichenfolge gibt den Speicherort von Ressourcen (z.B. freigegebene Dateien oder Geräte) an. Zur Sicherstellung der Verfügbarkeit der Sicherungsdaten sollte sich das Gerät an einem gesonderten Speicherort befinden. |
 
    ```powershell
-   $username = "domain\backupoadmin"
+    $username = "domain\backupoadmin"
     $password = "password"
     $credential = New-Object System.Management.Automation.PSCredential($username, ($password| ConvertTo-SecureString -asPlainText -Force))  
     $location = Get-AzsLocation
     $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
-
-Set-AzSBackupShare -Location $location -Path $path -UserName $credential.UserName -Password $credential.GetNetworkCredential().password -EncryptionKey $encryptionkey 
-
+    
+    Set-AzSBackupShare -Location $location.Name -Path $sharepath -UserName $credential.UserName -Password $credential.GetNetworkCredential().password -EncryptionKey $encryptionkey
    ```
+   
 ##  <a name="confirm-backup-settings"></a>Überprüfen der Sicherungseinstellungen
 
 Führen Sie in der gleichen PowerShell-Sitzung die folgenden Befehle aus:

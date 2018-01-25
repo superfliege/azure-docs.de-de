@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: magoedte
-ms.openlocfilehash: d9eb4407e537d6a6d45c2fb685c3dcd37bd511a7
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: d73bb33b4b330df803e140145ed63319af4a6733
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker 
 Es gibt keine Unterschiede in der Struktur von Runbooks, die in Azure Automation oder auf einem Hybrid-Runbook-Worker ausgeführt werden. Die jeweils verwendeten Runbooks unterscheiden sich aber meist deutlich, da Runbooks für einen Hybrid Runbook Worker Ressourcen normalerweise auf dem lokalen Computer selbst oder in der lokalen Umgebung der Bereitstellung verwalten, während Runbooks in Azure Automation Ressourcen in der Regel in der Azure-Cloud verwalten.
@@ -144,7 +144,7 @@ Das folgende PowerShell-Runbook, *Export-RunAsCertificateToHybridWorker*, export
     Set-AzureRmContext -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbose
 
     # List automation accounts to confirm Azure Resource Manager calls are working
-    Get-AzureRmAutomationAccount | Select AutomationAccountName
+    Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 
 Speichern Sie das *Export-RunAsCertificateToHybridWorker*-Runbook mit der Erweiterung `.ps1` auf Ihrem Computer.  Importieren Sie das Runbook in Ihr Automation-Konto, und bearbeiten Sie es. Ändern Sie dabei den Wert der Variablen `$Password` in Ihr eigenes Kennwort.  Veröffentlichen Sie das Runbook, und führen Sie es dann mit der Hybrid Worker-Gruppe als Ziel aus, die Runbooks über das ausführende Konto ausführt und authentifiziert.  Der Auftragsdatenstrom meldet den Versuch, das Zertifikat in den lokalen Computerspeicher zu importieren. Im Bericht folgen mehrere Zeilen, je nachdem, wie viele Automation-Konten in Ihrem Abonnement definiert sind und ob die Authentifizierung erfolgreich ist.  
 

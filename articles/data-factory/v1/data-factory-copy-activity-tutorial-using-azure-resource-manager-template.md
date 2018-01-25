@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: f3523f17b5b39da94177038584d983aa3592199f
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 20a2e50fa3e1f81655566d9dfd7fb0cc62a2844c
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Tutorial: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen einer Data Factory-Pipeline zum Kopieren von Daten 
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -53,7 +53,7 @@ Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten
 ## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte
 In diesem Tutorial erstellen Sie eine Data Factory mit den folgenden Data Factory-Entitäten:
 
-| Entität | Beschreibung |
+| Entität | BESCHREIBUNG |
 | --- | --- |
 | Mit Azure Storage verknüpfter Dienst |Verknüpft Ihr Azure Storage-Konto mit der Data Factory. Azure Storage ist der Quelldatenspeicher für die Kopieraktivität des Tutorials, Azure SQL-Datenbank der Senkendatenspeicher. Der Dienst gibt das Speicherkonto an, das die Eingabedaten für die Kopieraktivität enthält. |
 | Mit Azure SQL-Datenbank verknüpfter Dienst |Verknüpft Azure SQL-Datenbank mit der Data Factory. Der Dienst gibt die Azure SQL-Datenbank-Instanz zum Speichern der Ausgabedaten für die Kopieraktivität an. |
@@ -61,7 +61,7 @@ In diesem Tutorial erstellen Sie eine Data Factory mit den folgenden Data Factor
 | Azure SQL-Ausgabedataset |Verweist auf den mit Azure SQL verknüpften Dienst. Der mit Azure SQL verknüpfte Dienst verweist auf eine Azure SQL Server-Instanz, und das Azure SQL-Dataset gibt den Namen der Tabelle mit den Ausgabedaten an. |
 | Datenpipeline |Die Pipeline verfügt über eine einzelne Kopieraktivität mit dem Azure-Blob-Dataset als Eingabe und dem Azure SQL-Dataset als Ausgabe. Die Kopieraktivität kopiert Daten aus einem Azure-Blob in eine Tabelle in Azure SQL-Datenbank. |
 
-Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Es gibt zwei Arten von Aktivitäten: [Datenverschiebungen](data-factory-data-movement-activities.md) und [Datentransformationen](data-factory-data-transformation-activities.md). In diesem Tutorial erstellen Sie eine Pipeline mit einer einzelnen Kopieraktivität.
+Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Es gibt zwei Arten von Aktivitäten: [Datenverschiebungen](data-factory-data-movement-activities.md) und [Datentransformationen](data-factory-data-transformation-activities.md). In diesem Tutorial erstellen Sie eine Pipeline mit einer einzelnen Kopieraktivität.
 
 ![Kopieren von Daten aus dem Azure-Blob in Azure SQL-Datenbank](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/CopyBlob2SqlDiagram.png) 
 
@@ -412,7 +412,7 @@ Die AzureStorageLinkedService-Instanz verknüpft Ihr Azure Storage-Konto mit der
 Die Verbindungszeichenfolge (connectionString) enthält die Parameter „storageAccountName“ und „storageAccountKey“. Die Werte für diese Parameter werden mithilfe einer Konfigurationsdatei übergeben. In der Definition werden außerdem die in der Vorlage definierten Variablen „azureStorageLinkedService“ und „dataFactoryName“ verwendet. 
 
 #### <a name="azure-sql-database-linked-service"></a>Mit Azure SQL-Datenbank verknüpfter Dienst
-AzureSqlLinkedService verknüpft Azure SQL-Datenbank mit der Data Factory. Die aus Blob Storage kopierten Daten werden in dieser Datenbank gespeichert. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) die EMP-Tabelle in dieser Datenbank erstellt. In diesem Abschnitt geben Sie den Namen der Azure SQL Server-Instanz, den Datenbanknamen, den Benutzernamen und das Benutzerkennwort an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure SQL verknüpften Diensts finden Sie unter [Mit Azure SQL verknüpfter Dienst](data-factory-azure-sql-connector.md#linked-service-properties).  
+AzureSqlLinkedService verknüpft Azure SQL-Datenbank mit der Data Factory. Die aus Blob Storage kopierten Daten werden in dieser Datenbank gespeichert. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) die Tabelle „emp“ in dieser Datenbank erstellt. In diesem Abschnitt geben Sie den Namen der Azure SQL Server-Instanz, den Datenbanknamen, den Benutzernamen und das Benutzerkennwort an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure SQL verknüpften Diensts finden Sie unter [Mit Azure SQL verknüpfter Dienst](data-factory-azure-sql-connector.md#linked-service-properties).  
 
 ```json
 {

@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 09/19/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 265a9c2c2e074c9a60b69dbf48996bcb9137d435
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 33ccecee82617dc53e597165c708c2bf67cdabe1
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Erstellen einer Data Factory und Pipeline mithilfe von Python
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Version 2 – Vorschauversion](quickstart-create-data-factory-python.md)
 
 Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können.
@@ -223,7 +223,7 @@ Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine **Pipeline mi
 
 ## <a name="create-a-pipeline-run"></a>Erstellen einer Pipelineausführung
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine **Pipelineausführung auslöst**.
+Fügen Sie der **Main**-Methode den folgenden Code hinzu, der **eine Pipelineausführung auslöst**.
 
 ```python
     #Create a pipeline run.

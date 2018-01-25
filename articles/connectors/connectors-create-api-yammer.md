@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: c7a213343b4fb2b5a89a5052a459061b404a431c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37f72d829fc50a0f967f08e068c553f5026f35eb
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-yammer-connector"></a>Erste Schritte mit dem Yammer-Connector
 Verbinden Sie sich mit Yammer, um auf Konversationen in Ihrem Unternehmensnetzwerk zuzugreifen. Yammer ermöglicht Folgendes:
@@ -28,12 +28,12 @@ Verbinden Sie sich mit Yammer, um auf Konversationen in Ihrem Unternehmensnetzwe
 * Verwenden von Triggern, wenn es eine neue Nachricht in einer Gruppe oder in einem Feed gibt, dem Sie folgen.
 * Verwenden Sie Aktionen, um z. : eine Nachricht senden oder alle Nachrichten abzurufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn z. B. eine neue Nachricht vorhanden ist, können Sie über Office 365 eine E-Mail senden.
 
-Erstellen Sie zunächst eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
+Erstellen Sie zunächst eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
 
 ## <a name="create-a-connection-to-yammer"></a>Herstellen einer Verbindung mit Yammer
 Stellen Sie zum Verwenden des Yammer-Connectors zunächst eine **Verbindung** her, und geben Sie anschließend die Details für diese Eigenschaften an: 
 
-| Eigenschaft | Erforderlich | Beschreibung |
+| Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
 | Tokenverschlüsselung |Ja |Angeben der Yammer-Anmeldeinformationen |
 

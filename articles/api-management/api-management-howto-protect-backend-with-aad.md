@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 32adec024b2ee2649f2631cfa72ee575094aa0c0
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 603a22059dcf07c68f4c6576ea1df97d810eacf3
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>So schützen Sie ein Web-API-Back-End mit Azure Active Directory und API Management
 Im folgenden Video wird gezeigt, wie Sie ein Web-API-Back-End erstellen und es mithilfe des OAuth 2.0-Protokolls mit Azure Active Directory und API Management schützen.  Dieser Artikel enthält eine Übersicht und zusätzliche Informationen zu den Schritten in diesem Video. In diesem 24-minütigen Video wird Folgendes veranschaulicht:
@@ -81,13 +81,13 @@ Die Web-API in diesem Beispiel implementiert mithilfe eines Modells und eines Co
 
 Fügen Sie am Anfang der `CalcInput.cs`-Datei die folgende `using`-Anweisung hinzu.
 
-```c#
+```csharp
 using Newtonsoft.Json;
 ```
 
 Ersetzen Sie die generierte Klasse durch den folgenden Code:
 
-```c#
+```csharp
 public class CalcInput
 {
     [JsonProperty(PropertyName = "a")]
@@ -104,7 +104,7 @@ Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Contro
 
 Fügen Sie am Anfang der `CalcController.cs`-Datei die folgende `using`-Anweisung hinzu.
 
-```c#
+```csharp
 using System.IO;
 using System.Web;
 using APIMAADDemo.Models;
@@ -112,7 +112,7 @@ using APIMAADDemo.Models;
 
 Ersetzen Sie die generierte Controllerklasse durch den folgenden Code: Dieser Code implementiert die `Add`-, `Subtract`-, `Multiply`- und `Divide`-Prozesse für die Basic Calculator-API.
 
-```c#
+```csharp
 [Authorize]
 public class CalcController : ApiController
 {
@@ -368,7 +368,7 @@ Klicken auf **Ausprobieren**.
 
 Klicken Sie auf **Senden**, und notieren Sie den Antwortstatus **401 Nicht autorisiert**.
 
-![Senden][api-management-dev-portal-send-401]
+![Send][api-management-dev-portal-send-401]
 
 Die Anforderung ist nicht autorisiert, da die Back-End-API durch Azure Active Directory geschützt wird. Vor dem erfolgreichen Aufrufen der API muss das Entwicklerportal zum Autorisieren von Entwicklern mit OAuth 2.0 konfiguriert werden. Dieser Prozess wird in den folgenden Abschnitten beschrieben.
 

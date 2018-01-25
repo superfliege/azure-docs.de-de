@@ -2,7 +2,6 @@
 
 ## Übersicht
 ### [Was ist die Lösung?](storsimple-ova-overview.md)
-### [Regionale Verfügbarkeit](storsimple-regions.md)
 
 ## Erste Schritte
 ### Plan
@@ -13,6 +12,7 @@
 ### Bereitstellen
 #### [Vorbereiten der Bereitstellung](storsimple-virtual-array-deploy1-portal-prep.md)
 ##### [Bereitstellen des StorSimple Manager-Diensts](storsimple-virtual-array-manage-service.md)
+##### [Neue Authentifizierung](storsimple-virtual-array-aad-registration-key.md)
 #### [Bereitstellen in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
 #### [Bereitstellen in VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
 #### [Einrichten als Dateiserver](storsimple-virtual-array-deploy3-fs-setup.md)
@@ -79,6 +79,7 @@
 
 ### Bereitstellen
 #### [StorSimple-Geräte-Manager-Dienst](storsimple-8000-manage-service.md)
+#### [Neue Authentifizierung für den Dienst](storsimple-8000-aad-registration-key.md)
 #### [Physisches Gerät in Azure](storsimple-8000-deployment-walkthrough-u2.md)
 #### [Physisches Gerät im Government-Portal](storsimple-8000-deployment-walkthrough-gov-u2.md)
 #### [Cloudgerät in Azure](storsimple-8000-cloud-appliance-u2.md)

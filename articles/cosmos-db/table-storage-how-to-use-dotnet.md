@@ -8,17 +8,17 @@ manager: jhubbard
 editor: tysonn
 ms.assetid: fe46d883-7bed-49dd-980e-5c71df36adb3
 ms.service: cosmos-db
-ms.workload: storage
+ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: article
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: 5ae7fb32814c8eb607d7a3aa33963deb4621a997
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 0019858e1142c1f7e7b6fedea5c2ec97518548c9
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Erste Schritte mit Azure Table Storage mit .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -28,7 +28,7 @@ Der Azure Table Storage-Dienst speichert strukturierte NoSQL-Daten in der Cloud 
 
 Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwendungen, Adressbücher, Geräteinformationen und andere Arten von Metadaten speichern, die Ihr Dienst benötigt. Sie können eine beliebige Anzahl von Entitäten in einer Tabelle speichern, und ein Speicherkonto kann eine beliebige Anzahl von Tabellen enthalten (bis zur Speicherkapazitätsgrenze eines Speicherkontos).
 
-### <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
+### <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
 In diesem Tutorial erfahren Sie, wie Sie die [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) in einigen allgemeinen Azure Table Storage-Szenarien verwenden. Diese Szenarien werden anhand von C#-Beispielen zum Erstellen und Löschen einer Tabelle sowie zum Einfügen, Aktualisieren, Löschen und Abfragen von Tabellendaten veranschaulicht.
 
 ## <a name="prerequisites"></a>Voraussetzungen

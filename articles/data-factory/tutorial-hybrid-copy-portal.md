@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 7b734a76545dbcbddac3c7ad7beae60d662a9129
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 64cd758e2f40ff2b18abbff1194a7e57389d8a54
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Tutorial: Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
 In diesem Tutorial verwenden Sie die Benutzeroberfläche (User Interface, UI) von Azure Data Factory, um eine Data Factory-Pipeline zu erstellen, mit der Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt. 
@@ -126,7 +126,7 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Azure Data Fac
 1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
    ![Neu -> Data Factory](./media/tutorial-hybrid-copy-portal/new-azure-data-factory-menu.png)
-2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **ADFTutorialDataFactory** ein. 
+2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
       
      ![Seite „Neue Data Factory“](./media/tutorial-hybrid-copy-portal/new-azure-data-factory.png)
  
@@ -191,7 +191,7 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Azure Data Fac
 11. Klicken Sie im Fenster **Express-Setup von Integration Runtime (selbstgehostet)** auf **Schließen**. 
 
    ![Integration Runtime-Setup erfolgreich](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
-12. Klicken Sie im Webbrowser im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) auf **Fertig stellen**. Daraufhin sollte wieder das Fenster **Neuer verknüpfter Dienst** angezeigt werden.
+12. Klicken Sie im Webbrowser im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) auf **Fertig stellen**. 
 
    ![Integration Runtime-Setup – Fertig stellen](./media/tutorial-hybrid-copy-portal/click-finish-integration-runtime-setup.png)
 13. Führen Sie im Fenster **Neuer verknüpfter Dienst** die folgenden Schritte aus:

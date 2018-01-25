@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2017
+ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 413d7ddf1e5b87f64c0d8e14c0ef4bdefd2890a7
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 90402e047caff2446591dca9cc9392c9d0344b5f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Aktivität „Pipeline ausführen“ in Azure Data Factory
 Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline eine andere Pipeline aufrufen.
@@ -62,13 +62,13 @@ Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline ein
 ```
 
 ## <a name="type-properties"></a>Typeigenschaften
-Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
+Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-Name | Name der Aktivität „Pipeline ausführen“. | String | Ja
-Typ | Muss auf **ExecutePipeline** festgelegt werden. | String | Ja
+name | Name der Aktivität „Pipeline ausführen“. | Zeichenfolge | Ja
+type | Muss auf **ExecutePipeline** festgelegt werden. | Zeichenfolge | Ja
 pipeline | Pipelineverweis auf die abhängige Pipeline, die diese Pipeline aufruft. Ein Pipelineverweisobjekt verfügt über zwei Eigenschaften: **referenceName** und **type**. Die Eigenschaft „referenceName“ gibt den Namen des Pipelineverweises an. Die Eigenschaft „type“ muss auf „PipelineReference“ festgelegt werden. | PipelineReference | Ja
-Parameter | Parameter, die an die aufgerufene Pipeline übergeben werden sollen | Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet | Nein
-waitOnCompletion | Definiert, ob die Aktivitätsausführung wartet, bis die Ausführung der abhängigen Pipeline abgeschlossen ist. | Die Standardeinstellung ist "false". | Boolean | Nein
+Parameter | Parameter, die an die aufgerufene Pipeline übergeben werden sollen | Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet | Nein 
+waitOnCompletion | Definiert, ob die Aktivitätsausführung wartet, bis die Ausführung der abhängigen Pipeline abgeschlossen ist. | Die Standardeinstellung ist "false". | Boolescher Wert | Nein 
 
 ## <a name="sample"></a>Beispiel
 In diesem Szenario gibt es zwei Pipelines:

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 95c2f4fe40590a8d809f634fb5b2c92d07421bb0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 099e3c259f0b63e4376847727eb8e185aeb37380
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Erstellen eines (klassischen) virtuellen Netzwerks mit mehreren Subnetzen
 
@@ -46,7 +46,7 @@ Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), ü
 
     |Einstellung|Wert|
     |---|---|
-    |Name|myVnet|
+    |NAME|myVnet|
     |Adressraum|10.0.0.0/16|
     |Subnetzname|Öffentlich|
     |Subnetzadressbereich|10.0.0.0/24|
@@ -163,6 +163,6 @@ Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), ü
 
 - Informationen zu allen Einstellungen für virtuelle Netzwerke und Subnetze finden Sie unter [Verwalten virtueller Netzwerke](virtual-network-manage-network.md) und [Verwalten von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md). Für unterschiedliche Anforderungen gibt es verschiedene Optionen für die Verwendung virtueller Netzwerke und Subnetze in einer Produktionsumgebung.
 - Erstellen Sie [Netzwerksicherheitsgruppen](virtual-networks-nsg.md) für Subnetze, und wenden Sie sie an, um eingehenden und ausgehenden Subnetzdatenverkehr zu filtern.
-- Erstellen Sie einen virtuellen [Windows](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer, und verbinden Sie ihn mit einem virtuellen Netzwerk.
+- Erstellen Sie einen virtuellen [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer, und verbinden Sie ihn mit einem virtuellen Netzwerk.
 - Zum Verbinden von zwei virtuellen Netzwerken im gleichen Azure-Standort erstellen Sie ein [Peering zwischen diesen virtuellen Netzwerken](create-peering-different-deployment-models.md). Sie können ein Peering zwischen einem virtuellen Netzwerk (Resource Manager) und einem (klassischen) virtuellen Netzwerk erstellen, nicht jedoch zwischen zwei (klassischen) virtuellen Netzwerken.
 - Verbinden Sie das virtuelle Netzwerk mit einem lokalen Netzwerk über ein [VPN-Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder eine [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Verbindung.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: ashish
-ms.openlocfilehash: 5b3700580f593e7590360792f2b76dee79608896
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 74c1b3298cd7b6ffd5b4a60e2fa78ed733232f92
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Verwenden von Ambari zum Optimieren von HDInsight-Clusterkonfigurationen
 
@@ -234,7 +234,7 @@ Bei der spekulativen Ausführung wird eine bestimmte Anzahl von doppelten Tasks 
 
 Die spekulative Ausführung sollte für MapReduce-Tasks mit großen Eingabemengen und langer Ausführungsdauer nicht aktiviert werden.
 
-1. Navigieren Sie zum Aktivieren der spekulativen Ausführung zur Hive-Registerkarte **Configs** (Konfigurationen), und legen Sie den Parameter `hive.mapred.reduce.tasks.speculative.execution` auf „true“ fest. Der Standardwert ist „false“.
+* Navigieren Sie zum Aktivieren der spekulativen Ausführung zur Hive-Registerkarte **Configs** (Konfigurationen), und legen Sie den Parameter `hive.mapred.reduce.tasks.speculative.execution` auf „true“ fest. Der Standardwert ist „false“.
 
     ![Hive-mapred-Reduce-Tasks – Spekulative Ausführung](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
@@ -274,7 +274,7 @@ In den folgenden Abschnitten werden zusätzliche Hive-bezogene Optimierungen bes
 
 Der Join-Standardtyp in Hive ist *shuffle join*. In Hive lesen spezielle Mapper die Eingabe und geben ein Join-Schlüssel-Wert-Paar für eine Zwischendatei aus. Hadoop sortiert diese Paare in einem so genannten Shuffle-Schritt und führt sie zusammen. Dieser Shuffle-Schritt ist kostenintensiv. Wenn Sie basierend auf Ihren Daten die richtige Join-Auswahl treffen, kann die Leistung erheblich verbessert werden.
 
-| Join-Typ | Wann | Wie | Hive-Einstellungen | Kommentare |
+| Join-Typ | Wenn | Vorgehensweise | Hive-Einstellungen | Kommentare |
 | -- | -- | -- | -- | -- |
 | Shuffle Join | <ul><li>Standardauswahl</li><li>Funktioniert immer</li></ul> | <ul><li>Liest aus einem Teil von einer der Tabellen</li><li>Buckets und Sortierungen für einen Join-Schlüssel</li><li>Sendet einen Bucket an jeden Reduce-Vorgang</li><li>Join erfolgt auf Reduce-Seite</li></ul> | Keine nennenswerte Hive-Einstellung erforderlich | Funktioniert immer |
 | Map Join | <ul><li>Eine Tabelle passt in den Arbeitsspeicher</li></ul> | <ul><li>Kleine Tabelle wird in die Arbeitsspeicher-Hashtabelle eingelesen</li><li>Stream durch einen Teil der großen Datei</li><li>Join-Vorgang für jeden Datensatz der Hashtabelle</li><li>Joins werden nur vom Mapper durchgeführt</li></ul> | `hive.auto.confvert.join=true` | Sehr schnell, aber begrenzt |
@@ -456,7 +456,7 @@ Die Nutzung des lokalen Memstore-Zuteilungspuffers wird mit der Eigenschaft `hba
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
 * [Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md)

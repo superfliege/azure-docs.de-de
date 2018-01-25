@@ -3,8 +3,8 @@ title: "Einführung in den Premium-Tarif von Azure Redis Cache | Microsoft Docs"
 description: "Hier erfahren Sie, wie Sie für Ihre Azure Redis Cache-Instanzen im Tarif \"Premium\" Redis-Persistenz Redis-Clustering und VNET-Unterstützung erstellen und verwalten."
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: sdanie
-ms.openlocfilehash: c7a70e74f8b275ed9e10118b0ae9e81309f97ba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 38a43756678a3628040b1b995966eff6dd9fb363
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introduction-to-the-azure-redis-cache-premium-tier"></a>Einführung in den Premium-Tarif von Azure Redis Cache
 Azure Redis Cache ist ein verteilter, verwalteter Cache, mit der Sie hoch skalierbare und reaktionsschnelle Anwendungen erstellen können, indem Sie äußerst schnellen Zugriff auf Daten bieten. 
@@ -38,7 +38,7 @@ Der Tarif "Premium" ermöglicht die Persistenz der Cachedaten in einem Azure Sto
 Informationen zum Konfigurieren von Persistenz finden Sie unter [Konfigurieren von Persistenz für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-persistence.md).
 
 ## <a name="redis-cluster"></a>Redis-Cluster
-Wenn Sie Caches mit einer Größe über 53 GB erstellen oder Daten über mehrere Redis-Knoten horizontal partitionieren möchten, können Sie das im Tarif "Premium" verfügbare Redis-Clustering verwenden. Jeder Knoten besteht aus einem von Azure für hohe Verfügbarkeit verwalteten Paar aus primärem Cache und Replikatcache. 
+Wenn Sie Caches mit einer Größe über 53 GB erstellen oder Daten über mehrere Redis-Knoten horizontal partitionieren möchten, können Sie das im Tarif "Premium" verfügbare Redis-Clustering verwenden. Jeder Knoten besteht aus einem von Azure für Hochverfügbarkeit verwalteten Paar aus primärem Cache und Replikatcache. 
 
 **Redis-Clustering bietet Ihnen maximale Skalierung und Durchsatz.** Der Durchsatz steigt linear, je mehr Shards (Knoten) Sie im Cluster verwenden. Beispiel: Wenn Sie einen P4-Cluster mit 10 Shards erstellen, beträgt der verfügbare Durchsatz 250.000 * 10 = 2,5 Millionen Anforderungen pro Sekunde. Ausführliche Informationen zu Größe, Durchsatz und Bandbreite von Premium-Caches finden Sie in den [häufig gestellten Fragen zu Azure Redis Cache](cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
 

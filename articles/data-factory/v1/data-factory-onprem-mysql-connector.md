@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 74ee639af5e941c098cbdd1fafd96a0e1ce1b036
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f04a3b8c7bb744e3a9d539f6d3a392bc59702758
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-onprem-mysql-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-onprem-mysql-connector.md)
 > * [Version 2 – Vorschauversion](../connector-mysql.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from MySQL using Azure Data Factory](../connector-mysql.md) (Kopieren von Daten aus MySQL mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from MySQL using Azure Data Factory](../connector-mysql.md) (Kopieren von Daten aus MySQL mit Azure Data Factory).
 
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen MySQL-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
@@ -67,12 +67,12 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit MySQL verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | Typ |Die "type"-Eigenschaft muss auf **OnPremisesMySql** |Ja |
 | server |Name des MySQL-Servers. |Ja |
 | database |Name der MySQL-Datenbank. |Ja |
-| schema |Name des Schemas in der Datenbank. |Nein |
+| schema |Name des Schemas in der Datenbank. |Nein  |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der MySQL-Datenbank. Mögliche Werte: `Basic`. |Ja |
 | username |Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der MySQL-Datenbank an. |Ja |
 | password |Geben Sie das Kennwort für das angegebene Benutzerkonto an. |Ja |
@@ -83,7 +83,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren vo
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt "typeProperties" für ein Dataset vom Typ **RelationalTable** (wozu ein MySQL-Dataset gehört) hat die folgenden Eigenschaften.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der MySQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |Nein (wenn **query** von **RelationalSource** angegeben ist) |
 
@@ -94,7 +94,7 @@ Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je 
 
 Wenn die Quelle der Kopieraktivität den Typ **RelationalSource** hat (zu dem MySQL gehört), sind im Abschnitt typeProperties die folgenden Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Nein (wenn **tableName** von **Dataset** angegeben ist) |
 
@@ -302,44 +302,44 @@ Beim Verschieben von Daten in MySQL werden die folgenden Zuordnungen zwischen My
 
 | Typ "MySQL-Datenbank" | Typ ".NET Framework" |
 | --- | --- |
-| bigint (ohne Vorzeichen) |Decimal |
+| bigint (ohne Vorzeichen) |DECIMAL |
 | bigint |Int64 |
-| Bit |Decimal |
+| Bit |DECIMAL |
 | Blob |Byte[] |
-| bool |Boolean |
-| char |String |
-| date |Datetime |
-| Datetime |Datetime |
-| Decimal |Decimal |
+| bool |Boolescher Wert |
+| char |Zeichenfolge |
+| date |DateTime |
+| Datetime |DateTime |
+| decimal |DECIMAL |
 | double precision |Double |
 | Double |Double |
-| enum |String |
-| float |Single |
+| enum |Zeichenfolge |
+| Gleitkommawert |Single |
 | int (ohne Vorzeichen) |Int64 |
 | int |Int32 |
 | integer (ohne Vorzeichen) |Int64 |
 | integer |Int32 |
 | long varbinary |Byte[] |
-| long varchar |String |
+| long varchar |Zeichenfolge |
 | longblob |Byte[] |
-| longtext |String |
+| longtext |Zeichenfolge |
 | mediumblob |Byte[] |
 | mediumint (ohne Vorzeichen) |Int64 |
 | mediumint |Int32 |
-| mediumtext |String |
-| numeric |Decimal |
+| mediumtext |Zeichenfolge |
+| numeric |DECIMAL |
 | real |Double |
-| set |String |
+| set |Zeichenfolge |
 | smallint (ohne Vorzeichen) |Int32 |
 | smallint |Int16 |
-| Text |String |
+| text |Zeichenfolge |
 | time |Zeitraum |
-| timestamp |Datetime |
+| timestamp |DateTime |
 | tinyblob |Byte[] |
 | tinyint (ohne Vorzeichen) |Int16 |
 | tinyint |Int16 |
-| tinytext |String |
-| varchar |String |
+| tinytext |Zeichenfolge |
+| varchar |Zeichenfolge |
 | year |int |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: larryfr
-ms.openlocfilehash: b05dbdcec3cfb5c78115061567bb6229623cd0ff
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b451a80934a19f8a38ab9e8ace358674827aefa0
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>Ausführen von Hive-Abfragen mit Hadoop in HDInsight mit REST
 
@@ -50,7 +50,9 @@ Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Hive-Abfragen mit Hadoo
 
     Sie empfangen eine Antwort, die in etwa dem folgenden Text entspricht:
 
-        {"status":"ok","version":"v1"}
+    ```json
+    {"status":"ok","version":"v1"}
+    ```
 
     Folgende Parameter werden in diesem Befehl verwendet:
 
@@ -65,7 +67,9 @@ Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Hive-Abfragen mit Hadoo
 
     Die Anforderung gibt in etwa folgenden Text zurück:
 
+    ```json
         {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
+    ```
 
 2. Verwenden Sie Folgendes, um eine Tabelle namens **log4jLogs**zu erstellen:
 
@@ -84,7 +88,7 @@ Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Hive-Abfragen mit Hadoo
    Diese Anweisungen führen die folgenden Aktionen aus:
    
    * **DROP TABLE**: Wenn die Tabelle bereits vorhanden ist, wird sie gelöscht.
-   * **EXTERNE TABELLE ERSTELLEN** : Erstellt eine neue "externe" Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
+   * **EXTERNE TABELLE ERSTELLEN** - Erstellt eine neue "externe" Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
 
      > [!NOTE]
      > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden. Das könnte z.B. ein automatisierter Datenupload oder ein anderer MapReduce-Vorgang sein.
@@ -105,7 +109,9 @@ Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Hive-Abfragen mit Hadoo
 
    Dieser Befehl gibt eine Auftrags-ID zurück, mit der der Status des Auftrags überprüft werden kann.
 
+    ```json
        {"id":"job_1415651640909_0026"}
+    ```
 
 3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen:
 

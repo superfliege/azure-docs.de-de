@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c0145a5b5c54f5b9e3b5731d52df99c0a80fc271
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f42ba7ed9c07a9d0bc73929db2a095248ad7d56f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – Funktionen und Systemvariablen
 > [!NOTE]
@@ -28,12 +28,12 @@ ms.lasthandoff: 11/03/2017
 Dieser Artikel enthält Informationen zu Funktionen und Variablen, die von Azure Data Factory unterstützt werden.
 
 ## <a name="data-factory-system-variables"></a>Data Factory-Systemvariablen
-| Variablenname | Beschreibung | Objektbereich | JSON-Bereich und Anwendungsfälle |
+| Variablenname | BESCHREIBUNG | Objektbereich | JSON-Bereich und Anwendungsfälle |
 | --- | --- | --- | --- |
-| WindowStart |Anfang des Zeitfensters der aktuellen Aktivitätsausführung |Aktivität |<ol><li>Geben Sie Abfragen zur Datenauswahl an. Informationen finden Sie in den Artikeln zu Connectors, auf die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) verwiesen wird).</li> |
+| WindowStart |Anfang des Zeitfensters der aktuellen Aktivitätsausführung |activity |<ol><li>Geben Sie Abfragen zur Datenauswahl an. Informationen finden Sie in den Artikeln zu Connectors, auf die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) verwiesen wird).</li> |
 | WindowEnd |Ende des Zeitfensters der aktuellen Aktivitätsausführung |Aktivität |Identisch mit „WindowStart“ |
-| SliceStart |Anfang des Zeitfensters für den zu erstellenden Datenslice |Aktivität<br/>Dataset |<ol><li>Geben Sie bei der Arbeit mit [Azure-Blob](data-factory-azure-blob-connector.md) und [Dateisystem-Datasets](data-factory-onprem-file-system-connector.md) dynamische Pfade und Dateinamen an.</li><li>Geben Sie Eingabeabhängigkeiten mit Data Factory-Funktionen in der Auflistung der Aktivitätseingaben an.</li></ol> |
-| SliceEnd |Ende des Zeitfensters für den aktuellen Datenslice |Aktivität<br/>dataset |Identisch mit „SliceStart“ |
+| SliceStart |Anfang des Zeitfensters für den zu erstellenden Datenslice |activity<br/>dataset |<ol><li>Geben Sie bei der Arbeit mit [Azure-Blob](data-factory-azure-blob-connector.md) und [Dateisystem-Datasets](data-factory-onprem-file-system-connector.md) dynamische Pfade und Dateinamen an.</li><li>Geben Sie Eingabeabhängigkeiten mit Data Factory-Funktionen in der Auflistung der Aktivitätseingaben an.</li></ol> |
+| SliceEnd |Ende des Zeitfensters für den aktuellen Datenslice |activity<br/>dataset |Identisch mit „SliceStart“ |
 
 > [!NOTE]
 > Derzeit ist es für Data Factory erforderlich, dass der in der Aktivität angegebene Zeitplan exakt mit dem Zeitplan übereinstimmt, der unter „availability“ für das Ausgabedataset angegeben ist. Daher sind „WindowStart“, „WindowEnd“, „SliceStart“ und „SliceEnd“ immer dem gleichen Zeitraum und einem einzelnen Ausgabeslice zugeordnet.
@@ -75,16 +75,16 @@ Im folgenden Beispiel wird die **sqlReaderQuery**-Eigenschaft in einer JSON-Date
 
 Informationen zu verschiedenen verfügbaren Formatierungsoptionen (beispielsweise „yy“ oder „yyyy“) finden Sie im Thema [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://msdn.microsoft.com/library/8kb3ddd4.aspx). 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funktionen
 In den folgenden Tabellen werden alle Funktionen in Azure Data Factory aufgelistet:
 
-| Kategorie | Funktion | Parameter | Beschreibung |
+| Category (Kategorie) | Funktion | Parameter | BESCHREIBUNG |
 | --- | --- | --- | --- |
-| Time |AddHours(X,Y) |X: DateTime  <br/><br/>Y: int |Fügt Y Stunden der angegebenen Uhrzeit X hinzu. <br/><br/>Beispiel: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Time |AddMinutes(X,Y) |X: DateTime  <br/><br/>Y: int |Fügt Y Minuten zu X hinzu.<br/><br/>Beispiel: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X: DateTime  |Ruft die Startzeit der Stunde ab, die von der Stundenkomponente X dargestellt wird. <br/><br/>Beispiel: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Zeit |AddHours(X,Y) |X: DateTime  <br/><br/>Y: int |Fügt Y Stunden der angegebenen Uhrzeit X hinzu. <br/><br/>Beispiel: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Zeit |AddMinutes(X,Y) |X: DateTime  <br/><br/>Y: int |Fügt Y Minuten zu X hinzu.<br/><br/>Beispiel: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Zeit |StartOfHour(X) |X: DateTime  |Ruft die Startzeit der Stunde ab, die von der Stundenkomponente X dargestellt wird. <br/><br/>Beispiel: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Datum |AddDays(X,Y) |X: DateTime <br/><br/>Y: int |Addiert Y Tage zu X. <br/><br/>Beispiel: 15.09.2013 12:00:00 Uhr + 2 Tage = 17.09.2013 12:00:00 Uhr<br/><br/>Sie können auch Tage subtrahieren, indem Sie Y als negative Zahl angeben.<br/><br/>Beispiel: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
-| Datum |AddMonths(X,Y) |X: DateTime <br/><br/>Y: int |Fügt Y Monate zu X hinzu.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Sie können auch Monate subtrahieren, indem Sie Y als negative Zahl angeben.<br/><br/>Beispiel: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
+| Datum |AddMonths(X,Y) |X: DateTime <br/><br/>Y: int |Fügt Y Monate zu X hinzu.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.<br/><br/>Sie können auch Monate subtrahieren, indem Sie Y als negative Zahl angeben.<br/><br/>Beispiel: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Datum |AddQuarters(X,Y) |X: DateTime  <br/><br/>Y: int |Fügt Y * 3 Monate zu X hinzu<br/><br/>Beispiel: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
 | Datum |AddWeeks(X,Y) |X: DateTime <br/><br/>Y: int |Addiert Y * 7 Tage zu X<br/><br/>Beispiel: 15.09.2013 12:00:00 Uhr + eine Woche = 22.09.2013 12:00:00 Uhr<br/><br/>Sie können auch Wochen subtrahieren, indem Sie Y als negative Zahl angeben.<br/><br/>Beispiel: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
 | Datum |AddYears(X,Y) |X: DateTime <br/><br/>Y: int |Fügt Y Jahre zu X hinzu.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Sie können auch Jahre subtrahieren, indem Sie Y als negative Zahl angeben.<br/><br/>Beispiel: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
@@ -95,8 +95,8 @@ In den folgenden Tabellen werden alle Funktionen in Azure Data Factory aufgelist
 | Datum |EndOfDay(X) |X: DateTime  |Ruft die Datum/Uhrzeit-Angabe ab, die das Ende des Tages (Komponente "Tag") von X darstellt.<br/><br/>Beispiel: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | Datum |EndOfMonth(X) |X: DateTime  |Ruft das Ende des Monats ab, das von der Komponente "Monat" des Parameters X dargestellt wird. <br/><br/>Beispiel: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (Datum/Uhrzeit-Angabe, die das Ende des Monats September darstellt) |
 | Datum |StartOfDay(X) |X: DateTime  |Ruft den Beginn des Tages ab, der von der Komponente "Tag" des Parameters X dargestellt wird.<br/><br/>Beispiel: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| DateTime |From(X) |X: String |Analysieren der Zeichenfolge X in einen Datum/Uhrzeit-Wert. |
-| DateTime |Ticks(X) |X: DateTime  |Ruft die Zeiteinheitseigenschaft des Parameters X ab. Eine Zeiteinheit entspricht 100 Nanosekunden. Der Wert dieser Eigenschaft stellt die Anzahl der Zeiteinheiten dar, die seit Mitternacht am 1. Januar 0001 verstrichen sind. |
+| Datetime |From(X) |X: String |Analysieren der Zeichenfolge X in einen Datum/Uhrzeit-Wert. |
+| Datetime |Ticks(X) |X: DateTime  |Ruft die Zeiteinheitseigenschaft des Parameters X ab. Eine Zeiteinheit entspricht 100 Nanosekunden. Der Wert dieser Eigenschaft stellt die Anzahl der Zeiteinheiten dar, die seit Mitternacht am 1. Januar 0001 verstrichen sind. |
 | Text |Format(X) |X: Stringvariable |Formatiert den Text (verwenden Sie `\\'` in Kombination mit dem Escapezeichen `'`)|
 
 > [!IMPORTANT]

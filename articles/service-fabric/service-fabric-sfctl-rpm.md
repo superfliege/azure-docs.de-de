@@ -9,22 +9,22 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/26/2017
+ms.date: 12/26/2017
 ms.author: ryanwi
-ms.openlocfilehash: f032af4714ad458fa6ad6fb0741f689d44f4098b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a9a565cf2c20490475d1b73b0f99fbe63e57dd3
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Ermöglicht es, Befehle an den Reparatur-Manager-Dienst abzufragen und zu senden.
 
 ## <a name="commands"></a>Befehle
-|Befehl|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 |    approve-force| Erzwingt die Genehmigung das angegebenen Reparaturtasks.|
 |    delete       | Löscht einen abgeschlossenen Reparaturtask.|
@@ -36,13 +36,13 @@ Löscht einen abgeschlossenen Reparaturtask.
 Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgesehen, direkt aus Ihrem Code verwendet zu werden. 
 
 ### <a name="arguments"></a>Argumente
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |    --task-id [erforderlich]| Die ID des abgeschlossenen Reparaturtasks, der gelöscht werden soll.|
 |    --version           | Die aktuelle Versionsnummer des Reparaturtasks. Ist der Wert ungleich null, ist die Anforderung nur dann erfolgreich, wenn dieser Wert mit der tatsächlichen aktuellen Version des Reparaturtasks übereinstimmt. Ist der Wert gleich null, wird keine Versionsüberprüfung ausgeführt.|
 
 ### <a name="global-arguments"></a>Globale Argumente
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |    --debug             | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 |    --help -h           | Zeigt diese Hilfemeldung an und beendet.|
@@ -57,14 +57,14 @@ Ruft eine Liste der Reparaturtasks ab, die dem angegebenen Filter entsprechen.
 Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgesehen, direkt aus Ihrem Code verwendet zu werden. 
 
 ### <a name="arguments"></a>Argumente
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |    --executor-filter| Der Name des Reparaturexecutors, dessen beanspruchte Tasks in der Liste enthalten sein sollen.|
 |    --state-filter   | Eine bitweise OR-Operation für die folgenden Werte, die angibt, welche Taskstatus in der Ergebnisliste enthalten sein sollen. – 1: Erstellt – 2: Beansprucht – 4: Wird vorbereitet – 8: Genehmigt – 16: Wird ausgeführt – 32: Wird wiederhergestellt – 64: Abgeschlossen.|
 |    --task-id-filter | Das Reparaturtask-ID-Präfix, das abgeglichen werden soll.|
 
 ### <a name="global-arguments"></a>Globale Argumente
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |    --debug          | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 |    --help -h        | Zeigt diese Hilfemeldung an und beendet.|

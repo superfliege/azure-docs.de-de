@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/06/2017
+ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 5345c0fa6212127e9821adccc8cb4c339ce7ae28
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: b430f5932bcd54d5e2ab787fb6c4491b48dbc416
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Erstellen einer Data Factory und Pipeline mit dem .NET SDK
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Version 2 – Vorschauversion](quickstart-create-data-factory-dot-net.md)
 
 Diese Schnellstartanleitung beschreibt, wie Sie das .NET SDK verwenden, um eine Azure Data Factory zu erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in einem Azure-Blobspeicher. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie im Tutorial [Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory](transform-data-using-spark.md). 
@@ -117,7 +117,7 @@ Erstellen Sie mithilfe von Visual Studio 2013/2015/2017 eine C# .NET-Konsolenanw
 2. Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**.
 3. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Visual C#** -> **Konsolen-App (.NET Framework)** aus. .NET-Version 4.5.2 oder höher ist erforderlich.
 4. Geben Sie **ADFv2QuickStart** als Namen ein.
-5. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+5. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 ## <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen
 
@@ -303,7 +303,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 ## <a name="create-a-pipeline-run"></a>Erstellen einer Pipelineausführung
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine **Pipelineausführung auslöst**.
+Fügen Sie der **Main**-Methode den folgenden Code hinzu, der **eine Pipelineausführung auslöst**.
 
 Dieser Code legt auch die in der Pipeline angegeben Parameter **inputPath** und **outputPath** auf die tatsächlichen Werte der Quell- und Senkenblobpfade fest.
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/13/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 4dfc0d2f334404e4984f677a4b2966fc958ca98d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5c96f33b8f678155dc4b7a84718e5eadc541f441
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 
@@ -36,7 +36,7 @@ Dieses Thema:
 - Setzt voraus, dass Sie bereits über eine [Public Key-Infrastruktur (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) verfügen und [AD FS](connect/active-directory-aadconnectfed-whatis.md) konfiguriert haben.    
 
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Damit Sie eine zertifikatbasierte Authentifizierung konfigurieren können, muss Folgendes zutreffen:  
 

@@ -3,7 +3,7 @@ title: Fehlerbehandlung bei einem Objekt, das nicht mit Azure AD synchronisiert 
 description: 'Problembehandlung: Warum wird ein Objekt nicht mit Azure AD synchronisiert?'
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 585b49addee7fe8ded2a047939f4b5412ba4163b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7176ebd0515008147bd3797dcb760f35e2d85d45
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Problembehandlung: Ein Objekt wird nicht mit Azure AD synchronisiert
 
@@ -40,7 +40,7 @@ Die obere Hälfte zeigt alle Ausführungen in chronologischer Reihenfolge. Stand
 
 Die Spalte **Status** zeigt die wichtigste Information und das schwerwiegendste Problem einer Ausführung an. Hier folgt eine kurze Zusammenfassung der häufigsten Status, in der Reihenfolge ihrer Untersuchungspriorität (bei „*“ gibt es mehrere mögliche Fehlerzeichenfolgen).
 
-| Status | Kommentar |
+| Status | Comment |
 | --- | --- |
 | stopped-* |Die Ausführung konnte nicht abgeschlossen werden. Beispielsweise, wenn das Remotesystem ausgefallen ist und nicht kontaktiert werden kann. |
 | stopped-error-limit |Es gibt mehr als 5.000 Fehler. Die Ausführung wurde aufgrund der großen Anzahl von Fehlern automatisch beendet. |

@@ -3,7 +3,7 @@ title: "Schritt-für-Schritt-Anleitung für den generischen SQL-Connector | Micr
 description: "In diesem Artikel finden Sie eine schrittweise Anleitung für die Verwendung eines einfachen HR-Systems mit dem generischen SQL-Connector."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 28c1cc60-24fd-4d0d-a36d-b4aba6de86e7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 311ef784497310b5605e25daf13102e3ff4bb08c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 91eb50a06bbf2e6c5510c42bd1d3ae961fd0bddd
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="generic-sql-connector-step-by-step"></a>Schrittweise Anleitung für den generischen SQL-Connector
 Dieses Thema ist eine Schritt-für-Schritt-Anleitung. Damit erstellen Sie eine einfache HR-Beispieldatenbank und verwenden sie, um einige Benutzer und ihre Gruppenmitgliedschaft zu importieren.

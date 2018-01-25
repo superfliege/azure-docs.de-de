@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: bradsev
-ms.openlocfilehash: bbf969927e96053df055ac6e347bb8fb746054c8
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: fed2e9af3e9765ce5a2486fe9468d3ca690a0d5d
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Verschieben von Daten von einer lokalen SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory
 In diesem Thema wird gezeigt, wie Sie mithilfe von Azure Data Factory (ADF) Daten aus einer lokalen SQL Server-Datenbank über Azure Blob Storage in eine SQL Azure-Datenbank verschieben.
@@ -67,7 +67,7 @@ Wir verwenden das [NYC Taxi-Dataset](http://chriswhong.com/open-data/foil_nyc_ta
 Sie können entweder das hier beschriebene Verfahren auf einen Satz Ihrer eigenen Daten anpassen oder die Schritte wie beschrieben unter Verwendung des NYC Taxi-Datasets durchführen. Um das NYC Taxi-Dataset in Ihre lokale SQL Server-Datenbank hochzuladen, befolgen Sie das unter [Massenimport von Daten in eine SQL Server-Datenbank](sql-walkthrough.md#dbload) beschriebene Verfahren. Diese Anleitungen gelten für eine SQL Server-Instanz auf einem virtuellen Azure-Computer, aber das Verfahren zum Hochladen auf die lokale SQL Server-Instanz ist identisch.
 
 ## <a name="create-adf"></a> Erstellen einer Azure Data Factory
-Die Schritte zum Erstellen einer neuen Azure Data Factory und einer Ressourcengruppe im [Azure-Portal](https://portal.azure.com/) finden Sie unter [Erstellen einer Data Factory](../../data-factory/v1/data-factory-build-your-first-pipeline-using-editor.md#create-data-factory). Nennen Sie die neue ADF-Instanz *adfdsp* und die erstellte Ressourcengruppe *adfdsprg*.
+Die Schritte zum Erstellen einer neuen Azure Data Factory und einer Ressourcengruppe im [Azure-Portal](https://portal.azure.com/) finden Sie unter [Erstellen einer Data Factory](../../data-factory/v1/data-factory-build-your-first-pipeline-using-editor.md#create-a-data-factory). Nennen Sie die neue ADF-Instanz *adfdsp* und die erstellte Ressourcengruppe *adfdsprg*.
 
 ## <a name="install-and-configure-up-the-data-management-gateway"></a>Installieren und Konfigurieren das Datenverwaltungsgateways
 Damit Ihre Pipelines in einer Azure Data Factory mit einer lokalen SQL Server-Instanz zusammenarbeiten können, müssen Sie diesen der Data Factory als verknüpften Dienst hinzufügen. Führen Sie zum Erstellen eines verknüpften Diensts für die lokale SQL Server-Instanz die folgenden Schritte aus:

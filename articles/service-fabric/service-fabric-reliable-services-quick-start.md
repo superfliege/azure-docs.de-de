@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: f67b69e7ad1f7588280de82669040bad5ec6172b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 101ea717816fa2eb9fa9ae25cef21df67cf6ef9c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
 > [!div class="op_single_selector"]
@@ -188,7 +188,7 @@ Reliable Collections können mit gewissen Einschränkungen beliebige .NET-Typen�
 Reliable State Manager verwaltet Reliable Collections für Sie. Sie können über Reliable State Manager jederzeit und von jedem Ort in Ihrem Dienst aus anhand des Namens eine zuverlässige Auflistung anfordern. Der Reliable State Manager stellt sicher, dass Sie einen Verweis zurückerhalten. Es ist nicht ratsam, Verweise auf Reliable Collection-Instanzen in Klassenmembervariablen oder -eigenschaften zu speichern. Achten Sie besonders darauf sicherzustellen, dass der Verweis während des Dienstlebenszyklus jederzeit auf eine Instanz festgelegt ist. Der Reliable State Manager übernimmt diesen Schritt für Sie. Er ist für wiederholte Besuche optimiert.
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transaktionale und asynchrone Vorgänge
-```C#
+```csharp
 using (ITransaction tx = this.StateManager.CreateTransaction())
 {
     var result = await myDictionary.TryGetValueAsync(tx, "Counter-1");

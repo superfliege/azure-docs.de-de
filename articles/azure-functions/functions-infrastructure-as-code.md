@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: e6b3deb9353ba07d693d71822d37a1761dd70d67
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 6f31ba7b43c70f52bdd67d27512a322ec6258608
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -197,7 +197,7 @@ Nachdem Sie eine Skalierungsoption ausgewählt haben, können Sie eine Funktions
 Eine Funktions-App verfügt über viele untergeordnete Ressourcen, die Sie in Ihrer Bereitstellung verwenden können. Hierzu zählen beispielsweise App-Einstellungen und Quellcodeverwaltungsoptionen. Sie können die untergeordnete Ressource **sourcecontrols** auch entfernen und stattdessen eine andere [Bereitstellungsoption](functions-continuous-deployment.md) verwenden.
 
 > [!IMPORTANT]
-> Um Ihre Anwendung erfolgreich mithilfe von Azure Resource Manager bereitzustellen, müssen Sie mit der Bereitstellung von Ressourcen in Azure vertraut sein. Im folgenden Beispiel werden mithilfe von **siteConfig** Konfigurationen auf oberster Ebene angewendet. Diese Konfigurationen müssen auf der obersten Ebene festgelegt werden, da sie Informationen für das Laufzeit- und Bereitstellungsmodul von Functions bereitstellen. Informationen auf oberster Ebene werden benötigt, bevor die untergeordnete Ressource **sourcecontrols/web** angewendet wird. Die Einstellungen könnten zwar auch in der untergeordneten Ressource **config/appSettings** angewendet werden, in bestimmten Fällen müssen Ihre Funktions-App und die Funktionen jedoch bereitgestellt werden, *bevor* **config/appSettings** angewendet wird. Wenn Sie z.B. Funktionen mit [Logic Apps](../logic-apps/index.md) verwenden, handelt es sich bei Ihren Funktionen um eine Abhängigkeit einer anderen Ressource.
+> Um Ihre Anwendung erfolgreich mithilfe von Azure Resource Manager bereitzustellen, müssen Sie mit der Bereitstellung von Ressourcen in Azure vertraut sein. Im folgenden Beispiel werden mithilfe von **siteConfig** Konfigurationen auf oberster Ebene angewendet. Diese Konfigurationen müssen auf der obersten Ebene festgelegt werden, da sie Informationen für die Laufzeit- und Azure CLI 2.0 Preview von Functions bereitstellen. Informationen auf oberster Ebene werden benötigt, bevor die untergeordnete Ressource **sourcecontrols/web** angewendet wird. Die Einstellungen könnten zwar auch in der untergeordneten Ressource **config/appSettings** angewendet werden, in bestimmten Fällen müssen Ihre Funktions-App und die Funktionen jedoch bereitgestellt werden, *bevor* **config/appSettings** angewendet wird. Wenn Sie z.B. Funktionen mit [Logic Apps](../logic-apps/index.yml) verwenden, handelt es sich bei Ihren Funktionen um eine Abhängigkeit einer anderen Ressource.
 
 ```json
 {
@@ -252,15 +252,15 @@ Eine Funktions-App verfügt über viele untergeordnete Ressourcen, die Sie in Ih
 }
 ```
 > [!TIP]
-> In dieser Vorlage wird der App-Einstellungswert [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) verwendet. Dieser Wert legt das Basisverzeichnis fest, in dem das Modul zum Bereitstellen von Funktionen (Kudu) nach bereitstellbarem Code sucht. In unserem Repository befinden sich die Funktionen in einem Unterordner des Ordners **src**. Daher legen wir den App-Einstellungswert im vorherigen Beispiel auf `src` fest. Falls sich Ihre Funktionen im Stammverzeichnis des Repositorys befinden oder Sie Ihre Bereitstellung nicht über die Quellcodeverwaltung durchführen, können Sie diesen App-Einstellungswert entfernen.
+> In dieser Vorlage wird der App-Einstellungswert [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) verwendet. Dieser Wert legt das Basisverzeichnis fest, in dem die Bereitstellungs-Engine von Functions (Kudu) nach bereitstellbarem Code sucht. In unserem Repository befinden sich die Funktionen in einem Unterordner des Ordners **src**. Daher legen wir den App-Einstellungswert im vorherigen Beispiel auf `src` fest. Falls sich Ihre Funktionen im Stammverzeichnis des Repositorys befinden oder Sie Ihre Bereitstellung nicht über die Quellcodeverwaltung durchführen, können Sie diesen App-Einstellungswert entfernen.
 
 ## <a name="deploy-your-template"></a>Bereitstellen der Vorlage
 
 Sie können Ihre Vorlage mit einer der folgenden Methoden bereitstellen:
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Schaltfläche zum Bereitstellen in Azure
@@ -283,7 +283,7 @@ Hier ist ein Beispiel unter Verwendung von HTML:
 
 Machen Sie sich näher mit dem Entwickeln und Konfigurieren von Azure Functions vertraut.
 
-* [Entwicklerreferenz zu Azure Functions](functions-reference.md)
+* [Azure Functions developer reference (Azure Functions-Entwicklerreferenz) (Azure Functions-Entwicklerreferenz)](functions-reference.md)
 * [Konfigurieren von Azure-Funktions-App-Einstellungen](functions-how-to-use-azure-function-app-settings.md)
 * [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)
 

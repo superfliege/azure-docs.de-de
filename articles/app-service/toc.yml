@@ -27,10 +27,12 @@
       href: app-service-web-get-started-python.md
     - name: Erstellen einer statischen HTML-Website
       href: app-service-web-get-started-html.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: App mit Datenbank'
       items:
+        - name: .NET Core mit SQL-Datenbank
+          href: app-service-web-tutorial-dotnetcore-sqldb.md
         - name: .NET mit SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP mit MySQL
@@ -69,7 +71,7 @@
       href: web-sites-traffic-manager.md
     - name: Lokaler Cache
       href: app-service-local-cache-overview.md
-    - name: Diagnose
+    - name: Diagnostics
       href: app-service-diagnostics.md
 - name: Anleitungen
   items:
@@ -167,7 +169,7 @@
           href: web-sites-create-web-jobs.md
         - name: Entwickeln von Webaufträgen mit VS
           href: websites-dotnet-deploy-webjobs.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/appservice
@@ -175,7 +177,7 @@
       href: /powershell
     - name: REST-API
       href: /rest/api/appservice/
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

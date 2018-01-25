@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2017
 ms.author: dobett
-ms.openlocfilehash: 47f8949139c48ffa79f5530552b0a2e27b0f9ee0
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: dc983549aea53ed29859205102d6308a3367bec7
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 Den Namen der IoT Hub-Instanz, die Ihre Endpunkte hostet, finden Sie im Portal auf dem Blatt **Übersicht**. Standardmäßig sieht der DNS-Name einer IoT Hub-Instanz wie folgt aus: `{your iot hub name}.azure-devices.net`.
 
-Mithilfe von Azure DNS können Sie einen benutzerdefinierten DNS-Namen für Ihre IoT Hub-Instanz erstellen. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](../dns/dns-custom-domain.md#azure-iot).
+Mithilfe von Azure DNS können Sie einen benutzerdefinierten DNS-Namen für Ihre IoT Hub-Instanz erstellen. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](../dns/dns-custom-domain.md).
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Liste der integrierten IoT Hub-Endpunkte
 

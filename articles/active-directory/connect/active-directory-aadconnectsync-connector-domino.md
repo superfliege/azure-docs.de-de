@@ -3,7 +3,7 @@ title: Lotus Domino-Connector | Microsoft Docs
 description: "Dieser Artikel beschreibt die Konfiguration des Lotus Domino-Connectors von Microsoft."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: e07fd469-d862-470f-a3c6-3ed2a8d745bf
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/119/2017
 ms.author: barclayn
-ms.openlocfilehash: 80151134821c6106382c58bf0ec68ea0f6d4646a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c412be1c54e0378166791c61469c951bca3a583
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Technische Referenz für den Lotus Domino-Connector
 Dieser Artikel beschreibt den Lotus Domino-Connector. Der Artikel bezieht sich auf folgende Produkte:
@@ -37,7 +37,7 @@ Im Anschluss finden Sie einen allgemeinen Überblick über die von der aktuellen
 | Feature | Support |
 | --- | --- |
 | Verbundene Datenquelle |Server:  <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>Client:<li>Lotus Domino 8.5.x</li><li>Lotus Notes 9.x</li> |
-| Szenarios |<li>Objektlebenszyklusverwaltung</li><li>Gruppenverwaltung</li><li>Kennwortverwaltung</li> |
+| Szenarien |<li>Objektlebenszyklusverwaltung</li><li>Gruppenverwaltung</li><li>Kennwortverwaltung</li> |
 | Vorgänge |<li>Vollständiger Import und Deltaimport</li><li>Export</li><li>Kennwort auf HTTP-Kennwort festlegen und ändern</li> |
 | Schema |<li>Person (Roamingbenutzer, Kontakt (Person ohne Zertifikat))</li><li>Group</li><li>Ressource (Ressource, Raum, Onlinebesprechung)</li><li>Mail-In-Datenbank</li><li>Dynamische Ermittlung von Attributen für unterstützte Objekte</li><li>Unterstützung von bis zu 250 benutzerdefinierten Zertifizierern mit einer Organisation und Organisationseinheiten (OU)</li> |
 
@@ -83,7 +83,7 @@ Vorgänge werden entweder direkt oder aber über den AdminP-Prozess an das Domin
 | Person |– |Direkt |Direkt |
 | Group |Direkt |Direkt |Direkt |
 | Mail-In-Datenbank |Direkt |Direkt |Direkt |
-| Ressource |– |N/V |– |
+| Ressource |N/V |N/V |N/V |
 
 Beim Erstellen einer Ressource wird ein Notes-Dokument erstellt. Analog dazu wird beim Löschen einer Ressource auch das Notes-Dokument gelöscht.
 
@@ -155,7 +155,7 @@ Seit dem Update vom März 2017 beinhaltet der Bildschirm mit den globalen Parame
 #### <a name="import-settings-method"></a>Importeinstellungen, Methode
 Für **Vollständigen Import durchführen nach** stehen folgende Optionen zur Verfügung:
 
-* Suche
+* Suchen,
 * Sicht (empfohlen)
 
 **Suche** nutzt die Indizierung in Domino, die Indizes werden jedoch häufig nicht in Echtzeit aktualisiert, und die vom Server zurückgegebenen Daten sind nicht immer korrekt. Für Systeme mit vielen Änderungen eignet sich diese Option in der Regel nicht gut, und in bestimmten Fällen führt sie sogar zu ungewollten Löschvorgängen. **Suche** ist allerdings schneller als **Sicht**.
@@ -285,7 +285,7 @@ Das Personenobjekt stellt Benutzer in der Organisation und in Organisationseinhe
   2. Roamingbenutzer (ein normaler Benutzer mit allen Roamingdatenbankdateien)
   3. Kontakte (Benutzer ohne ID-Datei)
 
-Mit Ausnahme von Kontakten können Personen weiter in US-Benutzer und internationale Benutzer unterteilt werden (gemäß der Definition durch den Wert der Eigenschaft „\_MMS\_IDRegType“). Diese Personen greifen mithilfe des Notes-Clients auf Lotus Domino-Server zu, besitzen eine Notes-ID und verfügen über ein Personendokument. Bei Verwendung von Notes Mail besitzen sie außerdem eine Maildatei. Zur Aktivierung muss der Benutzer registriert werden. Weitere Informationen finden Sie unter:
+Mit Ausnahme von Kontakten können Personen weiter in US-Benutzer und internationale Benutzer unterteilt werden (gemäß der Definition durch den Wert der Eigenschaft „\_MMS\_IDRegType“). Diese Personen greifen mithilfe des Notes-Clients auf Lotus Domino-Server zu, besitzen eine Notes-ID und verfügen über ein Personendokument. Bei Verwendung von Notes Mail besitzen sie außerdem eine Maildatei. Zur Aktivierung muss der Benutzer registriert werden. Weitere Informationen finden Sie unter 
 
 * [Einrichten von Notes-Benutzern](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_SETTING_UP_NOTES_USERS.html)
 * [Benutzerregistrierung](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_REGISTERING_USERS.html)
@@ -358,7 +358,7 @@ Der Lotus Domino-Connector unterstützt folgende Vorgänge für das Internetken
 * Kennwort festlegen: Legt in Domino ein neues HTTP-/Internetkennwort für den Benutzer fest. Das Konto wird außerdem standardmäßig entsperrt. Das Entsperr-Flag wird über die WMI-Schnittstelle des Synchronisierungsmoduls verfügbar gemacht.
 * Kennwort ändern: In diesem Szenario möchte ein Benutzer unter Umständen sein Kennwort ändern, oder er wird nach einer bestimmten Zeit zu einer Kennwortänderung aufgefordert. Bei diesem Vorgang muss sowohl das alte als auch das neue Kennwort angegeben werden. Nach erfolgter Änderung wird das neue Kennwort in Lotus Domino aktualisiert.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter 
 
 * [Verwenden des Internetsperrfeatures](http://www.ibm.com/developerworks/lotus/library/domino8-lockout/)
 * [Verwalten von Internetkennwörtern](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_NOTES_AND_INTERNET_PASSWORD_SYNCHRONIZATION_7570_OVER.html)
@@ -371,7 +371,7 @@ Bei der Bereitstellung von Personenobjekten für Ihr Lotus Domino-Verzeichnis b
 
 In der folgenden Tabelle werden diese Eigenschaften aufgeführt und beschrieben:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | \_MMS_AltFullName |Der alternative vollständige Name des Benutzers. |
 | \_MMS_AltFullNameLanguage |Die Sprache für die Angabe des alternativen vollständigen Namens des Benutzers. |
@@ -414,9 +414,9 @@ In diesem Abschnitt sind die Attribute aufgeführt, die für die einzelnen unter
 | --- | --- |
 | Group |<li>ListName</li> |
 | Mail-In-Datenbank |<li>FullName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
-| Person |<li>Nachname</li><li>MailFile</li><li>ShortName</li><li>\_MMS_Password</li><li>\_MMS_IDStoreType</li><li>\_MMS_Certifier</li><li>\_MMS_IDRegType</li><li>\_MMS_UseAdminP</li> |
+| Person |<li>LastName</li><li>MailFile</li><li>ShortName</li><li>\_MMS_Password</li><li>\_MMS_IDStoreType</li><li>\_MMS_Certifier</li><li>\_MMS_IDRegType</li><li>\_MMS_UseAdminP</li> |
 | Kontakt (Person ohne Zertifizierer) |<li>\_MMS_IDRegType</li> |
-| Ressource |<li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>ResourceCapacity</li><li>Website</li><li>displayName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
+| Ressource |<li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>ResourceCapacity</li><li>Website</li><li>DisplayName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
 
 ## <a name="common-issues-and-questions"></a>Allgemeine Probleme und Fragen
 ### <a name="schema-detection-does-not-work"></a>Die Schema-Erkennung funktioniert nicht.

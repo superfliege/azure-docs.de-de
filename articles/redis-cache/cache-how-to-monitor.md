@@ -3,8 +3,8 @@ title: "Überwachen von Azure Redis Cache | Microsoft Docs"
 description: "Erfahren Sie, wie Sie die Stabilität und Integrität Ihrer Azure Redis Cache-Instanzen überwachen."
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 7e70b153-9c87-4290-85af-2228f31df118
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.author: sdanie
-ms.openlocfilehash: 8996f5ce03e39557d9cc9c3de1ec214f5cd664b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 3a68435866e6fb5bf0210144e53918c35b416449
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Überwachen von Azure Redis Cache
 Azure Redis Cache bietet über [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) verschiedene Optionen zum Überwachen Ihrer Cache-Instanzen. Sie können Metriken anzeigen, Metrikdiagramme an das Startmenü anheften, Daten- und Zeitbereiche für Überwachungsdiagramme anpassen, Metriken aus Diagrammen hinzufügen und entfernen sowie Warnungen festlegen, die ausgelöst werden, wenn bestimmte Bedingungen erfüllt sind. Diese Tools ermöglichen es Ihnen, die Integrität Ihrer Azure Redis Cache-Instanzen zu überwachen und unterstützen Sie beim Verwalten Ihrer Cachinganwendungen.
@@ -95,7 +95,7 @@ Jede Metrik umfasst zwei Versionen. Eine Metrik misst die Leistung für den gesa
 > 
 > 
 
-| Metrik | Beschreibung |
+| Metrik | BESCHREIBUNG |
 | --- | --- |
 | Cachetreffer |Die Anzahl der erfolgreichen Schlüsselsuchen während des angegebenen Berichtsintervalls. Dieser Wert ist `keyspace_hits` aus dem Redis-Befehl [INFO](http://redis.io/commands/info) zugeordnet. |
 | Cachefehler |Die Anzahl der fehlerhaften Schlüsselsuchen während des angegebenen Berichtsintervalls. Dieser Wert ist `keyspace_misses` aus dem Redis-Befehl INFO zugeordnet. Cachefehler bedeuten nicht unbedingt, dass ein Problem mit dem Cache vorhanden ist. Bei Verwendung des cachefremden Programmierschemas sucht eine Anwendung zuerst im Cache nach einem Element. Wenn das gesuchte Element nicht vorhanden ist (Cachefehler), wird es aus der Datenbank abgerufen und dem Cache für das nächste Mal hinzugefügt. Cachefehler sind ein normales Verhalten für das cachefremde Programmierschema. Wenn die Anzahl der Cachefehler höher ist als erwartet, untersuchen Sie die Anwendungslogik, die den Cache auffüllt und aus dem Cache liest. Wenn Elemente aufgrund von ungenügendem Arbeitsspeicher aus dem Cache entfernt werden, können Cachefehler auftreten. Zur Überwachung der Arbeitsspeicherauslastung eignen sich jedoch die Metriken `Used Memory` oder `Evicted Keys` besser. |
@@ -114,7 +114,7 @@ Jede Metrik umfasst zwei Versionen. Eine Metrik misst die Leistung für den gesa
 | Cache-Schreibvorgänge |Die Menge an Daten in Megabyte pro Sekunde (MB/s), die während des angegebenen Berichtsintervalls in den Cache geschrieben wurden. Dieser Wert wird von den Netzwerkschnittstellenkarten für die virtuelle Maschine abgeleitet, die den Cache hostet, und ist nicht Redis-spezifisch. Dieser Wert entspricht der Netzwerkbandbreite der vom Client an den Cache gesendeten Daten. |
 
 <a name="operations-and-alerts"></a>
-## <a name="alerts"></a>Warnungen
+## <a name="alerts"></a>Alerts
 Sie können die Konfiguration so durchführen, dass Warnungen basierend auf Metriken und Aktivitätsprotokollen empfangen werden. Mit Azure Monitor können Sie eine Warnung so konfigurieren, dass Folgendes erfolgt, wenn sie ausgelöst wird:
 
 * Senden einer E-Mail-Benachrichtigung

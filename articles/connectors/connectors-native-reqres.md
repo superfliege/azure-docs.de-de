@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: e45b07d709927af64cfba28dfb0d8ee9cb8893b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58210db585befd7ce915d4579d4d0303eb15bff3
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>Erste Schritte mit den Anforderungs- und Antwortkomponenten
 Mit den Anforderungs- und Antwortkomponenten in einer Logik-App können Sie in Echtzeit auf Ereignisse reagieren.
 
-Dazu zählen z. B.:
+Sie haben beispielsweise folgende Möglichkeiten:
 
 * Reagieren Sie auf eine HTTP-Anforderung mit Daten aus einer lokalen Datenbank über eine Logik-App.
 * Lösen Sie eine Logik-App über ein externes Webhook-Ereignis aus.
 * Rufen Sie innerhalb einer Logik-App eine andere Logik-App mit einer Anforderungs- und Antwortaktion auf.
 
-Wenn Sie Anforderungs- und Antwortaktionen in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/logic-apps-create-a-logic-app.md).
+Wenn Sie Anforderungs- und Antwortaktionen in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-http-request-trigger"></a>Verwenden des HTTP-Anforderungstriggers
 Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](connectors-overview.md).
@@ -67,14 +67,14 @@ Gehen Sie zum Hinzufügen einer HTTP-Antwortaktion wie folgt vor:
 ## <a name="request-trigger"></a>Anforderungstrigger
 Hier finden Sie Details zu dem Trigger, den dieser Connector unterstützt. Ein einzelner Anforderungstrigger steht zur Verfügung.
 
-| Trigger | Beschreibung |
+| Trigger | BESCHREIBUNG |
 | --- | --- |
-| Request |Wird ausgeführt, wenn eine HTTP-Anforderung empfangen wird. |
+| Anforderung |Wird ausgeführt, wenn eine HTTP-Anforderung empfangen wird. |
 
 ## <a name="response-action"></a>Antwortaktion
 Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Eine einzelne Antwortaktion steht zur Verfügung, und sie muss mit einem Anforderungstrigger kombiniert werden.
 
-| Aktion | Beschreibung |
+| anzuzeigen. | BESCHREIBUNG |
 | --- | --- |
 | response |Gibt eine Antwort an die korrelierte HTTP-Anforderung zurück. |
 
@@ -84,7 +84,7 @@ Die folgenden Tabellen beschreiben die Eingabefelder für die Trigger und Aktion
 #### <a name="request-trigger"></a>Anforderungstrigger
 Das Folgende ist ein Eingabefeld für den Trigger aus einer eingehenden HTTP-Anforderung.
 
-| Anzeigename | Eigenschaftenname | Beschreibung |
+| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
 | JSON-Schema |schema |Das JSON-Schema für den HTTP-Anforderungstext. |
 
@@ -94,20 +94,20 @@ Das Folgende ist ein Eingabefeld für den Trigger aus einer eingehenden HTTP-Anf
 
 Im Folgenden werden die Ausgabedetails für die Anforderung angegeben.
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| headers |Objekt |Anforderungsheader |
-| Body |Objekt |Anforderungsobjekt |
+| headers |object |Anforderungsheader |
+| Body |object |Anforderungsobjekt |
 
 #### <a name="response-action"></a>Antwortaktion
 Im Folgenden werden die Eingabefelder für die HTTP-Antwortaktion angegeben. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-| Anzeigename | Eigenschaftenname | Beschreibung |
+| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
 | Statuscode* |statusCode |Der HTTP-Statuscode. |
-| Headers |Headers |Ein JSON-Objekt für alle einzubeziehenden Antwortheader. |
-| Body |Body |Der Antworttext. |
+| Header |headers |Ein JSON-Objekt für alle einzubeziehenden Antwortheader. |
+| Body |body |Der Antworttext. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 

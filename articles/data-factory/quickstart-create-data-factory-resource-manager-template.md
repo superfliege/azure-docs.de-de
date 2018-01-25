@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/28/2017
+ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 944310b802dafa15612fe92f4115a2e819436a6a
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 5008d8f0ce36f09ff26bf10fadbf14da6b474ea9
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen einer Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](v1/data-factory-build-your-first-pipeline-using-arm.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Version 2 – Vorschauversion](quickstart-create-data-factory-resource-manager-template.md) 
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage eine Azure Data Factory erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in einem Azure-Blobspeicher. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie im Tutorial [Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory](transform-data-using-spark.md). 
@@ -59,11 +59,12 @@ Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **
             "type": "string",
             "allowedValues": [
                 "East US",
-                "East US 2"
+                "East US 2",
+                "West Europe"
             ],
             "defaultValue": "East US",
             "metadata": {
-                "description": "Location of the data factory. Currently, only East US and East US 2 are supported. "
+                "description": "Location of the data factory. Currently, only East US, East US 2, and West Europe are supported. "
             }
         },
         "storageAccountName": {

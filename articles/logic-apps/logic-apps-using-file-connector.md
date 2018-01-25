@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: LADocs; deli
-ms.openlocfilehash: 7738b3346af49cb8aa811eb17003d1b72b1bbe46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32ab5be41a8dee3b1f2c0b1bde076c0d1a844bdd
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>Herstellen einer Verbindung mit lokalen Dateisystemen in Logik-Apps mit dem Dateisystem-Connector
 
@@ -30,7 +30,7 @@ Sie können zum Verwalten von Daten und für den sicheren Zugriff auf lokale Res
 
 * Installieren Sie das neueste lokale Datengateway, Version 1.15.6150.1 oder höher, und richten Sie es ein. Anweisungen finden Sie unter [Herstellen einer Verbindung mit Datenquellen in der lokalen Umgebung](http://aka.ms/logicapps-gateway). Sie müssen das Gateway auf einem lokalen Computer installieren, bevor Sie mit diesen Schritten fortfahren können.
 
-* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/logic-apps-create-a-logic-app.md)
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 ## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>Hinzufügen eines Triggers und von Aktionen für die Verbindung mit dem Dateisystem
 
@@ -48,7 +48,7 @@ Sie können zum Verwalten von Daten und für den sicheren Zugriff auf lokale Res
 
    ![Konfigurieren der Verbindung](media/logic-apps-using-file-connector/create-file.png)
 
-   | Einstellung | Beschreibung |
+   | Einstellung | BESCHREIBUNG |
    | ------- | ----------- |
    | **Stammordner** | Geben Sie den Stammordner Ihres Dateisystems an. Sie können einen lokalen Ordner auf dem Computer angeben, auf dem das lokale Datengateway installiert ist, oder eine Netzwerkfreigabe, auf die der Computer Zugriff hat. <p>**Tipp:** Der Stammordner ist der übergeordnete Hauptordner, der bei allen dateibezogenen Aktionen für relative Pfade verwendet wird. | 
    | **Authentifizierungstyp** | Der Typ der Authentifizierung, die von Ihrem Dateisystem verwendet wird | 

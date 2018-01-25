@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 3e9229d94e96aad7b769d0e55d208d856e3b80bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0487dbedddee684c75420bd66effe2c963a18624
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>Erste Schritte mit der Aktion „HTTP + Swagger“
 
 Sie können einen erstklassigen Connector für beliebige REST-Endpunkte über ein [Swagger-Dokument](https://swagger.io) erstellen, indem Sie die Aktion „HTTP + Swagger“ in Ihrem Logik-App-Workflow verwenden. Sie können Logik-Apps auch so erweitern, dass sie beliebige REST-Endpunkte mit erstklassigen Logik-App-Designer-Funktionen aufruft.
 
-Informationen zum Erstellen von Logik-Apps mit Connectors finden Sie unter [Erstellen einer neuen Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
+Informationen zum Erstellen von Logik-Apps mit Connectors finden Sie unter [Erstellen einer neuen Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>Verwenden von „HTTP + Swagger“ als Trigger oder Aktion
 
@@ -77,14 +77,14 @@ Im Folgenden finden Sie Details zu den von diesem „HTTP + Swagger“-Connector
 ## <a name="http--swagger-triggers"></a>„HTTP + Swagger“-Trigger
 Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. [Weitere Informationen zu Triggern finden Sie hier.](connectors-overview.md) Der Connector „HTTP + Swagger“ verfügt über einen Trigger.
 
-| Trigger | Beschreibung |
+| Trigger | BESCHREIBUNG |
 | --- | --- |
 | HTTP + Swagger |Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück. |
 
 ## <a name="http--swagger-actions"></a>„HTTP + Swagger“-Aktionen
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md) Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion.
 
-| Aktion | Beschreibung |
+| anzuzeigen. | BESCHREIBUNG |
 | --- | --- |
 | HTTP + Swagger |Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück. |
 
@@ -95,39 +95,39 @@ Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion. Im Ansc
 Erstellen Sie eine ausgehende HTTP-Anforderung mit Unterstützung von Swagger-Metadaten.
 Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-| Anzeigename | Eigenschaftenname | Beschreibung |
+| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
 | Methode* |method |Zu verwendendes HTTP-Verb. |
 | URI* |uri |URI für die HTTP-Anforderung. |
-| Headers |Headers |Ein JSON-Objekt für die einzubeziehenden HTTP-Header. |
-| Body |Body |Der HTTP-Anforderungstext. |
-| Authentifizierung |Authentifizierung |Für die Anforderung zu verwendende Authentifizierung. Weitere Informationen finden Sie unter [HTTP-Connector](connectors-native-http.md#authentication). |
+| Header |headers |Ein JSON-Objekt für die einzubeziehenden HTTP-Header. |
+| Body |body |Der HTTP-Anforderungstext. |
+| Authentifizierung |authentication |Für die Anforderung zu verwendende Authentifizierung. Weitere Informationen finden Sie unter [HTTP-Connector](connectors-native-http.md#authentication). |
 
 **Ausgabedetails**
 
 HTTP-Antwort
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| headers |Objekt |Antwortheader |
-| Body |Objekt |Antwortobjekt |
+| headers |object |Antwortheader |
+| Body |object |Antwortobjekt |
 | Statuscode |int |HTTP-Statuscode |
 
 ### <a name="http-responses"></a>HTTP-Antworten
 Das Aufrufen verschiedener Aktionen löst unter Umständen bestimmte Antworten aus. Die folgende Tabelle enthält entsprechende Antworten und Beschreibungen.
 
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | 200 |OK |
 | 202 |Zulässig |
 | 400 |Ungültige Anforderung |
 | 401 |Nicht autorisiert |
-| 403 |Verboten (403) |
+| 403 |Verboten |
 | 404 |Nicht gefunden |
 | 500 |Interner Serverfehler. Unbekannter Fehler. |
 
 - - -
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
+* [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Andere Connectors](apis-list.md)

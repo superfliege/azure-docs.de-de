@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/16/2018
 ms.author: magoedte;banders
-ms.openlocfilehash: 331cc9d27dd416900e0145f3e453dfd3bfcfbcb5
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b7cb178a24b043fe2c884ef0e4b3ad14ca0d73e4
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0-Lösung (Vorschauversion) in Log Analytics
 
@@ -61,7 +61,7 @@ Wire Data ruft ihre Daten vom Microsoft Dependency-Agent ab. Der Dependency-Agen
 | Windows-Agents | Ja | Wire Data analysiert und erfasst Daten von Windows-Agent-Computern. <br><br> Zusätzlich zum [OMS-Agent](log-analytics-windows-agent.md) erfordern Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems). |
 | Linux-Agents | Ja | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [OMS-Agent](log-analytics-quick-collect-linux-computer.md) erfordern Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems). |
 | System Center Operations Manager-Verwaltungsgruppe | Ja | Wire Data analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen [System Center Operations Manager-Verwaltungsgruppe](log-analytics-om-agents.md). <br><br> Es ist eine direkte Verbindung des System Center Operations Manager-Agents mit Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an Log Analytics weitergeleitet. |
-| Azure-Speicherkonto | Nein | Da Wire Data Daten von Agent-Computern erfasst, sind keine Daten aus Azure Storage zu erfassen. |
+| Azure-Speicherkonto | Nein  | Da Wire Data Daten von Agent-Computern erfasst, sind keine Daten aus Azure Storage zu erfassen. |
 
 Unter Windows wird der Microsoft Monitoring Agent (MMA) von System Center Operations Manager und Log Analytics zum Erfassen und Senden von Daten verwendet. Dieser Agent wird je nach Kontext als System Center Operations Manager-Agent, OMS-Agent, Log Analytics-Agent, MMA oder Direkt-Agent bezeichnet. System Center Operations Manager und Log Analytics bieten leicht unterschiedliche Versionen der MMA. Jede dieser Versionen kann Berichte an System Center Operations Manager, Log Analytics oder beide senden.
 
@@ -118,7 +118,7 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 | **Betriebssystemversion** | **Kernelversion** |
 | --- | --- |
 | 7.0 | 3.10.0-123 |
-| 7,1 | 3.10.0-229 |
+| 7.1 | 3.10.0-229 |
 | 7.2 | 3.10.0-327 |
 | 7.3 | 3.10.0-514 |
 
@@ -252,7 +252,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Dateien für den Dependency-Agent befinden sich in den folgenden Verzeichnissen:
 
-| **Dateien** | **Standort** |
+| **Dateien** | **Location** |
 | --- | --- |
 | Hauptdateien | /opt/microsoft/dependency-agent |
 | Protokolldateien | /var/opt/microsoft/dependency-agent/log |
@@ -375,9 +375,6 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 Nachdem Sie Agents installiert haben, und Sie die Lösung installieren, wird die Wire Data 2.0-Kachel im Arbeitsbereich angezeigt.
 
-> [!NOTE]
-> Derzeit müssen Sie das OMS-Portal zum Anzeigen von Wire Data verwenden. Sie können das Azure-Portal nicht zum Anzeigen von Wire Data verwenden.
-
 ![Wire Data-Kachel](./media/log-analytics-wire-data/wire-data-tile.png)
 
 ## <a name="using-the-wire-data-20-solution"></a>Verwenden der Wire Data 2.0-Lösung
@@ -420,7 +417,7 @@ Wire Data sammelt Metadaten über den Netzwerkverkehr mit den Agents, die Sie ak
 
 Ein Datensatz mit dem Typ _WireData_ wird für jeden Eingabedatentyp erstellt. Die Eigenschaften der WireData-Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |---|---|
 | Computer | Name des Computers, auf dem Daten gesammelt wurden |
 | TimeGenerated | Uhrzeit des Datensatzes |

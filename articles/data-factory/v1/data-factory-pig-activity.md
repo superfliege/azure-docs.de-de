@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7612eda8e40cb0ff2b205c2dfe11c2bba1b05b6a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c309debf53cc22d102de740ffd2907257b9821d2
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Pig-Aktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -82,17 +82,17 @@ Die HDInsight Pig-Aktivität in einer Data Factory-[Pipeline](data-factory-creat
 }
 ```
 ## <a name="syntax-details"></a>Syntaxdetails
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Name |Der Name der Aktivität |Ja |
-| Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
-| Typ |HDInsightPig |Ja |
-| inputs |Mindestens eine von der Pig-Aktivität genutzte Eingabe |Nein |
+| name |Der Name der Aktivität |Ja |
+| Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein  |
+| type |HDInsightPig |Ja |
+| inputs |Mindestens eine von der Pig-Aktivität genutzte Eingabe |Nein  |
 | outputs |Mindestens eine von der Pig-Aktivität erzeugte Ausgabe |Ja |
 | linkedServiceName |Verweis auf den HDInsight-Cluster, der als verknüpfter Dienst in Data Factory registriert ist. |Ja |
-| script |Angabe des Pig-Skripts inline |Nein |
-| Skriptpfad |Speichern Sie das Pig-Skript in einem Azure-Blobspeicher, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein |
-| defines |Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Pig-Skripts an. |Nein |
+| script |Angabe des Pig-Skripts inline |Nein  |
+| Skriptpfad |Speichern Sie das Pig-Skript in einem Azure-Blobspeicher, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein  |
+| defines |Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Pig-Skripts an. |Nein  |
 
 ## <a name="example"></a>Beispiel
 Betrachten wir ein Beispiel mit Analysen von Spielprotokollen, in dem Sie die Zeit ermitteln möchten, die Benutzer mit den Spielen Ihres Unternehmens verbringen.
@@ -218,7 +218,7 @@ Gehen Sie folgendermaßen vor, um das parametrisierte Pig-Skript zu verwenden:
     PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);        
     Store PigSampleOut into '$Output' USING PigStorage (','); 
     ```
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Hive-Aktivität](data-factory-hive-activity.md)
 * [MapReduce-Aktivität](data-factory-map-reduce.md)
 * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)

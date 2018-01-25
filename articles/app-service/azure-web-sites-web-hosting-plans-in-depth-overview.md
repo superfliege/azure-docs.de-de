@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 720a5bd7fc3335e96570268c983578aad0774d7e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 268844eae8dc06937529e79d52515cad2f6da3f4
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -54,7 +54,7 @@ Für jeden Tarif wird auch eine bestimmte Teilmenge mit App Service-Features ber
 > - Mittel (zwei CPU-Kerne, 7 GiB Arbeitsspeicher) 
 > - Groß (vier CPU-Kerne, 14 GiB Arbeitsspeicher)  
 >
-> Weitere Informationen zum **PremiumV2**-Tarif finden Sie unter [App Service – Preise](/pricing/details/app-service/).
+> Weitere Informationen zum **PremiumV2**-Tarif finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
 >
 > Informationen zu den ersten Schritten mit dem neuen **PremiumV2**-Tarif finden Sie unter [Configure PremiumV2 tier for Azure App Service (Konfigurieren des PremiumV2-Tarifs für App Service)](app-service-configure-premium-tier.md).
 

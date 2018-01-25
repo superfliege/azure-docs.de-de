@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
-ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f7d8f99bfa09847c01831a06efa8b94c1c0a89a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-connectors-in-a-logic-app"></a>Verwenden von Connectors in einer Logik-App
 Connectors ermöglichen den schnellen dienst-, protokoll- und plattformübergreifenden Zugriff auf Ereignisse, Daten und Aktionen.  Eine umfassende Liste mit von Logic Apps unterstützten Connectors finden Sie [hier](apis-list.md).  Connectors können als Trigger oder Aktion in einer Logik-App verwendet werden und benötigen unter Umständen eine konfigurierte *Verbindung* (beispielsweise bei der Autorisierung eines Twitter-Kontos für den Zugriff oder die Beitragsveröffentlichung in Ihrem Namen).
@@ -56,7 +56,7 @@ Die meisten Connectors können erst nach dem Konfigurieren einer *Verbindung* ve
 Verbindungen können in Azure angezeigt und verwaltet werden, indem Sie auf **Durchsuchen** klicken und **API Connections** (API-Verbindungen) auswählen.  Über die Ressource „API Connections“ (API-Verbindungen) können Sie sämtliche von Ihnen erstellte Verbindungen anzeigen, bearbeiten, aktualisieren und erneut autorisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen Ihrer ersten Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
+* [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Kennenlernen allgemeiner Szenarien und Beispiele für Logik-Apps](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Erste Schritte mit Triggern und Aktionen für die Unternehmensintegration](../logic-apps/logic-apps-enterprise-integration-overview.md)
 

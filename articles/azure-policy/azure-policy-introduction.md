@@ -5,16 +5,16 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders; nini
-ms.date: 11/06/2017
+ms.date: 01/17/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 8ffa4c22c39bcd241b36b55bbcba24ac3f75fff2
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 37fdb8156e4507046a574ba681e2ea3f6909c4a6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -38,7 +38,7 @@ Diese Berechtigungen sind in der Rolle **Mitwirkender** nicht enthalten.
 
 Jede Richtliniendefinition hat Bedingungen, unter denen sie erzwungen wird. Außerdem gehört zu ihr eine begleitende Aktion, die stattfindet, wenn die Bedingungen erfüllt sind.
 
-In Azure Policy bieten wir einige integrierte Richtlinien an, die Ihnen standardmäßig zur Verfügung stehen. Beispiel:
+In Azure Policy bieten wir einige integrierte Richtlinien an, die Ihnen standardmäßig zur Verfügung stehen. Beispiel: 
 
 - **SQL Server 12.0 erfordern**: Diese Richtliniendefinition enthält Bedingungen bzw. Regeln, um sicherzustellen, dass alle SQL Server-Instanzen die Version 12.0 aufweisen. Die zugehörige Aktion besteht darin, alle Server abzulehnen, die nicht diese Kriterien erfüllen.
 - **Zulässige Speicherkonto-SKUs**: Diese Richtliniendefinition enthält eine Reihe von Bedingungen bzw. Regeln, die festlegen, ob sich ein Speicherkonto, das bereitgestellt wird, in einem Bereich von SKU-Größen befindet. Die zugehörige Aktion besteht darin, alle Server abzulehnen, die nicht der definierten Gruppe von SKU-Größen entsprechen.
@@ -95,8 +95,8 @@ Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie eine Initiativdefin
 
 | Richtlinie | Name des Parameters |Typ des Parameters  |Hinweis |
 |---|---|---|---|
-| policyA | allowedLocations | array  |Dieser Parameter erwartet eine Liste von Zeichenfolgen als Wert, da der Parametertyp als Array definiert wurde. |
-| policyB | allowedSingleLocation |string |Dieser Parameter erwartet ein Wort als Wert, da der Parametertyp als Zeichenfolge definiert wurde. |
+| policyA | allowedLocations | Array  |Dieser Parameter erwartet eine Liste von Zeichenfolgen als Wert, da der Parametertyp als Array definiert wurde. |
+| policyB | allowedSingleLocation |Zeichenfolge |Dieser Parameter erwartet ein Wort als Wert, da der Parametertyp als Zeichenfolge definiert wurde. |
 
 In diesem Szenario haben Sie bei der Definition der Initiativparameter für **initiativeC** drei Optionen:
 

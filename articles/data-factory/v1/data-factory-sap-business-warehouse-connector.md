@@ -11,22 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6bbae79e59a200897f465e1381fea57a7ecde3f1
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b81dc9f13533eaeec56625ede0e4c534b83e7cf7
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Verschieben von Daten aus SAP Business Warehouse mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-sap-business-warehouse-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-sap-business-warehouse-connector.md)
 > * [Version 2 – Vorschauversion](../connector-sap-business-warehouse.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from SAP Business Warehouse using Azure Data Factory](../connector-sap-business-warehouse.md) (Kopieren von Daten aus SAP Business Warehouse mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from SAP Business Warehouse using Azure Data Factory](../connector-sap-business-warehouse.md) (Kopieren von Daten aus SAP Business Warehouse mit Azure Data Factory).
 
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen SAP Business Warehouse-Datenbank (SAP BW) zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
@@ -62,15 +62,15 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit SAP Business Warehouse (BW) verknüpften Dienst spezifisch sind.
 
-Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
+Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | string | Ja
+server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Zeichenfolge | Ja
 systemNumber | Die Systemnummer des SAP BW-Systems. | Zweistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja
 clientId | Client-ID des Clients im SAP BW-System. | Dreistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja
-username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | string | Ja
-password | Kennwort für den Benutzer | string | Ja
-gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP BW-Instanz verwenden soll. | string | Ja
-encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | string | Nein
+username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
+password | Kennwort für den Benutzer | Zeichenfolge | Ja
+gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP BW-Instanz verwenden soll. | Zeichenfolge | Ja
+encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | Zeichenfolge | Nein 
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
@@ -85,7 +85,7 @@ Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je 
 
 Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** hat (zu dem SAP BW gehört), sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | query | Gibt die MDX-Abfrage an, mit der Daten aus der SAP BW-Instanz gelesen werden. | MDX-Abfrage | Ja |
 
@@ -292,27 +292,27 @@ Beim Verschieben von Daten aus SAP BW werden die folgenden Zuordnungen zwischen 
 Datentyp im ABAP-Wörterbuch | .NET-Datentyp
 -------------------------------- | --------------
 ACCP |  int
-CHAR | string
-CLNT | String
+CHAR | Zeichenfolge
+CLNT | Zeichenfolge
 CURR | Decimal
-CUKY | String
-DEC | Decimal
-FLTP | Doppelt
+CUKY | Zeichenfolge
+DEC | DECIMAL
+FLTP | Double
 INT1 | Byte
 INT2 | Int16
 INT4 | int
-LANG | String
-LCHR | String
+LANG | Zeichenfolge
+LCHR | Zeichenfolge
 LRAW | Byte[]
 PREC | Int16
-QUAN | Decimal
+QUAN | DECIMAL
 RAW | Byte[]
 RAWSTRING | Byte[]
-STRING | String
-EINHEIT | String
-DATS | string
-NUMC | string
-TIMS | String
+STRING | Zeichenfolge
+EINHEIT | Zeichenfolge
+DATS | Zeichenfolge
+NUMC | Zeichenfolge
+TIMS | Zeichenfolge
 
 > [!NOTE]
 > Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).

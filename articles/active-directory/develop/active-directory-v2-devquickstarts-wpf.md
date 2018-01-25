@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/30/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7436db2943a6b3de6ec53cdaa6692aa05d2f2f69
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 88679e7dd71011f767cbe4de295c284516375d20
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-sign-in-to-a-windows-desktop-app"></a>Hinzufügen der Anmeldung zu einer Windows-Desktop-App
 Mit dem v2.0-Endpunkt können Sie schnell eine Authentifizierung zu Ihren Desktop-Apps hinzufügen, die sowohl persönliche Microsoft-Konten als auch Geschäfts-, Schul- oder Unikonten unterstützt.  Dadurch kann Ihre App außerdem sicher mit einer Back-End-Web-API sowie mit [Microsoft Graph](https://graph.microsoft.io) und einigen [Office 365-Unified-APIs](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) kommunizieren.
@@ -69,7 +69,7 @@ Das Grundprinzip von MSAL ist wie folgt: Wann immer Ihre Anwendung ein Zugriffst
 
 * Öffnen Sie im Projekt `TodoListClient` die Datei `MainWindow.xaml.cs`, und suchen Sie die Methode `OnInitialized(...)`.  Der erste Schritt besteht in der Initialisierung des `PublicClientApplication` -Elements Ihrer Anwendung – der primären Klasse von MSAL, die native Anwendungen darstellt.  Dort übergeben Sie MSAL die zur Kommunikation mit Azure AD notwendigen Koordinaten und weisen es an, wie Token zwischengespeichert werden sollen.
 
-```C#
+```csharp
 protected override async void OnInitialized(EventArgs e)
 {
         base.OnInitialized(e);
@@ -82,7 +82,7 @@ protected override async void OnInitialized(EventArgs e)
 
 * Wenn die App gestartet wird, sollte geprüft werden, ob der Benutzer bereits in der App angemeldet ist.  Es soll jedoch noch keine Benutzeroberfläche für die Anmeldung erzeugt werden – der Benutzer soll zu diesem Zweck selbst auf "Anmelden" klicken.  Außerdem in der `OnInitialized(...)` -Methode:
 
-```C#
+```csharp
 // As the app starts, we want to check to see if the user is already signed in.
 // You can do so by trying to get a token from MSAL, using the method
 // AcquireTokenSilent.  This forces MSAL to throw an exception if it cannot
@@ -119,7 +119,7 @@ catch (MsalException ex)
 
 * Wenn der Benutzer nicht angemeldet ist und auf die Schaltfläche "Anmelden" klickt, soll eine Anmeldebenutzeroberfläche aufgerufen werden, und der Benutzer soll dort seine Anmeldeinformationen eingeben.  Implementieren Sie den Schaltflächenhandler für die Anmeldung:
 
-```C#
+```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
         // TODO: Sign the user out if they clicked the "Clear Cache" button
@@ -167,7 +167,7 @@ catch (MsalException ex)
 
 * Wenn der Benutzer sich erfolgreich angemeldet hat, empfängt MSAL ein Token und legt es für Sie in einem Cache ab, sodass Sie problemlos mit dem Aufrufen der `GetTodoList()` -Methode fortfahren können.  Zum Abrufen der Aufgaben eines Benutzers ist nur noch die Implementierung der `GetTodoList()` -Methode erforderlich.
 
-```C#
+```csharp
 private async void GetTodoList()
 {
 
@@ -219,7 +219,7 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 
 - When the user is done managing their To-Do List, they may finally sign out of the app by clicking the "Clear Cache" button.
 
-```C#
+```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
         // If the user clicked the 'clear cache' button,
@@ -242,7 +242,7 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 ## <a name="run"></a>Ausführen
 Glückwunsch! Sie verfügen nun über eine funktionierende .NET-WPF-App, mit der Sie Benutzer authentifizieren und Web-APIS mithilfe von OAuth 2.0 sicher aufrufen können.  Führen Sie beide Projekte aus, und melden Sie sich entweder mit einem persönlichen Microsoft-Konto oder einem Geschäfts- oder Schulkonto an.  Fügen Sie Aufgaben zur To-Do-Liste des Benutzers hinzu.  Melden Sie sich ab, und anschließend wieder als anderer Benutzer an, um dessen To-Do-Liste anzuzeigen.  Schließen Sie die Anwendung, und führen Sie sie erneut aus.  Beobachten Sie dabei, wie die Sitzung des Benutzers intakt bleibt, weil die App Token in einer lokalen Datei zwischenspeichert.
 
-MSAL vereinfacht das Übernehmen gemeinsamer Identitätsfeatures in die App, sowohl für persönliche als auch für Geschäftskonten.  Es übernimmt die unangenehmen Verwaltungsarbeiten für Sie – die Cacheverwaltung, die Unterstützung des OAuth-Protokolls, die Anzeige einer Anmeldeschnittstelle für den Benutzer, die Aktualisierung abgelaufener Tokens und vieles mehr.  Das Einzige, womit Sie sich noch beschäftigen müssen, ist der API-Aufruf `app.AcquireTokenAsync(...)`.
+MSAL vereinfacht das Übernehmen gemeinsamer Identitätsfeatures in die App, sowohl für persönliche als auch für Geschäftskonten.  Die Datei übernimmt die unangenehmen Verwaltungsarbeiten für Sie – die Cacheverwaltung, die Unterstützung des OAuth-Protokolls, die Anzeige einer Anmeldeschnittstelle für den Benutzer, die Aktualisierung abgelaufener Token und vieles mehr.  Das Einzige, womit Sie sich noch beschäftigen müssen, ist der API-Aufruf `app.AcquireTokenAsync(...)`.
 
 Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswerte) [hier als ZIP-Datei bereit](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip). Sie können es alternativ aus GitHub klonen:
 

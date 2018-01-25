@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9a291a42d72985b9fe8f9083b265807122ae6343
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 30cf3911d0f22e2d9351fc606cd6697ef437e452
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection – Glossar
 ### <a name="at-risk-user"></a>Gefährdet (Benutzer)
@@ -91,7 +91,7 @@ Die Erkennung von Anomalien und Bewertung des Risikos eines Ereignisses, z. B. 
 ### <a name="remediated-risk-event"></a>Bereinigt (Risikoereignis)
 Ein Risikoereignis, das von Identity Protection automatisch festgelegt wird und angibt, dass das Risikoereignis mit der standardmäßigen Korrekturaktion für diese Art von Risikoereignis bereinigt wurde. Beim Zurücksetzen des Benutzerkennworts werden beispielsweise viele Risikoereignisse, die auf eine Kompromittierung des vorherigen Kennworts hinweisen, automatisch bereinigt.
 
-### <a name="remediation"></a>Korrektur
+### <a name="remediation"></a>Wiederherstellung
 Eine Aktion zum Schützen einer Identität oder eines Geräts, die bzw. das zuvor wahrscheinlich oder mit Sicherheit kompromittiert war. Bei einer Korrekturaktion wird die Identität bzw. das Gerät wieder in einen sicheren Zustand versetzt, und vorherige Risikoereignisse, die der Identität oder dem Gerät zugeordnet sind, werden gelöst.
 
 ### <a name="resolved-risk-event"></a>Aufgelöst (Risikoereignis)
@@ -160,6 +160,6 @@ Benutzer, die über Risikoereignisse verfügen (entweder „Aktiv“ oder „Ber
 ### <a name="vulnerability"></a>Sicherheitsrisiko
 Eine Konfiguration oder ein Zustand in Azure Active Directory, durch die bzw. den das Verzeichnis anfällig für Angriffe oder Bedrohungen wird.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 

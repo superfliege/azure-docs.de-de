@@ -3,7 +3,7 @@ title: PowerShell-Connector | Microsoft Docs
 description: "Dieser Artikel beschreibt die Konfiguration des Microsoft Windows PowerShell-Connectors."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6dba8e34-a874-4ff0-90bc-bd2b0a4199b5
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 27ca89a2032c82a8be909349b38a64fc6aa9579e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2caf8dd8a657f116df0342893763829676602cd6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="windows-powershell-connector-technical-reference"></a>Technische Referenz für den Windows PowerShell-Connector
 Dieser Artikel beschreibt den Windows PowerShell-Connector. Der Artikel bezieht sich auf folgende Produkte:
@@ -64,7 +64,7 @@ Folgende Konnektivitätsparameter können konfiguriert werden:
 | Server |<Blank> |Der Name des Servers, mit dem der Connector eine Verbindung herstellen soll. |
 | Domäne |<Blank> |Die Domäne der zu speichernden Anmeldeinformationen, die beim Ausführen des Connectors verwendet werden sollen. |
 | Benutzer |<Blank> |Der Benutzername der zu speichernden Anmeldeinformationen, die beim Ausführen des Connectors verwendet werden sollen. |
-| Kennwort |<Blank> |Das Kennwort der zu speichernden Anmeldeinformationen, die beim Ausführen des Connectors verwendet werden sollen. |
+| Password |<Blank> |Das Kennwort der zu speichernden Anmeldeinformationen, die beim Ausführen des Connectors verwendet werden sollen. |
 | Identität des Connector-Kontos annehmen |False |Bei Verwendung von „True“ führt der Synchronisierungsdienst die Windows PowerShell-Skripts im Kontext der angegebenen Anmeldeinformationen aus. Es wird empfohlen, anstelle des Identitätswechsels den an die einzelnen Skripts übergebenen **$Credentials** -Parameter zu verwenden. Weitere Informationen zu erforderlichen Zusatzberechtigungen für die Verwendung dieser Option finden Sie unter [Zusätzliche Konfiguration für den Identitätswechsel](#additional-configuration-for-impersonation). |
 | Beim Identitätswechsel Benutzerprofil laden |False |Weist Windows an, beim Identitätswechsel das Benutzerprofil der Anmeldeinformationen des Connectors zu laden. Falls der Benutzer, dessen Identität übernommen werden soll, über ein servergespeichertes Profil verfügt, wird das Profil vom Connector nicht geladen. Weitere Informationen zu erforderlichen Zusatzberechtigungen für die Verwendung dieses Parameters finden Sie unter [Zusätzliche Konfiguration für den Identitätswechsel](#additional-configuration-for-impersonation). |
 | Anmeldetyp beim Identitätswechsel |Keine |Der Anmeldetyp beim Identitätswechsel. Weitere Informationen finden Sie in der Dokumentation zu [dwLogonType][dw]. |
@@ -88,7 +88,7 @@ Das Überprüfungsskript ist ein optionales Windows PowerShell-Skript, mit dem 
 
 Das Überprüfungsskript erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameterPage |[ConfigParameterPage][cpp] |Die Konfigurationsregisterkarte oder das Konfigurationsdialogfeld, von der bzw. dem die Überprüfungsanforderung ausgelöst wurde. |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
@@ -101,7 +101,7 @@ Das Schema-Ermittlungsskript ist obligatorisch. Dieses Skript gibt die Objekttyp
 
 Das Schema-Ermittlungsskript erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
@@ -120,7 +120,7 @@ Die Registerkarte „Funktionen“ des Verwaltungs-Agent-Designers dient zum Def
 
 ![Funktionen](./media/active-directory-aadconnectsync-connector-powershell/capabilities.png)
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 | --- | --- |
 | [Distinguished Name Style][dnstyle] |Gibt an, ob der Connector Distinguished Names unterstützt, und wenn ja, in welchem Format. |
 | [Exporttyp][exportT] |Bestimmt den Typ von Objekten, die dem Exportskript präsentiert werden. <li>AttributeReplace: Enthält den vollständigen Satz von Werten für ein mehrwertiges Attribut, wenn sich das Attribut ändert.</li><li>AttributeUpdate: Enthält nur die Veränderungen eines mehrwertigen Attributs, wenn sich das Attribut ändert.</li><li>MultivaluedReferenceAttributeUpdate: Enthält für mehrwertige Attribute ohne Verweis einen vollständigen Satz von Werten und für mehrwertige Verweisattribute nur Veränderungen.</li><li>ObjectReplace: Enthält alle Attribute für ein Objekt, wenn sich ein beliebiges Attribut ändert.</li> |
@@ -148,7 +148,7 @@ Bei einer Partition handelt es sich um einen separaten Namespace innerhalb eines
 
 Das Partitionsermittlungsskript erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
@@ -160,7 +160,7 @@ Das Hierarchieermittlungsskript wird nur verwendet, wenn für den Distinguished 
 
 Das Hierarchieermittlungsskript erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
@@ -168,7 +168,7 @@ Das Hierarchieermittlungsskript erhält vom Connector folgende Parameter:
 
 Das Skript muss entweder ein einzelnes untergeordnetes HierarchyNode-Objekt oder eine Liste (List[T]) mit untergeordneten HierarchyNode-Objekten an die Pipeline zurückgeben.
 
-#### <a name="import"></a>Import
+#### <a name="import"></a>Importieren
 Connectors, die Importvorgänge unterstützen, müssen drei Skripts implementieren:
 
 **Import starten**  
@@ -176,7 +176,7 @@ Das Skript „Import starten“ wird zu Beginn eines Importausführungsschritts 
 
 Das Skript „Import starten“ erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
@@ -190,7 +190,7 @@ Das Skript „Daten importieren“ wird vom Connector aufgerufen, bis das Skript
 
 Das Skript „Daten importieren“ erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
@@ -205,7 +205,7 @@ Zum Abschluss der Importausführung wird das Skript „Import beenden“ ausgef�
 
 Das Skript „Import beenden“ erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
@@ -222,7 +222,7 @@ Das Skript „Export starten“ wird zu Beginn eines Exportausführungsschritts 
 
 Das Skript „Export starten“ erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
@@ -236,7 +236,7 @@ Der Synchronisierungsdienst ruft das Skript „Daten exportieren“ so oft auf, 
 
 Das Skript „Daten exportieren“ erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
@@ -251,7 +251,7 @@ Zum Abschluss der Exportausführung wird das Skript „Export beenden“ ausgef�
 
 Das Skript „Export beenden“ erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
@@ -265,16 +265,16 @@ Windows PowerShell-Connectors können als Ziel für Kennwortänderungen/-zurüc
 
 Das Kennwortskript erhält vom Connector folgende Parameter:
 
-| Name | Datentyp | Beschreibung |
+| NAME | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [Zeichenfolge, [ConfigParameter][cp]] |Tabelle mit Konfigurationsparametern für den Connector. |
 | Anmeldeinformation |[PSCredential][pscred] |Enthält alle Anmeldeinformationen, die der Administrator auf der Registerkarte „Konnektivität“ eingegeben hat. |
 | Partition |[Partition][part] |Die Verzeichnispartition mit dem CSEntry-Element. |
 | CSEntry |[CSEntry][cse] |Der Connectorbereichseintrag für das Objekt, für das eine Kennwortänderung oder -zurücksetzung vorliegt. |
-| OperationType |String |Gibt an, ob es sich bei dem Vorgang um eine Zurücksetzung (**SetPassword**) oder um eine Änderung (**ChangePassword**) handelt. |
+| OperationType |Zeichenfolge |Gibt an, ob es sich bei dem Vorgang um eine Zurücksetzung (**SetPassword**) oder um eine Änderung (**ChangePassword**) handelt. |
 | PasswordOptions |[PasswordOptions][pwdopt] |Flags zum Angeben des gewünschten Verhaltens bei der Kennwortzurücksetzung. Dieser Parameter ist nur verfügbar, wenn „OperationType“ auf **SetPassword**festgelegt ist. |
-| OldPassword |String |Enthält das alte Kennwort des Objekts (bei Kennwortänderungen). Dieser Parameter ist nur verfügbar, wenn „OperationType“ auf **ChangePassword**festgelegt ist. |
-| NewPassword |String |Enthält das neue Kennwort des Objekts, das durch das Skript festgelegt werden soll. |
+| OldPassword |Zeichenfolge |Enthält das alte Kennwort des Objekts (bei Kennwortänderungen). Dieser Parameter ist nur verfügbar, wenn „OperationType“ auf **ChangePassword**festgelegt ist. |
+| NewPassword |Zeichenfolge |Enthält das neue Kennwort des Objekts, das durch das Skript festgelegt werden soll. |
 
 Vom Kennwortskript wird keine Ergebnisrückgabe an die Windows PowerShell-Pipeline erwartet. Bei einem Fehler im Kennwortskript muss das Skript eine der folgenden Ausnahmen auslösen, um den Synchronisierungsdienst über das Problem zu informieren:
 

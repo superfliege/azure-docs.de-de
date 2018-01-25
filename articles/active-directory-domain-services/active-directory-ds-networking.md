@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: b35e87da943de8d47f36b6443fa62e251f742149
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6f0089f13de10ba8bc1f9a656a2d21f9c559047
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Netzwerkaspekte für die Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Auswählen eines virtuellen Azure-Netzwerks
@@ -74,15 +74,15 @@ Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verw
 * Der Zugriff auf diesen Port muss in Ihrer NSG zugelassen werden. Ohne Zugriff auf diesen Port ist Ihre verwaltete Domäne nicht mit Ihrem Azure AD-Verzeichnis synchron. Benutzer können sich unter Umständen nicht anmelden, da Kennwortänderungen nicht mit Ihrer verwalteten Domäne synchronisiert werden.
 * Der eingehende Zugriff auf diesen Port kann auf IP-Adressen aus dem Azure-IP-Adressbereich beschränkt werden.
 
-**Port 5986 (PowerShell-Remoting)** 
+**Port 5986 (PowerShell-Remoting)**
 * Dient zum Ausführen von Verwaltungsaufgaben mithilfe von PowerShell-Remoting in Ihrer verwalteten Domäne.
 * Der Zugriff über diesen Port muss in Ihrer NSG zugelassen werden. Ohne Zugriff auf diesen Port kann Ihre verwaltete Domäne nicht aktualisiert, konfiguriert, gesichert oder überwacht werden.
-* Der eingehende Zugriff auf diesen Port kann auf folgende Quell-IP-Adressen beschränkt werden: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161 
+* Der eingehende Zugriff auf diesen Port kann auf folgende Quell-IP-Adressen beschränkt werden: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161
 * Die Domänencontroller für die verwaltete Domäne lauschen in der Regel nicht an diesem Port. Der Dienst öffnet diesen Port auf Controllern der verwalteten Domäne nur, wenn ein Verwaltungs- oder Wartungsvorgang für die verwaltete Domäne ausgeführt werden muss. Nach Abschluss des Vorgangs schließt der Dienst diesen Port auf den Controllern der verwalteten Domäne.
 
-**Port 3389 (Remotedesktop)** 
-* Wird für Remotedesktopverbindungen mit Domänencontrollern für Ihre verwaltete Domäne verwendet. 
-* Das Öffnen dieses Ports über Ihre NSG ist optional. 
+**Port 3389 (Remotedesktop)**
+* Wird für Remotedesktopverbindungen mit Domänencontrollern für Ihre verwaltete Domäne verwendet.
+* Das Öffnen dieses Ports über Ihre NSG ist optional.
 * Dieser Port bleibt in der verwalteten Domäne auch weitgehend deaktiviert. Dieser Mechanismus wird nicht fortlaufend verwendet, da Verwaltungs- und Überwachungsaufgaben mithilfe von PowerShell-Remoting ausgeführt werden. Dieser Port wird nur in dem seltenen Fall verwendet, dass Microsoft zur erweiterten Problembehandlung eine Remoteverbindung mit Ihrer verwalteten Domäne herstellen muss. Der Port wird geschlossen, sobald die Problembehandlung abgeschlossen ist.
 
 **Port 636 (Secure LDAP)**
@@ -99,7 +99,7 @@ Die folgende Tabelle zeigt ein NSG-Beispiel, das Sie für ein virtuelles Netzwer
 
 Darüber hinaus veranschaulicht die NSG auch das Sperren sicheren LDAP-Zugriffs über das Internet. Überspringen Sie diese Regel, wenn Sie keinen sicheren LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet aktiviert haben. Die NSG enthält einen Satz von Regeln, die den eingehenden LDAPS-Zugriff über TCP-Port 636 nur aus einer angegebenen Gruppe von IP-Adressen zulassen. Die NSG-Regel zum Zulassen des LDAPS-Zugriffs über das Internet von angegebenen IP-Adressen hat eine höhere Priorität als die NSG-Regel „DenyAll“.
 
-![Beispiel-NSG zum Schutz des sicheren LDAPS-Zugriffs über das Internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
+![Beispiel-NSG zum Schutz des sicheren LDAPS-Zugriffs über das Internet](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
 **Weitere Informationen** - [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
 
@@ -126,7 +126,7 @@ Sie können ein Resource Manager-basiertes virtuelles Netzwerk mit einem klassis
     ![Verbindung von virtuellen Netzwerken per Peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
     [Weitere Informationen – Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md)
-    
+
 * **VNet-zu-VNet-Verbindungen mithilfe von Site-to-Site-VPN-Verbindungen**: Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines virtuellen Netzwerks mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen.
 
     ![Verbindung von virtuellen Netzwerken per VPN-Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)

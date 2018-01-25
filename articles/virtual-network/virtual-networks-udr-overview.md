@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 8a80220879db9f0030b9f1a8494b1cc24105ef17
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 85be79261d5fc214ab4b46fa5d7b4d0a5b13db27
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -89,7 +89,7 @@ Beim Erstellen einer benutzerdefinierten Route können Sie die folgenden Typen d
     > [!NOTE]
     > Stellen Sie ein virtuelles Gerät in einem anderen Subnetz als dem Subnetz bereit, in dem die Ressourcen, die über das virtuelle Gerät weitergeleitet werden, bereitgestellt werden. Das Bereitstellen des virtuellen Geräts in demselben Subnetz und das anschließende Anwenden einer Routentabelle in dem Subnetz, aus dem Datenverkehr über das virtuelle Gerät geleitet wird, kann zu Routingschleifen führen, bei denen der Datenverkehr das Subnetz niemals verlässt.
 
-    - Die private IP-Adresse eines [internen Lastenausgleichs](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) von Azure. Ein Lastenausgleich wird häufig im Rahmen einer [Hochverfügbarkeitsstrategie für virtuelle Netzwerkgeräte](/azure/architecture/reference-architectures/dmz/nva-ha.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwendet.
+    - Die private IP-Adresse eines [internen Lastenausgleichs](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) von Azure. Ein Lastenausgleich wird häufig im Rahmen einer [Hochverfügbarkeitsstrategie für virtuelle Netzwerkgeräte](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json) verwendet.
 
     Sie können eine Route mit 0.0.0.0/0 als Adresspräfix und „Virtuelles Gerät“ als Typ des nächsten Hops definieren, sodass das Gerät den Datenverkehr untersuchen und ermitteln kann, ob dieser weitergeleitet oder verworfen werden soll. Wenn Sie eine benutzerdefinierte Route erstellen möchten, die das Adresspräfix 0.0.0.0/0 enthält, sollten Sie zuerst [Adresspräfix 0.0.0.0/0](#default-route) lesen.
 
@@ -173,7 +173,7 @@ Zur Erläuterung der Konzepte in diesem Artikel wird in den nächsten Abschnitte
 > [!NOTE]
 > Dieses Beispiel ist nicht als empfohlene Implementierung oder bewährte Methode gedacht. Es soll nur dem besseren Verständnis der Konzepte in diesem Artikel dienen.
 
-### <a name="requirements"></a>Anforderungen
+### <a name="requirements"></a>Requirements (Anforderungen)
 
 1. Implementieren Sie zwei virtuelle Netzwerke in derselben Azure-Region, und ermöglichen Sie für Ressourcen die Kommunikation zwischen den virtuellen Netzwerken.
 2. Ermöglichen Sie für ein lokales Netzwerk die sichere Kommunikation mit beiden virtuellen Netzwerken per VPN-Tunnel über das Internet. *Alternativ hierzu können Sie auch eine ExpressRoute-Verbindung verwenden, aber in diesem Beispiel wird eine VPN-Verbindung genutzt.*
@@ -200,7 +200,7 @@ Mit den Pfeilen ist der Weg des Datenverkehrs angegeben.
 
 Die Routentabelle für *Subnet1* in der Abbildung enthält die folgenden Routen:
 
-|ID  |Quelle |Zustand  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
+|ID  |Quelle |State (Zustand)  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Standard|Ungültig|10.0.0.0/16         |Virtuelles Netzwerk        |                   |              |
 |2   |Benutzer   |Aktiv |10.0.0.0/16         |Virtuelles Gerät      |10.0.100.4         |Within-VNet1  |
@@ -234,7 +234,7 @@ Es folgen Erklärungen der einzelnen Routen-IDs:
 
 Die Routentabelle für *Subnet2* in der Abbildung enthält die folgenden Routen:
 
-|Quelle  |Zustand  |Adresspräfixe    |Typ des nächsten Hops             |IP-Adresse des nächsten Hops|
+|Quelle  |State (Zustand)  |Adresspräfixe    |Typ des nächsten Hops             |IP-Adresse des nächsten Hops|
 |------- |-------|------              |-------                   |--------           
 |Standard |Aktiv |10.0.0.0/16         |Virtuelles Netzwerk           |                   |
 |Standard |Aktiv |10.1.0.0/16         |VNet-Peering              |                   |

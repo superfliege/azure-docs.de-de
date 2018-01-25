@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 995983a8e32bc01ddc1ab8bbc64345da96875941
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 566773e9bc787bff4e92d86ec57fb0de3121b079
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hive-Aktivität in Azure Data Factory 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -74,17 +74,17 @@ Die HDInsight Hive-Aktivität in einer Data Factory-[Pipeline](data-factory-crea
 }
 ```
 ## <a name="syntax-details"></a>Syntaxdetails
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Name |Der Name der Aktivität |Ja |
-| Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
-| Typ |HDInsightHive |Ja |
-| inputs |Von der Hive-Aktivität genutzte Eingaben |Nein |
+| name |Der Name der Aktivität |Ja |
+| Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein  |
+| type |HDInsightHive |Ja |
+| inputs |Von der Hive-Aktivität genutzte Eingaben |Nein  |
 | outputs |Von der Hive-Aktivität erzeugte Ausgaben |Ja |
 | linkedServiceName |Verweis auf den HDInsight-Cluster, der als verknüpfter Dienst in Data Factory registriert ist. |Ja |
-| script |Angabe des Hive-Skripts inline |Nein |
-| scriptPath |Speichern Sie das Hive-Skript in einem Azure-Blobspeicher, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein |
-| defines |Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Hive-Skripts mit "hiveconf" an. |Nein |
+| script |Angabe des Hive-Skripts inline |Nein  |
+| scriptPath |Speichern Sie das Hive-Skript in einem Azure-Blobspeicher, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein  |
+| defines |Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Hive-Skripts mit "hiveconf" an. |Nein  |
 
 ## <a name="example"></a>Beispiel
 Betrachten wir ein Beispiel mit Analysen von Spielprotokollen, in dem Sie die Zeit ermitteln möchten, die Benutzern mit den Spielen Ihres Unternehmens verbringen. 
@@ -243,7 +243,7 @@ Gehen Sie folgendermaßen vor, um parametrisierte Hive-Skripts zu verwenden:
         SUM(Duration)
     FROM HiveSampleIn Group by ProfileID
     ```
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Pig-Aktivität](data-factory-pig-activity.md)
 * [MapReduce-Aktivität](data-factory-map-reduce.md)
 * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)

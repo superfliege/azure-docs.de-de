@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: 2175a009f084b07c10ca3a32d43c2df216cd3c2f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 083150fe5f8787ba791d3d692db73c5156f11e55
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-the-hbase-net-sdk"></a>Verwenden des HBase .NET SDK
 
@@ -38,7 +38,7 @@ Das HBase .NET SDK wird als NuGet-Paket bereitgestellt, das mit folgendem Befehl
 
 Um das SDK zu verwenden, instanziieren Sie ein neues `HBaseClient`-Objekt, indem Sie als Eingabe `ClusterCredentials` übergeben, die aus dem `Uri` zu Ihrem Cluster und dem Hadoop-Benutzernamen und -Kennwort bestehen.
 
-```c#
+```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
 client = new HBaseClient(credentials);
 ```
@@ -53,7 +53,7 @@ Physisch werden die Daten in *HFiles* gespeichert. Eine einzelne HFile enthält 
 
 Um eine neue Tabelle zu erstellen, geben Sie ein `TableSchema` und Spalten an. Der folgende Code überprüft, ob die Tabelle „RestSDKTable“ bereits vorhanden ist – falls nicht, wird die Tabelle erstellt.
 
-```c#
+```csharp
 if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 {
     // Create the table
@@ -71,7 +71,7 @@ Diese neue Tabelle enthält zwei Spaltenfamilien, „t1“ und „t2“. Da Spal
 
 So löschen Sie eine Tabelle
 
-```c#
+```csharp
 await client.DeleteTableAsync("RestSDKTable");
 ```
 
@@ -79,7 +79,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 Um Daten einzufügen, geben Sie einen eindeutigen Zeilenschlüssel als Zeilenbezeichner an. Alle Daten werden in einem `byte[]`-Array gespeichert. Der folgende Code definiert und fügt der Spaltenfamilie „t1“ die Spalten `title`, `director` und `release_date` hinzu, da am häufigsten auf diese Spalten zugegriffen wird. Die Spalten `description` und `tagline` werden der Spaltenfamilie „t2“ hinzugefügt. Sie können Ihre Daten ganz nach Bedarf in Spaltenfamilien unterteilen.
 
-```c#
+```csharp
 var key = "fifth_element";
 var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
 var value = new Cell
@@ -127,7 +127,7 @@ HBase implementiert BigTable, sodass das Datenformat wie folgt aussieht:
 
 Zum Lesen von Daten aus einer HBase-Tabelle übergeben Sie den Tabellennamen und den Zeilenschlüssel an die `GetCellsAsync`-Methode, um das `CellSet` zurückzugeben.
 
-```c#
+```csharp
 var key = "fifth_element";
 
 var cells = await client.GetCellsAsync("RestSDKTable", key);
@@ -141,7 +141,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 
 In diesem Fall gibt der Code nur die erste übereinstimmende Zeile zurück, da bei einem eindeutigen Schlüssel nur eine Zeile vorhanden sein sollte. Der zurückgegebene Wert wird aus dem `byte[]`-Array-Format in das `string`-Format umgewandelt. Sie können den Wert auch in andere Typen konvertieren, z. B. eine ganze Zahl (Integer) für das Veröffentlichungsdatum des Films:
 
-```c#
+```csharp
 var releaseDateField = cells.rows[0].values
     .Find(c => Encoding.UTF8.GetString(c.column) == "t1:release_date");
 int releaseDate = 0;
@@ -158,7 +158,7 @@ Console.WriteLine(releaseDate);
 
 HBase verwendet `scan`, um eine oder mehrere Zeilen abzurufen. In diesem Beispiel werden mehrere Zeilen in Gruppen von 10 angefordert, und Daten, deren Schlüsselwerte zwischen 25 und 35 liegen, werden abgerufen. Nach dem Abrufen aller Zeilen löschen Sie den Scanner, um Ressourcen zu bereinigen.
 
-```c#
+```csharp
 var tableName = "mytablename";
 
 // Assume the table has integer keys and we want data between keys 25 and 35

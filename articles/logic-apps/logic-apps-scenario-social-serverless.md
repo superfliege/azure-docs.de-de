@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
-ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3e07b8d7194d83e3ba3986177170edff21e1d7a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Customer Insights-Echtzeit-Dashboards mit Azure Logic Apps und Azure Functions
 
@@ -29,7 +29,7 @@ Azure Serverless-Tools verfügen über leistungsstarke Funktionen zum schnellen 
 
 Zum Implementieren dieser Lösung nutzen wir die beiden Hauptkomponenten von serverlosen Apps in Azure: [Azure Functions](https://azure.microsoft.com/services/functions/) und [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 
-Bei Logic Apps handelt es sich um ein serverloses Workflowmodul in der Cloud.  Es ermöglicht die Orchestrierung über serverlose Komponenten hinweg und eine Verbindung mit mehr als 100 Diensten und APIs.  Für dieses Szenario erstellen wir eine Logik-App, um bei Feedback von Kunden Aktionen auszulösen.  Einige Connectors, die beim Reagieren auf Kundenfeedback hilfreich sein können, sind Outlook.com, Office 365, Survey Monkey, Twitter und eine HTTP-Anforderung [aus einem Webformular](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/).  Für den unten angegebenen Workflow überwachen wir ein Hashtag auf Twitter.
+Bei Logic Apps handelt es sich um eine serverlose Workflow-Engine in der Cloud.  Es ermöglicht die Orchestrierung über serverlose Komponenten hinweg und eine Verbindung mit mehr als 100 Diensten und APIs.  Für dieses Szenario erstellen wir eine Logik-App, um bei Feedback von Kunden Aktionen auszulösen.  Einige Connectors, die beim Reagieren auf Kundenfeedback hilfreich sein können, sind Outlook.com, Office 365, Survey Monkey, Twitter und eine HTTP-Anforderung [aus einem Webformular](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/).  Für den unten angegebenen Workflow überwachen wir ein Hashtag auf Twitter.
 
 Azure Functions ermöglicht serverlose Computevorgänge in der Cloud.  In diesem Szenario verwenden wir Azure Functions, um Tweets von Kunden anhand von verschiedenen vordefinierten Schlüsselwörtern zu kennzeichnen.
 
@@ -37,7 +37,7 @@ Die gesamte Lösung kann [in Visual Studio erstellt](logic-apps-deploy-from-vs.m
 
 ## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>Erstellen der Logik-App für die Auslösung basierend auf Kundendaten
 
-Gehen Sie wie folgt vor, nachdem Sie in Visual Studio oder im Azure-Portal eine [Logik-App erstellt](logic-apps-create-a-logic-app.md) haben:
+Gehen Sie wie folgt vor, nachdem Sie in Visual Studio oder im Azure-Portal eine [Logik-App erstellt](quickstart-create-first-logic-app-workflow.md) haben:
 
 1. Fügen Sie einen Trigger für **On New Tweets** (Bei neuen Tweets) von Twitter hinzu.
 2. Konfigurieren Sie den Trigger so, dass er basierend auf einem Schlüsselwort oder Hashtag auf Tweets lauscht.

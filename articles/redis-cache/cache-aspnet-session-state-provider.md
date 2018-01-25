@@ -3,8 +3,8 @@ title: "Cache – ASP.NET-Sitzungszustandsanbieter | Microsoft Docs"
 description: Erfahren Sie, wie Sie den ASP.NET-Sitzungszustand mit Azure Redis Cache speichern.
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: 192f384c-836a-479a-bb65-8c3e6d6522bb
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
-ms.author: sdanie
-ms.openlocfilehash: 0f3683939ac9646565a0669e19b4c82811d621fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 485375f2f2ffb83b7d0fdeef8daab5880a8bbc27
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache
 Azure Redis Cache stellt einen Sitzungszustandsanbieter bereit, mit dem Sie den Sitzungszustand in einem Cache anstatt im Arbeitsspeicher oder in einer SQL Server-Datenbank speichern können. Um den Sitzungszustandsanbieter zu verwenden, konfigurieren Sie zuerst den Cache, und konfigurieren Sie danach Ihre ASP.NET-Anwendung für den Cache mithilfe des Redis Cache-Sitzungszustands-NuGet-Pakets.

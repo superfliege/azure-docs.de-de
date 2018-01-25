@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 9a63a15782b85a48552fd913d5d3f8aaaae7db44
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d4f78c63117e5c54eb855178c75d6c294957f2a1
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>Erstellen eines Webdienst-Front-Ends für Ihre Anwendung mithilfe von ASP.NET Core
 Standardmäßig enthalten Azure Service Fabric-Dienste keine öffentliche Web-Schnittstelle. Um die Funktionalität Ihrer Anwendung für HTTP-Clients verfügbar zu machen, müssen Sie ein Webprojekt als Einstiegspunkt erstellen und dann darüber mit den einzelnen Diensten kommunizieren.
@@ -91,7 +91,7 @@ Wir erstellen zunächst die Benutzeroberfläche, die als Vertrag zwischen dem zu
 
 4. Erstellen Sie in der Klassenbibliothek eine Schnittstelle mit einer einzelnen Methode, `GetCountAsync`, und erweitern Sie die Schnittstelle von `Microsoft.ServiceFabric.Services.Remoting.IService`. Um anzugeben, dass es sich um eine Dienstremoting-Schnittstelle handelt, muss sich die Dienstschnittstelle aus dieser Schnittstelle ableiten.
    
-    ```c#
+    ```csharp
     using Microsoft.ServiceFabric.Services.Remoting;
     using System.Threading.Tasks;
         
@@ -114,7 +114,7 @@ Nach dem Definieren der Schnittstelle müssen wir sie in den zustandsbehafteten 
     ![Hinzufügen eines Verweises auf das Klassenbibliotheksprojekt im zustandsbehafteten Dienst][vs-add-class-library-reference]
 2. Suchen Sie die Klasse, die von `StatefulService` erbt (etwa `MyStatefulService`), und erweitern Sie sie, um die `ICounter`-Schnittstelle zu implementieren.
    
-    ```c#
+    ```csharp
     using MyStatefulService.Interface;
    
     ...
@@ -126,7 +126,7 @@ Nach dem Definieren der Schnittstelle müssen wir sie in den zustandsbehafteten 
     ```
 3. Implementieren Sie jetzt die einzelne Methode, die in der `ICounter`-Schnittstelle definiert ist: `GetCountAsync`.
    
-    ```c#
+    ```csharp
     public async Task<long> GetCountAsync()
     {
         var myDictionary = 
@@ -150,7 +150,7 @@ In diesem Fall ersetzen wir die vorhandene `CreateServiceReplicaListeners`-Metho
 
 Die Erweiterungsmethode `CreateServiceRemotingListener` für die `IService`-Schnittstelle ermöglicht es Ihnen, auf einfache Weise einen `ServiceRemotingListener` mit allen Standardeinstellungen zu erstellen. Um diese Erweiterungsmethode verwenden zu können, müssen Sie sicherstellen, dass Sie den `Microsoft.ServiceFabric.Services.Remoting.Runtime`-Namespace importiert haben. 
 
-```c#
+```csharp
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 
 ...
@@ -176,7 +176,7 @@ Der zustandsbehaftete Dienst ist nun bereit, Datenverkehr von anderen Diensten �
 
 4. Öffnen Sie im Ordner **Controller** die `ValuesController`-Klasse. Beachten Sie, dass die `Get` -Methode derzeit nur ein hartcodiertes Zeichenfolgenarray mit „value1“ und „value2“ zurückgibt, wie wir vorhin im Browser gesehen haben. Ersetzen Sie diese Implementierung durch den folgenden Code:
    
-    ```c#
+    ```csharp
     using MyStatefulService.Interface;
     using Microsoft.ServiceFabric.Services.Client;
     using Microsoft.ServiceFabric.Services.Remoting.Client;

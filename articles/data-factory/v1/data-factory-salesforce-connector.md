@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 29f4c5e8998331cc48dac694512766a5b3cd4a30
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9e678e947a686b5a672af13cb0f0e60b4a272de9
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Verschieben von Daten aus Salesforce mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-salesforce-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-salesforce-connector.md)
 > * [Version 2 – Vorschauversion](../connector-salesforce.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from Salesforce using Azure Data Factory](../connector-salesforce.md) (Kopieren von Daten aus Salesforce mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from Salesforce using Azure Data Factory](../connector-salesforce.md) (Kopieren von Daten aus Salesforce mit Azure Data Factory).
 
 
 In diesem Artikel wird die Verwendung der Kopieraktivität in einer Azure Data Factory beschrieben, um Daten aus Salesforce in einen Datenspeicher zu kopieren, der in der Tabelle [Unterstützte Quellen und Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) in der Spalte „Senke“ aufgeführt ist. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
@@ -69,10 +69,10 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den verknüpften Salesforce-Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Typ |Die type-Eigenschaft muss auf **Salesforce**festgelegt sein. |Ja |
-| environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br><br> - Die Standard-URL lautet „https://login.salesforce.com“. <br> - Geben Sie zum Kopieren von Daten aus der Sandbox die URL „https://test.salesforce.com“ an. <br> - Geben Sie zum Kopieren von Daten aus der benutzerdefinierten Domäne z.B. „https://[Domäne].my.salesforce.com“ an. |Nein |
+| type |Die type-Eigenschaft muss auf **Salesforce**festgelegt sein. |Ja |
+| environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br><br> - Die Standard-URL lautet „https://login.salesforce.com“. <br> - Geben Sie zum Kopieren von Daten aus der Sandbox die URL „https://test.salesforce.com“ an. <br> - Geben Sie zum Kopieren von Daten aus der benutzerdefinierten Domäne z.B. „https://[Domäne].my.salesforce.com“ an. |Nein  |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja |
 | securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). |Ja |
@@ -82,7 +82,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **RelationalTable** hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in Salesforce. |Nein (wenn eine **Abfrage** von **RelationalSource** angegeben ist) |
 
@@ -98,7 +98,7 @@ Die Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dageg
 
 Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** aufweist (dies schließt Salesforce ein), sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |Eine SQL-92-Abfrage oder eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm). Beispiel: `select * from MyTable__c`. |Nein (wenn **tableName** von **dataset** angegeben ist) |
 
@@ -109,7 +109,7 @@ Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** aufweist (
 
 ## <a name="query-tips"></a>Tipps zu Abfragen
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Abrufen von Daten mithilfe der WHERE-Klausel für die DateTime-Spalte
-Achten Sie beim Angeben der SOQL- oder SQL-Abfrage auf den Unterschied beim DateTime-Format. Beispiel:
+Achten Sie beim Angeben der SOQL- oder SQL-Abfrage auf den Unterschied beim DateTime-Format. Beispiel: 
 
 * **SOQL-Beispiel**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **SQL-Beispiel**:
@@ -117,7 +117,7 @@ Achten Sie beim Angeben der SOQL- oder SQL-Abfrage auf den Unterschied beim Date
     * **Verwenden der JSON-Bearbeitung, um die Abfrage anzugeben („char“ muss ordnungsgemäß mit Escapezeichen versehen werden):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Abrufen von Daten aus Salesforce-Bericht
-Sie können Daten aus Salesforce-Berichten abrufen, indem Sie z.B. die Abfrage `{call "<report name>"}` angeben. `"query": "{call \"TestReport\"}"`.
+Sie können Daten aus Salesforce-Berichten abrufen, indem Sie z.B. die Abfrage `{call "<report name>"}` angeben. `"query": "{call \"TestReport\"}"`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Abrufen von gelöschten Datensätzen aus dem Salesforce-Papierkorb
 Zum Abfragen der vorläufig gelöschten Datensätze aus dem Salesforce-Papierkorb können Sie in der Abfrage **„IsDeleted = 1“** angeben. Beispiel:
@@ -287,25 +287,25 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
 ### <a name="type-mapping-for-salesforce"></a>Typzuordnung für Salesforce
 | Salesforce-Typ | .NET-basierter Typ |
 | --- | --- |
-| Auto Number |String |
-| Kontrollkästchen |Boolean |
-| Currency |Doppelt |
-| Datum |DateTime |
-| Datum/Uhrzeit |DateTime |
-| E-Mail |String |
-| ID |String |
-| Lookup Relationship |String |
-| Multi-Select Picklist |String |
-| Number |Doppelt |
-| Prozent |Doppelt |
-| Phone |String |
-| Picklist |String |
-| Text |String |
-| Text Area |String |
-| Text Area (Long) |String |
-| Text Area (Rich) |String |
-| Text (Encrypted) |String |
-| URL |String |
+| Auto Number |Zeichenfolge |
+| Kontrollkästchen |Boolescher Wert |
+| Currency |Double |
+| Datum |Datetime |
+| Datum/Uhrzeit |Datetime |
+| E-Mail |Zeichenfolge |
+| id |Zeichenfolge |
+| Lookup Relationship |Zeichenfolge |
+| Multi-Select Picklist |Zeichenfolge |
+| Number |Double |
+| Prozent |Double |
+| Phone |Zeichenfolge |
+| Picklist |Zeichenfolge |
+| Text |Zeichenfolge |
+| Text Area |Zeichenfolge |
+| Text Area (Long) |Zeichenfolge |
+| Text Area (Rich) |Zeichenfolge |
+| Text (Encrypted) |Zeichenfolge |
+| URL |Zeichenfolge |
 
 > [!NOTE]
 > Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).

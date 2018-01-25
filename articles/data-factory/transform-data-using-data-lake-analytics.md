@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2017
+ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 5e54464ceabfe1fea2af80d63e538bea6a0a50a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7800329e7f56d604c7911d3997fa76a0fac91664
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](v1/data-factory-usql-activity.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-usql-activity.md)
 > * [Version 2 – Vorschauversion](transform-data-using-data-lake-analytics.md)
 
 Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Kapitel wird die **U-SQL-Aktivität von Data Lake Analytics** beschrieben, die ein **U-SQL**-Skript auf einem mit **Azure Data Lake Analytics** verknüpften Computedienst ausführt. 
@@ -37,11 +37,11 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die in der JSON-Definition verwendet werden. 
 
-| Eigenschaft                 | Beschreibung                              | Erforderlich                                 |
+| Eigenschaft                 | BESCHREIBUNG                              | Erforderlich                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics**fest. | Ja                                      |
 | **accountName**          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
-| **dataLakeAnalyticsUri** | URI des Azure Data Lake Analytics-Kontos.           | Nein                                       |
+| **dataLakeAnalyticsUri** | URI des Azure Data Lake Analytics-Kontos.           | Nein                                        |
 | **subscriptionId**       | Azure-Abonnement-ID                    | Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). |
 | **resourceGroupName**    | Azure-Ressourcengruppenname                | Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet). |
 
@@ -53,7 +53,7 @@ Der mit Azure Data Lake Analytics verknüpfte Dienst erfordert für die Verbindu
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft                | Beschreibung                              | Erforderlich |
+| Eigenschaft                | BESCHREIBUNG                              | Erforderlich |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Geben Sie die Client-ID der Anwendung an.     | Ja      |
 | **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | Ja      |
@@ -117,19 +117,19 @@ Der folgende JSON-Ausschnitt definiert eine Pipeline mit einer U-SQL-Aktivität 
 
 Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Aktivität spezifisch sind. 
 
-| Eigenschaft            | Beschreibung                              | Erforderlich |
+| Eigenschaft            | BESCHREIBUNG                              | Erforderlich |
 | :------------------ | :--------------------------------------- | :------- |
-| Name                | Name der Aktivität in der Pipeline     | Ja      |
-| Beschreibung         | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
-| Typ                | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **DataLakeAnalyticsU-SQL**. | Ja      |
+| name                | Name der Aktivität in der Pipeline     | Ja      |
+| Beschreibung         | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
+| type                | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **DataLakeAnalyticsU-SQL**. | Ja      |
 | linkedServiceName   | Mit Azure Data Lake Analytics verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  |Ja       |
 | scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Ja      |
 | scriptLinkedService | Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. | Ja      |
-| degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein       |
-| priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein       |
-| parameters          | Parameter für das U-SQL-Skript          | Nein       |
-| runtimeVersion      | Die Runtime-Version des zu verwendenden U-SQL-Moduls | Nein       |
-| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen: **Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen ausgeführt. **Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw. **SingleBox:** Es wird die vollständige Kompilierung ausgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist. Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. | Nein |
+| degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein        |
+| priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein        |
+| Parameter          | Parameter für das U-SQL-Skript          | Nein        |
+| runtimeVersion      | Die Runtime-Version der zu verwendenden U-SQL-Engine | Nein        |
+| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen: **Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen ausgeführt. **Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw. **SingleBox:** Es wird die vollständige Kompilierung ausgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist. Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. | Nein  |
 
 Die von Data Factory übermittelte Skriptdefinition finden Sie unter [Skriptdefinition „SearchLogProcessing.txt“](#sample-u-sql-script). 
 
@@ -176,7 +176,7 @@ In der beispielhaften Pipelinedefinition werden die Eingabe- und Ausgabeparamete
 }
 ```
 
-Anstelle von hartcodierten Werten können dynamische Parameter verwendet werden. Beispiel: 
+Anstelle von hartcodierten Werten können dynamische Parameter verwendet werden. Beispiel:  
 
 ```json
 "parameters": {

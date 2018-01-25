@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 336e74d8f69cb04e6bd0e85fc68ba38b218fabae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbea84511c37cf52c3d98f0247e5ce3c0b2a05c3
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Ermöglicht es, den Chaos-Testdienst zu starten und zu beenden sowie seine Berichte anzuzeigen.
 
 ## <a name="commands"></a>Befehle
 
-|Befehl|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 |    report| Ruft das jeweils nächste Segment des Chaos-Berichts basierend auf dem übergebenen Fortsetzungstoken oder dem übergebenen Zeitraum ab.|
 |    Start | Startet Chaos mit den angegebenen Chaos-Parametern, wenn Chaos noch nicht im Cluster ausgeführt wird.|
@@ -39,7 +39,7 @@ Sie können entweder das ContinuationToken zum Abrufen des nächsten Segments de
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --continuation-token| Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein.|
 | --end-time-utc   | Die Anzahl von Takten (Ticks), die die Endzeit des Zeitraums angeben, für den ein Chaos-Bericht generiert werden soll. Ausführliche Informationen zu Ticks finden Sie unter [DateTime.Ticks-Eigenschaft](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29).|
@@ -48,7 +48,7 @@ Sie können entweder das ContinuationToken zum Abrufen des nächsten Segments de
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug          | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h        | Zeigt diese Hilfemeldung an und beendet.|
@@ -61,7 +61,7 @@ Startet Chaos mit den angegebenen Chaos-Parametern, wenn Chaos noch nicht im Clu
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --app-type-health-policy-map  | JSON-codierte Liste mit maximalem Prozentsatz fehlerhafter Anwendungen für bestimmte Anwendungstypen. Jeder Eintrag gibt als Schlüssel den Namen des Anwendungstyps und als Wert eine ganze Zahl an, die dem „MaxPercentUnhealthyApplications“-Prozentsatz entspricht, der dazu verwendet wird, die Anwendungen des angegebenen Anwendungstyps zu bewerten.|
 | --disable-move-replica-faults | Deaktiviert das Verschieben von primären und sekundären Fehlern .|
@@ -77,7 +77,7 @@ Startet Chaos mit den angegebenen Chaos-Parametern, wenn Chaos noch nicht im Clu
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                    | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                  | Zeigt diese Hilfemeldung an und beendet.|
@@ -92,13 +92,13 @@ Bewirkt, dass Chaos keine weiteren Fehler plant. Wirkt sich nicht auf die aktuel
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --timeout -t| Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug  | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h| Zeigt diese Hilfemeldung an und beendet.|

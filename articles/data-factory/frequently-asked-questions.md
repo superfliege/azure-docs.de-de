@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: 197ecff6728a7a2ce78cc6ca2861a10222a6b56b
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: cf98bb7fab4942955287e8e211e98b9da59472f6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 Dieser Artikel bezieht sich auf Version 2 des Azure Data Factory-Diensts. Er enthält Antworten auf häufig gestellte Fragen zu Data Factory.  
@@ -108,7 +108,7 @@ Wenn Sie mit Azure Data Factory nicht vertraut sind, starten Sie direkt mit Vers
 Ein Azure-Abonnement kann über mindestens eine Azure Data Factory-Instanz (oder Data Factory) verfügen. Azure Data Factory enthält vier Hauptkomponenten, die zusammen als Plattform fungieren, auf der Sie datengesteuerte Workflows mit Schritten zum Verschieben und Transformieren von Daten zusammenstellen können.
 
 ### <a name="pipelines"></a>Pipelines
-Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten zur Durchführung einer Arbeitseinheit. Gemeinsam führen die Aktivitäten einer Pipeline eine Aufgabe durch. Eine Pipeline kann beispielsweise eine Gruppe von Aktivitäten enthalten, die Daten aus einem Azure-Blob erfasst, und anschließend eine Hive-Abfrage in einem HDInsight-Cluster ausführen, um die Daten zu partitionieren. Der Vorteil ist, dass Sie eine Pipeline zum Verwalten der Aktivitäten als Gruppe verwenden können, statt jede Aktivität einzeln zu verwalten. Sie können die Aktivitäten in einer Pipeline miteinander verketten, um sie sequenziell auszuführen. Sie können sie aber auch unabhängig voneinander parallel ausführen.
+Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten zur Durchführung einer Arbeitseinheit. Gemeinsam führen die Aktivitäten einer Pipeline eine Aufgabe durch. Eine Pipeline kann beispielsweise eine Gruppe von Aktivitäten enthalten, die Daten aus einem Azure-Blob erfasst, und anschließend eine Hive-Abfrage in einem HDInsight-Cluster ausführen, um die Daten zu partitionieren. Der Vorteil ist, dass Sie eine Pipeline zum Verwalten der Aktivitäten als Gruppe verwenden können, statt jede Aktivität einzeln zu verwalten. Sie können die Aktivitäten in einer Pipeline miteinander verketten, um sie sequenziell auszuführen. Sie können sie aber auch unabhängig voneinander parallel ausführen.
 
 ### <a name="activity"></a>Aktivität
 Aktivitäten stellen einen Verarbeitungsschritt in einer Pipeline dar. Beispielsweise können Sie eine *Kopieraktivität* verwenden, um Daten zwischen zwei Datenspeichern zu kopieren. Analog dazu können Sie eine Hive-Aktivität verwenden, die eine Hive-Abfrage für einen Azure HDInsight-Cluster ausführt, um Ihre Daten zu transformieren oder zu analysieren. Data Factory unterstützt drei Arten von Aktivitäten: Datenverschiebungsaktivitäten, Datentransformationsaktivitäten und Steuerungsaktivitäten.

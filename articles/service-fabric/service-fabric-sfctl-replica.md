@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: bd16dd889cbe0f05d7e60f444c6c5fa2e65f64a4
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 422c19dfa9a204d98a898f76bc1af92a05c054d0
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Ermöglicht es, Replikate zu verwalten, die zu Servicepartitionen gehören.
 
 ## <a name="commands"></a>Befehle
 
-|Befehl|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 |    deployed  | Ruft die Details eines Replikats ab, das auf einem Service Fabric-Knoten bereitgestellt wird.|
 |    deployed-list| Ruft die Liste der Replikate ab, die auf einem Service Fabric-Knoten bereitgestellt werden.|
@@ -44,7 +44,7 @@ Ruft die Details des Replikats ab, das auf einem Service Fabric-Knoten bereitges
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
@@ -53,7 +53,7 @@ Ruft die Details des Replikats ab, das auf einem Service Fabric-Knoten bereitges
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
@@ -64,11 +64,11 @@ Ruft die Details des Replikats ab, das auf einem Service Fabric-Knoten bereitges
 ## <a name="sfctl-replica-health"></a>sfctl replica health
 Ruft die Integrität eines zustandsbehafteten Service Fabric-Dienstreplikats oder einer zustandslosen Service Fabric-Dienstinstanz ab.
 
-Ruft die Integrität eines Service Fabric-Replikats ab. Verwenden Sie „EventsHealthStateFilter“, um die Sammlung der Integritätsereignisse (HealthEvents), die für das Replikat gemeldet wurden, anhand des Integritätsstatus zu filtern. .
+Ruft die Integrität eines Service Fabric-Replikats ab. Verwenden Sie „EventsHealthStateFilter“, um die Sammlung der Integritätsereignisse (HealthEvents), die für das Replikat gemeldet wurden, anhand des Integritätsstatus zu filtern. zu erstellen und zu verwalten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
 | --replica-id [erforderlich]| Der Bezeichner (ID) des Replikats.|
@@ -77,7 +77,7 @@ Ruft die Integrität eines Service Fabric-Replikats ab. Verwenden Sie „EventsH
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                  | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                | Zeigt diese Hilfemeldung an und beendet.|
@@ -92,7 +92,7 @@ Die Antwort enthält die ID, die Rolle, den Status, die Integrität, den Knotenn
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
 | --replica-id [erforderlich]| Der Bezeichner (ID) des Replikats.|
@@ -101,7 +101,7 @@ Die Antwort enthält die ID, die Rolle, den Status, die Integrität, den Knotenn
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
@@ -117,7 +117,7 @@ Die Antwort enthält die ID, die Rolle, den Status, die Integrität, den Knotenn
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
 | --continuation-token  | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein.|
@@ -125,7 +125,7 @@ Die Antwort enthält die ID, die Rolle, den Status, die Integrität, den Knotenn
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
@@ -140,7 +140,7 @@ Diese API simuliert einen Service Fabric-Replikatfehler durch Entfernen eines Re
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
@@ -150,7 +150,7 @@ Diese API simuliert einen Service Fabric-Replikatfehler durch Entfernen eines Re
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
@@ -165,7 +165,7 @@ Startet ein Dienstreplikat eines permanenten Diensts neu, das auf einem Knoten a
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
@@ -174,7 +174,7 @@ Startet ein Dienstreplikat eines permanenten Diensts neu, das auf einem Knoten a
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|

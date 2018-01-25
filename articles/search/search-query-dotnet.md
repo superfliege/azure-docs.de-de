@@ -13,11 +13,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/19/2017
 ms.author: brjohnst
-ms.openlocfilehash: 52bd0fd4cf70401dcf881c7f28d5cd91397bb059
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c3c22b83346269cf3c0327fe3fb98510a6266733
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>Abfragen des Azure Search-Index mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Dieser Artikel beschreibt, wie Sie einen Index mithilfe des [Azure Search .NET S
 [Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md) und [füllen Sie ihn mit Daten](search-what-is-data-import.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen.
 
 > [!NOTE]
-> Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [bei GitHub](http://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
+> Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](http://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Identifizieren des Abfrage-API-Schlüssel Ihres Azure Search-Diensts
 Nach der Erstellung eines Azure Search-Index sind Sie nun fast bereit, Abfragen mit dem .NET SDK auszugeben. Zunächst müssen Sie aber einen der Abfrage-API-Schlüssel abrufen, die für den bereitgestellten Suchdienst generiert wurden. Das .NET SDK sendet diesen API-Schlüssel für jede Anforderung an Ihren Dienst. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
@@ -71,7 +71,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 Die Suche mit dem .NET SDK erfolgt ganz einfach durch Aufrufen der `Documents.Search`-Methode für `SearchIndexClient`. Diese Methode verwendet einige Parameter, einschließlich des Suchtexts, zusammen mit einem `SearchParameters` -Objekt, mit dem die Abfrage weiter verfeinert werden kann.
 
 #### <a name="types-of-queries"></a>Abfragetypen
-Die zwei wichtigsten [Abfragetypen](search-query-overview.md#types-of-queries), die Sie verwenden werden, sind `search` und `filter`. Eine `search`-Abfrage sucht in Ihrem Index in allen *durchsuchbaren* Feldern nach einem oder mehreren Begriffen. Eine `filter`-Abfrage wertet einen booleschen Ausdruck für alle *filterbaren* Felder in einem Index aus.
+Die zwei wichtigsten [Abfragetypen](search-query-overview.md#types-of-queries), die Sie verwenden werden, sind `search` und `filter`. Eine `search`-Abfrage sucht in Ihrem Index in allen *durchsuchbaren* Feldern nach einem oder mehreren Begriffen. Eine `filter`-Abfrage wertet einen booleschen Ausdruck für alle *filterbaren* Felder in einem Index aus. Suchvorgänge und Filter können separat oder zusammen verwendet werden.
 
 Suchen und Filtern erfolgt mithilfe der `Documents.Search` -Methode. Eine Suchabfrage kann im Parameter `searchText` und ein Filterausdruck kann in der Eigenschaft `Filter` der Klasse `SearchParameters` übergeben werden. Um ohne Suche zu filtern, übergeben Sie einfach `"*"` für den Parameter `searchText`. Wenn Sie ohne Filter suchen möchten, legen Sie die Eigenschaft `Filter` nicht fest, oder übergeben Sie einfach keine `SearchParameters`-Instanz.
 

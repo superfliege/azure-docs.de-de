@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: ad4b5aeed645512774f1a3ecf94de37beff26b22
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: f637e3c744d61f6fda755c162609d7cc9f4619c7
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern
 ## <a name="overview"></a>Übersicht
@@ -270,7 +270,7 @@ In diesem Szenario wird veranschaulicht, wie Sie vorhandene benutzerdefinierte I
 
 
 #### <a name="step-3-use-existing-image"></a>Schritt 3: Verwenden des vorhandenen Images
-Sie können ein vorhandenes Image verwenden. Oder Sie erstellen [ein Image eines vorhandenen Computers](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Der Computer, von dem Sie ein Image erstellen, muss kein Computer der DS\* -Serie sein. Wenn Sie über ein Image verfügen, wird in den folgenden Schritten erläutert, wie Sie das PowerShell-Cmdlet **Start-AzureStorageBlobCopy** verwenden, um das Image in das Storage Premium-Konto zu kopieren.
+Sie können ein vorhandenes Image verwenden. Oder Sie erstellen [ein Image eines vorhandenen Computers](../classic/capture-image-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Der Computer, von dem Sie ein Image erstellen, muss kein Computer der DS\* -Serie sein. Wenn Sie über ein Image verfügen, wird in den folgenden Schritten erläutert, wie Sie das PowerShell-Cmdlet **Start-AzureStorageBlobCopy** verwenden, um das Image in das Storage Premium-Konto zu kopieren.
 
     #Get storage account keys:
     #Standard Storage account
@@ -392,7 +392,7 @@ Eine Strategie ist das Hinzufügen weiterer sekundärer Replikate zur AlwaysOn-V
 
 Wenn Sie Windows-Speicherpools innerhalb des virtuellen Computers für einen höheren E/A-Durchsatz verwenden, werden diese während einer vollständigen Clusterüberprüfung offline geschaltet. Die Überprüfung ist erforderlich, wenn Sie dem Cluster Knoten hinzufügen. Der Zeitaufwand zum Ausführen des Tests kann variieren. Sie sollten den Test daher in einer repräsentativen Testumgebung ausführen, um die ungefähre Dauer festzustellen.
 
-Sie sollten Zeit für die Durchführung manueller Failover- und Chaostests auf den neu hinzugefügten Knoten einplanen, um sicherzustellen, dass die AlwaysOn-Funktionen für hohe Verfügbarkeit wie erwartet ausgeführt werden können.
+Sie sollten Zeit für die Durchführung manueller Failover- und Chaostests auf den neu hinzugefügten Knoten einplanen, um sicherzustellen, dass die AlwaysOn-Funktionen für Hochverfügbarkeit wie erwartet ausgeführt werden können.
 
 ![DeploymentUseAlways On2][7]
 
@@ -412,7 +412,7 @@ Sie sollten Zeit für die Durchführung manueller Failover- und Chaostests auf d
    >
    >
 5. Beenden Sie den Benutzer-/Anwendungszugriff auf SQL Server (bei Verwendung von Speicherpools).
-6. Beenden Sie SQL Server-Datenbankmoduldienste auf allen Knoten (bei Verwendung von Speicherpools).
+6. Beenden Sie SQL Server-Engine-Dienste auf allen Knoten (bei Verwendung von Speicherpools).
 7. Fügen Sie neue Knoten zum Cluster hinzu, und führen Sie eine vollständige Überprüfung durch.
 8. Sobald die Überprüfung erfolgreich abgeschlossen wurde, starten Sie alle SQL Server-Dienste.
 9. Sichern Sie die Transaktionsprotokolle, und stellen Sie die Benutzerdatenbanken wieder her.

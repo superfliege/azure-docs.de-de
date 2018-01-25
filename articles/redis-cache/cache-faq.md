@@ -3,8 +3,8 @@ title: FAQ zu Azure Redis Cache | Microsoft Docs
 description: "In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Redis Cache."
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: sdanie
-ms.openlocfilehash: dcabdb789489af1996276d8838afde410473738d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: af185725433b0eacc5d57b90fb2e75edd143a59a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – häufig gestellte Fragen
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Redis Cache.
@@ -106,9 +106,9 @@ Nachfolgend sind verschiedene Aspekte aufgeführt, die Ihnen bei der Wahl helfen
 * **Speicher**: Der Basic-Tarif und der Standard-Tarif bieten 250 MB bis 53 GB. Der Premium-Tarif bietet bis zu 530 GB. Weitere Informationen finden Sie unter [Azure Redis Cache – Preise](https://azure.microsoft.com/pricing/details/cache/).
 * **Netzwerkleistung**: Bei einer Workload, die einen hohen Durchsatz erfordert, bietet der Premium-Tarif im Vergleich zum Standard- oder Basic-Tarif eine größere Bandbreite. Zudem haben die größeren Caches aufgrund des zugrunde liegenden virtuellen Computers, der den Cache hostet, bei jedem Tarif eine höhere Bandbreite. Ausführlichere Informationen finden Sie in der [folgenden Tabelle](#cache-performance).
 * **Durchsatz**: Der Premium-Tarif bietet den maximal verfügbaren Durchsatz. Wenn Cacheserver oder -clients die Bandbreitengrenzwerte erreichen, können Timeouts auf der Clientseite auftreten. Ausführlichere Informationen finden Sie in der unten stehenden Tabelle.
-* **Hohe Verfügbarkeit/SLA**: Azure Redis Cache garantiert, dass ein Standard-/Premium-Cache mindestens 99,9% der Zeit zur Verfügung steht. Weitere Informationen zu unserer SLA finden Sie unter [Azure Redis Cache Preise](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Die SLA deckt nur die Konnektivität zu den Cache-Endpunkten ab. Sie bezieht sich dagegen nicht auf Schutz vor Datenverlusten. Es wird empfohlen, das Redis-Feature für Datenpersistenz im Premium-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen.
+* **Hochverfügbarkeit/SLA**: Azure Redis Cache garantiert, dass ein Standard-/Premium-Cache mindestens 99,9% der Zeit zur Verfügung steht. Weitere Informationen zu unserer SLA finden Sie unter [Azure Redis Cache Preise](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Die SLA deckt nur die Konnektivität zu den Cache-Endpunkten ab. Sie bezieht sich dagegen nicht auf Schutz vor Datenverlusten. Es wird empfohlen, das Redis-Feature für Datenpersistenz im Premium-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen.
 * **Redis-Datenpersistenz**: Der Premium-Tarif ermöglicht die Persistenz der Cachedaten in einem Azure-Speicherkonto. In einem Basic- oder Standard-Cache werden alle Daten nur im Arbeitsspeicher gespeichert. Bei Problemen mit der zugrunde liegenden Infrastruktur kann es zu Datenverlusten kommen. Es wird empfohlen, das Redis-Feature für Datenpersistenz im Premium-Tarif zu verwenden, um den Schutz vor Datenverlusten zu erhöhen. Azure Redis Cache bietet RDB- und AOF-Optionen (demnächst verfügbar) bei der Redis-Persistenz. Weitere Informationen finden Sie unter [Konfigurieren von Persistenz für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-persistence.md).
-* **Redis Cluster**: Zum Erstellen von Caches mit einer Größe von über 53 GB oder zum horizontalen Partitionieren („Sharding“) von Daten über mehrere Redis-Knoten hinweg können Sie das im Premium-Tarif verfügbare Redis-Clustering verwenden. Für die hohe Verfügbarkeit besteht jeder Knoten aus einem Paar aus primärem Cache und Replikatcache. Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md).
+* **Redis Cluster**: Zum Erstellen von Caches mit einer Größe von über 53 GB oder zum horizontalen Partitionieren („Sharding“) von Daten über mehrere Redis-Knoten hinweg können Sie das im Premium-Tarif verfügbare Redis-Clustering verwenden. Für Hochverfügbarkeit besteht jeder Knoten aus einem Paar aus primärem Cache und Replikatcache. Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md).
 * **Erhöhte Sicherheit und Isolation**: Die Bereitstellung von Azure Virtual Network (VNET) bietet verbesserte Sicherheit und Isolation für den Azure Redis Cache sowie Subnetze, Zugriffssteuerungsrichtlinien und andere Features, mit denen der Zugriff weiter eingeschränkt wird. Weitere Informationen finden Sie unter [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-vnet.md).
 * **Konfigurieren von Redis**: Sowohl im Standard- als auch im Premium-Tarif können Sie Redis für Keyspace-Benachrichtigungen konfigurieren.
 * **Maximale Anzahl von Clientverbindungen**: Der Premium-Tarif bietet die maximale Anzahl von Clients, die eine Verbindung mit Redis herstellen können, mit einer größeren Anzahl an Verbindungen für größere Caches. Weitere Informationen finden Sie unter [Azure Redis Cache – Preise](https://azure.microsoft.com/pricing/details/cache/).
@@ -183,7 +183,7 @@ Informationen zur Nutzung von Azure Redis Cache in Verbindung mit PowerShell in 
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Was bewirken die Konfigurationsoptionen für "StackExchange.Redis"?
 Für "StackExchange.Redis" stehen zahlreiche Optionen zur Verfügung. In diesem Abschnitt werden einige der gängigsten Optionen erläutert. Ausführlichere Informationen zu den StackExchange.Redis-Optionen finden Sie unter [StackExchange.Redis-Konfiguration](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Beschreibung | Empfehlung |
+| ConfigurationOptions | BESCHREIBUNG | Empfehlung |
 | --- | --- | --- |
 | AbortOnConnectFail |Wenn Sie diese Option auf "true" setzen, wird die Verbindung nach einem Netzwerkausfall nicht wiederhergestellt. |Bei Festlegung auf "false" kann "StackExchange.Redis" die Verbindung automatisch wiederherstellen. |
 | ConnectRetry |Die Anzahl von Versuchen für die Verbindungsherstellung bei der anfänglichen Verbindung. |Die folgenden Informationen bieten eine Orientierung. |
@@ -192,7 +192,7 @@ Für "StackExchange.Redis" stehen zahlreiche Optionen zur Verfügung. In diesem 
 In der Regel reichen die Standardwerte des Clients aus. Sie können die Optionen basierend auf Ihrer Workload optimieren.
 
 * **Wiederholungsversuche**
-  * Für „ConnectRetry“ und „ConnectTimeout“ lautet die allgemeine Empfehlung, nach einem Fehler schnell abzubrechen und den Vorgang zu wiederholen. Diese Empfehlung hängt von Ihrer Workload und davon ab, wie lange es auf Ihrem Client durchschnittlich dauert, einen Redis-Befehl auszugeben und eine Antwort zu empfangen.
+  * Für „ConnectRetry“ und „ConnectTimeout“ lautet die allgemeine Empfehlung, Fail-Fast-fähig zu sein und den Vorgang zu wiederholen. Diese Empfehlung hängt von Ihrer Workload und davon ab, wie lange es auf Ihrem Client durchschnittlich dauert, einen Redis-Befehl auszugeben und eine Antwort zu empfangen.
   * Ermöglichen Sie eine automatische Neuverbindung durch "StackExchange.Redis", statt die Prüfung des Verbindungsstatus und die erneute Verbindungsherstellung selbst zu prüfen. **Vermeiden Sie die Verwendung der ConnectionMultiplexer.IsConnected-Eigenschaft**.
   * Schneeballeffekt: Gelegentlich kann es zu Problemen kommen, bei denen Wiederholungsversuche zu nicht behebbaren, immer wiederkehrenden Problemen führen. Wenn der Schneeballeffekt auftritt, sollten Sie die Verwendung eines exponentiellen Backoff/Retry-Algorithmus in Erwägung ziehen, wie er im Artikel [Allgemeiner Leitfaden zum Wiederholen von Vorgängen](../best-practices-retry-general.md) der Microsoft Patterns & Practices-Gruppe beschrieben wird.
 * **Timeoutwerte**
@@ -201,7 +201,7 @@ In der Regel reichen die Standardwerte des Clients aus. Sie können die Optionen
   * Verwenden Sie eine einzelne ConnectionMultiplexer-Instanz für die Anwendung. Sie können "LazyConnection" verwenden, um eine einzelne Instanz zu erstellen, die über eine Connection-Eigenschaft zurückgegeben wird, wie gezeigt in [Verbindungsherstellung mit dem Cache unter Verwendung der ConnectionMultiplexer-Klasse](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * Legen Sie die `ConnectionMultiplexer.ClientName` -Eigenschaft zu Diagnosezwecken auf einen eindeutigen App-Instanznamen fest.
   * Verwenden Sie für benutzerdefinierte Workloads mehrere `ConnectionMultiplexer` -Instanzen.
-      * Sie können diesem Modell folgen, wenn die Last in Ihrer Anwendung variiert. Beispiel:
+      * Sie können diesem Modell folgen, wenn die Last in Ihrer Anwendung variiert. Beispiel: 
       * Sie können einen Multiplexer zur Verarbeitung großer Schlüssel verwenden.
       * Sie können einen Multiplexer zur Verarbeitung kleiner Schlüssel verwenden.
       * Sie können verschiedene Werte für Verbindungstimeouts und eine retry-Logik für jede verwendete ConnectionMultiplexer-Instanz verwenden.

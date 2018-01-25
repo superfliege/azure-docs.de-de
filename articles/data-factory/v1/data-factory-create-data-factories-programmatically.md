@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 72def45d7f5085c6aa68c5236a8a274501e470ce
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 35041e148e52e5c567601c53dffac05c88d45ed5
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Azure Data Factory .NET SDK
 > [!NOTE]
@@ -115,7 +115,7 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
    4. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Konsolenanwendung** aus.
    5. Geben Sie als Name **DataFactoryAPITestApp** ein.
    6. Wählen Sie als Speicherort **C:\ADFGetStarted** aus.
-   7. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+   7. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 2. Klicken Sie auf **Extras**, zeigen Sie auf **NuGet-Paket-Manager**, und klicken Sie auf **Paket-Manager-Konsole**.
 3. Führen Sie in der **Paket-Manager-Konsole** die folgenden Schritte aus:
    1. Führen Sie den folgenden Befehl zum Installieren des Data Factory-Pakets aus: `Install-Package Microsoft.Azure.Management.DataFactories`

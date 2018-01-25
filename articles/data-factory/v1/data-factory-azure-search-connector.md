@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2415850491018f4e27c5ec930b688026cc12b41a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: d8848f93518392333df16c9c7bf07bd0b2529034
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Push-Übertragung von Daten in den Azure Search-Index mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-azure-search-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-azure-search-connector.md)
 > * [Version 2 – Vorschauversion](../connector-azure-search.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to an Azure Search index using Azure Data Factory](../connector-azure-search.md) (Kopieren von Daten in einen Azure Search-Index mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to an Azure Search index using Azure Data Factory](../connector-azure-search.md) (Kopieren von Daten in einen Azure Search-Index mit Azure Data Factory).
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität verwenden können, um Daten aus einem lokalen, unterstützten Quelldatenspeicher per Push in den Azure Search-Index zu übertragen. In der Spalte „Quelle“ der Tabelle [Unterstützte Datenquellen und Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) sind unterstützte Quelldatenspeicher aufgelistet. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
 
@@ -57,9 +57,9 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 
 Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den mit Azure Search verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
-| Typ | Die Typeigenschaft muss auf **AzureSearch** festgelegt werden. | Ja |
+| type | Die Typeigenschaft muss auf **AzureSearch** festgelegt werden. | Ja |
 | URL | URL für den Azure Search-Dienst. | Ja |
 | key | Admin-Schlüssel für den Azure Search-Dienst. | Ja |
 
@@ -67,9 +67,9 @@ Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den mit
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md) . Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen ähnlich. Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **AzureSearchIndex** hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
-| Typ | Die Typeigenschaft muss auf **AzureSearchIndex** eingestellt sein.| Ja |
+| type | Die Typeigenschaft muss auf **AzureSearchIndex** eingestellt sein.| Ja |
 | IndexName | Name eines Azure Search-Index. Data Factory erstellt den Index nicht. Der Index muss in Azure Search vorhanden sein. | Ja |
 
 
@@ -78,10 +78,10 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Wenn bei der Kopieraktivität die Senke den Typ **AzureSearchIndexSink** aufweist, sind im Abschnitt typeProperties die folgenden Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).| Zusammenführen (Standard)<br/>Hochladen| Nein |
-| writeBatchSize | Lädt Daten in den Azure Search-Index hoch,wenn die Puffergröße „writeBatchSize“ erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property). | 1 bis 1.000. Der Standardwert ist 1000. | Nein |
+| WriteBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).| Zusammenführen (Standard)<br/>Hochladen| Nein  |
+| writeBatchSize | Lädt Daten in den Azure Search-Index hoch,wenn die Puffergröße „writeBatchSize“ erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property). | 1 bis 1.000. Der Standardwert ist 1000. | Nein  |
 
 ### <a name="writebehavior-property"></a>Eigenschaft „WriteBehavior“
 AzureSearchSink fügt Daten ein/aktualisiert beim Schreiben von Daten. Dies bedeutet, dass Azure Search beim Schreiben eines Dokuments das bestehende Dokument aktualisiert, anstatt eine Konfliktausnahme auszulösen, wenn der Dokumentenschlüssel bereits im Azure Search-Index vorhanden ist.
@@ -101,11 +101,11 @@ In der folgenden Tabelle wird angegeben, ob ein Azure Search-Datentyp unterstüt
 
 | Azure Search-Datentyp | In Azure Search-Senke unterstützt |
 | ---------------------- | ------------------------------ |
-| String | J |
+| Zeichenfolge | J |
 | Int32 | J |
 | Int64 | J |
 | Double | J |
-| Boolean | J |
+| Boolescher Wert | J |
 | DataTimeOffset | J |
 | String Array | N |
 | GeographyPoint | N |

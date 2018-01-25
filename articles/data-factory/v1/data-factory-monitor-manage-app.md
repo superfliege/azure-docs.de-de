@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 65b5389837dc1d1693b1c4326b98264c8d75fd06
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0678e9bf6ea9e4161fc291729f1480ac7082796a
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“
 > [!div class="op_single_selector"]
@@ -161,7 +161,7 @@ Das Aktivitätsfenster kann einen der folgenden Status haben:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Unterstatus</th><th align="left">Beschreibung</th>
+    <th align="left">Status</th><th align="left">Unterstatus</th><th align="left">BESCHREIBUNG</th>
 </tr>
 <tr>
     <td rowspan="8">Warten</td><td>ScheduleTime</td><td>Der Zeitpunkt für die Ausführung des Aktivitätsfensters ist noch nicht erreicht.</td>
@@ -325,11 +325,11 @@ Die folgende Tabelle enthält die Liste mit den verfügbaren Ereignissen und Sta
 | Ereignisname | Status | Unterstatus |
 | --- | --- | --- |
 | Aktivitätsausführung gestartet |Gestartet |Wird gestartet |
-| Aktivitätsausführung beendet |Erfolgreich |Erfolgreich |
+| Aktivitätsausführung beendet |Succeeded |Succeeded |
 | Aktivitätsausführung beendet |Fehler |Fehlerhafte Ressourcenzuordnung<br/><br/>Fehler bei der Ausführung<br/><br/>Zeitüberschreitung<br/><br/>Fehler bei der Überprüfung<br/><br/>Abandoned |
 | Bedarfsgesteuerte Erstellung eines HDI-Clusters gestartet |Gestartet |-|
-| Bedarfsgesteuerte Erstellung eines HDI-Clusters erfolgreich |Erfolgreich |-|
-| Bedarfsgesteuert erstellten HDI-Cluster gelöscht |Erfolgreich |-|
+| Bedarfsgesteuerte Erstellung eines HDI-Clusters erfolgreich |Succeeded |-|
+| Bedarfsgesteuert erstellten HDI-Cluster gelöscht |Succeeded |-|
 
 ### <a name="to-edit-delete-or-disable-an-alert"></a>So bearbeiten, löschen oder deaktivieren Sie eine Warnung
 

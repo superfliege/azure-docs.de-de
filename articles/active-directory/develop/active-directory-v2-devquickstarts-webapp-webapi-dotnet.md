@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 185780da206e4d0ed0d8e5f8b24a546e3d9b3800
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f59c9e2c523db319565c1cca13eb85f809b2bdd6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="calling-a-web-api-from-a-net-web-app"></a>Aufrufen einer Web-API über eine .NET-Web-App
 Mit dem v2.0-Endpunkt können Sie schnell eine Authentifizierung zu Ihren Web-Apps und Web-APIs hinzufügen, die sowohl persönliche Microsoft-Konten als auch Geschäfts-, Schul- oder Unikonten unterstützen.  Hier erstellen wir eine MVC-Web-App, über die Benutzer unter Verwendung von OpenID Connect und unterstützt durch die OWIN-Middleware von Microsoft angemeldet werden.  Die Web-App ruft OAuth 2.0-Zugriffstoken für eine durch OAuth 2.0 gesicherte Web-API ab, die das Erstellen, Lesen und Löschen von Daten in der Aufgabenliste eines bestimmten Benutzers ermöglicht.
@@ -27,7 +27,7 @@ Mit dem v2.0-Endpunkt können Sie schnell eine Authentifizierung zu Ihren Web-Ap
 Dieses Tutorial konzentriert sich hauptsächlich auf das Abrufen und Verwenden von Zugriffstoken mithilfe von MSAL in einer Web-App. Eine vollständige Beschreibung finden Sie [hier](active-directory-v2-flows.md#web-apps).  Vorab möchten Sie vielleicht erfahren, wie eine [grundlegende Anmeldefunktion zu einer Web-App hinzugefügt wird](active-directory-v2-devquickstarts-dotnet-web.md) oder wie [eine Web-API ausreichend geschützt wird](active-directory-v2-devquickstarts-dotnet-api.md).
 
 > [!NOTE]
-> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 > 
 > 
 
@@ -68,7 +68,7 @@ Konfigurieren Sie nun die OWIN-Middleware für die Verwendung des [Authentifizie
 * Öffnen Sie die Datei `App_Start\Startup.Auth.cs`, und fügen Sie `using`-Anweisungen für die oben genannten Bibliotheken hinzu.
 * Implementieren Sie in der gleichen Datei die `ConfigureAuth(...)` -Methode.  Die Parameter, die Sie in `OpenIDConnectAuthenticationOptions` bereitstellen, dienen als Koordinaten für Ihre Anwendung zur Kommunikation mit Azure AD.
 
-```C#
+```csharp
 public void ConfigureAuth(IAppBuilder app)
 {
     app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -116,7 +116,7 @@ In der `AuthorizationCodeReceived`-Benachrichtigung möchten wir [OAuth 2.0 zusa
 * Fügen Sie eine weitere `using`-Anweisung zur Datei `App_Start\Startup.Auth.cs` für MSAL hinzu.
 * Fügen Sie nun eine neue Methode, den `OnAuthorizationCodeReceived`-Ereignishandler, hinzu.  Dieser Handler nutzt MSAL zum Abrufen eines Zugriffstokens auf die To-Do List-API und speichert das Token im Tokencache von MSAL für spätere Zwecke:
 
-```C#
+```csharp
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
 {
         string userObjectId = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
@@ -144,7 +144,7 @@ Jetzt wird das in Schritt 3 abgerufene Zugriffstoken benötigt.  Öffnen Sie die
     `using Microsoft.Identity.Client;`
 * Verwenden Sie in der `Index`-Aktivität die `AcquireTokenSilentAsync`-Methode von MSAL, um ein Zugriffstoken abzurufen, das zum Lesen von Daten aus dem To-Do List-Dienst verwendet werden kann:
 
-```C#
+```csharp
 // ...
 string userObjectID = ClaimsPrincipal.Current.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
 string tenantID = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
@@ -160,7 +160,7 @@ result = await app.AcquireTokenSilentAsync(new string[] { Startup.clientId });
 * Im Beispiel wird dann das resultierende Token auf die HTTP GET-Anforderung als `Authorization`-Header hinzugefügt, das der To-Do List-Dienst zum Authentifizieren der Anforderung nimmt.
 * Wenn der To-Do List-Dienst eine `401 Unauthorized`-Antwort zurückgibt, sind die Zugriffstoken in MSAL aus irgendeinem Grund ungültig geworden.  In diesem Fall sollten Sie alle Zugriffstoken aus dem MSAL-Cache löschen und dem Benutzer eine Meldung anzeigen, dass er sich möglicherweise erneut anmelden muss, wodurch der Fluss für die Tokenerfassung neu gestartet wird.
 
-```C#
+```csharp
 // ...
 // If the call failed with access denied, then drop the current access token from the cache,
 // and show the user an error indicating they might need to sign-in again.
@@ -175,7 +175,7 @@ if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
 
 * Wenn MSAL aus irgendeinem Grund keine Zugriffstoken zurückgeben kann, sollten Sie den Benutzer anweisen, sich erneut anzumelden.  Dies ist so einfach wie das Abfangen jeder `MSALException`:
 
-```C#
+```csharp
 // ...
 catch (MsalException ee)
 {

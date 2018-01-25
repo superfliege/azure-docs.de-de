@@ -3,7 +3,7 @@ title: 'Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern, Gruppen u
 description: "Hier werden Benutzer, Gruppen und Kontakte in der Azure AD Connect-Synchronisierung erläutert."
 services: active-directory
 documentationcenter: 
-author: MarkusVi
+author: billmath
 manager: mtillman
 ms.assetid: 8d204647-213a-4519-bd62-49563c421602
 ms.service: active-directory
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi;andkjell
-ms.openlocfilehash: a08e3f3593e1ec04ebf65fef2880c965e02775d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f4bc51630653bfe341bfcb5c11699020053585a
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern, Gruppen und Kontakten
 Es gibt verschiedene Gründe, weshalb Sie möglicherweise über mehrere Active Directory-Gesamtstrukturen verfügen, und es gibt eine Reihe unterschiedlicher Bereitstellungstopologien. Häufige Modelle umfassen eine Kontoressourcenbereitstellung und per GAL synchronisierte Gesamtstrukturen nach einer Unternehmensfusion oder -übernahme. Es gibt zwar reine Modelle, Hybridmodelle sind jedoch ebenfalls häufig vorhanden. Die Standardkonfiguration der Azure AD Connect-Synchronisierung geht von keinem bestimmten Modell aus. Es können jedoch auf Basis des im Installationshandbuch ausgewählten Benutzerabgleichs unterschiedliche Verhaltensweisen beobachtet werden.
@@ -70,7 +70,7 @@ Folgende Annahme gilt: Wenn ein deaktiviertes Benutzerkonto gefunden wird, wird 
 ## <a name="changing-sourceanchor"></a>Ändern von "sourceAnchor"
 Nachdem ein Objekt nach Azure AD exportiert wurde, kann der Wert für "sourceAnchor" nicht mehr geändert werden. Wenn das Objekt exportiert wurde, wird das Metaverseattribut **cloudSourceAnchor** mit dem **sourceAnchor**-Wert festgelegt, der von Azure AD akzeptiert wird. Wenn **sourceAnchor** geändert wird und nicht mit **cloudSourceAnchor** übereinstimmt, löst die Regel **Out to AAD – User Join** den Fehler aus, dass das sourceAnchor-Attribut geändert wurde: **sourceAnchor attribute has changed**. In diesem Fall müssen Konfiguration oder Daten korrigiert werden, sodass derselbe sourceAnchor-Wert wieder im Metaverse vorhanden ist, bevor das Objekt erneut synchronisiert werden kann.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 

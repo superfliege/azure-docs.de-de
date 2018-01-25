@@ -248,7 +248,7 @@
           items:
             - name: Herstellen einer Verbindung mit Ihrem MongoDB-Konto
               href: connect-mongodb-account.md
-            - name: Verwenden von MongoChef
+            - name: Verwenden von Studio 3T
               href: mongodb-mongochef.md
             - name: Verwenden von Robomongo
               href: mongodb-robomongo.md

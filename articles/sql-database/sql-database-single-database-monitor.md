@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.openlocfilehash: 8513ace2589056387d8a1959c5727ee6bd5674cd
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 2286843317230b8167b315b1e8e413e7571da4fe
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Überwachen der Datenbankleistung mithilfe von Azure SQL-Datenbank
 Die Überwachung der Leistung einer SQL-Datenbank in Azure beginnt mit der Überwachung der Ressourcennutzung relativ zur gewählten Datenbankleistung. Dank der Überwachung können Sie ermitteln, ob Ihre Datenbank über Zusatzkapazität verfügt, oder ob Probleme infolge ausgeschöpfter Kapazität auftreten. Anschließend können Sie entscheiden, ob die Leistungsstufe und [Dienstebene](sql-database-service-tiers.md) Ihrer Datenbank angepasst werden müssen. Sie können die Datenbank mithilfe grafischer Tools im [Azure-Portal](https://portal.azure.com) oder mithilfe [dynamischer Verwaltungssichten](https://msdn.microsoft.com/library/ms188754.aspx) in SQL überwachen.
@@ -83,7 +83,7 @@ Da diese Ansicht eine detailliertere Darstellung der Ressourcennutzung ist, soll
 Beispiele für andere Abfragen finden Sie unter [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
 #### <a name="sysresourcestats"></a>sys.resource_stats
-Die Sicht [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der **master**-Datenbank enthält zusätzliche Informationen, die zur Überwachung der Leistung Ihrer SQL-Datenbank innerhalb der jeweiligen Dienst- und Leistungsebene hilfreich sind. Die Daten werden alle fünf Minuten gesammelt und ca. 35 Tage lang aufbewahrt. Diese Sicht ist für eine längere Verlaufsanalyse der Ressourcennutzung Ihrer SQL-Datenbank hilfreich.
+Die Sicht [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der **master**-Datenbank enthält zusätzliche Informationen, die zur Überwachung der Leistung Ihrer SQL-Datenbank innerhalb der jeweiligen Dienst- und Leistungsebene hilfreich sind. Die Daten werden alle fünf Minuten gesammelt und c.a. 14 Tage lang aufbewahrt. Diese Sicht ist für eine längere Verlaufsanalyse der Ressourcennutzung Ihrer SQL-Datenbank hilfreich.
 
 Der folgende Graph zeigt die CPU-Ressourcennutzung für eine Premium-Datenbank mit der Leistungsebene P2 für jede Stunde einer Woche. Dieser Graph beginnt mit einem Montag und zeigt fünf Arbeitstage und dann das Wochenende, an dem die Anwendung deutlich weniger gefragt ist.
 

@@ -3,7 +3,7 @@ title: 'Azure AD Connect: Grundlegendes zur deklarativen Bereitstellung | Micros
 description: "Erklärt das Konfigurationsmodell für die deklarative Bereitstellung in Azure AD Connect"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7e299fb33bdbd514a8fbc96c6953c9a8ca70f54a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 50fce526d667fa829551425edff4bd3863429ef2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung
 In diesem Thema wird das Konfigurationsmodell in Azure AD Connect beschrieben. Dieses Modell, die „deklarative Bereitstellung“, ermöglicht es Ihnen, Konfigurationsänderungen einfach vorzunehmen. In diesem Thema sind auch viele Punkte für fortgeschrittene Benutzer beschrieben, die für die meisten Benutzerszenarien nicht erforderlich sind.
@@ -39,18 +39,18 @@ Die Pipeline enthält mehrere unterschiedliche Module. Jede ist für ein Konzept
 * [Rangfolge](#precedence): Löst in Konflikt stehende Attributbeiträge
 * Ziel: das Zielobjekt
 
-## <a name="scope"></a>Bereich
+## <a name="scope"></a>Umfang
 Das Bereichsmodul wertet ein Objekt aus und bestimmt die Regeln, die sich innerhalb des Bereichs befinden und verarbeitet werden sollen. Abhängig von den Attributwerten des Objekts werden verschiedene Synchronisierungsregeln für den Bereich ausgewertet. Beispielsweise verfügt ein deaktivierter Benutzer ohne Exchange-Postfach über andere Regeln als ein aktivierter Benutzer mit einem Postfach.  
-![Bereich](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope1.png)  
+![Umfang](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope1.png)  
 
 Der Bereich wird als Gruppen und Klauseln definiert. Die Klauseln liegen innerhalb einer Gruppe. Ein logisches AND wird zwischen allen Klauseln in einer Gruppe verwendet. Zum Beispiel (department =IT AND country = Denmark). Ein logisches OR wird zwischen Gruppen verwendet.
 
-![Bereich](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope2.png)  
+![Umfang](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/scope2.png)  
 Der Bereich in der folgenden Abbildung wird gelesen als (department = IT AND country = Denmark) OR (country=Sweden). Wenn die Auswertung zeigt, dass weder Gruppe 1 noch Gruppe 2 zutrifft, befindet sich die Regel innerhalb des Bereichs.
 
 Das Bereichsmodul unterstützt die folgenden Vorgänge.
 
-| Vorgang | Beschreibung |
+| Vorgang | BESCHREIBUNG |
 | --- | --- |
 | EQUAL, NOTEQUAL |Ein Vergleich von Zeichenfolgen, der auswertet, ob der Wert und der Attributwert gleich sind. Informationen zu mehrwertigen Attributen finden Sie unter ISIN und ISNOTIN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Ein Vergleich von Zeichenfolgen, der auswertet, ob der Wert kleiner als der Attributwert ist. |
@@ -117,7 +117,7 @@ Das Literal **AuthoritativeNull** ähnelt **NULL**, jedoch mit dem Unterschied, 
 
 Ein Attributfluss kann auch **IgnoreThisFlow**verwenden. Dieses Literal ähnelt NULL, da es angibt, dass kein beizutragender Wert vorhanden ist. Der Unterschied besteht darin, dass ein bereits vorhandener Wert im Ziel nicht entfernt wird. Es ist, als hätte es den Attributfluss nie gegeben.
 
-Beispiel:
+Beispiel: 
 
 In *Out to AD - User Exchange hybrid* (Ausgehend nach AD – Benutzer Exchange Hybrid) finden Sie folgenden Fluss:  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
@@ -125,7 +125,7 @@ Dieser Ausdruck ist wie folgt zu lesen: Wenn sich das Postfach des Benutzers in 
 
 ### <a name="importedvalue"></a>ImportedValue
 Die Funktion „ImportedValue“ unterscheidet sich von allen anderen Funktionen, da der Attributname in Anführungszeichen statt in eckige Klammern eingeschlossen werden muss:   
-`ImportedValue("proxyAddresses")`
+`ImportedValue("proxyAddresses")`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
 
 Üblicherweise verwendet ein Attribut während der Synchronisierung den erwarteten Wert, selbst wenn er noch nicht exportiert wurde oder während des Exports ein Fehler empfangen wurde („top of the tower“). Bei einer eingehenden Synchronisierung wird vorausgesetzt, dass ein Attribut, das ein verbundenes Verzeichnis noch nicht erreicht hat, dieses schließlich erreicht. In einigen Fällen ist es wichtig, nur Werte zu synchronisieren, die vom verbundenen Verzeichnis bestätigt wurden („hologram and delta import tower“).
 

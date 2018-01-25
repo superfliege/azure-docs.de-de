@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 06/01/2017
 ms.author: valthom; ladocs
-ms.openlocfilehash: 9fb0258df3f45d121cda49d3b5c274bd9548c832
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24ea1ef4d3c6229707458ef2f2005f90d8273304
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>Herstellen einer Verbindung mit einem IBM MQ-Server aus einer Logik-App mit dem MQ-Connector 
 
@@ -123,4 +123,4 @@ Wenn beim Ausführen der Aktionen „Nachrichten suchen“ oder „Nachrichten e
 Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/mq/) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
+[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.

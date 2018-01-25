@@ -3,7 +3,7 @@ title: "Azure AD Connect: Problembehebung bei Konnektivitätsproblemen| Microsof
 description: "Erklärt, wie Konnektivitätsprobleme mit Azure AD Connect behoben werden können"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 09e1858c748c50a084cd66ac8bc8406180d97ace
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect 
 Dieser Artikel erklärt, wie die Konnektivität zwischen Azure AD Connect und Azure AD funktioniert und wie Konnektivitätsprobleme behoben werden können. Diese Probleme können insbesondere in einer Umgebung mit einem Proxyserver auftreten.
@@ -40,7 +40,7 @@ Der Proxyserver muss die erforderlichen URLs geöffnet haben. Die offizielle Lis
 
 Die in der folgenden Tabelle aufgeführten URLs stellen die Grundvoraussetzungen für eine Verbindung mit Azure AD dar. Diese Liste beinhaltet keine optionalen Funktionen, wie die Kennwortrückschreibung oder Azure AD Connect Health. Sie soll bei der Problembehebung während der Erstkonfiguration helfen.
 
-| URL | Port | Beschreibung |
+| URL | Port | BESCHREIBUNG |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Wird verwendet um CRL-Listen (Zertifikatsperrlisten) herunterzuladen. |
 | \*.verisign.com |HTTP/80 |Wird verwendet um CRL-Listen (Zertifikatsperrlisten) herunterzuladen. |
@@ -90,9 +90,9 @@ Falls Sie die Meldung **Die Verbindung mit dem Remoteserver kann nicht hergestel
 Falls der Proxy nicht richtig konfiguriert ist, tritt folgender Fehler auf: ![proxy200](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequest403.png)
 ![proxy407](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequest407.png)
 
-| Error | Fehlertext | Kommentar |
+| Error | Fehlertext | Comment |
 | --- | --- | --- |
-| 403 |Verboten (403) |Der Proxy wurde für die angeforderte URL nicht geöffnet. Rufen Sie die Proxykonfiguration erneut auf, und stellen Sie sicher, dass die [URLs](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) geöffnet wurden. |
+| 403 |Verboten |Der Proxy wurde für die angeforderte URL nicht geöffnet. Rufen Sie die Proxykonfiguration erneut auf, und stellen Sie sicher, dass die [URLs](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) geöffnet wurden. |
 | 407 |Proxyauthentifizierung erforderlich |Der Proxyserver erfordert eine Anmeldung, die nicht erfolgt ist. Stellen Sie sicher, dass Sie in den Konfigurationen von „machine.config“ eine entsprechende Einstellung vorgenommen haben, falls Ihr Proxyserver eine Authentifizierung erfordert. Stellen Sie außerdem sicher, dass Sie sowohl für den Benutzer, der den Assistenten ausführt, als auch für das Dienstkonto Domänenkonten verwenden. |
 
 ### <a name="proxy-idle-timeout-setting"></a>Einstellung für Proxy-Leerlauftimeout
@@ -108,9 +108,9 @@ Falls Sie alle vorhergehenden Schritte ausgeführt haben und immer noch keine Ve
 ### <a name="reference-proxy-logs"></a>Verweisproxyprotokolle
 Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations-Assistenten, von der er entnommen wurde. (Doppelte Einträge, die zum selben Endpunkt führen, wurden entfernt). Sie können diesen Abschnitt als Referenz für Ihre eigenen Proxy- und Netzwerkprotokolle verwenden. Die tatsächlichen Endpunkte können in Ihrer Umgebung abweichen (insbesondere die *kursiv* formatierten URLs).
 
-**Mit Azure AD verbinden**
+**Herstellen einer Verbindung mit Azure AD**
 
-| Time | URL |
+| Zeit | URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -121,7 +121,7 @@ Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations
 
 **Konfigurieren**
 
-| Time | URL |
+| Zeit | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
@@ -137,7 +137,7 @@ Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations
 
 **Erste Synchronisierung**
 
-| Time | URL |
+| Zeit | URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

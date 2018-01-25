@@ -3,8 +3,8 @@ title: Verwalten von Azure Redis Cache mit der Azure-CLI | Microsoft-Dokumentati
 description: "Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle auf einer beliebigen Plattform installieren, eine Verbindung mit Ihrem Azure-Konto herstellen und über die Azure-Befehlszeilenschnittstelle einen Redis-Cache erstellen und verwalten."
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: sdanie
-ms.openlocfilehash: d3a425251035e09bb3163fbb052669d0a874806f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: wesmc
+ms.openlocfilehash: fdb0989af2215166b69f10474a0d22aab7b4d593
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Erstellen und Verwalten von Azure Redis Cache mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI)
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
-> * [Azure-Befehlszeilenschnittstelle](cache-manage-cli.md)
+> * [Azure-CLI](cache-manage-cli.md)
 >
 >
 
@@ -45,9 +45,9 @@ Zum Erstellen und Verwalten von Azure Redis Cache-Instanzen mithilfe der Azure-B
 ## <a name="redis-cache-properties"></a>Eigenschaften in Redis Cache
 Die folgenden Eigenschaften werden beim Erstellen und Aktualisieren von Redis Cache-Instanzen verwendet.
 
-| Eigenschaft | Switch | Beschreibung |
+| Eigenschaft | Switch | BESCHREIBUNG |
 | --- | --- | --- |
-| Name |-n, --name |Der Name des Redis-Cache. |
+| name |-n, --name |Der Name des Redis-Cache. |
 | Ressourcengruppe |-g, --resource-group |Der Name der Ressourcengruppe. |
 | location |-l, --location |Speicherort zum Erstellen des Cache. |
 | size |-z, --size |Die Größe des Redis-Cache. Gültige Werte: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
@@ -56,7 +56,7 @@ Die folgenden Eigenschaften werden beim Erstellen und Aktualisieren von Redis Ca
 | Redis-Konfiguration |-c, --redis-configuration |Redis-Konfiguration. Geben Sie hier eine JSON-formatierte Zeichenfolge des Konfigurationsschlüssels und der -werte ein. Format:"{"":"","":""}" |
 | Redis-Konfiguration |-f, --redis-configuration-file |Redis-Konfiguration. Geben Sie hier den Pfad einer Datei mit Konfigurationsschlüssel und -werten ein. Format für den Dateieintrag: {"":"","":""} |
 | Shard-Anzahl |-r, --shard-count |Die Anzahl der zu erstellenden Shards auf einem Premium-Clustercache mit Clustering. |
-| Virtual Network |-v, --virtual-network |Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Redis-Cache in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Virtuelles Netzwerk |-v, --virtual-network |Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Redis-Cache in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t, --key-type |Der Typ des zu erneuernden Schlüssels. Gültige Werte: [Primary, Secondary] |
 | StaticIP |-p, --static-ip <Statische IP-Adresse> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. |
 | Subnetz |t, --subnet <subnet> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. |

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e3d0a07323189599cb86dd2bf1347c2107efa842
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 94a7d35115420d455fe94e1173abf76622172f6f
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Erste Schritte in Azure AD Xamarin
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -98,7 +98,7 @@ Nahezu die gesamte Authentifizierungslogik der App befindet sich in `DirectorySe
 
 1. Öffnen Sie „DirectorySearcher.cs“, und fügen Sie dann der `SearchByAlias(...)`-Methode einen neuen Parameter hinzu. `IPlatformParameters` ist der kontextbezogene Parameter, der die plattformspezifischen Objekte kapselt, die die ADAL benötigt, um die Authentifizierung auszuführen.
 
-    ```C#
+    ```csharp
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)
     {
     ```
@@ -107,7 +107,7 @@ Nahezu die gesamte Authentifizierungslogik der App befindet sich in `DirectorySe
 Hierdurch übergeben Sie der ADAL die zur Kommunikation mit Azure AD notwendigen Koordinaten.
 3. Rufen Sie `AcquireTokenAsync(...)` auf, das das Objekt `IPlatformParameters` verwendet und die Authentifizierungsroutine aufruft, die erforderlich ist, damit die Anwendung ein Token erhält.
 
-    ```C#
+    ```csharp
     ...
         AuthenticationResult authResult = null;
         try
@@ -126,7 +126,7 @@ Hierdurch übergeben Sie der ADAL die zur Kommunikation mit Azure AD notwendigen
     `AcquireTokenAsync(...)` versucht zunächst, ein Token für die angeforderte Ressource (in diesem Fall die Graph-API) zurückzugeben, ohne Benutzer zur Eingabe von Anmeldeinformationen aufzufordern (die Authentifizierung erfolgt dann über den Cache oder durch Aktualisierung alter Token). Bei Bedarf wird Benutzern die Azure AD-Anmeldeseite angezeigt, ehe das angeforderte Token bezogen wird.
 4. Fügen Sie das Zugriffstoken an die Graph-API-Anforderung im **Authorization**-Header an:
 
-    ```C#
+    ```csharp
     ...
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
     ...
@@ -137,12 +137,12 @@ Mehr ist für die PCL von `DirectorySearcher` und den identitätsbezogenen Code 
 ### <a name="android"></a>Android
 1. Fügen Sie in „MainActivity.cs“ im unteren Klickhandler einen Aufruf von `SearchByAlias(...)` hinzu:
 
-    ```C#
+    ```csharp
     List<User> results = await DirectorySearcher.SearchByAlias(searchTermText.Text, new PlatformParameters(this));
     ```
 2. Überschreiben Sie die Lebenszyklusmethode `OnActivityResult`, wenn Authentifizierungsumleitungen zurück an die betreffende Methode geleitet werden sollen. In Android stellt ADAL hierfür eine Hilfsmethode bereit:
 
-    ```C#
+    ```csharp
     ...
     protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
     {
@@ -155,7 +155,7 @@ Mehr ist für die PCL von `DirectorySearcher` und den identitätsbezogenen Code 
 ### <a name="windows-desktop"></a>Windows Desktop
 Richten Sie in „MainWindow.xaml.cs“ einen Aufruf an `SearchByAlias(...)`, indem Sie `WindowInteropHelper` an das Objekt `PlatformParameters` des Desktops übergeben:
 
-```C#
+```csharp
 List<User> results = await DirectorySearcher.SearchByAlias(
   SearchTermText.Text,
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
@@ -164,7 +164,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 #### <a name="ios"></a>iOS
 In „DirSearchClient_iOSViewController.cs“ verwendet das iOS-Objekt `PlatformParameters` einen Verweis auf den View Controller:
 
-```C#
+```csharp
 List<User> results = await DirectorySearcher.SearchByAlias(
   SearchTermText.Text,
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
@@ -173,7 +173,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 ### <a name="windows-universal"></a>Windows Universal
 Öffnen Sie in Windows Universal „MainPage.xaml.cs“, und implementieren Sie die `Search`-Methode. Diese Methode verwendet eine Hilfsmethode in einem freigegebenen Projekt, um die Benutzeroberfläche bei Bedarf zu aktualisieren.
 
-```C#
+```csharp
 ...
 List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(SearchTermText.Text, new PlatformParameters(PromptBehavior.Auto, false));
 ...

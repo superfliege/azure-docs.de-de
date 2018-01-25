@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: d4681e2f2552589e310f80cbf763bd453c0eba84
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7ac85285b036aec7d0e3e1b23b8cec26886f1e3c
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Die Pipeline in diesem Tutorial enthält eine Aktivität: **HDInsight-Hive-Aktiv
 * Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) . 
 
 ## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte
-| Entität | Beschreibung |
+| Entität | BESCHREIBUNG |
 | --- | --- |
 | Mit Azure Storage verknüpfter Dienst |Verknüpft Ihr Azure Storage-Konto mit der Data Factory. Das Azure Storage-Konto enthält in diesem Beispiel die Ein- und Ausgabedaten für die Pipeline. |
 | Bedarfsgesteuerter verknüpfter HDInsight-Dienst |Verknüpft einen bedarfsgesteuerten HDInsight-Cluster mit der Data Factory. Der Cluster wird automatisch für Sie erstellt, damit Sie Daten verarbeiten können, und nach Abschluss der Verarbeitung automatisch gelöscht. |
@@ -57,7 +57,7 @@ Die Pipeline in diesem Tutorial enthält eine Aktivität: **HDInsight-Hive-Aktiv
 | Azure-Blob-Ausgabedataset |Verweist auf den mit Azure Storage verknüpften Dienst. Der verknüpfte Dienst verweist auf ein Azure Storage-Konto, und das Azure-Blobdataset gibt den Container, Ordner und Dateinamen in dem Speicher an, der die Ausgabedaten enthält. |
 | Datenpipeline |Die Pipeline verfügt über eine Aktivität vom Typ „HDInsightHive“ zum Nutzen des Eingabedatasets und Erzeugen des Ausgabedatasets. |
 
-Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Es gibt zwei Arten von Aktivitäten: [Datenverschiebungen](data-factory-data-movement-activities.md) und [Datentransformationen](data-factory-data-transformation-activities.md). In diesem Tutorial erstellen Sie eine Pipeline mit einer einzelnen Aktivität (Hive-Aktivität).
+Eine Data Factory kann eine oder mehrere Pipelines haben. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Es gibt zwei Arten von Aktivitäten: [Datenverschiebungen](data-factory-data-movement-activities.md) und [Datentransformationen](data-factory-data-transformation-activities.md). In diesem Tutorial erstellen Sie eine Pipeline mit einer einzelnen Aktivität (Hive-Aktivität).
 
 Der folgende Abschnitt enthält die vollständige Resource Manager-Vorlage zum Definieren von Data Factory-Entitäten, damit Sie das Tutorial schnell durchlaufen und die Vorlage testen können. Informationen zum Definieren der einzelnen Data Factory-Entitäten finden Sie im Abschnitt [Data Factory-Entitäten in der Vorlage](#data-factory-entities-in-the-template).
 
@@ -617,8 +617,8 @@ Hier ist eine Resource Manager-Beispielvorlage zum Erstellen eines logischen Gat
 ```
 Mit dieser Vorlage wird eine Data Factory mit dem Namen GatewayUsingArmDF und dem Gateway GatewayUsingARM erstellt. 
 
-## <a name="see-also"></a>Weitere Informationen
-| Thema | Beschreibung |
+## <a name="see-also"></a>Siehe auch
+| Thema | BESCHREIBUNG |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter End-to-End-Workflows für Ihr Szenario oder Ihr Unternehmen genutzt werden können. |
 | [Datasets](data-factory-create-datasets.md) |Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory. |

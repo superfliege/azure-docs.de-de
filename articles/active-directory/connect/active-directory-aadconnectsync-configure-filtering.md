@@ -3,7 +3,7 @@ title: 'Azure AD Connect-Synchronisierung: Konfigurieren der Filterung | Microso
 description: "Erläutert das Konfigurieren der Filterung bei der Azure AD Connect-Synchronisierung."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: cbcf448ccff22219adb8c7d3652e7698ef4d231e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5af82e889a80994dd47d4fc3b89f8eece2201355
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
 Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Office 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, die zum Senden von E-Mails und Anrufen anderer Personen genutzt werden kann. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
@@ -209,8 +209,9 @@ Im folgenden Beispiel werden alle Benutzer herausgefiltert (nicht synchronisiert
 3. Stellen Sie sicher, dass **Eingehend** ausgewählt ist, und klicken Sie auf **Neue Regel hinzufügen**.
 4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User DoNotSyncFilter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 50), und klicken Sie auf **Weiter**.  
    ![Eingehend 1 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
-5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** die Option **ExtensionAttribute15** aus. Stellen Sie sicher, dass der **Operator** auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **NoSync** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.  
-   ![Eingehend 2 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
+5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** die Option **ExtensionAttribute15** aus. Stellen Sie sicher, dass der **Operator** auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **NoSync** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.
+     
+![Eingehend 2 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
 6. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
 7. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **True** im Textfeld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
    ![Eingehend 3 Transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
@@ -228,14 +229,16 @@ Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das d
 3. Stellen Sie sicher, dass **Eingehend** ausgewählt ist, und klicken Sie auf **Neue Regel hinzufügen**.
 4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Sales sync*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 51), und klicken Sie auf **Weiter**.  
    ![Eingehend 4 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
-5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** den Wert **department** aus. Stellen Sie sicher, dass der Operator auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **Sales** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.  
-   ![Eingehend 5 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
+5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** den Wert **department** aus. Stellen Sie sicher, dass der Operator auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **Sales** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.
+     
+![Eingehend 5 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
 6. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
 7. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **False** im Feld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
    ![Eingehend 6 Transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png)  
    Dies ist ein Sonderfall, in dem cloudFiltered explizit auf **FALSE** festgelegt wird.
-8. Wir müssen jetzt die Synchronisierungsregel „catch-all“ erstellen, die alles abdeckt. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Catch-all filter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 99). Sie haben einen Rangfolgewert ausgewählt, der höher (niedrigere Rangfolge) als der für die vorherige Synchronisierungsregel ist. Sie haben aber auch Platz gelassen, sodass Sie später noch weitere Filterregeln für die Synchronisierung hinzufügen können, wenn Sie zusätzliche Abteilungen synchronisieren möchten. Klicken Sie auf **Weiter**.  
-   ![Eingehend 7 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)  
+8. Wir müssen jetzt die Synchronisierungsregel „catch-all“ erstellen, die alles abdeckt. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Catch-all filter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 99). Sie haben einen Rangfolgewert ausgewählt, der höher (niedrigere Rangfolge) als der für die vorherige Synchronisierungsregel ist. Sie haben aber auch Platz gelassen, sodass Sie später noch weitere Filterregeln für die Synchronisierung hinzufügen können, wenn Sie zusätzliche Abteilungen synchronisieren möchten. Klicken Sie auf **Weiter**.
+     
+![Eingehend 7 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)  
 9. Lassen Sie **Scoping filter** leer, und klicken Sie auf **Next**. Ein leerer Filter gibt an, dass die Regel nicht auf alle Objekte angewendet wird.
 10. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
 11. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **True** im Feld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  

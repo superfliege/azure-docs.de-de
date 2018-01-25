@@ -3,7 +3,7 @@ title: 'Azure AD Connect-Synchronisierung: Technische Konzepte | Microsoft Docs'
 description: "Erläutert die technischen Konzepte der Azure AD Connect-Synchronisierung."
 services: active-directory
 documentationcenter: 
-author: MarkusVi
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi;andkjell
-ms.openlocfilehash: c852e33621ba7f4280858f3990380b518535b514
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2cb5143729fa92d12b21701e62416bced31c1fc7
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect-Synchronisierung: Technische Konzepte
 Dieser Artikel ist eine Zusammenfassung des Themas [Grundlegendes zur Architektur](active-directory-aadconnectsync-technical-concepts.md).
@@ -83,7 +83,7 @@ So wird inhärent eine Verknüpfung hergestellt, und der Attributfluss kann bidi
 
 Wenn eine Regel bestimmt, dass ein neues Connectorbereichsobjekt erstellt werden muss, wird dies als Bereitstellung bezeichnet. Da dieser Vorgang nur im Connectorbereich stattfindet, wird er erst in die verbundene Datenquelle übertragen, wenn ein Export vorgenommen wird.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 

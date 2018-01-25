@@ -3,7 +3,7 @@ title: Features und Konfiguration des Azure AD Connect-Synchronisierungsdiensts 
 description: Beschreibt die dienstseitigen Features des Azure AD Connect-Synchronisierungsdiensts.
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 213aab20-0a61-434a-9545-c4637628da81
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 830692d6df6856e73b8c192db91edf75fdcaec35
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e939c6a53a1154b23431581e789605d83e849fe2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
 Das Synchronisierungsfeature von Azure AD Connect besteht aus zwei Komponenten:
@@ -37,7 +37,7 @@ Viele dieser Einstellungen können nur von Azure AD Connect geändert werden.
 
 Folgende Einstellungen können durch `Set-MsolDirSyncFeature`konfiguriert werden:
 
-| DirSyncFeature | Kommentar |
+| DirSyncFeature | Comment |
 | --- | --- |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Ermöglicht Objekten den Beitritt zu userPrincipalName zusätzlich zur primären SMTP-Adresse. |
 | [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Ermöglicht dem Synchronisierungsmodul die Aktualisierung des userPrincipalName-Attributs für verwaltete/lizenzierte Benutzer (keine Verbundbenutzer). |
@@ -51,7 +51,7 @@ Nachdem Sie ein Feature aktiviert haben, kann es nicht wieder deaktiviert werden
 
 Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können von `Set-MsolDirSyncFeature` nicht geändert werden:
 
-| DirSyncFeature | Kommentar |
+| DirSyncFeature | Comment |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect: Aktivieren des Geräterückschreibens](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect Sync: Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md) |
@@ -104,7 +104,7 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 Nach Aktivierung dieses Features bleiben vorhandene userPrincipalName-Werte unverändert. Nach der nächsten lokalen Änderung des userPrincipalName-Attributs wird der UPN im Rahmen der normalen Deltasynchronisierung der Benutzer aktualisiert.  
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md)
 * [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 

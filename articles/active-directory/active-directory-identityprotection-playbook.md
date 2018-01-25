@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e274a9364dcb7bf4d220159e1f906bbd015369aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b76d6a31dfe600a4639b830bfbbb5cacfc158dd6
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
 Dieses Playbook hilft Ihnen:
@@ -134,6 +134,6 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 ![Playbook](./media/active-directory-identityprotection-playbook/200.png "Playbook")
 
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 

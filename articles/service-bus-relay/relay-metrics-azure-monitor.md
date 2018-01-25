@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 3652e80c20c425570ba90a1f3ce7a3035762a34d
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: dd5bc0dd0088856954e06d880f2c03f0a74ed9d7
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Relay-Metriken in Azure Monitor (Vorschauversion)
 
@@ -55,7 +55,7 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 
 ## <a name="connection-metrics"></a>Verbindungsmetriken
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | ListenerConnections-Success (Vorschau) | Die Anzahl der erfolgreichen Listenerverbindungen mit Azure Relay in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 |ListenerConnections-ClientError (Vorschau)|Die Anzahl der Clientfehler bei Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
@@ -72,7 +72,7 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 
 ## <a name="memory-usage-metrics"></a>Speichernutzungsmetriken
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 |BytesTransferred (Vorschau)|Die Anzahl der in einem bestimmten Zeitraum übertragenen Bytes<br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 
@@ -80,7 +80,7 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 
 Azure Relay unterstützt folgende Dimensionen für Metriken in Azure Monitor. Das Hinzufügen von Dimensionen zu Ihren Metriken ist optional. Wenn Sie keine Dimensionen hinzufügen, werden Metriken auf Namespaceebene angegeben. 
 
-|Dimensionsname|Beschreibung|
+|Dimensionsname|BESCHREIBUNG|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay unterstützt Messagingentitäten unter dem Namespace.|
 

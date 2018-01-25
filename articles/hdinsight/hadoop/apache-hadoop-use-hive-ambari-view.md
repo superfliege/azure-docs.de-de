@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/23/2017
+ms.date: 01/19/2018
 ms.author: larryfr
-ms.openlocfilehash: 8293da8c77725d051f295826d9a78bf81055dcb3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5f66e60249af489e695029cbb072f3cc881bb039
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Verwenden der Ambari-Hive-Ansicht mit Hadoop in HDInsight
 
@@ -188,7 +188,7 @@ Weitere Informationen zur Verwendung von UDFs mit Hive unter HDInsight finden Si
 
 ## <a name="hive-settings"></a>Hive-Einstellungen
 
-Sie können verschiedene Hive-Einstellungen ändern, z.B. das Ausführungsmodul für Hive von Tez (Standard) in MapReduce.
+Sie können verschiedene Hive-Einstellungen ändern, z.B. die Ausführungs-Engine für Hive von Tez (Standard) in MapReduce.
 
 ## <a id="nextsteps"></a>Nächste Schritte
 
