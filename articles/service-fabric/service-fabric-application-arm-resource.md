@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: d6cda201e4cf16549f296bf9873b1085effd3a45
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: ca11199e51774e766113309150d8a260427cb4b4
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen
 
@@ -66,7 +66,7 @@ Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mi
 1. Bereiten Sie die Resource Manager-Vorlage Ihres Clusters auf die Bereitstellung vor. Weitere Informationen hierzu Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 2. Überlegen Sie sich einige der Anwendungen, die Sie im Cluster bereitstellen möchten. Gibt es welche, die stets ausgeführt werden und für die andere Anwendungen ggf. Abhängigkeiten aufweisen? Planen Sie die Bereitstellung von Governance- oder Setup-Anwendungen für den Cluster? Diese Arten von Anwendungen werden, wie oben beschrieben, am besten mithilfe einer Resource Manager-Vorlage verwaltet. 
 3. Sobald Sie herausgefunden haben, welche Anwendungen auf diese Weise bereitgestellt werden sollen, müssen die Anwendungen gepackt, gezippt und in einer Dateifreigabe bereitgestellt werden. Die Freigabe muss über einen REST-Endpunkt zugänglich sein, den Azure Resource Manager während der Bereitstellung verwenden kann.
-4. Beschreiben Sie in Ihrer Resource Manager-Vorlage unter Ihrer Clusterdeklaration die Eigenschaften der einzelnen Anwendungen. Zu diesen Eigenschaften gehören die Anzahl von Replikaten und Instanzen sowie Abhängigkeiten zwischen Ressourcen (anderen Anwendungen oder Diensten). Eine umfassende Liste der Eigenschaften finden Sie unter [REST-API – Swagger-Spezifikation](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/2017-07-01-preview/servicefabric.json). Beachten Sie, dass dies nicht die Anwendungs- oder Dienstmanifeste ersetzt, sondern vielmehr einige der darin enthaltenen Elemente als Teil der Resource Manager-Vorlage des Clusters beschreibt. Hier ist eine Beispielvorlage, die die Bereitstellung des zustandslosen Diensts *Service1* und des zustandsbehafteten Diensts *Service2* als Teil von *Application1* enthält:
+4. Beschreiben Sie in Ihrer Resource Manager-Vorlage unter Ihrer Clusterdeklaration die Eigenschaften der einzelnen Anwendungen. Zu diesen Eigenschaften gehören die Anzahl von Replikaten und Instanzen sowie Abhängigkeiten zwischen Ressourcen (anderen Anwendungen oder Diensten). Eine umfassende Liste der Eigenschaften finden Sie unter [REST-API – Swagger-Spezifikation](https://aka.ms/sfrpswaggerspec). Beachten Sie, dass dies nicht die Anwendungs- oder Dienstmanifeste ersetzt, sondern vielmehr einige der darin enthaltenen Elemente als Teil der Resource Manager-Vorlage des Clusters beschreibt. Hier ist eine Beispielvorlage, die die Bereitstellung des zustandslosen Diensts *Service1* und des zustandsbehafteten Diensts *Service2* als Teil von *Application1* enthält:
 
   ```json
   {
@@ -77,62 +77,62 @@ Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mi
         "type": "string",
         "defaultValue": "Cluster",
         "metadata": {
-          "description": "Name of your cluster - Between 3 and 23 characters. Letters and numbers only"
+          "description": "Name of your cluster - Between 3 and 23 characters. Letters and numbers only."
         }
       },
       "applicationTypeName": {
         "type": "string",
         "defaultValue": "ApplicationType",
         "metadata": {
-          "description": "The application type name"
+          "description": "The application type name."
         }
       },
       "applicationTypeVersion": {
         "type": "string",
         "defaultValue": "1",
         "metadata": {
-          "description": "The application type version"
+          "description": "The application type version."
         }
       },
       "appPackageUrl": {
         "type": "string",
         "metadata": {
-          "description": "The URL to the application package sfpkg file"
+          "description": "The URL to the application package sfpkg file."
         }
       },
       "applicationName": {
         "type": "string",
         "defaultValue": "Application1",
         "metadata": {
-          "description": "The application name"
+          "description": "The name of the application resource."
         }
       },
       "serviceName": {
         "type": "string",
         "defaultValue": "Service1",
         "metadata": {
-          "description": "The service name"
+          "description": "The name of the service resource in the format of {applicationName}~{serviceName}."
         }
       },
       "serviceTypeName": {
         "type": "string",
         "defaultValue": "Service1Type",
         "metadata": {
-          "description": "The service type name"
+          "description": "The name of the service type."
         }
       },
       "serviceName2": {
         "type": "string",
         "defaultValue": "Service2",
         "metadata": {
-          "description": "The service name"
+          "description": "The name of the service resource in the format of {applicationName}~{serviceName}."
         }
       },
       "serviceTypeName2": {
         "type": "string",
         "defaultValue": "Service2Type",
         "metadata": {
-          "description": "The service type name"
+          "description": "The name of the service type."
         }
       }
     },

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
-ms.openlocfilehash: 4501b3d9a2fdc00582596cb907f7130591e4782e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ad246ede7e891de42235443c1bc6a90b88ad5ac
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-db2-connector"></a>Erste Schritte mit dem DB2-Connector
 Mit dem Microsoft Connector für DB2 werden Logik-Apps mit Ressourcen verbunden, die in einer IBM DB2-Datenbank gespeichert sind. Dieser Connector enthält einen Microsoft-Client zum Kommunizieren mit DB2-Remoteservercomputern über ein TCP/IP-Netzwerk. Dies umfasst Clouddatenbanken, z.B. IBM Bluemix dashDB oder IBM DB2 für Windows, in Azure sowie lokale Datenbanken unter Verwendung des lokalen Datengateways. Siehe [Liste mit unterstützten IBM DB2-Plattformen und -Versionen](connectors-create-api-db2.md#supported-db2-platforms-and-versions) (in diesem Thema).
@@ -35,7 +35,7 @@ Der DB2-Connector unterstützt die folgenden Datenbankvorgänge:
 
 In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App zum Verarbeiten von Datenbankvorgängen verwenden.
 
-Weitere Informationen zu Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
+Weitere Informationen zu Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="available-actions"></a>Verfügbare Aktionen
 Der DB2-Connector unterstützt die folgenden Logik-App-Aktionen:
@@ -83,7 +83,7 @@ Innerhalb der Logik-App können Sie eine Aktion zum Auflisten von Tabellen in ei
 ## <a name="create-the-connections"></a>Erstellen der Verbindungen
 Der Connector unterstützt Verbindungen mit lokal und in der Cloud gehosteten Datenbanken durch Verwenden der folgenden Verbindungseigenschaften. 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | server |Erforderlich. Akzeptiert einen Zeichenfolgenwert im IPv4- oder IPv6-Format, der für eine TCP/IP-Adresse oder einen Alias steht, gefolgt von einer mit Doppelpunkt angefügten TCP/IP-Portnummer. |
 | database |Erforderlich. Akzeptiert einen Zeichenfolgenwert , der einen DRDA-Namen einer relationalen Datenbank darstellt. DB2 für z/OS akzeptiert eine 16-Byte-Zeichenfolge („database“ ist ein Speicherort vom Typ „IBM DB2 für z/OS“). DB2 für i5/OS akzeptiert eine 18-Byte-Zeichenfolge („database“ ist eine relationale Datenbank vom Typ „IBM DB2 für i). DB2 für LUW akzeptiert eine 8-Byte-Zeichenfolge. |
@@ -148,7 +148,7 @@ Sie können eine Logik-App-Aktion zum Abrufen aller Zeilen in einer DB2-Tabelle 
     ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
 10. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 11. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-12. Wählen Sie **Speichern**aus. 
+12. Wählen Sie **Speichern** aus. 
     
     ![](./media/connectors-create-api-db2/Db2connectorGetRowsTableName.png)
 13. Wählen Sie auf dem Blatt **Db2getRows** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -175,7 +175,7 @@ Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer DB2-Tabel
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Area 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern**aus.
+10. Wählen Sie **Speichern** aus.
     
     ![](./media/connectors-create-api-db2/Db2connectorInsertRowValues.png)
 11. Wählen Sie auf dem Blatt **Db2insertRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -203,7 +203,7 @@ Sie können eine Logik-App-Aktion zum Abrufen einer Zeile aus einer DB2-Tabelle 
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
 10. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-11. Wählen Sie **Speichern**aus. 
+11. Wählen Sie **Speichern** aus. 
     
     ![](./media/connectors-create-api-db2/Db2connectorGetRowValues.png)
 12. Wählen Sie auf dem Blatt **Db2getRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -230,7 +230,7 @@ Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer DB2-Tabelle d
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Updated 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern**aus. 
+10. Wählen Sie **Speichern** aus. 
     
     ![](./media/connectors-create-api-db2/Db2connectorUpdateRowValues.png)
 11. Wählen Sie auf dem Blatt **Db2updateRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -281,5 +281,5 @@ Dieser Connector unterstützt die folgenden IBM DB2-Plattformen und -Versionen s
 Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/db2/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
+[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 

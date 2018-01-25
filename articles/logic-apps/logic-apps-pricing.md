@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2017
 ms.author: LADocs; klam
-ms.openlocfilehash: f2a92e45b8a759d2d8193ac188efdcfc694a3e6d
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 49a66c826a98f7160b97b516e6fd541795ae3b0e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="logic-apps-pricing-model"></a>Preismodell für Logik-Apps
 Sie können automatisierte skalierbare Integrationsworkflows in der Cloud mit Azure Logic Apps erstellen und ausführen. Hier sind die Details zur Abrechnung und zu den Preisen für Logic Apps angegeben.
@@ -34,7 +34,7 @@ Trigger sind spezielle Aktionen, mit denen eine Logik-App-Instanz erstellt wird,
 
 Sie finden Triggerausführungen im Bereich „Übersicht“ Ihrer Logik-App unter dem Abschnitt „Triggerverlauf“.
 
-### <a name="actions"></a>Aktionen
+### <a name="actions"></a>Actions
 Integrierte Aktionen (z.B. Aktionen zum Aufrufen von HTTP, Azure Functions oder API Management) und Ablaufsteuerungsschritte werden als native Aktionen nutzungsbezogen abgerechnet und haben jeweils einen eigenen Typ. Aktionen, mit denen [Connectors](https://docs.microsoft.com/connectors) aufgerufen werden, haben den Typ „ApiConnection“. Connectors sind entweder als Standard- oder Unternehmensconnectors klassifiziert, und der Verbrauch wird zu den jeweiligen [Preisen][pricing] gemessen.
 Alle erfolgreich und nicht erfolgreich ausgeführten Aktionen werden als Aktionsausführungen gezählt und nutzungsbezogen abgerechnet. Aktionen, die aufgrund von nicht erfüllten Bedingungen übersprungen werden, oder Aktionen, die aufgrund einer Beendigung der Logik-App vor ihrem Abschluss nicht ausgeführt werden, werden nicht als Aktionsausführungen gezählt. Deaktivierte Logik-Apps können keine neuen Instanzen initiieren, sodass keine Gebühren anfallen, während sie deaktiviert sind.
 
@@ -56,6 +56,6 @@ Weitere Informationen finden Sie unter [Logik-Apps – Preise](https://azure.mic
 * [Erstellen Ihrer ersten Logik-App][create]
 
 [pricing]: https://azure.microsoft.com/pricing/details/logic-apps/
-[whatis]: logic-apps-what-are-logic-apps.md
-[create]: logic-apps-create-a-logic-app.md
+[whatis]: logic-apps-overview.md
+[create]: quickstart-create-first-logic-app-workflow.md
 

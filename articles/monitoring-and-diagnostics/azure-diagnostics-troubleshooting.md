@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: b03265b52886b30e4b9de0b0293e5dadd6d2413a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae99085a37162a883d18976181be198a2f21a60c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](azure-diagnostics.md).
@@ -34,7 +34,7 @@ Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwen
 Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. Wir verweisen im weiteren Verlauf des Dokuments immer wieder auf diese Informationen.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
-| Artefakt | Pfad |
+| Artefakt | path |
 | --- | --- |
 | **Azure-Diagnosekonfigurationsdatei** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **Protokolldateien** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
@@ -45,7 +45,7 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. W
 | **MonAgentHost-Protokolldatei** | C:\Resources\Directory\<Clouddienstbereitstellungs-ID>.\<Rollenname>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
-| Artefakt | Pfad |
+| Artefakt | path |
 | --- | --- |
 | **Azure-Diagnosekonfigurationsdatei** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **Protokolldateien** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Logs\ |
@@ -154,7 +154,7 @@ Wenn Sie sich ggf. an den Support wenden möchten, werden Sie als Erstes vermutl
 ## <a name="diagnostics-data-tables-not-found"></a>Tabellen mit Diagnosedaten nicht gefunden
 Die Tabellen im Azure-Speicher, die ETW-Ereignisse enthalten, werden anhand des folgenden Codes benannt:
 
-```C#
+```csharp
         if (String.IsNullOrEmpty(eventDestination)) {
             if (e == "DefaultEvents")
                 tableName = "WADDefault" + MD5(provider);
@@ -165,7 +165,7 @@ Die Tabellen im Azure-Speicher, die ETW-Ereignisse enthalten, werden anhand des 
             tableName = "WAD" + eventDestination;
 ```
 
-Beispiel:
+Beispiel: 
 
 ```XML
         <EtwEventSourceProviderConfiguration provider="prov1">
@@ -228,7 +228,7 @@ Wenn Sie bei der Clouddienstrolle die Konfiguration vom Datenträger auswählen,
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure-Diagnose-Plug-In – Exitcodes
 Das Plug-In gibt die folgenden Exitcodes zurück:
 
-| Exitcode | Beschreibung |
+| Exitcode | BESCHREIBUNG |
 | --- | --- |
 | 0 |Erfolgreich. |
 | -1 |Allgemeiner Fehler. |

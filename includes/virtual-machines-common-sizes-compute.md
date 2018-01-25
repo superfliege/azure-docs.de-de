@@ -24,9 +24,11 @@ ACU: 195 – 210
 | Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32.000 (256)                                                           | Hoch                                           |
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64.000 (512)                                                           | Äußerst hoch                                 |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128.000 (1024)                                                         | Äußerst hoch                                 |
-| Standard_F72s_v2 | 72     | 144         | 576            | 32             | 144.000 (1520)                                                         | Äußerst hoch                                 |
+| Standard_F72s_v2<sup>2</sup> | 72     | 144         | 576            | 32             | 144.000 (1520)                                                         | Äußerst hoch                                 |
 
 <sup>1</sup> Virtuelle Computer der Fsv2-Serie verfügen über Hyper-Threading-Technologie von Intel®
+
+<sup>2</sup> Für mehr als 64 vCPUs ist eines der folgenden Gastbetriebssysteme erforderlich: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 und Red Hat Enterprise Linux, CentOS 7.3 oder Oracle Linux 7.3 mit LIS 4.2.1
 
 ## <a name="fs-series-sup1sup"></a>Fs-Serie <sup>1</sup>
 

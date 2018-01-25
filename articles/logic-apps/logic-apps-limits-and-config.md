@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 4babb3033e75edc5c85ce89dac569b9f2beae9f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22d0ee242d18d73d1d5825567fd61638fd22cc68
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps-Grenzwerte und -Konfiguration
 
@@ -32,14 +32,14 @@ Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen Connector
 
 #### <a name="timeout"></a>Timeout
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Anforderungszeitlimit | 120 Sekunden | Bei Bedarf können ein [asynchrones Muster](../logic-apps/logic-apps-create-api-app.md) oder eine [Until-Schleife](logic-apps-loops-and-scopes.md) zur Kompensation verwendet werden. |
 |||| 
 
 #### <a name="message-size"></a>Nachrichtengröße
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Nachrichtengröße | 100 MB | Einige Connectors und APIs unterstützen 100 MB möglicherweise nicht. | 
 | Grenzwert für die Auswertung von Ausdrücken | 131.072 Zeichen | `@concat()`, `@base64()`, `string` dürfen diesen Grenzwert nicht überschreiten. | 
@@ -47,7 +47,7 @@ Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen Connector
 
 #### <a name="retry-policy"></a>Wiederholungsrichtlinie
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Wiederholungsversuche | 90 | Der Standardwert ist 4. Sie können die Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](../logic-apps/logic-apps-workflow-actions-triggers.md) durchführen. | 
 | Maximale Wiederholungsverzögerung | 1 Tag | Sie können die Konfiguration mit dem [Parameter für die Wiederholungsrichtlinie](../logic-apps/logic-apps-workflow-actions-triggers.md) durchführen. | 
@@ -58,7 +58,7 @@ Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen Connector
 
 Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 
-| Name | Begrenzung | 
+| NAME | Begrenzung | 
 | ---- | ----- | 
 | Ausführungsdauer | 90 Tage | 
 | Aufbewahrungsdauer im Speicher | 90 Tage ab der Startzeit der Ausführung | 
@@ -72,7 +72,7 @@ Wenn die Grenzwerte für die Ausführungsdauer oder Speicheraufbewahrung im norm
 
 Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | ForEach-Elemente | 100.000 | Bei Bedarf können Sie die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern. | 
 | Until-Iterationen | 5.000 | | 
@@ -84,7 +84,7 @@ Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 
 Folgende Grenzwerte gelten für eine einzelne Instanz der Logik-App.
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Aktionsausführungen pro 5 Minuten | 100.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
 | Gleichzeitige ausgehende Aufrufe für Aktionen | ca. 2.500 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
@@ -99,7 +99,7 @@ Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten werden sollen
 
 Folgende Grenzwerte gelten für die Definition einer einzelnen Logik-App.
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Aktionen pro Workflow | 500 | Zur Erhöhung dieses Grenzwerts können Sie bei Bedarf geschachtelte Workflows hinzufügen. |
 | Zulässige Schachtelungstiefe für Aktion | 8 | Zur Erhöhung dieses Grenzwerts können Sie bei Bedarf geschachtelte Workflows hinzufügen. | 
@@ -121,7 +121,7 @@ Folgende Grenzwerte gelten für die Definition einer einzelnen Logik-App.
 
 Folgende Grenzwerte gelten für benutzerdefinierte Connectors, die Sie über Web-APIs erstellen können.
 
-| Name | Begrenzung | 
+| NAME | Begrenzung | 
 | ---- | ----- | 
 | Anzahl der erstellbaren benutzerdefinierten Connectors | 1.000 pro Azure-Abonnement | 
 | Anzahl der Anforderungen pro Minute für jede von einem benutzerdefinierten Connector erstellte Verbindung | 500 Anforderungen für jede von dem Connector erstellte Verbindung |
@@ -131,7 +131,7 @@ Folgende Grenzwerte gelten für benutzerdefinierte Connectors, die Sie über Web
 
 Die folgenden Grenzwerte gelten für Artefakte, die zu einem Integrationskonto hinzugefügt werden können.
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Schema | 8 MB | Sie können den [Blob-URI](../logic-apps/logic-apps-enterprise-integration-schemas.md) zum Hochladen von Dateien verwenden, die größer als 2 MB sind. | 
 | Zuordnung (XSLT-Datei) | 2 MB | | 
@@ -145,7 +145,7 @@ Die folgenden Grenzwerte gelten für die Anzahl von Artefakten, die zu einem Int
 
 #### <a name="free-pricing-tier"></a>Tarif „Free“
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Vereinbarungen | 10 | | 
 | Andere Artefakttypen | 25 |Zu den Artefakttypen zählen Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt. | 
@@ -153,7 +153,7 @@ Die folgenden Grenzwerte gelten für die Anzahl von Artefakten, die zu einem Int
 
 #### <a name="standard-pricing-tier"></a>Tarif „Standard“
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Ein beliebiger Artefakttyp | 500 | Zu den Artefakttypen zählen Vereinbarungen, Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt. | 
 |||| 
@@ -162,7 +162,7 @@ Die folgenden Grenzwerte gelten für die Anzahl von Artefakten, die zu einem Int
 
 Folgende Grenzwerte gelten für B2B-Protokolle.
 
-| Name | Begrenzung | Hinweise | 
+| NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | AS2 | 50 MB | Gilt für das Decodieren und das Codieren | 
 | X12 | 50 MB | Gilt für das Decodieren und das Codieren | 
@@ -184,16 +184,16 @@ Die direkten Aufrufe einer Logik-App, sprich Aufrufe über [HTTP](../connectors/
 |Brasilien Süd|191.235.82.221, 191.235.91.7, 191.234.182.26|
 |Kanada, Mitte|52.233.29.92, 52.228.39.241, 52.228.39.244|
 |Kanada, Osten|52.232.128.155, 52.229.120.45, 52.229.126.25|
-|Indien (Mitte)|52.172.154.168, 52.172.186.159, 52.172.185.79|
+|Indien, Mitte|52.172.154.168, 52.172.186.159, 52.172.185.79|
 |USA (Mitte)|13.67.236.125, 104.208.25.27, 40.122.170.198|
-|Ostasien|13.75.94.173, 40.83.127.19, 52.175.33.254|
+|Asien, Osten|13.75.94.173, 40.83.127.19, 52.175.33.254|
 |USA (Ost)|13.92.98.111, 40.121.91.41, 40.114.82.191|
 |USA (Ost) 2|40.84.30.147, 104.208.155.200, 104.208.158.174|
-|Japan Ost|13.71.158.3, 13.73.4.207, 13.71.158.120|
-|Japan (Westen)|40.74.140.4, 104.214.137.243, 138.91.26.45|
-|USA (Mitte/Norden)|168.62.248.37, 157.55.210.61, 157.55.212.238|
+|Japan, Osten|13.71.158.3, 13.73.4.207, 13.71.158.120|
+|Japan, Westen|40.74.140.4, 104.214.137.243, 138.91.26.45|
+|USA Nord Mitte|168.62.248.37, 157.55.210.61, 157.55.212.238|
 |Nordeuropa|40.113.12.95, 52.178.165.215, 52.178.166.21|
-|USA, Süden-Mitte|104.210.144.48, 13.65.82.17, 13.66.52.232|
+|USA Süd Mitte|104.210.144.48, 13.65.82.17, 13.66.52.232|
 |Asien, Südosten|13.76.133.155, 52.163.228.93, 52.163.230.166|
 |Indien (Süden)|52.172.50.24, 52.172.55.231, 52.172.52.0|
 |USA, Westen-Mitte|52.161.27.190, 52.161.18.218, 52.161.9.108|
@@ -212,32 +212,32 @@ Die Aufrufe der [Connectors](../connectors/apis-list.md) stammen von den IP-Adre
 |Logic Apps-Bereich|Ausgehende IP-Adresse|
 |-----------------|-----------|
 |Australien (Osten)|40.126.251.213|
-|Australien (Südosten)|40.127.80.34|
+|Australien, Südosten|40.127.80.34|
 |Brasilien Süd|191.232.38.129|
 |Kanada, Mitte|52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13|
 |Kanada, Osten|52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52|
-|Indien (Mitte)|104.211.98.164|
+|Indien, Mitte|104.211.98.164|
 |USA (Mitte)|40.122.49.51|
-|Ostasien|23.99.116.181|
+|Asien, Osten|23.99.116.181|
 |USA (Ost)|191.237.41.52|
 |USA (Ost) 2|104.208.233.100|
-|Japan Ost|40.115.186.96|
-|Japan (Westen)|40.74.130.77|
-|USA (Mitte/Norden)|65.52.218.230|
+|Japan, Osten|40.115.186.96|
+|Japan, Westen|40.74.130.77|
+|USA Nord Mitte|65.52.218.230|
 |Nordeuropa|104.45.93.9|
-|USA (Mitte/Süden)|104.214.70.191|
-|Südostasien|13.76.231.68|
-|Indien, Süden|104.211.227.225|
-|Westeuropa|40.115.50.13|
+|USA Süd Mitte|104.214.70.191|
+|Asien, Südosten|13.76.231.68|
+|Indien (Süden)|104.211.227.225|
+|Europa, Westen|40.115.50.13|
 |Indien, Westen|104.211.161.203|
-|USA (West)|104.40.51.248|
+|USA (Westen)|104.40.51.248|
 |UK, Süden|51.140.80.51|
 |UK, Westen|51.141.47.105|
 | | | 
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-* [Erstellen Ihrer ersten Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)  
+* [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
 * [Allgemeine Beispiele und Szenarios](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Video: Automatisieren von Geschäftsprozessen mit Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694) 
 * [Video: Integrieren Ihrer Systeme in Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)

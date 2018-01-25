@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: b263c69554c22978c854d2678ad7eeca91bc71f7
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: cccab530e86373fee8a78b42c8cba532b05c1bab
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Erste Schritte mit dem Speicher-Explorer (Vorschau)
 ## <a name="overview"></a>Übersicht
@@ -30,7 +30,7 @@ Bei der Vorschauversion des Azure-Speicher-Explorers handelt es sich um eine eig
 * [Herunterladen und Installieren des Speicher-Explorers (Vorschau)](http://www.storageexplorer.com)
 
 ## <a name="connect-to-a-storage-account-or-service"></a>Herstellen der Verbindung mit einem Speicherkonto oder Dienst
-Es gibt verschiedene Möglichkeiten, wie Sie den Speicher-Explorer (Vorschau) mit Speicherkonten verbinden können. Dazu zählen z. B.:
+Es gibt verschiedene Möglichkeiten, wie Sie den Speicher-Explorer (Vorschau) mit Speicherkonten verbinden können. Sie haben beispielsweise folgende Möglichkeiten:
 * Verbinden mit Speicherkonten, die Ihren Azure-Abonnements zugeordnet sind
 * Verbinden mit freigegebenen Speicherkonten und Diensten aus anderen Azure-Abonnements
 * Verbinden mit und Verwalten von lokalem Speicher mithilfe des Azure-Speicheremulators 
@@ -99,7 +99,7 @@ Mit dem Speicher-Explorer (Vorschau) können Sie das Anfügen an externe Speiche
 ### <a name="get-the-storage-account-credentials"></a>Beschaffen der Anmeldeinformationen für Speicherkonten
 Um ein externes Speicherkonto freigeben zu können, muss der Besitzer des Kontos zuerst die Anmeldeinformationen (Kontoname und Schlüssel) für das Konto ermitteln und diese Informationen dann an die Person weitergeben, die das Anfügen an das (externe) Konto durchführen möchte. Gehen Sie im Azure-Portal wie folgt vor, um die Anmeldeinformationen für das Speicherkonto abzurufen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Wählen Sie **Durchsuchen**.
 
@@ -243,7 +243,7 @@ Wenn Sie Text in das Suchfeld eingeben, werden im linken Bereich die dem bislang
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten von Azure-Blobspeicherressourcen mit dem Speicher-Explorer (Vorschau)](vs-azure-tools-storage-explorer-blobs.md)
-* [Verwalten von Azure Cosmos DB in Azure Storage-Explorer (Vorschau)](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+* [Verwalten von Azure Cosmos DB in Azure Storage-Explorer (Vorschau)](./cosmos-db/storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-icon.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-account-link.png

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 011f4396b11cc43ba36dd678cd4ec0f5d5daa81a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f9dd68380773e3cdb93cf1033ccd1b55d9f69305
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-annotate-data-sources"></a>Hinzufügen von Anmerkungen zu Datenquellen
 ## <a name="introduction"></a>Einführung
@@ -40,10 +40,10 @@ Da jede dieser Perspektiven wertvoll ist, verwendet Data Catalog einen Crowdsour
 ## <a name="different-types-of-annotations"></a>Anmerkungstypen
 Data Catalog unterstützt folgende Anmerkungstypen:
 
-| Anmerkung | Hinweise |
+| Anmerkung | Notizen |
 | --- | --- |
 | Anzeigename |Anzeigenamen können auf der Datenressourcenebene angegeben werden, um das Verständnis der Datenressource zu erleichtern. Anzeigenamen sind besonders hilfreich, wenn der zugrunde liegende Objektname unverständlich, abgekürzt oder für Benutzer nicht aussagekräftig ist. |
-| Beschreibung |Beschreibungen können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Beschreibungen sind kurze Textanmerkungen ohne vorgegebene Form, die beschreiben, was der Benutzer über die Datenressource weiß oder wie er sie verwendet. |
+| BESCHREIBUNG |Beschreibungen können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Beschreibungen sind kurze Textanmerkungen ohne vorgegebene Form, die beschreiben, was der Benutzer über die Datenressource weiß oder wie er sie verwendet. |
 | Tags (Benutzertags) |Tags können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Benutzertags sind benutzerdefinierte Bezeichnungen, die zum Kategorisieren von Datenassets oder Attributen verwendet werden können. |
 | Tags (Glossartags) |Tags können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Glossartags sind zentral definierte Glossarbegriffe, die zum Kategorisieren von Datenassets oder Attributen mithilfe einer allgemeinen Unternehmenstaxonomie verwendet werden können. Weitere Informationen finden Sie unter [Einrichten des Unternehmensglossars für gesteuertes Markieren](data-catalog-how-to-business-glossary.md). |
 | Experten |Experten können auf der Datenressourcenebene angegeben werden. Experten sind Benutzer oder Gruppen, die über fundiertes Wissen über die Daten verfügen und als Ansprechpartner für Benutzer fungieren können, die die registrierten Datenquellen finden und Fragen haben, die durch die vorhandenen Anmerkungen nicht beantwortet werden. |
@@ -66,5 +66,5 @@ Genau wie die Metadaten, die bei der Registrierung aus der Datenquelle extrahier
 ## <a name="summary"></a>Zusammenfassung
 Durch die Registrierung einer Datenquelle in Data Catalog werden strukturelle und beschreibende Metadaten aus der Datenquelle in den Katalogdienst kopiert, sodass die darin enthaltenen Daten leichter auffindbar sind. Sobald eine Datenquelle registriert wurde, können Benutzer im Data Catalog-Portal Anmerkungen hinzufügen, um das Verständnis der Daten zu erleichtern und die Ermittlung zu vereinfachen.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) .

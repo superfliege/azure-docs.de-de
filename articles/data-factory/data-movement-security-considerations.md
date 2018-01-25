@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2017
+ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: a69f3770184d94c481c1b78f23efa9e9c4fb31fa
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 8bd5ae2aac23b18aeb3ef44692f448b50b7e3d44
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](v1/data-factory-data-movement-security-considerations.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-data-movement-security-considerations.md)
 > * [Version 2 – Vorschauversion](data-movement-security-considerations.md)
 
 In diesem Artikel ist die grundlegenden Sicherheitsinfrastruktur beschrieben, die von Datenverschiebungsdiensten in Azure Data Factory verwendet wird, um Ihre Daten zu schützen. Azure Data Factory-Verwaltungsressourcen setzen auf der Azure Sicherheitsinfrastruktur auf und nutzen alle möglichen Sicherheitsmaßnahmen, die von Azure bereitgestellt werden.
@@ -72,7 +72,7 @@ Einige Datenspeicher unterstützen die Verschlüsselung von ruhenden Daten. Es e
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 Transparent Data Encryption (TDE) in Azure SQL Data Warehouse bietet Schutz vor der Bedrohung durch schädliche Aktivitäten, indem die ruhenden Daten in Echtzeit ver- und entschlüsselt werden. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Sichern einer Datenbank in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
-#### <a name="azure-sql-database"></a>Azure SQL-Datenbank
+#### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 Azure SQL-Datenbank unterstützt auch Transparent Data Encryption (TDE), die Schutz vor der Bedrohung durch schädliche Aktivitäten bietet. Hierzu werden die Daten in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Transparent Data Encryption mit Azure SQL-Datenbank](/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database). 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -148,7 +148,7 @@ In einem Unternehmen wird eine **Unternehmensfirewall** auf dem zentralen Router
 
 Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und die Domänenanforderungen für die **Unternehmensfirewall**.
 
-| Domänennamen                  | Ausgehende Ports | Beschreibung                              |
+| Domänennamen                  | Ausgehende Ports | BESCHREIBUNG                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443, 80        | Erforderlich für die selbstgehostete Integrationslaufzeit, um Verbindungen mit Datenverschiebungsdiensten in Data Factory herzustellen. |
 | `*.core.windows.net`          | 443            | Wird von der selbstgehosteten Integrationslaufzeit verwendet, um Verbindungen mit dem Azure Storage-Konto herzustellen, wenn Sie das Feature [gestaffeltes Kopieren](copy-activity-performance.md#staged-copy) verwenden. |
@@ -161,7 +161,7 @@ Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und di
 
 Die folgende Tabelle enthält die Anforderungen für **eingehende Ports** für die **Windows-Firewall**.
 
-| Eingehende Ports | Beschreibung                              |
+| Eingehende Ports | BESCHREIBUNG                              |
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | Vom PowerShell-Cmdlet für die Verschlüsselung erforderlich, wie in [Verschlüsseln von Anmeldeinformationen für selbstgehostete Integrationslaufzeit](encrypt-credentials-self-hosted-integration-runtime.md) bzw. für die Anwendung zur Anmeldeinformationsverwaltung beschrieben, um Anmeldeinformationen für die lokalen Datenspeicher auf der selbstgehosteten Integrationslaufzeit sicher festzulegen. |
 
@@ -174,7 +174,7 @@ Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Computers de
 
 - [Azure SQL-Datenbank](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
-- [Azure Data Lake-Speicher](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
 - [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 

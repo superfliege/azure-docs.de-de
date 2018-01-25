@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: a11ba47d6ec69d31360e9142b7bce97803809c57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05dd4ae3c4ee439d66401a3f5595f9104051f8ee
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-query-action"></a>Erste Schritte mit der Abfrageaktion
 Mit der Abfrageaktion können Sie Batches und Arrays zum Ausführen von Workflows nutzen:
@@ -27,7 +27,7 @@ Mit der Abfrageaktion können Sie Batches und Arrays zum Ausführen von Workflow
 * Erstellen Sie eine Aufgabe für alle Datensätze mit hoher Priorität aus einer Datenbank.
 * Speichern Sie alle PDF-Anlagen für E-Mails in einem Azure-Blob.
 
-Wenn Sie die Abfrageaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/logic-apps-create-a-logic-app.md).
+Wenn Sie die Abfrageaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-query-action"></a>Verwenden der Abfrageaktion
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).  
@@ -54,7 +54,7 @@ Im Folgenden wird erläutert, wie Sie die Aktion in einer Logik-App hinzufügen 
 ## <a name="query-action"></a>Abfrageaktion
 Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Der Connector verfügt über eine mögliche Aktion.
 
-| Aktion | Beschreibung |
+| anzuzeigen. | BESCHREIBUNG |
 | --- | --- |
 | Array filtern |Auswerten einer Bedingung für jedes Element in einem Array und Zurückgeben der Ergebnisse |
 
@@ -65,7 +65,7 @@ Für die Abfrageaktion steht eine mögliche Aktion zur Verfügung. Die folgenden
 Im Folgenden werden die Eingabefelder für die Aktion angegeben, die eine ausgehende HTTP-Anforderung ausführt.
 Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-| Anzeigename | Eigenschaftenname | Beschreibung |
+| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
 | Von* |from |Das zu filternde Array |
 | Bedingung* |Hierbei gilt: |Die für jedes Element auszuwertende Bedingung |
@@ -75,10 +75,10 @@ Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 ### <a name="output-details"></a>Ausgabedetails
 Im Folgenden werden die Ausgabedetails für die HTTP-Antwort angegeben.
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| Array gefiltert |array |Array, das ein Objekt für jedes gefilterte Ergebnis enthält |
+| Array gefiltert |Array |Array, das ein Objekt für jedes gefilterte Ergebnis enthält |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 

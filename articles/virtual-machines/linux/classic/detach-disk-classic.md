@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: e9589084062e4cefa661aaf2bc1630fa9eee8bd7
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 3b9678e7b1cfbff1ba83ae6cf881546335ab3e12
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-detach-a-disk-from-a-linux-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Linux-Computer
 > [!IMPORTANT] 
@@ -31,6 +31,6 @@ ms.lasthandoff: 01/08/2018
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwenden von virtuellen Linux-Computern:
 
-* [Anfügen eines Datenträgers an einen virtuellen Linux-Computer](attach-disk.md)
+* [Anfügen eines Datenträgers an einen virtuellen Linux-Computer](attach-disk-classic.md)
 * [Verwenden der Azure-Befehlszeilenschnittstelle beim klassischen Bereitstellungsmodell](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 

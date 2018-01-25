@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 5b4b31b58c7a4bcb93277333502bc082da2062ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88d9c4b23eb676743c004c0d1b3ab45f6cd66055
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Public Preview)
 In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Daten von einem REST-API-Client an Log Analytics zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Log Analytics autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
@@ -47,14 +47,14 @@ Um die HTTP-Datensammler-API zu verwenden, erstellen Sie eine POST-Anforderung m
 | Content-Typ |Anwendung/json |
 
 ### <a name="request-uri-parameters"></a>URI-Parameter der Anforderung
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |:--- |:--- |
 | CustomerID |Der eindeutige Bezeichner für den Microsoft Operations Management Suite-Arbeitsbereich |
 | Ressource |Der Name der API-Ressource: /api/logs |
 | API-Version |Die Version der bei dieser Anforderung verwendeten API. Die aktuelle Version lautet 2016-04-01. |
 
 ### <a name="request-headers"></a>Anforderungsheader
-| Header | Beschreibung |
+| Header | BESCHREIBUNG |
 |:--- |:--- |
 | Autorisierung |Die Signatur der Autorisierung. Weiter unten in diesem Artikel erhalten Sie Informationen zum Erstellen eines HMAC-SHA256-Headers. |
 | Log-Type |Geben Sie den Datensatztyp der übermittelten Daten an. Zurzeit unterstützt der Protokolltyp nur Buchstaben. Ziffern oder Sonderzeichen werden nicht unterstützt. |
@@ -134,9 +134,9 @@ Um den Datentyp einer Eigenschaft festzulegen, fügt Log Analytics ein Suffix an
 
 | Datentyp der Eigenschaft | Suffix |
 |:--- |:--- |
-| String |_s |
-| Boolean |_b |
-| Doppelt |_d |
+| Zeichenfolge |_s |
+| Boolescher Wert |_b |
+| Double |_d |
 | Datum/Uhrzeit |_t |
 | GUID |_g |
 
@@ -173,7 +173,7 @@ Der HTTP-Statuscode 200 bedeutet, dass die Anforderung für die Verarbeitung emp
 
 Diese Tabelle enthält den vollständigen Satz von Statuscodes, die vom Dienst zurückgegeben werden können:
 
-| Code | Status | Fehlercode | Beschreibung |
+| Code | Status | Fehlercode | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |Die Anforderung wurde erfolgreich angenommen. |
 | 400 |Ungültige Anforderung |InactiveCustomer |Der Arbeitsbereich wurde geschlossen. |
@@ -185,7 +185,7 @@ Diese Tabelle enthält den vollständigen Satz von Statuscodes, die vom Dienst z
 | 400 |Ungültige Anforderung |MissingContentType |Der Inhaltstyp wurde nicht angegeben. |
 | 400 |Ungültige Anforderung |MissingLogType |Der erforderliche Protokolltyp für den Wert wurde nicht angegeben. |
 | 400 |Ungültige Anforderung |UnsupportedContentType |Der Inhaltstyp wurde nicht auf **application/json** festgelegt. |
-| 403 |Verboten (403) |InvalidAuthorization |Der Dienst konnte die Anforderung nicht authentifizieren. Vergewissern Sie sich, dass die Arbeitsbereichs-ID und der Verbindungsschlüssel gültig sind. |
+| 403 |Verboten |InvalidAuthorization |Der Dienst konnte die Anforderung nicht authentifizieren. Vergewissern Sie sich, dass die Arbeitsbereichs-ID und der Verbindungsschlüssel gültig sind. |
 | 404 |Nicht gefunden | | Die angegebene URL ist falsch, oder die Anforderung ist zu groß. |
 | 429 |Zu viele Anforderungen | | Der Dienst erwartet eine große Datenmenge von Ihrem Konto. Versuchen Sie die Anforderung später erneut. |
 | 500 |Interner Serverfehler |UnspecifiedError |Auf dem Server wurde ein interner Fehler festgestellt. Versuchen Sie die Anforderung erneut. |
@@ -260,7 +260,7 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
 
 
 # Create the function to create and post the request
-Function Post-OMSData($customerId, $sharedKey, $body, $logType)
+Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
 {
     $method = "POST"
     $contentType = "application/json"
@@ -291,7 +291,7 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 }
 
 # Submit the data to the API endpoint
-Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
+Post-LogAnalyticsData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
 ### <a name="c-sample"></a>C#-Beispiel

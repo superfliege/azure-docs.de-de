@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: d65d94bb5c807abfd6cbb1fae786a02f179e93d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0d4594f5e7c0a13d50993dd42d4780c1ba703140
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung
 In einem [thematisch ähnlichen Azure AD B2C-Artikel](active-directory-b2c-custom-rest-api-netfw.md) haben wir einen RESTful-Dienst (Web-API) erstellt, der sich ohne Authentifizierung in Azure Active Directory B2C-User Journeys (Azure AD B2C) integriert. 
@@ -76,7 +76,7 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
 
 3. Öffnen Sie die Datei *App_Start\ClientAuthMiddleware.cs*, und ersetzen Sie den Inhalt der Datei durch folgenden Code:
 
-    ```C#
+    ```csharp
     
     using Microsoft.Owin;
     using System;
@@ -194,7 +194,7 @@ Fügen Sie der API eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Gehen
 
 2. Öffnen Sie die Datei *Startup.cs*, und ersetzen Sie den Inhalt der Datei durch folgenden Code:
 
-    ```C#
+    ```csharp
     using Microsoft.Owin;
     using Owin;
     

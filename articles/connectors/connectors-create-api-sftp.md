@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/20/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 31253d8daee1581167a96a20ba8ad529a04b3e92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1abc15daaa96e834aedd121a88b543067e53641b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-sftp-connector"></a>Erste Schritte mit dem SFTP-Connector
 Greifen Sie mithilfe des SFTP-Connectors auf ein SFTP-Konto zu, um Dateien zu senden und zu empfangen. Sie können verschiedene Vorgänge ausführen und beispielsweise Dateien erstellen, aktualisieren, abrufen oder löschen.  
 
-Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
+Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
 
 ## <a name="connect-to-sftp"></a>Herstellen einer Verbindung mit SFTP
 Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine *Verbindung* mit dem Dienst herstellen. Eine [Verbindung](connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.  
@@ -35,7 +35,7 @@ Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zun
 > 
 
 ## <a name="use-an-sftp-trigger"></a>Verwenden eines SFTP-Triggers
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
 
 In diesem Beispiel erfahren Sie, wie mithilfe des Triggers **SFTP – Wenn eine Datei hinzugefügt oder geändert wird** ein Logik-App-Workflow initiiert wird, wenn einem SFTP-Server eine Datei hinzugefügt oder eine Datei auf einem SFTP-Server geändert wird. Darüber hinaus fügen Sie eine Bedingung hinzu, die den Inhalt der neuen oder geänderten Datei überprüft und entscheidet, dass die Datei extrahiert werden soll, wenn deren Inhalt darauf hindeutet, dass die Datei vor der Verwendung des Inhalts extrahiert werden muss. Schließlich fügen Sie eine Aktion hinzu, die den Inhalt einer Datei extrahiert und in einem Ordner auf dem SFTP-Server ablegt. 
 
@@ -45,13 +45,13 @@ In einem Unternehmensszenario können Sie mit diesem Trigger beispielsweise eine
 > 
 > 
 
-## <a name="add-a-condition"></a>Eine Bedingung hinzufügen
+## <a name="add-a-condition"></a>Bedingung hinzufügen
 > [!INCLUDE [Steps to add a condition](../../includes/connectors-create-api-sftp-condition.md)]
 > 
 > 
 
 ## <a name="use-an-sftp-action"></a>Verwenden einer SFTP-Aktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
 
 > [!INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
 > 

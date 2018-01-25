@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: c99e5ebc2612e10f42bddbbd2f1c17d7404305d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c30b0a78cf3421554cf8f7c887c7973c7b9f4b9c
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="check-your-templates-for-azure-stack-with-template-validator"></a>Überprüfen Ihrer Vorlagen für Azure Stack mit dem Validierungssteuerelement für Vorlagen
 
@@ -58,15 +58,15 @@ Alle Warnungen oder Fehler bei der Vorlagenvalidierung werden in der PowerShell-
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Beschreibung | Erforderlich |
+| Parameter | BESCHREIBUNG | Erforderlich |
 | ----- | -----| ----- |
 | TemplatePath | Gibt den Pfad an, um Resource Manager-Vorlagen rekursiv zu suchen | Ja | 
-| TemplatePattern | Gibt den Namen der abzugleichenden Vorlagendateien an | Nein |
+| TemplatePattern | Gibt den Namen der abzugleichenden Vorlagendateien an | Nein  |
 | CapabilitiesPath | Gibt den Pfad zu der JSON-Datei mit Cloudfunktionen an | Ja | 
-| IncludeComputeCapabilities | Enthält die Auswertung von IaaS-Ressourcen wie VM-Größen und VM-Erweiterungen | Nein |
-| IncludeStorageCapabilities | Enthält die Auswertung von Speicherressourcen wie SKU-Typen | Nein |
-| Bericht | Gibt den Namen des generierten HTML-Berichts an | Nein |
-| Ausführlich | Protokolliert Fehler und Warnungen in der Konsole | Nein|
+| IncludeComputeCapabilities | Enthält die Auswertung von IaaS-Ressourcen wie VM-Größen und VM-Erweiterungen | Nein  |
+| IncludeStorageCapabilities | Enthält die Auswertung von Speicherressourcen wie SKU-Typen | Nein  |
+| Bericht | Gibt den Namen des generierten HTML-Berichts an | Nein  |
+| Ausführlich | Protokolliert Fehler und Warnungen in der Konsole | Nein |
 
 
 ### <a name="examples"></a>Beispiele
@@ -93,7 +93,7 @@ Die heruntergeladenen Dateien enthalten eine Standarddatei (*AzureStackCloudCapa
 3.  Verwenden Sie das Cmdlet „Get-CloudCapabilities“, um Dienstversionen abzurufen und eine JSON-Datei mit Cloudfunktionen zu erstellen:
 
     ```PowerShell
-    Get-AzureRMCloudCapabilities -Location 'local' -Verbose
+    Get-AzureRMCloudCapability -Location 'local' -Verbose
     ```             
 
 

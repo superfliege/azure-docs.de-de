@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3ab1094c7cf99e105bc0a08d9f84332010f5afd5
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 37951a04bbfd266717490dd1752d0be04d2231a5
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/18/2018
 ---
-# <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication-preview"></a>Erstellen und Installieren von Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung (Vorschau)
+# <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Erstellen und Installieren von Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung
 
 VPN-Clientkonfigurationsdateien sind in einer ZIP-Datei enthalten. Konfigurationsdateien enthalten die Einstellungen, die für das Herstellen einer P2S-Verbindung zwischen einem nativen Windows- oder Mac-IKEv2-VPN-Client und einem VNET erforderlich sind. Der RADIUS-Server bietet mehrere Authentifizierungsoptionen, daher variiert die VPN-Clientkonfiguration je nach Option.
 
@@ -94,7 +94,7 @@ Führen Sie die folgenden Schritte aus, um den nativen Windows-VPN-Client für d
   ![Weiter](./media/point-to-site-vpn-client-configuration-radius/adcontinue.png)
 5. Während der Profilinstallation haben Sie die Möglichkeit, den Benutzernamen und das Kennwort für die VPN-Authentifizierung anzugeben. Es ist nicht erforderlich, diese Informationen einzugeben. Wenn Sie sie angegeben, werden die Informationen gespeichert und automatisch verwendet, wenn Sie eine Verbindung initiieren. Klicken Sie auf **Installieren**, um den Vorgang fortzusetzen.
 
-  ![Einstellungen](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
+  ![settings](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
 6. Geben Sie einen Benutzernamen und ein Kennwort für die Berechtigungen ein, die zum Installieren des Profils auf Ihrem Computer erforderlich sind. Klicken Sie auf **OK**.
 
   ![Benutzername und Kennwort](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
@@ -184,7 +184,7 @@ Klicken Sie zum Importieren auf **Hinzufügen**.
   ![Zertifikat](./media/point-to-site-vpn-client-configuration-radius/certificate.png)
 6. Unter **Choose An Identity** (Identität auswählen) wird eine Liste mit Zertifikaten zur Auswahl angezeigt. Wählen Sie das richtige Zertifikat aus, und klicken Sie auf **Weiter**.
 
-  ![Identität](./media/point-to-site-vpn-client-configuration-radius/identity.png)
+  ![identity](./media/point-to-site-vpn-client-configuration-radius/identity.png)
 7. Geben Sie im Feld **Local ID** (Lokale ID) den Namen des Zertifikats (aus Schritt 5) ein. In diesem Beispiel lautet er „ikev2Client.com“. Klicken Sie auf die Schaltfläche **Übernehmen**, um die Änderungen zu speichern.
 
   ![apply](./media/point-to-site-vpn-client-configuration-radius/applyconnect.png)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: LADocs
-ms.openlocfilehash: 7ce0860272901f3b4e4cf3d63f7361d539f64741
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f939c626be11a358b0f8bece8840992a4362e1f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="partner-agreements-for-b2b-communication-with-azure-logic-apps-and-enterprise-integration-pack"></a>Partnervereinbarungen für die B2B-Kommunikation mit Azure Logic Apps und Enterprise Integration Pack
 
@@ -46,7 +46,7 @@ Es folgen einige der allgemeinen Vorteile der Verwendung von Vereinbarungen:
 
 ## <a name="how-to-use-an-agreement"></a>Verwenden einer Vereinbarung
 
-Sie können [Logik-Apps](logic-apps-what-are-logic-apps.md "Informationen zu Logik-Apps") mit B2B-Funktionen mithilfe einer von Ihnen definierten Vereinbarung erstellen.
+Sie können [Logik-Apps](logic-apps-overview.md "Informationen zu Logik-Apps") mit B2B-Funktionen mithilfe einer von Ihnen definierten Vereinbarung erstellen.
 
 ## <a name="how-to-edit-an-agreement"></a>Bearbeiten einer Vereinbarung
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2017
 ms.author: mikerou
-ms.openlocfilehash: 3d123a3d06420194d2918b71c98152cd2ea03457
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 1744e3c49ac06abe9e1067d507fd56d694201ffc
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programmgesteuertes Skalieren eines Service Fabric-Clusters 
 
@@ -57,7 +57,7 @@ Ein Dienstprinzipal kann mit den folgenden Schritten erstellt werden:
 
 Die Fluent-Compute-Bibliothek kann wie folgt die Anmeldung mit diesen Anmeldeinformationen durchführen (beachten Sie, dass sich Core-Fluent-Azure-Typen wie `IAzure` im Paket [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) befinden):
 
-```C#
+```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
                 ClientId = AzureClientId,
                 ClientSecret = 
@@ -79,7 +79,7 @@ Nach der Anmeldung kann die Anzahl von Skalierungsgruppeninstanzen über `AzureC
 ## <a name="scaling-out"></a>Horizontales Skalieren
 Mithilfe des Azure Fluent-Compute-SDKs können der VM-Skalierungsgruppe mit nur wenigen Aufrufe Instanzen hinzugefügt werden:
 
-```C#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
@@ -95,7 +95,7 @@ Das horizontale Herunterskalieren ähnelt dem horizontalen Hochskalieren. Die ta
 
 Die Vorbereitung des Knotens auf das Herunterfahren umfasst das Suchen und Deaktivieren des zu entfernenden Knotens (der zuletzt hinzugefügte Knoten). Für Knoten ohne Ausgangswert können neuere Knoten durch Vergleichen von `NodeInstanceId` gefunden werden. 
 
-```C#
+```csharp
 using (var client = new FabricClient())
 {
     var mostRecentLiveNode = (await client.QueryManager.GetNodeListAsync())
@@ -109,7 +109,7 @@ Beachten Sie, dass sich Startknoten unterscheiden. Sie folgen nicht notwendigerw
 
 Sobald der zu entfernende Knoten gefunden wurde, kann er mit denselben `FabricClient`- und `IAzure`-Instanzen wie zuvor deaktiviert und entfernt werden.
 
-```C#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 
 // Remove the node from the Service Fabric cluster
@@ -134,7 +134,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 Wie beim horizontalen Hochskalieren können auch hier PowerShell-Cmdlets zum Ändern der Kapazität von VM-Skalierungsgruppen verwendet werden, wenn ein Skriptansatz bevorzugt wird. Sobald die virtuelle Computerinstanz entfernt wurde, kann der Zustand des Service Fabric-Knotens entfernt werden.
 
-```C#
+```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 274c003e0697ba08d010c3bf13724461a4b624ee
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: bdf1754226852145e9bf5597256339549f253071
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Systemvariablen
 Dieser Artikel beschreibt die Systemvariablen, die von Azure Data Factory unterstützt werden. Sie können diese Variablen in Ausdrücken verwenden, wenn Sie Data Factory-Entitäten definieren. 
@@ -28,7 +28,7 @@ Dieser Artikel beschreibt die Systemvariablen, die von Azure Data Factory unters
 
 ## <a name="pipeline-scope"></a>Pipelinebereich:
 
-| Variablenname | Beschreibung |
+| Variablenname | BESCHREIBUNG |
 | --- | --- |
 | @pipeline().DataFactory |Name der Data Factory, in der die Pipelineausführung ausgeführt wird | 
 | @pipeline().Pipeline |Name der Pipeline |
@@ -40,7 +40,7 @@ Dieser Artikel beschreibt die Systemvariablen, die von Azure Data Factory unters
 
 ## <a name="trigger-scope"></a>Triggerbereich:
 
-| Variablenname | Beschreibung |
+| Variablenname | BESCHREIBUNG |
 | --- | --- |
 | trigger().scheduledTime |Zeit, zu der der Trigger die Pipelineausführung planmäßig aufrufen sollte. Beispiel: Für einen Trigger, der alle 5 Minuten ausgelöst wird, würde diese Variable `2017-06-01T22:20:00Z`, `2017-06-01T22:25:00Z` bzw. `2017-06-01T22:29:00Z` zurückgeben.|
 | trigger().startTime |Zeit, zu der der Trigger **tatsächlich** ausgelöst wurde, um die Pipelineausführung aufzurufen. Beispiel: Für einen Trigger, der alle 5 Minuten ausgelöst wird, könnte diese Variable Werte wie `2017-06-01T22:20:00.4061448Z`, `2017-06-01T22:25:00.7958577Z` bzw. `2017-06-01T22:29:00.9935483Z` zurückgeben.|

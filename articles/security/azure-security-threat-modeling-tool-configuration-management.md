@@ -14,23 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 114666d0c173786373e3bdd025027eb217922749
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f3de9ba6615a9b2232cca237a822b308d89426d
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitsrahmen: Konfigurationsverwaltung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
-| **Web Application** | <ul><li>[Implementieren Sie die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP), und deaktivieren Sie Inline-JavaScript.](#csp-js)</li><li>[Aktivieren Sie die XSS-Filter des Browsers.](#xss-filter)</li><li>[ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.](#trace-deploy)</li><li>[Greifen Sie nur auf Drittanbieter-JavaScripts aus vertrauenswürdigen Quellen zu.](#js-trusted)</li><li>[Stellen Sie sicher, dass authentifizierte ASP.NET-Seiten gegen UI Redressing und Clickjacking geschützt sind.](#ui-defenses)</li><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für ASP.NET-Webanwendungen aktiviert ist.](#cors-aspnet)</li><li>[Aktivieren Sie für ASP.NET-Seiten das ValidateRequest-Attribut.](#validate-aspnet)</li><li>[Verwenden Sie die neuesten Versionen von JavaScript-Bibliotheken (lokal gehostet).](#local-js)</li><li>[Deaktivieren Sie die automatische MIME-Ermittlung.](#mime-sniff)</li><li>[Entfernen Sie Serverstandardheader für Windows Azure-Websites, um Fingerprinting zu vermeiden.](#standard-finger)</li></ul> |
-| **Datenbank** | <ul><li>[Konfigurieren Sie eine Windows-Firewall für Datenbankmodulzugriff.](#firewall-db)</li></ul> |
+| **Webanwendung** | <ul><li>[Implementieren Sie die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP), und deaktivieren Sie Inline-JavaScript.](#csp-js)</li><li>[Aktivieren Sie die XSS-Filter des Browsers.](#xss-filter)</li><li>[ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.](#trace-deploy)</li><li>[Greifen Sie nur auf Drittanbieter-JavaScripts aus vertrauenswürdigen Quellen zu.](#js-trusted)</li><li>[Stellen Sie sicher, dass authentifizierte ASP.NET-Seiten gegen UI Redressing und Clickjacking geschützt sind.](#ui-defenses)</li><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für ASP.NET-Webanwendungen aktiviert ist.](#cors-aspnet)</li><li>[Aktivieren Sie für ASP.NET-Seiten das ValidateRequest-Attribut.](#validate-aspnet)</li><li>[Verwenden Sie die neuesten Versionen von JavaScript-Bibliotheken (lokal gehostet).](#local-js)</li><li>[Deaktivieren Sie die automatische MIME-Ermittlung.](#mime-sniff)</li><li>[Entfernen Sie Serverstandardheader für Windows Azure-Websites, um Fingerprinting zu vermeiden.](#standard-finger)</li></ul> |
+| **Datenbank** | <ul><li>
+            [Konfigurieren einer Windows-Firewall für Datenbank-Engine-Zugriff](#firewall-db)</li></ul> |
 | **Web-API** | <ul><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für die ASP.NET-Web-API aktiviert ist.](#cors-api)</li><li>[Verschlüsseln Sie Abschnitte der Web-API-Konfigurationsdateien, die sensible Daten enthalten.](#config-sensitive)</li></ul> |
 | **IoT-Gerät** | <ul><li>[Stellen Sie sicher, dass alle Administratoroberflächen durch sichere Anmeldeinformationen geschützt sind.](#admin-strong)</li><li>[Stellen Sie sicher, dass auf Geräten kein unbekannter Code ausgeführt werden kann.](#unknown-exe)</li><li>[Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des IoT-Geräts mit BitLocker.](#partition-iot)</li><li>[Stellen Sie sicher, dass auf Geräten nur unbedingt erforderliche Dienste/Features aktiviert sind.](#min-enable)</li></ul> |
 | **Zwischengeschaltetes IoT-Gateway** | <ul><li>[Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des zwischengeschalteten IoT-Gateways mit BitLocker.](#field-bit-locker)</li><li>[Stellen Sie sicher, dass die Standardanmeldeinformationen des zwischengeschalteten Gateways bei der Installation geändert werden.](#default-change)</li></ul> |
 | **IoT-Cloudgateway** | <ul><li>[Stellen Sie sicher, dass das Cloudgateway einen Prozess implementiert, der die Firmware verbundener Geräte auf dem neuesten Stand hält.](#cloud-firmware)</li></ul> |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Stellen Sie sicher, dass für Geräte organisationsrichtlinienkonforme Endpunktsicherheitskontrollen konfiguriert sind.](#controls-policies)</li></ul> |
-| **Azure Storage (in englischer Sprache)** | <ul><li>[Gewährleisten Sie die sichere Verwaltung von Azure-Speicherzugriffsschlüsseln.](#secure-keys)</li><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für Azure Storage aktiviert ist.](#cors-storage)</li></ul> |
+| **Azure Storage** | <ul><li>[Gewährleisten Sie die sichere Verwaltung von Azure-Speicherzugriffsschlüsseln.](#secure-keys)</li><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für Azure Storage aktiviert ist.](#cors-storage)</li></ul> |
 | **WCF** | <ul><li>[Aktivieren Sie das Diensteinschränkungsfeature von WCF.](#throttling)</li><li>[Offenlegung von WCF-Informationen durch Metadaten](#info-metadata)</li></ul> | 
 
 ## <a id="csp-js"></a>Implementieren Sie die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP), und deaktivieren Sie Inline-JavaScript.
@@ -46,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="example"></a>Beispiel
 Beispielrichtlinie: 
-```C#
+```csharp
 Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analytics.com 
 ```
 Bei dieser Richtlinie können Skripts nur vom Server der Webanwendung und vom Google Analytics-Server geladen werden. Von anderen Websites geladene Skripts werden abgelehnt. Wenn CSP auf einer Website aktiviert ist, werden folgende Features automatisch deaktiviert, um XSS-Angriffe zu vermeiden. 
@@ -74,7 +75,7 @@ Example: var str="alert(1)"; eval(str);
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | [XSS Protection Filter](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) (XSS-Schutzfilter) |
-| **Schritte** | <p>Die Konfiguration des X-XSS-Protection-Antwortheaders steuert den websiteübergreifenden Skriptfilter des Browsers. Dieser Antwortheader kann folgende Werte besitzen:</p><ul><li>`0:`: Deaktiviert den Filter.</li><li>`1: Filter enabled`: Wenn ein Angriff mit websiteübergreifendem Skripting erkannt wird, wird die Seite vom Browser bereinigt, um den Angriff abzuwehren.</li><li>`1: mode=block : Filter enabled`: Bei Erkennung eines XSS-Angriffs verhindert der Browser das Rendern der Seite, anstatt die Seite zu bereinigen.</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`: Der Browser bereinigt die Seite und meldet die Verletzung.</li></ul><p>Hierbei handelt es sich um eine Chromium-Funktion, die CSP-Verletzungsberichte verwendet, um Details an einen URI Ihrer Wahl zu senden. Die letzten beiden Optionen werden als sichere Werte betrachtet.</p>|
+| **Schritte** | <p>Die Konfiguration des X-XSS-Protection-Antwortheaders steuert den websiteübergreifenden Skriptfilter des Browsers. Dieser Antwortheader kann folgende Werte besitzen:</p><ul><li>`0:`: Deaktiviert den Filter.</li><li>`1: Filter enabled`: Wenn ein Angriff mit websiteübergreifendem Skripting erkannt wird, wird die Seite vom Browser bereinigt, um den Angriff abzuwehren.</li><li>`1: mode=block : Filter enabled`: Bei Erkennung eines XSS-Angriffs verhindert der Browser das Rendern der Seite, anstatt die Seite zu bereinigen.</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Der Browser bereinigt die Seite und meldet die Verletzung.</li></ul><p>Hierbei handelt es sich um eine Chromium-Funktion, die CSP-Verletzungsberichte verwendet, um Details an einen URI Ihrer Wahl zu senden. Die letzten beiden Optionen werden als sichere Werte betrachtet.</p>|
 
 ## <a id="trace-deploy"></a>ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.
 
@@ -111,7 +112,7 @@ Example: var str="alert(1)"; eval(str);
 
 ### <a name="example"></a>Beispiel
 Der X-FRAME-OPTIONS-Header kann über „web.config“ von IIS festgelegt werden. Codeausschnitt aus „web.config“ für Websites, die niemals mit einem Frame versehen werden dürfen: 
-```C#
+```csharp
     <system.webServer>
         <httpProtocol>
             <customHeader>
@@ -123,7 +124,7 @@ Der X-FRAME-OPTIONS-Header kann über „web.config“ von IIS festgelegt werden
 
 ### <a name="example"></a>Beispiel
 Codeausschnitt aus „web.config“ für Websites, die nur von Seiten aus der gleichen Domäne mit einem Frame versehen werden dürfen: 
-```C#
+```csharp
     <system.webServer>
         <httpProtocol>
             <customHeader>
@@ -158,7 +159,7 @@ Wenn der Zugriff auf „web.config“ möglich ist, kann CORS über den folgende
 
 ### <a name="example"></a>Beispiel
 Wenn der Zugriff auf „web.config“ nicht möglich ist, kann CORS durch Hinzufügen des folgenden CSharp-Codes konfiguriert werden: 
-```C#
+```csharp
 HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example.com")
 ```
 
@@ -226,7 +227,7 @@ Fügen Sie den Header der Datei „web.config“ hinzu, wenn die Anwendung von I
 
 ### <a name="example"></a>Beispiel
 Fügen Sie den Header über die globale Anforderung „Application\_BeginRequest“ hinzu. 
-```C#
+```csharp
 void Application_BeginRequest(object sender, EventArgs e)
 {
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
@@ -235,7 +236,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ### <a name="example"></a>Beispiel
 Implementieren Sie ein benutzerdefiniertes HTTP-Modul. 
-```C#
+```csharp
 public class XContentTypeOptionsModule : IHttpModule
 {
 #region IHttpModule Members
@@ -262,7 +263,7 @@ application.Response.Headers.Add("X-Content-Type-Options ", "nosniff");
 ### <a name="example"></a>Beispiel
 Sie können den erforderlichen Header für bestimmte Seiten aktivieren, indem sie ihn einzelnen Antworten hinzufügen: 
 
-```C#
+```csharp
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
@@ -285,8 +286,9 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | SQL Azure, lokal |
 | **Attribute**              | N/V, SQL-Version: V12 |
-| **Referenzen**              | [Übersicht über Firewallregeln für Azure SQL-Datenbank](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [Konfigurieren einer Windows-Firewall für Datenbankmodulzugriff](https://msdn.microsoft.com/library/ms175043) |
-| **Schritte** | Firewallsysteme tragen dazu bei, nicht autorisierte Zugriffe auf Computerressourcen zu verhindern. Wenn Sie durch eine Firewall auf eine Instanz des SQL Server-Datenbankmoduls zugreifen möchten, müssen Sie die Firewall auf dem Computer, auf dem SQL Server ausgeführt wird, entsprechend konfigurieren. |
+| **Referenzen**              | 
+            [Übersicht über Firewallregeln für Azure SQL-Datenbank](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [Konfigurieren einer Windows-Firewall für Datenbank-Engine-Zugriff](https://msdn.microsoft.com/library/ms175043) |
+| **Schritte** | Firewallsysteme tragen dazu bei, nicht autorisierte Zugriffe auf Computerressourcen zu verhindern. Wenn Sie durch eine Firewall auf eine Instanz der SQL Server-Datenbank-Engine zugreifen möchten, müssen Sie die Firewall auf dem Computer, auf dem SQL Server ausgeführt wird, entsprechend konfigurieren. |
 
 ## <a id="cors-api"></a>Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für die ASP.NET-Web-API aktiviert ist.
 
@@ -301,7 +303,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ### <a name="example"></a>Beispiel
 Fügen Sie den folgenden Code in „App_Start/WebApiConfig.cs“ der Methode „WebApiConfig.Register“ hinzu: 
-```C#
+```csharp
 using System.Web.Http;
 namespace WebService
 {
@@ -325,7 +327,7 @@ namespace WebService
 ### <a name="example"></a>Beispiel
 Das EnableCors-Attribut kann wie folgt auf Aktionsmethoden in einem Controller angewendet werden: 
 
-```C#
+```csharp
 public class ResourcesController : ApiController
 {
   [EnableCors("http://localhost:55912", // Origin
@@ -365,7 +367,7 @@ Stellen Sie unbedingt sicher, dass die Liste mit Ursprüngen im EnableCors-Attri
 
 ### <a name="example"></a>Beispiel
 Wenn Sie CORS für eine bestimmte Methode in einer Klasse deaktivieren möchten, kann das DisableCors-Attribut wie folgt verwendet werden: 
-```C#
+```csharp
 [EnableCors("http://example.com", "Accept, Origin, Content-Type", "POST")]
 public class ResourcesController : ApiController
 {
@@ -399,7 +401,7 @@ public class ResourcesController : ApiController
 
 ### <a name="example"></a>Beispiel
 Das erste Beispiel dient zum Aufrufen von „UseCors“ mit einem Lambda. Das Lambda akzeptiert ein CorsPolicyBuilder-Objekt: 
-```C#
+```csharp
 public void Configure(IApplicationBuilder app)
 {
     app.UseCors(builder =>
@@ -411,7 +413,7 @@ public void Configure(IApplicationBuilder app)
 
 ### <a name="example"></a>Beispiel
 Das zweite Beispiel dient dazu, mindestens eine benannte CORS-Richtlinie zu definieren und anschließenden zur Laufzeit anhand des Namens auszuwählen. 
-```C#
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddCors(options =>
@@ -434,7 +436,7 @@ public void Configure(IApplicationBuilder app)
 
 ### <a name="example"></a>Beispiel
 Pro Aktion: Fügen Sie einer Aktion das EnableCors-Attribut hinzu, um eine CORS-Richtlinie für eine bestimmte Aktion anzugeben. Geben Sie den Namen der Richtlinie an. 
-```C#
+```csharp
 public class HomeController : Controller
 {
     [EnableCors("AllowSpecificOrigin")] 
@@ -446,7 +448,7 @@ public class HomeController : Controller
 
 ### <a name="example"></a>Beispiel
 Pro Controller: 
-```C#
+```csharp
 [EnableCors("AllowSpecificOrigin")]
 public class HomeController : Controller
 {
@@ -454,7 +456,7 @@ public class HomeController : Controller
 
 ### <a name="example"></a>Beispiel
 Global: 
-```C#
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc();
@@ -468,7 +470,7 @@ Stellen Sie unbedingt sicher, dass die Liste mit Ursprüngen im EnableCors-Attri
 
 ### <a name="example"></a>Beispiel
 Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verwenden Sie das DisableCors-Attribut. 
-```C#
+```csharp
 [DisableCors]
     public IActionResult About()
     {

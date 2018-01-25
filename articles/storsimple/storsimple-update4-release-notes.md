@@ -12,17 +12,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/03/2017
+ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: ce9a6493e80d65641ef5d797d89663bfaa5cd624
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: f1c0734b07287d95a2f5031e010f0e407d3a816f
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Versionshinweise zu Update 4 der StorSimple 8000-Serie
 > [!NOTE]
-> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](storsimple-8000-move-azure-portal-faq.md).
 
 
 ## <a name="overview"></a>Übersicht
@@ -59,7 +59,7 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 4 v
 
 * **Aktualisieren von Änderungen:** In dieser Version wurden Fehler im Zusammenhang mit Aktualisierungsfehlern behoben.
 
-* **Warnung bei Datenträgerfehlern:** Eine neue Warnung, die den Benutzer auf bevorstehende Datenträgerfehler hinweist, wurde in dieser Version hinzugefügt. Wenn diese Warnung auftritt, wenden Sie sich an den Microsoft-Support, damit ein Ersatzdatenträger bereitgestellt wird. Weitere Informationen finden Sie unter [Hardwarewarnungen auf dem StorSimple-Gerät](storsimple-manage-alerts.md#hardware-alerts).
+* **Warnung bei Datenträgerfehlern:** Eine neue Warnung, die den Benutzer auf bevorstehende Datenträgerfehler hinweist, wurde in dieser Version hinzugefügt. Wenn diese Warnung auftritt, wenden Sie sich an den Microsoft-Support, damit ein Ersatzdatenträger bereitgestellt wird. Weitere Informationen finden Sie unter [Hardwarewarnungen auf dem StorSimple-Gerät](storsimple-8000-manage-alerts.md#hardware-alerts).
 
 * **Änderungen am Controlleraustausch:** Ein Cmdlet, das dem Benutzer das Abfragen des Status des Controlleraustauschvorgangs ermöglicht, wurde in dieser Version hinzugefügt. Weitere Informationen finden Sie unter [HCS-Cmdlets in Windows PowerShell](https://technet.microsoft.com/library/dn688168.aspx).
 
@@ -68,10 +68,10 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 4 v
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 4 behoben wurden.    
 
-| Nein | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein  | Feature | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- |
 | 1 |Failover |In der vorherigen Version bestand nach dem Failover ein Problem im Zusammenhang mit der Bereinigung am Kundenstandort. Dieses Problem wurde in dieser Version behoben. |Ja |Ja |
-| 2 |Lokale Volumes |In der vorherigen Version bestand ein Problem im Zusammenhang mit dem Erstellen von lokalen Volumes, das zu Fehlern beim Erstellen von Volumes führte. Dieses Problem gibt es in dieser Version nicht mehr. |Ja |Nein |
+| 2 |Lokale Volumes |In der vorherigen Version bestand ein Problem im Zusammenhang mit dem Erstellen von lokalen Volumes, das zu Fehlern beim Erstellen von Volumes führte. Dieses Problem gibt es in dieser Version nicht mehr. |Ja |Nein  |
 | 3 |Supportpaket |In der vorherigen Version bestanden Probleme im Zusammenhang mit dem Supportpaket, die zur Ausnahme „System.OutOfMemory“ oder anderen Fehlern führten, die wiederum Fehler beim Erstellen von Supportpaketen bedingten. Diese Fehler wurden in dieser Version behoben. |Ja |Ja |
 | 4 |Überwachung |In der vorherigen Version bestand ein Problem im Zusammenhang mit der Überwachung von Diagrammen für lokale Volumes, deren Verbrauch in „EB“ gezeigt wurde. Dieser Fehler wurde in dieser Version behoben. |Ja |Ja |
 | 5 |Migration |In der vorherigen Version bestanden mehrere Probleme im Zusammenhang mit der Zuverlässigkeit der Migration von Geräten der 5000-7000-Serie zu Geräten der 8000-Serie. Diese Probleme wurden in dieser Version behoben. |Ja |Ja |

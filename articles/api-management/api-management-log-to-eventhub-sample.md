@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 05318f85997111fd3301d819084115fef6d00f6a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: d4ea43cb7ca5e9fa50202561c71d6bfb298e2452
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Überwachen von APIs mit Azure API Management, Event Hubs und Runscope
 Für den [API Management-Dienst](api-management-key-concepts.md) werden viele Funktionen bereitgestellt, mit denen die Verarbeitung von HTTP-Anforderungen verbessert werden kann, die an Ihre HTTP-API gesendet werden. Die Anforderungen und Antworten sind aber nur vorübergehend vorhanden. Die Anforderung wird ausgeführt und fließt durch den API Management-Dienst an Ihre Back-End-API. Ihre API verarbeitet die Anforderung, und eine Antwort fließt zurück an den API-Consumer. Der API Management-Dienst führt einige wichtige Statistiken zu den APIs für die Anzeige im Herausgeberportal-Dashboard, aber darüber hinaus gehen die Details verloren.
@@ -166,7 +166,7 @@ In diesem Beispiel verwenden wir der Einfachheit halber `EventProcessorHost`, au
 ### <a name="ieventprocessor"></a>IEventProcessor
 Das zentrale Konzept beim Verwenden von `EventProcessorHost` ist die Erstellung einer Implementierung der `IEventProcessor`-Schnittstelle, in der die `ProcessEventAsync`-Methode enthalten ist. Der wesentliche Teil dieser Methode ist hier dargestellt:
 
-```c#
+```csharp
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
 {
 
@@ -193,7 +193,7 @@ Eine Liste mit EventData-Objekten wird an die Methode übergeben, und diese List
 ### <a name="httpmessage"></a>HttpMessage
 Die `HttpMessage`-Instanz enthält drei Datenelemente:
 
-```c#
+```csharp
 public class HttpMessage
 {
    public Guid MessageId { get; set; }
@@ -216,7 +216,7 @@ Für dieses Beispiel habe ich entschieden, dass es interessant wäre, die HTTP-A
 
 Die `IHttpMessageProcessor` -Implementierung sieht wie folgt aus:
 
-```c#
+```csharp
 public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 {
    private HttpClient _HttpClient;

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: be8163043535833ce45b3d50939a537406cf8152
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 065de976118e7be67ef8a515e39c04cfd74b5b43
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-twitter-connector"></a>Erste Schritte mit dem Twitter-Connector
 Der Twitter-Connector ermöglicht Folgendes:
@@ -28,7 +28,7 @@ Der Twitter-Connector ermöglicht Folgendes:
 * Auf Timelines, Freunde und Follower zugreifen
 * Andere Aktionen und Trigger ausführen, die weiter unten beschrieben sind  
 
-Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.  
+Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.  
 
 ## <a name="connect-to-twitter"></a>Verbinden mit Twitter
 Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine *Verbindung* mit dem Dienst herstellen. Eine [Verbindung](connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.  
@@ -39,7 +39,7 @@ Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zun
 > 
 
 ## <a name="use-a-twitter-trigger"></a>Verwenden eines Twitter-Triggers
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 In diesem Beispiel zeige ich Ihnen, wie der Trigger **Wenn ein neuer Tweet gepostet wird** verwendet wird, um nach #Seattle zu suchen, und wie eine Datei in Dropbox mit dem Text aus dem Tweet aktualisiert wird, wenn #Seattle gefunden wird. In einem Unternehmensbeispiel könnten Sie nach dem Namen Ihres Unternehmens suchen und eine SQL-Datenbank mit dem Text aus dem Tweet aktualisieren.
 
@@ -51,7 +51,7 @@ In diesem Beispiel zeige ich Ihnen, wie der Trigger **Wenn ein neuer Tweet gepos
 Jetzt haben Sie Ihre Logik-App mit einem Trigger konfiguriert, der eine Ausführung der anderen Trigger und Aktionen im Workflow startet. 
 
 > [!NOTE]
-> Damit eine Logik-App funktionsfähig ist, muss sie mindestens einen Trigger und eine Aktion enthalten. Führen Sie die Schritte im nächsten Abschnitt aus, um eine Aktion hinzuzufügen.  
+> Eine Logik-App muss mindestens einen Trigger und eine Aktion enthalten. Führen Sie die Schritte im nächsten Abschnitt aus, um eine Aktion hinzuzufügen.  
 > 
 > 
 
@@ -80,7 +80,7 @@ Da uns nur Tweets von Benutzern mit mehr als 50 Followern interessieren, muss zu
    ![Twitter-Bedingung – Abbildung 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
 
 ## <a name="use-a-twitter-action"></a>Verwenden einer Twitter-Aktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
 
 Nachdem Sie nun einen Trigger hinzugefügt haben, gehen Sie wie folgt vor, um eine Aktion hinzuzufügen, mit der ein neuer Tweet gepostet wird, der den Inhalt der vom Trigger gefundenen Tweets enthält. Im Rahmen dieser exemplarischen Vorgehensweise werden nur die Tweets von Benutzern mit mehr als 50 Followern gepostet.  
 
@@ -104,5 +104,5 @@ Im nächsten Schritt fügen Sie eine Twitter-Aktion hinzu. Diese Aktion postet T
 Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/twitterconnector/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
+[Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

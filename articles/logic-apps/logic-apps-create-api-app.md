@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 2a8b883975ed0c0a2a6ee9a2a7ad0c0b1e938fd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec7fe2adfb89edd635adcf247eea0b98f7007b1b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>Erstellen benutzerdefinierter APIs, die in Logik-App-Workflows aufgerufen werden können
 
@@ -31,7 +31,7 @@ Obwohl Azure Logic Apps [100+ integrierte Connectors](../connectors/apis-list.md
 
 Connectors sind grundsätzlich Web-APIs, die REST-APIs für austauschbare Schnittstellen, [Swagger-Metadatenformat](http://swagger.io/specification/) für Dokumentation und JSON als Datenaustauschformat verwenden. Da Connectors REST-APIs sind, die über HTTP-Endpunkte kommunizieren, können Sie eine beliebige Sprache wie .NET, Java oder Node.js für die Erstellung von Connectors verwenden. Sie können Ihre APIs auch in [Azure App Service](../app-service/app-service-web-overview.md) hosten, einem „Platform as a Service“-Angebot (PaaS), das eine der besten, einfachsten und skalierbarsten Möglichkeiten zum Hosten von APIs bietet. 
 
-Damit benutzerdefinierte APIs mit Logik-Apps funktionieren, kann Ihre API [*Aktionen*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) bereitstellen, die bestimmte Aufgaben in Logis App-Workflows ausführen. Ihre API kann auch als [*Trigger*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) dienen, der einen Logik-App-Workflow startet, wenn neue Daten oder ein Ereignis eine angegebene Bedingung erfüllen. Dieses Thema beschreibt allgemeine Muster, die Sie zum Erstellen von Aktionen und Triggern in Ihrer API befolgen können, basierend auf dem Verhalten, dass Ihre API bieten soll.
+Damit benutzerdefinierte APIs mit Logik-Apps funktionieren, kann Ihre API [*Aktionen*](./logic-apps-overview.md#logic-app-concepts) bereitstellen, die bestimmte Aufgaben in Logis App-Workflows ausführen. Ihre API kann auch als [*Trigger*](./logic-apps-overview.md#logic-app-concepts) dienen, der einen Logik-App-Workflow startet, wenn neue Daten oder ein Ereignis eine angegebene Bedingung erfüllen. Dieses Thema beschreibt allgemeine Muster, die Sie zum Erstellen von Aktionen und Triggern in Ihrer API befolgen können, basierend auf dem Verhalten, dass Ihre API bieten soll.
 
 Sie können Ihre APIs in [Azure App Service](../app-service/app-service-web-overview.md) hosten, einem PaaS-Angebot (Platform-as-a-Service), das ein einfaches API-Hosting mit hoher Skalierbarkeit ermöglicht.
 
@@ -73,7 +73,7 @@ Viele Bibliotheken wie [Swashbuckle](https://github.com/domaindrivendev/Swashbuc
 
 ## <a name="action-patterns"></a>Aktionsmuster
 
-Damit Logik-Apps Aufgaben ausführen, sollte Ihre benutzerdefinierte API [*Aktionen*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) bereitstellen. Jeder Vorgang in Ihrer API wird einer Aktion zugeordnet. Eine einfache Aktion ist ein Controller, der HTTP-Anforderungen akzeptiert und HTTP-Antworten zurückgibt. Beispielsweise sendet eine Logik-App eine HTTP-Anforderung an Ihre Web-App oder API-App. Ihre App gibt dann eine HTTP-Antwort zurück, zusammen mit Inhalt, den die Logik-App verarbeiten kann.
+Damit Logik-Apps Aufgaben ausführen, sollte Ihre benutzerdefinierte API [*Aktionen*](./logic-apps-overview.md#logic-app-concepts) bereitstellen. Jeder Vorgang in Ihrer API wird einer Aktion zugeordnet. Eine einfache Aktion ist ein Controller, der HTTP-Anforderungen akzeptiert und HTTP-Antworten zurückgibt. Beispielsweise sendet eine Logik-App eine HTTP-Anforderung an Ihre Web-App oder API-App. Ihre App gibt dann eine HTTP-Antwort zurück, zusammen mit Inhalt, den die Logik-App verarbeiten kann.
 
 Für Standardaktionen können Sie eine HTTP-Anforderungsmethode in Ihre API schreiben und diese Methode in einer Swagger-Datei beschreiben. Sie können dann Ihre API direkt mit einer [HTTP-Aktion](../connectors/connectors-native-http.md) oder einer [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)-Aktion aufrufen. Standardmäßig müssen Antworten innerhalb des [Timeoutlimits für die Anforderung](./logic-apps-limits-and-config.md) zurückgegeben werden. 
 
@@ -87,39 +87,41 @@ Beispiele finden Sie im [Logic Apps GitHub-Repository](https://github.com/logica
 
 ### <a name="perform-long-running-tasks-with-the-polling-action-pattern"></a>Ausführen zeitaufwändiger Aufgaben mit dem Abrufaktionsmuster
 
-Damit Ihre API Aufgaben ausführen kann, deren Ausführungsdauer das [Timeoutlimit für die Anforderung](./logic-apps-limits-and-config.md) überschreiten könnte, können Sie das asynchrone Abrufmuster verwenden. Bei diesem Muster arbeitet Ihre API in einem separaten Thread, behält aber eine aktive Verbindung mit dem Logic Apps-Modul bei. So wird kein Timeout für die Logik-App wirksam, noch wird mit dem nächsten Schritt im Workflow fortgefahren, bevor die Ausführung Ihrer API abgeschlossen ist.
+Damit Ihre API Aufgaben ausführen kann, deren Ausführungsdauer das [Timeoutlimit für die Anforderung](./logic-apps-limits-and-config.md) überschreiten könnte, können Sie das asynchrone Abrufmuster verwenden. Bei diesem Muster arbeitet Ihre API in einem separaten Thread, behält aber eine aktive Verbindung mit der Logic Apps-Engine bei. So wird kein Timeout für die Logik-App wirksam, noch wird mit dem nächsten Schritt im Workflow fortgefahren, bevor die Ausführung Ihrer API abgeschlossen ist.
 
 Das allgemeine Muster sieht so aus:
 
-1. Stellen Sie sicher, dass das Modul weiß, dass Ihre API die Anforderung akzeptiert und die Verarbeitung gestartet hat.
-2. Wenn das Modul darauffolgende Anforderungen zum Auftragsstatus stellt, sorgen Sie dafür, dass das Modul informiert wird, wenn Ihre API die Aufgabe abschließt.
-3. Lassen Sie relevante Daten an das Modul zurückgeben, sodass der Logik-App-Workflow fortgesetzt werden kann.
+1. Stellen Sie sicher, dass die Engine weiß, dass Ihre API die Anforderung akzeptiert und die Verarbeitung gestartet hat.
+2. Wenn die Engine darauffolgende Anforderungen zum Auftragsstatus stellt, sorgen Sie dafür, dass die Engine informiert wird, wenn Ihre API die Aufgabe abschließt.
+3. Lassen Sie relevante Daten an die Engine zurückgeben, sodass der Logik-App-Workflow fortgesetzt werden kann.
 
 <a name="bakery-polling-action"></a> Wenden Sie nun die obige Bäckereianalogie auf das Abrufmuster an, und stellen Sie sich vor, dass Sie in einer Bäckerei anrufen und einen Kuchen nach Ihren Wünschen bestellen. Die Herstellung des Kuchens braucht ihre Zeit, und Sie möchten nicht am Telefon warten, während die Bäckerei den Kuchen backt. Die Bäckerei bestätigt Ihre Bestellung, und Sie rufen alle 20 Minuten an, um den Status des Kuchens abzufragen. Nach 20 Minuten rufen Sie in der Bäckerei an, aber sie erfahren, dass der Kuchen noch nicht fertig ist, und Sie nach weiteren 20 Minuten anrufen sollen. Dieses Hin und Her und wird fortgesetzt, bis die Bäckerei Ihnen, als Sie anrufen, mitteilt, dass Ihre Bestellung fertig ist und den Kuchen liefert. 
 
-Wir werden nun dieses Abrufmuster zurückverfolgen. Die Bäckerei stellt Ihre benutzerdefinierte API dar, während Sie als Kuchenkäufer das Logic Apps-Modul darstellen. Wenn das Modul eine Anforderung an Ihre API sendet, bestätigt die API die Anforderung und antwortet mit dem Zeitintervall, in dem das Modul den Auftragsstatus abfragen kann. Das Modul prüft immer wieder den Auftragsstatus, bis Ihre API antwortet, dass der Auftrag erledigt ist, und Daten an Ihre Logik-App zurückgibt, die dann den Workflow fortsetzt. 
+Wir werden nun dieses Abrufmuster zurückverfolgen. Die Bäckerei stellt Ihre benutzerdefinierte API dar, während Sie als Kuchenkäufer die Logic Apps-Engine darstellen. Wenn die Engine eine Anforderung an Ihre API sendet, bestätigt die API die Anforderung und antwortet mit dem Zeitintervall, in dem die Engine den Auftragsstatus abfragen kann. Die Engine prüft immer wieder den Auftragsstatus, bis Ihre API antwortet, dass der Auftrag erledigt ist, und Daten an Ihre Logik-App zurückgibt, die dann den Workflow fortsetzt. 
 
 ![Abrufaktionsmuster](./media/logic-apps-create-api-app/custom-api-async-action-pattern.png)
 
 Hier werden die einzelnen Schritte Ihrer API aus API-Sicht beschrieben:
 
-1. Wenn Ihre API eine HTTP-Anforderung zum Starten der Ausführung erhält, wird unverzüglich eine HTTP-`202 ACCEPTED`-Antwort mit dem `location`-Header zurückgegeben, der weiter unten in diesem Schritt beschrieben wird. Diese Antwort teilt dem Logic Apps-Modul mit, dass Ihre API die Anforderung erhalten hat, die Anforderungsnutzlast (Dateneingabe) akzeptiert hat und sie nun verarbeitet. 
+1. Wenn Ihre API eine HTTP-Anforderung zum Starten der Ausführung erhält, wird unverzüglich eine HTTP-`202 ACCEPTED`-Antwort mit dem `location`-Header zurückgegeben, der weiter unten in diesem Schritt beschrieben wird. Diese Antwort teilt der Logic Apps-Engine mit, dass Ihre API die Anforderung erhalten hat, die Anforderungsnutzlast (Dateneingabe) akzeptiert hat und sie nun verarbeitet. 
    
    Die `202 ACCEPTED`-Antwort sollte diese Header enthalten:
    
-   * *Erforderlich*: Ein `location`-Header, der den absoluten Pfad zu einer URL angibt, über die das Logic Apps-Modul den Auftragsstatus Ihrer API überprüfen kann
+   * 
+               *Erforderlich*: Ein `location`-Header, der den absoluten Pfad zu einer URL angibt, über die die Logic Apps-Engine den Auftragsstatus Ihrer API überprüfen kann
 
-   * *Optional*: Ein `retry-after`-Header, der die Anzahl der Sekunden angibt, für die das Modul vor der Überprüfung des Auftragsstatus über die `location`-URL warten sollte. 
+   * 
+               *Optional*: Ein `retry-after`-Header, der die Anzahl der Sekunden angibt, für die die Engine vor der Überprüfung des Auftragsstatus über die `location`-URL warten sollte. 
 
-     Standardmäßig überprüft das Modul alle 20 Sekunden. Schließen Sie zum Angeben eines anderen Zeitintervalls den `retry-after`-Header und die Anzahl der Sekunden bis zum nächsten Abruf ein.
+     Standardmäßig führt die Engine alle 20 Sekunden eine Überprüfung durch. Schließen Sie zum Angeben eines anderen Zeitintervalls den `retry-after`-Header und die Anzahl der Sekunden bis zum nächsten Abruf ein.
 
-2. Wenn die angegebene Zeit verstrichen ist, ruft das Logic Apps-Modul die `location`-URL zum Prüfen des Auftragsstatus auf. Ihre API sollte diese Überprüfungen ausführen und diese Antworten zurückgeben:
+2. Wenn die angegebene Zeit verstrichen ist, ruft die Logic Apps-Engine die `location`-URL zum Prüfen des Auftragsstatus auf. Ihre API sollte diese Überprüfungen ausführen und diese Antworten zurückgeben:
    
    * Wenn der Auftrag abgeschlossen ist, wird eine HTTP-`200 OK`-Antwort zusammen mit der Antwortnutzlast (Eingabe für den nächsten Schritt) zurückgegeben.
 
    * Wenn der Auftrag immer noch verarbeitet wird, wird eine weitere HTTP-`202 ACCEPTED`-Antwort zurückgegeben, aber mit den gleichen Headern wie die ursprüngliche Antwort.
 
-Wenn Ihre API diesem Muster folgt, müssen Sie keine Änderungen in der Definition des Logik-App-Workflows vornehmen, um die Überprüfung des Auftragsstatus fortzusetzen. Wenn das Modul eine HTTP-`202 ACCEPTED`-Antwort und einen gültigen `location`-Header erhält, respektiert das Modul das asynchrone Muster und überprüft die `location`-Header, bis Ihre API eine Nicht-202-Antwort zurückgibt.
+Wenn Ihre API diesem Muster folgt, müssen Sie keine Änderungen in der Definition des Logik-App-Workflows vornehmen, um die Überprüfung des Auftragsstatus fortzusetzen. Wenn die Engine eine HTTP-`202 ACCEPTED`-Antwort und einen gültigen `location`-Header erhält, respektiert die Engine das asynchrone Muster und überprüft die `location`-Header, bis Ihre API eine Nicht-202-Antwort zurückgibt.
 
 > [!TIP]
 > Ein Beispiel für asynchrone Muster finden Sie in diesem [asynchronen Controller-Antwortbeispiel in GitHub](https://github.com/logicappsio/LogicAppsAsyncResponseSample).
@@ -132,14 +134,16 @@ Als Alternative können Sie die Webhookmuster für zeitaufwändige Aufgaben und 
 
 <a name="bakery-webhook-action"></a> Wenden Sie nun die obige Bäckereianalogie auf das Webhookmuster an, und stellen Sie sich vor, dass Sie in einer Bäckerei anrufen und einen Kuchen nach Ihren Wünschen bestellen. Die Herstellung des Kuchens braucht ihre Zeit, und Sie möchten nicht am Telefon warten, während die Bäckerei den Kuchen backt. Die Bäckerei bestätigt Ihre Bestellung, aber diesmal geben Sie Ihre Telefonnummer an, damit Sie angerufen werden können, wenn der Kuchen fertig ist. Dieses Mal informiert die Bäckerei Sie, wenn Ihre Bestellung ausgeführt ist, und liefert den Kuchen.
 
-Beim Rückverfolgen dieses Webhookmusters stellen wir fest, dass die Bäckerei Ihre benutzerdefinierte API darstellt, während Sie als Kuchenkäufer das Logik-Apps-Modul darstellen. Das Modul ruft Ihre API mit einer Anforderung auf und bezieht einen URL-„Rückruf“ ein.
-Wenn der Auftrag abgeschlossen ist, benachrichtigt Ihre API das Modul über die URL und gibt Daten an Ihre Logik-App zurück, die dann den Workflow fortsetzt. 
+Beim Rückverfolgen dieses Webhookmusters stellen wir fest, dass die Bäckerei Ihre benutzerdefinierte API darstellt, während Sie als Kuchenkäufer die Logic Apps-Engine darstellen. Die Engine ruft Ihre API mit einer Anforderung auf und bezieht einen URL-„Rückruf“ ein.
+Wenn der Auftrag abgeschlossen ist, benachrichtigt Ihre API die Engine über die URL und gibt Daten an Ihre Logik-App zurück, die dann den Workflow fortsetzt. 
 
 Richten Sie für dieses Muster zwei Endpunkte auf dem Controller ein: `subscribe` und`unsubscribe`.
 
-*  `subscribe`-Endpunkt: Wenn die Ausführung die Aktion Ihrer API im Workflow erreicht, ruft das Logic Apps-Modul den `subscribe`-Endpunkt auf. Dieser Schritt bewirkt, dass die Logik-App eine Rückruf-URL erstellt, die Ihre API speichert, und dann auf den Rückruf von Ihrer API wartet, wenn die Arbeit abgeschlossen ist. Dann sendet Ihre API wieder einen HTTP POST-Rückruf an die URL und übergibt alle zurückgegebenen Inhalte und Header als Eingabe an die Logik-App.
+*  
+            `subscribe`-Endpunkt: Wenn die Ausführung die Aktion Ihrer API im Workflow erreicht, ruft die Logic Apps-Engine den `subscribe`-Endpunkt auf. Dieser Schritt bewirkt, dass die Logik-App eine Rückruf-URL erstellt, die Ihre API speichert, und dann auf den Rückruf von Ihrer API wartet, wenn die Arbeit abgeschlossen ist. Dann sendet Ihre API wieder einen HTTP POST-Rückruf an die URL und übergibt alle zurückgegebenen Inhalte und Header als Eingabe an die Logik-App.
 
-* `unsubscribe`-Endpunkt: Wenn die Logik-App abgebrochen wird, ruft das Logic Apps-Modul den `unsubscribe`-Endpunkt auf. Ihre API kann dann die Registrierung der Rückruf-URL aufheben und alle Prozesse nach Bedarf beenden.
+* 
+            `unsubscribe`-Endpunkt: Wenn die Logik-App abgebrochen wird, ruft die Logic Apps-Engine den `unsubscribe`-Endpunkt auf. Ihre API kann dann die Registrierung der Rückruf-URL aufheben und alle Prozesse nach Bedarf beenden.
 
 ![Webhookaktionsmuster](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -153,13 +157,13 @@ Richten Sie für dieses Muster zwei Endpunkte auf dem Controller ein: `subscribe
 
 ## <a name="trigger-patterns"></a>Triggermuster
 
-Ihre benutzerdefinierte API kann als [*Trigger*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) dienen, der einen Logik-App-Workflow startet, wenn neue Daten oder ein Ereignis eine angegebene Bedingung erfüllen. Dieser Trigger kann entweder regelmäßig überprüfen, ob neue Daten oder Ereignisse an Ihrem Dienstendpunkt vorliegen, oder warten und lauschen. Wenn neue Daten oder ein Ereignis die angegebene Bedingung erfüllen, wird der Trigger ausgelöst und startet die Logik-App, die auf diesen Trigger lauscht. Um Logik-Apps auf diese Weise zu starten, kann Ihre API dem [*Abruftrigger*](#polling-triggers)- oder [*Webhooktrigger*](#webhook-triggers)muster folgen. Diese Muster ähneln ihren Äquivalenten für [Abrufaktionen](#async-pattern) und [Webhookaktionen](#webhook-actions). Erfahren Sie auch mehr über [die Nutzung der Messung für Trigger](logic-apps-pricing.md).
+Ihre benutzerdefinierte API kann als [*Trigger*](./logic-apps-overview.md#logic-app-concepts) dienen, der einen Logik-App-Workflow startet, wenn neue Daten oder ein Ereignis eine angegebene Bedingung erfüllen. Dieser Trigger kann entweder regelmäßig überprüfen, ob neue Daten oder Ereignisse an Ihrem Dienstendpunkt vorliegen, oder warten und lauschen. Wenn neue Daten oder ein Ereignis die angegebene Bedingung erfüllen, wird der Trigger ausgelöst und startet die Logik-App, die auf diesen Trigger lauscht. Um Logik-Apps auf diese Weise zu starten, kann Ihre API dem [*Abruftrigger*](#polling-triggers)- oder [*Webhooktrigger*](#webhook-triggers)muster folgen. Diese Muster ähneln ihren Äquivalenten für [Abrufaktionen](#async-pattern) und [Webhookaktionen](#webhook-actions). Erfahren Sie auch mehr über [die Nutzung der Messung für Trigger](logic-apps-pricing.md).
 
 <a name="polling-triggers"></a>
 
 ### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>Regelmäßiges Überprüfen auf neue Daten oder Ereignisse mit dem Abruftriggermuster
 
-Ein *Abruftrigger* verhält sich ähnlich wie die zuvor in diesem Thema beschriebene [Abrufaktion](#async-pattern). Das Logic Apps-Modul ruft in regelmäßigen Abständen den Triggerendpunkt auf und überprüft ihn auf neue Daten oder Ereignisse. Wenn das Modul neue Daten oder Ereignisse findet, die die angegebene Bedingung erfüllen, wird der Trigger ausgelöst. Dann erstellt das Modul eine Instanz der Logik-App, die die Daten als Eingabe verarbeitet. 
+Ein *Abruftrigger* verhält sich ähnlich wie die zuvor in diesem Thema beschriebene [Abrufaktion](#async-pattern). Die Logic Apps-Engine ruft in regelmäßigen Abständen den Triggerendpunkt auf und überprüft ihn auf neue Daten oder Ereignisse. Wenn die Engine neue Daten oder Ereignisse findet, die die angegebene Bedingung erfüllen, wird der Trigger ausgelöst. Dann erstellt die Engine eine Instanz der Logik-App, die die Daten als Eingabe verarbeitet. 
 
 ![Abruftriggermuster](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
 
@@ -178,14 +182,14 @@ Um beispielsweise Ihren Dienst in regelmäßigen Abständen auf neue Dateien zu 
 
 | Anforderung enthält `triggerState`? | API-Antwort | 
 | -------------------------------- | -------------| 
-| Nein | Zurückgeben eines HTTP-`202 ACCEPTED`-Status zuzüglich eines `location`-Headers, wobei `triggerState` auf den aktuellen Zeitpunkt und das `retry-after`-Intervall auf 15 Sekunden festgelegt ist. | 
+| Nein  | Zurückgeben eines HTTP-`202 ACCEPTED`-Status zuzüglich eines `location`-Headers, wobei `triggerState` auf den aktuellen Zeitpunkt und das `retry-after`-Intervall auf 15 Sekunden festgelegt ist. | 
 | Ja | Überprüfen Ihres Diensts auf Dateien, die nach `DateTime` für `triggerState` hinzugefügt wurden. | 
 ||| 
 
 | Anzahl der gefundenen Dateien | API-Antwort | 
 | --------------------- | -------------| 
 | Einzelne Datei | Zurückgeben eines HTTP-`200 OK`-Status und der Inhaltsnutzlast, Aktualisieren von `triggerState` auf `DateTime` für die zurückgegebene Datei und Festlegen des `retry-after`-Intervalls auf 15 Sekunden. | 
-| Mehrere Dateien | Zurückgeben jeweils einer Datei und eines HTTP-`200 OK`-Status, Aktualisieren von `triggerState` und Festlegen des `retry-after`-Intervalls auf 0 Sekunden. </br>Diese Schritte teilen dem Modul mit, dass mehr Daten verfügbar sind, und dass das Modul die Daten sofort über die URL im `location`-Header anfordern sollte. | 
+| Mehrere Dateien | Zurückgeben jeweils einer Datei und eines HTTP-`200 OK`-Status, Aktualisieren von `triggerState` und Festlegen des `retry-after`-Intervalls auf 0 Sekunden. </br>Diese Schritte teilen der Engine mit, dass mehr Daten verfügbar sind, und dass die Engine die Daten sofort über die URL im `location`-Header anfordern sollte. | 
 | Keine Dateien | Zurückgeben eines HTTP-`202 ACCEPTED`-Status, keine Änderung von `triggerState` und Festlegen des `retry-after`-Intervalls auf 15 Sekunden. | 
 ||| 
 
@@ -199,9 +203,11 @@ Um beispielsweise Ihren Dienst in regelmäßigen Abständen auf neue Dateien zu 
 Ein Webhooktrigger ist ein *Pushtrigger*, der an Ihrem Dienstendpunkt auf neue Daten oder Ereignisse wartet und lauscht. Wenn neue Daten oder Ereignisse die angegebene Bedingung erfüllen, wird der Trigger ausgelöst und erstellt eine Instanz der Logik-App, die dann die Daten als Eingabe verarbeitet.
 Webhooktrigger fungieren ähnlich wie die zuvor in diesem Thema beschriebenen [Webhookaktionen](#webhook-actions) und werden mit `subscribe`- und `unsubscribe`-Endpunkten eingerichtet. 
 
-* `subscribe`-Endpunkt: Wenn Sie in der Logik-App einen Webhooktrigger hinzufügen und speichern, ruft das Logic Apps-Modul den `subscribe`-Endpunkt auf. Dieser Schritt bewirkt, dass die Logik-App eine Rückruf-URL erstellt, die Ihre API speichert. Wenn neue Daten oder Ereignisse vorliegen, die die angegebene Bedingung erfüllen, ruft Ihre API mit einem HTTP POST zur URL zurück. Inhaltsnutzlast und Header werden der Logik-App als Eingabe übergeben.
+* 
+            `subscribe`-Endpunkt: Wenn Sie in der Logik-App einen Webhooktrigger hinzufügen und speichern, ruft die Logic Apps-Engine den `subscribe`-Endpunkt auf. Dieser Schritt bewirkt, dass die Logik-App eine Rückruf-URL erstellt, die Ihre API speichert. Wenn neue Daten oder Ereignisse vorliegen, die die angegebene Bedingung erfüllen, ruft Ihre API mit einem HTTP POST zur URL zurück. Inhaltsnutzlast und Header werden der Logik-App als Eingabe übergeben.
 
-* `unsubscribe`-Endpunkt: Wenn der Webhooktrigger oder die gesamte Logik-App gelöscht wird, ruft das Logic Apps-Modul den `unsubscribe`-Endpunkt auf. Ihre API kann dann die Registrierung der Rückruf-URL aufheben und alle Prozesse nach Bedarf beenden.
+* 
+            `unsubscribe`-Endpunkt: Wenn der Webhooktrigger oder die gesamte Logik-App gelöscht wird, ruft die Logic Apps-Engine den `unsubscribe`-Endpunkt auf. Ihre API kann dann die Registrierung der Rückruf-URL aufheben und alle Prozesse nach Bedarf beenden.
 
 ![Webhooktriggermuster](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: e547469dc61eddd1d772571ab0919532ac91f128
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ac614156755b9b29db7c968c708a5cff706f7a8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
-| **Web Application**    | <ul><li>[Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.](#standard-authn-web-app)</li><li>[Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.](#handle-failed-authn)</li><li>[Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.](#step-up-adaptive-authn)</li><li>[Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.](#admin-interface-lockdown)</li><li>[Implementieren Sie sichere Funktionen für vergessene Kennwörter.](#forgot-pword-fxn)</li><li>[Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.](#pword-account-policy)</li><li>[Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.](#controls-username-enum)</li></ul> |
+| **Webanwendung**    | <ul><li>[Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.](#standard-authn-web-app)</li><li>[Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.](#handle-failed-authn)</li><li>[Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.](#step-up-adaptive-authn)</li><li>[Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.](#admin-interface-lockdown)</li><li>[Implementieren Sie sichere Funktionen für vergessene Kennwörter.](#forgot-pword-fxn)</li><li>[Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.](#pword-account-policy)</li><li>[Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.](#controls-username-enum)</li></ul> |
 | **Datenbank** | <ul><li>[Verwenden Sie beim Herstellen einer SQL Server-Verbindung nach Möglichkeit die Windows-Authentifizierung.](#win-authn-sql)</li><li>[Verwenden Sie beim Herstellen einer SQL-Datenbank-Verbindung nach Möglichkeit die Azure Active Directory-Authentifizierung.](#aad-authn-sql)</li><li>[Stellen Sie bei Verwendung des SQL-Authentifizierungsmodus sicher, dass die Konto- und die Kennwortrichtlinie für SQL Server erzwungen werden.](#authn-account-pword)</li><li>[Verwenden Sie für eigenständige Datenbanken keine SQL-Authentifizierung.](#autn-contained-db)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Verwenden Sie gerätespezifische Authentifizierungsanmeldeinformationen mit SAS-Token.](#authn-sas-tokens)</li></ul> |
 | **Azure-Vertrauensstellungsgrenze** | <ul><li>[Aktivieren Sie Azure Multi-Factor Authentication für Azure-Administratoren.](#multi-factor-azure-admin)</li></ul> |
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 | **Azure AD** | <ul><li>[Verwenden Sie von Azure Active Directory unterstützte Standardauthentifizierungsszenarien.](#authn-aad)</li><li>[Überschreiben Sie den standardmäßigen ADAL-Tokencache mit einer skalierbaren Alternative.](#adal-scalable)</li><li>[Verwenden Sie TokenReplayCache, um die Wiedergabe von ADAL-Authentifizierungstoken zu verhindern.](#tokenreplaycache-adal)</li><li>[Verwenden Sie ADAL-Bibliotheken, um Tokenanforderungen von OAuth2-Clients an AAD (oder lokales AD) zu verwalten.](#adal-oauth2)</li></ul> |
 | **Zwischengeschaltetes IoT-Gateway** | <ul><li>[Authentifizieren Sie Geräte, die eine Verbindung mit dem zwischengeschalteten Gateway herstellen.](#authn-devices-field)</li></ul> |
 | **IoT-Cloudgateway** | <ul><li>[Stellen Sie sicher, dass Geräte, die eine Verbindung mit dem Cloudgateway herstellen, authentifiziert werden.](#authn-devices-cloud)</li><li>[Verwenden Sie gerätespezifische Anmeldeinformationen für die Authentifizierung.](#authn-cred)</li></ul> |
-| **Azure Storage (in englischer Sprache)** | <ul><li>[Stellen Sie sicher, dass nur die erforderlichen Container und Blobs anonymen Lesezugriff erhalten.](#req-containers-anon)</li><li>[Gewähren Sie mithilfe von SAS oder SAP eingeschränkten Zugriff auf Objekte im Azure-Speicher.](#limited-access-sas)</li></ul> |
+| **Azure Storage** | <ul><li>[Stellen Sie sicher, dass nur die erforderlichen Container und Blobs anonymen Lesezugriff erhalten.](#req-containers-anon)</li><li>[Gewähren Sie mithilfe von SAS oder SAP eingeschränkten Zugriff auf Objekte im Azure-Speicher.](#limited-access-sas)</li></ul> |
 
 ## <a id="standard-authn-web-app"></a>Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.
 
@@ -374,7 +374,7 @@ Das Element `<netMsmqBinding/>` der folgenden WCF-Konfigurationsdatei weist WCF 
 | **Schritte** | <p>Mithilfe der TokenReplayCache-Eigenschaft können Entwickler einen Tokenwiedergabecache definieren. In diesem Speicher können Token gespeichert werden, um die mehrmalige Verwendung eines Tokens zu verhindern.</p><p>Hierbei handelt es sich um eine Maßnahme gegen so genannte Tokenwiedergabeangriffe: Ein Angreifer, der ein bei der Anmeldung gesendetes Token abfängt, kann versuchen, das Token erneut an die App zu senden (es also gewissermaßen wiederzugeben), um eine neue Sitzung zu initiieren. Ein Beispiel: Nach erfolgreicher Benutzerauthentifizierung erfolgt im OIDC-Codegewährungsflow eine Anforderung an den Endpunkt „/signin-oidc“ der vertrauenden Seite mit den Parametern „id_token“, „code“ und „state“.</p><p>Die vertrauende Seite überprüft diese Anforderung und initiiert eine neue Sitzung. Wenn nun ein Angreifer diese Anforderung abfängt und wiedergibt, kann er erfolgreich eine Sitzung initiieren und den Benutzer spoofen. Die Nonce in OpenID Connect kann die Umstände, unter denen der Angriff gelingt, nur einschränken, aber nicht vollständig beseitigen. Zum Schutz ihrer Anwendungen können Entwickler eine ITokenReplayCache-Implementierung bereitstellen und TokenReplayCache eine Instanz zuweisen.</p>|
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
 // ITokenReplayCache defined in ADAL
 public interface ITokenReplayCache
 {
@@ -385,7 +385,7 @@ bool TryFind(string securityToken);
 
 ### <a name="example"></a>Beispiel
 Hier sehen Sie eine Beispielimplementierung der ITokenReplayCache-Schnittstelle. (Passen Sie dieses Beispiel an, und implementieren Sie Ihr projektspezifisches Cacheframework.)
-```C#
+```csharp
 public class TokenReplayCache : ITokenReplayCache
 {
     private readonly ICacheProvider cache; // Your project-specific cache provider
@@ -409,7 +409,7 @@ public class TokenReplayCache : ITokenReplayCache
 }
 ```
 Auf den implementierten Cache muss in den OIDC-Optionen über die Eigenschaft „TokenValidationParameters“ verwiesen werden:
-```C#
+```csharp
 OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 {
     AutomaticAuthenticate = true,
@@ -457,7 +457,7 @@ Melden Sie sich bei Ihrer lokalen, durch OIDC geschützten Anwendung an, und erf
 | **Schritte** | <ul><li>**Allgemein:** Authentifizieren Sie das Gerät mittels TLS (Transport Layer Security) oder IPsec. Die Infrastruktur sollte die Verwendung eines vorinstallierten Schlüssels (Pre-Shared Key, PSK) auf den Geräten unterstützen, bei denen keine vollständige asymmetrische Verschlüsselung möglich ist. Nutzen Sie Azure AD, OAuth.</li><li>**C#:** Beim Erstellen einer DeviceClient-Instanz erstellt die Create-Methode standardmäßig eine DeviceClient-Instanz, die das AMQP-Protokoll für die Kommunikation mit dem IoT Hub verwendet. Wenn Sie das HTTPS-Protokoll verwenden möchten, verwenden Sie die Überschreibung der Create-Methode, mit der Sie das Protokoll angeben können. Bei Verwendung des HTTPS-Protokolls müssen Sie Ihrem Projekt auch das NuGet-Paket `Microsoft.AspNet.WebApi.Client` hinzufügen, um den Namespace `System.Net.Http.Formatting` einzuschließen.</li></ul>|
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
 static DeviceClient deviceClient;
 
 static string deviceKey = "{device key}";

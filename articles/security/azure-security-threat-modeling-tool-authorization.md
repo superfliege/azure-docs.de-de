@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 9fc92916b4164990059010645daa29e72b7143cb
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: b9ad3ceeb77a4adc2c47b262aa40a48c14423198
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Stellen Sie sicher, dass geeignete ACLs konfiguriert sind, um nicht autorisierten Zugriff auf Daten auf dem Gerät zu beschränken.](#acl-restricted-access)</li><li>[Stellen Sie sicher, dass sensible benutzerspezifische Anwendungsinhalte im Benutzerprofilverzeichnis gespeichert werden.](#sensitive-directory)</li><li>[Stellen Sie sicher, dass die bereitgestellten Anwendungen mit geringstmöglichen Berechtigungen ausgeführt werden.](#deployed-privileges)</li></ul> |
-| **Web Application** | <ul><li>[Erzwingen Sie bei der Verarbeitung von Geschäftslogikflows die Einhaltung einer sequenziellen Reihenfolge.](#sequential-logic)</li><li>[Implementieren Sie einen Ratenbegrenzungsmechanismus, um Enumerationen zu verhindern.](#rate-enumeration)</li><li>[Stellen Sie sicher, dass eine geeignete Autorisierung eingerichtet ist und dass das Prinzip der geringstmöglichen Berechtigungen angewendet wird.](#principle-least-privilege)</li><li>[Geschäftslogik und Entscheidungen hinsichtlich der Ressourcenzugriffsautorisierung dürfen nicht auf eingehenden Anforderungsparametern basieren.](#logic-request-parameters)</li><li>[Stellen Sie sicher, dass Inhalte und Ressourcen nicht aufzählbar sind und dass auf sie nicht mittels Forceful Browsing zugegriffen werden kann.](#enumerable-browsing)</li></ul> |
+| **Webanwendung** | <ul><li>[Erzwingen Sie bei der Verarbeitung von Geschäftslogikflows die Einhaltung einer sequenziellen Reihenfolge.](#sequential-logic)</li><li>[Implementieren Sie einen Ratenbegrenzungsmechanismus, um Enumerationen zu verhindern.](#rate-enumeration)</li><li>[Stellen Sie sicher, dass eine geeignete Autorisierung eingerichtet ist und dass das Prinzip der geringstmöglichen Berechtigungen angewendet wird.](#principle-least-privilege)</li><li>[Geschäftslogik und Entscheidungen hinsichtlich der Ressourcenzugriffsautorisierung dürfen nicht auf eingehenden Anforderungsparametern basieren.](#logic-request-parameters)</li><li>[Stellen Sie sicher, dass Inhalte und Ressourcen nicht aufzählbar sind und dass auf sie nicht mittels Forceful Browsing zugegriffen werden kann.](#enumerable-browsing)</li></ul> |
 | **Datenbank** | <ul><li>[Stellen Sie sicher, dass beim Herstellen einer Verbindung mit dem Datenbankserver Konten mit geringstmöglichen Berechtigungen verwendet werden.](#privileged-server)</li><li>[Implementieren Sie Sicherheit auf Zeilenebene (Row Level Security, RLS), um zu verhindern, dass Mandanten auf Daten anderer Mandanten zugreifen.](#rls-tenants)</li><li>[Die Rolle „SysAdmin“ darf nur gültige, erforderliche Benutzer enthalten.](#sysadmin-users)</li></ul> |
 | **IoT-Cloudgateway** | <ul><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Cloudgateway Token mit geringstmöglichen Berechtigungen.](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Verwenden Sie einen auf Sendeberechtigungen beschränkten SAS-Schlüssel, um Gerätetoken zu generieren.](#sendonly-sas)</li><li>[Verwenden Sie keine Zugriffstoken, die direkten Zugriff auf den Event Hub ermöglichen.](#access-tokens-hub)</li><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Event Hub SAS-Schlüssel, die über die erforderlichen Mindestberechtigungen verfügen.](#sas-minimum-permissions)</li></ul> |
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/11/2017
 | **Service Fabric-Vertrauensstellungsgrenze** | <ul><li>[Beschränken Sie mithilfe von RBAC den Clientzugriff auf Clustervorgänge.](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Führen Sie die Sicherheitsmodellierung durch, und verwenden Sie bei Bedarf die Sicherheit auf Feldebene.](#modeling-field)</li></ul> |
 | **Dynamics CRM-Portal** | <ul><li>[Führen Sie die Sicherheitsmodellierung für Portalkonten durch, und bedenken Sie dabei, dass sich das Sicherheitsmodell für das Portal vom restlichen CRM unterscheidet.](#portal-security)</li></ul> |
-| **Azure Storage (in englischer Sprache)** | <ul><li>[Gewähren Sie differenzierte Berechtigungen für eine Reihe von Entitäten in Azure Table Storage.](#permission-entities)</li><li>[Aktivieren Sie mithilfe von Azure Resource Manager die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für das Azure-Speicherkonto.](#rbac-azure-manager)</li></ul> |
+| **Azure Storage** | <ul><li>[Gewähren Sie differenzierte Berechtigungen für eine Reihe von Entitäten in Azure Table Storage.](#permission-entities)</li><li>[Aktivieren Sie mithilfe von Azure Resource Manager die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für das Azure-Speicherkonto.](#rbac-azure-manager)</li></ul> |
 | **Mobiler Client** | <ul><li>[Implementieren Sie eine implizite Jailbreak- oder Rooting-Erkennung.](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[Schwache Klassenreferenz in WCF](#weak-class-wcf)</li><li>[WCF – Implementieren Sie eine Autorisierungskontrolle.](#wcf-authz)</li></ul> |
 | **Web-API** | <ul><li>[Implementieren Sie einen geeigneten Autorisierungsmechanismus in der ASP.NET-Web-API.](#authz-aspnet)</li></ul> |
@@ -400,7 +400,7 @@ return result;
 | **Schritte** | <p>Rolleninformationen für die Anwendungsbenutzer können von Azure AD- oder ADFS-Ansprüchen abgeleitet werden, wenn die Anwendung sie als Identitätsanbieter nutzt, oder sie können von der Anwendung selbst bereitgestellt werden. In beiden Fällen müssen die Benutzerrolleninformationen von der benutzerdefinierten Autorisierungsimplementierung überprüft werden.</p><p>Rolleninformationen für die Anwendungsbenutzer können von Azure AD- oder ADFS-Ansprüchen abgeleitet werden, wenn die Anwendung sie als Identitätsanbieter nutzt, oder sie können von der Anwendung selbst bereitgestellt werden. In beiden Fällen müssen die Benutzerrolleninformationen von der benutzerdefinierten Autorisierungsimplementierung überprüft werden.</p>
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
 public class ApiAuthorizeAttribute : System.Web.Http.AuthorizeAttribute
 {
@@ -431,7 +431,7 @@ public bool ValidateRoles(actionContext)
 }
 ```
 Alle zu schützenden Controller und Aktionsmethoden müssen mit dem obigen Attribut versehen werden.
-```C#
+```csharp
 [ApiAuthorize]
 public class CustomController : ApiController
 {

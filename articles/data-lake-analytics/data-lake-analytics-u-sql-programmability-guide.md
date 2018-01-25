@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.openlocfilehash: bba8fff7997340e563c604f571604ee8d06eb719
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 3686cfffd2c29461213b2866665e59336f037fa0
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL-Programmierbarkeitshandbuch
 
 U-SQL ist eine für Big Data-Workloads konzipierte Abfragesprache. Eines der einzigartigen Features von U-SQL ist die Kombination der SQL-ähnlichen deklarativen Sprache mit dem Erweiterungs- und Programmierbarkeitspotenzial von C#. In diesem Handbuch konzentrieren wir uns auf die durch C# ermöglichte Erweiterbarkeit und Programmierbarkeit der U-SQL-Sprache.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Laden Sie [Azure Data Lake Tools für Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504) herunter, und installieren Sie es.
 
@@ -903,7 +903,7 @@ Benutzerdefinierte Aggregate sind alle aggregationsbezogenen Funktionen, die nic
 
 Die Basisklassendefinition eines benutzerdefinierten Aggregats sieht wie folgt aus:
 
-```c#
+```csharp
     [SqlUserDefinedAggregate]
     public abstract class IAggregate<T1, T2, TResult> : IAggregate
     {
@@ -952,7 +952,7 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 * T2: Zweiter Parameter für „accumulate“
 * TResult: Rückgabetyp von „Terminate“
 
-Beispiel:
+Beispiel: 
 
 ```
 public class GuidAggregate : IAggregate<string, int, int>
@@ -1480,7 +1480,7 @@ OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeade
 
 Um die Erstellung einer Instanz des Objekts im Basisskript zu vermeiden, können wir einen Funktionswrapper erstellen, wie in unserem vorherigen Beispiel zu sehen:
 
-```c#
+```csharp
         // Define the factory classes
         public static class Factory
         {
@@ -1796,7 +1796,7 @@ CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns
 
 Eine weitere Möglichkeit ist das Aufrufen einer Wrapper-Factorymethode:
 
-```c#
+```csharp
     CROSS APPLY MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
 ```
 
@@ -1871,7 +1871,7 @@ Beispiel:    [`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`]
 
 Die wichtigsten Programmierbarkeitsobjekte sind:
 
-```c#
+```csharp
     public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
         IUpdatableRow output
 ```

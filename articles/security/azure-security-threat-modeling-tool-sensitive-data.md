@@ -1,6 +1,6 @@
 ---
 title: "Sensible Daten – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren"
+description: "Gegenmaßnahmen für durch das Threat Modeling-Tool offengelegte Gefahren"
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 60fcb24ffe813d7fb633c5398252dc8ea7d7a19f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8d7189ea4b01d43cea709e3300d8ed71d266f5c9
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Sicherstellen, dass Binärdateien verschleiert werden, wenn sie sensible Informationen enthalten](#binaries-info)</li><li>[Erwägen der Verwendung von Encrypted File System (EFS) zum Schützen von vertraulichen benutzerspezifischen Daten](#efs-user)</li><li>[Sicherstellen, dass von der Anwendung im Dateisystem gespeicherte sensible Daten verschlüsselt sind](#filesystem)</li></ul> | 
-| **Web Application** | <ul><li>[Sicherstellen, dass sensible Inhalte nicht im Browser zwischengespeichert werden](#cache-browser)</li><li>[Verschlüsseln von Abschnitten der Web-App-Konfigurationsdateien, die sensible Daten enthalten](#encrypt-data)</li><li>[Explizites Deaktivieren des autocomplete-HTML-Attributs in sensiblen Formularen und Eingabeumgebungen](#autocomplete-input)</li><li>[Sicherstellen, dass auf dem Benutzerbildschirm angezeigte sensible Daten maskiert sind](#data-mask)</li></ul> | 
+| **Webanwendung** | <ul><li>[Sicherstellen, dass sensible Inhalte nicht im Browser zwischengespeichert werden](#cache-browser)</li><li>[Verschlüsseln von Abschnitten der Web-App-Konfigurationsdateien, die sensible Daten enthalten](#encrypt-data)</li><li>[Explizites Deaktivieren des autocomplete-HTML-Attributs in sensiblen Formularen und Eingabeumgebungen](#autocomplete-input)</li><li>[Sicherstellen, dass auf dem Benutzerbildschirm angezeigte sensible Daten maskiert sind](#data-mask)</li></ul> | 
 | **Datenbank** | <ul><li>[Implementieren der dynamischen Datenmaskierung zum Beschränken der Offenlegung von sensiblen Daten für Benutzer ohne Berechtigungen](#dynamic-users)</li><li>[Sicherstellen, dass Kennwörter im Salt-Hashformat gespeichert werden](#salted-hash)</li><li>[Sicherstellen, dass sensible Daten in Datenbankspalten verschlüsselt sind](#db-encrypted)</li><li>[Sicherstellen, dass die Verschlüsselung auf Datenbankebene (TDE) aktiviert ist](#tde-enabled)</li><li>[Sicherstellen, dass Datenbanksicherungen verschlüsselt sind](#backup)</li></ul> | 
 | **Web-API** | <ul><li>[Sicherstellen, dass für die Web-API relevante sensible Daten nicht im Speicher des Browsers gespeichert werden](#api-browser)</li></ul> | 
 | Azure DocumentDB | <ul><li>[Verschlüsseln sensibler Daten, die in Azure Cosmos DB gespeichert werden](#encrypt-docdb)</li></ul> | 
 | **Azure IaaS-VM-Vertrauensstellungsgrenze** | <ul><li>[Verwenden von Azure Disk Encryption zum Verschlüsseln von Datenträgern, die von virtuellen Computern verwendet werden](#disk-vm)</li></ul> | 
 | **Service Fabric-Vertrauensstellungsgrenze** | <ul><li>[Verschlüsseln von Geheimnissen in Service Fabric-Anwendungen](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Durchführen der Sicherheitsmodellierung und Verwenden von Geschäftseinheiten/Teams nach Bedarf](#modeling-teams)</li><li>[Einschränken des Zugriffs auf die Funktion „Freigeben“ für kritische Entitäten](#entities)</li><li>[Schulen von Benutzern in Bezug auf die Risiken der Funktion „Freigeben“ von Dynamics CRM und bewährte Sicherheitsmethoden](#good-practices)</li><li>[Einbinden einer Entwicklungsstandardregel, die das Anzeigen von Konfigurationsdetails bei der Ausnahmeverwaltung vorschreibt](#exception-mgmt)</li></ul> | 
-| **Azure Storage (in englischer Sprache)** | <ul><li>[Verwenden von Azure Storage Service Encryption (SSE) für ruhende Daten (Vorschau)](#sse-preview)</li><li>[Verwenden der clientseitigen Verschlüsselung zum Speichern von sensiblen Daten in Azure Storage](#client-storage)</li></ul> | 
+| **Azure Storage** | <ul><li>[Verwenden von Azure Storage Service Encryption (SSE) für ruhende Daten (Vorschau)](#sse-preview)</li><li>[Verwenden der clientseitigen Verschlüsselung zum Speichern von sensiblen Daten in Azure Storage](#client-storage)</li></ul> | 
 | **Mobiler Client** | <ul><li>[Verschlüsseln von sensiblen Daten oder personenbezogenen Daten, die in den lokalen Speicher von Smartphones geschrieben werden](#pii-phones)</li><li>[Verschleiern von generierten Binärdateien vor der Verteilung an Endbenutzer](#binaries-end)</li></ul> | 
 | **WCF** | <ul><li>[Festlegen von „clientCredentialType“ auf „Certificate“ oder „Windows“](#cert)</li><li>[WCF-Sicherheitsmodus ist nicht aktiviert](#security)</li></ul> | 
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="example"></a>Beispiel
 Dies kann über einen Filter implementiert werden. Sie können das folgende Beispiel verwenden: 
-```C#
+```csharp
 public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (filterContext == null || (filterContext.HttpContext != null && filterContext.HttpContext.Response != null && filterContext.HttpContext.Response.IsRequestBeingRedirected))
@@ -144,7 +144,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Schritte** | Mit dem Attribut „autocomplete“ wird angegeben, ob die automatische Vervollständigung für ein Formular aktiviert oder deaktiviert sein soll. Bei aktivierter automatischer Vervollständigung werden die Werte im Browser automatisch basierend auf den Werten vervollständigt, die vom Benutzer vorher eingegeben wurden. Wenn in einem Formular beispielsweise ein neuer Name und ein neues Kennwort eingegeben werden und das Formular übermittelt wird, wird im Browser die Frage angezeigt, ob das Kennwort gespeichert werden soll. Danach werden der Name und das Kennwort beim Anzeigen des Formulars automatisch eingefügt oder beim Eingeben des Namens vervollständigt. Ein Angreifer mit lokalem Zugriff hätte die Möglichkeit, das Klartext-Kennwort aus dem Browsercache zu entwenden. Die automatische Vervollständigung ist standardmäßig aktiviert und muss explizit deaktiviert werden. |
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
 <form action="Login.aspx" method="post " autocomplete="off" >
       Social Security Number: <input type="text" name="ssn" />
       <input type="submit" value="Submit" />    
@@ -353,7 +353,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ### <a name="example"></a>Beispiel
 Für Intune können die folgenden Sicherheitsrichtlinien zum Schutz von sensiblen Daten konfiguriert werden: 
-```C#
+```csharp
 Require encryption on mobile device    
 Require encryption on storage cards
 Allow screen capture
@@ -361,7 +361,7 @@ Allow screen capture
 
 ### <a name="example"></a>Beispiel
 Falls die Anwendung keine Unternehmensanwendung ist, sollten Sie den von der Plattform bereitgestellten Keystore verwenden und Keychains zum Speichern von Verschlüsselungsschlüsseln verwenden (je nach Verschlüsselungsvorgang auf dem Dateisystem). Der folgende Codeausschnitt veranschaulicht, wie Sie mit Xamarin über die Keychain auf den Schlüssel zugreifen: 
-```C#
+```csharp
         protected static string EncryptionKey
         {
             get

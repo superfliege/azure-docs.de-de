@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 99756378f2106707b4f6d634a1183d5c32243ee2
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 9d709a0ec2b7de985ac08fe9ee2935848e7a371c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Ermöglicht es, Partitionen für jeden Dienst abzufragen und zu verwalten.
 
 ## <a name="commands"></a>Befehle
 
-|Befehl|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 |    data-loss      | Diese API verursacht Datenverlust für die angegebene Partition.|
 |    data-loss-status  | Ruft den Status eines Partitionsdatenverlustvorgangs ab, der über die StartDataLoss-API gestartet wurde.|
@@ -48,11 +48,11 @@ Ermöglicht es, Partitionen für jeden Dienst abzufragen und zu verwalten.
 Ruft die Integrität der angegebenen Service Fabric-Partition ab.
 
 Ruft die Integritätsinformationen der angegebenen Partition ab. Verwenden Sie „EventsHealthStateFilter“, um die Sammlung der Integritätsereignisse (HealthEvents), die für den Dienst gemeldet wurden, anhand des Integritätsstatus zu filtern.
-Verwenden Sie „ReplicasHealthStateFilter“, um die Auflistung der ReplicaHealthState-Objekte für die Partition zu filtern. Geben Sie eine Partition an, die im Integritätsspeicher nicht vorhanden ist, gibt dieses Cmdlet einen Fehler zurück. .
+Verwenden Sie „ReplicasHealthStateFilter“, um die Auflistung der ReplicaHealthState-Objekte für die Partition zu filtern. Geben Sie eine Partition an, die im Integritätsspeicher nicht vorhanden ist, gibt dieses Cmdlet einen Fehler zurück. zu erstellen und zu verwalten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
 | --events-health-state-filter  | Ermöglicht das Filtern der Sammlung zurückgegebener HealthEvent-Objekte anhand des Integritätsstatus. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus.                Es werden nur Ereignisse zurückgegeben, die dem Filter entsprechen. Alle Ereignisse werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine kennzeichenbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, werden alle Ereignisse zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warnung (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“. – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“.                – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben.                Der Wert ist gleich „65535“.|
@@ -62,7 +62,7 @@ Verwenden Sie „ReplicasHealthStateFilter“, um die Auflistung der ReplicaHeal
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                    | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                  | Zeigt diese Hilfemeldung an und beendet.|
@@ -77,14 +77,14 @@ Der Partitionenendpunkt gibt Informationen über die angegebene Partition zurüc
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
 | --timeout -t          | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
@@ -99,7 +99,7 @@ Ruft die Liste der Partitionen eines Service Fabric-Diensts ab. Die Antwort enth
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --service-id [erforderlich]| Die Identität (ID) des Diensts. Dies ist üblicherweise der vollständige Name des Diensts ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat der Dienst beispielsweise den Namen „fabric://meineapp/app1/dienst1“, hat die Dienstidentität in 6.0+ den Wert „meineapp~app1~dienst1“ und in früheren Versionen den Wert „meineapp/app1/dienst1“.|
 | --continuation-token| Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen.         Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein.|
@@ -107,7 +107,7 @@ Ruft die Liste der Partitionen eines Service Fabric-Diensts ab. Die Antwort enth
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug             | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h           | Zeigt diese Hilfemeldung an und beendet.|
@@ -122,14 +122,14 @@ Gibt Informationen über die angegebene Partition zurück. Die Antwort enthält 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
 | --timeout -t          | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
@@ -144,14 +144,14 @@ Veranlasst den Service Fabric-Cluster zu versuchen, eine bestimmte Partition wie
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
 | --timeout -t          | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
@@ -162,21 +162,21 @@ Veranlasst den Service Fabric-Cluster zu versuchen, eine bestimmte Partition wie
 ## <a name="sfctl-partition-restart"></a>sfctl partition restart
 Diese API startet einige oder alle Replikate oder Instanzen der angegebenen Partition neu.
 
-Diese API ist hilfreich zum Testen von Failover. Wird diese API für eine zustandslose Dienstpartition verwendet, muss „RestartPartitionMode“ gleich „AllReplicasOrInstances“ sein. Rufen Sie die GetPartitionRestartProgress-API mit der Vorgangs-ID (OperationId) auf, mit der Sie den Status (Fortschritt) abgerufen haben. .
+Diese API ist hilfreich zum Testen von Failover. Wird diese API für eine zustandslose Dienstpartition verwendet, muss „RestartPartitionMode“ gleich „AllReplicasOrInstances“ sein. Rufen Sie die GetPartitionRestartProgress-API mit der Vorgangs-ID (OperationId) auf, mit der Sie den Status (Fortschritt) abgerufen haben. zu erstellen und zu verwalten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --operation-id [erforderlich]| Eine GUID, die einen Aufruf dieser API kennzeichnet.  Diese GUID wird in die entsprechende GetProgress-API übergeben.|
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
-| --restart-partition-mode [erforderlich]| – Invalid: Reserviert.  Übergeben Sie diesen Wert nicht an die API. – AllReplicasOrInstances: Alle Replikate oder Instanzen in der Partition werden gleichzeitig neu gestartet. – OnlyActiveSecondaries: Nur die sekundären Replikate werden neu gestartet. .|
+| --restart-partition-mode [erforderlich]| – Invalid: Reserviert.  Übergeben Sie diesen Wert nicht an die API. – AllReplicasOrInstances: Alle Replikate oder Instanzen in der Partition werden gleichzeitig neu gestartet. – OnlyActiveSecondaries: Nur die sekundären Replikate werden neu gestartet. zu erstellen und zu verwalten.|
 | --service-id [erforderlich]| Die Identität (ID) des Diensts. Dies ist üblicherweise der vollständige Name des Diensts ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat der Dienst beispielsweise den Namen „fabric://meineapp/app1/dienst1“, hat die Dienstidentität in 6.0+ den Wert „meineapp~app1~dienst1“ und in früheren Versionen den Wert „meineapp/app1/dienst1“.|
 | --timeout -t                    | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                         | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                       | Zeigt diese Hilfemeldung an und beendet.|

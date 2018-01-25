@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/11/2017
 ms.custom: 
-ms.openlocfilehash: b6cf7bbb1ae41fcdf16601af87ec1b573866639a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 275ab65569a1861f046c8ee77914e0859d41d5f7
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
 
@@ -49,7 +49,7 @@ Es gibt eine Reihe von Fehlern, die vom Betriebssystem generiert werden und die 
 
 Grundsätzlich gibt es zwei Fälle von AcquireTokenSilent-Fehlern:
 
-| Fall | Beschreibung |
+| Fall | BESCHREIBUNG |
 |------|-------------|
 | **Fall 1**: Fehler ist mit einer interaktiven Anmeldung auflösbar | Bei Fehlern, die durch das Fehlen gültiger Token verursacht werden, ist eine interaktive Anforderung erforderlich. Insbesondere für die Cachesuche und ein ungültiges/abgelaufenes Aktualisierungstoken ist ein AcquireToken-Aufruf erforderlich.<br><br>In diesen Fällen muss der Endbenutzer aufgefordert werden, sich anzumelden. Die Anwendung kann wählen, ob sie eine interaktive Anforderung sofort, nach der Interaktion mit dem Endbenutzer (z.B. durch Drücken einer Anmeldeschaltfläche) oder später ausführen möchte. Die Auswahl hängt vom gewünschten Verhalten der Anwendung ab.<br><br>Weitere Informationen finden Sie im Code im folgenden Abschnitt für diesen speziellen Fall und die Fehler, die ihn diagnostizieren.|
 | **Fall 2**: Fehler ist mithilfe einer interaktiven Anmeldung nicht auflösbar | Bei Netzwerk- und vorübergehenden/temporären Fehlern oder anderen Fehlern löst die Ausführung einer interaktiven AcquireToken-Anforderung das Problem nicht. Unnötige interaktive Anmeldeaufforderungen können Endbenutzer auch stören. ADAL versucht automatisch einen einzigen Wiederholungsversuch für die meisten Fehler bei AcquireTokenSilent-Fehlern.<br><br>Die Clientanwendung kann auch zu einem späteren Zeitpunkt einen Wiederholungsversuch ausführen, aber wann und wie dieser auszuführen ist, hängt vom Anwendungsverhalten und der gewünschten Endbenutzererfahrung ab. Beispielsweise kann die Anwendung nach einigen Minuten oder als Reaktion auf eine Aktion des Endbenutzers einen Wiederholungsversuch von AcquireTokenSilent ausführen. Ein sofortiger Wiederholungsversuch führt dazu, dass die Anwendung gedrosselt wird und sollte nicht unternommen werden.<br><br>Ein nachfolgender Wiederholungsversuch, der mit dem gleichen Fehler fehlschlägt, bedeutet nicht, dass der Client eine interaktive Anforderung mit AcquireToken ausführen sollte, da dies den Fehler nicht behebt.<br><br>Weitere Informationen finden Sie im Code im folgenden Abschnitt für diesen speziellen Fall und die Fehler, die ihn diagnostizieren. |
@@ -576,6 +576,7 @@ window.Logging = {
 
 Nutzen Sie den folgenden Kommentarabschnitt, um uns Feedback zu geben und uns dabei zu helfen, unsere Inhalte zu optimieren und zu gestalten.
 
+[![Anmeldungsschaltfläche][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
 [AAD-Auth-Scenarios]: ./active-directory-authentication-scenarios.md
@@ -584,5 +585,5 @@ Nutzen Sie den folgenden Kommentarabschnitt, um uns Feedback zu geben und uns da
 [AZURE-portal]: https://portal.azure.com
 
 <!--Image references-->
-[![Sign in button][AAD-Sign-In]][AAD-Sign-In][AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
+[AAD-Sign-In]:./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
 

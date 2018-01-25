@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 459c792028d3eede059814324597811b24e65ac2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1fde0abd2f5fa8e36c71707d14cd5afeb3a0d2d
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schemazuordnung in Kopieraktivität
 In diesem Artikel wird beschrieben, wie Kopieraktivität in Azure Data Factory Schemazuordnung und Datentypzuordnung von Quelldaten zu Senkendaten beim Kopieren der Daten ausführt.
@@ -151,17 +151,17 @@ Sie können die Zuordnung des nativen Typs zum Zwischendatentyp im „Datentypzu
 Data Factory unterstützt die folgenden Zwischendatentypen: Sie können bei der Angabe von Typinformationen in der Konfiguration der [Datasetstruktur](concepts-datasets-linked-services.md#dataset-structure) folgende Werte verwenden:
 
 * Byte[]
-* Boolean
-* Datetime
+* Boolescher Wert
+* DateTime
 * Datetimeoffset
-* Decimal
-* Doppelt
+* DECIMAL
+* Double
 * Guid
 * Int16
 * Int32
 * Int64
 * Single
-* String
+* Zeichenfolge
 * Timespan
 
 ### <a name="explicit-data-type-conversion"></a>Explizite Konvertierung von Datentypen

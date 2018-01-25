@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3e4b73f432f2695fa8b66b4d2bca23d32bfa9f3a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1733e953d9dd65a3d2b801e6c5ba5cfbb5f82920
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-create-datasets.md)
+> * [Version 1: allgemein verfügbar](data-factory-create-datasets.md)
 > * [Version 2 – Vorschauversion](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Datasets and linked services in Azure Data Factory](../concepts-datasets-linked-services.md) (Datasets und verknüpfte Dienste in Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Datasets and linked services in Azure Data Factory](../concepts-datasets-linked-services.md) (Datasets und verknüpfte Dienste in Azure Data Factory).
 
 In diesem Artikel ist beschrieben, was Datasets sind, wie sie im JSON-Format definiert werden, und wie sie in Azure Data Factory-Pipelines verwendet werden. Der Artikel enthält ausführliche Informationen zu jedem Abschnitt (z. B. „structure“, „availability“ und „policy“) in der JSON-Definition eines Datasets. Außerdem werden im Artikel Beispiele dazu bereitgestellt, wie die Eigenschaften **offset**, **anchorDateTime** und **style** in der Definition eines Datasets verwendet werden.
 
@@ -80,15 +80,15 @@ Ein Dataset in Data Factory wird wie folgt im JSON-Format definiert:
 
 In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:   
 
-| Eigenschaft | Beschreibung | Erforderlich | Standard |
+| Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
-| Name |Name des Datasets. Unter [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie die Benennungsregeln. |Ja |NA |
-| type |Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z. B.: „AzureBlob“, „AzureSqlTable“). <br/><br/>Weitere Informationen finden Sie unter [Dataset: type](#Type). |Ja |NA |
-| structure |Schema des Datasets.<br/><br/>Unter [Dataset: structure](#Structure) finden Sie weitere Details. |Nein |NA |
-| typeProperties | Die Typeigenschaften der einzelnen Typen (z.B. Azure-Blob, Azure SQL-Tabelle) sind unterschiedlich. Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#Type). |Ja |NA |
-| external | Boolesches Flag, das angibt, ob ein Dataset explizit durch eine Data Factory-Pipeline erstellt wird oder nicht. Wenn das Eingabedataset für eine Aktivität nicht durch die aktuelle Pipeline erstellt wird, legen Sie für dieses Flag „true“ fest. Legen Sie für das Eingabedataset der ersten Aktivität in der Pipeline für dieses Flag „true“ fest.  |Nein |false |
-| availability | Definiert das Verarbeitungsfenster (beispielsweise stündlich oder täglich) oder das Modell für das Aufteilen in Slices für die Datasetproduktion. Jede Einheit von Daten, die durch eine Aktivitätsausführung genutzt und erstellt wird, heißt Datenslice. Wenn die Verfügbarkeit des Ausgabedatasets auf täglich (frequency - Day, interval - 1) festgelegt ist, wird täglich ein Slice erstellt. <br/><br/>Details finden Sie unter [Dataset: availability](#Availability). <br/><br/>Weitere Informationen zum Modell für das Aufteilen von Datasets in Slices finden Sie im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md). |Ja |NA |
-| policy |Definiert die Kriterien oder die Bedingung, die die Dataset-Slices erfüllen müssen. <br/><br/>Weitere Informationen finden Sie im Abschnitt [Dataset: policy](#Policy). |Nein |NA |
+| name |Name des Datasets. Unter [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie die Benennungsregeln. |Ja |Nicht verfügbar |
+| type |Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z. B.: „AzureBlob“, „AzureSqlTable“). <br/><br/>Weitere Informationen finden Sie unter [Dataset: type](#Type). |Ja |Nicht verfügbar |
+| structure |Schema des Datasets.<br/><br/>Unter [Dataset: structure](#Structure) finden Sie weitere Details. |Nein  |Nicht verfügbar |
+| typeProperties | Die Typeigenschaften der einzelnen Typen (z.B. Azure-Blob, Azure SQL-Tabelle) sind unterschiedlich. Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#Type). |Ja |Nicht verfügbar |
+| external | Boolesches Flag, das angibt, ob ein Dataset explizit durch eine Data Factory-Pipeline erstellt wird oder nicht. Wenn das Eingabedataset für eine Aktivität nicht durch die aktuelle Pipeline erstellt wird, legen Sie für dieses Flag „true“ fest. Legen Sie für das Eingabedataset der ersten Aktivität in der Pipeline für dieses Flag „true“ fest.  |Nein  |false |
+| availability | Definiert das Verarbeitungsfenster (beispielsweise stündlich oder täglich) oder das Modell für das Aufteilen in Slices für die Datasetproduktion. Jede Einheit von Daten, die durch eine Aktivitätsausführung genutzt und erstellt wird, heißt Datenslice. Wenn die Verfügbarkeit des Ausgabedatasets auf täglich (frequency - Day, interval - 1) festgelegt ist, wird täglich ein Slice erstellt. <br/><br/>Details finden Sie unter [Dataset: availability](#Availability). <br/><br/>Weitere Informationen zum Modell für das Aufteilen von Datasets in Slices finden Sie im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md). |Ja |Nicht verfügbar |
+| policy |Definiert die Kriterien oder die Bedingung, die die Dataset-Slices erfüllen müssen. <br/><br/>Weitere Informationen finden Sie im Abschnitt [Dataset: policy](#Policy). |Nein  |Nicht verfügbar |
 
 ## <a name="dataset-example"></a>Datasetbeispiel
 Im folgenden Beispiel stellt das Dataset eine Tabelle namens **MyTable** in einer SQL-Datenbank dar.
@@ -193,12 +193,12 @@ structure:
 
 Jede Spalte im Abschnitt „structure“ enthält die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | name |Name der Spalte. |Ja |
-| type |Datentyp der Spalte.  |Nein |
-| culture |Zu verwendendes .NET-basiertes Gebietsschema, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Der Standardwert lautet `en-us`. |Nein |
-| format |Zu verwendende Formatzeichenfolge, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. |Nein |
+| type |Datentyp der Spalte.  |Nein  |
+| culture |Zu verwendendes .NET-basiertes Gebietsschema, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Der Standardwert lautet `en-us`. |Nein  |
+| format |Zu verwendende Formatzeichenfolge, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. |Nein  |
 
 Anhand der folgenden Anleitungen können Sie entscheiden, wann der Abschnitt **structure** mit welchen Informationen verwendet werden sollte.
 
@@ -236,13 +236,13 @@ Das Ausgabedataset wird zwischen Start- und Endzeit der Pipeline stündlich erze
 
 In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt „availability“ verwenden können:
 
-| Eigenschaft | Beschreibung | Erforderlich | Standard |
+| Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
-| frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |NA |
-| interval |Gibt einen Multiplikator für die Häufigkeit an.<br/><br/>„frequency x interval“ bestimmt, wie oft der Slice erzeugt wird. Wenn Sie das Dataset beispielsweise auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/>Wenn Sie **frequency** als **Minute** angeben, sollten Sie „interval“ auf mindestens „15“ festlegen. |Ja |NA |
-| style |Gibt an, ob der Slice am Anfang oder am Ende des Intervalls erzeugt werden soll.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Wenn **frequency** auf **Month** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am letzten Tag des Monats erstellt. Wenn **style** auf **StartOfInterval** festgelegt ist, wird der Slice am ersten Tag des Monats erstellt.<br/><br/>Wenn **frequency** auf **Day** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice in der letzten Stunde des Tages erstellt.<br/><br/>Wenn **frequency** auf **Hour** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am Ende der Stunde erstellt. Ein Slice für den Zeitraum 13:00 bis 14:00 Uhr wird z. B. um 14.00 Uhr erstellt. |Nein |EndOfInterval |
-| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>Wenn diese Eigenschaft Datumsteile hat, die kürzer sind als die Zeitspanne aus der angegebenen Häufigkeit, werden die kürzeren Teile ignoriert. Wenn **interval** z.B. auf **hourly** festgelegt ist („frequency: hour“ und „interval: 1“) und **anchorDateTime** Angaben für **Minuten und Sekunden** enthält, werden die Minuten- und Sekundenteile von **anchorDateTime** ignoriert. |Nein |01/01/0001 |
-| offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/>Wenn sowohl **anchorDateTime** als auch **offset** angegeben sind, ist das Ergebnis die kombinierte Verschiebung. |Nein |NA |
+| frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |Nicht verfügbar |
+| interval |Gibt einen Multiplikator für die Häufigkeit an.<br/><br/>„frequency x interval“ bestimmt, wie oft der Slice erzeugt wird. Wenn Sie das Dataset beispielsweise auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/>Wenn Sie **frequency** als **Minute** angeben, sollten Sie „interval“ auf mindestens „15“ festlegen. |Ja |Nicht verfügbar |
+| style |Gibt an, ob der Slice am Anfang oder am Ende des Intervalls erzeugt werden soll.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Wenn **frequency** auf **Month** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am letzten Tag des Monats erstellt. Wenn **style** auf **StartOfInterval** festgelegt ist, wird der Slice am ersten Tag des Monats erstellt.<br/><br/>Wenn **frequency** auf **Day** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice in der letzten Stunde des Tages erstellt.<br/><br/>Wenn **frequency** auf **Hour** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am Ende der Stunde erstellt. Ein Slice für den Zeitraum 13:00 bis 14:00 Uhr wird z. B. um 14.00 Uhr erstellt. |Nein  |EndOfInterval |
+| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>Wenn diese Eigenschaft Datumsteile hat, die kürzer sind als die Zeitspanne aus der angegebenen Häufigkeit, werden die kürzeren Teile ignoriert. Wenn **interval** z.B. auf **hourly** festgelegt ist („frequency: hour“ und „interval: 1“) und **anchorDateTime** Angaben für **Minuten und Sekunden** enthält, werden die Minuten- und Sekundenteile von **anchorDateTime** ignoriert. |Nein  |01/01/0001 |
+| offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/>Wenn sowohl **anchorDateTime** als auch **offset** angegeben sind, ist das Ergebnis die kombinierte Verschiebung. |Nein  |Nicht verfügbar |
 
 ### <a name="offset-example"></a>Beispiel zu Offset
 Standardmäßig beginnen tägliche (`"frequency": "Day", "interval": 1`) Slices um 00: 00 Uhr (Mitternacht) koordinierte Weltzeit (UTC). Wenn die Startzeit 6:00 Uhr UTC-Zeit sein soll, legen Sie den Versatz wie im folgenden Codeausschnitt gezeigt fest: 
@@ -283,10 +283,10 @@ Das folgende Dataset wird monatlich am dritten Tage jedes Monats um 8:00 Uhr ers
 Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder die Bedingung, die die Datasetslices erfüllen müssen.
 
 ### <a name="validation-policies"></a>Überprüfungsrichtlinien
-| Richtlinienname | Beschreibung | Angewendet auf | Erforderlich | Standard |
+| Richtlinienname | BESCHREIBUNG | Angewendet auf | Erforderlich | Standard |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |Überprüft, ob die Daten in **Azure Blob Storage** die minimalen Größenanforderungen (in MB) erfüllen. |Azure-Blobspeicher |Nein |NA |
-| minimumRows |Überprüft, ob die Daten in einer **Azure SQL-Datenbank** oder einer **Azure-Tabelle** die minimale Anzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure-Tabelle</li></ul> |Nein |NA |
+| minimumSizeMB |Überprüft, ob die Daten in **Azure Blob Storage** die minimalen Größenanforderungen (in MB) erfüllen. |Azure-Blobspeicher |Nein  |Nicht verfügbar |
+| minimumRows |Überprüft, ob die Daten in einer **Azure SQL-Datenbank** oder einer **Azure-Tabelle** die minimale Anzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure-Tabelle</li></ul> |Nein  |Nicht verfügbar |
 
 #### <a name="examples"></a>Beispiele
 **minimumSizeMB:**
@@ -319,12 +319,12 @@ Externe Datasets werden nicht durch eine Pipeline erstellt, die in der Data Fact
 
 Ein Dataset sollte, sofern es nicht von Data Factory erzeugt wird, es als **extern** markiert werden. Diese Einstellung gilt im Allgemeinen für die Eingaben der ersten Aktivität in einer Pipeline, wenn weder Aktivitäts- noch Pipelineverkettung genutzt wird.
 
-| Name | Beschreibung | Erforderlich | Standardwert |
+| NAME | BESCHREIBUNG | Erforderlich | Standardwert |
 | --- | --- | --- | --- |
-| dataDelay |Die Zeitspanne, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Beispielsweise können Sie eine stündliche Überprüfung verzögern, indem Sie diese Einstellung verwenden.<br/><br/>Die Einstellung gilt nur für die aktuelle Zeit.  Beispiel: Wenn es gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus. Slices mit **Segmentendzeit** + **dataDelay** < **Jetzt** werden ohne Verzögerung verarbeitet.<br/><br/>Zeiträume, die länger als 23 Stunden 59 Minuten sind, müssen im Format `day.hours:minutes:seconds` angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00. Verwenden Sie stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. |Nein |0 |
-| retryInterval |Die Wartezeit zwischen einem Fehler und dem nächsten Versuch. Diese Einstellung gilt für die aktuelle Zeit. Wenn beim vorherigen Versuch ein Fehler auftrat, wird der nächste Versuch nach Verstreichen des **retryInterval**-Zeitraums durchgeführt. <br/><br/>Wenn es gerade 13:00 Uhr ist, beginnt der erste Versuch. Wenn die Ausführung der ersten Überprüfung 1 Minute gedauert hat und ein Fehler aufgetreten ist, findet die nächste Wiederholung um 13:00 + 1 Min. (Dauer) + 1 Min. (Wiederholungsintervall) = 13:02 Uhr statt. <br/><br/>Für Slices in der Vergangenheit gibt es keine Verzögerung. Der erneute Versuch erfolgt sofort. |Nein |00:01:00 (1 Minute) |
-| retryTimeout |Das Timeout für die einzelnen Wiederholungsversuche.<br/><br/>Wenn diese Eigenschaft auf 10 Minuten festgelegt ist, sollte die Überprüfung innerhalb von 10 Minuten abgeschlossen werden. Wenn die Ausführung der Überprüfung länger als 10 Minuten dauert, wird das Timeout für die Wiederholung wirksam.<br/><br/>Wenn für alle Überprüfungsversuche ein Timeout aufgetreten ist, wird der Slice als **TimedOut** gekennzeichnet. |Nein |00:10:00 (10 Minuten) |
-| maximumRetry |Gibt an, wie oft die Verfügbarkeit der externen Daten überprüft werden soll. Der zulässige größte Wert ist „10“. |Nein |3 |
+| dataDelay |Die Zeitspanne, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Beispielsweise können Sie eine stündliche Überprüfung verzögern, indem Sie diese Einstellung verwenden.<br/><br/>Die Einstellung gilt nur für die aktuelle Zeit.  Beispiel: Wenn es gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus. Slices mit **Segmentendzeit** + **dataDelay** < **Jetzt** werden ohne Verzögerung verarbeitet.<br/><br/>Zeiträume, die länger als 23 Stunden 59 Minuten sind, müssen im Format `day.hours:minutes:seconds` angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00. Verwenden Sie stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. |Nein  |0 |
+| retryInterval |Die Wartezeit zwischen einem Fehler und dem nächsten Versuch. Diese Einstellung gilt für die aktuelle Zeit. Wenn beim vorherigen Versuch ein Fehler auftrat, wird der nächste Versuch nach Verstreichen des **retryInterval**-Zeitraums durchgeführt. <br/><br/>Wenn es gerade 13:00 Uhr ist, beginnt der erste Versuch. Wenn die Ausführung der ersten Überprüfung 1 Minute gedauert hat und ein Fehler aufgetreten ist, findet die nächste Wiederholung um 13:00 + 1 Min. (Dauer) + 1 Min. (Wiederholungsintervall) = 13:02 Uhr statt. <br/><br/>Für Slices in der Vergangenheit gibt es keine Verzögerung. Der erneute Versuch erfolgt sofort. |Nein  |00:01:00 (1 Minute) |
+| retryTimeout |Das Timeout für die einzelnen Wiederholungsversuche.<br/><br/>Wenn diese Eigenschaft auf 10 Minuten festgelegt ist, sollte die Überprüfung innerhalb von 10 Minuten abgeschlossen werden. Wenn die Ausführung der Überprüfung länger als 10 Minuten dauert, wird das Timeout für die Wiederholung wirksam.<br/><br/>Wenn für alle Überprüfungsversuche ein Timeout aufgetreten ist, wird der Slice als **TimedOut** gekennzeichnet. |Nein  |00:10:00 (10 Minuten) |
+| maximumRetry |Gibt an, wie oft die Verfügbarkeit der externen Daten überprüft werden soll. Der zulässige größte Wert ist „10“. |Nein  |3 |
 
 
 ## <a name="create-datasets"></a>Erstellen von Datasets

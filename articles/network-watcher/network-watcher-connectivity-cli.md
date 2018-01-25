@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 996fe0ef31a5bea9111324a661b714e77dffff64
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 507ec614e54b035d5470ec34bcfd8e71cf98083c
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="check-connectivity-with-azure-network-watcher-using-azure-cli-20"></a>Überprüfen der Konnektivität mit Azure Network Watcher mithilfe von Azure CLI 2.0
 
@@ -36,39 +36,8 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressource
 
 * Virtuelle Computer, mit denen Sie die Konnektivität überprüfen.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 > [!IMPORTANT]
 > Für die Konnektivitätsprüfung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
-
-## <a name="register-the-preview-capability"></a>Registrieren der Vorschaufunktion 
-
-Die Konnektivitätsprüfung befindet sich derzeit in der öffentlichen Vorschauphase. Wenn Sie diese Funktion verwenden möchten, müssen Sie sie registrieren. Führen Sie zu diesem Zweck das folgende CLI-Beispiel aus:
-
-```azurecli 
-az feature register --namespace Microsoft.Network --name AllowNetworkWatcherConnectivityCheck
-
-az provider register --namespace Microsoft.Network 
-``` 
-
-Um zu überprüfen, ob die Registrierung erfolgreich durchgeführt wurde, führen Sie den folgenden CLI-Befehl aus:
-
-```azurecli
-az feature show --namespace Microsoft.Network --name AllowNetworkWatcherConnectivityCheck 
-```
-
-Wenn das Feature ordnungsgemäß registriert wurde, sollte die Ausgabe der folgenden ähneln: 
-
-```json
-{
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Features/providers/Microsoft.Network/features/AllowNetworkWatcherConnectivityCheck",
-  "name": "Microsoft.Network/AllowNetworkWatcherConnectivityCheck",
-  "properties": {
-    "state": "Registered"
-  },
-  "type": "Microsoft.Features/providers/features"
-}
-``` 
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Überprüfen der Konnektivität zu einem virtuellen Computer
 
@@ -80,7 +49,7 @@ In diesem Beispiel wird die Konnektivität zu einem virtuellen Zielcomputer übe
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-resource Database0 --dest-port 80
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
 Die folgende Antwort stammt aus dem vorherigen Beispiel.  In dieser Antwort ist der `ConnectionStatus` **Nicht erreichbar**. Wie Sie sehen, sind alle gesendeten Tests fehlgeschlagen. Bei der Konnektivität ist am virtuellen Gerät ein Fehler aufgetreten. Der Grund dafür ist eine benutzerdefinierte `NetworkSecurityRule` mit der Bezeichnung **UserRule_Port80**, deren Konfiguration eingehenden Datenverkehr über Port 80 blockiert. Diese Informationen können bei der Untersuchung von Konnektivitätsproblemen verwendet werden.
 
@@ -161,7 +130,7 @@ In diesem Beispiel wird die Konnektivität zwischen einem virtuellen Computer un
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address 13.107.21.200 --dest-port 80
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
 Im folgenden Beispiel wird der `connectionStatus` als **Nicht erreichbar** angezeigt. In den `hops`-Details können Sie unter `issues` sehen, dass der Datenverkehr aufgrund einer `UserDefinedRoute` blockiert war.
 
@@ -219,7 +188,7 @@ Im folgenden Beispiel wird die Konnektivität zu einer Website überprüft.
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address http://bing.com --dest-port 80
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
 In der folgenden Antwort wird der `connectionStatus` als **Erreichbar** angezeigt. Wenn eine Verbindung erfolgreich ist, werden Latenzwerte bereitgestellt.
 
@@ -265,7 +234,7 @@ Im folgenden Beispiel wird die Konnektivität von einem virtuellen Computer mit 
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address https://contosoexamplesa.blob.core.windows.net/
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
 Der folgende JSON-Code ist die Beispielantwort auf die Ausführung des vorherigen Cmdlets. Da die Überprüfung erfolgreich ist, wird die Eigenschaft `connectionStatus` als **Erreichbar** angezeigt.  Die Details in Bezug auf die Anzahl der Hops, die zum Erreichen des Speicherblobs und der Latenz benötigt werden, werden bereitgestellt.
 

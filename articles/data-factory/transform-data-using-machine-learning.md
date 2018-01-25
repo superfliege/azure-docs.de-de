@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2017
+ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 413f12d301a0e2c47048d23b2d4fb7de6423256d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa493a6d7b4cf775f64b87c1d5cc21ff4a138609
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](v1/data-factory-azure-ml-batch-execution-activity.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [Version 2 – Vorschauversion](transform-data-using-machine-learning.md)
 
 [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) ermöglicht es Ihnen, Predictive Analytics-Lösungen zu erstellen, zu testen und bereitzustellen. Allgemein betrachtet, geschieht dies in drei Schritten:
@@ -131,15 +131,15 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 
 
 
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
-| Name              | Name der Aktivität in der Pipeline     | Ja      |
-| Beschreibung       | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
-| Typ              | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **AzureMLBatchExecution**. | Ja      |
+| name              | Name der Aktivität in der Pipeline     | Ja      |
+| Beschreibung       | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
+| type              | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **AzureMLBatchExecution**. | Ja      |
 | linkedServiceName | Mit dem verknüpften Azure Machine Learning-Dienst verknüpfte Dienste. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | Ja      |
-| webServiceInputs  | Schlüssel, Wertepaare, Zuordnung der Namen von Eingaben in den Azure Machine Learning-Webdienst. Der Schlüssel muss mit den Eingabeparametern übereinstimmen, die im veröffentlichten Azure Machine Learning-Webdienst definiert sind. Der Wert ist ein Paar aus verknüpften Azure Storage-Diensten und „FilePath“-Eigenschaften zum Angeben der Speicherorte von Eingabeblobs. | Nein       |
-| webServiceOutputs | Schlüssel, Wertepaare, Zuordnung der Namen von Ausgaben aus dem Azure Machine Learning-Webdienst. Der Schlüssel muss mit den Ausgabeparametern übereinstimmen, die im veröffentlichten Azure Machine Learning-Webdienst definiert sind. Der Wert ist ein Paar aus verknüpften Azure Storage-Diensten und „FilePath“-Eigenschaften zum Angeben der Speicherorte von Ausgabeblobs. | Nein       |
-| globalParameters  | Schlüssel, Wertepaare, die an den Endpunkt des Azure ML-Batchausführungsdienst übergeben werden. Schlüssel müssen mit den Webdienstparametern übereinstimmen, die im veröffentlichten Azure ML-Webdienst definiert sind. Werte werden in der „GlobalParameters“-Eigenschaft der Azure ML-Batchausführungsanforderung übergeben. | Nein       |
+| webServiceInputs  | Schlüssel, Wertepaare, Zuordnung der Namen von Eingaben in den Azure Machine Learning-Webdienst. Der Schlüssel muss mit den Eingabeparametern übereinstimmen, die im veröffentlichten Azure Machine Learning-Webdienst definiert sind. Der Wert ist ein Paar aus verknüpften Azure Storage-Diensten und „FilePath“-Eigenschaften zum Angeben der Speicherorte von Eingabeblobs. | Nein        |
+| webServiceOutputs | Schlüssel, Wertepaare, Zuordnung der Namen von Ausgaben aus dem Azure Machine Learning-Webdienst. Der Schlüssel muss mit den Ausgabeparametern übereinstimmen, die im veröffentlichten Azure Machine Learning-Webdienst definiert sind. Der Wert ist ein Paar aus verknüpften Azure Storage-Diensten und „FilePath“-Eigenschaften zum Angeben der Speicherorte von Ausgabeblobs. | Nein        |
+| globalParameters  | Schlüssel, Wertepaare, die an den Endpunkt des Azure ML-Batchausführungsdienst übergeben werden. Schlüssel müssen mit den Webdienstparametern übereinstimmen, die im veröffentlichten Azure ML-Webdienst definiert sind. Werte werden in der „GlobalParameters“-Eigenschaft der Azure ML-Batchausführungsanforderung übergeben. | Nein        |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Szenario 1: Experimente mit Eingaben/Ausgaben für den Webdienst, die auf Daten in Azure Blob Storage verweisen
 

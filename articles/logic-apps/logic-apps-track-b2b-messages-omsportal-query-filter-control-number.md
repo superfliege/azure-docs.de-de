@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 2748d3d3daf7c13dca05f663a4a088598e1b3605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69e8735417bc006296b8a6e5168d9fbeff052247
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Abfragen von AS2-, X12- und EDIFACT-Nachrichten in der Microsoft Operations Management Suite (OMS)
 
 Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um die AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie in der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) mithilfe von [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
-* Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+* Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informationen zum Erstellen eines Integrationskontos finden Sie [hier](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Informationen zum Einrichten der Überwachung und Protokollierung für das Konto stehen [hier](../logic-apps/logic-apps-monitor-b2b-message.md) zur Verfügung.
 
@@ -35,7 +35,7 @@ Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriter
 > [!NOTE]
 > Wenn diese beiden Anforderungen erfüllt sind, verfügen Sie über einen Arbeitsbereich in der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Es empfiehlt sich, für die Nachverfolgung der B2B-Kommunikation in der OMS den gleichen OMS-Arbeitsbereich zu verwenden. 
 >  
-> Falls Sie über keinen OMS-Arbeitsbereich verfügen, erfahren Sie [hier](../log-analytics/log-analytics-get-started.md), wie Sie einen OMS-Arbeitsbereich erstellen.
+> Falls Sie keinen OMS-Arbeitsbereich haben, können Sie sich unter [Erste Schritte mit einem Log Analytics-Arbeitsbereich](../log-analytics/log-analytics-get-started.md) über die Erstellung informieren.
 
 ## <a name="create-message-queries-with-filters-in-the-operations-management-suite-portal"></a>Erstellen von Nachrichtenabfragen mit Filtern über das Operations Management Suite-Portal
 

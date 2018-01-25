@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 308d78550e9e60303b70d591eb4e6bfff3e49ce7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fca2b9983e70b754e3b4cb736023c47c598bedfc
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-rss-connector"></a>Erste Schritte mit dem RSS-Connector
 RSS ist ein beliebtes Webformat zum Veröffentlichen von Inhalten, die häufig aktualisiert werden. Beispiele hierfür wären etwa Blogbeiträge und Schlagzeilen.  Viele Inhaltsherausgeber bieten einen RSS-Feed an, der von Benutzern abonniert werden kann.  Mit dem RSS-Connector können Sie Feedinformationen abrufen und Abläufe auslösen, wenn in einem RSS-Feed neue Elemente veröffentlicht werden.
 
-Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
+Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
 
 ## <a name="create-a-connection-to-rss"></a>Herstellen einer Verbindung mit RSS
 > [!INCLUDE [Steps to create a connection to an RSS feed](../../includes/connectors-create-api-rss.md)]

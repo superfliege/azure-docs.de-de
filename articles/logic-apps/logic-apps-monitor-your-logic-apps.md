@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 4795f5728d4ce6ff21b97bc3fefd6a53e0c6a11b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ad8281744293a05b50f8664a7e5a3fea7aa7b33
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
-Nachdem Sie [eine Logik-App erstellt und ausgeführt haben](../logic-apps/logic-apps-create-a-logic-app.md), können Sie dafür den Ausführungsverlauf, den Triggerverlauf, den Status und die Leistung überprüfen. Für die Echtzeit-Ereignisüberwachung und die Durchführung eines umfassenderen Debuggens können Sie die [Diagnoseprotokollierung](#azure-diagnostics) für Ihre Logik-App einrichten. Auf diese Weise können Sie [nach Ereignissen suchen und diese anzeigen](#find-events), z.B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse. Sie können diese [Diagnosedaten auch mit anderen Diensten verwenden](#extend-diagnostic-data), z.B. Azure Storage und Azure Event Hubs. 
+Nachdem Sie [eine Logik-App erstellt und ausgeführt haben](../logic-apps/quickstart-create-first-logic-app-workflow.md), können Sie dafür den Ausführungsverlauf, den Triggerverlauf, den Status und die Leistung überprüfen. Für die Echtzeit-Ereignisüberwachung und die Durchführung eines umfassenderen Debuggens können Sie die [Diagnoseprotokollierung](#azure-diagnostics) für Ihre Logik-App einrichten. Auf diese Weise können Sie [nach Ereignissen suchen und diese anzeigen](#find-events), z.B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse. Sie können diese [Diagnosedaten auch mit anderen Diensten verwenden](#extend-diagnostic-data), z.B. Azure Storage und Azure Event Hubs. 
 
 Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfällen oder anderen möglichen Problemen zu erhalten. Beispielsweise können Sie eine Warnung erstellen, mit der erkannt wird, „wenn in einer Stunde mehr als fünf Ausführungen fehlschlagen“. Sie können die Überwachung, Nachverfolgung und Protokollierung auch programmgesteuert einrichten, indem Sie [Einstellungen und Eigenschaften für Azure-Diagnoseereignisse](#diagnostic-event-properties) verwenden.
 
@@ -37,7 +37,7 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
 
 2. Wählen Sie Ihre Logik-App aus, und wählen Sie dann die Option **Übersicht**.
 
-   Im Azure-Portal wird der Ausführungs- und Triggerverlauf für Ihre Logik-App angezeigt. Beispiel:
+   Im Azure-Portal wird der Ausführungs- und Triggerverlauf für Ihre Logik-App angezeigt. Beispiel: 
 
    ![Ausführungs- und Triggerverlauf von Logik-Apps](media/logic-apps-monitor-your-logic-apps/overview.png)
 
@@ -51,7 +51,7 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
 
 3. Wählen Sie unter **Ausführungsverlauf** eine bestimmte Ausführung aus, um die dazugehörigen Schritte anzuzeigen. 
 
-   In der Überwachungsansicht werden die einzelnen Schritte der Ausführung angezeigt. Beispiel:
+   In der Überwachungsansicht werden die einzelnen Schritte der Ausführung angezeigt. Beispiel: 
 
    ![Aktionen für eine bestimmte Ausführung](media/logic-apps-monitor-your-logic-apps/monitor-view-updated.png)
 
@@ -61,7 +61,7 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
 
    Sie können beispielsweise die **Korrelations-ID** der Ausführung abrufen, die Sie ggf. benötigen, wenn Sie die [REST-API für Logik-Apps](https://docs.microsoft.com/rest/api/logic) verwenden.
 
-5. Wählen Sie diesen Schritt aus, um die Details zu einem bestimmten Schritt zu erhalten. Sie können jetzt Details wie Eingaben, Ausgaben und Fehler für diesen Schritt prüfen. Beispiel:
+5. Wählen Sie diesen Schritt aus, um die Details zu einem bestimmten Schritt zu erhalten. Sie können jetzt Details wie Eingaben, Ausgaben und Fehler für diesen Schritt prüfen. Beispiel: 
 
    ![Schrittdetails](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
@@ -168,7 +168,7 @@ In Verbindung mit Azure Log Analytics können Sie die Nutzung der Diagnosedaten 
 * [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Streamen von Azure-Diagnoseprotokollen an Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../log-analytics/log-analytics-powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel:
+Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../log-analytics/log-analytics-powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel: 
 
 * [Streamen von Daten von Event Hubs zu Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analysieren von Streamingdaten mit Stream Analytics und Erstellen eines Dashboards für die Echtzeitanalyse in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

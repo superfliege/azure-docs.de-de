@@ -11,23 +11,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: 
-ms.date: 09/05/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: e8572af6187a889067341bbebb254d701b39395a
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: bfc95588378466fe1e83bcc4e899eca6b66b358a
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datasets und verknüpfte Dienste in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1 – Allgemein verfügbar](v1/data-factory-create-datasets.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-create-datasets.md)
 > * [Version 2 – Vorschauversion](concepts-datasets-linked-services.md)
 
 In diesem Artikel wird beschrieben, was Datasets sind, wie sie im JSON-Format definiert werden, und wie sie in Azure Data Factory V2-Pipelines verwendet werden. 
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschauversion verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Datasets in Azure Data Factory](v1/data-factory-create-datasets.md).
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Datasets in Azure Data Factory](v1/data-factory-create-datasets.md).
 
 Wenn Sie noch nicht mit Data Factory vertraut sind, sollten Sie [Einführung in Azure Data Factory](introduction.md) lesen, um eine Übersicht zu erhalten. 
 
@@ -65,12 +65,12 @@ Ein verknüpfter Dienst in Data Factory wird wie folgt im JSON-Format definiert:
 
 In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:
 
-Eigenschaft | Beschreibung | Erforderlich |
+Eigenschaft | BESCHREIBUNG | Erforderlich |
 -------- | ----------- | -------- |
 name | Name des verknüpften Diensts. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  Ja |
-Typ | Typ des verknüpften Diensts. Beispiel: AzureStorage (Datenspeicher) oder AzureBatch (Compute). Siehe die Beschreibung von „typeProperties“. | Ja |
+type | Typ des verknüpften Diensts. Beispiel: AzureStorage (Datenspeicher) oder AzureBatch (Compute). Siehe die Beschreibung von „typeProperties“. | Ja |
 typeProperties | Die Typeigenschaften unterscheiden sich für jeden Datenspeicher- oder Computetyp. <br/><br/> Informationen zu den unterstützten Datenspeichertypen und ihren Typeigenschaften finden Sie in der Tabelle [Datensatztyp](#dataset-type) in diesem Artikel. Navigieren Sie zum Artikel über den Datenspeicherconnector, um mehr über die für einen Datenspeicher spezifischen Typeigenschaften zu erfahren. <br/><br/> Informationen zu den unterstützten Computetypen und ihren Typeigenschaften finden Sie unter [Verknüpfte Computedienste](compute-linked-services.md). | Ja |
-connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. | Nein
+connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein 
 
 ## <a name="linked-service-example"></a>Beispiel für einen verknüpften Dienst
 Der folgende verknüpfte Dienst ist ein mit Azure Storage verknüpfter Dienst. Beachten Sie, dass „type“ auf „AzureStorage“ festgelegt ist. Die Typeigenschaften für den verknüpften Azure Storage-Dienst umfassen eine Verbindungszeichenfolge. Der Data Factory-Dienst verwendet diese Verbindungszeichenfolge für die Verbindung mit dem Datenspeicher zur Laufzeit. 
@@ -122,11 +122,11 @@ Ein Dataset in Data Factory wird wie folgt im JSON-Format definiert:
 ```
 In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:
 
-Eigenschaft | Beschreibung | Erforderlich |
+Eigenschaft | BESCHREIBUNG | Erforderlich |
 -------- | ----------- | -------- |
 name | Name des Datasets. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  Ja |
-Typ | Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z. B.: „AzureBlob“, „AzureSqlTable“). <br/><br/>Weitere Informationen finden Sie unter [Datasettyp](#dataset-types). | Ja |
-structure | Schema des Datasets. Unter [Dataset: structure](#dataset-structure) finden Sie weitere Details. | Nein |
+type | Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z. B.: „AzureBlob“, „AzureSqlTable“). <br/><br/>Weitere Informationen finden Sie unter [Datasettyp](#dataset-types). | Ja |
+structure | Schema des Datasets. Unter [Dataset: structure](#dataset-structure) finden Sie weitere Details. | Nein  |
 typeProperties | Die Typeigenschaften der einzelnen Typen (z.B. Azure-Blob, Azure SQL-Tabelle) sind unterschiedlich. Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#dataset-type). | Ja |
 
 ## <a name="dataset-example"></a>Datasetbeispiel
@@ -196,12 +196,12 @@ Der Abschnitt **structure** ist optional. In ihm ist das Schema des Datasets in 
 
 Jede Spalte im Abschnitt „structure“ enthält die folgenden Eigenschaften:
 
-Eigenschaft | Beschreibung | Erforderlich
+Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 name | Name der Spalte. | Ja
-type | Datentyp der Spalte. | Nein
-culture | Zu verwendendes .NET-basiertes Gebietsschema, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Der Standardwert lautet `en-us`. | Nein
-format | Zu verwendende Formatzeichenfolge, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. | Nein
+type | Datentyp der Spalte. | Nein 
+culture | Zu verwendendes .NET-basiertes Gebietsschema, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Der Standardwert lautet `en-us`. | Nein 
+format | Zu verwendende Formatzeichenfolge, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. | Nein 
 
 Anhand der folgenden Anleitungen können Sie entscheiden, wann der Abschnitt **structure** mit welchen Informationen verwendet werden sollte.
 

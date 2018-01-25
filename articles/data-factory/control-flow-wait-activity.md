@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 3ff06ea07fcf5e391783575adf9dd5d99255eced
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 460d37b13a17eaf20d77ad4b1059e0461fb0181f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="wait-activity-in-azure-data-factory"></a>Warteaktivität in Azure Data Factory
 Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline den angegebenen Zeitraum, bevor Sie die Ausführung nachfolgender Aktivitäten fortsetzt. 
@@ -40,11 +40,11 @@ Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline d
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
+Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Wait`-Aktivität | String | Ja
-Typ | Muss auf **Wait** festgelegt werden. | String | Ja
-waitTimeInSeconds | Die Anzahl von Sekunden, die die Pipeline wartet, bevor sie die Verarbeitung fortsetzt | Integer | Ja
+name | Der Name der `Wait`-Aktivität. | Zeichenfolge | Ja
+type | Muss auf **Wait** festgelegt werden. | Zeichenfolge | Ja
+waitTimeInSeconds | Die Anzahl von Sekunden, die die Pipeline wartet, bevor sie die Verarbeitung fortsetzt | Ganze Zahl  | Ja
 
 ## <a name="example"></a>Beispiel
 
@@ -105,7 +105,7 @@ In diesem Beispiel besitzt die Pipeline zwei Aktivitäten: **Until** und **Wait*
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
 
-- [Aktivität „Falls-Bedingung“](control-flow-if-condition-activity.md)
+- [Aktivität „If Condition“](control-flow-if-condition-activity.md)
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)
 - [ForEach-Aktivität](control-flow-for-each-activity.md)
 - [Aktivität „Metadaten abrufen“](control-flow-get-metadata-activity.md)

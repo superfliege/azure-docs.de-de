@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: jdial
-ms.openlocfilehash: 802658b50d8e398451507ad11c76fedd0db697df
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 271d3fa858e9178bef37a7d7c859557b29af3c75
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Überprüfen der Konnektivität mit Azure Network Watcher mithilfe des Azure-Portals
 
@@ -37,37 +37,12 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressource
 
 * Virtuelle Computer, mit denen Sie die Konnektivität überprüfen
 
-ARMClient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden ARMClient auf der [chocolatey-Seite unter ARMClient](https://chocolatey.org/packages/ARMClient).
+ARMclient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden ARMClient auf der [chocolatey-Seite unter ARMClient](https://chocolatey.org/packages/ARMClient).
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen.
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
 
 > [!IMPORTANT]
 > Für die Konnektivitätsprüfung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
-
-## <a name="register-the-preview-capability"></a>Registrieren der Vorschaufunktion
-
-Die Konnektivitätsprüfung befindet sich derzeit in der öffentlichen Vorschauphase. Wenn Sie diese Funktion verwenden möchten, müssen Sie sie registrieren. Führen Sie zu diesem Zweck das folgende PowerShell-Beispiel aus:
-
-```powershell
-Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-Um zu überprüfen, ob die Registrierung erfolgreich war, führen Sie das folgende PowerShell-Beispiel aus:
-
-```powershell
-Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
-```
-
-Wenn das Feature ordnungsgemäß registriert wurde, sollte die Ausgabe der folgenden ähneln:
-
-```
-FeatureName                             ProviderName      RegistrationState
------------                             ------------      -----------------
-AllowNetworkWatcherConnectivityCheck    Microsoft.Network Registered
-```
 
 ## <a name="log-in-with-armclient"></a>Anmelden mit ARMClient
 
@@ -160,7 +135,7 @@ Date: Fri, 02 Jun 2017 20:21:16 GMT
 null
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
 Die folgende Antwort stammt aus dem vorherigen Beispiel.  In dieser Antwort ist der `ConnectionStatus` **Nicht erreichbar**. Wie Sie sehen, sind alle gesendeten Tests fehlgeschlagen. Bei der Konnektivität ist am virtuellen Gerät ein Fehler aufgetreten. Der Grund dafür ist eine benutzerdefinierte `NetworkSecurityRule` mit der Bezeichnung **UserRule_Port80**, deren Konfiguration eingehenden Datenverkehr über Port 80 blockiert. Diese Informationen können bei der Untersuchung von Konnektivitätsproblemen verwendet werden.
 
@@ -276,7 +251,7 @@ Date: Fri, 02 Jun 2017 20:26:05 GMT
 null
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
 Im folgenden Beispiel wird der `connectionStatus` als **Nicht erreichbar** angezeigt. In den `hops`-Details können Sie unter `issues` sehen, dass der Datenverkehr aufgrund einer `UserDefinedRoute` blockiert war.
 
@@ -372,7 +347,7 @@ Date: Fri, 02 Jun 2017 20:31:00 GMT
 null
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
 In der folgenden Antwort wird der `connectionStatus` als **Erreichbar** angezeigt. Wenn eine Verbindung erfolgreich ist, werden Latenzwerte bereitgestellt.
 
@@ -459,7 +434,7 @@ Date: Fri, 02 Jun 2017 20:05:03 GMT
 null
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 
 Im folgenden Beispiel sehen Sie die Antwort auf die Ausführung des vorherigen API-Aufrufs. Da die Überprüfung erfolgreich ist, wird die Eigenschaft `connectionStatus` als **Erreichbar** angezeigt.  Die Details in Bezug auf die Anzahl der Hops, die zum Erreichen des Speicherblobs und der Latenz benötigt werden, werden bereitgestellt.
 

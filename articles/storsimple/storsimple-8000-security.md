@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 12/06/2017
+ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a8990d68b327e5688c7078a6b1a9d41ad0600a67
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: c14927f82ca01320206ccec83216777b7d1b8708
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-Sicherheit und -Datenschutz
 
@@ -155,7 +155,7 @@ Der Verschlüsselungsschlüssel für Dienstdaten wird nur auf dem ersten Gerät 
 > [!IMPORTANT]
 > Es ist sehr wichtig, dass Sie eine Kopie des Verschlüsselungsschlüssels für Dienstdaten erstellen und diese an einem sicheren Ort aufbewahren. Die Kopie des Verschlüsselungsschlüssels für Dienstdaten muss so gespeichert werden, dass autorisierte Personen darauf zugreifen und er problemlos dem Geräteadministrator mitgeteilt werden kann.
 > 
-> Wenn der Verschlüsselungsschlüssel für Dienstdaten verloren geht, kann Ihnen ein Microsoft-Supportmitarbeiter helfen, ihn abzurufen, vorausgesetzt, mindestens ein Gerät ist online. Wir empfehlen, den Verschlüsselungsschlüssel für Dienstdaten zu ändern, nachdem dieser abgerufen wurde. Anweisungen hierzu finden Sie unter [Ändern des Verschlüsselungsschlüssels für Dienstdaten](storsimple-service-dashboard.md#change-the-service-data-encryption-key).
+> Wenn der Verschlüsselungsschlüssel für Dienstdaten verloren geht, kann Ihnen ein Microsoft-Supportmitarbeiter helfen, ihn abzurufen, vorausgesetzt, mindestens ein Gerät ist online. Wir empfehlen, den Verschlüsselungsschlüssel für Dienstdaten zu ändern, nachdem dieser abgerufen wurde.
 
 Führen Sie zum Ändern des Verschlüsselungsschlüssels für die Dienstdaten und des entsprechenden Datenverschlüsselungszertifikats die Schritte in [Ändern des Verschlüsselungsschlüssels für Dienstdaten für Ihren StorSimple Device Manager-Dienst](storsimple-8000-manage-service.md#change-the-service-data-encryption-key) aus. Die Änderung der Verschlüsselungsschlüssel erfordert, dass alle Geräte mit dem neuen Schlüssel aktualisiert werden. Daher wird empfohlen, den Schlüssel zu ändern, wenn alle Geräte online sind. Wenn Geräte offline sind, können ihre Schlüssel zu einem anderen Zeitpunkt geändert werden. Die Geräte mit abgelaufenen Schlüsseln können weiterhin Sicherungen ausführen, aber Daten erst nach der Aktualisierung des Schlüssels wiederherstellen.
 

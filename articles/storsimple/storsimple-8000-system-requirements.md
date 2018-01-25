@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 4458187999d0795be8637f6f5615e4900ddd94cc
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 1a9cdf31c5924d22d968cd99383417ba371cd1c3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software für StorSimple 8000-Serie, Hochverfügbarkeit und Netzwerkanforderungen
 
@@ -107,7 +107,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 | URL-Muster | Komponente/Funktionalität | Geräte-IPs |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login-us.microsoftonline.com`<br>`https://login.microsoftonline.us` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure-Servicebus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure-Servicebus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.backup.windowsazure.us` |Geräteregistrierung |Nur DATA 0 |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure-Speicherkonten und Überwachung |Cloudaktivierte Netzwerkschnittstellen |

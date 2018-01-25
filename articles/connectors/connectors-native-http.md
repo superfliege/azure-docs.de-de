@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: d422a07a27ffa62a673bd2d471ae4fc837251dee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3eae7a4a47680fc36849fd413b76a80865cf3c9f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-http-action"></a>Erste Schritte mit der HTTP-Aktion
 
 Mit der HTTP-Aktion können Sie Workflows für Ihre Organisation erweitern und mit einem beliebigen Endpunkt über HTTP kommunizieren.
 
-Sie können:
+Ihre Möglichkeiten:
 
 * Erstellen Sie Logik-App-Workflows, die aktiviert (durch einen Trigger ausgelöst) werden, wenn eine von Ihnen verwaltete Website ausfällt.
 * Kommunizieren Sie mit jedem beliebigen Endpunkt über HTTP, um Ihre Workflows auf andere Dienste auszuweiten.
 
-Wenn Sie die HTTP-Aktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/logic-apps-create-a-logic-app.md).
+Wenn Sie die HTTP-Aktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-http-trigger"></a>Verwenden des HTTP-Triggers
 Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](connectors-overview.md).
@@ -93,14 +93,14 @@ Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
 ## <a name="http-trigger"></a>HTTP-Trigger
 Hier finden Sie Details zu dem Trigger, den dieser Connector unterstützt. Der HTTP-Connector besitzt einen Trigger.
 
-| Trigger | Beschreibung |
+| Trigger | BESCHREIBUNG |
 | --- | --- |
 | http |Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück. |
 
 ## <a name="http-action"></a>HTTP-Aktion
 Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Der HTTP-Connector verfügt über eine mögliche Aktion.
 
-| Aktion | Beschreibung |
+| anzuzeigen. | BESCHREIBUNG |
 | --- | --- |
 | http |Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück. |
 
@@ -111,23 +111,23 @@ Die folgenden Tabellen beschreiben die erforderlichen und optionalen Eingabefeld
 Im Folgenden werden die Eingabefelder für die Aktion angegeben, die eine ausgehende HTTP-Anforderung ausführt.
 Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-| Anzeigename | Eigenschaftenname | Beschreibung |
+| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
 | Methode* |method |Zu verwendendes HTTP-Verb |
 | URI* |uri |Der URI für die HTTP-Anforderung |
-| Headers |Headers |Ein JSON-Objekt für die einzubeziehenden Header |
+| Headers |headers |Ein JSON-Objekt für die einzubeziehenden Header |
 | Body |Body |Der HTTP-Anforderungstext |
-| Authentifizierung |Authentifizierung |Details im Abschnitt [Authentifizierung](#authentication) |
+| Authentifizierung |authentication |Details im Abschnitt [Authentifizierung](#authentication) |
 
 <br>
 
 #### <a name="output-details"></a>Ausgabedetails
 Im Folgenden werden die Ausgabedetails für die HTTP-Antwort angegeben.
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| headers |Objekt |Antwortheader |
-| Body |Objekt |Antwortobjekt |
+| headers |object |Antwortheader |
+| Body |object |Antwortobjekt |
 | Statuscode |int |HTTP-Statuscode |
 
 ## <a name="authentication"></a>Authentifizierung
@@ -142,9 +142,9 @@ Das Logic Apps-Feature ermöglicht die Verwendung verschiedener Arten von Authen
 Das folgende Authentifizierungsobjekt ist für die Standardauthentifizierung erforderlich.
 Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| Typ* |Typ |Authentifizierungstyp (muss für die Standardauthentifizierung `Basic` sein) |
+| Typ* |type |Authentifizierungstyp (muss für die Standardauthentifizierung `Basic` sein) |
 | Benutzername* |username |Zu authentifizierender Benutzername |
 | Kennwort* |password |Das zu authentifizierende Kennwort |
 
@@ -152,7 +152,7 @@ Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 > Wenn Sie ein Kennwort verwenden möchten, das aus der Definition nicht abgerufen werden kann, verwenden Sie einen `securestring`-Parameter und die `@parameters()` 
 > [-Funktion für die Workflowdefinition](http://aka.ms/logicappdocs).
 
-Beispiel:
+Beispiel: 
 
 ```javascript
 {
@@ -166,9 +166,9 @@ Beispiel:
 
 Das folgende Authentifizierungsobjekt ist für die Clientzertifikatsauthentifizierung erforderlich. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| Typ* |Typ |Der Typ der Authentifizierung (Für SSL-Clientzertifikate muss der Wert auf `ClientCertificate` festgelegt werden.) |
+| Typ* |type |Der Typ der Authentifizierung (Für SSL-Clientzertifikate muss der Wert auf `ClientCertificate` festgelegt werden.) |
 | PFX* |pfx |Der Base64-codierte Inhalt der Personal Information Exchange-Datei (PFX) |
 | Kennwort* |password |Das Kennwort für den Zugriff auf die PFX-Datei |
 
@@ -176,7 +176,7 @@ Das folgende Authentifizierungsobjekt ist für die Clientzertifikatsauthentifizi
 > Wenn Sie einen Parameter nutzen möchten, der in der Definition nach dem Speichern der Logik-App nicht lesbar ist, können Sie einen `securestring`-Parameter und die `@parameters()` 
 > [-Funktion für die Workflowdefinition verwenden](http://aka.ms/logicappdocs).
 
-Beispiel:
+Beispiel: 
 
 ```javascript
 {
@@ -189,9 +189,9 @@ Beispiel:
 #### <a name="azure-ad-oauth-authentication"></a>Azure AD-OAuth-Authentifizierung
 Das folgende Authentifizierungsobjekt ist für die Azure AD-OAuth-Authentifizierung erforderlich. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-| Eigenschaftenname | Datentyp | Beschreibung |
+| Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| Typ* |Typ |Der Authentifizierungstyp (muss für Azure AD OAuth `ActiveDirectoryOAuth` sein) |
+| Typ* |type |Der Authentifizierungstyp (muss für Azure AD OAuth `ActiveDirectoryOAuth` sein) |
 | Mandant* |Mandant |Die Mandanten-ID für den Azure AD-Mandanten |
 | Zielgruppe* |audience |Die Ressource, für deren Verwendung Sie die Autorisierung anfordern. Beispiel: `https://management.core.windows.net/` |
 | Client-ID* |clientId |Die Client-ID für die Azure AD-Anwendung |
@@ -202,7 +202,7 @@ Das folgende Authentifizierungsobjekt ist für die Azure AD-OAuth-Authentifizier
 > 
 > 
 
-Beispiel:
+Beispiel: 
 
 ```javascript
 {
@@ -215,5 +215,5 @@ Beispiel:
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 

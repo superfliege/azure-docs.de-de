@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 5f4f7052d48b4ca4ed91212d970551141e78e852
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cde5b8ba8d770a07199816286b666e952394de1
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>Erste Schritte mit den Aktionen „Verzögern“ und „Verzögern bis“
 Die Aktionen „Verzögern“ und „Verzögern bis“ eignen sich zur Durchführung von Workflowszenarien.
 
-Dazu zählen z. B.:
+Sie haben beispielsweise folgende Möglichkeiten:
 
 * Versand einer E-Mail mit einem Statusupdate bis zum Erreichen eines Werktags verzögern.
 * Workflow verzögern, bis ein HTTP-Aufruf abgeschlossen werden konnte, und erst dann den Vorgang fortsetzen und das Ergebnis abrufen.
 
-Wenn Sie die Verzögerungsaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/logic-apps-create-a-logic-app.md).
+Wenn Sie die Verzögerungsaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-delay-actions"></a>Verwenden der Verzögerungsaktionen
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
@@ -52,7 +52,7 @@ Der Wiederholungstrigger verfügt über folgende konfigurierbare Eigenschaften:
 Diese Aktion verzögert die Ausführung für ein bestimmtes Zeitintervall.
 Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-| Anzeigename | Eigenschaftenname | Beschreibung |
+| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
 | Anzahl* |count |Die Anzahl von Zeiteinheiten für die Verzögerung. |
 | Einheit* |unit |Die Zeiteinheit: `Second`, `Minute`, `Hour` oder `Day` |
@@ -63,7 +63,7 @@ Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 Diese Aktion verzögert die Ausführung bis zum angegebenen Zeitpunkt (Datum/Uhrzeit).
 Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
-| Anzeigename | Eigenschaftenname | Beschreibung |
+| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
 | Jahr* |timestamp |Das Jahr, bis zu dem verzögert werden soll. (GMT) |
 | Monat* |timestamp |Der Monat, bis zu dem verzögert werden soll. (GMT) |
@@ -72,5 +72,5 @@ Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 <br>
 
 ## <a name="next-steps"></a>Nächste Schritte
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 

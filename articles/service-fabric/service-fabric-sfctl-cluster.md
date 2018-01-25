@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 2af214a9aa3c67818e8ce64f204ebda32c35abc7
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5eeff271fea67cd859dff598cae0010cf3b8e13f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Ermöglicht es, Service Fabric-Cluster auszuwählen, zu verwalten und zu betreiben.
 
 ## <a name="commands"></a>Befehle
 
-|Befehl|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 |    code-versions| Ruft eine Liste der Fabric-Codeversionen ab, die in einem Service Fabric-Cluster bereitgestellt werden.|
 |    config-versions | Ruft eine Liste der Fabric-Konfigurationsversionen ab, die in einem Service Fabric-Cluster bereitgestellt werden.|
@@ -52,7 +52,7 @@ Ruft die Integrität eines Service Fabric-Clusters ab. Verwenden Sie „EventsHe
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --applications-health-state-filter| Ermöglicht es, die Anwendungsintegritäts-Statusobjekte, die im Ergebnis einer Dienstintegritätsabfrage zurückgegeben werden, anhand des Integritätsstatus zu filtern. Mögliche Werte für diesen Parameter sind ganzzahlige Werte, die von Membern oder über bitweise Vorgänge an Membern der Enumeration „HealthStateFilter“ abgerufen werden können. Es werden nur Anwendung zurückgegeben, die dem Filter entsprechen.  Alle Anwendungen werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine flagbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen OR-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, werden Integritätsstatus der Anwendungen zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warning (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist 0 (null). – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statusauflistung zurückzugeben. Der Wert ist gleich „1“. – OK: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „OK“ hat. Der Wert ist 2. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist 4. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
 | --events-health-state-filter   | Ermöglicht das Filtern der Auflistung zurückgegebener HealthEvent-Objekte anhand des Integritätsstatus. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Ereignisse zurückgegeben, die dem Filter entsprechen. Alle Ereignisse werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine flagbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich 6, werden alle Ereignisse zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warning (4) hat. – Default: Standardwert. Stimmt mit einem beliebigen Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statusauflistung zurückzugeben. Der Wert ist gleich „1“. – OK: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „OK“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat.  Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist 8. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
@@ -63,7 +63,7 @@ Ruft die Integrität eines Service Fabric-Clusters ab. Verwenden Sie „EventsHe
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug                        | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                      | Zeigt diese Hilfemeldung an und beendet.|
@@ -78,13 +78,13 @@ Ruft das Service Fabric-Clustermanifest ab. Das Clustermanifest enthält Eigensc
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --timeout -t| Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug  | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h| Zeigt diese Hilfemeldung an und beendet.|
@@ -98,7 +98,7 @@ Stellt die Code- oder Konfigurationspakete eines Service Fabric-Clusters bereit.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |--cluster-manifest-file-path| Der Dateipfad des Clustermanifests.|
 |    --code-file-path            | Der Dateipfad des Clustercodepakets.|
@@ -106,7 +106,7 @@ Stellt die Code- oder Konfigurationspakete eines Service Fabric-Clusters bereit.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h  | Zeigt diese Hilfemeldung an und beendet.|
@@ -121,7 +121,7 @@ Wird eine Verbindung mit einem sicheren Cluster hergestellt, geben Sie eine Zert
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --endpoint [erforderlich]| Clusterendpunkt-URL einschließlich Port und HTTP- oder HTTPS-Präfix.|
 | --aad             | Die Authentifizierung erfolgt über Azure Active Directory.|
@@ -133,7 +133,7 @@ Wird eine Verbindung mit einem sicheren Cluster hergestellt, geben Sie eine Zert
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug           | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h         | Zeigt diese Hilfemeldung an und beendet.|
@@ -147,14 +147,14 @@ Aufheben der Bereitstellung der Code- oder Konfigurationspakete eines Service Fa
 Hebt die Bereitstellung der Code- oder Konfigurationspakete eines Service Fabric-Clusters auf.
 
 ### <a name="arguments"></a>Argumente
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |--code-version  | Die Version des Clustercodepakets.|
 |    --config-version| Die Version des Clustermanifests.|
 |    --timeout -t    | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |--debug         | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
  |   --help -h       | Zeigt diese Hilfemeldung an und beendet.|
@@ -168,7 +168,7 @@ Startet ein Upgraden der Code- oder Konfigurationsversion eines Service Fabric-C
 Überprüfung der bereitgestellten Upgradeparameter und Starten des Upgrades des Codes oder der Konfigurationsversion eines Service Fabric-Clusters, wenn die Parameter zulässig sind
 
 ### <a name="arguments"></a>Argumente
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |    --app-health-map                      | JSON-codiertes Wörterbuch von Paaren aus Anwendungsname und dem Höchstprozentsatz an Integritätseinbußen vor der Auslösung eines Fehlers|
  |   --app-type-health-map                 | JSON-codiertes Wörterbuch von Paaren aus Anwendungstyp und dem Höchstprozentsatz an Integritätseinbußen vor der Auslösung eines Fehlers|
@@ -192,7 +192,7 @@ Startet ein Upgraden der Code- oder Konfigurationsversion eines Service Fabric-C
  |   --warning-as-error                    | Warnungen werden mit demselben Schweregrad berücksichtigt wie Fehler.|
 
 ### <a name="global-arguments"></a>Globale Argumente
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 |--debug                               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 |    --help -h                             | Zeigt diese Hilfemeldung an und beendet.|
