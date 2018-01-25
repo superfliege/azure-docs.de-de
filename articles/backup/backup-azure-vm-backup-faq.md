@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 5ba381e366bea78e2d0ace3651c52b7c03e18275
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: f69cbbab19acbc4e71445012d262896275a7d768
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Fragen zum Azure VM Backup-Dienst
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten von Azure VM Backup vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -55,7 +55,7 @@ Ja. Sie können einen Sicherungsauftrag in der Phase „Momentaufnahme wird erst
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Ich habe für meine gesicherten, verwalteten Datenträger-VMs die Ressourcengruppensperre aktiviert. Funktionieren meine Sicherungen auch weiterhin?
 Wenn der Benutzer die Ressourcengruppe sperrt, kann der Backup-Dienst die älteren Wiederherstellungspunkte nicht löschen. Aus diesem Grund fangen neue Backups an fehlzuschlagen, da ein Grenzwert von maximal 18 Wiederherstellungspunkten gilt, der vom Back-End vorgegeben wird. Wenn Ihre Sicherungen nach der Ressourcengruppensperre mit einem internen Fehler fehlschlagen, befolgen Sie diese [Schritte zum Entfernen der Wiederherstellungspunktsammlung](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
 
-## <a name="restore"></a>Wiederherstellung
+## <a name="restore"></a>Restore 
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>Wann sollte ich Datenträger wiederherstellen und wann den gesamten virtuellen Computer?
 Bei der vollständigen Wiederherstellung eines virtuellen Azure-Computers handelt es sich gewissermaßen um eine Schnellerstellungsoption. Die VM-Wiederherstellungsoption ändert die Namen von Datenträgern, von Containern, die von diesen Datenträgern verwendet werden, öffentlichen IP-Adressen und Namen von Netzwerkschnittstellen. Die Änderung ist erforderlich, um die Eindeutigkeit von Ressourcen beizubehalten, die während der Erstellung eines virtuellen Computers erstellt werden. Sie fügt jedoch nicht den virtuellen Computer der Verfügbarkeitsgruppe hinzu. 
 
@@ -72,3 +72,13 @@ Ja, Sie können Sicherungen verwenden, die vor der Migration von nicht verwaltet
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Was passiert, wenn ich eine Sicherungsrichtlinie für VMs ändere?
 Wenn eine neue Richtlinie für VMs angewendet wird, werden der Zeitplan und die Aufbewahrung der neuen Richtlinie beachtet. Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren. Bei einer Verkürzung der Aufbewahrung werden sie zum Löschen im Rahmen der nächsten Bereinigung markiert und demgemäß gelöscht. 
+
+### <a name="how-can-i-move-a-vm-enrolled-in-azure-backup-between-resource-groups"></a>Wie kann ich eine VM, die in Azure Backup registriert ist, zwischen Ressourcengruppen verschieben?
+Führen Sie die folgenden Schritte aus, um die gesicherte VM erfolgreich in die Zielressourcengruppe zu verschieben: 
+1. Halten Sie die Sicherung vorübergehend an, und bewahren Sie Sicherungsdaten auf.
+2. Verschieben Sie die VM in die Zielressourcengruppe.
+3. Schützen Sie sie erneut mit demselben oder einem neuen Tresor.
+
+Benutzer können eine Wiederherstellung mithilfe der verfügbaren Wiederherstellungspunkte durchführen, die vor dem Verschiebevorgang erstellt wurden.
+
+

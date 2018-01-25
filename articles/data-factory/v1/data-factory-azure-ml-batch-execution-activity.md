@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3169584bc884107ccd34b01264683d8c73c0fecb
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 05ae7cdc78e909c9aaa2b690d03eff8da09b6242
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
 
@@ -185,7 +185,7 @@ Wir empfehlen Ihnen, das Tutorial zum [Erstellen der ersten Pipeline mit Data Fa
     }
     ```
 
-    Die CSV-Eingabedatei muss die Spaltenkopfzeile enthalten. Bei Verwendung der **Kopieraktivität** zum Erstellen/Verschieben der CSV-Datei in den Blobspeicher müssen Sie die Senkeneigenschaft **blobWriterAddHeader** auf **true** festlegen. Beispiel:
+    Die CSV-Eingabedatei muss die Spaltenkopfzeile enthalten. Bei Verwendung der **Kopieraktivität** zum Erstellen/Verschieben der CSV-Datei in den Blobspeicher müssen Sie die Senkeneigenschaft **blobWriterAddHeader** auf **true** festlegen. Beispiel: 
 
     ```JSON
     sink:
@@ -630,7 +630,7 @@ Sie können auch [Data Factory-Funktionen](data-factory-functions-variables.md) 
 >
 >
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Azure-Blogbeitrag: Erste Schritte mit Azure Data Factory und Azure Machine Learning](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md

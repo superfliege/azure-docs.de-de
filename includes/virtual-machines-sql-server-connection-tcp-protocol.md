@@ -8,10 +8,10 @@
 
     ![TCP aktivieren](./media/virtual-machines-sql-server-connection-tcp-protocol/enable-tcp.png)
 
-1. Klicken Sie im linken Bereich auf **SQL Server-Dienste**. Klicken Sie im Detailbereich mit der rechten Maustaste auf **SQL Server (*Instanzenname*)** (die Standardinstanz ist **SQL Server (MSSQLSERVER)**), und klicken Sie dann auf **Neu starten**, um die Instanz von SQL Server zu stoppen und neu zu starten.
+1. Klicken Sie im linken Bereich auf **SQL Server-Dienste**. Klicken Sie im Detailbereich mit der rechten Maustaste auf **SQL Server (*Instanzname*)** (die Standardinstanz ist **SQL Server (MSSQLSERVER)**), und klicken Sie dann auf **Neu starten**, um die Instanz von SQL Server zu beenden und neu zu starten.
 
-    ![Datenbankmodul neu starten](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
+    ![Datenbank-Engine neu starten](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
 
 1. Schließen Sie den SQL Server-Konfigurations-Manager.
 
-Weitere Informationen zur Aktivierung von Protokollen für SQL Server-Datenbankmodule finden Sie unter [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](http://msdn.microsoft.com/library/ms191294.aspx).
+Weitere Informationen zur Aktivierung von Protokollen für SQL Server-Datenbank-Engines finden Sie unter [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](http://msdn.microsoft.com/library/ms191294.aspx).

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: mingzhan
-ms.openlocfilehash: 65098dbad2cfb2de1f2e5156fbcc3d6477311867
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 72c814aece7626b19cefccb18e1b90f8c44d7f57
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>Herstellen einer Verbindung mit einem virtuellen Microsoft Azure Linux-Computer mithilfe von Remotedesktop
 > [!IMPORTANT] 
@@ -34,7 +34,7 @@ In dieser Anleitung erhalten Sie die Antwort! Sie finden Informationen zum Insta
 Das Tool Xrdp ist ein Open-Source-RDP-Server, der Ihnen das Herstellen einer Verbindung zwischen Ihrem Linux-Server und Remotedesktop auf einem Windows-Computer ermöglicht. RDP bietet eine viel bessere Leistung als VNC (Virtual Network Computing). VNC rendert mit Grafiken in JPEG-Qualität und kann langsam sein, während RDP schnell und gestochen scharf rendert.
 
 > [!NOTE]
-> Sie müssen bereits über einen virtuellen Microsoft Azure-Computer verfügen, auf dem Linux ausgeführt wird. Informationen zum Erstellen und Einrichten eines virtuellen Linux-Computers finden Sie im [Tutorial zu virtuellen Azure-Linux-Computern](createportal.md).
+> Sie müssen bereits über einen virtuellen Microsoft Azure-Computer verfügen, auf dem Linux ausgeführt wird. Informationen zum Erstellen und Einrichten eines virtuellen Linux-Computers finden Sie im [Tutorial zu virtuellen Azure-Linux-Computern](createportal-classic.md).
 > 
 > 
 

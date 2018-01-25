@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: ccc0755385d2f170939e5c19f32b168132b6839b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d9e7b1d020a99e939ea01c43c7e5e935188b212e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Im Azure-Portal haben Sie folgende Möglichkeiten:
 In diesem Abschnitt wird auch beschrieben, wie ein Slice eines Datasets von einem Status in einen anderen wechselt.   
 
 ### <a name="navigate-to-your-data-factory"></a>Navigieren zu Ihrer Data Factory
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im Menü auf der linken Seite auf **Data Factorys**. Wenn die Option nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und anschließend unter der Kategorie **INTELLIGENCE + ANALYSE** auf **Data Factorys**.
 
    ![Alle durchsuchen > Data Factorys](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -86,7 +86,7 @@ Die Datasetslices in der Data Factory können einen der folgenden Status haben:
 
 <table>
 <tr>
-    <th align="left">Zustand</th><th align="left">Unterzustand</th><th align="left">Beschreibung</th>
+    <th align="left">State (Zustand)</th><th align="left">Unterzustand</th><th align="left">BESCHREIBUNG</th>
 </tr>
 <tr>
     <td rowspan="8">Warten</td><td>ScheduleTime</td><td>Der Zeitpunkt für die Sliceausführung ist noch nicht erreicht.</td>
@@ -177,7 +177,7 @@ Sie können Pipelines mit dem PowerShell-Cmdlet **Suspend-AzureRmDataFactoryPipe
 ```powershell
 Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Beispiel:
+Beispiel: 
 
 ```powershell
 Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -188,7 +188,7 @@ Nach der Behebung des Problems in der Pipeline können Sie die angehaltene Pipel
 ```powershell
 Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Beispiel:
+Beispiel: 
 
 ```powershell
 Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -220,7 +220,7 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
     ```powershell   
     Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   Beispiel:
+   Beispiel: 
 
     ```powershell   
     Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
@@ -234,7 +234,7 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
-    Beispiel:
+    Beispiel: 
 
     ```powershell   
     Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
@@ -368,11 +368,11 @@ Die folgende Tabelle enthält eine Liste mit den verfügbaren Vorgängen und Sta
 
 | Vorgangsname | Status | Unterstatus |
 | --- | --- | --- |
-| RunStarted |Gestartet |Starting |
+| RunStarted |Gestartet |Wird gestartet |
 | RunFinished |Failed / Succeeded |FailedResourceAllocation<br/><br/>Succeeded<br/><br/>FailedExecution<br/><br/>TimedOut<br/><br/><Canceled<br/><br/>FailedValidation<br/><br/>Abandoned |
 | OnDemandClusterCreateStarted |Gestartet | |
-| OnDemandClusterCreateSuccessful |Erfolgreich | |
-| OnDemandClusterDeleted |Erfolgreich | |
+| OnDemandClusterCreateSuccessful |Succeeded | |
+| OnDemandClusterDeleted |Succeeded | |
 
 Unter [Create Alert Rule](https://msdn.microsoft.com/library/azure/dn510366.aspx) (Benachrichtigungsregel erstellen) finden Sie ausführliche Informationen zu den JSON-Elementen, die im Beispiel verwendet werden.
 

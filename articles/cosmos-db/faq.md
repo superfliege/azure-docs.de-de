@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 01/12/2018
 ms.author: mimig
-ms.openlocfilehash: 0bc0551259e47cdbd74d323d8d9877c74dd64c4b
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 0f7998ca4000a4ccfd77b173cb3dd9756b4777ae
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
@@ -28,7 +28,7 @@ Azure Cosmos DB ist ein global replizierter Datenbankdienst mit mehreren Modelle
 
 Azure Cosmos DB ist die geeignete Lösung für Web-, Mobil-, Gaming- und IoT-Anwendungen, wenn vorhersagbarer Durchsatz, Hochverfügbarkeit, niedrige Latenz und schemafreie Datenmodelle wichtige Anforderungen sind. Sie bietet Schemaflexibilität und umfassende Indizierung und verfügt über die Transaktionsunterstützung mehrerer Dokumente durch integriertes JavaScript. 
 
-Weitere Datenbankfragen, -antworten und -anweisungen zur Bereitstellung und Verwendung des Diensts finden Sie in der Dokumentation für Azure Cosmos DB (https://docs.microsoft.com/azure/cosmos-db/).
+Weitere Datenbankfragen, -antworten und -anweisungen zur Bereitstellung und Verwendung des Diensts finden Sie auf der Seite [Dokumentation für Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/).
 
 ### <a name="what-happened-to-the-documentdb-api"></a>Was ist mit der DocumentDB-API passiert?
 
@@ -52,7 +52,7 @@ Sie können jeden Azure Cosmos DB-Container mit bereitgestelltem Durchsatz reser
 
 Aufgrund der ARS-Konzeption (Atoms, Records and Sequences; Atoms, Datensätze und Sequenzen), auf der Azure Cosmos DB beruht, werden Schlüssel/Wert(Tabellen)-, einspaltige, Dokument- und Diagrammdaten nativ unterstützt. Atoms, Datensätze und Sequenzen können problemlos verschiedenen Datenmodellen zugeordnet und auf diese projiziert werden. Die APIs für eine Teilmenge von Modellen sind derzeit verfügbar (SQL-, MongoDB-, Tabellen- und Graph-API), während andere APIs speziell für zusätzliche Datenmodelle in Zukunft bereitgestellt werden.
 
-Azure Cosmos DB verfügt über ein schemaagnostisches Indizierungsmodul, das alle erfassten Daten automatisch ohne Schema oder sekundäre Indizes seitens des Entwicklers indizieren kann. Das Modul basiert auf einem Satz von logischen Indexlayouts (invertiert, einspaltig, Struktur), die die Speicheranordnung von den Index- und Abfrageverarbeitungssubsystemen entkoppeln. Cosmos DB bietet auch die Möglichkeit, eine Reihe von Wire Protocols und APIs in einer erweiterbaren Weise zu unterstützen und effizient im Kerndatenmodell (1) sowie in den logischen Indexlayouts (2) zu übersetzen. So bietet es eine einzigartige native Unterstützung für verschiedene Datenmodelle.
+Azure Cosmos DB verfügt über eine schemaagnostische Indizierungs-Engine, die alle erfassten Daten automatisch ohne Schema oder sekundäre Indizes seitens des Entwicklers indizieren kann. Die Engine basiert auf einem Satz von logischen Indexlayouts (invertiert, einspaltig, Struktur), die die Speicheranordnung von den Index- und Abfrageverarbeitungssubsystemen entkoppeln. Cosmos DB bietet auch die Möglichkeit, eine Reihe von Wire Protocols und APIs in einer erweiterbaren Weise zu unterstützen und effizient im Kerndatenmodell (1) sowie in den logischen Indexlayouts (2) zu übersetzen. So bietet es eine einzigartige native Unterstützung für verschiedene Datenmodelle.
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Ist Azure Cosmos DB HIPAA-kompatibel?
 Ja, Azure Cosmos DB ist HIPAA-kompatibel. HIPAA gibt Anforderungen für die Verwendung, Offenlegung und den Schutz von individuell identifizierbaren Gesundheitsinformationen vor. Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA).
@@ -74,7 +74,16 @@ Wenn Azure für Sie neu ist, können Sie sich für ein [kostenloses Azure-Konto]
 Sie können auch den [Azure Cosmos DB-Emulator](local-emulator.md) zum kostenlosen lokalen Entwickeln und Testen Ihrer Anwendung verwenden, ohne ein Azure-Abonnement zu erstellen. Wenn Sie mit der Funktion der Anwendung im Azure Cosmos DB-Emulator zufrieden sind, können Sie zur Verwendung eines Azure Cosmos DB-Kontos in der Cloud wechseln.
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Wie kann ich zusätzliche Hilfe zu Azure Cosmos DB erhalten?
-Wenn Sie Hilfe benötigen, können Sie sich über [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb) oder das [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB) an uns wenden. Oder vereinbaren Sie einen Termin für einen 1:1-Chat mit dem Entwicklungsteam von Azure Cosmos DB, indem Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) senden. 
+
+Eine technische Frage können Sie in einem dieser beiden Frage- und Antwort-Foren stellen:
+* [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow eignet sich am besten für Fragen zur Programmierung. Vergewissern Sie sich, dass Ihre Frage [themenbezogen](https://stackoverflow.com/help/on-topic) ist und [so viele Details wie möglich enthält, damit sie klar und beantwortbar ist](https://stackoverflow.com/help/how-to-ask). 
+
+Wenn Sie neue Funktionen wünschen, erstellen Sie auf [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) eine neue Anforderung.
+
+Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+Andere Fragen können dem Team unter [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) gestellt werden. Dies ist allerdings kein Alias für technischen Support. 
 
 <a id="try-cosmos-db"></a>
 ## <a name="try-azure-cosmos-db-subscriptions"></a>Testabonnements für Azure Cosmos DB
@@ -164,7 +173,7 @@ Ja. Der [Azure Cosmos DB-Emulator](local-emulator.md) stellt eine High-Fidelity-
 
 ## <a name="develop-against-the-api-for-mongodb"></a>Entwickeln mit der API für MongoDB
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Was ist die Azure Cosmos DB-API für MongoDB?
-Die Azure Cosmos DB-API für MongoDB ist eine Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte Apache MongoDB-APIs und -Treiber mit dem nativen Azure Cosmos DB-Datenbankmodul kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z.B. automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
+Die Azure Cosmos DB-API für MongoDB ist eine Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte Apache MongoDB-APIs und -Treiber mit der nativen Azure Cosmos DB-Datenbank-Engine kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z.B. automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
 
 ### <a name="how-do-i-connect-to-my-api-for-mongodb-database"></a>Wie stelle ich eine Verbindung mit meiner API für die MongoDB-Datenbank her?
 Die schnellste Möglichkeit zum Herstellen einer Verbindung mit der Azure Cosmos DB-API für MongoDB besteht darin, zum [Azure-Portal](https://portal.azure.com) zu wechseln. Navigieren Sie zu Ihrem Konto, und klicken Sie dann im Navigationsmenü auf der linken Seite auf **Schnellstart**. Der Schnellstart ist die beste Möglichkeit, um Codeausschnitte abzurufen, um eine Verbindung mit Ihrer Datenbank herzustellen. 
@@ -235,7 +244,7 @@ Sie können Ihr Feedback wie folgt mitteilen:
 
 * [UserVoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
 * [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
-* [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb)
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow eignet sich am besten für Fragen zur Programmierung. Vergewissern Sie sich, dass Ihre Frage [themenbezogen](https://stackoverflow.com/help/on-topic) ist und [so viele Details wie möglich enthält, damit sie klar und beantwortbar ist](https://stackoverflow.com/help/how-to-ask).
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Welche Verbindungszeichenfolge muss ich zum Herstellen einer Verbindung mit der Table-API verwenden?
 Die Verbindungszeichenfolge lautet:
@@ -393,7 +402,7 @@ Wenn die Anforderungsrate die Kapazität des bereitgestellten Durchsatzes für d
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Warum muss ich zusätzlich zu „PartitionKey“ und „RowKey“ einen Durchsatz festlegen, um das Table-API-Angebot von Azure Cosmos DB nutzen zu können?
 Azure Cosmos DB legt einen Standarddurchsatz für Ihren Container fest, wenn Sie in der Datei „app.config“ oder über das Portal keinen Durchsatz angeben. 
 
-Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn das Modul die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Durch das Festlegen von TableThroughput wird sichergestellt, dass Sie den garantierten Durchsatz und die Wartezeit auch erhalten, da diese Kapazität von der Plattform reserviert wird und somit der Erfolg des Vorgangs sichergestellt ist. 
+Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn die Engine die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Durch das Festlegen von TableThroughput wird sichergestellt, dass Sie den garantierten Durchsatz und die Wartezeit auch erhalten, da diese Kapazität von der Plattform reserviert wird und somit der Erfolg des Vorgangs sichergestellt ist. 
 
 Mithilfe der Durchsatzspezifikation können Sie dies flexibel ändern, um von der Saisonalität Ihrer Anwendung zu profitieren, die Durchsatzanforderungen zu erfüllen und Kosten zu sparen.
 
@@ -431,7 +440,7 @@ Arbeiten Sie den Schnellstartartikel [Azure Cosmos DB: Erstellen einer .NET-Anwe
 Die Apache Cassandra-API für Azure Cosmos DB unterstützt derzeit die CQL-Version 4. Wenn Sie Feedback zur Unterstützung anderer Protokolle haben, informieren Sie uns per [UserVoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db), oder senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). 
 
 ### <a name="why-is-choosing-a-throughput-for-a-table-a-requirement"></a>Warum muss ein Durchsatz für eine Tabelle ausgewählt werden?
-Azure Cosmos DB legt den Standarddurchsatz für Ihren Container abhängig davon fest, ob Sie die Tabelle über das Portal oder über CQL erstellt haben. Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn das Modul die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Durch Festlegen des Durchsatzes wird sichergestellt, dass Sie den garantierten Durchsatz und die garantierte Wartezeit erhalten. Hierzu wird die entsprechende Kapazität von der Plattform reserviert, um den Erfolg des Vorgangs zu gewährleisten. Sie können den Durchsatz flexibel anpassen, um von Schwankungen bei der Nutzung Ihrer Anwendung zu profitieren und Kosten zu sparen.
+Azure Cosmos DB legt den Standarddurchsatz für Ihren Container abhängig davon fest, ob Sie die Tabelle über das Portal oder über CQL erstellt haben. Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn die Engine die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Durch Festlegen des Durchsatzes wird sichergestellt, dass Sie den garantierten Durchsatz und die garantierte Wartezeit erhalten. Hierzu wird die entsprechende Kapazität von der Plattform reserviert, um den Erfolg des Vorgangs zu gewährleisten. Sie können den Durchsatz flexibel anpassen, um von Schwankungen bei der Nutzung Ihrer Anwendung zu profitieren und Kosten zu sparen.
 
 Das Durchsatzkonzept wird im Artikel [Anforderungseinheiten in Azure Cosmos DB](request-units.md) erläutert. Der Durchsatz für eine Tabelle wird gleichmäßig auf die zugrunde liegenden physischen Partitionen verteilt.  
 
@@ -453,7 +462,7 @@ simpleStatement.SetOutgoingPayload(outgoingPayload);
 ``` 
 
 ### <a name="what-happens-when-throughput-is-exceeded"></a>Was geschieht, wenn der Durchsatz überschritten wird? 
-Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn das Modul die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Möglich ist dies basierend auf der Einstellung für den Durchsatz, die sicherstellt, dass Sie den garantierten Durchsatz und die garantierte Wartezeit erhalten. Hierzu wird die entsprechende Kapazität von der Plattform reserviert, um den Erfolg des Vorgangs zu gewährleisten. Wenn diese Kapazität überschritten wird, erhalten Sie eine Fehlermeldung über die Überlastung. 0x1001 Überladen: Die Anforderung kann nicht verarbeitet werden – „Anforderungsrate ist groß“. An diesem Punkt ist es wichtig, zu überprüfen, welche Vorgänge mit welchem Umfang zu diesem Problem beigetragen haben. Informationen über die verbrauchte Kapazität oberhalb der bereitgestellten Kapazität erhalten Sie mithilfe der Metriken im Portal. Sie müssen dann sicherstellen, dass die Kapazität nahezu gleichmäßig für alle zugrunde liegenden Partitionen verbraucht wird. Wenn der größte Teil des Durchsatzes von einer Partition verbraucht wird, tritt bei der Workload eine Scherung auf. 
+Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn die Engine die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Möglich ist dies basierend auf der Einstellung für den Durchsatz, die sicherstellt, dass Sie den garantierten Durchsatz und die garantierte Wartezeit erhalten. Hierzu wird die entsprechende Kapazität von der Plattform reserviert, um den Erfolg des Vorgangs zu gewährleisten. Wenn diese Kapazität überschritten wird, erhalten Sie eine Fehlermeldung über die Überlastung. 0x1001 Überladen: Die Anforderung kann nicht verarbeitet werden – „Anforderungsrate ist groß“. An diesem Punkt ist es wichtig, zu überprüfen, welche Vorgänge mit welchem Umfang zu diesem Problem beigetragen haben. Informationen über die verbrauchte Kapazität oberhalb der bereitgestellten Kapazität erhalten Sie mithilfe der Metriken im Portal. Sie müssen dann sicherstellen, dass die Kapazität nahezu gleichmäßig für alle zugrunde liegenden Partitionen verbraucht wird. Wenn der größte Teil des Durchsatzes von einer Partition verbraucht wird, tritt bei der Workload eine Scherung auf. 
 
 Es stehen Metriken zur Verfügung, die Ihnen zeigen, wie der Durchsatz von einzelnen Partitionen oder in aggregierter Form über Stunden, Tage und je sieben Tage verwendet wird. Weitere Informationen finden Sie unter [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md).
 
