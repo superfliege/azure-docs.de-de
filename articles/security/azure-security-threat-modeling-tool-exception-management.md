@@ -1,6 +1,6 @@
 ---
 title: "Verwaltung von Ausnahmen – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren"
+description: "Gegenmaßnahmen für durch das Threat Modeling-Tool offengelegte Gefahren"
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: bbf357b902474a1812eb7a5a2c914d0c8b91934b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Sicherheitsrahmen: Verwaltung von Ausnahmen | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – serviceDebug-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicedebug)</li><li>[WCF – serviceMetadata-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicemetadata)</li></ul> |
 | **Web-API** | <ul><li>[Sicherstellen, dass eine ordnungsgemäße Ausnahmebehandlung in der ASP.NET-Web-API erfolgt](#exception)</li></ul> |
-| **Web Application** | <ul><li>[Keine Sicherheitsdetails in Fehlermeldungen verfügbar machen](#messages)</li><li>[Implementieren der Standardseite für die Fehlerbehandlung](#default)</li><li>[Festlegen der Bereitstellungsmethode auf „Retail“ in IIS](#deployment)</li><li>[Sicherer Ausfall bei Ausnahmen](#fail)</li></ul> |
+| **Webanwendung** | <ul><li>[Keine Sicherheitsdetails in Fehlermeldungen verfügbar machen](#messages)</li><li>[Implementieren der Standardseite für die Fehlerbehandlung](#default)</li><li>[Festlegen der Bereitstellungsmethode auf „Retail“ in IIS](#deployment)</li><li>[Sicherer Ausfall bei Ausnahmen](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF – serviceDebug-Knoten nicht in die Konfigurationsdatei aufnehmen
 
@@ -75,7 +75,7 @@ Deaktivieren Sie die Debuginformationen im Dienst. Dazu können Sie das `<servic
 
 ### <a name="example"></a>Beispiel
 Zum Steuern des Statuscodes, der von der API zurückgegeben wird, kann `HttpResponseException` verwendet werden, wie unten dargestellt: 
-```C#
+```csharp
 public Product GetProduct(int id)
 {
     Product item = repository.Get(id);
@@ -89,7 +89,7 @@ public Product GetProduct(int id)
 
 ### <a name="example"></a>Beispiel
 Für eine weitere Steuerung der Antwort auf die Ausnahme kann die `HttpResponseMessage`-Klasse verwendet werden, wie unten dargestellt: 
-```C#
+```csharp
 public Product GetProduct(int id)
 {
     Product item = repository.Get(id);
@@ -109,7 +109,7 @@ Um nicht behandelte Ausnahmen abzufangen, die nicht vom Typ `HttpResponseExcepti
 
 ### <a name="example"></a>Beispiel
 Hier ist ein Filter, der `NotImplementedException`-Ausnahmen in den HTTP-Statuscode `501, Not Implemented` konvertiert: 
-```C#
+```csharp
 namespace ProductStore.Filters
 {
     using System;
@@ -137,7 +137,7 @@ Es gibt mehrere Möglichkeiten zum Registrieren eines Web-API-Ausnahmefilters:
 
 ### <a name="example"></a>Beispiel
 Um den Filter auf eine bestimmte Aktion anzuwenden, fügen Sie den Filter der Aktion als Attribut hinzu: 
-```C#
+```csharp
 public class ProductsController : ApiController
 {
     [NotImplExceptionFilter]
@@ -150,7 +150,7 @@ public class ProductsController : ApiController
 ### <a name="example"></a>Beispiel
 Um den Filter auf alle Aktionen von `controller` anzuwenden, fügen Sie den Filter als Attribut der `controller`-Klasse hinzu: 
 
-```C#
+```csharp
 [NotImplExceptionFilter]
 public class ProductsController : ApiController
 {
@@ -160,14 +160,14 @@ public class ProductsController : ApiController
 
 ### <a name="example"></a>Beispiel
 Um den Filter global auf alle Web-API-Controller anzuwenden, fügen Sie eine Instanz des Filters der `GlobalConfiguration.Configuration.Filters`-Sammlung hinzu. Ausnahmefilter in dieser Sammlung gelten für alle Web-API-Controlleraktionen. 
-```C#
+```csharp
 GlobalConfiguration.Configuration.Filters.Add(
     new ProductStore.NotImplExceptionFilterAttribute());
 ```
 
 ### <a name="example"></a>Beispiel
 Für die Modellüberprüfung kann der Modellzustand an die CreateErrorResponse-Methode übergeben werden, wie unten dargestellt: 
-```C#
+```csharp
 public HttpResponseMessage PostProduct(Product item)
 {
     if (!ModelState.IsValid)
@@ -225,7 +225,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **Schritte** | Anwendungen sollten sicher ausfallen. Jede Methode, die einen booleschen Wert zurückgibt, der auf der getroffen Entscheidung basiert, sollte über einen sorgfältig erstellten Ausnahmeblock verfügen. Es gibt viele logische Fehler, die zu Sicherheitsproblemen führen können, wenn der Ausnahmeblock nicht sorgfältig geschrieben ist.|
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
         public static bool ValidateDomain(string pathToValidate, Uri currentUrl)
         {
             try

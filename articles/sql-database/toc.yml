@@ -60,8 +60,9 @@
 - name: Konzepte
   items:
     - name: Features des Diensts
-      href: sql-database-servers-databases.md
       items:
+        - name: Server und Datenbanken
+          href: sql-database-servers-databases.md
         - name: Dienstebenen
           href: sql-database-service-tiers.md
         - name: Ressourceneinschränkungen
@@ -105,8 +106,9 @@
         - name: Allgemeine SQL Server-Features
           href: sql-database-features.md
     - name: Sicherheit
-      href: sql-database-security-overview.md
       items:
+        - name: Übersicht
+          href: sql-database-security-overview.md
         - name: Zugriffssteuerung
           href: sql-database-control-access.md
         - name: Azure AD
@@ -122,8 +124,9 @@
     - name: Hochverfügbarkeit
       href: sql-database-high-availability.md
     - name: Geschäftskontinuität
-      href: sql-database-business-continuity.md
       items:
+        - name: Übersicht
+          href: sql-database-business-continuity.md
         - name: Datenbankwiederherstellung
           href: sql-database-recovery-using-backups.md
         - name: Konfigurieren der Sicherheit
@@ -139,8 +142,9 @@
         - name: Durchführen des Notfallwiederherstellungsverfahrens
           href: sql-database-disaster-recovery-drills.md
     - name: Migrieren zu SQL-Datenbank
-      href: sql-database-cloud-migrate.md
       items:
+        - name: Übersicht
+          href: sql-database-cloud-migrate.md
         - name: T-SQL-Änderungen
           href: sql-database-transact-sql-information.md
         - name: Verwalten von Datenbanken nach der Migration
@@ -156,8 +160,9 @@
         - name: Synchronisieren von Daten
           href: sql-database-sync-data.md
     - name: Überwachen & optimieren
-      href: sql-database-troubleshoot-performance.md
       items:
+        - name: Übersicht
+          href: sql-database-troubleshoot-performance.md
         - name: Leistungsüberwachung
           href: sql-database-single-database-monitor.md
         - name: Empfehlungen zur Leistung
@@ -177,8 +182,9 @@
         - name: Überwachen von In-Memory
           href: sql-database-in-memory-oltp-monitoring.md
     - name: Horizontales Skalieren
-      href: sql-database-elastic-scale-introduction.md
       items:
+        - name: Übersicht
+          href: sql-database-elastic-scale-introduction.md
         - name: Shardzuordnungen
           href: sql-database-elastic-scale-shard-map-management.md
         - name: Abfragerouting
@@ -205,6 +211,8 @@
           href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
     - name: Entwickeln von Datenbanken
       items:
+        - name: Übersicht
+          href: sql-database-develop-overview.md
         - name: JSON-Daten
           href: sql-database-json-features.md
         - name: In-Memory
@@ -216,7 +224,6 @@
         - name: Konfigurieren von In-Memory
           href: sql-database-in-memory-oltp-migration.md
     - name: Entwickeln von Apps
-      href: sql-database-develop-overview.md
       items:
         - name: Konnektivität
           href: sql-database-libraries.md

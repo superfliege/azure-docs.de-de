@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 56471d8ef68eacacb3ecebad5056d7e7a9f3ca40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24bd0e8eff616920dba0eb5353f983444e3161cd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-session-management--articles"></a>Sicherheitsrahmen: Sitzungsverwaltung | Artikel 
 | Produkt/Dienst | Artikel |
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 | **Azure DocumentDB** | <ul><li>[Verwenden von minimalen Tokengültigkeitsdauern für generierte Ressourcentoken](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[Implementieren der richtigen Abmeldung mit WsFederation-Methoden bei Verwendung von ADFS](#wsfederation-logout)</li></ul> |
 | **Identity Server** | <ul><li>[Implementieren der richtigen Abmeldung bei Verwendung von Identity Server](#proper-logout)</li></ul> |
-| **Web Application** | <ul><li>[Für Anwendungen, die per HTTPS verfügbar sind, müssen sichere Cookies verwendet werden](#https-secure-cookies)</li><li>[Für alle HTTP-basierten Anwendungen sollte HTTP nur für die Cookiedefinition angegeben werden](#cookie-definition)</li><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Webseiten](#csrf-asp)</li><li>[Einrichten der Sitzung für die Inaktivitätsgültigkeitsdauer](#inactivity-lifetime)</li><li>[Implementieren der richtigen Abmeldung von der Anwendung](#proper-app-logout)</li></ul> |
+| **Webanwendung** | <ul><li>[Für Anwendungen, die per HTTPS verfügbar sind, müssen sichere Cookies verwendet werden](#https-secure-cookies)</li><li>[Für alle HTTP-basierten Anwendungen sollte HTTP nur für die Cookiedefinition angegeben werden](#cookie-definition)</li><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Webseiten](#csrf-asp)</li><li>[Einrichten der Sitzung für die Inaktivitätsgültigkeitsdauer](#inactivity-lifetime)</li><li>[Implementieren der richtigen Abmeldung von der Anwendung](#proper-app-logout)</li></ul> |
 | **Web-API** | <ul><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Web-APIs](#csrf-api)</li></ul> |
 
 ## <a id="logout-adal"></a>Implementieren der richtigen Abmeldung mit ADAL-Methoden bei Verwendung von Azure AD
@@ -43,13 +43,13 @@ ms.lasthandoff: 10/11/2017
 | **Schritte** | Wenn für die Anwendung von Azure AD ausgestellte Zugriffstoken benötigt werden, sollte der Abmeldeereignishandler Folgendes aufrufen: |
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
 HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationDefaults.AuthenticationType, CookieAuthenticationDefaults.AuthenticationType)
 ```
 
 ### <a name="example"></a>Beispiel
 Außerdem sollte die Sitzung des Benutzers durch den Aufruf der Session.Abandon()-Methode zerstört werden. Die folgende Methode veranschaulicht die sichere Implementierung der Benutzerabmeldung:
-```C#
+```csharp
     [HttpPost]
         [ValidateAntiForgeryToken]
         public void LogOff()
@@ -100,7 +100,7 @@ Außerdem sollte die Sitzung des Benutzers durch den Aufruf der Session.Abandon(
 | **Schritte** | Wenn für die Anwendung von ADFS ausgestellte STS-Token benötigt werden, sollte der Abmeldeereignishandler die WSFederationAuthenticationModule.FederatedSignOut()-Methode aufrufen, um den Benutzer abzumelden. Außerdem sollte die aktuelle Sitzung zerstört werden, und der Sitzungstokenwert sollte zurückgesetzt und aufgehoben werden.|
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
         [HttpPost, ValidateAntiForgeryToken]
         [Authorization]
         public ActionResult SignOut(string redirectUrl)
@@ -160,7 +160,7 @@ Außerdem sollte die Sitzung des Benutzers durch den Aufruf der Session.Abandon(
 | **Schritte** | Auf Cookies kann normalerweise nur über die Domäne zugegriffen werden, für die sie zugeordnet wurden. Die Definition von „Domäne“ enthält leider nicht das Protokoll, sodass auf Cookies, die per HTTPS erstellt werden, über HTTP zugegriffen werden kann. Mit dem Attribut „secure“ wird für den Browser angegeben, dass das Cookie nur per HTTPS verfügbar gemacht werden sollte. Stellen Sie sicher, dass für alle Cookies, die per HTTPS festgelegt werden, das Attribut **secure** verwendet wird. Die Anforderung kann in der Datei „web.config“ erzwungen werden, indem das Attribut „requireSSL“ auf „TRUE“ festgelegt wird. Dies ist der bevorzugte Ansatz, da hiermit das Attribut **secure** für alle aktuellen und zukünftigen Cookies erzwungen wird, ohne dass zusätzliche Codeänderungen vorgenommen werden müssen.|
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
 <configuration>
   <system.web>
     <httpCookies requireSSL="true"/>
@@ -179,7 +179,7 @@ Diese Einstellung wird auch erzwungen, wenn für den Zugriff auf die Anwendung H
 | **Schritte** | Wenn die Webanwendung die vertrauende Seite ist und der IdP der ADFS-Server ist, kann das Attribut „secure“ des FedAuth-Tokens konfiguriert werden, indem „requireSSL“ im Abschnitt `system.identityModel.services` der Datei „web.config“ auf „True“ festgelegt wird:|
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
   <system.identityModel.services>
     <federationConfiguration>
       <!-- Set requireSsl=true; domain=application domain name used by FedAuth cookies (Ex: .gdinfra.com); -->
@@ -273,7 +273,7 @@ Hier ist die richtige Konfiguration dargestellt:
 | **Schritte** | Anti-CSRF und ASP.NET-MVC-Formulare: Verwenden Sie die `AntiForgeryToken`-Hilfsmethode für Ansichten. Fügen Sie `Html.AntiForgeryToken()` in das Formular ein, z.B.:|
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
 @using (Html.BeginForm("UserProfile", "SubmitUpdate")) { 
     @Html.ValidationSummary(true) 
     @Html.AntiForgeryToken()
@@ -281,7 +281,7 @@ Hier ist die richtige Konfiguration dargestellt:
 ```
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
 <form action="/UserProfile/SubmitUpdate" method="post">
     <input name="__RequestVerificationToken" type="hidden" value="saTFWpkKN0BYazFtN6c4YbZAmsEwG0srqlUqqloi/fVgeV2ciIFVmelvzwRZpArs" />
     <!-- rest of form goes here -->
@@ -289,7 +289,7 @@ Hier ist die richtige Konfiguration dargestellt:
 ```
 
 ### <a name="example"></a>Beispiel
-Gleichzeitig erhält der Besucher mit Html.AntiForgeryToken() ein Cookie mit dem Namen „__RequestVerificationToken“. Der Wert entspricht dem oben dargestellten zufälligen ausgeblendeten Wert. Fügen Sie zum Überprüfen einer eingehenden Formularbereitstellung der Zielaktionsmethode als Nächstes den Filter [ValidateAntiForgeryToken] hinzu. Beispiel:
+Gleichzeitig erhält der Besucher mit Html.AntiForgeryToken() ein Cookie mit dem Namen „__RequestVerificationToken“. Der Wert entspricht dem oben dargestellten zufälligen ausgeblendeten Wert. Fügen Sie zum Überprüfen einer eingehenden Formularbereitstellung der Zielaktionsmethode als Nächstes den Filter [ValidateAntiForgeryToken] hinzu. Beispiel: 
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()
@@ -304,7 +304,7 @@ Autorisierungsfilter, mit dem Folgendes überprüft wird:
 
 ### <a name="example"></a>Beispiel
 Anti-CSRF und AJAX: Das Formulartoken kann für AJAX-Anforderungen ein Problem darstellen, da eine AJAX-Anforderung unter Umständen JSON-Daten und keine HTML-Formulardaten sendet. Eine Lösung besteht darin, die Token in einem benutzerdefinierten HTTP-Header zu senden. Im folgenden Code wird Razor-Syntax zum Generieren der Token verwendet, und anschließend werden die Token einer AJAX-Anforderung hinzugefügt. 
-```C#
+```csharp
 <script>
     @functions{
         public string TokenHeaderValue()
@@ -329,7 +329,7 @@ Anti-CSRF und AJAX: Das Formulartoken kann für AJAX-Anforderungen ein Problem d
 
 ### <a name="example"></a>Beispiel
 Extrahieren Sie die Token beim Verarbeiten der Anforderung aus dem Anforderungsheader. Rufen Sie anschließend die AntiForgery.Validate-Methode auf, um die Token zu überprüfen. Die Validate-Methode löst eine Ausnahme aus, wenn die Token nicht gültig sind.
-```C#
+```csharp
 void ValidateRequestHeader(HttpRequestMessage request)
 {
     string cookieToken = "";
@@ -360,7 +360,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 ### <a name="example"></a>Beispiel
 Hier ist der Code angegeben, der auf allen Seiten vorhanden sein muss:
-```C#
+```csharp
 void Page_Init (object sender, EventArgs e) {
    ViewStateUserKey = Session.SessionID;
    :
@@ -428,7 +428,7 @@ void Page_Init (object sender, EventArgs e) {
 
 ### <a name="example"></a>Beispiel
 Die Gültigkeitsdauer für das von ADFS ausgestellte SAML-Anspruchstoken sollte ebenfalls auf 15 Minuten festgelegt werden, indem der folgende PowerShell-Befehl auf dem ADFS-Server ausgeführt wird:
-```C#
+```csharp
 Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProviderName @(“Active Directory”) -TokenLifetime 15 -AlwaysRequireAuthentication $true
 ```
 
@@ -488,7 +488,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 ### <a name="example"></a>Beispiel
 Extrahieren Sie die Token beim Verarbeiten der Anforderung aus dem Anforderungsheader. Rufen Sie anschließend die AntiForgery.Validate-Methode auf, um die Token zu überprüfen. Die Validate-Methode löst eine Ausnahme aus, wenn die Token nicht gültig sind.
-```C#
+```csharp
 void ValidateRequestHeader(HttpRequestMessage request)
 {
     string cookieToken = "";
@@ -510,7 +510,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 ### <a name="example"></a>Beispiel
 Anti-CSRF- und ASP.NET MVC-Formulare: Verwenden Sie die AntiForgeryToken-Hilfsmethode für Ansichten. Fügen Sie „Html.AntiForgeryToken()“ in das Formular ein, z.B.:
-```C#
+```csharp
 @using (Html.BeginForm("UserProfile", "SubmitUpdate")) { 
     @Html.ValidationSummary(true) 
     @Html.AntiForgeryToken()
@@ -520,7 +520,7 @@ Anti-CSRF- und ASP.NET MVC-Formulare: Verwenden Sie die AntiForgeryToken-Hilfsme
 
 ### <a name="example"></a>Beispiel
 Im obigen Beispiel wird etwa Folgendes ausgegeben:
-```C#
+```csharp
 <form action="/UserProfile/SubmitUpdate" method="post">
     <input name="__RequestVerificationToken" type="hidden" value="saTFWpkKN0BYazFtN6c4YbZAmsEwG0srqlUqqloi/fVgeV2ciIFVmelvzwRZpArs" />
     <!-- rest of form goes here -->
@@ -528,7 +528,7 @@ Im obigen Beispiel wird etwa Folgendes ausgegeben:
 ```
 
 ### <a name="example"></a>Beispiel
-Gleichzeitig erhält der Besucher mit Html.AntiForgeryToken() ein Cookie mit dem Namen „__RequestVerificationToken“. Der Wert entspricht dem oben dargestellten zufälligen ausgeblendeten Wert. Fügen Sie zum Überprüfen einer eingehenden Formularbereitstellung der Zielaktionsmethode als Nächstes den Filter [ValidateAntiForgeryToken] hinzu. Beispiel:
+Gleichzeitig erhält der Besucher mit Html.AntiForgeryToken() ein Cookie mit dem Namen „__RequestVerificationToken“. Der Wert entspricht dem oben dargestellten zufälligen ausgeblendeten Wert. Fügen Sie zum Überprüfen einer eingehenden Formularbereitstellung der Zielaktionsmethode als Nächstes den Filter [ValidateAntiForgeryToken] hinzu. Beispiel: 
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()

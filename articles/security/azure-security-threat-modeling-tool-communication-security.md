@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 68bf128824a40afb25b3e088965f38a4cb4d1332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 71bbe53595f2afab50d6220f335d615ada957a85
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -27,9 +27,9 @@ ms.lasthandoff: 10/11/2017
 | **Dynamics CRM** | <ul><li>[Überprüfen Sie die Dienstkontoberechtigungen, und vergewissern Sie sich, dass die benutzerdefinierten Dienste oder ASP.NET-Seiten die CRM-Sicherheit respektieren.](#priv-aspnet)</li></ul> |
 | **Azure Data Factory** | <ul><li>[Verwenden Sie das Datenverwaltungsgateway, um eine Verbindung zwischen einer lokalen SQL Server-Instanz und Azure Data Factory herzustellen.](#sqlserver-factory)</li></ul> |
 | **Identity Server** | <ul><li>[Stellen Sie sicher, dass der gesamte an Identity Server gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#identity-https)</li></ul> |
-| **Web Application** | <ul><li>[Überprüfen Sie die X.509 Zertifikate, die zum Authentifizieren von SSL-, TLS- und DTLS-Verbindungen verwendet werden.](#x509-ssltls)</li><li>[Konfigurieren Sie ein SSL-Zertifikat für eine benutzerdefinierte Domäne in Azure App Service.](#ssl-appservice)</li><li>[Erzwingen Sie, dass der gesamte an Azure App Service gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#appservice-https)</li><li>[Aktivieren Sie HSTS (HTTP Strict Transport Security).](#http-hsts)</li></ul> |
+| **Webanwendung** | <ul><li>[Überprüfen Sie die X.509 Zertifikate, die zum Authentifizieren von SSL-, TLS- und DTLS-Verbindungen verwendet werden.](#x509-ssltls)</li><li>[Konfigurieren Sie ein SSL-Zertifikat für eine benutzerdefinierte Domäne in Azure App Service.](#ssl-appservice)</li><li>[Erzwingen Sie, dass der gesamte an Azure App Service gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#appservice-https)</li><li>[Aktivieren Sie HSTS (HTTP Strict Transport Security).](#http-hsts)</li></ul> |
 | **Datenbank** | <ul><li>[Verwenden Sie SQL Server-Verbindungsverschlüsselung und Zertifikatüberprüfung.](#sqlserver-validation)</li><li>[Erzwingen Sie die Verschlüsselung der Kommunikation mit SQL Server.](#encrypted-sqlserver)</li></ul> |
-| **Azure Storage (in englischer Sprache)** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.](#comm-storage)</li><li>[Überprüfen Sie nach dem Herunterladen eines Blobs den MD5-Hash, falls HTTPS nicht aktiviert werden kann.](#md5-https)</li><li>[Verwenden Sie einen SMB 3.0-kompatiblen Client, um die Verschlüsselung von Daten während der Übertragung an Azure-Dateifreigaben zu gewährleisten.](#smb-shares)</li></ul> |
+| **Azure Storage** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.](#comm-storage)</li><li>[Überprüfen Sie nach dem Herunterladen eines Blobs den MD5-Hash, falls HTTPS nicht aktiviert werden kann.](#md5-https)</li><li>[Verwenden Sie einen SMB 3.0-kompatiblen Client, um die Verschlüsselung von Daten während der Übertragung an Azure-Dateifreigaben zu gewährleisten.](#smb-shares)</li></ul> |
 | **Mobiler Client** | <ul><li>[Implementieren Sie das Anheften von Zertifikaten.](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[Aktivieren Sie den sicheren HTTPS-Transportkanal.](#https-transport)</li><li>[WCF: Legen Sie die Schutzebene für die Nachrichtensicherheit auf „EncryptAndSign“ fest.](#message-protection)</li><li>[WCF: Führen Sie den WCF-Dienst mit einem Konto mit möglichst wenigen Berechtigungen aus.](#least-account-wcf)</li></ul> |
 | **Web-API** | <ul><li>[Erzwingen Sie, dass der gesamte an Web-APIs gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#webapi-https)</li></ul> |
@@ -166,7 +166,8 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Lokal |
 | **Attribute**              | SQL-Version: MsSQL2016, SQL-Version: MsSQL2012, SQL-Version: MsSQL2014 |
-| **Referenzen**              | [Aktivieren von verschlüsselten Verbindungen zum Datenbankmodul (SQL Server-Konfigurations-Manager)](https://msdn.microsoft.com/library/ms191192)  |
+| **Referenzen**              | 
+            [Aktivieren von verschlüsselten Verbindungen mit der Datenbank-Engine (SQL Server-Konfigurations-Manager)](https://msdn.microsoft.com/library/ms191192)  |
 | **Schritte** | Die Aktivierung der SSL-Verschlüsselung erhöht die Sicherheit von Daten, die über Netzwerke zwischen Instanzen von SQL Server und Anwendungen übertragen werden. |
 
 ## <a id="comm-storage"></a>Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.
@@ -214,7 +215,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Schritte** | <p>Das Anheften von Zertifikaten dient zur Abwehr von MITM-Angriffen (Man-in-the-Middle). Beim Anheften wird ein Host mit dem erwarteten X.509-Zertifikat oder öffentlichen Schlüssel verknüpft. Sobald ein Zertifikat oder öffentlicher Schlüssel für einen Host bekannt ist oder angezeigt wird, wird das Zertifikat oder der öffentliche Schlüssel mit dem Host verknüpft (angeheftet). </p><p>Startet ein Angreifer nun einen SSL-MITM-Angriff, unterscheidet sich der Schlüssel des für den Angriff verwendeten Servers beim SSL-Handshake vom Schlüssel des angehefteten Zertifikats, woraufhin die Anforderung verworfen und der MITM-Angriff abgewehrt wird. Das Anheften von Zertifikaten kann durch Implementieren des ServicePointManager-Delegaten `ServerCertificateValidationCallback` erreicht werden.</p>|
 
 ### <a name="example"></a>Beispiel
-```C#
+```csharp
 using System;
 using System.Net;
 using System.Net.Security;
@@ -343,7 +344,7 @@ string GetData(int value);
 
 ### <a name="example"></a>Beispiel 
 Der folgende Code zeigt einen Web-API-Authentifizierungsfilter mit Überprüfung auf SSL: 
-```C#
+```csharp
 public class RequireHttpsAttribute : AuthorizationFilterAttribute
 {
     public override void OnAuthorization(HttpActionContext actionContext)
@@ -363,7 +364,7 @@ public class RequireHttpsAttribute : AuthorizationFilterAttribute
 }
 ```
 Fügen Sie diesen Filter allen Web-API-Aktionen hinzu, die SSL erfordern: 
-```C#
+```csharp
 public class ValuesController : ApiController
 {
     [RequireHttps]
