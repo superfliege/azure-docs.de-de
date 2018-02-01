@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: eb9a33228611c7f525fa1d28ac31af327d9dd873
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61da6ce2e00a6b62d13d5e3be3c6bcdb83459ae0
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="azure-germany-images"></a>Azure Deutschland-Images
 ## <a name="overview"></a>Übersicht
@@ -242,9 +242,9 @@ Informationen zu Abweichungen, die bei der Programmierung von Endpunkten für Az
 
 Weitere Informationen zur Bereitstellung aus dem Marketplace oder zum Erstellen einer eigenen VHD finden Sie in folgenden Ressourcen:  
 
-* [Erstellen einer Windows-VM im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Erstellen einer Windows-VM im Azure-Portal](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Häufig gestellte Fragen zu virtuellen Windows-Computern](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Erfassen eines klassischen virtuellen Linux-Computers als Image](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Erstellen eines benutzerdefinierten Linux-VM-Images](../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 

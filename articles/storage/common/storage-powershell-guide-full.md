@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: d3f70880e58a21a1ae61577b04e3155c5fec6552
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: f94febfa1610795cd46b4315bbbbe56aa2bca861
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Verwenden von Azure PowerShell mit Azure Storage
 
@@ -28,7 +28,7 @@ Diese Anleitung behandelt allgemeine Vorgänge, über die Speicherkonten mithilf
 > [!div class="checklist"]
 > * Auflisten von Speicherkonten
 > * Abrufen eines Verweises auf ein vorhandenes Speicherkonto
-> * Erstellen Sie ein Speicherkonto. 
+> * Speicherkonto erstellen 
 > * Festlegen der Eigenschaften von Speicherkonten
 > * Abrufen und erneutes Generieren der Kontenschlüssel
 > * Schützen des Zugriffs auf Ihr Speicherkonto 
@@ -78,7 +78,7 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 
 Jetzt verfügen Sie über „$storageAccount“, das auf ein vorhandenes Speicherkonto verweist.
 
-### <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto. 
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen 
 
 Das folgende Skript veranschaulicht die Erstellung eines allgemeinen Speicherkontos mithilfe von [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Nachdem Sie das Konto erstellt haben, rufen Sie dessen Kontext ab, der in nachfolgenden Befehlen verwendet werden kann, anstatt die Authentifizierung bei jedem Aufruf anzugeben.
 
@@ -133,7 +133,7 @@ Verwenden Sie [Set-AzureRmStorageAccount](/powershell/module/azurerm.resources/S
 
 * Die **Tags**, die dem Speicherkonto zugeordnet sind. Tags werden häufig zu Abrechnungszwecken zum Kategorisieren von Ressourcen verwendet.
 
-* Die **SKU** ist eine Replikationseinstellung für das Speicherkonto, z. B. LRS für „lokal redundanter Speicher“. Sie können z. B. von „Standard\_LRS“ zu „Standard\_GRS“ oder „Standard\_RAGRS“ wechseln. Beachten Sie, dass Sie „Standard ZRS“ oder „Premium LRS“ nicht in eine andere SKU ändern können (oder andere SKUs in diese beiden SKUs ändern). 
+* Die **SKU** ist eine Replikationseinstellung für das Speicherkonto, z. B. LRS für „lokal redundanter Speicher“. Sie können z. B. von „Standard\_LRS“ zu „Standard\_GRS“ oder „Standard\_RAGRS“ wechseln. Beachten Sie, dass Sie „Standard\_ZRS“ oder „Premium\_LRS“ nicht in eine andere SKU ändern können (oder andere SKUs in diese beiden SKUs).
 
 * Die **Zugriffsebene** für Blob-Speicherkonten. Der Wert für die Zugriffsebene wird auf **heiß** oder **kalt** festgelegt. Dadurch können Sie Ihre Kosten minimieren, indem Sie die Zugriffsebene auf die Art und Weise ausrichten, wie Sie das Speicherkonto verwenden. Weitere Informationen finden Sie unter [Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
@@ -168,7 +168,7 @@ Generieren Sie einen Ihrer Schlüssel neu, und rufen Sie ihn dann erneut ab, um 
 > Sie sollten vor der erneuten Generierung des Schlüssels für ein Produktionsspeicherkonto sorgfältig planen. Wenn Sie einen oder beide Schlüssel erneut generieren, wird der Zugriff für jede Anwendung außer Kraft gesetzt, die den neu generierten Schlüssel verwendet. Weitere Informationen finden Sie unter [Erneutes Generieren von Speicherzugriffsschlüsseln](storage-create-storage-account.md#regenerate-storage-access-keys).
 
 
-### <a name="delete-a-storage-account"></a>Löschen eines Speicherkontos 
+### <a name="delete-a-storage-account"></a>Löschen von Speicherkonten 
 
 Verwenden Sie zum Löschen eines Speicherkontos das Cmdlet [Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount).
 
@@ -223,12 +223,12 @@ Die Azure Cosmos DB-Tabellen-API bietet Premiumfeatures für den Tabellenspeiche
 * Weitere Informationen finden Sie unter [Einführung in die Table-API von Azure Cosmos DB](../../cosmos-db/table-introduction.md). 
 * Informationen zum Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mithilfe von PowerShell finden Sie unter [Perform Azure Cosmos DB Table API operations with Azure PowerShell](../../cosmos-db/table-powershell.md) (Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit Azure PowerShell).
 
-## <a name="azures-independently-deployed-clouds"></a>Unabhängig bereitgestellte Azure-Clouds
+## <a name="independent-cloud-deployments-of-azure"></a>Unabhängige Cloudbereitstellungen von Azure
 
-Die meisten Benutzer verwenden Azure Public Cloud für die globale Bereitstellung von Azure. Es gibt allerdings auch einige unabhängige Bereitstellungen von Microsoft Azure, die z.B. durch bestimmte Anforderungen an Datenhoheit motiviert sind. Diese unabhängige Bereitstellungen werden als „Umgebungen“ bezeichnet. Folgende Umgebungen stehen zur Verfügung:
+Die meisten Benutzer verwenden Azure Public Cloud für die globale Bereitstellung von Azure. Es gibt allerdings auch einige unabhängige Bereitstellungen von Microsoft Azure, die beispielsweise durch bestimmte Anforderungen an Datenhoheit motiviert sind. Diese unabhängige Bereitstellungen werden als „Umgebungen“ bezeichnet. Folgende Umgebungen stehen zur Verfügung:
 
 * [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
-* [Chinesische Azure-Cloud, betrieben von 21Vianet in China](http://www.windowsazure.cn/)
+* [Azure China-Cloud, betrieben von 21Vianet in China](http://www.windowsazure.cn/)
 * [Deutsche Azure-Cloud](../../germany/germany-welcome.md)
 
 Informationen zum Zugriff auf diese Clouds und deren Speicher mit PowerShell finden Sie unter [Managing Storage in the Azure independent clouds using PowerShell (Verwalten von Speicher in unabhängigen Azure-Clouds mit PowerShell)](storage-powershell-independent-clouds.md).
@@ -247,7 +247,7 @@ Diese Anleitung behandelt allgemeine Vorgänge, über die Speicherkonten mithilf
 > [!div class="checklist"]
 > * Auflisten von Speicherkonten
 > * Abrufen eines Verweises auf ein vorhandenes Speicherkonto
-> * Erstellen Sie ein Speicherkonto. 
+> * Speicherkonto erstellen 
 > * Festlegen der Eigenschaften von Speicherkonten
 > * Abrufen und erneutes Generieren der Kontenschlüssel
 > * Schützen des Zugriffs auf Ihr Speicherkonto 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 06/05/2017
+ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 26cb1a5dd9b290366307e4026686e65f7afc0523
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 81f96c223fb5ad2c37bd0679743f14980a5885b0
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Verbindungsarchitektur der Azure SQL-Datenbank 
 
@@ -69,29 +69,31 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | Kanada, Mitte | 40.85.224.249 | |
 | Kanada, Osten | 40.86.226.166 | |
 | USA (Mitte) | 23.99.160.139 | 13.67.215.62 |
-| Ostasien | 191.234.2.139 | 52.175.33.150 |
+| Asien, Osten | 191.234.2.139 | 52.175.33.150 |
 | US, Osten 1 | 191.238.6.43 | 40.121.158.30 |
-| USA (Ost) 2 | 191.239.224.107 | 40.79.84.180 |
+| USA (Ost) 2 | 191.239.224.107 | 40.79.84.180 * |
 | Indien, Mitte | 104.211.96.159  | |
 | Indien, Süden | 104.211.224.146  | |
 | Indien, Westen | 104.211.160.80 | |
-| Japan Ost | 191.237.240.43 | 13.78.61.196 |
-| Japan (Westen) | 191.238.68.11 | 104.214.148.156 |
+| Japan, Osten | 191.237.240.43 | 13.78.61.196 |
+| Japan, Westen | 191.238.68.11 | 104.214.148.156 |
 | Korea, Mitte | 52.231.32.42 | |
 | Korea, Süden | 52.231.200.86 |  |
 | USA Nord Mitte | 23.98.55.75 | 23.96.178.199 |
 | Nordeuropa | 191.235.193.75 | 40.113.93.91 |
-| USA (Mitte/Süden) | 23.98.162.75 | 13.66.62.124 |
+| USA Süd Mitte | 23.98.162.75 | 13.66.62.124 |
 | Südostasien | 23.100.117.95 | 104.43.15.0 |
 | Großbritannien, Norden | 13.87.97.210 | |
 | Vereinigtes Königreich, Süden 1 | 51.140.184.11 | |
 | Großbritannien, Süden 2 | 13.87.34.7 | |
 | UK, Westen | 51.141.8.11  | |
 | USA, Westen-Mitte | 13.78.145.25 | |
-| Westeuropa | 191.237.232.75 | 40.68.37.158 |
+| Europa, Westen | 191.237.232.75 | 40.68.37.158 |
 | USA, Westen 1 | 23.99.34.75 | 104.42.238.205 |
 | USA, Westen 2 | 13.66.226.202  | |
 ||||
+
+\* **HINWEIS:** *USA (Ost) 2* verfügt auch über eine tertiäre IP-Adresse von `52.167.104.0`.
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Ändern der Verbindungsrichtlinie von Azure SQL-Datenbank
 

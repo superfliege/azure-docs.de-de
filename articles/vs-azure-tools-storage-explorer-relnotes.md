@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 6268cff5f6c87d269f431dcdf5e6a1ee2e2bcf1f
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: fb47ceb63d45a3e896d55d8c304562cc667d0414
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)
 
-Dieser Artikel enthält die Versionsanmerkungen für Azure Storage-Explorer 0.9.3 (Vorschauversion) sowie die Versionsanmerkungen für frühere Versionen.
+Dieser Artikel enthält die Versionsanmerkungen für Azure Storage-Explorer 0.9.4 (Vorschauversion) sowie die Versionsanmerkungen für frühere Versionen.
 
 Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie unter Windows, MacOS und Linux komfortabel mit Azure Storage-Daten arbeiten können.
 
-## <a name="version-093"></a>Version 0.9.3
-08.12.2017
+## <a name="version-094--093"></a>Version 0.9.4/0.9.3
+01/21/2018
 
-### <a name="download-azure-storage-explorer-093-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.3 (Vorschauversion)
-- [Azure Storage-Explorer 0.9.3 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage-Explorer 0.9.3 (Vorschauversion) für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage-Explorer 0.9.3 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-094-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.4 (Vorschauversion)
+- [Azure Storage-Explorer 0.9.4 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 0.9.4 (Vorschauversion) für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 0.9.4 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Neu
 * Das vorhandene Storage-Explorer-Fenster wird in folgenden Fällen wiederverwendet:
@@ -44,6 +44,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
     * Bei Mac befindet sich im App-Menü eine Option „Neues Fenster“.
 
 ### <a name="fixes"></a>Fehlerbehebungen
+* Ein Sicherheitsproblem wurde behoben. Aktualisieren Sie baldmöglichst auf 0.9.4.
 * Alte Aktivitäten wurden nicht ordnungsgemäß bereinigt. Dies wirkte sich auf die Leistung von Aufträgen mit langer Ausführungszeit aus. Diese Aktivitäten werden jetzt ordnungsgemäß bereinigt.
 * Aktionen mit großen Mengen an Dateien und Verzeichnissen führten gelegentlich zu einem Einfrieren von Storage-Explorer. Anforderungen an Azure für Dateifreigaben werden jetzt gedrosselt, um die Nutzung von Systemressourcen zu begrenzen.
 
@@ -94,7 +95,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 ### <a name="new"></a>Neu
 * Unterstützung der Vorschau für Azure Cosmos DB:
-    * [Onlinedokumentation](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * [Onlinedokumentation](./cosmos-db/storage-explorer.md)
     * Erstellen von Datenbanken und Sammlungen
     * Bearbeiten von Daten
     * Abfragen, Erstellen oder Löschen von Dokumenten
@@ -174,7 +175,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 10/20/2017
 ### <a name="new"></a>Neu
 * Unterstützung der Vorschau für Azure Cosmos DB:
-    * [Onlinedokumentation](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * [Onlinedokumentation](./cosmos-db/storage-explorer.md)
     * Erstellen von Datenbanken und Sammlungen
     * Bearbeiten von Daten
     * Abfragen, Erstellen oder Löschen von Dokumenten

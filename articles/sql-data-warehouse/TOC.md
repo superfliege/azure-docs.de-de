@@ -6,6 +6,10 @@
 # Schnellstarts
 
 ## [Erstellen und Verbinden – Portal](create-data-warehouse-portal.md)
+## Anhalten und Fortsetzen von Computevorgängen
+### [Portal](pause-and-resume-compute-portal.md)
+### [PowerShell](pause-and-resume-compute-powershell.md)
+
 
 # Tutorials
 ## [1: Laden von Daten aus einem Blob](load-data-from-azure-blob-storage-using-polybase.md)

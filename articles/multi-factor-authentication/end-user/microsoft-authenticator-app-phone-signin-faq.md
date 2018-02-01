@@ -72,7 +72,7 @@ Nein, müssen Sie nicht. Wenn Sie sich bei Ihrem Microsoft-Konto mit Ihrem Smart
 
 ### <a name="what-if-i-lose-my-phone-or-dont-have-it-with-me-how-can-i-access-my-account"></a>Wie kann ich auf mein Konto zugreifen, wenn ich mein Smartphone verliere oder nicht zur Hand habe?  
 
-Sie können auf der Anmeldeseite jederzeit auf **Stattdessen ein Kennwort verwenden** klicken und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie weiterhin eine zweite Methode, um Ihre Anmeldung zu bestätigen. Daher sollten Sie immer über zusätzliche, aktuelle Sicherheitsinformationen für Ihr Konto verfügen. Ihre Sicherheitsinformationen können Sie unter „https://account.live.com/proofs/manage“ verwalten.
+Sie können auf der Anmeldeseite jederzeit auf **Stattdessen ein Kennwort verwenden** klicken und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie weiterhin eine zweite Methode, um Ihre Anmeldung zu bestätigen. Daher sollten Sie immer über zusätzliche, aktuelle Sicherheitsinformationen für Ihr Konto verfügen. Ihre Sicherheitsinformationen können Sie unter https://account.live.com/proofs/manage verwalten.
  
 ### <a name="how-do-i-stop-using-this-feature-and-go-back-to-entering-my-password"></a>Wie kann ich die Verwendung des Features beenden und wieder zur Eingabe meines Kennworts zurückkehren?
 

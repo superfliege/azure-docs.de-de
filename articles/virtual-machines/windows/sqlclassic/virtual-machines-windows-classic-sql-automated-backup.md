@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/05/2017
+ms.date: 01/23/2018
 ms.author: jroth
-ms.openlocfilehash: f7664291c2f45c422d52f682d08dbb67ab32b099
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 81910dd9c2743484ca65bd21e400a1a52e961a19
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (klassisch)
 > [!div class="op_single_selector"]
-> * [Ressourcen-Manager](../sql/virtual-machines-windows-sql-automated-backup.md)
+> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md)
 > * [Klassisch](../classic/sql-automated-backup.md)
 > 
 > 
@@ -48,9 +48,7 @@ Beachten Sie bei der Verwendung der automatisierten Sicherung die folgenden Vora
 * SQL Server 2014 Enterprise
 
 > [!NOTE]
-> SQL Server 2016 wird für die automatisierte Sicherung noch nicht unterstützt.
-> 
-> 
+> Die automatisierte Sicherung für SQL Server 2016 wird von virtuellen Computern mit Resource Manager unterstützt. Weitere Informationen finden Sie unter [Automatisierte Sicherung v2 für Azure Virtual Machines mit SQL Server 2016 (Resource Manager)](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
 
 **Datenbankkonfiguration:**
 
@@ -67,7 +65,7 @@ Beachten Sie bei der Verwendung der automatisierten Sicherung die folgenden Vora
 ## <a name="settings"></a>Einstellungen
 In der folgenden Tabelle werden die Optionen beschrieben, die für die automatisierte Sicherung konfiguriert werden können. Bei klassischen virtuellen Computern muss PowerShell zum Konfigurieren dieser Einstellungen verwendet werden.
 
-| Einstellung | Bereich (Standard) | Beschreibung |
+| Einstellung | Bereich (Standard) | BESCHREIBUNG |
 | --- | --- | --- |
 | **Automatisierte Sicherung** |Aktivieren/Deaktivieren (deaktiviert) |Aktiviert oder deaktiviert die automatisierte Sicherung für eine Azure-VM mit SQL Server 2014 Standard oder Enterprise. |
 | **Aufbewahrungszeitraum** |1 bis 30 Tage (30 Tage) |Die Anzahl von Tagen, für die eine Sicherung aufbewahrt wird. |

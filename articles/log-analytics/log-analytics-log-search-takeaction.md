@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: ff938697add98f3d21b4971175432335ee2e39ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3c3b036a8294e17aec103ba470402c1f8f707d8
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Führen Sie die Aktion mit einem Automation-Runbook über ein Log Analytics-Protokollsuchergebnis aus
 
@@ -30,7 +30,7 @@ Sie können in einem Protokollsuchergebnis in Azure Log Analytics nun **Take act
 
 ## <a name="to-initiate-runbook-from-log-search"></a>So initiieren Sie ein Runbook über die Protokollsuche
 
-Zum Ausführen einer Aktion zu einem Ereignis und Initiieren eines Runbooks über die Protokollsuchergebnisse erstellen Sie zuerst eine Protokollsuche. Über die Ergebnisse können Sie bei Bedarf ein Runbook aufrufen.  Dies kann über die Protokollsuchfunktion in Azure oder [OMS-Portal](../log-analytics/log-analytics-log-searches.md) durchgeführt werden.  In diesem Beispiel führen Sie eine Protokollsuche über das Azure-Portal mit einer einfachen Demonstration dieser Funktion aus.
+Zum Ausführen einer Aktion zu einem Ereignis und Initiieren eines Runbooks über die Protokollsuchergebnisse erstellen Sie zuerst eine Protokollsuche. Über die Ergebnisse können Sie bei Bedarf ein Runbook aufrufen.  Dieser Schritt kann über die Protokollsuchfunktion im [Azure-Portal](../log-analytics/log-analytics-log-search-new.md) ausgeführt werden.  In diesem Beispiel führen Sie eine Protokollsuche über das Azure-Portal mit einer einfachen Demonstration dieser Funktion aus.
 
 1. Klicken Sie im Azure-Portal im Hub-Menü auf **Weitere Dienste**, und wählen Sie **Log Analytics** aus.  
 2. Wählen Sie auf dem Blatt „Log Analytics“ Ihren Log Analytics-Arbeitsbereich und auf dem Arbeitsbereichsblatt **Protokollsuche** aus.  
@@ -49,4 +49,4 @@ Wenn Sie ein Runbook auswählen, das so konfiguriert wurde, dass es [von einer L
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Lesen Sie sich die [Referenz zur Log Analytics-Suche](log-analytics-search-reference.md) durch, um sich über alle Suchfelder und Facetten zu informieren, die in Log Analytics verfügbar sind.
-* Informationen dazu, wie Sie ein Automation-Runbook automatisch aufrufen, finden Sie unter [Aufrufen eines Azure Automation-Runbooks über eine OMS-Log Analytics-Warnung](../automation/automation-invoke-runbook-from-omsla-alert.md).  
+* Informationen zum automatischen Aufrufen eines Automation-Runbooks finden Sie unter [Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung](../automation/automation-invoke-runbook-from-omsla-alert.md).  

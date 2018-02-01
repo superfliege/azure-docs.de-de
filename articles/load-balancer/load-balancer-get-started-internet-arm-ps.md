@@ -1,6 +1,6 @@
 ---
-title: "Erstellen einer Azure-Instanz mit Lastenausgleich für den Internetzugriff – PowerShell | Microsoft-Dokumentation"
-description: Hier erfahren Sie, wie Sie im Resource Manager mithilfe von PowerShell einen Load Balancer mit Internetzugriff erstellen.
+title: "Erstellen eines öffentlichen Lastenausgleichs – PowerShell | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie im Resource Manager mithilfe von PowerShell einen öffentlichen Lastenausgleich erstellen."
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d11ad8ff7f3d3357d1af276a9643b7a74e6c3f6d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 15e1c868a72a61d9721b96032d304fdec6d6e213
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="get-started"></a>Erstellen eines Load Balancers mit Internetzugriff in Resource Manager unter Verwendung von PowerShell
+# <a name="get-started"></a>Erstellen eines öffentlichen Lastenausgleichs im Resource Manager mithilfe von PowerShell
 
 > [!div class="op_single_selector"]
 > * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="deploying-the-solution-by-using-azure-powershell"></a>Bereitstellen der Lösung mithilfe von Azure PowerShell
 
-Im Folgenden lernen Sie die Verfahren kennen, mit denen Sie einen Load Balancer mit Internetzugriff mit Azure Resource Manager und PowerShell erstellen. Mit dem Azure Resource Manager werden die einzelnen Teilressourcen erstellt sowie individuell konfiguriert und dann zusammengeführt, um einen Load Balancer zu erstellen.
+Im Folgenden lernen Sie die Verfahren kennen, mit denen Sie einen öffentlichen Lastenausgleich (Load Balancer) mit Internetzugriff mit Azure Resource Manager und PowerShell erstellen. Mit dem Azure Resource Manager werden die einzelnen Teilressourcen erstellt sowie individuell konfiguriert und dann zusammengeführt, um einen Load Balancer zu erstellen.
 
 Zum Bereitstellen eines Load Balancers müssen Sie die folgenden Objekte erstellen und konfigurieren:
 

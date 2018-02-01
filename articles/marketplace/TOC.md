@@ -1,5 +1,5 @@
-# [Azure Marketplace-Verkäuferhandbuch](./seller-guide/cloud-partner-portal-seller-guide.md)
+# [Azure Marketplace-Herausgeberleitfaden](marketplace-publishers-guide.md)
 # [Cloudpartnerportal](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

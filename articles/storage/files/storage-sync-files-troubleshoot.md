@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 23f111bef6a68115e4474f3c13e91d69d7e89e1c
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 7562e43f58f303ea34a08b8b9e056a0c3d0c10d0
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Problembehandlung bei der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -135,6 +135,8 @@ Wenn einzelne Dateien nicht synchronisiert werden können:
 
     > [!NOTE]
     > Die Azure-Dateisynchronisierung erfasst in regelmäßigen Abständen VSS-Momentaufnahmen, um Dateien mit offenen Handles zu synchronisieren.
+
+Wir unterstützen derzeit nicht das Verschieben von Ressourcen in ein anderes Abonnement oder zu einem anderen Azure AD-Mandanten.  Wenn das Abonnement zu einem anderen Mandanten verschoben wird, kann unser Dienst aufgrund der Besitzeränderung nicht mehr auf die Azure-Dateifreigabe zugreifen. Wenn der Mandant geändert wird, müssen Sie die Serverendpunkte und den Cloudendpunkt löschen (Informationen zum Bereinigen der Azure-Dateifreigabe für die erneute Verwendung finden Sie im Abschnitt zur Verwaltung von Synchronisierungsgruppen) und die Synchronisierungsgruppe neu erstellen.
 
 ## <a name="cloud-tiering"></a>Cloudtiering 
 Es gibt beim Cloudtiering zwei Fehlerpfade:

@@ -3,7 +3,7 @@
 
 Verwenden Sie Azure Backup zum Sichern von Azure-VMs, auf denen Produktionsworkloads ausgeführt werden. Azure Backup unterstützt anwendungskonsistente Sicherungen für virtuelle Windows- und Linux-Computer. Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder nur bestimmte Dateien wiederherstellen. 
 
-Eine einfache praktische Einführung in Azure Backup für Azure-VMs finden Sie im Tutorial „Sichern virtueller Windows-Computer in Azure“ für [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) oder [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
+Eine einfache praktische Einführung in Azure Backup für Azure-VMs finden Sie im Tutorial zum Sichern virtueller Azure-Computer für [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) oder [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
 
 Weitere Informationen dazu, wie Azure Backup funktioniert, finden Sie unter [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](../articles/backup/backup-azure-vms-introduction.md).
 

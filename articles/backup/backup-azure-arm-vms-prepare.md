@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/3/2017
+ms.date: 1/21/2017
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 3c2ea9e5872454b0bac67c39362a1f94b6fa47b8
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 7d7b81a585ba8b10c60062c5d5274c45335cab68
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
@@ -54,7 +54,7 @@ Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen ve
 * Das Sichern virtueller Computer mit Datenträgern, die größer als 1.023 GB sind, wird nicht unterstützt.
 
   > [!NOTE]
-  > Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für virtuelle Computer mit nicht verwalteten Datenträgern, die mindestens 1 TB groß sind. Einzelheiten entnehmen Sie dem Dokument für die [private Vorschauversion für die Unterstützung von Sicherungen virtueller Computer mit großen Datenträgern](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
+  > Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für virtuelle Computer mit Datenträgern, die größer sind als 1 TB. Einzelheiten entnehmen Sie dem Dokument für die [private Vorschauversion für die Unterstützung von Sicherungen virtueller Computer mit großen Datenträgern](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
   >
 
 * Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
@@ -181,7 +181,7 @@ Nachdem die Sicherung erfolgreich aktiviert wurde, wird die Sicherungsrichtlinie
 Wenn Sie Probleme beim Registrieren des virtuellen Computers haben, überprüfen Sie die folgenden Informationen zum Installieren des VM-Agents und zu Netzwerkverbindungen. Die folgenden Informationen sind wahrscheinlich nicht erforderlich, wenn Sie in Azure erstellte virtuelle Computer schützen möchten. Wenn Sie jedoch Ihre virtuellen Computer zu Azure migriert haben, vergewissern Sie sich, dass Sie den VM-Agent ordnungsgemäß installiert haben und dass Ihr virtueller Computer mit dem virtuellen Netzwerk kommunizieren kann.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Installieren des VM-Agents auf dem virtuellen Computer
-Damit die Sicherungserweiterung funktioniert, muss der Azure-[VM-Agent](../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux) auf dem virtuellen Azure-Computer installiert sein. Wenn Ihr virtueller Computer über Azure Marketplace erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. 
+Damit die Sicherungserweiterung funktioniert, muss der Azure-[VM-Agent](../virtual-machines/windows/agent-user-guide.md) auf dem virtuellen Azure-Computer installiert sein. Wenn Ihr virtueller Computer über Azure Marketplace erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. 
 
 Die folgenden Informationen werden für Situationen bereitgestellt, in denen Sie *keinen* in Azure Marketplace erstellten virtuellen Computer verwenden. Angenommen, Sie haben einen virtuellen Computer aus einem lokalen Datencenter migriert. In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen.
 
@@ -219,7 +219,7 @@ Mit [Diensttags](../virtual-network/security-overview.md#service-tags) können S
 ![NSG mit Speichertags für eine Region](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
 > [!WARNING]
-> Speichertags sind nur in bestimmten Regionen und in der Vorschau verfügbar. Eine Liste der Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
+> Speicherdiensttags sind nur in bestimmten Regionen und in der Vorschau verfügbar. Eine Liste der Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
 
 ### <a name="use-an-http-proxy-for-vm-backups"></a>Verwenden eines HTTP-Proxys für die Sicherung von virtuellen Computern
 Beim Sichern eines virtuellen Computers werden die Befehle für die Momentaufnahmenverwaltung von der Sicherungserweiterung auf der dem virtuellen Computer per HTTPS-API an Azure Storage gesendet. Leiten Sie den Datenverkehr der Sicherungserweiterung über den HTTP-Proxy, da dies die einzige Komponente ist, die für den Zugriff auf das öffentliche Internet konfiguriert ist.

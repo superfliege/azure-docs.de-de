@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: ada26a303013139f182721360aaf125ac5b94310
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 974fb5bfa8b10cb5497220825b2a83ca96161b0c
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="resource-governance"></a>Ressourcenkontrolle 
 
@@ -115,8 +115,7 @@ Ressourcenkontrollgrenzwerte werden im Anwendungsmanifest (Abschnitt „ServiceM
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <Parameters>
-  </Parameters>
+
   <!--
   ServicePackageA has the number of CPU cores defined, but doesn't have the MemoryInMB defined.
   In this case, Service Fabric sums the limits on code packages and uses the sum as 
@@ -137,6 +136,54 @@ In diesem Beispiel erhält das Dienstpaket mit dem Namen **ServicePackageA** ein
 Daher erhält „CodeA1“ in diesem Beispiel zwei Drittel eines Kerns, und „CodeA2“ ein Drittel eines Kerns (sowie eine weiche Reservierungsgarantie desselben). Wenn für Codepakete keine CpuShares angegeben sind, teilt Service Fabric die Kerne gleichmäßig auf die Codepakete auf.
 
 Die Arbeitsspeicherlimits sind absolut, daher sind beide Codepakete auf 1024 MB Arbeitsspeicher (sowie eine weiche Reservierungsgarantie desselben) beschränkt. Codepakete (Container oder Prozesse) können nicht mehr Arbeitsspeicher zuweisen, als dieser Grenzwert zulässt. Ein entsprechender Versuch führt daher zu einer Ausnahme „Nicht genügend Arbeitsspeicher“. Damit die Erzwingung des Ressourcenlimits funktioniert, sollten für alle Codepakete innerhalb eines Dienstpakets Arbeitsspeicherlimits festgelegt sein.
+
+### <a name="using-application-parameters"></a>Verwenden von Anwendungsparametern
+
+Beim Angeben der Ressourcenkontrolle können Sie [Anwendungsparameter](service-fabric-manage-multiple-environment-app-configuration.md) verwenden, um mehrere App-Konfigurationen zu verwalten. Das folgende Beispiel zeigt die Verwendung von Anwendungsparametern:
+
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+
+  <Parameters>
+    <Parameter Name="CpuCores" DefaultValue="4" />
+    <Parameter Name="CpuSharesA" DefaultValue="512" />
+    <Parameter Name="CpuSharesB" DefaultValue="512" />
+    <Parameter Name="MemoryA" DefaultValue="2048" />
+    <Parameter Name="MemoryB" DefaultValue="2048" />
+  </Parameters>
+
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName='ServicePackageA' ServiceManifestVersion='v1'/>
+    <Policies>
+      <ServicePackageResourceGovernancePolicy CpuCores="[CpuCores]"/>
+      <ResourceGovernancePolicy CodePackageRef="CodeA1" CpuShares="[CpuSharesA]" MemoryInMB="[MemoryA]" />
+      <ResourceGovernancePolicy CodePackageRef="CodeA2" CpuShares="[CpuSharesB]" MemoryInMB="[MemoryB]" />
+    </Policies>
+  </ServiceManifestImport>
+```
+
+In diesem Beispiel werden Standardparameterwerte für die Produktionsumgebung festgelegt, in denen jedes Dienstpaket 4 Kerne und 2 GB Arbeitsspeicher erhalten würde. Es ist möglich, die Standardwerte mit Anwendungsparameterdateien zu ändern. In diesem Beispiel kann eine Parameterdatei für einen lokalen Test der Anwendung verwendet werden, bei dem diese weniger Ressourcen als in der Produktion erhält: 
+
+```xml
+<!-- ApplicationParameters\Local.xml -->
+
+<Application Name="fabric:/TestApplication1" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="CpuCores" DefaultValue="2" />
+    <Parameter Name="CpuSharesA" DefaultValue="512" />
+    <Parameter Name="CpuSharesB" DefaultValue="512" />
+    <Parameter Name="MemoryA" DefaultValue="1024" />
+    <Parameter Name="MemoryB" DefaultValue="1024" />
+  </Parameters>
+</Application>
+```
+
+> [!IMPORTANT] 
+> Das Angeben der Ressourcenkontrolle mit Anwendungsparameter ist ab Service Fabric Version 6.1 möglich.<br> 
+>
+> Wenn die Ressourcenkontrolle mithilfe von Anwendungsparameter angegeben wird, kann Service Fabric nicht auf eine Version vor 6.1 herabgestuft werden. 
+
 
 ## <a name="other-resources-for-containers"></a>Weitere Ressourcen für Container
 Neben CPU und Arbeitsspeicher ist es möglich, noch andere Ressourcengrenzwerte für Container anzugeben. Diese Grenzwerte werden auf Codepaketebene angegeben und angewendet, wenn der Container gestartet wird. Anders als bei CPU und Arbeitsspeicher sind diese Ressourcen im Cluster Resource Manager nicht bekannt, sodass dieser weder die Kapazität überprüft noch einen Lastenausgleich für sie ausführt. 

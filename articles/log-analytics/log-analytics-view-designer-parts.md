@@ -1,6 +1,6 @@
 ---
-title: "Komponentenreferenz für den Ansicht-Designer in OMS Log Analytics | Microsoft-Dokumentation"
-description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Visualisierungskomponenten, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind."
+title: "Komponentenreferenz für den Ansicht-Designer in Azure Log Analytics | Microsoft-Dokumentation"
+description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal mit verschiedenen Visualisierungen von Daten im Log Analytics-Arbeitsbereich erstellen. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Visualisierungskomponenten, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 40a6101576708936404447576d704a49666143fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1fdfb237fcea6a10d38f3be8524ea5fbcf1f3728
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="log-analytics-view-designer-visualization-part-reference"></a>Referenz der Visualisierungskomponenten im Ansicht-Designer in Log Analytics
-Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten aus dem OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Visualisierungskomponenten, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
+Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal mit verschiedenen Visualisierungen von Daten aus Ihrem Log Analytics-Arbeitsbereich erstellen. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Visualisierungskomponenten, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
 
 Weitere verfügbare Artikel für den Ansicht-Designer:
 
@@ -33,7 +33,7 @@ Weitere verfügbare Artikel für den Ansicht-Designer:
 
 Die folgende Tabelle beschreibt die verschiedenen Typen von Kacheln, die im Ansicht-Designer verfügbar sind.  In den folgenden Abschnitten werden jeder Kacheltyp im Detail und dessen Eigenschaften beschrieben.
 
-| Ansichtstyp | Beschreibung |
+| Ansichtstyp | BESCHREIBUNG |
 |:--- |:--- |
 | [Liste der Abfragen](#list-of-queries-part) |Zeigt eine Liste der Protokollsuchabfragen an.  Die Benutzer kann auf die einzelnen Abfragen klicken, um die Ergebnisse anzuzeigen. |
 | [Zahl und Liste](#number-amp-list-part) |Die Kopfzeile weist eine einzelne Zahl auf, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an. |
@@ -50,7 +50,7 @@ Zeigt eine Liste der Protokollsuchabfragen an.  Die Benutzer kann auf die einzel
 
 ![Ansicht der Liste der Abfragen](media/log-analytics-view-designer/view-list-queries.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Titel |Text, der oben in der Ansicht angezeigt wird. |
@@ -66,7 +66,7 @@ Die Kopfzeile weist eine einzelne Zahl auf, die die Anzahl der Datensätze aus e
 
 ![Ansicht der Liste der Abfragen](media/log-analytics-view-designer/view-number-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Text, der oben in der Ansicht angezeigt wird. |
@@ -84,7 +84,7 @@ Die Kopfzeile weist eine einzelne Zahl auf, die die Anzahl der Datensätze aus e
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
 | **Liste** |**&gt; Spaltentitel** |
-| Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
+| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
@@ -94,7 +94,7 @@ Die Kopfzeile weist zwei Zahlen auf, die die Anzahl der Datensätze aus getrennt
 
 ![Ansicht mit zwei Zahlen und Liste](media/log-analytics-view-designer/view-two-numbers-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Text, der oben in der Ansicht angezeigt wird. |
@@ -113,7 +113,7 @@ Die Kopfzeile weist zwei Zahlen auf, die die Anzahl der Datensätze aus getrennt
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
 | **Liste** |**&gt; Spaltentitel** |
-| Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
+| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
@@ -123,7 +123,7 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer P
 
 ![Ansicht mit Ring und Liste](media/log-analytics-view-designer/view-donut-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
@@ -153,7 +153,7 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer P
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
 | **Liste** |**&gt; Spaltentitel** |
-| Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
+| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
@@ -163,7 +163,7 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 
 ![Ansicht mit zwei Zeitachsen und Liste](media/log-analytics-view-designer/view-two-timelines-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
@@ -173,7 +173,7 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 | **Erstes Diagramm<br>Zweites Diagramm** | |
 | Legende |Text, der unter der Legende für die erste Reihe angezeigt wird. |
 | Farbe |Farbe, die für die Säulen in der Reihe verwendet wird. |
-| Abfrage |Abfrage, die für die erste Reihe ausgeführt wird.  Die Angabe der Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
+| Abfragen |Abfrage, die für die erste Reihe ausgeführt wird.  Die Angabe der Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
 | Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende zu einem einzelnen Wert zusammenzufassen.<br><br>– Summe: Summe der Werte von allen Datensätzen.<br>– Durchschnitt: Durchschnitt der Werte von allen Datensätzen.<br>– Letztes Beispiel: Wert aus dem letzten Intervall im Diagramm.<br>– Erstes Beispiel: Wert aus dem ersten Intervall im Diagramm.<br>– Anzahl: Anzahl aller von der Abfrage zurückgegebenen Datensätze. |
 | **Liste** | |
 | Abfragen |Abfrage, die für die Liste ausgeführt wird.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
@@ -183,7 +183,7 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 | Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
 | **Liste** |**&gt; Spaltentitel** |
-| Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
+| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
@@ -193,7 +193,7 @@ Die Kopfzeile zeigt statischen Text und einen optionalen Link an.  Die Liste zei
 
 ![Ansicht mit Informationen](media/log-analytics-view-designer/view-information.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
@@ -214,7 +214,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 
 ![Ansicht mit Liniendiagramm, Legende und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
@@ -243,7 +243,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
 | **Liste** |**&gt; Spaltentitel** |
-| Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
+| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
@@ -253,7 +253,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 
 ![Ansicht mit Liniendiagramm und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
@@ -278,7 +278,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
 | Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
 | **Liste** |**&gt; Spaltentitel** |
-| Name |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
+| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
 | Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
@@ -288,7 +288,7 @@ Zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im zeitl
 
 ![Liniendiagrammstapel](media/log-analytics-view-designer/view-stack-line-charts.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
@@ -322,7 +322,7 @@ Eine Sparkline ist ein kleines Liniendiagramm, das den Wert eines Listeneintrags
 
 In der folgenden Tabelle sind Einstellungen für Sparklines beschrieben.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | Sparklines aktivieren |Wählen Sie diese Option, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. |
 | Vorgang |Wenn Sparklines aktiviert sind, ist dies der Vorgang, der für jede Eigenschaft in der Liste ausgeführt wird, um die Werte für die Sparkline zu berechnen.<br><br>– Letztes Beispiel: Letzter Wert für die Reihe im Zeitintervall.<br>– Max: Höchstwert für die Reihe im Zeitintervall.<br>– Min: Mindestwert für die Reihe im Zeitintervall.<br>– Summe: Summe der Werte für die Reihe im Zeitintervall.<br>– Zusammenfassung: Verwendet den gleichen Measure-Befehl wie die Abfrage in der Kopfzeile. |
@@ -336,10 +336,10 @@ Jeder Schwellenwertsatz verfügt über einen Schwellenwert mit dem Wert **Standa
 
 In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um links neben jedem Wert ein Farbsymbol anzuzeigen, das den Integritätsstatus des Werts in Relation zu den festgelegten Schwellenwerten angibt. |
-| Name |Name zur Identifikation des Schwellenwerts. |
+| NAME |Name zur Identifikation des Schwellenwerts. |
 | Schwellenwert |Der Wert für den Schwellenwert.  Die Farbe der Integrität für jedes Listenelement ist auf die Farbe des höchsten Schwellenwerts festgelegt, den der Wert des Listenelements überschritten hat.  Es gibt einen Standardschwellenwert, dessen Farbe verwendet wird, wenn keine Schwellenwerte überschritten wurden. |
 | Farbe |Die Farbe für den Schwellenwert. |
 

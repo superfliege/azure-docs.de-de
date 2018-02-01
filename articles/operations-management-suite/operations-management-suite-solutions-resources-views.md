@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 533b5564a805e0b41f2b1a4ad92e12b133220952
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Ansichten in Verwaltungslösungen der Operations Management Suite (OMS) (Preview)
 > [!NOTE]
@@ -75,11 +75,10 @@ Fügen Sie die folgende Ansichtsressource zum Element **resources** (Ressourcen)
 
 Fügen Sie die folgenden Variablen dem variables-Element der Projektmappendatei hinzu, und ersetzen Sie die Werte durch die für Ihre Lösung.
 
-    "LogAnalyticsApiVersion": "2015-11-01-preview",
+    "LogAnalyticsApiVersion": "<api-version>",
     "ViewAuthor": "Your name."
     "ViewDescription": "Optional description of the view."
     "ViewName": "Provide a name for the view here."
-
 
 Beachten Sie, dass Sie die gesamte Ansichtsressource aus Ihrer exportierten Ansichtsdatei kopieren können, Sie müssen jedoch die folgenden Änderungen durchführen, damit dies in Ihrer Lösung funktioniert.  
 
@@ -89,6 +88,18 @@ Beachten Sie, dass Sie die gesamte Ansichtsressource aus Ihrer exportierten Ansi
 * Die Eigenschaft **DisplayName** muss der Ansicht hinzugefügt werden.  Die Eigenschaften **id**, **name** und **DisplayName** müssen gleich sein.
 * Parameternamen müssen geändert werden, damit sie den erforderlichen Parametern entsprechen.
 * Variablen sollten in der Lösung definiert und in den entsprechenden Eigenschaften verwendet werden.
+
+### <a name="log-analytics-api-version"></a>Log Analytics-API-Version
+Alle in einer Resource Manager-Vorlage definierten Log Analytics-Ressourcen verfügen über die Eigenschaft **apiVersion**, die die Version der API definiert, die von der Ressource verwendet werden soll.  Diese Version unterscheidet sich für Ansichten mit Abfragen, die die [ältere und die aktualisierte Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) verwenden.  
+
+ In der folgenden Tabelle werden die Log Analytics-API-Versionen für Ansichten in älteren und aktualisierten Arbeitsbereichen angegeben: 
+
+| Arbeitsbereichsversion | API-Version | Abfragen |
+|:---|:---|:---|
+| V1 (Legacy)   | 2015-11-01-preview | Altes Format.<br> Beispiel: Type=Event EventLevelName = Error  |
+| V2 (Upgrade) | 2015-11-01-preview | Altes Format.  Bei der Installation in das aktualisierte Format konvertiert.<br> Beispiel: Type=Event EventLevelName = Error<br>Konvertiert in: Event &#124; where EventLevelName == "Error"  |
+| V2 (Upgrade) | 2017-03-03-preview | Aktualisiertes Format. <br>Beispiel: Event &#124; where EventLevelName == "Error"  |
+
 
 ## <a name="add-the-view-details"></a>Hinzufügen der Ansichtsdetails
 Die Ansichtsressource in der exportierten Ansichtsdatei wird zwei Elemente im Element **properties** (Eigenschaften) namens **Dashboard** und **OverviewTile** enthalten, die die ausführliche Konfiguration der Ansicht enthalten.  Kopieren Sie diese beiden Elemente und deren Inhalte in das **properties**-Element der Ansichtsressource in Ihrer Lösungsdatei.

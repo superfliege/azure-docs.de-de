@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 4bbb13f31c42a57815dca176408d5c2e82feb5e0
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 885dcbc0e0d3d9490d745a07ade5d9dece7ff3d6
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -143,10 +143,10 @@ Nach dem Ende Ihres Abrechnungszyklus wird Ihre Rechnung zur Verfügung gestellt
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA-, CSP- und Sponsorship-Kunden
 Wenden Sie sich an Ihren Kundenbetreuer oder Azure-Partner.
 
-| Angebot | Ressourcen |
+| Angebot | angeben |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Enterprise Agreement (EA) | [EA-Portal](https://ea.azure.com/), [Hilfedokumente](https://ea.azure.com/helpdocs) und [Power BI-Bericht](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
-| Cloud-Lösungsanbieter (CSP) | Wenden Sie sich an Ihren Anbieter. |
+| Cloud Solution Provider (CSP) | Wenden Sie sich an Ihren Anbieter. |
 | Azure Sponsorship | [Sponsorship-Portal](https://www.microsoftazuresponsorships.com/) |
 
 Für IT-Manager großer Organisationen empfehlen wir den Artikel zum [Azure-Unternehmensgerüst](../azure-resource-manager/resource-manager-subscription-governance.md) und das [Whitepaper zu Enterprise IT](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (PDF-Download, nur auf Englisch verfügbar).
@@ -157,6 +157,7 @@ Enterprise-Kostenansichten sind derzeit als öffentliche Vorschau verfügbar. Fo
 - Abonnementkosten basieren auf der Nutzung. Bereits gezahlte Beträge, Überschreitungen, enthaltene Mengen, Anpassungen und Steuern werden nicht berücksichtigt. Die tatsächlichen Gebühren werden auf Registrierungsebene berechnet. 
 - Die im Azure-Portal angezeigten Beträge werden im Vergleich zu den Werten im Enterprise-Portal möglicherweise zeitverzögert angezeigt.  
 - Wenn keine Kosten angezeigt werden, kann das auf einen der folgenden Gründe zurückzuführen sein:
+    - Sie haben keine ausreichende RBAC-Berechtigung auf Abonnementebene. Um Übersichten der Unternehmenskosten anzuzeigen, müssen Sie ein Abrechnungsleser, Leser, Mitwirkender oder Besitzer auf Abonnementebene sein.
     - Sie sind Kontobesitzer, und der Registrierungsadministrator hat die Einstellung „Gebühren anzeigen“ für Kontobesitzer deaktiviert.  Wenden Sie sich an den Registrierungsadministrator, um Zugriff auf die Kosten zu erhalten. 
     - Sie sind Abteilungsadministrator, und der Registrierungsadministrator hat die Einstellung „Gebühren anzeigen“ für Abteilungsadministratoren deaktiviert.  Wenden Sie sich an den Registrierungsadministrator, um Zugriff zu erhalten. 
     - Sie haben Azure über einen Channelpartner erworben, und der Partner hat die Preisinformationen nicht freigegeben.  

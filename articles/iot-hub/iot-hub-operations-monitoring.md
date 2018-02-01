@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: db03cfdd486a3172b258379928fac12cc0af730a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 94cbef9d01299547a48923876cf134d5f3dafa6b
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT Hub-Vorgangsüberwachung
 
 Die IoT Hub-Vorgangsüberwachung ermöglicht Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit. IoT Hub verfolgt Ereignisse in verschiedenen Vorgangskategorien nach. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen Endpunkt Ihres IoT-Hubs gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
 
 >[!NOTE]
->Die Vorgangsüberwachung von IoT Hub ist veraltet und wird künftig aus IoT Hub entfernt. Informationen zur Überwachung der Vorgänge und Integrität von IoT Hub finden Sie unter [Monitor the health of Azure IoT Hub and diagnose problems quickly][lnk-monitor] (Überwachen der Integrität von Azure IoT Hub und schnelles Diagnostizieren von Problemen). Weitere Informationen zur Veraltungszeitachse finden Sie unter [Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement] (Überwachen Ihrer Azure IoT-Lösungen mit Azure Monitor und Azure Resource Health).
+>Die Vorgangsüberwachung von IoT Hub ist veraltet und wird am 10. Oktober 2018 aus IoT Hub entfernt. Informationen zur Überwachung der Vorgänge und Integrität von IoT Hub finden Sie unter [Monitor the health of Azure IoT Hub and diagnose problems quickly][lnk-monitor] (Überwachen der Integrität von Azure IoT Hub und schnelles Diagnostizieren von Problemen). Weitere Informationen zur Veraltungszeitachse finden Sie unter [Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement] (Überwachen Ihrer Azure IoT-Lösungen mit Azure Monitor und Azure Resource Health).
 
 IoT Hub überwacht sechs Ereigniskategorien:
 

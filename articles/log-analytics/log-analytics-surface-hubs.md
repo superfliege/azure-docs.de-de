@@ -12,55 +12,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 01/16/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6ecd0d09589fec85c1633f528afc1165c346b7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f56369e412bdd285d3c370f5153fee4f539dfcf
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Überwachen von Surface Hubs mit Log Analytics zum Verfolgen ihrer Integrität
 
 ![Surface Hub-Symbol](./media/log-analytics-surface-hubs/surface-hub-symbol.png)
 
-Dieser Artikel beschreibt, wie Sie die Surface Hub-Lösung in Log Analytics verwenden können, um Microsoft Surface Hub-Geräte mit der Microsoft Operations Management Suite (OMS) zu überwachen. Mit Log Analytics können Sie die Integrität Ihrer Surface Hubs überwachen und untersuchen, wie sie verwendet werden.
+Dieser Artikel beschreibt, wie Sie die Surface Hub-Lösung in Log Analytics verwenden können, um Microsoft Surface Hub-Geräte zu überwachen. Mit Log Analytics können Sie die Integrität Ihrer Surface Hubs überwachen und untersuchen, wie sie verwendet werden.
 
-Auf jedem Surface Hub ist Microsoft Monitoring Agent installiert. Über den Agent können Sie Daten von Ihrem Surface Hub an OMS senden. Protokolldateien werden auf den Surface Hubs gelesen und dann an den OMS-Dienst gesendet. Probleme wie Server, die offline sind, Kalender, die nicht synchronisiert werden, oder ein Gerätekonto, das sich nicht bei Skype anmelden kann, werden in OMS im Surface Hub-Dashboard angezeigt. Mithilfe der Daten im Dashboard können Sie Geräte identifizieren, die nicht ausgeführt werden oder bei denen andere Probleme vorliegen, und möglicherweise Fehlerbehebungen für die erkannten Probleme anwenden.
+Auf jedem Surface Hub ist Microsoft Monitoring Agent installiert. Über den Agent können Sie Daten von Surface Hub an Log Analytics senden. Protokolldateien werden auf Surface Hubs gelesen und dann an Log Analytics gesendet. Probleme wie Server, die offline sind, Kalender, die nicht synchronisiert werden, oder ein Gerätekonto, das sich nicht bei Skype anmelden kann, werden in Log Analytics auf dem Surface Hub-Dashboard angezeigt. Mithilfe der Daten im Dashboard können Sie Geräte identifizieren, die nicht ausgeführt werden oder bei denen andere Probleme vorliegen, und möglicherweise Fehlerbehebungen für die erkannten Probleme anwenden.
 
-## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
-Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung. Um die Surface Hubs über die Microsoft Operations Management Suite (OMS) zu verwalten, benötigen Sie Folgendes:
+## <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
+Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung. Für die Verwaltung von Surface Hubs in Log Analytics benötigen Sie Folgendes:
 
-* Ein gültiges Abonnement für [OMS](http://www.microsoft.com/oms).
-* Eine [OMS-Abonnementebene](https://azure.microsoft.com/pricing/details/log-analytics/), die die Anzahl der Geräte unterstützt, die Sie überwachen möchten. OMS-Preise hängen davon ab, wie viele Geräte registriert sind und wie viele Daten verarbeitet werden. Sie sollten dies bei der Planung Ihrer Surface Hub-Implementierung berücksichtigen.
+* Eine [Log Analytics-Abonnementebene](https://azure.microsoft.com/pricing/details/log-analytics/), die die Anzahl der Geräte unterstützt, die Sie überwachen möchten. Log Analytics-Preise hängen davon ab, wie viele Geräte registriert sind und wie viele Daten verarbeitet werden. Sie sollten dies bei der Planung Ihrer Surface Hub-Implementierung berücksichtigen.
 
-Anschließend fügen Sie entweder ein OMS-Abonnement zu Ihrem vorhandenen Microsoft Azure-Abonnement hinzu oder erstellen direkt über das OMS-Portal einen neuen Arbeitsbereich. Detaillierte Anweisungen für die Nutzung der Methoden finden Sie unter [Erste Schritte mit Log Analytics](log-analytics-get-started.md). Nachdem das OMS-Abonnement eingerichtet wurde, haben Sie zwei Möglichkeiten, Ihre Surface Hub-Geräte zu registrieren:
+Wählen Sie als Nächstes einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen Arbeitsbereich. Detaillierte Anweisungen für die Nutzung der Methoden finden Sie unter [Erste Schritte mit Log Analytics](log-analytics-get-started.md). Wenn der Log Analytics-Arbeitsbereich konfiguriert wurde, haben Sie zwei Möglichkeiten zum Registrieren Ihrer Surface Hub-Geräte:
 
 * Automatisch über Intune
 * Manuell über **Einstellungen** auf Ihrem Surface Hub-Gerät
 
 ## <a name="set-up-monitoring"></a>Einrichten der Überwachung
-Sie können die Integrität und Aktivität des Surface Hubs mit Log Analytics in OMS überwachen. Sie können den Surface Hub in OMS mit Intune oder lokal über **Einstellungen** auf dem Surface Hub registrieren.
+Sie können die Integrität und Aktivität Ihres Surface Hub-Geräts mit Log Analytics überwachen. Sie können Surface Hub mit Intune oder lokal über **Einstellungen** auf Surface Hub registrieren.
 
-## <a name="connect-surface-hubs-to-oms-through-intune"></a>Verbinden von Surface Hubs mit OMS über Intune
-Sie benötigen die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel für den OMS-Arbeitsbereich, der Ihre Surface Hubs verwalten soll. Sie können beides aus dem OMS-Portal abrufen.
+## <a name="connect-surface-hubs-to-log-analytics-through-intune"></a>Verbinden von Surface Hubs mit Log Analytics über Intune
+Sie benötigen die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel für den Log Analytics-Arbeitsbereich, der Ihre Surface Hubs verwalten soll. Sie können sie aus den Arbeitsbereichseinstellungen im Azure-Portal abrufen.
 
-Intune ist ein Microsoft-Produkt, mit dem Sie die OMS-Konfigurationseinstellungen zentral verwalten können, die auf ein oder mehrere Geräte angewendet werden. Gehen Sie wie folgt vor, um Ihre Geräte über Intune zu konfigurieren:
+Intune ist ein Microsoft-Produkt, mit dem Sie die Log Analytics-Konfigurationseinstellungen zentral verwalten können, die auf ein Gerät oder mehrere Geräte angewendet werden. Gehen Sie wie folgt vor, um Ihre Geräte über Intune zu konfigurieren:
 
 1. Melden Sie sich bei Intune an.
 2. Navigieren Sie zu **Einstellungen** > **Verbundene Quellen**.
 3. Erstellen oder bearbeiten Sie eine Richtlinie basierend auf der Surface Hub-Vorlage.
-4. Navigieren Sie zum OMS-Abschnitt (Azure Operational Insights) der Richtlinie, und fügen Sie die *Arbeitsbereichs-ID* und den *Arbeitsbereichsschlüssel* zur Richtlinie hinzu.
+4. Navigieren Sie zum OMS-Abschnitt (Azure Operational Insights) der Richtlinie, und fügen Sie die *Arbeitsbereichs-ID* und den *Arbeitsbereichsschlüssel* von Log Analytics zur Richtlinie hinzu.
 5. Speichern Sie die Richtlinie.
 6. Verknüpfen Sie die Richtlinie mit der entsprechenden Gruppe von Geräten.
 
    ![Intune-Richtlinie](./media/log-analytics-surface-hubs/intune.png)
 
-Intune synchronisiert dann die OMS-Einstellungen mit den Geräten in der Zielgruppe und registriert diese in Ihrem OMS-Arbeitsbereich.
+Intune synchronisiert dann die Log Analytics-Einstellungen mit den Geräten in der Zielgruppe und registriert diese in Ihrem Log Analytics-Arbeitsbereich.
 
-## <a name="connect-surface-hubs-to-oms-using-the-settings-app"></a>Verbinden von Surface Hubs mit OMS über die App „Einstellungen“
-Sie benötigen die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel für den OMS-Arbeitsbereich, der Ihre Surface Hubs verwalten soll. Sie können beides aus dem OMS-Portal abrufen.
+## <a name="connect-surface-hubs-to-log-analytics-using-the-settings-app"></a>Verbinden von Surface Hubs mit Log Analytics über die App „Einstellungen“
+Sie benötigen die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel für den Log Analytics-Arbeitsbereich, der Ihre Surface Hubs verwalten soll. Sie können sie aus den Einstellungen des Log Analytics-Arbeitsbereichs im Azure-Portal abrufen.
 
 Wenn Sie Intune verwenden, um Ihre Umgebung zu verwalten, können Sie Geräte manuell über **Einstellungen** auf jedem Surface Hub registrieren:
 
@@ -68,22 +67,23 @@ Wenn Sie Intune verwenden, um Ihre Umgebung zu verwalten, können Sie Geräte ma
 2. Geben Sie die Anmeldeinformationen des Administrators für das Gerät auf Aufforderung ein.
 3. Klicken Sie auf **Dieses Gerät**, und klicken Sie dann unter **Überwachung** auf **OMS-Einstellungen konfigurieren**.
 4. Wählen Sie **Überwachung aktivieren** aus.
-5. Geben Sie im Dialogfeld mit den OMS-Einstellungen die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** ein.  
+5. Geben Sie im Dialogfeld mit den OMS-Einstellungen die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel** von Log Analytics ein.  
    ![Einstellungen](./media/log-analytics-surface-hubs/settings.png)
 6. Klicken Sie auf **OK**, um die Konfiguration abzuschließen.
 
-Eine Bestätigung informiert Sie darüber, ob die OMS-Konfiguration erfolgreich auf das Gerät angewendet wurde. Ist dies der Fall, wird eine Meldung angezeigt, die besagt, dass der Agent erfolgreich mit dem OMS-Dienst verbunden wurde. Das Gerät beginnt dann mit dem Senden von Daten an OMS, wo Sie sie anzeigen und darauf reagieren können.
+Eine Bestätigung informiert Sie darüber, ob die Konfiguration erfolgreich auf das Gerät angewendet wurde. Ist dies der Fall, wird eine Meldung angezeigt, die besagt, dass der Agent erfolgreich mit Log Analytics verbunden wurde. Das Gerät beginnt dann mit dem Senden von Daten an Log Analytics, wo Sie sie anzeigen und darauf reagieren können.
 
 ## <a name="monitor-surface-hubs"></a>Überwachen von Surface Hubs
-Das Überwachen Ihrer Surface Hubs mit OMS gleicht dem Überwachen anderer registrierter Geräte.
+Das Überwachen Ihrer Surface Hubs mit Log Analytics gleicht dem Überwachen anderer registrierter Geräte.
 
-1. Melden Sie sich beim OMS-Portal an.
-2. Navigieren Sie zum Dashboard des Surface Hub-Lösungspakets.
+1. Melden Sie sich beim Azure-Portal an.
+2. Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich, und klicken Sie auf **Übersicht**.
+2. Klicken Sie auf die Surface Hub-Kachel.
 3. Die Integrität des Geräts wird angezeigt.
 
    ![Surface Hub-Dashboard](./media/log-analytics-surface-hubs/surface-hub-dashboard.png)
 
-Sie können [Warnungen](log-analytics-alerts.md) auf der Grundlage von vorhandenen oder benutzerdefinierten Protokollsuchvorgängen erstellen. Mit den Daten, die OMS auf Surface Hubs sammelt, können Sie nach Problemen suchen und Warnungen für die Bedingungen ausgegeben, die Sie für Ihre Geräte definieren.
+Sie können [Warnungen](log-analytics-alerts.md) auf der Grundlage von vorhandenen oder benutzerdefinierten Protokollsuchvorgängen erstellen. Mit den Daten, die Log Analytics auf Surface Hubs sammelt, können Sie nach Problemen suchen und Warnungen für die Bedingungen ausgegeben, die Sie für Ihre Geräte definieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md), um ausführliche Surface Hub-Daten anzuzeigen.

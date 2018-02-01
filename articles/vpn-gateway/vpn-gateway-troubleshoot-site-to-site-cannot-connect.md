@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: genli
-ms.openlocfilehash: 55cfba5e9730b123bba20dfdc5d10c1157352a35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96a1705d651b9a2d17a466b9c43721bec7b4972c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Problembehandlung: Azure-Site-to-Site-VPN-Verbindung kann nicht hergestellt werden und reagiert nicht mehr
 
@@ -46,7 +46,7 @@ Um das Problem zu beheben, versuchen Sie zunächst [das VPN-Gateway von Azure ](
 
 2. Stellen Sie sicher, dass das VPN-Gerät ordnungsgemäß konfiguriert ist. Weitere Informationen finden Sie unter [Bearbeiten der Gerätekonfigurationsvorlagen](vpn-gateway-about-vpn-devices.md#editing).
 
-### <a name="step-2-verify-the-shared-key"></a>Schritt 2: Überprüfen des gemeinsam verwendeten Schlüssels
+### <a name="step-2-verify-the-shared-key"></a>Schritt 2: Überprüfen des gemeinsam verwendeten Schlüssels
 
 Vergleichen Sie den gemeinsam verwendeten Schlüssel des lokalen VPN-Geräts und des Azure Virtual Network-VPNs, um sicherzustellen, dass die Schlüssel übereinstimmen. 
 
@@ -70,7 +70,7 @@ Für das klassische Bereitstellungsmodell:
 
     Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
-### <a name="step-3-verify-the-vpn-peer-ips"></a>Schritt 3: Überprüfen Sie die VPN-Peer-IP-Adressen
+### <a name="step-3-verify-the-vpn-peer-ips"></a>Schritt 3: Überprüfen Sie die VPN-Peer-IP-Adressen
 
 -   Die IP-Definition im Objekt **Lokales Netzwerkgateway** in Azure muss mit der IP-Adresse des lokalen Geräts übereinstimmen.
 -   Die Azure-Gateway-IP-Definition, die auf dem lokalen Gerät festgelegt ist, muss der Azure-Gateway-IP-Adresse entsprechen.
@@ -87,12 +87,12 @@ Suchen und Entfernen Sie benutzerdefiniertes routing (UDR) oder Netzwerksicherhe
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>Schritt 6: Überprüfen, ob die Subnetze genau übereinstimmen (Auf Azure-Richtlinien basierende Gateways)
 
--   Stellen Sie sicher, dass die Subnetze zwischen dem virtuellen Netzwerk in Azure und den lokalen Definitionen für das virtuelle Netzwerk von Azure genau übereinstimmen.
+-   Stellen Sie sicher, dass der Adressraum bzw. die Adressräume des virtuellen Netzwerks zwischen dem virtuellen Netzwerk in Azure und den lokalen Definitionen genau übereinstimmen.
 -   Stellen Sie sicher, dass die Subnetze zwischen dem **lokalen Netzwerkgateway** und den lokalen Definitionen für das lokale Netzwerk genau übereinstimmen.
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>Schritt 7. Überprüfen des Azure-Gatewayintegritätstests
 
-1. Wechseln Sie zum [Integritätstest](https://&lt;YourVirtualNetworkGatewayIP&gt;:8081/healthprobe).
+1. Wechseln Sie zum Integritätstest.
 
 2. Klicken Sie sich durch die Zertifikatswarnung.
 3. Wenn Sie eine Antwort erhalten, wird das VPN-Gateway als integer betrachtet. Wenn Sie keine Antwort erhalten, ist das Gateway möglicherweise nicht fehlerfrei, oder auf dem Gatewaysubnetz ist eine NSG vorhanden, die das Problem verursacht. Der folgende Text ist eine Beispielantwort:

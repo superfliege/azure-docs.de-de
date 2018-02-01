@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jgao
-ms.openlocfilehash: 18f495864befafd26e7adafb5c01612222d2cfdf
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 074415ba50ecdb1799093a3ead3bdd22fd02cc15
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Apache Spark BI mit Datenvisualisierungstools unter Azure HDInsight
 
@@ -29,7 +29,7 @@ Erfahren Sie, wie Sie mit [Microsoft Power BI](http://powerbi.microsoft.com) und
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Abschließen von [Ausführen interaktiver Abfragen auf Spark-Clustern in HDInsight](./apache-spark-load-data-run-query.md)**
+* **Abschließen des Artikels [Ausführen interaktiver Abfragen auf Spark-Clustern in HDInsight](./apache-spark-load-data-run-query.md)**
 * **Power BI:** [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) und [Power BI-Testabonnement](https://app.powerbi.com/signupredirect?pbi_source=web) (optional)
 * **Tableau:** [Tableau Desktop](http://www.tableau.com/products/desktop) und [ODBC-Treiber für Microsoft Spark](http://go.microsoft.com/fwlink/?LinkId=616229)
 
@@ -109,7 +109,7 @@ Die ersten Schritte bei der Verwendung von Spark bestehen darin, eine Verbindung
 
     ![Benutzername und Kennwort des Spark-Clusters](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Benutzername und Kennwort des Spark-Clusters")
 
-    Power BI Desktop verfügt nun über alle Informationen, die zum Herstellen einer Verbindung mit dem Spark-Cluster und zum Laden von Daten aus der Tabelle `hvac` erforderlich sind. Die Tabelle und ihre Spalten werden im Bereich **Felder** angezeigt.  Der folgende Screenshot zeigt dies.
+    Power BI Desktop verfügt nun über alle Informationen, die zum Herstellen einer Verbindung mit dem Spark-Cluster und zum Laden von Daten aus der Tabelle `hvac` erforderlich sind. Die Tabelle und ihre Spalten werden im Bereich **Felder** angezeigt.  Der folgende Screenshot zeigt dies:
 
 6. Visualisieren Sie die Abweichung zwischen Zieltemperatur und Ist-Temperatur für jedes Gebäude: 
 
@@ -212,7 +212,7 @@ Ihr visuelles Element wird an das Dashboard angeheftet. Sie können weitere visu
 6. Klicken Sie unten links auf die Registerkarte **Blatt1** . Erstellen Sie eine Visualisierung, in der die durchschnittlichen Ziel- und Ist-Temperaturen für alle Gebäude und jedes Datum angezeigt werden. Ziehen Sie **Datum** und **Building ID** (Gebäude-ID) auf **Spalten** und **Actual Temp**/**Target Temp** (Tatsächliche Temperatur/Zieltemperatur) auf **Zeilen**. Wählen Sie unter **Markierungen** die Option **Bereich** aus, um eine Bereichskarte für die Spark-Datenvisualisierung zu verwenden.
 
      ![Hinzufügen von Feldern für die Spark-Datenvisualisierung](./media/apache-spark-use-bi-tools/spark-data-visualization-add-fields.png "Hinzufügen von Feldern für die Spark-Datenvisualisierung")
-7. Standardmäßig werden die Temperaturfelder als Aggregatwerte angezeigt. Wenn Sie stattdessen die durchschnittlichen Temperaturen anzeigen möchten, können Sie die Dropdownliste verwenden, wie im nachstehenden Screenshot dargestellt.
+7. Standardmäßig werden die Temperaturfelder als Aggregatwerte angezeigt. Wenn Sie stattdessen die durchschnittlichen Temperaturen anzeigen möchten, können Sie die Dropdownliste verwenden, wie im nachstehenden Screenshot dargestellt:
 
     ![Ermitteln der Durchschnittstemperatur für die Spark-Datenvisualisierung](./media/apache-spark-use-bi-tools/spark-data-visualization-average-temperature.png "Ermitteln der Durchschnittstemperatur für die Spark-Datenvisualisierung")
 
@@ -230,5 +230,5 @@ Ihr visuelles Element wird an das Dashboard angeheftet. Sie können weitere visu
 Bis hier her haben Sie erfahren, wie Sie ein Cluster und Spark-Datenrahmen zum Abfrage von Daten erstellen können und wie Sie dann auf diese Daten von BI-Tools aus zugreifen. Es stehen Ihnen nun Anweisungen zur Verfügung, wie Sie Clusterressourcen verwalten und Aufträge debuggen können, die ein einem Cluster von HDInsight Spark ausgeführt werden.
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)
 

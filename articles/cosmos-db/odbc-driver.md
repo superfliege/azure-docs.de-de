@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 01/16/2018
 ms.author: mimig
-ms.openlocfilehash: 2df792c00b7a789dbefa64bfe0245f1ad73c3faa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3892f698ec2b0b45f71dc38491687897559821ba
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
@@ -38,9 +38,11 @@ Nun wenden wir uns dem ODBC-Treiber zu.
 
 1. Laden Sie die Treiber für Ihre Umgebung herunter:
 
-    * [Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) für 64-Bit-Windows
-    * [Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/documentdb-odbc-32x64) für 32-Bit unter 64-Bit-Windows
-    * [Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) für 32-Bit-Windows
+    | Installer | Unterstützte Betriebssysteme| 
+    |---|---| 
+    |[Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) für 64-Bit-Windows| 64-Bit-Versionen von Windows 8.1 oder höher, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 und Windows Server 2008 R2.| 
+    |[Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/documentdb-odbc-32x64) für 32-Bit unter 64-Bit-Windows| 64-Bit-Versionen von Windows 8.1 oder höher, Windows 8, Windows 7, Windows XP, Windows Vista, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 und Windows Server 2003.| 
+    |[Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) für 32-Bit-Windows|32-Bit-Versionen von Windows 8.1 oder höher, Windows 8, Windows 7, Windows XP und Windows Vista.|
 
     Führen Sie die MSI-Datei, mit der der **Installations-Assistent für den Microsoft Azure Cosmos DB-ODBC-Treiber** gestartet wird, lokal aus. 
 2. Verwenden Sie im Installations-Assistenten die Standardeinstellungen, um den ODBC-Treiber zu installieren.
@@ -58,9 +60,9 @@ Nun wenden wir uns dem ODBC-Treiber zu.
     ![Fenster „Azure Cosmos DB ODBC Driver DSN Setup“ (Azure Cosmos DB ODBC-Treiber – DSN-Setup)](./media/odbc-driver/odbc-driver-dsn-setup.png)
     - **Datenquellenname**: Dies ist der Anzeigename für den ODBC-DSN. Dieser Name muss für Ihr Azure Cosmos DB-Konto eindeutig sein. Vergeben Sie also einen passenden Namen, falls Sie mehrere Konten verwenden.
     - **Beschreibung**: Eine kurze Beschreibung der Datenquelle.
-    - **Host**: URI für Ihr Azure Cosmos DB-Konto. Sie können den URI im Azure-Portal über das Blatt „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel) abrufen. Dies ist im folgenden Screenshot dargestellt. 
-    - **Zugriffsschlüssel**: Der Primär- oder Sekundärschlüssel für den Lese-/Schreibzugriff oder schreibgeschützten Zugriff über das Blatt mit den Azure Cosmos DB-Schlüsseln im Azure-Portal. Dies ist im folgenden Screenshot dargestellt. Wir empfehlen Ihnen die Verwendung des Schlüssels für den schreibgeschützten Zugriff, falls der DSN nur für die schreibgeschützte Datenverarbeitung und Berichterstellung verwendet wird.
-    ![Blatt „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel)](./media/odbc-driver/odbc-driver-keys.png)
+    - **Host**: URI für Ihr Azure Cosmos DB-Konto. Sie können den URI im Azure-Portal über die Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel) abrufen. Dies ist im folgenden Screenshot dargestellt. 
+    - **Zugriffsschlüssel**: Der Primär- oder Sekundärschlüssel für den Lese-/Schreibzugriff oder schreibgeschützten Zugriff über die Seite mit den Azure Cosmos DB-Schlüsseln im Azure-Portal. Dies ist im folgenden Screenshot dargestellt. Wir empfehlen Ihnen die Verwendung des Schlüssels für den schreibgeschützten Zugriff, falls der DSN nur für die schreibgeschützte Datenverarbeitung und Berichterstellung verwendet wird.
+    ![Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel)](./media/odbc-driver/odbc-driver-keys.png)
     - **Encrypt Access Key for** (Zugriffsschlüssel verschlüsseln für): Treffen Sie basierend auf den Benutzern dieses Computers die beste Wahl. 
 4. Klicken Sie auf die Schaltfläche **Testen**, um sicherzustellen, dass Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto herstellen können. 
 5. Klicken Sie auf **Erweiterte Optionen**, und legen Sie die folgenden Werte fest:
@@ -148,4 +150,4 @@ Stellen Sie beim Auftreten des folgenden Fehlers sicher, dass die Werte für **H
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Cosmos DB finden Sie unter [Was ist Azure Cosmos DB?](introduction.md).
+Weitere Informationen zu Azure Cosmos DB finden Sie unter [Willkommen bei Azure Cosmos DB](introduction.md).

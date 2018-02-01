@@ -1,6 +1,6 @@
 ---
 title: Korrigieren von Sicherheitskonfigurationen in Azure Security Center | Microsoft-Dokumentation
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung **Sicherheitskonfigurationen korrigieren** umsetzen."
+description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Sicherheitskonfigurationen korrigieren“ umsetzen."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,93 +14,99 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 412234b1486fa15cbc399bcf43be8ce90aac252a
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 477973298d8cc9d99da78e36274933e0bb737c4f
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Korrigieren von Sicherheitskonfigurationen in Azure Security Center
 Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
 
-Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Weitere Informationen zum Anpassen von Sicherheitskonfigurationen in Security Center finden Sie unter [Anpassen von Sicherheitskonfigurationen für Betriebssysteme](security-center-customize-os-security-config.md).
+Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden, finden Sie in der [Liste mit den empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Wie Sie Sicherheitskonfigurationsbewertungen anpassen, erfahren Sie unter [Anpassen von Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center [Vorschau]](security-center-customize-os-security-config.md).
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-Das Korrigieren nicht übereinstimmender Sicherheitskonfigurationen wird in Security Center als Empfehlung angezeigt. Diese Empfehlung wird unter **Empfehlungen** und unter **Compute** angezeigt.
+„Sicherheitskonfigurationen korrigieren“ wird in Security Center als Empfehlung angezeigt. Die Empfehlung finden Sie unter **Empfehlungen** > **Compute**.
 
-In diesem Beispiel betrachten wir die Empfehlung **Sicherheitskonfigurationen korrigieren** unter **Compute**.
-1. Klicken Sie im Hauptmenü von Security Center auf **Compute**.
+In diesem Beispiel betrachten wir unter **Compute** die Empfehlung „Sicherheitskonfigurationen korrigieren“.
+1. Wählen Sie im linken Bereich in Security Center die Option **Compute** aus.  
+  Das Fenster **Compute** wird geöffnet.
 
    ![Korrigieren von Sicherheitskonfigurationen][1]
 
-2. Wählen Sie unter **Compute** die Option **Sicherheitskonfigurationen korrigieren**. Der Bereich **Sicherheitskonfigurationen** wird geöffnet.
+2. Wählen Sie **Sicherheitskonfigurationen korrigieren** aus.  
+  Das Fenster **Sicherheitskonfigurationen** wird geöffnet.
 
-   ![Sicherheitskonfigurationen][2]
+   ![Das Fenster „Sicherheitskonfigurationen“][2]
 
-  Im oberen Bereich des Dashboards befindet sich Folgendes:
+  Der obere Abschnitt des Dashboards zeigt Folgendes:
 
-  - Die Gesamtanzahl von Regeln (nach Schweregrad), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
-  - Die Gesamtanzahl von Regeln (nach Typ), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
-  - Die Gesamtanzahl von Regelfehlern, aufgeschlüsselt nach Windows-Betriebssystemkonfigurationen und Linux-Betriebssystemkonfigurationen.
+  - **Regeln mit Fehlern nach Schweregrad**: Die Gesamtanzahl von Regeln (nach Schweregrad), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
+  - **Regeln mit Fehlern nach Typ**: Die Gesamtanzahl von Regeln (nach Typ), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
+  - **Fehlerhafte Windows-Regeln**: Die Gesamtanzahl von Regelfehlern, aufgeschlüsselt nach Windows-Betriebssystemkonfigurationen.
+  - **Fehlerhafte Linux-Regeln**: Die Gesamtanzahl von Regelfehlern, aufgeschlüsselt nach Linux-Betriebssystemkonfigurationen.
 
-  Im unteren Bereich des Dashboards werden alle Regelfehler für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt. Die Liste enthält Folgendes:
+  Im unteren Bereich des Dashboards werden alle Regelfehler für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt. Die Liste enthält die folgenden Elemente:
 
-  - **CCIED**: Eindeutiger CCE-Bezeichner für die Regel Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen.
-  - **NAME**: Name des Regelfehlers
-  - **REGELTYP**: Registrierungsschlüssel, Sicherheitsrichtlinie oder Überwachungsrichtlinie
-  - **Anzahl VON VMS UND COMPUTERN**: Die Gesamtzahl virtueller und physischer Computer mit diesem Regelfehler
-  - **REGELSCHWEREGRAD**: CCE-Schweregrad: „Kritisch“, „Wichtig“ oder „Warnung“
-  - **STATUS**: Der aktuelle Status der Empfehlung:
+  - **CCIED**: Der eindeutige CCE-Bezeichner für die Regel. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen.
+  - **Name**: Der Name des Regelfehlers.
+  - **Regeltyp**: Der Regeltyp *Registrierungsschlüssel*, *Sicherheitsrichtlinie* oder *Überwachungsrichtlinie*.
+  - **Anzahl von VMs und Computern**: Die Gesamtzahl virtueller und physischer Computer mit diesem Regelfehler.
+  - **Schweregrad der Regel**: Der CCE-Schweregrad *Kritisch*, *Wichtig* oder *Warnung*.
+  - **Status**: Der aktuelle Status der Empfehlung:
 
-    - **Offen**: Die Empfehlung wurde noch nicht verarbeitet.
+    - **Offen**: Die Empfehlung wurde noch nicht umgesetzt.
     - **In Bearbeitung**: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
-    - **Behoben**: Die Empfehlung wurde bereits umgesetzt. (Wenn das Problem behoben wurde, wird der Eintrag abgeblendet dargestellt.)
+    - **Aufgelöst**: Die Empfehlung wurde angewendet. Wenn das Problem behoben wurde, wird der Eintrag abgeblendet dargestellt.
 
-3. Klicken Sie auf einen Regelfehler in der Liste, um weitere Informationen anzuzeigen.
+3. Um die Details eines Regelfehlers anzuzeigen, wählen Sie diesen in der Liste aus.
 
-   ![Konfigurationsregeln mit Fehlern][3]
+   ![Detailansicht einer fehlerhaften Konfigurationsregel][3]
 
-  Die folgende Informationen sind auf diesem Blatt angegeben:
+   In der Detailansicht werden die folgenden Informationen angezeigt:
 
-  - NAME: Name der Regel
-  - CCIED: Eindeutiger CCE-Bezeichner für die Regel
-  - Betriebssystemversion: Betriebssystemversion des virtuellen oder physischen Computers
-  - REGELSCHWEREGRAD: CCE-Schweregrad: „Kritisch“, „Wichtig“ oder „Warnung“
-  - VOLLSTÄNDIGE BESCHREIBUNG: Beschreibung der Regel
-  - SICHERHEITSRISIKO: Erläuterung des Sicherheitsrisikos, wenn die Regel nicht angewendet wird
-  - POTENZIELLE AUSWIRKUNG: Geschäftliche Auswirkung, wenn die Regel angewendet wird
-  - GEGENMASSNAHME: Schritte zur Behebung
-  - ERWARTETER WERT: Der erwartete Wert, wenn das Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht
-  - TATSÄCHLICHER Wert: Zurückgegebener Wert, nachdem das Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgeglichen hat
-  - REGELVORGANG: Vom Security Center verwendeter Regelvorgang, wenn das Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht
+   - **Name**: Der Name der Regel.
+   - **CCIED**: Der eindeutige CCE-Bezeichner für die Regel.
+   - **Betriebssystemversion**: Die Betriebssystemversion des virtuellen oder physischen Computers.
+   - **Schweregrad der Regel**: Der CCE-Schweregrad *Kritisch*, *Wichtig* oder *Warnung*.
+   - **Vollständige Beschreibung**: Die Beschreibung der Regel.
+   - **Sicherheitsrisiko**: Die Erläuterung des Sicherheitsrisikos, wenn die Regel nicht angewendet wird.
+   - **Potenzielle Auswirkung**: Die geschäftliche Auswirkung, wenn die Regel angewendet wird.
+   - **Gegenmaßnahme**: Die Schritte zur Behebung.
+   - **Erwarteter Wert**: Der erwartete Wert, wenn Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht.
+   - **Tatsächlicher Wert**: Der zurückgegebene Wert, nachdem Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgeglichen hat.
+   - **Regelvorgang**: Von Security Center verwendeter Regelvorgang, wenn Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht.
 
-4. Klicken Sie auf dem oberen Menüband auf das Symbol **Suche**. Die Suche wird mit einer Liste der Arbeitsbereiche geöffnet, die virtuelle und physische Computer mit den ausgewählten nicht übereinstimmenden Sicherheitskonfigurationen enthalten. Dieses Blatt für die Arbeitsbereichauswahl wird nur angezeigt, wenn die ausgewählte Regel für mehrere virtuelle Computer gilt, die mit unterschiedlichen Arbeitsbereichen verbunden sind.
+4. Klicken Sie oben in der Detailansicht auf die Option **Suche**.  
+  Die Suche wird mit einer Liste der Arbeitsbereiche geöffnet, die virtuelle und physische Computer mit den ausgewählten nicht übereinstimmenden Sicherheitskonfigurationen enthalten. Das Blatt für die Arbeitsbereichauswahl wird nur angezeigt, wenn die ausgewählte Regel für mehrere virtuelle Computer gilt, die mit unterschiedlichen Arbeitsbereichen verbunden sind.
 
-  ![Aufgeführte Arbeitsbereiche][4]
+   ![Aufgeführte Arbeitsbereiche][4]
 
-5. Wählen Sie einen Arbeitsbereich aus. Eine für den Arbeitsbereich mit den nicht übereinstimmenden Sicherheitskonfigurationen gefilterte Log Analytics-Suchabfrage wird geöffnet.
+5. Wählen Sie einen Arbeitsbereich aus.  
+  Eine für den Arbeitsbereich mit den nicht übereinstimmenden Sicherheitskonfigurationen gefilterte Log Analytics-Suchabfrage wird geöffnet.
 
-  ![Arbeitsbereich mit Betriebssystem-Sicherheitsrisiko][5]
+   ![Arbeitsbereich mit Betriebssystem-Sicherheitsrisiko][5]
 
-6. Klicken Sie auf einen Computer in der Liste, um weitere Informationen zu erhalten. Ein weiteres Suchergebnis wird geöffnet, das gefilterte Informationen für diesen speziellen Computer enthält.
+6. Wählen Sie in der Liste einen Computer aus.  
+  Ein neues Suchergebnis wird geöffnet, das gefilterte Informationen für diesen speziellen Computer enthält.
 
-  ![Für diesen Computer gefiltert][6]
+   ![Detaillierte Informationen zum ausgewählten Computer][6]
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Sicherheitskonfigurationen korrigieren“ umsetzen. Weitere Informationen zum Anpassen von Sicherheitskonfigurationen in Security Center finden Sie unter [Anpassen von Sicherheitskonfigurationen für Betriebssysteme](security-center-customize-os-security-config.md).
+In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Sicherheitskonfigurationen korrigieren“ umsetzen. Wie Sie Sicherheitskonfigurationsbewertungen anpassen, erfahren Sie unter [Anpassen von Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center [Vorschau]](security-center-customize-os-security-config.md).
 
-Sie können den Satz der Konfigurationsregeln [hier](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)überprüfen. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Auf der Website zu [CCE](https://nvd.nist.gov/cce/index.cfm) finden Sie weitere Informationen.
+Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden, finden Sie in der [Liste mit den empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Weitere Informationen finden Sie auf der Website zu [CCE](https://nvd.nist.gov/cce/index.cfm).
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Ressourcen:
 
-* [Unterstützte Plattformen in Azure Security Center:](security-center-os-coverage.md) Enthält eine Liste mit unterstützten Windows- und Linux-VMs.
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-* [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
-* [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
-* [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
+* Eine Liste mit unterstützten Windows- und Linux-VMs finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md). 
+* Anweisungen zum Konfigurieren von Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md). 
+* Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen: [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md). 
+* Anweisungen zum Überwachen der Integrität Ihrer Azure-Ressourcen finden Sie unter [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md). 
+* Erfahren Sie im Artikel [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md), wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+* Informationen zum Überwachen des Integritätsstatus Ihrer Partnerlösungen finden Sie unter [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md).
+* Antworten auf häufig gestellte Fragen zur Verwendung des Diensts finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
+* Blogbeiträge zur Azure-Sicherheit und -Compliance finden Sie im [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit).
 
 <!--Image references-->
 [1]: ./media/security-center-remediate-os-vulnerabilities/compute-blade.png

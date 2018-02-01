@@ -1,9 +1,9 @@
 ---
-title: "Azure RBAC – Problembehandlung | Microsoft-Dokumentation"
+title: Beheben von Problemen bei der rollenbasierten Zugriffssteuerung in Azure (RBAC) | Microsoft-Dokumentation
 description: "Hilfe bei Problemen oder Fragen zu Ressourcen für die rollenbasierte Zugriffsteuerung."
 services: azure-portal
 documentationcenter: na
-author: andredm7
+author: curtand
 manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
 ms.service: active-directory
@@ -11,20 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: andredm
+ms.date: 01/14/2018
+ms.author: curtand
 ms.reviewer: rqureshi
-ms.openlocfilehash: b7155ed7613d46329229d8e572c75400041022ce
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 8ca6c53b24c3e708d4631becabcedc523d436d6b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
-# <a name="role-based-access-control-troubleshooting"></a>Behandlung von Problemen bei der rollenbasierten Zugriffssteuerung
+# <a name="troubleshooting-azure-role-based-access-control"></a>Beheben von Problemen bei der rollenbasierten Zugriffssteuerung in Azure 
 
 In diesem Dokument werden häufig gestellte Fragen über bestimmte Zugriffsrechte, die mit Rollen erteilt werden, beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können. Diese drei Rollen decken alle Ressourcentypen ab:
 
-* Besitzer  
+* Owner (Besitzer)  
 * Mitwirkender  
 * Leser  
 
@@ -63,7 +64,7 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf den **App Service-Plan**
 Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcengruppe**, die Ihre Website umfasst:  
 
 * SSL-Zertifikate und -Bindungen (SSL-Zertifikate können von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden)  
-* Warnungsregeln  
+* Warnregeln  
 * Einstellungen für automatische Skalierung  
 * Application Insights-Komponenten  
 * Webtests  
@@ -84,7 +85,7 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Compute
 
 * Verfügbarkeitsgruppe  
 * Satz mit Lastenausgleich  
-* Warnungsregeln  
+* Warnregeln  
 
 Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrator nach Zugriff als Mitwirkender auf diese Ressourcengruppe.
 

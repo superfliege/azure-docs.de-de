@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/30/2017
+ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 535ea21a2c08be5f676ee24269b323a415b92607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f655becfac05acfacfeef12edd68b37835420bf
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
 Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:
@@ -36,7 +36,7 @@ Wenn vom Service Fabric-Ressourcenanbieter aus kein Zugriff auf Port 19080 mögl
 
 ## <a name="templates"></a>Vorlagen
 
-Alle Service Fabric-Vorlagen befinden sich in [einer Downloaddatei](https://msdnshared.blob.core.windows.net/media/2016/10/SF_Networking_Templates.zip). Sie sollten in der Lage sein, die Vorlagen mithilfe der folgenden PowerShell-Befehle ohne Änderungen bereitzustellen. Wenn Sie die vorhandene Azure Virtual Network-Vorlage oder die Vorlage der statischen öffentlichen IP bereitstellen, lesen Sie zuerst den Abschnitt [Anfangssetup](#initialsetup) dieses Artikels.
+Alle Service Fabric-Vorlagen befinden sich in [GitHub](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking). Sie sollten in der Lage sein, die Vorlagen mithilfe der folgenden PowerShell-Befehle ohne Änderungen bereitzustellen. Wenn Sie die vorhandene Azure Virtual Network-Vorlage oder die Vorlage der statischen öffentlichen IP bereitstellen, lesen Sie zuerst den Abschnitt [Anfangssetup](#initialsetup) dieses Artikels.
 
 <a id="initialsetup"></a>
 ## <a name="initial-setup"></a>Anfangssetup
@@ -73,7 +73,7 @@ DnsSettings              : {
 
 ### <a name="service-fabric-template"></a>Service Fabric-Vorlage
 
-In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwendet. Sie können die Vorlage mit dem standardmäßigen Portal-Assistenten vom Portal herunterladen, bevor Sie einen Cluster erstellen. Sie können auch eine der Vorlagen im [Vorlagenkatalog](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric) verwenden, z.B. [five-node Service Fabric cluster](https://azure.microsoft.com/en-us/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/) (Service Fabric-Cluster mit fünf Knoten).
+In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwendet. Sie können die Vorlage mit dem standardmäßigen Portal-Assistenten vom Portal herunterladen, bevor Sie einen Cluster erstellen. Sie können auch eine der [Beispielvorlagen](https://github.com/Azure-Samples/service-fabric-cluster-templates) verwenden, z.B. den [sicheren Service Fabric-Cluster mit fünf Knoten](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>Vorhandenes virtuelles Netzwerk oder Subnetz

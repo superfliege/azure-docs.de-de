@@ -4,7 +4,7 @@ description: "Erfahren Sie mehr über das Einrichten und Konfigurieren von in di
 services: hdinsight
 documentationcenter: 
 author: saurinsh
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: 
 ms.assetid: 0cbb49cc-0de1-4a1a-b658-99897caf827c
@@ -13,23 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/10/2018
+ms.date: 01/24/2018
 ms.author: saurinsh
-ms.openlocfilehash: 4921e329c2ec8ce3d5bbf8a0851146e13d5f6cd3
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 6284b246c071fb99a8b47845aca34b6262e5b856
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>Konfigurieren einer in die Domäne eingebundenen HDInsight-Sandboxumgebung
 
-Erfahren Sie, wie Sie Azure HDInsight-Cluster mit einem eigenständigen Active Directory-Verzeichnis und [Apache Ranger](http://hortonworks.com/apache/ranger/) einrichten, und profitieren Sie von einer strengen Authentifizierung und umfassenden Richtlinien für die rollenbasierte Zugriffssteuerung (RBAC). Weitere Informationen finden Sie unter [Einführung in die Hadoop-Sicherheit mit in die Domäne eingebundenen HDInsight-Clustern](apache-domain-joined-introduction.md).
+Erfahren Sie, wie Sie Azure HDInsight-Cluster mit einem eigenständigen Active Directory-Verzeichnis und [Apache Ranger](http://hortonworks.com/apache/ranger/) einrichten, und profitieren Sie von einer strengen Authentifizierung und umfassenden Richtlinien für die rollenbasierte Zugriffssteuerung (RBAC). Weitere Informationen finden Sie unter [Introduce Domain-joined HDInsight clusters (Einführung in HDInsight-Cluster mit Domänenverknüpfung)](apache-domain-joined-introduction.md).
 
 Ohne in die Domäne eingebundene HDInsight-Cluster kann jeder Cluster nur ein Hadoop-HTTP-Benutzerkonto und ein SSH-Benutzerkonto verwenden.  Die Authentifizierung mehrere Benutzer kann folgendermaßen erreicht werden:
 
 -   Eigenständiges Active Directory-Verzeichnis, ausgeführt in Azure-IaaS
 -   Azure Active Directory
--   Active Directory, ausgeführt in der lokalen Kundenumgebung
 
 In diesem Artikel wird die Verwendung eines eigenständigen Active Directory-Verzeichnisses in Azure-IaaS behandelt. Es handelt sich um die einfachste Architektur, die ein Benutzer implementieren kann, um in HDInsight mehrere Benutzer zu unterstützen. Dieser Artikel beschreibt zwei Ansätze für diese Konfiguration:
 
@@ -41,7 +40,7 @@ In diesem Artikel wird die Verwendung eines eigenständigen Active Directory-Ver
     - Erstellen des HDInsight-Clusters
 
 > [!IMPORTANT]
-> Oozie ist in HDInsight mit Domäneneinbindung nicht aktiviert.
+> Oozie ist auf HDInsight mit Domänenverknüpfung nicht aktiviert.
 
 ## <a name="prerequisite"></a>Voraussetzung
 * Azure-Abonnement
@@ -71,9 +70,10 @@ In diesem Abschnitt öffnen Sie eine Azure-Ressourcenverwaltungsvorlage aus dem 
     - **Administratorbenutzername**: Geben Sie den Benutzernamen des Domänenadministrators ein.
     - **Administratorkennwort**: Geben Sie das Kennwort des Domänenadministrators ein.
     - **Domänenname**: Der Standardname lautet *contoso.com*.  Wenn Sie den Domänennamen ändern, müssen Sie auch die Werte in den Feldern **Zertifikat für sicheres LDAP** und **DN der Organisationseinheit** aktualisieren.
+    - **DNS-Präfix**: Geben Sie das DNS-Präfix für die von Load Balancer verwendete öffentliche IP-Adresse ein.
     - **Clustername**: Geben Sie den Namen des HDInsight-Clusters ein.
     - **Clustertyp**: Ändern Sie diesen Wert nicht. Wenn Sie den Clustertyp ändern möchten, verwenden Sie die entsprechende Vorlage im letzten Schritt.
-
+    - **Secure LDAP-Zertifikatkennwort**: Verwenden Sie den Standardwert, es sei denn, Sie ändern das Feld „Secure LDAP-Zertifikat“.
     Einige der Werte sind in der Vorlage hartcodiert, beispielsweise ist die Anzahl von Workerknoteninstanzen auf 2 festgelegt.  Klicken Sie zum Ändern der hartcodierten Werte auf **Vorlage bearbeiten**.
 
     ![Vorlage zum Bearbeiten von HDInsight-Clustern mit Domäneneinbindung](./media/apache-domain-joined-configure/hdinsight-domain-joined-edit-template.png)
@@ -154,7 +154,7 @@ Das Lightweight Directory Access Protocol (LDAP) wird zum Lesen und Schreiben in
 
 2. Klicken Sie links auf **Rollendienste**, wählen Sie **Zertifizierungsstelle** aus, und klicken Sie dann auf **Weiter**.
 3. Folgen Sie den Anweisungen des Assistenten, und verwenden Sie für die verbleibenden Schritte des Verfahrens die Standardeinstellungen (klicken Sie im letzten Schritt auf **Konfigurieren**).
-4. Klicken Sie auf **Schließen**, um den Assistenten zu schließen.
+4. Klicken Sie auf **Schließen** , um den Assistenten zu schließen.
 
 ### <a name="optional-create-ad-users-and-groups"></a>(Optional) Erstellen von AD-Benutzern und -Gruppen
 
@@ -178,7 +178,7 @@ In diesem Abschnitt verwenden Sie das Azure-Portal, um einen HDInsight-Cluster z
 
 **So erstellen Sie einen in die Domäne eingebundenen HDInsight-Cluster**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Öffnen Sie die Ressourcengruppe, die Sie zuvor in diesem Tutorial mithilfe der Resource Manager-Vorlage erstellt haben.
 3. Fügen Sie einen HDInsight-Cluster zur Ressourcengruppe hinzu.
 4. Wählen Sie die Option **Benutzerdefiniert** aus:
@@ -211,9 +211,9 @@ In diesem Abschnitt verwenden Sie das Azure-Portal, um einen HDInsight-Cluster z
 
 
 
-Löschen Sie den Cluster, wenn Sie das Tutorial beendet haben. Mit HDInsight werden Ihre Daten in Azure Storage gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen. Anweisungen zum Löschen eines Clusters finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal](../hdinsight-administer-use-management-portal.md#delete-clusters).
+Löschen Sie den Cluster, wenn Sie das Tutorial beendet haben. Mit HDInsight werden Ihre Daten im Azure-Speicher gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen. Anweisungen zum Löschen eines Clusters finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal](../hdinsight-administer-use-management-portal.md#delete-clusters).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Konfigurieren von Hive-Richtlinien und zum Ausführen von Hive-Abfragen finden Sie unter [Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung](apache-domain-joined-run-hive.md).
+* Informationen zum Konfigurieren von Hive-Richtlinien und zum Ausführen von Hive-Abfragen finden Sie unter [Configure Hive policies in Domain-joined HDInsight (Preview)](apache-domain-joined-run-hive.md) (Konfigurieren von Hive-Richtlinien für in die Domäne eingebundene HDInsight-Cluster).
 * Informationen zum Verwenden von in die Domäne eingebundenen HDInsight-Clustern finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 

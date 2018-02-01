@@ -1,21 +1,21 @@
 ---
-title: Bereitstellen in Azure Container Instances aus Azure Container Registry | Azure-Dokumentation
-description: Bereitstellen in Azure Container Instances aus Azure Container Registry
+title: Bereitstellen in Azure Container Instances aus Azure Container Registry
+description: Erfahren Sie, wie Container auf Azure Container Instances mithilfe von Containerimages in Azure Container Registry bereitgestellt werden.
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 01/24/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 4205b47dc67920021812c1e573a98de64ad198ec
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: c69b95f66bf2eaf4975961da5b25f5ac6172798c
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/25/2018
 ---
-# <a name="deploy-to-azure-container-instances-from-the-azure-container-registry"></a>Bereitstellen in Azure Container Instances aus Azure Container Registry | Azure-Dokumentation
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Bereitstellen in Azure Container Instances aus Azure Container Registry
 
 Azure Container Registry (ACR) ist eine Azure-basierte, private Registrierung für Docker-Containerimages. In diesem Artikel wird beschrieben, wie Containerimages, die in Azure Container Registry gespeichert sind, auf Azure Container Instances bereitgestellt werden können.
 
@@ -51,17 +51,23 @@ Wenn Sie Containerimages im Azure Container Registry verwalten, können Sie leic
 
 1. Navigieren Sie im Azure-Portal wieder zu Ihrer Containerregistrierung.
 
-2. Klicken Sie auf **Repositorys**, und wählen Sie dann das Repository aus, über das die Bereitstellung erfolgen soll. Klicken Sie mit der rechten Maustaste auf das Tag für das Containerimage, das Sie bereitstellen möchten, und klicken Sie auf **Instanz ausführen**.
+1. Klicken Sie auf **Repositorys**, und wählen Sie dann das Repository aus, über das die Bereitstellung erfolgen soll. Klicken Sie mit der rechten Maustaste auf das Tag für das Containerimage, das Sie bereitstellen möchten, und klicken Sie auf **Instanz ausführen**.
 
     ![„Instanz ausführen“ in Azure Container Registry im Azure-Portal][acr-runinstance-contextmenu]
 
-3. Geben Sie einen Namen für den Container und einen Namen für die Ressourcengruppe ein. Sie können den Standardwert auch bei Bedarf ändern.
+1. Geben Sie einen Namen für den Container und einen Namen für die Ressourcengruppe ein. Sie können den Standardwert auch bei Bedarf ändern.
 
     ![Erstellmenü für Azure Container Instances][acr-create-deeplink]
 
-4. Sobald die Bereitstellung abgeschlossen wurde, können Sie vom Benachrichtigungsbereich aus zur Containergruppe navigieren, um die IP-Adresse und andere Eigenschaften zu sehen.
+1. Sobald die Bereitstellung abgeschlossen wurde, können Sie vom Benachrichtigungsbereich aus zur Containergruppe navigieren, um die IP-Adresse und andere Eigenschaften zu sehen.
 
     ![Detailansicht für eine Containergruppe in Azure Container Instances][aci-detailsview]
+
+## <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
+
+Wenn der Administratorbenutzer für Azure Container Registry deaktiviert ist, können Sie einen [Dienstprinzipal](../container-registry/container-registry-auth-service-principal.md) aus Azure Active Directory beim Erstellen einer Containerinstanz verwenden, um sich bei der Registrierung zu authentifizieren. Die Verwendung eines Dienstprinzipals für die Authentifizierung wird außerdem für monitorlose Szenarien empfohlen, z.B. beim unbeaufsichtigten Erstellen von Containerinstanzen durch ein Skript oder eine Anwendung.
+
+Weitere Informationen finden Sie unter [Authentifizieren mit Azure Container Registry aus Azure Container Instances](../container-registry/container-registry-auth-aci.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

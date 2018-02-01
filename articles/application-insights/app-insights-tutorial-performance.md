@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 0edec15c7f14ee5338555b03700b7be32c3a1023
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 437c45891d1d20f5fadca8a58954185a3aef56ac
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights
 
@@ -38,7 +38,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - [Aktivieren Sie Application Insights Profiler](app-insights-profiler.md#installation) für Ihre Anwendung.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
 
 ## <a name="identify-slow-server-operations"></a>Identifizieren langsamer Servervorgänge
 Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in Ihrer Anwendung.  Durch Identifizieren der Vorgänge mit der längsten Dauer können Sie potenzielle Probleme diagnostizieren oder die aktuelle Entwicklung bestmöglich auf die Verbesserung der allgemeinen Leistung der Anwendung ausrichten.
@@ -63,6 +63,14 @@ Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in
 5.  In diesem Beispiel sehen Sie, dass die Verarbeitungsdauer für eine erhebliche Anzahl von Anforderungen bei über einer Sekunde liegt. Die Details dieses Vorgangs lassen sich durch Klicken auf **Vorgangsdetails** aufrufen.
 
     ![Vorgangsdetails](media/app-insights-tutorial-performance/operation-details.png)
+
+    > [!NOTE]
+    Aktivieren Sie die [Vorschauoberfläche](app-insights-previews.md) „Unified details: E2E Transaction Diagnostics“ (Einheitliche Details: E2E-Transaktionsdiagnose), um die gesamten serverseitigen Telemetriedaten in einer Bildschirmansicht anzuzeigen, z.B. Anforderungen, Abhängigkeiten, Ausnahmen, Ablaufverfolgungen, Ereignisse usw. 
+
+    Bei aktivierter Vorschau können Sie verfolgen, wie viel Zeit für Abhängigkeitsaufrufe aufgewendet wurde und welche Fehler oder Ausnahmen aufgetreten sind – alles in einer Oberfläche. Für komponentenübergreifende Transaktionen ermöglicht das Gantt-Diagramm zusammen mit dem Detailbereich eine schnelle Diagnose der Grundursache in Bezug auf die Komponente, Abhängigkeit oder Ausnahme. Sie können den untersten Abschnitt erweitern, um den zeitlichen Ablauf für alle Ablaufverfolgungen oder Ereignisse anzuzeigen, die für den gewählten Komponentenvorgang gesammelt wurden. [Weitere Informationen zur neuen Oberfläche](app-insights-transaction-diagnostics.md)  
+
+    ![Transaktionsdiagnose](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
+
 
 6.  Die Informationen, die Sie bisher gesammelt haben, bestätigen, dass es Leistungseinbußen gibt. Sie erzählen jedoch wenig über die Grundursache.  Hier kommt der **Profiler** ins Spiel: Er zeigt den tatsächlichen Code, der für den Vorgang ausgeführt wurde, und den Zeitaufwand für die einzelnen Schritte an. Einige Vorgänge haben möglicherweise keine Ablaufverfolgung, da der Profiler in regelmäßigen Abständen ausgeführt wird.  Im Laufe der Zeit sollten weitere Vorgänge aber Ablaufverfolgungen erhalten.  Um den Profiler für den Vorgang zu starten, klicken Sie auf **Profiler-Ablaufverfolgungen**.
 5.  Die Ablaufverfolgung zeigt die einzelnen Ereignisse für jeden Vorgang an, damit Sie die Grundursache für die Dauer des gesamten Vorgangs diagnostizieren können.  Klicken Sie auf eines der obersten Beispiele, die am längsten dauern.

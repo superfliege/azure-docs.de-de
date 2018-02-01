@@ -13,23 +13,23 @@ ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 01/16/2018
 ms.author: jodebrui
-ms.openlocfilehash: 613a9ced91d71cc9a65ea67e6ede1a78a03b4bd5
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1e7088e80cc86e3c7cf8ae8ea180d797de613e71
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Überwachen des In-Memory-OLTP-Speichers
-Bei der Verwendung von [In-Memory-OLTP](sql-database-in-memory.md)befinden sich die Daten der speicheroptimierten Tabellen und Tabellenvariablen im In-Memory-OLTP-Speicher. Jeder Premium-Tarif weist eine maximale In-Memory-OLTP-Speichergröße auf, die in „Ressourceneinschränkungen für Azure SQL-Datenbank“ in den Abschnitten zu den [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels) und [Ressourceneinschränkungen für elastische Pools](sql-database-resource-limits.md#elastic-pool-change-storage-size) dokumentiert ist. Wenn dieses Limit überschritten wird, treten bei Einfüge- und Aktualisierungsvorgängen möglicherweise Fehler auf (Fehlercode: 41823). An diesem Punkt müssen Sie entweder Daten löschen, um Speicherplatz freizugeben, oder ein Upgrade der Leistungsstufe Ihrer Datenbank durchführen.
+Bei der Verwendung von [In-Memory-OLTP](sql-database-in-memory.md)befinden sich die Daten der speicheroptimierten Tabellen und Tabellenvariablen im In-Memory-OLTP-Speicher. Jeder Premium-Tarif weist eine maximale In-Memory-OLTP-Speichergröße auf, die in „Ressourceneinschränkungen für Azure SQL-Datenbank“ in den Abschnitten zu den [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels) und [Ressourceneinschränkungen für Pools für elastische Datenbanken](sql-database-resource-limits.md#elastic-pool-change-storage-size) dokumentiert ist. Wenn dieses Limit überschritten wird, tritt bei Einfüge- und Aktualisierungsvorgängen möglicherweise der Fehler 41823 (eigenständige Datenbanken) bzw. der Fehler 41840 (Pools für elastische Datenbanken) auf. An diesem Punkt müssen Sie entweder Daten löschen, um Speicherplatz freizugeben, oder die Leistungsstufe Ihrer Datenbank upgraden.
 
-## <a name="determine-whether-data-will-fit-within-the-in-memory-storage-cap"></a>Bestimmen, ob genügend In-Memory-Speicherplatz für die Daten vorhanden ist
-Bestimmen Sie die Speicherkapazitäten der verschiedenen Premium-Dienstebenen. Siehe Abschnitte zu den [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels) und [Ressourceneinschränkungen für elastische Pools](sql-database-resource-limits.md#elastic-pool-change-storage-size) in „Ressourceneinschränkungen für Azure SQL-Datenbank“.
+## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Bestimmen, ob genügend In-Memory-OLTP-Speicherplatz für die Daten zur Verfügung steht
+Bestimmen Sie die Speicherkapazitäten der verschiedenen Premium-Dienstebenen. Siehe Abschnitte zu den [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels) und [Ressourceneinschränkungen für Pools für elastische Datenbanken](sql-database-resource-limits.md#elastic-pool-change-storage-size) in „Ressourceneinschränkungen für Azure SQL-Datenbank“.
 
-Das Einschätzen des Speicherbedarfs für eine speicheroptimierte Tabelle funktioniert für SQL Server genauso wie in Azure SQL-Datenbank. Lesen Sie die Informationen hierzu in [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
+Das Einschätzen des Speicherbedarfs für eine speicheroptimierte Tabelle funktioniert für SQL Server genauso wie in Azure SQL-Datenbank. Lesen Sie sich dazu kurz den Artikel auf [MSDN](https://msdn.microsoft.com/library/dn282389.aspx) durch.
 
-Beachten Sie, dass sowohl die Tabellen- und Tabellenvariablenzeilen als auch die Indizes in die maximale Größe für Benutzerdaten eingerechnet werden. Darüber hinaus benötigt ALTER TABLE genügend Platz, um eine neue Version der gesamten Tabelle und ihrer Indizes zu erstellen.
+Sowohl die Tabellen- und Tabellenvariablenzeilen als auch die Indizes werden in die maximale Größe für Benutzerdaten eingerechnet. Darüber hinaus benötigt ALTER TABLE genügend Platz, um eine neue Version der gesamten Tabelle und ihrer Indizes zu erstellen.
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 Sie können die Nutzung von In-Memory-Speicher als Prozentsatz der Speicherkapazität für Ihre Leistungsstufe im [Azure-Portal](https://portal.azure.com/) überwachen: 
@@ -43,15 +43,18 @@ Oder verwenden Sie folgende Abfrage, um die In-Memory-Speicherverwendung anzuzei
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
 
 
-## <a name="correct-out-of-memory-situations---error-41823"></a>Korrigieren von Fehlern aufgrund von fehlendem Speicherplatz – Fehler 41823
-Wenn nicht genügend Speicherplatz zur Verfügung steht, treten bei den Vorgängen INSERT, UPDATE und CREATE Fehler mit Fehlercode 41823 auf.
+## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Behandeln von Situationen mit zu wenig In-Memory-OLTP-Speicher: Fehler 41823 und 41840
+Bei Erreichen der Obergrenze des In-Memory-OLTP-Speichers in Ihrer Datenbank tritt bei INSERT-, UPDATE-, ALTER- und CREATE-Vorgängen der Fehler 41823 (eigenständige Datenbanken) bzw. der Fehler 41840 (Pools für elastische Datenbanken) auf. Beide Fehler führen zum Abbruch der aktiven Transaktion.
 
-Der Fehlercode 41823 weist darauf hin, dass die speicheroptimierten Tabellen und Tabellenvariablen die maximale Speichergröße überschritten haben.
+Die Fehlermeldungen 41823 und 41840 geben an, dass die speicheroptimierten Tabellen und Tabellenvariablen in der Datenbank oder im Pool die maximale In-Memory-OLTP-Speichergröße erreicht haben.
 
 Beheben Sie den Fehler mit einer der folgenden Methoden:
 
 * Löschen Sie Daten aus den speicheroptimierten Tabellen – Sie können die Daten beispielsweise in herkömmliche datenträgerbasierte Tabellen auslagern.
 * Führen Sie ein Upgrade auf eine Dienstebene durch, die genügend In-Memory-Speicher für die Daten bietet, die Sie in In-Memory-Tabellen speichern müssen.
+
+> [!NOTE] 
+> In seltenen Fällen treten die Fehler 41823 und 41840 nur vorübergehend auf. In diesem Fällen steht genügend In-Memory-OLTP-Speicher zur Verfügung, und der Vorgang ist erfolgreich, wenn er erneut ausgeführt wird. Es empfiehlt sich daher, den insgesamt verfügbaren In-Memory OLTP-Speicher zu überwachen und den Vorgang beim erstmaligen Auftreten des Fehlers 41823 oder 41840 zu wiederholen. Weitere Informationen zur Wiederholungslogik finden Sie unter [Konflikterkennung und Wiederholungslogik](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Anleitung zur Überwachung finden Sie unter [Überwachen von Azure SQL-Datenbank mit dynamischen Verwaltungssichten](sql-database-monitoring-with-dmvs.md).

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 9ea5be818cfc104c243ce31cc0e2d0f10135259f
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: e1d110aea526c4632219ef8fd2a9681b1b6c330f
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="create-container-images-for-service-fabric"></a>Erstellen von Containerimages für Service Fabric
 
@@ -58,7 +58,7 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-Die Projektmappe enthält zwei Ordner und die Datei „docker-compse.yml“. Der Ordner „azure-vote“ enthält den Python-Front-End-Dienst und die zur Imageerstellung verwendete Dockerfile. Das Verzeichnis „Voting“ enthält das Service Fabric-Anwendungspaket, das für den Cluster bereitgestellt wird. Diese Verzeichnisse enthalten die erforderlichen Ressourcen für dieses Tutorial.  
+Die Projektmappe enthält zwei Ordner und die Datei „docker-compose.yml“. Der Ordner „azure-vote“ enthält den Python-Front-End-Dienst und die zur Imageerstellung verwendete Dockerfile. Das Verzeichnis „Voting“ enthält das Service Fabric-Anwendungspaket, das für den Cluster bereitgestellt wird. Diese Verzeichnisse enthalten die erforderlichen Ressourcen für dieses Tutorial.  
 
 ## <a name="create-container-images"></a>Erstellen von Containerimages
 

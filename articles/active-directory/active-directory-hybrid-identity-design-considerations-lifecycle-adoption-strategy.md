@@ -1,5 +1,5 @@
 ---
-title: "Überlegungen zum Entwurf der Azure Active Directory-Hybrididentität – Ermitteln der Strategie für die Übernahme des Hybrididentitäts-Lebenszyklus | Microsoft-Dokumentation"
+title: "Entwerfen von Hybrididentitäten – Strategie für die Einführung des Lebenszyklus in Azure | Microsoft-Dokumentation"
 description: "Hilft, die Aufgaben der Verwaltung der Hybrididentität gemäß der für die einzelnen Phasen des Lebenszyklus verfügbaren Optionen zu definieren."
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: ef8c4a0f672af2540f071f40eac77dc881eb31ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: bfa74c7557819bbef334fc94eb42e5ba83cf3fee
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Ermitteln der Strategie für die Übernahme des Hybrididentitätslebenszyklus
 In dieser Aufgabe definieren Sie die Identitätsverwaltungsstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie in [Ermitteln von Aufgaben der Hybrididentitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)definiert haben.
@@ -97,6 +98,6 @@ Vergleichen Sie die Synchronisierungsoptionen anhand folgender Tabelle:
 > 
 > 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 

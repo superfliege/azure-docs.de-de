@@ -3,20 +3,20 @@ title: Integrieren von Azure DNS in Ihre Azure-Ressourcen | Microsoft-Dokumentat
 description: "Erfahren Sie, wie Sie mit Azure DNS für Ihre Azure-Ressourcen DNS bereitstellen."
 services: dns
 documentationcenter: na
-author: georgewallace
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
-ms.author: gwallace
-ms.openlocfilehash: 41c1649bfff035bc641d7c1f5d7803cd105e8297
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 1/19/2018
+ms.author: kumud
+ms.openlocfilehash: cbc769cd7356b3057fd2aae295071b04d2e40d91
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS
 
@@ -26,7 +26,7 @@ Azure DNS stellt DNS für eine benutzerdefinierte Domäne für Ihre Azure-Ressou
 
 Um Azure DNS für Ihre benutzerdefinierte Domäne verwenden zu können, müssen Sie zuerst Ihre Domäne an Azure DNS delegieren. Anweisungen zum Konfigurieren Ihrer Namenserver für die Delegierung finden Sie unter [Delegieren einer Domäne an Azure DNS](./dns-delegate-domain-azure-dns.md). Nachdem Ihre Domäne an Ihre Azure-DNS-Zone delegiert wurde, können Sie die erforderlichen DNS-Einträge konfigurieren.
 
-Sie können eine Vanity oder eine benutzerdefinierte Domäne für [Azure-Funktionen-Apps](#azure-function-app), [Azure IoT](#azure-iot), [öffentliche IP-Adressen](#public-ip-address), [App Service (Web-Apps)](#app-service-web-apps), [Blob Storage](#blob-storage) und [Azure CDN](#azure-cdn) konfigurieren.
+Sie können eine Vanity oder eine benutzerdefinierte Domäne für [Azure-Funktionen-Apps](#azure-function-app), [öffentliche IP-Adressen](#public-ip-address), [App Service (Web-Apps)](#app-service-web-apps), [Blobspeicher](#blob-storage) und [Azure CDN](#azure-cdn) konfigurieren.
 
 ## <a name="azure-function-app"></a>Azure-Funktionen-App
 
@@ -42,9 +42,9 @@ Beachten Sie die aktuelle URL auf dem Blatt **Benutzerdefinierte Domänen**. Die
 
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
-|Eigenschaft  |Wert  |Beschreibung  |
+|Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Name     | myfunctionapp        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|NAME     | myfunctionapp        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |Typ     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
@@ -55,27 +55,6 @@ Navigieren Sie wieder zu Ihrer Funktionen-App, klicken Sie auf **Plattformfeatur
 Geben Sie auf dem Blatt **Hostnamen hinzufügen** den CNAME-Datensatz in das Textfeld **Hostname** ein, und klicken Sie auf **Überprüfen**. Wenn der Datensatz gefunden werden konnte, wird die Schaltfläche **Hostnamen hinzufügen** angezeigt. Klicken Sie auf **Hostnamen hinzufügen**, um den Alias hinzuzufügen.
 
 ![Blatt „Hostnamen hinzufügen“ von Funktionen-Apps](./media/dns-custom-domain/functionaddhostname.png)
-
-## <a name="azure-iot"></a>Azure IoT
-
-Azure IoT erfordert für den Dienst selbst keine Anpassungen. Um eine benutzerdefinierte Domäne mit IoT Hub zu verwenden, ist lediglich ein auf die Ressourcen zeigender CNAME-Datensatz erforderlich.
-
-Navigieren Sie zu **Internet of Things** > **IoT Hub**, und wählen Sie Ihre IoT Hub-Instanz aus. Beachten Sie auf dem Blatt **Übersicht** den FQDN von IoT Hub.
-
-![Blatt „IoT Hub“](./media/dns-custom-domain/iot.png)
-
-Navigieren Sie anschließend zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
-
-
-|Eigenschaft  |Wert  |Beschreibung  |
-|---------|---------|---------|
-|Name     | myiothub        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für IoT Hub.        |
-|Typ     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.
-|TTL     | 1        | 1 steht für 1 Stunde.        |
-|TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
-|Alias     | adatumIOT.azure-devices.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für IoT Hub bereitgestellte Hostname „adatumIOT.azure-devices.net“.
-
-Nachdem der Datensatz erstellt wurde, testen Sie die Namensauflösung mit dem CNAME-Datensatz mit `nslookup`.
 
 ## <a name="public-ip-address"></a>Öffentliche IP-Adresse
 
@@ -88,10 +67,10 @@ Navigieren Sie zu **Netzwerk** > **Öffentliche IP-Adresse**, wählen Sie als Re
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
 
-|Eigenschaft  |Wert  |Beschreibung  |
+|Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Name     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Typ     | A        | Verwenden Sie einen A-Datensatz, da die Ressource eine IP-Adresse ist.        |
+|NAME     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|Typ     | Eine Datei        | Verwenden Sie einen A-Datensatz, da die Ressource eine IP-Adresse ist.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |IP-Adresse     | <your ip address>       | Öffentliche IP-Adresse|
@@ -115,9 +94,9 @@ Beachten Sie die aktuelle URL auf dem Blatt **Benutzerdefinierte Domänen**. Die
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
 
-|Eigenschaft  |Wert  |Beschreibung  |
+|Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Name     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|NAME     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |Typ     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias. Wenn für die Ressource eine IP-Adresse verwendet wurde, würde ein A-Eintrag verwendet werden.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
@@ -138,7 +117,7 @@ Weitere Informationen, wie Sie eine benutzerdefinierte Domäne zu App Service zu
 
 Wenn Sie eine benutzerdefinierte Domäne erwerben möchten, lesen Sie die Informationen zu App Service-Domänen unter [Erwerben eines Namens für eine benutzerdefinierte Domäne für Azure-Web-Apps](../app-service/custom-dns-web-site-buydomains-web-app.md).
 
-## <a name="blob-storage"></a>Blob-Speicher
+## <a name="blob-storage"></a>Blob Storage
 
 Die folgenden Schritte führen Sie durch die Konfiguration eines CNAME-Datensatzes für ein Blob Storage-Konto mit der asverify-Methode. Durch diese Methode wird sichergestellt, dass keine Ausfallzeiten auftreten.
 
@@ -149,9 +128,9 @@ Navigieren Sie zu **Speicher** > **Speicherkonten**, wählen Sie Ihr Speicherkon
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
 
-|Eigenschaft  |Wert  |Beschreibung  |
+|Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Name     | asverify.mystorageaccount        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|NAME     | asverify.mystorageaccount        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |Typ     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
@@ -177,9 +156,9 @@ Wählen Sie den Endpunkt aus, mit dem Sie arbeiten, und klicken Sie auf **+ Benu
 
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
-|Eigenschaft  |Wert  |Beschreibung  |
+|Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Name     | cdnverify.mycdnendpoint        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|NAME     | cdnverify.mycdnendpoint        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |Typ     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |

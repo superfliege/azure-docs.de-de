@@ -2,23 +2,18 @@
 title: "Azure Site Recovery – Problembehandlung für „VMware zu Azure“ | Microsoft-Dokumentation"
 description: Beheben von Fehlern beim Replizieren von virtuellen Azure-Computern
 services: site-recovery
-documentationcenter: 
 author: anoopkv
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/12/2017
+ms.date: 01/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: df8234ad79439245025cb7ecf87a2050960958b2
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c5566ec44a8bfed0a3e7207c2cebf21517573541
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -74,7 +69,7 @@ Dieser Fehler kann aus mehreren Gründen vom Dienst ausgelöst werden. Wählen S
 
 **Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
 --- | --- | ---
-95108 </br>**Meldung:** Fehler bei der Pushinstallation des Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0859**. <br>| Entweder sind die Anmeldeinformationen für das Installieren von Mobility Service falsch, oder das Benutzerkonto verfügt nicht über ausreichende Berechtigungen. <br>| Stellen Sie sicher, dass die bereitgestellten Anmeldeinformationen die Anmeldeinformationen für das **root**-Konto sind. Navigieren Sie zum [Hinzufügen oder Bearbeiten von Benutzeranmeldeinformationen](site-recovery-vmware-to-azure-manage-configuration-server.md#modify-user-accounts-and-passwords) zum Konfigurationsserver, und klicken Sie auf dem Desktop auf das Verknüpfungssymbol „Cspsconfigtool“. Klicken Sie auf „Konto verwalten“, um Anmeldeinformationen hinzuzufügen bzw. zu bearbeiten.|
+95108 </br>**Meldung:** Fehler bei der Pushinstallation des Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0859**. <br>| Entweder sind die Anmeldeinformationen für das Installieren von Mobility Service falsch, oder das Benutzerkonto verfügt nicht über ausreichende Berechtigungen. <br>| Stellen Sie sicher, dass die bereitgestellten Anmeldeinformationen die Anmeldeinformationen für das **root**-Konto sind. Um Benutzeranmeldeinformationen hinzuzufügen oder zu bearbeiten, navigieren Sie zum Konfigurationsserver, und klicken Sie auf dem Desktop auf das Verknüpfungssymbol „Cspsconfigtool“. Klicken Sie auf „Konto verwalten“, um Anmeldeinformationen hinzuzufügen bzw. zu bearbeiten.|
 
 ## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>Fehler 95265 – Der Schutz konnte nicht aktiviert werden (EP0902).
 
@@ -92,13 +87,14 @@ Dieser Fehler kann aus mehreren Gründen vom Dienst ausgelöst werden. Wählen S
 ## <a name="resource-to-troubleshoot-push-installation-problems"></a>Ressource zur Behandlung von Problemen bei der Pushinstallation
 
 #### <a name="troubleshoot-file-and-print-sharing-issues"></a>Behandeln von Problemen bei der Datei- und Druckerfreigabe
-*  [Aktivieren oder Deaktivieren der Dateifreigabe mit der Gruppenrichtlinie](https://technet.microsoft.com/en-us/library/cc754359(v=ws.10).aspx)
-* [Aktivieren der Datei- und Druckfreigabe über die Windows-Firewall](https://technet.microsoft.com/en-us/library/ff633412(v=ws.10).aspx)
+*  [Aktivieren oder Deaktivieren der Dateifreigabe mit der Gruppenrichtlinie](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
+* [Aktivieren der Datei- und Druckfreigabe über die Windows-Firewall](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
 
 #### <a name="troubleshoot-wmi-issues"></a>Behandeln von WMI-Problemen
 * [Grundlegende WMI-Tests](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
-* [WMI-Problembehandlung](https://msdn.microsoft.com/en-us/library/aa394603(v=vs.85).aspx)
-* [Problembehandlung bei WMI-Skripts und WMI-Diensten](https://technet.microsoft.com/en-us/library/ff406382.aspx#H22)
+* [WMI-Problembehandlung](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
+* [Problembehandlung bei WMI-Skripts und WMI-Diensten](https://technet.microsoft.com/library/ff406382.aspx#H22)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Aktivieren der Replikation für virtuelle VMware-VMs](vmware-walkthrough-enable-replication.md)
+
+[Vorgehensweise](tutorial-vmware-to-azure.md) zum Einrichten der Notfallwiederherstellung für virtuelle VMware-Computer.

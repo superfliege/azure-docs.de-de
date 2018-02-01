@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 5fe36241efc11cbb85231137649f7b97e23cc0a5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0956476931396c6455bf3e4fc7582da3bf3deb33
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Leitfaden zur Problembehandlung
 Dieser Artikel enthält Tipps zur Behandlung von Problemen, die beim Einrichten oder Verwalten der Azure Active Directory Domain Services auftreten können.
@@ -122,6 +122,7 @@ Die Domänendienste konnte in diesen Azure AD-Mandanten nicht aktiviert werden. 
 
 Um diesen Fehler zu beheben, aktivieren Sie diese Anwendung, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.
 
+
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>Benutzer können sich nicht bei der verwalteten Domäne der Azure AD Domain Services anmelden
 Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei der neu erstellten verwalteten Domäne anmelden kann, führen Sie die folgenden Problembehandlungsschritte aus:
 
@@ -145,6 +146,10 @@ Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei 
     2. net start 'Microsoft Azure AD Sync'
 * **Nur-Cloudkonten**: Wenn das betroffene Benutzerkonto nur für die Cloud gilt, müssen Sie sicherstellen, dass der Benutzer sein Kennwort geändert hat, nachdem Sie die Azure AD Domain Services aktiviert haben. Dieser Schritt führt dazu, dass die Anmeldeinformationshashes für die Azure AD Domain Services generiert werden.
 
+## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>Es gibt mindestens eine Warnung zu Ihrer verwalteten Domäne
+
+Weitere Informationen zum Beheben von Warnungen zu Ihrer verwalteten Domäne finden Sie im Artikel [Problembehandlung für Warnungen](active-directory-ds-troubleshoot-alerts.md).
+
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Aus Ihrem Azure AD-Mandanten entfernte Benutzer werden nicht aus Ihrer verwalteten Domäne entfernt
 Azure AD schützt Sie vor dem versehentlichen Löschen von Benutzerobjekten. Wenn Sie ein Benutzerkonto aus Ihrem Azure AD-Mandanten löschen, wird das zugehörige Benutzerobjekt in den Papierkorb verschoben. Wenn dieser Löschvorgang mit Ihrer verwalteten Domäne synchronisiert wird, wird das zugehörige Benutzerkonto als deaktiviert markiert. Dieses Feature unterstützt Sie dabei, das Benutzerkonto zu einem späteren Zeitpunkt wiederherzustellen oder den Löschvorgang rückgängig zu machen.
 
@@ -152,5 +157,6 @@ Das Benutzerkonto behält in Ihrer verwalteten Domäne auch dann den deaktiviert
 
 Um das Benutzerkonto vollständig aus Ihrer verwalteten Domäne zu entfernen, löschen Sie den Benutzer dauerhaft aus Ihrem Azure AD-Mandanten. Verwenden Die das PowerShell-Cmdlet `Remove-MsolUser` mit der Option `-RemoveFromRecycleBin`, wie in diesem [MSDN-Artikel](https://msdn.microsoft.com/library/azure/dn194132.aspx) beschrieben wird.
 
-## <a name="contact-us"></a>So erreichen Sie uns
+
+## <a name="contact-us"></a>Kontakt
 Wenden Sie sich an das Produktteam der Azure Active Directory Domain Services, um [Feedback zu geben oder Support zu erhalten](active-directory-ds-contact-us.md).

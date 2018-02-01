@@ -12,112 +12,107 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/04/2018
 ms.author: mazha
-ms.openlocfilehash: dbdf263d9d7fdfbe4fbc47db9ba9f30637e8c3ad
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 022071f7825cb9184bd4c815c09e1c202a0a6f91
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Integrieren eines Azure-Speicherkontos in CDN
-Zum Zwischenspeichern von Inhalten aus Ihrem Azure-Speicher kann CDN aktiviert werden. Das Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hohen Breitbandenanforderungen. Dazu werden Blobs und statische Inhalte von Compute-Instanzen an physischen Knotenpunkten in den USA, Europa, Asien, Australien und Südamerika zwischengespeichert.
+Sie können Azure Content Delivery Network (CDN) zum Zwischenspeichern von Inhalten aus Azure Storage aktivieren. Azure CDN bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hoher Bandbreite. Sie können Blobs und statische Inhalte von Compute-Instanzen auf physischen Knoten in den USA, Europa, Asien, Australien und Südamerika zwischenspeichern.
 
 ## <a name="step-1-create-a-storage-account"></a>Schritt 1: Erstellen eines Speicherkontos
-Gehen Sie folgendermaßen vor, um für ein Azure-Abonnement ein neues Speicherkonto zu erstellen. Ein Speicherkonto ermöglicht den Zugriff auf Speicherdienste von Azure. Das Speicherkonto stellt die höchste Ebene des Namespace für den Zugriff auf die verschiedenen Komponenten der Speicherdienste von Azure dar: Blob-, Warteschlangen- und Tabellenspeicherdienste. Weitere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../storage/common/storage-introduction.md).
+Gehen Sie folgendermaßen vor, um für ein Azure-Abonnement ein neues Speicherkonto zu erstellen. Ein Speicherkonto ermöglicht den Zugriff auf Azure Storage-Dienste. Das Speicherkonto stellt die höchste Ebene des Namespace für den Zugriff auf die verschiedenen Komponenten des Azure Storage-Diensts dar: Azure Blob Storage, Queue Storage und Table Storage. Weitere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../storage/common/storage-introduction.md).
 
 Um ein Speicherkonto zu erstellen, müssen Sie entweder der Dienstadministrator oder ein Co-Administrator für das zugehörige Abonnement sein.
 
 > [!NOTE]
-> Es gibt mehrere Methoden zum Erstellen eines Speicherkontos, einschließlich Azure-Portal und PowerShell.  In diesem Tutorial wird das Azure-Portal verwendet.  
-> 
+> Es gibt mehrere Methoden zum Erstellen eines Speicherkontos, einschließlich Azure-Portal und PowerShell. In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal verwenden.   
 > 
 
 **So erstellen Sie ein Speicherkonto für ein Azure-Abonnement**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie unten links auf **Neu**. Wählen Sie im Dialogfeld **Neu** die Option **Daten und Speicher** aus, und klicken Sie dann auf **Speicherkonto**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie links oben **Ressource erstellen** aus. Wählen Sie auf der Seite **Neu** die Option **Speicher** und anschließend **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
     
-    Das Blatt **Speicherkonto erstellen** wird angezeigt.   
+    Der Bereich **Speicherkonto erstellen** wird angezeigt.   
 
-    ![Speicherkonto erstellen][create-new-storage-account]  
+    ![Bereich „Speicherkonto erstellen“](./media/cdn-create-a-storage-account-with-cdn/cdn-create-new-storage-account.png)
 
-3. Geben Sie in das Feld **Name** den Namen einer Unterdomäne ein. Dieser Eintrag kann 3 bis 24 Kleinbuchstaben und Zahlen enthalten.
+3. Geben Sie im Feld **Name** einen Unterdomänennamen ein. Dieser Eintrag kann 3 bis 24 Kleinbuchstaben und Zahlen enthalten.
    
-    Dieser Wert wird der Hostname im URI, der zum Adressieren von Blob-, Warteschlangen- oder Tabellenspeicherressourcen für das Abonnement verwendet wird. Zum Adressieren einer Containerressource im Blob-Dienst verwenden Sie einen URI im folgenden Format; dabei bezieht sich *&lt;Speicherkontobezeichnung&gt;* auf den Wert, den Sie in **URL eingeben** eingegeben haben:
+    Dieser Wert wird der Hostname im URI, der zum Adressieren von Blob-, Warteschlangen- oder Tabellenressourcen für das Abonnement verwendet wird. Um auf eine Containerressource in Blob Storage zu verweisen, verwenden Sie einen URI im folgenden Format:
    
     http://*&lt;Speicherkontobezeichnung&gt;*.blob.core.windows.net/*&lt;MeinContainer&gt;*
+
+    Dabei ist *&lt;StorageAccountLabel&gt;* der Wert, die Sie im Feld **Name** eingegeben haben.
    
-    **Wichtig:** Die URL-Bezeichnung bildet die Unterdomäne des Speicherkonto-URI und muss unter allen gehosteten Diensten in Azure eindeutig sein.
+    > [!IMPORTANT]    
+    > Die URL-Bezeichnung bildet die Unterdomäne des Speicherkonto-URI und muss unter allen gehosteten Diensten in Azure eindeutig sein.
    
-    Dieser Wert wird auch als Name für dieses Speicherkonto im Portal verwendet oder beim programmatischen Zugriff auf dieses Konto.
+    Dieser Wert wird auch als Name für das Speicherkonto im Portal verwendet oder beim programmgesteuerten Zugriff auf dieses Konto.
+    
 4. Behalten Sie die Standardwerte für **Bereitstellungsmodell**, **Kontoart**, **Leistung** und **Replikation** bei. 
-5. Wählen Sie das **Abonnement** aus, das für das Speicherkonto verwendet werden soll.
-6. Wählen Sie eine **Ressourcengruppe**aus, oder erstellen Sie eine.  Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
-7. Wählen Sie einen Standort für Ihr Speicherkonto aus.
-8. Klicken Sie auf **Create**. Das Erstellen des Speicherkontos kann einige Minuten dauern.
+    
+5. Als **Abonnement** wählen Sie das Abonnement aus, das Sie mit dem Speicherkonto verwenden möchten.
+    
+6. Wählen Sie unter **Ressourcengruppe** eine Ressourcengruppe aus (bzw. erstellen Sie sie). Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
+    
+7. Wählen Sie unter **Standort** einen Standort für Ihr Speicherkonto aus.
+    
+8. Klicken Sie auf **Erstellen**. Das Erstellen des Speicherkontos kann einige Minuten dauern.
 
 ## <a name="step-2-enable-cdn-for-the-storage-account"></a>Schritt 2: Aktivieren von CDN für das Speicherkonto
 
-Mit der neuesten Integration können Sie jetzt CDN für Ihr Speicherkonto aktivieren, ohne die Speicherportalerweiterung verlassen zu müssen. 
+Sie können CDN direkt aus Ihrem Speicherkonto heraus für Ihr Speicherkonto aktivieren. 
 
-1. Wählen Sie das Speicherkonto aus, und suchen Sie „CDN“, oder scrollen Sie im linken Navigationsmenü nach unten, und klicken Sie dann auf „Azure CDN“.
+1. Wählen Sie über das Dashboard ein Speicherkonto und dann im linken Bereich **Azure CDN** aus. Wenn die Schaltfläche **Azure CDN** nicht sofort angezeigt wird, können Sie im Feld **Suchen** im linken Bereich „CDN“ eingeben.
     
-    Das Blatt **Azure CDN** wird angezeigt.
+    Der Bereich **Azure Content Delivery Network** wird angezeigt.
 
-    ![CDN – Aktivieren der Navigation][cdn-enable-navigation]
+    ![Erstellen eines CDN-Endpunkts](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png)
     
-2. Erstellen Sie einen neuen Endpunkt, indem Sie die entsprechenden Informationen angeben.
-    - **CDN-Profil:** Sie können ein neues Profil erstellen oder ein vorhandenes Profil verwenden.
-    - **Tarif:** Einen Tarif müssen Sie nur auswählen, wenn Sie ein neues CDN-Profil erstellen.
-    - **CDN-Endpunktname:** Geben Sie einen Endpunktnamen Ihrer Wahl ein.
+2. Erstellen Sie einen neuen Endpunkt, indem Sie die entsprechenden Informationen angeben:
+    - **CDN-Profil:** Sie können ein neues CDN-Profil erstellen oder ein vorhandenes CDN-Profil verwenden.
+    - **Tarif:** Wählen Sie nur dann einen Tarif aus, wenn Sie ein CDN-Profil erstellen.
+    - **CDN-Endpunktname:** Geben Sie einen CDN-Endpunktnamen ein.
 
     > [!TIP]
-    > Für den erstellten CDN-Endpunkt wird standardmäßig der Hostname Ihres Speicherkontos als Ursprung verwendet.
+    > Für einen neuen CDN-Endpunkt wird standardmäßig der Hostname Ihres Speicherkontos als Ursprungsserver verwendet.
 
-    ![CDN – Erstellen eines neuen Endpunkts][cdn-new-endpoint-creation]
+3. Klicken Sie auf **Erstellen**. Der erstellte Endpunkt wird in der Liste mit den Endpunkten angezeigt.
 
-3. Nach der Erstellung wird der neue Endpunkt in der Liste der Endpunkte oben angezeigt.
-
-    ![CDN – Neuer Endpunkt für Speicherkonto][cdn-storage-new-endpoint]
+    ![Storage – neuer CDN-Endpunkt](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
 
 > [!NOTE]
-> Sie können CDN auch über die Azure CDN-Erweiterung aktivieren. [Tutorial](#Tutorial-cdn-create-profile)
-> 
-> 
-
-[!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]  
+> Wenn Sie erweiterte Konfigurationseinstellungen (z.B. den Optimierungstyp) für den CDN-Endpunkt angeben möchten, können Sie stattdessen die [Azure-CDN-Erweiterung](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint) verwenden, um einen CDN-Endpunkt oder ein CDN-Profil zu erstellen.
 
 ## <a name="step-3-enable-additional-cdn-features"></a>Schritt 3: Aktivieren weiterer CDN-Features
 
-Klicken Sie auf dem Blatt „Azure CDN“ des Speicherkontos in der Liste auf den CDN-Endpunkt, um das Blatt für die CDN-Konfiguration zu öffnen. Sie können weitere CDN-Features für die Übertragung aktivieren, z.B. Komprimierung, Abfragezeichenfolge und Geofilterung. Sie können dem CDN-Endpunkt außerdem eine benutzerdefinierte Domänenzuordnung hinzufügen und HTTPS für benutzerdefinierte Domänen aktivieren.
+Wählen Sie im Bereich **Azure CDN** des Speicherkontos in der Liste den CDN-Endpunkt aus, um den Bereich für die CDN-Konfiguration zu öffnen. Sie können weitere CDN-Features für die Übertragung aktivieren, z.B. Komprimierung, Abfragezeichenfolge und Geofilterung. Sie können dem CDN-Endpunkt außerdem eine benutzerdefinierte Domänenzuordnung hinzufügen und HTTPS für benutzerdefinierte Domänen aktivieren.
     
-![CDN – CDN-Konfiguration für Speicherkonto][cdn-storage-cdn-configuration]
+![Storage – Konfiguration des CDN-Endpunkts](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
 
 ## <a name="step-4-access-cdn-content"></a>Schritt 4: Zugriff auf CDN-Inhalte
-Verwenden Sie für den Zugriff auf die im CDN zwischengespeicherten Inhalte den im Portal bereitgestellten CDN-URL. Die Adresse eines zwischengespeicherten Blobs hat etwa folgendes Format:
+Verwenden Sie für den Zugriff auf die im CDN zwischengespeicherten Inhalte den im Portal bereitgestellten CDN-URL. Die Adresse eines zwischengespeicherten Blobs hat das folgende Format:
 
 http://<*Endpunktname*\>.azureedge.net/<*meinÖffentlicherContainer*\>/<*Blobname*\>
 
 > [!NOTE]
-> Nachdem Sie den CDN-Zugriff auf ein Speicherkonto aktiviert haben, kommen alle öffentlich verfügbaren Objekte für den CDN-Edgezwischenspeicher in Frage. Wenn Sie ein Objekt ändern, das derzeit im CDN zwischengespeichert ist, stehen die neuen Inhalte erst dann über das CDN zur Verfügung, wenn das CDN seine Inhalte aktualisiert, wenn die Lebensdauer der zwischengespeicherten Inhalte abläuft.
-> 
-> 
+> Nachdem Sie den CDN-Zugriff auf ein Speicherkonto aktiviert haben, kommen alle öffentlich verfügbaren Objekte für den CDN-Edgezwischenspeicher in Frage. Wenn Sie ein Objekt ändern, das derzeit in CDN zwischengespeichert ist, stehen die neuen Inhalte erst dann über CDN zur Verfügung, wenn CDN die Inhalte aktualisiert. Dies erfolgt nach Ablauf der Lebensdauer der zwischengespeicherten Inhalte.
 
 ## <a name="step-5-remove-content-from-the-cdn"></a>Schritt 5: Entfernen von Inhalten aus dem CDN
-Wenn ein Objekt nicht mehr im Azure Content Delivery Network (CDN) zwischengespeichert werden soll, können Sie einen der folgenden Schritte ausführen:
+Wenn ein Objekt nicht mehr in Azure CDN zwischengespeichert werden soll, können Sie einen der folgenden Schritte ausführen:
 
-* Sie können den öffentlichen Container zu einem privaten machen. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../storage/blobs/storage-manage-access-to-resources.md) .
-* Sie können den CDN-Endpunkt mit dem Verwaltungsportal deaktivieren oder löschen.
-* Sie können den gehosteten Dienst so ändern, dass er nicht mehr auf Anforderungen des Objekts antwortet.
+* Legen Sie den öffentlichen Container als privat fest. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../storage/blobs/storage-manage-access-to-resources.md).
+* Deaktivieren oder löschen Sie den CDN-Endpunkt mit dem Azure-Portal.
+* Ändern Sie den gehosteten Dienst so, dass er nicht mehr auf Anforderungen für das Objekt antwortet.
 
-Ein bereits im CDN zwischengespeichertes Objekt bleibt zwischengespeichert, bis die Lebensdauer des Objekts abgelaufen ist oder der Endpunkt gelöscht wird. Wenn die Lebensdauer abläuft, prüft das CDN, ob der CDN-Endpunkt weiterhin gültig ist und ob weiterhin anonym auf das Objekt zugegriffen werden kann. Ist dies nicht der Fall, wird das Objekt nicht mehr zwischengespeichert.
+Ein bereits in Azure CDN zwischengespeichertes Objekt bleibt zwischengespeichert, bis die Lebensdauer des Objekts abgelaufen ist oder der Endpunkt gelöscht wird. Wenn die Lebensdauer abläuft, prüft Azure CDN, ob der CDN-Endpunkt weiterhin gültig ist und ob weiterhin anonym auf das Objekt zugegriffen werden kann. Ist dies nicht der Fall, wird das Objekt nicht mehr zwischengespeichert.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](cdn-map-content-to-custom-domain.md)
-* [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
+* [Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt](cdn-map-content-to-custom-domain.md)
+* [Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne](cdn-custom-ssl.md)
 
-[create-new-storage-account]: ./media/cdn-create-a-storage-account-with-cdn/CDN_CreateNewStorageAcct.png
-[cdn-enable-navigation]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png
-[cdn-storage-new-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png
-[cdn-storage-cdn-configuration]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png 

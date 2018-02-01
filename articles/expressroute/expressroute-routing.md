@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: ganesr
-ms.openlocfilehash: 088147060eeeba5c900cdcdc3fb38fc1d4ccfc58
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 87cf32c23c2b3f50057016a23212c95b706f2910
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -26,7 +26,7 @@ Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute mü
 Der Artikel [ExpressRoute-Verbindungen und Routingdomänen](expressroute-circuit-peerings.md) enthält eine Beschreibung der Routingsitzungen, die zum Herstellen der Konnektivität eingerichtet werden müssen.
 
 > [!NOTE]
-> Microsoft unterstützt für Konfigurationen mit hoher Verfügbarkeit keine Routerredundanzprotokolle (wie HSRP oder VRRP). Wir nutzen ein redundantes Paar mit BGP-Sitzungen pro Peering, um die hohe Verfügbarkeit sicherzustellen.
+> Microsoft unterstützt für Konfigurationen mit Hochverfügbarkeit keine Routerredundanzprotokolle (wie HSRP oder VRRP). Wir nutzen ein redundantes Paar mit BGP-Sitzungen pro Peering, um Hochverfügbarkeit sicherzustellen.
 > 
 > 
 
@@ -118,7 +118,7 @@ Für Microsoft-Peering kann eine private AS-Nummer verwendet werden, dies erford
 Der Routingaustausch verläuft über das eBGP-Protokoll. EBGP-Sitzungen werden zwischen den MSEEs und Ihren Routern eingerichtet. Die Authentifizierung von BGP-Sitzungen ist nicht unbedingt erforderlich. Bei Bedarf kann ein MD5-Hash konfiguriert werden. Unter [Konfigurieren des Routings](expressroute-howto-routing-classic.md) und [Bereitstellungsworkflows für ExpressRoute-Verbindungen und Verbindungszustände](expressroute-workflows.md) finden Sie Informationen zum Konfigurieren von BGP-Sitzungen.
 
 ## <a name="autonomous-system-numbers"></a>Autonome Systemnummern
-Microsoft verwendet AS 12076 für öffentliches und privates Azure-Peering sowie für Microsoft-Peering. Wir haben ASNs von 65515 bis 65520 für die interne Verwendung reserviert. Sowohl AS-Nummern mit 16 als auch mit 32 Bit werden unterstützt.
+Microsoft verwendet AS 12076 für öffentliches und privates Azure-Peering sowie für Microsoft-Peering. Wir haben ASNs von 65515 bis 65520 für die interne Verwendung reserviert. Sowohl AS-Nummern mit 16 als auch mit 32 Bit werden unterstützt. Eine öffentlich registrierte ASN ist nur für das Microsoft-Peering erforderlich. Sowohl für das private als auch für das öffentliche Peering können private ASNs verwendet werden.
 
 Es gibt keine Anforderungen in Bezug auf die Symmetrie der Datenübertragung. Die Weiterleitungs- und Rückgabepfade können unterschiedliche Routerpaare durchlaufen. Identische Routen müssen von beiden Seiten über mehrere Verbindungspaare angekündigt werden, die in Ihrem Besitz sind. Routenmetriken müssen nicht identisch sein.
 
@@ -152,17 +152,17 @@ Wenn Sie beispielsweise in Amsterdam per ExpressRoute mit Microsoft verbunden si
 
 Die Seite [ExpressRoute-Partner und Peeringstandorte](expressroute-locations.md) enthält eine ausführliche Liste mit geopolitischen Regionen, dazugehörigen Azure-Regionen und entsprechenden ExpressRoute-Peeringstandorten.
 
-Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwerben. Wenn Sie über mehrere Verbindungen verfügen, ergeben sich für Sie aufgrund der Georedundanz daraus erhebliche Vorteile in Bezug auf hohe Verfügbarkeit. Bei Verwendung mehrerer ExpressRoute-Verbindungen erhalten Sie die gleiche Gruppe von Präfixen, die von Microsoft über die Pfade für das öffentliche Peering und das Microsoft-Peering angekündigt werden. Dies bedeutet, dass Sie dann mehrere Pfade aus dem Netzwerk zu Microsoft nutzen können. Dies kann unter Umständen dazu führen, dass in Ihrem Netzwerk suboptimale Routingentscheidungen getroffen werden. Dies kann die Konnektivität für verschiedene Dienste beeinträchtigen. Sie können die Communitywerte nutzen, um die richtigen Routingentscheidungen zu treffen und [optimales Routing für Benutzer](expressroute-optimize-routing.md) zu bieten.
+Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwerben. Wenn Sie über mehrere Verbindungen verfügen, ergeben sich für Sie aufgrund der Georedundanz daraus erhebliche Vorteile in Bezug auf Hochverfügbarkeit. Bei Verwendung mehrerer ExpressRoute-Verbindungen erhalten Sie die gleiche Gruppe von Präfixen, die von Microsoft über die Pfade für das öffentliche Peering und das Microsoft-Peering angekündigt werden. Dies bedeutet, dass Sie dann mehrere Pfade aus dem Netzwerk zu Microsoft nutzen können. Dies kann unter Umständen dazu führen, dass in Ihrem Netzwerk suboptimale Routingentscheidungen getroffen werden. Dies kann die Konnektivität für verschiedene Dienste beeinträchtigen. Sie können die Communitywerte nutzen, um die richtigen Routingentscheidungen zu treffen und [optimales Routing für Benutzer](expressroute-optimize-routing.md) zu bieten.
 
 | **Microsoft Azure-Region** | **BGP-Communitywert** |
 | --- | --- |
 | **Nordamerika** | |
 | USA (Ost) | 12076:51004 |
 | USA (Ost) 2 | 12076:51005 |
-| USA (West) | 12076:51006 |
+| USA (Westen) | 12076:51006 |
 | USA, Westen 2 | 12076:51026 |
 | USA, Westen-Mitte | 12076:51027 |
-| USA (Mitte/Norden) | 12076:51007 |
+| USA Nord Mitte | 12076:51007 |
 | USA Süd Mitte | 12076:51008 |
 | USA (Mitte) | 12076:51009 |
 | Kanada, Mitte | 12076:51020 |
@@ -171,20 +171,20 @@ Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwe
 | Brasilien Süd | 12076:51014 |
 | **Europa** | |
 | Nordeuropa | 12076:51003 |
-| Westeuropa | 12076:51002 |
+| Europa, Westen | 12076:51002 |
 | UK, Süden | 12076:51024 |
 | UK, Westen | 12076:51025 |
 | Frankreich, Mitte | 12076:51030 |
 | Frankreich, Süden | 12076:51031 |
 | **Asien-Pazifik** | |
-| Ostasien | 12076:51010 |
-| Südostasien | 12076:51011 |
+| Asien, Osten | 12076:51010 |
+| Asien, Südosten | 12076:51011 |
 | **Japan** | |
-| Japan Ost | 12076:51012 |
-| Japan (Westen) | 12076:51013 |
+| Japan, Osten | 12076:51012 |
+| Japan, Westen | 12076:51013 |
 | **Australien** | |
 | Australien (Osten) | 12076:51015 |
-| Australien (Südosten) | 12076:51016 |
+| Australien, Südosten | 12076:51016 |
 | **Indien** | |
 | Indien, Süden | 12076:51019 |
 | Indien, Westen | 12076:51018 |

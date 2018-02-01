@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 01/15/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 7550748c496f4e5c671ab49f9b139d2d4926d497
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 0bf1cff4058bfe46b54f3f0b6836ede3e04ed5dd
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>Testen der Lösung mit simulierten Geräten
 
@@ -26,7 +26,7 @@ Im ersten Szenario möchte Contoso ein neues intelligentes Leuchtmittelgerät (L
 
 *Eigenschaften*
 
-| Name                     | Werte                      |
+| NAME                     | Werte                      |
 | ------------------------ | --------------------------- |
 | Farbe                    | White, Red, Blue            |
 | Brightness               | 0 bis 100                    |
@@ -36,9 +36,10 @@ Im ersten Szenario möchte Contoso ein neues intelligentes Leuchtmittelgerät (L
 
 In der folgenden Tabelle sind die Daten aufgeführt, die das Leuchtmittel als Datenstrom an die Cloud sendet:
 
-| Name   | Werte      |
+| NAME   | Werte      |
 | ------ | ----------- |
 | Status | „on“, „off“ |
+| Temperatur | Grad F |
 | online | true, false |
 
 > [!NOTE]
@@ -48,7 +49,7 @@ In der folgenden Tabelle sind die Daten aufgeführt, die das Leuchtmittel als Da
 
 In der folgenden Tabelle sind die Aktionen aufgeführt, die das neue Gerät unterstützt:
 
-| Name        |
+| NAME        |
 | ----------- |
 | Switch on   |
 | Switch off  |
@@ -57,12 +58,13 @@ In der folgenden Tabelle sind die Aktionen aufgeführt, die das neue Gerät unte
 
 In der folgenden Tabelle ist der Anfangszustand des Geräts aufgeführt:
 
-| Name                     | Werte |
+| NAME                     | Werte |
 | ------------------------ | -------|
 | Initial color            | Weiß  |
 | Initial brightness       | 75     |
 | Initial remaining life   | 10.000 |
 | Initial telemetry status | „on“   |
+| Anfängliche Telemetrietemperatur | 200   |
 
 Im zweiten Szenario fügen Sie dem vorhandenen **Chiller**-Gerät von Contoso einen neuen Telemetrietyp hinzu.
 
@@ -78,27 +80,179 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
+Für dieses Tutorial benötigen Sie Folgendes:
 
-Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es ratsam, das Tutorial [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-deploy.md) durchzuarbeiten.
+* Eine bereitgestellte Instanz der Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement. Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es ratsam, das Tutorial [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-deploy.md) durchzuarbeiten.
 
-<!-- Dominic please this use as your reference https://github.com/Azure/device-simulation-dotnet/wiki/Device-Models -->
+* Visual Studio 2017 Falls Sie Visual Studio 2017 nicht installiert haben, können Sie die kostenlose [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) Edition herunterladen.
 
-## <a name="the-device-simulation-service"></a>Der Gerätesimulationsdienst
+* Visual Studio-Erweiterung [Cloud-Explorer für Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVS15Preview).
 
-Mit dem Gerätesimulationsdienst in der vorkonfigurierten Lösung können Sie Änderungen an den integrierten simulierten Gerätetypen vornehmen und neue simulierte Gerätetypen erstellen. Mithilfe der benutzerdefinierten Gerätetypen können Sie das Verhalten der Remoteüberwachungslösung testen, bevor Sie eine Verbindung Ihrer physischen Geräte mit der Lösung herstellen.
+* Ein Konto für den [Docker-Hub](https://hub.docker.com/). Sie können sich für den Einstieg kostenlos registrieren.
 
-## <a name="create-a-simulated-device-type"></a>Erstellen eines simulierten Gerätetyps
+* [Git](https://git-scm.com/downloads) auf dem Desktopcomputer
 
-Am einfachsten lässt sich ein neuer Gerätetyp im Microservice zur Gerätesimulation durch Kopieren und Ändern eines vorhandenen Gerätetyps erstellen. Mit den folgenden Schritten wird veranschaulicht, wie Sie das integrierte **Chiller**-Gerät kopieren, um ein neues **Lightbulb**-Gerät zu erstellen:
+## <a name="prepare-your-development-environment"></a>Vorbereiten Ihrer Entwicklungsumgebung
 
-1. Führen Sie den folgenden Befehl aus, um das GitHub-Repository **device-simulation** auf Ihrem lokalen Computer zu klonen:
+Führen Sie die folgenden Aufgaben durch, um Ihre Entwicklungsumgebung für das Hinzufügen eines neuen simulierten Geräts zu Ihrer Lösung für die Remoteüberwachung vorzubereiten:
 
-    ```cmd/sh
+### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>Konfigurieren von SSH-Zugriff auf den virtuellen Computer der Lösung in Azure
+
+Wählen Sie beim Erstellen Ihrer Lösung für die Remoteüberwachung unter [www.azureiotsuite.com](https://www.azureiotsuite.com) einen Lösungsnamen. Der Lösungsname dient als Name für die Azure-Ressourcengruppe, die die verschiedenen von der Lösung verwendeten bereitgestellten Ressourcen enthält. Die folgenden Befehle verwenden eine Ressourcengruppe mit dem Namen **Contoso-01**. Ersetzen Sie **Contoso-01** durch den Namen Ihrer Ressourcengruppe.
+
+Die folgenden Befehle verwenden den Befehl `az` von der [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Sie können die Azure CLI 2.0 auf Ihrem Entwicklungscomputer installieren oder [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) im [Azure-Portal](http://portal.azure.com) verwenden. Die Azure CLI 2.0 ist in Cloud Shell vorinstalliert.
+
+1. Um den Namen der Ressourcengruppe zu überprüfen, die Remoteüberwachungsressourcen enthält, führen Sie den folgenden Befehl aus:
+
+    ```sh
+    az group list | grep "name"
+    ```
+
+    Dieser Befehl listet alle Ressourcengruppen in Ihrem Abonnement auf. Diese Liste sollte eine Ressourcengruppe mit dem gleichen Namen wie Ihre Lösung für die Remoteüberwachung enthalten.
+
+1. Um die Ressource als Standardgruppe für nachfolgende Befehle festzulegen, führen Sie den folgenden Befehl anstelle von **Contoso-01** mit dem Ressourcengruppennamen aus:
+
+    ```sh
+    az configure --defaults group=Contoso-01
+    ```
+
+1. Um die Ressourcen in Ihrer Ressourcengruppe aufzulisten, führen Sie den folgenden Befehl aus:
+
+    ```sh
+    az resource list -o table
+    ```
+
+    Notieren Sie sich die Namen Ihres virtuellen Computers und Ihrer Netzwerksicherheitsgruppe. Sie benötigen diese Werte für die nachfolgenden Schritte.
+
+1. Um SSH-Zugriff auf Ihrem virtuellen Computer zu ermöglichen, führen Sie den folgenden Befehl mit dem Namen Ihrer Netzwerksicherheitsgruppe aus dem vorherigen Schritt aus:
+
+    ```sh
+    az network nsg rule create --name SSH --nsg-name your-network-security-group --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
+    ```
+
+    Um die Liste der Eingangsregeln für Ihr Netzwerk anzuzeigen, führen Sie den folgenden Befehl aus:
+
+    ```sh
+    az network nsg rule list --nsg-name Contoso-01-nsg -o table
+    ```
+
+1. Führen Sie den folgenden Befehl aus, um das Kennwort für den virtuellen Computer zu ändern. Verwenden Sie den zuvor notierten Namen des virtuellen Computers und das von Ihnen gewählte Kennwort:
+
+    ```sh
+    az vm user update --name your-vm-name --username azureuser --password your-password
+    ```
+1. Um die IP-Adresse des virtuellen Computers zu ermitteln, verwenden Sie den folgenden Befehl und notieren sich die öffentliche IP-Adresse:
+
+    ```sh
+    az vm list-ip-addresses --name your-vm-name
+    ```
+
+1. Sie können nun für das Herstellen einer Verbindung mit Ihrem virtuellen Computer SSH auswählen. Der Befehl `ssh` ist in Cloud Shell vorinstalliert. Verwenden Sie die öffentliche IP-Adresse aus dem vorherigen Schritt und bei entsprechender Aufforderung das für den virtuellen Computer konfigurierte Kennwort:
+
+    ```sh
+    ssh azureuser@public-ip-address
+    ```
+
+    Sie haben jetzt auf dem virtuellen Computer, der die Docker-Container in der Lösung für die Remoteüberwachung ausführt, Zugriff auf die Shell. Um die ausgeführten Container anzuzeigen, verwenden Sie den folgenden Befehl:
+
+    ```sh
+    docker ps
+    ```
+
+### <a name="find-the-service-connection-strings"></a>Ermitteln der Dienstverbindungszeichenfolgen
+
+In diesem Tutorial arbeiten Sie mit einer Visual Studio-Projektmappe, die eine Verbindung mit dem Cosmos DB- und IoT Hub-Dienst der Lösung herstellt. In den folgenden Schritten wird gezeigt, wie Sie die benötigten Werte der Verbindungszeichenfolge ermitteln:
+
+1. Um die Cosmos DB-Verbindungszeichenfolge zu ermitteln, führen Sie den folgenden Befehl in der mit dem virtuellen Computer verbundenen SSH-Sitzung aus:
+
+    ```sh
+    sudo grep STORAGEADAPTER_DOCUMENTDB /app/env-vars
+    ```
+
+    Notieren Sie sich die Verbindungszeichenfolge. Sie verwenden diesen Wert später im Tutorial.
+
+1. Um die IoT Hub-Verbindungszeichenfolge zu ermitteln, führen Sie den folgenden Befehl in der mit dem virtuellen Computer verbundenen SSH-Sitzung aus:
+
+    ```sh
+    sudo grep IOTHUB_CONNSTRING /app/env-vars
+    ```
+
+    Notieren Sie sich die Verbindungszeichenfolge. Sie verwenden diesen Wert später im Tutorial.
+
+> [!NOTE]
+> Die Verbindungszeichenfolgen können Sie auch im Azure-Portal oder mit dem Befehl `az` ermitteln.
+
+### <a name="stop-the-device-simulation-service-in-the-virtual-machine"></a>Beenden des Gerätesimulationsdiensts auf dem virtuellen Computer
+
+Wenn Sie den Gerätesimulationsdienst ändern, können Sie ihn zum Testen Ihrer Änderungen lokal ausführen. Bevor Sie den Gerätesimulationsdienst lokal ausführen, müssen Sie die auf dem virtuellen Computer ausgeführte Instanz wie folgt beenden:
+
+1. Um die **CONTAINER-ID** des Diensts **device-simulation** zu ermitteln, führen Sie den folgenden Befehl in der mit dem virtuellen Computer verbundenen SSH-Sitzung aus:
+
+    ```sh
+    docker ps
+    ```
+
+    Notieren Sie sich die Container-ID des Diensts **device-simulation**.
+
+1. Um den Container **device-simulation** zu beenden, führen Sie den folgenden Befehl aus:
+
+    ```sh
+    docker stop container-id-from-previous-step
+    ```
+
+### <a name="clone-the-github-repositories"></a>Klonen der GitHub-Repositorys
+
+In diesem Tutorial arbeiten Sie mit den Visual Studio-Projekten **device-simulation** und **storage-adapter**. Sie können die Quellcoderepositorys von GitHub klonen. Führen Sie diesen Schritt auf dem lokalen Entwicklungscomputer durch, auf dem Visual Studio installiert ist:
+
+1. Öffnen Sie ein Eingabeaufforderungsfenster, und navigieren Sie zu dem Ordner, in dem Ihre Kopie der GitHub-Repositorys **device-simulation** und **storage-adapter** gespeichert werden soll.
+
+1. Um die .NET-Version des Repositorys **device-simulation** zu klonen, führen Sie den folgenden Befehl aus:
+
+    ```cmd
     git clone https://github.com/Azure/device-simulation-dotnet.git
     ```
 
-1. Jeder Gerätetyp verfügt über eine JSON-Modelldatei und zugeordnete Skripts im Ordner `Services/data/devicemodels`. Kopieren Sie die **Chiller**-Dateien, um die **Lightbulb**-Dateien wie in der folgenden Tabelle dargestellt zu erstellen:
+    Mit dem Gerätesimulationsdienst in der Lösung für die Remoteüberwachung können Sie Änderungen an den integrierten simulierten Gerätetypen vornehmen und neue simulierte Gerätetypen erstellen. Mithilfe der benutzerdefinierten Gerätetypen können Sie das Verhalten der Remoteüberwachungslösung testen, bevor Sie Ihre physischen Geräte verbinden.
+
+1. Um die .NET-Version des Repositorys **storage-adapter** zu klonen, führen Sie den folgenden Befehl aus:
+
+    ```cmd
+    git clone https://github.com/Azure/storage-adapter.git
+    ```
+
+    Der Gerätesimulationsdienst stellt mithilfe des Speicheradapterdiensts eine Verbindung mit dem Cosmos DB-Dienst in Azure her. Die Remoteüberwachungslösung speichert die Konfigurationsdaten simulierter Geräte in einer Cosmos DB-Datenbank.
+
+### <a name="run-the-storage-adapter-service-locally"></a>Lokales Ausführen des Speicheradapterdiensts
+
+Der Gerätesimulationsdienst stellt mithilfe des Speicheradapterdiensts eine Verbindung mit der Cosmos DB-Datenbank der Lösung her. Wenn Sie den Gerätesimulationsdienst lokal ausführen, müssen Sie den Speicheradapterdienst lokal ausführen. In den folgenden Schritten wird gezeigt, wie der Speicheradapterdienst in Visual Studio ausgeführt wird:
+
+1. Öffnen Sie in Visual Studio die Projektmappendatei **pcs-storage-adapter.sln** in Ihrem lokalen Klon des Repositorys **storage-adapter**.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **WebService**, und wählen Sie **Eigenschaften** sowie **Debuggen**.
+
+1. Legen Sie im Abschnitt **Umgebungsvariablen** den Wert der Variable **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** als Cosmos DB-Verbindungszeichenfolge fest, die Sie zuvor notiert haben. Speichern Sie anschließend die Änderungen.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **WebService**, wählen Sie **Debuggen** und dann **Neue Instanz starten**.
+
+1. Der Dienst wird lokal ausgeführt und öffnet `http://localhost:9022/v1/status` in Ihrem Standardbrowser. Überprüfen Sie, ob der Wert von **Status** „OK: Aktiv und gut“ lautet.
+
+1. Belassen Sie den Speicheradapterdienst in der lokalen Ausführung, bis Sie das Tutorial abgeschlossen haben.
+
+Jetzt ist alles eingerichtet und Sie können mit dem Hinzufügen eines neuen Typs eines simulierten Geräts zu Ihrer Remoteüberwachungslösung beginnen.
+
+## <a name="create-a-simulated-device-type"></a>Erstellen eines simulierten Gerätetyps
+
+Am einfachsten lässt sich ein neuer Gerätetyp im Gerätesimulationsdienst durch Kopieren und Ändern eines vorhandenen Gerätetyps erstellen. Mit den folgenden Schritten wird veranschaulicht, wie Sie das integrierte **Chiller**-Gerät kopieren, um ein neues **Lightbulb**-Gerät zu erstellen:
+
+1. Öffnen Sie in Visual Studio die Projektmappendatei **device-simulation.sln** in Ihrem lokalen Klon des Repositorys **device-simulation**.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SimulationAgent**, und wählen Sie **Eigenschaften** sowie **Debuggen**.
+
+1. Legen Sie im Abschnitt **Umgebungsvariablen** den Wert der Variable **PCS\_IOTHUB\_CONNSTRING** als IoT Hub-Verbindungszeichenfolge fest, die Sie zuvor notiert haben. Speichern Sie anschließend die Änderungen.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe **device-simulation**, und klicken Sie auf **Startprojekte festlegen**. Wählen Sie **Einzelnes Startprojekt** und dann **SimulationAgent**. Klicken Sie dann auf **OK**.
+
+1. Jeder Gerätetyp verfügt über eine JSON-Modelldatei und zugeordnete Skripts im Ordner **Services/data/devicemodels**. Kopieren Sie im Projektmappen-Explorer die **Chiller**-Dateien, um die **Lightbulb**-Dateien wie in der folgenden Tabelle dargestellt zu erstellen:
 
     | Quelle                      | Ziel                   |
     | --------------------------- | ----------------------------- |
@@ -108,9 +262,9 @@ Am einfachsten lässt sich ein neuer Gerätetyp im Microservice zur Gerätesimul
 
 ### <a name="define-the-characteristics-of-the-new-device-type"></a>Definieren der Merkmale des neuen Gerätetyps
 
-Die Datei `lightbulb-01.json` definiert die Merkmale des Typs, z.B. die generierte Telemetrie oder die unterstützten Methoden. Mit den folgenden Schritten wird die Datei `lightbulb-01.json` aktualisiert und das **Lightbulb**-Gerät definiert:
+Die Datei **lightbulb-01.json** definiert die Merkmale des Typs, z.B. die generierte Telemetrie oder die unterstützten Methoden. Mit den folgenden Schritten wird die Datei **lightbulb-01.json** aktualisiert und der **Lightbulb**-Dienst definiert:
 
-1. Aktualisieren Sie in der Datei `lightbulb-01.json` die Gerätemetadaten wie im folgenden Codeausschnitt gezeigt:
+1. Aktualisieren Sie in der Datei **lightbulb-01.json** die Gerätemetadaten wie im folgenden Ausschnitt gezeigt:
 
     ```json
     "SchemaVersion": "1.0.0",
@@ -121,12 +275,14 @@ Die Datei `lightbulb-01.json` definiert die Merkmale des Typs, z.B. die generier
     "Protocol": "MQTT",
     ```
 
-1. Aktualisieren Sie in der Datei `lightbulb-01.json` die Simulationsdefinition wie im folgenden Codeausschnitt gezeigt:
+1. Aktualisieren Sie in der Datei **lightbulb-01.json** die Simulationsdefinition wie im folgenden Ausschnitt gezeigt:
 
     ```json
     "Simulation": {
       "InitialState": {
         "online": true,
+        "temperature": 200.0,
+        "temperature_unit": "F",
         "status": "on"
       },
       "Script": {
@@ -137,7 +293,7 @@ Die Datei `lightbulb-01.json` definiert die Merkmale des Typs, z.B. die generier
     },
     ```
 
-1. Aktualisieren Sie in der Datei `lightbulb-01.json` die Eigenschaften des Gerätetyps wie im folgenden Codeausschnitt gezeigt:
+1. Aktualisieren Sie in der Datei **lightbulb-01.json** die Eigenschaften des Gerätetyps wie im folgenden Ausschnitt gezeigt:
 
     ```json
     "Properties": {
@@ -148,17 +304,19 @@ Die Datei `lightbulb-01.json` definiert die Merkmale des Typs, z.B. die generier
     },
     ```
 
-1. Aktualisieren Sie in der Datei `lightbulb-01.json` die Telemetriedefinitionen des Gerätetyps wie im folgenden Codeausschnitt gezeigt:
+1. Aktualisieren Sie in der Datei **lightbulb-01.json** die Telemetriedefinitionen des Gerätetyps wie im folgenden Ausschnitt gezeigt:
 
     ```json
     "Telemetry": [
       {
         "Interval": "00:00:20",
-        "MessageTemplate": "{\"status\":\"${status}\"}",
+        "MessageTemplate": "{\"temperature\":${temperature},\"temperature_unit\":\"${temperature_unit}\",\"status\":\"${status}\"}",
         "MessageSchema": {
           "Name": "lightbulb-status;v1",
           "Format": "JSON",
           "Fields": {
+            "temperature": "double",
+            "temperature_unit": "text",
             "status": "text"
           }
         }
@@ -166,7 +324,7 @@ Die Datei `lightbulb-01.json` definiert die Merkmale des Typs, z.B. die generier
     ],
     ```
 
-1. Aktualisieren Sie in der Datei `lightbulb-01.json` die Methoden des Gerätetyps wie im folgenden Codeausschnitt gezeigt:
+1. Aktualisieren Sie in der Datei **lightbulb-01.json** die Methoden des Gerätetyps wie im folgenden Ausschnitt gezeigt:
 
     ```json
     "CloudToDeviceMethods": {
@@ -181,23 +339,25 @@ Die Datei `lightbulb-01.json` definiert die Merkmale des Typs, z.B. die generier
     }
     ```
 
-1. Speichern Sie die Datei `lightbulb-01.json`.
+1. Speichern Sie die Datei **lightbulb 01.json**.
 
 ### <a name="simulate-custom-device-behavior"></a>Simulieren des Verhaltens des benutzerdefinierten Geräts
 
-Die Datei `scripts/lightbulb-01-state.js` definiert das Simulationsverhalten des **Lightbulb**-Gerätetyps. Mit den folgenden Schritten wird die Datei `scripts/lightbulb-01-state.js` aktualisiert und das Verhalten des **Lightbulb**-Geräts definiert:
+Die Datei **scripts/lightbulb-01-state.js** definiert das Simulationsverhalten des **Lightbulb**-Gerätetyps. Mit den folgenden Schritten wird die Datei **scripts/lightbulb-01-state.js** aktualisiert und das Verhalten des **Lightbulb**-Geräts definiert:
 
-1. Bearbeiten Sie die Statusdefinition in der Datei `scripts/lightbulb-01-state.js` wie im folgenden Codeausschnitt gezeigt:
+1. Bearbeiten Sie die Statusdefinition in der Datei **scripts/lightbulb-01-state.js** wie im folgenden Ausschnitt gezeigt:
 
     ```js
     // Default state
     var state = {
       online: true,
+      temperature: 200.0,
+      temperature_unit: "F",
       status: "on"
     };
     ```
 
-1. Ersetzen Sie die **vary**-Funktion durch die folgende **flip**-Funktion:
+1. Fügen Sie zur folgenden Definition eine **flip**-Funktion nach der **vary**-Funktion hinzu:
 
     ```js
     /**
@@ -220,6 +380,8 @@ Die Datei `scripts/lightbulb-01-state.js` definiert das Simulationsverhalten des
       // the telemetry can apply changes using the previous function state.
       restoreState(previousState);
 
+      state.temperature = vary(200, 5, 150, 250);
+
       // Make this flip every so often
       state.status = flip(state.status);
 
@@ -227,11 +389,11 @@ Die Datei `scripts/lightbulb-01-state.js` definiert das Simulationsverhalten des
     }
     ```
 
-1. Speichern Sie die Datei `scripts/lightbulb-01-state.js`.
+1. Speichern Sie die Datei **scripts/lightbulb-01-state.js**.
 
-Die Datei `scripts/SwitchOn-method.js` implementiert die **Switch On**-Methode in einem **Lightbulb**-Gerät. Mit den folgenden Schritten wird die Datei `scripts/SwitchOn-method.js` aktualisiert:
+Die Datei **scripts/SwitchOn-method.js** implementiert die **Switch On**-Methode in einem **Lightbulb**-Gerät. In den folgenden Schritten wird die Datei **scripts/SwitchOn-method.js** aktualisiert:
 
-1. Bearbeiten Sie die Statusdefinition in der Datei `scripts/SwitchOn-method.js` wie im folgenden Codeausschnitt gezeigt:
+1. Bearbeiten Sie die Statusdefinition in der Datei **scripts/SwitchOn-method.js** wie im folgenden Ausschnitt gezeigt:
 
     ```js
     var state = {
@@ -249,11 +411,11 @@ Die Datei `scripts/SwitchOn-method.js` implementiert die **Switch On**-Methode i
     }
     ```
 
-1. Speichern Sie die Datei `scripts/SwitchOn-method.js`.
+1. Speichern Sie die Datei **scripts/SwitchOn-method.js**.
 
-1. Erstellen Sie eine Kopie der Datei `scripts/SwitchOn-method.js` mit dem Namen `scripts/SwitchOff-method.js`.
+1. Erstellen Sie eine Kopie der Datei **scripts/SwitchOn-method.js** mit dem Namen **scripts/SwitchOff-method.js**.
 
-1. Bearbeiten Sie zum Ausschalten des Leuchtmittels die **main**-Funktion in der Datei `scripts/SwitchOff-method.js` wie folgt:
+1. Um das Leuchtmittel auszuschalten, bearbeiten Sie die **main**-Funktion in der Datei **scripts/SwitchOff-method.js** wie folgt:
 
     ```js
     function main(context, previousState) {
@@ -263,24 +425,154 @@ Die Datei `scripts/SwitchOn-method.js` implementiert die **Switch On**-Methode i
     }
     ```
 
-1. Speichern Sie die Datei `scripts/SwitchOff-method.js`.
+1. Speichern Sie die Datei **scripts/SwitchOff-method.js**.
 
-### <a name="test-the-lightbulb-device-type"></a>Testen des Leuchtmittel-Gerätetyps
+1. Wählen Sie im Projektmappen-Explorer nacheinander die vier neuen Dateien aus. Stellen Sie im Fenster **Eigenschaften** sicher, dass **In Ausgabeverzeichnis kopieren** auf **Kopieren, wenn neuer** festgelegt ist.
 
-Zum Testen des **Lightbulb**-Gerätetyps können Sie zunächst prüfen, ob der Gerätetyp sich wie erwartet verhält, indem Sie eine lokale Kopie des Diensts **device-simulation** ausführen. Nachdem Sie den neuen Gerätetyp lokal getestet und gedebuggt haben, können Sie den Container neu erstellen und den Dienst **device-simulation** in Azure erneut bereitstellen.
+### <a name="configure-the-device-simulation-service"></a>Konfigurieren des Gerätesimulationsdiensts
 
-Informationen zum lokalen Testen und Debuggen Ihrer Änderungen finden Sie unter [Device Simulation Overview](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) (Übersicht über die Gerätesimulation).
+Um die Anzahl der simulierten Geräte zu beschränken, die während der Tests eine Verbindung mit der Projektmappe herstellen, konfigurieren Sie den Dienst für die Ausführung eines einzelnen Kühlers und Leuchtmittelgeräts. Die Konfigurationsdaten werden in der Cosmos DB-Instanz in der Ressourcengruppe der Projektmappe gespeichert. Um die Konfigurationsdaten zu bearbeiten, verwenden Sie die Ansicht **Cloud-Explorer** in Visual Studio:
 
-Konfigurieren Sie das Projekt so, dass die Dateien des neuen **Lightbulb**-Geräts in das Ausgabeverzeichnis kopiert werden:
+1. Um die Ansicht **Cloud-Explorer** in Visual Studio zu öffnen, wählen Sie **Ansicht** und dann **Cloud-Explorer**.
 
-* Stellen Sie bei Verwendung von Visual Studio sicher, dass die im vorherigen Abschnitt erstellten vier neuen Lightbulb-Dateien dem Projekt **Dienste** in der Projektmappe hinzugefügt werden. Markieren Sie sie dann mit dem **Projektmappen-Explorer**, damit sie in das Ausgabeverzeichnis kopiert werden.
+1. Um das Simulationskonfigurationsdokument zu ermitteln, geben Sie unter **Nach Ressourcen suchen** **simulations.1** ein.
 
-* Öffnen Sie bei Verwendung von Visual Studio Code die Datei **Services.csproj**, und fügen Sie die im vorherigen Abschnitt erstellten vier neuen Lightbulb-Dateien hinzu. Sehen Sie sich als Beispiel die vorhandenen Einträge für die Gerätemodelldatei in der Datei **Services.csproj** an.
+1. Doppelklicken Sie auf das Dokument **simulations.1**, um es für die Bearbeitung zu öffnen.
 
-Informationen zum Testen des neuen Geräts in einer bereitgestellten Lösung finden Sie in folgenden Quellen:
+1. Suchen Sie im Wert für **Data** das Array **DeviceModels** wie im folgenden Ausschnitt:
 
-* [Deploying containers from custom docker-hub account](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#deploying-containers-from-custom-docker-hub-account) (Bereitstellen von Containern über ein benutzerdefiniertes Docker-Hub-Konto)
-* [Update a deployed container via manual copy](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#update-a-deployed-container-via-manual-copy) (Aktualisieren eines bereitgestellten Containers über eine manuelle Kopie)
+    ```json
+    [{\"Id\":\"chiller-01\",\"Count\":1},{\"Id\":\"chiller-02\",\"Count\":1},{\"Id\":\"elevator-01\",\"Count\":1},{\"Id\":\"elevator-02\",\"Count\":1},{\"Id\":\"engine-01\",\"Count\":1},{\"Id\":\"engine-02\",\"Count\":1},{\"Id\":\"prototype-01\",\"Count\":1},{\"Id\":\"prototype-02\",\"Count\":1},{\"Id\":\"truck-01\",\"Count\":1},{\"Id\":\"truck-02\",\"Count\":1}]
+    ```
+
+1. Um einen einzelnen Kühler und ein einzelnes simuliertes Leuchtmittelgerät zu definieren, ersetzen Sie das Array **DeviceModels** durch folgenden Code:
+
+    ```json
+    [{\"Id\":\"chiller-01\",\"Count\":1},{\"Id\":\"lightbulb-01\",\"Count\":1}]
+    ```
+
+    Speichern Sie die Änderung im Dokument **simulations.1**.
+
+> [!NOTE]
+> Sie können auch den Cosmos DB-Daten-Explorer im Azure-Portal verwenden, um das Dokument **simulations.1** zu bearbeiten.
+
+### <a name="test-the-lightbulb-device-type-locally"></a>Lokales Testen des Leuchtmittel-Gerätetyps
+
+Sie können nun Ihren neuen simulierten Leuchtmitteltyp testen, indem Sie das Projekt für die Gerätesimulation lokal ausführen.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **SimulationAgent**, und wählen Sie **Debuggen** und dann **Neue Instanz starten**.
+
+1. Um zu überprüfen, ob die beiden simulierten Geräte mit IoT Hub verbunden sind, rufen Sie das Azure-Portal in Ihrem Browser auf.
+
+1. Navigieren Sie zu IoT Hub in der Ressourcengruppe, die Ihre Lösung für die Remoteüberwachung verwendet.
+
+1. Wählen Sie im Abschnitt **Überwachung** die Option **Metriken** aus. Überprüfen Sie dann, ob die Anzahl unter **Verbundene Geräte** zwei lautet:
+
+    ![Anzahl verbundener Geräte](media/iot-suite-remote-monitoring-test/connecteddevices.png)
+
+1. Navigieren Sie in Ihrem Browser zu dem **Dashboard** Ihrer Lösung für die Remoteüberwachung. Wählen Sie im Telemetriebereich auf dem **Dashboard** die Option **Temperatur** aus. Die Temperatur Ihrer zwei simulierten Geräte wird im Diagramm angezeigt:
+
+    ![Temperaturtelemetrie](media/iot-suite-remote-monitoring-test/telemetry.png)
+
+Die Simulation des Leuchtmittelgeräts wird jetzt lokal ausgeführt. Der nächste Schritt besteht darin, Ihren aktualisierten Simulatorcode für den virtuellen Computer bereitzustellen, auf dem die Microservices für die Remoteüberwachung in Azure ausgeführt werden.
+
+Bevor Sie fortfahren, können Sie das Debuggen des Gerätesimulations- und Speicheradapterprojekts in Visual Studio beenden.
+
+### <a name="deploy-the-updated-simulator-to-the-cloud"></a>Bereitstellen des aktualisierten Simulators in der Cloud
+
+Die Microservices in der Lösung für die Remoteüberwachung werden in Docker-Containern ausgeführt. Die Container werden auf dem virtuellen Computer der Projektmappe in Azure gehostet. In diesem Abschnitt führen Sie folgende Schritte aus:
+
+* Erstellen Sie ein neues Docker-Image für die Gerätesimulation.
+* Laden Sie das Image in Ihr Docker-Hubrepository hoch.
+* Importieren Sie das Image auf den virtuellen Computer Ihrer Projektmappe.
+
+Bei den folgenden Schritten wird davon ausgegangen, dass Sie über ein Repository namens **lightbulb** in Ihrem Docker-Hubkonto verfügen.
+
+1. Öffnen Sie in Visual Studio im Projekt **device-simulation** die Datei **solution\scripts\docker\build.cmd**.
+
+1. Bearbeiten Sie die Zeile, die die Umgebungsvariable **DOCKER_IMAGE** als Namen für Ihr Docker-Hubrepository festlegt:
+
+    ```cmd
+    SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
+    ```
+
+    Speichern Sie die Änderungen.
+
+1. Öffnen Sie in Visual Studio im Projekt **device-simulation** die Datei **solution\scripts\docker\publish.cmd**.
+
+1. Bearbeiten Sie die Zeile, die die Umgebungsvariable **DOCKER_IMAGE** als Namen für Ihr Docker-Hubrepository festlegt:
+
+    ```cmd
+    SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
+    ```
+
+    Speichern Sie die Änderungen.
+
+1. Öffnen Sie eine Eingabeaufforderung als Administrator. Navigieren Sie dann zum Ordner **scripts\docker** in Ihrem Klon des GitHub-Repositorys **device-simulation**.
+
+1. Um das Docker-Image zu erstellen, führen Sie den folgenden Befehl aus:
+
+    ```cmd
+    build.cmd
+    ```
+
+1. Um sich bei Ihrem Docker-Hub anzumelden, führen Sie den folgenden Befehl aus:
+
+    ```cmd
+    docker login
+    ```
+
+1. Um ein neues Image in Ihr Docker-Hubkonto hochzuladen, führen Sie den folgenden Befehl aus:
+
+    ```cmd
+    publish.cmd
+    ```
+
+1. Um den Upload zu überprüfen, rufen Sie die Seite [https://hub.docker.com/](https://hub.docker.com/) auf. Suchen Sie Ihr Repository namens **lightbulb**, und wählen Sie **Details**. Wählen Sie dann **Tags**:
+
+    ![Docker-Hub](media/iot-suite-remote-monitoring-test/dockerhub.png)
+
+    Mit den Skripts wurde der Tag **testing** zum Image hinzugefügt.
+
+1. Verwenden Sie SSH, um eine Verbindung mit dem virtuellen Computer Ihrer Projektmappe in Azure herzustellen. Navigieren Sie zum **App**-Ordner, und bearbeiten Sie die Datei **docker-compose.yaml**:
+
+    ```sh
+    cd /app
+    sudo nano docker-compose.yaml
+    ```
+
+1. Bearbeiten Sie den Eintrag für den Gerätesimulationsdienst für die Verwendung des Docker-Image:
+
+    ```yaml
+    devicesimulation:
+      image: {your docker ID}/lightbulb:testing
+    ```
+
+    Speichern Sie die Änderungen.
+
+1. Um alle Dienste mit den neuen Einstellungen neu zu starten, führen Sie den folgenden Befehl aus:
+
+    ```sh
+    sudo ./start.sh
+    ```
+
+1. Um die Protokolldatei von Ihrem neuen Gerätesimulationscontainer zu überprüfen, führen Sie den folgenden Befehl zum Ermitteln der Container-ID aus:
+
+    ```sh
+    docker ps
+    ```
+
+    Führen Sie mit der Container-ID anschließend den folgenden Befehl aus:
+
+    ```sh
+    docker logs {container ID}
+    ```
+
+Sie haben jetzt die Schritte zum Bereitstellen einer aktualisierten Version des Gerätesimulationsdiensts für die Lösung zur Remoteüberwachung durchgeführt.
+
+Navigieren Sie in Ihrem Browser zu dem **Dashboard** Ihrer Lösung für die Remoteüberwachung. Wählen Sie im Telemetriebereich auf dem **Dashboard** die Option **Temperatur** aus. Die Temperatur Ihrer zwei simulierten Geräte wird im Diagramm angezeigt:
+
+![Temperaturtelemetrie](media/iot-suite-remote-monitoring-test/telemetry.png)
 
 Auf der Seite **Devices** (Geräte) können Sie Instanzen des neuen Gerätetyps bereitstellen:
 
@@ -293,8 +585,6 @@ Sie können die Telemetriedaten von dem simulierten Gerät anzeigen:
 Sie können die **SwitchOn**- und die **SwitchOff**-Methode für das Gerät aufrufen:
 
 ![Aufrufen von Methoden für das Leuchtmittel](media/iot-suite-remote-monitoring-test/devicesmethods.png)
-
-Informationen zum Erstellen eines Docker-Images mit dem neuen Gerätetyp zur Bereitstellung in Azure finden Sie unter [Building a customized Docker image](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md#building-a-customized-docker-image) (Erstellen eines benutzerdefinierten Docker-Images).
 
 ## <a name="add-a-new-telemetry-type"></a>Hinzufügen eines neuen Telemetrietyps
 
@@ -311,14 +601,15 @@ Mit den folgenden Schritten wird veranschaulicht, wie Sie die Dateien suchen, di
     ```
 
 1. Jeder Gerätetyp verfügt über eine JSON-Modelldatei und zugeordnete Skripts im Ordner `data/devicemodels`. Der simulierte **Chiller**-Gerätetyp wird in den folgenden Dateien definiert:
-    * `data/devicemodels/chiller-01.json`
-    * `data/devicemodels/scripts/chiller-01-state.js`
+
+    * **data/devicemodels/chiller-01.json**
+    * **data/devicemodels/scripts/chiller-01-state.js**
 
 ### <a name="specify-the-new-telemetry-type"></a>Angeben des neuen Telemetrietyps
 
 Mit den folgenden Schritten wird veranschaulicht, wie Sie dem **Chiller**-Gerätetyp den neuen Telemetrietyp **Internal Temperature** hinzufügen:
 
-1. Öffnen Sie die Datei `chiller-01.json` .
+1. Öffnen Sie die Datei **chiller-01.json**.
 
 1. Aktualisieren Sie den **SchemaVersion**-Wert wie folgt:
 
@@ -350,9 +641,9 @@ Mit den folgenden Schritten wird veranschaulicht, wie Sie dem **Chiller**-Gerät
     },
     ```
 
-1. Speichern Sie die Datei `chiller-01.json`.
+1. Speichern Sie die Datei **chiller-01.json**.
 
-1. Öffnen Sie die Datei `scripts/chiller-01-state.js` .
+1. Öffnen Sie die Datei **scripts/chiller-01-state.js**.
 
 1. Fügen Sie der **state**-Variable die folgenden Felder hinzu:
 
@@ -367,28 +658,23 @@ Mit den folgenden Schritten wird veranschaulicht, wie Sie dem **Chiller**-Gerät
     state.internal_temperature = vary(65, 2, 15, 125);
     ```
 
-1. Speichern Sie die Datei `scripts/chiller-01-state.js`.
+1. Speichern Sie die Datei **scripts/chiller-01-state.js**.
 
 ### <a name="test-the-chiller-device-type"></a>Testen des Chiller-Gerätetyps
 
-Zum Testen des aktualisierten **Chiller**-Gerätetyps können Sie zunächst prüfen, ob der Gerätetyp sich wie erwartet verhält, indem Sie eine lokale Kopie des Diensts **device-simulation** ausführen. Nachdem Sie den aktualisierten Gerätetyp lokal getestet und gedebuggt haben, können Sie den Container neu erstellen und den Dienst **device-simulation** in Azure erneut bereitstellen.
+Zum Testen des aktualisierten **Chiller**-Gerätetyps führen Sie zunächst eine lokale Kopie des Diensts **device-simulation** aus, um zu prüfen, ob sich Ihr Gerätetyp wie erwartet verhält. Nachdem Sie den aktualisierten Gerätetyp lokal getestet und gedebuggt haben, können Sie den Container neu erstellen und den Dienst **device-simulation** in Azure erneut bereitstellen.
 
 Wenn Sie den Dienst **device-simulation** lokal ausführen, sendet er Telemetriedaten an die Remoteüberwachungslösung. Auf der Seite **Devices** (Geräte) können Sie Instanzen des aktualisierten Gerätetyps bereitstellen.
 
-Informationen zum lokalen Testen und Debuggen Ihrer Änderungen finden Sie unter [Running the service with Visual Studio](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md#running-the-service-with-visual-studio) (Ausführen des Diensts mit Visual Studio) oder [Build and Run from the command line](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md#build-and-run-from-the-command-line) (Erstellen und Ausführen über die Befehlszeile).
+Um Ihre Änderungen lokal zu testen und zu debuggen, lesen Sie den vorherigen Abschnitt [Lokales Testen des Leuchtmittel-Gerätetyps](#test-the-lightbulb-device-type-locally).
 
-Informationen zum Testen des neuen Geräts in einer bereitgestellten Lösung finden Sie in folgenden Quellen:
-
-* [Deploying containers from custom docker-hub account](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#deploying-containers-from-custom-docker-hub-account) (Bereitstellen von Containern über ein benutzerdefiniertes Docker-Hub-Konto)
-* [Update a deployed container via manual copy](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#update-a-deployed-container-via-manual-copy) (Aktualisieren eines bereitgestellten Containers über eine manuelle Kopie)
+Um Ihren aktualisierten Gerätesimulationsdienst für den virtuellen Computer der Projektmappe in Azure bereitzustellen, lesen Sie den vorherigen Abschnitt [Bereitstellen des aktualisierten Simulators in der Cloud](#deploy-the-updated-simulator-to-the-cloud).
 
 Auf der Seite **Devices** (Geräte) können Sie Instanzen des aktualisierten Gerätetyps bereitstellen:
 
 ![Hinzufügen des aktualisierten Chiller-Gerätetyps](media/iot-suite-remote-monitoring-test/devicesupdatedchiller.png)
 
 Sie können die neue Telemetrie **Internal Temperature** von dem simulierten Gerät anzeigen.
-
-Informationen zum Erstellen eines Docker-Images mit dem neuen Gerätetyp zur Bereitstellung in Azure finden Sie unter [Building a customized Docker image](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md#building-a-customized-docker-image) (Erstellen eines benutzerdefinierten Docker-Images).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -401,7 +687,7 @@ In diesem Tutorial wurde Folgendes veranschaulicht:
 > * Hinzufügen eines neuen Gerätetyps im Dashboard
 > * Senden benutzerdefinierter Telemetriedaten von einem vorhandenen Gerätetyp
 
-Sie wissen nun, wie Sie den Gerätesimulationsdienst verwenden können. Im nächsten empfohlenen Schritt erfahren Sie, wie Sie [ein physisches Gerät mit der Remoteüberwachungslösung verbinden](iot-suite-connecting-devices-node.md).
+Nun haben Sie erfahren, wie der Gerätesimulationsdienst angepasst wird. Als Nächstes wird empfohlen, sich mit dem [Verbinden eines physischen Geräts mit der Remoteüberwachungslösung](iot-suite-connecting-devices-node.md) auseinanderzusetzen.
 
 Weitere Informationen für Entwickler zur Remoteüberwachungslösung finden Sie in folgenden Quellen:
 

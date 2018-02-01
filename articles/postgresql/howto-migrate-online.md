@@ -9,28 +9,30 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 01/04/2018
-ms.openlocfilehash: 8c98c58042e7f1d1726eaad6ee03d1531b6c910e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: efbd4f227880875c11e2c43c84716dfc49c5717d
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Migration zu Azure Database for PostgreSQL mit minimaler Ausfallzeit
-Sie können Ihre vorhandene PostgreSQL-Datenbank mithilfe von Attunity Replicate for Microsoft Migrations zu Azure Database for PostgreSQL migrieren. Dies ist ein gemeinsames Angebot von Attunity und Microsoft, das Microsoft-Kunden ohne Zusatzkosten zusammen mit dem Azure Database Migration Service zur Verfügung gestellt wird. Attunity Replicate for Microsoft Migrations sorgt auch für eine minimale Ausfallzeit während der Datenbankmigration, und die Quelldatenbank wird während des gesamten Migrationsvorgangs fortgesetzt.
+Sie können Ihre vorhandene PostgreSQL-Datenbank mithilfe von Attunity Replicate for Microsoft Migrations zu Azure Database for PostgreSQL migrieren. Attunity Replicate ist ein gemeinsames Angebot von Attunity und Microsoft. Es wird Microsoft-Kunden in Verbindung mit Azure Database Migration Service ohne Zusatzkosten zur Verfügung gestellt. 
 
-Attunity Replicate ist ein Datentreplikationstool, das die Datensynchronisierung zwischen einer Vielzahl von Quellen und Zielen ermöglicht und das Schemaerstellungsskript und die Daten, die jeder Datenbanktabelle zugeordnet sind, weitergibt. Attunity Replicate gibt keine anderen Artefakte (wie z.B. SP, Trigger, Funktionen usw.) weiter, und das Tool konvertiert z.B. PL-/SQL-Code in solchen Artefakte nicht in T-SQL.
+Attunity Replicate trägt zur Minimierung von Ausfallzeiten bei der Datenbankmigration bei und sorgt dafür, dass die Quelldatenbank während des Prozesses weiter verwendet werden kann.
+
+Das Attunity Replicate-Datenreplikationstool ermöglicht die Datensynchronisierung zwischen verschiedenen Quellen und Zielen. Es verteilt das Schemaerstellungsskript und die Daten, die den einzelnen Datenbanktabellen zugeordnet sind. Attunity Replicate verteilt keine anderen Artefakte (wie etwa SP, Trigger oder Funktionen) und konvertiert auch beispielsweise nicht den in solchen Artefakten gehosteten PL-/SQL-Code in T-SQL.
 
 > [!NOTE]
-> Auch wenn Attunity Replicate eine Vielzahl an Migrationsszenarien unterstützt, liegt der Fokus von Attunity Replicate for Microsoft Migrations auf der Unterstützung einer bestimmten Teilmenge von Quell-/Zielelementpaaren.
+> Attunity Replicate unterstützt zwar ein breites Spektrum von Migrationsszenarien, im Mittelpunkt steht jedoch die Unterstützung einer spezifischen Teilmenge von Quell-/Zielpaaren.
 
-Der Prozess für die Durchführung einer Migration mit minimaler Ausfallzeit umfasst Folgendes:
+Die Durchführung einer Migration mit minimaler Ausfallzeit umfasst Folgendes:
 
-1. **Migrieren des PostgreSQL-Quellschemas** zu einer Azure Database for PostgreSQL-Datenbank unter Verwendung des Befehls [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) mit dem Parameter „-n“ und der anschließenden Verwendung des Befehls [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html).
+* **Migrieren des PostgreSQL-Quellschemas** zu einer Azure Database for PostgreSQL-Datenbank unter Verwendung des Befehls [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) mit dem Parameter „-n“ und der anschließenden Verwendung des Befehls [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html).
 
-2. **Einrichten des ersten Ladevorgangs und die fortlaufende Synchronisierung von der Quelldatenbank zur Zieldatenbank** mithilfe von Attunity Replicate for Microsoft Migrations. Auf diese Weise wird der Zeitraum minimiert, für die die Quelldatenbank als schreibgeschützt festgelegt werden muss, während Sie die Überführung Ihrer Anwendungen in die PostgreSQL-Zieldatenbank in Azure vorbereiten.
+* **Einrichten des ersten Ladevorgangs und die fortlaufende Synchronisierung von der Quelldatenbank zur Zieldatenbank** mithilfe von Attunity Replicate for Microsoft Migrations. Auf diese Weise wird der Zeitraum minimiert, für die die Quelldatenbank als schreibgeschützt festgelegt werden muss, während Sie die Überführung Ihrer Anwendungen in die PostgreSQL-Zieldatenbank in Azure vorbereiten.
 
-Weitere Informationen zum Attunity Replicate for Microsoft Migrations-Angebot finden Sie in den folgenden Ressourcen:
- - [Webseite](https://aka.ms/attunity-replicate) zu Attunity Replicate for Microsoft Migrations
- - [Download](http://discover.attunity.com/download-replicate-microsoft-lp6657.html) von Attunity Replicate for Microsoft Migrations
- - [Community](https://microsoft.attunity.com/) von Attunity Replicate mit einem Schnellstarthandbuch, Tutorials und Support
- - Eine Schrittanleitung zur Verwendung von Attunity zum Migrieren von PostgreSQL zu Azure Database for PostgreSQL finden Sie im [Leitfaden zur Datenbankmigration](https://datamigration.microsoft.com/scenario/postgresql-to-azurepostgresql).
+Weitere Informationen zum Attunity Replicate for Microsoft-Migrations-Angebot finden Sie in den folgenden Ressourcen:
+ - Besuchen Sie die Webseite [Attunity Replicate for Microsoft Migrations](https://aka.ms/attunity-replicate).
+ - Laden Sie [Attunity Replicate for Microsoft Migrations](http://discover.attunity.com/download-replicate-microsoft-lp6657.html) herunter.
+ - Besuchen Sie die [Community von Attunity Replicate](https://aka.ms/attunity-community/), um eine Schnellstartanleitung, Tutorials und Support zu erhalten.
+ - Eine ausführliche Anleitung zur Verwendung von Attunity Replicate zum Migrieren von PostgreSQL zu Azure Database for PostgreSQL finden Sie im [Leitfaden zur Datenbankmigration](https://datamigration.microsoft.com/scenario/postgresql-to-azurepostgresql).

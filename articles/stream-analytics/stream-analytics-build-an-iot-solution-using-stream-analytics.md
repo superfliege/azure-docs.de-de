@@ -4,8 +4,8 @@ description: "Enthält ein Tutorial zu den ersten Schritten für die Stream Anal
 keywords: "IoT-Lösung, Fensterfunktionen"
 documentationcenter: 
 services: stream-analytics
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: a93693ef7d40025fa96846594a8eb525a50b6885
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/12/2018
+ms.author: sngun
+ms.openlocfilehash: cc84a34a410a750ddf2acb8f19b3bb809d269098
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
+
 ## <a name="introduction"></a>Einführung
 In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Stream Analytics in Echtzeit Einblicke in Ihre Daten erhalten. Entwickler können Datenströme, z.B. Klickstreams, Protokolle und von Geräten generierte Ereignisse, leicht mit Verlaufsdatensätzen oder Referenzdaten kombinieren, um geschäftliche Erkenntnisse zu gewinnen. Da Azure Stream Analytics ein vollständig verwalteter Dienst für die Datenstromberechnung in Echtzeit ist, der in Microsoft Azure gehostet wird, bietet er integrierte Resilienz, Skalierbarkeit sowie geringe Latenz und ist innerhalb von Minuten einsatzbereit.
 
@@ -54,7 +55,7 @@ In diesem Tutorial werden zwei Datenströme verwendet. Mit Sensoren, die am Eing
 ### <a name="entry-data-stream"></a>Eingangsdatenstrom
 Der Eingangsdatenstrom enthält Informationen zu den Fahrzeugen, die in Mautstationen einfahren.
 
-| TollId | EntryTime | LicensePlate | Zustand | Make | Modell | VehicleType | VehicleWeight | Toll | Tag |
+| TollId | EntryTime | LicensePlate | State (Zustand) | Stellen | Modell | VehicleType | VehicleWeight | Toll | Tag |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -65,13 +66,13 @@ Der Eingangsdatenstrom enthält Informationen zu den Fahrzeugen, die in Mautstat
 
 Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 | --- | --- |
 | TollId |Mauthäuschen-ID zur eindeutigen Identifizierung des Mauthäuschens |
 | EntryTime |Datum und Uhrzeit der Einfahrt des Fahrzeugs in das Mauthäuschen in UTC |
 | LicensePlate |Nummernschild des Fahrzeugs |
-| Zustand |Bundesstaat (USA) |
-| Make |Der Fahrzeughersteller |
+| State (Zustand) |Bundesstaat (USA) |
+| Stellen |Der Fahrzeughersteller |
 | Modell |Modellnummer des Fahrzeugs |
 | VehicleType |1 für Privatfahrzeuge oder 2 für Nutzfahrzeuge |
 | WeightType |Fahrzeuggewicht in Tonnen; „0“ für Pkws |
@@ -92,7 +93,7 @@ Der Ausgangsdatenstrom enthält Informationen zu den Fahrzeugen, die aus der Mau
 
 Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 | --- | --- |
 | TollId |Mauthäuschen-ID zur eindeutigen Identifizierung des Mauthäuschens |
 | ExitTime |Datum und Uhrzeit der Ausfahrt des Fahrzeugs aus einem Mauthäuschen in UTC |
@@ -112,7 +113,7 @@ Im Tutorial wird eine statische Momentaufnahme der Registrierungsdatenbank für 
 
 Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 | --- | --- |
 | LicensePlate |Nummernschild des Fahrzeugs |
 | RegistrationId |ID der Fahrzeugregistrierung |
@@ -175,26 +176,13 @@ Sie sehen ein anderes Fenster, das etwa wie im folgenden Screenshot aussieht. Di
 Nun sollten alle Ihre Ressourcen im Azure-Portal angezeigt werden. Navigieren Sie zu <https://portal.azure.com>, und melden Sie sich mit Ihren Anmeldeinformationen an. Beachten Sie, dass einige Funktionen derzeit das klassische Portal verwenden. Diese Schritte werden eindeutig angegeben.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
-Klicken Sie im Azure-Portal unten im linken Verwaltungsbereich auf **More services** (Weitere Dienste). Geben Sie im vorgegebenen Feld **Event Hubs** ein, und klicken Sie auf **Event Hubs**. Daraufhin wird ein neues Browserfenster geöffnet, das den Bereich **SERVICE BUS** im **klassischen Portal** anzeigt. Hier sehen Sie den Event Hub, der durch das Skript „Setup.ps1“ erstellt wurde.
 
-![SERVICE BUS](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
-
-Klicken Sie auf den Eintrag, der mit *tolldata* beginnt. Klicken Sie auf die Registerkarte **EVENT HUBS** . Sie sehen zwei Event Hubs namens *entry* und *exit*, die in diesem Namespace erstellt wurden.
-
-![Registerkarte „Event Hubs“ im klassischen Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
+Klicken Sie im Azure-Portal unten im linken Verwaltungsbereich auf **Weitere Dienste**. Geben Sie in das bereitgestellte Feld **Event Hubs** ein, und Sie sehen einen neuen Event Hub-Namespace, der mit **tolldata** beginnt. Dieser Namespace wird vom Skript „Setup.ps1“ erstellt. Sie sehen zwei Event Hubs namens **entry** und **exit**, die in diesem Namespace erstellt wurden.
 
 ### <a name="azure-storage-container"></a>Azure Storage-Container
-1. Wechseln Sie zurück zur Registerkarte, in der das Azure-Portal geöffnet ist. Klicken Sie links im Azure-Portal auf **SPEICHER** , um den Azure Storage-Container anzuzeigen, der im Tutorial verwendet wird.
-   
-    ![Menüelement „Speicher“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image11.png)
-2. Klicken Sie auf den Eintrag, der mit *tolldata* beginnt. Klicken Sie auf die Registerkarte **CONTAINER** , um den erstellten Container anzuzeigen.
-   
-    ![Registerkarte „Container“ im Azure-Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
-3. Klicken Sie auf den Container **tolldata** , um die hochgeladene JSON-Datei mit den Daten zur Fahrzeugregistrierung anzuzeigen.
-   
-    ![Screenshot der Datei „registration.json“ im Container](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
+Navigieren Sie im Azure-Portal zu den Speicherkonten. Sie sollten ein Speicherkonto sehen, das mit **tolldata** beginnt. Klicken Sie auf den Container **tolldata** , um die hochgeladene JSON-Datei mit den Daten zur Fahrzeugregistrierung anzuzeigen.
 
-### <a name="azure-sql-database"></a>Azure SQL-Datenbank
+### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 1. Wechseln Sie zur ersten Registerkarte im Azure-Portal zurück, die Sie im Browser geöffnet haben. Klicken Sie links im Azure-Portal auf **SQL-Datenbanken**, um die SQL-Datenbank anzuzeigen, die im Tutorial verwendet wird. Klicken Sie anschließend auf **tolldatadb**.
    
     ![Screenshot der erstellten SQL-Datenbank](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15.png)
@@ -291,7 +279,7 @@ Jetzt sind alle Eingaben definiert.
 4. Geben Sie im Feld **BENUTZERNAME** den Text **tolladmin**, **123toll!** im Feld **KENNWORT** den Text und im Feld **TABELLE** **TollDataRefJoinein**.
    
     ![SQL-Datenbankeinstellungen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image38.png)
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 
 ## <a name="azure-stream-analytics-query"></a>Azure Stream Analytics-Abfragen
 Die Registerkarte **ABFRAGE** enthält eine SQL-Abfrage, mit der die eingehenden Daten transformiert werden.

@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: evboyle
-ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 511f3327972672deaa321fb34bc5f91d355370a2
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Erste Schritte mit Azure Search in Node.js
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ In dieser Anwendung erstellt das Programm **DataIndexer** den Index und lädt ih
 ## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Ermitteln des Dienstnamens und des API-Schlüssels des Azure Search-Diensts
 Nachdem Sie den Dienst erstellt haben, kehren Sie zum Portal zurück, um die URL oder den `api-key`zu ermitteln. Für Verbindungen mit Ihrem Search-Dienst benötigen Sie sowohl die URL als auch einen `api-key` , um den Aufruf zu authentifizieren.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie in der Navigationsleiste auf **Search-Dienst**, um alle für Ihr Abonnement bereitgestellten Azure Search-Dienste aufzuführen.
 3. Wählen Sie den Dienst aus, den Sie verwenden möchten.
 4. Auf dem Dienstdashboard werden Kacheln für wichtige Informationen, etwa das Schlüsselsymbol für den Zugriff auf die Administratorschlüssel, angezeigt.
@@ -57,7 +57,7 @@ Nachdem Sie den Dienst erstellt haben, kehren Sie zum Portal zurück, um die URL
 ## <a name="download-the-sample-files"></a>Herunterladen der Beispieldateien
 Verwenden Sie eine der folgenden Vorgehensweisen zum Herunterladen des Beispiels.
 
-1. Wechseln Sie zu [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodejsIndexerDemo).
+1. Navigieren Sie zu [search-node-indexer-demo](https://github.com/Azure-Samples/search-node-indexer-demo).
 2. Klicken Sie auf **Download ZIP**, um die ZIP-Datei auf dem Datenträger zu speichern, und extrahieren Sie dann die darin enthaltenen Dateien.
 
 Alle nachfolgenden Dateiänderungen und Ausführungsanweisungen werden an den Dateien in diesem Ordner vorgenommen.

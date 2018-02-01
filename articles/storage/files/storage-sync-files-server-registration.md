@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 10c8b708cad245f4ac0304489beb36dcf63cd4b1
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: fcd79f25dee4ccaf674594222a6465fda137fd7a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Verwalten registrierter Server mit Azure File Sync (Vorschau)
 Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -42,6 +42,26 @@ Bevor Sie einen Server bei einem Speichersynchronisationsdienst registrieren kö
 
     > [!Note]  
     > Es wird empfohlen, die neueste Version des AzureRM-PowerShell-Moduls zu verwenden, um einen Server zu registrieren bzw. die Registrierung aufzuheben. Wenn das AzureRM-Paket zuvor auf diesem Server installiert wurde (und die PowerShell-Version auf diesem Server 5.* oder höher ist), können Sie das Paket mit dem Cmdlet `Update-Module` aktualisieren. 
+* Wenn Sie einen Netzwerkproxyserver in Ihrer Umgebung nutzen, konfigurieren Sie auf dem Server Proxyeinstellungen, die für den Synchronisierungs-Agent verwendet werden.
+    1. Bestimmen Sie die Proxy-IP-Adresse und die zugehörige Portnummer.
+    2. Bearbeiten Sie diese beiden Dateien:
+        * C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
+        * C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+    3. Fügen Sie in diese beiden Dateien die in Abbildung 1 (unterhalb dieses Abschnitt) aufgeführten Zeilen unter „/System.ServiceModel“ ein. Ändern Sie dabei „127.0.0.1:8888“ in die richtige IP-Adresse (ersetzen Sie „127.0.0.1“) und die richtige Portnummer (ersetzen Sie „8888“):
+    4. Legen Sie die WinHTTP-Proxyeinstellungen per Befehlszeile fest:
+        * Anzeigen des Proxys: netsh winhttp show proxy
+        * Festlegen des Proxys: netsh winhttp set proxy 127.0.0.1:8888
+        * Zurücksetzen des Proxys: netsh winhttp reset proxy
+        * Erfolgt diese Einrichtung, nachdem der Agent installiert wurde, starten Sie den Synchronisierungs-Agent neu: netstop filesyncsvc
+    
+```XML
+    Figure 1:
+    <system.net>
+        <defaultProxy enabled="true" useDefaultCredentials="true">
+            <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
+        </defaultProxy>
+    </system.net>
+```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>Registrieren eines Servers beim Speichersynchronisierungsdienst
 Damit ein Server als *Serverendpunkt* in einer *Synchronisierungsgruppe* von Azure File Sync verwendet werden kann, muss er bei einem *Speichersynchronisierungsdienst* registriert werden. Ein Server kann immer nur bei einem Speichersynchronisierungsdienst registriert sein.

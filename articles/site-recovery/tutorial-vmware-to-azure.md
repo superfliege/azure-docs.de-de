@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/11/2017
+ms.topic: tutorial
+ms.date: 01/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5810ff908d48fc4ff742d734e7c2457fdfe8cb03
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8acc8deff8b635c97e8722d65a728aebf0e49bb3
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
@@ -30,8 +27,8 @@ In diesem Tutorial wird veranschaulicht, wie die Notfallwiederherstellung in Azu
 
 Dies ist das dritte Tutorial in einer Reihe. In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben:
 
-1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
-2. [Lokales Vorbereiten von VMware](tutorial-prepare-on-premises-vmware.md)
+1. [Prepare Azure](tutorial-prepare-azure.md) (Vorbereiten von Azure)
+2. [Prepare on-premises VMware](tutorial-prepare-on-premises-vmware.md) (Lokales Vorbereiten von VMware)
 
 Bevor Sie beginnen, empfiehlt sich eine [Überprüfung der Architektur](concepts-vmware-to-azure-architecture.md) für ein Notfallwiederherstellungsszenario.
 
@@ -46,115 +43,75 @@ Bevor Sie beginnen, empfiehlt sich eine [Überprüfung der Architektur](concepts
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
-Laden Sie zum Einrichten der Quellumgebung die Datei für das einheitliche Setup von Site Recovery herunter. Sie führen Setup aus, um lokale Site Recovery-Komponenten zu installieren, VMware-Server im Tresor zu registrieren und lokale VMs zu ermitteln.
-
-### <a name="verify-on-premises-site-recovery-requirements"></a>Überprüfen lokaler Site Recovery-Anforderungen
-
-Sie benötigen eine einzelne, hochverfügbare, lokale VMware VM, um lokale Site Recovery-Komponenten zu hosten. Die Komponenten umfassen den Konfigurationsserver, Prozessserver und Masterzielserver.
+Zum Einrichten der Quellumgebung benötigen Sie einen einzelnen, hochverfügbaren, lokalen Computer, um lokale Site Recovery-Komponenten zu hosten. Die Komponenten umfassen den Konfigurationsserver, Prozessserver und Masterzielserver.
 
 - Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure und verwaltet die Datenreplikation.
 - Der Prozessserver fungiert als Replikationsgateway. Empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an Azure Storage. Der Prozessserver installiert auch den Mobility Service auf VMs, die Sie replizieren möchten, und führt auf lokalen VMware VMs eine automatische Ermittlung durch.
 - Der Masterzielserver verarbeitet die Replikationsdaten während des Failbacks von Azure.
 
-Die VM muss die folgenden Anforderungen erfüllen.
+Wenn Sie den Konfigurationsserver als hochverfügbaren virtuellen VMware-Computer einrichten möchten, laden Sie eine vorbereitete OVF-Vorlage herunter und importieren die Vorlage zum Erstellen des virtuellen Computers in VMware. Nach dem Einrichten des Konfigurationsservers registrieren Sie ihn im Tresor. Nach der Registrierung ermittelt Site Recovery lokale virtuelle VMware-Computer.
 
-| **Anforderung** | **Details** |
-|-----------------|-------------|
-| Anzahl von CPU-Kernen| 8 |
-| RAM | 12 GB |
-| Anzahl der Datenträger | 3 - Betriebssystem-Datenträger, Prozessservercache-Datenträger, Aufbewahrungslaufwerk (für Failback) |
-| Freier Speicherplatz (Prozessservercache) | 600 GB |
-| Freier Speicherplatz (Aufbewahrungslaufwerk) | 600 GB |
-| Betriebssystemversion | Windows Server 2012 R2 |
-| Gebietsschema des Betriebssystems | Englisch (en-us) |
-| VMware vSphere PowerCLI-Version | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") |
-| Windows Server-Rollen | Aktivieren Sie nicht diese Rollen: Active Directory Domain Services, Internetinformationsdienste, Hyper-V |
-| NIC-Typ | VMXNET3 |
-| Art der IP-Adresse | statischen |
-| Ports | 443 (Steuerkanalorchestrierung)<br/>9443 (Datentransport)|
+### <a name="download-the-vm-template"></a>Herunterladen der Vorlage
 
-Außerdem haben Sie folgende Möglichkeiten: 
-- Stellen Sie sicher, dass die Systemuhr auf der VM mit einem Zeitserver synchronisiert ist. Die Zeit muss mit einer Toleranz von höchstens 15 Minuten synchronisiert werden. Wenn sie größer ist, tritt beim Setup ein Fehler auf.
-setup fails.
-- Stellen Sie sicher, dass die VM des Konfigurationsservers auf die folgenden URLs zugreifen kann:
+1. Navigieren Sie im Tresor zu **Infrastruktur vorbereiten** > **Quelle**.
+2. Klicken Sie in **Quelle vorbereiten** auf **+Konfigurationsserver**.
+3. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver für VMware** angezeigt wird.
+4. Laden Sie die OVF-Vorlage (Open Virtualization Format) für den Konfigurationsserver herunter.
 
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
-    
-- Stellen Sie sicher, dass auf IP-Adressen basierende Firewallregeln die Kommunikation mit Azure gestatten.
-    - Lassen Sie die [IP-Bereiche für Azure-Rechenzentrum](https://www.microsoft.com/download/confirmation.aspx?id=41653), Port 443 (HTTPS) und Port 9443 (Datenreplikation) zu.
-    - Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zu.
+  > [!TIP]
+  Die neueste Version der Konfigurationsservervorlage kann direkt im [Microsoft Download Center](https://aka.ms/asrconfigurationserver) heruntergeladen werden.
+
+## <a name="import-the-template-in-vmware"></a>Importieren der Vorlage in VMware
+
+1. Melden Sie sich auf dem VMware vCenter-Server oder dem vSphere ESXi-Host mit dem VMWare vSphere-Client an.
+2. Wählen Sie im Menü **Datei** die Option **OVF-Vorlage bereitstellen** aus, um den Assistenten zum Bereitstellen von OVF-Vorlagen zu starten.  
+
+     ![OVF-Vorlage](./media/tutorial-vmware-to-azure/vcenter-wizard.png)
+
+3. Geben Sie unter **Quelle auswählen** den Speicherort der heruntergeladenen OVF-Vorlage an.
+4. Klicken Sie in **Bewertungsdetails** auf **Weiter**.
+5. Übernehmen Sie unter **Name und Ordner auswählen** und **Konfiguration auswählen** die Standardeinstellungen.
+6. Wählen Sie in **Speicher auswählen** unter **Select virtual disk format** (Format für virtuellen Datenträger auswählen) für eine optimale Leistung **Thick Provision Eager Zeroed** (Breite Bereitstellung gegen null) aus.
+4. Übernehmen Sie auf den übrigen Seiten des Assistenten die Standardeinstellungen.
+5. Unter **Bereit für den Abschluss**:
+  - Wählen Sie zum Einrichten des virtuellen Computers mit den Standardeinstellungen **Power on after deployment** (Nach Bereitstellung einschalten) > **Fertig stellen** aus.
+  - Wenn Sie eine weitere Netzwerkschnittstelle hinzufügen möchten, deaktivieren Sie **Power on after deployment** (Nach Bereitstellung einschalten), und wählen Sie dann **Fertig stellen** aus. Standardmäßig wird die Konfigurationsservervorlage mit einer einzelnen NIC bereitgestellt, Sie können aber nach der Bereitstellung weitere NICs hinzufügen.
+
+  
+## <a name="add-an-additional-adapter"></a>Hinzufügen zusätzlicher Adapter
+
+Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, tun Sie dies, bevor Sie den Server im Tresor registrieren. Das Hinzufügen von zusätzlichen Adaptern nach der Registrierung wird nicht unterstützt.
+
+1. Klicken Sie im vSphere-Client mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Einstellungen bearbeiten** aus.
+2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter**. Klicken Sie auf **Weiter**.
+3. Wählen Sie den Adaptertyp und ein Netzwerk aus. 
+4. Um die virtuelle NIC zu verbinden, wenn der virtuelle Computer eingeschaltet wird, wählen Sie **Connect at power on** (Beim Einschalten verbinden) aus. Klicken Sie auf **Weiter** > **Fertig stellen** und dann auf **OK**.
 
 
-### <a name="download-the-site-recovery-unified-setup-file"></a>Herunterladen der Datei für das einheitliche Setup von Site Recovery
+## <a name="register-the-configuration-server"></a>Registrieren des Konfigurationsservers 
 
-1. Klicken Sie im Tresor > **Infrastruktur vorbereiten** auf **Quelle**.
-1. Klicken Sie in **Quelle vorbereiten** auf **+Konfigurationsserver**.
-2. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
-3. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
-4. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
+1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients ein.
+2. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren. Nehmen Sie den Lizenzvertrag an, und geben Sie ein Administratorkennwort an.
+3. Melden Sie sich nach Abschluss der Installation als Administrator auf dem virtuellen Computer an.
+4. Bei der ersten Anmeldung wird das Azure Site Recovery-Konfigurationstool gestartet.
+5. Geben Sie einen Namen an, der für die Registrierung des Konfigurationsservers mit Site Recovery verwendet wird. Klicken Sie auf **Weiter**.
+6. Das Tool überprüft, ob der virtuelle Computer eine Verbindung mit Azure herstellen kann. Klicken Sie nach dem Herstellen der Verbindung auf **Anmelden**, um sich bei Ihrem Azure-Abonnement anzumelden. Die Anmeldeinformationen müssen über Zugriff auf den Tresor verfügen, in dem Sie den Konfigurationsserver registrieren möchten.
+7. Das Tool führt einige Konfigurationsaufgaben und anschließend einen Neustart durch.
+8. Melden Sie sich erneut auf dem Computer an. Der Assistent für die Konfigurationsserververwaltung wird automatisch gestartet.
 
-   ![Quelle einrichten](./media/tutorial-vmware-to-azure/source-settings.png)
+### <a name="configure-settings-and-connect-to-vmware"></a>Konfigurieren von Einstellungen und Herstellen einer Verbindung mit VMware
 
-### <a name="set-up-the-configuration-server"></a>Einrichten des Konfigurationsservers
+1. Wählen Sie im Assistenten für die Konfigurationsserververwaltung unter **Konnektivität einrichten** die NIC aus, die den Replikationsdatenverkehr empfängt. Klicken Sie anschließend auf **Speichern**. Sie können diese Einstellung nach der Konfiguration nicht mehr ändern.
+2. Wählen Sie unter **Recovery Services-Tresor auswählen** Ihr Azure-Abonnement, die zugehörige Ressourcengruppe und den Tresor aus.
+3. Akzeptieren Sie unter **Drittanbietersoftware installieren** den Lizenzvertrag, und klicken Sie auf **Herunterladen und installieren**, um MySQL Server zu installieren.
+4. Klicken Sie auf **VMware PowerLCI installieren**. Stellen Sie sicher, dass alle Browserfenster geschlossen sind, bevor Sie diesen Schritt ausführen. Klicken Sie anschließend auf **Weiter**.
+5. Unter **Anwendungskonfiguration überprüfen** werden die Voraussetzungen überprüft, bevor Sie fortfahren.
+6. Geben Sie in **vCenter-Server/vSphere ESXi-Server konfigurieren** den FQDN oder die IP-Adresse des vCenter-Servers oder vSphere-Hosts an, auf dem sich die virtuellen Computer befinden, die repliziert werden sollen. Geben Sie den Port, an dem der Server lauscht, sowie einen Anzeigenamen an, der für den VMware-Server im Tresor verwendet werden soll.
+7. Geben Sie die Anmeldeinformationen an, die der Konfigurationsserver zum Verbinden mit dem VMware-Server verwendet. Site Recovery verwendet diese Anmeldeinformationen für die automatische Erkennung von VMware-VMs, die für die Replikation verfügbar sind. Klicken Sie auf **Hinzufügen** und anschließend auf **Weiter**.
+8. Geben Sie in **Anmeldeinformationen für virtuelle Computer konfigurieren** den Benutzernamen und das Kennwort für die automatische Installation des Mobility Service auf Computern ein, wenn die Replikation aktiviert ist. Für Windows-Computer benötigt das Konto lokale Administratorrechte auf den Computern, die Sie replizieren möchten. Bei Linux geben Sie die Anmeldeinformationen für das root-Konto an.
+9. Klicken Sie auf **Konfiguration abschließen**, um die Registrierung abzuschließen. 
+10. Überprüfen Sie nach Abschluss der Registrierung im Azure-Portal, ob der Konfigurationsserver und der VMware-Server auf der Seite **Quelle** im Tresor aufgeführt werden. Klicken Sie dann auf **OK**, um die Einstellungen für das Ziel zu konfigurieren.
 
-1. Führen Sie die Installationsdatei für das einheitliche Setup aus.
-2. Wählen Sie unter **Vorbereitung** die Option **Install the configuration server and process server** (Konfigurationsserver und Prozessserver installieren) aus, und klicken Sie dann auf **Weiter**.
-
-3. Klicken Sie unter **Third Party Software License** (Drittanbietersoftwarelizenz) auf **I Accept** (Ich stimme zu), um MySQL herunterzuladen und zu installieren, und klicken Sie auf **Weiter**.
-
-4. Wählen Sie unter **Registration** (Registrierung) den Registrierungsschlüssel aus, den Sie aus dem Tresor heruntergeladen haben.
-
-5. Geben Sie unter **Internet Settings** (Interneteinstellungen) an, wie der auf dem Konfigurationsserver ausgeführte Anbieter eine Internetverbindung mit Azure Site Recovery herstellen soll.
-
-   - Wenn die Verbindung über den derzeit auf dem Computer eingerichteten Proxy hergestellt werden soll, wählen Sie **Unter Verwendung eines Proxyservers mit Azure Site Recovery verbinden**.
-   - Wenn der Anbieter eine direkte Verbindung herstellen soll, wählen Sie **Direkt mit Azure Site Recovery verbinden (ohne Proxyserver)**.
-   - Falls für den vorhandenen Proxy eine Authentifizierung erforderlich ist oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, müssen Sie **Mit benutzerdefinierten Proxyeinstellungen verbinden** auswählen und Adresse, Port und Anmeldeinformationen angeben.
-
-   ![Firewall](./media/tutorial-vmware-to-azure/combined-wiz4.png)
-
-6. Bei der **Voraussetzungsüberprüfung** führt das Setup eine Überprüfung durch, um sicherzustellen, dass die Installation ausgeführt werden kann. Falls beim **Überprüfen der Synchronisierung der globalen Zeit** eine Warnung angezeigt wird, stellen Sie sicher, dass die Zeit der Systemuhr (Einstellungen für **Datum und Uhrzeit**) mit der Zeitzone übereinstimmt.
-
-   ![Voraussetzungen](./media/tutorial-vmware-to-azure/combined-wiz5.png)
-
-7. Erstellen Sie unter **MySQL Configuration** (MySQL-Konfiguration) Anmeldeinformationen für die Anmeldung bei der MySQL-Serverinstanz, die installiert wird.
-
-8. Wählen Sie unter **Umgebungsdetails** **Ja** aus, um VMware-VMs zu schützen. Das Setup überprüft, ob PowerCLI 6.0 installiert ist.
-
-9. Wählen Sie unter **Install Location** (Installationsspeicherort) aus, wo die Binärdateien installiert werden sollen und wo der Cache gespeichert werden soll. Auf dem ausgewählten Laufwerk müssen mindestens 5 GB an Speicherplatz verfügbar sind, wir raten Ihnen jedoch zu einem Cachelaufwerk mit mindestens 600 GB freiem Speicherplatz.
-
-10. Geben Sie unter **Network Selection** (Netzwerkauswahl) den Listener (Netzwerkadapter und SSL-Port) an, über den der Konfigurationsserver Replikationsdaten sendet und empfängt. Port 9443 ist der Standardport zum Senden und Empfangen von Replikationsdatenverkehr. Sie können diese Portnummer jedoch ändern, um sie an die Anforderungen Ihrer Umgebung anzupassen. Darüber hinaus öffnen wir Port 443, über den Replikationsvorgänge koordiniert werden. Verwenden Sie den Port 443 nicht, um Replikationsdatenverkehr zu senden oder zu empfangen.
-
-11. Lesen Sie die unter **Summary** (Zusammenfassung) angezeigten Informationen und klicken Sie auf **Install** (Installieren). Das Setup installiert den Konfigurationsserver und registriert ihn beim Dienst Azure Site Recovery.
-
-    ![Zusammenfassung](./media/tutorial-vmware-to-azure/combined-wiz10.png)
-
-    Nach Abschluss der Installation wird eine Passphrase generiert. Diese benötigen Sie bei der Aktivierung der Replikation. Kopieren Sie sie deshalb, und bewahren Sie sie an einem sicheren Ort auf. Der Server wird im Bereich **Einstellungen** > **Server** im Tresor angezeigt.
-
-### <a name="configure-automatic-discovery"></a>Konfigurieren der automatischen Ermittlung
-
-Zum Ermitteln von VMs muss der Konfigurationsserver eine Verbindung mit lokalen VMware-Servern herstellen. Fügen Sie für die Zwecke dieses Tutorials den vCenter-Server oder die vSphere-Hosts hinzu; verwenden Sie dabei ein Konto mit Administratorrechten auf dem Server. Sie haben dieses Konto im [vorherigen Tutorial](tutorial-prepare-on-premises-vmware.md) erstellt. 
-
-So fügen Sie das Konto hinzu
-
-1. Starten Sie auf der VM des Konfigurationsservers die Datei **CSPSConfigtool.exe**. Diese finden Sie als Verknüpfung auf dem Desktop sowie unter „*Installationsort*\home\svsystems\bin“.
-
-2. Klicken Sie auf **Konten verwalten** > **Konto hinzufügen**.
-
-   ![Konto hinzufügen](./media/tutorial-vmware-to-azure/credentials1.png)
-
-3. Fügen Sie unter **Account Details** (Kontodetails) das Konto hinzu, das für die automatische Ermittlung verwendet werden wird.
-
-   ![Details](./media/tutorial-vmware-to-azure/credentials2.png)
-
-So fügen Sie den VMware-Server hinzu
-
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und klicken Sie auf **Alle Ressourcen**.
-2. Klicken Sie auf den Recovery Services-Tresor **ContosoVMVault**.
-3. Klicken Sie auf **Site Recovery** > **Infrastruktur vorbereiten** > **Quelle**.
-4. Wählen Sie **+vCenter** aus, um eine Verbindung mit einem vCenter-Server oder vSphere ESXi-Host herzustellen.
-5. Geben Sie unter **vCenter-Server hinzufügen** einen Anzeigenamen für den Server an. Geben Sie anschließend die IP-Adresse oder den FQDN ein.
-6. Belassen Sie den Port als Port 443, es sei denn Ihre VMware-Server sind so konfiguriert, dass sie Anforderungen an einem anderen Port überwachen können.
-7. Wählen Sie das Konto aus, mit dem Verbindungen mit dem Server hergestellt werden sollen. Klicken Sie auf **OK**.
 
 Site Recovery stellt mithilfe der angegebenen Einstellungen eine Verbindung mit VMware-Servern her und ermittelt VMs.
 
@@ -185,7 +142,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 
 Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet. Standardmäßig wird für das Failback automatisch eine passende Richtlinie erstellt. Bei Verwendung der Replikationsrichtlinie **rep-policy** lautet die Failbackrichtlinie beispielsweise **rep-policy-failback**. Diese Richtlinie wird erst verwendet, wenn Sie ein Failback über Azure initiieren.
 
-## <a name="enable-replication"></a>Replikation aktivieren
+## <a name="enable-replication"></a>Aktivieren der Replikation
 
 Site Recovery installiert den Mobility Service, wenn die Replikation für eine VM aktiviert wird. Es kann länger als 15 Minuten dauern, bis die Änderungen wirksam und im Portal angezeigt werden.
 

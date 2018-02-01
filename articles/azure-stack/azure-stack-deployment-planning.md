@@ -1,5 +1,5 @@
 ---
-title: Aspekte bei der Planung mit Azure Stack integrierter Systeme | Microsoft-Dokumentation
+title: "Überlegungen zur Planung für integrierte Azure Stack-Systeme | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie aktuell bei der Planung und Vorbereitung für Azure Stack mit mehreren Knoten vorgehen können."
 services: azure-stack
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 6ba6bed8321e1ffde8bc8959443682725da36827
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: cd14f0e5259e5c0b6cbf11790bbdf08164267ffa
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/19/2018
 ---
-# <a name="planning-considerations-for-azure-stack-integrated-systems"></a>Aspekte bei der Planung mit Azure Stack integrierter Systeme
+# <a name="planning-considerations-for-azure-stack-integrated-systems"></a>Überlegungen zur Planung für integrierte Azure Stack-Systeme
 Wenn Sie an einem mit Azure Stack integrierten System interessiert sind, müsse Sie einige der wichtigsten Aspekte bei der Planung der Bereitstellung verstehen und wissen, wie das System in Ihr Rechenzentrum passt. Dieser Artikel bietet einen allgemeinen Überblick über diese Aspekte, damit Sie wichtige Infrastrukturentscheidungen für Ihr Azure Stack-System mit mehreren Knoten treffen können. Ein Verständnis dieser Aspekte hilft Ihnen bei der Zusammenarbeit mit Ihrem OEM-Hardwareanbieter, sobald dieser Azure Stack in Ihrem Rechenzentrum bereitstellt.  
 
 > [!NOTE]
@@ -31,12 +31,12 @@ Für die Bereitstellung von Azure Stack müssen Sie eine Reihe von Entscheidunge
 
 Die benötigten Informationen reichen von Netzwerk-, Sicherheits- und Identitätsinformationen bis hin zu vielen wichtigen Entscheidungen, die möglicherweise Wissen aus vielen verschiedenen Bereichen und von verschiedenen Entscheidungsträgern erfordern. Daher müssen Sie möglicherweise Mitarbeiter aus mehreren Teams in Ihrem Unternehmen hinzuziehen, um sicherzustellen, dass Sie über alle erforderlichen Informationen verfügen, bevor die Bereitstellung beginnt. Es ist möglicherweise hilfreich, sich mit Ihrem Hardwarehersteller zu besprechen, während Sie diese Informationen sammeln, da er Ratschläge geben kann, die Ihnen bei Ihren Entscheidungen helfen.
 
-Während Sie die erforderlichen Informationen recherchieren und sammeln, müssen Sie möglicherweise vor der Bereitstellung einige Konfigurationsänderungen an Ihrer Netzwerkumgebung vornehmen. Dazu gehören die Reservierung von IP-Adressräumen für die Azure Stack-Lösung sowie die Konfiguration Ihrer Router, Switches und Firewalls zur Vorbereitung der Konnektivität mit den Switches der neuen Azure Stack-Lösung. Sichern Sie sich bei Ihrer Planung die Unterstützung der Fachbereichsexperten.
+Während Sie die erforderlichen Informationen recherchieren und sammeln, müssen Sie möglicherweise vor der Bereitstellung einige Konfigurationsänderungen an Ihrer Netzwerkumgebung vornehmen. Dazu gehören die Reservierung von IP-Adressräumen für die Azure Stack-Lösung sowie die Konfiguration Ihrer Router, Switches und Firewalls zur Vorbereitung der Konnektivität mit den Switches der neuen Azure Stack-Lösung. Lassen Sie sich bei Ihrer Planung von den jeweiligen Fachbereichsexperten unterstützen, und binden Sie sie während des gesamten Bereitstellungsprojekts mit ein.
 
 ## <a name="management-considerations"></a>Überlegungen zur Verwaltung
 Azure Stack ist ein geschlossenes System, bei dem die Infrastruktur aus Berechtigungs- und Netzwerksicht abgeriegelt ist. Dabei werden Netzwerk-Zugriffssteuerungslisten (ACLs) angewendet, um sämtlichen nicht autorisierten eingehenden Datenverkehr und sämtliche unnötige Kommunikation zwischen Infrastrukturkomponenten zu blockieren. Dadurch soll nicht autorisierten Benutzern der Zugriff auf das System verwehrt werden.
 
-Für die tägliche Verwaltung und den Betrieb besteht kein uneingeschränkter Administratorzugriff auf die Infrastruktur. Azure Stack-Operatoren müssen das System über das Administratorportal oder mithilfe von Azure Resource Manager (über PowerShell oder die REST-API) verwalten. Es gibt keinen Zugriff auf das System durch andere Verwaltungstools wie Hyper-V-Manager oder Failovercluster-Manager. Es kann keine Software von Drittanbietern (z. B. Agenten) innerhalb der Komponenten der Azure Stack-Infrastruktur installiert werden, um den Schutz des Systems zu unterstützen. Die Interoperabilität mit externer Verwaltungs- und Sicherheitssoftware erfolgt über PowerShell oder die REST-API.
+Für die tägliche Verwaltung und den Betrieb besteht kein uneingeschränkter Administratorzugriff auf die Infrastruktur. Azure Stack-Betreiber müssen das System über das Administratorportal oder mithilfe von Azure Resource Manager (über die Azure-Befehlszeilenschnittstelle, über PowerShell oder über die REST-API) verwalten. Es gibt keinen Zugriff auf das System durch andere Verwaltungstools wie Hyper-V-Manager oder Failovercluster-Manager. Es kann keine Software von Drittanbietern (z. B. Agenten) innerhalb der Komponenten der Azure Stack-Infrastruktur installiert werden, um den Schutz des Systems zu unterstützen. Die Interoperabilität mit externer Verwaltungs- und Sicherheitssoftware erfolgt über die Azure-Befehlszeilenschnittstelle, über PowerShell oder über die REST-API.
 
 Wenn für die Behandlung von Problemen, die nicht durch Schritte zur Warnungsvermittlung behoben werden, eine höhere Zugriffsebene erforderlich ist, müssen Sie mit dem Support zusammenarbeiten. Über den Support gibt es eine Methode, um temporär den uneingeschränkten Administratorzugriff für das System bereitzustellen, um komplexere Operationen durchführen zu können. 
 
@@ -45,7 +45,7 @@ Wenn für die Behandlung von Problemen, die nicht durch Schritte zur Warnungsver
 ### <a name="choose-identity-provider"></a>Auswählen des Identitätsanbieters
 Sie müssen bedenken, welchen Identitätsanbieter Sie für die Bereitstellung von Azure Stack nutzen möchten, Azure AD oder AD FS. Sie können die Identitätsanbieter nach der Bereitstellung nicht wechseln, ohne das System komplett neu bereitstellen zu müssen.
 
-Ihre Wahl des Identitätsanbieters hat keinen Einfluss auf virtuelle Computer des Mandanten, auf das Identitätssystem sowie auf von ihnen verwendete Konten oder darauf, ob sie einer Active Directory-Domäne usw. beitreten können. Das ist was anderes.
+Die Wahl des Identitätsanbieters hat keinen Einfluss auf virtuelle Mandantencomputer, auf das von ihnen verwendete Identitätssystem, auf die von ihnen verwendeten Konten oder darauf, ob sie einer Active Directory-Domäne beitreten können. Das ist was anderes.
 
 Im Artikel [Bereitstellungsentscheidungen für in Azure Stack integrierte Systeme](.\azure-stack-deployment-decisions.md) erfahren Sie mehr über die Wahl eines Identitätsanbieters.
 
@@ -93,9 +93,9 @@ Weitere Informationen darüber, welche PKI-Zertifikate (Public Key-Infrastruktur
 
 
 ## <a name="time-synchronization"></a>Zeitsynchronisierung
-Sie müssen einen bestimmten Zeitserver auswählen, mit dessen Hilfe Azure Stack synchronisiert wird.  Die Uhrzeitsynchronisierung ist für Azure Stack und seine Infrastrukturrollen von entscheidender Bedeutung, da sie zur Generierung von Kerberos-Tickets dient, mit denen interne Dienste sich gegenseitig authentifizieren.
+Sie müssen einen bestimmten Zeitserver auswählen, mit dessen Hilfe Azure Stack synchronisiert wird.  Die Uhrzeitsynchronisierung ist für Azure Stack und seine Infrastrukturrollen von entscheidender Bedeutung, da sie zur Generierung von Kerberos-Tickets dient, mit denen sich interne Dienste gegenseitig authentifizieren.
 
-Sie müssen eine IP-Adresse für den Zeitsynchronisierungsserver angeben. Wenngleich die meisten Komponenten in der Infrastruktur eine URL auflösen können, können einige nur IP-Adressen unterstützen. Wenn Sie die Bereitstellungsoption „Getrennt“ verwenden, müssen Sie einen Zeitserver in Ihrem Unternehmensnetzwerk angeben, von dem Sie sicher sind, dass er über das Infrastrukturnetzwerk in Azure Stack erreichbar ist.
+Sie müssen eine IP-Adresse für den Zeitsynchronisierungsserver angeben. Die meisten Komponenten in der Infrastruktur können zwar eine URL auflösen, einige unterstützen jedoch nur IP-Adressen. Wenn Sie die Bereitstellungsoption „Getrennt“ verwenden, müssen Sie einen Zeitserver in Ihrem Unternehmensnetzwerk angeben, von dem Sie sicher sind, dass er über das Infrastrukturnetzwerk in Azure Stack erreichbar ist. Hierzu müssen bei der Planung der Netzwerkintegration des Bereitstellungsprojekts unter Umständen zusätzliche Aspekte berücksichtigt werden.
 
 
 ## <a name="network-connectivity"></a>Netzwerkverbindung
@@ -120,31 +120,31 @@ Die Netzwerkinfrastruktur für Azure Stack besteht aus mehreren logischen Netzwe
 ![Logisches Netzwerkdiagramm und Switchverbindungen](media/azure-stack-deployment-planning/NetworkDiagram.png)
 
 #### <a name="bmc-network"></a>BMC-Netzwerk
-Dieses Netzwerk ist für die Verbindung aller Baseboard-Verwaltungscontroller (BMCs, auch Dienstprozessoren genannt, z.B. iDRAC, iLO, iBMC, iBMC usw.) mit dem Verwaltungsnetzwerk bestimmt. Falls vorhanden, befindet sich der Hardware Lifecycle Host (HLH) in diesem Netzwerk und kann OEM-spezifische Software für die Hardwarewartung und/oder -überwachung bereitstellen. 
+Dieses Netzwerk ist für die Verbindung aller Baseboard-Verwaltungscontroller (BMCs, auch Dienstprozessoren genannt, z.B. iDRAC, iLO, iBMC, iBMC usw.) mit dem Verwaltungsnetzwerk bestimmt. Sofern der Hardwarelebenszyklushost (HLH) vorhanden ist, befindet er sich in diesem Netzwerk und kann OEM-spezifische Software für die Hardwarewartung und/oder -überwachung bereitstellen. 
 
 #### <a name="private-network"></a>Privates Netzwerk
-Dieses Netzwerk des Typs „/24“ (254 Host-IP-Adressen) ist für die Azure Stack-Region privat (d.h. es reicht nicht über die Grenzswitches der Azure Stack-Region hinaus) und ist in zwei Subnetze aufgeteilt:
+Dieses Netzwerk vom Typ „/24“ (254 Host-IP-Adressen) ist für die Azure Stack-Region privat (reicht also nicht über die Grenzswitches der Azure Stack-Region hinaus) und in zwei Subnetze aufgeteilt:
 
-- **Speichernetzwerk**. Ein Netzwerk des Typs „/25“ (126 Host-IP-Adressen), das zur Unterstützung der Verwendung von „Direkte Speicherplätze“ und Server Message Block-Speicherdatenverkehr (SMB) sowie der Livemigration virtueller Computer verwendet wird. 
-- **Internes VIP-Netzwerk (Virtuelle IP-Adresse)**. Ein Netzwerk des Typs „/25“, das ausschließlich internen VIPs für den softwaregestützten Lastenausgleich vorbehalten ist.
+- **Speichernetzwerk**. Ein Netzwerk vom Typ „/25“ (126 Host-IP-Adressen), das zur Unterstützung von Speicherdatenverkehr für S2D (Storage Spaces Direct; direkte Speicherplätze) und SMB (Server Message Block) sowie für die Livemigration virtueller Computer verwendet wird. 
+- **Internes VIP-Netzwerk (Virtuelle IP-Adresse)**. Ein Netzwerk vom Typ „/25“, das internen VIPs für den softwaregestützten Lastenausgleich (Software Load Balancer, SLB) vorbehalten ist.
 
 #### <a name="azure-stack-infrastructure-network"></a>Azure Stack-Infrastrukturnetzwerk
-Dieses Netzwerk des Typs „/24“ ist internen Azure Stack-Komponenten zugeordnet, damit diese untereinander kommunizieren und Daten austauschen können. Dieses Subnetz erfordert routingfähige IP-Adressen, bleibt aber durch Verwendung von Zugriffssteuerungslisten (ACLs) für die Lösung privat. Es wird nicht erwartet, dass ein Routing über die Grenzswitches erfolgt. Ein Ausnahme bildet ein sehr kleiner Bereich der Größe eines Netzwerks des Typs „/27“, der von einigen dieser Dienste genutzt wird, wenn sie Zugriff auf externe Ressourcen und/oder das Internet benötigen. 
+Dieses Netzwerk des Typs „/24“ ist internen Azure Stack-Komponenten zugeordnet, damit diese untereinander kommunizieren und Daten austauschen können. Dieses Subnetz erfordert routingfähige IP-Adressen, bleibt aber durch Verwendung von Zugriffssteuerungslisten (ACLs) für die Lösung privat.  Es wird nicht erwartet, dass ein Routing über die Grenzswitches erfolgt. Eine Ausnahme bildet ein sehr kleiner Bereich von der Größe eines Netzwerks des Typs „/27“, der von einigen dieser Dienste genutzt wird, wenn sie Zugriff auf externe Ressourcen und/oder das Internet benötigen. 
 
 #### <a name="public-infrastructure-network"></a>Öffentliches Infrastrukturnetzwerk
-Dieses Netzwerk des Typs „/27“ ist der sehr kleine Bereich des bereits erwähnten Subnetzes der Azure Stack-Infrastruktur. Es benötigt keine öffentlichen IP-Adressen, jedoch Internetzugriff über einen NAT- oder transparenten Proxy. Dieses Netzwerk wird für das ERCS (Emergency Recovery Console System) bereitgestellt. Die ERCS-VM benötigt bei der Registrierung bei Azure Internetzugriff und muss für die Problembehandlung zu Ihrem Verwaltungsnetzwerk geroutet werden können.
+Dieses Netzwerk des Typs „/27“ ist der sehr kleine Bereich des bereits erwähnten Subnetzes der Azure Stack-Infrastruktur. Es benötigt keine öffentlichen IP-Adressen, jedoch Internetzugriff über einen NAT- oder transparenten Proxy. Dieses Netzwerk wird dem ERCS (Emergency Recovery Console System) zugeordnet. Der virtuelle ERCS-Computer muss während der Registrierung bei Azure über Internetzugriff verfügen und für die Problembehandlung zu Ihrem Verwaltungsnetzwerk geroutet werden können.
 
 #### <a name="public-vip-network"></a>Öffentliches VIP-Netzwerk
 Das öffentliche VIP-Netzwerk wird dem Netzwerkcontroller in Azure Stack zugewiesen. Es ist kein logisches Netzwerk auf dem Switch. Die SLB nutzt den Adresspool und ordnet Netzwerke des Typs „/32“ für die Workloads von Mandanten zu. In der Routingtabelle auf dem Switch werden diese IP-Adressen des Typs „/32“ über BGP als verfügbare Route angekündigt. Dieses Netzwerk enthält die extern zugänglichen oder öffentlichen IP-Adressen. Die Azure Stack-Infrastruktur verwendet mindestens 8 Adressen aus diesem öffentlichen VIP-Netzwerk, während der Rest von den VMs der Mandanten genutzt wird. Die Netzwerkgröße in diesem Subnetz kann von einem Minimum von „/26“ (64 Hosts) bis zu einem Maximum von „/22“ (1022 Hosts) reichen. Wir empfehlen Ihnen, ein Netzwerk des Typs „/24“ zu planen.
 
 #### <a name="switch-infrastructure-network"></a>Switchinfrastrukturnetzwerk
-Dieses Netzwerk des Typs „/26“ ist das Subnetz, das die routingfähigen Punkt-zu-Punkt-IP-Subnetze des Typs „/30“ (2 Host-IP-Adressen) und die Loopbacks enthält, die dedizierte Subnetze des Typs „/32“ für die In-band-Switchverwaltung und BGP-Router-ID sind. Dieser IP-Adressbereich muss extern von der Azure Stack-Lösung zu Ihrem Rechenzentrum geroutet werden können. Es kann sich dabei um private oder öffentliche IP-Adressen handeln.
+Dieses Netzwerk des Typs „/26“ ist das Subnetz, das die routingfähigen Punkt-zu-Punkt-IP-Subnetze des Typs „/30“ (2 Host-IP-Adressen) und die Loopbacks enthält, die dedizierte Subnetze des Typs „/32“ für die In-band-Switchverwaltung und BGP-Router-ID sind. Dieser IP-Adressbereich muss extern von der Azure Stack-Lösung zu Ihrem Rechenzentrum geroutet werden können und kann private oder öffentliche IP-Adressen enthalten. In einem Dienstanbieterszenario mit mehreren Mandanten können beispielsweise öffentliche IP-Adressen erforderlich sein, während in einer streng kontrollierten Enterprise-Bereitstellung ggf. private IP-Adressen bevorzugt werden.
 
 #### <a name="switch-management-network"></a>Switchverwaltungsnetzwerk
 Dieses Netzwerk des Typs „/29“ (6 Host-IP-Adressen) dient zum Verbinden der Verwaltungsports der Switches. Sie erlaubt einen Out-of-band-Zugriff für Bereitstellung, Verwaltung und Problembehandlung. Sie wird anhand des oben erwähnten Switchinfrastrukturnetzwerks berechnet.
 
 ### <a name="transparent-proxy"></a>Transparenter Proxy
-Die Azure Stack-Lösung unterstützt keine normalen Webproxys. Wenn das Rechenzentrum verlangt, dass für den gesamten Datenverkehr ein Proxy verwendet wird, müssen Sie einen transparenten Proxy konfigurieren. Dieser muss den gesamten Datenverkehr gemäß den Richtlinien verarbeiten und den Datenverkehr zwischen den Zonen in Ihrem Netzwerk trennen. Ein transparenter Proxy (auch abfangender, inline oder erzwungener Proxy genannt) fängt die normale Kommunikation auf der Netzwerkschicht ab, ohne dass eine spezielle Clientkonfiguration erforderlich ist. Clients müssen nicht wissen, dass der Proxy vorhanden ist.
+Die Azure Stack-Lösung unterstützt keine normalen Webproxys. Wenn das Rechenzentrum verlangt, dass für den gesamten Datenverkehr ein Proxy verwendet wird, müssen Sie einen transparenten Proxy konfigurieren. Dieser muss den gesamten Datenverkehr gemäß den Richtlinien verarbeiten und den Datenverkehr zwischen den Zonen in Ihrem Netzwerk trennen. Ein transparenter Proxy (auch abfangender, inline oder erzwungener Proxy genannt) fängt die normale Kommunikation auf der Netzwerkschicht ab, ohne dass eine spezielle Clientkonfiguration erforderlich ist. Clients müssen nicht wissen, ob der Proxy vorhanden ist.
 
 ### <a name="publish-azure-stack-services"></a>Veröffentlichen von Azure Stack-Diensten
 
@@ -203,7 +203,7 @@ Das folgende Diagramm zeigt ExpressRoute für ein Szenario mit mehreren Mandante
 ## <a name="external-monitoring"></a>Externe Überwachung
 Um eine Gesamtübersicht über alle Warnungen Ihrer Azure Stack-Bereitstellung sowie den zugehörigen Geräten zu erhalten und Warnungen zur Ticketerstellung in vorhandene Workflows zur IT-Dienstverwaltung zu integrieren, können Sie Azure Stack mit Überwachungslösungen externer Rechenzentren integrieren.
 
-Der in der Azure Stack-Lösung enthaltene Hardwarelebenszyklushost ist ein Computer, der sich außerhalb von Azure Stack befindet, und vom OEM-Anbieter bereitgestellte Verwaltungstools für Hardware ausführt. Sie können diese Tools oder andere Lösungen verwenden, die direkt mit vorhandenen Überwachungslösungen in Ihr Rechenzentrum integriert werden.
+Der in der Azure Stack-Lösung enthaltene Hardwarelebenszyklushost (HLH) ist ein Computer, der sich außerhalb von Azure Stack befindet und vom OEM-Anbieter bereitgestellte Verwaltungstools für Hardware ausführt. Sie können diese Tools oder andere Lösungen verwenden, die direkt mit vorhandenen Überwachungslösungen in Ihr Rechenzentrum integriert werden.
 
 In der folgenden Tabelle ist die Liste der derzeit verfügbaren Optionen zusammengefasst.
 

@@ -11,13 +11,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 01/22/2018
 ms.author: nitinme
-ms.openlocfilehash: fb77ec001f9f52e0a974f8765f458f831fb63908
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b56253e7b9c9ab144ebc4006511631756de4f89b
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Häufig gestellte Fragen zu Azure Databricks
 
@@ -42,7 +42,7 @@ Weitere Informationen finden Sie unter [Azure Data Lake Store](https://docs.azur
 
 Hier folgen einige Probleme, die mit Databricks auftreten können.
 
-### <a name="this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Dieses Abonnement ist nicht für die Verwendung des Namespace „Microsoft.Databricks“ registriert.
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Problem: Dieses Abonnement ist nicht für die Verwendung des Namespace „Microsoft.Databricks“ registriert.
 
 #### <a name="error-message"></a>Fehlermeldung
 
@@ -55,7 +55,7 @@ Hier folgen einige Probleme, die mit Databricks auftreten können.
 3. Wählen Sie in der Liste der Ressourcenanbieter für **Microsoft.Databricks** die Option **Registrieren** aus. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um den Ressourcenanbieter zu registrieren.
 
 
-### <a name="your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>Ihr Konto {E-Mail} weist nicht die Rolle „Besitzer“ oder „Mitwirkender“ für die Databricks-Arbeitsbereichsressource im Azure-Portal auf.
+### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>Problem: Ihr Konto {E-Mail} weist nicht die Rolle „Besitzer“ oder „Mitwirkender“ für die Databricks-Arbeitsbereichsressource im Azure-Portal auf.
 
 #### <a name="error-message"></a>Fehlermeldung
 
@@ -71,7 +71,7 @@ Nachfolgend sind einige Lösungen für dieses Problem aufgeführt:
 
     a. Wechseln Sie im Azure-Portal zu Azure AD. Wählen Sie **Benutzer und Gruppen** > **Benutzer hinzufügen** aus.
 
-    b. Fügen Sie einen Benutzer mit einer E-Mail-Adresse vom Typ `@<tenant_name>.onmicrosoft.com` anstelle einer E-Mail-Adresse vom Typ `@<your_domain>` hinzu. Sie finden diese unter Azure AD im Azure-Portal in **Benutzerdefinierte Domänen**.
+    b. Fügen Sie einen Benutzer mit einer E-Mail-Adresse vom Typ `@<tenant_name>.onmicrosoft.com` anstelle einer E-Mail-Adresse vom Typ `@<your_domain>` hinzu. Sie finden diese Option unter Azure AD im Azure-Portal in **Benutzerdefinierte Domänen**.
     
     c. Gewähren Sie diesem neuen Benutzer die Rolle **Mitwirkender** für die Databricks-Arbeitsbereichsressource.
     
@@ -80,13 +80,13 @@ Nachfolgend sind einige Lösungen für dieses Problem aufgeführt:
     e. Starten Sie den Databricks-Arbeitsbereich als dieser Benutzer.
 
 
-### <a name="your-account-email-has-not-been-registered-in-databricks"></a>Ihr Konto {E-Mail} wurde nicht in Databricks registriert. 
+### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>Problem: Ihr Konto {E-Mail} wurde nicht in Databricks registriert. 
 
 #### <a name="solution"></a>Lösung
 
 Wenn Sie den Arbeitsbereich nicht erstellt haben und als Benutzer hinzugefügt werden, wenden Sie sich an die Person, die den Arbeitsbereich erstellt hat. Lassen Sie sich von dieser Person hinzufügen, indem Sie die Azure Databricks Admin Console verwenden. Anweisungen hierzu finden Sie unter [Hinzufügen und Verwalten von Benutzern](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Wenn Sie den Arbeitsbereich erstellt haben und weiterhin diese Fehlermeldung erhalten, wählen Sie im Azure-Portal erneut **Arbeitsbereich initialisieren** aus.
 
-### <a name="cloud-provider-launch-failure-while-setting-up-the-cluster"></a>Startfehler des Cloudanbieters beim Einrichten des Clusters
+### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Problem: Startfehler des Cloudanbieters beim Einrichten des Clusters (PublicIPCountLimitReached)
 
 #### <a name="error-message"></a>Fehlermeldung
 
@@ -96,7 +96,7 @@ Wenn Sie den Arbeitsbereich nicht erstellt haben und als Benutzer hinzugefügt w
 
 Databricks-Cluster verwenden eine öffentliche IP-Adresse pro Knoten. Wenn für Ihr Abonnement bereits alle öffentlichen IP-Adressen verwendet werden, sollten Sie [eine Erhöhung des Kontingents anfordern](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Wählen Sie **Kontingent** als **Problemtyp** und **Netzwerk: ARM** als **Kontingenttyp** aus. Fordern Sie in **Details** eine Erhöhung des Kontingents für öffentliche IP-Adressen an. Wenn Ihr aktueller Grenzwert beispielsweise bei 60 liegt und ein Cluster mit 100 Knoten erstellt werden soll, fordern Sie eine Erhöhung auf 160 an.
 
-### <a name="a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster"></a>Zweite Art von Startfehler des Cloudanbieters beim Einrichten des Clusters
+### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problem: Zweite Art von Startfehler des Cloudanbieters beim Einrichten des Clusters (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>Fehlermeldung
 
@@ -110,6 +110,16 @@ Azure-Fehlercode: MissingSubscriptionRegistration; Azure-Fehlermeldung: Das Abon
 3. Wählen Sie in der Liste der Ressourcenanbieter für **Microsoft.Compute** die Option **Registrieren** aus. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um den Ressourcenanbieter zu registrieren.
 
 Ausführlichere Anweisungen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md).
+
+### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Problem: Azure Databricks benötigt Berechtigungen zum Zugreifen auf Ressourcen in Ihrer Organisation, die nur ein Administrator erteilen kann.
+
+#### <a name="background"></a>Hintergrund
+
+Azure Databricks ist in Azure AD integriert. Aufgrund dessen können Sie durch Angabe von Benutzern aus Azure AD Berechtigungen innerhalb von Azure Databricks (z.B. für Notebooks oder Cluster) festlegen. Um in Azure Databricks die Namen der Benutzer in Azure AD aufzulisten, ist eine Leseberechtigung für diese Informationen erforderlich. Hierfür ist eine Zustimmung erforderlich. Wenn noch keine Zustimmung vorliegt, wird die Fehlermeldung angezeigt.
+
+#### <a name="solution"></a>Lösung
+
+Melden Sie sich als globaler Administrator beim Azure-Portal an. Navigieren Sie in Azure Active Directory zur Registerkarte **Benutzereinstellungen**, und stellen Sie sicher, dass **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** auf **Ja** festgelegt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

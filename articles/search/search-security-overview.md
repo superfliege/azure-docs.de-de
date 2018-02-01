@@ -4,7 +4,7 @@ description: "Die Sicherheit von Azure Search basiert auf SOC 2-Konformität, Ve
 services: search
 documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: 
 ms.service: search
@@ -12,23 +12,19 @@ ms.devlang:
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/14/2017
+ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: 23616c70a5fd336b743f5acfad2601a6c3e23fc4
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: c3aa4883e33b1f3494f8502fe7f8b12f7d64a72f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="data-security-and-controlled-access-to-azure-search-operations"></a>Datensicherheit und kontrollierter Zugriff auf Azure Search-Vorgänge
+# <a name="security-and-controlled-access-in-azure-search"></a>Sicherheit und kontrollierter Zugriff in Azure Search
 
 Azure Search ist [SOC 2-konform](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports) und verfügt über eine umfassende Sicherheitsarchitektur mit physischer Sicherheit, verschlüsselter Übertragung, verschlüsselter Speicherung und plattformweitem Softwareschutz. Im laufenden Betrieb akzeptiert Azure Search ausschließlich authentifizierte Anforderungen. Optional kann eine benutzerspezifische Zugriffssteuerung für Inhalte hinzugefügt werden. Dieser Artikel geht zwar auf die einzelnen Sicherheitsebenen ein, beschäftigt sich aber hauptsächlich mit dem Schutz von Daten und Vorgängen in Azure Search.
 
 ![Blockdiagramm der Sicherheitsebenen](media/search-security-overview/azsearch-security-diagram.png)
-
-Azure Search liegen zwar die Sicherheitsmaßnahmen und Absicherungen der Azure-Plattform zugrunde, der primäre Mechanismus des Diensts ist jedoch die schlüsselbasierte Authentifizierung, wobei die Art des Schlüssels über die Zugriffsebene entscheidet. Bei dem Schlüssel handelt es sich entweder um einen Administratorschlüssel oder um einen Abfrageschlüssel für schreibgeschützten Zugriff.
-
-Der Zugriff auf Ihren Dienst basiert auf einem Querschnitt von Berechtigungen, die durch den Schlüssel angegeben werden (Vollzugriff oder schreibgeschützter Zugriff), sowie auf einem Kontext, der einen Vorgangsbereich definiert. Jede Anforderung setzt sich aus einem obligatorischen Schlüssel, einem Vorgang und einem Objekt zusammen. In Kombination lässt sich durch die beiden Berechtigungsstufen und den Kontext ein vollumfängliches Sicherheitsspektrum für Dienstvorgänge erreichen. 
 
 ## <a name="physical-security"></a>Physische Sicherheit
 
@@ -38,11 +34,17 @@ Microsoft-Rechenzentren sind mit branchenführenden physischen Sicherheitsmaßna
 
 ## <a name="encrypted-transmission-and-storage"></a>Verschlüsselte Übertragung und Speicherung
 
-Azure Search lauscht an HTTPS-Port 443. Verbindungen mit Azure-Diensten sind plattformweit verschlüsselt. 
+Die Verschlüsselung erstreckt sich auf die gesamte Indexpipeline – von Verbindungen über die Übertragung bis hin zu indizierten in Azure Search gespeicherten Daten.
 
-Im für Indizes und andere Konstrukte verwendeten Back-End-Speicher nutzt Azure Search die Verschlüsselungsfunktionen dieser Plattformen. In allen Rechenzentren, die Azure Search anbieten, steht für alle Suchdienste uneingeschränkte [AICPA SOC 2-Konformität](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) zur Verfügung. Den vollständigen Bericht finden Sie unter [Azure - and Azure Government SOC 2 Type II Report](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports) (SOC 2Type II-Bericht für Azure und Azure Government).
+| Sicherheitsebene | BESCHREIBUNG |
+|----------------|-------------|
+| Verschlüsselung während der Übertragung | Azure Search lauscht an HTTPS-Port 443. Verbindungen mit Azure-Diensten sind plattformweit verschlüsselt. |
+| Verschlüsselung ruhender Daten | Die Verschlüsselung ist vollständig in den Indizierungsprozess integriert, ohne messbare Auswirkungen auf die Durchführungsdauer der Indizierung oder die Indexgröße. Sie wird automatisch auf die gesamte Indizierung angewendet, einschließlich auf inkrementelle Updates für einen nicht vollständig verschlüsselten Index (vor Januar 2018 erstellt).<br><br>Intern basiert die Verschlüsselung auf der [256-Bit-AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) von [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).|
+| [Compliance mit SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) | Alle Suchdienste sind in sämtlichen Rechenzentren, die Azure Search bereitstellen, vollumfänglich mit AICPA SOC 2 konform. Den vollständigen Bericht finden Sie unter [Azure - and Azure Government SOC 2 Type II Report](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports) (SOC 2Type II-Bericht für Azure und Azure Government). |
 
-Im Zuge der transparenten Verschlüsselung werden Verschlüsselungsschlüssel intern verwaltet und universell angewendet. Sie können weder die Verschlüsselung für bestimmte Suchdienste oder -indizes deaktivieren noch Schlüssel direkt verwalten oder eigene Schlüssel verwenden. 
+Die Verschlüsselung ist in Azure Search integriert, wobei Zertifikate und Schlüssel intern von Microsoft verwaltet und universell angewendet werden. Sie können die Verschlüsselung nicht aktivieren bzw. deaktivieren, eigene Schlüssel verwalten oder ersetzen oder Verschlüsselungseinstellungen im Portal oder programmgesteuert anzeigen. 
+
+Die Verschlüsselung ruhender Daten wurde am 24. Januar 2018 angekündigt und gilt für alle Diensttarife wie gemeinsame Dienste (Free) in sämtlichen Regionen. Damit die Verschlüsselung vollständig angewendet werden kann, müssen vor diesem Datum erstellte Indizes gelöscht und neu erstellt werden. Anderenfalls werden nur neue Daten, die nach dem 24. Januar hinzugefügt wurden, verschlüsselt.
 
 ## <a name="azure-wide-logical-security"></a>Azure-weite logische Sicherheit
 
@@ -53,16 +55,16 @@ Für die gesamte Azure Stack-Umgebung sind verschiedene Sicherheitsmechanismen v
 
 Alle Azure-Dienste unterstützen die rollenbasierte Zugriffssteuerung (Role-based Access Control, RBAC) zum einheitlichen Festlegen von Zugriffsebenen für alle Dienste. So ist beispielsweise das Anzeigen sensibler Daten (etwa des Administratorschlüssels) auf die Rollen „Besitzer“ und „Mitwirkender“ beschränkt, der Dienststatus kann dagegen von Mitgliedern aller Rollen angezeigt werden. RBAC bietet die Rollen „Besitzer“, „Mitwirkenden“ und „Leser“. Administratoren sind standardmäßig Mitglieder der Rolle "Besitzer".
 
-## <a name="service-authentication"></a>Dienstauthentifizierung
+## <a name="service-access-and-authentication"></a>Dienstzugriff und -authentifizierung
 
-Azure Search verfügt über eine eigene Authentifizierungsmethode. Die Authentifizierung erfolgt bei jeder Anforderung und basiert auf einem Zugriffsschlüssel, der über den Umfang der Vorgänge entscheidet. Ein gültiger Zugriffsschlüssel gilt als Beleg dafür, dass die Anforderung von einer vertrauenswürdigen Entität stammt. 
+Azure Search erbt nicht nur die Sicherheitsmaßnahmen der Azure-Plattform, sondern bietet auch eine eigene schlüsselbasierte Authentifizierung. Der Typ des Schlüssels (Administrator oder Abfrage) bestimmt die Zugriffsebene. Die Übermittlung eines gültigen Schlüssels gilt als Beleg dafür, dass die Anforderung von einer vertrauenswürdigen Entität stammt. 
 
-Die dienstspezifische Authentifizierung ist auf zwei Ebenen verfügbar: Vollzugriff und reiner Abfragezugriff. Die Art des Schlüssels entscheidet, welche Zugriffsebene zur Anwendung kommt.
+Für jede Anforderung – bestehend aus einem obligatorischen Schlüssel, einem Vorgang und einem Objekt – ist eine Authentifizierung erforderlich. In Kombination lässt sich durch die beiden Berechtigungsstufen (uneingeschränkte bzw. 	Lese-/Schreibberechtigung) und den Kontext ein vollumfängliches Sicherheitsspektrum für Dienstvorgänge erreichen. 
 
-|Schlüssel|Beschreibung|Einschränkungen|  
+|Schlüssel|BESCHREIBUNG|Einschränkungen|  
 |---------|-----------------|------------|  
-|Administrator|Gewährt Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung sowie das Erstellen und Löschen von **Indizes**, **Indexern** und **Datenquellen**.<br /><br /> Für Administratoren werden zwei **API-Schlüssel** generiert, wenn der Dienst erstellt wird. Diese werden im Portal als *primärer* bzw. *sekundärer* Schlüssel bezeichnet und können bei Bedarf einzeln neu generiert werden. Durch die Verwendung von zwei Schlüsseln kann weiterhin auf den Dienst zugegriffen werden, während für einen der Schlüssel ein Rollover durchgeführt wird.<br /><br /> Administratorschlüssel werden nur in HTTP-Anforderungsheadern angegeben. Ein **API-Schlüssel** für Administratoren kann nicht in einer URL platziert werden.|Maximal zwei pro Dienst|  
-|Abfrage|Gewährt Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.<br /><br /> Abfrageschlüssel werden bei Bedarf erstellt. Sie können manuell über das Portal oder programmgesteuert über die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/) erstellt werden.<br /><br /> Abfrageschlüssel können in einem HTTP-Anforderungsheader für Such-, Vorschlags- oder Recherchevorgänge angegeben werden. Sie können einen Abfrageschlüssel aber auch als Parameter in einer URL übergeben. Je nachdem, wie Ihre Clientanwendung die Anforderung formuliert, ist es unter Umständen einfacher, den Schlüssel als Abfrageparameter zu übergeben:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01&api-key=A8DA81E03F809FE166ADDB183E9ED84D`|50 pro Dienst|  
+|Administrator|Gewährt Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung sowie das Erstellen und Löschen von Indizes, Indexern und Datenquellen.<br /><br /> Für Administratoren werden zwei **API-Schlüssel** generiert, wenn der Dienst erstellt wird. Diese werden im Portal als *primärer* bzw. *sekundärer* Schlüssel bezeichnet und können bei Bedarf einzeln neu generiert werden. Durch die Verwendung von zwei Schlüsseln kann weiterhin auf den Dienst zugegriffen werden, während für einen der Schlüssel ein Rollover durchgeführt wird.<br /><br /> Administratorschlüssel werden nur in HTTP-Anforderungsheadern angegeben. Ein API-Schlüssel für Administratoren kann nicht in einer URL platziert werden.|Maximal zwei pro Dienst|  
+|Abfragen|Gewährt Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.<br /><br /> Abfrageschlüssel werden bei Bedarf erstellt. Sie können manuell über das Portal oder programmgesteuert über die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/) erstellt werden.<br /><br /> Abfrageschlüssel können in einem HTTP-Anforderungsheader für Such-, Vorschlags- oder Recherchevorgänge angegeben werden. Sie können einen Abfrageschlüssel aber auch als Parameter in einer URL übergeben. Je nachdem, wie Ihre Clientanwendung die Anforderung formuliert, ist es unter Umständen einfacher, den Schlüssel als Abfrageparameter zu übergeben:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01&api-key=A8DA81E03F809FE166ADDB183E9ED84D`|50 pro Dienst|  
 
  Administrator- und Abfrageschlüssel sind rein optisch nicht zu unterscheiden. Bei beiden Schlüsseln handelt es sich um eine Zeichenfolge mit 32 nach dem Zufallsprinzip generierten alphanumerischen Zeichen. Sollten Sie nicht mehr wissen, welche Art von Schlüssel in Ihrer Anwendung angegeben ist, können Sie [die Schlüsselwerte im Portal überprüfen](https://portal.azure.com) oder über die [REST-API](https://docs.microsoft.com/rest/api/searchmanagement/) den Wert und die Art des Schlüssels zurückgeben.  
 
@@ -103,7 +105,7 @@ Informationen zum Strukturieren einer Anforderung in Azure Search finden Sie unt
 
 Benutzerspezifischer Zugriff auf den Inhalt eines Index wird über Sicherheitsfilter für Ihre Abfragen implementiert, sodass mit einer bestimmten Sicherheitsidentität verknüpfte Dokumente zurückgegeben werden. Anstelle vordefinierter Rollen und Rollenzuweisungen wird eine identitätsbasierte Zugriffssteuerung als Filter implementiert, die die Suchergebnisse von Dokumenten und Inhalten auf der Grundlage von Identitäten einschränken. In der folgenden Tabelle werden zwei Ansätze zur Einschränkung von Suchergebnissen für nicht autorisierte Inhalte beschrieben.
 
-| Vorgehensweise | Beschreibung |
+| Vorgehensweise | BESCHREIBUNG |
 |----------|-------------|
 |[Einschränkung aus Sicherheitsgründen auf der Grundlage von Identitätsfiltern](search-security-trimming-for-azure-search.md)  | Beschreibt den grundlegenden Workflow für die Implementierung der Zugriffssteuerung auf der Grundlage der Benutzeridentität. Der Artikel behandelt das Hinzufügen von Sicherheitsbezeichnern zu einem Index sowie das Filtern nach dem entsprechenden Feld, um unzulässige Inhalte aus den Ergebnissen zu entfernen. |
 |[Einschränkung aus Sicherheitsgründen auf der Grundlage von Azure Active Directory-Identitäten](search-security-trimming-for-azure-search-with-aad.md)  | Dieser Artikel baut auf dem vorherigen Artikel auf und enthält Schritte zum Abrufen von Identitäten aus Azure Active Directory (AAD) – einem der [kostenlosen Dienste](https://azure.microsoft.com/free/) der Azure-Cloudplattform. |

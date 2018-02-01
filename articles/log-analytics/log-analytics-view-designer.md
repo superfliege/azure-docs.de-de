@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Ansichten zum Analysieren von Daten in OMS Log Analytics | Microsoft-Dokumentation
-description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten erstellen, die im OMS- und im Azure-Portal angezeigt werden und verschiedene Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten."
+title: Erstellen von Ansichten zum Analysieren von Daten in Azure Log Analytics | Microsoft-Dokumentation
+description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten erstellen, die im Azure-Portal angezeigt werden und verschiedene Visualisierungen von Daten im Log Analytics-Arbeitsbereich enthalten. Dieser Artikel enthält eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 01/18/2018
 ms.author: bwren
-ms.openlocfilehash: e3c463d749dc4179df58286b9bb75584880a6bc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a84f40503c1b9778c496461ebbf6864f99bd1c4b
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>Erstellen benutzerdefinierter Ansichten in Log Analytics mithilfe des Ansicht-Designers
-Mit dem Ansicht-Designer in [Log Analytics](log-analytics-overview.md) können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die verschiedene Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
+Mit dem Ansicht-Designer in [Log Analytics](log-analytics-overview.md) können Sie benutzerdefinierte Ansichten im Azure-Portal mit verschiedenen Visualisierungen von Daten aus Ihrem Log Analytics-Arbeitsbereich erstellen. Dieser Artikel enthält eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
 
 Weitere verfügbare Artikel für den Ansicht-Designer:
 
@@ -32,54 +32,44 @@ Weitere verfügbare Artikel für den Ansicht-Designer:
 > Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, müssen die Abfragen in allen Ansichten in der [neuen Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856078) geschrieben werden.  Alle Ansichten, die vor dem Upgrade des Arbeitsbereichs erstellt wurden, werden automatisch konvertiert.
 
 ## <a name="concepts"></a>Konzepte
+Ansichten werden im Azure-Portal auf der Seite **Übersicht** Ihres Log Analytics-Arbeitsbereichs angezeigt.  Die Kacheln der einzelnen benutzerdefinierten Ansichten werden mit den Kacheln für die im gleichen Arbeitsbereich installierten Lösungen in alphabetischer Reihenfolge angezeigt.
+
+![Seite „Übersicht“](media/log-analytics-view-designer/overview-page.png)
+
 Mit dem Ansicht-Designer erstellte Ansichten enthalten die Elemente der folgenden Tabelle.
 
-| Teil | Beschreibung |
+| Teil | BESCHREIBUNG |
 |:--- |:--- |
-| Kachel |Wird auf dem Hauptdashboard mit der Log Analytics-Übersicht angezeigt.  Enthält ein visuelle Zusammenfassung der in der benutzerdefinierten Ansicht enthaltenen Informationen.  Verschiedene Kacheltypen bieten unterschiedliche Visualisierungen von Datensätzen im OMS-Repository.  Klicken Sie auf die Kachel, um die benutzerdefinierte Ansicht zu öffnen. |
+| Kachel |Wird auf der Übersichtsseite Ihres Log Analytics-Arbeitsbereichs angezeigt.  Enthält ein visuelle Zusammenfassung der in der benutzerdefinierten Ansicht enthaltenen Informationen.  Verschiedene Kacheltypen bieten unterschiedliche Visualisierungen von Datensätzen.  Klicken Sie auf die Kachel, um die benutzerdefinierte Ansicht zu öffnen. |
 | Benutzerdefinierte Ansicht |Wird angezeigt, wenn der Benutzer auf die Kachel klickt.  Enthält eine oder mehrere Visualisierungskomponenten. |
-| Visualisierungskomponenten |Visualisierung von Daten im OMS-Repository basierend auf einem oder mehreren [Protokollsuchvorgängen](log-analytics-log-searches.md).  Die meisten Komponenten enthalten eine Kopfzeile mit einer allgemeinen Visualisierung und eine Liste der wichtigsten Ergebnisse.  Verschiedene Komponententypen bieten unterschiedliche Visualisierungen von Datensätzen im OMS-Repository.  Klicken Sie auf Elemente in der Komponente, um einen Protokollsuchvorgang auszuführen, der detaillierte Datensätze bereitstellt. |
+| Visualisierungskomponenten |Visualisierung von Daten im Log Analytics-Arbeitsbereich basierend auf einem oder mehreren [Protokollsuchvorgängen](log-analytics-log-searches.md).  Die meisten Komponenten enthalten eine Kopfzeile mit einer allgemeinen Visualisierung und eine Liste der wichtigsten Ergebnisse.  Verschiedene Komponententypen bieten unterschiedliche Visualisierungen von Datensätzen im Log Analytics-Arbeitsbereich.  Klicken Sie auf Elemente in der Komponente, um einen Protokollsuchvorgang auszuführen, der detaillierte Datensätze bereitstellt. |
 
-![Übersicht über den Ansicht-Designer](media/log-analytics-view-designer/overview.png)
 
-## <a name="add-view-designer-to-your-workspace"></a>Hinzufügen des Ansicht-Designers zum Arbeitsbereich
-Während sich der Ansicht-Designer in der Vorschauphase befindet, müssen Sie ihn zu Ihrem Arbeitsbereich hinzufügen, indem Sie **Vorschaufeatures** im Abschnitt **Einstellungen** des OMS-Portals auswählen.
+## <a name="work-with-an-existing-view"></a>Verwenden einer vorhandenen Ansicht
+Wenn Sie eine mit dem Ansicht-Designer erstellte Ansicht öffnen, enthält sie ein Menü mit den in der folgenden Tabelle aufgeführten Optionen.
 
-![Aktivieren der Vorschau](media/log-analytics-view-designer/preview.png)
+![Menü „Übersicht“](media/log-analytics-view-designer/overview-menu.png)
 
-## <a name="creating-and-editing-views"></a>Erstellen und Bearbeiten von Ansichten
-### <a name="create-a-new-view"></a>Erstellen einer neuen Ansicht
-Öffnen Sie eine neue Ansicht im **Ansicht-Designer**, indem Sie im OMS-Hauptdashboard auf die Kachel für den Ansicht-Designer klicken.
+
+| Option | BESCHREIBUNG |
+|:--|:--|
+| Aktualisieren   | Aktualisieren Sie die Ansicht mit den neuesten Daten. | 
+| Analyse | Öffnen Sie das [Advanced Analytics-Portal](log-analytics-log-search-portals.md#advanced-analytics-portal), um Daten mit Protokollsuchvorgängen zu analysieren.(log-analytics-log-search-portals.md#advanced-analytics-portal). |
+| Filter    | Legen Sie einen Zeitfilter für die in der Ansicht enthaltenen Daten fest. |
+| Edit (Bearbeiten)      | Öffnen Sie die Ansicht im Ansicht-Designer, um ihre Inhalte und die Konfiguration zu bearbeiten.   |
+| Klonen     | Erstellen Sie eine neue Ansicht, und öffnen Sie sie im Ansicht-Designer.  Die neue Ansicht weist den gleichen Namen wie das Original auf, allerdings wird „Kopie“ an das Ende angefügt. |
+
+
+## <a name="create-a-new-view"></a>Erstellen einer neuen Ansicht
+Erstellen Sie im **Ansicht-Designer** eine neue Ansicht, indem Sie im Azure-Portal im Log Analytics-Arbeitsbereich auf der Seite „Übersicht“ auf die Kachel für den Ansicht-Designer klicken.
 
 ![Kachel für den Ansicht-Designer](media/log-analytics-view-designer/view-designer-tile.png)
 
-### <a name="edit-an-existing-view"></a>Bearbeiten einer vorhandenen Ansicht
-Um eine vorhandene Ansicht im Ansicht-Designer zu bearbeiten, öffnen Sie die Ansicht, indem Sie im OMS-Hauptdashboard auf deren Kachel klicken.  Klicken Sie dann auf die Schaltfläche **Bearbeiten**, um die Ansicht im Ansicht-Designer zu öffnen.
-
-![Bearbeiten einer Ansicht](media/log-analytics-view-designer/menu-edit.png)
-
-### <a name="clone-an-existing-view"></a>Klonen einer vorhandenen Ansicht
-Beim Klonen einer Ansicht wird eine neue Ansicht erstellt und im Ansicht-Designer geöffnet.  Die neue Ansicht weist den gleichen Namen wie das Original auf, allerdings wird „Kopie“ an das Ende angefügt.  Um eine Ansicht zu klonen, öffnen Sie die vorhandene Ansicht, indem Sie im OMS-Hauptdashboard auf deren Kachel klicken.  Klicken Sie dann auf die Schaltfläche **Klonen**, um die Ansicht im Ansicht-Designer zu öffnen.
-
-![Klonen einer Ansicht](media/log-analytics-view-designer/edit-menu-clone.png)
-
-### <a name="delete-an-existing-view"></a>Löschen einer vorhandenen Ansicht
-Um eine vorhandene Ansicht zu löschen, öffnen Sie die Ansicht, indem Sie im OMS-Hauptdashboard auf deren Kachel klicken.  Klicken Sie dann auf die Schaltfläche **Bearbeiten**, um die Ansicht im Ansicht-Designer zu öffnen, und klicken Sie auf **Ansicht löschen**.
-
-![Löschen einer Ansicht](media/log-analytics-view-designer/edit-menu-delete.png)
-
-### <a name="export-an-existing-view"></a>Exportieren einer vorhandenen Ansicht
-Sie können eine Ansicht in eine JSON-Datei exportieren, die Sie in einen anderen Arbeitsbereich importieren oder in einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) verwenden können.  Um eine vorhandene Ansicht zu exportieren, öffnen Sie die Ansicht, indem Sie im OMS-Hauptdashboard auf deren Kachel klicken.  Klicken Sie dann auf die Schaltfläche **Exportieren**, um eine Datei im Downloadordner des Browsers zu erstellen.  Der Name der Datei wird zum Namen der Ansicht mit der Erweiterung *omsview*.
-
-![Exportieren einer Ansicht](media/log-analytics-view-designer/edit-menu-export.png)
-
-### <a name="import-an-existing-view"></a>Importieren einer vorhandenen Ansicht
-Sie können eine *omsview*-Datei importieren, die Sie aus einer anderen Verwaltungsgruppe exportiert haben.  Um eine vorhandene Ansicht zu importieren, müssen Sie zuerst eine neue Ansicht erstellen.  Klicken Sie dann auf die Schaltfläche **Importieren**, und wählen Sie die *omsview*-Datei aus.  Die Konfiguration in der Datei wird in die vorhandene Ansicht kopiert.
-
-![Exportieren einer Ansicht](media/log-analytics-view-designer/edit-menu-import.png)
 
 ## <a name="working-with-view-designer"></a>Arbeiten mit dem Ansicht-Designer
-Der Ansicht-Designer verfügt über drei Bereiche.  Der Bereich **Entwurf** stellt die benutzerdefinierte Ansicht dar.  Wenn Sie Kacheln und Komponenten des Bereichs **Steuerung** zum Bereich **Entwurf** hinzufügen, werden sie zur Ansicht hinzugefügt.  Im Bereich **Eigenschaften** werden die Eigenschaften für die Kachel oder die ausgewählte Komponente angezeigt.
+Sie verwenden den Ansicht-Designer – unabhängig davon, ob Sie eine neue Ansicht erstellen oder eine vorhandene Ansicht bearbeiten.  
+
+Der Ansicht-Designer verfügt über drei Bereiche.  Der **Entwurfsbereich** enthält die benutzerdefinierte Ansicht, die Sie erstellen oder bearbeiten.  Sie fügen Kacheln und Komponenten aus dem Bereich **Steuerung** zum Bereich **Entwurf** hinzu.  Im Bereich **Eigenschaften** werden die Eigenschaften für die Kachel oder die ausgewählte Komponente angezeigt.
 
 ![Ansicht-Designer](media/log-analytics-view-designer/view-designer-screenshot.png)
 
@@ -89,11 +79,25 @@ Eine benutzerdefinierte Ansicht kann nur über eine einzige Kachel verfügen.  W
 ### <a name="configure-visualization-parts"></a>Konfigurieren von Visualisierungskomponenten
 Eine Ansicht kann eine beliebige Anzahl von Visualisierungskomponenten enthalten.  Wählen Sie die Registerkarte **Ansicht** und anschließend eine Visualisierungskomponente aus, die Sie der Ansicht hinzufügen möchten.  Im Bereich **Eigenschaften** werden die Eigenschaften für die ausgewählte Komponente angezeigt.  Konfigurieren Sie die Ansichtseigenschaften entsprechend den detaillierten Informationen in der [Referenz der Visualisierungskomponenten](log-analytics-view-designer-parts.md), und klicken Sie auf **Übernehmen**, um die Änderungen zu speichern.
 
-### <a name="delete-a-visualization-part"></a>Löschen einer Visualisierungskomponente
+Ansichten weisen nur eine Zeile mit Visualisierungskomponenten auf.  Sie können vorhandene Komponenten in einer Ansicht neu anordnen, indem Sie darauf klicken und sie an eine neue Position ziehen.
+
 Sie können eine Visualisierungskomponente aus der Ansicht entfernen, indem Sie auf die Schaltfläche **X** oben rechts in der Komponente klicken.
 
-### <a name="rearrange-visualization-parts"></a>Ändern der Anordnung von Visualisierungskomponenten
-Ansichten weisen nur eine Zeile mit Visualisierungskomponenten auf.  Sie können vorhandene Komponenten in einer Ansicht neu anordnen, indem Sie darauf klicken und sie an eine neue Position ziehen.
+
+### <a name="menu-options"></a>Menüoptionen
+Für eine Ansicht im Bearbeitungsmodus stehen die in der folgenden Tabelle aufgeführten Menüoptionen zur Verfügung:
+
+![Bearbeitungsmenü](media/log-analytics-view-designer/edit-menu.png)
+
+| Option | BESCHREIBUNG |
+|:--|:--|
+| Speichern        | Speichern Sie Ihre Änderungen, und schließen Sie die Ansicht. |
+| Abbrechen      | Verwerfen Sie Ihre Änderungen, und schließen Sie die Ansicht. |
+| Ansicht löschen | Löschen Sie die Ansicht. |
+| Export      | Exportieren Sie die Ansicht in eine [Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md), die Sie in einen anderen Arbeitsbereich importieren können.  Der Name der Datei wird zum Namen der Ansicht mit der Erweiterung *omsview*. |
+| Importieren      | Sie können eine *omsview*-Datei importieren, die Sie aus einem anderen Arbeitsbereich exportiert haben.  Dadurch wird die Konfiguration der vorhandenen Ansicht überschrieben. |
+| Klonen       | Erstellen Sie eine neue Ansicht, und öffnen Sie sie im Ansicht-Designer.  Die neue Ansicht weist den gleichen Namen wie das Original auf, allerdings wird „Kopie“ an das Ende angefügt. |
+| Veröffentlichen     | Exportieren Sie die Ansicht in eine JSON-Datei, die in eine [Verwaltungslösung](../operations-management-suite/operations-management-suite-solutions-resources-views.md) eingefügt werden kann.  Der Name der Datei wird zum Namen der Ansicht mit der Erweiterung *json*. Eine zweite Datei mit der Erweiterung *resjson* wird erstellt. Diese Datei enthält Werte für in der JSON-Datei definierte Ressourcen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Fügen Sie [Kacheln](log-analytics-view-designer-tiles.md) zu Ihrer benutzerdefinierten Ansicht hinzu.

@@ -44,12 +44,12 @@
 ### [Herstellen einer Verbindung mit einem benutzerdefinierten Domänencontroller](cloud-services-connect-to-custom-domain.md)
 
 ## Verwalten eines Diensts
-### [Maßnahmen im Zusammenhang mit der spekulativen Ausführung](mitigate-se.md}
 ### [Allgemeine Verwaltungsaufgaben](cloud-services-how-to-manage-portal.md)
 ### [Konfigurieren eines Clouddiensts](cloud-services-how-to-configure-portal.md)
 ### [Verwalten einer Cloud Services-Instanz mit Azure Automation](automation-manage-cloud-services.md)
 ### [Konfigurieren der automatischen Skalierung](cloud-services-how-to-scale-portal.md)
 ### [Verwenden von Python zum Verwalten von Azure-Ressourcen](cloud-services-python-how-to-use-service-management.md)
+### [Maßnahmen im Zusammenhang mit der spekulativen Ausführung](mitigate-se.md)
 
 ### [Patches für Gastbetriebssysteme](cloud-services-guestos-msrc-releases.md)
 ### Deaktivierung von Gastbetriebssystemen

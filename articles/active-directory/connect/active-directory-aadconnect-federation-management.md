@@ -1,5 +1,5 @@
 ---
-title: Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect | Microsoft-Dokumentation
+title: "Azure AD Connect – Verwalten und Anpassen von AD FS | Microsoft-Dokumentation"
 description: "Enthält eine Beschreibung der AD FS-Verwaltung mithilfe von Azure AD Connect und Anpassung der AD FS-Anmeldung für Benutzer mit Azure AD Connect und PowerShell."
 keywords: AD FS, ADFS, AD FS Verwaltung, AAD Connect, Connect, anmelden, AD FS Anpassung, Vertrauensstellung reparieren, O365, Verbund, vertrauende Seite
 services: active-directory
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: e024dd13c6bf25697dbea67ae240a100c27454b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 49acea5c08a10ba3b60d0db5f05e30d573f5e507
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -48,7 +49,7 @@ Mithilfe von Azure AD Connect können Sie den aktuellen Status der AD FS- und Az
    ![AAD- und ADFS-Vertrauensstellung reparieren](media/active-directory-aadconnect-federation-management/RepairADTrust1.PNG)
 
 2. Geben Sie auf der Seite **Mit Azure AD verbinden** die Anmeldeinformationen des globalen Administrators für Azure AD an, und klicken Sie auf **Weiter**.
-   ![Mit Azure AD verbinden](media/active-directory-aadconnect-federation-management/RepairADTrust2.PNG)
+   ![Herstellen einer Verbindung mit Azure AD](media/active-directory-aadconnect-federation-management/RepairADTrust2.PNG)
 
 3. Geben Sie auf der Seite **Anmeldeinformationen für den Remotezugriff** die Anmeldeinformationen für den Domänenadministrator ein.
 
@@ -160,7 +161,7 @@ Das Hinzufügen einer Domäne, die einen Verbund mit Azure AD bilden soll, ist m
 
 2. Geben Sie auf der nächsten Seite des Assistenten die Anmeldeinformationen des globalen Administrators für Azure AD an.
 
-   ![Mit Azure AD verbinden](media/active-directory-aadconnect-federation-management/AdditionalDomain2.PNG)
+   ![Stellen Sie eine Verbindung mit Azure AD her.](media/active-directory-aadconnect-federation-management/AdditionalDomain2.PNG)
 
 3. Geben Sie auf der Seite **Anmeldeinformationen für den Remotezugriff** die Anmeldeinformationen des Domänenadministrators an.
 
@@ -175,7 +176,7 @@ Das Hinzufügen einer Domäne, die einen Verbund mit Azure AD bilden soll, ist m
 5. Klicken Sie auf **Weiter**.
  Auf der Seite **Bereit zur Konfiguration** wird die Liste mit den Aktionen angezeigt, die von Azure AD Connect ausgeführt werden. Klicken Sie auf **Installieren** , um die Konfiguration abzuschließen.
 
-   ![Bereit für Konfiguration](media/active-directory-aadconnect-federation-management/AdditionalDomain5.PNG)
+   ![Bereit zur Konfiguration](media/active-directory-aadconnect-federation-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
 > Benutzer aus der hinzugefügten Verbunddomäne müssen synchronisiert werden, bevor sie sich bei Azure AD anmelden können.

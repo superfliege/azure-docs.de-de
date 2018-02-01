@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 89cb7dc488da42724f212d13f8550064ff8b9188
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: dea6b137fb12467a881afaa9a3e6985b584f5559
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Einführung in Azure App Service unter Linux
 
@@ -73,7 +73,7 @@ Einige Features, z.B. die Integration virtueller Netzwerke, Azure Active Directo
 App Service unter Linux wird nur in den App Service-Tarifen [Basic und Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) unterstützt und verfügt nicht über einen [Free- oder Shared](https://azure.microsoft.com/pricing/details/app-service/plans/)-Tarif. Die folgenden wichtigen Einschränkungen gelten ebenfalls für App Service unter Linux:
 
 * Sie können keine Web-App für Container in einem App Service-Plan erstellen, in dem bereits Web-Apps unter anderen Betriebssystemen als Linux gehostet werden.
-* Beim Erstellen einer Web-App für Container in einer Ressourcengruppe mit Web-Apps unter anderen Betriebssystemen als Linux müssen Sie einen App Service-Plan in einer anderen Region als der Region des vorhandenen App Service-Plans erstellen.
+* Beim Erstellen einer Web-App für Container in einer Ressourcengruppe mit Web-Apps unter anderen Betriebssystemen als Linux müssen Sie einen App Service-Plan in einer anderen Ressourcengruppe als der Region des vorhandenen App Service-Plans erstellen.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

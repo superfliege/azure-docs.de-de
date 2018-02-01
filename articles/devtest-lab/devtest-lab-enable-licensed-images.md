@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: v-craic
-ms.openlocfilehash: 3c969495454db2cd301fc985e512531ef0d4b103
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 022b6340a8d2748624ba292fb4a28a956d28c6f9
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Aktivieren eines lizenzierten Image im Lab in Azure DevTest Labs
 
@@ -29,7 +29,7 @@ Der erste Schritt, um Benutzern die Erstellung von VMs anhand eines lizenzierten
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 
-1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
+1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 
@@ -53,7 +53,9 @@ Um sicherzustellen, dass ein lizenziertes Image für Labbenutzer verfügbar ist,
 
 Sie können die programmgesteuerte Bereitstellung für ein lizenziertes Image anhand der folgenden Schritte aktivieren:
 
-1. Ermitteln Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) in der Liste der **Marketplace-Images** ein lizenziertes Image, auf das Benutzer Zugriff haben sollen, deren Bedingungen jedoch nicht akzeptiert wurden. In diesem Fall wird beispielsweise eventuell eine Data Science Virtual Machine (DSVM) mit dem Status **Bedingungen akzeptiert** oder **Überprüfung der Nutzungsbedingungen erforderlich** angezeigt.
+1. Navigieren Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) zur Liste **Marketplace-Images**.
+
+1. Ermitteln Sie ein lizenziertes Image, auf das Benutzer Zugriff haben sollen, deren Bedingungen jedoch nicht akzeptiert wurden. In diesem Fall wird beispielsweise eventuell eine Data Science Virtual Machine (DSVM) mit dem Status **Bedingungen akzeptiert** oder **Überprüfung der Nutzungsbedingungen erforderlich** angezeigt.
 
     ![Fenster „Programmgesteuerte Bereitstellung konfigurieren“](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
@@ -74,7 +76,15 @@ Sie können die programmgesteuerte Bereitstellung für ein lizenziertes Image an
    >
 
 
-1. Wählen Sie **Speichern** aus. In der Liste der Marketplace-Images weist dieses Image nun den Status **Nutzungsbedingungen akzeptiert** auf und steht für Benutzer zum Erstellen virtueller Computer zur Verfügung.
+1. Wählen Sie **Speichern** aus. 
+
+    In der Liste der Marketplace-Images weist dieses Image nun den Status **Nutzungsbedingungen akzeptiert** auf und steht für Benutzer zum Erstellen virtueller Computer zur Verfügung.
+
+> [!NOTE]
+> Benutzer können ein benutzerdefiniertes Image anhand eines lizenzierten Image erstellen. Weitere Informationen finden Sie unter [Erstellen eines benutzerdefinierten Images aus einer VHD-Datei](devtest-lab-create-template.md).
+>
+>
+
 
 ## <a name="related-blog-posts"></a>Verwandte Blogbeiträge
 
@@ -83,4 +93,6 @@ Sie können die programmgesteuerte Bereitstellung für ein lizenziertes Image an
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Erstellen eines benutzerdefinierten Images von einem virtuellen Computer](devtest-lab-create-custom-image-from-vm-using-portal.md)
+- [Erstellen eines benutzerdefinierten Images aus einer VHD-Datei mithilfe von PowerShell](devtest-lab-create-template.md)
 - [Hinzufügen eines virtuellen Computers zum Lab](devtest-lab-add-vm.md)

@@ -1,6 +1,6 @@
 ---
-title: Benutzerdefinierte Felder in Log Analytics | Microsoft Docs
-description: "Mit dem Log Analytics-Feature „Benutzerdefinierte Felder“ können Sie auf der Grundlage von OMS-Daten eigene durchsuchbare Felder erstellen, um die Eigenschaften gesammelter Datensätze zu erweitern.  Dieser Artikel beschreibt die Erstellung eines benutzerdefinierten Felds und enthält eine ausführliche exemplarische Vorgehensweise mit einem Beispielereignis."
+title: Benutzerdefinierte Felder in Azure Log Analytics | Microsoft-Dokumentation
+description: "Mit dem Log Analytics-Feature „Benutzerdefinierte Felder“ können Sie auf der Grundlage von Log Analytics-Datensätzen eigene durchsuchbare Felder erstellen, um die Eigenschaften gesammelter Datensätze zu erweitern.  Dieser Artikel beschreibt die Erstellung eines benutzerdefinierten Felds und enthält eine ausführliche exemplarische Vorgehensweise mit einem Beispielereignis."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 9e02094f155eaade9bc5fb49c4fbb798e546e989
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0f3311f35f954f81560cad21e7f0e3bc850a094
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="custom-fields-in-log-analytics"></a>Benutzerdefinierte Felder in Log Analytics
-Mit dem Feature **Benutzerdefinierte Felder** von Log Analytics können Sie vorhandene Datensätze im OMS-Repository mit eigenen durchsuchbaren Feldern erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
+Mit dem Feature **Benutzerdefinierte Felder** von Log Analytics können Sie vorhandene Datensätze in Log Analytics durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
 
 ![Übersicht über benutzerdefinierte Felder](media/log-analytics-custom-fields/overview.png)
 
@@ -40,14 +40,13 @@ Wenn Sie ein benutzerdefiniertes Feld erstellen, muss Log Analytics wissen, mit 
 In den folgenden Abschnitten wird die Vorgehensweise zum Erstellen eines benutzerdefinierten Felds erläutert.  Am Ende dieses Artikels befindet sich eine exemplarische Vorgehensweise für eine Beispielextraktion.
 
 > [!NOTE]
-> Das benutzerdefinierte Feld wird aufgefüllt, wenn dem OMS-Datenspeicher Datensätze hinzugefügt werden, die den angegebenen Kriterien entsprechen. Das Feld ist also nur für Datensätze verfügbar, die nach der Erstellung des benutzerdefinierten Felds gesammelt werden.  Das benutzerdefinierte Feld wird nicht zu Datensätzen hinzugefügt, die zum Zeitpunkt der Felderstellung bereits im Datenspeicher vorhanden sind.
-> 
+> Das benutzerdefinierte Feld wird aufgefüllt, wenn Log Analytics Datensätze hinzugefügt werden, die den angegebenen Kriterien entsprechen. Das Feld ist also nur für Datensätze verfügbar, die nach der Erstellung des benutzerdefinierten Felds gesammelt werden.  Das benutzerdefinierte Feld wird nicht zu Datensätzen hinzugefügt, die zum Zeitpunkt der Felderstellung bereits im Datenspeicher vorhanden sind.
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Schritt 1: Angeben der Datensätze, die über das benutzerdefinierte Feld verfügen sollen
-Als Erstes müssen die Datensätze angegeben werden, die über das benutzerdefinierte Feld verfügen sollen.  Hierzu führen Sie zunächst eine [Standard-Protokollsuche](log-analytics-log-searches.md) durch wählen dann einen Datensatz aus, der Log Analytics als Modell für die Ermittlung dient.  Wenn Sie angeben, dass Sie Daten in ein benutzerdefiniertes Feld extrahieren möchten, wird der **Feldextraktions-Assistent** geöffnet, in dem Sie die Kriterien überprüfen und anpassen können.
+Als Erstes müssen die Datensätze angegeben werden, die über das benutzerdefinierte Feld verfügen sollen.  Hierzu führen Sie zunächst eine [Standard-Protokollsuche](log-analytics-log-searches.md) durch wählen dann einen Datensatz aus, der Log Analytics als Modell für die Ermittlung dient.  Wenn Sie angeben, dass Sie Daten in ein benutzerdefiniertes Feld extrahieren möchten, wird der Feldextraktions-Assistent **** geöffnet, in dem Sie die Kriterien überprüfen und anpassen können.
 
-1. Wechseln Sie zu **Protokollsuche**, und verwenden Sie eine [Abfrage zum Abrufen der Datensätze](log-analytics-log-searches.md) , die über das benutzerdefinierte Feld verfügen sollen.
+1. Wechseln Sie zur Protokollsuche **** , und verwenden Sie eine [Abfrage zum Abrufen der Datensätze](log-analytics-log-searches.md) , die über das benutzerdefinierte Feld verfügen sollen.
 2. Wählen Sie einen Datensatz aus, der Log Analytics als Modell für die Extraktion von Daten zur Auffüllung des benutzerdefinierten Felds dienen soll.  Nachdem Sie die Daten angegeben haben, die aus diesem Datensatz extrahiert werden sollen, ermittelt Log Analytics auf der Grundlage dieser Informationen die Logik, mit der das benutzerdefinierte Felds für alle ähnlichen Datensätze aufgefüllt werden kann.
 3. Klicken Sie auf die Schaltfläche links neben einer beliebigen Texteigenschaft des Datensatzes, und wählen Sie **Extract fields from**(Felder extrahieren aus).
 4. Der **Feldextraktions-Assistent** wird geöffnet, und der ausgewählte Datensatz wird in der Spalte **Hauptbeispiel** angezeigt.  Das benutzerdefinierte Feld wird für Datensätze mit den gleichen Werten in den ausgewählten Eigenschaften definiert.  
@@ -63,7 +62,7 @@ Nach Angabe der Datensätze, die über das benutzerdefinierte Feld verfügen sol
 ### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>Schritt 3: Überprüfen der Extraktion und Erstellen des benutzerdefinierten Felds
 Im Anschluss an die erste Extraktion zeigt Log Analytics die Ergebnisse an, die auf der Grundlage bereits gesammelter Daten ermittelt wurden.  Wenn die Ergebnisse Ihren Vorstellungen entsprechen, können Sie das benutzerdefinierte Feld ohne weitere Schritte erstellen.  Andernfalls können Sie die Ergebnisse optimieren, damit Log Analytics seine Logik verbessern kann.
 
-1. Sollte die erste Extraktion falsche Werte enthalten, klicken Sie neben einem falschen Datensatz auf das Symbol zum **Bearbeiten**, und wählen Sie **Diese Markierung ändern** aus, um die Auswahl zu ändern.
+1. Sollte die erste Extraktion falsche Werte enthalten, klicken Sie neben einem falschen Datensatz auf das Bearbeitungssymbol****, und wählen Sie **Diese Markierung ändern** aus, um die Auswahl zu ändern.
 2. Der Eintrag wird in den Abschnitt **Zusätzliche Beispiele** kopiert, der sich unter dem Abschnitt **Hauptbeispiel** befindet.  Hier können Sie die Markierung anpassen, um Log Analytics mitzuteilen, wie die Auswahl hätte aussehen sollen.
 3. Klicken Sie auf **Extrahieren** , um alle vorhandenen Datensätze auf der Grundlage dieser neuen Informationen zu untersuchen.  Dadurch ändern sich unter Umständen auch die Ergebnisse anderer Datensätze.
 4. Nehmen Sie weitere Korrekturen vor, bis für alle Datensätze in der Extraktion genau die Daten angeben werden, mit denen das neue benutzerdefinierte Feld aufgefüllt werden soll.
@@ -72,7 +71,7 @@ Im Anschluss an die erste Extraktion zeigt Log Analytics die Ergebnisse an, die 
 7. Das benutzerdefinierte Feld kann wie jede andere Datensatzeigenschaft verwendet werden.  Sie können damit Daten aggregieren und gruppieren und sogar neue Insights generieren.
 
 ## <a name="viewing-custom-fields"></a>Anzeigen benutzerdefinierter Felder
-Über die Kachel **Einstellungen** des OMS-Dashboards können Sie eine Liste mit allen benutzerdefinierten Feldern in Ihrer Verwaltungsgruppe anzeigen.  Wählen Sie **Daten** und anschließend **Benutzerdefinierte Felder** aus, um eine Liste mit allen benutzerdefinierten Feldern in Ihrem Arbeitsbereich anzuzeigen.  
+Sie können im Azure-Portal über das Menü **Erweiterte Einstellungen** des Log Analytics-Arbeitsbereichs eine Liste aller benutzerdefinierten Felder in Ihrer Verwaltungsgruppe anzeigen.  Wählen Sie **Daten** und anschließend **Benutzerdefinierte Felder** aus, um eine Liste mit allen benutzerdefinierten Feldern in Ihrem Arbeitsbereich anzuzeigen.  
 
 ![Benutzerdefinierte Felder](media/log-analytics-custom-fields/list.png)
 

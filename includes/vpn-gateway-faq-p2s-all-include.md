@@ -51,9 +51,23 @@ Nein. Sie können nur den nativen VPN-Client unter Windows für SSTP und den nat
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Unterstützt Azure IKEv2-VPN unter Windows?
 
-Benutzer können mithilfe des integrierten Windows-VPN-Clients, der IKEv2 unterstützt, eine Verbindung mit Azure herstellen. IKEv2-Verbindungen von einem Windows-Gerät funktionieren jedoch in dem folgenden Szenario nicht:
+IKEv2 wird unter Windows 10 und Server 2016 unterstützt. Zur Verwendung von IKEv2 müssen Sie jedoch Updates installieren und lokal einen Registrierungsschlüsselwert festlegen. Betriebssystemversionen vor Windows 10 werden nicht unterstützt und können nur SSTP verwenden.
 
-  Wenn das Gerät des Benutzers eine große Anzahl von vertrauenswürdigen Stammzertifikaten enthält, ist die Größe der Nachrichtennutzlast während des IKE-Austauschs groß und führt zur Fragmentierung der IP-Schicht. Die Fragmente werden von Azure zurückgewiesen, was zu einem Fehler bei der Verbindung führt. Die genaue Zertifikatsanzahl, bei der dieses Problem auftritt, ist schwer einzuschätzen. Daher ist nicht gewährleistet, dass IKEv2-Verbindungen von Windows-Geräten funktionieren. Wenn Sie sowohl SSTP als auch IKEv2 in einer gemischten Umgebung konfigurieren (bestehend aus Windows- und Mac-Geräten), versucht es das Windows-VPN-Profil immer zuerst mit dem IKEv2-Tunnel. Wenn es aufgrund des hier beschriebenen Problems fehlschlägt, greift es auf SSTP zurück.
+Vorbereitung von Windows 10 oder Server 2016 für IKEv2:
+
+1. Installieren Sie das Update.
+
+  | Betriebssystemversion | Datum | Anzahl/Link |
+  |---|---|---|---|
+  | Windows Server 2016<br>Windows 10, Version 1607 | 17. Januar 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+  | Windows 10, Version 1703 | 17. Januar 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+  |  |  |  |  |
+
+2. Legen Sie den Registrierungsschlüsselwert fest. Erstellen Sie den REG_DWORD-Schlüssel „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload“, oder legen Sie ihn in der Registrierung auf 1 fest.
+
+### <a name="what-happens-when-i-configure-both-sstp-and-ikev2-for-p2s-vpn-connections"></a>Was geschieht, wenn ich sowohl SSTP als auch IKEv2 für P2S-VPN-Verbindungen konfiguriere?
+
+Wenn Sie sowohl SSTP als auch IKEv2 in einer gemischten Umgebung (bestehend aus Windows- und Mac-Geräten) konfigurieren, versucht der Windows-VPN-Client immer zuerst den IKEv2-Tunnel, weicht jedoch auf SSTP aus, wenn die IKEv2-Verbindung nicht erfolgreich ist. MacOSX stellt nur eine Verbindung über IKEv2 her.
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>Welche anderen Plattformen, außer Windows und Mac, werden von Azure für P2S-VPN unterstützt?
 

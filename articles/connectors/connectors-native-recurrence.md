@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 77567302c529e6e06e58534ffc9db44c9a85bdb7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9384752c7f12074aae6ff165241e954eb2a4a01e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="schedule-tasks-and-workflows-that-run-regularly-with-logic-apps"></a>Planen von regelmäßig ausgeführten Aufgaben und Workflows mit Logik-Apps
 
-Zum Planen von regelmäßig ausgeführten Aufgaben, Aktionen, Workloads oder Prozessen können Sie einen Logik-App-Workflow erstellen, der mit dem [Trigger](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts) **Zeitplan: Wiederholung** gestartet wird. Mit diesem Trigger können Sie ein Datum und eine Uhrzeit zum Starten der Wiederholung und einen Wiederholungszeitplan für die Durchführung von Aufgaben festlegen. Hier sind einige Beispiele angegeben:
+Zum Planen von regelmäßig ausgeführten Aufgaben, Aktionen, Workloads oder Prozessen können Sie einen Logik-App-Workflow erstellen, der mit dem [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) **Zeitplan: Wiederholung** gestartet wird. Mit diesem Trigger können Sie ein Datum und eine Uhrzeit zum Starten der Wiederholung und einen Wiederholungszeitplan für die Durchführung von Aufgaben festlegen. Hier sind einige Beispiele angegeben:
 
 * Get internal data (Interne Daten abrufen): Dient zum täglichen [Ausführen einer gespeicherten SQL-Prozedur](../connectors/connectors-create-api-sqlazure.md).
 * Get external data (Externe Daten abrufen): Dient zum Pullen von Wetterberichten von NOAA im Abstand von 15 Minuten.
@@ -46,11 +46,11 @@ Wenn jeweils der Wiederholungstrigger ausgelöst wird, erstellt Logic Apps eine 
 
 * Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Sie können sich aber auch [für ein Abonnement mit nutzungsbasierter Bezahlung registrieren](https://azure.microsoft.com/pricing/purchase-options/).
 
-* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/logic-apps-create-a-logic-app.md) 
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
 
 ## <a name="add-a-recurrence-trigger-to-your-logic-app"></a>Hinzufügen eines Wiederholungstriggers zu Ihrer Logik-App
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an. Erstellen Sie eine leere Logik-App, oder informieren Sie sich zuerst über das [Erstellen einer leeren Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen Sie eine leere Logik-App, oder informieren Sie sich zuerst über das [Erstellen einer leeren Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 2. Geben Sie im Suchfeld „Wiederholung“ als Filter ein, wenn der Designer für Logik-Apps angezeigt wird. Wählen Sie den Trigger **Zeitplan: Wiederholung**. 
 
@@ -96,15 +96,15 @@ Wenn jeweils der Wiederholungstrigger ausgelöst wird, erstellt Logic Apps eine 
 
 Sie können diese Eigenschaften für den Wiederholungstrigger konfigurieren.
 
-| Name | Erforderlich | Eigenschaftenname | Typ | Beschreibung | 
+| NAME | Erforderlich | Eigenschaftenname | Typ | BESCHREIBUNG | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **Frequency** | Ja | frequency | String | Die Zeiteinheit für die Wiederholung: **Second** (Sekunde), **Minute** (Minute), **Hour** (Stunde), **Day** (Tag), **Week** (Woche) oder **Month** (Monat) | 
-| **Intervall** | Ja | interval | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. <p>Das Standardintervall beträgt 1. Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1 - 9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
-| **Zeitzone** | Nein | timeZone | String | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Wählen Sie die anzuwendende Zeitzone aus. | 
-| **Startzeit** | Nein | startTime | String | Geben Sie eine Startzeit im folgenden Format ein: <p>JJJJ-MM-TTThh:mm:ss (bei Auswahl einer Zeitzone) <p>Oder <p>JJJJ-MM-TTThh:mm:ssZ (wenn keine Zeitzone ausgewählt wird) <p>Für „18. September 2017, 14:00 Uhr“ müssten Sie also beispielsweise „2017-09-18T14:00:00“ und eine Zeitzone (z.B. „Pacific Time“) auswählen. Alternativ können Sie „2017-09-18T14:00:00Z“ ohne Zeitzone angeben. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, aber ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitplänen ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. [*Wie kann ich Startdatum und -uhrzeit verwenden?*](#start-time) | 
-| **An diesen Tagen** | Nein | weekDays | Zeichenfolge oder Zeichenfolgenarray | Bei Auswahl von „Week“ (Woche) können Sie einen oder mehrere Tage angeben, an denen der Workflow ausgeführt werden soll: **Monday** (Montag), **Tuesday** (Dienstag), **Wednesday** (Mittwoch), **Thursday** (Donnerstag), **Friday** (Freitag), **Saturday** (Samstag) und **Sunday** (Sonntag) | 
-| **Zu diesen Stunden** | Nein | hours | Ganze Zahl oder Ganzzahlarray | Bei Auswahl von „Day“ (Tag) oder „Week“ (Woche) können Sie eine oder mehrere ganze Zahlen zwischen 0 und 23 als Stunden des Tages angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also etwa „10“, „12“ und „14“ angeben, erhalten Sie die vollen Stunden „10 Uhr“, „12 Uhr“ und „14 Uhr“. | 
-| **Zu diesen Minuten** | Nein | minutes | Ganze Zahl oder Ganzzahlarray | Bei Auswahl von „Day“ (Tag) oder „Week“ (Woche) können Sie eine oder mehrere ganze Zahlen zwischen 0 und 59 als Minuten der Stunden angeben, in denen der Workflow ausgeführt werden soll. <p>Wenn Sie also beispielsweise „30“ als Minutenwert angeben und das vorherige Beispiel für Stunden des Tages verwenden, erhalten Sie „10:30 Uhr“, „12:30 Uhr“ und „14:30 Uhr“. | 
+| **Frequency** | Ja | frequency | Zeichenfolge | Die Zeiteinheit für die Wiederholung: **Second** (Sekunde), **Minute** (Minute), **Hour** (Stunde), **Day** (Tag), **Week** (Woche) oder **Month** (Monat) | 
+| **Intervall** | Ja | interval | Ganze Zahl  | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. <p>Das Standardintervall beträgt 1. Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1 - 9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| **Zeitzone** | Nein  | timeZone | Zeichenfolge | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Wählen Sie die anzuwendende Zeitzone aus. | 
+| **Startzeit** | Nein  | startTime | Zeichenfolge | Geben Sie eine Startzeit im folgenden Format ein: <p>JJJJ-MM-TTThh:mm:ss (bei Auswahl einer Zeitzone) <p>Oder <p>JJJJ-MM-TTThh:mm:ssZ (wenn keine Zeitzone ausgewählt wird) <p>Für „18. September 2017, 14:00 Uhr“ müssten Sie also beispielsweise „2017-09-18T14:00:00“ und eine Zeitzone (z.B. „Pacific Time“) auswählen. Alternativ können Sie „2017-09-18T14:00:00Z“ ohne Zeitzone angeben. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, aber ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitplänen ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. [*Wie kann ich Startdatum und -uhrzeit verwenden?*](#start-time) | 
+| **An diesen Tagen** | Nein  | weekDays | Zeichenfolge oder Zeichenfolgenarray | Bei Auswahl von „Week“ (Woche) können Sie einen oder mehrere Tage angeben, an denen der Workflow ausgeführt werden soll: **Monday** (Montag), **Tuesday** (Dienstag), **Wednesday** (Mittwoch), **Thursday** (Donnerstag), **Friday** (Freitag), **Saturday** (Samstag) und **Sunday** (Sonntag) | 
+| **Zu diesen Stunden** | Nein  | hours | Ganze Zahl oder Ganzzahlarray | Bei Auswahl von „Day“ (Tag) oder „Week“ (Woche) können Sie eine oder mehrere ganze Zahlen zwischen 0 und 23 als Stunden des Tages angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also etwa „10“, „12“ und „14“ angeben, erhalten Sie die vollen Stunden „10 Uhr“, „12 Uhr“ und „14 Uhr“. | 
+| **Zu diesen Minuten** | Nein  | minutes | Ganze Zahl oder Ganzzahlarray | Bei Auswahl von „Day“ (Tag) oder „Week“ (Woche) können Sie eine oder mehrere ganze Zahlen zwischen 0 und 59 als Minuten der Stunden angeben, in denen der Workflow ausgeführt werden soll. <p>Wenn Sie also beispielsweise „30“ als Minutenwert angeben und das vorherige Beispiel für Stunden des Tages verwenden, erhalten Sie „10:30 Uhr“, „12:30 Uhr“ und „14:30 Uhr“. | 
 ||||| 
 
 ## <a name="json-example"></a>JSON-Beispiel
@@ -186,12 +186,12 @@ Hier ist ein Beispiel für die Definition eines Wiederholungstriggers angegeben:
 
 **Beispiel für eine Startuhrzeit in der Vergangenheit mit Wiederholung und ohne Zeitplan** 
 
-| Startzeit | Die aktuelle Zeit | Serie | Zeitplan |
+| Startzeit | Die aktuelle Zeit | Serie | Schedule |
 | ---------- | ------------ | ---------- | -------- | 
 | 2017-09-**07**T14:00:00Z | 2017-09-**08**T13:00:00Z | alle 2 Tage | {keine} | 
 ||||| 
 
-In diesem Szenario berechnet das Logic Apps-Modul die Ausführungszeiten basierend auf der Startuhrzeit, verwirft vergangene Ausführungszeiten und verwendet die nächste in der Zukunft liegende Startuhrzeit für die erste Ausführung. Nach dieser ersten Ausführung basieren zukünftige Ausführungen auf dem Zeitplan, der anhand der Startuhrzeit berechnet wird. Diese Wiederholung sieht wie folgt aus:
+In diesem Szenario berechnet die Logic Apps-Engine die Ausführungszeiten basierend auf der Startuhrzeit, verwirft vergangene Ausführungszeiten und verwendet die nächste in der Zukunft liegende Startuhrzeit für die erste Ausführung. Nach dieser ersten Ausführung basieren zukünftige Ausführungen auf dem Zeitplan, der anhand der Startuhrzeit berechnet wird. Diese Wiederholung sieht wie folgt aus:
 
 | Startzeit | Erste Ausführungszeit | Zukünftige Ausführungszeiten | 
 | ---------- | ------------ | ---------- | 

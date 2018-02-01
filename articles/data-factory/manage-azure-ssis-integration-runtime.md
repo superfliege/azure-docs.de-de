@@ -1,6 +1,6 @@
 ---
-title: Neukonfigurieren der Azure-SSIS-Integrationslaufzeit | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Azure-SSIS-Integrationslaufzeit in Azure Data Factory neu konfigurieren, nachdem Sie sie bereits bereitgestellt haben.
+title: Neukonfigurieren der Azure SSIS Integration Runtime | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Azure SSIS Integration Runtime in Azure Data Factory neu konfigurieren, nachdem Sie sie bereits bereitgestellt haben.
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -11,30 +11,49 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: c1743a0d06f911122ed0aba586aec837f81c578c
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: b4b777a858febb4b601c038508e4fc313c189ac2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="manage-an-azure-ssis-integration-runtime"></a>Verwalten einer Azure-SSIS-Integrationslaufzeit
-Der Artikel [Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory](create-azure-ssis-integration-runtime.md) erläutert die Erstellung einer Azure-SSIS-Integrationslaufzeit (IR) mithilfe von Azure Data Factory. Dieser Artikel enthält Informationen zum Neukonfigurieren einer vorhandenen Azure-SSIS-Integrationslaufzeit.  
+Der Artikel [Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory](create-azure-ssis-integration-runtime.md) erläutert die Erstellung einer Azure-SSIS-Integrationslaufzeit (IR) mithilfe von Azure Data Factory. Dieser Artikel enthält Informationen zum Neukonfigurieren einer vorhandenen Azure SSIS Integration Runtime.  
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
 
+
+## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche 
+Sie können die Data Factory-Benutzeroberfläche verwenden, um eine Azure-SSIS IR zu beenden, zu bearbeiten bzw. neu zu konfigurieren oder zu löschen. 
+
+1. Wechseln Sie auf der **Data Factory-Benutzeroberfläche** zur Registerkarte **Bearbeiten**. Klicken Sie zum Starten der Data Factory-Benutzeroberfläche auf der Startseite Ihrer Data Factory auf **Erstellen und überwachen**.
+2. Klicken Sie im linken Bereich auf **Verbindungen**.
+3. Wechseln Sie im rechten Bereich zu **Integration Runtimes**. 
+4. Sie können die Schaltflächen in der Spalte „Aktionen“ verwenden, um die Integration Runtime zu **beenden**, zu **bearbeiten** oder zu **löschen**. Mit der Schaltfläche **Code** in der Spalte **Aktionen** können Sie die JSON-Definition anzeigen, die der Integration Runtime zugeordnet ist.  
+    
+    ![Aktionen für Azure-SSIS IR](./media/manage-azure-ssis-integration-runtime/actions-for-azure-ssis-ir.png)
+
+### <a name="to-reconfigure-an-azure-ssis-ir"></a>Neukonfigurieren einer Azure-SSIS IR
+1. Beenden Sie die Integration Runtime, indem Sie in der Spalte **Aktionen** auf **Beenden** klicken. Klicken Sie zum Aktualisieren der Listenansicht in der Symbolleiste auf **Aktualisieren**. Nachdem die IR beendet wurde, sehen Sie, dass Sie die IR mit der ersten Aktion starten können. 
+
+    ![Aktionen für Azure-SSIS IR – Nach dem Beenden](./media/manage-azure-ssis-integration-runtime/actions-after-ssis-ir-stopped.png)
+2. Sie können die IR bearbeiten bzw. neu konfigurieren, indem Sie in der Spalte **Aktionen** auf die Schaltfläche **Bearbeiten** klicken. Ändern Sie im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) die Einstellungen (z.B. Größe des Knotens, Anzahl von Knoten oder maximale parallele Ausführungen pro Knoten). 
+3. Klicken Sie zum Neustarten der IR in der Spalte **Aktionen** auf die Schaltfläche **Start**.     
+
+## <a name="azure-powershell"></a>Azure PowerShell
 Nach dem Bereitstellen und Starten einer Instanz der Azure-SSIS-Integrationslaufzeit können Sie sie durch Ausführen einer Reihe von `Stop` - `Set` - `Start`-PowerShell-Cmdlets neu konfigurieren. Mit dem folgenden PowerShell-Skript wird beispielsweise die Anzahl von Knoten, die für die Instanz der Azure-SSIS-Integrationslaufzeit zugewiesen wurden, in „5“ geändert.
 
-## <a name="reconfigure-an-azure-ssis-ir"></a>Neukonfigurieren einer Azure-SSIS-Integrationslaufzeit (IR)
+### <a name="reconfigure-an-azure-ssis-ir"></a>Neukonfigurieren einer Azure-SSIS-Integrationslaufzeit (IR)
 
-1. Beenden Sie zuerst die Azure-SSIS-Integrationslaufzeit mit dem Cmdlet [Stop-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/stop-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1). Dieser Befehl gibt alle Knoten frei und beendet die Abrechnung.
+1. Beenden Sie zuerst die Azure SSIS Integration Runtime mit dem Cmdlet [Stop-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/stop-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1). Dieser Befehl gibt alle Knoten frei und beendet die Abrechnung.
 
     ```powershell
     Stop-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName 
     ```
-2. Konfigurieren Sie als Nächstes die Azure-SSIS-Integrationslaufzeit mit dem Cmdlet [Set-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1) neu. Der folgende Beispielbefehl skaliert eine Azure-SSIS-Integrationslaufzeit horizontal auf fünf Knoten.
+2. Konfigurieren Sie als Nächstes die Azure-SSIS-Integrationslaufzeit mit dem Cmdlet [Set-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1) neu. Der folgende Beispielbefehl skaliert eine Azure SSIS Integration Runtime horizontal auf fünf Knoten.
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -NodeCount 5
@@ -45,7 +64,7 @@ Nach dem Bereitstellen und Starten einer Instanz der Azure-SSIS-Integrationslauf
     Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName
     ```
 
-## <a name="delete-an-azure-ssis-ir"></a>Löschen einer Azure-SSIS-Integrationslaufzeit
+### <a name="delete-an-azure-ssis-ir"></a>Löschen einer Azure-SSIS-Integrationslaufzeit
 1. Listen Sie zuerst alle vorhandenen Azure-SSIS-Integrationslaufzeit-Instanzen unter Ihrer Data Factory auf.
 
     ```powershell

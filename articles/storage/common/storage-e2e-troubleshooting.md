@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: 13d01e63cfecdc826eba19b8eb0dc539019409dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee0e4671c31e97816576735b7bd2ee2f1629323e
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollen sowie AzCopy und Message Analyzer
+# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollierung sowie AzCopy und Message Analyzer
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
 Die Diagnose und das Beheben von Problemen ist eine wichtige Fähigkeit für die Erstellung und den Support von Clientanwendungen mit Microsoft Azure-Speicher. Aufgrund der dezentralen Art einer Azure-Anwendung kann sich die Diagnose und Behebung von Fehlern und Leistungsproblemen als komplexer erweisen als in herkömmlichen Umgebungen.
@@ -37,9 +37,7 @@ Um Probleme in Clientanwendungen mit Microsoft Azure-Speicher zu beheben, könne
   * **Speicherprotokollierung** erfasst jede Anfrage an die Azure-Speicherdienste in einem serverseitigen Protokoll. Das Protokoll erfasst ausführliche Daten für jede Anfrage, einschließlich des ausgeführten Vorgangs, des Status des Vorgangs und der Latenzinformationen. Weitere Informationen zu den Anfrage- und Antwortdaten, die von der Speicheranalyse in die Protokolle geschrieben werden, finden Sie unter [Protokollformat der Speicheranalyse](/rest/api/storageservices/Storage-Analytics-Log-Format) .
 
 > [!NOTE]
-> Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist zu diesem Zeitpunkt die Metrik- oder Protokollierungsfunktion nicht aktiviert. 
-> 
-> 
+> Speicherkonten vom Replikationstyp zonenredundanter Speicher (ZRS) unterstützen Metriken und Protokollierungen. ZRS Classic-Konten unterstützen weder Metriken noch Protokollierungen. Weitere Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher](storage-redundancy.md#zone-redundant-storage). 
 
 * **Azure-Portal**. Sie können die Protokollierung und Metriken für das Speicherkonto im [Azure-Portal](https://portal.azure.com) konfigurieren. Sie können auch Diagramme und Grafiken anzeigen, die darstellen, welche Leistung die Anwendung über einen gewissen Zeitraum hinweg erbringt, und Warnungen konfigurieren, die Sie benachrichtigen, wenn die Leistung bezüglich einer bestimmten Metrik von den Erwartungen abweicht.
   
@@ -349,11 +347,11 @@ Nachdem Sie nun mit der Verwendung von Message Analyzer zum Analysieren Ihrer Da
 
 | Zum Untersuchen von... | Verwenden Sie folgenden Filterausdruck... | Ausdruck gilt für Protokoll (Client, Server, Netzwerk, Alle) |
 | --- | --- | --- |
-| Unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange |AzureStorageClientDotNetV4.Description   contains "Retrying failed operation." |Client- |
+| Unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange |AzureStorageClientDotNetV4.Description   contains "Retrying failed operation." |Client |
 | HTTP-Zunahme von PercentThrottlingError |HTTP.Response.StatusCode   == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |Netzwerk |
 | Zunahme von PercentTimeoutError |HTTP.Response.StatusCode   == 500 |Netzwerk |
 | Zunahme von PercentTimeoutError (alle) |*StatusCode   == 500 |Alle |
-| Anstieg bei „PercentNetworkError“ |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Client- |
+| Anstieg bei „PercentNetworkError“ |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Client |
 | HTTP 403 (Verboten)-Meldungen |HTTP.Response.StatusCode   == 403 |Netzwerk |
 | HTTP 404 (Nicht gefunden)-Meldungen |HTTP.Response.StatusCode   == 404 |Netzwerk |
 | 404 (alle) |*StatusCode   == 404 |Alle |

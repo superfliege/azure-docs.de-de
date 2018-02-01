@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/29/2017
 ms.author: jroth
-ms.openlocfilehash: 5babea628180501e959387f80dac55618051f552
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e6d1f36d998ac8726e3a74b31772a5dd5a24bd58
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-create-sql-server-virtual-machines-with-azure-powershell"></a>Erstellen von SQL Server-VMs mit Azure PowerShell
 
@@ -78,7 +78,7 @@ $VNetSubnetAddressPrefix = "10.0.0.0/24"
 $DomainName = $ResourceGroupName
 ```
 
-### <a name="virtual-machine-properties"></a>Eigenschaften für virtuelle Maschinen
+### <a name="virtual-machine-properties"></a>Eigenschaften für virtuelle Computer
 Definieren Sie mithilfe der folgenden Variablen den Namen des virtuellen Computers, den Computernamen, die Größe des virtuellen Computers und den Namen des Betriebssystemdatenträgers für den virtuellen Computer.
 
 Ändern Sie die Werte nach Bedarf, und führen Sie das folgende Cmdlet aus, um die Variablen zu initialisieren.
@@ -246,7 +246,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>Festlegen der Betriebssystemeigenschaften für den virtuellen Computer
-Legen Sie hierzu mithilfe des Cmdlets [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) die Art des Betriebssystems auf Windows fest, legen Sie die Installation des [Agents für virtuelle Computer](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) als erforderlich fest, geben Sie an, dass das Cmdlet automatische Aktualisierungen ermöglicht, und legen Sie den Namen des virtuellen Computers, den Computernamen und die Anmeldeinformationen mithilfe der zuvor initialisierten Variablen fest.
+Legen Sie hierzu mithilfe des Cmdlets [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) die Art des Betriebssystems auf Windows fest, legen Sie die Installation des [Agents für virtuelle Computer](../agent-user-guide.md) als erforderlich fest, geben Sie an, dass das Cmdlet automatische Aktualisierungen ermöglicht, und legen Sie den Namen des virtuellen Computers, den Computernamen und die Anmeldeinformationen mithilfe der zuvor initialisierten Variablen fest.
 
 Führen Sie das folgende Cmdlet aus, um die Betriebssystemeigenschaften für Ihren virtuellen Computer festzulegen:
 
@@ -318,13 +318,13 @@ SQL Server-VMs unterstützen mit der [Erweiterung für SQL Server-IaaS-Agent](vi
 
 ## <a name="remove-a-test-vm"></a>Entfernen eines virtuellen Testcomputers
 
-Wenn der virtuelle Computer nicht kontinuierlich ausgeführt werden muss, können Sie unnötige Kosten vermeiden, indem Sie ihn anhalten, wenn er nicht verwendet wird. Mit dem folgenden Befehl wird der virtuelle Computer angehalten, er bleibt jedoch für eine spätere Verwendung verfügbar.
+Wenn der virtuelle Computer nicht kontinuierlich ausgeführt werden muss, können Sie unnötige Kosten vermeiden, indem Sie ihn anhalten, wenn er nicht verwendet wird. Mit dem folgenden Befehl wird der virtuelle Computer beendet, bleibt aber für eine spätere Verwendung verfügbar.
 
 ```PowerShell
 Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-Mit dem Befehl **Remove-AzureRmResourceGroup** können Sie außerdem alle dem virtuellen Computer zugeordneten Ressourcen endgültig entfernen. Dadurch wird auch der virtuelle Computer endgültig gelöscht. Lassen Sie daher bei Verwendung dieses Befehls Vorsicht walten.
+Mit dem Befehl **Remove-AzureRmResourceGroup** können Sie alle dem virtuellen Computer zugeordneten Ressourcen endgültig entfernen. Dadurch wird auch der virtuelle Computer endgültig gelöscht. Seien Sie daher vorsichtig, wenn Sie diesen Befehl verwenden.
 
 ## <a name="example-script"></a>Beispielskript
 Das folgende Skript enthält das vollständige PowerShell-Skript für dieses Tutorial. Es wird davon ausgegangen, dass Sie das Azure-Abonnement bereits eingerichtet haben, das mit den Befehlen **Add-AzureRmAccount** und **Select-AzureRmSubscription** verwendet werden soll.

@@ -11,18 +11,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 01/17/2018
 ms.author: apimpm
-ms.openlocfilehash: 1587243bcd5f2b9af98b8b529c152ba49ef676be
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: f377e1aadc126934fb47f6371f12435d2742efa6
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management
 In API Management werden Gruppen verwendet, um die Sichtbarkeit von Produkten für Entwickler zu verwalten. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. 
 
-API Management umfasst die folgenden unveränderlichen Systemgruppen.
+API Management umfasst folgende unveränderliche Systemgruppen:
 
 * **Administratoren** – Azure-Abonnementadministratoren sind Mitglieder dieser Gruppe. Administratoren verwalten API Management-Dienstinstanzen und erstellen die APIs, Operationen und Produkte, die von den Entwicklern verwendet werden.
 * **Entwickler** – Zu dieser Gruppe gehören authentifizierte Benutzer des Entwicklerportals. Entwickler sind die Kunden, die Anwendungen unter Verwendung Ihrer APIs erstellen. Entwickler erhalten Zugriff zum Entwicklerportal und erstellen Anwendungen, die die Operationen einer API aufrufen.
@@ -32,77 +32,69 @@ Zusätzlich zu diesen Systemgruppen können Administratoren benutzerdefinierte G
 
 Diese Anleitung beschreibt, wie Administrator einer API Management-Instanz neue Gruppen hinzufügen und diese zu Produkten und Entwicklern zuordnen können.
 
-> [!NOTE]
-> Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können Sie Ihre Gruppen mithilfe der Entität [Gruppe](https://msdn.microsoft.com/library/azure/dn776329.aspx) der API Management-REST-API erstellen und verwalten.
-> 
-> 
+Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können Sie Ihre Gruppen mithilfe der Entität [Gruppe](https://msdn.microsoft.com/library/azure/dn776329.aspx) der API Management-REST-API erstellen und verwalten.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Absolvieren Sie die Aufgaben im folgenden Artikel: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
+
+[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-group"></a>Erstellen einer Gruppe
-Klicken Sie im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**, um einen neue Gruppe zu erstellen. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
 
-![Herausgeberportal][api-management-management-console]
+In diesem Abschnitt wird gezeigt, wie Sie Ihrem API Management-Konto eine neue Gruppe hinzufügen.
 
-> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen unter [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance].
-> 
-> 
+1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** aus.
+2. Klicken Sie auf **+Hinzufügen**.
+3. Geben Sie einen eindeutigen Namen und eine optionale Beschreibung für die Gruppe ein.
+4. Klicken Sie auf **Erstellen**.
 
-Klicken Sie im Menü **API Management** auf der linken Seite auf **Gruppen**, und klicken Sie anschließend auf **Gruppe hinzufügen**.
+    ![Neue Gruppe hinzufügen](./media/api-management-howto-create-groups/groups001.png)
 
-![Neue Gruppe hinzufügen][api-management-add-group]
-
-Geben Sie einen eindeutigen Namen und eine optionale Beschreibung für die Gruppe ein und klicken Sie auf **Speichern**.
-
-![Neue Gruppe hinzufügen][api-management-add-group-window]
-
-Die neue Gruppe wird auf der Registerkarte „Gruppen“ angezeigt. Klicken Sie auf den Namen der Gruppe in der Liste, um **Name** oder **Beschreibung** zu bearbeiten. Klicken Sie auf **Löschen**, um die Gruppe zu löschen.
-
-![Gruppe hinzugefügt][api-management-new-group]
+Nachdem die Gruppe erstellt wurde, wird sie der Liste **Gruppen** hinzugefügt. <br/>Klicken Sie auf den Namen der Gruppe und auf **Einstellungen**, um den **Namen** oder die **Beschreibung** zu bearbeiten.<br/>Zum Löschen der Gruppe klicken Sie auf den Namen der Gruppe, und drücken Sie **Löschen**.
 
 Nachdem Sie die Gruppe erstellt haben, können Sie sie zu Produkten und Entwicklern zuordnen.
 
 ## <a name="associate-group-product"></a>Zuordnen einer Gruppe zu einem Produkt
-Um eine Gruppe zu einem Produkt zuzuordnen, klicken Sie im Menü **API Management** auf der linken Seite auf **Produkte** und anschließend auf den Namen des gewünschten Produkts.
 
-![Sichtbarkeit einstellen][api-management-add-group-to-product]
+1. Wählen Sie auf der linken Seite die Registerkarte **Produkte** aus.
+2. Klicken Sie auf den Namen des gewünschten Produkts.
+3. Drücken Sie **Zugriffssteuerung**.
+4. Klicken Sie auf **+ Gruppe hinzufügen**.
 
-Auf der Registerkarte **Sichtbarkeit** können Sie Gruppen hinzufügen oder entfernen und die aktuellen Gruppen für das Produkt anzeigen. Um Gruppen hinzuzufügen oder zu entfernen, markieren Sie die Kontrollkästchen für die jeweiligen Gruppen und klicken Sie auf **Speichern**.
+    ![Neue Gruppe hinzufügen](./media/api-management-howto-create-groups/groups002.png)
+5. Wählen Sie die Gruppe aus, die Sie hinzufügen möchten.
 
-![Sichtbarkeit einstellen][api-management-add-group-to-product-visibility]
+    ![Neue Gruppe hinzufügen](./media/api-management-howto-create-groups/groups003.png)
 
-> [!NOTE]
-> Informationen zum Hinzufügen von Azure Active Directory-Gruppen finden Sie unter [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management](api-management-howto-aad.md).
-> 
-> Klicken Sie auf der Registerkarte **Sichtbarkeit** auf **Gruppen verwalten**, um Gruppen für ein Produkt zu konfigurieren.
-> 
-> 
+    Um eine Gruppe aus dem Produkt zu entfernen, klicken Sie auf **Löschen**.
+
+    ![Löschen einer Gruppe](./media/api-management-howto-create-groups/groups004.png)
 
 Sobald ein Produkt zu einer Gruppe zugeordnet ist, können Entwickler in dieser Gruppe das Produkt anzeigen und abonnieren.
 
+> [!NOTE]
+> Informationen zum Hinzufügen von Azure Active Directory-Gruppen finden Sie unter [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management](api-management-howto-aad.md).
+
 ## <a name="associate-group-developer"></a>Zuordnen von Entwicklern zu Gruppen
-Klicken Sie zum Zuordnen von Entwicklern zu einer Gruppe im Menü **API Management** auf der linken Seite auf **Benutzer**, und aktivieren Sie das Kontrollkästchen neben den Entwicklern, die Sie der Gruppe zuordnen möchten.
 
-![Entwickler zu einer Gruppe hinzufügen][api-management-add-group-to-developer]
+In diesem Abschnitt wird gezeigt, wie Gruppen Elemente zugeordnet werden.
 
-Markieren Sie die gewünschten Entwickler und klicken Sie anschließend auf die entsprechende Gruppe in der Dropdownloste **Zu Gruppe hinzufügen** . Über die Dropdownliste **Aus Gruppe entfernen** können Sie Entwickler aus Gruppen entfernen. 
+1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** aus.
+2. Wählen Sie **Mitglieder** aus.
 
-![Entwickler][api-management-add-group-to-developer-saved]
+    ![Hinzufügen eines Mitglieds](./media/api-management-howto-create-groups/groups005.png)
+3. Drücken Sie **+ Hinzufügen**, und wählen Sie ein Element aus.
+
+    ![Hinzufügen eines Mitglieds](./media/api-management-howto-create-groups/groups006.png)
+4. Drücken Sie **Auswählen**.
+
 
 Sobald Sie die Zuordnung zwischen Entwickler und Gruppe erstellt haben, können Sie diese auf der Registerkarte **Benutzer** anzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sobald ein Entwickler zu einer Gruppe hinzugefügt wurde, können diese die zu dieser Gruppe zugeordneten Produkte anzeigen und abonnieren. Weitere Informationen finden Sie unter [Erstellen und Veröffentlichen eines Produkts in Azure API Management][How create and publish a product in Azure API Management].
 * Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können Sie Ihre Gruppen mithilfe der Entität [Gruppe](https://msdn.microsoft.com/library/azure/dn776329.aspx) der API Management-REST-API erstellen und verwalten.
-
-[api-management-management-console]: ./media/api-management-howto-create-groups/api-management-management-console.png
-[api-management-add-group]: ./media/api-management-howto-create-groups/api-management-add-group.png
-[api-management-add-group-window]: ./media/api-management-howto-create-groups/api-management-add-group-window.png
-[api-management-new-group]: ./media/api-management-howto-create-groups/api-management-new-group.png
-[api-management-add-group-to-product]: ./media/api-management-howto-create-groups/api-management-add-group-to-product.png
-[api-management-add-group-to-product-visibility]: ./media/api-management-howto-create-groups/api-management-add-group-to-product-visibility.png
-[api-management-add-group-to-developer]: ./media/api-management-howto-create-groups/api-management-add-group-to-developer.png
-[api-management-add-group-to-developer-saved]: ./media/api-management-howto-create-groups/api-management-add-group-to-developer-saved.png
-
-[api-management-]: ./media/api-management-howto-create-groups/api-management-.png
 
 [Create a group]: #create-group
 [Associate a group with a product]: #associate-group-product
@@ -113,4 +105,4 @@ Sobald Sie die Zuordnung zwischen Entwickler und Gruppe erstellt haben, können 
 
 [Get started with Azure API Management]: get-started-create-service-instance.md
 [Create an API Management service instance]: get-started-create-service-instance.md
-[leverage external groups in associated Azure Active Directory tenants]: api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group
+[leverage external groups in associated Azure Active Directory tenants]: api-management-howto-aad.md

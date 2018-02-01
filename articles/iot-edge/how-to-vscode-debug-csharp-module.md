@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 12/06/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 01d321dce439e153b494dfd0de52c100dab78f39
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 1ab67cd8aaf59cde3157fcb877ce13f10cb432bb
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="use-visual-studio-code-to-debug-c-module-with-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Debuggen eines C#-Moduls mit Azure IoT Edge
 Dieser Artikel enthält detaillierte Anweisungen für die Verwendung von [Visual Studio Code](https://code.visualstudio.com/) als Hauptentwicklungstool zum Debuggen Ihrer IoT Edge-Module.
@@ -32,6 +32,9 @@ Nach Abschluss des vorherigen Tutorials sollten Sie die folgenden Elemente vorbe
 
 ## <a name="build-your-iot-edge-module-for-debugging-purpose"></a>Erstellen Ihres IoT Edge-Moduls zum Debuggen
 1. Um mit dem Debuggen zu beginnen, müssen Sie mithilfe von **dockerfile.debug** Ihr Docker-Image neu erstellen und Ihre Edge-Lösung erneut bereitstellen. Klicken Sie im Visual Studio Code-Explorer auf den Ordner „Docker“, um ihn zu öffnen. Anschließend klicken Sie auf den Ordner `linux-x64`, klicken mit der rechten Maustaste auf **Dockerfile.debug** und klicken auf **Docker-Image für IoT Edge-Modul erstellen**.
+
+    ![Erstellen eines Debugimages](./media/how-to-debug-csharp-module/build-debug-image.png)
+
 3. Navigieren Sie im Fenster **Ordner auswählen** zum Ordner `./bin/Debug/netcoreapp2.0/publish`, oder geben Sie den Ordnernamen direkt ein. Klicken Sie auf **Select Folder as EXE_DIR** (Ordner als EXE_DIR auswählen).
 4. Geben Sie den Imagenamen in das Popupfeld oben im Visual Studio Code-Fenster ein. Beispiel: `<your container registry address>/filtermodule:latest`. Wenn Sie eine Bereitstellung für die lokale Registrierung durchführen, sollte diese `localhost:5000/filtermodule:latest` lauten.
 5. Pushen Sie das Image in Ihr Docker-Repository. Klicken Sie auf **Edge: Docker-Image für IoT Edge-Modul mithilfe von Push übertragen**, und geben Sie oben im VS Code-Fenster in das Popuptextfeld die Image-URL ein. Verwenden Sie dabei die Image-URL aus dem obigen Schritt.
@@ -39,9 +42,18 @@ Nach Abschluss des vorherigen Tutorials sollten Sie die folgenden Elemente vorbe
 
 ## <a name="start-debugging-in-vs-code"></a>Starten des Debugvorgangs in Visual Studio Code
 1. Wechseln Sie zum Visual Studio Code-Debugfenster. Drücken Sie **F5**, und wählen Sie **IoT Edge(.Net Core)** aus.
+
+    ![Drücken Sie F5.](./media/how-to-debug-csharp-module/f5-debug-option.png)
+
 2. Navigieren Sie in `launch.json` zum Abschnitt **Benutzerdefiniertes IoT Edge-Modul debuggen (.NET Core)**, und geben Sie `<container_name>` unter `pipeArgs` ein. In diesem Tutorial sollte dies `filtermodule` sein.
+
+    ![Ändern von pipeArgs](./media/how-to-debug-csharp-module/f5-debug-option.png)
+
 3. Navigieren Sie zu „Program.cs“. Fügen Sie einen Haltepunkt in `method static async Task<MessageResponse> FilterModule(Message message, object userContext)` hinzu.
 4. Drücken Sie erneut **F5**. Und wählen Sie den Prozess zum Anfügen aus. In diesem Tutorial sollte der Name des Prozesses `FilterModule.dll` sein.
+
+    ![Anfügen des Prozesses](./media/how-to-debug-csharp-module/attach-process.png)
+
 5. Im Debugfenster von Visual Studio Code können Sie die Variablen im linken Bereich sehen. 
 
 > [!NOTE]

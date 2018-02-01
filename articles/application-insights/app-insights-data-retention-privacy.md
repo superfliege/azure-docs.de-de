@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3e13cc70dc09dd795bb0df57a4bbb29c8fcddb9e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1818e564acb0e9b5fa620d6f38db141811ca9777
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -99,10 +99,10 @@ Sie und Ihre Teammitglieder können die Daten exportieren und an andere Speicher
 Microsoft verwendet die Daten nur dazu, Ihnen den Dienst bereitstellen zu können.
 
 ## <a name="where-is-the-data-held"></a>Wo werden die Daten gespeichert?
-* In den USA oder in Europa. Sie können den Speicherort auswählen, wenn Sie eine neue Application Insights-Ressource erstellen. 
+* In den USA, Europa oder Südostasien. Sie können den Speicherort auswählen, wenn Sie eine neue Application Insights-Ressource erstellen. 
 
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-or-europe"></a>Bedeutet dies, dass meine App in den USA oder in Europa gehostet werden muss?
+#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Bedeutet dies, dass meine App in den USA, in Europa oder Südostasien gehostet werden muss?
 * Nein. Die Anwendung kann überall ausgeführt werden – auf Ihren eigenen lokalen Hosts oder in der Cloud.
 
 ## <a name="how-secure-is-my-data"></a>Wie sicher sind meine Daten?
@@ -158,15 +158,15 @@ Die SDKs sind je nach Plattform unterschiedlich, und es gibt verschiedene Kompon
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Klassen von in verschiedenen Szenarien gesendeten Daten
 | Aktion | Gesammelte Datenklassen (siehe nächste Tabelle) |
 | --- | --- |
-| [Hinzufügen des Application Insights SDK zu Ihrem .NET-Webprojekt][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Anforderungen<br/>**Exceptions**<br/>Sitzung (Session)<br/>users |
+| [Hinzufügen des Application Insights SDK zu Ihrem .NET-Webprojekt][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Sitzung<br/>users |
 | [Installieren des Statusmonitors auf IIS][redfield] |Abhängigkeiten<br/>ServerContext<br/>Inferred<br/>Perf counters |
 | [Hinzufügen des Application Insights SDK zu einer Java-Web-App][java] |ServerContext<br/>Inferred<br/>Anforderung<br/>Sitzung<br/>users |
 | [Hinzufügen des JavaScript SDK zur Webseite][client] |ClientContext  <br/>Inferred<br/>Seite<br/>ClientPerf<br/>Ajax |
 | [Definieren von Standardeigenschaften][apiproperties] |**Properties** für alle standardmäßigen und benutzerdefinierten Ereignisse |
-| [Aufrufen von TrackMetric][api] |Numerische Werte<br/>**Eigenschaften** |
-| [Aufrufen von Track*][api] |Ereignisname<br/>**Eigenschaften** |
-| [Aufrufen von TrackException][api] |**Exceptions**<br/>Stapelabbild<br/>**Eigenschaften** |
-| SDK kann keine Daten sammeln. Beispiel: <br/> – auf Leistungsindikatoren kann nicht zugegriffen werden<br/> – Ausnahme beim Telemetrieinitialisierer |SDK-Diagnose |
+| [Aufrufen von TrackMetric][api] |Numerische Werte<br/>**Properties** |
+| [Aufrufen von Track*][api] |Ereignisname<br/>**Properties** |
+| [Aufrufen von TrackException][api] |**Ausnahmen**<br/>Stapelabbild<br/>**Properties** |
+| SDK kann keine Daten sammeln. Beispiel:  <br/> – auf Leistungsindikatoren kann nicht zugegriffen werden<br/> – Ausnahme beim Telemetrieinitialisierer |SDK-Diagnose |
 
 Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in den entsprechenden Dokumenten.
 
@@ -184,9 +184,9 @@ Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in
 | PageViews |URL und Seitenname oder Bildschirmname |
 | Client perf |URL-/Seitenname, Browserladezeit |
 | Ajax |HTTP-Aufrufe von der Webseite an den Server |
-| Anforderungen |URL, Dauer, Antwortcode |
+| Requests |URL, Dauer, Antwortcode |
 | Abhängigkeiten |Typ (SQL, HTTP,...), Verbindungszeichenfolge oder URI Sync/Async, Dauer, Erfolg, SQL-Anweisung (mit Statusmonitor) |
-| **Exceptions** |Typ, **Meldung**, Aufrufliste, Quelldatei und Zeilennummer, Thread-ID |
+| **Ausnahmen** |Typ, **Meldung**, Aufrufliste, Quelldatei und Zeilennummer, Thread-ID |
 | Crashes |Prozess-ID, übergeordnete Vorgangs-ID, Thread-ID des Absturzes, Anwendungs-Patch, ID, Build, Typ der Ausnahme, Adresse, Ursache; abgeblendete Symbole und Registerkarten, binäre Start- und Endadressen, binärer Name und Pfad, CPU-Typ |
 | Trace |**Meldung** und Schweregrad |
 | Perf counters |Prozessorzeit, verfügbarer Speicher, Anforderungsrate, Ausnahmerate, private Bytes verarbeiten, E/A-Rate, Anforderungsdauer, Länge der Anforderungswarteschlange |

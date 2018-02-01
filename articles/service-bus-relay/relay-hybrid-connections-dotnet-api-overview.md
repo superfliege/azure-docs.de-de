@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 58451bae409c74c319f41c38a1cec5f051619e0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa1863a44f00ae17f63b02c7c247b2c9fd9925f6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Übersicht über die .NET Standard-APIs für Hybrid Connections in Azure Relay
 
 In diesem Artikel werden einige der wichtigsten .NET Standard-[Client-APIs](/dotnet/api/microsoft.azure.relay) für Hybrid Connections von Azure Relay zusammengefasst.
   
-## <a name="relay-connection-string-builder"></a>Verbindungszeichenfolgen-Generator von Relay
+## <a name="relay-connection-string-builder-class"></a>Klasse „Generator für Relay-Verbindungszeichenfolgen“
 
 Die Klasse [RelayConnectionStringBuilder][RelayConnectionStringBuilder] formatiert Verbindungszeichenfolgen, die speziell für Hybrid Connections von Relay gelten. Anhand dieser Klasse können Sie das Format einer Verbindungszeichenfolge überprüfen oder eine Verbindungszeichenfolge von Grund auf erstellen. Der folgende Code enthält ein Beispiel dafür:
 
 ```csharp
-var endpoint = "{Relay namespace}";
-var entityPath = "{Name of the Hybrid Connection}";
-var sharedAccessKeyName = "{SAS key name}";
-var sharedAccessKey = "{SAS key value}";
+var endpoint = "[Relay namespace]";
+var entityPath = "[Name of the Hybrid Connection]";
+var sharedAccessKeyName = "[SAS key name]";
+var sharedAccessKey = "[SAS key value]";
 
 var connectionStringBuilder = new RelayConnectionStringBuilder()
 {
@@ -46,7 +46,7 @@ var connectionStringBuilder = new RelayConnectionStringBuilder()
 Sie können eine Verbindungszeichenfolge auch direkt an die `RelayConnectionStringBuilder`-Methode übergeben. Mit diesem Vorgang können Sie sicherstellen, dass das Format der Verbindungszeichenfolge gültig ist. Wenn einer der Parameter ungültig ist, generiert der Konstruktor eine Ausnahme vom Typ `ArgumentException`.
 
 ```csharp
-var myConnectionString = "{RelayConnectionString}";
+var myConnectionString = "[RelayConnectionString]";
 // Declare the connectionStringBuilder so that it can be used outside of the loop if needed
 RelayConnectionStringBuilder connectionStringBuilder;
 try
@@ -61,12 +61,14 @@ catch (ArgumentException ae)
 ```
 
 ## <a name="hybrid-connection-stream"></a>Hybrid Connection Stream
+
 Die [HybridConnectionStream][HCStream]-Klasse ist das primäre Objekt, das zum Senden und Empfangen von Daten von einem Azure Relay-Endpunkt verwendet wird, unabhängig davon, ob Sie mit einer [HybridConnectionClient][HCClient]- oder einer [HybridConnectionListener][HCListener]-Klasse arbeiten.
 
 ### <a name="getting-a-hybrid-connection-stream"></a>Abrufen eines Hybrid Connection Streams
 
 #### <a name="listener"></a>Listener
-Mithilfe einer [HybridConnectionListener][HCListener]-Klasse können Sie wie folgt ein `HybridConnectionStream`-Objekt abrufen:
+
+Mithilfe eines [HybridConnectionListener][HCListener]-Objekts können Sie wie folgt ein `HybridConnectionStream`-Objekt abrufen:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -77,8 +79,9 @@ await listener.OpenAsync();
 var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
-#### <a name="client"></a>Client-
-Mithilfe einer [HybridConnectionClient][HCClient]-Klasse können Sie wie folgt ein `HybridConnectionStream`-Objekt abrufen:
+#### <a name="client"></a>Client
+
+Mithilfe eines [HybridConnectionClient][HCClient]-Objekts können Sie wie folgt ein `HybridConnectionStream`-Objekt abrufen:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -88,6 +91,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 ```
 
 ### <a name="receiving-data"></a>Empfangen von Daten
+
 Die [HybridConnectionStream][HCStream]-Klasse ermöglicht eine bidirektionale Kommunikation. In den meisten Fällen werden von Stream kontinuierlich Daten empfangen. Wenn Sie Text aus dem Stream lesen, sollten Sie auch ein [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx)-Objekt verwenden, das eine einfachere Analyse der Daten ermöglicht. Beispielsweise können Sie Daten als Text lesen statt als `byte[]`.
 
 Der folgende Code liest einzelne Textzeilen aus dem Stream, bis ein Abbruch angefordert wird:
@@ -114,6 +118,7 @@ while (!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="sending-data"></a>Senden von Daten
+
 Sobald Sie eine Verbindung hergestellt haben, können Sie eine Nachricht an den Relay-Endpunkt senden. Da das Verbindungsobjekt den [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) vererbt, senden Sie Ihre Daten als `byte[]`. Dies wird anhand des folgenden Beispiels veranschaulicht:
 
 ```csharp
@@ -130,6 +135,7 @@ await textWriter.WriteLineAsync("hello");
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Azure Relay finden Sie unter diesen Links:
 
 * [Microsoft.Azure.Relay-Referenz](/dotnet/api/microsoft.azure.relay)

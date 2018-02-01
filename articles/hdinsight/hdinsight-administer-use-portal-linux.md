@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2017
 ms.author: jgao
-ms.openlocfilehash: a65daae8931c5ef892bf01eb049897488d6b15c7
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 347af14d342751fd9d03cd5d0e9cedf05f91a2e1
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -60,14 +60,14 @@ Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie ein Azure-Abonnement ang
 
 - So erstellen Sie eine neue Ressourcengruppe:
 
-    1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     2. Klicken Sie im linken Menü auf **Abonnement**. Es weist ein gelbes Schlüsselsymbol auf. Daraufhin sollte eine Liste der Abonnements angezeigt werden.
     3. Klicken Sie auf das Abonnement, das Sie zum Erstellen von Clustern verwenden. 
     4. Klicken Sie auf **Meine Berechtigungen**.  Ihre [Rolle](../active-directory/role-based-access-control-what-is.md#built-in-roles) für das Abonnement wird angezeigt. Um HDInsight-Cluster erstellen zu können, müssen Sie mindestens über den Zugriffstyp „Mitwirkender“ verfügen.
 
 - So verwenden Sie eine vorhandene Ressourcengruppe:
 
-    1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     2. Klicken Sie im linken Menü auf **Ressourcengruppen**, um eine Liste der Ressourcengruppen anzuzeigen.
     3. Klicken Sie auf die Ressourcengruppe, die Sie zum Erstellen Ihres HDInsight-Clusters verwenden möchten.
     4. Klicken Sie auf **Zugriffssteuerung (IAM)**, und vergewissern Sie sich, dass Sie oder eine Gruppe, der Sie angehören, mindestens über den Zugriffstyp „Mitwirkender“ für die Ressourcengruppe verfügen/verfügt.
@@ -81,10 +81,10 @@ Wenn der Fehler „NoRegisteredProviderFound“ oder „MissingSubscriptionRegis
 4. Klicken Sie in der Liste auf einen Cluster, um die Übersichtsseite anzuzeigen:
 
     ![Azure-Portal – HDInsight-Cluster-Zusammenfassung](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)**Übersichtsmenü:**
-    * **Dashboard**: Öffnet das Clusterdashboard (für Linux-basierte Cluster: Ambari Web).
+    * **Dashboard**: Öffnet die Ambari-Webbenutzeroberfläche für den Cluster.
     * **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
     * **Cluster skalieren**: Dient zum Ändern der Anzahl von Workerknoten für den Cluster.
-    * **Verschieben:** verschiebt den Cluster in eine andere Ressourcengruppe oder ein anderes Abonnement
+    * **Verschieben:** Verschiebt den Cluster in eine andere Ressourcengruppe oder ein anderes Abonnement.
     * **Löschen**: Löscht den Cluster.
 
     **Menü auf der linken Seite:**
@@ -98,7 +98,7 @@ Wenn der Fehler „NoRegisteredProviderFound“ oder „MissingSubscriptionRegis
     * **Tools für HDInsight**: Hilfeinformationen für HDInsight-bezogene Tools.
     * **Subscription Core Usage** (Nutzung des Abonnementkernspeichers): Dient zum Anzeigen der verwendeten und verfügbaren Kernspeicher für Ihr Abonnement.
     * **Cluster skalieren**: Erhöhen und Verringern der Anzahl der Cluster-Workerknoten Weitere Informationen finden Sie unter [Skalieren von Clustern](hdinsight-administer-use-management-portal.md#scale-clusters).
-    * **SSH + Clusteranmeldung:** zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an. Weitere Informationen finden Sie unter [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) und durch Zurücksetzen der Clusteranmeldeinformationen.
+    * **SSH + Clusteranmeldung:** zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
     * **HDInsight-Partner**: Hinzufügen/Entfernen des aktuellen HDInsight-Partners.
     * **Externe Metastores**: Anzeigen der Hive- und Oozie-Metastores. Die Metastores können nur während der Clustererstellung konfiguriert werden. Weitere Informationen finden Sie unter [Verwenden des Hive/Oozie-Metastores](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
     * **Skriptaktionen**: Anwenden von Bashskripts auf den Cluster. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
@@ -158,7 +158,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten variieren für die von HDI
     Sie können die Anzahl der Workerknoten in einem aktiven Hadoop-Cluster problemlos ohne Auswirkungen auf ausstehende oder aktive Aufträge erhöhen. Neue Aufträge können auch während des Vorgangs gesendet werden. Fehler bei einer Skalierung werden ordnungsgemäß behandelt, sodass der Cluster immer in einem funktionsfähigen Zustand verbleibt.
 
     Wenn ein Hadoop-Cluster durch Verringern der Anzahl der Datenknoten zentral herunterskaliert wird, werden einige der Dienste im Cluster neu gestartet. Dieses Verhalten führt beim Abschluss des Skalierungsvorgangs bei allen aktiven und ausstehenden Aufträgen zu einem Fehler. Sie können die Aufträge jedoch nach Abschluss des Vorgangs erneut senden.
-* HBase
+* hbase
 
     Sie können Knoten reibungslos Ihrem HBase-Cluster hinzufügen oder aus diesem entfernen, während er aktiv ist. Regionale Server werden innerhalb weniger Minuten nach Abschluss des Skalierungsvorgangs automatisch ausgeglichen. Allerdings können Sie die regionalen Server auch manuell ausgleichen, indem Sie sich am Hauptknoten des Clusters anmelden und in einem Eingabeaufforderungsfenster die folgenden Befehle ausführen:
 
@@ -226,6 +226,21 @@ Sie können einen HDInsight-Cluster in eine andere Azure-Ressourcengruppe oder e
 
 Informationen finden Sie unter [Aktualisieren eines HDInsight-Clusters auf eine neuere Version](./hdinsight-upgrade-cluster.md).
 
+## <a name="open-the-ambari-web-ui"></a>Öffnen der Ambari-Webbenutzeroberfläche
+
+Ambari bietet eine intuitive, einfach zu bedienende Webbenutzeroberfläche für die Hadoop-Verwaltung, gesichert durch die RESTful-APIs. Mit Ambari können Systemadministratoren Hadoop-Cluster verwalten und überwachen.
+
+1. Öffnen Sie über das Azure-Portal einen HDInsight-Cluster.  Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](#list-and-show-clusters).
+2. Klicken Sie auf **Clusterdashboard**.
+
+    ![Menü für Hadoop-Cluster in HDInsight](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu.png)
+
+1. Geben Sie den Benutzernamen und das Kennwort für den Cluster ein.  Der Standardbenutzername für den Cluster lautet _admin_. Die Ambari-Webbenutzeroberfläche sieht wie folgt aus:
+
+    ![Hadoop-Ambari-Webbenutzeroberfläche in HDInsight](./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-ambari-web-ui.png)
+
+Weitere Informationen finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
+
 ## <a name="change-passwords"></a>Ändern von Kennwörtern
 Ein HDInsight-Cluster kann über zwei Benutzerkonten verfügen. Das HDInsight-Clusterbenutzerkonto (auch HTTP-Benutzerkonto genannt) und das SSH-Benutzerkonto werden während des Erstellungsprozesses erstellt. Sie können die Ambari-Webbenutzeroberfläche verwenden, um den Benutzernamen und das Kennwort für das Clusterbenutzerkonto zu ändern, und Skriptaktionen, um das SSH-Benutzerkonto zu ändern.
 
@@ -266,7 +281,7 @@ Ambari ändert anschließend das Kennwort auf allen Knoten im Cluster.
 
    | Feld | Wert |
    | --- | --- |
-   | Name |Ändern des SSH-Kennworts |
+   | NAME |Ändern des SSH-Kennworts |
    | Bash-Skript-URI |Der URI zur Datei „changepassword.sh“ |
    | Knoten (Hauptknoten, Worker, Nimbus, Supervisor, Zookeeper usw.) |✓ für alle aufgeführten Knotentypen |
    | Parameter |Geben Sie den SSH-Benutzernamen und dann das neue Kennwort ein. Es muss ein Leerzeichen zwischen den Benutzernamen und das Kennwort eingefügt werden. |

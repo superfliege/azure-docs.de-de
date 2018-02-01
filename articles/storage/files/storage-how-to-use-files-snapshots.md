@@ -3,7 +3,7 @@ title: Arbeiten mit Freigabemomentaufnahmen (Vorschau) | Microsoft-Dokumentation
 description: "Eine Freigabemomentaufnahme ist eine schreibgeschützte Version einer Azure Files-Freigabe, die zu einem bestimmten Zeitpunkt erstellt wird, um die Freigabe zu sichern."
 services: storage
 documentationcenter: .net
-author: renash
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: 5212866bda9ff775d32ebb57874b3d58e11f1eb3
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: c4a5f7d28601867c383b8b348568e4bb580a81eb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="work-with-share-snapshots-preview"></a>Arbeiten mit Freigabemomentaufnahmen (Vorschau)
 Eine Freigabemomentaufnahme (Vorschau) ist eine schreibgeschützte Version einer Azure Files-Freigabe, die zu einem bestimmten Zeitpunkt erstellt wird. Erstellte Freigabemomentaufnahmen können gelesen, kopiert oder gelöscht, aber nicht geändert werden. Eine Freigabemomentaufnahme bietet eine Möglichkeit, die Freigabe so zu sichern, wie sie zu einem bestimmten Zeitpunkt dargestellt wird. 
@@ -27,17 +27,17 @@ In diesem Artikel lernen Sie das Erstellen, Verwalten und Löschen von Freigabem
 
 ## <a name="create-a-share-snapshot"></a>Erstellen einer Freigabemomentaufnahme
 
-Sie können eine Freigabemomentaufnahme mit Azure-Portal, PowerShell, Azure CLI, REST-API oder jedem beliebigen Azure Storage SDK erstellen. In den folgenden Abschnitten erfahren Sie, wie Sie über das Portal, die CLI und PowerShell eine Freigabemomentaufnahme erstellen. 
+Sie können eine Freigabemomentaufnahme mit dem Azure-Portal, PowerShell, der Azure CLI, der REST-API oder jedem beliebigen Azure Storage SDK erstellen. In den folgenden Abschnitten erfahren Sie, wie Sie über das Portal, die CLI und PowerShell eine Freigabemomentaufnahme erstellen. 
 
 Sie können einen Freigabemomentaufnahme von einer Dateifreigabe erstellen, während sie verwendet wird. Freigabemomentaufnahmen erfassen jedoch nur Daten, die zum Zeitpunkt, an dem der Momentaufnahmebefehl ausgegeben wurde, bereits in eine Dateifreigabe geschrieben wurden. Dies kann dazu führen, dass Daten, die von Anwendungen oder dem Betriebssystem zwischengespeichert wurden, eventuell ausgeschlossen werden.
 
 ### <a name="create-a-share-snapshot-by-using-the-portal"></a>Erstellen einer Freigabemomentaufnahme mit dem Portal  
-Um eine Point-in-Time-Freigabemomentaufnahme zu erstellen, navigieren Sie zu Ihrer Dateifreigabe im Portal und wählen Sie **Momentaufnahme erstellen**.
+Um eine Point-in-Time-Freigabemomentaufnahme zu erstellen, navigieren Sie zu Ihrer Dateifreigabe im Portal und wählen **Momentaufnahme erstellen**.
 
 >   ![Momentaufnahmemenü im Portal](./media/storage-snapshots-create/portal-create-snapshot.png)
 
 
-### <a name="create-a-share-snapshot-by-using-azure-cli-20"></a>Erstellen einer Freigabemomentaufnahme mit Azure CLI 2.0
+### <a name="create-a-share-snapshot-by-using-azure-cli-20"></a>Erstellen einer Freigabemomentaufnahme mit der Azure CLI 2.0
 Mit dem Befehl `az storage share snapshot` können Sie eine Freigabemomentaufnahme erstellen:
 
 ```azurecli-interactive
@@ -77,11 +77,11 @@ $snapshot=$share.Snapshot()
 
 ## <a name="perform-common-share-snapshot-operations"></a>Durchführen allgemeiner Freigabemomentaufnahmen-Vorgänge
 
-Sie können die mit Ihrer Dateifreigabe verknüpften Freigabemomentaufnahmen mithilfe der Registerkarte **Vorherige Versionen** unter Windows, über REST, die Clientbibliothek, PowerShell und das Portal auflisten. Sobald die Dateifreigabe bereitgestellt ist, können Sie alle vorherigen Versionen der Datei mithilfe der Registerkarte **Vorherige Versionen** unter Windows anzeigen. 
+Sie können die mit Ihrer Dateifreigabe verknüpften Freigabemomentaufnahmen mithilfe der Registerkarte **Vorherige Versionen** unter Windows, über REST, die Clientbibliothek, PowerShell und das Portal auflisten. Sobald die Dateifreigabe eingebunden ist, können Sie alle vorherigen Versionen der Datei auf der Registerkarte **Vorherige Versionen** unter Windows anzeigen. 
 
 In den folgenden Abschnitten erfahren Sie, wie Sie mit dem Azure-Portal, Windows und der Azure CLI 2.0 Freigabemomentaufnahmen auflisten, zu ihnen navigieren und sie wiederherstellen können.
 
-### <a name="share-snapshot-operations-in-the-portal"></a>Freigabemomentaufnahmen-Vorgänge im Portal
+### <a name="share-snapshot-operations-in-the-portal"></a>Freigabemomentaufnahme-Vorgänge im Portal
 
 Im Portal können Sie alle Ihre Freigabemomentaufnahmen einer Dateifreigabe anzeigen und zu einer Freigabemomentaufnahme navigieren, um den Inhalt anzuzeigen.
 
@@ -101,30 +101,30 @@ Sie können in der Ansicht Ihrer Momentaufnahmenliste auch die Schaltfläche **V
 ![Bereich „Verbinden“ mit Befehlsfeld](./media/storage-snapshots-list-browse/snapshot-connect-portal.png)
 
 #### <a name="download-or-restore-from-a-share-snapshot"></a>Herunterladen oder Wiederherstellen aus Freigabemomentaufnahmen
-Vom Portal aus können Sie eine Datei aus einer Momentaufnahme über die Schaltfläche **Herunterladen** oder **Wiederherstellen** herunterladen oder wiederherstellen.
+Im Portal können Sie über die Schaltflächen **Herunterladen** und **Wiederherstellen** eine Datei aus einer Momentaufnahme herunterladen bzw. wiederherstellen.
 
 ![Schaltflächen „Herunterladen“ und „Wiederherstellen“](./media/storage-snapshots-list-browse/snapshot-download-restore-portal.png)
 
 ### <a name="share-snapshot-operations-in-windows"></a>Freigabemomentaufnahmen-Vorgänge unter Windows
-Wenn Sie bereits Momentaufnahmen von Ihrer Dateifreigabe erstellt haben, können Sie frühere Versionen einer Freigabe, eines Verzeichnisses oder einer bestimmten Datei aus Ihrer bereitgestellten Dateifreigabe unter Windows anzeigen. Im folgenden Beispiel sehen Sie, wie mit der Funktion „Vorherige Versionen“ die vorherige Version eines bestimmten Verzeichnisses unter Windows angezeigt und wiederhergestellt wird.
+Wenn Sie bereits Momentaufnahmen von Ihrer Dateifreigabe erstellt haben, können Sie frühere Versionen einer Freigabe, eines Verzeichnisses oder einer bestimmten Datei aus Ihrer eingebundenen Dateifreigabe unter Windows anzeigen. Im folgenden Beispiel sehen Sie, wie mit der Funktion „Vorherige Versionen“ die vorherige Version eines bestimmten Verzeichnisses unter Windows angezeigt und wiederhergestellt wird.
 
 > [!Note]  
 > Sie können die gleichen Vorgänge auf Freigabeebene und Dateiebene ausführen. Nur die Version, die Änderungen für dieses Verzeichnis oder diese Datei enthält, wird in der Liste angezeigt. Wenn ein bestimmtes Verzeichnis oder eine bestimmte Datei zwischen zwei Freigabemomentaufnahmen nicht geändert wurde, wird die Freigabemomentaufnahme nur in der Liste der vorherigen Versionen auf Freigabeebene angezeigt, jedoch nicht in der Liste der vorherigen Versionen eines Verzeichnisses oder einer Datei.
 
-#### <a name="mount-a-file-share"></a>Bereitstellen einer Dateifreigabe
-Stellen Sie zuerst mit dem Befehl `net use` die Dateifreigabe bereit.
+#### <a name="mount-a-file-share"></a>Einbinden einer Dateifreigabe
+Binden Sie zuerst mit dem Befehl `net use` die Dateifreigabe ein.
 
-#### <a name="open-a-mounted-share-in-file-explorer"></a>Öffnen einer bereitgestellten Freigabe im Datei-Explorer
-Navigieren Sie zum Datei-Explorer, und suchen Sie nach der bereitgestellten Freigabe.
+#### <a name="open-a-mounted-share-in-file-explorer"></a>Öffnen einer eingebundenen Freigabe im Datei-Explorer
+Navigieren Sie zum Datei-Explorer, und suchen Sie nach der eingebundenen Freigabe.
 
-![Bereitgestellte Freigabe im Datei-Explorer](./media/storage-snapshots-list-browse/snapshot-windows-mount.png)
+![Eingebundene Freigabe im Datei-Explorer](./media/storage-snapshots-list-browse/snapshot-windows-mount.png)
 
 #### <a name="list-previous-versions"></a>Liste der vorherigen Versionen
 Navigieren Sie zu dem Element oder übergeordneten Element, das wiederhergestellt werden soll. Doppelklicken Sie darauf, um zum gewünschten Verzeichnis zu navigieren. Klicken Sie mit der rechten Maustaste darauf, und wählen Sie im Menü **Eigenschaften** aus.
 
 ![Kontextmenü für ein ausgewähltes Verzeichnis](./media/storage-snapshots-list-browse/snapshot-windows-previous-versions.png)
 
-Wählen Sie **Vorherige Versionen** aus, um die Liste der Freigabemomentaufnahmen für dieses Verzeichnis anzuzeigen. Je nach Netzwerkgeschwindigkeit und Anzahl der Freigabemomentaufnahmen im Verzeichnis kann es einige Sekunden dauern, bis die Liste geladen wird.
+Wählen Sie **Vorherige Versionen** aus, um die Liste der Freigabemomentaufnahmen für dieses Verzeichnis anzuzeigen. Je nach Netzwerkgeschwindigkeit und Anzahl der Freigabemomentaufnahmen im Verzeichnis kann es einige Sekunden dauern, bis die Liste geladen ist.
 
 ![Registerkarte „Vorherige Versionen“](./media/storage-snapshots-list-browse/snapshot-windows-list.png)
 
@@ -132,12 +132,12 @@ Sie können **Öffnen** auswählen, um eine bestimmte Momentaufnahme zu öffnen.
 
 ![Geöffnete Momentaufnahme](./media/storage-snapshots-list-browse/snapshot-browse-windows.png)
 
-#### <a name="restore-from-a-previous-version"></a>Wiederherstellen von einer vorherigen Version
+#### <a name="restore-from-a-previous-version"></a>Wiederherstellen aus einer vorherigen Version
 Wählen Sie **Wiederherstellen**, um den Inhalt des gesamten Verzeichnisses rekursiv zum Erstellungszeitpunkt der Freigabemomentaufnahme am ursprünglichen Speicherort zu kopieren.
  ![Wiederherstellungsschaltfläche in Warnmeldung](./media/storage-snapshots-list-browse/snapshot-windows-restore.png)
 
-### <a name="share-snapshot-operations-in-azure-cli-20"></a>Freigabemomentaufnahmen-Vorgänge in Azure CLI 2.0
-Mit Azure CLI 2.0 können Sie Aktionen wie das Auflisten von Freigabemomentaufnahmen, das Navigieren zu Inhalten von Freigabemomentaufnahmen, das Wiederherstellen oder Herunterladen von Dateien aus Freigabemomentaufnahmen oder das Löschen von Freigabemomentaufnahmen durchführen.
+### <a name="share-snapshot-operations-in-azure-cli-20"></a>Freigabemomentaufnahmen-Vorgänge in der Azure CLI 2.0
+Mit der Azure CLI 2.0 können Sie Aktionen wie das Auflisten von Freigabemomentaufnahmen, das Navigieren zu Inhalten von Freigabemomentaufnahmen, das Wiederherstellen oder Herunterladen von Dateien aus Freigabemomentaufnahmen oder das Löschen von Freigabemomentaufnahmen durchführen.
 
 #### <a name="list-share-snapshots"></a>Auflisten von Freigabemomentaufnahmen
 
@@ -246,9 +246,48 @@ In der Ausgabe sehen Sie, dass der Inhalt der heruntergeladenen Datei und die zu
 }
 ```
 
-## <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
+<<<<<<< HEAD
+### <a name="file-share-snapshot-operations-in-azure-powershell"></a>Vorgänge zu Dateifreigabe-Momentaufnahmen in der Azure PowerShell
+Mit Azure PowerShell können Sie dieselben Aktionen ausführen, z.B. das Auflisten von Freigabemomentaufnahmen, das Durchsuchen des Inhalts von Freigabemomentaufnahmen, das Wiederherstellen oder Herunterladen von Dateien aus Freigabemomentaufnahmen oder das Löschen von Freigabemomentaufnahmen.
 
-Sie können Freigabemomentaufnahmen mit Azure-Portal, PowerShell, CLI, REST-API oder einem beliebigen Storage SDK löschen. In den folgenden Abschnitten erfahren Sie, wie Sie mit Azure-Portal, CLI und PowerShell eine Freigabemomentaufnahme löschen.
+#### <a name="list-share-snapshots"></a>Auflisten von Freigabemomentaufnahmen
+
+Mit `Get-AzureStorageShare` können Sie Freigabemomentaufnahmen einer bestimmten Freigabe auflisten.
+
+```powershell
+Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+```
+
+#### <a name="browse-share-snapshots"></a>Durchsuchen von Freigabemomentaufnahmen
+Sie können auch eine bestimmte Freigabemomentaufnahme durchsuchen, um deren Inhalte anzuzeigen. Dabei verwenden Sie `Get-AzureStorageFile` mit einem Wert für `-Share`, der auf die gewünschte Momentaufnahme zeigt.
+
+```powershell
+$snapshot = Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+Get-AzureStorageFile -Share $snapshot
+```
+
+#### <a name="restore-from-share-snapshots"></a>Wiederherstellen von Freigabemomentaufnahmen
+
+Sie können eine Datei wiederherstellen, indem Sie mit dem Befehl `Get-AzureStorageFileContent` eine Datei aus der Freigabemomentaufnahme kopieren oder herunterladen.
+
+```powershell
+$download='C:\Temp\Download'
+Get-AzureStorageFileContent -Share $snapshot -Path $file -Destination $download
+```
+
+```powershell
+$snapshot = Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+$directory = Get-AzureStorageFile -ShareName "ContosoShare06" -Path "ContosoWorkingFolder" | Get-AzureStorageFile
+Get-AzureStorageFileContent -Share $snapshot -Path $file -Destination $directory
+```
+
+
+## <a name="delete-azure-files-share-snapshot"></a>Löschen von Azure-Dateifreigabemomentaufnahmen
+=======
+## <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
+>>>>>>> 6a1833e10031fbf1ab204bb1f30cb54cf5fbcada
+
+Sie können Freigabemomentaufnahmen mit dem Azure-Portal, PowerShell, der CLI, der REST-API oder einem beliebigen Storage SDK löschen. In den folgenden Abschnitten erfahren Sie, wie Sie mit dem Azure-Portal, der CLI und PowerShell eine Freigabemomentaufnahme löschen.
 
 Sie können mit jedem Vergleichstool zu Freigabemomentaufnahmen navigieren und Unterschiede zwischen zwei Momentaufnahmen anzeigen. Dann können Sie bestimmen, welche Freigabemomentaufnahme Sie löschen möchten. 
 
@@ -260,7 +299,7 @@ Im Portal können Sie zum Blatt Ihrer Dateifreigabe navigieren und mit der Schal
 >   ![Schaltfläche „Löschen“](./media/storage-snapshots-delete/portal-snapshots-delete.png)
 
 
-### <a name="delete-a-share-snapshot-by-using-azure-cli-20"></a>Löschen einer Freigabemomentaufnahme mit Azure CLI 2.0
+### <a name="delete-a-share-snapshot-by-using-azure-cli-20"></a>Löschen einer Freigabemomentaufnahme mit der Azure CLI 2.0
 Mit dem Befehl `[az storage share delete]` können Sie eine Freigabemomentaufnahme löschen. Verwenden Sie den Zeitstempel der Freigabemomentaufnahme im folgenden Beispiel für den `--snapshot '2017-10-04T23:28:35.0000000Z' `-Parameter:
 
 ```azurecli-interactive

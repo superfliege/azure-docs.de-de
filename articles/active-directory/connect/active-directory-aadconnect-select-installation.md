@@ -3,7 +3,7 @@ title: "Azure AD Connect: Wählen Sie Ihren Installationstyp | Microsoft-Dokumen
 description: "Dieses Thema führt Sie durch die Schritte zum Auswählen des Installationstyps für Azure AD Connect."
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 99b97de182ddbfa8b490c15b2a6a38cc69421283
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9b7bcd5856ec94367edd586c28c781ac9569a792
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Auswählen des Installationstyps für Azure AD Connect
 Azure AD Connect bietet zwei Installationstypen für die Neuinstallation: Express und benutzerdefiniert. Dieses Thema hilft Ihnen, zu entscheiden, welche Option Sie während der Installation verwenden.
@@ -41,7 +41,7 @@ Sie erhalten:
 
 Optionen, mit denen Sie Express weiterhin verwenden können:
 
-- Wenn Sie nicht alle OEs synchronisieren möchten, können Sie Express weiterhin verwenden, wenn Sie auf der letzten Seite die Auswahl von **Synchronisierungsvorgang starten...*** aufheben. Führen Sie dann den Installations-Assistenten erneut aus, ändern Sie die Organisationseinheiten in [Konfigurationsoptionen](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options), und aktivieren Sie die geplante Synchronisierung.
+- Wenn Sie nicht alle OEs synchronisieren möchten, können Sie Express weiterhin verwenden, wenn Sie auf der letzten Seite die Auswahl von **Synchronisierungsvorgang starten*** aufheben. Führen Sie dann den Installations-Assistenten erneut aus, ändern Sie die Organisationseinheiten in [Konfigurationsoptionen](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options), und aktivieren Sie die geplante Synchronisierung.
 - Vielleicht möchten Sie eines der Features in Azure AD Premium aktivieren, z.B. das Rückschreiben von Kennwörtern. Durchlaufen Sie zuerst Express, um die Erstinstallation abzuschließen. Führen Sie dann den Installations-Assistenten erneut aus, und ändern Sie die [Konfigurationsoptionen](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Benutzerdefiniert

@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 01/05/2018
+ms.date: 01/18/2018
 ms.author: barbkess
-ms.openlocfilehash: 8e48d771ffcefe31c89a0d70f65ca867653a2163
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 5c163880a7508d69bce0019cc5379bca8c704d59
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="introduction-to-designing-tables-in-azure-sql-data-warehouse"></a>Einführung in das Entwerfen von Tabellen in Azure SQL Data Warehouse
 
@@ -28,43 +28,36 @@ Erfahren Sie mehr über die Schlüsselkonzepte des Tabellenentwurfs in Azure SQL
 
 In einem [Sternschema](https://en.wikipedia.org/wiki/Star_schema) werden Daten in Fakten-und Dimensionstabellen organisiert. Einige Tabellen werden für die Integration oder das Staging von Daten verwendet, bevor sie in eine Fakten- oder Dimensionstabelle verschoben werden. Wenn Sie eine Tabelle entwerfen, entscheiden Sie, ob die Tabellendaten in einer Faktentabelle, eine Dimensionstabelle oder eine Integrationstabelle gehören. Diese Entscheidung bestimmt die Tabellenstruktur und die Verteilung. 
 
-- **Faktentabellen** enthalten quantitative Daten, die häufig in einem transaktionalen System generiert und dann in das Data Warehouse geladen werden. Beispielsweise generiert ein Einzelhandelsunternehmen täglich Verkaufstransaktionen und lädt dann die Daten zur Analyse in eine Faktentabelle im Data Warehouse.
+- **Faktentabellen** enthalten quantitative Daten, die häufig in einem transaktionalen System generiert und dann in das Data Warehouse geladen werden. Beispielsweise generiert ein Einzelhandelsunternehmen täglich Verkaufstransaktionen und lädt dann die Daten zur Analyse in eine Faktentabelle in ein Data Warehouse.
 
 - **Dimensionstabellen** enthalten Attributdaten, die sich ändern können, es in der Regel jedoch nur selten tun. Beispielsweise werden der Name und die Adresse eines Kunden in einer Dimensionstabelle gespeichert und nur aktualisiert, wenn sich das Profil des Kunden ändert. Damit eine Faktentabelle nicht zu groß wird, kann darauf verzichtet werden, den Namen und die Adresse des Kunden in jede Zeile der Faktentabelle aufzunehmen. Stattdessen kann eine Kunden-ID von der Faktentabelle und der Dimensionstabelle gemeinsam genutzt werden. Die beiden Tabellen können mithilfe einer Abfrage verknüpft werden, um das Profil eines Kunden den Transaktionen zuzuordnen. 
 
-- **Integrationstabellen** werden für das Integrieren oder Staging von Daten verwendet. Diese Tabellen können als reguläre Tabellen, externe Tabellen oder temporäre Tabellen erstellt werden. Sie können z. B. Daten in eine Stagingtabelle laden, Transformationen für die Daten in der Stagingumgebung durchführen und die Daten dann in eine Produktionstabelle einfügen.
+- **Integrationstabellen** werden für das Integrieren oder Staging von Daten verwendet. Sie können eine Integrationstabelle als normale Tabelle, externe Tabelle oder temporäre Tabelle erstellen. Sie können z. B. Daten in eine Stagingtabelle laden, Transformationen für die Daten in der Stagingumgebung durchführen und die Daten dann in eine Produktionstabelle einfügen.
 
 ## <a name="schema-and-table-names"></a>Schema und Tabellennamen
-In SQL Data Warehouse ist ein Data Warehouse ist ein Datenbanktyp. Alle Tabellen im Data Warehouse sind in der gleichen Datenbank enthalten.  Das Verknüpfen von Tabellen über mehrere Data Warehouses ist nicht möglich. Dieses Verhalten unterscheidet sich von SQL Server, wo datenbankübergreifende Verknüpfungen unterstützt werden. 
+In SQL Data Warehouse ist ein Data Warehouse ist ein Datenbanktyp. Alle Tabellen im Data Warehouse sind in der gleichen Datenbank enthalten.  Das Verknüpfen von Tabellen über mehrere Data Warehouses ist nicht möglich. Dieses Verhalten unterscheidet sich von SQL Server, wo datenbankübergreifende Joins unterstützt werden. 
 
-In einer SQL Server-Datenbank können Sie „fact“, „dim“ oder „integrate“ für Schemanamen verwenden. Wenn Sie eine SQL Server-Datenbank in SQL Data Warehouse übertragen, migrieren Sie am besten alle Fakten-, Dimensions- und Integrationstabellen in ein Schema in SQL Data Warehouse und speichern sie dort. Sie können z. B. alle Tabellen im Data Warehouse-Beispiel [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) in einem Schema namens „WWI“ speichern. Mit dem folgenden Code wird ein [benutzerdefiniertes Schema](/sql/t-sql/statements/create-schema-transact-sql) mit dem Namen „WWI“ erstellt.
+In einer SQL Server-Datenbank können Sie „fact“, „dim“ oder „integrate“ für Schemanamen verwenden. Wenn Sie eine SQL Server-Datenbank nach SQL Data Warehouse migrieren, migrieren Sie am besten alle Fakten-, Dimensions- und Integrationstabellen in ein Schema in SQL Data Warehouse. Sie können z.B. alle Tabellen im Data Warehouse-Beispiel [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) in einem Schema namens „wwi“ speichern. Mit dem folgenden Code wird ein [benutzerdefiniertes Schema](/sql/t-sql/statements/create-schema-transact-sql) mit dem Namen „wwi“ erstellt.
 
 ```sql
-CREATE SCHEMA WWI;
+CREATE SCHEMA wwi;
 ```
 
-Um die Organisation der Tabellen in SQL Data Warehouse anzuzeigen, verwenden Sie „fact“, „dim“ und „int“ als Präfixe für die Tabellennamen. Die folgende Tabelle zeigt einige der Schema- und Tabellennamen für „WideWorldImportersDW“. Die Namen in SQL Server und SQL Data Warehouse werden miteinander verglichen. 
+Um die Organisation der Tabellen in SQL Data Warehouse anzuzeigen, können Sie „fact“, „dim“ und „int“ als Präfixe für die Tabellennamen verwenden. Die folgende Tabelle zeigt einige der Schema- und Tabellennamen für „WideWorldImportersDW“. Die Namen in SQL Server und SQL Data Warehouse werden miteinander verglichen. 
 
-| WWI-Dimensionstabellen  | SQL Server | SQL Data Warehouse |
+| WideWorldImportersDW table  | Table type | SQL Server | SQL Data Warehouse |
 |:-----|:-----|:------|
-| City | Dimension.City | WWI.DimCity |
-| Customer | Dimension.Customer | WWI.DimCustomer |
-| Date | Dimension.Date | WWI.DimDate |
-
-| WWI-Faktentabellen | SQL Server | SQL Data Warehouse |
-|:---|:---|:---|
-| Order | Fact.Order | WWI.FactOrder |
-| Sale  | Fact.Sale  | WWI.FactSale  |
-| Purchase | Fact | WWI.FactPurchase |
+| City | Dimension | Dimension.City | wwi.DimCity |
+| Reihenfolge | Fakt | Fact.Order | wwi.FactOrder |
 
 
-## <a name="table-definition"></a>Tabellendefinition 
+## <a name="table-persistence"></a>Tabellenpersistenz 
 
-In den folgenden Themen werden die wichtigsten Aspekte der Tabellendefinition erläutert. 
+Tabellen speichern Daten dauerhaft in Azure Storage, vorübergehend in Azure Storage oder in einem Datenspeicher außerhalb des Data Warehouse.
 
-### <a name="standard-table"></a>Standardtabelle
+### <a name="regular-table"></a>Normale Tabelle
 
-Eine Standardtabelle wird in Azure Storage als Teil des Data Warehouse gespeichert. Die Tabelle und die Daten werden unabhängig davon beibehalten, ob eine Sitzung geöffnet ist.  In diesem Beispiel wird eine Tabelle mit zwei Spalten erstellt. 
+In einer normalen Tabelle werden Daten in Azure Storage als Teil des Data Warehouse gespeichert. Die Tabelle und die Daten werden unabhängig davon beibehalten, ob eine Sitzung geöffnet ist.  In diesem Beispiel wird eine normale Tabelle mit zwei Spalten erstellt. 
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
@@ -74,19 +67,32 @@ CREATE TABLE MyTable (col1 int, col2 int );
 Eine temporäre Tabelle ist nur für die Dauer der Sitzung vorhanden. Sie können eine temporäre Tabelle verwenden, um zu verhindern, dass andere Benutzer temporäre Ergebnisse sehen, und um die Notwendigkeit von Bereinigungen zu reduzieren.  Da temporäre Tabellen auch lokalen Speicher nutzen, bieten Sie für einige Vorgänge eine schnellere Leistung.  Weitere Informationen finden Sie unter [Temporäre Tabellen](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Externe Tabelle
-Eine externe Tabelle verweist auf Daten in Azure Blob Storage oder Azure Data Lake Store. Bei Verwendung in Verbindung mit der CREATE TABLE AS SELECT-Anweisung werden aus einer externen Tabelle ausgewählte Daten in SQL Data Warehouse importiert. Externe Tabellen eignen sich daher zum Laden von Daten. Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage](load-data-from-azure-blob-storage-using-polybase.md).
+Eine externe Tabelle verweist auf Daten in Azure Storage Blob oder Azure Data Lake Store. Bei Verwendung in Verbindung mit der CREATE TABLE AS SELECT-Anweisung werden aus einer externen Tabelle ausgewählte Daten in SQL Data Warehouse importiert. Externe Tabellen eignen sich daher zum Laden von Daten. Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage](load-data-from-azure-blob-storage-using-polybase.md).
 
-### <a name="data-types"></a>Datentypen
-SQL Data Warehouse unterstützt die gängigsten Datentypen. Eine Liste der unterstützten Datentypen finden Sie in der CREATE TABLE-Anweisung unter [Datentypen](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes). Durch Minimieren die Größe von Datentypen wird die Abfrageleistung verbessert. Eine Anleitung zu Datentypen finden Sie unter [Datentypen](sql-data-warehouse-tables-data-types.md).
+## <a name="data-types"></a>Datentypen
+SQL Data Warehouse unterstützt die gängigsten Datentypen. Eine Liste der unterstützten Datentypen finden Sie in der CREATE TABLE-Anweisung im [CREATE TABLE-Verweis im Abschnitt „Datentypen“](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes). Durch Minimieren die Größe von Datentypen wird die Abfrageleistung verbessert. Eine Anleitung zur Verwendung der Datentypen finden Sie unter [Datentypen](sql-data-warehouse-tables-data-types.md).
 
-### <a name="distributed-tables"></a>Verteilte Tabellen
-Eine grundlegende Funktion von SQL Data Warehouse ist die Möglichkeit, Tabellen über 60 verteilte Standorte, als Verteilungen bezeichnet, im verteilten System zu speichern.  SQL Data Warehouse kann eine Tabelle auf eine der folgenden drei Arten speichern:
+## <a name="distributed-tables"></a>Verteilte Tabellen
+Ein grundlegendes Feature von SQL Data Warehouse ist die Art und Weise, wie Tabellen über 60 [Verteilungen](massively-parallel-processing-mpp-architecture.md#distributions) hinweg gespeichert und ausgeführt werden können.  Die Tabellen werden mithilfe der Roundrobin-, Hash- oder Replikationsmethode verteilt.
 
-- **Roundrobin**: Hierbei werden die Tabellenzeilen zufällig, aber gleichmäßig auf die Verteilungen verteilt. Mit der Roundrobintabelle wird eine hohe Ladeleistung erzielt, sie erfordert jedoch mehr Datenverschiebungen als die anderen Methoden für Abfragen, die Spalten verknüpfen. 
-- **Hash**: Hierbei werden die Zeilen auf Basis des Werts in der Verteilungsspalte verteilt. Die Tabelle mit Hashverteilung hat das größte Potenzial für eine hohe Leistung bei Abfrageverknüpfungen für große Tabellen. Es gibt mehrere Faktoren, die die Auswahl der Verteilungsspalte beeinflussen. Weitere Informationen finden Sie unter [Verteilte Tabellen](sql-data-warehouse-tables-distribute.md).
-- **Repliziert**: Mit replizierten Tabellen wird eine vollständige Kopie der Tabelle auf jedem Serverknoten verfügbar gemacht. Abfragen werden für replizierte Tabellen schnell ausgeführt, da bei Verknüpfungen replizierter Tabellen kein Verschieben von Daten erforderlich ist. Für die Replikation wird zusätzlicher Speicherplatz benötigt, und sie ist für große Tabellen nicht geeignet. Weitere Informationen finden Sie unter [Entwurfsleitfaden für replizierte Tabellen](design-guidance-for-replicated-tables.md).
+### <a name="hash-distributed-tables"></a>Tabellen mit Hashverteilung
+Die Hashverteilung verteilt die Zeilen auf Basis des Werts in der Verteilungsspalte. Die Tabelle mit Hashverteilung ist für eine hohe Leistung bei Abfragejoins für große Tabellen ausgelegt. Es gibt mehrere Faktoren, die die Auswahl der Verteilungsspalte beeinflussen. 
 
-Die Tabellenkategorie bestimmt oftmals, welche Option für das Verteilen der Tabelle ausgewählt wird.  
+Weitere Informationen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md).
+
+### <a name="replicated-tables"></a>Replizierte Tabellen
+Eine replizierte Tabelle ist eine vollständige Kopie der Tabelle, die auf jedem Serverknoten zur Verfügung gestellt wird. Abfragen werden für replizierte Tabellen schnell ausgeführt, da bei Verknüpfungen replizierter Tabellen kein Verschieben von Daten erforderlich ist. Für die Replikation wird zusätzlicher Speicherplatz benötigt, und sie ist für große Tabellen nicht geeignet. 
+
+Weitere Informationen finden Sie unter [Entwurfsleitfaden für replizierte Tabellen](design-guidance-for-replicated-tables.md).
+
+### <a name="round-robin-tables"></a>Roundrobintabellen
+Bei einer Roundrobintabelle werden die Tabellenzeilen gleichmäßig auf alle Verteilungen aufgeteilt. Die Zeilen werden nach dem Zufallsprinzip verteilt. Das Laden von Daten in eine Roundrobintabelle geht schnell vonstatten.  Bei Abfragen kann jedoch eine größere Anzahl von Datenverschiebungen erforderlich sein als bei anderen Verteilungsmethoden. 
+
+Weitere Informationen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md).
+
+
+### <a name="common-distribution-methods-for-tables"></a>Allgemeine Verteilungsmethoden für Tabellen
+Die Tabellenkategorie bestimmt oftmals, welche Option für das Verteilen der Tabelle ausgewählt wird. 
 
 | Tabellenkategorie | Empfohlene Verteilungsoption |
 |:---------------|:--------------------|
@@ -94,18 +100,18 @@ Die Tabellenkategorie bestimmt oftmals, welche Option für das Verteilen der Tab
 | Dimension      | Verwenden Sie bei kleineren Tabellen die Replikation. Wenn Tabellen zu groß sind, um sie auf jedem Serverknoten zu speichern, verwenden Sie die Hashverteilung. |
 | Staging        | Verwenden Sie für die Stagingtabelle das Roundrobinprinzip. Das Laden lässt sich mit CTAS beschleunigen. Sobald sich die Daten in der Stagingtabelle befinden, verwenden Sie INSERT...SELECT, um die Daten in eine Produktionstabelle zu verschieben. |
 
-### <a name="table-partitions"></a>Tabellenpartitionen
+## <a name="table-partitions"></a>Tabellenpartitionen
 In einer partitionierten Tabelle werden die Tabellenzeilen nach Datenbereichen gespeichert und Vorgänge entsprechend ausgeführt. Beispielsweise könnte eine Tabelle nach Tag, Monat oder Jahr partitioniert werden. Sie können die Abfrageleistung durch eine Partitionsbeseitigung verbessern, wobei ein Abfragescan auf Daten in einer Partition begrenzt wird. Auch können Sie die Daten durch Partitionswechsel verwalten. Da die Daten in SQL Data Warehouse bereits verteilt sind, können zu viele Partitionen die Abfrageleistung beeinträchtigen. Weitere Informationen finden Sie unter [Partitionieren von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
 
-### <a name="columnstore-indexes"></a>ColumnStore-Indizes
+## <a name="columnstore-indexes"></a>ColumnStore-Indizes
 Standardmäßig speichert SQL Data Warehouse eine Tabelle als gruppierten Columnstore-Index. Mit dieser Form der Datenspeicherung wird eine hohe Datenkomprimierung und Abfrageleistung für große Tabellen erreicht.  Der gruppierte Columnstore-Index ist in der Regel die beste Wahl, aber in einigen Fällen ist ein gruppierter Index oder ein Heap die geeignete Speicherstruktur.
 
 Eine Liste der Columnstore-Funktionen finden Sie unter [Columnstore-Indizes – Neuigkeiten](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Informationen zum Verbessern der Leistung von Columnstore-Indizes finden Sie unter [Maximieren der Zeilengruppenqualität für Columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
-### <a name="statistics"></a>Statistiken
+## <a name="statistics"></a>Statistiken
 Der Abfrageoptimierer verwendet beim Erstellen des Plans für die Ausführung einer Abfrage Statistiken auf Spaltenebene. Um die Abfrageleistung zu verbessern, ist es wichtig, Statistiken für einzelne Spalten zu erstellen, insbesondere für in Abfrageverknüpfungen verwendete Spalten. Die Erstellung und die Aktualisierung von Statistiken werden nicht automatisch ausgeführt. [Erstellen Sie Statistiken](/sql/t-sql/statements/create-statistics-transact-sql), nachdem eine Tabelle erstellt wurde. Führen Sie die Statistikaktualisierung durch, wenn eine erhebliche Anzahl von Zeilen hinzugefügt oder geändert wurde. Aktualisieren Sie Statistiken z. B. nach einem Ladevorgang. Weitere Informationen finden Sie unter [Verwalten von Statistiken für Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-statistics.md).
 
-## <a name="ways-to-create-tables"></a>Methoden zum Erstellen von Tabellen
+## <a name="commands-for-creating-tables"></a>Befehle zum Erstellen von Tabellen
 Sie können eine Tabelle als neue leere Tabelle erstellen. Alternativ können Sie eine Tabelle erstellen und mit den Ergebnissen einer SELECT-Anweisung füllen. Es folgen die T-SQL-Befehle zum Erstellen einer Tabelle.
 
 | T-SQL-Anweisung | BESCHREIBUNG |
@@ -119,7 +125,7 @@ Sie können eine Tabelle als neue leere Tabelle erstellen. Alternativ können Si
 
 Data Warehouse-Tabellen werden durch das Laden von Daten aus einer anderen Datenquelle gefüllt. Um einen Ladevorgang erfolgreich ausführen zu können, müssen die Anzahl und die Datentypen der Spalten in den Quelldaten an der Tabellendefinition im Data Warehouse ausgerichtet werden. Diese Ausrichtung der Daten zu bewältigen, ist möglicherweise der schwierigste Aspekt beim Entwerfen von Tabellen. 
 
-Wenn Daten aus mehreren Datenspeichern stammen, können Sie die Daten in das Data Warehouse überführen und in einer Integrationstabelle speichern. Sobald sich die Daten in der Integrationstabelle befinden, können Sie die Leistungsfähigkeit von SQL Data Warehouse nutzen, um Transformationsvorgänge auszuführen.
+Wenn Daten aus mehreren Datenspeichern stammen, können Sie die Daten in das Data Warehouse überführen und in einer Integrationstabelle speichern. Sobald sich die Daten in der Integrationstabelle befinden, können Sie die Leistungsfähigkeit von SQL Data Warehouse nutzen, um Transformationsvorgänge auszuführen. Sobald die Daten vorbereitet sind, können Sie sie in Produktionstabellen einfügen.
 
 ## <a name="unsupported-table-features"></a>Nicht unterstützte Tabellenfunktionen
 SQL Data Warehouse unterstützt viele, aber nicht alle Tabellenfunktionen anderer Datenbanken.  Die folgende Liste enthält einige der Tabellenfunktionen, die in SQL Data Warehouse nicht unterstützt werden.
@@ -259,7 +265,7 @@ FROM size
 
 ### <a name="table-space-summary"></a>Tabellenspeicherplatz – Zusammenfassung
 
-Diese Abfrage gibt die Zeilen und den Speicherplatz nach Tabelle zurück.  Sie eignet sich dazu anzuzeigen, welche Tabellen am größten sind und ob es sich um Roundrobintabellen, replizierte Tabellen oder Tabellen mit Hashverteilung handelt.  Für Tabellen mit Hashverteilung wird zudem die Verteilungsspalte angezeigt.  In den meisten Fällen sollte es sich bei der größten Tabelle um eine Tabelle mit Hashverteilung mit einem gruppierten Columnstore-Index handeln.
+Diese Abfrage gibt die Zeilen und den Speicherplatz nach Tabelle zurück.  Sie eignet sich dazu anzuzeigen, welche Tabellen am größten sind und ob es sich um Roundrobintabellen, replizierte Tabellen oder Tabellen mit Hashverteilung handelt.  Für Tabellen mit Hashverteilung wird zudem die Verteilungsspalte angezeigt.  
 
 ```sql
 SELECT 

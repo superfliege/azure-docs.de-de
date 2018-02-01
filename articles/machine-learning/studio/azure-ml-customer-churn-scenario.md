@@ -214,7 +214,7 @@ In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen
  
 
 ## <a name="references"></a>Referenzen
-[1]Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, Juli/August 2011, S. 18-20.  
+[1] Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, Juli/August 2011, S. 18-20.  
 
 [2] Wikipedia-Artikel: [Accuracy and precision](http://en.wikipedia.org/wiki/Accuracy_and_precision) (in englischer Sprache)
 

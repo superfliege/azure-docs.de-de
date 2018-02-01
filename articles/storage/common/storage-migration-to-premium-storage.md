@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.openlocfilehash: cb46c3f2809fa86fea7a8370d4c417f04040b74c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
 
@@ -239,7 +239,7 @@ Wenn Sie virtuelle Festplatten aus anderen Cloud-Speichern als Azure zu Azure mi
 ##### <a name="copy-a-vhd-from-on-premises"></a>Kopieren einer VHD aus einer lokalen Umgebung
 Wenn Sie die VHD aus einer lokalen Umgebung migrieren, benötigen Sie den vollständigen Quellpfad, in dem die VHD gespeichert ist. Der Quellpfad kann ein Serverspeicherort oder eine Dateifreigabe sein.
 
-#### <a name="step-2-create-the-destination-for-your-vhd"></a>Schritt 2. Erstellen des Ziels für die virtuelle Festplatte
+#### <a name="step-2-create-the-destination-for-your-vhd"></a>Schritt 2: Erstellen des Ziels für die virtuelle Festplatte
 Erstellen Sie ein Speicherkonto für die Verwaltung Ihrer virtuellen Festplatten. Berücksichtigen Sie die folgenden Punkte beim Planen des Speicherorts Ihrer virtuellen Festplatten:
 
 * Der Speicherort des Zielspeicherkontos kann sich je nach Anwendungsanforderungen in einem Standard- oder Premium-Speicher befinden.
@@ -759,13 +759,13 @@ Datenbanken und andere komplexe Anwendungen erfordern womöglich spezielle Schri
 Informationen zu bestimmten Szenarios zur Migration virtueller Computer finden Sie in den folgenden Ressourcen:
 
 * [Migrate Azure Virtual Machines between Storage Accounts (in englischer Sprache)](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Erstellen und Hochladen einer Windows Server-VHD nach Azure](../../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](../../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Erstellen und Hochladen einer Windows Server-VHD nach Azure](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Erstellen und Hochladen einer Linux-VHD in Azure](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Migrating Virtual Machines from Amazon AWS to Microsoft Azure (in englischer Sprache)](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Storage und Azure Virtual Machines zu erfahren:
 
-* [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Dokumentation zu virtuellen Computern](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Premium-Speicher: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../../virtual-machines/windows/premium-storage.md)
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: e0b7292f25a145c699dbafaf4e31e3f9d072b957
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: de519084a4f172ad984c78727123835eeb9deaef
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Logik-Apps
 
@@ -33,13 +33,13 @@ In diesem Thema erfahren Sie, wie Sie mit folgenden Aufgaben eine Batchverarbeit
 
 * [Erstellen einer Logik-App, die Elemente an einen Batch sendet.](#batch-sender) Diese Logik-App für den Batchversand gibt an, wohin Elemente gesendet werden sollen. Bei dem Ziel muss es sich um eine vorhandene Logik-App für den Batchempfang handeln. Darüber hinaus können Sie einen eindeutigen Schlüssel (beispielsweise eine Kundennummer) angeben, um den Zielbatch auf der Grundlage dieses Schlüssels zu unterteilen (partitionieren). Dadurch werden alle Elemente mit diesem Schlüssel zusammengefasst und gemeinsam verarbeitet. 
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Für dieses Beispiel benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Sie können sich aber auch [für ein Abonnement mit nutzungsbasierter Bezahlung registrieren](https://azure.microsoft.com/pricing/purchase-options/).
 
-* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/logic-apps-create-a-logic-app.md) 
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
 
 * Ein E-Mail-Konto bei einem [von Azure Logic Apps unterstützten E-Mail-Anbieter](../connectors/apis-list.md)
 
@@ -83,13 +83,13 @@ Logik-Apps für den Versand müssen wissen, wohin die Elemente gesendet werden s
       Wenn Sie also beispielsweise über ein Geschäfts-, Schul- oder Unikonto verfügen, wählen Sie den Office 365 Outlook-Connector aus. 
       Wenn Sie ein Gmail-Konto besitzen, wählen Sie den Gmail-Connector aus.
 
-   3. Wählen Sie für den Connector die folgende Aktion aus: **{*E-Mail-Anbieter*} - E-Mail senden**
+   3. Wählen Sie für den Connector die folgende Aktion aus: **{*E-Mail-Anbieter*} - E-Mail senden**.
 
-      Beispiel:
+      Beispiel: 
 
       ![Auswählen der Aktion „E-Mail senden“ für Ihren E-Mail-Anbieter](./media/logic-apps-batch-process-send-receive-messages/add-send-email-action.png)
 
-5. Falls Sie noch keine Verbindung für Ihren E-Mail-Anbieter erstellt haben, geben Sie Ihre E-Mail-Anmeldeinformationen für die Authentifizierung ein, wenn Sie dazu aufgefordert werden. Weitere Informationen zum Authentifizieren Ihrer E-Mail-Anmeldeinformationen finden Sie [hier](../logic-apps/logic-apps-create-a-logic-app.md).
+5. Falls Sie noch keine Verbindung für Ihren E-Mail-Anbieter erstellt haben, geben Sie Ihre E-Mail-Anmeldeinformationen für die Authentifizierung ein, wenn Sie dazu aufgefordert werden. Weitere Informationen zum Authentifizieren Ihrer E-Mail-Anmeldeinformationen finden Sie [hier](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 6. Legen Sie die Eigenschaften für die soeben hinzugefügte Aktion fest.
 
@@ -117,7 +117,7 @@ Logik-Apps für den Versand müssen wissen, wohin die Elemente gesendet werden s
     ![Speichern Ihrer Logik-App](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
 
     > [!IMPORTANT]
-    > Eine Partition hat einen Grenzwert von 5.000 Nachrichten oder 80 MB. Wenn eine Bedingung erfüllt ist, kann der Batch freigegeben werden, auch wenn die benutzerdefinierte Bedingung nicht erfüllt ist.
+    > Eine Partition hat einen Grenzwert von 5.000 Nachrichten oder 80 MB. Wenn eine Bedingung erfüllt ist, kann der Batch freigegeben werden, auch wenn die benutzerdefinierte Bedingung nicht erfüllt ist.
 
 
 <a name="batch-sender"></a>

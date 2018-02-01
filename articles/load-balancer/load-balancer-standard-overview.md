@@ -1,5 +1,5 @@
 ---
-title: "Übersicht: Azure Load Balancer Standard | Microsoft Docs"
+title: "Übersicht: Azure Load Balancer Standard | Microsoft-Dokumentation"
 description: "Übersicht: Features von Azure Load Balancer Standard"
 services: load-balancer
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: kumud
-ms.openlocfilehash: c6b89cb473f6b7a14bd9de88dfb72a2a42d915f5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ddcbe895bdaa6eaa49e8ed129fe92b415f2600ef
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Übersicht: Azure Load Balancer Standard (Preview)
 
@@ -68,12 +68,12 @@ Eine Anforderung für Verfügbarkeitsgruppen besteht nicht mehr. Sie können abe
 
 Load Balancer Standard bietet neue mehrdimensionale Diagnosefunktionen für öffentliche und interne Load Balancer-Konfigurationen. Diese neuen Metriken werden über Azure Monitor (Preview) bereitgestellt und nutzen alle zugehörigen Funktionen einschließlich der Möglichkeit für die Integration in verschiedene Downstreamconsumer.
 
-| Metrik | Beschreibung |
+| Metrik | BESCHREIBUNG |
 | --- | --- |
 | VIP-Verfügbarkeit | Load Balancer Standard wendet kontinuierlich den Datenpfad aus einer Region auf das Load Balancer-Front-End bis hin zum SDN-Stapel an, der Ihren virtuellen Computer unterstützt. Solange integre Instanzen verbleiben, folgt die Messung demselben Pfad wie der Datenverkehr mit Lastenausgleich Ihrer Anwendungen. Der Datenpfad, der von Ihren Kunden verwendet wird, wird ebenfalls überprüft. Die Messung ist für Ihre Anwendung nicht sichtbar und bewirkt keine Beeinträchtigung bei anderen Vorgängen.|
 | DIP-Verfügbarkeit | Load Balancer Standard verwendet einen verteilten Integritätsprüfungsdienst, der die Integrität Ihres Anwendungsendpunkts gemäß Ihren Konfigurationseinstellungen überwacht. Diese Metrik stellt eine Aggregat- oder nach Endpunkt gefilterte Ansicht jedes einzelnen Instanzendpunkts im Load Balancer-Pool bereit.  Sie können sehen, wie Load Balancer die Integrität Ihrer Anwendung gemäß Ihrer Integritätsprüfungskonfiguration beurteilt.
-| SYN-Pakete | Load Balancer Standard beendet keine TCP-Verbindungen und interagiert nicht mit TCP- oder UDP-Paketdatenflüssen. Datenflüsse und deren Handshakes erfolgen immer zwischen der Quelle und der VM-Instanz. Damit die Problembehandlung Ihrer TCP-Protokollszenarien auf einfachere Weise ausgeführt werden kann, können Sie SYN-Pakete verwenden, um zu verstehen, wie viele TCP-Verbindungsversuche vorgenommen werden. Die Metrik gibt die Anzahl der TCP-SYN-Pakete an, die empfangen wurden. Die Metrik kann ggf. auch Clients angeben, die versuchen, eine Verbindung mit Ihrem Dienst herzustellen.|
-| SNAT-Verbindungen | Load Balancer Standard meldet die Anzahl der maskierten ausgehenden Verbindungen an das Front-End mit der öffentlichen IP-Adresse. SNAT Ports stellen eine erschöpfbare Ressource dar. Diese Metrik kann einen Hinweis darauf geben, in welchem Umfang Ihre Anwendung SNAT für ausgehende Verbindungen verwendet.|
+| SYN-Pakete | Load Balancer Standard beendet keine TCP-Verbindungen und interagiert nicht mit TCP- oder UDP-Paketdatenflüssen. Datenflüsse und deren Handshakes erfolgen immer zwischen der Quelle und der VM-Instanz. Für eine bessere Problembehandlung Ihrer TCP-Protokollszenarien können Sie SYN-Paketzähler verwenden, um zu verstehen, wie viele TCP-Verbindungsversuche vorgenommen werden. Die Metrik gibt die Anzahl der TCP-SYN-Pakete an, die empfangen wurden.|
+| SNAT-Verbindungen | Load Balancer Standard meldet die Anzahl von maskierten ausgehenden Flows an das Front-End mit der öffentlichen IP-Adresse. SNAT Ports stellen eine erschöpfbare Ressource dar. Diese Metrik kann einen Hinweis darauf geben, in welchem Umfang Ihre Anwendung SNAT für ausgehende Flows nutzt.  Die Zählerstände für erfolgreiche und fehlgeschlagene ausgehende SNAT-Flows werden gemeldet und können zur Problembehebung und Analyse Ihrer ausgehenden Flows verwendet werden.|
 | Byteleistungsindikatoren | Load Balancer Standard meldet die pro Front-End verarbeiteten Daten.|
 | Paketleistungsindikatoren | Load Balancer Standard meldet die pro Front-End verarbeiteten Pakete.|
 
@@ -217,7 +217,7 @@ Wenn ausgehende Verbindungen mit einem zonenredundanten Front-End verwendet werd
 
 Der neue Algorithmus in Load Balancer Standard nimmt Vorabzuordnungen von SNAT-Ports für die NIC jedes virtuellen Computers vor. Wenn dem Pool eine NIC hinzugefügt wird, sind die SNAT-Ports vorab basierend auf der Größe des Pools zugeordnet. Die folgende Tabelle zeigt die Port-Vorabzuordnungen für sechs Ebenen der Back-End-Poolgrößen:
 
-| Poolgröße (VM-Instanzen) | SNAT-Ports mit Vorabzuordnungen |
+| Poolgröße (VM-Instanzen) | Reservierte Anzahl von SNAT-Ports |
 | --- | --- |
 | 1 - 50 | 1024 |
 | 51 - 100 | 512 |
@@ -345,7 +345,7 @@ Die folgende Tabelle vergleicht die Einschränkungen und Funktionen der Load Bal
 | Begrenzung des Back-End-Pools | Verfügbarkeitsgruppe | Virtuelles Netzwerk, Region |
 | Entwurf des Back-End-Pools | Virtuelle Computer in Verfügbarkeitsgruppe, VM-Skalierungsgruppe in Verfügbarkeitsgruppe | Eine beliebige VM-Instanz im virtuellen Netzwerk |
 | HA-Ports | Nicht unterstützt | Verfügbar |
-| Diagnose | Eingeschränkt, nur öffentlich | Verfügbar |
+| Diagnostics | Eingeschränkt, nur öffentlich | Verfügbar |
 | VIP-Verfügbarkeit  | Nicht unterstützt | Verfügbar |
 | Schnelle IP-Mobilität | Nicht unterstützt | Verfügbar |
 |Szenarien für Verfügbarkeitszonen | Nur zonal | Zonal, zonenredundant, zonenübergreifender Lastenausgleich |

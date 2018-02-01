@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect: Aktualisieren des SSL-Zertifikats für eine Active Directory-Verbunddienste-Farm (AD FS) | Microsoft-Dokumentation"
+title: "Azure AD Connect: Aktualisieren des SSL-Zertifikats für eine AD FS-Farm | Microsoft-Dokumentation"
 description: "Dieses Dokument erläutert die Schritte zum Aktualisieren des SSL-Zertifikats einer AD FS-Farm mithilfe von Azure AD Connect."
 services: active-directory
 keywords: "Azure AD Connect, Aktualisieren von AD FS-SSL, Aktualisieren des AD FS-Zertifikats, Ändern des AD FS-Zertifikats, neues AD FS-Zertifikat, AD FS-Zertifikat, Aktualisieren des AD FS-SSL-Zertifikats, Aktualisieren des SSL-Zertifikats von AD FS, Konfigurieren des AD FS-SSL-Zertifikats, AD FS, SSL, Zertifikat, AD FS-Dienstkommunikationszertifikat, Aktualisieren des Verbunds, Konfigurieren des Verbunds, AAD Connect"
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: anandy
-ms.openlocfilehash: 2bd3d537761ec78ebcaab722e7928a88e90498d8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: b31a4d178d287eba275a0072936b4222a2c84346
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualisieren des SSL-Zertifikats für eine Active Directory-Verbunddienste-Farm (AD FS)
 

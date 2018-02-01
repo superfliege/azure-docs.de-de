@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e033b1005902a9639fc352ffb9af91cb20875bee
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 8da7d9112c9527945ab4b524625603faa84cf00d
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services
 
@@ -24,7 +24,7 @@ In diesem Tutorial wird gezeigt, wie Sie ein Konto für Azure Location Based Ser
 
 > [!div class="checklist"]
 > * Erstellen eines Kontos für Azure Location Based Services
-> * Abrufen des Abonnementschlüssels für Ihr Konto
+> * Ermitteln des Primärschlüssels für Ihr Azure Location Based Services-Konto
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
 > * Suchen eines Point of Interest in der Nähe mithilfe des Suchdiensts
 
@@ -50,12 +50,12 @@ Führen Sie die folgenden Schritte aus, um ein neues Location Based Services-Kon
     - Lesen Sie die *Nutzungsbedingungen für die Vorschau*, und aktivieren Sie das Kontrollkästchen, um die Bedingungen zu akzeptieren. 
     - Klicken Sie schließlich auf die Schaltfläche **Erstellen**.
    
-    ![Erstellen eines Location Based Services-Konto im Portal](./media/tutorial-search-location/create-lbs-account.png)
+    ![Erstellen eines Location Based Services-Kontos im Portal](./media/tutorial-search-location/create-lbs-account.png)
 
 
 <a id="getkey"></a>
 
-## <a name="get-the-subscription-key-for-your-account"></a>Abrufen des Abonnementschlüssels für Ihr Konto
+## <a name="get-the-primary-key-for-your-account"></a>Abrufen des Primärschlüssels für Ihr Konto
 
 Führen Sie nach der Erstellung des Location Based Services-Kontos die folgenden Schritte aus, um es mit den APIs für die Kartensuche zu verknüpfen:
 
@@ -113,16 +113,16 @@ Bei der Kartensteuerelement-API von Azure handelt es sich um eine praktische Cli
     ``` 
     Beachten Sie, dass der HTML-Header die CSS- und JavaScript-Ressourcendateien enthält, die von der Azure-Kartensteuerelement-Bibliothek gehostet werden. Beachten Sie außerdem das Segment *script*, das zum Abschnitt *body* der HTML-Datei hinzugefügt wurde. Dieses Segment enthält den JavaScript-Inlinecode für den Zugriff auf die Azure Location Based Services-APIs.
  
-3.  Fügen Sie den folgenden JavaScript-Code zum Block *script* der HTML-Datei hinzu. Ersetzen Sie den Platzhalter *<insert-key>* durch den Primärschlüssel des Location Based Services-Kontos. 
+3.  Fügen Sie dem *script*-Block der HTML-Datei den folgenden JavaScript-Code hinzu. Verwenden Sie den Primärschlüssel Ihres Location Based Services-Kontos im Skript. 
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
-    Dieses Segment initiiert die Kartensteuerelement-API für Ihren Abonnementschlüssel. **Atlas** ist der Namespace, der die Azure-Kartensteuerelement-API und die zugehörigen visuellen Komponenten enthält. **atlas.Map** stellt das Steuerelement für ein visuelles Element und eine interaktive Webkarte bereit. Sie können sich ansehen, wie die Karte aussieht, indem Sie die HTML-Seite im Browser öffnen. 
+    In diesem Segment wird die Kartensteuerelement-API für den Schlüssel Ihres Azure Location Based Services-Kontos initiiert. **Atlas** ist der Namespace, der die Azure-Kartensteuerelement-API und die zugehörigen visuellen Komponenten enthält. **atlas.Map** stellt das Steuerelement für ein visuelles Element und eine interaktive Webkarte bereit. Sie können sich ansehen, wie die Karte aussieht, indem Sie die HTML-Seite im Browser öffnen. 
 
 4. Fügen Sie den folgenden JavaScript-Code zum Block *script* hinzu, um eine Ebene mit Suchpins zum Kartensteuerelement hinzuzufügen:
 
@@ -193,7 +193,7 @@ In diesem Abschnitt wird veranschaulicht, wie mit der Suchdienst-API von Azure L
     var url = "https://atlas.microsoft.com/search/fuzzy/json?";
     url += "&api-version=1.0";
     url += "&query=gasoline%20station";
-    url += "&subscription-key=" + subscriptionKey;
+    url += "&subscription-key=" + LBSAccountKey;
     url += "&lat=47.6292";
     url += "&lon=-122.2337";
     url += "&radius=100000";
@@ -201,7 +201,7 @@ In diesem Abschnitt wird veranschaulicht, wie mit der Suchdienst-API von Azure L
     xhttp.open("GET", url, true);
     xhttp.send();
     ``` 
-    Dieser Codeausschnitt verwendet die Standardsuche-API (**Fuzzysuche**) des Suchdiensts. Diese Suche ist für ungenaue Angaben vorgesehen und verarbeitet beliebige Kombinationen aus Adress- oder *POI*-Token. Sie sucht für die angegebene Adresse am Breiten- und Längengrad und innerhalb des angegebenen Radius nach einer nahe gelegenen **Tankstelle**. Der Aufruf an Location Based Services erfolgt unter Verwendung des Abonnementschlüssels für Ihr Konto, der zuvor in der Beispieldatei bereitgestellt wurde. Die Ergebnisse werden für die gefundenen Orte als Breiten-/Längengradpaare zurückgegeben. Sie können sich die Suchpins ansehen, indem Sie die HTML-Seite im Browser öffnen. 
+    Dieser Codeausschnitt verwendet die Standardsuche-API (**Fuzzysuche**) des Suchdiensts. Diese Suche ist für ungenaue Angaben vorgesehen und verarbeitet beliebige Kombinationen aus Adress- oder *POI*-Token. Sie sucht für die angegebene Adresse am Breiten- und Längengrad und innerhalb des angegebenen Radius nach einer nahe gelegenen **Tankstelle**. Der Aufruf von Location Based Services erfolgt unter Verwendung des Primärschlüssels für Ihr Konto, der zuvor in der Beispieldatei bereitgestellt wurde. Die Ergebnisse werden für die gefundenen Orte als Breiten-/Längengradpaare zurückgegeben. Sie können sich die Suchpins ansehen, indem Sie die HTML-Seite im Browser öffnen. 
 
 3. Fügen Sie die folgenden Zeilen zum Block *script* hinzu, um Popups für die vom Suchdienst zurückgegebenen gewünschten Orte zu erstellen:
 
@@ -244,7 +244,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines Kontos für Azure Location Based Services
-> * Abrufen des Abonnementschlüssels für Ihr Konto
+> * Abrufen des Primärschlüssels für Ihr Konto
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
 > * Suchen eines Point of Interest in der Nähe mithilfe des Suchdiensts
 

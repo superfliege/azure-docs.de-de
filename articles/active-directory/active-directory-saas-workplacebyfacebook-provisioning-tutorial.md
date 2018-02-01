@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/17/2018
 ms.author: jeedes
-ms.openlocfilehash: fc0d7223cdc15cd7f17a4983d2c2ac46c5d1669b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f1ca40b5ca490644a3af2c9d727026c1a18a2eb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-configuring-workplace-by-facebook-for-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die Benutzerbereitstellung
 
@@ -75,7 +75,7 @@ Azure AD unterstützt die Möglichkeit, die Kontodetails zugewiesener Benutzer m
 
     ![Bereitstellung](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das geheime Token und die Mandanten-URL Ihres Workplace by Facebook-Administrators ein.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** das geheime Token Ihres Workplace by Facebook-Administrators ein, und legen Sie die Mandanten-URL auf `https://www.facebook.com/scim/v1/` fest.
 
 6. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Workplace by Facebook-App herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, sollten Sie sicherstellen, dass Ihr Workplace by Facebook-Konto über Teamadministratorberechtigungen verfügt.
 
@@ -100,4 +100,3 @@ Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, um zu üb
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Konfigurieren des einmaligen Anmeldens](active-directory-saas-workplacebyfacebook-tutorial.md)
-

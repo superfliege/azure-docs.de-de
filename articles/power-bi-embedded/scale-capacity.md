@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 09/28/2017
+ms.date: 01/19/2018
 ms.author: asaxton
-ms.openlocfilehash: e1ab6a2f52fa56f1e04c6c327796587daf43596e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7eb64cce37f2655b72ab9b5fadedf7581fe007fb
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="scale-your-power-bi-embedded-capacity"></a>Skalieren der Power BI Embedded-Kapazität
 
@@ -26,7 +26,8 @@ In diesem Artikel wird erläutert, wie Sie eine Power BI Embedded-Kapazität in 
 
 Dies setzt voraus, dass Sie eine Power BI Embedded-Kapazität eingerichtet haben. Falls nicht, finden Sie unter [Einrichten von Power BI Embedded-Kapazität im Azure-Portal](create-capacity.md) Informationen zum Einstieg.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+> [!NOTE]
+> Ein Skalierungsvorgang kann etwa eine Minute dauern. In diesem Zeitraum ist die Kapazität nicht verfügbar. Eingebetteter Inhalt kann unter Umständen nicht geladen werden.
 
 ## <a name="scale-a-capacity"></a>Skalieren von Kapazität
 

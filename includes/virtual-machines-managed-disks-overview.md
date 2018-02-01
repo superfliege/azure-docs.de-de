@@ -53,14 +53,14 @@ Hier sind die Datenträgergrößen aufgeführt, die für einen verwalteten Premi
 
 | **Datenträgertyp<br>Premium – verwaltet** | **P4** | **P6** |**P10** | **P15** | **P20** | **P30** | **P40** | **P50** | 
 |------------------|---------|---------|---------|---------|---------|----------------|----------------|----------------|  
-| Datenträgergröße        | 32 GB   | 64 GB   | 128 GB  | 256 GB  | 512 GB  | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| Datenträgergröße        | 32 GiB   | 64 GiB   | 128 GB  | 256 GiB  | 512 GB  | 1.024 GiB (1 TiB) | 2.048 GiB (2 TiB) | 4.096 GiB (4 TiB) | 
 
 
 Hier sind die Datenträgergrößen aufgeführt, die für einen verwalteten Standard-Datenträger verfügbar sind:
 
 | **Datenträgertyp<br>Standard – verwaltet** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
 |------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Datenträgergröße        | 32 GB   | 64 GB   | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| Datenträgergröße        | 32 GiB   | 64 GiB   | 128 GB | 512 GB | 1.024 GiB (1 TiB) | 2.048 GiB (2 TiB) | 4.096 GiB (4 TiB) | 
 
 
 **Anzahl von Transaktionen**: Ihnen wird die Anzahl von Transaktionen berechnet, die Sie für einen verwalteten Standard-Datenträger durchführen. Für einen verwalteten Premium-Datenträger fallen keine Kosten für Transaktionen an.
@@ -72,7 +72,7 @@ Ausführliche Informationen zu Preisen für Managed Disks finden Sie unter [Mana
 
 ## <a name="managed-disk-snapshots"></a>Momentaufnahmen von verwalteten Datenträgern
 
-Bei einer Momentaufnahme für einen verwalteten Datenträger handelt es sich um eine schreibgeschützte vollständige Kopie eines verwalteten Datenträgers, die standardmäßig als verwalteter Standarddatenträger gespeichert wird. Mit Momentaufnahmen können Sie Ihre verwalteten Datenträger jederzeit sichern. Diese Momentaufnahmen existieren unabhängig vom Quelldatenträger und können zum Erstellen von neuen verwalteten Datenträgern verwendet werden. Sie werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64 GB und einer tatsächlichen Datengröße von 10 GB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10 GB in Rechnung gestellt.  
+Bei einer Momentaufnahme für einen verwalteten Datenträger handelt es sich um eine schreibgeschützte vollständige Kopie eines verwalteten Datenträgers, die standardmäßig als verwalteter Standarddatenträger gespeichert wird. Mit Momentaufnahmen können Sie Ihre verwalteten Datenträger jederzeit sichern. Diese Momentaufnahmen existieren unabhängig vom Quelldatenträger und können zum Erstellen von neuen verwalteten Datenträgern verwendet werden. Sie werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64 GiB und einer tatsächlichen Datengröße von 10 GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10 GiB in Rechnung gestellt.  
 
 Für Managed Disks werden derzeit keine [inkrementellen Momentaufnahmen](../articles/virtual-machines/windows/incremental-snapshots.md) unterstützt, aber dies ist bereits geplant.
 

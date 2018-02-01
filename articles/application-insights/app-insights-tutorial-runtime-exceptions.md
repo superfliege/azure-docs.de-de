@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: f6844dd6747854a60ff8eb8be0d913b73ca2bdb2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 115611c5d4eeffb0f0600dd0a792ee9f80247e36
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
@@ -42,34 +42,39 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Das Tutorial verfolgt die Identifikation einer Ausnahme in Ihrer Anwendung, ändern Sie also den Code in Ihrer Entwicklungs- oder Testumgebung, um eine Ausnahme zu generieren. 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
 
 
 ## <a name="analyze-failures"></a>Analysieren von Fehlern
 Application Insights erfasst alle Fehler in Ihrer Anwendung und ermöglicht Ihnen das Anzeigen deren Häufigkeit in verschiedenen Vorgänge, damit Sie sich auf die Fehler mit den höchsten Auswirkungen konzentrieren können.  Sie können dann die Ursache dieser Fehler identifizieren, indem Sie einen Drilldown zu deren Details ausführen.   
 
 1. Wählen Sie **Application Insights** und anschließend Ihr Abonnement aus.  
-1. Zum Öffnen des Bereichs **Fehler** wählen Sie entweder im Menü **Untersuchen** die Option **Fehler**, oder klicken Sie auf das Diagramm **Anforderungsfehler**.
+2. Zum Öffnen des Bereichs **Fehler** wählen Sie entweder im Menü **Untersuchen** die Option **Fehler**, oder klicken Sie auf das Diagramm **Anforderungsfehler**.
 
     ![Anforderungsfehler](media/app-insights-tutorial-runtime-exceptions/failed-requests.png)
 
-2. Im Bereich **Anforderungsfehler** werden für jeden Vorgang für die Anwendung die Anzahl der fehlgeschlagenen Anforderungen und die Anzahl der betroffenen Benutzer angezeigt.  Durch das Sortieren dieser Informationen nach Benutzer können Sie die Fehler identifizieren, die sich auf die meisten Benutzer auswirken.  In diesem Beispiel sollten **GET Employees/Create** und **GET Customers/Details** aufgrund der hohen Anzahl von Fehlern und betroffenen Benutzern untersucht werden.  Durch Auswählen eines Vorgangs werden im rechten Bereich weitere Informationen zu diesem Vorgang angezeigt.
+3. Im Bereich **Anforderungsfehler** werden für jeden Vorgang für die Anwendung die Anzahl der fehlgeschlagenen Anforderungen und die Anzahl der betroffenen Benutzer angezeigt.  Durch das Sortieren dieser Informationen nach Benutzer können Sie die Fehler identifizieren, die sich auf die meisten Benutzer auswirken.  In diesem Beispiel sollten **GET Employees/Create** und **GET Customers/Details** aufgrund der hohen Anzahl von Fehlern und betroffenen Benutzern untersucht werden.  Durch Auswählen eines Vorgangs werden im rechten Bereich weitere Informationen zu diesem Vorgang angezeigt.
 
     ![Bereich „Anforderungsfehler“](media/app-insights-tutorial-runtime-exceptions/failed-requests-blade.png)
 
-3. Reduzieren Sie das Zeitfenster, um den Zeitraum zu vergrößern, in dem die Fehlerrate eine Spitze aufweist.
+4. Reduzieren Sie das Zeitfenster, um den Zeitraum zu vergrößern, in dem die Fehlerrate eine Spitze aufweist.
 
     ![Fenster „Anforderungsfehler“](media/app-insights-tutorial-runtime-exceptions/failed-requests-window.png)
 
-4. Klicken Sie auf **Details anzeigen** um die Details für den Vorgang anzuzeigen.  Dazu gehört ein Gantt-Diagramm, das zwei fehlgeschlagene Abhängigkeiten zeigt, deren Abschluss zusammen fast eine halbe Sekunde gedauert hat.  Durch das Analysieren von Leistungsproblemen können Sie mehr erfahren. Führen Sie dazu das Tutorial [Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights](app-insights-tutorial-performance.md) aus.
+5. Klicken Sie auf **Details anzeigen** um die Details für den Vorgang anzuzeigen.  Dazu gehört ein Gantt-Diagramm, das zwei fehlgeschlagene Abhängigkeiten zeigt, deren Abschluss zusammen fast eine halbe Sekunde gedauert hat.  Durch das Analysieren von Leistungsproblemen können Sie mehr erfahren. Führen Sie dazu das Tutorial [Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights](app-insights-tutorial-performance.md) aus.
 
     ![Details zu Anforderungsfehlern](media/app-insights-tutorial-runtime-exceptions/failed-requests-details.png)
 
-5. In den Vorgangsdetails wird auch eine Ausnahme vom Typ „FormatException“ angezeigt, die den Fehler anscheinend verursacht hat.  Klicken Sie auf die Ausnahme oder die Anzahl der **Top-3-Ausnahmetypen**, um die Details dazu anzuzeigen.  Sie können sehen, dass die Ursache eine ungültige Postleitzahl ist.
+6. In den Vorgangsdetails wird auch eine Ausnahme vom Typ „FormatException“ angezeigt, die den Fehler anscheinend verursacht hat.  Klicken Sie auf die Ausnahme oder die Anzahl der **Top-3-Ausnahmetypen**, um die Details dazu anzuzeigen.  Sie können sehen, dass die Ursache eine ungültige Postleitzahl ist.
 
     ![Ausnahmedetails](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
 
+> [!NOTE]
+Aktivieren Sie die [Vorschauoberfläche](app-insights-previews.md) „Unified details: E2E Transaction Diagnostics“ (Einheitliche Details: E2E-Transaktionsdiagnose), um die gesamten serverseitigen Telemetriedaten in einer Bildschirmansicht anzuzeigen, z.B. Anforderungen, Abhängigkeiten, Ausnahmen, Ablaufverfolgungen, Ereignisse usw. 
 
+Bei aktivierter Vorschau können Sie verfolgen, wie viel Zeit für Abhängigkeitsaufrufe aufgewendet wurde und welche Fehler oder Ausnahmen aufgetreten sind – alles in einer Oberfläche. Für komponentenübergreifende Transaktionen ermöglicht das Gantt-Diagramm zusammen mit dem Detailbereich eine schnelle Diagnose der Grundursache in Bezug auf die Komponente, Abhängigkeit oder Ausnahme. Sie können den untersten Abschnitt erweitern, um den zeitlichen Ablauf für alle Ablaufverfolgungen oder Ereignisse anzuzeigen, die für den gewählten Komponentenvorgang gesammelt wurden. [Weitere Informationen zur neuen Oberfläche](app-insights-transaction-diagnostics.md)  
+
+![Transaktionsdiagnose](media/app-insights-tutorial-runtime-exceptions/e2e-transaction-preview.png)
 
 ## <a name="identify-failing-code"></a>Fehlerhaften Code identifizieren
 Der Momentaufnahmedebugger erfasst Momentaufnahmen der häufigsten Ausnahmen in Ihrer Anwendung, um Sie beim Diagnostizieren der Ursache in der Produktion zu unterstützen.  Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Sie können den Quellcode debuggen, indem Sie die Momentaufnahme herunterladen und in Visual Studio 2017 öffnen.

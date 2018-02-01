@@ -1,7 +1,7 @@
 ---
-title: "Verwenden von MongoChef für Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure Cosmos DB mit MongoChef verwenden: API für MongoDB-Konto."
-keywords: MongoChef
+title: Verwenden von Studio 3T (MongoChef) mit Azure Cosmos DB | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Studio 3T mit einem Azure Cosmos DB-MongoDB-API-Konto verwenden
+keywords: Mongochef, Studio 3T
 services: cosmos-db
 author: AndrewHoh
 manager: jhubbard
@@ -13,58 +13,58 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 01/18/2018
 ms.author: anhoh
-ms.openlocfilehash: 54c9799bd646b827f602e2ea2f9a15a4fc853f00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0341fbf668bbbc8f02e78bc1f6c7a00ecc939cc2
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="use-mongochef-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Verwenden von Azure Cosmos DB mit MongoChef: API für MongoDB-Konto
+# <a name="azure-cosmos-db-use-studio-3t-with-a-mongodb-api-account"></a>Erfahren Sie, wie Sie Studio 3T mit einem Azure Cosmos DB-MongoDB-API-Konto verwenden
 
-Zur Verbindung mit Azure Cosmos DB: API für MongoDB-Konto, müssen Sie Folgendes durchführen:
+Um eine Verbindung mit einem Azure Cosmos DB-MongoDB-API-Konto herzustellen, ist Folgendes erforderlich:
 
-* Herunterladen und Installieren von [MongoChef](http://3t.io/mongochef)
-* Über Informationen zur [Verbindungszeichenfolge](connect-mongodb-account.md) für Azure Cosmos DB: API für MongoDB verfügen
+* Sie müssen [Studio 3T](https://studio3t.com/) (ehemals MongoChef) herunterladen und installieren
+* Sie müssen über die Azure Cosmos DB-[Verbindungszeichenfolgen](connect-mongodb-account.md)-Informationen für Ihr MongoDB-Konto verfügen
 
-## <a name="create-the-connection-in-mongochef"></a>Erstellen der Verbindung in MongoChef
-Führen Sie die folgenden Schritte aus, um dem Verbindungs-Manager von MongoChef Ihr Azure Cosmos DB: API für MongoDB-Konto hinzuzufügen.
+## <a name="create-the-connection-in-studio-3t"></a>Sie müssen die Verbindung in Studio 3T herstellen
+Führen Sie die folgenden Schritte aus, um dem Studio 3T-Verbindungs-Manager Ihr Azure Cosmos DB-Konto hinzuzufügen:
 
-1. Rufen Sie anhand der [hier](connect-mongodb-account.md) bereitgestellten Anweisungen die Verbindungsinformationen für Ihr Azure Cosmos DB: API für MongoDB ab.
+1. Rufen Sie die Azure Cosmos DB-Verbindungsinformationen für Ihr MongoDB API-Konto ab, indem Sie den Anweisungen im Artikel [Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB](connect-mongodb-account.md) folgen.
 
-    ![Screenshot des Blatts „Verbindungszeichenfolge“](./media/mongodb-mongochef/ConnectionStringBlade.png)
+    ![Screenshot der Seite „Verbindungszeichenfolge“](./media/mongodb-mongochef/ConnectionStringBlade.png)
 2. Klicken Sie auf **Connect** (Verbinden), um den Verbindungs-Manager zu öffnen, und klicken Sie anschließend auf **New Connection** (Neue Verbindung).
 
-    ![Screenshot des Verbindungs-Managers von MongoChef](./media/mongodb-mongochef/ConnectionManager.png)
-3. Geben Sie im Fenster **Neue Verbindung** auf der Registerkarte **Server** den Host (FQDN) des Azure Cosmos DB: API für MongoDB sowie den Port ein.
+    ![Screenshot des Verbindungs-Managers von Studio 3T](./media/mongodb-mongochef/ConnectionManager.png)
+3. Geben Sie im Fenster **Neue Verbindung** auf der Registerkarte **Server** den HOST (FQDN) des Azure Cosmos DB-Kontos sowie den Port ein.
 
-    ![Screenshot der Registerkarte „Server“ des Verbindungs-Managers von MongoChef](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
+    ![Screenshot der Serverregisterkarte im Verbindungs-Manager von Studio 3T](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
 4. Wählen Sie im Fenster **New Connection** (Neue Verbindung) auf der Registerkarte **Authentication** (Authentifizierung) den Authentifizierungsmodus **Standard (MONGODB-CR or SCARM-SHA-1)** (Standard [MONGODB-CR oder SCARM-SHA-1]) aus, und geben Sie Benutzername und Kennwort ein.  Übernehmen Sie den Standardwert für Authentifizierungs-DB („admin“), oder geben Sie einen eigenen Wert ein.
 
-    ![Screenshot der Registerkarte „Authentication“ des Verbindungs-Managers von MongoChef](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
+    ![Screenshot der Authentifizierungsregisterkarte im Studio 3T-Verbindungs-Manager](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
 5. Aktivieren Sie im Fenster **New Connection** (Neue Verbindung) auf der Registerkarte **SSL** das Kontrollkästchen **Use SSL protocol to connect** (Verbindung über SSL-Protokoll herstellen) und das Optionsfeld **Accept server self-signed SSL certificates** (Selbstsignierte SSL-Serverzertifikate akzeptieren).
 
-    ![Screenshot der Registerkarte „SSL“ des Verbindungs-Managers von MongoChef](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
+    ![Screenshot der SSL-Registerkarte im Verbindungs-Manager von Studio 3T](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
 6. Klicken Sie auf die Schaltfläche **Test Connection** (Verbindung testen), um die Verbindungsinformationen zu überprüfen. Klicken Sie auf **OK**, um zum Fenster für neue Verbindungen zurückzukehren, und klicken Sie anschließend auf **Save** (Speichern).
 
-    ![Screenshot des MongoChef-Fensters „Test Connection“](./media/mongodb-mongochef/TestConnectionResults.png)
+    ![Screenshot des Fensters „Verbindung testen“ von Studio 3T](./media/mongodb-mongochef/TestConnectionResults.png)
 
-## <a name="use-mongochef-to-create-a-database-collection-and-documents"></a>Verwenden von MongoChef zum Erstellen von Datenbanken, Sammlungen und Dokumenten
-Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente mithilfe von MongoChef zu erstellen.
+## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Verwenden von Studio 3T zum Erstellen von Datenbanken, Sammlungen und Dokumenten
+Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente mithilfe von Studio 3T zu erstellen:
 
 1. Markieren Sie die Verbindung im **Verbindungs-Manager**, und klicken Sie auf **Connect** (Verbinden).
 
-    ![Screenshot des Verbindungs-Managers von MongoChef](./media/mongodb-mongochef/ConnectToAccount.png)
+    ![Screenshot des Verbindungs-Managers von Studio 3T](./media/mongodb-mongochef/ConnectToAccount.png)
 2. Klicken Sie mit der rechten Maustaste auf den Host, und wählen Sie **Add Database**(Datenbank hinzufügen) aus.  Geben Sie einen Datenbanknamen an, und klicken Sie auf **OK**.
 
-    ![Screenshot der MongoChef-Option „Add Database“](./media/mongodb-mongochef/AddDatabase1.png)
+    ![Screenshot der Studio 3T-Option „Add Database“](./media/mongodb-mongochef/AddDatabase1.png)
 3. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Add Collection**(Sammlung hinzufügen) aus.  Geben Sie einen Sammlungsnamen an, und klicken Sie auf **Create**(Erstellen).
 
-    ![Screenshot der MongoChef-Option „Add Collection“](./media/mongodb-mongochef/AddCollection.png)
+    ![Screenshot der Studio 3T-Option „Add Collection“ (Sammlung hinzufügen)](./media/mongodb-mongochef/AddCollection.png)
 4. Klicken Sie auf das Menüelement **Collection** (Sammlung) und anschließend auf **Add Document** (Dokument hinzufügen).
 
-    ![Screenshot des MongoChef-Menüelements „Add Document“](./media/mongodb-mongochef/AddDocument1.png)
+    ![Screenshot des Studio 3T-Menüelements „Add Document“ (Dokument hinzufügen)](./media/mongodb-mongochef/AddDocument1.png)
 5. Fügen Sie im Dialogfeld zum Hinzufügen von Dokumenten Folgendes ein, und klicken Sie dann auf **Add Document**(Dokument hinzufügen).
 
         {
@@ -83,7 +83,7 @@ Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
         }
-6. Fügen Sie ein weiteres Dokument mit dem folgenden Inhalt hinzu.
+6. Fügen Sie ein weiteres Dokument mit dem folgenden Inhalt hinzu:
 
         {
         "_id": "WakefieldFamily",
@@ -115,4 +115,4 @@ Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente
     ![Screenshot der MongoChef-Abfrageergebnisse](./media/mongodb-mongochef/QueryDocument1.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Untersuchen von Azure Cosmos DB: [Beispiele](mongodb-samples.md) für die API für MongoDB
+* [Beispiele](mongodb-samples.md) zum Untersuchen der Azure Cosmos DB-MongoDB-API.

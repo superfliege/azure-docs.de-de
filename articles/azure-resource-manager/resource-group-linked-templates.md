@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2018
+ms.date: 01/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7f88cd2a9e23ec1b142fc754ada49a8562e774bc
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 38d4281dfadaefdf331e493745363e8b4152209d
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -82,7 +82,10 @@ Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-E
 ]
 ```
 
-Für geschachtelte Vorlagen können Sie keine Parameter oder Variablen verwenden, die in der geschachtelten Vorlage definiert sind. Sie können Parameter und Variablen über die Hauptvorlage verwenden. Im vorherigen Beispiel wird mit `[variables('storageName')]` kein Wert aus der geschachtelten Vorlage abgerufen, sondern aus der Hauptvorlage. Diese Einschränkung gilt nicht für externe Vorlagen.
+> [!NOTE]
+> Für geschachtelte Vorlagen können Sie keine Parameter oder Variablen verwenden, die in der geschachtelten Vorlage definiert sind. Sie können Parameter und Variablen über die Hauptvorlage verwenden. Im vorherigen Beispiel wird mit `[variables('storageName')]` kein Wert aus der geschachtelten Vorlage abgerufen, sondern aus der Hauptvorlage. Diese Einschränkung gilt nicht für externe Vorlagen.
+>
+> Sie können die Funktion `reference` nicht im Ausgabeabschnitt einer verschachtelten Vorlage verwenden. Um die Werte für eine bereitgestellte Ressource in einer verschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre verschachtelte Vorlage in eine verknüpfte Vorlage.
 
 ### <a name="external-template-and-external-parameters"></a>Externe Vorlage und externe Parameter
 

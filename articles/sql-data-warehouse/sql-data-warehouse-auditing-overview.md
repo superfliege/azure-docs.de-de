@@ -13,30 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: security
-ms.date: 08/21/2017
+ms.date: 01/16/2018
 ms.author: rortloff;barbkess
-ms.openlocfilehash: f851c82ebeaa647f663d499a4d327c3479e36121
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5400f29d8c7579809ef7b2a084115473df7baa85
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Überwachung in Azure SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Überwachung](sql-data-warehouse-auditing-overview.md)
-> * [Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md)
-> 
-> 
 
-Mit SQL Data Warehouse-Überwachung können Sie Ereignisse in der Datenbank in einem Überwachungsprotokoll in Ihrem Azure Storage-Konto aufzeichnen. Die Überwachung kann Ihnen dabei helfen, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftliche Probleme oder mutmaßliche Sicherheitsverstöße hinweisen können. SQL Data Warehouse-Überwachung kann auch in Microsoft Power BI integriert werden, um detaillierte Berichterstellung und Analysen zu ermöglichen.
+Mit SQL Data Warehouse-Überwachung können Sie Ereignisse in der Datenbank in einem Überwachungsprotokoll in Ihrem Azure Storage-Konto aufzeichnen. Die Überwachung kann Ihnen dabei helfen, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftliche Probleme oder mutmaßliche Sicherheitsverstöße hinweisen können. SQL Data Warehouse-Überwachung kann auch in Microsoft Power BI integriert werden, um Berichterstellung und Analysen zu ermöglichen.
 
-Überwachungstools ermöglichen und erleichtern die Einhaltung von Normen, garantieren diese jedoch nicht. Weitere Informationen über Azure-Programme, die die Einhaltung von Normen unterstützen, finden Sie im <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure Trust Center</a>.
+Überwachungstools ermöglichen und unterstützen die Einhaltung von Konformitätsstandards, gewährleisten aber keine Konformität. Weitere Informationen zu Azure-Programmen, die die Einhaltung von Standards unterstützen, finden Sie im <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Microsoft Azure-Vertrauenscenter</a>.
 
-* [Grundlagen zur Datenbanküberwachung]
-* [Einrichten der Überwachung für Ihre Datenbank]
-* [Analysieren von Überwachungsprotokollen und -berichten]
-
-## <a id="subheading-1"></a>Grundlagen zur Überwachung von Azure SQL Data Warehouse
+## <a id="subheading-1"></a>Grundlagen zur Überwachung
 Die Überwachung von SQL Data Warehouse bietet folgende Möglichkeiten:
 
 * **Beibehalten** eines Überwachungspfads von ausgewählten Ereignissen. Sie können Kategorien für zu protokollierende Datenbankaktionen konfigurieren.
@@ -59,19 +50,19 @@ Weitere Informationen zu den überwachten Aktivitäten und Ereignissen finden Si
 
 Überwachungsprotokolle werden in Ihrem Azure-Speicherkonto gespeichert. Sie können eine Aufbewahrungsdauer für ein Überwachungsprotokoll definieren.
 
-Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als Standardserverrichtlinie definiert werden. Eine Standardrichtlinie für die Serverüberwachung wird auf alle Datenbanken auf einem Server angewendet, für die keine spezielle Datenbanküberwachungsrichtlinie definiert wurde, die Vorrang hat.
+Sie können eine Überwachungsrichtlinie für eine bestimmte Datenbank oder als Standardserverrichtlinie definieren. Eine Standardrichtlinie für die Serverüberwachung wird auf alle Datenbanken auf einem Server angewendet, für die keine spezielle Datenbanküberwachungsrichtlinie definiert wurde, die Vorrang hat.
 
 Überprüfen Sie vor der Einrichtung der Überwachung, ob Sie einen [kompatiblen Client](sql-data-warehouse-auditing-downlevel-clients.md) verwenden.
 
 ## <a id="subheading-2"></a>Einrichten der Überwachung für Ihre Datenbank
 1. Starten Sie das <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>.
-2. Navigieren Sie zum Blatt mit den **Einstellungen** der SQL Data Warehouse-Instanz, die Sie überwachen möchten. Wählen Sie auf dem Blatt **Einstellungen** die Option **Überwachung und Bedrohungserkennung**.
+2. Navigieren Sie zu **Einstellungen** für die SQL Data Warehouse-Instanz, die Sie überwachen möchten. Wählen Sie **Überwachung und Bedrohungserkennung** aus.
    
     ![][1]
 3. Aktivieren Sie anschließend die Überwachung, indem Sie auf die Schaltfläche **EIN** klicken.
    
     ![][3]
-4. Wählen Sie auf dem Blatt für die Überwachungskonfiguration **SPEICHERDETAILS** aus, um das Blatt „Speicherung von Überwachungsprotokollen“ zu öffnen. Wählen Sie im Fenster zur Konfiguration der Überwachung das Azure-Speicherkonto aus, in dem die Protokolle gespeichert werden sollen, und geben Sie die Aufbewahrungsdauer an. 
+4. Wählen Sie auf dem Panel für die Überwachungskonfiguration die Option **SPEICHERDETAILS** aus, um das Panel „Überwachungsprotokollspeicher“ zu öffnen. Wählen Sie das Azure-Speicherkonto für die Protokolle und die Aufbewahrungsdauer aus. 
 >[!TIP]
 >Verwenden Sie für alle überwachten Datenbanken dasselbe Speicherkonto, um die vorkonfigurierten Berichtvorlagen optimal einzusetzen.
    
@@ -91,11 +82,12 @@ Die Vorlage enthält fiktionale Beispieldaten, und Sie können Power Query so ei
 ## <a id="subheading-4"></a>Erneute Speicherschlüsselgenerierung
 In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich regelmäßig aktualisieren. Sie müssen beim Aktualisieren Ihrer Schlüssel die Richtlinie speichern. Dieser Prozess verläuft wie folgt:
 
-1. Ändern Sie auf dem Blatt für die Überwachungskonfiguration (oben im Abschnitt zur Einrichtung der Überwachung beschrieben) den **Speicherzugriffsschlüssel** von *Primär* in *Sekundär*, und klicken Sie auf **SPEICHERN**.
+1. Ändern Sie im Panel für die Überwachungskonfiguration, das im vorherigen Abschnitt zur Einrichtung der Überwachung beschrieben ist, den **Speicherzugriffsschlüssel** von *Primär* in *Sekundär*, und klicken Sie auf **SPEICHERN**.
 
    ![][4]
-2. Wechseln Sie zum Blatt für die Speicherkonfiguration, und **generieren Sie erneut** den *primären Zugriffsschlüssel*.
-3. Wechseln Sie zurück zum Blatt für die Überwachungskonfiguration, ändern Sie den **Speicherzugriffsschlüssel** von *Sekundär* zu *Primär*, und klicken Sie auf **SPEICHERN**.
+2. Wechseln Sie zum Panel für die Speicherkonfiguration, und **generieren Sie erneut** den *primären Zugriffsschlüssel*.
+3. Wechseln Sie zurück zum Panel für die Überwachungskonfiguration, 
+4. ändern Sie den **Speicherzugriffsschlüssel** von *Sekundär* in *Primär*, und klicken Sie auf **SPEICHERN**.
 4. Wechseln Sie zurück zur Speicherbenutzeroberfläche, und **generieren Sie erneut** den *sekundären Zugriffsschlüssel* (als Vorbereitung auf den nächsten Schlüsselaktualisierungszyklus).
 
 ## <a id="subheading-5"></a>Automatisierung (PowerShell/REST-API)
@@ -103,18 +95,41 @@ Sie können die Überwachung in Azure SQL Data Warehouse auch mit den folgenden 
 
 * **PowerShell-Cmdlets:**
 
-   * [Get-AzureRMSqlDatabaseAuditingPolicy][101]
-   * [Get-AzureRMSqlServerAuditingPolicy][102]
-   * [Remove-AzureRMSqlDatabaseAuditing][103]
-   * [Remove-AzureRMSqlServerAuditing][104]
-   * [Set-AzureRMSqlDatabaseAuditingPolicy][105]
-   * [Set-AzureRMSqlServerAuditingPolicy][106]
-   * [Use-AzureRMSqlServerAuditingPolicy][107]
+   * [Get-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy)
+   * [Get-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy)
+   * [Remove-AzureRMSqlDatabaseAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing)
+   * [Remove-AzureRMSqlServerAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing)
+   * [Set-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy)
+   * [Set-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy)
+   * [Use-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy)
+
+
+## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>Unterstützung für Überwachung und dynamische Datenmaskierung durch Vorgängerversionsclients
+Überwachung kann mit SQL-Clients genutzt werden, die TDS-Umleitung unterstützen.
+
+Jeder Client, der TDS 7.4 implementiert, sollte auch Umleitung unterstützen. Zu den Ausnahmen gehören JDBC 4.0, in dem die Umleitungsfunktion nicht vollständig unterstützt wird, und Tedious for Node.JSS, in dem die Umleitungsfunktion nicht implementiert wurde.
+
+Für „Vorgängerversionsclients“, die TDS 7.3 und ältere Versionen unterstützen, ändern Sie den vollqualifizierten Domänennamen des Servers wie folgt:
+
+- Ursprünglicher vollqualifizierter Domänenname des Servers in der Verbindungszeichenfolge: <*Servername*>.database.windows.net
+- Geänderter vollqualifizierter Domänenname des Servers in der Verbindungszeichenfolge: <*Servername*>.database.**secure**.windows.net
+
+Eine unvollständige Liste der "Vorgängerversionsclients":
+
+* .NET 4.0 und ältere Versionen
+* ODBC 10.0 und ältere Versionen
+* JDBC (JDBC unterstützt zwar TDS 7.4, aber die TDS-Umleitungsfunktion wird nicht vollständig unterstützt)
+* Tedious (for Node.JS)
+
+**Anmerkung:** Die vorherige Änderung des vollqualifizierten Domänennamens des Servers kann sich auch als nützlich erweisen bei der Anwendung einer Richtlinie für die Überwachung auf SQL Server-Ebene, ohne dass ein Konfigurationsschritt in jeder Datenbank ausgeführt werden muss (temporäre Minderung).     
+
+
+
 
 <!--Anchors-->
-[Grundlagen zur Datenbanküberwachung]: #subheading-1
-[Einrichten der Überwachung für Ihre Datenbank]: #subheading-2
-[Analysieren von Überwachungsprotokollen und -berichten]: #subheading-3
+[Database Auditing basics]: #subheading-1
+[Set up auditing for your database]: #subheading-2
+[Analyze audit logs and reports]: #subheading-3
 
 
 <!--Image references-->
@@ -125,11 +140,3 @@ Sie können die Überwachung in Azure SQL Data Warehouse auch mit den folgenden 
 [5]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-dashboard.png
 
 
-<!--Link references-->
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy
-[103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
-[104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy
-[107]: /powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy

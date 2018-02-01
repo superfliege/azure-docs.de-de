@@ -1,6 +1,6 @@
 ---
-title: "Problembehandlung bei Azure Virtual Network-Gateways und -Verbindungen – PowerShell | Microsoft-Dokumentation"
-description: "Auf dieser Seite wird erläutert, wie Azure Network Watcher zur Problembehandlung von PowerShell verwendet wird."
+title: "Problembehandlung bei Azure Virtual Network-Gateways und -Verbindungen – Portal | Microsoft-Dokumentation"
+description: "Auf dieser Seite wird erläutert, wie das Azure Network Watcher-Portal zur Problembehandlung verwendet wird."
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: c3fa22bd599026b0838b134e26062d9837df703e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fb8f60eea0eaa24649f584ae4183aa8e552a433e
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Problembehandlung bei Virtual Network-Gateways und -Verbindungen mit Azure Network Watcher und PowerShell
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-network-watcher-from-azure-portal"></a>Problembehandlung bei Virtual Network-Gateways und -Verbindungen mit Azure Network Watcher im Azure-Portal
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-troubleshoot-manage-portal.md)
@@ -33,7 +33,7 @@ Network Watcher bietet viele Funktionen zum Erfassen von Informationen über Ihr
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
 
 Eine Liste mit unterstützten Gatewaytypen finden Sie unter [Unterstützte Gatewaytypen](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
@@ -60,7 +60,7 @@ Nach Abschluss des Vorgangs wird in der Statusspalte **Fehlerfrei** oder **Fehle
 
 Im Abschnitt **Details** des Fensters wird auf der Registerkarte **Status** der Status der letzten Problembehandlungsausführung für die ausgewählte Ressource angezeigt. Die Ergebnisse der letzten Diagnose werden xx Minuten nach der letzten Ausführung angezeigt.
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Ressource     | Ein Link zur Ressource        |
 |Speicherpfad     |  Pfad zum Speicherkonto und Container, die die Protokolle enthalten (sofern bei der Ausführung welche erstellt wurden). Diese Einstellung geht nach dem Verlassen des Portals verloren.        |

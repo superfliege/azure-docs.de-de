@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 5eb326dfd89d9cc64eb0e05286e64c87e090e0a1
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 0be2391268e11593802cb0f455e8c4553f0d4731
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Behandeln von Agent- oder erweiterungsbezogenen Problemen in Azure Backup
 
@@ -78,7 +78,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>Die angegebene Datenträgerkonfiguration wird nicht unterstützt.
 
 > [!NOTE]
-> Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für virtuelle Computer mit nicht verwalteten Datenträgern, die größer sind als 1 TB. Einzelheiten entnehmen Sie dem Dokument für die [private Vorschauversion für die Unterstützung von Sicherungen virtueller Computer mit großen Datenträgern](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
+> Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für virtuelle Computer mit Datenträgern, die größer sind als 1 TB. Einzelheiten entnehmen Sie dem Dokument für die [private Vorschauversion für die Unterstützung von Sicherungen virtueller Computer mit großen Datenträgern](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
 >
 >
 
@@ -97,11 +97,14 @@ Die Sicherungserweiterung muss eine Verbindung mit den öffentlichen Azure-IP-Ad
 
 ####  <a name="solution"></a>Lösung
 Probieren Sie eine der hier angegebenen Methoden aus, um dieses Problem zu lösen.
-##### <a name="allow-access-to-the-azure-datacenter-ip-ranges"></a>Zulassen des Zugriffs auf die IP-Bereiche für das Azure-Datencenter
+##### <a name="allow-access-to-the-azure-storage-corresponding-to-the-region"></a>Zulassen des Zugriffs auf den der Region entsprechenden Azure-Speicher
 
-1. Beschaffen Sie sich die [Liste mit den IP-Adressen des Azure-Datencenters](https://www.microsoft.com/download/details.aspx?id=41653), um den Zugriff zuzulassen.
-2. Entsperren Sie die IPs, indem Sie das **New-NetRoute**-Cmdlet auf der Azure-VM in einem PowerShell-Fenster mit erhöhten Rechten ausführen. Führen Sie das Cmdlet als Administrator aus.
-3. Fügen Sie der Netzwerksicherheitsgruppe, falls vorhanden, Regeln hinzu, um den Zugriff auf die IP-Adressen zuzulassen.
+Mit [Diensttags](../virtual-network/security-overview.md#service-tags) können Sie Verbindungen zum Speichern bestimmter Regionen zulassen. Stellen Sie sicher, dass die Regel, die Zugriff auf das Speicherkonto zulässt, eine höhere Priorität hat, als die Regel, die den Internetzugriff blockiert. 
+
+![NSG mit Speichertags für eine Region](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+> [!WARNING]
+> Speicherdiensttags sind nur in bestimmten Regionen und in der Vorschau verfügbar. Eine Liste der Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
 
 ##### <a name="create-a-path-for-http-traffic-to-flow"></a>Erstellen eines Pfads für HTTP-Datenverkehr
 
@@ -166,8 +169,6 @@ Die folgenden Umstände können zu Fehlern bei Momentaufnahmeaufgaben führen:
 | --- | --- |
 | Für die VM ist die SQL Server-Sicherung konfiguriert. | Standardmäßig wird bei der Sicherung virtueller Computer eine vollständige VSS-Sicherung auf virtuellen Windows-Computern ausgeführt. Auf virtuellen Computern, auf denen SQL Server-basierte Server ausgeführt werden und auf denen die SQL Server-Sicherung konfiguriert ist, können Verzögerungen bei der Ausführung von Momentaufnahmen auftreten.<br><br>Legen Sie den folgenden Registrierungsschlüssel fest, wenn aufgrund eines Problems mit der Momentaufnahme ein Backup-Fehler auftritt:<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | Der VM-Status wird falsch gemeldet, da der virtuelle Computer im RDP heruntergefahren ist. | Wenn Sie die VM im Remotedesktopprotokoll (RDP) herunterfahren, können Sie im Portal ermitteln, ob der VM-Status korrekt ist. Falls nicht, fahren Sie den virtuellen Computer im Portal mithilfe der Option **Herunterfahren** auf dem VM-Dashboard herunter. |
-| Viele virtuelle Computer desselben Clouddiensts sind so konfiguriert, dass die Sicherung zur selben Zeit durchgeführt wird. | Eine bewährte Methode besteht darin, für die virtuellen Computer eines Clouddiensts unterschiedliche Sicherungszeitpläne zu verwenden. |
-| Der virtuelle Computer wird bei hoher CPU-/Arbeitsspeicherauslastung ausgeführt. | Wird der virtuelle Computer bei hoher CPU-Auslastung (über 90 Prozent) oder hoher Arbeitsspeicherauslastung ausgeführt, wird die Momentaufnahmenaufgabe der Warteschlange hinzugefügt und verzögert, bis schließlich eine Zeitüberschreitung auftritt. Versuchen Sie es in diesem Fall mit einer bedarfsgesteuerten Sicherung. |
 | Der virtuelle Computer kann die Host-/Fabric-Adresse nicht aus DHCP abrufen. | Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein.  Wenn der virtuelle Computer die Host-/Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese über die Plattform konfigurieren. Die DHCP-Option innerhalb des virtuellen Computers sollte aktiviert bleiben. Weitere Informationen finden Sie unter [Festlegen einer statischen internen privaten IP-Adresse](../virtual-network/virtual-networks-reserved-private-ip.md). |
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Die Sicherungserweiterung wird nicht aktualisiert oder geladen.
@@ -192,24 +193,6 @@ Gehen Sie wie folgt vor, um die Erweiterung zu deinstallieren:
 6. Klicken Sie auf **Deinstallieren**.
 
 Hiermit wird bewirkt, dass die Erweiterung während der nächsten Sicherung neu installiert wird.
-
-### <a name="azure-classic-vms-may-require-additional-step-to-complete-registration"></a>Klassische Azure-VMs erfordern möglicherweise einen zusätzlichen Schritt zum Abschließen der Registrierung.
-Der Agent in klassischen Azure-VMs muss registriert werden, damit eine Verbindung mit dem Sicherungsdienst hergestellt und die Sicherung gestartet werden kann.
-
-#### <a name="solution"></a>Lösung
-
-Nach der Installation des VM-Gast-Agents starten Sie Azure PowerShell. <br>
-1. Verwenden Sie zur Anmeldung beim Azure-Konto Folgendes: <br>
-       `Login-AzureAsAccount`<br>
-2. Überprüfen Sie, ob die ProvisionGuestAgent-Eigenschaft der VM auf TRUE festgelegt ist, indem Sie die folgenden Befehle ausführen: <br>
-        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
-        `$vm.VM.ProvisionGuestAgent`<br>
-3. Wenn die Eigenschaft auf FALSE festgelegt ist, führen Sie die folgenden Befehle aus, um sie auf TRUE zu setzen:<br>
-        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
-        `$vm.VM.ProvisionGuestAgent = $true`<br>
-4. Führen Sie dann den folgenden Befehl aus, um die VM zu aktualisieren: <br>
-        `Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>` <br>
-5. Versuchen Sie, die Sicherung neu zu starten. <br>
 
 ### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>Der Sicherungsdienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen.
 Dieses Problem betrifft speziell verwaltete VMs, bei denen der Benutzer die Ressourcengruppe sperrt und der Sicherungsdienst die älteren Wiederherstellungspunkte nicht löschen kann. Aus diesem Grund treten bei neuen Sicherungen Fehler auf, da das Back-End einen Grenzwert von maximal 18 Wiederherstellungspunkten vorgibt.

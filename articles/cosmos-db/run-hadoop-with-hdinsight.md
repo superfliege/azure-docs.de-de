@@ -12,17 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 01/19/2018
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e69edcae53b9e6614cb02932abd1e2022c558a14
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 181954e4657166db8aa94021ad093437d8c7abfd
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>Ausführen eines Auftrags von Apache Hive, Pig oder Hadoop mithilfe von Azure Cosmos DB und HDInsight
 In diesem Tutorial erfahren Sie, wie Sie [Apache Hive][apache-hive]-, [Apache Pig][apache-pig]- und [Apache Hadoop][apache-hadoop]-MapReduce-Aufträge in Azure HDInsight mit dem Hadoop-Connector von Cosmos DB ausführen können. Der Hadoop-Connector von Cosmos DB ermöglicht es Cosmos DB, sowohl als Quelle als auch als Senke für Hive-, Pig- und MapReduce-Aufträge zu fungieren. In diesem Lernprogramm wird Cosmos DB sowohl als Datenquelle als auch als Ziel für Hadoop-Aufträge verwendet.
+
+> [!IMPORTANT] 
+> Der Spark-Connector für Azure Cosmos DB stellt die empfohlene Option zum Herstellen von Verbindungen von Azure HDInsight mit Azure Cosmos DB dar. Weitere Informationen finden Sie unter [Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure Cosmos DB](spark-connector.md).
 
 Nach Abschluss dieses Lernprogramms können Sie die folgenden Fragen beantworten:
 

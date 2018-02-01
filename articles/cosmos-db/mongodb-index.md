@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 63cfa92feb08f32081fe02d4202fa6256c7b99dc
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c65013fefe6750e82c71cb3d201a3195acd64127
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-cosmos-db-mongodb-api-documentation"></a>Azure Cosmos DB: MongoDB-API-Dokumentation
 
@@ -39,12 +39,12 @@ Anhand der Schnellstartthemen können Sie besonders schnell eine funktionierende
 
 
 - [Node.js + Express + AngularJS + Web-Apps](create-mongodb-nodejs.md)
-- [.NET + Azure-Portal + Web-Apps](create-mongodb-dotnet.md)
-- [Java + Azure-Portal + Web-Apps](create-mongodb-java.md)
-- [Go + Azure-Portal + Go](create-mongodb-golang.md)
+- [Azure Cosmos DB: Erstellen einer Web-App mit einer DocumentDB-API mit .NET und dem Azure-Portal](create-mongodb-dotnet.md)
+- [Azure Cosmos DB: Erstellen einer Konsolen-App mit einer MongoDB-API mit Java und dem Azure-Portal](create-mongodb-java.md)
+- [Azure Cosmos DB: Erstellen einer Konsolen-App mit einer MongoDB-API mit Golang und dem Azure-Portal](create-mongodb-golang.md)
 - [Python + Flask + Azure-Portal](create-mongodb-flask.md)
 
-## <a name="tutorials"></a>Lernprogramme
+## <a name="tutorials"></a>Tutorials
 
 Diese Tutorials gehen noch eine Ebene tiefer als die Schnellstartanleitungen. In den Tutorials erstellen Sie Apps von Grund auf neu, kopieren Code und fügen ihn in die App ein. Darüber hinaus erfahren Sie, wie Sie Daten importieren, Daten abfragen und Ihre Datenbanken global verteilen.
 
@@ -69,5 +69,5 @@ Diese Tutorials gehen noch eine Ebene tiefer als die Schnellstartanleitungen. In
 
 ## <a name="developers-guide"></a>Entwicklerhandbuch
 
-- [Verwenden von MongoChef](mongodb-mongochef.md)
+- [Verwenden von Studio 3T (MongoChef)](mongodb-mongochef.md)
 - [Verwenden von Robomongo](mongodb-robomongo.md)

@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f2048a39f28a74ca8a31c2e6d7466c69ba4d58f
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 6c796377b90fb3cd697f6d77589e3995b3eac338
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Was sind VM-Skalierungsgruppen in Azure?
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können. Da alle virtuellen Computer in einer Skalierungsgruppe gleich konfiguriert sind, ermöglichen Skalierungsgruppen eine echte automatische Skalierung ohne Vorabbereitstellung virtueller Computer. Das erleichtert die Erstellung umfangreicher Dienste, die auf hohe Computeleistung, umfangreiche Daten und Workloads in Containern ausgelegt sind.
@@ -35,10 +35,7 @@ Die folgenden Videos enthalten weitere Informationen zu Skalierungsgruppen:
 ## <a name="creating-and-managing-scale-sets"></a>Erstellen und Verwalten von Skalierungsgruppen
 Eine Skalierungsgruppe können Sie im [Azure-Portal](https://portal.azure.com) wie folgt erstellen: Wählen Sie **Neu** aus, und geben Sie **Skalierung** in die Suchleiste ein. In den Ergebnissen wird **VM-Skalierungsgruppe** aufgeführt. Sie können anschließend die Pflichtfelder ausfüllen, um Ihre Skalierungsgruppe anzupassen und bereitzustellen. Im Portal stehen auch Optionen zum Einrichten grundlegender Regeln für die automatische Skalierung auf der Grundlage der CPU-Auslastung zur Verfügung. Ihre Skalierungsgruppe können Sie über das Azure-Portal, mithilfe von [Azure PowerShell-Cmdlets](virtual-machine-scale-sets-windows-manage.md) oder mithilfe der Azure CLI 2.0 verwalten.
 
-Skalierungsgruppen können in einer [Verfügbarkeitszone](../availability-zones/az-overview.md) bereitgestellt werden.
-
-> [!NOTE]
-> VM-Skalierungsgruppen unterstützen derzeit nur die Bereitstellung in einer einzelnen Verfügbarkeitszone. In Zukunft soll auch die Bereitstellung in mehreren Zonen unterstützt werden.
+Skalierungsgruppen können in [Verfügbarkeitszonen](virtual-machine-scale-sets-use-availability-zones.md) übergreifend bereitgestellt werden.
 
 VM-Skalierungsgruppen können genau wie einzelne virtuelle Azure Resource Manager-Computer mithilfe von JSON-Vorlagen und [REST-APIs](https://msdn.microsoft.com/library/mt589023.aspx) definiert und bereitgestellt werden. Ihnen stehen daher alle Standardbereitstellungsmethoden von Azure Resource Manager zur Verfügung. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
@@ -52,7 +49,7 @@ Die Anzahl von VM-Instanzen in Ihrer Skalierungsgruppe kann automatisch angepass
 
 Für einfache Regeln zur automatischen Skalierung können Sie hostbasierte Leistungsmetriken wie CPU-Auslastung oder Datenträger-E/A verwenden. Diese hostbasierten Metriken stehen automatisch zur Verfügung – ganz ohne die Installation und Konfiguration zusätzlicher Agents oder Erweiterungen. Regeln zur automatischen Skalierung mit hostbasierten Metriken können mit einem der folgenden Tools erstellt werden:
 
-- [Azure-Portal](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
 - [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
 
@@ -94,13 +91,13 @@ Zum Anzeigen oder Bearbeiten der zugrunde liegenden JSON-Definition einer Azure-
 Dieser Abschnitt enthält einige typische Szenarien für Skalierungsgruppen. Einige auf höherer Ebene angesiedelte Azure-Dienste (wie Batch, Service Fabric und Azure Container Service) verwenden diese Szenarien.
 
 * **Herstellen einer Verbindung mit Skalierungsgruppeninstanzen mithilfe von RDP oder SSH:** Eine Skalierungsgruppe wird in einem virtuellen Netzwerk erstellt, und den einzelnen virtuellen Computern in der Skalierungsgruppe werden nicht standardmäßig öffentliche IP-Adressen zugeordnet. Mit dieser Richtlinie werden Kosten und Verwaltungsvorgänge vermieden, die anfallen, wenn allen Knoten im Computenetz separate öffentliche IP-Adressen zugeordnet werden. Falls direkte externe Verbindungen mit Computern in Skalierungsgruppen hergestellt werden müssen, können Sie für eine Skalierungsgruppe die automatische Zuweisung öffentlicher IP-Adressen zu neuen virtuellen Computern konfigurieren. Alternativ können Sie über andere Ressourcen in Ihrem virtuellen Netzwerk (beispielsweise Load Balancer und eigenständige virtuelle Computer), denen öffentliche IP-Adressen zugeordnet werden können, eine Verbindung mit diesen virtuellen Computern herstellen. 
-* **Herstellen einer Verbindung mit virtuellen Computern mithilfe von NAT-Regeln:** Sie können eine öffentliche IP-Adresse erstellen, sie einem Load Balancer zuweisen und einen NAT-Pool für eingehenden Datenverkehr definieren. Dadurch werden Ports der IP-Adresse einem Port auf einem virtuellen Computer in der Skalierungsgruppe zugeordnet. Beispiel:
+* **Herstellen einer Verbindung mit virtuellen Computern mithilfe von NAT-Regeln:** Sie können eine öffentliche IP-Adresse erstellen, sie einem Load Balancer zuweisen und einen NAT-Pool für eingehenden Datenverkehr definieren. Dadurch werden Ports der IP-Adresse einem Port auf einem virtuellen Computer in der Skalierungsgruppe zugeordnet. Beispiel: 
   
   | Quelle | Quellport | Ziel | Zielport |
   | --- | --- | --- | --- |
   |  Öffentliche IP-Adresse |Port 50000 |vmss\_0 |Port 22 |
   |  Öffentliche IP |Port 50001 |vmss\_1 |Port 22 |
-  |  Öffentliche IP |Port 50002 |vmss\_2 |Port 22 |
+  |  Öffentliche IP-Adresse |Port 50002 |vmss\_2 |Port 22 |
   
    In [diesem Beispiel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat) werden NAT-Regeln definiert, um eine SSH-Verbindung (Secure Shell) mit jedem virtuellen Computer in einer Skalierungsgruppe über eine einzelne öffentliche IP-Adresse zu ermöglichen.
   

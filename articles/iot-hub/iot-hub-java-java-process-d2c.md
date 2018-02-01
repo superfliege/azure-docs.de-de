@@ -1,6 +1,6 @@
 ---
 title: Weiterleiten von Nachrichten mit Azure IoT Hub (Java) | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Azure IoT Hub-D2C-Nachrichten mithilfe von Routingregeln und benutzerdefinierten Endpunkten verarbeitet werden, um Nachrichten an andere Back-End-Dienste zu senden.
+description: Erfahren Sie, wie Azure IoT Hub-D2C-Nachrichten mithilfe von Routingregeln und benutzerdefinierten Endpunkten verarbeitet werden, um Nachrichten an andere Back-End-Dienste zu senden.
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.openlocfilehash: 81f846e1fd8cca586613e6fc57737ec27e43a639
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: c75624d8551adabbd993d22ac4901ca26ef40d51
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="routing-messages-with-iot-hub-java"></a>Weiterleiten von Nachrichten mit Azure IoT Hub (Java)
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/01/2017
 
 Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. Weitere Tutorials ([Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub][lnk-c2d]) veranschaulichen, wie Sie die grundlegenden Device-to-Cloud- und Cloud-to-Device-Messagingfunktionen von IoT Hub verwenden.
 
-Dieses Tutorial stützt sich auf den Code, der im Tutorial [Erste Schritte mit IoT Hub] vorgestellt wird, und zeigt Ihnen, wie Sie das Nachrichtenrouting für das skalierbare Verarbeiten von D2C-Nachrichten einsetzen. Das Tutorial veranschaulicht das Verarbeiten von Nachrichten, die sofortiges Eingreifen vom Lösungs-Back-End erfordern. Beispielsweise könnte ein Gerät eine Alarmnachricht senden, die das Einfügen eines Tickets in ein CRM-System auslöst. Im Gegensatz dazu werden Datenpunktnachrichten einfach in ein Analysemodul eingegeben. Temperaturtelemetriedaten von einem Gerät, die zur späteren Analyse gespeichert werden, sind beispielsweise Datenpunktnachrichten.
+Dieses Tutorial stützt sich auf den Code, der im Tutorial [Erste Schritte mit IoT Hub] vorgestellt wird, und zeigt Ihnen, wie Sie das Nachrichtenrouting für das skalierbare Verarbeiten von D2C-Nachrichten einsetzen. Das Tutorial veranschaulicht das Verarbeiten von Nachrichten, die sofortiges Eingreifen vom Lösungs-Back-End erfordern. Beispielsweise könnte ein Gerät eine Alarmnachricht senden, die das Einfügen eines Tickets in ein CRM-System auslöst. Im Gegensatz dazu werden Datenpunktnachrichten einfach in eine Analyse-Engine eingegeben. Temperaturtelemetriedaten von einem Gerät, die zur späteren Analyse gespeichert werden, sind beispielsweise Datenpunktnachrichten.
 
 Am Ende dieses Tutorials führen Sie drei Java-Konsolen-Apps aus:
 
@@ -105,7 +105,7 @@ In diesem Abschnitt ändern Sie die Geräte-App, die Sie im Tutorial [Erste Schr
     }
     ```
    
-    Mit dieser Methode werden vom Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaften `"level": "critical"` und `"level": "storage"` hinzugefügt, wodurch eine Nachricht simuliert wird, die sofortiges Eingreifen durch das Anwendungs-Back-End erfordert oder dauerhaft gespeichert werden muss. Die Anwendung übergibt diese Information den Eigenschaften der Nachricht statt dem Nachrichtentext, sodass IoT Hub die Nachricht an das richtige Nachrichtenziel weiterleiten kann.
+    Mit dieser Methode werden vom Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaften `"level": "critical"` und `"level": "storage"` hinzugefügt. Dadurch wird eine Nachricht simuliert, die eine sofortige Aktion durch das Anwendungs-Back-End erfordert oder dauerhaft gespeichert werden muss. Die Anwendung unterstützt Weiterleiten von Nachrichten auf Basis des Nachrichtentexts.
    
    > [!NOTE]
    > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für verschiedene Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
@@ -113,7 +113,7 @@ In diesem Abschnitt ändern Sie die Geräte-App, die Sie im Tutorial [Erste Schr
 2. Speichern und schließen Sie die Datei „simulated-device\src\main\java\com\mycompany\app\App.java“.
 
     > [!NOTE]
-    > Es wird dringend empfohlen, eine Wiederholungsrichtlinie zu implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler] beschrieben.
+    > Es wird dringend empfohlen, eine Wiederholungsrichtlinie zu implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Beheben vorübergehender Fehler] beschrieben.
 
 3. Führen Sie zum Erstellen der App **simulated-device** mit Maven den folgenden Befehl an der Eingabeaufforderung im Ordner „simulated-device“ aus:
 
@@ -175,9 +175,9 @@ Sie können jetzt die drei Anwendungen ausführen.
    
    ![Ausführen von „simulated-device“][simulateddevice]
 
-## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>(Optional) Hinzufügen eines Speichercontainers zu Ihrer IoT Hub-Instanz und Weiterleiten von Nachrichten dorthin
+## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>(Optional:) Hinzufügen eines Speichercontainers zu Ihrer IoT Hub-Instanz und Weiterleiten von Nachrichten an diese
 
-In diesem Abschnitt erstellen Sie ein Speicherkonto, verbinden es mit Ihrer IoT Hub-Instanz und konfigurieren Ihre IoT Hub-Instanz zum Senden von Nachrichten an das Konto, wenn eine Eigenschaft in der Nachricht vorhanden ist. Weitere Informationen zum Verwalten von Speicher finden Sie in den [ersten Schritten mit Azure Storage][Azure Storage].
+In diesem Abschnitt erstellen Sie ein Speicherkonto, verbinden es mit Ihrer IoT Hub-Instanz und konfigurieren Ihre IoT Hub-Instanz für das Senden von Nachrichten an das Konto, wenn eine Eigenschaft in der Nachricht vorhanden ist. Weitere Informationen zum Verwalten von Speicher finden Sie unter [Erste Schritte mit Azure Storage][Azure Storage].
 
  > [!NOTE]
    > Sofern Sie sich nicht auf einen einzelnen **Endpunkt** beschränken müssen, können Sie **StorageContainer** zusätzlich zu **CriticalQueue** einrichten und beides parallel betreiben.
@@ -186,10 +186,10 @@ In diesem Abschnitt erstellen Sie ein Speicherkonto, verbinden es mit Ihrer IoT 
 
 2. Öffnen Sie Ihren IoT-Hub im Azure-Portal, und klicken Sie auf **Endpunkte**.
 
-3. Wählen Sie auf dem Blatt **Endpunkte** den Endpunkt **CriticalQueue** aus, und klicken Sie anschließend auf **Löschen**. Klicken Sie auf **Ja** und anschließend auf **Hinzufügen**. Nennen Sie den Endpunkt **StorageContainer**, wählen Sie über die Dropdownfelder **Azure-Speichercontainer** aus, und erstellen Sie ein **Speicherkonto** sowie einen **Speichercontainer**.  Notieren Sie sich die Namen.  Klicken Sie abschließend am unteren Rand auf **OK**. 
+3. Wählen Sie auf dem Blatt **Endpunkte** den Endpunkt **CriticalQueue** aus, und klicken Sie auf **Löschen**. Klicken Sie auf **Ja** und dann auf **Hinzufügen**. Nennen Sie den Endpunkt **StorageContainer**, wählen Sie über die Dropdownfelder **Azure-Speichercontainer** aus, und erstellen Sie ein **Speicherkonto** und einen **Speichercontainer**.  Notieren Sie sich die Namen.  Klicken Sie abschließend am unteren Rand auf **OK**. 
 
  > [!NOTE]
-   > Falls Sie sich nicht auf einen einzelnen **Endpunkt** beschränken müssen, müssen Sie **CriticalQueue** nicht löschen.
+   > Wenn Sie sich nicht auf einen einzelnen **Endpunkt** beschränken müssen, ist es nicht notwendig, **CriticalQueue** zu löschen.
 
 4. Klicken Sie in Ihrer IoT Hub-Instanz auf **Routen**. Klicken Sie am oberen Rand des Blatts auf **Hinzufügen**, um eine Routingregel zu erstellen, die Nachrichten an die gerade von Ihnen hinzugefügte Warteschlange leitet. Wählen Sie **Gerätemeldungen** als Datenquelle aus. Geben Sie `level="storage"` als Bedingung ein, und wählen Sie **StorageContainer** als benutzerdefinierten Endpunkt des Routingregelendpunkts aus. Klicken Sie am unteren Rand auf **Speichern**.  
 
@@ -197,7 +197,7 @@ In diesem Abschnitt erstellen Sie ein Speicherkonto, verbinden es mit Ihrer IoT 
 
 1. Vergewissern Sie sich, dass Ihre vorherigen Anwendungen weiterhin ausgeführt werden. 
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto, und klicken Sie unter **Blob-Dienst** auf **Blobs durchsuchen...**.  Wählen Sie Ihren Container aus, navigieren Sie zu der JSON-Datei, klicken Sie auf die Datei, und klicken Sie anschließend auf **Herunterladen**, um die Daten anzuzeigen.
+1. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto, und klicken Sie unter **Blob-Dienst** auf **Blobs durchsuchen**.  Wählen Sie Ihren Container aus, navigieren Sie zu der JSON-Datei, klicken Sie auf die Datei, und klicken Sie anschließend auf **Herunterladen**, um die Daten anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -207,7 +207,7 @@ Im Tutorial [Gewusst wie: Senden von C2D-Nachrichten mithilfe von IoT Hub][lnk-c
 
 Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT Suite][lnk-suite].
 
-Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [IoT Hub-Entwicklerhandbuch].
+Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Entwicklungsleitfaden für IoT Hub].
 
 Weitere Informationen zum Nachrichtenrouting in IoT Hub finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub][lnk-devguide-messaging].
 
@@ -229,11 +229,11 @@ Weitere Informationen zum Nachrichtenrouting in IoT Hub finden Sie unter [Senden
 [Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
 [Azure Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
 
-[IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
+[Entwicklungsleitfaden für IoT Hub]: iot-hub-devguide.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 [Erste Schritte mit IoT Hub]: iot-hub-java-java-getstarted.md
 [Azure IoT Developer Center]: https://azure.microsoft.com/develop/iot
-[Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh675232.aspx
+[Beheben vorübergehender Fehler]: https://msdn.microsoft.com/library/hh675232.aspx
 
 <!-- Links -->
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx

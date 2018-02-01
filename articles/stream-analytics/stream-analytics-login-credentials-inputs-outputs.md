@@ -1,11 +1,11 @@
 ---
-title: "Stream Analytics: Austauschen von Anmeldeinformationen für Ein- und Ausgaben | Microsoft Docs"
+title: "Stream Analytics: Austauschen von Anmeldeinformationen für Ein- und Ausgaben | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie die Anmeldeinformationen für Stream Analytics-Ein- und Ausgaben aktualisieren können."
 keywords: Anmeldeinformationen
 services: stream-analytics
 documentationcenter: 
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: 42ae83e1-cd33-49bb-a455-a39a7c151ea4
 ms.service: stream-analytics
@@ -13,187 +13,78 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: a1a927fa9c34b38e54fdb22782e80fd13bf430c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/11/2018
+ms.author: sngun
+ms.openlocfilehash: c1aded8fefc7b56acd2e9ff36bb2c9641665db76
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
-# <a name="rotate-login-credentials-for-inputs-and-outputs-in-stream-analytics-jobs"></a>Austauschen von Anmeldeinformationen für Ein- und Ausgaben in Stream Analytics-Aufträgen
-## <a name="abstract"></a>Zusammenfassung
-Derzeit unterstützt Azure Stream Analytics das Austauschen der Anmeldeinformationen für die Eingabe/Ausgabe nicht, während ein Auftrag ausgeführt wird.
+# <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Austauschen von Anmeldeinformationen für Ein- und Ausgaben eines Stream Analytics-Auftrags
 
-Während Azure Stream Analytics zwar das Fortsetzen eines Auftrags von der letzten Ausgabe an unterstützt, wollten wir den gesamten Prozess freigeben, um die Verzögerung zwischen dem Anhalten und Starten des Auftrags und dem Austauschen der Anmeldeinformationen zu verkürzen.
+Jedes Mal, wenn Sie Anmeldeinformationen für eine Eingabe oder Ausgabe eines Stream Analytics-Auftrags neu generieren, sollten Sie den Auftrag mit neuen Anmeldeinformationen aktualisieren. Sie müssen den Auftrag beenden, bevor Sie die Anmeldeinformationen aktualisieren. Sie können die Anmeldeinformationen nicht ersetzen, während der Auftrag ausgeführt wird. Um die Verzögerung zwischen den Beenden und Neustarten des Auftrags zu verkürzen, unterstützt Stream Analytics Fortsetzen eines Auftrags aus dessen letzter Ausgabe. In diesem Thema ist der Prozess des Austauschens der Anmeldeinformationen und Neustartens des Auftrags mit den neuen Anmeldeinformationen beschrieben.
 
-## <a name="part-1---prepare-the-new-set-of-credentials"></a>Teil 1 – Vorbereiten des neuen Anmeldeinformationssatzes:
-Dieser Teil gilt für die folgenden Eingaben/Ausgaben:
+## <a name="regenerate-new-credentials-and-update-your-job-with-the-new-credentials"></a>Generieren neuer Anmeldeinformationen und Aktualisieren Ihres Auftrags mit den neuen Anmeldeinformationen 
 
-* Blob Storage
-* Event Hubs
-* SQL-Datenbank
-* Tabellenspeicher
-
-Für andere Ein-/Ausgaben fahren Sie mit Teil 2 fort.
+In diesem Abschnitt werden Sie durch die Schritte geführt, in denen Sie die Anmeldeinformationen für Blob Storage (Blob-Speicher), Event Hubs, SQL-Datenbank und Table Storage (Tabellenspeicher) neu generieren. 
 
 ### <a name="blob-storagetable-storage"></a>Blob-Speicher/Tabellenspeicher
-1. Wechseln Sie zur Storage-Erweiterung des Azure-Verwaltungsportals:   
-   ![Grafik1][graphic1]
-2. Suchen Sie nach dem für den Auftrag verwendeten Speicher, und wechseln Sie zu diesem:   
-   ![Grafik2][graphic2]
-3. Klicken Sie auf den Befehl "Zugriffsschlüssel verwalten":   
-   ![Grafik3][graphic3]
-4. Wählen Sie entweder den primären oder den sekundären Zugriffsschlüssel abhängig davon aus, **welcher für den Auftrag nicht verwendet wird**.
-5. Klicken Sie auf "Neu generieren":   
-   ![Grafik4][graphic4]
-6. Kopieren Sie den neu generierten Schlüssel:   
-   ![Grafik5][graphic5]
-7. Fahren Sie mit Teil 2 fort.
+1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu dem Speicherkonto, das Sie als Eingabe/Ausgabe für den Stream Analytics-Auftrag verwendet haben.    
+2. Öffnen Sie im Abschnitt „Einstellungen“ den Punkt **Zugriffsschlüssel**. Wählen Sie aus den beiden Standardschlüsseln (key1, key2) denjenigen aus, der nicht für Ihren Auftrag verwendet wird, und generieren Sie den Schlüssel neu:  
+   ![Schlüssel für Speicherkonto neu generieren](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+3. Kopieren Sie den neu generierten Schlüssel.    
+4. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag, wählen Sie **Beenden** aus, und warten Sie, bis der Auftrag beendet wurde.    
+5. Suchen Sie nach der Blob-/Tabellespeichereingabe/-ausgabe, für die Sie die Anmeldeinformationen aktualisieren möchten.    
+6. Suchen Sie nach dem Feld **Speicherkontoschlüssel**, fügen Sie Ihren neu generierten Schlüssel ein, und klicken Sie auf **Speichern**.    
+7. Wenn Sie die Änderungen speichern, wird automatisch ein Verbindungstest gestartet. Diesen können Sie sich auf der Registerkarte „Benachrichtigungen“ ansehen. Es gibt zwei Benachrichtigungen, wobei eine dem Speichern der Aktualisierung und die andere dem Testen der Verbindung entspricht:  
+   ![Benachrichtigungen nach einem Bearbeiten des Schlüssels](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
+8. Wechseln Sie zum Abschnitt [Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung] (#start-your-job-from-the-last-stopped-time).
 
 ### <a name="event-hubs"></a>Event Hubs
-1. Wechseln Sie zur Service Bus-Erweiterung des Azure-Verwaltungsportals:   
-   ![Grafik6][graphic6]
-2. Suchen Sie den vom Auftrag verwendeten Service Bus-Namespace, und wechseln Sie zu diesem:   
-   ![Grafik7][graphic7]
-3. Wenn für den Auftrag eine SAS-Richtlinie für den Service Bus-Namespace verwendet wird, wechseln Sie zu Schritt 6.  
-4. Wechseln Sie zur Registerkarte "Event Hubs":   
-   ![Grafik8][graphic8]
-5. Suchen Sie nach dem für den Auftrag verwendeten Event Hub, und wechseln Sie zu diesem:   
-   ![Grafik9][graphic9]
-6. Wechseln Sie zur Registerkarte "Konfigurieren":   
-   ![Grafik10][graphic10]
-7. Suchen Sie im Dropdownlistenfeld "Richtlinienname" nach der SAS-Richtlinie für den Auftrag:   
-   ![Grafik11][graphic11]
-8. Wählen Sie entweder den primären oder den sekundären Schlüssel abhängig davon aus, **welcher für den Auftrag nicht verwendet wird**.  
-9. Klicken Sie auf "Neu generieren":   
-   ![Grafik12][graphic12]
-10. Kopieren Sie den neu generierten Schlüssel:   
-   ![Grafik13][graphic13]
-11. Fahren Sie mit Teil 2 fort.  
+
+1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu dem Event Hub, den Sie als Eingabe/Ausgabe für den Stream Analytics-Auftrag verwendet haben.    
+2. Öffnen Sie im Abschnitt „Einstellungen“ die Option **SAS-Richtlinien**, und wählen Sie die erforderliche Zugriffsrichtlinie aus. Wählen Sie aus **Primärer Schlüssel** und **Sekundärer Schlüssel** denjenigen aus, der nicht für Ihren Auftrag verwendet wird, und generieren Sie ihn neu:  
+   ![Neugenerieren von Schlüsseln für Event Hub](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+3. Kopieren Sie den neu generierten Schlüssel.    
+4. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag, wählen Sie **Beenden** aus, und warten Sie, bis der Auftrag beendet wurde.    
+5. Suchen Sie nach der Event Hubs-Eingabe/-Ausgabe, für die Sie die Anmeldeinformationen aktualisieren möchten.    
+6. Suchen Sie nach dem Feld **Event Hub-Richtlinienschlüssel**, fügen Sie den neu generierten Schlüssel ein, und klicken Sie auf **Speichern**.    
+7. Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.    
+8. Wechseln Sie zum Abschnitt [Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung](#start-your-job-from-the-last-stopped-time).
 
 ### <a name="sql-database"></a>SQL-Datenbank
-> [!NOTE]
-> Hinweis: Sie müssen eine Verbindung mit dem SQL-Datenbankdienst herstellen. Wir werden die Vorgehensweise anhand der Verwaltungsfunktionen des Azure-Verwaltungsportals erläutern, Sie können jedoch auch clientseitige Tools wie etwa SQL Server Management Studio verwenden.
->
-> 
 
-1. Wechseln Sie zur SQL-Datenbank-Erweiterung des Azure-Verwaltungsportals:   
-   ![Grafik14][graphic14]
-2. Suchen Sie die für den Auftrag verwendete SQL-Datenbank, und **klicken Sie in derselben Zeile auf den Server**:  
-   ![Grafik15][graphic15]
-3. Klicken Sie auf den Befehl "Verwalten":   
-   ![Grafik16][graphic16]
-4. Geben Sie den Datenbank-Master ein:   
-   ![Grafik17][graphic17]
-5. Geben Sie Ihren Benutzernamen und das Kennwort ein, und klicken Sie auf „Anmelden“:   
-   ![Grafik18][graphic18]
-6. Klicken Sie auf "Neue Abfrage":   
-   ![Grafik19][graphic19]
-7. Geben Sie die folgende Abfrage ein, und ersetzen Sie <login_name> mit Ihrem Benutzernamen und <enterStrongPasswordHere> mit dem neuen Kennwort:  
-   `CREATE LOGIN <login_name> WITH PASSWORD = '<enterStrongPasswordHere>'`
-8. Klicken Sie auf "Ausführen":   
-   ![Grafik20][graphic20]
-9. Kehren Sie zu Schritt 2 zurück, und klicken Sie dieses Mal auf die Datenbank:   
-   ![Grafik21][graphic21]
-10. Klicken Sie auf den Befehl "Verwalten":   
-   ![Grafik22][graphic22]
-11. Geben Sie Ihren Benutzernamen und das Kennwort ein, und klicken Sie auf „Anmelden“:   
-   ![Grafik23][graphic23]
-12. Klicken Sie auf "Neue Abfrage":   
-   ![Grafik24][graphic24]
-13. Geben Sie die folgende Abfrage ein, und ersetzen Sie <user_name> durch einen Namen, mit dem diese Anmeldung im Kontext der Datenbank identifiziert werden soll (Sie können z.B. den gleichen Wert wie für <login_name> eingeben). Ersetzen Sie anschließend <login_name> durch Ihren neuen Benutzernamen:  
-   `CREATE USER <user_name> FROM LOGIN <login_name>`
-14. Klicken Sie auf "Ausführen":   
-   ![Grafik25][graphic25]
-15. Sie sollten nun dem neuen Benutzer die gleichen Rollen und Berechtigungen zuweisen, über die der ursprüngliche Benutzer verfügte.
-16. Fahren Sie mit Teil 2 fort.
+Sie müssen eine Verbindung mit der SQL-Datenbank herstellen, um die Anmeldeinformationen eines vorhandenen Benutzers zu aktualisieren. Sie können Anmeldeinformationen aktualisieren, indem Sie das Azure-Portal oder ein clientseitiges Tool verwenden, etwa SQL Server Management Studio. In diesem Abschnitt wird veranschaulicht, wie Anmeldeinformationen über das Azure-Portal aktualisiert werden.
 
-## <a name="part-2-stopping-the-stream-analytics-job"></a>Teil 2: Beenden des Stream Analytics-Auftrags
-1. Wechseln Sie zur Stream Analytics-Erweiterung des Azure-Verwaltungsportals:   
-   ![Grafik26][graphic26]
-2. Suchen Sie den Auftrag, und wechseln Sie zu diesem:   
-   ![Grafik27][graphic27]
-3. Wechseln Sie abhängig davon, ob Sie die Anmeldeinformationen für eine Ein- oder Ausgabe ändern, zur Registerkarte "Eingaben" oder "Ausgaben".  
-   ![Grafik28][graphic28]
-4. Klicken Sie auf den Befehl "Beenden", und vergewissern Sie sich, dass der Auftrag beendet wurde:   
-   ![Grafik29][graphic29] Warten Sie, bis der Auftrag beendet wurde.
-5. Suchen Sie nach der Ein- oder Ausgabe, deren Anmeldeinformationen geändert werden sollen, und wechseln Sie zu dieser:   
-   ![Grafik30][graphic30]
-6. Fahren Sie mit Teil 3 fort.
+1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu der SQL-Datenbank, die Sie als Ausgabe für den Stream Analytics-Auftrag verwendet haben.    
+2. Melden Sie sich aus **Daten-Explorer** bei der Datenbank an, wählen Sie als Autorisierungstyp den Typ **SQL Server-Authentifizierung** aus, geben Sie Ihren **Anmeldenamen** und Ihr  **Kennwort** ein, und wählen Sie **OK** aus.  
+   ![Neugenerieren von Anmeldeinformationen für SQL-Datenbank](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
 
-## <a name="part-3-editing-the-credentials-on-the-stream-analytics-job"></a>Teil 3: Bearbeiten der Anmeldeinformationen für den Stream Analytics-Auftrag
-### <a name="blob-storagetable-storage"></a>Blob-Speicher/Tabellenspeicher
-1. Suchen Sie das Feld "Speicherkontoschlüssel", und fügen Sie den neu generierten Schlüssel ein:   
-   ![Grafik31][graphic31]
-2. Klicken Sie auf den Befehl "Speichern", und bestätigen Sie das Speichern der Änderungen:   
-   ![Grafik32][graphic32]
-3. Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.
-4. Fahren Sie mit Teil 4 fort.
+3. Ändern Sie auf der Registerkarte „Abfrage“ das Kennwort für einen der Benutzer, indem Sie die folgende Abfrage ausführen (ersetzen Sie `<user_name>` durch Ihren Benutzernamen und `<new_password>` durch Ihr neues Kennwort):  
 
-### <a name="event-hubs"></a>Event Hubs
-1. Suchen Sie das Feld für den Event Hub-Richtlinienschlüssel, und fügen Sie den neu generierten Schlüssel ein:   
-   ![Grafik33][graphic33]
-2. Klicken Sie auf den Befehl "Speichern", und bestätigen Sie das Speichern der Änderungen:   
-   ![Grafik34][graphic34]
-3. Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.
-4. Fahren Sie mit Teil 4 fort.
+   ```SQL
+   Alter user `<user_name>` WITH PASSWORD = '<new_password>'
+   Alter role db_owner Add member `<user_name>`
+   ```
+
+4. Notieren Sie sich das neue Kennwort.    
+5. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag, wählen Sie **Beenden** aus, und warten Sie, bis der Auftrag beendet wurde.    
+6. Suchen Sie nach der SQL-Datenbank-Ausgabe, für die Sie die Anmeldeinformationen austauschen möchten. Aktualisieren Sie das Kennwort, und speichern Sie die Änderungen.    
+7. Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.    
+8. Wechseln Sie zum Abschnitt [Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung](#start-your-job-from-the-last-stopped-time).
 
 ### <a name="power-bi"></a>Power BI
-1. Klicken Sie auf "Renew authorization":  
+1. Melden Sie sich beim Azure-Portal an, navigieren Sie zu Ihrem Stream Analytics-Auftrag, wählen Sie **Beenden** aus, und warten Sie, bis der Auftrag beendet wurde.    
+2. Suchen Sie nach der Power BI-Ausgabe, für die Sie Anmeldeinformationen erneuern möchten, klicken Sie auf **Autorisierung erneuern** (es sollte eine Erfolgsmeldung angezeigt werden), und **Speichern** Sie die Änderungen.    
+3. Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.    
+4. Wechseln Sie zum Abschnitt [Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung](#start-your-job-from-the-last-stopped-time).
 
-   ![Grafik35][graphic35]
-2. Die folgende Bestätigung wird geöffnet:  
+## <a name="start-your-job-from-the-last-stopped-time"></a>Starten des Auftrags ab dem Zeitpunkt der letzten Beendigung
 
-   ![Grafik36][graphic36]
-3. Klicken Sie auf den Befehl "Speichern", und bestätigen Sie das Speichern der Änderungen:   
-   ![Grafik37][graphic37]
-4. Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.
-5. Fahren Sie mit Teil 4 fort.
-
-### <a name="sql-database"></a>SQL-Datenbank
-1. Suchen Sie die Felder "Benutzername" und "Kennwort", und fügen Sie den neu erstellten Anmeldeinformationssatz ein:   
-   ![Grafik38][graphic38]
-2. Klicken Sie auf den Befehl "Speichern", und bestätigen Sie das Speichern der Änderungen:   
-   ![Grafik39][graphic39]
-3. Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.  
-4. Fahren Sie mit Teil 4 fort.
-
-## <a name="part-4-starting-your-job-from-last-stopped-time"></a>Teil 4: Starten des Auftrags ab dem letzten Anhaltepunkt
-1. Verlassen Sie die Ein-/Ausgabe:   
-   ![Grafik40][graphic40]
-2. Klicken Sie auf den Befehl "Start":   
-   ![Grafik41][graphic41]
-3. Wählen Sie den letzten Anhaltepunkt aus, und klicken Sie auf "OK":   
-   ![Grafik42][graphic42]
-4. Fahren Sie mit Teil 5 fort.  
-
-## <a name="part-5-removing-the-old-set-of-credentials"></a>Teil 5: Entfernen des alten Anmeldeinformationssatzes
-Dieser Teil gilt für die folgenden Eingaben/Ausgaben:
-
-* Blob Storage
-* Event Hubs
-* SQL-Datenbank
-* Tabellenspeicher
-
-### <a name="blob-storagetable-storage"></a>Blob-Speicher/Tabellenspeicher
-Wiederholen Sie Teil 1 für den Zugriffsschlüssel, der bislang für den Auftrag verwendet wurde, um den jetzt nicht mehr verwendeten Zugriffsschlüssel zu erneuern.
-
-### <a name="event-hubs"></a>Event Hubs
-Wiederholen Sie Teil 1 für den Schlüssel, der bislang für den Auftrag verwendet wurde, um den jetzt nicht mehr verwendeten Schlüssel zu erneuern.
-
-### <a name="sql-database"></a>SQL-Datenbank
-1. Wechseln Sie zurück zum Abfragefenster von Teil 1 Schritt 7, geben Sie die folgende Abfrage ein, und ersetzen Sie <previous_login_name> durch den Benutzernamen, der zuvor für Ihren Auftrag verwendet wurde:  
-   `DROP LOGIN <previous_login_name>`  
-2. Klicken Sie auf "Ausführen":   
-   ![Grafik43][graphic43]  
-
-Die folgende Bestätigung wird geöffnet: 
-
-    Command(s) completed successfully.
-
-## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+1. Navigieren Sie zum **Übersicht**-Bereich des Auftrags, und wählen Sie **Starten** aus, um den Auftrag zu starten.    
+2. Wählen Sie **Zeitpunkt der letzten Beendigung** aus, und klicken Sie auf **Starten**. Beachten Sie, dass die Option „Zeitpunkt der letzten Beendigung“ nur angezeigt wird, wenn Sie den Auftrag zuvor ausgeführt und dabei etwas Ausgabe generiert haben. Der Auftrag wird anhand des Zeitpunkts des letzten Ausgabewerts neu gestartet.
+   ![Starten des Auftrags](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
@@ -201,48 +92,3 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-[graphic1]: ./media/stream-analytics-login-credentials-inputs-outputs/1-stream-analytics-login-credentials-inputs-outputs.png
-[graphic2]: ./media/stream-analytics-login-credentials-inputs-outputs/2-stream-analytics-login-credentials-inputs-outputs.png
-[graphic3]: ./media/stream-analytics-login-credentials-inputs-outputs/3-stream-analytics-login-credentials-inputs-outputs.png
-[graphic4]: ./media/stream-analytics-login-credentials-inputs-outputs/4-stream-analytics-login-credentials-inputs-outputs.png
-[graphic5]: ./media/stream-analytics-login-credentials-inputs-outputs/5-stream-analytics-login-credentials-inputs-outputs.png
-[graphic6]: ./media/stream-analytics-login-credentials-inputs-outputs/6-stream-analytics-login-credentials-inputs-outputs.png
-[graphic7]: ./media/stream-analytics-login-credentials-inputs-outputs/7-stream-analytics-login-credentials-inputs-outputs.png
-[graphic8]: ./media/stream-analytics-login-credentials-inputs-outputs/8-stream-analytics-login-credentials-inputs-outputs.png
-[graphic9]: ./media/stream-analytics-login-credentials-inputs-outputs/9-stream-analytics-login-credentials-inputs-outputs.png
-[graphic10]: ./media/stream-analytics-login-credentials-inputs-outputs/10-stream-analytics-login-credentials-inputs-outputs.png
-[graphic11]: ./media/stream-analytics-login-credentials-inputs-outputs/11-stream-analytics-login-credentials-inputs-outputs.png
-[graphic12]: ./media/stream-analytics-login-credentials-inputs-outputs/12-stream-analytics-login-credentials-inputs-outputs.png
-[graphic13]: ./media/stream-analytics-login-credentials-inputs-outputs/13-stream-analytics-login-credentials-inputs-outputs.png
-[graphic14]: ./media/stream-analytics-login-credentials-inputs-outputs/14-stream-analytics-login-credentials-inputs-outputs.png
-[graphic15]: ./media/stream-analytics-login-credentials-inputs-outputs/15-stream-analytics-login-credentials-inputs-outputs.png
-[graphic16]: ./media/stream-analytics-login-credentials-inputs-outputs/16-stream-analytics-login-credentials-inputs-outputs.png
-[graphic17]: ./media/stream-analytics-login-credentials-inputs-outputs/17-stream-analytics-login-credentials-inputs-outputs.png
-[graphic18]: ./media/stream-analytics-login-credentials-inputs-outputs/18-stream-analytics-login-credentials-inputs-outputs.png
-[graphic19]: ./media/stream-analytics-login-credentials-inputs-outputs/19-stream-analytics-login-credentials-inputs-outputs.png
-[graphic20]: ./media/stream-analytics-login-credentials-inputs-outputs/20-stream-analytics-login-credentials-inputs-outputs.png
-[graphic21]: ./media/stream-analytics-login-credentials-inputs-outputs/21-stream-analytics-login-credentials-inputs-outputs.png
-[graphic22]: ./media/stream-analytics-login-credentials-inputs-outputs/22-stream-analytics-login-credentials-inputs-outputs.png
-[graphic23]: ./media/stream-analytics-login-credentials-inputs-outputs/23-stream-analytics-login-credentials-inputs-outputs.png
-[graphic24]: ./media/stream-analytics-login-credentials-inputs-outputs/24-stream-analytics-login-credentials-inputs-outputs.png
-[graphic25]: ./media/stream-analytics-login-credentials-inputs-outputs/25-stream-analytics-login-credentials-inputs-outputs.png
-[graphic26]: ./media/stream-analytics-login-credentials-inputs-outputs/26-stream-analytics-login-credentials-inputs-outputs.png
-[graphic27]: ./media/stream-analytics-login-credentials-inputs-outputs/27-stream-analytics-login-credentials-inputs-outputs.png
-[graphic28]: ./media/stream-analytics-login-credentials-inputs-outputs/28-stream-analytics-login-credentials-inputs-outputs.png
-[graphic29]: ./media/stream-analytics-login-credentials-inputs-outputs/29-stream-analytics-login-credentials-inputs-outputs.png
-[graphic30]: ./media/stream-analytics-login-credentials-inputs-outputs/30-stream-analytics-login-credentials-inputs-outputs.png
-[graphic31]: ./media/stream-analytics-login-credentials-inputs-outputs/31-stream-analytics-login-credentials-inputs-outputs.png
-[graphic32]: ./media/stream-analytics-login-credentials-inputs-outputs/32-stream-analytics-login-credentials-inputs-outputs.png
-[graphic33]: ./media/stream-analytics-login-credentials-inputs-outputs/33-stream-analytics-login-credentials-inputs-outputs.png
-[graphic34]: ./media/stream-analytics-login-credentials-inputs-outputs/34-stream-analytics-login-credentials-inputs-outputs.png
-[graphic35]: ./media/stream-analytics-login-credentials-inputs-outputs/35-stream-analytics-login-credentials-inputs-outputs.png
-[graphic36]: ./media/stream-analytics-login-credentials-inputs-outputs/36-stream-analytics-login-credentials-inputs-outputs.png
-[graphic37]: ./media/stream-analytics-login-credentials-inputs-outputs/37-stream-analytics-login-credentials-inputs-outputs.png
-[graphic38]: ./media/stream-analytics-login-credentials-inputs-outputs/38-stream-analytics-login-credentials-inputs-outputs.png
-[graphic39]: ./media/stream-analytics-login-credentials-inputs-outputs/39-stream-analytics-login-credentials-inputs-outputs.png
-[graphic40]: ./media/stream-analytics-login-credentials-inputs-outputs/40-stream-analytics-login-credentials-inputs-outputs.png
-[graphic41]: ./media/stream-analytics-login-credentials-inputs-outputs/41-stream-analytics-login-credentials-inputs-outputs.png
-[graphic42]: ./media/stream-analytics-login-credentials-inputs-outputs/42-stream-analytics-login-credentials-inputs-outputs.png
-[graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
-

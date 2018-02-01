@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: f7dd532e96540fa297cac8fa3736f9f4a6ccd82f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 072a70c1da74b3b50ad8c0a93ee3c079a724d81f
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Ausführen von SAP NetWeaver auf Microsoft Azure SUSE-Linux-VMs
 Dieser Artikel beschreibt verschiedene Aspekte, die Sie berücksichtigen müssen, wenn Sie SAP NetWeaver auf virtuellen Microsoft Azure SUSE-Linux-Computern (VMs) ausführen. Ab 19. Mai 2016 wird SAP NetWeaver offiziell auf virtuellen SUSE-Linux-Computern in Azure unterstützt. Alle Informationen zu Linux-Versionen, SAP-Kernelversionen und sonstigen Voraussetzungen finden Sie im SAP-Hinweis 1928533 „SAP-Anwendungen in Azure: Unterstützte Produkte und Azure-VM-Typen“.
@@ -162,5 +162,5 @@ Wenn Sie mithilfe von Gnome Desktop ein vollständiges SAP-Demosystem auf einem 
    ```
 
 ## <a name="sap-support-for-oracle-on-linux-in-the-cloud"></a>SAP-Unterstützung für Oracle unter Linux in der Cloud
-Es gibt eine Supporteinschränkung von Oracle unter Linux in virtualisierten Umgebungen. Diese Supporteinschränkung ist zwar kein Azure-spezifisches Thema, sollte Ihnen aber bekannt sein. In öffentlichen Clouds wie Azure unterstützt SAP Oracle unter SUSE oder Red Hat nicht. Um dieses Thema zu diskutieren, wenden Sie sich bitte direkt an Oracle.
+Es gibt eine Supporteinschränkung von Oracle unter Linux in virtualisierten Umgebungen. Diese Supporteinschränkung ist zwar kein Azure-spezifisches Thema, sollte Ihnen aber bekannt sein. In öffentlichen Clouds wie Azure unterstützt SAP Oracle unter SUSE oder Red Hat nicht. Zwischenzeitlich wird Oracle DB in Azure vollständig durch SAP unter Oracle Linux unterstützt (siehe SAP-Hinweis 1928533). Wenn andere Kombinationen erforderlich sind, wenden Sie sich direkt an Oracle.
 

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 09/28/2017
-ms.openlocfilehash: f417154c2c2a27b356cefb94739838bd2136e756
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 4e558518a5a1fb7b4cd0a58fe2453fd4c083b46a
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="classify-iris-part-1-prepare-the-data"></a>Klassifizieren von Iris – Teil 1: Vorbereiten der Daten
 Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten vorbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
@@ -64,26 +64,30 @@ Sie können die Anweisungen im Artikel mit der [Schnellstartanleitung zur Erstel
 
    ![Datenansicht](media/tutorial-classifying-iris/data_view.png)
 
-3. Behalten Sie die Standardwerte bei, und wählen Sie die Schaltfläche **Weiter**.  
+3. Wählen Sie **Textdateien (*.csv, .json, .txt.,...)**, und klicken Sie auf **Weiter**.
+   ![Datenquelle](media/tutorial-classifying-iris/data-source.png)
+   
+
+4. Navigieren Sie zur Datei **iris.csv**, und klicken Sie auf **Weiter**.  
  
    ![Auswählen von „iris“](media/tutorial-classifying-iris/select_iris_csv.png)
 
    >[!IMPORTANT]
    >Achten Sie darauf, dass Sie für diese Übung die Datei **iris.csv** aus dem aktuellen Projektverzeichnis auswählen. Sonst kann es sein, dass die nachfolgenden Schritte fehlschlagen.
    
-4. Klicken Sie nach dem Auswählen der Datei auf die Schaltfläche **Fertig stellen**.
+5. Übernehmen Sie die Standardwerte, und klicken Sie auf **Fertig stellen**.
 
-4. Eine neue Datei mit dem Namen **iris-1.dsource** wird erstellt. Die Datei ist mit dem Zusatz „-1“ eindeutig benannt, da das Beispielprojekt bereits über eine nicht nummerierte Datei **iris.dsource** verfügt.  
+6. Eine neue Datei mit dem Namen **iris-1.dsource** wird erstellt. Die Datei ist mit dem Zusatz „-1“ eindeutig benannt, da das Beispielprojekt bereits über eine nicht nummerierte Datei **iris.dsource** verfügt.  
 
    Die Datei wird geöffnet, und die Daten werden angezeigt. Diesem Dataset werden automatisch mehrere Spaltenüberschriften von **Column1** bis **Column5** hinzugefügt. Scrollen Sie nach unten, und beachten Sie, dass die letzte Zeile des Datasets leer ist. Die Zeile ist leer, weil die CSV-Datei einen zusätzlichen Zeilenumbruch enthält.
 
    ![Iris-Datenansicht](media/tutorial-classifying-iris/iris_data_view.png)
 
-5. Wählen Sie die Schaltfläche **Metriken**. Sehen Sie sich die Histogramme an. Für jede Spalte wurde ein vollständiger Satz mit Statistiken berechnet. Sie können auch die Schaltfläche **Daten** wählen, um die Daten erneut anzuzeigen. 
+7. Wählen Sie die Schaltfläche **Metriken**. Sehen Sie sich die Histogramme an. Für jede Spalte wurde ein vollständiger Satz mit Statistiken berechnet. Sie können auch die Schaltfläche **Daten** wählen, um die Daten erneut anzuzeigen. 
 
    ![Iris-Datenansicht](media/tutorial-classifying-iris/iris_metrics_view.png)
 
-6. Wählen Sie die Schaltfläche **Vorbereiten**. Das Dialogfeld **Vorbereiten** wird geöffnet. 
+8. Wählen Sie die Schaltfläche **Vorbereiten**. Das Dialogfeld **Vorbereiten** wird geöffnet. 
 
    Das Beispielprojekt enthält die Datei **iris.dprep**. Standardmäßig werden Sie aufgefordert, im bereits vorhandenen Datenvorbereitungspaket **iris.dprep** einen neuen Datenfluss zu erstellen. 
 
@@ -93,27 +97,27 @@ Sie können die Anweisungen im Artikel mit der [Schnellstartanleitung zur Erstel
 
    Ein neues Datenvorbereitungspaket mit dem Namen **iris-1.dprep** wird erstellt und im Editor für die Vorbereitung von Daten geöffnet.
 
-7. Nun führen wir einige einfache Datenvorbereitungsaufgaben durch. Benennen Sie die Spaltennamen um. Wählen Sie jeweils eine Spaltenüberschrift aus, damit der Text der Überschrift bearbeitet werden kann. 
+9. Nun führen wir einige einfache Datenvorbereitungsaufgaben durch. Benennen Sie die Spaltennamen um. Wählen Sie jeweils eine Spaltenüberschrift aus, damit der Text der Überschrift bearbeitet werden kann. 
 
    Geben Sie für die fünf Spalten **Sepal Length** (Länge des Kelchblatts), **Sepal Width** (Breite des Kelchblatts), **Petal Length** (Länge des Kronblatts), **Petal Width** (Breite des Kronblatts) bzw. **Species** (Art) ein.
 
    ![Umbenennen der Spalten](media/tutorial-classifying-iris/rename_column.png)
 
-8. Wählen Sie zum Zählen von unterschiedlichen Werten die Spalte **Species** aus, und klicken Sie mit der rechten Maustaste darauf, um sie zu markieren. Wählen Sie im Dropdownmenü die Option **Value Counts** (Wertanzahl). 
+10. Wählen Sie zum Zählen von unterschiedlichen Werten die Spalte **Species** aus, und klicken Sie mit der rechten Maustaste darauf, um sie zu markieren. Wählen Sie im Dropdownmenü die Option **Value Counts** (Wertanzahl). 
 
    ![Auswählen der Wertanzahl](media/tutorial-classifying-iris/value_count.png)
 
    Der Bereich **Inspektoren** wird geöffnet, und es wird ein Histogramm mit vier Balken angezeigt. Die Zielspalte enthält die drei unterschiedlichen Werte **Iris_virginica**, **Iris_versicolor** und **Iris-setosa** und zusätzlich den Wert **(null)**.
 
-9. Wählen Sie zum Herausfiltern von NULL-Werten den Balken des Graphen aus, der für den NULL-Wert steht. Es ist eine Zeile mit dem Wert **(null)** vorhanden. Wählen Sie das Minuszeichen (**-**), um diese Zeile zu entfernen.
+11. Wählen Sie zum Herausfiltern von NULL-Werten den Balken des Graphen aus, der für den NULL-Wert steht. Es ist eine Zeile mit dem Wert **(null)** vorhanden. Wählen Sie das Minuszeichen (**-**), um diese Zeile zu entfernen.
 
    ![Histogramm mit Wert-Anzahl](media/tutorial-classifying-iris/filter_out.png)
 
-10. Beachten Sie die einzelnen Schritte im Bereich **SCHRITTE**. Als Sie die Spalten umbenannt und die Zeilen mit den NULL-Werten gefiltert haben, wurde jede Aktion als Datenvorbereitungsschritt aufgezeichnet. Sie können die einzelnen Schritte bearbeiten, um die Einstellungen anzupassen, und die Schritte neu anordnen und entfernen.
+12. Beachten Sie die einzelnen Schritte im Bereich **SCHRITTE**. Als Sie die Spalten umbenannt und die Zeilen mit den NULL-Werten gefiltert haben, wurde jede Aktion als Datenvorbereitungsschritt aufgezeichnet. Sie können die einzelnen Schritte bearbeiten, um die Einstellungen anzupassen, und die Schritte neu anordnen und entfernen.
 
    ![Schritte](media/tutorial-classifying-iris/steps.png)
 
-11. Schließen Sie den Editor für die Vorbereitung von Daten. Wählen Sie auf der Registerkarte **iris-1** mit dem Graphsymbol die Option **Schließen** (x). Ihre Arbeit wird automatisch in der Datei **iris-1.dprep** unter der Überschrift **Data Preparations** (Datenvorbereitungen) gespeichert.
+13. Schließen Sie den Editor für die Vorbereitung von Daten. Wählen Sie auf der Registerkarte **iris-1** mit dem Graphsymbol die Option **Schließen** (x). Ihre Arbeit wird automatisch in der Datei **iris-1.dprep** unter der Überschrift **Data Preparations** (Datenvorbereitungen) gespeichert.
 
 ## <a name="generate-pythonpyspark-code-to-invoke-a-data-preparation-package"></a>Generieren von Python/PySpark-Code zum Aufrufen eines Datenvorbereitungspakets
 

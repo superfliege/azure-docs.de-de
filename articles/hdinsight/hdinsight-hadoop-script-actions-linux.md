@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
+ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: 0cef360de3b7a9be01536b0ebe90769c89e7c432
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: ddf5db3e61633c45e388e161e165637521803094
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
@@ -36,7 +36,7 @@ Skriptaktionen können mithilfe der folgenden Methoden angewendet werden:
 
 | Verwenden Sie diese Methode, um ein Skript anzuwenden... | Während der Clustererstellung... | In einem ausgeführten Cluster... |
 | --- |:---:|:---:|
-| Azure-Portal |✓  |✓ |
+| Azure-Portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure-Befehlszeilenschnittstelle |&nbsp; |✓ |
 | HDInsight .NET-SDK |✓ |✓ |
@@ -53,7 +53,7 @@ Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln,
 * [Einrichten stabiler Verknüpfungen mit Skriptressourcen](#bPS2)
 * [Verwenden vorkompilierter Ressourcen](#bPS4)
 * [Sicherstellen, dass das Clusteranpassungsskript idempotent ist](#bPS3)
-* [Sicherstellen einer hohen Verfügbarkeit der Clusterarchitektur](#bPS5)
+* [Sicherstellen der Hochverfügbarkeit der Clusterarchitektur](#bPS5)
 * [Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure-Blobspeicher](#bPS6)
 * [Schreiben von Informationen in STDOUT und STDERR](#bPS7)
 * [Speichern von Dateien im ASCII-Format mit LF-Zeilenenden](#bps8)
@@ -118,7 +118,7 @@ Die bewährte Methode ist das Herunterladen und Archivieren aller Daten in einem
 > [!IMPORTANT]
 > Bei dem verwendeten Speicherkonto muss es sich um das Standardspeicherkonto des Clusters oder um einen öffentlichen, schreibgeschützten Container eines anderen Speicherkontos handeln.
 
-Die von Microsoft bereitgestellten Beispiele sind beispielsweise im Speicherkonto [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) gespeichert. Dabei handelt es sich um einen öffentlichen, schreibgeschützten Container, der vom HDInsight-Team verwaltet wird.
+Die von Microsoft bereitgestellten Beispiele sind beispielsweise im Speicherkonto [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) gespeichert. Bei diesem Speicherort handelt es sich um einen öffentlichen, schreibgeschützten Container, der vom HDInsight-Team verwaltet wird.
 
 ### <a name="bPS4"></a>Verwenden vorkompilierter Ressourcen
 
@@ -135,7 +135,7 @@ Ein Skript, dass Konfigurationsdateien modifiziert, sollte z.B. keine doppelten 
 Linux-basierte HDInsight-Cluster stellen zwei Hauptknoten bereit, die im Cluster aktiv sind. Skriptaktionen werden auf beiden Knoten ausgeführt. Wenn die von Ihnen installierten Komponenten nur einen Hauptknoten erwarten, installieren Sie die Komponenten nicht auf beiden Hauptknoten.
 
 > [!IMPORTANT]
-> Dienste, die im Rahmen von HDInsight bereitgestellt werden, wurden entwickelt, um bei Bedarf ein Failover zwischen den beiden Hauptknoten auszuführen. Diese Funktion gilt nicht für benutzerdefinierte Komponenten, die mit Skriptaktionen installiert wurden. Wenn Sie eine hohe Verfügbarkeit für benutzerdefinierte Komponenten benötigen, müssen Sie Ihren eigenen Failovermechanismus implementieren.
+> Dienste, die im Rahmen von HDInsight bereitgestellt werden, wurden entwickelt, um bei Bedarf ein Failover zwischen den beiden Hauptknoten auszuführen. Diese Funktion gilt nicht für benutzerdefinierte Komponenten, die mit Skriptaktionen installiert wurden. Wenn Sie Hochverfügbarkeit für benutzerdefinierte Komponenten benötigen, müssen Sie Ihren eigenen Failovermechanismus implementieren.
 
 ### <a name="bPS6"></a>Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure-Blobspeicher
 
@@ -156,13 +156,13 @@ HDInsight protokolliert Skriptausgaben, die in STDOUT oder STDERR geschrieben we
 > [!NOTE]
 > Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden, und ein Fehler bei der Erstellung auftritt, finden Sie im Abschnitt zur Problembehandlung unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
 
-Die meisten Dienstprogramme und Installationspakete schreiben bereits Informationen in STDOUT und STDERR. Möglicherweise möchten Sie jedoch weitere Protokollierungsinformationen hinzufügen. Verwenden Sie `echo`, um Text an STDOUT zu senden. Beispiel:
+Die meisten Dienstprogramme und Installationspakete schreiben bereits Informationen in STDOUT und STDERR. Möglicherweise möchten Sie jedoch weitere Protokollierungsinformationen hinzufügen. Verwenden Sie `echo`, um Text an STDOUT zu senden. Beispiel: 
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Standardmäßig sendet `echo` die Zeichenfolge an STDOUT. Soll dieser an STDERR geleitet werden, setzen Sie `>&2` vor `echo`. Beispiel:
+Standardmäßig sendet `echo` die Zeichenfolge an STDOUT. Soll dieser an STDERR geleitet werden, setzen Sie `>&2` vor `echo`. Beispiel: 
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -230,7 +230,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 Folgende Hilfsprogramme stehen für das Verwenden in Ihrem Skript zur Verfügung:
 
-| Hilfsprogramm | Beschreibung |
+| Hilfsprogramm | BESCHREIBUNG |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Lädt eine Datei aus dem Quell-URI in den angegebenen Dateipfad herunter. Standardmäßig wird eine vorhandene Datei nicht überschrieben. |
 | `untar_file TARFILE DESTDIR` |Extrahiert eine TAR-Datei (mit `-xf`) in das Zielverzeichnis |
@@ -314,7 +314,7 @@ fi
 
 ## <a name="deployScript"></a>Prüfliste für die Bereitstellung einer Skriptaktion
 
-Es folgen unsere Schritte bei der Vorbereitung der Bereitstellung dieser Skripts:
+Es folgen die Schritte zur Vorbereitung der Bereitstellung eines Skripts:
 
 * Legen Sie Daten mit den benutzerdefinierten Skripts an einem Speicherort ab, auf den die Clusterknoten während der Bereitstellung zugreifen können. Z.B. der Standardspeicher für den Cluster Dateien können außerdem in öffentlich lesbaren Hostingdiensten gespeichert werden.
 * Vergewissern Sie sich, dass das Skript idempotent ist. Damit kann das Skript mehrfach auf demselben Knoten ausgeführt werden.
@@ -356,7 +356,7 @@ Dieses Problem tritt am häufigsten auf, wenn das Skript in einer Windows-Umgebu
 > [!NOTE]
 > Mit den folgenden annähernd gleichwertigen Befehlen sollten sich die CR-LF-Zeilenenden in LF ändern lassen. Wählen Sie einen Befehl entsprechend den in Ihrem System verfügbaren Dienstprogrammen aus.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 | --- | --- |
 | `unix2dos -b INFILE` |Die ursprüngliche Datei wird mit einer BAK-Erweiterung gesichert |
 | `tr -d '\r' < INFILE > OUTFILE` |OUTFILE enthält eine Version, die ausschließlich LF-Zeilenenden umfasst |

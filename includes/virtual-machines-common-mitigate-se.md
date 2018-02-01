@@ -1,9 +1,17 @@
 
-**Letzte Aktualisierung des Dokuments**: 7. Januar, 3:30 Uhr MEZ
+
+
+**Letzte Aktualisierung des Dokuments**: 22. Januar, 15:00 Uhr PST
 
 Eine vor kurzem öffentlich gemachte [neue Art von CPU-Sicherheitsrisiken](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), die als „Seitenkanalangriffe mit spekulativer Ausführung“ bezeichnet wird, hatte Fragen von Kunden zur Folge, sich mehr Klarheit wünschen.  
 
 Die Infrastruktur, in der Azure ausgeführt und Kundenworkloads voneinander isoliert werden, ist geschützt.  Dies bedeutet, dass andere Kunden in Azure diese Sicherheitsrisiken nicht für Angriffe auf Ihre Anwendung ausnutzen können.
+
+> [!NOTE] 
+> Die zuvor am 3. Januar 2018 angekündigten Azure-Maßnahmen sind von den neuesten [aktualisierten Anweisungen](https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners/) von Intel nicht betroffen. Diese neuen Informationen ziehen keine zusätzlichen Wartungsaktivitäten für Kunden-VMs nach sich.
+>
+> Diese bewährten Methoden werden im Zuge der Microcodeupdates durch Hardwareanbieter weiterhin aktualisiert. Halten Sie Ausschau nach der aktualisierten Anleitung.
+>
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>Halten Sie Ihre Betriebssysteme auf dem neuesten Stand
 
@@ -40,11 +48,6 @@ Wenn Sie Windows verwenden und nicht vertrauenswürdigen Code hosten, müssen Si
 
 ### <a name="linux"></a>Linux
 Wenn Sie Linux verwenden und nicht vertrauenswürdigen Code hosten, müssen Sie auch Linux auf eine neuere Version aktualisieren, die KPTI (Kernel Page-Table Isolation) implementiert. Dadurch werden die Seitentabellen im Kernelspeicher von denen im Benutzerbereich getrennt. Diese Risikominderungen erfordern ein Update des Linux-Betriebssystems und können bei Verfügbarkeit von Ihrem Distributionsanbieter bezogen werden. Der Anbieter Ihres Betriebssystems kann Auskunft darüber geben, ob Schutzmaßnahmen standardmäßig aktiviert oder deaktiviert sind.
-
-
-
-
-
 
 
 

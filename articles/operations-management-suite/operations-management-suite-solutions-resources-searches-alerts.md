@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2017
+ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2388626dd68ea1911cdfb3d6a84e70f6bf3cc6
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: e2036da052e998797d860db2eadfd2ac5c968aae
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der OMS-Verwaltungslösung (Vorschau)
 
@@ -45,17 +45,14 @@ Der Name des Arbeitsbereichs ist im Namen jeder Log Analytics-Ressource enthalte
 ## <a name="log-analytics-api-version"></a>Log Analytics-API-Version
 Alle in einer Resource Manager-Vorlage definierten Log Analytics-Ressourcen verfügen über die Eigenschaft **apiVersion**, die die Version der API definiert, die von der Ressource verwendet werden soll.  Diese Version unterscheidet sich für Ressourcen, die die [ältere und die aktualisierte Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) verwenden.  
 
- In der folgenden Tabelle werden die Log Analytics-API-Versionen für ältere und aktualisierte Arbeitsbereiche angegeben sowie Beispieabfragen zum Festlegen der jeweiligen Syntax. 
+ In der folgenden Tabelle werden die Log Analytics-API-Versionen für gespeicherte Suchvorgänge in älteren und aktualisierten Arbeitsbereichen angegeben: 
 
-| Arbeitsbereichsversion | API-Version | Beispielabfrage |
+| Arbeitsbereichsversion | API-Version | Abfragen |
 |:---|:---|:---|
-| V1 (Legacy)   | 2015-11-01-preview | Type=Event EventLevelName = Error             |
-| V2 (Upgrade) | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
+| V1 (Legacy)   | 2015-11-01-preview | Altes Format.<br> Beispiel: Type=Event EventLevelName = Error  |
+| V2 (Upgrade) | 2015-11-01-preview | Altes Format.  Bei der Installation in das aktualisierte Format konvertiert.<br> Beispiel: Type=Event EventLevelName = Error<br>Konvertiert in: Event &#124; where EventLevelName == "Error"  |
+| V2 (Upgrade) | 2017-03-03-preview | Aktualisiertes Format. <br>Beispiel: Event &#124; where EventLevelName == "Error"  |
 
-Beachten Sie folgende Vorlagen, für die Arbeitsbereiche von unterschiedlichen Versionen unterstützt werden.
-
-- Vorlagen, die ältere Abfragesprachen verwenden, können in einem älteren oder aktualisierten Arbeitsbereich installiert werden.  Wenn Sie in einem aktualisierten Arbeitsbereich installiert werden, werden Abfragen während der Ausführung durch den Benutzer in die neue Sprache konvertiert.
-- Vorlagen, die die aktualisierte Abfragesprache verwenden, können nur in aktualisierten Arbeitsbereichen installiert werde.
 
 
 ## <a name="saved-searches"></a>Gespeicherte Suchen
@@ -82,7 +79,7 @@ Ressourcen für [Gespeicherte Suchen in Log Analytics](../log-analytics/log-anal
 
 Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschrieben. 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | category | Die Kategorie für die gespeicherte Suche.  Alle gespeicherten Suchen in derselben Lösung verwenden häufig gemeinsam eine einzige Kategorie, sodass sie gemeinsam in der Konsole gruppiert werden. |
 | displayname | Name, der für die gespeicherte Suche im Portal angezeigt wird |
@@ -91,7 +88,7 @@ Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschr
 > [!NOTE]
 > Sie müssen möglicherweise Escape-Zeichen in der Abfrage verwenden, wenn diese Zeichen enthält, die als JSON interpretiert werden könnten.  Falls Ihre Abfrage **Typ:AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"** lautete, sollte in der Lösungsdatei Folgendes stehen: **Typ:AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
 
-## <a name="alerts"></a>Warnungen
+## <a name="alerts"></a>Alerts
 [Log Analytics-Warnungen](../log-analytics/log-analytics-alerts.md) werden anhand von Warnungsregeln erstellt, die in regelmäßigen Abständen eine gespeicherte Suche ausführen.  Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion ausgeführt.  
 
 Warnungsregeln in einer Verwaltungslösung bestehen aus den folgenden drei verschiedenen Ressourcen:
@@ -128,7 +125,7 @@ Eine gespeicherte Suche kann einen oder mehrere Zeitpläne aufweisen, wobei jede
 
 Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschrieben.
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
 | Aktiviert       | Ja | Gibt an, ob die Warnung beim Erstellen aktiviert wird. |
 | interval      | Ja | Abfrageintervall in Minuten |
@@ -187,18 +184,18 @@ Warnungsaktionen weisen die folgende Struktur auf:  Dies schließt allgemeine Va
 
 Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabellen beschrieben:
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
 | Typ | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
-| Name | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
-| Beschreibung | Nein | Eine optionale Beschreibung der Warnung |
+| NAME | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
+| BESCHREIBUNG | Nein  | Eine optionale Beschreibung der Warnung |
 | Schweregrad | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Critical** (Kritisch)<br>**Warning**<br>**Informational** (Nur zu Informationszwecken) |
 
 
 ##### <a name="threshold"></a>Schwellenwert
 Dieser Abschnitt ist ein Pflichtabschnitt.  Er definiert die Eigenschaften für den Warnungsschwellenwert.
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
 | Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
 | Wert | Ja | Der Wert zum Vergleich der Ergebnisse |
@@ -210,7 +207,7 @@ Dieser Abschnitt ist optional.  Fügen Sie ihn für eine Warnung aufgrund metris
 > [!NOTE]
 > Warnungen aufgrund metrischer Messungen befinden sich derzeit in der öffentlichen Vorschau. 
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
 | TriggerCondition | Ja | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
 | Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
@@ -219,28 +216,28 @@ Dieser Abschnitt ist optional.  Fügen Sie ihn für eine Warnung aufgrund metris
 ##### <a name="throttling"></a>Drosselung
 Dieser Abschnitt ist optional.  Beziehen Sie diesen Abschnitt mit ein, wenn nach dem Erstellen einer Warnung Warnungen von derselben Regel eine bestimmte Zeit lang unterdrückt werden sollen.
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
 | DurationInMinutes | Ja, wenn das Drosselungselement enthalten ist | Dauer der Unterdrückung von Warnungen in Minuten, wenn eine Warnung aufgrund derselben Regel erstellt wird. |
 
 ##### <a name="emailnotification"></a>EmailNotification
  Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn bei der Warnung eine E-Mail an mindestens einen Empfänger gesendet werden soll.
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
 | Empfänger | Ja | Durch Kommas getrennte Liste der E-Mail-Adressen, an die eine Benachrichtigung gesendet wird, wenn eine Warnung wie im folgenden Beispiel erstellt wird.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Betreff | Ja | Die Betreffzeile der E-Mail |
-| Anhang | Nein | Anlagen werden derzeit nicht unterstützt.  Wenn dieses Element enthalten ist, muss es **Keine** lauten. |
+| Antragsteller | Ja | Die Betreffzeile der E-Mail |
+| Anhang | Nein  | Anlagen werden derzeit nicht unterstützt.  Wenn dieses Element enthalten ist, muss es **Keine** lauten. |
 
 
 ##### <a name="remediation"></a>Wiederherstellung
 Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn als Reaktion auf die Warnung ein Runbook gestartet werden soll. |
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
 | RunbookName | Ja | Der Name des Runbooks, das gestartet werden soll |
 | WebhookUri | Ja | Der URI des Webhooks für das Runbook |
-| Expiry | Nein | Datum und Uhrzeit des Ablaufs der Wiederherstellung |
+| Expiry | Nein  | Datum und Uhrzeit des Ablaufs der Wiederherstellung |
 
 #### <a name="webhook-actions"></a>Webhookaktionen
 
@@ -266,12 +263,12 @@ Wenn die Warnung einen Webhook aufruft, benötigt sie eine Aktionsressource mit 
 
 Die Eigenschaften für Webhook-Aktionsressourcen werden in den folgenden Tabellen beschrieben:
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| Typ | Ja | Der Typ der Aktion.  Dieser lautet für Webhookaktionen **Webhook**. |
-| Name | Ja | Der Anzeigename für die Aktion.  Dieser wird nicht in der Konsole angezeigt. |
+| type | Ja | Der Typ der Aktion.  Dieser lautet für Webhookaktionen **Webhook**. |
+| name | Ja | Der Anzeigename für die Aktion.  Dieser wird nicht in der Konsole angezeigt. |
 | wehookUri | Ja | URI für den Webhook |
-| customPayload | Nein | Benutzerdefinierte Nutzlast, die an den Webhook gesendet wird. Das Format hängt davon ab, was vom Webhook erwartet wird. |
+| customPayload | Nein  | Benutzerdefinierte Nutzlast, die an den Webhook gesendet wird. Das Format hängt davon ab, was vom Webhook erwartet wird. |
 
 
 

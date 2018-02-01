@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT-Geräteverwaltung mit iothub-explorer | Microsoft-Dokumentation"
-description: "Verwenden Sie das CLI-Tool iothub-explorer mit direkten Methoden und Optionen für die Verwaltung gewünschter Eigenschaften von Gerätezwillingen für die Azure IoT Hub-Geräteverwaltung."
+description: "Verwenden Sie das Befehlszeilenschnittstellentool iothub-explorer mit direkten Methoden sowie Optionen für die Verwaltung der gewünschten Eigenschaften von Gerätezwillingen für die Azure IoT Hub-Geräteverwaltung."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: xshi
-ms.openlocfilehash: 5b7a5057bdfb5920fbb5759bed1f5561cfa1d7e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02d3241ae4ae515a8c2deaa14f50b5b7dbd4766f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="use-iothub-explorer-for-azure-iot-hub-device-management"></a>Verwenden von iothub-explorer für die Azure IoT Hub-Geräteverwaltung
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 [iothub-explorer](https://github.com/azure/iothub-explorer) ist ein CLI-Tool, das Sie auf einem Hostcomputer ausführen, um Geräteidentitäten in der IoT Hub-Registrierung zu verwalten. Es bietet Verwaltungsoptionen, die Sie zum Ausführen verschiedener Aufgaben verwenden können.
 
 | Verwaltungsoption          | Aufgabe                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+|----------------------------|------------------------------------------------------------------------------------------------------------------------------|
 | Direkte Methoden             | Lassen Sie ein Gerät beispielsweise mit dem Senden von Nachrichten beginnen oder dies beenden, oder starten Sie es neu.                                        |
 | Gewünschte Eigenschaften von Gerätezwillingen    | Setzen Sie ein Gerät in bestimmte Status, stellen Sie z.B. das Leuchten einer grünen LED ein, oder legen Sie das Telemetriesendeintervall auf 30 Minuten fest.         |
 | Berichtete Eigenschaften von Gerätezwillingen   | Rufen Sie den berichteten Status eines Geräts ab. Das Gerät meldet z.B., das die LED jetzt blinkt.                                    |
@@ -54,9 +54,9 @@ Führen Sie iothub-explorer mit verschiedenen Verwaltungsoptionen aus.
 ## <a name="what-you-need"></a>Voraussetzungen
 
 - Abschluss des Tutorials [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), in dem die folgenden Anforderungen behandelt werden:
-  - Ein aktives Azure-Abonnement.
-  - Ein Azure IoT Hub in Ihrem Abonnement.
-  - Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
+- Ein aktives Azure-Abonnement.
+- Ein Azure IoT Hub in Ihrem Abonnement.
+- Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
 - Stellen Sie sicher, dass Ihr Gerät im Verlauf dieses Tutorials mit der Clientanwendung ausgeführt wird.
 - iothub-explorer, [installieren Sie iothub-explorer](https://github.com/azure/iothub-explorer) auf dem Entwicklungscomputer.
 
@@ -114,7 +114,6 @@ Fügen Sie mit folgendem Befehl dem Gerät eine Feldrolle „temperature&humidit
 
 ```bash
 iothub-explorer update-twin <your device id> "{\"tags\":{\"role\":\"temperature&humidity\"}}"
-
 ```
 
 ## <a name="use-iothub-explorer-with-cloud-to-device-messages"></a>Verwenden von iothub-explorer mit C2D-Nachrichten

@@ -1,0 +1,255 @@
+---
+title: "Bereitstellen eines Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET) | Microsoft-Dokumentation"
+description: "Bereitstellen Ihres Geräts für eine einzelne IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET)"
+services: iot-dps
+keywords: 
+author: msebolt
+ms.author: v-masebo
+ms.date: 09/05/2017
+ms.topic: tutorial
+ms.service: iot-dps
+documentationcenter: 
+manager: timlt
+ms.devlang: na
+ms.custom: mvc
+ms.openlocfilehash: 6919f962d853faa572ee7ad5d0cb9aeacd3bd2b6
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/20/2018
+---
+# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrieren des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET)
+
+Im vorherigen Tutorial haben Sie erfahren, wie ein Gerät eingerichtet wird, um eine Verbindung mit Ihrem Device Provisioning-Dienst herzustellen. In diesem Tutorial wird beschrieben, wie Sie diesen Dienst zum Bereitstellen Ihres Geräts auf einem einzelnen IoT Hub verwenden, indem Sie sowohl die **_Individuelle Registrierung_** als auch **_Registrierungsgruppen_** nutzen. Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
+
+> [!div class="checklist"]
+> * Registrieren des Geräts
+> * Starten des Geräts
+> * Sicherstellen, dass das Gerät registriert ist
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Bevor Sie fortfahren, konfigurieren Sie auf jeden Fall Ihr Gerät und das zugehörige *Hardwaresicherheitsmodul* (HSM), wie in dem Tutorial [Einrichten eines bereitzustellenden Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts](./tutorial-set-up-device.md) erläutert wird.
+
+* Visual Studio 2015 oder Visual Studio 2017
+
+> [!NOTE]
+> Visual Studio ist nicht erforderlich. Die Installation von [.NET](https://www.microsoft.com/net) ist ausreichend, und Entwickler können ihren bevorzugten Editor unter Windows oder Linux verwenden.  
+
+In diesem Tutorial wird der Zeitraum während des bzw. direkt nach dem Hardwareherstellungsprozess beschrieben, in dem Geräteinformationen für den Provisioning-Dienst hinzugefügt werden. Dieser Code wird normalerweise auf einem PC oder einem Gerät in einem Werk ausgeführt, auf dem die Ausführung von .NET-Code möglich ist. Er sollte nicht den Geräten selbst hinzugefügt werden.
+
+
+## <a name="enroll-the-device"></a>Registrieren des Geräts
+
+Bei diesem Schritt werden die einzigartigen Sicherheitsartefakte des Geräts zum Device Provisioning-Dienst hinzugefügt. Zu diesen Sicherheitsartefakten gehören Folgende:
+
+- Für TPM-basierte Geräte:
+    - Der *Endorsement Key*, der für jeden TPM-Chip oder jede TPM-Simulation eindeutig ist. Weitere Informationen finden Sie im Artikel [Grundlegendes zum TPM Endorsement Key](https://technet.microsoft.com/library/cc770443.aspx).
+    - Die *Registrierungs-ID*, die zur eindeutigen Identifizierung eines Geräts im Namespace/Bereich verwendet wird. Diese ist eventuell mit der Geräte-ID identisch. Die ID ist für jedes Gerät erforderlich. Bei TPM-basierten Geräten kann die Registrierungs-ID vom TMP selbst abgeleitet werden, z.B. ein SHA-256-Hash des TPM Endorsement Key.
+
+- Für X.509-basierte Geräte:
+    - Das [für das Gerät ausgestellte X.509-Zertifikat](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx), entweder in Form einer *PEM*- oder einer *CER*-Datei. Für die individuelle Registrierung müssen Sie für Ihr X.509-System das *untergeordnete Zertifikat* verwenden, für Registrierungsgruppen dagegen das *Stammzertifikat* oder ein gleichwertiges *Signaturzertifikat*.
+    - Die *Registrierungs-ID*, die zur eindeutigen Identifizierung eines Geräts im Namespace/Bereich verwendet wird. Diese ist eventuell mit der Geräte-ID identisch. Die ID ist für jedes Gerät erforderlich. Für X.509-basierte Geräte wird die Registrierungs-ID vom allgemeinen Namen des Zertifikats (Common Name, CN) abgeleitet. Weitere Informationen zu diesen Anforderungen finden Sie im Artikel mit den [Konzepten für Geräte](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-device).
+
+Es gibt zwei Möglichkeiten zum Registrieren des Geräts beim Device Provisioning-Dienst:
+
+- **Individuelle Registrierungen** Diese stellen Einträge für ein einzelnes Gerät dar, das beim Device Provisioning-Dienst registriert werden kann. Individuelle Registrierungen verwenden X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM) als Nachweismechanismen. Individuelle Registrierungen sollten für Geräte, die besondere Erstkonfigurationen erfordern, oder für Geräte verwendet werden, die nur SAS-Token über das TPM als Nachweismechanismus verwenden können. Bei individuellen Registrierungen ist möglicherweise die gewünschte IoT Hub-Geräte-ID angegeben.
+
+- **Registrierungsgruppen** Diese stellen Gruppen von Geräten dar, die einen bestimmten Nachweismechanismus gemeinsam nutzen. Es wird empfohlen, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind. Registrierungen sind auf X.509 beschränkt, und in der dazugehörigen X.509-Zertifikatkette wird ein gemeinsames Signaturzertifikat genutzt.
+
+### <a name="enroll-the-device-using-individual-enrollments"></a>Registrieren des Geräts mit individuellen Registrierungen
+
+1. Erstellen Sie in Visual Studio ein Visual C#-Konsolenanwendungsprojekt, indem Sie die Projektvorlage **Konsolen-App** verwenden. Geben Sie dem Projekt den Namen **DeviceProvisioning**.
+    
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **DeviceProvisioning**, und klicken Sie dann auf **NuGet-Pakete verwalten...**.
+
+1. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen**, und suchen Sie nach **microsoft.azure.devices.provisioning.service**. Wählen Sie den Eintrag aus, und klicken Sie auf **Installieren**, um das Paket **Microsoft.Azure.Devices.Provisioning.Service** zu installieren, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das NuGet-Paket mit dem [Azure IoT-Device Provisioning-Dienst-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
+
+1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+   
+    ```csharp
+    using Microsoft.Azure.Devices.Provisioning.Service;
+    ```
+
+1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die DPS-Verbindungszeichenfolge, die im vorherigen Abschnitt angegeben wurde.
+   
+    ```csharp
+    static readonly string ServiceConnectionString = "{DPS connection string}";
+
+    private const string SampleRegistrationId = "sample-individual-csharp";
+    private const string SampleTpmEndorsementKey =
+            "AToAAQALAAMAsgAgg3GXZ0SEs/gakMyNRqXXJP1S124GUgtk8qHaGzMUaaoABgCAAEMAEAgAAAAAAAEAxsj2gUS" +
+            "cTk1UjuioeTlfGYZrrimExB+bScH75adUMRIi2UOMxG1kw4y+9RW/IVoMl4e620VxZad0ARX2gUqVjYO7KPVt3d" +
+            "yKhZS3dkcvfBisBhP1XH9B33VqHG9SHnbnQXdBUaCgKAfxome8UmBKfe+naTsE5fkvjb/do3/dD6l4sGBwFCnKR" +
+            "dln4XpM03zLpoHFao8zOwt8l/uP3qUIxmCYv9A7m69Ms+5/pCkTu/rK4mRDsfhZ0QLfbzVI6zQFOKF/rwsfBtFe" +
+            "WlWtcuJMKlXdD8TXWElTzgh7JS4qhFzreL0c1mI0GCj+Aws0usZh7dLIVPnlgZcBhgy1SSDQMQ==";
+    private const string OptionalDeviceId = "myCSharpDevice";
+    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
+    ```
+
+1. Fügen Sie Folgendes hinzu, um die Registrierung für das Gerät zu implementieren:
+
+    ```csharp
+    static async Task SetRegistrationDataAsync()
+    {
+        Console.WriteLine("Starting SetRegistrationData");
+
+        Attestation attestation = new TpmAttestation(SampleTpmEndorsementKey);
+
+        IndividualEnrollment individualEnrollment = new IndividualEnrollment(SampleRegistrationId, attestation);
+
+        individualEnrollment.DeviceId = OptionalDeviceId;
+        individualEnrollment.ProvisioningStatus = OptionalProvisioningStatus;
+
+        Console.WriteLine("\nAdding new individualEnrollment...");
+        var serviceClient = ProvisioningServiceClient.CreateFromConnectionString(ServiceConnectionString);
+
+        IndividualEnrollment individualEnrollmentResult =
+            await serviceClient.CreateOrUpdateIndividualEnrollmentAsync(individualEnrollment).ConfigureAwait(false);
+
+        Console.WriteLine("\nIndividualEnrollment created with success.");
+        Console.WriteLine(individualEnrollmentResult);
+    }
+    ```
+
+1. Fügen Sie abschließend der **Main**-Methode den folgenden Code hinzu, um die Verbindung mit dem IoT Hub zu öffnen und mit der Registrierung zu beginnen:
+   
+    ```csharp
+    try
+    {
+        Console.WriteLine("IoT Device Provisioning example");
+
+        SetRegistrationDataAsync().GetAwaiter().GetResult();
+            
+        Console.WriteLine("Done, hit enter to exit.");
+        Console.ReadLine();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine();
+        Console.WriteLine("Error in sample: {0}", ex.Message);
+    }
+    ```
+        
+1. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und klicken Sie dann auf **Startprojekte festlegen...**. Wählen Sie **Einzelnes Startprojekt** und dann im Dropdownmenü das Projekt **DeviceProvisioning** aus.  
+
+1. Führen Sie die .NET-Geräte-App **DeviceProvisiong** aus. Die Bereitstellung für das Gerät wird eingerichtet: 
+
+    ![Ausführung der individuellen Registrierung](./media/tutorial-net-provision-device-to-hub/individual.png)
+
+Wenn das Gerät erfolgreich registriert ist, sollte es wie folgt im Portal angezeigt werden:
+
+   ![Erfolgreiche Registrierung im Portal](./media/tutorial-net-provision-device-to-hub/individual-portal.png)
+
+### <a name="enroll-the-device-using-enrollment-groups"></a>Registrieren des Geräts mit Registrierungsgruppen
+
+> [!NOTE]
+> Für das Registrierungsgruppenbeispiel ist ein X.509-Zertifikat erforderlich.
+
+1. Öffnen Sie im Projektmappen-Explorer von Visual Studio das oben erstellte Projekt **DeviceProvisioning**. 
+
+1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+    
+    ```csharp
+    using System.Security.Cryptography.X509Certificates;
+    ```
+
+1. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch den Speicherort des X509-Zertifikats.
+   
+    ```csharp
+    private const string X509RootCertPathVar = "{X509 Certificate Location}";
+    private const string SampleEnrollmentGroupId = "sample-group-csharp";
+    ```
+
+1. Fügen Sie der Datei **Program.cs** Folgendes hinzu, um die Registrierung für die Gruppe zu implementieren:
+
+    ```csharp
+    public static async Task SetGroupRegistrationDataAsync()
+    {
+        Console.WriteLine("Starting SetGroupRegistrationData");
+
+        using (ProvisioningServiceClient provisioningServiceClient =
+                ProvisioningServiceClient.CreateFromConnectionString(ServiceConnectionString))
+        {
+            Console.WriteLine("\nCreating a new enrollmentGroup...");
+
+            var certificate = new X509Certificate2(X509RootCertPathVar);
+
+            Attestation attestation = X509Attestation.CreateFromRootCertificates(certificate);
+
+            EnrollmentGroup enrollmentGroup = new EnrollmentGroup(SampleEnrollmentGroupId, attestation);
+
+            Console.WriteLine(enrollmentGroup);
+            Console.WriteLine("\nAdding new enrollmentGroup...");
+
+            EnrollmentGroup enrollmentGroupResult =
+                await provisioningServiceClient.CreateOrUpdateEnrollmentGroupAsync(enrollmentGroup).ConfigureAwait(false);
+
+            Console.WriteLine("\nEnrollmentGroup created with success.");
+            Console.WriteLine(enrollmentGroupResult);
+        }
+    }
+    ```
+
+1. Fügen Sie abschließend den folgenden Code für die **Main**-Methode ein, um die Verbindung mit dem IoT Hub zu öffnen und mit der Gruppenregistrierung zu beginnen:
+   
+    ```csharp
+    try
+    {
+        Console.WriteLine("IoT Device Group Provisioning example");
+
+        SetGroupRegistrationDataAsync().GetAwaiter().GetResult();
+            
+        Console.WriteLine("Done, hit enter to exit.");
+        Console.ReadLine();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine();
+        Console.WriteLine("Error in sample: {0}", ex.Message);
+    }
+    ```
+
+1. Führen Sie die .NET-Geräte-App **DeviceProvisiong** aus. Die Gruppenbereitstellung für das Gerät wird eingerichtet: 
+
+    ![Ausführung der Gruppenregistrierung](./media/tutorial-net-provision-device-to-hub/group.png)
+
+    Wenn die Gerätegruppe erfolgreich registriert wurde, sollte sie im Portal wie folgt angezeigt werden:
+
+   ![Erfolgreiche Gruppenregistrierung im Portal](./media/tutorial-net-provision-device-to-hub/group-portal.png)
+
+
+## <a name="start-the-device"></a>Starten des Geräts
+
+An dieser Stelle ist Folgendes für die Geräteregistrierung eingerichtet:
+
+1. Ihr Gerät oder eine Gruppe von Geräten ist bei Ihrem Device Provisioning-Dienst registriert. 
+2. Für Ihr Gerät wurde die Sicherheit konfiguriert, und über die Anwendung kann mithilfe des Client-SDK des Device Provisioning-Diensts darauf zugegriffen werden.
+
+Starten Sie das Gerät, damit Ihre Clientanwendung mit der Registrierung bei Ihrem Device Provisioning-Dienst beginnen kann.  
+
+
+## <a name="verify-the-device-is-registered"></a>Sicherstellen, dass das Gerät registriert ist
+
+Nachdem Ihr Gerät gestartet wurde, sollten folgende Aktionen durchgeführt werden. Weitere Einzelheiten finden Sie in der TPM-Simulatorbeispielanwendung [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c). 
+
+1. Das Gerät sendet eine Registrierungsanforderung an Ihren Device Provisioning-Dienst.
+2. Bei TPM-Geräten sendet der Device Provisioning-Dienst eine Registrierungsherausforderung zurück, auf die Ihr Gerät antwortet. 
+3. Nach erfolgreicher Registrierung sendet der Device Provisioning-Dienst den IoT Hub-URI, die Geräte-ID und den verschlüsselten Schlüssel an das Gerät zurück. 
+4. Die IoT Hub-Clientanwendung auf dem Gerät stellt dann eine Verbindung mit Ihrem Hub her. 
+5. Nachdem erfolgreich eine Verbindung mit dem Hub hergestellt wurde, sollte das Gerät im **Device Explorer** von IoT Hub angezeigt werden. 
+
+    ![Erfolgreiche Herstellung einer Verbindung mit dem Hub im Portal](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial haben Sie Folgendes gelernt:
+
+> [!div class="checklist"]
+> * Registrieren des Geräts
+> * Starten des Geräts
+> * Sicherstellen, dass das Gerät registriert ist
+
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie mehrere Geräte für Hubs mit Lastausgleich bereitgestellt werden. 
+
+> [!div class="nextstepaction"]
+> [Bereitstellen von Geräten für IoT Hubs mit Lastausgleich](./tutorial-provision-multiple-hubs.md)

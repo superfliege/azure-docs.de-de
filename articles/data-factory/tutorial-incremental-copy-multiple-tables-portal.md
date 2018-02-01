@@ -1,0 +1,735 @@
+---
+title: Inkrementelles Kopieren von mehreren Tabellen mithilfe von Azure Data Factory | Microsoft-Dokumentation
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine Azure SQL-Datenbank kopiert werden.
+services: data-factory
+documentationcenter: 
+author: linda33wj
+manager: jhubbard
+editor: spelluru
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 01/20/2018
+ms.author: jingwang
+ms.openlocfilehash: c79bce401b0f1d67d7955f4c97a5dfac5008be0d
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/23/2018
+---
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
+In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
+
+In diesem Tutorial führen Sie die folgenden Schritte aus:
+
+> [!div class="checklist"]
+> * Vorbereiten von Quell- und Zieldatenspeichern
+> * Erstellen einer Data Factory.
+> * Erstellen Sie eine selbstgehostete Integration Runtime.
+> * Installieren der Integration Runtime 
+> * Erstellen Sie verknüpfte Dienste. 
+> * Erstellen des Quell-, Senken-, Grenzwertdatasets
+> * Erstellen, Ausführen und Überwachen einer Pipeline
+> * Überprüfen Sie die Ergebnisse.
+> * Hinzufügen oder Aktualisieren von Daten in Quelltabellen
+> * Erneutes Ausführen und Überwachen der Pipeline
+> * Überprüfen der Endergebnisse
+
+> [!NOTE]
+> Dieser Artikel bezieht sich auf Version 2 von Azure Data Factory, die sich derzeit in der Vorschauphase befindet. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
+
+## <a name="overview"></a>Übersicht
+Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt: 
+
+1. **Select the watermark column (Wählen Sie die Grenzwert-Spalte aus)**.
+    
+    Wählen Sie für jede Tabelle im Quelldatenspeicher eine Spalte aus, die verwendet werden kann, um die neuen oder aktualisierten Datensätze für jede Ausführung zu identifizieren. Normalerweise steigen die Daten in dieser ausgewählten Spalte (z.B. Last_modify_time oder ID), wenn Zeilen erstellt oder aktualisiert werden. Der maximale Wert in dieser Spalte wird als Grenzwert verwendet.
+
+2. **Prepare a data store to store the watermark value (Vorbereiten eines Datenspeichers zum Speichern des Grenzwerts)**.   
+    
+    In diesem Tutorial speichern Sie den Grenzwert in einer SQL-Datenbank.
+
+3. **Erstellen Sie eine Pipeline mit den folgenden Aktivitäten:** 
+    
+    a. Erstellen Sie eine ForEach-Aktivität zum Durchlaufen einer Liste mit Namen von Quelltabellen, die als Parameter an die Pipeline übergeben wird. Für jede Quelltabelle werden die folgenden Aktivitäten aufgerufen, um den Deltaladevorgang für diese Tabelle durchzuführen:
+
+    b. Erstellen Sie zwei Lookup-Aktivitäten. Verwenden Sie die erste Lookup-Aktivität, um den letzten Grenzwert abzurufen. Verwenden Sie die zweite Lookup-Aktivität, um den neuen Grenzwert abzurufen. Diese Grenzwerte werden an die Copy-Aktivität übergeben.
+
+    c. Erstellen Sie eine Copy-Aktivität, die Zeilen aus dem Quelldatenspeicher kopiert, wobei der Wert der Grenzwertspalte größer als der alte Grenzwert und kleiner als der neue Grenzwert ist. Anschließend werden die Deltadaten aus dem Quelldatenspeicher als neue Datei in einen Azure-Blobspeicher kopiert.
+
+    d. Erstellen Sie eine StoredProcedure-Aktivität, die den Grenzwert für die Pipeline aktualisiert, die nächstes Mal ausgeführt wird. 
+
+    Allgemeines Lösungsdiagramm: 
+
+    ![Lädt Daten inkrementell](media\tutorial-incremental-copy-multiple-tables-portal\high-level-solution-diagram.png)
+
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+* **SQL Server**. In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als Quelldatenspeicher. 
+* **Azure SQL-Datenbank**. Sie verwenden eine SQL-Datenbank als Senkendatenspeicher. Wenn Sie keine SQL-Datenbank besitzen, finden Sie Schritte zum Erstellen einer solchen Datenbank unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../sql-database/sql-database-get-started-portal.md). 
+
+### <a name="create-source-tables-in-your-sql-server-database"></a>Erstellen von Quelltabellen in Ihrer SQL Server-Datenbank
+
+1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit Ihrer lokalen SQL Server-Datenbank her.
+
+2. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage**.
+
+3. Führen Sie den folgenden SQL-Befehl für Ihre Datenbank aus, um Tabellen mit den Namen `customer_table` und `project_table` zu erstellen:
+
+    ```sql
+    create table customer_table
+    (
+        PersonID int,
+        Name varchar(255),
+        LastModifytime datetime
+    );
+    
+    create table project_table
+    (
+        Project varchar(255),
+        Creationtime datetime
+    );
+        
+    INSERT INTO customer_table
+    (PersonID, Name, LastModifytime)
+    VALUES
+    (1, 'John','9/1/2017 12:56:00 AM'),
+    (2, 'Mike','9/2/2017 5:23:00 AM'),
+    (3, 'Alice','9/3/2017 2:36:00 AM'),
+    (4, 'Andy','9/4/2017 3:21:00 AM'),
+    (5, 'Anny','9/5/2017 8:06:00 AM');
+    
+    INSERT INTO project_table
+    (Project, Creationtime)
+    VALUES
+    ('project1','1/1/2015 0:00:00 AM'),
+    ('project2','2/2/2016 1:23:00 AM'),
+    ('project3','3/4/2017 5:16:00 AM');
+    
+    ```
+
+### <a name="create-destination-tables-in-your-azure-sql-database"></a>Erstellen von Zieltabellen in Ihrer Azure SQL-Datenbank
+1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit Ihrer Azure SQL-Datenbank her.
+
+2. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage**.
+
+3. Führen Sie den folgenden SQL-Befehl für Ihre SQL-Datenbank aus, um Tabellen mit den Namen `customer_table` und `project_table` zu erstellen:  
+    
+    ```sql
+    create table customer_table
+    (
+        PersonID int,
+        Name varchar(255),
+        LastModifytime datetime
+    );
+    
+    create table project_table
+    (
+        Project varchar(255),
+        Creationtime datetime
+    );
+
+    ```
+
+### <a name="create-another-table-in-the-sql-database-to-store-the-high-watermark-value"></a>Erstellen Sie eine andere Tabelle in SQL-Datenbank zum Speichern des hohen Grenzwerts.
+1. Führen Sie den folgenden SQL-Befehl für Ihre SQL-Datenbank aus, um eine Tabelle mit dem Namen `watermarktable` zum Speichern des Grenzwerts zu erstellen: 
+    
+    ```sql
+    create table watermarktable
+    (
+    
+        TableName varchar(255),
+        WatermarkValue datetime,
+    );
+    ```
+2. Fügen Sie die anfänglichen Grenzwerte für beide Quelltabellen in die Tabelle mit den Grenzwerten ein.
+
+    ```sql
+
+    INSERT INTO watermarktable
+    VALUES 
+    ('customer_table','1/1/2010 12:00:00 AM'),
+    ('project_table','1/1/2010 12:00:00 AM');
+    
+    ```
+
+### <a name="create-a-stored-procedure-in-the-sql-database"></a>Erstellen einer gespeicherten Prozedur in SQL-Datenbank 
+
+Führen Sie den folgenden Befehl zum Erstellen einer gespeicherten Prozedur in Ihrer SQL-Datenbank aus. Mit dieser gespeicherten Prozedur wird der Grenzwert nach jeder Pipelineausführung aktualisiert. 
+
+```sql
+CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+AS
+
+BEGIN
+
+    UPDATE watermarktable
+    SET [WatermarkValue] = @LastModifiedtime 
+WHERE [TableName] = @TableName
+
+END
+
+```
+
+### <a name="create-data-types-and-additional-stored-procedures"></a>Erstellen von Datentypen und zusätzlichen gespeicherten Prozeduren
+Führen Sie die folgende Abfrage aus, um zwei gespeicherte Prozeduren und zwei Datentypen in der SQL-Datenbank zu erstellen. Sie werden zum Zusammenführen der Daten aus Quelltabellen in Zieltabellen verwendet.
+
+```sql
+CREATE TYPE DataTypeforCustomerTable AS TABLE(
+    PersonID int,
+    Name varchar(255),
+    LastModifytime datetime
+);
+
+GO
+
+CREATE PROCEDURE sp_upsert_customer_table @customer_table DataTypeforCustomerTable READONLY
+AS
+
+BEGIN
+  MERGE customer_table AS target
+  USING @customer_table AS source
+  ON (target.PersonID = source.PersonID)
+  WHEN MATCHED THEN
+      UPDATE SET Name = source.Name,LastModifytime = source.LastModifytime
+  WHEN NOT MATCHED THEN
+      INSERT (PersonID, Name, LastModifytime)
+      VALUES (source.PersonID, source.Name, source.LastModifytime);
+END
+
+GO
+
+CREATE TYPE DataTypeforProjectTable AS TABLE(
+    Project varchar(255),
+    Creationtime datetime
+);
+
+GO
+
+CREATE PROCEDURE sp_upsert_project_table @project_table DataTypeforProjectTable READONLY
+AS
+
+BEGIN
+  MERGE project_table AS target
+  USING @project_table AS source
+  ON (target.Project = source.Project)
+  WHEN MATCHED THEN
+      UPDATE SET Creationtime = source.Creationtime
+  WHEN NOT MATCHED THEN
+      INSERT (Project, Creationtime)
+      VALUES (source.Project, source.Creationtime);
+END
+
+```
+
+## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
+
+1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
+   
+   ![Neu -> Data Factory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
+2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFMultiIncCopyTutorialDF** ein. 
+      
+     ![Seite „Neue Data Factory“](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory.png)
+ 
+   Der Name der Azure Data Factory muss **global eindeutig**sein. Sollte der folgende Fehler auftreten, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>ADFMultiIncCopyTutorialDF“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
+  
+       `Data factory name ADFMultiIncCopyTutorialDF is not available`
+3. Wählen Sie Ihr **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll. 
+4. Führen Sie für die **Ressourcengruppe** einen der folgenden Schritte aus:
+     
+      - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
+      - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
+         
+        Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+4. Wählen Sie **V2 (Vorschau)** als **Version** aus.
+5. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
+6. Wählen Sie die Option **An Dashboard anheften** aus.     
+7. Klicken Sie auf **Create**.      
+8. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Die Data Factory wird bereitgestellt**. 
+
+    ![Kachel „Die Data Factory wird bereitgestellt“](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
+9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
+   
+   ![Data Factory-Startseite](./media/tutorial-incremental-copy-multiple-tables-portal/data-factory-home-page.png)
+10. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
+11. Klicken Sie auf der Seite „Erste Schritte“ der Azure Data Factory-Benutzeroberfläche auf **Create pipeline** (Pipeline erstellen), oder wechseln Sie zur Registerkarte **Bearbeiten**. 
+
+   ![Seite für die ersten Schritte](./media/tutorial-incremental-copy-multiple-tables-portal/get-started-page.png)
+
+## <a name="create-self-hosted-integration-runtime"></a>Erstellen der selbstgehosteten Integration Runtime
+Wenn Sie Daten aus einem Datenspeicher in einem privaten Netzwerk (lokal) in einen Azure-Datenspeicher verschieben, installieren Sie eine selbstgehostete Integration Runtime (IR) in Ihrer lokalen Umgebung. Mit der selbstgehosteten IR werden Daten zwischen Ihrem privaten Netzwerk und Azure verschoben. 
+
+1. Klicken Sie unten im linken Bereich auf **Verbindungen**, und wechseln Sie zur Option **Integration Runtimes** im Fenster **Verbindungen**. 
+
+   ![Registerkarte „Verbindungen“](./media/tutorial-incremental-copy-multiple-tables-portal/connections-tab.png)
+2. Klicken Sie auf der Registerkarte **Integration Runtimes** auf **+ Neu**. 
+
+   ![Schaltfläche für neue Integration Runtime](./media/tutorial-incremental-copy-multiple-tables-portal/new-integration-runtime-button.png)
+3. Wählen Sie im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) die Option **Perform data movement and dispatch activities to external computes** (Datenverschiebung und -verteilung an externe Computeressourcen ausführen), und klicken Sie auf **Weiter**. 
+
+   ![Auswählen des Typs der Integrationslaufzeit](./media/tutorial-incremental-copy-multiple-tables-portal/select-integration-runtime-type.png)
+4. Wählen Sie ** Privates Netzwerk**, und klicken Sie auf **Weiter**. 
+
+   ![Auswählen von „Privates Netzwerk“](./media/tutorial-incremental-copy-multiple-tables-portal/select-private-network.png)
+5. Geben Sie unter **Name** die Zeichenfolge **MySelfHostedIR** ein, und klicken Sie auf **Weiter**. 
+
+   ![Name für selbstgehostete Integration Runtime](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
+10. Klicken Sie im Abschnitt **Option 1: Express setup** (Option 1: Express-Setup) auf **Click here to launch the express setup for this computer** (Klicken Sie hier, um das Express-Setup für diesen Computer zu starten). 
+
+   ![Klicken auf den Link für das Express-Setup](./media/tutorial-incremental-copy-multiple-tables-portal/click-exress-setup.png)
+11. Klicken Sie im Fenster **Express-Setup von Integration Runtime (selbstgehostet)** auf **Schließen**. 
+
+   ![Integration Runtime-Setup erfolgreich](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png)
+12. Klicken Sie im Webbrowser im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) auf **Fertig stellen**. 
+
+   ![Integration Runtime-Setup – Fertig stellen](./media/tutorial-incremental-copy-multiple-tables-portal/click-finish-integration-runtime-setup.png)
+17. Vergewissern Sie sich, dass **MySelfHostedIR** in der Liste mit den Integration Runtimes angezeigt wird.
+
+       ![Integration Runtimes – Liste](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtimes-list.png)
+
+## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
+Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt erstellen Sie verknüpfte Dienste für Ihre lokale SQL Server-Datenbank und SQL-Datenbank. 
+
+### <a name="create-the-sql-server-linked-service"></a>Erstellen des mit SQL Server verknüpften Diensts
+In diesem Schritt verknüpfen Sie die lokale SQL Server-Datenbank mit der Data Factory.
+
+1. Wechseln Sie im Fenster **Verbindungen** von der Registerkarte **Integration Runtimes** zur Registerkarte **Verknüpfte Dienste**, und klicken Sie auf **+ Neu**.
+
+    ![Schaltfläche für neuen verknüpften Dienst](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
+2. Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **SQL Server**, und klicken Sie auf **Weiter**. 
+
+    ![Auswählen von „SQL Server“](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
+3. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
+
+    1. Geben Sie unter **Name** die Zeichenfolge **SqlServerLinkedService** ein. 
+    2. Wählen Sie unter **Connect via integration runtime** (Verbindung per Integration Runtime herstellen) die Option **MySelfHostedIR** aus. Dies ist ein **wichtiger** Schritt. Mit der Standard-Integration Runtime kann keine Verbindung mit einem lokalen Datenspeicher hergestellt werden. Verwenden Sie die selbstgehostete Integration Runtime, die Sie weiter oben erstellt haben. 
+    3. Geben Sie unter **Servername** den Namen Ihres Computers ein, auf dem sich die SQL Server-Datenbank befindet.
+    4. Geben Sie als **Datenbankname** den Namen der Datenbank Ihrer SQL Server-Instanz an, die über die Quelldaten verfügt. Während der Erfüllung der Voraussetzungen haben Sie eine Tabelle erstellt und Daten in diese Datenbank eingefügt. 
+    5. Wählen Sie unter **Authentifizierungstyp** den **Typ der Authentifizierung** aus, den Sie zum Herstellen der Verbindung mit der Datenbank verwenden möchten. 
+    6. Geben Sie unter **Benutzername** den Namen des Benutzers ein, der Zugriff auf die SQL Server-Datenbank hat. Wenn Sie im Benutzerkonto- oder Servernamen einen Schrägstrich (`\`) verwenden müssen, verwenden Sie das Escapezeichen (`\`). Ein Beispiel ist `mydomain\\myuser`.
+    7. Geben Sie unter **Kennwort** das **Kennwort** für den Benutzer ein. 
+    8. Klicken Sie auf **Verbindung testen**, um zu testen, ob für die Data Factory eine Verbindung mit Ihrer SQL Server-Datenbank hergestellt werden kann. Beheben Sie alle Fehler, bis die Verbindung erfolgreich hergestellt wird. 
+    9. Klicken Sie auf **Speichern**, um den verknüpften Dienst zu speichern.
+
+        ![Mit SQL Server verknüpfter Dienst – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/sql-server-linked-service-settings.png)
+
+### <a name="create-the-azure-sql-database-linked-service"></a>Erstellen des mit Azure SQL-Datenbank verknüpften Diensts
+Im letzten Schritt erstellen Sie einen verknüpften Dienst, um Ihre SQL Server-Quelldatenbank mit der Data Factory zu verknüpfen. In diesem Schritt verknüpfen Sie Ihre Azure SQL-Ziel- bzw. -Senkendatenbank mit der Data Factory. 
+
+1. Wechseln Sie im Fenster **Verbindungen** von der Registerkarte **Integration Runtimes** zur Registerkarte **Verknüpfte Dienste**, und klicken Sie auf **+ Neu**.
+
+    ![Schaltfläche für neuen verknüpften Dienst](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
+2. Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Azure SQL-Datenbank**, und klicken Sie auf **Weiter**. 
+3. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
+
+    1. Geben Sie unter **Name** den Namen **AzureSqlDatabaseLinkedService** ein. 
+    3. Wählen Sie unter **Servername** in der Dropdownliste den Namen Ihrer Azure SQL Server-Instanz aus. 
+    4. Wählen Sie unter **Datenbankname** die Azure SQL-Datenbank aus, in der Sie zur Erfüllung der erforderlichen Voraussetzungen die Elemente „customer_table“ und „project_table“ erstellt haben. 
+    6. Geben Sie unter **Benutzername** den Namen des Benutzers ein, der Zugriff auf die Azure SQL-Datenbank hat. 
+    7. Geben Sie unter **Kennwort** das **Kennwort** für den Benutzer ein. 
+    8. Klicken Sie auf **Verbindung testen**, um zu testen, ob für die Data Factory eine Verbindung mit Ihrer SQL Server-Datenbank hergestellt werden kann. Beheben Sie alle Fehler, bis die Verbindung erfolgreich hergestellt wird. 
+    9. Klicken Sie auf **Speichern**, um den verknüpften Dienst zu speichern.
+
+        ![Mit Azure SQL verknüpfter Dienst – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/azure-sql-linked-service-settings.png)
+10. Vergewissern Sie sich, dass in der Liste zwei verknüpfte Dienste angezeigt werden. 
+   
+    ![Zwei verknüpfte Dienste](./media/tutorial-incremental-copy-multiple-tables-portal/two-linked-services.png) 
+
+## <a name="create-datasets"></a>Erstellen von Datasets
+In diesem Schritt erstellen Sie Datasets zur Darstellung der Datenquelle, des Datenziels und des Speicherorts des Grenzwerts.
+
+### <a name="create-a-source-dataset"></a>Erstellen eines Quelldatasets
+
+1. Klicken Sie im linken Bereich auf **+** (Pluszeichen) und dann auf **Dataset**.
+
+   ![Menü „Neues Dataset“](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
+2. Wählen Sie im Fenster **Neues Dataset** die Option **SQL Server**, und klicken Sie auf **Fertig stellen**. 
+
+   ![Auswählen von „SQL Server“](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
+3. Im Webbrowser wird eine neue Registerkarte für die Konfiguration des Datasets geöffnet. Außerdem wird in der Strukturansicht ein Dataset angezeigt. Geben Sie im Eigenschaftenfenster auf der Registerkarte **Allgemein** unten für **Name** den Namen **SourceDataset** ein. 
+
+   ![Quelldataset – Name](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-general.png)
+4. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Verbindung**, und wählen Sie unter **Verknüpfter Dienst** die Option **SqlServerLinkedService**. Hier wählen Sie keine Tabelle aus. Für die Copy-Aktivität in der Pipeline wird eine SQL-Abfrage zum Laden der Daten anstelle der gesamten Tabelle verwendet.
+
+   ![Quelldataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-connection.png)
+
+
+### <a name="create-a-sink-dataset"></a>Erstellen Sie ein Senkendataset
+1. Klicken Sie im linken Bereich auf **+** (Pluszeichen) und dann auf **Dataset**.
+
+   ![Menü „Neues Dataset“](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
+2. Wählen Sie im Fenster **Neues Dataset** die Option **Azure SQL-Datenbank**, und klicken Sie auf **Fertig stellen**. 
+
+   ![Auswählen einer Azure SQL-Datenbank](./media/tutorial-incremental-copy-multiple-tables-portal/select-azure-sql-database.png)
+3. Im Webbrowser wird eine neue Registerkarte für die Konfiguration des Datasets geöffnet. Außerdem wird in der Strukturansicht ein Dataset angezeigt. Geben Sie im Eigenschaftenfenster auf der Registerkarte **Allgemein** unter **Name** den Namen **SinkDataset** ein.
+
+   ![Senkendataset – Allgemein](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-general.png)
+4. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Verbindung**, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlLinkedService**. 
+
+   ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
+5. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Parameter**, und führen Sie die folgenden Schritte aus: 
+
+    1. Klicken Sie im Abschnitt **Parameter erstellen/aktualisieren** die Option **Neu**. 
+    2. Geben Sie **SinkTableName** als **Namen** und **Zeichenfolge** als **Typ** ein. Für dieses Dataset wird **SinkTableName** als Parameter verwendet. Der Parameter SinkTableName wird von der Pipeline zur Laufzeit dynamisch festgelegt. Die ForEach-Aktivität in der Pipeline durchläuft eine Liste mit Tabellennamen und übergibt den Tabellennamen bei jedem Durchlauf an dieses Dataset.
+    3. Geben Sie im Abschnitt **Parameterizable properties** (Parametrisierbare Eigenschaften) `@{dataset().SinkTableName}` für die **tableName**-Eigenschaft ein. Sie verwenden den Wert, der an den Parameter **SinkTableName** übergeben wird, um die **tableName**-Eigenschaft des Datasets zu initialisieren. 
+
+       ![Senkendataset – Eigenschaften](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+
+### <a name="create-a-dataset-for-a-watermark"></a>Erstellen eines Datasets für einen Grenzwert
+In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts. 
+
+1. Klicken Sie im linken Bereich auf **+** (Pluszeichen) und dann auf **Dataset**.
+
+   ![Menü „Neues Dataset“](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
+2. Wählen Sie im Fenster **Neues Dataset** die Option **Azure SQL-Datenbank**, und klicken Sie auf **Fertig stellen**. 
+
+   ![Auswählen einer Azure SQL-Datenbank](./media/tutorial-incremental-copy-multiple-tables-portal/select-azure-sql-database.png)
+3. Geben Sie im Eigenschaftenfenster auf der Registerkarte **Allgemein** unten für **Name** den Namen **WatermarkDataset** ein.
+4. Wechseln Sie zur Registerkarte **Verbindung**, und führen Sie die folgenden Schritte aus: 
+
+    1. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**.
+    2. Wählen Sie unter **Tabelle** die Option **[dbo].[watermarktable]**.
+
+       ![Grenzwertdataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
+
+## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
+Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEach-Aktivität durchläuft die Liste mit den Tabellennamen und führt die folgenden Vorgänge aus: 
+
+1. Verwenden Sie die Lookup-Aktivität, um den alten Grenzwert abzurufen (anfänglicher Wert oder der im letzten Durchlauf verwendete Wert).
+
+2. Verwenden Sie die Lookup-Aktivität, um den neuen Grenzwert abzurufen (Höchstwert der Grenzwertspalte in der Quelltabelle).
+
+3. Verwenden Sie die Copy-Aktivität, um Daten zwischen diesen beiden Grenzwerten aus der Quelldatenbank in die Zieldatenbank zu kopieren.
+
+4. Verwenden Sie die StoredProcedure-Aktivität, um den alten Grenzwert zu aktualisieren, damit er im ersten Schritt des nächsten Durchlaufs verwendet werden kann. 
+
+### <a name="create-the-pipeline"></a>Erstellen der Pipeline
+
+1. Klicken Sie im linken Bereich auf **+** (Pluszeichen) und dann auf **Pipeline**.
+
+    ![Menü „Neue Pipeline“](./media/tutorial-incremental-copy-multiple-tables-portal/new-pipeline-menu.png)
+2. Geben Sie im ****Eigenschaftenfenster auf der Registerkarte **Allgemein** unter **Name** den Namen **IncrementalCopyPipeline** ein. 
+
+    ![Pipelinename](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
+3. Führen Sie im Eigenschaftenfenster**** einen der folgenden Schritte aus: 
+
+    1. Klicken Sie auf **+ NEU**. 
+    2. Geben Sie **tableList** für den Parameter **name** ein. 
+    3. Wählen Sie für den Parameter **type** die Option **Object**.
+
+    ![Pipelineparameter](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
+4. Ziehen Sie die **ForEach**-Aktivität aus der Toolbox **Aktivitäten** in die Oberfläche des Pipeline-Designers. Geben Sie im Eigenschaftenfenster**** auf der Registerkarte **Allgemein** den Text **IterateSQLTables** ein. 
+
+    ![ForEach-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
+5. Wechseln Sie im Eigenschaftenfenster**** zur Registerkarte **Einstellungen**, und geben Sie unter **Elemente** die Zeichenfolge `@pipeline().parameters.tableList` ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
+
+    ![ForEach-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
+6. Wählen Sie die **ForEach**-Aktivität in der Pipeline, falls sie nicht bereits ausgewählt wurde. Klicken Sie auf die Schaltfläche **Bearbeiten** (Stiftsymbol).
+
+    ![ForEach-Aktivität – Bearbeiten](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
+7. Ziehen Sie die **Lookup**-Aktivität aus der Toolbox **Aktivitäten**, und geben Sie unter **Name** den Namen **LookupOldWaterMarkActivity** ein.
+
+    ![Erste Lookup-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-name.png)
+8. Wechseln Sie im Eigenschaftenfenster**** zur Registerkarte **Einstellungen**, und führen Sie die folgenden Schritte aus: 
+
+    1. Wählen Sie **WatermarkDataset** für **Source Dataset**.
+    2. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
+    3. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein: 
+
+        ```sql
+        select * from watermarktable where TableName  =  '@{item().TABLE_NAME}'
+        ```
+
+        ![Erste Lookup-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png)
+9. Ziehen Sie die **Lookup**-Aktivität aus der Toolbox **Aktivitäten**, und geben Sie unter **Name** den Namen **LookupNewWaterMarkActivity** ein.
+        
+    ![Zweite Lookup-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
+10. Wechseln Sie zur Registerkarte **Einstellungen**.
+
+    1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
+    2. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**.
+    3. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein:
+
+        ```sql    
+        select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
+        ```
+    
+        ![Zweite Lookup-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+11. Ziehen Sie die **Copy**-Aktivität aus der Toolbox **Aktivitäten**, und geben Sie unter **Name** den Namen **IncrementalCopyActivity** ein. 
+
+    ![Copy-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
+12. Verbinden Sie die einzelnen **Lookup**-Aktivitäten jeweils mit der **Copy**-Aktivität. Ziehen Sie das **grüne** Feld, das an die **Lookup**-Aktivität angefügt ist, auf die **Copy**-Aktivität, um die Verbindung herzustellen. Lassen Sie die Maustaste los, wenn sich die Rahmenfarbe der Copy-Aktivität in **Blau** ändert.
+
+    ![Verbinden von Lookup- und Copy-Aktivitäten](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+13. Wählen Sie die **Copy**-Aktivität in der Pipeline aus. Wechseln Sie im Eigenschaftenfenster**** zur Registerkarte **Quelle**. 
+
+    1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
+    2. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
+    3. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein:
+
+        ```sql
+        select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
+        ```
+
+        ![Copy-Aktivität – Quelleinstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+14. Wechseln Sie zur Registerkarte **Senke**, und wählen Sie unter **Sink Dataset** (Senkendataset) die Option **SinkDataset**. 
+        
+    ![Copy-Aktivität – Senkeneinstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
+15. Wechseln Sie zur Registerkarte **Parameter**, und führen Sie die folgenden Schritte aus:
+
+    1. Geben Sie für die Eigenschaft **Sink Stored Procedure Name** die Zeichenfolge `@{item().StoredProcedureNameForMergeOperation}` ein.
+    2. Geben Sie für die Eigenschaft **Sink Table Type** die Zeichenfolge `@{item().TableType}` ein.
+    3. Geben Sie im Abschnitt **Sink Dataset** (Senkendataset) für den Parameter **SinkTableName** die Zeichenfolge `@{item().TABLE_NAME}` ein.
+
+        ![Copy-Aktivität – Parameter](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+16. Ziehen Sie die **Stored Procedure**-Aktivität aus der Toolbox **Aktivitäten** in die Oberfläche des Pipeline-Designers. Verbinden Sie die **Copy**-Aktivität mit der **Stored Procedure**-Aktivität. 
+
+    ![Copy-Aktivität – Parameter](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
+17. Wählen Sie die **Stored Procedure**-Aktivität in der Pipeline aus, und geben Sie im ****Eigenschaftenfenster auf der Registerkarte **Allgemein** unter **Name** den Namen **StoredProceduretoWriteWatermarkActivity** ein. 
+
+    ![Stored Procedure-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
+18. Wechseln Sie zur Registerkarte **SQL-Konto**, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**.
+
+    ![Stored Procedure-Aktivität – SQL-Konto](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+19. Wechseln Sie zur Registerkarte **Gespeicherte Prozedur**, und führen Sie die folgenden Schritte aus:
+
+    1. Geben Sie unter **Name der gespeicherten Prozedur** den Namen `sp_write_watermark` ein. 
+    2. Verwenden Sie die Schaltfläche **Neu**, um die folgenden Parameter hinzuzufügen: 
+
+        | NAME | Typ | Wert | 
+        | ---- | ---- | ----- |
+        | LastModifiedtime | Datetime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | TableName | Zeichenfolge | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+    
+        ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+20. Klicken Sie im linken Bereich auf **Veröffentlichen**. Mit dieser Aktion werden die von Ihnen erstellten Entitäten für den Data Factory-Dienst veröffentlicht. 
+
+    ![Schaltfläche "Veröffentlichen"](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
+21. Warten Sie, bis die Meldung **Erfolgreich veröffentlicht** angezeigt wird. Klicken Sie zum Anzeigen der Benachrichtigungen auf den Link **Benachrichtigungen anzeigen**. Schließen Sie das Benachrichtigungsfenster, indem Sie auf das **X** klicken.
+
+    ![Anzeigen von Benachrichtigungen](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
+
+ 
+## <a name="run-the-pipeline"></a>Führen Sie die Pipeline aus.
+
+1. Klicken Sie auf der Symbolleiste der Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen).     
+
+    ![Manuelles Auslösen](./media/tutorial-incremental-copy-multiple-tables-portal/trigger-now.png)
+2. Geben Sie im Fenster **Pipelineausführung** für den Parameter **tableList** den folgenden Wert ein, und klicken Sie auf **Fertig stellen**. 
+
+    ```
+    [
+        {
+            "TABLE_NAME": "customer_table",
+            "WaterMark_Column": "LastModifytime",
+            "TableType": "DataTypeforCustomerTable",
+            "StoredProcedureNameForMergeOperation": "sp_upsert_customer_table"
+        },
+        {
+            "TABLE_NAME": "project_table",
+            "WaterMark_Column": "Creationtime",
+            "TableType": "DataTypeforProjectTable",
+            "StoredProcedureNameForMergeOperation": "sp_upsert_project_table"
+        }
+    ]
+    ```
+
+    ![Argumente der Pipelineausführung](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-run-arguments.png)
+
+## <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
+
+1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können die Pipelineausführung anzeigen, die vom **manuellen Trigger** ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. Mit den Links in der Spalte **Aktionen** können Sie Aktivitätsausführungen anzeigen, die der Pipelineausführung zugeordnet sind, und die Pipeline erneut ausführen. 
+
+    ![Pipelineausführungen](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
+2. Klicken Sie in der Spalte **Aktionen** auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen). Es werden alle Aktivitätsausführungen angezeigt, die der ausgewählten Pipelineausführung zugeordnet sind. 
+
+    ![Aktivitätsausführungen](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png)
+
+## <a name="review-the-results"></a>Überprüfen der Ergebnisse
+Führen Sie in SQL Server Management Studio die folgenden Abfragen für die SQL-Zieldatenbank aus, um sicherzustellen, dass die Daten aus den Quelltabellen in die Zieltabellen kopiert wurden: 
+
+**Abfrage** 
+```sql
+select * from customer_table
+```
+
+**Ausgabe**
+```
+===========================================
+PersonID    Name    LastModifytime
+===========================================
+1           John    2017-09-01 00:56:00.000
+2           Mike    2017-09-02 05:23:00.000
+3           Alice   2017-09-03 02:36:00.000
+4           Andy    2017-09-04 03:21:00.000
+5           Anny    2017-09-05 08:06:00.000
+```
+
+**Abfrage**
+
+```sql
+select * from project_table
+```
+
+**Ausgabe**
+
+```
+===================================
+Project     Creationtime
+===================================
+project1    2015-01-01 00:00:00.000
+project2    2016-02-02 01:23:00.000
+project3    2017-03-04 05:16:00.000
+```
+
+**Abfrage**
+
+```sql
+select * from watermarktable
+```
+
+**Ausgabe**
+
+```
+======================================
+TableName       WatermarkValue
+======================================
+customer_table  2017-09-05 08:06:00.000
+project_table   2017-03-04 05:16:00.000
+```
+
+Beachten Sie, dass die Grenzwerte für beide Tabellen aktualisiert wurden. 
+
+## <a name="add-more-data-to-the-source-tables"></a>Hinzufügen von weiteren Daten zu den Quelltabellen
+
+Führen Sie die folgende Abfrage für die SQL Server-Quelldatenbank aus, um in der Kundentabelle (customer_table) eine vorhandene Zeile zu aktualisieren. Fügen Sie eine neue Zeile in die Projekttabelle (project_table) ein. 
+
+```sql
+UPDATE customer_table
+SET [LastModifytime] = '2017-09-08T00:00:00Z', [name]='NewName' where [PersonID] = 3
+
+INSERT INTO project_table
+(Project, Creationtime)
+VALUES
+('NewProject','10/1/2017 0:00:00 AM');
+``` 
+
+## <a name="rerun-the-pipeline"></a>Erneutes Ausführen der Pipeline
+1. Wechseln Sie im Webbrowserfenster zur Registerkarte **Bearbeiten** auf der linken Seite. 
+2. Klicken Sie auf der Symbolleiste der Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen).   
+
+    ![Manuelles Auslösen](./media/tutorial-incremental-copy-multiple-tables-portal/trigger-now.png)
+1. Geben Sie im Fenster **Pipelineausführung** für den Parameter **tableList** den folgenden Wert ein, und klicken Sie auf **Fertig stellen**. 
+
+    ```
+    [
+        {
+            "TABLE_NAME": "customer_table",
+            "WaterMark_Column": "LastModifytime",
+            "TableType": "DataTypeforCustomerTable",
+            "StoredProcedureNameForMergeOperation": "sp_upsert_customer_table"
+        },
+        {
+            "TABLE_NAME": "project_table",
+            "WaterMark_Column": "Creationtime",
+            "TableType": "DataTypeforProjectTable",
+            "StoredProcedureNameForMergeOperation": "sp_upsert_project_table"
+        }
+    ]
+    ```
+
+## <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
+
+1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können die Pipelineausführung anzeigen, die vom **manuellen Trigger** ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. Mit den Links in der Spalte **Aktionen** können Sie Aktivitätsausführungen anzeigen, die der Pipelineausführung zugeordnet sind, und die Pipeline erneut ausführen. 
+
+    ![Pipelineausführungen](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
+2. Klicken Sie in der Spalte **Aktionen** auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen). Es werden alle Aktivitätsausführungen angezeigt, die der ausgewählten Pipelineausführung zugeordnet sind. 
+
+    ![Aktivitätsausführungen](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png) 
+
+## <a name="review-the-final-results"></a>Überprüfen der Endergebnisse
+Führen Sie in SQL Server Management Studio die folgenden Abfragen für die Zieldatenbank aus, um sicherzustellen, dass die aktualisierten bzw. neuen Daten aus den Quelltabellen in die Zieltabellen kopiert wurden. 
+
+**Abfrage** 
+```sql
+select * from customer_table
+```
+
+**Ausgabe**
+```
+===========================================
+PersonID    Name    LastModifytime
+===========================================
+1           John    2017-09-01 00:56:00.000
+2           Mike    2017-09-02 05:23:00.000
+3           NewName 2017-09-08 00:00:00.000
+4           Andy    2017-09-04 03:21:00.000
+5           Anny    2017-09-05 08:06:00.000
+```
+
+Beachten Sie die neuen Werte in **Name** und **LastModifytime** für **PersonID** für Nummer 3. 
+
+**Abfrage**
+
+```sql
+select * from project_table
+```
+
+**Ausgabe**
+
+```
+===================================
+Project     Creationtime
+===================================
+project1    2015-01-01 00:00:00.000
+project2    2016-02-02 01:23:00.000
+project3    2017-03-04 05:16:00.000
+NewProject  2017-10-01 00:00:00.000
+```
+
+Beachten Sie, dass der Projekttabelle (project_table) der Eintrag **NewProject** hinzugefügt wurde. 
+
+**Abfrage**
+
+```sql
+select * from watermarktable
+```
+
+**Ausgabe**
+
+```
+======================================
+TableName       WatermarkValue
+======================================
+customer_table  2017-09-08 00:00:00.000
+project_table   2017-10-01 00:00:00.000
+```
+
+Beachten Sie, dass die Grenzwerte für beide Tabellen aktualisiert wurden.
+     
+## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial haben Sie die folgenden Schritte ausgeführt: 
+
+> [!div class="checklist"]
+> * Vorbereiten von Quell- und Zieldatenspeichern
+> * Erstellen einer Data Factory.
+> * Erstellen einer selbstgehosteten Integration Runtime (IR)
+> * Installieren der Integration Runtime
+> * Erstellen Sie verknüpfte Dienste. 
+> * Erstellen des Quell-, Senken-, Grenzwertdatasets
+> * Erstellen, Ausführen und Überwachen einer Pipeline
+> * Überprüfen Sie die Ergebnisse.
+> * Hinzufügen oder Aktualisieren von Daten in Quelltabellen
+> * Erneutes Ausführen und Überwachen der Pipeline
+> * Überprüfen der Endergebnisse
+
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie mithilfe eines Spark-Clusters in Azure Daten transformieren:
+
+> [!div class="nextstepaction"]
+>[Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung](tutorial-incremental-copy-change-tracking-feature-portal.md)
+
+

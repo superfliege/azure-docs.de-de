@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 01/17/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 886a4412ac348869563a03d697f4363cb3dea8f9
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: f5d38091b59110859d4376a5cd16a19f24dad65b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="customize-the-remote-monitoring-preconfigured-solution"></a>Anpassen der vorkonfigurierten Remoteüberwachungslösung
 
@@ -24,6 +24,10 @@ Dieser Artikel enthält Informationen dazu, wie Sie auf den Quellcode zugreifen 
 
 * Die GitHub-Repositorys, die den Quellcode und Ressourcen für die Microservices enthalten, die die vorkonfigurierte Lösung bilden.
 * Allgemeine Anpassungsszenarien, z.B. Hinzufügen eines neuen Gerätetyps.
+
+Das folgende Video gibt einen Überblick über die Optionen zum Anpassen der vorkonfigurierten Remoteüberwachungslösung:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
 ## <a name="project-overview"></a>Projektübersicht
 
@@ -42,7 +46,7 @@ Diese Tabelle enthält eine Übersicht über die aktuelle Verfügbarkeit der ein
 
 <!-- please add links for each of the repos in the table, you can find them here https://github.com/Azure/azure-iot-pcs-team/wiki/Repositories-->
 
-| Microservice      | Beschreibung | Java | .NET |
+| Microservice      | BESCHREIBUNG | Java | .NET |
 | ----------------- | ----------- | ---- | ---- |
 | Web-Benutzeroberfläche            | Web-App für die Remoteüberwachungslösung Implementiert die Benutzeroberfläche mithilfe des React.js-Frameworks. | [– (React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) | [– (React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) |
 | IoT Hub-Manager   | Verarbeitet die Kommunikation mit IoT Hub.        | [Verfügbar](https://github.com/Azure/iothub-manager-java) | [Verfügbar](https://github.com/Azure/iothub-manager-dotnet)   |
@@ -78,13 +82,13 @@ In der Standardbereitstellung werden der Name und das Logo des Unternehmens Cont
     CONTOSO: 'Contoso',
     ```
 
-1. Ersetzen Sie `Contoso` durch den Namen Ihres Unternehmens. Beispiel:
+1. Ersetzen Sie `Contoso` durch den Namen Ihres Unternehmens. Beispiel: 
 
     ```js
     CONTOSO: 'YourCo',
     ```
 
-1. Speichern Sie die Datei.
+1. Speichern Sie die Datei .
 
 1. Um das Logo zu aktualisieren, fügen Sie im Ordner `assets/icons` eine neue SVG-Datei ein. Das vorhandene Logo ist die Datei `assets/icons/Contoso.svg`.
 
@@ -96,7 +100,7 @@ In der Standardbereitstellung werden der Name und das Logo des Unternehmens Cont
     import ContosoIcon from '../../../assets/icons/Contoso.svg';
     ```
 
-1. Ersetzen Sie `Contoso.svg` durch den Namen Ihrer Logodatei. Beispiel:
+1. Ersetzen Sie `Contoso.svg` durch den Namen Ihrer Logodatei. Beispiel: 
 
     ```js
     import ContosoIcon from '../../../assets/icons/YourCo.svg';
@@ -108,13 +112,13 @@ In der Standardbereitstellung werden der Name und das Logo des Unternehmens Cont
     alt="ContosoIcon"
     ```
 
-1. Ersetzen Sie `ContosoIcon` durch Ihren `alt`-Text. Beispiel:
+1. Ersetzen Sie `ContosoIcon` durch Ihren `alt`-Text. Beispiel: 
 
     ```js
     alt="YourCoIcon"
     ```
 
-1. Speichern Sie die Datei.
+1. Speichern Sie die Datei .
 
 1. Zum Testen der Änderungen können Sie die aktualisierte `webui` auf Ihrem lokalen Computer ausführen. Informationen zum Erstellen und lokalen Ausführen der `webui`-Lösung finden Sie unter [Build, run and test locally](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/README.md#build-run-and-test-locally) (Erstellen, Testen und lokales Ausführen) in der Infodatei des `webui`-GitHub-Repositorys.
 

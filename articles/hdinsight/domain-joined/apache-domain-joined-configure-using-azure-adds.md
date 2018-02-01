@@ -3,7 +3,7 @@ title: "Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Az
 description: "Erfahren Sie mehr über das Einrichten und Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services."
 services: hdinsight
 documentationcenter: 
-author: saurinsh
+author: bprakash
 manager: jhubbard
 editor: cgronlun
 tags: 
@@ -13,21 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
-ms.author: saurinsh
-ms.openlocfilehash: c5ab129e87c8c7903972bd94286ba0368037a738
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.author: bhanupr
+ms.openlocfilehash: 77478616eae27828a57a36dc0aaf3884e80ce403
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services
 
 In die Domäne eingebundene Cluster stellen Sicherheitsfunktionen für Unternehmen mit zahlreichen Benutzern auf HDInsight bereit. In die Domäne eingebundene HDInsight-Cluster sind mit Active Directory-Domänen verbunden, sodass Domänenbenutzer ihre Domänenanmeldeinformationen zum Authentifizieren beim Cluster verwenden und Big Data-Aufträge ausführen können. 
 
-Es gibt drei Möglichkeiten, einen Domänencontroller so einzurichten, dass ein in die Domäne eingebundener HDInsight die Verbindung herstellen kann:
+Es gibt zwei Möglichkeiten, einen Domänencontroller so einzurichten, dass ein in die Domäne eingebundener HDInsight-Cluster eine Verbindung mit Folgendem herstellen kann:
 
 - Azure Active Directory Domain Services (Azure AD DS)
-- Lokales Active Directory
 - Active Directory-Domänencontroller auf Azure IaaS-VMs
 
 In diesem Artikel erfahren Sie, wie Sie in die Domäne eingebundene HDInsight-Cluster mit Azure Active Directory Domain Services einrichten und konfigurieren.
@@ -37,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie in die Domäne eingebundene HDInsight-Cl
 Sie müssen einen Azure AD DS erstellen, um einen HDInsight-Cluster erstellen zu können. Informationen zum Erstellen eines Azure AD DS finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
 > [!NOTE]
-> Nur die Mandantenadministratoren verfügen über Berechtigungen zum Erstellen von Domänendiensten. 
+> Nur die Mandantenadministratoren verfügen über Berechtigungen zum Erstellen von Domänendiensten. Stellen Sie bei Verwendung von Azure Data Lake Store (ADLS) als Standardspeicher für HDInsight sicher, dass der Azure AD-Standardmandant für ADLS mit der Domäne für den HDInsight-Cluster identisch ist. 
 
 Nachdem der Domänendienst bereitgestellt wurde, müssen Sie ein Dienstkonto in der Gruppe **Azure AD DC-Administratoren** anlegen, um den HDInsight-Cluster zu erstellen. Das Dienstkonto muss ein globaler Administrator im Azure AD sein.
 

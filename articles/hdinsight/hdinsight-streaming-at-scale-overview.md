@@ -1,0 +1,76 @@
+---
+title: Bedarfsorientiertes Streaming in Azure HDInsight | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie das Datenstreaming mit skalierbaren HDInsight-Clustern verwenden.
+services: hdinsight
+documentationcenter: 
+tags: azure-portal
+author: raghavmohan
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 
+ms.service: hdinsight
+ms.custom: hdinsightactive
+ms.workload: big-data
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/19/2018
+ms.author: ramoha
+ms.openlocfilehash: 46b5723805ab5d8bc1cf5b5183d9501cd3e4e3a2
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/22/2018
+---
+# <a name="streaming-at-scale-in-hdinsight"></a>Bedarfsorientiertes Streaming in HDInsight
+
+Big Data-Echtzeitlösungen agieren auf der Grundlage bewegter Daten. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster zentral hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
+
+Von den Datenquellen einer Streaminganwendung können pro Sekunde Millionen von Ereignissen generiert werden, die schnell und ohne den Verlust nützlicher Informationen erfasst werden müssen. Die eingehenden Ereignisse werden durch *Streampufferung* (auch *Event Queuing* genannt) von einem Dienst wie [Kafka](kafka/apache-kafka-introduction.md) oder [Event Hubs](https://azure.microsoft.com/services/event-hubs/) gehandhabt. Nachdem die Ereignisse erfasst wurden, können Sie die Daten innerhalb der *Streamverarbeitungsschicht* mithilfe eines Echtzeitanalysesystems wie [Storm](storm/apache-storm-overview.md) oder [Spark Streaming](spark/apache-spark-streaming-overview.md) analysieren. Die verarbeiteten Daten können langfristig in entsprechenden Systemen wie [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) gespeichert und in Echtzeit in einem Business Intelligence-Dashboard wie [Power BI](https://powerbi.microsoft.com) oder Tableau oder auf einer benutzerdefinierten Webseite angezeigt werden.
+
+![HDInsight-Streamingmuster](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+
+## <a name="apache-kafka"></a>Apache Kafka
+
+Apache Kafka bietet einen Message Queuing-Dienst mit hohem Durchsatz und geringer Wartezeit und ist nun Teil der Apache-OOS-Suite (Open Source Software). Kafka verwendet ein auf Veröffentlichung und Abonnements basierendes Messagingmodell und speichert Streams von partitionierten Daten sicher in einem verteilten, replizierten Cluster. Bei zunehmendem Durchsatz wird Kafka linear skaliert.
+
+Weitere Informationen finden Sie unter [Einführung in Apache Kafka in HDInsight](kafka/apache-kafka-introduction.md).
+
+## <a name="apache-storm"></a>Apache Storm
+
+Apache Storm ist ein verteiltes, fehlertolerantes Open Source-Berechnungssystem, das für die Echtzeitverarbeitung von Datenströmen mit Hadoop optimiert ist. Die grundlegende Dateneinheit für ein eingehendes Ereignis ist ein Tupel. Hierbei handelt es sich um einen unveränderlichen Satz von Schlüssel-Wert-Paaren. Eine ungebundene Sequenz dieser Tupel bildet einen Datenstrom, der von einem Spout stammt. Der Spout umschließt eine Streamingdatenquelle (beispielsweise Kafka) und gibt Tupel aus. Bei einer Storm-Topologie handelt es sich um eine Sequenz von Transformationen für diese Datenströme.
+
+Weitere Informationen finden Sie unter [Was ist Apache Storm in Azure HDInsight?](storm/apache-storm-overview.md).
+
+## <a name="spark-streaming"></a>Spark Streaming
+
+Spark Streaming ist eine Erweiterung für Spark, mit der Sie den gleichen Code wie für die Batchverarbeitung verwenden können. Batchabfragen und interaktive Abfragen können in einer einzelnen Anwendung kombiniert werden. Im Gegensatz zu Storm steht in Spark Streaming eine statusbehaftete Semantik vom Typ „Exactly-Once“ zur Verfügung. In Kombination mit der [Kafka Direct-API](http://spark.apache.org/docs/latest/streaming-kafka-integration.html), die sicherstellt, dass alle Kafka-Daten genau einmal von Spark Streaming empfangen werden, können End-to-End-Garantien vom Typ „Exactly-Once“ erreicht werden. Zu den Stärken von Spark Streaming zählen seine fehlertoleranten Funktionen und die damit verbundene schnelle Wiederherstellung fehlerhafter Knoten bei Verwendung mehrerer Knoten im Cluster.
+
+Weitere Informationen finden Sie in der [Übersicht zu Spark-Streaming](hdinsight-spark-streaming-overview.md).
+
+## <a name="scaling-a-cluster"></a>Skalieren eines Clusters
+
+Die Anzahl von Knoten im Cluster kann zwar bei der Erstellung angegeben werden, manchmal muss der Cluster jedoch abhängig von der Workload vergrößert oder verkleinert werden. Bei allen HDInsight-Clustern können Sie [die Anzahl von Knoten im Cluster ändern](hdinsight-administer-use-management-portal.md#scale-clusters). Spark-Cluster können ohne Datenverlust verworfen werden, da alle Daten in Azure Storage oder Data Lake Store gespeichert werden.
+
+Die Entkopplung von Technologien hat gewisse Vorteile. Bei Kafka handelt es sich beispielsweise um eine Technologie zum Puffern von Ereignissen. Sie ist sehr E/A-lastig und benötigt nur wenig Rechenleistung. Datenstromverarbeitungslösungen wie Spark Streaming sind hingegen rechenintensive Lösungen, die virtuelle Computer mit mehr Leistung benötigen. Dank der Entkopplung dieser Technologien mittels unterschiedlicher Cluster können Sie sie unabhängig voneinander skalieren und die virtuellen Computer optimal nutzen.
+
+### <a name="scale-the-stream-buffering-layer"></a>Skalieren der Ebene für die Streampufferung
+
+Die Streampufferungstechnologien Event Hubs und Kafka verwenden jeweils Partitionen, die von Consumern ausgelesen werden. Zum Skalieren des Eingabedurchsatzes muss die Anzahl von Partitionen erhöht werden, wodurch sich wiederum die Parallelität erhöht. In Event Hubs kann die Anzahl von Partitionen nach der Bereitstellung nicht mehr geändert werden. Daher ist es wichtig, sich schon zu Beginn Gedanken über die Zielgröße zu machen. Bei Kafka können Sie [Partitionen hinzufügen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion) – und das sogar, während Kafka Daten verarbeitet. Kafka verfügt über ein Tool zum Neuzuweisen von Partitionen: `kafka-reassign-partitions.sh`. HDInsight verfügt über ein [Tool zum Ausgleichen von Partitionsreplikaten](https://github.com/hdinsight/hdinsight-kafka-tools): `rebalance_rackaware.py`. Dieses Ausgleichstool ruft das Tool `kafka-reassign-partitions.sh` so auf, dass sich jedes Replikat in einer separaten Fehler- und Updatedomäne befindet. Kafka wird dadurch rackfähig und fehlertoleranter.
+
+### <a name="scale-the-stream-processing-layer"></a>Skalieren der Ebene für die Streamverarbeitung
+
+Apache Storm und Spark Streaming unterstützen beide das Hinzufügen von Workerknoten zu ihren Clustern – und das sogar während der Datenverarbeitung.
+
+Für die Nutzung neuer Knoten, die durch die Skalierung von Storm hinzugefügt wurden, müssen Sie sämtliche Storm-Topologien ausgleichen, die vor dem Vergrößern des Clusters gestartet wurden. Dieser Ausgleich kann über die Webbenutzeroberfläche oder über die Befehlszeilenschnittstelle von Storm durchgeführt werden. Weitere Informationen finden Sie in der [Apache Storm-Dokumentation](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+
+Apache Spark verwendet für die Konfiguration der Umgebung je nach Anwendungsanforderungen drei zentrale Parameter: `spark.executor.instances`, `spark.executor.cores` und `spark.executor.memory`. Ein *Executor* ist ein Prozess, der für eine Spark-Anwendung gestartet wird. Er wird auf dem Workerknoten ausgeführt und ist für die Ausführung der Anwendungsaufgaben zuständig. Die Standardanzahl von Executors und die Executorgrößen für jeden Cluster werden basierend auf der Anzahl von Workerknoten und der Größe der Workerknoten berechnet. Diese Werte werden auf den einzelnen Clusterhauptknoten in der Datei `spark-defaults.conf` gespeichert.
+
+Die drei Parameter können auf der Clusterebene (für alle Anwendungen, die im Cluster ausgeführt werden) konfiguriert oder für jede einzelne Anwendung angegeben werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight](spark/apache-spark-resource-manager.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Erste Schritte mit Apache Storm in HDInsight mithilfe der Storm-Starter-Beispiele](storm/apache-storm-tutorial-get-started-linux.md)
+* [Beispieltopologien für Apache Storm in HDInsight](storm/apache-storm-example-topology.md)
+* [Einführung in Spark in HDInsight](spark/apache-spark-overview.md)
+* [Einstieg in Apache Kafka in HDInsight](kafka/apache-kafka-get-started.md)

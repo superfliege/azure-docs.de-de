@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f2be9ca98330866ac8b6fb12efd56efdc711eedf
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 7303347444952d9c09dc6c04eea5b962e18729b4
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>Route zu einem Point of Interest in der Nähe mit Azure Location Based Services
 
@@ -77,13 +77,13 @@ Führen Sie die folgenden Schritte zur Erstellung einer statischen HTML-Seite au
     ```
     Beachten Sie, wie über den HTML-Header die Ressourcenspeicherorte für CSS- und JavaScript-Dateien für die Azure Location Based Services-Bibliothek eingebettet werden. Beachten Sie außerdem das *script*-Segment im Text der HTML-Datei, das den JavaScript-Inlinecode für den Zugriff auf die APIs von Azure Location Based Services enthält.
 
-3. Fügen Sie dem *script*-Block der HTML-Datei den folgenden JavaScript-Code hinzu. Ersetzen Sie den Platzhalter *<insert-key>* durch den Primärschlüssel des Location Based Services-Kontos.
+3. Fügen Sie dem *script*-Block der HTML-Datei den folgenden JavaScript-Code hinzu. Verwenden Sie den Primärschlüssel Ihres Location Based Services-Kontos im Skript.
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
     Mit **atlas.Map** – einer Komponente der Azure-Kartensteuerelement-API – wird das Steuerelement für eine visuelle und interaktive Webkarte bereitgestellt.
@@ -179,14 +179,14 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Azure
     ```JavaScript
     var url = "https://atlas.microsoft.com/route/directions/json?";
     url += "&api-version=1.0";
-    url += "&subscription-key=" + subscriptionKey;
+    url += "&subscription-key=" + LBSAccountKey;
     url += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
 
     xhttp.open("GET", url, true);
     xhttp.send();
     ```
-    In der Anforderung oben werden die erforderlichen Parameter angezeigt, also der Abonnementschlüssel Ihres Kontos und die Koordinaten für Start- und Endpunkt in der angegebenen Reihenfolge. 
+    In der Anforderung oben werden die erforderlichen Parameter angezeigt, also Ihr Kontoschlüssel und die Koordinaten für Start- und Endpunkt in der angegebenen Reihenfolge. 
 
 3. Speichern Sie die Datei **MapRoute.html** lokal, öffnen Sie sie in einem Webbrowser Ihrer Wahl, und sehen Sie sich das Ergebnis an. Bei einer erfolgreichen Verbindungsherstellung mit den APIs von Location Based Services sollte eine Karte angezeigt werden, die in etwa wie folgt aussieht: 
 

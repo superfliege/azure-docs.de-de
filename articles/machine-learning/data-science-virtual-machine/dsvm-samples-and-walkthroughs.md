@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 89bb5d255db9ab266d04169a3101e2b694236029
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb9a7e900c489b3d22594dfcb6e1faa736c3c490
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>Beispiele auf Data Science-VMs (DSVMs)
 
@@ -28,7 +28,7 @@ Auf den DSVMs stehen vorgefertigte Beispiele in Form von Jupyter-Notebooks sowie
 > Informationen zum Aktivieren von Jupyter-Notebooks auf Ihrer DSVM finden Sie im Abschnitt [Zugreifen auf Jupyter](#access-jupyter).
 
 ## <a name="quick-reference-of-samples"></a>Kurzübersicht über die Beispiele
-| Kategorie | Beschreibung | Standorte |
+| Kategorie | BESCHREIBUNG | Standorte |
 | ------------- | ------------- | ------------- |
 | Sprache: **R**  | Beispiele in **R** zur Erläuterung von Szenarien wie dem Herstellen einer Verbindung mit Azure-Clouddatenspeichern, dem Vergleichen von Open Source R und Microsoft R sowie dem Operationalisieren von Modellen in Microsoft R Server oder SQL Server. <br/> [Screenshot](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Sprache: **Python**  | Beispiele in **Python** zur Erläuterung von Szenarien wie dem Herstellen einer Verbindung mit Azure-Clouddatenspeichern und dem Verwenden von **Azure Machine Learning**.  <br/> [Screenshot](#python-language) | <br/>`~notebooks` <br/><br/>|

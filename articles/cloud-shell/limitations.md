@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 01/17/2018
 ms.author: juluk
-ms.openlocfilehash: 65a5c40ce0a4d0cfdc0a325476bea6e8ccebe8c6
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 7e498582d78d2807070c943dfd838dd9efeb4ed2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Einschränkungen von Azure Cloud Shell
 
@@ -56,7 +56,9 @@ Cloud Shell ist für interaktive Anwendungsfälle konzipiert. Daher werden lange
 ### <a name="user-permissions"></a>Benutzerberechtigungen
 
 Berechtigungen werden als reguläre Benutzer ohne sudo-Zugriff festgelegt. Installationen außerhalb des Verzeichnisses `$Home` werden nicht gespeichert.
-Bestimmte Befehle im Verzeichnis `git clone` (beispielsweise `clouddrive`) verfügen zwar nicht über die entsprechenden Berechtigungen, das Verzeichnis `$Home` hingegen schon.
+
+### <a name="clouddrive-smb-limited-permissions"></a>Clouddrive SMB – eingeschränkte Berechtigungen
+Bestimmte Befehle im Verzeichnis `clouddrive` (beispielsweise `git clone`) verfügen nicht über die erforderlichen Berechtigungen für das Lesen/Schreiben bestimmter Dateien. Wenn dieses Problem auftritt, wiederholen Sie den Vorgang aus Ihrem `$Home` Verzeichnis, für das keine SMB-Einschränkungen gelten.
 
 ### <a name="editing-bashrc"></a>Bearbeiten von „.bashrc“
 

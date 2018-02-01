@@ -1,6 +1,6 @@
 ---
-title: Integrieren Ihrer ILB-ASE mit einem Azure Application Gateway
-description: Exemplarische Vorgehensweise zum Integrieren einer App in Ihrer ILB-ASE mit Ihrem Azure Application Gateway
+title: Integrieren Ihrer ILB-App Service-Umgebung in ein Application Gateway
+description: Exemplarische Vorgehensweise zum Integrieren einer App in Ihrer ILB-App Service-Umgebung mit Ihrem Application Gateway
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,90 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: ccompy
-ms.openlocfilehash: eedad8824add7fe425d34975dab640fbee82c2bc
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: d56eab79c3b3f6b37dc39d8e4bea0d5b7759631a
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 01/18/2018
 ---
-# <a name="integrating-your-ilb-ase-with-an-application-gateway"></a>Integrieren Ihrer ILB-ASE mit einem Application Gateway #
+# <a name="integrate-your-ilb-app-service-environment-with-an-application-gateway"></a>Integrieren Ihrer ILB-App Service-Umgebung in ein Application Gateway #
 
-Die [Azure App Service-Umgebung (ASE)](./intro.md) ist eine Bereitstellung des Azure App Service in einem Subnetz im Azure Virtual Network eines Kunden. Sie kann für den App-Zugriff über einen öffentlichen oder privaten Endpunkt bereitgestellt werden. Die Bereitstellung der ASE mit einem privaten Endpunkt wird als ILB-ASE bezeichnet.  
-Azure Application Gateway ist eine virtuelle Anwendung, die den Lastenausgleich der Ebene 7, SSL-Abladung und WAF-Schutz bietet. Es kann eine öffentliche IP-Adresse überwachen und Datenverkehr an Ihren Anwendungsendpunkt routen. Die folgenden Informationen beschreiben die Vorgehensweise beim Integrieren eines WAF-konfigurierten Application Gateways mit einer App in einer ILB-ASE.  
+Die [Azure App Service-Umgebung für PowerApps](./intro.md) ist eine Bereitstellung von Azure App Service in einem Subnetz im virtuellen Azure-Netzwerk eines Kunden. Sie kann für den App-Zugriff über einen öffentlichen oder privaten Endpunkt bereitgestellt werden. Die Bereitstellung der App Service-Umgebung mit einem privaten Endpunkt (d.h. mit einem internen Lastenausgleich) wird als ILB-App Service-Umgebung bezeichnet.  
 
-Die Integration des Application Gateways mit der ILB-ASE erfolgt auf App-Ebene.  Wenn Sie das Application Gateway mit der ILB-ASE konfigurieren, erfolgt dies für bestimmte Apps in Ihrer ILB-ASE. Dadurch wird das Hosten sicherer mehrinstanzenfähiger Anwendungen in einer einzelnen ILB-ASE ermöglicht.  
+Azure Application Gateway ist eine virtuelle Anwendung, die Lastenausgleich in Schicht 7, SSL-Abladung und WAF-Schutz (Web Application Firewall) bietet. Es kann eine öffentliche IP-Adresse überwachen und Datenverkehr an Ihren Anwendungsendpunkt routen. 
 
-![Application Gateway, das auf eine App in einer ILB-ASE verweist][1]
+In den folgenden Informationen wird die Vorgehensweise beim Integrieren eines WAF-konfigurierten Application Gateways mit einer App in einer ILB-App Service-Umgebung beschrieben.  
+
+Die Integration des Application Gateways mit der ILB-App Service-Umgebung erfolgt auf App-Ebene. Wenn Sie das Application Gateway mit der ILB-App Service-Umgebung konfigurieren, erfolgt dies für bestimmte Apps in Ihrer ILB-App Service-Umgebung. Dieses Verfahren ermöglicht es, sichere mehrinstanzenfähige Anwendungen in einer einzelnen ILB App Service-Umgebung zu hosten.  
+
+![Application Gateway, das auf eine App in einer ILB-App Service-Umgebung verweist][1]
 
 In dieser exemplarischen Vorgehensweise führen Sie folgende Aktionen aus:
 
-* Erstellen eines Application Gateways
-* Konfigurieren des Application Gateways zum Verweisen auf eine App in Ihrer ILB-ASE
+* Erstellen eines Anwendungsgateways
+* Konfigurieren des Application Gateways zum Verweisen auf eine App in Ihrer ILB-App Service-Umgebung
 * Konfigurieren Ihrer App, sodass der benutzerdefinierte Domänenname anerkannt wird
 * Bearbeiten des öffentlichen DNS-Hostnamens, der auf Ihr Application Gateway verweist
 
-Sie benötigen Folgendes, um Ihr Application Gateway mit der ILB-ASE zu integrieren:
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Eine ILB-ASE
-* Eine App, die in der ILB-ASE ausgeführt wird
-* Ein über das Internet routingfähiger Domänenname, der mit Ihrer App in der ILB-ASE verwendet wird
-* Die von Ihrer ILB-ASE verwendete ILB-Adresse (Diese befindet sich im ASE-Portal unter **Einstellungen -> IP-Adressen**)
+Sie benötigen Folgendes, um Ihr Application Gateway mit der ILB-App Service-Umgebung zu integrieren:
 
-    ![Von Ihrer ILB-ASE verwendete IP-Adressen][9]
+* Eine ILB-App Service-Umgebung
+* Eine App, die in der ILB-App Service-Umgebung ausgeführt wird
+* Einen über das Internet routingfähigen Domänennamen, der mit Ihrer App in der ILB-App Service-Umgebung verwendet wird
+* Die ILB-Adresse, die Ihre ILB-App Service-Umgebung verwendet. Diese Informationen sind im Portal für die App Service-Umgebung unter **Einstellungen** > **IP-Adressen** zu finden:
+
+    ![Beispielliste von IP-Adressen, die von der ILB-App Service-Umgebung verwendet werden][9]
     
-* Einen öffentlichen DNS-Namen, der später verwendet wird, um auf Ihr Application Gateway zu verweisen 
+* Einen öffentlichen DNS-Namen, über den später auf Ihr Application Gateway verwiesen wird 
 
-Informationen zum Erstellen einer ILB-ASE finden Sie im Dokument [Erstellen und Verwenden einer ILB-ASE][ilbase].
+Ausführliche Informationen zum Erstellen einer ILB-App Service-Umgebung finden Sie unter [Erstellen und Verwenden einer ILB-App Service-Umgebung][ilbase].
 
-In dieser Anleitung wird davon ausgegangen, dass Sie ein Application Gateway in demselben Azure Virtual Network integrieren möchten, in dem die ASE bereitgestellt wird. Wählen oder erstellen Sie vor der Erstellung des Application Gateways ein Subnetz, das Sie als Host für das Application Gateway verwenden werden. Sie sollten ein anderes Subnetz als „GatewaySubnet“ oder das in der ILB-ASE verwendete Subnetz verwenden.
-Wenn Sie das Application Gateway in „GatewaySubnet“ ablegen, können Sie später kein Virtual Network-Gateway erstellen. Außerdem können Sie es nicht in einem Subnetz ablegen, das von Ihrer ILB-ASE verwendet wird, da sich in ihrem Subnetz nur die ASE befinden darf.
+In diesem Artikel wird davon ausgegangen, dass ein Application Gateway in demselben virtuellen Azure-Netzwerk vorhanden sein soll, in dem die App Service-Umgebung bereitgestellt wird. Wählen Sie vor dem Erstellen des Application Gateways ein Subnetz aus, das Sie als Host für das Application Gateway verwenden möchten, oder erstellen Sie es. 
 
-## <a name="steps-to-configure"></a>Schritte zum Konfigurieren ##
+Sie sollten ein anderes Subnetz als GatewaySubnet verwenden. Wenn Sie das Application Gateway in GatewaySubnet ablegen, können Sie später kein Gateway für das virtuelle Netzwerk erstellen. 
 
-1. Wechseln Sie im Azure-Portal zu **Neu > Netzwerk > Application Gateway**. 
-    1. Stellen Sie Folgendes bereit:
-        1. Name des Application Gateways
-        1. WAF auswählen
-        1. Dasselbe Abonnement wie für das ASE VNet auswählen
-        1. Ressourcengruppe erstellen oder auswählen
-        1. Speicherort für das ASE VNet auswählen
+Außerdem können Sie das Gateway nicht dem Subnetz hinzufügen, das Ihre ILB-App Service-Umgebung verwendet. In diesem Subnetz kann sich ausschließlich die App Service-Umgebung befinden.
 
-    ![Grundlagen zur Erstellung eines neuen Application Gateways][2]   
-    1. Legen Sie im Einstellungsbereich Folgendes fest:
-        1. Das ASE VNet
-        1. Das Subnetz, in dem das Application Gateway bereitgestellt werden muss. Verwenden Sie nicht „GatewaySubnet“, da es die Erstellung von VPN-Gateways verhindert.
-        1. „Öffentlich“ auswählen
-        1. Wählen Sie eine öffentliche IP-Adresse aus. Wenn keine verfügbar ist, erstellen Sie eine IP-Adresse zu diesem Zeitpunkt.
-        1. Konfigurieren Sie für HTTP oder HTTPS. Bei der Konfiguration für HTTPS müssen Sie ein PFX-Zertifikat bereitstellen.
-        1. Wählen Sie die Web Application Firewall-Einstellungen aus. Hier können Sie die Firewall aktivieren und nach Bedarf entweder die Erkennung oder die Prävention für die Firewall festlegen.
+## <a name="configuration-steps"></a>Konfigurationsschritte ##
 
-    ![Einstellungen zur Erstellung eines neuen Application Gateways][3]
+1. Wechseln Sie im Azure-Portal zu **Neu** > **Netzwerk** > **Application Gateway**.
+
+2. Gehen Sie im Bereich **Grundeinstellungen** folgendermaßen vor:
+
+   a. Geben Sie unter **Name** den Namen des Subnetzes für das Application Gateway ein.
+
+   b. Wählen Sie unter **Ebene** die Option **WAF** aus.
+
+   c. Wählen Sie für **Abonnement** dasselbe Abonnement aus, das für das virtuelle Netzwerk der App Service-Umgebung verwendet wird.
+
+   d. Erstellen Sie unter **Ressourcengruppe** die Ressourcengruppe, oder wählen Sie eine aus.
+
+   e. Wählen Sie unter **Speicherort** den Speicherort des virtuellen Netzwerks der App Service-Umgebung aus.
+
+   ![Grundlagen zur Erstellung eines neuen Application Gateways][2]
+
+3. Gehen Sie im Bereich **Einstellungen** folgendermaßen vor:
+
+   a. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk der App Service-Umgebung aus.
+
+   b. Wählen Sie unter **Subnetz** das Subnetz aus, in dem das Application Gateway bereitgestellt werden soll. Verwenden Sie nicht GatewaySubnet, da es die Erstellung von VPN-Gateways verhindert.
+
+   c. Wählen Sie unter **IP-Adresstyp** die Option **Öffentlich** aus.
+
+   d. Wählen Sie unter **Öffentliche IP-Adresse** eine öffentliche IP-Adresse aus. Wenn keine öffentliche IP-Adresse vorhanden ist, erstellen Sie jetzt eine.
+
+   e. Wählen Sie unter **Protokoll** eine der Optionen **HTTP** oder **HTTPS** aus. Bei der Konfiguration für HTTPS müssen Sie ein PFX-Zertifikat bereitstellen.
+
+   f. Unter **Web Application Firewall** können Sie die Firewall aktivieren und nach Bedarf entweder **Erkennung** oder **Prävention** festlegen.
+
+   ![Einstellungen zur Erstellung eines neuen Application Gateways][3]
     
-    1. Wählen Sie bei der Überprüfung des Abschnitts „Zusammenfassung“ die Option **OK** aus. Es kann etwas mehr als 30 Minuten dauern, bis Setup für Ihr Application Gateway abgeschlossen ist.  
+4. Überprüfen Sie die Einstellungen im Bereich **Zusammenfassung**, und wählen Sie **OK** aus. Es kann etwas mehr als 30 Minuten dauern, bis die Einrichtung Ihres Application Gateways abgeschlossen ist.  
 
-2. Nachdem Ihr Application Gateway eingerichtet wurde, wechseln Sie zum Application Gateway-Portal. Wählen Sie **Back-End-Pool** aus.  Fügen Sie die ILB-Adresse für Ihre ILB-ASE hinzu.
+5. Nachdem das Application Gateway eingerichtet wurde, wechseln Sie zum Application Gateway-Portal. Wählen Sie **Back-End-Pool** aus. Fügen Sie die ILB-Adresse für Ihre ILB-App Service-Umgebung hinzu.
 
-    ![Konfigurieren des Back-End-Pools][4]
+   ![Konfigurieren des Back-End-Pools][4]
 
-3. Wählen Sie nach Abschluss der Konfiguration Ihres Back-End-Pools die Option **Integritätstests** aus. Erstellen Sie einen Integritätstest für den Domänennamen, den Sie für Ihre App verwenden möchten. 
+6. Wählen Sie nach Abschluss der Konfiguration Ihres Back-End-Pools die Option **Integritätstests** aus. Erstellen Sie einen Integritätstest für den Domänennamen, den Sie für Ihre App verwenden möchten. 
 
-    ![Konfigurieren von Integritätstests][5]
+   ![Konfigurieren von Integritätstests][5]
     
-4. Wählen Sie nach Abschluss der Konfiguration Ihrer Integritätstests die Option **HTTP-Einstellungen** aus.  Bearbeiten Sie dort die vorhandene Einstellung, wählen Sie die Option **Benutzerdefinierten Test verwenden** und dann den von Ihnen konfigurierten Test aus.
+7. Wählen Sie nach Abschluss der Konfiguration Ihrer Integritätstests die Option **HTTP-Einstellungen** aus. Bearbeiten Sie die vorhandenen Einstellungen, und wählen Sie die Option **Benutzerdefinierten Test verwenden** und dann den von Ihnen konfigurierten Test aus.
 
-    ![Konfigurieren von HTTP-Einstellungen][6]
+   ![Konfigurieren von HTTP-Einstellungen][6]
     
-5. Wechseln Sie zum Application Gateway **Übersicht**, und kopieren Sie die öffentliche IP-Adresse, die für Ihr Application Gateway verwendet wurde.  Legen Sie diese IP-Adresse als A-Datensatz für Ihren App-Domänennamen fest, oder verwenden Sie den DNS-Namen für diese Adresse im CNAME-Datensatz.  Es ist einfacher, die öffentliche IP-Adresse auszuwählen und sie von der Benutzeroberfläche „Öffentlichen IP-Adresse“ als über den Link im Abschnitt „Application Gateway-Übersicht“ zu kopieren. 
+8. Wechseln Sie zum Abschnitt **Übersicht** des Application Gateways, und kopieren Sie die öffentliche IP-Adresse, die von Ihrem Application Gateway verwendet wird. Legen Sie diese IP-Adresse als A-Datensatz für Ihren App-Domänennamen fest, oder verwenden Sie den DNS-Namen für diese Adresse im CNAME-Datensatz. Es ist einfacher, die öffentliche IP-Adresse auszuwählen und sie von der Benutzeroberfläche der öffentlichen IP-Adresse zu kopieren als über den Link im Abschnitt **Übersicht** des Application Gateways. 
 
-    ![Application Gateway-Portal][7]
+   ![Application Gateway-Portal][7]
 
-6. Legen Sie den benutzerdefinierten Domänennamens für Ihre App in Ihrer ILB-ASE fest.  Wechseln Sie zu Ihrer App im Portal, und wählen Sie unter „Einstellungen“ die Option **Benutzerdefinierte Domänen** aus.
+9. Legen Sie den benutzerdefinierten Domänennamen für Ihre App in Ihrer ILB-App Service-Umgebung fest. Wechseln Sie im Portal zu Ihrer App, und wählen Sie unter **Einstellungen** die Option **Benutzerdefinierte Domänen** aus.
 
-![Festlegen des benutzerdefinierten Domänennamens für die App][8]
+   ![Festlegen des benutzerdefinierten Domänennamens für die App][8]
 
-Informationen zum Festlegen der benutzerdefinierten Domänennamen für Ihre Web-Apps finden Sie unter [Festlegen benutzerdefinierter Domänennamen für Ihre Web-App][custom-domain]. Der Unterschied zwischen einer App in einer ILB-ASE und diesem Dokument ist, dass keine Überprüfung des Domänennamens erfolgt.  Da Sie Besitzer des DNS sind, mit dem die App-Endpunkte verwaltet werden, können Sie dort ablegen, was Sie möchten. Der benutzerdefinierte Domänenname, den Sie in diesem Fall hinzufügen, muss sich nicht in Ihrem DNS befinden, aber er muss weiterhin mit Ihrer App konfiguriert werden. 
+Informationen zum Festlegen der benutzerdefinierten Domänennamen für Ihre Web-Apps finden Sie im Artikel [Festlegen benutzerdefinierter Domänennamen für Ihre Web-App][custom-domain]. Für eine App in einer ILB-App Service-Umgebung erfolgt jedoch keine Überprüfung des Domänennamens. Da Sie Besitzer des DNS sind, mit dem die App-Endpunkte verwaltet werden, können Sie dort ablegen, was Sie möchten. Der benutzerdefinierte Domänenname, den Sie in diesem Fall hinzufügen, muss sich nicht in Ihrem DNS befinden, er muss jedoch weiterhin mit Ihrer App konfiguriert werden. 
 
-Nachdem Setup abgeschlossen ist und Sie eine kurze Zeit gewartet haben, bis die DNS-Änderungen verbreitet wurden, können Sie über den von Ihnen erstellten benutzerdefinierten Domänennamen auf Ihre App zugreifen. 
+Nachdem die Einrichtung abgeschlossen ist und Sie eine kurze Zeit gewartet haben, bis die DNS-Änderungen verbreitet wurden, können Sie über den erstellten benutzerdefinierten Domänennamen auf Ihre App zugreifen. 
 
 
 <!--IMAGES-->

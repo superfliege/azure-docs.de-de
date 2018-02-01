@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2017
+ms.date: 01/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 71d740107eb2082e3f112941e1d4abd715d25807
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 63290127b298efced14ad34e9223840f3229f046
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Replikation von lokalen Computern
 
@@ -46,9 +46,9 @@ Die integrierte Rolle „Mitwirkender für virtuelle Computer“ verfügt über 
 Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie ein Failover von einem lokalen Standort nach Azure ausführen.
 
 1. Klicken Sie im Menü des [Azure-Portals](https://portal.azure.com) auf **Neu** -> **Storage** -> **Speicherkonto**.
-2. Geben Sie einen Namen für Ihr Speicherkonto ein. Für diese Tutorials verwenden wir den Namen **contosovmsacct1910171607**. Der Name muss in Azure eindeutig und zwischen 3 und 24 Zeichen lang sein, wobei nur Ziffern und Kleinbuchstaben zulässig sind.
+2. Geben Sie unter **Speicherkonto erstellen** einen Namen für das Konto ein. Für diese Tutorials verwenden wir den Namen **contosovmsacct1910171607**. Der Name muss in Azure eindeutig und zwischen 3 und 24 Zeichen lang sein, wobei nur Ziffern und Kleinbuchstaben zulässig sind.
 3. Verwenden Sie das **Resource Manager**-Bereitstellungsmodell.
-4. Wählen Sie **Allgemein** > **Standard** aus.
+4. Wählen Sie **Allgemein** > **Standard** aus. Wählen Sie keinen Blobspeicher aus.
 5. Wählen Sie den **RA-GRS**-Standardwert für die Speicherredundanz aus.
 6. Wählen Sie das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
 7. Geben Sie eine neue Ressourcengruppe an. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Für diese Tutorials verwenden wir den Namen **ContosoRG**.

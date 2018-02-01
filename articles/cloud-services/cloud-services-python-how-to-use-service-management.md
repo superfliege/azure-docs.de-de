@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: a55a38df765dcd1947312e729dbd37e3284876cf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: ca6e892e9f40204682be4ed00c413696f2022622
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-use-service-management-from-python"></a>Verwenden der Dienstverwaltung aus Python
 In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die **ServiceManagementService**-Klasse im [Azure-SDK für Python](https://github.com/Azure/azure-sdk-for-python) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [Azure-Portal][management-portal] zur Verfügung stehen (z. B. **Erstellen, Aktualisieren und Löschen von Clouddiensten, Bereitstellungen, Datenverwaltungsdiensten und virtuellen Computern**). Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
@@ -102,20 +102,20 @@ Um die für das Hosten von Diensten verfügbaren Standorte aufzulisten, verwende
 
 Wenn Sie einen Clouddienst oder einen Speicherdienst erstellen, müssen Sie einen gültigen Standort angeben. Die Methode **list\_locations** gibt stets eine aktuelle Liste der derzeit verfügbaren Standorte zurück. Zum Zeitpunkt der Erstellung dieses Dokuments waren folgende Standorte verfügbar:
 
-* Westeuropa
-* Europa, Norden
-* Südostasien
-* Ostasien
+* Europa, Westen
+* Nordeuropa
+* Asien, Südosten
+* Asien, Osten
 * USA (Mitte)
 * USA Nord Mitte
-* USA, Süden-Mitte
-* USA (West)
+* USA Süd Mitte
+* USA (Westen)
 * USA (Osten)
 * Japan (Osten)
-* Japan (Westen)
+* Japan, Westen
 * Brasilien (Süden)
-* Australien, Osten
-* Australien (Südosten)
+* Australien (Osten)
+* Australien, Südosten
 
 ## <a name="CreateCloudService"></a>Erstellen eines Clouddiensts
 Wenn Sie eine Anwendung erstellen und in Azure ausführen, wird die Kombination aus Code und Konfiguration als Azure-[Clouddienst][cloud service] (in früheren Azure-Versionen als *gehosteter Dienst*) bezeichnet. Mit der Methode **create\_hosted\_service** können Sie einen neuen gehosteten Dienst erstellen, indem Sie einen Namen des gehosteten Diensts (der in Azure eindeutig sein muss), eine Bezeichnung (automatisch Base64-codiert), eine Beschreibung und einen Standort angeben.
@@ -394,9 +394,9 @@ Um schließlich den virtuellen Computer mithilfe des erfassten Image zu erstelle
         role_size='Small',
         vm_image_name = image_name)
 
-Weitere Informationen zum Erfassen eines virtuellen Linux-Computers finden Sie unter [Erfassen eines virtuellen Linux-Computers](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Weitere Informationen zum Erfassen eines virtuellen Linux-Computers im klassischen Bereitstellungsmodell finden Sie unter [Erfassen eines virtuellen Linux-Computers](../virtual-machines/linux/classic/capture-image-classic.md).
 
-Weitere Informationen zum Erfassen eines virtuellen Windows-Computers finden Sie unter [Erfassen eines virtuellen Windows-Computers](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Weitere Informationen zum Erfassen eines virtuellen Windows-Computers im klassischen Bereitstellungsmodell finden Sie unter [Erfassen Sie ein Image eines virtuellen Azure Windows-Computers, der mit dem klassischen Bereitstellungsmodell erstellt wurde.](../virtual-machines/windows/classic/capture-image-classic.md).
 
 ## <a name="What's Next"></a>Nächste Schritte
 Da Sie nun mit den Grundlagen der Dienstverwaltung vertraut sind, können Sie auf die [vollständige API-Referenzdokumentation für das Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) zugreifen und komplexe Aufgaben mühelos durchführen, um Ihre Python-Anwendung zu verwalten.

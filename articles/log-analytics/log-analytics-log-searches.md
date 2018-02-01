@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: d679ca7a01a96bd398b26e6a545e33674ae33390
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: aa4608d37b06db88819e6175dcf8f94a7e13f04a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Suchen von Daten mit Protokollsuchen in Log Analytics
 
@@ -30,7 +30,7 @@ Der Kern von Log Analytics ist die Protokollsuchfunktion, die Ihnen das Kombinie
 
 Auf der Seite Search können Sie eine Abfrage erstellen und die Ergebnisse dann bei der Suche anhand von Facetsteuerelementen filtern. Sie können auch erweiterte Abfragen zum Transformieren, Filtern und Berichten für Ihre Ergebnisse erstellen.
 
-Allgemeine Protokollsuchabfragen werden auf den meisten Lösungsseiten angezeigt. In der gesamten OMS-Konsole können Sie anhand der Protokollsuche auf Kacheln klicken oder einen Drilldown in andere Elemente ausführen, um Details zum Element anzuzeigen.
+Allgemeine Protokollsuchabfragen werden auf den meisten Lösungsseiten angezeigt. Im gesamten OMS-Portal können Sie anhand der Protokollsuche auf Kacheln klicken oder einen Drilldown in andere Elemente ausführen, um Details zum Element anzuzeigen.
 
 In diesem Lernprogramm werden Beispiele zu den Grundlagen der Verwendung von Protokollsuchen veranschaulicht.
 
@@ -39,7 +39,7 @@ Es geht los mit einfachen und praktischen Beispielen, auf denen dann aufgebaut w
 Nachdem Sie sich mit den Suchtechniken vertraut gemacht haben, können Sie sich die [Referenz zur Log Analytics-Suche](log-analytics-search-reference.md)ansehen.
 
 ## <a name="use-basic-filters"></a>Verwenden einfacher Filter
-Als Erstes sollten Sie wissen, dass der erste Teil einer Suchabfrage vor einem senkrechten Strich (Pipe-Zeichen „|“) immer ein *Filter* ist. Sie können sich dies als WHERE-Klausel in TSQL vorstellen: Der Filter bestimmt, *welche* Teilmenge der Daten aus dem Datenspeicher von OMS abgerufen werden soll. Beim Suchen im Datenspeicher geht es größtenteils um die Angabe der Merkmale der Daten, die Sie extrahieren möchten. Daher ist es normal, dass eine Abfrage mit der WHERE-Klausel beginnt.
+Als Erstes sollten Sie wissen, dass der erste Teil einer Suchabfrage vor einem senkrechten Strich (Pipe-Zeichen „|“) immer ein *Filter* ist. Sie können sich dies als WHERE-Klausel in TSQL vorstellen: Der Filter bestimmt, *welche* Teilmenge der Daten aus dem Log Analytics-Arbeitsbereich abgerufen werden soll. Beim Suchen im Datenspeicher geht es größtenteils um die Angabe der Merkmale der Daten, die Sie extrahieren möchten. Daher ist es normal, dass eine Abfrage mit der WHERE-Klausel beginnt.
 
 Die grundlegendsten Filter, die Sie verwenden können, sind *Schlüsselwörter*wie 'Error' oder 'Timeout', oder ein Computername. Diese Typen von einfachen Abfragen geben in der Regel verschiedene Datenformen innerhalb des gleichen Ergebnissatzes zurück. Dies liegt daran, dass Log Analytics unterschiedliche *Arten* von Daten im System enthält.
 
@@ -80,7 +80,7 @@ Das liegt daran, dass alle Filter in der Abfrage als in *UND* miteinander ausgew
 
 Zum Beispiel ist die Abfrage `Type=Event EventLog="Windows PowerShell"` identisch mit `Type=Event AND EventLog="Windows PowerShell"`. Sie gibt alle Ereignisse zurück, die in und aus dem Windows PowerShell-Ereignisprotokoll erfasst wurden. Wenn Sie einen Filter mehrmals durch wiederholtes Auswählen der gleichen Facette hinzufügen, handelt es sich um ein rein kosmetisches Problem: Möglicherweise ist die Suchleiste überladen, es werden jedoch weiterhin dieselben Ergebnisse zurückgegeben, da der implizite AND-Operator immer vorhanden ist.
 
-Sie können den impliziten AND-Operator ganz einfach umkehren, indem Sie explizit einen NOT-Operator verwenden. Beispiel:
+Sie können den impliziten AND-Operator ganz einfach umkehren, indem Sie explizit einen NOT-Operator verwenden. Beispiel: 
 
 Die Abfrage `Type:Event NOT(EventLog:"Windows PowerShell")` oder deren Entsprechung `Type=Event EventLog!="Windows PowerShell"` gibt alle Ereignisse aus allen anderen Protokollen zurück, bei denen es sich NICHT um das Windows PowerShell-Protokoll handelt.
 
@@ -126,7 +126,7 @@ Jede Abfrage wird in der folgenden expliziten Reihenfolge ausgewertet. Beachten 
 (EventLog=Application OR EventLog=System) AND Computer=SERVER1.contoso.com
 ```
 
-Wie beim Ereignisprotokoll-Feld können Sie Daten nur für einen Satz bestimmter Computern durch Hinzufügen von OR abrufen. Beispiel:
+Wie beim Ereignisprotokoll-Feld können Sie Daten nur für einen Satz bestimmter Computern durch Hinzufügen von OR abrufen. Beispiel: 
 
 ```
 (EventLog=Application OR EventLog=System) AND (Computer=SERVER1.contoso.com OR Computer=SERVER2.contoso.com OR Computer=SERVER3.contoso.com)
@@ -259,7 +259,7 @@ Type=Event EventID=600 | Top 1
 
 In der Abbildung oben gibt es 358.000 Datensätze mit EventID=600. Die Felder, Facetten und Filter auf der linken Seite zeigen immer Informationen zu den Ergebnissen an, die *vom Filterteil* der Abfrage zurückgegeben werden, also jeweils dem Teil vor dem senkrechten Strich. Im **Ergebnis** -Bereich wird nur das einzelne neueste Ergebnis zurückgegeben, da der Beispielbefehl die Ergebnisse geformt und transformiert hat.
 
-### <a name="select"></a>Wählen Sie
+### <a name="select"></a>Select
 Der SELECT-Befehl verhält sich wie das Select-Objekt in PowerShell. Er gibt gefilterte Ergebnisse zurück, die nicht all ihre ursprünglichen Eigenschaften aufweisen. Stattdessen wählt er nur die Eigenschaften aus, die Sie angeben.
 
 #### <a name="to-run-a-search-using-the-select-command"></a>Suchen mit dem "Select"-Befehl
@@ -322,7 +322,7 @@ Zweitens gibt der **Measure-Count** zurzeit nur die ersten 100 unterschiedlichen
 ## <a name="use-the-max-and-min-functions-with-the-measure-command"></a>Verwenden der "Max"- und "Min"-Funktion mit dem "Measure"-Befehl
 Es gibt verschiedene Szenarios, in denen **Measure Max()** und **Measure Min()** nützlich sind. Da die Funktionen jedoch genau gegensätzlich sind, illustrieren wie "Max()", sodass Sie mit "Min()" selbst experimentieren können.
 
-Wenn Sie nach Sicherheitsereignissen abfragen, haben diese eine **Ebenen**-Eigenschaft, die variieren kann. Beispiel:
+Wenn Sie nach Sicherheitsereignissen abfragen, haben diese eine **Ebenen**-Eigenschaft, die variieren kann. Beispiel: 
 
 ```
 Type=SecurityEvent
@@ -355,7 +355,7 @@ Type=ConfigurationChange | Measure Max(TimeGenerated) by Computer
 ## <a name="use-the-avg-function-with-the-measure-command"></a>Verwenden der "Avg"-Funktion mit dem Measure-Befehl
 Die statistische "Avg()"-Funktion kann zusammen mit "Measure" verwendet werden, sodass Sie den Durchschnittswert für ein Feld berechnen, und die Ergebnisse nach dem gleichen oder einem anderen Feld gruppieren können. Dies ist in einer Vielzahl von Fällen nützlich, z. B. für Leistungsdaten.
 
-Wir beginnen mit den Leistungsdaten. Beachten Sie, dass mit OMS derzeit Leistungsindikatoren für Windows- und Linux-Computer erfasst werden.
+Wir beginnen mit den Leistungsdaten. Beachten Sie, dass mit Log Analytics derzeit Leistungsindikatoren für Windows- und Linux-Computer erfasst werden.
 
 Die grundlegende Abfrage zum Suchen *aller* Leistungsdaten ist:
 
@@ -414,7 +414,7 @@ Jetzt können Sie Computer und Indikatoren anhand des folgenden Beispiels hinzuf
 Type=Perf InstanceName:_Total  ((ObjectName:Processor AND CounterName:"% Processor Time") OR (ObjectName="LogicalDisk" AND CounterName="% Free Space")) AND TimeGenerated>NOW-4HOURS AND (Computer="AzureMktg01" OR Computer="AzureMktg02" OR Computer="AzureMktg03")
 ```
 
-Da Sie eine sehr spezifische Auswahl haben, kann der **Measure Avg()** -Befehl den Durchschnitt nicht nur pro Computer, sondern über die gesamte Farm hinweg zurückgeben, und zwar ganz einfach durch die Gruppierung nach "CounterName". Beispiel:
+Da Sie eine sehr spezifische Auswahl haben, kann der **Measure Avg()** -Befehl den Durchschnitt nicht nur pro Computer, sondern über die gesamte Farm hinweg zurückgeben, und zwar ganz einfach durch die Gruppierung nach "CounterName". Beispiel: 
 
 ```
 Type=Perf  InstanceName:_Total  ((ObjectName:Processor AND CounterName:"% Processor Time") OR (ObjectName="LogicalDisk" AND CounterName="% Free Space")) AND TimeGenerated>NOW-4HOURS AND (Computer="AzureMktg01" OR Computer="AzureMktg02" OR Computer="AzureMktg03") | Measure Avg(CounterValue) by CounterName
@@ -448,7 +448,7 @@ Type:Perf ObjectName=LogicalDisk CounterName="Current Disk Queue Length" Compute
 ## <a name="use-the-where-command"></a>Verwenden des "Where"-Befehls
 Der Befehl funktioniert wie ein Filter, kann aber in der Pipeline angewendet werden, um aggregierte Ergebnisse weiter zu filtern, die von einem "Measure"-Befehl erzeugt wurden – im Gegensatz zu reinen Ergebnisse, die am Beginn einer Abfrage gefiltert werden.
 
-Beispiel:
+Beispiel: 
 
 ```
 Type=Perf  CounterName="% Processor Time"  InstanceName="_Total" | Measure Avg(CounterValue) as AVGCPU by Computer

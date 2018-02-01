@@ -1,10 +1,10 @@
 ---
 title: "Microsoft Azure StorSimple Data Manager Benutzeroberfläche| Microsoft Docs"
-description: "Beschreibt, wie Sie die Benutzeroberfläche des StorSimple Data Manager-Diensts verwenden (private Vorschau)"
+description: "Beschreibt, wie Sie die Benutzeroberfläche des StorSimple Data Manager-Diensts verwenden"
 services: storsimple
 documentationcenter: NA
-author: vidarmsft
-manager: syadav
+author: alkohli
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,98 +12,151 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/22/2016
-ms.author: vidarmsft
-ms.openlocfilehash: 53a8599df2c647613122cd791b680e2e658586b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/16/2018
+ms.author: alkohli
+ms.openlocfilehash: d704cf8e6840c6a7b0a637c404d421f9f1497c46
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
-# <a name="manage-using-the-storsimple-data-manager-service-ui-private-preview"></a>Verwalten der Benutzeroberfläche des StorSimple Data Manager-Diensts (private Vorschau)
+# <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Verwalten des StorSimple Data Manager-Diensts im Azure-Portal
 
-In diesem Artikel wird erläutert, wie Sie die Benutzeroberfläche von StorSimple Data Manager verwenden, um Datentransformation von Daten auf den Geräten der StorSimple 8000-Serie auszuführen. Die transformierten Daten können von anderen Azure-Diensten, wie z.B. Azure Media Services, Azure HDInsight, Azure Machine Learning und Azure Search, genutzt werden. 
+In diesem Artikel wird erläutert, wie Sie die Benutzeroberfläche von StorSimple Data Manager verwenden können, um Daten zu transformieren, die sich auf den Geräten der StorSimple 8000-Serie befinden. Die transformierten Daten können von anderen Azure-Diensten, wie z.B. Azure Media Services, Azure HDInsight, Azure Machine Learning und Azure Search, genutzt werden.
 
 
 ## <a name="use-storsimple-data-transformation"></a>Verwenden der StorSimple-Datentransformation
 
-StorSimple Data Manager ist die Ressource, in der die Datentransformation instanziiert werden kann. Der Datentransformationsdienst erlaubt es Ihnen, Daten von Ihrem lokalen StorSimple-Gerät in Blobs in Azure Storage zu verschieben. Daher müssen Sie im Workflow die Details zu Ihrem StorSimple-Gerät sowie die für Sie interessanten Daten angeben, die Sie in das Speicherkonto verschieben möchten.
+StorSimple Data Manager ist die Ressource, in der die Datentransformation instanziiert wird. Mit dem Datentransformationsdienst können Sie Daten aus dem StorSimple-Format in das native Format in Blobs oder Azure Files transformieren. Damit Sie im nativen Format vorliegende StorSimple-Daten transformieren können, müssen Sie die Details zu Ihrem Gerät der StorSimple 8000-Serie sowie die für Sie interessanten Daten angeben, die Sie transformieren möchten.
 
 ### <a name="create-a-storsimple-data-manager-service"></a>Erstellen eines StorSimple Data Manager-Diensts
 
 Führen Sie die folgenden Schritte aus, um einen StorSimple Data Manager-Dienst zu erstellen.
 
-1. Wechseln Sie zum Erstellen eines StorSimple Data Manager-Diensts zu [https://aka.ms/HybridDataManager](https://aka.ms/HybridDataManager).
+1. Melden Sie sich mithilfe Ihrer Microsoft-Kontoanmeldeinformationen beim [Azure-Portal](https://portal.azure.com/)an.
 
-2. Klicken Sie auf das Symbol **+**, und suchen Sie nach StorSimple Data Manager. Klicken Sie auf Ihren StorSimple Data Manager-Dienst, und klicken Sie dann auf **Erstellen**.
+2. Klicken Sie auf **+ Ressource erstellen**, und suchen Sie nach StorSimple Data Manager.
 
-3. Wenn Ihr Abonnement für die Erstellung dieses Diensts aktiviert ist, wird das folgende Blatt angezeigt.
+    ![Erstellen eines StorSimple Data Manager-Diensts 1](./media/storsimple-data-manager-ui/create-service-1.png)
 
-    ![Erstellen einer StorSimple Data Manager-Ressource](./media/storsimple-data-manager-ui/create-new-data-manager-service.png)
+3. Klicken Sie auf „StorSimple Data Manager“, und klicken Sie dann auf **Erstellen**.
+    
+    ![Erstellen eines StorSimple Data Manager-Diensts 2](./media/storsimple-data-manager-ui/create-service-3.png)
 
-4. Nehmen Sie die Eingaben vor, und klicken Sie auf **Erstellen**. Der angegebene Standort sollte dem entsprechen, der Ihre Speicherkonten und Ihren StorSimple Manager-Dienst enthält. Derzeit werden nur die Regionen USA, Westen und Europa, Westen unterstützt. Daher sollten sich Ihr StorSimple Manager-Dienst, Data Manager-Dienst und die zugeordneten Speicherkonten alle in den oben genannten unterstützten Regionen befinden. Es dauert ungefähr eine Minute, den Dienst zu erstellen.
+3. Geben Sie für den neuen Dienst Folgendes an:
+
+    1. Geben Sie einen eindeutigen **Dienstnamen** für den StorSimple Data Manager an. Dies ist ein Anzeigename, der zum Identifizieren des Diensts verwendet werden kann. Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.
+
+    2. Wählen Sie ein **Abonnement** in der Dropdownliste aus. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. Dieses Feld wird automatisch ausgefüllt (und ist nicht auswählbar), wenn Sie nur ein Abonnement haben.
+
+    3. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe. Weitere Informationen finden Sie unter [Azure resource groups (Azure-Ressourcengruppen)](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+
+    4. Geben Sie den **Standort** für Ihren Dienst an, an dem sich Ihre Speicherkonten und Ihr StorSimple Data Manager-Dienst befinden. Ihr StorSimple-Geräte-Manager-Dienst, Data Manager-Dienst und die zugeordneten Speicherkonten sollten sich alle in den unterstützten Regionen befinden.
+    
+    5. Um einen Link zu diesem Dienst auf Ihrem Dashboard zu erhalten, wählen Sie **An Dashboard anheften** aus.
+    
+    6. Klicken Sie auf **Create**.
+
+    ![Erstellen eines StorSimple Data Manager-Diensts 3](./media/storsimple-data-manager-ui/create-service-4.png)
+
+Die Diensterstellung dauert einige Minuten. Sie sehen eine Benachrichtigung, nachdem der Dienst erfolgreich erstellt wurde, und der neue Dienst wird angezeigt.
 
 ### <a name="create-a-data-transformation-job-definition"></a>Erstellen einer Auftragsdefinition für die Datentransformation
 
-Sie müssen innerhalb eines StorSimple Data Manager-Diensts eine Auftragsdefinition für die Datentransformation erstellen. Eine Auftragsdefinition gibt Details zu den Daten im nativen Format an, die Sie in ein Speicherkonto verschieben möchten. 
+Sie müssen innerhalb eines StorSimple Data Manager-Diensts eine Auftragsdefinition für die Datentransformation erstellen. Eine Auftragsdefinition gibt Details zu den StorSimple-Daten im nativen Format an, die Sie in ein Speicherkonto verschieben möchten. Nachdem Sie eine Auftragsdefinition erstellt haben, können Sie diesen Auftrag mit anderen Laufzeiteinstellungen erneut ausführen.
 
-Führen Sie die folgenden Schritte aus, um eine Auftragsdefinition für eine neue Datentransformation zu erstellen.
+Führen Sie die folgenden Schritte aus, um eine Auftragsdefinition zu erstellen.
 
-1.  Navigieren Sie zu dem Dienst, den Sie erstellt haben. Klicken Sie auf **+ Auftragsdefinition**.
+1. Navigieren Sie zu dem Dienst, den Sie erstellt haben. Wechseln Sie zu **Verwaltung > Auftragsdefinitionen**.
 
-    ![Auf +Auftragsdefinition klicken](./media/storsimple-data-manager-ui/click-add-job-definition.png)
+2. Klicken Sie auf **+ Auftragsdefinition**.
 
-2. Das Blatt der neuen Auftragsdefinition wird geöffnet. Benennen Sie die Auftragsdefinition, und klicken Sie auf **Quelle**. Geben Sie auf dem Blatt **Datenquelle konfigurieren** die Details des StorSimple-Geräts und der für Sie interessanten Daten an.
+    ![Auf +Auftragsdefinition klicken](./media/storsimple-data-manager-ui/create-job-definition-1.png)
 
-    ![Auftragsdefinition erstellen](./media/storsimple-data-manager-ui//create-new-job-deifnition.png)
+3. Geben Sie einen Namen für Ihre Auftragsdefinition ein. Der Name kann 3 bis 63 Zeichen enthalten. Der Name darf nur Groß- und Kleinbuchstaben, Ziffern und Bindestriche enthalten.
 
-3. Da es sich um einen neuen Data Manager-Dienst handelt, werden keine Datenrepositorys konfiguriert. Klicken Sie in der Dropdownliste im Datenrepository auf **Neu hinzufügen**, und anschließend auf **Add Data Repository** (Datenrepository hinzufügen), um Ihren StorSimple Manager als Datenrepository hinzuzufügen.
+4. Geben Sie einen Standort an, an dem Ihr Auftrag ausgeführt wird. Dieser Standort kann sich von dem Standort unterscheiden, an dem der Dienst bereitgestellt wird.
 
-4. Wählen Sie **StorSimple 8000 series Manager (Manager der StorSimple 8000-Serie)** als Typ des Repositorys aus, und geben Sie die Eigenschaften Ihres **StorSimple Managers** ein. Im Feld **Ressourcen-ID** müssen Sie die Nummer vor **:** im Registrierungsschlüssel Ihres StorSimple Managers eingeben.
+5. Klicken Sie auf **Quelle**, um das Quelldatenrepository anzugeben.
 
-    ![Erstellen der Datenquelle](./media/storsimple-data-manager-ui/create-new-data-source.png)
+    ![Konfigurieren des Quelldatenrepositorys](./media/storsimple-data-manager-ui/create-job-definition-2.png)
 
-5.  Klicken Sie nach Abschluss des Vorgangs auf **OK**. Dadurch wird Ihr Datenrepository gespeichert, und dieser StorSimple Manager kann in anderen Auftragsdefinitionen wiederverwendet werden, ohne diese Parameter erneut einzugeben. Nachdem Sie auf **OK** geklickt haben, dauert es ein paar Sekunden bevor der StorSimple Manager in der Dropdownliste angezeigt wird.
+6. Da es sich um einen neuen Data Manager-Dienst handelt, werden keine Datenrepositorys konfiguriert. Geben Sie in **Datenquelle konfigurieren** die Details des Geräts der StorSimple 8000-Serie und der für Sie interessanten Daten an.
 
-6.  Geben Sie auf dem Blatt **Datenquelle konfigurieren** den Gerätenamen und den Namen des Volume an, das die für Sie interessanten Daten enthält.
+   Klicken Sie in der Dropdownliste im Datenrepository auf **Neu hinzufügen**, und anschließend auf **Add Data Repository** (Datenrepository hinzufügen), um Ihren StorSimple-Geräte-Manager als Datenrepository hinzuzufügen.
 
-7.  Geben Sie im Unterabschnitt **Filter** das Stammverzeichnis ein, das die für Sie interessanten Daten enthält (das Feld sollte mit einem `\` beginnen). Sie können hier auch Dateifilter hinzufügen.
+    ![Hinzufügen eines neuen Datenrepositorys](./media/storsimple-data-manager-ui/create-job-definition-3.png)
+  
+    1. Wählen Sie **StorSimple 8000-Serie Manager** als Datenrepositorytyp aus.
+    
+    2. Geben Sie einen Anzeigenamen für Ihr Quelldatenrepository ein.
+    
+    3. Wählen Sie in der Dropdownliste ein Abonnement aus, das Ihrem StorSimple-Geräte-Manager-Dienst zugeordnet ist.
+    
+    4. Geben Sie den Namen des StorSimple-Geräte-Managers für die **Ressource** ein.
 
-8.  Der Datentransformationsdienst funktioniert mit den Daten, die über Momentaufnahmen an die Azure-Cloud übertragen werden. Bei der Ausführung dieses Auftrags können Sie entscheiden, bei jeder Ausführung dieses Auftrags eine Sicherung vorzunehmen (um aktuellste Daten zu bearbeiten), oder die letzte vorhandene Sicherung in der Cloud zu verwenden (wenn Sie archivierte Daten bearbeiten).
+    5. Geben Sie die **Dienstdatenverschlüsselungs**-Schlüssel für den StorSimple-Geräte-Manager-Dienst ein. 
 
-    ![Details der neuen Datenquelle](./media/storsimple-data-manager-ui/new-data-source-details.png)
+    ![Konfigurieren des Quelldatenrepositorys 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-9. Als Nächstes müssen die Zieleinstellungen konfiguriert werden. Es gibt 2 Typen von unterstützten Zielen – Azure-Speicherkonten und Azure Media Services-Konten. Wählen Sie Speicherkonten aus, wenn Sie Dateien in Blobs in diesem Konto ablegen möchten. Wählen Sie Media Services-Konten aus, wenn Sie Dateien in Objekten in diesem Konto ablegen möchten. Auch hier brauchen wir wieder ein Repository. Wählen Sie in der Dropdownliste **Neu hinzufügen** aus, und dann **Konfigurieren von Einstellungen**.
+    Klicken Sie nach Abschluss des Vorgangs auf **OK**. Dadurch wird Ihr Datenrepository gespeichert. Sie können diesen StorSimple-Geräte-Manager in anderen Auftragsdefinitionen wiederverwenden, ohne diese Parameter erneut eingeben zu müssen. Nachdem Sie auf **OK** geklickt haben, dauert es einige Sekunden, bis das neu erstellte Quelldatenrepository in der Dropdownliste angezeigt wird.
 
-    ![Erstellen der Datensenke](./media/storsimple-data-manager-ui/create-new-data-sink.png)
+7. Wählen Sie in der Dropdownliste für **Datenrepository** das Datenrepository aus, das Sie erstellt haben. 
 
-10. Hier können Sie den Typ des Repositorys auswählen, das Sie hinzufügen möchten, und die anderen Parameter, die dem Repository zugeordnet werden sollen. In beiden Fällen wird bei der Ausführung des Auftrags eine Speicherwarteschlange erstellt. Diese Warteschlange wird mit Nachrichten über transformierte Blobs aufgefüllt, wenn diese bereit sind. Der Name dieser Warteschlange entspricht dem Namen der Auftragsdefinition. Wenn Sie für den Typ des Repositorys **Media Services** auswählen, können Sie auch Anmeldeinformationen des Speicherkontos eingeben, wenn die Warteschlange erstellt wird.
+    1. Geben Sie den Namen des Geräts der StorSimple 8000-Serie ein, das die gewünschten Daten enthält.
 
-    ![Details der neuen Daten-Senke](./media/storsimple-data-manager-ui/new-data-sink-details.png)
+    2. Geben Sie den Namen des Volumes an, das sich auf dem StorSimple-Gerät befindet und das die von Ihnen gewünschten Daten enthält.
 
-11. Nach Hinzufügen des Datenrepository (dies kann ein paar Sekunden dauern) erscheint das Repository in der Dropdownliste in **Target account name** (Zielkontoname).  Wählen Sie das Ziel aus, das Sie benötigen.
+    3. Geben Sie im Unterabschnitt **Filter** das Stammverzeichnis, das die von Ihnen gewünschten Daten enthält, im Format _\MeinStammverzeichnis\Daten_ ein. Laufwerkbuchstaben, etwa _\C:\Daten_, werden nicht unterstützt. Sie können hier auch Dateifilter hinzufügen.
 
-12. Klicken Sie auf **OK**, um die Auftragsdefinition zu erstellen. Die Auftragsdefinition wird jetzt eingerichtet. Sie können diese Auftragsdefinition mehrmals über die Benutzeroberfläche verwenden.
+    4. Der Datentransformationsdienst funktioniert mit den Daten, die über Momentaufnahmen an die Azure-Cloud übertragen werden. Wenn Sie diesen Auftrag ausführen, können Sie entscheiden, bei jeder Ausführung dieses Auftrags eine Sicherung vorzunehmen (um aktuellste Daten zu bearbeiten), oder die letzte vorhandene Sicherung in der Cloud zu verwenden (wenn Sie archivierte Daten bearbeiten).
 
-    ![Neue Auftragsdefinition hinzufügen](./media/storsimple-data-manager-ui/add-new-job-definition.png)
+    5. Klicken Sie auf **OK**.
+
+    ![Konfigurieren des Quelldatenrepositorys 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
+
+8. Als Nächstes muss das Zieldatenrepository konfiguriert werden. Wählen Sie Speicherkonten aus, wenn Sie Dateien in Blobs in diesem Konto ablegen möchten. Wählen Sie in der Dropdownliste **Neu hinzufügen** aus, und dann **Konfigurieren von Einstellungen**.
+
+9. Wählen Sie den Typ des Zielrepositorys, das Sie hinzufügen möchten, und die anderen Parameter aus, die dem Repository zugeordnet werden sollen.
+
+    Wenn Sie für das Ziel einen Speicherkontotyp auswählen, können Sie einen Anzeigenamen, ein Abonnement (wählen dasjenige, das für den Dienst verwendet wird, oder ein anderes aus) und ein Speicherkonto angeben.
+        ![Konfigurieren des Zieldatenrepositorys 1](./media/storsimple-data-manager-ui/create-job-definition-10.png)
+
+    Bei der Ausführung des Auftrags wird eine Speicherwarteschlange erstellt. Diese Warteschlange wird mit Nachrichten über transformierte Blobs aufgefüllt, wenn diese bereit sind. Der Name dieser Warteschlange entspricht dem Namen der Auftragsdefinition.
+    
+10. Nachdem Sie das Datenrepository hinzugefügt haben, warten Sie einige Minuten.
+    
+    1. Wählen Sie das Repository, das Sie als Ziel erstellt haben, in der Dropdownliste im Feld **Zielkontoname** aus.
+
+    2. Wählen Sie den Speichertyp als „Blobs“ oder „Dateien“ aus. Geben Sie den Namen des Speichercontainers an, in dem sich die transformierten Daten befinden. Klicken Sie auf **OK**.
+
+        ![Konfigurieren des Speicherkontos für das Zieldatenrepository](./media/storsimple-data-manager-ui/create-job-definition-16.png)
+
+11. Sie können auch die Option aktivieren, dass eine Schätzung der Auftragsdauer angezeigt wird, bevor Sie den Auftrag ausführen. Klicken Sie auf **OK**, um die Auftragsdefinition zu erstellen. Die Auftragsdefinition ist jetzt vollständig. Sie können diese Auftragsdefinition über die Benutzeroberfläche mehrfach mit unterschiedlichen Laufzeiteinstellungen verwenden.
+
+    ![Abschließen der Auftragsdefinition](./media/storsimple-data-manager-ui/create-job-definition-13.png)
+
+    Die neu erstellte Auftragsdefinition wird zur Liste der Auftragsdefinitionen für diesen Dienst hinzugefügt.
 
 ### <a name="run-the-job-definition"></a>Ausführen der Auftragsdefinition
 
-Wenn Sie Daten aus StorSimple in das Speicherkonto verschieben möchten, das Sie in der Auftragsdefinition angegeben haben, müssen Sie ihn aufrufen. Die Parameter können jedes Mal, wenn Sie den Auftrag aufrufen, flexibel geändert werden. Die Schritte lauten wie folgt:
+Immer wenn Sie Daten aus StorSimple in das Speicherkonto verschieben möchten, das Sie in der Auftragsdefinition angegeben haben, müssen Sie diese ausführen. Zur Laufzeit können einige Parameter anders angegeben werden. Die Schritte lauten wie folgt:
 
-1. Wählen Sie Ihren StorSimple Data Manager-Dienst aus, und klicken Sie dann auf **Überwachung**. Klicken Sie auf **Jetzt ausführen**.
+1. Wählen Sie Ihren StorSimple Data Manager-Dienst aus, und wechseln Sie dann zu **Verwaltung > Auftragsdefinitionen**. Klicken Sie auf die Auftragsdefinition aus, die Sie ausführen möchten.
+     
+     ![Starten der Auftragsausführung 1](./media/storsimple-data-manager-ui/start-job-run1.png)
 
-    ![Auftragsdefinition auslösen](./media/storsimple-data-manager-ui/run-now.png)
+2. Klicken Sie auf **Jetzt ausführen**.
+     
+     ![Starten der Auftragsausführung 2](./media/storsimple-data-manager-ui/start-job-run2.png)
 
-2. Wählen Sie die Auftragsdefinition aus, die Sie ausführen möchten. Klicken Sie auf **Ausführungseinstellungen**, um Einstellungen zu modifizieren, die Sie möglicherweise bei dieser Ausführung des Auftrags ändern möchten.
+3. Klicken Sie auf **Ausführungseinstellungen**, um Einstellungen zu modifizieren, die Sie möglicherweise bei dieser Ausführung des Auftrags ändern möchten. Klicken Sie auf **OK**, und klicken Sie dann auf **Ausführen**, um Ihren Auftrag auszuführen.
 
-    ![Ausführungseinstellungen des Auftrags](./media/storsimple-data-manager-ui/run-settings.png)
+    ![Starten der Auftragsausführung 3](./media/storsimple-data-manager-ui/start-job-run3.png)
 
-3. Klicken Sie auf **OK**, und klicken Sie dann auf **Ausführen**, um Ihren Auftrag auszuführen. Gehen Sie zur Seite **Aufträge** in Ihrem StorSimple Data Manager, um diesen Auftrag zu überwachen.
+4. Wechseln Sie zu **Aufträge** in Ihrem StorSimple Data Manager, um diesen Auftrag zu überwachen. Zusätzlich zur Überwachung können Sie auf dem Blatt **Aufträge** außerdem die Speicherwarteschlange abhören. Hier wird jedes Mal eine Nachricht hinzugefügt, wenn eine Datei aus StorSimple in das Speicherkonto verschoben wird.
 
-    ![Liste der Aufträge und Status](./media/storsimple-data-manager-ui/jobs-list-and-status.png)
-
-4. Zusätzlich zur Überwachung können Sie auf dem Blatt **Aufträge** außerdem die Speicherwarteschlange abhören. Hier wird jedes Mal eine Nachricht hinzugefügt, wenn eine Datei aus StorSimple in das Speicherkonto verschoben wird.
+    ![Starten der Auftragsausführung 4](./media/storsimple-data-manager-ui/start-job-run4.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

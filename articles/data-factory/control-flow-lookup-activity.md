@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 3c4f401682e5d1789c6e15597ced145a230bbcd6
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 02e4d7cd062364cae2edad0c76e3a009bb6c1bda
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 Mit der Lookupaktivität können Sie einen Datensatz, einen Tabellennamen oder einen Wert in einer externen Quelle lesen oder suchen. Auf die Ausgabe kann durch nachfolgende Aktivitäten verwiesen werden. 
@@ -36,6 +36,8 @@ Die folgenden Datenquellen werden derzeit für die Lookupaktivität unterstützt
 - Azure SQL Data Warehouse (aus einer Abfrage konvertierte JSON-Daten)
 - SQL Server (aus einer Abfrage konvertierte JSON-Daten)
 - Azure Table Storage (aus einer Abfrage konvertierte JSON-Daten)
+
+Von der Lookup-Aktivität werden maximal **5.000** Zeilen mit einer Größe von bis zu **10 MB** zurückgegeben.
 
 ## <a name="syntax"></a>Syntax
 

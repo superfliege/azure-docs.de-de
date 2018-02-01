@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics-REST-API für die Protokollsuche | Microsoft Docs"
-description: "Dieser Artikel enthält ein allgemeines Tutorial, in dem beschrieben wird, wie Sie die Log Analytics-REST-API für die Suche in der Operations Management Suite (OMS) nutzen können. Außerdem werden Beispiele zur Verwendung der Befehle genannt."
+title: "Azure Log Analytics-REST-API für die Protokollsuche | Microsoft-Dokumentation"
+description: "Dieser Artikel enthält ein allgemeines Tutorial, in dem beschrieben wird, wie Sie die Log Analytics-REST-API für die Suche nutzen können. Außerdem werden Beispiele zur Verwendung der Befehle genannt."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,27 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 5b51c6fcc69c8dff6579a1a1221e88822eccc1a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46c88f7cc250d4c35043039a6f0440aaac85b1c2
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics-REST-API für die Protokollsuche
-In diesem Tutorial erfahren Sie im Rahmen eines allgemeinen Tutorials sowie anhand von Beispielen, wie Sie die Log Analytics-REST-API für die Protokollsuche verwenden. Log Analytics ist Teil der Operations Management Suite (OMS).
 
-> [!NOTE]
-> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, sollten Sie [die Dokumentation für die neue Version der Protokollsprachen-API](https://dev.loganalytics.io/) lesen.
+> [!IMPORTANT]
+> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, sollten Sie [die Dokumentation für die neue Version der Protokollsprachen-API](https://dev.loganalytics.io/) lesen.  Diese Legacy-API kann zwar unter Umständen noch mit einem aktualisierten Arbeitsbereich verwendet werden, wird aber in Kürze nicht mehr unterstützt.  Es wird empfohlen, vorhandene Lösungen so zu ändern, dass sie die neue API verwenden.
 
-> [!NOTE]
-> Log Analytics hieß früher Operational Insights, weshalb dieser Name auch im Ressourcenanbieter verwendet wird.
->
->
+In diesem Tutorial erfahren Sie im Rahmen eines allgemeinen Tutorials sowie anhand von Beispielen, wie Sie die Log Analytics-REST-API für die Protokollsuche verwenden. 
+
 
 ## <a name="overview-of-the-log-search-rest-api"></a>Übersicht über die Protokollsuch-REST-API
-Die REST-API für die Log Analytics-Suche ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-API. Dieser Artikel enthält Beispiele, in denen über [ARMClient](https://github.com/projectkudu/ARMClient) auf die API zugegriffen wird. Hierbei handelt es sich um ein Open Source-Befehlszeilentool, das den Aufruf der Azure Resource Manager-API vereinfacht. Die Verwendung von ARMClient ist eine von vielen Möglichkeiten, mit denen Sie auf die Log Analytics-API für die Protokollsuche zugreifen können. Eine weitere Option ist die Verwendung des Azure PowerShell-Moduls für Operational Insights, das Cmdlets für den Zugriff auf die Suche enthält. Mit diesen Tools können Sie die API von Azure Resource Manager für Aufrufe an OMS-Arbeitsbereiche nutzen und darin Suchbefehle ausführen. Die API gibt Suchergebnisse im JSON-Format aus, die programmgesteuert auf viele verschiedene Arten verwendet werden können.
+Die REST-API für die Log Analytics-Suche ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-API. Dieser Artikel enthält Beispiele, in denen über [ARMClient](https://github.com/projectkudu/ARMClient) auf die API zugegriffen wird. Hierbei handelt es sich um ein Open Source-Befehlszeilentool, das den Aufruf der Azure Resource Manager-API vereinfacht. Die Verwendung von ARMClient ist eine von vielen Möglichkeiten, mit denen Sie auf die Log Analytics-API für die Protokollsuche zugreifen können. Eine weitere Option ist die Verwendung des Azure PowerShell-Moduls für Operational Insights, das Cmdlets für den Zugriff auf die Suche enthält. Mit diesen Tools können Sie die API von Azure Resource Manager für Aufrufe an Log Analytics-Arbeitsbereiche nutzen und darin Suchbefehle ausführen. Die API gibt Suchergebnisse im JSON-Format aus, die programmgesteuert auf viele verschiedene Arten verwendet werden können.
 
 Azure Resource Manager kann über eine [Bibliothek für .NET](https://msdn.microsoft.com/library/azure/dn910477.aspx) sowie über die [REST-API](https://msdn.microsoft.com/library/azure/mt163658.aspx) verwendet werden. Weitere Informationen finden Sie auf den verlinkten Webseiten.
 
@@ -221,9 +218,9 @@ Unterstützte Erfassungsmethoden: GET
 
 Die folgende Tabelle beschreibt die verfügbaren Eigenschaften.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| ID |Der eindeutige Bezeichner. |
+| id |Der eindeutige Bezeichner. |
 | ETag |**Erforderlich für Patch**. Wird bei jedem Schreibvorgang vom Server aktualisiert. Zum Aktualisieren muss der Wert mit dem aktuellen gespeicherten Wert übereinstimmen oder "*" lauten. 409 für alte/ungültige Werte zurückgegeben. |
 | properties.query |**Erforderlich**. Die Suchabfrage |
 | properties.displayName |**Erforderlich**. Der benutzerdefinierte Anzeigename der Abfrage. |
@@ -304,7 +301,7 @@ Die folgende Tabelle beschreibt die verfügbaren Eigenschaften.
 
 | **Eigenschaft** | **Beschreibung** |
 | --- | --- |
-| Name |Feldname. |
+| name |Feldname. |
 | displayName |Der Anzeigename des Felds. |
 | type |Der Typ des Feldwerts. |
 | facetable |Kombination der aktuellen Eigenschaften "indexed", "stored" und "facet". |

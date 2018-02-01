@@ -11,27 +11,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2017
+ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: ee5d8d118234ca0335922be1a29c6ce1e68eb7b6
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: a51ba4b45b7f6c72037d5c562a4ccd59e601cee4
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>Verbinden von ITSM-Produkten/-Diensten mit dem IT Service Management Connector (Vorschau)
-Dieser Artikel enthält Informationen zur Verbindung Ihres ITSM-Produkts/-Diensts mit IT Service Management Connector (ITSMC) in OMS sowie zur zentralen Verwaltung Ihrer Arbeitselemente. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](log-analytics-itsmc-overview.md).
+# <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
+Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](log-analytics-itsmc-overview.md).
 
 Die folgenden ITSM-Produkte und -Dienste werden unterstützt. Wählen Sie ein Produkt aus, um detaillierte Informationen dazu zu erhalten, wie Sie das Produkt mit ITSMC verbinden.
 
-- [System Center Service Manager](#connect-system-center-service-manager-to-it-service-management-connector-in-oms)
-- [ServiceNow](#connect-servicenow-to-it-service-management-connector-in-oms)
-- [Provance](#connect-provance-to-it-service-management-connector-in-oms)
-- [Cherwell](#connect-cherwell-to-it-service-management-connector-in-oms)
+- [System Center Service Manager](#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [ServiceNow](#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Provance](#connect-provance-to-it-service-management-connector-in-azure)
+- [Cherwell](#connect-cherwell-to-it-service-management-connector-in-azure)
 
-## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-oms"></a>Verbinden von System Center Service Manager mit dem IT Service Management Connector in OMS
+> [!NOTE]
 
-Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres System Center Service Manager-Produkts mit ITSMC in OMS.
+> Der ITSM-Connector kann nur eine Verbindung mit cloudbasierten ServiceNow-Instanzen. Lokale ServiceNow-Instanzen werden derzeit nicht unterstützt.
+
+## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>Verbinden von System Center Service Manager mit dem ITSM-Connector in Azure
+
+Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres System Center Service Manager-Produkts mit dem ITSMC in Azure.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,19 +51,24 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
 Verwenden Sie das folgende Verfahren zum Verbinden Ihrer System Center Service Manager-Instanz mit ITSMC:
 
-1. Rufen Sie **OMS** >**Einstellungen** > **Verbundene Quellen** auf.
-2. Wählen Sie **ITSM-Connector**, klicken Sie auf **Neue Verbindung hinzufügen**.
+1. Navigieren Sie im Azure-Portal zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)**.
 
-    ![Service Manager ](./media/log-analytics-itsmc/itsmc-service-manager-connection.png)
-3. Geben Sie die Informationen gemäß der Beschreibung in der folgenden Tabelle an, und klicken Sie auf **Speichern**, um die Verbindung zu erstellen:
+2.  Klicken Sie unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
+
+    ![Neue Verbindung](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+
+3. Klicken Sie oben im rechten Bereich auf **Hinzufügen**.
+
+4. Geben Sie die Informationen gemäß der Beschreibung in der folgenden Tabelle an, und klicken Sie auf **OK**, um die Verbindung zu erstellen.
 
 > [!NOTE]
+
 > Alle diese Parameter sind erforderlich.
 
 | **Feld** | **Beschreibung** |
 | --- | --- |
-| **Name**   | Geben Sie einen Namen für die System Center Service Manager-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später beim Konfigurieren von Arbeitselementen in dieser Instanz/Anzeigen ausführlicher Protokollanalysen. |
-| **Auswählen des Verbindungstyps**   | Wählen Sie **System Center Service Manager** aus. |
+| **Verbindungsname**   | Geben Sie einen Namen für die System Center Service Manager-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später beim Konfigurieren von Arbeitselementen in dieser Instanz/Anzeigen ausführlicher Protokollanalysen. |
+| **Partner type** (Partnertyp)   | Wählen Sie **System Center Service Manager** aus. |
 | **Server-URL**   | Geben Sie die URL der Service Manager-Web-App ein. Weitere Informationen zur Service Manager-Web-App finden Sie [hier](#create-and-deploy-service-manager-web-app-service).
 | **Client-ID**   | Geben Sie die Client-ID ein, die Sie (mithilfe des automatischen Skripts) zum Authentifizieren der Web-App generiert haben. Weitere Informationen zum automatisierten Skript finden Sie [hier](log-analytics-itsmc-service-manager-script.md).|
 | **Geheimer Clientschlüssel**   | Geben Sie den für diese ID generierten geheimen Clientschlüssel ein.   |
@@ -67,17 +76,20 @@ Verwenden Sie das folgende Verfahren zum Verbinden Ihrer System Center Service M
 | **Daten synchronisieren** | Geben Sie die Anzahl der vergangenen Tage ein, aus denen die Daten abgerufen werden sollen. **Maximaler Grenzwert**: 120 Tage. |
 | **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt OMS die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert. |
 
+![Service Manager-Verbindung](./media/log-analytics-itsmc/service-manager-connection.png)
+
 **Bei erfolgreicher Verbindung und Synchronisierung**:
 
-- Ausgewählte Arbeitselemente aus Service Manager werden in OMS **Log Analytics** importiert. Die Zusammenfassung dieser Arbeitselemente können Sie auf der IT Service Management Connector-Kachel anzeigen.
+- Ausgewählte Arbeitselemente aus Service Manager werden in Azure **Log Analytics** importiert. Die Zusammenfassung dieser Arbeitselemente können Sie auf der IT Service Management Connector-Kachel anzeigen.
 
-- In der OMS können Sie Incidents über OMS-Warnungen oder über die Protokollsuche oder aus Azure-Warnungen in dieser Service Manager-Instanz erstellen.
+- Sie können Incidents über Log Analytics-Warnungen oder Protokolldatensätze oder über Azure-Warnungen in dieser Service Manager-Instanz erstellen.
 
-Weitere Informationen: [Erstellen von ITSM-Arbeitselementen für OMS-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts), [Erstellen von ITSM-Arbeitselementen aus OMS-Protokollen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs) und [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+
+Weitere Informationen: [Erstellen von ITSM-Arbeitselementen für Log Analytics-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [Erstellen von ITSM-Arbeitselementen aus Log Analytics-Protokollen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) und [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Erstellen und Bereitstellen des Service Manager-Web-App-Dienstes
 
-Zur Verbindung der lokalen Service Manager-Instanz mit ITSMC in OMS hat Microsoft in GitHub eine Service Manager-Web-App erstellt.
+Zur Verbindung der lokalen Service Manager-Instanz mit dem ITSMC in Azure hat Microsoft in GitHub eine Service Manager-Web-App erstellt.
 
 Führen Sie die folgenden Schritte aus, um die ITSM-Web-App für Ihre Service Manager-Instanz einzurichten:
 
@@ -108,7 +120,7 @@ Speichern Sie diese Werte, da Sie sie beim Erstellen einer Verbindung mit ITSMC 
 
 ### <a name="configure-the-hybrid-connection"></a>Konfigurieren der Hybridverbindung
 
-Verwenden Sie das folgende Verfahren, um die Hybridverbindung zu konfigurieren, die die Service Manager-Instanz mit ITSMC in OMS verbindet.
+Verwenden Sie das folgende Verfahren, um die Hybridverbindung zu konfigurieren, die die Service Manager-Instanz mit dem ITSMC in Azure verbindet.
 
 1. Suchen Sie die Service Manager-Web-App unter **Azure-Ressourcen**.
 2. Klicken Sie auf **Einstellungen** > **Netzwerk**.
@@ -160,15 +172,15 @@ Ihre Hybridverbindung wurde hergestellt.
 ![erfolgreiche Hybridverbindung](./media/log-analytics-itsmc/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
 
-> Nach dem Herstellen der Hybridverbindung überprüfen testen Sie die Verbindung, indem Sie die bereitgestellte Service Manager-Web-App aufrufen. Stellen Sie sicher, dass die Verbindung erfolgreich ist, bevor Sie versuchen, in OMS eine Verbindung mit ITSMC herzustellen.
+> Nach dem Herstellen der Hybridverbindung überprüfen testen Sie die Verbindung, indem Sie die bereitgestellte Service Manager-Web-App aufrufen. Stellen Sie sicher, dass die Verbindung erfolgreich ist, bevor Sie versuchen, in Azure eine Verbindung mit dem ITSMC herzustellen.
 
 Die folgende Beispielabbildung zeigt die Details einer erfolgreichen Verbindung:
 
 ![Hybridverbindungstest](./media/log-analytics-itsmc/itsmc-hybrid-connection-test.png)
 
-## <a name="connect-servicenow-to-it-service-management-connector-in-oms"></a>Verbinden von ServiceNow mit dem IT Service Management Connector in OMS
+## <a name="connect-servicenow-to-it-service-management-connector-in-azure"></a>Verbinden von ServiceNow mit dem ITSM-Connector in Azure
 
-Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres ServiceNow-Produkts mit ITSMC in OMS.
+Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres ServiceNow-Produkts mit dem ITSMC in Azure.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
@@ -178,66 +190,71 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 **ServiceNow-Administratoren müssen in ihrer ServiceNow-Instanz die folgenden Schritte ausführen**:
 - Generieren der Client-ID und des geheimen Clientschlüssels für das ServiceNow-Produkt. Informationen zum Generieren der Client-ID und des geheimen Clientschlüssels finden Sie in dem für Sie zutreffenden Abschnitt:
 
-    - [OAuth-Setup für Jakarta](https://docs.servicenow.com/bundle/jakarta-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-    - [OAuth-Setup für Istanbul](https://docs.servicenow.com/bundle/istanbul-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-    - [OAuth-Setup für Helsinki](https://docs.servicenow.com/bundle/helsinki-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [OAuth-Setup für Jakarta](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+    - [OAuth-Setup für Istanbul](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+    - [OAuth-Setup für Helsinki](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth-Setup für Geneva](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
 
-- Installieren der Benutzer-App für die Microsoft OMS-Integration (ServiceNow-App). [Weitere Informationen](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1)
+- Installieren der Benutzer-App für die Microsoft OMS-Integration (ServiceNow-App). [Weitere Informationen](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )
 - Erstellen der Benutzerrolle „Integration“ für die installierte Benutzer-App. Informationen zum Erstellen der Benutzerrolle „Integration“ finden Sie [hier](#create-integration-user-role-in-servicenow-app).
 
 ### <a name="connection-procedure"></a>**Verbindungsverfahren**
 Verwenden Sie das folgende Verfahren, um eine ServiceNow-Verbindung zu erstellen:
 
-1. Rufen Sie **OMS** > **Einstellungen** > **Verbundene Quellen** auf.
-2. Wählen Sie **ITSM-Connector**, klicken Sie auf **Neue Verbindung hinzufügen**.
 
-    ![ServiceNow-Verbindung](./media/log-analytics-itsmc/itsmc-servicenow-connection.png)
+1. Navigieren Sie im Azure-Portal zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)**.
 
-3. Geben Sie die Informationen gemäß der Beschreibung in der folgenden Tabelle an, und klicken Sie auf **Speichern**, um die Verbindung zu erstellen:
+2.  Klicken Sie unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
+    ![Neue Verbindung](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+
+3. Klicken Sie oben im rechten Bereich auf **Hinzufügen**.
+
+4. Geben Sie die Informationen gemäß der Beschreibung in der folgenden Tabelle an, und klicken Sie auf **OK**, um die Verbindung zu erstellen.
+
 
 > [!NOTE]
 > Alle diese Parameter sind erforderlich.
 
 | **Feld** | **Beschreibung** |
 | --- | --- |
-| **Name**   | Geben Sie einen Namen für die ServiceNow-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später in OMS beim Konfigurieren von Arbeitselementen in dieser ITSM-Instanz/Anzeigen ausführlicher Protokollanalysen. |
-| **Auswählen des Verbindungstyps**   | Wählen Sie **ServiceNow** aus. |
+| **Verbindungsname**   | Geben Sie einen Namen für die ServiceNow-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später in OMS beim Konfigurieren von Arbeitselementen in dieser ITSM-Instanz/Anzeigen ausführlicher Protokollanalysen. |
+| **Partner type** (Partnertyp)   | Wählen Sie **ServiceNow** aus. |
 | **Benutzername**   | Geben Sie den Integrationsbenutzernamen ein, den Sie in der ServiceNow-App zur Unterstützung der Verbindung mit ITSMC erstellt haben. Weitere Informationen: [Erstellen der ServiceNow-App-Benutzerrolle](#create-integration-user-role-in-servicenow-app).|
-| **Kennwort**   | Geben Sie das diesem Benutzernamen zugeordnete Kennwort ein. **Hinweis**: Benutzername und Kennwort werden nur zum Generieren von Authentifizierungstoken verwendet und werden nicht im OMS-Dienst gespeichert.  |
+| **Kennwort**   | Geben Sie das diesem Benutzernamen zugeordnete Kennwort ein. **Hinweis:** Benutzername und Kennwort werden nur zum Generieren von Authentifizierungstoken verwendet und werden nicht im ITSMC-Dienst gespeichert.  |
 | **Server-URL**   | Geben Sie die URL der ServiceNow-Instanz ein, die Sie mit ITSMC verbinden möchten. |
 | **Client-ID**   | Geben Sie die Client-ID ein, die Sie für die OAuth2-Authentifizierung verwenden möchten, die Sie zuvor generiert haben.  Weitere Informationen zum Generieren der Client-ID und des geheimen Clientschlüssels: [OAuth-Setup](http://wiki.servicenow.com/index.php?title=OAuth_Setup). |
 | **Geheimer Clientschlüssel**   | Geben Sie den für diese ID generierten geheimen Clientschlüssel ein.   |
-| **Datensynchronisierungsbereich**   | Wählen Sie die ServiceNow-Arbeitselemente aus, die Sie über ITSMC mit OMS synchronisieren möchten.  Die ausgewählten Werte werden in Log Analytics importiert.   **Optionen:** Incidents und Änderungsanforderungen.|
+| **Datensynchronisierungsbereich**   | Wählen Sie die ServiceNow-Arbeitselemente aus, die Sie über den ITSMC mit Azure Log Analytics synchronisieren möchten.  Die ausgewählten Werte werden in Log Analytics importiert.   **Optionen:** Incidents und Änderungsanforderungen.|
 | **Daten synchronisieren** | Geben Sie die Anzahl der vergangenen Tage ein, aus denen die Daten abgerufen werden sollen. **Maximaler Grenzwert**: 120 Tage. |
-| **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt OMS die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert. |
+| **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt der ITSMC die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert. |
 
+![ServiceNow-Verbindung](./media/log-analytics-itsmc/itsm-connection-servicenow-connection-latest.png)
 
 **Bei erfolgreicher Verbindung und Synchronisierung**:
 
-- Ausgewählte Arbeitselemente aus der ServiceNow-Verbindung werden in OMS Log Analytics importiert.  Die Zusammenfassung dieser Arbeitselemente können Sie auf der IT Service Management Connector-Kachel anzeigen.
-- Sie können Incidents, Warnungen und Ereignisse über OMS-Warnungen, die Protokollsuche oder aus Azure-Warnungen in dieser ServiceNow-Instanz erstellen.  
+- Ausgewählte Arbeitselemente aus der ServiceNow-Instanz werden in Azure **Log Analytics** importiert. Die Zusammenfassung dieser Arbeitselemente können Sie auf der IT Service Management Connector-Kachel anzeigen.
 
+- Sie können Incidents über Log Analytics-Warnungen oder Protokolldatensätze oder über Azure-Warnungen in dieser ServiceNow-Instanz erstellen.
 
-Weitere Informationen: [Erstellen von ITSM-Arbeitselementen für OMS-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts), [Erstellen von ITSM-Arbeitselementen aus OMS-Protokollen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs) und [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Weitere Informationen: [Erstellen von ITSM-Arbeitselementen für Log Analytics-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [Erstellen von ITSM-Arbeitselementen aus Log Analytics-Protokollen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) und [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>Erstellen der Benutzerrolle „Integration“ in der ServiceNow-App
 
 Gehen Sie dazu wie folgt vor:
 
-1.  Rufen Sie den [ServiceNow Store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0) auf, und installieren Sie die **Benutzer-App für die ServiceNow- und Microsoft OMS-Integration** in Ihrer ServiceNow-Instanz.
+1.  Rufen Sie den [ServiceNow Store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1) auf, und installieren Sie die **Benutzer-App für die ServiceNow- und Microsoft OMS-Integration** in Ihrer ServiceNow-Instanz.
 2.  Nach der Installation suchen Sie in der linken Navigationsleiste der ServiceNow-Instanz nach dem Microsoft OMS-Integrator und wählen ihn aus.  
 3.  Klicken Sie auf **Installation Checklist** (Installationsprüfliste).
 
     Der Status **Nicht abgeschlossen** wird angezeigt, wenn die Benutzerrolle noch nicht erstellt wurde.
 
-4.  Geben Sie in den Textfeldern neben **Create integration user** (Integrationsbenutzer erstellen) den Benutzernamen für den Benutzer ein, der in OMS eine Verbindung mit ITSMC herstellen kann.
+4.  Geben Sie in den Textfeldern neben **Create integration user** (Integrationsbenutzer erstellen) den Benutzernamen für den Benutzer ein, der in Azure eine Verbindung mit dem ITSMC herstellen kann.
 5.  Geben Sie das Kennwort für diesen Benutzer ein, und klicken Sie auf **OK**.  
 
 >[!NOTE]
 
-> Diese Anmeldeinformationen verwenden Sie zum Herstellen der ServiceNow-Verbindung in OMS.
+> Diese Anmeldeinformationen verwenden Sie zum Herstellen der ServiceNow-Verbindung in Azure.
 
 Der neu erstellte Benutzer wird mit den zugewiesenen Standardrollen angezeigt.
 
@@ -253,7 +270,7 @@ Sobald der Benutzer erfolgreich erstellt wurde, wechselt der Status von **Check 
 
 > [!NOTE]
 
-> So ermöglichen Sie einem Benutzer das Erstellen von **Warnungen** und **Ereignissen** in ServiceNow über OMS:
+> So ermöglichen Sie einem Benutzer das Erstellen von **Warnungen** und **Ereignissen** in ServiceNow über Azure:
 
 > - Stellen Sie sicher, dass in Ihrer ServiceNow-Instanz das Ereignisverwaltungsmodul installiert ist.
 
@@ -262,9 +279,9 @@ Sobald der Benutzer erfolgreich erstellt wurde, wechselt der Status von **Check 
 >      - evt_mgmt_operator  
 
 
-## <a name="connect-provance-to-it-service-management-connector-in-oms"></a>Verbinden von Provance mit dem IT Service Management Connector in OMS
+## <a name="connect-provance-to-it-service-management-connector-in-azure"></a>Verbinden von Provance mit dem ITSM-Connector in Azure
 
-Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres Provenance-Produkts mit ITSMC in OMS.
+Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres Provance-Produkts mit dem ITSMC in Azure.
 
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -281,37 +298,44 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
 Verwenden Sie das folgende Verfahren, um eine Provance-Verbindung zu erstellen:
 
-1. Rufen Sie **OMS** > **Einstellungen** > **Verbundene Quellen** auf.
-2. Wählen Sie **ITSM-Connector**, klicken Sie auf **Neue Verbindung hinzufügen**.  
+1. Navigieren Sie im Azure-Portal zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)**.
 
-    ![Provance-Verbindung](./media/log-analytics-itsmc/itsmc-provance-connection.png)
-3. Geben Sie die Informationen gemäß der Beschreibung in der folgenden Tabelle an, und klicken Sie auf **Speichern**, um die Verbindung zu erstellen.
+2.  Klicken Sie unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
+    ![Neue Verbindung](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+
+3. Klicken Sie oben im rechten Bereich auf **Hinzufügen**.
+
+4. Geben Sie die Informationen gemäß der Beschreibung in der folgenden Tabelle an, und klicken Sie auf **OK**, um die Verbindung zu erstellen.
 
 > [!NOTE]
+
 > Alle diese Parameter sind erforderlich.
 
 | **Feld** | **Beschreibung** |
 | --- | --- |
-| **Name**   | Geben Sie einen Namen für die Provenance-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später in OMS beim Konfigurieren von Arbeitselementen in dieser ITSM-Instanz/Anzeigen ausführlicher Protokollanalysen. |
-| **Auswählen des Verbindungstyps**   | Wählen Sie **Provance** aus. |
+| **Verbindungsname**   | Geben Sie einen Namen für die Provenance-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später beim Konfigurieren von Arbeitselementen in dieser ITSM-Instanz/beim Anzeigen ausführlicher Protokollanalysen. |
+| **Partner type** (Partnertyp)   | Wählen Sie **Provance** aus. |
 | **Benutzername**   | Geben Sie den Namen des Benutzers ein, der eine Verbindung mit ITSMC herstellen kann.    |
-| **Kennwort**   | Geben Sie das diesem Benutzernamen zugeordnete Kennwort ein. **Hinweis**: Benutzername und Kennwort werden nur zum Generieren von Authentifizierungstoken verwendet und werden nicht im OMS-Dienst gespeichert.|
+| **Kennwort**   | Geben Sie das diesem Benutzernamen zugeordnete Kennwort ein. **Hinweis:** Benutzername und Kennwort werden nur zum Generieren von Authentifizierungstoken verwendet und werden nicht im ITSMC-Dienst gespeichert.|
 | **Server-URL**   | Geben Sie die URL der Provenance-Instanz ein, die Sie mit ITSMC verbinden möchten. |
 | **Client-ID**   | Geben Sie die Client-ID für die Authentifizierung dieser Verbindung ein, die Sie in Ihrer Provance-Instanz generiert haben.  Weitere Informationen zur Client-ID finden Sie unter [Konfigurieren der Active Directory-Authentifizierung](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md). |
-| **Datensynchronisierungsbereich**   | Wählen Sie die Provenance-Arbeitselemente aus, die Sie über ITSMC mit OMS synchronisieren möchten.  Diese Arbeitselemente werden in Log Analytics importiert.   **Optionen:** Incidents, Änderungsanforderungen.|
+| **Datensynchronisierungsbereich**   | Wählen Sie die Provance-Arbeitselemente aus, die Sie über den ITSMC mit Azure Log Analytics synchronisieren möchten.  Diese Arbeitselemente werden in Log Analytics importiert.   **Optionen:** Incidents, Änderungsanforderungen.|
 | **Daten synchronisieren** | Geben Sie die Anzahl der vergangenen Tage ein, aus denen die Daten abgerufen werden sollen. **Maximaler Grenzwert**: 120 Tage. |
-| **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt OMS die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert.|
+| **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt der ITSMC die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert.|
+
+![Provance-Verbindung](./media/log-analytics-itsmc/itsm-connections-provance-latest.png)
 
 **Bei erfolgreicher Verbindung und Synchronisierung**:
 
-- Ausgewählte Arbeitselemente aus der Provance-Verbindung werden in OMS **Log Analytics** importiert.  Die Zusammenfassung dieser Arbeitselemente können Sie auf der IT Service Management Connector-Kachel anzeigen.
-- Sie können Incidents und Ereignisse über OMS-Warnungen, die Protokollsuche oder aus Azure-Warnungen in dieser Provenance-Instanz erstellen.
+- Ausgewählte Arbeitselemente aus der Provance-Instanz werden in Azure **Log Analytics** importiert. Die Zusammenfassung dieser Arbeitselemente können Sie auf der IT Service Management Connector-Kachel anzeigen.
 
-Weitere Informationen: [Erstellen von ITSM-Arbeitselementen für OMS-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts), [Erstellen von ITSM-Arbeitselementen aus OMS-Protokollen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs) und [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+- Sie können Incidents über Log Analytics-Warnungen oder Protokolldatensätze oder über Azure-Warnungen in dieser Provance-Instanz erstellen.
 
-## <a name="connect-cherwell-to-it-service-management-connector-in-oms"></a>Verbinden von Cherwell mit dem IT Service Management Connector in OMS
+Weitere Informationen: [Erstellen von ITSM-Arbeitselementen für Log Analytics-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [Erstellen von ITSM-Arbeitselementen aus Log Analytics-Protokollen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) und [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
-Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres Cherwell-Produkts mit ITSMC in OMS.
+## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>Verbinden von Cherwell mit dem ITSM-Connector in Azure
+
+Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres Cherwell-Produkts mit dem ITSMC in Azure.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -323,36 +347,43 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
 ### <a name="connection-procedure"></a>Verbindungsverfahren
 
-Verwenden Sie das folgende Verfahren, um eine Cherwell-Verbindung zu erstellen:
+Verwenden Sie das folgende Verfahren, um eine Provance-Verbindung zu erstellen:
 
-1. Rufen Sie **OMS** >  **Einstellungen** > **Verbundene Quellen** auf.
-2. Wählen Sie **ITSM-Connector**, klicken Sie auf **Neue Verbindung hinzufügen**.  
+1. Navigieren Sie im Azure-Portal zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)**.
 
-    ![Cherwell-Benutzer-ID](./media/log-analytics-itsmc/itsmc-cherwell-connection.png)
+2.  Klicken Sie unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
+    ![Neue Verbindung](./media/log-analytics-itsmc/add-new-itsm-connection.png)
 
-3. Geben Sie die Informationen gemäß der Beschreibung in der folgenden Tabelle an, und klicken Sie auf **Speichern**, um die Verbindung zu erstellen.
+3. Klicken Sie oben im rechten Bereich auf **Hinzufügen**.
+
+4. Geben Sie die Informationen gemäß der Beschreibung in der folgenden Tabelle an, und klicken Sie auf **OK**, um die Verbindung zu erstellen.
 
 > [!NOTE]
+
 > Alle diese Parameter sind erforderlich.
 
 | **Feld** | **Beschreibung** |
 | --- | --- |
-| **Name**   | Geben Sie einen Namen für die Cherwell-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später in OMS beim Konfigurieren von Arbeitselementen in dieser ITSM-Instanz/Anzeigen ausführlicher Protokollanalysen. |
-| **Auswählen des Verbindungstyps**   | Wählen Sie **Cherwell** aus. |
+| **Verbindungsname**   | Geben Sie einen Namen für die Cherwell-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später beim Konfigurieren von Arbeitselementen in dieser ITSM-Instanz/beim Anzeigen ausführlicher Protokollanalysen. |
+| **Partner type** (Partnertyp)   | Wählen Sie **Cherwell** aus. |
 | **Benutzername**   | Geben Sie den Namen des Cherwell-Benutzers ein, der eine Verbindung mit ITSMC herstellen kann. |
-| **Kennwort**   | Geben Sie das diesem Benutzernamen zugeordnete Kennwort ein. **Hinweis**: Benutzername und Kennwort werden nur zum Generieren von Authentifizierungstoken verwendet und werden nicht im OMS-Dienst gespeichert.|
+| **Kennwort**   | Geben Sie das diesem Benutzernamen zugeordnete Kennwort ein. **Hinweis:** Benutzername und Kennwort werden nur zum Generieren von Authentifizierungstoken verwendet und werden nicht im ITSMC-Dienst gespeichert.|
 | **Server-URL**   | Geben Sie die URL für die Cherwell-Instanz ein, die Sie mit ITSMC verbinden möchten. |
 | **Client-ID**   | Geben Sie die Client-ID für die Authentifizierung dieser Verbindung ein, die Sie in Ihrer Cherwell-Instanz generiert haben.   |
 | **Datensynchronisierungsbereich**   | Wählen Sie die Cherwell-Arbeitselemente aus, die Sie über ITSMC synchronisieren möchten.  Diese Arbeitselemente werden in Log Analytics importiert.   **Optionen:** Incidents, Änderungsanforderungen. |
 | **Daten synchronisieren** | Geben Sie die Anzahl der vergangenen Tage ein, aus denen die Daten abgerufen werden sollen. **Maximaler Grenzwert**: 120 Tage. |
-| **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt OMS die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert. |
+| **Erstellen des neuen Konfigurationselements in der ITSM-Lösung** | Wählen Sie diese Option, wenn Sie die Konfigurationselemente im ITSM-Produkt erstellen möchten. Bei Auswahl dieser Option erstellt der ITSMC die entsprechenden CIs als Konfigurationselemente (falls keine CIs vorhanden sind) im unterstützten ITSM-System. **Standard**: deaktiviert. |
+
+
+![Provance-Verbindung](./media/log-analytics-itsmc/itsm-connections-cherwell-latest.png)
 
 **Bei erfolgreicher Verbindung und Synchronisierung**:
 
-- Ausgewählte Arbeitselemente aus dieser Cherwell-Verbindung werden in OMS Log Analytics importiert. Die Zusammenfassung dieser Arbeitselemente können Sie auf der IT Service Management Connector-Kachel anzeigen.
-- Sie können Incidents und Ereignisse über OMS-Warnungen, die Protokollsuche oder aus Azure-Warnungen in dieser Cherwell-Instanz erstellen.
+- Ausgewählte Arbeitselemente aus der Cherwell-Instanz werden in Azure **Log Analytics** importiert. Die Zusammenfassung dieser Arbeitselemente können Sie auf der IT Service Management Connector-Kachel anzeigen.
 
-Weitere Informationen: [Erstellen von ITSM-Arbeitselementen für OMS-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts), [Erstellen von ITSM-Arbeitselementen aus OMS-Protokollen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs) und [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+- Sie können Incidents über Log Analytics-Warnungen oder Protokolldatensätze oder über Azure-Warnungen in dieser Cherwell-Instanz erstellen.
+
+Weitere Informationen: [Erstellen von ITSM-Arbeitselementen für Log Analytics-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [Erstellen von ITSM-Arbeitselementen aus Log Analytics-Protokollen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) und [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="generate-client-id-for-cherwell"></a>Generieren der Client-ID für Cherwell
 
@@ -366,7 +397,6 @@ Führen Sie folgende Schritte aus, um die Client-ID/den Schlüssel für Cherwell
 
 
 ## <a name="next-steps"></a>Nächste Schritte
- - [Erstellen von ITSM-Arbeitselementen für OMS-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)
- - [Erstellen von ITSM-Arbeitselementen aus OMS-Protokollen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)
+ - [Erstellen von ITSM-Arbeitselementen für Log Analytics-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)
+ - [Erstellen von ITSM-Arbeitselementen aus Log Analytics-Protokolldatensätzen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)
  - [Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
- - [Anzeigen von Log Analytics für Ihre Verbindung](log-analytics-itsmc-overview.md#using-the-solution)

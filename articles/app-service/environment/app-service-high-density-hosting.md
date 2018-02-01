@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/12/2017
+ms.date: 22/01/2018
 ms.author: byvinyal
-ms.openlocfilehash: e6595c9f49e3b6303ad96c37d4ee5ebea37ce829
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ffffd3cc9f5c59f74f71d6d7d31c5ea615d11f4
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="high-density-hosting-on-azure-app-service"></a>High Density-Hosting in Azure App Service
 Wenn Sie App Service verwenden, wird Ihre Anwendung von der ihr zugeordneten Kapazität entkoppelt. Dabei wird auf zwei Konzepte zurückgegriffen:
@@ -38,12 +38,12 @@ Wenn jedoch mehrere Apps einen App Service-Plan gemeinsam nutzen, wird eine Inst
 Bei der Skalierung pro App wird eine App unabhängig von dem App Service-Plan skaliert, von dem sie gehostet wird. Auf diese Weise kann ein App Service-Plan auf 10 Instanzen skaliert werden. Jedoch kann eine App nur auf das Verwenden von fünf Instanzen festgelegt werden.
 
    >[!NOTE]
-   >Eine Skalierung pro App steht nur für **Premium**-SKU-App Service-Pläne zur Verfügung.
+   >Die Skalierung pro App steht nur für die App Service-Pläne **Standard**, **Premium**, **Premium V2** und **Isolated SKU** zur Verfügung.
    >
 
 ### <a name="per-app-scaling-using-powershell"></a>Skalierung pro App mit PowerShell
 
-Sie können einen Plan erstellen, der für eine *Skalierung pro App* konfiguriert ist, indem Sie das Attribut ```-perSiteScaling $true``` an das Cmdlet ```New-AzureRmAppServicePlan``` übergeben.
+Erstellen Sie einen Plan, der für die *Skalierung pro App* konfiguriert ist, indem Sie das ```-perSiteScaling $true```-Attribut an das Cmdlet ```New-AzureRmAppServicePlan``` übergeben.
 
 ```
 New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -71,7 +71,7 @@ $newASP
 Set-AzureRmAppServicePlan $newASP
 ```
 
-Auf App-Ebene müssen wir die Anzahl der Instanzen konfigurieren, die die App im App Service-Plan nutzen kann.
+Konfigurieren Sie auf App-Ebene die Anzahl der Instanzen, die die App im App Service-Plan nutzen kann.
 
 Im folgenden Beispiel ist die App auf zwei Instanzen beschränkt, und zwar unabhängig davon, auf wie viele Instanzen der zugrunde liegenden App Service-Plan horizontal hochskaliert wird.
 
@@ -87,7 +87,7 @@ Set-AzureRmWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> „$newapp.SiteConfig.NumberOfWorkers“ unterscheidet sich von „$newapp.MaxNumberOfWorkers“. Die Skalierung pro App verwendet „$newapp.SiteConfig.NumberOfWorkers“ zum Ermitteln der Skalierungsmerkmale der App.
+> $newapp.SiteConfig.NumberOfWorkers unterscheidet sich von $newapp.MaxNumberOfWorkers. Die Skalierung pro App verwendet „$newapp.SiteConfig.NumberOfWorkers“ zum Ermitteln der Skalierungsmerkmale der App.
 
 ### <a name="per-app-scaling-using-azure-resource-manager"></a>Skalierung pro App mit Azure Resource Manager
 
@@ -154,7 +154,7 @@ Führen Sie zum Konfigurieren des High Density-Hosting für Ihre Apps die folgen
 1. Erstellen Sie einen einzelnen App Service-Plan, und skalieren Sie ihn so, dass die gesamte verfügbare Kapazität für den Workerpool verwendet wird.
 1. Legen Sie im App Service-Plan das PerSiteScaling-Flag auf TRUE fest.
 1. Neue Apps werden erstellt und diesem App Service-Plan zugewiesen, wobei die **numberOfWorkers**-Eigenschaft auf **1** festgelegt wird. Durch die Konfiguration ergibt sich die höchstmögliche Dichte für diesen Workerpool.
-1. Die Anzahl der Worker kann pro App unabhängig konfiguriert werden, um nach Bedarf zusätzliche Ressourcen zur Verfügung zu stellen. Beispiel:
+1. Die Anzahl der Worker kann pro App unabhängig konfiguriert werden, um nach Bedarf zusätzliche Ressourcen zur Verfügung zu stellen. Beispiel: 
     - Bei einer stark ausgelasteten App kann **numberOfWorkers** auf **3** festgelegt werden, damit diese App über mehr Verarbeitungskapazität verfügt. 
     - Bei selten verwendeten Apps kann **numberOfWorkers** auf **1** festgelegt werden.
 

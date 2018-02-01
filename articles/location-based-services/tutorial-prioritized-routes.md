@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 19cf9da839d9d3a1ec78c8d1f6994628684f4e31
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 78e911d17fe8c468cf89ec1477f1c5144e6669b6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Location Based Services
 
@@ -28,7 +28,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Location Based Servic
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie vor dem Fortfahren sicher, dass Sie [Ihr Azure Location Based Services-Konto erstellen](./tutorial-search-location.md#createaccount) und [den Abonnementschlüssel für Ihr Konto beschaffen](./tutorial-search-location.md#getkey). Sie können sich auch darüber informieren, wie Sie die Kartensteuerelement- und Suchdienst-APIs einsetzen können, die im Tutorial [Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-search-location.md) beschrieben wurden. Im Tutorial [Route zu einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-route-location.md) werden die Grundlagen der Nutzung von Routendienst-APIs beschrieben.
+Stellen Sie vor dem Fortfahren sicher, dass Sie [Ihr Azure Location Based Services-Konto erstellen](./tutorial-search-location.md#createaccount) und [einen Schlüssel für Ihr Konto beschaffen](./tutorial-search-location.md#getkey). Sie können sich auch darüber informieren, wie Sie die Kartensteuerelement- und Suchdienst-APIs einsetzen können, die im Tutorial [Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-search-location.md) beschrieben wurden. Im Tutorial [Route zu einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-route-location.md) werden die Grundlagen der Nutzung von Routendienst-APIs beschrieben.
 
 
 <a id="queryroutes"></a>
@@ -80,9 +80,9 @@ Führen Sie die folgenden Schritte zur Erstellung einer statischen HTML-Seite au
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
     Mit **atlas.Map** – einer Komponente der Azure-Kartensteuerelement-API – wird das Steuerelement für eine visuelle und interaktive Webkarte bereitgestellt.
@@ -195,7 +195,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Azure
 
     var truckRouteUrl = "https://atlas.microsoft.com/route/directions/json?";
     truckRouteUrl += "&api-version=1.0";
-    truckRouteUrl += "&subscription-key=" + subscriptionKey;
+    truckRouteUrl += "&subscription-key=" + LBSAccountKey;
     truckRouteUrl += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
     truckRouteUrl += "&travelMode=truck";
@@ -209,7 +209,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Azure
     ```
     Mit diesem Codeausschnitt wird ein [XMLHttpRequest](https://xhr.spec.whatwg.org/)-Element erstellt und ein Ereignishandler zum Analysieren der eingehenden Antwort hinzugefügt. Bei einer erfolgreichen Antwort wird ein Array mit Koordinaten für die zurückgegebene Route erstellt und der Ebene `truckRouteLayerName` der Karte hinzugefügt. 
     
-    Mit diesem Codeausschnitt wird die Abfrage außerdem an den Routendienst für den Abonnementschlüssel Ihres Kontos gesendet, um die Route für den angegebenen Start- und Endpunkt zu erhalten. Die folgenden optionalen Parameter werden verwendet, um die Route für einen schweren LKW anzugeben: - Mit dem Parameter `travelMode=truck` wird die Fortbewegungsart als *truck* (LKW) angegeben. Andere unterstützte Fortbewegungsarten sind *taxi*, *bus*, *van*, *motorcycle* und *car* (Standardeinstellung).  
+    Mit diesem Codeausschnitt wird die Abfrage außerdem an den Routendienst für Ihren Kontoschlüssel gesendet, um die Route für den angegebenen Start- und Endpunkt zu erhalten. Die folgenden optionalen Parameter werden verwendet, um die Route für einen schweren LKW anzugeben: - Mit dem Parameter `travelMode=truck` wird die Fortbewegungsart als *truck* (LKW) angegeben. Andere unterstützte Fortbewegungsarten sind *taxi*, *bus*, *van*, *motorcycle* und *car* (Standardeinstellung).  
         - Mit den Parametern `vehicleWidth`, `vehicleHeight` und `vehicleLength` werden die Abmessungen des Fahrzeugs in Metern angegeben. Sie werden nur berücksichtigt, wenn die Fortbewegungsart *truck* (LKW) lautet.  
         - Mit `vehicleLoadType` wird die Ladung als gefährlich mit ggf. eingeschränkter Nutzung einiger Straßen eingestuft. Derzeit gilt dies nur für den Modus *truck* (LKW).  
 
@@ -238,7 +238,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Azure
 
     var carRouteUrl = "https://atlas.microsoft.com/route/directions/json?";
     carRouteUrl += "&api-version=1.0";
-    carRouteUrl += "&subscription-key=" + subscriptionKey;
+    carRouteUrl += "&subscription-key=" + LBSAccountKey;
     carRouteUrl += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
 

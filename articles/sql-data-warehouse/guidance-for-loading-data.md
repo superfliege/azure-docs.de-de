@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/13/2017
 ms.author: barbkess
-ms.openlocfilehash: 10d06fd29640a350c5522c00c4c9ebd9c6b24c89
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 80974f7660696887783e97b674e2d9921fe2feac
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Bewährte Methoden zum Laden von Daten in Azure SQL Data Warehouse
 Dieser Artikel enthält Empfehlungen und Leistungsoptimierungen für das Laden von Daten in Azure SQL Data Warehouse. 
@@ -31,7 +31,7 @@ Dieser Artikel enthält Empfehlungen und Leistungsoptimierungen für das Laden v
 ## <a name="preparing-data-in-azure-storage"></a>Vorbereiten von Daten in Azure Storage
 Zur Minimierung der Wartezeit sollten sich Speicherebene und Data Warehouse am gleichen Ort befinden.
 
-Beim Exportieren von Daten in das ORC-Dateiformat können textlastige Spalten aufgrund von Java-Fehlern vom Typ „Nicht genügend Arbeitsspeicher“ auf weniger als 50 Spalten begrenzt werden. Diese Einschränkung können Sie umgehen, indem Sie nur eine Teilmenge der Spalten exportieren.
+Beim Exportieren von Daten in ein ORC-Dateiformat erhalten Sie unter Umständen Java-Fehler vom Typ „Nicht genügend Speicherplatz“, falls umfangreiche Textspalten vorhanden sind. Diese Einschränkung können Sie umgehen, indem Sie nur eine Teilmenge der Spalten exportieren.
 
 Mit PolyBase können keine Zeilen geladen werden, die Daten mit mehr als einer Million Bytes enthalten. Wenn Sie Daten in Textdateien in Azure Blob Storage oder Azure Data Lake Store platzieren, müssen diese jeweils Daten mit weniger als einer Million Bytes enthalten. Dieses Bytelimit gilt unabhängig vom Tabellenschema.
 
@@ -45,14 +45,22 @@ Führen Sie immer nur einen einzelnen Ladeauftrag aus, um die bestmögliche Lade
 
 Erstellen Sie „Ladebenutzer“, die für das Ausführen von Ladevorgängen vorgesehen sind, um Ladevorgänge mit den geeigneten Computeressourcen durchzuführen. Weisen Sie jedem Ladebenutzer eine bestimmte Ressourcenklasse zu. Melden Sie sich zum Ausführen eines Ladevorgangs als ein Ladebenutzer an, und führen Sie anschließend den Ladevorgang durch. Der Ladevorgang wird mit der Ressourcenklasse des Benutzers ausgeführt.  Diese Methode ist einfacher als der Versuch, die Ressourcenklasse eines Benutzers zu ändern, um die jeweilige Ressourcenklassenanforderung zu erfüllen.
 
-Mit diesem Code wird ein Ladebenutzer für die Ressourcenklasse „staticrc20“ erstellt. Hiermit erhalten Benutzer die Steuerberechtigung für eine Datenbank, und anschließend wird der Benutzer als Mitglied der Datenbankrolle „staticrc20“ hinzugefügt. Melden Sie sich zum Ausführen eines Ladevorgangs mit Ressourcen für die Ressourcenklasse „staticRC20“ einfach als „LoaderRC20“ an, und führen Sie den Ladevorgang durch. 
+### <a name="example-of-creating-a-loading-user"></a>Beispiel für die Erstellung eines Ladebenutzers
+In diesem Beispiel wird ein Ladebenutzer für die Ressourcenklasse „staticrc20“ erstellt. Der erste Schritt umfasst das **Herstellen einer Verbindung mit dem Master** und das Erstellen einer Anmeldung.
 
-    ```sql
-    CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
-    CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-    GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
-    ```
+```sql
+   -- Connect to master
+   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+```
+Stellen Sie eine Verbindung mit dem Data Warehouse her, und erstellen Sie einen Benutzer. Im folgenden Code wird vorausgesetzt, dass Sie über eine Verbindung mit der Datenbank „mySampleDataWarehouse“ verfügen. Es wird veranschaulicht, wie Sie den Benutzer „LoaderRC20“ erstellen und ihm die CONTROL-Berechtigung für eine Datenbank gewähren. Anschließend wird der Benutzer als Mitglied der Datenbankrolle „staticrc20“ hinzugefügt.  
+
+```sql
+   -- Connect to the database
+   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
+   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
+   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+```
+Melden Sie sich zum Ausführen eines Ladevorgangs mit Ressourcen für die Ressourcenklasse „staticRC20“ einfach als „LoaderRC20“ an, und führen Sie den Ladevorgang durch.
 
 Führen Sie Ladevorgänge nicht unter dynamischen Ressourcenklassen, sondern unter statischen Ressourcenklassen aus. Wenn Sie die statischen Ressourcenklassen verwenden, ist unabhängig von Ihrer [Dienstebene](performance-tiers.md#service-levels) garantiert, dass dieselben Ressourcen genutzt werden. Wenn Sie eine dynamische Ressourcenklasse verwenden, variieren die Ressourcen je nach Ihrer Dienstebene. Für dynamische Klassen bedeutet eine niedrigere Dienstebene, dass Sie für Ihren Ladebenutzer wahrscheinlich eine größere Ressourcenklasse nutzen müssen.
 
@@ -124,7 +132,7 @@ Führen Sie die folgenden Bereinigungsaufgaben durch, nachdem Sie Ihre externen 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Überwachen des Ladeprozesses finden Sie unter [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](sql-data-warehouse-manage-monitor.md).
+Informationen zum Überwachen von Datenladevorgängen finden Sie unter [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](sql-data-warehouse-manage-monitor.md).
 
 
 

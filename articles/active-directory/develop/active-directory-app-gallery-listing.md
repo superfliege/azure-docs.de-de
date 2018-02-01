@@ -4,7 +4,7 @@ description: "Auflisten einer Anwendung, die einmaliges Anmelden unterstützt, i
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
-manager: mtillman
+manager: mbaldwin
 editor: 
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -12,86 +12,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
+ms.date: 01/09/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 0c324829469b9babe6608480204bd46691f84228
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: feb09aa8f8e22ad6fbda6a490d251c500bedf3ee
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten
-Eine Anwendung, die einmaliges Anmelden mit Azure Active Directory unterstützt, kann nur im [Azure AD-Katalog](https://azure.microsoft.com/marketplace/active-directory/all/)aufgelistet werden, wenn sie einen der folgenden Integrationsmodi implementiert:
 
-* **OpenID Connect** : Direkte Integration in Azure AD unter Verwendung von OpenID Connect für die Authentifizierung und der Azure AD-Zustimmungs-API für die Konfiguration. Wenn Sie gerade erst mit der Integration beginnen und Ihre Anwendung SAML nicht unterstützt, ist dies der empfohlene Modus.
-* **SAML** : In Ihrer Anwendung können bereits Identitätsanbieter von Drittanbietern mithilfe des SAML-Protokolls konfiguriert werden.
 
-Für die Auflistung bestehen je nach Modus folgende Anforderungen:
+##  <a name="what-is-azure-ad-app-gallery"></a>Was ist der Azure AD-App-Katalog?
 
-## <a name="openid-connect-integration"></a>Integration mithilfe von OpenID Connect
-Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD diese [Anweisungen für Entwickler](active-directory-authentication-scenarios.md). Stellen Sie die nachfolgend beschriebenen Informationen zusammen, und senden Sie sie an waadpartners@microsoft.com.
+Azure AD ist ein cloudbasierter Identitätsdienst. [Azure AD-App-Katalog](https://azure.microsoft.com/marketplace/active-directory/all/) ist ein allgemeiner Store, in dem alle Anwendungsconnectors für einmaliges Anmelden und Benutzerbereitstellung veröffentlicht werden. Unsere gemeinsamen Kunden, die Azure AD als Identitätsanbieter einsetzen, suchen nach verschiedenen SaaS-Anwendungsconnectors, die hier veröffentlicht werden. IT-Administratoren fügen Connectors aus dem App-Katalog hinzu, konfigurieren diese und verwenden sie für einmaliges Anmelden und Bereitstellungen. Dabei unterstützt Azure AD alle wichtigen Verbundprotokolle wie SAML 2.0, OpenID Connect, OAuth und WS-Fed für einmaliges Anmelden. 
 
-* Stellen Sie Anmeldeinformationen für einen Testmandanten oder ein Testkonto mit Ihrer Anwendung bereit, die vom Azure AD-Team zum Testen der Integration verwendet werden können.  
-* Geben Sie uns Anweisungen, wie sich das Azure AD-Team anmelden und eine Instanz von Azure AD unter Verwendung des [Azure AD Consent Framework](active-directory-integrating-applications.md#overview-of-the-consent-framework)mit Ihrer Anwendung verbinden kann. 
-* Stellen Sie alle weiteren notwendigen Anweisungen bereit, damit das Azure AD-Team das einmalige Anmelden mit Ihrer Anwendung testen kann. 
-* Stellen Sie folgende Informationen bereit:
+## <a name="what-are-the-benefits-of-listing-the-application-in-the-gallery"></a>Welche Vorteile bietet eine Auflistung der Anwendung im Katalog?
 
-> Name des Unternehmens:
-> 
-> Website des Unternehmens:
-> 
-> Anwendungsname:
-> 
-> Anwendungsbeschreibung (max. 200 Zeichen):
-> 
-> Website der Anwendung (informativ):
-> 
-> Technische Support-Website für die Anwendung oder Kontaktinformationen:
-> 
-> Anwendungs-ID der Anwendung, wie in den Anwendungsdetails auf https://portal.azure.com gezeigt:
-> 
-> Anmelde-URL, unter der sich die Kunden anmelden und/oder die Anwendung erwerben:
-> 
-> Wählen Sie bis zu drei Kategorien aus, unter denen Ihre Anwendung aufgelistet wird (verfügbare Kategorien finden Sie im Azure Active Directory Marketplace):
-> 
-> Kleines Anwendungssymbol einfügen (PNG-Datei, 45 px mal 45 px,  Volltonfarbe für den Hintergrund):
-> 
-> Großes Anwendungssymbol einfügen (PNG-Datei, 215 px mal 215 px,  Volltonfarbe für den Hintergrund):
-> 
-> Logo einfügen (PNG-Datei, 150 px mal 122 px, transparente Hintergrundfarbe):
-> 
-> 
+*  Bestmögliches Kundenerlebnis beim einmaligen Anmelden
 
-## <a name="saml-integration"></a>Integration mithilfe von SAML
-Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Dazu befolgen Sie [diese Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](../application-config-sso-how-to-configure-federated-sso-non-gallery.md). Wenn Sie die Anwendungsintegration in Azure AD erfolgreich getestet haben, senden Sie die folgenden Informationen an <mailto:waadpartners@microsoft.com>.
+*  Einfache und minimale Konfiguration der Anwendung
 
-* Stellen Sie Anmeldeinformationen für einen Testmandanten oder ein Testkonto mit Ihrer Anwendung bereit, die vom Azure AD-Team zum Testen der Integration verwendet werden können.  
-* Geben Sie die URL für einmaliges Anmelden mit SAML, die Aussteller-URL (Entitäts-ID) und die Antwort-URL (Assertion Consumer Service) für Ihre Anwendung an, wie [hier](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)beschrieben. Wenn Sie diese Werte in der Regel als Teil einer SAML-Metadatendatei zur Verfügung stellen, senden Sie uns diese ebenfalls.
-* Beschreiben Sie kurz, wie Azure AD als Identitätsanbieter in ihrer Anwendung mithilfe von SAML 2.0 konfiguriert wird. Wenn Ihre Anwendung die Konfiguration von Azure AD als Identitätsanbieter über ein Self-Service-Verwaltungsportal unterstützt, stellen Sie sicher, dass dies mit den oben angegebenen Anmeldeinformation eingerichtet werden kann.
-* Stellen Sie folgende Informationen bereit:
+*  Leichte Auffindbarkeit der Anwendung im Katalog durch den Kunden 
 
-> Name des Unternehmens:
-> 
-> Website des Unternehmens:
-> 
-> Anwendungsname:
-> 
-> Anwendungsbeschreibung (max. 200 Zeichen):
-> 
-> Website der Anwendung (informativ):
-> 
-> Technische Support-Website für die Anwendung oder Kontaktinformationen:
-> 
-> Anmelde-URL, unter der sich die Kunden anmelden und/oder die Anwendung erwerben:
-> 
-> Wählen Sie bis zu drei Kategorien aus, unter denen Ihre Anwendung aufgelistet wird (verfügbare Kategorien finden Sie im [Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)):
-> 
-> Kleines Anwendungssymbol einfügen (PNG-Datei, 45 px mal 45 px,  Volltonfarbe für den Hintergrund):
-> 
-> Großes Anwendungssymbol einfügen (PNG-Datei, 215 px mal 215 px,  Volltonfarbe für den Hintergrund):
-> 
-> Logo einfügen (PNG-Datei, 150 px mal 122 px, transparente Hintergrundfarbe):
-> 
-> 
+*  Die Nutzung dieser Integration ist unabhängig von der vorhandenen Azure AD-SKU (Free, Basic oder Premium).
+
+*  Tutorials zur schrittweisen Konfiguration für die gemeinsamen Kunden
+
+*  Möglichkeit der Benutzerbereitstellung für dieselbe App bei Verwendung von SCIM
+
+
+##  <a name="what-are-the-pre-requisites"></a>Was sind die Voraussetzungen?
+
+Damit eine Anwendung in der Azure AD-Galerie aufgelistet werden kann, muss diese zunächst eines der von Azure AD unterstützten Verbundprotokolle implementieren. Lesen Sie die Geschäftsbedingungen des Azure AD-App-Katalogs. Je nachdem, welches Verbundprotokoll Sie verwenden, gehen Sie wie folgt vor: 
+
+*   **OpenID Connect** – Erstellen Sie die mehrinstanzenfähige Anwendung in Azure AD, und implementieren Sie das [Azure AD-Genehmigungsframework](active-directory-integrating-applications.md#overview-of-the-consent-framework) für Ihre Anwendung. Senden Sie die Anmeldeanforderung an einen gemeinsamen Endpunkt, damit jeder Kunde der Anwendung zustimmen kann. Sie können den Benutzerzugriff des Kunden anhand der Mandanten-ID und der im Token erhaltenen UPN des Benutzers steuern. Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD diese [Anweisungen für Entwickler](active-directory-authentication-scenarios.md).
+
+*   **SAML 2.0 oder WS-Fed** – Ihre Anwendung sollte über eine Funktion zur SAML/WS-Fed-SSO-Integration im SP- oder IDP-Modus verfügen. Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Dazu befolgen Sie diese [Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](../active-directory-saas-custom-apps.md).
+
+*   **Kennwortbasiertes SSO** – Erstellen Sie eine Webanwendung mit HTML-Anmeldeseite, um das [kennwortbasierte einmalige Anmelden](../active-directory-appssoaccess-whatis.md) zu konfigurieren. Das kennwortbasierte einmalige Anmelden (auch als „Password Vaulting“ oder „Kennworttresor“ bezeichnet) ermöglicht es Ihnen, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Es ist auch für Szenarien nützlich, in denen mehrere Benutzer ein Konto gemeinsam verwenden müssen, wie z. B. bei den App-Konten für die sozialen Medien Ihrer Organisation. 
+
+## <a name="process-for-submitting-the-request-in-the-portal"></a>Prozess für die Übermittlung der Anforderung im Portal
+
+Nachdem Sie getestet haben, dass Ihre Anwendungsintegration mit Azure AD funktioniert, müssen Sie Ihre Anforderung für den Zugriff auf unser [Anwendungsnetzwerkportal](https://microsoft.sharepoint.com/teams/apponboarding/Apps) übermitteln. Wenn Sie über ein Office 365-Konto verfügen, können Sie sich damit bei diesem Portal anmelden. Verwenden Sie andernfalls Ihre Microsoft-ID (Live ID, Outlook, Hotmail usw.), um sich anzumelden. Auf der folgenden Seite können Sie Ihren Zugriff anfordern. Geben Sie in das Textfeld eine geschäftliche Begründung ein, und klicken Sie auf **Zugriff anfordern**. Unser Team wird alle Details prüfen und Ihnen den Zugriff entsprechend gewähren. Danach können Sie sich beim Portal anmelden und Ihre detaillierte Anforderung für die Anwendung übermitteln.
+
+Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+![Zugriffsanforderung im SharePoint-Portal](./media/active-directory-app-gallery-listing/accessrequest.png)
+
+## <a name="timelines"></a>Zeitpläne
+    
+*   Prozess der Auflistung einer SAML 2.0- oder WS-Fed-Anwendung in der Galerie: **7 bis 10 Werktage**
+
+   ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/active-directory-app-gallery-listing/timeline.png)
+
+*   Prozess der Auflistung einer OpenID Connect-Anwendung in der Galerie: **2 bis 5 Werktage**
+
+   ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/active-directory-app-gallery-listing/timeline2.png)
+
+## <a name="escalations"></a>Eskalationen
+
+Bei Eskalationen wenden Sie sich per E-Mail an das [Azure AD SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>), das sich umgehend bei Ihnen meldet.
 

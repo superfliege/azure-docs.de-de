@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: b8e245f13af1dd011a92bbf0584b1689a1a0399f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 97cd46819a4547ec743270871bcb6b4eef3eb365
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Klassifizieren von Iris, Teil 3: Bereitstellen eines Modells
 Bei Azure Machine Learning-Diensten (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -134,37 +134,7 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker
 
    Die Eingabeaufforderung wird geöffnet und zeigt den aktuellen Speicherort Ihres Projektordners an: **c:\temp\myIris>**.
 
-2. Stellen Sie sicher, dass der Azure-Ressourcenanbieter **Microsoft.ContainerRegistry** unter Ihrem Abonnement registriert ist. Sie müssen diesen Ressourcenanbieter registrieren, bevor Sie in Schritt 3 eine Umgebung erstellen können. Sie können überprüfen, ob die Registrierung bereits durchgeführt wurde, indem Sie den folgenden Befehl verwenden:
-   ``` 
-   az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table 
-   ``` 
-
-   Es sollte in etwa folgende Ausgabe angezeigt werden: 
-   ```
-   Provider                                  Status 
-   --------                                  ------
-   Microsoft.Authorization                   Registered 
-   Microsoft.ContainerRegistry               Registered 
-   microsoft.insights                        Registered 
-   Microsoft.MachineLearningExperimentation  Registered 
-   ... 
-   ```
-   
-   Wenn **Microsoft.ContainerRegistry** nicht registriert ist, können Sie dies mit dem folgenden Befehl durchführen:
-   ``` 
-   az provider register --namespace Microsoft.ContainerRegistry 
-   ```
-   Die Registrierung kann einige Minuten dauern. Sie können den Status überprüfen, indem Sie den obigen Befehl **az provider list** oder den folgenden Befehl verwenden:
-   ``` 
-   az provider show -n Microsoft.ContainerRegistry 
-   ``` 
-
-   In der dritten Zeile der Ausgabe wird **"registrationState": "Registering"** angezeigt. Warten Sie kurz ab, und wiederholen Sie dann den Befehl **show**, bis in der Ausgabe **"registrationState": "Registered"** angezeigt wird.
-
-   >[!NOTE] 
-   Beim Bereitstellen in einem ACS-Cluster folgen Sie genau demselben Ansatz, um den Ressourcenanbieter **Microsoft.ContainerService** zu registrieren.
-
-3. Erstellen Sie die Umgebung. Sie müssen diesen Schritt einmal pro Umgebung ausführen. Führen Sie ihn beispielsweise einmal für die Entwicklungsumgebung und einmal für die Produktionsumgebung aus. Verwenden Sie den _lokalen Modus_ für diese erste Umgebung. Sie können den Switch `-c` oder `--cluster` im folgenden Befehl später ausprobieren, um eine Umgebung im _Clustermodus_ einzurichten.
+2. Erstellen Sie die Umgebung. Sie müssen diesen Schritt einmal pro Umgebung ausführen. Führen Sie ihn beispielsweise einmal für die Entwicklungsumgebung und einmal für die Produktionsumgebung aus. Verwenden Sie den _lokalen Modus_ für diese erste Umgebung. Sie können den Switch `-c` oder `--cluster` im folgenden Befehl später ausprobieren, um eine Umgebung im _Clustermodus_ einzurichten.
 
    Beachten Sie, dass für den folgenden Befehl zum Einrichten der Zugriffstyp „Mitwirkender“ für das Abonnement erforderlich ist. Wenn Sie nicht über die erforderlichen Berechtigungen verfügen, benötigen Sie zumindest Zugriff als Mitwirkender auf die Ressourcengruppe, in der die Bereitstellung erfolgt. Hierzu müssen Sie den Ressourcengruppennamen mithilfe des Flags `-g` als Teil des Einrichtungsbefehls angeben. 
 
@@ -176,25 +146,25 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker
    
    Der Clustername ist eine Möglichkeit, wie Sie die Umgebung identifizieren können. Der Standort sollte dem Standort des Kontos für die Modellverwaltung entsprechen, das Sie über das Azure-Portal erstellt haben.
 
-4. Erstellen Sie ein Modellverwaltungskonto. (Dies ist eine einmalige Aufgabe.)  
+3. Erstellen Sie ein Modellverwaltungskonto. (Dies ist eine einmalige Aufgabe.)  
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
    
-5. Legen Sie das Modellverwaltungskonto fest.  
+4. Legen Sie das Modellverwaltungskonto fest.  
    ```azurecli
    az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
    ```
 
-6. Richten Sie die Umgebung ein.
+5. Richten Sie die Umgebung ein.
 
-   Verwenden Sie nach Abschluss der Einrichtung den folgenden Befehl, um die Umgebungsvariablen festzulegen, die zum Operationalisieren der Umgebung erforderlich sind. Verwenden Sie den gleichen Umgebungsnamen, den Sie zuvor in Schritt 4 verwendet haben. Verwenden Sie den gleichen Ressourcengruppennamen, der im Befehlsfenster ausgegeben wurde, nachdem der Setupprozess abgeschlossen war.
+   Verwenden Sie nach Abschluss der Einrichtung den folgenden Befehl, um die Umgebungsvariablen festzulegen, die zum Operationalisieren der Umgebung erforderlich sind. Verwenden Sie den gleichen Umgebungsnamen, den Sie zuvor in Schritt 2 verwendet haben. Verwenden Sie den gleichen Ressourcengruppennamen, der im Befehlsfenster ausgegeben wurde, nachdem der Setupprozess abgeschlossen war.
 
    ```azurecli
    az ml env set -n <deployment environment name> -g <existing resource group name>
    ```
 
-7. Geben Sie den folgenden Befehl ein, um zu überprüfen, ob Sie Ihre operationalisierte Umgebung für die lokale Webdienstbereitstellung richtig konfiguriert haben:
+6. Geben Sie den folgenden Befehl ein, um zu überprüfen, ob Sie Ihre operationalisierte Umgebung für die lokale Webdienstbereitstellung richtig konfiguriert haben:
 
    ```azurecli
    az ml env show

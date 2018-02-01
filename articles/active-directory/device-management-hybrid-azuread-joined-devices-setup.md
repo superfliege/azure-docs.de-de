@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ec6489f796dab0fa24bbadf542429d4cf853c414
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 5eb53d13ed85093616f43b79b58d43ba62ffbd67
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -41,7 +41,7 @@ In diesem Thema werden die folgenden Bezeichnungen verwendet, um die Lesbarkeit 
 
 ### <a name="windows-current-devices"></a>Aktuelle Windows-Geräte
 
-- Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, empfehlen wir die Verwendung von Windows 10 Anniversary Update (Version 1607) oder höher. 
+- Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, wird die Version Windows 10 Anniversary Update (Version 1607) oder höher unterstützt. 
 - Die Registrierung von aktuellen Windows-Geräten **wird** in nicht zu einem Verbund gehörenden Umgebungen unterstützt, z.B. Konfigurationen mit Kennworthashsynchronisierung.  
 
 

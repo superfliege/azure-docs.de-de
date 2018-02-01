@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 12/04/2017
 ms.author: larryfr
-ms.openlocfilehash: 09a661b2a100245dd424e24d8a8ddef56c573b02
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 945b16553d56d5138b17e7768e43a298b310551d
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>Einführung in Apache Kafka in HDInsight
 
@@ -29,23 +29,45 @@ ms.lasthandoff: 12/08/2017
 
 Kafka in HDInsight umfasst die folgenden Features:
 
-* Vereinbarung zum Servicelevel (SLA): [SLA für HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
+* __Vereinbarung zum Servicelevel (SLA) mit 99% Verfügbarkeit von Kafka__: Weitere Informationen finden Sie im Dokument [SLA für HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
-* Veröffentlichen-Abonnieren-Messagingmuster: Kafka umfasst eine Producer-API zum Veröffentlichen von Datensätzen in einem Kafka-Thema. Die Consumer-API wird verwendet, wenn Sie ein Thema abonnieren.
+* __Fehlertoleranz und Rackinformationen__: Kafka basiert auf einem Konzept mit einem eindimensionalen Rack, das in bestimmten Umgebungen gut funktioniert. Doch in Umgebungen wie Azure ist ein Rack in zwei Dimensionen unterteilt – in Updatedomänen (UDs) und Fehlerdomänen (FDs). Microsoft stellt Tools bereit, mit denen sichergestellt werden kann, dass für Kafka-Partitionen und -Replikate in Bezug auf die UDs und FDs ein Ausgleich erzielt wird. 
 
-* Datenstromverarbeitung: Kafka wird häufig zusammen mit Apache Storm oder Spark für die Echtzeit-Datenstromverarbeitung eingesetzt. Mit Kafka 0.10.0.0 (HDInsight-Version 3.5 und 3.6) wurde eine Streaming-API eingeführt, mit der Sie Streaminglösungen erstellen können, ohne dass Sie dafür Storm oder Spark benötigen.
+    Weitere Informationen finden Sie unter [Hohe Verfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight](apache-kafka-high-availability.md).
 
-* Horizontale Skalierung: Bei Kafka werden Datenströme über die Knoten im HDInsight-Cluster hinweg partitioniert. Consumerprozesse können einzelnen Partitionen zugeordnet werden, um beim Nutzen von Datensätzen für einen Lastenausgleich zu sorgen.
-
-* Geordnete Bereitstellung: In jeder Partition werden die Datensätze im Datenstrom in der Reihenfolge gespeichert, in der sie empfangen wurden. Indem ein Consumerprozess pro Partition zugeordnet wird, können Sie sicherstellen, dass die Datensätze in der richtigen Reihenfolge verarbeitet werden.
-
-* Fehlertoleranz: Partitionen können zwischen Knoten repliziert werden, um für Fehlertoleranz zu sorgen.
-
-* Integration von Azure Managed Disks: Verwaltete Datenträger bieten eine bessere Skalierung und einen höheren Durchsatz für die Datenträger, die von den virtuellen Computern im HDInsight-Cluster verwendet werden.
-
-    Verwaltete Datenträger sind standardmäßig für Kafka in HDInsight aktiviert. Die Anzahl von Datenträgern, die pro Knoten verwendet werden, kann während der HDInsight-Erstellung konfiguriert werden. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+* **Integration von Azure Managed Disks**: Verwaltete Datenträger bieten eine bessere Skalierung und einen höheren Durchsatz für die Datenträger, die für Kafka in HDInsight verwendet werden (bis zu 16 TB pro Knoten im Cluster).
 
     Informationen zum Konfigurieren von verwalteten Datenträgern mit Kafka in HDInsight finden Sie unter [Erhöhen der Skalierbarkeit von Kafka in HDInsight](apache-kafka-scalability.md).
+
+    Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+
+* **Warnungen, Überwachung und Predictive Maintenance**: Azure Log Analytics kann zum Überwachen von Kafka in HDInsight verwendet werden. Log Analytics stellt Informationen zur VM-Ebene bereit, z.B. Datenträger- und NIC-Metriken sowie JMX-Metriken aus Kafka.
+
+    Weitere Informationen finden Sie unter [Analysieren von Protokollen für Apache Kafka in HDInsight](apache-kafka-log-analytics-operations-management.md).
+
+* **Replikation von Kafka-Daten**: Kafka verfügt über das MirrorMaker-Hilfsprogramm, mit dem Daten zwischen Kafka-Clustern repliziert werden.
+
+    Informationen zur Verwendung von MirrorMaker finden Sie unter [Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight](apache-kafka-mirroring.md).
+
+* **Clusterskalierung**: Mit HDInsight können Sie die Anzahl von Workerknoten (zum Hosten des Kafka-Brokers) nach der Clustererstellung ändern. Skalieren Sie einen Cluster zentral hoch, wenn der Umfang der Workloads zunimmt, oder zentral herunter, um Kosten zu sparen. Die Skalierung kann über das Azure-Portal, Azure PowerShell und andere Azure-Verwaltungsoberflächen durchgeführt werden. Für Kafka sollten Sie für Partitionsreplikate nach Skalierungsvorgängen einen Ausgleichsvorgang durchführen. Durch das Ausgleichen von Partitionen kann für Kafka die neue Anzahl von Workerknoten genutzt werden.
+
+    Weitere Informationen finden Sie unter [Hohe Verfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight](apache-kafka-high-availability.md).
+
+* **Veröffentlichen-Abonnieren-Messagingmuster**: Kafka umfasst eine Producer-API zum Veröffentlichen von Datensätzen in einem Kafka-Thema. Die Consumer-API wird verwendet, wenn Sie ein Thema abonnieren.
+
+    Weitere Informationen finden Sie unter [Einstieg in Apache Kafka in HDInsight](apache-kafka-get-started.md).
+
+* **Datenstromverarbeitung**: Kafka wird häufig zusammen mit Apache Storm oder Spark für die Echtzeit-Datenstromverarbeitung eingesetzt. Mit Kafka 0.10.0.0 (HDInsight-Version 3.5 und 3.6) wurde eine Streaming-API eingeführt, mit der Sie Streaminglösungen erstellen können, ohne dass Sie dafür Storm oder Spark benötigen.
+
+    Weitere Informationen finden Sie unter [Einstieg in Apache Kafka in HDInsight](apache-kafka-get-started.md).
+
+* **Horizontale Skalierung**: Bei Kafka werden Datenströme über die Knoten im HDInsight-Cluster hinweg partitioniert. Consumerprozesse können einzelnen Partitionen zugeordnet werden, um beim Nutzen von Datensätzen für einen Lastenausgleich zu sorgen.
+
+    Weitere Informationen finden Sie unter [Einstieg in Apache Kafka in HDInsight](apache-kafka-get-started.md).
+
+* **Geordnete Bereitstellung**: In jeder Partition werden die Datensätze im Datenstrom in der Reihenfolge gespeichert, in der sie empfangen wurden. Indem ein Consumerprozess pro Partition zugeordnet wird, können Sie sicherstellen, dass die Datensätze in der richtigen Reihenfolge verarbeitet werden.
+
+    Weitere Informationen finden Sie unter [Einstieg in Apache Kafka in HDInsight](apache-kafka-get-started.md).
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
@@ -57,7 +79,7 @@ Kafka in HDInsight umfasst die folgenden Features:
 
 * **Transformation**: Mit der Datenstromverarbeitung können Sie Daten aus mehreren Eingabethemen zu einem oder mehreren Ausgabethemen kombinieren und erweitern.
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 
 ![Kafka-Clusterkonfiguration](./media/apache-kafka-introduction/kafka-cluster.png)
 
@@ -66,7 +88,7 @@ In diesem Diagramm ist eine typische Kafka-Konfiguration dargestellt, für die C
 Jeder Kafka-Broker verwendet Azure Managed Disks. Die Anzahl von Datenträgern wird vom Benutzer festgelegt, und pro Broker können bis zu 16 TB Speicher bereitgestellt werden.
 
 > [!IMPORTANT]
-> Kafka ist sich der zugrunde liegenden Hardware (Rack) im Azure-Rechenzentrum nicht bewusst. Informationen zur Sicherstellung, dass Partitionen für die zugrunde liegende Hardware richtig verteilt sind, finden Sie unter [Konfigurieren von Hochverfügbarkeit (Kafka)](apache-kafka-high-availability.md).
+> Kafka ist sich der zugrunde liegenden Hardware (Rack) im Azure-Rechenzentrum nicht bewusst. Informationen zur Sicherstellung, dass Partitionen für die zugrunde liegende Hardware richtig verteilt sind, finden Sie im Dokument [Konfigurieren von Hochverfügbarkeit (Kafka)](apache-kafka-high-availability.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

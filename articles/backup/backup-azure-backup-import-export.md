@@ -93,7 +93,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 ### <a name="prepare-a-sata-drive-and-create-an-azure-import-job-by-using-the-azure-disk-preparation-tool"></a>Vorbereiten der SATA-Festplatte und Erstellen eines Azure-Importauftrags mit dem Azure-Tool für die Datenträgervorbereitung
 Das Azure-Tool für die Datenträgervorbereitung ist im Installationsverzeichnis des Recovery Services-Agents (Update vom August 2016 und höher) unter folgendem Pfad verfügbar:
 
-   *\Microsoft**Azure**Recovery**Services* *Agent\Utils\*
+   *\Microsoft* *Azure* *Recovery* *Services* \*Agent\Utils\*
 
 1. Navigieren Sie zu diesem Verzeichnis, und kopieren Sie das Verzeichnis **AzureOfflineBackupDiskPrep** auf einen Kopiercomputer, auf dem die vorzubereitenden Datenträger bereitgestellt werden. Überprüfen Sie für den Kopiercomputer Folgendes:
 

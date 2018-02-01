@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: 9009afc83b40064c6dbf10100f514c681af9b96b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54f446f8735bc46b87fe19aaf7845c5fbfce2744
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Planen und Übertragen von Aufträgen (Java)
 
@@ -62,7 +62,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-Wenn Sie die Geräteidentität programmgesteuert erstellen möchten, lesen Sie den entsprechenden Abschnitt im Artikel [Herstellen einer Verbindung zwischen dem Gerät und Ihrer IoT Hub-Instanz mit Java](iot-hub-java-java-getstarted.md#create-a-device-identity). Sie können auch das [iothub-explorer](https://github.com/Azure/iothub-explorer)-Tool verwenden, um Ihrem IoT Hub ein Gerät hinzuzufügen.
+Wenn Sie die Geräteidentität programmgesteuert erstellen möchten, lesen Sie den entsprechenden Abschnitt im Artikel [Herstellen einer Verbindung zwischen dem Gerät und Ihrer IoT Hub-Instanz mit Java](iot-hub-java-java-getstarted.md#create-a-device-identity). Sie können auch das Tool [IoT-Erweiterung für Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) verwenden, um Ihrem IoT Hub ein Gerät hinzuzufügen.
 
 ## <a name="create-the-service-app"></a>Erstellen der Dienst-App
 

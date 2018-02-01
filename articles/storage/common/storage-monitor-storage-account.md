@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tamram
-ms.openlocfilehash: 8c566978531ceb9db9aa7c9e2ba3ab83b2dc67cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20cb425b64bfba06d64b3c6c41f9ef496395ad8e
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 >
 > Azure Files unterstützt derzeit Storage Analytics-Metriken, allerdings noch keine Protokollierung.
 >
-> Für Speicherkonten mit dem Replikationstyp „Zonenredundanter Speicher (ZRS)“ ist die Metrik- oder Protokollierungsfunktion derzeit nicht aktiviert.
+> Speicherkonten vom Replikationstyp zonenredundanter Speicher (ZRS) unterstützen Metriken und Protokollierungen. Die vorherigen ZRS-Konten, die in „ZRS Classic“ umbenannt wurden, bieten keine Unterstützung für Metriken oder Protokollierungen. Weitere Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher](storage-redundancy.md#zone-redundant-storage). 
 > 
 > Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](../storage-monitoring-diagnosing-troubleshooting.md).
 >

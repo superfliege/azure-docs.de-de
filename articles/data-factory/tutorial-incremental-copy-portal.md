@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: af01fac2c552e038377f5b394fecbe3ad9fd3acc
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: ff26d3ae159320f8c726b37eb0c68e6c5f2c2cc3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in einen Azure-Blobspeicher
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle einer Azure SQL-Datenbank in einen Azure-Blobspeicher geladen werden. 
@@ -30,13 +30,13 @@ In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Vorbereiten des Datenspeichers zum Speichern des Grenzwerts
-> * Erstellen einer Data Factory
-> * Erstellen von verknüpften Diensten 
-> * Erstellen des Quell-, Senken- und Grenzwertdatasets
-> * Erstellen einer Pipeline
-> * Ausführen der Pipeline
-> * Überwachen der Pipelineausführung 
+> * Vorbereiten des Datenspeichers zum Speichern des Grenzwerts.
+> * Erstellen einer Data Factory.
+> * Erstellen Sie verknüpfte Dienste. 
+> * Erstellen des Quell-, Senken-, Grenzwertdatasets
+> * Erstellen einer Pipeline.
+> * Ausführen der Pipeline.
+> * Überwachen der Pipelineausführung. 
 > * Überprüfen der Ergebnisse
 > * Hinzufügen von weiteren Daten zur Quelle
 > * Erneutes Ausführen der Pipeline
@@ -256,7 +256,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     ![Verbinden von Lookup- und Copy-Aktivitäten](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
 21. Wählen Sie die **Copy-Aktivität** aus, und vergewissern Sie sich, dass die Eigenschaften für die Aktivität im **Eigenschaftenfenster** angezeigt werden. 
 
-    ![Eigenschaften der Copy-Aktivität](./media/tutorial-incremental-copy-portal/back-to-copy-activity-properties.png)
+    ![Eigenschaften der Kopieraktivität](./media/tutorial-incremental-copy-portal/back-to-copy-activity-properties.png)
 22. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Quelle**, und führen Sie die folgenden Schritte aus:
 
     1. Wählen Sie im Feld **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
@@ -311,7 +311,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 
         | NAME | Typ | Wert | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue |
+        | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Zeichenfolge | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
@@ -329,7 +329,7 @@ Klicken Sie auf der Symbolleiste auf **Trigger** und dann auf **Trigger Now** (J
 
 ## <a name="monitor-the-pipeline-run"></a>Überwachen der Pipelineausführung
 
-1. Wechseln Sie zur Registerkarte **Überwachen** auf der linken Seite. Sie können den Status der Pipelineausführung anzeigen, die vom manuellen Trigger ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. 
+1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können den Status der Pipelineausführung anzeigen, die vom manuellen Trigger ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. 
     
     ![Pipelineausführungen](./media/tutorial-incremental-copy-portal/pipeline-runs.png)
 2. Wenn Sie mit dieser Pipelineausführung verknüpfte Aktivitätsausführungen anzeigen möchten, klicken Sie in der Spalte **Aktionen** auf den ersten Link (**View Activity Runs** (Aktivitätsausführungen anzeigen)). Sie können zurück zur vorherigen Ansicht wechseln, indem Sie oben auf **Pipelines** klicken. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
@@ -446,7 +446,7 @@ In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 In diesem Tutorial hat die Pipeline Daten aus einer einzelnen Tabelle einer SQL-Datenbank in einen Blobspeicher kopiert. Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Daten aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine SQL-Datenbank kopieren. 
 
 > [!div class="nextstepaction"]
->[Inkrementelles Laden von mehreren SQL Server-Tabellen in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-powershell.md)
+>[Inkrementelles Laden von mehreren SQL Server-Tabellen in Azure SQL-Datenbank](tutorial-incremental-copy-multiple-tables-portal.md)
 
 
 

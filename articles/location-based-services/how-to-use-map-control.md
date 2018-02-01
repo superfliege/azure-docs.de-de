@@ -9,17 +9,17 @@ ms.date: 11/22/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 06743640aae5e06d0160105458d9a3cfa35d5040
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 494a8308a5ed4ae37ed9561d051155e7433e6193
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-use-the-azure-location-based-services-map-control"></a>Anleitung: Verwenden des Azure Location Based Services-Kartensteuerelements
 Mit der clientseitigen JavaScript-Bibliothek des Kartensteuerelements können Sie Karten und eingebettete Azure Location Based Services-Funktionen in Ihrer Web- oder mobilen Anwendung rendern. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Ein Azure Location Based Services-Konto und ein Abonnementschlüssel. Informationen zum Erstellen eines Kontos und Beschaffen eines Abonnementschlüssels finden Sie unter [Verwalten Ihres Azure Location Based Services-Kontos und der dazugehörigen Schlüssel](how-to-manage-account-keys.md). 
+Ein Azure Location Based Services-Konto und -Schlüssel. Informationen zum Erstellen eines Kontos und Abrufen eines Schlüssels finden Sie unter [Verwalten Ihres Azure Location Based Services-Kontos und der dazugehörigen Schlüssel](how-to-manage-account-keys.md). 
 
 ## <a name="create-a-new-map-in-a-web-page-using-the-map-control-api"></a>Erstellen einer neuen Karte auf einer Webseite mit der Kartensteuerelement-API
 Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige JavaScript-Bibliothek des Kartensteuerelements verwenden.
@@ -42,19 +42,19 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
             }
     ``` 
     
-4. Definieren Sie zum Initialisieren des Kartensteuerelements im HTML-Text einen neuen Abschnitt, und erstellen Sie ein Skript. Verwenden Sie Ihren eigenen Abonnementschlüssel aus Ihrem Azure Location Based Services-Konto. 
+4. Definieren Sie zum Initialisieren des Kartensteuerelements im HTML-Text einen neuen Abschnitt, und erstellen Sie ein Skript. Verwenden Sie Ihren eigenen Azure Location Based Services-Kontoschlüssel im Skript. 
 
     ```html
     <div id="map">
         <script>
-            var subscriptionKey = "<_subscriptionKey_>";
+            var LBSAccountKey = "<_your account key_>";
             var map = new atlas.Map("map", {
-                "subscription-key": subscriptionKey,
+                "subscription-key": LBSAccountKey,
                 center: [47.59093,-122.33263],
                 zoom: 12
             });
-        <script>
-    <div>
+        </script>
+    </div>
     ```
     
 5. Öffnen Sie die Datei in Ihrem Webbrowser, und zeigen Sie die gerenderte Karte an.

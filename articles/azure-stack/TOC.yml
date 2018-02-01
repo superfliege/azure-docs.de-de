@@ -31,6 +31,42 @@
       href: azure-stack-tutorial-app-service.md
 - name: Konzepte
   items:
+    - name: Rechenzentrumsintegration
+      items:
+        - name: Allgemeine Überlegungen zur Azure Stack-Integration
+          href: azure-stack-datacenter-integration.md
+        - name: Verbindungsmodelle für die Azure Stack-Bereitstellung
+          href: azure-stack-connection-models.md
+        - name: Überlegungen zur verbundenen Bereitstellung
+          href: azure-stack-connected-deployment.md
+        - name: Überlegungen zur nicht verbundenen Bereitstellung
+          href: azure-stack-disconnected-deployment.md
+        - name: Datencenternetzwerkintegration
+          items:
+            - name: Netzwerkintegration
+              href: azure-stack-network.md
+            - name: Border-Konnektivität
+              href: azure-stack-border-connectivity.md
+            - name: DNS-Integration
+              href: azure-stack-integrate-dns.md
+            - name: Firewallintegration
+              href: azure-stack-firewall.md
+              items:
+                - name: Veröffentlichen von Endpunkten
+                  href: azure-stack-integrate-endpoints.md
+        - name: PKI-Anforderungen für die Azure Stack-Bereitstellung
+          href: azure-stack-pki-certs.md
+          items:
+            - name: Abrufen von PKI-Zertifikaten für die Azure Stack-Bereitstellung
+              href: azure-stack-get-pki-certs.md
+        - name: Identitätsintegration
+          href: azure-stack-integrate-identity.md
+        - name: Registrieren von Azure Stack
+          href: azure-stack-registration.md
+        - name: Externe Überwachung
+          href: azure-stack-integrate-monitor.md
+        - name: Sicherheitsintegration
+          href: azure-stack-integrate-security.md
     - name: Wartungsrichtlinie
       href: azure-stack-servicing-policy.md
     - name: Wichtige Features und Konzepte
@@ -59,35 +95,6 @@
           href: azure-stack-add-default-image.md
         - name: Erstellen eines virtuellen Testcomputers
           href: azure-stack-provision-vm.md
-    - name: Bereitstellen von integrierten Azure Stack-Systemen
-      items:
-        - name: Überlegungen zur Bereitstellungsplanung
-          href: azure-stack-deployment-planning.md
-        - name: Entscheidungen bei der Bereitstellungsplanung
-          href: azure-stack-deployment-decisions.md
-        - name: Bereitstellung mit Azure-Verbindung
-          href: azure-stack-connected-deployment.md
-        - name: Bereitstellung ohne Azure-Verbindung
-          href: azure-stack-disconnected-deployment.md
-        - name: PKI-Anforderungen für die Azure Stack-Bereitstellung
-          href: azure-stack-pki-certs.md
-          items:
-            - name: Abrufen von PKI-Zertifikaten für die Azure Stack-Bereitstellung
-              href: azure-stack-get-pki-certs.md
-        - name: Registrieren von Azure Stack
-          href: azure-stack-registration.md
-    - name: Rechenzentrumsintegration
-      items:
-        - name: DNS
-          href: azure-stack-integrate-dns.md
-        - name: Identity
-          href: azure-stack-integrate-identity.md
-        - name: Veröffentlichen von Endpunkten
-          href: azure-stack-integrate-endpoints.md
-        - name: Externe Überwachung
-          href: azure-stack-integrate-monitor.md
-        - name: Sicherheit
-          href: azure-stack-integrate-security.md
     - name: Verwalten
       items:
         - name: Regionsverwaltung

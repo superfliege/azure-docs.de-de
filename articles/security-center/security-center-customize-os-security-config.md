@@ -1,6 +1,6 @@
 ---
-title: "Anpassen von Sicherheitskonfigurationen für Betriebssysteme in Azure Security Center [Vorschau] | Microsoft-Dokumentation"
-description: In diesem Artikel erfahren Sie, wie Sie Security Center-Bewertungen anpassen.
+title: Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau) | Microsoft-Dokumentation
+description: "Dieser Artikel erläutert, wie Sie Security Center-Bewertungen anpassen."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,119 +12,120 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/08/2018
+ms.date: 01/16/2018
 ms.author: terrylan
-ms.openlocfilehash: 2fa63515d290e6700fbe4a90ae509f4635b19f29
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: d42dd4ba150a28109d6bb3f7c2281d07b21a366e
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/25/2018
 ---
-# <a name="customizing-os-security-configurations-in-azure-security-center-preview"></a>Anpassen von Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center [Vorschau]
+# <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
 
-In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie Bewertungen für Sicherheitskonfigurationen für Betriebssysteme in Azure Security Center anpassen.
+Diese exemplarische Vorgehensweise veranschaulicht, wie Sie Bewertungen für Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center anpassen.
 
-## <a name="what-are-os-security-configurations"></a>Was sind Sicherheitskonfigurationen für Betriebssysteme?
+## <a name="what-are-os-security-configurations"></a>Was sind Sicherheitskonfigurationen von Betriebssystemen?
 
-Azure Security Center überwacht Sicherheitskonfigurationen anhand von über 150 empfohlenen Regeln für die Härtung des Betriebssystems, einschließlich Regeln für Firewalls, Überwachung, Kennwortrichtlinien und mehr. Wenn festgestellt wird, dass ein Computer eine angreifbare Konfiguration hat, wird eine Sicherheitsempfehlung generiert.
+Azure Security Center überwacht Sicherheitskonfigurationen durch Anwenden von über 150 empfohlenen Regeln für die Härtung des Betriebssystems, einschließlich Regeln für Firewalls, Überwachung, Kennwortrichtlinien und mehr. Wenn auf einem Computer eine angreifbare Konfiguration festgestellt wird, generiert Security Center eine Sicherheitsempfehlung.
 
-Eine Anpassung der Regeln kann Organisationen helfen zu steuern, welche Konfigurationsoptionen für ihre Umgebung besser geeignet sind. Diese Funktion ermöglicht Benutzern, eine angepasste Bewertungsrichtlinie festzulegen und diese auf alle im Abonnement enthaltenen Computer anzuwenden.
-
-> [!NOTE]
-> - Derzeit steht die Anpassung der Sicherheitskonfiguration von Betriebssystemen nur für Windows Server 2008, 2008 R2, 2012 und 2012 R2 zur Verfügung.
-- Die Konfiguration gilt für alle VMs und Computer, die mit allen Arbeitsbereichen im gewählten Abonnement verbunden sind.
-- Die Anpassung der Sicherheitskonfiguration für Betriebssysteme ist nur im Security Center Security Center-Tarif „Standard“ verfügbar.
->
->
-
-Wie werden die Regeln für die Sicherheitskonfiguration für Betriebssysteme angepasst?
-
-Sie können die Regeln der Sicherheitskonfiguration für Betriebssysteme anpassen, indem Sie eine bestimmte Regel aktivieren und deaktivieren, die gewünschte Einstellung für eine bestehende Regel ändern und eine neue Regel basierend auf den unterstützten Regeltypen (Registrierung, Überwachungsrichtlinie und Sicherheitsrichtlinie) hinzufügen. Derzeit muss die gewünschte Einstellung ein genauer Wert sein.
-
-Neue Regeln müssen das gleiche Format und die gleiche Struktur wie andere bestehende Regeln desselben Typs haben.
+Durch Anpassen der Regeln können Organisationen steuern, welche Konfigurationsoptionen sich für ihre Umgebung besser eignen. Sie können eine benutzerdefinierte Bewertungsrichtlinie einrichten und diese auf alle passenden Computer im Abonnement anwenden.
 
 > [!NOTE]
-> Um Sicherheitskonfigurationen für Betriebssysteme anpassen zu können, muss Ihnen die Rolle „Abonnementbesitzer“, „Mitwirkender“ am Abonnement oder „Sicherheitsadministrator“ zugewiesen sein.
+> - Derzeit steht die Anpassung der Sicherheitskonfiguration von Betriebssystemen nur für die Windows Server-Versionen 2008, 2008 R2, 2012 und 2012 R2 zur Verfügung.
+> - Die Konfiguration gilt für alle VMs und Computer, die mit allen Arbeitsbereichen im ausgewählten Abonnement verbunden sind.
+> - Die Anpassung der Sicherheitskonfiguration von Betriebssystemen ist nur im Security Center-Tarif „Standard“ verfügbar.
 >
 >
 
-## <a name="customize-security-configuration"></a>Anpassen der Sicherheitskonfiguration
+Sie können die Regeln der Sicherheitskonfiguration von Betriebssystemen anpassen, indem Sie eine bestimmte Regel aktivieren und deaktivieren, die gewünschte Einstellung für eine bestehende Regel ändern oder basierend auf den unterstützten Regeltypen (Registrierung, Überwachungsrichtlinie und Sicherheitsrichtlinie) eine neue Regel hinzufügen. Derzeit muss die gewünschte Einstellung ein genauer Wert sein.
 
-So passen Sie in Security Center die standardmäßige Sicherheitskonfiguration für Betriebssysteme an
+Neue Regeln müssen das gleiche Format und die gleiche Struktur aufweisen wie andere vorhandene Regeln desselben Typs.
+
+> [!NOTE]
+> Um Sicherheitskonfigurationen von Betriebssystemen anpassen zu können, muss Ihnen die Rolle *Abonnementbesitzer*, *Mitwirkender am Abonnement* oder *Sicherheitsadministrator* zugewiesen sein.
+>
+>
+
+## <a name="customize-the-default-os-security-configuration"></a>Anpassen der standardmäßigen Sicherheitskonfiguration von Betriebssystemen
+
+Um die standardmäßige Sicherheitskonfiguration von Betriebssystemen in Security Center anzupassen, gehen Sie folgendermaßen vor:
 
 1.  Öffnen Sie das Dashboard **Security Center**.
 
-2.  Klicken Sie im Hauptmenü von Security Center auf **Sicherheitsrichtlinie**.  Der Bereich **Security Center – Sicherheitsrichtlinie** wird geöffnet.
+2.  Wählen Sie im linken Bereich **Sicherheitsrichtlinie**.  
+    Das Fenster **Security Center – Sicherheitsrichtlinie** wird geöffnet.
+
+    ![Sicherheitsrichtlinie – Liste](media/security-center-customize-os-security-config/open-security-policy.png)
 
 3.  Wählen Sie das Abonnement aus, das Sie anpassen möchten.
 
-    ![](media/security-center-customize-os-security-config/open-security-policy.png)
+4. Wählen Sie unter **Richtlinienkomponenten** die Option **Sicherheitskonfigurationen bearbeiten** aus.  
+    Das Fenster **Sicherheitskonfigurationen bearbeiten** wird geöffnet. 
+    
+    ![Das Fenster „Sicherheitskonfigurationen bearbeiten“](media/security-center-customize-os-security-config/blade.png)
 
-4. Wählen Sie unter **RICHTLINIENKOMPONENTEN** die Option **Sicherheitskonfigurationen bearbeiten** aus.
+5. Führen Sie im rechten Bereich die Schritte zum Herunterladen, Bearbeiten und Hochladen der geänderten Datei aus.
 
-6.  Der Bereich **Sicherheitskonfigurationen bearbeiten** wird geöffnet. Befolgen Sie die auf dem Bildschirm markierten Schritte, um die geänderte Datei herunterzuladen, zu bearbeiten und hochzuladen.
+   > [!NOTE]
+   > Standardmäßig hat die Konfigurationsdatei, die Sie herunterladen, das *JSON*-Format. Anleitungen zum Ändern dieser Datei finden Sie unter [Anpassen der Konfigurationsdatei](#customize-the-configuration-file).
+   >
 
-    ![](media/security-center-customize-os-security-config/blade.png)
+   Nachdem Sie die Datei erfolgreich gespeichert haben, wird die Konfiguration auf alle VMs und Computer angewendet, die mit allen Arbeitsbereichen im Abonnement verbunden sind. Der Vorgang nimmt üblicherweise nur wenige Minuten in Anspruch, kann aber je nach Größe der Infrastruktur auch länger dauern. 
 
-  > [!NOTE]
-  > Standardmäßig hat die Konfigurationsdatei, die Sie herunterladen, das *JSON*-Format. Anleitungen zum Ändern dieser Datei finden Sie unter [Anpassen der Konfigurationsdatei](#customize-the-configuration-file).
-  >
+6. Um die Änderung zu übernehmen, wählen Sie **Speichern** aus. Andernfalls wird die Richtlinie nicht gespeichert.
 
-7. Nach erfolgreichem Speichern der Datei gilt die Konfiguration für alle VMs und Computer, die mit allen Arbeitsbereichen im gewählten Abonnement verbunden sind. Dieser Prozess kann einige Zeit in Anspruch nehmen (in der Regel einige Minuten), kann aber auch länger dauern, da er von der Größe der Infrastruktur abhängt. Klicken Sie auf **Speichern**, um die Änderung zu übernehmen. Andernfalls wird die Richtlinie nicht gespeichert.
+    ![Die Schaltfläche „Speichern“](media/security-center-customize-os-security-config/save-successfully.png)
 
-    ![](media/security-center-customize-os-security-config/save-successfully.png)
+Sie können die aktuelle Richtlinienkonfiguration jederzeit auf den Standardzustand zurücksetzen. Wählen Sie zu diesem Zweck im Fenster **Regeln für Betriebssystem-Sicherheitskonfiguration bearbeiten** die Option **Zurücksetzen** aus. Bestätigen Sie den Vorgang, indem Sie im Popupfenster zur Bestätigung **Ja** auswählen.
 
-Sie können die aktuelle Richtlinienkonfiguration jederzeit auf den Standardrichtlinienstatus zurücksetzen, indem Sie in **Regeln für Betriebssystem-Sicherheitskonfiguration bearbeiten** die Option **Zurücksetzen** auswählen. Wenn Sie diese Option auswählen, erhalten Sie die folgende Popupwarnung. Klicken Sie auf **Ja**, um zu bestätigen.
-
-![](media/security-center-customize-os-security-config/edit-alert.png)
+![Bestätigungsfenster für die Zurücksetzung](media/security-center-customize-os-security-config/edit-alert.png)
 
 ## <a name="customize-the-configuration-file"></a>Anpassen der Konfigurationsdatei
 
-In der Anpassungsdatei hat jede unterstützte Betriebssystemversion einen Regelsatz. Jeder Regelsatz hat einen eigenen Namen und eine eindeutige ID, wie das folgende Beispiel zeigt:
+Die Anpassungsdatei enthält einen Regelsatz für jede unterstützte Betriebssystemversion. Jeder Regelsatz weist einen eigenen Namen und eine eindeutige ID auf, wie das folgende Beispiel zeigt:
 
-![](media/security-center-customize-os-security-config/custom-file.png)
+![Name und ID des Regelsatzes](media/security-center-customize-os-security-config/custom-file.png)
 
 > [!NOTE]
-> Diese Datei wurde mit Visual Studio bearbeitet, aber Sie können auch Editor verwenden, solange das JSON-Viewer-Plug-In installiert ist.
+> Die Beispieldatei wurde in Visual Studio bearbeitet, aber Sie können auch Editor verwenden, wenn das JSON-Viewer-Plug-In installiert ist.
 >
 >
 
-Beim Bearbeiten dieser Datei können Sie eine Regel oder alle Regeln ändern. Jeder Regelsatz enthält den Abschnitt *Rules* mit den Regeln, die in drei Kategorien von Regeln unterteilt sind: Registry, Audit Policy und Security Policy, wie unten gezeigt:
+Wenn Sie die Anpassungsdatei bearbeiten, können Sie eine Regel oder alle Regeln ändern. Jeder Regelsatz enthält den Abschnitt *rules*, der in drei Kategorien unterteilt ist: Registry, AuditPolicy und SecurityPolicy, wie unten gezeigt:
 
-![](media/security-center-customize-os-security-config/rules-section.png)
+![Drei Regelsatzkategorien](media/security-center-customize-os-security-config/rules-section.png)
 
-Jede Kategorie hat einen eigenen Satz von Attributen. Für bestehende Regeln können Sie Änderungen an den folgenden Attributen vornehmen:
+Jede Kategorie hat einen eigenen Satz von Attributen. Sie können die folgenden Attribute ändern:
 
-- expectedValue: Der Felddatentyp dieses Attributs muss mit den unterstützten Werten jedes Regeltyps übereinstimmen wie z.B.:
+- **expectedValue**: Der Felddatentyp dieses Attributs muss mit den unterstützten Werten jedes *Regeltyps* übereinstimmen, beispielsweise:
 
-  - baselineRegistryRules: Der Wert muss mit dem [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884(v=vs.85) übereinstimmen, der in dieser Regel definiert ist.
+  - **baselineRegistryRules**: Der Wert sollte dem [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) entsprechen, der in dieser Regel definiert ist.
 
-  - baselineAuditPolicyRules: Der Wert muss ein Zeichenfolgenwert sein, und zwar einer der folgenden:
+  - **baselineAuditPolicyRules**: Verwenden Sie einen der folgenden Zeichenfolgenwerte:
 
-    - Erfolg und Fehler
+    - *Erfolgreich und fehlerhaft*
 
-    - Erfolg
+    - *Erfolgreich*
 
-  - baselineSecurityPolicyRules: Der Wert muss ein Zeichenfolgenwert sein, und zwar einer der folgenden:
+  - **baselineSecurityPolicyRules**: Verwenden Sie einen der folgenden Zeichenfolgenwerte:
 
-    - „No one“
+    - *Keiner*
 
-    - Liste der zulässigen Benutzergruppen, z.B.: „Administrators, Backup Operators“
+    - Liste der zulässigen Benutzergruppen, z.B.: *Administratoren*, *Sicherungsbenutzer*
 
--   state: Zeichenfolge, die die Optionen „Disabled“ oder „Enabled“ enthalten kann. Bei dieser Private Preview-Version wird für die Zeichenfolge Groß-/Kleinschreibung beachtet.
+-   **state**: Diese Zeichenfolge kann die Optionen *Deaktiviert* oder *Aktiviert* enthalten. Bei dieser Private Preview-Version wird für die Zeichenfolge Groß-/Kleinschreibung beachtet.
 
 Dies sind die einzigen Felder, die konfiguriert werden können. Wenn Sie gegen das Dateiformat oder die Dateigröße verstoßen, können Sie die Änderung nicht speichern. Die folgende Fehlermeldung tritt auf, wenn die Datei nicht verarbeitet werden kann:
 
-![](media/security-center-customize-os-security-config/invalid-json.png)
+![Fehlermeldung bei der Sicherheitskonfiguration](media/security-center-customize-os-security-config/invalid-json.png)
 
-Unter [Fehlercodes](#error-codes) finden Sie eine Liste möglicher Fehler.
+Eine Liste weiterer möglicher Fehler finden Sie unter [Fehlercodes](#error-codes).
 
-Nachfolgend finden Sie Beispiele für diese Regeln und die Attribute (fettgedruckt), die geändert werden können:
+Die folgenden drei Abschnitte enthalten Beispiele für die oben genannten Regeln. Die Attribute *expectedValue* und *state* können geändert werden.
 
-**Abschnitt „Rules“:** baselineRegistryRules
+**baselineRegistryRules**
 ```
-{
-
+    {
     "hive": "LocalMachine",
     "regValueType": "Int",
     "keyPath":
@@ -136,54 +137,55 @@ Nachfolgend finden Sie Beispiele für diese Regeln und die Attribute (fettgedruc
     "ruleName": "Network access: Restrict anonymous access to Named Pipes and
     Shares",
     "ruleType": "Registry",
-    "**expectedValue**": "1",
+    "expectedValue": "1",
     "severity": "Warning",
     "analyzeOperation": "Equals",
     "source": "Microsoft",
-    "**state**": "Disabled"
+    "state": "Disabled"
 
-}
+    }
 ```
 
-**Abschnitt „Rules“:** baselineAuditPolicyRules
+**baselineAuditPolicyRules**
 ```
-{
-"auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
-"ruleId": "37745508-95fb-44ec-ab0f-644ec0b16995",
-"originalId": "2ea0de1a-c71d-46c8-8350-a7dd4d447895",
-"cceId": "CCE-11001-5",
-"ruleName": "Audit Policy: Account Management: Other Account Management Events",
-"ruleType": "AuditPolicy",
-"**expectedValue**": "Success and Failure",
-"severity": "Critical",
-"analyzeOperation": "Equals",
-"source": "Microsoft",
-"**state**": "Enabled"
-},
-```
-
-**Abschnitt „Rules“:** baselineSecurityPolicyRules
-```
-{
-"sectionName": "Privilege Rights",
-"settingName": "SeIncreaseWorkingSetPrivilege",
-"ruleId": "b0ec9d5e-916f-4356-83aa-c23522102b33",
-"originalId": "b61bd492-74b0-40f3-909d-36b9bf54e94c",
-"cceId": "CCE-10548-6",
-"ruleName": "Increase a process working set",
-"ruleType": "SecurityPolicy",
-"**expectedValue**": "Administrators, Local Service",
-"severity": "Warning",
-"analyzeOperation": "Equals",
-"source": "Microsoft", "**state**": "Enabled"
-},
+    {
+    "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
+    "ruleId": "37745508-95fb-44ec-ab0f-644ec0b16995",
+    "originalId": "2ea0de1a-c71d-46c8-8350-a7dd4d447895",
+    "cceId": "CCE-11001-5",
+    "ruleName": "Audit Policy: Account Management: Other Account Management Events",
+    "ruleType": "AuditPolicy",
+    "expectedValue": "Success and Failure",
+    "severity": "Critical",
+    "analyzeOperation": "Equals",
+    "source": "Microsoft",
+    "state": "Enabled"
+    }
 ```
 
-Es gibt einige Regeln, die für die verschiedenen Betriebssystemtypen dupliziert werden. Duplizierte Regeln haben die gleiche „originalId“.
+**baselineSecurityPolicyRules**
+```
+    {
+    "sectionName": "Privilege Rights",
+    "settingName": "SeIncreaseWorkingSetPrivilege",
+    "ruleId": "b0ec9d5e-916f-4356-83aa-c23522102b33",
+    "originalId": "b61bd492-74b0-40f3-909d-36b9bf54e94c",
+    "cceId": "CCE-10548-6",
+    "ruleName": "Increase a process working set",
+    "ruleType": "SecurityPolicy",
+    "expectedValue": "Administrators, Local Service",
+    "severity": "Warning",
+    "analyzeOperation": "Equals",
+    "source": "Microsoft",
+    "state": "Enabled"
+    }
+```
 
-## <a name="adding-a-new-custom-rule"></a>Hinzufügen einer neuen benutzerdefinierten Regel
+Einige Regeln sind für die verschiedenen Betriebssystemtypen dupliziert. Duplizierte Regeln weisen das gleiche *originalId*-Attribut auf.
 
-Sie können auch eine neue Regel erstellen. Bevor Sie eine neue Regel anlegen, beachten Sie die folgenden Einschränkungen:
+## <a name="create-custom-rules"></a>Benutzerdefinierte Regeln erstellen
+
+Sie können auch neue Regeln erstellen. Bevor Sie eine neue Regel erstellen, beachten Sie die folgenden Einschränkungen:
 
 -   Schemaversion, *baselineId* und *baselineName* können nicht geändert werden.
 
@@ -193,21 +195,21 @@ Sie können auch eine neue Regel erstellen. Bevor Sie eine neue Regel anlegen, b
 
 -   Die maximale zulässige Anzahl von Regeln (einschließlich Standardregeln) ist 1000.
 
-Neue benutzerdefinierte Regeln werden mit einer neuen benutzerdefinierten Quelle markiert (! = "Microsoft"). Das Feld *RuleId* kann NULL oder leer sein. Wenn es leer ist, wird es von Microsoft generiert. Wenn es nicht leer ist, muss es eine gültige eindeutige GUID für alle (Standard- und benutzerdefinierten) Regeln enthalten. Überprüfen Sie die folgenden Einschränkungen für die Hauptfelder:
+Neue benutzerdefinierte Regeln werden mit einer neuen benutzerdefinierten Quelle markiert (! = "Microsoft"). Das Feld *ruleId* kann NULL oder leer sein. Wenn es leer ist, wird es von Microsoft generiert. Wenn es nicht leer ist, muss es eine gültige GUID enthalten, die für alle (standardmäßigen und benutzerdefinierten) Regeln eindeutig ist. Lesen Sie die folgenden Einschränkungen für die wichtigsten Felder:
 
--   *originalId*: Kann NULL oder leer sein. Wenn *originalId* nicht leer ist, muss dies eine gültige GUID sein.
+-   **originalId**: Kann NULL oder leer sein. Wenn *originalId* nicht leer ist, muss dies eine gültige GUID sein.
 
--   *cceId*: Kann NULL oder leer sein. Wenn *cceId* ist nicht leer ist, muss der Wert eindeutig sein.
+-   **cceId**: Kann NULL oder leer sein. Wenn *cceId* ist nicht leer ist, muss der Wert eindeutig sein.
 
--   *ruleType*: Entweder „Registry“, „AuditPolicy“ oder „SecurityPolicy“.
+-   **ruleType**: „Registry“, „AuditPolicy“ oder „SecurityPolicy“ (wählen Sie einen Wert aus).
 
--   *Severity* Entweder : „Unknown“, „Critical“, „Warning“ oder „Informational“.
+-   **severity**: „Unbekannt“, „Kritisch“, „Warnung“ oder „Information“ (wählen Sie einen Wert aus).
 
--   *analyzeOperation*: Muss „Equals“ sein.
+-   **analyzeOperation**: Muss *Ist gleich* sein.
 
--   *auditPolicyId*: Muss eine gültige GUID sein.
+-   **auditPolicyId**: Muss eine gültige GUID sein.
 
--   *regValueType*: Entweder „Int“, „Long“, „String“ oder „MultipleString“.
+-   **regValueType**: „Int“, „Long“, „String“ oder „MultipleString“ (wählen Sie einen Wert aus).
 
 > [!NOTE]
 > „Hive“ muss *LocalMachine* sein.
@@ -231,12 +233,11 @@ Beispiel einer neuen benutzerdefinierten Regel:
     "analyzeOperation": "Equals",
     "source": "MyCustomSource",
     "state": "Enabled"
-   }
+    }
 ```
 **Sicherheitsrichtlinie**:
 ```
-{
-
+   {
    "sectionName": "Privilege Rights",
    "settingName": "SeDenyBatchLogonRight",
    "originalId": "",
@@ -265,59 +266,59 @@ Beispiel einer neuen benutzerdefinierten Regel:
 
 ## <a name="file-upload-failures"></a>Fehler beim Hochladen von Dateien
 
-Wenn die übermittelte Konfigurationsdatei aufgrund von Fehlern bei Werten oder Formatierungen ungültig ist, wird ein Fehler angezeigt. Sie können einen detaillierten Fehlerbericht im CSV-Format herunterladen, um Fehler zu korrigieren, und dann die korrigierte Konfigurationsdatei erneut übermitteln.
+Wenn die übermittelte Konfigurationsdatei aufgrund von Fehlern bei Werten oder Formatierungen ungültig ist, wird ein Fehler angezeigt. Sie können einen detaillierten Fehlerbericht im CSV-Format herunterladen, um Fehler zu korrigieren, bevor Sie die korrigierte Konfigurationsdatei erneut übermitteln.
 
-![](media/security-center-customize-os-security-config/invalid-configuration.png)
+![Meldung zu Fehler bei Speicheraktion](media/security-center-customize-os-security-config/invalid-configuration.png)
 
-Beispiel für Fehlerdatei:
+Beispiel einer Fehlerdatei:
 
-![](media/security-center-customize-os-security-config/errors-file.png)
+![Beispiel für Fehlerdatei](media/security-center-customize-os-security-config/errors-file.png)
 
 ## <a name="error-codes"></a>Fehlercodes
 
-Die nachfolgenden Liste enthält alle möglichen Fehler:
+Alle potenziellen Fehler sind in der folgenden Tabelle aufgeführt:
 
 | **Fehler**                                | **Beschreibung**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfiguratiohSchemaVersionError  | Die gefundene Eigenschaft „schemaVersion“ war ungültig oder leer. Der Wert muss auf „{0}“ festgelegt werden.                                                         |
-| BaselineInvalidStringError               | Die Eigenschaft „{0}“ darf nicht „\\n“ enthalten.                                                                                                         |
-| BaselineNullRuleError                    | Die Liste der Regeln für die Baselinekonfiguration enthält eine Regel mit dem Wert NULL.                                                                         |
-| BaselineRuleCceIdNotUniqueError          | CCE-ID „{0}“ ist nicht eindeutig.                                                                                                                  |
-| BaselineRuleEmptyProperty                | Eigenschaft „{0}“ fehlt oder ist ungültig.                                                                                                       |
-| BaselineRuleIdNotInDefault               | Die Regel hat die Quelleigenschaft „Microsoft“, wurde aber nicht im Standardregelsatz von Microsoft gefunden.                                                   |
+| BaselineConfiguratiohSchemaVersionError  | Die Eigenschaft *schemaVersion* war ungültig oder leer. Der Wert muss auf *{0}* festgelegt werden.                                                         |
+| BaselineInvalidStringError               | Die Eigenschaft *{0}* darf nicht *\\n* enthalten.                                                                                                         |
+| BaselineNullRuleError                    | Die Liste der Regeln für die Baselinekonfiguration enthält eine Regel mit dem Wert *NULL*.                                                                         |
+| BaselineRuleCceIdNotUniqueError          | Die CCE-ID *{0}* ist nicht eindeutig.                                                                                                                  |
+| BaselineRuleEmptyProperty                | Die Eigenschaft *{0}* fehlt oder ist ungültig.                                                                                                       |
+| BaselineRuleIdNotInDefault               | Die Regel weist die Quelleigenschaft *Microsoft* auf, wurde aber im Standardregelsatz von Microsoft nicht gefunden.                                                   |
 | BaselineRuleIdNotUniqueError             | Die Regel-ID ist nicht eindeutig.                                                                                                                       |
-| BaselineRuleInvalidGuid                  | Die gefundene Eigenschaft „{0}“ ist ungültig. Der Wert ist keine gültige GUID.                                                                             |
+| BaselineRuleInvalidGuid                  | Die gefundene Eigenschaft *{0}* ist ungültig. Der Wert ist keine gültige GUID.                                                                             |
 | BaselineRuleInvalidHive                  | „Hive“ muss „LocalMachine“ sein.                                                                                                                   |
 | BaselineRuleNameNotUniqueError           | Der Regelname ist nicht eindeutig.                                                                                                                 |
 | BaselineRuleNotExistInConfigError        | Die Regel wurde in der neuen Konfiguration nicht gefunden. Regel kann nicht gelöscht werden.                                                                     |
 | BaselineRuleNotFoundError                | Die Regel wurde im standardmäßigen Baselineregelsatz nicht gefunden.                                                                                        |
 | BaselineRuleNotInPlace                   | Die Regel entspricht einer Standardregel des Typs {0} und ist in der Liste {1} aufgeführt.                                                                       |
-| BaselineRulePropertyTooLong              | Die Eigenschaft „{0}“ ist zu lang. Maximal zulässige Länge: {1}.                                                                                        |
-| BaselineRuleRegTypeInvalidError          | Der erwartete Wert „{0}“ stimmt nicht mit dem definierten Registrierungswerttyp überein.                                                              |
-| BaselineRulesetAdded                     | Regelsatz mit der ID „{0}“ wurde in der Standardkonfiguration nicht gefunden. Der Regelsatz kann nicht hinzugefügt werden.                                               |
-| BaselineRulesetIdMustBeUnique            | Der angegebene Baselineregelsatz „{0}“ muss eindeutig sein.                                                                                           |
-| BaselineRulesetNotFound                  | Regelsatz mit der ID „{0}“ und dem Namen „{1}“ wurde in der angegebenen Konfiguration nicht gefunden. Der Regelsatz kann nicht gelöscht werden.                                |
-| BaselineRuleSourceNotMatch               | Regel mit der ID „{0}“ ist bereits definiert.                                                                                                       |
-| BaselineRuleTypeDoesntMatch              | Der Standardregeltyp ist „{0}“.                                                                                                              |
-| BaselineRuleTypeDoesntMatchError         | Der tatsächliche Typ der Regel ist „{0}“, aber die „RuleType“-Eigenschaft ist „{1}“.                                                                          |
-| BaselineRuleUnpermittedChangesError      | Nur die Eigenschaften „expectedValue“ und „state“ dürfen geändert werden.                                                                       |
-| BaselineTooManyRules                     | Die maximal zulässige Anzahl angepasster Regeln ist {0}. Die angegebene Konfiguration enthält {1} Regeln. ({2} Standardregeln + {3} angepasste Regeln. |
-| ErrorNoConfigurationStatus               | Es wurde kein Konfigurationsstatus gefunden. Geben Sie den gewünschten Konfigurationsstatus an: „Default“ oder „Custom“.                                    |
-| ErrorNonEmptyRulesetOnDefault            | Der Konfigurationsstatus ist auf den Standardwert festgelegt. Die Liste „BaselineRulesets“ muss NULL oder leer sein.                                                          |
-| ErrorNullRulesetsPropertyOnCustom        | Der angegebene Konfigurationstatus ist „Custom“, aber die Eigenschaft „baselineRulesets“ ist NULL oder leer.                                             |
-| ErrorParsingBaselineConfig               | Die angegebene Konfiguration ist ungültig. Einer oder mehrere der definierten Werte haben einen NULL-Wert oder ungültigen Typ.                                  |
-| ErrorParsingIsDefaultProperty            | Der angegebene „configurationStatus“-Wert „{0}“ ist ungültig. Der Wert kann nur „Default“ oder „Custom“ lauten.                                         |
-| InCompatibleViewVersion                  | Ansichtsversion: {0} wird für diesen Arbeitsbereichstyp NICHT unterstützt.                                                                                   |
+| BaselineRulePropertyTooLong              | Die Eigenschaft *{0}* ist zu lang. Maximal zulässige Länge: {1}.                                                                                        |
+| BaselineRuleRegTypeInvalidError          | Der erwartete Wert *{0}* stimmt nicht mit dem definierten Registrierungswerttyp überein.                                                              |
+| BaselineRulesetAdded                     | Der Regelsatz mit der ID *{0}* wurde in der Standardkonfiguration nicht gefunden. Der Regelsatz kann nicht hinzugefügt werden.                                               |
+| BaselineRulesetIdMustBeUnique            | Der angegebene Baselineregelsatz *{0}* muss eindeutig sein.                                                                                           |
+| BaselineRulesetNotFound                  | Der Regelsatz mit der ID *{0}* und dem Namen *{1}* wurde in der angegebenen Konfiguration nicht gefunden. Der Regelsatz kann nicht gelöscht werden.                                |
+| BaselineRuleSourceNotMatch               | Die Regel mit der ID *{0}* ist bereits definiert.                                                                                                       |
+| BaselineRuleTypeDoesntMatch              | Der Standardregeltyp lautet *{0}*.                                                                                                              |
+| BaselineRuleTypeDoesntMatchError         | Der tatsächliche Typ der Regel ist *{0}*, aber die *ruleType*-Eigenschaft ist *{1}*.                                                                          |
+| BaselineRuleUnpermittedChangesError      | Nur die Eigenschaften *expectedValue* und *state* dürfen geändert werden.                                                                       |
+| BaselineTooManyRules                     | Die maximal zulässige Anzahl angepasster Regeln ist {0}. Die angegebene Konfiguration enthält {1} Regeln, {2} Standardregeln und {3} angepasste Regeln. |
+| ErrorNoConfigurationStatus               | Es wurde kein Konfigurationsstatus gefunden. Geben Sie den gewünschten Konfigurationsstatus an: *Standard* oder *Benutzerdefiniert*.                                    |
+| ErrorNonEmptyRulesetOnDefault            | Der Konfigurationsstatus ist auf den Standardwert festgelegt. Die Liste *BaselineRulesets* muss NULL oder leer sein.                                                          |
+| ErrorNullRulesetsPropertyOnCustom        | Der angegebene Konfigurationsstatus ist *Benutzerdefiniert*, aber die Eigenschaft *baselineRulesets* ist NULL oder leer.                                             |
+| ErrorParsingBaselineConfig               | Die angegebene Konfiguration ist ungültig. Mindestens einer der definierten Werte weist einen NULL-Wert oder einen ungültigen Typ auf.                                  |
+| ErrorParsingIsDefaultProperty            | Der angegebene *configurationStatus*-Wert *{0}* ist ungültig. Der Wert kann nur *Standard* oder *Benutzerdefiniert* lauten.                                         |
+| InCompatibleViewVersion                  | Die Ansichtsversion *{0}* wird für diesen Arbeitsbereichstyp *nicht* unterstützt.                                                                                   |
 | InvalidBaselineConfigurationGeneralError | Die angegebene Baselinekonfiguration wies mindestens einen Typvalidierungsfehler auf.                                                          |
-| ViewConversionError                      | Die Ansicht ist älter als die Version, die der Arbeitsbereich unterstützt. Fehler bei der Ansichtskonvertierung: {0}                                                                 |
+| ViewConversionError                      | Die Ansicht liegt in einer älteren Version vor als vom Arbeitsbereich unterstützt. Fehler bei der Ansichtskonvertierung: {0}.                                                                 |
 
-Wenn Ihre Berechtigungen nicht ausreichen, erhalten Sie möglicherweise einen allgemeiner Fehler:
+Wenn Sie nicht über ausreichende Berechtigungen verfügen, erhalten Sie möglicherweise einen allgemeinen Fehler, wie hier gezeigt:
 
-![](media/security-center-customize-os-security-config/general-failure-error.png)
+![Meldung zu Fehler bei Speicheraktion](media/security-center-customize-os-security-config/general-failure-error.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Sie Bewertungen für Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center anpassen. Weitere Informationen zu den Konfigurationsregeln und ihrer Korrektur finden Sie unter:
+In diesem Artikel wurde beschrieben, wie Sie Bewertungen für Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center anpassen. Weitere Informationen zu den Konfigurationsregeln und ihrer Korrektur finden Sie unter:
 
-- [Security Center: Allgemeine Konfigurationsbezeichner und Baselineregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
-- Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Auf der Website zu [CCE](https://nvd.nist.gov/config/cce/index) finden Sie weitere Informationen.
+- [Security Center Common Configuration Identifiers and Baseline Rules](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) (Security Center: Allgemeine Konfigurationsbezeichner und Baselineregeln).
+- Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Weitere Informationen finden Sie unter [CCE](https://nvd.nist.gov/config/cce/index).
 - Unter [Korrigieren von Sicherheitskonfigurationen](security-center-remediate-os-vulnerabilities.md) erfahren Sie, wie Sie Sicherheitsrisiken beheben können, wenn Ihre Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht.

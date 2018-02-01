@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5a28914d967e77d6c8881cd6e56b798269d3df3e
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 7d500d20dcce3e472e3e1e15b9ce307874caf22a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -121,7 +121,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * IoT Hubs
 * Schlüsseltresor
 * Load Balancer
-* Logik-Apps
+* Logic Apps
 * Machine Learning
 * Media Services
 * Mobile Engagement
@@ -131,7 +131,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Power BI
 * Redis-Cache
 * Scheduler
-* Suche
+* Suchen,
 * Server Management
 * SERVICE BUS
 * Service Fabric
@@ -208,7 +208,7 @@ Die Optionen sind wie folgt:
 
 Alle anderen Kombinationen umfassen das Hinterlassen eines Ressourcentyps, der beim Verschieben eines App Service-Plans (beliebiger Typ von App Service-Ressource) nicht zurückbleiben darf.
 
-Wenn sich Ihre Web-App in einer anderen Ressourcengruppe als ihr App Service-Plan befindet, aber Sie beide in eine neue Ressourcengruppe verschieben möchten, muss das Verschieben in zwei Schritten erfolgen. Beispiel:
+Wenn sich Ihre Web-App in einer anderen Ressourcengruppe als ihr App Service-Plan befindet, aber Sie beide in eine neue Ressourcengruppe verschieben möchten, muss das Verschieben in zwei Schritten erfolgen. Beispiel: 
 
 * **web-a** befindet sich in **web-group**
 * **plan-a** befindet sich in **plan-group**
@@ -314,6 +314,12 @@ Dieser Vorgang kann einige Minuten dauern.
 Das Verschieben von Speicher-, Netzwerk- und Computeressourcen, die dazu dienen, eine Notfallwiederherstellung mit Azure Site Recovery einzurichten, ist nicht möglich.
 
 Angenommen, Sie haben die Replikation Ihrer lokalen Computer in ein Speicherkonto (Storage1) eingerichtet, und möchten, dass der geschützte Computer nach einem Failover zu Azure als virtueller Computer (VM1) angezeigt wird, der an ein virtuelles Netzwerk (Network1) angeschlossen ist. Sie können dann die Azure-Ressourcen „Storage1“, „VM1“ und „Network1“ nicht zwischen Ressourcengruppen im selben Abonnement oder zwischen Abonnements verschieben.
+
+So verschieben Sie einen in **Azure Backup** registrierten virtuellen Computer zwischen Ressourcengruppen:
+ 1. Halten Sie die Sicherung vorübergehend an, und bewahren Sie Sicherungsdaten auf.
+ 2. Verschieben Sie den virtuellen Computer in die Zielressourcengruppe.
+ 3. Schützen Sie ihn erneut im gleichen/in einem neuen Tresor. Benutzer können eine Wiederherstellung mithilfe der verfügbaren Wiederherstellungspunkte durchführen, die vor dem Verschiebevorgang erstellt wurden.
+Wenn der Benutzer den gesicherten virtuellen Computer zwischen Abonnements verschiebt, bleiben Schritt 1 und 2 gleich. In Schritt 3 muss der Benutzer den virtuellen Computer in einem neuen Tresor erneut schützen, der im Zielabonnement vorhanden ist oder erstellt wird. Der Recovery Services-Tresor unterstützt abonnementübergreifende Sicherungen nicht.
 
 ## <a name="hdinsight-limitations"></a>HDInsight-Einschränkungen
 

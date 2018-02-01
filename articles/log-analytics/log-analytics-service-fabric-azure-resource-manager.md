@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: 8c564c0dcbb2f9be286917b2f4d8a40da5406fae
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cc29a8ac6369560d37466d69fad272cef2337732
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Bewerten von Service Fabric-Anwendungen und -Microservices über das Azure-Portal
 
 > [!div class="op_single_selector"]
-> * [Ressourcen-Manager](log-analytics-service-fabric-azure-resource-manager.md)
+> * [Resource Manager](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
 >
 >
@@ -37,7 +37,7 @@ Die Service Fabric-Lösung verwendet Azure-Diagnosedaten aus den Service Fabric-
 Um mit der Verwendung der Lösung zu beginnen, müssen Sie das Service Fabric-Cluster mit einem Log Analytics-Arbeitsbereich verbinden. Dabei sind drei Szenarien möglich:
 
 1. Wenn Sie den Service Fabric-Cluster nicht bereitgestellt haben, führen Sie die Schritte in ***Bereitstellen eines Service Fabric-Clusters, der mit einem Log Analytics-Arbeitsbereich verbunden ist*** aus, um einen neuen Cluster bereitzustellen und für das Erstellen von Berichten an Log Analytics zu konfigurieren.
-2. Wenn Sie Leistungsindikatoren von den Hosts erfassen müssen, um im Service Fabric-Cluster andere OMS-Lösungen, z.B. Sicherheit, zu verwenden, führen Sie die unter ***Bereitstellen eines Service Fabric-Clusters, der mit einem Log Analytics-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist*** erklärten Schritte aus.
+2. Wenn Sie Leistungsindikatoren von den Hosts erfassen müssen, um im Service Fabric-Cluster andere Verwaltungslösungen, z.B. Sicherheit, zu verwenden, führen Sie die unter ***Bereitstellen eines Service Fabric-Clusters, der mit einem Log Analytics-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist*** erklärten Schritte aus.
 3. Wenn Sie den Service Fabric-Cluster bereits bereitgestellt haben und ihn mit Log Analytics verbinden möchten, führen Sie die Schritte in ***Hinzufügen eines vorhandenen Speicherkontos zu Log Analytics*** aus.
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Bereitstellen eines Service Fabric-Clusters und Erstellen eines Log Analytics-Arbeitsbereichs für dessen Überwachung
@@ -123,7 +123,7 @@ Weitere Informationen zu den Leistungsmetriken in Log Analytics finden Sie im [O
 
 Mit dieser Vorlage werden einem neuen oder vorhandenen Log Analytics-Arbeitsbereich die vorhandenen Speicherkonten hinzugefügt.
 
-[![Bereitstellen in Azure](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Foms-existing-storage-account%2Fazuredeploy.json)
+[![In Azure bereitstellen](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Foms-existing-storage-account%2Fazuredeploy.json)
 
 > [!NOTE]
 > Wenn Sie mit einem bereits vorhandenen Log Analytics Arbeitsbereich arbeiten, aktivieren Sie beim Auswählen einer Ressourcengruppe „Vorhandene verwenden“, und suchen Sie die Ressourcengruppe, die den Log Analytics-Arbeitsbereich enthält. Erstellen Sie andernfalls eine neue Ressourcengruppe.

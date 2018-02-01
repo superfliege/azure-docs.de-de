@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: c4fd425ab479121fff80bb2c2eef016662ec3bfe
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 05fa692f9331cf6b5178c3e9dca60ad2598dc609
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Apache Cordova-App
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -79,6 +79,7 @@ Führen Sie den folgenden Befehl aus:
 
 2. Klicken Sie auf den Pfeil neben der Installationsquelle.
 3. Falls Sie bereits über eine numerische Projekt-ID für das Google Developer Console-Projekt verfügen, können Sie diese hier unter **SENDER_ID** hinzufügen. Geben Sie andernfalls einen Platzhalterwert (beispielsweise „777777“) ein.  Falls Sie Android nutzen möchten, können Sie diesen Wert später in der Datei „config.xml“ ändern.
+     Beachten Sie, dass ab Version 2.0.0 das SENDER_ID-Element aus der Installationszeit entfernt wurde und „google-services.json“ im Stammordner Ihres Projekts installiert werden muss.  [Hier](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md) finden Sie weitere Details
 4. Klicken Sie auf **Hinzufügen**.
 
 Das Push-Plug-In ist jetzt installiert.

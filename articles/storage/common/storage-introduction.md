@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/10/2017
+ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: e0da76d1c99de94762a54f552e49f7ee75eba26f
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 9af4bfd5b5ae46a856b25a94cdbe55e098ea940e
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Einführung in Microsoft Azure Storage
 
@@ -149,19 +149,17 @@ Ausführlichere Informationen zum Schützen der Speicherkonten und zur Verschlü
 
 ## <a name="replication"></a>Replikation
 
-Um die Stabilität Ihrer Daten sicherzustellen, können mit Azure Storage mehrere Kopien Ihrer Daten gespeichert (und verwaltet) werden. Dieses Konzept wird Replikation oder manchmal auch Redundanz genannt. Beim Einrichten Ihres Speicherkontos wählen Sie einen Replikationstyp aus. In den meisten Fällen kann diese Einstellung nach der Einrichtung des Speicherkontos angepasst werden.
-
-Alle Speicherkonten umfassen **lokal redundanten Speicher (LRS)**, der darauf ausgelegt ist, für Objekte eine Dauerhaftigkeit von mindestens 99,999999999 Prozent (elf Neunen) in einem bestimmten Jahr bereitzustellen. Das bedeutet, dass mehrere Kopien Ihrer Daten von Azure Storage in dem Rechenzentrum verwaltet werden, das bei der Einrichtung des Speicherkontos angegeben wurde. Wenn Änderungen an einer Kopie committet werden, werden alle anderen Kopien aktualisiert, bevor eine Erfolgsmeldung zurückgegeben wird. Das bedeutet, dass die Replikate stets synchron sind. Darüber hinaus befinden sich die Kopien in separaten Fehler- und Upgradedomänen. Ihre Daten sind daher verfügbar, auch wenn bei einem Speicherknoten, in dem Ihre Daten gespeichert sind, ein Fehler auftritt oder der Knoten für die Aktualisierung offline geschaltet wird.
+Um die Stabilität Ihrer Daten sicherzustellen, werden unter Azure Storage mehrere Kopien Ihrer Daten gespeichert (und verwaltet). Dieses Konzept wird Replikation oder manchmal auch Redundanz genannt. Beim Einrichten Ihres Speicherkontos wählen Sie einen Replikationstyp aus. In den meisten Fällen kann diese Einstellung nach der Einrichtung des Speicherkontos angepasst werden.
 
 **Lokal redundanter Speicher (LRS)**
 
-Wie oben erläutert, sind bei LRS mehrere Kopien Ihrer Daten in einem einzelnen Rechenzentrum gespeichert. Dadurch wird das Problem umgangen, dass Daten nicht mehr verfügbar sind, wenn bei einem Speicherknoten ein Fehler auftritt oder der Speicherknoten für die Aktualisierung offline geschaltet wird. Das Problem, dass ein gesamtes Rechenzentrum ausfällt, wird jedoch nicht behoben.
+Lokal redundanter Speicher (LRS) ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,999999999% (elf Neunen) in einem bestimmten Jahr bereitzustellen. Das bedeutet, dass mehrere Kopien Ihrer Daten von Azure Storage in dem Rechenzentrum verwaltet werden, das bei der Einrichtung des Speicherkontos angegeben wurde. Wenn Änderungen an einer Kopie committet werden, werden alle anderen Kopien aktualisiert, bevor eine Erfolgsmeldung zurückgegeben wird. Das bedeutet, dass die Replikate stets synchron sind. Darüber hinaus befinden sich die Kopien in separaten Fehler- und Upgradedomänen. Ihre Daten sind daher verfügbar, auch wenn bei einem Speicherknoten, in dem Ihre Daten gespeichert sind, ein Fehler auftritt oder der Knoten für die Aktualisierung offline geschaltet wird.
 
-**Zonenredundant Speicher (Zone Redundant Storage, ZRS)**
+**Zonenredundanter Speicher (ZRS) (Vorschauversion)**
 
-Zonenredundanter Speicher (ZRS) ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,9999999999 Prozent (zwölf Neunen) in einem bestimmten Jahr bereitzustellen, indem lokale Kopien Ihrer Daten sowie ein weiterer Satz von Kopieren Ihrer Daten gespeichert wird. Der zweite Satz der Kopien wird asynchron in Rechenzentren in ein oder zwei Regionen repliziert. Beachten Sie, dass ZRS nur für Blockblobs in allgemeinen Speicherkonten verfügbar ist. Sobald Sie Ihr Speicherkonto erstellt und ZRS ausgewählt haben, ist außerdem die Wahl eines anderen Replikationstyps nicht mehr möglich.
+Der zonenredundante Speicher (ZRS) soll die Entwicklung hochverfügbarer Anwendungen vereinfachen. ZRS bietet eine Dauerhaftigkeit für Speicherobjekte von mindestens 99,9999999999% (zwölf Neunen) über einen Zeitraum von einem Jahr. Bei ZRS werden Ihre Daten synchron über mehrere Verfügbarkeitszonen hinweg repliziert. Ziehen Sie ZRS für Szenarien wie Transaktionsanwendungen in Betracht, in denen Ausfallzeiten nicht zulässig sind. Mithilfe von ZRS können Kunden Daten lesen und schreiben, auch wenn eine Zone nicht verfügbar oder nicht wiederherstellbar sein sollte. Einfügungen und Updates für Daten werden synchron vorgenommen und sind äußerst konsistent.    
 
-ZRS-Konten bieten eine höhere Stabilität als LRS, für ZRS-Konten stehen jedoch keine Metrik- oder Protokollierungsfunktionen zur Verfügung.
+Die vorherige ZRS-Funktion wird nun als „ZRS Classic“ bezeichnet. ZRS Classic-Konten sind nur für Blockblobs in allgemeinen V1-Speicherkonten verfügbar. ZRS Classic repliziert Daten asynchron zwischen Rechenzentren in einer Region oder in zwei Regionen. Ein Replikat ist ggf. erst wieder verfügbar, wenn von Microsoft das Failover in der sekundären Region initiiert wird. Ein ZRS Classic-Konto kann nicht in bzw. aus LRS oder GRS konvertiert werden und verfügt nicht über Metriken oder Protokollierungsfunktionen.
 
 **Georedundanter Speicher (GRS)**
 
@@ -172,10 +170,10 @@ Georedundanter Speicher (Geo-Redundant Storage, GRS) ist darauf ausgelegt, für 
 Georedundanter Speicher mit Lesezugriff verhält sich genau wie GRS, mit der Ausnahme, dass Sie Lesezugriff auf die Daten am sekundären Standort erhalten. Wenn das primäre Rechenzentrum vorübergehend nicht verfügbar ist, können die Daten weiterhin am sekundären Standort gelesen werden. Dies kann sehr nützlich sein. Beispiel: Sie besitzen eine Webanwendung, die in den schreibgeschützten Modus wechselt und auf die sekundäre Kopie verweist. Dadurch ist ein gewisser Zugriff möglich, auch wenn keine Updates verfügbar sind.
 
 > [!IMPORTANT]
-> Die Art der Datenreplikation kann nach der Speicherkontoerstellung geändert werden, sofern bei der Kontoerstellung nicht die ZRS-Option angegeben wurde. Beachten Sie jedoch, dass unter Umständen zusätzlich einmalige Datenübertragungskosten anfallen, wenn Sie von LRS zu GRS oder RA-GRS wechseln.
+> Sie können ändern, wie Ihre Daten repliziert werden, nachdem Ihr Speicherkonto erstellt wurde. Unter Umständen können zusätzlich einmalige Datenübertragungskosten anfallen, wenn Sie von LRS oder ZRS zu GRS oder RA-GRS wechseln.
 >
 
-Weitere Informationen zur Replikation finden Sie unter [Azure Storage replication](storage-redundancy.md) (Azure-Speicherreplikation).
+Weitere Informationen zu Replikationsoptionen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
 Informationen zur Notfallwiederherstellung finden Sie unter [What to do if an Azure Storage outage occurs](storage-disaster-recovery-guidance.md) (Vorgehensweise beim Ausfall von Azure Storage).
 

@@ -1,5 +1,5 @@
 ---
-title: "Überwachen eines Azure-Clouddiensts| Microsoft Docs"
+title: "Überwachen eines Azure-Clouddiensts| Microsoft-Dokumentation"
 description: "Hier wird beschrieben, welche Aspekte die Überwachung eines Azure-Clouddiensts umfasst und welche Optionen verfügbar sind."
 services: cloud-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2017
+ms.date: 01/23/2018
 ms.author: adegeo
-ms.openlocfilehash: c63a49c65f2d8261caa534308477888c752a89da
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 3ffbdb121aa558d69547db294cad83b5d11e3f56
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Einführung in die Überwachung von Clouddiensten
 
@@ -39,7 +39,7 @@ Für die grundlegende Überwachung wird kein Speicherkonto benötigt.
 
 ## <a name="advanced-monitoring"></a>Erweiterte Überwachung
 
-Bei der erweiterten Überwachung wird die Azure-Diagnoseerweiterung (und optional das Application Insights SDK) für die zu überwachende Rolle verwendet. Die Diagnoseerweiterung verwendet (pro Rolle) eine Konfigurationsdatei mit dem Namen **diagnostics.wadcfgx** zur Konfiguration der überwachten Diagnosemetriken. Die von der Azure-Diagnoseerweiterung erfassten Daten werden unter einem Azure Storage-Konto gespeichert, das in den **WADCFGX**-, [CSDEF](cloud-services-model-and-package.md#servicedefinitioncsdef)- und [CSCFG](cloud-services-model-and-package.md#serviceconfigurationcscfg)-Dateien konfiguriert wird. Dies bedeutet, dass die erweiterte Überwachung mit zusätzlichen Kosten verbunden ist.
+Bei der erweiterten Überwachung wird die **Azure-Diagnose** (und optional das Application Insights-SDK) für die zu überwachende Rolle verwendet. Die Diagnoseerweiterung verwendet (pro Rolle) eine Konfigurationsdatei mit dem Namen **diagnostics.wadcfgx** zur Konfiguration der überwachten Diagnosemetriken. Die von der Azure-Diagnoseerweiterung erfassten Daten werden unter einem Azure Storage-Konto gespeichert, das in den **WADCFGX**-, [CSDEF](cloud-services-model-and-package.md#servicedefinitioncsdef)- und [CSCFG](cloud-services-model-and-package.md#serviceconfigurationcscfg)-Dateien konfiguriert wird. Dies bedeutet, dass die erweiterte Überwachung mit zusätzlichen Kosten verbunden ist.
 
 Während der Erstellung einer Rolle wird ihr von Visual Studio die Azure-Diagnoseerweiterung hinzugefügt. Diese Erweiterung kann die folgenden Informationstypen erfassen:
 
@@ -52,22 +52,24 @@ Während der Erstellung einer Rolle wird ihr von Visual Studio die Azure-Diagnos
 * Absturzabbilder
 * Benutzerdefinierte Fehlerprotokolle
 
-Die Daten werden zwar vollständig unter dem Speicherkonto aggregiert, allerdings bietet das Portal keine native Möglichkeit, die Daten in einem Diagramm darzustellen. Sie können einen anderen Dienst wie Application Insights nutzen, um die Daten zu korrelieren und darzustellen.
+> [!IMPORTANT]
+> Die Daten werden zwar vollständig unter dem Speicherkonto aggregiert, allerdings bietet das Portal **keine** native Möglichkeit, die Daten in einem Diagramm darzustellen. Es wird dringend empfohlen, dass Sie einen anderen Dienst, z.B. Application Insights, in die Anwendung integrieren.
 
 ### <a name="use-application-insights"></a>Verwenden von Application Insights
 
-Wenn Sie den Clouddienst über Visual Studio veröffentlichen, können Sie die Diagnosedaten an Application Insights senden. Sie können die Application Insights-Ressource dann erstellen oder die Daten an eine vorhandene Ressource senden. Ihr Clouddienst kann von Application Insights auf Verfügbarkeit, Leistung, Fehler und Auslastung überwacht werden. Application Insights können benutzerdefinierte Diagramme hinzugefügt werden. So haben Sie immer die für Sie relevanten Daten im Blick. Rolleninstanzdaten können mithilfe des Application Insights SDKs in Ihrem Clouddienstprojekt erfasst werden. Weitere Informationen zur Integration von Application Insights finden Sie unter [Application Insights für Azure Cloud Services](../application-insights/app-insights-cloudservices.md).
+Wenn Sie den Clouddienst über Visual Studio veröffentlichen, können Sie die Diagnosedaten an Application Insights senden. Sie können die Azure-Ressource von Application Insights dann erstellen oder die Daten an eine vorhandene Azure-Ressource senden. Ihr Clouddienst kann von Application Insights auf Verfügbarkeit, Leistung, Fehler und Auslastung überwacht werden. Application Insights können benutzerdefinierte Diagramme hinzugefügt werden. So haben Sie immer die für Sie relevanten Daten im Blick. Rolleninstanzdaten können mithilfe des Application Insights SDKs in Ihrem Clouddienstprojekt erfasst werden. Weitere Informationen zur Integration von Application Insights finden Sie unter [Application Insights für Azure Cloud Services](../application-insights/app-insights-cloudservices.md).
 
 Hinweis: Sie können die Leistungsindikatoren (und weiteren Einstellungen), die Sie über die Windows Azure-Diagnoseerweiterung festgelegt haben, mithilfe von Application Insights anzeigen, erhalten allerdings noch bessere Darstellungsmöglichkeiten, wenn Sie das Application Insights SDK in die Worker- und Webrollen integrieren.
 
-
-## <a name="add-advanced-monitoring"></a>Hinzufügen der erweiterten Überwachung
+## <a name="setup-diagnostics-extension"></a>Einrichten der Diagnoseerweiterung
 
 Wenn Sie noch nicht über ein **klassisches** Speicherkonto verfügen, [erstellen Sie zunächst ein Konto](../storage/common/storage-create-storage-account.md#create-a-storage-account). Stellen Sie sicher, dass das Speicherkonto mit dem **klassischen Bereitstellungsmodell** erstellt wird.
 
 Navigieren Sie als Nächstes zur Ressource **Speicherkonto (klassisch)**. Wählen Sie **Einstellungen** > **Zugriffsschlüssel** aus, und kopieren Sie den Wert unter **Primäre Verbindungszeichenfolge**. Sie benötigen diesen Wert für den Clouddienst. 
 
-Es gibt zwei Konfigurationsdateien, die Sie zur Aktivierung der erweiterten Diagnose ändern müssen: **ServiceDefinition.csdef** und **ServiceConfiguration.cscfg**. Wahrscheinlich verfügen Sie über zwei **CSCFG**-Dateien, eine mit dem Namen **ServiceConfiguration.cloud.cscfg** für die Bereitstellung in Azure und eine mit dem Namen **ServiceConfiguration.local.cscfg**, die für lokale Debugbereitstellungen verwendet wird. Ändern Sie beide.
+Es gibt zwei Konfigurationsdateien, die Sie zur Aktivierung der erweiterten Diagnose ändern müssen: **ServiceDefinition.csdef** und **ServiceConfiguration.cscfg**.
+
+### <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
 
 Fügen Sie in der Datei **ServiceDefinition.csdef** für jede Rolle, für die die erweiterte Diagnose verwendet werden soll, eine neue Einstellung mit dem Namen `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` hinzu. Dieser Wert wird der Datei von Visual Studio hinzugefügt, wenn Sie ein neues Projekt erstellen. Falls sie fehlt, können Sie sie jetzt hinzufügen. 
 
@@ -78,7 +80,9 @@ Fügen Sie in der Datei **ServiceDefinition.csdef** für jede Rolle, für die di
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
 
-Dadurch wird eine neue Einstellung definiert, die jeder Datei **ServiceConfiguration.cscfg** hinzugefügt werden muss. Öffnen und ändern Sie jede **CSCFG**-Datei. Fügen Sie eine Einstellung mit dem Namen `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` hinzu. Legen Sie den Wert entweder auf die **Primäre Verbindungszeichenfolge** des klassischen Speicherkontos fest oder auf `UseDevelopmentStorage=true`, wenn Sie den lokalen Speicher auf Ihrem Entwicklungscomputer verwenden möchten.
+Dadurch wird eine neue Einstellung definiert, die jeder Datei **ServiceConfiguration.cscfg** hinzugefügt werden muss. 
+
+Wahrscheinlich verfügen Sie über zwei **.cscfg**-Dateien, eine mit dem Namen **ServiceConfiguration.cloud.cscfg** für die Bereitstellung in Azure und eine mit dem Namen **ServiceConfiguration.local.cscfg**, die für lokale Bereitstellungen in der emulierten Umgebung verwendet wird. Öffnen und ändern Sie jede **CSCFG**-Datei. Fügen Sie eine Einstellung mit dem Namen `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` hinzu. Legen Sie den Wert für die **primäre Verbindungszeichenfolge** des klassischen Speicherkontos fest. Zur Nutzung des lokalen Speichers auf dem Entwicklungscomputer verwenden Sie `UseDevelopmentStorage=true`.
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
@@ -86,10 +90,10 @@ Dadurch wird eine neue Einstellung definiert, die jeder Datei **ServiceConfigura
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=mystorage;AccountKey=KWwkdfmskOIS240jnBOeeXVGHT9QgKS4kIQ3wWVKzOYkfjdsjfkjdsaf+sddfwwfw+sdffsdafda/w==" />
-
-<!-- or use the local development machine for storage
+      
+      <!-- or use the local development machine for storage
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
--->
+      -->
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

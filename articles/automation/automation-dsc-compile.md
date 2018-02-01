@@ -1,5 +1,5 @@
 ---
-title: Kompilieren von Konfigurationen in Azure Automation DSC | Microsoft Docs
+title: Kompilieren von Konfigurationen in Azure Automation DSC | Microsoft-Dokumentation
 description: "In diesem Artikel wird das Kompilieren von DSC-Konfigurationen (Desired State Configuration, Konfiguration des gewünschten Zustands) für Azure Automation beschrieben."
 services: automation
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; gwallace
-ms.openlocfilehash: 96702fb1b377861c3692358a5754e73475cee84d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 63120614f2a2ef6b366bc2d92ec9a0dd430a3fb4
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilieren von Konfigurationen in Azure Automation DSC
 
@@ -299,7 +299,7 @@ Informationen zum Signieren von Knotenkonfigurationen finden Sie unter https://m
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Importieren von Knotenkonfigurationen im Azure-Portal
 
-1. Klicken Sie in Ihrem Automation-Konto auf **DSC-Knotenkonfigurationen**.
+1. Klicken Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** auf **DSC-Knotenkonfigurationen**.
 
     ![DSC-Knotenkonfigurationen](./media/automation-dsc-compile/node-config.png)
 2. Klicken Sie auf dem Blatt **DSC-Knotenkonfigurationen** auf **Knotenkonfiguration hinzufügen**.

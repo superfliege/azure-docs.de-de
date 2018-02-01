@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 1ec815a12cea98228dd4b7ac7361fe5e3554b5d3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 6dfee26d7585c8ec295a1f0ea1bd0bc14a34cc5a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Neue Protokollsuche in Log Analytics – häufig gestellte Fragen und bekannte Probleme
 
 Dieser Artikel enthält häufig gestellte Fragen und bekannte Probleme im Hinblick auf das Upgrade von [Log Analytics auf die neue Abfragesprache](log-analytics-log-search-upgrade.md).  Sie sollten diesen Artikel lesen, bevor Sie sich entscheiden, Ihren Arbeitsbereich zu aktualisieren.
 
 
-## <a name="alerts"></a>Warnungen
+## <a name="alerts"></a>Alerts
 
 ### <a name="question-i-have-a-lot-of-alert-rules-do-i-need-to-create-them-again-in-the-new-language-after-i-upgrade"></a>Frage: Ich habe viele Warnungsregeln. Muss ich diese erneut in der neuen Sprache erstellen, nachdem ich das Upgrade durchgeführt habe?  
 Nein, Ihre Warnungsregeln werden während des Upgrades automatisch in die neue Suchsprache konvertiert.  
@@ -160,11 +160,10 @@ Die ältere Protokollsuche wird in den kommenden Monaten als veraltet gekennzeic
 Vor der allgemeinen Verfügbarkeit könnten Sie Ihren Arbeitsbereich nach dem Upgrade wiederherstellen.  Da die neue Sprache jetzt allgemein verfügbar ist, wurde diese Möglichkeit aufgehoben, da wir beginnen, die veraltete Plattform außer Kraft zu setzen.
 
 
-
 ## <a name="views"></a>Ansichten
 
 ### <a name="question-how-do-i-create-a-new-view-with-view-designer"></a>Frage: Wie erstelle ich mit dem Ansicht-Designer eine neue Ansicht?
-Vor dem Upgrade konnten Sie mit dem Ansicht-Designer eine neue Ansicht aus einer Kachel im Hauptdashboard erstellen.  Nach dem Upgrade Ihres Arbeitsbereichs wird diese Kachel entfernt.  Sie können eine neue Ansicht mit dem Ansicht-Designer im OMS-Portal erstellen, indem Sie auf das grüne Pluszeichen (+) im linken Menü klicken.
+Vor dem Upgrade konnten Sie mit dem Ansicht-Designer eine neue Ansicht aus einer Kachel im Hauptdashboard im OMS-Portal erstellen.  Nach dem Upgrade Ihres Arbeitsbereichs wird diese Kachel entfernt.  Sie können eine neue Ansicht mit dem Ansicht-Designer im OMS-Portal erstellen, indem Sie auf das grüne Pluszeichen (+) im linken Menü klicken.  Sie erstellen weiterhin neue Ansichten im Azure-Portal, indem Sie auf die Kachel für den Ansicht-Designer klicken.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

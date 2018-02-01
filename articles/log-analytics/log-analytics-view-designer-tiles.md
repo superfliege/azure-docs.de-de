@@ -1,6 +1,6 @@
 ---
-title: "Kachelreferenz für den Ansicht-Designer in OMS Log Analytics | Microsoft-Dokumentation"
-description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind."
+title: "Kachelreferenz für den Ansicht-Designer in Azure Log Analytics | Microsoft-Dokumentation"
+description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal mit verschiedenen Visualisierungen von Daten im Log Analytics-Arbeitsbereich erstellen. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 2bce5c63b4c6edd3753f1b234cc4f493dcf53dea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9512a3f45ba6b03af4b0c9bee444948381f4fdcb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="log-analytics-view-designer-tile-reference"></a>Kachelreferenz für den Ansicht-Designer in Log Analytics
-Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
+Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal mit verschiedenen Visualisierungen von Daten aus Ihrem Log Analytics-Arbeitsbereich erstellen. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
 
 Weitere verfügbare Artikel für den Ansicht-Designer:
 
@@ -33,7 +33,7 @@ Weitere verfügbare Artikel für den Ansicht-Designer:
 
 Die folgende Tabelle enthält die verschiedenen Typen von Kacheln, die im Ansicht-Designer verfügbar sind.  In den folgenden Abschnitten werden jeder Kacheltyp im Detail und dessen Eigenschaften beschrieben.
 
-| Kachel | Beschreibung |
+| Kachel | BESCHREIBUNG |
 |:--- |:--- |
 | [Number](#number-tile) |Einzelne Zahl, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt. |
 | [Zwei Zahlen](#two-numbers-tile) |Zwei einzelne Zahlen, die die Anzahl der Datensätze aus zwei unterschiedlichen Abfragen angeben. |
@@ -47,17 +47,17 @@ Die Kachel **Zahl** zeigt eine einzelne Zahl, die die Anzahl der Datensätze ein
 
 ![Kachel „Zahl“](media/log-analytics-view-designer/tile-number.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
-| Name |Text, der oben auf der Kachel angezeigt wird. |
-| Beschreibung |Text, der unter dem Namen der Kachel angezeigt wird. |
+| NAME |Text, der oben auf der Kachel angezeigt wird. |
+| BESCHREIBUNG |Text, der unter dem Namen der Kachel angezeigt wird. |
 | **Kachel** | |
 | Legende |Text, der unter dem Wert angezeigt wird. |
 | Abfragen |Die auszuführende Abfrage.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
 | **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
-| Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
+| Message |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
 
 
 ## <a name="two-numbers-tile"></a>Kachel „Zwei Zahlen“
@@ -65,10 +65,10 @@ Die Kachel **Zwei Zahlen** zeigt zwei Zahlen, die die Anzahl der Datensätze aus
 
 ![Kachel „Zwei Zahlen“](media/log-analytics-view-designer/tile-two-numbers.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
-| Name |Text, der oben auf der Kachel angezeigt wird. |
-| Beschreibung |Text, der unter dem Namen der Kachel angezeigt wird. |
+| NAME |Text, der oben auf der Kachel angezeigt wird. |
+| BESCHREIBUNG |Text, der unter dem Namen der Kachel angezeigt wird. |
 | **Erste Kachel** | |
 | Legende |Text, der unter dem Wert angezeigt wird. |
 | Abfragen |Die auszuführende Abfrage.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
@@ -78,7 +78,7 @@ Die Kachel **Zwei Zahlen** zeigt zwei Zahlen, die die Anzahl der Datensätze aus
 | **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
-| Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
+| Message |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
 
 
 ## <a name="donut-tile"></a>Kachel „Ring“
@@ -86,10 +86,10 @@ Die Kachel **Ring** zeigt eine einzelne Zahl an, die eine Spalte mit Werten in e
 
 ![Kachel „Ring“](media/log-analytics-view-designer/tile-donut.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
-| Name |Text, der oben auf der Kachel angezeigt wird. |
-| Beschreibung |Text, der unter dem Namen der Kachel angezeigt wird. |
+| NAME |Text, der oben auf der Kachel angezeigt wird. |
+| BESCHREIBUNG |Text, der unter dem Namen der Kachel angezeigt wird. |
 | **Ring** | |
 | Abfragen |Abfrage, die für den Ring ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen. |
 | **Ring** |**&gt; Mitte** |
@@ -102,7 +102,7 @@ Die Kachel **Ring** zeigt eine einzelne Zahl an, die eine Spalte mit Werten in e
 | **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
-| Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
+| Message |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
 
 
 ## <a name="line-chart-tile"></a>Kachel „Liniendiagramm“
@@ -110,10 +110,10 @@ Die Kachel **Liniendiagramm** zeigt ein Liniendiagramm mit mehreren Reihen aus e
 
 ![Kachel „Liniendiagramm und Legende“](media/log-analytics-view-designer/tile-line-chart.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
-| Name |Text, der oben auf der Kachel angezeigt wird. |
-| Beschreibung |Text, der unter dem Namen der Kachel angezeigt wird. |
+| NAME |Text, der oben auf der Kachel angezeigt wird. |
+| BESCHREIBUNG |Text, der unter dem Namen der Kachel angezeigt wird. |
 | **Liniendiagramm** | |
 | Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
 | **Liniendiagramm** |**&gt; Y-Achse** |
@@ -123,7 +123,7 @@ Die Kachel **Liniendiagramm** zeigt ein Liniendiagramm mit mehreren Reihen aus e
 | **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
-| Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
+| Message |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
 
 
 ## <a name="line-chart--callout-tile"></a>Kachel „Liniendiagramm und Legende“
@@ -131,10 +131,10 @@ Die Kachel **Liniendiagramm und Legende** zeigt ein Liniendiagramm mit mehreren 
 
 ![Kachel „Liniendiagramm und Legende“](media/log-analytics-view-designer/tile-line-chart-callout.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
-| Name |Text, der oben auf der Kachel angezeigt wird. |
-| Beschreibung |Text, der unter dem Namen der Kachel angezeigt wird. |
+| NAME |Text, der oben auf der Kachel angezeigt wird. |
+| BESCHREIBUNG |Text, der unter dem Namen der Kachel angezeigt wird. |
 | **Liniendiagramm** | |
 | Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
 | **Liniendiagramm** |**&gt; Legende** |
@@ -148,7 +148,7 @@ Die Kachel **Liniendiagramm und Legende** zeigt ein Liniendiagramm mit mehreren 
 | **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
-| Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
+| Message |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
 
 
 ## <a name="two-timelines-tile"></a>Kachel „Zwei Zeitachsen“
@@ -156,10 +156,10 @@ Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen i
 
 ![Kachel „Zwei Zeitachsen“](media/log-analytics-view-designer/tile-two-timelines.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
-| Name |Text, der oben auf der Kachel angezeigt wird. |
-| Beschreibung |Text, der unter dem Namen der Kachel angezeigt wird. |
+| NAME |Text, der oben auf der Kachel angezeigt wird. |
+| BESCHREIBUNG |Text, der unter dem Namen der Kachel angezeigt wird. |
 | Erstes Diagramm | |
 | Legende |Text, der unter der Legende für die erste Reihe angezeigt wird. |
 | Farbe |Farbe, die für die Säulen in der ersten Reihe verwendet wird. |
@@ -173,7 +173,7 @@ Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen i
 | **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
-| Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
+| Message |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

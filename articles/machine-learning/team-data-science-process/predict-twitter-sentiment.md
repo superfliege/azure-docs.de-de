@@ -73,7 +73,7 @@ Die Algorithmen Word2Vec und SSWE werden verwendet, um Worteinbettungen zu gener
 
 Der Word2Vec-Algorithmus wird im Skip-Gram-Modell verwendet. Dieses Modell wird im folgenden Aufsatz von Tomas Mikolov et al. erläutert: [Distributed Representations of Words and Phrases and their Compositionality. Advances in neural information processing systems.](https://arxiv.org/abs/1310.4546) (Verteilte Darstellung von Wörtern und Ausdrücken und ihre Kompositionalität. Fortschritte bei den neuronalen Systemen für die Informationsverarbeitung.), 2013.
 
-Das Skip-Gram-Modell ist ein flaches neuronales Netzwerk. Die Eingabe ist das Zielwort, das als One-Hot-Vektor codiert ist und zur Vorhersage naheliegender Wörter verwendet wird. Wenn **V** der Umfang des Vokabulars ist, lautet der Umfang der Ausgabe __C×V__, wobei C die Größe des Kontextfensters angibt. Die folgende Abbildung zeigt eine Architektur, die auf dem Skip-Gram-Modell basiert:
+Das Skip-Gram-Modell ist ein flaches neuronales Netzwerk. Die Eingabe ist das Zielwort, das als One-Hot-Vektor codiert ist und zur Vorhersage naheliegender Wörter verwendet wird. Wenn **V** der Umfang des Vokabulars ist, lautet der Umfang der Ausgabe __C * V__, wobei C die Größe des Kontextfensters angibt. Die folgende Abbildung zeigt eine Architektur, die auf dem Skip-Gram-Modell basiert:
 
 ![Skip-Gram-Modell](./media/predict-twitter-sentiment/skip-gram-model.PNG)
 

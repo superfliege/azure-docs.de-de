@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: 6d8a2f2106e57bdf84bc3bead70d379691b79742
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.custom: it-pro;seohack1
+ms.openlocfilehash: 526286c7f6b62d165af43487ca63fe9055623d0c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung
 
@@ -74,31 +74,7 @@ Die von Ihnen ausgewählten Grafiken werden in den folgenden Situationen angezei
     * Durch Übergeben des *whr*-Parameters an die Seite zum Zurücksetzen des Kennworts, z.B. „https://login.microsoftonline.com/?whr=contoso.com“
     * Durch Übergeben des *username*-Parameters an die Seite zum Zurücksetzen des Kennworts, z.B. „https://login.microsoftonline.com/?username=admin@contoso.com“
 
-### <a name="graphics-details"></a>Grafikdetails
-
-Verwenden Sie die folgenden Einstellungen, um die visuellen Merkmale der Anmeldeseite zu ändern. Wechseln Sie zu **Azure Active Directory** > **Unternehmensbranding** > **Unternehmensbranding bearbeiten**:
-
-* Das Bild für die Anmeldeseite muss eine PNG- oder JPG-Datei mit 1420 x 1200 Pixel und einer maximalen Größe von 500 KB sein. Zum Erzielen der besten Ergebnisse empfiehlt sich eine Größe von etwa 200 KB.
-* Die Hintergrundfarbe für die Anmeldeseite wird für Verbindungen mit langer Wartezeit verwendet, und sie muss im RGB-Hexadezimalformat vorliegen.
-* Das Bannerbild muss eine PNG- oder JPG-Datei mit 60 x 280 Pixel und einer maximalen Größe von 10 KB sein.
-* Das quadratische Logo (normales und dunkles Design) muss eine PNG- oder JPG-Datei mit 240 x 240 Pixel (änderbar) und einer maximalen Größe von 10 KB sein.
-
-### <a name="sign-in-text-options"></a>Optionen für den Anmeldetext
-
-Verwenden Sie die folgenden Einstellungen, um Text zur Anmeldeseite hinzuzufügen, der für Ihre Organisation relevant ist. Wechseln Sie zu **Azure Active Directory** > **Unternehmensbranding** > **Unternehmensbranding bearbeiten**:
-
-* **Benutzernamenhinweis**: Ersetzt den Beispieltext von *someone@example.com* durch Text, der für Ihre Benutzer besser geeignet ist. Es empfiehlt sich, dass Sie den Standardhinweis belassen, wenn Sie interne und externe Benutzer unterstützen.
-* **Text für die Anmeldeseite**: Kann bis zu maximal 256 Zeichen lang sein. Dieser Text wird überall angezeigt, wo sich Ihre Benutzer online anmelden, und wird in der Azure AD-Arbeitsbereichverknüpfung unter Windows 10 angezeigt. Verwenden Sie diesen Text für die Nutzungsbedingungen, Hinweise und Tipps für Ihre Benutzer. 
-
-   >[!IMPORTANT]
-   >Jeder kann die Anmeldeseite sehen. Stellen Sie hier also keine vertraulichen Informationen bereit.
-   >
-
-### <a name="the-keep-me-signed-in-disabled-setting"></a>Einstellung „Angemeldet bleiben“
-
-Mit der Option **Angemeldet bleiben** können Benutzer angemeldet bleiben, wenn sie ihr Browserfenster schließen und erneut öffnen. Diese Option wirkt sich nicht auf die Lebensdauer der Sitzung aus. Wechseln Sie zu **Azure Active Directory** > **Unternehmensbranding** > **Unternehmensbranding bearbeiten**.
-
-Einige Features von SharePoint Online und Office 2010 setzen voraus, dass dieses Kontrollkästchen von Benutzern aktiviert werden kann. Wenn Sie diese Option ausblenden, erhalten Benutzer möglicherweise zusätzliche und unerwartete Anmeldeaufforderungen.
+Im Artikel [Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD](customize-branding.md) finden Sie ausführliche Informationen zum Konfigurieren von Unternehmensbranding.
 
 ### <a name="directory-name"></a>Verzeichnisname
 

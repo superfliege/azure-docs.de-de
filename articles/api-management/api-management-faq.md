@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 004e7b0299763be9d31b1df22df2a423dc7c52cf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
@@ -33,7 +33,6 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu 
 * [Kann ich meine API Management-Instanz programmgesteuert verwalten?](#can-i-manage-my-api-management-instance-programmatically)
 * [Wie füge ich Benutzer zur Gruppe „Administratoren“ hinzu?](#how-do-i-add-a-user-to-the-administrators-group)
 * [Weshalb ist die Richtlinie, die ich hinzufügen möchte, im Richtlinien-Editor nicht verfügbar?](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
-* [Wie verwende ich die API-Versionsverwaltung in API Management?](#how-do-i-use-api-versioning-in-api-management)
 * [Wie richte ich mehrere Umgebungen in einer einzelnen API ein?](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [Kann ich SOAP mit API Management verwenden?](#can-i-use-soap-with-api-management)
 * [Ist die Gateway-IP-Adresse für API Management konstant? Kann ich sie in Firewallregeln verwenden?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
@@ -63,7 +62,7 @@ Sie haben verschiedene Optionen, die Verbindung zwischen dem API Management-Gate
 
 * Verwenden Sie die HTTP-Standardauthentifizierung. Weitere Informationen finden Sie unter [Import and publish your first API](import-and-publish.md) (Importieren und Veröffentlichen Ihrer ersten API).
 * Verwenden Sie die gegenseitige SSL-Authentifizierung wie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md) beschrieben.
-* Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. Wenn Sie über eine API Management-Instanz des Standard- oder Premium-Tarifs verfügen, bleibt die IP-Adresse des Gateways unverändert. Sie können Ihre Positivliste so konfigurieren, dass diese IP-Adresse zugelassen wird. Sie können die IP-Adresse Ihrer API Management-Instanz im Azure-Portal auf dem Dashboard abrufen.
+* Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. Die IP-Adresse des Gateways bleibt in allen Tarifen von API Management (mit wenigen [Ausnahmen](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)) konstant. Sie können Ihre Positivliste so konfigurieren, dass diese IP-Adresse zugelassen wird. Sie können die IP-Adresse Ihrer API Management-Instanz im Azure-Portal auf dem Dashboard abrufen.
 * Verbinden Sie Ihre API Management-Instanz mit einer Azure Virtual Network-Instanz.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Wie kopiere ich meine API Management-Dienstinstanz in eine neue Instanz?
@@ -97,13 +96,6 @@ Der neu hinzugefügte Mitwirkende kann nun Azure PowerShell-[Cmdlets](https://ms
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Weshalb ist die Richtlinie, die ich hinzufügen möchte, im Richtlinien-Editor nicht verfügbar?
 Ist die Richtlinie, die Sie hinzufügen möchten, im Richtlinien-Editor abgeblendet, stellen Sie sicher, dass Sie sich im richtigen Bereich für die Richtlinie befinden. Jede Richtlinienanweisung ist für die Verwendung in bestimmten Bereichen und Richtlinienabschnitten vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie unter [API Management policies](https://msdn.microsoft.com/library/azure/dn894080.aspx) (API Management-Richtlinien) im Abschnitt „Verwendung“ der jeweiligen Richtlinie.
 
-### <a name="how-do-i-use-api-versioning-in-api-management"></a>Wie verwende ich die API-Versionsverwaltung in API Management?
-Für die API-Versionsverwaltung in API Management stehen verschiedene Optionen zur Verfügung:
-
-* Sie können in API Management APIs für verschiedene Versionen konfigurieren. Sie verfügen beispielsweise über zwei verschiedene APIs: MyAPIv1 und MyAPIv2. Ein Entwickler kann die Version auswählen, die er verwenden möchte.
-* Sie können Ihre API auch mit einer Dienst-URL konfigurieren, die kein Versionssegment enthält. Beispiel: https://my.api. Konfigurieren Sie dann für jede Vorlage vom Typ [URL umschreiben](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) der einzelnen Vorgänge ein Versionssegment. 
-* Wenn Sie ein Standardversionssegment in der Dienst-URL der API beibehalten möchten, können Sie für ausgewählte Vorgänge eine Richtlinie festlegen, die unter Verwendung der Richtlinie [Set backend service](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) (Back-End-Dienst festlegen) den Anforderungspfad für das Back-End ändert.
-
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Wie richte ich mehrere Umgebungen in einer einzelnen API ein?
 Wenn Sie in einer API mehrere Umgebungen einrichten möchten, beispielsweise eine Testumgebung und eine Produktionsumgebung, haben Sie zwei Möglichkeiten. Ihre Möglichkeiten:
 
@@ -114,7 +106,7 @@ Wenn Sie in einer API mehrere Umgebungen einrichten möchten, beispielsweise ein
 [SOAP Pass-Through](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)-Unterstützung ist jetzt verfügbar. Administratoren können die WSDL des SOAP-Diensts importieren. Azure API Management erstellt dann ein SOAP-Front-End. Für SOAP-Dienste stehen eine Dokumentation zum Entwicklerportal, eine Testkonsole, Richtlinien und Analysen zur Verfügung.
 
 ### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>Ist die Gateway-IP-Adresse für API Management konstant? Kann ich sie in Firewallregeln verwenden?
-In den Tarifen „Standard“ und „Premium“ ist die öffentliche IP-Adresse (VIP) des API Management-Mandanten während der gesamten Lebensdauer des Mandanten bis auf einige Ausnahmen statisch. Die IP-Adresse ändert sich in folgenden Situationen:
+In allen Tarifen von API Management ist die öffentliche IP-Adresse (VIP) des API Management-Mandanten während der gesamten Lebensdauer des Mandanten bis auf einige Ausnahmen statisch. Die IP-Adresse ändert sich in folgenden Situationen:
 
 * Der Dienst wird gelöscht und anschließend neu erstellt.
 * Das Dienstabonnement wird [gesperrt](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states), oder es wird eine diesbezügliche [Warnung](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) ausgegeben (z.B. aufgrund von nicht geleisteten Zahlungen), und anschließend wird es reaktiviert.

@@ -140,6 +140,8 @@
           href: data-prep-python-extensibility-overview.md
         - name: Unterstützte Datenquellen
           href: data-prep-appendix2-supported-data-sources.md
+        - name: Laden von Azure Cosmos DB als Datenquelle
+          href: data-prep-load-azure-cosmos-db.md
         - name: Unterstützte Inspektoren
           href: data-prep-appendix4-supported-inspectors.md
         - name: Unterstützte Datenziele

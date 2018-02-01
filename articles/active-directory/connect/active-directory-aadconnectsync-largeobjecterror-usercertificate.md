@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect-Synchronisierung: Beheben von LargeObject-Fehlern, die auf das userCertificate-Attribut zurückzuführen sind | Microsoft-Dokumentation"
+title: "Azure AD Connect: LargeObject-Fehler, die auf das userCertificate-Attribut zurückzuführen sind | Microsoft-Dokumentation"
 description: "Dieses Thema enthält Schritte, mit denen LargeObject-Fehler behoben werden können, die durch das userCertificate-Attribut verursacht wurden."
 services: active-directory
 documentationcenter: 
-author: cychua
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: fa824448288059aaad164035743982a2c9f20b9c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 73c79e26b2962368f33bbb0d52d6c243b93a3026
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect-Synchronisierung: Beheben von LargeObject-Fehlern, die auf das userCertificate-Attribut zurückzuführen sind
 
@@ -79,7 +80,7 @@ Stellen Sie sicher, dass keine Synchronisierung ausgeführt wird, während Sie e
 
 4. Wechseln Sie zur Registerkarte **Vorgänge**, und vergewissern Sie sich, dass kein Vorgang mit dem Status *In Arbeit* angezeigt wird.
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Schritt 2: Suchen der vorhandenen ausgehenden Synchronisierungsregel für das userCertificate-Attribut
+### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Schritt 2: Suchen der vorhandenen ausgehenden Synchronisierungsregel für das userCertificate-Attribut
 Eine Synchronisierungsregel sollte vorhanden sein, die aktiviert und so konfiguriert ist, dass sie das userCertificate-Attribut für User-Objekte in Azure AD exportiert. Suchen Sie diese Synchronisierungsregel, um ihre Konfiguration für **Rangfolge** und **Bereichsfilter** zu ermitteln:
 
 1. Starten Sie den **Synchronisierungsregel-Editor**, indem Sie zu „START“ > „Synchronisierungsregel-Editor“ navigieren.
@@ -101,20 +102,20 @@ Eine Synchronisierungsregel sollte vorhanden sein, die aktiviert und so konfigur
 7. Wählen Sie auf dem Bearbeitungsbildschirm die Registerkarte **Bereichsfilter**.
 8. Notieren Sie sich die Konfiguration des Bereichsfilters. Wenn Sie die Standardsynchronisierungsregel verwenden, sollte genau **eine Bereichsfiltergruppe mit zwei Klauseln** und folgenden Werten angezeigt werden:
 
-    | Attribut | Operators | Wert |
+    | Attribut | Operator | Wert |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Benutzer |
-    | cloudMastered | NOTEQUAL | True  |
+    | cloudMastered | NOTEQUAL | True |
 
-### <a name="step-3-create-the-outbound-sync-rule-required"></a>Schritt 3: Erstellen der erforderlichen ausgehenden Synchronisierungsregel
+### <a name="step-3-create-the-outbound-sync-rule-required"></a>Schritt 3: Erstellen der erforderlichen ausgehenden Synchronisierungsregel
 Die neue Synchronisierungsregel muss über denselben **Bereichsfilter** und eine **höhere Rangfolge** als die vorhandene Synchronisierungsregel verfügen. Dadurch wird sichergestellt, dass die neue Synchronisierungsregel für den gleichen Satz von Objekten gilt wie die vorhandene Synchronisierungsregel und die vorhandene Synchronisierungsregel für das UserCertificate-Attribut überschreibt. So löschen Sie die Synchronisierungsregel:
 1. Klicken Sie im Synchronisierungsregel-Editor auf die Schaltfläche **Neue Regel hinzufügen**.
 2. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
 
     | Attribut | Wert | Details |
     | --- | --- | --- |
-    | Name | *Geben Sie einen Namen ein.* | Beispiel: *Ausgehend an AAD – Benutzerdefinierte Überschreibung für „userCertificate“* |
-    | Beschreibung | *Geben Sie eine Beschreibung ein.* | Beispiel: *Wenn das userCertificate-Attribut mehr als 15 Werte enthält, soll NULL exportiert werden.* |
+    | NAME | *Geben Sie einen Namen ein.* | Beispiel: *Ausgehend an AAD – Benutzerdefinierte Überschreibung für „userCertificate“* |
+    | BESCHREIBUNG | *Geben Sie eine Beschreibung ein.* | Beispiel: *Wenn das userCertificate-Attribut mehr als 15 Werte enthält, soll NULL exportiert werden.* |
     | Verbundenes System | *Wählen Sie den Azure AD-Connector aus.* |
     | Objekttyp des verbundenen Systems | **user** | |
     | Metaverse-Objekttyp | **person** | |

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 01/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7d0f53751bf529d52c156a8b9319b10560eb8997
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 5a519908f43193e41da9237a236d720fe2db58eb
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Abschnitt „Parameters“ von Azure Resource Manager-Vorlagen
 Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Mit diesen Parameterwerten können Sie die Bereitstellung anpassen, indem Sie Werte resources, die für eine bestimmte Umgebung (z. B. Entwicklung, Testing oder Produktion) maßgeschneidert sind. Sie müssen in der Vorlage nicht unbedingt Parameter resources, aber ohne Parameter stellt Ihre Vorlage immer dieselben Ressourcen mit den gleichen Namen, Speicherorten und Eigenschaften bereit.
@@ -82,17 +82,17 @@ Im vorherige Beispiel wurden nur einige der Eigenschaften gezeigt, die Sie im Ab
 }
 ```
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | parameterName |Ja |Der Name des Parameters. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
-| Typ |Ja |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **secureString**, **int**, **bool**, **object**, **secureObject** und **array**. |
-| defaultValue |Nein |Der Standardwert für den Parameter, wenn kein Wert für den Parameter angegeben wird. |
-| allowedValues |Nein |Ein Array der zulässigen Werte für den Parameter, um sicherzustellen, dass der richtige Wert angegeben wird. |
-| minValue |Nein |Der Mindestwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
-| maxValue |Nein |Der Höchstwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
-| minLength |Nein |Die Mindestlänge der Parameter „string“, „secureString“ und „array“, einschließlich des angegebenen Werts. |
-| maxLength |Nein |Die Höchstlänge der Parameter „string“, „secureString“ und „array“, einschließlich des angegebenen Werts. |
-| Beschreibung |Nein |Beschreibung des Parameters, der Benutzern im Portal angezeigt wird. |
+| type |Ja |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **secureString**, **int**, **bool**, **object**, **secureObject** und **array**. |
+| defaultValue |Nein  |Der Standardwert für den Parameter, wenn kein Wert für den Parameter angegeben wird. |
+| allowedValues |Nein  |Ein Array der zulässigen Werte für den Parameter, um sicherzustellen, dass der richtige Wert angegeben wird. |
+| minValue |Nein  |Der Mindestwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
+| maxValue |Nein  |Der Höchstwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
+| minLength |Nein  |Die Mindestlänge der Parameter „string“, „secureString“ und „array“, einschließlich des angegebenen Werts. |
+| maxLength |Nein  |Die Höchstlänge der Parameter „string“, „secureString“ und „array“, einschließlich des angegebenen Werts. |
+| Beschreibung |Nein  |Beschreibung des Parameters, der Benutzern im Portal angezeigt wird. |
 
 ## <a name="template-functions-with-parameters"></a>Vorlagenfunktionen mit Parametern
 
@@ -131,6 +131,7 @@ Definieren Sie den Parameter in Ihrer Vorlage, und geben Sie ein JSON-Objekt an,
     "type": "object",
     "defaultValue": {
       "name": "VNet1",
+      "location": "eastus",
       "addressPrefixes": [
         {
           "name": "firstPrefix",
@@ -160,7 +161,7 @@ Verweisen Sie anschließend auf die Untereigenschaften des Parameters, indem Sie
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('VNetSettings').name]",
-    "location":"[resourceGroup().location]",
+    "location": "[parameters('VNetSettings').location]",
     "properties": {
       "addressSpace":{
         "addressPrefixes": [
@@ -186,7 +187,7 @@ Verweisen Sie anschließend auf die Untereigenschaften des Parameters, indem Sie
 ]
 ```
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>Empfehlungen
 Die folgenden Informationen können bei der Verwendung von Parametern hilfreich sein:
 
 * Verwenden Sie möglichst wenig Parameter. Verwenden Sie nach Möglichkeit eine Variable oder einen Literalwert. Verwenden Sie Parameter nur in den folgenden Szenarien:
@@ -237,7 +238,7 @@ Die folgenden Informationen können bei der Verwendung von Parametern hilfreich 
    }
    ```
 
-* Verwenden Sie möglichst keinen Parameter zum Angeben eines Speicherorts. Verwenden Sie stattdessen die **location**-Eigenschaft der Ressourcengruppe. Mithilfe des Ausdrucks **resourceGroup().location** für alle Ihre Ressourcen werden Ressourcen in der Vorlage am selben Speicherort wie die Ressourcengruppe bereitgestellt:
+* Verwenden Sie einen Parameter für die Angabe von Standorten, und nutzen Sie diesen Parameterwert nach Möglichkeit so oft wie möglich bei Ressourcen, die sich wahrscheinlich am selben Standort befinden. Durch diese Vorgehensweise werden Benutzer weniger häufig zur Angabe von Speicherortinformationen aufgefordert. Wenn ein Ressourcentyp nur von einer begrenzten Anzahl von Standorten unterstützt wird, können Sie einen gültigen Standort direkt in der Vorlage angeben oder einen weiteren Standortparameter hinzufügen. Wenn eine Organisation die zulässigen Regionen für Benutzer einschränkt, kann ein Benutzer durch den Ausdruck **resourceGroup().location** an der Bereitstellung der Vorlage gehindert werden. Beispiel: Ein Benutzer erstellt eine Ressourcengruppe in einer Region. Ein zweiter Benutzer muss Bereitstellungen für diese Ressourcengruppe durchführen, hat aber keinen Zugriff auf die Region. 
    
    ```json
    "resources": [
@@ -245,13 +246,12 @@ Die folgenden Informationen können bei der Verwendung von Parametern hilfreich 
          "name": "[variables('storageAccountName')]",
          "type": "Microsoft.Storage/storageAccounts",
          "apiVersion": "2016-01-01",
-         "location": "[resourceGroup().location]",
+         "location": "[parameters('location')]",
          ...
      }
    ]
    ```
-   
-   Wenn ein Ressourcentyp nur von einer begrenzten Anzahl von Standorten unterstützt wird, können Sie einen gültigen Speicherort direkt in der Vorlage angeben. Wenn Sie einen **location**-Parameter verwenden müssen, nutzen Sie diesen Parameterwert nach Möglichkeit so umfassend wie möglich mit Ressourcen gemeinsam, die sich wahrscheinlich am selben Speicherort befinden. Durch diese Vorgehensweise werden Benutzer weniger häufig zur Angabe von Speicherortinformationen aufgefordert.
+    
 * Vermeiden Sie das Verwenden eines Parameters oder einer Variablen für die API-Version eines Ressourcentyps. Ressourceneigenschaften und -werte können je nach Versionsnummer variieren. Mithilfe von IntelliSense kann in Code-Editoren nicht das richtige Schema ermittelt werden, wenn die API-Version auf einen Parameter oder eine Variable festgelegt ist. Stattdessen sollten Sie die API-Version in der Vorlage hartcodieren.
 * Vermeiden Sie das Angeben eines Parameternamens in der Vorlage, der mit einem Parameter im Bereitstellungsbefehl übereinstimmt. Resource Manager löst diesen Namenskonflikt durch Hinzufügen des Postfix-Elements **FromTemplate** zum Vorlagenparameter. Beispiel: Falls Sie einen Parameter namens **ResourceGroupName** in Ihrer Vorlage einfügen, wird ein Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) verursacht. Sie werden während der Bereitstellung zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert.
 
@@ -259,7 +259,7 @@ Die folgenden Informationen können bei der Verwendung von Parametern hilfreich 
 
 Diese Beispielvorlagen veranschaulichen einige Szenarien für die Verwendung von Parametern. Stellen Sie sie bereit, um zu testen, wie Parameter in verschiedenen Szenarien verarbeitet werden.
 
-|Vorlage  |Beschreibung  |
+|Vorlage  |BESCHREIBUNG  |
 |---------|---------|
 |[Parameter mit Funktionen für Standardwerte](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Zeigt, wie Vorlagenfunktionen verwendet werden, wenn Sie Standardwerte für Parameter definieren. Die Vorlage stellt keine Ressourcen bereit. Sie erstellt Parameterwerte und gibt diese Werte zurück. |
 |[Parameterobjekt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Veranschaulicht die Verwendung eines Objekts für einen Parameter. Die Vorlage stellt keine Ressourcen bereit. Sie erstellt Parameterwerte und gibt diese Werte zurück. |

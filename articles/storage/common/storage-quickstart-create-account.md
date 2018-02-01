@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/12/2017
+ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: c97e1b5115a8a97b8d9345c02d12b55b1d7a58fd
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 926b78bbe1ec8efaf6529a084af47747325f6096
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos
+# <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Ein Azure-Speicherkonto stellt in der Cloud einen eindeutigen Namespace zum Speichern Ihrer Datenobjekte in Azure Storage sowie zum Zugreifen auf diese Objekte bereit. Ein Speicherkonto enthält alle Blobs, Dateien, Warteschlangen, Tabellen und Datenträger, die Sie unter diesem Konto erstellen. 
 
@@ -138,9 +138,19 @@ az account list-locations \
 
 ---
 
-# <a name="create-a-general-purpose-storage-account"></a>Erstellen eines allgemeinen Speicherkontos
+## <a name="create-a-general-purpose-storage-account"></a>Erstellen eines allgemeinen Speicherkontos
 
-Ein allgemeines Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen und Tabellen. Allgemeine Speicherkonten können in einem Standard- oder Premium-Tarif erstellt werden. In den Beispielen in diesem Artikel wird ein allgemeines Speicherkonto im Standardtarif (Standardeinstellung) erstellt. Weitere Informationen zu Speicherkontooptionen finden Sie in der [Einführung in Microsoft Azure Storage](storage-introduction.md).
+Ein allgemeines Speicherkonto bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen und Tabellen. Allgemeine Speicherkonten können in einem Standard- oder Premium-Tarif erstellt werden. In den Beispielen in diesem Artikel wird ein allgemeines Speicherkonto im Standardtarif (Standardeinstellung) erstellt.
+
+Azure Storage verfügt über zwei Arten von allgemeinen Speicherkonten:
+
+- Allgemeines Konto vom Typ „General Purpose v2“ 
+- Allgemeines Konto vom Typ „General Purpose v1“ 
+
+> [!NOTE]
+> Es wird empfohlen, für neu erstellte Speicherkonten den Typ **General Purpose v2** zu verwenden, um die neueren Features nutzen zu können, die für diese Konten verfügbar sind.  
+
+Weitere Informationen zu Arten von Speicherkonten finden Sie unter [Azure Storage-Kontooptionen](storage-account-options.md).
 
 Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 
@@ -149,43 +159,72 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
-Wenn Sie ein allgemeines Speicherkonto über das Azure-Portal erstellen möchten, gehen Sie wie folgt vor:
+Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
 
 1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Weitere Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
 2. Geben Sie einen Namen für Ihr Speicherkonto ein.
-3. Behalten Sie in den folgenden Feldern die Standardwerte bei: **Bereitstellungsmodell**, **Kontoart**, **Leistung**, **Replikation**, **Sichere Übertragung erforderlich**.
-4. Wählen Sie das Abonnement aus, in dem Sie das Speicherkonto erstellen möchten.
-5. Wählen Sie im Abschnitt **Ressourcengruppe** die Option **Vorhandene verwenden** und anschließend die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben.
-6. Wählen Sie den Standort für Ihr neues Speicherkonto aus.
-7. Klicken Sie auf **Erstellen** , um das Speicherkonto zu erstellen.      
+3. Legen Sie das Feld **Kontoart** auf **StorageV2 (General Purpose v2)** fest.
+4. Übernehmen Sie für das Feld **Replikation** die Einstellung **Lokal redundanter Speicher (LRS)**. Alternativ hierzu können Sie **Zonenredundanter Speicher (ZRS – Vorschau)**, **Georedundanter Speicher (GRS)** oder **Read-Access Geo Redundant-Speicher (RA-GRS)** wählen.
+5. Behalten Sie in den folgenden Feldern die Standardwerte bei: **Bereitstellungsmodell****Leistung**, **Sichere Übertragung erforderlich**.
+6. Wählen Sie das Abonnement aus, in dem Sie das Speicherkonto erstellen möchten.
+7. Wählen Sie im Abschnitt **Ressourcengruppe** die Option **Vorhandene verwenden** und anschließend die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben.
+8. Wählen Sie den Standort für Ihr neues Speicherkonto aus.
+9. Klicken Sie auf **Erstellen** , um das Speicherkonto zu erstellen.      
 
 ![Screenshot mit der Speicherkontoerstellung über das Azure-Portal](./media/storage-quickstart-create-account/create-account-portal.png)
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Wenn Sie ein allgemeines Speicherkonto mithilfe von PowerShell erstellen möchten, verwenden Sie den Befehl [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount): 
+Verwenden Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ per PowerShell mit lokal redundantem Speicher (LRS) den Befehl [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount): 
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "storagequickstart" `
   -Location $location `
   -SkuName Standard_LRS `
-  -Kind Storage 
+  -Kind StorageV2 
 ```
+
+Fügen Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ mit zonenredundantem Speicher (ZRS – Vorschau), georedundantem Speicher (GRS) oder georedundantem Speicher mit Lesezugriff (RA-GRS) den gewünschten Wert in der Tabelle unten für den Parameter **SkuName** ein. 
+
+|Replikationsoption  |SkuName-Parameter  |
+|---------|---------|
+|Lokal redundanter Speicher (LRS)     |Standard_LRS         |
+|Zonenredundanter Speicher (ZRS)     |Standard_ZRS         |
+|Georedundanter Speicher (GRS)     |Standard_GRS         |
+|Georedundanter Speicher mit Lesezugriff (RA-GRS)     |Standard_RAGRS         |
 
 # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Wenn Sie ein allgemeines Speicherkonto über die Azure-Befehlszeilenschnittstelle erstellen möchten, verwenden Sie den Befehl [az storage account create](/cli/azure/storage/account#create).
+Verwenden Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ über die Azure CLI mit lokal redundantem Speicher den Befehl [az storage account create](/cli/azure/storage/account#create).
 
 ```azurecli-interactive
 az storage account create \
     --name storagequickstart \
     --resource-group storage-quickstart-resource-group \
     --location westus \
-    --sku Standard_LRS 
+    --sku Standard_LRS \
+    --kind StorageV2
 ```
 
+Fügen Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ mit zonenredundantem Speicher (ZRS – Vorschau), georedundantem Speicher (GRS) oder georedundantem Speicher mit Lesezugriff (RA-GRS) den gewünschten Wert in der Tabelle unten für den Parameter **sku** ein. 
+
+|Replikationsoption  |sku-Parameter  |
+|---------|---------|
+|Lokal redundanter Speicher (LRS)     |Standard_LRS         |
+|Zonenredundanter Speicher (ZRS)     |Standard_ZRS         |
+|Georedundanter Speicher (GRS)     |Standard_GRS         |
+|Georedundanter Speicher mit Lesezugriff (RA-GRS)     |Standard_RAGRS         |
+
 ---
+
+> [!NOTE]
+> Der [zonenredundante Speicher](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-zone-redundant-storage/preview/) befindet sich derzeit in der Vorschauphase und ist nur für die folgenden Standorte verfügbar:
+>    - USA (Ost 2)
+>    - USA, Mitte
+>    - Frankreich, Mitte (Diese Region befindet sich derzeit in der Vorschauphase. Informationen zum Anfordern des Zugriffs finden Sie unter [Microsoft Azure preview with Azure Availability Zones now open in France](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france) (Vorschauversion von Microsoft Azure mit Azure-Verfügbarkeitszonen jetzt auch in Frankreich).)
+    
+Weitere Informationen zu den verschiedenen Replikationsarten, die verfügbar sind, finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

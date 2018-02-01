@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: v-craic
-ms.openlocfilehash: d1f1b9948fb591484c107818a01e141932effbba
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: d20e92d16309f998b4979549997874a80a3ea2dd
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Erstellen eines benutzerdefinierten Images aus einer VHD-Datei
 
@@ -57,7 +57,16 @@ Die folgenden Schritte führen Sie durch die Erstellung eines benutzerdefinierte
 
 1. Wählen Sie im Dropdownmenü die Option **VHD**. Dies ist die virtuelle Festplatte (VHD), die zum Erstellen des neuen benutzerdefinierten Images verwendet werden soll. Aktivieren Sie bei Bedarf das Kontrollkästchen **VHD mithilfe von PowerShell hochladen**.
 
-1. Sie können auch einen Plannamen, ein Planangebot und einen Planherausgeber eingeben, wenn das Image, das zum Erstellen des benutzerdefinierten Images verwendet wird, nicht von Microsoft veröffentlicht wird.
+1. Sie können auch einen Plannamen, ein Planangebot und einen Planherausgeber eingeben, wenn das Image, das zum Erstellen des benutzerdefinierten Images verwendet wird, kein lizenziertes Image ist (von Microsoft veröffentlicht).
+
+   - **Planname:** Geben Sie den Namen des Marketplace-Images (SKU) ein, aus dem dieses benutzerdefinierte Image erstellt wird. 
+   - **Planangebot:** Geben Sie das Produkt (Angebot) des Marketplace-Images ein, aus dem dieses benutzerdefinierte Image erstellt wird. 
+   - **Planherausgeber:** Geben Sie den Herausgeber des Marketplace-Images ein, aus dem dieses benutzerdefinierte Image erstellt wird.
+
+   > [!NOTE]
+   > Wenn das Image, das Sie zum Erstellen eines benutzerdefinierten Images verwenden, **kein** lizenziertes Image ist, sind diese Felder leer und können bei Bedarf mit Daten gefüllt werden. Wenn es sich um ein **lizenziertes Image** handelt, werden die Planinformationen automatisch in die Felder eingefügt. Falls Sie versuchen, diese Daten zu ändern, wird eine Warnmeldung angezeigt.
+   >
+   >
 
 1. Wählen Sie **OK** , um das benutzerdefinierte Image zu erstellen.
 

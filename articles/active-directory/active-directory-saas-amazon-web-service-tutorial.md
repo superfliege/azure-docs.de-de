@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/3/2017
+ms.date: 1/16/2017
 ms.author: jeedes
-ms.openlocfilehash: b4d96df72fd7f8f817140e7599e22a63ddd79910
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 8d77215fd2923e22a9cc87e469cb135d035d22d9
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Tutorial: Azure Active Directory-Integration mit Amazon Web Services (AWS)
 
@@ -131,6 +131,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
     c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+
+    d. Geben Sie im Textfeld **Namespace** den für die betreffende Zeile angezeigten Namespacewert ein.
     
     d. Klicken Sie auf **OK**.
 
@@ -218,7 +220,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 21. Verwenden Sie die Anmeldeinformationen des AWS-Dienstkontos, um die Rollen aus dem AWS-Konto in der Azure AD-Benutzerbereitstellung abzurufen. Öffnen Sie hierzu die Startseite der AWS-Konsole.
 
-22. Klicken Sie auf **Services** (Dienste) -> **Security,Identity& Compliance** (Sicherheit, Identität und Konformität) -> **IAM**.
+22. Klicken Sie auf **Services** (Dienste) -> **Security, Identity & Compliance** (Sicherheit, Identität und Konformität) -> **IAM**.
 
     ![Rollen aus AWS-Konto abrufen](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole1.png)
 
@@ -230,19 +232,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Neue Richtlinie erstellen](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
  
-25. Erstellen Sie eine eigene Richtlinie, um alle Rollen aus AWS-Konten abzurufen. Klicken Sie im Abschnitt **Create your own policy** (Eigene Richtlinie erstellen) auf die Schaltfläche **Select** (Auswählen).
-    
+25. Erstellen Sie anhand der folgenden Schritte eine eigene Richtlinie, um alle Rollen aus AWS-Konten abzurufen:
+
     ![Neue Richtlinie erstellen](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
-26. Führen Sie zum Festlegen der neuen Richtlinie die folgenden Schritte aus:
+    a. Klicken Sie im Abschnitt **Richtlinie erstellen** auf die Registerkarte **JSON**.
 
-    ![Neue Richtlinie definieren](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
-
-    a. Als **Policy Name** (Richtlinienname) geben Sie **AzureAD_SSOUserRole_Policy** an.
-
-    b. Sie können für die Richtlinie Text in **Description** (Beschreibung) angeben, da hierfür **This policy will allow to fetch the roles from AWS accounts** (Diese Richtlinie erlaubt das Abrufen der Rollen aus AWS) gilt.
-    
-    c. Fügen Sie in diesem Richtliniendokument den folgenden JSON-Code hinzu.
+    b. Fügen Sie in diesem Richtliniendokument den folgenden JSON-Code hinzu.
     
     ```
     
@@ -271,13 +267,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     }
     
     ```
+
+    c. Klicken Sie auf die Schaltfläche **Richtlinie überprüfen**, um die Richtlinie zu überprüfen.
+
+    ![Neue Richtlinie definieren](./media/active-directory-saas-amazon-web-service-tutorial/policy5.png)
+
+26. Führen Sie zum Festlegen der **neuen Richtlinie** die folgenden Schritte aus:
+
+    ![Neue Richtlinie definieren](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
+
+    a. Als **Policy Name** (Richtlinienname) geben Sie **AzureAD_SSOUserRole_Policy** an.
+
+    b. Sie können für die Richtlinie Text in **Description** (Beschreibung) angeben, da hierfür **This policy will allow to fetch the roles from AWS accounts** (Diese Richtlinie erlaubt das Abrufen der Rollen aus AWS) gilt.
     
-    d. Stellen Sie sicher, dass Sie die Option **Use autoformatting for policy editing** (Autoformatierung für die Richtlinienbearbeitung verwenden) aktivieren.
-    
-    e. Klicken Sie unten auf die Schaltfläche **Validate Policy** (Richtlinie überprüfen).
-    
-    f. Sobald die Richtlinie ordnungsgemäß überprüft wurde, können Sie auf die Schaltfläche **Create Policy** (Richtlinie erstellen) klicken.
-    
+    c. Klicken Sie auf die Schaltfläche **Richtlinie erstellen**.
+        
 27. Erstellen Sie ein neues Benutzerkonto im AWS-IAM-Dienst, indem Sie die folgenden Schritte ausführen:
 
     a. Klicken Sie im Navigationsmenü der AWS-IAM-Konsole auf **Users** (Benutzer).

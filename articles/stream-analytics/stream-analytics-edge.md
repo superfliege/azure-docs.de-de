@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/16/2017
+ms.date: 01/16/2017
 ms.author: jeanb
-ms.openlocfilehash: 916aefb7916ab374c882efb95417babfc5b06a50
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: f1ff8d6f64a04ab03c8170fd2b6a7c881227da2e
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics unter IoT Edge (Vorschau)
 
@@ -42,7 +42,7 @@ Diese Funktion befindet sich in der Vorschau. Wenn Sie Fragen oder Feedback habe
 
 ASA-Edge-Aufträge werden als Module in der [Azure IoT Edge-Runtime](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works) ausgeführt. Sie bestehen aus zwei Teilen:
 1.  Einem Cloudteil, der für die Auftragsdefinition zuständig ist: Benutzer definieren Eingaben, Ausgaben, Abfragen und andere Einstellungen (Ereignisse in falscher Reihenfolge usw.) in der Cloud.
-2.  Dem ASA on IoT Edge-Modul, das lokal ausgeführt wird. Es enthält das ASA Complex Event Processing-Modul und empfängt die Auftragsdefinition aus der Cloud. 
+2.  Dem ASA on IoT Edge-Modul, das lokal ausgeführt wird. Es enthält die ASA Complex Event Processing-Engine und empfängt die Auftragsdefinition aus der Cloud. 
 
 ASA verwendet IoT Hub zur Bereitstellung von Edge-Aufträgen auf Geräten. Weitere Informationen zur IoT Edge-Bereitstellung [finden Sie hier](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
@@ -51,13 +51,18 @@ ASA verwendet IoT Hub zur Bereitstellung von Edge-Aufträgen auf Geräten. Weite
 
 ### <a name="installation-instructions"></a>Installationsanweisungen
 Die grundsätzlichen Schritte sind in der folgenden Tabelle beschrieben. Ausführliche Informationen finden Sie in den nachfolgenden Abschnitten.
-|      |Schritt   | Ort     | Hinweise   |
+|      |Schritt   | Ort     | Notizen   |
 | ---   | ---   | ---       |  ---      |
 | 1   | **Erstellen eines ASA-Edge-Auftrags**   | Azure-Portal      |  Sie erstellen einen neuen Auftrag und wählen **Edge** als **Hostingumgebung** aus. <br> Diese Aufträge werden aus der Cloud heraus erstellt/verwaltet und auf Ihren IoT Edge-Geräten ausgeführt.     |
 | 2   | **Erstellen eines Speichercontainers**   | Azure-Portal       | Speichercontainer werden verwendet, um die Auftragsdefinition zu speichern. Dort können Ihre IoT-Geräte darauf zugreifen. <br>  Sie können auch bereits vorhandene Speichercontainer verwenden.     |
 | 3   | **Einrichten der IoT Edge-Umgebung auf Ihren Geräten**   | Geräte      | Anleitungen für [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) und [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)          |
 | 4   | **Bereitstellen von ASA auf Ihren IoT Edge-Geräten**   | Azure-Portal      |  Die ASA-Auftragsdefinition wird in den zuvor erstellten Speichercontainer exportiert.       |
-Führen Sie [dieses Schritttutorial](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) aus, um Ihren ersten ASA-Auftrag auf IoT Edge bereitzustellen.
+Führen Sie [dieses Schritttutorial](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) aus, um Ihren ersten ASA-Auftrag auf IoT Edge bereitzustellen. Anhand des folgenden Videos können Sie nachvollziehen, wie ein Stream Analytics-Auftrag auf einem IoT Edge-Gerät ausgeführt wird:  
+
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T157/player]
+
+
 
 #### <a name="create-an-asa-edge-job"></a>Erstellen eines ASA-Edge-Auftrags
 1. Erstellen Sie im Azure-Portal einen neuen „Stream Analytics-Auftrag“. [Hier Direktlink zum Erstellen eines neuen ASA-Auftrags einfügen](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)

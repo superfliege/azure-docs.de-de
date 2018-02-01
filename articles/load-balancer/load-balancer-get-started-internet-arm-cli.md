@@ -1,6 +1,6 @@
 ---
-title: "Erstellen eines Lastenausgleichs für den Internetzugriff – Azure CLI | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff in Ressourcen-Manager über die Azure-Befehlszeilenschnittstelle (CLI) erstellen."
+title: "Erstellen eines öffentlichen Lastenausgleichs – Azure CLI | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie einen öffentlichen Lastenausgleich mithilfe der Azure CLI erstellen."
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 8baf065a7aac0a38624197f8f6a1f6a84aaab2a8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: bd8c2703a1b43834e1c82e0776e2dee807bb3192
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>Erstellen eines Internet-Load Balancers mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="creating-a-public-load-balancer-using-the-azure-cli"></a>Erstellen eines öffentlichen Lastenausgleichs mit der Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -34,13 +34,13 @@ ms.lasthandoff: 12/18/2017
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie können auch erfahren, wie Sie [mithilfe klassischer Bereitstellung einen Load Balancer mit Internetzugriff erstellen](load-balancer-get-started-internet-classic-portal.md)
+Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie können sich auch darüber informieren, wie Sie [mithilfe der klassischen Bereitstellung einen öffentlichen Lastenausgleich erstellen](load-balancer-get-started-internet-classic-portal.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="deploying-the-solution-using-the-azure-cli"></a>Bereitstellen der Lösung mithilfe der Azure-Befehlszeilenschnittstelle
 
-Die folgenden Schritte zeigen, wie Sie einen internen Load Balancer mit Internetzugriff mit dem Azure Resource Manager und CLI erstellen. Mit dem Azure Resource Manager werden die einzelnen Teilressourcen erstellt sowie individuell konfiguriert und dann zusammengeführt, um eine Ressource zu erstellen.
+Die folgenden Schritte zeigen, wie Sie einen öffentlichen Lastenausgleich (Load Balancer) mit Azure Resource Manager und der CLI erstellen. Mit dem Azure Resource Manager werden die einzelnen Teilressourcen erstellt sowie individuell konfiguriert und dann zusammengeführt, um eine Ressource zu erstellen.
 
 Zum Bereitstellen eines Load Balancers müssen Sie die folgenden Objekte erstellen und konfigurieren:
 

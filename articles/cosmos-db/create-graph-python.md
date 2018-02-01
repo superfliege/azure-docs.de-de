@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: 68cc1a3b69e3e2d59a791a9241a1a8b4b3062673
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: bb39cc25cc1c431c7ab98bfc3ed816934cb03e45
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Graphdatenbank mit Python und dem Azure-Portal
 
@@ -28,7 +28,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Python und de
 Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB bietet.  
 
 > [!NOTE]
-> Für die in dieser Schnellstartanleitung beschriebenen Schritte benötigen Sie ein Graphdatenbankkonto, das nach dem 27. November 2017 erstellt wurde. Bestehende Konten unterstützen Python, nachdem diese zur Version für die allgemeine Verfügbarkeit migriert wurden.
+> Für die in dieser Schnellstartanleitung beschriebenen Schritte benötigen Sie ein Graphdatenbankkonto, das nach dem 20. Dezember 2017 erstellt wurde. Bestehende Konten unterstützen Python, nachdem diese zur Version für die allgemeine Verfügbarkeit migriert wurden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

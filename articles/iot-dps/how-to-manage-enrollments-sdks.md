@@ -12,11 +12,11 @@ documentationcenter:
 manager: arjmands
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a3d763009c7a7f45ddce96732977a79567f7ef44
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 14e353af82342bc7a580e1a0a02b8b4e29514fb9
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Gewusst wie: Verwalten von Geräteregistrierungen mit Azure Device Provisioning Service-SDKs
 Eine *Geräteregistrierung* erstellt einen Datensatz eines einzelnen Geräts oder einer Gruppe von Geräten, die sich jederzeit beim Device Provisioning-Dienst registrieren können. Der Registrierungsdatensatz enthält die erste gewünschte Konfiguration für die Geräte im Rahmen dieser Registrierung, einschließlich des gewünschten IoT Hubs. In diesem Artikel wird erläutert, wie Geräteregistrierungen für Ihren Bereitstellungsdienst programmgesteuert mithilfe von Azure IoT Provisioning Service-SDKs verwaltet werden.  Die SDKs sind auf GitHub im gleichen Repository wie Azure IoT-SDKs verfügbar.
@@ -25,6 +25,7 @@ Eine *Geräteregistrierung* erstellt einen Datensatz eines einzelnen Geräts ode
 In diesem Artikel werden die allgemeinen Konzepte erläutert, um Geräteregistrierungen für Ihren Bereitstellungsdienst programmgesteuert mithilfe von Azure IoT Provisioning Service-SDKs zu verwalten.  Die genauen API-Aufrufe können aufgrund von Sprachunterschieden voneinander abweichen.  Überprüfen Sie die Beispiele, die wir auf GitHub als weitergehende Informationsquelle bereitstellen:
 * [Java Provisioning Service Client samples (Beispiele für den Bereitstellungsdienstclient für Java)](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
 * [Node.js Provisioning Service Client samples (Beispiele für den Bereitstellungsdienstclient für Node.js)](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+* [.NET Provisioning Service Client samples (Beispiele für den Bereitstellungsdienstclient für .NET)](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Verbindungszeichenfolge für die Device Provisioning-Dienstinstanz
