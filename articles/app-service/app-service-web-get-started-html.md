@@ -15,27 +15,27 @@ ms.topic: quickstart
 ms.date: 10/26/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ee3b53f9e68a739a39478045debbb45dff9d7ed9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: bca5757c971f15279ed6ee9b41f415cd347d91b3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Erstellen einer statischen HTML-Web-App in Azure
 
-[Azure-Web-Apps](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching.  In diesem Schnellstart wird erläutert, wie Sie eine einfache Website mit HTML und CSS in Azure-Web-Apps bereitstellen. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und stellen mit Git HTML-Beispielinhalt für die Web-App bereit.
+[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching.  In diesem Schnellstart wird erläutert, wie Sie eine einfache Website mit HTML und CSS in Azure-Web-Apps bereitstellen. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und stellen mit Git HTML-Beispielinhalt für die Web-App bereit.
 
 ![Startseite der Beispiel-App](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
 Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. Nachdem die erforderlichen Komponenten installiert wurden, können die Schritte in etwa fünf Minuten durchgeführt werden.
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 So führen Sie diesen Schnellstart durch:
 
-- <a href="https://git-scm.com/" target="_blank">Installieren Sie Git.</a>
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- <a href="https://git-scm.com/" target="_blank">Installation von Git</a>
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 

@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 4a3213c28f24e9d1dfc309c6d34771ccc062dae4
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 90d449de19022b3b427e3d89d5beb18bbd36c6b4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Verwenden von ACR mit einem DC/OS-Cluster zum Bereitstellen Ihrer Anwendung
 
@@ -33,7 +33,7 @@ Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. F�
 
 ## <a name="deploy-azure-container-registry"></a>Bereitstellen von Azure Container Registry
 
-Erstellen Sie bei Bedarf mit dem Befehl [az acr create](/cli/azure/acr#create) eine Azure Container Registry-Instanz. 
+Erstellen Sie bei Bedarf mit dem Befehl [az acr create](/cli/azure/acr#az_acr_create) eine Azure Container Registry-Instanz. 
 
 Im folgenden Beispiel wird eine Registrierung mit einem zufällig generierten Namen erstellt. Die Registrierung wird zudem mit dem Argument `--admin-enabled` mit einem Administratorkonto konfiguriert.
 

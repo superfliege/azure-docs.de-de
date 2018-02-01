@@ -15,15 +15,15 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: mimig
-ms.openlocfilehash: 335c271f3e46d3b6b23e1fcac53e39b89ece796c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6e8e2c1c3a65aa88dae75fcb8a7d670d6f4c278
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: Migrieren einer vorhandenen Web-App von Node.js MongoDB 
 
-Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
+Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
 
 Dieser Schnellstart veranschaulicht, wie Sie eine vorhandene, in Node.js geschriebene [MongoDB](mongodb-introduction.md)-App verwenden und sie mit Ihrer Azure Cosmos DB-Datenbank verbinden, die MongoDB-Clientverbindungen unterstützt. Das heißt, dass die Node.js-Anwendung nur weiß, dass sie mithilfe von MongoDB-APIs eine Verbindung mit einer Datenbank herstellt. Für die Anwendung ist es ersichtlich, dass die Daten in Azure Cosmos DB gespeichert sind.
 
@@ -34,7 +34,7 @@ Wenn Sie fertig sind, wird eine MEAN-Anwendung (MongoDB, Express, Angular und No
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI in Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
@@ -67,7 +67,7 @@ Die Anwendung versucht, eine Verbindung mit einer MongoDB-Quelle herzustellen. D
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Wenn Sie eine installierte Azure CLI verwenden, melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm. Sie können diesen Schritt überspringen, wenn Sie Azure Cloud Shell verwenden.
+Wenn Sie eine installierte Azure CLI verwenden, melden Sie sich mit dem Befehl [az login](/cli/azure/#az_login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm. Sie können diesen Schritt überspringen, wenn Sie Azure Cloud Shell verwenden.
 
 ```azurecli
 az login 
@@ -81,7 +81,7 @@ Wenn `cosmosdb` nicht in der Liste der Basisbefehle enthalten ist, installieren 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen wie Web-Apps, Datenbanken und Speicherkonten bereitgestellt und verwaltet werden. 
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen wie Web-Apps, Datenbanken und Speicherkonten bereitgestellt und verwaltet werden. 
 
 Im folgenden Beispiel wird eine Ressourcengruppe in der Region „Europa, Westen“ erstellt. Wählen Sie einen eindeutigen Namen für die Ressourcengruppe aus.
 
@@ -93,7 +93,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Erstellen eines Azure Cosmos DB-Kontos
 
-Erstellen Sie mit dem Befehl [az cosmosdb create](/cli/azure/cosmosdb#create) ein Azure Cosmos DB-Konto.
+Erstellen Sie mit dem Befehl [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) ein Azure Cosmos DB-Konto.
 
 Ersetzen Sie im folgenden Befehl den Platzhalter `<cosmosdb-name>` durch Ihren eigenen eindeutigen Azure Cosmos DB-Kontonamen. Da dieser eindeutige Name als Teil des Azure Cosmos DB-Endpunkts (`https://<cosmosdb-name>.documents.azure.com/`) verwendet wird, muss er für alle Azure Cosmos DB-Konten in Azure eindeutig sein. 
 

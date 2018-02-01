@@ -222,7 +222,7 @@ In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen
 
 [4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn) (in englischer Sprache)
 
-[5] Vorlage [Telco Churn Model](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) im [Azure AI-Katalog](http://gallery.cortanaintelligence.com/) 
+[5] [Vorlage Telco Churn Model](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) im [Azure AI-Katalog](http://gallery.cortanaintelligence.com/) 
  
 
 ## <a name="appendix"></a>Anhang

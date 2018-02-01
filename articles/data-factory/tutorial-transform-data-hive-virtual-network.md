@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shengc
-ms.openlocfilehash: 30456a30c12d39ceb14dec6cd60015916cb7ae27
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 04323e5f6b729cdadf5ede748a1178dfa9460cd2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem virtuellen Azure-Netzwerk (VNet) befindet. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -38,7 +38,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - **Azure Storage-Konto**. Erstellen Sie ein Hive-Skript, und laden Sie es in Azure Storage hoch. Die Ausgabe des Hive-Skripts wird in diesem Storage-Konto gespeichert. In diesem Beispiel verwendet der HDInsight-Cluster dieses Azure Storage-Konto als primären Speicher. 
-- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie ein solches anhand [dieser Anweisungen](../virtual-network/virtual-network-get-started-vnet-subnet.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
+- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie anhand [dieser Anweisungen](../virtual-network/quick-create-portal.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
 
     ![Virtuelles Netzwerk erstellen](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
 - **HDInsight-Cluster.** Erstellen Sie einen HDInsight-Cluster, und binden Sie ihn in das virtuelle Netzwerk ein, das Sie im vorherigen Schritt erstellt haben. Befolgen Sie dazu die Anweisungen in diesem Artikel: [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Hier finden Sie die Beispielkonfiguration von HDInsight in einem virtuellen Netzwerk. 
@@ -150,7 +150,7 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
    }
    ```
     Notieren Sie sich den Wert von **AuthKey1** ohne Anführungszeichen. 
-3. Erstellen Sie einen virtuellen Azure-Computer, und binden Sie ihn in das gleiche virtuelle Netzwerk ein, das Ihren HDInsight-Cluster enthält. Ausführliche Informationen finden Sie unter [Erstellen virtueller Computer](../virtual-network/virtual-network-get-started-vnet-subnet.md#create-vms). Binden Sie sie in ein Azure Virtual Network ein. 
+3. Erstellen Sie einen virtuellen Azure-Computer, und binden Sie ihn in das gleiche virtuelle Netzwerk ein, das Ihren HDInsight-Cluster enthält. Ausführliche Informationen finden Sie unter [Erstellen virtueller Computer](../virtual-network/quick-create-portal.md#create-virtual-machines). Binden Sie sie in ein Azure Virtual Network ein. 
 4. Laden Sie die [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) auf den virtuellen Azure-Computer herunter. Verwenden Sie den Authentifizierungsschlüssel, den Sie im vorherigen Schritt abgerufen haben, um die selbstgehostete Integration Runtime manuell zu registrieren. 
 
    ![Registrieren der Integration Runtime](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)

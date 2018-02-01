@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: db3be8068ef9e560614daa0e7f0dcf62467fd338
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: bd5aa5186bdec84e1943887ef0980fa50cd26324
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
 
-[Azure-Web-Apps](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching. In diesem Tutorial wird veranschaulicht, wie Sie eine datengesteuerte ASP.NET-Web-App in Azure bereitstellen und dafür eine Verbindung mit [Azure SQL-Datenbank](../sql-database/sql-database-technical-overview.md) herstellen. Am Ende dieses Lernprogramms verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist.
+[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching. In diesem Tutorial wird veranschaulicht, wie Sie eine datengesteuerte ASP.NET-Web-App in Azure bereitstellen und dafür eine Verbindung mit [Azure SQL-Datenbank](../sql-database/sql-database-technical-overview.md) herstellen. Am Ende dieses Lernprogramms verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist.
 
 ![Veröffentlichte ASP.NET-Anwendung in Azure-Web-App](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
@@ -37,6 +37,8 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Streamen von Protokollen von Azure auf Ihr Terminal
 > * Verwalten der App im Azure-Portal
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
@@ -46,8 +48,6 @@ Für dieses Tutorial benötigen Sie Folgendes:
   - **Azure-Entwicklung**
 
   ![ASP.NET und Webentwicklung und Azure-Entwicklung (unter „Web und Cloud“)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
@@ -121,7 +121,7 @@ Konfigurieren Sie den neuen App Service-Plan im Dialogfeld **App Service-Plan ko
 | Einstellung  | Empfohlener Wert | Weitere Informationen |
 | ----------------- | ------------ | ----|
 |**App Service-Plan**| myAppServicePlan | [App Service-Pläne](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |
-|**Location**| Westeuropa | [Azure-Regionen](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
+|**Location**| Europa, Westen | [Azure-Regionen](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
 |**Größe**| Kostenlos | [Tarife](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
 ### <a name="create-a-sql-server-instance"></a>Erstellen einer SQL Server-Instanz
@@ -158,7 +158,7 @@ Gehen Sie im Dialogfeld **SQL-Datenbank konfigurieren** wie folgt vor:
 
 ![SQL-Datenbank konfigurieren](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-Im Dialogfeld **App Service erstellen** werden die von Ihnen erstellten Ressourcen angezeigt. Klicken Sie auf **Erstellen**. 
+Im Dialogfeld **App Service erstellen** werden die von Ihnen erstellten Ressourcen angezeigt. Klicken Sie auf **Create**. 
 
 ![Erstellte Ressourcen](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 

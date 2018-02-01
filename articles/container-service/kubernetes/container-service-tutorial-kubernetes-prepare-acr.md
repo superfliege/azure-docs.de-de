@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c9c8ad6dfd6df0e99f9e41eaf1da12ebeb2a2da6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9d5486b3ac7ca0ef0f5824660ee8278de3f6fe80
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Bereitstellen und Verwenden von Azure Container Registry
 
@@ -38,13 +38,13 @@ Für dieses Tutorial müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeile
 
 Für die Bereitstellung einer Azure Container Registry-Instanz benötigen Sie zunächst eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` in der Region `westeurope` erstellt.
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` in der Region `westeurope` erstellt.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Erstellen Sie mit dem Befehl [az acr create](/cli/azure/acr#create) eine Azure Container Registry-Instanz. Der Name einer Containerregistrierung **muss eindeutig sein**.
+Erstellen Sie mit dem Befehl [az acr create](/cli/azure/acr#az_acr_create) eine Azure Container Registry-Instanz. Der Name einer Containerregistrierung **muss eindeutig sein**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -123,7 +123,7 @@ Dieser Vorgang nimmt einige Minuten in Anspruch.
 
 ## <a name="list-images-in-registry"></a>Auflisten von Images in der Registrierung
 
-Führen Sie den Befehl [az acr repository list](/cli/azure/acr/repository#list) aus, um eine Liste der Images zurückzugeben, die per Push in Ihre Azure Container Registry-Instanz übertragen wurden. Aktualisieren Sie den Befehl mit dem Namen der ACR-Instanz.
+Führen Sie den Befehl [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) aus, um eine Liste der Images zurückzugeben, die per Push in Ihre Azure Container Registry-Instanz übertragen wurden. Aktualisieren Sie den Befehl mit dem Namen der ACR-Instanz.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -155,7 +155,7 @@ Nach Abschluss des Tutorials ist das Containerimage in einer privaten Azure Cont
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde eine Azure Container Registry-Instanz für die Verwendung in einem ACR-Kubernetes-Cluster vorbereitet. Die folgenden Schritte wurden ausgeführt:
+In diesem Tutorial wurde eine Azure Container Registry-Instanz für die Verwendung in einem ACR-Kubernetes-Cluster vorbereitet. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
 > * Bereitstellen einer Azure Container Registry-Instanz

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 355865b963c313097f7f5900007f341dba92bf67
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 88d4012145172bcd393070904980898d9923ea1c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
 [Skalierungsgruppen für virtuelle Azure-Computer](/azure/virtual-machine-scale-sets/) unterstützen jetzt virtuelle Computer mit angefügten Datenträgern. Datenträger können im Speicherprofil für die Skalierungsgruppen definiert werden, die mit Azure Managed Disks erstellt wurden. Bisher waren das Betriebssystemlaufwerk und die temporären Laufwerke die einzigen Optionen für direkt angefügten Speicher für virtuelle Computer.
@@ -28,14 +28,14 @@ ms.lasthandoff: 12/20/2017
 >  Wenn Sie eine Skalierungsgruppe mit definierten angefügten Datenträgern erstellen, müssen Sie die Datenträger weiterhin in einem virtuellen Computer bereitstellen und formatieren, damit Sie sie verwenden können (wie es auch bei eigenständigen virtuellen Azure-Computern der Fall ist). Eine einfache Möglichkeit ist die Verwendung einer benutzerdefinierten Skripterweiterung, die ein Standardskript aufruft, um alle Datenträger auf einem virtuellen Computer zu partitionieren und zu formatieren.
 
 ## <a name="create-a-scale-set-with-attached-data-disks"></a>Erstellen von Skalierungsgruppen mit angefügten Datenträgern
-Eine einfache Möglichkeit zum Erstellen einer Skalierungsgruppe mit angefügten Datenträgern ist der Befehl [az vmss create](/cli/azure/vmss#create). Im folgenden Beispiel werden eine Azure-Ressourcengruppe und eine VM-Skalierungsgruppe mit zehn virtuellen Ubuntu-Computern erstellt, von denen jeder über zwei angefügte Datenträger mit 50 bzw. 100 GB verfügt.
+Eine einfache Möglichkeit zum Erstellen einer Skalierungsgruppe mit angefügten Datenträgern ist der Befehl [az vmss create](/cli/azure/vmss#az_vmss_create). Im folgenden Beispiel werden eine Azure-Ressourcengruppe und eine VM-Skalierungsgruppe mit zehn virtuellen Ubuntu-Computern erstellt, von denen jeder über zwei angefügte Datenträger mit 50 bzw. 100 GB verfügt.
 
 ```bash
 az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
 ```
 
-Der Befehl [az vmss create](/cli/azure/vmss#create) verwendet standardmäßig bestimmte Konfigurationswerte, wenn Sie diese nicht angeben. Sie können die verfügbaren Optionen, die überschrieben werden können, folgendermaßen anzeigen:
+Der Befehl [az vmss create](/cli/azure/vmss#az_vmss_create) verwendet standardmäßig bestimmte Konfigurationswerte, wenn Sie diese nicht angeben. Sie können die verfügbaren Optionen, die überschrieben werden können, folgendermaßen anzeigen:
 
 ```bash
 az vmss create --help

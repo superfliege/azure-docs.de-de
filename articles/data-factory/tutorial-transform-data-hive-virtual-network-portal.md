@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: 4b8f7a66f220b57ac914a9f5475c680679b8bf03
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c1dfa969f8665fc06d365bdb91d57382ee04c315
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem virtuellen Azure-Netzwerk (VNet) befindet. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -38,14 +38,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - **Azure Storage-Konto**. Erstellen Sie ein Hive-Skript, und laden Sie es in Azure Storage hoch. Die Ausgabe des Hive-Skripts wird in diesem Storage-Konto gespeichert. In diesem Beispiel verwendet der HDInsight-Cluster dieses Azure Storage-Konto als primären Speicher. 
-- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie ein solches anhand [dieser Anweisungen](../virtual-network/virtual-network-get-started-vnet-subnet.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
+- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie anhand [dieser Anweisungen](../virtual-network/quick-create-portal.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
 
     ![Virtuelles Netzwerk erstellen](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
 - **HDInsight-Cluster.** Erstellen Sie einen HDInsight-Cluster, und binden Sie ihn in das virtuelle Netzwerk ein, das Sie im vorherigen Schritt erstellt haben. Befolgen Sie dazu die Anweisungen in diesem Artikel: [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Hier finden Sie die Beispielkonfiguration von HDInsight in einem virtuellen Netzwerk. 
 
     ![HDInsight in einem virtuellen Netzwerk](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
 - **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-azurerm-ps) (Erste Schritte mit Azure PowerShell-Cmdlets).
-- **Ein virtueller Computer.** Erstellen Sie einen virtuellen Azure-Computer, und binden Sie ihn in das virtuelle Netzwerk ein, das Ihren HDInsight-Cluster enthält. Ausführliche Informationen finden Sie unter [Erstellen virtueller Computer](../virtual-network/virtual-network-get-started-vnet-subnet.md#create-vms). 
+- **Ein virtueller Computer.** Erstellen Sie einen virtuellen Azure-Computer, und binden Sie ihn in das virtuelle Netzwerk ein, das Ihren HDInsight-Cluster enthält. Ausführliche Informationen finden Sie unter [Erstellen virtueller Computer](../virtual-network/quick-create-portal.md#create-virtual-machines). 
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hochladen eines Hive-Skripts in Ihr Blob Storage-Konto
 
@@ -234,7 +234,7 @@ Beachten Sie folgende Punkte:
 
 ## <a name="trigger-a-pipeline-run"></a>Auslösen einer Pipelineausführung
 
-1. Klicken Sie zum Überprüfen der Pipeline zunächst auf der Symbolleiste auf die Schaltfläche **Überprüfen**. Klicken Sie auf **>>** (Pfeil nach rechts), um das Fenster mit der Ausgabe der **Pipelineüberprüfung** zu schließen. 
+1. Klicken Sie zum Überprüfen der Pipeline zunächst auf der Symbolleiste auf die Schaltfläche **Überprüfen**. Klicken Sie auf **>>** (Pfeil nach rechts), um das Fenster mit der Ausgabe der Pipelineüberprüfung**** zu schließen. 
 
     ![Überprüfen der Pipeline](./media/tutorial-transform-data-using-hive-in-vnet-portal/validate-pipeline.png) 
 2. Klicken Sie auf der Symbolleiste auf „Trigger“ und anschließend auf „Trigger Now“ (Jetzt auslösen), um eine Pipelineausführung auszulösen. 

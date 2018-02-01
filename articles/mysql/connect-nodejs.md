@@ -6,16 +6,16 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: mysql
+ms.service: mysql-database
 ms.custom: mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f18016614b229273aa4d661991149be949ce238
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dcfd5dc0dbfb4f7aed4d2f940059d5cb8244cbd2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von Node.js zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 In diesem Schnellstart wird gezeigt, wie Sie eine Verbindung mit einer Azure-Datenbank für MySQL per [Node.js](https://nodejs.org/) auf Windows-, Ubuntu Linux- und Mac-Plattformen herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Node.js-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
@@ -89,7 +89,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 3. Klicken Sie auf den Servernamen **myserver4demo**.
 4. Wählen Sie die Seite **Eigenschaften** des Servers aus, und notieren Sie sich den **Servernamen** und **den Anmeldenamen des Serveradministrators**.
  ![Azure-Datenbank für MySQL – Anmeldename des Serveradministrators](./media/connect-nodejs/1_server-properties-name-login.png)
-5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
+5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Anmeldenamen des Serveradministrators anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Ausführen des JavaScript-Codes in Node.js
 1. Fügen Sie den JavaScript-Code in Textdateien ein, und speichern Sie ihn dann in einem Projektordner mit der Dateierweiterung „.js“, z.B. „C:\nodejsmysql\createtable.js“ oder „/home/username/nodejsmysql/createtable.js“.

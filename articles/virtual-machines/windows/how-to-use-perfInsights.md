@@ -149,7 +149,7 @@ Führt ein regelbasiertes Modul im Hintergrund aus, um Daten zu sammeln und akut
 > [!NOTE] 
 > Derzeit werden Windows-Versionen unterstützt, die .NET Framework 3.5 oder höher beinhalten.
 
-### <a name="performance-counter-trace-"></a>Leistungsindikator-Ablaufverfolgung (**)
+### <a name="performance-counter-trace-"></a>Leistungsindikator - Ablaufverfolgung (\*\*)
 
 Die Methode erfasst die folgenden Leistungsindikatoren:
 

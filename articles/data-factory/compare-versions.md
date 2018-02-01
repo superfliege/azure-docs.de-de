@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 83065e6cacd784a3914cfac3ff2552a712688366
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 673bc4e0d1609e445e3d18e7cf516ad532be4bc2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Vergleich von Azure Data Factory V1 und V2
 In diesem Artikel wird Azure Data Factory V2 mit V1 verglichen. Eine Einführung in V1 finden Sie unter [Einführung in Azure Data Factory](v1/data-factory-introduction.md). Eine Einführung in V2 finden Sie [hier](introduction.md).
@@ -86,7 +86,7 @@ Verwenden Sie Azure-SSIS, wenn Sie Ihre SSIS-Workloads in die Cloud verschieben,
 
 Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit virtuellen Azure-Computern (Knoten), die speziell für die Ausführung von SSIS-Paketen in der Cloud bestimmt sind. Nach dem Bereitstellen einer Azure-SSIS-Integrationslaufzeit können Sie die gleichen Tools verwenden, die Sie auch zum Bereitstellen von SSIS-Paketen in einer lokalen SSIS-Umgebung verwenden. 
 
-So können Sie beispielsweise SQL Server Data Tools oder SQL Server Management Studio verwenden, um SSIS-Pakete für diese Runtime in Azure bereitzustellen. Eine Schritt-für-Schritt-Anleitung finden Sie im Tutorial [Bereitstellen von SQL Server Integration Services-Paketen in Azure](tutorial-deploy-ssis-packages-azure.md). 
+So können Sie beispielsweise SQL Server Data Tools oder SQL Server Management Studio verwenden, um SSIS-Pakete für diese Runtime in Azure bereitzustellen. Eine Schritt-für-Schritt-Anleitung finden Sie im Tutorial [Bereitstellen von SQL Server Integration Services-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md). 
 
 ## <a name="flexible-scheduling"></a>Flexible Zeitplanung
 In Data Factory V2 müssen Sie keine Zeitpläne für die Datasetverfügbarkeit definieren. Sie können eine Triggerressource definieren, mit der Pipelines über ein Taktplaner-Paradigma geplant werden können. Sie können auch Parameter über einen Trigger an Pipelines übergeben, um ein flexibles Modell für die Zeitplanung und Ausführung zu erhalten. 

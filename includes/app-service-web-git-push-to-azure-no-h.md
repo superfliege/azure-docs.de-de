@@ -1,4 +1,4 @@
-Fügen Sie Ihrem lokalen Git-Repository im lokalen Terminalfenster einen Azure-Remotespeicherort hinzu. Dieser Azure-Remotespeicherort wurde für Sie in [Web-App erstellen](#create-a-web-app) erstellt.
+Fügen Sie Ihrem lokalen Git-Repository im lokalen Terminalfenster einen Azure-Remotespeicherort hinzu. Ersetzen Sie _&lt;paste\_copied\_url\_here>_ durch die URL des Git-Remotespeicherorts, die Sie aus [Erstellen einer Web-App](#create) gespeichert haben.
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>

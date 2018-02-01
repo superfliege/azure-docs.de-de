@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/16/2017
 ms.author: iainfou
-ms.openlocfilehash: 614c7c82aabab212753529a21d7a770b7a02027e
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 201b752c2a79362f2e049d2e0f0b953d77aaedfe
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Erstellen einer VM-Skalierungsgruppe per Azure CLI 2.0
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung gemäß CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Artikel zu den ersten Schritten erstellen Sie mit einer Azure Resource Manager-Vorlage eine VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe auch per [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md), [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) oder mit dem [Azure-Portal](virtual-machine-scale-sets-create-portal.md) erstellen.
@@ -38,7 +38,7 @@ Mit einer Vorlage wird die Konfiguration für die einzelnen Ressourcentypen defi
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | Zu erstellender Azure-Ressourcentyp                            | Microsoft.Compute/virtualMachineScaleSets |
 | name                         | Name der Skalierungsgruppe                                       | myScaleSet                                |
-| location                     | Standort für die Erstellung der Skalierungsgruppe                     | USA, Osten                                   |
+| location                     | Standort für die Erstellung der Skalierungsgruppe                     | USA (Ost)                                   |
 | sku.name                     | VM-Größe für die einzelnen Skalierungsgruppeninstanzen                  | Standard_A1                               |
 | sku.capacity                 | Anzahl von VM-Instanzen für die anfängliche Erstellung           | 2                                         |
 | upgradePolicy.mode           | Upgrademodus für VM-Instanz bei Auftreten von Änderungen              | Automatisch                                 |
@@ -175,7 +175,7 @@ az group deployment create \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```
 
-Wenn Sie Ihre App in Aktion sehen möchten, können Sie die öffentliche IP-Adresse des Lastenausgleichsmoduls wie folgt mit dem Befehl [az network public-ip list](/cli/azure/network/public-ip#show) abrufen:
+Wenn Sie Ihre App in Aktion sehen möchten, können Sie die öffentliche IP-Adresse des Lastenausgleichsmoduls wie folgt mit dem Befehl [az network public-ip list](/cli/azure/network/public-ip#az_network_public_ip_show) abrufen:
 
 ```azurecli-interactive
 az network public-ip list \
@@ -213,7 +213,7 @@ Geben Sie die öffentliche IP-Adresse des Lastenausgleichsmoduls in einem Webbro
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn die Ressourcengruppe, die Skalierungsgruppe und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie wie folgt mit dem Befehl [az group delete](/cli/azure/group#delete) entfernen:
+Wenn die Ressourcengruppe, die Skalierungsgruppe und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie wie folgt mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

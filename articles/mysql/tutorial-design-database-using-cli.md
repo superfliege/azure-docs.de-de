@@ -6,20 +6,20 @@ author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: mysql
+ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.custom: mvc
-ms.openlocfilehash: 2d23c37688ab7f19beba920f7ddd4043cd117503
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5f323086ce66a504188c1834d20873a52a990311
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="design-your-first-azure-database-for-mysql-database"></a>Entwerfen Ihrer ersten Azure-Datenbank für MySQL
+# <a name="design-your-first-azure-database-for-mysql-database"></a>Entwerfen Ihrer ersten Azure Database for MySQL-Datenbank
 
-Azure-Datenbank für MySQL ist ein relationaler Datenbankdienst in der Microsoft Cloud, der auf dem MySQL Community Edition-Datenbankmodul basiert. In diesem Tutorial verwenden Sie die Azure CLI (Befehlszeilenschnittstelle) und andere Hilfsprogramme, um zu lernen, wie Sie Folgendes ausführen:
+Azure Database for MySQL ist ein relationaler Datenbankdienst in der Microsoft Cloud, der auf der MySQL Community Edition-Datenbank-Engine basiert. In diesem Tutorial verwenden Sie die Azure CLI (Befehlszeilenschnittstelle) und andere Hilfsprogramme, um zu lernen, wie Sie Folgendes ausführen:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure-Datenbank für MySQL
@@ -50,7 +50,7 @@ Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `mycliresource` a
 az group create --name mycliresource --location westus
 ```
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen einer Azure-Datenbank für MySQL-Server
+## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Servers für Azure-Datenbank für MySQL
 Erstellen Sie mit dem Befehl „az mysql server create“ einen Azure-Datenbank für MySQL-Server. Ein Server kann mehrere Datenbanken verwalten. In der Regel wird für jedes Projekt oder jeden Benutzer eine separate Datenbank verwendet.
 
 Das folgende Beispiel erstellt eine Azure-Datenbank für MySQL-Server in `westus` in der Ressourcengruppe `mycliresource` mit dem Namen `mycliserver`. Der Server verfügt über ein Administratorprotokoll mit dem Namen `myadmin` und dem Kennwort `Password01!`. Der Server wird mit der Leistungsebene **Basic** und **50** Compute-Einheiten erstellt, die von allen Datenbanken auf dem Server gemeinsam genutzt werden. Sie können Computeleistung und Speicher gemäß den Anwendungsanforderungen nach oben oder unten skalieren.

@@ -3,8 +3,8 @@ title: "Übersicht über Azure Batch für Entwickler | Microsoft-Dokumentation"
 description: Lernen Sie die Features des Batch-Diensts und seiner APIs aus der Sicht eines Entwicklers kennen.
 services: batch
 documentationcenter: .net
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 editor: 
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 11/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22c5597cf14f27671667176dce8782cf0c79918d
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 2afbc64519887f110c0213a4f565b4ef1317e26e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -242,7 +242,7 @@ Die Auftragsplanung erfolgt über Pools hinweg unabhängig. Poolübergreifend wi
 ### <a name="scheduled-jobs"></a>Geplante Aufträge
 Mit [Auftragszeitplänen][rest_job_schedules] können Sie wiederkehrende Aufträge im Batch-Dienst erstellen. Ein Auftragszeitplan gibt an, wann Aufträge ausgeführt werden, und enthält die Spezifikationen für die auszuführenden Aufträge. Sie können die Dauer des Zeitplans festlegen (also wann und für wie lange der Zeitplan in Kraft sein soll) und angeben, wie oft während des geplanten Zeitraums Aufträge erstellt werden sollen.
 
-## <a name="task"></a>Task
+## <a name="task"></a>Aufgabe
 Ein Task ist eine Berechnungseinheit, die einem Auftrag zugeordnet ist. Er wird auf einem Knoten ausgeführt. Tasks werden einem Knoten zur Ausführung zugewiesen oder der Warteschlange hinzugefügt, bis ein Knoten verfügbar wird. Einfach ausgedrückt: Ein Task führt mindestens ein Programm oder Skript auf einem Computeknoten aus, um die erforderlichen Arbeitsschritte zu erledigen.
 
 Beim Erstellen eines Tasks können Sie Folgendes angeben:
@@ -263,7 +263,7 @@ Beim Erstellen eines Tasks können Sie Folgendes angeben:
 * Ein Verweis auf ein **Containerimage** in Docker Hub oder eine private Registrierung und zusätzliche Einstellungen zum Erstellen eines Docker-Containers, in dem die Aufgabe für den Knoten ausgeführt wird. Diese Informationen werden nur angegeben, wenn der Pool mit einer Containerkonfiguration eingerichtet ist.
 
 > [!NOTE]
-> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt sieben Tage. Abgeschlossene Tasks bleiben unbegrenzt lange erhalten. Daten für Tasks, die nicht innerhalb der maximale Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
+> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt sieben Tage. Abgeschlossene Tasks bleiben unbegrenzt lange erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 
 Zusätzlich zu Tasks, die Sie zur Berechnung auf einem Knoten definieren, werden vom Batch-Dienst die folgenden speziellen Tasks bereitgestellt:
 

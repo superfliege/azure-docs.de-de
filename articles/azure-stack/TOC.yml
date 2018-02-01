@@ -45,7 +45,7 @@
           items:
             - name: Netzwerkintegration
               href: azure-stack-network.md
-            - name: Border-Konnektivität
+            - name: Grenzkonnektivität
               href: azure-stack-border-connectivity.md
             - name: DNS-Integration
               href: azure-stack-integrate-dns.md

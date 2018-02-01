@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 07/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0c58bd764cf0fdacd55675f8343c6e7481a11823
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 04b5d158c636668a726e046e4f471b452e31ff0d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Tutorial für Azure Containerdienst – DC/OS verwalten
 
@@ -33,7 +33,7 @@ Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. F�
 
 ## <a name="create-dcos-cluster"></a>Erstellen eines DC/OS-Clusters
 
-Erstellen Sie zunächst mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie zunächst mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *westeurope*.
 
@@ -41,7 +41,7 @@ Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGr
 az group create --name myResourceGroup --location westeurope
 ```
 
-Erstellen Sie als Nächstes einen DC/OS-Cluster mit dem Befehl [az acs create](/cli/azure/acs#create).
+Erstellen Sie als Nächstes einen DC/OS-Cluster mit dem Befehl [az acs create](/cli/azure/acs#az_acs_create).
 
 Das folgende Beispiel erstellt einen DC/OS-Cluster mit dem Namen *MyDCOSCluster* und SSH-Schlüssel, falls diese nicht bereits vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  
 
@@ -119,7 +119,7 @@ Führen Sie den folgenden Befehl aus, um die Ausführung der Anwendung auf dem D
 dcos marathon app add marathon-app.json
 ```
 
-Um den Bereitstellungsstatus für die App anzuzeigen, führen Sie den folgenden Befehl aus.
+Um den Bereitstellungsstatus der App anzuzeigen, führen Sie den folgenden Befehl aus.
 
 ```azurecli
 dcos marathon app list
@@ -239,13 +239,13 @@ Wenn Sie zu dieser Adresse navigieren, wird die Standard-NGINX-Website zurückge
 
 In den vorherigen Beispielen wurde eine Anwendung auf mehreren Instanzen skaliert. Die DC/OS-Infrastruktur kann auch für die Bereitstellung von mehr oder weniger Rechenkapazität skaliert werden. Dies erfolgt mit dem Befehl [az acs scale](). 
 
-Um die aktuelle Anzahl von DC/OS-Agents anzuzeigen, verwenden Sie den Befehl [az acs show](/cli/azure/acs#show).
+Um die aktuelle Anzahl von DC/OS-Agents anzuzeigen, verwenden Sie den Befehl [az acs show](/cli/azure/acs#az_acs_show).
 
 ```azurecli
 az acs show --resource-group myResourceGroup --name myDCOSCluster --query "agentPoolProfiles[0].count"
 ```
 
-Um die Anzahl auf 5 zu erhöhen, verwenden Sie den Befehl [az acs scale](/cli/azure/acs#scale). 
+Um die Anzahl auf 5 zu erhöhen, verwenden Sie den Befehl [az acs scale](/cli/azure/acs#az_acs_scale). 
 
 ```azurecli
 az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-count 5
@@ -253,7 +253,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 ## <a name="delete-dcos-cluster"></a>Löschen eines DC/OS-Clusters
 
-Mit dem Befehl [az group delete](/cli/azure/group#delete) können Sie die Ressourcengruppe, das DC/OS-Cluster und alle dazugehörigen Ressourcen entfernen, wenn sie nicht mehr benötigt werden.
+Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie die Ressourcengruppe, das DC/OS-Cluster und alle dazugehörigen Ressourcen entfernen, wenn sie nicht mehr benötigt werden.
 
 ```azurecli 
 az group delete --name myResourceGroup --no-wait

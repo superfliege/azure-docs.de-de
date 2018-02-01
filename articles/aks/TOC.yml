@@ -57,8 +57,6 @@
           href: azure-disks-dynamic-pv.md
         - name: Azure Files – persistentes Volume
           href: azure-files-dynamic-pv.md
-        - name: Azure Files – Volume
-          href: azure-files.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

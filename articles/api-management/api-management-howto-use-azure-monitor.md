@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: bdca9d4968e9e68314f350787907f15e417821f7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: db1ed08c4d4c9e9abd525ec13f5511da82ee1fe4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -40,8 +40,8 @@ Im folgenden Video wird die Überwachung von API Management mithilfe von Azure M
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Absolvieren Sie das folgende Schnellstarttutorial: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
-+ Schließen Sie darüber hinaus das folgende Tutorial ab: [Import and publish your first API](import-and-publish.md) (Importieren und Veröffentlichen Ihrer ersten API).
++ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
++ Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -56,7 +56,8 @@ Sie können in Ihrem API Management-Dienst auf Aktivitätsprotokolle oder in Azu
 
 So zeigen Sie Aktivitätsprotokolle an:
 
-1. Klicken Sie in Ihrer **API Management**-Instanz auf **Aktivitätsprotokoll**.
+1. Wählen Sie Ihre APIM-Dienstinstanz aus.
+2. Klicken Sie auf **Aktivitätsprotokoll**.
 
 ## <a name="view-diagnostic-logs"></a>Anzeigen von Diagnoseprotokollen
 
@@ -64,7 +65,8 @@ Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, di
 
 So greifen Sie auf Diagnoseprotokolle zu:
 
-1. Klicken Sie in Ihrer **API Management**-Instanz auf **Diagnoseprotokoll**.
+1. Wählen Sie Ihre APIM-Dienstinstanz aus.
+2. Klicken Sie auf **Diagnoseprotokoll**.
 
 ## <a name="view-metrics-of-your-apis"></a>Anzeigen von Metriken Ihrer API
 

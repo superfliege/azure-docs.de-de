@@ -15,19 +15,21 @@ ms.topic: quickstart
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b4cde427115df5bb7cd80acd676c6788ff3a379e
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 6ce5d49fe4e58b3c89c09ef80d563d001a4abb41
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Erstellen einer ASP.NET Framework-Web-App in Azure
 
-[Azure-Web-Apps](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching.  Dieser Schnellstart veranschaulicht die Bereitstellung Ihrer ersten ASP.NET-Web-App in Azure-Web-Apps. Am Ende verfügen Sie über eine Ressourcengruppe, die einen App Service-Plan und eine Azure-Web-App mit einer bereitgestellten Webanwendung umfasst.
+[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching.  Dieser Schnellstart veranschaulicht die Bereitstellung Ihrer ersten ASP.NET-Web-App in Azure-Web-Apps. Am Ende verfügen Sie über eine Ressourcengruppe, die einen App Service-Plan und eine Azure-Web-App mit einer bereitgestellten Webanwendung umfasst.
 
 Sehen Sie sich das Video an, um diese Schnellstartanleitung in Aktion zu erleben, und führen Sie dann selbst die Schritte aus, um Ihre erste .NET-App in Azure zu veröffentlichen.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,8 +40,6 @@ Für dieses Tutorial benötigen Sie Folgendes:
     - **Azure-Entwicklung**
 
     ![ASP.NET und Webentwicklung und Azure-Entwicklung (unter „Web und Cloud“)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-an-aspnet-web-app"></a>Erstellen einer ASP.NET-Web-App
 
@@ -102,10 +102,10 @@ Verwenden Sie im Dialogfeld **App Service-Plan konfigurieren** die in der Tabell
 
 ![App Service-Plan erstellen](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
 
-| Einstellung | Empfohlener Wert | Beschreibung |
+| Einstellung | Empfohlener Wert | BESCHREIBUNG |
 |-|-|-|
 |App Service-Plan| myAppServicePlan | Name des App Service-Plans. |
-| Ort | Westeuropa | Das Rechenzentrum, in dem die Web-App gehostet wird. |
+| Speicherort | Europa, Westen | Das Rechenzentrum, in dem die Web-App gehostet wird. |
 | Größe | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bestimmt die Hostingfeatures. |
 
 Klicken Sie auf **OK**.

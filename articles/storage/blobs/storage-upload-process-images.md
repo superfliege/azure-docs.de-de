@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 8d187e51cbb391ee1f34fb5934c8ae1868bb6244
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: eae23bed2792e41f73c22658d238e2b03beba17b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Hochladen von Bilddaten in die Cloud mit Azure Storage
 
@@ -42,7 +42,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe 
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
  
 Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` erstellt.
  
@@ -69,7 +69,7 @@ az storage account create --name <blob_storage_account> \
  
 Die App verwendet zwei Container im Blob Storage-Konto. Container ähneln Ordnern und werden zum Speichern von Blobs verwendet. In den Container _images_ lädt die App Bilder mit voller Auflösung hoch. In einem späteren Teil der Serie lädt eine Azure-Funktions-App Miniaturansichten der Bilder mit geänderter Größe in den Container _thumbs_ hoch. 
 
-Rufen Sie mit dem Befehl [az storage account keys list](/cli/azure/storage/account/keys#list) den Speicherkontoschlüssel ab. Sie verwenden diesen Schlüssel dann zum Erstellen von zwei Containern mit dem Befehl [az storage container create](/cli/azure/storage/container#az_storage_container_create).  
+Rufen Sie mit dem Befehl [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) den Speicherkontoschlüssel ab. Sie verwenden diesen Schlüssel dann zum Erstellen von zwei Containern mit dem Befehl [az storage container create](/cli/azure/storage/container#az_storage_container_create).  
  
 In diesem Fall ist „`<blob_storage_account>`“ der Name des Blob Storage-Kontos, das Sie erstellt haben. Der öffentliche Zugriff des Containers _images_ ist auf `off` festgelegt, der öffentliche Zugriff des Containers _thumbs_ auf `container`. Die Einstellung `container` für den öffentlichen Zugriff ermöglicht die Anzeige der Miniaturansichten durch Personen, die die Webseite besuchen.
  

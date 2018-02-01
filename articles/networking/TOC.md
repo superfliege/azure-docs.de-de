@@ -1,6 +1,6 @@
 # Übersicht
 ## [Informationen zu Azure-Netzwerken](networking-overview.md)
-## Architektur
+## Architecture
 ### [Virtuelle Datencenter](networking-virtual-datacenter.md)
 ### [Asymmetrisches Routing mit mehreren Netzwerkpfaden](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Sichere Netzwerkdesigns](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
@@ -24,7 +24,7 @@
 ### [Lokal verbinden – dediziert](../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # Erste Schritte
-## [Erstellen Ihres ersten virtuellen Netzwerks](../virtual-network/virtual-network-get-started-vnet-subnet.md?toc=%2fazure%2fnetworking%2ftoc.json)
+## [Erstellen Ihres ersten virtuellen Netzwerks](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # Anleitung
 ## Internetkonnektivität
@@ -49,21 +49,21 @@
 ### [IP-Datenflussüberprüfung für einen virtuellen Computer](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Beispielskripts
-### [Azure-Befehlszeilenschnittstelle](cli-samples.md)
+### [Azure-CLI](cli-samples.md)
 ### [Azure PowerShell](powershell-samples.md)
 
-## Lernprogramme
+## Tutorials
 ### [Lastenausgleich für virtuelle Computer](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Verbinden eines Computers mit einem virtuellen Netzwerk](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
-# Referenz
-## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network)
+# Verweis
+## [Azure-CLI](https://docs.microsoft.com/cli/azure/network)
 ## [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/?view=azurermps-3.8.0)
 ## [.Net](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.network?view=azuremgmtnetwork-9.1.0-preview)
 ## [Node.js](https://azure.microsoft.com/develop/nodejs/#azure-sdk)
 ## [REST](https://msdn.microsoft.com/library/mt163658.aspx)
 
-# Ressourcen
+# angeben
 ## [Verfassen von Vorlagen](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Communityvorlagen](https://azure.microsoft.com/resources/templates/)
@@ -71,6 +71,6 @@
 ## [Preise](https://azure.microsoft.com/pricing)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 ## [Videos](https://azure.microsoft.com/resources/videos/index/?services=virtual-network)
 

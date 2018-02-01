@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 222bfa1c3070fa4634cf5c48d934a6387c48a4b0
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 8794ea7d998293e7ea88ba780f67ef8a021f2298
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Erstellen einer VM-Skalierungsgruppe per Azure CLI 2.0
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung gemäß CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Artikel zu den ersten Schritten erstellen Sie eine VM-Skalierungsgruppe per Azure CLI 2.0. Sie können eine Skalierungsgruppe auch per [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) oder mit dem [Azure-Portal](virtual-machine-scale-sets-create-portal.md) erstellen.
@@ -32,13 +32,13 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#create) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, und es werden SSH-Schlüssel generiert, falls sie noch nicht vorhanden sind:
+Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#az_vmss_create) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, und es werden SSH-Schlüssel generiert, falls sie noch nicht vorhanden sind:
 
 ```azurecli-interactive 
 az vmss create \
@@ -70,7 +70,7 @@ az vmss extension set \
 
 
 ## <a name="allow-web-traffic"></a>Zulassen von Webdatenverkehr
-Damit Datenverkehr den Webserver erreicht, erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#create) eine Regel für den Lastenausgleich. Im folgenden Beispiel wird eine Regel namens *myLoadBalancerRuleWeb* erstellt:
+Damit Datenverkehr den Webserver erreicht, erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) eine Regel für den Lastenausgleich. Im folgenden Beispiel wird eine Regel namens *myLoadBalancerRuleWeb* erstellt:
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -86,7 +86,7 @@ az network lb rule create \
 
 
 ## <a name="test-your-web-server"></a>Testen des Webservers
-Um den Webserver in Aktion zu sehen, rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#show) die öffentliche IP-Adresse des Lastenausgleichsmoduls ab. Im folgenden Beispiel wird die IP-Adresse für *myScaleSetLBPublicIP* abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
+Um den Webserver in Aktion zu sehen, rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) die öffentliche IP-Adresse des Lastenausgleichsmoduls ab. Im folgenden Beispiel wird die IP-Adresse für *myScaleSetLBPublicIP* abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -102,7 +102,7 @@ Geben Sie die öffentliche IP-Adresse des Lastenausgleichsmoduls in einen Webbro
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn die Ressourcengruppe, die Skalierungsgruppe und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie wie folgt mit dem Befehl [az group delete](/cli/azure/group#delete) entfernen:
+Wenn die Ressourcengruppe, die Skalierungsgruppe und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie wie folgt mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

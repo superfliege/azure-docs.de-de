@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 08/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 180a476445760930ab4f3505e0e6e9474e404445
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 05e6dbfbae3efd1dee39b87f32440b73da069f91
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-docker-swarm-cluster"></a>Bereitstellen eines Docker Swarm-Clusters
 
@@ -25,7 +25,7 @@ Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.4 der Azure-
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *westus* erstellt.
 
@@ -50,7 +50,7 @@ Ausgabe:
 
 ## <a name="create-docker-swarm-cluster"></a>Erstellen eines Docker Swarm-Clusters
 
-Erstellen Sie in Azure Container Service mit dem Befehl [az acs create](/cli/azure/acs#create) einen Docker Swarm-Cluster. 
+Erstellen Sie in Azure Container Service mit dem Befehl [az acs create](/cli/azure/acs#az_acs_create) einen Docker Swarm-Cluster. 
 
 Im folgenden Beispiel wird ein Cluster namens *mySwarmCluster* mit einem Linux-Masterknoten und drei Linux-Agent-Knoten erstellt.
 
@@ -58,7 +58,7 @@ Im folgenden Beispiel wird ein Cluster namens *mySwarmCluster* mit einem Linux-M
 az acs create --name mySwarmCluster --orchestrator-type Swarm --resource-group myResourceGroup --generate-ssh-keys
 ```
 
-Manchmal hat ein Azure-Abonnement eingeschränkten Zugriff auf Azure-Ressourcen. Dies ist beispielsweise bei einem eingeschränkten Testabonnement der Fall. Tritt bei der Bereitstellung ein Fehler aufgrund von begrenzt verfügbaren Kernen auf, verringern Sie die Anzahl der Standard-Agents, indem Sie `--agent-count 1` zum Befehl [az acs create](/cli/azure/acs#create) hinzufügen. 
+Manchmal hat ein Azure-Abonnement eingeschränkten Zugriff auf Azure-Ressourcen. Dies ist beispielsweise bei einem eingeschränkten Testabonnement der Fall. Tritt bei der Bereitstellung ein Fehler aufgrund von begrenzt verfügbaren Kernen auf, verringern Sie die Anzahl der Standard-Agents, indem Sie `--agent-count 1` zum Befehl [az acs create](/cli/azure/acs#az_acs_create) hinzufügen. 
 
 Nach einigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben.
 
@@ -145,7 +145,7 @@ Navigieren Sie zur IP-Adresse des Swarm-Agent-Pools, um die Azure Vote-Anwendung
 ![Abbildung der Navigation zu Azure Vote](media/container-service-docker-swarm-mode-walkthrough/azure-vote.png)
 
 ## <a name="delete-cluster"></a>Löschen von Clustern
-Wenn der Cluster nicht mehr benötigt wird, können Sie mit dem Befehl [az group delete](/cli/azure/group#delete) die Ressourcengruppe, den Containerdienst und alle zugehörigen Ressourcen entfernen.
+Wenn der Cluster nicht mehr benötigt wird, können Sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) die Ressourcengruppe, den Containerdienst und alle zugehörigen Ressourcen entfernen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2017
+ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: a5d446986f810993d65c7e73eb95eeb2283c39a3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 2b4c6128d9b50f200a40c8d96faede1e80fbee9e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="filesystem-operations-on-azure-data-lake-store-using-net-sdk"></a>Dateisystemvorgänge in Azure Data Lake Store per .NET SDK
 > [!div class="op_single_selector"]
@@ -48,11 +48,11 @@ Das auf [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-g
 
    | Eigenschaft | Wert |
    | --- | --- |
-   | Kategorie |Vorlagen/Visual C#/Windows |
+   | Category (Kategorie) |Vorlagen/Visual C#/Windows |
    | Vorlage |Konsolenanwendung |
-   | Name |CreateADLApplication |
+   | NAME |CreateADLApplication |
 
-4. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+4. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 5. Fügen Sie Ihrem Projekt die NuGet-Pakete hinzu.
 
@@ -85,7 +85,7 @@ Das auf [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-g
         {
             class Program
             {
-                private static string _adlsAccountName = "<DATA-LAKE-STORE-NAME>"; //Replace this value with the name of your existing Data Lake Store account.        
+                private static string _adlsAccountName = "<DATA-LAKE-STORE-NAME>.azuredatalakestore.net";        
             }
         }
 
@@ -180,4 +180,4 @@ Hier sind zwei Beispiele für die Nutzung des Data Lake Store-Dateisystem-SDK an
 * [Data Lake Store .NET SDK Reference (Referenz zum Data Lake Store .NET SDK)](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
+* [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)

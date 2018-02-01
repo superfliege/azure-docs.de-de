@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: 926b78bbe1ec8efaf6529a084af47747325f6096
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: f9692156fa2c1eaf9d3a617d339cdbc210bf6dd1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -120,7 +120,7 @@ $location = "westus"
 
 # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Wenn Sie eine neue Ressourcengruppe über die Azure-Befehlszeilenschnittstelle erstellen möchten, verwenden Sie den Befehl [az group create](/cli/azure/group#create). 
+Wenn Sie eine neue Ressourcengruppe über die Azure-Befehlszeilenschnittstelle erstellen möchten, verwenden Sie den Befehl [az group create](/cli/azure/group#az_group_create). 
 
 ```azurecli-interactive
 az group create \
@@ -128,7 +128,7 @@ az group create \
     --location westus
 ```
 
-Falls Sie nicht wissen, welche Region Sie für den `--location`-Parameter angeben sollen, können Sie mit dem Befehl [az account list-locations](/cli/azure/account#list) eine Liste der unterstützten Regionen für Ihr Abonnement abrufen.
+Falls Sie nicht wissen, welche Region Sie für den `--location`-Parameter angeben sollen, können Sie mit dem Befehl [az account list-locations](/cli/azure/account#az_account_list) eine Liste der unterstützten Regionen für Ihr Abonnement abrufen.
 
 ```azurecli-interactive
 az account list-locations \
@@ -196,7 +196,7 @@ Fügen Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ m
 
 # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Verwenden Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ über die Azure CLI mit lokal redundantem Speicher den Befehl [az storage account create](/cli/azure/storage/account#create).
+Verwenden Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ über die Azure CLI mit lokal redundantem Speicher den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create).
 
 ```azurecli-interactive
 az storage account create \
@@ -248,7 +248,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Verwenden Sie den Befehl [az group delete](/cli/azure/group#delete), um die Ressourcengruppe und die zugeordneten Ressourcen (einschließlich des neuen Speicherkontos) zu entfernen.
+Verwenden Sie den Befehl [az group delete](/cli/azure/group#az_group_delete), um die Ressourcengruppe und die zugeordneten Ressourcen (einschließlich des neuen Speicherkontos) zu entfernen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

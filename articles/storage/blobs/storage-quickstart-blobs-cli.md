@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: tamram
-ms.openlocfilehash: 7313df35baadf7aa6d476f44b113dc60e6845f4b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 1bb55c75c9929d995fc3ac0795fd1777d7fe4c5f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-cli"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit der Azure-Befehlszeilenschnittstelle
 
@@ -37,7 +37,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 Blobs werden immer in einen Container hochgeladen. Sie können Gruppen von Blobs ähnlich wie Dateien in Ordnern auf Ihrem Computer organisieren.
 
-Erstellen Sie mit dem Befehl [az storage container create](/cli/azure/storage/container#create) einen Container zum Speichern von Blobs.
+Erstellen Sie mit dem Befehl [az storage container create](/cli/azure/storage/container#az_storage_container_create) einen Container zum Speichern von Blobs.
 
 ```azurecli-interactive
 az storage container create --name mystoragecontainer
@@ -50,7 +50,7 @@ Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Die meisten Dateien,
 Erstellen Sie zunächst eine Datei für den Upload in ein Blob.
 Verwenden Sie bei Verwendung von Azure Cloud Shell Folgendes, um eine Datei zu erstellen: `vi helloworld`. Wenn die Datei geöffnet wird, drücken Sie **EINFG**, geben Sie „Hello world“ ein, drücken Sie **ESC**, geben Sie `:x` ein, und drücken Sie die **EINGABETASTE**.
 
-In diesem Beispiel laden Sie mithilfe des Befehls [az storage blob upload](/cli/azure/storage/blob#upload) ein Blob in den Container hoch, den Sie im letzten Schritt erstellt haben.
+In diesem Beispiel laden Sie mithilfe des Befehls [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) ein Blob in den Container hoch, den Sie im letzten Schritt erstellt haben.
 
 ```azurecli-interactive
 az storage blob upload \
@@ -70,11 +70,11 @@ az storage blob upload \
 
 Dabei wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, falls es bereits vorhanden ist. Laden Sie beliebig viele Dateien hoch, bevor Sie fortfahren.
 
-Wenn Sie mehrere Dateien gleichzeitig hochladen möchten, können Sie den Befehl [az storage blob upload-batch](/cli/azure/storage/blob#upload-batch) verwenden.
+Wenn Sie mehrere Dateien gleichzeitig hochladen möchten, können Sie den Befehl [az storage blob upload-batch](/cli/azure/storage/blob#az_storage_blob_upload_batch) verwenden.
 
 ## <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
-Sie können die Blobs im Container mit dem Befehl [az storage blob list](/cli/azure/storage/blob#list) auflisten.
+Sie können die Blobs im Container mit dem Befehl [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) auflisten.
 
 ```azurecli-interactive
 az storage blob list \
@@ -84,7 +84,7 @@ az storage blob list \
 
 ## <a name="download-a-blob"></a>Herunterladen eines Blobs
 
-Mit dem Befehl [az storage blob download](/cli/azure/storage/blob#download) können Sie das zuvor hochgeladene Blob herunterladen.
+Mit dem Befehl [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) können Sie das zuvor hochgeladene Blob herunterladen.
 
 ```azurecli-interactive
 az storage blob download \
@@ -109,7 +109,7 @@ azcopy \
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcen in der Ressourcengruppe, einschließlich des in dieser Schnellstartanleitung erstellten Speicherkontos, nicht mehr benötigen, löschen Sie die Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group#delete).
+Wenn Sie die Ressourcen in der Ressourcengruppe, einschließlich des in dieser Schnellstartanleitung erstellten Speicherkontos, nicht mehr benötigen, löschen Sie die Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group#az_group_delete).
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

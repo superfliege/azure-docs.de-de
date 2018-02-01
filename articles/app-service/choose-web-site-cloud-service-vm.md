@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 0dba36e5490af56debd3b64b20d39809cd5d5f81
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 627782d3d6dd9f2eeff1b79e9cf721f9a4eb4ac2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich
 ## <a name="overview"></a>Übersicht
@@ -49,7 +49,7 @@ In der folgenden Tabelle werden die Funktionen von App Service, Cloud Services, 
 | Hosten der Web- oder Webdienstebene einer mehrschichtigen Architektur |X |X |X |X | |
 | Hosten der mittleren Ebene einer mehrschichtigen Architektur |X |X |X |X |App Service kann problemlos für das Hosten einer REST-API der mittleren Ebene genutzt werden, über die Funktion [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) können Hintergrundverarbeitungsaufträge gehostet werden. Sie können WebJobs auf einer dedizierten Website ausführen, um eine unabhängige Skalierbarkeit für die entsprechende Ebene zu erzielen. |
 | Integrierte Unterstützung von MySQL-as-a-Service |X |X | | | |
-| Unterstützung von ASP.NET, klassischem ASP, Node.js, PHP, Python |X |X |X |X |Service Fabric unterstützt die Erstellung eines Web-Front-Ends mit [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md). Zudem können Sie jede Art von Anwendung (Node.js, Java usw.) als [ausführbare Gastanwendungsdatei](../service-fabric/service-fabric-deploy-existing-app.md) bereitstellen. |
+| Unterstützung von ASP.NET, klassischem ASP, Node.js, PHP, Python |X |X |X |X |Service Fabric unterstützt die Erstellung eines Web-Front-Ends mit [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md). Zudem können Sie jede Art von Anwendung (Node.js, Java usw.) als [ausführbare Gastanwendungsdatei](../service-fabric/service-fabric-deploy-existing-app.md) bereitstellen. |
 | Horizontale Skalierung auf mehrere Instanzen ohne erneute Bereitstellung |X |X |X |X |Bei virtuellen Computern ist eine horizontale Skalierung auf mehrere Instanzen möglich. Die Dienste, die auf diesen Computern ausgeführt werden, müssen jedoch so geschrieben werden, dass sie diese horizontale Skalierung unterstützen. Sie müssen einen Lastenausgleich konfigurieren, um Anforderungen über die Computer weiterzuleiten. Zudem müssen Sie eine Affinitätsgruppe erstellen, um gleichzeitigen Neustarts aller Instanzen aufgrund von Wartungs- oder Hardware-Fehlern vorzubeugen. |
 | SSL-Unterstützung |X |X |X |X |Für App Service-Web-Apps wird SSL für benutzerdefinierte Domänen nur in den Modi "Basic" und "Standard" unterstützt. Weitere Informationen zur Verwendung von SSL mit Web-Apps finden Sie unter [Konfigurieren eines SSL-Zertifikats für eine Azure-Website](app-service-web-tutorial-custom-ssl.md). |
 | Visual Studio-Integration |X |X |X |X | |

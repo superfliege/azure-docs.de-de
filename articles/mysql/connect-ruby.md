@@ -6,16 +6,16 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: mysql
+ms.service: mysql-database
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 09/22/2017
-ms.openlocfilehash: 10f774262015cb19e158a687138b4618ce50063b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 821138f2f80d985a400c3148eeb348c06f97ee4a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von Ruby zum Verbinden und Abfragen von Daten
 In diesem Schnellstart wird gezeigt, wie Sie eine Verbindung mit einer Azure-Datenbank für MySQL per [Ruby](https://www.ruby-lang.org)-Anwendung und [mysql2](https://rubygems.org/gems/mysql2)-Gem auf Windows-, Ubuntu Linux- und Mac-Plattformen herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Ruby-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
@@ -59,7 +59,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 3. Klicken Sie auf den Servernamen **myserver4demo**.
 4. Wählen Sie die Seite **Eigenschaften** des Servers aus, und notieren Sie sich den **Servernamen** und **den Anmeldenamen des Serveradministrators**.
  ![Azure-Datenbank für MySQL – Anmeldename des Serveradministrators](./media/connect-ruby/1_server-properties-name-login.png)
-5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
+5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Anmeldenamen des Serveradministrators anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
 ## <a name="run-ruby-code"></a>Ausführen von Ruby-Code 
 1. Fügen Sie den Ruby-Code aus den Abschnitten unten in Textdateien ein, und speichern Sie dann die Dateien in einem Projektordner mit der Dateierweiterung „.rb“, z.B. `C:\rubymysql\createtable.rb` oder `/home/username/rubymysql/createtable.rb`.
