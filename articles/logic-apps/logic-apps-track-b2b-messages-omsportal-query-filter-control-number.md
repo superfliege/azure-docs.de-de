@@ -28,7 +28,7 @@ Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriter
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informationen zum Erstellen eines Integrationskontos finden Sie [hier](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Informationen zum Einrichten der Überwachung und Protokollierung für das Konto stehen [hier](../logic-apps/logic-apps-monitor-b2b-message.md) zur Verfügung.
+* Ein Integrationskonto, für das die Überwachung und Protokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen eines Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und das [Einrichten der Überwachung und Protokollierung für dieses Konto](../logic-apps/logic-apps-monitor-b2b-message.md).
 
 * [Veröffentlichen Sie Diagnosedaten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), und [richten Sie die Nachrichtennachverfolgung in der OMS ein](../logic-apps/logic-apps-track-b2b-messages-omsportal.md), sofern noch nicht geschehen.
 
@@ -64,7 +64,7 @@ In diesem Beispiel erfahren Sie, wie Sie anhand der Austauschkontrollnummer nach
 
    ![Auswählen von „Protokollsuche“ im OMS-Menü](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
-5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden in OMS mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Weitere Informationen zur Datensuche in Log Analytics finden Sie [hier](../log-analytics/log-analytics-log-searches.md).
+5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden in OMS mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Informieren Sie sich über das [Suchen nach Daten in Log Analytics](../log-analytics/log-analytics-log-searches.md).
 
    In diesem Beispiel wird nach Ereignissen mit **Type=AzureDiagnostics** gesucht.
 
