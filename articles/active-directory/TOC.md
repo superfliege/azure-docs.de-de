@@ -176,6 +176,16 @@
 ##### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 ##### [Grundlegendes zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
+### [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von SaaS-Apps](active-directory-saas-app-provisioning.md)
+#### [Tutorials für die App-Integration](active-directory-saas-tutorial-list.md)
+#### [Automatisieren der Bereitstellung in SCIM-fähigen Apps](active-directory-scim-provisioning.md)
+#### [Anpassen von Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md)
+#### [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+#### [Verwenden von Bereichsfiltern](active-directory-saas-scoping-filters.md)
+#### [Berichterstellung zur automatischen Benutzerbereitstellung](active-directory-saas-provisioning-reporting.md)
+#### [Problembehandlung bei der Benutzerbereitstellung](active-directory-application-provisioning-content-map.md)
+
+
 
 ### [Remotezugriff auf Apps mit dem Anwendungsproxy](active-directory-application-proxy-get-started.md)
 #### Erste Schritte
@@ -219,7 +229,7 @@
 #### [Erweiterte Zertifikatsignatur für SAML-Apps](active-directory-enterprise-apps-advance-certificate-options.md)
 #### [Ausblenden einer Anwendung auf der Benutzeroberfläche](active-directory-coreapps-hide-third-party-app.md)
 ### [Configure Sign-In Auto-Acceleration using HRD Policy (Konfigurieren der automatischen Anmeldebeschleunigung per HRD Policy)](active-directory-auto-acceleration-using-hrd.md)
-
+### [Migrieren von AD FS-Apps zu Azure AD](migrate-adfs-apps-to-azure.md)
 ### [Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md)
 #### [SSO-Zugriff](active-directory-appssoaccess-whatis.md)
 #### [Zertifikate für SSO](active-directory-sso-certs.md)
@@ -264,7 +274,8 @@
 
 ## Delegieren des Zugriffs auf Ressourcen
 ### [Administratorrollen](active-directory-assign-admin-roles-azure-portal.md)
-#### [Zuweisen von Administratorrollen](active-directory-users-assign-role-azure-portal.md)
+#### [Zuweisen der Administratorrolle zu einem Benutzer](active-directory-users-assign-role-azure-portal.md)
+#### [Vergleichen der Berechtigungen für Mitglieder und Gastbenutzer](users-default-permissions.md)
 ### [Verwaltungseinheiten](active-directory-administrative-units-management.md)
 ### [Konfigurieren der Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md)
 ### [Verwalten von Administratorkonten mit Notfallzugriff](active-directory-admin-manage-emergency-access-accounts.md)
@@ -321,8 +332,8 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## [Integrieren anderer Dienste in Azure AD]()
-### [Aktivieren der LinkedIn-Integration](linkedin-integration.md)
+## Integrieren anderer Dienste in Azure AD
+### [Integrieren von LinkedIn in Azure AD](linkedin-integration.md)
 
 ## [Bereitstellen von AD DS auf virtuellen Azure-Computern](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Windows Server Active Directory auf Azure-VMs](active-directory-deploying-ws-ad-guidelines.md)

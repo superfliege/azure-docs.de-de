@@ -4,7 +4,7 @@
 # Schnellstarts
 ## [Erstellen einer Instanz – Portal](get-started-create-service-instance.md)
 ## [Erstellen einer Instanz – PowerShell](powershell-create-service-instance.md)
-# Lernprogramme
+# Tutorials
 ## [1: Importieren Ihrer ersten API](import-and-publish.md)
 ## [2: Erstellen und Veröffentlichen eines Produkts](api-management-howto-add-products.md)
 ## [3: API-Modellantworten](mock-api-responses.md)
@@ -42,7 +42,7 @@
 ## Cache
 ### [Hinzufügen von Caching zur Verbesserung der Leistung](api-management-howto-cache.md)
 ## Schützen Ihres Back-Ends
-### [Schützen des Web-API-Back-Ends mit AAD](api-management-howto-protect-backend-with-aad.md)
+### [Schützen des Web-API-Back-Ends mit Azure AD](api-management-howto-protect-backend-with-aad.md)
 ### [Verbinden mit einem virtuellen Netzwerk](api-management-using-with-vnet.md)
 ### [Herstellen einer Verbindung mit einem internen virtuellen Netzwerk](api-management-using-with-internal-vnet.md)
 ### [Integration von Application Gateway in ein internes VNET](api-management-howto-integrate-internal-vnet-appgateway.md)
@@ -50,8 +50,8 @@
 ## Anpassen der Entwickleroberfläche
 ### [Ändern von Seiteninhalt und Layout](api-management-modify-content-layout.md)
 ### [Anpassen der Systemseiten mithilfe von Vorlagen](api-management-developer-portal-templates.md)
-### [Authentifizierung mit AAD](api-management-howto-aad.md)
-### [Authentifizierung mit AAD B2C](api-management-howto-aad-b2c.md)
+### [Authentifizierung mit Azure AD](api-management-howto-aad.md)
+### [Authentifizierung mit Azure AD B2C](api-management-howto-aad-b2c.md)
 ### [Delegierte Authentifizierung](api-management-howto-setup-delegation.md)
 ### [E-Mail-Benachrichtigungen und -Vorlagen](api-management-howto-configure-notifications.md)
 ### [Aktivieren der OAuth-Konsolenunterstützung](api-management-howto-oauth2.md)
@@ -93,12 +93,12 @@
 ### Integration mit Service Fabric
 #### [Übersicht](../service-fabric/service-fabric-api-management-overview.md)
 #### [Tutorial](../service-fabric/service-fabric-tutorial-deploy-api-management.md)
-# Referenz
+# Verweis
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [REST](/rest/api/apimanagement/)
 ## [REST (Original)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
-# Ressourcen
-## [Häufig gestellte Fragen](api-management-faq.md)
+# angeben
+## [HÄUFIG GESTELLTE FRAGEN](api-management-faq.md)
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
 ## [Leitfaden zum API-Design](https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json)
 ## [API-Implementierungsleitfaden](https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json)

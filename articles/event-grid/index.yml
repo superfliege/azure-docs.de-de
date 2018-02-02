@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Dokumentation zu Azure Event Grid
 metadata:
-  title: 'Dokumentation zu Azure Event Grid – Tutorials, API-Referenz'
+  title: "Dokumentation zu Azure Event Grid – Tutorials, API-Referenz"
   description: Reagieren Sie mit Azure Event Grid nahezu in Echtzeit auf wichtige Ereignisse in Azure-Diensten und anderen Diensten.
   services: event-grid
   author: czeumault
@@ -13,47 +13,65 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/10/2017
   ms.author: carolz
+  ms.openlocfilehash: 494cd1b862169998a15786b70a6c7d88f830613e
+  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 02/01/2018
 abstract:
-  description: 'Azure Event Grid ist ein vollständig verwalteter intelligenter Dienst für das Ereignisrouting, der eine einheitliche Ereignisnutzung mithilfe eines Veröffentlichen/Abonnieren-Modells ermöglicht. Reagieren Sie mit Azure Event Grid nahezu in Echtzeit auf wichtige Ereignisse in Azure-Diensten und anderen Diensten. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Event Grid verwenden.'
+  description: "Azure Event Grid ist ein vollständig verwalteter intelligenter Dienst für das Ereignisrouting, der eine einheitliche Ereignisnutzung mithilfe eines Veröffentlichen/Abonnieren-Modells ermöglicht. Reagieren Sie mit Azure Event Grid nahezu in Echtzeit auf wichtige Ereignisse in Azure-Diensten und anderen Diensten. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Event Grid verwenden."
 sections:
-  - title: Fünfminütige Schnellstarts
+- title: "Fünfminütige Schnellstarts"
+  items:
+  - type: paragraph
+    text: Erfahren Sie, wie Sie benutzerdefinierte Ereignisse erstellen und abonnieren.
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie benutzerdefinierte Ereignisse erstellen und abonnieren.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-grid/media/index/cli.svg
-            text: Azure-Befehlszeilenschnittstelle
-            href: /azure/event-grid/custom-event-quickstart
-          - image:
-              src: /azure/event-grid/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/event-grid/custom-event-quickstart-powershell
-          - image:
-              src: /azure/event-grid/media/index/portal.svg
-            text: Azure-Portal
-            href: /azure/event-grid/custom-event-quickstart-portal
-  - title: Schritt-für-Schritt-Tutorials
+    - image:
+        src: /azure/event-grid/media/index/cli.svg
+      text: Azure-Befehlszeilenschnittstelle
+      href: /azure/event-grid/custom-event-quickstart
+    - image:
+        src: /azure/event-grid/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/event-grid/custom-event-quickstart-powershell
+    - image:
+        src: /azure/event-grid/media/index/portal.svg
+      text: Azure-Portal
+      href: /azure/event-grid/custom-event-quickstart-portal
+  - type: paragraph
+    text: Hier erhalten Sie Informationen zum Routing von Blob Storage-Ereignissen.
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Anwendungen entwickeln, die auf Ereignisse reagieren.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Überwachen von Änderungen an virtuellen Computern mit Logik-Apps</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Ändern der Größe von hochgeladenen Bildern</a>
-          - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Integration von Azure Automation mit Event Grid</a>
-  - title: Referenz
+    - image:
+        src: /azure/event-grid/media/index/cli.svg
+      text: Azure-Befehlszeilenschnittstelle
+      href: /azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fevent-grid%2ftoc.json
+    - image:
+        src: /azure/event-grid/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
+- title: "Schritt-für-Schritt-Tutorials"
+  items:
+  - type: paragraph
+    text: Erfahren Sie, wie Sie Anwendungen entwickeln, die auf Ereignisse reagieren.
+  - type: list
+    style: ordered
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/cli/azure/eventgrid">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
-          - title: REST-APIs
-            html: <p><a href="/rest/api/eventgrid">REST</a></p>
-          - title: Schemas
-            html: <p><a href="/azure/event-grid/subscription-creation-schema ">Abonnementschema</a></p><p><a href="/azure/event-grid/event-schema">Ereignisschema</a></p>
+    - html: "<a href=\"/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app\">Überwachen von Änderungen an virtuellen Computern mit Logik-Apps</a>"
+    - html: "<a href=\"/azure/event-grid/resize-images-on-storage-blob-upload-event\">Ändern der Größe von hochgeladenen Bildern</a>"
+    - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Integration von Azure Automation mit Event Grid</a>
+- title: Verweis
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Befehlszeile
+      html: <p><a href="/cli/azure/eventgrid">Azure-CLI</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
+    - title: REST-APIs
+      html: <p><a href="/rest/api/eventgrid">REST</a></p>
+    - title: Schemas
+      html: <p><a href="/azure/event-grid/subscription-creation-schema ">Abonnementschema</a></p><p><a href="/azure/event-grid/event-schema">Ereignisschema</a></p>

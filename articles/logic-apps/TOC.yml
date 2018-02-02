@@ -62,25 +62,7 @@
         - name: Sichern Ihrer Logik-Apps
           href: logic-apps-securing-a-logic-app.md
         - name: Entwickeln benutzerdefinierter Connectors
-          items:
-            - name: Übersicht über benutzerdefinierte Connectors
-              href: custom-connector-overview.md
-            - name: Erstellen von Connectors aus Web-APIs
-              href: custom-connector-build-web-api-app-tutorial.md
-            - name: Sichere Connectors mit Azure AD
-              href: custom-connector-azure-active-directory-authentication.md
-            - name: Beschreiben von APIs mit Postman
-              href: custom-connector-api-postman-collection.md
-            - name: Erweitern von OpenAPI für benutzerdefinierte Connectors
-              href: custom-connector-openapi-extensions.md
-            - name: Erstellen und Registrieren eines OpenAPI-Connectors
-              href: logic-apps-custom-connector-register.md
-            - name: Erstellen und Registrieren eines SOAP-Connectors
-              href: logic-apps-soap-connector-create-register.md
-            - name: Zertifizieren Ihres Connectors
-              href: custom-connector-submit-certification.md
-            - name: Häufig gestellte Fragen zu benutzerdefinierten Connectors
-              href: custom-connector-faq.md
+          href: custom-connector-overview.md
         - name: Entwickeln von benutzerdefinierten APIs
           items:
             - name: Erstellen benutzerdefinierter APIs zur Verwendung mit Logik-Apps
@@ -140,6 +122,8 @@
           href: logic-apps-enterprise-integration-transform.md
         - name: Hinzufügen von Zuordnungen für die XML-Transformation
           href: logic-apps-enterprise-integration-maps.md
+        - name: Transformieren von JSON
+          href: logic-apps-enterprise-integration-liquid-transform.md
         - name: Hinzufügen von Sicherheitszertifikaten
           href: logic-apps-enterprise-integration-certificates.md
         - name: Problembehandlung für B2B-Fehler

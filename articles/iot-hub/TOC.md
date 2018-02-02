@@ -40,10 +40,11 @@
 
 # Anleitungen
 ## Plan
-### [IoT Hub und Event Hubs im Vergleich](iot-hub-compare-event-hubs.md)
+### [Vergleichen von IoT Hub und Event Hubs](iot-hub-compare-event-hubs.md)
 ### [Skalieren Ihrer Lösung](iot-hub-scaling.md)
 ### [Hochverfügbarkeit und Notfallwiederherstellung](iot-hub-ha-dr.md)
 ### [Unterstützung zusätzlicher Protokolle](iot-hub-protocol-gateway.md)
+### [Vergleichen von Nachrichten- und Ereignisrouting](iot-hub-event-grid-routing-comparison.md)
 ## [Entwickeln](iot-hub-how-to.md)
 ### [Entwicklerhandbuch](iot-hub-devguide.md)
 #### [D2C-Featureleitfaden](iot-hub-devguide-d2c-guidance.md)
@@ -51,6 +52,7 @@
 #### [Senden und Empfangen von Nachrichten](iot-hub-devguide-messaging.md)
 ##### [Senden von D2C-Nachrichten an IoT Hub](iot-hub-devguide-messages-d2c.md)
 ##### [Lesen von D2C-Nachrichten vom integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md)
+##### [Reagieren auf IoT Hub-Ereignisse](iot-hub-event-grid.md)
 ##### [Verwenden von benutzerdefinierten Endpunkten und Routingregeln für D2C-Nachrichten](iot-hub-devguide-messages-read-custom.md)
 ##### [Senden von C2D-Nachrichten von IoT Hub](iot-hub-devguide-messages-c2d.md)
 ##### [Erstellen und Lesen von IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md)

@@ -13,7 +13,7 @@
       href: quick-register-ea.md
     - name: Anzeigen von Kostendaten – CSP
       href: quick-register-csp.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1 – Nachverfolgen der Nutzung und der Kosten
       href: tutorial-review-usage.md
@@ -29,9 +29,13 @@
       href: understading-cost-reports.md
 - name: Anleitungen
   items:
+    - name: Aktivieren von Azure-Abonnements und -Konten
+      href: activate-subs-accounts.md
+    - name: Hinzufügen von erweiterten Metriken für virtuelle Computer
+      href: azure-vm-extended-metrics.md
     - name: Verwenden von Cost Management-Berichten
       href: use-reports.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Videos zur Kostenverwaltung
       href: ref-videos.md

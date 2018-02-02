@@ -41,6 +41,8 @@
           href: app-service-web-tutorial-nodejs-mongodb-app.md
         - name: Java mit MySQL
           href: app-service-web-tutorial-java-mysql.md
+        - name: Python mit PostgreSQL
+          href: app-service-web-tutorial-python-postgresql.md
     - name: '1: Erstellen einer RESTful-API'
       href: app-service-web-tutorial-rest-api.md
     - name: '2: Zuordnen einer benutzerdefinierten Domäne'
@@ -71,7 +73,7 @@
       href: web-sites-traffic-manager.md
     - name: Lokaler Cache
       href: app-service-local-cache-overview.md
-    - name: Diagnostics
+    - name: Diagnose
       href: app-service-diagnostics.md
 - name: Anleitungen
   items:

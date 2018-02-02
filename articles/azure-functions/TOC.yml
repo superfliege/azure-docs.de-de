@@ -63,6 +63,8 @@
       href: functions-cli-samples.md
 - name: Konzepte
   items:
+    - name: Vergleichen von 1.x und 2.x
+      href: functions-versions.md
     - name: Skalierung und Hosting
       href: functions-scale.md
     - name: Trigger und Bindungen
@@ -101,7 +103,7 @@
           href: durable-functions-http-api.md
         - name: Fehlerbehandlung
           href: durable-functions-error-handling.md
-        - name: Diagnostics
+        - name: Diagnose
           href: durable-functions-diagnostics.md
         - name: Timer
           href: durable-functions-timers.md
@@ -146,7 +148,7 @@
         - name: Verwalten einer Funktions-App
           href: functions-how-to-use-azure-function-app-settings.md
         - name: Festlegen der Laufzeitversion
-          href: functions-versions.md
+          href: set-runtime-version.md
     - name: Überwachen
       href: functions-monitoring.md
     - name: Integrieren
@@ -183,6 +185,8 @@
           href: functions-bindings-storage-blob.md
         - name: Azure Cosmos DB
           href: functions-bindings-cosmosdb.md
+        - name: Event Grid
+          href: functions-bindings-event-grid.md
         - name: Event Hubs
           href: functions-bindings-event-hubs.md
         - name: Externe Datei

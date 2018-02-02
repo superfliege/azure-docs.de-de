@@ -2,8 +2,8 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Azure Monitor
-      href: monitoring-overview-azure-monitor.md
+    - name: Überwachung in Azure
+      href: monitoring-overview.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -11,7 +11,7 @@
       href: monitor-quick-resource-metric-alert-portal.md
     - name: Warnung zu Abonnementaktivität
       href: monitor-quick-audit-notify-action-in-subscription.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Automatische Skalierung von Leistung und Zeitplan
       href: monitor-tutorial-autoscale-performance-schedule.md
@@ -27,11 +27,11 @@
       href: monitoring-partners.md
     - name: Zusätzliche Übersichten
       items:
-        - name: Überwachungstools innerhalb von Azure
-          href: monitoring-overview.md
+        - name: Azure Monitor
+          href: monitoring-overview-azure-monitor.md
         - name: Metriken
           href: monitoring-overview-metrics.md
-        - name: Warnungen
+        - name: Alerts
           href: monitoring-overview-alerts.md
         - name: Warnungen (Vorschauversion)
           href: monitoring-overview-unified-alerts.md
@@ -166,7 +166,7 @@
       href: monitor-send-to-grafana.md
     - name: Senden von Überwachungsdaten an einen Event Hub
       href: monitor-stream-monitoring-data-event-hubs.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/monitor?view=azure-cli-latest
@@ -182,7 +182,7 @@
       href: monitoring-activity-log-schema.md
     - name: Erweiterungsschema der Azure-Diagnose
       href: azure-diagnostics-schema.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'

@@ -15,7 +15,9 @@
 ### [Zugriffssteuerungslisten](virtual-networks-acl.md)
 
 # Erste Schritte
-## [Erstellen Ihres ersten virtuellen Netzwerks](virtual-network-get-started-vnet-subnet.md)
+## [Erstellen eines virtuellen Netzwerks – Portal](quick-create-portal.md)
+## [Erstellen eines virtuellen Netzwerks – PowerShell](quick-create-powershell.md)
+## [Erstellen eines virtuellen Netzwerks – Azure CLI](quick-create-cli.md)
 
 # Anleitung
 ## Planen und Entwerfen

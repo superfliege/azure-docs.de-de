@@ -117,6 +117,7 @@
 ### [Konfigurieren von lokalen Encodern für die Verwendung mit einem Cloudencoder](media-services-live-encoders-overview.md)
 #### [Elemental Live-Encoder](media-services-configure-elemental-live-encoder.md)
 #### [FMLE-Encoder](media-services-configure-fmle-live-encoder.md)
+#### [Haivision KB-Encoder](media-services-configure-kb-live-encoder.md)
 #### [NewTek TriCaster-Encoder](media-services-configure-tricaster-live-encoder.md)
 #### [Wirecast-Encoder](media-services-configure-wirecast-live-encoder.md)
 ### [Behandeln von Vorgängen mit langer Ausführungsdauer](media-services-dotnet-long-operations.md)

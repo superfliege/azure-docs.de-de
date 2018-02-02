@@ -37,7 +37,7 @@
           href: tutorial-copy-data-tool.md
         - name: 'Benutzeroberfläche (User Interface, UI)'
           href: tutorial-copy-data-portal.md
-        - name: Azure PowerShell
+        - name: .NET
           href: tutorial-copy-data-dot-net.md
     - name: 3 – Kopieren von lokalen Daten in die Cloud
       items:
@@ -90,7 +90,7 @@
       items:
         - name: 'Benutzeroberfläche (User Interface, UI)'
           href: tutorial-control-flow-portal.md
-        - name: Azure PowerShell
+        - name: .NET
           href: tutorial-control-flow.md
 - name: Beispiele
   items:
@@ -350,6 +350,8 @@
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: Aufrufen von SSIS-Paketen mithilfe der Aktivität „Gespeicherte Prozedur“
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
+        - name: Planen der Azure-SSIS Integration Runtime
+          href: how-to-schedule-azure-ssis-integration-runtime.md
     - name: Erstellen von Triggern
       items:
         - name: Erstellen eines Zeitplantriggers
