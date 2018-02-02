@@ -164,7 +164,7 @@
         - name: Klonen einer App
           href: app-service-web-app-cloning.md
         - name: Verschieben von Ressourcen
-          href: app-service-move-resources.md
+          href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
     - name: Ausführen von Hintergrundaufgaben
       items:
         - name: Erstellen von Webaufträgen

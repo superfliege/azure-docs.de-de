@@ -100,7 +100,7 @@
 
 ### [Klonen einer vorhandenen App](../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Ressourcengruppen](../app-service/app-service-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Ressourcengruppen](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations)
 #### [Ausführen von Hintergrundaufgaben mit WebJobs](../app-service/web-sites-create-web-jobs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 #### [Konfigurieren](../app-service/environment/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -155,7 +155,7 @@
 ### [Aktivieren der Diagnoseprotokollierung](../app-service/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Behandeln von Problemen mithilfe von Visual Studio](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-# Referenz
+# Verweis
 ## [.NET-Back-End-SDK](https://msdn.microsoft.com/library/azure/dn961176.aspx)
 ## [Node.js-Back-End-SDK](https://azure.github.io/azure-mobile-apps-node/)
 ## [Android-Client-SDK](https://azure.github.io/azure-mobile-apps-android-client/)
@@ -166,14 +166,14 @@
 # Verwandte Themen
 ## [GitHub-Repositorys](https://github.com/Azure/azure-mobile-apps)
 
-# Ressourcen
+# angeben
 ## [App Service – Bewährte Methoden](../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
 ## [Preise](https://azure.microsoft.com/en-us/pricing/details/app-service/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=mobile-services)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## Beispiele
 ### [Außendiensttechniker](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
