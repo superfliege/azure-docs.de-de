@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: nepeters
-ms.openlocfilehash: 133e36179a500dc65c3a543266a7afcf9988b87d
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 915f90fd5d969d5544d56e5bec754b799f349015
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Verwenden von Azure Container Registry-Webhooks
 
@@ -23,7 +23,7 @@ Ausführliche Informationen zu Webhookanforderungen finden Sie unter [Referenz z
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Containerregistrierung: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md).
-* Docker CLI: Installieren Sie das [Docker-Modul](https://docs.docker.com/engine/installation/), um Ihren lokalen Computer als Docker-Host einzurichten und auf die Befehle der Docker CLI zuzugreifen.
+* Docker CLI: Installieren Sie die [Docker-Engine](https://docs.docker.com/engine/installation/), um Ihren lokalen Computer als Docker-Host einzurichten und auf die Befehle der Docker CLI zuzugreifen.
 
 ## <a name="create-webhook-azure-portal"></a>Erstellen von Webhooks im Azure-Portal
 
@@ -33,9 +33,9 @@ Ausführliche Informationen zu Webhookanforderungen finden Sie unter [Referenz z
 1. Wählen Sie in der Webhook-Symbolleiste die Option **Hinzufügen**.
 1. Geben Sie folgende Informationen in das Formular *Webhook erstellen* ein:
 
-| Wert | Beschreibung |
+| Wert | BESCHREIBUNG |
 |---|---|
-| Name | Der Name, den Sie dem Webhook geben möchten. Er darf nur Kleinbuchstaben und Zahlen enthalten und muss 5 bis 50 Zeichen lang sein. |
+| NAME | Der Name, den Sie dem Webhook geben möchten. Er darf nur Kleinbuchstaben und Zahlen enthalten und muss 5 bis 50 Zeichen lang sein. |
 | Dienst-URI | Der URI, an den der Webhook POST-Benachrichtigungen senden soll. |
 | Benutzerdefinierte Header | Header, die Sie zusammen mit der POST-Anforderung übergeben möchten. Diese müssen im Format „Schlüssel: Wert“ vorliegen. |
 | Triggeraktionen | Aktionen, die den Webhook auslösen. Webhooks können zurzeit mit Push- und/oder Löschaktionen für ein Image ausgelöst werden. |
@@ -48,7 +48,7 @@ Beispielformular für Webhook:
 
 ## <a name="create-webhook-azure-cli"></a>Erstellen von Webhooks über die Azure-Befehlszeilenschnittstelle
 
-Um einen Webhook über die Azure-Befehlszeilenschnittstelle zu erstellen, verwenden Sie den Befehl [az acr webhook create](/cli/azure/acr/webhook#create).
+Um einen Webhook über die Azure-Befehlszeilenschnittstelle zu erstellen, verwenden Sie den Befehl [az acr webhook create](/cli/azure/acr/webhook#az_acr_webhook_create).
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -68,7 +68,7 @@ Bevor Sie einen Webhook für Push- und Löschaktionen in einem Containerimage ve
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Um einen ACR-Webhook über die Azure-Befehlszeilenschnittstelle zu testen, verwenden Sie den Befehl [az acr webhook ping](/cli/azure/acr/webhook#ping).
+Um einen ACR-Webhook über die Azure-Befehlszeilenschnittstelle zu testen, verwenden Sie den Befehl [az acr webhook ping](/cli/azure/acr/webhook#az_acr_webhook_ping).
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01

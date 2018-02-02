@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: spelluru
-ms.openlocfilehash: e1bfb7199ddf9f02297db9de529729ba3833cf8c
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: b243115eef7e59279fbb1df2a3e3c288477a5b8c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory  
 Bei der **Integrationslaufzeit** (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory mehrere Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Es werden drei Arten von Integrationslaufzeiten von Azure Data Factory angeboten:
@@ -43,14 +43,14 @@ Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollstä
 ### <a name="properties"></a>Eigenschaften
 Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet für eine Azure-Integrationslaufzeit zurückgegeben werden:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 -------- | ------------- | 
-| Name | Name der Azure-Integrationslaufzeit. |  
-| Zustand | Status der Azure-Integrationslaufzeit. | 
-| Standort | Standort der Azure-Integrationslaufzeit. Weitere Informationen zum Standort einer Azure-Integrationslaufzeit finden Sie unter [Einführung in die Integrationslaufzeit](concepts-integration-runtime.md). |
+| NAME | Name der Azure-Integrationslaufzeit. |  
+| State (Zustand) | Status der Azure-Integrationslaufzeit. | 
+| Speicherort | Standort der Azure-Integrationslaufzeit. Weitere Informationen zum Standort einer Azure-Integrationslaufzeit finden Sie unter [Einführung in die Integrationslaufzeit](concepts-integration-runtime.md). |
 | DataFactoryName | Name der Data Factory, zu der die Azure-Integrationslaufzeit gehört. | 
 | ResourceGroupName | Name der Ressourcengruppe, zu der die Data Factory gehört.  |
-| Beschreibung | Beschreibung der Integrationslaufzeit.  |
+| BESCHREIBUNG | Beschreibung der Integrationslaufzeit.  |
 
 ### <a name="status"></a>Status
 Die folgende Tabelle enthält die möglichen Statuswerte einer Azure-Integrationslaufzeit:
@@ -70,9 +70,9 @@ Dieser Abschnitt enthält Beschreibungen für Eigenschaften, die vom Get-AzureRm
 
 Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für **jeder Knoten**:
 
-| Eigenschaft | Beschreibung | 
+| Eigenschaft | BESCHREIBUNG | 
 | -------- | ----------- | 
-| Name | Name der selbstgehosteten Integrationslaufzeit und die ihr zugeordneten Knoten. Der Knoten ist ein lokaler Windows-Computer, auf dem sich die selbstgehostete Integrationslaufzeit befindet. |  
+| NAME | Name der selbstgehosteten Integrationslaufzeit und die ihr zugeordneten Knoten. Der Knoten ist ein lokaler Windows-Computer, auf dem sich die selbstgehostete Integrationslaufzeit befindet. |  
 | Status | Der Status der allgemeinen selbstgehosteten Integrationslaufzeit und der einzelnen Knoten. Beispiel: Online/Offline/Eingeschränkt usw. Informationen zu diesen Status finden Sie im nächsten Abschnitt. | 
 | Version | Die Version der selbstgehosteten Integrationslaufzeit und der einzelnen Knoten. Die Version der selbstgehosteten Integrationslaufzeit wird basierend auf der Version bestimmt, die die meisten Knoten der Gruppe aufweisen. Wenn Knoten mit unterschiedlichen Versionen am Setup der selbstgehosteten Integrationslaufzeit beteiligt sind, funktionieren nur die Knoten mit der gleichen Versionsnummer wie bei der selbstgehosteten Integrationslaufzeit richtig. Andere Knoten befinden sich im eingeschränkten Modus und müssen manuell aktualisiert werden (nur für den Fall, dass die automatische Aktualisierung fehlschlägt). | 
 | Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. | 
@@ -86,7 +86,7 @@ Einige Einstellungen der Eigenschaften sind sinnvoller, wenn in der selbstgehost
 ### <a name="status-per-node"></a>Status (pro Knoten)
 Die folgende Tabelle enthält die möglichen Statuswerte eines Knotens einer selbstgehosteten Integrationslaufzeit:
 
-| Status | Beschreibung |
+| Status | BESCHREIBUNG |
 | ------ | ------------------ | 
 | Online | Der Knoten ist mit dem Data Factory-Dienst verbunden. |
 | Offline | Knoten ist offline. |
@@ -99,7 +99,7 @@ Ein Knoten kann inaktiv sein, wenn er keine Verbindungen mit anderen Knoten hers
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Status (allgemeine selbstgehostete Integrationslaufzeit)
 Die folgende Tabelle enthält die möglichen Statuswerte einer selbstgehosteten Integrationslaufzeit: Dieser Status hängt von den Statuswerten aller Knoten ab, die zur Laufzeit gehören. 
 
-| Status | Beschreibung |
+| Status | BESCHREIBUNG |
 | ------ | ----------- | 
 | Registrierung erforderlich | Für diese selbstgehostete Integrationslaufzeit ist noch kein Knoten registriert. |
 | Online | Alle Knoten sind online. |
@@ -151,14 +151,14 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 
 ### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft/Status | Beschreibung |
+| Eigenschaft/Status | BESCHREIBUNG |
 | --------------- | ----------- |
 | CreateTime | Die UTC-Zeit für die Erstellung Ihrer Azure-SSIS-Integrationslaufzeit. |
 | Nodes | Die zugeordneten/verfügbaren Knoten Ihrer Azure-SSIS-Integrationslaufzeit mit knotenabhängigen Status (wird gestartet/verfügbar/wird wiederverwendet/nicht verfügbar) und handlungsrelevanten Fehlern. |
 | OtherErrors | Die nicht knotenabhängigen handlungsrelevanten Fehler für Ihre Azure-SSIS-Integrationslaufzeit. |
 | LastOperation | Das Ergebnis des letzten Vorgangs zum Starten/Beenden für Ihre Azure-SSIS-Integrationslaufzeit mit handlungsrelevanten Fehlern, wenn ein Fehler aufgetreten ist. |
-| Zustand | Der allgemeine Status (Initial/Wird gestartet/Gestartet/Wird beendet/Beendet) Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Standort | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
+| State (Zustand) | Der allgemeine Status (Initial/Wird gestartet/Gestartet/Wird beendet/Beendet) Ihrer Azure-SSIS-Integrationslaufzeit. |
+| Speicherort | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeSize | Die Größe der einzelnen Knoten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeCount | Die Anzahl der Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
 | MaxParallelExecutionsPerNode | Die Anzahl gleichzeitiger Ausführungen pro Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
@@ -172,13 +172,13 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 | Typ | Der Typ (verwaltet/selbstgehostet) Ihrer Azure-SSIS-Integrationslaufzeit. |
 | ResourceGroupName | Der Name Ihrer Azure-Ressourcengruppe, in dem die Data Factory und Azure-SSIS-Integrationslaufzeit erstellt wurden. |
 | DataFactoryName | Der Name Ihrer Azure Data Factory. |
-| Name | Der Name Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Beschreibung | Die Beschreibung Ihrer Azure-SSIS-Integrationslaufzeit. |
+| NAME | Der Name Ihrer Azure-SSIS-Integrationslaufzeit. |
+| BESCHREIBUNG | Die Beschreibung Ihrer Azure-SSIS-Integrationslaufzeit. |
 
   
 ### <a name="status-per-node"></a>Status (pro Knoten)
 
-| Status | Beschreibung |
+| Status | BESCHREIBUNG |
 | ------ | ----------- | 
 | Wird gestartet | Dieser Knoten wird vorbereitet. |
 | Verfügbar | Dieser Knoten ist bereit für das Bereitstellen/Ausführen von SSIS-Paketen. |
@@ -187,7 +187,7 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Status (allgemeine Azure-SSIS-Integrationslaufzeit)
 
-| Gesamtstatus | Beschreibung | 
+| Gesamtstatus | BESCHREIBUNG | 
 | -------------- | ----------- | 
 | Initial | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit wurden nicht zugeordnet/vorbereitet. | 
 | Wird gestartet | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit werden zugeordnet/vorbereitet und die Abrechnung wurde gestartet. |
@@ -198,7 +198,7 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 Weitere Informationen zur Azure-SSIS-Integrationslaufzeit finden Sie in den folgenden Artikeln:
 
 - [Azure-SSIS-Integrationslaufzeit](concepts-integration-runtime.md#azure-ssis-integration-runtime): Dieser Artikel enthält konzeptionelle Informationen zu Integrationslaufzeiten, die im Allgemeinen die Azure-SSIS-Integrationslaufzeit einschließen. 
-- [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-deploy-ssis-packages-azure.md): Dieser Artikel enthält schrittweise Anweisungen zum Erstellen einer Azure-SSIS-Integrationslaufzeit und verwendet eine Azure SQL-Datenbank zum Hosten des SSIS-Katalogs. 
+- [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md): Dieser Artikel enthält schrittweise Anweisungen zum Erstellen einer Azure-SSIS-Integrationslaufzeit und verwendet eine Azure SQL-Datenbank zum Hosten des SSIS-Katalogs. 
 - [Gewusst wie: Erstellen einer Azure-SSIS-Integrationslaufzeit](create-azure-ssis-integration-runtime.md): In diesem Artikel wird das Tutorial vertieft und er enthält Anweisungen zur Verwendung der verwalteten Azure SQL-Instanz (private Vorschau) und zum Verknüpfen der Integrationslaufzeit mit einem VNet. 
 - [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie eine Azure-SSIS-Integrationslaufzeit beenden, starten oder entfernen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS-Integrationslaufzeit horizontal hochskalieren, indem Sie der Integrationslaufzeit weitere Knoten hinzufügen. 
 - [Verknüpfen einer Azure-SSIS-Integrationslaufzeit mit einem VNet](join-azure-ssis-integration-runtime-virtual-network.md): Dieser Artikel enthält grundlegende Informationen zum Verknüpfen einer Azure-SSIS-Integrationslaufzeit mit einem Azure Virtual Network (VNet). Darüber hinaus enthält er Schritte zur Verwendung des Azure-Portals zum Konfigurieren des VNet, damit die Azure-SSIS-Integrationslaufzeit dem VNet beitreten kann. 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: e4f112a221221c7f68cc31c80fb43417bb617632
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: bfe1ad012d126b3522b79a6ccecfe03b2b86f7b5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics
 
@@ -90,10 +90,10 @@ Die Aktivitätsprotokolldaten werden nur angezeigt, *nachdem* Sie die Aktivität
 
 | Blatt | BESCHREIBUNG |
 | --- | --- |
-| Azure Activity Log Entries (Azure-Aktivitätsprotokolleinträge) | Zeigt ein Balkendiagramm aller Datensätze des ersten Azure-Aktivitätsprotokolleintrags für den ausgewählten Datumsbereich sowie eine Liste der ersten 10 Aktivitätsaufrufer an. Klicken Sie auf das Balkendiagramm, um eine Protokollsuche für <code>Type=AzureActivity</code> durchzuführen. Klicken Sie auf ein Aufruferelement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Element zurückgegeben werden. |
-| Activity Logs by Status (Aktivitätsprotokolle nach Status) | Zeigt ein Ringdiagramm für den Status der Azure-Aktivitätsprotokolle für den ausgewählten Datumsbereich an. Zeigt außerdem eine Liste der ersten zehn Statuseinträge an. Klicken Sie auf das Diagramm, um eine Protokollsuche für <code>Type=AzureActivity &#124; measure count() by ActivityStatus</code> durchzuführen. Klicken Sie auf ein Statuselement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Statuselement zurückgegeben werden. |
-| Activity Logs by Resource (Aktivitätsprotokolle nach Ressource) | Zeigt die Gesamtanzahl der Ressourcen mit Aktivitätsprotokollen an und listet die ersten zehn Ressourcen mit der Anzahl der Datensätze für jede Ressource auf. Klicken Sie auf den Gesamtbereich, um eine Protokollsuche für <code>Type=AzureActivity &#124; measure count() by Resource</code> durchzuführen, in der alle für die Lösung verfügbaren Azure-Ressourcen angezeigt werden. Klicken Sie auf eine Ressource, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsdatensätze für die Ressource zurückgegeben werden. |
-| Activity Logs by Resource Provider (Aktivitätsprotokolle nach Ressourcenanbieter) | Zeigt die Gesamtanzahl der Ressourcenanbieter an, die Aktivitätsprotokolle generieren, und listet die ersten zehn Anbieter auf. Klicken Sie auf den Gesamtbereich, um eine Protokollsuche für <code>Type=AzureActivity &#124; measure count() by ResourceProvider</code> durchzuführen, in der alle Azure-Ressourcenanbieter angezeigt werden. Klicken Sie auf einen Ressourcenanbieter, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsdatensätze für den Anbieter zurückgegeben werden. |
+| Azure Activity Log Entries (Azure-Aktivitätsprotokolleinträge) | Zeigt ein Balkendiagramm aller Datensätze des ersten Azure-Aktivitätsprotokolleintrags für den ausgewählten Datumsbereich sowie eine Liste der ersten 10 Aktivitätsaufrufer an. Klicken Sie auf das Balkendiagramm, um eine Protokollsuche für <code>AzureActivity</code> durchzuführen. Klicken Sie auf ein Aufruferelement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Element zurückgegeben werden. |
+| Activity Logs by Status (Aktivitätsprotokolle nach Status) | Zeigt ein Ringdiagramm für den Status der Azure-Aktivitätsprotokolle für den ausgewählten Datumsbereich an. Zeigt außerdem eine Liste der ersten zehn Statuseinträge an. Klicken Sie auf das Diagramm, um eine Protokollsuche für <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code> durchzuführen. Klicken Sie auf ein Statuselement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Statuselement zurückgegeben werden. |
+| Activity Logs by Resource (Aktivitätsprotokolle nach Ressource) | Zeigt die Gesamtanzahl der Ressourcen mit Aktivitätsprotokollen an und listet die ersten zehn Ressourcen mit der Anzahl der Datensätze für jede Ressource auf. Klicken Sie auf den Gesamtbereich, um eine Protokollsuche für <code>AzureActivity &#124; summarize AggregatedValue = count() by Resource</code> durchzuführen, in der alle für die Lösung verfügbaren Azure-Ressourcen angezeigt werden. Klicken Sie auf eine Ressource, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsdatensätze für die Ressource zurückgegeben werden. |
+| Activity Logs by Resource Provider (Aktivitätsprotokolle nach Ressourcenanbieter) | Zeigt die Gesamtanzahl der Ressourcenanbieter an, die Aktivitätsprotokolle generieren, und listet die ersten zehn Anbieter auf. Klicken Sie auf den Gesamtbereich, um eine Protokollsuche für <code>AzureActivity &#124; summarize AggregatedValue = count() by ResourceProvider</code> durchzuführen, in der alle Azure-Ressourcenanbieter angezeigt werden. Klicken Sie auf einen Ressourcenanbieter, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsdatensätze für den Anbieter zurückgegeben werden. |
 
 ![Dashboard „Azure-Aktivitätsprotokolle“](./media/log-analytics-activity/activity-log-dash.png)
 

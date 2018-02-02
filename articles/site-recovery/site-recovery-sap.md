@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: 5a47acab598e113ef7ed968dd3a6429ac3bc1ec3
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 96dc9bc81b8889e2e962c9c2dbf119ee985ec2f1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-using-azure-site-recovery"></a>Schützen einer SAP NetWeaver-Anwendungsbereitstellung mit mehreren Schichten mit Azure Site Recovery
 
@@ -59,7 +59,7 @@ Es wird empfohlen, die oben angegebene Infrastruktur vor der Bereitstellung von 
 
 
 ## <a name="typical-sap-application-deployment"></a>Typische SAP-Anwendungsbereitstellung
-Große SAP-Kunden stellen in der Regel zwischen 6 und 20 einzelne SAP-Anwendungen bereit.  Die meisten dieser Anwendungen basieren auf den SAP NetWeaver ABAP- oder Java-Modulen.  Diese NetWeaver-Kernanwendungen werden durch viele spezifische kleinere eigenständige Nicht-NetWeaver-SAP-Module unterstützt sowie normalerweise durch einige Nicht-SAP-Anwendungen.  
+Große SAP-Kunden stellen in der Regel zwischen 6 und 20 einzelne SAP-Anwendungen bereit.  Die meisten dieser Anwendungen basieren auf den SAP NetWeaver ABAP- oder Java-Engines.  Diese NetWeaver-Kernanwendungen werden durch viele spezifische kleinere eigenständige Nicht-NetWeaver-SAP-Engines unterstützt sowie normalerweise durch einige Nicht-SAP-Anwendungen.  
 
 Es ist ausgesprochen wichtig, den Bestand aller in einer Landschaft ausgeführten SAP-Anwendungen aufzunehmen und den Bereitstellungsmodus (2 oder 3 Ebenen) sowie Versionen, Patches, Größen, Änderungsraten und Datenträger-Persistenzanforderungen zu ermitteln.
 
@@ -81,17 +81,17 @@ Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben
 Ein Wiederherstellungsplan ermöglicht die Sequenzierung des Failovers verschiedener Ebenen in einer Anwendung mit mehreren Ebenen, damit die Anwendungskonsistenz gewahrt wird. Führen Sie die [hier](site-recovery-create-recovery-plans.md) beschriebenen Schritte aus, während Sie einen Wiederherstellungsplan für eine Webanwendung mit mehreren Ebenen erstellen.
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Hinzufügen von Skripts zum Wiederherstellungsplan
-Es kann erforderlich sein, nach dem Failover bzw. Testfailover einige Vorgänge auf den virtuellen Azure-Computern durchzuführen, damit Ihre Anwendungen richtig funktionieren. Sie können den Vorgang nach dem Failover, z.B. das Aktualisieren des DNS-Eintrags und das Ändern der Websitebindung und der Verbindungen, automatisieren, indem Sie im Wiederherstellungsplan entsprechende Skripts hinzufügen, wie [in diesem Artikel](site-recovery-create-recovery-plans.md#add-scripts) dargestellt.
+Es kann erforderlich sein, nach dem Failover bzw. Testfailover einige Vorgänge auf den virtuellen Azure-Computern durchzuführen, damit Ihre Anwendungen richtig funktionieren. Sie können den Vorgang nach dem Failover, z.B. das Aktualisieren des DNS-Eintrags und das Ändern der Websitebindung und der Verbindungen, automatisieren, indem Sie im Wiederherstellungsplan entsprechende Skripts hinzufügen, wie [in diesem Artikel](site-recovery-how-to-add-vmmscript.md) dargestellt.
 
 ### <a name="dns-update"></a>DNS-Update
 Wenn das DNS für das dynamische DNS-Update konfiguriert ist, führen virtuelle Computer nach dem Starten normalerweise ein Update des DNS mit der neuen IP-Adresse durch. Falls Sie einen expliziten Schritt zum Aktualisieren des DNS mit den neuen IPs der virtuellen Computer hinzufügen möchten, können Sie dieses [Skript zum Aktualisieren der IP-Adresse im DNS](https://aka.ms/asr-dns-update) als nachfolgende Aktion in Wiederherstellungsplangruppen hinzufügen.  
 
 ## <a name="example-azure-to-azure-deployment"></a>Beispiel für eine Azure-zu-Azure-Bereitstellung
 Im nachstehenden Diagramm ist das Szenario für Azure-zu-Azure-DR mit Azure Site Recovery dargestellt:
-* Das primäre Rechenzentrum befindet sich in Singapur (Azure Asien, Südosten) und das DR-Rechenzentrum in Hongkong (Azure Asien, Osten).  In diesem Szenario wird eine hohe lokale Verfügbarkeit durch die Verwendung von zwei virtuellen Computern mit SQL Server AlwaysOn im synchronen Modus in Singapur bereitgestellt.
+* Das primäre Rechenzentrum befindet sich in Singapur (Azure Asien, Südosten) und das DR-Rechenzentrum in Hongkong (Azure Asien, Osten).  In diesem Szenario wird lokale Hochverfügbarkeit durch die Verwendung von zwei virtuellen Computern mit SQL Server AlwaysOn im synchronen Modus in Singapur bereitgestellt.
 * Mit dem Dateifreigabe-ASCS kann hohe Verfügbarkeit für die einzelnen SAP-Fehlerquellen bereitgestellt werden. Der Dateifreigabe ASCS erfordert keinen freigegebenen Clusterdatenträger, und Anwendungen wie SIOS sind nicht erforderlich.
 * DR-Schutz für die DBMS-Ebene wird mithilfe der asynchronen Replikation erreicht.
-* Dieses Szenario zeigt „symmetrische DR“, eine DR-Lösung, die ein exaktes Replikat des Produktion darstellt, daher weist die SQL Server-DR-Lösung eine lokale hohe Verfügbarkeit auf. Die Verwendung von symmetrischer DR ist für die Datenbankebene nicht zwingend erforderlich, und viele Kunden nutzen die Flexibilität von Cloudbereitstellungen, um nach einem Notfall schnell einen lokalen Hochverfügbarkeitsknoten zu erstellen.
+* Dieses Szenario zeigt „symmetrische DR“, eine DR-Lösung, die ein exaktes Replikat des Produktion darstellt, daher weist die SQL Server-DR-Lösung eine lokale Hochverfügbarkeit auf. Die Verwendung von symmetrischer DR ist für die Datenbankebene nicht zwingend erforderlich, und viele Kunden nutzen die Flexibilität von Cloudbereitstellungen, um nach einem Notfall schnell einen lokalen Hochverfügbarkeitsknoten zu erstellen.
 * Das Diagramm zeigt die SAP NetWeaver-ASCS- und Anwendungsserver-Ebene, die durch Azure Site Recovery repliziert wird.
 
 ![Replikationsszenario](./media/site-recovery-sap/sap-replication-scenario.png)

@@ -12,19 +12,20 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 4ad91def00ca73f91f0ffd8e57afa442a93176f6
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 93e10235e3de4ecea4d0e356bb4b52922c8afac8
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Um eine produktionsfertige Bereitstellung von Azure App Service in Azure Stack bereitzustellen, müssen Sie die Kapazität planen, die Sie für das System erwarten.  Im Folgenden finden Sie Hilfestellungen für die Mindestanzahl von Instanzen und Compute-SKUs, die Sie für jede Produktionsbereitstellung verwenden sollten.
 
-Sie können Ihre Strategie für die App Service-Kapazität mithilfe dieser Richtlinien planen. Zukünftige Versionen von Azure Stack bieten Optionen für hohe Verfügbarkeit für App Service.
+Sie können Ihre Strategie für die App Service-Kapazität mithilfe dieser Richtlinien planen. Zukünftige Versionen von Azure Stack bieten Optionen für Hochverfügbarkeit für App Service.
 
 | App Service-Serverrolle | Empfohlene Mindestanzahl von Instanzen | Empfohlene Compute-SKUs|
 | --- | --- | --- |
@@ -39,31 +40,31 @@ Sie können Ihre Strategie für die App Service-Kapazität mithilfe dieser Richt
 
 **Empfohlene Mindestanzahl:** zwei Instanzen von A1 Standard
 
-Der Azure App Service-Controller verbraucht in der Regel nur wenig CPU-, Arbeitsspeicher- und Netzwerkressourcen. Für hohe Verfügbarkeit benötigen Sie jedoch zwei Controller. Zwei Controller sind auch die maximale Anzahl zulässiger Controller. Sie können den zweiten Websitecontroller während der Bereitstellung direkt im Installationsprogramm erstellen.
+Der Azure App Service-Controller verbraucht in der Regel nur wenig CPU-, Arbeitsspeicher- und Netzwerkressourcen. Für Hochverfügbarkeit benötigen Sie jedoch zwei Controller. Zwei Controller sind auch die maximale Anzahl zulässiger Controller. Sie können den zweiten Websitecontroller während der Bereitstellung direkt im Installationsprogramm erstellen.
 
 ## <a name="front-end-role"></a>Front-End-Rolle
 
 **Empfohlene Mindestanzahl:** zwei Instanzen von A1 Standard
 
-Das Front-End leitet Anforderungen abhängig von der Verfügbarkeit der Webworker an Webworker weiter. Für hohe Verfügbarkeit sollten Sie über mehrere Front-Ends verfügen, auch mehr als zwei sind möglich. Beachten Sie bei der Kapazitätsplanung, dass jeder Kern ungefähr 100 Anforderungen pro Sekunde verarbeiten kann.
+Das Front-End leitet Anforderungen abhängig von der Verfügbarkeit der Webworker an Webworker weiter. Für Hochverfügbarkeit sollten Sie über mehrere Front-Ends verfügen, auch mehr als zwei sind möglich. Beachten Sie bei der Kapazitätsplanung, dass jeder Kern ungefähr 100 Anforderungen pro Sekunde verarbeiten kann.
 
 ## <a name="management-role"></a>Verwaltungsrolle
 
 **Empfohlene Mindestanzahl:** zwei A3-Instanzen
 
-Die Azure App Service-Verwaltungsrolle ist für die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten-, Functions-Portal) und den Datendienst von App Service zuständig. Die Verwaltungsserverrolle erfordert in einer Produktionsumgebung in der Regel nur etwa 4 GB RAM. Allerdings kann es zu einer hohen CPU-Auslastung kommen, wenn viele Verwaltungsaufgaben (z.B. Websiteerstellungen) ausgeführt werden. Für hohe Verfügbarkeit sollten Sie dieser Rolle mehrere Server sowie jedem Server mindestens zwei Kerne zuweisen.
+Die Azure App Service-Verwaltungsrolle ist für die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten-, Functions-Portal) und den Datendienst von App Service zuständig. Die Verwaltungsserverrolle erfordert in einer Produktionsumgebung in der Regel nur etwa 4 GB RAM. Allerdings kann es zu einer hohen CPU-Auslastung kommen, wenn viele Verwaltungsaufgaben (z.B. Websiteerstellungen) ausgeführt werden. Für Hochverfügbarkeit sollten Sie dieser Rolle mehrere Server sowie jedem Server mindestens zwei Kerne zuweisen.
 
 ## <a name="publisher-role"></a>Herausgeberrolle
 
 **Empfohlene Mindestanzahl:** zwei A1-Instanzen
 
-Wenn viele Benutzer gleichzeitig veröffentlichen, kann die Herausgeberrolle eine hohe CPU-Auslastung verursachen. Für hohe Verfügbarkeit stellen Sie mehr als eine Herausgeberrolle zur Verfügung.  Der Herausgeber verarbeitet nur FTP/FTPS-Datenverkehr.
+Wenn viele Benutzer gleichzeitig veröffentlichen, kann die Herausgeberrolle eine hohe CPU-Auslastung verursachen. Für Hochverfügbarkeit stellen Sie mehr als eine Herausgeberrolle zur Verfügung.  Der Herausgeber verarbeitet nur FTP/FTPS-Datenverkehr.
 
 ## <a name="web-worker-role"></a>Webworkerrolle
 
 **Empfohlene Mindestanzahl:** zwei A1-Instanzen
 
-Für hohe Verfügbarkeit sollten Sie über mindestens vier Webworkerrollen verfügen – zwei für den Modus Websites Shared und zwei für jede dedizierte Workerebene, die Sie anbieten möchten. Die freigegebenen und dedizierten Computemodi stellen Mandanten verschiedene Dienstebenen bereit. In folgenden Fällen benötigen Sie eventuell mehr Webworker:
+Für Hochverfügbarkeit sollten Sie über mindestens vier Webworkerrollen verfügen – zwei für den Websitemodus „Shared“ und zwei für jede dedizierte Workerebene, die Sie anbieten möchten. Die freigegebenen und dedizierten Computemodi stellen Mandanten verschiedene Dienstebenen bereit. In folgenden Fällen benötigen Sie eventuell mehr Webworker:
  - Wenn viele Ihrer Kunden dedizierte Workerebenen im Computemodus (die sehr ressourcenintensiv sind) verwenden
  - Wenn viele Ihrer Kunden im freigegebenen Computemodus arbeiten
 

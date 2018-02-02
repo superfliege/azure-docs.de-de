@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
 ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-analytics-in-application-insights"></a>Verwenden von Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
 
-* **[Sehen Sie sich das Einführungsvideo an.](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**
+* **[Sehen Sie sich das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
 * **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
 
 ## <a name="open-analytics"></a>Öffnen von Analytics
@@ -99,7 +99,7 @@ Wenn Sie denken, dass nicht alle erwarteten Ergebnisse angezeigt werden, kann di
 
     Den Zeitbereichsfilter können Sie im entsprechenden Dropdownmenü jedoch ändern.
 
-    Oder Sie können den automatischen Bereich überschreiben, indem Sie eine eigene [`where  ... timestamp ...`-Klausel](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) in die Abfrage einfügen. Beispiel:
+    Oder Sie können den automatischen Bereich überschreiben, indem Sie eine eigene [`where  ... timestamp ...`-Klausel](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) in die Abfrage einfügen. Beispiel: 
 
     `requests | where timestamp > ago('2d')`
 

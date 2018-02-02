@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.openlocfilehash: 74aace2136136c25bc56327d38cfbab168265401
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d3f4a83b654315a5ff9344594323c5dcb801e77
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -36,7 +36,7 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure Resource Manager-Ber
 
 Bevor Sie mit den Aufgaben, die in diesem Artikel beschrieben werden, beginnen, müssen die folgenden Voraussetzungen erfüllt sein:
 
-- Wenn Sie noch nicht mit der Arbeit mit virtuellen Netzwerken vertraut sind, sollten Sie die Übung unter [Erstellen Ihres ersten virtuellen Azure-Netzwerks](virtual-network-get-started-vnet-subnet.md) durchgehen. Diese Übung hilft Ihnen dabei, sich mit virtuellen Netzwerken vertraut zu machen.
+- Wenn Sie noch nicht mit der Arbeit mit virtuellen Netzwerken vertraut sind, sollten Sie die Übung unter [Erstellen Ihres ersten virtuellen Azure-Netzwerks](quick-create-portal.md) durchgehen. Diese Übung hilft Ihnen dabei, sich mit virtuellen Netzwerken vertraut zu machen.
 - Weitere Informationen zu Grenzwerten für virtuelle Netzwerke finden Sie in [Azure-Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Melden Sie sich mit Ihrem Azure-Konto beim Azure-Portal, der Azure-Befehlszeilenschnittstelle (Azure CLI) oder bei Azure PowerShell an. Falls Sie noch kein Azure-Konto besitzen, registrieren Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free).
 - Wenn Sie PowerShell-Befehle verwenden möchten, um die Aufgaben in diesem Artikel auszuführen, müssen Sie zunächst [Azure PowerShell installieren und konfigurieren](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass die neueste Version der Azure PowerShell-Cmdlets installiert ist. Hilfe zu den Beispielen für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
@@ -79,7 +79,7 @@ So erstellen Sie ein virtuelles Netzwerk:
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Azure-Befehlszeilenschnittstelle|[az network vnet create](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
 |PowerShell|[New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -113,7 +113,7 @@ So zeigen Sie virtuelle Netzwerke und Einstellungen an:
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Azure-Befehlszeilenschnittstelle|[az network vnet show](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#show)|
 |PowerShell|[Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork/?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -142,7 +142,7 @@ So fügen Sie einen Adressraum hinzu oder entfernen diesen:
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Azure-Befehlszeilenschnittstelle|Nur Ressourcen-Manager|[az network vnet update](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
 |PowerShell|[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -167,7 +167,7 @@ Alle mit dem virtuellen Netzwerk verbundenen VMs werden bei den DNS-Servern regi
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Azure-Befehlszeilenschnittstelle|[az network vnet update](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
 |PowerShell|[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -186,7 +186,7 @@ Sie können ein virtuelles Netzwerk erst löschen, wenn keine Ressourcen mehr da
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Azure-Befehlszeilenschnittstelle|[azure network vnet delete](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
 |PowerShell|[Remove-AzureRmVirtualNetwork](/powershell/module/azurerm.network/remove-azurermvirtualnetwork?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -194,7 +194,7 @@ Sie können ein virtuelles Netzwerk erst löschen, wenn keine Ressourcen mehr da
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen dazu, wie Sie eine VM erstellen und mit einem virtuellen Netzwerk verbinden, finden Sie unter [Erstellen virtueller Netzwerke und Verbinden von VMs](virtual-network-get-started-vnet-subnet.md#create-vms).
+- Informationen dazu, wie Sie eine VM erstellen und mit einem virtuellen Netzwerk verbinden, finden Sie unter [Erstellen virtueller Netzwerke und Verbinden von VMs](quick-create-portal.md#create-virtual-machines).
 - Informationen dazu, wie Sie Netzwerkdatenverkehr zwischen Subnetzen in einem virtuellen Netzwerk filtern, finden Sie unter [Erstellen von Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-pportal.md).
 - Um ein virtuelles Netzwerk mittels Peering mit einem anderen virtuellen Netzwerk verbinden zu können, lesen Sie [Erstellen eines Peerings virtueller Netzwerke](virtual-network-create-peering.md#portal).
 - Weitere Informationen zu Optionen zum Verbinden eines virtuellen Netzwerks mit einem lokalen Netzwerk finden Sie unter [Informationen zu VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams).

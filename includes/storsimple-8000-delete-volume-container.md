@@ -1,6 +1,6 @@
-<!--author=alkohli last changed: 01/13/17-->
+<!--author=alkohli last changed: 01/23/18-->
 
-Wenn dem Volumecontainer Volumes zugeordnet sind, schalten Sie diese zuerst offline. Führen Sie die unter [Offlineschalten von Volumes](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline)genannten Schritte aus. Wenn die Volumes offline sind, können Sie sie löschen. Wenn dem Volumecontainer keine Volumes zugeordnet sind, löschen Sie den Volumecontainer. Gehen Sie folgendermaßen vor, um einen Volumecontainer zu löschen.
+Wenn dem Volumecontainer Volumes zugeordnet sind, schalten Sie diese zuerst offline. Führen Sie die unter [Offlineschalten von Volumes](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)genannten Schritte aus. Wenn die Volumes offline sind, können Sie sie löschen. Wenn dem Volumecontainer keine Volumes zugeordnet sind, löschen Sie den Volumecontainer. Gehen Sie folgendermaßen vor, um einen Volumecontainer zu löschen.
 
 #### <a name="to-delete-a-volume-container"></a>So löschen Sie einen Volumecontainer
 1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst, und klicken Sie auf **Geräte**. Wählen Sie das Gerät aus, klicken Sie darauf, und navigieren Sie zu **Einstellungen > Verwalten > Volumecontainer**.

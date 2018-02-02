@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: fd2d355b2556faddb06acf2998b54ffcc9aa7919
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f3f0add4cf48ebcb4235fb05aa8bfa0b5365848c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Übersicht über App Service in Azure Stack
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure App Service ist ein Platform-as-a-Service-Angebot (PaaS) von Microsoft Azure in Azure Stack. Mit diesem Dienst können Ihre Kunden – intern und extern – Web-, API- und Azure Functions-Anwendungen für beliebige Plattformen oder Geräte erstellen. Sie können Ihre Apps in lokale Anwendungen integrieren und ihre Geschäftsprozesse automatisieren. Azure Stack-Cloudoperatoren können Kunden-Apps auf vollständig verwalteten virtuellen Computern (VMs) mit beliebigen freigegebenen VM-Ressourcen oder dedizierten VMs ausführen.
 

@@ -12,21 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 522e5a334b5165344b66524d03f0d85468b81332
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 6851fd46d243fcdce4f69811495c74dfe8311478
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Als Azure Stack-Cloudoperator können Sie Ihren Benutzern ermöglichen, Web- und API-Anwendungen zu erstellen. Zu diesem Zweck müssen Sie zunächst Ihrer Azure Stack-Bereitstellung den [App Service-Ressourcenanbieter](azure-stack-app-service-overview.md) hinzufügen, wie in diesem Artikel beschrieben. Nachdem Sie den App Service-Ressourcenanbieter installiert haben, können Sie ihn in Ihre Angebote und Pläne einfügen. Benutzer können ihn dann abonnieren, um den Dienst abzurufen und mit dem Erstellen von Anwendungen zu beginnen.
 
 > [!IMPORTANT]
 > Stellen Sie vor dem Ausführen des Installers sicher, dass die Anweisungen unter [Vor den ersten Schritten mit App Service in Azure Stack](azure-stack-app-service-before-you-get-started.md) befolgt wurden.
-> 
+>
 >
 
 
@@ -103,10 +104,10 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     > [!NOTE]
     > Befolgen Sie bei Produktionsbereitstellungen die Anweisungen unter [Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack](azure-stack-app-service-capacity-planning.md).
-    > 
+    >
     >
 
-    | Rolle | Mindestanzahl der Instanzen | Mindest-SKU | Hinweise |
+    | Rolle | Mindestanzahl der Instanzen | Mindest-SKU | Notizen |
     | --- | --- | --- | --- |
     | Controller | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Verwaltet und wartet die Integrität der App Service-Cloud |
     | Verwaltung | 1 | Standard_A2 - (2 vCPUs, 3584 MB) | Verwaltet die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten, Functions-Portal) und den Datendienst von App Service. Zur Unterstützung eines Failovers erhöhen Sie die empfohlenen Instanzen auf 2. |

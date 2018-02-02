@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/09/2017
+ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: c0f9d0e13cb159188bdaf2b915c1bf6de73be855
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: dc8256022aca37823245ecb9a9326240f1c449c2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Leitfaden zur C2D-Kommunikation
 IoT Hub bietet drei Optionen für Geräte-Apps, um Funktionen einer Back-End-App verfügbar zu machen:
@@ -37,7 +37,7 @@ Hier finden Sie einen detaillierten Vergleich verschiedener Optionen für die C2
 | Ziele | Einzelgerät mit **deviceId** oder mehrere Geräte mit [Aufträgen][lnk-jobs]. | Einzelgerät mit **deviceId** oder mehrere Geräte mit [Aufträgen][lnk-jobs]. | Einzelgerät nach **deviceId**. |
 | Größe | Bis zu 8 KB für Anforderungen und 8 KB für Antworten. | Die Maximalgröße gewünschter Eigenschaften beträgt 8 KB. | Bis zu 64 KB für Nachrichten. |
 | Frequency | Hoch. Weitere Informationen finden Sie unter [Referenz: IoT Hub-Kontingente und -Drosselung][lnk-quotas]. | Mittel. Weitere Informationen finden Sie unter [Referenz: IoT Hub-Kontingente und -Drosselung][lnk-quotas]. | Niedrig. Weitere Informationen finden Sie unter [Referenz: IoT Hub-Kontingente und -Drosselung][lnk-quotas]. |
-| Protocol | Mit MQTT oder AMQP verfügbar. | Mit MQTT oder AMQP verfügbar. | Mit allen Protokollen verfügbar. Gerät muss bei Verwendung von HTTPS einen Abruf tätigen. |
+| Protokoll | Mit MQTT oder AMQP verfügbar. | Mit MQTT oder AMQP verfügbar. | Mit allen Protokollen verfügbar. Gerät muss bei Verwendung von HTTPS einen Abruf tätigen. |
 
 Erfahren Sie in den folgenden Tutorials, wie Sie direkte Methoden, gewünschte Eigenschaften und C2D-Nachrichten einsetzen:
 

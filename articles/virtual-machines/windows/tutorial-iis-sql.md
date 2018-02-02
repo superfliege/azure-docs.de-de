@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/24/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6f7ef46d9c40138c211427845423783fefde5dc3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6533ab205e07243e2f757ea0a66028e1d140c52b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="install-a-sql92iis92net-stack-in-azure"></a>Installieren eines SQL-/IIS-/.NET-Stapels in Azure
 
@@ -32,7 +32,9 @@ In diesem Tutorial installieren wir einen SQL-/IIS-/.NET-Stapel mithilfe von Azu
 > * Erstellen eines virtuellen Computers, auf dem SQL Server ausgeführt wird
 > * Installieren der SQL Server-Erweiterung
 
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 5.1.1 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-iis-vm"></a>Erstellen eines virtuellen IIS-Computers 
 
@@ -41,9 +43,10 @@ In diesem Beispiel verwenden wir das Cmdlet [New-AzVM](https://www.powershellgal
 Klicken Sie auf die Schaltfläche **Try It** (Testen) rechts oben neben dem Codeblock, um Cloud Shell in diesem Fenster zu starten. Sie werden aufgefordert, an der Eingabeaufforderung Anmeldeinformationen für den virtuellen Computer anzugeben.
 
 ```azurepowershell-interactive
+$vmName = "IISVM$(Get-Random)"
 $vNetName = "myIISSQLvNet"
 $resourceGroup = "myIISSQLGroup"
-New-AzVm -Name myIISVM -ResourceGroupName $resourceGroup -VirtualNetworkName $vNetName 
+New-AzureRMVm -Name $vmName -ResourceGroupName $resourceGroup -VirtualNetworkName $vNetName 
 ```
 
 Installieren Sie IIS und .NET Framework mithilfe der benutzerdefinierten Skripterweiterung.
@@ -52,7 +55,7 @@ Installieren Sie IIS und .NET Framework mithilfe der benutzerdefinierten Skripte
 
 Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
     -ExtensionName IIS `
-    -VMName myIISVM `
+    -VMName $vmName `
     -Publisher Microsoft.Compute `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.4 `

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 2c3ffb8432fae41b376cc71bb600a0b1c490f345
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15a5ede13aebb039c1d17f118ee1acdcf9031d50
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integration virtueller Netzwerke für Azure-Dienste
 
@@ -45,7 +45,7 @@ Das Bereitstellen von Diensten in einem virtuellen Netzwerk bietet die folgenden
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Dienste, die in einem virtuellen Netzwerk bereitgestellt werden können
 
-Für jeden Dienst, der direkt in einem virtuellen Netzwerk bereitgestellt wird, gelten bestimmte Anforderungen für das Routing und die zulässigen Typen des eingehenden und ausgehenden Datenverkehrs der Subnetze. Weitere Informationen finden Sie unter: 
+Für jeden Dienst, der direkt in einem virtuellen Netzwerk bereitgestellt wird, gelten bestimmte Anforderungen für das Routing und die zulässigen Typen des eingehenden und ausgehenden Datenverkehrs der Subnetze. Weitere Informationen finden Sie unter  
  
 - Virtuelle Computer: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Service Fabric](../service-fabric/service-fabric-patterns-networking.md?toc=%2fazure%2fvirtual-network%2ftoc.json#existingvnet)
@@ -56,9 +56,10 @@ Für jeden Dienst, der direkt in einem virtuellen Netzwerk bereitgestellt wird, 
 - [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Application Gateway (intern)](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Azure Container Service-Modul](../container-service/container-service-intro.md?toc=%2fazure%2fvirtual-network%2ftoc.json): Der Azure Container Service erstellt ein virtuelles Standardnetzwerk. Sie können ein benutzerdefiniertes virtuelles Netzwerk erstellen, das mit dem [Azure Container Service-Modul](https://github.com/Azure/acs-engine/tree/master/examples/vnet) verwendet werden soll.
+- 
+            [Azure Container Service-Engine](../container-service/container-service-intro.md?toc=%2fazure%2fvirtual-network%2ftoc.json): Der Azure Container Service erstellt ein virtuelles Standardnetzwerk. Sie können ein benutzerdefiniertes virtuelles Netzwerk erstellen, das mit der [Azure Container Service-Engine](https://github.com/Azure/acs-engine/tree/master/examples/vnet) verwendet werden soll.
 - [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json): Nur virtuelles Netzwerk (klassisch)
-- [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration): Nur virtuelles Netzwerk (klassisch)
+- [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)
 - [Clouddienste](https://msdn.microsoft.com/library/azure/jj156091): Nur virtuelles Netzwerk (klassisch)
 
 Sie können für den Lastenausgleich vieler der in der Liste oben aufgeführten Ressourcen einen [internen Azure-Lastenausgleich](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bereitstellen. In einigen Fällen wird vom Dienst automatisch ein Lastenausgleich erstellt und bereitgestellt, wenn Sie eine Ressource erstellen.

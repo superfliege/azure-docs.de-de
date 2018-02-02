@@ -15,11 +15,11 @@ ms.workload: NA
 ms.custom: backup-restore
 ms.date: 10/23/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: e76349ef7a2afa02d4f9e5295f299bb8084d1e08
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 159a1d34caba829750da33dbc4ad403fb21cd147
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="backup-and-restore-in-sql-data-warehouse"></a>Sicherung und Wiederherstellung in SQL Data Warehouse
 Dieser Artikel erläutert die Merkmale von Sicherungen in SQL Data Warehouse. Verwenden von Data Warehouse Sicherungen zum Wiederherstellen einer Datenbankmomentaufnahme der primären Region oder Wiederherstellen einer Geosicherung für Ihre geografisch gepaarte Region. 
@@ -42,7 +42,7 @@ order by run_id desc
 ## <a name="geo-backups"></a>Geosicherungen
 SQL Data Warehouse führt ein Mal pro Tag für ein [geografisch gepaartes Datencenter](../best-practices-availability-paired-regions.md) eine Geosicherung aus. Die RPO für eine Geowiederherstellung beträgt 24 Stunden. Sie können die Geosicherung auf dem Server in der geografisch gepaarten Region wiederherstellen. Die Geosicherung stellt sicher, dass Sie ein Data Warehouse wiederherstellen können, wenn Sie nicht auf die Momentaufnahmen in Ihrer primären Region zugreifen können.
 
-Geosicherungen sind standardmäßig aktiviert. Wenn Ihr Data Warehouse für Elastizität optimiert ist, können Sie diese Option [abwählen](https://docs.microsoft.com/powershell/resourcemanager/Azurerm.sql/v2.1.0/Set-AzureRmSqlDatabaseGeoBackupPolicyredirectedfrom=msdn), wenn Sie dies wünschen. Sie können Geosicherungen nicht abwählen, wenn Sie die Leistungsebene „Optimiert für Compute“ verwenden.
+Geosicherungen sind standardmäßig aktiviert. Wenn Ihr Data Warehouse für Elastizität optimiert ist, können Sie diese Option [abwählen](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy), wenn Sie dies wünschen. Sie können Geosicherungen nicht abwählen, wenn Sie die Leistungsebene „Optimiert für Compute“ verwenden.
 
 ## <a name="backup-costs"></a>Sicherungskosten
 Beachten Sie, dass die Azure-Rechnung einen Eintrag für Azure Storage Premium und einen Eintrag für georedundanten Speicher aufweist. Die Storage Premium-Gebühren sind die Gesamtkosten für das Speichern Ihrer Daten in der primären Region. Dies schließt Momentaufnahmen ein.  Die Gebühr für georedundanten Speicher umfasst die Kosten für das Speichern von Geosicherungen.  

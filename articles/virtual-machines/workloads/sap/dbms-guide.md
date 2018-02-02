@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 87c4573ce3b688cdc63b3a342bbc0bebb416ad36
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -336,7 +336,7 @@ Im gesamten Dokument werden die folgenden Begriffe verwendet:
 
 In einigen Microsoft-Dokumentationen werden standortübergreifende Szenarien etwas anders beschrieben, insbesondere bei DBMS-HA-Konfigurationen. In Dokumenten zu SAP bezieht sich ein standortübergreifendes Szenario einfach nur auf eine Site-to-Site- oder private Konnektivität (ExpressRoute) und die Tatsache, dass die SAP-Landschaft zwischen lokalen Systemen und Azure verteilt ist.
 
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 Die folgenden Handbücher zum Thema SAP-Bereitstellungen in Azure sind verfügbar:
 
 * [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide] (Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver)
@@ -382,7 +382,7 @@ Die allgemeinen Unterschiede werden in diesem Dokument für die folgenden Bereic
 * Spezifische Datenbankfunktionen, die für die Optimierung des Datenbanklayouts verwendet werden.
 * Überlegungen zu Sicherung und Wiederherstellung in IaaS.
 * Verwenden von verschiedenen Imagetypen für die Bereitstellung.
-* Hohe Verfügbarkeit in Azure IaaS.
+* Hochverfügbarkeit in Azure IaaS.
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Struktur einer RDBMS-Bereitstellung
 Damit Sie die Informationen in diesem Kapitel nachvollziehen können, müssen Sie [dieses][deployment-guide-3] Kapitel im [Bereitstellungshandbuch][deployment-guide] verstanden haben. Sie sollten Kenntnisse über die verschiedenen VM-Serien und ihre Unterschiede sowie zu den Unterschieden zwischen Azure-Standardspeicher und Storage Premium haben, um dieses Kapitel zu verstehen.
@@ -778,7 +778,7 @@ Wenn dies nicht das Ergebnis ist, BEENDEN Sie die SAP-Bereitstellung, und unters
 Wie weiter oben in diesem Artikel erwähnt, besteht keine Möglichkeit zum Erstellen von freigegebenem Speicher, der erforderlich ist, um die älteste Hochverfügbarkeitsfunktion von SQL Server zu verwenden. Mit dieser Funktion würden zwei oder mehr SQL Server-Instanzen in einem Windows Server-Failovercluster (WSFC) mit einem freigegebenen Datenträger für die Benutzerdatenbanken (und u.U. tempdb) installiert werden. Dies ist die seit langer Zeit verwendete standardmäßige Hochverfügbarkeitsmethode, die auch von SAP unterstützt wird. Da Azure keinen freigegebenen Speicher unterstützt, ist die Konfiguration von SQL Server-Hochverfügbarkeit mit einer Clusterkonfiguration mit freigegebenen Datenträgern nicht möglich. Es können jedoch viele andere Hochverfügbarkeitsmethoden verwendet werden. Diese werden in den folgenden Abschnitten beschrieben.
 
 #### <a name="sql-server-log-shipping"></a>SQL Server-Protokollversand
-Eine der Methoden für hohe Verfügbarkeit (HA) ist der SQL Server-Protokollversand. Wenn die an der Hochverfügbarkeitskonfiguration beteiligten VMs über eine funktionierende Namensauflösung verfügen, besteht kein Problem, und die Einrichtung in Azure unterscheidet sich nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen. Informationen zur Einrichtung des Protokollversands und zu den Prinzipien des Protokollversands finden Sie in dieser Dokumentation:
+Eine der Methoden für Hochverfügbarkeit (High Availability, HA) ist der SQL Server-Protokollversand. Wenn die an der Hochverfügbarkeitskonfiguration beteiligten VMs über eine funktionierende Namensauflösung verfügen, besteht kein Problem, und die Einrichtung in Azure unterscheidet sich nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen. Informationen zur Einrichtung des Protokollversands und zu den Prinzipien des Protokollversands finden Sie in dieser Dokumentation:
 
 <https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server>
 
@@ -1190,10 +1190,10 @@ Wenn mehr IOPS erforderlich sind, wird ausdrücklich empfohlen, Windows-Speicher
 #### <a name="backup--restore"></a>Sichern und Wiederherstellen
 Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR-Tools für Oracle genauso unterstützt wie auf standardmäßigen Windows Server-Betriebssystemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
 
-#### <a name="high-availability"></a>Hohe Verfügbarkeit
-Oracle Data Guard wird aus Gründen der hohen Verfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser Dokumentation][virtual-machines-windows-classic-configure-oracle-data-guard].
+#### <a name="high-availability"></a>Hochverfügbarkeit
+Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser Dokumentation][virtual-machines-windows-classic-configure-oracle-data-guard].
 
-#### <a name="other"></a>Sonstige
+#### <a name="other"></a>Andere
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit Oracle Database.
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Besonderheiten bei Oracle Database unter Oracle Linux
@@ -1228,10 +1228,10 @@ Wenn mehr IOPS erforderlich sind, wird dringend empfohlen, LVM (Logical Volume M
 #### <a name="backup--restore"></a>Sichern und Wiederherstellen
 Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR-Tools für Oracle genauso unterstützt wie auf Bare-Metal-Systemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
 
-#### <a name="high-availability"></a>Hohe Verfügbarkeit
-Oracle Data Guard wird aus Gründen der hohen Verfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser Dokumentation][virtual-machines-windows-classic-configure-oracle-data-guard].
+#### <a name="high-availability"></a>Hochverfügbarkeit
+Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser Dokumentation][virtual-machines-windows-classic-configure-oracle-data-guard].
 
-#### <a name="other"></a>Sonstige
+#### <a name="other"></a>Andere
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit Oracle Database.
 
 ## <a name="specifics-for-the-sap-maxdb-database-on-windows"></a>Einzelheiten zur SAP MaxDB-Datenbank unter Windows
@@ -1334,7 +1334,7 @@ Da SAP liveCache viel an Rechenleistung erfordert, wird im Sinne des produktiven
 #### <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 Die Sicherung und Wiederherstellung wurde, Überlegungen zur Leistung eingeschlossen, bereits in den entsprechenden SAP MaxDB-Kapiteln [Sichern und Wiederherstellen][dbms-guide-8.4.2] und [Leistungsüberlegungen hinsichtlich Sicherung und Wiederherstellung][dbms-guide-8.4.3] beschrieben. 
 
-#### <a name="other"></a>Sonstige
+#### <a name="other"></a>Andere
 Alle anderen allgemeinen Themen wurden bereits in [diesem][dbms-guide-8.4.4] SAP MaxDB-Kapitel besprochen. 
 
 ## <a name="specifics-for-the-sap-content-server-on-windows"></a>Einzelheiten zum SAP Content Server unter Windows
@@ -1388,7 +1388,7 @@ Wenn Sie den SAP Content Server für das Speichern von Dateien in der SAP MaxDB-
 
 Konfigurieren Sie den SAP Content Server so, dass Dateien im Dateisystem gespeichert werden, haben Sie die Option, das Sichern und Wiederherstellen der gesamten Dateistruktur am Speicherort der Dokumente auszuführen. Ähnlich dem Sichern und Wiederherstellen bei SAP MaxDB wird empfohlen, für Sicherungszwecke ein dediziertes Datenträgervolume zur Verfügung zu halten. 
 
-#### <a name="other"></a>Sonstige
+#### <a name="other"></a>Andere
 Andere, für den SAP Content Server spezifische Einstellungen sind für Azure-VMs transparent. Sie werden in verschiedenen Dokumenten und SAP-Hinweisen beschrieben:
 
 * <https://service.sap.com/contentserver> 
@@ -1439,14 +1439,14 @@ Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderun
 * Striping des Zielvolumes der Sicherung auf mehreren Datenträgern, wodurch der IOPS-Durchsatz auf den betreffenden Stripesetvolumes verbessert wird
 * Verwenden von mehr als einem Zielverzeichnis für das Sichern
 
-#### <a name="high-availability-and-disaster-recovery"></a>Hohe Verfügbarkeit und Notfallwiederherstellung
+#### <a name="high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung
 Microsoft Cluster Server (MSCS) wird nicht unterstützt.
 
-Hohe Verfügbarkeit und Notfallwiederherstellung (HADR) in DB2 wird unterstützt. Wenn die an der Hochverfügbarkeitskonfiguration teilnehmenden virtuellen Computer über eine funktionierende Namensauflösung verfügen, unterscheidet sich die Einrichtung in Azure nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen.
+Hochverfügbarkeit und Notfallwiederherstellung (HADR) in DB2 wird unterstützt. Wenn die an der Hochverfügbarkeitskonfiguration teilnehmenden virtuellen Computer über eine funktionierende Namensauflösung verfügen, unterscheidet sich die Einrichtung in Azure nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen.
 
 Verwenden Sie nicht die geografische Replikation für die Speicherkonten, in denen die Datenbankdatenträger gespeichert werden. Weitere Informationen erhalten Sie in den Kapiteln [Microsoft Azure Storage][dbms-guide-2.3] und [Hochverfügbarkeit und Notfallwiederherstellung mit Azure-VMs][dbms-guide-3].
 
-#### <a name="other"></a>Sonstige
+#### <a name="other"></a>Andere
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit IBM DB2 für LUW. 
 
 Weitere Informationen finden Sie auch im Kapitel [SQL Server für SAP in Azure – Allgemeine Zusammenfassung][dbms-guide-5.8].
@@ -1495,12 +1495,12 @@ Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderun
 * Striping des Zielvolumes der Sicherung auf mehreren Datenträgern, wodurch der IOPS-Durchsatz auf den betreffenden Stripesetvolumes verbessert wird
 * Verwenden von mehr als einem Zielverzeichnis für das Sichern
 
-#### <a name="high-availability-and-disaster-recovery"></a>Hohe Verfügbarkeit und Notfallwiederherstellung
-Hohe Verfügbarkeit und Notfallwiederherstellung (HADR) in DB2 wird unterstützt. Wenn die an der Hochverfügbarkeitskonfiguration teilnehmenden virtuellen Computer über eine funktionierende Namensauflösung verfügen, unterscheidet sich die Einrichtung in Azure nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen.
+#### <a name="high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung
+Hochverfügbarkeit und Notfallwiederherstellung (HADR) in DB2 wird unterstützt. Wenn die an der Hochverfügbarkeitskonfiguration teilnehmenden virtuellen Computer über eine funktionierende Namensauflösung verfügen, unterscheidet sich die Einrichtung in Azure nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen.
 
 Verwenden Sie nicht die geografische Replikation für die Speicherkonten, in denen die Datenbankdatenträger gespeichert werden. Weitere Informationen erhalten Sie in den Kapiteln [Microsoft Azure Storage][dbms-guide-2.3] und [Hochverfügbarkeit und Notfallwiederherstellung mit Azure-VMs][dbms-guide-3].
 
-#### <a name="other"></a>Sonstige
+#### <a name="other"></a>Andere
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit IBM DB2 für LUW.
 
 Weitere Informationen finden Sie auch im Kapitel [SQL Server für SAP in Azure – Allgemeine Zusammenfassung][dbms-guide-5.8].

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: c1f543d3379b7f6a29cb57b5d41825abaacabfc3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: e3ff3d9c667e00995daa2023a7137870247b9ab3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Application Insights-Connector-Lösung (Vorschauversion) in Operations Management Suite (OMS)
 
@@ -37,12 +37,12 @@ Bei Verwendung der Lösung haben Sie folgende Möglichkeiten:
 
 Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten für den Application Insights-Connector nicht von Agents gesammelt. Alle von der Lösung verwendeten Daten stammen direkt von Azure.
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| [Windows-Agents](log-analytics-windows-agent.md) | Nein | Die Lösung erfasst keine Informationen von Windows-Agents. |
-| [Linux-Agents](log-analytics-linux-agents.md) | Nein | Die Lösung erfasst keine Informationen von Linux-Agents. |
-| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
-| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein | Die Lösung sammelt keine Informationen von Azure Storage. |
+| [Windows-Agents](log-analytics-windows-agent.md) | Nein  | Die Lösung erfasst keine Informationen von Windows-Agents. |
+| [Linux-Agents](log-analytics-linux-agents.md) | Nein  | Die Lösung erfasst keine Informationen von Linux-Agents. |
+| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein  | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
+| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Die Lösung sammelt keine Informationen von Azure Storage. |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -84,7 +84,7 @@ Klicken Sie auf die Kachel **Application Insights**, um das **Application Insigh
 
 Das Dashboard enthält die in der Tabelle aufgeführten Blätter. Auf jedem Blatt sind bis zu 10 Einträge aufgeführt, die die Kriterien des Blatts für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, wenn Sie unten auf dem Blatt auf **Alle anzeigen** oder auf die Blattüberschrift klicken.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | **Spalte** | **Beschreibung** |
 | --- | --- |
@@ -158,7 +158,7 @@ Die Lösung empfängt die folgenden Telemetrietypen der Daten von Ihren verbunde
 
 - Verfügbarkeit
 - Ausnahmen
-- Anforderungen
+- Requests
 - Seitenansichten: Damit Ihr Arbeitsbereich Seitenansichten erhält, müssen Sie für Ihre Apps das Sammeln dieser Informationen konfigurieren. Weitere Informationen finden Sie unter [PageViews](../application-insights/app-insights-api-custom-events-metrics.md#page-views).
 - Benutzerdefinierte Ereignisse: Damit Ihr Arbeitsbereich benutzerdefinierte Ereignisse erhält, müssen Sie für Ihre Apps das Sammeln dieser Informationen konfigurieren. Weitere Informationen finden Sie unter [TrackEvent](../application-insights/app-insights-api-custom-events-metrics.md#trackevent).
 
@@ -170,7 +170,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 ### <a name="generic-fields"></a>Generische Felder
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Typ | ApplicationInsights |
 | ClientIP |   |
@@ -196,7 +196,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 ### <a name="availability-specific-fields"></a>Verfügbarkeitsfelder
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TelemetryType | Verfügbarkeit |
 | AvailabilityTestName | Name des Webtests |
@@ -238,10 +238,10 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 ### <a name="request-specific-fields"></a>Anforderungsfelder
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Typ | ApplicationInsights |
-| TelemetryType | Request |
+| TelemetryType | Anforderung |
 | ResponseCode | HTTP-Antwort, die an den Client gesendet wird. |
 | RequestSuccess | Gibt den Erfolg oder Fehler an. „true“ oder „false“. |
 | RequestID | ID zur eindeutigen Identifizierung der Anforderung |

@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2017
+ms.date: 12/23/2017
 ms.author: sutalasi
-ms.openlocfilehash: 55323df68715c80d5e8535199cd739921a3baad9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3610409691b71fcce0c36a3af94184dbe6db8661
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Replizieren einer SharePoint-Anwendung mit mehreren Ebenen für die Notfallwiederherstellung mithilfe von Azure Site Recovery
 
@@ -71,6 +71,7 @@ Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Windows
 **Hyper-V** | Ja | Ja
 **VMware** | Ja | Ja
 **Physischer Server** | Ja | Ja
+**Azure** | Nicht verfügbar | Ja
 
 ### <a name="sharepoint-versions"></a>SharePoint-Versionen
 Die folgenden SharePoint-Server-Versionen werden unterstützt:

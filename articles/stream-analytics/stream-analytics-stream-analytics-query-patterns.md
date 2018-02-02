@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/08/2017
 ms.author: samacha
-ms.openlocfilehash: a27bae1828bd469d4439e0ce43098edd73f54243
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6ac5d3ab2a4df63c429f8478e392d84ac0ea6fd7
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Abfragebeispiele für gängige Stream Analytics-Verwendungsmuster
 ## <a name="introduction"></a>Einführung
@@ -31,14 +31,14 @@ Beispiel: Das Fahrzeuggewicht ist im Eingabestream als Zeichenfolge angegeben un
 
 **Eingabe**:
 
-| Make | Time | Weight |
+| Stellen | Zeit | Weight |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
 
 **Ausgabe**:
 
-| Make | Weight |
+| Stellen | Weight |
 | --- | --- |
 | Honda |3000 |
 
@@ -61,7 +61,7 @@ Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden
 
 **Eingabe**:
 
-| Make | LicensePlate | Time |
+| Stellen | LicensePlate | Zeit |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -69,7 +69,7 @@ Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden
 
 **Ausgabe**:
 
-| Make | LicensePlate | Time |
+| Stellen | LicensePlate | Zeit |
 | --- | --- | --- |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
@@ -91,7 +91,7 @@ Beispiel: Bereitstellen einer Zeichenfolge, die beschreibt, wie viele Fahrzeuge 
 
 **Eingabe**:
 
-| Make | Time |
+| Stellen | Zeit |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
@@ -99,7 +99,7 @@ Beispiel: Bereitstellen einer Zeichenfolge, die beschreibt, wie viele Fahrzeuge 
 
 **Ausgabe**:
 
-| CarsPassed | Time |
+| CarsPassed | Zeit |
 | --- | --- | --- |
 | 1 Honda |2015-01-01T00:00:10.0000000Z |
 | 2 Toyotas |2015-01-01T00:00:10.0000000Z |
@@ -126,7 +126,7 @@ Beispiel: Analysieren von Daten für eine schwellenwertbasierte Warnung und Arch
 
 **Eingabe**:
 
-| Make | Time |
+| Stellen | Zeit |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -136,7 +136,7 @@ Beispiel: Analysieren von Daten für eine schwellenwertbasierte Warnung und Arch
 
 **Ausgabe 1**:
 
-| Make | Time |
+| Stellen | Zeit |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -146,7 +146,7 @@ Beispiel: Analysieren von Daten für eine schwellenwertbasierte Warnung und Arch
 
 **Ausgabe 2**:
 
-| Make | Time | Count |
+| Stellen | Zeit | Count |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -178,7 +178,7 @@ Bei der ersten Abfrage werden die eingegangenen Daten an eine Ausgabe namens **A
 Bei der zweiten Abfrage werden die Daten nach einer einfachen Aggregation und Filterung an ein nachgelagertes Warnsystem gesendet.
 
 Beachten Sie, dass die Ergebnisse der allgemeinen Tabellenausdrücke (Common Table Expressions, CTEs) (z.B. **WITH**-Anweisungen) in mehreren Ausgabeanweisungen auch wiederverwendet werden können. Diese Option hat den Vorteil, dass weniger Leser für die Eingabequelle geöffnet werden müssen.
-Beispiel: 
+Beispiel:  
 
     WITH AllRedCars AS (
         SELECT
@@ -197,7 +197,7 @@ Beispiel: Wie viele individuelle Fahrzeugmarken passieren in einem Zeitraum von 
 
 **Eingabe**:
 
-| Make | Time |
+| Stellen | Zeit |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -207,7 +207,7 @@ Beispiel: Wie viele individuelle Fahrzeugmarken passieren in einem Zeitraum von 
 
 **Ausgabe:**
 
-| Count | Time |
+| CountMake | Zeit |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000Z |
 | 1 |2015-01-01T00:00:04.000Z |
@@ -233,14 +233,14 @@ Beispiel: Weist das vorherige Fahrzeug auf der Mautstraße dieselbe Marke auf wi
 
 **Eingabe**:
 
-| Make | Time |
+| Stellen | Zeit |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
 **Ausgabe**:
 
-| Make | Time |
+| Stellen | Zeit |
 | --- | --- |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
@@ -261,7 +261,7 @@ Beispiel: Weist das vorherige Fahrzeug auf der Mautstraße dieselbe Marke auf wi
 
 **Eingabe**:
 
-| LicensePlate | Make | Time |
+| LicensePlate | Stellen | Zeit |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -273,7 +273,7 @@ Beispiel: Weist das vorherige Fahrzeug auf der Mautstraße dieselbe Marke auf wi
 
 **Ausgabe**:
 
-| LicensePlate | Make | Time |
+| LicensePlate | Stellen | Zeit |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
@@ -291,7 +291,7 @@ Beispiel: Weist das vorherige Fahrzeug auf der Mautstraße dieselbe Marke auf wi
 
 Ändern wir nun die Aufgabe, und ermitteln wir jeweils das erste Fahrzeug einer bestimmten Marke in einem Zehn-Minuten-Intervall.
 
-| LicensePlate | Make | Time |
+| LicensePlate | Stellen | Zeit |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -315,7 +315,7 @@ Beispiel: Weist das vorherige Fahrzeug auf der Mautstraße dieselbe Marke auf wi
 
 **Eingabe**:
 
-| LicensePlate | Make | Time |
+| LicensePlate | Stellen | Zeit |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -327,7 +327,7 @@ Beispiel: Weist das vorherige Fahrzeug auf der Mautstraße dieselbe Marke auf wi
 
 **Ausgabe**:
 
-| LicensePlate | Make | Time |
+| LicensePlate | Stellen | Zeit |
 | --- | --- | --- |
 | VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
 | MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
@@ -361,7 +361,7 @@ Beispiel: Wurde die mautpflichtige Straße innerhalb der letzten 90 Sekunden von
 
 **Eingabe**:
 
-| Make | LicensePlate | Time |
+| Stellen | LicensePlate | Zeit |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -370,7 +370,7 @@ Beispiel: Wurde die mautpflichtige Straße innerhalb der letzten 90 Sekunden von
 
 **Ausgabe**:
 
-| Make | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| Stellen | Zeit | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
 | Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
 
@@ -394,7 +394,7 @@ Beispiel: Wurde die mautpflichtige Straße innerhalb der letzten 90 Sekunden von
 
 **Eingabe**:  
 
-| Benutzer | Feature | Ereignis | Time |
+| Benutzer | Feature | Ereignis | Zeit |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000Z |
@@ -423,7 +423,7 @@ Beispiel: Aufgrund eines Fehlers wurde für alle Fahrzeuge ein falsches Gewicht 
 
 **Eingabe**:
 
-| Make | Time | Weight |
+| Stellen | Zeit | Weight |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 998956d00ae6d3be605163b566f5667a3bb95f38
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: a208e0709c152ea889e6d5262add71b55cb83aa5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer
 
@@ -95,7 +95,7 @@ Signifikante Durchsatzleistung kann durch ein Upgrade auf den Linux-Kernel von A
 uname -r
 
 #sample output on Azure kernel:
-#4.11.0-1014-azure
+#4.13.0-1007-azure
 ```
 
 Wenn Ihr virtueller Computer den Azure-Kernel nicht umfasst, beginnt die Versionsnummer in der Regel mit „4.4“. Wenn Ihr VM den Azure-Kernel nicht enthält, führen Sie die folgenden Befehle als Root-Benutzer aus:
@@ -142,10 +142,10 @@ Um die Optimierungen zu erhalten, empfiehlt es sich, einen virtuellen Computer m
 Bei neuen und vorhandenen virtuellen Computer kann die Installation der aktuellen Version von Linux Integration Services (LIS) vorteilhaft sein. Die Optimierung des Durchsatzes erfolgt in LIS, beginnend mit 4.2. Geben Sie die folgenden Befehle ein, um LIS herunterzuladen und zu installieren:
 
 ```bash
-mkdir lis4.2.3-1
-cd lis4.2.3-1
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-1.tar.gz
-tar xvzf lis-rpms-4.2.3-1.tar.gz
+mkdir lis4.2.3-4
+cd lis4.2.3-4
+wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-4.tar.gz
+tar xvzf lis-rpms-4.2.3-4.tar.gz
 cd LISISO
 install.sh #or upgrade.sh if prior LIS was previously installed
 ```

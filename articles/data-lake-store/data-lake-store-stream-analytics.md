@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/01/2017
+ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 35b737cf5b53f0ad0dbe4a50772fdcaa2e14ca5e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 8ced5aff33ed23aee3f3399d876c1ed62d2b5707
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage-Blob in Data Lake-Speicher mit Azure Stream Analytics
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake-Speicher (Ausgabe) geschrieben werden.
@@ -65,7 +65,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
     * Wählen Sie als **Trennzeichen** die Option **Tabstopp** aus.
     * Wählen Sie als **Codierung** die Option **UTF-8** aus.
 
-    Klicken Sie auf **Erstellen**. Das Portal fügt die Eingabe hinzu und testet die Verbindung.
+    Klicken Sie auf **Create**. Das Portal fügt die Eingabe hinzu und testet die Verbindung.
 
 
 ## <a name="create-a-data-lake-store-output-for-the-job"></a>Erstellen einer Data Lake-Speicherausgabe für den Auftrag
@@ -94,7 +94,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
     * Wählen Sie als **Trennzeichen** die Option **Tabstopp** aus.
     * Wählen Sie als **Codierung** die Option **UTF-8** aus.
     
-    Klicken Sie auf **Erstellen**. Das Portal fügt die Ausgabe hinzu und testet die Verbindung.
+    Klicken Sie auf **Create**. Das Portal fügt die Ausgabe hinzu und testet die Verbindung.
     
 ## <a name="run-the-stream-analytics-job"></a>Ausführen des Stream Analytics-Auftrags
 

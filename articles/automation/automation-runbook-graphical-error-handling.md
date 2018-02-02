@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/26/2016
 ms.author: magoedte
-ms.openlocfilehash: afe7043e31c05444dded089dc02689a3b0c94659
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 86d62ba7fb12b09a2c19b4689af38bb8c121880b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Fehlerbehandlung in grafischen Azure Automation-Runbooks
 
@@ -40,7 +40,7 @@ Grafische Azure Automation-Runbooks wurden verbessert und um die Fehlerbehandlun
 
 Wenn bei einer kritischen Aktivität ein Fehler oder eine Ausnahme ausgelöst wird, können Sie das Verarbeiten der nächsten Aktivität im Runbook verhindern und den Fehler entsprechend behandeln. Dies ist besonders wichtig, wenn Sie mit Ihren Runbooks einen Unternehmens- oder Dienstleistungsprozess unterstützen.
 
-Für jede Aktivität, die einen Fehler erzeugt kann, kann der Autor des Runbooks einen Fehlerlink zu einer anderen Aktivität hinzufügen.  Die Zielaktivität kann einen beliebigen Typ aufweisen: Codeaktivitäten, Aufruf eines Cmdlets, Aufruf eines anderen Runbooks usw.
+Für jede Aktivität, die einen Fehler erzeugt kann, kann der Autor des Runbooks einen Fehlerlink zu einer anderen Aktivität hinzufügen. Die Zielaktivität kann einen beliebigen Typ aufweisen: Codeaktivitäten, Aufruf eines Cmdlets, Aufruf eines anderen Runbooks usw.
 
 Außerdem kann die Zielaktivität auch über ausgehende Links verfügen. Dies können reguläre Links oder Fehlerlinks sein. Der Autor des Runbooks kann somit eine komplexe Fehlerbehandlungslogik implementieren, ohne eine Codeaktivität einbinden zu müssen. Wir empfehlen, ein Runbook für die Fehlerbehandlung mit allgemeiner Funktionalität zu erstellen. Dies ist jedoch nicht zwingend erforderlich. Eine Fehlerbehandlungslogik in einer PowerShell-Codeaktivität ist nicht die einzige Option.  
 
@@ -63,7 +63,7 @@ Nach dem Konfigurieren dieser Einstellung erstellen Sie eine Aktivität zum Beha
 
 Im folgenden Beispiel ruft ein Runbook eine Variable auf, die den Computernamen eines virtuellen Computers enthält. Diese versucht, den virtuellen Computer mit der nächsten Aktivität zu starten.<br><br> ![Fehlerbehandlung mit Automation-Runbook – Beispiel](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-Die **Get-AutomationVariable**-Aktivität und **Start-AzureRmVm** werden konfiguriert, um Ausnahmen in Fehler zu verwandeln.  Falls beim Abrufen der Variablen oder Starten des virtuellen Computers Probleme auftreten, werden Fehler generiert.<br><br> ![Fehlerbehandlung mit Automation-Runbook – Aktivitätseinstellungen](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
+Die **Get-AutomationVariable**-Aktivität und **Start-AzureRmVm** werden konfiguriert, um Ausnahmen in Fehler zu verwandeln. Falls beim Abrufen der Variablen oder Starten des virtuellen Computers Probleme auftreten, werden Fehler generiert.<br><br> ![Fehlerbehandlung mit Automation-Runbook – Aktivitätseinstellungen](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
 Fehlerlinks zeigen von diesen Aktivitäten auf eine Aktivität zur **Fehlerverwaltung** (Codeaktivität), die mit einem einfachen PowerShell-Ausdruck konfiguriert ist. Das Schlüsselwort *Throw* wird verwendet, um die Verarbeitung zu beenden, und mit *$Error.Exception.Message* wird die Meldung abgerufen, in der die aktuelle Ausnahme beschrieben wird.<br><br> ![Fehlerbehandlung mit Automation-Runbook – Codebeispiel](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 

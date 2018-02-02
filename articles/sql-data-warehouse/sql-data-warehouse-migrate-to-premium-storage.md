@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 860e50b532b4b0a21d3be54f087730070b0e56bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e3cdb4aa3af3067b27b6a85212e2a3d27542cc3
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Migrieren eines Data Warehouse zu Storage Premium
 Für Azure SQL Data Warehouse wurde vor Kurzem [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können][premium storage for greater performance predictability]. Vorhandene Data Warehouses mit derzeit Standardspeicher können nun zu Storage Premium migriert werden. Sie können die automatische Migration nutzen. Wenn Sie aber den Migrationszeitpunkt bestimmen möchten (was eine gewisse Ausfallzeit mit sich bringt), können Sie die Migration selbst vornehmen.
@@ -37,7 +37,7 @@ Wenn Sie ein Data Warehouse vor den folgenden Terminen erstellt haben, verwenden
 | Deutschland, Mitte |1. November 2016 |
 | Deutschland, Nordosten |1. November 2016 |
 | Indien, Westen |Storage Premium noch nicht verfügbar |
-| Japan (Westen) |Storage Premium noch nicht verfügbar |
+| Japan, Westen |Storage Premium noch nicht verfügbar |
 | USA Nord Mitte |10. November 2016 |
 
 ## <a name="automatic-migration-details"></a>Details zur automatischen Migration
@@ -75,8 +75,8 @@ Automatische Migrationen erfolgen zwischen 18:00 Uhr und 06:00 Uhr (Ortszeit in 
 | Deutschland, Mitte |9. Januar 2017 |13. Januar 2017 |
 | Deutschland, Nordosten |9. Januar 2017 |13. Januar 2017 |
 | Indien, Westen |Noch nicht festgelegt |Noch nicht festgelegt |
-| Japan (Westen) |Noch nicht festgelegt |Noch nicht festgelegt |
-| USA (Mitte/Norden) |9. Januar 2017 |13. Januar 2017 |
+| Japan, Westen |Noch nicht festgelegt |Noch nicht festgelegt |
+| USA Nord Mitte |9. Januar 2017 |13. Januar 2017 |
 
 ## <a name="self-migration-to-premium-storage"></a>Selbst durchgeführte Migration zu Storage Premium
 Wenn Sie steuern möchten, wann genau Ihr Data Warehouse nicht verfügbar sein soll, können Sie die folgenden Schritte ausführen, um ein vorhandenes Data Warehouse von Standardspeicher zu Storage Premium zu migrieren. Wenn Sie sich hierfür entscheiden, müssen Sie die selbst durchgeführte Migration vor Beginn der automatischen Migration in dieser Region abschließen. Dadurch wird sichergestellt, dass Sie alle Risiken aufgrund eines Konflikts mit der automatischen Migration vermeiden (siehe den [Zeitplan für die automatische Migration][automatic migration schedule]).
@@ -170,7 +170,7 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 [create a support ticket]: sql-data-warehouse-get-started-create-support-ticket.md
 [Azure paired region]: best-practices-availability-paired-regions.md
 [main documentation site]: services/sql-data-warehouse.md
-[Pause]: sql-data-warehouse-manage-compute-portal.md#pause-compute
+[Pause]: sql-data-warehouse-manage-compute-portal.md
 [Restore]: sql-data-warehouse-restore-database-portal.md
 [steps to rename during migration]: #optional-steps-to-rename-during-migration
 [scale compute power]: sql-data-warehouse-manage-compute-portal.md#scale-compute-power

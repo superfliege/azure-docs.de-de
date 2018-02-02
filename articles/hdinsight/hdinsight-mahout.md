@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: a0dd7388b3fa7517b97f4dd66eb121ebfd98d4a4
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: a2477b0a7c9c76f8ce4a183f4d699ddf4c291023
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Hadoop in HDInsight (PowerShell)
 
@@ -44,7 +44,7 @@ Erfahren Sie, wie Sie Filmempfehlungen mit der [Apache Mahout](http://mahout.apa
 >
 > Ein Beispiel für die Verwendung von SSH zum Herstellen einer Verbindung mit HDInsight und zum Ausführen von Mahout-Beispielen direkt im Cluster finden Sie unter [Erstellen von Filmempfehlungen mit Mahout und HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
-Eine der von Mahout bereitgestellten Funktionen ist ein Empfehlungsmodul. Dieses Modul akzeptiert Daten im Format `userID`, `itemId` und `prefValue` (Benutzervoreinstellung für das Element). Mahout verwendet die Daten, um die Benutzer mit ähnlichen Vorlieben für Elemente zu ermitteln, aus denen sich Empfehlungen erstellen lassen.
+Eine der von Mahout bereitgestellten Funktionen ist eine Empfehlungs-Engine. Diese Engine akzeptiert Daten im Format `userID`, `itemId` und `prefValue` (Benutzervoreinstellung für das Element). Mahout verwendet die Daten, um die Benutzer mit ähnlichen Vorlieben für Elemente zu ermitteln, aus denen sich Empfehlungen erstellen lassen.
 
 Das folgende Beispiel ist eine vereinfachte exemplarische Vorgehensweise der Funktionsweise des Empfehlungsprozesses:
 
@@ -70,7 +70,7 @@ Die Daten in der Datei „user-ratings.txt“ der Benutzerbewertung haben die St
 
 ### <a name="run-the-job"></a>Ausführen des Auftrags
 
-Verwenden Sie das folgende Windows PowerShell-Skript zum Ausführen eines Auftrags, der das Mahout-Empfehlungsmodul mit den Filmdaten verwendet.
+Verwenden Sie das folgende Windows PowerShell-Skript zum Ausführen eines Auftrags, der die Mahout-Empfehlungs-Engine mit den Filmdaten verwendet:
 
 > [!NOTE]
 > Diese Datei fordert Sie zur Eingabe von Informationen auf, die zum Herstellen der Verbindung mit Ihrem HDInsight-Cluster und zum Ausführen von Aufträgen verwendet werden. Es kann einige Minuten dauern, bis die Aufträge abgeschlossen sind und die TXT-Ausgabedatei heruntergeladen wird.
@@ -89,7 +89,7 @@ Der folgende Text ist ein Beispiel für den Inhalt der Datei:
     3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
     4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-Die erste Spalte ist die `userID`. Die in "[" und "]" enthaltenen Werte sind `movieId`:`recommendationScore`.
+Die erste Spalte ist die `userID`. Die in „[“ und „]“ enthaltenen Werte sind `movieId`:`recommendationScore`.
 
 Das Skript lädt auch die Dateien `moviedb.txt` und `user-ratings.txt` herunter, die zur Formatierung der Ausgabe für bessere Lesbarkeit erforderlich sind.
 

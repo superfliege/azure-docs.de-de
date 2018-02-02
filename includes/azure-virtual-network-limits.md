@@ -31,7 +31,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |500K |
 | Netzwerkschnittstellen |350 |20000 |
 | Netzwerksicherheitsgruppen |100 |5.000 |
-| NSG-Regeln pro NSG |200 |500 |
+| NSG-Regeln pro NSG |200 |1000 |
 | Angegebene IP-Adressen und -Bereiche für die Quelle oder das Ziel in einer Sicherheitsgruppe |2000 |4000 |
 | Anwendungssicherheitsgruppen |200 |500 |
 | Anwendungssicherheitsgruppen pro IP-Konfiguration pro NIC |10 |20 |
@@ -55,7 +55,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Front-End-IP-Konfiguration, Basic | 10 | an den Support wenden |
 | Front-End-IP-Konfiguration, Standard | 10 | 600 |
 | Back-End-Pool, Basic | 100, eine Verfügbarkeitsgruppe | - |
-| Back-End-Pool, Standard | 1000, einzelnes VNET | an den Support wenden |
+| Back-End-Pool, Standard | 1000, einzelnes VNET | - |
 | Hochverfügbarkeitsports, Standard | 1 pro internem Front-End | - |
 
 [Wenden Sie sich an den Support](../articles/azure-supportability/resource-manager-core-quotas-request.md ), falls Sie Limits der Standardwerte erhöhen müssen.

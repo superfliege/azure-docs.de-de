@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: fb4a24fd758ad4b7231364f3ee7d56a9a2dbccb1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: aa77b1db03dc03f2b4fa1006a0fae823bb113615
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>Ermitteln des Typs des nächsten Hops über Azure CLI 2.0 mithilfe der Funktion „Nächster Hop“ in Azure Network Watcher
 
 > [!div class="op_single_selector"]
-> - [Azure-Portal](network-watcher-check-next-hop-portal.md)
+> - [Azure portal](network-watcher-check-next-hop-portal.md)
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
 > - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
@@ -39,7 +39,7 @@ Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-
 
 In diesem Szenario verwenden Sie die Azure CLI, um den Typ und die IP-Adresse des nächsten Hops zu finden.
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
 
 ## <a name="scenario"></a>Szenario
 
@@ -50,7 +50,7 @@ In dem in diesem Artikel beschriebenen Szenario wird „Nächster Hop“ verwend
 
 Zum Abrufen des nächsten Hops rufen wir das Cmdlet `az network watcher show-next-hop` auf. Wir geben im Cmdlet die Network Watcher-Ressourcengruppe, den NetworkWatcher, die VM-ID, die Quell-IP-Adresse und die Ziel-IP-Adresse an. In diesem Beispiel entspricht die Ziel-IP-Adresse einem virtuellen Computer in einem anderen virtuellen Netzwerk. Zwischen den beiden virtuellen Netzwerken liegt ein Gateway für virtuelle Netzwerke.
 
-Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an. Führen Sie dann den folgenden Befehl aus:
+Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#az_login) bei einem Azure-Konto an. Führen Sie dann den folgenden Befehl aus:
 
 ```azurecli
 az network watcher show-next-hop --resource-group <resourcegroupName> --vm <vmNameorID> --source-ip <source-ip> --dest-ip <destination-ip>

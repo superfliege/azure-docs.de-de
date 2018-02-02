@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: 254f1913f1b9cb1a165d007a1f4204f7783472c1
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: eaceab7d0dba7719452000cc4e1bd19baa28af9e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -137,7 +137,7 @@ Automatisieren Sie das Erstellen, Warten und Entfernen von Benutzeridentitäten 
 | Weitere Informationen zur Funktionsweise und Antworten auf häufig gestellte Fragen |[Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md) |
 | Konfigurieren der Zuordnung von Informationen zwischen Azure AD und Ihrer SaaS-App |[Anpassen von Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Schreiben von Ausdrücken für Attributzuordnungen](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
 | Aktivieren der automatisierten Bereitstellung in jeder App, die das SCIM-Protokoll unterstützt |[Einrichten der automatischen Bereitstellung von Benutzern für SCIM-fähige Apps](active-directory-scim-provisioning.md) |
-| Berichterstellung zu und Problembehandlung bei Benutzerbereitstellungen |[Berichterstellung zur automatischen Benutzerbereitstellung](active-directory-saas-provisioning-reporting.md)<br><br>[Benachrichtigungen zu Bereitstellungen](active-directory-saas-account-provisioning-notifications.md)<br><br>[Problembehandlung bei Benutzerbereitstellungen](active-directory-application-provisioning-content-map.md) |
+| Berichterstellung zu und Problembehandlung bei Benutzerbereitstellungen |[Berichterstellung zur automatischen Benutzerbereitstellung](active-directory-saas-provisioning-reporting.md)<br><br>[Problembehandlung bei Benutzerbereitstellungen](active-directory-application-provisioning-content-map.md) |
 | Einschränken der für eine Anwendung bereitgestellten Benutzer basierend auf deren Attributwerten |[Bereichsfilter](active-directory-saas-scoping-filters.md) |
 
 Die automatisierte Benutzerbereitstellung steht für alle Editionen von Azure AD für bis zu zehn Apps pro Benutzer zur Verfügung. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) unterstützt eine unbegrenzte Anzahl von Anwendungen. Wenn Ihre Organisation [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) oder [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) verwendet, können Sie [die Benutzerbereitstellung anhand von Gruppen verwalten](#managing-access-to-applications).

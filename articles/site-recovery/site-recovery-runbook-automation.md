@@ -14,16 +14,16 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 11/28/2017
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: af5de1c262bc55b1aa7513ca91b68eb50b44dbb7
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 986c3b62426949f1e4c2009aabbfec2f1130f821
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
 In diesem Artikel wird beschrieben, wie Azure Site Recovery in Azure Automation integriert wird, um Sie bei der Erweiterung Ihrer Wiederherstellungspläne zu unterstützen. Mit Wiederherstellungsplänen kann die Wiederherstellung von VMs orchestriert werden, die mit Site Recovery geschützt werden. Wiederherstellungspläne können sowohl für die Replikation in eine sekundäre Cloud als auch für die Replikation in Azure genutzt werden. Darüber hinaus tragen Wiederherstellungspläne zu einer **durchgängig exakten**, **wiederholbaren** und **automatisierten** Wiederherstellung bei. Wenn Sie für Ihre VMs ein Failover zu Azure durchführen, wird die Integration mit Azure Automation auf Ihre Wiederherstellungspläne erweitert. Sie können sie zum Ausführen von Runbooks verwenden, die leistungsfähige Automatisierungsaufgaben ermöglichen.
 
-Wenn Sie mit Azure Automation noch nicht vertraut sind, können Sie sich [registrieren](https://azure.microsoft.com/services/automation/) und [Beispielskripts herunterladen](https://azure.microsoft.com/documentation/scripts/). Weitere Informationen hierzu und zur Orchestrierung der Wiederherstellung in Azure mit [Wiederherstellungsplänen](https://azure.microsoft.com/blog/?p=166264) finden Sie unter [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
+Wenn Sie mit Azure Automation noch nicht vertraut sind, können Sie sich [registrieren](https://azure.microsoft.com/services/automation/) und [Beispielskripts herunterladen](https://azure.microsoft.com/documentation/scripts/). Weitere Informationen hierzu und zur Orchestrierung der Wiederherstellung in Azure mit [Wiederherstellungsplänen](./site-recovery-create-recovery-plans.md) finden Sie unter [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
 
 In diesem Artikel wird beschrieben, wie Sie Azure Automation-Runbooks in Ihre Wiederherstellungspläne integrieren können. Wir verwenden Beispiele zum Automatisieren von einfachen Aufgaben, für die bisher ein manueller Eingriff erforderlich war. Außerdem wird beschrieben, wie Sie eine Wiederherstellung mit mehreren Schritten in eine Single-Click-Wiederherstellungsaktion konvertieren.
 
@@ -256,8 +256,10 @@ Ein weiteres Beispiel ist im folgenden Video enthalten. Es wird veranschaulicht,
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md)
+* [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-create-runas-account.md)
 * [Übersicht über Azure Automation](http://msdn.microsoft.com/library/azure/dn643629.aspx "Übersicht über Azure Automation")
 * [Azure Automation-Beispielskripts](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation-Beispielskripts")
+
+## <a name="next-steps"></a>Nächste Schritte
+[Weitere Informationen](site-recovery-failover.md) zum Ausführen von Failovern

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc29d9a57f1dd452d2b4b77a53f52a5b66a25416
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
 
@@ -45,7 +45,7 @@ Folgende Rollen sind verfügbar:
 
 Dienstprinzipale ermöglichen auch monitorlose Verbindungen mit einer Registrierung in Pull- und Pushszenarien, z.B.:
 
-  * *Leser*: Containerbereitstellungen aus einer Registrierung für Orchestrierungssysteme, z.B. Kubernetes, DC/OS und Docker Swarm. Sie können auch Pullvorgänge aus Containerregistrierungen in andere Azure-Dienste durchführen, z.B. [AKS](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.md), [Service Fabric](/azure/service-fabric/) und weitere Dienste.
+  * *Leser*: Containerbereitstellungen aus einer Registrierung für Orchestrierungssysteme, z.B. Kubernetes, DC/OS und Docker Swarm. Sie können auch Pullvorgänge aus Containerregistrierungen in andere Azure-Dienste durchführen, z.B. [AKS](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) und weitere Dienste.
 
   * *Mitwirkender*: Lösungen für Continuous Integration und Continuous Deployment wie Visual Studio Team Services (VSTS) oder Jenkins, mit denen Containerimages erstellt und per Pushvorgang in eine Registrierung übertragen werden.
 

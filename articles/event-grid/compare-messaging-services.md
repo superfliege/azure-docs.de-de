@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 94771578d94b5b9bc23451049a78506e80c87d26
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: e082b9014e3734b554d3dae1cf8aecbaed65a28a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Wählen zwischen Azure-Diensten für die Nachrichtenübermittlung
 
@@ -32,7 +32,7 @@ Zwischen Diensten, die ein Ereignis übermitteln, und Diensten, die eine Nachric
 
 Ein Ereignis ist eine einfache Benachrichtigung über eine Aktion oder eine Zustandsänderung. Die Ereignisdaten geben Aufschluss darüber, was geschehen ist, enthalten aber nicht die Daten, die das Ereignis ausgelöst haben. Ein Ereignis kann beispielsweise Abonnenten darüber informieren, dass eine Datei erstellt wurde. Das Ereignis kann allgemeine Informationen zu der Datei enthalten, aber nicht die eigentliche Datei. Ereignisse lösen im Allgemeinen Ereignishandler für Aktionen in Echtzeit aus.
 
-### <a name="message"></a>Nachricht
+### <a name="message"></a>Message
 
 Bei einer Nachricht handelt es sich um Rohdaten, die von einem Dienst erzeugt wurden und für die Nutzung oder Speicherung an anderer Stelle vorgesehen sind. Die Nachricht enthält die Daten, die die Nachrichtenpipeline ausgelöst haben. Es gibt verschiedenste Arten von Meldungen – von einem E-Commerce-Auftrag bis hin zu Benutzertelemetrie. Anders als bei einer Ereignisbenachrichtigung erwartet der Herausgeber einer Nachricht unter Umständen eine Reaktion. Eine Nachricht kann beispielsweise Rohdaten enthalten und erwarten, dass der nächste Teil des Systems auf der Grundlage dieser Daten eine Datei erstellt.
 
@@ -42,7 +42,7 @@ Bei einer Nachricht handelt es sich um Rohdaten, die von einem Dienst erzeugt wu
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Reaktive Programmierung | Ereignisverteilung | Reagieren auf Statusänderungen |
 | Event Hubs | Big Data-Pipeline | Ereignisstreaming | Streamen von Telemetriedaten und verteilten Daten |
-| SERVICE BUS | Hochwertiges Unternehmensmessaging | Nachricht | Auftragsverarbeitung und Finanztransaktionen |
+| SERVICE BUS | Hochwertiges Unternehmensmessaging | Message | Auftragsverarbeitung und Finanztransaktionen |
 
 ### <a name="event-grid"></a>Event Grid
 

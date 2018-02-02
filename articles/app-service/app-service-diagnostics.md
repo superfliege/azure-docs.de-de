@@ -14,17 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: f027e7fbc5866a85e7f55460192a1c99a71e368e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9526817ce7969edcd5e9c56ec153bb4e3ebaa501
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Übersicht über die Azure App Service-Diagnose 
 
 Wenn Sie eine Webanwendung ausführen, möchten Sie auf möglicherweise auftretende Probleme vorbereitet sein – von Fehlern mit dem Code 500 bis zu Benachrichtigungen durch Benutzer, dass die Website ausgefallen ist. Die App Service-Diagnose ist eine intelligente und interaktive Komponente, mit der Sie Probleme bei Ihrer Web-App untersuchen können, ohne dass eine Konfiguration erforderlich ist. Falls bei Ihrer Web-App Probleme auftreten, zeigt die App Service-Diagnose den Fehler auf, damit Sie die richtigen Informationen finden, um das Problem einfacher und schneller behandeln und lösen zu können. 
  
 Diese Komponente ist besonders hilfreich, wenn innerhalb der letzten 24 Stunden Probleme bei der Web-App aufgetreten sind, jedoch stehen Ihnen alle Diagnosediagramme jederzeit für die Analyse zur Verfügung. Die rechte Spalte enthält zusätzliche Problembehandlungstools und Links zu hilfreicher Dokumentation und nützlichen Foren.
+
+## <a name="open-app-service-diagnostics"></a>Öffnen der App Service-Diagnose
+
+Navigieren Sie für den Zugriff auf die App Service-Diagnose zu Ihrer App Service-Web-App im [Azure-Portal](https://portal.azure.com). 
+
+Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**.
 
 ![Startseite](./media/app-service-diagnostics/Homepage1.png)
 
@@ -50,8 +56,3 @@ Wenn Sie nach dem Ausführen einer [Integritätsüberprüfung](#health-checkup) 
 
 ![Diagnosebericht](./media/app-service-diagnostics/DiagnosticReport5.png)
 
-## <a name="open-app-service-diagnostics"></a>Öffnen der App Service-Diagnose
-
-Navigieren Sie für den Zugriff auf die App Service-Diagnose zu Ihrer App Service-Web-App im [Azure-Portal](https://portal.azure.com). 
-
-Klicken Sie im linken Navigationsbereich auf **Diagnose und Problembehandlung**.

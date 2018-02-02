@@ -29,7 +29,7 @@ In Bash erhalten vorhandene Dateifreigaben ein für Sie erstelltes 5-GB-Image zu
 ![Einstellung „Ressourcengruppe“](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 
 ### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Beschränken der Ressourcenerstellung mit einer Azure-Ressourcenrichtlinie
-Speicherkonten, die Sie in Cloud Shell erstellen, erhalten das Tag `ms-resource-usage:azure-cloud-shell`. Wenn Sie nicht möchten, dass Benutzer Speicherkonten in Cloud Shell erstellen, können Sie eine [Azure-Ressourcenrichtlinie für Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags) erstellen, die durch das jeweilige Tag ausgelöst werden.
+Speicherkonten, die Sie in Cloud Shell erstellen, erhalten das Tag `ms-resource-usage:azure-cloud-shell`. Wenn Sie nicht möchten, dass Benutzer Speicherkonten in Cloud Shell erstellen, können Sie eine [Azure-Ressourcenrichtlinie für Tags](../articles/azure-policy/json-samples.md) erstellen, die durch das jeweilige Tag ausgelöst werden.
 
 ## <a name="supported-storage-regions"></a>Unterstützte Speicherregionen
 Zugeordnete Azure-Speicherkonten müssen sich in derselben Region wie der Cloud Shell-Computer befinden, auf dem Sie diese bereitstellen.

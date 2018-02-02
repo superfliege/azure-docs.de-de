@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 58f23406f20f6b0e75ec65197e4cebb6e4e788ac
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e1e8b019fe4632b0b6ac02888b562d6718c14fcc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Installieren der Erweiterung Durable Functions und Beispiele (Azure Functions)
 
@@ -123,7 +123,7 @@ Falls gewünscht, können Sie das Azure-Portal für die Entwicklung von Durable 
 
 1. Erstellen Sie eine neue Funktionen-App unter [functions.azure.com](https://functions.azure.com/signin).
 
-2. Konfigurieren Sie die Funktionen-App für die [Verwendung der 2.0-Laufzeitversion ](functions-versions.md).
+2. Konfigurieren Sie die Funktionen-App für die [Verwendung der 2.0-Laufzeitversion ](set-runtime-version.md).
 
 3. Erstellen Sie eine neue Funktion, indem Sie **Eigene benutzerdefinierte Funktion erstellen** auswählen.
 

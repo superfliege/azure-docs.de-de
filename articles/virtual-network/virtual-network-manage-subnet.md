@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.openlocfilehash: 85ba6ef3e51c339a77eb9b4198c4f87e2a64cf09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 413ec2ef4fcc7752b95984a209818eeba535746e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke
 
@@ -35,7 +35,7 @@ In diesem Artikel wird beschrieben, wie Sie für über das Azure Resource Manage
 
 Bevor Sie mit den Aufgaben, die in diesem Artikel beschrieben werden, beginnen, müssen die folgenden Voraussetzungen erfüllt sein:
 
-- Wenn Sie noch nicht mit der Arbeit mit virtuellen Netzwerken vertraut sind, sollten Sie die Übung unter [Erstellen Ihres ersten virtuellen Azure-Netzwerks](virtual-network-get-started-vnet-subnet.md) durchgehen. Diese Übung hilft Ihnen dabei, sich mit virtuellen Netzwerken vertraut zu machen.
+- Wenn Sie noch nicht mit der Arbeit mit virtuellen Netzwerken vertraut sind, sollten Sie die Übung unter [Erstellen Ihres ersten virtuellen Azure-Netzwerks](quick-create-portal.md) durchgehen. Diese Übung hilft Ihnen dabei, sich mit virtuellen Netzwerken vertraut zu machen.
 - Weitere Informationen zu Grenzwerten für virtuelle Netzwerke finden Sie in [Azure-Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Melden Sie sich mit Ihrem Azure-Konto beim Azure-Portal, der Azure-Befehlszeilenschnittstelle (Azure CLI) oder bei Azure PowerShell an. Falls Sie noch kein Azure-Konto besitzen, registrieren Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free).
 - Wenn Sie PowerShell-Befehle verwenden möchten, um die Aufgaben in diesem Artikel auszuführen, müssen Sie zunächst [Azure PowerShell installieren und konfigurieren](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass die neueste Version der Azure PowerShell-Cmdlets installiert ist. Hilfe zu den Beispielen für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
@@ -64,7 +64,7 @@ So fügen Sie ein Subnetz hinzu
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Azure-Befehlszeilenschnittstelle|[az network vnet subnet create](/cli/azure/network/vnet/subnet?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
 |PowerShell|[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json), [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -82,7 +82,7 @@ Sie ändern Netzwerksicherheitsgruppen, Routingtabellen und den Benutzerzugriff 
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Azure-Befehlszeilenschnittstelle|[az network vnet subnet update](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
 |PowerShell|[Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -92,7 +92,7 @@ Sie ändern Netzwerksicherheitsgruppen, Routingtabellen und den Benutzerzugriff 
 
 Sie können ein Subnetz erst löschen, wenn es keine Ressourcen mehr enthält. Falls das Subnetz noch Ressourcen enthält, müssen Sie diese Ressourcen zunächst löschen, bevor das Subnetz gelöscht werden kann. Die Schritte zum Löschen einer Ressource variieren abhängig von der Ressource. Informationen zum Löschen von Ressourcen in Subnetzen finden Sie in der Dokumentation zum jeweiligen Ressourcentyp, den Sie löschen möchten. So löschen Sie ein Subnetz
 
-1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+1. Melden Sie sich beim [Portal](https://portal.azure.com) mit einem Konto an, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im Portal in das Suchfeld **Virtuelle Netzwerke** ein. Klicken Sie in den Suchergebnissen auf **Virtuelle Netzwerke**.
 3. Klicken Sie auf dem Blatt **Virtuelle Netzwerke** auf das virtuelle Netzwerk, aus dem Sie ein Subnetz löschen möchten.
 4. Klicken Sie auf dem Blatt des virtuellen Netzwerks unter **Einstellungen** auf **Subnetze**.
@@ -100,11 +100,11 @@ Sie können ein Subnetz erst löschen, wenn es keine Ressourcen mehr enthält. F
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Azure-Befehlszeilenschnittstelle|[az network vnet delete](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
 |PowerShell|[Remove-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/remove-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie einen virtuellen Computer in einem Subnetz erstellen möchten, lesen Sie unter [Erstellen eines virtuellen Netzwerks und Bereitstellen von virtuellen Computern im Subnetz](virtual-network-get-started-vnet-subnet.md#create-vms) nach.
+Wenn Sie einen virtuellen Computer in einem Subnetz erstellen möchten, lesen Sie unter [Erstellen eines virtuellen Netzwerks und Bereitstellen von virtuellen Computern im Subnetz](quick-create-portal.md#create-virtual-machines) nach.

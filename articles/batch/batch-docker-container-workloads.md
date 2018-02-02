@@ -2,19 +2,19 @@
 title: Containerworkloads in Azure Batch | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie Anwendungen aus Containerimages in Azure Batch ausführen."
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 12/01/2017
-ms.author: v-dotren
-ms.openlocfilehash: 1795bdde5506f599849a30d4e59ed7b916595ac4
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: danlep
+ms.openlocfilehash: 2fa5f9335a4d00f489f11c0db23322ab971a224f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
 
@@ -55,7 +55,7 @@ Für Linux-Containerworkloads unterstützt Batch derzeit nur benutzerdefinierte 
 
 Sie können [Docker Community Edition (CE)](https://www.docker.com/community-edition) oder [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition) verwenden.
 
-Wenn Sie die GPU-Leistung von virtuellen Azure-NC- oder -NV-Computern nutzen möchten, müssen Sie NVIDIA-Treiber auf dem Image installieren. Außerdem müssen Sie das Docker-Modul-Hilfsprogramm für NVIDIA-GPUs, [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker), installieren und ausführen.
+Wenn Sie die GPU-Leistung von virtuellen Azure-NC- oder -NV-Computern nutzen möchten, müssen Sie NVIDIA-Treiber auf dem Image installieren. Außerdem müssen Sie das Docker-Engine-Hilfsprogramm für NVIDIA-GPUs, [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker), installieren und ausführen.
 
 Verwenden Sie für den Zugriff auf das Azure RDMA-Netzwerk virtuelle Computer der folgenden Größen: A8, A9, H16r, H16mr oder NC24r. Erforderliche RDMA-Treiber werden in den CentOS 7.3 HPC- und Ubuntu 16.04 LTS-Images aus dem Azure Marketplace installiert. Zum Ausführen von MPI-Workloads können zusätzliche Konfigurationsschritte erforderlich sein. Informationen finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md).
 
@@ -112,7 +112,7 @@ Mithilfe des Pull-Vorgangs (oder Vorabrufs) können Sie Containerimages entweder
 
 ### <a name="pool-without-prefetched-container-images"></a>Pool ohne vorabgerufene Containerimages
 
-Zum Konfigurieren des Pools ohne vorabgerufene Containerimages definieren Sie die Objekte `ContainerConfiguration` und `VirtualMachineConfiguration`, wie im folgenden Beispiel gezeigt. Bei diesem und den folgenden Beispielen wird davon ausgegangen, dass Sie ein benutzerdefiniertes Ubuntu 16.04 LTS-Image mit installiertem Docker-Modul verwenden.
+Zum Konfigurieren des Pools ohne vorabgerufene Containerimages definieren Sie die Objekte `ContainerConfiguration` und `VirtualMachineConfiguration`, wie im folgenden Beispiel gezeigt. Bei diesem und den folgenden Beispielen wird davon ausgegangen, dass Sie ein benutzerdefiniertes Ubuntu 16.04 LTS-Image mit installierter Docker-Engine verwenden.
 
 ```csharp
 // Specify container configuration

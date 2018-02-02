@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: raynew
-ms.openlocfilehash: ceb4b13e326b24360799c1a7a25fe48f213fabd7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1761da23c669d5370d12e5619e09b56c8b00c9a6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -64,7 +64,7 @@ Vergewissern Sie sich, dass Ihr Azure-Konto über die Berechtigungen für die Re
 
 ### <a name="set-up-an-azure-network"></a>Richten Sie ein Azure-Netzwerk ein
 
-Richten Sie ein [Azure-Netzwerk](../virtual-network/virtual-network-get-started-vnet-subnet.md) ein.
+Richten Sie ein [Azure-Netzwerk](../virtual-network/quick-create-portal.md) ein.
 
 - Azure-VMs werden in dieses Netzwerk platziert, wenn sie nach dem Failover erstellt werden.
 - Das Netzwerk muss sich in der gleichen Region befinden wie der Recovery Services-Tresor.
@@ -158,7 +158,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 
 Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet. Standardmäßig wird für das Failback automatisch eine passende Richtlinie erstellt. Bei Verwendung der Replikationsrichtlinie **rep-policy** wird z.B. die Failbackrichtlinie **rep-policy-failback** erstellt. Diese Richtlinie wird erst verwendet, wenn Sie ein Failback über Azure initiieren.
 
-## <a name="enable-replication"></a>Replikation aktivieren
+## <a name="enable-replication"></a>Aktivieren der Replikation
 
 Aktivieren Sie die Replikation für jeden Server.
 

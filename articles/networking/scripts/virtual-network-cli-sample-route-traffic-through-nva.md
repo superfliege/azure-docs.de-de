@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
-ms.openlocfilehash: 78091b515c00591a4af8d807945475b6be50188a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af6e9d55038acba194f3cc631ff1b4e2e371852c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
@@ -47,20 +47,20 @@ az group delete --name MyResourceGroup --yes
 
 In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengruppe, ein virtuelles Netzwerk und Netzwerksicherheitsgruppen zu erstellen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
-| [az group create](/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az network vnet create](/cli/azure/network/vnet#create) | Erstellt ein virtuelles Azure-Netzwerk und ein Front-End-Subnetz. |
-| [az network subnet create](/cli/azure/network/vnet/subnet#create) | Erstellt Back-End- und DMZ-Subnetz. |
-| [az network public-ip create](/cli/azure/network/public-ip#create) | Erstellt eine öffentliche IP-Adresse für den Zugriff auf den virtuellen Computer aus dem Internet. |
-| [az network nic create](/cli/azure/network/nic#create) | Erstellt eine virtuelle Netzwerkschnittstelle und aktiviert die IP-Weiterleitung dafür. |
-| [az network nsg create](/cli/azure/network/nsg#create) | Erstellt eine Netzwerksicherheitsgruppe (NSG). |
-| [az network nsg rule create](/cli/azure/network/nsg/rule#create) | Erstellt NSG-Regeln, die eingehende HTTP- und HTTPS-Ports für den virtuellen Computer ermöglichen. |
-| [az network vnet subnet update](/cli/azure/network/vnet/subnet#update)| Ordnet die NSGs und Routentabellen Subnetzen zu. |
-| [az network route-table create](/cli/azure/network/route-table#create)| Erstellt eine Routingtabelle für alle Routen. |
-| [az network route-table route create](/cli/azure/network/route-table/route#create)| Erstellt die Routen zum Weiterleiten von Datenverkehr zwischen Subnetzen und dem Internet über den virtuellen Computer. |
-| [az vm create](/cli/azure/vm#create) | Erstellt einen virtuellen Computer und fügt ihm eine NIC an. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest. |
-| [az group delete](/cli/azure/group#delete) | Löscht eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | Erstellt ein virtuelles Azure-Netzwerk und ein Front-End-Subnetz. |
+| [az network subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | Erstellt Back-End- und DMZ-Subnetz. |
+| [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | Erstellt eine öffentliche IP-Adresse für den Zugriff auf den virtuellen Computer aus dem Internet. |
+| [az network nic create](/cli/azure/network/nic#az_network_nic_create) | Erstellt eine virtuelle Netzwerkschnittstelle und aktiviert die IP-Weiterleitung dafür. |
+| [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | Erstellt eine Netzwerksicherheitsgruppe (NSG). |
+| [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | Erstellt NSG-Regeln, die eingehende HTTP- und HTTPS-Ports für den virtuellen Computer ermöglichen. |
+| [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)| Ordnet die NSGs und Routentabellen Subnetzen zu. |
+| [az network route-table create](/cli/azure/network/route-table#az_network_route_table_create)| Erstellt eine Routingtabelle für alle Routen. |
+| [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create)| Erstellt die Routen zum Weiterleiten von Datenverkehr zwischen Subnetzen und dem Internet über den virtuellen Computer. |
+| [az vm create](/cli/azure/vm#az_vm_create) | Erstellt einen virtuellen Computer und fügt ihm eine NIC an. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest. |
+| [az group delete](/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
