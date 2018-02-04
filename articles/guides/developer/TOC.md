@@ -1,7 +1,5 @@
 # Übersicht
 ## [Entwicklerhandbuch](azure-developer-guide.md) 
-## [Übersicht über Azure-Dienste](../../fundamentals-introduction-to-azure.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
-## [Portalübersicht](../../azure-portal-overview.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [SDKs und Tools](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 
 # Schnellstart
@@ -14,7 +12,7 @@
 ### [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio)
 ### [Container Service](https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment) 
 
-# Lernprogramme
+# Tutorials
 ## Erstellen und Bereitstellen einer Web-App
 ### [.NET mit SQL-Datenbank](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
 ### [Node.js mit MongoDB-Datenbank](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
@@ -46,7 +44,7 @@
 ## [Übersicht über Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)
 
 # Anleitungen
-## Planen
+## Plan
 ### [Architekturen von Webanwendungen](https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/)
 ### [VM-Architekturen](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/)
 ### [Herstellen von Verbindungen mit lokalen Netzwerken](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
@@ -92,7 +90,7 @@
 ### [Skalieren einer Linux-VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-create-vmss)
 ### [Skalieren eines virtuellen Windows-Computers](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-create-vmss)
 
-# Referenz
+# Verweis
 ## [REST](https://docs.microsoft.com/rest/api/)
 ## SDKs
 ### [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
@@ -102,11 +100,11 @@
 ### [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/)
 ### [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README)
 ## Befehlszeilenschnittstellen
-### [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/)
+### [Azure-CLI](https://docs.microsoft.com/cli/azure/)
 ### [Azure PowerShell](https://docs.microsoft.com/powershell/)
 ## [Abrechnung](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview)
 
-# Ressourcen
+# angeben
 ## [Azure-Grenzwerte und -Kontingente](../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [Azure-Regionen](https://azure.microsoft.com/regions/)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

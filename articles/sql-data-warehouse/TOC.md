@@ -9,6 +9,10 @@
 ## Anhalten und Fortsetzen von Computevorgängen
 ### [Portal](pause-and-resume-compute-portal.md)
 ### [PowerShell](pause-and-resume-compute-powershell.md)
+## Skalieren von Computeressourcen
+### [Portal](quickstart-scale-compute-portal.md)
+### [PowerShell](quickstart-scale-compute-powershell.md)
+### [T-SQL](quickstart-scale-compute-tsql.md)
 
 
 # Tutorials
@@ -113,8 +117,6 @@
 ### [Analysieren Ihrer Workload](analyze-your-workload.md)
 
 ## Horizontales Skalieren
-### [Computeverwaltung – Portal](sql-data-warehouse-manage-compute-portal.md)
-### [Computeverwaltung – PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [Computeverwaltung – REST-API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [Automatisieren von Computeebenen](manage-compute-with-azure-functions.md)
 
