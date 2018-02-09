@@ -14,11 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 50cf58c7d2d9be4644ada4feae02d0d5219a3fd6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: dbf531302e53ca52e24dbd2ba954defad391060f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
@@ -110,10 +110,11 @@ In diesem Szenario vertraut (mindestens) eine Ressourcengesamtstruktur allen Kon
 Für einige Office 365-Workloads gelten bestimmte Einschränkungen für unterstützte Topologien:
 
 | Workload | Einschränkungen |
---------- | ---------
+| --------- | --------- |
 | Exchange Online | Weitere Informationen zu Hybridtopologien, die von Exchange Online unterstützt werden, finden Sie unter [Hybridbereitstellungen mit mehreren Active Directory-Gesamtstrukturen](https://technet.microsoft.com/library/jj873754.aspx). |
 | Skype for Business | Wenn Sie mehrere lokale Gesamtstrukturen verwenden, wird nur die Topologie mit Kontoressourcengesamtstruktur unterstützt. Weitere Informationen finden Sie unter [Anforderungen für die Umgebung für Skype for Business Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
 
+Wenn es sich um eine größere Organisation handelt, sollten Sie die Verwendung des Features [Office 365 PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) in Erwägung ziehen. Mit diesem Feature können Sie festlegen, in welcher Datencenterregion sich die Ressourcen des Benutzers befinden.
 
 ## <a name="staging-server"></a>Stagingserver
 ![Stagingserver in einer Topologie](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)

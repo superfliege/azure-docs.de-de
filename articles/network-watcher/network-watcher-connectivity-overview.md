@@ -1,10 +1,10 @@
 ---
-title: "Einführung in die Konnektivitätsprüfung in Azure Network Watcher | Microsoft-Dokumentation"
-description: "Diese Seite enthält eine Übersicht über die Konnektivitätsfunktion von Network Watcher."
+title: "Einführung in die Problembehandlung für Verbindungen in Azure Network Watcher | Microsoft-Dokumentation"
+description: "Diese Seite enthält eine Übersicht über die Network Watcher-Funktion zur Problembehandlung für Verbindungen."
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 16ceef9c923b6a933a5caf752991b466346e0ebc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8825af71620722065c03a28c93e113876c5aa71
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="introduction-to-connectivity-check-in-azure-network-watcher"></a>Einführung in die Konnektivitätsprüfung in Azure Network Watcher
+# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Einführung in die Problembehandlung für Verbindungen in Azure Network Watcher
 
-Die Konnektivitätsfunktion von Network Watcher bietet die Möglichkeit, eine direkte TCP-Verbindung von einem virtuellen Computer zu einem anderen virtuellen Computer (VM), einem vollqualifizierten Domänennamen (FQDN), einem URI oder einer IPv4-Adresse zu überprüfen. Netzwerkszenarios sind komplex: Sie werden mithilfe von Netzwerksicherheitsgruppen, Firewalls, benutzerdefinierten Routen und Ressourcen, die von Azure bereitgestellt werden, implementiert. Komplexe Konfigurationen stellen eine große Herausforderung bei der Behandlung von Konnektivitätsproblemen dar. Network Watcher trägt dazu bei, die zum Suchen und Erkennen von Konnektivitätsproblemen benötigte Zeit zu verkürzen. Die zurückgegebenen Ergebnisse können Einblicke in die Frage geben, ob ein Konnektivitätsproblem auf ein Problem mit einer Plattform oder einer Benutzerkonfiguration zurückzuführen ist. Die Konnektivität kann mit [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md) und [REST-API](network-watcher-connectivity-rest.md) überprüft werden.
+Das Feature zur Problembehandlung von Verbindungen von Network Watcher bietet die Möglichkeit, eine direkte TCP-Verbindung von einem virtuellen Computer mit einem anderen virtuellen Computer (VM), einem vollqualifizierten Domänennamen (FQDN), einem URI oder einer IPv4-Adresse zu überprüfen. Netzwerkszenarios sind komplex: Sie werden mithilfe von Netzwerksicherheitsgruppen, Firewalls, benutzerdefinierten Routen und Ressourcen, die von Azure bereitgestellt werden, implementiert. Komplexe Konfigurationen stellen eine große Herausforderung bei der Behandlung von Konnektivitätsproblemen dar. Network Watcher trägt dazu bei, die zum Suchen und Erkennen von Konnektivitätsproblemen benötigte Zeit zu verkürzen. Die zurückgegebenen Ergebnisse können Einblicke in die Frage geben, ob ein Konnektivitätsproblem auf ein Problem mit einer Plattform oder einer Benutzerkonfiguration zurückzuführen ist. Die Konnektivität kann mit [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md) und [REST-API](network-watcher-connectivity-rest.md) überprüft werden.
 
 > [!IMPORTANT]
-> Für die Konnektivitätsprüfung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
+> Für die Problembehandlung für Verbindungen ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="response"></a>Antwort
+## <a name="response"></a>response
 
-Die folgende Tabelle zeigt die Eigenschaften, die nach Abschluss einer Konnektivitätsprüfung zurückgegeben werden:
+Die folgende Tabelle zeigt die Eigenschaften, die nach Ausführung der Problembehandlung für Verbindungen zurückgegeben werden:
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |ConnectionStatus     | Status der Konnektivitätsprüfung. Mögliche Ergebnisse sind **Erreichbar** und **Nicht erreichbar**.        |
 |AvgLatencyInMs     | Durchschnittliche Wartezeit während der Konnektivitätsprüfung in Millisekunden. (Wird nur angezeigt, wenn der Status „Erreichbar“ ist)        |
@@ -47,7 +47,7 @@ Die folgende Tabelle zeigt die Eigenschaften, die nach Abschluss einer Konnektiv
 |Hops[].Issues | Auflistung von Problemen, die während der Überprüfung auf diesem Hop aufgetreten sind. Wert ist leer, wenn keine Probleme aufgetreten sind.|
 |Hops[].Issues[].Origin | Auf dem aktuellen Hop, wo das Problem aufgetreten ist. Mögliche Werte:<br/> **Eingehend**: Problem liegt auf der Verbindung vom vorherigen Hop zum aktuellen Hop.<br/>**Ausgehend**: Problem liegt auf der Verbindung vom aktuellen Hop zum nächsten Hop.<br/>**Lokal**: Problem befindet sich auf dem aktuellen Hop.|
 |Hops[].Issues[].Severity | Schweregrad des gefundenen Problems. Mögliche Werte sind **Error** und **Warning**. |
-|Hops[].Issues[].Type |Typ des gefundenen Problems. Mögliche Werte: <br/>**CPU**<br/>**Arbeitsspeicher**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Type |Typ des gefundenen Problems. Mögliche Werte: <br/>**CPU**<br/>**Memory**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |Details zu dem gefundenen Problem.|
 |Hops[].Issues[].Context[].key |Schlüssel des zurückgegebenen Schlüssel-Wert-Paars.|
 |Hops[].Issues[].Context[].value |Wert des zurückgegebenen Schlüssel-Wert-Paars.|
@@ -71,9 +71,9 @@ Im Folgenden finden Sie ein Beispiel für ein Problem, das auf einem Hop gefunde
 ```
 ## <a name="fault-types"></a>Fehlertypen
 
-Die Konnektivitätsprüfung gibt Typen der Fehler bei der Verbindung zurück. Die folgende Tabelle listet die aktuellen zurückgegebenen Fehlertypen auf:
+Die Problembehandlung für Verbindungen gibt Fehlertypen der Verbindung zurück. Die folgende Tabelle listet die aktuellen zurückgegebenen Fehlertypen auf:
 
-|Typ  |Beschreibung  |
+|Typ  |BESCHREIBUNG  |
 |---------|---------|
 |CPU     | Hohe CPU-Auslastung.       |
 |Arbeitsspeicher     | Hohe Speicherauslastung.       |
@@ -84,8 +84,4 @@ Die Konnektivitätsprüfung gibt Typen der Fehler bei der Verbindung zurück. Di
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-Eine Anleitung zum Überprüfen der Konnektivität zu einer Ressource finden Sie unter: [Check connectivity with Azure Network Watcher (Überprüfen der Konnektivität mit Azure Network Watcher)](network-watcher-connectivity-powershell.md).
-
-<!--Image references-->
-[1]: ./media/network-watcher-next-hop-overview/figure1.png
-
+Lesen Sie, wie Sie mit dem [Azure-Portal](network-watcher-connectivity-portal.md), [PowerShell](network-watcher-connectivity-powershell.md), der [Azure CLI](network-watcher-connectivity-cli.md) oder der [REST-API](network-watcher-connectivity-rest.md) eine Problembehandlung für Verbindungen ausführen.

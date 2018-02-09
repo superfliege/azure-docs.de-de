@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: bdabdbbb3037f3325c107a4e6148873a923b4ded
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 2ecb8f8068043936d00f2c9752666490137414e3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Erstellen Ihrer ersten Anwendung für einen zustandsbehafteten zuverlässigen Service Fabric-Dienst mit C#
 
@@ -81,6 +81,17 @@ Wenn der Cluster bereit ist, erhalten Sie eine Benachrichtigung von der Taskleis
 Sobald die Anwendung gestartet wird, startet Visual Studio automatisch die **Diagnoseereignisanzeige**, in der die Ausgabe der Ablaufverfolgung Ihrer Dienste angezeigt wird.
    
 ![Diagnoseereignisanzeige][5]
+
+>[!NOTE]
+>In der Diagnoseereignisanzeige sollten automatisch Ereignisse nachverfolgt werden. Sollte eine manuelle Konfiguration erforderlich sein, öffnen Sie zunächst die Datei `ServiceEventSource.cs` aus dem Projekt **MyStatefulService**. Kopieren Sie am oberen Rand der Klasse `ServiceEventSource` den Wert des Attributs `EventSource`. Im Beispiel weiter unten hat die Ereignisquelle den Namen `"MyCompany-MyApplication-MyStatefulService"`. In Ihrem Szenario lautet der Name möglicherweise anders.
+>
+>![Ermitteln des Namens der Ereignisquelle][service-event-source-name]
+>
+>Klicken Sie auf der Registerkarte „Diagnoseereignisanzeige“ auf das Zahnradsymbol, um das Dialogfeld **ETW-Anbieter** zu öffnen. Fügen Sie den soeben kopierten Namen der Ereignisquelle in das Eingabefeld **ETW-Anbieter** ein. Klicken Sie anschließend auf die Schaltfläche **Anwenden**. Die Nachverfolgung von Ereignissen wird automatisch gestartet.
+>
+>![Festlegen des Namens der Diagnoseereignisquelle][setting-event-source-name]
+>
+>Im Fenster mit den Diagnoseereignissen sollten nun Ereignisse angezeigt werden.
 
 In der verwendeten Vorlage für den zustandsbehafteten Dienst wird ein Zählerwert angezeigt, der in der `RunAsync`-Methode von **MyStatefulService.cs** inkrementiert wird.
 
@@ -146,3 +157,5 @@ Informieren Sie sich ausführlicher über [Reliable Services](service-fabric-rel
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 [cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
+[service-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/event-source-attribute-value.png
+[setting-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/setting-event-source-name.png

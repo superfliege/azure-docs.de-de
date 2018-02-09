@@ -12,17 +12,17 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: cb4df0495420776ba2ff7b471c44c4ca3aa1dcff
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 09345b32e80008d4afe61078bd4d272fafe631d2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 
-In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Event Hubs-Namespace mit einer einzelnen Event Hub-Instanz erstellt und das [Capture-Feature](event-hubs-capture-overview.md) für den Event Hub aktiviert. Der Artikel erklärt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
+In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen [Event Hubs](event-hubs-what-is-event-hubs.md)-Namespace mit einer einzelnen Event Hub-Instanz erstellt und das [Capture-Feature](event-hubs-capture-overview.md) für die Event Hub-Instanz aktiviert. Der Artikel erklärt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
 Außerdem erfahren Sie in diesem Artikel, wie Sie angeben, dass Ereignisse abhängig vom gewählten Ziel entweder in Azure Storage Blobs oder in einer Azure Data Lake Store-Instanz erfasst werden sollen.
 
@@ -42,11 +42,7 @@ Die vollständigen Vorlagen finden Sie unter den folgenden GitHub-Links:
 
 ## <a name="what-will-you-deploy"></a>Was möchten Sie bereitstellen?
 
-Mit dieser Vorlage können Sie einen Event Hubs-Namespace mit einem Event Hub bereitstellen und [Event Hubs Capture ](event-hubs-capture-overview.md) aktivieren.
-
-[Event Hubs](event-hubs-what-is-event-hubs.md) ist ein Dienst zur Ereignisverarbeitung, der riesige Mengen an Ereignis- und Telemetriedaten in Azure erfassen kann und gleichzeitig eine niedrige Latenz und hohe Zuverlässigkeit bietet. Mit Event Hubs Capture können Sie die Streamingdaten in Event Hubs automatisch innerhalb eines Zeit- oder Größenintervalls Ihrer Wahl an Azure Blob Storage oder Azure Data Lake Store übermitteln.
-
-Klicken Sie auf die folgende Schaltfläche, um Event Hubs Capture mit Azure Storage als Ziel zu aktivieren:
+Mit dieser Vorlage können Sie einen Event Hubs-Namespace mit einem Event Hub bereitstellen und [Event Hubs Capture ](event-hubs-capture-overview.md) aktivieren. Mit Event Hubs Capture können Sie die Streamingdaten in Event Hubs automatisch innerhalb eines Zeit- oder Größenintervalls Ihrer Wahl an Azure Blob Storage oder Azure Data Lake Store übermitteln. Klicken Sie auf die folgende Schaltfläche, um Event Hubs Capture mit Azure Storage als Ziel zu aktivieren:
 
 [![Bereitstellen in Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
@@ -62,7 +58,7 @@ Die Vorlage definiert die folgenden Parameter:
 
 ### <a name="eventhubnamespacename"></a>eventHubNamespaceName
 
-Der Name des zu erstellenden [Event Hubs-Namespace](event-hubs-create.md).
+Der Name des zu erstellenden Event Hubs-Namespace.
 
 ```json
 "eventHubNamespaceName":{  
@@ -75,7 +71,7 @@ Der Name des zu erstellenden [Event Hubs-Namespace](event-hubs-create.md).
 
 ### <a name="eventhubname"></a>eventHubName
 
-Der Name des im [Event Hubs-Namespace](event-hubs-create.md) erstellten Event Hubs.
+Der Name des im Event Hubs-Namespace erstellten Event Hubs.
 
 ```json
 "eventHubName":{  

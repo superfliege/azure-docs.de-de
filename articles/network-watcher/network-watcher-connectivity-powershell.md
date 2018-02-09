@@ -1,10 +1,10 @@
 ---
-title: "Überprüfen der Konnektivität mit Azure Network Watcher – PowerShell | Microsoft-Dokumentation"
-description: "Auf dieser Seite erfahren Sie, wie Sie mithilfe von PowerShell die Konnektivität mit Network Watcher testen."
+title: "Problembehandlung für Verbindungen mit Azure Network Watcher – PowerShell | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe von PowerShell die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen."
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: e3ffaca0eab20c973df4969b22dbf56300d0b1ed
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: cdbce4bde08cbff28b9b7c173a203bf699f9b876
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>Überprüfen der Konnektivität mit Azure Network Watcher mithilfe von PowerShell
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und PowerShell
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
@@ -27,22 +27,19 @@ ms.lasthandoff: 01/19/2018
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure-REST-API](network-watcher-connectivity-rest.md)
 
-Erfahren Sie, wie Sie mit der Konnektivität überprüfen können, ob von einem virtuellen Computer zu einem bestimmten Endpunkt eine direkte TCP-Verbindung hergestellt werden kann.
+Hier erfahren Sie, wie Sie mit der Problembehandlung für Verbindungen überprüfen können, ob von einem virtuellen Computer eine direkte TCP-Verbindung mit einem bestimmten Endpunkt hergestellt werden kann.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressourcen verfügen:
-
-* Eine Instanz von Network Watcher in der Region, in der Sie die Konnektivität überprüfen möchten
-
-* Virtuelle Computer, mit denen Sie die Konnektivität überprüfen.
+* Eine Instanz von Network Watcher in der Region, in der Sie die Problembehandlung für eine Verbindung ausführen möchten
+* Virtuelle Computer zum Ausführen der Problembehandlung für Verbindungen
 
 > [!IMPORTANT]
-> Für die Konnektivitätsprüfung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
+> Für die Problembehandlung für Verbindungen ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Überprüfen der Konnektivität zu einem virtuellen Computer
 
-In diesem Beispiel wird die Konnektivität zu einem virtuellen Zielcomputer über Port 80 überprüft. Für dieses Beispiel muss Network Watcher in der Region mit der Quell-VM aktiviert sein.  
+In diesem Beispiel wird die Verbindung mit einem virtuellen Zielcomputer über Port 80 überprüft. Für dieses Beispiel muss Network Watcher in der Region mit der Quell-VM aktiviert sein.  
 
 ### <a name="example"></a>Beispiel
 
@@ -201,7 +198,7 @@ Hops             : [
 
 ## <a name="check-website-latency"></a>Überprüfen der Websitelatenz
 
-Im folgenden Beispiel wird die Konnektivität zu einer Website überprüft. Für dieses Beispiel muss Network Watcher in der Region mit der Quell-VM aktiviert sein.  
+Im folgenden Beispiel wird die Konnektivität mit einer Website überprüft. Für dieses Beispiel muss Network Watcher in der Region mit der Quell-VM aktiviert sein.  
 
 ### <a name="example"></a>Beispiel
 
@@ -254,7 +251,7 @@ Hops             : [
 
 ## <a name="check-connectivity-to-a-storage-endpoint"></a>Überprüfen der Konnektivität zu einem Speicherendpunkt
 
-Im folgenden Beispiel wird die Konnektivität von einem virtuellen Computer zu einem Blobspeicherkonto getestet. Für dieses Beispiel muss Network Watcher in der Region mit der Quell-VM aktiviert sein.  
+Im folgenden Beispiel wird die Konnektivität von einem virtuellen Computer mit einem Blobspeicherkonto überprüft. Für dieses Beispiel muss Network Watcher in der Region mit der Quell-VM aktiviert sein.  
 
 ### <a name="example"></a>Beispiel
 
@@ -276,7 +273,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 Der folgende JSON-Code ist die Beispielantwort auf die Ausführung des vorherigen Cmdlets. Da das Ziel erreichbar ist, wird die `ConnectionStatus`-Eigenschaft als **Erreichbar** angezeigt.  Die Einzelheiten in Bezug auf die Anzahl der Hops, die zum Erreichen des Speicherblobs und der Latenz benötigt werden, werden bereitgestellt.
 
-```
+```json
 ConnectionStatus : Reachable
 AvgLatencyInMs   : 1
 MinLatencyInMs   : 0
@@ -307,22 +304,6 @@ Hops             : [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](network-watcher-check-ip-flow-verify-portal.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
+Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](network-watcher-check-ip-flow-verify-portal.md), um zu ermitteln, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
 
 Wenn Datenverkehr fälschlicherweise blockiert wird, finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/virtual-network-manage-nsg-arm-portal.md) Informationen zum Ermitteln der Netzwerksicherheitsgruppe und der definierten Sicherheitsregeln.
-
-<!-- Image references -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

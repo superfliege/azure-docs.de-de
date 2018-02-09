@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/19/2016
 ms.author: veljko-msft
-ms.openlocfilehash: bf8e0203112a42132a80e234964747c550fea284
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: b599273874a4b5a3bbcb78284d69b4c8d02b5f2c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="enable-automatic-tuning"></a>Aktivieren der automatischen Optimierung
 
@@ -28,7 +28,11 @@ Azure SQL-Datenbank ist ein automatisch verwalteter Datendienst, der kontinuierl
 ## <a name="enable-automatic-tuning-on-server"></a>Aktivieren der automatischen Optimierung für den Server
 Auf Serverebene kann auf Wunsch die Konfiguration der automatischen Optimierung von „Azure-Standardwerte“ geerbt werden. In den Azure-Standardwerten ist „FORCE_LAST_GOOD_PLAN“ aktiviert, „CREATE_INDEX“ aktiviert und „DROP_INDEX“ deaktiviert.
 
-### <a name="portal"></a>Portal
+## <a name="configure-automiatic-tuning-e-mail-notifications"></a>Konfigurieren der automatischen Optimierung von E-Mail-Benachrichtigungen
+
+Siehe [Automatische Optimierung von E-Mail-Benachrichtigungen](sql-database-automatic-tuning-email-notifications.md)
+
+### <a name="azure-portal"></a>Azure-Portal
 Wenn Sie die automatische Optimierung für den Azure SQL-Datenbankserver aktivieren möchten, navigieren Sie im Azure-Portal zum entsprechenden Server, und wählen Sie im Menü die Option **Automatische Optimierung** aus. Wählen Sie die gewünschten Optionen für die automatische Optimierung und anschließend **Übernehmen** aus:
 
 ![Server](./media/sql-database-automatic-tuning-enable/server.png)
@@ -38,7 +42,7 @@ Die Optionen für die automatische Optimierung des Servers werden auf alle Daten
 ### <a name="rest-api"></a>REST-API
 Weitere Informationen zum Aktivieren der automatischen Optimierung auf Serverebene mithilfe der REST-API finden Sie [hier](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
 
-## <a name="enable-automatic-tuning-on-database"></a>Aktivieren der automatischen Optimierung für die Datenbank
+## <a name="enable-automatic-tuning-on-an-individual-database"></a>Aktivieren der automatischen Optimierung für eine einzelne Datenbank
 
 Über Azure SQL-Datenbank können Sie die Konfiguration der automatischen Optimierung für einzelne Datenbanken angeben. Auf Datenbankebene kann auf Wunsch die Konfiguration der automatischen Optimierung vom übergeordneten Server oder von „Azure-Standardwerte“ geerbt werden. In den Azure-Standardwerten ist „FORCE_LAST_GOOD_PLAN“ aktiviert, „CREATE_INDEX“ aktiviert und „DROP_INDEX“ deaktiviert.
 
@@ -46,7 +50,7 @@ Weitere Informationen zum Aktivieren der automatischen Optimierung auf Serverebe
 > Es empfiehlt sich im Allgemeinen, die automatische Optimierung auf der Serverebene zu verwalten, damit für jede Datenbank automatisch die gleichen Konfigurationseinstellungen angewendet werden können. Konfigurieren Sie die automatische Optimierung für eine einzelne Datenbank, wenn diese sich von anderen Datenbanken auf dem gleichen Server unterscheidet.
 >
 
-### <a name="portal"></a>Portal
+### <a name="azure-portal"></a>Azure-Portal
 
 Wenn Sie die automatische Optimierung für eine einzelne Datenbank aktivieren möchten, navigieren Sie im Azure-Portal zur entsprechenden Datenbank, und wählen Sie **Automatische Optimierung** aus. Durch Aktivieren der Option können Sie eine einzelne Datenbank so konfigurieren, dass sie die Einstellungen des Servers übernimmt. Sie können aber auch eine individuelle Konfiguration für eine Datenbank angeben.
 

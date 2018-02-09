@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: c28f341fb64271e2173cd377fa06c567e0e054a6
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 590bc459a71b8691741f7f33d2d70b0ba4474591
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Standardprotokoll SMB zugegriffen werden kann. Da Azure Files vollständig verwaltet ist, ist die Bereitstellung in Produktionsszenarien wesentlich einfacher als das Bereitstellen und Verwalten eines Dateiservers oder NAS-Geräts. In diesem Artikel werden die Aspekte behandelt, die beim Bereitstellen einer Azure-Dateifreigabe in der Produktionsumgebung Ihrer Organisation zu berücksichtigen sind.
@@ -64,7 +64,7 @@ Azure Files bietet mehrere integrierte Optionen zum Gewährleisten der Datensich
     * Clients, die SMB 3.0 nicht unterstützen, können innerhalb des Rechenzentrums über SMB 2.1 oder SMB 3.0 unverschlüsselt kommunizieren. Beachten Sie, dass Clients zwischen Rechenzentren nicht unverschlüsselt über SMB 2.1 oder SMB 3.0 kommunizieren dürfen.
     * Clients können über die REST-API „File“ mit HTTP oder HTTPS kommunizieren.
 * Verschlüsselung für ruhende Daten ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Wir befassen uns gerade mit der Aktivierung der Storage Service Encryption (SSE) auf der zugrunde liegenden Azure Storage-Plattform. Dies bedeutet, dass die Verschlüsselung standardmäßig für alle Speicherkonten aktiviert wird. Wenn Sie in einer Region mit standardmäßiger Verschlüsselung ruhender Daten ein neues Speicherkonto erstellen, müssen Sie zur Aktivierung keine Schritte unternehmen. Ruhende Daten werden mit vollständig verwalteten Schlüsseln verschlüsselt. Durch Verschlüsselung ruhender Daten erhöhen sich weder die Speicherkosten, noch wird die Leistung verringert. 
-* Optionale Anforderung der Verschlüsselung von Daten während der Übertragung: Bei Auswahl dieser Option lässt Azure Files keinen Zugriff auf die Daten über unverschlüsselte Kanäle zu. Konkret sind bei verschlüsselten Verbindungen nur HTTPS und SMB 3.0 zugelassen. 
+* Optionale Anforderung der Verschlüsselung von Daten während der Übertragung: Bei Auswahl dieser Option lehnt Azure Files den Zugriff auf die Daten über unverschlüsselte Kanäle ab. Konkret sind bei verschlüsselten Verbindungen nur HTTPS und SMB 3.0 zugelassen. 
 
     > [!Important]  
     > Die Notwendigkeit einer sicheren Datenübertragung führt dazu, dass ältere SMB-Clients, die nicht in der Lage sind, mit SMB 3.0 mit Verschlüsselung zu kommunizieren, nicht funktionieren. Weitere Informationen finden Sie unter [Bereitstellen unter Windows](storage-how-to-use-files-windows.md), [Bereitstellen unter Linux](storage-how-to-use-files-linux.md) oder [Bereitstellen unter macOS](storage-how-to-use-files-mac.md).
@@ -74,10 +74,13 @@ Für maximale Sicherheit empfehlen wir dringend, stets sowohl die Verschlüsselu
 Wenn Sie über die Azure-Dateisynchronisierung auf Ihre Azure-Dateifreigabe zugreifen, verwenden wir stets HTTPS und SMB 3.0 mit Verschlüsselung, um Ihre Daten mit Ihren Windows-Servern zu synchronisieren, unabhängig davon, ob Sie eine Verschlüsselung ruhender Daten benötigen.
 
 ## <a name="data-redundancy"></a>Datenredundanz
-Azure Files unterstützt zwei Datenredundanzoptionen: lokal redundanten Speicher (LRS) und geografisch redundanten Speicher (GRS). In den folgenden Abschnitten werden die Unterschiede dieser beiden Optionen beschrieben:
+Azure Files unterstützt drei Optionen für Datenredundanz: lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS) und georedundanter Speicher (GRS). In den folgenden Abschnitten werden die Unterschiede zwischen den verschiedenen Redundanzoptionen erläutert:
 
 ### <a name="locally-redundant-storage"></a>Lokal redundanter Speicher
 [!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
+
+### <a name="zone-redundant-storage"></a>Zonenredundanter Speicher
+[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="geo-redundant-storage"></a>Georedundanter Speicher
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]

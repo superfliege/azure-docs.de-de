@@ -1,6 +1,6 @@
 ---
-title: Herstellen einer Verbindung von Azure Stack zu Azure mithilfe von VPN
-description: Herstellen einer Verbindung zwischen virtuellen Netzwerken in Azure Stack und virtuellen Netzwerken in Azure mithilfe von VPN
+title: "Herstellen einer Verbindung von Azure Stack mit Azure über ein VPN"
+description: "Herstellen einer Verbindung zwischen virtuellen Netzwerken in Azure Stack und virtuellen Netzwerken in Azure über ein VPN"
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.openlocfilehash: c06eb0bb44bdfeab956e9b5051786b5bc631acf5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d963fe8b1b576768156500af39254f45939f90d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="connect-azure-stack-to-azure-using-vpn"></a>Herstellen einer Verbindung von Azure Stack zu Azure mithilfe von VPN
+# <a name="connect-azure-stack-to-azure-using-vpn"></a>Herstellen einer Verbindung von Azure Stack mit Azure über ein VPN
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-In diesem Artikel wird das Erstellen eines Site-to-Site-VPNs beschrieben, mit dem ein virtuelles Netzwerk in Azure Stack mit einem virtuellen Netzwerk in Azure verbunden werden soll.
+In diesem Artikel wird das Erstellen eines Site-to-Site-VPN beschrieben, mit dem ein virtuelles Netzwerk in Azure Stack mit einem virtuellen Netzwerk in Azure verbunden werden soll.
 
 ### <a name="connection-diagram"></a>Verbindungsdiagramm
 Das folgende Diagramm zeigt die endgültige Verbindungskonfiguration:
@@ -35,7 +35,7 @@ Das folgende Diagramm zeigt die endgültige Verbindungskonfiguration:
 Vergewissern Sie sich vor dem Durchführen der Verbindungskonfiguration, dass Sie über folgende Elemente verfügen:
 
 * Eine Bereitstellung (mit mehreren Knoten) für integrierte Azure Stack-Systeme, die direkt mit dem Internet verbunden ist. Das bedeutet, dass der externe öffentliche Bereich Ihrer IP-Adresse direkt über das öffentliche Internet erreichbar sein muss.
-* Ein gültiges Azure-Abonnement.  Wenn Sie über kein Azure-Abonnement verfügen, können Sie [hier ein kostenloses Azure-Konto](https://azure.microsoft.com/free/?b=17.06) erstellen.
+* Ein gültiges Azure-Abonnement.  Wenn Sie über kein Azure-Abonnement verfügen, [können Sie hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?b=17.06).
 
 ## <a name="network-example-values-table"></a>Tabelle mit Netzwerk-Beispielwerten
 Die Tabelle enthält die Beispielwerte für Netzwerke, die in diesem Artikel verwendet werden. Sie können diese Werte verwenden oder sie zum besseren Verständnis der Beispiele in diesem Artikel heranziehen.
@@ -61,7 +61,7 @@ Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisu
 4. Wählen Sie **Virtuelles Netzwerk** aus.
 5. Verwenden Sie als **Name**, **Adressraum**, **Subnetzname** und **Subnetzadressbereich** für Azure die Werte aus der Netzwerk-Konfigurationstabelle.
 6. Erstellen Sie entweder eine neue **Ressourcengruppe**, oder wählen Sie **Use existing** (Vorhandene verwenden) auswählen, wenn Sie bereits über eine verfügen.
-7. Wählen Sie den **Standort** Ihres VNets aus.  Wenn Sie die Beispielwerte verwenden, wählen Sie **Osten, USA** oder einen anderen Standort Ihrer Wahl aus.
+7. Wählen Sie den **Standort** Ihres virtuellen Netzwerks aus.  Wenn Sie die Beispielwerte verwenden, wählen Sie **USA, Osten** oder einen anderen Standort Ihrer Wahl aus.
 8. Wählen Sie die Option **An Dashboard anheften** aus.
 9. Klicken Sie auf **Erstellen**.
 
@@ -71,7 +71,7 @@ Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisu
 3. Wählen Sie **Gatewaysubnetz**, um dem virtuellen Netzwerk ein Gatewaysubnetz hinzuzufügen.
 4. Der Name des Subnetzes wird standardmäßig auf **GatewaySubnet** festgelegt.
    Gatewaysubnetze sind spezielle Subnetze und müssen diesen spezifischen Namen besitzen, damit sie ordnungsgemäß funktionieren.
-5. Stellen Sie sicher, dass im Feld **Adressbereich** die Adresse **10.100.0.0/24** angegeben ist.
+5. Vergewissern Sie sich, dass im Feld **Adressbereich** die Adresse **10.100.1.0/24** angegeben ist.
 6. Wählen Sie **OK**, um das Gatewaysubnetz zu erstellen.
 
 ### <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
@@ -80,7 +80,7 @@ Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisu
 3. Wählen Sie in der Liste mit den Netzwerkressourcen den Eintrag **Gateway des virtuellen Netzwerks** aus.
 4. Geben Sie unter **Name** den Namen **Azure-GW** ein.
 5. Klicken Sie auf **Virtuelles Netzwerk**, um ein virtuelles Netzwerk auszuwählen. Wählen Sie anschließend aus der Liste **AzureVnet** aus.
-6. Wählen Sie **Öffentliche IP-Adresse**. Wählen Sie Bereich **Öffentliche IP-Adresse auswählen** die Option **Neu erstellen** aus.
+6. Wählen Sie **Öffentliche IP-Adresse**. Wählen Sie im Bereich **Öffentliche IP-Adresse auswählen** die Option **Neu erstellen** aus.
 7. Geben Sie unter **Name** den Namen **Azure-GW-PiP** ein, und klicken Sie auf **OK**.
 8. Als **VPN-Typ** ist standardmäßig **Routenbasiert** ausgewählt.
     Behalten Sie **Routenbasiert** als VPN-Typ bei.
@@ -93,7 +93,7 @@ Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisu
 5. Wählen Sie in der Ressourcenliste den Eintrag für das **lokale Netzwerkgateway** aus.
 6. Geben Sie unter **Name** den Namen **Azs-GW** ein.
 7. Geben Sie unter **IP-Adresse** die öffentliche IP-Adresse für Ihr Gateway des virtuellen Azure Stack-Netzwerks ein, die in der Netzwerk-Konfigurationstabelle oben aufgelistet ist.
-8. Geben Sie unter **Adressraum** für Azure Stack den Adressraum **10.0.10.0/23** für **AzureVNet** ein.
+8. Geben Sie unter **Adressraum** für Azure Stack den Adressraum **10.1.0.0/24** und **10.1.1.0/24** für **AzureVNet** ein.
 9. Vergewissern Sie sich, dass Ihr **Abonnement**, die **Ressourcengruppe** und der **Speicherort** richtig sind, und klicken Sie auf **Erstellen**.
 
 ## <a name="create-the-connection"></a>Erstellen der Verbindung
@@ -118,14 +118,14 @@ Erstellen Sie jetzt einen virtuellen Computer in Azure, und platzieren Sie ihn i
 5. Geben Sie einen gültigen Benutzernamen und ein gültiges Kennwort ein. Mit diesem Konto melden Sie sich am virtuellen Computer an, nachdem dieser erstellt wurde.
 6. Geben Sie Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** an, und wählen Sie anschließend **OK**.
 7. Wählen Sie im Bereich **Größe** für diese Instanz eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
-8. Übernehmen Sie im Bereich **Einstellungen** die Standardeinstellungen. Stellen Sie sicher, dass das virtuelle Netzwerk **AzureVnet** ausgewählt und das Subnetz auf **10.0.20.0/24** festgelegt ist. Klicken Sie auf **OK**.
+8. Übernehmen Sie im Abschnitt **Einstellungen** die Standardeinstellungen. Vergewissern Sie sich, dass das virtuelle Netzwerk **AzureVnet** ausgewählt und das Subnetz auf **10.100.0.0/24** festgelegt ist. Klicken Sie auf **OK**.
 9. Überprüfen Sie die Einstellungen im Bereich **Zusammenfassung**, und klicken Sie anschließend auf **OK**.
 
 ## <a name="create-the-network-resources-in-azure-stack"></a>Erstellen der Netzwerkressourcen in Azure Stack
 Erstellen Sie als Nächstes die Netzwerkressourcen in Azure Stack.
 
 ### <a name="sign-in-as-a-user"></a>Anmelden als Benutzer
-Ein Dienstadministrator kann sich als Benutzer anmelden, um die Pläne, Angebote und Abonnements zu testen, die den Benutzern zur Verfügung stehen. Falls Sie noch kein Benutzerkonto besitzen, [erstellen Sie ein Benutzerkonto](azure-stack-add-new-user-aad.md), bevor Sie sich anmelden.
+Ein Dienstadministrator kann sich als Benutzer anmelden, um die Pläne, Angebote und Abonnements zu testen, die den Benutzern zur Verfügung stehen. Sofern noch nicht geschehen, [erstellen Sie ein Benutzerkonto](azure-stack-add-new-user-aad.md), bevor Sie sich anmelden.
 
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>Erstellen des virtuellen Netzwerks und des VM-Subnetzes
 1. Verwenden Sie ein Benutzerkonto für die Anmeldung beim Benutzerportal.
@@ -151,7 +151,7 @@ Ein Dienstadministrator kann sich als Benutzer anmelden, um die Pläne, Angebote
 
 4. Der Subnetzname ist standardmäßig auf **GatewaySubnet** festgelegt.
    Gateway-Subnetz sind speziell. Sie müssen den Namen *GatewaySubnet* verwenden, um ordnungsgemäß zu funktionieren.
-5. Überprüfen Sie im **Adressbereich**, dass die Adresse **10.1.1.0/24** lautet.
+5. Überprüfen Sie, ob die unter **Adressbereich** angegebene Adresse **10.1.1.0/24** lautet.
 6. Wählen Sie **OK**, um das Gatewaysubnetz zu erstellen.
 
 ### <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
@@ -161,7 +161,7 @@ Ein Dienstadministrator kann sich als Benutzer anmelden, um die Pläne, Angebote
 4. Geben Sie unter **Name** den Namen **Azs-GW** ein.
 5. Wählen Sie **Virtuelles Netzwerk**, um ein virtuelles Netzwerk auszuwählen.
    Wählen Sie aus der Liste **Azs-VNet** aus.
-6. Wählen Sie das Menüelement **Öffentliche IP-Adresse**. Wählen Sie Bereich **Öffentliche IP-Adresse auswählen** die Option **Neu erstellen** aus.
+6. Wählen Sie das Menüelement **Öffentliche IP-Adresse**. Wählen Sie im Bereich **Öffentliche IP-Adresse auswählen** die Option **Neu erstellen** aus.
 7. Geben Sie unter **Name** den Namen **Azs-GW-PiP** ein, und klicken Sie auf **OK**.
 8.  Als **VPN-Typ** ist standardmäßig **Routenbasiert** ausgewählt.
     Behalten Sie **Routenbasiert** als VPN-Typ bei.
@@ -181,7 +181,7 @@ Etwas allgemeiner betrachtet wird mit der Ressource des lokalen Netzwerkgateways
 4. Wählen Sie in der Ressourcenliste den Eintrag für das **lokale Netzwerkgateway** aus.
 5. Geben Sie unter **Name** den Namen **Azure-GW** ein.
 6. Geben Sie unter **IP-Adresse** die öffentliche IP-Adresse für das Gateway des virtuellen Netzwerks in Azure **Azure-GW-PiP** ein. Diese Adresse wird weiter oben in der Netzwerk-Konfigurationstabelle angezeigt.
-7. Geben Sie unter **Adressraum** den Adressraum für das zuvor erstellte Azure VNET **10.0.20.0/23** ein.
+7. Geben Sie unter **Adressraum** für den Adressraum des zuvor erstellten Azure VNets **10.100.0.0/24** und **10.100.1.0/24** ein.
 8. Vergewissern Sie sich, dass Ihr **Abonnement**, die **Ressourcengruppe** und der **Speicherort** richtig sind, und klicken Sie auf **Erstellen**.
 
 ### <a name="create-the-connection"></a>Erstellen der Verbindung
@@ -225,7 +225,7 @@ Um sicherzustellen, dass der Datenverkehr über die Site-to-Site-Verbindung gese
 5. Melden Sie sich mit dem Konto an, das Sie beim Erstellen des virtuellen Computers konfiguriert haben.
 6. Öffnen Sie ein **Windows PowerShell**-Fenster mit erhöhten Rechten.
 7. Geben Sie **ipconfig /all** ein.
-8. Suchen Sie in der Ausgabe die **IPv4-Adresse**, und speichern Sie diese zur späteren Verwendung. Diese Adresse wird später von Azure aus gepingt. In der Beispielumgebung wird die Adresse **10.0.10.4** verwendet, in Ihrer Umgebung lautet sie aber unter Umständen anders. Sie sollte innerhalb des zuvor erstellten Subnetzes **10.0.10.0/24** liegen.
+8. Suchen Sie in der Ausgabe die **IPv4-Adresse**, und speichern Sie diese zur späteren Verwendung. Diese Adresse wird später von Azure aus gepingt. In der Beispielumgebung wird die Adresse **10.1.0.4** verwendet, in Ihrer Umgebung lautet sie aber unter Umständen anders. Sie sollte innerhalb des zuvor erstellten Subnetzes **10.1.0.0/24** liegen.
 9. Zum Erstellen einer Firewallregel, zulässt, dass der virtuelle Computer auf Pings reagiert, führen Sie den folgenden PowerShell-Befehl aus:
 
    ```powershell
@@ -238,11 +238,11 @@ Um sicherzustellen, dass der Datenverkehr über die Site-to-Site-Verbindung gese
 1. Melden Sie sich beim Azure-Portal an.
 2. Klicken Sie in der Navigationsleiste links auf **Virtuelle Computer**.
 3. Suchen Sie in der Liste mit den virtuellen Computern nach dem zuvor erstellten Computer **Azure-VM**, und wählen Sie ihn aus.
-4. Klicken Sie im Abschnitt für den virtuellen Computer auf **Verbinden**.
+4. Klicken Sie im Bereich für den virtuellen Computer auf **Verbinden**.
 5. Melden Sie sich mit dem Konto an, das Sie beim Erstellen des virtuellen Computers konfiguriert haben.
 6. Öffnen Sie ein **Windows PowerShell**-Fenster mit erhöhten Rechten.
 7. Geben Sie **ipconfig /all** ein.
-8. Daraufhin sollte eine IPv4-Adresse aus dem Adressbereich **10.0.20.0/24** angezeigt werden. In der Beispielumgebung wird die Adresse **10.0.20.4** verwendet, Ihre Adresse lautet aber unter Umständen anders.
+8. Daraufhin sollte eine IPv4-Adresse aus dem Adressbereich **10.100.0.0/24** angezeigt werden. In der Beispielumgebung wird die Adresse **10.100.0.4** verwendet, Ihre Adresse lautet aber unter Umständen anders.
 9. Zum Erstellen einer Firewallregel, zulässt, dass der virtuelle Computer auf Pings reagiert, führen Sie den folgenden PowerShell-Befehl aus:
 
    ```powershell
@@ -252,7 +252,7 @@ Um sicherzustellen, dass der Datenverkehr über die Site-to-Site-Verbindung gese
    ```
 
 10. Pingen Sie vom virtuellen Computer in Azure den virtuellen Computer in Azure Stack durch den Tunnel. Hierzu pingen Sie die DIP-Adresse, die Sie für „Azs-VM“ erfasst haben.
-   In der Beispielumgebung wird die Adresse **10.0.10.4** verwendet. Achten Sie jedoch darauf, dass Sie die Adresse pingen, die Sie in Ihrem Lab notiert haben. Das Ergebnis sollte in etwa wie auf dem folgenden Screenshot aussehen:
+   In der Beispielumgebung wird die Adresse **10.1.0.4** verwendet. Achten Sie jedoch darauf, dass Sie die Adresse pingen, die Sie in Ihrem Lab notiert haben. Das Ergebnis sollte in etwa wie auf dem folgenden Screenshot aussehen:
    
     ![Ping erfolgreich](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
 11. Wenn Sie eine Antwort vom virtuellen Remotecomputer erhalten, war der Test erfolgreich! Sie können das Fenster für den virtuellen Computer schließen. Zum Testen Ihrer Verbindung können andere Arten von Datenübertragungen wie eine Dateikopie durchführen.

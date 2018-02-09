@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 1/29/2018
 ms.author: v-craic
-ms.openlocfilehash: d376909a46da11ac1b6b1fa968e53ebef8f3dbf7
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 99b0938d5f4c8b022ead3473a0367de5d75cd6ff
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Posten einer Ankündigung in einem Lab in Azure DevTest Labs
 
@@ -47,6 +47,13 @@ Das Ankündigungsfeature ist für vorübergehende Ankündigungen gedacht.  Sie k
 
 1. Legen Sie **Aktiviert** auf **Ja** fest, um eine Nachricht für die Benutzer dieses Labs zu erstellen.
 
+1. Sie können unter **Ablaufdatum** ein Datum und eine Uhrzeit eingeben, nach deren Ablauf die Ankündigung Benutzern nicht mehr angezeigt wird. Wenn Sie kein Ablaufdatum eingeben, wird die Ankündigung erst ausgeblendet, wenn Sie sie deaktivieren.
+
+   > [!NOTE]
+   > Nach Ablauf der Ankündigung wird sie Benutzern nicht mehr angezeigt, ist aber noch im Bereich **Labankündigung** vorhanden. Sie können Änderungen daran vornehmen und diese wieder aktivieren.
+   >
+   >
+
 1. Geben Sie einen **Ankündigungstitel** und den **Ankündigungstext** ein.
 
    Der Titel kann bis zu 100 Zeichen enthalten und wird auf der Seite „Übersicht“ des Labs für Benutzer angezeigt. Wenn Benutzer den Titel auswählen, wird der Ankündigungstext angezeigt.
@@ -58,7 +65,7 @@ Das Ankündigungsfeature ist für vorübergehende Ankündigungen gedacht.  Sie k
 
 1. Wählen Sie **Speichern**, nachdem Ihre Ankündigung bereit zum Posten ist.
 
-Wenn diese Ankündigung den Lab-Benutzern nicht mehr angezeigt werden soll, können Sie auf der Seite **Labankündigung** die Option **Aktiviert** auf **Nein** festlegen.
+Wenn diese Ankündigung den Lab-Benutzern nicht mehr angezeigt werden soll, können Sie auf der Seite **Labankündigung** die Option **Aktiviert** auf **Nein** festlegen. Wenn Sie ein Ablaufdatum angegeben haben, wird die Ankündigung automatisch an diesem Datum bzw. zu dieser Uhrzeit deaktiviert.
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>Schritte für Benutzer zum Anzeigen einer Ankündigung
 

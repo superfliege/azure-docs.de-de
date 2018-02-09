@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 0aac388f4499af018a4603bcad835ab41d6b6642
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 8f20e8d4329d815351147f90b598180839ce917a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -158,11 +158,13 @@ Azure File Sync ist nur in den folgenden Regionen als Vorschau verfügbar:
 
 | Region | Standort des Rechenzentrums |
 |--------|---------------------|
-| USA (Ost) | Virginia, USA |
-| USA (Westen) | Kalifornien, USA |
+| Australien (Osten) | Neusüdwales |
+| Kanada, Mitte | Toronto |
+| USA (Ost) | Virginia |
+| Asien, Südosten | Singapur |
+| UK, Süden | London |
 | Europa, Westen | Niederlande |
-| Südostasien | Singapur |
-| Australien (Osten) | New South Wales, Australien |
+| USA (Westen) | Kalifornien |
 
 In der Vorschauversion wird nur die Synchronisierung mit einer Azure-Dateifreigabe in der gleichen Region wie der Speichersynchronisierungsdienst unterstützt.
 

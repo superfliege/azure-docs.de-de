@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 2ee66e0f41868d7d5411605596a22c00b5712896
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02656c5bb4d2acd944f565d1397984ce94ced0bd
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Konfigurationsschema für Azure-Diagnose 1.3 und höher
 > [!NOTE]
@@ -380,7 +380,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**PublicConfig**|Erforderlich. Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 |**PrivateConfig**|Optional. Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
@@ -391,7 +391,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Beschreibt die öffentliche Diagnosekonfiguration  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**WadCfg**|Erforderlich. Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 |**StorageAccount**|Der Name des Azure Storage-Kontos zum Speichern der Daten. Kann auch als Parameter angegeben werden, wenn das Cmdlet „Set-AzureServiceDiagnosticsExtension“ ausgeführt wird.|  
@@ -409,17 +409,17 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Erforderlich 
 
-|Attribute|Beschreibung|  
+|Attribute|BESCHREIBUNG|  
 |----------------|-----------------|  
-| **overallQuotaInMB** | Der maximale lokale Speicherplatz, der von den verschiedenen Typen von Diagnosedaten genutzt werden kann, die von der Azure-Diagnose erfasst werden. Die Standardeinstellung lautet 5.120 MB.<br />
+| **overallQuotaInMB** | Der maximale lokale Speicherplatz, der von den verschiedenen Typen von Diagnosedaten genutzt werden kann, die von der Azure-Diagnose erfasst werden. Die Standardeinstellung lautet 4.096 MB.<br />
 |**useProxyServer** | Konfigurieren Sie die Azure-Diagnose, um die Proxyservereinstellungen den IE-Einstellungen entsprechend zu verwenden.|  
 
 <br /> <br />
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**CrashDumps**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
-|**DiagnosticInfrastructureLogs**|Aktivieren Sie die Sammlung der Protokolle, die von der Azure-Diagnose generiert wurde. Die Protokolle der Diagnoseinfrastruktur sind hilfreich für die Problembehandlung des Diagnosesystems selbst. Optionale Attribute:<br /><br /> - **scheduledTransferLogLevelFilter**: Konfiguriert den minimalen Schweregrad der erfassten Protokolle.<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
+|**DiagnosticInfrastructureLogs**|Aktivieren Sie die Sammlung der Protokolle, die von der Azure-Diagnose generiert wurde. Die Protokolle der Diagnoseinfrastruktur sind hilfreich für die Problembehandlung des Diagnosesystems selbst. Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Konfiguriert den minimalen Schweregrad der erfassten Protokolle.<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
 |**Verzeichnisse**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 |**EtwProviders**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 |**Metriken**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
@@ -434,13 +434,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
  
  Aktivieren Sie die Sammlung der Absturzabbilder.  
 
-|Attribute|Beschreibung|  
+|Attribute|BESCHREIBUNG|  
 |----------------|-----------------|  
 |**containerName**|Optional. Der Name des Blobcontainers in Ihrem Azure Storage-Konto, der zum Speichern der Absturzabbilder verwendet wird|  
 |**crashDumpType**|Optional.  Konfiguriert die Azure-Diagnose für die Erfassung von kleinen oder vollständigen Absturzabbildern.|  
 |**directoryQuotaPercentage**|Optional.  Konfiguriert den Prozentsatz der **overallQuotaInMB**, der für Absturzabbilder auf dem virtuellen Computer reserviert werden soll.|  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Erforderlich. Definiert die Konfigurationswerte für jeden Prozess.<br /><br /> Das folgende Attribut ist ebenso erforderlich:<br /><br /> **processName**: Der Name des Prozesses, für den die Azure-Diagnose ein Absturzabbild erfassen soll|  
 
@@ -451,7 +451,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Optionales **scheduledTransferPeriod**-Attribut. Siehe Erklärung weiter oben.  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**IISLogs**|Das Einbeziehen dieses Elements in die Konfiguration ermöglicht die Erfassung von IIS-Protokollen:<br /><br /> **containerName**: Der Name des Blobcontainers in Ihrem Azure Storage-Konto, der zum Speichern der IIS-Protokolle verwendet wird|   
 |**FailedRequestLogs**|Das Einbeziehen dieses Elements in die Konfiguration ermöglicht die Erfassung der Protokolle zu fehlgeschlagenen Anfragen an die IIS-Website oder -Anwendung. Zur Aktivierung müssen Sie auch die Verfolgungsoptionen in **Web.config** unter **system.WebServer** festlegen.|  
@@ -465,7 +465,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Eine Liste der zu überwachenden Verzeichnisse  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**DirectoryConfiguration**|Erforderlich. Erforderliches Attribut:<br /><br /> **containerName**: Der Name des Blobcontainers in Ihrem Azure Storage-Konto, der zum Speichern der Protokolldateien verwendet wird|  
 
@@ -478,7 +478,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Kann das Element **Absolute** oder **LocalResource** enthalten, aber nicht beide.  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**Absolute**|Der absolute Pfad zum Verzeichnis, das überwacht werden soll Die folgenden Attribute sind erforderlich:<br /><br /> - **Path**: Der absolute Pfad zum Verzeichnis, das überwacht werden soll<br /><br /> - **expandEnvironment**: Konfiguriert, ob die Umgebungsvariablen im Pfad erweitert werden.|  
 |**LocalResource**|Der Pfad in Relation zu einer lokalen Ressource, die überwacht werden soll. Erforderliche Attribute:<br /><br /> - **Name**: Die lokale Ressource, die das zu überwachende Verzeichnis enthält<br /><br /> - **relativePath**: Der Pfad in Relation zum Namen, der das zu überwachende Verzeichnis enthält|  
@@ -490,10 +490,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Konfiguriert die Erfassung der ETW-Ereignisse von EventSource und/oder der ETW-Manifest-basierten Anbieter  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
-|**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
+|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
+|**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
 
 
 
@@ -502,7 +502,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden.  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Optionales Attribut:<br/><br/> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
 |**Event**|Erforderliches Attribut:<br /><br /> **id**: Die ID des Ereignisses<br /><br /> Optionales Attribut:<br /><br /> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
@@ -512,7 +512,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration-Element  
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – DiagnosticMonitorConfiguration – EtwProviders – EtwManifestProviderConfiguration*
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Optionales Attribut:<br /><br /> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
 |**Event**|Erforderliches Attribut:<br /><br /> **id**: Die ID des Ereignisses<br /><br /> Optionales Attribut:<br /><br /> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
@@ -526,7 +526,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Das **resourceId**-Attribut muss angegeben werden.  Die Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, auf dem bzw. in der Sie die Azure-Diagnose bereitstellen. Rufen Sie **resourceID** im [Azure-Portal](https://portal.azure.com) ab. Wählen Sie **Durchsuchen** -> **Ressourcengruppen** -> **<Name\>** aus. Klicken Sie auf die Kachel **Eigenschaften**, und kopieren Sie den Wert aus dem Feld **ID**.  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**MetricAggregation**|Erforderliches Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
 
@@ -541,7 +541,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Optionales **scheduledTransferPeriod**-Attribut. Siehe Erklärung weiter oben.
 
-|Untergeordnetes Element|Beschreibung|  
+|Untergeordnetes Element|BESCHREIBUNG|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Die folgenden Attribute sind erforderlich:<br /><br /> - **counterSpecifier**: Der Name des Leistungsindikators Beispiel: `\Processor(_Total)\% Processor Time`. Führen Sie zum Abrufen einer Liste der Leistungsindikatoren auf Ihrem Host den Befehl `typeperf` aus.<br /><br /> - **sampleRate**: Gibt an, wie oft Stichproben für den Indikator erstellt werden.<br /><br /> Optionales Attribut:<br /><br /> **unit**: Die Maßeinheit des Indikators|  
 
@@ -555,9 +555,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Optionales **scheduledTransferPeriod**-Attribut. Siehe Erklärung weiter oben.  
 
-|Untergeordnetes Element|Beschreibung|  
+|Untergeordnetes Element|BESCHREIBUNG|  
 |-------------------|-----------------|  
-|**DataSource**|Die Windows-Ereignisprotokolle, die erfasst werden sollen. Erforderliches Attribut:<br /><br /> **name**: Die XPath-Abfrage, die die zu erfassenden Windows-Ereignisse beschreibt. Beispiel:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Zum Erfassen aller Ereignisse geben Sie „*“ ein.|  
+|**DataSource**|Die Windows-Ereignisprotokolle, die erfasst werden sollen. Erforderliches Attribut:<br /><br /> **name**: Die XPath-Abfrage, die die zu erfassenden Windows-Ereignisse beschreibt. Beispiel: <br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Zum Erfassen aller Ereignisse geben Sie „*“ ein.|  
 
 
 
@@ -569,7 +569,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiert die Pufferkonfiguration für grundlegende Azure-Protokolle.  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferLogLevelFilterr**|**string**|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -581,7 +581,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  In 1.9 hinzugefügt.
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**Stats**|Weist das System an, Statistikinformationen für Docker-Container zu sammeln.|  
 
@@ -590,7 +590,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Eine Liste mit Standorten, an die die Diagnosedaten und die diesen Standorten zugeordnete Konfiguration gesendet werden soll.  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**Senke**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 
@@ -601,14 +601,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiert die Standorte, an die die Diagnosedaten gesendet werden sollen. Beispiel: der Application Insights-Dienst.  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**name**|string|Eine Zeichenfolge für den Senkennamen.|  
+|**name**|Zeichenfolge|Eine Zeichenfolge für den Senkennamen.|  
 
-|Element|Typ|Beschreibung|  
+|Element|Typ|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
-|**Application Insights**|string|Wird nur beim Senden von Daten an Application Insights verwendet. Enthält den Instrumentationsschlüssel für ein aktives Application Insights-Konto, für das Sie Zugriff besitzen.|  
-|**Kanäle**|string|Einer für jeden zusätzlichen Filter, den Sie streamen|  
+|**Application Insights**|Zeichenfolge|Wird nur beim Senden von Daten an Application Insights verwendet. Enthält den Instrumentationsschlüssel für ein aktives Application Insights-Konto, für das Sie Zugriff besitzen.|  
+|**Kanäle**|Zeichenfolge|Einer für jeden zusätzlichen Filter, den Sie streamen|  
 
 ## <a name="channels-element"></a>Channels-Element  
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – SinksConfig – Sink – Channels*
@@ -617,9 +617,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiert die Filter für Datenströme von Protokolldaten, die durch eine Senke übergeben werden.  
 
-|Element|Typ|Beschreibung|  
+|Element|Typ|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
-|**Channel**|string|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
+|**Channel**|Zeichenfolge|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 
 ## <a name="channel-element"></a>Channel-Element
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – SinksConfig – Sink – Channels – Channel*
@@ -628,7 +628,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiert die Standorte, an die die Diagnosedaten gesendet werden sollen. Beispiel: der Application Insights-Dienst.  
 
-|Attribute|Typ|Beschreibung|  
+|Attribute|Typ|BESCHREIBUNG|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
 |**name**|**string**|Ein eindeutiger Name des Kanals, auf den verwiesen wird|  
@@ -643,7 +643,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Speichert die privaten Details des Speicherkontos (Name, Schlüssel und Endpunkt). Diese Informationen werden an den virtuellen Computer gesendet, können aber nicht daraus abgerufen werden.  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**StorageAccount**|Das zu verwendende Speicherkonto. Die folgenden Attribute sind erforderlich:<br /><br /> - **name**: Der Name des Speicherkontos<br /><br /> - **key**: Der Schlüssel des Speicherkontos<br /><br /> - **endpoint**: Der Endpunkt für den Zugriff auf das Speicherkonto <br /><br /> -**sasToken** (in 1.8.1) – Sie können in der privaten Konfiguration ein SAS-Token anstelle eines Speicherkontoschlüssels angeben. Wenn er angegeben wird, wird der Speicherkontoschlüssel ignoriert. <br />Anforderungen für das SAS-Token: <br />– Es werden nur SAS-Kontotoken unterstützt <br />Die Diensttypen - *b*, *t* sind erforderlich. <br /> Die Berechtigungen - *a*, *c*, *u*, *w* sind erforderlich. <br /> Die Ressourcentypen - *c*, *o* sind erforderlich. <br /> – Unterstützt nur das HTTPS-Protokoll <br /> – Start und Ablaufzeit müssen gültig sein.|  
 
@@ -651,4 +651,4 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="isenabled-element"></a>IsEnabled-Element  
  *Tree: Root – DiagnosticsConfiguration – IsEnabled*
 
- Boolescher Wert. Verwenden Sie `true`, um die Diagnose zu aktivieren, oder `false`, um die Diagnose zu deaktivieren.
+ Boolesch. Verwenden Sie `true`, um die Diagnose zu aktivieren, oder `false`, um die Diagnose zu deaktivieren.

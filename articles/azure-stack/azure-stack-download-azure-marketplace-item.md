@@ -3,8 +3,8 @@ title: Herunterladen von Marketplace-Elementen von Azure | Microsoft-Dokumentati
 description: Ich kann Marketplace-Elemente von Azure in meine Azure Stack-Bereitstellung herunterladen.
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -12,23 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/30/2017
-ms.author: erikje
-ms.openlocfilehash: 33b7be4a85723ab03e4c656a8dd28632ad854e29
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 01/30/2018
+ms.author: brenduns
+ms.openlocfilehash: 58f8287e5675e1134cb2fcceef9a9128ef97207c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Herunterladen von Marketplace-Elementen von Azure in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+
 
 Wenn Sie entscheiden, welche Inhalte in Ihrem Azure Stack-Marketplace enthalten sein sollen, berücksichtigen Sie auch die im Azure-Marketplace verfügbaren Inhalte. Zum Herunterladen steht Ihnen eine Aufstellung ausgewählter Marketplace-Elemente zur Verfügung, deren Ausführung unter Azure Stack vorab getestet wurde. Dieser Liste werden regelmäßig neue Elemente hinzugefügt. Prüfen Sie daher, ob neue Inhalte verfügbar sind.
 
 ## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>Herunterladen von Marketplace-Elementen in einem verbundenen Szenario (mit Internetverbindung)
 
-1. Zum Herunterladen von Marketplace-Elementen müssen Sie zunächst [Azure Stack bei Azure registrieren](azure-stack-register.md). 
+1. Zum Herunterladen von Marketplace-Elementen müssen Sie zunächst [Azure Stack bei Azure registrieren](azure-stack-register.md).
 2. Melden Sie sich beim Azure Stack-Administratorportal (https://portal.local.azurestack.external) an.
 3. Einige Marketplace-Elemente sind unter Umständen groß. Stellen Sie sicher, dass auf Ihrem System ausreichend Speicherplatz vorhanden ist. Klicken Sie hierfür auf **Ressourcenanbieter** > **Speicher**.
 
@@ -51,7 +52,7 @@ Wenn Sie entscheiden, welche Inhalte in Ihrem Azure Stack-Marketplace enthalten 
 
 ## <a name="download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Herunterladen von Marketplace-Elementen in einem nicht verbundenen oder partiell verbundenen Szenario (mit eingeschränkter Internetkonnektivität)
 
-Wenn Sie Azure Stack in einem nicht verbundenen Modus (ohne Internetverbindung) bereitstellen, können Sie keine Marketplace-Elemente über das Azure Stack-Portal herunterladen. Sie können jedoch das Tool für die Marketplace-Syndikation verwenden, um die Marketplace-Elemente auf einen Computer mit Internetverbindung herunterzuladen und anschließend in Ihre Azure Stack-Umgebung zu übertragen. 
+Wenn Sie Azure Stack in einem nicht verbundenen Modus (ohne Internetverbindung) bereitstellen, können Sie keine Marketplace-Elemente über das Azure Stack-Portal herunterladen. Sie können jedoch das Tool für die Marketplace-Syndikation verwenden, um die Marketplace-Elemente auf einen Computer mit Internetverbindung herunterzuladen und anschließend in Ihre Azure Stack-Umgebung zu übertragen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 Vergewissern Sie sich vor der Verwendung des Tools für die Marketplace-Syndikation, dass [Azure Stack bei Ihrem Azure-Abonnement registriert](azure-stack-register.md) ist.  
@@ -132,12 +133,12 @@ Gehen Sie auf dem Computer, der über eine Internetverbindung verfügt, wie folg
     -Version "2017.09.25" `
     -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Microsoft.WindowsServer2016DatacenterServerCore-ARM-Eval.2017.09.25.vhd" `
     -CreateGalleryItem $False `
-    -Location Local 
+    -Location Local
    ```
 
 4. Laden Sie Ihr Marketplace-Element (AZPKG-Datei) über das Portal in den Azure Stack-Blobspeicher hoch. Sie können es in Azure Stack-Speicher oder Azure Storage hochladen. (Es handelt sich um einen temporären Speicherort für das Paket.) Vergewissern Sie sich, dass das Blob öffentlich zugänglich ist, und notieren Sie sich den URI.  
 
-5. Verwenden Sie **Add-AzureRMGalleryItem**, um das Marketplace-Element in Azure Stack zu veröffentlichen. Beispiel:
+5. Verwenden Sie **Add-AzsGalleryItem**, um das Marketplace-Element in Azure Stack zu veröffentlichen. Beispiel: 
 
    ```powershell
    Add-AzsGalleryItem `

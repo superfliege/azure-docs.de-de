@@ -12,29 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 01/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d7eeaf460674c3ab98425a5412ffa465b9ffd1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc109cdaeade900e239624f408cea2a1f448ae5a
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
-Für jedes Abonnement und jeden Mandanten begrenzt Resource Manager Leseanforderungen auf 15.000 pro Stunde und Schreibanforderungen auf 1.200 pro Stunde. Diese Grenzwerte gelten für jede Instanz von Azure Resource Manager. In jeder Azure-Region sind mehrere Instanzen vorhanden, und Azure Resource Manager wird an alle Azure-Regionen bereitgestellt.  In der Praxis sind die Grenzwerte also effektiv sehr viel höher als oben angegeben, da Benutzeranforderungen im Allgemeinen von vielen verschiedenen Instanzen verarbeitet werden.
+Für jedes Abonnement und jeden Mandanten begrenzt Resource Manager Leseanforderungen auf 15.000 pro Stunde und Schreibanforderungen auf 1.200 pro Stunde. Diese Grenzwerte gelten für jede Azure Resource Manager-Instanz. In jeder Azure-Region sind mehrere Instanzen vorhanden, und Azure Resource Manager wird in allen Azure-Regionen bereitgestellt.  In der Praxis sind die Grenzwerte also effektiv sehr viel höher als die aufgeführten Grenzwerte, da Benutzeranforderungen in der Regel von vielen verschiedenen Instanzen verarbeitet werden.
 
-Wenn Ihre Anwendung oder Ihr Skript diese Grenzwerte erreicht, müssen Sie die Anforderungen begrenzen. In diesem Thema erfahren Sie, wie Sie Ihre verbleibenden Anforderungen bestimmen können, bevor der Grenzwert erreicht wird, und wie Sie reagieren können, wenn Sie den Grenzwert erreicht haben.
+Wenn Ihre Anwendung oder Ihr Skript diese Grenzwerte erreicht, müssen Sie die Anforderungen begrenzen. In diesem Artikel erfahren Sie, wie Sie Ihre verbleibenden Anforderungen bestimmen können, bevor der Grenzwert erreicht wird, und wie Sie reagieren können, wenn Sie den Grenzwert erreicht haben.
 
 Wenn Sie den Grenzwert erreichen, erhalten Sie den HTTP-Statuscode **429 Zu viele Anforderungen**.
 
 Die Anzahl von Anforderungen ist für Ihr Abonnement und Ihren Mandanten begrenzt. Wenn mehrere Anwendungen gleichzeitig in Ihrem Abonnement Anforderungen auslösen, werden die Anforderungen dieser Anwendungen addiert, um die Anzahl der verbleibenden Anforderungen zu bestimmen.
 
-Bei abonnementbezogenen Anforderungen wird Ihre Abonnement-ID übergeben, z.B. beim Abrufen der Ressourcengruppen in Ihrem Abonnement. Mandantenbezogene Anforderungen enthalten Ihre Abonnement-ID nicht, wie beim Abrufen von gültigen Azure-Standorten.
+Bei abonnementbezogenen Anforderungen wird Ihre Abonnement-ID übergeben, z.B. beim Abrufen der Ressourcengruppen in Ihrem Abonnement. Mandantenbezogene Anforderungen enthalten Ihre Abonnement-ID nicht, etwa beim Abrufen von gültigen Azure-Standorten.
 
 ## <a name="remaining-requests"></a>Verbleibende Anforderungen
 Sie können die Anzahl der verbleibenden Anforderungen durch Untersuchen der Antwortheader bestimmen. Jede Anforderung enthält Werte für die Anzahl der verbleibenden Lese- und Schreibanforderungen. Die folgende Tabelle beschreibt die Antwortheader, die Sie auf diese Werte untersuchen können:
 
-| Antwortheader | Beschreibung |
+| Antwortheader | BESCHREIBUNG |
 | --- | --- |
 | x-ms-ratelimit-remaining-subscription-reads |Verbleibende abonnementbezogene Lesevorgänge |
 | x-ms-ratelimit-remaining-subscription-writes |Verbleibende abonnementbezogene Schreibvorgänge |
@@ -85,7 +85,7 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 In der **Azure-CLI** rufen Sie den Headerwert mithilfe der ausführlicheren Option ab.
 
 ```azurecli
-azure group list -vv --json
+az group list --verbose --debug
 ```
 
 So wird eine Vielzahl von Werten zurückgegeben, einschließlich des folgenden Objekts:

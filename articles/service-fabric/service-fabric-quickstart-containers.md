@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/02/2017
+ms.date: 01/25/18
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 9d3d15c63055f3eeb0e6cb292d75a8c42b33f7fe
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 4043c600dcc79cc85b66d66051416218507432af
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>Bereitstellen einer Service Fabric-Containeranwendung unter Windows in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -79,24 +79,44 @@ Konfigurieren Sie auch die Zuordnung vom Containerport zum Hostport, indem Sie i
 Eine vollständige ApplicationManifest.xml-Beispieldatei finden Sie am Ende dieses Artikels.
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
-Für die Anwendungsbereitstellung in einem Cluster in Azure können Sie entweder einen eigenen Cluster erstellen oder einen Partycluster verwenden.
+Für die Anwendungsbereitstellung in einem Cluster in Azure können Sie entweder einem Partycluster beitreten oder [einen eigenen Cluster in Azure erstellen](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
-Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Eine Anleitung für den Zugriff auf einen Partycluster finden Sie [hier](http://aka.ms/tryservicefabric).  
+Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. 
 
-Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Das Zertifikat und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
 
-Notieren Sie sich den Verbindungsendpunkt, da Sie ihn im nächsten Schritt benötigen.  
+![PFX-Zertifikat und Verbindungsendpunkt](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+
+Installieren Sie das PFX-Zertifikat auf einem Windows-Computer im Zertifikatspeicher *CurrentUser\My*.
+
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
+\CurrentUser\My
+
+
+  PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
+
+Notieren Sie sich den Fingerabdruck für den nächsten Schritt.  
 
 ## <a name="deploy-the-application-to-azure-using-visual-studio"></a>Bereitstellen der Anwendung für Azure mithilfe von Visual Studio
 Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio in einem Cluster bereitstellen.
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MyFirstContainer**, und wählen Sie **Veröffentlichen** aus. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 
-![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-dotnet/publish-app.png)
+Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und geben Sie die folgenden Informationen an.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des im vorherigen Schritt installierten Zertifikats entsprechen. 
 
-Geben Sie den Verbindungsendpunkt des Clusters in das Feld **Verbindungsendpunkt** ein. Bei der Registrierung für den Partycluster wird der Verbindungsendpunkt im Browser angegeben. Beispiel: `winh1x87d1d.westus.cloudapp.azure.com:19000`.  Wenn Sie auf **Veröffentlichen** klicken, wird die Anwendung bereitgestellt.
+![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-containers/publish-app.png)
 
-Navigieren Sie in einem Browser zu http://winh1x87d1d.westus.cloudapp.azure.com:80. Die IIS-Standardwebseite sollte angezeigt werden: ![IIS-Standardwebseite][iis-default]
+Klicken Sie auf **Veröffentlichen**.
+
+Jede Anwendung im Cluster muss einen eindeutigen Namen besitzen.  Bei Partyclustern handelt es sich jedoch um eine öffentliche, freigegebene Umgebung, und unter Umständen tritt in einer vorhandenen Anwendung ein Konflikt auf.  Kommt es zu einem Namenskonflikt, benennen Sie das Visual Studio-Projekt um, und stellen Sie es erneut bereit.
+
+Navigieren Sie in einem Browser zu http://zwin7fh14scd.westus.cloudapp.azure.com:80. Die IIS-Standardwebseite sollte angezeigt werden: ![IIS-Standardwebseite][iis-default]
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Vollständige Beispiele für Service Fabric-Anwendungs- und Dienstmanifeste
 Im Anschluss finden Sie die vollständigen Dienst- und Anwendungsmanifeste, die in dieser Schnellstartanleitung verwendet werden:
@@ -167,6 +187,7 @@ Im Anschluss finden Sie die vollständigen Dienst- und Anwendungsmanifeste, die 
         <PortBinding ContainerPort="80" EndpointRef="MyContainerServiceTypeEndpoint"/>
       </ContainerHostPolicies>
     </Policies>
+
   </ServiceManifestImport>
   <DefaultServices>
     <!-- The section below creates instances of service types, when an instance of this 

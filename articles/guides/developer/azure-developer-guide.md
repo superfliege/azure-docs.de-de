@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: b54b806aad1e15702d2167dcf2870ba19c4708df
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8eb3cae792a09fc530b84243f2baa01ecc5d13dc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -44,7 +44,7 @@ Sehen wir uns nun einige bestimmte Dienste an, die Sie für Ihre Anwendungen unt
 
 Azure stellt mehrere cloudbasierte Computerangebote bereit, mit denen Sie Ihre Anwendung ausführen können. Sie müssen sich also keine Sorgen über Infrastrukturdetails machen. Sie können Ihre Ressourcen bequem zentral oder horizontal hochskalieren, sobald Ihre Anwendungsnutzung steigt.
 
-Azure bietet Dienste, die Ihre Anforderungen für Anwendungsentwicklung und Hosting unterstützen. Azure bietet Infrastructure-as-a-Service (IaaS), um Ihnen die volle Kontrolle über das Hosten Ihrer Anwendung zu übertragen. Die Platform-as-a-Service-Angebote (PaaS) von Azure bieten Ihnen vollständig verwaltete Dienste, die Sie zum Erstellen Ihrer Apps benötigen. Es gibt sogar die Möglichkeit zum serverlosen Hosten in Azure, wo Sie nur Ihren Code schreiben müssen.
+Azure bietet Dienste, die Ihre Anforderungen für Anwendungsentwicklung und Hosting unterstützen. Mit den Infrastructure-as-a-Service-Angeboten (IaaS) von Azure können Sie das Hosting Ihrer Anwendungen vollständig selbst steuern. Die Platform-as-a-Service-Angebote (PaaS) von Azure bieten Ihnen vollständig verwaltete Dienste, die Sie zur Unterstützung Ihrer Apps benötigen. Es gibt sogar die Möglichkeit zum serverlosen Hosten in Azure, wo Sie nur Ihren Code schreiben müssen.
 
 ![Optionen zum Anwendungshosting in Azure](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
@@ -69,7 +69,7 @@ Sie können Ihre vorhandenen Anwendungen zu App Service migrieren, indem Sie das
 
 #### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
-Azure lässt zu, dass Sie als Infrastructure-as-a-Service-Anbieter (IaaS) Ihre Anwendung auf Windows- oder Linux-VMs bereitstellen oder migrieren. Zusammen mit Azure Virtual Network unterstützt Azure Virtual Machines die Bereitstellung von Windows- oder Linux-VMs in Azure. Mit virtuellen Computern verfügen Sie über die vollständige Kontrolle über die Konfiguration des Computers. Wenn Sie VMs verwenden, sind Sie für die gesamte Serversoftwareinstallation, -konfiguration, -wartung und für Patches für das Betriebssystem verantwortlich.
+Als Infrastructure-as-a-Service-Anbieter (IaaS) ermöglicht Azure es Ihnen, Ihre Anwendung auf Windows- oder Linux-VMs bereitzustellen oder zu migrieren. Zusammen mit Azure Virtual Network unterstützt Azure Virtual Machines die Bereitstellung von Windows- oder Linux-VMs in Azure. Mit virtuellen Computern verfügen Sie über die vollständige Kontrolle über die Konfiguration des Computers. Wenn Sie VMs verwenden, sind Sie für die gesamte Serversoftwareinstallation, -konfiguration, -wartung und für Patches für das Betriebssystem verantwortlich.
 
 Aufgrund dieses Maß an Kontrolle, über das Sie mit den VMs verfügen, können Sie eine Vielzahl von Serverworkloads auf Azure ausführen, die in kein PaaS-Modell passen. Diese Workloads enthalten Datenbankserver, Windows Server Active Directory und Microsoft SharePoint. Weitere Informationen finden Sie in der Dokumentation für Virtual Machines für [Linux](/azure/virtual-machines/linux/) oder [Windows](/azure/virtual-machines/windows/).
 
@@ -116,7 +116,8 @@ Die meisten Anwendungen müssen Daten speichern, es ist also egal, wie Sie Ihre 
 
     >**Erste Schritte**: Wählen Sie aus den folgenden Speichertypen aus: [Blobs](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [Tabellen](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Warteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md) oder [Dateien](../../storage/files/storage-dotnet-how-to-use-files.md).
 
--   **Azure SQL-Datenbank**: Eine auf Azure basierende Version des Microsoft SQL Server-Moduls zum Speichern relationaler Tabellendaten in der Cloud. SQL-Datenbank bietet vorhersagbare Leistung, Skalierbarkeit ohne Downtime, Geschäftskontinuität, und Datenschutz.
+-   
+            **Azure SQL-Datenbank**: Eine auf Azure basierende Version der Microsoft SQL Server-Engine zum Speichern relationaler Tabellendaten in der Cloud. SQL-Datenbank bietet vorhersagbare Leistung, Skalierbarkeit ohne Downtime, Geschäftskontinuität, und Datenschutz.
 
     >**Verwendung**: Wenn Ihre Anwendung Datenspeicherung mit referentieller Integrität, Transaktionsunterstützung und Unterstützung für TSQL-Abfragen erfordert.
 
@@ -143,7 +144,8 @@ Azure bietet mehrere Methoden zum Verwenden von Containern in Ihren Anwendungen.
 
     >**Erste Schritte**: [Deploy a Container Service cluster (Bereitstellen eines Container Service-Clusters)](../../container-service/dcos-swarm/container-service-deployment.md).
 
--   **Docker-Computer**: Hiermit können Sie ein Docker-Modul auf virtuellen Hosts installieren und verwalten, indem Sie Docker-Computerbefehle verwenden.
+-   
+            **Docker-Computer**: Hiermit können Sie eine Docker-Engine auf virtuellen Hosts installieren und verwalten, indem Sie Docker-Computerbefehle verwenden.
 
     >**Verwendung**: Wenn Sie schnell einen Prototyp für eine App erstellen müssen, indem Sie einen einzelnen Docker-Host erstellen.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit NetSuite | Microsoft-Dokumentation'
+title: "Tutorial: Konfigurieren von Netsuite für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Netsuite konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 20a670a3843586ab57ce776f400bd382947d7861
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3de048a88b2a14936f7a49afefc8c96e56909c37
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Netsuite für die automatische Benutzerbereitstellung
 
@@ -25,7 +25,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie in Netsuite und Azur
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
 *   Ein Netsuite-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -70,7 +70,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
    
     a. Geben Sie im Textfeld für den **Benutzernamen des Administrators** den Namen eines Netsuite-Kontos ein, dem das Profil **Systemadministrator** auf „Netsuite.com“ zugewiesen ist.
    
-    b. Geben Sie im Feld **Administratorkennwort** das Kennwort für das Konto ein.
+    b. Geben Sie im Textfeld **Administratorkennwort** das Kennwort für dieses Konto ein.
       
 6. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Netsuite-App herstellen kann.
 

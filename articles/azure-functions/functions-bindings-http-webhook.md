@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: fe0958b8a548e72df17f257e5700c28d3ebae79c
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 608f5ec2fb4b8fa374778cb4f506f1d25eb7642b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>HTTP- und Webhookbindungen in Azure Functions
 
@@ -352,9 +352,6 @@ Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfigura
 Der JavaScript-Code sieht wie folgt aus:
 
 ```javascript
-```
-
-```javascript
 module.exports = function (context, data) {
     context.log('GitHub WebHook triggered!', data.comment.body);
     context.res = { body: 'New GitHub comment: ' + data.comment.body };
@@ -531,6 +528,8 @@ Die Webhookautorisierung wird von der Empfangskomponente für Webhooks verarbeit
 ## <a name="trigger---limits"></a>Trigger – Grenzwerte
 
 Die Länge der HTTP-Anforderung ist auf 100.000 (102.400) Bytes und die URL-Länge auf 4.000 (4.096) Bytes beschränkt. Diese Grenzwerte werden durch das `httpRuntime`-Element der Datei [Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config) der Runtime angegeben.
+
+Wenn eine Funktion, die den HTTP-Trigger verwendet, nicht innerhalb von etwa 2,5 Minuten abgeschlossen ist, tritt auf dem Gateway ein Timeout auf, und es wird ein HTTP 502-Fehler zurückgegeben. Die Funktion wird weiterhin ausgeführt, kann aber keine HTTP-Antwort zurückgeben. Bei Funktionen mit langer Ausführungsdauer empfiehlt es sich, asynchrone Muster zu befolgen und einen Speicherort zurückzugeben, von dem aus Sie den Status der Anforderung pingen können. Informationen dazu, wie lang eine Funktion ausgeführt werden kann, finden Sie unter [Skalierung und Hosting – Verbrauchsplan](functions-scale.md#consumption-plan). 
 
 ## <a name="trigger---hostjson-properties"></a>Trigger: Eigenschaften von „host.json“
 

@@ -3,7 +3,7 @@ title: "Erstellen von Schleifen und Bereichen bzw. Auflösen von Datenbatches in
 description: "Erstellen Sie Schleifen zum Durchlaufen von Daten, gruppieren Sie Aktionen in Bereiche, oder lösen Sie Datenbatches auf, um mehr Workflows in Azure Logic Apps zu starten."
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: jeffhollan
+author: ecfan
 manager: anneta
 editor: 
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 9cdbe4a12a0b16341a1e52f176901045baf327b5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: LADocs; estfan
+ms.openlocfilehash: 64b8f414efe8cd886589084f05e04486c9a0d05c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>Schleifen, Bereiche und Auflösen von Batches in Logik-Apps
   
@@ -87,9 +87,9 @@ Zum Aktivieren der sequenziellen Ausführung einer ForEach-Schleife muss der Vor
   
   In diesem Beispiel wird ein HTTP-Endpunkt aufgerufen, bis der Antworttext den Wert „Completed“ hat.  Der Vorgang wird abgeschlossen, wenn eine der folgenden Bedingungen erfüllt ist: 
   
-  * Die HTTP-Antwort hat den Status „Completed“.
+  * die HTTP-Antwort den Status „Completed“ aufweist
   * Der Vorgang wurde eine Stunde lang ausgeführt.
-  * Die Schleife wurde 100 Mal durchlaufen.
+  * sie 100-mal durchlaufen wurde.
   
   Bei Verwendung der Codeansicht können Sie eine until-Schleife wie im folgenden Beispiel angeben:
   

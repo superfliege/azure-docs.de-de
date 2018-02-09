@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 01/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 513855084c8b89d97b049f1df2ec24d0f9789afe
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: d12743b752c42e6a7373e9c15df6dac71b7f9d27
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Sammeln von Daten von Computern in Ihrer Umgebung mit Log Analytics
 
@@ -41,6 +41,10 @@ Der Agent für Linux und Windows kommuniziert ausgehend über TCP-Port 443 mit d
 Der Agent für Linux und Windows dient nicht nur zur Anbindung an Log Analytics, sondern unterstützt auch die Anbindung an Azure Automation, um die Hybrid Runbook Workerrolle und Verwaltungslösungen wie Änderungsnachverfolgung und Updateverwaltung zu hosten.  Weitere Informationen zur Hybrid Runbook Workerrolle finden Sie unter [Azure Automation Hybrid Runbook Worker](../automation/automation-offering-get-started.md#automation-architecture-overview).  
 
 Sofern nach Ihren IT-Sicherheitsrichtlinien Computer in Ihrem Netzwerk keine Internetverbindung herstellen dürfen, kann der Agent so konfiguriert werden, dass er eine Verbindung mit dem OMS-Gateway herstellt, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von der aktivierten Lösung zu senden. Weitere Informationen und Anleitungen zum Konfigurieren Ihres Linux- oder Windows-Agents für die Kommunikation mit dem Log Analytics-Dienst über ein OMS-Gateway finden Sie unter [Verbinden von Computern mit OMS über das OMS-Gateway](log-analytics-oms-gateway.md). 
+
+> [!NOTE]
+> Der Agent für Windows unterstützt nur Transport Layer Security (TLS) 1.0 und 1.1.  
+> 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Prüfen Sie zunächst anhand der folgenden Informationen, ob die Mindestanforderungen des Systems erfüllt sind.
@@ -91,9 +95,9 @@ Der Wert für die Proxykonfiguration weist die folgende Syntax auf:
 > [!NOTE]
 > Wenn Ihr Proxyserver keine Authentifizierung erfordert, muss der Linux-Agent trotzdem einen Pseudo-Benutzernamen und -Kennwort angeben. Dies kann ein beliebiger Benutzername oder ein beliebiges Kennwort sein.
 
-|Eigenschaft| Beschreibung |
+|Eigenschaft| BESCHREIBUNG |
 |--------|-------------|
-|Protocol | https |
+|Protokoll | https |
 |user | Optionaler Benutzername für die Proxyauthentifizierung |
 |password | Optionales Kennwort für die Proxyauthentifizierung |
 |proxyhost | Adresse oder FQDN des Proxyservers/OMS-Gateways |
@@ -107,7 +111,7 @@ Beispiel: `https://user01:password@proxy01.contoso.com:30443`
 ## <a name="install-and-configure-agent"></a>Installieren und Konfigurieren des Agents 
 Die direkte Verbindung Ihrer lokalen Computer mit Log Analytics kann je nach Ihren Anforderungen mithilfe verschiedener Methoden durchgeführt werden. Die folgende Tabelle hebt die einzelnen Methoden hervor, um festzustellen, welche Methode in Ihrer Organisation am besten funktioniert.
 
-|Quelle | Methode | Beschreibung|
+|Quelle | Methode | BESCHREIBUNG|
 |-------|-------------|-------------|
 | Windows-Computer|- [Manuelle Installation](log-analytics-agent-windows.md)<br>- [Azure Automation DSC](log-analytics-agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Resource Manager-Vorlage mit Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Installieren Sie den Microsoft Monitoring Agent über die Befehlszeile oder mit einer automatisierten Methode wie Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications) oder mit einer Azure Resource Manager-Vorlage, wenn Sie Microsoft Azure Stack in Ihrem Rechenzentrum bereitgestellt haben.| 
 |Linux-Computer| [Manuelle Installation](log-analytics-quick-collect-linux-computer.md)|Installieren Sie den Agent für Linux durch Aufrufen eines Wrapperskripts, das auf GitHub gehostet wird. | 

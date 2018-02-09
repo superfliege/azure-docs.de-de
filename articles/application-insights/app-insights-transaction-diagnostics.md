@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: sdash
-ms.openlocfilehash: b090699cf90c74af8480b811901b6e3078b007b3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8c1d8600b7f4aaa1e95f4acfbbdd55fdbfebb8fb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Einheitliche komponentenübergreifende Transaktionsdiagnose
 
@@ -26,7 +26,7 @@ Mit der Vorschauversion wird eine neue, einheitliche Diagnoseoberfläche eingef�
 
 ## <a name="what-does-component-mean-in-the-context-of-application-insights"></a>Was bedeutet „Komponente“ im Kontext von Application Insights?
 
-Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Microserviceanwendung. Entwickler und Betriebsteams verfügen über Sichtbarkeit oder Zugriff für die von diesen Anwendungskomponenten generierte Telemetrie auf Codeebene. 
+Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Microserviceanwendung. Entwickler und Betriebsteams verfügen über Sichtbarkeit oder Zugriff für die von diesen Anwendungskomponenten generierte Telemetrie auf Codeebene.
 
 * Komponenten unterscheiden sich von „beobachteten“ externen Abhängigkeiten, wie SQL, EventHub usw., auf die Ihr Team/Ihre Organisation möglicherweise keinen Zugriff hat (Code oder Telemetrie).
 * Komponenten können in einer beliebigen Anzahl von Server-/Rollen-/Containerinstanzen ausgeführt werden.
@@ -40,11 +40,11 @@ Aktivieren Sie in der [Vorschauliste](app-insights-previews.md) "Unified details
 
 ![Aktivieren der Vorschau](media/app-insights-e2eTxn-diagnostics/previews.png)
 
-Diese Vorschau ist aktuell für serverseitige Anforderungen, Abhängigkeiten und Ausnahmen verfügbar. Sie können aus den Selektierungsoberflächen **Suchergebnisse**, **Leistung** oder **Fehler** auf die neue Benutzeroberfläche zugreifen. Die Vorschauversion ersetzt die entsprechenden klassischen Detailblätter. 
+Diese Vorschau ist aktuell für serverseitige Anforderungen, Abhängigkeiten und Ausnahmen verfügbar. Sie können aus den Selektierungsoberflächen **Suchergebnisse**, **Leistung** oder **Fehler** auf die neue Benutzeroberfläche zugreifen. Die Vorschauversion ersetzt die entsprechenden klassischen Detailblätter.
 
 ![Leistungsstichproben](media/app-insights-e2eTxn-diagnostics/performanceSamplesClickThrough.png)
 
-## <a name="transaction-diagnostics-experience"></a>Oberfläche zur Transaktionsdiagnose 
+## <a name="transaction-diagnostics-experience"></a>Oberfläche zur Transaktionsdiagnose
 Diese Ansicht ist in drei Hauptteile gegliedert: ein komponentenübergreifendes Transaktionsdiagramm, eine Liste der Zeitabfolge für die gesamte Telemetrie aus einem bestimmten Komponentenvorgang und den Detailbereich für ein bestimmtes auf der linken Seite ausgewähltes Telemetrieelement.
 
 ![Hauptbestandteile](media/app-insights-e2eTxn-diagnostics/3partsCrossComponent.png)
@@ -77,6 +77,10 @@ In diesem Bereich werden die Details der in einem der beiden Abschnitte links au
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler und Momentaufnahmedebugger
 
 Der [Application Insights Profiler](app-insights-profiler.md) oder der [Momentaufnahmedebugger](app-insights-snapshot-debugger.md) unterstützen die Diagnose von Leistungs- und Ausfallproblemen auf Codeebene. Dank dieser Benutzeroberfläche können Sie Profilerüberwachungen oder Momentaufnahmen von beliebigen Komponenten mit nur einem Klick anzeigen.
+
+Setzen Sie sich bei Problemen mit dem Profiler unter **serviceprofilerhelp@microsoft.com** mit uns in Verbindung.
+
+Setzen Sie sich bei Problemen mit dem Momentaufnahmedebugger unter **snapshothelp@microsoft.com** mit uns in Verbindung.
 
 ![Debuggerintegration](media/app-insights-e2eTxn-diagnostics/debugSnapshot.png)
 

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: dc983549aea53ed29859205102d6308a3367bec7
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 54491d0ca1f515786af07146d83ef65fc7d46f11
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -81,7 +81,12 @@ Informationen zur Beschränkung der Anzahl von Endpunkten, die Sie hinzufügen k
 
 ### <a name="when-using-azure-storage-containers"></a>Gründe für die Verwendung von Azure Storage-Containern
 
-IoT Hub unterstützt nur das Schreiben von Daten in Azure Storage-Container als Blobs – und zwar im [Apache Avro](http://avro.apache.org/)-Format. Die IoT Hub-Instanz verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn sie eine bestimmte Größe erreicht oder ein bestimmter Zeitraum verstrichen ist, je nachdem, welcher Fall zuerst eintritt. IoT Hub schreibt keine leeren Blobs, wenn keine Daten zum Schreiben vorhanden sind.
+IoT Hub unterstützt nur das Schreiben von Daten in Azure Storage-Container als Blobs – und zwar im [Apache Avro](http://avro.apache.org/)-Format. In folgenden Fällen verarbeitet IoT Hub batchweise Nachrichten und schreibt Daten in ein Blob:
+
+* Der Batch hat eine bestimmte Größe erreicht.
+* Oder ein bestimmter Zeitraum ist verstrichen.
+
+IoT Hub schreibt keine leeren Blobs, wenn keine Daten zum Schreiben vorhanden sind.
 
 IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention:
 

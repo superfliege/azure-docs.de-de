@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: c283fb4d1a390de88b425ce51a312b5404503f0d
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a43d2ea10bfd6de2f8177283821f7aad59e9f610
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal
 
@@ -78,8 +78,9 @@ Folgende Eigenschaften können für eine Paketerfassung definiert werden:
 - **Virtueller Zielcomputer**: Der virtuelle Computer, auf dem die Paketerfassung durchgeführt wird.
 - **Paketerfassungsname**: Dieser Wert gibt den Namen der Paketerfassung an.
 
-**Konfiguration erfassen**
+**Erfassungskonfiguration**
 
+- **Lokaler Dateipfad**: Lokaler Pfad auf dem virtuellen Computer zum Speicherort für die Paketerfassung (nur gültig, wenn **[Datei]** ausgewählt ist). Sie müssen einen gültigen Pfad angeben. Bei einem virtuellen Linux-Computer muss der Pfad mit „/ var / captures“ beginnen.
 - **Speicherkonto:** Gibt an, ob die Paketerfassung in einem Speicherkonto gespeichert wird.
 - **Datei**: Gibt an, ob eine Paketerfassung lokal auf dem virtuellen Computer gespeichert wird.
 - **Speicherkonten**: Das ausgewählte Speicherkonto, unter dem die Paketerfassung gespeichert wird. Der Standardspeicherort ist „https://{Name des Speicherkontos}.blob.core.windows.net/network-watcher-logs/subscriptions/{Abonnement-ID}/resourcegroups/{Name der Ressourcengruppe}/providers/microsoft.compute/virtualmachines/{Name des virtuellen Computers}/{JJ}/{MM}/{TT}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap“. (Nur aktiviert, wenn **Storage** ausgewählt ist.)

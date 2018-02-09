@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/30/2018
 ms.author: juluk
-ms.openlocfilehash: a04342f77126afe1e0a2707f1d213e0a8eb5825d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d8188634846a7ce75b5294cb3012069d9eafafc1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/01/2018
 ---
-[!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
+[!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
 ## <a name="how-bash-in-cloud-shell-storage-works"></a>Funktionsweise von Bash in Cloud Shell-Speicher 
 Bash in Cloud Shell nutzt die beiden folgenden Methoden, um Dateien beizubehalten: 
@@ -69,12 +69,12 @@ Ihre Dateifreigabe ist weiterhin vorhanden, sofern Sie sie nicht manuell lösche
 ![Ausführen des Befehls „clouddrive unmount“](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> Beim Ausführen dieses Befehls werden keine Ressourcen gelöscht, aber beim manuellen Löschen einer Ressourcengruppe, eines Speicherkontos oder einer Dateifreigabe mit Zuordnung zu Cloud Shell werden Ihr Datenträgerimage im Verzeichnis `$Home` und alle Dateien in Ihrer Dateifreigabe gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.
+> Durch Ausführung dieses Befehls werden keine Ressourcen gelöscht. Wenn Sie aber eine Ressourcengruppe, ein Speicherkonto oder eine Dateifreigabe mit Zuordnung zu Cloud Shell manuell löschen, werden dadurch sowohl Ihr Datenträgerimage im Verzeichnis `$Home` als auch alle Dateien in Ihrer Dateifreigabe gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.
 
 ## <a name="list-clouddrive"></a>Auflisten von `clouddrive`
 Führen Sie den `df`-Befehl aus, um zu ermitteln, welche Dateifreigabe als `clouddrive` bereitgestellt wird. 
 
-Der Dateipfad zu „clouddrive“ zeigt den Namen Ihres Speicherkontos und die Dateifreigabe in der URL. Beispiel: `//storageaccountname.file.core.windows.net/filesharename`
+Der Dateipfad zu „clouddrive“ zeigt den Namen Ihres Speicherkontos und die Dateifreigabe in der URL. Zum Beispiel, `//storageaccountname.file.core.windows.net/filesharename`
 
 ```
 justin@Azure:~$ df
@@ -88,7 +88,7 @@ shm                                                    65536       0      65536 
 justin@Azure:~$
 ```
 
-[!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
+[!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Bash in Cloud Shell – Schnellstart](quickstart.md) <br>

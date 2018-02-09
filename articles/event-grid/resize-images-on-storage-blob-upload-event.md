@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 22eafca56eb5677c63a833d298799b725c50f768
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: d8ffd9b3b9a315129ab0442908a9b3ad3bbecd1c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -51,7 +51,7 @@ Falls Sie nicht Cloud Shell verwenden, müssen Sie sich erst mithilfe von `az lo
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-Für Azure Functions ist ein allgemeines Speicherkonto erforderlich. Erstellen Sie ein separates allgemeines Speicherkonto in der Ressourcengruppe, indem Sie den Befehl [az storage account create](/cli/azure/storage/account#create) verwenden.
+Für Azure Functions ist ein allgemeines Speicherkonto erforderlich. Erstellen Sie ein separates allgemeines Speicherkonto in der Ressourcengruppe, indem Sie den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) verwenden.
 
 Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. 
 
@@ -65,7 +65,7 @@ az storage account create --name <general_storage_account> \
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App  
 
-Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktion in Azure hostet. Die Funktionen-App bietet eine Umgebung für die serverlose Ausführung des Funktionscodes. Erstellen Sie eine Funktionen-App mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#create). 
+Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktion in Azure hostet. Die Funktionen-App bietet eine Umgebung für die serverlose Ausführung des Funktionscodes. Erstellen Sie eine Funktionen-App mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#az_functionapp_create). 
 
 Ersetzen Sie im folgenden Befehl den Platzhalter `<function_app>` durch den eigenen eindeutigen Namen Ihrer Funktions-App. Da `<function_app>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. In diesem Fall ist „`<general_storage_account>`“ der Name des allgemeinen Speicherkontos, das Sie erstellt haben.  
 
@@ -78,7 +78,7 @@ Jetzt müssen Sie die Funktions-App für die Verbindung mit Blob Storage konfigu
 
 ## <a name="configure-the-function-app"></a>Konfigurieren der Funktions-App
 
-Die Funktion benötigt die Verbindungszeichenfolge zum Herstellen der Verbindung mit dem Blob Storage-Konto. In diesem Fall ist „`<blob_storage_account>`“ der Name des Blob Storage-Kontos, das Sie im vorherigen Tutorial erstellt haben. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) ab. Der Name des Miniaturansichtcontainers muss ebenfalls auf „`thumbs`“ festgelegt werden. Fügen Sie diese Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) hinzu.
+Die Funktion benötigt die Verbindungszeichenfolge zum Herstellen der Verbindung mit dem Blob Storage-Konto. In diesem Fall ist „`<blob_storage_account>`“ der Name des Blob Storage-Kontos, das Sie im vorherigen Tutorial erstellt haben. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) ab. Der Name des Miniaturansichtcontainers muss ebenfalls auf „`thumbs`“ festgelegt werden. Fügen Sie diese Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) hinzu.
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \
@@ -95,7 +95,7 @@ Sie können nun ein Funktionscodeprojekt für diese Funktions-App bereitstellen.
 
 ## <a name="deploy-the-function-code"></a>Bereitstellen des Funktionscodes 
 
-Die C#-Funktion, die die Änderung der Bildgröße ausführt, steht in diesem [GitHub-Beispielrepository](https://github.com/Azure-Samples/function-image-upload-resize) zur Verfügung. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) bereit. 
+Die C#-Funktion, die die Änderung der Bildgröße ausführt, steht in diesem [GitHub-Beispielrepository](https://github.com/Azure-Samples/function-image-upload-resize) zur Verfügung. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az_functionapp_deployment_source_config) bereit. 
 
 Im folgenden Befehl ist `<function_app>` dieselbe Funktions-App, die Sie im vorherigen Skript erstellt haben.
 
@@ -106,7 +106,9 @@ az functionapp deployment source config --name <function_app> \
 ```
 
 Die Funktion für die Bildgrößenänderung wird durch ein Ereignisabonnement für ein Ereignis „Blob erstellt“ ausgelöst. Die an den Trigger übergebenen Daten umfassen die URL des Blobs, die ihrerseits an die Eingabebindung zum Abrufen des hochgeladenen Bilds aus Blob Storage übergeben wird. Die Funktion generiert eine Miniaturansicht und schreibt den sich ergebenden Datenstrom in einen separaten Container in Blob Storage. Weitere Informationen zu dieser Funktion finden Sie in der [Infodatei im Beispielrepository](https://github.com/Azure-Samples/function-image-upload-resize/blob/master/README.md).
- 
+
+In diesem Projekt wird `EventGridTrigger` als Triggertyp verwendet. Es wird empfohlen, anstelle generischer HTTP-Trigger den Event Grid-Trigger zu verwenden. Event Grid überprüft automatisch Event Grid-Funktionstrigger. Bei generischen HTTP-Triggern müssen Sie die [Überprüfungsantwort](security-authentication.md#webhook-event-delivery) implementieren.
+
 Der Funktionsprojektcode wird direkt aus dem öffentlichen Beispielrepository bereitgestellt. Weitere Informationen zu den Bereitstellungsoptionen für Azure Functions finden Sie unter [Continuous Deployment für Azure Functions](../azure-functions/functions-continuous-deployment.md).
 
 ## <a name="create-your-event-subscription"></a>Erstellen eines Ereignisabonnements
@@ -129,8 +131,8 @@ Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an ei
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name** | imageresizersub | Der Name, der Ihr neues Ereignisabonnement angibt. | 
     | **Thementyp** |  Speicherkonten | Wählen Sie den Speicherkonto-Ereignisanbieter aus. | 
-    | **Abonnement** | Ihr Abonnement | Standardmäßig sollte Ihr aktuelles Abonnement ausgewählt sein.   |
-    | **Ressourcengruppe** | myResourceGroup | Wählen Sie **Vorhandene verwenden** aus, und wählen Sie die Ressourcengruppe aus, die Sie in diesem Thema verwendet haben.  |
+    | **Abonnement** | Ihr Azure-Abonnement | Standardmäßig sollte Ihr aktuelles Azure-Abonnement ausgewählt werden.   |
+    | **Ressourcengruppe** | myResourceGroup | Wählen Sie **Vorhandene verwenden** und anschließend die Ressourcengruppe aus, die Sie in diesem Tutorial verwendet haben.  |
     | **Instanz** |  `<blob_storage_account>` |  Wählen Sie das Blob Storage-Konto aus, das Sie erstellt haben. |
     | **Ereignistypen** | Blob erstellt | Deaktivieren Sie alle Typen außer **Blob erstellt**. Nur Ereignistypen mit `Microsoft.Storage.BlobCreated` werden an die Funktion übergeben.| 
     | **Abonnentenendpunkt** | Automatisch generiert | Verwenden Sie die Endpunkt-URL, die für Sie generiert wird. | 

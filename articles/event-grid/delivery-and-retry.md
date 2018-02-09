@@ -2,17 +2,17 @@
 title: "Azure Event Grid – Übermittlung und Wiederholung"
 description: "Beschreibt, wie Azure Event Grid Ereignisse übermittelt und wie nicht übermittelte Nachrichten verarbeitet werden."
 services: event-grid
-author: djrosanova
+author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/10/2018
-ms.author: darosa
-ms.openlocfilehash: fe9089334deceb38186add56ce3fb1d6ecc20363
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.date: 01/30/2018
+ms.author: tomfitz
+ms.openlocfilehash: cdf6a4e999d55196e8f4eac5695163a7e5a933de
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten 
 
@@ -58,11 +58,11 @@ Event Grid verwendet exponentiell ansteigende Wartezeiten für Wiederholungsvers
 6. 30 Minuten
 7. 1 Stunde
 
-Event Grid fügt allen Wiederholungsintervallen eine geringfügige zufällige Anordnung hinzu.
+Event Grid fügt allen Wiederholungsintervallen eine geringfügige zufällige Anordnung hinzu. Nach einer Stunde wird die Ereignisübermittlung erneut versucht. Der Versuch wird jede Stunde wiederholt.
 
 ## <a name="retry-duration"></a>Wiederholungszeitraum
 
-Während der Vorschauphase laufen alle Ereignisse in Azure Event Grid ab, die nicht innerhalb von zwei Stunden übermittelt werden.
+Azure Event Grid markiert alle Ereignisse als abgelaufen, die nicht innerhalb von 24 Stunden übermittelt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: "Erstellen von Verwaltungslösungen in der Operations Management Suite (OMS) | Microsoft Docs"
-description: "Verwaltungslösungen erweitern die Funktionalität der Operations Management Suite (OMS), indem sie Pakete mit Verwaltungsszenarien bereitstellen, die Kunden zu ihrem OMS-Arbeitsbereich hinzufügen können.  Diese Artikel beschreibt, wie Sie Verwaltungslösungen erstellen, die Sie in Ihrer Umgebung verwenden oder Ihren Kunden zur Verfügung stellen möchten."
+title: "Erstellen einer Verwaltungslösungsdatei in Azure | Microsoft-Dokumentation"
+description: "Verwaltungslösungen beinhalten gebündelte Verwaltungsszenarien, die Kunden zu ihrer Azure-Umgebung hinzufügen können.  Diese Artikel beschreibt, wie Sie Verwaltungslösungen erstellen, die Sie in Ihrer Umgebung verwenden oder Ihren Kunden zur Verfügung stellen möchten."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ace3042cc00cedd005955cdfb82c557fd4a8fb2
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: d896fb7c5ffed5c0fe338c2d2f1ef864aacd6f79
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>Erstellen einer Verwaltungslösungsdatei in der Operations Management Suite (OMS) (Vorschau)
+# <a name="creating-a-management-solution-file-in-azure-preview"></a>Erstellen einer Verwaltungslösungsdatei in Azure (Vorschau)
 > [!NOTE]
-> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in der OMS, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.  
+> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in Azure, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.  
 
-Verwaltungslösungen in Operations Management Suite (OMS) werden als [Resource Manager-Vorlagen](../azure-resource-manager/resource-manager-template-walkthrough.md) implementiert.  Wenn Sie lernen möchten, wie Sie Verwaltungslösungen erstellen, ist der wichtigste Punkt das [Erstellen einer Vorlage](../azure-resource-manager/resource-group-authoring-templates.md).  In diesem Artikel erhalten Sie wichtige Informationen zu Vorlagen, die für Lösungen verwendet werden, und erfahren, wie Sie typische Lösungsressourcen konfigurieren.
+Verwaltungslösungen in Azure werden als [Resource Manager-Vorlagen](../azure-resource-manager/resource-manager-template-walkthrough.md) implementiert.  Wenn Sie lernen möchten, wie Sie Verwaltungslösungen erstellen, ist der wichtigste Punkt das [Erstellen einer Vorlage](../azure-resource-manager/resource-group-authoring-templates.md).  In diesem Artikel erhalten Sie wichtige Informationen zu Vorlagen, die für Lösungen verwendet werden, und erfahren, wie Sie typische Lösungsressourcen konfigurieren.
 
 
 ## <a name="tools"></a>Tools
@@ -53,7 +53,8 @@ Die grundlegende Struktur einer Verwaltungslösung entspricht einer [Resource Ma
 ## <a name="parameters"></a>Parameter
 [Parameter](../azure-resource-manager/resource-group-authoring-templates.md#parameters) sind Werte, die Sie von den Benutzern benötigen, wenn diese die Verwaltungslösung installieren.  Es gibt Standardparameter, über die alle Lösungen verfügen werden, und Sie können nach Bedarf zusätzliche Parameter zu Ihrer bestimmten Lösung hinzufügen.  Wie Benutzer die Parameterwerte bei der Installation Ihrer Lösung bereitstellen, hängt vom bestimmten Parameter ab und wie die Lösung installiert wird.
 
-Wenn Benutzer Ihre Verwaltungslösung über den [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) oder über [Azure-Schnellstartvorlagen](operations-management-suite-solutions.md#finding-and-installing-management-solutions) installieren, werden sie aufgefordert, einen [OMS-Arbeitsbereich und ein Automation-Konto](operations-management-suite-solutions.md#oms-workspace-and-automation-account) auszuwählen.  Diese werden verwendet, um die Werte jedes Standardparameters aufzufüllen.  Der Benutzer wird nicht dazu aufgefordert, direkt Werte für die Standardparameter bereitzustellen, jedoch wird er aufgefordert, Werte für jeden zusätzlichen Parameter bereitzustellen.
+Wenn Benutzer Ihre Verwaltungslösung über den [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) oder über [Azure-Schnellstartvorlagen](operations-management-suite-solutions.md#finding-and-installing-management-solutions) installieren, werden sie aufgefordert, einen [Log Analytics-Arbeitsbereich und ein Automation-Konto](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) auszuwählen.  Diese werden verwendet, um die Werte jedes Standardparameters aufzufüllen.  Der Benutzer wird nicht dazu aufgefordert, direkt Werte für die Standardparameter bereitzustellen, jedoch wird er aufgefordert, Werte für jeden zusätzlichen Parameter bereitzustellen.
+
 
 Wenn der Benutzer Ihrer Lösung [mit einer anderen Methode](operations-management-suite-solutions.md#finding-and-installing-management-solutions) installiert, muss er einen Wert für alle Standardparameter und alle zusätzlichen Parameter angeben.
 
@@ -168,8 +169,9 @@ Sie verweisen in diesem Fall in der Lösung mit der Syntax **variables('variable
 ### <a name="dependencies"></a>Abhängigkeiten
 Das **dependsOn**-Element gibt eine [Abhängigkeit](../azure-resource-manager/resource-group-define-dependencies.md) von einer anderen Ressource an.  Wenn die Lösung installiert ist, wird keine Ressource erstellt, bis nicht alle Abhängigkeiten erstellt wurden.  Beispielsweise kann Ihre Lösung möglicherweise [ein Runbook starten](operations-management-suite-solutions-resources-automation.md#runbooks), wenn sie mithilfe einer [Auftragsressource](operations-management-suite-solutions-resources-automation.md#automation-jobs) erstellt wurde.  Die Auftragsressource würde dann von der Runbookressource abhängig sein, um sicherzustellen, dass das Runbook erstellt wird, bevor der Auftrag erstellt wird.
 
-### <a name="oms-workspace-and-automation-account"></a>OMS-Arbeitsbereich und Automation-Konto
-Verwaltungslösungen erfordern einen [OMS-Arbeitsbereich](../log-analytics/log-analytics-manage-access.md) für Ansichten und ein [Automation-Konto](../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen.  Diese müssen verfügbar sein, bevor die Ressourcen in der Lösung erstellt werden und sie sollten nicht in der Lösung selbst definiert werden.  Der Benutzer wird [einen Arbeitsbereich und ein Konto angeben](operations-management-suite-solutions.md#oms-workspace-and-automation-account), wenn dieser Ihre Lösung bereitstellt. Als Autor sollten Sie aber die nachstehenden Punkte beachten.
+### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-Arbeitsbereich und Automation-Konto
+Verwaltungslösungen erfordern einen [Log Analytics-Arbeitsbereich](../log-analytics/log-analytics-manage-access.md) für Ansichten und ein [Automation-Konto](../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen.  Diese müssen verfügbar sein, bevor die Ressourcen in der Lösung erstellt werden und sie sollten nicht in der Lösung selbst definiert werden.  Der Benutzer wird [einen Arbeitsbereich und ein Konto angeben](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account), wenn dieser Ihre Lösung bereitstellt. Als Autor sollten Sie aber die nachstehenden Punkte beachten.
+
 
 ## <a name="solution-resource"></a>Lösungsressource
 Jede Lösung erfordert einen Ressourceneintrag im Element **resources**, der die Lösung selbst definiert.  Der Eintrag weist den Typ **Microsoft.OperationsManagement/solutions** und die folgende Struktur auf. Dies schließt [Standardparameter](#parameters) und [Variablen](#variables) ein, die in der Regel verwendet werden, um Eigenschaften der Lösung zu definieren.

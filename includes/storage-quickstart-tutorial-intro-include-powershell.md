@@ -6,7 +6,7 @@ Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement
 Login-AzureRmAccount
 ```
 
-Wenn Sie sich nicht sicher sind, welche Region Sie verwenden sollen, können Sie die verfügbaren Regionen auflisten. Sobald die Liste angezeigt wird, wählen Sie die gewünschte Region aus. In diesem Beispiel wird **eastus**verwendet. Speichern Sie diese in einer Variablen, und verwenden Sie die Variable, damit Sie sie an zentraler Stelle ändern können.
+Wenn Sie sich nicht sicher sind, welche Region Sie verwenden sollen, können Sie die verfügbaren Regionen auflisten. Sobald die Liste angezeigt wird, wählen Sie die gewünschte Region aus. In diesem Beispiel wird **eastus** verwendet. Speichern Sie diese in einer Variablen, und verwenden Sie die Variable, damit Sie sie an zentraler Stelle ändern können.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -31,7 +31,7 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "mystorageaccount" `
   -Location $location `
   -SkuName Standard_LRS `
-  -Kind Storage `
+  -Kind Storage
 
 $ctx = $storageAccount.Context
 ```

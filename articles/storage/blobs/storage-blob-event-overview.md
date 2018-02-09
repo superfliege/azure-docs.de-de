@@ -1,36 +1,36 @@
 ---
-title: Reaktion auf Azure Blob Storage-Ereignisse (Vorschau) | Microsoft-Dokumentation
+title: Reaktion auf Azure Blob Storage-Ereignisse | Microsoft-Dokumentation
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
 services: storage,event-grid
 keywords: 
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 08/25/2017
+ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: a56e6026ed0c2c873030625fa7a9b35b92faf930
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="reacting-to-blob-storage-events-preview"></a>Reaktion auf Blob Storage-Ereignisse (Vorschau)
+# <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 
-Azure Blob Storage-Ereignisse ermöglichen Anwendungen, auf das Erstellen und Löschen von Blobs mit modernen serverlosen Architekturen und ohne komplizierten Code oder teure und ineffiziente Abrufdienste zu reagieren.  Stattdessen werden die Ereignisse per Push über [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) an Abonnenten wie [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) oder sogar Ihren eigenen benutzerdefinierten HTTP-Listener übertragen, und Sie zahlen nur für das, was Sie tatsächliche verwenden.
+Azure Storage-Ereignisse bieten Anwendungen die Möglichkeit, auf das Erstellen und Löschen von Blobs mithilfe moderner serverloser Architekturen zu reagieren. Dies geschieht ohne komplizierten Code oder teure und ineffiziente Abrufdienste.  Stattdessen werden die Ereignisse per Push über [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) an Abonnenten wie [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) oder sogar Ihren eigenen benutzerdefinierten HTTP-Listener übertragen, und Sie zahlen nur für das, was Sie tatsächliche verwenden. 
 
 Gängige Blob Storage-Ereignisszenarien enthalten Bild- oder Videobearbeitung, Suchindizierung oder dateiorientierte Workflows.  Asynchrone Dateiuploads eignen sich hervorragend für Ereignisse.  Wenn Änderungen selten sind, aber Ihr Szenario die sofortige Reaktion erfordert, kann die ereignisbasierte Architektur besonders effizient sein.
 
-Event Grid befindet sich derzeit in der Vorschauphase und ist für Konten in den Regionen ***USA, Mitte*** oder ***USA, Westen 2*** verfügbar.  Unter [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt](storage-blob-event-quickstart.md) finden Sie ein kurzes Beispiel.
+Die Verfügbarkeit von Storage-Ereignissen ist an die [Verfügbarkeit](../../event-grid/overview.md) von Event Grid gebunden und wird in anderen Regionen verfügbar, sobald dort Event Grid verfügbar ist. Ein kurzes Beispiel finden Sie unter [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit CLI](storage-blob-event-quickstart.md) oder [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit PowerShell](storage-blob-event-quickstart-powershell.md). 
 
 ![Event Grid-Modell](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
 ## <a name="blob-storage-accounts"></a>Blob Storage-Konten
-Blob Storage-Ereignisse stehen in [BLOB-Speicherkonten](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) (und nicht in allgemeinen Speicherkonten) zur Verfügung.  BLOB-Speicherkonten sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten.
+Blob Storage-Ereignisse stehen in [Blob Storage-Konten](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) und in [Speicherkonten des Typs „Allgemein v2“](../common/storage-account-options.md#general-purpose-v2) zur Verfügung. Bei **Allgemein v2** (General Purpose v2, GPv2) handelt es sich um Speicherkonten, die alle Features für alle Speicherdienste unterstützen, z.B. Blobs, Dateien, Warteschlangen und Tabellen. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten. 
 
 ## <a name="available-blob-storage-events"></a>Verfügbare Blob Storage-Ereignisse
 Event Grid verwendet [Ereignisabonnements](../../event-grid/concepts.md#event-subscriptions) zum Weiterleiten von Ereignisnachrichten an Abonnenten.  Blob Storage-Ereignisabonnements können zwei Arten von Ereignissen enthalten:  
 
-> |Veranstaltungsname|Beschreibung|
+> |Veranstaltungsname|BESCHREIBUNG|
 > |----------|-----------|
 > |`Microsoft.Storage.BlobCreated`|Wird ausgelöst, wenn ein Blob erstellt oder durch die Vorgänge `PutBlob`, `PutBlockList` oder `CopyBlob` ersetzt wird.|
 > |`Microsoft.Storage.BlobDeleted`|Wird ausgelöst, wenn ein Blob, durch den Vorgang `DeleteBlob` gelöscht wird.|
@@ -39,23 +39,26 @@ Event Grid verwendet [Ereignisabonnements](../../event-grid/concepts.md#event-su
 Blob Storage-Ereignisse enthalten alle Informationen, die Sie für die Reaktion auf Änderungen in Ihren Daten benötigen.  Sie können ein Blob Storage-Ereignis identifizieren, da die eventType-Eigenschaft mit „Microsoft.Storage“ beginnt.  
 Weitere Informationen zur Verwendung von Event Grid-Ereigniseigenschaften finden Sie unter [Event Grid-Ereignisschema](../../event-grid/event-schema.md).  
 
-> |Eigenschaft|Typ|Beschreibung|
+> |Eigenschaft|Typ|BESCHREIBUNG|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |Thema|string|Vollständige Azure Resource Manager-ID des Speicherkontos, das das Ereignis ausgibt.|
-> |subject|string|Der relative Ressourcenpfad zu dem Objekt, das der Betreff des Ereignisses ist, in dem gleichen erweiterten Azure Resource Manager-Format, mit dem Speicherkonten, Dienste und Container für RBAC von Azure beschrieben werden.  Dieses Format schließt einen Blobnamen ein, bei dem die Groß-/Kleinschreibung beibehalten wird.|
-> |eventTime|string|Datum und Uhrzeit der Ereignisgenerierung im ISO 8601-Format.|
-> |eventType|string|„Microsoft.Storage.BlobCreated“ oder „Microsoft.Storage.BlobDeleted“|
-> |ID|string|Eindeutiger Bezeichner dieses Ereignisses|
-> |data|objekt|Sammlung Blob Storage-spezifischer Ereignisdaten|
-> |data.contentType|string|Der Inhaltstyp des Blobs, wie er im Content-Type-Header aus dem Blob zurückgegeben werden würde.|
+> |Thema|Zeichenfolge|Vollständige Azure Resource Manager-ID des Speicherkontos, das das Ereignis ausgibt.|
+> |subject|Zeichenfolge|Der relative Ressourcenpfad zu dem Objekt, das der Betreff des Ereignisses ist, in dem gleichen erweiterten Azure Resource Manager-Format, mit dem Speicherkonten, Dienste und Container für RBAC von Azure beschrieben werden.  Dieses Format schließt einen Blobnamen ein, bei dem die Groß-/Kleinschreibung beibehalten wird.|
+> |eventTime|Zeichenfolge|Datum und Uhrzeit der Ereignisgenerierung im ISO 8601-Format.|
+> |eventType|Zeichenfolge|„Microsoft.Storage.BlobCreated“ oder „Microsoft.Storage.BlobDeleted“|
+> |id|Zeichenfolge|Eindeutiger Bezeichner dieses Ereignisses|
+> |dataVersion|Zeichenfolge|Die Schemaversion des Datenobjekts.|
+> |metadataVersion|Zeichenfolge|Die Schemaversion der Eigenschaften oberster Ebene.|
+> |data|object|Sammlung Blob Storage-spezifischer Ereignisdaten|
+> |data.contentType|Zeichenfolge|Der Inhaltstyp des Blobs, wie er im Content-Type-Header aus dem Blob zurückgegeben werden würde.|
 > |data.contentLength|number|Die Größe des Blobs im Ganzzahlformat, eine Anzahl von Bytes darstellend, wie sie im Content-Length-Header aus dem Blob zurückgegeben werden würde.  Gesendet mit BlobCreated-Ereignis, jedoch nicht mit BlobDeleted.|
-> |data.url|string|Die URL des Objekts, das der Betreff des Ereignisses ist.|
-> |data.eTag|string|Das ETag des Objekts, wenn dieses Ereignis ausgelöst wird.  Für das Ereignis BlobDeleted nicht verfügbar.|
-> |data.api|string|Der Name des API-Vorgangs, der dieses Ereignis ausgelöst hat.  Für BlobCreated-Ereignisse ist dieser Wert „PutBlob“, „PutBlockList“ oder „Copy“.  Für BlobDeleted-Ereignisse ist dieser Wert „DeleteBlob“.  Diese Werte sind die gleichen API-Namen, die in den Azure Storage-Diagnoseprotokollen vorhanden sind.  Informationen finden Sie unter [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
-> |data.sequencer|string|Ein nicht transparenter Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt.  Benutzer können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen verstehen.|
-> |data.requestId|string|Dienstgenerierte Anforderungs-ID für den Speicher-API-Vorgang.  Kann verwendet werden, um Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen zu korrelieren, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat).|
-> |data.clientRequestId|string|Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang.  Kann zum Korrelieren mit Azure Storage-Diagnoseprotokollen mithilfe des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem „x-ms-client-request-id“-Header bereitgestellt werden. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat).|
-> |data.storageDiagnostics|objekt|Diagnosedaten, die gelegentlich vom Azure Storage-Dienst einbezogen werden.  Falls vorhanden, sollten sie vom Ereignisconsumer ignoriert werden.|
+> |data.url|Zeichenfolge|Die URL des Objekts, das der Betreff des Ereignisses ist.|
+> |data.eTag|Zeichenfolge|Das ETag des Objekts, wenn dieses Ereignis ausgelöst wird.  Für das Ereignis BlobDeleted nicht verfügbar.|
+> |data.api|Zeichenfolge|Der Name des API-Vorgangs, der dieses Ereignis ausgelöst hat.  Für BlobCreated-Ereignisse ist dieser Wert „PutBlob“, „PutBlockList“ oder „Copy“.  Für BlobDeleted-Ereignisse ist dieser Wert „DeleteBlob“.  Diese Werte sind die gleichen API-Namen, die in den Azure Storage-Diagnoseprotokollen vorhanden sind.  Informationen finden Sie unter [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
+> |data.sequencer|Zeichenfolge|Ein nicht transparenter Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt.  Benutzer können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen verstehen.|
+> |data.requestId|Zeichenfolge|Dienstgenerierte Anforderungs-ID für den Speicher-API-Vorgang.  Kann verwendet werden, um Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen zu korrelieren, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat).|
+> |data.clientRequestId|Zeichenfolge|Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang.  Kann zum Korrelieren mit Azure Storage-Diagnoseprotokollen mithilfe des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem „x-ms-client-request-id“-Header bereitgestellt werden. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat).|
+> |data.storageDiagnostics|object|Diagnosedaten, die gelegentlich vom Azure Storage-Dienst einbezogen werden.  Falls vorhanden, sollten sie vom Ereignisconsumer ignoriert werden.|
+|data.blobType|Zeichenfolge|Der Typ des Blobs. Gültige Werte sind „BlockBlob“ oder „PageBlob“.| 
 
 Hier sehen Sie ein Beispiel für ein BlobCreated-Ereignis:
 ```json
@@ -75,7 +78,9 @@ Hier sehen Sie ein Beispiel für ein BlobCreated-Ereignis:
     "blobType": "BlockBlob",
     "url": "https://myaccount.blob.core.windows.net/testcontainer/file1.txt",
     "sequencer": "00000000000000EB000000000000C65A",
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 
 ```
@@ -83,22 +88,30 @@ Hier sehen Sie ein Beispiel für ein BlobCreated-Ereignis:
 Weitere Informationen finden Sie unter [Azure Blob Storage](../../event-grid/event-schema-blob-storage.md).
 
 ## <a name="filtering-events"></a>Filtern von Ereignissen
-Blobereignisabonnements können basierend auf dem Ereignistyp sowie auf dem Container- und Blobnamen des Objekts, das erstellt oder gelöscht wurde, gefiltert werden.  Betrefffilter funktionieren in Event Grid auf Grundlage von „beginnt mit“- und „endet mit“-Übereinstimmungen, sodass Ereignisse mit einem übereinstimmenden Betreff an den Abonnenten übermittelt werden.
+Blobereignisabonnements können basierend auf dem Ereignistyp sowie auf dem Container- und Blobnamen des Objekts, das erstellt oder gelöscht wurde, gefiltert werden.  Auf Ereignisabonnements können während der [Erstellung](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) des Ereignisabonnements oder [zu einem späteren Zeitpunkt](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Filter angewendet werden. Betrefffilter funktionieren in Event Grid auf Grundlage von „beginnt mit“- und „endet mit“-Übereinstimmungen, sodass Ereignisse mit einem übereinstimmenden Betreff an den Abonnenten übermittelt werden. 
+
 Der Betreff von Blob Storage-Ereignissen verwendet das Format:
+
 ```json
 /blobServices/default/containers/<containername>/blobs/<blobname>
 ```
+
 Zur Übereinstimmung mit allen Ereignissen für ein Speicherkonto können Sie den Betrefffilter leer lassen.
 
 Verwenden Sie zur Übereinstimmung mit Ereignissen aus Blobs, die in einem Satz von Containern erstellt wurden und ein gemeinsames Präfix verwenden, einen `subjectBeginsWith`-Filter wie:
+
 ```json
 /blobServices/default/containers/containerprefix
 ```
+
 Verwenden Sie zur Übereinstimmung mit Ereignissen aus Blobs, die in einem bestimmten Container erstellt wurden, einen `subjectBeginsWith`-Filter wie:
+
 ```json
 /blobServices/default/containers/containername/
 ```
+
 Verwenden Sie zur Übereinstimmung mit Ereignissen aus Blobs, die in einem bestimmten Container erstellt wurden und ein gemeinsames Blobnamenspräfix verwenden, einen `subjectBeginsWith`-Filter wie:
+
 ```json
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
@@ -113,7 +126,7 @@ Anwendungen, die Blob Storage-Ereignisse behandeln, sollten einige bewährte Met
 > * Da mehrere Abonnements zum Weiterleiten von Ereignissen an den gleichen Ereignishandler konfiguriert werden können, ist es wichtig, nicht davon auszugehen, dass Ereignisse aus einer bestimmten Quelle stammen, sondern das Thema der Nachricht zu überprüfen, um sicherzustellen, dass es aus dem Speicherkonto stammt, das Sie erwarten.
 > * Überprüfen Sie auf ähnliche Weise, ob Sie auf die Verarbeitung des eventType vorbereitet sind, und gehen Sie nicht davon aus, dass alle Ereignisse, die Sie empfangen, den von Ihnen erwarteten Typen entsprechen.
 > * Da Nachrichten in falscher Reihenfolge und mit Verzögerung eintreffen können, verwenden Sie die etag-Felder, um zu verstehen, ob Ihre Informationen zu Objekten weiterhin auf dem neuesten Stand ist.  Verwenden Sie auch die sequencer-Felder, um die Reihenfolge der Ereignisse für ein bestimmtes Objekt zu verstehen.
-> * Verwenden Sie das blobType-Feld, um zu verstehen, welche Arten von Vorgängen für das Blob zulässig sind, und welche Typen von Clientbibliotheken Sie für den Zugriff auf das Blob verwenden sollten.
+> * Verwenden Sie das blobType-Feld, um zu verstehen, welche Arten von Vorgängen für das Blob zulässig sind, und welche Typen von Clientbibliotheken Sie für den Zugriff auf das Blob verwenden sollten. Gültige Werte sind `BlockBlob` oder `PageBlob`. 
 > * Verwenden Sie das url-Feld mit `CloudBlockBlob`- und `CloudAppendBlob`-Konstruktor für den Zugriff auf das Blob.
 > * Ignorieren Sie Felder, die Sie nicht verstehen.  So müssen Sie sich nicht mit neuen Features auseinandersetzen, die in der Zukunft hinzugefügt werden könnten.
 

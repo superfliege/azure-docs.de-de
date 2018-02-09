@@ -2,17 +2,18 @@
 title: "Integrieren von Azure Stack-Sicherheitsfunktionen in Datencenter-Sicherheitslösungen"
 description: "Erfahren Sie, wie Sie Azure Stack-Sicherheitsfunktionen in Ihre Datencenter-Sicherheitslösungen integrieren."
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/17/2017
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: eb7c651362838d44d6558e080e6130b4a8041d1e
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 0ce7585552f39f59f83df88320e52ea257bb74dd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Integrieren von Azure Stack-Sicherheitsfunktionen in Datencenter-Sicherheitslösungen
 
@@ -94,4 +95,4 @@ Die Syslog-Zieladresse ist ein optionaler Parameter, der für die Bereitstellung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure Stack datacenter integration - publish endpoints (Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten)](azure-stack-integrate-endpoints.md)
+[Azure Stack-Wartungsrichtlinie](azure-stack-servicing-policy.md)

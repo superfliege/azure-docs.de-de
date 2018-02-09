@@ -3,23 +3,23 @@ title: "Benutzerdefinierte Ereignisse für Azure Event Grid mit dem Azure-Portal
 description: "Verwenden Sie Azure Event Grid und PowerShell, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren."
 services: event-grid
 keywords: 
-author: djrosanova
-ms.author: darosa
-ms.date: 10/11/2017
+author: tfitzmac
+ms.author: tomfitz
+ms.date: 01/30/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 0fe498b7b6dcf59bc5caef8ff5a40053e0498f85
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 01472ffc7a98cd2c99793c8675efe2cefffe5558
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit dem Azure Portal und Event Grid
 
-Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstellen Sie über das Azure-Portal ein benutzerdefiniertes Thema, abonnieren dieses Thema und lösen das Ereignis aus, um das Ergebnis anzuzeigen. Ereignisse werden üblicherweise an einen Endpunkt gesendet, der auf das Ereignis reagiert (beispielsweise ein Webhook oder eine Azure-Funktion). Der Einfachheit halber senden wir die Ereignisse in diesem Artikel allerdings an eine URL, die die Nachrichten lediglich sammelt. Diese URL wird mithilfe eines Open Source-Drittanbietertools namens [RequestBin](https://requestb.in/) erstellt.
+Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstellen Sie über das Azure-Portal ein benutzerdefiniertes Thema, abonnieren dieses Thema und lösen das Ereignis aus, um das Ergebnis anzuzeigen. Ereignisse werden üblicherweise an einen Endpunkt gesendet, der auf das Ereignis reagiert (beispielsweise ein Webhook oder eine Azure-Funktion). Der Einfachheit halber senden wir die Ereignisse in diesem Artikel allerdings an eine URL, die die Nachrichten lediglich sammelt. Sie erstellen diese URL mithilfe von Drittanbietertools entweder über [RequestBin](https://requestb.in/) oder [Hookbin](https://hookbin.com/).
 
 >[!NOTE]
->**RequestBin** ist ein Open-Source-Tool, das nicht für hohen Durchsatz konzipiert ist. Die Verwendung des Tools dient lediglich zur Veranschaulichung. Wenn Sie gleichzeitig mehrere Ereignisse pushen, werden möglicherweise nicht alle Ereignisse im Tool angezeigt.
+>**RequestBin** und **Hookbin** sind nicht für hohen Durchsatz konzipiert. Die Verwendung dieser Tools dient lediglich zur Veranschaulichung. Wenn Sie gleichzeitig mehrere Ereignisse pushen, werden möglicherweise nicht alle Ereignisse im Tool angezeigt.
 
 Nach Abschluss des Vorgangs sehen Sie, dass die Ereignisdaten an einen Endpunkt gesendet wurden.
 
@@ -51,7 +51,7 @@ Ein Thema bietet einen benutzerdefinierten Endpunkt für die Veröffentlichung I
 
    ![Hinzufügen eines Event Grid-Themas](./media/custom-event-quickstart-portal/add-topic.png)
 
-1. Geben Sie einen Namen für das Thema an. Der Name des Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird. In der Vorschauversion unterstützt Event Grid die Standorte **westus2** und **westcentralus**. Wählen Sie die Ressourcengruppe aus, die Sie zuvor erstellt haben. Klicken Sie auf **Erstellen**.
+1. Geben Sie einen Namen für das Thema an. Der Name des Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird. Wählen Sie eine der [unterstützten Regionen](overview.md) aus. Wählen Sie die Ressourcengruppe aus, die Sie zuvor erstellt haben. Klicken Sie auf **Erstellen**.
 
    ![Angeben von Werten für das Event Grid-Thema](./media/custom-event-quickstart-portal/provide-topic-values.png)
 
@@ -61,7 +61,7 @@ Ein Thema bietet einen benutzerdefinierten Endpunkt für die Veröffentlichung I
 
 ## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
 
-Vor dem Abonnieren des Themas erstellen wir zunächst den Endpunkt für die Ereignisnachricht. Wir schreiben allerdings keinen Code, um eine Reaktion auf das Ereignis auszulösen, sondern erstellen einen Endpunkt, der die Nachrichten sammelt, damit Sie sie anzeigen können. RequestBin ist ein Open Source-Drittanbietertool, mit dem Sie einen Endpunkt erstellen und Anforderungen anzeigen können, die an ihn gesendet werden. Wechseln Sie zu [RequestBin](https://requestb.in/), und klicken Sie auf **Create a RequestBin** (RequestBin erstellen).  Kopieren Sie die Bin-URL. Sie wird zum Abonnieren des Themas benötigt.
+Vor dem Abonnieren des Themas erstellen wir zunächst den Endpunkt für die Ereignisnachricht. Wir schreiben allerdings keinen Code, um eine Reaktion auf das Ereignis auszulösen, sondern erstellen einen Endpunkt, der die Nachrichten sammelt, damit Sie sie anzeigen können. RequestBin und Hookbin sind Open Source-Drittanbietertools, mit denen Sie einen Endpunkt erstellen und Anforderungen anzeigen können, die an ihn gesendet werden. Klicken Sie in [RequestBin](https://requestb.in/) auf **Create a RequestBin** (RequestBin erstellen), oder klicken Sie in [Hookbin](https://hookbin.com/) auf **Create New Endpoint** (Neuen Endpunkt erstellen).  Kopieren Sie die Bin-URL. Sie wird zum Abonnieren des Themas benötigt.
 
 ## <a name="subscribe-to-a-topic"></a>Abonnieren eines Themas
 
@@ -75,7 +75,7 @@ Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachv
 
    ![Hinzufügen eines Event Grid-Abonnements](./media/custom-event-quickstart-portal/add-subscription.png)
 
-1. Geben Sie einen eindeutigen Namen für Ihr Ereignisabonnement an. Wählen Sie für den Thementyp die Option **Event Grid-Themen** aus. Wählen Sie für diese Instanz das benutzerdefinierte Thema aus, das Sie erstellt haben. Geben Sie als Endpunkt für die Ereignisbenachrichtigung die URL aus RequestBin an. Klicken Sie nach Angabe der Werte auf **OK**.
+1. Geben Sie einen eindeutigen Namen für Ihr Ereignisabonnement an. Wählen Sie für den Thementyp die Option **Event Grid-Themen** aus. Wählen Sie für diese Instanz das benutzerdefinierte Thema aus, das Sie erstellt haben. Geben Sie als Endpunkt für die Ereignisbenachrichtigung die URL aus RequestBin oder Hookbin an. Klicken Sie nach Angabe der Werte auf **OK**.
 
    ![Angeben von Werten für das Event Grid-Abonnement](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
@@ -100,13 +100,13 @@ body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-jso
 
 Mithilfe von `echo "$body"` können Sie das vollständige Ereignis anzeigen. Bei dem `data`-Element des JSON-Codes handelt es sich um die Nutzlast Ihres Ereignisses. Für dieses Feld kann ein beliebiger wohlgeformter JSON-Code verwendet werden. Sie können auch das Betrefffeld zur erweiterten Weiterleitung und Filterung verwenden.
 
-CURL ist ein Hilfsprogramm zum Ausführen von HTTP-Anforderungen. In diesem Artikel verwenden wir CURL, um das Ereignis an unser Thema zu senden. 
+CURL ist ein Hilfsprogramm zum Ausführen von HTTP-Anforderungen. In diesem Artikel wird CURL verwendet, um ein Ereignis an das Thema zu senden. 
 
 ```azurecli-interactive
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpunkt gesendet, den Sie beim Abonnieren konfiguriert haben. Navigieren Sie zu der zuvor erstellten RequestBin-URL. Oder klicken Sie im geöffneten RequestBin-Browser auf die Option zum Aktualisieren. Das soeben gesendete Ereignis wird angezeigt.
+Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpunkt gesendet, den Sie beim Abonnieren konfiguriert haben. Navigieren Sie zur zuvor erstellten Endpunkt-URL. Oder klicken Sie im geöffneten Browser auf die Option zum Aktualisieren. Das soeben gesendete Ereignis wird angezeigt.
 
 ```json
 [{
@@ -118,6 +118,8 @@ Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpu
     "make": "Ducati",
     "model": "Monster"
   },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
 }]
 ```

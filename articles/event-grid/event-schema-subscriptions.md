@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7dc10d0cc73960fac4759a0cebec8d294cf1b463
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 23249b92b4e99628d49bbd811b4ad1f1dc9cc9b0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid-Ereignisschema für Abonnements
 
@@ -24,7 +24,7 @@ Azure-Abonnements und Ressourcengruppen geben die gleichen Ereignistypen aus. Di
 
 Azure-Abonnements geben Verwaltungsereignisse von Azure Resource Manager aus, beispielsweise wenn ein virtueller Computer erstellt oder ein Speicherkonto gelöscht wird.
 
-| Ereignistypen | Beschreibung |
+| Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.Resources.ResourceWriteSuccess | Wird ausgelöst, wenn ein Vorgang zum Erstellen oder Aktualisieren einer Ressource erfolgreich ist. |
 | Microsoft.Resources.ResourceWriteFailure | Wird ausgelöst, wenn ein Vorgang zum Erstellen oder Aktualisieren einer Ressource fehlschlägt. |
@@ -39,7 +39,7 @@ Das folgende Beispiel zeigt das Schema eines Ressourcenerstellungsereignisses:
 
 ```json
 [
-    {
+  {
     "topic":"/subscriptions/{subscription-id}",
     "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
     "eventType":"Microsoft.Resources.ResourceWriteSuccess",
@@ -57,7 +57,9 @@ Das folgende Beispiel zeigt das Schema eines Ressourcenerstellungsereignisses:
         "subscriptionId":"{subscription-id}",
         "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
         },
-    }
+      "dataVersion": "",
+      "metadataVersion": "1"
+  }
 ]
 ```
 
@@ -81,7 +83,9 @@ Das Schema für ein Ressourcenlöschungsereignis sieht ähnlich aus:
     "status": "Succeeded",
     "subscriptionId": "{subscription-id}",
     "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -89,29 +93,31 @@ Das Schema für ein Ressourcenlöschungsereignis sieht ähnlich aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | Beschreibung |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Thema | string | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | objekt | Abonnementereignisdaten. |
+| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| data | object | Abonnementereignisdaten. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | Beschreibung |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| authorization | string | Die angeforderte Autorisierung für den Vorgang. |
-| claims | string | Die Eigenschaften der Ansprüche. |
-| correlationId | string | Eine Vorgangs-ID für die Problembehandlung. |
-| httpRequest | string | Die Details des Vorgangs. |
-| resourceProvider | string | Der Ressourcenanbieter, der den Vorgang ausführt. |
-| resourceUri | string | Der URI der Ressource im Vorgang. |
-| operationName | string | Der Vorgang, der ausgeführt wurde. |
-| status | string | Der Status des Vorgangs. |
-| subscriptionId | string | Die Abonnement-ID der Ressource. |
-| tenantId | string | Die Mandanten-ID der Ressource. |
+| authorization | Zeichenfolge | Die angeforderte Autorisierung für den Vorgang. |
+| claims | Zeichenfolge | Die Eigenschaften der Ansprüche. |
+| correlationId | Zeichenfolge | Eine Vorgangs-ID für die Problembehandlung. |
+| httpRequest | Zeichenfolge | Die Details des Vorgangs. |
+| resourceProvider | Zeichenfolge | Der Ressourcenanbieter, der den Vorgang ausführt. |
+| resourceUri | Zeichenfolge | Der URI der Ressource im Vorgang. |
+| operationName | Zeichenfolge | Der Vorgang, der ausgeführt wurde. |
+| status | Zeichenfolge | Der Status des Vorgangs. |
+| subscriptionId | Zeichenfolge | Die Abonnement-ID der Ressource. |
+| tenantId | Zeichenfolge | Die Mandanten-ID der Ressource. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

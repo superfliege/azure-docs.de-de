@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 9af4bfd5b5ae46a856b25a94cdbe55e098ea940e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 088a58bf5bfe3736a158d2384c69cb5928b53556
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Einführung in Microsoft Azure Storage
 
@@ -131,21 +131,21 @@ Mit dem Blob-Dienst können Sie öffentlichen Zugriff auf einen Container und se
 
 ## <a name="encryption"></a>Verschlüsselung
 
-Für die Storage-Dienste stehen verschiedene grundlegende Verschlüsselungsarten zur Verfügung.
+Für die Storage-Dienste stehen zwei grundlegende Verschlüsselungsarten zur Verfügung. Ausführlichere Informationen zu Sicherheit und Verschlüsselung finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
-Bei einem Azure Storage-Konto können Sie die Speicherdienstverschlüsselung (Storage Service Encryption, SSE) entweder für den Files-Dienst (Vorschauversion) oder den Blob-Dienst aktivieren. Wenn SSE aktiviert ist, werden alle Daten, die in den entsprechenden Dienst geschrieben werden, vor dem Schreibvorgang verschlüsselt. Beim Lesen der Daten werden sie vor der Rückgabe entschlüsselt.
+Azure Storage Service Encryption (SSE) für ruhende Daten unterstützt Sie dabei, Ihre Daten zu schützen, um die Sicherheits- und Complianceverpflichtungen Ihrer Organisation zu erfüllen. Mit diesem Feature verschlüsselt Azure Storage Ihre Daten automatisch, bevor sie im Speicher abgelegt werden, und entschlüsselt sie vor dem Abrufen. Verschlüsselung, Entschlüsselung und Schlüsselverwaltung sind für Benutzer vollständig transparent.
+
+Die Speicherdienstverschlüsselung (Storage Service Encryption, SSE) kann für Blobspeicher oder für Azure Files (Vorschauversion) aktiviert werden. Wenn SSE aktiviert ist, werden alle Daten, die in den entsprechenden Dienst geschrieben werden, vor dem Schreibvorgang verschlüsselt. Beim Lesen der Daten werden sie vor der Rückgabe entschlüsselt.
+
+Weitere Informationen zur SSE-Verschlüsselung für ruhende Daten finden Sie unter [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md).
 
 ### <a name="client-side-encryption"></a>Clientseitige Verschlüsselung
 
 Die Speicherclientbibliotheken enthalten Methoden, die Sie zum programmgesteuerten Verschlüsseln von Daten aufrufen können, bevor Sie sie vom Client an Azure senden. Sie werden verschlüsselt gespeichert, d.h. sie sind auch im Ruhezustand verschlüsselt. Beim Einlesen der Daten entschlüsseln Sie die Informationen nach ihrem Erhalt.
 
-### <a name="encryption-in-transit-with-azure-file-shares"></a>Verschlüsselung während der Übertragung mit Azure-Dateifreigaben
-
-Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](../storage-dotnet-shared-access-signature-part-1.md) . Weitere Informationen zum sicheren Zugriff auf Ihr Speicherkonto finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../blobs/storage-manage-access-to-resources.md) sowie unter [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx) (Authentifizierung für die Azure Storage-Dienste).
-
-Ausführlichere Informationen zum Schützen der Speicherkonten und zur Verschlüsselung finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
+Weitere Informationen zur clientseitigen Verschlüsselung finden Sie unter [Clientseitige Verschlüsselung mit .NET für Microsoft Azure Storage](storage-client-side-encryption.md).
 
 ## <a name="replication"></a>Replikation
 

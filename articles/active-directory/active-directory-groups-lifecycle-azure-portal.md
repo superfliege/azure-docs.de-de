@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 01/26/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 6b454ed7257e8d3f91e585cee2b559c54371fb15
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: f9d79746dcf307cf434ee78d9b1514f5886d9fb6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-expiration-for-office-365-groups-preview"></a>Konfigurieren des Ablaufs für Office 365-Gruppen (Vorschauversion)
 
@@ -34,11 +34,21 @@ Der Lebenszyklus von Office 365-Gruppen kann jetzt durch Festlegen von Ablauffea
 
 Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets finden Sie unter [Azure Active Directory PowerShell for Graph - Public Preview Release 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) (Azure Active Directory: PowerShell für Graph – öffentliche Vorschauversion 2.0.0.137).
 
+## <a name="roles-and-permissions"></a>Rollen und Berechtigungen
+Nachfolgend sind die Rollen aufgeführt, die den Ablauf für Office 365-Gruppen in Azure AD konfigurieren und verwenden können.
+
+Rolle | Berechtigungen
+-------- | --------
+Globaler Administrator<br>Benutzerkontoadministrator | Kann die Einstellungen der Ablaufrichtlinie für Office 365-Gruppen erstellen, lesen, aktualisieren und löschen.
+Benutzer | Kann eine eigene Office 365-Gruppe verlängern<br>Kann eine eigene Office 365-Gruppe wiederherstellen
+
+Weitere Informationen zu Berechtigungen zum Wiederherstellen von gelöschten Gruppen finden Sie unter [Wiederherstellen einer gelöschten Office 365-Gruppe in der Azure Active Directory-Vorschau](active-directory-groups-restore-azure-portal.md).
+
 ## <a name="set-group-expiration"></a>Festlegen des Gruppenablaufs
 
 1. Öffnen Sie das [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators in Ihrem Azure AD-Mandanten.
 
-2. Öffnen Sie Azure AD, und wählen Sie **Benutzer und Gruppen**.
+2. Wählen Sie **Benutzer und Gruppen**.
 
 3. Wählen Sie **Gruppeneinstellungen**, und wählen Sie dann **Ablauf**, um die Ablaufeinstellungen zu öffnen.
   
@@ -48,7 +58,7 @@ Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets
 
   * Die Gruppenlebensdauer in Tagen festlegen. Sie könnten einen der vordefinierten Werte oder einen benutzerdefinierten Wert wählen (mindestens 31 Tage). 
   * Geben Sie eine E-Mail-Adresse an, an die die Verlängerungs- und Ablaufbenachrichtigungen gesendet werden sollten, wenn eine Gruppe keinen Besitzer hat. 
-  * Wählen Sie, welche Office 365-Gruppen ablaufen. Sie können den Ablauf für **Alle** Office 365-Gruppen aktivieren, Sie können eine Auswahl aus den Office 365-Gruppen treffen, oder Sie wählen **Keine**, um den Ablauf für alle Gruppen zu deaktivieren.
+  * Wählen Sie, welche Office 365-Gruppen ablaufen. Sie können den Ablauf für **alle** Office 365-Gruppen aktivieren oder eine **Auswahl** aus den Office 365-Gruppen treffen, oder Sie wählen **Keine**, um den Ablauf für alle Gruppen zu deaktivieren.
   * Speichern Sie die Einstellungen durch Auswahl von **Speichern**.
 
 

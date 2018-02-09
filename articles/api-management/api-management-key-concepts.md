@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 727be96828b9217f89214722f474abfc220b0b3c
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 010c4619a2a4d8ae477ebd6e66747c55cde0fc08
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="what-is-api-management"></a>Was ist API Management?
 
@@ -30,7 +30,7 @@ Im folgenden Video erhalten Sie eine Übersicht über Azure API Management und e
 > 
 > 
 
-Dieses Thema enthält eine Übersicht über allgemeine Szenarien mit APIM.  Außerdem finden Sie hier eine Kurzübersicht über die Hauptkomponenten des APIM-Systems. Danach werden die einzelnen Komponenten ausführlicher behandelt.
+Dieser Artikel enthält eine Übersicht über allgemeine Szenarien mit APIM.  Außerdem finden Sie hier eine Kurzübersicht über die Hauptkomponenten des APIM-Systems. Im Anschluss werden die einzelnen Komponenten ausführlicher behandelt.
 
 ## <a name="overview"></a>Übersicht
 
@@ -50,14 +50,14 @@ Das System setzt sich aus den folgenden Komponenten zusammen:
   * Dynamisches Transformieren Ihrer API ohne Codeänderungen
   * Zwischenspeichern von Back-End-Antworten, falls eingerichtet
   * Protokollieren von Aufrufmetadaten zu Analysezwecken
-* Das **Herausgeberportal** ist die Verwaltungsoberfläche, in der Sie Ihr API-Programm einrichten. Verwenden Sie es zu folgenden Zwecken:
+* Das **Azure-Portal** ist die Verwaltungsoberfläche, über die Sie Ihr API-Programm einrichten. Verwenden Sie es zu folgenden Zwecken:
   
   * Definieren oder Importieren des API-Schemas
   * Paketieren von APIs in Produkten
   * Konfigurieren von Richtlinien wie z. B. Kontingenten oder Transformationen für die APIs
   * Gewinnen von Erkenntnissen mithilfe von Analysen
   * Verwalten von Benutzern
-* Das **Entwicklerportal** dient als wichtigste Webpräsenz für Entwickler, in der die folgenden Aufgaben ausgeführt werden können:
+* Das **Entwicklerportal** dient als wichtigste Webpräsenz für Entwickler und ermöglicht Folgendes:
   
   * Lesen der API-Dokumentation
   * Ausprobieren einer API mithilfe der interaktiven Konsole
@@ -99,12 +99,12 @@ Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][How
 ## <a name="developers"></a> Entwickler
 Entwickler stellen die Benutzerkonten in einer API Management-Dienstinstanz dar. Entwickler können von Administratoren erstellt oder eingeladen werden, oder sie können sich im [Entwicklerportalanmelden][Developer portal]. Jeder Entwickler ist Mitglied in einer oder mehreren Gruppen und kann die Produkte abonnieren, die für die entsprechenden Gruppen sichtbar sind.
 
-Wenn Entwickler ein Produkt abonnieren, erhalten Sie den primären und den sekundären Schlüssel für das Produkt. Diese Schlüssel kommen bei den Aufrufen an die APIs des Produkts zum Einsatz.
+Wenn Entwickler ein Produkt abonnieren, erhalten sie den primären und den sekundären Schlüssel für das Produkt. Diese Schlüssel kommen bei den Aufrufen an die APIs des Produkts zum Einsatz.
 
 Weitere Informationen finden Sie unter [Erstellen und Einladen von Entwicklern][How to create or invite developers] und [Zuordnen von Entwicklern zu Gruppen][How to associate groups with developers].
 
 ## <a name="policies"></a> Richtlinien
-Richtlinien sind ein umfassendes Werkzeug in API Management, mit dem Anbieter das Verhalten der API in Form von Konfigurationen verändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind etwa Formatumwandlungen von XML nach JSON und Aufrufratenlimits, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Darüber hinaus stehen noch viele weitere Richtlinien zur Verfügung.
+Richtlinien sind ein praktisches Werkzeug in API Management, mit dem das Azure-Portal das Verhalten der API mittels Konfiguration verändern kann. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind etwa Formatumwandlungen von XML nach JSON und Aufrufratenlimits, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Darüber hinaus stehen noch viele weitere Richtlinien zur Verfügung.
 
 Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) und [Variable festlegen](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies) und [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx).
 

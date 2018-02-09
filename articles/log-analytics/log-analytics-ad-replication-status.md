@@ -1,6 +1,6 @@
 ---
 title: "Überwachen des Active Directory-Replikationsstatus mit Azure Log Analytics | Microsoft-Dokumentation"
-description: "Mit dem Active Directory-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht, und die Ergebnisse werden in Ihrem OMS-Dashboard angezeigt."
+description: "Mit dem Active Directory-Replikationsstatusmonitor-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 01/24/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e56687519459f93998bcdd92336050093539270a
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7ca3b87ea14589aa2c45c8fe49b01d3b10a75aa1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Überwachen des Active Directory-Replikationsstatus mit Log Analytics
 
@@ -27,13 +27,13 @@ ms.lasthandoff: 12/13/2017
 
 Active Directory ist eine wichtige Komponente der IT-Umgebung eines Unternehmens. Um für Hochverfügbarkeit und eine hohe Leistung zu sorgen, verfügt jeder Domänencontroller über eine eigene Kopie der Active Directory-Datenbank. Domänencontroller werden miteinander repliziert, um Änderungen im ganzen Unternehmen zu verteilen. Fehler bei diesem Replikationsprozess können zu einer Vielzahl von Problemen im Unternehmen führen.
 
-Mit dem AD-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht, und die Ergebnisse werden in Ihrem OMS-Dashboard angezeigt.
+Mit dem AD-Replikationsstatusmonitor-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht.
 
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-* Agents müssen auf Domänencontrollern installiert werden, die Mitglieder der auszuwertenden Domäne sind. Alternativ müssen Sie Agents auf Mitgliedsservern installieren und für das Senden von AD-Replikationsdaten an die OMS konfigurieren. Informationen zur Verbindung von Windows-Computern mit OMS finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agent.md). Wenn Ihr Domänencontroller bereits Teil einer vorhandenen System Center Operations Manager-Umgebung ist, die Sie mit der OMS verbinden möchten, helfen Ihnen die Informationen unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md) weiter.
-* Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md)beschriebenen Prozesses die Active Directory-Replikationsstatus-Lösung Ihrem OMS-Arbeitsbereich hinzu.  Es ist keine weitere Konfiguration erforderlich.
+* Agents müssen auf Domänencontrollern installiert werden, die Mitglieder der auszuwertenden Domäne sind. Alternativ müssen Sie Agents auf Mitgliedsservern installieren und für das Senden von AD-Replikationsdaten an Log Analytics konfigurieren. Informationen zur Verbindung von Windows-Computern mit Log Analytics finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agent.md). Wenn Ihr Domänencontroller bereits Teil einer vorhandenen System Center Operations Manager-Umgebung ist, die Sie mit Log Analytics verbinden möchten, helfen Ihnen die Informationen unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md) weiter.
+* Fügen Sie mithilfe des unter [Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich](log-analytics-add-solutions.md) beschriebenen Prozesses die Active Directory-Replikationsstatusmonitor-Lösung Ihrem Log Analytics-Arbeitsbereich hinzu.  Es ist keine weitere Konfiguration erforderlich.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Details der AD-Replikationsstatus-Datensammlung
 Die folgende Tabelle zeigt die Datensammlungsmethoden und weitere Details dazu, wie Daten für AD-Replikationsstatus gesammelt werden.
@@ -42,12 +42,12 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden und weitere Details dazu, 
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |Alle fünf Tage |
 
-## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>Optional können Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS aktivieren
-Wenn Sie Ihre Domänencontroller nicht direkt mit der OMS verbinden möchten, können Sie einen beliebigen anderen Computer mit OMS-Verbindung in Ihrer Domäne verwenden, um Daten für das AD-Replikationsstatus-Lösungspaket zu sammeln und die Daten zu senden.
+## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Optional können Sie einen Nichtdomänencontroller zum Senden von AD-Daten an Log Analytics aktivieren.
+Wenn Sie Ihre Domänencontroller nicht direkt mit Log Analytics verbinden möchten, können Sie einen beliebigen anderen Computer mit Log Analytics-Verbindung in Ihrer Domäne verwenden, um Daten für das AD-Replikationsstatusmonitor-Lösungspaket zu sammeln und die Daten zu senden.
 
-### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS
+### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an Log Analytics
 1. Stellen Sie sicher, dass der Computer Mitglied der Domäne ist, die Sie mit der AD-Replikationsstatus-Lösung überwachen möchten.
-2. [Verbinden Sie den Windows-Computer mit OMS](log-analytics-windows-agent.md), oder [stellen Sie die Verbindung mit OMS über die vorhandene Operations Manager-Umgebung her](log-analytics-om-agents.md), falls die Verbindung noch nicht besteht.
+2. [Verbinden Sie den Windows-Computer mit Log Analytics](log-analytics-windows-agent.md), oder [stellen Sie die Verbindung mit Log Analytics über die vorhandene Operations Manager-Umgebung her](log-analytics-om-agents.md), falls die Verbindung noch nicht besteht.
 3. Legen Sie auf diesem Computer den folgenden Registrierungsschlüssel fest:
 
    * Schlüssel: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<Verwaltungsgruppenname>\Solutions\ADReplication**
@@ -60,7 +60,7 @@ Wenn Sie Ihre Domänencontroller nicht direkt mit der OMS verbinden möchten, k�
    >
 
 ## <a name="understanding-replication-errors"></a>Grundlegendes zu Replikationsfehlern
-Wenn die Daten von AD-Replikationsstatus an die OMS gesendet werden, wird auf dem OMS-Dashboard eine Kachel angezeigt, die der Kachel in der folgenden Abbildung ähnelt. Darauf wird angegeben, wie viele Replikationsfehler derzeit vorliegen.  
+Wenn die Daten des AD-Replikationsstatusmonitors an Log Analytics gesendet werden, wird in Log Analytics eine Kachel angezeigt, die der Kachel in der folgenden Abbildung ähnelt. Darauf wird angegeben, wie viele Replikationsfehler derzeit vorliegen.  
 ![Kachel „AD-Replikationsstatus“](./media/log-analytics-ad-replication-status/oms-ad-replication-tile.png)
 
 **Kritische Replikationsfehler** sind Fehler, die bei mindestens 75 % der [Tombstonelebensdauer](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) für die Active Directory-Gesamtstruktur liegen.
@@ -124,11 +124,11 @@ A: Die Informationen werden alle fünf Tage aktualisiert.
 **F: Kann konfiguriert werden, wie oft die Daten aktualisiert werden?**
 A: Derzeit leider nicht.
 
-**F: Muss ich alle meine Domänencontroller meinem OMS-Arbeitsbereich hinzufügen, um den Replikationsstatus sehen zu können?**
-A: Nein. Sie müssen nur einen einzelnen Domänencontroller hinzufügen. Wenn Sie in Ihrem OMS-Arbeitsbereich mehrere Domänencontroller verwenden, werden Daten von allen Domänencontrollern an OMS gesendet.
+**F: Muss ich alle meine Domänencontroller meinem Log Analytics-Arbeitsbereich hinzufügen, um den Replikationsstatus sehen zu können?**
+A: Nein. Sie müssen nur einen einzelnen Domänencontroller hinzufügen. Wenn Sie in Ihrem Log Analytics-Arbeitsbereich mehrere Domänencontroller verwenden, werden Daten von allen Domänencontrollern an Log Analytics gesendet.
 
-**F: Ich möchte meinem OMS-Arbeitsbereich keine Domänencontroller hinzufügen. Kann ich die AD-Replikationsstatus-Lösung trotzdem verwenden?**
-A: Ja. Sie können den Wert eines Registrierungsschlüssels festlegen, um ihn zu aktivieren. Weitere Informationen finden Sie unter [So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+**F: Ich möchte meinem Log Analytics-Arbeitsbereich keine Domänencontroller hinzufügen. Kann ich die AD-Replikationsstatus-Lösung trotzdem verwenden?**
+A: Ja. Sie können den Wert eines Registrierungsschlüssels festlegen, um ihn zu aktivieren. Informationen finden Sie unter [So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 **F: Wie lautet der Name des Prozesses, der die Daten sammelt?**
 A: Der Prozess hat den Namen „AdvisorAssessment.exe“.
@@ -146,11 +146,11 @@ A: Derzeit leider nicht.
 A: Normale Benutzerberechtigungen für Active Directory sind ausreichend.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Problembehandlung bei der Datensammlung
-Zum Sammeln von Daten ist für das AD-Replikationsstatus-Lösungspaket mindestens ein Domänencontroller erforderlich, der mit Ihrem OMS-Arbeitsbereich verbunden ist. Nachdem Sie eine Verbindung mit einem Domänencontroller hergestellt haben, wird eine Meldung angezeigt, die besagt, dass **nach wie vor Daten erfasst werden**.
+Zum Sammeln von Daten ist für das AD-Replikationsstatusmonitor-Lösungspaket mindestens ein Domänencontroller erforderlich, der mit Ihrem Log Analytics-Arbeitsbereich verbunden ist. Nachdem Sie eine Verbindung mit einem Domänencontroller hergestellt haben, wird eine Meldung angezeigt, die besagt, dass **nach wie vor Daten erfasst werden**.
 
 Falls Sie Informationen zum Herstellen der Verbindung für einen Domänencontroller benötigen, können Sie die Dokumentation unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agent.md)anzeigen. Wenn der Domänencontroller bereits mit einer vorhandenen System Center Operations Manager-Umgebung verbunden ist, können Sie alternativ dazu die Dokumentation unter [Verbinden von System Center Operations Manager mit Log Analytics](log-analytics-om-agents.md)verwenden.
 
-Falls Sie keinen Domänencontroller direkt mit der OMS oder mit SCOM verbinden möchten, helfen Ihnen die Informationen unter [So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an die OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms) weiter.
+Falls Sie keinen Domänencontroller direkt mit Log Analytics oder System Center Operations Manager verbinden möchten, helfen Ihnen die Informationen unter [So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms) weiter.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md) , um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.

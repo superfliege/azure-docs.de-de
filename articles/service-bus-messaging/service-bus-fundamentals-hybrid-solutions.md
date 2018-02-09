@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/12/2017
+ms.date: 01/31/2018
 ms.author: sethm
-ms.openlocfilehash: f095407a58e00ed9143e8f19d91a212d2167564b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: fab765480a2f480e8c54035d903d24843490ee38
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-service-bus"></a>Azure-Servicebus
 
@@ -26,9 +26,9 @@ Ob eine Anwendung oder ein Dienst in einer Cloud betrieben wird oder lokal insta
 
 ## <a name="service-bus-fundamentals"></a>Service Bus – Grundlagen
 
-Verschiedene Situationen erfordern verschiedene Kommunikationsarten. Manchmal ist die beste Lösung, Anwendungen Nachrichten über einfache Warteschlangen senden und empfangen zu lassen. In anderen Situationen ist eine normale Warteschlange nicht genug, sondern eine Warteschlange mit einem Veröffentlichungs- und Abonnementsmechanismus ist besser geeignet. In manchen Fällen ist nur eine Verbindung zwischen den Anwendungen erforderlich. Warteschlangen werden nicht benötigt. Service Bus bietet alle drei Optionen, sodass Ihre Anwendungen auf mehrere verschiedene Arten miteinander interagieren können.
+Verschiedene Situationen erfordern verschiedene Kommunikationsarten. Manchmal ist die beste Lösung, Anwendungen Nachrichten über einfache Warteschlangen senden und empfangen zu lassen. In anderen Situationen ist eine normale Warteschlange nicht genug, sondern eine Warteschlange mit einem Veröffentlichungs- und Abonnementsmechanismus ist besser geeignet. In manchen Fällen ist nur eine Verbindung zwischen den Anwendungen erforderlich. Warteschlangen werden nicht benötigt. Azure Service Bus bietet alle drei Optionen, sodass Ihre Anwendungen auf mehrere verschiedene Arten miteinander interagieren können.
 
-Service Bus ist ein Clouddienst mit mehreren Mandanten. Das bedeutet, dass der Dienst von mehreren Benutzern gemeinsam genutzt wird. Jeder Benutzer, z.B. ein Anwendungsentwickler, erstellt einen *Namespace* und definiert dann die erforderlichen Kommunikationsmechanismen innerhalb dieses Namespace. In Abbildung 1 ist diese Architektur dargestellt.
+Service Bus ist ein Clouddienst mit mehreren Mandanten. Das bedeutet, dass der Dienst von mehreren Benutzern gemeinsam genutzt wird. Jeder Benutzer, z.B. ein Anwendungsentwickler, erstellt einen *Namespace* und definiert dann die erforderlichen Kommunikationsmechanismen innerhalb dieses Namespace. Abbildung 1 zeigt diese Architektur:
 
 ![][1]
 
@@ -48,13 +48,13 @@ Es ist wichtig zu verstehen, dass, obwohl Service Bus selbst in einer Cloud (in 
 
 ## <a name="queues"></a>Warteschlangen
 
-Angenommen, Sie entscheiden sich dafür, zwei Anwendungen über eine Service Bus-Warteschlange miteinander zu verbinden. Abbildung 2 illustriert diese Situation.
+Angenommen, Sie entscheiden sich dafür, zwei Anwendungen über eine Service Bus-Warteschlange miteinander zu verbinden. Abbildung 2 veranschaulicht diese Situation:
 
 ![][2]
 
 **Abbildung 2: Service Bus-Warteschlangen bieten eine asynchrone unidirektionale Kommunikation.**
 
-Der Vorgang ist einfach: Ein Sender sendet eine Nachricht an eine Service Bus-Warteschlange, und ein Empfänger greift diese Nachricht zu einem späteren Zeitpunkt auf. Eine Warteschlange kann einen einzelnen Empfänger besitzen, wie in Abbildung 2 dargestellt. Alternativ können auch mehrere Anwendungen aus der gleichen Warteschlange lesen. Im zweiten Fall wird jede Nachricht nur von einem einzelnen Empfänger gelesen. Bei einem Multicastdienst empfiehlt sich stattdessen die Verwendung eines Themas.
+Ein Sender sendet eine Nachricht an eine Service Bus-Warteschlange, und ein Empfänger greift diese Nachricht zu einem späteren Zeitpunkt auf. Eine Warteschlange kann einen einzelnen Empfänger besitzen, wie in Abbildung 2 dargestellt. Alternativ können auch mehrere Anwendungen aus der gleichen Warteschlange lesen. Im zweiten Fall wird jede Nachricht nur von einem einzelnen Empfänger gelesen. Bei einem Multicastdienst empfiehlt sich stattdessen die Verwendung eines Themas.
 
 Jede Nachricht besteht aus zwei Teilen: einem Satz von Eigenschaften (jede davon ist ein Paar aus Schlüssel und Wert) und einer Nutzlast der Nachricht. Die Nutzlast kann binärer Art, Text oder sogar XML sein. Die Art der Verwendung richtet sich danach, welche Aufgaben in der Anwendung ausgeführt werden sollen. Wenn eine Anwendung z.B. eine Nachricht über einen kürzlich erfolgten Verkauf sendet, kann die Nachricht die Eigenschaften **Verkäufer=„Ava“** und **Menge=10000 enthalten**. Der Nachrichtentext kann ein gescanntes Bild des unterzeichneten Verkaufsvertrags enthalten oder auch leer sein.
 
@@ -66,19 +66,19 @@ Die zweite Option, *[PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemod
 * Wenn der Empfänger entscheidet, dass er die Nachricht nicht erfolgreich verarbeiten kann, wird die Meldung [Abandon()](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) ausgegeben. In diesem Falle hebt die Warteschlange die Sperrung der Nachricht auf und macht sie für andere Empfänger verfügbar.
 * Wenn der Empfänger innerhalb eines konfigurierbaren Zeitraums (standardmäßig 60 Sekunden) keine der beiden Meldungen aufruft, nimmt die Warteschlange an, dass der Empfänger ausgefallen ist. In diesem Fall verhält sie sich so, als hätte der Empfänger **Abandon**aufgerufen, sodass die Nachricht für andere Empfänger verfügbar wird.
 
-Beachten Sie, was geschieht: Dieselbe Nachricht kann zweimal ausgegeben werden, möglicherweise sogar an zwei verschiedene Empfänger. Anwendungen, die Service Bus-Warteschlangen verwenden, müssen darauf vorbereitet sein. Um die Erkennung von Duplikaten zu erleichtern, verfügt jede Nachricht über die eindeutige Eigenschaft [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid#Microsoft_Azure_ServiceBus_Message_MessageId) , die standardmäßig gleich bleibt – unabhängig davon, wie oft die Nachricht aus einer Warteschlange gelesen wird. 
+Beachten Sie, was in diesem Fall geschehen kann: Die gleiche Nachricht kann zweimal zugestellt werden – möglicherweise sogar an zwei verschiedene Empfänger. Anwendungen, die Service Bus-Warteschlangen verwenden, müssen darauf vorbereitet sein. Um die Erkennung von Duplikaten zu erleichtern, verfügt jede Nachricht über die eindeutige Eigenschaft [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid#Microsoft_Azure_ServiceBus_Message_MessageId) , die standardmäßig gleich bleibt – unabhängig davon, wie oft die Nachricht aus einer Warteschlange gelesen wird. 
 
-Warteschlangen sind in einigen Situationen sinnvoll. Sie ermöglichen eine Kommunikation zwischen Anwendungen auch dann, wenn beide zur selben Zeit ausgeführt werden, was bei Batch- und Mobilanwendungen sehr praktisch sein kann. Eine Warteschlange mit mehreren Empfängern bietet auch automatischen Lastenausgleich, da gesendete Nachrichten zwischen diesen Empfängern verteilt werden.
+Warteschlangen sind in einigen Situationen sinnvoll. Sie ermöglichen eine Kommunikation zwischen Anwendungen auch dann, wenn beide zur selben Zeit ausgeführt werden, was insbesondere bei Batch- und Mobilanwendungen sehr praktisch sein kann. Eine Warteschlange mit mehreren Empfängern bietet auch automatischen Lastenausgleich, da gesendete Nachrichten zwischen diesen Empfängern verteilt werden.
 
 ## <a name="topics"></a>Themen
 
-So hilfreich sie generell auch sind – Warteschlangen sind nicht immer die beste Lösung. Manchmal sind Servicebus-Themen besser. Abbildung 3 illustriert diesen Gedanken.
+So hilfreich sie generell auch sind – Warteschlangen sind nicht immer die beste Lösung. Manchmal sind Themen vorzuziehen. Dieses Konzept wird in Abbildung 3 veranschaulicht:
 
 ![][3]
 
 **Abbildung 3: Auf Grundlage des in einer Abonnementanwendung definierten Filters kann diese einige oder alle Nachrichten empfangen, die an ein Service Bus-Thema gesendet wurden.**
 
-Ein *Thema* ähnelt in vielen Punkten einer Warteschlange. Sender schicken Nachrichten an ein Thema auf dieselbe Weise, auf die sie Nachrichten an eine Warteschlange schicken, und diese Nachrichten sehen genauso aus wie bei den Warteschlangen. Der Unterschied liegt darin, dass bei Themen jede empfangende Anwendung durch Definieren eines *Filters* ihr eigenes *Abonnement* erstellen kann. Ein Abonnent sieht dann nur die Nachrichten, die mit diesem Filter übereinstimmen. Abbildung 3 zeigt z. B. einen Sender und ein Thema mit drei Abonnenten, jeder mit seinem eigenen Filter:
+Ein *Thema* ähnelt in vielen Punkten einer Warteschlange. Sender schicken Nachrichten an ein Thema auf dieselbe Weise, auf die sie Nachrichten an eine Warteschlange schicken, und diese Nachrichten sehen genauso aus wie bei den Warteschlangen. Der Unterschied liegt darin, dass bei Themen jede empfangende Anwendung ihr eigenes *Abonnement* erstellen und optional einen *Filter* definieren kann. Ein Abonnent sieht dann nur die Nachrichten, die mit diesem Filter übereinstimmen. Abbildung 3 zeigt z. B. einen Sender und ein Thema mit drei Abonnenten, jeder mit seinem eigenen Filter:
 
 * Abonnent 1 empfängt nur Nachrichten, die die Eigenschaft *Verkäufer="Ava"*haben.
 * Abonnent 2 empfängt Nachrichten, die die Eigenschaft *Verkäufer=„Ruby“* und/oder eine Eigenschaft namens *Menge* haben, deren Wert größer ist als 100.000. Ruby könnte die Vertriebschefin sein, die sowohl ihre eigenen Verkäufe als auch diejenigen anderer Verkäufer ab einer bestimmten Menge sehen möchte.
@@ -88,7 +88,7 @@ Wie bei Warteschlangen können Abonnenten eines Themas Nachrichten entweder übe
 
 ## <a name="relays"></a>Relays
 
-Sowohl Warteschlangen als auch Themen ermöglichen eine asynchrone unidirektionale Kommunikation über einen Broker. Der Verkehr fließt in nur eine Richtung, und es besteht keine direkte Verbindung zwischen Sendern und Empfängern. Aber was tun, wenn Sie diese Verbindung nicht möchten? Angenommen, Ihre Anwendungen sollen Nachrichten sowohl senden als auch empfangen, oder sie möchten vielleicht eine direkte Verbindung zwischen ihnen herstellen, ohne einen Broker zum Speichern der Nachrichten zu verwenden. Für solche Szenarien bietet Service Bus *Relays*an, wie in Abbildung 4 gezeigt.
+Sowohl Warteschlangen als auch Themen ermöglichen eine asynchrone unidirektionale Kommunikation über einen Broker. Der Verkehr fließt in nur eine Richtung, und es besteht keine direkte Verbindung zwischen Sendern und Empfängern. Aber was tun, wenn Sie diese Verbindung nicht möchten? Angenommen, Ihre Anwendungen sollen Nachrichten sowohl senden als auch empfangen, oder sie möchten vielleicht eine direkte Verbindung zwischen ihnen herstellen, ohne einen Broker zum Speichern der Nachrichten zu verwenden. Für solche Szenarien stellt Service Bus *Relays* bereit, wie in Abbildung 4 gezeigt:
 
 ![][4]
 
@@ -96,7 +96,7 @@ Sowohl Warteschlangen als auch Themen ermöglichen eine asynchrone unidirektiona
 
 Die naheliegende Frage lautet: Welchen Grund gibt es für den Einsatz eines Relays? Selbst wenn ich keine Warteschlangen benötige, wieso sollten Anwendungen über einen Clouddienst kommunizieren und nicht direkt miteinander interagieren? Die Antwort ist, dass eine direkte Kommunikation schwieriger sein kann, als Sie denken.
 
-Nehmen wir an, Sie möchten zwei lokale Anwendungen miteinander verbinden, die beide in Datencentern Ihres Unternehmens laufen. Jede dieser Anwendungen befindet sich hinter einer Firewall, und wahrscheinlich nutzt jedes Rechenzentrum eine Netzwerkadressübersetzung (NAT). Die Firewall blockiert alle eingehenden Nachrichten auf fast allen Ports, und NAT bedeutet, dass die Computer, auf denen jede Anwendung läuft, keine feste IP-Adresse haben, auf die Sie von außerhalb des Rechenzentrums nicht direkt zugreifen können. Ohne zusätzliche Hilfe ist die Verbindung dieser Anwendungen über das öffentliche Internet problematisch.
+Nehmen wir an, Sie möchten zwei lokale Anwendungen miteinander verbinden, die beide in Datencentern Ihres Unternehmens laufen. Jede dieser Anwendungen befindet sich hinter einer Firewall, und wahrscheinlich nutzt jedes Rechenzentrum eine Netzwerkadressübersetzung (NAT). Die Firewall blockiert alle eingehenden Nachrichten an fast allen Ports, und NAT bedeutet, dass der Computer, auf dem die jeweilige Anwendung ausgeführt wird, keine feste IP-Adresse hat, auf die Sie von außerhalb des Datencenters direkt zugreifen können. Ohne zusätzliche Hilfe ist die Verbindung dieser Anwendungen über das öffentliche Internet problematisch.
 
 Ein Service Bus Relay kann diese Hilfestellung leisten. Zur bidirektionalen Kommunikation über ein Relay baut jede Anwendung eine ausgehende TCP-Verbindung mit Service Bus auf und hält diese offen. Jede Kommunikation zwischen den beiden Anwendungen läuft über diese beiden Verbindungen. Da jede Verbindung innerhalb des Rechenzentrums hergestellt wurde, erlaubt die Firewall, dass eingehender Datenverkehr an jede Anwendung gesendet wird, ohne dass neue Ports geöffnet werden müssen. Dieser Ansatz löst auch das NAT-Problem, da jede Anwendung während der gesamten Kommunikation einen konstanten Endpunkt in der Cloud aufweist. Durch den Datenaustausch über das Relay können die Anwendungen die Probleme vermeiden, die die Kommunikation erschweren können. 
 

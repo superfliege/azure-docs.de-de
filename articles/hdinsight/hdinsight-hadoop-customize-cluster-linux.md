@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 5e4fe189a3fa7269a271b422116dc6838e7ef3cb
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 42bf760b793f3c035a766c4d39524e03c1cbe6ee
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 
@@ -55,7 +55,7 @@ Weitere Informationen zur Verwendung der Zugriffsverwaltung finden Sie in den fo
 
 ## <a name="understanding-script-actions"></a>Grundlegendes zu Skriptaktionen
 
-Eine Skriptaktion ist ein Bash-Skript, für das Sie einen URI und Parameter angeben. Das Skript wird dann auf den HDInsight-Clusterknoten ausgeführt. Unten sind die Merkmale und Features von Skriptaktionen aufgeführt.
+Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Cluster ausgeführt wird. Unten sind die Merkmale und Features von Skriptaktionen aufgeführt.
 
 * Sie müssen als URI gespeichert werden, der über den HDInsight-Cluster verfügbar ist. Dies sind zwei mögliche Speicherorte:
 
@@ -79,9 +79,7 @@ Eine Skriptaktion ist ein Bash-Skript, für das Sie einen URI und Parameter ange
 
 * Dies kann **permanent** oder **ad-hoc** erfolgen.
 
-    **Persistente** Skripts gelten für Workerknoten, die dem Cluster hinzugefügt werden, nachdem das Skript ausgeführt wurde. Beispielsweise beim zentralen Hochskalieren des Clusters.
-
-    Ein gespeichertes Skript kann auch Änderungen auf einen anderen Knotentyp, z.B. einen Hauptknoten, anwenden.
+    **Permanente** Skripts werden verwendet, um mithilfe von Skalierungsvorgängen neue Arbeitsknoten anzupassen, die dem Cluster hinzugefügt wurden. Bei Skalierungsvorgängen kann ein permanentes Skript auch Änderungen auf einen anderen Knotentyp anwenden, z.B. einen Hauptknoten.
 
   > [!IMPORTANT]
   > Permanente Skriptaktionen müssen einen eindeutigen Namen haben.
@@ -94,30 +92,32 @@ Eine Skriptaktion ist ein Bash-Skript, für das Sie einen URI und Parameter ange
   > Skripts, deren Ausführung nicht erfolgreich ist, werden nicht zu permanenten Skripts. Dies gilt auch, wenn Sie speziell angeben, dass dies der Fall sein soll.
 
 * Sie können **Parameter** akzeptieren, die von den Skripts während der Ausführung verwendet werden.
+
 * Sie werden mit **Stammebenenberechtigungen** auf den Clusterknoten ausgeführt.
-* Sie können über das **Azure-Portal**, **Azure PowerShell**, die **Azure-Befehlszeilenschnittstelle (CLI)** oder das **HDInsight .NET SDK** verwendet werden.
+
+* Sie können über das **Azure-Portal**, **Azure PowerShell**, die **Azure-Befehlszeilenschnittstelle (CLI v1.0)** oder das **HDInsight .NET SDK** verwendet werden.
 
 Der Cluster protokolliert den Verlauf aller Skripts, die ausgeführt wurden. Der Verlauf ist nützlich, wenn Sie die ID eines Skripts für die Herauf- oder Herabstufung von Vorgängen finden müssen.
 
 > [!IMPORTANT]
 > Es gibt keine automatische Möglichkeit, die von einer Skriptaktion vorgenommenen Änderungen rückgängig zu machen. Sie können die Änderungen entweder manuell zurückzusetzen oder ein Skript angeben, das sie zurücksetzt.
 
-
 ### <a name="script-action-in-the-cluster-creation-process"></a>Skriptaktionen im Clustererstellungsvorgang
 
 Während der Clustererstellung verwendete Skriptaktionen unterscheiden sich leicht von Skriptaktionen, die in einem vorhandenen Cluster ausgeführt wurden:
 
 * Das Skript wird **automatisch dauerhaft gespeichert**.
+
 * Ein **Fehler** im Skript kann dazu führen, dass die Clustererstellung nicht erfolgreich ist.
 
 Das folgende Diagramm veranschaulicht, wann Skriptaktionen während des Erstellungsvorgangs ausgeführt werden:
 
 ![HDInsight-Clusteranpassung und Phasen während der Clustererstellung][img-hdi-cluster-states]
 
-Das Skript wird ausgeführt, während HDInsight konfiguriert wird. In dieser Phase wird das Skript parallel auf allen angegebenen Knoten im Cluster ausgeführt. Die Ausführung erfolgt dabei mit Stammberechtigungen für die Knoten.
+Das Skript wird ausgeführt, während HDInsight konfiguriert wird. Das Skript wird parallel auf allen angegebenen Knoten im Cluster ausgeführt. Die Ausführung erfolgt dabei mit Stammberechtigungen für die Knoten.
 
 > [!NOTE]
-> Da das Skript mit Stammebenenberechtigungen auf den Clusterknoten ausgeführt wird, können Sie Vorgänge wie beispielsweise das Beenden und Starten von Diensten, einschließlich Hadoop-bezogener Dienste, durchführen. Wenn Sie Dienste beenden, müssen Sie sicherstellen, dass der Ambari-Dienst und andere Hadoop-bezogene Dienste in Betrieb sind, ehe die Ausführung des Skripts beendet wird. Diese Dienste werden benötigt, um die Integrität und den Status des Clusters erfolgreich zu ermitteln, während dieser erstellt wird.
+> Sie können Dienste beenden und starten, einschließlich Diensten in Zusammenhang mit Hadoop. Wenn Sie Dienste beenden, müssen Sie sicherstellen, dass der Ambari-Dienst und andere Dienste in Zusammenhang mit Hadoop ausgeführt werden, ehe die Ausführung des Skripts beendet wird. Diese Dienste werden benötigt, um die Integrität und den Status des Clusters erfolgreich zu ermitteln, während dieser erstellt wird.
 
 
 Sie können während der Clustererstellung gleichzeitig mehrere Skriptaktionen verwenden. Diese Skripts werden in der Reihenfolge aufgerufen, in der sie angegeben wurden.
@@ -130,7 +130,7 @@ Sie können während der Clustererstellung gleichzeitig mehrere Skriptaktionen v
 
 ### <a name="script-action-on-a-running-cluster"></a>Skriptaktion in einem ausgeführten Cluster
 
-Im Gegensatz zu Skriptaktionen, die während der Clustererstellung verwendet werden, gilt hierbei Folgendes: Ein Fehler in einem Skript, das in einem bereits ausgeführten Cluster ausgeführt wird, führt nicht automatisch dazu, dass der Cluster in einen Fehlerstatus versetzt wird. Nachdem ein Skript abgeschlossen wurde, sollte der Cluster wieder in den Ausführungszustand zurückkehren.
+Ein Fehler in einem Skript, das in einem bereits ausgeführten Cluster ausgeführt wird, führt nicht automatisch dazu, dass der Cluster in einen Fehlerstatus versetzt wird. Nachdem ein Skript abgeschlossen wurde, sollte der Cluster wieder in den Ausführungszustand zurückkehren.
 
 > [!IMPORTANT]
 > Auch wenn der Cluster den Status „Wird ausgeführt“ aufweist, kann das fehlerhafte Skript Schaden angerichtet haben. Ein Skript könnte beispielsweise vom Cluster benötigte Dateien löschen.
@@ -144,7 +144,7 @@ Beim Anwenden eines Skripts auf einen Cluster ändert sich der Clusterstatus fü
     EndTime           : 8/14/2017 7:41:05 PM
     Status            : Succeeded
 
-> [!NOTE]
+> [!IMPORTANT]
 > Wenn Sie nach dem Erstellen des Clusters das Kennwort für den Clusterbenutzer (Admin) ändern, können Skriptaktionen, die für diesen Cluster ausgeführt werden, möglicherweise Fehler verursachen. Wenn Sie Skriptaktionen beibehalten, deren Ziel Workerknoten sind, können sie zu Fehlern führen, wenn Sie den Cluster skalieren.
 
 ## <a name="example-script-action-scripts"></a>Beispielskripts für Skriptaktionen
@@ -153,12 +153,12 @@ Skripts für Skriptaktionen können über die folgenden Hilfsprogramme verwendet
 
 * Azure-Portal
 * Azure PowerShell
-* Azure-Befehlszeilenschnittstelle
+* Azure CLI v1.0
 * HDInsight .NET-SDK
 
 HDInsight verfügt über Skripts zum Installieren der folgenden Komponenten auf HDInsight-Clustern:
 
-| Name | Skript |
+| NAME | Skript |
 | --- | --- |
 | **Hinzufügen eines Azure Storage-Kontos** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh. Siehe [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md). |
 | **Installieren von Hue** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Siehe [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md). |
@@ -193,9 +193,9 @@ Dieser Abschnitt enthält Beispiele für die verschiedenen Möglichkeiten der Ve
     | Eigenschaft | Wert |
     | --- | --- |
     | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls eines der bereitgestellten Skripts aus. |
-    | Name |Geben Sie einen Namen für die Skriptaktion an. |
-    | Bash-Skript-URI |Geben Sie den URI für das Skript an, das aufgerufen wird, um den Cluster anzupassen. |
-    | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten (**Hauptknoten**, **Workerknoten** oder **Zookeeper**) an, auf denen das Anpassungsskript ausgeführt wird. |
+    | NAME |Geben Sie einen Namen für die Skriptaktion an. |
+    | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
+    | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten (**Hauptknoten**, **Workerknoten** oder **Zookeeper**) an, auf denen das Skript ausgeführt wird. |
     | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
 
     Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
@@ -270,9 +270,9 @@ In diesem Abschnitt erfahren Sie, wie Sie Skriptaktionen auf einen ausgeführten
     | Eigenschaft | Wert |
     | --- | --- |
     | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls ein bereitgestelltes Skript aus. |
-    | Name |Geben Sie einen Namen für die Skriptaktion an. |
-    | Bash-Skript-URI |Geben Sie den URI für das Skript an, das aufgerufen wird, um den Cluster anzupassen. |
-    | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten (**Hauptknoten**, **Workerknoten** oder **Zookeeper**) an, auf denen das Anpassungsskript ausgeführt wird. |
+    | NAME |Geben Sie einen Namen für die Skriptaktion an. |
+    | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
+    | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten (**Hauptknoten**, **Workerknoten** oder **Zookeeper**) an, auf denen das Skript ausgeführt wird. |
     | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
 
     Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
@@ -298,9 +298,10 @@ Nachdem der Vorgang abgeschlossen ist, sollten Informationen ähnlich dem folgen
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>Anwenden einer Skriptaktion auf einen ausgeführten Cluster über die Azure-Befehlszeilenschnittstelle (CLI)
 
-Stellen Sie vor dem Fortfahren sicher, dass die Azure-CLI installiert und konfiguriert ist. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
+Stellen Sie vor dem Fortfahren sicher, dass die Azure-CLI installiert und konfiguriert ist. Weitere Informationen finden Sie unter [Installieren von Azure CLI 1.0](../cli-install-nodejs.md).
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+> [!IMPORTANT]
+> HDInsight erfordert Azure CLI 1.0. Zurzeit stellt Azure CLI 2.0 keine Befehle für die Arbeit mit HDInsight zur Verfügung.
 
 1. Wechseln Sie mit dem folgenden Befehl an der Befehlszeile in den Azure Resource Manager-Modus:
 
@@ -458,7 +459,7 @@ Wenn bei der Clustererstellung aufgrund eines Fehlers in einem Skript ein Fehler
 
     * **Zookeeper-Knoten** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* Alle stdout- und stderr-Elemente des entsprechenden Hosts werden in das Speicherkonto hochgeladen. Für jede Skriptaktion liegen die Dateien **output-\*.txt** und **errors-\*.txt** vor. Die Datei „output-*.txt“ enthält Informationen zum URI des Skripts, das auf dem Host ausgeführt wurde. Beispiel:
+* Alle stdout- und stderr-Elemente des entsprechenden Hosts werden in das Speicherkonto hochgeladen. Für jede Skriptaktion liegen die Dateien **output-\*.txt** und **errors-\*.txt** vor. Die Datei „output-*.txt“ enthält Informationen zum URI des Skripts, das auf dem Host ausgeführt wurde. Der folgende Text ist ein Beispiel für diese Informationen:
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 

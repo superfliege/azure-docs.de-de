@@ -2,17 +2,18 @@
 title: "Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten"
 description: "Hier erfahren Sie, wie Sie Azure Stack-Endpunkte in Ihrem Datencenter veröffentlichen."
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/16/2018
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: 1cc74cb2214918d6bfd0c0827cf5d9832b84f317
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: e368109adc7db4c589ac37b28c4891cb3ec5346f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten
 
@@ -45,11 +46,13 @@ Interne Infrastruktur-VIPs sind nicht aufgeführt, da sie zum Veröffentlichen v
 |Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Zertifikatsperrliste|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP und UDP|53|
-|Key Vault (Benutzer)|*.vault.*&lt;region>.&lt;fqdn>*|TCP|443|
-|Key Vault (Administrator)|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|TCP|443|
+|Key Vault (Benutzer)|&#42;.vault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Key Vault (Administrator)|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Speicherwarteschlange|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Speichertabelle|&#42;.table.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Speicherblob|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
+|SQL-Ressourcenanbieter|sqladapter.dbadapter.*&lt;Region>.&lt;FQDN>*|HTTPS|44300-44304|
+|MySQL-Ressourcenanbieter|mysqladapter.dbadapter.*&lt;Region>.&lt;FQDN>*|HTTPS|44300-44304
 
 ## <a name="ports-and-urls-outbound"></a>Ports und URLs (ausgehend)
 
@@ -64,49 +67,6 @@ Azure Stack unterstützt nur transparente Proxyserver. In einer Bereitstellung m
 |Registrierung|https://management.azure.com|HTTPS|443|
 |Verwendung|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.com|HTTPS|443|
 
-## <a name="firewall-publishing"></a>Firewall-Veröffentlichung
-
-Beim Veröffentlichen von Azure Stack-Diensten durch eine vorhandene Firewall gelten die Ports aus dem vorherigen Abschnitt für die eingehende Kommunikation.
-
-Es empfiehlt sich, Azure Stack mit einem Firewallgerät zu schützen. Dies ist jedoch nicht zwingend erforderlich. Firewalls können zwar bei DDoS-Angriffen und bei der Inhaltsuntersuchung hilfreich sein, andererseits können sie sich aber auch als Engpass für den Durchsatz von Azure-Speicherdiensten wie Blobs, Tabellen und Warteschlangen erweisen.
-
-Ob eine Veröffentlichung des AD FS-Endpunkts erforderlich ist, hängt vom Identitätsmodell (Azure AD oder AD FS) ab. Bei Verwendung eines getrennten Bereitstellungsmodus muss der AD FS-Endpunkt veröffentlicht werden. (Weitere Informationen finden Sie im Thema zur Datencenter-Integrationsidentität.)
-
-Für die Endpunkte „Azure Resource Manager (Administrator)“, „Portal (Administrator)“ und „Schlüsseltresor (Administrator)“ ist nicht zwingend eine externe Veröffentlichung erforderlich. Dies hängt vom Szenario ab. Als Dienstanbieter können Sie beispielsweise die Angriffsfläche verkleinern und Azure Stack nur innerhalb Ihres Netzwerks (und nicht über das Internet) verwalten.
-
-Bei einem Unternehmen kann das Unternehmensnetzwerk als externes Netzwerk fungieren. In einem solchen Szenario müssen Sie die Endpunkte veröffentlichen, um Azure Stack über das Unternehmensnetzwerk bedienen zu können.
-
-## <a name="edge-firewall-scenario"></a>Szenario mit Edgefirewall
-
-In einer Edgebereitstellung wird Azure Stack direkt hinter dem (vom ISP bereitgestellten) Edgerouter bereitgestellt. Bei Bedarf kann davor noch eine Firewall platziert werden.
-
-![Architekturdiagramm einer Edgebereitstellung von Azure Stack](media/azure-stack-integrate-endpoints/Integrate-Endpoints-02.png)
-
-In der Regel werden in einer Edgebereitstellung zum Zeitpunkt der Bereitstellung routingfähige IP-Adressen für den öffentlichen VIP-Pool angegeben. Dadurch erhalten Benutzer eine vollständig selbstgesteuerte Cloudumgebung – genau wie bei einer öffentlichen Cloud (beispielsweise Azure).
-
-### <a name="using-nat"></a>Verwenden der NAT
-
-Sie können zwar eine Netzwerkadressenübersetzung (Network Address Translation, NAT) zur Veröffentlichung von Endpunkten verwenden, dies wird jedoch aufgrund des Zusatzaufwands nicht empfohlen. Für eine vollständig benutzergesteuerte Endpunktveröffentlichung benötigt jede Benutzer-VIP eine NAT-Regel, die alle Ports enthält, die ein Benutzer möglicherweise verwendet.
-
-Ein weiterer Punkt: Die Einrichtung eines VPN-Tunnels zu einem Endpunkt mit NAT in einem Hybrid Cloud-Szenario mit Azure wird nicht unterstützt.
-
-## <a name="enterpriseintranetperimeter-network-firewall-scenario"></a>Firewallszenario mit Unternehmensnetzwerk/Intranet/Umkreisnetzwerk
-
-In einer Bereitstellung mit Unternehmensnetzwerk/Intranet/Umkreisnetzwerk wird Azure Stack jenseits einer zweiten Firewall bereitgestellt, die üblicherweise einem Umkreisnetzwerk (auch DMZ genannt) angehört.
-
-![Azure Stack-Firewallszenario](media/azure-stack-integrate-endpoints/Integrate-Endpoints-03.png)
-
-Wenn für den öffentlichen VIP-Pool von Azure Stack öffentliche routingfähige IP-Adresse angegeben wurden, gehören diese Adressen logisch zum Umkreisnetzwerk und erfordern Veröffentlichungsregeln in der primären Firewall.
-
-### <a name="using-nat"></a>Verwenden der NAT
-
-Wenn für den öffentlichen VIP-Pool von Azure Stack nicht öffentliche routingfähige IP-Adresse verwendet werden, wird zur Veröffentlichung von Azure Stack-Endpunkten die NAT an der sekundären Firewall verwendet. In diesem Szenario müssen Sie die Veröffentlichungsregeln in der primären Firewall jenseits der Edge sowie in der sekundären Firewall konfigurieren. Wenn Sie die NAT verwenden möchten, berücksichtigen Sie Folgendes:
-
-- Durch die NAT erhöht sich der Verwaltungsaufwand für Firewallregeln, da Benutzer ihre eigenen Endpunkte und ihre eigenen Veröffentlichungsregeln im SDN-Stapel (Software Defined Networking) steuern. Benutzer müssen sich zur Veröffentlichung ihrer VIPs sowie zur Aktualisierung der Portliste an den Azure Stack-Betreiber wenden.
-- Die Verwendung der NAT beeinträchtigt zwar die Benutzerfreundlichkeit, gibt dem Betreiber jedoch die volle Kontrolle über Veröffentlichungsanforderungen.
-- In Hybrid Cloud-Szenarien mit Azure wird die Einrichtung eines VPN-Tunnels zu einem Endpunkt mit NAT nicht unterstützt.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-[Integration des Azure Stack-Datencenters: Sicherheit](azure-stack-integrate-security.md)
+[PKI-Anforderungen für Azure Stack](azure-stack-pki-certs.md)

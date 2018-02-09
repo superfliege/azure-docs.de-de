@@ -3,7 +3,7 @@ title: "Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure A
 description: "Ein Überblick über die verwaltete Dienstidentität für Azure-Ressourcen."
 services: active-directory
 documentationcenter: 
-author: skwan
+author: daveba
 manager: mtillman
 editor: 
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/19/2017
-ms.author: bryanla
-ms.openlocfilehash: a2a42f13c81a6f6bb34a8e6aafabf380f3d220e1
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.author: skwan
+ms.openlocfilehash: b28f5c7c90783c5abd933b50ddb9631739b8f421
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/29/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen
 
@@ -63,6 +63,8 @@ Testen Sie ein Tutorial für verwaltete Dienstidentitäten, um mehr über End-to
 |                    | [Zugreifen auf eine Nicht-Azure AD-Ressource mit einer Linux-VM-MSI und Azure Key Vault](msi-tutorial-linux-vm-access-nonaad.md) |
 | Azure App Service  | [Use Managed Service Identity with Azure App Service or Azure Functions (Verwenden von verwalteten Dienstidentitäten mit Azure App Service oder Azure Functions)](/azure/app-service/app-service-managed-service-identity) |
 | Azure Function     | [Use Managed Service Identity with Azure App Service or Azure Functions (Verwenden von verwalteten Dienstidentitäten mit Azure App Service oder Azure Functions)](/azure/app-service/app-service-managed-service-identity) |
+| Azure-Servicebus  | [Verwenden einer verwalteten Dienstidentität mit Azure Service Bus](../service-bus-messaging/service-bus-managed-service-identity.md) |
+| Azure Event Hubs   | [Verwenden einer verwalteten Dienstidentität mit Azure Event Hubs](../event-hubs/event-hubs-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>Welche Azure-Dienste unterstützen verwaltete Dienstidentitäten?
 

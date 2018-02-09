@@ -15,11 +15,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: e398536ff6f660c75e4e063040eab33a831d65c6
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: f08e7327e266c342fe7f869f0b7a6a251792a071
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrieren von Anwendungen in Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -309,7 +309,7 @@ Anwendungen, die von Ihrer Organisation registriert wurden, werden unter dem Fil
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Entfernen einer mehrinstanzenfähigen Anwendung, die von einer anderen Organisation autorisiert ist
 Bei einer Teilmenge der Anwendungen, die auf der Hauptseite „App-Registrierungen“ Ihres Mandanten unter dem Filter „Alle Apps“ (mit Ausnahme der Registrierungen vom Typ „Meine Apps“) angezeigt werden, handelt es sich um mehrinstanzenfähige Anwendungen. In technischer Hinsicht stammen diese mehrinstanzenfähigen Anwendungen von einem anderen Mandanten und wurden während des Zustimmungsprozesses unter Ihrem Mandanten registriert. Genauer gesagt: Sie werden unter Ihrem Mandanten nur von einem Dienstprinzipalobjekt ohne entsprechendes Anwendungsobjekt repräsentiert. Weitere Informationen zu den Unterschieden zwischen Anwendungs- und Dienstprinzipalobjekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure AD](active-directory-application-objects.md).
 
-Der Administrator des Unternehmens muss seinen Dienstprinzipal entfernen, um für eine mehrinstanzenfähige Anwendung den Zugriff auf Ihr Verzeichnis zu entfernen (nachdem die Zustimmung erteilt wurde). Der Administrator muss über globalen Administratorzugriff verfügen und kann über das Azure-Portal die [Azure AD-PowerShell-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=294151) entfernen, um die Erteilung des Zugriffs aufzuheben.
+Der Administrator des Unternehmens muss seinen Dienstprinzipal entfernen, um für eine mehrinstanzenfähige Anwendung den Zugriff auf Ihr Verzeichnis zu entfernen (nachdem die Zustimmung erteilt wurde). Der Administrator muss über globalen Administratorzugriff verfügen und kann den Zugriff aufheben – entweder über das Azure-Portal oder über die [Azure AD-PowerShell-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).

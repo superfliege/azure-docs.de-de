@@ -1,10 +1,10 @@
 ---
-title: "Überprüfen der Konnektivität mit Azure Network Watcher – Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Auf dieser Seite erfahren Sie, wie Sie die Konnektivitätsprüfung von Network Watcher mithilfe von Azure CLI 2.0 verwenden."
+title: "Problembehandlung für Verbindungen mit Azure Network Watcher – Azure CLI 2.0 | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe der Azure CLI 2.0 die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen."
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,31 +13,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 507ec614e54b035d5470ec34bcfd8e71cf98083c
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: dfe77b0a9620ccb8ac91fa8843d01d1cb7bdc44f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-azure-cli-20"></a>Überprüfen der Konnektivität mit Azure Network Watcher mithilfe von Azure CLI 2.0
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli-20"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und der Azure CLI 2.0
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure-REST-API](network-watcher-connectivity-rest.md)
 
-Erfahren Sie, wie Sie mit der Konnektivität überprüfen können, ob von einem virtuellen Computer zu einem bestimmten Endpunkt eine direkte TCP-Verbindung hergestellt werden kann.
+Hier erfahren Sie, wie Sie mit der Problembehandlung für Verbindungen überprüfen können, ob von einem virtuellen Computer eine direkte TCP-Verbindung mit einem bestimmten Endpunkt hergestellt werden kann.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressourcen verfügen:
 
-* Eine Instanz von Network Watcher in der Region, in der Sie die Konnektivität überprüfen möchten
-
-* Virtuelle Computer, mit denen Sie die Konnektivität überprüfen.
+* Eine Instanz von Network Watcher in der Region, in der Sie die Problembehandlung für eine Verbindung ausführen möchten
+* Virtuelle Computer zum Ausführen der Problembehandlung für Verbindungen
 
 > [!IMPORTANT]
-> Für die Konnektivitätsprüfung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
+> Für die Problembehandlung für Verbindungen ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Überprüfen der Konnektivität zu einem virtuellen Computer
 

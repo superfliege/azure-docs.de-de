@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 4a4a06f90c2c48d35d836f0be89fec9cc47f32c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a61918108a48f4a9fa3d1c07cc8d41525f1f2a0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Vorabruf von Azure Service Bus-Nachrichten
 
@@ -27,7 +27,7 @@ Ein einzelner anfänglicher [Receive](/dotnet/api/microsoft.servicebus.messaging
 
 ## <a name="enable-prefetch"></a>Aktivieren des Vorabrufs
 
-In .NET aktivieren Sie den Vorabruf, indem Sie die [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount)-Eigenschaft von **MessageReceiver**, **QueueClient** oder **SubscriptionClient** auf eine Zahl größer null festlegen. Durch Festlegen des Werts auf 0 (null) wird der Vorabruf deaktiviert.
+Mit .NET aktivieren Sie den Vorabruf, indem Sie die [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount)-Eigenschaft von **MessageReceiver**, **QueueClient** oder **SubscriptionClient** auf eine Zahl größer null festlegen. Durch Festlegen des Werts auf 0 (null) wird der Vorabruf deaktiviert.
 
 Sie können diese Einstellung ganz einfach zur Empfangsseite der Einstellungen der Beispiele [QueuesGettingStart](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) oder [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) hinzufügen, um die Auswirkung in diesen Kontexten zu beobachten.
 
@@ -37,7 +37,7 @@ Der Vorabruf funktioniert auch auf gleiche Weise mit den APIs [OnMessage](/dotne
 
 ## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Wenn er mehr Tempo bietet, warum ist dann der Vorabruf nicht die Standardoption?
 
-Der Vorabruf beschleunigt den Nachrichtenfluss, indem eine Nachricht zum lokalen Abruf bereitgehalten wird, wenn (und bevor) die Anwendung sie anfragt. Diese Durchsatzbeschleunigung ist das Ergebnis einer Abwägungsentscheidung, die der Anwendungsautor explizit treffen muss:
+Der Vorabruf beschleunigt den Nachrichtenfluss, indem eine Nachricht zum lokalen Abruf bereitgehalten wird, wenn (und bevor) die Anwendung sie anfragt. Diese Durchsatzbeschleunigung ist das Ergebnis eines Kompromisses, die der Anwendungsautor explizit treffen muss:
 
 Im Empfangsmodus [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode.receiveanddelete) sind alle Nachrichten, die in den Vorabrufpuffer eingelesen werden, nicht mehr in der Warteschlange verfügbar. Sie befinden sich nur noch im speicherinternen Vorabrufpuffer, bis sie über die APIs **Receive**/**ReceiveAsync** or **OnMessage**/**OnMessageAsync** in der Anwendung empfangen werden. Wenn die Anwendung vor dem Eingang der Nachrichten in der Anwendung beendet wird, gehen diese Nachrichten unwiederbringlich verloren.
 

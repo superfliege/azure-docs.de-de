@@ -1,91 +1,181 @@
 ---
-title: "Konfigurieren der SSL-Auslagerung – Azure Application Gateway (Azure-Portal) | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Anweisungen zum Erstellen eines Anwendungsgateways mit SSL-Auslagerung über das Azure-Portal."
-documentationcenter: na
+title: "Erstellen eines Anwendungsgateways mit SSL-Beendigung – Azure-Portal | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mit dem Azure-Portal ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Beendigung hinzufügen."
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 8373379a-a26a-45d2-aa62-dd282298eff3
+tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 2f7f5d4132e28c8c192d90d5f4bfb2a9034f8b8c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: daab3ada5ef0cc20883130e4c12b1dc3570e63b1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-azure-portal"></a>Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung über das Azure-Portal
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit SSL-Beendigung mithilfe des Azure-Portals
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-ssl-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
-> * [Klassische Azure PowerShell](application-gateway-ssl.md)
-> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
+Sie können mit dem Azure-Portal ein [Anwendungsgateway](application-gateway-introduction.md) mit einem Zertifikat für SSL-Beendigung erstellen, das virtuelle Computer als Back-End-Server verwendet.
 
-Azure Application Gateway kann so konfiguriert werden, dass damit die Secure Sockets Layer-Sitzung (SSL) auf dem Gateway beendet wird. Auf diese Weise wird die aufwändige SSL-Entschlüsselung in der Webfarm vermieden. Die SSL-Auslagerung vereinfacht zudem die Einrichtung und Verwaltung der Webanwendung auf dem Front-End-Server.
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-## <a name="scenario"></a>Szenario
+> [!div class="checklist"]
+> * Erstellen eines selbstsignierten Zertifikats
+> * Erstellen eines Anwendungsgateways mit dem Zertifikat
+> * Erstellen der virtuellen Computer, die als Back-End-Server verwendet werden
 
-Das folgende Szenario führt Sie durch die Konfiguration der SSL-Auslagerung in einem vorhandenen Anwendungsgateway. Für dieses Szenario wird davon ausgegangen, dass Sie die Schritte unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway-portal.md) bereits durchgeführt haben.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Zum Konfigurieren der SSL-Auslagerung mit einem Anwendungsgateway ist ein Zertifikat erforderlich. Dieses Zertifikat wird in das Anwendungsgateway geladen und zum Ver- und Entschlüsseln des über SSL gesendeten Datenverkehrs verwendet. Das Zertifikat muss im PFX-Format (privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
+Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 
-## <a name="add-an-https-listener"></a>Hinzufügen eines HTTPS-Listeners
+## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
-Der HTTPS-Listener sucht basierend auf seiner Konfiguration nach Datenverkehr und hilft dabei, den Datenverkehr an die Back-End-Pools zu leiten. Gehen Sie folgendermaßen vor, um einen HTTPS-Listener hinzuzufügen:
+In diesem Abschnitt verwenden Sie [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) zum Erstellen eines selbstsignierten Zertifikats, das Sie beim Erstellen des Listeners für das Anwendungsgateway ins Azure-Portal hochladen.
 
-   1. Wechseln Sie zum Azure-Portal, und wählen Sie ein vorhandenes Anwendungsgateway aus.
+Öffnen Sie auf dem lokalen Computer ein Windows PowerShell-Fenster als Administrator. Führen Sie den folgenden Befehl aus, um das Zertifikat zu erstellen:
 
-   2. Wählen Sie **Listener** und dann die Schaltfläche **Hinzufügen** aus, um einen Listener hinzuzufügen.
+```powershell
+New-SelfSignedCertificate \
+  -certstorelocation cert:\localmachine\my \
+  -dnsname www.contoso.com
+```
 
-   ![Bereich mit der Übersicht über Application Gateway][1]
+Die Ausgabe sollte in etwa wie die folgende Antwort aussehen:
 
+```
+PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\my
 
-   3. Stellen Sie die folgenden erforderlichen Informationen für den Listener bereit, und laden Sie das PFX-Zertifikat hoch:
-      - **Name**: Der Anzeigename des Listeners.
+Thumbprint                                Subject
+----------                                -------
+E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 
-      - **Front-End-IP-Konfiguration**: Die IP-Konfiguration des Front-Ends, die für den Listener verwendet wird.
+Use [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) with the Thumbprint that was returned to export a pfx file from the certificate:
+```
 
-      - **Front-End-Port (Name/Port)**: Der im Front-End des Anwendungsgateways verwendete Anzeigename für den Port und der tatsächlich verwendete Port.
+```powershell
+$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+Export-PfxCertificate \
+  -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 \
+  -FilePath c:\appgwcert.pfx \
+  -Password $pwd
+```
 
-      - **Protokoll**: Ein Schalter, mit dem bestimmt wird, ob für das Front-End HTTP oder HTTPS verwendet werden soll.
+## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-      - **Zertifikat (Name/Kennwort)**: Wenn die SSL-Auslagerung verwendet wird, ist für diese Einstellung ein PFX-Zertifikat erforderlich. Ein Anzeigename und ein Kennwort sind ebenfalls erforderlich.
+Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. In diesem Beispiel werden zwei Subnetze erstellt: eins für das Anwendungsgateway und eins für die Back-End-Server. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway.
 
-   4. Klicken Sie auf **OK**.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Neu**.
+2. Klicken Sie auf **Netzwerk** und dann in der Liste „Ausgewählte“ auf **Application Gateway**.
+3. Geben Sie für das Anwendungsgateway den Namen *myAppGateway* und für die neue Ressourcengruppe den Namen *myResourceGroupAG* ein.
+4. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
+5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
 
-![Bereich zum Hinzufügen eines Listeners][2]
+    - *myVNet*: Name des virtuellen Netzwerks
+    - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
+    - *myAGSubnet*: Subnetzname
+    - *10.0.0.0/24*: Adressraum des Subnetzes
 
-## <a name="create-a-rule-and-associate-it-to-the-listener"></a>Erstellen einer Regel und Verknüpfen der Regel mit dem Listener
+    ![Virtuelles Netzwerk erstellen](./media/application-gateway-ssl-portal/application-gateway-vnet.png)
 
-Der Listener wurde erstellt. Als Nächstes erstellen Sie eine Regel, um den Datenverkehr vom Listener zu verarbeiten. Regeln definieren, wie Datenverkehr basierend auf mehreren Konfigurationseinstellungen an die Back-End-Adresspools weitergeleitet wird. Diese Einstellungen umfassen das Protokoll, den Port und die Integritätstests sowie die Angabe, ob cookiebasierte Sitzungsaffinität verwendet wird. Gehen Sie folgendermaßen vor, um eine Regel zu erstellen und dem Listener zuzuordnen:
+6. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
+7. Klicken Sie auf **Öffentliche IP-Adresse auswählen** und dann auf **Neu erstellen**, und geben Sie den Namen der öffentlichen IP-Adresse ein. In diesem Beispiel heißt die öffentliche IP-Adresse *myAGPublicIPAddress*. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
+8. Klicken Sie für das Protokoll des Listeners auf **HTTPS**, und stellen Sie sicher, dass als Port **443** festgelegt ist.
+9. Klicken Sie auf das Ordnersymbol, und navigieren Sie zum zuvor erstellten Zertifikat *appgwcert.pfx*, um es hochzuladen.
+10. Geben Sie als Name des Zertifikats *mycert1* und als Kennwort *Azure123456!* ein, und klicken Sie dann auf **OK**.
 
+    ![Erstellen eines neuen Anwendungsgateways](./media/application-gateway-ssl-portal/application-gateway-create.png)
 
-   1. Wählen Sie für das Anwendungsgateway **Regeln** und dann **Hinzufügen** aus.
+11. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **OK**, um die Netzwerkressourcen und das Anwendungsgateway zu erstellen. Die Erstellung des Anwendungsgateways kann einige Minuten dauern. Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit dem nächsten Abschnitt fortfahren.
 
-   ![Bereich mit Regeln für das Anwendungsgateway][3]
+### <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes
 
+1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myVNet**.
+2. Klicken Sie auf **Subnetze** und dann auf **Subnetz**.
 
-   2. Geben Sie unter **Einfache Regel hinzufügen** einen Anzeigenamen für die Regel in das Feld **Name** ein, und wählen Sie dann den **Listener** aus, den Sie im vorherigen Schritt erstellt haben. Wählen Sie den geeigneten **Back-End-Pool** sowie die geeignete **HTTP-Einstellung** und dann **OK** aus.
+    ![Erstellen eines Subnetzes](./media/application-gateway-ssl-portal/application-gateway-subnet.png)
 
-   ![Fenster mit HTTPS-Einstellungen][4]
+3. Geben Sie als Name des Subnetzes *myBackendSubnet* ein, und klicken Sie auf **OK**.
 
-Die Einstellungen sind jetzt im Anwendungsgateway gespeichert. Es kann eine Weile dauern, bis die Einstellungen gespeichert sind und im Portal oder über PowerShell angezeigt werden können. Nach dem Speichern übernimmt das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs. Sämtlicher Datenverkehr zwischen dem Anwendungsgateway und den Back-End-Webservern werden über HTTP verarbeitet. Jegliche Kommunikation an den Client wird, sofern sie über HTTPS initiiert wurde, verschlüsselt an den Client zurückgegeben.
+## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
+
+In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Server für das Anwendungsgateway verwendet werden. Sie installieren außerdem IIS auf den virtuellen Computern, um zu überprüfen, ob das Anwendungsgateway erfolgreich erstellt wurde.
+
+### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
+
+1. Klicken Sie auf **New**.
+2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste „Ausgewählte“ die Option **Windows Server 2016 Datacenter**.
+3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
+
+    - *myVM*: Name des virtuellen Computers
+    - *azureuser*: Name des Administratorbenutzers
+    - *Azure123456!* als Kennwort
+    - Wählen Sie **Vorhandene verwenden** und dann *myResourceGroupAG* aus.
+
+4. Klicken Sie auf **OK**.
+5. Wählen Sie als Größe des virtuellen Computers **DS1_V2** aus, und klicken Sie auf **Auswählen**.
+6. Stellen Sie sicher, dass als virtuelles Netzwerk **myVNet** und als Subnetz **myBackendSubnet** ausgewählt ist. 
+7. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
+8. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
+
+### <a name="install-iis"></a>Installieren von IIS
+
+1. Öffnen Sie die interaktive Shell, und vergewissern Sie sich, dass **PowerShell** festgelegt ist.
+
+    ![Installieren der benutzerdefinierten Erweiterung](./media/application-gateway-ssl-portal/application-gateway-extension.png)
+
+2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
+
+    ```azurepowershell-interactive
+    Set-AzureRmVMExtension `
+      -ResourceGroupName myResourceGroupAG `
+      -ExtensionName IIS `
+      -VMName myVM `
+      -Publisher Microsoft.Compute `
+      -ExtensionType CustomScriptExtension `
+      -TypeHandlerVersion 1.4 `
+      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+      -Location EastUS
+    ```
+
+3. Erstellen Sie einen zweiten virtuellen Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie *myVM2* als Name und für „VMName“ in „Set-AzureRmVMExtension“ ein.
+
+### <a name="add-backend-servers"></a>Hinzufügen von Back-End-Servern
+
+3. Klicken Sie auf **Alle Ressourcen** und dann auf **myAppGateway**.
+4. Klicken Sie auf **Back-End-Pools**. Ein Standardpool mit dem Anwendungsgateway wurde automatisch erstellt. Klicken Sie auf **appGateayBackendPool**.
+5. Klicken Sie auf **Ziel hinzufügen**, um alle erstellten virtuellen Computer dem Back-End-Pool hinzuzufügen.
+
+    ![Hinzufügen von Back-End-Servern](./media/application-gateway-ssl-portal/application-gateway-backend.png)
+
+6. Klicken Sie auf **Speichern**.
+
+## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
+
+1. Klicken Sie auf **Alle Ressourcen** und dann auf **myAGPublicIPAddress**.
+
+    ![Notieren der öffentlichen IP-Adresse des Anwendungsgateways](./media/application-gateway-ssl-portal/application-gateway-ag-address.png)
+
+2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Wenn Sie ein selbstsigniertes Zertifikat verwendet haben und die Sicherheitswarnung akzeptieren möchten, klicken Sie auf „Details“ und anschließend auf „Webseite trotzdem laden“:
+
+    ![Sicherheitswarnung](./media/application-gateway-ssl-portal/application-gateway-secure.png)
+
+    Die gesicherte IIS-Website wird dann wie im folgenden Beispiel angezeigt:
+
+    ![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-ssl-portal/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Konfigurieren eines benutzerdefinierten Integritätstests mit Azure Application Gateway finden Sie unter [Erstellen eines benutzerdefinierten Integritätstests](application-gateway-create-gateway-portal.md).
+In diesem Tutorial haben Sie Folgendes gelernt:
 
-[1]: ./media/application-gateway-ssl-portal/figure1.png
-[2]: ./media/application-gateway-ssl-portal/figure2.png
-[3]: ./media/application-gateway-ssl-portal/figure3.png
-[4]: ./media/application-gateway-ssl-portal/figure4.png
+> [!div class="checklist"]
+> * Erstellen eines selbstsignierten Zertifikats
+> * Erstellen eines Anwendungsgateways mit dem Zertifikat
+> * Erstellen der virtuellen Computer, die als Back-End-Server verwendet werden
 
+Weitere Informationen zu Anwendungsgateways und den zugehörigen Ressourcen finden Sie in den Artikeln mit empfohlenen Vorgehensweisen.

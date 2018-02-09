@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: ancav
-ms.openlocfilehash: cff2be1818417a19f36da08d8c2eaa227bb945ec
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 79602cf053d834bf3d6dc6b4d5568637b179d5c7
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="understand-autoscale-settings"></a>Grundlegendes zu Einstellungen für die automatische Skalierung
 Mit den Einstellungen für die automatische Skalierung können Sie sicherstellen, dass Sie über die richtige Anzahl von ausgeführten Ressourcen verfügen, um die wechselnde Auslastung Ihrer Anwendung zu bewältigen. Sie können konfigurieren, dass Einstellungen für die automatische Skalierung basierend auf Metriken ausgelöst werden, mit denen die Auslastung oder die Leistung angezeigt werden, oder die Auslösung kann zu einem geplanten Datum bzw. einer geplanten Uhrzeit erfolgen. In diesem Artikel wird die Anatomie einer Einstellung für die automatische Skalierung ausführlich beschrieben. Zu Beginn des Artikels machen Sie sich mit dem Schema und den Eigenschaften einer Einstellung vertraut, und anschließend werden die verschiedenen Profiltypen beschrieben, die konfiguriert werden können. Am Ende wird beschrieben, wie bei der automatischen Skalierung ausgewertet wird, welches Profil jeweils zu einem bestimmten Zeitpunkt ausgeführt werden soll.
@@ -95,7 +95,7 @@ Zur Veranschaulichung des Schemas der Einstellung für die automatische Skalieru
 }
 ```
 
-| Abschnitt | Elementname | Beschreibung |
+| Abschnitt | Elementname | BESCHREIBUNG |
 | --- | --- | --- |
 | Einstellung | ID | Die Ressourcen-ID der Einstellung für die automatische Skalierung. Einstellungen für die automatische Skalierung sind eine Azure Resource Manager-Ressource. |
 | Einstellung | name | Der Name der Einstellung für die automatische Skalierung. |

@@ -2,29 +2,27 @@
 title: "Integration des Azure Stack-Datencenters – DNS"
 description: Erfahren Sie, wie Sie das Azure Stack-DNS in Ihr Datencenter-DNS integrieren.
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/10/2017
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 40d6d4858ef2e3df61d04dc68c00e09c04f000e2
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 504cbabe6ea4b7ad71601186dac853515f8c4709
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Integration des Azure Stack-Datencenters – DNS
-
-*Gilt für: integrierte Azure Stack-Systeme*
-
 Für den Zugriff auf Azure Stack-Endpunkte (`portal`, `adminportal`, `management`, `adminmanagement` usw.) von außerhalb von Azure Stack müssen Sie die Azure Stack-DNS-Dienste mit den DNS-Servern integrieren, die die DNS-Zonen hosten, die Sie in Azure Stack verwenden möchten.
 
 ## <a name="azure-stack-dns-namespace"></a>DNS-Namespace von Azure Stack
 Sie müssen einige wichtige Informationen über das DNS zur Verfügung stellen, wenn Sie Azure Stack bereitstellen.
 
 
-|Feld  |Beschreibung  |Beispiel|
+|Feld  |BESCHREIBUNG  |Beispiel|
 |---------|---------|---------|
 |Region|Der geografische Standort Ihrer Azure Stack-Bereitstellung.|`east`|
 |Externer Domänenname|Der Name der Zone, die Sie für Ihre Azure Stack-Bereitstellung verwenden möchten.|`cloud.fabrikam.com`|
@@ -140,4 +138,4 @@ Die meisten DNS-Registrierungsstellen erfordern, dass Sie mindestens zwei DNS-Se
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure Stack-Rechenzentrumsintegration – Identität](azure-stack-integrate-identity.md)
+[Firewallintegration](azure-stack-firewall.md)

@@ -8,16 +8,16 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/10/2017
-ms.openlocfilehash: f3b32c1f6b33bc60b50f1496414a300db468dc92
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.date: 01/25/2018
+ms.openlocfilehash: 59eeed42356a276c259bd8da55890b7ada67d729
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal
 
-Azure Database für MySQL unterstützt das Konfigurieren einiger Serverparameter. In diesem Thema wird beschrieben, wie diese Parameter mithilfe des Azure-Portals konfiguriert werden. Nicht alle Serverparameter können angepasst werden. 
+Azure Database für MySQL unterstützt das Konfigurieren einiger Serverparameter. In diesem Artikel wird beschrieben, wie diese Parameter mithilfe des Azure-Portals konfiguriert werden. Nicht alle Serverparameter können angepasst werden. 
 
 ## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigieren Sie im Azure-Portal zu „Serverparameter“.
 1. Melden Sie sich beim Azure-Portal an, und suchen Sie dann nach Ihrem Azure Database for MySQL-Server.
@@ -25,7 +25,7 @@ Azure Database für MySQL unterstützt das Konfigurieren einiger Serverparameter
 3. Suchen Sie die Einstellungen, die Sie anpassen möchten. Überprüfen Sie die Spalte **Beschreibung**, um den Zweck und die zulässigen Werte zu verstehen. 
 4. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
-![Blatt „Serverparameter“ im Azure-Portal](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+![Seite „Serverparameter“ im Azure-Portal](./media/howto-server-parameters/auzre-portal-server-parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>Liste der konfigurierbaren Serverparameter
 
@@ -43,12 +43,15 @@ Die Liste der unterstützten Serverparameter wächst ständig. Verwenden Sie die
 | Standard 400 | 10.240 | 800 | 
 | Standard 800 | 20.480 | 1600 |
 
-Diese zusätzlichen Serverparameter sind im System nicht konfigurierbar. <br>
- innodb_file_per_table in Basic tier: OFF<br>
- innodb_flush_log_at_trx_commit=1<br>
- sync_binlog=1<br>
- innodb_log_file_size=512MB<br>
- 
+Diese zusätzlichen Serverparameter sind im System nicht konfigurierbar:
+
+|**Parameter**|**Fester Wert**|
+| :------------------------ | :-------- |
+|innodb_file_per_table (im Tarif „Basic“)|OFF|
+|innodb_flush_log_at_trx_commit|1|
+|sync_binlog|1|
+|innodb_log_file_size|512 MB|
+
 Weitere Serverparameter, die hier nicht aufgeführt sind, werden für die Versionen [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) und [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) auf ihre vordefinierten MySQL-Standardwerte festgelegt.
 
 ## <a name="next-steps"></a>Nächste Schritte

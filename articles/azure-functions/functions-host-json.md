@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: tdykstra
-ms.openlocfilehash: 522d0590595b0fc0fef503599f1677658f223bd8
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 58fc58049e346d60c0882a91bd04485746a15cbd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>host.json-Referenz für Azure Functions
 
@@ -49,6 +49,13 @@ Für die folgende *host.json*-Beispieldatei sind alle möglichen Optionen angege
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
+    "healthMonitor": {
+        "enabled": true,
+        "healthCheckInterval": "00:00:10",
+        "healthCheckWindow": "00:02:00",
+        "healthCheckThreshold": 6,
+        "counterThreshold": 0.80
+    },
     "http": {
         "routePrefix": "api",
         "maxOutstandingRequests": 20,
@@ -108,7 +115,7 @@ Gibt an, wie viele Funktionsaufrufe aggregiert werden, wenn [Metriken für Appli
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |batchSize|1000|Maximale Anzahl der zu aggregierenden Anforderungen.| 
 |flushTimeout|00:00:30|Maximal zu aggregierender Zeitraum.| 
@@ -130,7 +137,7 @@ Steuert das [Stichprobenfeature in Application Insights](functions-monitoring.md
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |isEnabled|false|Aktiviert oder deaktiviert die Stichprobenentnahme.| 
 |maxTelemetryItemsPerSecond|5|Der Schwellenwert, bei dem die Stichprobenentnahme beginnt.| 
@@ -160,6 +167,30 @@ Gibt die Timeoutdauer für alle Funktionen an. Im Verbrauchstarif liegt der gül
     "functionTimeout": "00:05:00"
 }
 ```
+
+## <a name="healthmonitor"></a>healthMonitor
+
+Konfigurationseinstellungen für [Host Health Monitor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor) (Überwachung der Hostintegrität).
+
+```
+{
+    "healthMonitor": {
+        "enabled": true,
+        "healthCheckInterval": "00:00:10",
+        "healthCheckWindow": "00:02:00",
+        "healthCheckThreshold": 6,
+        "counterThreshold": 0.80
+    }
+}
+```
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------| 
+|Aktiviert|true|Gibt an, ob die Funktion aktiviert ist. | 
+|healthCheckInterval|10 Sekunden|Das Zeitintervall zwischen den regelmäßigen Integritätsüberprüfungen im Hintergrund. | 
+|healthCheckWindow|2 Minuten|Ein variables Zeitfenster, das in Zusammenhang mit der `healthCheckThreshold`-Einstellung verwendet wird.| 
+|healthCheckThreshold|6|Maximale Anzahl von fehlerhaften Integritätsüberprüfungen, bevor ein Neustart des Hosts initiiert wird.| 
+|counterThreshold|0,80|Der Schwellenwert, an dem ein Leistungsindikator als fehlerhaft betrachtet wird.| 
 
 ## <a name="http"></a>http
 
@@ -196,7 +227,7 @@ Steuerelemente, die nach Protokollen filtern, die von einem [ILogger-Objekt](fun
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |categoryFilter|–|Gibt die Filterung nach Kategorie an.| 
 |defaultLevel|Information|Für alle nicht im `categoryLevels`-Array angegebenen Kategorien, werden Protokolle auf dieser und darüber liegenden Ebenen an Application Insights gesendet.| 
@@ -218,7 +249,7 @@ Konfigurationseinstellungen für [Trigger und Bindungen der Speicherwarteschlang
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |maxPollingInterval|60000|Das maximale Intervall in Millisekunden zwischen Warteschlangenumfragen.| 
 |visibilityTimeout|0|Das Zeitintervall zwischen Wiederholungsversuchen, wenn bei der Verarbeitung einer Nachricht ein Fehler auftritt.| 
@@ -247,7 +278,7 @@ Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informati
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Der Zeitraum, für den Sperren auf Funktionsebene gelten. Die Sperren werden automatisch verlängert.| 
 |listenerLockPeriod|00:01:00|Der Zeitraum, für den Listenersperren gelten.| 
@@ -268,7 +299,7 @@ Konfigurationseinstellungen für Protokolle, die Sie mithilfe eines `TraceWriter
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |consoleLevel|info|Die Ablaufverfolgungsebene für die Konsolenprotokollierung. Optionen sind: `off`, `error`, `warning`, `info` und `verbose`.|
 |fileLoggingMode|debugOnly|Die Ablaufverfolgungsebene für die Dateiprotokollierung. Optionen sind `never`, `always`, `debugOnly`.| 

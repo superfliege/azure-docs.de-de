@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: f7e6d4275940174074c1758a5b73030e0b3f107c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fe24db4e573ef9c9daf34bb8069c7a1e57616ffb
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-cerner-central-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung
+# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung
 
 Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Cerner Central und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Cerner Central in einem Cerner User Roster automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben. 
 

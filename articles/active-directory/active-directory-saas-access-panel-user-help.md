@@ -1,6 +1,6 @@
 ---
-title: "Hilfe zum Portal „Meine Apps“ in Azure Active Directory | Microsoft-Dokumentation"
-description: Hier finden Sie eine Anleitung zu allgemeinen Aufgaben im Zugriffsbereich.
+title: "Hilfe bei Zugriff und Verwendung des Portals „Meine Apps“ in Azure Active Directory | Microsoft-Dokumentation"
+description: "Hier erhalten Sie Hilfe beim Anmelden beim Zugriffsbereich und beim Ausführen häufiger Aufgaben."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,123 +15,109 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 9bec51e1d49308baecc76143ec80902d2da418e8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 285ee0c4e7f963c372c4f95face73864ba2a4f68
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="do-you-need-help-with-the-my-apps-portal"></a>Hilfe zum Portal „Meine Apps“ in Azure Active Directory
+# <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Behandeln von Problemen bei Zugriff und Verwendung des Portals „Meine Apps“
 
-Wahrscheinlich haben Sie diese Seite aufgerufen, weil Sie leider bei der Nutzung des Portals „Meine Apps“ auf ein Problem gestoßen sind. In manchen Fällen ist es nötig, den Helpdesk oder Ihren Administrator um Hilfe bei der Problemlösung zu bitten. Vielleicht finden Sie aber auch in den nachstehenden Abschnitten eine Lösung.
+Wenn Sie Probleme damit haben, sich beim Meine Apps-Portal anzumelden oder das Portal zu verwenden, versuchen Sie diese Problembehandlungstipps, bevor Sie sich an den Helpdesk oder Ihren Administrator wenden.
 
 ## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>Ich habe Probleme bei der Anmeldung im Portal „Meine Apps“
 
-Führen Sie Folgendes aus:
+Probieren Sie diese allgemeinen Tipps aus:
 
-- Überprüfen Sie, ob Sie sich über die richtige URL anmelden: [https://myapps.microsoft.com](https://myapps.microsoft.com)
-
+- Überprüfen Sie zuerst, ob Sie die richtige URL verwenden: [https://myapps.microsoft.com](https://myapps.microsoft.com).
 - Fügen Sie die URL in Ihrem Browser zu den vertrauenswürdigen Seiten hinzu.
-
-- Vergewissern Sie sich, dass Sie Ihr Kennwort kennen und es nicht abgelaufen ist. Weitere Informationen zu Aktualisieren Ihres Kennwort finden Sie [hier](active-directory-passwords-update-your-own-password.md).
-
-- Überprüfen Sie, ob Ihre Kontaktinformationen für die Authentifizierung korrekt sind und den Zugriff nicht blockieren. Weitere Informationen zum Einrichten der Authentifizierungsinformationen finden Sie [hier](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user).
-
+- Stellen Sie sicher, dass Ihr Kennwort richtig und nicht abgelaufen ist. Weitere Informationen finden Sie unter [Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos](active-directory-passwords-update-your-own-password.md).
+- Überprüfen Sie, ob Ihre Kontaktinformationen für die Authentifizierung richtig sind und den Zugriff nicht blockieren. Weitere Informationen finden Sie unter [Was ist Azure Multi-Factor Authentication?](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user).
 - Löschen Sie in Ihrem Browser die Cookies und versuchen Sie dann noch einmal, sich anzumelden.
 
-Wenn beim Anmelden weiterhin Probleme auftreten, wenden Sie sich bitte an Ihren Administrator.
+Wenn beim Anmelden weiterhin Probleme auftreten, wenden Sie sich an Ihren Administrator.
 
 
-## <a name="how-do-i-update-my-password"></a>Wie kann ich mein Kennwort aktualisieren?
+## <a name="i-seem-to-be-having-password-issues"></a>Ich habe anscheinend ein Problem mit dem Kennwort
 
-Falls Sie Ihr Kennwort ändern möchten, es vergessen oder nie von der IT-Abteilung erhalten haben oder aus Ihrem Konto ausgesperrt wurden, finden Sie unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md) weitere Informationen.
+Falls Sie Ihr Kennwort ändern möchten, es vergessen oder nie von der IT-Abteilung erhalten haben oder aus Ihrem Konto ausgesperrt wurden, finden Sie unter [Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos](active-directory-passwords-update-your-own-password.md) weitere Informationen.
 
-## <a name="how-do-i-register-for-password-reset"></a>Wie registrierte ich mich für die Zurücksetzung meines Kennworts?
+## <a name="i-need-to-register-for-password-reset"></a>Ich muss mich für die Kennwortzurücksetzung registrieren
 
-Endbenutzer können mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) selbstständig ihr Kennwort zurücksetzen oder ihr Konto entsperren. Um diese Funktion verwenden zu können, müssen Sie zunächst Authentifizierungsmethoden registrieren oder die vordefinierten Authentifizierungsmethoden bestätigen, die Ihr Administrator angegeben hat. Weitere Informationen finden Sie unter [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md).
+Sie können mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) selbstständig Ihr Kennwort zurücksetzen oder Ihr Konto entsperren. Um diese Funktion verwenden zu können, müssen Sie zunächst Ihre Authentifizierungsmethoden registrieren oder die vordefinierten Authentifizierungsmethoden bestätigen, die Ihr Administrator als erforderlich angegeben hat. Weitere Informationen finden Sie unter [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md).
 
 
 ## <a name="i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Ich habe Probleme bei der Installation der Erweiterung zur sicheren Anmeldung bei „Meine Apps“.
 
-Überprüfen Sie, ob Sie den erforderlichen Browser verwenden:
+Das Meine Apps-Portal erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Wenn Sie kennwortbasierte Apps für einmaliges Anmelden verwenden, muss die dazugehörige Browsererweiterung auch installiert werden. Diese Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung starten, die für kennwortbasierte Apps mit einmaligem Anmelden konfiguriert ist.
 
-- Für das Portal benötigen Sie einen Browser der JavaScript unterstützt und in dem CSS aktiviert ist. Wenn Sie kennwortbasierte Apps für einmaliges Anmelden verwenden, muss die dazugehörige Browsererweiterung auch installiert werden. Diese Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung starten, die für kennwortbasierte Apps für einmaliges Anmelden konfiguriert ist.
+Stellen Sie sicher, dass folgende Browseranforderungen erfüllt sind:
+- **Edge**: unter Windows 10 Anniversary Edition oder höher.
+- **Chrome**: unter Windows 7 oder höher und Mac OS X oder höher.
+- **Firefox 26.0 oder höher**: unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher.
+- **Internet Explorer 8, 9, 10, 11**: unter Windows 7 oder höher (eingeschränkte Unterstützung).
 
-- Die Erweiterung erfordert folgenden Browser:
-    - Edge unter Windows 10 Anniversary Edition oder höher
-    - Chrome unter Windows 7 oder höher und macOS X oder höher
-    - Firefox 26.0 oder höher unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
-    - Internet Explorer 8, 9, 10, 11 unter Windows 7 oder höher (eingeschränkte Unterstützung)
-
-Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgenden Links herunterladen:
+Sie können die Erweiterung für Chrome und Edge auch direkt von den folgenden Websites herunterladen:
 
 - [Chrome-Erweiterung](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-
 - [Edge-Erweiterung](https://www.microsoft.com/store/apps/9pc9sckkzk84)
 
-Wenn nach der Installation Probleme auftreten, führen Sie die folgenden Schritte aus:
+Wenn Sie die Erweiterung installiert haben und dennoch weiterhin Probleme auftreten, versuchen Sie Folgendes:
 
-- Prüfen Sie in den Einstellungen Ihres Browsers, ob die Erweiterung auch wirklich installiert wurde.
+- Prüfen Sie in den Browsereinstellungen für Erweiterungen, ob die Erweiterung aktiviert wurde.
+- Starten Sie Ihren Browser neu, und melden Sie sich beim Portal „Meine Apps“ an.
+- Löschen Sie die Cookies in Ihrem Browser, und melden Sie sich beim Portal „Meine Apps“ an.
+- Unter [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) erhalten Sie Zugriff auf ein Diagnosetool sowie Schrittanleitungen zum Konfigurieren der Erweiterung für Internet Explorer.
 
-- Starten Sie Ihren Browser neu und melden Sie sich im Portal „Meine Apps“ an.
+## <a name="use-the-my-apps-secure-sign-in-extension"></a>Verwenden der Erweiterung zur sicheren Anmeldung bei „Meine Apps“
+* Wenn Sie eine andere Meine Apps-URL als `https://myapps.microsoft.com` verwenden, gehen Sie folgendermaßen vor, um Ihre Standard-URL zu konfigurieren:
+   1. Klicken Sie mit der rechten Maustaste auf das Symbol für die Erweiterung, *ohne* bei der Erweiterung angemeldet zu sein.
+   2. Wählen Sie im Menü den Eintrag **Meine Apps-URL**.
+   3. Wählen Sie Ihre Standard-URL aus.
+   4. Wählen Sie das Symbol für die Erweiterung aus.
+   5. Um sich bei der Erweiterung anzumelden, wählen Sie **Melden Sie sich an, um loszulegen** aus.
 
-- Löschen Sie über Ihren Browser die Cookies und melden Sie sich im Portal „Meine Apps“ an.
-- Befolgen Sie die Anleitung [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting), um Zugriff auf ein Diagnosetool und Schritt-für-Schritt-Anweisungen zum Konfigurieren der Erweiterung für Internet Explorer zu erhalten.
+* Um sich im Browser direkt bei einer App anzumelden, gehen Sie folgendermaßen vor:
+   1. Melden Sie sich nach der Installation bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
+   2. Melden Sie sich mit der Anmelde-URL bei der App an.  
+       Bei der Anmelde-URL handelt es sich üblicherweise um die URL, mit der das Anmeldeformular einer App angezeigt wird.
+      Der Status der Erweiterung sollte sich ändern und Sie darüber informiert werden, dass ein Kennwort verfügbar ist.
+   3. Wählen Sie das Symbol für die Erweiterung aus, um sich anzumelden.
 
-## <a name="how-do-i-use-the-my-apps-secure-sign-in-extension"></a>Wie verwende ich die Erweiterung zur sicheren Anmeldung bei „Meine Apps“?
-Ändern der Standard-URL von „Meine Apps“ für die Erweiterung
-
-Bei Verwendung einer anderen URL von „Meine Apps“ als https://myapps.microsoft.com müssen Sie die Standard-URL durch Ausführen der folgenden Schritte konfigurieren:
-1. **Klicken Sie mit der rechten Maustaste** auf das Symbol für die Erweiterung, ohne bei der Erweiterung angemeldet zu sein.
-2. Klicken Sie im Menü auf **Meine Apps-URL auswählen**.
-3. **Wählen Sie** Ihre Standard-URL aus.
-4. Klicken Sie auf das Symbol für die Erweiterung.
-5. Melden Sie sich bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
-
-Direktes Anmelden bei einer App über den Browser
-1. Melden Sie sich nach der Installation der Erweiterung bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
-2. Navigieren Sie zu der **Anmelde-URL** der App, bei der Sie sich anmelden möchten. Dies ist in der Regel die URL der App, die das Anmeldeformular anzeigt.
-3. Der Status der Erweiterung sollte sich ändern, sodass Sie darüber informiert werden, dass ein Kennwort verfügbar ist. Klicken Sie auf das **Symbol für die Erweiterung**, um sich anzumelden.
-
-Starten einer App über die Erweiterung
-1. Melden Sie sich nach der Installation der Erweiterung bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
-2. Klicken Sie auf das Symbol für die Erweiterung, um das zugehörige Menü zu öffnen.
-3. **Suchen** Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
-4. Klicken Sie in den **Suchergebnissen** auf die App, um sie zu starten.
-5. In der Verknüpfungsliste **Zuletzt verwendet** werden auch die letzten drei gestarteten Apps angezeigt.
+* Gehen Sie wie folgt vor, um eine App aus der Erweiterung zu starten:
+   1. Melden Sie sich nach der Installation bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
+   2. Wählen Sie das Symbol für die Erweiterung aus, um das zugehörige Menü zu öffnen.
+   3. Suchen Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
+   4. Wählen Sie die App aus den Suchergebnissen aus.  
+       In der Verknüpfungsliste **Zuletzt verwendet** werden die letzten drei verwendeten Apps angezeigt.
 
 > [!NOTE]
 > Diese Optionen sind nur für Edge, Chrome und Firefox verfügbar.
 
 ## <a name="how-do-i-add-a-new-app"></a>Wie füge ich eine neue App hinzu?
 
-1.  Klicken Sie auf der Seite **Apps** auf **App hinzufügen**.
+1.  Wählen Sie auf der Seite **Apps** den Eintrag **App hinzufügen** aus.
+2.  Suchen Sie nach der App, die Sie hinzufügen möchten, und wählen Sie **Hinzufügen** aus.
 
-2.  Suchen Sie nach der App, die Sie hinzufügen möchten, und klicken Sie auf **Hinzufügen**.
-
-**Hinweise:**
-
-- Sie haben nur dann Zugriff auf diese Option, wenn Ihr Administrator dies für Ihr Konto aktiviert hat.
-
-- Falls die App eine Berechtigung erfordert, ist unter Umständen eine Administratorgenehmigung erforderlich.
-
+   > [!NOTE]
+   > * Sie können nur dann auf diese Option zugreifen, wenn Ihr Administrator sie für Ihr Konto aktiviert hat.
+   > * Wenn die App eine Berechtigung erfordert, müssen Sie unter Umständen auf eine Administratorgenehmigung warten.
+   > 
 
 ## <a name="how-do-i-manage-my-group-memberships"></a>Wie verwalte ich meine Gruppenmitgliedschaften?
 
-1. Klicken Sie auf die Kachel **Gruppen**. 
-2. Klicken Sie zum Erstellen einer Gruppe unter „Gruppen in meinem Besitz“ auf **Gruppe erstellen**, und folgen Sie den Anweisungen.
-3. Um einer Gruppe beizutreten, klicken Sie unter „Gruppen in meinem Besitz“ auf **Gruppe beitreten**, und befolgen Sie die Anweisungen.
+Wählen Sie die Kachel **Gruppen** aus, und führen Sie eine der folgenden Aktionen aus: 
+* Wählen Sie zum Erstellen einer Gruppe unter **Gruppen in meinem Besitz** die Option **Gruppe erstellen** aus, und folgen Sie den Anweisungen.
+* Um einer Gruppe beizutreten, klicken Sie unter **Meine Gruppenmitgliedschaften** auf **Gruppe beitreten**, und befolgen Sie die Anweisungen.
 
-**Hinweise:**
-
-- Sie haben nur dann Zugriff auf diese Option, wenn Ihr Administrator dies für Ihr Konto aktiviert hat.
-
-- Zu einer Gruppe, in der Sie Mitglied sind, lassen sich Details anzeigen und Sie können aus ihr austreten.
-
-- Bei Gruppen, die sich in Ihrem Besitz befinden, lassen sich Details anzeigen. Darüber hinaus lassen sich Mitglieder hinzufügen und entfernen und Sie können aus der Gruppe austreten.
+   > [!NOTE]
+   > * Sie können nur dann auf diese Option zugreifen, wenn Ihr Administrator sie für Ihr Konto aktiviert hat.
+   > * Wenn Sie Mitglied einer Gruppe sind, können Sie Details anzeigen und die Gruppe verlassen.
+   > * Wenn Sie Besitzer einer Gruppe sind, können Sie Details anzeigen, Mitglieder hinzufügen/entfernen und die Gruppe verlassen.
+   >
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Problembehandlung finden Sie unter [Probleme bei der Verwendung der Website mit dem Anwendungszugriffsbereich oder der mobilen Anwendung](active-directory-application-access-panel-content-map.md).
+Weitere Informationen zur Problembehandlung finden Sie unter [Probleme bei der Verwendung der Website mit dem Anwendungszugriffsbereich oder der mobilen Anwendung](active-directory-application-access-panel-content-map.md).
 

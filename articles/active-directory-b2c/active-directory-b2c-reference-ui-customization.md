@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: be3fe7199308606aaab002290319df9c82149433
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a9136ebd15a995361a325804ca81ece0db30b3e6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
 
@@ -38,7 +38,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 
 ## <a name="the-page-ui-customization-feature"></a>Das Anpassungsfeature für die Seiten-UI
 
-Sie können das Aussehen und Verhalten der Seiten für die Registrierung, Anmeldung, Kennwortzurücksetzung und Profilbearbeitung von Kunden (durch Konfigurieren von [Richtlinien](active-directory-b2c-reference-policies.md)) anpassen. Beim Navigieren zwischen der Anwendung und den Seiten, die von Azure AD B2C bereitgestellt werden, wird Kunden eine nahtlose Benutzeroberfläche geboten.
+Sie können das Aussehen und Verhalten der Seiten für die Registrierung, Anmeldung (siehe obigen Hinweis zu Ausnahmen im Zusammenhang mit Branding), Kennwortzurücksetzung und Profilbearbeitung von Kunden (durch Konfigurieren von [Richtlinien](active-directory-b2c-reference-policies.md)) anpassen. Beim Navigieren zwischen der Anwendung und den Seiten, die von Azure AD B2C bereitgestellt werden, wird Kunden eine nahtlose Benutzeroberfläche geboten.
 
 Im Gegensatz zu anderen Diensten mit Benutzeroberflächenoptionen befolgt Azure AD B2C einen einfachen und modernen Ansatz zur Anpassung der Benutzeroberfläche.
 

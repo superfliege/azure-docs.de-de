@@ -1,125 +1,251 @@
 ---
-title: "Erstellen eines Anwendungsgateways mit URL-Routingregeln – Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Diese Seite enthält Anweisungen zum Erstellen und Konfigurieren eines Anwendungsgateways mit URL-Routingregeln."
-documentationcenter: na
+title: "Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle Routingregeln auf URL-Pfadbasis für ein Anwendungsgateway und eine VM-Skalierungsgruppe erstellen."
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 10d01d5d80e2d111d6b39598eed3612f80162b23
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0593e37def43770efad7e07b306d8290b0590a48
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-an-application-gateway-by-using-path-based-routing-with-azure-cli-20"></a>Erstellen eines Anwendungsgateways mit pfadbasiertem Routing mit der Azure CLI 2.0
+# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-create-url-route-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
-> * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
+Sie können mit der Azure-Befehlszeilenschnittstelle [Routingregeln auf URL-Pfadbasis](application-gateway-url-route-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial erstellen Sie Back-End-Pools mithilfe einer [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Anschließend erstellen Sie Routingregeln, die sicherstellen, dass Webdatenverkehr an die richtigen Server in den Pools gesendet wird.
 
-Mit Routing auf URL-Pfadbasis ordnen Sie Routen basierend auf dem URL-Pfad der HTTP-Anforderung zu. Es wird überprüft, ob eine Route zu einem Back-End-Serverpool für die URL konfiguriert ist, die im Anwendungsgateway aufgeführt wird, und der Netzwerkdatenverkehr wird dann an den definierten Pool gesendet. Ein gängiges Szenario für Routing auf URL-Pfadbasis ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-Azure Application Gateway nutzt zwei Regeltypen: Basisregeln und Regeln auf URL-Pfadbasis. Der Basisregeltyp stellt einen Roundrobin-Dienst für die Back-End-Pools bereit. Pfadbasierte Regeln nutzen für die Auswahl des entsprechenden Back-End-Pools zusätzlich zur Roundrobin-Verteilung das Pfadmuster der Anforderungs-URL.
+> [!div class="checklist"]
+> * Einrichten des Netzwerks
+> * Erstellen eines Anwendungsgateways mit URL-Zuordnung
+> * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
 
-## <a name="scenario"></a>Szenario
+![URL-Routingbeispiel](./media/application-gateway-create-url-route-cli/scenario.png)
 
-Im folgenden Beispiel verarbeitet das Anwendungsgateway Datenverkehr für „contoso.com“ mit zwei Back-End-Serverpools: einem Standardserverpool und einem Imageserverpool.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Anforderungen für „http://contoso.com/image*“ werden an den Imageserverpool (**imagesBackendPool**) geleitet. Wenn die Pfadmuster nicht übereinstimmen, wählt das Anwendungsgateway den Standardserverpool (**appGatewayBackendPool**).
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-![URL-Route](./media/application-gateway-create-url-route-cli/scenario.png)
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Öffnen Sie die **Microsoft Azure-Eingabeaufforderung**, und melden Sie sich an:
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe.
 
-```azurecli
-az login -u "username"
+Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroupAG* am Standort *eastus*.
+
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
 ```
 
-> [!NOTE]
-> Sie können `az login` auch ohne die Option für die Geräteanmeldung verwenden, die die Eingabe eines Codes unter „aka.ms/devicelogin“ erfordert.
+## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Nach Eingabe des obigen Befehls erhalten Sie einen Code. Navigieren Sie in einem Browser zu https://aka.ms/devicelogin, und setzen Sie den Anmeldeprozess fort.
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
-![Cmd mit Geräteanmeldung][1]
+```azurecli-interactive
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myAGSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myBackendSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
 
-Geben Sie im Browser den Code ein, den Sie erhalten haben. Dadurch werden Sie zu einer Anmeldeseite umgeleitet.
+## <a name="create-the-application-gateway-with-url-map"></a>Erstellen des Anwendungsgateways mit URL-Zuordnung
 
-![Browser zur Eingabe des Codes][2]
+Sie können [az network application-gateway create](/cli/azure/application-gateway#create) verwenden, um ein Anwendungsgateway namens *myAppGateway* zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myAGPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben. 
 
-Geben Sie den Code ein, um sich anzumelden, und schließen Sie dann den Browser, um den Vorgang fortzusetzen.
+```azurecli-interactive
+az network application-gateway create \
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --subnet myAGsubnet \
+  --capacity 2 \
+  --sku Standard_Medium \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 80 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --public-ip-address myAGPublicIPAddress
+```
 
-![Erfolgreich angemeldet][3]
+ Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt ist. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
-## <a name="add-a-path-based-rule-to-an-existing-application-gateway"></a>Hinzufügen einer pfadbasierten Regel zu einem vorhandenen Anwendungsgateway
+- *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
+- *appGatewayBackendHttpSettings*: Gibt an, dass für die Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
+- *appGatewayHttpListener*: Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
+- *appGatewayFrontendIP*: Weist *appGatewayHttpListener* die Adresse *myAGPublicIPAddress* zu.
+- *rule1*: Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
 
-Die folgenden Schritte veranschaulichen das Hinzufügen einer pfadbasierten Regel zu einem vorhandenen Anwendungsgateway.
-### <a name="create-a-new-back-end-pool"></a>Erstellen eines neuen Back-End-Pools
 
-Konfigurieren Sie die Anwendungsgatewayeinstellung **imagesBackendPool** für den Netzwerkdatenverkehr mit Lastenausgleich im Back-End-Pool. In diesem Beispiel konfigurieren Sie verschiedene Back-End-Pool-Einstellungen für den neuen Back-End-Pool. Jeder Back-End-Pool kann eigene Einstellung aufweisen. Pfadbasierte Regeln verwenden Back-End-HTTP-Einstellungen, um Datenverkehr an die richtigen Mitglieder des Back-End-Pools weiterzuleiten. Die Einstellungen bestimmen das Protokoll und den Port, das bzw. der beim Senden von Datenverkehr an die Mitglieder des Back-End-Pools verwendet wird. Die Back-End-HTTP-Einstellungen steuern auch cookiebasierte Sitzungen.  Im aktivierten Zustand sendet die cookiebasierte Sitzungsaffinität Datenverkehr an das gleiche Back-End wie vorherige Anforderungen für das jeweilige Paket.
+### <a name="add-image-and-video-backend-pools-and-port"></a>Hinzufügen von Back-End-Pools und Port für Images und Videos
+
+Sie können Back-End-Pools namens *imagesBackendPool* und *videoBackendPool* zu Ihrem Anwendungsgateway hinzufügen. Verwenden Sie dazu [az network application-gateway address-pool create](/cli/azure/application-gateway#az_network_application_gateway_address-pool_create). Den Front-End-Port für die Pools fügen Sie mit [az network application-gateway frontend-port create](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create) hinzu. 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
---gateway-name AdatumAppGateway \
---name imagesBackendPool  \
---resource-group myresourcegroup \
---servers 10.0.0.6 10.0.0.7
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --name imagesBackendPool
+az network application-gateway address-pool create \
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --name videoBackendPool
+az network application-gateway frontend-port create \
+  --port 8080 \
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --name port8080
 ```
 
-### <a name="create-a-new-front-end-port-for-an-application-gateway"></a>Erstellen eines neuen Front-End-Ports für ein Anwendungsgateway
+### <a name="add-backend-listener"></a>Hinzufügen eines Back-End-Listeners
 
-Das Front-End-Port-Konfigurationsobjekt wird von einen Listener verwendet, um den Port zu definieren, an dem das Anwendungsgateway auf Datenverkehr des Listeners lauscht.
+Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) den Back-End-Listener namens *backendListener* hinzu, der zum Weiterleiten von Datenverkehr erforderlich ist.
+
 
 ```azurecli-interactive
-az network application-gateway frontend-port create --port 82 --gateway-name AdatumAppGateway --resource-group myresourcegroup --name port82
+az network application-gateway http-listener create \
+  --name backendListener \
+  --frontend-ip appGatewayFrontendIP \
+  --frontend-port port8080 \
+  --resource-group myResourceGroupAG \
+  --gateway-name myAppGateway
 ```
 
-### <a name="create-a-new-listener"></a>Erstellen eines neuen Listeners
+### <a name="add-url-path-map"></a>Hinzufügen einer URL-Pfadzuordnung
 
-Dieser Schritt konfiguriert den Listener für die öffentliche IP-Adresse und den Port zum Empfangen von eingehendem Netzwerkverkehr. Im folgenden Beispiel wird der Listener mit der zuvor konfigurierten Front-End-IP- und Front-End-Portkonfiguration sowie mit einem Protokoll (http oder https, jeweils mit Beachtung der Groß-/Kleinschreibung) konfiguriert. In diesem Beispiel lauscht der Listener an Port 82 auf HTTP-Datenverkehr für die zuvor in diesem Szenario erstellte öffentliche IP-Adresse.
-
-```azurecli-interactive
-az network application-gateway http-listener create --name imageListener --frontend-ip appGatewayFrontendIP  --frontend-port port82 --resource-group myresourcegroup --gateway-name AdatumAppGateway
-```
-
-### <a name="create-the-url-path-map"></a>Erstellen der URL-Pfadzuordnung
-
-Dieser Schritt konfiguriert den relativen URL-Pfad, der vom Anwendungsgateway verwendet wird, um die Zuordnung zwischen dem Pfad und dem Back-End-Pool zu definieren, der zum Verarbeiten des eingehenden Datenverkehrs zugewiesen wurde.
-
-> [!IMPORTANT]
-> Jeder Pfad muss mit einem Schrägstrich (/) beginnen, und ein Sternchen ist nur am Ende zulässig. Gültige Beispiele sind „/xyz“, „/xyz*“ oder „/xyz/*“. Die Zeichenfolge, die in den Pfadabgleicher eingegeben wird, enthält keinen Text nach dem ersten „?“ oder „#“, und diese Zeichen sind nicht zulässig. 
-
-Im folgenden Beispiel wird eine Regel für den Pfad „/images/*“ erstellt, um Datenverkehr an das Back-End **imagesBackendPool** zu leiten. Diese Regel stellt sicher, dass der Datenverkehr für jeden Satz URLs an das Back-End weitergeleitet wird. Beispiel: „http://adatum.com/images/figure1.jpg“ wird an **imagesBackendPool** weitergeleitet. Die Konfiguration der Regelpfadzuordnung konfiguriert auch dann einen Standard-Back-End-Adresspool, wenn der Pfad keiner der vordefinierten Pfadregeln entspricht. Beispiel: „http://adatum.com/shoppingcart/test.html“ wird an **pool1** weitergeleitet, da dieser als Standardpool für nicht übereinstimmenden Datenverkehr definiert wurde.
+URL-Pfadzuordnungen stellen sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Sie können mithilfe der Befehle [az network application-gateway url-path-map create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_create) und [az network application-gateway url-path-map rule create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_rule_create) die URL-Pfadzuordnungen *imagePathRule* und *videoPathRule* hinzufügen.
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
---gateway-name AdatumAppGateway \
---name imagespathmap \
---paths /images/* \
---resource-group myresourcegroup2 \
---address-pool imagesBackendPool \
---default-address-pool appGatewayBackendPool \
---default-http-settings appGatewayBackendHttpSettings \
---http-settings appGatewayBackendHttpSettings \
---rule-name images
+  --gateway-name myAppGateway \
+  --name myPathMap \
+  --paths /images/* \
+  --resource-group myResourceGroupAG \
+  --address-pool imagesBackendPool \
+  --default-address-pool appGatewayBackendPool \
+  --default-http-settings appGatewayBackendHttpSettings \
+  --http-settings appGatewayBackendHttpSettings \
+  --rule-name imagePathRule
+az network application-gateway url-path-map rule create \
+  --gateway-name myAppGateway \
+  --name videoPathRule \
+  --resource-group myResourceGroupAG \
+  --path-map-name myPathMap \
+  --paths /video/* \
+  --address-pool videoBackendPool
 ```
+
+### <a name="add-routing-rule"></a>Hinzufügen einer Routingregel
+
+Die Routingregel ordnet die URL-Zuordnungen dem von Ihnen erstellten Listener zu. Sie können mit dem Befehl [az network application-gateway rule create](/cli/azure/application-gateway#az_network_application_gateway_rule_create) die Regel *rule2* hinzufügen.
+
+```azurecli-interactive
+az network application-gateway rule create \
+  --gateway-name myAppGateway \
+  --name rule2 \
+  --resource-group myResourceGroupAG \
+  --http-listener backendListener \
+  --rule-type PathBasedRouting \
+  --url-path-map myPathMap \
+  --address-pool appGatewayBackendPool
+```
+
+## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
+
+In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1*, *myvmss2* und *myvmss3* genannt. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie NGINX installieren.
+
+```azurecli-interactive
+for i in `seq 1 3`; do
+  if [ $i -eq 1 ]
+  then
+    poolName="appGatewayBackendPool" 
+  fi
+  if [ $i -eq 2 ]
+  then
+    poolName="imagesBackendPool"
+  fi
+  if [ $i -eq 3 ]
+  then
+    poolName="videoBackendPool"
+  fi
+  az vmss create \
+    --name myvmss$i \
+    --resource-group myResourceGroupAG \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password Azure123456! \
+    --instance-count 2 \
+    --vnet-name myVNet \
+    --subnet myBackendSubnet \
+    --vm-sku Standard_DS2 \
+    --upgrade-policy-mode Automatic \
+    --app-gateway myAppGateway \
+    --backend-pool-name $poolName
+done
+```
+
+### <a name="install-nginx"></a>Installieren von NGINX
+
+```azurecli-interactive
+for i in `seq 1 3`; do
+  az vmss extension set \
+    --publisher Microsoft.Azure.Extensions \
+    --version 2.0 \
+    --name CustomScript \
+    --resource-group myResourceGroupAG \
+    --vmss-name myvmss$i \
+    --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+done
+```
+
+## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
+
+Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm* oder *http://40.121.222.19:8080/video/test.htm*.
+
+```azurepowershell-interactive
+az network public-ip show \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
+```
+
+![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
+
+Ändern Sie die URL zu „http://<IP-Adresse>:8080/video/test.html“. Die Ausgabe sollte in etwa wie folgt aussehen:
+
+![Testen der Images-URL im Anwendungsgateway](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
+
+Ändern Sie die URL zu „http://<IP-Adresse>:8080/video/test.htm“. Die Ausgabe sollte in etwa wie folgt aussehen:
+
+![Testen der Video-URL im Anwendungsgateway](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur SSL-Auslagerung (Secure Sockets Layer) finden Sie unter [Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung](application-gateway-ssl-cli.md).
+In diesem Tutorial haben Sie Folgendes gelernt:
 
+> [!div class="checklist"]
+> * Einrichten des Netzwerks
+> * Erstellen eines Anwendungsgateways mit URL-Zuordnung
+> * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
 
-[scenario]: ./media/application-gateway-create-url-route-cli/scenario.png
-[1]: ./media/application-gateway-create-url-route-cli/figure1.png
-[2]: ./media/application-gateway-create-url-route-cli/figure2.png
-[3]: ./media/application-gateway-create-url-route-cli/figure3.png
+Weitere Informationen zu Anwendungsgateways und den zugehörigen Ressourcen finden Sie in den Artikeln mit empfohlenen Vorgehensweisen.

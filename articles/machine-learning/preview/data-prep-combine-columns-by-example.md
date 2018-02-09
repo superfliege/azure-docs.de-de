@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: dc3870e81edd47a9932db86d347290451c4f1eb8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 528d7ff5f74948fd1ae7b829d4b2fc38fa2f1109
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>Transformation „Spalten nach Beispiel kombinieren“
-Diese Transformation ermöglicht Benutzern das Hinzufügen einer neuen Spalte, indem Werte aus mehreren Spalten kombiniert werden. Der Benutzer kann zum Ausführen dieser Transformation ein Trennzeichen oder Beispiele für kombinierte Werte angeben. Wenn der Benutzer Beispiele für Kombinationen angibt, wird die Transformation von demselben **By-Example**-Modul verarbeitet, das bei der Transformation **Spalten nach Beispiel ableiten** verwendet wurde.
+Diese Transformation ermöglicht Benutzern das Hinzufügen einer neuen Spalte, indem Werte aus mehreren Spalten kombiniert werden. Der Benutzer kann zum Ausführen dieser Transformation ein Trennzeichen oder Beispiele für kombinierte Werte angeben. Wenn der Benutzer Beispiele für Kombinationen angibt, wird die Transformation von derselben **By-Example**-Engine verarbeitet, das bei der Transformation **Spalten nach Beispiel ableiten** verwendet wurde.
 
 ## <a name="how-to-perform-this-transformation"></a>Vorgehensweise zum Durchführen dieser Transformation
 
@@ -37,6 +37,10 @@ Durch die Auswahl von **Trennzeichen** unter **Spalten kombinieren nach** könne
 Durch Auswahl von **Beispiele** unter **Spalten kombinieren nach** können Benutzer Beispiele für kombinierte Werte angeben. Um ein Beispiel für eine Zeile anzuzeigen, doppelklicken Sie auf die Zeilen im Raster. Geben Sie die erwartete Ausgabe in das Textfeld für die höher gestufte Zeile ein. Schließen Sie das Textfeld **Trennzeichen**, um eine Vorschau der Ergebnisse im Datenraster anzuzeigen. Klicken Sie auf **OK**, um einen Commit für die Transformation auszuführen. 
 
 Benutzer können zwischen dem einfachen Modus (**Basic Mode**) und dem erweiterten Modus (**Advanced Mode**) umschalten, indem sie im Editor für Transformationen auf die entsprechenden Links klicken.
+
+### <a name="transform-editor-send-feedback"></a>Editor für Transformationen: Senden von Feedback
+
+Durch Klicken auf den Link **Feedback senden** wird das Dialogfeld **Feedback** angezeigt. Die Kommentarfelder enthalten bereits die vom Benutzer eingegebenen Beispiele. Benutzer sollten den Inhalt der Kommentarfelder überprüfen und weitere Details angeben, damit wir das Problem besser nachvollziehen können. Wenn Benutzer keine Daten an Microsoft senden möchten, müssen sie die ausgefüllten Beispieldaten entfernen, bevor sie auf die Schaltfläche **Feedback senden** klicken. 
 
 ### <a name="editing-existing-transformation"></a>Bearbeiten von vorhandenen Transformationen
 

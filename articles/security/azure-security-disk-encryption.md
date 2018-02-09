@@ -21,7 +21,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer
-Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z. B. die unterstützten Szenarien und die Benutzeroberflächen.
+Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z.B. die unterstützten Szenarien und die Benutzeroberflächen.
 
 > [!NOTE]
 > Einige Empfehlungen führen möglicherweise zu einer erhöhten Daten-, Netzwerk- oder Computeressourcenauslastung, was zusätzliche Lizenz- oder Abonnementkosten nach sich ziehen kann.
@@ -45,7 +45,7 @@ Die Azure Disk Encryption-Lösung unterstützt die folgenden Kundenszenarien:
 
 Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
 
-* Integration in Azure-Schlüsseltresor
+* Integration in Azure Key Vault
 * VMs im Tarif „Standard“: [IaaS-VMs der Reihe A, D, DS, F, G, GS usw.](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * Aktivieren der Verschlüsselung auf IaaS-VMs und VMs auf verwalteten Datenträgern unter Windows und Linux über Images aus dem unterstützten Azure-Katalog
 * Deaktivieren der Verschlüsselung auf Betriebssystem- und Datenlaufwerken für Windows-IaaS-VMs und VMs auf verwalteten Datenträgern
@@ -417,7 +417,7 @@ Die Azure-Plattform benötigt Zugriff auf die Verschlüsselungsschlüssel oder g
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName <yourVaultName> -ResourceGroupName <yourResourceGroup> -EnabledForDiskEncryption
 
-Sie können die **EnabledForDiskEncryption**-Eigenschaft auch über den [Azure Resource Explorer](https://resources.azure.com) festlegen.
+Sie können die **EnabledForDiskEncryption**-Eigenschaft auch über den [Azure-Ressourcen-Explorer](https://resources.azure.com) festlegen.
 
 Wie oben erwähnt, müssen Sie die **EnabledForDiskEncryption**-Eigenschaft für Ihren Schlüsseltresor festlegen. Andernfalls funktioniert die Bereitstellung nicht.
 
@@ -725,15 +725,15 @@ Auf Linux-VMs wird die Erweiterung „AzureDiskEncryptionForLinux“ verwendet.
 
 ### <a name="enable-encryption-on-pre-encrypted-iaas-vm-with-azure-managed-disk"></a>Aktivieren der Verschlüsselung auf vorverschlüsselten IaaS-VMs mit verwalteten Azure-Datenträgern
 Nutzen Sie die ARM-Vorlage für verwaltete Azure-Datenträger zum Erstellen einer verschlüsselten VM anhand einer vorverschlüsselten VHD mithilfe der ARM-Vorlage unter   
-[Create a new encrypted managed disk from a pre-encrypted VHD/storage blob] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+[Create a new encrypted managed disk from a pre-encrypted VHD/storage blob] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk) (Erstellen eines verwalteten Datenträgers aus einer vorverschlüsselten VHD bzw. einem Speicherblob)
 
 ### <a name="enable-encryption-on-a-new-linux-iaas-vm-with-azure-managed-disk"></a>Aktivieren der Verschlüsselung auf neuen Linux-IaaS-VMs mit verwalteten Azure-Datenträgern
 Nutzen Sie die ARM-Vorlage für verwaltete Azure-Datenträger zum Erstellen einer neuen verschlüsselten Linux-IaaS-VM mithilfe der ARM-Vorlage unter   
-[Deployment of RHEL 7.2 with full disk encryption] (https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
+[Deployment of RHEL 7.2 with full disk encryption] (https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel) (Bereitstellen von RHEL 7.2 mit vollständiger Datenträgerverschlüsselung)
 
 ### <a name="enable-encryption-on-a-new-windows-iaas-vm-with-azure-managed-disk"></a>Aktivieren der Verschlüsselung auf neuen Windows-IaaS-VMs mit verwalteten Azure-Datenträgern
  Nutzen Sie die ARM-Vorlage für verwaltete Azure-Datenträger zum Erstellen einer neuen verschlüsselten Windows-IaaS-VM mithilfe der ARM-Vorlage unter   
- [Create a new encrypted Windows IaaS Managed Disk VM from gallery image] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
+ [Create a new encrypted Windows IaaS Managed Disk VM from gallery image] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks) (Erstellen einer neuen verschlüsselten Windows-IaaS-VM mit einem verwalteten Datenträger aus einem Katalogimage)
 
   > [!NOTE]
   >Es ist obligatorisch, außerhalb von Azure Disk Encryption und vor der Aktivierung von Azure Disk Encryption eine Momentaufnahme bzw. Sicherung einer VM zu erstellen, die auf einem verwalteten Datenträger basiert.  Sie können über das Portal eine Momentaufnahme des verwalteten Datenträgers erstellen oder Azure Backup verwenden.  Mit Sicherungen ist dafür gesorgt, dass eine Wiederherstellungsoption verfügbar ist, falls während der Verschlüsselung ein unerwarteter Fehler auftritt.  Nach der Erstellung einer Sicherung kann das Set-AzureRmVMDiskEncryptionExtension-Cmdlet verwendet werden, um verwaltete Datenträger durch das Angeben des Parameters „-skipVmBackup“ zu verschlüsseln.  Dieser Befehl führt für VMs, die auf verwalteten Datenträgern basieren, zu einem Fehler, bis eine Sicherung erstellt und dieser Parameter angegeben wurde.    
@@ -865,9 +865,9 @@ Es gibt drei Möglichkeiten, den Fortschritt der Betriebssystemverschlüsselung 
     ```
  Wenn die VM den Status „OS disk encryption started“ erreicht hat, dauert der Vorgang auf einer VM mit Premium-Speicher ca. 40 bis 50 Minuten.
 
- Aufgrund von [Issue #388](https://github.com/Azure/WALinuxAgent/issues/388) in WALinuxAgent werden `OsVolumeEncrypted` und `DataVolumesEncrypted` in einigen Distributionen als `Unknown` angezeigt. Bei WALinuxAgent Version 2.1.5 und höher wird dieses Problem automatisch behoben. Falls Sie `Unknown` in der Ausgabe sehen, können Sie den Status der Datenverschlüsselung über den Azure Resource Explorer überprüfen.
+ Aufgrund von [Issue #388](https://github.com/Azure/WALinuxAgent/issues/388) in WALinuxAgent werden `OsVolumeEncrypted` und `DataVolumesEncrypted` in einigen Distributionen als `Unknown` angezeigt. Bei WALinuxAgent Version 2.1.5 und höher wird dieses Problem automatisch behoben. Falls Sie `Unknown` in der Ausgabe sehen, können Sie den Status der Datenverschlüsselung über den Azure-Ressourcen-Explorer überprüfen.
 
- Wechseln Sie zum [Azure Resource Explorer](https://resources.azure.com/), und erweitern Sie diese Hierarchie im Auswahlbereich auf der linken Seite:
+ Wechseln Sie zum [Azure-Ressourcen-Explorer](https://resources.azure.com/), und erweitern Sie diese Hierarchie im Auswahlbereich auf der linken Seite:
 
  ~~~~
  |-- subscriptions

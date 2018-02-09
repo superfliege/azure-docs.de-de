@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 01/18/2018
 ms.author: barbkess
-ms.openlocfilehash: 692d92f2e45e04a4eb284b43797b5b468cd9ec1b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3c86b89da796223336e3a0d9dd809ae140d6911e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Leitfaden für das Entwerfen verteilter Tabellen in Azure SQL Data Warehouse
 
@@ -121,7 +121,7 @@ Zur Minimierung von Datenverschiebungen muss die Verteilungsspalte folgende Krit
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Was, wenn keine der Spalten als Verteilungsspalte geeignet ist?
 
-Sollten keine geeigneten Kandidaten für eine Verteilungsspalte vorhanden sein, erwägen Sie die Verwendung der Roundrobin-Verteilungsmethode.
+Wenn keine der Spalten genügend unterschiedliche Werte für eine Verteilungsspalte aufweist, können Sie eine neue Spalte aus einem Wert oder mehreren Werten zusammensetzen. Um Datenverschiebungen beim Ausführen von Abfragen zu vermeiden, verwenden Sie die zusammengesetzte Verteilungsspalte als Verknüpfungsspalte in Abfragen.
 
 Nach dem Entwerfen einer Tabelle mit Hashverteilung müssen Daten in die Tabelle geladen werden.  Eine entsprechende Anleitung finden Sie in der [Übersicht über das Laden](sql-data-warehouse-overview-load.md). 
 

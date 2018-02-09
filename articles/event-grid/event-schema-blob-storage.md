@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: bdc64733b75fd809cf0245986aa96370343c1a34
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d0a8a3726ac3c33668d8ad91c97c35937c299b46
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid-Ereignisschema für Blob Storage
 
@@ -22,7 +22,7 @@ In diesem Artikel werden die Eigenschaften und das Schema für Blob Storage-Erei
 
 Blob Storage gibt die folgenden Ereignistypen aus:
 
-| Ereignistypen | Beschreibung |
+| Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.Storage.BlobCreated | Wird ausgelöst, wenn ein Blob erstellt wird. |
 | Microsoft.Storage.BlobDeleted | Wird ausgelöst, wenn ein Blob gelöscht wird. |
@@ -51,7 +51,9 @@ Das folgende Beispiel zeigt das Schema eines Blob-Erstellungsereignisses:
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
     }
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -74,7 +76,9 @@ Das Schema für ein Blob-Löschungsereignis sieht ähnlich aus:
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
     }
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
  
@@ -82,29 +86,31 @@ Das Schema für ein Blob-Löschungsereignis sieht ähnlich aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | Beschreibung |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Thema | string | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | objekt | Ereignisdaten für Blob Storage. |
+| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| data | object | Ereignisdaten für Blob Storage. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | Beschreibung |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| api | string | Der Vorgang, durch den das Ereignis ausgelöst wurde. |
-| clientRequestId | string | Ein vom Client generierter, nicht transparenter Wert mit einer Zeichenbeschränkung von 1 KB. Wenn Sie die Speicheranalyseprotokollierung aktiviert haben, wird er in den Analyseprotokollen aufgezeichnet. |
-| requestId | string | Der eindeutige Bezeichner für die Anforderung. Verwenden Sie diesen für die Problembehandlung bei der Anforderung. |
-| eTag | string | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
-| contentType | string | Der für das Blob angegebene Inhaltstyp. |
-| contentLength | Ganze Zahl | Die Größe des Blobs in Byte. |
-| blobType | string | Der Blobtyp. |
-| url | string | Der Pfad des Blobs. |
-| sequencer | string | Ein vom Benutzer festgelegter Wert, mit dem Sie Anforderungen nachverfolgen können. |
-| storageDiagnostics | objekt | Informationen zur Speicherdiagnose. |
+| api | Zeichenfolge | Der Vorgang, durch den das Ereignis ausgelöst wurde. |
+| clientRequestId | Zeichenfolge | Ein vom Client generierter, nicht transparenter Wert mit einer Zeichenbeschränkung von 1 KB. Wenn Sie die Speicheranalyseprotokollierung aktiviert haben, wird er in den Analyseprotokollen aufgezeichnet. |
+| requestId | Zeichenfolge | Der eindeutige Bezeichner für die Anforderung. Verwenden Sie diesen für die Problembehandlung bei der Anforderung. |
+| eTag | Zeichenfolge | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
+| contentType | Zeichenfolge | Der für das Blob angegebene Inhaltstyp. |
+| contentLength | integer | Die Größe des Blobs in Byte. |
+| blobType | Zeichenfolge | Der Blobtyp. Gültige Werte sind „BlockBlob“ oder „PageBlob“. |
+| URL | Zeichenfolge | Der Pfad des Blobs. |
+| sequencer | Zeichenfolge | Ein vom Benutzer festgelegter Wert, mit dem Sie Anforderungen nachverfolgen können. |
+| storageDiagnostics | object | Informationen zur Speicherdiagnose. |
  
 ## <a name="next-steps"></a>Nächste Schritte
 

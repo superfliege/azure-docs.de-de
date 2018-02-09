@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 8d709936bfba5c89091d7f26449d165bddb930de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 49e22c5136da67f62a43374817fb1e462fcbcaf0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Skalieren des Clusters zum Verwalten des Durchsatzes von Webdiensten
 
@@ -83,13 +83,13 @@ az ml service update realtime -i <service id> --autoscale-enabled true --autosca
 Wenn Sie beispielsweise für die Einstellung `autoscale-min-replicas` fünf festlegen, werden fünf Replikate erstellt. Um die optimale Anzahl für die Webdienste zu finden, legen Sie einen Wert fest – z.B. 10 –, und beobachten Sie, wie häufig die Fehlermeldung 503 erscheint. Passen Sie anschließend die Zahl entsprechend an.
 
 
-| Parametername | Typ | Beschreibung |
+| Parametername | Typ | BESCHREIBUNG |
 |--------------------|--------------------|--------------------|
-| `autoscale-enabled` | Boolescher Wert | Gibt an, ob das automatische Skalieren aktiviert ist. Standardwert: TRUE |
-| `autoscale-min-replicas` | Ganze Zahl | Gibt die Mindestanzahl von Pods an. Muss 0 sein oder höher liegen. Standardwert: 1 |
-| `autoscale-max-replicas` | Ganze Zahl | Gibt die Höchstanzahl von Pods an. Muss 1 oder größer sein. Wenn die Anzahl von autoscale-max-replicas kleiner ist als die Anzahl von autoscale-min-replicas, werden die autoscale-max-replicas ignoriert. Standard: 10 |
-| `autoscale-refresh-period-seconds` | Ganze Zahl | Gibt die Dauer in Sekunden an, bis sich das automatische Skalieren aktualisiert. Standardwert: 1 |
-| `autoscale-target-utilization` | Ganze Zahl | Gibt die Zielauslastung des automatischen Skalierens in Prozent an (Wert zwischen 1 und 100). Standardwert: 70 |
+| `autoscale-enabled` | boolean | Gibt an, ob das automatische Skalieren aktiviert ist. Standardwert: TRUE |
+| `autoscale-min-replicas` | integer | Gibt die Mindestanzahl von Pods an. Muss 0 sein oder höher liegen. Standardwert: 1 |
+| `autoscale-max-replicas` | integer | Gibt die Höchstanzahl von Pods an. Muss 1 oder größer sein. Wenn die Anzahl von autoscale-max-replicas kleiner ist als die Anzahl von autoscale-min-replicas, werden die autoscale-max-replicas ignoriert. Standard: 10 |
+| `autoscale-refresh-period-seconds` | integer | Gibt die Dauer in Sekunden an, bis sich das automatische Skalieren aktualisiert. Standardwert: 1 |
+| `autoscale-target-utilization` | integer | Gibt die Zielauslastung des automatischen Skalierens in Prozent an (Wert zwischen 1 und 100). Standardwert: 70 |
 
 Mithilfe des automatischen Skalierens können die folgenden beiden Bedingungen gewährleistet werden:
 
@@ -159,6 +159,6 @@ Sobald Sie den Dashboard-Server gestartet haben, öffnen Sie den Browser und geb
 
 Klicken Sie in der Hauptanzeige auf der linken Navigationsleiste des Dashboards auf **Bereitstellungen**. Wenn der Navigationsbereich nicht angezeigt wird, wählen Sie oben links das folgende Symbol aus: ![Menu consisting of three short horizontal lines](media/how-to-scale-clusters/icon-hamburger.png) (Aus drei kurzen, horizontalen Zeilen bestehendes Menü).
 
-Suchen Sie die Bereitstellung, um erst das Symbol ![Menu icon consisting of three vertical dots](media/how-to-scale-clusters/icon-kebab.png) (Aus drei Punkten untereinander bestehendes Menüsymbol) auf der rechten Seite zu ändern und anzuklicken und anschließend **View/edit YAML** (YAML ansehen/bearbeiten) auszuwählen.
+Suchen Sie die Bereitstellung, um erst das Symbol ![Aus drei Punkten untereinander bestehendes Menüsymbol](media/how-to-scale-clusters/icon-kebab.png) auf der rechten Seite zu ändern und anzuklicken und anschließend **YAML anzeigen/bearbeiten** auszuwählen.
 
 Suchen Sie in der Anzeige „Bereitstellung bearbeiten“ den *Spezifikationsknoten*, ändern Sie den Wert der *Replikate*, und klicken Sie auf **Aktualisieren**.

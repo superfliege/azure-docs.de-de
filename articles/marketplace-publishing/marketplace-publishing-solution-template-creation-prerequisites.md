@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 40f0e2b1b1b6144b2f9aa5814a4408b4964ede97
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0aa9ab99aea08f5e368efbb97d8a1be7fbb79552
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="technical-prerequisites-for-creating-a-solution-template-for-the-azure-marketplace"></a>Technische Voraussetzungen für das Erstellen einer Lösungsvorlage für den Azure Marketplace
 Lesen Sie die Informationen zum Prozess vor Beginn sorgfältig durch, um nachvollziehen zu können, wo und warum die einzelnen Schritte ausgeführt werden. Bereiten Sie nach Möglichkeit Ihre Unternehmensinformationen und andere Daten vor, laden Sie die erforderlichen Tools herunter, und/oder erstellen Sie technische Komponenten, bevor Sie mit der Angebotserstellung beginnen.  
@@ -26,9 +26,8 @@ Lesen Sie die Informationen zum Prozess vor Beginn sorgfältig durch, um nachvol
 ## <a name="developing-building-blocks"></a>Entwickeln von Bausteinen
 Sie müssen eine Entscheidung bezüglich der einzelnen Bausteine Ihrer Lösung treffen, ehe Sie zur Lösungsvorlage im Veröffentlichungsportal übergehen. Nachstehend finden Sie Links zu den Dokumenten, die Sie im Prozess unterstützen:
 
-1. [Bewährte Methoden für das Entwerfen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/best-practices-resource-manager-design-templates.md)
-2. [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
-3. Azure-Schnellstartvorlagen:
+1. [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+2. Azure-Schnellstartvorlagen:
    * [https://azure.microsoft.com/en-us/documentation/templates/](https://azure.microsoft.com/documentation/templates/)
    * [https://github.com/azure/azure-quickstart-templates](https://github.com/azure/azure-quickstart-templates)
 

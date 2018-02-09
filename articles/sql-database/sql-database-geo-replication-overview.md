@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: ef9463e464928b8fa8e64019037a41711cb77830
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 7d731865ae8da9e1ae9e9f11eef814b86fc10c64
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Übersicht: Failovergruppen und aktive Georeplikation
 Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenbanken am gleichen oder an verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen für Abfragen und Failover zur Verfügung, wenn ein Rechenzentrum ausgefallen oder keine Verbindung mit der primären Datenbank möglich ist. Das Failover muss durch die Anwendung des Benutzers manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. 
@@ -36,9 +36,9 @@ Sie können Replikation und Failover für eine einzelne Datenbank oder eine Grup
 
 - Das [Azure-Portal](sql-database-geo-replication-portal.md)
 - [PowerShell: einzelne Datenbank](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-- [PowerShell: elastischer Pool](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+- [PowerShell: Pool für elastische Datenbanken](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
 - [PowerShell: Failovergruppe](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
-- [Transact-SQL: einzelne Datenbank oder elastischer Pool](/sql/t-sql/statements/alter-database-azure-sql-database)
+- [Transact-SQL: einzelne Datenbank oder Pool für elastische Datenbanken](/sql/t-sql/statements/alter-database-azure-sql-database)
 - [REST-API: einzelne Datenbank](/rest/api/sql/replicationlinks/failover)
 - [REST-API: Failovergruppe](/rest/api/sql/failovergroups/failover). 
  
@@ -74,7 +74,7 @@ Das Feature der aktiven Georeplikation bietet die folgenden wichtigen Möglichke
    > Wenn Sie mit der aktiven Georeplikation eine global verteilte Anwendung erstellen und schreibgeschützten Zugriff auf Daten in mehr als vier Regionen bereitstellen müssen, können Sie eine sekundäre Datenbank einer sekundären Datenbank erstellen (dieser Prozess wird als Verkettung bezeichnet). Auf diese Weise können Sie die Datenbankreplikation praktisch unbegrenzt skalieren. Darüber hinaus verkürzt die Verkettung den Mehraufwand der Replikation von der primären Datenbank. Der Nachteil besteht in der erhöhten Replikationsverzögerung in den äußersten sekundären Datenbanken. 
    >
 
-* **Unterstützung von Datenbanken in elastischen Pools:** Die aktive Georeplikation kann für jede Datenbank in einem beliebigen Pool für elastische Datenbanken konfiguriert werden. Die sekundäre Datenbank kann sich in einem anderen elastischen Pool befinden. Für normale Datenbanken kann die sekundäre Datenbank ein elastischer Pool sein und umgekehrt, sofern die Dienstebenen identisch sind. 
+* **Unterstützung von Datenbanken in elastischen Pools:** Die aktive Georeplikation kann für jede Datenbank in einem beliebigen Pool für elastische Datenbanken konfiguriert werden. Die sekundäre Datenbank kann sich in einem anderen Pool für elastische Datenbanken befinden. Für normale Datenbanken kann die sekundäre Datenbank ein Pool für elastische Datenbanken sein und umgekehrt, sofern die Dienstebenen identisch sind. 
 * **Konfigurierbare Leistungsstufe der sekundären Datenbank**: Sowohl primäre als auch sekundäre Datenbanken sind erforderlich, um die gleiche Dienstebene (Basic, Standard, Premium) zu haben. Eine sekundäre Datenbank kann mit einer niedrigeren Leistungsstufe (DTUs) als die primäre erstellt werden. Diese Option wird nicht für Anwendungen mit Datenbanken empfohlen, die eine hohe Schreibaktivität aufweisen, da die größere Replikationsverzögerung das Risiko erheblicher Datenverluste nach einem Failover steigert. Darüber hinaus wird nach einem Failover die Leistung der Anwendung beeinträchtigt, bis die neue primäre Datenbank auf eine höhere Leistungsstufe aktualisiert ist. Das Diagramm mit dem Protokoll-E/A-Prozentsatz im Azure-Portal bietet eine gute Möglichkeit, einzuschätzen, welche Leistungsstufe für die sekundäre Datenbank mindestens erforderlich ist, um die Replikationslast zu bewältigen. Wenn die Leistungsstufe der primären Datenbank beispielsweise P6 (1.000 DTU) ist und ihr Protokoll-E/A-Prozentsatz 50 % beträgt, muss die Leistungsstufe der sekundären Datenbank mindestens P4 (500 DTU) sein. Sie können die Protokoll-E/A-Daten auch mithilfe der Datenbanksicht [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) oder [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) abrufen.  Weitere Informationen zu den SQL-Datenbankleistungsstufen finden Sie unter [SQL-Datenbankoptionen und -leistung](sql-database-service-tiers.md). 
 * **Benutzergesteuertes Failover und Failback:**Eine sekundäre Datenbank kann jederzeit durch die Anwendung oder den Benutzer explizit die primäre Rolle erhalten. Bei einem echten Ausfall sollte die Option „Nicht geplant“ verwendet werden, die eine sekundäre Datenbank umgehend zu einer primären Datenbank heraufstuft. Wenn die ausgefallene primäre Datenbank wiederhergestellt ist und wieder zur Verfügung steht, kennzeichnet das System diese wiederhergestellte primäre Datenbank automatisch als sekundäre Datenbank und bringt sie auf den aktuellen Stand der neuen primären Datenbank. Aufgrund der asynchronen Natur der Replikation kann eine kleine Menge von Daten bei einem nicht geplanten Failover verloren gehen, wenn eine primäre Datenbank ausfällt, bevor die aktuellen Änderungen in die sekundäre Datenbank repliziert wurden. Wenn für eine primäre Datenbank mit mehreren sekundären Datenbanken ein Failover durchgeführt wird, konfiguriert das System automatisch die Replikationsbeziehungen neu und verknüpft die verbleibenden sekundären Datenbanken mit der soeben heraufgestuften primären Datenbank, ohne dass ein Benutzereingriff erforderlich ist. Wenn der Ausfall behoben ist, durch den das Failover verursacht wurde, kann es wünschenswert sein, die Anwendung wieder in die primäre Region zurückzuführen. Zu diesem Zweck sollte der Failoverbefehl mit der Option „Geplant“ aufgerufen werden. 
 * **Synchronisieren von Anmeldeinformationen und Firewallregeln:** Wir empfehlen die Verwendung von [Datenbank-Firewallregeln](sql-database-firewall-configure.md) für georeplizierte Datenbanken, damit diese Regeln mit der Datenbank repliziert werden können. So wird sichergestellt, dass alle sekundären Datenbanken die gleichen Firewallregeln besitzen wie die primäre Datenbank. Mit diesem Ansatz müssen Kunden auf Servern, auf denen sowohl die primäre als auch die sekundäre Datenbank gehostet wird, keine Firewallregeln mehr manuell konfigurieren und verwalten. Analog dazu wird durch die Verwendung von [eigenständigen Datenbankbenutzern](sql-database-manage-logins.md) für den Datenzugriff sichergestellt, dass für primäre und sekundäre Datenbanken immer die gleichen Benutzeranmeldeinformationen gelten, damit bei einem Failover keine Unterbrechungen durch Benutzernamen- und Kennwortkonflikte auftreten. Durch Hinzufügen von [Azure Active Directory](../active-directory/active-directory-whatis.md) können Kunden den Benutzerzugriff sowohl für primäre als auch für sekundäre Datenbanken verwalten, sodass die Notwendigkeit der Verwaltung von Anmeldeinformationen in Datenbanken vollständig entfällt.
@@ -86,7 +86,7 @@ Gruppen für automatisches Failover bieten eine leistungsfähige Abstraktion der
 * **Failovergruppe**: Eine oder mehrere Failovergruppen können zwischen zwei Servern in verschiedenen Regionen erstellt werden (primäre und sekundäre Server). Jede Gruppe kann eine oder mehrere Datenbanken enthalten, die als Einheit wiederhergestellt werden, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind.  
 * **Primärserver:** ein Server, auf dem die primären Datenbanken in der Failovergruppe gehostet werden.
 * **Sekundärserver:** ein Server, auf dem die sekundären Datenbanken in der Failovergruppe gehostet werden. Der Sekundärserver kann sich nicht in der gleichen Region wie der primäre Server befinden.
-* **Hinzufügen von Datenbanken zu einer Failovergruppe**: Sie können mehrere Datenbanken in einem Server oder in einem elastischen Pool in die gleiche Failovergruppe einfügen. Wenn Sie der Gruppe eine eigenständige Datenbank hinzufügen, wird automatisch eine sekundäre Datenbank mit der gleichen Edition und Leistungsstufe erstellt. Wenn die primäre Datenbank sich in einem elastischen Pool befindet, wird die sekundäre Datenbank automatisch im elastischen Pool gleichen Namens erstellt. Wenn Sie eine Datenbank hinzufügen, die bereits auf dem sekundären Server eine sekundäre Datenbank hat, erbt die Gruppe diese Georeplikation.
+* **Hinzufügen von Datenbanken zu einer Failovergruppe**: Sie können mehrere Datenbanken in einem Server oder in einem Pool für elastische Datenbanken in die gleiche Failovergruppe einfügen. Wenn Sie der Gruppe eine eigenständige Datenbank hinzufügen, wird automatisch eine sekundäre Datenbank mit der gleichen Edition und Leistungsstufe erstellt. Wenn sich die primäre Datenbank in einem Pool für elastische Datenbanken befindet, wird die sekundäre Datenbank automatisch im Pool für elastische Datenbanken gleichen Namens erstellt. Wenn Sie eine Datenbank hinzufügen, die bereits auf dem sekundären Server eine sekundäre Datenbank hat, erbt die Gruppe diese Georeplikation.
 
    > [!NOTE]
    > Wenn Sie eine Datenbank hinzufügen, die bereits eine sekundäre Datenbank auf einem Server hat, der nicht Teil der Failovergruppe ist, wird eine neue sekundäre Datenbank auf dem sekundären Server erstellt. 
@@ -102,7 +102,7 @@ Gruppen für automatisches Failover bieten eine leistungsfähige Abstraktion der
    > Wenn das System erkennt, dass die Datenbanken in der Gruppe noch immer online sind (etwa wenn der Ausfall nur die Dienststeuerungsebene betroffen hat), aktiviert es sofort unabhängig von dem durch **GracePeriodWithDataLossHours** festgelegten Wert das Failover mit vollständiger Datensynchronisierung (freundliches Failover). Dadurch wird sichergestellt, dass es während der Wiederherstellung nicht zu Datenverlusten kommt. Die Toleranzperiode ist nur wirksam, wenn kein freundliches Failover möglich ist. Wenn der Ausfall vor Ablauf der Toleranzperiode behoben wird, wird das Failover nicht aktiviert.
    >
 
-* **Mehrere Failovergruppen**: Sie können mehrere Failovergruppen für das gleiche Serverpaar konfigurieren, um die Skalierung der Failover zu steuern. Jede Gruppe führt ein unabhängiges Failover durch. Wenn Ihre mehrinstanzenfähige Anwendung elastische Pools verwendet, können Sie diese Funktion zum Mischen primärer und sekundärer Datenbanken in den einzelnen Pools verwenden. Auf diese Weise können Sie die Auswirkungen eines Ausfalls auf nur die Hälfte der Mandanten reduzieren.
+* **Mehrere Failovergruppen**: Sie können mehrere Failovergruppen für das gleiche Serverpaar konfigurieren, um die Skalierung der Failover zu steuern. Jede Gruppe führt ein unabhängiges Failover durch. Wenn Ihre mehrinstanzenfähige Anwendung Pools für elastische Datenbanken verwendet, können Sie diese Funktion zum Mischen primärer und sekundärer Datenbanken in den einzelnen Pools verwenden. Auf diese Weise können Sie die Auswirkungen eines Ausfalls auf nur die Hälfte der Mandanten reduzieren.
 
 ## <a name="best-practices-of-building-highly-available-service"></a>Best Practices zum Erstellen von hoch verfügbaren Diensten
 
@@ -140,7 +140,7 @@ Wie bereits erwähnt, können Gruppen für automatisches Failover (in der Vorsch
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>Verwalten eines Failovers von SQL-Datenbanken mit Transact-SQL
 
-| Befehl | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/alter-database-azure-sql-database) |Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten. |
 | [ALTER DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/alter-database-azure-sql-database) |Verwenden Sie FAILOVER oder FORCE_FAILOVER_ALLOW_DATA_LOSS, um die sekundäre Datenbank zur primären zu erklären und zu ihr zu wechseln – damit starten Sie das Failover. |
@@ -153,7 +153,7 @@ Wie bereits erwähnt, können Gruppen für automatisches Failover (in der Vorsch
 
 ## <a name="manage-sql-database-failover-using-powershell"></a>Verwalten eines Failovers von SQL-Datenbanken mit PowerShell
 
-| Cmdlet | Beschreibung |
+| Cmdlet | BESCHREIBUNG |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Ruft mindestens eine Datenbank ab. |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |Erstellt eine sekundäre Datenbank für eine vorhandene Datenbank und startet die Datenreplikation. |
@@ -172,7 +172,7 @@ Wie bereits erwähnt, können Gruppen für automatisches Failover (in der Vorsch
 >
 
 ## <a name="manage-sql-database-failover-using-the-rest-api"></a>Verwalten eines Failovers von SQL-Datenbanken mit der REST-API
-| API | Beschreibung |
+| API | BESCHREIBUNG |
 | --- | --- |
 | [Create or Update Database (createMode=Restore)](/rest/api/sql/Databases/CreateOrUpdate) |Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her. |
 | [Get Create or Update Database Status](/rest/api/sql/Databases/CreateOrUpdate) |Ruft den Status während eines Erstellungsvorgangs ab. |

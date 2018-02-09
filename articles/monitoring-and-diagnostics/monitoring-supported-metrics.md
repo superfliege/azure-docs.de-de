@@ -1,5 +1,5 @@
 ---
-title: "Azure Monitor-Metriken: Unterstützte Metriken pro Ressourcentyp | Microsoft Docs"
+title: "Azure Monitor-Metriken: Unterstützte Metriken pro Ressourcentyp | Microsoft-Dokumentation"
 description: "Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp zur Verfügung stehen."
 author: anirudhcavale
 manager: ashwink
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 1/31/2018
 ms.author: ancav
-ms.openlocfilehash: 673f5a5cd6832adb031ef72ce25f8a1622717cfd
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: a7d28de33090995b0a036d528fb82f9e0d7335bf
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind.
@@ -45,14 +45,14 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |CleanerCurrentPrice|Arbeitsspeicher: Bereinigung – aktueller Preis|Count|Durchschnitt|Aktueller Preis des Arbeitsspeichers, $/Byte/Zeit, normalisiert auf 1000.|ServerResourceType|
 |CleanerMemoryShrinkable|Arbeitsspeicher: Bereinigung – verkleinerbarer Arbeitsspeicher|Byte|Durchschnitt|Die Menge des Arbeitsspeichers in Byte, die durch den Hintergrundbereinigungsprozess bereinigt wird.|ServerResourceType|
 |CleanerMemoryNonshrinkable|Arbeitsspeicher: Bereinigung – nicht verkleinerbarer Arbeitsspeicher|Byte|Durchschnitt|Die Menge des Arbeitsspeichers in Byte, die nicht durch den Hintergrundbereinigungsprozess bereinigt wird.|ServerResourceType|
-|MemoryUsage|Arbeitsspeicher: Speicherauslastung|Byte|Durchschnitt|Speicherauslastung des Serverprozesses, wie bei der Berechnung des Arbeitsspeicherpreises für die Bereinigung verwendet. Entspricht dem Indikator „Process\PrivateBytes“ zuzüglich der Größe der im Speicher abgebildeten Daten. Vom xVelocity-In-Memory-Analysemodul (VertiPaq) abgebildeter oder belegter Arbeitsspeicher, der über die Arbeitsspeichergrenze des xVelocity-Moduls hinausgeht, wird dabei ignoriert.|ServerResourceType|
+|MemoryUsage|Arbeitsspeicher: Speicherauslastung|Byte|Durchschnitt|Speicherauslastung des Serverprozesses, wie bei der Berechnung des Arbeitsspeicherpreises für die Bereinigung verwendet. Entspricht dem Indikator „Process\PrivateBytes“ zuzüglich der Größe der im Speicher abgebildeten Daten. Von der xVelocity-In-Memory-Analyse-Engine (VertiPaq) abgebildeter oder belegter Arbeitsspeicher, der über die Arbeitsspeichergrenze der xVelocity-Engine hinausgeht, wird dabei ignoriert.|ServerResourceType|
 |MemoryLimitHard|Arbeitsspeicher: Grenzwert für den festen Speicher|Byte|Durchschnitt|Grenzwert für den festen Speicher gemäß Konfigurationsdatei.|ServerResourceType|
 |MemoryLimitHigh|Arbeitsspeicher: Obere Arbeitsspeichergrenze|Byte|Durchschnitt|Oberer Grenzwert für den Arbeitsspeicher gemäß Konfigurationsdatei.|ServerResourceType|
 |MemoryLimitLow|Arbeitsspeicher: Untere Arbeitsspeichergrenze|Byte|Durchschnitt|Unterer Grenzwert für den Arbeitsspeicher gemäß Konfigurationsdatei.|ServerResourceType|
 |MemoryLimitVertiPaq|Arbeitsspeicher: VertiPaq-Arbeitsspeichergrenze|Byte|Durchschnitt|In-Memory-Grenzwert gemäß Konfigurationsdatei.|ServerResourceType|
 |Kontingent|Arbeitsspeicher: Kontingent|Byte|Durchschnitt|Aktuelles Arbeitsspeicherkontingent in Byte. Das Arbeitsspeicherkontingent wird auch als Speicherzuweisung oder Speicherreservierung bezeichnet.|ServerResourceType|
 |QuotaBlocked|Arbeitsspeicher: Kontingent blockiert|Count|Durchschnitt|Aktuelle Anzahl von Kontingentanforderungen, die blockiert werden, bis andere Arbeitsspeicherkontingente freigegeben werden.|ServerResourceType|
-|VertiPaqNonpaged|Arbeitsspeicher: Nicht ausgelagerte VertiPaq-Daten|Byte|Durchschnitt|Bytes von Arbeitsspeicher, die im Arbeitssatz zur Verwendung durch das In-Memory-Modul gesperrt sind.|ServerResourceType|
+|VertiPaqNonpaged|Arbeitsspeicher: Nicht ausgelagerte VertiPaq-Daten|Byte|Durchschnitt|Bytes von Arbeitsspeicher, die im Arbeitssatz zur Verwendung durch die In-Memory-Engine gesperrt sind.|ServerResourceType|
 |VertiPaqPaged|Arbeitsspeicher: Ausgelagerte VertiPaq-Daten|Byte|Durchschnitt|Bytes von ausgelagertem Arbeitsspeicher, die für In-Memory-Daten verwendet werden.|ServerResourceType|
 |RowsReadPerSec|Verarbeitung: Gelesene Zeilen pro Sekunde|Anzahl pro Sekunde|Durchschnitt|Rate der aus allen relationalen Datenbanken gelesenen Zeilen.|ServerResourceType|
 |RowsConvertedPerSec|Verarbeitung: Konvertierte Zeilen pro Sekunde|Anzahl pro Sekunde|Durchschnitt|Rate der Zeilen, die bei der Verarbeitung konvertiert werden.|ServerResourceType|
@@ -73,8 +73,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |ShortParsingIdleThreads|Threads: Kurze Analysethreads im Leerlauf|Count|Durchschnitt|Anzahl von Leerlaufthreads im Pool für kurze Analysethreads.|ServerResourceType|
 |ShortParsingJobQueueLength|Threads: Warteschlangenlänge für kurze Analyseaufträge|Count|Durchschnitt|Anzahl von Aufträgen in der Warteschlange des Pools für kurze Analysethreads.|ServerResourceType|
 |memory_thrashing_metric|Arbeitsspeicherüberlastung|Prozent|Durchschnitt|Durchschnittliche Arbeitsspeicherüberlastung.|ServerResourceType|
-|mashup_engine_qpu_metric|M-Modul – QPU|Count|Durchschnitt|QPU-Nutzung durch Mashup-Modulprozesse|ServerResourceType|
-|mashup_engine_memory_metric|M-Modul – Arbeitsspeicher|Byte|Durchschnitt|Arbeitsspeichernutzung durch Mashup-Modulprozesse|ServerResourceType|
+|mashup_engine_qpu_metric|M-Engine – QPU|Count|Durchschnitt|QPU-Nutzung durch Mashup-Engine-Prozesse|ServerResourceType|
+|mashup_engine_memory_metric|M-Engine – Arbeitsspeicher|Byte|Durchschnitt|Arbeitsspeichernutzung durch Mashup-Engine-Prozesse|ServerResourceType|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
@@ -529,6 +529,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |jobs.failed|Fehlerhafte Aufträge|Count|Gesamt|Gibt die Anzahl aller fehlerhaften Aufträge an.|Keine Dimensionen|
 |d2c.telemetry.ingress.sendThrottle|Anzahl von Drosselungsfehlern|Count|Gesamt|Anzahl von Drosselungsfehlern aufgrund von Drosselungen des Gerätedurchsatzes|Keine Dimensionen|
 |dailyMessageQuotaUsed|Gesamtzahl verwendeter Nachrichten|Count|Durchschnitt|Gesamtzahl der heute verwendeten Nachrichten. Dies ist ein kumulativer Wert, der jeden Tag um 00:00 Uhr UTC auf 0 zurückgesetzt wird.|Keine Dimensionen|
+|deviceDataUsage|Gerätedatennutzung gesamt|Count|Gesamt|Zu und von allen mit IotHub verbundenen Geräten übertragene Bytes|Keine Dimensionen|
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
@@ -707,15 +708,6 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |BillableTriggerExecutions|Ausführungen abrechenbarer Trigger|Count|Gesamt|Anzahl der Workflowtriggerausführungen, die in Rechnung gestellt werden|Keine Dimensionen|
 |TotalBillableExecutions|Gesamtzahl der abrechenbaren Ausführungen|Count|Gesamt|Anzahl der Workflowausführungen, die in Rechnung gestellt werden|Keine Dimensionen|
 
-## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
-
-|Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
-|---|---|---|---|---|---|
-|BytesSentRate|Gesendete Bytes|Count|Gesamt|Anzahl der durch die Netzwerkschnittstelle gesendeten Bytes|Keine Dimensionen|
-|BytesReceivedRate|Empfangene Bytes|Count|Gesamt|Anzahl der durch die Netzwerkschnittstelle empfangenen Bytes|Keine Dimensionen|
-|PacketsSentRate|Gesendete Pakete|Count|Gesamt|Anzahl der durch die Netzwerkschnittstelle gesendeten Pakete|Keine Dimensionen|
-|PacketsReceivedRate|Empfangene Pakete|Count|Gesamt|Anzahl der durch die Netzwerkschnittstelle empfangenen Pakete|Keine Dimensionen|
-
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -757,13 +749,6 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |ByteCount|Byteanzahl|Count|Gesamt|Gesamtanzahl von Bytes, die im Zeitraum übertragen wurden|Port, Richtung|
 |PacketCount|Paketzahl|Count|Gesamt|Gesamtanzahl von Paketen, die im Zeitraum übertragen wurden|Port, Richtung|
 |SynCount|SYN-Anzahl|Count|Gesamt|Gesamtanzahl von SYN-Paketen, die im Zeitraum übertragen wurden|Port, Richtung|
-
-## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
-
-|Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
-|---|---|---|---|---|---|
-|PacketsInDroppedVMProtection|Eingehende Pakete, die zum Schutz der VM verworfen wurden|Anzahl pro Sekunde|Durchschnitt|Eingehende Pakete, die zum Schutz der VM verworfen wurden|Keine Dimensionen|
-|PacketsOutDroppedVMProtection|Ausgehende Pakete, die zum Schutz der VM verworfen wurden|Anzahl pro Sekunde|Durchschnitt|Ausgehende Pakete, die zum Schutz der VM verworfen wurden|Keine Dimensionen|
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
@@ -864,6 +849,13 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |incoming.all.requests|Alle eingehenden Anforderungen|Count|Gesamt|Gesamtzahl eingehender Anforderungen für einen Notification Hub|Keine Dimensionen|
 |incoming.all.failedrequests|Alle eingehenden fehlerhaften Anforderungen|Count|Gesamt|Gesamtzahl eingehender fehlerhafter Anforderungen für einen Notification Hub|Keine Dimensionen|
 
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
+
+|Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
+|---|---|---|---|---|---|
+|QueryDuration||Count|Durchschnitt||Keine Dimensionen|
+|QueryPoolJobQueueLength|Threads: Auftragswarteschlangenlänge für Abfragepool|Count|Durchschnitt|Anzahl von Aufträgen in der Warteschlange des Abfragethreadpools.|Keine Dimensionen|
+
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -937,23 +929,16 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-Prozentsatz|Prozent|Durchschnitt|CPU-Prozentsatz|Keine Dimensionen|
-|database_cpu_percent|CPU-Prozentsatz|Prozent|Durchschnitt|CPU-Prozentsatz|DatabaseResourceId|
 |physical_data_read_percent|E/A-Prozentsatz für Daten|Prozent|Durchschnitt|E/A-Prozentsatz für Daten|Keine Dimensionen|
-|database_physical_data_read_percent|E/A-Prozentsatz für Daten|Prozent|Durchschnitt|E/A-Prozentsatz für Daten|DatabaseResourceId|
 |log_write_percent|E/A-Prozentsatz für Protokoll|Prozent|Durchschnitt|E/A-Prozentsatz für Protokoll|Keine Dimensionen|
-|database_log_write_percent|E/A-Prozentsatz für Protokoll|Prozent|Durchschnitt|E/A-Prozentsatz für Protokoll|DatabaseResourceId|
 |dtu_consumption_percent|DTU-Prozentsatz|Prozent|Durchschnitt|DTU-Prozentsatz|Keine Dimensionen|
-|database_dtu_consumption_percent|DTU-Prozentsatz|Prozent|Durchschnitt|DTU-Prozentsatz|DatabaseResourceId|
 |storage_percent|Speicher in Prozent|Prozent|Durchschnitt|Speicher in Prozent|Keine Dimensionen|
 |workers_percent|Worker in Prozent|Prozent|Durchschnitt|Worker in Prozent|Keine Dimensionen|
-|database_workers_percent|Worker in Prozent|Prozent|Durchschnitt|Worker in Prozent|DatabaseResourceId|
 |sessions_percent|Sitzungen in Prozent|Prozent|Durchschnitt|Sitzungen in Prozent|Keine Dimensionen|
-|database_sessions_percent|Sitzungen in Prozent|Prozent|Durchschnitt|Sitzungen in Prozent|DatabaseResourceId|
 |eDTU_limit|eDTU-Grenzwert|Count|Durchschnitt|eDTU-Grenzwert|Keine Dimensionen|
 |storage_limit|Speicherbegrenzung|Byte|Durchschnitt|Speicherbegrenzung|Keine Dimensionen|
 |eDTU_used|eDTU-Verbrauch|Count|Durchschnitt|eDTU-Verbrauch|Keine Dimensionen|
 |storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|Keine Dimensionen|
-|database_storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|DatabaseResourceId|
 |xtp_storage_percent|In-Memory-OLTP-Speicher in Prozent|Prozent|Durchschnitt|In-Memory-OLTP-Speicher in Prozent|Keine Dimensionen|
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
@@ -961,9 +946,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
 |dtu_consumption_percent|DTU-Prozentsatz|Prozent|Durchschnitt|DTU-Prozentsatz|ElasticPoolResourceId|
-|database_dtu_consumption_percent|DTU-Prozentsatz|Prozent|Durchschnitt|DTU-Prozentsatz|DatabaseResourceId, ElasticPoolResourceId|
 |storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|ElasticPoolResourceId|
-|database_storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|DatabaseResourceId, ElasticPoolResourceId|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 
@@ -1080,6 +1063,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Arbeitssatz für Arbeitsspeicher|Instanz|
 |AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Instanz|
 |AverageResponseTime|Durchschnittliche Antwortzeit|Sekunden|Durchschnitt|Durchschnittliche Antwortzeit|Instanz|
+|AppConnections|Verbindungen|Count|Durchschnitt|Verbindungen|Instanz|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (Funktionen)
 
@@ -1113,8 +1097,9 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Arbeitssatz für Arbeitsspeicher|Instanz|
 |AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Instanz|
 |AverageResponseTime|Durchschnittliche Antwortzeit|Sekunden|Durchschnitt|Durchschnittliche Antwortzeit|Instanz|
-|FunctionExecutionUnits|Ausführungseinheiten für Funktion|Count|Durchschnitt|Ausführungseinheiten für Funktion|Instanz|
-|FunctionExecutionCount|Ausführungsanzahl für Funktion|Count|Durchschnitt|Ausführungsanzahl für Funktion|Instanz|
+|FunctionExecutionUnits|Ausführungseinheiten für Funktion|Count|Gesamt|Ausführungseinheiten für Funktion|Instanz|
+|FunctionExecutionCount|Ausführungsanzahl für Funktion|Count|Gesamt|Ausführungsanzahl für Funktion|Instanz|
+|AppConnections|Verbindungen|Count|Durchschnitt|Verbindungen|Instanz|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 
@@ -1138,18 +1123,18 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |DiskQueueLength|Warteschlangenlänge des Datenträgers|Count|Durchschnitt|Warteschlangenlänge des Datenträgers|Instanz|
 |HttpQueueLength|Länge der HTTP-Warteschlange|Count|Durchschnitt|Länge der HTTP-Warteschlange|Instanz|
 |ActiveRequests|Aktive Anforderungen|Count|Gesamt|Aktive Anforderungen|Instanz|
-|TotalFrontEnds|Gesamtanzahl an Front-Ends|Count|Durchschnitt|Gesamtanzahl an Front-Ends|Instanz|
-|SmallAppServicePlanInstances|Kleine Worker im App Service-Plan|Count|Durchschnitt|Kleine Worker im App Service-Plan|Instanz|
-|MediumAppServicePlanInstances|Mittlere Worker im App Service-Plan|Count|Durchschnitt|Mittlere Worker im App Service-Plan|Instanz|
-|LargeAppServicePlanInstances|Große Worker im App Service-Plan|Count|Durchschnitt|Große Worker im App Service-Plan|Instanz|
+|TotalFrontEnds|Gesamtanzahl an Front-Ends|Count|Durchschnitt|Gesamtanzahl an Front-Ends|Keine Dimensionen|
+|SmallAppServicePlanInstances|Kleine Worker im App Service-Plan|Count|Durchschnitt|Kleine Worker im App Service-Plan|Keine Dimensionen|
+|MediumAppServicePlanInstances|Mittlere Worker im App Service-Plan|Count|Durchschnitt|Mittlere Worker im App Service-Plan|Keine Dimensionen|
+|LargeAppServicePlanInstances|Große Worker im App Service-Plan|Count|Durchschnitt|Große Worker im App Service-Plan|Keine Dimensionen|
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|WorkersTotal|Gesamtanzahl an Workern|Count|Durchschnitt|Gesamtanzahl an Workern|Instanz|
-|WorkersAvailable|Verfügbare Worker|Count|Durchschnitt|Verfügbare Worker|Instanz|
-|WorkersUsed|Verwendete Worker|Count|Durchschnitt|Verwendete Worker|Instanz|
+|WorkersTotal|Gesamtanzahl an Workern|Count|Durchschnitt|Gesamtanzahl an Workern|Keine Dimensionen|
+|WorkersAvailable|Verfügbare Worker|Count|Durchschnitt|Verfügbare Worker|Keine Dimensionen|
+|WorkersUsed|Verwendete Worker|Count|Durchschnitt|Verwendete Worker|Keine Dimensionen|
 |CpuPercentage|CPU-Prozentsatz|Prozent|Durchschnitt|CPU-Prozentsatz|Instanz|
 |MemoryPercentage|Arbeitsspeicherprozentsatz|Prozent|Durchschnitt|Arbeitsspeicherprozentsatz|Instanz|
 

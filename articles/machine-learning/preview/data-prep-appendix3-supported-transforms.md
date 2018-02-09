@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 10/09/2017
-ms.openlocfilehash: 062143ae34450484cd66cd7364fb8839d697e483
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 02/01/2018
+ms.openlocfilehash: d91985849bd2483e8a28a01d63d253960190829d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>Verwenden von Datentransformationen zur Datenvorbereitung in Azure Machine Learning
 
@@ -48,7 +48,7 @@ Sie können Spalten auswählen, bevor Sie die Transformation aufrufen. Wenn der 
 Eine ausführlichere Beschreibung der Transformation **Derive Column by Example** (Spalte nach Beispiel ableiten) sowie weitere Beispiele finden Sie unter [Transformation „Derive Column by Example“](data-prep-derive-column-by-example.md).  
 
 ## <a name="split-column-by-example"></a>Split Column by Example (Spalte nach Beispiel teilen)
-Bei dieser Transformation wird eine vorhandene Spalte verwendet und dann mit dem „By Example“-Modul versucht, diese Spalte in *n* andere Spalten aufzuteilen. Sie können das automatische Teilen für die nachfolgend generierten Spalten ausführen.
+Bei dieser Transformation wird eine vorhandene Spalte verwendet und dann mit der „By Example“-Engine versucht, diese Spalte in *n* andere Spalten aufzuteilen. Sie können das automatische Teilen für die nachfolgend generierten Spalten ausführen.
 
 Eine ausführlichere Beschreibung der Transformation **Split Column by Example** (Spalte nach Beispiel teilen) und weitere Beispiele finden Sie unter [Transformation „Aufteilen von Spalten anhand eines Beispiels“](data-prep-split-column-by-example.md).
 

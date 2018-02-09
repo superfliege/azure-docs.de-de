@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: be93059111202deca2e0582112ab8f09508d6c43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bbf62986a9e6e68149a1908d079d82e2faf4bd54
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-lucidchart-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LucidChart für die automatische Benutzerbereitstellung
+# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LucidChart für die automatische Benutzerbereitstellung
 
 
 In diesem Tutorial werden die Schritte beschrieben, die Sie in LucidChart und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in LucidChart automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
 *   Einen LucidChart-Mandanten, für den mindestens der [Enterprise-Tarif](https://www.lucidchart.com/user/117598685#/subscriptionLevel) aktiviert ist 

@@ -42,6 +42,9 @@
 ### [Azure PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 ## Konfigurieren einer Umleitung
 ### [Azure PowerShell](application-gateway-configure-redirect-powershell.md)
+## Konfigurieren der externen Umleitung
+### [Azure PowerShell](tutorial-external-site-redirect-cli.md)
+### [Azure-CLI](tutorial-external-site-redirect-powershell.md)
 ## Konfigurieren von Web-Apps als Back-End-Poolmitglieder
 ### [Azure PowerShell](application-gateway-web-app-powershell.md)
 ## Konfigurieren von Integritätstests

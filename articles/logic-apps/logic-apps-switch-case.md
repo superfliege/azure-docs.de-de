@@ -3,7 +3,7 @@ title: Verwenden der switch-Anweisung in Azure Logic Apps | Microsoft-Dokumentat
 description: "Auswählen anderer in Logik-Apps auszuführender Aktionen basierend auf Ausdruckswerten unter Verwendung einer switch-Anweisung"
 services: logic-apps
 keywords: switch-Anweisung
-author: derek1ee
+author: ecfan
 manager: anneta
 editor: 
 documentationcenter: 
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: LADocs; deli
-ms.openlocfilehash: a459fb131cb9f917f2b0cf79679b04da48d76c42
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: LADocs; estfan
+ms.openlocfilehash: 8f11d18009d60ea5c74781ccef2ff7d811516750
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="perform-different-actions-in-logic-apps-with-a-switch-statement"></a>Ausführen verschiedener Aktionen in Logik-Apps mit einer switch-Anweisung
 

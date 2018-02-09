@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2018
+ms.date: 01/25/2018
 ms.author: terrylan
-ms.openlocfilehash: d42dd4ba150a28109d6bb3f7c2281d07b21a366e
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f12441a960db9f1c45bca2a5b95f3669923c7e3d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
 
@@ -26,7 +26,7 @@ Diese exemplarische Vorgehensweise veranschaulicht, wie Sie Bewertungen für Sic
 
 ## <a name="what-are-os-security-configurations"></a>Was sind Sicherheitskonfigurationen von Betriebssystemen?
 
-Azure Security Center überwacht Sicherheitskonfigurationen durch Anwenden von über 150 empfohlenen Regeln für die Härtung des Betriebssystems, einschließlich Regeln für Firewalls, Überwachung, Kennwortrichtlinien und mehr. Wenn auf einem Computer eine angreifbare Konfiguration festgestellt wird, generiert Security Center eine Sicherheitsempfehlung.
+Azure Security Center überwacht Sicherheitskonfigurationen durch Anwenden von [über 150 empfohlenen Regeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) für die Härtung des Betriebssystems, einschließlich Regeln für Firewalls, Überwachung, Kennwortrichtlinien und mehr. Wenn auf einem Computer eine angreifbare Konfiguration festgestellt wird, generiert Security Center eine Sicherheitsempfehlung.
 
 Durch Anpassen der Regeln können Organisationen steuern, welche Konfigurationsoptionen sich für ihre Umgebung besser eignen. Sie können eine benutzerdefinierte Bewertungsrichtlinie einrichten und diese auf alle passenden Computer im Abonnement anwenden.
 
@@ -60,8 +60,8 @@ Um die standardmäßige Sicherheitskonfiguration von Betriebssystemen in Securit
 3.  Wählen Sie das Abonnement aus, das Sie anpassen möchten.
 
 4. Wählen Sie unter **Richtlinienkomponenten** die Option **Sicherheitskonfigurationen bearbeiten** aus.  
-    Das Fenster **Sicherheitskonfigurationen bearbeiten** wird geöffnet. 
-    
+    Das Fenster **Sicherheitskonfigurationen bearbeiten** wird geöffnet.
+
     ![Das Fenster „Sicherheitskonfigurationen bearbeiten“](media/security-center-customize-os-security-config/blade.png)
 
 5. Führen Sie im rechten Bereich die Schritte zum Herunterladen, Bearbeiten und Hochladen der geänderten Datei aus.
@@ -70,7 +70,7 @@ Um die standardmäßige Sicherheitskonfiguration von Betriebssystemen in Securit
    > Standardmäßig hat die Konfigurationsdatei, die Sie herunterladen, das *JSON*-Format. Anleitungen zum Ändern dieser Datei finden Sie unter [Anpassen der Konfigurationsdatei](#customize-the-configuration-file).
    >
 
-   Nachdem Sie die Datei erfolgreich gespeichert haben, wird die Konfiguration auf alle VMs und Computer angewendet, die mit allen Arbeitsbereichen im Abonnement verbunden sind. Der Vorgang nimmt üblicherweise nur wenige Minuten in Anspruch, kann aber je nach Größe der Infrastruktur auch länger dauern. 
+   Nachdem Sie die Datei erfolgreich gespeichert haben, wird die Konfiguration auf alle VMs und Computer angewendet, die mit allen Arbeitsbereichen im Abonnement verbunden sind. Der Vorgang nimmt üblicherweise nur wenige Minuten in Anspruch, kann aber je nach Größe der Infrastruktur auch länger dauern.
 
 6. Um die Änderung zu übernehmen, wählen Sie **Speichern** aus. Andernfalls wird die Richtlinie nicht gespeichert.
 

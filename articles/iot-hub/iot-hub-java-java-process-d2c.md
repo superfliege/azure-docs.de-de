@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.openlocfilehash: c75624d8551adabbd993d22ac4901ca26ef40d51
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 92ab10e5b8487e03d92b69114a2e3c5302f95ed6
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="routing-messages-with-iot-hub-java"></a>Weiterleiten von Nachrichten mit Azure IoT Hub (Java)
 
@@ -105,7 +105,7 @@ In diesem Abschnitt ändern Sie die Geräte-App, die Sie im Tutorial [Erste Schr
     }
     ```
    
-    Mit dieser Methode werden vom Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaften `"level": "critical"` und `"level": "storage"` hinzugefügt. Dadurch wird eine Nachricht simuliert, die eine sofortige Aktion durch das Anwendungs-Back-End erfordert oder dauerhaft gespeichert werden muss. Die Anwendung unterstützt Weiterleiten von Nachrichten auf Basis des Nachrichtentexts.
+    Mit dieser Methode werden vom Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaften `"level": "critical"` und `"level": "storage"` hinzugefügt. Dadurch wird eine Nachricht simuliert, die eine sofortige Aktion durch das Anwendungs-Back-End erfordert oder dauerhaft gespeichert werden muss. Die Anwendung unterstützt das Weiterleiten von Nachrichten auf der Grundlage des Nachrichtentexts.
    
    > [!NOTE]
    > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für verschiedene Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
@@ -126,6 +126,9 @@ In diesem Abschnitt ändern Sie die Geräte-App, die Sie im Tutorial [Erste Schr
 In diesem Abschnitt erstellen Sie eine Service Bus-Warteschlange, verbinden sie mit Ihrem IoT Hub und konfigurieren Ihren IoT Hub zum Senden von Nachrichten an die Warteschlange, sofern eine Eigenschaft in der Nachricht vorhanden ist. Weitere Informationen zum Verarbeiten von Nachrichten von der Service Bus-Warteschlange finden Sie in [Erste Schritte mit Event Hubs][lnk-sb-queues-java].
 
 1. Erstellen Sie eine Service Bus-Warteschlange wie in [Erste Schritte mit Warteschlangen][lnk-sb-queues-java] beschrieben. Notieren Sie den Namespace und den Warteschlangennamen.
+
+    > [!NOTE]
+    > Für Service Bus-Warteschlangen und -Themen, die als IoT Hub-Endpunkte verwendet werden, dürfen **Sitzungen** oder **Duplikaterkennung** nicht aktiviert werden. Wenn eine dieser Optionen aktiviert ist, wird der Endpunkt im Azure-Portal als **Nicht erreichbar** angezeigt.
 
 2. Öffnen Sie Ihren IoT-Hub im Azure-Portal, und klicken Sie auf **Endpunkte**.
 

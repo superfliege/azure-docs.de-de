@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: b6a5ff4fa3fd0084fd910968651c6ae0fefaf2cf
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 55ad7d4b2643b448801f41aea95f3505d9fcd78f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Zertifikatobjekte in Azure Automation
 
@@ -28,11 +28,10 @@ Zertifikate können sicher in Azure Automation gespeichert werden, sodass Sie au
 > Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird mit einem Masterzertifikat verschlüsselt und in Azure Automation gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel für das Automation-Konto mit dem Masterzertifikat verschlüsselt und anschließend zum Verschlüsseln des Objekts verwendet.
 > 
 
-## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-Cmdlets
+## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-Cmdlets
+Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet.  Sie gehören zum Lieferumfang des [AzureRM.Automation-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
-Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Variablen mit Windows PowerShell verwendet. Sie gehören zum Lieferumfang des [Azure PowerShell-Moduls](../powershell-install-configure.md) , das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
-
-|Cmdlets|Beschreibung|
+|Cmdlets|BESCHREIBUNG|
 |:---|:---|
 |[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate?view=azurermps-4.3.1)|Ruft Informationen über ein Zertifikat zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Sie können mithilfe der Aktivität "Get-AutomationCertificate" nur das Zertifikat selbst abrufen.|
 |[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate?view=azurermps-4.3.1)|Erstellt ein neues Zertifikat in Azure Automation.|
@@ -40,12 +39,21 @@ Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Auto
 |[Set-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationcertificate?view=azurermps-4.3.1)|Legt die Eigenschaften für ein vorhandenes Zertifikat fest, lädt die Zertifikatdatei hoch und legt das Kennwort für eine PFX-Datei fest.|
 |[Add-AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|Lädt ein Dienstzertifikat für den angegebenen Clouddienst hoch.|
 
+## <a name="activities"></a>Aktivitäten
+Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Zertifikate in einem Runbook oder DSC-Konfigurationen verwendet.
+
+| Aktivitäten | BESCHREIBUNG |
+|:---|:---|
+|Get-AutomationCertificate|Ruft ein Zertifikat zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Gibt ein [System.Security.Cryptography.X509Certificates.X509Certificate2](https://msdn.microsoft.com/en-us/library/system.security.cryptography.x509certificates.x509certificate2.aspx)-Objekt zurück.|
+
+> [!NOTE] 
+> Vermeiden Sie die Verwendung von Variablen im Parameter „–Name“ von **Get-AutomationCertificate** in einem Runbook oder einer DSC-Konfiguration, da dies die Ermittlung von Abhängigkeiten zwischen Runbooks bzw. DSC-Konfigurationen und Automation-Variablen zur Entwurfszeit erschweren kann.
 
 ## <a name="python2-functions"></a>Python2-Funktionen
 
 Mit der Funktion in der folgenden Tabelle wird auf Zertifikate in einem Python2-Runbook zugegriffen.
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 |:---|:---|
 | automationassets.get_automation_certificate | Ruft Informationen zu einem Zertifikatasset ab. |
 

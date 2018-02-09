@@ -15,23 +15,24 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 525df7ddb8cd569bfd361da10d14ae08c1a721e0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schemaaktualisierungen für Azure Logic Apps – 1. Juni 2016
 
-Diese neue Schema- und API-Version für Azure Logic Apps enthält wichtige Verbesserungen, mit denen Logik-Apps zuverlässiger und einfacher zu verwenden sind:
+Die [aktualisierte Schemaversion](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) und API-Version für Azure Logic Apps enthält wichtige Verbesserungen, mit denen Logik-Apps zuverlässiger und einfacher zu verwenden sind:
 
 * Mit [Bereichen](#scopes) (Scopes) können Sie Aktionen als Sammlungen mit Aktionen gruppieren oder schachteln.
 * [Bedingungen und Schleifen](#conditions-loops) sind jetzt erstklassige Aktionen.
 * Genauere Sortierung der Ausführung von Aktionen mit der `runAfter`-Eigenschaft (ersetzt `dependsOn`)
 
-Informationen zum Durchführen des Upgrades für Ihre Logik-App vom Schema vom 1. August 2015 (Vorschau) auf das Schema vom 1. Juni 2016 finden Sie im [entsprechenden Abschnitt](##upgrade-your-schema).
+Informationen zum Durchführen des Upgrades für Ihre Logik-App vom Schema vom 1. August 2015 (Vorschau) auf das Schema vom 1. Juni 2016 finden Sie im [entsprechenden Abschnitt](#upgrade-your-schema).
 
 <a name="scopes"></a>
+
 ## <a name="scopes"></a>Bereiche
 
 Dieses Schema enthält Bereiche, mit denen Sie Aktionen gruppieren oder schachteln können. Beispielsweise kann eine Bedingung eine andere Bedingung enthalten. Informieren Sie sich unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](../logic-apps/logic-apps-loops-and-scopes.md) über die Syntax von Bereichen, oder sehen Sie sich dieses einfache Beispiel zu Bereichen an:
@@ -57,6 +58,7 @@ Dieses Schema enthält Bereiche, mit denen Sie Aktionen gruppieren oder schachte
 ```
 
 <a name="conditions-loops"></a>
+
 ## <a name="conditions-and-loops-changes"></a>Änderungen bei Bedingungen und Schleifen
 
 In den bisherigen Schemaversionen handelte es sich bei Bedingungen und Schleifen um Parameter, die einer einzelnen Aktion zugeordnet waren. Mit diesem Schema wird diese Einschränkung aufgehoben, sodass Bedingungen und Schleifen jetzt als Aktionstypen angezeigt werden. Informieren Sie sich unter [Schleifen, Bereiche und Auflösen von Batches in Logik-Apps](../logic-apps/logic-apps-loops-and-scopes.md) über Schleifen und Bereiche, oder sehen Sie sich dieses einfache Beispiel für eine Bedingungsaktion an:
@@ -86,6 +88,7 @@ In den bisherigen Schemaversionen handelte es sich bei Bedingungen und Schleifen
 ```
 
 <a name="run-after"></a>
+
 ## <a name="runafter-property"></a>runAfter-Eigenschaft
 
 Die `runAfter`-Eigenschaft ersetzt die `dependsOn`-Eigenschaft und ermöglicht eine höhere Genauigkeit beim Angeben der Ausführungsreihenfolge für Aktionen basierend auf dem Status vorheriger Aktionen.
@@ -104,7 +107,7 @@ Die `dependsOn`-Eigenschaft war gleichbedeutend mit dem Vorgang „Aktion wurde 
 
 ## <a name="upgrade-your-schema"></a>Durchführen des Upgrades für Ihr Schema
 
-Zum Durchführen des Upgrades auf die neue Schemaversion sind nur wenige Schritte erforderlich. Der Upgradeprozess umfasst das Ausführen des Upgradeskripts, das Speichern als neue Logik-App und, falls gewünscht, das Überschreiben der vorherigen Logik-App.
+Um ein Upgrade auf die [neueste Schemaversion](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) durchzuführen, benötigen Sie nur wenige Schritte. Der Upgradeprozess umfasst das Ausführen des Upgradeskripts, das Speichern als neue Logik-App und, falls gewünscht, das Überschreiben der vorherigen Logik-App.
 
 1. Öffnen Sie Ihre Logik-App im Azure-Portal.
 
@@ -156,7 +159,7 @@ Die `foreach`- und `until`-Schleifen sind auf eine einzelne Aktion beschränkt.
 
 ### <a name="new-trackedproperties-for-actions"></a>Neue trackedProperties-Eigenschaft für Aktionen
 
-Aktionen können jetzt über eine zusätzliche Eigenschaft mit dem Namen `trackedProperties` verfügen. Sie ist den Eigenschaften `runAfter` und `type` gleichgeordnet. Mit diesem Objekt werden bestimmte Aktionseingaben oder -ausgaben angegeben, die Sie im Rahmen der Ausgabe eines Workflows in die Azure-Diagnosetelemetrie einbeziehen möchten. Beispiel:
+Aktionen können jetzt über eine zusätzliche Eigenschaft mit dem Namen `trackedProperties` verfügen. Sie ist den Eigenschaften `runAfter` und `type` gleichgeordnet. Mit diesem Objekt werden bestimmte Aktionseingaben oder -ausgaben angegeben, die Sie im Rahmen der Ausgabe eines Workflows in die Azure-Diagnosetelemetrie einbeziehen möchten. Beispiel: 
 
 ```
 {                

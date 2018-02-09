@@ -1,194 +1,179 @@
 ---
-title: "Konfigurieren der SSL-Auslagerung – Azure Application Gateway – Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Anweisungen zum Erstellen eines Anwendungsgateways mit SSL-Auslagerung über Azure CLI 2.0."
-documentationcenter: na
+title: "Erstellen eines Anwendungsgateways mit SSL-Beendigung – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Beendigung hinzufügen."
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 01/18/2018
 ms.author: davidmu
-ms.openlocfilehash: 4bdca33dae2ce52fdeccdae9a67abb6667593f9d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c69ab3db9f23b714f7de9244e4e7015ae60a4f6e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-cli-20"></a>Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung mithilfe der Azure CLI 2.0
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit SSL-Beendigung mithilfe der Azure-Befehlszeilenschnittstelle
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-ssl-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
-> * [Klassische Azure PowerShell](application-gateway-ssl.md)
-> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
+Sie können über die Azure-Befehlszeilenschnittstelle ein [Anwendungsgateway](application-gateway-introduction.md) mit einem Zertifikat für die [SSL-Beendigung](application-gateway-backend-ssl.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) als Back-End-Server verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei virtuelle Computerinstanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden.
 
-Azure Application Gateway kann so konfiguriert werden, dass damit die Secure Sockets Layer-Sitzung (SSL) auf dem Gateway beendet wird. Auf diese Weise wird die aufwändige SSL-Entschlüsselung in der Webfarm vermieden. Die SSL-Auslagerung vereinfacht außerdem die Zertifikatverwaltung auf dem Front-End-Server.
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>Voraussetzung: Installieren der Azure CLI 2.0
+> [!div class="checklist"]
+> * Erstellen eines selbstsignierten Zertifikats
+> * Einrichten eines Netzwerks
+> * Erstellen eines Anwendungsgateways mit dem Zertifikat
+> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
-Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI) installieren](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="required-components"></a>Erforderliche Komponenten
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse oder eine virtuelle IP-Adresse (VIP) sein.
-* **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-* **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls SSL-Auslagerung konfiguriert wird).
-* **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
 
-**Zusätzliche Konfigurationshinweise**
+## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
-Für die Konfiguration von SSL-Zertifikaten sollte das Protokoll in **HttpListener** in *Https* (Groß-/Kleinschreibung beachten) geändert werden. Fügen Sie das Element **SslCertificate** zu **HttpListener** mit dem Variablenwert hinzu, der für das SSL-Zertifikat konfiguriert wurde. Der Front-End-Port sollte auf **443** aktualisiert werden.
-
-**So aktivieren Sie cookiebasierte Affinität**: Sie können ein Anwendungsgateway so konfigurieren, dass sicherstellt ist, dass eine Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Fügen Sie dazu ein Sitzungscookie ein, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf *Enabled* fest.
-
-## <a name="configure-ssl-offload-on-an-existing-application-gateway"></a>Konfigurieren der SSL-Auslagerung für ein vorhandenes Anwendungsgateway
-
-Geben Sie die folgenden Befehle zum Konfigurieren der SSL-Auslagerung an ein vorhandenes Anwendungsgateway ein:
+Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für dieses Tutorial erstellen Sie mit dem openssl-Befehl ein selbstsigniertes Zertifikat und eine PFX-Datei.
 
 ```azurecli-interactive
-#!/bin/bash
-
-# Create a new front end port to be used for SSL
-az network application-gateway frontend-port create \
-  --name sslport \
-  --port 443 \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
-# Upload the .pfx certificate for SSL offload
-az network application-gateway ssl-cert create \
-  --name "newcert" \
-  --cert-file /home/azureuser/self-signed/AdatumAppGatewayCert.pfx \
-  --cert-password P@ssw0rd \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
-# Create a new listener referencing the port and certificate created earlier
-az network application-gateway http-listener create \
-  --frontend-ip "appGatewayFrontendIP" \
-  --frontend-port sslport  \
-  --name sslListener \
-  --ssl-cert newcert \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
-# Create a new back-end pool to be used
-az network application-gateway address-pool create \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG" \
-  --name "appGatewayBackendPool2" \
-  --servers 10.0.0.7 10.0.0.8
-
-# Create a new back-end HTTP settings using the new probe
-az network application-gateway http-settings create \
-  --name "settings2" \
-  --port 80 \
-  --cookie-based-affinity Enabled \
-  --protocol "Http" \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
-# Create a new rule linking the listener to the back-end pool
-az network application-gateway rule create \
-  --name "rule2" \
-  --rule-type Basic \
-  --http-settings settings2 \
-  --http-listener ssllistener \
-  --address-pool temp1 \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
-
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
-## <a name="create-an-application-gateway-with-ssl-offload"></a>Erstellen eines Anwendungsgateways mit SSL-Auslagerung
-
-Im folgenden Beispiel wird ein Anwendungsgateway mit SSL-Auslagerung erstellt. Das Zertifikat und das Zertifikatkennwort müssen auf einen gültigen privaten Schlüssel aktualisiert werden.
+Geben Sie Werte ein, die für Ihr Zertifikat sinnvoll sind. Sie können die Standardwerte übernehmen.
 
 ```azurecli-interactive
-#!/bin/bash
+openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
+```
 
-# Creates an application gateway with SSL offload
+Geben Sie das Kennwort für das Zertifikat ein. In diesem Beispiel wird *Azure123456!* verwendet.
+
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe.
+
+Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroupAG* am Standort *eastus*.
+
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
+```
+
+## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
+
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+
+```azurecli-interactive
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myAGSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myBackendSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
+
+## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
+
+Sie können [az network application-gateway create](/cli/azure/application-gateway#create) verwenden, um das Anwendungsgateway zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. 
+
+Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myAGPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben. In diesem Beispiel ordnen Sie das erstellte Zertifikat und das zugehörige Kennwort zu, wenn Sie das Anwendungsgateway erstellen. 
+
+```azurecli-interactive
 az network application-gateway create \
-  --name "AdatumAppGateway3" \
-  --location "eastus" \
-  --resource-group "AdatumAppGatewayRG2" \
-  --vnet-name "AdatumAppGatewayVNET2" \
-  --cert-file /home/azureuser/self-signed/AdatumAppGatewayCert.pfx \
-  --cert-password P@ssw0rd \
-  --vnet-address-prefix "10.0.0.0/16" \
-  --subnet "Appgatewaysubnet" \
-  --subnet-address-prefix "10.0.0.0/28" \
-  --frontend-port 443 \
-  --servers "10.0.0.5 10.0.0.4" \
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --subnet myAGsubnet \
   --capacity 2 \
-  --sku "Standard_Small" \
-  --http-settings-cookie-based-affinity "Enabled" \
-  --http-settings-protocol "Http" \
-  --frontend-port "80" \
-  --routing-rule-type "Basic" \
-  --http-settings-port "80" \
-  --public-ip-address "pip" \
-  --public-ip-address-allocation "dynamic"
+  --sku Standard_Medium \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 443 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --public-ip-address myAGPublicIPAddress \
+  --cert-file appgwcert.pfx \
+  --cert-password "Azure123456!"
+
 ```
 
-## <a name="get-an-application-gateway-dns-name"></a>Abrufen des DNS-Namens eines Anwendungsgateways
+ Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
-Nach dem Erstellen des Gateways wird das Front-End für die Kommunikation konfiguriert.  Application Gateway erfordert einen dynamisch zugewiesenen DNS-Namen, wenn eine öffentliche IP-Adresse verwendet wird, die nicht benutzerfreundlich ist. Um zu gewährleisten, dass Endbenutzer auf das Anwendungsgateway zugreifen können, können Sie mit einem CNAME-Eintrag auf den öffentlichen Endpunkt des Anwendungsgateways verweisen. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). 
+- *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
+- *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
+- *appGatewayHttpListener*: Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
+- *appGatewayFrontendIP*: Weist *myAGPublicIPAddress* zu *appGatewayHttpListener* zu.
+- *rule1*:Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
 
-Rufen Sie zum Konfigurieren eines Alias mithilfe des **PublicIPAddress**-Elements, das an das Anwendungsgateway angefügt ist, Details zum Anwendungsgateway sowie die zugeordnete IP-Adresse/den zugeordneten DNS-Namen ab. Verwenden Sie den DNS-Namen des Anwendungsgateways zum Erstellen eines CNAME-Eintrags, der die beiden Webanwendungen an diesen DNS-Namen verweist. Die Verwendung von A-Einträgen wird nicht empfohlen, da sich die VIP beim Neustart des Anwendungsgateways möglicherweise ändert.
+## <a name="create-a-virtual-machine-scale-set"></a>Erstellen einer Skalierungsgruppe für virtuelle Computer
 
+In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe, die Server für den standardmäßigen Back-End-Pool im Anwendungsgateway bereitstellt. Die virtuellen Computer in der Skalierungsgruppe sind *myBackendSubnet* und *appGatewayBackendPool* zugeordnet. Zum Erstellen der Skalierungsgruppe können Sie [az vmss create](/cli/azure/vmss#az_vmss_create) verwenden.
 
 ```azurecli-interactive
-az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
+az vmss create \
+  --name myvmss \
+  --resource-group myResourceGroupAG \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --admin-password Azure123456! \
+  --instance-count 2 \
+  --vnet-name myVNet \
+  --subnet myBackendSubnet \
+  --vm-sku Standard_DS2 \
+  --upgrade-policy-mode Automatic \
+  --app-gateway myAppGateway \
+  --backend-pool-name appGatewayBackendPool
 ```
 
+### <a name="install-nginx"></a>Installieren von NGINX
+
+```azurecli-interactive
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroupAG \
+  --vmss-name myvmss \
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  "commandToExecute": "./install_nginx.sh" }'
 ```
-{
-  "dnsSettings": {
-    "domainNameLabel": null,
-    "fqdn": "8c786058-96d4-4f3e-bb41-660860ceae4c.cloudapp.net",
-    "reverseFqdn": null
-  },
-  "etag": "W/\"3b0ac031-01f0-4860-b572-e3c25e0c57ad\"",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/publicIPAddresses/pip2",
-  "idleTimeoutInMinutes": 4,
-  "ipAddress": "40.121.167.250",
-  "ipConfiguration": {
-    "etag": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/applicationGateways/AdatumAppGateway2/frontendIPConfigurations/appGatewayFrontendIP",
-    "name": null,
-    "privateIpAddress": null,
-    "privateIpAllocationMethod": null,
-    "provisioningState": null,
-    "publicIpAddress": null,
-    "resourceGroup": "AdatumAppGatewayRG",
-    "subnet": null
-  },
-  "location": "eastus",
-  "name": "pip2",
-  "provisioningState": "Succeeded",
-  "publicIpAddressVersion": "IPv4",
-  "publicIpAllocationMethod": "Dynamic",
-  "resourceGroup": "AdatumAppGatewayRG",
-  "resourceGuid": "3c30d310-c543-4e9d-9c72-bbacd7fe9b05",
-  "tags": {
-    "cli[2] owner[administrator]": ""
-  },
-  "type": "Microsoft.Network/publicIPAddresses"
-}
+
+## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
+
+Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste Ihres Browsers ein.
+
+```azurepowershell-interactive
+az network public-ip show \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
 ```
+
+![Sicherheitswarnung](./media/application-gateway-ssl-cli/application-gateway-secure.png)
+
+Wenn Sie ein selbstsigniertes Zertifikat verwendet haben und die Sicherheitswarnung akzeptieren möchten, wählen Sie **Details** und anschließend **Webseite trotzdem laden** aus. Die gesicherte NGINX-Website wird dann wie im folgenden Beispiel angezeigt:
+
+![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, lesen Sie den Abschnitt [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich](application-gateway-ilb.md).
+In diesem Tutorial haben Sie Folgendes gelernt:
 
-Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unter:
+> [!div class="checklist"]
+> * Erstellen eines selbstsignierten Zertifikats
+> * Einrichten eines Netzwerks
+> * Erstellen eines Anwendungsgateways mit dem Zertifikat
+> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
-* [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
-* [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
+Weitere Informationen zu Anwendungsgateways und den zugehörigen Ressourcen finden Sie in den Artikeln mit empfohlenen Vorgehensweisen.

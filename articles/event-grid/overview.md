@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: e6665b3b0c6e92ed462f18dbd41d62ccd9304928
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 5e700e3e9d17e790083facf00c7f4b8decf9037a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Einführung in Azure Event Grid
 
@@ -22,18 +22,20 @@ Sie können Filter zum Weiterleiten bestimmter Ereignisse an verschiedene Endpun
 
 Event Grid unterstützt derzeit die folgenden Regionen:
 
-* USA (Mitte)
-*   USA (Ost)
-*   USA (Ost) 2
+* Asien, Südosten
+* Asien, Osten
+* USA, Mitte
+*   USA, Osten
+*   USA, Osten 2
+* Europa, Westen
+* Europa, Norden
 *   USA, Westen-Mitte
-*   USA (Westen)
+*   USA, Westen
 *   USA, Westen 2
-
-Andere Regionen werden hinzugefügt.
 
 Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Verwendung von Event Grid einsteigen möchten, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md). Die folgende Abbildung zeigt, wie Event Grid Verleger und Handler verbindet, bietet jedoch keine umfassende Liste der unterstützten Optionen.
 
-![Event Grid – funktionales Modell](./media/overview/event-grid-functional-model.png)
+![Event Grid – funktionales Modell](./media/overview/functional-model.png)
 
 ## <a name="event-publishers"></a>Ereignisherausgeber
 
@@ -42,10 +44,10 @@ Derzeit bieten die folgenden Azure-Dienste integrierte Herausgeberunterstützung
 * Azure-Abonnements (Verwaltungsvorgänge)
 * Benutzerdefinierte Themen
 * Event Hubs
+* IoT Hub
 * Ressourcengruppen (Verwaltungsvorgänge)
 * Speicherblob
-
-Weitere Azure-Dienste werden dieses Jahr hinzugefügt.
+* Konten vom Typ „Allgemein v2“
 
 ## <a name="event-handlers"></a>Ereignishandler
 
@@ -58,7 +60,7 @@ Derzeit bieten die folgenden Azure-Dienste integrierte Handlerunterstützung fü
 * Microsoft Flow
 * WebHooks
 
-Weitere Azure-Dienste werden dieses Jahr hinzugefügt.
+Wenn Sie Azure Functions als Handler einsetzen, verwenden Sie den Event Grid-Trigger anstelle der generischen HTTP-Trigger. Event Grid überprüft Event Grid-Funktionstrigger automatisch. Bei generischen HTTP-Triggern müssen Sie die [Überprüfungsantwort](security-authentication.md#webhook-event-delivery) implementieren.
 
 ## <a name="concepts"></a>Konzepte
 
@@ -111,9 +113,7 @@ Event Grid verknüpft Ihre App mit anderen Diensten. Sie können z.B. ein benutz
 
 ## <a name="how-much-does-event-grid-cost"></a>Was kostet Event Grid?
 
-Das Preismodell von Azure Event Grid orientiert sich an einer Zahlung pro Ereignis, sodass Sie nur für die tatsächliche Verwendung zahlen.
-
-Event Grid kostet 0,60 $ pro Million Vorgänge ($0,30 während der Vorschau), und die ersten 100.000 Vorgänge pro Monat sind kostenlos. Vorgänge sind definiert als Ereigniseingänge, erweiterte Übereinstimmungen, Übermittlungsversuche und Verwaltungsaufrufe.  Weitere Einzelheiten finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/event-grid/).
+Das Preismodell von Azure Event Grid orientiert sich an einer Zahlung pro Ereignis, sodass Sie nur für die tatsächliche Verwendung zahlen. Die ersten 100.000 Vorgänge pro Monat sind kostenlos. Vorgänge sind definiert als Ereigniseingänge, erweiterte Übereinstimmungen, Übermittlungsversuche und Verwaltungsaufrufe. Details finden Sie auf der Seite mit der [Preisübersicht](https://azure.microsoft.com/pricing/details/event-grid/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

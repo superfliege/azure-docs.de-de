@@ -17,14 +17,16 @@
 # Beispiele
 ## [Deploy Azure resources with Terraform in Bash (Bereitstellen von Azure-Ressourcen mit Terraform in Bash)](example-terraform-bash.md)
 
+## [Ausführen von Ansible in Bash](../ansible/ansible-run-playbook-in-cloudshell.md)
+
 # [Einbetten von Cloud Shell](embed-cloud-shell.md)
 
 # [Problembehandlung](troubleshooting.md)
 
-# Referenz
-## [Azure-Befehlszeilenschnittstelle](/cli/azure)
+# Verweis
+## [Azure-CLI](/cli/azure)
 ## [Azure PowerShell](/powershell/azure)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

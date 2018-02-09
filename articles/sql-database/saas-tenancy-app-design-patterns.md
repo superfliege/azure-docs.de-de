@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: billgib
-ms.openlocfilehash: 1b6c780000d8c5e31a78f7f83ae74c002e8f8349
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: c4c5b79342aaa3c9b09e922956b095e8191cafd9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
@@ -111,7 +111,7 @@ Für die Verwaltungsvorgänge können Skripts erstellt werden, und sie können �
 
 Beispielsweise könnten Sie die Wiederherstellung eines einzelnen Mandanten zu einem früheren Zeitpunkt automatisieren.  Bei der Wiederherstellung muss lediglich eine Einzelinstanzdatenbank wiederhergestellt werden, in der der Mandant gespeichert wird.  Diese Wiederherstellung hat keine Auswirkungen auf andere Mandanten, was wiederum zeigt, dass Verwaltungsvorgänge in den einzelnen Mandanten auf hochgradig granularer Ebene stattfinden.
 
-## <a name="d-multi-tenant-app-with-multi-tenant-databases"></a>D. Mehrinstanzenfähige App mit mehrinstanzenfähigen Datenbanken
+## <a name="d-multi-tenant-app-with-multi-tenant-databases"></a>D: Mehrinstanzenfähige App mit mehrinstanzenfähigen Datenbanken
 
 Ein weiteres verfügbares Muster besteht darin, viele Mandanten in einer mehrinstanzenfähigen Datenbank zu speichern.  Die Anwendungsinstanz kann beliebig viele mehrinstanzenfähige Datenbanken umfassen.  Das Schema einer mehrinstanzenfähigen Datenbank muss eine oder mehrere Spalten für die Mandanten-ID enthalten, damit die Daten eines beliebigen Mandanten selektiv abgerufen werden können.  Zudem sind für das Schema eventuell einige Tabellen oder Spalten erforderlich, die nur von einer Teilmenge von Mandanten verwendet werden.  Statische Codes und Referenzdaten werden jedoch nur einmal gespeichert und von allen Mandanten gemeinsam genutzt.
 

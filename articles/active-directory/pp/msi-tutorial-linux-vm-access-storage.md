@@ -3,7 +3,7 @@ title: Zugreifen auf Azure Storage mithilfe einer vom Benutzer zugewiesenen MSI 
 description: "In diesem Tutorial wird erläutert, wie Sie eine vom Benutzer zugewiesene verwaltete Dienstidentität (Managed Service Identity, MSI) auf einer Linux-VM verwenden, um auf Azure Storage zuzugreifen."
 services: active-directory
 documentationcenter: 
-author: bryanLa
+author: daveba
 manager: mtillman
 editor: arluca
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/15/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 91fe06825d1db586b715617241b0ca39115414c0
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 1d8641fef3a60ffcde6d0a4ac7e30d4e6cd3b169
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-storage"></a>Zugreifen auf Azure Storage mithilfe einer vom Benutzer zugewiesenen verwalteten Dienstidentität (MSI) auf einer Linux-VM
 
@@ -134,10 +134,10 @@ Da Dateien Blob Storage erfordern, müssen wir einen Blobcontainer erstellen, in
 
 Mithilfe einer MSI kann der Code Zugriffstoken zur Authentifizierung von Ressourcen abrufen, die die Azure AD-Authentifizierung unterstützen. In diesem Tutorial verwenden Sie Azure Storage.
 
-Zuerst gewähren Sie der MSI Zugriff auf einen Azure Storage-Container. In diesem Fall verwenden Sie den zuvor erstellten Container. Aktualisieren Sie abhängig von Ihrer Umgebung die Werte für `<MSI PRINCIPALID>`, `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<STORAGE ACCOUNT NAME>` und `<CONTAINER NAME>`. Ersetzen Sie `<CLIENT ID>` durch die Eigenschaft `clientId`, die unter [Erstellen einer vom Benutzer zugewiesenen MSI](#create-a-user-assigned-msi) vom Befehl `az identity create` zurückgegeben wurde:
+Zuerst gewähren Sie der MSI Zugriff auf einen Azure Storage-Container. In diesem Fall verwenden Sie den zuvor erstellten Container. Aktualisieren Sie abhängig von Ihrer Umgebung die Werte für `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<STORAGE ACCOUNT NAME>` und `<CONTAINER NAME>`. Ersetzen Sie `<MSI PRINCIPALID>` durch die Eigenschaft `principalId`, die unter [Erstellen einer vom Benutzer zugewiesenen MSI](#create-a-user-assigned-msi) vom Befehl `az identity create` zurückgegeben wurde:
 
 ```azurecli-interactive
-az role assignment create --assignee <MSI PRINCIPALID> --role ‘Reader’ --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/blobServices/default/containers/<CONTAINER NAME>"
+az role assignment create --assignee <MSI PRINCIPALID> --role 'Reader' --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/blobServices/default/containers/<CONTAINER NAME>"
 ```
 
 Die Antwort enthält Details zu der erstellten Rollenzuweisung:

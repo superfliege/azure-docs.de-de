@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 29b25a476344ed048673039beacdffd39469ec85
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: afa609d7b47f3c743f5d3bfd4011e09c762ccbd1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -70,7 +70,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F: Kann ich die Felder „Telefon für Authentifizierung“, „E-Mail-Adresse zur Authentifizierung“ oder „Alternatives Telefon für Authentifizierung“ im Namen meiner Benutzer synchronisieren oder festlegen?**
 
-  > **A:** Nein, dies ist zurzeit noch nicht möglich.
+  > **A:** Die Felder, die von einem globalen Administrator festgelegt werden können, sind im Artikel mit den [Datenanforderungen von Azure AD SSPR](active-directory-passwords-data.md) definiert.
   >
   >
 * **F: Wie bestimmt das Registrierungsportal, welche Optionen meinen Benutzern angezeigt werden sollen?**

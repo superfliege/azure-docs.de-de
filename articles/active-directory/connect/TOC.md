@@ -2,7 +2,7 @@
 ## [Was ist Azure AD Connect?](active-directory-aadconnect.md)
 ## [Was ist Azure AD Connect-Synchronisierung?](active-directory-aadconnectsync-whatis.md)
 ### [Benutzer und Kontakte](active-directory-aadconnectsync-understanding-users-and-contacts.md)
-### [Architektur](active-directory-aadconnectsync-understanding-architecture.md)
+### [Architecture](active-directory-aadconnectsync-understanding-architecture.md)
 ### [Deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
 #### [Ausdrücke für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
 ### [Standardkonfiguration](active-directory-aadconnectsync-understanding-default-configuration.md)
@@ -55,6 +55,7 @@
 ### [Kennwortsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD-Dienstkonto](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [Installations-Assistent](active-directory-aadconnectsync-installation-wizard.md)
+### [Auffüllen von „UserPrincipalName“](active-directory-aadconnect-userprincipalname.md)
 ### [Ändern der Standardkonfiguration](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [Konfigurieren der Filterung](active-directory-aadconnectsync-configure-filtering.md)
 ### [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)
@@ -84,7 +85,7 @@
 ### [Durch „userCertificate“ verursachter LargeObject-Fehler](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
 ### [Wiederherstellen der LocalDB-Obergrenze von 10 GB](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Identitätssynchronisierung und Resilienz bei doppelten Attributen](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [Erforderliche Ports und Protokolle für die Hybrid-Identität](active-directory-aadconnect-ports.md)
@@ -109,7 +110,7 @@
 ## [Hybrididentität – Entwurfshandbuch](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)
 
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Häufig gestellte Fragen zu Azure AD Connect](active-directory-aadconnect-faq.md)
 ##[DirSync – Veraltet](active-directory-aadconnect-dirsync-deprecated.md)

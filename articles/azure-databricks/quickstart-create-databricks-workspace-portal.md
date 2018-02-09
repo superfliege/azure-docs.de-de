@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: c471baa287c3a51e9787cc2103b23c2bab458db2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 8a91e92e0e535b047ddfcfeff53de72d769f05c7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal
 
@@ -146,7 +146,7 @@ Gehen Sie wie folgt vor, um ein Notizbuch in Databricks zu erstellen, das Notizb
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie beim Erstellen des Spark-Clusters das Kontrollkästchen **Terminate after ___ minutes of activity** (Nach ___ Minuten Inaktivität beenden) aktiviert haben, wird der Cluster automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
+Wenn Sie beim Erstellen des Spark-Clusters das Kontrollkästchen **Terminate after __ minutes of inactivity** (Nach __ Minuten Inaktivität beenden) aktiviert haben, wird der Cluster automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
 
 Andernfalls muss der Cluster manuell beendet werden. Klicken Sie hierzu im linken Bereich des Azure Databricks-Arbeitsbereichs auf **Cluster**. Bewegen Sie zum Beenden des Clusters den Cursor unter der Spalte **Aktionen** auf die Auslassungspunkte, und klicken Sie auf das Symbol **Beenden**.
 

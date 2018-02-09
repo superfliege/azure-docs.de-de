@@ -12,86 +12,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: f8ba1a6308dfe234fff700d363fb9252b94570e2
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 5f691fb88c6764309bf012dfc65b561ec87afede
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
 
 *Dieses Feature von Application Insights ist für Azure App Service allgemein und für Azure-Computeressourcen als Vorschauversion verfügbar.*
 
-Ermitteln Sie den Zeitaufwand für die einzelnen Methoden in Ihrer Live-Webanwendung mithilfe von [Application Insights Profiler](app-insights-overview.md). Das Application Insights-Profilerstellungstool zeigt detaillierte Profile der aktiven Anforderungen, die von Ihrer App verarbeitet wurden, und hebt den *langsamsten Pfad* hervor, der die meiste Zeit beansprucht. Der Profiler wählt automatisch Beispiele mit unterschiedlichen Antwortzeiten aus, und verwendet anschließend verschiedene Techniken, um den Mehraufwand zu minimieren.
+Ermitteln Sie bei der Verwendung von [Application Insights](app-insights-overview.md) den Zeitaufwand für die einzelnen Methoden in Ihrer Live-Webanwendung. Das Application Insights-Profilerstellungstool zeigt detaillierte Profile der aktiven Anforderungen, die von Ihrer App verarbeitet wurden, und hebt den *langsamsten Pfad* hervor, der die meiste Zeit beansprucht. Für Anforderungen mit anderen Antwortzeiten wird anhand von Stichproben ein Profil erstellt. Zusatzaufwand für Ihre Anwendung wird mithilfe verschiedener Verfahren minimiert.
 
-Der Profiler kann momentan für ASP.NET-Web-Apps verwendet werden, die unter Azure App Services und mindestens mit der Basic-Dienstebene ausgeführt werden.
+Der Profiler kann momentan für ASP.NET- und ASP.NET Core-Web-Apps verwendet werden, die unter Azure App Service und mindestens mit Diensttarif **Basic** ausgeführt werden.
 
-## <a id="installation"></a> Aktivieren des Profilers
+## <a id="installation"></a> Aktivieren des Profilers für App Services-Web-Apps
+Wenn Sie die Anwendung bereits in einer App Services-Instanz veröffentlicht, im Quellcode aber nicht die Verwendung von Application Insights festgelegt haben, navigieren Sie im Azure-Portal zum App Services-Bereich, und klicken Sie auf **Überwachung > Application Insights**. Befolgen Sie die Anweisungen in diesem Bereich, um zur Überwachung der Web-App eine neue Application Insights-Ressource zu erstellen oder eine vorhandene Ressource auszuwählen. Beachten Sie, dass Profiler nur mit dem App Services-Tarif **Basic** oder einem höheren Tarif verwendet werden kann.
 
-[Installieren Sie Application Insights](app-insights-asp-net.md) in Ihrem Code. Sollte es bereits installiert sein, vergewissern Sie sich, dass Sie über die neueste Version verfügen. Um auf die neueste Version zu prüfen, klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie dann **NuGet-Pakete verwalten** > **Updates** > **Alle Pakete aktualisieren** aus. Stellen Sie Ihre App dann erneut bereit.
+![Aktivieren von App Insights im App Services-Portal][appinsights-in-appservices]
 
-*Sie verwenden ASP.NET Core? Hier erhalten Sie [weitere Informationen](#aspnetcore).*
+Wenn Sie Zugriff auf den Projektquellcode besitzen, [installieren Sie Application Insights](app-insights-asp-net.md). Sollte es bereits installiert sein, vergewissern Sie sich, dass Sie über die neueste Version verfügen. Um auf die neueste Version zu prüfen, klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie dann **NuGet-Pakete verwalten** > **Updates** > **Alle Pakete aktualisieren** aus. Stellen Sie dann Ihre App bereit.
+
+Eine ASP.NET Core-Anwendung muss „Microsoft.ApplicationInsights.AspNetCore NuGet-Paket 2.1.0-beta6“ oder höher installieren, um mit dem Profiler arbeiten zu können. Seit dem 27. Juni 2017 unterstützen wir keine früheren Versionen mehr.
 
 Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Application Insights-Ressource für Ihre Web-App. Wählen Sie **Leistung** > **Application Insights Profiler aktivieren** aus.
 
 ![Wählen Sie das Banner zum Aktivieren des Profilers aus][enable-profiler-banner]
 
-Alternativ können Sie auch **Konfigurieren** auswählen, um den Status anzuzeigen und den Profiler zu aktivieren bzw. zu deaktivieren.
+Alternativ können Sie auch die Konfiguration für **Profiler** auswählen, um den Status anzuzeigen und den Profiler zu aktivieren bzw. zu deaktivieren.
 
-![Wählen Sie unter „Leistung“ die Option „Konfigurieren“ aus][performance-blade]
+![Auswählen der Profilerkonfiguration unter „Leistung“][performance-blade]
 
-Mit Application Insights konfigurierte Web-Apps sind auf dem Blatt **Konfigurieren** aufgeführt. Befolgen Sie ggf. die Anweisungen zum Installieren des Profiler-Agents. Falls noch keine Web-Apps mit Application Insights konfiguriert wurden, wählen Sie **Verknüpfte Apps hinzufügen** aus.
+Mit Application Insights konfigurierte Web-Apps sind im Konfigurationsbereich für **Profiler** aufgeführt. Wenn Sie die obigen Schritte ausgeführt haben, sollte der Profileragent bereits installiert sein. Aktivieren Sie im Konfigurationsbereich für **Profiler** die Option **Profiler aktivieren**.
 
-Steuern Sie den Profiler für Ihre verknüpften Web-Apps, indem Sie im Bereich **Konfigurieren** die Option **Profiler aktivieren** oder **Profiler deaktivieren** auswählen.
+Befolgen Sie ggf. die Anweisungen zum Installieren des Profiler-Agents. Falls noch keine Web-Apps mit Application Insights konfiguriert wurden, wählen Sie **Verknüpfte Apps hinzufügen** aus.
 
 ![Optionen im Bereich „Konfigurieren“][linked app services]
 
 Im Gegensatz zu Web-Apps, die über App Service-Pläne gehostet werden, werden auf Azure-Computeressourcen gehostete Anwendungen (z.B. Azure Virtual Machine, VM-Skalierungsgruppen, Azure Service Fabric oder Azure Cloud Services) nicht direkt von Azure verwaltet. In diesem Fall ist keine Web-App vorhanden, mit der eine Verknüpfung hergestellt werden kann. Statt eine Verknüpfung mit einer App herzustellen, wählen Sie die Schaltfläche **Profiler aktivieren** aus.
 
-## <a name="disable-the-profiler"></a>Deaktivieren von Profiler
-Wenn Sie den Profiler für eine einzelne App Service-Instanz beenden oder neu starten möchten, wechseln Sie unter **Webaufträge** zur App Service-Ressource. Wenn Sie den Profiler löschen möchten, wechseln Sie zu **Erweiterungen**.
-
-![Deaktivieren von Profiler für einen Webauftrag][disable-profiler-webjob]
-
-Es wird empfohlen, den Profiler für alle Web-Apps zu aktivieren, um Leistungsprobleme möglichst schnell zu ermitteln.
-
-Wenn Sie Änderungen an Ihrer Webanwendung mithilfe von WebDeploy bereitstellen, achten Sie darauf, dass der Ordner „App_Data“ bei der Bereitstellung nicht gelöscht wird. Andernfalls werden die Dateien der Profiler-Erweiterung gelöscht, wenn Sie die Webanwendung das nächste Mal in Azure bereitstellen.
-
-### <a name="using-profiler-with-azure-vms-and-azure-compute-resources-preview"></a>Verwenden des Profilers mit virtuellen Azure-Computern und Azure-Computeressourcen (Vorschau)
-
-Wenn Sie [Application Insights für Azure App Services zur Laufzeit aktivieren](app-insights-azure-web-apps.md#run-time-instrumentation-with-application-insights), ist Application Insights Profiler automatisch verfügbar. Wenn Sie Application Insights bereits für die Ressource aktiviert haben, müssen Sie mit dem Konfigurations-Assistenten möglicherweise ein Update auf die aktuelle Version ausführen.
+### <a name="enable-the-profiler-for-azure-compute-resources-preview"></a>Aktivieren des Profilers für Azure-Computeressourcen (Vorschauversion)
 
 Informieren Sie sich über die [Vorschauversion von Profiler für Azure-Computeressourcen](https://go.microsoft.com/fwlink/?linkid=848155).
 
-
-## <a name="limitations"></a>Einschränkungen
-
-Die Standardaufbewahrung von Daten beträgt fünf Tage. Die maximale pro Tag erfasste Datenmenge beträgt 10 GB.
-
-Es fallen keine Gebühren für die Verwendung des Profiler-Diensts an. Für die Nutzung des Profiler-Diensts muss Ihre Web-App mindestens im Basic-Tarif von App Service gehostet werden.
-
-## <a name="overhead-and-sampling-algorithm"></a>Auslastung und Algorithmus für Stichprobenerstellung
-
-Der Profiler wird stündlich nach dem Zufallsprinzip zwei Minuten auf jedem virtuellen Computer ausgeführt, der die Anwendung hostet und auf dem der Profiler für die Erfassung von Ablaufverfolgungen aktiviert ist. Während der Ausführung des Profilers erhöht sich die CPU-Auslastung des Servers um 5 % bis 15 %.
-Je mehr Server zum Hosten der Anwendung zur Verfügung stehen, desto weniger wirkt sich der Profiler auf die Gesamtleistung der Anwendung aus. Die Ursache ist, dass der Profiler durch den Samplingalgorithmus immer nur auf 5 % der Server ausgeführt wird. Mehr Server sind zum Verarbeiten von Webanforderungen verfügbar, um den Servermehraufwand auszugleichen, der durch die Ausführung des Profilers verursacht wird.
-
-
 ## <a name="view-profiler-data"></a>Anzeigen von Profiler-Daten
 
-Wechseln Sie zum Bereich **Leistung**, und scrollen Sie dann nach unter zur Liste der Vorgänge.
+**Stellen Sie sicher, dass Ihre Anwendung Datenverkehr empfängt.** Beim Ausführen eines Experiments können Sie mithilfe der [Application Insights-Leistungstests](https://docs.microsoft.com/en-us/vsts/load-test/app-service-web-app-performance-test) Anforderungen an die Web-App generieren. Wenn Sie Profiler gerade erst aktiviert haben, können Sie einen kurzen Auslastungstest von ca. 15 Minuten ausführen und sollten daraufhin Profiler-Ablaufverfolgungen erhalten. Falls Profiler bereits eine Weile aktiviert ist, wird Profiler nach dem Zufallsprinzip zweimal stündlich jeweils zwei Minuten lang ausgeführt. Es wird empfohlen, einen einstündigen Auslastungstest auszuführen, um sicherzustellen, dass Sie Profiler-Beispielablaufverfolgungen erhalten.
 
-![Application Insights-Bereich „Leistung“, Spalte „Beispiele“][performance-blade-examples]
-
-Die Tabelle der Vorgänge enthält folgende Spalten:
-
-* **ANZAHL**: Die Anzahl dieser Anforderungen im Zeitbereich des Bereichs **ANZAHL**.
-* **MEDIAN**: Die typische Reaktionszeit Ihrer App bei einer Anforderung. Die Hälfte aller Reaktionen war schneller als dieser Wert.
-* **95. PERZENTIL**: 95 % der Reaktionen waren schneller als dieser Wert. Sollte sich dieser Wert deutlich vom Median unterscheiden, liegt bei Ihrer App unter Umständen ein vorübergehendes Problem vor. (Eine andere denkbare Erklärung wäre ein Designfeature wie Caching.)
-* **PROFILER-ABLAUFVERFOLGUNGEN**: Ein Symbol gibt an, dass der Profiler Stapelüberwachungen für diesen Vorgang erfasst hat.
-
-Wählen Sie **Ansicht** aus, um den Ablaufverfolgungs-Explorer zu öffnen. Der Explorer zeigt mehrere vom Profiler erfasste Beispiele, klassifiziert nach Reaktionszeit.
-
-Wenn Sie den Bereich für die **Leistungsvorschau** verwenden, wechseln Sie zum Abschnitt **Aktion ausführen** auf der Seite, um Profiler-Ablaufverfolgungen anzuzeigen. Wählen Sie die Schaltfläche **Profiler-Ablaufverfolgungen** aus.
+Nachdem Ihre Anwendung Datenverkehr empfangen hat, navigieren Sie zum Blatt **Leistung** und dann zum Abschnitt **Aktion ausführen** der Seite, um Profiler-Ablaufverfolgungen anzuzeigen. Wählen Sie die Schaltfläche **Profiler-Ablaufverfolgungen** aus.
 
 ![Profiler-Ablaufverfolgungen im Application Insights-Bereich für die Leistungsvorschau][performance-blade-v2-examples]
 
@@ -113,7 +81,7 @@ Der Dienst-Profiler von Microsoft analysiert die Leistung Ihrer Anwendung mithil
 Die Aufrufliste in der Zeitachsenansicht ist das Ergebnis des oben erwähnten Samplings und der Instrumentierung. Da jede Stichprobe die vollständige Aufrufliste des Threads erfasst, enthält sie auch Code aus Microsoft .NET Framework sowie aus anderen Frameworks, auf die Sie verweisen.
 
 ### <a id="jitnewobj"></a>Objektzuordnung („clr!JIT\_New“ oder „clr!JIT\_Newarr1“)
-**clr!JIT\_New** und **clr!JIT\_Newarr1** sind Hilfsfunktionen in .NET Framework, die Arbeitsspeicher von einem verwalteten Heap zuweisen. **clr!JIT\_New** wird aufgerufen, wenn ein Objekt zugeordnet wird. **clr!JIT\_Newarr1** wird aufgerufen, wenn ein Objektarray zugeordnet wird. Diese beiden Funktionen sind in der Regel sehr schnell und benötigen relativ wenig Zeit. Sollte **clr!JIT\_New** oder **clr!JIT\_Newarr1** auf Ihrer Zeitachse viel Zeit beanspruchen, deutet das darauf hin, dass der Code viele Objekte zuordnet und eine erhebliche Menge an Arbeitsspeicher beansprucht.
+**clr!JIT\_New** und **clr!JIT\_Newarr1** sind Hilfsfunktionen in .NET Framework, die Arbeitsspeicher von einem verwalteten Heap zuweisen. **clr!JIT\_New** wird aufgerufen, wenn ein Objekt zugeordnet wird. **clr!JIT\_Newarr1** wird aufgerufen, wenn ein Objektarray zugeordnet wird. Diese beiden Funktionen sind in der Regel schnell und benötigen relativ wenig Zeit. Sollte **clr!JIT\_New** oder **clr!JIT\_Newarr1** auf Ihrer Zeitachse viel Zeit beanspruchen, deutet das darauf hin, dass der Code viele Objekte zuordnet und eine erhebliche Menge an Arbeitsspeicher beansprucht.
 
 ### <a id="theprestub"></a>Laden von Code (clr!ThePreStub)
 **clr!ThePreStub** ist eine Hilfsfunktion in .NET Framework, die den Code für die erstmalige Ausführung vorbereitet. Das schließt in der Regel auch die JIT-Kompilierung (Just-In-Time) ein. Während der Lebensdauer eines Prozesses sollte **clr!ThePreStub** für jede C#-Methode höchstens einmal aufgerufen werden.
@@ -151,6 +119,26 @@ Die Anwendung führt Netzwerkvorgänge aus.
 
 ### <a id="when"></a>Wann-Spalte
 Die Spalte **Wann** ist eine Visualisierung der Abweichungen INKLUSIVER Stichproben für einen Knoten im Zeitverlauf. Der Gesamtbereich der Anforderung wird in 32 Zeitrahmen unterteilt. Die inklusiven Stichproben für diesen Knoten werden in diesen 32 Zeitrahmen akkumuliert. Jeder Zeitrahmen wird als Balken dargestellt. Die Höhe der Balken stellt einen skalierten Wert dar. Bei Knoten, die mit **CPU_TIME** oder **BLOCKED_TIME** gekennzeichnet sind oder bei denen ein offensichtlicher Zusammenhang mit der Nutzung einer Ressource (CPU, Datenträger, Thread) besteht, stellt der Balken die Nutzung einer dieser Ressourcen für den Zeitraum des entsprechenden Zeitrahmens dar. Für diese Metrik ist es möglich, durch die Nutzung mehrerer Ressourcen einen Wert von mehr als 100 % zu erhalten. Wenn Sie also beispielsweise innerhalb eines Intervalls im Schnitt zwei CPUs verwenden, erhalten Sie 200 %.
+
+## <a name="limitations"></a>Einschränkungen
+
+Die Standardaufbewahrung von Daten beträgt fünf Tage. Die maximale pro Tag erfasste Datenmenge beträgt 10 GB.
+
+Es fallen keine Gebühren für die Verwendung des Profiler-Diensts an. Für die Nutzung des Profiler-Diensts muss Ihre Web-App mindestens im Basic-Tarif von App Service gehostet werden.
+
+## <a name="overhead-and-sampling-algorithm"></a>Auslastung und Algorithmus für Stichprobenerstellung
+
+Der Profiler wird stündlich nach dem Zufallsprinzip zwei Minuten auf jedem virtuellen Computer ausgeführt, der die Anwendung hostet und auf dem der Profiler für die Erfassung von Ablaufverfolgungen aktiviert ist. Während der Ausführung des Profilers erhöht sich die CPU-Auslastung des Servers um 5 % bis 15 %.
+Je mehr Server zum Hosten der Anwendung zur Verfügung stehen, desto weniger wirkt sich der Profiler auf die Gesamtleistung der Anwendung aus. Die Ursache ist, dass der Profiler durch den Samplingalgorithmus immer nur auf 5 % der Server ausgeführt wird. Mehr Server sind zum Verarbeiten von Webanforderungen verfügbar, um den Servermehraufwand auszugleichen, der durch die Ausführung des Profilers verursacht wird.
+
+## <a name="disable-the-profiler"></a>Deaktivieren von Profiler
+Wenn Sie den Profiler für eine einzelne App Service-Instanz beenden oder neu starten möchten, wechseln Sie unter **Webaufträge** zur App Service-Ressource. Wenn Sie den Profiler löschen möchten, wechseln Sie zu **Erweiterungen**.
+
+![Deaktivieren von Profiler für einen Webauftrag][disable-profiler-webjob]
+
+Es wird empfohlen, den Profiler für alle Web-Apps zu aktivieren, um Leistungsprobleme möglichst schnell zu ermitteln.
+
+Wenn Sie Änderungen an Ihrer Webanwendung mithilfe von WebDeploy bereitstellen, achten Sie darauf, dass der Ordner „App_Data“ bei der Bereitstellung nicht gelöscht wird. Andernfalls werden die Dateien der Profiler-Erweiterung gelöscht, wenn Sie die Webanwendung das nächste Mal in Azure bereitstellen.
 
 
 ## <a id="troubleshooting"></a>Problembehandlung
@@ -229,11 +217,11 @@ Wenn Sie den Profiler konfigurieren, werden an den Einstellungen der Web-App Akt
 9. Starten Sie die Web-App neu.
 
 ## <a id="profileondemand"></a> Manuelles Auslösen des Profilers
-Bei der Entwicklung des Profilers haben wir eine Befehlszeilenschnittstelle hinzugefügt, damit wir den Profiler für App Services testen konnten. Über diese Schnittstelle können Benutzer auch anpassen, wie der Profiler gestartet wird. Im Allgemeinen nutzt der Profiler das Kudu-System des App Service zum Verwalten der Profilerstellung im Hintergrund. Wenn Sie die Application Insights-Erweiterung installieren, erstellen wir einen fortlaufenden Webauftrag zum Hosten des Profilers. Wir nutzen dieselbe Technologie zum Erstellen eines neuen Webauftrags, den Sie an Ihre Anforderungen anpassen können.
+Bei der Entwicklung des Profilers haben wir eine Befehlszeilenschnittstelle hinzugefügt, damit wir den Profiler für App Services testen konnten. Über diese Schnittstelle können Benutzer auch anpassen, wie der Profiler gestartet wird. Im Allgemeinen nutzt der Profiler das Kudu-System von App Service zum Verwalten der Profilerstellung im Hintergrund. Wenn Sie die Application Insights-Erweiterung installieren, erstellen wir einen fortlaufenden Webauftrag zum Hosten des Profilers. Wir nutzen dieselbe Technologie zum Erstellen eines neuen Webauftrags, den Sie an Ihre Anforderungen anpassen können.
 
 In diesem Abschnitt wird Folgendes beschrieben:
 
-1.  Erstellen eines Webauftrags, über den der Profiler durch das Betätigen einer Schaltfläche für die Dauer von zwei Minuten gestartet werden kann
+1.  Erstellen eines Webauftrags, über den der Profiler mit einem Klick für die Dauer von zwei Minuten gestartet werden kann
 2.  Erstellen eines Webauftrags, mit dem die Ausführung des Profilers geplant werden kann
 3.  Festlegen von Argumenten für den Profiler
 
@@ -299,19 +287,13 @@ Diese Vorgehensweise ist zwar relativ einfach, aber es müssen einige Punkte bea
 1.  Da dieser Vorgang nicht von unserem Dienst verwaltet wird, haben wir keine Möglichkeit, die Binärdateien für den Agent für Ihren Webauftrag zu aktualisieren. Derzeit verfügen wir nicht über eine stabile Downloadseite für unsere Binärdateien. Wir können die aktuellen Dateien also nur abrufen, indem wir die Erweiterung aktualisieren und das Abrufen aus dem fortlaufenden Ordner wie oben durchführen.
 2.  Da hierbei Befehlszeilenargumente verwendet werden, die ursprünglich für die Nutzung durch Entwickler und nicht durch Endbenutzer entworfen wurden, können sich diese Argumente in Zukunft ändern. Denken Sie beim Durchführen von Upgrades also daran. Dies sollte kein Problem darstellen, da Sie einen Webauftrag hinzufügen und ausführen und die Funktionsfähigkeit testen können. In Zukunft soll hierfür eine Benutzeroberfläche erstellt werden, damit der manuelle Prozess nicht mehr erforderlich ist, aber dieser Punkt sollte in diesem Zusammenhang beachtet werden.
 3.  Das Feature „Webaufträge“ für App Services ist eindeutig: Bei der Ausführung des Webauftrags wird sichergestellt, dass Ihr Prozess über die gleichen Umgebungsvariablen und App-Einstellungen verfügt, die auch für Ihre Website gelten sollen. Dies bedeutet Folgendes: Es ist nicht erforderlich, dass Sie den Instrumentierungsschlüssel über die Befehlszeile an den Profiler übergeben, da er einfach aus der Umgebung abgerufen werden kann. Sie müssen aber einen Instrumentierungsschlüssel angeben, wenn Sie den Profiler in Ihrer Dev Box oder auf einem Computer außerhalb von App Services ausführen möchten. Hierzu können Sie das Argument `--ikey <instrumentation-key>` übergeben. Beachten Sie, dass dieser Wert mit dem Instrumentierungsschlüssel übereinstimmen muss, der von Ihrer Anwendung verwendet wird. Der Protokollausgabe des Profilers können Sie entnehmen, mit welchem iKey der Profiler gestartet wurde und ob über diesen Instrumentierungsschlüssel während der Profilerstellung Aktivitäten erkannt wurden.
-4.  Die manuell ausgelösten Webaufträge können per Webhook ausgelöst werden. Sie können diese URL abrufen, indem Sie im Dashboard mit der rechten Maustaste auf den Webauftrag klicken und die Eigenschaften anzeigen oder die Eigenschaften in der Symbolleiste auswählen, nachdem Sie den Webauftrag in der Tabelle ausgewählt haben. Da online viele Artikel zu diesem Thema verfügbar sind, gehe ich hier nicht weiter ins Detail. Es besteht aber die Möglichkeit, den Profiler über Ihre CI/CD-Pipeline (z.B. VSTS) oder beispielsweise Microsoft Flow (https://flow.microsoft.com/de-de/) auszulösen. Die Möglichkeiten sind vielfältig, je nachdem, wie komplex Sie Ihre Datei „run.cmd“ gestalten möchten (übrigens kann auch „run.ps1“ verwendet werden).  
-
-
-
-
-## <a id="aspnetcore"></a>Unterstützung von ASP.NET Core
-
-Eine ASP.NET Core-Anwendung muss „Microsoft.ApplicationInsights.AspNetCore NuGet-Paket 2.1.0-beta6“ oder höher installieren, um mit dem Profiler arbeiten zu können. Seit dem 27. Juni 2017 unterstützen wir keine früheren Versionen mehr.
+4.  Die manuell ausgelösten Webaufträge können per Webhook ausgelöst werden. Sie können diese URL abrufen, indem Sie im Dashboard mit der rechten Maustaste auf den Webauftrag klicken und die Eigenschaften anzeigen oder die Eigenschaften auf der Symbolleiste auswählen, nachdem Sie den Webauftrag in der Tabelle ausgewählt haben. Da online viele Artikel zu diesem Thema verfügbar sind, gehe ich hier nicht weiter ins Detail. Es besteht aber die Möglichkeit, den Profiler über Ihre CI/CD-Pipeline (z.B. VSTS) oder beispielsweise Microsoft Flow (https://flow.microsoft.com/de-de/) auszulösen. Die Möglichkeiten sind vielfältig, je nachdem, wie komplex Sie Ihre Datei „run.cmd“ gestalten möchten (übrigens kann auch „run.ps1“ verwendet werden).  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwenden von Azure Application Insights in Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 
+[appinsights-in-appservices]:./media/app-insights-profiler/AppInsights-AppServices.png
 [performance-blade]: ./media/app-insights-profiler/performance-blade.png
 [performance-blade-examples]: ./media/app-insights-profiler/performance-blade-examples.png
 [performance-blade-v2-examples]:./media/app-insights-profiler/performance-blade-v2-examples.png

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 8fae46088bad5cbcbdb879f0b5a948fb85b76875
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 2744c848b81c688f4083cf51b7ef7bc89f0e34e1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung
 
@@ -31,6 +31,8 @@ Damit die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR
 Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: +1 4255551234).
 
 > [!NOTE]
+> Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
+>
 > Für die Kennwortzurücksetzung werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im Format +1 4255551234X12345 werden Nebenstellen vor dem Anruf entfernt.
 
 ## <a name="fields-populated"></a>Ausgefüllte Felder
@@ -42,6 +44,11 @@ Wenn Sie die Standardeinstellungen in Azure AD Connect verwenden, werden die fol
 | telephoneNumber | Bürotelefon | Alternatives Telefon |
 | mobile | Mobiltelefon | Phone |
 
+Diese Felder werden möglicherweise leer angezeigt, bis ein Benutzer seine Authentifizierungsdaten bestätigt.
+
+Ein globaler Administrator kann die Kontaktinformationen des Benutzers für die Authentifizierung manuell festlegen, wie im folgenden Screenshot gezeigt.
+
+![Kontakt][Contact]
 
 ## <a name="security-questions-and-answers"></a>Sicherheitsfragen und -antworten
 
@@ -152,3 +159,5 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
 * [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
+
+[Contact]: ./media/active-directory-passwords-data/user-authentication-contact-info.png "Globale Administratoren können die Kontaktinformationen eines Benutzer für die Authentifizierung bearbeiten"

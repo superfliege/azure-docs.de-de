@@ -11,15 +11,15 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: d04e2000f2043e8bb11e15f6b9d7fd06ef5b9da3
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 49931155339660fc7a0a39f5b60dc9443374b8b0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Erstellen Ihrer ersten Funktion unter Linux in der Azure-Befehlszeilenschnittstelle (Vorschauversion)
 
-Mit Azure Functions können Sie Funktionen unter Linux in einem Azure App Service-Standardcontainer hosten. Diese Funktion befindet sich derzeit in der Vorschauphase. Sie können auch [einen eigenen benutzerdefinierten Container nutzen](functions-create-function-linux-custom-image.md). 
+Mit Azure Functions können Sie Funktionen unter Linux in einem Azure App Service-Standardcontainer hosten. Sie können auch [einen eigenen benutzerdefinierten Container nutzen](functions-create-function-linux-custom-image.md). Diese Funktion ist derzeit als Vorschauversion verfügbar und setzt [die Functions 2.0-Laufzeit](functions-versions.md) (ebenfalls eine Vorschauversion) voraus.
 
 In diesem Schnellstartthema wird schrittweise erläutert, wie Sie mithilfe von Azure Functions und der Azure CLI die erste eigene Funktions-App unter Linux erstellen, die im App Service-Standardcontainer gehostet wird. Der Funktionscode selbst wird für das Image über ein GitHub-Beispielrepository bereitgestellt.    
 
@@ -49,7 +49,7 @@ Linux-Hosting für Functions wird derzeit lediglich für einen App Service-Plan 
 
 ## <a name="create-a-function-app-on-linux"></a>Erstellen einer Funktions-App unter Linux
 
-Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktionen unter Linux hostet. Die Funktions-App bietet eine Umgebung für die Ausführung des Funktionscodes. Mit ihr können Sie Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. Erstellen Sie eine Funktions-App mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#create) mit einem Linux App Service-Plan. 
+Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktionen unter Linux hostet. Die Funktions-App bietet eine Umgebung für die Ausführung des Funktionscodes. Mit ihr können Sie Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. Erstellen Sie eine Funktions-App mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#az_functionapp_create) mit einem Linux App Service-Plan. 
 
 Ersetzen Sie im folgenden Befehl den Platzhalter `<app_name>` durch einen eindeutigen Namen der Funktionen-App und den Platzhalter `<storage_name>` durch den Speicherkontonamen. Da `<app_name>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. Bei dem Parameter _deployment-source-url_ handelt es sich um ein Beispielrepository in GitHub, das eine Funktion vom Typ „Hallo Welt“ mit HTTP-Trigger enthält.
 

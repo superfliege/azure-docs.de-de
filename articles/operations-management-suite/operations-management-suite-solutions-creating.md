@@ -1,6 +1,6 @@
 ---
-title: "Erstellen einer Verwaltungslösung in OMS | Microsoft-Dokumentation"
-description: "Verwaltungslösungen erweitern die Funktionalität der Operations Management Suite (OMS), indem sie Pakete mit Verwaltungsszenarien bereitstellen, die Kunden zu ihrem OMS-Arbeitsbereich hinzufügen können.  Diese Artikel beschreibt, wie Sie Verwaltungslösungen erstellen, die Sie in Ihrer Umgebung verwenden oder Ihren Kunden zur Verfügung stellen möchten."
+title: "Erstellen einer Verwaltungslösung in Azure | Microsoft-Dokumentation"
+description: "Verwaltungslösungen beinhalten in Azure gebündelte Verwaltungsszenarien, die Kunden zu ihrem Log Analytics-Arbeitsbereich hinzufügen können.  Diese Artikel beschreibt, wie Sie Verwaltungslösungen erstellen, die Sie in Ihrer Umgebung verwenden oder Ihren Kunden zur Verfügung stellen möchten."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a17c73393ecbdff693e9b200d1506887e0f1d71e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 0f5d42292c8e885491aed55ada129f05cb3bcd35
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Entwerfen und Erstellen einer Verwaltungslösung in der Operations Management Suite (OMS) (Vorschau)
+# <a name="design-and-build-a-management-solution-in-azure-preview"></a>Entwerfen und Erstellen einer Verwaltungslösung in Azure (Vorschau)
 > [!NOTE]
-> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in der OMS, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.
+> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in Azure, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.
 
-[Verwaltungslösungen](operations-management-suite-solutions.md) erweitern die Funktionalität der Operations Management Suite (OMS), indem sie Pakete mit Verwaltungsszenarien bereitstellen, die Kunden zu ihrem OMS-Arbeitsbereich hinzufügen können.  Dieser Artikel stellt ein grundlegendes Verfahren zum Entwerfen und Erstellen einer Verwaltungslösung vor, die die häufigsten Anforderungen erfüllt.  Wenn Sie keine Erfahrung in der Erstellung von Verwaltungslösungen haben, können Sie dieses Verfahren als Ausgangspunkt verwenden und mit steigenden Anforderungen die Konzepte für komplexere Lösungen nutzen.
+[Verwaltungslösungen](operations-management-suite-solutions.md) bieten gebündelte Verwaltungsszenarien, die Kunden zu ihrem Log Analytics-Arbeitsbereich hinzufügen können.  Dieser Artikel stellt ein grundlegendes Verfahren zum Entwerfen und Erstellen einer Verwaltungslösung vor, die die häufigsten Anforderungen erfüllt.  Wenn Sie keine Erfahrung in der Erstellung von Verwaltungslösungen haben, können Sie dieses Verfahren als Ausgangspunkt verwenden und mit steigenden Anforderungen die Konzepte für komplexere Lösungen nutzen.
 
 ## <a name="what-is-a-management-solution"></a>Was ist eine Verwaltungslösung?
 
-Verwaltungslösungen enthalten OMS- und Azure-Ressourcen, die zusammenarbeiten, um ein bestimmtes Überwachungsszenario herzustellen.  Sie werden auch als [Ressourcenverwaltungsvorlagen](../azure-resource-manager/resource-manager-template-walkthrough.md) Implementiert, die Details zum Installieren und Konfigurieren der enthaltenen Ressourcen bei Installation der Lösung umfassen.
+Verwaltungslösungen enthalten Azure-Ressourcen, die zusammenarbeiten, um ein bestimmtes Verwaltungsszenario zu erreichen.  Sie werden auch als [Ressourcenverwaltungsvorlagen](../azure-resource-manager/resource-manager-template-walkthrough.md) Implementiert, die Details zum Installieren und Konfigurieren der enthaltenen Ressourcen bei Installation der Lösung umfassen.
 
 Die grundlegende Strategie besteht darin, Ihre Verwaltungslösung damit zu beginnen, dass Sie die einzelnen Komponenten in der Azure-Umgebung erstellen.  Sobald die Funktionalität Ihren Vorstellungen entspricht, können Sie damit beginnen, sie in eine [Verwaltungslösungsdatei](operations-management-suite-solutions-solution-file.md) zu verpacken. 
 
@@ -37,7 +37,7 @@ Die grundlegende Strategie besteht darin, Ihre Verwaltungslösung damit zu begin
 ## <a name="design-your-solution"></a>Entwerfen der Lösung
 Das bekannteste Muster für eine Verwaltungslösung ist im folgenden Diagramm abgebildet.  Die verschiedenen Komponenten in diesem Muster werden weiter unten behandelt.
 
-![OMS-Lösungsübersicht](media/operations-management-suite-solutions-creating/solution-overview.png)
+![Verwaltungslösung – Übersicht](media/operations-management-suite-solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>Datenquellen

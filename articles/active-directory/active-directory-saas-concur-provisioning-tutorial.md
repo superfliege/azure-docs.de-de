@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Concur | Microsoft Docs'
+title: "Tutorial: Konfigurieren von Concur für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Concur konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -11,21 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f39013785f000c7055aaa28f4c6f41998644cb6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 743d974c3711d5359cf7664c6a8709f7eaaeee20
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-concur-for-user-provisioning"></a>Tutorial: Konfigurieren von Concur für die Benutzerbereitstellung
+# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Concur für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte beschrieben, die Sie in Concur und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Concur automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
 *   Ein Concur-Abonnement, für das einmaliges Anmelden aktiviert ist

@@ -75,6 +75,8 @@
       href: app-service-local-cache-overview.md
     - name: Diagnose
       href: app-service-diagnostics.md
+    - name: Betriebssystem- und Runtimepatching
+      href: app-service-patch-os-runtime.md
 - name: Anleitungen
   items:
     - name: Konfigurieren der App

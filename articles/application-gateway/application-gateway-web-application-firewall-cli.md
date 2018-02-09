@@ -1,162 +1,188 @@
 ---
-title: 'Konfigurieren einer Web Application Firewall: Azure Application Gateway | Microsoft-Dokumentation'
-description: "Dieser Artikel enthält Anleitungen zur Verwendung einer Web Application Firewall für ein vorhandenes oder neues Anwendungsgateway."
-documentationcenter: na
+title: "Erstellen eines Anwendungsgateways mit einer Web Application Firewall – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation"
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway mit einer Web Application Firewall erstellen.
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 670b9732-874b-43e6-843b-d2585c160982
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: e60bfc89378569b154f4f973d1dceb683fa58482
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 611e9b27baeddf61531421d7ad2bed20188ad279
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>Konfigurieren einer Web Application Firewall auf einem neuen oder vorhandenen Anwendungsgateway mit der Azure CLI
+# <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über die Azure-Befehlszeilenschnittstelle
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-web-application-firewall-portal.md)
-> * [PowerShell](application-gateway-web-application-firewall-powershell.md)
-> * [Azure-Befehlszeilenschnittstelle](application-gateway-web-application-firewall-cli.md)
+Sie können die Azure-Befehlszeilenschnittstelle verwenden, um ein [Anwendungsgateway](application-gateway-introduction.md) mit einer [Web Application Firewall](application-gateway-web-application-firewall-overview.md) (WAF) zu erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) verwendet. Die WAF verwendet [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-Regeln, um Ihre Anwendung zu schützen. Diese Regeln beinhalten den Schutz vor Angriffen z.B. durch Einschleusung von SQL-Befehlen, siteübergreifendes Scripting und Sitzungsübernahmen. 
 
-In diesem Artikel wird erläutert, wie ein Anwendungsgateway, für das eine Web Application Firewall (WAF) aktiviert ist, erstellt wird. Zudem wird das Hinzufügen von WAF zu einem vorhandenen Anwendungsgateway erläutert.
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-WAF in Azure Application Gateway schützt Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Befehlen, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen.
+> [!div class="checklist"]
+> * Einrichten des Netzwerks
+> * Erstellen eines Anwendungsgateways mit aktivierter WAF
+> * Erstellen einer Skalierungsgruppe für virtuelle Computer
+> * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
 
- Application Gateway ist ein Lastenausgleich auf Schicht 7 (Anwendungsschicht). Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway stellt viele ADC-Features (Application Delivery Controller) bereit:
+![Web Application Firewall – Beispiel](./media/application-gateway-web-application-firewall-cli/scenario-waf.png)
 
- * HTTP-Lastenausgleich 
- * Cookiebasierte Sitzungsaffinität 
- * SSL-Auslagerung (Secure Sockets Layer) 
- * Benutzerdefinierte Integritätstests 
- * Unterstützung der Funktion für mehrere Standorte
- 
- Eine vollständige Liste der unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Dieser Artikel veranschaulicht das [Hinzufügen einer Web Application Firewall zu einem vorhandenen Anwendungsgateway](#add-web-application-firewall-to-an-existing-application-gateway). Er erläutert außerdem das [Erstellen eines Anwendungsgateways, das eine Web Application Firewall nutzt](#create-an-application-gateway-with-web-application-firewall).
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-![Szenarioabbildung][scenario]
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>Voraussetzung: Installieren der Azure CLI 2.0
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle (Azure CLI) für Mac, Linux und Windows installieren](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Azure-Ressourcengruppe mit dem Namen *myResourceGroupAG*.
 
-## <a name="waf-configuration-differences"></a>Unterschiede bei der WAF-Konfiguration
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
+```
 
-Wenn Sie [Erstellen eines Anwendungsgateways mithilfe der Azure CLI 2.0](application-gateway-create-gateway-cli.md) gelesen haben, kennen Sie die SKU-Einstellungen, die beim Erstellen eines Anwendungsgateways konfiguriert werden müssen. WAF bietet zusätzliche Einstellungen, die Sie beim Konfigurieren der SKU für ein Anwendungsgateway definieren müssen. Am Anwendungsgateway selbst sind keine zusätzlichen Änderungen erforderlich.
+## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
-| **Einstellung** | **Details**
-|---|---|
-|**SKU** |Ein normales Anwendungsgateway ohne WAF unterstützt die Größen **Standard\_Small**, **Standard\_Medium** und **Standard\_Large**. Mit der Einführung von WAF gibt es zwei zusätzliche SKUs: **WAF\_Medium** und **WAF\_Large**. WAF wird für kleine Anwendungsgateways nicht unterstützt.|
-|**Mode** | Diese Einstellung ist der WAF-Modus. Zulässige Werte sind **Detection** (Erkennung) und **Prevention** (Schutz). Wenn WAF im **Erkennungsmodus** eingerichtet wird, werden alle Bedrohungen in einer Protokolldatei gespeichert. Im **Schutzmodus** werden Ereignisse ebenfalls protokolliert, der Angreifer erhält vom Anwendungsgateway jedoch zusätzlich die Antwort 403 (nicht autorisiert).|
-
-## <a name="add-a-web-application-firewall-to-an-existing-application-gateway"></a>Hinzufügen einer Web Application Firewall zu einem vorhandenen Anwendungsgateway
-
-Der folgende Befehl ändert ein vorhandenes Standardanwendungsgateway in ein Anwendungsgateway, für das WAF aktiviert ist:
+Das virtuelle Netzwerk und die Subnetze werden verwendet, um Netzwerkkonnektivität für das Anwendungsgateway und die zugehörigen Ressourcen bereitzustellen. Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) und [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
 ```azurecli-interactive
-#!/bin/bash
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myBackendSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myAGSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
 
+## <a name="create-an-application-gateway-with-a-waf"></a>Erstellen eines Anwendungsgateways mit einer WAF
+
+Sie können [az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create) verwenden, um ein Anwendungsgateway namens *myAppGateway* zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myAGPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben.
+
+```azurecli-interactive
+az network application-gateway create \
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --subnet myAGSubnet \
+  --capacity 2 \
+  --sku WAF_Medium \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 80 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --public-ip-address myAGPublicIPAddress
 az network application-gateway waf-config set \
   --enabled true \
-  --firewall-mode Prevention \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --firewall-mode Detection \
+  --rule-set-version 3.0
 ```
 
-Dieser Befehl aktualisiert das Anwendungsgateway mit WAF. Informationen zur Anzeige von Protokollen für Ihr Anwendungsgateway finden Sie unter [Application Gateway-Diagnose](application-gateway-diagnostics.md). Aufgrund der Art der WAF-Sicherheit müssen Sie die Protokolle regelmäßig überprüfen, um die Sicherheitslage Ihrer Webanwendungen zu kennen.
+Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
-## <a name="create-an-application-gateway-with-a-web-application-firewall"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall
+- *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
+- *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
+- *appGatewayHttpListener*: Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
+- *appGatewayFrontendIP*: Weist *myAGPublicIPAddress* zu *appGatewayHttpListener* zu.
+- *rule1*:Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
 
-Mit dem folgenden Befehl wird ein Anwendungsgateway mit WAF erstellt:
+## <a name="create-a-virtual-machine-scale-set"></a>Erstellen einer Skalierungsgruppe für virtuelle Computer
+
+In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe, die zwei Server für den Back-End-Pool im Anwendungsgateway bereitstellt. Die virtuellen Computer in der Skalierungsgruppe sind dem Subnetz *myBackendSubnet* zugeordnet. Zum Erstellen der Skalierungsgruppe können Sie [az vmss create](/cli/azure/vmss#az_vmss_create) verwenden.
 
 ```azurecli-interactive
-#!/bin/bash
-
-az network application-gateway create \
-  --name "AdatumAppGateway2" \
-  --location "eastus" \
-  --resource-group "AdatumAppGatewayRG" \
-  --vnet-name "AdatumAppGatewayVNET2" \
-  --vnet-address-prefix "10.0.0.0/16" \
-  --subnet "Appgatewaysubnet2" \
-  --subnet-address-prefix "10.0.0.0/28" \
- --servers "10.0.0.5 10.0.0.4" \
-  --capacity 2 
-  --sku "WAF_Medium" \
-  --http-settings-cookie-based-affinity "Enabled" \
-  --http-settings-protocol "Http" \
-  --frontend-port "80" \
-  --routing-rule-type "Basic" \
-  --http-settings-port "80" \
-  --public-ip-address "pip2" \
-  --public-ip-address-allocation "dynamic" \
-  --tags "cli[2] owner[administrator]"
+az vmss create \
+  --name myvmss \
+  --resource-group myResourceGroupAG \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --admin-password Azure123456! \
+  --instance-count 2 \
+  --vnet-name myVNet \
+  --subnet myBackendSubnet \
+  --vm-sku Standard_DS2 \
+  --upgrade-policy-mode Automatic \
+  --app-gateway myAppGateway \
+  --backend-pool-name appGatewayBackendPool
 ```
 
-> [!NOTE]
-> Anwendungsgateways, die mit der WAF-Basiskonfiguration erstellt wurden, werden zum Schutz mit CRS 3.0 konfiguriert.
-
-## <a name="get-an-application-gateway-dns-name"></a>Abrufen des DNS-Namens eines Anwendungsgateways
-
-Nach dem Erstellen des Gateways wird das Front-End für die Kommunikation konfiguriert. Wenn Sie eine öffentliche IP-Adresse verwenden, wird für das Anwendungsgateway ein dynamisch zugewiesener DNS-Name benötigt. Dieser Name ist nicht benutzerfreundlich. Um zu gewährleisten, dass Benutzer auf das Anwendungsgateway zugreifen können, verweisen Sie mit einem CNAME-Eintrag auf den öffentlichen Endpunkt des Anwendungsgateways. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](../cloud-services/cloud-services-custom-domain-name-portal.md). 
-
-Rufen Sie zum Konfigurieren eines CNAME-Eintrags mithilfe des PublicIPAddress-Elements, das an das Anwendungsgateway angefügt ist, Details zum Anwendungsgateway sowie die zugeordnete IP-Adresse/den zugeordneten DNS-Namen ab. Verwenden Sie den DNS-Namen des Anwendungsgateways zum Erstellen eines CNAME-Eintrags, der die beiden Webanwendungen an diesen DNS-Namen verweist. Die Verwendung von A-Einträgen wird nicht empfohlen, da sich die VIP beim Neustart des Anwendungsgateways möglicherweise ändert.
+### <a name="install-nginx"></a>Installieren von NGINX
 
 ```azurecli-interactive
-#!/bin/bash
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroupAG \
+  --vmss-name myvmss \
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
+```
 
+## <a name="create-a-storage-account-and-configure-diagnostics"></a>Erstellen eines Speicherkontos und Konfigurieren der Diagnose
+
+In diesem Tutorial verwendet das Anwendungsgateway ein Speicherkonto, um Daten zum Zweck der Erkennung und Prävention zu speichern. Sie können auch Log Analytics oder Event Hub verwenden, um Daten aufzuzeichnen. 
+
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
+
+Erstellen Sie mit [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) ein Speicherkonto namens *myagstore1*.
+
+```azurecli-interactive
+az storage account create \
+  --name myagstore1 \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --sku Standard_LRS \
+  --encryption blob
+```
+
+### <a name="configure-diagnostics"></a>Konfigurieren der Diagnose
+
+Konfigurieren Sie die Diagnose so, dass Daten in den Protokollen „ApplicationGatewayAccessLog“, „ApplicationGatewayPerformanceLog“ und „ApplicationGatewayFirewallLog“ aufgezeichnet werden. Ersetzen Sie `<subscriptionId>` durch den Bezeichner Ihres Abonnements, und konfigurieren Sie dann mit [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_create) die Diagnose.
+
+```azurecli-interactive
+appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)
+storeid=$(az storage account show --name myagstore1 --resource-group myResourceGroupAG --query id -o tsv)
+az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
+  --logs '[ { "category": "ApplicationGatewayAccessLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayPerformanceLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayFirewallLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } } ]' \
+  --storage-account $storeid
+```
+
+## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
+
+Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, verwenden Sie [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste Ihres Browsers ein.
+
+```azurepowershell-interactive
 az network public-ip show \
-  --name pip2 \
-  --resource-group "AdatumAppGatewayRG"
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
 ```
 
-```
-{
-  "dnsSettings": {
-    "domainNameLabel": null,
-    "fqdn": "8c786058-96d4-4f3e-bb41-660860ceae4c.cloudapp.net",
-    "reverseFqdn": null
-  },
-  "etag": "W/\"3b0ac031-01f0-4860-b572-e3c25e0c57ad\"",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/publicIPAddresses/pip2",
-  "idleTimeoutInMinutes": 4,
-  "ipAddress": "40.121.167.250",
-  "ipConfiguration": {
-    "etag": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/applicationGateways/AdatumAppGateway2/frontendIPConfigurations/appGatewayFrontendIP",
-    "name": null,
-    "privateIpAddress": null,
-    "privateIpAllocationMethod": null,
-    "provisioningState": null,
-    "publicIpAddress": null,
-    "resourceGroup": "AdatumAppGatewayRG",
-    "subnet": null
-  },
-  "location": "eastus",
-  "name": "pip2",
-  "provisioningState": "Succeeded",
-  "publicIpAddressVersion": "IPv4",
-  "publicIpAllocationMethod": "Dynamic",
-  "resourceGroup": "AdatumAppGatewayRG",
-  "resourceGuid": "3c30d310-c543-4e9d-9c72-bbacd7fe9b05",
-  "tags": {
-    "cli[2] owner[administrator]": ""
-  },
-  "type": "Microsoft.Network/publicIPAddresses"
-}
-```
+![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-web-application-firewall-cli/application-gateway-nginxtest.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Anpassen von WAF-Regeln finden Sie unter [Anpassen von Web Application Firewall-Regeln mit Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md).
+In diesem Tutorial haben Sie Folgendes gelernt:
 
-[scenario]: ./media/application-gateway-web-application-firewall-cli/scenario.png
+> [!div class="checklist"]
+> * Einrichten des Netzwerks
+> * Erstellen eines Anwendungsgateways mit aktivierter WAF
+> * Erstellen einer Skalierungsgruppe für virtuelle Computer
+> * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
+
+Weitere Informationen zu Anwendungsgateways und den zugehörigen Ressourcen finden Sie in den Artikeln mit empfohlenen Vorgehensweisen.

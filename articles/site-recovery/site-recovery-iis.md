@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
-ms.openlocfilehash: cff6a7502e80eb4ff447cc99fe31b48cb660c27e
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 00d5c1fa8c0c16daef5d928147e169553672e1f6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application-using-azure-site-recovery"></a>Replizieren einer IIS-basierten Webanwendung mit mehreren Ebenen mit Azure Site Recovery
 
 ## <a name="overview"></a>Übersicht
 
 
-Die Anwendungssoftware ist das Antriebsmodul der geschäftlichen Produktivität in einer Organisation. Verschiedene Webanwendungen können in einer Organisation unterschiedliche Zwecke erfüllen. Einige davon, z.B. Gehaltsabrechnung, Finanzanwendungen und Kundenwebsites, können für eine Organisation von entscheidender Bedeutung sein. Es ist für die Organisation wichtig, dass sie jederzeit in Betrieb sind, um Produktivitätsverluste zu verhindern und – was noch wichtiger ist – Schaden in Bezug auf das Image der Organisation abzuwenden.
+Die Anwendungssoftware ist der Motor der geschäftlichen Produktivität in einer Organisation. Verschiedene Webanwendungen können in einer Organisation unterschiedliche Zwecke erfüllen. Einige davon, z.B. Gehaltsabrechnung, Finanzanwendungen und Kundenwebsites, können für eine Organisation von entscheidender Bedeutung sein. Es ist für die Organisation wichtig, dass sie jederzeit in Betrieb sind, um Produktivitätsverluste zu verhindern und – was noch wichtiger ist – Schaden in Bezug auf das Image der Organisation abzuwenden.
 
-Wichtige Webanwendungen werden normalerweise als Anwendungen mit mehreren Ebenen eingerichtet, sodass der Web-, Datenbank- und Anwendungsbereich auf unterschiedlichen Ebenen angeordnet werden kann. Die Anwendungen sind nicht nur auf unterschiedliche Ebenen verteilt, sondern auf jeder Ebene können dafür auch mehrere Server eingesetzt werden, um für den Datenverkehr einen Lastenausgleich zu erzielen. Außerdem können die Zuordnungen zwischen verschiedenen Ebenen und auf dem Webserver auf statischen IP-Adressen basieren. Bei einem Failover müssen einige dieser Zuordnungen aktualisiert werden. Dies gilt vor allem, wenn Sie auf dem Webserver mehrere Websites konfiguriert haben. Bei Webanwendungen, für die SSL verwendet wird, müssen Zertifikatbindungen aktualisiert werden.
+Wichtige Webanwendungen werden normalerweise als Anwendungen mit mehreren Ebenen eingerichtet, sodass Web-, Datenbank- und Anwendungsbereich auf unterschiedlichen Ebenen angeordnet werden können. Die Anwendungen sind nicht nur auf unterschiedliche Ebenen verteilt, sondern auf jeder Ebene können dafür auch mehrere Server eingesetzt werden, um für den Datenverkehr einen Lastenausgleich zu erzielen. Außerdem können die Zuordnungen zwischen verschiedenen Ebenen und auf dem Webserver auf statischen IP-Adressen basieren. Bei einem Failover müssen einige dieser Zuordnungen aktualisiert werden. Dies gilt vor allem, wenn Sie auf dem Webserver mehrere Websites konfiguriert haben. Bei Webanwendungen, die SSL verwenden, müssen Zertifikatbindungen aktualisiert werden.
 
 Herkömmliche Wiederherstellungsmethoden ohne Replikation umfassen das Sichern von verschiedenen Konfigurationsdateien, Registrierungseinstellungen, Bindungen, benutzerdefinierten Komponenten (COM oder .NET), Inhalten sowie Zertifikaten und das Wiederherstellen der Dateien in mehreren manuellen Schritten. Diese Verfahren sind umständlich, fehleranfällig und nicht skalierbar. Beispielsweise kann es leicht passieren, dass Sie das Sichern der Zertifikate vergessen und dann keine andere Wahl haben, als nach dem Failover neue Zertifikate für den Server zu erwerben.
 
-Bei einer guten Lösung für die Notfallwiederherstellung sollte die Modellierung von Wiederherstellungsplänen für die obigen komplexen Anwendungsarchitekturen möglich sein. Darüber hinaus sollten Sie angepasste Schritte hinzufügen können, um Anwendungszuordnungen zwischen unterschiedlichen Ebenen durchzuführen und so eine sichere Single-Click-Lösung zu haben, falls es in einem Notfall zu einem niedrigeren RTO-Wert kommt.
+Eine gute Notfallwiederherstellungslösung sollte die Modellierung von Wiederherstellungsplänen für komplexe Anwendungsarchitekturen ermöglichen. Sie sollte außerdem die Möglichkeit besitzen, benutzerdefinierte Schritte zur Durchführung von Anwendungszuordnungen zwischen unterschiedlichen Ebenen hinzuzufügen. Bei einem Notfall haben Sie so eine sichere Single-Click-Lösung, die zu einem niedrigeren RTO-Wert führt.
 
 
-In diesem Artikel wird beschrieben, wie Sie eine IIS-basierte Webanwendung mit einer [Azure Site Recovery](site-recovery-overview.md)-Instanz schützen. Wir stellen die bewährten Methoden zum Replizieren einer IIS-basierten Webanwendung mit drei Ebenen in Azure, Durchführen einer Übung für die Notfallwiederherstellung und Durchführen eines Failovers für die Anwendung nach Azure vor.
+In diesem Artikel wird beschrieben, wie Sie eine IIS-basierte Webanwendung mit [Azure Site Recovery](site-recovery-overview.md) schützen. Wir stellen die bewährten Methoden zum Replizieren einer IIS-basierten Webanwendung mit drei Ebenen in Azure, Durchführen einer Übung für die Notfallwiederherstellung und Durchführen eines Failovers für die Anwendung in Azure vor.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie zunächst sicher, dass Sie mit den folgenden Verfahren vertraut sind:
+Stellen Sie zunächst sicher, dass Sie mit den folgenden Anforderungen vertraut sind:
 
 1. [Replizieren von virtuellen VMware-Computern in Azure mithilfe von Site Recovery](site-recovery-vmware-to-azure.md)
 1. [Entwerfen Ihres Netzwerks für die Notfallwiederherstellung](site-recovery-network-design.md)
@@ -51,7 +51,7 @@ Stellen Sie zunächst sicher, dass Sie mit den folgenden Verfahren vertraut sind
 ## <a name="deployment-patterns"></a>Bereitstellungsmuster
 Für eine IIS-basierte Webanwendung wird in der Regel eines der folgenden Bereitstellungsmuster verwendet:
 
-**Bereitstellungsmuster 1** Eine IIS-basierte Webfarm mit Routing von Anwendungsanforderungen (Application Request Routing, ARR), IIS-Server und Microsoft SQL Server.
+**Bereitstellungsmuster 1** Eine IIS-basierte Webfarm mit Routing von Anwendungsanforderungen (Application Request Routing, ARR), IIS-Server und Microsoft SQL Server
 
 ![Bereitstellungsmuster](./media/site-recovery-iis/deployment-pattern1.png)
 
@@ -70,8 +70,8 @@ Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Version
 --- | --- | ---
 **Hyper-V** | Ja | Ja
 **VMware** | Ja | Ja
-**Physischer Server** | Nein | Ja
-**Azure**|NA|Ja
+**Physischer Server** | Nein  | Ja
+**Azure**|Nicht verfügbar|Ja
 
 ## <a name="replicate-virtual-machines"></a>Replizieren von virtuellen Computern
 
@@ -84,10 +84,10 @@ Geben Sie bei Verwendung einer statischen IP-Adresse dann die IP an, die vom vir
 
 ## <a name="creating-a-recovery-plan"></a>Erstellen eines Wiederherstellungsplans
 
-Ein Wiederherstellungsplan ermöglicht die Sequenzierung des Failovers verschiedener Ebenen in einer Anwendung mit mehreren Ebenen, damit die Anwendungskonsistenz gewahrt wird. Führen Sie die unten angegebenen Schritte aus, während Sie einen Wiederherstellungsplan für eine Webanwendung mit mehreren Ebenen erstellen.  Lesen Sie die [weiteren Informationen](./site-recovery-create-recovery-plans.md) zur Erstellung eines Wiederherstellungsplans.
+Ein Wiederherstellungsplan ermöglicht die Sequenzierung des Failovers verschiedener Ebenen in einer Anwendung mit mehreren Ebenen, damit die Anwendungskonsistenz gewahrt wird. Nachfolgend sind die Schritte zum Erstellen eines Wiederherstellungsplans für eine Webanwendung mit mehreren Ebenen angegeben.  Lesen Sie die [weiteren Informationen](./site-recovery-create-recovery-plans.md) zur Erstellung eines Wiederherstellungsplans.
 
 ### <a name="adding-virtual-machines-to-failover-groups"></a>Hinzufügen von virtuellen Computern zu Failovergruppen
-Eine typische IIS-Webanwendung mit mehreren Ebenen besteht aus einer Datenbankebene mit virtuellen SQL-Computern, der auf einem IIS-Server basierenden Webebene und einer Anwendungsebene. Fügen Sie diese virtuellen Computer je nach Ebene wie unten dargestellt unterschiedlichen Gruppen hinzu. [Erfahren Sie mehr](site-recovery-runbook-automation.md#customize-the-recovery-plan) über das Anpassen von Wiederherstellungsplänen.
+Eine typische IIS-Webanwendung mit mehreren Ebenen besteht aus einer Datenbankebene mit virtuellen SQL-Computern, der auf einem IIS-Server basierenden Webebene und einer Anwendungsebene. Fügen Sie diese virtuellen Computer je nach Ebene wie in den folgenden Schritten dargestellt unterschiedlichen Gruppen hinzu. [Erfahren Sie mehr](site-recovery-runbook-automation.md#customize-the-recovery-plan) über das Anpassen von Wiederherstellungsplänen.
 
 1. Erstellen Sie einen Wiederherstellungsplan. Fügen Sie die virtuellen Computer der Datenbankebene unter Gruppe 1 hinzu, um sicherzustellen, dass sie zuletzt heruntergefahren und zuerst hochgefahren werden.
 
@@ -99,7 +99,7 @@ Eine typische IIS-Webanwendung mit mehreren Ebenen besteht aus einer Datenbankeb
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Hinzufügen von Skripts zum Wiederherstellungsplan
-Es kann erforderlich sein, nach dem Failover bzw. Testfailover einige Vorgänge auf den virtuellen Azure-Computern durchzuführen, damit die IIS-Webfarm richtig funktioniert. Sie können den Vorgang nach dem Failover, z.B. das Aktualisieren des DNS-Eintrags, Ändern der Websitebindung, Ändern der Verbindungszeichenfolge, automatisieren, indem Sie dem Wiederherstellungsplan wie unten dargestellt entsprechende Skripts hinzufügen. [Erfahren Sie mehr zum Hinzufügen von Skripts zum Wiederherstellungsplan](./site-recovery-create-recovery-plans.md#add-scripts).
+Es kann erforderlich sein, nach dem Failover bzw. Testfailover einige Vorgänge auf den virtuellen Azure-Computern durchzuführen, damit die IIS-Webfarm richtig funktioniert. Sie können den Vorgang nach dem Failover, z.B. das Aktualisieren des DNS-Eintrags, Ändern der Websitebindung, Ändern der Verbindungszeichenfolge, automatisieren, indem Sie dem Wiederherstellungsplan wie unten dargestellt entsprechende Skripts hinzufügen. [Erfahren Sie mehr zum Hinzufügen von Skripts zum Wiederherstellungsplan](./site-recovery-how-to-add-vmmscript.md).
 
 #### <a name="dns-update"></a>DNS-Update
 Wenn das DNS für das dynamische DNS-Update konfiguriert ist, führen virtuelle Computer nach dem Starten normalerweise ein Update des DNS mit der neuen IP-Adresse durch. Falls Sie einen expliziten Schritt zum Aktualisieren des DNS mit den neuen IPs der virtuellen Computer hinzufügen möchten, können Sie dieses [Skript zum Aktualisieren der IP-Adresse im DNS](https://aka.ms/asr-dns-update) als nachfolgende Aktion in Wiederherstellungsplangruppen hinzufügen.  
@@ -107,7 +107,7 @@ Wenn das DNS für das dynamische DNS-Update konfiguriert ist, führen virtuelle 
 #### <a name="connection-string-in-an-applications-webconfig"></a>Verbindungszeichenfolge in der „web.config“ einer Anwendung
 Die Verbindungszeichenfolge gibt die Datenbank an, mit der die Website kommuniziert.
 
-Wenn die Verbindungszeichenfolge den Namen des virtuellen Datenbankcomputers hat, sind nach dem Failover keine weiteren Schritte erforderlich, und die Anwendung kann automatisch mit der DB kommunizieren. Wenn die IP-Adresse für den virtuellen Datenbankcomputer beibehalten wird, wird sie für die Aktualisierung der Verbindungszeichenfolge nicht benötigt. Falls die Verbindungszeichenfolge auf den virtuellen Datenbankcomputer mit einer IP-Adresse verweist, muss sie nach dem Failover aktualisiert werden. Beispiel: Die unten angegebene Verbindungszeichenfolge verweist auf die Datenbank mit der IP-Adresse 127.0.1.2.
+Wenn die Verbindungszeichenfolge den Namen des virtuellen Datenbankcomputers hat, sind nach dem Failover keine weiteren Schritte erforderlich. Die Anwendung kann automatisch mit der Datenbank kommunizieren. Wenn die IP-Adresse für den virtuellen Datenbankcomputer beibehalten wird, wird sie für die Aktualisierung der Verbindungszeichenfolge nicht benötigt. Falls die Verbindungszeichenfolge auf den virtuellen Datenbankcomputer mit einer IP-Adresse verweist, muss sie nach dem Failover aktualisiert werden. Die unten angegebene Verbindungszeichenfolge verweist beispielsweise auf die Datenbank mit der IP-Adresse 127.0.1.2.
 
         <?xml version="1.0" encoding="utf-8"?>
         <configuration>
@@ -119,7 +119,7 @@ Wenn die Verbindungszeichenfolge den Namen des virtuellen Datenbankcomputers hat
 Sie können die Verbindungszeichenfolge auf der Webebene aktualisieren, indem Sie das [Skript für das IIS-Verbindungsupdate](https://aka.ms/asr-update-webtier-script-classic) nach Gruppe 3 im Wiederherstellungsplan hinzufügen.
 
 #### <a name="site-bindings-for-the-application"></a>Websitebindungen für die Anwendung
-Jede Website besteht aus Bindungsinformationen mit dem Typ der Bindung, der IP-Adresse, unter der der IIS-Server auf Anforderungen für die Website lauscht, der Portnummer und den Hostnamen für die Website. Bei einem Failover müssen diese Bindungen aktualisiert werden, wenn sich die zugeordneten IP-Adressen ändern.
+Jede Website besteht aus Bindungsinformationen mit dem Typ der Bindung, der IP-Adresse, unter der der IIS-Server auf Anforderungen für die Website lauscht, der Portnummer und den Hostnamen für die Website. Bei einem Failover müssen diese Bindungen unter Umständen aktualisiert werden, wenn sich die zugeordneten IP-Adressen ändern.
 
 > [!NOTE]
 >
@@ -141,7 +141,7 @@ Das SSL-Zertifikat kann für Folgendes ausgestellt werden:
 a) Vollqualifizierter Domänenname der Website<br>
 b) Name des Servers<br>
 c) Platzhalterzertifikat für den Domänennamen<br>
-d) IP-Adresse: Wenn das SSL-Zertifikat für die IP-Adresse des IIS-Servers ausgestellt wird, muss ein weiteres SSL-Zertifikat für die IP-Adresse des IIS-Servers am Azure-Standort ausgestellt werden, und es muss eine zusätzliche SSL-Bindung für dieses Zertifikat erstellt werden. Daher ist es ratsam, kein für die IP-Adresse ausgestelltes SSL-Zertifikat zu verwenden. Dies ist eine weniger häufig genutzte Option, die in Kürze im Rahmen der neuen ZS-/Browser-Forumsänderungen als veraltet eingestuft werden.
+d) IP-Adresse: Wenn das SSL-Zertifikat für die IP-Adresse des IIS-Servers ausgestellt wird, muss ein weiteres SSL-Zertifikat für die IP-Adresse des IIS-Servers am Azure-Standort ausgestellt werden, und es muss eine zusätzliche SSL-Bindung für dieses Zertifikat erstellt werden. Daher ist es ratsam, kein für die IP-Adresse ausgestelltes SSL-Zertifikat zu verwenden. Dies ist eine weniger häufig genutzte Option, die in Kürze im Rahmen der neuen ZS-/Browserforumsänderungen als veraltet eingestuft wird.
 
 #### <a name="update-the-dependency-between-the-web-and-the-application-tier"></a>Aktualisieren der Abhängigkeit zwischen Web- und Anwendungsebene
 Wenn Sie über eine anwendungsspezifische Abhängigkeit verfügen, die auf der IP-Adresse der virtuellen Computer basiert, müssen Sie diese Abhängigkeit nach dem Failover aktualisieren.

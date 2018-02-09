@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2017
+ms.date: 01/29/2018
 ms.author: seguler
-ms.openlocfilehash: 3d4a7ceabc8cdb97fc8a0f29756d7648d253fe21
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 7d875a1e43908f49424f4e40fe923639cfa02385
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Übertragen von Daten mit AzCopy unter Windows
 AzCopy ist ein Befehlszeilenprogramm, das entwickelt wurde, um Daten in/aus Microsoft Azure Blob, File und Table Storage zu kopieren. Hierbei werden einfache Befehle verwendet, die für optimale Leistung konzipiert sind. Sie können Daten zwischen einem Dateisystem und einem Speicherkonto oder zwischen Speicherkonten kopieren.  
@@ -750,7 +750,7 @@ Sie können mehrere Antwortdateien angeben. Beachten Sie jedoch, dass AzCopy ges
 
 ### <a name="y"></a>/Y
 
-Unterdrückt alle Bestätigungsaufforderungen von AzCopy.
+Unterdrückt alle Bestätigungsaufforderungen von AzCopy. Diese Option ermöglicht zudem die Verwendung von lesegeschützten SAS-Token für Datenuploadszenarien, wenn /XO und /XN nicht angegeben sind.
 
 **Gilt für:** Blobs, Dateien, Tabellen
 

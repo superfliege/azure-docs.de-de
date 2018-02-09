@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage (Vorschau) | Microsoft-Dokumentation
+title: Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage | Microsoft-Dokumentation
 description: "Konfigurieren Sie mehrstufige Netzwerksicherheit für Ihr Speicherkonto."
 services: storage
 documentationcenter: 
@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: d29f2d180df93f45202e881336e492c45587b276
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: fc13b7cc164c948f25a6908bdf71124a5be02fb9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage (Vorschau)
+# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage
 Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
 
-## <a name="preview-availability-and-support"></a>Verfügbarkeit und Unterstützung der Vorschauversion
-Firewalls und virtuelle Netzwerke in Storage sind als Vorschauversion verfügbar.  Diese Funktion ist derzeit für neue oder vorhandene Speicherkonten in allen Azure Public Cloud-Regionen verfügbar:
-
-> [!NOTE]
-> Produktionsworkloads werden in der Vorschauversion nicht unterstützt.
+> [!IMPORTANT]
+> Durch das Aktivieren von Firewallregeln für Ihr Storage-Konto wird der Zugriff auf eingehende Datenanforderungen, auch von anderen Azure-Diensten, blockiert.  Dies schließt das Portal, das Schreiben von Protokollen usw. mit ein.  Für beteiligte Dienste können Sie die Funktionalität erneut aktivieren, wie unten im Abschnitt [Ausnahmen](#Exceptions) beschrieben.  Um auf das Portal zuzugreifen, müssen Sie dies von einem Computer innerhalb der von Ihnen eingerichteten vertrauenswürdigen Grenze (entweder IP oder VNET) aus tun.
 >
 
 ## <a name="scenarios"></a>Szenarien
@@ -55,9 +52,6 @@ Standardmäßig akzeptieren Speicherkonten Verbindungen von Clients in jedem Net
 
 #### <a name="azure-portal"></a>Azure-Portal
 1. Navigieren Sie zu dem Speicherkonto, das Sie sichern möchten.  
-> [!NOTE]
-> Stellen Sie sicher, dass sich Ihr Speicherkonto in einer der für die öffentliche Vorschauversion unterstützten Regionen befindet.
->
 
 2. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
 3. Um den Zugriff standardmäßig zu verweigern, wählen Sie das Zulassen des Zugriffs aus „Ausgewählte Netzwerke“ aus.  Um Datenverkehr aus allen Netzwerken zuzulassen, lassen Sie den Zugriff aus „Alle Netzwerke“ zu.

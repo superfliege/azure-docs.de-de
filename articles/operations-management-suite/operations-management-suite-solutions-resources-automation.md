@@ -1,5 +1,5 @@
 ---
-title: "Azure Automation-Ressourcen in OMS-Lösungen | Microsoft Docs"
+title: "Azure Automation-Ressourcen in OMS-Lösungen | Microsoft-Dokumentation"
 description: "Lösungen in der OMS enthalten üblicherweise Runbooks in Azure Automation zum Automatisieren von Prozessen, wie z.B. das Sammeln und Verarbeiten von Überwachungsdaten.  Dieser Artikel beschreibt, wie Sie Runbooks und dazugehörige Ressourcen in eine Lösung integrieren können."
 services: operations-management-suite
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1097b1ddd2e8f2fae0ffc809aee63be5c2ed4cb1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>Hinzufügen von Azure Automation-Ressourcen zu einer OMS-Verwaltungslösung (Vorschau)
 > [!NOTE]
@@ -40,7 +40,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits mit den folgenden Inf
 - [Erstellen von Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Automation-Konto
-Alle Ressourcen in Azure Automation befinden sich einem [Automation-Konto](../automation/automation-security-overview.md#automation-account-overview).  Wie unter [OMS workspace and Automation account (OMS-Arbeitsbereich und Automation-Konto)](operations-management-suite-solutions.md#oms-workspace-and-automation-account) beschrieben, ist das Automation-Konto nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung bestehen.  Ist es nicht verfügbar, schlägt die Installation der Lösung fehl.
+Alle Ressourcen in Azure Automation befinden sich einem [Automation-Konto](../automation/automation-security-overview.md#automation-account-overview).  Wie unter [OMS workspace and Automation account (OMS-Arbeitsbereich und Automation-Konto)](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) beschrieben, ist das Automation-Konto nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung bestehen.  Ist es nicht verfügbar, schlägt die Installation der Lösung fehl.
 
 Im Namen jeder Automation-Ressource ist der Name des Automation-Kontos enthalten.  Dafür sorgt,wie in diesem Beispiel eines Runbooks zu sehen, der Parameter **accountName** in der Lösung.
 
@@ -75,7 +75,7 @@ Sie sollten alle von der Lösung verwendeten Runbooks zur Lösungsdatei hinzufü
 
 Die Eigenschaften für Runbooks werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | runbookType |Gibt den Typ des Runbooks an. <br><br> Script – PowerShell-Skript <br>PowerShell – PowerShell-Workflow <br> GraphPowerShell – Grafisches PowerShell-Skript-Runbook <br> GraphPowerShellWorkflow – Grafisches PowerShell-Workflow-Runbook |
 | logProgress |Gibt an, ob für das Runbook [Datensätze zum Status](../automation/automation-runbook-output-and-messages.md) erstellt werden sollen |
@@ -111,10 +111,10 @@ Auftragsressourcen sind vom Typ **Microsoft.Automation/automationAccounts/jobs**
 
 Die Eigenschaften für Automatisierungsaufträge werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | runbook |Einzelne name-Entität mit dem Namen des zu startenden Runbooks |
-| parameters |Vom Runbook benötigte Entität für jeden Parameterwert. |
+| Parameter |Vom Runbook benötigte Entität für jeden Parameterwert. |
 
 Der Auftrag umfasst das Senden des Runbook-Namens und aller Parameterwerte an das Runbook.  Der Auftrag sollte von dem Runbook [abhängen](operations-management-suite-solutions-solution-file.md#resources), von dem er gestartet wird, da das Runbook vor dem Auftrag erstellt werden muss.  Wenn Sie über mehrere Runbooks verfügen, die gestartet werden sollen, können Sie die Reihenfolge festlegen, indem ein Auftrag von allen anderen Aufträgen abhängt, die zuerst ausgeführt werden sollen.
 
@@ -142,7 +142,7 @@ Der Name einer Auftragsressource muss eine GUID enthalten, die in der Regel von 
 
 Die Eigenschaften für Zertifikatressourcen werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | base64Value |Base-64-Wert für das Zertifikat |
 | thumbprint |Fingerabdruck für das Zertifikat |
@@ -169,7 +169,7 @@ Die Eigenschaften für Zertifikatressourcen werden in der folgenden Tabelle besc
 
 Die Eigenschaften für Anmeldeinformationsressourcen werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | userName |Benutzername für die Anmeldeinformationen |
 | password |Kennwort für die Anmeldeinformationen |
@@ -197,7 +197,7 @@ Die Eigenschaften für Anmeldeinformationsressourcen werden in der folgenden Tab
 
 Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Beschreibung |Optionale Beschreibung für den Zeitplan |
 | startTime |Gibt die Startzeit eines Zeitplans als DateTime-Objekt an. Eine Zeichenfolge kann bereitgestellt werden, wenn sie in ein gültiges DateTime-Objekt konvertiert werden kann. |
@@ -240,14 +240,14 @@ Auftragszeitplan-Ressourcen verknüpfen ein Runbook mit einem Zeitplan.  Sie sin
 
 Die Eigenschaften für Auftragszeitpläne werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Zeitplanname |Einzelne **name**-Entität mit dem Namen des Zeitplans |
 | Runbookname  |Einzelne **name**-Entität mit dem Namen des Runbooks  |
 
 
 
-## <a name="variables"></a>Variablen
+## <a name="variables"></a>Variables
 [Azure Automation-Variablen](../automation/automation-variables.md) sind vom Typ **Microsoft.Automation/automationAccounts/variables** und weisen die folgende Struktur auf.  Dies schließt allgemeine Variablen und Parameter ein, sodass Sie diesen Codeausschnitt kopieren, in Ihre Lösungsdatei einfügen und die Parameternamen ändern können.
 
     {
@@ -267,7 +267,7 @@ Die Eigenschaften für Auftragszeitpläne werden in der folgenden Tabelle beschr
 
 Die Eigenschaften für Variablenressourcen werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Beschreibung | Optionale Beschreibung für die Variable |
 | isEncrypted | Gibt an, ob die Variable verschlüsselt werden soll |
@@ -279,12 +279,12 @@ Die Eigenschaften für Variablenressourcen werden in der folgenden Tabelle besch
 
 Wenn Sie den Anfangswert für die Variable festlegen, muss er mit dem richtigen Datentyp konfiguriert werden.  Die folgende Tabelle enthält die unterschiedlichen zulässigen Datentypen und ihre Syntax.  Beachten Sie, dass Werte im JSON-Format immer eingeschlossen in Anführungszeichen erwartet werden, wobei Sonderzeichen innerhalb der Anführungszeichen enthalten sein müssen.  So würde beispielsweise ein Zeichenfolgenwert mit einschließenden Anführungszeichen angegeben werden (mit dem Escapezeichen \\), während ein numerischer Wert mit nur einem Satz von Anführungszeichen angegeben werden müsste.
 
-| Datentyp | Beschreibung | Beispiel | Aufgelöst in |
+| Datentyp | BESCHREIBUNG | Beispiel | Aufgelöst in |
 |:--|:--|:--|:--|
-| string   | Wert in doppelte Anführungszeichen einschließen  | "\"Hello world\"" | "Hello world" |
+| Zeichenfolge   | Wert in doppelte Anführungszeichen einschließen  | "\"Hello world\"" | "Hello world" |
 | numeric  | Numerische Werte in einfache Anführungszeichen einschließen| "64" | 64 |
-| Boolescher Wert  | **true** oder **false** in Anführungszeichen einschließen.  Beachten Sie, dass dieser Wert klein geschrieben werden muss. | „true“ | true |
-| Datetime | Serialisierter Datumswert.<br>Mit dem Cmdlet ConvertTo-Json in PowerShell können Sie diesen Wert für ein bestimmtes Datum generieren.<br>Beispiel: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| boolean  | **true** oder **false** in Anführungszeichen einschließen.  Beachten Sie, dass dieser Wert klein geschrieben werden muss. | „true“ | true |
+| Datetime | Serialisierter Datumswert.<br>Mit dem Cmdlet ConvertTo-Json in PowerShell können Sie diesen Wert für ein bestimmtes Datum generieren.<br>Beispiel: Get-Date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Module
 Ihre Verwaltungslösung muss keine [globalen Module](../automation/automation-integration-modules.md) definieren, die von Ihren Runbooks verwendet werden, da diese in Ihrem Automation-Konto immer verfügbar sind.  Für jedes andere von Ihren Runbooks verwendete Modul müssen Sie jedoch eine Ressource hinzufügen.
@@ -307,7 +307,7 @@ Ihre Verwaltungslösung muss keine [globalen Module](../automation/automation-in
 
 Die Eigenschaften für Modulressourcen werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | contentLink |Gibt den Inhalt des Moduls an <br><br>uri – Gibt den URI für den Inhalt des Moduls an.  Dies wird eine PS1-Datei für PowerShell und Skript-Runbooks sowie eine exportierte grafische Runbook-Datei für ein grafisches Runbook sein.  <br> version – Version des Moduls für Ihre eigene Nachverfolgung. |
 

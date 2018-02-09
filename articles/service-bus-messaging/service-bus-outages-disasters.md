@@ -1,5 +1,5 @@
 ---
-title: "Schützen von Azure Service Bus-Anwendungen vor Ausfällen und Notfällen | Microsoft Docs"
+title: "Schützen von Azure Service Bus-Anwendungen vor Ausfällen und Notfällen | Microsoft-Dokumentation"
 description: "Verfahren, die Anwendungen vor einem potenziellen Service Bus-Ausfall schützen können."
 services: service-bus-messaging
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 6dd9045d7aa8d4dc8b3a1acbe6f927e232d9b505
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen
 
@@ -31,12 +31,7 @@ Ein Notfall wird als dauerhafter Verlust einer Service Bus-Skalierungseinheit od
 ## <a name="current-architecture"></a>Aktuelle Architektur
 Service Bus nutzt mehrere Nachrichtenspeicher zum Speichern von Nachrichten, die an Warteschlangen oder Themen gesendet werden. Eine nicht partitionierte Warteschlange bzw. ein Thema ist einem Nachrichtenspeicher zugewiesen. Wenn dieser Nachrichtenspeicher nicht verfügbar ist, treten für alle Vorgänge der Warteschlange oder des Themas Fehler auf.
 
-Alle Service Bus-Nachrichtenentitäten (Warteschlangen, Themen, Relays) befinden sich in einem Dienstnamespace, der einem Rechenzentrum zugeordnet ist. Service Bus aktiviert weder die automatische Georeplikation von Daten noch erlaubt es die Verwendung eines Namespace für mehrere Rechenzentren.
-
-## <a name="protecting-against-acs-outages"></a>Schutz vor ACS-Ausfällen
-Wenn Sie ACS-Anmeldeinformationen verwenden und ACS nicht verfügbar ist, können Clients keine Token mehr abrufen. Clients, die während des ACS-Ausfalls über ein Token verfügen, können Service Bus weiter nutzen, bis die Token ablaufen. Die Standardgültigkeitsdauer von Token beträgt 3 Stunden.
-
-Verwenden Sie zum Schutz vor ACS-Ausfällen Shared Access Signature (SAS)-Token. In diesem Fall führt der Client die Authentifizierung direkt mit Service Bus durch, indem ein selbsterstelltes Token mit einem geheimen Schlüssel signiert wird. Aufrufe von ACS sind dann nicht mehr erforderlich. Weitere Informationen zu SAS-Token finden Sie unter [Service Bus-Authentifizierung][Service Bus authentication].
+Alle Service Bus-Nachrichtenentitäten (Warteschlangen, Themen, Relays) befinden sich in einem Dienstnamespace, der einem Rechenzentrum zugeordnet ist. Service Bus unterstützt ab sofort die [*georedundante Notfallwiederherstellung* und die *Georeplikation*](service-bus-geo-dr.md) auf Namespaceebene.
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>Schützen von Warteschlangen und Themen vor Ausfällen von Nachrichtenspeichern
 Eine nicht partitionierte Warteschlange bzw. ein Thema ist einem Nachrichtenspeicher zugewiesen. Wenn dieser Nachrichtenspeicher nicht verfügbar ist, treten für alle Vorgänge der Warteschlange oder des Themas Fehler auf. Eine partitionierte Warteschlange besteht dagegen aus mehreren Fragmenten. Jedes Fragment wird in einem anderen Nachrichtenspeicher gespeichert. Wenn eine Nachricht an eine partitionierte Warteschlange bzw. ein Thema gesendet wird, weist Service Bus die Nachricht einem der Fragmente zu. Wenn der entsprechende Nachrichtenspeicher nicht verfügbar ist, schreibt Service Bus in ein anderes Fragment, falls dies möglich ist. Weitere Informationen zu partitionierten Entitäten finden Sie unter [Partitionierte Messagingentitäten][Partitioned messaging entities].
@@ -44,7 +39,7 @@ Eine nicht partitionierte Warteschlange bzw. ein Thema ist einem Nachrichtenspei
 ## <a name="protecting-against-datacenter-outages-or-disasters"></a>Schutz vor Ausfällen von Rechenzentren oder Notfällen
 Um ein Failover zwischen zwei Rechenzentren zu ermöglichen, können Sie in jedem Rechenzentrum einen Service Bus-Dienstnamespace erstellen. Beispielsweise kann sich der Service Bus-Dienstnamespace **contosoPrimary.servicebus.windows.net** in der Region „USA, Norden-Mitte“ befinden, während sich **contosoSecondary.servicebus.windows.net** in der Region „USA, Süden-Mitte“ befindet. Wenn eine Service Bus-Messagingentität bei einem Ausfall des Rechenzentrums verfügbar bleiben muss, können Sie die Entität in beiden Namespaces erstellen.
 
-Weitere Informationen finden Sie im Abschnitt „Ausfall von Service Bus in einem Azure-Rechenzentrum“ unter [Asynchrone Nachrichtenmuster und hohe Verfügbarkeit][Asynchronous messaging patterns and high availability].
+Weitere Informationen finden Sie im Abschnitt „Ausfall von Service Bus in einem Azure-Rechenzentrum“ unter [Asynchrone Nachrichtenmuster und Hochverfügbarkeit][Asynchronous messaging patterns and high availability].
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Schutz von Relayendpunkten vor Rechenzentrumausfällen oder Notfällen
 Die Georeplikation von Relayendpunkten ermöglicht die Verwendung eines Diensts, mit dem ein Relayendpunkt verfügbar gemacht wird, damit er bei Service Bus-Ausfällen zugänglich ist. Zum Erzielen der Georeplikation muss der Dienst zwei Relayendpunkte in unterschiedlichen Namespaces erstellen. Die Namespaces müssen sich in unterschiedlichen Rechenzentren befinden, und die beiden Endpunkte müssen unterschiedliche Namen haben. Ein primärer Endpunkt kann beispielsweise unter **contosoPrimary.servicebus.windows.net/myPrimaryService** erreichbar sein, während der sekundäre Endpunkt unter **contosoSecondary.servicebus.windows.net/mySecondaryService** erreichbar ist.
@@ -82,9 +77,14 @@ Bei Verwendung der passiven Replikation können Nachrichten in den folgenden Sze
 
 Im Beispiel [Georeplikation mit Service Bus-Brokernachrichten][Geo-replication with Service Bus Brokered Messages] wird die passive Replikation von Nachrichtenentitäten veranschaulicht.
 
+## <a name="geo-replication"></a>Georeplikation
+
+Service Bus unterstützt ab sofort die georedundante Notfallwiederherstellung und die Georeplikation auf Namespaceebene. Weitere Informationen finden Sie unter [Georedundante Notfallwiederherstellung in Azure Service Bus](service-bus-geo-dr.md). Bei der Funktion zur Notfallwiederherstellung, die nur für [Premium SKU](service-bus-premium-messaging.md) verfügbar ist, wird die Notfallwiederherstellung von Metadaten implementiert. Diese basiert auf speziellen primären und sekundären Namespaces.
+
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Notfallwiederherstellung finden Sie in diesen Artikeln:
 
+* [Georedundante Notfallwiederherstellung in Azure Service Bus](service-bus-geo-dr.md)
 * [Geschäftskontinuität in Azure SQL-Datenbank][Azure SQL Database Business Continuity]
 * [Entwickeln robuster Anwendungen für Azure][Azure resiliency technical guidance]
 

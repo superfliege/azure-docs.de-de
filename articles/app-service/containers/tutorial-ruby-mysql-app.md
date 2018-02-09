@@ -2,21 +2,21 @@
 title: Erstellen einer Ruby- und MySQL-Web-App in Azure App Service unter Linux | Microsoft Docs
 description: "Hier erhalten Sie Informationen zum Ausführen einer Ruby-App in Azure, die Sie mit einer MySQL-Datenbank in Azure verbinden."
 services: app-service\web
-documentationcenter: nodejs
+documentationcenter: 
 author: cephalin
 manager: cfowler
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: nodejs
+ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 12/21/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 03b2b4e8f8827a08e1414512d848bd5bed48d674
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 951e66e47cf8fbe9d2cdf1606a8d63054bcada13
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-a-ruby-and-mysql-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Ruby- und MySQL-Web-App in Azure App Service unter Linux
 
@@ -34,16 +34,16 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Streamen von Diagnoseprotokollen aus Azure
 > * Verwalten der App im Azure-Portal
 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dieses Tutorial abschließen zu können, müssen Sie die folgenden Aufgaben ausführen:
+Für dieses Tutorial benötigen Sie Folgendes:
 
-* [Installieren von Git](https://git-scm.com/)
+* [Installation von Git](https://git-scm.com/)
 * [Installieren von Ruby 2.3](https://www.ruby-lang.org/documentation/installation/)
 * [Installieren von Ruby on Rails 5.1](http://guides.rubyonrails.org/v5.1/getting_started.html)
 * [Installieren und Starten von MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prepare-local-mysql"></a>Vorbereiten der lokalen MySQL-Instanz
 
@@ -128,7 +128,7 @@ Um den Rails-Server zu beenden, geben Sie `Ctrl + C` im Terminal ein.
 
 ## <a name="create-mysql-in-azure"></a>Erstellen von MySQL in Azure
 
-In diesem Schritt erstellen Sie eine MySQL-Datenbank in [Azure Database for MySQL (Vorschau)](/azure/mysql). Später konfigurieren Sie die Ruby on Rails-Anwendung für eine Verbindung mit dieser Datenbank.
+In diesem Schritt erstellen Sie eine MySQL-Datenbank in [Azure-Datenbank für MySQL (Vorschau)](/azure/mysql). Später konfigurieren Sie die Ruby on Rails-Anwendung für eine Verbindung mit dieser Datenbank.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -136,7 +136,7 @@ In diesem Schritt erstellen Sie eine MySQL-Datenbank in [Azure Database for MySQ
 
 ### <a name="create-a-mysql-server"></a>Erstellen eines MySQL-Servers
 
-Erstellen Sie mit dem Befehl [az mysql server create](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) einen Server in Azure Database for MySQL (Vorschau).
+Erstellen Sie in Azure Database for MySQL (Vorschauversion) mit dem Befehl [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) einen Server.
 
 Ersetzen Sie im folgenden Befehl den Platzhalter _&lt;mysql_server_name>_ durch Ihren MySQL-Servernamen (gültige Zeichen sind `a-z`, `0-9` und `-`). Dieser Name ist Teil des Hostnamens des MySQL-Servers (`<mysql_server_name>.mysql.database.azure.com`) und muss global eindeutig sein.
 
@@ -161,14 +161,14 @@ Nach dem Erstellen des MySQL-Servers zeigt die Azure-Befehlszeilenschnittstelle 
 
 ### <a name="configure-server-firewall"></a>Konfigurieren der Serverfirewall
 
-Erstellen Sie mit dem Befehl [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) eine Firewallregel für Ihren MySQL-Server, um Clientverbindungen zuzulassen.
+Erstellen Sie mit dem Befehl [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) eine Firewallregel für Ihren MySQL-Server, um Clientverbindungen zuzulassen.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 > [!NOTE]
-> Für Azure Database for MySQL (Vorschau) besteht derzeit keine Beschränkung für ausschließliche Verbindungen mit Azure-Diensten. Da IP-Adressen in Azure dynamisch zugewiesen werden, ist es besser, alle IP-Adressen zu aktivieren. Der Dienst befindet sich in der Vorschauphase. Bessere Methoden zum Schützen Ihrer Datenbank sind geplant.
+> Für Azure-Datenbank für MySQL (Vorschauversion) besteht derzeit keine Beschränkung für ausschließliche Verbindungen mit Azure-Diensten. Da IP-Adressen in Azure dynamisch zugewiesen werden, ist es besser, alle IP-Adressen zu aktivieren. Der Dienst befindet sich in der Vorschauphase. Bessere Methoden zum Schützen Ihrer Datenbank sind geplant.
 >
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Lokales Verbinden mit dem MySQL-Produktionsserver
@@ -228,7 +228,7 @@ production:
 Speichern Sie die Änderungen.
 
 > [!NOTE]
-> Die `sslca` wird hinzugefügt und verweist auf eine im Beispielrepository vorhandene _PEM_-Datei. Standardmäßig erzwingt Azure Database for MySQL SSL-Verbindungen von Clients. Mit diesem `.pem`-Zertifikat stellen Sie SSL-Verbindungen mit Azure Database for MySQL her. Weitere Informationen finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure-Datenbank für MySQL](../../mysql/howto-configure-ssl.md).
+> Die `sslca` wird hinzugefügt und verweist auf eine im Beispielrepository vorhandene _PEM_-Datei. Standardmäßig erzwingt Azure-Datenbank für MySQL SSL-Verbindungen von Clients. Mit diesem `.pem`-Zertifikat stellen Sie SSL-Verbindungen mit Azure Database for MySQL her. Weitere Informationen finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure-Datenbank für MySQL](../../mysql/howto-configure-ssl.md).
 >
 
 ### <a name="test-the-application-locally"></a>Lokales Testen der Anwendung
@@ -312,9 +312,9 @@ In diesem Schritt stellen Sie die mit MySQL verbundene Rails-Anwendung in Azure 
 
 ### <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-Erstellen Sie in Cloud Shell im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) eine Web-App. 
+Erstellen Sie in Cloud Shell mit dem Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) eine Web-App im App Service-Plan `myAppServicePlan`. 
 
-Ersetzen Sie im folgenden Beispiel `<app_name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `RUBY|2.3` festgelegt, die das [Ruby-Standardbild](https://hub.docker.com/r/appsvc/ruby/) bereitstellt. Führen Sie zum Anzeigen aller unterstützten Runtimes den Befehl [az webapp list-runtimes](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) aus. 
+Ersetzen Sie im folgenden Beispiel `<app_name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `RUBY|2.3` festgelegt, die das [Ruby-Standardbild](https://hub.docker.com/r/appsvc/ruby/) bereitstellt. Führen Sie [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) aus, um alle unterstützten Laufzeiten anzuzeigen. 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "RUBY|2.3" --deployment-local-git
@@ -346,7 +346,7 @@ Sie haben eine leere neue Web-App mit aktivierter Git-Bereitstellung erstellt.
 
 ### <a name="configure-database-settings"></a>Konfigurieren der Datenbankeinstellungen
 
-In App Service legen Sie Umgebungsvariablen als _App-Einstellungen_ fest, indem Sie in Cloud Shell den Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) verwenden.
+Verwenden Sie in App Service den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) in Cloud Shell, um Umgebungsvariablen als _App-Einstellungen_ festzulegen.
 
 Mit dem folgenden Cloud Shell-Befehl werden die App-Einstellungen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` und `DB_PASSWORD` konfiguriert. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;mysql_server_name>_.
 

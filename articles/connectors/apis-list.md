@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: 948b91a9fabc3ab3c4d6708968a88cb9d203b171
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ec532ce0871d11fea222050bb08ec73afe5f2be3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="connectors-list"></a>Liste mit den Connectors
 Die in der Swagger-Beschreibung der einzelnen Connectors definierten Trigger und Aktionen sowie mögliche Connectoreinschränkungen finden Sie unter [Connectors](/connectors/).
@@ -83,7 +83,7 @@ Das Enterprise Integration Pack (EIP) umfasst Connectors, die in der BizTalk Ser
 | --- | --- | --- | --- |
 | [![API-Symbol][as2icon]<br/>**AS2-</br>Decodierung**][as2decode] | [![API-Symbol][as2icon]<br/>**AS2-</br>Codierung**][as2encode] | [![API-Symbol][x12icon]<br/>**EDIFACT-</br>Decodierung**][EDIFACTdecode] | [![API-Symbol][x12icon]<br/>**EDIFACT-</br>Codierung**][EDIFACTencode] |
 [![API-Symbol][flatfileicon]<br/>**Flatfile-</br>Codierung**][flatfiledoc] | [![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc] | [![API-Symbol][integrationaccounticon]<br/>**Integrations-<br/>konto**][integrationaccountdoc] | [![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc] |
-| [![API-Symbol][x12icon]<br/>**X12-</br>Decodierung**][x12decode] | [![API-Symbol][x12icon]<br/>**X12-</br>Codierung**][x12encode] | [![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc] | |
+| [![API-Symbol][x12icon]<br/>**X12-</br>Decodierung**][x12decode] | [![API-Symbol][x12icon]<br/>**X12-</br>Codierung**][x12encode] | [![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc] | [![API-Symbol][liquidicon]<br/>**JSON-<br/>Transformation**][JSONliquidtransformdoc] |
 
 ### <a name="enterprise-connectors"></a>Enterprise-Connectors
 
@@ -190,6 +190,7 @@ Fehlt noch ein Connector-Thema oder Details, die Ihrer Meinung nach wichtig sind
 [EDIFACTdecode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "Informationen zu Enterprise Integration (EDIFACT-Decodierung)."
 [EDIFACTencode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "Informationen zu Enterprise Integration (EDIFACT-Codierung)."
 [integrationaccountdoc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "Suchen nach Schemas, Zuordnungen, Partnern und mehr in Ihrem Integrationskonto"
+[JSONliquidtransformdoc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "Informationen zu JSON-Transformationen mit Liquid"
 
 
 [boxDoc]: ./connectors-create-api-box.md "Stellen Sie eine Verbindung mit Box her. Sie können Dateien hochladen, abrufen, löschen, auflisten und vieles mehr."
@@ -329,3 +330,4 @@ Fehlt noch ein Connector-Thema oder Details, die Ihrer Meinung nach wichtig sind
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 [integrationaccounticon]: ./media/apis-list/integrationaccount.png
+[liquidicon]: ./media/apis-list/liquidtransform.png

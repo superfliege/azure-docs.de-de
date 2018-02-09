@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: f84b870de4b79399d5edc90284c9c56222156b5d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bece2be88a020610dfd3d22f15f7d276d99bb153
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-deferral"></a>Nachrichtenverzögerung
 
@@ -35,15 +35,15 @@ Die API im .NET Framework-Client ist [BrokeredMessage.Defer](/dotnet/api/microso
 
 Verzögerte Nachrichten bleiben im Gegensatz zu unzustellbaren Nachrichten, die sich in einer Unterwarteschlange befinden, mit allen anderen aktiven Nachrichten in der Hauptwarteschlange, können jedoch nicht mehr mithilfe der regulären Funktionen „Receive“ bzw. „ReceiveAsync“ empfangen werden. Verzögerte Nachrichten können über das [Durchsuchen von Nachrichten](message-browsing.md) ermittelt werden, wenn eine Anwendung diese nicht mehr findet.
 
-Zum Abrufen einer verzögerten Nachricht muss deren „Besitzer“ sich die [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) beim Verzögern merken. Jeder Empfänger, der die **SequenceNumber** einer verzögerten Nachricht kennt, kann die Nachricht später explizit durch „Receive(sequenceNumber)“ empfangen.
+Zum Abrufen einer verzögerten Nachricht muss sich deren Besitzer die [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) beim Verzögern merken. Jeder Empfänger, der die Sequenznummer einer verzögerten Nachricht kennt, kann die Nachricht später explizit durch `Receive(sequenceNumber)` empfangen.
 
-Wenn eine Nachricht nicht verarbeitet werden kann, weil eine bestimmte Ressource für die Verarbeitung dieser Nachricht vorübergehend nicht verfügbar ist, aber die Verarbeitung der Nachricht nicht sofort angehalten werden soll, stellt das Merken der **SequenceNumber** in einer [geplanten Nachricht](message-sequencing.md), die in ein paar Minuten gesendet werden soll und das erneute Abrufen der verzögerten Nachricht, wenn die geplante Nachricht eingeht, eine elegante Methode dar, um diese Nachricht für ein paar Minuten zurückzustellen. Hinweis: Wenn alle Vorgänge eines Nachrichtenhandlers von einer Datenbank abhängen und diese Datenbank vorübergehend nicht verfügbar ist, sollten Sie nicht die Verzögerung nutzen, sondern das Empfangen von Nachrichten vollständig anhalten, bis die Datenbank wieder verfügbar ist.
+Wenn eine Nachricht nicht verarbeitet werden kann, weil eine bestimmte Ressource für die Verarbeitung dieser Nachricht vorübergehend nicht verfügbar ist, aber die Verarbeitung der Nachricht nicht sofort angehalten werden soll, stellt das Merken der **SequenceNumber** in einer [geplanten Nachricht](message-sequencing.md), die in ein paar Minuten gesendet werden soll und das erneute Abrufen der verzögerten Nachricht, wenn die geplante Nachricht eingeht, eine Methode dar, um diese Nachricht für ein paar Minuten zurückzustellen. Hinweis: Wenn alle Vorgänge eines Nachrichtenhandlers von einer Datenbank abhängen und diese Datenbank vorübergehend nicht verfügbar ist, sollten Sie nicht die Verzögerung nutzen, sondern das Empfangen von Nachrichten vollständig anhalten, bis die Datenbank wieder verfügbar ist.
 
 Das Verzögern von Nachrichten wirkt sich nicht auf den Nachrichtenablauf aus. Das bedeutet, dass verzögerte Nachrichten weiterhin zur ursprünglich geplanten Zeit ablaufen und in eine Warteschlange für unzustellbare Nachrichten verschoben werden, falls dies konfiguriert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen:
+Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Themen:
 
 * [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)

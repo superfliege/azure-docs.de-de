@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 6febd3f12248a96f54415a91fcf0513ef7412e78
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7ee5a720b12152c27a96ee18f1b11e5fc03a531a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="derive-column-by-example-transformation"></a>Transformation „Derive Column by Example“
 
@@ -67,6 +67,10 @@ Im erweiterten Modus können Sie zum Ableiten von Spalten nach Beispiel eine umf
 Im erweiterten Modus können Sie jede beliebige Zeile als Beispielzeile hinzufügen, indem Sie im Raster auf die Zeile doppelklicken. Nachdem eine Zeile als Beispielzeile kopiert wurde, können Sie die Daten in den Quellspalten auch bearbeiten, um ein Synthesebeispiel zu erstellen. Auf diese Weise können Sie Fälle hinzufügen, die in den Beispieldaten derzeit nicht vorhanden sind.
 
 Benutzer können zwischen dem einfachen Modus (**Basic Mode**) und dem erweiterten Modus (**Advanced Mode**) umschalten, indem sie im Editor für Transformationen auf die entsprechenden Links klicken.
+
+### <a name="transform-editor-send-feedback"></a>Editor für Transformationen: Senden von Feedback
+
+Durch Klicken auf den Link **Feedback senden** wird das Dialogfeld **Feedback** angezeigt. Die Kommentarfelder enthalten bereits die vom Benutzer eingegebenen Beispiele. Benutzer sollten den Inhalt der Kommentarfelder überprüfen und weitere Details angeben, damit wir das Problem besser nachvollziehen können. Wenn Benutzer keine Daten an Microsoft senden möchten, müssen sie die ausgefüllten Beispieldaten entfernen, bevor sie auf die Schaltfläche **Feedback senden** klicken. 
 
 ### <a name="editing-existing-transformation"></a>Bearbeiten von vorhandenen Transformationen
 

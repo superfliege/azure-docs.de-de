@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: v-masebo
-ms.openlocfilehash: 24c556c8ea585a522c890dab16ae9fb96dc51c22
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f467437afb4bf89e77668cfd3e8a824bfbde9e10
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="routing-messages-with-iot-hub-python"></a>Weiterleiten von Nachrichten mit IoT Hub (Python)
 
@@ -117,6 +117,9 @@ In diesem Abschnitt ändern Sie die Geräte-App, die Sie im Tutorial [Erste Schr
 In diesem Abschnitt erstellen Sie eine Service Bus-Warteschlange und ein Storage-Konto, verbinden sie mit Ihrem IoT Hub und konfigurieren Ihre IoT Hub-Instanz so, dass Nachrichten an die Warteschlange gesendet werden, wenn eine Eigenschaft in der Nachricht vorhanden ist, und alle Nachrichten an das Storage-Konto gesendet werden. Weitere Informationen zur Verarbeitung von Nachrichten aus Service Bus-Warteschlangen finden Sie unter [Verwenden von Service Bus-Warteschlangen mit Python][lnk-sb-queues-node]. Weitere Informationen zum Verwalten des Speichers finden Sie in der [Dokumentation für Azure Storage][Azure Storage].
 
 1. Erstellen Sie eine Service Bus-Warteschlange wie in [Erste Schritte mit Warteschlangen][lnk-sb-queues-node] beschrieben. Notieren Sie den Namespace und den Warteschlangennamen.
+
+    > [!NOTE]
+    > Für Service Bus-Warteschlangen und -Themen, die als IoT Hub-Endpunkte verwendet werden, dürfen **Sitzungen** oder **Duplikaterkennung** nicht aktiviert werden. Wenn eine dieser Optionen aktiviert ist, wird der Endpunkt im Azure-Portal als **Nicht erreichbar** angezeigt.
 
 1. Öffnen Sie Ihren IoT-Hub im Azure-Portal, und klicken Sie auf **Endpunkte**.
 

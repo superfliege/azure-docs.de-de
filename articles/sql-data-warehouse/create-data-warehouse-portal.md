@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer Azure SQL Data Warehouse-Instanz – Azure-Portal | Microsoft-Dokumentation"
+title: "Schnellstart: Erstellen einer Azure SQL Data Warehouse-Instanz – Azure-Portal | Microsoft-Dokumentation"
 description: "Erstellen Sie für Azure SQL Data Warehouse eine SQL Server-Instanz, eine Firewallregel auf Serverebene und ein Data Warehouse im Azure-Portal. Anschließend fragen Sie es ab."
 keywords: SQL Data Warehouse-Tutorial, Erstellen einer SQL Data Warehouse-Instanz
 services: sql-database
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/20/2017
 ms.author: barbkess
-ms.openlocfilehash: 65c1344aa9d5a997e4917191978f5d12da5eb0db
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 9b904190e7a799d480446fcdcd57316a21051d1e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal
 
 Erstellen Sie schnell eine Azure SQL Data Warehouse-Instanz mit dem Azure-Portal, und fragen Sie sie ab.
 
@@ -33,7 +33,7 @@ Laden Sie die aktuelle Version von [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-data-warehouse"></a>Erstellen eines Data Warehouse
 
@@ -49,7 +49,7 @@ Führen Sie diese Schritte aus, um eine SQL Data Warehouse-Instanz mit den Adven
 
 3. Füllen Sie das SQL Data Warehouse-Formular mit den folgenden Informationen aus:   
 
-    | Einstellung | Empfohlener Wert | Beschreibung | 
+    | Einstellung | Empfohlener Wert | BESCHREIBUNG | 
     | ------- | --------------- | ----------- | 
     | **Datenbankname** | mySampleDataWarehouse | Gültige Datenbanknamen finden Sie unter [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). Hinweis: Ein Data Warehouse ist ein Datenbanktyp.| 
     | **Abonnement** | Ihr Abonnement  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
@@ -61,12 +61,12 @@ Führen Sie diese Schritte aus, um eine SQL Data Warehouse-Instanz mit den Adven
 
 4. Klicken Sie auf **Server**, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** mit den folgenden Informationen aus: 
 
-    | Einstellung | Empfohlener Wert | Beschreibung | 
+    | Einstellung | Empfohlener Wert | BESCHREIBUNG | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). | 
     | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner).|
     | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
-    | **Standort** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
+    | **Location** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
 
     ![Erstellen eines Datenbankservers](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
@@ -126,7 +126,7 @@ Jetzt können Sie mithilfe dieser IP-Adresse eine Verbindung mit dem SQL-Server 
 
 Rufen Sie den vollqualifizierten Servernamen für Ihren SQL-Server im Azure-Portal ab. Später verwenden Sie den vollqualifizierten Namen zum Herstellen einer Verbindung mit dem Server.
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
 3. Suchen Sie im Azure-Portal auf der Seite für Ihre Datenbank unter **Zusammenfassung** nach Ihrer Datenbank, und kopieren Sie den **Servernamen**. In diesem Beispiel lautet der vollqualifizierte Name „mynewserver-20171113.database.windows.net“. 
 
@@ -140,13 +140,13 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
 
 2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
 
-   | Einstellung       | Empfohlener Wert | Beschreibung | 
+   | Einstellung       | Empfohlener Wert | BESCHREIBUNG | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | Servertyp | Datenbankmodul | Dieser Wert ist erforderlich. |
+   | Servertyp | Datenbank-Engine | Dieser Wert ist erforderlich. |
    | Servername | Der vollqualifizierte Servername | Beispiel: **mynewserver-20171113.database.windows.net**. |
    | Authentifizierung | SQL Server-Authentifizierung | In diesem Tutorial ist die SQL-Authentifizierung der einzige konfigurierte Authentifizierungstyp. |
    | Anmeldung | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
-   | Kennwort | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
+   | Password | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
 
     ![Verbindung mit dem Server herstellen](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 

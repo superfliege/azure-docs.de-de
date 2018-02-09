@@ -11,15 +11,15 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 9ba5f45034561f8d897676e8cc4b1a59945403b8
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 555d05c6cd5e804e5f80ecb8df77237fd8270105
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Erstellen einer Funktion in Linux mit einem benutzerdefinierten Image (Vorschau)
 
-Mit Azure Functions können Sie Funktionen unter Linux in einem eigenen benutzerdefinierten Container hosten. Diese Funktion befindet sich derzeit in der Vorschauphase. Das [Hosten in einem Azure App Service-Standardcontainer](functions-create-first-azure-function-azure-cli-linux.md) ist ebenfalls möglich.  
+Mit Azure Functions können Sie Funktionen unter Linux in einem eigenen benutzerdefinierten Container hosten. Das [Hosten in einem Azure App Service-Standardcontainer](functions-create-first-azure-function-azure-cli-linux.md) ist ebenfalls möglich. Diese Funktion ist derzeit als Vorschauversion verfügbar und setzt [die Functions 2.0-Laufzeit](functions-versions.md) (ebenfalls eine Vorschauversion) voraus.
 
 In diesem Lernprogramm erfahren Sie, wie Sie eine Funktions-App als benutzerdefiniertes Docker-Image bereitstellen. Dieses Muster ist hilfreich, wenn Sie das integrierte App Service-Containerimage anpassen müssen. Sie sollten ein benutzerdefiniertes Image verwenden, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder eine bestimmte Abhängigkeit oder Konfiguration erforderlich ist, die nicht mit dem integrierten Image bereitgestellt wird.
 
@@ -41,7 +41,7 @@ Die folgenden Schritte werden für Mac-, Windows- oder Linux-Computer unterstüt
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* [Git](https://git-scm.com/downloads)
+* [Git-Client](https://git-scm.com/downloads)
 * Ein aktives [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Docker](https://docs.docker.com/get-started/#setup)
 * Ein [Docker-Hub-Konto](https://docs.docker.com/docker-id/)
@@ -160,7 +160,7 @@ Linux-Hosting für Funktionen wird bei Verbrauchstarifen derzeit nicht unterstü
 
 ## <a name="create-and-deploy-the-custom-image"></a>Erstellen und Bereitstellen des benutzerdefinierten Images
 
-Die Funktions-App hostet die Ausführung Ihrer Funktionen. Erstellen Sie mit dem Befehl [az functionapp create](/cli/azure/functionapp#create) eine Funktions-App aus einem Docker Hub-Image. 
+Die Funktions-App hostet die Ausführung Ihrer Funktionen. Erstellen Sie mit dem Befehl [az functionapp create](/cli/azure/functionapp#az_functionapp_create) eine Funktions-App aus einem Docker Hub-Image. 
 
 Ersetzen Sie im folgenden Befehl den Platzhalter `<app_name>` durch einen eindeutigen Namen der Funktionen-App und den Platzhalter `<storage_name>` durch den Speicherkontonamen. Da `<app_name>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. Wie zuvor steht `<docker-id>` für den Namen Ihres Docker-Kontos.
 
@@ -195,7 +195,7 @@ Der Parameter _deployment-container-image-name_ gibt das in Docker Hub gehostete
 
 Die Funktion benötigt die Verbindungszeichenfolge zum Herstellen der Verbindung mit dem Standardspeicherkonto. Beim Veröffentlichen des benutzerdefinierten Images in einem privaten Containerkonto sollten Sie diese Anwendungseinstellungen als Umgebungsvariablen in der Dockerfile festlegen, indem Sie die [ENV-Anweisung](https://docs.docker.com/engine/reference/builder/#env) o.ä. verwenden. 
 
-In diesem Fall ist `<storage_account>` der Name des Speicherkontos, das Sie erstellt haben. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) ab. Fügen Sie diese Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) hinzu.
+In diesem Fall ist `<storage_account>` der Name des Speicherkontos, das Sie erstellt haben. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) ab. Fügen Sie diese Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) hinzu.
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \

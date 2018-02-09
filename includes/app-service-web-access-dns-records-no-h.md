@@ -1,3 +1,8 @@
+> [!NOTE]
+> Mithilfe von Azure DNS können Sie einen benutzerdefinierten DNS-Namen für Ihre Azure-Web-Apps erstellen. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](../articles/dns/dns-custom-domain.md#app-service-web-apps).
+>
+>
+
 Melden Sie sich bei der Website Ihres Domänenanbieters an.
 
 Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Bereichen der Website, die mit **Domänenname**, **DNS** oder **Namenserververwaltung** gekennzeichnet sind. 

@@ -1,5 +1,5 @@
 ---
-title: "Erste Schritte mit Aufträgen für die elastische Datenbank | Microsoft Docs"
+title: "Erste Schritte mit Aufträgen für die elastische Datenbank | Microsoft-Dokumentation"
 description: "Verwenden Sie Aufträgen für elastische Datenbanken zum Ausführen von T-SQL-Skripts, die sich über mehrere Datenbanken erstrecken."
 services: sql-database
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.openlocfilehash: d985008bf4aa6710f3aae89f13fc7e36ac0c176b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: c5fe5256d4a8b8479f5e4aff95ec03fc1ba1018a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Erste Schritte mit Aufträgen für die elastische Datenbank
 Aufträge für die elastische Datenbank (Vorschau) für Azure SQL-Datenbank ermöglicht die zuverlässige Ausführung von T-SQL-Skripts, die mehrere Datenbanken überspannen, und stellt automatische Wiederholung und ggf. Abschlussgarantien bereit. Weitere Informationen zu den Features von Aufträgen für die elastische Datenbank finden Sie unter [Elastische Aufträge](sql-database-elastic-jobs-overview.md).

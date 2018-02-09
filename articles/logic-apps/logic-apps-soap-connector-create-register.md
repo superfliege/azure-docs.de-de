@@ -1,7 +1,7 @@
 ---
 title: "Erstellen und Registrieren von SOAP-Connectors – Azure Logic Apps | Microsoft-Dokumentation"
 description: "Informationen zum Einrichten von SOAP-Connectors für die Nutzung in Azure Logic Apps"
-author: divyaswarnkar
+author: ecfan
 manager: anneta
 editor: 
 services: logic-apps
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 0323b0f7ee03dce209d5a71c6711988a34ba7633
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: LADocs; estfan
+ms.openlocfilehash: 031762e5639fc52e0b0a6a5bf8d12db25da25e12
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-and-register-soap-connectors-in-azure-logic-apps"></a>Erstellen und Registrieren von SOAP-Connectors in Azure Logic Apps
 
@@ -29,7 +29,7 @@ Um SOAP-Dienste in Ihre Logik-App-Workflows zu integrieren, können Sie einen be
 
 Um Ihren SOAP-Connector registrieren zu können, benötigen Sie diese Elemente:
 
-* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/). Registrieren Sie sich andernfalls [für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
+* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/). Registrieren Sie sich andernfalls für ein [Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Eines der folgenden Elemente:
   * Eine URL zu einer WSDL-Datei, die Ihren SOAP-Dienst und die APIs definiert
@@ -59,7 +59,7 @@ Um Ihren SOAP-Connector registrieren zu können, benötigen Sie diese Elemente:
    | **Name** | *soap-connector-name* | Geben Sie einen Namen für den Connector an. | 
    | **Abonnement** | *Name des Azure-Abonnements* | Wählen Sie Ihr Azure-Abonnement. | 
    | **Ressourcengruppe** | *Name der Azure-Ressourcengruppe* | Erstellen Sie eine Azure-Ressourcengruppe zum Organisieren Ihrer Azure-Ressourcen, oder wählen Sie eine aus. | 
-   | **Standort** | *Bereitstellungsregion* | Wählen Sie eine Bereitstellungsregion für den Connector aus. | 
+   | **Location** | *Bereitstellungsregion* | Wählen Sie eine Bereitstellungsregion für den Connector aus. | 
    |||| 
 
    Nachdem Azure den Connector bereitgestellt hat, wird das Menü des Logik-Apps-Connectors automatisch geöffnet. 
@@ -82,7 +82,7 @@ Geben Sie jetzt die WSDL-Datei oder URL zum Erstellen Ihres Connectors, die von 
 
       ![Bereitstellen der WSDL-Datei für Ihre API](./media/logic-apps-soap-connector-create-register/provide-wsdl-file.png)
 
-      | Option | Format |Beschreibung | 
+      | Option | Format |BESCHREIBUNG | 
       | ------ | ------ | ----------- | 
       | **WSDL aus Datei hochladen** | *WSDL-Datei* | Navigieren Sie zum Speicherort der WSDL-Datei, und wählen Sie diese Datei aus. | 
       | **WSDL über URL hochladen** | http://*Pfad-zu-WSDL-Datei* | Geben Sie die URL für die WSDL-Datei Ihres Diensts an. | 
@@ -95,7 +95,7 @@ Geben Sie jetzt die WSDL-Datei oder URL zum Erstellen Ihres Connectors, die von 
 
       ![Connectordetails](./media/logic-apps-soap-connector-create-register/add-general-details.png)
 
-      | Option oder Einstellung | Format | Beschreibung | 
+      | Option oder Einstellung | Format | BESCHREIBUNG | 
       | ----------------- | ------ | ----------- | 
       | **Symbol hochladen** | *PNG-oder JPG-Datei kleiner als 1 MB* | Ein Symbol, das Ihren Connector darstellt <p>Farbe: Vorzugsweise ein weißes Logo auf farbigem Hintergrund. <p>Ein Logo mit ca. 160 Pixeln innerhalb eines Quadrats mit 230 Pixeln | 
       | **Symbolhintergrundfarbe** | *Hexadezimalcode der Brandingfarbe des Symbols* | <p>Die Farbe hinter dem Symbol, die der Hintergrundfarbe in Ihrer Symboldatei entspricht. <p>Format: Hexadezimal. „#007ee5“ stellt beispielsweise die Farbe Blau dar. | 
@@ -154,10 +154,10 @@ Um Ihren Connector für externe Benutzer außerhalb dieser Grenzen freizugeben, 
 **A:** Der SOAP-Connector befindet sich in der **Vorschau** und ist noch kein allgemein verfügbarer Dienst.
 
 **F:** Bestehen beim SOAP-Connector Einschränkungen und bekannte Probleme? </br>
-**A:** Informationen finden Sie unter [SOAP-Connector – Einschränkungen und bekannte Probleme](../api-management/api-management-api-import-restrictions.md#wsdl).
+**A:** Informationen finden Sie unter [Einschränkungen und bekannte Probleme beim Import von APIs](../api-management/api-management-api-import-restrictions.md#wsdl).
 
 **F:** Gelten Grenzwerte für benutzerdefinierte Connectors? </br>
-**A:** Siehe [die hier angegebenen Grenzwerte für benutzerdefinierte Connectors](../logic-apps/logic-apps-limits-and-config.md#custom-connector-limits).
+**A:** Ja. Siehe die [hier](../logic-apps/logic-apps-limits-and-config.md#custom-connector-limits) angegebenen Grenzwerte für benutzerdefinierte Connectors.
 
 ## <a name="get-support"></a>Support
 

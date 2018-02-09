@@ -3,7 +3,7 @@ title: "Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB | Mi
 description: "Verwenden Sie die Azure Cosmos DB-Unterstützung von Änderungsfeeds, um Änderungen in Dokumenten nachzuverfolgen, eine ereignisbasierte Verarbeitung (wie mit Triggern) durchzuführen und Caches und Analysesysteme auf dem neuesten Stand zu halten."
 keywords: "Änderungsfeed"
 services: cosmos-db
-author: arramac
+author: rafats
 manager: jhubbard
 editor: mimig
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 10/30/2017
-ms.author: arramac
-ms.openlocfilehash: d1968e9fea0fb08edfdbf9e09acca9c4af00b048
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.date: 01/29/2018
+ms.author: rafats
+ms.openlocfilehash: d179f2880b026cb10db53c1218507e7d1e396b8a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
 
@@ -60,6 +60,7 @@ Weitere Details:
 * Änderungen können für jeden Zeitpunkt synchronisiert werden, d.h., es gibt keine feste Datenaufbewahrungsdauer, in der die Änderungen verfügbar sind.
 * Änderungen sind in Abschnitten von Partitionsschlüsselbereichen verfügbar. Auf diese Weise können Änderungen aus umfangreichen Sammlungen parallel von mehreren Consumern/Servern verarbeitet werden.
 * Anwendungen können mehrere Änderungsfeeds gleichzeitig für dieselbe Sammlung anfordern.
+* Mithilfe von „ChangeFeedOptions.StartTime“ können Sie einen anfänglichen Startpunkt angeben, um das Fortsetzungstoken zu suchen, das der angegebenen Uhrzeit entspricht. Der ContinuationToken-Wert, sofern angegeben, hat Vorrang vor den Werten „StartTime“ und „StartFromBeginning“. Die Genauigkeit von „ChangeFeedOptions.StartTime“ beträgt ca. 5 Sekunden. 
 
 ## <a name="use-cases-and-scenarios"></a>Anwendungsfälle und -szenarien
 

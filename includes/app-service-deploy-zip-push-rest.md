@@ -7,7 +7,7 @@ Das folgende Beispiel verwendet das cURL-Tool, um eine Anforderung zu senden, di
 Ersetzen Sie den Platzhalter `<deployment_user>` durch den Benutzernamen Ihrer Anmeldeinformationen für die Bereitstellung. Wenn Sie von cURL dazu aufgefordert werden, geben Sie das Kennwort ein. Informationen zum Festlegen von Anmeldeinformationen für die Bereitstellung für Ihre App finden Sie unter [Festlegen und Zurücksetzen von Anmeldeinformationen auf Benutzerebene](../articles/app-service/app-service-deployment-credentials.md#userscope).   
 
 ```bash
-curl POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
+curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
 Diese Anforderung löst die Push-Bereitstellung aus der hochgeladenen ZIP-Datei aus. Sie können die aktuelle und vorhergegangene Bereitstellungen mithilfe des Endpunkts „https://<app_name>.scm.azurewebsites.net/api/deployments“ überprüfen, wie im folgenden cURL-Beispiel zu sehen. Ersetzen Sie auch hier `<app_name>` durch den Namen Ihrer App und `<deployment_user>` durch den Benutzernamen Ihrer Anmeldeinformationen für die Bereitstellung.

@@ -1,129 +1,137 @@
 ---
 title: "Erstellen eines Anwendungsgateways – Azure-Portal | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie ein Anwendungsgateway über das Portal erstellen"
+description: Erfahren Sie, wie Sie im Azure-Portal ein Anwendungsgateway erstellen.
 services: application-gateway
-documentationcenter: na
 author: davidmu1
 manager: timlt
 editor: 
 tags: azure-resource-manager
-ms.assetid: 54dffe95-d802-4f86-9e2e-293f49bd1e06
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: 17d09ce98c40717d1db0927f791a7c97ea7835e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df9235bc7ff61943de52a0bcc4064bf9fab6636a
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="create-an-application-gateway-with-the-portal"></a>Erstellen eines Anwendungsgateways über das Portal
+# <a name="create-an-application-gateway-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways im Azure-Portal
 
-[Application Gateway](application-gateway-introduction.md) ist ein dediziertes virtuelles Gerät, das einen ADC (Application Delivery Controller) als Dienst bereitstellt und für Ihre Anwendung verschiedene Lastenausgleichsfunktionen der Ebene 7 bietet. In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal ein Anwendungsgateway erstellen und einen vorhandenen Server als Back-End- Mitglied hinzufügen.
+Sie können das Azure-Portal verwenden, um Anwendungsgateways zu erstellen oder zu verwalten. Diese Schnellstartanleitung zeigt Ihnen, wie Sie Netzwerkressourcen, Back-End-Server und ein Anwendungsgateway erstellen.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 
-## <a name="create-application-gateway"></a>Erstellen eines Anwendungsgateways
+## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Führen Sie zum Erstellen eines Anwendungsgateways die folgenden Schritte aus. Für das Anwendungsgateway ist ein eigenes Subnetz erforderlich. Stellen Sie beim Erstellen eines virtuellen Netzwerks sicher, dass der Adressbereich für mehrere Subnetze ausreicht. Nachdem das Anwendungsgateway in einem Subnetz bereitgestellt wurde, können ihm nur noch andere Anwendungsgateways hinzugefügt werden.
+Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. In diesem Beispiel werden zwei Subnetze erstellt: eins für das Anwendungsgateway und eins für die Back-End-Server. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway.
 
-1. Klicken Sie im Portalbereich „Favoriten“ auf **Neu**.
-1. Klicken Sie auf dem Blatt **Neu** auf **Netzwerk**. Klicken Sie auf dem Blatt **Netzwerk** auf **Anwendungsgateway**, wie in der folgenden Abbildung zu sehen:
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Neu**.
+2. Klicken Sie auf **Netzwerk** und dann in der Liste der ausgewählten Elemente auf **Application Gateway**.
+3. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
 
-    ![Erstellen eines Anwendungsgateways][1]
+    - *myAppGateway*: Name des Anwendungsgateways
+    - *myResourceGroupAG*: die neue Ressourcengruppe
 
-1. Geben Sie auf dem daraufhin angezeigten Blatt **Grundlagen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**:
+    ![Erstellen eines neuen Anwendungsgateways](./media/application-gateway-create-gateway-portal/application-gateway-create.png)
 
-   | **Einstellung** | **Wert** | **Details**|
-   |---|---|---|
-   |**Name**|AdatumAppGateway|Der Name des Anwendungsgateways|
-   |**Ebene**|Standard|Verfügbare Werte sind „Standard“ oder „WAF“. Besuchen Sie [Web Application Firewall (WAF)](application-gateway-web-application-firewall-overview.md), um weitere Informationen über WAF zu erhalten.|
-   |**SKU-Größe**|Mittel|Bei Auswahl der Ebene „Standard“ stehen „Klein“, „Mittel“ und „Groß“ zur Auswahl. Bei Auswahl der Ebene „WAF“ stehen nur „Mittel“ und „Groß“ zur Auswahl.|
-   |**Anzahl der Instanzen**|2|Die Anzahl der Instanzen des Anwendungsgateways für hohe Verfügbarkeit. Eine Instanzenzahl von 1 sollte nur zu Testzwecken verwendet werden.|
-   |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem Sie das Anwendungsgateway erstellen möchten.|
-   |**Ressourcengruppe**|**Neu erstellen**: AdatumAppGatewayRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#resource-groups).|
-   |**Location**|USA (West)||
+4. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
+5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann diese Werte für das virtuelle Netzwerk ein:
 
-1. Klicken Sie auf dem Blatt **Einstellungen**, das unter **Virtuelles Netzwerk** angezeigt wird, auf **Virtuelles Netzwerk auswählen**. Das Blatt **Virtuelles Netzwerk auswählen** wird geöffnet.  Klicken Sie auf **Neu erstellen**, um das Blatt **Virtuelles Netzwerk erstellen** zu öffnen.
+    - *myVNet*: Name des virtuellen Netzwerks
+    - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
+    - *myAGSubnet*: Subnetzname
+    - *10.0.0.0/24*: Adressraum des Subnetzes
 
-   ![Wählen eines virtuellen Netzwerks][2]
+    ![Virtuelles Netzwerk erstellen](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
 
-1. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**. Die Blätter **Virtuelles Netzwerk erstellen** und **Virtuelles Netzwerk auswählen** werden geschlossen. Außerdem wird das Feld **Subnetz** auf dem Blatt **Einstellungen** mit dem ausgewählten Subnetz ausgefüllt.
+6. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
+6. Klicken Sie auf **Öffentliche IP-Adresse auswählen** und dann auf **Neu erstellen**, und geben Sie den Namen der öffentlichen IP-Adresse ein. In diesem Beispiel heißt die öffentliche IP-Adresse *myAGPublicIPAddress*. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
+8. Übernehmen Sie die Standardwerte für die Listenerkonfiguration, lassen Sie die Web Application Firewall deaktiviert, und klicken Sie dann auf **OK**.
+9. Überprüfen Sie die Einstellungen auf der Zusammenfassungsseite, und klicken Sie dann auf **OK**, um das virtuelle Netzwerk, die öffentliche IP-Adresse und das Anwendungsgateway zu erstellen. Die Erstellung des Anwendungsgateways kann einige Minuten dauern. Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit dem nächsten Abschnitt fortfahren.
 
-   | **Einstellung** | **Wert** | **Details**|
-   |---|---|---|
-   |**Name**|AdatumAppGatewayVNET|Name des Anwendungsgateways.|
-   |**Adressraum**|10.0.0.0/16|Dies ist der Adressraum für das virtuelle Netzwerk.|
-   |**Subnetzname**|AppGatewaySubnet|Name des Subnetzes für das Anwendungsgateway.|
-   |**Subnetzadressbereich**|10.0.0.0/28|Dieses Subnetz ermöglicht weitere Subnetze im virtuellen Netzwerk für Back-End-Pool Mitglieder.|
+### <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes
 
-1. Wählen Sie auf dem Blatt **Einstellungen** unter **Front-End-IP-Konfiguration** für **IP-Adresstyp** die Option **Öffentlich** aus.
+1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myVNet**.
+2. Klicken Sie auf **Subnetze** und dann auf **Subnetz**.
 
-1. Klicken Sie auf dem Blatt **Einstellungen** unter **Öffentliche IP-Adresse** auf **Öffentliche IP-Adresse auswählen**. Daraufhin wird das Blatt **Öffentliche IP-Adresse auswählen** geöffnet. Klicken Sie auf **Neu erstellen**.
+    ![Erstellen eines Subnetzes](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
 
-   ![Öffentliche IP-Adresse auswählen][3]
+3. Geben Sie als Name des Subnetzes *myBackendSubnet* ein, und klicken Sie auf **OK**.
 
-1. Akzeptieren Sie auf dem Blatt **Öffentliche IP-Adresse erstellen** den Standardwert, und klicken Sie auf **OK**. Das Blatt wird geschlossen, und **Öffentliche IP-Adresse** wird mit der gewählten öffentlichen IP-Adresse ausgefüllt.
+## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
-1. Klicken Sie auf dem Blatt **Einstellungen** unter **Listenerkonfiguration** auf **HTTP** (unter **Protokoll**). Geben Sie im Feld **Port** den gewünschten Port ein.
+In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Server für das Anwendungsgateway verwendet werden. Sie installieren außerdem IIS auf den virtuellen Computern, um zu überprüfen, ob das Anwendungsgateway erfolgreich erstellt wurde.
 
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **OK**, um den Vorgang fortzusetzen.
+### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-1. Überprüfen Sie die Einstellungen auf dem Blatt **Zusammenfassung**, und klicken Sie auf **OK**, um das Erstellen des Anwendungsgateways zu starten. Das Erstellen eines Anwendungsgateways ist eine Aufgabe mit langer Ausführungszeit und dauert eine Weile.
+1. Klicken Sie auf **New**.
+2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
+3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
-## <a name="add-servers-to-backend-pools"></a>Hinzufügen von Servern zu Back-End-Pools
+    - *myVM*: der Name des virtuellen Computers
+    - *azureuser*: der Name des Administratorbenutzers
+    - *Azure123456!* als Kennwort
+    - Wählen Sie **Vorhandene verwenden** und dann *myResourceGroupAG* aus.
 
-Nach der Erstellung des Anwendungsgateways müssen die Systeme, die die Anwendung hosten, für die ein Lastenausgleich verwendet werden soll, noch dem Anwendungsgateway hinzugefügt werden. IP-Adressen, FQDN oder NICs dieser Server werden den Back-End-Adresspools hinzugefügt.
+4. Klicken Sie auf **OK**.
+5. Wählen Sie als Größe des virtuellen Computers **DS1_V2** aus, und klicken Sie auf **Auswählen**.
+6. Stellen Sie sicher, dass als virtuelles Netzwerk **myVNet** und als Subnetz **myBackendSubnet** ausgewählt ist. 
+7. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
+8. Klicke Sie auf **OK**, überprüfen Sie die Einstellungen auf der Zusammenfassungsseite, und klicken Sie dann auf **Erstellen**.
 
-### <a name="ip-address-or-fqdn"></a>IP-Adresse oder FQDN
+### <a name="install-iis"></a>Installieren von IIS
 
-1. Klicken Sie nach der Erstellung des Anwendungsgateways im Bereich **Favoriten** des Azure-Portals auf **Alle Ressourcen**. Klicken Sie im Blatt „Alle Ressourcen“ auf das Anwendungsgateway **AdatumAppGateway**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **AdatumAppGateway** in das Feld **Nach Name filtern...** eingeben. eingeben und komfortabel auf das Anwendungsgateway zugreifen.
+1. Öffnen Sie die interaktive Shell, und vergewissern Sie sich, dass **PowerShell** festgelegt ist.
 
-1. Das erstellte Anwendungsgateway wird angezeigt. Klicken Sie auf **Back-End-Pools**, und wählen Sie den aktuellen Back-End-Pool **appGatewayBackendPool** aus. Daraufhin wird das Blatt **appGatewayBackendPool** geöffnet.
+    ![Installieren der benutzerdefinierten Erweiterung](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-   ![Application Gateway-Back-End-Pools][4]
+2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
 
-1. Klicken Sie auf **Ziel hinzufügen**, um IP-Adressen von FQDN-Werten hinzuzufügen. Wählen Sie **IP-Adresse oder FQDN** als **Typ**, und geben Sie Ihre IP-Adresse oder Ihren FQDN in das Feld ein. Wiederholen Sie diesen Schritt für zusätzliche Back-End-Pool-Mitglieder. Klicken Sie anschließend auf **Speichern**.
+    ```azurepowershell-interactive
+    Set-AzureRmVMExtension `
+      -ResourceGroupName myResourceGroupAG `
+      -ExtensionName IIS `
+      -VMName myVM `
+      -Publisher Microsoft.Compute `
+      -ExtensionType CustomScriptExtension `
+      -TypeHandlerVersion 1.4 `
+      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+      -Location EastUS
+    ```
 
-### <a name="virtual-machine-and-nic"></a>Virtueller Computer und NIC
+3. Erstellen Sie einen zweiten virtuellen Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie *myVM2* als Name und für „VMName“ in „Set-AzureRmVMExtension“ ein.
 
-Sie können auch Netzwerkkarten virtueller Computer als Back-End-Poolmitglieder hinzufügen. In der Dropdownliste stehen nur virtuelle Computer im gleichen virtuellen Netzwerk wie das Anwendungsgateway zur Auswahl.
+### <a name="add-backend-servers"></a>Hinzufügen von Back-End-Servern
 
-1. Klicken Sie nach der Erstellung des Anwendungsgateways im Bereich **Favoriten** des Azure-Portals auf **Alle Ressourcen**. Klicken Sie im Blatt „Alle Ressourcen“ auf das Anwendungsgateway **AdatumAppGateway**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **AdatumAppGateway** in das Feld **Nach Name filtern...** eingeben. eingeben und komfortabel auf das Anwendungsgateway zugreifen.
+3. Klicken Sie auf **Alle Ressourcen** und dann auf **myAppGateway**.
+4. Klicken Sie auf **Back-End-Pools**. Ein Standardpool mit dem Anwendungsgateway wurde automatisch erstellt. Klicken Sie auf **appGatewayBackendPool**.
+5. Klicken Sie auf **Ziel hinzufügen**, um alle erstellten virtuellen Computer dem Back-End-Pool hinzuzufügen.
 
-1. Das erstellte Anwendungsgateway wird angezeigt. Klicken Sie auf **Back-End-Pools**, und wählen Sie den aktuellen Back-End-Pool **appGatewayBackendPool** aus. Daraufhin wird das Blatt **appGatewayBackendPool** geöffnet.
+    ![Hinzufügen von Back-End-Servern](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-   ![Application Gateway-Back-End-Pools][5]
+6. Klicken Sie auf **Speichern**.
 
-1. Klicken Sie auf **Ziel hinzufügen**, um IP-Adressen von FQDN-Werten hinzuzufügen. Wählen Sie **Virtueller Computer** als **Typ**, und wählen Sie die zu verwendende VM und NIC aus. Klicken Sie anschließend auf **Speichern**.
+## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-   > [!NOTE]
-   > In der Dropdownliste stehen nur virtuelle Computer im gleichen virtuellen Netzwerk wie das Anwendungsgateway zur Auswahl.
+1. Suchen Sie auf dem Übersichtsbildschirm die öffentliche IP-Adresse für das Anwendungsgateway. Klicken Sie auf **Alle Ressourcen** und dann auf **myAGPublicIPAddress**.
+
+    ![Notieren der öffentlichen IP-Adresse des Anwendungsgateways](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)
+
+2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein.
+
+    ![Testen des Anwendungsgateways](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
+
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, das Anwendungsgateway und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu auf dem Blatt für das Anwendungsgateway die Ressourcengruppe aus, und klicken Sie auf **Löschen**.
+Löschen Sie die Ressourcengruppe, das Anwendungsgateway und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe aus, die das Anwendungsgateway enthält, und klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Szenario haben Sie ein Anwendungsgateway bereitgestellt und dem Back-End einen Server hinzugefügt. In den nächsten Schritten wird das Anwendungsgateway konfiguriert, indem Einstellungen geändert und Regeln im Gateway angepasst werden. Diese Schritte werden in den folgenden Artikeln behandelt:
-
-Unter [Erstellen eines benutzerdefinierten Integritätstests](application-gateway-create-probe-portal.md)
-
-Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-portal.md)
-
-Informieren Sie sich über das Schützen von Anwendungen per [Web Application Firewall](application-gateway-webapplicationfirewall-overview.md), einem Feature des Anwendungsgateways.
-
-<!--Image references-->
-[1]: ./media/application-gateway-create-gateway-portal/figure1.png
-[2]: ./media/application-gateway-create-gateway-portal/figure2.png
-[3]: ./media/application-gateway-create-gateway-portal/figure3.png
-[4]: ./media/application-gateway-create-gateway-portal/figure4.png
-[5]: ./media/application-gateway-create-gateway-portal/figure5.png
-[scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
+In dieser Schnellstartanleitung haben Sie eine Ressourcengruppe, Netzwerkressourcen und Back-End-Server erstellt. Danach haben Sie diese Ressourcen verwendet, um ein Anwendungsgateway zu erstellen. Weitere Informationen zu Anwendungsgateways und den zugehörigen Ressourcen finden Sie in den Artikeln mit empfohlenen Vorgehensweisen.

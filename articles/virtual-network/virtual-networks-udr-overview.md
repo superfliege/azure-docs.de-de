@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 85be79261d5fc214ab4b46fa5d7b4d0a5b13db27
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d05492425381649a7893b872c4b1c49e9f241b50
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -151,7 +151,7 @@ Eine Route mit dem Adresspräfix 0.0.0.0/0 weist Azure an, wie Datenverkehr für
 
 Wenn Sie das Adresspräfix 0.0.0.0/0 außer Kraft setzen, werden zusätzlich dazu, dass der ausgehende Datenverkehr aus dem Subnetz über das Gateway für virtuelle Netzwerke oder das virtuelle Gerät fließt, die folgenden Änderungen für das Azure-Standardrouting vorgenommen: 
 
-- Azure sendet den gesamten Datenverkehr an den Typ des nächsten Hops, der in der Route angegeben ist, um den Datenverkehr einzubeziehen, der für öffentliche IP-Adressen von Azure-Diensten bestimmt ist. Wenn **Internet** als Typ des nächsten Hops für die Route mit dem Adresspräfix 0.0.0.0/0 angegeben ist, verlässt Datenverkehr aus dem Subnetz, der für die öffentlichen IP-Adressen von Azure-Diensten bestimmt ist, niemals das Azure-Backbonenetzwerk. Dies gilt unabhängig von der Azure-Region, in der sich das virtuelle Netzwerk oder die Azure-Dienstressource befinden. Aber wenn Sie eine benutzerdefinierte Route oder BGP-Route mit **Gateway für virtuelle Netzwerke** oder **Virtuelles Gerät** als nächstem Hop-Typ erstellen, wird der gesamte Datenverkehr (zum Einbeziehen von Datenverkehr, der an öffentliche IP-Adressen von Azure-Diensten gesendet wird, für die Sie keine [Dienstendpunkte](virtual-network-service-endpoints-overview.md) aktiviert haben) an den Typ des nächsten Hops gesendet, der in der Route angegeben ist. Wenn Sie einen Dienstendpunkt für einen Dienst aktiviert haben, wird Datenverkehr für den Dienst nicht an den Typ des nächsten Hops in einer Route mit dem Adresspräfix 0.0.0.0/0 weitergeleitet. Der Grund hierfür ist, dass Adresspräfixe für den Dienst in der Route angegeben werden, die von Azure erstellt wird, wenn Sie den Dienstendpunkt aktivieren, und die Adresspräfixe für den Dienst länger als 0.0.0.0/0 sind.
+- Azure sendet den gesamten Datenverkehr an den Typ des nächsten Hops, der in der Route angegeben ist – einschließlich des Datenverkehrs, der für öffentliche IP-Adressen von Azure-Diensten bestimmt ist. Wenn **Internet** als Typ des nächsten Hops für die Route mit dem Adresspräfix 0.0.0.0/0 angegeben ist, verlässt Datenverkehr aus dem Subnetz, der für die öffentlichen IP-Adressen von Azure-Diensten bestimmt ist, niemals das Azure-Backbonenetzwerk. Dies gilt unabhängig von der Azure-Region, in der sich das virtuelle Netzwerk oder die Azure-Dienstressource befinden. Aber wenn Sie eine benutzerdefinierte Route oder BGP-Route mit **Gateway für virtuelle Netzwerke** oder **Virtuelles Gerät** als nächstem Hop-Typ erstellen, wird der gesamte Datenverkehr (einschließlich des Datenverkehrs, der an öffentliche IP-Adressen von Azure-Diensten gesendet wird, für die Sie keine [Dienstendpunkte](virtual-network-service-endpoints-overview.md) aktiviert haben) an den Typ des nächsten Hops gesendet, der in der Route angegeben ist. Wenn Sie einen Dienstendpunkt für einen Dienst aktiviert haben, wird Datenverkehr für den Dienst nicht an den Typ des nächsten Hops in einer Route mit dem Adresspräfix 0.0.0.0/0 weitergeleitet. Der Grund hierfür ist, dass Adresspräfixe für den Dienst in der Route angegeben werden, die von Azure erstellt wird, wenn Sie den Dienstendpunkt aktivieren, und die Adresspräfixe für den Dienst länger als 0.0.0.0/0 sind.
 - Es ist nicht mehr möglich, aus dem Internet direkt auf Ressourcen im Subnetz zuzugreifen. Sie können über das Internet indirekt auf Ressourcen im Subnetz zugreifen, wenn eingehender Datenverkehr das Gerät durchläuft, das über den Typ des nächsten Hops für eine Route mit dem Adresspräfix 0.0.0.0/0 angegeben ist, bevor die Ressource im virtuellen Netzwerk erreicht ist. Wenn die Route die hier angegebenen Werte für den Typ des nächsten Hops enthält, gilt Folgendes:
     - **Virtuelles Geräte**: Für das Gerät muss Folgendes erfüllt sein:
         - Erreichbarkeit über das Internet
@@ -161,7 +161,7 @@ Wenn Sie das Adresspräfix 0.0.0.0/0 außer Kraft setzen, werden zusätzlich daz
         - Möglichkeit zur Übersetzung der Netzwerkadresse und zur Weiterleitung oder Übergabe des Datenverkehrs an die Zielressource im Subnetz per Proxy und Rückgabe des Datenverkehrs ins Internet 
     - **Gateway für virtuelle Netzwerke**: Wenn es sich beim Gateway um ein ExpressRoute-Gateway für virtuelle Netzwerke handelt, kann ein lokal angeordnetes Gerät mit Internetverbindung die Übersetzung der Netzwerkadresse und die Weiterleitung durchführen oder den Datenverkehr per Proxy an die Zielressource im Subnetz übergeben (per [privatem Peering](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) von ExpressRoute). 
 
-  Implementierungsdetails bei Verwendung von Gateways für virtuelle Netzwerke und virtuellen Geräten zwischen dem Internet und Azure finden Sie unter [DMZ between Azure and your on-premises datacenter](/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) (DMZ zwischen Azure und Ihrem lokalen Datencenter) und [DMZ zwischen Azure und dem Internet](/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json).
+  Implementierungsdetails bei Verwendung von Gateways für virtuelle Netzwerke und virtuellen Geräten zwischen dem Internet und Azure finden Sie unter [DMZ between Azure and your on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) (DMZ zwischen Azure und Ihrem lokalen Datencenter) und [DMZ zwischen Azure und dem Internet](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="routing-example"></a>Routingbeispiel
 

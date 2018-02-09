@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 12/16/2015
 ms.author: dwrede
 ms.openlocfilehash: 45decfdec01b7086d1f9d18b31cf01cec1adb34d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="microsoft-azure-portal-overview"></a>Übersicht über das Microsoft Azure-Portal
 Das Microsoft Azure-Portal ist eine zentrale Anlaufstelle zum Bereitstellen und Verwalten von Azure-Ressourcen.  In diesem Tutorial lernen Sie das Portal kennen und erfahren, wie Sie die folgenden wichtigen Funktionen verwenden:

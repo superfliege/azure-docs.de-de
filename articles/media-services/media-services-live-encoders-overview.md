@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 68aaf0fda2e60c5736ab020c15e516144e11d68e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31254788b840ccc1f1017df3c533e84b9c99f10d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Vorgehensweise: Konfigurieren von lokalen Encodern beim Erstellen von Multi-Bitrate-Datenströmen mit Azure Media Services
 Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält auch Links zu Tutorials, in denen die Konfiguration der aufgelisteten Encoder erläutert wird.
@@ -27,7 +27,10 @@ Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse au
 Informationen zum Konfigurieren des [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live)-Encoders zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren von Elemental Live](media-services-configure-elemental-live-encoder.md).
 
 ## <a name="flash-media-live-encoder"></a>Flash Media Live Encoder
-Informationen zum Konfigurieren des [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html)-Encoders (FMLE) zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren von FMLE](media-services-configure-fmle-live-encoder.md).
+Informationen zum Konfigurieren des [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren von FMLE](media-services-configure-fmle-live-encoder.md).
+
+## <a name="haivision-kb-encoder"></a>Haivision KB-Encoder
+Informationen zum Konfigurieren des [Haivision KB-Encoders](https://www.haivision.com/products/kb-series/) zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren des Haivision KB-Encoders](media-services-configure-kb-live-encoder.md).
 
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
 Informationen zum Konfigurieren des [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm)-Encoders zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren von Wirecast](media-services-configure-wirecast-live-encoder.md).

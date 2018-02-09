@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie mit Shared Access Signatures den HDInsight-Z
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 7bcad2dd-edea-467c-9130-44cffc005ff3
 ms.service: hdinsight
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2017
+ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 92ad526d034591b8f463ef6b01e115101b74e1ae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 83a93f433769e880a729cd918198909696071594
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
 
@@ -31,7 +31,7 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
 > [!WARNING]
 > HDInsight benötigt vollen Zugriff auf den Standardspeicher für den Cluster.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 * Ein Azure-Abonnement
 * C# oder Python. C#-Beispielcode wird als Visual Studio-Projektmappe bereitgestellt.
@@ -216,7 +216,7 @@ Wenn Sie bereits einen Linux-basierten Cluster haben, können Sie die SAS der **
    > [!IMPORTANT]
    > Sie müssen mehrere Dienste neu starten, damit die Änderung wirksam wird.
 
-6. Wählen Sie auf der Ambari-Webbenutzeroberfläche in der Liste auf der linken Seite **HDFS** und dann in der Dropdownliste **Service Actions** auf der rechten Seite **Restart All** aus. Wählen Sie bei Aufforderung **Turn on maintenance mode** und dann „Conform Restart All“ aus.
+6. Wählen Sie auf der Ambari-Webbenutzeroberfläche in der Liste auf der linken Seite **HDFS** und dann in der Dropdownliste **Service Actions** (Dienstaktionen) auf der rechten Seite **Restart All Affected** (Alle betroffenen Dienste neu starten) aus. Klicken Sie bei entsprechender Aufforderung auf __Confirm Restart All__ (Neustart aller Dienste bestätigen).
 
     Wiederholen Sie diesen Vorgang für MapReduce2 und YARN.
 

@@ -3,8 +3,8 @@ title: "Optimieren der Inhaltsübermittlung von Azure für Ihr Szenario"
 description: "Optimieren der Übermittlung Ihrer Inhalte für bestimmte Szenarien"
 services: cdn
 documentationcenter: 
-author: smcevoy
-manager: erikre
+author: dksimpson
+manager: 
 editor: 
 ms.assetid: 
 ms.service: cdn
@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
-ms.author: v-semcev
-ms.openlocfilehash: 3544112b025f5df10e6f67c8e2e02f4bb587b4e0
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.date: 01/24/2018
+ms.author: rli
+ms.openlocfilehash: fa4cf306eeb1a8372da5b2a86ac73fbba2832666
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>Optimieren der Inhaltsübermittlung von Azure für Ihr Szenario
 
@@ -33,27 +33,31 @@ Dieser Artikel enthält eine Übersicht über verschiedene Optimierungsfeatures 
 
 ## <a name="provider-options"></a>Anbieteroptionen
 
-Das Azure Content Delivery Network von Akamai unterstützt Folgendes:
+**Azure Content Delivery Network von Akamai** unterstützt die folgenden Optimierungen:
 
-* Allgemeine Webbereitstellung 
+* [Allgemeine Webbereitstellung](#general-web-delivery) 
 
-* Allgemeines Medienstreaming
+* [Allgemeines Medienstreaming](#general-media-streaming)
 
-* Video on Demand-Medienstreaming
+* [Video on Demand-Medienstreaming](#video-on-demand-media-streaming)
 
-* Download großer Dateien
+* [Download großer Dateien](#large-file-download)
 
-* Beschleunigung dynamischer Websites 
+* [Beschleunigung dynamischer Websites](#dynamic-site-acceleration) 
 
-Das Azure Content Delivery Network von Verizon unterstützt nur die allgemeine Webbereitstellung. Es kann für Video on Demand sowie zum Herunterladen großer Dateien verwendet werden. Sie müssen keinen Optimierungstyp auswählen.
+**Azure Content Delivery Network von Verizon** unterstützt die folgenden Optimierungen:
+
+* [Allgemeine Webbereitstellung](#general-web-delivery) (Kann auch für Medienstreaming und Inhalte umfangreicher Dateidownload verwendet werden.)
+
+* [Beschleunigung dynamischer Websites](#dynamic-site-acceleration) 
 
 Es empfiehlt sich, die Leistungsunterschiede zwischen verschiedenen Anbietern zu testen, um den optimalen Anbieter für die Übermittlung zu finden.
 
 ## <a name="select-and-configure-optimization-types"></a>Auswählen und Konfigurieren von Optimierungstypen
 
-Wählen Sie zum Erstellen eines neuen Endpunkts einen Optimierungstyp aus, der am besten zu Ihrem Szenario und zur Art der Inhalte passt, die Sie über den Endpunkt übermittelt möchten. Standardmäßig ist **Allgemeine Webbereitstellung** ausgewählt. Die Optimierungsoption kann für jeden beliebigen vorhandenen Akamai-Endpunkt jederzeit aktualisiert werden. Die Übermittlung über das CDN wird durch diese Änderung nicht beeinträchtigt. 
+Wählen Sie zum Erstellen eines neuen Endpunkts einen Optimierungstyp aus, der am besten zu Ihrem Szenario und zur Art der Inhalte passt, die Sie über den Endpunkt übermittelt möchten. Standardmäßig ist **Allgemeine Webbereitstellung** ausgewählt. Für vorhandene Endpunkte vom Typ **Azure Content Delivery Network von Akamai** können Sie die Optimierungsoption jederzeit aktualisieren. Die Übermittlung über das CDN wird durch diese Änderung nicht beeinträchtigt. 
 
-1. Wählen Sie einen Endpunkt innerhalb eines Akamai-Standardprofils aus.
+1. Wählen Sie in einem Profil für **Azure Content Delivery Network von Akamai** einen Endpunkt aus.
 
     ![Endpunktauswahl ](./media/cdn-optimization-overview/01_Akamai.png)
 
@@ -72,7 +76,7 @@ Allgemeine Webbereitstellung ist die am häufigsten verwendete Optimierungsoptio
 Eine typische Website enthält sowohl statische als auch dynamische Inhalte. Statische Inhalte sind unter anderem Bilder, JavaScript-Bibliotheken und Stylesheets, die zwischengespeichert und an verschiedene Benutzer übermittelt werden können. Dynamische Inhalte werden für den jeweiligen Benutzer personalisiert. Hierzu zählen beispielsweise speziell auf ein Benutzerprofil zugeschnittene Nachrichten. Dynamische Inhalte werden nicht zwischengespeichert, da es sich hierbei um benutzerspezifische Inhalte wie etwa den Inhalt eines Einkaufswagens handelt. Die allgemeine Webbereitstellung kann Ihre gesamte Website optimieren. 
 
 > [!NOTE]
-> Bei Verwendung des Azure Content Delivery Networks von Akamai können Sie diese Optimierung verwenden, wenn ihre Dateien im Schnitt kleiner als 10 MB sind. Wenn Ihre Dateien im Schnitt größer als 10 MB sind, wählen Sie in der Dropdownliste **Optimiert für** die Option **Download großer Dateien** aus.
+> Bei Verwendung von **Azure Content Delivery Network von Akamai** können Sie diese Optimierung verwenden, wenn ihre Dateien im Schnitt kleiner als 10 MB sind. Wenn Ihre Dateien im Schnitt größer als 10 MB sind, wählen Sie in der Dropdownliste **Optimiert für** die Option **Download großer Dateien** aus.
 
 ### <a name="general-media-streaming"></a>Allgemeines Medienstreaming
 
@@ -82,38 +86,40 @@ Medienstreaming ist ein zeitkritischer Prozess, da das verspätete Eintreffen vo
 
 Hierbei handelt es sich um ein gängiges Szenario für Azure Media Services-Kunden. Wenn Sie Azure Media Services verwenden, erhalten Sie einen Streamingendpunkt, der für Live- und On-Demand-Streaming verwendet werden kann. Dadurch müssen Kunden keinen anderen Endpunkt verwenden, wenn sie von Livestreaming zu On-Demand-Streaming wechseln. Dieses Szenario wird von der Optimierungsoption „Allgemeines Medienstreaming“ unterstützt.
 
-Das Azure Content Delivery Network von Verizon verwendet zur Übermittlung von Streamingmedieninhalten den Optimierungstyp „Allgemeine Webbereitstellung“.
+**Azure Content Delivery Network von Verizon** verwendet zur Übermittlung von Streamingmedieninhalten den Optimierungstyp „Allgemeine Webbereitstellung“.
 
-Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienstreaming-Optimierung mit Azure CDN](cdn-media-streaming-optimization.md).
+Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienstreaming-Optimierung über das Azure Content Delivery Network](cdn-media-streaming-optimization.md).
 
 ### <a name="video-on-demand-media-streaming"></a>Video on Demand-Medienstreaming
 
 Die Optimierung „Video on Demand-Medienstreaming“ verbessert das Streamen von Video on Demand-Inhalten. Diese Option empfiehlt sich, wenn Sie einen Endpunkt für Video on Demand-Streaming verwenden.
 
-Das Azure Content Delivery Network von Verizon verwendet zur Übermittlung von Streamingmedieninhalten den Optimierungstyp „Allgemeine Webbereitstellung“.
+**Azure Content Delivery Network von Verizon** verwendet zur Übermittlung von Streamingmedieninhalten den Optimierungstyp „Allgemeine Webbereitstellung“.
 
-Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienstreaming-Optimierung mit Azure CDN](cdn-media-streaming-optimization.md).
+Weitere Informationen zur Medienstreaming-Optimierung finden Sie unter [Medienstreaming-Optimierung über das Azure Content Delivery Network](cdn-media-streaming-optimization.md).
 
 > [!NOTE]
 > Verwenden Sie diesen Optimierungstyp, wenn der Endpunkt in erster Linie Video on Demand-Inhalte bereitstellt. Der Hauptunterschied zwischen dieser Optimierung und der Optimierung „Allgemeines Medienstreaming“ ist das Timeout für wiederholte Verbindungsversuche. Für Livestreamingszenarien wird ein erheblich kürzeres Timeout verwendet.
 
 ### <a name="large-file-download"></a>Download großer Dateien
 
-Bei Verwendung des Azure Content Delivery Networks von Akamai müssen Sie die Option „Download großer Dateien“ verwenden, wenn Sie Dateien mit einer Größe von mehr als 1,8 GB bereitstellen möchten. Beim Azure Content Delivery Network von Verizon ist die Dateidownloadgröße in der Optimierung „Allgemeine Webbereitstellung“ nicht begrenzt.
+Bei Verwendung von **Azure Content Delivery Network von Akamai** müssen Sie die Option „Download großer Dateien“ verwenden, wenn Sie Dateien mit einer Größe von mehr als 1,8 GB bereitstellen möchten. Bei **Azure Content Delivery Network von Verizon** ist die Dateidownloadgröße in der Optimierung „Allgemeine Webbereitstellung“ nicht begrenzt.
 
-Bei Verwendung des Azure Content Delivery Networks von Akamai ist der Download großer Dateien für Inhalte mit einer Größe von mehr als 10 GB optimiert. Wenn Ihre Dateien im Schnitt kleiner als 10 MB sind, empfiehlt sich die Verwendung der Optimierung „Allgemeine Webbereitstellung“. Wenn Ihre Dateien durchweg größer als 10 MB sind, ist es unter Umständen effizienter, einen separaten Endpunkt für große Dateien zu erstellen. Firmware- oder Softwareupdates sind beispielsweise in der Regel große Dateien.
+Bei Verwendung von **Azure Content Delivery Network von Akamai** ist der Download großer Dateien für Inhalte mit einer Größe von mehr als 10 GB optimiert. Wenn Ihre Dateien im Schnitt kleiner als 10 MB sind, empfiehlt sich die Verwendung der Optimierung „Allgemeine Webbereitstellung“. Wenn Ihre Dateien durchweg größer als 10 MB sind, ist es unter Umständen effizienter, einen separaten Endpunkt für große Dateien zu erstellen. Firmware- oder Softwareupdates sind beispielsweise in der Regel große Dateien.
 
-Das Azure Content Delivery Network von Verizon verwendet zur Übermittlung des Inhalts umfangreicher Dateidownloads den Optimierungstyp „Allgemeine Webbereitstellung“.
+**Azure Content Delivery Network von Verizon** verwendet zur Übermittlung des Inhalts umfangreicher Dateidownloads den Optimierungstyp „Allgemeine Webbereitstellung“.
 
-Weitere Informationen zur Optimierung für große Dateien finden Sie unter [Optimieren großer Dateidownloads mit Azure CDN](cdn-large-file-optimization.md).
+Weitere Informationen zur Optimierung für große Dateien finden Sie unter [Optimierung großer Dateidownloads über das Azure Content Delivery Network](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Beschleunigung dynamischer Websites
 
- Die Beschleunigung dynamischer Websites steht sowohl für Content Delivery Network-Profile von Akamai als auch für Content Delivery Network-Profile von Verizon zur Verfügung. Die Verwendung dieser Optimierung ist mit zusätzlichen Kosten verbunden. Weitere Informationen finden Sie in der Preisübersicht.
+ Die Beschleunigung dynamischer Websites ist sowohl im Profil **Azure Content Delivery Network von Akamai** als auch im Profil **Azure Content Delivery Network von Verizon** verfügbar. Die Verwendung dieser Optimierung ist mit zusätzlichen Kosten verbunden. Weitere Informationen finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).
 
 Die Beschleunigung dynamischer Websites umfasst verschiedene Maßnahmen zur Verbesserung der Wartezeit und der Leistung dynamischer Inhalte. Hierzu zählen unter anderem Routen- und Netzwerkoptimierungen sowie TCP-Optimierungen. 
 
 Mit dieser Optimierung können Sie eine Web-App mit zahlreichen nicht zwischenspeicherbaren Antworten beschleunigen. Beispiele hierfür wären etwa Suchergebnisse, Auftragsabschlusstransaktionen oder Echtzeitdaten. Für statische Daten können Sie weiterhin die grundlegenden CDN-Cachefunktionen verwenden. 
+
+Weitere Informationen zur Beschleunigung dynamischer Websites finden Sie unter [Beschleunigung dynamischer Websites durch Azure CDN](cdn-dynamic-site-acceleration.md).
 
 
 

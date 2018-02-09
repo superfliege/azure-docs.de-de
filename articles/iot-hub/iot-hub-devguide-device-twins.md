@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b2b2877efe5f898b5759c03ac0ddcf3ecc03901
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 5bf2d24d0d5eadfea5ec8fd239a115c05a54fe99
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -58,47 +58,49 @@ Ein Gerätezwilling ist ein JSON-Dokument, das Folgendes enthält:
 
 Das folgende Beispiel zeigt das JSON-Dokument für einen Gerätezwilling:
 
-        {
-            "deviceId": "devA",
-            "etag": "AAAAAAAAAAc=", 
-            "status": "enabled",
-            "statusReason": "provisioned",
-            "statusUpdateTime": "0001-01-01T00:00:00",
-            "connectionState": "connected",
-            "lastActivityTime": "2015-02-30T16:24:48.789Z",
-            "cloudToDeviceMessageCount": 0, 
-            "authenticationType": "sas",
-            "x509Thumbprint": {     
-                "primaryThumbprint": null, 
-                "secondaryThumbprint": null 
-            }, 
-            "version": 2, 
-            "tags": {
-                "$etag": "123",
-                "deploymentLocation": {
-                    "building": "43",
-                    "floor": "1"
-                }
-            },
-            "properties": {
-                "desired": {
-                    "telemetryConfig": {
-                        "sendFrequency": "5m"
-                    },
-                    "$metadata" : {...},
-                    "$version": 1
-                },
-                "reported": {
-                    "telemetryConfig": {
-                        "sendFrequency": "5m",
-                        "status": "success"
-                    }
-                    "batteryLevel": 55,
-                    "$metadata" : {...},
-                    "$version": 4
-                }
-            }
+```json
+{
+    "deviceId": "devA",
+    "etag": "AAAAAAAAAAc=", 
+    "status": "enabled",
+    "statusReason": "provisioned",
+    "statusUpdateTime": "0001-01-01T00:00:00",
+    "connectionState": "connected",
+    "lastActivityTime": "2015-02-30T16:24:48.789Z",
+    "cloudToDeviceMessageCount": 0, 
+    "authenticationType": "sas",
+    "x509Thumbprint": {     
+        "primaryThumbprint": null, 
+        "secondaryThumbprint": null 
+    }, 
+    "version": 2, 
+    "tags": {
+        "$etag": "123",
+        "deploymentLocation": {
+            "building": "43",
+            "floor": "1"
         }
+    },
+    "properties": {
+        "desired": {
+            "telemetryConfig": {
+                "sendFrequency": "5m"
+            },
+            "$metadata" : {...},
+            "$version": 1
+        },
+        "reported": {
+            "telemetryConfig": {
+                "sendFrequency": "5m",
+                "status": "success"
+            }
+            "batteryLevel": 55,
+            "$metadata" : {...},
+            "$version": 4
+        }
+    }
+}
+```
 
 Im Stammobjekt befinden sich die Geräteidentitätseigenschaften und Containerobjekte für `tags` sowie die `reported`- und `desired`-Eigenschaften. Der Container `properties` enthält einige schreibgeschützte Elemente (`$metadata`, `$etag` und `$version`), die in den Abschnitten zu den [Metadaten des Gerätezwillings][lnk-twin-metadata] und zur [optimistischen Parallelität][lnk-concurrency] beschrieben sind.
 
@@ -112,26 +114,32 @@ Im vorherigen Beispiel enthält der Gerätezwilling eine `batteryLevel`-Eigensch
 Im vorherigen Beispiel werden die gewünschten und gemeldeten Eigenschaften des `telemetryConfig`-Gerätezwillings vom Lösungs-Back-End und von der Geräte-App verwendet, um die Telemetriekonfiguration für dieses Gerät zu synchronisieren. Beispiel: 
 
 1. Das Lösungs-Back-End legt die gewünschte Eigenschaft mit dem gewünschten Konfigurationswert fest. Hier sehen Sie den Teil des Dokuments mit der festgelegten gewünschten Eigenschaft:
-   
-        ...
-        "desired": {
-            "telemetryConfig": {
-                "sendFrequency": "5m"
-            },
-            ...
+
+    ```json
+    ...
+    "desired": {
+        "telemetryConfig": {
+            "sendFrequency": "5m"
         },
         ...
+    },
+    ...
+    ```
+
 2. Die Geräte-App wird sofort über die Änderung benachrichtigt, wenn sie verbunden ist oder später eine Verbindung herstellt. Anschließend meldet die Geräte-App die aktualisierte Konfiguration (oder einen Fehler über die `status`-Eigenschaft). Dies ist der Teil mit den gemeldeten Eigenschaften:
-   
-        ...
-        "reported": {
-            "telemetryConfig": {
-                "sendFrequency": "5m",
-                "status": "success"
-            }
-            ...
+
+    ```json
+    ...
+    "reported": {
+        "telemetryConfig": {
+            "sendFrequency": "5m",
+            "status": "success"
         }
         ...
+    }
+    ...
+    ```
+
 3. Das Lösungs-Back-End kann die Ergebnisse des Konfigurationsvorgangs auf vielen Geräten durch [Abfragen][lnk-query] des Gerätezwillings nachverfolgen.
 
 > [!NOTE]
@@ -146,21 +154,24 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
 
 * **Abrufen des Gerätezwillings mittels ID**. Dieser Vorgang gibt das Dokument für den Gerätezwilling zurück – einschließlich Tags sowie gewünschter und gemeldeter Systemeigenschaften.
 * **Partielles Aktualisieren des Gerätezwillings**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, die Tags oder gewünschten Eigenschaften in einem Gerätezwilling teilweise zu aktualisieren. Bei der partiellen Aktualisierung handelt es sich um ein JSON-Dokument, das eine beliebige Eigenschaft hinzufügt oder aktualisiert. Auf `null` festgelegte Eigenschaften werden entfernt. Im folgenden Beispiel wird eine neue gewünschte Eigenschaft mit dem Wert `{"newProperty": "newValue"}` erstellt, der vorhandene Wert von `existingProperty` wird mit `"otherNewValue"` überschrieben, und `otherOldProperty` wird entfernt. Ansonsten werden an vorhandenen Eigenschaften oder Tags keine weiteren Änderungen vorgenommen:
-   
-        {
-            "properties": {
-                "desired": {
-                    "newProperty": {
-                        "nestedProperty": "newValue"
-                    },
-                    "existingProperty": "otherNewValue",
-                    "otherOldProperty": null
-                }
+
+    ```json
+    {
+        "properties": {
+            "desired": {
+                "newProperty": {
+                    "nestedProperty": "newValue"
+                },
+                "existingProperty": "otherNewValue",
+                "otherOldProperty": null
             }
         }
+    }
+    ```
+
 * **Ersetzen gewünschter Eigenschaften**. Dieser Vorgang ermöglicht dem Lösungs-Back-End, alle vorhandenen gewünschten Eigenschaften vollständig zu überschreiben und ein neues JSON-Dokument für `properties/desired` bereitzustellen.
 * **Ersetzen von Tags**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, alle vorhandenen Tags vollständig zu überschreiben und ein neues JSON-Dokument für `tags` bereitzustellen.
-* **Zwillingsbenachrichtigungen empfangen**. Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig werden keine Zwillingsbenachrichtigungen gesendet, und es existieren noch keine solchen Routen. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, empfehlen wir Ihnen, D2C-Nachrichten zu verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
+* **Zwillingsbenachrichtigungen empfangen**. Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig werden keine Zwillingsbenachrichtigungen gesendet, und es existieren noch keine solchen Routen. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, sollten Sie D2C-Nachrichten verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
 
     - Eigenschaften
 
@@ -181,7 +192,8 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     - Body
         
     Dieser Abschnitt enthält alle Zwillingsänderungen in einem JSON-Format. Er verwendet das gleiche Format wie ein Patch, jedoch mit dem Unterschied, dass alle Zwillingsabschnitte enthalten sein können (Tags, properties.reported, properties.desired) und dass die $metadata-Elemente enthalten sind. Beispiel:
-    ```
+
+    ```json
     {
         "properties": {
             "desired": {
@@ -198,10 +210,10 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
             }
         }
     }
-    ``` 
+    ```
 
 Alle oben genannten Vorgänge unterstützen [optimistische Parallelität][lnk-concurrency] und erfordern die Berechtigung **ServiceConnect**, wie im Artikel [Sicherheit][lnk-security] definiert.
- 
+
 Neben diesen Vorgängen kann das Lösungs-Back-End auch folgende Aktionen ausführen:
 
 * Abfragen der Gerätezwillinge mithilfe der SQL-ähnlichen [IoT Hub-Abfragesprache][lnk-query]
@@ -225,23 +237,25 @@ Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mi
 * Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig. Der maximale Wert für ganze Zahlen ist 4503599627370495 und der minimale Wert für ganze Zahlen ist -4503599627370496.
 * Alle JSON-Objekte in Tags, gewünschten und gemeldeten Eigenschaften können eine maximale Tiefe von 5 haben. Das folgende Objekt ist z.B. gültig:
 
-        {
-            ...
-            "tags": {
-                "one": {
-                    "two": {
-                        "three": {
-                            "four": {
-                                "five": {
-                                    "property": "value"
-                                }
+    ```json
+    {
+        ...
+        "tags": {
+            "one": {
+                "two": {
+                    "three": {
+                        "four": {
+                            "five": {
+                                "property": "value"
                             }
                         }
                     }
                 }
-            },
-            ...
-        }
+            }
+        },
+        ...
+    }
+    ```
 
 * Alle Zeichenfolgenwerte können höchstens 4 KB lang sein.
 
@@ -254,48 +268,50 @@ IoT Hub gibt für alle Vorgänge, die die Größe dieser Dokumente über den Gre
 IoT Hub verwaltet den Zeitstempel der letzten Aktualisierung für jedes JSON-Objekt in den gewünschten und gemeldeten Eigenschaften des Gerätezwillings. Zeitstempel verwenden UTC und sind im [ISO8601]-Format codiert: `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 Beispiel: 
 
-        {
-            ...
-            "properties": {
-                "desired": {
-                    "telemetryConfig": {
-                        "sendFrequency": "5m"
-                    },
-                    "$metadata": {
-                        "telemetryConfig": {
-                            "sendFrequency": {
-                                "$lastUpdated": "2016-03-30T16:24:48.789Z"
-                            },
-                            "$lastUpdated": "2016-03-30T16:24:48.789Z"
-                        },
+```json
+{
+    ...
+    "properties": {
+        "desired": {
+            "telemetryConfig": {
+                "sendFrequency": "5m"
+            },
+            "$metadata": {
+                "telemetryConfig": {
+                    "sendFrequency": {
                         "$lastUpdated": "2016-03-30T16:24:48.789Z"
                     },
-                    "$version": 23
+                    "$lastUpdated": "2016-03-30T16:24:48.789Z"
                 },
-                "reported": {
-                    "telemetryConfig": {
-                        "sendFrequency": "5m",
-                        "status": "success"
-                    }
-                    "batteryLevel": "55%",
-                    "$metadata": {
-                        "telemetryConfig": {
-                            "sendFrequency": "5m",
-                            "status": {
-                                "$lastUpdated": "2016-03-31T16:35:48.789Z"
-                            },
-                            "$lastUpdated": "2016-03-31T16:35:48.789Z"
-                        }
-                        "batteryLevel": {
-                            "$lastUpdated": "2016-04-01T16:35:48.789Z"
-                        },
-                        "$lastUpdated": "2016-04-01T16:24:48.789Z"
-                    },
-                    "$version": 123
-                }
+                "$lastUpdated": "2016-03-30T16:24:48.789Z"
+            },
+            "$version": 23
+        },
+        "reported": {
+            "telemetryConfig": {
+                "sendFrequency": "5m",
+                "status": "success"
             }
-            ...
+            "batteryLevel": "55%",
+            "$metadata": {
+                "telemetryConfig": {
+                    "sendFrequency": "5m",
+                    "status": {
+                        "$lastUpdated": "2016-03-31T16:35:48.789Z"
+                    },
+                    "$lastUpdated": "2016-03-31T16:35:48.789Z"
+                }
+                "batteryLevel": {
+                    "$lastUpdated": "2016-04-01T16:35:48.789Z"
+                },
+                "$lastUpdated": "2016-04-01T16:24:48.789Z"
+            },
+            "$version": 123
         }
+    }
+    ...
+}
+```
 
 Diese Informationen werden auf jeder Ebene (nicht nur die Zweige der JSON-Struktur) gespeichert, um Aktualisierungen beizubehalten, bei denen Objektschlüssel entfernt werden.
 
@@ -336,7 +352,7 @@ Nachdem Sie nun etwas über Gerätezwillinge erfahren haben, sind möglicherweis
 * [Aufrufen einer direkten Methode auf einem Gerät][lnk-methods]
 * [Planen von Aufträgen auf mehreren Geräten][lnk-jobs]
 
-Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möchten, sind möglicherweise die folgenden IoT Hub-Tutorials für Sie interessant:
+Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie sich die folgenden IoT Hub-Tutorials an:
 
 * [Verwenden des Gerätezwillings][lnk-twin-tutorial]
 * [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties]

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-ms.openlocfilehash: a5f022eca8f901388c9cf003f3320db1b9c49e6a
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 6b5939341ad05fb8f80415c5335c24d216fc2555
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
 In diesem Artikel werden allgemeine grundlegende Betriebssystemfunktionen beschrieben, die für alle Apps zur Verfügung stehen, die in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
@@ -49,7 +49,7 @@ In App Service gibt es viele Laufwerke, einschließlich lokaler Laufwerke und Ne
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Lokale Laufwerke
-Im Grunde ist App Service ein Dienst, der auf der Azure-PaaS-Infrastruktur (Platform-as-a-Service) ausgeführt wird. Daher sind die lokalen Laufwerke, die an einen virtuellen Computer "angehängt" sind, die gleichen Laufwerkstypen wie die für jede in Azure ausgeführte Workerrolle verfügbaren Typen. Dies umfasst ein Betriebssystemlaufwerk (Laufwerk „D:\“), ein Anwendungslaufwerk, das Azure-Paketdateien (CSPKG-Dateien) enthält, die ausschließlich von App Service verwendet werden (Kunden können darauf nicht zugreifen), und ein „Benutzer“-Laufwerk (Laufwerk „C:\“), dessen Umfang von der Größe des virtuellen Computers abhängt.
+Im Grunde ist App Service ein Dienst, der auf der Azure-PaaS-Infrastruktur (Platform-as-a-Service) ausgeführt wird. Daher sind die lokalen Laufwerke, die an einen virtuellen Computer "angehängt" sind, die gleichen Laufwerkstypen wie die für jede in Azure ausgeführte Workerrolle verfügbaren Typen. Dies umfasst ein Betriebssystemlaufwerk (Laufwerk „D:\“), ein Anwendungslaufwerk, das Azure-Paketdateien (CSPKG-Dateien) enthält, die ausschließlich von App Service verwendet werden (Kunden können darauf nicht zugreifen), und ein „Benutzer“-Laufwerk (Laufwerk „C:\“), dessen Umfang von der Größe des virtuellen Computers abhängt. Die Überwachung der Datenträgerauslastung ist wichtig, wenn Ihre Anwendung wächst. Wenn das Datenträgerkontingent erreicht ist, kann sich das negativ auf Ihre Anwendung auswirken.
 
 <a id="NetworkDrives"></a>
 

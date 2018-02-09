@@ -1,6 +1,6 @@
 ---
 title: "Service Map-Lösung – Demo mit individuellem Arbeitstempo | Microsoft-Dokumentation"
-description: "Service Map ist eine Lösung der Operations Management Suite (OMS), die Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet.  Dies ist eine Demo mit individuellem Arbeitstempo, bei der schrittweise beschrieben wird, wie Sie Service Map zum Identifizieren und Diagnostizieren eines simulierten Problems in einer Webanwendung verwenden."
+description: "Service Map ist eine Lösung in Azure, die Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet.  Dies ist eine Demo mit individuellem Arbeitstempo, bei der schrittweise beschrieben wird, wie Sie Service Map zum Identifizieren und Diagnostizieren eines simulierten Problems in einer Webanwendung verwenden."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: bwren
-ms.openlocfilehash: c3548d24c74f8ad865b22d6af3490d0b5cc77a84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 35fe4e95eae8b63425abc8ed2970c0ad51073883
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="operations-management-suite-oms-self-paced-demo---service-map"></a>OMS-Demo (Operations Management Suite) mit individuellem Arbeitstempo – Service Map
-Dies ist eine Demo mit individuellem Arbeitstempo, in der die Nutzung der [Service Map-Lösung](operations-management-suite-service-map.md) in der Operations Management Suite (OMS) schrittweise beschrieben wird, um ein simuliertes Problem in einer Webanwendung zu identifizieren und zu diagnostizieren.  Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar.  Außerdem werden Daten zusammengefasst, die von anderen OMS-Dienten gesammelt werden, um Sie beim Analysieren der Leistung und Identifizieren von Problemen zu unterstützen.  Außerdem nutzen Sie [Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md), um ein Drilldown für erfasste Daten durchzuführen und das zugrunde liegende Problem zu identifizieren.
+# <a name="self-paced-demo---service-map"></a>Demo mit individuellem Arbeitstempo – Service Map
+Dies ist eine Demo mit individuellem Arbeitstempo, bei der schrittweise beschrieben wird, wie Sie die [Service Map-Lösung](operations-management-suite-service-map.md) zum Identifizieren und Diagnostizieren eines simulierten Problems in einer Webanwendung verwenden.  Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar.  Außerdem werden Daten zusammengefasst, die von anderen Diensten und Lösungen gesammelt werden, um Sie beim Analysieren der Leistung und Identifizieren von Problemen zu unterstützen.  Außerdem nutzen Sie [Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md), um einen Drilldown für erfasste Daten auszuführen und das zugrunde liegende Problem zu identifizieren.
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
@@ -35,7 +35,7 @@ Sie haben soeben eine Benachrichtigung erhalten, dass für die ACME Customer Por
 ## <a name="walk-through"></a>Exemplarische Vorgehensweise
 
 ### <a name="1-connect-to-the-oms-experience-center"></a>1. Herstellen einer Verbindung mit dem OMS Experience Center
-In dieser exemplarischen Vorgehensweise wird das [Operations Management Suite Experience Center](https://experience.mms.microsoft.com/) genutzt, über das eine vollständige OMS-Umgebung mit Beispieldaten bereitgestellt wird. Verwenden Sie den obigen Link, geben Sie Ihre Informationen ein, und wählen Sie dann das Szenario **Insight & Analytics** aus.
+In dieser exemplarischen Vorgehensweise wird das [Operations Management Suite Experience Center](https://experience.mms.microsoft.com/) genutzt, über das eine vollständige Log Analytics-Umgebung mit Beispieldaten bereitgestellt wird. Verwenden Sie den obigen Link, geben Sie Ihre Informationen ein, und wählen Sie dann das Szenario **Insight & Analytics** aus.
 
 
 ### <a name="2-start-service-map"></a>2. Starten von Service Map
@@ -80,7 +80,7 @@ Wir sehen uns **acmetomcat** genauer an.  Klicken Sie rechts oberhalb von **acme
 
 
 ### <a name="7-view-change-tracking"></a>7. Anzeigen der Änderungsnachverfolgung
-Wir möchten nun ermitteln, welchen Grund diese hohe Auslastung hat.  Klicken Sie auf die Registerkarte **Zusammenfassung**.  Sie enthält Informationen, die per OMS für den Computer erfasst wurden, z.B. Fehler bei der Verbindungsherstellung, kritische Warnungen und Softwareänderungen.  Abschnitte mit interessanten Informationen, die kürzlich erfasst wurden, sollten bereits erweitert sein. Sie können auch die anderen Abschnitte erweitern, um die darin enthaltenen Informationen anzuzeigen.
+Wir möchten nun ermitteln, welchen Grund diese hohe Auslastung hat.  Klicken Sie auf die Registerkarte **Zusammenfassung**.  Sie enthält Informationen, die per Log Analytics für den Computer erfasst wurden, z.B. Fehler bei der Verbindungsherstellung, kritische Warnungen und Softwareänderungen.  Abschnitte mit relevanten Informationen, die kürzlich erfasst wurden, sollten bereits erweitert sein. Sie können auch die anderen Abschnitte erweitern, um die darin enthaltenen Informationen anzuzeigen.
 
 
 Erweitern Sie die Option **Änderungsnachverfolgung**, falls sie nicht bereits geöffnet ist.  Darunter werden Informationen angezeigt, die mit der [Lösung für die Änderungsnachverfolgung](../log-analytics/log-analytics-change-tracking.md) erfasst wurden.  Es sieht so aus, als ob in diesem Zeitfenster eine Softwareänderung vorgenommen wurde.  Klicken Sie auf **Software**, um die Details hierzu anzuzeigen.  Kurz nach 4:00 Uhr wurde dem Computer ein Sicherungsprozess hinzugefügt. Dies scheint der Grund für die übermäßige Ressourcennutzung zu sein.
@@ -90,26 +90,26 @@ Erweitern Sie die Option **Änderungsnachverfolgung**, falls sie nicht bereits g
 
 
 ### <a name="8-view-details-in-log-search"></a>8. Anzeigen von Details in der Protokollsuche
-Wir können dies weiter überprüfen, indem wir uns die ausführlichen Leistungsinformationen ansehen, die im Log Analytics-Repository erfasst wurden.  Klicken Sie erneut auf die Registerkarte **Warnungen** und dann auf eine der Warnungen unter **High CPU** (Hohe CPU-Auslastung).  Klicken Sie auf **In Protokollsuche anzeigen**.  Das Fenster „Protokollsuche“ wird geöffnet. In diesem Fenster können Sie [Protokollsuchen](../log-analytics/log-analytics-log-searches.md) für im Repository gespeicherte Daten durchführen.  Von Service Map wurde bereits eine Abfrage eingefügt, mit der wir die gewünschte Warnung abrufen können.  
+Wir können dies weiter überprüfen, indem wir uns die ausführlichen Leistungsinformationen ansehen, die im Log Analytics-Arbeitsbereich erfasst wurden.  Klicken Sie erneut auf die Registerkarte **Warnungen** und dann auf eine der Warnungen unter **High CPU** (Hohe CPU-Auslastung).  Klicken Sie auf **In Protokollsuche anzeigen**.  Das Fenster „Protokollsuche“ wird geöffnet. In diesem Fenster können Sie [Protokollsuchen](../log-analytics/log-analytics-log-searches.md) für im Arbeitsbereich gespeicherte Daten durchführen.  Von Service Map wurde bereits eine Abfrage eingefügt, mit der wir die gewünschte Warnung abrufen können.  
 
 ![Protokollsuche](./media/operations-management-suite-walkthrough-servicemap/log-search.png)
 
 
 ### <a name="9-open-saved-search"></a>9. Öffnen der gespeicherten Suche
-Wir möchten nun weitere Details zu der Erfassung von Leistungsdaten erhalten, bei der diese Warnung generiert wurde, und unseren Verdacht bestätigen, dass die Probleme von diesem Sicherungsprozess verursacht werden.  Ändern Sie den Zeitbereich in **6 Stunden**.  Klicken Sie anschließend auf **Favoriten**, und führen Sie einen Bildlauf nach unten zu den gespeicherten Suchen für **Service Map** durch.  Dies sind Abfragen, die wir speziell für diese Analyse erstellt haben.  Klicken Sie auf **Top 5 Processes by CPU for acmetomcat** (Top 5-Prozesse nach CPU für acmetomcat).
+Wir möchten nun weitere Details zur Erfassung von Leistungsdaten erhalten, bei der diese Warnung generiert wurde, und unseren Verdacht bestätigen, dass die Probleme von diesem Sicherungsprozess verursacht werden.  Ändern Sie den Zeitbereich in **6 Stunden**.  Klicken Sie anschließend auf **Favoriten**, und führen Sie einen Bildlauf nach unten zu den gespeicherten Suchen für **Service Map** durch.  Wir haben diese Abfragen speziell für diese Analyse erstellt.  Klicken Sie auf **Top 5 Processes by CPU for acmetomcat** (Top 5-Prozesse nach CPU für acmetomcat).
 
 ![Gespeicherte Suche](./media/operations-management-suite-walkthrough-servicemap/saved-search.png)
 
 
-Diese Abfrage gibt eine Liste mit den Top 5 der Prozesse zurück, die den Prozessor für **acmetomcat** nutzen.  Sie können sich die Abfrage näher ansehen, um sich über die Abfragesprache zu informieren, die für Protokollsuchen verwendet wird.  Falls Prozesse auf anderen Computern für Sie interessant sind, können Sie die Abfrage entsprechend ändern, um diese Informationen abzurufen.
+Diese Abfrage gibt eine Liste mit den Top 5 der Prozesse zurück, die den Prozessor für **acmetomcat** nutzen.  Sie können sich die Abfrage näher ansehen, um sich über die Abfragesprache zu informieren, die für Protokollsuchen verwendet wird.  Falls Prozesse auf anderen Computern für Sie interessant sind, können Sie die Abfrage entsprechend ändern, um die entsprechenden Informationen abzurufen.
 
-In diesem Fall ist erkennbar, dass der Sicherungsprozess ständig ca. 60% der CPU des App-Servers verbraucht.  Die Wahrscheinlichkeit ist hoch, dass dieser neue Prozess für unser Leistungsproblem verantwortlich ist.  Die Lösung sollte nun natürlich darin bestehen, diese neue Sicherungssoftware vom Anwendungsserver zu entfernen.  Wir können die Konfiguration für den gewünschten Zustand (Desired State Configuration, DSC) nutzen, die von Azure Automation verwaltet wird, um anhand von Richtlinien sicherzustellen, dass dieser Prozessserver auf diesen kritischen Systemen nicht ausgeführt wird.
+In diesem Fall ist erkennbar, dass der Sicherungsprozess ständig ca. 60% der CPU des App-Servers verbraucht.  Es ist offensichtlich, dass dieser neue Prozess für unser Leistungsproblem verantwortlich ist.  Die Lösung sollte nun natürlich darin bestehen, diese neue Sicherungssoftware vom Anwendungsserver zu entfernen.  Wir können die Konfiguration für den gewünschten Zustand (Desired State Configuration, DSC) nutzen, die von Azure Automation verwaltet wird, um anhand von Richtlinien sicherzustellen, dass dieser Prozessserver auf diesen kritischen Systemen nicht ausgeführt wird.
 
 
 ## <a name="summary-points"></a>Zusammenfassung
 - Mit [Service Map](operations-management-suite-service-map.md) erhalten Sie auch dann eine Übersicht über Ihre gesamte Anwendung, wenn Ihnen nicht alle dazugehörigen Server und Abhängigkeiten bekannt sind.
-- Service Map bringt Daten ans Licht, die mit anderen OMS-Lösungen erfasst werden, damit Sie Probleme mit Ihrer Anwendung und der zugrunde liegenden Infrastruktur identifizieren können.
-- Mit [Protokollsuchen](../log-analytics/log-analytics-log-searches.md) können Sie einen Drilldown für bestimmte Daten ausführen, die im Log Analytics-Repository erfasst werden.    
+- Service Map bringt Daten ans Licht, die mit anderen Verwaltungslösungen erfasst werden, damit Sie Probleme mit Ihrer Anwendung und der zugrunde liegenden Infrastruktur identifizieren können.
+- Mit [Protokollsuchen](../log-analytics/log-analytics-log-searches.md) können Sie einen Drilldown für bestimmte Daten durchführen, die im Log Analytics-Arbeitsbereich erfasst werden.    
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Service Map](operations-management-suite-service-map.md)

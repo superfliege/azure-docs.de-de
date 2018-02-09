@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 01/25/2018
 ms.author: sethm
-ms.openlocfilehash: b0bc1ef7570ccac07975e2560a1d0501d3cde2b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 124c4592a41bf9f3e2a148ba5c3b928bb051d160
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-browsing"></a>Einsehen von Nachrichten
 
-Das Einsehen von Nachrichten ermöglicht einem Client, alle Nachrichten in einer Warteschlange oder einem Abonnement aufzulisten, meist zu Diagnose- und Debugzwecken.
+Das Einsehen von Nachrichten ermöglicht einem Service Bus-Client, alle Nachrichten in einer Warteschlange oder einem Abonnement aufzulisten, meist zu Diagnose- und Debugzwecken.
 
-Die Einsehvorgänge geben alle Nachrichten zurück, die im Warteschlangen- oder Abonnementnachrichtenprotokoll vorhanden sind, und nicht nur diejenigen, die zum sofortigen Abruf mit *Receive()* oder der *OnMessage()*-Schleife verfügbar sind. Die *State*-Eigenschaft jeder Nachricht gibt an, ob die Nachricht aktiv (für den Empfang verfügbar), verzögert (siehe Verzögerung [Link fehlt noch]) oder geplant (siehe Geplante Nachrichten [Link fehlt noch]) ist.
+Die Einsehvorgänge geben alle Nachrichten zurück, die im Warteschlangen- oder Abonnementnachrichtenprotokoll vorhanden sind, und nicht nur diejenigen, die zum sofortigen Abruf mit `Receive()` oder der `OnMessage()`-Schleife verfügbar sind. Die `State`-Eigenschaft jeder Nachricht gibt an, ob die Nachricht aktiv (für den Empfang verfügbar), [verzögert](message-deferral.md) oder [geplant](message-sequencing.md) ist.
 
-Genutzte und abgelaufene Nachrichten werden durch einen asynchronen „Garbage Collection“-Lauf und nicht unbedingt genau dann bereinigt, wenn Nachrichten ablaufen. Daher kann der Peek-Vorgang Nachrichten zurückgeben, die bereits abgelaufen sind und gelöscht oder in die Warteschlange für unzustellbare Nachrichten gestellt werden, wenn ein Empfangsvorgang das nächste Mal in der Warteschlange oder im Abonnement aufgerufen wird.
+Genutzte und abgelaufene Nachrichten werden durch einen asynchronen Garbage Collection-Lauf und nicht unbedingt genau dann bereinigt, wenn Nachrichten ablaufen. Daher kann der `Peek`-Vorgang Nachrichten zurückgeben, die bereits abgelaufen sind und gelöscht oder in die Warteschlange für unzustellbare Nachrichten gestellt werden, wenn ein Empfangsvorgang das nächste Mal in der Warteschlange oder im Abonnement aufgerufen wird.
 
 Dies ist besonders zu beachten, wenn Sie versuchen, verzögerte Nachrichten aus der Warteschlange wiederherzustellen. Eine Nachricht, deren [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc)-Zeitpunkt verstrichen ist, kann nicht mehr auf andere Weise regelmäßig abgerufen werden, selbst wenn sie von Peek zurückgegeben wird. Die Rückgabe dieser Nachrichten ist beabsichtigt, da Peek ein Diagnosetool ist, das den aktuellen Status des Protokolls widerspiegelt.
 

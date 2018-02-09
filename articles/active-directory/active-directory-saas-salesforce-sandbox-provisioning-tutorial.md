@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Salesforce Sandbox | Microsoft Docs'
+title: "Tutorial: Konfigurieren von Salesforce Sandbox für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Salesforce Sandbox konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -11,21 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: d0efcae50b18dc2626af5510bd47ff36a27ba718
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9ff50ddc2460a94c17b2401f0c8e4ad12c6d23a7
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-salesforce-sandbox-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce Sandbox für automatische Benutzerbereitstellung
+# <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce Sandbox für die automatische Benutzerbereitstellung
 
 Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Salesforce Sandbox und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Salesforce Sandbox automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
 *   Einen gültigen Mandanten für Salesforce Sandbox for Work oder Salesforce Sandbox for Education. Sie können ein kostenloses Testkonto für einen der Dienste verwenden.
@@ -71,7 +71,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
    
     a. Geben Sie in das Textfeld **Administratorbenutzername** den Namen eines Salesforce Sandbox-Kontos ein, dem das Profil **Systemadministrator** in „Salesforce.com“ zugewiesen ist.
    
-    b. Geben Sie im Feld **Administratorkennwort** das Kennwort für das Konto ein.
+    b. Geben Sie im Textfeld **Administratorkennwort** das Kennwort für dieses Konto ein.
 
 6. Um Ihr Salesforce Sandbox-Sicherheitstoken abzurufen, öffnen Sie eine neue Registerkarte, und melden Sie sich mit dem gleichen Salesforce Sandbox-Administratorkonto an. Klicken Sie in der rechten oberen Ecke der Seite auf Ihren Namen und dann auf **Meine Einstellungen**.
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 0bf1cff4058bfe46b54f3f0b6836ede3e04ed5dd
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 4bdcd6d57989df3d1b67c87d56b8c57035ef2f63
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>Testen der Lösung mit simulierten Geräten
 
@@ -78,6 +78,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Hinzufügen eines neuen Gerätetyps im Dashboard
 > * Senden benutzerdefinierter Telemetriedaten von einem vorhandenen Gerätetyp
 
+Im folgenden Video wird eine exemplarische Vorgehensweise zum Verbinden von simulierten und physischen Geräten mit der Remoteüberwachungslösung gezeigt:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-38-Customizing-Azure-IoT-Suite-solution-and-connect-a-real-device/Player]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
@@ -127,24 +131,24 @@ Die folgenden Befehle verwenden den Befehl `az` von der [Azure CLI 2.0](https://
 1. Um SSH-Zugriff auf Ihrem virtuellen Computer zu ermöglichen, führen Sie den folgenden Befehl mit dem Namen Ihrer Netzwerksicherheitsgruppe aus dem vorherigen Schritt aus:
 
     ```sh
-    az network nsg rule create --name SSH --nsg-name your-network-security-group --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
+    az network nsg rule create --name SSH --nsg-name YOUR-NETWORK-SECURITY-GROUP --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
     ```
 
     Um die Liste der Eingangsregeln für Ihr Netzwerk anzuzeigen, führen Sie den folgenden Befehl aus:
 
     ```sh
-    az network nsg rule list --nsg-name Contoso-01-nsg -o table
+    az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
 
 1. Führen Sie den folgenden Befehl aus, um das Kennwort für den virtuellen Computer zu ändern. Verwenden Sie den zuvor notierten Namen des virtuellen Computers und das von Ihnen gewählte Kennwort:
 
     ```sh
-    az vm user update --name your-vm-name --username azureuser --password your-password
+    az vm user update --name YOUR-VM-NAME --username azureuser --password YOUR-PASSWORD
     ```
 1. Um die IP-Adresse des virtuellen Computers zu ermitteln, verwenden Sie den folgenden Befehl und notieren sich die öffentliche IP-Adresse:
 
     ```sh
-    az vm list-ip-addresses --name your-vm-name
+    az vm list-ip-addresses --name YOUR-VM-NAME
     ```
 
 1. Sie können nun für das Herstellen einer Verbindung mit Ihrem virtuellen Computer SSH auswählen. Der Befehl `ssh` ist in Cloud Shell vorinstalliert. Verwenden Sie die öffentliche IP-Adresse aus dem vorherigen Schritt und bei entsprechender Aufforderung das für den virtuellen Computer konfigurierte Kennwort:

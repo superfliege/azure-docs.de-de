@@ -2,17 +2,17 @@
 title: "Azure Batch Rendering-Dienst – cloudbasiertes Rendering | Microsoft-Dokumentation"
 description: "Rendern Sie Aufträge auf virtuellen Azure-Computern direkt über Maya – mit einem nutzungsbasierten Zahlungsmodell."
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: hero-article
 ms.date: 09/14/2017
 ms.author: danlep
-ms.openlocfilehash: aab68b4275edc48e1726b26a7400bbfdd8d40d6f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f1aa8de26afd8b54746c706047a6b6b21cbf311c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Erste Schritte mit dem Batch Rendering-Dienst
 
@@ -25,12 +25,8 @@ Mit Maya und 3ds Max können Sie Aufträge ausführen, indem Sie die Desktopanwe
 
 Der Batch Rendering-Dienst unterstützt derzeit folgende Anwendungen:
 
-- Autodesk Maya
-- Autodesk 3ds Max
-- Autodesk Arnold for Maya
-- Autodesk Arnold for 3ds Max
-- Chaos Group V-Ray for Maya
-- Chaos Group V-Ray for 3ds Max
+•   Autodesk Maya I/O 2017 Update 4 (Version 17.4.5459) •   Autodesk 3ds Max I/O 2018 Update 1 (Version 20.1.0.238) •   Autodesk Arnold for Maya (Version 5.0.1.1) •   Autodesk Arnold for 3ds Max (Version 1.0.836) •   Chaos Group V-Ray for Maya (Version 3.52.03) •   Chaos Group V-Ray for 3ds Max (Version 3.60.02)
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -193,7 +189,8 @@ Auf der Registerkarte **Env** (Umgebung) können Sie die Größe des virtuellen 
 Auf der Registerkarte **Env** (Umgebung) können Sie die zu verwendenden Lizenzen angeben. Beispiele für Optionen:
 
 - **Maya** (standardmäßig aktiviert)
-- **Arnold** (aktiviert, wenn Arnold als aktives Renderingmodul in Maya erkannt wird)
+- 
+            **Arnold** (aktiviert, wenn Arnold als aktive Rendering-Engine in Maya erkannt wird)
 
  Wenn Sie beim Rendern Ihre eigene Lizenz verwenden möchten, können Sie Ihren Lizenzendpunkt konfigurieren, indem Sie der Tabelle die entsprechenden Umgebungsvariablen hinzufügen. In diesem Fall müssen allerdings die Standardlizenzoptionen deaktiviert werden.
 
@@ -216,9 +213,9 @@ Nach Angabe der Parameter für den Pool, in dem der Renderauftrag ausgeführt wi
 
 #### <a name="specify-scene-parameters"></a>Angeben von Szenenparametern
 
-Das Batch-Plug-In erkennt, welches Renderingmodul derzeit in Maya verwendet wird, und zeigt auf der Registerkarte **Submit** (Übermitteln) die entsprechenden Rendereinstellungen an. Diese Einstellungen umfassen Startframe, Endframe, Ausgabepräfix und Frameschritt. Die Rendereinstellungen der Szenendatei können durch Angabe anderer Einstellungen im Plug-In überschrieben werden. Geänderte Plug-In-Einstellungen werden nicht in den Rendereinstellungen der Szenendatei gespeichert. Dadurch können Sie auftragsspezifische Änderungen vornehmen, ohne die Szenendatei erneut hochladen zu müssen.
+Das Batch-Plug-In erkennt, welche Rendering-Engine derzeit in Maya verwendet wird, und zeigt auf der Registerkarte **Submit** (Übermitteln) die entsprechenden Rendereinstellungen an. Diese Einstellungen umfassen Startframe, Endframe, Ausgabepräfix und Frameschritt. Die Rendereinstellungen der Szenendatei können durch Angabe anderer Einstellungen im Plug-In überschrieben werden. Geänderte Plug-In-Einstellungen werden nicht in den Rendereinstellungen der Szenendatei gespeichert. Dadurch können Sie auftragsspezifische Änderungen vornehmen, ohne die Szenendatei erneut hochladen zu müssen.
 
-Sollte das in Maya ausgewählte Renderingmodul nicht unterstützt werden, erscheint eine entsprechende Warnung.
+Sollte die in Maya ausgewählte Rendering-Engine nicht unterstützt werden, erscheint eine entsprechende Warnung.
 
 Wenn Sie eine neue Szene laden, während das Plug-In geöffnet ist, klicken Sie auf die Schaltfläche **Refresh** (Aktualisieren), um sicherzustellen, dass die Einstellungen aktualisiert werden.
 

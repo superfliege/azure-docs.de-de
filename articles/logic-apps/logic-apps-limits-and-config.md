@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 22d0ee242d18d73d1d5825567fd61638fd22cc68
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 5e3147cbc9fce6737cfb9b2e93e8bf1662163f3c
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps-Grenzwerte und -Konfiguration
 
@@ -85,12 +85,12 @@ Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 Folgende Grenzwerte gelten für eine einzelne Instanz der Logik-App.
 
 | NAME | Begrenzung | Notizen | 
-| ---- | ----- | ----- | 
-| Aktionsausführungen pro 5 Minuten | 100.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
+| ----- | ----- | ----- | 
+| Aktionsausführungen pro 5 Minuten | 100.000 |<p>Der Grenzwert kann durch Ausführung einer Logik-App im `High Througput`-Modus auf bis zu 300.000 erhöht werden. Legen Sie dazu die `operationOptions`-Eigenschaft unter `runtimeConfiguration` der Workflowressource auf `OptimizedForHighThroughput` fest. <p>Beachten Sie, dass sich dieser Modus für den hohen Durchsatz in der Vorschauphase befindet. Bei Bedarf kann eine Workload auch auf mehrere Apps verteilt werden. | 
 | Gleichzeitige ausgehende Aufrufe für Aktionen | ca. 2.500 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
-| Endpunkt zur Laufzeit: Gleichzeitige eingehende Aufrufe | ca. 1.000 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
-| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten | 60.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
-| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten | 45.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
+| Endpunkt zur Laufzeit: Gleichzeitige eingehende Aufrufe |ca. 1.000 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
+| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten  | 60.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
+| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten| 45.000 |Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
 |||| 
 
 Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten werden sollen oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [wenden Sie sich an uns](mailto://logicappsemail@microsoft.com), damit wir Sie im Hinblick auf Ihre Anforderungen unterstützen können.

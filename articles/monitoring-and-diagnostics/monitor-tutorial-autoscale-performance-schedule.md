@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: e56b637858af27f9a09f70867e455d06dd122d92
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 012183b8e6c15d62eda2534985bf73140187d7af
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
@@ -35,11 +35,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Erstellen einer Web-App und eines App Service-Plans
-Klicken Sie im linken Navigationsbereich auf die Option **Neu**.
+1. Klicken Sie im linken Navigationsbereich auf die Option **Neu**.
 
-Suchen Sie nach dem Element *Web-App*, wählen Sie es aus, und klicken Sie auf **Erstellen**.
+2. Suchen Sie nach dem Element *Web-App*, wählen Sie es aus, und klicken Sie auf **Erstellen**.
 
-Wählen Sie einen App-Namen wie *MyTestScaleWebApp*. Erstellen Sie eine neue Ressourcengruppe mit dem Namen „myResourceGroup“, und platzieren Sie sie in die Ressourcengruppe Ihrer Wahl.
+3. Wählen Sie einen App-Namen wie *MyTestScaleWebApp*. Erstellen Sie eine neue Ressourcengruppe mit dem Namen *myResourceGroup*, und platzieren Sie sie in die Ressourcengruppe Ihrer Wahl.
 
 Ihre Ressourcen sollten innerhalb weniger Minuten bereitgestellt werden. Im restlichen Teil dieses Tutorials verwenden Sie die Web-App und den zugehörigen App Service-Plan.
 

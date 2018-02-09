@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 01/25/2018
 ms.author: sethm
-ms.openlocfilehash: edb6e207852fa59d5828906c891693f367739c9c
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 4789da3c84d52b2615bf4250a36093a74154e1d4
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Nachrichtenübertragungen, Sperren und Abgleich
 
-Die wichtigste Funktion eines Nachrichtenbrokers wie z.B. Service Bus besteht darin, Nachrichten in einer Warteschlange oder einem Thema anzunehmen und zum späteren Abruf verfügbar zu halten. *Senden* ist der allgemein gebräuchliche Begriff für die Übertragung einer Nachricht in den Nachrichtenbroker. *Empfangen* ist der allgemein gebräuchliche Begriff für die Übertragung einer Nachricht an einen abrufenden Client.
+Die zentrale Funktion eines Nachrichtenbrokers wie z.B. Service Bus besteht darin, Nachrichten in einer Warteschlange oder einem Thema anzunehmen und zum späteren Abruf verfügbar zu halten. *Senden* ist der allgemein gebräuchliche Begriff für die Übertragung einer Nachricht in den Nachrichtenbroker. *Empfangen* ist der allgemein gebräuchliche Begriff für die Übertragung einer Nachricht an einen abrufenden Client.
 
 Wenn ein Client eine Nachricht sendet, möchte er normalerweise wissen, ob die Nachricht ordnungsgemäß an den Broker übertragen und vom Broker akzeptiert wurde oder ob ein Fehler aufgetreten ist. Diese positive oder negative Bestätigung gleicht die Kenntnis des Clients und des Brokers über den Übertragungsstatus der Nachricht ab und wird daher als *Abgleich* bezeichnet.
 

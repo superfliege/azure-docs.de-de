@@ -17,7 +17,7 @@
 
     Klicken Sie dann auf **Erstellen**.
 
-    ![Das Blatt „Neues Konto“ für Azure Cosmos DB](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
+    ![Die Seite „Neues Konto“ für Azure Cosmos DB](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
 
 4. Die Kontoerstellung dauert einige Minuten. Während der Erstellung des Kontos zeigt das Portal auf der rechten Seite die Kachel **Azure Cosmos DB bereitstellen** an. Möglicherweise müssen Sie auf dem Dashboard nach rechts scrollen, um die Kachel anzuzeigen. Am oberen Bildschirmrand wird auch eine Statusanzeige angezeigt. Sie können den Status beider Bereiche beobachten. 
 

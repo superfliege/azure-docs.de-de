@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 6a03986288fdb6acaf234a8abf690f728d160fd7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 63160bc8f334b975ade8b35ce809578ad3a5b3fa
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute (Vorschau)
 
@@ -46,6 +46,7 @@ Sie können ExpressRoute-Verbindungen in jedem Teil der Welt mit einem Arbeitsbe
 * Europa, Westen 
 * USA (Ost) 
 * Südostasien 
+* Australien, Südosten
 
 ## <a name="workflow"></a>Workflow
 
@@ -174,16 +175,13 @@ Für das Überwachen von Agent-Servern in Azure müssen Sie Regeln für Netzwerk
 
 Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-create-nsg-arm-portal.md).
 
-## <a name="whitelist"></a>Schritt 4: Anfordern der Aufnahme des Arbeitsbereichs in eine Whitelist
-
 >[!NOTE]
 >Stellen Sie sicher, dass Sie die Agents (sowohl den lokalen Server-Agent als auch den Azure-Server-Agent) installiert und das PowerShell-Skript ausgeführt haben, bevor Sie mit diesem Schritt fortfahren.
 >
 >
 
-Bevor Sie das ExpressRoute-Überwachungsfeature des Netzwerkleistungsmonitors verwenden können, müssen Sie anfordern, dass Ihr Arbeitsbereich in eine Whitelist aufgenommen wird. [Klicken Sie hier, um zu der Seite zu gelangen und das Anforderungsformular auszufüllen.](https://aka.ms/npmcohort) (Hinweis: Sie sollten diesen Link in einem neuen Fenster oder einer neuen Registerkarte öffnen.) Der Whitelistprozess kann einen Geschäftstag oder mehr in Anspruch nehmen. Sobald der Eintrag in der Whitelist vorgenommen wurde, senden wir Ihnen eine E-Mail zu.
 
-## <a name="setupmonitor"></a>Schritt 5: Konfigurieren des Netzwerkleistungsmonitors für die ExpressRoute-Überwachung
+## <a name="setupmonitor"></a>Schritt 4: Konfigurieren des Netzwerkleistungsmonitors für die ExpressRoute-Überwachung
 
 >[!WARNING]
 >Fahren Sie nicht fort, bevor Ihr Arbeitsbereich in eine Whitelist aufgenommen wurde und Sie eine Bestätigung per E-Mail erhalten haben.
@@ -208,7 +206,7 @@ Nachdem Sie die vorherigen Abschnitte abgeschlossen und überprüft haben, dass 
 
   ![Überwachungskacheln](.\media\how-to-npm\15.png)
 
-## <a name="explore"></a>Schritt 6: Anzeigen der Überwachungskacheln
+## <a name="explore"></a>Schritt 5: Anzeigen der Überwachungskacheln
 
 ### <a name="dashboard"></a>Seite des Netzwerkleistungsmonitors
 

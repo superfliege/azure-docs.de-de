@@ -11,19 +11,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 4e346306ecb8f4897a249454c537ce9a1a4c4011
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>Senden von D2C-Nachrichten an IoT Hub
 
 Zum Senden von Zeitreihen-Telemetrie und Warnungen von Ihren Geräten an Ihr Lösungs-Back-End senden Sie D2C-Nachrichten von Ihrem Gerät an Ihre IoT Hub-Instanz. Eine Erläuterung anderer D2C-Optionen, die von IoT Hub unterstützt werden, finden Sie im [Leitfaden zur D2C-Kommunikation][lnk-d2c-guidance].
 
-Sie senden Gerät-zu-Cloud-Nachrichten (Device-to-Cloud, D2C) von einem geräteseitigen Endpunkt (**/devices/{Geräte-ID}/messages/events**). Mit Routingregeln werden Ihre Nachrichten dann an einen der dienstseitigen Endpunkte auf Ihrem IoT Hub geleitet. Bei Routingregeln werden Header und Text der D2C-Nachrichten, die Ihren Hub durchlaufen, zur Ermittlung des Zielorts für die Weiterleitung verwendet. Standardmäßig werden Nachrichten an den integrierten dienstseitigen Endpunkt (**messages/events**) gesendet, der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Auf diese Weise können Sie standardmäßige [Event Hubs-Integration und -SDKs][lnk-compatible-endpoint] zum Empfangen von D2C-Nachrichten an Ihrem Lösungs-Back-End verwenden.
+Sie senden Gerät-zu-Cloud-Nachrichten (Device-to-Cloud, D2C) von einem geräteseitigen Endpunkt (**/devices/{Geräte-ID}/messages/events**). Mit Routingregeln werden Ihre Nachrichten dann an einen der dienstseitigen Endpunkte auf Ihrem IoT Hub geleitet. Routingregeln verwenden die Header und Texte der D2C-Nachrichten, um den Zielort für die Weiterleitung zu ermitteln. Standardmäßig werden Nachrichten an den integrierten dienstseitigen Endpunkt (**messages/events**) gesendet, der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Auf diese Weise können Sie standardmäßige [Event Hubs-Integration und -SDKs][lnk-compatible-endpoint] zum Empfangen von D2C-Nachrichten an Ihrem Lösungs-Back-End verwenden.
 
 IoT Hub implementiert das D2C-Messaging anhand eines Streaming-Messagingmusters. Die D2C-Nachrichten von IoT Hub ähneln eher [Event Hubs][lnk-event-hubs] *-Ereignissen* als [Service Bus][lnk-servicebus] *-Nachrichten*, da der Dienst von einem größeren Volumen von Ereignissen durchlaufen wird, die von mehreren Lesern gelesen werden können.
 
@@ -36,11 +36,11 @@ D2C-Messaging mit IoT Hub weist folgende Merkmale auf:
 * IoT Hub ermöglicht Millionen gleichzeitig verbundener Geräte (siehe [Kontingente und Drosselung][lnk-quotas]).
 * IoT Hub erlaubt keine beliebige Partitionierung. D2C-Nachrichten werden gemäß ihrer ursprünglichen **deviceId**partitioniert.
 
-Weitere Informationen zu den Unterschieden zwischen den Diensten IoT Hub und Event Hubs finden Sie unter [Vergleich zwischen Azure IoT Hub und Azure Event Hubs][lnk-comparison].
+Weitere Informationen zu den Unterschieden zwischen IoT Hub und Event Hubs finden Sie unter [Vergleich zwischen Azure IoT Hub und Azure Event Hubs][lnk-comparison].
 
 ## <a name="send-non-telemetry-traffic"></a>Senden von Datenverkehr ohne Telemetrie
 
-Häufig senden Geräte nicht nur Telemetriedatenpunkte, sondern auch Nachrichten und Anforderungen, die eine separate Ausführung und Verarbeitung im Lösungs-Back-End erforderlich machen. Ein Beispiel hierfür sind kritische Warnungen, für die eine bestimmte Aktion auf dem Back-End ausgelöst werden muss. Sie können auf einfache Weise eine [Routingregel][lnk-devguide-custom] schreiben, mit der diese Arten von Nachrichten basierend auf einem Header oder einem Wert im Nachrichtentext an einen Endpunkt gesendet werden, der für deren Verarbeitung zuständig ist.
+Häufig senden Geräte nicht nur Telemetriedaten, sondern auch Nachrichten und Anforderungen, die eine separate Ausführung und Verarbeitung im Lösungs-Back-End erforderlich machen. Ein Beispiel hierfür sind kritische Warnungen, für die eine bestimmte Aktion auf dem Back-End ausgelöst werden muss. Sie können eine [Routingregel][lnk-devguide-custom] schreiben, mit der diese Arten von Nachrichten basierend auf dem Header der Nachricht oder einem Wert im Nachrichtentext an einen Endpunkt gesendet werden, der für deren Verarbeitung zuständig ist.
 
 Weitere Informationen zur besten Möglichkeit zum Verarbeiten dieser Art von Nachricht finden Sie im Tutorial [Gewusst wie: Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-d2c-tutorial].
 

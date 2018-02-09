@@ -16,17 +16,19 @@ ms.topic: quickstart
 ms.date: 11/02/2017
 ms.author: cephalin;wesmc
 ms.custom: mvc
-ms.openlocfilehash: a95a8435e4ecef201ad0f6d9ecda68e94f06ea80
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 7f6ed6d52bea1faec9dbed96a8d7aef020aea5d9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="run-a-custom-docker-hub-image-in-azure-web-app-for-containers"></a>Ausführen eines benutzerdefinierten Images von Docker-Hubs in Azure-Web-Apps für Container
 
 App Service stellt vordefinierte Anwendungsstapel unter Linux mit Unterstützung für bestimmte Versionen bereit, z.B. PHP 7.0 und Node.js 4.5. Sie können auch ein benutzerdefiniertes Docker-Image verwenden, um Ihre Web-App in einem Anwendungsstapel auszuführen, der nicht bereits in Azure definiert ist. In diesem Schnellstartartikel wird erläutert, wie eine Web-App erstellt und das [offizielle Nginx-Docker-Image](https://hub.docker.com/r/_/nginx/) für diese bereitgestellt wird. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-custom-docker-image/hello-world-in-browser.png)
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -38,7 +40,7 @@ App Service stellt vordefinierte Anwendungsstapel unter Linux mit Unterstützung
 
 ## <a name="create-a-web-app-for-container"></a>Erstellen einer Web-App für Container
 
-Erstellen Sie eine [Web-App](../app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
+Erstellen Sie mit dem Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) eine [Web-App](../app-service-web-overview.md) im App Service-Plan `myAppServicePlan`. Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name nginx

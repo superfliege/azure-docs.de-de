@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 0af3f6bc6e074fae4d830f163419d6437d04e2df
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: e037d0e291384849739825ae7ad59064a135db95
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="event-hubs-samples"></a>Event Hubs-Beispiele 
 
@@ -60,10 +60,6 @@ Das Beispiel [Event Hubs Getting Started](https://code.msdn.microsoft.com/Servic
 ### <a name="scale-out-event-processing"></a>Horizontales Hochskalieren der Ereignisverarbeitung 
 
 Das Beispiel [Scale out event processing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) (Horizontales Hochskalieren der Ereignisverarbeitung) veranschaulicht die Verwendung des [Ereignisprozessorhosts](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) zum Verteilen der Workloads für die Event Hubs-Datenstromnutzung. Es zeigt zudem, wie die Objekte **EventProcessor** und **EventProcessorFactory** zum Verwalten des Ereignisdatenstroms implementiert werden. 
-
-###  <a name="pull-data-from-sql-into-an-event-hub"></a>Übertragen von Daten per Pull aus SQL in einen Event Hub
-
-Das Beispiel [Pulling SQL data](https://github.com/Azure-Samples/event-hubs-dotnet-import-from-sql) (Übertragen von SQL-Daten per Pull) veranschaulicht, wie Daten aus einer SQL-Tabelle abgerufen und per Push an einen Event Hub übertragen werden, damit sie in den nachfolgenden Analyseanwendungen als Eingabe verwendet werden können.
 
 ### <a name="pull-web-data-into-an-event-hub"></a>Übertragen von Webdaten per Pull in einen Event Hub 
 

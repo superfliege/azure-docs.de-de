@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 36a08cab2b1d409d2de382a07cfd7259a1c94e13
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3bb54f7897876d656da6f1a4b349c9db202a142d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>Upgrade von Azure Log Analytics auf die neue Protokollsuche
 
@@ -52,7 +52,7 @@ Wenn Ihr Arbeitsbereich automatisch ein Upgrade durchführt, wird Ihnen ein Bann
 Die folgenden Änderungen werden an Ihrem Arbeitsbereich vorgenommen, wenn dieser konvertiert wird:
 
 - Alle gespeicherten Suchvorgänge, Warnungsregeln und Ansichten, die Sie mit dem Ansicht-Designer erstellt haben, werden automatisch in die neue Sprache konvertiert.  Suchvorgänge, die in Projektmappen eingebunden sind, werden nicht automatisch, sondern beim nächsten Öffnen konvertiert.  
-- [Mein Dashboard](log-analytics-dashboards.md) wird zugunsten des [Ansicht-Designers](log-analytics-view-designer.md) und des [Azure-Dashboards](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards.md) nicht mehr unterstützt.  Kacheln, die Sie zu „Mein Dashboard“ hinzugefügt haben, sind schreibgeschützt, aber weiterhin verfügbar.
+- [Mein Dashboard](log-analytics-dashboards.md) wird zugunsten des [Ansicht-Designers](log-analytics-view-designer.md) und des [Azure-Dashboards](../azure-portal/azure-portal-dashboards.md) nicht mehr unterstützt.  Kacheln, die Sie zu „Mein Dashboard“ hinzugefügt haben, sind schreibgeschützt, aber weiterhin verfügbar.
 - Die [Power BI-Integration](log-analytics-powerbi.md) wird durch einen neuen Prozess ersetzt.  Alle vorhandenen Power BI-Zeitpläne, die Sie erstellt haben, werden deaktiviert, und Sie müssen diese mit dem neuen Prozess ersetzen.
 - Antworten von [Warnungsaktionen](log-analytics-alerts-actions.md) mithilfe von Webhooks und Runbooks haben ein neues Format, dem entsprechend Sie Ihre Warnungsregeln aktualisieren sollten.
 - Unter [Protokollsuche – häufig gestellte Fragen](log-analytics-log-search-faq.md) finden Sie häufig gestellte Fragen zum Upgrade.

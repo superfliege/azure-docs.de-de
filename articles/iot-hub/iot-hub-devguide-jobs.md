@@ -3,7 +3,7 @@ title: "Grundlegendes zu Azure IoT Hub-Aufträgen | Microsoft-Dokumentation"
 description: "Entwicklerhandbuch: Planen der Ausführung von Aufträgen auf mehreren Geräten, die mit Ihrer IoT Hub-Instanz verbunden sind. Aufträge können Tags und gewünschte Eigenschaften aktualisieren und auf mehreren Geräten direkte Methoden aufrufen."
 services: iot-hub
 documentationcenter: .net
-author: juanjperez
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
-ms.author: juanpere
-ms.openlocfilehash: f90ecb70ad12ed05d5d40f8b26a0a4e461c9f835
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 01/29/2018
+ms.author: dobett
+ms.openlocfilehash: 7e0af40b2fd5bbb12d5565765aae4026922aec5c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planen von Aufträgen auf mehreren Geräten
 
@@ -101,7 +101,7 @@ Das „continuationToken“ wird aus der Antwort bereitgestellt.
 ## <a name="jobs-properties"></a>Auftragseigenschaften
 Die folgende Liste enthält die Eigenschaften und entsprechenden Beschreibungen, die beim Abfragen von Aufträgen oder Auftragsergebnissen verwendet werden können.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | **jobId** |Für den Auftrag von der Anwendung angegebene ID. |
 | **startTime** |Von der Anwendung angegebene Startzeit (ISO-8601) für den Auftrag. |
@@ -130,11 +130,11 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 * Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
 * Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
 * Unter [Azure IoT-SDKs für Geräte und Dienste][lnk-sdks] werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
-* Unter [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
+* [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query] beschreibt die IoT Hub-Abfragesprache. Verwenden Sie diese Abfragesprache, um aus IoT Hub Informationen zu Gerätezwillingen und Aufträgen abzurufen.
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möchten, ist möglicherweise das folgende IoT Hub-Tutorial für Sie interessant:
+Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie sich das folgende IoT Hub-Tutorial an:
 
 * [Planen und Übertragen von Aufträgen][lnk-jobs-tutorial]
 

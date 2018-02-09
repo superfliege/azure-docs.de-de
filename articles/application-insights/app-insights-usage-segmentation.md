@@ -10,17 +10,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/03/2017
-ms.author: mbullwin
-ms.openlocfilehash: 04efb82addd0f307c68c73e28e46b602e5bc194a
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.date: 01/24/2018
+ms.author: mbullwin; daviste
+ms.openlocfilehash: 1a5380cac08ab32cfea4cf457aed1fb1510099ed
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights
 
-Ermitteln Sie, wann Personen Ihre Web-App verwenden, für welche Seiten sie sich am meisten interessieren, wo sich die Benutzer befinden, welche Browser und Betriebssysteme sie verwenden. Analysieren Sie Geschäfts- und Nutzungstelemetriedaten mithilfe von [Azure Application Insights](app-insights-overview.md).
+Ermitteln Sie, wann Personen Ihre Web-App verwenden, für welche Seiten sie sich am meisten interessieren, wo sich die Benutzer befinden, und welche Browser und Betriebssysteme sie verwenden. Analysieren Sie Geschäfts- und Nutzungstelemetriedaten mithilfe von [Azure Application Insights](app-insights-overview.md).
+
+![Screenshot der Application Insights-Benutzer](./media/app-insights-usage-segmentation/0001-users.png)
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -36,35 +38,30 @@ Drei der Nutzungsblätter verwenden dasselbe Tool zum Aufteilen von Telemetrieda
 
     Ein benutzerdefiniertes Ereignis stellt eine Aktion in Ihrer App dar, häufig eine Benutzerinteraktion wie das Klicken auf eine Schaltfläche oder den Abschluss einer Aufgabe. Sie fügen Code in Ihre App ein, um [benutzerdefinierte Ereignisse zu generieren](app-insights-api-custom-events-metrics.md#trackevent).
 
-![Nutzungstool](./media/app-insights-usage-segmentation/users.png)
+## <a name="querying-for-certain-users"></a>Abfragen für bestimmte Benutzer
 
-## <a name="querying-for-certain-users"></a>Abfragen für bestimmte Benutzer 
+Untersuchen Sie verschiedene Benutzergruppen, indem Sie die Abfrageoptionen oben im Benutzertools anpassen:
 
-Untersuchen Sie verschiedene Benutzergruppen, indem Sie die Abfrageoptionen oben im Benutzertools anpassen: 
-
-* Verwendet von: Wählen Sie benutzerdefinierte Ereignisse und Seitenansichten. 
-* Während: Wählen Sie einen Zeitbereich. 
-* Von: Wählen Sie, wie Datenbuckets erstellt werden, entweder anhand einer Zeitspanne oder einer anderen Eigenschaft, z.B. Browser oder Ort. 
+* Anzeigen: Wählen Sie eine Kohorte von Benutzern für die Analyse aus.
+* Verwendet von: Wählen Sie benutzerdefinierte Ereignisse und Seitenansichten.
+* Während: Wählen Sie einen Zeitbereich.
+* Von: Wählen Sie, wie Datenbuckets erstellt werden, entweder anhand einer Zeitspanne oder einer anderen Eigenschaft, z.B. Browser oder Ort.
 * Teilen nach: Wählen Sie eine Eigenschaft, anhand derer die Daten aufgeteilt oder segmentiert werden. 
 * Filter hinzufügen: Beschränken Sie die Abfrage auf bestimmte Benutzer, Sitzungen oder Ereignisse basierend auf deren Eigenschaften, z.B. Browser oder Ort. 
  
 ## <a name="saving-and-sharing-reports"></a>Speichern und Freigeben von Berichten 
-Sie können Benutzerberichte entweder privat nur für Sie selbst im Abschnitt „Meine Berichte“ oder im Abschnitt „Freigegebene Berichte“ für alle Benutzer speichern, die Zugriff auf diese Application Insights-Ressource haben.  
- 
-Wählen Sie beim Speichern eines Berichts oder beim Bearbeiten seiner Eigenschaften die Option „Aktueller relativer Zeitbereich“ aus, damit der gespeicherte Bericht rückwirkend für einen bestimmten Zeitraum fortlaufend Daten aktualisiert.  
- 
-Wählen Sie „Aktueller absoluter Zeitbereich“ um einen Bericht mit einem festen Satz von Daten zu speichern. Beachten Sie, dass Daten in Application Insights nur 90 Tage gespeichert werden, d.h. ein Bericht mit absolutem Zeitbereich wird nach mehr als 90 Tagen nach der Speicherung leer angezeigt. 
- 
-## <a name="example-instances"></a>Beispielinstanzen
+Sie können Benutzerberichte entweder privat nur für Sie selbst im Abschnitt „Meine Berichte“ oder im Abschnitt „Freigegebene Berichte“ für alle Benutzer speichern, die Zugriff auf diese Application Insights-Ressource haben.
 
-Der Abschnitt mit Beispielinstanzen zeigt Informationen zu einigen einzelnen Benutzern, Sitzungen oder Ereignissen, die der aktuellen Abfrage entsprechen. Das Berücksichtigen und Untersuchen des Verhaltens einzelner Personen neben Aggregaten kann Erkenntnisse über die tatsächliche Verwendung Ihrer App durch Benutzer bieten. 
- 
-## <a name="insights"></a>Erkenntnisse 
+Wenn Sie einen Link zu einem Benutzer-, Sitzungs oder Ereignisbericht teilen möchten, klicken Sie auf der Symbolleiste auf **Teilen**, und kopieren Sie den Link.
 
-Die Insights-Randleiste zeigt große Cluster von Benutzern, die gemeinsame Eigenschaften aufweisen. Diese Cluster können überraschende Trends bei der Verwendung Ihrer App durch Benutzer aufdecken. Beispielsweise, dass 40% der gesamten Nutzung Ihrer App auf Personen entfallen, die eine einzelne Funktion verwenden.  
+Wenn Sie eine Kopie der Daten eines Benutzer-, Sitzungs- oder Ereignisberichts teilen möchten, klicken Sie auf der Symbolleiste auf **Teilen** und anschließend auf das **Word**-Symbol, um ein Word-Dokument mit den Daten zu erstellen. Oder klicken Sie über dem Hauptdiagramm auf das Symbol für **Word**.
 
+## <a name="meet-your-users"></a>Informationen zu Benutzern
+
+Der Abschnitt **Meet your users** (Informationen zu Benutzern) enthält Informationen zu fünf Beispielbenutzern, die der aktuellen Abfrage entsprechen. Das Berücksichtigen und Untersuchen des Verhaltens einzelner Personen neben Aggregaten kann Erkenntnisse über die tatsächliche Verwendung Ihrer App durch Benutzer bieten.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
 - Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
     - [Trichter](usage-funnels.md)
@@ -72,4 +69,3 @@ Die Insights-Randleiste zeigt große Cluster von Benutzern, die gemeinsame Eigen
     - [Benutzerabläufe](app-insights-usage-flows.md)
     - [Arbeitsmappen](app-insights-usage-workbooks.md)
     - [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
-

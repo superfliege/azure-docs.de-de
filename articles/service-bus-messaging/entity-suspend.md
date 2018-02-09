@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: 09aee1ba9ec3ce72732cb1f60c9a840ffc4beb2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1984b113f695107f8d4d80e5bbf25c7dc39d13f6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Anhalten und Reaktivieren von Messagingentitäten (deaktiviert)
 
@@ -31,7 +31,7 @@ Im Portal ermöglicht der Abschnitt **Eigenschaften** für die entsprechende Ent
 
 ![][1]
 
-Das Portal ermöglicht nur das vollständige Deaktivieren von Warteschlangen. Sie können ebenfalls die Vorgänge „Senden“ und „Empfangen“ separat deaktivieren, indem Sie die Service Bus-API [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) im .NET Framework SDK oder eine Azure Resource Manager-Vorlage über die Azure-CLI oder Azure PowerShell verwenden.
+Das Portal ermöglicht nur das vollständige Deaktivieren von Warteschlangen. Sie können die Vorgänge „Senden“ und „Empfangen“ auch separat deaktivieren, indem Sie die [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-APIs von Service Bus im .NET Framework SDK oder mit einer Azure Resource Manager-Vorlage über die Azure CLI oder Azure PowerShell verwenden.
 
 ## <a name="suspension-states"></a>Anhaltezustände
 
@@ -56,7 +56,7 @@ Set-AzureRmServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName m
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen:
+Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Themen:
 
 * [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)

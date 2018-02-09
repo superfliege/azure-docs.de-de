@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: 95abba4fd293e2d04a58f0d07f955aca808434b7
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 76a3096595d07916159b3a50da0793c653a490a0
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Problembehandlung für allgemeine Probleme in Azure Automation 
 Dieser Artikel bietet Hilfe für die Problembehandlung häufiger Fehler, die in Azure Automation auftreten können, und enthält mögliche Lösungen zum Beheben dieser Fehler.
@@ -196,11 +196,19 @@ Sie können die Abfrage für diese Lösung löschen und die Lösung erneut anwen
 
 **Ursache des Fehlers:**
 
-Dieser Fehlercode bedeutet, dass bei der Bereitstellung ein Fehler aufgrund einer Richtlinienverletzung aufgetreten ist.
+Dieser Fehlercode bedeutet, dass bei der Bereitstellung ein Fehler aufgrund einer oder mehrerer Richtlinienverletzungen aufgetreten ist.
 
 **Tipps zur Problembehandlung:**
 
-Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zu der Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie unter [Übersicht zu Azure-Richtlinien](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
+Für eine erfolgreiche Bereitstellung der Lösung müssen Sie eine Änderung der angegebenen Richtlinie in Betracht ziehen. Da viele verschiedene Richtlinientypen definiert werden können, hängen die erforderlichen Änderungen von der Richtlinie ab, gegen die verstoßen wurde. Beispiel: Wenn eine Richtlinie für eine Ressourcengruppe festgelegt wurde, die die Berechtigung zum Ändern der Inhalte bestimmter Ressourcentypen in dieser Ressourcengruppe verweigert hat, können Sie beispielsweise einen der folgenden Schritte ausführen:
+
+*   Entfernen Sie die Richtlinie vollständig.
+* Versuchen Sie, sie für eine andere Ressourcengruppe festzulegen.
+* Überarbeiten Sie die Richtlinie etwa wie folgt:
+   * Weisen Sie die Richtlinie einer bestimmten Ressource neu zu (etwa einem bestimmten Automation-Konto).
+   * Überarbeiten Sie die Gruppe der Ressourcen, zu deren Ablehnung diese Richtlinie konfiguriert wurde.
+
+Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zu der Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie unter [Was ist Azure Policy](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

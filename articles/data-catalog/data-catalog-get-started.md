@@ -13,20 +13,20 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: spelluru
-ms.openlocfilehash: a1d16cac19571c5802be081d6972e1f74f6dffe1
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d67f8871bbdd87e8a67057e6e8c5d4d770e5cad6
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Erste Schritte mit Azure Data Catalog
 Azure Data Catalog ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenassets von Unternehmen dient. Eine ausführliche Übersicht finden Sie unter [Was ist Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
 
 Dieses Tutorial dient als Starthilfe für Azure Data Catalog. In diesem Tutorial führen Sie die folgenden Verfahren durch:
 
-| Vorgehensweise | Beschreibung |
+| Vorgehensweise | BESCHREIBUNG |
 |:--- |:--- |
 | [Bereitstellen des Datenkatalogs](#provision-data-catalog) |In diesem Verfahren stellen Sie Azure Data Catalog bereit bzw. führen die Einrichtung dafür durch. Führen Sie diesen Schritt nur aus, wenn der Katalog nicht bereits eingerichtet wurde. Pro Organisation (Microsoft Azure Active Directory-Domäne) kann nur ein Datenkatalog bereitgestellt werden. Dies gilt auch, wenn Ihrem Azure-Konto mehrere Abonnements zugeordnet sind. |
 | [Registrieren von Datenassets](#register-data-assets) |In diesem Verfahren registrieren Sie Datenassets aus der AdventureWorks2014-Beispieldatenbank im Datenkatalog. Die Registrierung ist der Prozess des Extrahierens wichtiger struktureller Metadaten, z.B. Namen, Typen und Orte, aus der Datenquelle und des Kopierens dieser Metadaten in den Katalog. Die Datenquellen und ihre Daten bleiben an ihrem Ort, aber die Metadaten werden vom Katalog verwendet, um sie leichter ermittelbar und verständlich zu machen. |
@@ -94,7 +94,7 @@ Sie können nur einen Datenkatalog pro Organisation (Azure Active Directory-Dom�
     ![Azure Data Catalog – Tarif](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
 
 ### <a name="adventure-works-sample-database"></a>Adventure Works-Beispieldatenbank
-In diesem Tutorial registrieren Sie Datenassets (Tabellen) aus der AdventureWorks2014-Beispieldatenbank für das SQL Server-Datenbankmodul. Sie können aber jede unterstützte Datenquelle verwenden, wenn Sie lieber mit Daten arbeiten möchten, die Ihnen vertraut und für Ihre Rolle relevant sind. Eine Liste der unterstützten Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
+In diesem Tutorial registrieren Sie Datenassets (Tabellen) aus der AdventureWorks2014-Beispieldatenbank für die SQL Server-Datenbank-Engine. Sie können aber jede unterstützte Datenquelle verwenden, wenn Sie lieber mit Daten arbeiten möchten, die Ihnen vertraut und für Ihre Rolle relevant sind. Eine Liste der unterstützten Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
 
 ### <a name="install-the-adventure-works-2014-oltp-database"></a>Installieren der Adventure Works 2014 OLTP-Datenbank
 Die Adventure Works-Datenbank unterstützt Standardszenarien zur Onlinetransaktionsverarbeitung für einen fiktiven Fahrradhersteller (Adventure Works Cycles), z.B. für die Bereiche Produkte, Vertrieb und Einkauf. In diesem Tutorial registrieren Sie Informationen zu Produkten in Azure Data Catalog.
@@ -103,7 +103,7 @@ So installieren Sie die Adventure Works-Beispieldatenbank:
 
 1. Laden Sie [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) von CodePlex herunter.
 2. Folgen Sie zum Wiederherstellen der Datenbank auf Ihrem Computer den Anweisungen unter [Wiederherstellen einer Datenbanksicherung (SQL Server Management Studio)](http://msdn.microsoft.com/library/ms177429.aspx), oder führen Sie die folgenden Schritte aus:
-   1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit dem SQL Server-Datenbankmodul her.
+   1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit der SQL Server-Datenbank-Engine her.
    2. Klicken Sie mit der rechten Maustaste auf **Datenbanken**, und klicken Sie anschließend auf **Datenbank wiederherstellen**.
    3. Klicken Sie unter **Datenbank wiederherstellen** für **Quelle** auf die Option **Gerät** und dann auf **Durchsuchen**.
    4. Klicken Sie unter **Sicherungsmedien auswählen** auf **Hinzufügen**.

@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: overview
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 0bd3d7a9961e7a095684262ae1031f5a3ac0c3fb
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 393f2dfa29b930622a37b8ad90ee17b794c70aeb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -42,7 +42,7 @@ Azure Migrate bietet Folgendes:
 
 ## <a name="what-do-i-need-to-pay-for"></a>Für was muss ich zahlen?
 
-Azure Migrate ist ohne Aufpreis erhältlich. Während der öffentlichen Vorschauphase fallen aber für die Nutzung der Funktionen zur Abhängigkeitsvisualisierung zusätzliche Kosten an. Zur Unterstützung der [Abhängigkeitsvisualisierung](concepts-dependency-visualization.md) erstellt Azure Migrate standardmäßig einen Log Analytics-Arbeitsbereich. Wenn Sie die Abhängigkeitsvisualisierung nutzen oder den Arbeitsbereich außerhalb von Azure Migrate verwenden, werden Ihnen die Kosten für den Einsatz des Arbeitsbereichs berechnet. [Hier finden Sie weitere Informationen zu den Kosten](https://azure.microsoft.com/en-us/pricing/details/insight-analytics/). Wenn der Dienst allgemein verfügbar wird, fallen für die Nutzung der Funktionen zur Abhängigkeitsvisualisierung keine Kosten an.
+Weitere Informationen zu den Preisen von Azure Migrate finden Sie [hier](https://azure.microsoft.com/en-in/pricing/details/azure-migrate/).
 
 
 ## <a name="whats-in-an-assessment"></a>Was umfasst eine Bewertung?

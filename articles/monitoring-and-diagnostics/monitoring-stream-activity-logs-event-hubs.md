@@ -1,5 +1,5 @@
 ---
-title: "Streamen des Azure-Aktivitätsprotokolls an Event Hubs | Microsoft Docs"
+title: "Streamen des Azure-Aktivitätsprotokolls an Event Hubs | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie das Azure-Aktivitätsprotokoll an Event Hubs streamen."
 author: johnkemnetz
 manager: orenr
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/06/2017
+ms.date: 01/30/2018
 ms.author: johnkem
-ms.openlocfilehash: f0e507cf2804edbcdd6c87f47b30defbc6a5eb94
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: c3c7ffe00263b8f76d89aa8d15fe2d502538527d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Streamen des Azure-Aktivitätsprotokolls an Event Hubs
 Das [**Azure-Aktivitätsprotokoll**](monitoring-overview-activity-logs.md) kann nahezu in Echtzeit an eine beliebige Anwendung gestreamt werden – entweder mithilfe der integrierten Exportoption des Portals oder durch Aktivieren der Service Bus-Regel-ID in einem Protokollprofil (über die Azure PowerShell-Cmdlets oder über die Azure-Befehlszeilenschnittstelle).
@@ -35,16 +35,17 @@ Das Aktivitätsprotokollstreaming kann entweder programmgesteuert oder über das
 Der Service Bus- oder Event Hub-Namespace muss sich nicht unter demselben Abonnement befinden, das Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
 
 ### <a name="via-azure-portal"></a>Verwenden des Azure-Portals
-1. Navigieren Sie über das Menü auf der linken Seite des Portals zum Blatt **Aktivitätsprotokoll** .
+1. Navigieren Sie zum Blatt **Aktivitätsprotokoll**, indem Sie die Suche in allen Diensten auf der linken Seite des Portals verwenden.
    
-    ![Navigation zum Aktivitätsprotokoll im Portal](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. Klicken Sie oben auf dem Blatt auf die Schaltfläche **Exportieren** .
+    ![Navigation zum Aktivitätsprotokoll im Portal](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
+2. Klicken Sie oben auf dem Blatt „Aktivitätsprotokoll“ auf die Schaltfläche **Exportieren**.
    
-    ![Schaltfläche „Exportieren“ im Portal](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
-3. Auf dem angezeigten Blatt können Sie die Regionen, für die Sie Ereignisse streamen möchten, und den Service Bus-Namespace auswählen, in dem eine Event Hub-Instanz zum Streamen dieser Ereignisse erstellt werden soll.
+    ![Schaltfläche „Exportieren“ im Portal](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+3. Auf dem angezeigten Blatt können Sie die Regionen, für die Sie Ereignisse streamen möchten, und den Service Bus-Namespace auswählen, in dem eine Event Hub-Instanz zum Streamen dieser Ereignisse erstellt werden soll. Wählen Sie **Alle Regionen anzeigen** aus.
    
-    ![Blatt zum Exportieren des Aktivitätsprotokolls](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
+    ![Blatt zum Exportieren des Aktivitätsprotokolls](./media/monitoring-stream-activity-logs-event-hubs/export-audit.png)
 4. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern. Die Einstellungen werden sofort auf Ihr Abonnement angewendet.
+5. Wenn Sie über mehrere Abonnements verfügen, sollten Sie diesen Vorgang wiederholen und alle Daten an denselben Event Hub senden.
 
 ### <a name="via-powershell-cmdlets"></a>Verwenden von PowerShell-Cmdlets
 Falls bereits ein Protokollprofil vorhanden ist, müssen Sie dieses zuerst entfernen.
@@ -53,8 +54,10 @@ Falls bereits ein Protokollprofil vorhanden ist, müssen Sie dieses zuerst entfe
 2. Falls ja, entfernen Sie es mithilfe von `Remove-AzureRmLogProfile` .
 3. Verwenden Sie `Set-AzureRmLogProfile`, um ein Profil zu erstellen:
 
-```
+```powershell
+
 Add-AzureRmLogProfile -Name my_log_profile -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+
 ```
 
 Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden Format: {Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}. Beispiel: 
@@ -66,7 +69,7 @@ Falls bereits ein Protokollprofil vorhanden ist, müssen Sie dieses zuerst entfe
 2. Falls ja, entfernen Sie es mithilfe von `azure insights logprofile delete` .
 3. Verwenden Sie `azure insights logprofile add` , um ein Profil zu erstellen:
 
-```
+```azurecli-interactive
 azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
 ```
 

@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: a88b5da8fa504e0528caa7fa212d4cec26d1cf66
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: 0dd3533ab1556b334c09ba69d096b06c8be85cc8
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard
 
@@ -41,7 +41,7 @@ Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen N
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos  
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
 2. Klicken Sie im Portal im Navigationsbereich auf der linken Seite auf **Neu**, **Storage** und **Speicherkonto**.  
 3. Füllen Sie die Felder im Fenster „Speicherkonto“ aus, und klicken Sie dann auf **Erstellen**.
 

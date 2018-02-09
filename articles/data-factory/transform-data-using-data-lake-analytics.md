@@ -3,7 +3,7 @@ title: "Transformieren von Daten mit dem U-SQL-Skript – Azure | Microsoft-Doku
 description: "Erläutert die Datenverarbeitung oder -transformation durch Ausführen von U-SQL-Skripts für einen Azure Data Lake Analytics-Computedienst."
 services: data-factory
 documentationcenter: 
-author: shengcmsft
+author: nabhishek
 manager: jhubbard
 editor: spelluru
 ms.service: data-factory
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 7800329e7f56d604c7911d3997fa76a0fac91664
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.date: 01/29/2018
+ms.author: abnarain
+ms.openlocfilehash: 4ae54bfda21d06d3d6ec963aaa17eba2b6e04de3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,17 +66,17 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
     "properties": {
         "type": "AzureDataLakeAnalytics",
         "typeProperties": {
-            "accountName": "adftestaccount",
-            "dataLakeAnalyticsUri": "azuredatalakeanalytics URI",
-            "servicePrincipalId": "service principal id",
+            "accountName": "<account name>",
+            "dataLakeAnalyticsUri": "<azure data lake analytics URI>",
+            "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
-                "value": "service principal key",
+                "value": "<service principal key>",
                 "type": "SecureString"
             },
-            "tenant": "tenant ID",
+            "tenant": "<tenant ID>",
             "subscriptionId": "<optional, subscription id of ADLA>",
             "resourceGroupName": "<optional, resource group name of ADLA>"
-        }
+        },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
@@ -96,12 +96,12 @@ Der folgende JSON-Ausschnitt definiert eine Pipeline mit einer U-SQL-Aktivität 
     "description": "description",
     "type": "DataLakeAnalyticsU-SQL",
     "linkedServiceName": {
-        "referenceName": "AzureDataLakeAnalyticsLinkedService",
+        "referenceName": "<linked service name of Azure Data Lake Analytics>",
         "type": "LinkedServiceReference"
     },
     "typeProperties": {
         "scriptLinkedService": {
-            "referenceName": "LinkedServiceofAzureBlobStorageforscriptPath",
+            "referenceName": "<linked service name of Azure Data Lake Store or Azure Storage which contains the U-SQL script>",
             "type": "LinkedServiceReference"
         },
         "scriptPath": "scripts\\kona\\SearchLogProcessing.txt",
@@ -124,11 +124,11 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 | type                | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **DataLakeAnalyticsU-SQL**. | Ja      |
 | linkedServiceName   | Mit Azure Data Lake Analytics verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  |Ja       |
 | scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Ja      |
-| scriptLinkedService | Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. | Ja      |
+| scriptLinkedService | Verknüpfter Dienst, der eine Verknüpfung mit der **Azure Data Lake Store**- oder **Azure Storage**-Instanz herstellt, die das Skript für die Data Factory enthält. | Ja      |
 | degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein        |
 | priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein        |
-| Parameter          | Parameter für das U-SQL-Skript          | Nein        |
-| runtimeVersion      | Die Runtime-Version der zu verwendenden U-SQL-Engine | Nein        |
+| Parameter          | Parameter, die an das U-SQL-Skript übergeben werden sollen.    | Nein        |
+| runtimeVersion      | Die Runtimeversion der zu verwendenden U-SQL-Engine. | Nein        |
 | compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen: **Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen ausgeführt. **Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw. **SingleBox:** Es wird die vollständige Kompilierung ausgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist. Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. | Nein  |
 
 Die von Data Factory übermittelte Skriptdefinition finden Sie unter [Skriptdefinition „SearchLogProcessing.txt“](#sample-u-sql-script). 
@@ -180,12 +180,12 @@ Anstelle von hartcodierten Werten können dynamische Parameter verwendet werden.
 
 ```json
 "parameters": {
-    "in": "$$Text.Format('/datalake/input/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)",
-    "out": "$$Text.Format('/datalake/output/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)"
+    "in": "/datalake/input/@{formatDateTime(pipeline().parameters.WindowStart,'yyyy/MM/dd')}/data.tsv",
+    "out": "/datalake/output/@{formatDateTime(pipeline().parameters.WindowStart,'yyyy/MM/dd')}/result.tsv"
 }
 ```
 
-In diesem Fall werden die Eingabedateien weiterhin aus dem Ordner „/datalake/input“ abgerufen und die Ausgabedateien im Ordner „datalake/output“ generiert. Die Dateinamen sind dynamisch und basieren auf der Startzeit des Slices.  
+In diesem Fall werden die Eingabedateien weiterhin aus dem Ordner „/datalake/input“ abgerufen und die Ausgabedateien im Ordner „datalake/output“ generiert. Die Dateinamen sind dynamisch und basieren auf dem Start des Zeitfensters, der übergeben wird, wenn die Pipeline ausgelöst wird.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden: 

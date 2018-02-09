@@ -3,7 +3,7 @@ title: Azure Stack-Update 1711 | Microsoft-Dokumentation
 description: "Erfahren Sie, was in Update 1711 für integrierte Azure Stack-Systeme enthalten ist, welche bekannten Probleme es gibt und wo das Update heruntergeladen werden kann."
 services: azure-stack
 documentationcenter: 
-author: andredm7
+author: brenduns
 manager: femila
 editor: 
 ms.assetid: 2b66fe05-3655-4f1a-9b30-81bd64ba0013
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
-ms.author: andredm
-ms.openlocfilehash: 578d17bcfbb7e12c9855132772c2068a5cdf1f62
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.date: 01/31/2018
+ms.author: brenduns
+ms.openlocfilehash: 3b3f6d66d8d5a095ff839195ccf718a9fa085527
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-1711-update"></a>Azure Stack-Update 1711
 
@@ -62,7 +62,7 @@ Dieses Update enthält die folgenden Verbesserungen und Fehlerbehebungen für Az
 #### <a name="windows-server-2016-new-features-and-fixes"></a>Windows Server 2016 – neue Features und Fehlerbehebungen
 
 - [14. November 2017 – KB4048953 (OS Build 14393.1884)](https://support.microsoft.com/help/4048953)
- 
+
 ### <a name="known-issues-with-the-update-process"></a>Bekannte Probleme mit dem Updateprozess
 
 Dieser Abschnitt enthält bekannte Probleme, die bei der Installation von Update 1711 auftreten können.
@@ -97,7 +97,7 @@ Dieser Abschnitt enthält bekannte Probleme, die für Build **20171201.3** nach 
 
    - Ggf. wird oben in der Liste eine leere Zeile angezeigt. Es sollte trotzdem möglich sein, ein Element auf normale Weise auszuwählen.
    - Wenn die Dropdownliste mit den Elementen kurz ist, ist es ggf. nicht möglich, die Elementnamen anzuzeigen.
-   - Wenn Sie über mehrere Benutzerabonnements verfügen, kann die Dropdownliste für die Ressourcengruppen leer sein. 
+   - Wenn Sie über mehrere Benutzerabonnements verfügen, kann die Dropdownliste für die Ressourcengruppen leer sein.
 
         > [!NOTE]
         > Zum Umgehen der beiden letztgenannten Probleme können Sie den Namen des Abonnements oder der Ressourcengruppe eingeben (falls bekannt), oder Sie können stattdessen PowerShell verwenden.
@@ -118,18 +118,18 @@ Dieser Abschnitt enthält bekannte Probleme, die für Build **20171201.3** nach 
 - Sie können eine VM-Verfügbarkeitsgruppe nur mit einer Fehlerdomäne und einer Updatedomäne konfigurieren.
 - Es ist keine Marketplace-Benutzeroberfläche zum Erstellen von VM-Skalierungsgruppen vorhanden. Sie können eine Skalierungsgruppe erstellen, indem Sie eine Vorlage verwenden.
 - Die Skalierungseinstellungen für Skalierungsgruppen für virtuelle Computer sind im Portal nicht verfügbar. Dieses Problem können Sie umgehen, indem Sie [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) verwenden. Aufgrund der Versionsunterschiede bei PowerShell müssen Sie den `-Name`-Parameter statt des `-VMScaleSetName`-Parameters verwenden.
- 
+
 #### <a name="networking"></a>Netzwerk
 - Sie können im Portal keinen Lastenausgleich mit einer öffentlichen IP-Adresse erstellen. Zum Umgehen dieses Problems können Sie den Lastenausgleich mit PowerShell erstellen.
 - Beim Erstellen eines Netzwerklastenausgleichs müssen Sie eine NAT-Regel (Network Address Translation, Netzwerkadressübersetzung) erstellen. Andernfalls wird ein Fehler ausgegeben, wenn Sie versuchen, eine NAT-Regel hinzufügen, nachdem der Lastenausgleich erstellt wurde.
 - Sie können die Zuordnung einer öffentlichen IP-Adresse zu einem virtuellen Computer nicht aufheben, nachdem der virtuelle Computer erstellt und dieser IP-Adresse zugeordnet wurde. Die Aufhebung der Zuordnung war scheinbar erfolgreich, die zuvor zugewiesene öffentliche IP-Adresse bleibt dem ursprünglichen virtuellen Computer jedoch zugeordnet. Dieses Verhalten tritt auch dann auf, wenn Sie die IP-Adresse einem neuen virtuellen Computer neu zuordnen (gewöhnlich als *VIP-Austausch* bezeichnet). Alle künftigen Versuche, eine Verbindung über diese IP-Adresse herzustellen, führen dazu, dass eine Verbindung mit dem ursprünglich zugeordneten virtuellen Computer (und nicht mit dem neuen) hergestellt wird. Derzeit müssen Sie ausschließlich neue öffentliche IP-Adressen für die Erstellung neuer virtueller Computer verwenden.
 - Azure Stack-Benutzer können möglicherweise VNETs oder Netzwerksicherheitsgruppen nicht bereitstellen, löschen oder ändern. Dieses Problem tritt in erster Linie bei nachfolgenden Updateversuchen desselben Pakets auf. Die Ursache ist ein Packproblem beim Update, das derzeit geprüft wird.
 - Der interne Lastenausgleich (ILB) behandelt MAC-Adressen für Back-End-VMs nicht ordnungsgemäß, wodurch Linux-Instanzen gestört werden.
- 
+
 #### <a name="sqlmysql"></a>SQL/MySQL
-- Es kann bis zu einer Stunde dauern, bevor Mandanten Datenbanken in einer neuen SQL SKU oder MySQL SKU erstellen können. 
+- Es kann bis zu einer Stunde dauern, bevor Mandanten Datenbanken in einer neuen SQL SKU oder MySQL SKU erstellen können.
 - Die direkte Erstellung von Elementen auf SQL- und MySQL-Hostservern, die nicht vom Ressourcenanbieter durchgeführt wird, wird nicht unterstützt und kann zu einem Konfliktzustand führen.
- 
+
 #### <a name="app-service"></a>App Service
 - Ein Benutzer muss den Speicherressourcenanbieter vor dem Erstellen seiner ersten Azure-Funktion im Abonnement registrieren.
 
@@ -149,7 +149,7 @@ In Umgebungen, die in Azure Active Directory-Verbunddienste (AD FS) bereitgestel
 - **Das Aktivieren der Sicherung auf ASDK dient nur zu Testzwecken.**  
   Infrastruktursicherungen können zum Wiederherstellen von Lösungen mit mehreren Knoten verwendet werden. Sie können die Infrastruktursicherung auf ASDK aktivieren, es besteht aber keine Möglichkeit, die Wiederherstellung zu testen.
 
-Weitere Informationen finden Sie unter [Sicherung und Datenwiederherstellung für Azure Stack mit dem Dienst zur Infrastruktursicherung](C:\Git\MS\azure-docs-pr\articles\azure-stack\azure-stack-backup-infrastructure-backup.md).
+Weitere Informationen finden Sie unter [Sicherung und Datenwiederherstellung für Azure Stack mit dem Dienst für die Infrastruktursicherung](azure-stack-backup-infrastructure-backup.md).
 
 ## <a name="download-the-update"></a>Herunterladen des Updates
 

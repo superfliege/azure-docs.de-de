@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2017
 ms.author: dobett
-ms.openlocfilehash: a3ebda292d16b2a420fb6d586f18201e34efffa7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1b34e579f2ba40f4d77f7a3ba1841f59f795d292
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Senden von C2D-Nachrichten von IoT Hub
 
@@ -41,12 +41,12 @@ Wenn der IoT Hub-Dienst eine Nachricht an ein Gerät sendet, legt der Dienst den
 
 Ein Gerät kann auch Folgendes durchführen:
 
-* *Ablehnen* der Nachricht: IoT Hub versetzt sie in den Status **Unzustellbar** . Geräte, die über das MQTT-Protokoll eine Verbindung herstellen, können C2D-Nachrichten nicht ablehnen.
+* *Ablehnen* der Nachricht: IoT Hub versetzt sie in den Status **Unzustellbar**. Geräte, die über das MQTT-Protokoll eine Verbindung herstellen, können C2D-Nachrichten nicht ablehnen.
 * *Verwerfen* der Nachricht: IoT Hub platziert die Nachricht wieder in der Warteschlange mit dem Status **Zur Warteschlange hinzugefügt**. Geräte, die über das MQTT-Protokoll eine Verbindung herstellen, können C2D-Nachrichten nicht ablehnen.
 
 Bei der Nachrichtenverarbeitung durch den Thread könnte ein Fehler auftreten, ohne dass IoT Hub hierüber benachrichtigt wird. In diesem Fall werden Nachrichten automatisch vom Status **Nicht sichtbar** zurück in den Status **Enqueued** (Zur Warteschlange hinzugefügt) versetzt, wenn ein *Timeout für die Sichtbarkeit (oder Sperrung)* abgelaufen ist. Der Standardwert dieses Timeouts ist eine Minute.
 
-Die Eigenschaft **Anzahl maximaler Zustellungen** in IoT Hub bestimmt, wie oft eine Nachricht zwischen den Statuswerten **In Warteschlange eingereiht** und **Nicht sichtbar** wechseln kann. Nachdem diese Anzahl überschritten wurde, legt IoT Hub den Status der Nachricht auf **Unzustellbar**fest. Ebenso kennzeichnet IoT Hub eine Nachricht als **Unzustellbar**, wenn ihre Gültigkeitsdauer abgelaufen ist (siehe [Gültigkeitsdauer][lnk-ttl]).
+Die Eigenschaft **Anzahl maximaler Zustellungen** in IoT Hub bestimmt, wie oft eine Nachricht zwischen den Statuswerten **In Warteschlange eingereiht** und **Nicht sichtbar** wechseln kann. Nachdem diese Anzahl überschritten wurde, legt IoT Hub den Status der Nachricht auf **Unzustellbar** fest. Ebenso kennzeichnet IoT Hub eine Nachricht nach deren Ablaufzeitpunkt als **Unzustellbar** (siehe [Gültigkeitsdauer][lnk-ttl]).
 
 In [Senden von C2D-Nachrichten mit IoT Hub][lnk-c2d-tutorial] erfahren Sie, wie Sie C2D-Nachrichten über IoT Hub aus der Cloud senden und auf einem Gerät empfangen.
 
@@ -75,15 +75,15 @@ Beim Senden einer C2D-Nachricht kann der Dienst das Übermitteln von Feedback au
 
 | Ack-Eigenschaft | Verhalten |
 | ------------ | -------- |
-| **positive** | Wenn die C2D-Nachricht den Status **Abgeschlossen** erreicht, generiert IoT Hub eine Feedbacknachricht. |
-| **negative** | Wenn die C2D-Nachricht den Status **Unzustellbar** erreicht, generiert IoT Hub eine Feedbacknachricht. |
+| **positive** | Wenn die Cloud-zu-Gerät-Nachricht den Status **Abgeschlossen** erreicht, generiert IoT Hub eine Feedbacknachricht. |
+| **negative** | Wenn die Cloud-zu-Gerät-Nachricht den Status **Unzustellbar** erreicht, generiert IoT Hub eine Feedbacknachricht. |
 | **full**     | IoT Hub generiert in beiden Fällen eine Feedbacknachricht. |
 
 Wenn **Ack** auf **Voll** festgelegt ist und Sie keine Feedbacknachricht erhalten, bedeutet dies, dass die Feedbacknachricht abgelaufen ist. Der Dienst kann nicht wissen, was mit der ursprünglichen Nachricht geschehen ist. In der Praxis sollte ein Dienst sicherstellen, dass Feedback verarbeitet werden kann, bevor es abläuft. Die maximale Ablaufzeit beträgt zwei Tage, sodass ausreichend Zeit verbleibt, um den Dienst wieder zu starten, wenn ein Fehler auftritt.
 
 Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt (**/messages/servicebound/feedback**). Die Semantik für den Empfang von Feedback stimmt mit der für C2D-Nachrichten überein und weist den gleichen [Nachrichtenlebenszyklus][lnk-lifecycle] auf. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist:
 
-| Eigenschaft     | Beschreibung |
+| Eigenschaft     | BESCHREIBUNG |
 | ------------ | ----------- |
 | EnqueuedTime | Zeitstempel, der die Erstellung der Nachricht angibt. |
 | UserId       | `{iot hub name}` |
@@ -91,12 +91,12 @@ Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Fee
 
 Der Nachrichtenkörper ist ein serialisiertes JSON-Array aus Datensätzen, von denen jeder die folgenden Eigenschaften aufweist:
 
-| Eigenschaft           | Beschreibung |
+| Eigenschaft           | BESCHREIBUNG |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Zeitstempel, der den Zeitpunkt des Nachrichtenergebnisses angibt. Diese Eigenschaft kann beispielsweise angeben, wann das Gerät abgeschlossen wurde oder die Nachricht abgelaufen ist. |
 | OriginalMessageId  | **MessageId** der C2D-Nachricht, auf die sich das Feedback bezieht. |
 | StatusCode         | Erforderliche Zeichenfolge. In von IoT Hub erzeugten Feedbacknachrichten verwendet. <br/> 'Success' <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> 'Rejected' <br/> 'Purged' |
-| Beschreibung        | Zeichenfolgenwerte für **StatusCode**. |
+| BESCHREIBUNG        | Zeichenfolgenwerte für **StatusCode**. |
 | deviceId           | **DeviceId** des Zielgeräts für die C2D-Nachricht, auf die sich das Feedback bezieht. |
 | DeviceGenerationId | **DeviceGenerationId** des Zielgeräts für die C2D-Nachricht, auf die sich das Feedback bezieht. |
 
@@ -125,7 +125,7 @@ Das folgende Beispiel zeigt den Text einer Feedbacknachricht.
 
 Jede IoT Hub-Instanz legt die folgenden Konfigurationsoptionen für das C2D-Messaging offen:
 
-| Eigenschaft                  | Beschreibung | Bereich und Standardwert |
+| Eigenschaft                  | BESCHREIBUNG | Bereich und Standardwert |
 | ------------------------- | ----------- | ----------------- |
 | defaultTtlAsIso8601       | Standardmäßige Gültigkeitsdauer für C2D-Nachrichten. | ISO_8601-Intervall bis 2D (mindestens 1 Minute). Standardwert: 1 Stunde. |
 | maxDeliveryCount          | Maximale Zustellungsanzahl für C2D-Gerätewarteschlangen pro Gerät. | 1 bis 100. Standardwert: 10 |

@@ -1,5 +1,5 @@
 ---
-title: "Entwicklerhandbuch für Azure IoT Hub | Microsoft Docs"
+title: "Entwicklerhandbuch für Azure IoT Hub | Microsoft-Dokumentation"
 description: "Das Azure IoT Hub-Entwicklerhandbuch umfasst Erläuterungen zu Endpunkten, Sicherheit, Identitätsregistrierung, Geräteverwaltung, direkten Methoden, Gerätezwillingen, Dateiuploads, Aufträgen, die Abfragesprache von IoT Hub und Messaging."
 services: iot-hub
 documentationcenter: .net
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 27b296092335ec5b95e8f259756aaf9572da1c16
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 37f9da7dcc8dd527fe0bfbf2fbcc40a3ba0e8a1c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Entwicklungsleitfaden für Azure IoT Hub
 
@@ -42,10 +42,10 @@ Dieses IoT Hub-Entwicklerhandbuch umfasst die folgenden Artikel:
   * [Senden von C2D-Nachrichten von IoT Hub][devguide-messages-c2d]
   * [Erstellen und Lesen von IoT Hub-Nachrichten][devguide-format]
 * Unter [Upload files from a device][devguide-upload] (Hochladen von Dateien von einem Gerät) wird beschrieben, wie Sie Dateien von einem Gerät hochladen können. Dieser Artikel bietet auch Informationen zu Themen wie Benachrichtigungen, die beim Hochladevorgang gesendet werden können.
-* Unter [Manage device identities in IoT Hub][devguide-identities] (Verwalten von Geräteidentitäten in IoT Hub) wird beschrieben, welche Informationen in jeder IoT Hub-Identitätsregistrierung gespeichert werden und wie Sie auf die Informationen zugreifen und sie ändern können.
+* Unter [Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz][devguide-identities] wird beschrieben, welche Informationen in jeder IoT Hub-Identitätsregistrierung gespeichert werden. Zudem wird im Artikel beschrieben, wie Sie darauf zugreifen und diese bearbeiten können.
 * Unter [Verwalten des Zugriffs auf IoT Hub][devguide-security] wird das Sicherheitsmodell beschrieben, mit dem sowohl für Geräte als auch für Cloudkomponenten Zugriff auf IoT Hub-Funktionalität gewährt werden. Der Artikel enthält Informationen zum Verwenden von Token und X.509-Zertifikaten sowie Details zu den Berechtigungen, die Sie erteilen können.
-* Unter [Grundlegendes zu Gerätezwillingen – Vorschau][devguide-device-twins] wird das Konzept von *Gerätezwillingen* und die damit verfügbar gemachte Funktionalität beschrieben, z.B. das Synchronisieren eines Geräts mit seinem Gerätezwilling. Der Artikel enthält Informationen zu den Daten, die in einem Gerätezwilling gespeichert sind.
-* Unter [Aufrufen einer direkten Methode auf einem Gerät (Vorschau)][devguide-directmethods] werden der Lebenszyklus einer direkten Methode beschrieben, und es wird erläutert, wie Methoden auf einem Gerät von Ihrer Back-End-App aufgerufen und die direkte Methode auf Ihrem Gerät verarbeitet wird.
+* [Verwenden von Gerätezwillingen zum Synchronisieren von Status und Konfigurationen][devguide-device-twins] beschreibt das Konzept der *Gerätezwillinge*. Zudem finden Sie in diesem Artikel auch Informationen zur Funktionalität von Gerätezwillingen, z.B. zur Synchronisierung eines Geräts mit dessen Gerätezwilling. Der Artikel enthält Informationen zu den Daten, die in einem Gerätezwilling gespeichert sind.
+* [Aufrufen einer direkten Methode auf einem Gerät][devguide-directmethods] beschreibt den Lebenszyklus einer direkten Methode. Der Artikel beschreibt, wie Sie Methoden für ein Gerät aus Ihrer Back-End-App aufrufen und die direkte Methode für Ihr Gerät anwenden.
 * Unter [Schedule jobs on multiple devices][devguide-jobs] (Planen von Aufträgen auf mehreren Geräten) wird beschrieben, wie Sie Aufträge auf mehreren Geräten planen können. Der Artikel erläutert das Übermitteln von Aufträgen zum Erledigen von Aufgaben wie dem Ausführen einer direkten Methode und Aktualisieren eines Geräts mithilfe eines Gerätezwillings. Außerdem wird erklärt, wie der Status eines Auftrags abgefragt wird.
 * In [Referenz – Auswählen eines Kommunikationsprotokolls][devguide-protocol] werden die Kommunikationsprotokolle beschrieben, die IoT Hub für die Gerätekommunikation unterstützt. Außerdem werden die Ports aufgeführt, die geöffnet werden müssen.
 * Unter [Reference - IoT Hub endpoints][devguide-endpoints] (Referenz – IoT Hub-Endpunkte) werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt. Außerdem wird beschrieben, wie Sie zusätzliche Endpunkte in Ihrem IoT-Hub erstellen können, und wie Sie mit einem Feldgateway die Konnektivität mit Ihren IoT Hub-Endpunkten in nicht standardmäßigen Szenarien aktivieren.

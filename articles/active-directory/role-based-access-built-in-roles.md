@@ -3,24 +3,23 @@ title: "Actions und NotActions – Rollenbasierte Zugriffssteuerung in Azure (RB
 description: "Dieses Thema beschreibt die integrierten Rollen der rollenbasierten Zugriffssteuerung (RBAC). Da die Rollen kontinuierlich hinzugefügt werden, ist es ratsam, die Dokumentation häufiger auf Aktualisierungen zu prüfen."
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: curtand
 manager: mtillman
 editor: 
-ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 06/28/2017
-ms.author: andredm
-ms.reviewer: 
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e7c563547f04a16a1059ed709d9ded25d60792f
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 01/30/2018
+ms.author: curtand
+ms.reviewer: rqureshi
+ms.custom: it-pro
+ms.openlocfilehash: 43a958129b3c86f5e7a596b992d793a600c46dfd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure umfasst die folgenden integrierten Rollen, die Benutzern, Gruppen und Diensten zugewiesen werden können. Die Definitionen integrierter Rollen können nicht geändert werden. Sie können jedoch [benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md) zur Anpassung an die spezifischen Anforderungen Ihrer Organisation erstellen.
@@ -68,7 +67,9 @@ In diesem Artikel werden nur die heute vorhandenen verschiedenen Rollen behandel
 | [Mitwirkender von Redis-Cache](#redis-cache-contributor) |Kann Redis-Caches verwalten |
 | [Mitwirkender von Zeitplanungsauftragssammlung](#scheduler-job-collections-contributor) |Kann Zeitplanungsauftragssammlungen verwalten |
 | [Mitwirkender von Suchdienst](#search-service-contributor) |Kann Suchdienste verwalten |
-| [Sicherheits-Manager](#security-manager) |Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Maschinen verwalten |
+| [Sicherheitsadministrator](#security-administrator) | Nur in Security Center: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen |
+| [Sicherheits-Manager](#security-manager) | Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Maschinen verwalten |
+| [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](#security-reader) | Nur in Security Center: Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen |
 | [Site Recovery-Mitwirkender](#site-recovery-contributor) | Kann Site Recovery im Recovery Services-Tresor verwalten |
 | [Site Recovery-Operator](#site-recovery-operator) | Kann Failover- und Failbackvorgänge für Site Recovery im Recovery Services-Tresor verwalten |
 | [Site Recovery-Leser](#site-recovery-reader) | Kann alle Site Recovery-Verwaltungsvorgänge anzeigen  |
@@ -506,21 +507,50 @@ Kann Suchdienste verwalten
 | Microsoft.Search/searchServices/* |Erstellen und Verwalten von Suchdiensten |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
+### <a name="security-administrator"></a>Sicherheitsadministrator
+Nur in Security Center: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen
+
+| **Aktionen** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |Lesen von Rollen und Rollenzuweisungen |
+| Microsoft.Authorization/policyAssignments/* | Erstellen und Verwalten von Richtlinienzuweisungen |
+| Microsoft.Authorization/policySetDefinitions/* | Erstellen und Verwalten von Richtliniensätzen |
+| Microsoft.Authorization/policyDefinitions/* | Erstellen und Verwalten von Richtliniendefinitionen |
+| Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
+| Microsoft.operationalInsights/workspaces/*/read | Anzeigen von Log Analytics-Daten |
+| Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
+| Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
+| Microsoft.Security/*/read | Lesen von Sicherheitskomponenten und -richtlinien |
+| Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
+
 ### <a name="security-manager"></a>Sicherheits-Manager
 Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Maschinen verwalten
 
 | **Aktionen** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Lesen von Rollen und Rollenzuweisungen |
-| Microsoft.ClassicCompute/*/read |Lesen von Konfigurationsinformationen zu klassischen virtuellen Compute-Computern |
-| Microsoft.ClassicCompute/virtualMachines/*/write |Schreiben der Konfiguration für virtuelle Computer |
+| Microsoft.ClassicCompute/*/read |Lesen von Konfigurationsinformationen zu klassischen virtuellen Computern |
+| Microsoft.ClassicCompute/virtualMachines/*/write |Schreiben der Konfiguration für klassische virtuelle Computer |
 | Microsoft.ClassicNetwork/*/read |Lesen von Konfigurationsinformationen zu klassischem Netzwerk |
-| Microsoft.Insights/alertRules/* |Erstellen und Verwalten von Warnungsregeln |
+| Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read |Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Security/* |Erstellen und Verwalten von Sicherheitskomponenten und -richtlinien |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
+
+### <a name="security-reader"></a>Benutzer mit Leseberechtigung für Sicherheitsfunktionen
+Nur in Security Center: Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen
+
+| **Aktionen** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |Lesen von Rollen und Rollenzuweisungen |
+| Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
+| Microsoft.operationalInsights/workspaces/*/read | Anzeigen von Log Analytics-Daten |
+| Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
+| Microsoft.Security/*/read | Lesen von Sicherheitskomponenten und -richtlinien |
+| Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
+| Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 
 ### <a name="site-recovery-contributor"></a>Site Recovery-Mitwirkender
 Kann alle Site Recovery-Verwaltungsaktionen verwalten, mit Ausnahme der Erstellung des Recovery Services-Tresors und der Zuweisung von Zugriffsrechten für andere Benutzer
@@ -872,3 +902,4 @@ Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sin
 * [Benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihren Zugriffsanforderungen erstellen.
 * [Erstellen eines Verlaufsberichts zu Zugriffsänderungen:](role-based-access-control-access-change-history-report.md)Verfolgen Sie Änderungen an Rollenzuweisungen in RBAC.
 * [Problembehandlung bei rollenbasierter Zugriffssteuerung:](role-based-access-control-troubleshooting.md)Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.
+* [Berechtigungen in Azure Security Center](../security-center/security-center-permissions.md)

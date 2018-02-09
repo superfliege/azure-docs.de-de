@@ -1,6 +1,6 @@
 ---
-title: Kopieren von Daten nach bzw. aus Azure Table Storage mit Data Factory | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Daten von unterstützten Quellspeichern mithilfe von Data Factory nach Azure Table Storage oder aus Table Storage in unterstützte Senkenspeicher kopiert werden."
+title: Kopieren von Daten nach und aus Azure Table Storage mit Data Factory | Microsoft-Dokumentation
+description: "Erfahren Sie, wie mithilfe von Data Factory Daten aus unterstützten Quellspeichern in Azure Table Storage oder aus Table Storage in unterstützte Senkenspeicher kopiert werden."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,45 +13,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 9aa0a1ed7bb07609e087e82d64f5f1c80bb590d9
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: fde85936760a167f1da2289ac1d18e97df7c9c04
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>Kopieren von Daten in eine oder aus einer Azure-Tabelle mithilfe von Azure Data Factory
+# <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-azure-table-connector.md)
+> * [Version 1 – allgemein verfügbar](v1/data-factory-azure-table-connector.md)
 > * [Version 2 – Vorschauversion](connector-azure-table-storage.md)
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in eine und von einer Azure-Tabelle zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten nach und aus Azure Table Storage zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (General Availability, GA) ist, lesen Sie [Azure Table Storage-Connector in V1](v1/data-factory-azure-table-connector.md).
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die Data Factory-Version 1 verwenden, die allgemein verfügbar ist, lesen Sie [Table Storage-Connector in Version 1](v1/data-factory-azure-table-connector.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in eine Azure-Tabelle bzw. Daten aus einer Azure-Tabelle in einen beliebigen unterstützten Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Zudem können Sie Daten aus jedem unterstützten Quelldatenspeicher nach Table Storage kopieren. Sie können auch Daten aus Table Storage in jeden unterstützten Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Der Azure-Tabellenconnector unterstützt insbesondere das Kopieren von Daten mithilfe der **Kontoschlüssel**- und **Dienst-SAS**-Authentifizierung (Shared Access Signature).
+Dieser Azure Table-Connector unterstützt insbesondere das Kopieren von Daten mithilfe der Authentifizierung sowohl per Kontoschlüssel als auch per Dienst-SAS (Shared Access Signature).
 
 ## <a name="get-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Azure Table Storage verwendet werden:
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Table Storage verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
-### <a name="using-account-key"></a>Verwenden des Kontoschlüssels
+### <a name="use-an-account-key"></a>Verwenden eines Kontoschlüssels
 
-Sie können mithilfe des Kontoschlüssels einen mit Azure Storage verknüpften Dienst erstellen, der der Data Factory globalen Zugriff auf Azure Storage gewährt. Folgende Eigenschaften werden unterstützt:
+Sie können mithilfe des Kontoschlüssels einen mit Azure Storage verknüpften Dienst erstellen. Dadurch hat die Data Factory weltweiten Zugriff auf Storage. Die folgenden Eigenschaften werden unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **AzureStorage** |Ja |
-| connectionString | Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. Legen Sie für dieses Feld „SecureString“ fest. |Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
+| type | Die type-Eigenschaft muss auf **AzureStorage** festgelegt werden. |Ja |
+| connectionString | Geben Sie für die connectionString-Eigenschaft die Informationen ein, die zum Herstellen einer Verbindung mit Azure Storage erforderlich sind. Legen Sie für dieses Feld „SecureString“ fest. |Ja |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel:**
 
@@ -74,26 +74,27 @@ Sie können mithilfe des Kontoschlüssels einen mit Azure Storage verknüpften D
 }
 ```
 
-### <a name="using-service-sas-authentication"></a>Verwenden der Dienst-SAS-Authentifizierung
+### <a name="use-service-shared-access-signature-authentication"></a>Verwenden der SAS-Authentifizierung (Shared Access Signature)
 
-Sie können mithilfe einer Shared Access Signature (SAS) auch einen verknüpften Azure Storage-Dienst erstellen, der der Data Factory einen beschränkten bzw. zeitgebundenen Zugriff auf alle oder bestimmte Ressourcen im Speicher gewährt.
+Sie können einen mit Storage verknüpften Dienst auch mithilfe einer Shared Access Signature erstellen. Dies ermöglicht der Data Factory eingeschränkten/zeitgebundenen Zugriff auf alle bzw. bestimmte Ressourcen im Speicher.
 
-Shared Access Signatures (SAS) bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie ermöglichen es Ihnen, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen, ohne Ihre Konto-Zugriffsschlüssel weitergeben zu müssen. Die SAS ist ein URI, dessen Abfrageparameter alle erforderlichen Informationen für den authentifizierten Zugriff auf eine Speicherressource enthalten. Für den Zugriff auf Speicherressourcen mit der SAS braucht der Client diese nur an den entsprechenden Konstruktor bzw. die entsprechende Methode zu übergeben. Weitere Informationen zu SAS finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie können diese verwenden, um einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu gewähren. Sie müssen die Zugriffsschlüssel für Ihr Konto nicht freigeben. Die SAS ist ein URI, dessen Abfrageparameter alle erforderlichen Informationen für den authentifizierten Zugriff auf eine Speicherressource enthalten. Um mit der SAS auf Speicherressourcen zuzugreifen, muss der Client diese nur an den entsprechenden Konstruktor bzw. die entsprechende Methode übergeben. Weitere Informationen zu Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!IMPORTANT]
-> Azure Data Factory unterstützt nur **Dienst-SAS**, nicht Konto-SAS. Unter [Typen von Shared Access Signatures](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) finden Sie ausführliche Informationen zu diesen beiden Typen und ihrer Erstellung. Bei der SAS-URL, die im Azure-Portal oder Storage-Explorer erstellt werden kann, handelt es sich um eine Konto-SAS. Diese wird nicht unterstützt.
+> Data Factory unterstützt jetzt nur Shared Access Signatures für Dienste, nicht für Konten. Weitere Informationen zu diesen beiden SAS-Arten und ihrer Erstellung finden Sie unter [Arten von Shared Access Signatures](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). Die im Azure-Portal oder im Azure Storage-Explorer generierte SAS-URL ist eine Konto-SAS, die nicht unterstützt wird.
 
 > [!TIP]
-> Sie können die folgenden PowerShell-Befehle ausführen, um eine Dienst-SAS für Ihr Speicherkonto zu generieren (ersetzen Sie die Platzhalter, und erteilen Sie die erforderliche Berechtigung): `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> Sie können die folgenden PowerShell-Befehle ausführen, um eine Dienst-SAS für Ihr Storage-Konto zu generieren. Ersetzen Sie die Platzhalter, und gewähren Sie die erforderliche Berechtigung.
+> `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Für die Verwendung der Dienst-SAS-Authentifizierung werden folgende Eigenschaften unterstützt:
+Für die Verwendung der Dienst-SAS-Authentifizierung werden folgende Eigenschaften unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **AzureStorage** |Ja |
-| sasUri | Geben Sie den Shared Access Signature-URI für Azure-Speicher-Ressourcen wie BLOB, Container oder Tabelle an. Legen Sie für dieses Feld „SecureString“ fest. |Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
+| type | Die type-Eigenschaft muss auf **AzureStorage** festgelegt werden. |Ja |
+| sasUri | Geben Sie den SAS-URI für die Storage-Ressourcen wie Blobs, Container oder Tabellen an. Legen Sie für dieses Feld „SecureString“ fest. |Ja |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder die selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel:**
 
@@ -116,22 +117,22 @@ Für die Verwendung der Dienst-SAS-Authentifizierung werden folgende Eigenschaft
 }
 ```
 
-Beim Erstellen eines **SAS-URI** sollten Sie folgende Punkte berücksichtigen:
+Berücksichtigen Sie beim Erstellen eines SAS-URIs die folgenden Aspekte:
 
-- Legen Sie für Objekte basierend darauf, wie der verknüpfte Dienst (Lesen, Schreiben, Lesen/Schreiben) in Ihrer Data Factory verwendet wird, geeignete Lese-/Schreib-**Berechtigungen** fest.
-- Legen Sie für **Ablaufzeit** einen geeigneten Wert fest. Stellen Sie sicher, dass der Zugriff auf Azure Storage-Objekte nicht im aktiven Zeitraum der Pipeline abläuft.
+- Legen Sie geeignete Lese-/Schreib-Berechtigungen für Objekte fest, basierend auf der Verwendung des verknüpften Diensts in Ihrer Data Factory (Lesen, Schreiben, Lesen/Schreiben).
+- Legen Sie für **Ablaufzeit** einen geeigneten Wert fest. Stellen Sie sicher, dass der Zugriff auf Storage-Objekte nicht während des aktiven Zeitraums der Pipeline abläuft.
 - Der URI sollte je nach Bedarf auf der richtigen Tabellenebene erstellt werden.
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Azure-Tabellendataset unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Azure Table-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus einer bzw. in eine Azure-Tabelle die type-Eigenschaft des Datasets auf **AzureTable** fest. Folgende Eigenschaften werden unterstützt:
+Legen Sie zum Kopieren von Daten aus und nach Azure Table Storage die type-Eigenschaft des Datasets auf **AzureTable** fest. Die folgenden Eigenschaften werden unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **AzureTable** festgelegt werden. |Ja |
-| tableName |Name der Tabelle in der Azure-Tabellendatenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja |
+| tableName |Der Name der Tabelle in der Table Storage-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja |
 
 **Beispiel:**
 
@@ -154,56 +155,56 @@ Legen Sie zum Kopieren von Daten aus einer bzw. in eine Azure-Tabelle die type-E
 
 ### <a name="schema-by-data-factory"></a>Schema per Data Factory
 
-Bei schemafreien Datenspeichern, z. B. Azure-Tabellen, leitet der Data Factory-Dienst das Schema auf eine der folgenden Weisen ab:
+Bei schemafreien Datenspeichern wie Azure Table leitet der Data Factory-Dienst das Schema auf eine der folgenden Arten ab:
 
-1. Wenn Sie die Struktur der Daten mithilfe der **structure** -Eigenschaft in der Datasetdefinition angeben, berücksichtigt der Data Factory-Dienst diese Struktur als das Schema. Wenn in diesem Fall eine Zeile keinen Wert für eine Spalte enthält, wird ein NULL-Wert für sie angegeben.
-2. Wenn Sie die Struktur der Daten nicht mithilfe der **structure** -Eigenschaft in der Datasetdefinition angeben, leitet Data Factory das Schema unter Verwendung der ersten Zeile in den Daten ab. Wenn in diesem Fall die erste Zeile nicht das vollständige Schema enthält, fehlen im Ergebnis des Kopiervorgangs einige Spalten.
+* Wenn Sie die Struktur der Daten mithilfe der **structure**-Eigenschaft in der Datasetdefinition angeben, betrachtet Data Factory diese Struktur als das Schema. Wenn in diesem Fall eine Zeile keinen Wert für eine Spalte enthält, wird ein NULL-Wert für sie angegeben.
+* Wenn Sie die Struktur der Daten nicht mithilfe der **structure** -Eigenschaft in der Datasetdefinition angeben, leitet Data Factory das Schema unter Verwendung der ersten Zeile in den Daten ab. Wenn in diesem Fall die erste Zeile nicht das vollständige Schema enthält, fehlen im Ergebnis des Kopiervorgangs einige Spalten.
 
-Daher empfiehlt es sich bei schemafreien Datenquellen, die Struktur der Daten mithilfe der **structure** -Eigenschaft anzugeben.
+Bei schemafreien Datenquellen empfiehlt es sich, die Struktur der Daten mithilfe der **structure**-Eigenschaft anzugeben.
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Azure-Tabellenquelle und -senke unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Azure Table-Quelle und -Senke unterstützt werden.
 
-### <a name="azure-table-as-source"></a>Azure-Tabelle als Quelle
+### <a name="azure-table-as-a-source-type"></a>Azure Table als Quelltyp
 
-Legen Sie zum Kopieren von Daten aus der Azure-Tabelle den Quelltyp in der Kopieraktivität auf **AzureTableSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+Legen Sie zum Kopieren von Daten aus der Azure-Tabelle den Quelltyp in der Kopieraktivität auf **AzureTableSource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureTableSource** festgelegt werden. |Ja |
-| AzureTableSourceQuery |Verwendet die benutzerdefinierte Azure-Tabellenabfrage zum Lesen von Daten. Siehe Beispiele im nächsten Abschnitt. |Nein  |
-| azureTableSourceIgnoreTableNotFound |Gibt an, ob der Ausnahmefall, dass die Tabelle nicht vorhanden ist, ignoriert werden soll.<br/>Zulässige Werte sind **True** und **False** (Standard). |Nein  |
+| AzureTableSourceQuery |Verwendet die benutzerdefinierte Table Storage-Abfrage zum Lesen von Daten. Siehe Beispiele im folgenden Abschnitt. |Nein  |
+| azureTableSourceIgnoreTableNotFound |Gibt an, ob es zulässig ist, wenn die Ausnahme der Tabelle nicht vorhanden ist.<br/>Zulässige Werte sind **true** und **false** (Standard). |Nein  |
 
 ### <a name="azuretablesourcequery-examples"></a>Beispiele für azureTableSourceQuery
 
-Wenn die Spalte für die Azure-Tabelle vom Typ „datetime“ ist:
+Wenn die Azure Table-Spalte den datetime-Typ aufweist:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
 ```
 
-Wenn die Spalte für die Azure-Tabelle vom Typ „Zeichenfolge“ ist:
+Wenn die Azure Table-Spalte den Zeichenfolgentyp aufweist:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime ge '201710010000_0000' and LastModifiedTime le '201710010000_9999'"
 ```
 
-Wenn Sie Pipelineparameter verwenden, wandeln Sie den datetime-Wert gemäß den Beispielen oben in das richtige Format um.
+Wenn Sie den pipeline-Parameter verwenden, wandeln Sie den datetime-Wert gemäß den oben genannten Beispielen in das richtige Format um.
 
-### <a name="azure-table-as-sink"></a>Azure-Tabelle als Senke
+### <a name="azure-table-as-a-sink-type"></a>Azure Table als Senkentyp
 
-Legen Sie zum Kopieren von Daten in die Azure-Tabelle den Senkentyp in der Kopieraktivität auf **AzureTableSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
+Legen Sie zum Kopieren von Daten in die Azure-Tabelle den Senkentyp in der Kopieraktivität auf **AzureTableSink** fest. Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **AzureTableSink** festgelegt werden. |Ja |
-| azureTableDefaultPartitionKeyValue |Standardmäßiger Partitionsschlüsselwert, der von der Senke verwendet werden kann. |Nein  |
+| azureTableDefaultPartitionKeyValue |Der standardmäßige Partitionsschlüsselwert, der von der Senke verwendet werden kann. |Nein  |
 | azureTablePartitionKeyName |Geben Sie den Namen der Spalte an, deren Werte als Partitionsschlüssel verwendet werden. Wenn dieser nicht angegeben ist, wird „AzureTableDefaultPartitionKeyValue“ als Partitionsschlüssel verwendet. |Nein  |
 | azureTableRowKeyName |Geben Sie den Namen der Spalte an, deren Werte als Zeilenschlüssel verwendet werden. Wenn nicht angegeben, verwenden Sie für jede Zeile eine GUID. |Nein  |
-| azureTableInsertType |Der Modus zum Einfügen von Daten in eine Azure-Tabelle. Diese Eigenschaft steuert, ob die Werte von vorhandenen Zeilen in der Ausgabetabelle, deren Partitions- und Zeilenschlüssel übereinstimmen, ersetzt oder zusammengeführt werden. <br/><br/>Zulässige Werte sind **merge** (Standard) und **replace**. <br/><br> Diese Einstellung gilt auf Zeilenebene, nicht auf Tabellenebene, und keine der beiden Optionen löscht Zeilen in der Ausgabetabelle, die in der Eingabe nicht vorhanden sind. Informationen zur Funktionsweise dieser Einstellungen (Zusammenführen und Ersetzen) finden Sie in den Themen [Insert or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) (Entität einfügen oder zusammenführen) und [Insert or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) (Entität einfügen oder ersetzen). |Nein  |
-| writeBatchSize |Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird.<br/>Zulässige Werte sind ganze Zahlen (Anzahl der Zeilen). |Nein (Standard = 10.000) |
-| writeBatchTimeout |Fügt Daten in die Azure-Tabelle ein, wenn "writeBatchSize" oder "writeBatchTimeout" erreicht wird.<br/>Zulässige Werte: Zeitraum Beispiel: „00:20:00“ (20 Minuten). |Nein (standardmäßiger Timeoutwert von 90 Sekunden für Speicherclients) |
+| azureTableInsertType |Der Modus zum Einfügen von Daten in Azure Table. Diese Eigenschaft steuert, ob die Werte von vorhandenen Zeilen in der Ausgabetabelle, deren Partitions- und Zeilenschlüssel übereinstimmen, ersetzt oder zusammengeführt werden. <br/><br/>Zulässige Werte sind **merge** (Standard) und **replace**. <br/><br> Diese Einstellung wird auf Zeilenebene, nicht auf Tabellenebene angewendet. Keine der Optionen löscht Zeilen in der Ausgabetabelle, die in der Eingabe nicht vorhanden sind. Informationen zur Funktionsweise der Einstellungen zum Zusammenführen und Ersetzen finden Sie unter [Insert Or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) (Entität einfügen oder zusammenführen) und [Insert Or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) (Entität einfügen oder ersetzen). |Nein  |
+| writeBatchSize |Fügt Daten in Azure Table ein, wenn „writeBatchSize“ oder „writeBatchTimeout“ erreicht werden.<br/>Zulässige Werte sind Integer-Werte (Anzahl der Zeilen). |Nein (Standardwert ist 10.000) |
+| writeBatchTimeout |Fügt Daten in Azure Table ein, wenn „writeBatchSize“ oder „writeBatchTimeout“ erreicht werden.<br/>Zulässige Werte sind Timespan-Werte. Beispiel: 00:20:00 (20 Minuten). |Nein (Standardwert ist 90 Sekunden, der Standardtimeout des Speicherclients) |
 
 **Beispiel:**
 
@@ -240,9 +241,9 @@ Legen Sie zum Kopieren von Daten in die Azure-Tabelle den Senkentyp in der Kopie
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 
-Bevor Sie die Zielspalte als „azureTablePartitionKeyName“ verwenden können, müssen Sie einer Zielspalte mithilfe der Eigenschaft „translator“ eine Quellspalte zuordnen.
+Bevor Sie die Zielspalte als „azureTablePartitionKeyName“ verwenden können, müssen Sie einer Zielspalte mithilfe der Eigenschaft **translator** eine Quellspalte zuordnen.
 
-Im folgenden Beispiel wird die Quellspalte „DivisionID“ der Zielspalte „DivisionID“ zugeordnet.
+Im folgenden Beispiel wird die Quellspalte „DivisionID“ der Zielspalte „DivisionID“ zugeordnet:
 
 ```json
 "translator": {
@@ -262,20 +263,20 @@ Im folgenden Beispiel wird die Quellspalte „DivisionID“ der Zielspalte „Di
 
 ## <a name="data-type-mapping-for-azure-table"></a>Datentypzuordnung für Azure-Tabellen
 
-Beim Kopieren von Daten aus bzw. in die Azure-Tabelle werden die folgenden Zuordnungen von Azure-Tabellendatentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
+Beim Kopieren von Daten aus und nach Azure Table werden die folgenden Zuordnungen von Azure Table-Datentypen zu Data Factory-Zwischendatentypen verwendet. Weitere Informationen dazu, wie die Kopieraktivität das Quellschema und den Datentyp zur Senke zuordnet, finden Sie unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md).
 
-Beim Verschieben von Daten in die und aus der Azure-Tabelle werden die folgenden [vom Azure-Tabellenspeicherdienst definierten Zuordnungen](https://msdn.microsoft.com/library/azure/dd179338.aspx) bei Verschiebungen von Azure-Tabellen-OData-Typen in den .NET-Typ und umgekehrt verwendet.
+Beim Verschieben von Daten von und nach Azure Table werden die folgenden [von Azure Table definierten Zuordnungen](https://msdn.microsoft.com/library/azure/dd179338.aspx) verwendet, um Azure Table-OData-Typen zu .NET-Typen und umgekehrt zuzuordnen.
 
 | Azure-Tabellendatentyp | Data Factory-Zwischendatentyp | Details |
 |:--- |:--- |:--- |
 | Edm.Binary |Byte[] |Ein Array von Bytes mit einer Größe bis zu 64KB. |
 | Edm.Boolean |bool |Ein boolescher Wert. |
-| Edm.DateTime |Datetime |Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt um 00:00 Uhr, Mitternacht, 1. Januar, 1601 n. Chr. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
+| Edm.DateTime |Datetime |Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt am 1. Januar 1601 n. Chr um Mitternacht. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
 | Edm.Double |double |Ein 64-Bit-Gleitkommawert. |
 | Edm.Guid |Guid |Ein 128-Bit-GUID. |
 | Edm.Int32 |Int32 |Eine 32-Bit-Ganzzahl. |
 | Edm.Int64 |Int64 |Eine 64-Bit-Ganzzahl. |
-| Edm.String |Zeichenfolge |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64KB groß sein. |
+| Edm.String |Zeichenfolge |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64 KB groß sein. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

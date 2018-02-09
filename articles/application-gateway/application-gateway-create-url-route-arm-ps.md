@@ -1,298 +1,372 @@
 ---
-title: Erstellen eines Anwendungsgateways mit URL-Routingregeln | Microsoft-Dokumentation
-description: "Diese Seite enthält Anweisungen zum Erstellen und Konfigurieren eines Azure-Anwendungsgateways mit URL-Routingregeln."
-documentationcenter: na
+title: "Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis – Azure PowerShell | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mit Azure PowerShell Routingregeln auf URL-Pfadbasis für ein Anwendungsgateway und eine VM-Skalierungsgruppe erstellen."
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: d141cfbb-320a-4fc9-9125-10001c6fa4cf
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/03/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: f0b085ebf922cd5b14acd91bf86b9262a6921e9e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5c76ff84fc6409975ce6df076bfe220a092eeec
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="create-an-application-gateway-by-using-path-based-routing"></a>Erstellen eines Anwendungsgateways mit pfadbasiertem Routing
+# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis – Azure PowerShell
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-create-url-route-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
-> * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
+Sie können mit Azure PowerShell [Routingregeln auf URL-Pfadbasis](application-gateway-url-route-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial erstellen Sie Back-End-Pools mithilfe einer [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Anschließend erstellen Sie Routingregeln, die sicherstellen, dass Webdatenverkehr an die richtigen Server in den Pools gesendet wird.
 
-Mit pfadbasiertem Routing können Sie Routen basierend auf dem URL-Pfad einer HTTP-Anforderung zuordnen. Es wird überprüft, ob eine Route zu einem Back-End-Pool für die URL konfiguriert ist, die im Anwendungsgateway angezeigt wird, und der Netzwerkverkehr wird dann an den definierten Back-End-Pool gesendet. Ein gängiges Szenario für URL-basiertes Routing ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-Azure Application Gateway verfügt über zwei Regeltypen: Basisrouting und pfadbasiertes Routing. Beim Basisrouting wird ein Roundrobin-Dienst für die Back-End-Pools bereitgestellt. Pfadbasiertes Routing nutzt für die Auswahl des Back-End-Pools zusätzlich zur Roundrobin-Verteilung das Pfadmuster der Anforderungs-URL.
+> [!div class="checklist"]
+> * Einrichten des Netzwerks
+> * Erstellen eines Anwendungsgateways mit URL-Zuordnung
+> * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
 
-## <a name="scenario"></a>Szenario
+![URL-Routingbeispiel](./media/application-gateway-create-url-route-arm-ps/scenario.png)
 
-Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für „contoso.com“ mit zwei Back-End-Serverpools: einem Videoserverpool und einem Imageserverpool.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Anforderungen für „http://contoso.com/image*“ werden an den Imageserverpool (**pool1**) geleitet, Anforderungen für „http://contoso.com/video*“ an den Videoserverpool (**pool2**). Wenn keines der Pfadmuster zutrifft, wird ein Standardserverpool (**pool1**) ausgewählt.
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-![URL-Route](./media/application-gateway-create-url-route-arm-ps/figure1.png)
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version aus dem Abschnitt **Windows PowerShell** der [Downloadseite](https://azure.microsoft.com/downloads/)herunterladen und installieren.
-2. Erstellen Sie ein virtuelles Netzwerk und ein Subnetz für ein Anwendungsgateway. Stellen Sie sicher, dass keine virtuellen Computer oder Cloudbereitstellungen das Subnetz verwenden. Das Application Gateway muss sich allein im Subnetz eines virtuellen Netzwerks befinden.
-3. Vergewissern Sie sich, dass die Server, die Sie dem Back-End-Pool für das Anwendungsgateway hinzugefügt haben, vorhanden sind oder dass ihre Endpunkte im virtuellen Netzwerk erstellt wurden bzw. ihren Endpunkten eine öffentliche IP-Adresse/VIP zugewiesen wurde.
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Azure-Ressourcengruppe.  
 
-## <a name="requirements-to-create-an-application-gateway"></a>Anforderungen zum Erstellen eines Anwendungsgateways
+```azurepowershell-interactive
+New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
+```
 
-* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen müssen entweder dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse/VIP sein.
-* **Einstellungen für den Back-End-Serverpool:** Etwa Port, Protokoll und cookiebasierte Affinität. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-* **Front-End-Port:** Der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-* **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird).
-* **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Pool der Datenverkehr gesendet werden soll, wenn er einen Listener erreicht.
+## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
+
+Erstellen Sie mit [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) die Subnetzkonfigurationen *myAGSubnet* und *myBackendSubnet*. Erstellen Sie das virtuelle Netzwerk *myVNet* mit [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) und den Subnetzkonfigurationen. Erstellen Sie zum Schluss mithilfe von [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) die öffentliche IP-Adresse mit dem Namen *myAGPublicIPAddress*. Diese Ressourcen werden verwendet, um Netzwerkkonnektivität zum Anwendungsgateway und den zugehörigen Ressourcen bereitzustellen.
+
+```azurepowershell-interactive
+$backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name myBackendSubnet `
+  -AddressPrefix 10.0.1.0/24
+$agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name myAGSubnet `
+  -AddressPrefix 10.0.2.0/24
+$vnet = New-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -Name myVNet `
+  -AddressPrefix 10.0.0.0/16 `
+  -Subnet $backendSubnetConfig, $agSubnetConfig
+$pip = New-AzureRmPublicIpAddress `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -Name myAGPublicIPAddress `
+  -AllocationMethod Dynamic
+```
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Der Unterschied zwischen dem klassischen Bereitstellungsmodell und Azure Resource Manager besteht in der Reihenfolge, in der Sie das Anwendungsgateway und die Elemente erstellen, die konfiguriert werden müssen.
+### <a name="create-the-ip-configurations-and-frontend-port"></a>Erstellen der IP-Konfigurationen und des Front-End-Ports
 
-Beim Resource Manager werden alle Elemente, die ein Anwendungsgateway bilden, einzeln konfiguriert und anschließend zusammengesetzt, um die Anwendungsgatewayressource zu erstellen.
+Weisen Sie das zuvor erstellte Subnetz *myAGSubnet* mit [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration) dem Anwendungsgateway zu. Weisen Sie *myAGPublicIPAddress* mit [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig) dem Anwendungsgateway zu.
 
-Führen Sie zum Erstellen eines Anwendungsgateways die folgenden Schritte aus:
-
-1. Erstellen einer Ressourcengruppe für den Ressourcen-Manager
-2. Erstellen eines virtuelles Netzwerks, Subnetzes und einer öffentlichen IP-Adresse für das Application Gateway
-3. Erstellen eines Konfigurationsobjekts für das Anwendungsgateway
-4. Erstellen einer Application Gateway-Ressource
-
-## <a name="create-a-resource-group-for-resource-manager"></a>Erstellen einer Ressourcengruppe für den Resource Manager
-
-Stellen Sie sicher, dass Sie die neueste Version von Azure PowerShell verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
-
-### <a name="step-1"></a>Schritt 1
-
-Melden Sie sich bei Azure an.
-
-```powershell
-Login-AzureRmAccount
-```
-
-Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.<BR>
-
-### <a name="step-2"></a>Schritt 2
-
-Überprüfen Sie die Abonnements für das Konto.
-
-```powershell
-Get-AzureRmSubscription
-```
-
-### <a name="step-3"></a>Schritt 3
-
-Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten. <BR>
-
-```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
-```
-
-### <a name="step-4"></a>Schritt 4
-
-Erstellen Sie eine Ressourcengruppe. (Überspringen Sie diesen Schritt, wenn Sie eine vorhandene Ressourcengruppe verwenden.)
-
-```powershell
-$resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US"
-```
-
-Alternativ können Sie Tags für eine Ressourcengruppe für ein Anwendungsgateway erstellen:
-
-```powershell
-$resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway URL routing"} 
-```
-
-Azure Resource Manager erfordert, dass Ressourcengruppen einen Standardspeicherort angeben, der für alle Ressourcen in dieser Gruppe verwendet wird. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
-
-Im obigen Beispiel haben wir eine Ressourcengruppe namens „appgw-RG“ erstellt und den Standort „USA, Westen“ verwendet.
-
-> [!NOTE]
-> Falls Sie einen benutzerdefinierten Test für Ihr Anwendungsgateway konfigurieren müssen, finden Sie die entsprechenden Informationen unter [Erstellen eines benutzerdefinierten Tests für Azure Application Gateway mithilfe von PowerShell für Azure Resource Manager](application-gateway-create-probe-ps.md). Weitere Informationen finden Sie unter [Systemüberwachung des Application Gateways – Übersicht](application-gateway-probe-overview.md).
-> 
-> 
-
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway
-
-Das folgende Beispiel zeigt, wie Sie mit dem Ressourcen-Manager ein virtuelles Netzwerk erstellen: In diesem Beispiel wird ein virtuelles Netzwerk für das Anwendungsgateway erstellt. Für Application Gateway ist ein eigenes Subnetz erforderlich. Daher ist das für das Anwendungsgateway erstellte Subnetz kleiner als der Adressraum des virtuellen Netzwerks. Dadurch können andere Ressourcen – einschließlich Webserver – im gleichen virtuellen Netzwerk konfiguriert werden.
-
-### <a name="step-1"></a>Schritt 1
-
-Weisen Sie den Adressbereich 10.0.0.0/24 der Subnetzvariablen zu, die zum Erstellen eines virtuelles Netzwerks verwendet wird.  Dadurch wird das im nächsten Beispiel verwendete Subnetzkonfigurationsobjekt für das Anwendungsgateway erstellt.
-
-```powershell
-$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
-```
-
-### <a name="step-2"></a>Schritt 2
-
-Erstellen Sie ein virtuelles Netzwerk mit dem Namen **appgwvnet** in der Ressourcengruppe **appgw-rg** für die Region „USA, Westen“ mit dem Präfix 10.0.0.0/16 und dem Subnetz 10.0.0.0/24. Damit ist die Konfiguration des virtuellen Netzwerks mit einem einzelnen Subnetz für das Anwendungsgateway abgeschlossen.
-
-```powershell
-$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-```
-
-### <a name="step-3"></a>Schritt 3
-
-Weisen Sie die Subnetzvariable für die nächsten Schritte zu. Diese Variable wird in einem späteren Schritt an das Cmdlet `New-AzureRMApplicationGateway` übergeben.
-
-```powershell
+```azurepowershell-interactive
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myVNet
 $subnet=$vnet.Subnets[0]
+$pip = Get-AzureRmPublicIpAddress `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myAGPublicIPAddress
+$gipconfig = New-AzureRmApplicationGatewayIPConfiguration `
+  -Name myAGIPConfig `
+  -Subnet $subnet
+$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig `
+  -Name myAGFrontendIPConfig `
+  -PublicIPAddress $pip
+$frontendport = New-AzureRmApplicationGatewayFrontendPort `
+  -Name myFrontendPort `
+  -Port 80
 ```
 
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Erstellen der öffentlichen IP-Adresse für die Front-End-Konfiguration
+### <a name="create-the-default-pool-and-settings"></a>Erstellen des Standardpools und der Einstellungen
 
-Erstellen Sie eine öffentliche IP-Ressource namens **publicIP01** in der Ressourcengruppe **appgw-rg** für die Region „USA, Westen“. Application Gateway kann eine öffentliche IP-Adresse und/oder eine interne IP-Adresse verwenden, um Anforderungen für den Lastenausgleich zu empfangen.  In diesem Beispiel wird nur eine öffentliche IP-Adresse verwendet. Im folgenden Beispiel wird für die Erstellung der öffentlichen IP-Adresse kein DNS-Name konfiguriert, da Application Gateway keine benutzerdefinierten DNS-Namen für öffentliche IP-Adressen unterstützt.  Falls für den öffentlichen Endpunkt ein benutzerdefinierter Name erforderlich ist, erstellen Sie einen CNAME-Eintrag, um auf den automatisch generierten DNS-Namen für die öffentliche IP-Adresse zu verweisen.
+Erstellen Sie mit [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool) den Standard-Back-End-Pool *appGatewayBackendPool* für das Anwendungsgateway. Konfigurieren Sie mit [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings) die Einstellungen für den Back-End-Pool.
 
-```powershell
-$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -name publicIP01 -location "West US" -AllocationMethod Dynamic
+```azurepowershell-interactive
+$defaultPool = New-AzureRmApplicationGatewayBackendAddressPool `
+  -Name appGatewayBackendPool 
+$poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
+  -Name myPoolSettings `
+  -Port 80 `
+  -Protocol Http `
+  -CookieBasedAffinity Enabled `
+  -RequestTimeout 120
 ```
 
-Dem Anwendungsgateway wird beim Starten des Diensts eine IP-Adresse zugewiesen.
+### <a name="create-the-default-listener-and-rule"></a>Erstellen des Standardlisteners und der Regel
 
-## <a name="create-the-application-gateway-configuration"></a>Erstellen der Anwendungsgatewaykonfiguration
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr entsprechend an den Back-End-Pool weiterleiten kann. In diesem Tutorial werden zwei Listener erstellt. Der erste grundlegende Listener, den Sie erstellen, lauscht an der Stamm-URL auf Datenverkehr. Der zweite Listener, den Sie erstellen, lauscht an bestimmten URLs auf Datenverkehr.
 
-Sie müssen alle Konfigurationselemente einrichten, bevor Sie das Anwendungsgateway erstellen. Die folgenden Schritten erstellen die Konfigurationselemente, die für eine Anwendungsgatewayressource benötigt werden.
+Erstellen Sie den Standardlistener namens *myDefaultListener* mit [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit er weiß, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) eine grundlegende Regel mit dem Namen *rule1*.
 
-### <a name="step-1"></a>Schritt 1
-
-Erstellen Sie für das Anwendungsgateway eine IP-Konfiguration mit dem Namen **gatewayIP01**. Beim Starten von Application Gateway wird eine IP-Adresse aus dem konfigurierten Subnetz ausgewählt, und der Netzwerkdatenverkehr wird an die IP-Adressen im Back-End-IP-Pool weitergeleitet. Beachten Sie, dass jede Instanz eine eigene IP-Adresse benötigt.
-
-```powershell
-$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
+```azurepowershell-interactive
+$defaultlistener = New-AzureRmApplicationGatewayHttpListener `
+  -Name myDefaultListener `
+  -Protocol Http `
+  -FrontendIPConfiguration $fipconfig `
+  -FrontendPort $frontendport
+$frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
+  -Name rule1 `
+  -RuleType Basic `
+  -HttpListener $defaultlistener `
+  -BackendAddressPool $defaultPool `
+  -BackendHttpSettings $poolSettings
 ```
 
-### <a name="step-2"></a>Schritt 2
+### <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
-Konfigurieren Sie die Back-End-IP-Adresspools **pool1** und **pool2** mit den IP-Adressen für **pool1** und **pool2**. Dabei handelt es sich um die IP-Adressen der Ressourcen, die die Webanwendung hosten, die durch das Anwendungsgateway geschützt werden soll. Die Integrität dieser Mitglieder des Back-End-Pools wurde jeweils durch Basistests oder benutzerdefinierte Tests überprüft. An sie wird Datenverkehr weitergeleitet, wenn Anforderungen beim Anwendungsgateway eingehen. Back-End-Pools können von mehreren Regeln innerhalb des Anwendungsgateways verwendet werden. Das bedeutet, dass ein Back-End-Pool für mehrere Webanwendungen verwendet werden kann, die sich auf dem gleichen Host befinden.
+Sie haben die erforderlichen unterstützenden Ressourcen erstellt. Geben Sie nun mit [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) Parameter für das Anwendungsgateway *myAppGateway* an, und erstellen Sie es mit [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway).
 
-```powershell
-$pool1 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221, 134.170.185.50
-
-$pool2 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool02 -BackendIPAddresses 134.170.186.47, 134.170.189.222, 134.170.186.51
+```azurepowershell-interactive
+$sku = New-AzureRmApplicationGatewaySku `
+  -Name Standard_Medium `
+  -Tier Standard `
+  -Capacity 2
+$appgw = New-AzureRmApplicationGateway `
+  -Name myAppGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -BackendAddressPools $defaultPool `
+  -BackendHttpSettingsCollection $poolSettings `
+  -FrontendIpConfigurations $fipconfig `
+  -GatewayIpConfigurations $gipconfig `
+  -FrontendPorts $frontendport `
+  -HttpListeners $defaultlistener `
+  -RequestRoutingRules $frontendRule `
+  -Sku $sku
 ```
 
-In diesem Beispiel leiten zwei Back-End-Pools Netzwerkdatenverkehr basierend auf dem URL-Pfad weiter. Ein Pool empfängt Datenverkehr aus dem URL-Pfad „/video“, der andere Pool empfängt Datenverkehr aus dem Pfad „/image“. Ersetzen Sie die obigen IP-Adressen durch die IP-Adressendpunkte Ihrer eigenen Anwendung. 
+### <a name="add-image-and-video-backend-pools-and-port"></a>Hinzufügen von Back-End-Pools und Port für Bilder und Videos
 
-### <a name="step-3"></a>Schritt 3
+Sie können Back-End-Pools namens *imagesBackendPool* und *videoBackendPool* zu Ihrem Anwendungsgateway hinzufügen. Verwenden Sie dazu [Add-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/add-azurermapplicationgatewaybackendaddresspool). Den Front-End-Port für die Pools fügen Sie mit [Add-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/add-azurermapplicationgatewayfrontendport) hinzu. Übermitteln Sie die Änderungen mit [Set-AzureRmApplicationGateway](/powershell/module/azurerm.network/set-azurermapplicationgateway) an das Anwendungsgateway.
 
-Konfigurieren Sie die Anwendungsgatewayeinstellungen **poolsetting01** und **poolsetting02** für den Netzwerkdatenverkehr mit Lastenausgleich im Back-End-Pool. In diesem Beispiel konfigurieren Sie verschiedene Back-End-Pool-Einstellungen für die Back-End-Pools. Jeder Back-End-Pool kann eigene Einstellung aufweisen.  Regeln verwenden Back-End-HTTP-Einstellungen, um Datenverkehr an die richtigen Mitglieder des Back-End-Pools weiterzuleiten. Die Einstellungen bestimmen das Protokoll und den Port, das bzw. der beim Senden von Datenverkehr an die Mitglieder des Back-End-Pools verwendet wird. Cookiebasierte Sitzungen werden ebenfalls durch die Back-End-HTTP-Einstellungen gesteuert. Im aktivierten Zustand sendet die cookiebasierte Sitzungsaffinität Datenverkehr an das gleiche Back-End wie vorherige Anforderungen für das jeweilige Paket.
-
-```powershell
-$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
-
-$poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting02" -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 240
+```azurepowershell-interactive
+$appgw = Get-AzureRmApplicationGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myAppGateway
+Add-AzureRmApplicationGatewayBackendAddressPool `
+  -ApplicationGateway $appgw `
+  -Name imagesBackendPool 
+Add-AzureRmApplicationGatewayBackendAddressPool `
+  -ApplicationGateway $appgw `
+  -Name videoBackendPool
+Add-AzureRmApplicationGatewayFrontendPort `
+  -ApplicationGateway $appgw `
+  -Name bport `
+  -Port 8080
+Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-### <a name="step-4"></a>Schritt 4
+### <a name="add-backend-listener"></a>Hinzufügen eines Back-End-Listeners
 
-Konfigurieren Sie die Front-End-IP-Adresse mit öffentlichen IP-Endpunkten. Ein Listener verwendet das Front-End-IP-Konfigurationsobjekt, um die von außen erreichbare IP-Adresse mit dem Listener zu verknüpfen.
+Fügen Sie mit [Add-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/add-azurermapplicationgatewayhttplistener) den Back-End-Listener namens *backendListener* hinzu. Er ist zum Weiterleiten von Datenverkehr erforderlich.
 
-```powershell
-$fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -PublicIPAddress $publicip
+```azurepowershell-interactive
+$appgw = Get-AzureRmApplicationGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myAppGateway
+$backendPort = Get-AzureRmApplicationGatewayFrontendPort `
+  -ApplicationGateway $appgw `
+  -Name bport
+$fipconfig = Get-AzureRmApplicationGatewayFrontendIPConfig `
+  -ApplicationGateway $appgw
+Add-AzureRmApplicationGatewayHttpListener `
+  -ApplicationGateway $appgw `
+  -Name backendListener `
+  -Protocol Http `
+  -FrontendIPConfiguration $fipconfig `
+  -FrontendPort $backendPort
+Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-### <a name="step-5"></a>Schritt 5
+### <a name="add-url-path-map"></a>Hinzufügen einer URL-Pfadzuordnung
 
-Konfigurieren Sie den Front-End-Port für ein Application Gateway. Der Listener verwendet das Front-End-Port-Konfigurationsobjekt, um den Port zu definieren, an dem das Anwendungsgateway auf Datenverkehr des Listeners lauscht.
+Mit URL-Pfadzuordnungen stellen Sie sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Sie können mit [New-AzureRmApplicationGatewayPathRuleConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewaypathruleconfig) und [Add-AzureRmApplicationGatewayUrlPathMapConfig](/powershell/module/azurerm.network/add-azurermapplicationgatewayurlpathmapconfig) URL-Pfadzuordnungen namens *imagePathRule* und *videoPathRule* erstellen.
 
-```powershell
-$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "fep01" -Port 80
+```azurepowershell-interactive
+$appgw = Get-AzureRmApplicationGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myAppGateway
+$poolSettings = Get-AzureRmApplicationGatewayBackendHttpSettings `
+  -ApplicationGateway $appgw `
+  -Name myPoolSettings
+$imagePool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -ApplicationGateway $appgw `
+  -Name imagesBackendPool
+$videoPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -ApplicationGateway $appgw `
+  -Name videoBackendPool
+$defaultPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -ApplicationGateway $appgw `
+  -Name appGatewayBackendPool
+$imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig `
+  -Name imagePathRule `
+  -Paths "/images/*" `
+  -BackendAddressPool $imagePool `
+  -BackendHttpSettings $poolSettings
+$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig `
+  -Name videoPathRule `
+    -Paths "/video/*" `
+    -BackendAddressPool $videoPool `
+    -BackendHttpSettings $poolSettings
+Add-AzureRmApplicationGatewayUrlPathMapConfig `
+  -ApplicationGateway $appgw `
+  -Name urlpathmap `
+  -PathRules $imagePathRule, $videoPathRule `
+  -DefaultBackendAddressPool $defaultPool `
+  -DefaultBackendHttpSettings $poolSettings
+Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-### <a name="step-6"></a>Schritt 6
+### <a name="add-routing-rule"></a>Hinzufügen einer Routingregel
 
-Konfigurieren Sie den Listener für die öffentliche IP-Adresse und den Port zum Empfangen von eingehendem Netzwerkdatenverkehr. Im folgenden Beispiel wird der Listener mit der zuvor konfigurierten Front-End-IP- und Front-End-Portkonfiguration sowie mit einem Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) konfiguriert. In diesem Beispiel lauscht der Listener an Port 80 auf HTTP-Datenverkehr für die zuvor erstellte öffentliche IP-Adresse.
+Die Routingregel ordnet die URL-Zuordnung dem von Ihnen erstellten Listener zu. Mit [Add-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/add-azurermapplicationgatewayrequestroutingrule) können Sie die Regel **rule2* hinzufügen.
 
-```powershell
-$listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol Http -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01
+```azurepowershell-interactive
+$appgw = Get-AzureRmApplicationGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myAppGateway
+$backendlistener = Get-AzureRmApplicationGatewayHttpListener `
+  -ApplicationGateway $appgw `
+  -Name backendListener
+$urlPathMap = Get-AzureRmApplicationGatewayUrlPathMapConfig `
+  -ApplicationGateway $appgw `
+  -Name urlpathmap
+Add-AzureRmApplicationGatewayRequestRoutingRule `
+  -ApplicationGateway $appgw `
+  -Name rule2 `
+  -RuleType PathBasedRouting `
+  -HttpListener $backendlistener `
+  -UrlPathMap $urlPathMap
+Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-### <a name="step-7"></a>Schritt 7
+## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
 
-Konfigurieren Sie URL-Regelpfade für die Back-End-Pools. Dieser Schritt konfiguriert den relativen Pfad, der von Application Gateway verwendet wird, und definiert die Zuordnung zwischen dem URL-Pfad und dem Back-End-Pool, der zum Verarbeiten des eingehenden Datenverkehrs zugewiesen wurde.
+In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1*, *myvmss2* und *myvmss3* genannt. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie IIS installieren. Sie weisen die Skalierungsgruppe dem Back-End-Pool zu, wenn Sie die IP-Einstellungen konfigurieren.
 
-> [!IMPORTANT]
-> Jeder Pfad muss mit einem Schrägstrich (/) beginnen, und ein Sternchen ist nur am Ende zulässig. Gültige Beispiele sind „/xyz“, „/xyz*“ oder „/xyz/“*. Die Zeichenfolge, die in den Pfadabgleicher eingegeben wird, enthält keinen Text nach dem ersten Fragezeichen (?) oder der ersten Raute (#), und diese Zeichen sind nicht zulässig. 
-
-Im folgenden Beispiel werden zwei Regeln erstellt: eine für den Pfad „/image/“, der Datenverkehr an das Back-End **pool1** leitet, und eine andere für den Pfad „/video/“, der Datenverkehr an das Back-End **pool2** leitet. Diese Regeln stellen sicher, dass der Datenverkehr für jeden Satz URLs an das Back-End weitergeleitet wird. Beispiel: „http://contoso.com/image/figure1.jpg“ wird an **pool1** weitergeleitet, „http://contoso.com/video/example.mp4“ an **pool2**.
-
-```powershell
-$imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule1" -Paths "/image/*" -BackendAddressPool $pool1 -BackendHttpSettings $poolSetting01
-
-$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule2" -Paths "/video/*" -BackendAddressPool $pool2 -BackendHttpSettings $poolSetting02
+```azurepowershell-interactive
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myVNet
+$appgw = Get-AzureRmApplicationGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myAppGateway
+$backendPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -Name appGatewayBackendPool `
+  -ApplicationGateway $appgw
+$imagesPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -Name imagesBackendPool `
+  -ApplicationGateway $appgw
+$videoPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -Name videoBackendPool `
+  -ApplicationGateway $appgw
+for ($i=1; $i -le 3; $i++)
+{
+  if ($i -eq 1)
+  {
+     $poolId = $backendPool.Id
+  }
+  if ($i -eq 2) 
+  {
+    $poolId = $imagesPool.Id
+  }
+  if ($i -eq 3)
+  {
+    $poolId = $videoPool.Id
+  }
+  $ipConfig = New-AzureRmVmssIpConfig `
+    -Name myVmssIPConfig$i `
+    -SubnetId $vnet.Subnets[1].Id `
+    -ApplicationGatewayBackendAddressPoolsId $poolId
+  $vmssConfig = New-AzureRmVmssConfig `
+    -Location eastus `
+    -SkuCapacity 2 `
+    -SkuName Standard_DS2 `
+    -UpgradePolicyMode Automatic
+  Set-AzureRmVmssStorageProfile $vmssConfig `
+    -ImageReferencePublisher MicrosoftWindowsServer `
+    -ImageReferenceOffer WindowsServer `
+    -ImageReferenceSku 2016-Datacenter `
+    -ImageReferenceVersion latest
+  Set-AzureRmVmssOsProfile $vmssConfig `
+    -AdminUsername azureuser `
+    -AdminPassword "Azure123456!" `
+    -ComputerNamePrefix myvmss$i
+  Add-AzureRmVmssNetworkInterfaceConfiguration `
+    -VirtualMachineScaleSet $vmssConfig `
+    -Name myVmssNetConfig$i `
+    -Primary $true `
+    -IPConfiguration $ipConfig
+  New-AzureRmVmss `
+    -ResourceGroupName myResourceGroupAG `
+    -Name myvmss$i `
+    -VirtualMachineScaleSet $vmssConfig
+}
 ```
 
-Die Konfiguration der Regelpfadzuordnung konfiguriert auch dann einen Standard-Back-End-Adresspool, wenn der Pfad keiner der vordefinierten Pfadregeln entspricht. Beispiel: „http://contoso.com/shoppingcart/test.html“ wird an **pool1** weitergeleitet, da dieser als Standardpool für nicht übereinstimmenden Datenverkehr definiert wurde.
+### <a name="install-iis"></a>Installieren von IIS
 
-```powershell
-$urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $videoPathRule, $imagePathRule -DefaultBackendAddressPool $pool1 -DefaultBackendHttpSettings $poolSetting02
+```azurepowershell-interactive
+$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1"); 
+  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+
+for ($i=1; $i -le 3; $i++)
+{
+  $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss$i
+  Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+    -Name "customScript" `
+    -Publisher "Microsoft.Compute" `
+    -Type "CustomScriptExtension" `
+    -TypeHandlerVersion 1.8 `
+    -Setting $publicSettings
+
+  Update-AzureRmVmss `
+    -ResourceGroupName myResourceGroupAG `
+    -Name myvmss$i `
+    -VirtualMachineScaleSet $vmss
+}
 ```
 
-### <a name="step-8"></a>Schritt 8
+## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Erstellen Sie eine Regeleinstellung. Dieser Schritt konfiguriert das Anwendungsgateway für die Verwendung des Routings auf URL-Pfadbasis. Die in einem vorherigen Schritt definierte Variable `$urlPathMap` wird jetzt verwendet, um die pfadbasierte Regel zu erstellen. In diesem Schritt wird die Regel mit einem Listener und der zuvor erstellten URL-Pfadzuordnung verknüpft.
+Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: *http://52.168.55.24*, *http://52.168.55.24:8080/images/test.htm* oder *http://52.168.55.24:8080/video/test.htm*
 
-```powershell
-$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
+```azurepowershell-interactive
+Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-### <a name="step-9"></a>Schritt 9
+![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Konfigurieren Sie die Anzahl der Instanzen und die Größe für das Application Gateway.
+Ändern Sie die URL in http://<ip-address>:8080/video/test.htm, und geben Sie dabei Ihre eigene IP-Adresse an. Die Ausgabe sollte in etwa wie folgt aussehen:
 
-```powershell
-$sku = New-AzureRmApplicationGatewaySku -Name "Standard_Small" -Tier Standard -Capacity 2
-```
+![Testen der URL für Bilder im Anwendungsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
+Ändern Sie die URL in http://<ip-address>:8080/video/test.htm. Die Ausgabe sollte in etwa wie folgt aussehen:
 
-Erstellen Sie ein Anwendungsgateway mit allen Konfigurationsobjekten aus den vorherigen Schritten.
-
-```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG -Location "West US" -BackendAddressPools $pool1,$pool2 -BackendHttpSettingsCollection $poolSetting01, $poolSetting02 -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku
-```
-
-## <a name="get-an-application-gateway-dns-name"></a>Abrufen des DNS-Namens eines Anwendungsgateways
-
-Nach dem Erstellen des Gateways konfigurieren Sie das Front-End für die Kommunikation. Bei Verwendung einer öffentlichen IP-Adresse wird für die Application Gateway-Instanz ein dynamisch zugewiesener DNS-Namen benötigt. Dieser Name ist nicht benutzerfreundlich. Um zu gewährleisten, dass Kunden auf das Anwendungsgateway zugreifen können, können Sie mit einem CNAME-Eintrag auf den öffentlichen Endpunkt des Anwendungsgateways verweisen. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](../cloud-services/cloud-services-custom-domain-name-portal.md).
-
-Rufen Sie zum Konfigurieren des CNAME-Eintrags für die Front-End-IP mithilfe des PublicIPAddress-Elements, das an das Anwendungsgateway angefügt ist, Details zum Anwendungsgateway und dem zugeordneten IP/DNS-Namen ab. Verwenden Sie den DNS-Namen des Anwendungsgateways zum Erstellen eines CNAME-Eintrags. Die Verwendung von A-Einträgen wird nicht empfohlen, da sich die VIP beim Neustart von Application Gateway möglicherweise ändert.
-
-```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
-```
-
-```
-Name                     : publicIP01
-ResourceGroupName        : appgw-RG
-Location                 : westus
-Id                       : /subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/publicIPAddresses/publicIP01
-Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
-ResourceGuid             : 00000000-0000-0000-0000-000000000000
-ProvisioningState        : Succeeded
-Tags                     : 
-PublicIpAllocationMethod : Dynamic
-IpAddress                : xx.xx.xxx.xx
-PublicIpAddressVersion   : IPv4
-IdleTimeoutInMinutes     : 4
-IpConfiguration          : {
-                                "Id": "/subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/applicationGateways/appgwtest/frontendIP
-                            Configurations/frontend1"
-                            }
-DnsSettings              : {
-                                "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
-                            }
-```
+![Testen der Video-URL im Anwendungsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur SSL-Auslagerung (Secure Sockets Layer) finden Sie unter [Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung mit Azure Resource Manager](application-gateway-ssl-arm.md).
+In diesem Artikel haben Sie Folgendes gelernt:
 
+> [!div class="checklist"]
+> * Einrichten des Netzwerks
+> * Erstellen eines Anwendungsgateways mit URL-Zuordnung
+> * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
+
+Weitere Informationen zu Anwendungsgateways und den zugehörigen Ressourcen finden Sie in den Artikeln mit empfohlenen Vorgehensweisen.

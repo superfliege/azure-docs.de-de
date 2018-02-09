@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 0cf0b1829c7e1f9b0b8be90983a705d82784c062
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 1f005ae28309879f36a28df499685937c37a3be0
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="my-first-python-runbook"></a>Mein erstes Python-Runbook
 
@@ -68,12 +68,11 @@ Klicken Sie auf **Speichern**, um das Runbook zu speichern.
 Bevor Sie das Runbook für die Verwendung in der Produktionsumgebung veröffentlichen, sollten Sie sich vergewissern, dass es ordnungsgemäß funktioniert. Beim Testen eines Runbooks führen Sie die **Entwurfsversion** des Runbooks aus und sehen sich interaktiv die Ausgabe an.
 
 1. Klicken Sie auf **Testbereich** , um den Testbereich zu öffnen.
-   ![Test Pane](media/automation-first-runbook-textual-python/automation-runbook-edit-controls-test.png)
-1. Klicken Sie auf **Starten** , um den Test zu starten. Andere Optionen dürften nicht zur Verfügung stehen.
-1. Ein [Runbookauftrag](automation-runbook-execution.md) wird erstellt, und der dazugehörige Status wird angezeigt.
+2. Klicken Sie auf **Starten** , um den Test zu starten. Andere Optionen dürften nicht zur Verfügung stehen.
+3. Ein [Runbookauftrag](automation-runbook-execution.md) wird erstellt, und der dazugehörige Status wird angezeigt.
    Der Auftrag besitzt zunächst den Status *In der Warteschlange*. Hiermit wird angegeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet* und anschließend zu *Wird ausgeführt*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.
-1. Nach Abschluss des Runbookauftrags wird die Ausgabe angezeigt. In diesem Fall sollte *Hello World* angezeigt werden.
-1. Schließen Sie den Testbereich, um zum Zeichenbereich zurückzukehren.
+4. Nach Abschluss des Runbookauftrags wird die Ausgabe angezeigt. In diesem Fall sollte *Hello World* angezeigt werden.
+5. Schließen Sie den Testbereich, um zum Zeichenbereich zurückzukehren.
 
 ## <a name="publish-and-start-the-runbook"></a>Veröffentlichen und Starten des Runbooks
 
@@ -82,19 +81,18 @@ Beim Veröffentlichen eines Runbooks wird die vorhandene veröffentlichte Versio
 In diesem Fall ist noch keine veröffentlichte Version vorhanden, da Sie das Runbook gerade erst erstellt haben.
 
 1. Klicken Sie auf **Veröffentlichen**, um das Runbook zu veröffentlichen, und bestätigen Sie den Vorgang mit **Ja**.
-   ![Schaltfläche "Veröffentlichen"](media/automation-first-runbook-textual-python/automation-runbook-edit-controls-publish.png)
-1. Wenn Sie nun nach links scrollen, um das Runbook im Bereich **Runbooks** anzuzeigen, wird der **Erstellungsstatus** des Runbooks als **Veröffentlicht** angezeigt.
+2. Wenn Sie nun nach links scrollen, um das Runbook im Bereich **Runbooks** anzuzeigen, wird der **Erstellungsstatus** des Runbooks als **Veröffentlicht** angezeigt.
 1. Scrollen Sie wieder nach rechts , um den Bereich für **MyFirstRunbook-Python** anzuzeigen.
    Mit den Optionen am oberen Rand können wir das Runbook starten, das Runbook anzeigen, den Start für einen späteren Zeitpunkt planen oder einen [Webhook](automation-webhooks.md) erstellen, um den Start über einen HTTP-Aufruf zu ermöglichen.
-1. Im nächsten Schritt wird das Runbook gestartet. Klicken Sie hierzu auf **Start** und dann auf dem Blatt „Runbook starten“ auf **OK**.
-1. Ein Auftragsbereich für den soeben erstellten Runbookauftrag wird angezeigt. Dieser Bereich kann zwar geschlossen werden, lassen Sie ihn in diesem Fall aber geöffnet, um den Status des Auftrags verfolgen zu können.
-1. Der Auftragsstatus wird unter **Auftragszusammenfassung** angezeigt und entspricht den Statusoptionen, die Sie bereits beim Testen des Runbooks gesehen haben.
-1. Wenn der Runbookstatus *Abgeschlossen*lautet, klicken Sie auf **Ausgabe**. Der Ausgabebereich wird geöffnet, und der Text *Hello World* wird angezeigt.
-1. Schließen Sie den Ausgabebereich.
-1. Klicken Sie auf **Alle Protokolle**, um den Bereich „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabedatenstrom sollte nur *Hello World* angezeigt werden. Hier können aber auch andere Datenströme für einen Runbookauftrag (wie etwa „Ausführlich“ und „Fehler“) angezeigt werden, sofern das Runbook Schreibvorgänge dafür durchführt.
-1. Schließen Sie den Datenstrom- und den Auftragsbereich, um zum Bereich „MyFirstRunbook-Python“ zurückzukehren.
-1. Klicken Sie auf **Aufträge** , um den Auftragsbereich für dieses Runbook zu öffnen. Dadurch werden alle von diesem Runbook erstellten Aufträge aufgeführt. Hier ist nur ein einzelner Auftrag aufgeführt, da Sie den Auftrag bislang erst einmal ausgeführt haben.
-1. Wenn Sie auf diesen Auftrag klicken, wird wieder der Auftragsbereich geöffnet, den Sie sich beim Starten des Runbooks angesehen haben. So können Sie bereits ausgeführte Aufträge öffnen und Details zu jedem Auftrag anzeigen, der für ein bestimmtes Runbook erstellt wurde.
+2. Im nächsten Schritt wird das Runbook gestartet. Klicken Sie hierzu auf **Start** und dann auf dem Blatt „Runbook starten“ auf **OK**.
+3. Ein Auftragsbereich für den soeben erstellten Runbookauftrag wird angezeigt. Dieser Bereich kann zwar geschlossen werden, lassen Sie ihn in diesem Fall aber geöffnet, um den Status des Auftrags verfolgen zu können.
+4. Der Auftragsstatus wird unter **Auftragszusammenfassung** angezeigt und entspricht den Statusoptionen, die Sie bereits beim Testen des Runbooks gesehen haben.
+5. Wenn der Runbookstatus *Abgeschlossen*lautet, klicken Sie auf **Ausgabe**. Der Ausgabebereich wird geöffnet, und der Text *Hello World* wird angezeigt.
+6. Schließen Sie den Ausgabebereich.
+7. Klicken Sie auf **Alle Protokolle**, um den Bereich „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabedatenstrom sollte nur *Hello World* angezeigt werden. Hier können aber auch andere Datenströme für einen Runbookauftrag (wie etwa „Ausführlich“ und „Fehler“) angezeigt werden, sofern das Runbook Schreibvorgänge dafür durchführt.
+8. Schließen Sie den Datenstrom- und den Auftragsbereich, um zum Bereich „MyFirstRunbook-Python“ zurückzukehren.
+9. Klicken Sie auf **Aufträge** , um den Auftragsbereich für dieses Runbook zu öffnen. Dadurch werden alle von diesem Runbook erstellten Aufträge aufgeführt. Hier ist nur ein einzelner Auftrag aufgeführt, da Sie den Auftrag bislang erst einmal ausgeführt haben.
+10. Wenn Sie auf diesen Auftrag klicken, wird wieder der Auftragsbereich geöffnet, den Sie sich beim Starten des Runbooks angesehen haben. So können Sie bereits ausgeführte Aufträge öffnen und Details zu jedem Auftrag anzeigen, der für ein bestimmtes Runbook erstellt wurde.
 
 ## <a name="add-authentication-to-manage-azure-resources"></a>Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen
 
@@ -194,9 +192,7 @@ async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_n
 async_vm_start.wait()
 ```
 
-Beim Starten eines Python-Runbooks (entweder über das Blatt **Test** oder als veröffentlichtes Runbook) können Sie die Werte für Parameter auf dem Blatt **Runbook starten** unter **Parameter** eingeben.
-
-![Feld für Parameterwerte](media/automation-first-runbook-textual-python/runbook-python-param-highlight.png)
+Beim Starten eines Python-Runbooks (entweder auf der Seite **Test** oder als veröffentlichtes Runbook) können Sie die Werte für Parameter auf der Seite **Runbook starten** unter **Parameter** eingeben.
 
 Wenn Sie mit der Eingabe eines Werts im ersten Feld begonnen haben, wird jeweils ein weiteres Feld angezeigt, sodass Sie die erforderliche Anzahl von Parameterwerten eingeben können.
 

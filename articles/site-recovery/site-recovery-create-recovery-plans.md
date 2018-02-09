@@ -1,5 +1,5 @@
 ---
-title: "Erstellen von Wiederherstellungsplänen für Failover und Wiederherstellung in Azure Site Recovery | Microsoft-Dokumentation"
+title: "Erstellen und Anpassen von Wiederherstellungsplänen für Failover und Wiederherstellung in Azure Site Recovery | Microsoft-Dokumentation"
 description: "Beschreibt das Erstellen und Anpassen von Wiederherstellungsplänen in Azure Site Recovery für Failover und Wiederherstellung von virtuellen Computern und physischen Servern"
 services: site-recovery
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/25/2017
+ms.date: 01/26/2018
 ms.author: raynew
-ms.openlocfilehash: 202e0ac8be36e9156ec16fadc1b722f4eb3d1432
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 9839a989246b28c1a194b8d1f0e99c1bd80ac2e5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-recovery-plans"></a>Erstellen von Wiederherstellungsplänen
 
@@ -33,60 +33,96 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 * Modellieren von Abhängigkeiten zwischen Computern, indem sie in einer Wiederherstellungsplangruppe zusammengefasst werden Beispiel: Zum Ausführen eines Failovers und Erstellen einer spezifischen Anwendung gruppieren Sie alle virtuellen Computer für diese Anwendung in derselben Wiederherstellungsplangruppe.
 * Ausführen eines Failovers. Sie können für einen Wiederherstellungsplan ein Testfailover oder ein geplantes bzw. ungeplantes Failover durchführen.
 
+## <a name="why-use-recovery-plans"></a>Gründe für die Verwendung von Wiederherstellungsplänen
 
-## <a name="create-a-recovery-plan"></a>Erstellen eines Wiederherstellungsplans
+Mit Wiederherstellungsplänen können Sie einen systematischen Wiederherstellungsprozess planen, indem Sie kleine unabhängige Einheiten erstellen, die Sie verwalten können. Diese Einheiten stellen in der Regel eine Anwendung in Ihrer Umgebung dar. Mit einem Wiederherstellungsplan können Sie nicht nur die Abfolge definieren, nach der virtuelle Computer gestartet werden, sondern Sie können auch Aufgaben automatisieren, die während der Wiederherstellung häufig anfallen.
+
+
+**Eine wichtige Möglichkeit zur Überprüfung, ob Sie auf die Cloudmigration oder die Notfallwiederherstellung vorbereitet sind, ist die folgende Maßnahme: Stellen Sie sicher, dass bei Ihnen alle Anwendungen Teil eines Wiederherstellungsplans sind und die einzelnen Wiederherstellungspläne auf die Wiederherstellung in Microsoft Azure getestet wurden. Nachdem Sie diese Vorbereitungsmaßnahmen getroffen haben, können Sie für Ihr gesamtes Datencenter selbstbewusst die Migration bzw. das Failover zu Microsoft Azure durchführen.**
+ 
+Im Folgenden sind die drei wichtigsten Wertbeiträge eines Wiederherstellungsplans aufgeführt:
+
+### <a name="model-an-application-to-capture-dependencies"></a>Modellieren einer Anwendung für die Erfassung von Abhängigkeiten
+
+Ein Wiederherstellungsplan umfasst eine Gruppe mit virtuellen Computern, die normalerweise eine Anwendung bilden und für die gemeinsam ein Failover durchgeführt wird. Mit den Wiederherstellungsplankonstrukten können Sie diese Gruppe so erweitern, dass Ihre anwendungsspezifischen Eigenschaften erfasst werden.
+ 
+Wir verwenden hier ein Beispiel für eine Anwendung mit drei Ebenen:
+
+* SQL-Back-End
+* Middleware
+* Web-Front-End
+
+Der Wiederherstellungsplan kann angepasst werden, um sicherzustellen, dass die virtuellen Computer nach einem Failover in der richtigen Reihenfolge bereitgestellt werden. Das SQL-Back-End sollte zuerst, anschließend die Middleware und zuletzt das Web-Front-End gestartet werden. Mit dieser Reihenfolge wird sichergestellt, dass die Anwendung funktioniert, nachdem der letzte virtuelle Computer hochgefahren wurde. Wenn beispielweise die Middleware gestartet wird, wird versucht, dafür eine Verbindung mit der SQL-Ebene herzustellen. Durch den Wiederherstellungsplan wurde dafür gesorgt, dass die SQL-Ebene bereits ausgeführt wird. Außerdem wird durch das Hochfahren der Front-End-Server an letzter Stelle sichergestellt, dass Endbenutzer nicht versehentlich eine Verbindung mit der Anwendungs-URL herstellen, bevor alle Komponenten ausgeführt werden und die Anwendung für die Annahme von Anforderungen bereit ist. Zur Erstellung dieser Abhängigkeiten können Sie den Wiederherstellungsplan anpassen, um Gruppen hinzuzufügen. Wählen Sie anschließend einen virtuellen Computer aus, und ändern Sie die dazugehörige Gruppe, um sie zwischen Gruppen zu verschieben.
+
+![Beispiel für einen Wiederherstellungsplan](./media/site-recovery-create-recovery-plans/rp.png)
+
+Nachdem Sie die Anpassung abgeschlossen haben, können Sie die genauen Wiederherstellungsschritte visualisieren. Hier ist die Reihenfolge der Schritte angegeben, die während des Failovers eines Wiederherstellungsplans ausgeführt werden:
+
+* Der erste Schritt umfasst das Herunterfahren, wobei versucht wird, die lokalen virtuellen Computer auszuschalten (mit Ausnahme eines Testfailovers, bei dem der primäre Standort weiter ausgeführt werden muss).
+* Als Nächstes wird das parallele Failover aller virtuellen Computer des Wiederherstellungsplans ausgelöst. Im Failoverschritt werden die Datenträger der virtuellen Computer mit replizierten Daten vorbereitet.
+* Zuletzt erfolgt der Reihenfolge nach die Ausführung für die Startgruppen, und die virtuellen Computer der einzelnen Gruppen werden gestartet: zuerst Gruppe 1, anschließend Gruppe 2 und zuletzt Gruppe 3. Falls eine Gruppe mehr als einen virtuellen Computer enthält (z.B. ein Web-Front-End mit Lastenausgleich), werden alle parallel gestartet.
+
+**Durch die gruppenübergreifende Sequenzierung wird sichergestellt, dass Abhängigkeiten zwischen verschiedenen Anwendungsebenen berücksichtigt werden und der RTO-Wert der Anwendungswiederherstellung, falls zutreffend, per Parallelität verbessert werden kann.**
+
+   > [!NOTE]
+   > Für Computer, die Teil einer einzelnen Gruppe sind, wird das Failover parallel durchgeführt. Für Computer, die Teil unterschiedlicher Gruppen sind, wird das Failover in der Reihenfolge der Gruppen durchgeführt. Erst nachdem für alle Computer von Gruppe 1 das Failover und der Startvorgang durchgeführt wurden, wird das Failover für die Computer von Gruppe 2 gestartet.
+
+### <a name="automate-most-recovery-tasks-to-reduce-rto"></a>Automatisieren der meisten Wiederherstellungsaufgaben zur Verringerung des RTO-Werts
+
+Das Wiederherstellen von großen Anwendungen kann eine komplexe Aufgabe sein. Außerdem ist es schwierig, sich nach einem Failover oder einer Migration an die genauen Anpassungsschritte zu erinnern. Es kann vorkommen, dass nicht Sie, sondern eine andere Person das Failover auslösen muss, die mit den Eigenheiten der Anwendung nicht vollständig vertraut ist. In Notfällen ist es schwierig und fehleranfällig, wenn zu viele manuelle Schritte im Kopf behalten werden müssen. Mit einem Wiederherstellungsplan können Sie die erforderlichen Aktionen automatisieren, die Sie für die einzelnen Schritte durchführen müssen, indem Sie Microsoft Azure Automation-Runbooks nutzen. Mit Runbooks können Sie häufig anfallende Wiederherstellungsaufgaben automatisieren (wie in den Beispielen unten angegeben). Für Aufgaben, die nicht automatisiert werden können, haben Sie mit Wiederherstellungsplänen auch die Möglichkeit, manuelle Aktionen einzufügen.
+
+* Aufgaben auf dem virtuellen Azure-Computer nach dem Failover: Sind normalerweise erforderlich, damit Sie eine Verbindung mit dem virtuellen Computer herstellen können, z.B.:
+    * Erstellen einer öffentlichen IP auf dem virtuellen Computer nach dem Failover
+    * Zuweisen einer NSG zur NIC des virtuellen Computers, für den das Failover durchgeführt wurde
+    * Hinzufügen eines Lastenausgleichs zu einer Verfügbarkeitsgruppe
+* Aufgaben innerhalb des virtuellen Computers nach dem Failover: Hiermit wird die Anwendung neu konfiguriert, damit sie in der neuen Umgebung weiterhin richtig funktioniert, z.B.:
+    * Ändern der Datenbank-Verbindungszeichenfolge innerhalb des virtuellen Computers
+    * Ändern der Webserverkonfiguration/-regeln
+
+**Mit einem vollständigen Wiederherstellungsplan, mit dem die Aufgaben nach der Wiederherstellung mithilfe von Automation-Runbooks automatisiert werden, können Sie ein Failover per Klick und eine Optimierung des RTO-Werts erzielen.**
+
+### <a name="test-failover-to-be-ready-for-a-disaster"></a>Testfailover als Vorbereitung auf einen Notfall
+
+Ein Wiederherstellungsplan kann verwendet werden, um sowohl ein Failover als auch ein Testfailover auszulösen. Sie sollten immer ein Testfailover für die Anwendung durchführen, bevor Sie ein Failover durchführen. Mithilfe des Testfailovers können Sie prüfen, ob die Anwendung am Wiederherstellungsstandort gestartet wird.  Falls Sie etwas übersehen haben, können Sie dann leicht eine Bereinigung auslösen und das Testfailover erneut durchführen. Führen Sie das Testfailover mehrere Male durch, bis Sie über die Sicherheit verfügen, dass die Anwendung reibungslos wiederhergestellt wird.
+
+![Testen des Wiederherstellungsplans](./media/site-recovery-create-recovery-plans/rptest.png)
+
+**Jede Anwendung ist anders, und Sie sollten Wiederherstellungspläne erstellen, die jeweils richtig angepasst sind. Außerdem ändern sich die Anwendungen und ihre Abhängigkeiten in der heutigen dynamischen Datencenter-Welt ständig. Führen Sie für Ihre Anwendungen einmal pro Quartal ein Testfailover durch, um zu prüfen, ob der Wiederherstellungsplan noch aktuell ist.**
+
+## <a name="how-to-create-a-recovery-plan"></a>Erstellen eines Wiederherstellungsplans
 
 1. Klicken Sie auf **Wiederherstellungspläne** > **Wiederherstellungsplan erstellen**.
-   Geben Sie einen Namen für den Wiederherstellungsplan sowie die Quelle und das Ziel an. Der Quellspeicherort muss virtuelle Computer aufweisen, die für Failover und Wiederherstellung aktiviert sind.
+   Geben Sie einen Namen für den Wiederherstellungsplan sowie die Quelle und das Ziel an. Der Quellspeicherort muss virtuelle Computer aufweisen, die für Failover und Wiederherstellung aktiviert sind. Wählen Sie basierend auf den virtuellen Computern, die Teil des Wiederherstellungsplans sein sollen, eine Quelle und ein Ziel aus. 
 
-    - Zur Replikation von VMM zu VMM wählen Sie **Quelltyp** > **VMM** und die VMM-Quell- und -Zielserver aus. Klicken Sie auf **Hyper-V**, um geschützte Clouds anzuzeigen.
-    - Für VMM zu Azure wählen Sie **Quelltyp** > **VMM**.  Wählen Sie den VMM-Quellserver und als Ziel **Azure** aus.
-    - Zur Hyper-V-Replikation zu Azure (ohne VMM) wählen Sie **Quelltyp** > **Hyper-V-Site** aus. Wählen Sie den Standort als Quelle und als Ziel **Azure**  aus.
-    - Bei der Replikation eines virtuellen VMware-Computers oder eines physischen lokalen Servers zu Azure wählen Sie einen Konfigurationsserver als Quelle und als Ziel **Azure** aus.
-    - Wählen Sie für einen Azure-zu-Azure-Wiederherstellungsplan eine Azure-Region als Quelle und eine sekundäre Azure-Region als Ziel aus. Die sekundären Azure-Regionen sind nur die Regionen, die zum Schutz virtueller Computer dienen.
-2. Wählen Sie unter **Virtuelle Computer auswählen** die virtuellen Computer (oder die Replikationsgruppe) aus, die Sie der Standardgruppe (Gruppe 1) im Wiederherstellungsplan hinzufügen möchten.
+   |Szenario                   |Quelle               |Ziel           |
+   |---------------------------|---------------------|-----------------|
+   |Azure zu Azure             |Azure-Region         |Azure-Region     |
+   |VMware zu Azure            |Konfigurationsserver |Azure            |
+   |VMM zu Azure               |VMM-Anzeigename    |Azure            |
+   |Hyper-V-Site zu Azure      |Name der Hyper-V-Site    |Azure            |
+   |Physische Computer zu Azure |Konfigurationsserver |Azure            |
+   |VMM zu VMM                 |VMM-Anzeigename    |VMM-Anzeigename|
 
-## <a name="customize-and-extend-recovery-plans"></a>Anpassen und Erweitern von Wiederherstellungsplänen
+   > [!NOTE]
+   > Ein Wiederherstellungsplan kann virtuelle Computer mit derselben Quelle und demselben Ziel aufweisen. Virtuelle Computer vom Typ VMware und VMM können nicht Teil desselben Wiederherstellungsplans sein. Virtuelle VMware-Computer und physische Computer können aber demselben Plan hinzugefügt werden, da als Quelle jeweils ein Konfigurationsserver dient.
+
+2. Wählen Sie unter **Virtuelle Computer auswählen** die virtuellen Computer (oder die Replikationsgruppe) aus, die Sie der Standardgruppe (Gruppe 1) im Wiederherstellungsplan hinzufügen möchten. Nur die virtuellen Computer, die auf der Quelle geschützt waren (gemäß Auswahl im Wiederherstellungsplan) und auch auf dem Ziel geschützt sind (gemäß Auswahl im Wiederherstellungsplan) können ausgewählt werden.
+
+## <a name="how-to-customize-and-extend-recovery-plans"></a>Anpassen und Erweitern von Wiederherstellungsplänen
+
+Sie können Wiederherstellungspläne anpassen und erweitern, indem Sie auf dem Ressourcenblatt für den Site Recovery-Wiederherstellungsplan auf die Registerkarte „Anpassen“ klicken.
 
 Sie können Wiederherstellungspläne anpassen und erweitern:
 
 - **Hinzufügen neuer Gruppen:** Fügen Sie (bis zu sieben) zusätzliche Wiederherstellungsplangruppen zur Standardgruppe hinzu, und fügen Sie dann weitere Computer oder Replikationsgruppen zu diesen Wiederherstellungsplangruppen hinzu. Die Gruppen sind in der Reihenfolge nummeriert, in der sie von Ihnen hinzugefügt werden. Ein virtueller Computer oder eine Replikationsgruppe kann nur in eine Wiederherstellungsplangruppe eingefügt werden.
 - **Hinzufügen einer manuellen Aktion**: Sie können manuelle Aktionen hinzufügen, die vor oder nach einer Wiederherstellungsplangruppe ausgeführt werden. Wenn der Wiederherstellungsplan ausgeführt wird, wird er an dem Punkt angehalten, an dem Sie die manuelle Aktion eingefügt haben. Ein Dialogfeld fordert Sie auf anzugeben, dass die manuelle Aktion abgeschlossen wurde.
-- **Hinzufügen eines Skripts:** Sie können Skripts für die Ausführung vor oder nach einer Wiederherstellungsplangruppe hinzufügen. Hierbei wird für die Gruppe ein neuer Satz mit Aktionen hinzugefügt. Eine Gruppe von Vorabschritten für „Group 1“ wird beispielsweise mit dem folgenden Namen erstellt: „Group 1: Pre-steps“. Alle Vorabschritte werden in diesem Satz aufgelistet. Sie können am primären Standort nur dann ein Skript hinzufügen, wenn Sie einen VMM-Server bereitgestellt haben.
-- **Hinzufügen von Azure-Runbooks:** Sie können Wiederherstellungspläne mit Azure-Runbooks erweitern, beispielsweise zum Automatisieren von Aufgaben oder zum Erstellen einer Wiederherstellung in einem Schritt. [detaillierte Kapazitätsplanung](site-recovery-runbook-automation.md)
+- **Hinzufügen eines Skripts:** Sie können Skripts für die Ausführung vor oder nach einer Wiederherstellungsplangruppe hinzufügen. Hierbei wird für die Gruppe ein neuer Satz mit Aktionen hinzugefügt. Eine Gruppe von Vorabschritten für „Group 1“ wird beispielsweise mit dem folgenden Namen erstellt: „Group 1: Pre-steps“. Alle Vorabschritte werden in dieser Gruppe aufgelistet. Sie können am primären Standort nur dann ein Skript hinzufügen, wenn Sie einen VMM-Server bereitgestellt haben. [Weitere Informationen](site-recovery-how-to-add-vmmscript.md)
+- **Hinzufügen von Azure-Runbooks:** Sie können Wiederherstellungspläne mit Azure-Runbooks erweitern, beispielsweise zum Automatisieren von Aufgaben oder zum Erstellen einer Wiederherstellung in einem Schritt. [Weitere Informationen](site-recovery-runbook-automation.md)
 
-## <a name="add-scripts"></a>Hinzufügen von Skripts
 
-Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden.
+## <a name="how-to-add-a-script-runbook-or-manual-action-to-a-plan"></a>Hinzufügen eines Skripts, eines Runbooks oder einer manuellen Aktion zu einem Plan
 
- - Achten Sie darauf, dass in Skripts try/catch-Blöcke verwendet werden, damit die Ausnahmen ordnungsgemäß behandelt werden.
-    - Falls im Skript eine Ausnahme auftritt, wird die Ausführung gestoppt, und für die Aufgabe wird ein Fehler angezeigt.
-    - Wenn ein Fehler auftritt, werden keine verbleibenden Teile des Skripts ausgeführt.
-    - Wenn beim Ausführen eines ungeplanten Failovers ein Fehler auftritt, wird der Wiederherstellungsplan fortgesetzt.
-    - Wenn beim Ausführen eines geplanten Failovers ein Fehler auftritt, wird der Wiederherstellungsplan angehalten. Sie müssen das Skript korrigieren, überprüfen, ob es wie erwartet ausgeführt wird, und den Wiederherstellungsplan dann erneut ausführen.
-- Der Write-Host-Befehl funktioniert in einem Wiederherstellungsplanskript nicht, und die Ausführung des Skripts ist nicht erfolgreich. Um die Ausgabe zu erstellen, erstellen Sie ein Proxyskript, das wiederum Ihr Hauptskript ausführt. Stellen Sie sicher, dass alle Ausgaben mithilfe des Befehls „>>“ weitergeleitet werden.
-  * Die Zeitüberschreitung für das Skript wird erreicht, falls die Rückgabe nicht innerhalb von 600 Sekunden erfolgt.
-  * Falls etwas in STDERR geschrieben wird, wird das Skript als nicht erfolgreich klassifiziert. Diese Informationen werden in den Details zur Skriptausführung angezeigt.
-
-Wenn Sie VMM in Ihrer Bereitstellung verwenden:
-
-* Skripts in einem Wiederherstellungsplan werden im Kontext des VMM-Dienstkontos ausgeführt. Stellen Sie sicher, dass dieses Konto über Leseberechtigungen für die Remotefreigabe verfügt, auf der sich das Skript befindet. Testen Sie, ob das Skript auf der Berechtigungsstufe für VMM-Dienstkonten ausgeführt werden kann.
-* VMM-Cmdlets werden in einem Windows PowerShell-Modul bereitgestellt. Das Modul wird installiert, wenn Sie die VMM-Konsole installieren. Es kann mit folgendem Befehl in Ihr Skript geladen werden:
-   - Import-Module -Name virtualmachinemanager. [detaillierte Kapazitätsplanung](https://technet.microsoft.com/library/hh875013.aspx)
-* Stellen Sie sicher, dass Ihre VMM-Bereitstellung mindestens einen Bibliothekserver enthält. Standardmäßig befindet sich der Bibliotheksfreigabepfad für einen VMM-Server lokal auf dem VMM-Server mit dem Ordnernamen „MSCVMMLibrary“.
-    * Wenn Ihr Bibliotheksfreigabepfad remote vorhanden ist (oder lokal, aber nicht für „MSCVMMLibrary“ freigegeben), konfigurieren Sie die Freigabe wie folgt (hier dient „\\libserver2.contoso.com\share\“ als Beispiel):
-      * Öffnen Sie den Registrierungseditor, und navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**.
-      * Bearbeiten Sie den Wert **ScriptLibraryPath**, indem Sie dafür \\libserver2.contoso.com\share\. festlegen. Geben Sie den vollqualifizierten Domänennamen vollständig ein. Geben Sie die Berechtigungen für den Speicherort der Freigabe an. Beachten Sie, dass dies der Stammknoten der Freigabe ist. **Sie können die Bibliothek im Stammknoten in VMM durchsuchen, um dies zu überprüfen. Der Pfad, der geöffnet wird, ist der Stamm des Pfads, den Sie in der Variablen verwenden müssen**.
-      * Stellen Sie sicher, dass Sie das Skript mit einem Benutzerkonto testen, das über dieselben Berechtigungen wie das VMM-Dienstkonto verfügt. Damit wird überprüft, ob eigenständige getestete Skripts auf dieselbe Weise wie in Wiederherstellungsplänen ausgeführt werden. Legen Sie für die Ausführungsrichtlinie auf dem VMM-Server wie folgt eine Umleitung fest:
-        * Öffnen Sie die **Windows PowerShell-Konsole (64 Bit)** mit erweiterten Berechtigungen.
-        * Geben Sie Folgendes ein: **Set-executionpolicy bypass**. [Weitere Informationen](https://technet.microsoft.com/library/ee176961.aspx).
-
-> [!IMPORTANT]
-> Sie sollten nur für 64-Bit-PowerShell für die Ausführungsrichtlinie „Bypass“ festlegen. Wenn dies für das 32-Bit-PowerShell festgelegt wurde, werden die Skripts nicht ausgeführt.
-
-## <a name="add-a-script-or-manual-action-to-a-plan"></a>Hinzufügen eines Skripts oder einer manuellen Aktion zu einem Plan
-
-Sie können ein Skript zur standardmäßigen Wiederherstellungsplangruppe hinzufügen, nachdem Sie die virtuellen Computer oder Replikationsgruppen hinzugefügt und den Plan erstellt haben.
+Sie können der standardmäßigen Wiederherstellungsplangruppe ein Skript oder eine manuelle Aktion hinzufügen, nachdem Sie die virtuellen Computer oder Replikationsgruppen hinzugefügt und den Plan erstellt haben.
 
 1. Öffnen Sie den Wiederherstellungsplan.
 2. Klicken Sie auf ein Element in der Liste **Schritte**, und klicken Sie dann auf **Skript** oder **Manuelle Aktion**.
@@ -95,16 +131,22 @@ Sie können ein Skript zur standardmäßigen Wiederherstellungsplangruppe hinzuf
 5. Wenn Sie ein Azure-Automatisierungsrunbook hinzufügen, geben Sie das Azure Automation-Konto an, unter dem sich das Runbook befindet, und wählen das gewünschte Azure-Runbookskript aus.
 6. Führen Sie ein Failover für den Wiederherstellungsplan aus, um sicherzustellen, dass das Skript wie erwartet funktioniert.
 
+Die Skript- bzw. Runbookoptionen sind in den folgenden Szenarien nur verfügbar, wenn ein Failover oder Failback durchgeführt wird. Eine manuelle Aktion ist sowohl für Failover als auch für Failbacks verfügbar.
 
-### <a name="add-a-vmm-script"></a>Hinzufügen eines VMM-Skripts
 
-Falls Sie über eine VMM-Quellwebsite verfügen, können Sie ein Skript auf dem VMM-Server erstellen und es in Ihren Wiederherstellungsplan einfügen.
-
-1. Erstellen Sie einen neuen Ordner in der Bibliothekfreigabe. Beispiel: \<VMMServerName>\MSSCVMMLibrary\RPScripts. Platzieren Sie diese Datei auf dem VMM-Quell- und -Zielserver.
-2. Erstellen Sie das Skript (z. B. RPScript), und überprüfen Sie, ob es wie erwartet funktioniert.
-3. Platzieren Sie das Skript am Speicherort „\<VMMServerName>\MSSCVMMLibrary“ auf den Quell- und Ziel-VMM-Servern.
+|Szenario               |Failover |Failback |
+|-----------------------|---------|---------|
+|Azure zu Azure         |Runbooks |Runbook  |
+|VMware zu Azure        |Runbooks |Nicht verfügbar       | 
+|VMM zu Azure           |Runbooks |Skript   |
+|Hyper-V-Site zu Azure  |Runbooks |Nicht verfügbar       |
+|VMM zu VMM             |Skript   |Skript   |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Weitere Informationen](site-recovery-failover.md) zum Ausführen von Failovern
+
+Sehen Sie sich dieses Video an, um den Wiederherstellungsplan in Aktion zu erleben.
+
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]

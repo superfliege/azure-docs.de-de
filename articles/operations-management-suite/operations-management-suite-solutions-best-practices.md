@@ -1,5 +1,5 @@
 ---
-title: "Bewährte Methoden für die OMS-Verwaltungslösung | Microsoft Docs"
+title: "Bewährte Methoden für die Verwaltungslösung in Azure | Microsoft-Dokumentation"
 description: 
 services: operations-management-suite
 documentationcenter: 
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: b3d07ad3164609a5628c0d9805de55a32870ab94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 155a7117f4c02bafcf66d0f7abca7dd97dc1236f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="best-practices-for-creating-management-solutions-in-operations-management-suite-oms-preview"></a>Bewährte Methoden für das Erstellen von Verwaltungslösungen in der Operations Management Suite (OMS) (Vorschau)
+# <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Bewährte Methoden für das Erstellen von Verwaltungslösungen in Azure (Vorschau)
 > [!NOTE]
-> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in der OMS, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.  
+> Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen in Azure, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.  
 
-Dieser Artikel enthält bewährte Methoden für das [Erstellen einer Verwaltungslösungsdatei](operations-management-suite-solutions-solution-file.md) in der Operations Management Suite (OMS).  Diese Informationen werden aktualisiert, sobald weitere bewährte Methoden ermittelt wurden.
+Dieser Artikel enthält bewährte Methoden für das [Erstellen einer Verwaltungslösungsdatei](operations-management-suite-solutions-solution-file.md) in Azure.  Diese Informationen werden aktualisiert, sobald weitere bewährte Methoden ermittelt wurden.
 
 ## <a name="data-sources"></a>Datenquellen
 - Datenquellen können [mit einer Resource Manager-Vorlage konfiguriert](../log-analytics/log-analytics-template-workspace-configuration.md) werden, sie sollten jedoch nicht in einer Lösungsdatei enthalten sein.  Der Grund dafür ist, dass das Konfigurieren von Datenquellen derzeit nicht idempotent ist, was bedeutet, dass die vorhandene Konfiguration im Arbeitsbereich des Benutzers von Ihrer Lösung überschrieben werden könnte.<br><br>Beispielsweise werden für Ihre Lösung Warn- und Fehlerereignisse aus dem Anwendungsereignisprotokoll benötigt.  Wenn Sie dies als Datenquelle in Ihrer Lösung angeben, besteht das Risiko, dass Informationsereignisse entfernt werden, wenn der Benutzer dies in seinem Arbeitsbereich konfiguriert hat.  Wenn Sie alle Ereignisse einschließen, werden möglicherweise übermäßig viele Informationsereignisse im Arbeitsbereich des Benutzers erfasst.
@@ -43,7 +43,7 @@ Dieser Artikel enthält bewährte Methoden für das [Erstellen einer Verwaltungs
 - Fügen Sie allen Ansichten in Ihrer Lösung eine Meldung vom Typ [Datenflussüberprüfung](../log-analytics/log-analytics-view-designer-tiles.md) hinzu, um die Benutzer auf Datenquellen hinzuweisen, die konfiguriert werden müssen, sodass die erforderlichen Daten gesammelt werden müssen.
 - Konfigurieren Sie die Lösung so, dass sie die Ansicht [enthält](operations-management-suite-solutions-solution-file.md#solution-resource), damit diese beim Entfernen der Lösung entfernt wird.
 
-## <a name="alerts"></a>Warnungen
+## <a name="alerts"></a>Alerts
 - Definieren Sie die Liste der Empfänger als Parameter in der Lösungsdatei, damit der Benutzer sie definieren kann, wenn er die Lösung installiert.
 - Konfigurieren Sie die Lösung so, dass auf Warnungsregeln [verwiesen](operations-management-suite-solutions-solution-file.md#solution-resource) wird, damit die Benutzer ihre Konfiguration ändern können.  Möglicherweise möchten die Benutzer die Empfängerliste oder den Schwellenwert der Warnung ändern oder die Warnungsregel deaktivieren. 
 

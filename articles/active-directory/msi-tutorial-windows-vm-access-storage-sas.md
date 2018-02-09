@@ -3,21 +3,21 @@ title: "Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage mit SA
 description: "Dieses Tutorial veranschaulicht, wie Sie mit einer Windows-VM-MSI (Managed Service Identität, verwaltete Dienstidentität) auf Azure Storage zugreifen und dabei SAS-Anmeldeinformationen anstelle des Zugriffsschlüssels eines Speicherkontos verwenden."
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: daveba
 manager: mtillman
-editor: bryanla
+editor: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: bryanla
-ms.openlocfilehash: fbe46b952b72d3379ba3eb0ff8c84b9d036752e3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: daveba
+ms.openlocfilehash: 0986c4470c233a21a88624f0affedb5986d86589
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage mithilfe von SAS-Anmeldeinformationen
 
@@ -71,7 +71,7 @@ Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne das
 
     ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
-## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto. 
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen 
 
 Erstellen Sie ein Speicherkonto, sofern Sie über keines verfügen. Sie können diesen Schritt auch überspringen und VM-MSI Zugriff auf die SAS-Anmeldeinformationen eines vorhandenen Speicherkontos gewähren. 
 
@@ -80,7 +80,7 @@ Erstellen Sie ein Speicherkonto, sofern Sie über keines verfügen. Sie können 
 3. Geben Sie einen Namen für das Speicherkonto ein, das Sie später verwenden werden.  
 4. **Bereitstellungsmodell** und **Kontoart** sollten jeweils auf „Resource Manager“ und „Allgemein“ festgelegt werden. 
 5. Stellen Sie sicher, dass **Abonnement** und **Ressourcengruppe** dem entsprechen, was Sie bei der Erstellung Ihrer VM im vorherigen Schritt angegeben haben.
-6. Klicken Sie auf **Erstellen**.
+6. Klicken Sie auf **Create**.
 
     ![Erstellen eines neuen Speicherkontos](media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

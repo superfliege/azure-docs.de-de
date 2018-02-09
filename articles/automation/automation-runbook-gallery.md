@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: d6a950d69e5279c3cc19d8e457bfa23c2b40f515
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 91aa10b1e7dfbe47107257fa0a5fe14f7b43ff71
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook und Modulkataloge für Azure Automation
 Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie eine Vielzahl von Szenarien nutzen, die bereits von Microsoft und der Community entwickelt wurden.  Sie können diese Szenarien ohne Anpassung verwenden oder als Ausgangspunkt nutzen und für Ihre spezifischen Anforderungen bearbeiten.
@@ -37,11 +37,8 @@ Das direkte Importieren aus dem Runbook-Katalog ist nur über das Azure-Portal m
 
 ### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>So importieren Sie mit dem Azure-Portal ein Runbook aus dem Runbook-Katalog
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-2. Klicken Sie auf die Kachel **Runbooks** , um die Liste mit den Runbooks zu öffnen.
-3. Klicken Sie auf die Schaltfläche **Katalog durchsuchen** .
-   
-    ![Schaltfläche „Katalog durchsuchen“](media/automation-runbook-gallery/browse-gallery-button.png)
-4. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus.
+2. Klicken Sie unter **Prozessautomatisierung** auf **Runbook-Katalog**.
+3. Suchen Sie das gewünschte Katalogelement, und wählen Sie es zum Anzeigen der Details aus. Auf den linken Seite können Sie weitere Suchparameter für Herausgeber und Typ eingeben.
    
     ![Katalog durchsuchen](media/automation-runbook-gallery/browse-gallery.png)
 5. Klicken Sie auf **Quellprojekt anzeigen** , um den Artikel im [TechNet Script Center](http://gallery.technet.microsoft.com/)anzuzeigen.
@@ -61,7 +58,7 @@ Microsoft empfiehlt, Runbooks aus dem Runbook-Katalog hinzuzufügen, die für an
 * Die Zusammenfassung für den Upload wird in den Ergebnissen des Runbook-Katalogs angezeigt. Geben Sie daher ausführliche Informationen ein, die dem Benutzer die Funktionen des Runbooks verdeutlichen.
 * Weisen Sie dem Upload bis zu drei der folgenden Tags zu:  Das Runbook wird im Assistenten unter den Kategorien aufgeführt, die mit seinen Tags übereinstimmen.  Nicht in dieser Liste enthaltene Tags werden vom Assistenten ignoriert. Wenn Sie keine übereinstimmenden Tags angeben, wird das Runbook unter der Kategorie „Andere“ aufgeführt.
   
-  * Backup 
+  * Sicherung
   * Capacity Management
   * Änderungssteuerung
   * Compliance
@@ -94,14 +91,8 @@ PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können
    
     ![PowerShell-Moduldetails](media/automation-runbook-gallery/gallery-item-details-blade.png) <br>
 7. Um das Modul direkt in Azure Automation zu installieren, klicken Sie auf die Schaltfläche **Importieren** .
-   
-    ![Schaltfläche „Modul importieren“](media/automation-runbook-gallery/module-import-button.png)
 8. Wenn Sie auf die Schaltfläche **Importieren** klicken, wird der Name des Moduls angezeigt, das Sie importieren möchten. Wenn alle Abhängigkeiten installiert sind, ist die Schaltfläche **OK** aktiv. Falls Abhängigkeiten fehlen, müssen diese importiert werden, bevor das Modul importiert werden kann.
-9. Klicken Sie auf **OK**, um das Modul zu importieren. Wenn Azure Automation ein Modul in Ihr Konto importiert, werden Metadaten zum Modul und den Cmdlets extrahiert.
-   
-    ![Importieren der Modul-Seite](media/automation-runbook-gallery/module-import-blade.png)
-   
-    Dies kann einige Minuten dauern, da jede Aktivität extrahiert werden muss.
+9. Klicken Sie auf der Seite **Importieren** auf **OK**, um das Modul zu importieren. Wenn Azure Automation ein Modul in Ihr Konto importiert, werden Metadaten zum Modul und den Cmdlets extrahiert. Dies kann einige Minuten dauern, da jede Aktivität extrahiert werden muss.
 10. Sie erhalten jeweils eine Benachrichtigung, wenn das Modul bereitgestellt wird und wenn der Vorgang abgeschlossen ist.
 11. Nachdem das Modul importiert wurde, werden die verfügbaren Aktivitäten angezeigt, und Sie können die zugehörigen Ressourcen in Ihren Runbooks und in der Konfiguration für den gewünschten Zustand verwenden.
 

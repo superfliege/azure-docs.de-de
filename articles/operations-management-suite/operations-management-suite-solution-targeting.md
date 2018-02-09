@@ -1,6 +1,6 @@
 ---
-title: "Zielgruppenadressierung für Lösung in OMS | Microsoft-Dokumentation"
-description: "Zielgruppenadressierung für Lösung ist ein Feature in Operations Management Suite (OMS), das Ihnen ermöglicht, Verwaltungslösungen auf einen bestimmten Satz von Agents zu beschränken.  Dieser Artikel beschreibt, wie Sie eine Bereichskonfiguration erstellen und auf eine Lösung anwenden."
+title: "Zielgruppenadressierung von Verwaltungslösungen in Azure | Microsoft-Dokumentation"
+description: "Die Zielgruppenadressierung von Verwaltungslösungen bietet Ihnen die Möglichkeit, Verwaltungslösungen auf einen bestimmten Satz von Agents zu beschränken.  Dieser Artikel beschreibt, wie Sie eine Bereichskonfiguration erstellen und auf eine Lösung anwenden."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e24a7540a67f842b8229223bf6602cd9e0ee5dbd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a>Verwenden von Zielgruppenadressierung für Lösung in Operations Management Suite (OMS), um Verwaltungslösungen auf einen bestimmten Satz von Agents zu beschränken
-Wenn Sie OMS eine Lösung hinzufügen, wird sie automatisch standardmäßig allen mit Ihrem Log Analytics-Arbeitsbereich verbundenen Windows- und Linux-Agents bereitgestellt.  Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken.  Dieser Artikel beschreibt die Verwendung von **Zielgruppenadressierung für Lösung**, eines OMS-Features, das Ihnen ermöglicht, einen Bereich auf Ihre Lösungen anzuwenden.
+# <a name="targeting-management-solutions-in-azure-preview"></a>Zielgruppenadressierung von Verwaltungslösungen in Azure (Vorschau)
+Wenn Sie eine Verwaltungslösung zu Ihrem Abonnement hinzufügen, wird sie automatisch standardmäßig für alle mit Ihrem Log Analytics-Arbeitsbereich verbundenen Windows- und Linux-Agents bereitgestellt.  Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken.  Dieser Artikel beschreibt, wie Sie das Feature der **Zielgruppenadressierung für eine Lösung** verwenden, um einen Geltungsbereich auf Ihre Lösungen anzuwenden.
 
 ## <a name="how-to-target-a-solution"></a>Durchführen der Zielgruppenadressierung für eine Lösung
-Die Zielgruppenadressierung für eine Lösung erfolgt in drei Schritten, wie in den folgenden Abschnitten beschrieben.  Beachten Sie, dass Sie sowohl das OMS-Portal als auch das Azure-Portal für verschiedene Schritte benötigen.
+Die Zielgruppenadressierung für eine Lösung erfolgt in drei Schritten, wie in den folgenden Abschnitten beschrieben. 
 
 
 ### <a name="1-create-a-computer-group"></a>1. Erstellen einer Computergruppe

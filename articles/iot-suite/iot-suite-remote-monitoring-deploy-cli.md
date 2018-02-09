@@ -1,22 +1,22 @@
 ---
 title: "Bereitstellen der Java-Remoteüberwachungslösung – Azure | Microsoft-Dokumentation"
-description: "Dieses Tutorial veranschaulicht, wie Sie die Java-Microservices der vorkonfigurierten Remoteüberwachungslösung über die Befehlszeilenschnittstelle bereitstellen."
+description: "Dieses Tutorial zeigt, wie Sie mithilfe der CLI eine vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen."
 services: 
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 01/29/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: ea3764299d07f548abbc2857a3adbfb4dc50dec8
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 94c3db3286623264e9df7873962d10dd5cc662d4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-the-remote-monitoring-preconfigured-solution-using-the-cli"></a>Bereitstellen der vorkonfigurierten Remoteüberwachungslösung über die Befehlszeilenschnittstelle
 
@@ -52,10 +52,12 @@ Befolgen Sie die Anweisungen auf dem Bildschirm, um den Anmeldevorgang abzuschli
 
 Beim Bereitstellen der vorkonfigurierten Lösung sind mehrere Optionen verfügbar, mit denen der Bereitstellungsvorgang konfiguriert wird:
 
-| Option | Werte | Beschreibung |
+| Option | Werte | BESCHREIBUNG |
 | ------ | ------ | ----------- |
-| SKU    | `basic`, `standard` | Eine Bereitstellung des Typs _basic_ ist für Test- und Demonstrationszwecke vorgesehen. Dabei werden alle Microservices auf einem einzelnen virtuellen Computer bereitgestellt. Eine Bereitstellung des Typs _standard_ ist für die Produktion vorgesehen. Die Microservices werden auf mehreren virtuellen Computern bereitgestellt. |
+| SKU    | `basic`, `standard`, `local` | Eine Bereitstellung des Typs _basic_ ist für Test- und Demonstrationszwecke vorgesehen. Dabei werden alle Microservices auf einem einzelnen virtuellen Computer bereitgestellt. Eine Bereitstellung des Typs _standard_ ist für die Produktion vorgesehen. Die Microservices werden auf mehreren virtuellen Computern bereitgestellt. Ein _lokale_ Bereitstellung konfiguriert einen Docker-Container für die Ausführung der Microservices auf Ihrem lokalen Computer und verwendet Azure-Dienste wie Storage und Cosmos DB in der Cloud. |
 | Laufzeit | `dotnet`, `java` | Wählt die Implementierung der Sprache für die Microservices aus. |
+
+Informationen zur Verwendung der lokalen Bereitstellung finden Sie unter [Lokales Ausführen der Remoteüberwachungslösung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables).
 
 ## <a name="deploy-the-preconfigured-solution"></a>Bereitstellen der vorkonfigurierten Lösung
 

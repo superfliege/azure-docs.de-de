@@ -3,8 +3,8 @@ title: Problembehandlung von Web-Apps in Azure App Service in Visual Studio
 description: "Erfahren Sie mehr über die Problembehandlung für eine Azure-Web-App mithilfe von Remotedebugging-, Ablaufverfolgungs- und Protokollierungstools, die in Visual Studio 2013 integriert sind."
 services: app-service
 documentationcenter: .net
-author: tdykstra
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.service: app-service
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.author: rachelap
-ms.openlocfilehash: 1e3aff1898665c834a70e6c49f23e408a508b10a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: cephalin
+ms.openlocfilehash: 6b1d5694c4d80a4db584b0c76a044dd596c5d553
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Web-Apps in Azure App Service in Visual Studio
 ## <a name="overview"></a>Übersicht
@@ -117,9 +117,9 @@ Falls die detaillierte Fehlermeldung nicht genügend Informationen liefert und s
 
 Remotedebuggen funktioniert nicht in den Express-Editionen von Visual Studio.
 
-In diesem Abschnitt wird das Remotedebuggen mithilfe des Projekts, das Sie in [Erstellen einer ASP.NET-Web-App in Azure][app-service-web-get-started-dotnet.md] erstellt haben, veranschaulicht.
+Dieser Abschnitt veranschaulicht das Remotedebuggen anhand des Projekts, das Sie in [Erstellen einer ASP.NET-Web-App in Azure](app-service-web-get-started-dotnet.md) erstellt haben.
 
-1. Öffnen Sie das Webprojekt, das Sie in [Erstellen einer ASP.NET-Web-App in Azure][app-service-web-get-started-dotnet.md] erstellt haben.
+1. Öffnen Sie das Webprojekt, das Sie in [Erstellen einer ASP.NET-Web-App in Azure](app-service-web-get-started-dotnet.md) erstellt haben.
 
 2. Öffnen Sie *Controllers\HomeController.cs*.
 
@@ -135,7 +135,7 @@ In diesem Abschnitt wird das Remotedebuggen mithilfe des Projekts, das Sie in [E
 
 5. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und klicken Sie anschließend auf **Veröffentlichen**.
 
-6. Wählen Sie in der Dropdownliste **Profil** das gleiche Profil aus, das Sie in [Erstellen einer ASP.NET-Web-App in Azure][app-service-web-get-started-dotnet.md] verwendet haben. Klicken Sie dann auf „Einstellungen“.
+6. Wählen Sie in der Dropdownliste **Profil** das gleiche Profil aus, das Sie in [Erstellen einer ASP.NET-Web-App in Azure](app-service-web-get-started-dotnet.md) verwendet haben. Klicken Sie dann auf „Einstellungen“.
 
 7. Klicken Sie im Dialogfeld **Veröffentlichen** auf die Registerkarte **Einstellungen**, ändern Sie **Konfiguration** in **Debug**, und klicken Sie anschließend auf **Speichern**.
 

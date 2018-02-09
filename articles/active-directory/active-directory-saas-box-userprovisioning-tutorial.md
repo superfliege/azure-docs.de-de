@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Box | Microsoft Docs'
+title: "Tutorial: Konfigurieren von Box für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Box konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -11,21 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 0f13fa47ef8eacd822f5744b9dde2bb1f0f2909f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8ac0c78c09b30c1a9cc698f5e78166a2b64240d7
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-box-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Box für die automatische Benutzerbereitstellung
+# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Box für die automatische Benutzerbereitstellung
 
 Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Box und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Box automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
 *   Ein Box-Abonnement, für das einmaliges Anmelden aktiviert ist

@@ -1,6 +1,6 @@
 ---
-title: Automatisiertes Skript zum Erstellen einer Service Manager-Web-App zum Verbinden mit dem IT Service Management-Connector in OMS | Microsoft-Dokumentation
-description: "Erstellen Sie mithilfe eines automatisierten Skripts eine Service Manager-Web-App zum Verbinden mit dem IT Service Management-Connector in OMS sowie zum zentralen Überwachen und Verwalten der ITSM-Arbeitsaufgaben."
+title: Automatisiertes Skript zum Erstellen einer Service Manager-Web-App zum Herstellen einer Verbindung mit dem ITSM-Connector in Azure | Microsoft-Dokumentation
+description: "Erstellen Sie mithilfe eines automatisierten Skripts eine Service Manager-Web-App, um eine Verbindung mit dem ITSM-Connector in Azure herzustellen und die ITSM-Arbeitselemente zentral zu überwachen und zu verwalten."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34ec15781776fc8373cd6c9dafa75010e942e167
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script-preview"></a>Erstellen einer Service Manager-Web-App mithilfe des automatisierten Skripts (Vorschau)
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Erstellen einer Service Manager-Web-App mithilfe des automatisierten Skripts
 
 Führen Sie das folgende Skript aus, um die Web-App für Ihre Service Manager-Instanz zu erstellen. Weitere Informationen zur Service Manager-Verbindung finden Sie hier: [Service Manager-Web-App](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
@@ -28,7 +28,7 @@ Führen Sie das Skript nach Angabe der folgenden erforderlichen Details aus:
 
 - Details zum Azure-Abonnement
 - Ressourcengruppenname
-- Ort
+- Speicherort
 - Details zum Service Manager-Server (Servername, Domäne, Benutzername und Kennwort)
 - Präfix des Namens der Website für Ihre Web-App
 - Service Bus-Namespace.

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: e25a6555e06a437259cddcc46c27add5f8b2ad8b
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 8762b2cca03f4c95f7543803a024bff4573927a1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Häufig gestellte Fragen zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (auch als Common Internet File System oder CIFS bezeichnet) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync (Vorschauversion) verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -73,7 +73,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="redundancy-options"></a>
 **Welche Speicherredundanzoptionen werden von Azure Files unterstützt?**  
-    Azure Files unterstützt derzeit nur Konten mit lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS). Für die Zukunft ist Unterstützung für zonenredundanten Speicher (ZRS) und georedundanten Speicher mit Lesezugriff (Read-Access Geo Redundant Storage, RA-GRS) geplant. Zum gegenwärtigen Zeitpunkt sind hierfür aber noch keine Zeitpläne verfügbar.
+    Azure Files unterstützt derzeit nur Konten mit lokal redundantem Speicher (LRS), zonenredundantem Speicher (ZRS) und georedundantem Speicher (GRS). Für die Zukunft ist Unterstützung für georedundanten Speicher mit Lesezugriff (Read-Access Geo Redundant Storage, RA-GRS) geplant. Zum gegenwärtigen Zeitpunkt sind hierfür aber noch keine Zeitpläne verfügbar.
 
 * <a id="tier-options"></a>
 **Welche Speicherebenen werden in Azure Files unterstützt?**  
@@ -90,7 +90,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="afs-region-availability"></a>
 **Welche Regionen werden für Azure File Sync (Vorschau) unterstützt?**  
-    Azure File Sync ist derzeit in den Regionen „USA, Osten“, „USA, Westen“, „Europa, Westen“, „Australien, Osten“ und „Asien, Südosten“ verfügbar. Unterstützung für weitere Regionen wird hinzugefügt, während auf die allgemeine Verfügbarkeit hingearbeitet wird. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](storage-sync-files-planning.md#region-availability).
+    Azure File Sync ist derzeit in den Regionen „Australien, Osten“, „Kanada, Mitte“, „USA, Osten“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“ und „USA, Westen“ verfügbar. Unterstützung für weitere Regionen wird hinzugefügt, während auf die allgemeine Verfügbarkeit hingearbeitet wird. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](storage-sync-files-planning.md#region-availability).
 
 * <a id="cross-domain-sync"></a>
 **Kann ich in Domänen eingebundene Server und nicht in Domänen eingebundene Server in derselben Synchronisierungsgruppe verwenden?**  
@@ -113,7 +113,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="sizeondisk-versus-size"></a>
 **Warum stimmt die Eigenschaft *Größe auf Datenträger* einer Datei nach der Verwendung von Azure File Sync nicht mit der Eigenschaft *Größe* überein?**  
-    Der Windows-Datei-Explorer verwendet zwei Eigenschaften zur Darstellung einer Dateigröße: **Größe** und **Größe auf Datenträger**. Diese Eigenschaften unterscheiden sich leicht in ihrer Bedeutung. **Größe** steht für die vollständige Größe der Datei. **Größe auf Datenträger** steht für die Größe des Dateidatenstroms, der auf dem Datenträger gespeichert ist. Die Werte dieser Eigenschaften können aus unterschiedlichen Gründen variieren, z.B. aufgrund einer Komprimierung, einer Datendeduplizierung oder eines Cloudtiering mit Azure File Sync. Wenn eine Datei per Tiering auf eine Azure-Dateifreigabe ausgelagert wird, ist die Größe auf dem Datenträger gleich null, da der Dateidatenstrom nicht auf dem Datenträger, sondern in Ihrer Azure-Dateifreigabe gespeichert wird. Für eine Datei kann das Tiering auch teilweise durchgeführt werden (bzw. teilweise zurückgerufen werden). Bei einer teilweise per Tiering ausgelagerten Datei befindet sich ein Teil der Datei auf dem Datenträger. Dies kann vorkommen, wenn Dateien von Anwendungen, z.B. Multimedia-Playern oder ZIP-Hilfsprogrammen, teilweise gelesen werden. 
+    Der Windows-Datei-Explorer verwendet zwei Eigenschaften zur Darstellung einer Dateigröße: **Größe** und **Größe auf Festplatte**. Diese Eigenschaften unterscheiden sich leicht in ihrer Bedeutung. **Größe** steht für die vollständige Größe der Datei. **Größe auf Datenträger** steht für die Größe des Dateidatenstroms, der auf dem Datenträger gespeichert ist. Die Werte dieser Eigenschaften können aus unterschiedlichen Gründen variieren, z.B. aufgrund einer Komprimierung, einer Datendeduplizierung oder eines Cloudtiering mit Azure File Sync. Wenn eine Datei per Tiering auf eine Azure-Dateifreigabe ausgelagert wird, ist die Größe auf dem Datenträger gleich null, da der Dateidatenstrom nicht auf dem Datenträger, sondern in Ihrer Azure-Dateifreigabe gespeichert wird. Für eine Datei kann das Tiering auch teilweise durchgeführt werden (bzw. teilweise zurückgerufen werden). Bei einer teilweise per Tiering ausgelagerten Datei befindet sich ein Teil der Datei auf dem Datenträger. Dies kann vorkommen, wenn Dateien von Anwendungen, z.B. Multimedia-Playern oder ZIP-Hilfsprogrammen, teilweise gelesen werden. 
 
 * <a id="is-my-file-tiered"></a>
 **Woran erkenne ich, ob eine Datei per Tiering ausgelagert wurde?**  
@@ -229,7 +229,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 **Wie kann ich eine Azure-Dateifreigabe auf meinem lokalen Computer bereitstellen?**  
     Sie können die Dateifreigabe über das SMB-Protokoll bereitstellen, sofern Port 445 (TCP ausgehend) geöffnet ist und Ihr Client das SMB 3.0-Protokoll unterstützt (beispielsweise unter Windows 10 oder Windows Server 2016 der Fall). Wenn Port 445 durch eine Richtlinie Ihrer Organisation oder Ihres ISP blockiert ist, können Sie über Azure File Sync auf Ihre Azure-Dateifreigabe zugreifen.
 
-## <a name="backup"></a>Backup 
+## <a name="backup"></a>Sicherung
 * <a id="backup-share"></a>
 **Wie sichere ich meine Azure-Dateifreigabe?**  
     Sie können regelmäßige [Freigabemomentaufnahmen (Vorschau)](storage-how-to-use-files-snapshots.md) zum Schutz vor einer versehentlichen Löschung verwenden. Außerdem können Sie AzCopy, Robocopy oder ein Sicherungstool eines Drittanbieters nutzen, das zum Sichern einer eingebundenen Dateifreigabe geeignet ist. 

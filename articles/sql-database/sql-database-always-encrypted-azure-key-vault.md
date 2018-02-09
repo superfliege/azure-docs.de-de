@@ -5,8 +5,7 @@ keywords: "Verschlüsselung, Verschlüsselungsschlüssel, Cloud-Verschlüsselung
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: cgronlun
+manager: craigg
 ms.assetid: 6ca16644-5969-497b-a413-d28c3b835c9b
 ms.service: sql-database
 ms.custom: security
@@ -16,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: 4fb189abfaddcf27c8af223773ab0e5fc9dfca14
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0f26ce26b8b33274291c115ae136d124d79ed349
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted – Schützen von vertraulichen Daten in SQL-Datenbank und Speichern der Verschlüsselungsschlüssel in Azure Key Vault
 
 In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenverschlüsselung unter Einsatz des [Always-Encrypted-Assistenten](https://msdn.microsoft.com/library/mt459280.aspx) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) sichern. Er enthält auch Anweisungen, die zeigen, wie Sie jeden Verschlüsselungsschlüssel in Azure Key Vault speichern.
 
-Always Encrypted ist eine neue Datenverschlüsselungstechnologie in Azure SQL-Datenbank und SQL Server, mit der vertrauliche ruhende Daten auf dem Server, auf dem Weg zwischen Client und Server und während der Verwendung geschützt werden. Always Encrypted stellt sicher, dass vertrauliche Daten im Datenbanksystem niemals im Klartextformat angezeigt werden. Nachdem Sie die Datenverschlüsselung konfiguriert haben, können nur Clientanwendungen oder App-Server, die Zugriff auf die Schlüssel haben, auf Klartextdaten zugreifen. Ausführliche Informationen finden Sie unter [Always Encrypted (Database Engine)](https://msdn.microsoft.com/library/mt163865.aspx).
+Always Encrypted ist eine neue Datenverschlüsselungstechnologie in Azure SQL-Datenbank und SQL Server, mit der vertrauliche ruhende Daten auf dem Server, auf dem Weg zwischen Client und Server und während der Verwendung geschützt werden. Always Encrypted stellt sicher, dass vertrauliche Daten im Datenbanksystem niemals im Klartextformat angezeigt werden. Nachdem Sie die Datenverschlüsselung konfiguriert haben, können nur Clientanwendungen oder App-Server, die Zugriff auf die Schlüssel haben, auf Klartextdaten zugreifen. Ausführliche Informationen finden Sie unter [Always Encrypted (Datenbank-Engine)](https://msdn.microsoft.com/library/mt163865.aspx).
 
 Nach dem Konfigurieren der Datenbank für die Verwendung von Always Encrypted erstellen Sie eine Clientanwendung in C# mit Visual Studio, um mit den verschlüsselten Daten zu arbeiten.
 
@@ -48,30 +47,18 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * [Azure PowerShell](/powershell/azure/overview), Version 1.0 oder höher. Geben Sie **(Get-Module Azure -ListAvailable).Version** ein, um herauszufinden, welche Version von PowerShell ausgeführt wird.
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Aktivieren der Clientanwendung für den Zugriff auf den SQL-Datenbank-Dienst
-Sie müssen Ihre Clientanwendung aktivieren, um auf den SQL-Datenbank-Dienst zuzugreifen. Richten Sie dazu im folgenden Code die erforderliche Authentifizierung ein, und rufen Sie die *ClientId* und das *Geheimnis* ab, die Sie zum Authentifizieren der Anwendung benötigen.
+Sie müssen Ihre Clientanwendung aktivieren, um auf den SQL-Datenbank-Dienst zuzugreifen. Richten Sie dazu eine Azure Active Directory-Anwendung (AAD) ein, und kopieren Sie die *Anwendungs-ID* und den *Schlüssel*, die Sie zum Authentifizieren der Anwendung benötigen.
 
-1. Öffnen Sie das [klassische Azure-Portal](http://manage.windowsazure.com).
-2. Wählen Sie **Active Directory** , und klicken Sie auf die Active Directory-Instanz, die Ihre Anwendung verwendet.
-3. Klicken Sie auf **Anwendungen** und dann auf **ADD**.
-4. Geben Sie einen Namen für die Anwendung ein (z.B. *myClientApp*), wählen Sie **WEBANWENDUNG** aus, und klicken Sie auf den Pfeil, um den Vorgang fortzusetzen.
-5. Unter **URL für Anmeldung** und **APP-ID-URI** können Sie einfach eine gültige URL eingeben (z.B. *http://myClientApp*) und dann fortfahren.
-6. Klicken Sie auf **KONFIGURIEREN**.
-7. Kopieren Sie Ihre **CLIENT-ID**. (Sie benötigen diesen Wert später für Ihren Code.)
-8. Wählen Sie im Abschnitt **Schlüssel** in der Dropdownliste **Dauer auswählen** die Option **1 Jahr** aus. (Sie kopieren den Schlüssel nach dem Speichern in Schritt 13.)
-9. Scrollen Sie nach unten, und klicken Sie auf **Anwendung hinzufügen**.
-10. Behalten Sie für **ANZEIGEN** die Einstellung **Microsoft-Apps** bei, und wählen Sie **Microsoft Azure-Service-Verwaltungs-API** aus. Klicken Sie auf das Häkchen, um fortzufahren.
-11. Wählen Sie in der Dropdownliste **Delegierte Berechtigungen** den Eintrag **Access Azure Service Management...** (Zugriff auf Azure-Dienstverwaltung) aus.
-12. Klicken Sie auf **SPEICHERN**.
-13. Nachdem der Speichervorgang abgeschlossen ist, kopieren Sie den Schlüsselwert in den Abschnitt **Schlüssel** . (Sie benötigen diesen Wert später für Ihren Code.)
+Führen Sie zum Abrufen von *Anwendungs-ID* und *Schlüssel* die Schritte unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md) aus.
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Erstellen eines Schlüsseltresors zum Speichern Ihrer Schlüssel
-Da nun die Client-App konfiguriert ist und Sie über die Client-ID verfügen, ist es an der Zeit, einen Schlüsseltresor zu erstellen und die Zugriffsrichtlinie zu konfigurieren, damit Sie und Ihre Anwendung auf die geheimen Schlüssel im Tresor (Always Encrypted-Schlüssel) zugreifen können. Die Berechtigungen *create*, *get*, *list*, *sign*, *verify*, *wrapKey* und *unwrapKey* sind zum Erstellen eines neuen Spaltenhauptschlüssels sowie zum Einrichten der Verschlüsselung mit SQL Server Management Studio erforderlich.
+Da nun die Client-App konfiguriert ist und Sie über die Anwendungs-ID verfügen, ist es an der Zeit, einen Schlüsseltresor zu erstellen und die Zugriffsrichtlinie zu konfigurieren, damit Sie und Ihre Anwendung auf die Geheimnisse (Always Encrypted-Schlüssel) im Tresor zugreifen können. Die Berechtigungen *create*, *get*, *list*, *sign*, *verify*, *wrapKey* und *unwrapKey* sind zum Erstellen eines neuen Spaltenhauptschlüssels sowie zum Einrichten der Verschlüsselung mit SQL Server Management Studio erforderlich.
 
 Sie können schnell einen Schlüsseltresor erstellen, indem Sie das folgende Skript ausführen. Eine ausführliche Erläuterung dieser Cmdlets und weitere Informationen zum Erstellen und Konfigurieren eines Schlüsseltresors finden Sie unter [Erste Schritte mit Azure Key Vault](../key-vault/key-vault-get-started.md).
 
     $subscriptionName = '<your Azure subscription name>'
     $userPrincipalName = '<username@domain.com>'
-    $clientId = '<client ID that you copied in step 7 above>'
+    $applicationId = '<application ID from your AAD application>'
     $resourceGroupName = '<resource group name>'
     $location = '<datacenter location>'
     $vaultName = 'AeKeyVault'
@@ -85,13 +72,13 @@ Sie können schnell einen Schlüsseltresor erstellen, indem Sie das folgende Skr
     New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
-    Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $clientId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
+    Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
 
 
 
 
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-­Datenbank
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie anschließend auf **Neu** > **Daten und Speicher** > **SQL-Datenbank**.
 3. Erstellen Sie auf einem neuen oder vorhandenen Server eine **leere** Datenbank mit dem Namen **Clinic**. Eine ausführliche Anleitung zum Erstellen einer Datenbank im Azure-Portal finden Sie unter [Ihre erste Azure SQL-Datenbank](sql-database-get-started-portal.md).
    
@@ -107,7 +94,7 @@ Sie benötigen die Verbindungszeichenfolge später im Tutorial – navigieren Si
 ## <a name="connect-to-the-database-with-ssms"></a>Herstellen einer Verbindung für die Datenbank mit SSMS
 Öffnen Sie SSMS, und stellen Sie für die Clinic-Datenbank eine Verbindung mit dem Server her.
 
-1. Öffnen Sie SSMS. (Navigieren Sie zu **Verbinden** > **Datenbankmodul**, um das Fenster **Mit Server verbinden** zu öffnen, falls es nicht geöffnet ist.)
+1. Öffnen Sie SSMS. (Navigieren Sie zu **Verbinden** > **Datenbank-Engine**, um das Fenster **Mit Server verbinden** zu öffnen, falls es nicht geöffnet ist.)
 2. Geben Sie Ihren Servernamen und die Anmeldeinformationen ein. Den Servernamen finden Sie auf dem Blatt „SQL-Datenbank“ und in der zuvor kopierten Verbindungszeichenfolge. Geben Sie den vollständigen Servernamen ein, einschließlich *database.windows.net*.
    
     ![Verbindungszeichenfolge kopieren](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
@@ -235,7 +222,7 @@ Der folgende Code zeigt, wie Sie den Azure Key Vault-Anbieter mit dem ADO.NET-Tr
 
     static void InitializeAzureKeyVaultProvider()
     {
-       _clientCredential = new ClientCredential(clientId, clientSecret);
+       _clientCredential = new ClientCredential(applicationId, clientKey);
 
        SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider =
           new SqlColumnEncryptionAzureKeyVaultProvider(GetToken);
@@ -277,8 +264,8 @@ Führen Sie die App aus, um Always Encrypted in Aktion zu erleben.
     {
         // Update this line with your Clinic database connection string from the Azure portal.
         static string connectionString = @"<connection string from the portal>";
-        static string clientId = @"<client id from step 7 above>";
-        static string clientSecret = "<key from step 13 above>";
+        static string applicationId = @"<application ID from your AAD application>";
+        static string clientKey = "<key from your AAD application>";
 
 
         static void Main(string[] args)
@@ -401,7 +388,7 @@ Führen Sie die App aus, um Always Encrypted in Aktion zu erleben.
         static void InitializeAzureKeyVaultProvider()
         {
 
-            _clientCredential = new ClientCredential(clientId, clientSecret);
+            _clientCredential = new ClientCredential(applicationId, clientKey);
 
             SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider =
               new SqlColumnEncryptionAzureKeyVaultProvider(GetToken);
@@ -617,7 +604,7 @@ Sie sehen, dass die verschlüsselten Spalten keine Klartextdaten enthalten.
 Um SSMS zu verwenden, um auf die Klartextdaten zuzugreifen, können Sie der Verbindung den Parameter *Column Encryption Setting=enabled* hinzufügen.
 
 1. Klicken Sie in SSMS im **Objekt-Explorer** mit der rechten Maustaste auf Ihren Server, und wählen Sie **Trennen**.
-2. Klicken Sie auf **Verbinden** > **Datenbankmodul**, um das Fenster **Mit Server verbinden** zu öffnen, und klicken Sie dann auf **Optionen**.
+2. Klicken Sie auf **Verbinden** > **Datenbank-Engine**, um das Fenster **Mit Server verbinden** zu öffnen, und klicken Sie dann auf **Optionen**.
 3. Klicken Sie auf **Zusätzliche Verbindungsparameter**, und geben Sie **Column Encryption Setting=enabled** ein.
    
     ![Neue Konsolenanwendung](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)

@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 653c31fb1115c79216f882a52484cd37303e0322
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 50020f007096b45b843515ff765e40c550fcf4e3
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz
 
@@ -74,11 +74,11 @@ Sie können Geräte deaktivieren, indem Sie die **status**-Eigenschaft für eine
 
 ## <a name="import-and-export-device-identities"></a>Importieren und Exportieren von Geräteidentitäten
 
-Sie können einen Massenexport von Geräteidentitäten aus der Identitätsregistrierung einer IoT Hub-Instanz durchführen. Hierbei werden asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints] verwendet. Exportvorgänge sind Aufträge mit langer Ausführungszeit, die einen vom Kunden bereitgestellten Blobcontainer zum Speichern von Geräteidentitätsdaten verwenden, die aus der Identitätsregistrierung gelesen werden.
+Verwenden Sie asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints], um einen Massenexport von Geräteidentitäten aus der Identitätsregistrierung einer IoT Hub-Instanz durchzuführen. Exportvorgänge sind Aufträge mit langer Ausführungszeit, die einen vom Kunden bereitgestellten Blobcontainer zum Speichern von Geräteidentitätsdaten verwenden, die aus der Identitätsregistrierung gelesen werden.
 
-Sie können einen Massenimport von Geräteidentitäten in die Identitätsregistrierung einer IoT Hub-Instanz durchführen. Hierbei werden asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints] verwendet. Importvorgänge sind Aufträge mit langer Ausführungszeit, die Daten in einem vom Kunden bereitgestellten Blobcontainer verwenden, um Geräteidentitätsdaten in die Identitätsregistrierung zu schreiben.
+Verwenden Sie asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters][lnk-endpoints], um einen Massenimport von Geräteidentitäten in die Identitätsregistrierung einer IoT Hub-Instanz durchzuführen. Importvorgänge sind Aufträge mit langer Ausführungszeit, die Daten in einem vom Kunden bereitgestellten Blobcontainer verwenden, um Geräteidentitätsdaten in die Identitätsregistrierung zu schreiben.
 
-Ausführliche Informationen zu den Import- und Export-APIs finden Sie unter den [REST-APIs für den IoT Hub-Ressourcenanbieter][lnk-resource-provider-apis]. Weitere Informationen zum Ausführen von Import- und Exportaufträgen finden Sie unter [Massenverwaltung von IoT Hub-Geräte-Identitäten][lnk-bulk-identity].
+Weitere Informationen zu den Import- und Export-APIs finden Sie unter [REST-APIs für den IoT Hub-Ressourcenanbieter][lnk-resource-provider-apis]. Weitere Informationen zum Ausführen von Import- und Exportaufträgen finden Sie unter [Massenverwaltung von IoT Hub-Geräte-Identitäten][lnk-bulk-identity].
 
 ## <a name="device-provisioning"></a>Gerätebereitstellung
 
@@ -146,7 +146,7 @@ Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften da
 
 | Eigenschaft | Optionen | BESCHREIBUNG |
 | --- | --- | --- |
-| deviceId |erforderlich, bei Aktualisierungen schreibgeschützt |Eine Zeichenfolge (bis zu 128 Zeichen lang) mit Beachtung von Groß-/Kleinschreibung, die aus alphanumerischen 7-Bit-ASCII-Zeichen sowie bestimmten Sonderzeichen (`- : . + % _ # * ? ! ( ) , = @ ; $ '`) besteht. |
+| deviceId |erforderlich, bei Aktualisierungen schreibgeschützt |Eine Zeichenfolge (bis zu 128 Zeichen lang) mit Beachtung von Groß-/Kleinschreibung, die aus alphanumerischen 7-Bit-ASCII-Zeichen sowie bestimmten Sonderzeichen (`- . + % _ # * ? ! ( ) , = @ $ '`) besteht. |
 | generationId |erforderlich, schreibgeschützt |Eine vom IoT-Hub generierte Zeichenfolge mit Berücksichtigung der Groß-/Kleinschreibung und einer Länge von bis zu 128 Zeichen. Dieser Wert dient zur Unterscheidung von Geräten mit derselben **deviceId**, wenn diese gelöscht und neu erstellt wurden. |
 | etag |erforderlich, schreibgeschützt |Eine Zeichenfolge, die gemäß [RFC7232][lnk-rfc7232] ein schwaches ETag für die Geräteidentität darstellt. |
 | auth |optional |Ein zusammengesetztes Objekt, das Authentifizierungsinformationen und Sicherheitsdaten enthält. |
@@ -180,7 +180,7 @@ Nachdem Sie nun mit der Verwendung der IoT Hub-Identitätsregistrierung vertraut
 * [Aufrufen einer direkten Methode auf einem Gerät][lnk-devguide-directmethods]
 * [Planen von Aufträgen auf mehreren Geräten][lnk-devguide-jobs]
 
-Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möchten, ist möglicherweise das folgende IoT Hub-Tutorial für Sie interessant:
+Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie sich das folgende IoT Hub-Tutorial an:
 
 * [Erste Schritte mit Azure IoT Hub][lnk-getstarted-tutorial]
 

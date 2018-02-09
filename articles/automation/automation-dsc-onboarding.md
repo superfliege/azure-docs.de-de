@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: gwallace
-ms.openlocfilehash: bfdec6d3982bb7744374a8026a41c3d548aca612
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: ffe08f0f85f07accdce9e3b8fa9524ef3c99c878
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Integrieren von Computern für die Verwaltung durch Azure Automation DSC
 
@@ -123,7 +123,7 @@ Mit Azure Automation DSC können Sie problemlos virtuelle Azure-Computer für di
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Wechseln Sie im [Azure-Portal](https://portal.azure.com/)zu dem Azure Automation-Konto, in das Sie virtuelle Computer integrieren möchten. Klicken Sie im Dashboard des Automation-Kontos auf **DSC-Knoten** -> **Azure-VM hinzufügen**.
+Wechseln Sie im [Azure-Portal](https://portal.azure.com/)zu dem Azure Automation-Konto, in das Sie virtuelle Computer integrieren möchten. Klicken Sie im Dashboard des Automation-Kontos auf **DSC-Knoten** -> **+ Azure-VM hinzufügen**.
 
 Wählen Sie einen virtuellen Azure-Computer aus, der integriert werden soll.
 
@@ -135,7 +135,7 @@ Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers 
 
 ### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
-Virtuelle Azure-Computer können über Azure-Ressourcen-Manager-Vorlagen in Azure Automation DSC bereitgestellt und integriert werden. Unter [Konfigurieren eines virtuellen Computers über die DSC-Erweiterung und Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) finden Sie eine Beispielvorlage, mit der ein vorhandener virtueller Computer in Azure Automation DSC integriert wird. Informationen zum Suchen des Registrierungsschlüssels und der Registrierungs-URL, die als Eingaben in dieser Vorlage verwendet werden, finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
+Virtuelle Azure-Computer können über Azure-Ressourcen-Manager-Vorlagen in Azure Automation DSC bereitgestellt und integriert werden. Unter [Konfigurieren eines virtuellen Computers über die DSC-Erweiterung und Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) finden Sie eine Beispielvorlage, mit der ein vorhandener virtueller Computer in Azure Automation DSC integriert wird. Informationen zum Suchen von Registrierungsschlüssel und Registrierungs-URL, die als Eingaben in dieser Vorlage verwendet werden, finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -150,7 +150,7 @@ Sie können virtuelle Computer von Amazon Web Services mithilfe des AWS DSC-Tool
 Lokale Windows-Computer und Windows-Computer in anderen Clouds als Azure (z. B. Amazon Web Services) können auch in Azure Automation DSC integriert werden, sofern sie über ausgehenden Zugriff auf das Internet verfügen. Es sind nur wenige einfache Schritte erforderlich:
 
 1. Stellen Sie sicher, dass die neueste Version von [WMF 5](http://aka.ms/wmf5latest) auf den Computern installiert ist, die Sie in Azure Automation DSC integrieren möchten.
-2. Führen Sie die Schritte im nachstehenden Abschnitt [**Generieren von DSC-Metakonfigurationen**](#generating-dsc-metaconfigurations) aus, um einen Ordner mit den erforderlichen DSC-Metakonfigurationen zu generieren.
+2. Führen Sie die Schritte im Abschnitt [**Generieren von DSC-Metakonfigurationen**](#generating-dsc-metaconfigurations) weiter unten aus, um einen Ordner mit den erforderlichen DSC-Metakonfigurationen zu generieren.
 3. Wenden Sie die PowerShell DSC-Metakonfiguration remote auf die Computer an, die Sie integrieren möchten. **Auf dem Computer, auf dem dieser Befehl ausgeführt wird, muss die neueste Version von [WMF 5](http://aka.ms/wmf5latest) installiert sein**
 
     ```powershell
@@ -171,11 +171,11 @@ Lokale Linux-Computer und Linux-Computer in Azure sowie in anderen Clouds könne
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   + Informationen zum Suchen des Registrierungsschlüssels und der Registrierungs-URL für Ihr Automation-Konto finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
+   + Informationen zum Suchen von Registrierungsschlüssel und Registrierungs-URL für Ihr Automation-Konto finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
 
      Wenn die Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC **nicht** zu Ihrem Anwendungsszenario passen**,** oder Sie Computer so integrieren möchten, dass Sie nur an Azure Automation DSC berichten und keine Konfigurationen oder PowerShell-Module davon abrufen, führen Sie die Schritte 3 bis 6 aus. Fahren Sie andernfalls direkt mit Schritt 6 fort.
 
-3. Führen Sie die Schritte im Abschnitt [**Generieren von DSC-Metakonfigurationen**](#generating-dsc-metaconfigurations) aus, um einen Ordner mit den erforderlichen DSC-Metakonfigurationen zu generieren.
+3. Führen Sie die Schritte im Abschnitt [**Generieren von DSC-Metakonfigurationen**](#generating-dsc-metaconfigurations) weiter unten aus, um einen Ordner mit den erforderlichen DSC-Metakonfigurationen zu generieren.
 4. Wenden Sie die PowerShell DSC-Metakonfiguration remote auf die Computer an, die Sie integrieren möchten:
 
     ```powershell
@@ -321,7 +321,7 @@ Sie können eine [DSC-Metakonfiguration](https://msdn.microsoft.com/en-us/powers
     DscMetaConfigs @Params
     ```
 
-3. Geben Sie den Registrierungsschlüssel und die URL für Ihr Automation-Konto sowie die Namen der Computer ein, die integriert werden sollen. Alle anderen Parameter sind optional. Informationen zum Suchen des Registrierungsschlüssels und der Registrierungs-URL für Ihr Automation-Konto finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
+3. Geben Sie den Registrierungsschlüssel und die URL für Ihr Automation-Konto sowie die Namen der Computer ein, die integriert werden sollen. Alle anderen Parameter sind optional. Informationen zum Suchen von Registrierungsschlüssel und Registrierungs-URL für Ihr Automation-Konto finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
 4. Wenn die Computer zwar DSC-Statusinformationen an Azure Automation DSC senden, jedoch keine Konfiguration oder PowerShell-Module abrufen sollen, müssen Sie den **ReportOnly** -Parameter auf „true“ festlegen.
 5. Führen Sie das Skript aus. Ihr Arbeitsverzeichnis sollte nun einen Ordner namens **DscMetaConfigs** mit den PowerShell DSC-Metakonfigurationen der zu integrierenden Computer (als Administrator) enthalten.
 
@@ -359,9 +359,9 @@ Wenn die Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC zu
 
 ## <a name="secure-registration"></a>Sichere Registrierung
 
-Computer können über das WMF 5-DSC-Registrierungsprotokoll sicher in ein Azure Automation-Konto integriert werden. Mit dem Protokoll kann ein DSC-Knoten bei einem PowerShell DSC V2-Pull- oder -Berichtsserver authentifiziert werden (einschließlich Azure Automation DSC). Der Knoten wird beim Server an einer **Registrierungs-URL** registriert und mit einem **Registrierungsschlüssel** authentifiziert. Während der Registrierung handeln der DSC-Knoten und der DSC-Pull-/-Berichtsserver ein eindeutiges Zertifikat für diesen Knoten aus, das zur Authentifizierung beim Server nach der Registrierung verwendet wird. Durch diesen Prozess wird verhindert, dass integrierte Knoten die Identität eines anderen Knotens annehmen, z. B. wenn ein Knoten kompromittiert wurde und böswillige Absichten verfolgt. Nach der Registrierung wird der Registrierungsschlüssel nicht wieder für die Authentifizierung verwendet und vom Knoten gelöscht.
+Computer können über das WMF 5-DSC-Registrierungsprotokoll sicher in ein Azure Automation-Konto integriert werden. Mit dem Protokoll kann ein DSC-Knoten bei einem PowerShell DSC-Pull- oder -Berichtsserver authentifiziert werden (einschließlich Azure Automation DSC). Der Knoten wird beim Server an einer **Registrierungs-URL** registriert und mit einem **Registrierungsschlüssel** authentifiziert. Während der Registrierung handeln der DSC-Knoten und der DSC-Pull-/-Berichtsserver ein eindeutiges Zertifikat für diesen Knoten aus, das zur Authentifizierung beim Server nach der Registrierung verwendet wird. Durch diesen Prozess wird verhindert, dass integrierte Knoten die Identität eines anderen Knotens annehmen, z. B. wenn ein Knoten kompromittiert wurde und böswillige Absichten verfolgt. Nach der Registrierung wird der Registrierungsschlüssel nicht wieder für die Authentifizierung verwendet und vom Knoten gelöscht.
 
-Sie finden die für das DSC-Registrierungsprotokoll erforderlichen Informationen auf dem Blatt **Schlüssel verwalten** im Azure-Vorschauportal. Öffnen Sie dieses Blatt, indem Sie im Bereich **Essentials** für das Automation-Konto auf das Schlüsselsymbol klicken.
+Die für das DSC-Registrierungsprotokoll erforderlichen Informationen finden Sie im Azure-Portal in den **Kontoeinstellungen** unter **Schlüssel**. Öffnen Sie dieses Blatt, indem Sie im Bereich **Essentials** für das Automation-Konto auf das Schlüsselsymbol klicken.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
@@ -377,15 +377,13 @@ Mit Azure Automation DSC können Sie problemlos Azure Windows-VMs für die Konfi
 > [!NOTE]
 > Bei Methoden zum Integrieren einer Azure Windows-VM in Azure Automation DSC, in denen die Azure-VM-Erweiterung für DSC verwendet wird, kann es bis zu einer Stunde dauern, bis der Knoten als in Azure Automation registriert angezeigt wird. Dies liegt an der Installation von Windows Management Framework 5.0 auf dem virtuellen Computer durch die Azure VM-Erweiterung für DSC, mit der der virtuelle Computer in Azure Automation DSC integriert werden muss.
 
-Zur Problembehandlung oder Anzeige des Status der Azure-VM-Erweiterung für DSC wechseln Sie im Azure-Portal zu dem virtuellen Computer, der integriert wird, und klicken Sie dann auf **Alle Einstellungen** -> **Erweiterungen** -> **DSC**. Weitere Details erhalten Sie, indem Sie auf **Detaillierten Status anzeigen**klicken.
-
-[![](./media/automation-dsc-onboarding/DSC_Onboarding_5.png)](https://technet.microsoft.com/library/dn249912.aspx)
+Zur Problembehandlung oder Anzeige des Status der Azure-VM-Erweiterung für DSC navigieren Sie im Azure-Portal zu dem virtuellen Computer, der integriert wird, und klicken Sie dann auf unter **Einstellungen** auf **Erweiterungen**. Klicken Sie dann je nach Betriebssystem auf **DSC** oder **DSCForLinux**. Weitere Details erhalten Sie, indem Sie auf **Detaillierten Status anzeigen**klicken.
 
 ## <a name="certificate-expiration-and-reregistration"></a>Ablauf und erneute Registrierung eines Zertifikats
 
 Nach der Registrierung eines Computers als DSC-Knoten in Azure Automation DSC gibt es eine Reihe von Gründen, warum Sie diesen Knoten in Zukunft erneut registrieren müssen:
 
-* Nach der Registrierung handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, die nach einem Jahr abläuft. Gegenwärtig kann das PowerShell DSC-Registrierungsprotokoll Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern, weshalb Sie die Knoten nach einem Jahr erneut registrieren müssen. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, schlägt die Kommunikation mit Azure Automation fehl und der Knoten wird als „nicht reagierend“ markiert. Eine erneute Registrierung, die 90 Tage oder weniger vor Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.
+* Nach der Registrierung handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, die nach einem Jahr abläuft. Gegenwärtig kann das PowerShell DSC-Registrierungsprotokoll Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern, weshalb Sie die Knoten nach einem Jahr erneut registrieren müssen. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, kann der Knoten nicht mit Azure Automation kommunizieren und wird als „Nicht reagierend“ markiert. Eine erneute Registrierung, die 90 Tage oder weniger vor Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.
 * Zum Ändern von [Werten des lokalen Konfigurations-Managers von PowerShell DSC](https://msdn.microsoft.com/powershell/dsc/metaconfig4), die während der anfänglichen Registrierung des Knotens festgelegt wurden, z.B. „ConfigurationMode“. Diese DSC-Agent-Werte können derzeit nur über eine erneute Registrierung geändert werden. Die einzige Ausnahme ist die Knotenkonfiguration, die dem Knoten zugewiesen ist. Diese kann in Azure Automation DSC direkt geändert werden.
 
 Eine erneute Registrierung kann auf die gleiche Weise wie beim ersten Registrieren des Knotens mithilfe einer der in diesem Dokument beschriebenen Methoden für die Integration erfolgen. Sie müssen die Registrierung eines Knotens in Azure Automation DSC nicht aufheben, bevor Sie ihn neu registrieren.

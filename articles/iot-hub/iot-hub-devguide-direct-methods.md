@@ -1,5 +1,5 @@
 ---
-title: Informationen zu direkten Azure IoT Hub-Methoden | Microsoft Docs
+title: Informationen zu direkten Azure IoT Hub-Methoden | Microsoft-Dokumentation
 description: "Entwicklerhandbuch – Verwenden von direkten Methoden zum Aufrufen von Code auf Ihren Geräten von einer Service-App"
 services: iot-hub
 documentationcenter: .net
@@ -12,22 +12,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 243845139c7ae0389333d7490098ef73f95dceac
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 003b3f6ef8a6fbc1c6fcdfc58f7d35bf6c42c9ee
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
-IoT Hub gibt Ihnen die Möglichkeit, direkte Methoden auf Geräten von der Cloud aus aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Diese Methode ist hilfreich für Szenarien, in denen die unmittelbare Vorgehensweise davon abhängt, ob das Gerät antworten konnte, z.B. beim Senden eines SMS-Weckrufs an ein Gerät, wenn es offline ist (da eine SMS teurer als ein Methodenaufruf ist).
+IoT Hub gibt Ihnen die Möglichkeit, direkte Methoden auf Geräten von der Cloud aus aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Dieser Ansatz eignet sich für Szenarien, in denen die Vorgehensweise bei sofortigen Aktionen unterschiedlich ist, je nachdem, ob das Gerät reagieren konnte oder nicht. Ein Beispiel ist das Senden einer Reaktivierung per SMS an ein Gerät, wenn es offline ist (SMS ist teurer als ein Methodenaufruf).
 Jedes Gerätemethode hat ein einzelnes Gerät als Ziel. [Aufträge][lnk-devguide-jobs] bieten eine Möglichkeit zum Aufrufen von direkten Methoden auf mehreren Geräten und zum Planen von Methodenaufrufen für nicht verbundene Geräte.
 
 Jeder Benutzer mit der Berichtigung **Dienstverbindung** für IoT Hub kann eine Methode auf einem Gerät aufrufen.
 
-Direkte Methoden entsprechen einem Anforderung-Antwort-Schema und sind für Kommunikation bestimmt, die sofortige Bestätigung ihres Ergebnisses erfordert, in der Regel über interaktive Steuerung des Geräts, z.B. Einschalten eines Lüfters.
+Direkte Methoden entsprechen einem Anforderung/Antwort-Schema und sind für Kommunikation bestimmt, die sofortige Bestätigung ihres Ergebnisses erfordert. Ein Beispiel hierfür ist die interaktive Steuerung des Geräts, wie das Einschalten eines Lüfters.
 
 Falls Sie weitere Informationen dazu benötigen, was die Verwendung von gewünschten Eigenschaften, direkten Methoden oder C2D-Nachrichten betrifft, hilft Ihnen der [Leitfaden zur C2D-Kommunikation][lnk-c2d-guidance] weiter.
 
@@ -39,7 +39,7 @@ Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnu
 > 
 > 
 
-Direkte Methoden sind synchron und werden nach der Wartezeit (Standardeinstellung: 30 Sekunden, einstellbar bis 3.600 Sekunden) entweder mit einem Erfolg oder Fehler abgeschlossen. Direkte Methoden sind hilfreich bei interaktiven Szenarios, in denen ein Gerät genau dann agieren soll, wenn es online ist und Befehle empfängt, z.B. Einschalten eines Lichts von einem Telefon aus. In diesen Szenarios soll der Erfolg oder Misserfolg unmittelbar erkennbar sein, damit der Clouddienst so schnell wie möglich auf das Ergebnis reagieren kann. Das Gerät kann einen Nachrichtentext als Ergebnis der Methode zurückgeben, dies ist für die Methode aber nicht erforderlich. Es gibt keine Garantie für die Sortierung oder eine Parallelitätssemantik für Methodenaufrufe.
+Direkte Methoden sind synchron und werden nach der Wartezeit (Standardeinstellung: 30 Sekunden, einstellbar bis 3.600 Sekunden) entweder mit einem Erfolg oder Fehler abgeschlossen. Direkte Methoden sind hilfreich bei interaktiven Szenarien, in denen ein Gerät genau dann agieren soll, wenn es online ist und Befehle empfängt, z.B. Einschalten eines Lichts von einem Telefon aus. For example, turning on a light from a phone. In diesen Szenarios soll der Erfolg oder Misserfolg unmittelbar erkennbar sein, damit der Clouddienst so schnell wie möglich auf das Ergebnis reagieren kann. Das Gerät kann einen Nachrichtentext als Ergebnis der Methode zurückgeben, dies ist für die Methode aber nicht erforderlich. Es gibt keine Garantie für die Sortierung oder eine Parallelitätssemantik für Methodenaufrufe.
 
 Direkte Methoden erfolgen von der Cloudseite nur über HTTPS und von der Geräteseite über MQTT oder AMQP.
 
@@ -54,16 +54,16 @@ Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die Folgendes umfas
 * *Header*, die Autorisierung, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten
 * Einen transparenten JSON-*Haupttext* im folgenden Format:
 
-   ```
-   {
-       "methodName": "reboot",
-       "responseTimeoutInSeconds": 200,
-       "payload": {
-           "input1": "someInput",
-           "input2": "anotherInput"
-       }
-   }
-   ```
+    ```json
+    {
+        "methodName": "reboot",
+        "responseTimeoutInSeconds": 200,
+        "payload": {
+            "input1": "someInput",
+            "input2": "anotherInput"
+        }
+    }
+    ```
 
 Timeout in Sekunden. Wenn kein Timeout festgelegt ist, lautet der Standardwert 30 Sekunden.
 
@@ -74,13 +74,14 @@ Die Back-End-App empfängt eine Antwort, die Folgendes umfasst:
 * *Header*, die ETag, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten
 * Einen JSON-*Haupttext* im folgenden Format:
 
-   ```   {
-       "status" : 201,
-       "payload" : {...}
-   }
-   ```
+    ```json
+    {
+        "status" : 201,
+        "payload" : {...}
+    }
+    ```
 
-   `status` und `body` werden vom Gerät bereitgestellt und für die Antwort mit dem Statuscode und/oder der Beschreibung des Geräts verwendet.
+    `status` und `body` werden vom Gerät bereitgestellt und für die Antwort mit dem Statuscode und/oder der Beschreibung des Geräts verwendet.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Behandeln einer direkten Methode auf einem Gerät
 ### <a name="mqtt"></a>MQTT
@@ -89,7 +90,7 @@ Geräte empfangen direkte Methodenanforderungen zum MQTT-Thema: `$iothub/methods
 
 Der vom Gerät empfangene Text weist das folgende Format auf:
 
-```
+```json
 {
     "input1": "someInput",
     "input2": "anotherInput"
@@ -127,7 +128,7 @@ Die Antwort der Methode wird über den Sendelink zurückgegeben und umfasst Folg
 Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 * Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
-* Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
+* Unter [Einschränkung und Kontingente][lnk-quotas] werden die Kontingente und das Einschränkungsverhalten beschrieben, die bei Verwendung von IoT Hub zu erwarten sind.
 * Unter [Azure IoT-SDKs für Geräte und Dienste][lnk-sdks] werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
 * Unter [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.

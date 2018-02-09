@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: c1a3b2107abdc3ef19a314616518c494687d81bf
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: a2d4efc3a3e1480de71528144ae3f025f4879f07
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Planungsentscheidungen zu mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme
 Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-deployment-decisions.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
@@ -41,7 +41,7 @@ Bei Verwendung von Azure AD als Identitätsspeicher werden zwei Azure AD-Konten 
     - Als Dienstadministratorkonto. Dies ist der Besitzer des Standardanbieterabonnements (den Sie später jedoch ändern können). Mit diesem Konto können Sie sich beim Azure Stack-Verwaltungsportal anmelden und damit Angebote und Pläne erstellen, Kontingente festlegen und andere administrative Aufgaben in Azure Stack erledigen.
 2. **Abrechnungskonto** (sowohl für mit Azure verbundene als auch nicht verbundene Bereitstellungen erforderlich). Dieses Azure-Konto wird verwendet, um die Abrechnungsbeziehung zwischen Ihrem in Azure Stack integrierten System und dem Azure-Commerce-Back-End herzustellen. Dies ist das Konto, dem Azure Stack-Gebühren in Rechnung gestellt werden. Dieses Konto wird auch für die Marketplace-Syndikation und andere Hybridszenarien verwendet. 
 
-### <a name="ad-fs-identity-store"></a>AD FS-IDENTITÄTSSPEICHER
+### <a name="ad-fs-identity-store"></a>AD FS-Identitätsspeicher
 Wählen Sie diese Option, wenn Sie Ihren eigenen Identitätsspeicher, wie z.B. Ihr unternehmenseigenes Active Directory, für Ihre Dienstadministratorkonten verwenden möchten.  
 
 ## <a name="choose-a-billing-model"></a>Wählen eines Abrechnungsmodells
@@ -57,9 +57,8 @@ Wenn Sie ein CSP-Abonnement verwenden möchten, konsultieren Sie die folgende Ta
 
 |Szenario|Domänen- und Abonnementoptionen|
 |-----|-----|
-|Sie sind direkter oder indirekter CSL-Partner und betreiben den Azure Stack|Verwenden Sie ein CSL-Abonnement (Common Service Layer).|
-|Sie sind direkter oder indirekter CSP-Partner und betreiben den Azure Stack|Erstellen Sie im Partner Center einen Azure AD-Mandanten mit einem aussagekräftigen Namen, z. B. <your organization>CSPAdmin, und einem damit verbundenen Azure CSP-Abonnement.|
-|Sie sind indirekter CSP-Wiederverkäufer und betreiben den Azure Stack|Bitten Sie Ihren indirekten CSP-Anbieter im Partner Center einen Azure AD-Mandanten für Ihr Unternehmen und ein damit verbundenes Azure CSP-Abonnement zu erstellen.|
+|Sie sind **direkter** oder **indirekter CSP-Partner** und betreiben Azure Stack|Verwenden Sie ein CSL-Abonnement (Common Service Layer).<br>     oder<br>Erstellen Sie einen Azure AD-Mandanten mit einem aussagekräftigen Namen in Partner Center. Beispiel: „&lt;Ihre Organisation>CSPAdmin“ mit Zuordnung eines Azure CSP-Abonnements.|
+|Sie sind **indirekter CSP-Wiederverkäufer** und betreiben Azure Stack|Bitten Sie Ihren indirekten CSP-Anbieter, in Partner Center einen Azure AD-Mandanten für Ihre Organisation und ein damit verbundenes Azure CSP-Abonnement zu erstellen.|
 
 ### <a name="capacity-based-billing"></a>Kapazitätsbasierte Abrechnung
 Wenn Sie sich für das kapazitätsabhängige Abrechnungsmodells entscheiden, müssen Sie eine Azure Stack-Kapazitätsplan-SKU kaufen, die auf der Kapazität Ihres Systems basiert. Sie müssen die Anzahl der physischen Kerne in Ihrem Azure Stack kennen, um die richtige Menge zu kaufen. 
@@ -70,3 +69,6 @@ Für die kapazitätsbezogene Abrechnung ist für die Registrierung ein Azure-Abo
 - Informationen zu Anwendungsfällen, zum Erwerb, zu Partnern und zu OEM-Hardwareanbietern finden Sie auf der Produktseite von [Azure Stack](https://azure.microsoft.com/overview/azure-stack/).
 - Informationen zur Roadmap und geografischen Verfügbarkeit für integrierte Azure Stack-Systeme finden Sie im Whitepaper: [Azure Stack: Eine Erweiterung von Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - Weitere Informationen zu Microsoft Azure Stack-Paketen und -Preisen finden Sie im Datenblatt zu [Paketerstellung und Preisen](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
+
+## <a name="next-steps"></a>Nächste Schritte
+[Rechenzentrums-Netzwerkintegration](azure-stack-network.md)

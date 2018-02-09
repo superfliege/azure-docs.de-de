@@ -13,17 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 255c39ea21378aae23fc61da6dc882138fb66ab1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3b0a5bfc911f3edf91367cbf4fde907cbf98e114
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Standpunktanalyse mithilfe von Deep Learning und Azure Machine Learning
 
-Die Standpunktanalyse ist eine übliche Aufgabe im Bereich der maschinellen Verarbeitung natürlicher Sprache. Bei einer Reihe von Texten geht es darum, die Stimmung des jeweiligen Texts zu bestimmen. Ziel dieser Lösung ist das Verwenden von CNTK als Back-End für Keras (eine Bibliothek auf Modellebene, die allgemeine Bausteine für die Entwicklung von Deep Learning-Modellen bereitstellt) und das Implementieren der Standpunktanalyse mithilfe von Filmkritiken.
+Die Standpunktanalyse ist eine übliche Aufgabe im Bereich der maschinellen Verarbeitung natürlicher Sprache. Bei einer Reihe von Texten geht es darum, die Stimmung des jeweiligen Texts zu bestimmen. Ziel dieser Lösung ist die Verwendung von Deep Learning zur Vorhersage von Standpunkten aus Filmkritiken.
 
 Die Lösung befindet sich unter „https://github.com/Azure/MachineLearningSamples-SentimentAnalysis“.
 
@@ -45,9 +45,9 @@ Um aus der Standpunktanalyse einen Nutzen zu ziehen, müssen Unternehmen in der 
 
 * Eine installierte Kopie der [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](./quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
 
-* Für die Operationalisierung wird empfohlen, dass Sie das Docker-Modul installieren und lokal ausführen. Falls nicht gewünscht, können Sie die Clusteroption nutzen. Das Ausführen eines Azure Container Service (ACS) kann allerdings kostspielig sein.
+* Für die Operationalisierung wird empfohlen, dass Sie die Docker-Engine installieren und lokal ausführen. Falls nicht gewünscht, können Sie die Clusteroption nutzen. Das Ausführen eines Azure Container Service (ACS) kann allerdings kostspielig sein.
 
-* Bei dieser Lösung wird davon ausgegangen, dass Sie die Azure Machine Learning Workbench unter Windows 10 mit einem lokal installierten Docker-Modul ausführen. Die Anweisung für macOS ist weitgehend identisch.
+* Bei dieser Lösung wird davon ausgegangen, dass Sie die Azure Machine Learning Workbench unter Windows 10 mit einer lokal installierten Docker-Engine ausführen. Die Anweisung für macOS ist weitgehend identisch.
 
 ## <a name="data-description"></a>Datenbeschreibung
 

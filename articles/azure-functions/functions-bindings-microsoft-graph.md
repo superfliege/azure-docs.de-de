@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 63b94c0a9b77a3f3a6fd394a130bf8f132d51369
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 5d0f266047e1b083cdf23f8d1c55950a46406f61
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
@@ -43,7 +43,7 @@ Microsoft Graph-Bindungen sind über _Bindungserweiterungen_ verfügbar. Bindung
 
 Bindungserweiterungen sind nur für Azure Functions 2.0 Preview verfügbar. 
 
-Informationen dazu, wie eine Funktions-App so festgelegt wird, dass sie die 2.0-Vorschauversion der Functions Runtime verwendet, finden Sie unter [Version 2.0 der Runtime als Ziel](functions-versions.md#target-the-version-20-runtime).
+Informationen dazu, wie Sie eine Functions-App so einrichten, dass sie die 2.0-Vorschauversion der Functions Runtime verwendet, finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md).
 
 ### <a name="installing-the-extension"></a>Installieren der Erweiterung
 

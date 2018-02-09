@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
 ms.openlocfilehash: efcafa40c3d47ebfdd4520f98b65ad2c05b03c57
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="introducing-microsoft-azure"></a>Einführung in Microsoft Azure
 Microsoft Azure ist die Anwendungsplattform von Microsoft für die öffentliche Cloud.  Das Ziel dieses Artikels besteht darin, Ihnen ein grundlegendes Verständnis von Azure zu vermitteln, auch wenn Sie in Bezug auf das Cloud Computing über keine Erfahrungen verfügen.

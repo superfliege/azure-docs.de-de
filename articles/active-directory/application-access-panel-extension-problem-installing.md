@@ -1,6 +1,6 @@
 ---
-title: "Problem beim Installieren der Browsererweiterung für den Anwendungszugriffsbereich | Microsoft-Dokumentation"
-description: "Korrigieren von Fehlern, die beim Installieren der Browsererweiterung für den Anwendungszugriffsbereich häufig auftreten"
+title: "Installieren der Browsererweiterung für den Anwendungszugriffsbereich – Azure | Microsoft-Dokumentation"
+description: "Korrigieren Sie allgemeine Fehler, die beim Installieren der Browsererweiterung für den Zugriffsbereich auftreten können."
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,113 +14,108 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 26dc5d5ffce84206450123132c0633c2aa323e9f
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: c49cfad5f362f4402be476066f0e8c0158f20d73
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="problem-installing-the-application-access-panel-browser-extension"></a>Problem beim Installieren der Browsererweiterung für den Anwendungszugriffsbereich
+# <a name="install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
-Der Zugriffsbereich ist ein webbasiertes Portal, mit dem Benutzer, die in Azure Active Directory (Azure AD) über ein Geschäfts-, Schul- oder Unikonto verfügen, cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Ein Benutzer, der über Azure AD-Editionen verfügt, kann über den Zugriffsbereich auch die Funktionen für die Self-Service-basierte Gruppen- und App-Verwaltung nutzen. Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
+Der Zugriffsbereich ist ein webbasiertes Portal. Wenn Sie über ein Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) verfügen, können Sie über den Zugriffsbereich cloudbasierte Anwendungen anzeigen und starten, für die Ihnen ein Azure AD-Administrator Zugriff gewährt hat. 
 
-Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
+Bei Verwendung von Azure AD-Editionen können Sie über den Zugriffsbereich auch Self-Service-basierte Gruppen und die App-Verwaltungsfunktionen nutzen. 
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Erfüllen der Browseranforderungen für den Zugriffsbereich
+Der Zugriffsbereich ist vom Azure-Portal getrennt. Er kann auch ohne Azure-Abonnement verwendet werden.
 
-Der Zugriffsbereich erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
+## <a name="web-browser-requirements"></a>Webbrowseranforderungen
 
-Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
+Die Mindestanforderung für den Zugriffsbereich ist ein Browser mit JavaScript-Unterstützung und CSS-Aktivierung. Zur Verwendung von kennwortbasiertem SSO bei Anwendungen im Zugriffsbereich muss in Ihrem Browser die Erweiterung für den Zugriffsbereich installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung auswählen, die für kennwortbasiertes SSO konfiguriert ist.
 
--   Edge unter Windows 10 Anniversary Edition oder höher 
+Für kennwortbasiertes SSO können folgende Browser verwendet werden:
 
--   Chrome – unter Windows 7 oder höher und MacOS x oder höher
+- **Edge:** Unter Windows 10 Anniversary Edition oder höher 
+- **Chrome:** Unter Windows 7 oder höher und MacOS X oder höher
+- **Firefox 26.0 oder höher:** Unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
+- **Internet Explorer 8, 9, 10, 11:** Unter Windows 7 oder höher (eingeschränkte Unterstützung)
 
--   Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
+## <a name="install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
--   Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher (eingeschränkte Unterstützung)
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
+Gehen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich wie folgt vor:
 
-Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die folgenden Schritte aus:
+1.  Öffnen Sie den [Zugriffsbereich](https://myapps.microsoft.com) in einem der unterstützten Browser, und melden Sie sich als Benutzer bei Ihrem Azure AD-Konto an.
 
-1.  Öffnen Sie in einem der unterstützten Browser den [Zugriffsbereich](https://myapps.microsoft.com), und melden Sie sich in Azure AD als **Benutzer** an.
+2.  Wählen Sie eine Anwendung mit kennwortbasiertem SSO aus.
 
-2.  Klicken Sie im Zugriffsbereich auf eine **für kennwortbasiertes SSO konfigurierte Anwendung**.
+3.  Klicken Sie auf **Jetzt installieren**, wenn Sie dazu aufgefordert werden.  
+    Sie werden zum Downloadlink für den gewählten Browser weitergeleitet. 
+    
+4.  Wählen Sie **Hinzufügen**.
 
-3.  Wählen Sie in der Aufforderung zum Installieren der Software **Jetzt installieren** aus.
+5.  **Aktivieren** Sie die Erweiterung (bzw. **lassen Sie sie zu**), wenn Sie dazu aufgefordert werden.
 
-4.  Sie werden basierend auf Ihrem Browser zum Downloadlink weitergeleitet. **Fügen** Sie die Erweiterung Ihrem Browser hinzu.
+6.  Starten Sie Ihren Browser nach Abschluss der Installation neu.
 
-5.  Wenn Sie im Browser zur Auswahl aufgefordert werden, wählen Sie die Option zum **Aktivieren** oder **Zulassen** der Erweiterung aus.
+7.  Melden Sie sich beim Zugriffsbereich an, und überprüfen Sie, ob Sie Ihre Anwendungen mit kennwortbasiertem SSO starten können.
 
-6.  Führen Sie nach der Installation einen **Neustart** Ihrer Browsersitzung durch.
+Sie können die Erweiterung für Chrome und Edge auch direkt von den folgenden Websites herunterladen:
 
-7.  Melden Sie sich beim Zugriffsbereich an, und überprüfen Sie, ob Sie die für kennwortbasiertes SSO konfigurierten Anwendungen **starten** können.
+- [Chrome-Erweiterung](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+- [Edge-Erweiterung](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
-Sie können die Erweiterung für Chrome und Edge auch direkt über die folgenden Links herunterladen:
+## <a name="use-the-my-apps-secure-sign-in-extension"></a>Verwenden der Erweiterung zur sicheren Anmeldung bei „Meine Apps“
+* Falls sich Ihre Meine Apps-URL von `https://myapps.microsoft.com` unterscheidet, konfigurieren Ihre Standard-URL wie folgt:
+   1. Klicken Sie mit der rechten Maustaste auf das Symbol für die Erweiterung, *ohne* bei der Erweiterung angemeldet zu sein.
+   2. Klicken Sie im Menü auf **Meine Apps-URL**.
+   3. Wählen Sie Ihre Standard-URL aus.
+   4. Wählen Sie das Symbol für die Erweiterung aus.
+   5. Klicken Sie auf **Melden Sie sich an, um loszulegen**, um sich bei der Erweiterung anzumelden.
 
--   [Zugriffsbereichserweiterung für Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+* Gehen Sie wie folgt vor, um sich im Browser direkt bei einer App anzumelden:
+   1. Melden Sie sich nach der Erweiterungsinstallation bei der Erweiterung an, indem Sie auf **Melden Sie sich an, um loszulegen** klicken.
+   2. Melden Sie sich mit der Anmelde-URL bei der App an.  
+       Bei der Anmelde-URL handelt es sich üblicherweise um die URL, unter der das Anmeldeformular einer App angezeigt wird.
+      Die Erweiterung sollte ihren Status ändern und Sie darüber informieren, dass ein Kennwort verfügbar ist.
+   3. Klicken Sie auf das Symbol für die Erweiterung, um sich anzumelden.
 
--   [Zugriffsbereichserweiterung für Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
-
-## <a name="how-do-i-use-the-my-apps-secure-sign-in-extension"></a>Wie verwende ich die Erweiterung zur sicheren Anmeldung bei „Meine Apps“?
-Ändern der Standard-URL von „Meine Apps“ für die Erweiterung
-
-Bei Verwendung einer anderen URL von „Meine Apps“ als „https://myapps.microsoft.com“ müssen Sie die Standard-URL durch Ausführen der folgenden Schritte konfigurieren:
-1. **Klicken Sie mit der rechten Maustaste** auf das Symbol für die Erweiterung, ohne bei der Erweiterung angemeldet zu sein.
-2. Klicken Sie im Menü auf **Meine Apps-URL auswählen**.
-3. **Wählen Sie** Ihre Standard-URL aus.
-4. Klicken Sie auf das Symbol für die Erweiterung.
-5. Melden Sie sich bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
-
-Direktes Anmelden bei einer App über den Browser
-1. Melden Sie sich nach der Installation der Erweiterung bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
-2. Navigieren Sie zu der **Anmelde-URL** der App, bei der Sie sich anmelden möchten. Dies ist in der Regel die URL der App, die das Anmeldeformular anzeigt.
-3. Der Status der Erweiterung sollte sich ändern, sodass Sie darüber informiert werden, dass ein Kennwort verfügbar ist. Klicken Sie auf das **Symbol für die Erweiterung**, um sich anzumelden.
-
-Starten einer App über die Erweiterung
-1. Melden Sie sich nach der Installation der Erweiterung bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
-2. Klicken Sie auf das Symbol für die Erweiterung, um das zugehörige **Menü** zu öffnen.
-3. **Suchen** Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
-4. Klicken Sie in den **Suchergebnissen** auf die App, um sie zu starten.
-5. In der Verknüpfungsliste **Zuletzt verwendet** werden auch die letzten drei gestarteten Apps angezeigt.
+* Um eine App über die Erweiterung zu starten, gehen Sie wie folgt vor:
+   1. Melden Sie sich nach der Erweiterungsinstallation bei der Erweiterung an, indem Sie auf **Melden Sie sich an, um loszulegen** klicken.
+   2. Klicken Sie auf das Symbol für die Erweiterung, um das dazugehörige Menü zu öffnen.
+   3. Suchen Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
+   4. Wählen Sie die App in den Suchergebnissen aus.  
+       In der Verknüpfungsliste **Zuletzt verwendet** werden die drei zuletzt verwendeten Apps angezeigt.
 
 > [!NOTE]
-> Diese Optionen sind nur für Edge, Chrome und Firefox verfügbar.
+> Die obigen Optionen sind nur für Edge, Chrome und Firefox verfügbar.
 
-## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Einrichten einer Gruppenrichtlinie für Internet Explorer
+## <a name="set-up-a-group-policy-for-internet-explorer"></a>Einrichten einer Gruppenrichtlinie für Internet Explorer
 
 Sie können eine Gruppenrichtlinie einrichten, um die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer zu installieren.
 
-Die folgenden Voraussetzungen müssen erfüllt sein:
+Vergewissern Sie sich vor dem Einrichten einer Gruppenrichtlinie, dass Folgendes erfüllt ist:
 
 -   Sie haben [Active Directory-Domänendienste](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)eingerichtet und die Computer Ihrer Benutzer Ihrer Domäne hinzugefügt.
 
--   Zum Bearbeiten des Gruppenrichtlinienobjekts benötigen Sie die Berechtigung „Einstellungen bearbeiten“. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Richtlinien-Ersteller-Besitzer. [Weitere Informationen](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+-   Zum Bearbeiten des Gruppenrichtlinienobjekts (Group Policy Object, GPO) benötigen Sie die Berechtigung *Einstellungen bearbeiten*. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Richtlinien-Ersteller-Besitzer.
 
-Das Tutorial [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie](active-directory-saas-ie-group-policy.md) bietet Ihnen Schritt-für-Schritt-Anweisungen zum Konfigurieren der Gruppenrichtlinie und Bereitstellen der Gruppenrichtlinie für Benutzer.
+Eine ausführliche Anleitung zum Konfigurieren der Gruppenrichtlinie sowie zum Bereitstellen für Benutzer finden Sie unter [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie](active-directory-saas-ie-group-policy.md).
 
-## <a name="troubleshoot-the-access-panel-extension-in-internet-explorer"></a>Problembehandlung der Zugriffsbereichserweiterung in Internet Explorer
+## <a name="troubleshoot-the-access-panel-extension-in-internet-explorer"></a>Behandeln von Problemen mit der Zugriffsbereichserweiterung in Internet Explorer
 
-Befolgen Sie die Anleitung [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md), um Zugriff auf ein Diagnosetool und Schritt-für-Schritt-Anweisungen zum Konfigurieren der Erweiterung für Internet Explorer zu erhalten.
+Der Artikel [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md) bietet Zugriff auf ein Diagnosetool und enthält Informationen zum Konfigurieren der Erweiterung für Internet Explorer.
 
 > [!NOTE]
-> Für IE besteht eine eingeschränkte Unterstützung, und es werden keine neuen Softwareupdates mehr dafür empfangen. Edge ist der empfohlene Browser.
+> Internet Explorer wird nur eingeschränkt unterstützt, und es werden keine neuen Softwareupdates dafür bereitgestellt. Edge ist der empfohlene Browser.
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird
+## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>Falls sich das Problem mit den oben genannten Schritten nicht beheben lässt:
 
-Öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
+Erstellen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
 
 -   Fehlerkorrelations-ID
-
 -   UPN (E-Mail-Adresse des Benutzers)
-
 -   Mandanten-ID
-
 -   Browsertyp
-
--   Zeitzone und Uhrzeit/Zeitraum des Auftretens des Fehlers
-
+-   Zeitzone und Zeitpunkt/Zeitraum des Fehlers
 -   Fiddler-Ablaufverfolgungen
 
 ## <a name="next-steps"></a>Nächste Schritte

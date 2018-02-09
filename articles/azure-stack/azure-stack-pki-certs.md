@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
-ms.reviewer: wfayed
-ms.openlocfilehash: 8f0bb2266cb3a8a869ad50c40a46eb82985d17ed
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.reviewer: ppacent
+ms.openlocfilehash: c8dd2866e24faacfccff7f5f490710853f426345
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
 Azure Stack verfügt über ein öffentliches Infrastrukturnetz mit extern zugänglichen öffentlichen IP-Adressen, die einer kleinen Gruppe von Azure Stack-Diensten und möglicherweise Mandanten-VMs zugewiesen sind. PKI-Zertifikate (Public Key-Infrastruktur) mit den entsprechenden DNS-Namen für diese Endpunkte der öffentlichen Infrastruktur von Azure Stack werden während der Bereitstellung von Azure Stack benötigt. Dieser Artikel enthält Informationen zu Folgendem:
@@ -50,7 +50,7 @@ Für Ihre Bereitstellung müssen die Werte [region] und [externalfqdn] mit der R
 
 |Bereitstellungsordner|Erforderlicher Zertifikatantragsteller und alternative Antragstellernamen|Bereich (pro Region)|Namespace der Unterdomäne|
 |-----|-----|-----|-----|
-|Öffentliches Portal|portal.*&lt;region>.&lt;fqdn>*|Portale|*&lt;Region>.&lt;FQDN>*|
+|Öffentliches Portal|portal.*&lt;region>.&lt;fqdn>*|Portale|*&lt;region>.&lt;fqdn>*|
 |Verwaltungsportal|adminportal.*&lt;region>.&lt;fqdn>*|Portale|*&lt;region>.&lt;fqdn>*|
 |Azure Resource Manager (Öffentlich)|management.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
 |Azure Resource Manager (Verwaltung)|adminmanagement.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
@@ -91,8 +91,9 @@ In der folgenden Tabelle werden die Endpunkte und Zertifikate beschrieben, die f
 
 <sup>2</sup> Ein Platzhalterzertifikat des Typs &#42;.appservice.*&lt;region>.&lt;fqdn>* kann nicht anstelle dieser drei Zertifikate (api.appservice.*&lt;region>.&lt;fqdn>*, ftp.appservice.*&lt;region>.&lt;fqdn>* und sso.appservice.*&lt;region>.&lt;fqdn>*) verwendet werden. App Service erfordert explizit die Verwendung separater Zertifikate für diese Endpunkte. 
 
+## <a name="learn-more"></a>Weitere Informationen
+Erfahren Sie mehr zum [Generieren von PKI-Zertifikaten für die Azure Stack-Bereitstellung](azure-stack-get-pki-certs.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Generieren von PKI-Zertifikaten für die Azure Stack-Bereitstellung](azure-stack-get-pki-certs.md) 
-
+[Identitätsintegration](azure-stack-integrate-identity.md)
 

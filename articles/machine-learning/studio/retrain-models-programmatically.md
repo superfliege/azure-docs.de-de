@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: raymondl;garye;v-donglo
-ms.openlocfilehash: c56ce659766536772d203d0366ef6b53e544a82b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: raymondl;garye
+ms.openlocfilehash: d228021564cdfe5c898c67cce0038b3ec36d014b
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie einen Azure Machine Learning-Webdienst mithilfe von C# und dem Machine Learning Batch Execution-Dienst neu trainieren.
@@ -67,7 +67,7 @@ Um das trainierte Modell erneut zu trainieren, müssen Sie das erstellte Trainin
 2. Geben Sie im Suchfeld „Search Experiment Items“ den Suchbegriff „Webdienst“ ein. 
 3. Ziehen Sie ein *Web Service Input*-Modul in den Experimentbereich, und stellen Sie eine Verbindung zwischen der Ausgabe und dem *Clean Missing Data*-Modul her.  Dadurch wird sichergestellt, dass Ihre Daten für das erneute Training genau so verarbeitet werden wie Ihre ursprünglichen Trainingsdaten.
 4. Ziehen Sie zwei *Web Service Output*-Module in den Experimentbereich. Verbinden Sie die Ausgabe des *Train Model*-Moduls mit dem einem Modul und die Ausgabe des *Evaluate Model*-Moduls mit dem anderen Modul. Die Webdienstausgabe für **Train Model** liefert das neue trainierte Modell. Die mit **Evaluate Model** verknüpfte Ausgabe gibt die Ausgabe dieses Moduls zurück (die Leistungsergebnisse).
-5. Klicken Sie auf **Run**(Ausführen). 
+5. Klicken Sie auf **Ausführen**. 
 
 Als Nächstes müssen Sie das Trainingsexperiment als Webdienst bereitstellen, der ein trainiertes Modell und Modellauswertungsergebnisse erzeugt. Ihre nächsten Schritte hängen davon ab, ob Sie einen klassischen oder einen neuen Webdienst verwenden.  
 

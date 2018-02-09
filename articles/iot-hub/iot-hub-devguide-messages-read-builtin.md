@@ -11,19 +11,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: c9e6aa03e3a1e0592223630c7b81634bcb09add6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 82681214e9e42819bfc698aa670755467d250fa7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
 
 Standardmäßig werden Nachrichten an den integrierten dienstseitigen Endpunkt (**messages/events**) gesendet, der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Dieser Endpunkt wird derzeit nur mit dem [AMQP][lnk-amqp]-Protokoll über Port 5671 verfügbar gemacht. Ein IoT Hub macht die folgenden Eigenschaften verfügbar, damit Sie den integrierten Event Hub-kompatiblen Messagingendpunkt für **messages/events** steuern können.
 
-| Eigenschaft            | Beschreibung |
+| Eigenschaft            | BESCHREIBUNG |
 | ------------------- | ----------- |
 | **Anzahl von Partitionen** | Legen Sie diese Eigenschaft bei der Erstellung fest, um die Anzahl von [Partitionen][lnk-event-hub-partitions] für die D2C-Ereigniserfassung zu definieren. |
 | **Aufbewahrungsdauer**  | Diese Eigenschaft gibt den Zeitraum in Tagen an, für den Nachrichten von IoT Hub aufbewahrt werden. Als Standardwert ist ein Tag festgelegt, dieser Wert kann jedoch auf sieben Tage erhöht werden. |
@@ -40,7 +40,7 @@ IoT Hub stellt den integrierten Endpunkt **messages/events** für Ihre Back-End-
 
 Wenn Sie das [Azure Service Bus-SDK für .NET][lnk-servicebus-sdk] oder den [Event Hubs-Ereignisprozessorhost][lnk-eventprocessorhost] verwenden, können Sie eine beliebige IoT Hub-Verbindungszeichenfolge mit den richtigen Berechtigungen verwenden. Anschließend verwenden Sie **messages/events** als Event Hub-Name.
 
-Wenn Sie SDKs (oder Produktintegrationen) verwenden, die nicht IoT Hub-fähig sind, müssen Sie einen Event Hub-kompatiblen Endpunkt und den Event Hub-kompatiblen Namen aus den IoT Hub-Einstellungen abrufen:
+Wenn Sie SDKs (oder Produktintegrationen) verwenden, die nicht IoT Hub-fähig sind, müssen Sie einen Event Hub-kompatiblen Endpunkt und den Event Hub-kompatiblen Namen abrufen:
 
 1. Melden Sie sich beim [Azure-Portal][lnk-management-portal] an, und navigieren Sie zu Ihrem IoT Hub.
 1. Klicken Sie auf **Endpunkte**.

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 1/24/2018
 ms.author: johnkem
-ms.openlocfilehash: 1a58db2d424e4280fd56be972d48df89648e8c13
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 3e2b5305b969c96e6b14122af03da9249373094a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
@@ -42,12 +42,12 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Event Hubs |[Azure Event Hubs-Diagnoseprotokolle](../event-hubs/event-hubs-diagnostic-logs.md) |
 | IoT Hub | [IoT Hub-Vorgänge](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Schlüsseltresor |[Azure-Schlüsseltresor-Protokollierung](../key-vault/key-vault-logging.md) |
-| Lastenausgleichsmodul |[Log Analytics für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
-| Logik-Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
+| Lastenausgleichsmodul |[Protokollanalysen für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
+| Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS-Schutz | Schema nicht verfügbar. |
 | Recovery Services | [Datenmodell für Azure Backup](../backup/backup-azure-reports-data-model.md)|
-| Suche |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../search/search-traffic-analytics.md) |
+| Suchen, |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../search/search-traffic-analytics.md) |
 | Server Management | Schema nicht verfügbar. |
 | SERVICE BUS |[Azure Service Bus Diagnoseprotokolle](../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL-Datenbank | [Azure SQL-Datenbank-Diagnoseprotokollierung](../sql-database/sql-database-metrics-diag-logging.md) |
@@ -55,9 +55,8 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Virtuelle Netzwerke | Schema nicht verfügbar. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
-|Ressourcentyp|Kategorie|Anzeigename der Kategorie|
+|Ressourcentyp|Category (Kategorie)|Anzeigename der Kategorie|
 |---|---|---|
-|microsoft.aadiam/tenants|Signin|Signin|
 |Microsoft.AnalysisServices/servers|Motor|Motor|
 |Microsoft.AnalysisServices/servers|Dienst|Dienst|
 |Microsoft.ApiManagement/service|GatewayLogs|Protokolle im Zusammenhang mit dem ApiManagement-Gateway|
@@ -116,6 +115,8 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicatedItems|Replizierte Azure Site Recovery-Elemente|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationStats|Azure Site Recovery-Replikationsstatistiken|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery-Wiederherstellungspunkte|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationDataUploadRate|Uploadrate für Azure Site Recovery-Replikationsdaten|
+|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Datenänderungen auf mit Azure Site Recovery geschützten Datenträgern|
 |Microsoft.Search/searchServices|OperationLogs|Vorgangsprotokolle|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Betriebsprotokolle|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|
@@ -125,6 +126,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Sql/servers/databases|Zeitlimits|Zeitlimits|
 |Microsoft.Sql/servers/databases|Blöcke|Blöcke|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL-Informationen|
+|Microsoft.Sql/servers/databases|Audit|Überwachungsprotokolle|
 |Microsoft.StreamAnalytics/streamingjobs|Ausführung|Ausführung|
 |Microsoft.StreamAnalytics/streamingjobs|Erstellen|Erstellen|
 

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 37602bf78f7a43fb8255ddc0aad21f24095cb43c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f115d1e7313d2c9d378129c021a37489674fe81f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Referenz – Auswählen eines Kommunikationsprotokolls
 
@@ -34,7 +34,7 @@ Informationen dazu, wie diese Protokolle bestimmte IoT Hub-Features unterstütze
 
 Die folgende Tabelle enthält allgemeine Ratschläge für Ihre Protokollauswahl:
 
-| Protocol | Wann Sie dieses Protokoll auswählen sollten |
+| Protokoll | Wann Sie dieses Protokoll auswählen sollten |
 | --- | --- |
 | MQTT <br> MQTT über WebSockets |Verwenden Sie dieses Protokoll auf allen Geräten, die sich nicht über dieselbe TLS-Verbindung mit mehreren Geräten verbinden müssen (von denen jedes eigene gerätebezogene Anmeldeinformationen hat). |
 | AMQP <br> AMQP über WebSockets |Verwenden Sie es für Feld- und Cloudgateways, um die Vorteile geräteübergreifender Multiplexingverbindungen zu nutzen. |
@@ -44,7 +44,7 @@ Beachten Sie bei der Auswahl des Protokolls für die geräteseitige Kommunikatio
 
 * **C2D-Muster**. HTTPS bietet keine effiziente Methode zum Implementieren von Serverpushvorgängen. Daher fragen Geräte bei Verwendung von HTTPS IoT Hub nach C2D-Nachrichten ab. Dieser Ansatz ist für das Gerät und auch für IoT Hub sehr ineffizient. Gemäß den aktuellen HTTPS-Richtlinien muss jedes Gerät mindestens alle 25 Minuten eine Abfrage nach Nachrichten durchführen. MQTT und AMQP unterstützen Serverpush beim Empfangen von C2D-Nachrichten. Sie ermöglichen sofortiges Nachrichtenpushen von IoT Hub zum Gerät. Wenn die Übermittlungslatenz eine wichtige Rolle spielt, sind MQTT oder AMQP die zu bevorzugenden Protokolle. Bei nur selten verbundenen Geräten funktioniert auch HTTPS.
 * **Bereichsgateways**. Bei Verwendung von MQTT und HTTPS ist es nicht möglich, mehrere Geräte (jedes mit eigenen gerätebezogenen Anmeldeinformationen) mithilfe der gleichen TLS-Verbindung zu verbinden. Für [Bereichsgatewayszenarien][lnk-azure-gateway-guidance], die für jedes verbundene Gerät eine TLS-Verbindung zwischen dem Bereichsgateway und IoT Hub benötigen, sind diese Protokolle nicht optimal.
-* **Geräte mit eingeschränkten Ressourcen**. Die MQTT- und HTTPS-Bibliotheken haben weniger Speicherbedarf als die AMQP-Bibliotheken. Wenn daher das Gerät über limitierte Ressourcen verfügt (beispielsweise weniger als 1MB RAM), stehen möglicherweise nur diese Protokolle als Protokollimplementierung zur Verfügung.
+* **Geräte mit eingeschränkten Ressourcen**. Die MQTT- und HTTPS-Bibliotheken haben weniger Speicherbedarf als die AMQP-Bibliotheken. Wenn daher das Gerät über beschränkte Ressourcen verfügt (beispielsweise weniger als 1 MB RAM), stehen möglicherweise nur diese Protokolle als Protokollimplementierung zur Verfügung.
 * **Netzwerkausnahme**. Das AMQP-Standardprotokoll verwendet Port 5671, und MQTT lauscht an Port 8883. Die Verwendung dieser Ports kann Probleme in Netzwerken verursachen, die für Nicht-HTTPS-Protokolle geschlossen sind. Verwenden Sie MQTT über WebSockets, AMQP über WebSockets oder HTTPS in diesem Szenario.
 * **Größe der Nutzlast**. MQTT und AMQP sind binäre Protokolle und weisen daher kompaktere Nutzlasten als HTTPS auf.
 

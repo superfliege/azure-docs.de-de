@@ -4,7 +4,7 @@ description: "Mit dem Azure Cosmos DB-Emulator können Sie Ihre Anwendung kosten
 services: cosmos-db
 documentationcenter: 
 keywords: Azure Cosmos DB-Emulator
-author: arramac
+author: David-Noble-at-work
 manager: jhubbard
 editor: 
 ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
-ms.author: arramac
-ms.openlocfilehash: 240961e0caa1cf2b5c31e854e925f914eb7edc00
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.date: 01/29/2018
+ms.author: danoble
+ms.openlocfilehash: 40d7b8a52f67d116ab764b9716c917d5c7865467
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -39,6 +39,9 @@ ms.lasthandoff: 12/14/2017
 </table>
   
 Der Azure Cosmos DB-Emulator stellt eine lokale Umgebung bereit, die zu Entwicklungszwecken den Azure Cosmos DB-Dienst emuliert. Bei Verwendung des Azure Cosmos DB-Emulators können Sie die Anwendung lokal entwickeln und testen, ohne ein Azure-Abonnement zu erstellen oder sonstige Kosten zu verursachen. Wenn Sie mit der Funktion der Anwendung im Azure Cosmos DB-Emulator zufrieden sind, können Sie zur Verwendung eines Azure Cosmos DB-Kontos in der Cloud wechseln.
+
+> [!NOTE]
+> Zum aktuellen Zeitpunkt bietet der Daten-Explorer im Emulator nur für SQL-API-Sammlungen und MongoDB-Sammlungen vollständige Unterstützung. Table-, Graph- und Cassandra-Container werden nicht vollständig unterstützt. 
 
 In diesem Artikel werden die folgenden Aufgaben behandelt: 
 
@@ -62,9 +65,6 @@ Es wird empfohlen, als Einstieg das folgende Video anzusehen, in dem Kirill Gavr
 Der Azure Cosmos DB-Emulator stellt eine High-Fidelity-Emulation des Azure Cosmos DB-Diensts bereit. Er unterstützt die gleichen Funktionen wie Azure Cosmos DB, z.B. Erstellen und Abfragen von JSON-Dokumenten, Bereitstellen und Skalieren von Sammlungen und Ausführen von gespeicherten Prozeduren und Triggern. Sie können Anwendungen mit dem Azure Cosmos DB-Emulator entwickeln und testen und diese in Azure auf globaler Ebene bereitstellen, indem Sie nur eine einzige Konfigurationsänderung am Verbindungsendpunkt für Azure Cosmos DB vornehmen.
 
 Wir haben zwar eine sehr detailgetreue Emulation des tatsächlichen Azure Cosmos DB-Diensts erstellt, allerdings unterscheidet sich die Implementierung des Azure Cosmos DB-Emulators von der des Diensts. Der Azure Cosmos DB-Emulator verwendet Standardkomponenten des Betriebssystems, z.B. das lokale Dateisystem für Persistenz und den HTTPS-Protokollstapel für Konnektivität. Dies bedeutet, dass einige Funktionen, die die Azure-Infrastruktur benötigen, über den Azure Cosmos DB-Emulator nicht verfügbar sind. Hierzu gehören beispielsweise die globale Replikation, Lese-/Schreibvorgänge mit Wartezeit im einstelligen Millisekundenbereich und optimierbare Konsistenzebenen.
-
-> [!NOTE]
-> Zum aktuellen Zeitpunkt unterstützt der Daten-Explorer im Emulator nur die Erstellung von SQL-API-Sammlungen und MongoDB-Sammlungen. Der Daten-Explorer im Emulator unterstützt derzeit nicht die Erstellung von Tabellen und Diagrammen. 
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Unterschiede zwischen dem Emulator und dem Dienst 
 Da der Azure Cosmos DB-Emulator eine emulierte Umgebung bereitstellt, die auf einer lokalen Entwicklerarbeitsstation ausgeführt wird, gibt es einige funktionelle Unterschiede zwischen dem Emulator und einem Azure Cosmos DB-Konto in der Cloud:
@@ -359,9 +359,16 @@ Starting interactive shell
 
 Verwenden Sie jetzt den Endpunkt- und den Hauptschlüssel aus der Antwort im Client, und importieren Sie das SSL-Zertifikat in den Host. Führen Sie an einer Eingabeaufforderung mit Administratorberechtigungen Folgendes aus, um das SSL-Zertifikat zu importieren:
 
-```
+Über die Befehlszeile:
+```cmd 
 cd %LOCALAPPDATA%\CosmosDBEmulatorCert
 powershell .\importcert.ps1
+```
+
+Über PowerShell:
+```powershell
+cd $env:LOCALAPPDATA\CosmosDBEmulatorCert
+.\importcert.ps1
 ```
 
 Wenn Sie die interaktive Shell nach dem Starten des Emulators schließen, wird der Container des Emulators heruntergefahren.
@@ -404,6 +411,14 @@ Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an ein
 2. Geben Sie in das Windows-Suchfeld **Apps & Features** ein, und klicken Sie auf das Ergebnis **Apps & Features (Systemeinstellungen)**.
 3. Scrollen Sie in der Liste der Apps zu **Azure Cosmos DB-Emulator**, wählen ihn aus, und klicken Sie auf **Deinstallieren**. Bestätigen Sie den Vorgang, und klicken Sie erneut auf **Deinstallieren**.
 4. Wenn die App deinstalliert wird, navigieren Sie zu „C:\Users\<Benutzer > \AppData\Local\CosmosDBEmulator“, und löschen Sie den Ordner. 
+
+## <a name="change-list"></a>Änderungsliste
+
+Sie können die Versionsnummer überprüfen, indem Sie mit der rechten Maustaste auf das lokale Emulatorsymbol in der Taskleiste und auf das Menüelement „Info“ klicken.
+
+### <a name="120-released-on-january-26-2018"></a>1.20, veröffentlicht am 26. Januar 2018
+
+* Die Pipeline für die MongoDB-Aggregation wurde standardmäßig aktiviert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

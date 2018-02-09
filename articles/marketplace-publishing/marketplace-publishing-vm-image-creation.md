@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 126c5a5b3abd48b350c7d11a038a5d94e40280a0
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 8915abbb27184c2f0b47747e422e5a4fa7bc1cbb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Anleitung zum Erstellen eines VM-Images für Azure Marketplace
 In diesem Artikel ( **Schritt 2**) werden Sie durch die Vorbereitung der virtuellen Festplatten (VHDs) geführt, die Sie im Azure Marketplace bereitstellen möchten. Ihre VHDs bilden die Grundlage Ihrer SKU. Der Prozess variiert in Abhängigkeit davon, ob Sie eine Linux- oder Windows-basierte SKU bereitstellen. Dieser Artikel deckt beide Szenarien ab. Dieser Vorgang kann parallel zum [Erstellen und Registrieren eines Kontos][link-acct-creation] ausgeführt werden.
@@ -118,6 +118,9 @@ Im Microsoft Azure-Portal können Sie den virtuellen Computer auf der Grundlage 
 Es wird dringend empfohlen, die VHD in der Cloud mithilfe des Remotedesktopprotokolls (RDP) zu entwickeln. Die Verbindung zum RDP wird mit dem Benutzernamen und dem Kennwort hergestellt, die Sie während der Bereitstellung angegeben haben.
 
 > [!IMPORTANT]
+> **Verwenden Sie keine verwalteten Datenträger.** Der virtuelle Computer, der zum Entwickeln der VHD für die Cloud verwendet wird, darf nicht auf verwalteten Datenträgern basieren. Derzeit wird die Erstellung von Images dieser Datenträger nicht unterstützt.
+> Durch das Erstellen des virtuellen Computers in dem optionalen Feature wird die Standardeinstellung für verwaltete Datenträger geändert.
+
 > Wenn Sie die VHD lokal entwickeln (nicht zu empfehlen), helfen Ihnen die Informationen unter [Erstellen eines lokalen Images eines virtuellen Computers für Azure Marketplace](marketplace-publishing-vm-image-creation-on-premise.md)weiter. Beim Entwickeln in der Cloud ist das Herunterladen der VHD nicht notwendig.
 >
 >

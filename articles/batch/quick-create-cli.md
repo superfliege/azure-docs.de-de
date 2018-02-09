@@ -1,0 +1,212 @@
+---
+title: "Azure-Schnellstart – Ausführen eines Batch-Auftrags – CLI"
+description: "In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag in der Azure CLI ausführen."
+services: batch
+author: dlepow
+manager: jeconnoc
+ms.service: batch
+ms.devlang: azurecli
+ms.topic: quickstart
+ms.date: 01/16/2018
+ms.author: danlep
+ms.custom: mvc
+ms.openlocfilehash: f4a9235db7431b531864272d220006dbe8340924
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/01/2018
+---
+# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI
+
+Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Schnellstart wird veranschaulicht, wie Sie die Azure CLI zum Erstellen eines Batch-Kontos, eines *Pools* mit Computeknoten (virtuelle Computer) und eines *Auftrags* verwenden, mit dem im Pool *Aufgaben* ausgeführt werden. Jede Beispielaufgabe führt einen einfachen Befehl für einen der Poolknoten aus. Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzepten des Batch-Diensts vertraut und können Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
+
+[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.20 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
+
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+
+Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus2* erstellt.
+
+```azurecli-interactive 
+az group create \
+    --name myResourceGroup \
+    --location eastus2
+```
+
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+
+Sie können ein allgemeines Azure-Speicherkonto mit Ihrem Batch-Konto verknüpfen. Auch wenn es für diese Schnellstartanleitung nicht erforderlich ist, ist das Speicherkonto nützlich zum Bereitstellen von Anwendungen und Speichern von Eingabe- und Ausgabedaten für die meisten Workloads in der Praxis. Erstellen Sie mit dem Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) in Ihrer Ressourcengruppe ein Speicherkonto.
+
+```azurecli-interactive
+az storage account create \
+    --resource-group myResourceGroup \
+    --name mystorageaccount \
+    --location eastus2 \
+    --sku Standard_LRS
+```
+
+## <a name="create-a-batch-account"></a>Erstellen eines Batch-Kontos
+
+Erstellen Sie mit dem Befehl [az batch account create](/cli/azure/batch/account#az_batch_account_create) ein Batch-Konto. Sie benötigen ein Konto zum Erstellen von Computeressourcen (Pools mit Computeknoten) und Batch-Aufträgen.
+
+Im folgenden Beispiel wird ein Batch-Konto mit dem Namen *mybatchaccount* in *myResourceGroup* erstellt, und das von Ihnen erstellte Speicherkonto wird verknüpft.  
+
+```azurecli-interactive 
+az batch account create \
+    --name mybatchaccount \
+    --storage-account mystorageaccount \
+    --resource-group myResourceGroup \
+    --location eastus2
+```
+
+Zum Erstellen und Verwalten von Computepools und -aufträgen müssen Sie die Authentifizierung für Batch durchführen. Melden Sie sich mit dem Befehl [az batch account login](/cli/azure/batch/account#az_batch_account_login) am Konto an. Nachdem Sie sich angemeldet haben, wird für Ihre `az batch`-Befehle dieser Kontokontext verwendet.
+
+```azurecli-interactive 
+az batch account login \
+    --name mybatchaccount \
+    --resource-group myResourceGroup \
+    --shared-key-auth
+```
+
+## <a name="create-a-pool-of-compute-nodes"></a>Erstellen eines Pools mit Computeknoten
+
+Nachdem Sie nun über ein Batch-Konto verfügen, können Sie einen Beispielpool mit Linux-Computeknoten erstellen, indem Sie den Befehl [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) verwenden. Im folgenden Beispiel wird ein Pool mit dem Namen *mypool* erstellt, der zwei Knoten der Größe *Standard_A1_v2* mit Ubuntu 16.04 LTS enthält. Die vorgeschlagene Knotengröße bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
+ 
+```azurecli-interactive
+az batch pool create \
+    --id mypool --vm-size Standard_A1_v2 \
+    --target-dedicated-nodes 2 \
+    --image canonical:ubuntuserver:16.04.0-LTS \
+    --node-agent-sku-id "batch.node.ubuntu 16.04" 
+```
+
+Batch erstellt den Pool sofort, aber es dauert einige Minuten, bis die Computeknoten zugeordnet und gestartet wurden. Während dieses Zeitraums befindet sich der Pool im Status `resizing`. Führen Sie den Befehl [az batch pool show](/cli/azure/batch/pool#az_batch_pool_show) aus, um den Status des Pools anzuzeigen. Mit diesem Befehl werden alle Eigenschaften des Pools angezeigt, und Sie können bestimmte Eigenschaften abfragen. Mit dem folgenden Befehl wird der Zuweisungsstatus des Pools abgerufen:
+
+```azurecli-interactive
+az batch pool show --pool-id mypool \
+    --query "allocationState"
+```
+
+Fahren Sie mit den folgenden Schritten fort, um einen Auftrag und Aufgaben zu erstellen, während sich der Poolstatus ändert. Der Pool ist für die Durchführung von Aufgaben bereit, wenn der Zuweisungsstatus `steady` lautet und alle Knoten ausgeführt werden. 
+
+## <a name="create-a-job"></a>Erstellen eines Auftrags
+
+Da Sie jetzt über einen Pool verfügen, können Sie einen Auftrag erstellen, um ihn darin auszuführen.  Ein Batch-Auftrag ist eine logische Gruppe für eine oder mehrere Aufgaben. Ein Auftrag enthält gemeinsame Einstellungen für Aufgaben, z.B. die Priorität und den Pool zum Ausführen von Aufgaben. Erstellen Sie einen Batch-Auftrag, indem Sie den Befehl [az batch job create](/cli/azure/batch/job#az_batch_job_create) verwenden. Im folgenden Beispiel wird im Pool *mypool* der Auftrag *myjob* erstellt. Der Auftrag enthält ursprünglich keine Aufgaben.
+
+```azurecli-interactive 
+az batch job create \
+    --id myjob \
+    --pool-id mypool
+```
+
+## <a name="create-tasks"></a>Erstellen von Aufgaben
+
+Verwenden Sie nun den Befehl [az batch task create](/cli/azure/batch/task#az_batch_task_create), um einige Aufgaben für die Ausführung per Auftrag zu erstellen. In diesem Beispiel erstellen Sie vier identische Aufgaben. Für jede Aufgabe wird eine Befehlszeile (`command-line`) zum Anzeigen der Batch-Umgebungsvariablen auf einem Computeknoten ausgeführt, und anschließend wird 90 Sekunden gewartet. Bei Verwendung von Batch befindet sich diese Befehlszeile dort, wo Sie Ihre App bzw. Ihr Skript angeben. In Batch gibt es mehrere Möglichkeiten, Apps und Skripts auf Computeknoten bereitzustellen.
+
+Mit dem folgenden Bash-Skript werden vier parallele Aufgaben erstellt (*mytask1* bis *mytask4*).
+
+```azurecli-interactive 
+for i in {1..4}
+do
+   az batch task create \
+    --task-id mytask$i \
+    --job-id myjob \
+    --command-line "/bin/bash -c printenv | grep AZ_BATCH; sleep 90s"
+done
+```
+
+In der Befehlsausgabe werden Einstellungen für die einzelnen Aufgaben angezeigt. Batch verteilt die Aufgaben auf die Computeknoten.
+
+## <a name="view-task-status"></a>Anzeigen des Aufgabenstatus
+
+Nachdem Sie eine Aufgabe erstellt haben, wird sie von Batch zur Ausführung im Pool in die Warteschlange eingereiht. Sobald ein Knoten für die Ausführung verfügbar ist, wird die Aufgabe ausgeführt.
+
+Verwenden Sie den Befehl [az batch task show](/cli/azure/batch/task#az_batch_task_show), um den Status der Batch-Aufgaben anzuzeigen. Im folgenden Beispiel werden Details zur Aufgabe *mytask1* angezeigt, die auf einem der Poolknoten ausgeführt wird.
+
+```azurecli-interactive 
+az batch task show \
+    --job-id myjob \
+    --task-id mytask1
+```
+
+Die Befehlsausgabe enthält viele Details, aber achten Sie besonders auf das `exitCode`-Element der Aufgabenbefehlszeile und das `nodeId`-Element. Wenn `exitCode` den Wert „0“ hat, bedeutet dies, dass die Aufgabenbefehlszeile erfolgreich abgeschlossen wurde. Mit `nodeId` wird die ID des Poolknotens angegeben, auf dem die Aufgabe ausgeführt wurde.
+
+## <a name="view-task-output"></a>Anzeigen der Aufgabenausgabe
+
+Verwenden Sie zum Auflisten der Dateien, die von einer Aufgabe auf einem Computeknoten erstellt werden, den Befehl [az batch task file list](/cli/azure/batch/task#az_batch_task_file_list). Mit dem folgenden Befehl werden die Dateien aufgeführt, die mit *mytask1* erstellt werden: 
+
+```azurecli-interactive 
+az batch task file list \
+    --job-id myjob \
+    --task-id mytask1 \
+    --output table
+```
+
+Die Ausgabe sieht in etwa wie folgt aus:
+
+```
+Name        URL                                                                                         Is Directory      Content Length
+----------  ------------------------------------------------------------------------------------------  --------------  ----------------
+stdout.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/mytask1/files/stdout.txt  False                  695
+certs       https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/mytask1/files/certs       True
+wd          https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/mytask1/files/wd          True
+stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/mytask1/files/stderr.txt  False                     0
+
+```
+
+Verwenden Sie den Befehl [az batch task file download](/cli/azure/batch/task#az_batch_task_file_download), um eine der Ausgabedateien in ein lokales Verzeichnis herunterzuladen. In diesem Beispiel ist die Aufgabenausgabe in `stdout.txt` enthalten. 
+
+```azurecli-interactive
+az batch task file download \
+    --job-id myjob \
+    --task-id mytask1 \
+    --file-path stdout.txt \
+    --destination ./stdout.txt
+```
+
+Sie können den Inhalt von `stdout.txt` in einem Text-Editor anzeigen. Darin sind die Azure Batch-Umgebungsvariablen zu sehen, die auf dem Knoten festgelegt sind. Beim Erstellen Ihrer eigenen Batch-Aufträge können Sie auf diese Umgebungsvariablen in Aufgabenbefehlszeilen sowie in den Apps und Skripts verweisen, die über die Befehlszeilen ausgeführt werden.
+
+```
+AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask3
+AZ_BATCH_NODE_STARTUP_DIR=/mnt/batch/tasks/startup
+AZ_BATCH_CERTIFICATES_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask3/certs
+AZ_BATCH_ACCOUNT_URL=https://mybatchaccount.eastus2batch.azure.com/
+AZ_BATCH_TASK_WORKING_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask3/wd
+AZ_BATCH_NODE_SHARED_DIR=/mnt/batch/tasks/shared
+AZ_BATCH_TASK_USER=_azbatch
+AZ_BATCH_NODE_ROOT_DIR=/mnt/batch/tasks
+AZ_BATCH_JOB_ID=myjob
+AZ_BATCH_NODE_IS_DEDICATED=true
+AZ_BATCH_NODE_ID=tvm-1392786932_2-20171026t223740z
+AZ_BATCH_POOL_ID=mypool-linux
+AZ_BATCH_TASK_ID=mytask3
+AZ_BATCH_ACCOUNT_NAME=mybatchaccount
+AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
+```
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Wenn Sie mit den Batch-Tutorials und -Beispielen fortfahren möchten, können Sie das erstellte Batch-Konto und das verknüpfte Speicherkonto aus dieser Schnellstartanleitung verwenden. Für das Batch-Konto selbst fallen keine Gebühren an.
+
+Ihnen werden auch dann Gebühren für Pools berechnet, während die Knoten ausgeführt werden, wenn keine Aufträge geplant sind. Falls Sie einen Pool nicht mehr benötigen, ist es daher ratsam, ihn mit dem Befehl [az batch pool delete](/cli/azure/batch/pool#az_batch_pool_delete) zu löschen:
+
+```azurecli-interactive
+az batch pool delete --pool-id mypool
+```
+
+Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie die Ressourcengruppe, das Batch-Konto, Pools und alle dazugehörigen Ressourcen entfernen, wenn sie nicht mehr benötigt werden. Löschen Sie die Ressourcen wie folgt:
+
+```azurecli-interactive 
+az group delete --name myResourceGroup
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In dieser Schnellstartanleitung haben Sie ein Batch-Konto, einen Batch-Pool und einen Batch-Auftrag erstellt. Mit dem Auftrag wurden Beispielaufgaben ausgeführt, und Sie haben die Ausgabe angezeigt, die auf einem der Knoten erstellt wurde. Da Sie sich jetzt mit den wichtigsten Konzepten des Batch-Diensts vertraut gemacht haben, können Sie Batch mit realistischeren Workloads und in größerem Umfang ausprobieren. Weitere Informationen zu Azure Batch finden Sie in den Azure Batch-Tutorials. 
+
+
+> [!div class="nextstepaction"]
+> [Azure Batch-Tutorials](./tutorial-parallel-dotnet.md)

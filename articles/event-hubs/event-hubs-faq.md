@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: c4faa071c4f2401fe3e852e787e3b7d4da0c7d44
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6bdcbbe37613d5384017409f3be2772085e276ae
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -66,7 +66,8 @@ Azure Event Hubs ist in allen unterstützten Azure-Regionen verfügbar. Eine Lis
 ## <a name="best-practices"></a>Bewährte Methoden
 
 ### <a name="how-many-partitions-do-i-need"></a>Wie viele Partitionen benötige ich?
-Denken Sie daran, dass die Partitionszahl auf einem Event Hub nach der Installation nicht geändert werden kann. Vor diesem Hintergrund ist es wichtig, dass Sie vor Beginn genau überlegen, wie viele Partitionen Sie benötigen. 
+
+Beachten Sie, dass die Anzahl von Partitionen auf einem Event Hub nach der Einrichtung nicht mehr geändert werden kann. Vor diesem Hintergrund ist es wichtig, dass Sie vor Beginn genau überlegen, wie viele Partitionen Sie benötigen. 
 
 Event Hubs ist für einen einzelnen Partitionsleser pro Verbrauchergruppe ausgelegt. In den meisten Fällen reicht die Standardeinstellung von vier Partitionen aus. Wenn Sie Ihre Ereignisverarbeitung skalieren möchten, möchten Sie vielleicht die Möglichkeit haben, das Hinzufügen weiterer Partitionen zu erwägen. Es gibt keine bestimmte Durchsatzbegrenzung für eine Partition, aber der aggregierte Durchsatz in Ihrem Namespace ist durch die Anzahl der Durchsatzeinheiten beschränkt. Wenn Sie die Anzahl der Durchsatzeinheiten in Ihrem Namespace erhöhen, wünschen Sie vielleicht zusätzliche Partitionen, um gleichzeitigen Lesern zu ermöglichen, ihren eigenen maximalen Durchsatz zu erzielen.
 

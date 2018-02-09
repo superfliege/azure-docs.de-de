@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/02/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 70167322f1576b4a9cbd5f499edfc934b8a9a799
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0ba6cf4532e5bcd86c53a63349241509bfc941ec
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>Erstellen einer .NET Service Fabric-Anwendung in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -123,9 +123,27 @@ Drücken Sie **UMSCHALT+F5**, um die Debugsitzung zu beenden.
 Für die Bereitstellung der Anwendung in Azure benötigen Sie einen Service Fabric-Cluster, der die Anwendung ausführt. 
 
 ### <a name="join-a-party-cluster"></a>Beitreten zu einem Partycluster
-Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. 
+Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. 
 
-Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Merken Sie sich den Wert für **Verbindungsendpunkt**. Er wird in den folgenden Schritten verwendet.
+Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Das Zertifikat und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
+
+![PFX-Zertifikat und Verbindungsendpunkt](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
+
+Installieren Sie das PFX-Zertifikat auf einem Windows-Computer im Zertifikatspeicher *CurrentUser\My*.
+
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
+\CurrentUser\My
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
+
+Notieren Sie sich den Fingerabdruck für einen späteren Schritt.
 
 > [!Note]
 > Der Web-Front-End-Dienst ist standardmäßig für das Lauschen auf eingehenden Datenverkehr an Port 8080 konfiguriert. Port 8080 ist im Partycluster geöffnet.  Wenn Sie den Anwendungsport ändern müssen, verwenden Sie einen der im Partycluster geöffneten Ports.
@@ -136,24 +154,29 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und wählen Sie **Veröffentlichen**. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 
-    ![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungendspunkt**, und klicken Sie auf **Veröffentlichen**. Beispiel: `winh1x87d1d.westus.cloudapp.azure.com:19000`.
+2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und geben Sie die folgenden Informationen an.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des in einem früheren Schritt installierten Zertifikats entsprechen. 
+
+    ![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
     Jede Anwendung im Cluster muss einen eindeutigen Namen besitzen.  Bei Partyclustern handelt es sich jedoch um eine öffentliche, freigegebene Umgebung, und unter Umständen tritt in einer vorhandenen Anwendung ein Konflikt auf.  Kommt es zu einem Namenskonflikt, benennen Sie das Visual Studio-Projekt um, und stellen Sie es erneut bereit.
 
-3. Öffnen Sie einen Browser, und geben Sie die Clusteradresse gefolgt von „:8080“ ein, um die Anwendung im Cluster abzurufen (z.B. `http://winh1x87d1d.westus.cloudapp.azure.com:8080`). Sie sollten jetzt sehen, dass die Anwendung im Cluster in Azure ausgeführt wird.
+3. Klicken Sie auf **Veröffentlichen**.
+
+4. Öffnen Sie einen Browser, und geben Sie die Clusteradresse gefolgt von „:8080“ ein, um die Anwendung im Cluster abzurufen (z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`). Sie sollten jetzt sehen, dass die Anwendung im Cluster in Azure ausgeführt wird.
 
 ![Front-End der Anwendung](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalieren von Anwendungen und Diensten in einem Cluster
 Service Fabric-Dienste können für einen Cluster auf einfache Weise skaliert werden, um eine Änderung der Last für die Dienste auszugleichen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden. Sie haben mehrere Möglichkeiten, Ihre Dienste zu skalieren. Sie können Skripts oder Befehle aus PowerShell oder der Service Fabric CLI (sfctl) verwenden. In diesem Beispiel verwenden Sie Service Fabric Explorer.
 
-Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ist über einen Browser zugänglich, indem auf den HTTP-Verwaltungsport (19080) der Cluster zugegriffen wird, z.B. `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
+Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ist über einen Browser zugänglich, indem auf den HTTP-Verwaltungsport (19080) der Cluster zugegriffen wird, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+
+Unter Umständen erscheint eine Browserwarnung mit dem Hinweis, dass der Ort nicht vertrauenswürdig ist. Dies ist auf das selbstsignierte Zertifikat zurückzuführen. Sie können die Warnung ignorieren und den Vorgang fortsetzen. Wenn Sie vom Browser dazu aufgefordert werden, wählen Sie das installierte Zertifikat aus, um eine Verbindung herzustellen. 
 
 Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren:
 
-1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
+1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
 2. Klicken Sie auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/Voting/VotingWeb** in der Strukturansicht, und wählen Sie **Scale Service** (Dienst skalieren).
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
@@ -185,7 +208,7 @@ Gehen Sie zum Aktualisieren der Anwendung wie folgt vor:
 7. Aktivieren Sie im Dialogfeld **Service Fabric-Anwendung veröffentlichen** das Kontrollkästchen „Upgrade der Anwendung ausführen“, und klicken Sie auf **Veröffentlichen**.
 
     ![Dialogfeld „Veröffentlichen“ – Einstellung für Upgrade](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
-8. Öffnen Sie Ihren Browser, und navigieren Sie zu der Clusteradresse an Port 19080, z.B. `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
+8. Öffnen Sie Ihren Browser, und navigieren Sie zu der Clusteradresse an Port 19080, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
 9. Klicken Sie in der Strukturansicht auf den Knoten **Anwendungen** und dann im rechten Bereich auf **Upgrades in Progress** (Laufende Upgrades). Sie sehen, wie das Upgrade die Upgradedomänen in Ihrem Cluster durchläuft und wie sichergestellt wird, dass jede Domäne fehlerfrei ist, bevor mit der nächsten Domäne fortgefahren wird. Eine Upgradedomäne wird in der Statusanzeige grün angezeigt, wenn die Integrität der Domäne überprüft wurde.
     ![Upgradeansicht im Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/upgrading.png)
 

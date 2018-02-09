@@ -6,13 +6,13 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 1/12/2018
+ms.date: 1/25/2018
 ms.author: nepeters
-ms.openlocfilehash: a4e4ce6a23f9f8a99d8ae5f9e4e2084e3b749017
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: e1f5b68d5d39dd846ebec525d1e83a6c0ef4971a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="persistent-volumes-with-azure-disks---dynamic-provisioning"></a>Persistente Volumes mit Azure-Datenträgern: dynamische Bereitstellung
 
@@ -51,13 +51,14 @@ parameters:
   storageaccounttype: Standard_LRS
 ```
 
-
-
 ## <a name="create-persistent-volume-claim"></a>Erstellen eines Anspruchs auf ein persistentes Volume
 
 Ein Anspruch auf ein persistentes Volume verwendet das Speicherklassenobjekt, um eine Speicherkomponente dynamisch bereitzustellen. Wenn Sie einen Azure-Datenträger verwenden, wird der Datenträger in derselben Ressourcengruppe wie die AKS-Ressourcen erstellt.
 
 Dieses Beispielmanifest erstellt einen persistenten Volumeanspruch mit der Speicherklasse `azure-managed-disk`, um einen Datenträger mit der Größe `5GB` und dem Zugriff `ReadWriteOnce` zu erstellen. Weitere Informationen zu PVC-Zugriffsmodi finden Sie unter [Zugriffsmodi][access-modes].
+
+> [!NOTE]
+> Ein Azure-Datenträger kann nur mit dem Zugriffsmodustyp „ReadWriteOnce“ eingebunden werden. Dadurch ist er nur für einen einzelnen AKS-Knoten verfügbar. Wenn Sie ein persistentes Volume für mehrere Knoten freigeben möchten, ziehen Sie die Verwendung von [Azure Files][azure-files-pvc] in Erwägung. 
 
 ```yaml
 apiVersion: v1
@@ -110,4 +111,5 @@ Erfahren Sie mehr über persistente Kubernetes-Volumes bei Verwendung von Azure-
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
 <!-- LINKS - internal -->
+[azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/windows/premium-storage.md

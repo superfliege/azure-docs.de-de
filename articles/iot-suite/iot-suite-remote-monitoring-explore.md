@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e57ad43cc9a82e3944e93c6500ad5740818d10cc
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: d8943db3ec6ef5875b2b884d42ea25dbb44a30e5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung
 
@@ -31,6 +31,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Reagieren auf einen Alarm
 > * Aktualisieren der Firmware auf Ihren Geräten
 > * Organisieren Ihrer Objekte
+
+Im folgenden Video wird eine exemplarische Vorgehensweise zur Remoteüberwachungslösung gezeigt:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-28-An-introduction-to-Azure-IoT-through-the-new-Remote-Monitoring-Preconfigured-Solution/Player]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -73,7 +77,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Typen von bereitgestellte
 
 Die Bediener bei Contoso kennen die Schwellenwerte, die bestimmen, ob ein Gerät richtig funktioniert. Eine Kältemaschine funktioniert beispielsweise nicht richtig, wenn der gemeldete Druck höher als 250 PSI ist. In der folgenden Tabelle sind die Regeln auf Schwellenwertbasis aufgeführt, die von Contoso für die einzelnen Gerätetypen definiert werden:
 
-| Regelname | Beschreibung | Schwellenwert | Severity | Betroffene Geräte |
+| Regelname | BESCHREIBUNG | Schwellenwert | Severity | Betroffene Geräte |
 | --------- | ----------- | --------- | -------- | ---------------- |
 | Druck der Kältemaschine zu hoch | Warnung, wenn Kältemaschinen einen höheren Druck als normal aufweisen   |Druck > 250 psi       | Kritisch | Kältemaschinen            |
 | Temperatur des Geräts für die Prototyperstellung zu hoch  | Warnung, wenn Geräte für die Prototyperstellung höhere Temperaturen als normal aufweisen  |Temperatur > 80 &deg;F |Kritisch | Geräte für die Prototyperstellung |

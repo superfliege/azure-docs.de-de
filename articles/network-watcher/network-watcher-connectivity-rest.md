@@ -1,10 +1,10 @@
 ---
-title: "Überprüfen der Konnektivität mit Azure Network Watcher – Azure-Portal | Microsoft-Dokumentation"
-description: "Auf dieser Seite erfahren Sie, wie Sie die Konnektivität mit Network Watcher im Azure-Portal überprüfen."
+title: "Problembehandlung für Verbindungen mit Azure Network Watcher – Azure-REST-API | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe der Azure-REST-API die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen."
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: jdial
-ms.openlocfilehash: 271d3fa858e9178bef37a7d7c859557b29af3c75
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: fc0392e8a6bc8662c7b664710b7073ae09c49a7c
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Überprüfen der Konnektivität mit Azure Network Watcher mithilfe des Azure-Portals
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und der Azure-REST-API
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
@@ -27,22 +27,17 @@ ms.lasthandoff: 01/19/2018
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure-REST-API](network-watcher-connectivity-rest.md)
 
-Erfahren Sie, wie Sie mit der Konnektivität überprüfen können, ob von einem virtuellen Computer zu einem bestimmten Endpunkt eine direkte TCP-Verbindung hergestellt werden kann.
+Hier erfahren Sie, wie Sie mit der Problembehandlung für Verbindungen überprüfen können, ob von einem virtuellen Computer eine direkte TCP-Verbindung mit einem bestimmten Endpunkt hergestellt werden kann.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressourcen verfügen:
 
-* Eine Instanz von Network Watcher in der Region, in der Sie die Konnektivität überprüfen möchten
-
-* Virtuelle Computer, mit denen Sie die Konnektivität überprüfen
-
-ARMclient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden ARMClient auf der [chocolatey-Seite unter ARMClient](https://chocolatey.org/packages/ARMClient).
-
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
+* Eine Instanz von Network Watcher in der Region, in der Sie die Problembehandlung für eine Verbindung ausführen möchten
+* Virtuelle Computer zum Ausführen der Problembehandlung für Verbindungen
 
 > [!IMPORTANT]
-> Für die Konnektivitätsprüfung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
+> Für die Problembehandlung für Verbindungen ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="log-in-with-armclient"></a>Anmelden mit ARMClient
 
@@ -474,8 +469,6 @@ Im folgenden Beispiel sehen Sie die Antwort auf die Ausführung des vorherigen A
 Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden Sie unter [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md).
 
 Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](network-watcher-check-ip-flow-verify-portal.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
-
-<!-- Image references -->
 
 
 

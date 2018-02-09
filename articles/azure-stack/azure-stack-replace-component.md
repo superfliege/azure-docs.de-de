@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 1/29/2018
 ms.author: mabrigg
-ms.openlocfilehash: 5f760ae0cc33e138fc3d484711b8747b984977d4
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 7018f0122ab1ef11d64cce8a9adf58419d0e9ba7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Ersetzen einer Hardwarekomponente auf einem Azure Stack-Skalierungseinheitenknoten
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-In diesem Artikel wird das allgemeine Verfahren zum Ersetzen von Hardwarekomponenten beschrieben, die nicht im laufenden Betrieb austauschbar sind. Die tatsächlichen Schritte zum Austausch variieren und hängen von Ihrem Originalgerätehersteller-Hardwareanbieter (Original Equipment Manufacturer, OEM) ab. Die für Ihr System mit integriertem Azure Stack spezifischen ausführlichen Schritte finden Sie in der FRU-Dokumentation (Field Replaceable Unit) des Anbieters.
+In diesem Artikel wird das allgemeine Verfahren zum Ersetzen von Hardwarekomponenten beschrieben, die nicht im laufenden Betrieb austauschbar sind. Die tatsächlichen Schritte zum Austausch variieren abhängig von Ihrem Originalgerätehersteller (Original Equipment Manufacturer, OEM). Die für Ihr System mit integriertem Azure Stack spezifischen ausführlichen Schritte finden Sie in der FRU-Dokumentation (Field Replaceable Unit) des Anbieters.
 
 Nicht im laufenden Betrieb austauschbare Komponenten umfassen Folgendes:
 
@@ -40,23 +40,27 @@ Nicht im laufenden Betrieb austauschbare Komponenten umfassen Folgendes:
 
 Das folgende Flussdiagramm zeigt den allgemeinen FRU-Vorgang zum Ersetzen einer nicht im laufenden Betrieb austauschbaren Hardwarekomponente.
 
-![Flussdiagramm zum Ablauf des Komponentenaustauschs](media/azure-stack-replace-component/ReplaceComponentFlow.PNG)
+![Flussdiagramm zum Ablauf des Komponentenaustauschs](media/azure-stack-replace-component/replacecomponentflow.PNG)
 
-*Diese Aktion ist auf Basis des physischen Zustands der Hardware möglicherweise nicht erforderlich.
+*Diese Aktion ist abhängig vom physischen Zustand der Hardware möglicherweise nicht erforderlich.
 
-**Ob der OEM-Hardwareanbieter den Austausch von Komponenten und die Aktualisierung der Firmware durchführt, kann auf Basis Ihres Supportvertrags variieren.
+**Ob der OEM-Hardwareanbieter den Austausch von Komponenten und die Aktualisierung der Firmware durchführt, kann je nach Ihrem Supportvertrag variieren.
 
 ## <a name="review-alert-information"></a>Überprüfen von Warnungsinformation
 
-Das Integritäts- und Überwachungssystem von Azure Stack überwacht die Integrität von Netzwerkadaptern und Datenlaufwerken, die von direkten Speicherplätzen gesteuert werden. Es werden keine anderen Hardwarekomponenten überwacht. Für alle anderen Hardwarekomponenten werden Warnungen in der anbieterspezifischen Hardwareüberwachungslösung ausgelöst, die auf dem Lebenszyklushost der Hardware ausgeführt wird.
+Das Integritäts- und Überwachungssystem von Azure Stack verfolgt die Integrität von Netzwerkadaptern und Datenlaufwerken nach, die von „Direkte Speicherplätze“ gesteuert werden. Andere Hardwarekomponenten werden nicht nachverfolgt. Für alle anderen Hardwarekomponenten werden Warnungen in der anbieterspezifischen Hardwareüberwachungslösung ausgelöst, die auf dem Lebenszyklushost der Hardware ausgeführt wird.  
 
 ## <a name="component-replacement-process"></a>Komponentenaustauschprozess
 
-Die folgenden Schritte werden als allgemeine Übersicht über den Komponentenaustauschprozess bereitgestellt. Befolgen Sie diese Schritte nicht, ohne zuvor die vom OEM-Anbieter bereitgestellte FRU-Dokumentation zu Rate zu ziehen.
+Die folgenden Schritte ermöglichen eine allgemeine Übersicht über den Komponentenaustauschprozess. Befolgen Sie diese Schritte nicht, ohne zuvor die vom OEM-Anbieter bereitgestellte FRU-Dokumentation zu Rate zu ziehen.
 
-1. Verwenden Sie die Aktion [Ausgleichen](azure-stack-node-actions.md#scale-unit-node-actions), um den Skalierungseinheitenknoten in den Wartungsmodus zu versetzen. Diese Aktion ist auf Basis des physischen Zustands der Hardware möglicherweise nicht erforderlich.
+1. Verwenden Sie die Aktion [Ausgleichen](azure-stack-node-actions.md#scale-unit-node-actions), um den Skalierungseinheitenknoten in den Wartungsmodus zu versetzen. Diese Aktion ist abhängig vom physischen Zustand der Hardware möglicherweise nicht erforderlich.
+
+   > [!NOTE]
+   > Auf jeden Fall kann nur jeweils ein Knoten ausgeglichen und ausgeschaltet werden, ohne dass S2D (Storage Spaces Direct, Direkte Speicherplätze) unterbrochen wird.
+
 2. Nachdem sich der Skalierungseinheitenknoten im Wartungsmodus befindet, verwenden Sie die Aktion [Ausschalten](azure-stack-node-actions.md#scale-unit-node-actions). Diese Aktion ist auf Basis des physischen Zustands der Hardware möglicherweise nicht erforderlich.
- 
+
    > [!NOTE]
    > Verwenden Sie in dem unwahrscheinlichen Fall, dass die Ausschaltaktion nicht funktioniert, stattdessen die Webbenutzeroberfläche des Baseboard-Verwaltungscontrollers (BMC).
 
@@ -69,4 +73,4 @@ Die folgenden Schritte werden als allgemeine Übersicht über den Komponentenaus
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Ersetzen eines im laufenden Betrieb austauschbaren physischen Datenträgers finden Sie unter [Ersetzen eines Datenträgers](azure-stack-replace-disk.md).
-- Informationen zum Ersetzen eines physischen Knotens finden Sie unter [Ersetzen eines Skalierungseinheitenknotens](azure-stack-replace-node.md). 
+- Informationen zum Ersetzen eines physischen Knotens finden Sie unter [Ersetzen eines Skalierungseinheitenknotens](azure-stack-replace-node.md).

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: df31e5b0dfd3b41f5fc125bf3a59cfd6e8e5f4e1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5d624735a91d0828c4ac3796bde6c17acf6e131a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="split-column-by-example-transformation"></a>Transformation „Aufteilen von Spalten anhand eines Beispiels“
 Diese Transformation teilt den Inhalt einer Spalte vorausschauend auf aussagekräftige Begrenzungen auf, ohne dass eine Benutzereingabe erforderlich ist. Der Splitalgorithmus wählt die Begrenzungen aus, nachdem der Inhalt der Spalte analysiert wurde. Diese Begrenzungen können von Folgendem definiert werden:
@@ -51,7 +51,12 @@ Benutzer können **Spalten löschen** oder **neue Spalten einfügen**, indem Sie
 
 Benutzer können Werte aus einer Zelle kopieren und in eine andere einfügen, um ein Beispiel der Teilung bereitzustellen.
 
-Benutzer können zwischen dem **Standardmodus**  und dem **erweiterten Modus** wechseln, indem Sie im Editor für Transformationen auf die entsprechenden Links klicken.
+Benutzer können zwischen dem einfachen Modus (**Basic Mode**) und dem erweiterten Modus (**Advanced Mode**) umschalten, indem sie im Editor für Transformationen auf die entsprechenden Links klicken.
+
+### <a name="transform-editor-send-feedback"></a>Editor für Transformationen: Senden von Feedback
+
+Durch Klicken auf den Link **Feedback senden** wird das Dialogfeld **Feedback** angezeigt. Die Kommentarfelder enthalten bereits die Parameterauswahl und die eingegebenen Beispiele des Benutzers. Benutzer sollten den Inhalt der Kommentarfelder überprüfen und weitere Details angeben, damit wir das Problem besser nachvollziehen können. Wenn Benutzer keine Daten an Microsoft senden möchten, müssen sie die ausgefüllten Beispieldaten entfernen, bevor sie auf die Schaltfläche **Feedback senden** klicken. 
+
 
 ### <a name="editing-an-existing-transformation"></a>Bearbeiten einer vorhandenen Transformation
 

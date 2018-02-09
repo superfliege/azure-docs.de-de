@@ -3,7 +3,7 @@ title: "FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed
 description: "Bekannte Probleme mit der verwalteten Dienstidentität für Azure Active Directory."
 services: active-directory
 documentationcenter: 
-author: BryanLa
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/15/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7a71010567a76569da969db3d53f71535f96f2d0
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 8820691f5b7c6dbd2c15faede75de123f779b167
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="faq-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory
 
@@ -57,6 +57,23 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 Hinweis: 
 - Der Erweiterungsname und Typ für Windows lautet: ManagedIdentityExtensionForWindows
 - Der Erweiterungsname und Typ für Linux lautet: ManagedIdentityExtensionForLinux
+
+### <a name="are-there-rbac-roles-for-user-assigned-identities"></a>Gibt es RBAC-Rollen für vom Benutzer zugewiesene Identitäten?
+Ja:
+1. MSI-Mitwirkender: 
+
+- Kann: CRUD-Aktionen für vom Benutzer zugewiesene Identitäten durchführen. 
+- Kann nicht: Eine vom Benutzer zugewiesene Identität einer Ressource zuweisen (d.h. die Identität einer VM zuweisen).
+
+2. MSI-Operator: 
+
+- Kann: Eine vom Benutzer zugewiesene Identität einer Ressource zuweisen (d.h. die Identität einer VM zuweisen).
+- Kann nicht: CRUD-Aktionen für vom Benutzer zugewiesene Identitäten durchführen.
+
+Hinweis: Die integrierte Rolle „Mitwirkender“ kann alle der oben beschriebenen Aktionen ausführen: 
+- CRUD-Aktionen für vom Benutzer zugewiesene Identitäten durchführen
+- Eine vom Benutzer zugewiesene Identität einer Ressource zuweisen (d.h. die Identität einer VM zuweisen).
+
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -104,10 +121,9 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 - Die einzige Möglichkeit, alle vom Benutzer zugewiesenen MSIs zu entfernen, stellt das Aktivieren der vom System zugewiesenen MSI dar. 
 - Die Bereitstellung der VM-Erweiterung kann auf einem virtuellen Computer möglicherweise aufgrund von Fehlern beim DNS-Lookup nicht ausgeführt werden. Starten Sie den virtuellen Computer neu, und wiederholen Sie den Vorgang. 
-- Azure-Befehlszeilenschnittstelle: `Az resource show` und `Az resource list` führen auf einem virtuellen Computer mit einer vom Benutzer zugewiesen MSI zu einem Fehler. Verwenden Sie `az vm/vmss show`, um dieses Problem zu umgehen.
+- Das Hinzufügen einer nicht vorhandenen MSI führt dazu, dass auf der VM ein Fehler auftritt. *Hinweis: Das Problem, dass bei fehlender MSI ein Fehler bei der Identitätszuweisung auftritt, wird derzeit behoben.*
 - Das Tutorial für Azure Storage ist im Moment nur in der Region „USA, Mitte (EUAP)“ verfügbar. 
-- Wenn einer vom Benutzer zugewiesen MSI der Zugriff auf eine Ressource gewährt wird, zeigt das Blatt „IAM“ für diese Ressource „Zugriff auf Daten nicht möglich“ an. Um dieses Problem zu umgehen, verwenden Sie die Befehlszeilenschnittstelle zum Anzeigen/Bearbeiten der Rollenzuweisungen für diese Ressource.
-- Das Erstellen einer vom Benutzer zugewiesenen MSI mit einem Unterstrich im Namen wird nicht unterstützt.
+- Das Erstellen einer vom Benutzer zugewiesenen MSI mit Sonderzeichen (d.h. Unterstrich) im Namen wird nicht unterstützt.
 - Beim Hinzufügen einer zweiten vom Benutzer zugewiesenen Identität kann die Client-ID möglicherweise keine Token für diese anfordern. Starten Sie zum Umgehen dieses Problems die MSI-VM-Erweiterung mit den folgenden beiden Bash-Befehlen neu:
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`

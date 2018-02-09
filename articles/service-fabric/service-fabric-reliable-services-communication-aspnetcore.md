@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a98e9ad891fcfaf02ca7df5d10d5b310445c9d34
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4f5bc49bf58773a1510b552ce6fc20aa61076348
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core in zuverlässigen Service Fabric-Diensten
 
@@ -26,7 +26,7 @@ ASP.NET Core ist ein neues quelloffenes und plattformübergreifendes Framework z
 
 Dieser Artikel ist eine ausführliche Anleitung zum Hosten von ASP.NET Core-Diensten in Service Fabric Reliable Services mithilfe der **Microsoft.ServiceFabric.AspNetCore.**-*Menge der NuGet-Pakete.
 
-Ein einführendes Tutorial auf ASP.NET Core in Service Fabric und Anweisungen zum Abrufen Ihres Entwicklungsumgebungs-Setups, finden Sie unter [Erstelle eines Web-Front-End für Ihre Anwendung mithilfe von ASP.NET Core](service-fabric-add-a-web-frontend.md).
+Ein einführendes Tutorial auf ASP.NET Core in Service Fabric und Anweisungen zum Abrufen des Setups für Ihre Entwicklungsumgebung finden Sie unter [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md).
 
 Im weiteren Verlauf dieses Artikels wird vorausgesetzt, dass Sie bereits mit ASP.NET Core vertraut sind. Wenn nicht, empfehlen wir Ihnen [ASP.NET Core Grundlagen](https://docs.microsoft.com/aspnet/core/fundamentals/index) zu lesen.
 

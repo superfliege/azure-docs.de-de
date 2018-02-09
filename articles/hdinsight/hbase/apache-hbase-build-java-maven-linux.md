@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie mit Apache Maven eine Java-basierte Apache H
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
 ms.service: hdinsight
@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 07f6d49b6d5c0a5b77ef5a7a7395a37e79419955
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 7f5e4cd36b32ae86bc6f498c81d5a558ca6974d2
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Erstellen von Java-Anwendungen für die Apache-HBase
 
@@ -33,7 +33,7 @@ Die Schritte in diesem Dokument verwenden [Maven](http://maven.apache.org/) zum 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 * [Java Platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 8 oder höher
 
@@ -642,7 +642,7 @@ In den folgenden Schritte wird Azure PowerShell zum Hochladen der JAR-Datei in d
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
     ```
 
-    Ersetzen Sie `hdinsightclustername` durch den Namen Ihres Clusters. Der Befehl lädt `hbaseapp-1.0-SNAPSHOT.jar` an den Speicherort `example/jars` im primären Speicher für Ihren Cluster hoch.
+    Ersetzen Sie `hdinsightclustername` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung den Anmeldenamen (Administrator) und das Kennwort für den Cluster ein. Der Befehl lädt `hbaseapp-1.0-SNAPSHOT.jar` an den Speicherort `example/jars` im primären Speicher für Ihren Cluster hoch.
 
 5. Verwenden Sie den folgenden Befehl, um eine Tabelle mithilfe von `hbaseapp` zu erstellen:
 
@@ -650,7 +650,7 @@ In den folgenden Schritte wird Azure PowerShell zum Hochladen der JAR-Datei in d
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
     ```
 
-    Ersetzen Sie `hdinsightclustername` durch den Namen Ihres Clusters.
+    Ersetzen Sie `hdinsightclustername` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung den Anmeldenamen (Administrator) und das Kennwort für den Cluster ein.
 
     Dieser Befehl erstellt eine Tabelle namens **people** in HBase in Ihrem HDInsight-Cluster. Bei diesem Befehl erfolgt keine Ausgabe im Konsolenfenster.
 
@@ -660,7 +660,7 @@ In den folgenden Schritte wird Azure PowerShell zum Hochladen der JAR-Datei in d
     Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
     ```
 
-    Ersetzen Sie `hdinsightclustername` durch den Namen Ihres Clusters.
+    Ersetzen Sie `hdinsightclustername` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung den Anmeldenamen (Administrator) und das Kennwort für den Cluster ein.
 
     Dieser Befehl verwendet die Klasse `SearchByEmail`, um nach allen Zeilen zu suchen, in denen die Spaltenfamilie `contactinformation` und die Spalte `email` die Zeichenfolge `contoso.com` enthalten. Daraufhin sollte Sie folgende Ergebnisse erhalten:
 

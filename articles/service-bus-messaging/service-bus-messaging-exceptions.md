@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 01/31/2018
 ms.author: sethm
-ms.openlocfilehash: f927aa7a33a650354abd090b6280795875ab693f
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: efcfad2834c2d6775c6693f5c705a0531b2650d6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus-Messagingausnahmen
 In diesem Artikel werden einige Ausnahmen aufgelistet, die von den Microsoft Azure Service Bus-Messaging-APIs generiert werden. Diese Referenz kann geändert werden. Prüfen Sie darum bei Bedarf, ob Aktualisierungen vorgenommen wurden.
 
 ## <a name="exception-categories"></a>Ausnahmekategorien
-Die von den Messaging-APIs generierten Ausnahmen können – zusammen mit den zugehörigen Korrekturmaßnahmen – zu den folgenden Kategorien gehören. Beachten Sie, dass die Bedeutung und die Ursachen einer Ausnahme je nach Art der Messagingentität (Warteschlangen/Themen, Event Hubs) variieren können:
+Die von den Messaging-APIs generierten Ausnahmen können – zusammen mit den zugehörigen Korrekturmaßnahmen – zu den folgenden Kategorien gehören. Beachten Sie, dass die Bedeutung und die Ursachen einer Ausnahme je nach Art der Messagingentität variieren können:
 
 1. Fehler der Benutzercodierung ([System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)). Allgemeine Maßnahme: Korrigieren Sie den Code, bevor Sie fortfahren.
 2. Fehler bei der Einrichtung oder Konfiguration: ([Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Allgemeine Maßnahme: Überprüfen Sie die Konfiguration, und ändern Sie diese gegebenenfalls.
@@ -66,7 +66,7 @@ In der folgenden Tabelle werden die Typen von Messagingausnahmen, ihre Ursachen 
 ### <a name="queues-and-topics"></a>Warteschlangen und Themen
 Für Warteschlangen und Themen ist dies oft die Größe der Warteschlange. Die Fehlermeldungseigenschaft enthält weitere Details, wie das folgende Beispiel zeigt:
 
-```
+```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException
 Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-xxx-xxx’. 
     Size of entity in bytes:1073742326, Max entity size in bytes:
@@ -77,9 +77,9 @@ Die Meldung besagt, dass das Thema seine maximale Größe überschritten hat, in
 
 ### <a name="namespaces"></a>Namespaces
 
-Für Namespaces kann [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) angeben, dass eine Anwendung die maximale Anzahl der Verbindungen zu einem Namespace überschritten hat. Beispiel:
+Für Namespaces kann [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) angeben, dass eine Anwendung die maximale Anzahl der Verbindungen zu einem Namespace überschritten hat. Beispiel: 
 
-```
+```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException: ConnectionsQuotaExceeded for namespace xxx.
 <tracking-id-guid>_G12 ---> 
 System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: 
@@ -93,9 +93,6 @@ Es gibt zwei häufige Ursachen für diesen Fehler: die Warteschlange für unzust
    
     Um das Problem zu beheben, lesen und schließen Sie die Nachrichten in der Warteschlange für unzustellbare Nachrichten ab – genau wie in jeder anderen Warteschlange. Sie können die Methode [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) verwenden, die Sie beim Formatieren des Pfads für die Warteschlange für unzustellbare Nachrichten unterstützt.
 2. **Empfänger beendet** Ein Empfänger hat den Empfang von Nachrichten aus einer Warteschlange oder einem Abonnement beendet. Dies können Sie anhand der Eigenschaft [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) feststellen, die die vollständige Aufschlüsselung der Nachrichten zeigt. Wenn die Eigenschaft [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) hoch ist oder anwächst, werden die Nachrichten nicht so schnell gelesen, wie sie geschrieben werden.
-
-### <a name="event-hubs"></a>Event Hubs
-Für Event Hubs gilt ein Limit von 20 Verbrauchergruppen pro Event Hub. Wenn Sie versuchen, weitere zu erstellen, erhalten Sie eine [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception). 
 
 ## <a name="timeoutexception"></a>TimeoutException
 Eine [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) zeigt an, dass ein von einem Benutzer initiierter Vorgang länger als das Timeout des Vorgangs dauert. 

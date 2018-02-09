@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: banders
-ms.openlocfilehash: 031a538c7e3a7dd381fa9bd996d8a027f761a50a
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c7516c6d4fa8cfe8e146c325af7ca7ca70475a94
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (Vorschau)
 
@@ -43,12 +43,12 @@ Die Lösung:
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
 
-| Verbundene Quelle | Support | Beschreibung |
+| Verbundene Quelle | Support | BESCHREIBUNG |
 |---|---|---|
 | [Windows-Agents](log-analytics-windows-agent.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
-| [Linux-Agents](log-analytics-linux-agents.md) | Nein    | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
-| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit OMS erforderlich. Daten werden von der Verwaltungsgruppe an das OMS-Repository weitergeleitet.|
-| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
+| [Linux-Agents](log-analytics-linux-agents.md) | Nein     | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
+| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
+| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,11 +59,11 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 Führen Sie den folgenden Schritt aus, um die Lösung „Kapazität und Leistung“ Ihrem Arbeitsbereich hinzuzufügen.
 
-- Fügen Sie die Lösung „Kapazität und Leistung“ mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Verfahrens Ihrem OMS-Arbeitsbereich hinzu.
+- Fügen Sie die Lösung „Kapazitäts- und Leistungsdiagnose“ mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Verfahrens Ihrem Log Analytics-Arbeitsbereich hinzu.
 
 ## <a name="management-packs"></a>Management Packs
 
-Falls Ihre SCOM-Verwaltungsgruppe mit dem OMS-Arbeitsbereich verbunden ist, werden in SCOM die folgenden Management Packs installiert, wenn Sie diese Lösung hinzufügen. Für diese Management Packs ist keine Konfiguration oder Wartung erforderlich.
+Falls Ihre SCOM-Verwaltungsgruppe mit dem Log Analytics-Arbeitsbereich verbunden ist, werden in SCOM die folgenden Management Packs installiert, wenn Sie diese Lösung hinzufügen. Für diese Management Packs ist keine Konfiguration oder Wartung erforderlich.
 
 - Microsoft.IntelligencePacks.CapacityPerformance
 
@@ -92,7 +92,7 @@ Klicken Sie auf die Kachel „Kapazität und Leistung“, um das Dashboard „Ka
 - **Hosts**
     - **Host-CPU-Auslastung** Zeigt für den gewählten Zeitraum einen grafischen Trend der CPU-Auslastung von Hostcomputern und eine Liste mit Hosts an. Zeigen Sie auf das Liniendiagramm, um Details für einen bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen Hostnamen, um die Protokollsuche zu öffnen und für gehostete VMs Details zum CPU-Leistungsindikator anzuzeigen.
     - **Hostspeicherauslastung** Zeigt für den gewählten Zeitraum einen grafischen Trend für die Arbeitsspeicherauslastung von Hostcomputern und eine Liste mit Hosts an. Zeigen Sie auf das Liniendiagramm, um Details für einen bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen Hostnamen, um die Protokollsuche zu öffnen und für gehostete VMs Details zum Arbeitsspeicher-Leistungsindikator anzuzeigen.
-- **Virtuelle Computer**
+- **Virtual Machines**
     - **VM-CPU-Auslastung** Zeigt für den gewählten Zeitraum einen grafischen Trend für die CPU-Auslastung von virtuellen Computern und eine Liste mit virtuellen Computern an. Zeigen Sie auf das Liniendiagramm, um für die drei obersten VMs Details zu einem bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen VM-Namen, um die Protokollsuche zu öffnen und für die VM aggregierte Details zum CPU-Leistungsindikator anzuzeigen.
     - **VM-Speicherauslastung** Zeigt für den gewählten Zeitraum einen grafischen Trend für die Arbeitsspeicherauslastung von virtuellen Computern und eine Liste mit virtuellen Computern an. Zeigen Sie auf das Liniendiagramm, um für die drei obersten VMs Details zu einem bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen VM-Namen, um die Protokollsuche zu öffnen und für die VM aggregierte Details zum Arbeitsspeicher-Leistungsindikator anzuzeigen.
     - **IOPS gesamt für VM-Datenträger** Zeigt für den gewählten Zeitraum einen grafischen Trend für den IOPS-Gesamtwert für virtuelle Computer und eine Liste mit virtuellen Computern und dem zugehörigen IOPS-Wert an. Zeigen Sie auf das Liniendiagramm, um für die drei obersten VMs Details zu einem bestimmten Zeitpunkt anzuzeigen. Klicken Sie auf das Diagramm, um weitere Details für die Protokollsuche anzuzeigen. Klicken Sie auf einen beliebigen VM-Namen, um die Protokollsuche zu öffnen und für die VM aggregierte Details zum IOPS-Leistungsindikator des Datenträgers anzuzeigen.
@@ -120,7 +120,7 @@ Zusammenfassend lässt sich festhalten, dass mit der Lösung Daten zur Kapazitä
 
 Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapazität und Leistung, die mit dieser Lösung gesammelt und berechnet werden.
 
-| Abfrage | Beschreibung |
+| Abfragen | BESCHREIBUNG |
 |---|---|
 | Alle Konfigurationen des Hostarbeitsspeichers | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="Host Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
 | Alle Konfigurationen des VM-Arbeitsspeichers | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="VM Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
@@ -131,9 +131,9 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapa
 | Aufschlüsselung der gesamten Wartezeit für alle freigegebenen Clustervolumes | <code> Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read Latency" OR CounterName="CSV Write Latency") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
 
 >[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden:
+> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden.
 
-> | Abfrage | Beschreibung |
+> | Abfragen | BESCHREIBUNG |
 |:--- |:--- |
 | Alle Konfigurationen des Hostarbeitsspeichers | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | Alle Konfigurationen des VM-Arbeitsspeichers | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |

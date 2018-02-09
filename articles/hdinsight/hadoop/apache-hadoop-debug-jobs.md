@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashish
-ms.openlocfilehash: 682b73aefff2ac20cbd38f6780b73cde859378ed
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: a5db3848eda2dbb6f117562e059b909575966993
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="analyze-hadoop-logs"></a>Analysieren von Hadoop-Protokollen
 
@@ -321,7 +321,4 @@ Einige dieser Fehlermeldungen können auch im Azure-Portal angezeigt werden, wen
 
 * [Debuggen von Tez-Aufträgen in HDInsight mithilfe von Ambari-Ansichten](../hdinsight-debug-ambari-tez-view.md)
 * [Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-
-<!--
-TODO  * [Manage HDInsight clusters by using the Ambari Web UI](hdinsight-hadoop-manage-ambari.md)
--->
+* [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md)

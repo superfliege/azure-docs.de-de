@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 52e176711f512e8a3788309a58011c8484821a1e
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d65341ae79a8894d054503e0b0807dee3e4cca8c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Sicherheit im Azure Data Lake-Speicher
 Viele Unternehmen nutzen Big-Data-Analysen zur Gewinnung von Unternehmenseinblicken, um fundierte Entscheidungen treffen zu können. Ein Unternehmen verfügt unter Umständen über eine komplexe und regulierte Umgebung mit einer wachsenden Zahl von unterschiedlichen Benutzern. Unternehmen müssen sicherstellen, dass wichtige Geschäftsdaten sicherer gespeichert werden und dass einzelnen Benutzern die richtige Zugriffsebene gewährt wird. Azure Data Lake Store ist so konzipiert, dass diese Sicherheitsanforderungen besser erfüllt werden können. In diesem Artikel werden die Sicherheitsfunktionen von Data Lake Store beschrieben, z.B.:
@@ -52,10 +52,10 @@ Für Data Lake Store werden standardmäßig vier grundlegende Rollen definiert. 
 
 Beachten Sie Folgendes: Obwohl Rollen für die Kontoverwaltung zugewiesen werden, wirken sich einige Rollen auf den Datenzugriff aus. Sie müssen ACLs verwenden, um den Zugriff auf Vorgänge zu steuern, die ein Benutzer im Dateisystem durchführen kann. Die folgende Tabelle enthält eine Zusammenfassung der Verwaltungsrechte und Datenzugriffsrechte für die Standardrollen.
 
-| Roles | Verwaltungsrechte | Datenzugriffsrechte | Erklärung |
+| Rollen | Verwaltungsrechte | Datenzugriffsrechte | Erklärung |
 | --- | --- | --- | --- |
 | Keine Rolle zugewiesen |Keine |Per ACL gesteuert |Der Benutzer kann nicht das Azure-Portal oder die Azure PowerShell-Cmdlets verwenden, um in Data Lake Store zu navigieren. Der Benutzer kann nur die Befehlszeilentools verwenden. |
-| Besitzer |Alle |Alle |Die Rolle „Besitzer“ ist ein Superuser. Mit dieser Rolle können alle Bereiche verwaltet werden, und es besteht Vollzugriff auf die Daten. |
+| Owner (Besitzer) |Alle |Alle |Die Rolle „Besitzer“ ist ein Superuser. Mit dieser Rolle können alle Bereiche verwaltet werden, und es besteht Vollzugriff auf die Daten. |
 | Leser |Schreibgeschützt |Per ACL gesteuert |Mit der Rolle „Leser“ können alle Daten zur Kontoverwaltung angezeigt werden, z.B. welcher Benutzer welcher Rolle zugewiesen ist. Änderungen können mit der Rolle „Leser“ aber nicht vorgenommen werden. |
 | Mitwirkender |Alle Rechte mit Ausnahme de Hinzufügens und Entfernens von Rollen |Per ACL gesteuert |Mit der Rolle „Mitwirkender“ können einige Aspekte eines Kontos verwaltet werden, z.B. Bereitstellungen und die Erstellung und Verwaltung von Warnungen. Das Hinzufügen oder Entfernen von Rollen ist mit der Rolle „Mitwirkender“ nicht möglich. |
 | Benutzerzugriffsadministrator |Rollen hinzufügen und entfernen |Per ACL gesteuert |Mit der Rolle „Benutzerzugriffsadministrator“ können Sie den Benutzerzugriff auf Konten verwalten. |
@@ -63,7 +63,7 @@ Beachten Sie Folgendes: Obwohl Rollen für die Kontoverwaltung zugewiesen werden
 Eine Anleitung finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen zu Data Lake Store-Konten](data-lake-store-secure-data.md#assign-users-or-security-groups-to-azure-data-lake-store-accounts).
 
 ### <a name="using-acls-for-operations-on-file-systems"></a>Verwenden von ACLs für Vorgänge in Dateisystemen
-Data Lake Store ist ein hierarchisches Dateisystem, wie beispielsweise Hadoop Distributed File System (HDFS), und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es steuert die Berechtigungen Lesen, Schreiben und Ausführen (read (r), write (w) und execute (x)) für Ressourcen für die Rolle „Besitzer“, für die Gruppe „Besitzer“ und für andere Benutzer und Gruppen. In der öffentlichen Vorschauversion von Data Lake Store (aktuelle Version) können ACLs für Stammordner, Unterordner und einzelne Dateien aktiviert werden. Weitere Informationen zur Funktionsweise von ACLs im Kontext von Data Lake Store finden Sie unter [Zugriffssteuerung in Data Lake Store](data-lake-store-access-control.md).
+Data Lake Store ist ein hierarchisches Dateisystem, wie beispielsweise Hadoop Distributed File System (HDFS), und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es steuert die Berechtigungen Lesen, Schreiben und Ausführen (read (r), write (w) und execute (x)) für Ressourcen für die Rolle „Besitzer“, für die Gruppe „Besitzer“ und für andere Benutzer und Gruppen. In Data Lake Store können ACLs für Stammordner, Unterordner und einzelne Dateien aktiviert werden. Weitere Informationen zur Funktionsweise von ACLs im Kontext von Data Lake Store finden Sie unter [Zugriffssteuerung in Data Lake Store](data-lake-store-access-control.md).
 
 Es wird empfohlen, mit [Sicherheitsgruppen](../active-directory/active-directory-groups-create-azure-portal.md)ACLs für mehrere Benutzer zu definieren. Fügen Sie Benutzer einer Sicherheitsgruppe hinzu, und weisen Sie dieser Sicherheitsgruppe dann die ACLs für eine Datei oder einen Ordner zu. Dies ist hilfreich, wenn Sie benutzerdefinierten Zugriff gewähren möchten, da Sie hierfür nur maximal neun Einträge hinzufügen können. Weitere Informationen dazu, wie Sie in Data Lake Store gespeicherte Daten mit Azure Active Directory-Sicherheitsgruppen besser schützen können, finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem](data-lake-store-secure-data.md#filepermissions).
 
@@ -110,8 +110,8 @@ Unternehmenskunden wünschen sich eine Cloudplattform für die Datenanalyse, die
 
 Wenn Sie neue Features für Data Lake Store wünschen, können Sie uns Ihr Feedback im [UserVoice-Forum zu Data Lake Store](https://feedback.azure.com/forums/327234-data-lake)senden.
 
-## <a name="see-also"></a>Siehe auch
-* [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
+## <a name="see-also"></a>Weitere Informationen
+* [Übersicht über Azure Data Lake Store](data-lake-store-overview.md)
 * [Erste Schritte mit Data Lake Store](data-lake-store-get-started-portal.md)
-* [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
+* [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)
 

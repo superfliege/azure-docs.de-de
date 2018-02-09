@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/21/2017
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 7d7b81a585ba8b10c60062c5d5274c45335cab68
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 568509eba47facfc5966d06dff5a1b32dce1008f
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
@@ -63,7 +63,7 @@ Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen ve
 * Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 * Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 * Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.
-* Derzeit wird die Sicherung und Wiederherstellung virtueller Computer in der ACL nicht unterstützt. Die Sicherung virtueller Computer wird nicht unterstützt, wenn Sie das Feature für Speicher im VNET aktiviert haben. Dieses Feature sorgt dafür, dass nur über bestimmte VNETs/Subnetze und/oder IP-Adressen auf Speicherkonten zugegriffen werden kann.
+* Die Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit angewendeten Netzwerkregeln wird derzeit nicht unterstützt. Stellen Sie beim Konfigurieren der Sicherung sicher, dass die Einstellungen für Firewalls und virtuelle Netzwerke für das Speicherkonto Zugriff von allen Netzwerken zulassen.
 * Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern. (Siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen.) Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
 * Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Das Wiederherstellen virtueller Computer mit den folgenden besonderen Netzwerkkonfigurationen wird nur über PowerShell unterstützt. Virtuelle Computer, die mit dem Wiederherstellungsworkflow der Benutzeroberfläche erstellt werden, weisen diese Netzwerkkonfigurationen nach dem Abschluss des Wiederherstellungsvorgangs nicht auf. Weitere Informationen finden Sie unter [Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).

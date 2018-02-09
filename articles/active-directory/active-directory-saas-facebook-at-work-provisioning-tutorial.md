@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Konfigurieren von Workplace by Facebook für die Benutzerbereitstellung | Microsoft-Dokumentation"
+title: "Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD in Workplace by Facebook automatisch bereitstellen bzw. die Bereitstellung aufheben.
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 77f5f33044b1915fbda7b86c6b07882c0e1e7554
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 70686a48585d83ca5de78fdded99ae46e90cc20c
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configure-workplace-by-facebook-for-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die Benutzerbereitstellung
+# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung
 
 Dieses Tutorial veranschaulicht die erforderlichen Schritte zur automatischen Bereitstellung (und Aufhebung der Bereitstellung) von Benutzerkonten aus Azure Active Directory (Azure AD) in Workplace by Facebook.
 

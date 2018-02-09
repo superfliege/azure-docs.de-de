@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: 504010a39a4012b9a9edb60bb9a5b33ac20499c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e1f6177ccacf24955763982189bcdb1ef69c788
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 
@@ -25,11 +25,11 @@ Die Nutzlast innerhalb einer Nachricht, oder ein Befehl oder eine Abfrage, den/d
 
 Für Entwicklungs- und Testumgebungen, in denen Warteschlangen und Themen häufig im Rahmen von Teilläufen von Anwendungen oder Anwendungsteilen verwendet werden, ist es auch wünschenswert, dass nicht zugestellte Testnachrichten automatisch gesammelt werden, damit der nächste Testlauf davon unbeeinflusst starten kann.
 
-Der Ablauf jeder einzelnen Nachricht kann durch das Festlegen der Systemeigenschaft [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) gesteuert werden, die eine relative Dauer angibt. Der Ablauf wird zu einem absoluten Zeitpunkt, an dem die Nachricht in die Warteschlange der Entität gestellt wird. Derzeit akzeptiert die [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)-Eigenschaft nur den Wert [**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive).
+Der Ablauf jeder einzelnen Nachricht kann durch das Festlegen der Systemeigenschaft [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) gesteuert werden, die eine relative Dauer angibt. Der Ablauf wird zu einem absoluten Zeitpunkt, an dem die Nachricht in die Warteschlange der Entität gestellt wird. Derzeit akzeptiert die [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)-Eigenschaft nur den Wert [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive).
 
 Nach Ablauf des **ExpiresAtUtc**-Zeitpunkts können Nachrichten nicht mehr abgerufen werden. Die Ablaufzeit wirkt sich nicht auf Nachrichten aus, die momentan für die Zustellung gesperrt sind. Diese Nachrichten werden weiterhin normal behandelt. Wenn die Sperre abläuft oder die Nachricht abgebrochen wird, tritt der Ablauf sofort in Kraft.
 
-Solange die Nachricht gesperrt ist, kann die Anwendung möglicherweise im Besitz einer Nachricht sein, die nominell abgelaufen ist. Ob die Anwendung bereit ist, mit der Verarbeitung fortzufahren oder ob die Nachricht abgebrochen wird, bleibt dem Implementierer überlassen.
+Solange die Nachricht gesperrt ist, kann die Anwendung möglicherweise im Besitz einer Nachricht sein, die abgelaufen ist. Ob die Anwendung bereit ist, mit der Verarbeitung fortzufahren oder ob die Nachricht abgebrochen wird, bleibt dem Implementierer überlassen.
 
 ## <a name="entity-level-expiration"></a>Ablauf auf Entitätsebene
 
@@ -47,11 +47,11 @@ Stellen Sie sich beispielsweise eine Website vor, die Aufträge zuverlässig in 
 
 Service Bus-Warteschlangen, -Themen und -Abonnements können als temporäre Entitäten erstellt werden, die automatisch entfernt werden, sobald sie für einen angegebenen Zeitraum nicht verwendet wurden.
  
-Die automatische Bereinigung ist in Entwicklungs- und Testszenarien sinnvoll, in denen Entitäten dynamisch erstellt werden und nach der Nutzung nicht bereinigt werden, da der Test- oder Debuglauf unterbrochen wurde. Sie ist auch nützlich, wenn eine Anwendung dynamische Entitäten erstellt, wie z.B. eine Antwortwarteschlange, um Antworten wieder in einen Webserverprozess oder in einem anderen relativ kurzlebigen Objekt zu empfangen. In diesem Fall ist es schwierig, diese Entitäten zuverlässig zu bereinigen, wenn die Objektinstanz nicht mehr vorhanden ist.
+Die automatische Bereinigung ist in Entwicklungs- und Testszenarien sinnvoll, in denen Entitäten dynamisch erstellt und nach der Nutzung nicht bereinigt werden, da der Test- oder Debuglauf unterbrochen wurde. Sie ist auch nützlich, wenn eine Anwendung dynamische Entitäten erstellt, wie z.B. eine Antwortwarteschlange, um Antworten wieder in einen Webserverprozess oder in einem anderen relativ kurzlebigen Objekt zu empfangen. In diesem Fall ist es schwierig, diese Entitäten zuverlässig zu bereinigen, wenn die Objektinstanz nicht mehr vorhanden ist.
 
 Das Feature wird mit der [AutoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues)-Eigenschaft aktiviert, die auf die Dauer festgelegt ist, die eine Entität inaktiv (nicht verwendet) sein muss, bevor sie automatisch gelöscht wird. Die Mindestdauer ist fünf Minuten.
  
-Die Eigenschaft muss über einen Azure Resource Manager-Vorgang oder über die [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-APIs des .NET Framework-Clients festgelegt werden. Sie kann nicht im Portal festgelegt werden.
+Die Eigenschaft **autoDeleteOnIdle** muss über einen Azure Resource Manager-Vorgang oder über die [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)-APIs des .NET Framework-Clients festgelegt werden. Sie kann nicht im Portal festgelegt werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

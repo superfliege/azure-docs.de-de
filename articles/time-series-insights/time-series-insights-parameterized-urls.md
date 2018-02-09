@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.topic: get-started-article
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: b7c58697323ec12ac08575916cb3ac5b38cc39c1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ffa8e96ab9a5344c924400fe55b4d1e6aee95f06
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Teilen einer benutzerdefinierten Ansicht mit einer parametrisierten URL
 
@@ -63,14 +63,16 @@ Die akzeptierten Werte entsprechen dem Menü **quick time** (Zeitauswahl) im Tim
 
 Mit dem Parameter `timeSeriesDefinitions=<collection of term objects>` werden die Ausdrücke einer Time Series Insights-Ansicht angegeben:
 
-- `name=<string>`
+- "name":"<string>"
   - Der Name der *Bedingung*.
-- `splitBy=<string>`
+- "splitBy":"<string>"
   - Der Spaltenname für *Teilen nach*.
-- `measureName=<string>`
+- "measureName":"<string>"
   - Der Spaltenname des *Measure*.
-- `predicate=<string>`
+- "predicate":"<string>"
   - Die *where*-Klausel für die serverseitige Filterung.
+-  "useSum":"true"
+  - Dieser optionale Parameter gibt die Verwendung von „Summe“ für Ihr Measure an.  Hinweis: Wenn „Ereignisse“ als Measure ausgewählt ist, ist standardmäßig „Anzahl“ ausgewählt.  Wenn „Ereignisse“ nicht ausgewählt ist, ist standardmäßig „Durchschnitt“ ausgewählt.  
 
 Der Parameter „multiChartStack=<true/false>“ aktiviert das Stapeln. Der Parameter „multiChartSameScale=<true/false>“ aktiviert die gleiche Y-Achsenskala ausdrucksübergreifend innerhalb eines optionalen Parameters.  
 

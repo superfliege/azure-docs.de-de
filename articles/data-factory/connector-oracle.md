@@ -1,6 +1,6 @@
 ---
 title: Kopieren von Daten nach bzw. aus Oracle mit Azure Data Factory | Microsoft-Dokumentation
-description: "Erfahren Sie, wie mithilfe der Data Factory Daten von unterstützten Quellspeichern in die Oracle-Datenbank oder aus Oracle in unterstützte Senkenspeicher kopiert werden."
+description: "Erfahren Sie, wie mithilfe von Data Factory Daten aus unterstützten Quellspeichern in eine Oracle-Datenbank oder aus Oracle in unterstützte Senkenspeicher kopiert werden."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 10db7959396b4ee9927e4272dec9939ac8c13580
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: d6b96bc40325d398c91e293ec6ca8f8cc2993e58
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="copy-data-from-and-to-oracle-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mithilfe von Azure Data Factory
+# <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-onprem-oracle-connector.md)
+> * [Version 1 – allgemein verfügbar](v1/data-factory-onprem-oracle-connector.md)
 > * [Version 2 – Vorschauversion](connector-oracle.md)
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Oracle-Datenbank und in eine Oracle-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer und in eine Oracle-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (General Availability, GA) ist, lesen Sie [Oracle-Connector in V1](v1/data-factory-onprem-oracle-connector.md).
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die Data Factory-Version 1 verwenden, die allgemein verfügbar ist, lesen Sie [Oracle-Connector in Version 1](v1/data-factory-onprem-oracle-connector.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Sie können Daten aus einer Oracle-Datenbank in einen unterstützten Senkendatenspeicher oder Daten aus einem unterstützten Senkendatenspeicher in eine Oracle-Datenbank kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Sie können Daten aus einer Oracle-Datenbank in jeden unterstützten Senkendatenspeicher kopieren. Zudem können Sie Daten aus jedem unterstützten Quelldatenspeicher in eine Oracle-Datenbank kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Dieser Oracle-Connector unterstützt insbesondere die folgenden Versionen der Oracle-Datenbank sowie Standard- oder OID-Authentifizierungen:
+Dieser Oracle-Connector unterstützt insbesondere die folgenden Oracle-Datenbankversionen. Standard- oder OID-Authentifizierungen werden ebenfalls unterstützt:
 
 - Oracle 12c R1 (12.1)
 - Oracle 11g R1, R2 (11.1, 11.2)
@@ -43,23 +43,23 @@ Dieser Oracle-Connector unterstützt insbesondere die folgenden Versionen der Or
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Kopieren von Daten aus einer Oracle-Datenbank bzw. in eine Oracle-Datenbank, die nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integrationslaufzeit einrichten. Im Artikel [Selbstgehostete Integrationslaufzeit](create-self-hosted-integration-runtime.md) finden Sie Details zur Integrationslaufzeit. Die Integrationslaufzeit bietet einen integrierten Oracle-Treiber. Daher müssen beim Kopieren von Daten aus bzw. nach Oracle keine Treiber manuell installiert werden.
+Zum Kopieren von Daten aus einer bzw. in eine Oracle-Datenbank, die nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integration Runtime einrichten. Weitere Informationen zur selbstgehosteten Integration Runtime finden Sie unter [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md). Die Integration Runtime stellt einen integrierten Oracle-Treiber bereit. Daher müssen Sie zum Kopieren von Daten aus und nach Oracle nicht manuell einen Treiber erstellen.
 
-## <a name="getting-started"></a>Erste Schritte
+## <a name="get-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Oracle-Connector verwendet werden:
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Oracle-Connector verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
-Folgende Eigenschaften werden für den mit Oracle verknüpften Dienst unterstützt:
+Die folgenden Eigenschaften werden für den mit Oracle verknüpften Dienst unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **Oracle** festgelegt werden. | Ja |
-| connectionString | Geben Sie Informationen an, die zur Verbindung mit der Oracle-Datenbankinstanz erforderlich sind. Legen Sie für dieses Feld „SecureString“ fest.<br><br>**Unterstützter Verbindungstyp**: Sie können **Oracle SID** oder **Oracle-Dienstname** zur Identifizierung Ihrer Datenbank verwenden:<br>Bei Verwenden der SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>Bei Verwenden des Dienstnamens: `Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Ja |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
+| connectionString | Gibt die Informationen an, die zum Herstellen einer Verbindung mit der Oracle-Datenbankinstanz erforderlich sind. Legen Sie für dieses Feld „SecureString“ fest.<br><br>**Unterstützter Verbindungstyp**: Sie können **Oracle SID** oder **Oracle-Dienstname** zur Identifizierung Ihrer Datenbank verwenden:<br>– Wenn Sie die SID verwenden: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Wenn Sie den Dienstnamen verwenden: `Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Ja |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel:**
 
@@ -84,14 +84,14 @@ Folgende Eigenschaften werden für den mit Oracle verknüpften Dienst unterstüt
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Oracle-Dataset unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Oracle-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus bzw. nach Oracle die type-Eigenschaft des Datasets auf **OracleTable** fest. Folgende Eigenschaften werden unterstützt:
+Legen Sie zum Kopieren von Daten aus bzw. nach Oracle die type-Eigenschaft des Datasets auf **OracleTable** fest. Die folgenden Eigenschaften werden unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **OracleTable** festgelegt werden. | Ja |
-| tableName |Name der Tabelle in der Oracle Database, auf die der verknüpfte Dienst verweist. | Ja |
+| tableName |Der Name der Tabelle in der Oracle-Datenbank, auf die der verknüpfte Dienst verweist. | Ja |
 
 **Beispiel:**
 
@@ -116,16 +116,16 @@ Legen Sie zum Kopieren von Daten aus bzw. nach Oracle die type-Eigenschaft des D
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Oracle-Quelle und -Senke unterstützt werden.
 
-### <a name="oracle-as-source"></a>Oracle als Quelle
+### <a name="oracle-as-a-source-type"></a>Oracle als Quelltyp
 
-Legen Sie zum Kopieren von Daten aus Oracle den Quelltyp in der Kopieraktivität auf **OracleSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+Legen Sie zum Kopieren von Daten aus Oracle den Quelltyp in der Kopieraktivität auf **OracleSource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **OracleSource** festgelegt werden. | Ja |
-| oracleReaderQuery | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein  |
+| oracleReaderQuery | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`. | Nein  |
 
-Ohne Angabe von „oracleReaderQuery“ werden die im Abschnitt „structure“ des Datasets definierten Spalten zum Erstellen einer Abfrage (`select column1, column2 from mytable`) verwendet, die auf die Oracle-Datenbank angewendet wird. Falls die Datasetdefinition nicht den Abschnitt „structure“ enthält, werden alle Spalten der Tabelle ausgewählt.
+Ohne Angabe von „oracleReaderQuery“ werden die im Abschnitt „structure“ des Datasets definierten Spalten zum Erstellen einer Abfrage (`select column1, column2 from mytable`) verwendet, die in der Oracle-Datenbank ausgeführt wird. Falls die Datasetdefinition keinen Abschnitt „structure“ enthält, werden alle Spalten der Tabelle ausgewählt.
 
 **Beispiel:**
 
@@ -159,16 +159,16 @@ Ohne Angabe von „oracleReaderQuery“ werden die im Abschnitt „structure“ 
 ]
 ```
 
-### <a name="oracle-as-sink"></a>Oracle als Senke
+### <a name="oracle-as-a-sink-type"></a>Oracle als Senkentyp
 
-Legen Sie zum Kopieren von Daten in Oracle den Senkentyp in der Kopieraktivität auf **OracleSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
+Legen Sie zum Kopieren von Daten in Oracle den Senkentyp in der Kopieraktivität auf **OracleSink** fest. Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **OracleSink** festgelegt werden. | Ja |
-| writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht.<br/>Zulässige Werte sind ganze Zahlen (Anzahl der Zeilen). |Nein (Standard = 10.000) |
-| writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/>Zulässige Werte sind Zeiträume. Beispiel: 00:30:00 (30 Minuten) | Nein  |
-| preCopyScript | Geben Sie eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Sie bei der jeder Ausführung Daten in Oracle schreiben. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. | Nein  |
+| writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht.<br/>Zulässige Werte sind Integer-Werte (Anzahl der Zeilen). |Nein (Standardwert ist 10.000) |
+| writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/>Zulässige Werte sind Timespan-Werte. Beispiel: 00:30:00 (30 Minuten). | Nein  |
+| preCopyScript | Geben Sie eine SQL-Abfrage an, die bei jeder Ausführung von der Kopieraktivität ausgeführt werden soll, bevor Daten in Oracle geschrieben werden. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. | Nein  |
 
 **Beispiel:**
 
@@ -203,7 +203,7 @@ Legen Sie zum Kopieren von Daten in Oracle den Senkentyp in der Kopieraktivität
 
 ## <a name="data-type-mapping-for-oracle"></a>Datentypzuordnung für Oracle
 
-Beim Kopieren von Daten aus bzw. nach Oracle werden die folgenden Zuordnungen von Oracle-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
+Beim Kopieren von Daten aus bzw. nach Oracle werden die folgenden Zuordnungen von Oracle-Datentypen zu Data Factory-Zwischendatentypen verwendet. Weitere Informationen dazu, wie die Kopieraktivität das Quellschema und den Datentyp zur Senke zuordnet, finden Sie unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md).
 
 | Datentyp "Oracle" | Data Factory-Zwischendatentyp |
 |:--- |:--- |
@@ -230,8 +230,8 @@ Beim Kopieren von Daten aus bzw. nach Oracle werden die folgenden Zuordnungen vo
 | XML |Zeichenfolge |
 
 > [!NOTE]
-> Die Datentypen „INTERVAL YEAR TO MONTH“ und „INTERVAL DAY TO SECOND“ werden nicht unterstützt.
+> Die Datentypen INTERVAL YEAR TO MONTH und INTERVAL DAY TO SECOND werden nicht unterstützt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).

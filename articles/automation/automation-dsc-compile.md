@@ -1,5 +1,5 @@
 ---
-title: Kompilieren von Konfigurationen in Azure Automation DSC | Microsoft-Dokumentation
+title: Kompilieren von Konfigurationen in Azure Automation DSC | Microsoft Docs
 description: "In diesem Artikel wird das Kompilieren von DSC-Konfigurationen (Desired State Configuration, Konfiguration des gewünschten Zustands) für Azure Automation beschrieben."
 services: automation
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; gwallace
-ms.openlocfilehash: 63120614f2a2ef6b366bc2d92ec9a0dd430a3fb4
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: c84f1671d8e23e5ff222455192e020700f1ff51e
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilieren von Konfigurationen in Azure Automation DSC
 
@@ -40,7 +40,7 @@ Sie können DSC-Konfigurationen (Desired State Configuration, Konfiguration des 
 * Übergeben von ConfigurationData-Werten
 * Kompilieren von Konfigurationen mit Anmeldeinformationen
 
-Wenn Sie sich für eine Kompilierungsmethode entschieden haben, folgen Sie dem jeweiligen unten beschriebenen Verfahren, um mit der Kompilierung zu beginnen.
+Wenn Sie sich für eine Kompilierungsmethode entschieden haben, folgen Sie den unten beschriebenen Verfahren, um mit der Kompilierung zu beginnen.
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Kompilieren einer DSC-Konfiguration mit dem Azure-Portal
 
@@ -131,7 +131,7 @@ Informationen zum Übergeben von PSCredentials als Parameter finden Sie im Absch
 
 ## <a name="composite-resources"></a>Zusammengesetzte Ressourcen
 
-**Zusammengesetzte Ressourcen** ermöglichen es Ihnen, die DSC-Konfigurationen als geschachtelte Ressourcen innerhalb einer Konfiguration zu verwenden. Dadurch können Sie mehrere Konfigurationen auf eine einzelne Ressource anwenden.  Unter [Zusammengesetzte Ressourcen: Verwenden einer DSC-Konfiguration als Ressource](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite) erhalten Sie weitere Informationen zu **zusammengesetzten Ressourcen**
+**Zusammengesetzte Ressourcen** ermöglichen es Ihnen, die DSC-Konfigurationen als geschachtelte Ressourcen innerhalb einer Konfiguration zu verwenden. Dadurch können Sie mehrere Konfigurationen auf eine einzelne Ressource anwenden. Unter [Zusammengesetzte Ressourcen: Verwenden einer DSC-Konfiguration als Ressource](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite) erhalten Sie weitere Informationen zu **zusammengesetzten Ressourcen**
 
 > [!NOTE]
 > Damit **zusammengesetzte Ressourcen** korrekt kompiliert werden, müssen Sie zunächst sicherstellen, dass alle DSC-Ressourcen, auf denen die zusammengesetzten Elemente basieren, zuerst im Azure Automation-Kontomodulrepository installiert werden, da sie andernfalls nicht korrekt importiert werden.
@@ -174,7 +174,7 @@ Rufen Sie anschließend die **zusammengesetzte Ressource** wie folgt in Ihrer Ko
 ```
 
 ## <a name="configurationdata"></a>ConfigurationData
-**ConfigurationData** können Sie bei Verwendung von PowerShell DSC die Konfiguration der Struktur von jeglicher umgebungsspezifischer Konfiguration trennen. Informationen zu [ConfigurationData](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) finden Sie unter **Separating "What" from "Where" in PowerShell DSC**.
+Mit **ConfigurationData** können Sie bei Verwendung von PowerShell DSC die Konfiguration der Struktur von jeglicher umgebungsspezifischer Konfiguration trennen. Informationen zu [ConfigurationData](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) finden Sie unter **Separating "What" from "Where" in PowerShell DSC**.
 
 > [!NOTE]
 > Sie können **ConfigurationData** während der Kompilierung in Azure Automation DSC mithilfe von Azure PowerShell verwenden, nicht jedoch im Azure-Portal.
@@ -200,7 +200,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-Sie können die obige DSC-Konfiguration über PowerShell kompilieren. Mit dem folgenden PowerShell-Skript werden dem Azure Automation DSC-Pullserver die beiden Knotenkonfigurationen **ConfigurationDataSample.MyVM1** und **ConfigurationDataSample.MyVM3** hinzugefügt:
+Sie können die vorherige DSC-Konfiguration über PowerShell kompilieren. Mit dem folgenden PowerShell-Skript werden dem Azure Automation DSC-Pullserver die beiden Knotenkonfigurationen **ConfigurationDataSample.MyVM1** und **ConfigurationDataSample.MyVM3** hinzugefügt:
 
 ```powershell
 $ConfigData = @{
@@ -263,7 +263,7 @@ Configuration CredentialSample
 }
 ```
 
-Sie können die obige DSC-Konfiguration über PowerShell kompilieren. Mit dem folgenden PowerShell-Skript werden dem Azure Automation DSC-Pullserver die folgenden beiden Knotenkonfigurationen hinzugefügt: **CredentialSample.MyVM1** und **CredentialSample.MyVM2**.
+Sie können die vorherige DSC-Konfiguration über PowerShell kompilieren. Mit dem folgenden PowerShell-Skript werden dem Azure Automation DSC-Pullserver die folgenden beiden Knotenkonfigurationen hinzugefügt: **CredentialSample.MyVM1** und **CredentialSample.MyVM2**.
 
 ```powershell
 $ConfigData = @{

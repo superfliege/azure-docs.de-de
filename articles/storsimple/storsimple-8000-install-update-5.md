@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: eefeedfb87bd30630439d13a434b246508defa96
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: d6e17c7609fd41b8f4457edda373f6882a1a9d2b
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Installieren von Update 5 auf Ihrem StorSimple-Gerät
 
@@ -75,19 +75,19 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 
 Sie müssen die folgenden Hotfixes in der vorgeschriebenen Reihenfolge und in die vorgeschlagenen Ordner herunterladen und installieren:
 
-| Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |Installationsordner|
+| Reihenfolge | KB | BESCHREIBUNG | Updatetyp | Installationszeit |Installationsordner|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Softwareupdate<br> Laden Sie _HcsSfotwareUpdate.exe_ und _CisMSDAgent.exe_ herunter. |Regulär  <br></br>Unterbrechungsfrei |ca. 25 Min. |FirstOrderUpdate|
+| 1. |KB4037264 |Softwareupdate<br> Laden Sie _HcsSoftwareUpdate.exe_ und _CisMSDAgent.exe_ herunter. |Regulär  <br></br>Unterbrechungsfrei |ca. 25 Min. |FirstOrderUpdate|
 
 Wenn Sie das Update über ein Gerät mit Update 4 durchführen, müssen Sie lediglich die kumulativen Betriebssystemupdates als zweitrangige Updates installieren.
 
-| Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |Installationsordner|
+| Reihenfolge | KB | BESCHREIBUNG | Updatetyp | Installationszeit |Installationsordner|
 | --- | --- | --- | --- | --- | --- |
 | 2A. |KB4025336 |Paket mit kumulativen Betriebssystemupdates <br> Laden Sie die Windows Server 2012 R2-Version herunter. |Regulär  <br></br>Unterbrechungsfrei |- |SecondOrderUpdate|
 
 Wenn Sie das Update über ein Gerät mit Update 3 oder einer älteren Version durchführen, installieren Sie zusätzlich zu den kumulativen Updates Folgendes:
 
-| Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |Installationsordner|
+| Reihenfolge | KB | BESCHREIBUNG | Updatetyp | Installationszeit |Installationsordner|
 | --- | --- | --- | --- | --- | --- |
 | 2B. |KB4011841 <br> KB4011842 |Updates von LSI-Treiber und -Firmware <br> Update der USM-Firmware (Version 3.38) |Regulär  <br></br>Unterbrechungsfrei |ca. 3 Stunden <br> (enthält 2A. + 2B. + 2C.)|SecondOrderUpdate|
 | 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Sicherheitsupdatepaket für das Betriebssystem <br> Laden Sie die Windows Server 2012 R2-Version herunter. |Regulär  <br></br>Unterbrechungsfrei |- |SecondOrderUpdate|
@@ -96,7 +96,7 @@ Wenn Sie das Update über ein Gerät mit Update 3 oder einer älteren Version du
 
 Sie müssen zusätzlich zu den in den vorhergehenden Tabellen enthaltenen Updates ggf. auch Updates der Firmware von Datenträgern installieren. Sie können überprüfen, ob Sie Updates für die Datenträgerfirmware benötigen, indem Sie das Cmdlet `Get-HcsFirmwareVersion` ausführen. Wenn Sie die Firmwareversionen `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107` ausführen, müssen Sie diese Updates nicht installieren.
 
-| Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit | Installationsordner|
+| Reihenfolge | KB | BESCHREIBUNG | Updatetyp | Installationszeit | Installationsordner|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |Datenträgerfirmware |Wartung  <br></br>Mit Unterbrechung |~ 30 Min. | ThirdOrderUpdate |
 

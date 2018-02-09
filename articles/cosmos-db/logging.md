@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/29/2018
 ms.author: mimig
-ms.openlocfilehash: 835f6ffce9b2e1bb4b6cfd7476bb3fdb24a4f092
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: b8f92953634f9294805521d8b925ed67d121a17d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Diagnoseprotokollierung für Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Verwenden Sie dieses Tutorial für den Einstieg in die Arbeit mit der Azure Cosm
 
 ## <a name="what-is-logged"></a>Was wird protokolliert?
 
-* Alle authentifizierten REST-SQL-API-Anforderungen werden protokolliert, z.B. auch Anforderungen, die aufgrund von Zugriffsberechtigungen, Systemfehlern oder fehlerhaften Anforderungen nicht erfolgreich sind. Unterstützung für MongoDB, Graph und Tabellen-APIs ist derzeit nicht verfügbar.
+* Alle authentifizierten Back-End-Anforderungen (TCP/REST) werden über alle APIs hinweg protokolliert. Dies umfasst auch Anforderungen, die aufgrund von Zugriffsberechtigungen, Systemfehlern oder fehlerhaften Anforderungen nicht erfolgreich sind. Unterstützung für vom Benutzer initiierte Graph-, Cassandra- und Table API-Anforderungen ist zurzeit nicht verfügbar.
 * Vorgänge für die Datenbank selbst; hierzu zählen CRUD-Vorgänge für alle Dokumente, Container und Datenbanken.
 * Vorgänge für Kontoschlüssel; dies umfasst das Erstellen, Ändern oder Löschen dieser Schlüssel.
 * Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Wenn Anforderungen beispielsweise über kein Bearertoken verfügen oder falsch formatiert oder abgelaufen sind, ist deren Token ungültig.
@@ -54,8 +54,8 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen:
     * **In einem Speicherkonto archivieren**. Sie benötigen ein vorhandenes Speicherkonto, mit dem eine Verbindung hergestellt werden kann, um diese Option verwenden zu können. Informationen zum Erstellen eines neuen Speicherkontos im Portal finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md); befolgen Sie die Anweisungen zum Erstellen eines Ressourcen-Manager-Kontos für allgemeine Zwecke. Kehren Sie anschließend auf diese Seite im Portal zurück, und wählen Sie Ihr Speicherkonto aus. Es dauert möglicherweise einige Minuten, bis neu erstellte Speicherkonten im Dropdownmenü angezeigt werden.
     * **An einen Event Hub streamen**. Sie benötigen einen vorhandenen Event Hub-Namespace und einen Event Hub. mit dem eine Verbindung hergestellt werden kann, um diese Option verwenden zu können. Weitere Informationen zum Erstellen eines Event Hubs-Namespace finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). Kehren Sie anschließend auf diese Seite im Portal zurück, um den Event Hub-Namespace und den Richtliniennamen auszuwählen.
     * **An Log Analytics senden**.     Zur Verwendung dieser Option benötigen Sie entweder einen vorhandenen Arbeitsbereich, oder erstellen Sie einen neuen Log Analytics-Arbeitsbereich mithilfe der Schritte zum [Erstellen eines neuen Arbeitsbereichs](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace) im Portal. Weitere Informationen zum Anzeigen Ihrer Protokolle in Log Analytics finden Sie unter [Anzeigen von Protokollen in Log Analytics](#view-in-loganalytics).
-    * **Log DataPlaneRequests** (DataPlaneRequests protokollieren). Wählen Sie diese Option, um Diagnosen für SQL-, Graph- und Tabellen-API-Konten zu protokollieren. Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
-    * **Protokollieren von MongoRequests**. Wählen Sie diese Option, um die Diagnosen für MongoDB-API-Konten zu protokollieren. Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
+    * **Log DataPlaneRequests** (DataPlaneRequests protokollieren). Wählen Sie diese Option aus, um Back-End-Anforderungen der zugrunde liegenden Plattform von Azure Cosmos DB für SQL-, Graph-, MongoDB-, Cassandra- und Table API-Konten zu protokollieren. Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
+    * **Protokollieren von MongoRequests**. Wählen Sie diese Option aus, um vom Benutzer initiierte Anforderungen vom Azure Cosmos DB-Front-End für MongoDB-API-Konten zu protokollieren.  Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
     * **Metrikanforderungen**. Wählen Sie diese Option zum Speichern von ausführlichen Daten in [Azure-Metriken](../monitoring-and-diagnostics/monitoring-supported-metrics.md). Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
 
 3. Klicken Sie auf **Speichern**.

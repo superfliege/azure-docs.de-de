@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/06/2017
 ms.author: jgao
-ms.openlocfilehash: b23e62d3ae0fa3468a8a9a5608eb3d316852f086
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 9924a9656f2e2e268356b8ce293d58afc3d535a9
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Installieren von Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
@@ -35,7 +35,7 @@ Die folgende Liste zeigt die veröffentlichten Anwendungen:
 * **DATAIKU DDS on HDInsight** erlaubt Datenexperten, Prototypen für hochspezifische Dienste zu entwickeln und diese Dienste anschließend zu erstellen und bereitzustellen, um Rohdaten in wirkungsvolle Unternehmensprognosen zu verwandeln.
 * **Datameer**: [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) bietet Analysten eine Möglichkeit, Big-Data-Ergebnisse interaktiv zu ermitteln, zu analysieren und zu visualisieren. Binden Sie zusätzliche Datenquellen auf einfache Weise ein, um neue Beziehungen zu ermitteln und die benötigten Antworten schnell zu erhalten.
 * **H2O Artificial Intelligence für HDInsight (Beta):** H2O Sparkling Water unterstützt die folgenden verteilten Algorithmen: GLM, Naïve Bayes, Distributed Random Forest, Gradient Boosting Machine, Deep Neural Networks, Deep Learning, K-Means, PCA, Generalized Low Rank Models, Anomalieerkennung und Autoencoder.
-* **Kyligence Analyseplattform:** Kyligence Analytics Platform (KAP) ist ein Datawarehouse für Unternehmen, das von Apache Kylin und Apache Hadoop unterstützt wird. Es ermöglicht Abfragelatenzen unter einer Sekunde in riesigen Datensätzen und vereinfacht die Datenanalyse für Geschäftsbenutzer und Analytiker. 
+* **Kyligence Analytics Platform:** Kyligence Analytics Platform (KAP) ist ein Data Warehouse für Unternehmen, das von Apache Kylin und Apache Hadoop unterstützt wird. Es ermöglicht Abfragelatenzen unter einer Sekunde in riesigen Datensätzen und vereinfacht die Datenanalyse für Geschäftsbenutzer und Analytiker. 
 * **Self-Service Data Prep von Paxata**
 * **SnapLogic Hadooplex:** Mit SnapLogic Hadooplex unter HDInsight können Kunden geschäftliche Erkenntnisse schneller gewinnen, indem Self-Service-Dateneingabe und -vorbereitung aus nahezu jeder Quelle für die Microsoft Azure-Cloudplaftform bereitgestellt werden.
 * **Spark Job Server für KNIME Spark Executor:** Spark Job Server für KNIME Spark Executor wird zum Verbinden der KNIME Analytics-Plattform mit HDInsight-Clustern verwendet.
@@ -50,9 +50,9 @@ Wenn Sie HDInsight-Anwendungen in einem vorhandenen HDInsight-Cluster installier
 ## <a name="install-applications-to-existing-clusters"></a>Installieren von Anwendungen für vorhandene Cluster
 Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen vorhandenen HDInsight-Cluster installieren.
 
-**So installieren Sie eine HDInsight-Anwendung**
+**Installieren einer HDInsight-Anwendung**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **HDInsight-Cluster** .
 3. Klicken Sie auf einen HDInsight-Cluster.  Falls Sie noch keinen Cluster besitzen, müssen Sie zuerst einen erstellen.  Weitere Informationen finden Sie unter [Erstellen von Clustern](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 4. Klicken Sie in der Kategorie **Konfigurationen** auf **Anwendungen**. Sie sehen eine Liste mit installierten Anwendungen. Sollte „Anwendungen“ nicht angezeigt werden, sind für diese Version des HDInsight-Clusters keine Anwendungen vorhanden.
@@ -75,9 +75,9 @@ Sie haben die Möglichkeit, die HDInsight-Anwendung beim Erstellen eines Cluster
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>Auflisten der installierten HDInsight-Apps und Eigenschaften
 Im Portal wird eine Liste mit den installierten HDInsight-Anwendungen für einen Cluster und den Eigenschaften der einzelnen installierten Anwendungen angezeigt.
 
-**So listen Sie HDInsight-Anwendungen und Eigenschaften auf**
+**Auflisten von HDInsight-Anwendungen und Eigenschaften**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **HDInsight-Cluster** . 
 3. Klicken Sie auf einen HDInsight-Cluster.
 4. Klicken Sie in **Einstellungen** unter der Kategorie **Allgemein** auf **Anwendungen**. Die installierten Apps werden auf der rechten Seite aufgeführt. 

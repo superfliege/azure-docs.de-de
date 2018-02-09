@@ -3,7 +3,7 @@ title: "Verwenden einer durch den Benutzer zugewiesenen verwalteten Dienstidenti
 description: "Schrittanleitungen und Beispiele zur Verwendung einer durch den Benutzer zugewiesenen verwalteten Dienstidentität einer Azure-VM zum Abrufen eines OAuth-Zugriffstokens."
 services: active-directory
 documentationcenter: 
-author: BryanLa
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,17 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/22/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5c9bf052ecb2e9c79e0eb627a0fd709d587125cd
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: a9513a59ec4540c6d63236519873c6e1e177b65a
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>Abrufen eines Zugriffstokens für eine durch den Benutzer zugewiesenen verwalteten Dienstidentität (Managed Service Identity, MSI) für eine VM
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)] Dieser Artikel enthält verschiedene Code- und Skriptbeispiele für den Tokenabruf sowie eine Anleitung zu wichtigen Themen, z.B. zur Behandlung bei Tokenablauf und HTTP-Fehlern.
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+Dieser Artikel enthält verschiedene Code- und Skriptbeispiele für den Tokenabruf sowie eine Anleitung zu wichtigen Themen, z.B. zur Behandlung bei Tokenablauf und HTTP-Fehlern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

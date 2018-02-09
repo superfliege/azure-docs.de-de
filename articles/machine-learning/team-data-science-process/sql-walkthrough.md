@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
-ms.author: fashah;bradsev
-ms.openlocfilehash: 4157820bad3c0d7c07965e4a5556db2f6fb69fe2
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: bradsev
+ms.openlocfilehash: 03def1f07d45b9bde5f54922984c33879a80744c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
@@ -68,7 +68,7 @@ In diesem Tutorial wird der parallele Massenimport von Daten in SQL Server gezei
 
 So richten Sie Ihre Azure Data Science-Umgebung ein:
 
-1. [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md)
+1. [Erstellen Sie ein Speicherkonto](../../storage/common/storage-create-storage-account.md)
 2. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md)
 3. [Stellen Sie einen virtuellen Computer für Data Science bereit](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), der als Server für SQL Server und ein IPython Notebook fungiert.
    
@@ -260,7 +260,7 @@ Die empfohlene Reihenfolge beim Arbeiten mit großen Datenmengen lautet wie folg
 
 * Einlesen eines kleinen Teils der Daten in ein DataFrame im Speicher
 * Durchführen von Visualisierungen und Suchvorgängen mit den Beispieldaten
-* Experimentieren mit der Funktionsverarbeitung anhand der Beispieldaten
+* Experimentieren mit der Featureentwicklung anhand der Beispieldaten
 * Bei größeren DataSet-Suchvorgängen, Datenbearbeitungsschritten und Funktionsverarbeitungen sollten Sie mithilfe von Python SQL-Abfragen direkt in der SQL Server-Datenbank in der Azure-VM ausführen.
 * Treffen von Entscheidungen zur Größe der Stichproben für die Modellerstellung in Azure Machine Learning
 
@@ -380,7 +380,7 @@ Auf ähnliche Weise können wir die Beziehung zwischen **rate\_code** und **trip
 ### <a name="sub-sampling-the-data-in-sql"></a>Generieren von Stichproben aus den Daten in SQL
 Bei der Vorbereitung von Daten für die Modellerstellung in [Azure Machine Learning Studio](https://studio.azureml.net) können Sie sich entweder für eine **direkte Verwendung von SQL-Abfragen im „Import Data“-Modul** oder für das Beibehalten der bearbeiteten und erfassten Daten in einer neuen Tabelle entscheiden, die Sie im [Import Data][import-data]-Modul mit einer einfachen SELECT-Abfrage wie **SELECT * FROM <Name\_Ihrer\_neuen\_Tabelle>** verwenden können.
 
-In diesem Abschnitt erstellen Sie eine neue Tabelle zum Speichern der erfassten und verarbeiteten Daten. Ein Beispiel für eine direkte SQL-Abfrage für die Modellerstellung finden Sie im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server](#dbexplore) .
+In diesem Abschnitt erstellen Sie eine neue Tabelle zum Speichern der erfassten und verarbeiteten Daten. Ein Beispiel für eine direkte SQL-Abfrage für die Modellerstellung finden Sie im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server](#dbexplore).
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Erstellen einer Beispieltabelle und Auffüllen dieser mit 1 % der verknüpften Tabellen. Löschen Sie zunächst die Tabelle, falls sie bereits vorhanden ist.
 In diesem Abschnitt führen wir die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, extrahieren 1% zufälliger Stichproben und speichern die erfassten Daten in der neuen Tabelle **nyctaxi\_one\_percent**:

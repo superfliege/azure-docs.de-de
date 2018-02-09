@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7d500d20dcce3e472e3e1e15b9ce307874caf22a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: ea0c2487e24fcb924632d3277163b7732442b414
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -53,7 +53,10 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, müssen Sie sich an den [Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) wenden, um die Ressourcen in einen neuen Mandanten zu verschieben.
+  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, verwenden Sie die folgenden Methoden, um die Mandanten IDs aufeinander abzustimmen: 
+
+  * [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md)
+  * [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
 
 2. Der Dienst muss die Möglichkeit bieten, Ressourcen zu verschieben. In diesem Artikel wird erläutert, welche Dienste das Verschieben von Ressourcen ermöglichen und welche nicht.
 3. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde.
@@ -88,13 +91,13 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
 
 Sie können die meisten Ressourcen mithilfe der in diesem Artikel gezeigten Self-Service-Vorgänge verschieben. Verwenden Sie die Self-Service-Vorgänge für Folgendes:
 
-* Verschieben von Resource Manager-Ressourcen
-* Verschieben von klassischen Ressourcen unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+* Verschieben von Resource Manager-Ressourcen.
+* Verschieben von klassischen Ressourcen unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations).
 
 Wenden Sie sich in folgenden Fällen an den [Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview):
 
-* Verschieben von Ressourcen in ein neues Azure-Konto (und einen anderen Azure Active Directory-Mandanten)
-* Verschieben von klassischen Ressourcen, wenn Probleme durch Einschränkungen auftreten
+* Sie verschieben Ihre Ressourcen in ein neues Azure-Konto (und einen neuen Azure Active Directory-Mandanten) und benötigen Unterstützung für die Anweisungen im vorherigen Abschnitt.
+* Sie verschieben klassische Ressourcen, aber es treten Probleme durch Einschränkungen auf.
 
 ## <a name="services-that-enable-move"></a>Dienste, die eine Verschiebung ermöglichen
 
@@ -319,7 +322,7 @@ So verschieben Sie einen in **Azure Backup** registrierten virtuellen Computer z
  1. Halten Sie die Sicherung vorübergehend an, und bewahren Sie Sicherungsdaten auf.
  2. Verschieben Sie den virtuellen Computer in die Zielressourcengruppe.
  3. Schützen Sie ihn erneut im gleichen/in einem neuen Tresor. Benutzer können eine Wiederherstellung mithilfe der verfügbaren Wiederherstellungspunkte durchführen, die vor dem Verschiebevorgang erstellt wurden.
-Wenn der Benutzer den gesicherten virtuellen Computer zwischen Abonnements verschiebt, bleiben Schritt 1 und 2 gleich. In Schritt 3 muss der Benutzer den virtuellen Computer in einem neuen Tresor erneut schützen, der im Zielabonnement vorhanden ist oder erstellt wird. Der Recovery Services-Tresor unterstützt abonnementübergreifende Sicherungen nicht.
+Wenn der Benutzer den gesicherten virtuellen Computer zwischen Abonnements verschiebt, bleiben Schritt 1 und 2 gleich. In Schritt 3 müssen Benutzer den virtuellen Computers in einem neuen Tresor schützen, der im Zielabonnement bereits vorhanden ist oder erstellt wurde. Der Recovery Services-Tresor unterstützt keine abonnementübergreifenden Sicherungen.
 
 ## <a name="hdinsight-limitations"></a>HDInsight-Einschränkungen
 

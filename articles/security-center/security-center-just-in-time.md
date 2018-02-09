@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 01/26/2018
 ms.author: terrylan
-ms.openlocfilehash: c715afe55a3aedd5c4f826bc34c3c56e167d2f82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a15857f0df5c967031aed00d89e71b3199eed0c4
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features (Vorschau)
 
@@ -50,11 +50,13 @@ Wenn ein Benutzer auf einen virtuellen Computer zugreift, überprüft das Securi
 
 ## <a name="using-just-in-time-access"></a>Verwenden von Just-In-Time-Zugriff
 
-Auf der Kachel **JIT-VM-Zugriff** unter **Security Center** werden die Anzahl der für Just-In-Time-Zugriff konfigurierten virtuellen Computer und die Anzahl der in der letzten Woche genehmigten Zugriffsanforderungen angezeigt.
+1. Öffnen Sie das Dashboard **Security Center**.
+
+2. Klicken Sie im linken Bereich auf **JIT-VM-Zugriff**.
 
 ![Kachel „JIT-VM-Zugriff“][2]
 
-Wählen Sie die Kachel **JIT-VM-Zugriff** aus. Daraufhin wird **JIT-VM-Zugriff** geöffnet.
+Das Fenster **JIT-VM-Zugriff** wird geöffnet.
 
 ![Kachel „JIT-VM-Zugriff“][10]
 
@@ -77,7 +79,7 @@ So wählen Sie den virtuellen Computer aus, den Sie aktivieren möchten:
 
 2. Wählen Sie unter **Virtueller Computer** die virtuellen Computer aus, die Sie aktivieren möchten. Hierdurch wird der virtuelle Computer mit einem Häkchen markiert.
 3. Wählen Sie **JIT auf VMs aktivieren** aus.
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 
 ### <a name="default-ports"></a>Standardports
 
@@ -135,7 +137,7 @@ Zum Bearbeiten einer vorhandenen Just-In-Time-Richtlinie eines virtuellen Comput
 
 4. Geben Sie unter **Portkonfiguration hinzufügen** den Port, den Protokolltyp, zulässige Quell-IP-Adressen und die maximale Anforderungszeit an.
 5. Klicken Sie auf **OK**.
-6. Wählen Sie **Speichern**aus.
+6. Wählen Sie **Speichern** aus.
 
 ## <a name="auditing-just-in-time-access-activity"></a>Überwachen der Just-In-Time-Zugriffsaktivität
 

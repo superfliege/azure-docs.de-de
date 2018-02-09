@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 25f4cea1908a0f9bdf387ddfed5f29e6d19bdd20
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 1a35a6adae1eec88b314252ea0e3f2eb86f10c1d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>Erstellen eines IoT Edge-Geräts, das als transparentes Gateway fungiert – Vorschauversion
 
@@ -61,7 +61,7 @@ Sie können die PowerShell- und Bash-Beispielskripts verwenden, die unter dem [B
 >Dieses Beispiel dient lediglich Testzwecken. Im Falle von Produktionsszenarien finden Sie unter [Schützen Ihrer IoT-Bereitstellung][lnk-iothub-secure-deployment] die Azure IoT-Richtlinien zum Schützen Ihrer IoT-Lösung, und stellen Sie das Zertifikat entsprechend bereit.
 
 
-1. Klonen Sie die [Microsoft Azure IoT-SDKs und -Bibliotheken für C] von GitHub:
+1. Klonen Sie die Microsoft Azure IoT SDKs und -Bibliotheken für C von GitHub:
 
    ```
    git clone -b modules-preview https://github.com/Azure/azure-iot-sdk-c.git 
@@ -104,7 +104,7 @@ Zum Konfigurieren Ihres IoT Edge-Geräts als Gateway müssen Sie es lediglich f�
 
 Hierbei wird von den folgenden Dateinamen aus den oben genannten Beispielskripts ausgegangen:
 
-| Ausgabe | Bash-Skript | PowerShell |
+| Output | Bash-Skript | PowerShell |
 | ------ | ----------- | ---------- |
 | Gerätezertifikat | `certs/new-edge-device.cert.pem` | `certs/new-edge-device.cert.pem` |
 | Privater Schlüssel des Geräts | `private/new-edge-device.cert.pem` | `private/new-edge-device.cert.pem` |

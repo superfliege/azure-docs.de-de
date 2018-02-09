@@ -3,7 +3,7 @@ title: "Integrieren einer externen Überwachungslösung mit Azure Stack | Micros
 description: "Erfahren Sie, wie Sie Azure Stack mit einer externen Überwachungslösung in Ihr Rechenzentrum integrieren können."
 services: azure-stack
 documentationcenter: 
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: 
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2017
-ms.author: mabrigg
-ms.openlocfilehash: 76499ac959b77e83494bc4f9593c20a99da5c147
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
+ms.openlocfilehash: a7f6d3691410711fcae692007b08977a93961845
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integrieren einer externen Überwachungslösung mit Azure Stack
 
@@ -76,14 +77,14 @@ Das Plug-In funktioniert mit Nagios Enterprise und Nagios Core. Sie können es [
 
 Konfigurieren Sie die Plug-In-Datei „Azurestack_plugin.py“ mit den folgenden Parametern:
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 |---------|---------|---------|
 | *ARM_Endpunkt* | Azure Resource Manager-Endpunkt (Administrator) |https://adminmanagement.local.azurestack.external |
 | *API_Endpunkt* | Azure Resource Manager-Endpunkt (Administrator)  | https://adminmanagement.local.azurestack.external |
 | *Mandanten_ID* | Admin-Abonnement-ID | Abruf über das Administratorportal oder PowerShell |
 | *Benutzername* | Benutzername für Operatorabonnement | operator@myazuredirectory.onmicrosoft.com |
 | *Benutzerkennwort* | Kennwort für Operatorabonnement | mypassword |
-| *Client_ID* | Client- | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
+| *Client_ID* | Client | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
 | *Region* |  Name der Azure Stack-Region | local |
 |  |  |
 
@@ -144,7 +145,7 @@ Die Anforderung erhält alle aktiven und geschlossenen Warnungen für das Standa
 
 **Argumente**
 
-|Argument  |Beschreibung  |
+|Argument  |BESCHREIBUNG  |
 |---------|---------|
 |armendpoint     |  Der Endpunkt von Azure Resource Manager für Ihre Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z. B. *azurestack.external* und der Regionsname *local* ist, dann ist der Resource Manager-Endpunkt „https://adminmanagement.local.azurestack.external“.       |
 |subid     |   Abonnement-ID des Benutzers, von dem der Aufruf ausgeht Mit dieser API können Sie nur mit einem Benutzer abfragen, der über die Berechtigung für das Standardanbieterabonnement verfügt.      |
@@ -203,7 +204,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 **Antwortdetails**
 
 
-|  Argument  |Beschreibung  |
+|  Argument  |BESCHREIBUNG  |
 |---------|---------|
 |*id*     |      Eindeutige ID der Warnung.   |
 |*name*     |     Interner Name der Warnung.   |
@@ -247,7 +248,7 @@ Die Anforderung schließt eine Warnung über ihre eindeutige ID.
 **Argumente**
 
 
-|Argument  |Beschreibung  |
+|Argument  |BESCHREIBUNG  |
 |---------|---------|
 |*armendpunkt*     |   Der Endpunkt von Azure Resource Manager für Ihre Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z. B. *azurestack.external* und der Regionsname *local* ist, dann ist der Resource Manager-Endpunkt „https://adminmanagement.local.azurestack.external“.      |
 |*subid*     |    Abonnement-ID des Benutzers, von dem der Aufruf ausgeht Mit dieser API können Sie nur mit einem Benutzer abfragen, der über die Berechtigung für das Standardanbieterabonnement verfügt.     |
@@ -346,7 +347,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 **Antwortdetails**
 
 
-|  Argument  |Beschreibung  |
+|  Argument  |BESCHREIBUNG  |
 |---------|---------|
 |*id*     |      Eindeutige ID der Warnung.   |
 |*name*     |     Interner Name der Warnung.   |
@@ -392,7 +393,7 @@ Die Anforderung erhält den Integritätsstatus für alle registrierten Ressource
 **Argumente**
 
 
-|Argumente  |Beschreibung  |
+|Argumente  |BESCHREIBUNG  |
 |---------|---------|
 |*armendpunkt*     |    Der Endpunkt des Azure Resource Managers Ihrer Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z. B. „azurestack.external“ und der Regionsname „local“ ist, dann ist der Resource Manager-Endpunkt „https://adminmanagement.local.azurestack.external“.     |
 |*subid*     |     Abonnement-ID des Benutzers, von dem der Aufruf ausgeht Mit dieser API können Sie nur mit einem Benutzer abfragen, der über die Berechtigung für das Standardanbieterabonnement verfügt.    |
@@ -432,7 +433,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 **Antwortdetails**
 
 
-|Argument  |Beschreibung  |
+|Argument  |BESCHREIBUNG  |
 |---------|---------|
 |*Id*     |   Eindeutige ID der Warnung.      |
 |*name*     |  Interner Name der Warnung.       |
@@ -461,7 +462,7 @@ Die Anforderung ruft den Integritätsstatus für einen bestimmten registrierten 
 
 **Argumente**
 
-|Argumente  |Beschreibung  |
+|Argumente  |BESCHREIBUNG  |
 |---------|---------|
 |*armendpunkt*     |    Der Endpunkt des Azure Resource Managers Ihrer Azure Stack-Umgebung im Format „https://adminmanagement.{RegionName}.{External FQDN}“. Wenn der externe FQDN z. B. „azurestack.external“ und der Regionsname „local“ ist, dann ist der Resource Manager-Endpunkt „https://adminmanagement.local.azurestack.external“.     |
 |*subid*     |Abonnement-ID des Benutzers, von dem der Aufruf ausgeht Mit dieser API können Sie nur mit einem Benutzer abfragen, der über die Berechtigung für das Standardanbieterabonnement verfügt.         |
@@ -500,7 +501,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 **Antwortdetails**
 
-|Argument  |Beschreibung  |
+|Argument  |BESCHREIBUNG  |
 |---------|---------|
 |*Id*     |   Eindeutige ID der Warnung.      |
 |*name*     |  Interner Name der Warnung.       |
@@ -515,8 +516,11 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*resourceURI*     |   URI für die Ressource.   |
 |*alertSummary*     |   Zusammenfassung von kritischen und allgemeinen Warnmeldungen sowie Integritätsstatus.     |
 
+## <a name="learn-more"></a>Weitere Informationen
+
+Informationen zur integrierten Integritätsüberwachung finden Sie unter [Überwachen von Integrität und Warnungen in Azure Stack](azure-stack-monitor-health.md).
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur integrierten Integritätsüberwachung finden Sie unter [Überwachen von Integrität und Warnungen in Azure Stack](azure-stack-monitor-health.md).
-
-
+[Integrieren von Azure Stack-Sicherheitsfunktionen in Datencenter-Sicherheitslösungen](azure-stack-integrate-security.md)

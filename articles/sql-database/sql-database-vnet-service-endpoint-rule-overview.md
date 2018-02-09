@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 01/23/2018
+ms.date: 01/31/2018
 ms.author: genemi
-ms.openlocfilehash: 6294216568e1d4c50ef6e6b6d2348a2a221406b0
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: d4179c590ef418633158dd5a5dbadbc8c20bcde7
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
@@ -28,9 +28,6 @@ ms.lasthandoff: 01/24/2018
 
 Damit eine Regel für ein virtuelles Netzwerk erstellt werden kann, muss zuerst ein [Dienstendpunkt eines virtuellen Netzwerks][vm-virtual-network-service-endpoints-overview-649d] vorhanden sein, auf den die Regel verweisen kann.
 
-
-> [!NOTE]
-> Für Azure SQL-Datenbank ist dieses Feature in allen Regionen der öffentlichen Azure-Cloud in der Vorschau verfügbar.
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>Erstellen einer Regel für ein virtuelles Netzwerk
 

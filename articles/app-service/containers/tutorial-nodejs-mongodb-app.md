@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c2087af14ad456c679479334c9391055f6b2e45e
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: f497e9427885ab1d2e827e9fa1dd3c468aa39239
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js- und MongoDB-Web-App in Azure App Service unter Linux
 
@@ -41,6 +41,8 @@ Folgendes wird vermittelt:
 > * Streamen von Diagnoseprotokollen aus Azure
 > * Verwalten der App im Azure-Portal
 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
@@ -49,8 +51,6 @@ Für dieses Tutorial benötigen Sie Folgendes:
 1. [Installieren von Node.js V6.0 oder höher und NPM](https://nodejs.org/)
 1. [Installieren von Gulp.js](http://gulpjs.com/) (erforderlich für [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started))
 1. [Installieren und Ausführen von MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/)
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="test-local-mongodb"></a>Testen der lokalen MongoDB
 
@@ -130,7 +130,7 @@ Für MongoDB verwendet dieses Tutorial [Azure Cosmos DB](/azure/documentdb/). Co
 
 ### <a name="create-a-cosmos-db-account"></a>Erstellen eines Cosmos DB-Kontos
 
-Erstellen Sie in der Cloud Shell mit dem Befehl [az cosmosdb create](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) ein Cosmos DB-Konto.
+Erstellen Sie in Cloud Shell mit dem Befehl [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) ein Cosmos DB-Konto.
 
 Ersetzen Sie im folgenden Befehl den Platzhalter *\<cosmosdb_name>* durch einen eindeutigen Cosmos DB-Namen. Dieser eindeutige Name wird als Teil des Cosmos DB-Endpunkts (`https://<cosmosdb_name>.documents.azure.com/`) verwendet, daher muss er für alle Cosmos DB-Konten in Azure eindeutig sein. Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche (-) enthalten, und er muss zwischen 3 und 50 Zeichen lang sein.
 
@@ -164,7 +164,7 @@ In diesem Schritt verbinden Sie die MEAN.js-Beispielanwendung mithilfe einer Mon
 
 ### <a name="retrieve-the-database-key"></a>Abrufen des Datenbankschlüssels
 
-Um eine Verbindung mit der Cosmos DB-Datenbank herstellen zu können, benötigen Sie den Datenbankschlüssel. Rufen Sie in der Cloud Shell den Primärschlüssel mit dem Befehl [az cosmosdb list-keys](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) ab.
+Um eine Verbindung mit der Cosmos DB-Datenbank herstellen zu können, benötigen Sie den Datenbankschlüssel. Rufen Sie in Cloud Shell mit dem Befehl [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) den Primärschlüssel ab.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
@@ -248,7 +248,9 @@ In diesem Schritt stellen Sie die mit MongoDB verbundene Node.js-Anwendung in Az
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-linux-based-web-app"></a>Erstellen einer auf Linux basierenden Web-App
+<a name="create"></a>
+
+### <a name="create-a-web-app"></a>Erstellen einer Web-App
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)] 
 
@@ -256,7 +258,7 @@ In diesem Schritt stellen Sie die mit MongoDB verbundene Node.js-Anwendung in Az
 
 Standardmäßig integriert das MEAN.js-Projekt die Datei _config/env/local-production.js_ nicht in das Git-Repository. Daher verwenden Sie für Ihre Azure-Web-App die App-Einstellungen zum Definieren der MongoDB-Verbindungszeichenfolge.
 
-Verwenden Sie zum Festlegen der App-Einstellungen den Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) in Cloud Shell.
+Verwenden Sie zum Festlegen der App-Einstellungen den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) in Cloud Shell.
 
 Im folgenden Beispiel wird die App-Einstellung `MONGODB_URI` in der Azure-Web-App konfiguriert. Ersetzen Sie die Platzhalter *\<app_name>*, *\<cosmosdb_name>* und *\<primary_master_key>*.
 
@@ -266,7 +268,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 Im Node.js-Code greifen Sie auf diese App-Einstellung mit `process.env.MONGODB_URI` zu, genauso wie Sie auf eine Umgebungsvariable zugreifen würden. 
 
-Öffnen Sie in Ihrem lokalen MEAN.js-Repository die Datei _config/env/production.js_ (nicht _config/env/local-production.js_), die eine für die Produktionsumgebung spezifische Konfiguration aufweist. Beachten Sie, dass die MEAN.js-Standard-App bereits für die Verwendung der `MONGODB_URI`-Umgebungsvariablen konfiguriert ist, die Sie erstellt haben.
+Öffnen Sie in Ihrem lokalen MEAN.js-Repository die Datei _config/env/production.js_ (nicht _config/env/local-production.js_), die eine für die Produktionsumgebung spezifische Konfiguration aufweist. Die MEAN.js-Standard-App ist bereits für die Verwendung der `MONGODB_URI`-Umgebungsvariablen konfiguriert, die Sie erstellt haben.
 
 ```javascript
 db: {
@@ -424,9 +426,6 @@ Testen Sie Ihre Änderungen im Produktionsmodus erneut im lokalen Terminalfenste
 gulp prod
 NODE_ENV=production node server.js
 ```
-
-> [!NOTE]
-> Denken Sie daran, dass _config/env/production.js_ zurückgesetzt wurde und die Umgebungsvariable `MONGODB_URI` nur in der Azure-Web-App und nicht auf dem lokalen Computer festgelegt ist. In der Konfigurationsdatei können Sie sehen, dass die Produktionskonfiguration als Standard eine lokale MongoDB-Datenbank verwendet. Dadurch wird sichergestellt, dass Sie keine Produktionsdaten ändern, wenn Sie Ihre Änderungen am Code lokal testen.
 
 Navigieren Sie in einem Browser zu `http://localhost:8443`, und vergewissern Sie sich, dass Sie angemeldet sind.
 

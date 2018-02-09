@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 75a6b9bc3ecfe6d6901bb38e312d62333f38daf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bf1ba333f36dcfa8959320566bcb771f37cfe22
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="upload-files-with-iot-hub"></a>Hochladen von Dateien mit IoT Hub
 
@@ -96,11 +96,11 @@ Die folgenden Referenzthemen enthalten weitere Informationen zum Hochladen von D
 
 ## <a name="file-upload-notifications"></a>Benachrichtigungen zum Dateiupload
 
-Wenn ein Gerät IoT Hub über einen abgeschlossenen Dateiupload informiert, kann IoT Hub optional eine Benachrichtigung generieren, die den Namen und den Speicherort der Datei enthält.
+Wenn ein Gerät IoT Hub über einen abgeschlossenen Dateiupload informiert, generiert IoT Hub optional eine Benachrichtigung, die den Namen und den Speicherort der Datei enthält.
 
 Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Dateiuploadbenachrichtigungen als Nachrichten über einen dienstseitigen Endpunkt (**/messages/servicebound/fileuploadnotifications**). Die Empfangssemantik für Dateiuploadbenachrichtigungen entspricht der Empfangssemantik für C2D-Nachrichten und besitzt den gleichen [Nachrichtenlebenszyklus][lnk-lifecycle]. Jede Nachricht, die vom Endpunkt für Dateiuploadbenachrichtigungen abgerufen wird, ist ein JSON-Datensatz mit den folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | EnqueuedTimeUtc |Zeitstempel, der die Erstellung der Benachrichtigung angibt. |
 | deviceId |**DeviceId** des Geräts, das die Datei hochgeladen hat. |
@@ -126,7 +126,7 @@ Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Dat
 
 Jeder IoT Hub legt die folgenden Konfigurationsoptionen für Dateiuploadbenachrichtigungen offen:
 
-| Eigenschaft | Beschreibung | Bereich und Standardwert |
+| Eigenschaft | BESCHREIBUNG | Bereich und Standardwert |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |Steuert, ob Dateiuploadbenachrichtigungen in den Endpunkt für Dateibenachrichtigungen geschrieben werden. |Bool. Standardwert: TRUE. |
 | **fileNotifications.ttlAsIso8601** |Standardgültigkeitsdauer für Dateiuploadbenachrichtigungen. |ISO_8601-Intervall bis zu 48 Stunden (mindestens 1 Minute). Standardwert: 1 Stunde. |
@@ -153,7 +153,7 @@ Nachdem Sie gelernt haben, wie Sie Dateien mithilfe von IoT Hub von Geräten hoc
 * [Aufrufen einer direkten Methode auf einem Gerät][lnk-devguide-directmethods]
 * [Planen von Aufträgen auf mehreren Geräten][lnk-devguide-jobs]
 
-Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möchten, ist möglicherweise das folgende IoT Hub-Tutorial für Sie interessant:
+Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie sich das folgende IoT Hub-Tutorial an:
 
 * [Hochladen von Dateien von Geräten in die Cloud mit IoT Hub][lnk-fileupload-tutorial]
 

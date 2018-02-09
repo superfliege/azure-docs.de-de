@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 01/27/2018
 ms.author: JeffGoldner
-ms.openlocfilehash: d6a0cbf696d59cec5b70e147de2879a311d88687
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: a23b5ff4dc8b0cf18e529d9cdc9925ea7fcedba0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Für Azure Stack verfügbare Azure Marketplace-Elemente
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 
 ## <a name="virtual-machine-extensions"></a>VM-Erweiterungen
@@ -38,8 +38,6 @@ Es empfiehlt sich, die jeweils verfügbaren Updates für die gewünschten VM-Erw
 | ![](media/azure-stack-marketplace-azure-items/cse.png) | [ VM Access for Linux ](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) (VM-Zugriff für Linux)| <b>Laden Sie dieses Update für die integrierte Version der Erweiterung für VMAccess für Linux herunter. Dies ist wichtig, wenn Sie virtuelle Debian Linux-Computer verwenden möchten.</b> | Microsoft | Linux |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [ Acronis Backup-Erweiterung für Linux ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Die Acronis Backup-Erweiterung für Microsoft Azure ist Teil der Acronis Backup-Produktfamilie zum Schutz von Daten. | Acronis International GmbH | Linux |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [ Acronis Backup-Erweiterung für Windows ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Die Acronis Backup-Erweiterung für Microsoft Azure ist Teil der Acronis Backup-Produktfamilie zum Schutz von Daten. | Acronis International GmbH | Windows |
-| ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [Deep Security Agent für Linux](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-linux) | Trend Micro Deep Security-Erweiterung für Linux. | Trend Micro | Linux |
-| ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [Deep Security Agent für Windows](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm) | Trend Micro Deep Security-Erweiterung für Windows. | Trend Micro | Windows |
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Microsoft-VM-Images und Microsoft-Lösungsvorlagen
 
@@ -47,7 +45,7 @@ Microsoft Azure Stack unterstützt die folgenden virtuellen Computer und Lösung
 
 |  | Name des Elements | BESCHREIBUNG | Herausgeber |
 | --- | --- | --- | --- |
-| ![](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | Lösungen der Extraklasse für Unternehmen, die einfach zu implementieren, wirtschaftlich, anwendungs- und benutzerorientiert sind. Diese Images werden regelmäßig mit den neuesten Patches aktualisiert. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | Lösungen der Extraklasse für Unternehmen, die einfach zu implementieren, wirtschaftlich, anwendungs- und benutzerorientiert sind. Diese Images werden regelmäßig mit den neuesten Patches aktualisiert. <b>Wichtige Information: Images, die vor dem 18. Januar 2018 heruntergeladen wurden, müssen gelöscht und durch die neuesten Versionen ersetzt werden.</b> | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/remotedesktopservicesdeployment.png) | [Bereitstellung von Remotedesktopdienste (RDS) ](https://azuremarketplace.microsoft.com/marketplace/apps/rds.remote-desktop-services-basic-deployment) | Erstellen Sie eine Standardbereitstellung von Remotedesktopdienste (RDS). | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [Testversion von SharePoint Server 2013](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2013Trial) | Testversion von Microsoft SharePoint Server 2013 unter Windows Server 2012 Datacenter und Visual Studio 2017 Community Edition | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [Testversion von SharePoint Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | Testversion von Microsoft SharePoint Server 2016 unter Windows Server 2016 Datacenter | Microsoft |

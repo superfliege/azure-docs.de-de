@@ -5,19 +5,17 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/12/2017
-ms.author: mabrigg
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 642ed3298eec0bab5515df117c0310786358e417
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2f15e130859272a729fb0ad6e0b718d4724f2103
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
-
-*Gilt für: Integrierte Azure Stack-Systeme*
-
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
 
 Die folgende Tabelle zeigt die Unterschiede zwischen den Auswahlmöglichkeiten für den Identitätsanbieter:
@@ -26,7 +24,7 @@ Die folgende Tabelle zeigt die Unterschiede zwischen den Auswahlmöglichkeiten f
 |---------|---------|---------|
 |Abrechnung|Muss „Capacity“ sein<br> Nur Enterprise Agreement (EA)|„Capacity“ oder nutzungsbasiert<br>EA oder Cloud Solution Provider (CSP)|
 |Identity|Muss AD FS sein|Azure AD oder AD FS|
-|Marketplace-Syndikation|Derzeit nicht verfügbar|Unterstützt<br>BYOL Lizenzierung|
+|Marketplace-Syndikation|Unterstützt<br>BYOL Lizenzierung|Unterstützt<br>BYOL Lizenzierung|
 |Registrierung|Empfohlen, erfordert Wechselmedium<br> und ein separates verbundenes Gerät.|Automatisiert|
 |Patch und Update|Erforderlich, erfordert Wechselmedium<br> und ein separates verbundenes Gerät.|Updatepaket kann direkt aus dem Internet<br> in Azure Stack heruntergeladen werden.|
 
@@ -54,7 +52,7 @@ Im letzten Schritt wird ein neuer Besitzer für das Anbieterstandardabonnement k
 Anforderungen:
 
 
-|Komponente|Voraussetzung|
+|Komponente|Anforderung|
 |---------|---------|
 |Graph|Microsoft Active Directory 2012/2012 R2/2016|
 |AD FS|Windows Server 2012/2012 R2/2016|
@@ -64,7 +62,7 @@ Anforderungen:
 Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
 
 
-|Parameter|Beschreibung|Beispiel|
+|Parameter|BESCHREIBUNG|Beispiel|
 |---------|---------|---------|
 |CustomADGlobalCatalog|FQDN der Active Directory-Zielgesamtstruktur,<br>mit der die Integration erfolgen soll.|Contoso.com|
 |CustomADAdminCredentials|Ein Benutzer mit LDAP-Leseberechtigung.|IHREDOMAENE\graphservice|
@@ -105,7 +103,7 @@ Verwenden Sie für diesen Vorgang einen Computer in Ihrem Datencenternetzwerk, d
 
 Der Graph-Dienst in Azure Stack verwendet die folgenden Protokolle und Ports für die Kommunikation mit dem Ziel-Active Directory:
 
-|Typ|Port|Protocol|
+|Typ|Port|Protokoll|
 |---------|---------|---------|
 |LDAP|389|TCP und UDP|
 |LDAP SSL|636|TCP|
@@ -116,7 +114,7 @@ Der Graph-Dienst in Azure Stack verwendet die folgenden Protokolle und Ports fü
 
 Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
 
-|Parameter|Beschreibung|Beispiel|
+|Parameter|BESCHREIBUNG|Beispiel|
 |---------|---------|---------|
 |CustomAdfsName|Der Name des Anspruchsanbieters.<cr>Er wird wie hier angegeben auf der AD FS-Startseite angezeigt.|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|Verbundmetadatenlink|https://AD01.contoso.com/FederationMetadata/2007-06/FederationMetadata.Xml|
@@ -155,7 +153,7 @@ Verwenden Sie diese Methode, wenn eine der folgenden Bedingungen erfüllt ist:
 Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
 
 
-|Parameter|Beschreibung|Beispiel|
+|Parameter|BESCHREIBUNG|Beispiel|
 |---------|---------|---------|
 |CustomAdfsName|Der Name der Anspruchsanbieter-Vertrauensstellung. Er wird wie hier angegeben auf der AD FS-Startseite angezeigt.|Contoso|
 |CustomADFSFederationMetadataFile|Verbundmetadatendatei|https://AD01.contoso.com/FederationMetadata/2007-06/FederationMetadata.Xml|
@@ -335,4 +333,4 @@ Wenn für eines der Cmdlets ein Fehler auftritt, können Sie zusätzliche Protok
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure Stack datacenter integration - publish endpoints (Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten)](azure-stack-integrate-endpoints.md)
+[Registrieren von Azure Stack](azure-stack-registration.md)

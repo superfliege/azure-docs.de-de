@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 09/01/2017
+ms.date: 01/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 526222944974c08f92aec2a8418e9b42401bc4d3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0b45661bbfc3d86542bd7424329e504d1d9c91e4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
 
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 
 3. Geben Sie die folgenden Informationen in das SQL-Datenbank-Formular ein, wie in der obigen Abbildung dargestellt:   
 
-   | Einstellung       | Empfohlener Wert | Beschreibung | 
+   | Einstellung       | Empfohlener Wert | BESCHREIBUNG | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Datenbankname** | mySampleDatabase | Gültige Datenbanknamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). | 
    | **Abonnement** | Ihr Abonnement  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
@@ -69,12 +69,12 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 
 4. Klicken Sie auf **Server**, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** mit den folgenden Informationen aus: 
 
-   | Einstellung       | Empfohlener Wert | Beschreibung | 
+   | Einstellung       | Empfohlener Wert | BESCHREIBUNG | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). | 
    | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner).|
    | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
-   | **Standort** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
+   | **Location** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
 
    ![Erstellung des Datenbankservers](./media/sql-database-design-first-database/create-database-server.png)
 
@@ -91,7 +91,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
    > [!IMPORTANT]
    > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
    >
-   >\* Im Premium-Tarif ist eine Speicherkapazität von mehr als 1 TB folgenden Regionen verfügbar: „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“, „Europa, Westen“, „Deutschland, Mitte“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* Im Premium-Tarif steht derzeit in folgenden Regionen eine Speicherkapazität von mehr als 1 TB zur Verfügung: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
 
 9. Klicken Sie auf **Übernehmen**, wenn Sie die Dienstebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  
@@ -153,24 +153,24 @@ Führen Sie die folgenden Schritte aus, um mit dem **[Data Migration Assistant](
 
 2. Klicken Sie im linken Menü auf **+ Neu**, um ein **Assessment**-Projekt zu erstellen. Geben Sie die angeforderten Werte ein, und klicken Sie dann auf **Erstellen**:
 
-   | Einstellung      | Empfohlener Wert | Beschreibung | 
+   | Einstellung      | Empfohlener Wert | BESCHREIBUNG | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | Projekttyp | Migration | Wählen Sie entweder, Ihre Datenbank für die Migration zu bewerten, oder wählen Sie Bewertung und Migration als Teil des gleichen Workflows. |
    |Projektname|Migrationstutorial| Ein beschreibender Name |
    |Quellservertyp| SQL Server | Dies ist die einzige derzeit unterstützte Quelle. |
-   |Zielservertyp| Azure SQL-Datenbank| Optionen: Azure SQL-Datenbank, SQL Server, SQL Server auf virtuellen Azure-Computern |
+   |Zielservertyp| Azure SQL-Datenbank| Optionen: Azure SQL-Datenbank, SQL Server, SQL Server auf virtuellen Azure-Computern |
    |Migrationsumfang| Schema und Daten| Optionen: Schema und Daten, nur Schema, nur Daten |
    
    ![Neues Data Migration Assistant-Projekt](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-new-project.png)
 
 3.  Tragen Sie auf der Seite **Quelle auswählen** die angeforderten Werte ein, und klicken Sie dann auf **Verbinden**:
 
-    | Einstellung      | Empfohlener Wert | Beschreibung | 
+    | Einstellung      | Empfohlener Wert | BESCHREIBUNG | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | Servername | Ihr Servername oder Ihre IP-Adresse | Ihr Servername oder Ihre IP-Adresse |
     | Authentifizierungsart | Ihr bevorzugter Authentifizierungstyp| Optionen: Windows-Authentifizierung, SQL Server-Authentifizierung, Integrierte Active Directory-Authentifizierung, Active Directory-Kennwortauthentifizierung |
-    | Benutzername | Ihr Anmeldename | Ihre Anmeldung benötigt **SERVER STEUERN**-Berechtigungen. |
-    | Kennwort| Ihr Kennwort | Ihr Kennwort |
+    | Username | Ihr Anmeldename | Ihre Anmeldung benötigt **SERVER STEUERN**-Berechtigungen. |
+    | Password| Ihr Kennwort | Ihr Kennwort |
     | Verbindungseigenschaften| Wählen Sie Ihrer Umgebung entsprechend **Verbindung verschlüsseln** und **Serverzertifikat vertrauen**. | Wählen Sie die entsprechenden Eigenschaften für die Verbindung mit Ihrem Server. |
 
     ![Neue Datenmigration – Quelle auswählen](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-source.png)
@@ -179,12 +179,12 @@ Führen Sie die folgenden Schritte aus, um mit dem **[Data Migration Assistant](
 
 6. Tragen Sie auf der Seite **Ziel auswählen** die angeforderten Werte ein, und klicken Sie dann auf **Verbinden**:
 
-    | Einstellung      | Empfohlener Wert | Beschreibung | 
+    | Einstellung      | Empfohlener Wert | BESCHREIBUNG | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | Servername | Ihr vollqualifizierter Azure-Datenbankservername | Ihr vollqualifizierter Azure-Datenbankservername aus dem vorherigen Verfahren |
     | Authentifizierungsart | SQL Server-Authentifizierung | Die SQL Server-Authentifizierung war beim Verfassen dieses Tutorials die einzige Option, aber Integrierte Active Directory-Authentifizierung und Active Directory-Kennwortauthentifizierung werden auch von Azure SQL-Datenbank unterstützt. |
-    | Benutzername | Ihr Anmeldename | Ihre Anmeldung benötigt **DATENBANK STEUERN**-Berechtigungen für die Quelldatenbank. |
-    | Kennwort| Ihr Kennwort | Ihr Kennwort |
+    | Username | Ihr Anmeldename | Ihre Anmeldung benötigt **DATENBANK STEUERN**-Berechtigungen für die Quelldatenbank. |
+    | Password| Ihr Kennwort | Ihr Kennwort |
     | Verbindungseigenschaften| Wählen Sie Ihrer Umgebung entsprechend **Verbindung verschlüsseln** und **Serverzertifikat vertrauen**. | Wählen Sie die entsprechenden Eigenschaften für die Verbindung mit Ihrem Server. |
 
     ![Neue Datenmigration – Ziel auswählen](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-target.png)
@@ -228,13 +228,13 @@ Verwenden Sie [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms
 
 2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
 
-   | Einstellung       | Empfohlener Wert | Beschreibung | 
+   | Einstellung       | Empfohlener Wert | BESCHREIBUNG | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | Servertyp | Datenbankmodul | Dieser Wert ist erforderlich. |
+   | Servertyp | Datenbank-Engine | Dieser Wert ist erforderlich. |
    | Servername | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170824.database.windows.net**. |
    | Authentifizierung | SQL Server-Authentifizierung | In diesem Tutorial haben wir als einzigen Authentifizierungstyp die SQL-Authentifizierung konfiguriert. |
    | Anmeldung | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
-   | Kennwort | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
+   | Password | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
 
    ![Verbindung mit dem Server herstellen](./media/sql-database-connect-query-ssms/connect.png)
 

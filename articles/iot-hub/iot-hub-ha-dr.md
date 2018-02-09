@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: elioda
-ms.openlocfilehash: 3ea10ee8652dc2a03791feb66041431e7b3c6ae1
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: ecc5da8daf0f5c93dffc93798f40507f8eac48be
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hohe Verfügbarkeit und Notfallwiederherstellung von IoT Hub
-Als Azure-Dienst sorgt IoT Hub für hohe Verfügbarkeit, indem Redundanzen auf Azure-Regionsebene bereitgestellt werden, ohne dass zusätzlicher Aufwand für die Lösung anfällt. Die Microsoft Azure-Plattform bietet auch Features zum Erstellen von Lösungen mit Notfallwiederherstellungsfunktionen (Disaster Recovery, DR) oder regionsübergreifender Verfügbarkeit. Wenn Sie global und regionsübergreifend eine hohe Verfügbarkeit für Geräte oder Benutzer erreichen möchten, nutzen Sie die Notfallwiederherstellungsfeatures von Azure. Im Artikel [Azure-Geschäftskontinuität – Technische Anleitung](../resiliency/resiliency-technical-guidance.md) werden die integrierten Features von Azure für Geschäftskontinuität und Notfallwiederherstellung beschrieben. Das Dokument [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen][Disaster recovery and high availability for Azure applications] enthält Architekturinformationen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und hohe Verfügbarkeit.
+# <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung von IoT Hub
+Als Azure-Dienst sorgt IoT Hub für Hochverfügbarkeit, indem Redundanzen auf Azure-Regionsebene bereitgestellt werden, ohne dass zusätzlicher Aufwand für die Lösung anfällt. Die Microsoft Azure-Plattform bietet auch Features zum Erstellen von Lösungen mit Notfallwiederherstellungsfunktionen (Disaster Recovery, DR) oder regionsübergreifender Verfügbarkeit. Wenn Sie global und regionsübergreifend Hochverfügbarkeit für Geräte oder Benutzer erreichen möchten, nutzen Sie die Notfallwiederherstellungsfeatures von Azure. Im Artikel [Azure-Geschäftskontinuität – Technische Anleitung](../resiliency/resiliency-technical-guidance.md) werden die integrierten Features von Azure für Geschäftskontinuität und Notfallwiederherstellung beschrieben. Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen][Disaster recovery and high availability for Azure applications] enthält Architekturinformationen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
 
 ## <a name="azure-iot-hub-dr"></a>Azure IoT Hub – Notfallwiederherstellung
 Zusätzlich zur Hochverfügbarkeit zwischen Regionen implementiert IoT Hub Failovermechanismen für die Notfallwiederherstellung, die keine Benutzereingriffe erfordern. Die IoT Hub-Notfallwiederherstellung löst sich selbst aus und hat ein Recovery Time Objective (RTO) von 2-26 Stunden und die folgenden Recovery Point Objectives (RPOs):
@@ -34,9 +34,11 @@ Zusätzlich zur Hochverfügbarkeit zwischen Regionen implementiert IoT Hub Failo
 | Vorgangsüberwachungsnachrichten |Alle ungelesenen Nachrichten gehen verloren |
 | C2D-Nachrichten |0-5 Minuten Datenverlust |
 | C2D-Feedbackwarteschlange |Alle ungelesenen Nachrichten gehen verloren |
+| Daten des Gerätezwillings |0-5 Minuten Datenverlust |
+| Übergeordnete und Geräteaufträge |0-5 Minuten Datenverlust |
 
 ## <a name="regional-failover-with-iot-hub"></a>Regionales Failover mit IoT Hub
-Eine ausführliche Erläuterung von Bereitstellungstopologien in IoT-Lösungen würde den Rahmen dieses Artikels sprengen. In diesem Artikel wird das Bereitstellungsmodell für das *regionale Failover* zur Erzielung von Notfallwiederherstellung und hoher Verfügbarkeit behandelt.
+Eine ausführliche Erläuterung von Bereitstellungstopologien in IoT-Lösungen würde den Rahmen dieses Artikels sprengen. In diesem Artikel wird das Bereitstellungsmodell für das *regionale Failover* zur Erzielung von Notfallwiederherstellung und Hochverfügbarkeit behandelt.
 
 In einem regionalen Failovermodell wird das Lösungs-Back-End in erster Linie an einem Rechenzentrumsstandort ausgeführt. Eine sekundäre IoT Hub-Einheit und ein Back-End werden an einem anderen Rechenzentrumsstandort bereitgestellt. Wenn die IoT Hub-Einheit im primären Rechenzentrum ausfällt oder die Netzwerkverbindung des Geräts mit dem primären Rechenzentrum unterbrochen wird, verwenden Geräte einen sekundären Dienstendpunkt. Sie können die Verfügbarkeit der Lösung durch die Implementierung eines regionsübergreifenden Failovermodells verbessern, statt innerhalb einer Region zu bleiben. 
 

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 01/25/2018
 ms.author: mazha
-ms.openlocfilehash: 80e8e85f058a5cec2e3ae6a6cff5cb8a363370e1
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 81a88f6495ca9092ca3b55b8ffb3e41def3b4623
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="getting-started-with-azure-cdn"></a>Erste Schritte mit Azure CDN
-In diesem Artikel erfahren Sie, wie Sie Azure CDN durch Erstellen eines neuen CDN-Profils und -Endpunkts aktivieren.
+In diesem Artikel erfahren Sie, wie Sie Azure CDN (Content Delivery Network) durch das Erstellen eines neuen CDN-Profils und -Endpunkts aktivieren.
 
 > [!IMPORTANT]
 > Eine Einführung in CDN sowie eine Featureliste finden Sie in der [CDN-Übersicht](cdn-overview.md).
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure CDN durch Erstellen eines neuen CD
 > 
 
 ## <a name="create-a-new-cdn-profile"></a>Erstellen eines neuen CDN-Profils
-Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten.  Jedes Profil enthält mindestens einen CDN-Endpunkt.  Sie können mehrere Profile verwenden, um Ihre CDN-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren.
+Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil kann mindestens einen CDN-Endpunkt enthalten. Sie können mehrere Profile verwenden, um Ihre CDN-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren.
 
 > [!NOTE]
 > Ein Azure-Abonnement verfügt für die folgenden Ressourcen über Standardgrenzwerte:
@@ -39,7 +39,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten.  Jedes Profil enthält mind
 >
 > Informationen zu Grenzwerten für CDN-Abonnements finden Sie unter [CDN-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits#cdn-limits).
 >
-> Die Preise für Azure CDN gelten auf der Ebene von CDN-Profilen. Wenn Sie die Azure CDN-Tarife kombinieren möchten, benötigen Sie mehrere CDN-Profile.
+> Die Preise für Azure CDN gelten auf der Ebene von CDN-Profilen. Um mehrere Azure CDN-Tarife zu kombinieren, müssen Sie mehrere CDN-Profile erstellen.
 > 
 > 
 
@@ -48,56 +48,62 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten.  Jedes Profil enthält mind
 ## <a name="create-a-new-cdn-endpoint"></a>Erstellen eines neuen CDN-Endpunkts
 **So erstellen Sie einen neuen CDN-Endpunkt**
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil.  Eventuell haben Sie es im vorherigen Schritt an das Dashboard angeheftet.  Andernfalls können Sie es ermitteln, indem Sie nacheinander auf **Durchsuchen**, und **CDN-Profile** und dann auf das Profil klicken, dem Sie den Endpunkt hinzufügen möchten.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil. Eventuell haben Sie es im vorherigen Schritt an das Dashboard angeheftet. Falls nicht, können Sie darauf zugreifen, indem Sie **Alle Dienste** und dann **CDN-Profile** wählen. Wählen Sie im Bereich **CDN-Profile** das Profil aus, dem Sie Ihren Endpunkt hinzufügen möchten. 
    
-    Das Blatt für das CDN-Profil wird angezeigt.
+    Der Bereich „CDN-Profil“ wird angezeigt.
    
     ![CDN-Profil][cdn-profile-settings]
-2. Klicken Sie auf die Schaltfläche **Endpunkt hinzufügen** .
+
+2. Wählen Sie **Endpunkt**.
    
     ![Schaltfläche „Endpunkt hinzufügen“][cdn-new-endpoint-button]
    
-    Das Blatt **Endpunkt hinzufügen** wird angezeigt.
+    Der Bereich **Endpunkt hinzufügen** wird angezeigt.
    
-    ![Blatt „Endpunkt hinzufügen“][cdn-add-endpoint]
-3. Geben Sie einen **Namen** für diesen CDN-Endpunkt ein.  Dieser Name wird für den Zugriff auf Ihre zwischengespeicherten Ressourcen in der Domäne `<endpointname>.azureedge.net` verwendet.
-4. Wählen Sie in der Dropdownliste **Ursprungstyp** Ihren Ursprungstyp aus.  Wählen Sie **Storage** für ein Azure-Speicherkonto, **Clouddienst** für einen Azure-Clouddienst, **Web-App** für eine Azure-Web-App oder **Benutzerdefinierter Ursprung** für einen öffentlich zugänglichen Webserver (in Azure oder anderswo gehostet).
+    ![Bereich „Endpunkt hinzufügen“][cdn-add-endpoint]
+
+3. Geben Sie unter **Name** einen eindeutigen Namen für den neuen CDN-Endpunkt ein. Dieser Name wird für den Zugriff auf Ihre zwischengespeicherten Ressourcen in der Domäne `<endpointname>.azureedge.net` verwendet.
+
+4. Wählen Sie unter **Ursprungstyp** einen Ursprungstyp aus. Wählen Sie **Storage** für ein Azure-Speicherkonto, **Clouddienst** für einen Azure-Clouddienst, **Web-App** für eine Azure-Web-App oder **Benutzerdefinierter Ursprung** für einen öffentlich zugänglichen Webserver (in Azure oder anderswo gehostet).
    
     ![CDN-Ursprung](./media/cdn-create-new-endpoint/cdn-origin-type.png)
-5. Wählen Sie in der Dropdownliste **Ursprungshostname** Ihre Ursprungsdomäne aus bzw. geben Sie sie ein.  In der Dropdownliste werden alle verfügbaren Ursprungstypen aufgelistet, die Sie in Schritt 4 angegeben haben.  Wenn Sie *Benutzerdefinierter Ursprung* als **Ursprungstyp** auswählen, geben Sie die Domäne Ihres benutzerdefinierten Ursprungs ein.
-6. Geben Sie im Textfeld **Ursprünglicher Pfad** den Pfad zu den Ressourcen ein, die Sie zwischenspeichern möchten, oder lassen Sie das Feld leer, um das Zwischenspeichern aller Ressourcen in der Domäne zuzulassen, die Sie in Schritt 5 angegeben haben.
-7. Geben Sie unter **Header des Ursprungshosts**den Hostheader ein, den das CDN bei jeder Anforderung senden soll, oder übernehmen Sie den Standardwert.
+
+5. Wählen Sie unter **Hostname des Ursprungs** Ihre Ursprungsdomäne aus, oder geben Sie sie ein. In der Dropdownliste werden alle verfügbaren Ursprungstypen aufgelistet, die Sie in Schritt 4 angegeben haben. Geben Sie die Domäne Ihres benutzerdefinierten Ursprungs ein, wenn Sie **Benutzerdefinierter Ursprung** als Ursprungstyp auswählen.
+    
+6. Geben Sie unter **Ursprünglicher Pfad** den Pfad zu den Ressourcen ein, die Sie zwischenspeichern möchten, oder lassen Sie das Feld leer, um das Zwischenspeichern für alle Ressourcen aus Schritt 5 in der Domäne zuzulassen.
+    
+7. Geben Sie unter **Header des Ursprungshosts** den Hostheader ein, den das Azure CDN bei jeder Anforderung senden soll, oder übernehmen Sie den Standardwert.
    
    > [!WARNING]
    > Bei einigen Ursprungstypen wie etwa Azure Storage und Web-Apps muss der Hostheader mit der Domäne des Ursprungs übereinstimmen. Verwenden Sie den Standardwert, es sei denn, Sie nutzen einen Ursprung, bei dem der Hostheader von der Domäne abweichen muss.
    > 
-   > 
+    
 8. Geben Sie unter **Protokoll** und **Ursprungsport** die Protokolle und Ports an, über die auf die Ressourcen am Ursprung zugegriffen werden soll. Sie müssen mindestens ein Protokoll (HTTP oder HTTPS) auswählen. Verwenden Sie die vom CDN bereitgestellte Domäne (`<endpointname>.azureedge.net`), um auf HTTPS-Inhalte zuzugreifen. 
    
    > [!NOTE]
-   > Der **Ursprungsport** bezieht sich nur darauf, welchen Port der Endpunkt zum Abrufen von Informationen vom Ursprung verwendet.  Der Endpunkt selbst ist nur für Endclients auf den HTTP- und HTTPS-Standardports (80 und 443) verfügbar, und zwar unabhängig vom **Ursprungsport**.  
+   > Mit dem Wert unter **Ursprungsport** wird nur der Port bestimmt, der vom Endpunkt zum Abrufen von Informationen vom Ursprung verwendet wird. Der Endpunkt selbst ist nur für Endclients auf den HTTP- und HTTPS-Standardports (80 und 443) verfügbar, und zwar unabhängig vom Wert unter **Ursprungsport**.  
    > 
-   > **Azure CDN von Akamai** lassen nicht den vollständigen TCP-Portbereich für Ursprünge zu.  Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx)(Azure CDN von Akamai – Zulässige Ursprungsports).  
+   > Für Endpunkte in Profilen vom Typ **Azure CDN von Akamai** wird nicht der vollständige TCP-Portbereich für Ursprungsports zugelassen. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx)(Azure CDN von Akamai – Zulässige Ursprungsports).  
    > 
-   > Der Zugriff auf CDN-Inhalte über HTTPS weist folgende Einschränkungen auf:
+   > Beim Zugreifen auf CDN-Inhalt per HTTPS gelten die folgenden Einschränkungen:
    > 
-   > * Sie müssen das vom CDN bereitgestellte SSL-Zertifikat verwenden. Zertifikate von Drittanbietern werden nicht unterstützt.
+   > * Verwenden Sie das vom CDN bereitgestellte SSL-Zertifikat. Zertifikate von Drittanbietern werden nicht unterstützt.
    > * HTTPS-Unterstützung für benutzerdefinierte Azure CDN-Domänen ist nur für Produkte vom Typ **Azure CDN von Verizon** (Standard und Premium) verfügbar. Für **Azure CDN von Akamai** wird es nicht unterstützt. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren von HTTPS in einer benutzerdefinierten Azure Content Delivery Network-Domäne](cdn-custom-ssl.md).
-  
-9. Klicken Sie auf die Schaltfläche **Hinzufügen** , um den neuen Endpunkt zu erstellen.
+    
+9. Wählen Sie **Hinzufügen**, um den neuen Endpunkt zu erstellen.
    
    Der erstellte Endpunkt wird in der Liste mit den Endpunkten für das Profil angezeigt.
     
    ![CDN-Endpunkt][cdn-endpoint-success]
     
    > [!IMPORTANT]
-   > Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN eine Weile dauern kann.  Bei <b>Azure CDN von Akamai</b> -Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. Bei Profilen vom Typ <b>Azure CDN von Verizon</b> ist die Weitergabe in der Regel in 90 Minuten abgeschlossen, in manchen Fällen kann es aber länger dauern.
+   > Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN eine Weile dauern kann. Bei **Azure CDN von Akamai** -Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. Bei Profilen vom Typ **Azure CDN von Verizon** ist die Weitergabe in der Regel in 90 Minuten abgeschlossen, in manchen Fällen kann es aber länger dauern.
     > 
-    > Benutzer, die versuchen, den CDN-Domänennamen zu verwenden, bevor die Endpunktkonfiguration an die POPs verteilt wurde, erhalten unter Umständen den Antwortcode „HTTP 404“.  Wenn Sie auch mehrere Stunden nach Erstellung des Endpunkts noch 404-Meldungen erhalten, lesen Sie die Informationen zur [Problembehandlung bei CDN-Endpunkten mit Status 404](cdn-troubleshoot-endpoint.md).
+    > Wenn Sie versuchen, den CDN-Domänennamen zu verwenden, bevor die Endpunktkonfiguration an die POPs verteilt wurde, wird unter Umständen der Antwortstatus „HTTP 404“ angezeigt. Falls Sie auch mehrere Stunden nach Erstellung des Endpunkts noch den Antwortstatus 404 erhalten, helfen Ihnen die Informationen zur [Problembehandlung bei CDN-Endpunkten mit Status 404](cdn-troubleshoot-endpoint.md) weiter.
     > 
     > 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Steuern des Zwischenspeicherverhaltens von Anforderungen mit Abfragezeichenfolgen](cdn-query-string.md)
 * [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](cdn-map-content-to-custom-domain.md)
 * [Vorabladen von Assets auf einen Azure CDN-Endpunkt](cdn-preload-endpoint.md)

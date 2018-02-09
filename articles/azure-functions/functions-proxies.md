@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: dd022b189783f2d8c6209a6cd656704ff144bfd6
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 3d1b5f30898bc0aab5c617ab547aa7db5e7e4375
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -62,6 +62,11 @@ Das Ändern von Antworten ist gegenwärtig im Portal nicht möglich. Unter [Defi
 
 Die Konfiguration für einen Proxy muss nicht statisch sein. Sie können ihn zur Verwendung von Variablen aus der ursprünglichen Clientanforderung, der Back-End-Antwort oder Anwendungseinstellungen konditionieren.
 
+### <a name="reference-localhost"></a>Verweisen auf lokale Funktionen
+Verwenden Sie `localhost`, um direkt auf eine Funktion innerhalb der gleichen Funktions-App zu verweisen, ohne eine Roundtrip-Proxyanforderung.
+
+`"backendurl": "localhost/api/httptriggerC#1"` verweist auf eine lokale, durch HTTP ausgelöste Funktion auf der Route `/api/httptriggerC#1`.
+
 ### <a name="request-parameters"></a>Verweisen auf Anforderungsparameter
 
 Sie können Anforderungsparameter als Eingaben für die Back-End-URL-Eigenschaft oder im Rahmen der Änderung von Anforderungen und Antworten verwenden. Einige Parameter können der Routenvorlage entnommen werden, die in der Basisproxykonfiguration angegeben wird, und andere können von Eigenschaften der eingehenden Anforderung stammen.
@@ -94,6 +99,18 @@ Bei der Back-End-URL *https://%ORDER_PROCESSING_HOST%/api/orders* wird z.B. „%
 
 > [!TIP] 
 > Verwenden Sie Anwendungseinstellungen für Back-End-Hosts, wenn Sie mehrere Bereitstellungen oder Testumgebungen haben. Auf diese Weise können Sie sicherstellen, dass Sie immer mit dem richtigen Back-End für die jeweilige Umgebung kommunizieren.
+
+## <a name="debugProxies"></a>Problembehandlung bei Proxys
+
+Wenn Sie das Flag `"debug":true` zu einem Proxy in `proxy.json` hinzufügen, aktivieren Sie die Debugprotokollierung. Die Protokolle werden unter `D:\home\LogFiles\Application\Proxies\DetailedTrace` gespeichert. Auf sie kann über die erweiterten Tools (Kudu) zugegriffen werden. HTTP-Antworten enthalten auch einen `Proxy-Trace-Location`-Header mit einer URL für den Zugriff auf die Protokolldatei.
+
+Sie können einen Proxy von der Clientseite debuggen, indem Sie einen `Proxy-Trace-Enabled`-Header hinzufügen, der auf `true` festgelegt ist. Dadurch wird auch eine Ablaufverfolgung für das Dateisystem protokolliert, und die Ablaufverfolgungs-URL wird als Header in der Antwort zurückgegeben.
+
+### <a name="block-proxy-traces"></a>Blockieren von Proxy-Ablaufverfolgungen
+
+Aus Sicherheitsgründen möchten Sie es unter Umständen nicht zulassen, dass Ihr Dienst zum Generieren einer Ablaufverfolgung aufgerufen wird. Andere können dann ohne Ihre Anmeldeinformationen nicht auf die Ablaufverfolgungsinhalte zugreifen. Das Erstellen der Ablaufverfolgung verbraucht jedoch Ressourcen und legt offen, dass Sie Funktionsproxys verwenden.
+
+Deaktivieren Sie Ablaufverfolgungen vollständig, indem Sie `"debug":false` zu einem bestimmten Proxy in `proxy.json` hinzufügen.
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration
 
@@ -130,6 +147,24 @@ Jeder Proxy hat einen Anzeigenamen, wie z.B. *proxy1* im vorherigen Beispiel. Da
 
 > [!NOTE] 
 > Die Eigenschaft *route* in Azure-Funktionsproxys berücksichtigt die Eigenschaft *routePrefix* der Funktionen-App-Hostkonfiguration nicht. Wenn Sie ein Präfix wie `/api` einschließen möchten, muss es in der Eigenschaft *route* enthalten sein.
+
+### <a name="disableProxies"></a>Deaktivieren einzelner Proxys
+
+Sie können einzelne Proxys deaktivieren, indem Sie `"disabled": true` zum Proxy in der `proxies.json`-Datei hinzufügen. Dies bewirkt, dass alle Anforderungen, die mit matchCondition übereinstimmen, den Fehler 404 zurückgeben.
+```json
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "Root": {
+            "disabled":true,
+            "matchCondition": {
+                "route": "/example"
+            },
+            "backendUri": "www.example.com"
+        }
+    }
+}
+```
 
 ### <a name="requestOverrides"></a>Definieren eines requestOverrides-Objekts
 

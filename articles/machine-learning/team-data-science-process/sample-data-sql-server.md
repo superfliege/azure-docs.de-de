@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: fashah;garye;bradsev
-ms.openlocfilehash: fd669f3951b1f7f05932634f039a04e02993399f
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: garye;bradsev
+ms.openlocfilehash: a82e4703f68271d6d10719e6be8465efa9b71a79
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="heading"></a>Erstellen von Datenstichproben aus SQL Server in Azure
 Dieser Artikel beschreibt die Erstellung von Stichproben für SQL Server-Daten in Azure unter Verwendung von SQL oder der Programmiersprache Python. Es wird gezeigt, wie erfasste Daten in Azure Machine Learning verschoben werden, indem Sie sie in einer Datei speichern, diese in einen Azure-Blob hochladen und anschließend in Azure Machine Learning Studio lesen.

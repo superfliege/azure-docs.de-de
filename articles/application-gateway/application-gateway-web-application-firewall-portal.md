@@ -1,166 +1,171 @@
 ---
-title: Erstellen oder Aktualisieren eines Anwendungsgateways mit einer Web Application Firewall | Microsoft-Dokumentation
-description: "Informationen zum Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Portal"
+title: "Erstellen eines Anwendungsgateways mit einer Web Application Firewall – Azure-Portal | Microsoft-Dokumentation"
+description: Erfahren Sie, wie Sie mithilfe des Azure-Portals ein Anwendungsgateway mit einer Web Application Firewall erstellen.
 services: application-gateway
-documentationcenter: na
 author: davidmu1
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: b561a210-ed99-4ab4-be06-b49215e3255a
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: bfc06c1b44974fd17a3794654503d21d6407a917
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d2b8fc65e6cd03f61151dbae66bb89821cdab13b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="create-an-application-gateway-with-a-web-application-firewall-by-using-the-portal"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Portal
+# <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Azure-Portal
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-web-application-firewall-portal.md)
-> * [PowerShell](application-gateway-web-application-firewall-powershell.md)
-> * [Azure-Befehlszeilenschnittstelle](application-gateway-web-application-firewall-cli.md)
+Erfahren Sie, wie Sie mithilfe des Azure-Portals ein [Anwendungsgateway](application-gateway-introduction.md) mit einer [Web Application Firewall](application-gateway-web-application-firewall-overview.md) (WAF) erstellen. Die WAF verwendet [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-Regeln, um Ihre Anwendung zu schützen. Diese Regeln beinhalten den Schutz vor Angriffen z.B. durch Einschleusung von SQL-Befehlen, siteübergreifendes Scripting und Übernahme von Sitzungen.
 
-In diesem Artikel wird erläutert, wie ein Anwendungsgateway, für das eine Web Application Firewall (WAF) aktiviert ist, erstellt wird.
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-WAF in Azure Application Gateway schützt Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Befehlen, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen. WAF schützt vor vielen der (laut OWASP) 10 häufigsten Websicherheitslücken.
+> [!div class="checklist"]
+> * Erstellen eines Anwendungsgateways mit aktivierter WAF
+> * Erstellen der virtuellen Computer, die als Back-End-Server verwendet werden
+> * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
 
-## <a name="scenarios"></a>Szenarien
+![Web Application Firewall –Beispiel](./media/application-gateway-web-application-firewall-portal/scenario-waf.png)
 
-Dieser Artikel enthält zwei Szenarien. Im ersten Szenario wird das [Erstellen eines Anwendungsgateways mit WAF](#create-an-application-gateway-with-web-application-firewall) beschrieben. Im zweiten Szenario wird das [Hinzufügen von WAF zu einem vorhandenen Anwendungsgateway](#add-web-application-firewall-to-an-existing-application-gateway) erläutert.
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-![Beispielszenario][scenario]
+Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 
-> [!NOTE]
-> Sie können dem Anwendungsgateway benutzerdefinierte Integritätstests, Back-End-Pooladressen und zusätzliche Regeln hinzufügen. Diese Anwendungen werden konfiguriert, nachdem das Anwendungsgateway konfiguriert wurde, nicht während der ersten Bereitstellung.
+## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-## <a name="before-you-begin"></a>Voraussetzungen
+Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. In diesem Beispiel werden zwei Subnetze erstellt: eins für das Anwendungsgateway und eins für die Back-End-Server. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway.
 
- Für ein Anwendungsgateway ist ein eigenes Subnetz erforderlich. Stellen Sie beim Erstellen eines virtuellen Netzwerks sicher, dass der Adressraum für mehrere Subnetze ausreicht. Nachdem Sie ein Anwendungsgateway in einem Subnetz bereitgestellt haben, können nur zusätzliche Anwendungsgateways zum Subnetz hinzugefügt werden.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Neu**.
+2. Klicken Sie auf **Netzwerk** und dann in der Liste „Ausgewählte“ auf **Application Gateway**.
+3. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
 
-## <a name="add-web-application-firewall-to-an-existing-application-gateway"></a>Hinzufügen einer Web Application Firewall zu einem vorhandenen Anwendungsgateway
+    - *myAppGateway*: Name des Anwendungsgateways
+    - *myResourceGroupAG*: neue Ressourcengruppe
+    - Wählen Sie als Ebene des Anwendungsgateways *WAF* aus.
 
-In diesem Beispiel wird ein vorhandenes Anwendungsgateway aktualisiert, sodass es WAF im **Schutzmodus** unterstützt.
+    ![Erstellen eines neuen Anwendungsgateways](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
 
-1. Wählen Sie im Azure-Portal im Bereich **Favoriten** die Option **Alle Ressourcen** aus. Wählen Sie auf dem Blatt **Alle Ressourcen** das vorhandene Anwendungsgateway aus. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie den Namen in das Feld **Nach Name filtern** eingeben, um ganz einfach auf die DNS-Zone zuzugreifen.
+4. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
+5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
 
-   ![Auswahl eines vorhandenen Anwendungsgateways][1]
+    - *myVNet*: Name des virtuellen Netzwerks
+    - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
+    - *myAGSubnet*: Subnetzname
+    - *10.0.0.0/24*: Adressraum des Subnetzes
 
-2. Wählen Sie **Web Application Gateway** aus, und aktualisieren Sie die Einstellungen des Anwendungsgateways. Wenn der Aktualisierungsvorgang abgeschlossen ist, wählen Sie **Speichern** aus. 
+    ![Virtuelles Netzwerk erstellen](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
 
-3. Verwenden Sie die folgenden Einstellungen, um ein vorhandenes Anwendungsgateway für die WAF-Unterstützung zu aktualisieren:
+6. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
+7. Klicken Sie auf **Öffentliche IP-Adresse auswählen** und dann auf **Neu erstellen**, und geben Sie den Namen der öffentlichen IP-Adresse ein. In diesem Beispiel heißt die öffentliche IP-Adresse *myAGPublicIPAddress*. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
+8. Übernehmen Sie die Standardwerte für die Listenerkonfiguration, lassen Sie die Web Application Firewall deaktiviert, und klicken Sie dann auf **OK**.
+9. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **OK**, um Netzwerkressourcen und das Anwendungsgateway zu erstellen. Die Erstellung des Anwendungsgateways kann einige Minuten dauern. Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit dem nächsten Abschnitt fortfahren.
 
-   | **Einstellung** | **Wert** | **Details**
-   |---|---|---|
-   |**Upgrade auf WAF-Ebene**| Aktiviert | Mit dieser Option wird die Ebene des Anwendungsgateways auf die WAF-Ebene festgelegt.|
-   |**Firewallstatus**| Aktiviert | Mit dieser Einstellung aktivieren Sie die Firewall auf der WAF.|
-   |**Firewallmodus** | Prävention | Diese Einstellung gibt an, wie WAF schädlichen Datenverkehr behandelt. Im **Erkennungsmodus** werden die Ereignisse nur protokolliert. Im **Schutzmodus** werden die Ereignisse protokolliert, und der schädliche Datenverkehr wird beendet.|
-   |**Regelsatz**|3.0|Diese Einstellung bestimmt den [Kernregelsatz](application-gateway-web-application-firewall-overview.md#core-rule-sets), der für den Schutz der Mitglieder des Back-End-Pools verwendet wird.|
-   |**Deaktivierte Regeln konfigurieren**|Variabel|Zur Verhinderung möglicher falsch positiver Ergebnisse können Sie mit dieser Einstellung bestimmte [Regeln und Regelgruppen](application-gateway-crs-rulegroups-rules.md) deaktivieren.|
+### <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes
 
-    >[!NOTE]
-    > Wenn Sie ein vorhandenes Anwendungsgateway auf die WAF-SKU aktualisieren, wird die SKU-Größe in **Mittel** geändert. Wenn die Konfiguration abgeschlossen ist, können Sie diese Einstellung neu konfigurieren.
+1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myVNet**.
+2. Klicken Sie auf **Subnetze** und dann auf **Subnetz**.
 
-    ![Grundlegende Einstellungen][2-1]
+    ![Erstellen eines Subnetzes](./media/application-gateway-web-application-firewall-portal/application-gateway-subnet.png)
 
-    > [!NOTE]
-    > Um WAF-Protokolle anzuzeigen, aktivieren Sie die Diagnose, und wählen Sie **ApplicationGatewayFirewallLog** aus. Wählen Sie nur zu Testzwecken als Instanzenanzahl **1** aus. Eine Instanzenanzahl unter **2** ist nicht empfehlenswert, da dies nicht durch die SLA abgedeckt wird. Kleine Gateways sind nicht verfügbar, wenn Sie WAF verwenden.
+3. Geben Sie als Name des Subnetzes *myBackendSubnet* ein, und klicken Sie auf **OK**.
 
-## <a name="create-an-application-gateway-with-a-web-application-firewall"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall
+## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
-Dieses Szenario umfasst Folgendes:
+In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Server für das Anwendungsgateway verwendet werden. Sie installieren außerdem IIS auf den virtuellen Computern, um zu überprüfen, ob das Anwendungsgateway erfolgreich erstellt wurde.
 
-* Erstellen Sie ein mittleres WAF-Anwendungsgateway mit zwei Instanzen.
-* Sie erstellen ein virtuelles Netzwerk mit dem Namen AdatumAppGatewayVNET und dem reservierten CIDR-Block 10.0.0.0/16.
-* Sie erstellen ein Subnetz mit dem Namen Appgatewaysubnet, für das 10.0.0.0/28 als CIDR-Block verwendet wird.
-* Sie konfigurieren ein Zertifikat für die SSL-Auslagerung.
+### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an. Falls Sie noch nicht über ein Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free) registrieren.
+1. Klicken Sie auf **New**.
+2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste „Ausgewählte“ die Option **Windows Server 2016 Datacenter**.
+3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
-2. Wählen Sie im Portalbereich **Favoriten** die Option **Neu** aus.
+    - *myVM*: Name des virtuellen Computers
+    - *azureuser*: Name des Administratorbenutzers
+    - *Azure123456!* als Kennwort
+    - Wählen Sie **Vorhandene verwenden** und dann *myResourceGroupAG* aus.
 
-3. Wählen Sie im auf dem Blatt **Neu** die Option **Netzwerk** aus. Wählen Sie auf dem Blatt **Netzwerk** die Option **Application Gateway** aus, wie in der folgenden Abbildung gezeigt:
+4. Klicken Sie auf **OK**.
+5. Wählen Sie als Größe des virtuellen Computers **DS1_V2** aus, und klicken Sie auf **Auswählen**.
+6. Stellen Sie sicher, dass als virtuelles Netzwerk **myVNet** und als Subnetz **myBackendSubnet** ausgewählt ist. 
+7. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
+8. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
 
-    ![Erstellung eines Anwendungsgateways][1]
+### <a name="install-iis"></a>Installieren von IIS
 
-4. Geben Sie auf dem daraufhin angezeigten Blatt **Grundlagen** die folgenden Werte ein, und wählen Sie anschließend **OK** aus:
+1. Öffnen Sie die interaktive Shell, und vergewissern Sie sich, dass **PowerShell** festgelegt ist.
 
-   | **Einstellung** | **Wert** | **Details**
-   |---|---|---|
-   |**Name**|AdatumAppGateway|Der Name des Anwendungsgateways.|
-   |**Tier**|WAF|Verfügbare Werte sind „Standard“ und „WAF“. Weitere Informationen über WAF finden Sie unter [Web Application Firewall](application-gateway-web-application-firewall-overview.md).|
-   |**SKU-Größe**|Mittel|Standardoptionen für die Ebene sind **Klein**, **Mittel** und **Groß**. Optionen für die WAF-Ebene sind nur **Mittel** und **Groß**.|
-   |**Anzahl der Instanzen**|2|Die Anzahl der Instanzen des Anwendungsgateways für Hochverfügbarkeit. Verwenden Sie nur zu Testzwecken als Instanzenanzahl „1“.|
-   |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, das für die Erstellung des Anwendungsgateways verwendet werden soll.|
-   |**Ressourcengruppe**|**Neu erstellen**: AdatumAppGatewayRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#resource-groups).|
-   |**Location**|USA (Westen)||
+    ![Installieren der benutzerdefinierten Erweiterung](./media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
 
-   ![Konfiguration von grundlegenden Einstellungen][2-2]
+2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
 
-5. Wählen Sie auf dem Blatt **Einstellungen**, das unter **Virtuelles Netzwerk** angezeigt wird, **Virtuelles Netzwerk auswählen** aus. Wählen Sie auf dem Blatt **Virtuelles Netzwerk auswählen** die Option **Neu erstellen** aus.
+    ```azurepowershell-interactive
+    Set-AzureRmVMExtension `
+      -ResourceGroupName myResourceGroupAG `
+      -ExtensionName IIS `
+      -VMName myVM `
+      -Publisher Microsoft.Compute `
+      -ExtensionType CustomScriptExtension `
+      -TypeHandlerVersion 1.4 `
+      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+      -Location EastUS
+    ```
 
-   ![Auswahl des virtuellen Netzwerks][2]
+3. Erstellen Sie einen zweiten virtuellen Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie *myVM2* als Name und für „VMName“ in „Set-AzureRmVMExtension“ ein.
 
-6. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die folgenden Werte ein, und wählen Sie anschließend **OK** aus. Dadurch wird das Feld **Subnetz** auf dem Blatt **Einstellungen** mit dem ausgewählten Subnetz ausgefüllt.
+### <a name="add-backend-servers"></a>Hinzufügen von Back-End-Servern
 
-   |**Einstellung** | **Wert** | **Details** |
-   |---|---|---|
-   |**Name**|AdatumAppGatewayVNET|Der Name des Anwendungsgateways.|
-   |**Adressraum**|10.0.0.0/16| Dieser Wert ist der Adressraum für das virtuelle Netzwerk.|
-   |**Subnetzname**|AppGatewaySubnet|Der Name des Subnetzes für das Anwendungsgateway.|
-   |**Subnetzadressbereich**|10.0.0.0/28 | Dieses Subnetz ermöglicht weitere Subnetze im virtuellen Netzwerk für Mitglieder des Back-End-Pools.|
+1. Klicken Sie auf **Alle Ressourcen** und dann auf **myAppGateway**.
+2. Klicken Sie auf **Back-End-Pools**. Ein Standardpool mit dem Anwendungsgateway wurde automatisch erstellt. Klicken Sie auf **appGateayBackendPool**.
+3. Klicken Sie auf **Ziel hinzufügen**, um alle erstellten virtuellen Computer dem Back-End-Pool hinzuzufügen.
 
-7. Wählen Sie auf dem Blatt **Einstellungen** unter **Front-End-IP-Konfiguration** für **IP-Adresstyp** die Option **Öffentlich** aus.
+    ![Hinzufügen von Back-End-Servern](./media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)
 
-8. Wählen Sie auf dem Blatt **Einstellungen** unter **Öffentliche IP-Adresse** die Option **Öffentliche IP-Adresse auswählen** aus. Wählen Sie auf dem Blatt **Öffentliche IP-Adresse auswählen** die Option **Neu erstellen** aus.
+4. Klicken Sie auf **Speichern**.
 
-   ![Auswahl der öffentlichen IP-Adresse][3]
+## <a name="create-a-storage-account-and-configure-diagnostics"></a>Erstellen eines Speicherkontos und Konfigurieren der Diagnose
 
-9. Akzeptieren Sie auf dem Blatt **Öffentliche IP-Adresse erstellen** den Standardwert, und wählen Sie **OK** aus. Das Feld **Öffentliche IP-Adresse** wird mit der öffentlichen IP-Adresse ausgefüllt, die Sie ausgewählt haben.
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-10. Wählen Sie auf dem Blatt **Einstellungen** unter **Listenerkonfiguration** die Option **HTTP** (unter **Protokoll**) aus. Für die Verwendung von **HTTPS** ist ein Zertifikat erforderlich. Der private Schlüssel für das Zertifikat ist erforderlich. Geben Sie einen PFX-Export des Zertifikats an, und geben Sie das Kennwort für die Datei ein.
+In diesem Tutorial verwendet das Anwendungsgateway ein Speicherkonto, um Daten zum Zweck der Erkennung und Prävention zu speichern. Sie können auch Log Analytics oder Event Hub verwenden, um Daten aufzuzeichnen.
 
-11. Konfigurieren Sie die Einstellungen für **WAF**.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Neu**.
+2. Wählen Sie die Option **Speicher** und anschließend **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
+3. Geben Sie den Namen des Speicherkontos ein, und wählen Sie für die Ressourcengruppe **Vorhandene verwenden** und anschließend **myResourceGroupAG** aus. In diesem Beispiel lautet der Name des Speicherkontos *myagstore1*. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **Erstellen**.
 
-   |**Einstellung** | **Wert** | **Details** |
-   |---|---|---|
-   |**Firewallstatus**| Aktiviert| Diese Einstellung aktiviert oder deaktiviert WAF.|
-   |**Firewallmodus** | Prävention| Diese Einstellung bestimmt die Aktionen, die WAF bei schädlichem Datenverkehr durchführt. Im **Erkennungsmodus** wird Datenverkehr nur protokolliert. Im **Schutzmodus** wird Datenverkehr protokolliert und mit der Meldung 403 (nicht autorisiert) beendet.|
+## <a name="configure-diagnostics"></a>Konfigurieren der Diagnose
 
+Konfigurieren Sie die Diagnose so, dass Daten in den Protokollen „ApplicationGatewayAccessLog“, „ApplicationGatewayPerformanceLog“ und „ApplicationGatewayFirewallLog“ aufgezeichnet werden.
 
-12. Überprüfen Sie die Seite **Zusammenfassung**, und wählen Sie **OK** aus. Das Anwendungsgateway wird in der Warteschlange platziert und erstellt.
+1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann auf *myAppGateway*.
+2. Klicken Sie unter „Überwachen“ auf **Diagnoseprotokolle**.
+3. Klicken Sie auf **Diagnoseeinstellung hinzufügen**.
+4. Geben Sie als Name für die Diagnoseeinstellungen *myDiagnosticsSettings* ein.
+5. Aktivieren Sie **In einem Speicherkonto archivieren**, und klicken Sie dann auf **Konfigurieren**, um das zuvor erstellte Speicherkonto *myagstore1* auszuwählen.
+6. Wählen Sie die Anwendungsgatewayprotokolle aus, die erfasst und aufbewahrt werden sollen.
+7. Klicken Sie auf **Speichern**.
 
-13. Nachdem das Anwendungsgateway erstellt wurde, navigieren Sie im Portal zu diesem Anwendungsgateway, um die Konfiguration fortzusetzen.
+    ![Konfigurieren der Diagnose](./media/application-gateway-web-application-firewall-portal/application-gateway-diagnostics.png)
 
-    ![Ressourcenansicht des Anwendungsgateways][10]
+## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Mit diesen Schritten wird ein einfaches Anwendungsgateway mit Standardeinstellungen für Listener, Back-End-Pool, Back-End-HTTP-Einstellungen und Regeln erstellt. Nach der erfolgreichen Bereitstellung können Sie diese Einstellungen an Ihre Bereitstellung anpassen.
+1. Suchen Sie auf dem Übersichtsbildschirm die öffentliche IP-Adresse für das Anwendungsgateway. Klicken Sie auf **Alle Ressourcen** und dann auf **myAGPublicIPAddress**.
 
-> [!NOTE]
-> Anwendungsgateways, die mit der WAF-Basiskonfiguration erstellt wurden, werden zum Schutz mit CRS 3.0 konfiguriert.
+    ![Notieren der öffentlichen IP-Adresse des Anwendungsgateways](./media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png)
+
+2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein.
+
+    ![Testen des Anwendungsgateways](./media/application-gateway-web-application-firewall-portal/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um einen benutzerdefinierten Domänenalias für die [öffentliche IP-Adresse](../dns/dns-custom-domain.md#public-ip-address) zu konfigurieren, können Sie Azure DNS oder einen anderen DNS-Anbieter verwenden.
+In diesem Artikel haben Sie Folgendes gelernt:
 
-Informationen zum Konfigurieren der Diagnoseprotokollierung zum Protokollieren von Ereignissen, die mit WAF erkannt oder verhindert werden, finden Sie unter [Application Gateway-Diagnose](application-gateway-diagnostics.md).
+> [!div class="checklist"]
+> * Erstellen eines Anwendungsgateways mit aktivierter WAF
+> * Erstellen der virtuellen Computer, die als Back-End-Server verwendet werden
+> * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
 
-Informationen zum Erstellen benutzerdefinierter Integritätstests finden Sie unter [Erstellen eines benutzerdefinierten Integritätstests](application-gateway-create-probe-portal.md).
-
-Informationen zum Konfigurieren der SSL-Auslagerung und zum Entfernen kostspieliger SSL-Abonnements von Ihren Webservern finden Sie unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-portal.md).
-
-<!--Image references-->
-[1]: ./media/application-gateway-web-application-firewall-portal/figure1.png
-[2]: ./media/application-gateway-web-application-firewall-portal/figure2.png
-[2-1]: ./media/application-gateway-web-application-firewall-portal/figure2-1.png
-[2-2]: ./media/application-gateway-web-application-firewall-portal/figure2-2.png
-[3]: ./media/application-gateway-web-application-firewall-portal/figure3.png
-[10]: ./media/application-gateway-web-application-firewall-portal/figure10.png
-[scenario]: ./media/application-gateway-web-application-firewall-portal/scenario.png
+Weitere Informationen zu Anwendungsgateways und den zugehörigen Ressourcen finden Sie in den Artikeln mit empfohlenen Vorgehensweisen.

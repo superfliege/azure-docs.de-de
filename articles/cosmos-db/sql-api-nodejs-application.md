@@ -15,11 +15,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: mimig
-ms.openlocfilehash: 043de0e8a934a2fd92522eeb70261203afac180e
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 2c64c1dfa558576b47f47c718a80d46ad6687e6e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="_Toc395783175"></a>Erstellen einer Node.js-Webanwendung mithilfe von Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgende
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Node.js][Node.js] Version v0.10.29 oder höher.
+* [Node.js][Node.js] Version v0.10.29 oder höher. Es wird empfohlen, Node.js 6.10 oder höher zu verwenden.
 * [Express Generator](http://www.expressjs.com/starter/generator.html) (Installation über `npm install express-generator -g`)
 * [Git][Git].
 
@@ -80,7 +80,7 @@ Nun erfahren Sie, wie Sie ein einfaches "Hello World"-Node.js-Projekt mithilfe d
    
     ![Kennenlernen von Node.js - Screenshot der "Hello World"-Anwendung in einem Browserfenster](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
-    Drücken Sie zum Beenden der Anwendung im Terminalfenster STRG+C, und klicken Sie dann auf **J**, um den Batchauftrag zu beenden.
+    Drücken Sie zum Beenden der Anwendung im Terminalfenster STRG+C, und klicken Sie dann auf **J** (nur bei Windows-Computern), um den Batchauftrag zu beenden.
 
 ## <a name="_Toc395783179"></a>Schritt 3: Installieren zusätzlicher Module
 Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstellten Dateien. Diese Datei enthält eine Liste zusätzlicher Module, die für Ihre Node.js-Anwendung erforderlich sind. Wenn Sie später diese Anwendung in Azure Websites bereitstellen, wird anhand dieser Datei bestimmt, welche Module in Azure installiert werden müssen, um Ihre Anwendung zu unterstützen. Für dieses Lernprogramm müssen zwei weitere Pakete installiert werden.
@@ -91,29 +91,6 @@ Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstell
 2. Installieren Sie das **documentdb** -Modul über npm. Dieses Modul ist für die Azure Cosmos DB-Funktionen zuständig.
    
         npm install documentdb --save
-3. Bei einer schnellen Überprüfung der Datei **package.json** der Anwendung können Sie die zusätzlichen Module anzeigen. Diese Datei weist Azure beim Ausführen der Anwendung an, welche Pakete heruntergeladen und installiert werden sollen. Sie sollte dem unten stehenden Beispiel ähneln.
-   
-        {
-          "name": "todo",
-          "version": "0.0.0",
-          "private": true,
-          "scripts": {
-            "start": "node ./bin/www"
-          },
-          "dependencies": {
-            "async": "^2.1.4",
-            "body-parser": "~1.15.2",
-            "cookie-parser": "~1.4.3",
-            "debug": "~2.2.0",
-            "documentdb": "^1.10.0",
-            "express": "~4.14.0",
-            "jade": "~1.11.0",
-            "morgan": "~1.7.0",
-            "serve-favicon": "~2.3.0"
-          }
-        }
-   
-    Dadurch wird Node (und später Azure) darüber informiert, dass Ihre Anwendung von diesen zusätzlichen Modulen abhängig ist.
 
 ## <a name="_Toc395783180"></a>Schritt 4: Verwenden des Azure Cosmos DB-Diensts in einer Knotenanwendung
 Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt möchten wir zur eigentlichen Aufgabe übergehen, also zum Erstellen von Code mithilfe von Azure Cosmos DB.
@@ -384,13 +361,13 @@ Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt
    
         var config = {}
    
-        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
-        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
+        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys page on http://portal.azure.com]";
+        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys page on http://portal.azure.com]";
         config.databaseId = "ToDoList";
         config.collectionId = "Items";
    
         module.exports = config;
-3. Aktualisieren Sie in der Datei **config.js** die Werte für „HOST“ und „AUTH_KEY“ mit den Werten auf dem Blatt „Schlüssel“ Ihres Azure Cosmos DB-Kontos im [Microsoft Azure-Portal](https://portal.azure.com).
+3. Aktualisieren Sie in der Datei **config.js** die Werte für „HOST“ und „AUTH_KEY“ mit den Werten auf der Seite „Schlüssel“ Ihres Azure Cosmos DB-Kontos im [Microsoft Azure-Portal](https://portal.azure.com).
 4. Speichern und schließen Sie die Datei **config.js** .
 
 ### <a name="modify-appjs"></a>Ändern von app.js
@@ -424,7 +401,7 @@ Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt
 6. Speichern und schließen Sie abschließend die Datei **app.js**. Wir sind fast fertig.
 
 ## <a name="_Toc395783181"></a>Schritt 5: Erstellen einer Benutzeroberfläche
-Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den Benutzern die eigentliche Interaktion mit unserer Anwendung zu ermöglichen. Die von uns erstellte Express-Anwendung verwendet **Jade** als Ansichtsmodul. Weitere Informationen zu Jade finden Sie unter [http://jade-lang.com/](http://jade-lang.com/).
+Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den Benutzern die eigentliche Interaktion mit unserer Anwendung zu ermöglichen. Die von uns erstellte Express-Anwendung verwendet **Jade** als Anzeige-Engine. Weitere Informationen zu Jade finden Sie unter [http://jade-lang.com/](http://jade-lang.com/).
 
 1. Die Datei **layout.jade** im Verzeichnis **views** dient als globale Vorlage für andere **.jade**-Dateien. In diesem Schritt werden Sie sie modifizieren, um [Twitter Bootstrap](https://github.com/twbs/bootstrap)zu verwenden, ein Toolkit zum mühelosen Gestalten ansprechender Websites. 
 2. Öffnen Sie die Datei **layout.jade**, die sich im Ordner **views** befindet, und ersetzen Sie die Inhalte durch Folgendes:
@@ -445,7 +422,7 @@ Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den B
         script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
     ```
 
-    Dadurch wird dem **Jade**-Modul mitgeteilt, dass für unsere Anwendung einige HTML-Elemente dargestellt werden müssen. Das Modul erstellt dann einen **Block** mit der Bezeichnung **content**, in dem wir das Layout für unsere Inhaltsseiten bereitstellen können.
+    Dadurch wird der **Jade**-Engine mitgeteilt, dass für unsere Anwendung einige HTML-Elemente dargestellt werden müssen. Die Engine erstellt dann einen **Block** mit der Bezeichnung **content**, in dem wir das Layout für unsere Inhaltsseiten bereitstellen können.
 
     Speichern und schließen Sie die Datei **layout.jade** .
 
@@ -513,7 +490,7 @@ Dies sollte jetzt alles sein, damit unsere Anwendung funktioniert.
 3. Die Seite sollte nun das neu erstellte Element in der Aufgabenliste anzeigen.
    
     ![Screenshot der Anwendung mit einem neuen Element in der Aufgabenliste](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
-4. Zum Abschließen einer Aufgabe aktivieren Sie einfach das Kontrollkästchen in der entsprechenden Spalte, und klicken Sie dann auf **Aufgaben aktualisieren**. Dadurch wird das bereits erstellte Dokument aktualisiert.
+4. Zum Abschließen einer Aufgabe aktivieren Sie einfach das Kontrollkästchen in der entsprechenden Spalte, und klicken Sie dann auf **Aufgaben aktualisieren**. Dadurch wird das bereits erstellte Dokument aktualisiert und aus der Ansicht entfernt.
 
 5. Drücken Sie zum Beenden der Anwendung im Terminalfenster STRG+C, und klicken Sie dann auf **J**, um den Batchauftrag zu beenden.
 

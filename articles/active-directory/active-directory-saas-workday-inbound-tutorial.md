@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung in lokalem Active Directory und Azure Active Directory | Microsoft-Dokumentation"
+title: "Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Workday als Quelle von Identitätsdaten für Active Directory und Azure Active Directory verwendet wird."
 services: active-directory
 author: asmalser-msft
@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2017
+ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: f267a59fadb7f402ac81f43b5465b6ac1f28943e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3a84a7ae7572145df8154ec5cbccf9f97e81866b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung in lokalem Active Directory und Azure Active Directory
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
+
 In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Importieren von Personen aus Workday in sowohl Active Directory als auch Azure Active Directory ausführen müssen, wobei einige Attribute optional in Workday zurückgeschrieben werden. 
 
 
@@ -53,7 +54,7 @@ Die vom Azure AD-Benutzerbereitstellungsdienst unterstützten Workday-Workflows 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Gültiges Azure AD Premium P1-Abonnement mit globalem Administratorzugriff
 * Workday-Implementierungsmandant für Test- und Integrationszwecke
@@ -91,7 +92,7 @@ Es gibt eine direkte Beziehung zwischen Bereitstellungsconnectorinstanzen und Ap
 
 Beim Arbeiten mit Workday und Active Directory müssen jedoch mehrere Quell- und Zielsysteme berücksichtigt werden:
 
-| Quellsystem | Zielsystem | Hinweise |
+| Quellsystem | Zielsystem | Notizen |
 | ---------- | ---------- | ---------- |
 | Workday | Active Directory-Gesamtstruktur | Jede Gesamtstruktur wird als eigenes Zielsystem behandelt. |
 | Workday | Azure AD-Mandant | Entsprechend dem Bedarf reiner Cloudbenutzer. |
