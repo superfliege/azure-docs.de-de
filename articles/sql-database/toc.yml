@@ -359,6 +359,8 @@
           items:
             - name: Bereitstellen der Beispiel-App
               href: saas-standaloneapp-get-started-deploy.md
+            - name: Bereitstellen von Mandanten
+              href: saas-standaloneapp-provision-and-catalog.md
         - name: Datenbank pro Mandant
           href: saas-dbpertenant-wingtip-app-overview.md
           items:

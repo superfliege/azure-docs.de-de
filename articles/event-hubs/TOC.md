@@ -3,7 +3,7 @@
 ## [Event Hubs-Funktionen](event-hubs-features.md)
 ## [HÄUFIG GESTELLTE FRAGEN](event-hubs-faq.md)
 
-# Erste Schritte
+# Schnellstarts
 ## [Erstellen eines Event Hubs](event-hubs-create.md)
 ## Senden von Ereignisse
 ### [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md)

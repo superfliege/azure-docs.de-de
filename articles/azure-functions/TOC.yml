@@ -133,6 +133,8 @@
           href: functions-run-local.md
         - name: Visual Studio-Entwicklung
           href: functions-develop-vs.md
+        - name: Fehlerbehandlung
+          href: functions-bindings-error-pages.md
     - name: Bereitstellen
       items:
         - name: Kontinuierliche Bereitstellung

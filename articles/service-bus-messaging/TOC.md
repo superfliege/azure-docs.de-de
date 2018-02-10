@@ -4,7 +4,7 @@
 ## [Service Bus-Architektur](service-bus-architecture.md)
 ## [Häufig gestellte Fragen](service-bus-faq.md)
 
-# Erste Schritte
+# Schnellstarts
 ## [Erstellen eines Namespace](service-bus-create-namespace-portal.md)
 ## Verwenden von Warteschlangen
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)

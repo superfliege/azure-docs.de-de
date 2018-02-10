@@ -99,7 +99,7 @@
               href: app-insights-profiler.md
             - name: Aktivieren des Profilers
               href: enable-profiler-compute.md
-            - name: Diagnostics
+            - name: Diagnose
               href: app-insights-azure-diagnostics.md
             - name: Vorschau
               href: app-insights-previews.md
@@ -192,6 +192,8 @@
               href: app-insights-usage-segmentation.md
             - name: Trichter
               href: usage-funnels.md
+            - name: Auswirkung
+              href: app-insights-usage-impact.md
             - name: Aufbewahrung
               href: app-insights-usage-retention.md
             - name: Benutzerabläufe

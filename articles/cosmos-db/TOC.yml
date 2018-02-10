@@ -340,7 +340,7 @@
           href: logging.md
         - name: Verwalten von Schlüsseln und Konsistenz
           href: manage-account.md
-        - name: Azure-Speicher-Explorer
+        - name: Azure Storage-Explorer
           href: storage-explorer.md
         - name: Sicherheit
           items:
@@ -360,6 +360,7 @@
           href: spark-connector-graph.md
         - name: Streaming mit Kafka und Spark in HDInsight
           href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md
+          maintainContext: true
         - name: Bereitstellen einer Website mit Azure App Service
           href: create-website.md
         - name: Anwendungsprotokollierung mit Logic Apps
