@@ -157,6 +157,7 @@
 #### [Azure-CLI](virtual-network-manage-nsg-arm-cli.md)
 
 #### [Protokolle](virtual-network-nsg-manage-log.md)
+### [Routingtabellen](manage-route-table.md)
 ### Netzwerkschnittstellen (NICs)
 #### [Erstellen, Ändern oder Löschen von NICs](virtual-network-network-interface.md)
 #### [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md)
@@ -177,6 +178,7 @@
 ### [Durchsatztests](virtual-network-bandwidth-testing.md)
 ### [Löschen virtueller Netzwerke nicht möglich](virtual-network-troubleshoot-cannot-delete-vnet.md)
 ### [Konnektivitätsprobleme zwischen virtuellen Computern](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
+### [Konfigurieren von PTR für die SMTP-Bannerüberprüfung](create-ptr-for-smtp-service.md)
 
 # Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)

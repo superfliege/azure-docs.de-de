@@ -41,6 +41,8 @@
           href: monitoring-overview-autoscale.md
         - name: Aktivitätsprotokoll
           href: monitoring-overview-activity-logs.md
+        - name: Aktivitätsprotokollwarnungen (Vorschauversion)
+          href: monitoring-activity-log-alerts-new-experience.md
         - name: Aktionsgruppen
           href: monitoring-action-groups.md
         - name: Diagnoseprotokolle
@@ -84,8 +86,8 @@
           href: insights-alerts-command-line-interface.md
         - name: Konfigurieren von Warnungen mit Azure PowerShell
           href: insights-alerts-powershell.md
-        - name: Aufrufen eines Webhooks durch Metrikwarnung
-          href: insights-webhooks-alerts.md
+        - name: Webhookaktionen für Protokollwarnungen
+          href: monitor-alerts-unified-log-webhook.md
         - name: Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
           href: monitoring-enable-alerts-using-template.md
     - name: Verwenden der automatischen Skalierung

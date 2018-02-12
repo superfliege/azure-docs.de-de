@@ -17,8 +17,8 @@
 ### [Technische Sicherheitsfunktionen](../azure-security-technical-capabilities.md)
 ### [Governance in Azure](../governance-in-azure.md)
 ### [Datenverschlüsselung ruhender Daten](../azure-security-encryption-atrest.md)
-### Architekturblaupausen
-#### Konformität – PCI-DSS
+### Azure-Blaupausen zu Sicherheit und Compliance
+#### PCI-DSS
 ##### [Zahlungsabwicklung für PCI-DSS-konforme Umgebungen](payment-processing-blueprint.md)
 ##### [Anforderungsübersicht](pci-dss-requirements-overview.md)
 ##### [Anforderung 1 – Firewalls](pci-dss-requirement-1-firewall.md)
@@ -33,8 +33,8 @@
 ##### [Anforderung 10 – Überwachung](pci-dss-requirement-10-monitoring.md)
 ##### [Anforderung 11 – Testen](pci-dss-requirement-11-testing.md)
 ##### [Anforderung 12 – Richtlinie](pci-dss-requirement-12-policy.md)
-#### Konformität – FedRAMP
-##### [Webanwendungen für FedRAMP](fedramp.md)
+#### FedRAMP
+##### [Automatisierung von Webanwendungen](fedramp.md)
 ##### [Übersicht über Sicherheitskontrollen](fedramp-controls-overview.md)
 ##### [Zugriffssteuerung](fedramp-access-controls.md)
 ##### [Überwachung und Verantwortlichkeit](fedramp-audit-accountability-controls.md)
@@ -53,11 +53,11 @@
 ##### [System- und Kommunikationsschutz](fedramp-system-communications-protection-controls.md)
 ##### [System- und Informationsintegrität](fedramp-system-information-integrity-controls.md)
 ##### [System- und Diensterwerb](fedramp-system-services-acquisition-controls.md)
-#### Konformität – UK-OFFICIAL
-##### [Dreischichtige Webanwendungen für UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
+#### UK-OFFICIAL
+##### [Automatisierung von dreischichtigen Webanwendungen](uk-official-three-tier-applications-overview.md)
 ##### [Übersicht](uk-official-three-tier-applications-overview.md)
 ##### [Übersicht über Prinzipien](uk-official-three-tier-applications-principles-overview.md)
-#### Konformität – Finanzdienstleistungen
+#### Finanzdienstleistungen
 ##### [Finanzdienstleistungen für regulierte Workloads](financial-services-regulated-workloads.md)
 
 # Erste Schritte
@@ -93,9 +93,8 @@
 ### [Einführung in die Azure-Protokollintegration](../security-azure-log-integration-overview.md)
 #### [Erste Schritte mit der Azure-Protokollintegration](../security-azure-log-integration-get-started.md)
 #### [Integrieren von Azure Active Directory-Überwachungsprotokollen](../security-azure-log-integration-ad.md)
-#### [Integrieren von Security Center-Warnungen](../security-azure-log-integration-security-center.md)
 #### [Integrieren von Protokollen aus Key Vault mithilfe von Event Hubs](../security-azure-log-integration-keyvault-eventhub.md)
-#### [Häufig gestellte Fragen](../security-azure-log-integration-faq.md)
+#### [HÄUFIG GESTELLTE FRAGEN](../security-azure-log-integration-faq.md)
 
 ## Service Fabric
 ### [Bewährte Methoden für Service Fabric](../azure-service-fabric-security-best-practices.md)
@@ -126,13 +125,13 @@
 ## [Microsoft Security Response Center](../azure-security-response-center.md)
 ## [Penetrationstest](../azure-security-pen-testing.md)
 ## [Security Center](../../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
-## [Key Vault](../../key-vault/key-vault-whatis.md)
+## [Schlüsseltresor](../../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../../log-analytics/log-analytics-overview.md)
 ## [Multi-Factor Authentication](../../multi-factor-authentication/multi-factor-authentication.md)
 ## [Azure Active Directory](../../active-directory/active-directory-whatis.md)
 ## [Operations Management Suite](../../operations-management-suite/oms-security-getting-started.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MVP-Programm für die Azure-Sicherheit](../azure-security-mvp.md)
 ## [Cybersecurity-Consulting](../azure-security-cyber-services.md)

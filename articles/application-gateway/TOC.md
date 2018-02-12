@@ -40,11 +40,19 @@
 ## Konfigurieren des Hostens mehrerer Websites
 ### [Azure portal](application-gateway-create-multisite-portal.md)
 ### [Azure PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-## Konfigurieren einer Umleitung
-### [Azure PowerShell](application-gateway-configure-redirect-powershell.md)
+### [Azure-CLI](tutorial-multisite-cli.md)
 ## Konfigurieren der externen Umleitung
-### [Azure PowerShell](tutorial-external-site-redirect-cli.md)
-### [Azure-CLI](tutorial-external-site-redirect-powershell.md)
+### [Azure PowerShell](tutorial-external-site-redirect-powershell.md)
+### [Azure-CLI](tutorial-external-site-redirect-cli.md)
+## Konfigurieren der internen Umleitung
+### [Azure PowerShell](tutorial-internal-site-redirect-powershell.md)
+### [Azure-CLI](tutorial-internal-site-redirect-cli.md)
+## Konfigurieren der HTTP-HTTPS-Umleitung
+### [Azure PowerShell](tutorial-http-redirect-powershell.md)
+### [Azure-CLI](tutorial-http-redirect-cli.md)
+## Konfigurieren der URL-Umleitung
+### [Azure PowerShell](tutorial-url-redirect-powershell.md)
+### [Azure-CLI](tutorial-url-redirect-cli.md)
 ## Konfigurieren von Web-Apps als Back-End-Poolmitglieder
 ### [Azure PowerShell](application-gateway-web-app-powershell.md)
 ## Konfigurieren von Integritätstests

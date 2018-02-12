@@ -171,6 +171,7 @@
 #### [Exemplarische Vorgehensweise für Face Redactor](media-services-redactor-walkthrough.md)
 ### [Verarbeiten mit Videominiaturansichten](media-services-video-summarization.md)
 ### [Verarbeiten mit OCR](media-services-video-optical-character-recognition.md)
+### [Verarbeiten mit Content Moderator](media-services-content-moderation.md)
 
 ## [Telemetrie konfigurieren](media-services-telemetry-overview.md)
 ###[.NET](media-services-dotnet-telemetry.md)

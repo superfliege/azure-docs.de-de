@@ -5,11 +5,11 @@ title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
 featureFlags:
 - clicktale
-ms.openlocfilehash: 88c99f7aa0af914210e760d498bb4fb514798207
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2f0316b17dc1bedab724b3174f8f88d9e92f74f8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -4207,7 +4207,7 @@ SQL-Tools </h3>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://storageexplorer.com">Speicher-Explorer</a>
+                                                    <a href="http://storageexplorer.com">Storage-Explorer</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">Erste Schritte</a>
@@ -4263,12 +4263,12 @@ SQL-Tools </h3>
                             <li>
                                 <div class="container intro">
                                     <p>
-Eine Gruppe empfohlener Architekturen für Cloudanwendungen. Jede Architektur enthält empfohlene Vorgehensweisen, Anweisungen und eine ausführbare Komponente, die die Empfehlungen verkörpert.
+Azure Architecture Center enthält Informationen zum Erstellen von End-to-End-Lösungen in Microsoft Azure. Hier finden Sie Referenzarchitekturen, Best Practices, Entwurfsmuster, Anleitungen zu Szenarien und Referenzimplementierungen.
                                     </p>
                                 </div>
                             </li>
                             <li>
-                                <a href="/azure/architecture/guide/">
+                                <a href="/azure/architecture/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4278,8 +4278,27 @@ Eine Gruppe empfohlener Architekturen für Cloudanwendungen. Jede Architektur en
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
+                                                    <h3>Azure Architecture Center</h3>
+                                                    <p>Anleitungen zum Erstellen von End-to-End-Lösungen in Microsoft Azure.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/architecture/guide/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/index/azure_best-practices.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
                                                     <h3>Azure-Anwendungsarchitekturleitfaden</h3>
-                                                    <p>Grundlegendes Wissen, um in der Cloud erfolgreich zu sein. Wenn die Cloud oder Azure für Sie neu ist, beginnen Sie hier.</p>
+                                                    <p>Dieser Leitfaden stellt eine strukturierte Vorgehensweise zum Entwerfen von Anwendungen in Azure vor, die skalierbar, resilient und hochverfügbar sind. Er basiert auf bewährten Methoden, die wir im Rahmen von Kundeninteraktionen erarbeitet haben.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4318,27 +4337,6 @@ Eine Gruppe empfohlener Architekturen für Cloudanwendungen. Jede Architektur en
                                                 <div class="cardText">
                                                     <h3>Cloudentwurfsmuster</h3>
                                                     <p>Entwurfsmuster für die Cloud. Jedes Muster beschreibt ein Problem, einen Ansatz zu dessen Lösung und ein auf Azure basierendes Beispiel.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/architecture/best-practices/api-design">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/index/azure_best-practices.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Bewährte Methoden für Cloudanwendungen</h3>
-                                                    <p>
-Eine Gruppe bewährter Methoden für Cloudanwendungen, in denen Aspekte wie automatische Skalierung, Caching, Datenpartitionierung, API-Entwurf und Überwachung behandelt werden.
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

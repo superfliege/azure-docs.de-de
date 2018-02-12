@@ -19,6 +19,7 @@
 ### [Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native)
 ## Web-Apps
 ### [Übersicht](active-directory-b2c-reference-oidc.md)
+### [Authentifizieren von Benutzern in ASP.NET](active-directory-b2c-tutorials-web-app.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
 ### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
 ### [Node.js](active-directory-b2c-devquickstarts-web-node.md)
@@ -27,6 +28,7 @@
 ### [JavaScript mit MSAL](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
 ### [JavaScript mit Hello](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 ## Web-APIs
+### [Schützen einer ASP.NET-API](active-directory-b2c-tutorials-web-api.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 ### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
 ### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
@@ -40,6 +42,7 @@
 ### [Amazon](active-directory-b2c-setup-amzn-app.md)
 ### [LinkedIn](active-directory-b2c-setup-li-app.md)
 ### [Twitter](active-directory-b2c-setup-twitter-app.md)
+### [GitHub](active-directory-b2c-setup-github-app.md)
 ### [Weibo](active-directory-b2c-setup-weibo-app.md)
 ### [QQ](active-directory-b2c-setup-qq-app.md)
 ### [WeChat](active-directory-b2c-setup-wechat-app.md)
@@ -87,13 +90,13 @@
 #### [Aktivieren des Angemeldetbleibens](active-directory-b2c-reference-kmsi-custom.md)
 ### Problembehandlung
 #### [Erfassen von Protokollen von Application Insights](active-directory-b2c-troubleshoot-custom.md)
-## Referenz
-### [Versionshinweise](active-directory-b2c-developer-notes-custom.md)
+## Verweis
+### [Anmerkungen zu dieser Version](active-directory-b2c-developer-notes-custom.md)
 ### [SSO-Sitzungsanbieter](active-directory-b2c-reference-sso-custom.md)
 ### [Sprachanpassung](active-directory-b2c-language-customization-custom.md)
 ### [Vertrauensframeworkdefinition](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## Glossar
 ### [Anwendungsarten](active-directory-b2c-apps.md)
@@ -109,13 +112,13 @@
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
-# Ressourcen
+# angeben
 ## [Azure AD B2C-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Häufig gestellte Fragen](active-directory-b2c-faqs.md)
 ## [Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory-b2c)
-## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
+## [Stapelüberlauf](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [Unterstützung](active-directory-b2c-support.md)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)

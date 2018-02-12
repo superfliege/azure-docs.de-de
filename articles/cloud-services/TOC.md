@@ -64,13 +64,13 @@
 
 ## Überwachen
 ### [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)
+### [Verwenden von Leistungsindikatoren](diagnostics-performance-counters.md)
 ### [Testen der Leistung](../vs-azure-tools-performance-profiling-cloud-services.md)
 #### [Testen mithilfe der Visual Studio-Profilerstellung](cloud-services-performance-testing-visual-studio-profiler.md)
 ### Aktivieren der Diagnosefunktion
 #### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
-### [Verwenden von Leistungsindikatoren in Azure-Diagnose](cloud-services-dotnet-diagnostics-performance-counters.md)
 ### [Speichern und Anzeigen von Diagnosedaten in Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 ### [Verfolgen eines Clouddiensts mit der Diagnose](cloud-services-dotnet-diagnostics-trace-flow.md)
 ### [Senden von Diagnosedaten an Application Insights](cloud-services-dotnet-diagnostics-applicationinsights.md)

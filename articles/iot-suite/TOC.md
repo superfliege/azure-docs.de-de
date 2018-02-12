@@ -10,7 +10,7 @@
 
 ## Remoteüberwachung (vorherige Version)
 ### [Was sind die vorkonfigurierten Lösungen?](iot-suite-v1-what-are-preconfigured-solutions.md)
-### [Häufig gestellte Fragen](iot-suite-v1-faq.md)
+### [HÄUFIG GESTELLTE FRAGEN](iot-suite-v1-faq.md)
 
 ### Erste Schritte
 #### [Erste Schritte mit den vorkonfigurierten Lösungen](iot-suite-v1-getstarted-preconfigured-solutions.md)
@@ -40,7 +40,7 @@
 
 
 
-## Vorhersagbarer Wartungsbedarf
+## Predictive Maintenance
 ### [Übersicht über die Predictive Maintenance-Lösung](iot-suite-predictive-overview.md)
 ### [Exemplarische Vorgehensweise zur Predictive Maintenance-Lösung](iot-suite-predictive-walkthrough.md)
 
@@ -58,7 +58,9 @@
 ### [Erkennen von Problemen mithilfe von Regeln](iot-suite-remote-monitoring-automate.md)
 ### [Verwalten von Geräten](iot-suite-remote-monitoring-manage.md)
 ### [Beheben von Geräteproblemen](iot-suite-remote-monitoring-maintain.md)
-### [Verwenden simulierter Geräte](iot-suite-remote-monitoring-test.md)
+### [Grundlegendes zum Gerätemodellschema](iot-suite-remote-monitoring-device-schema.md)
+### [Grundlegendes zum Gerätemodellverhalten](iot-suite-remote-monitoring-device-behavior.md)
+### [Erstellen eines neuen simulierten Geräts](iot-suite-remote-monitoring-test.md)
 ### [Anpassen der Lösung](iot-suite-remote-monitoring-customize.md)
 ### [Bereitstellen mit der Befehlszeilenschnittstelle](iot-suite-remote-monitoring-deploy-cli.md)
 ### Herstellen einer Verbindung mit einem physischen Gerät
@@ -78,7 +80,7 @@
 ### [Konfigurieren einer verbundenen Factory](iot-suite-connected-factory-configure.md)
 ## [Berechtigungen für „azureiotsuite.com“](iot-suite-permissions.md)
 
-# Referenz
+# Verweis
 ## [Referenzhandbuch für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [Handbuch zur Problembehandlung für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
 ## [Sicherheitsarchitektur](iot-security-architecture.md)
@@ -93,7 +95,7 @@
 ## [Microsoft IoT Central](/azure/index#pivot=services&panel=iot)
 ## [Machine Learning](/azure/machine-learning/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Häufig gestellte Fragen](iot-suite-faq.md)
 ## [Verbundene Factory – häufig gestellte Fragen](iot-suite-faq-cf.md)

@@ -422,6 +422,8 @@
           href: performance-diagnostics-vm-extension.md
         - name: Verwenden der geschachtelten Virtualisierung
           href: troubleshoot-vm-by-use-nested-virtualization.md
+        - name: Installieren des VM-Agents im Offlinemodus
+          href: install-vm-agent-offline.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

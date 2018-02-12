@@ -33,6 +33,10 @@
       href: activate-subs-accounts.md
     - name: Hinzufügen von erweiterten Metriken für virtuelle Computer
       href: azure-vm-extended-metrics.md
+    - name: Herstellen einer Verbindung mit einem Google-Konto
+      href: connect-google-account.md
+    - name: Herstellen einer Verbindung mit einem AWS-Konto
+      href: connect-aws-account.md
     - name: Verwenden von Cost Management-Berichten
       href: use-reports.md
 - name: angeben
