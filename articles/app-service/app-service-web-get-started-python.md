@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 10/26/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 34e26e9dfdf53536c21023b9519209c474253b25
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6256ffe9f616ec35f97f792545c72dbb25b3efa6
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-a-python-web-app-in-azure"></a>Erstellen einer Python-Web-App in Azure
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/01/2018
 
 ![In Azure ausgeführte Beispiel-App](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. Nachdem die erforderlichen Komponenten installiert wurden, können die Schritte in etwa fünf Minuten durchgeführt werden.
+Die Schritte in diesem Tutorial können unter Mac, Windows oder Linux ausgeführt werden. Nachdem die erforderlichen Komponenten installiert wurden, können die Schritte in etwa fünf Minuten durchgeführt werden.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -88,9 +88,11 @@ Drücken Sie in Ihrem Terminalfenster **STRG+C**, um den Webserver zu beenden.
 
 Wechseln Sie zu Ihrer neu erstellten Web-App. Ersetzen Sie _&lt;App-Name>_ durch einen eindeutigen App-Namen.
 
-```bash
+```
 http://<app name>.azurewebsites.net
 ```
+
+Ihre neue Web-App sollte nun wie folgt aussehen:
 
 ![Leere Web-App-Seite](media/app-service-web-get-started-python/app-service-web-service-created.png)
 
@@ -181,7 +183,7 @@ Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen
 
 Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Neustarten und Löschen durchführen.
 
-![App Service-Blatt im Azure-Portal](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
+![App Service-Seite im Azure-Portal](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
 Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App angezeigt.
 

@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7606a5a1bce6c8ce6974e230698e72cac77e93f7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0013b3b1e95d733191aeafcffcda078a352d034f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js-Web-App in Azure App Service unter Linux
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/01/2018
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-nodejs/hello-world-in-browser.png)
 
-Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden.
+Die Schritte in diesem Tutorial können unter Mac, Windows oder Linux ausgeführt werden.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -91,6 +91,8 @@ Wechseln Sie zu Ihrer neu erstellten Web-App. Ersetzen Sie _&lt;App-Name>_ durch
 ```bash
 http://<app name>.azurewebsites.net
 ```
+
+Ihre neue Web-App sollte nun wie folgt aussehen:
 
 ![Leere Web-App-Seite](media/quickstart-nodejs/app-service-web-service-created.png)
 

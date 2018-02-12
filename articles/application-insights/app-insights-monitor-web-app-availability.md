@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: sdash
-ms.openlocfilehash: c9dd60170e93722cab8e8d5eb5b4202b71bbb8e4
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: b35f37b4599cdf6276bc82013dc2fdf1c7d12834
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 Nachdem Sie die Web-App oder Website an einen beliebigen Server bereitgestellt haben, können Sie Tests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
@@ -113,6 +113,11 @@ Mit einem Verfügbarkeitstestergebnis können Sie folgende Aktionen ausführen:
 * Öffnen Sie das Webtestergebnis in Visual Studio.
 
 *Sieht gut aus, wird jedoch als fehlerhaft gemeldet?* Unter [Häufig gestellte Fragen](#qna) finden Sie Möglichkeiten zum Verringern von Störungen.
+
+
+> [!TIP]
+> Es wird empfohlen, Tests an mindestens zwei Standorten auszuführen, um eine zuverlässige Überwachung sicherzustellen.
+>
 
 ## <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst. Wenn Sie zum Beispiel eine Verkaufswebsite überwachen, können Sie testen, ob das Hinzufügen von Artikeln zum Einkaufswagen ordnungsgemäß funktioniert.

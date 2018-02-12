@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/13/2017
 ms.author: cgronlun
-ms.openlocfilehash: c53c4eba6d46c03bbfc6bb316ae4e505abb7b781
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 369d4444e52083c689441548dcfab70fe49ab346
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-azure-hdinsight-and-the-hadoop-and-spark-technology-stack"></a>Einführung in HDInsight und den Hadoop- und Spark-Technologiestapel
-Dieser Artikel enthält eine Einführung in Azure HDInsight. Azure HDInsight ist ein umfassender, vollständig verwalteter Open-Source-Analysedienst für Unternehmen. Sie können Open-Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm, R und andere verwenden. 
+Dieser Artikel enthält eine Einführung in Azure HDInsight. Azure HDInsight ist ein umfassender, vollständig verwalteter Open Source-Analysedienst für Unternehmen. Sie können Open Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm, R und andere verwenden. 
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
-[Apache Hadoop](http://hadoop.apache.org/) war ursprünglich ein Open-Source-Framework für die verteilte Verarbeitung und Analyse umfangreicher Datasets in Clustern. Der Hadoop-Technologiestapel umfasst verwandte Software und Hilfsprogramme, einschließlich Apache Hive, HBase, Spark, Kafka und viele andere. 
+[Apache Hadoop](http://hadoop.apache.org/) war ursprünglich ein Open Source-Framework für die verteilte Verarbeitung und Analyse umfangreicher Datasets in Clustern. Der Hadoop-Technologiestapel umfasst verwandte Software und Hilfsprogramme, einschließlich Apache Hive, HBase, Spark, Kafka und viele andere. 
 
 Informationen zu verfügbare Komponenten des Hadoop-Technologiestapels für HDInsight finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?][component-versioning]. Weitere Informationen zu Hadoop in HDInsight finden Sie auf der Seite mit [Azure-Features für HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
@@ -89,7 +89,7 @@ Mit HDInsight können Sie Ihre vorhandene lokale Big Data-Infrastruktur auf Azur
 
 ![HDInsight-Architektur: Hybrid](./media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png)
 
-## <a name="overview"></a>Clustertypen in HDInsight
+## <a name="cluster-types-in-hdinsight"></a>Clustertypen in HDInsight
 HDInsight umfasst bestimmte Clustertypen und Clusteranpassungsfunktionen, z.B. die Möglichkeit zum Hinzufügen von Komponenten, Hilfsprogrammen und Sprachen.
 
 ### <a name="spark-kafka-interactive-query-hbase-customized-and-other-cluster-types"></a>Clustertypen Spark, Kafka, Interactive Query, HBase, angepasste Cluster und andere

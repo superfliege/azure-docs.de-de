@@ -1,9 +1,23 @@
-## <a name="deploy-uploaded-zip-file"></a>Bereitstellen der hochgeladenen ZIP-Datei
+---
+title: Includedatei
+description: Includedatei
+services: app-service
+author: cephalin
+ms.service: app-service
+ms.topic: include
+ms.date: 02/02/2018
+ms.author: cephalin
+ms.custom: include file
+ms.openlocfilehash: 917f8cc4a22199351614d101f1300b80052ee9a9
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/03/2018
+---
+## <a name="deploy-zip-file"></a>Bereitstellen der ZIP-Datei
 
-Stellen Sie in Cloud Shell mit dem Befehl [`az webapp deployment source config-zip`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) die hochgeladene ZIP-Datei für Ihre Web-App bereit. Ersetzen Sie *\<app_name>* durch den Namen Ihrer Web-App.
+Navigieren Sie im Browser zu `https://<app_name>.scm.azurewebsites.net/ZipDeploy`.
 
-```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResouceGroup --name <app_name> --src clouddrive/myAppFiles.zip
-```
+Laden Sie die unter [Erstellen einer ZIP-Datei für das Projekt](#create-a-project-zip-file) erstellte ZIP-Datei hoch, indem Sie sie auf der Webseite in den Bereich für den Datei-Explorer ziehen.
 
-Mit diesem Befehl werden die Dateien und Verzeichnisse aus der ZIP-Datei in Ihrem Standardordner der App Service-Anwendung (`\home\site\wwwroot`) bereitgestellt, und die App wird neu gestartet. Falls ein zusätzlicher benutzerdefinierter Buildprozess konfiguriert wurde, wird dieser ebenfalls ausgeführt.
+Wenn die Bereitstellung gerade ausgeführt wird, zeigt ein Symbol in der oberen rechten Ecke den Status in Prozent an. Auf der Seite werden darüber hinaus unterhalb des Explorer-Bereichs ausführliche Meldungen für den Vorgang angezeigt. Ist der Vorgang abgeschlossen, muss die letzte Bereitstellungsmeldung `Deployment successful` lauten.

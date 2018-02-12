@@ -12,23 +12,23 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
+ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: 7b5675dacd1d9effd73f3bc51ea4efc0ea6be029
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 61859e86f38e4666be01f218922ce00c698de960
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="virtual-network-service-endpoints-preview"></a>Dienstendpunkte von virtuellen Netzwerken (Vorschauversion)
+# <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
 
 Mit Dienstendpunkten von virtuellen Netzwerken (VNETs) werden der Bereich privater Adressen Ihres virtuellen Netzwerks und die Identität Ihres VNET über eine direkte Verbindung auf die Azure-Dienste erweitert. Endpunkte ermöglichen es Ihnen, Ihre kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Der Datenverkehr aus Ihrem VNET an den Azure-Dienst verbleibt immer im Backbone-Netzwerk von Microsoft Azure.
 
-Dieses Feature ist für die folgenden Azure-Dienste und -Regionen als Vorschauversion verfügbar:
+Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar:
 
-- **Azure Storage**: Alle Regionen in der öffentlichen Azure-Cloud.
-- **Azure SQL**: Alle Regionen in der öffentlichen Azure-Cloud.
+- **Azure Storage:** allgemein verfügbar. Alle Regionen in der öffentlichen Azure-Cloud und in Azure Government
+- **Azure SQL:** Vorschauversion. Alle Regionen in der öffentlichen Azure-Cloud
 
 Aktuelle Benachrichtigungen zur Vorschauversion finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -66,7 +66,7 @@ Dienstendpunkte bieten folgende Vorteile:
 ### <a name="configuration"></a>Konfiguration
 
 - Dienstendpunkte werden in einem Subnetz eines virtuellen Netzwerks konfiguriert. Für Endpunkte können alle Arten von Computeinstanzen verwendet werden, die in diesem Subnetz ausgeführt werden.
-- Nur ein Dienstendpunkt kann für einen bestimmten Dienst aus einem Subnetz aktiviert werden. Sie können mehrere Dienstendpunkte für alle unterstützten Azure-Dienste (z.B. Azure Storage oder Azure SQL-Datenbank) eines Subnetzes konfigurieren.
+- Sie können mehrere Dienstendpunkte für alle unterstützten Azure-Dienste (z.B. Azure Storage oder Azure SQL-Datenbank) eines Subnetzes konfigurieren.
 - Virtuelle Netzwerke müssen sich in derselben Region wie die Ressource des Azure-Diensts befinden. Für Azure Storage muss sich das primäre Konto bei Verwendung von GRS- und RA-GRS-Konten in derselben Region wie das virtuelle Netzwerk befinden.
 - Das virtuelle Netzwerk, in dem der Endpunkt konfiguriert ist, kann sich unter demselben oder einem anderen Abonnement wie die Ressource des Azure-Diensts befinden. Weitere Informationen zu den erforderlichen Berechtigungen zum Einrichten von Endpunkten und Schützen von Azure-Diensten finden Sie unter [Bereitstellung](#Provisioning).
 - Für unterstützte Dienste können Sie neue oder vorhandene Ressourcen in virtuellen Netzwerken schützen, indem Sie Dienstendpunkte verwenden.
@@ -106,7 +106,7 @@ Dienstendpunkte können in virtuellen Netzwerken einzeln von einem Benutzer konf
 
 Erfahren Sie mehr über [integrierte Rollen](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und das Zuweisen bestimmter Berechtigungen zu [benutzerdefinierten Rollen](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Virtuelle Netzwerke und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Wenn das virtuelle Netzwerk und die Ressourcen von Azure-Diensten in unterschiedlichen Abonnements enthalten sind, müssen sich die Ressourcen im Rahmen der Vorschauversion unter demselben Active Directory-Mandanten befinden. 
+Virtuelle Netzwerke und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Wenn das virtuelle Netzwerk und die Ressourcen von Azure-Diensten in unterschiedlichen Abonnements enthalten sind, müssen sich die Ressourcen unter demselben Active Directory-Mandanten befinden. 
 
 ## <a name="pricing-and-limits"></a>Preise und Einschränkungen
 

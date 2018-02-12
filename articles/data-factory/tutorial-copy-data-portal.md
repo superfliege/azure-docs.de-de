@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 424a5ec49018e969edbf90c374a9da7e1d22395d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8b5211e9c932221c6b6134e7e0627f4d7f964123
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory
 In diesem Tutorial erstellen Sie eine Data Factory über die Azure Data Factory-Benutzeroberfläche (User Interface, UI). Die Pipeline in dieser Data Factory kopiert Daten aus Azure Blob Storage in Azure SQL-Datenbank. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -144,10 +144,7 @@ In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline und erstellen ver
 9. Geben Sie unten im Fenster **Eigenschaften** auf der Registerkarte **Allgemein** im Feld **Name** den Namen **SourceBlobDataset** ein.
 
     ![Datasetname](./media/tutorial-copy-data-portal/dataset-name.png)
-10. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Verbindung**.   
-
-    ![Registerkarte „Verbindung“](./media/tutorial-copy-data-portal/source-dataset-connection-tab.png)
-11. Klicken Sie neben dem Textfeld **Verknüpfter Dienst** auf **+ Neu**. Ein verknüpfter Dienst verbindet einen Datenspeicher oder einen Computedienst mit der Data Factory. In diesem Fall erstellen Sie einen mit Azure Storage verknüpften Dienst, der Ihr Azure Storage-Konto mit dem Datenspeicher verbindet. Der verknüpfte Dienst enthält die Verbindungsinformationen, die der Data Factory-Dienst zum Herstellen einer Verbindung mit dem Blobspeicher zur Laufzeit verwendet. Das Dataset gibt den Container, den Ordner und (optional) die Datei an, die die Quelldaten enthält. 
+10. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Verbindung**. Klicken Sie neben dem Textfeld **Verknüpfter Dienst** auf **+ Neu**. Ein verknüpfter Dienst verbindet einen Datenspeicher oder einen Computedienst mit der Data Factory. In diesem Fall erstellen Sie einen mit Azure Storage verknüpften Dienst, der Ihr Azure Storage-Konto mit dem Datenspeicher verbindet. Der verknüpfte Dienst enthält die Verbindungsinformationen, die der Data Factory-Dienst zum Herstellen einer Verbindung mit dem Blobspeicher zur Laufzeit verwendet. Das Dataset gibt den Container, den Ordner und (optional) die Datei an, die die Quelldaten enthält. 
 
     ![Schaltfläche für neuen verknüpften Dienst](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
 12. Führen Sie im Fenster **Neuer verknüpfter Dienst** die folgenden Schritte aus: 
@@ -283,7 +280,7 @@ Sie können vor dem Veröffentlichen von Artefakten (verknüpfte Dienste, Datase
 2. Stellen Sie sicher, dass die Daten aus der Quelldatei in die Ziel-SQL-Datenbank eingefügt werden. 
 
     ![Überprüfen der SQL-Ausgabe](./media/tutorial-copy-data-portal/verify-sql-output.png)
-3. Klicken Sie im linken Bereich auf **Veröffentlichen**. Mit dieser Aktion werden erstellte Entitäten (verknüpfte Dienste, Datasets und Pipeline) in Azure Data Factory veröffentlicht.
+3. Klicken Sie im linken Bereich auf **Alle veröffentlichen**. Mit dieser Aktion werden erstellte Entitäten (verknüpfte Dienste, Datasets und Pipeline) in Azure Data Factory veröffentlicht.
 
     ![Schaltfläche "Veröffentlichen"](./media/tutorial-copy-data-portal/publish-button.png)
 4. Warten Sie, bis die Meldung **Erfolgreich veröffentlicht** angezeigt wird. Damit Benachrichtigungsmeldungen angezeigt werden, klicken Sie auf der linken Seitenleiste auf die Registerkarte **Benachrichtigungen anzeigen**. Schließen Sie das Benachrichtigungsfenster, indem Sie auf das **X** klicken.
@@ -343,7 +340,7 @@ Falls Sie das VSTS-Coderepository nicht verwenden möchten, können Sie diesen S
 ## <a name="trigger-the-pipeline-manually"></a>Manuelles Auslösen der Pipeline
 In diesem Schritt lösen Sie die im vorherigen Schritt veröffentlichte Pipeline manuell aus. 
 
-1. Klicken Sie auf der Symbolleiste auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
+1. Klicken Sie auf der Symbolleiste auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). Klicken Sie auf der Seite **Pipeline Run** (Pipelineausführung) auf **Fertig stellen**.  
 
     ![Menü „Trigger Now“ (Jetzt auslösen)](./media/tutorial-copy-data-portal/trigger-now-menu.png)
 2. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie sehen eine Pipelineausführung, die von einem manuellen Trigger ausgelöst wird. Sie können über Links in der Spalte „Aktionen“ Aktivitätsdetails anzeigen und die Pipeline erneut ausführen.
@@ -387,10 +384,10 @@ In diesem Zeitplan erstellen Sie einen Planer-Trigger für die Pipeline. Der Tri
 6. Überprüfen Sie auf der Seite **Trigger Run Parameters** (Parameter für die Triggerausführung) die Warnung, und klicken Sie auf **Fertig stellen**. Die Pipeline in diesem Beispiel akzeptiert keine Parameter. 
 
     ![Pipelineparameter](./media/tutorial-copy-data-portal/trigger-pipeline-parameters.png)
-7. Klicken Sie auf **Veröffentlichen**, um die Änderungen im Repository zu veröffentlichen. Der Trigger wird erst aktiviert, wenn die Veröffentlichung erfolgreich war. 
+7. Klicken Sie auf **Synchronisieren**, um Änderungen in Ihrem Branch mit dem Masterbranch zu synchronisieren. **Publish changes after sync** (Änderungen nach der Synchronisierung veröffentlichen) ist standardmäßig aktiviert. Wenn Sie auf **Synchronisieren** klicken, werden daher auch die aktualisierten Entitäten aus dem Masterbranch im Azure Data Factory-Dienst veröffentlicht. Der Trigger wird erst aktiviert, wenn die Veröffentlichung erfolgreich war.
 
-    ![Veröffentlichen des Triggers](./media/tutorial-copy-data-portal/publish-trigger.png) 
-8. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**, um die ausgelösten Pipelineausführungen anzuzeigen. 
+    ![Veröffentlichen des Triggers](./media/tutorial-copy-data-portal/sync-your-changes-with-trigger.png) 
+9. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**, um die ausgelösten Pipelineausführungen anzuzeigen. 
 
     ![Ausgelöste Pipelineausführungen](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)    
 9. Klicken Sie auf „Pipelineausführungen“ und dann auf „Triggerausführungen“, um von der Ansicht mit den Pipelineausführungen zur Ansicht mit den Triggerausführungen zu wechseln.

@@ -15,21 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2017
 ms.author: kumud
-ms.openlocfilehash: d71e2391b6415b2403447479dea4fd0a3b818ed0
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 4613e152336eda7ce7cdc4c44b0c6b5e96abac10
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="get-started-with-azure-dns-private-zones-using-powershell"></a>Erste Schritte mit privaten Azure DNS-Zonen mithilfe von PowerShell
 
 In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie Ihre erste private DNS-Zone und Ihren ersten DNS-Eintrag mithilfe von Azure PowerShell erstellen.
 
-Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Um eine private DNS-Zone in Ihrem virtuellen Netzwerk zu veröffentlichen, geben Sie die Liste mit den virtuellen Netzwerken an, für die das Auflösen von Einträgen in der Zone zulässig ist.  Diese Netzwerke werden als „Auflösungsnetzwerke“ bezeichnet.  Sie können auch einen Satz mit virtuellen Netzwerken angeben, für die Azure DNS Hostnameneinträge verwaltet, wenn eine VM erstellt wird, sich die IP-Adresse ändert oder die VM zerstört wird.  Diese Netzwerke werden als „Registrierungsnetzwerke“ bezeichnet.
-
-Da es sich bei diesem Feature derzeit um eine verwaltete Vorschauversion handelt, wird ein PowerShell-Vorschaumodul bereitgestellt.
-
 [!INCLUDE [private-dns-preview-notice](../../includes/private-dns-preview-notice.md)]
+
+Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Um eine private DNS-Zone in Ihrem virtuellen Netzwerk zu veröffentlichen, geben Sie die Liste mit den virtuellen Netzwerken an, für die das Auflösen von Einträgen in der Zone zulässig ist.  Diese Netzwerke werden als „Auflösungsnetzwerke“ bezeichnet.  Sie können auch einen Satz mit virtuellen Netzwerken angeben, für die Azure DNS Hostnameneinträge verwaltet, wenn eine VM erstellt wird, sich ihre IP-Adresse ändert oder die VM zerstört wird.  Diese Netzwerke werden als „Registrierungsnetzwerke“ bezeichnet.
+
+Da es sich bei diesem Feature derzeit um eine verwaltete Vorschauversion handelt, wird ein PowerShell-Vorschaumodul bereitgestellt, wenn Sie eine E-Mail an [AzureDNS-PrivateZone@microsoft.com](mailto:AzureDNS-PrivateZone@microsoft.com) senden.
+
+## <a name="get-the-preview-powershell-module"></a>Abrufen des PowerShell-Vorschaumoduls
+
+Damit Sie eine private DNS-Zone mit PowerShell erstellen können, senden Sie eine E-Mail an [AzureDNS-PrivateZone@microsoft.com](mailto:AzureDNS-PrivateZone@microsoft.com), um das PowerShell-Vorschaumodul zu erhalten.
 
 ## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
 

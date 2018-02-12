@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 643262ec69fb30981b3ae5c4e26d230743b78405
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4d74d9c39a5ea22abf496666304249418079cc0d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>Erstellen einer PHP-Web-App in App Service unter Linux
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/01/2018
 
 ![In Azure ausgeführte Beispiel-App]](media/quickstart-php/hello-world-in-browser.png)
 
-Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden.
+Die Schritte in diesem Artikel können unter Mac, Windows oder Linux ausgeführt werden.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -84,6 +84,8 @@ Browsen Sie zu der Website, um Ihre neu erstellte Web-App mit integriertem Image
 ```bash
 http://<app_name>.azurewebsites.net
 ```
+
+Ihre neue Web-App sollte nun wie folgt aussehen:
 
 ![Leere Web-App-Seite](media/quickstart-php/app-service-web-service-created.png)
 

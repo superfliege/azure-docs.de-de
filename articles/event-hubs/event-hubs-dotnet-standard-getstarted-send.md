@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2017
+ms.date: 02/01/2018
 ms.author: sethm
-ms.openlocfilehash: 5cf01580b53b551064a46282b9005ade6afe9604
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f59f88d47bfcb3e761f509a3d87c6d068f44e0db
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Erste Schritte beim Senden von Nachrichten an Azure Event Hubs in .NET Standard
 
@@ -34,7 +34,7 @@ Dieses Tutorial zeigt, wie Sie eine .NET Core-Konsolenanwendung schreiben könne
 * Ein Azure-Abonnement.
 * Ein Event Hub-Namespace.
 
-Um Nachrichten an eine Event Hubs-Instanz senden zu können, erstellen wir mithilfe von Visual Studio eine C#-Konsolenanwendung.
+Um Nachrichten an eine Event Hubs-Instanz senden zu können, erstellt dieses Tutorial mithilfe von Visual Studio eine C#-Konsolenanwendung.
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
 
@@ -77,8 +77,8 @@ Führen Sie die folgenden Schritte aus, um Ihrem Projekt das NuGet-Paket der [`M
     private static async Task MainAsync(string[] args)
     {
         // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-        // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-        // we are using the connection string from the namespace.
+        // Typically, the connection string should have the entity path in it, but this simple scenario
+        // uses the connection string from the namespace.
         var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
         {
             EntityPath = EhEntityPath
@@ -121,7 +121,7 @@ Führen Sie die folgenden Schritte aus, um Ihrem Projekt das NuGet-Paket der [`M
     }
     ```
 
-5. Fügen Sie der `Main`-Methode in der `Program`-Klasse den folgenden Code hinzu.
+5. Fügen Sie der `Main`-Methode in der `Program`-Klasse den folgenden Code hinzu:
 
     ```csharp
     MainAsync(args).GetAwaiter().GetResult();
@@ -151,8 +151,8 @@ Führen Sie die folgenden Schritte aus, um Ihrem Projekt das NuGet-Paket der [`M
             private static async Task MainAsync(string[] args)
             {
                 // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-                // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-                // we are using the connection string from the namespace.
+                // Typically, the connection string should have the entity path in it, but this simple scenario
+                // uses the connection string from the namespace.
                 var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
                 {
                     EntityPath = EhEntityPath

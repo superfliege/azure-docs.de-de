@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/21/2017
+ms.date: 02/01/2018
 ms.author: magoedte
-ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d873fe37ba2c4e851df35b9d5afe69b4adbf001c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
-Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Computern, die Daten gesendet haben, und zu den unterschiedlichen Arten von gesendeten Daten.  Verwenden Sie das Dashboard zur **Log Analytics-Nutzung**, um anzuzeigen, welche Datenmenge an den Log Analytics-Dienst gesendet wird. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
+Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Systemen, die die Daten gesendet haben und zu den unterschiedlichen Arten von gesendeten Daten.  Verwenden Sie das Dashboard zur **Log Analytics-Nutzung**, um anzuzeigen, welche Datenmenge an den Log Analytics-Dienst gesendet wird. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
 
 ## <a name="understand-the-usage-dashboard"></a>Grundlagen des Dashboards „Nutzung“
 Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen angezeigt:
@@ -37,24 +37,18 @@ Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen an
     - Knoten vom Typ „Insight & Analytics“
     - Knoten vom Typ „Automation & Control“
     - Knoten vom Typ „Security“
-- Leistung
-    - Zeit zum Erfassen und Indizieren von Daten
 - Liste der Abfragen
 
 ![Dashboard „Nutzung“](./media/log-analytics-usage/usage-dashboard01.png)
 
 ### <a name="to-work-with-usage-data"></a>So arbeiten Sie mit Nutzungsdaten
-1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com) an, sofern Sie noch nicht angemeldet sind.
-2. Klicken Sie im Menü **Hub** auf **Weitere Dienste**, und geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Log Analytics**.  
-    ![Azure-Hub](./media/log-analytics-usage/hub.png)
-3. Im Dashboard **Log Analytics** wird eine Liste mit Ihren Arbeitsbereichen angezeigt. Wählen Sie einen Arbeitsbereich aus.
-4. Klicken Sie im Dashboard *Arbeitsbereich* auf **Log Analytics Usage** (Log Analytics-Nutzung).
-5. Klicken Sie im Log Analytics-Dashboard zur **Nutzung** auf **Zeit: Letzte 24 Stunden**, um das Zeitintervall zu ändern.  
-    ![Zeitintervall](./media/log-analytics-usage/time.png)
-6. Zeigen Sie die Blätter mit der Nutzungskategorie an, auf denen die für Sie interessanten Bereiche enthalten sind. Wählen Sie ein Blatt aus, und klicken Sie darin dann auf ein Element, um für die [Protokollsuche](log-analytics-log-searches.md) mehr Details anzuzeigen.  
-    ![Blatt mit Beispieldaten zur Nutzung](./media/log-analytics-usage/blade.png)
-7. Überprüfen Sie im Dashboard „Protokollsuche“ die Ergebnisse, die für die Suche ausgegeben werden.  
-    ![Beispiel zur Nutzung für die Protokollsuche](./media/log-analytics-usage/usage-log-search.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.<br><br> ![Azure portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche einen Arbeitsbereich aus.
+4. Klicken Sie in der Liste im linken Bereich auf **Log Analytics usage** (Log Analytics-Nutzung).
+5. Klicken Sie im Log Analytics-Dashboard zur **Nutzung** auf **Zeit: Letzte 24 Stunden**, um das Zeitintervall zu ändern.<br><br> ![Zeitintervall](./media/log-analytics-usage/time.png)<br><br>
+6. Zeigen Sie die Blätter mit der Nutzungskategorie an, auf denen die für Sie interessanten Bereiche enthalten sind. Wählen Sie ein Blatt aus, und klicken Sie darin dann auf ein Element, um für die [Protokollsuche](log-analytics-log-searches.md) mehr Details anzuzeigen.<br><br> ![Blatt mit Beispieldaten zur Nutzung](./media/log-analytics-usage/blade.png)<br><br>
+7. Überprüfen Sie im Dashboard „Protokollsuche“ die Ergebnisse, die für die Suche ausgegeben werden.<br><br> ![Beispiel zur Nutzung für die Protokollsuche](./media/log-analytics-usage/usage-log-search.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Erstellen einer Warnung für den Fall, dass die Datensammlung höher als erwartet ist
 In diesem Abschnitt wird beschrieben, wie Sie eine Warnung erstellen, wenn Folgendes gilt:
@@ -63,20 +57,20 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Warnung erstellen, wenn Folge
 
 Für Log Analytics-[Warnungen](log-analytics-alerts-creating.md) werden Suchabfragen verwendet. Für die folgende Abfrage wird ein Ergebnis erzielt, wenn innerhalb der letzten 24 Stunden mehr als 100 GB an Daten gesammelt wurden:
 
-`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+`union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
 
 Für die folgende Abfrage wird eine einfache Formel verwendet, um vorherzusagen, wenn an einem Tag mehr als 100 GB an Daten gesendet werden: 
 
-`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+`union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
 
 Wenn die Warnung für ein anderes Datenvolumen gelten soll, ändern Sie den Wert 100 in den Abfragen einfach in den gewünschten GB-Wert.
 
 Führen Sie die Schritte unter [Erstellen einer Warnungsregel](log-analytics-alerts-creating.md#create-an-alert-rule) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung höher als erwartet ausfällt.
 
-Legen Sie beim Erstellen der Warnung für die erste Abfrage Folgendes fest, wenn mehr als 100 GB an Daten innerhalb von 24 Stunden anfallen:
-- **Name** auf *Datenvolumen größer als 100 GB in 24 Stunden*
-- **Schweregrad** auf *Warnung*
-- **Suchabfrage** auf `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+Legen Sie beim Erstellen der Warnung für die erste Abfrage Folgendes fest, wenn mehr als 100 GB an Daten innerhalb von 24 Stunden anfallen:  
+- **Name** auf *Datenvolumen größer als 100 GB in 24 Stunden*  
+- **Schweregrad** auf *Warnung*  
+- **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`   
 - **Zeitfenster** auf *24 Stunden*
 - **Warnungshäufigkeit** auf eine Stunde, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
 - **Warnung generieren basierend auf** auf *Anzahl von Ergebnissen*
@@ -87,7 +81,7 @@ Führen Sie die Schritte aus, die unter [Hinzufügen von Aktionen zu Warnungsreg
 Legen Sie beim Erstellen der Warnung für die zweite Abfrage Folgendes fest, wenn die Vorhersage besteht, dass innerhalb von 24 Stunden mehr als 100 GB an Daten anfallen:
 - **Name** auf *Erwartetes Datenvolumen von mehr als 100 GB in 24 Stunden*
 - **Schweregrad** auf *Warnung*
-- **Suchabfrage** auf `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+- **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
 - **Zeitfenster** auf *3 Stunden*
 - **Warnungshäufigkeit** auf eine Stunde, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
 - **Warnung generieren basierend auf** auf *Anzahl von Ergebnissen*
@@ -115,33 +109,29 @@ Diese beiden Diagramme zeigen alle Daten an. Einige Daten sind gebührenpflichti
 
 Sehen Sie sich das Diagramm *Datenmenge im Zeitverlauf* an. Klicken Sie jeweils auf den Namen eines Computers, um die Lösungen und Datentypen anzuzeigen, die für einen Computer die meisten Daten senden. Klicken Sie auf den Namen des ersten Computers in der Liste.
 
-Im folgenden Screenshot werden für den Computer vom Datentyp *LogManagement/Perf* (Protokollverwaltung/Leistung) die meisten Daten gesendet. 
-
-![Datenmenge für einen Computer](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
+Im folgenden Screenshot werden für den Computer vom Datentyp *LogManagement/Perf* (Protokollverwaltung/Leistung) die meisten Daten gesendet.<br><br> ![Datenvolumen für einen Computer](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)<br><br>
 
 Wechseln Sie als Nächstes zurück zum Dashboard *Nutzung*, und sehen Sie sich das Diagramm *Datenmenge nach Lösung* an. Klicken Sie in der Liste auf den Namen einer Lösung, um die Computer anzuzeigen, die die meisten Daten für die Lösung senden. Klicken Sie auf den Namen der ersten Lösung in der Liste. 
 
-Im folgenden Screenshot ist zu erkennen, dass der Computer *acmetomcat* die meisten Daten für die Lösung „LogManagement“ (Protokollverwaltung) sendet.
-
-![Datenvolumen für eine Lösung](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)
+Im folgenden Screenshot ist zu erkennen, dass der Computer *acmetomcat* die meisten Daten für die Lösung „LogManagement“ (Protokollverwaltung) sendet.<br><br> ![Datenvolumen für eine Lösung](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 Führen Sie bei Bedarf zusätzliche Analysen aus, um große Mengen innerhalb einer Lösung oder eines Datentyps zu identifizieren. Beispiele für Abfragen:
 
 + **Sicherheitslösung**
-  - `Type=SecurityEvent | measure count() by EventID`
+  - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + **Protokollverwaltungslösung**
-  - `Type=Usage Solution=LogManagement IsBillable=true | measure count() by DataType`
+  - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
 + Datentyp **Perf**
-  - `Type=Perf | measure count() by CounterPath`
-  - `Type=Perf | measure count() by CounterName`
+  - `Perf | summarize AggregatedValue = count() by CounterPath`
+  - `Perf | summarize AggregatedValue = count() by CounterName`
 + Datentyp **Event**
-  - `Type=Event | measure count() by EventID`
-  - `Type=Event | measure count() by EventLog, EventLevelName`
+  - `Event | summarize AggregatedValue = count() by EventID`
+  - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
 + Datentyp **Syslog**
-  - `Type=Syslog | measure count() by Facility, SeverityLevel`
-  - `Type=Syslog | measure count() by ProcessName`
+  - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
+  - `Syslog | summarize AggregatedValue = count() by ProcessName`
 + Datentyp **AzureDiagnostics**
-  - `Type=AzureDiagnostics | measure count() by ResourceProvider, ResourceId`
+  - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
 Führen Sie die folgenden Schritte aus, um das Volumen der erfassten Protokolle zu reduzieren:
 
@@ -155,20 +145,31 @@ Führen Sie die folgenden Schritte aus, um das Volumen der erfassten Protokolle 
 | Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Überprüfen, ob mehr Knoten als erwartet vorhanden sind
-Wenn Sie den Tarif *Pro Knoten (OMS)* nutzen, werden Ihre Gebühren basierend auf der Anzahl von genutzten Knoten und Lösungen berechnet. Sie können im Dashboard „Nutzung“ im Abschnitt mit den *Angeboten* anzeigen, wie viele Knoten eines Angebots jeweils verwendet werden.
-
-![Dashboard „Nutzung“](./media/log-analytics-usage/log-analytics-usage-offerings.png)
+Wenn Sie den Tarif *Pro Knoten (OMS)* nutzen, werden Ihre Gebühren basierend auf der Anzahl von genutzten Knoten und Lösungen berechnet. Sie können im Dashboard „Nutzung“ im Abschnitt mit den *Angeboten* anzeigen, wie viele Knoten eines Angebots jeweils verwendet werden.<br><br> ![Dashboard „Nutzung“](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 Klicken Sie auf **Alle anzeigen...**, um die vollständige Liste mit Computern anzuzeigen, von denen für das ausgewählte Angebot Daten gesendet werden.
 
 Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
 
+## <a name="check-if-there-is-ingestion-latency"></a>Überprüfen, ob es bei der Erfassung zu Wartezeiten kommt
+Bei Log Analytics kommt es bei der Erfassung gesammelter Daten zu erwarteten Wartezeiten.  Die absolute Zeit zwischen der Indizierung von Daten und dem Zeitpunkt der Verfügbarkeit der Daten für die Suche kann nicht vorhersehbar sein. Früher enthielt das Dashboard ein Leistungsdiagramm, auf dem die Dauer zum Erfassen und Indizieren von Daten angezeigt wurde. Infolge der Einführung der neuen Abfragesprache wurde dieses Diagramm vorübergehend entfernt.  Bis zur Veröffentlichung von aktualisierten Metriken für die Wartezeit bei der Datenerfassung können Sie als Übergangslösung mithilfe der folgenden Abfrage die ungefähre Wartezeit für die einzelnen Datentypen ermitteln.  
+
+    search *
+    | where TimeGenerated > ago(8h)
+    | summarize max(TimeGenerated) by Type
+    | extend LatencyInMinutes = round((now() - max_TimeGenerated)/1m,2)
+    | project Type, LatencyInMinutes
+    | sort by LatencyInMinutes desc
+
+> [!NOTE]
+> Die Abfrage für Erfassungswartezeiten zeigt keine Wartezeiten aus der Vergangenheit an und gibt ausschließlich Ergebnisse für die aktuelle Zeit zurück.  Der Wert für *TimeGenerated* wird am Agent für allgemeine Schemaprotokolle und am Sammlungsendpunkt für benutzerdefinierte Protokolle aufgefüllt.  
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen dazu, wie Sie die Suchsprache verwenden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md). Sie können Suchabfragen verwenden, um für die Nutzungsdaten eine zusätzliche Analyse durchzuführen.
 * Führen Sie die unter [Erstellen einer Warnungsregel](log-analytics-alerts-creating.md#create-an-alert-rule) beschriebenen Schritte aus, um benachrichtigt zu werden, wenn ein Suchkriterium erfüllt ist.
 * Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
-* Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus.
+* Lesen Sie zum Konfigurieren einer effektiven Richtlinie zur Erfassung von Sicherheitsereignissen die Informationen unter [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md).
 * Ändern Sie die [Leistungsindikatoren-Konfiguration](log-analytics-data-sources-performance-counters.md).
-* Ändern Sie die [Ereignisprotokollkonfiguration](log-analytics-data-sources-windows-events.md).
-* Ändern Sie die [Syslog-Konfiguration](log-analytics-data-sources-syslog.md).
+* Informationen zum Ändern der Einstellungen für die Ereigniserfassung finden Sie unter [Datenquellen für Windows-Ereignisprotokolle in Log Analytics](log-analytics-data-sources-windows-events.md).
+* Informationen zum Ändern der Einstellungen für die Syslog-Sammlung finden Sie unter [Syslog-Datenquellen in Log Analytics](log-analytics-data-sources-syslog.md).

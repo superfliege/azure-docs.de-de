@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
+ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: c9c23462f80533a224c3c2ac3658b9630f1798f9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e2242851d51dee56679231b9f34c8b474ba6578d
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>Konfigurieren der Dienstendpunkte von virtuellen Netzwerken
 
@@ -67,15 +67,15 @@ Melden Sie sich mit Ihrem Azure-Konto an Azure an. Wenn Sie nicht über ein Azur
 
 Einstellung | Wert
 ------- | -----
-Name    | myVnet
+NAME    | myVnet
 Adressraum | 10.0.0.0/16
 Subnetzname|mySubnet
 Subnetzadressbereich|10.0.0.0/24
 Ressourcengruppe|Lassen Sie „Neu erstellen“ ausgewählt, und geben Sie einen Namen ein.
-Standort|Alle unterstützten Regionen, z.B. Australien, Osten
+Speicherort|Alle unterstützten Regionen, z.B. Australien, Osten
 Abonnement|Wählen Sie Ihr Abonnement aus.
 __ServiceEndpoints__|Aktiviert
-__Dienste__ | Wählen Sie einen oder alle verfügbaren Dienste aus. Unterstützte Dienste in der Vorschauversion: __„Microsoft.Storage“, „Microsoft.Sql“__.
+__Dienste__ | Wählen Sie einen oder alle verfügbaren Dienste aus. Unterstützte Dienste: __„Microsoft.Storage“, „Microsoft.Sql“__.
 
 Wählen Sie die Dienste für Endpunkte aus: ![Auswählen von Diensten für Dienstendpunkte](media/virtual-network-service-endpoints-portal/vnet-create-flow-services.png)
 
@@ -136,7 +136,7 @@ Get-AzureRmVirtualNetworkAvailableEndpointService -location eastus
 ```
 
 Ausgabe: 
-Name | ID | Typ
+NAME | ID | Typ
 -----|----|-------
 Microsoft.Storage|/subscriptions/xxxx-xxx-xxx/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Storage|Microsoft.Network/virtualNetworkEndpointServices
 Microsoft.Sql|/subscriptions/xxxx-xxx-xxx/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Sql|Microsoft.Network/virtualNetworkEndpointServices
@@ -387,7 +387,7 @@ Zum Schützen der Ressourcen von Azure-Diensten in einem VNET muss der Benutzer 
 
 Erfahren Sie mehr über [integrierte Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) und das Zuweisen bestimmter Berechtigungen zu [benutzerdefinierten Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
 
-VNETs und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Falls sie sich in unterschiedlichen Abonnements befinden, sollten die Ressourcen im Rahmen dieser Vorschauversion unter demselben Active Directory-Mandanten vorhanden sein.
+VNETs und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Falls sie sich in unterschiedlichen Abonnements befinden, sollten die Ressourcen unter demselben Active Directory-Mandanten (AD) vorhanden sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
