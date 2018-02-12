@@ -90,7 +90,6 @@
 ### [Einführung in die Azure-Protokollintegration](security-azure-log-integration-overview.md)
 #### [Erste Schritte mit der Azure-Protokollintegration](security-azure-log-integration-get-started.md)
 #### [Integrieren von Azure Active Directory-Überwachungsprotokollen](security-azure-log-integration-ad.md)
-#### [Integrieren von Security Center-Warnungen](security-azure-log-integration-security-center.md)
 #### [Integrieren von Protokollen aus Key Vault mithilfe von Event Hubs](security-azure-log-integration-keyvault-eventhub.md)
 #### [Häufig gestellte Fragen](security-azure-log-integration-faq.md)
 
