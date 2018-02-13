@@ -37,6 +37,8 @@
   items:
     - name: Clustervorgänge
       items:
+        - name: Erstellen eines AKS-Clusters
+          href: create-cluster.md
         - name: Skalieren eines AKS-Clusters
           href: scale-cluster.md
         - name: Aktualisieren eines AKS-Clusters
@@ -45,10 +47,14 @@
           href: delete-cluster.md
     - name: Konfigurieren von Datenvolumes
       items:
-        - name: Azure-Datenträger – persistentes Volume
+        - name: Azure Disks
           href: azure-disks-dynamic-pv.md
-        - name: Azure Files – persistentes Volume
+        - name: Azure Files
           href: azure-files-dynamic-pv.md
+    - name: Konfigurieren der Netzwerkeinstellungen
+      items:
+        - name: Statische IP-Adresse
+          href: static-ip.md
     - name: Sicherheit und Authentifizierung
       items:
         - name: Erstellen eines Dienstprinzipals

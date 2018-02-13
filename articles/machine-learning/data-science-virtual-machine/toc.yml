@@ -1,4 +1,5 @@
 - name: Dokumentation zu virtuellen Computern für Data Science
+  href: index.yml
   items: null
 - name: Übersicht
   expanded: true
@@ -25,7 +26,7 @@
       href: linux-dsvm-walkthrough.md
     - name: Verwenden einer Deep Learning-VM
       href: use-deep-learning-dsvm.md
-- name: Referenz
+- name: Verweis
   expanded: true
   items:
     - name: Ermitteln der DSVM
@@ -46,7 +47,7 @@
       href: dsvm-data-platforms.md
     - name: Beispiele und exemplarische Vorgehensweisen
       href: dsvm-samples-and-walkthroughs.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Blog
       href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'

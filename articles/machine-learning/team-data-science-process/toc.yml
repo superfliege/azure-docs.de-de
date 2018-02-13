@@ -1,4 +1,5 @@
 - name: Team Data Science-Prozess – Dokumentation
+  href: index.yml
 - name: Übersicht
   href: overview.md
 - name: Lebenszyklus

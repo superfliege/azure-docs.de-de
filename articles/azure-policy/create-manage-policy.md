@@ -9,11 +9,11 @@ ms.date: 01/18/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: d6a588e1d8a20ffba555461cf98009f3894ed761
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a3d47abcbf41133b9bc7194fd97f9b66a70003ff
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -108,7 +108,7 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
 
     Lesen Sie den Artikel [Vorlagen für Azure Policy](json-samples.md), um weitere JSON-Codebeispiele anzuzeigen.
 
-4. Wählen Sie **Speichern** aus.
+4. Wählen Sie **Speichern**aus.
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>Erstellen einer Richtliniendefinition mit der REST-API
 
@@ -334,7 +334,7 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
    ![Klicken auf „Definitionen“](media/create-manage-policy/select-definitions.png)
 
-2. Klicken Sie im oberen Bereich der Seite auf **Initiative Definition** (Initiativdefinition), um zum gleichnamigen Formular**zu gelangen**.
+2. Klicken Sie im oberen Bereich der Seite auf **Initiative Definition** (Initiativdefinition), um zum gleichnamigen Formular **zu gelangen**.
 3. Geben Sie den Namen und die Beschreibung der Initiative ein.
 
    Stellen Sie in diesem Beispiel sicher, dass Ressourcen mit Richtliniendefinitionen zur Verbesserung der Sicherheit konform sind. Daher nennen wir die Initiative **Get Secure** (Sicherheit verbessern) und geben als Beschreibung Folgendes an: **This initiative has been created to handle all policy definitions associated with securing resources.** (Diese Initiative gilt für alle Richtliniendefinitionen, die mit dem Schutz von Ressourcen in Zusammenhang stehen.)
@@ -352,7 +352,7 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
    Die ausgewählten Richtliniendefinitionen werden wie oben zu sehen unter **Policies and parameters** (Richtlinien und Parameter) angezeigt.
 
-5. Wählen Sie unter **Speicherort der Definition** ein Abonnement zum Speichern der Definition aus. Wählen Sie **Speichern** aus.
+5. Wählen Sie unter **Speicherort der Definition** ein Abonnement zum Speichern der Definition aus. Wählen Sie **Speichern**aus.
 
 ### <a name="assign-an-initiative-definition"></a>Zuweisen einer Initiativdefinition
 
@@ -370,7 +370,7 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 5. Wählen Sie **Zuweisen** aus.
 
-## <a name="resolve-a-non-compliant-or-denied-resource"></a>Beheben von Problemen mit einer nicht konformen oder abgelehnten Ressource
+## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Ausnehmen einer nicht konformen oder abgelehnten Ressource mithilfe eines Ausschlusses
 
 Das obige Beispiel bewirkt, dass nach dem Zuweisen der Richtliniendefinition zur Forderung der SQL Server-Version 12.0 die Erstellung einer SQL Server-Instanz mit einer anderen Version abgelehnt wird. In diesem Abschnitt erfahren Sie, wie Sie durch Anfordern eines Ausschlusses das Problem lösen können, dass die Erstellung einer SQL Server-Instanz mit einer anderen Version abgelehnt wurde. Der Ausschluss verhindert im Wesentlichen die Richtliniendurchsetzung. Ein Ausschluss kann auf eine Ressourcengruppe angewendet werden, oder Sie können den Ausschluss auf einzelne Ressourcen beschränken.
 

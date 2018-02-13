@@ -107,6 +107,7 @@
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-device-management-get-started.md)
 #### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-device-management-get-started.md)
 #### [Java-Back-End-/Java-Gerät](iot-hub-java-java-device-management-getstarted.md)
+#### [Python-Back-End/Python-Gerät](iot-hub-python-python-device-management-get-started.md)
 ### Verwenden der Eigenschaften von Zwillingen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-twin-how-to-configure.md)
