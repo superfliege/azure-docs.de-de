@@ -1,4 +1,4 @@
-  Navigieren Sie nun zum Blatt mit dem Cosmos DB-Konto, und klicken Sie auf **Schlüssel**, da wir diese Werte in der Webanwendung verwenden, die wir als Nächstes erstellen.
+  Navigieren Sie nun zur Seite mit dem Azure Cosmos DB-Konto, und klicken Sie auf **Schlüssel**, da diese Werte in der Webanwendung verwendet werden, die Sie als Nächstes erstellen.
 
-![Screenshot des Azure-Portals mit einem Cosmos DB-Konto, bei dem die Schaltfläche „Schlüssel“ auf dem Blatt mit dem Cosmos DB-Konto hervorgehoben ist, und auf dem Blatt „Schlüssel“ die Werte URI, PRIMÄRSCHLÜSSEL und SEKUNDÄRSCHLÜSSEL hervorgehoben sind](./media/cosmos-db-keys/keys.png)
+![Screenshot des Azure-Portals mit hervorgehobener Schaltfläche „Schlüssel“ auf der Seite „Azure Cosmos DB-Konto“](./media/cosmos-db-keys/keys.png)
 

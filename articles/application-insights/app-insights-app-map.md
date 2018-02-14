@@ -1,6 +1,6 @@
 ---
-title: Anwendungszuordnung in Azure Application Insights | Microsoft-Dokumentation
-description: "Eine visuelle Darstellung der Abhängigkeiten zwischen App-Komponenten mit KPIs und Warnungen."
+title: "Anwendungsübersicht in Azure Application Insights | Microsoft-Dokumentation"
+description: "Überwachen von komplexen Anwendungstopologien mit der Anwendungsübersicht"
 services: application-insights
 documentationcenter: 
 author: SoubhagyaDash
@@ -13,23 +13,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: e1eb2177d6032142781e6e31af6c7f6313d38f4d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3bbed59bf93eab5e729fbdd3ccae04599ac47081
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="application-map-in-application-insights"></a>Anwendungszuordnung in Application Insights
-Bei der Anwendungszuordnung in [Azure Application Insights](app-insights-overview.md) handelt es sich um ein visuelles Layout der Abhängigkeitsbeziehungen Ihrer Anwendungskomponenten. Jede Komponente zeigt KPIs wie etwa Last, Leistung, Fehler und Warnungen, damit Sie Komponenten ermitteln können, die Leistungsprobleme oder Fehler verursachen. Für jede Komponente können Sie detailliertere Diagnosen anzeigen, z.B. für Application Insights-Ereignisse. Wenn Ihre App Azure-Dienste nutzt, können Sie auch Azure-Diagnosedaten anzeigen, z.B. SQL Database Advisor-Empfehlungen.
+# <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren von verteilten Anwendungen
+Mit der Anwendungsübersicht können Sie Leistungsengpässe oder Fehlerhotspots in allen Komponenten Ihrer verteilten Anwendung erkennen. Jeder Knoten in der Übersicht repräsentiert eine Anwendungskomponente bzw. deren Abhängigkeiten und weist einen Key Performance Indicator (KPI) zur Integrität und einen Warnungsstatus auf. Für jede Komponente können Sie detailliertere Diagnosen anzeigen, z.B. für Application Insights-Ereignisse. Wenn Ihre App Azure-Dienste nutzt, können Sie auch Azure-Diagnosedaten anzeigen, z.B. SQL Database Advisor-Empfehlungen.
 
-Wie bei anderen Diagrammen können Sie eine Anwendungszuordnung an das Azure-Dashboard anheften und alle ihre Funktionen nutzen. 
+## <a name="what-is-a-component"></a>Was ist eine Komponente?
 
-## <a name="open-the-application-map"></a>Öffnen der Anwendungszuordnung
-Öffnen Sie die Zuordnung auf dem Blatt „Übersicht“ für Ihre Anwendung:
+Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Microserviceanwendung. Entwickler und Betriebsteams verfügen über Sichtbarkeit oder Zugriff für die von diesen Anwendungskomponenten generierte Telemetrie auf Codeebene. 
 
-![App-Zuordnung öffnen](./media/app-insights-app-map/01.png)
+* Komponenten unterscheiden sich von „beobachteten“ externen Abhängigkeiten, wie SQL, EventHub usw., auf die Ihr Team/Ihre Organisation möglicherweise keinen Zugriff hat (Code oder Telemetrie).
+* Komponenten können in einer beliebigen Anzahl von Server-/Rollen-/Containerinstanzen ausgeführt werden.
+* Komponenten können separate Application Insights-Instrumentierungsschlüssel (sogar in verschiedenen Abonnements) oder verschiedene Rollen aufweisen, die alle an einen einzelnen Application Insights-Instrumentierungsschlüssel berichten. In der Vorschau werden die Komponenten unabhängig von der Art ihrer Einrichtung in der Übersicht angezeigt.
 
-![App-Zuordnung](./media/app-insights-app-map/02.png)
+## <a name="composite-application-map-preview"></a>Verbundanwendungsübersicht (Vorschau)
+*Dies ist eine frühe Vorschauversion, und wir werden dieser Übersicht weitere Features hinzufügen. Wir würden uns sehr über Ihr Feedback zu dieser neuen Oberfläche freuen. Sie können problemlos zwischen der Vorschauversion und der klassischen Oberfläche wechseln.*
+
+Aktivieren Sie in der [Vorschauliste](app-insights-previews.md) die Option „Verbundanwendungsübersicht“, oder klicken Sie auf der Umschaltfläche in der rechten oberen Ecke auf „Vorschauübersicht“. Sie können diese Umschaltfläche verwenden, um zur klassischen Oberfläche zurückzuwechseln.
+![Aktivieren der Vorschauübersicht](media/app-insights-app-map/preview-from-classic.png)
+
+>[!Note]
+Diese Vorschau ersetzt die vorherige Vorschau der Anwendungsübersicht mit mehreren Rollen. Verwenden Sie diese Version aktuell, um die gesamte Topologie über mehrere Ebenen von Abhängigkeiten zwischen Anwendungskomponenten hinweg anzuzeigen. Senden Sie uns Feedback. Wir werden weitere Funktionen ähnlich denen hinzufügen, die von der klassischen Übersicht unterstützt werden.
+
+Sie können die vollständige Anwendungstopologie über mehrere Ebenen verwandter Anwendungskomponenten hinweg anzeigen. Bei Komponenten kann es sich um verschiedene Application Insights-Ressourcen oder verschiedene Rollen in einer einzelnen Ressource handeln. Die App-Übersicht ermittelt Komponenten, indem sie HTTP-Abhängigkeitsaufrufe zwischen Servern verfolgt, auf denen das Application Insights SDK installiert ist. 
+
+Diese Funktionalität beginnt mit einer progressiven Ermittlung der Komponenten. Wenn Sie die Vorschauversion zum ersten Mal laden, wird eine Reihe von Abfragen ausgelöst, um die Komponenten zu ermitteln, die mit dieser Komponente in Zusammenhang stehen. Mit einer Schaltfläche in der oberen linken Ecke wird die Anzahl der Komponenten in Ihrer Anwendung aktualisiert, wenn diese ermittelt werden. 
+![Vorschauübersicht](media/app-insights-app-map/preview.png)
+
+Durch Klicken auf „Übersichtskomponenten aktualisieren“ wird die Übersicht mit allen bis zu diesem Zeitpunkt ermittelten Komponenten aktualisiert.
+![Vorschau der geladenen Übersicht](media/app-insights-app-map/components-loaded-hierarchical.png)
+
+Wenn es sich bei allen Komponenten um Rollen in einer einzelnen Application Insights-Ressource handelt, ist dieser Ermittlungsschritt nicht erforderlich. Nach dem ersten Ladevorgang für eine solche Anwendung sind alle Komponenten vorhanden.
+
+Eines der wichtigsten Ziele dieser neuen Oberfläche ist es, komplexe Topologien mit Hunderten von Komponenten zu visualisieren. Die neue Oberfläche unterstützt das Zoomen und ergänzt weitere Details, während Sie zoomen. Sie können herauszoomen, um eine größere Anzahl von Komponenten auf einem Blick anzuzeigen, und dennoch weiterhin Komponenten mit höheren Fehlerraten ermitteln. 
+
+![Zoomebenen](media/app-insights-app-map/zoom-levels.png)
+
+Klicken Sie auf eine beliebige Komponente, um die zugehörigen Details anzuzeigen und zur Selektierung von Leistungs- und Fehleraspekten für diese Komponente zu wechseln.
+
+![Flyout](media/app-insights-app-map/preview-flyout.png)
+
+
+## <a name="classic-application-map"></a>Klassische Anwendungsübersicht
 
 Die Zuordnung zeigt Folgendes:
 
@@ -37,6 +66,8 @@ Die Zuordnung zeigt Folgendes:
 * Clientseitige Komponente (mit dem JavaScript SDK überwacht)
 * Serverseitige Komponente
 * Abhängigkeiten von den Client- und Serverkomponenten
+
+![App-Zuordnung](./media/app-insights-app-map/02.png)
 
 Sie können Abhängigkeitslinkgruppen erweitern oder reduzieren:
 
@@ -98,22 +129,6 @@ Für einige Ressourcentypen wird die Ressourcenintegrität oben im Fehlerbereich
 ![Ressourcenintegrität](./media/app-insights-app-map/resource-health.png)
 
 Sie können auf den Ressourcennamen klicken, um Standardübersichtsmetriken für diese Ressourcen anzuzeigen.
-
-## <a name="end-to-end-system-app-maps"></a>Lückenlose System-App-Zuordnungen
-
-*SDK-Version 2.3 oder höher erforderlich*
-
-Wenn Ihre Anwendung mehrere Komponenten hat, z.B. zusätzlich zur Web-App einen Back-End-Dienst, können sie alle in einer integrierten App-Zuordnung anzeigen.
-
-![Filter festlegen](./media/app-insights-app-map/multi-component-app-map.png)
-
-Die App-Zuordnung ermittelt Serverknoten, indem sie mit dem Application Insights SDK HTTP-Abhängigkeitsaufrufe zwischen Servern verfolgt. Bei jeder Application Insights-Ressource wird davon ausgegangen, dass sie einen Server enthält.
-
-### <a name="multi-role-app-map-preview"></a>App-Zuordnung mit mehreren Rollen (Vorschau)
-
-Das Vorschaufeature für die App-Zuordnung mit mehreren Rollen ermöglicht es Ihnen, die App-Zuordnung mit mehreren Servern zu nutzen, die Daten an die gleiche Application Insights-Ressource bzw. den gleichen Instrumentierungsschlüssel senden. Server in der Zuordnung sind nach der Eigenschaft „cloud_RoleName“ für Telemetrieelemente segmentiert. Legen Sie auf dem Blatt „Previews“ (Vorschauen) für *Multi-role Application Map* (Anwendungszuordnung mit mehreren Rollen) die Option *Ein* fest, um diese Konfiguration zu aktivieren.
-
-Dieser Ansatz ist unter Umständen in einer Microservices-Anwendung oder anderen Szenarien erwünscht, bei denen Sie Ereignisse über mehrere Server hinweg mit einer einzelnen Application Insights-Ressource korrelieren möchten.
 
 ## <a name="video"></a>Video
 

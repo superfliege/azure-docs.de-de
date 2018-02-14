@@ -3,7 +3,7 @@ title: "Verwenden der verwalteten Dienstidentität eines virtuellen Azure-Comput
 description: "Schrittanweisungen und Beispiele zur Verwendung des MSI-Dienstprinzipals eines virtuellen Azure-Computers für die Anmeldung und den Zugriff auf Ressourcen eines Skriptclients."
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,17 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/05/2018
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c5f71d27a9e07cc6d6a260b809e91aaa2a50270c
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: c5c1be01947dba8b7f4ef8aa54aa6aedfb191d32
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="sign-in-using-a-vm-user-assigned-managed-service-identity-msi"></a>Anmelden mit einer verwalteten Dienstidentität, die einem VM-Benutzer zugewiesen ist
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)] Dieser Artikel enthält CLI-Skriptbeispiele für die Anmeldung mit einem MSI-Dienstprinzipal, der einem Benutzer zugewiesen ist, sowie eine Anleitung zu wichtigen Themen wie der Fehlerbehandlung.
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+Dieser Artikel enthält CLI-Skriptbeispiele für die Anmeldung mit einem MSI-Dienstprinzipal, der einem Benutzer zugewiesen ist, sowie eine Anleitung zu wichtigen Themen wie der Fehlerbehandlung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
-ms.openlocfilehash: db0f09433750a3af2d70039d780a25ad64bb4df1
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 980e4675c2d2e88716a3133abb027988aecd538f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Verschieben von Daten in und aus Azure Storage
 Wenn Sie lokale Daten in Azure Storage verschieben möchten (oder umgekehrt), steht Ihnen eine Vielzahl von Methoden zur Verfügung. Es hängt vom jeweiligen Szenario ab, welche Methode für Sie am besten geeignet ist. Dieser Artikel bietet eine kurze Übersicht über die verschiedenen Szenarien und die jeweiligen Angebote.
@@ -41,9 +41,9 @@ In der Liste der [Azure-Speicher-Explorer](../storage-explorers.md) finden Sie w
 Wenn Sie ein Befehlszeilenprogramm benötigen oder mit einem solchen Programm besser vertraut sind (z. B. Systemadministratoren), stehen Ihnen u. a. die folgenden Optionen zur Auswahl:
 
 ### <a name="azcopy"></a>AzCopy
-AzCopy ist ein Windows-Befehlszeilenprogramm, mit dem sehr effizient Daten in und aus Azure Storage kopiert werden können. Sie können auch Daten innerhalb eines Speicherkontos oder zwischen Speicherkonten kopieren.
+AzCopy ist ein Befehlszeilenprogramm, mit dem sehr effizient Daten in und aus Azure Storage kopiert werden können. Sie können auch Daten innerhalb eines Speicherkontos oder zwischen Speicherkonten kopieren. AzCopy ist unter [Windows](storage-use-azcopy.md) und unter [Linux](storage-use-azcopy-linux.md) verfügbar.
 
-Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) .
+Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) und [Übertragen von Daten mit AzCopy unter Linux](storage-use-azcopy-linux.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Azure PowerShell ist ein Modul, das Cmdlets für die Verwaltung von Diensten in Azure bereitstellt. Bei diesem Modul handelt es sich um eine aufgabenbasierte Befehlszeilenshell und Skriptsprache, die speziell für die Systemverwaltung entwickelt wurde.

@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 84596041284139b8243287ba6ad719c7c8f7b47b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7d245c2222b1ad9ba71c6f5dbdde66e56e1aa6ab
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Aufrufen eines SSIS-Pakets mithilfe einer Aktivität einer gespeicherten Prozedur in Azure Data Factory
 In diesem Artikel wird das Aufrufen eines SSIS-Pakets aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben. 
@@ -34,7 +34,7 @@ Die exemplarische Vorgehensweise in diesem Artikel verwendet eine Azure SQL-Date
 Erstellen Sie eine Azure-SSIS Integration Runtime, wenn Sie noch nicht über eine verfügen, indem Sie die Schritt-für-Schritt-Anweisung im [Tutorial: Bereitstellen von SSIS-Paketen](tutorial-create-azure-ssis-runtime-portal.md) befolgen.
 
 ## <a name="data-factory-ui-azure-portal"></a>Data Factory-Benutzeroberfläche (Azure-Portal)
-In diesem Abschnitt erstellen Sie mithilfe der Data Factory-Benutzeroberfläche eine Data Factory-Pipeline mit einer Aktivität einer gespeicherten Prozedur, die ein SSIS-Paket aufruft.
+In diesem Abschnitt erstellen Sie mithilfe der Data Factory-Benutzeroberfläche eine Data Factory-Pipeline mit der Aktivität einer gespeicherten Prozedur, die ein SSIS-Paket aufruft.
 
 ### <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 Der erste Schritt besteht darin, eine Data Factory mit dem Azure-Portal zu erstellen. 
@@ -97,8 +97,8 @@ In diesem Schritt erstellen Sie über die Data Factory-Benutzeroberfläche eine 
     1. Geben Sie `sp_executesql` in das Feld **Name der gespeicherten Prozedur** ein. 
     2. Klicken Sie im Abschnitt **Parameter der gespeicherten Prozedur** auf **+ Neu**. 
     3. Geben Sie unter **Name** des Parameters **stmt** ein. 
-    4. Geben Sie unter **Typ** des Parameters **String** ein. 
-    5. Geben Sie für **Wert** des Parameters die folgende SQL-Abfrage ein.
+    4. Geben Sie unter **Typ** des Parameters **Zeichenfolge** ein. 
+    5. Geben Sie unter **Wert** des Parameters die folgende SQL-Abfrage ein:
 
         Geben Sie in der SQL-Abfrage die entsprechenden Werte für die Parameter **folder_name**, **project_name** und **package_name** ein. 
 
@@ -133,10 +133,12 @@ In diesem Abschnitt lösen Sie eine Pipelineausführung aus, und überwachen die
 
     ![Überprüfen von Paketausführungen](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-Sie können auch einen geplanten Trigger für die Pipeline erstellen, damit die Pipeline basierend auf einem Zeitplan (stündlich, täglich usw.) ausgeführt wird. Ein Beispiel finden Sie unter [Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
+
+> [!NOTE]
+> Sie können auch einen geplanten Trigger für die Pipeline erstellen, damit die Pipeline basierend auf einem Zeitplan (stündlich, täglich usw.) ausgeführt wird. Ein Beispiel finden Sie unter [Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-In diesem Abschnitt erstellen Sie mithilfe von Azure PowerShell eine Data Factory-Pipeline mit einer Aktivität einer gespeicherten Prozedur, die ein SSIS-Paket aufruft. 
+In diesem Abschnitt erstellen Sie mithilfe von Azure PowerShell eine Data Factory-Pipeline mit der Aktivität einer gespeicherten Prozedur, die ein SSIS-Paket aufruft. 
 
 Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps) befolgen. 
 
@@ -321,7 +323,7 @@ Im vorherigen Schritt wurde die Pipeline auf Anforderung aufgerufen. Alternativ 
     }    
     ```
 2. Wechseln Sie in **Azure PowerShell** zum Ordner **C:\ADF\RunSSISPackage**.
-3. Führen Sie das **Set-AzureRmDataFactoryV2Trigger**-Cmdlet aus, um den Trigger zu erstellen. 
+3. Führen Sie das Cmdlet **Set-AzureRmDataFactoryV2Trigger** aus, um den Trigger zu erstellen. 
 
     ```powershell
     Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"

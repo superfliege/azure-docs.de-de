@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 242be346f975e013004c520a41bf14b95a3f27a4
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 3c1095c67b9a5369a9ac797bf17342499675e244
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-cdn-pop-locations"></a>Azure CDN-POP-Standorte
 Dieser Artikel enthält die aktuellen POP-Standorte (Point-of-Presence) für **Azure CDN von Verizon** und **Azure CDN von Akamai**.
@@ -37,10 +37,11 @@ Dieser Artikel enthält die aktuellen POP-Standorte (Point-of-Presence) für **A
 | Europa, Norden und Osten | Kopenhagen, Dänemark<br />Helsinki, Finnland<br />Warschau, Polen<br />Stockholm, Schweden | Dänemark<br />Polen<br />Schweden<br /> |
 | Europa, Westen | Wien, Österreich<br />Paris, Frankreich<br />Frankfurt, Deutschland<br />Amsterdam, Niederlande<br />London, Großbritannien | Österreich<br />Frankreich<br />Deutschland<br />Irland<br />Niederlande<br />Schweiz<br />Vereinigtes Königreich |
 | Europa, Süden | Mailand, Italien<br />Madrid, Spanien | Italien<br />Spanien |
-| Asien | Hongkong<br />Bangalore, Indien<br />Chennai, Indien<br />Delhi, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Seoul, Südkorea<br />Kaohsiung, Taiwan | Hongkong<br />Indien<br />Indonesien<br />Japan<br />Malaysia<br />Philippinen<br />Singapur<br />Taiwan<br />Thailand<br />Vietnam |
+| Afrika | Johannesburg, Südafrika | |
 | Naher Osten | Maskat, Oman<br />Fujirah, Vereinigte Arabische Emirate | Katar |
+| Asien | Hongkong<br />Bangalore, Indien<br />Chennai, Indien<br />Delhi, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Seoul, Südkorea<br />Kaohsiung, Taiwan | Hongkong<br />Indien<br />Indonesien<br />Japan<br />Malaysia<br />Philippinen<br />Singapur<br />Taiwan<br />Thailand<br />Vietnam |
 | Australien und Neuseeland | Melbourne, Australien<br />Sydney, Australien<br />Auckland, Neuseeland | Australien<br />Neuseeland |
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Azure CDN-Edgeknoten-API zum Abrufen der aktuellen IP-Adressen für Whitelists](https://docs.microsoft.com/rest/api/cdn/edgenodes)
 

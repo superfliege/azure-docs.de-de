@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: b2040bfad42f2913882792c0055225b2c3d521b5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e8c1ff23ee00e15325a82e1df0f4643ec429b119
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/01/2018
 ---
 # <a name="authorize-users-for-ambari-views"></a>Autorisieren von Benutzern für Ambari-Ansichten
 
-[In die Domäne eingebundene HDInsight-Cluster](./domain-joined/apache-domain-joined-introduction.md) stellen Funktionen auf Unternehmensniveau bereit, einschließlich einer auf Azure Active Directory basierenden Authentifizierung. Sie können neue Benutzer <!-- [synchronize new users](hdinsight-sync-aad-users-to-cluster.md) --> synchronisieren, die zu Azure AD-Gruppen mit Clusterzugriff hinzugefügt wurden, der diesen festgelegten Benutzern das Ausführen bestimmter Aktionen ermöglicht. Arbeiten mit Benutzern, Gruppen und Berechtigungen in Ambari wird sowohl für den in die Domäne eingebundenen HDInsight-Cluster als auch für den standardmäßigen HDInsight-Cluster unterstützt.
+[In die Domäne eingebundene HDInsight-Cluster](./domain-joined/apache-domain-joined-introduction.md) stellen Funktionen auf Unternehmensniveau bereit, einschließlich einer auf Azure Active Directory basierenden Authentifizierung. Sie können [neue Benutzer synchronisieren](hdinsight-sync-aad-users-to-cluster.md), die zu Azure AD-Gruppen mit Clusterzugriff hinzugefügt wurden, um diesen bestimmten Benutzern das Ausführen bestimmter Aktionen zu ermöglichen. Arbeiten mit Benutzern, Gruppen und Berechtigungen in Ambari wird sowohl für den in die Domäne eingebundenen HDInsight-Cluster als auch für den standardmäßigen HDInsight-Cluster unterstützt.
 
 Active Directory-Benutzer können sich mit ihren Domänenanmeldeinformationen bei den Clusterknoten anmelden. Darüber hinaus können sie Clusterinteraktionen mit ihren Domänenanmeldeinformationen auch bei anderen genehmigten Endpunkten wie Hue, Ambari-Ansichten, ODBC, JDBC, PowerShell und REST-APIs authentifizieren.
 
@@ -145,5 +145,4 @@ Dem Azure AD-Domänenbenutzer „hiveuser2“ wurde die Rolle *Clusterbenutzer* 
 * [Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung](./domain-joined/apache-domain-joined-run-hive.md)
 * [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](./domain-joined/apache-domain-joined-manage.md)
 * [Verwenden der Hive-Ansicht mit Hadoop in HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
-
-<!-- * [Synchronize Azure AD users to the cluster](hdinsight-sync-aad-users-to-cluster.md) -->
+* [Synchronisieren von Azure AD-Benutzern mit dem Cluster](hdinsight-sync-aad-users-to-cluster.md)

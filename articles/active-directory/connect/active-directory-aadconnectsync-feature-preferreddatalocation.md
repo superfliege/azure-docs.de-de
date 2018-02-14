@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 01/31/2018
 ms.author: billmath
-ms.openlocfilehash: 8a36fc45334a2f1d12e6eabbfb16731ccc9998bf
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 021f009e66e57665a2252646b210f0e6dc55d33c
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-ad-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure AD Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen
-In diesem Thema wird ausführlich erläutert, wie Sie das PreferredDataLocation-Attribut in der Azure AD Connect-Synchronisierung konfigurieren. Wenn ein Kunde Multi-Geo Capabilities in Office 365 verwendet, wird mit diesem Attribut der geografische Standort der Office 365-Daten des Benutzers festgelegt.
+In diesem Thema wird ausführlich erläutert, wie Sie das PreferredDataLocation-Attribut in der Azure AD Connect-Synchronisierung konfigurieren. Wenn ein Kunde Multi-Geo Capabilities in Office 365 verwendet, wird mit diesem Attribut der geografische Standort der Office 365-Daten des Benutzers festgelegt. Die Benennungen **Region** und **geografischer Raum** werden synonym verwendet.
 
 > [!IMPORTANT]
 > Multi-Geo Capabilities befindet sich derzeit in der Vorschauphase. Wenn Sie am Vorschauprogramm teilnehmen möchten, wenden Sie sich an Ihren Microsoft-Vertreter.
@@ -29,29 +29,34 @@ In diesem Thema wird ausführlich erläutert, wie Sie das PreferredDataLocation-
 >
 
 ## <a name="enable-synchronization-of-preferreddatalocation"></a>Aktivieren der Synchronisierung von „PreferredDataLocation“
-Standardmäßig befinden sich die Office 365-Ressourcen für Ihre Benutzer in der gleichen Region wie Ihr Azure AD-Mandant. Wenn sich Ihr Mandant z.B. in Nordamerika befindet, befinden sich die Exchange-Postfächer der Benutzer ebenfalls in Nordamerika. Für ein multinationales Unternehmen ist dies möglicherweise nicht optimal. Die Region des Benutzers kann durch Festlegen des preferredDataLocation-Attributs definiert werden.
+Standardmäßig befinden sich die Office 365-Ressourcen für Ihre Benutzer im gleichen geografischen Raum wie Ihr Azure AD-Mandant. Wenn sich Ihr Mandant z.B. in Nordamerika befindet, befinden sich die Exchange-Postfächer der Benutzer ebenfalls in Nordamerika. Für ein multinationales Unternehmen ist dies möglicherweise nicht optimal. Der geografische Raum des Benutzers kann durch Festlegen des preferredDataLocation-Attributs definiert werden.
 
-Durch das Festlegen dieses Attributs können Sie die Office 365-Ressourcen eines Benutzers, z.B. das Postfach und OneDrive, in derselben Region wie den Benutzer platzieren und verfügen immer noch über einen Mandanten für Ihre gesamte Organisation.
+Durch das Festlegen dieses Attributs können Sie die Office 365-Ressourcen eines Benutzers, z.B. das Postfach und OneDrive, im selben geografischen Raum wie den Benutzer platzieren und verfügen immer noch über einen Mandanten für Ihre gesamte Organisation.
 
 > [!IMPORTANT]
 > Um Multi-Geo Capabilities nutzen zu können, müssen Sie über mindestens 5.000 Arbeitsplätze in Ihrem Office 365-Abonnement verfügen.
 >
 >
 
-Folgende Regionen stehen in Office 365 für Multi-Geo Capabilities zur Verfügung:
+Eine Liste mit allen geografischen Räumen für Office 365 finden Sie auf der Seite [An welchem Ort befinden sich Ihre Daten?](https://aka.ms/datamaps).
 
-| Region | BESCHREIBUNG |
+Folgende geografische Räume stehen in Office 365 für Multi-Geo Capabilities zur Verfügung:
+
+| geografischer Raum | preferredDataLocation-Wert |
 | --- | --- |
-| NAM | Nordamerika |
-| EUR | Europa |
-| APC | Asien-Pazifik |
-| JPN | Japan |
-| AUS | Australien |
-| CAN | Kanada |
-| GBR | Großbritannien |
-| LAM | Lateinamerika |
+| Asien-Pazifik | APC |
+| Australien | AUS |
+| Kanada | CAN |
+| Europäische Union | EUR |
+| Indien | IND |
+| Japan | JPN |
+| Südkorea | KOR |
+| Vereinigtes Königreich | GBR |
+| USA | NAM |
 
-Nicht alle Office 365-Workloads unterstützen die Festlegung der Benutzerregion.
+* Wenn ein geografische Raum nicht in dieser Tabelle aufgeführt wird (z.B. Südamerika), kann es nicht für Multi-Geo Capabilities verwendet werden.
+* Die geografischen Räume Indien und Südkorea sind nur für Kunden mit Rechnungsadressen und in diesen geografischen Räumen erworbenen Lizenzen verfügbar.
+* Nicht alle Office 365-Workloads unterstützen die Festlegung des geografischen Raums eines Benutzers.
 
 Azure AD Connect unterstützt in Version 1.1.524.0 und höher die Synchronisierung des Attributs **PreferredDataLocation** für **Benutzerobjekte**. Genauer gesagt wurden folgende Änderungen eingeführt:
 
@@ -245,13 +250,13 @@ So aktivieren Sie erneut den integrierten Synchronisierungsplaner:
 ## <a name="step-8-verify-the-result"></a>Schritt 8: Überprüfen des Ergebnisses
 Sie können nun die Konfiguration überprüfen und für Ihre Benutzer aktivieren.
 
-1. Fügen Sie dem ausgewählte Attribut für einen Benutzer die Region hinzu. Die Liste der verfügbaren Regionen finden Sie in [dieser Tabelle](#enable-synchronization-of-preferreddatalocation).  
+1. Fügen Sie dem ausgewählte Attribut für einen Benutzer den geografischen Raum hinzu. Die Liste der verfügbaren geografischen Räume finden Sie in [dieser Tabelle](#enable-synchronization-of-preferreddatalocation).  
 ![AD-Attribut wurde einem Benutzer hinzugefügt](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
 2. Warten Sie, bis das Attribut mit Azure AD synchronisiert wurde.
 3. Überprüfen Sie mithilfe von Exchange Online-PowerShell, ob die Postfachregion ordnungsgemäß festgelegt wurde.  
 ![Festlegen der Postfachregion für einen Benutzer in Exchange Online](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
-Sofern Ihr Mandant für die Verwendung dieses Features aktiviert wurde, wird das Postfach in die richtige Region verschoben. Dies können Sie überprüfen, indem Sie sich den Namen des Servers ansehen, auf dem sich das Postfach befindet.
-4. Um sicherzustellen, dass diese Einstellung auf mehrere Postfächer angewendet wurde, verwenden Sie das Skript im [Technet-Katalog](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Dieses Skript enthält auch eine Liste der Serverpräfixe aller Office 365-Rechenzentren mit der Region, in der sie sich befinden. Es kann im vorherigen Schritt als Referenz verwendet werden, um den Speicherort des Postfachs zu überprüfen.
+Sofern Ihr Mandant für die Verwendung dieses Features aktiviert wurde, wird das Postfach in den richtigen geografischen Raum verschoben. Dies können Sie überprüfen, indem Sie sich den Namen des Servers ansehen, auf dem sich das Postfach befindet.
+4. Um sicherzustellen, dass diese Einstellung auf mehrere Postfächer angewendet wurde, verwenden Sie das Skript im [Technet-Katalog](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Dieses Skript enthält auch eine Liste der Serverpräfixe aller Office 365-Rechenzentren mit dem geografischen Raum, in dem sie sich befinden. Es kann im vorherigen Schritt als Referenz verwendet werden, um den Speicherort des Postfachs zu überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

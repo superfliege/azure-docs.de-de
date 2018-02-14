@@ -1,5 +1,5 @@
 ---
-title: "Azure Monitor-Metriken: Unterstützte Metriken pro Ressourcentyp | Microsoft-Dokumentation"
+title: "Azure Monitor-Metriken: Unterstützte Metriken pro Ressourcentyp | Microsoft Docs"
 description: "Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp zur Verfügung stehen."
 author: anirudhcavale
 manager: ashwink
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/31/2018
 ms.author: ancav
-ms.openlocfilehash: a7d28de33090995b0a036d528fb82f9e0d7335bf
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: bc25f58070d8871a92df249a2d48f27de0bc9498
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind.
@@ -667,6 +667,14 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |ObservedCapacity|Beobachtete Kapazität|Count|Durchschnitt|Die Kapazität, die beim Ausführen der automatischen Skalierung gemeldet wurde.|Keine Dimensionen|
 |ScaleActionsInitiated|Initiierte Skalierungsaktionen|Count|Gesamt|Die Richtung des Skalierungsvorgangs.|ScaleDirection|
 
+## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+
+|Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
+|---|---|---|---|---|---|
+|ServiceApiHit|Dienst-API-Treffer, gesamt|Count|Anzahl, gesamt|Gesamtanzahl der Dienst-API-Treffer|ActivityType, ActivityName|
+|ServiceApiLatency|Gesamtwartezeit für Dienst-API|Millisekunden|Anzahl, Mittelwert, Minimum, Maximum|Gesamtwartezeit für Dienst-API-Anforderungen|ActivityType, ActivityName, StatusCode|
+|ServiceApiResult|Dienst-API-Ergebnisse, gesamt|Count|Anzahl, gesamt|Gesamtanzahl der Dienst-API-Ergebnisse|ActivityType, ActivityName, StatusCode|
+
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -853,7 +861,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|QueryDuration||Count|Durchschnitt||Keine Dimensionen|
+|QueryDuration|Abfragedauer|Count|Durchschnitt|DAX-Abfragedauer im letzten Intervall|Keine Dimensionen|
 |QueryPoolJobQueueLength|Threads: Auftragswarteschlangenlänge für Abfragepool|Count|Durchschnitt|Anzahl von Aufträgen in der Warteschlange des Abfragethreadpools.|Keine Dimensionen|
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces

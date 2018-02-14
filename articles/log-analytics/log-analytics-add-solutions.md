@@ -1,6 +1,6 @@
 ---
 title: "Hinzufügen von Azure Log Analytics-Verwaltungslösungen | Microsoft-Dokumentation"
-description: "Bei den Verwaltungslösungen von Operations Management Suite (OMS) bzw. von Log Analytics handelt sind um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln, die Metriken rund um einen bestimmten Problembereich bereitstellen."
+description: "Bei Verwaltungslösungen in Azure handelt es sich um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln, die Metriken zu einem bestimmten Problembereich bereitstellen."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d951387882a5a8f5e0ebdc01841bb8384e4848ee
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 6c7d8d6946d89e4c6541636287e3022c444e0eb8
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich
 
-Log Analytics-Verwaltungslösungen sind eine Sammlung von **Logik**-, **Visualisierungs**- und **Datenerfassungsregeln**, die Metriken rund um einen bestimmten Problembereich bereitstellen. In diesem Artikel sind von Log Analytics unterstützte Verwaltungslösungen aufgeführt. Darüber hinaus erfahren Sie, wie Sie mithilfe des Azure-Portals einen Arbeitsbereich hinzufügen und entfernen. Sie können auch Lösungen im OMS-Portal mithilfe des Lösungskatalogs hinzufügen.
+Log Analytics-Verwaltungslösungen sind eine Sammlung von **Logik**-, **Visualisierungs**- und **Datenerfassungsregeln**, die Metriken rund um einen bestimmten Problembereich bereitstellen. In diesem Artikel sind von Log Analytics unterstützte Verwaltungslösungen aufgeführt. Darüber hinaus erfahren Sie, wie Sie mithilfe des Azure-Portals einen Arbeitsbereich hinzufügen und entfernen.
 
 Die detaillierten Einblicke der Verwaltungslösungen ermöglichen Folgendes:
 
@@ -34,9 +34,9 @@ Die detaillierten Einblicke der Verwaltungslösungen ermöglichen Folgendes:
 > [!NOTE]
 > Log Analytics verfügt über eine integrierte Protokollsuche, sodass nicht extra eine Verwaltungslösung installiert werden muss. Sie können jedoch Datenvisualisierungen, Vorschläge für Suchen und Einblicke nutzen, indem Sie Verwaltungslösungen zu Ihrem Arbeitsbereich hinzufügen.
 
-In diesem Artikel fügen Sie mit dem Marketplace im Azure-Portal einem Arbeitsbereich Verwaltungslösungen hinzu. Nachdem Sie eine Lösung hinzugefügt haben, werden Daten von den Servern in Ihrer Infrastruktur erfasst und an den OMS-Dienst gesendet. Die Verarbeitung durch den OMS-Dienst dauert normalerweise von einigen Minuten bis zu einer Stunde. Nach der Verarbeitung der Daten durch den Dienst können Sie diese in OMS anzeigen.
+In diesem Artikel fügen Sie mit dem Marketplace im Azure-Portal einem Arbeitsbereich Verwaltungslösungen hinzu. Nachdem Sie eine Lösung hinzugefügt haben, werden Daten von den Servern in Ihrer Infrastruktur erfasst und an Log Analytics gesendet. Die Verarbeitung dauert normalerweise von einigen Minuten bis zu einer Stunde. Nach der Verarbeitung der Daten durch den Dienst können Sie diese in Log Analytics anzeigen.
 
-Wenn eine Verwaltungslösung nicht mehr benötigt wird, können Sie sie problemlos entfernen. Wenn Sie eine Verwaltungslösung entfernen, werden deren Daten nicht an OMS gesendet. Bei Verwendung des Free-Tarifs lässt sich durch Entfernen einer Lösung die genutzte Datenmenge verringern, um eine Überschreitung des Tageskontingents zu vermeiden.
+Wenn eine Verwaltungslösung nicht mehr benötigt wird, können Sie sie problemlos entfernen. Wenn Sie eine Verwaltungslösung entfernen, werden deren Daten nicht an Log Analytics gesendet. Bei Verwendung des Free-Tarifs lässt sich durch Entfernen einer Lösung die genutzte Datenmenge verringern, um eine Überschreitung des Tageskontingents zu vermeiden.
 
 ## <a name="view-available-management-solutions"></a>Anzeigen verfügbarer Verwaltungslösungen
 
@@ -126,14 +126,14 @@ Von der Community bereitgestellte Lösungen sind über den [Azure-Vorlagenkatalo
 ## <a name="data-collection-details"></a>Details zur Datensammlung
 Die folgenden Tabellen enthalten Datensammlungsmethoden und andere Details zur Erfassung von Daten für Log Analytics-Verwaltungslösungen und Datenquellen. Die Tabellen sind nach Lösungsangeboten kategorisiert, die den [Abonnementtarifen](https://go.microsoft.com/fwlink/?linkid=827926) entsprechen. Die Lösung für die Aktivitätsprotokollanalyse ist in allen Tarifen kostenlos.
 
-Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent sind im Grunde identisch. Der Windows-Agent bietet jedoch zusätzliche Funktionen, die eine Verbindung mit dem OMS-Arbeitsbereich und die Weiterleitung über einen Proxy ermöglichen. Bei Verwendung eines Operations Manager-Agents muss er wie ein OMS-Agent verwendet werden, damit eine Kommunikation mit OMS möglich ist. Bei den Operations Manager-Agents in dieser Tabelle handelt es sich um mit Operations Manager verbundene OMS-Agents. Weitere Informationen zum Herstellen einer Verbindung zwischen Ihrer vorhandenen Operations Manager-Umgebung mit OMS finden Sie unter [Verbinden von Operations Manager mit Log Analytics](log-analytics-om-agents.md).
+Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent sind im Grunde identisch. Der Windows-Agent bietet zusätzliche Funktionen, die eine Verbindung mit dem Log Analytics-Arbeitsbereich und die Weiterleitung über einen Proxy ermöglichen. Bei Verwendung eines Operations Manager-Agents muss dieser wie ein OMS-Agent verwendet werden, damit eine Kommunikation mit Log Analytics möglich ist. Bei den Operations Manager-Agents in dieser Tabelle handelt es sich um mit Operations Manager verbundene OMS-Agents. Weitere Informationen zum Herstellen einer Verbindung zwischen Ihrer vorhandenen Operations Manager-Umgebung mit Log Analytics finden Sie unter [Verbinden von Operations Manager mit Log Analytics](log-analytics-om-agents.md).
 
 > [!NOTE]
-> Der Typ des verwendeten Agents bestimmt, wie Daten an OMS gesendet werden. Dabei gelten die folgenden Bedingungen:
+> Der Typ des verwendeten Agents bestimmt, wie Daten an Log Analytics gesendet werden. Dabei gelten die folgenden Bedingungen:
 > - Sie verwenden entweder den Windows-Agent oder einen mit Operations Manager verbundenen OMS-Agent.
-> - Wenn Operations Manager erforderlich ist, werden Operations Manager-Agent-Daten für die Lösung immer unter Verwendung der Operations Manager-Verwaltungsgruppe an OMS gesendet. Außerdem wird von der Lösung in diesem Fall nur der Operations Manager-Agent verwendet.
-> - Wenn Operations Manager nicht erforderlich ist und Operations Manager-Agent-Daten laut Tabelle unter Verwendung der Verwaltungsgruppe an OMS gesendet werden, werden Operations Manager-Agent-Daten immer unter Verwendung von Verwaltungsgruppen an OMS gesendet. Windows-Agents umgehen die Verwaltungsgruppe und senden ihre Daten direkt an OMS.
-> - Wenn die Operations Manager-Agent-Daten nicht unter Verwendung einer Verwaltungsgruppe gesendet werden, werden die Daten direkt (also unter Umgehung der Verwaltungsgruppe) an OMS gesendet.
+> - Wenn Operations Manager erforderlich ist, werden Operations Manager-Agent-Daten für die Lösung immer unter Verwendung der Operations Manager-Verwaltungsgruppe an Log Analytics gesendet. Außerdem wird von der Lösung in diesem Fall nur der Operations Manager-Agent verwendet.
+> - Wenn Operations Manager nicht erforderlich ist und Operations Manager-Agent-Daten laut Tabelle unter Verwendung der Verwaltungsgruppe an Log Analytics gesendet werden, werden Operations Manager-Agent-Daten immer unter Verwendung von Verwaltungsgruppen an Log Analytics gesendet. Windows-Agents umgehen die Verwaltungsgruppe und senden ihre Daten direkt an Log Analytics.
+> - Wenn die Operations Manager-Agent-Daten nicht unter Verwendung einer Verwaltungsgruppe gesendet werden, werden die Daten direkt (also unter Umgehung der Verwaltungsgruppe) an Log Analytics gesendet.
 
 ### <a name="insight--analytics--log-analytics"></a>Insight & Analytics/Log Analytics
 
@@ -194,7 +194,7 @@ Der Log Analytics-Windows-Agent und der System Center Operations Manager-Agent s
 
 | Verwaltungslösung | Plattform | Microsoft Monitoring Agent | Operations Manager-Agent | Azure-Speicher | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Backup  | Azure |   |   |   |   |   | – |
+| Sicherung | Azure |   |   |   |   |   | – |
 | Azure Site Recovery | Azure |   |   |   |   |   | – |
 
 
@@ -242,7 +242,7 @@ Die folgenden Informationen gelten sowohl für öffentliche als auch für privat
 * Es kann sein, dass nicht immer alles einwandfrei funktioniert.
   * Probleme können von kleineren Unzulänglichkeiten bis zu Fehlern reichen, bei denen ein Feature gar nicht funktioniert.
 * Es besteht die Möglichkeit, dass die Vorschauversion eine negative Auswirkung auf Ihr System bzw. Ihre Umgebung hat.
-  * Wir versuchen zu vermeiden, dass sich für die Systeme, die Sie mit OMS verwenden, negative Auswirkungen ergeben, aber es kann sein, dass unerwartete Dinge passieren.
+  * Wir versuchen negative Auswirkungen auf die von Ihnen verwendeten Systeme zu vermeiden, aber zuweilen geschehen unerwartete Dinge.
 * Es kann zu Datenverlust oder zur Beschädigung von Daten kommen.
 * Unter Umständen bitten wir Sie, Diagnoseprotokolle oder andere Daten als Beitrag zur Problembehandlung zu erfassen.
 * Es kann sein, dass das Feature oder die Lösung entfernt wird (entweder vorübergehend oder dauerhaft).

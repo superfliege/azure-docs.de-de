@@ -64,7 +64,7 @@ Führen Sie benutzerdefinierte oder kommerzielle HPC-Anwendungen in Azure aus. F
 
 ### <a name="graphics-and-rendering"></a>Grafik und Rendering
 
-* [Autodesk Maya, 3ds Max und Arnold](../articles/batch/batch-rendering-service.md) unter Azure Batch (Vorschauversion)
+* [Autodesk Maya, 3ds Max und Arnold](../articles/batch/batch-rendering-service.md) unter Azure Batch 
 
 ### <a name="ai-and-deep-learning"></a>KI und Deep Learning
 
@@ -103,11 +103,12 @@ SaaS-Anbieter oder Entwickler können die Batch-SDKs und -Tools verwenden, um HP
 
 In diesem Artikel werden folgende Themen erläutert:
 
-* [Erste Schritte beim Entwickeln mit Batch](../articles/batch/batch-dotnet-get-started.md)
+* [Erste Schritte beim Entwickeln mit Batch](../articles/batch/quick-run-dotnet.md)
 * [Verwenden von Codebeispielen für Azure Batch](https://github.com/Azure/azure-batch-samples)
 * [Verwenden von VMs mit niedriger Priorität mit Batch](../articles/batch/batch-low-pri-vms.md)
 * [Ausführen von HPC-Workloads in Containern mit Batch Shipyard](https://github.com/Azure/batch-shipyard)
 * [Verwenden der Sprache R mit Batch](https://github.com/Azure/doAzureParallel)
+* [Ausführen des Azure Distributed Data Engineering Toolkit für Batch](https://github.com/Azure/aztk)
 
 ## <a name="workload-managers"></a>Workload-Manager
 
@@ -127,6 +128,7 @@ Herkömmliche Clouddateisysteme sind den Anforderungen, die umfangreiche Batch- 
 Weitere Informationen:
 
 * [Parallel file systems for HPC storage on Azure](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/) (Parallele Dateisysteme für HPC-Speicher in Azure)
+* Hochleistungs-Cloudspeicherlösungen von [Avere](http://www.averesystems.com/about-us/about-avere) (jetzt [verknüpft mit Microsoft](https://blogs.microsoft.com/blog/2018/01/03/microsoft-to-acquire-avere-systems-accelerating-high-performance-computing-innovation-for-media-and-entertainment-industry-and-beyond/))
 
 
 ## <a name="related-azure-services"></a>Verwandte Azure-Dienste
@@ -139,11 +141,14 @@ Die meisten Azure-HPC-Lösungen basieren auf Azure Virtual Machines, VM-Skalieru
 * [File Storage](../articles/storage/storage-files-introduction.md)
 
 ### <a name="data-and-analytics"></a>Daten und Analysen
-* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md) für Hadoop-Cluster in Azure
+* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
 * [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)
 * [SQL-Datenbank](../articles/sql-database/sql-database-technical-overview.md)
+
+### <a name="ai-and-cognitive-services"></a>AI und Cognitive Services
+* [Batch AI](../articles/batch-ai/overview.md)
 
 ### <a name="networking"></a>Netzwerk
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)

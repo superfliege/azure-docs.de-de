@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/11/2017
-ms.openlocfilehash: ff5fcbc6df8cb07e0b98b877f20d981d6bef5117
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 02/01/2018
+ms.openlocfilehash: 1046f08d4e3b1111f8f82551b71252856174a308
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Unterstützte Inspektoren für die Azure Machine Learning-Datenvorbereitung
 Dieses Dokument beschreibt den in dieser Vorschau verfügbaren Satz von Inspektoren.
@@ -52,6 +52,7 @@ Dieser Inspektor unterstützt den Halo-Effekt.
 - Standardanzahl von Buckets (Scotts Regel) 
 - Halo anzeigen
 - Kerneldichteplot-Overlay (Gaußscher Kernel) 
+- Logarithmische Skala verwenden
 
 
 ### <a name="actions"></a>Actions
@@ -65,6 +66,7 @@ Dieser Inspektor bietet eine Häufigkeitstabelle der Werte für die derzeit ausg
 - Absteigend
 - NULL-/Fehlerwerte einbeziehen
 - Halo anzeigen
+- Logarithmische Skala verwenden
 
 
 ### <a name="actions"></a>Actions 

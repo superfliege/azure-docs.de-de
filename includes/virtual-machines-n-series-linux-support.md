@@ -4,7 +4,11 @@
 ### <a name="nc-ncv2-and-nd-instances---nvidia-cuda-drivers"></a>NC-, NCv2- und ND-Instanzen – NVIDIA CUDA-Treiber
 | Distribution | Treiber |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3<br/><br/> 7.3 (CentOS-basiert) | NVIDIA CUDA 9.1, Treiberbranch R387 |
+| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3 oder 7.4<br/><br/> CentOS 7.3 oder 7.4 | NVIDIA CUDA 9.1, Treiberbranch R390 |
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Sie eine Installation der bzw. ein Upgrade auf die neuesten CUDA-Treiber für Ihre Distribution ausgeführt haben. Bei Treibern mit einer älteren Version als R390 können Probleme mit aktualisierten Linux-Kernels auftreten.
+>
 
 ### <a name="nv-instances---nvidia-grid-drivers"></a>NV-Instanzen – NVIDIA GRID-Treiber
 

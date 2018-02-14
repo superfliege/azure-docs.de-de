@@ -15,11 +15,11 @@ ms.prod: vs-devops-alm
 ms.date: 01/30/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 813022f1778e2c7f3174e11192b845c2c33ad219
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 599a890be4d014d22bae899be4cf6e281c4109d4
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a id="top"> </a> Visual Studio-Images in Azure
 Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist die schnellste und einfachste Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen.  Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://portal.azure.com/) verfügbar. Starten Sie einfach einen virtuellen Computer, und beginnen Sie mit der Arbeit.
@@ -27,14 +27,14 @@ Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Co
 Neu bei Azure? [Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free).
 
 ## <a name="what-configurations-and-versions-are-available"></a>Welche Konfigurationen und Versionen sind verfügbar?
-Im Azure Marketplace finden Sie Images für die letzten Hauptversionen: Visual Studio 2017 und Visual Studio 2015.  Für jede Hauptversion werden die ursprünglich veröffentlichte („RTW“) Version und die letzten aktualisierten Versionen aufgeführt.  Zu allen diesen verschiedenen Versionen finden Sie die Editionen Visual Studio Enterprise und Visual Studio Community.
+Im Azure Marketplace finden Sie Images für die letzten Hauptversionen: Visual Studio 2017 und Visual Studio 2015.  Für jede Hauptversion werden die ursprünglich veröffentlichte („RTW“) Version und die letzten aktualisierten Versionen aufgeführt.  Zu allen diesen verschiedenen Versionen finden Sie die Editionen Visual Studio Enterprise und Visual Studio Community.  Wir aktualisieren diese Images mindestens einmal monatlich um die neuesten Visual Studio- und Windows-Updates einzuschließen.  Jede Imagebeschreibung enthält die Produktinstallationsversion und das Erstellungsdatum des Image, während die Namen der Images unverändert bleiben.
 
-|               Releaseversion              |          Editionen            |    Produktversion    |
-|:------------------------------------------:|:----------------------------:|:---------------------:|
-| Visual Studio 2017 – letzte (Version 15.5) |    Enterprise, Community     |     Version 15.5.3    |
-|         Visual Studio 2017 – RTW           |    Enterprise, Community     |     Version 15.0.7    |
-|   Visual Studio 2015 – letzte (Update 3)   |    Enterprise, Community     | Version 14.0.25431.01 |
-|         Visual Studio 2015 – RTW           | Keine (für Wartung abgelaufen) |          ---          |
+|               Releaseversion              |          Editionen            |     Produktversion     |
+|:------------------------------------------:|:----------------------------:|:-----------------------:|
+| Visual Studio 2017 – letzte (Version 15.5) |    Enterprise, Community     |      Version 15.5.3     |
+|         Visual Studio 2017 – RTW           |    Enterprise, Community     |      Version 15.0.7     |
+|   Visual Studio 2015 – letzte (Update 3)   |    Enterprise, Community     |  Version 14.0.25431.01  |
+|         Visual Studio 2015 – RTW           |              Keine            | (für Wartung abgelaufen) |
 
 > [!NOTE]
 > Im Einklang mit der Microsoft-Wartungsrichtlinie ist die ursprünglich veröffentlichte Version („RTW“) von Visual Studio 2015 für die Wartung abgelaufen.  Visual Studio 2015 Update 3 ist daher die einzige verbleibende Version, die für die Visual Studio 2015-Produktlinie angeboten wird.
@@ -52,20 +52,32 @@ Jedes Image enthält die empfohlenen Features für diese Edition von Visual Stud
 
 Mit dieser Befehlszeile installieren wir Visual Studio zum Erstellen der Images:
 
-   * vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
-   * add Microsoft.Net.Component.4.7.SDK ^
-   * add Microsoft.Net.Component.4.7.TargetingPack ^ 
-   * add Microsoft.Net.Component.4.6.2.SDK ^
-   * add Microsoft.Net.Component.4.6.2.TargetingPack ^
-   * add Microsoft.Net.ComponentGroup.4.7.DeveloperTools ^
-   * add Microsoft.VisualStudio.Component.FSharp ^
-   * add Component.GitHub.VisualStudio ^
-   * add Microsoft.VisualStudio.Component.LinqToSql
+```
+    vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
+       add Microsoft.Net.Component.4.7.SDK ^
+       add Microsoft.Net.Component.4.7.TargetingPack ^ 
+       add Microsoft.Net.Component.4.6.2.SDK ^
+       add Microsoft.Net.Component.4.6.2.TargetingPack ^
+       add Microsoft.Net.ComponentGroup.4.7.DeveloperTools ^
+       add Microsoft.VisualStudio.Component.FSharp ^
+       add Component.GitHub.VisualStudio ^
+       add Microsoft.VisualStudio.Component.LinqToSql
+```
 
 Wenn die Images eines der für Sie erforderlichen Visual Studio-Features nicht enthalten, geben Sie dies als Feedback mithilfe des Feedbacktools (rechts oben auf der Seite) an.
 
 ## <a name="what-size-vm-should-i-choose"></a>Welche VM-Größe sollte ich auswählen?
-Das Bereitstellen eines neuen virtuellen Computers ist einfach, und Azure bietet eine umfassende Palette von VM-Größen.  Wie bei jeder Hardwareanschaffung sollten Sie Leistung und Kosten gegeneinander abwägen.  Da Visual Studio eine leistungsstarke Multithreadinganwendung ist, sollten Sie eine VM-Größe auswählen, die mindestens zwei Prozessoren und 7 GB Arbeitsspeicher einschließt.  Weitere Informationen zu den aktuellen VM-Größen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).
+Das Bereitstellen eines neuen virtuellen Computers ist einfach, und Azure bietet eine umfassende Palette von VM-Größen.  Wie bei jeder Hardwareanschaffung sollten Sie Leistung und Kosten gegeneinander abwägen.  Da Visual Studio eine leistungsstarke Multithreadanwendung ist, sollten Sie eine VM-Größe auswählen, die mindestens zwei Prozessoren und 7 GB Speicher einschließt.  Dies sind die empfohlenen VM-Größen für die Visual Studio-Images:
+
+   * Standard_D2_v3
+   * Standard_D2s_v3
+   * Standard_D4_v3
+   * Standard_D4s_v3
+   * Standard_D2_v2
+   * Standard_D2S_v2
+   * Standard_D3_v2
+    
+Weitere Informationen zu den aktuellen VM-Größen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).
 
 Mit Azure ist Ihre erste Auswahl nicht endgültig – Sie können die VM-Größe ändern, um einen neuen Abgleich vorzunehmen.  Sie können einen neuen virtuellen Computer mit einer besser geeigneten Größe bereitstellen oder die Größe des vorhandenen virtuellen Computers an unterschiedliche zugrunde liegende Hardware anpassen.  Weitere Informationen finden Sie unter [Ändern der Größe einer Windows-VM](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/resize-vm).
 

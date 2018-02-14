@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 209968a598d3a579cc40edaf52bd7344fa3f60ed
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: e2176a41a115d77a60a8348d2d1b5928109dd65b
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL Analytics (Vorschau) in Log Analytics
 
@@ -41,12 +41,12 @@ Die Azure SQL Analytics-Lösung verwendet keine Agents für die Verbindung mit d
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
 
-| Verbundene Quelle | Support | Beschreibung |
+| Verbundene Quelle | Support | BESCHREIBUNG |
 | --- | --- | --- |
-| [Windows-Agents](log-analytics-windows-agent.md) | Nein | Direkte Windows-Agents werden von der Lösung nicht verwendet. |
-| [Linux-Agents](log-analytics-linux-agents.md) | Nein | Direkte Linux-Agents werden von der Lösung nicht verwendet. |
-| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein | Von der Lösung wird keine direkte Verbindung zwischen SCOM-Agent und Log Analytics verwendet. |
-| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein | Log Analytics liest keine Daten aus einem Speicherkonto. |
+| [Windows-Agents](log-analytics-windows-agent.md) | Nein  | Direkte Windows-Agents werden von der Lösung nicht verwendet. |
+| [Linux-Agents](log-analytics-linux-agents.md) | Nein  | Direkte Linux-Agents werden von der Lösung nicht verwendet. |
+| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein  | Von der Lösung wird keine direkte Verbindung zwischen SCOM-Agent und Log Analytics verwendet. |
+| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Log Analytics liest keine Daten aus einem Speicherkonto. |
 | [Azure-Diagnose](log-analytics-azure-storage.md) | Ja | Metrik- und Protokolldaten von Azure werden direkt von Azure an Log Analytics gesendet. |
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -107,10 +107,10 @@ Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Pers
 
 Jede Perspektive bietet Zusammenfassungen zum Abonnement, Server, Pool für elastische Datenbanken und zur Datenbankebene. Darüber hinaus zeigt jede Perspektive auf der rechten Seite einen speziellen Bericht an. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown nach fortgesetzt.
 
-| Perspektive | Beschreibung |
+| Perspektive | BESCHREIBUNG |
 | --- | --- |
 | Ressource nach Typ | Perspektive, die alle überwachten Ressourcen zählt. Der Drilldown enthält die Zusammenfassung von DTU- und GB- Metriken. |
-| Erkenntnisse | Stellt den hierarchischen Drilldown in Intelligent Insights bereit. Weitere Informationen zu Intelligent Insights. |
+| Einblicke | Stellt den hierarchischen Drilldown in Intelligent Insights bereit. Weitere Informationen zu Intelligent Insights. |
 | Errors | Stellt den hierarchischen Drilldown in SQL-Fehler bereit, die in den Datenbanken aufgetreten sind. |
 | Zeitlimits | Stellt den hierarchischen Drilldown in SQL-Zeitlimits bereit, die in den Datenbanken aufgetreten sind. |
 | Blockierungen | Stellt den hierarchischen Drilldown in SQL-Blockierungen bereit, die in den Datenbanken aufgetreten sind. |
@@ -157,7 +157,7 @@ AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "
 AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
 ```
 
-Sie können diese warnungsbasierten Abfragen verwenden, um bei bestimmten Schwellenwerten für Azure SQL-Datenbanken und Pools für elastische Datenbanken eine Warnung auszugeben. So konfigurieren Sie eine Warnung für Ihren OMS-Arbeitsbereich:
+Sie können diese warnungsbasierten Abfragen verwenden, um bei bestimmten Schwellenwerten für Azure SQL-Datenbanken und Pools für elastische Datenbanken eine Warnung auszugeben. So konfigurieren Sie eine Warnung für Ihren Log Analytics-Arbeitsbereich:
 
 #### <a name="to-configure-an-alert-for-your-workspace"></a>Konfigurieren einer Warnung für Ihren Arbeitsbereich
 

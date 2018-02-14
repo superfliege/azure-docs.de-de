@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: b4bdf3339e585a7b22a1945871f802854020fb94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 391b691e895c672ef872f8b98c88567175ad8030
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -67,9 +67,7 @@ Für einen Cluster mit 48 Knoten sollten Sie 4 bis 8 Speicherkonten verwenden. E
 
 ## <a name="choose-a-cluster-type"></a>Auswahl eines Clustertyps
 
-Der Clustertyp, z.B. Hadoop, Storm, Kafka oder Spark, bestimmt die Workload, zu deren Ausführung Ihr HDInsight-Cluster konfiguriert ist. 
-<!-- For a detailed description of the available cluster types, see [HDInsight Architecture](hdinsight-architecture.md). -->
-Jeder Clustertyp verfügt über eine bestimmte Bereitstellungstopologie, die Anforderungen an die Größe und Anzahl der Knoten enthält.
+Der Clustertyp, z.B. Hadoop, Storm, Kafka oder Spark, bestimmt die Workload, zu deren Ausführung Ihr HDInsight-Cluster konfiguriert ist. Eine detaillierte Beschreibung der verfügbaren Clustertypen finden Sie unter [Einführung in Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Jeder Clustertyp verfügt über eine bestimmte Bereitstellungstopologie, die Anforderungen an die Größe und Anzahl der Knoten enthält.
 
 ## <a name="choose-the-vm-size-and-type"></a>Auswahl von Größe und Typ des virtuellen Computers
 
@@ -96,9 +94,7 @@ Sie können Ihren Cluster für Spitzenlastanforderungen horizontal hochskalieren
 
 ### <a name="cluster-lifecycle"></a>Clusterlebenszyklus
 
-Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Cluster nur zu bestimmten Zeiten betreiben müssen, können Sie mit Azure Data Factory bedarfsabhängige Cluster erstellen.
-<!-- [create on-demand clusters using Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). -->
-Sie können auch PowerShell-Skripts erstellen, die Ihren Cluster bereitstellen und löschen, und diese Skripts mit [Azure Automation](https://azure.microsoft.com/services/automation/) planen.
+Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Cluster nur zu bestimmten Zeiten betreiben müssen, können Sie [mithilfe von Azure Data Factory bedarfsgesteuerte Cluster erstellen](hdinsight-hadoop-create-linux-clusters-adf.md). Sie können auch PowerShell-Skripts erstellen, die Ihren Cluster bereitstellen und löschen, und diese Skripts mit [Azure Automation](https://azure.microsoft.com/services/automation/) planen.
 
 > [!NOTE]
 > Wenn ein Cluster gelöscht wird, wird sein standardmäßiger Hive-Metastore ebenfalls gelöscht. Um den Metastore für die nächste Clusterneuerstellung beizubehalten, verwenden Sie einen externen Metadatenspeicher wie Azure Database oder Oozie.

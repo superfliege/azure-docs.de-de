@@ -14,8 +14,8 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 8918d6d53d7dd04e2a685707979526230ebfbc42
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cbe7e338ac7da9dc7e8d03cb1bb07a69af70cb17
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/01/2018
@@ -41,7 +41,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 ```
 
 > [!NOTE]
-> Windows Server 2016 Datacenter unterstützt keine Zuordnung von SMB-Bereitstellungen für Container ([Dies wird nur unter Windows Server Version 1709 unterstützt](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage)). Aus diesem Grund sind keine Netzwerkvolumezuordnungen oder Installationen von Azure Files-Volumetreibern auf älteren Versionen als 1709 möglich. 
+> Windows Server 2016 Datacenter unterstützt keine Zuordnung von SMB-Bereitstellungen für Container ([Dies wird nur unter Windows Server Version 1709 unterstützt](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage)). Aufgrund dieser Einschränkung sind keine Netzwerkvolumezuordnungen oder Installationen von Azure Files-Volumetreibern auf älteren Versionen als 1709 möglich. 
 >   
 
 
@@ -53,8 +53,9 @@ Die Plug-Ins sind im Anwendungsmanifest wie folgt angegeben:
 <ApplicationManifest ApplicationTypeName="WinNodeJsApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Description>Calculator Application</Description>
     <Parameters>
-        <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>
+      <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>
       <Parameter Name="MyCpuShares" DefaultValue="3"></Parameter>
+      <Parameter Name="MyStorageVar" DefaultValue="c:\tmp"></Parameter>
     </Parameters>
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="NodeServicePackage" ServiceManifestVersion="1.0"/>
@@ -66,7 +67,7 @@ Die Plug-Ins sind im Anwendungsmanifest wie folgt angegeben:
           <DriverOption Name="test" Value="vale"/>
         </LogConfig>
         <Volume Source="c:\workspace" Destination="c:\testmountlocation1" IsReadOnly="false"></Volume>
-        <Volume Source="d:\myfolder" Destination="c:\testmountlocation2" IsReadOnly="true"> </Volume>
+        <Volume Source="[MyStorageVar]" Destination="c:\testmountlocation2" IsReadOnly="true"> </Volume>
         <Volume Source="myvolume1" Destination="c:\testmountlocation2" Driver="azure" IsReadOnly="true">
            <DriverOption Name="share" Value="models"/>
         </Volume>
@@ -83,6 +84,8 @@ Die Plug-Ins sind im Anwendungsmanifest wie folgt angegeben:
 
 Das **Source**-Tag für das **Volume**-Element verweist auf den Quellordner. Der Quellordner kann ein Ordner auf dem virtuellen Computer, der die Container hostet, oder ein persistenter Remotespeicher sein. Das **Destination**-Tag ist der Speicherort, dem **Source** im ausgeführten Container zugeordnet ist. Das Ziel kann also nicht ein bereits vorhandener Speicherort innerhalb des Containers sein.
 
+Anwendungsparameter werden für Volumes unterstützt, wie im vorherigen Manifestausschnitt dargestellt. (Suchen Sie nach `MyStoreVar` für ein Anwendungsbeispiel.)
+
 Wenn Sie ein Volume-Plug-In angeben, erstellt Service Fabric das Volume automatisch mit den angegebenen Parametern. Das **Source**-Tag ist der Name des Volumes, und das **Driver**-Tag gibt das Volumetreiber-Plug-In an. Optionen können mithilfe des **DriverOption**-Tags wie folgt angegeben werden:
 
 ```xml
@@ -93,4 +96,4 @@ Wenn Sie ein Volume-Plug-In angeben, erstellt Service Fabric das Volume automati
 Wenn ein Docker-Protokolltreiber angegeben wird, müssen Sie Agents (oder Container) für die Verarbeitung der Protokolle im Cluster bereitstellen. Mit dem **DriverOption**-Tag können Optionen für den Protokolltreiber angegeben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Bereitstellen von Containern in einem Service Fabric-Cluster finden Sie unter [Bereitstellen eines Containers in Service Fabric](service-fabric-deploy-container.md).
+Informationen zum Bereitstellen von Containern in einem Service Fabric-Cluster finden Sie im Artikel [Bereitstellen eines Containers in Service Fabric](service-fabric-deploy-container.md).

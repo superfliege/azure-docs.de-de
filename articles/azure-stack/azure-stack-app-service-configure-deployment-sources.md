@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 3738ca8ce8dfe0e5375779e9273a3d10baf8861a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e73a607a7f8ad948ab821b0aeda164418509f076
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="configure-deployment-sources"></a>Konfigurieren von Bereitstellungsquellen
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -49,8 +49,7 @@ Sie benötigen ein GitHub-Konto, um diese Aufgabe abzuschließen. Möglicherweis
 2. Geben Sie in **Application name** einen Anwendungsnamen ein, z.B. App Service in Azure Stack.
 3. Geben Sie in **Homepage URL** die URL der Startseite ein. Die URL der Homepage muss die Adresse des Azure Stack-Portals sein. Beispiel: https://portal.local.azurestack.external.
 4. Geben Sie in **Application Description** eine Anwendungsbeschreibung ein.
-5. Geben Sie in **Authorization callback URL** die Autorisierungsrückruf-URL ein.  In einer Standardbereitstellung von Azure Stack hat diese URL das Format https://portal.local.azurestack.external/tokenauthorize. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „azurestack.local“ durch Ihre Domäne.
-    ![GitHub: Registrieren einer neuen Anwendung mit aufgefüllten Werten][4]
+5. Geben Sie in **Authorization callback URL** die Autorisierungsrückruf-URL ein.  In einer Azure Stack-Standardbereitstellung hat die URL das Format „https://portal.local.azurestack.external/tokenauthorize“. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „local.azurestack.external“ durch Ihre Domäne. ![GitHub – Registrieren einer neuen Anwendung mit aufgefüllten Werten][4]
 6. Klicken Sie zum Registrieren der Anwendung auf **Register application**.  Nun wird die Seite mit der **Client ID** und dem **Client Secret** (geheimen Clientschlüssel) für die Anwendung angezeigt.
     ![GitHub: Anwendungsregistrierung abgeschlossen][5]
 7.  Melden Sie sich im Browser auf einer neuen Registerkarte oder in einem neuen Fenster beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) als Dienstadministrator an.

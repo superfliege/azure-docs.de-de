@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 54ca65ac6fa794c542fc07cd64458b17c327d56d
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 362614d28cf62bd288d8aff10539c81381474955
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Häufig gestellte Fragen zur Azure Storage-Migration
 
@@ -278,7 +278,7 @@ So gewähren Sie anderen Personen Zugriff auf die Speicherressourcen:
 
 -   Bei Verwendung von georedundantem Speicher mit Lesezugriff können Sie jederzeit auf Daten in der sekundären Region zugreifen. Verwenden Sie eine der folgenden Methoden an:  
       
-    - **AzCopy**: Fügen Sie in der URL an den Speicherkontonamen **-secondary** an, um auf den sekundären Endpunkt zuzugreifen. Beispiel:  
+    - **AzCopy**: Fügen Sie in der URL an den Speicherkontonamen **-secondary** an, um auf den sekundären Endpunkt zuzugreifen. Beispiel:   
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
@@ -294,6 +294,10 @@ Sie können jedoch benutzerdefinierte Domänen ohne HTTPS verwenden. Weitere Inf
 Es gibt keine Möglichkeit, mit FTP direkt auf ein Speicherkonto zuzugreifen. Sie können jedoch einen virtuellen Azure-Computer einrichten und anschließend einen FTP-Server auf dem virtuellen Computer installieren. Sie können festlegen, dass der FTP-Server Dateien auf einer Azure Files-Freigabe oder auf einem Datenträger speichert, der für den virtuellen Computer verfügbar ist.
 
 Wenn Sie Daten nur herunterladen möchten, ohne den Storage-Explorer oder eine ähnliche Anwendung verwenden zu müssen, können Sie unter Umständen ein SAS-Token nutzen. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-dotnet-shared-access-signature-part-1.md).
+
+**How do I migrate Blobs from one storage account to another?** (Gewusst wie: Migrieren von Blobs aus einem Speicherkonto in ein anderes)
+
+ Hierzu können Sie unser [Blob-Migrationsskript](../scripts/storage-common-transfer-between-storage-accounts.md) nutzen.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

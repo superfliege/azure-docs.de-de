@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 47c2d129cb296f6387142e03b14356bcd83ad698
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 8b55bafee83dd43d535f9ebb0488134b5c7b3446
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -42,9 +42,7 @@ Orchestrierung ist erforderlich, um den geeigneten Auftrag zum richtigen Zeitpun
 
 Apache Oozie ist ein Koordinationssystem für Workflows zur Verwaltung von Hadoop-Aufträgen. Oozie wird innerhalb eines HDInsight-Clusters ausgeführt und ist in den Hadoop-Stapel integriert. Oozie unterstützt Hadoop-Aufträge für Apache MapReduce, Apache Pig, Apache Hive und Apache Sqoop. Oozie kann auch dazu verwendet werden, systemspezifische Aufträge zu planen, beispielsweise Java-Programme oder Shellskripts.
 
-Weitere Informationen finden Sie unter [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in HDInsight](../hdinsight-use-oozie-linux-mac.md).
-
-<!-- For a deep dive showing how to use Oozie to drive an end-to-end pipeline, see [Operationalize the Data Pipeline](hdinsight-operationalize-data-pipeline.md). -->
+Weitere Informationen finden Sie unter [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in HDInsight](../hdinsight-use-oozie-linux-mac.md). Ausführliche Einblicke in die Verwendung von Oozie zum Nutzen einer End-to-End-Pipeline finden Sie unter [Operationalisieren einer Datenanalysepipeline](../hdinsight-operationalize-data-pipeline.md). 
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
@@ -145,4 +143,4 @@ Sobald Daten am ausgewählten Speicherort vorhanden sind, müssen Sie sie berein
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
-<!-- * [Using Apache Hive as an ETL Tool](hdinsight-using-apache-hive-as-an-etl-tool.md) -->
+* [Verwenden von Apache Hive als ETL-Tool](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 

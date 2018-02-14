@@ -12,19 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: sdash
-ms.openlocfilehash: 8c1d8600b7f4aaa1e95f4acfbbdd55fdbfebb8fb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1c7eaafe99717324ad03287a1f1e0699d77cc74f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Einheitliche komponentenübergreifende Transaktionsdiagnose
 
 *Diese Benutzeroberfläche befindet sich aktuell im Vorschaustadium und ersetzt die vorhandenen Diagnoseblätter für serverseitige Anforderungen, Abhängigkeiten und Ausnahmen.*
 
-Mit der Vorschauversion wird eine neue, einheitliche Diagnoseoberfläche eingeführt, die serverseitige Telemetrie übergreifend von allen Ihren mithilfe von Application Insights überwachten Komponenten automatisch in einer einzelnen Ansicht in Beziehung setzt. Es spielt keine Rolle, ob Sie über mehrere Ressourcen mit separaten Instrumentierungsschlüsseln verfügen – Application Insights erkennt die zugrundeliegende Beziehung und ermöglicht Ihnen die komfortable Diagnose der Anwendungskomponente, Abhängigkeit oder Ausnahme, die zur langsamen Ausführung oder einem Fehler bei einer Transaktion geführt hat.
+Mit der Vorschauversion wird eine neue, einheitliche Diagnoseoberfläche eingeführt, die serverseitige Telemetrie übergreifend von allen Ihren mithilfe von Application Insights überwachten Komponenten automatisch in einer einzelnen Ansicht in Beziehung setzt. Es spielt keine Rolle, wenn Sie über mehrere Ressourcen mit separaten Instrumentierungsschlüsseln verfügen. Application Insights erkennt die zugrundeliegende Beziehung und ermöglicht Ihnen die komfortable Diagnose der Anwendungskomponente, Abhängigkeit oder Ausnahme, die zur langsamen Ausführung oder einem Fehler bei einer Transaktion geführt hat.
 
-## <a name="what-does-component-mean-in-the-context-of-application-insights"></a>Was bedeutet „Komponente“ im Kontext von Application Insights?
+## <a name="what-is-a-component"></a>Was ist eine Komponente?
 
 Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Microserviceanwendung. Entwickler und Betriebsteams verfügen über Sichtbarkeit oder Zugriff für die von diesen Anwendungskomponenten generierte Telemetrie auf Codeebene.
 
@@ -32,10 +32,12 @@ Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Mi
 * Komponenten können in einer beliebigen Anzahl von Server-/Rollen-/Containerinstanzen ausgeführt werden.
 * Komponenten können separate Application Insights-Instrumentierungsschlüssel (sogar in verschiedenen Abonnements) oder verschiedene Rollen aufweisen, die alle an einen einzelnen Application Insights-Instrumentierungsschlüssel berichten. Auf der neuen Benutzeroberfläche werden Details übergreifend über alle Komponenten angezeigt, unabhängig von deren Einrichtung.
 
-> [!Tip]
-> Um optimale Ergebnisse zu erzielen, achten Sie darauf, dass alle Komponenten mit den neuesten stabilen Application Insights-SDKs instrumentiert sind. Wenn es sich um verschiedene Application Insights-Ressourcen handelt, sorgen Sie für passende Berechtigungen zum Anzeigen ihrer Telemetrie.
+> [!NOTE]
+> * **Fehlen die Links von verknüpften Elementen?** Alle Telemetriedaten, die im Zusammenhang mit einer serverseitigen Anforderung, Abhängigkeit und Ausnahme stehen, werden auf der linken Seite in den Abschnitten [oben](#cross-component-transaction-chart) und [unten](#all-telemetry-related-to-the-selected-component-operation) angezeigt. 
+> * Im Abschnitt [oben](#cross-component-transaction-chart) wird die Transaktion für alle Komponenten korreliert. Um optimale Ergebnisse zu erzielen, achten Sie darauf, dass alle Komponenten mit den neuesten stabilen Application Insights-SDKs instrumentiert sind. Wenn es sich um verschiedene Application Insights-Ressourcen handelt, sorgen Sie für passende Berechtigungen zum Anzeigen ihrer Telemetrie.
+> * Der Abschnitt [unten](#all-telemetry-related-to-the-selected-component-operation) auf der linken Seite zeigt **alle** Telemetriedaten, einschließlich Ablaufverfolgungen und Ereignissen, die mit der Anforderung der ausgewählten Komponente verknüpft sind.
 
-## <a name="enable-and-access"></a>Aktivieren und Zugriff
+## <a name="enable-transaction-diagnostics-experience"></a>Aktivieren der Oberfläche zur Transaktionsdiagnose
 Aktivieren Sie in der [Vorschauliste](app-insights-previews.md) "Unified details: E2E Transaction Diagnostics" (Einheitliche Details: E2E-Transaktionsdiagnose)
 
 ![Aktivieren der Vorschau](media/app-insights-e2eTxn-diagnostics/previews.png)
@@ -49,7 +51,7 @@ Diese Ansicht ist in drei Hauptteile gegliedert: ein komponentenübergreifendes 
 
 ![Hauptbestandteile](media/app-insights-e2eTxn-diagnostics/3partsCrossComponent.png)
 
-### <a name="1-cross-component-transaction-chart"></a>[1] Komponentenübergreifendes Transaktionsdiagramm
+## <a name="cross-component-transaction-chart"></a>Komponentenübergreifendes Transaktionsdiagramm
 
 Dieses Diagramm stellt eine komponentenübergreifende Zeitachse mit horizontalen Balken für die Dauer von Anforderungen und Abhängigkeiten bereit. Alle gesammelten Ausnahmen werden ebenfalls auf der Zeitachse markiert.
 
@@ -57,20 +59,20 @@ Dieses Diagramm stellt eine komponentenübergreifende Zeitachse mit horizontalen
 * Alle Aufrufe von externen Abhängigkeiten sind einfache, nicht zuklappbare Zeilen mit Symbolen, die den Typ der Abhängigkeit darstellen.
 * Aufrufe an andere Komponenten sind in zuklappbaren Zeilen aufgeführt. Jede Zeile entspricht einem bestimmten für die Komponenten aufgerufenen Vorgang.
 * Standardmäßig wird die zu Anfang von Ihnen ausgewählte Anforderung, Abhängigkeit oder Ausnahme im Diagramm angezeigt.
-* Wählen Sie eine beliebige Zeile aus, um ihre Details auf der rechten Seite anzuzeigen. Klicken Sie auf "Open profiler traces" (Profiler-Überwachungen öffnen) oder "Open debug snapshot" (Debugmomentaufnahme öffnen), um die Diagnose auf Codeebene in den entsprechenden Detailbereichen anzuzeigen.
+* Wählen Sie eine beliebige Zeile aus, um ihre [Details auf der rechten Seite](#details-of-the-selected-telemetry) anzuzeigen. 
 
 > [!NOTE]
 Aufrufe an andere Komponenten weisen zwei Zeilen auf : Eine Zeile stellt den ausgehenden Aufruf (Abhängigkeit) von der aufrufenden Komponente dar, die andere Zeile entspricht der eingehenden Anforderung bei der aufgerufenen Komponente. Das führende Symbol und die unterschiedliche Gestaltung der Balken für die Dauer erleichtern die Unterscheidung zwischen ihnen.
 
-### <a name="2-time-sequenced-telemetry-of-the-selected-component-operation"></a>[2] Telemetrie des ausgewählten Komponentenvorgangs in der zeitlichen Abfolge
+## <a name="all-telemetry-related-to-the-selected-component-operation"></a>Alle Telemetriedaten, die mit dem Vorgang für ausgewählte Komponenten verknüpft sind
 
-Jede im komponentenübergreifenden Transaktionsdiagramm ausgewählte Zeile bezieht sich auf einen Vorgang, der bei einer bestimmten Komponente aufgerufen wurde. Dieser ausgewählte Komponentenvorgang spiegelt sich im Titel des unteren Bereichs wider. Öffnen Sie diesen Abschnitt, um die Abfolge der gesamten Telemetrie im Zusammenhang mit diesem bestimmten Vorgang im zeitlichen Verlauf anzuzeigen. Sie können in dieser Liste beliebige Telemetrieelemente auswählen, um die entsprechenden Details auf der rechten Seite anzuzeigen.
+Jede im komponentenübergreifenden Transaktionsdiagramm ausgewählte Zeile bezieht sich auf einen Vorgang, der bei einer bestimmten Komponente aufgerufen wurde. Dieser ausgewählte Komponentenvorgang spiegelt sich im Titel des unteren Bereichs wider. Öffnen Sie diesen Abschnitt, um die Abfolge der gesamten Telemetrie im Zusammenhang mit diesem bestimmten Vorgang im zeitlichen Verlauf anzuzeigen. Sie können in dieser Liste beliebige Telemetrieelemente auswählen, um die entsprechenden [Details auf der rechten Seite](#details-of-the-selected-telemetry) anzuzeigen.
 
 ![Zeitliche Abfolge der gesamten Telemetrie](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
 
-### <a name="3-details-pane"></a>[3] Detailbereich
+## <a name="details-of-the-selected-telemetry"></a>Details zur ausgewählten Telemetrie
 
-In diesem Bereich werden die Details der in einem der beiden Abschnitte links ausgewählten Elemente angezeigt. Mit "Alle anzeigen" wird eine Liste der erfassten Standardattribute angezeigt. Eventuelle benutzerdefinierte Attribute werden separat unterhalb des Standardsatzes aufgeführt.
+In diesem Bereich werden die Details der in einem der beiden Abschnitte links ausgewählten Elemente angezeigt. Mit "Alle anzeigen" wird eine Liste der erfassten Standardattribute angezeigt. Eventuelle benutzerdefinierte Attribute werden separat unterhalb des Standardsatzes aufgeführt. Klicken Sie auf "Open profiler traces" (Profiler-Überwachungen öffnen) oder "Open debug snapshot" (Debugmomentaufnahme öffnen), um die Diagnose auf Codeebene in den entsprechenden Detailbereichen anzuzeigen.
 
 ![Ausnahmedetail](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
 

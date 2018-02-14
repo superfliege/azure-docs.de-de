@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 1ccbfe23e9c887a98a0dbfa8031078a15c6e41b6
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 6d0d7c8643551dde69a7bf785de72c1ca984c580
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Verwenden von Apache Hive als Tool zum Extrahieren, Transformieren und Laden (ETL)
 
@@ -94,7 +94,8 @@ Wenn das Ziel für die Daten keine Datenbank ist, können Sie eine Datei im pass
 
 Falls Sie im Rahmen des ETL-Prozesses mehrere Vorgänge für die Daten ausführen müssen, sollten Sie die damit verbundene Verwaltung berücksichtigen. Wenn die Vorgänge mit einem externen Programm gesteuert werden, anstatt als Workflow innerhalb der Lösung, müssen Sie die Entscheidung treffen, ob einige Vorgänge parallel ausgeführt werden können. Außerdem müssen Sie erkennen können, wann die einzelnen Aufträge abgeschlossen sind. Die Verwendung eines Workflowmechanismus wie Oozie in Hadoop kann einfacher als der Versuch sein, mithilfe von externen Skripts oder benutzerdefinierten Programmen eine Sequenz von Vorgängen zu orchestrieren. Weitere Informationen zu Oozie finden Sie unter [Workflow and job orchestration](https://msdn.microsoft.com/library/dn749829.aspx) (Orchestrierung von Workflows und Aufträgen).
 
-<!-- ## Next steps -->
-<!-- * [ETL at scale](../hdinsight-etl-at-scale.md): Learn more about performing ETL at scale. -->
-<!-- * [Operationalize Data Pipelines with Oozie](hdinsight-operationalize-data-pipeline.md): Learn how to build a data pipeline that uses Hive to summarize CSV flight delay data, stage the prepared data in Azure Storage blobs, and then use Sqoop to load the summarized data into Azure SQL Database. -->
-<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md): Walk through an end-to-end ETL pipeline.  -->
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)](apache-hadoop-etl-at-scale.md)
+* [Operationalisieren einer Datenanalysepipeline](../hdinsight-operationalize-data-pipeline.md)
+<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->

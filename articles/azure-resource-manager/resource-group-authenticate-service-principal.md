@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/28/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9431483293bcc252b79d02ba2d655a3aa86aaa4a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 8262162ce73176426057af4654f12614cac85472
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell
 
@@ -62,7 +62,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-Das Beispiel befindet sich 20 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {ID} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {ID} ist im Verzeichnis nicht vorhanden.).
+Das Beispiel befindet sich 20 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „Principal {ID} does not exist in the directory {DIR-ID}.“ (Prinzipal {ID} ist im Verzeichnis {DIR-ID} nicht vorhanden.).
 
 Mit dem folgenden Skript können Sie einen anderen Bereich als das standardmäßige Abonnement angeben und die Rollenzuweisung erneut versuchen, falls ein Fehler auftritt:
 
@@ -128,7 +128,7 @@ Bitte beachten Sie bezüglich des Skripts folgende Punkte:
 * Um der Identität Zugriff auf das Standardabonnement zu gewähren, müssen Sie weder den Parameter ResourceGroup noch SubscriptionId angeben.
 * Geben Sie den Parameter ResourceGroup nur an, wenn Sie den Bereich der Rollenzuweisung auf eine Ressourcengruppe begrenzen möchten.
 *  In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
-* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {ID} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {ID} ist im Verzeichnis nicht vorhanden.).
+* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „Principal {ID} does not exist in the directory {DIR-ID}.“ (Prinzipal {ID} ist im Verzeichnis {DIR-ID} nicht vorhanden.).
 * Wenn Sie dem Dienstprinzipal Zugriff auf weitere Abonnements oder Ressourcengruppen erteilen müssen, führen Sie das `New-AzureRMRoleAssignment`-Cmdlet erneut mit unterschiedlichen Bereichen aus.
 
 
@@ -160,7 +160,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-Das Beispiel befindet sich 20 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {ID} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {ID} ist im Verzeichnis nicht vorhanden.).
+Das Beispiel befindet sich 20 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „Principal {ID} does not exist in the directory {DIR-ID}.“ (Prinzipal {ID} ist im Verzeichnis {DIR-ID} nicht vorhanden.).
 
 Mit dem folgenden Skript können Sie einen anderen Bereich als das standardmäßige Abonnement angeben und die Rollenzuweisung erneut versuchen, falls ein Fehler auftritt. Sie müssen über Azure PowerShell 2.0 unter Windows 10 oder Windows Server 2016 verfügen.
 
@@ -223,7 +223,7 @@ Bitte beachten Sie bezüglich des Skripts folgende Punkte:
 * Um der Identität Zugriff auf das Standardabonnement zu gewähren, müssen Sie weder den Parameter ResourceGroup noch SubscriptionId angeben.
 * Geben Sie den Parameter ResourceGroup nur an, wenn Sie den Bereich der Rollenzuweisung auf eine Ressourcengruppe begrenzen möchten.
 * In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
-* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {ID} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {ID} ist im Verzeichnis nicht vorhanden.).
+* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „Principal {ID} does not exist in the directory {DIR-ID}.“ (Prinzipal {ID} ist im Verzeichnis {DIR-ID} nicht vorhanden.).
 * Wenn Sie dem Dienstprinzipal Zugriff auf weitere Abonnements oder Ressourcengruppen erteilen müssen, führen Sie das `New-AzureRMRoleAssignment`-Cmdlet erneut mit unterschiedlichen Bereichen aus.
 
 Wenn Sie **nicht mit Windows 10 oder Windows Server 2016 Technical Preview arbeiten**, müssen Sie den [Generator für selbstsignierte Zertifikate](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) aus dem Skriptcenter von Microsoft herunterladen. Extrahieren Sie den Inhalt, und importieren Sie das benötigte Cmdlet.
@@ -321,7 +321,7 @@ Bitte beachten Sie bezüglich des Skripts folgende Punkte:
 
 * Der Zugriff ist auf das Abonnement beschränkt.
 * In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
-* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {ID} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {ID} ist im Verzeichnis nicht vorhanden.).
+* Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „Principal {ID} does not exist in the directory {DIR-ID}.“ (Prinzipal {ID} ist im Verzeichnis {DIR-ID} nicht vorhanden.).
 * Wenn Sie dem Dienstprinzipal Zugriff auf weitere Abonnements oder Ressourcengruppen erteilen müssen, führen Sie das `New-AzureRMRoleAssignment`-Cmdlet erneut mit unterschiedlichen Bereichen aus.
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Bereitstellen eines Zertifikats über automatisiertes PowerShell-Skript

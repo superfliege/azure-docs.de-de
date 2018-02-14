@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: ea0c2487e24fcb924632d3277163b7732442b414
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3f8b5e8b8af4be85e830bde8eb0587c632a9dd1f
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/01/2018
@@ -91,13 +91,13 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
 
 Sie können die meisten Ressourcen mithilfe der in diesem Artikel gezeigten Self-Service-Vorgänge verschieben. Verwenden Sie die Self-Service-Vorgänge für Folgendes:
 
-* Verschieben von Resource Manager-Ressourcen.
-* Verschieben von klassischen Ressourcen unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations).
+* Verschieben von Resource Manager-Ressourcen
+* Verschieben von klassischen Ressourcen unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 
 Wenden Sie sich in folgenden Fällen an den [Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview):
 
 * Sie verschieben Ihre Ressourcen in ein neues Azure-Konto (und einen neuen Azure Active Directory-Mandanten) und benötigen Unterstützung für die Anweisungen im vorherigen Abschnitt.
-* Sie verschieben klassische Ressourcen, aber es treten Probleme durch Einschränkungen auf.
+* Verschieben von klassischen Ressourcen, wenn Probleme durch Einschränkungen auftreten
 
 ## <a name="services-that-enable-move"></a>Dienste, die eine Verschiebung ermöglichen
 
@@ -190,43 +190,29 @@ Ein virtuelles Netzwerk kann nicht in ein anderes Abonnement verschoben werden, 
 
 ## <a name="app-service-limitations"></a>App Service-Einschränkungen
 
-Bei der Arbeit mit App Service-Apps können Sie nicht nur einen App Service-Plan verschieben. Zum Verschieben von App Service-Apps stehen folgende Optionen bereit:
+Die Einschränkungen beim Verschieben von App Service-Ressourcen unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben.
 
-* Verschieben Sie den App Service-Plan und alle anderen App Service-Ressourcen in dieser Ressourcengruppe in eine neue Ressourcengruppe, die noch nicht über App Service-Ressourcen verfügt. Diese Anforderung bedeutet, dass Sie auch die App Service-Ressourcen verschieben müssen, die nicht dem App Service-Plan zugeordnet sind.
-* Verschieben Sie Apps in eine andere Ressourcengruppe, behalten Sie jedoch alle App Services-Pläne in der ursprünglichen Ressourcengruppe bei.
+### <a name="moving-within-the-same-subscription"></a>Verschieben innerhalb desselben Abonnements
 
-Der App Service-Plan muss sich nicht in derselben Ressourcengruppe wie die App befinden, damit die App ordnungsgemäß funktioniert.
+Beim Verschieben einer Web-App _innerhalb desselben Abonnements_ können Sie die hochgeladenen SSL-Zertifikate nicht verschieben. Allerdings können Sie eine Web-App in die neue Ressourcengruppe verschieben, ohne ihr hochgeladenes SSL-Zertifikat zu verschieben, und die SSL-Funktionalität Ihrer App wird davon nicht beeinträchtigt. 
 
-Angenommen, Ihre Ressourcengruppe enthält folgende Ressourcen:
+Wenn Sie das SSL-Zertifikat mit der Web-App verschieben möchten, gehen Sie folgendermaßen vor:
 
-* **web-a**, die **plan-a** zugeordnet ist
-* **web-b**, die **plan-b** zugeordnet ist
+1.  Löschen Sie das hochgeladene Zertifikat aus der Web-App.
+2.  Verschieben Sie die Web-App.
+3.  Laden Sie das Zertifikat in die verschobene Web-App hoch.
 
-Die Optionen sind wie folgt:
+### <a name="moving-across-subscriptions"></a>Abonnementübergreifendes Verschieben
 
-* Verschieben von **web-a**, **plan-a**, **web-b** und **plan-b**
-* Verschieben von **web-a** und **web-b**
-* Verschieben von **web-a**
-* Verschieben von **web-b**
+Beim Verschieben einer Web-App _zwischen Abonnements_ gelten die folgenden Einschränkungen:
 
-Alle anderen Kombinationen umfassen das Hinterlassen eines Ressourcentyps, der beim Verschieben eines App Service-Plans (beliebiger Typ von App Service-Ressource) nicht zurückbleiben darf.
-
-Wenn sich Ihre Web-App in einer anderen Ressourcengruppe als ihr App Service-Plan befindet, aber Sie beide in eine neue Ressourcengruppe verschieben möchten, muss das Verschieben in zwei Schritten erfolgen. Beispiel: 
-
-* **web-a** befindet sich in **web-group**
-* **plan-a** befindet sich in **plan-group**
-* Sie möchten, dass sich **web-a** und **plan-a** in **combined-group** befinden
-
-Um dies zu erreichen, führen Sie zwei getrennte Verschiebevorgänge in der folgenden Reihenfolge aus:
-
-1. Verschieben Sie **web-a** nach **plan-group**.
-2. Verschieben Sie **web-a** und **plan-a** nach **combined-group**.
-
-Sie können ein App Service Certificate ohne Probleme in eine neue Ressourcengruppe oder ein neues Abonnement verschieben. Wenn Ihre Web-App jedoch ein SSL-Zertifikat enthält, das Sie extern erworben und in die App hochgeladen haben, müssen Sie das Zertifikat löschen, bevor Sie die Web-App verschieben. Sie können beispielsweise die folgenden Schritte ausführen:
-
-1. Löschen des hochgeladenen Zertifikats aus der Web-App
-2. Verschieben der Web-App
-3. Hochladen des Zertifikats in die Web-App
+- Die Zielressourcengruppe darf keine App Service-Ressourcen besitzen. Zu App Service-Ressourcen zählen:
+    - Web-Apps
+    - App Service-Pläne
+    - Hochgeladene oder importierte SSL-Zertifikate
+    - App Service-Umgebungen
+- Alle App Service-Ressourcen in der Ressourcengruppe müssen zusammen verschoben werden.
+- App Service-Ressourcen können nur aus der Ressourcengruppe verschoben werden, in der sie ursprünglich erstellt wurden. Wenn eine App Service-Ressource sich nicht mehr in ihrer ursprünglichen Ressourcengruppe befindet, muss sie erst zurück in die ursprüngliche Ressourcengruppe verschoben werden, bevor sie zwischen Abonnements verschoben werden kann. 
 
 ## <a name="classic-deployment-limitations"></a>Einschränkungen bei der klassischen Bereitstellung
 

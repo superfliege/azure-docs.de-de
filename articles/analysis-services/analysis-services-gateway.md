@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 02/02/2018
 ms.author: owend
-ms.openlocfilehash: 0b11c005ddcf4a3416104e7cef39a7ce97957ba3
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a0af2e0448d8ce991c9bcc138d6132d216715768
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway
 Das lokale Datengateway fungiert als Brücke für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Microsoft Flow. Sie können einem einzelnen Gateway mehrere Dienste in derselben Region zuordnen. 
@@ -28,11 +28,11 @@ Das erstmalige Einrichten des Gateways ist ein Prozess mit vier Schritten:
 
 - **Herunterladen und Ausführen des Setupprogramms:** Bei diesem Schritt wird ein Gatewaydienst auf einem Computer in Ihrer Organisation installiert. Sie melden sich bei Azure ebenfalls mit einem Konto in der Azure AD-Instanz Ihres [Mandanten](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) an. Azure B2B (Gast)-Konten werden nicht unterstützt.
 
-- **Registrieren des Gateways:** Bei diesem Schritt geben Sie einen Namen und einen Wiederherstellungsschlüssel für Ihr Gateway ein, wählen eine Region aus und registrieren Ihr Gateway beim Gateway-Clouddienst. Die Gatewayressource **muss in der gleichen Region registriert werden** wie die Analysis Services-Server. 
+- **Registrieren des Gateways**: In diesem Schritt geben Sie einen Namen und einen Wiederherstellungsschlüssel für Ihr Gateway ein, wählen eine Region aus und registrieren Ihr Gateway beim Gatewayclouddienst. Die Gatewayressource kann in jeder Region registriert werden, es empfiehlt sich aber, die gleiche Region zu verwenden, in der sich auch die Analysis Services-Server befinden. 
 
 - **Erstellen einer Gatewayressource in Azure:** Bei diesem Schritt erstellen Sie eine Gatewayressource in Ihrem Azure-Abonnement.
 
-- **Verbinden Ihrer Server mit der Gatewayressource:** Nachdem Sie in Ihrem Abonnement eine Gatewayressource eingerichtet haben, können Sie damit beginnen, Ihre Server mit dieser zu verbinden. Sie können mehrere Server und andere Ressourcen mit ihr verbinden, sofern sie sich in derselben Region befinden.
+- **Verbinden Ihrer Server mit der Gatewayressource:** Nachdem Sie in Ihrem Abonnement eine Gatewayressource eingerichtet haben, können Sie damit beginnen, Ihre Server mit dieser zu verbinden. Sie können mehrere Server und andere Ressourcen mit ihr verbinden.
 
 Wenn Sie sofort beginnen möchten, lesen Sie unter [Installieren und Konfigurieren eines lokalen Datengateways](analysis-services-gateway-install.md) nach.
 
@@ -67,7 +67,7 @@ Es wird empfohlen, die IP-Adressen für Ihren Datenbereich in die Whitelist der 
 
 Nachfolgend sind die vollqualifizierten Domänennamen aufgeführt, die vom Gateway verwendet werden.
 
-| Domänennamen | Ausgehende Ports | Beschreibung |
+| Domänennamen | Ausgehende Ports | BESCHREIBUNG |
 | --- | --- | --- |
 | *.powerbi.com |80 |Zum Herunterladen des Installers wird HTTP verwendet. |
 | *.powerbi.com |443 |HTTPS |
@@ -106,14 +106,14 @@ Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS (und n
 **A**: Sie können beim Installieren des lokalen Datengateways nur ein Geschäfts-, Schul- oder Unikonto verwenden. Dieses Konto muss sich darüber hinaus im gleichen Mandanten befinden wie das Abonnement, unter dem Sie die Gatewayressource konfigurieren. Ihr Anmeldekonto ist in einem Mandanten gespeichert, der von Azure Active Directory (Azure AD) verwaltet wird. Normalerweise entspricht der Benutzerprinzipalname (UPN) Ihres Azure AD-Kontos der E-Mail-Adresse.
 
 **F**: Wo werden meine Anmeldeinformationen gespeichert ? <br/>
-**A**: Die Anmeldeinformationen, die Sie für eine Datenquelle eingeben, werden verschlüsselt und im Gateway-Clouddienst gespeichert. Die Anmeldeinformationen werden im lokalen Datengateway entschlüsselt.
+**A**: Die Anmeldeinformationen, die Sie für eine Datenquelle eingeben, werden verschlüsselt und im Gatewayclouddienst gespeichert. Die Anmeldeinformationen werden im lokalen Datengateway entschlüsselt.
 
 **F**: Gibt es Anforderungen an die Netzwerkbandbreite? <br/>
 **A**: Es ist ratsam, dafür zu sorgen, dass die Netzwerkverbindung über einen guten Durchsatz verfügt. Jede Umgebung ist anders, und die Menge der zu sendenden Daten wirkt sich auf die Ergebnisse aus. ExpressRoute könnte ein Durchsatzniveau zwischen lokalen und Azure-Rechenzentren gewährleisten.
 Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoch der Durchsatz ist.
 
 **F**: Wie lang ist die Wartezeit für das Ausführen von Abfragen bei einer Datenquelle aus dem Gateway? Welche Architektur ist die beste? <br/>
-**A**: Um die Netzwerkwartezeit zu reduzieren, installieren Sie das Gateway so nahe wie möglich bei der Datenquelle. Wenn Sie das Gateway auf der tatsächlichen Datenquelle installieren können, wird die Wartezeit durch diese Nähe minimiert. Berücksichtigen Sie auch die Rechenzentren. Wenn für Ihren Dienst beispielsweise das Rechenzentrum „USA, Westen“ verwendet wird und Sie SQL Server auf einer Azure-VM hosten, sollte sich die Azure-VM ebenfalls in der Region „USA, Westen“ befinden. Aufgrund dieser Nähe wird die Wartezeit verringert, und es werden Gebühren für ausgehenden Datenverkehr auf der Azure-VM vermieden.
+**A**: Um die Netzwerklatenz zu reduzieren, installieren Sie das Gateway so nahe wie möglich bei der Datenquelle. Wenn Sie das Gateway auf der tatsächlichen Datenquelle installieren können, wird die Wartezeit durch diese Nähe minimiert. Berücksichtigen Sie auch die Rechenzentren. Wenn für Ihren Dienst beispielsweise das Rechenzentrum „USA, Westen“ verwendet wird und Sie SQL Server auf einer Azure-VM hosten, sollte sich die Azure-VM ebenfalls in der Region „USA, Westen“ befinden. Aufgrund dieser Nähe wird die Wartezeit verringert, und es werden Gebühren für ausgehenden Datenverkehr auf der Azure-VM vermieden.
 
 **F**: Wie werden Ergebnisse an die Cloud zurückgesendet? <br/>
 **A**: Die Ergebnisse werden über Azure Service Bus gesendet.
@@ -125,13 +125,13 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 **A**: Die Ports und Hosts, die das Gateway verwendet.
 
 **F**: Wie wird der eigentliche Windows-Dienst genannt?<br/>
-**A**: In „Dienste“ hat das Gateway den Namen „Lokales Datengateway“.
+**A**: In „Dienste“ hat das Gateway den Namen „Lokaler Datengatewaydienst“.
 
 **F**: Kann der Gateway-Windows-Dienst mit einem Azure Active Directory-Konto ausgeführt werden? <br/>
 **A**: Nein. Der Windows-Dienst benötigt ein gültiges Windows-Konto. Standardmäßig wird er mit der Dienst-SID „NT SERVICE\PBIEgwService“ ausgeführt.
 
 **F**: Wie übernehme ich ein Gateway? <br/>
-**A**: Um ein Gateway übernehmen zu können, müssen Sie in Azure Besitzer der Gatewayressource sein und über den Wiederherstellungsschlüssel verfügen. Sie können das Gateway übernehmen, indem Sie unter Einstellungen > Programme „Einrichtung/Änderung“ ausführen. Besitzer von Gatewayressourcen können unter Zugriffssteuerung festgelegt werden.
+**A**: Um ein Gateway übernehmen zu können (durch Ausführen von „Einrichten/Ausführen“ unter „Systemsteuerung > Programme und Funktionen“), müssen Sie in Azure Besitzer der Gatewayressource sein und über den Wiederherstellungsschlüssel verfügen. Besitzer von Gatewayressourcen können unter Zugriffssteuerung festgelegt werden.
 
 ### <a name="high-availability"></a>Hohe Verfügbarkeit und Notfallwiederherstellung
 
@@ -144,10 +144,10 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 ## <a name="troubleshooting"></a>Problembehandlung
 
 **F**: Warum wird mein Gateway nicht in der Liste der Gatewayinstanzen angezeigt, wenn ich versuche, die Gatewayressource in Azure zu erstellen? <br/>
-**A**: Es gibt zwei mögliche Gründe. Erstens könnte bereits eine Ressource für das Gateway im aktuellen oder einem anderen Abonnement erstellt sein. Um diese Möglichkeit auszuschließen, zählen Sie Ressourcen des Typs **Lokale Datengateways** aus dem Portal auf. Stellen Sie sicher, dass Sie beim Aufzählen aller Ressourcen alle Abonnements auswählen. Beachten Sie: Sobald die Ressource erstellt wurde, wird das Gateway in der Benutzeroberfläche „Gatewayressource erstellen“ nicht in der Liste der Gatewayinstanzen angezeigt. Die zweite Möglichkeit ist, dass die Azure AD-Identität des Benutzers, der das Gateway installiert hat, nicht dem Benutzer entspricht, der beim Azure-Portal angemeldet ist. Um dieses Problem zu beheben, melden Sie sich mit demselben Konto beim Verwaltungsportal an, wie der Benutzer, der das Gateway installiert hat.
+**A**: Es gibt zwei mögliche Gründe. Erstens könnte bereits eine Ressource für das Gateway im aktuellen oder einem anderen Abonnement erstellt sein. Um diese Möglichkeit auszuschließen, zählen Sie Ressourcen des Typs **Lokale Datengateways** aus dem Portal auf. Stellen Sie sicher, dass Sie beim Aufzählen aller Ressourcen alle Abonnements auswählen. Sobald die Ressource erstellt wurde, wird das Gateway auf der Portalseite „Gatewayressource erstellen“ nicht in der Liste der Gatewayinstanzen angezeigt. Der zweite mögliche Grund ist, dass die Azure AD-Identität des Benutzers, der das Gateway installiert hat, nicht dem Benutzer entspricht, der beim Azure-Portal angemeldet ist. Um dieses Problem zu beheben, melden Sie sich mit dem Konto des Benutzers beim Portal an, der das Gateway installiert hat.
 
 **F**: Wie kann ich feststellen, welche Abfragen an die lokale Datenquelle gesendet werden? <br/>
-**A**: Sie können die Abfrageablaufverfolgung aktivieren. Hierin sind die gesendeten Abfragen enthalten. Denken Sie daran, die Abfrageablaufverfolgung nach Abschluss der Problembehandlung wieder auf den ursprünglichen Wert zurückzusetzen. Wenn Sie die Abfrageablaufverfolgung aktiviert lassen, werden größere Protokolle erstellt.
+**A**: Sie können die Abfrageablaufverfolgung aktivieren, die die gesendeten Abfragen enthält. Denken Sie daran, die Abfrageablaufverfolgung nach Abschluss der Problembehandlung wieder auf den ursprünglichen Wert zurückzusetzen. Wenn Sie die Abfrageablaufverfolgung aktiviert lassen, werden größere Protokolle erstellt.
 
 Sie können auch Tools anzeigen, die Ihre Datenquelle für die Verfolgung von Abfrageabläufen bietet. Sie können z.B. Erweiterte Ereignisse oder SQL Profiler für SQL Server und Analysis Services verwenden.
 
