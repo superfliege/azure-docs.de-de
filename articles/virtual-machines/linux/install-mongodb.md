@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 5a9797e1fe3d03840e3a20589a50c90968ea5de0
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 33e9115edd6e9bee0d38f885c557e9f75e24a568
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer
 [MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. In diesem Artikel wird das Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0 beschrieben. Sie können diese Schritte auch per [Azure CLI 1.0](install-mongodb-nodejs.md) ausführen. Hier finden Sie Beispiele mit Informationen zu den folgenden Schritten:
@@ -29,15 +29,15 @@ ms.lasthandoff: 12/16/2017
 
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Manuelles Installieren und Konfigurieren von MongoDB auf einem virtuellen Computer
-Für MongoDB stehen [Installationsanweisungen](https://docs.mongodb.com/manual/administration/install-on-linux/) für Linux-Distributionen zur Verfügung, u.a. für Red Hat/CentOS, SUSE, Ubuntu und Debian. Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *CentOS* erstellt. Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Für MongoDB stehen [Installationsanweisungen](https://docs.mongodb.com/manual/administration/install-on-linux/) für Linux-Distributionen zur Verfügung, u.a. für Red Hat/CentOS, SUSE, Ubuntu und Debian. Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *CentOS* erstellt. Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein.
 
-Erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVM* mit dem Benutzer *azureuser* erstellt, indem die Authentifizierung mit einem öffentlichen SSH-Schlüssel verwendet wird
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVM* mit dem Benutzer *azureuser* erstellt, indem die Authentifizierung mit einem öffentlichen SSH-Schlüssel verwendet wird
 
 ```azurecli
 az vm create \
@@ -119,20 +119,20 @@ Sie können mithilfe der folgenden Azure-Schnellstartvorlage von GitHub eine ein
 
 * [Basic MongoDB instance on CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) (Einfache MongoDB-Instanz unter CentOS) – https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment#create) die MongoDB-Vorlage bereit. Geben Sie bei Aufforderung Ihre eigenen eindeutigen Werte für *newStorageAccountName*, *dnsNameForPublicIP* sowie den Administratorbenutzernamen und das Kennwort an:
+Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) die MongoDB-Vorlage bereit. Geben Sie bei Aufforderung Ihre eigenen eindeutigen Werte für *newStorageAccountName*, *dnsNameForPublicIP* sowie den Administratorbenutzernamen und das Kennwort an:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
-Melden Sie sich bei dem virtuellen Computer mit der öffentlichen DNS-Adresse des virtuellen Computers an. Sie können die öffentliche DNS-Adresse mit dem Befehl [az vm show](/cli/azure/vm#show) anzeigen:
+Melden Sie sich bei dem virtuellen Computer mit der öffentlichen DNS-Adresse des virtuellen Computers an. Sie können die öffentliche DNS-Adresse mit dem Befehl [az vm show](/cli/azure/vm#az_vm_show) anzeigen:
 
 ```azurecli
 az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
@@ -170,13 +170,13 @@ Sie können mithilfe der folgenden Azure-Schnellstartvorlage von GitHub einen ko
 > [!WARNING]
 > Für die Bereitstellung dieses komplexen MongoDB-Shardclusters sind mehr als 20 Kerne erforderlich. Dies ist in der Regel die Standardanzahl von Kernen pro Region für ein Abonnement. Stellen Sie eine Azure-Supportanfrage zum Erhöhen der Kernanzahl.
 
-Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment#create) die MongoDB-Vorlage bereit. Definieren Sie bei Bedarf Ihre eigenen Ressourcennamen und -größen, z.B. für *mongoAdminUsername*, *sizeOfDataDiskInGB* und *configNodeVmSize*:
+Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) die MongoDB-Vorlage bereit. Definieren Sie bei Bedarf Ihre eigenen Ressourcennamen und -größen, z.B. für *mongoAdminUsername*, *sizeOfDataDiskInGB* und *configNodeVmSize*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -198,7 +198,7 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-Es kann über eine Stunde dauern, bis die Bereitstellung und die Konfiguration aller VM-Instanzen abgeschlossen ist. Das Flag `--no-wait` wird am Ende des vorherigen Befehls verwendet, sodass die Steuerung an die Eingabeaufforderung zurückgegeben wird, nachdem die Vorlagenbereitstellung auf der Azure-Plattform akzeptiert wurde. Sie können dann mit dem Befehl [az group deployment show](/cli/azure/group/deployment#show) den Bereitstellungsstatus anzeigen. Im folgenden Beispiel wird der Status für die Bereitstellung *myMongoDBCluster* in der Ressourcengruppe *myResourceGroup* angezeigt:
+Es kann über eine Stunde dauern, bis die Bereitstellung und die Konfiguration aller VM-Instanzen abgeschlossen ist. Das Flag `--no-wait` wird am Ende des vorherigen Befehls verwendet, sodass die Steuerung an die Eingabeaufforderung zurückgegeben wird, nachdem die Vorlagenbereitstellung auf der Azure-Plattform akzeptiert wurde. Sie können dann mit dem Befehl [az group deployment show](/cli/azure/group/deployment#az_group_deployment_show) den Bereitstellungsstatus anzeigen. Im folgenden Beispiel wird der Status für die Bereitstellung *myMongoDBCluster* in der Ressourcengruppe *myResourceGroup* angezeigt:
 
 ```azurecli
 az group deployment show \

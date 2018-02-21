@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 9eeb265e063e6642b90dd641d41d0a54cbc6951e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 593894b33dfcab4bc03a6223e2fdee1ff9bd7d15
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -55,7 +55,7 @@ Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 
     b. Erstellen Sie zwei Lookup-Aktivitäten. Verwenden Sie die erste Lookup-Aktivität, um den letzten Grenzwert abzurufen. Verwenden Sie die zweite Lookup-Aktivität, um den neuen Grenzwert abzurufen. Diese Grenzwerte werden an die Copy-Aktivität übergeben.
 
-    c. Erstellen Sie eine Copy-Aktivität, die Zeilen aus dem Quelldatenspeicher kopiert, wobei der Wert der Grenzwertspalte größer als der alte Grenzwert und kleiner als der neue Grenzwert ist. Anschließend werden die Deltadaten aus dem Quelldatenspeicher als neue Datei in einen Azure-Blobspeicher kopiert.
+    c. Erstellen Sie eine Copy-Aktivität, die Zeilen aus dem Quelldatenspeicher kopiert, wobei der Wert der Grenzwertspalte größer als der alte Grenzwert und kleiner als der neue Grenzwert ist. Anschließend werden die Deltadaten aus dem Quelldatenspeicher als neue Datei in Azure Blob Storage kopiert.
 
     d. Erstellen Sie eine StoredProcedure-Aktivität, die den Grenzwert für die Pipeline aktualisiert, die nächstes Mal ausgeführt wird. 
 
@@ -110,7 +110,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     
     ```
 
-### <a name="create-destination-tables-in-your-sql-database"></a>Erstellen von Zieltabellen in Ihrer SQL-Datenbank
+### <a name="create-destination-tables-in-your-azure-sql-database"></a>Erstellen von Zieltabellen in Ihrer Azure SQL-Datenbank
 1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit der SQL Server-Datenbank her.
 
 2. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Neue Abfrage**.
@@ -133,7 +133,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     ```
 
-### <a name="create-another-table-in-the-sql-database-to-store-the-high-watermark-value"></a>Erstellen Sie eine andere Tabelle in SQL-Datenbank zum Speichern des hohen Grenzwerts.
+### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Erstellen einer weiteren Tabelle in der Azure SQL-Datenbank zum Speichern des hohen Grenzwerts
 1. Führen Sie den folgenden SQL-Befehl für Ihre SQL-Datenbank aus, um eine Tabelle mit dem Namen `watermarktable` zum Speichern des Grenzwerts zu erstellen: 
     
     ```sql
@@ -155,7 +155,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-sql-database"></a>Erstellen einer gespeicherten Prozedur in SQL-Datenbank 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Erstellen Sie eine gespeicherte Prozedur in der Azure SQL-Datenbank 
 
 Führen Sie den folgenden Befehl zum Erstellen einer gespeicherten Prozedur in Ihrer SQL-Datenbank aus. Mit dieser gespeicherten Prozedur wird der Grenzwert nach jeder Pipelineausführung aktualisiert. 
 
@@ -173,7 +173,7 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures"></a>Erstellen von Datentypen und zusätzlichen gespeicherten Prozeduren
+### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Erstellen von Datentypen und zusätzlichen gespeicherten Prozeduren in der Azure SQL-Datenbank
 Führen Sie die folgende Abfrage aus, um zwei gespeicherte Prozeduren und zwei Datentypen in der SQL-Datenbank zu erstellen. Sie werden zum Zusammenführen der Daten aus Quelltabellen in Zieltabellen verwendet.
 
 ```sql

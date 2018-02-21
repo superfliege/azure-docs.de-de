@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ca828dab7bdb47e41596be2717598cfe828953ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f13ca506197ff8b9b86cf1f69300fd974b9ddd5a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Kubernetes-Dashboard mit Azure Container Service (AKS)
 
@@ -30,7 +30,7 @@ Außerdem muss mindestens Version 2.0.21 der Azure-Befehlszeilenschnittstelle in
 Verwenden Sie den Befehl `az aks browse`, um das Kubernetes-Dashboard zu starten. Ersetzen Sie beim Ausführen dieses Befehls die Ressourcengruppe und den Clusternamen.
 
 ```azurecli
-az aks browse --resource-group myResourceGroup --name myK8SCluster
+az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Der Befehl erstellt einen Proxy zwischen Ihrem Entwicklungssystem und der Kubernetes-API und öffnet einen Webbrowser mit dem Kubernetes-Dashboard.

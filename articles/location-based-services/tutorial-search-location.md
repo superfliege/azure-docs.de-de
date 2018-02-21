@@ -12,13 +12,13 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8da7d9112c9527945ab4b524625603faa84cf00d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 791992028d11633fc20f55ae1a34e7fcd442bf3a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services
+# <a name="search-nearby-points-of-interest-using-azure-location-based-services"></a>Suchen nach Points of Interest in der Nähe mit Azure Location Based Services
 
 In diesem Tutorial wird gezeigt, wie Sie ein Konto für Azure Location Based Services einrichten und anschließend mithilfe der bereitgestellten APIs nach einem Point of Interest suchen. In diesem Tutorial lernen Sie Folgendes:
 
@@ -30,7 +30,7 @@ In diesem Tutorial wird gezeigt, wie Sie ein Konto für Azure Location Based Ser
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-# <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
 <a id="createaccount"></a>

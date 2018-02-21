@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 16cc0c5e38eb273fc2504a39497d00c76d666316
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 87b410fdcd5901499e809f8d2b9a7b8788134cfc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Verwalten von Azure-Datenträgern mit der Azure-CLI
 
@@ -108,7 +108,7 @@ Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/az
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Erstellen Sie mit dem Befehl [az vm create]( /cli/azure/vm#create) einen virtuellen Computer. Das `--datadisk-sizes-gb`-Argument gibt an, dass ein weiterer Datenträger erstellt und dem virtuellen Computer angefügt werden sollte. Verwenden Sie zum Erstellen und Anfügen mehrerer Datenträger eine durch Leerzeichen getrennte Liste der Datenträger-Größenwerte. Im folgenden Beispiel wird ein virtueller Computer mit zwei Datenträgern von jeweils 128GB erstellt. Da die Größe der Datenträger jeweils 128GB beträgt, werden beide Datenträger als P10 konfiguriert, was maximal 500IOPS pro Datenträger bereitstellt.
+Erstellen Sie mit dem Befehl [az vm create]( /cli/azure/vm#az_vm_create) einen virtuellen Computer. Das `--datadisk-sizes-gb`-Argument gibt an, dass ein weiterer Datenträger erstellt und dem virtuellen Computer angefügt werden sollte. Verwenden Sie zum Erstellen und Anfügen mehrerer Datenträger eine durch Leerzeichen getrennte Liste der Datenträger-Größenwerte. Im folgenden Beispiel wird ein virtueller Computer mit zwei Datenträgern von jeweils 128GB erstellt. Da die Größe der Datenträger jeweils 128GB beträgt, werden beide Datenträger als P10 konfiguriert, was maximal 500IOPS pro Datenträger bereitstellt.
 
 ```azurecli-interactive 
 az vm create \
@@ -122,7 +122,7 @@ az vm create \
 
 ### <a name="attach-disk-to-existing-vm"></a>Anfügen eines Datenträgers an einen vorhandenen virtuellen Computer
 
-Verwenden Sie zum Erstellen eines neuen Datenträgers und dessen Anfügen an einen vorhandenen virtuellen Computer den [az vm disk attach](/cli/azure/vm/disk#attach)-Befehl. Im folgenden Beispiel wird ein Premium-Datenträger von 128GB erstellt und dem im letzten Schritt erstellten virtuellen Computer angefügt.
+Verwenden Sie zum Erstellen eines neuen Datenträgers und dessen Anfügen an einen vorhandenen virtuellen Computer den [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach)-Befehl. Im folgenden Beispiel wird ein Premium-Datenträger von 128GB erstellt und dem im letzten Schritt erstellten virtuellen Computer angefügt.
 
 ```azurecli-interactive 
 az vm disk attach --vm-name myVM --resource-group myResourceGroupDisk --disk myDataDisk --size-gb 128 --sku Premium_LRS --new 
@@ -207,13 +207,13 @@ Zum Vergrößern eines Datenträgers wird die ID oder der Name des Datenträgers
 az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
 ```
 
-Der virtuelle Computer muss auch freigegeben werden. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm#deallocate), um den virtuellen Computer zu beenden und ihn freizugeben.
+Der virtuelle Computer muss auch freigegeben werden. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm#az_vm_deallocate), um den virtuellen Computer zu beenden und ihn freizugeben.
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupDisk --name myVM
 ```
 
-Verwenden Sie den [az disk update](/cli/azure/vm/disk#update)-Befehl, um den Datenträger zu vergrößern. In diesem Beispiel wird ein Datenträger mit dem Namen *myDataDisk* auf 1 Terabyte vergrößert.
+Verwenden Sie den [az disk update](/cli/azure/vm/disk#az_vm_disk_update)-Befehl, um den Datenträger zu vergrößern. In diesem Beispiel wird ein Datenträger mit dem Namen *myDataDisk* auf 1 Terabyte vergrößert.
 
 ```azurecli-interactive 
 az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023

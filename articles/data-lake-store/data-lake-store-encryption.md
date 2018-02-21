@@ -1,9 +1,9 @@
 ---
 title: "Verschlüsselung in Azure Data Lake Store | Microsoft-Dokumentation"
-description: "Grundlegendes zur Funktionsweise der Verschlüsselung und der Schlüsselrotation in Azure Data Lake Store"
+description: "Mit der Verschlüsselung in Azure Data Lake Store können Sie Ihre Daten schützen, Sicherheitsrichtlinien für Unternehmen implementieren und gesetzliche Vorschriften einhalten. Dieser Artikel enthält eine Übersicht über das Design und behandelt einige technische Aspekte der Implementierung."
 services: data-lake-store
 documentationcenter: 
-author: yagupta
+author: esung22
 manager: 
 editor: 
 ms.assetid: 
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 4/14/2017
+ms.date: 01/31/2018
 ms.author: yagupta
-ms.openlocfilehash: 20444d368c568ee716ff242e33323b91ffd198eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4df0ce3d705361f20fa003929fed6a019f8b2f5e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Datenverschlüsselung in Azure Data Lake Store
 
@@ -60,12 +60,12 @@ Im Anschluss folgt eine kurze Gegenüberstellung der Funktionen, die in den beid
 |  | Vom Dienst verwaltete Schlüssel | Vom Kunden verwaltete Schlüssel |
 | --- | --- | --- |
 |Wie werden die Daten gespeichert?|Immer verschlüsselt (vor dem Speichern)|Immer verschlüsselt (vor dem Speichern)|
-|Wo wird der Masterverschlüsselungsschlüssel gespeichert?|Key Vault|Key Vault|
-|Werden Verschlüsselungsschlüssel unverschlüsselt außerhalb von Key Vault gespeichert? |Nein|Nein|
+|Wo wird der Masterverschlüsselungsschlüssel gespeichert?|Schlüsseltresor|Schlüsseltresor|
+|Werden Verschlüsselungsschlüssel unverschlüsselt außerhalb von Key Vault gespeichert? |Nein |Nein |
 |Kann der MEK aus Key Vault abgerufen werden?|Nein. Wenn der MEK in Key Vault gespeichert wurde, kann er ausschließlich zur Ver- und Entschlüsselung verwendet werden.|Nein. Wenn der MEK in Key Vault gespeichert wurde, kann er ausschließlich zur Ver- und Entschlüsselung verwendet werden.|
 |Wer ist der Eigentümer der Key Vault-Instanz und des MEK?|Der Data Lake Store-Dienst|Sie sind Eigentümer der Key Vault-Instanz, die zu Ihrem Azure-Abonnement gehört. Der MEK in Key Vault kann per Software oder Hardware verwaltet werden.|
-|Können Sie den Zugriff auf den MEK für den Data Lake Store-Dienst sperren?|Nein|Ja. Sie können die Zugriffssteuerungslisten in Key Vault verwalten und Zugriffssteuerungseinträge für die Dienstidentität für den Data Lake Store-Dienst entfernen.|
-|Können Sie den MEK endgültig löschen?|Nein|Ja. Wenn Sie den MEK aus Key Vault löschen, können die Daten im Data Lake Store-Konto von niemandem mehr entschlüsselt werden (auch nicht vom Data Lake Store-Dienst). <br><br> Wenn Sie den MEK vor dem Löschen aus Key Vault explizit gesichert haben, ist eine Wiederherstellung des MEK und der Daten möglich. Wenn Sie den MEK allerdings vor dem Löschen aus Key Vault nicht gesichert haben, können die Daten im Data Lake Store-Konto anschließend nicht mehr entschlüsselt werden.|
+|Können Sie den Zugriff auf den MEK für den Data Lake Store-Dienst sperren?|Nein |Ja. Sie können die Zugriffssteuerungslisten in Key Vault verwalten und Zugriffssteuerungseinträge für die Dienstidentität für den Data Lake Store-Dienst entfernen.|
+|Können Sie den MEK endgültig löschen?|Nein |Ja. Wenn Sie den MEK aus Key Vault löschen, können die Daten im Data Lake Store-Konto von niemandem mehr entschlüsselt werden (auch nicht vom Data Lake Store-Dienst). <br><br> Wenn Sie den MEK vor dem Löschen aus Key Vault explizit gesichert haben, ist eine Wiederherstellung des MEK und der Daten möglich. Wenn Sie den MEK allerdings vor dem Löschen aus Key Vault nicht gesichert haben, können die Daten im Data Lake Store-Konto anschließend nicht mehr entschlüsselt werden.|
 
 
 Abgesehen von dem Unterschied, wer den MEK und die Key Vault-Instanz verwaltet, in der er sich befindet, ist das Design bei beiden Modi gleich.
@@ -79,9 +79,9 @@ Beachten Sie beim Auswählen des Modus für die Masterverschlüsselungsschlüsse
 
 Im Rahmen der Datenverschlüsselung gibt es drei Arten von Schlüsseln. In der folgenden Tabelle erhalten Sie einen Überblick:
 
-| Schlüssel                   | Abkürzung | Zugeordnet zu | Speicherort                             | Typ       | Hinweise                                                                                                   |
+| Schlüssel                   | Abkürzung | Zugeordnet zu | Speicherort                             | Typ       | Notizen                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
-| Masterverschlüsselungsschlüssel | MEK          | Data Lake Store-Konto | Key Vault                              | Asymmetrisch | Kann von Data Lake Store oder von Ihnen verwaltet werden.                                                              |
+| Masterverschlüsselungsschlüssel | MEK          | Data Lake Store-Konto | Schlüsseltresor                              | Asymmetrisch | Kann von Data Lake Store oder von Ihnen verwaltet werden.                                                              |
 | Datenverschlüsselungsschlüssel   | DEK          | Data Lake Store-Konto | Persistenter Speicher (vom Data Lake Store-Dienst verwaltet) | Symmetrisch  | Der DEK wird vom MEK verschlüsselt. Der verschlüsselte DEK ist das, was auf einem persistenten Medium gespeichert wird. |
 | Blockverschlüsselungsschlüssel  | BEK          | Einem Datenblock | Keine                                         | Symmetrisch  | Der BEK wird vom DEK und dem Datenblock abgeleitet.                                                      |
 
@@ -120,7 +120,7 @@ Wenn Sie die Standardverschlüsselungsoptionen verwenden, werden Ihre Daten imme
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-store"></a>Rotieren des MEK in Data Lake Store
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Navigieren Sie zu der Key Vault-Instanz mit den Schlüsseln, die Ihrem Data Lake Store-Konto zugeordnet sind. Wählen Sie **Schlüssel** aus.
 
     ![Screenshot von Key Vault](./media/data-lake-store-encryption/keyvault.png)

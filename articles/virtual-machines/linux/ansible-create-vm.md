@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 184a30c91de0d4141d6bd8a8b9db93c539e083b5
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 80406994402b488f4172069b13dca593c470efe4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Erstellen eines einfachen virtuellen Computers in Azure mit Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Computer (VMs) in Azure wie jede andere Ressource verwalten. In diesem Artikel wird gezeigt, wie Sie einen einfachen virtuellen Computer mit Ansible erstellen. Sie können sich auch darüber informieren, wie Sie [eine vollständige Umgebung mit virtuellen Computern mit Ansible erstellen](ansible-create-complete-vm.md).
@@ -37,13 +37,13 @@ Um Azure-Ressourcen mit Ansible verwalten zu können, benötigen Sie Folgendes:
 
 
 ## <a name="create-supporting-azure-resources"></a>Erstellen unterstützender Azure-Ressourcen
-In diesem Beispiel erstellen wir ein Runbook, das eine VM in einer vorhandenen Infrastruktur bereitstellt. Erstellen Sie zunächst mit [az group create](/cli/azure/vm#create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+In diesem Beispiel erstellen wir ein Runbook, das eine VM in einer vorhandenen Infrastruktur bereitstellt. Erstellen Sie zunächst mit [az group create](/cli/azure/vm#az_vm_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#create) ein virtuelles Netzwerk für den virtuellen Computer. Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen *myVnet* und ein Subnetz mit dem Namen *mySubnet* erstellt:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk für den virtuellen Computer. Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen *myVnet* und ein Subnetz mit dem Namen *mySubnet* erstellt:
 
 ```azurecli
 az network vnet create \

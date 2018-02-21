@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 9b4163471f3dc8483993b9ac762694af4e926aa0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 322514debd42714142434106748e4acac220ebee
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Erstellen und Hochladen eines OpenBSD-Datenträgerimages in Azure
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem OpenBSD-Betriebssystem erstellen und hochladen. Nach dem Hochladen können Sie sie als eigenes Image verwenden, um über Azure CLI einen virtuellen Computer (Virtual Machine, VM) in Azure zu erstellen.
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard 
 In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Elemente verfügen:
 
 * **Azure-Abonnement**: Falls Sie noch nicht über ein Konto verfügen, können Sie in wenigen Minuten eines erstellen. MSDN-Abonnenten finden weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Alle anderen Benutzer können sich unter [Erstellen eines kostenlosen Testkontos](https://azure.microsoft.com/pricing/free-trial/)informieren.  
-* **Azure CLI 2.0**: Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) installiert haben und mit [az login](/cli/azure/#login) bei Ihrem Azure-Konto angemeldet sind.
+* **Azure CLI 2.0**: Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) installiert haben und mit [az login](/cli/azure/#az_login) bei Ihrem Azure-Konto angemeldet sind.
 * **In einer VHD-Datei installiertes OpenBSD-Betriebssystem**: Auf einer virtuellen Festplatte muss ein unterstütztes OpenBSD-Betriebssystem (Version 6.1) installiert sein. Zum Erstellen von VHD-Dateien stehen mehrere verschiedene Tools bereit. Sie können beispielsweise eine Virtualisierungslösung wie Hyper-V verwenden, um die VHD-Datei zu erstellen und das Betriebssystem zu installieren. Eine Anleitung zum Installieren und Verwenden von Hyper-V finden Sie unter [Installieren von Hyper-V und Erstellen eines virtuellen Computers](http://technet.microsoft.com/library/hh846766.aspx).
 
 
@@ -102,13 +102,13 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>Erstellen von Speicherressourcen und Hochladen
-Erstellen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Um die VHD hochzuladen, erstellen Sie ein Speicherkonto mithilfe von [az storage account create](/cli/azure/storage/account#create). Da die Namen von Speicherkonten eindeutig sein müssen, geben Sie einen eigenen Namen an. Das folgende Beispiel erstellt das Speicherkonto *mystorageaccount*:
+Um die VHD hochzuladen, erstellen Sie ein Speicherkonto mithilfe von [az storage account create](/cli/azure/storage/account#az_storage_account_create). Da die Namen von Speicherkonten eindeutig sein müssen, geben Sie einen eigenen Namen an. Das folgende Beispiel erstellt das Speicherkonto *mystorageaccount*:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \
@@ -117,7 +117,7 @@ az storage account create --resource-group myResourceGroup \
     --sku Premium_LRS
 ```
 
-Rufen Sie zum Steuern des Zugriffs auf das Speicherkonto den Speicherschlüssel wie folgt mit [az storage account keys list](/cli/azure/storage/account/keys#list) ab:
+Rufen Sie zum Steuern des Zugriffs auf das Speicherkonto den Speicherschlüssel wie folgt mit [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) ab:
 
 ```azurecli
 STORAGE_KEY=$(az storage account keys list \
@@ -126,7 +126,7 @@ STORAGE_KEY=$(az storage account keys list \
     --query "[?keyName=='key1']  | [0].value" -o tsv)
 ```
 
-Um die hochgeladenen VHDs logisch zu trennen, erstellen Sie mit [az storage container create](/cli/azure/storage/container#create) einen Container innerhalb des Speicherkontos:
+Um die hochgeladenen VHDs logisch zu trennen, erstellen Sie mit [az storage container create](/cli/azure/storage/container#az_storage_container_create) einen Container innerhalb des Speicherkontos:
 
 ```azurecli
 az storage container create \
@@ -135,7 +135,7 @@ az storage container create \
     --account-key ${STORAGE_KEY}
 ```
 
-Laden Sie schließlich die VHD mit [az storage blob upload](/cli/azure/storage/blob#upload) wie folgt hoch:
+Laden Sie schließlich die VHD mit [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) wie folgt hoch:
 
 ```azurecli
 az storage blob upload \
@@ -148,7 +148,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Erstellen eines virtuellen Computers von der virtuellen Festplatte
-Sie können einen virtuellen Computer mit einem [Beispielskript](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) oder direkt mit [az vm create](/cli/azure/vm#create) erstellen. Um die hochgeladene OpenBSD-VHD anzugeben, verwenden Sie den `--image`-Parameter wie folgt:
+Sie können einen virtuellen Computer mit einem [Beispielskript](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) oder direkt mit [az vm create](/cli/azure/vm#az_vm_create) erstellen. Um die hochgeladene OpenBSD-VHD anzugeben, verwenden Sie den `--image`-Parameter wie folgt:
 
 ```azurecli
 az vm create \

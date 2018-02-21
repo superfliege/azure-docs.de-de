@@ -3,7 +3,7 @@ title: "Rollenbasierte Zugriffssteuerung mit REST – Azure AD | Microsoft-Dokum
 description: Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
 services: active-directory
 documentationcenter: na
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: 
 ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
-ms.author: andredm
-ms.openlocfilehash: 9ec64dc3ce95de9c29331699ad2140e5a3c25673
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: rolyon
+ms.openlocfilehash: d449b53d348471275cea3c7129245569e2151864
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Listet alle Rollenzuweisungen mit dem angegebenen Bereich und den zugehörigen U
 
 Zum Auflisten von Rollenzuweisungen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 Verwenden Sie die **GET** -Methode mit dem folgenden URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
@@ -52,7 +52,7 @@ Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
    * Auflisten der Rollenzuweisungen für spezielle Benutzer, Gruppen oder Anwendungen: `principalId%20eq%20'{objectId of user, group, or service principal}'`  
    * Auflisten der Rollenzuweisungen für spezielle Benutzer, einschließlich von Gruppen geerbter: `assignedTo('{objectId of user}')`
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Statuscode: 200
 
 ```
@@ -83,7 +83,7 @@ Dient zum Abrufen von Informationen zu einer einzelnen Rollenzuweisung, die übe
 
 Um Informationen zu einer Rollenzuweisung zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read` . Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 Verwenden Sie die **GET** -Methode mit dem folgenden URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
@@ -98,7 +98,7 @@ Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 2. Ersetzen Sie *{role-assignment-id}* durch den GUID-Bezeichner der Rollenzuweisung.
 3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Statuscode: 200
 
 ```
@@ -124,7 +124,7 @@ Dient zum Erstellen einer Rollenzuweisung im angegebenen Bereich für den angege
 
 Zum Erstellen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write` . Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 Verwenden Sie die **PUT** -Methode mit dem folgenden URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
@@ -151,12 +151,12 @@ Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
 ```
 
-| Elementname | Erforderlich | Typ | Beschreibung |
+| Elementname | Erforderlich | Typ | BESCHREIBUNG |
 | --- | --- | --- | --- |
-| roleDefinitionId |Ja |String |Der Bezeichner der Rolle. Das Format des Bezeichners ist: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
-| principalId |Ja |String |objectId des Azure AD-Prinzipals (Benutzer-, Gruppen- oder Dienstprinzipal), dem die Rolle zugewiesen ist. |
+| roleDefinitionId |Ja |Zeichenfolge |Der Bezeichner der Rolle. Das Format des Bezeichners ist: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| principalId |Ja |Zeichenfolge |objectId des Azure AD-Prinzipals (Benutzer-, Gruppen- oder Dienstprinzipal), dem die Rolle zugewiesen ist. |
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Statuscode: 201
 
 ```
@@ -182,7 +182,7 @@ Dient zum Löschen einer Rollenzuweisung im angegebenen Bereich.
 
 Zum Löschen einer Rollenzuweisung benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/delete` . Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 Verwenden Sie die **DELETE** -Methode mit dem folgenden URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
@@ -197,7 +197,7 @@ Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 2. Ersetzen Sie *{role-assignment-id}* durch die GUID der Rollenzuweisungs-ID.
 3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Statuscode: 200
 
 ```
@@ -223,7 +223,7 @@ Dient zum Auflisten aller Rollen, die für die Zuweisung im angegebenen Bereich 
 
 Zum Auflisten von Rollen benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read` für den Bereich. Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 Verwenden Sie die **GET** -Methode mit dem folgenden URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
@@ -241,7 +241,7 @@ Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
    * Dient zum Auflisten der Rollen, die im angegebenen Bereich und in allen untergeordneten Bereichen verfügbar sind: `atScopeAndBelow()`
    * Suchen nach einer Rolle mit dem genauen Anzeigenamen: `roleName%20eq%20'{role-display-name}'`. Verwenden Sie die URL-codierte Form des genauen Anzeigenamens der Rolle. Beispiel: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Statuscode: 200
 
 ```
@@ -306,7 +306,7 @@ Dient zum Abrufen von Informationen zu einer bestimmten Rolle, die mit dem Bezei
 
 Um Informationen zu einer Rolle zu erhalten, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/read` . Für alle integrierten Rollen wird der Zugriff auf diesen Vorgang gewährt. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 Verwenden Sie die **GET** -Methode mit dem folgenden URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
@@ -321,7 +321,7 @@ Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 2. Ersetzen Sie *{role-definition-id}* durch den GUID-Bezeichner der Rollendefinition.
 3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Statuscode: 200
 
 ```
@@ -386,7 +386,7 @@ Dient zum Erstellen einer benutzerdefinierten Rolle.
 
 Um eine benutzerdefinierte Rolle zu erstellen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 Verwenden Sie die **PUT** -Methode mit dem folgenden URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
@@ -434,17 +434,17 @@ Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
 ```
 
-| Elementname | Erforderlich | Typ | Beschreibung |
+| Elementname | Erforderlich | Typ | BESCHREIBUNG |
 | --- | --- | --- | --- |
-| Name |Ja |String |GUID-Bezeichner der benutzerdefinierten Rolle |
-| properties.roleName |Ja |String |Anzeigename der benutzerdefinierten Rolle. Maximale Größe von 128 Zeichen. |
-| properties.description |Nein |String |Beschreibung der benutzerdefinierten Rolle. Maximale Größe von 1024 Zeichen. |
-| properties.type |Ja |String |Legen Sie dies auf „CustomRole“ fest. |
+| name |Ja |Zeichenfolge |GUID-Bezeichner der benutzerdefinierten Rolle |
+| properties.roleName |Ja |Zeichenfolge |Anzeigename der benutzerdefinierten Rolle. Maximale Größe von 128 Zeichen. |
+| properties.description |Nein  |Zeichenfolge |Beschreibung der benutzerdefinierten Rolle. Maximale Größe von 1024 Zeichen. |
+| properties.type |Ja |Zeichenfolge |Legen Sie dies auf „CustomRole“ fest. |
 | properties.permissions.actions |Ja |String[] |Ein Array mit Aktionszeichenfolgen, mit denen die Vorgänge angegeben werden, auf die die benutzerdefinierte Rolle Zugriff gewährt. |
-| properties.permissions.notActions |Nein |String[] |Ein Array mit Aktionszeichenfolgen, die die Vorgänge angeben, die von den Vorgängen ausgeschlossen werden, auf die die benutzerdefinierte Rolle Zugriff gewährt. |
+| properties.permissions.notActions |Nein  |String[] |Ein Array mit Aktionszeichenfolgen, die die Vorgänge angeben, die von den Vorgängen ausgeschlossen werden, auf die die benutzerdefinierte Rolle Zugriff gewährt. |
 | properties.assignableScopes |Ja |String[] |Ein Array von Bereichen, in denen die benutzerdefinierte Rolle verwendet werden kann. |
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Statuscode: 201
 
 ```
@@ -489,7 +489,7 @@ Dient zum Ändern einer benutzerdefinierten Rolle.
 
 Um eine benutzerdefinierte Rolle zu ändern, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 Verwenden Sie die **PUT** -Methode mit dem folgenden URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
@@ -537,17 +537,17 @@ Geben Sie für den Anforderungstext die Werte im folgenden Format an:
 
 ```
 
-| Elementname | Erforderlich | Typ | Beschreibung |
+| Elementname | Erforderlich | Typ | BESCHREIBUNG |
 | --- | --- | --- | --- |
-| Name |Ja |String |GUID-Bezeichner der benutzerdefinierten Rolle |
-| properties.roleName |Ja |String |Anzeigename der aktualisierten benutzerdefinierten Rolle |
-| properties.description |Nein |String |Beschreibung der aktualisierten benutzerdefinierten Rolle |
-| properties.type |Ja |String |Legen Sie dies auf „CustomRole“ fest. |
+| name |Ja |Zeichenfolge |GUID-Bezeichner der benutzerdefinierten Rolle |
+| properties.roleName |Ja |Zeichenfolge |Anzeigename der aktualisierten benutzerdefinierten Rolle |
+| properties.description |Nein  |Zeichenfolge |Beschreibung der aktualisierten benutzerdefinierten Rolle |
+| properties.type |Ja |Zeichenfolge |Legen Sie dies auf „CustomRole“ fest. |
 | properties.permissions.actions |Ja |String[] |Ein Array mit Aktionszeichenfolgen, mit denen die Vorgänge angegeben werden, auf die die aktualisierte benutzerdefinierte Rolle Zugriff gewährt. |
-| properties.permissions.notActions |Nein |String[] |Ein Array mit Aktionszeichenfolgen zum Angeben der Vorgänge, die von den Vorgängen ausgeschlossen werden, auf die die aktualisierte benutzerdefinierte Rolle Zugriff gewährt. |
+| properties.permissions.notActions |Nein  |String[] |Ein Array mit Aktionszeichenfolgen zum Angeben der Vorgänge, die von den Vorgängen ausgeschlossen werden, auf die die aktualisierte benutzerdefinierte Rolle Zugriff gewährt. |
 | properties.assignableScopes |Ja |String[] |Ein Array von Bereichen, in denen die aktualisierte benutzerdefinierte Rolle verwendet werden kann. |
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Statuscode: 201
 
 ```
@@ -592,7 +592,7 @@ Dient zum Löschen einer benutzerdefinierten Rolle.
 
 Um eine benutzerdefinierte Rolle zu löschen, benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/delete` für alle dazugehörigen `AssignableScopes`-Elemente. Von den integrierten Rollen verfügen nur *Besitzer* und *Benutzerzugriffsadministrator* über Zugriff auf diesen Vorgang. Weitere Informationen zu Rollenzuweisungen und zum Verwalten des Zugriffs auf Azure-Ressourcen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](role-based-access-control-configure.md).
 
-### <a name="request"></a>Request
+### <a name="request"></a>Anforderung
 Verwenden Sie die **DELETE** -Methode mit dem folgenden URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
@@ -607,7 +607,7 @@ Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 2. Ersetzen Sie *{role-definition-id}* durch die GUID-Rollendefinitions-ID der benutzerdefinierten Rolle.
 3. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Statuscode: 200
 
 ```

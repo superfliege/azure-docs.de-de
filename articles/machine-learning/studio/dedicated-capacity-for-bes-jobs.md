@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: v-donglo
-ms.openlocfilehash: 7f7498c63db89a77121d33afc9d48a4132b1a51d
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.author: raymondl
+ms.openlocfilehash: 4a4c5e6bf44fb4774d9ba501479383d6c7d3b128
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Azure Batch-Dienst für Machine Learning-Aufträge
 
@@ -110,4 +110,4 @@ Es empfiehlt sich, dass Sie den Auftragsstatus abfragen, um zu ermitteln, wann A
 
 | **Verwenden von Batch-Pool-Verarbeitung**    | **Verwenden von klassischer Batchverarbeitung**  |
 |---|---|
-|Sie müssen eine große Anzahl von Aufträgen ausführen.<br>Oder<br/>Sie müssen sicher sein, dass Ihre Aufträge sofort ausgeführt werden.<br/>Oder<br/>Sie benötigen einen garantierten Durchsatz. Beispielsweise müssen Sie eine Anzahl von Aufträgen in einem bestimmten Zeitrahmen ausführen und möchten Ihre Compute-Ressourcen entsprechend Ihren Anforderungen skalieren.    | Sie führen nur wenige Aufträge aus.<br/>und<br/> Es ist nicht erforderlich, dass die Aufträge sofort ausgeführt werden. |
+|Sie müssen eine große Anzahl von Aufträgen ausführen.<br>oder<br/>Sie müssen sicher sein, dass Ihre Aufträge sofort ausgeführt werden.<br/>oder<br/>Sie benötigen einen garantierten Durchsatz. Beispielsweise müssen Sie eine Anzahl von Aufträgen in einem bestimmten Zeitrahmen ausführen und möchten Ihre Compute-Ressourcen entsprechend Ihren Anforderungen skalieren.    | Sie führen nur wenige Aufträge aus.<br/>und<br/> Es ist nicht erforderlich, dass die Aufträge sofort ausgeführt werden. |

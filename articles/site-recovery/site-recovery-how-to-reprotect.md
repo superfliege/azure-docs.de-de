@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 02/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 17a43de3faaa3a146fa9d8f43d36545d6d82b274
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: c336966f9a785707e76bc6a10c4a9283d797d064
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Azure zu einem lokalen Standort
 
@@ -221,13 +221,7 @@ Sie können das erneute Schützen auch auf der Ebene eines Wiederherstellungspla
 
 Nach dem erfolgreichen erneuten Schützen befindet sich der virtuelle Computer in einem geschützten Zustand.
 
-## <a name="next-steps"></a>Nächste Schritte
-
-Wenn sich der virtuelle Computer in einem geschützten Zustand befindet, können Sie ein [Failback initiieren](site-recovery-how-to-failback-azure-to-vmware.md#steps-to-fail-back). 
-
-Beim Failback wird der virtuelle Computer in Azure heruntergefahren und der lokale virtuelle Computer gestartet. Erwarten Sie eine Ausfallzeit für die Anwendung. Führen Sie das Failback zu einer Zeit aus, zu der dies für Ihre Anwendung kein Problem darstellt.
-
-## <a name="common-problems"></a>Häufiger auftretende Probleme
+## <a name="common-issues"></a>Häufige Probleme
 
 * Wenn Sie zum Erstellen Ihrer virtuellen Computer eine Vorlage verwendet haben, sollten Sie sicherstellen, dass jeder virtuelle Computer über eine eigene UUID für die Datenträger verfügt. Falls für die UUID des lokalen virtuellen Computers ein Konflikt mit der ID des Masterziels besteht (weil beide mit der gleichen Vorlage erstellt wurden), schlägt das erneute Schützen fehl. Stellen Sie ein anderes Masterziel bereit, das nicht mit der gleichen Vorlage erstellt wurde.
 
@@ -245,38 +239,9 @@ Beim Failback wird der virtuelle Computer in Azure heruntergefahren und der loka
 
 * Für einen Server vom Typ Windows Server 2008 R2 SP1, der als physischer lokaler Server geschützt wird, kann kein Failback von Azure zu einem lokalen Standort durchgeführt werden.
 
-### <a name="common-error-codes"></a>Allgemeine Fehlercodes
 
-#### <a name="error-code-95226"></a>Fehlercode 95226
+## <a name="next-steps"></a>Nächste Schritte
 
-*Fehler beim erneuten Anwenden des Schutzes, weil der virtuelle Azure-Computer den lokalen Konfigurationsserver nicht erreichen konnte.*
+Wenn sich der virtuelle Computer in einem geschützten Zustand befindet, können Sie ein [Failback initiieren](site-recovery-how-to-failback-azure-to-vmware.md#steps-to-fail-back). 
 
-Ursache 
-1. Der virtuelle Azure-Computer konnte den lokalen Konfigurationsserver nicht erreichen und daher nicht ermittelt und nicht beim Konfigurationsserver registriert werden. 
-2. Der Dienst „InMage Scout Application“, der für die Kommunikation mit dem lokalen Konfigurationsserver auf dem virtuellen Azure-Computer ausgeführt werden muss, wird im Anschluss an ein Failover unter Umständen nicht ausgeführt.
-
-Lösung
-1. Stellen Sie sicher, dass das Netzwerk des virtuellen Azure-Computers so konfiguriert ist, dass der virtuelle Computer mit dem lokalen Konfigurationsserver kommunizieren kann. Richten Sie hierzu entweder ein Site-to-Site-VPN mit Ihrem lokalen Datencenter ein, oder konfigurieren Sie eine ExpressRoute-Verbindung mit privatem Peering für das virtuelle Netzwerk des virtuellen Azure-Computers. 
-2. Wenn Sie bereits über ein ordnungsgemäß konfiguriertes Netzwerk verfügen, sodass der virtuelle Azure-Computer mit dem lokalen Konfigurationsserver kommunizieren kann, melden Sie sich bei dem virtuellen Computer an, und überprüfen Sie den Dienst „InMage Scout Application“. Sollte der Dienst „InMage Scout Application“ nicht ausgeführt werden, starten Sie den Dienst manuell, und vergewissern Sie sich, dass der Starttyp des Diensts auf „Automatisch“ festgelegt ist.
-
-### <a name="error-code-78052"></a>Fehlercode 78052
-Beim erneuten Schützen tritt der folgende Fehler auf: *Der Schutz konnte für den virtuellen Computer nicht abgeschlossen werden.*
-
-Das kann zwei Ursachen haben:
-1. Der virtuelle Computer, den Sie erneut schützen möchten, verwendet Windows Server 2016. Dieses Betriebssystem wird erst in Kürze für Failbacks unterstützt.
-2. Auf dem Masterzielserver für das Failback ist bereits ein virtueller Computer mit dem gleichen Namen vorhanden.
-
-In diesem Fall können Sie einen anderen Masterzielserver auf einem anderen Host auswählen, sodass der Computer beim erneuten Schützen auf einem anderen Host erstellt und der Namenskonflikt somit vermieden wird. Sie können das Masterziel auch mithilfe von vMotion auf einen anderen Host übertragen, auf dem der Namenskonflikt nicht auftritt. Wenn der vorhandene virtuelle Computer ein vereinzelter Computer ist, können Sie ihn einfach umbenennen, damit der neue virtuelle Computer auf demselben ESXi-Host erstellt werden kann.
-
-### <a name="error-code-78093"></a>Fehlercode 78093
-
-*Die VM wird nicht ausgeführt, reagiert nicht oder ist nicht erreichbar.*
-
-Um einen virtuellen Computer nach einem Failback auf die lokale Umgebung erneut schützen zu können, muss der virtuelle Azure-Computer ausgeführt werden. Dies ist erforderlich, damit sich der Mobility Service beim Konfigurationsserver lokal registriert und mit der Replikation beginnen kann, indem er mit dem Prozessserver kommuniziert. Wenn sich der Computer in einem falschen Netzwerk befindet oder nicht ausgeführt wird (also nicht reagiert oder heruntergefahren ist), kann der Konfigurationsserver den Mobility Service auf dem virtuellen Computer nicht erreichen und den Schutz nicht erneut aktivieren. Sie können den virtuellen Computer neu starten, damit er wieder mit der lokalen Umgebung kommunizieren kann. Starten Sie nach dem Neustart des virtuellen Azure-Computers den Auftrag für erneutes Schützen neu.
-
-### <a name="error-code-8061"></a>Fehlercode 8061
-
-*Der Datenspeicher ist über den ESXi-Host nicht zugänglich.*
-
-Informationen zum Failback finden Sie in den [Voraussetzungen des Masterziels](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server) und in den [unterstützen Datenspeichern](site-recovery-how-to-reprotect.md#what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback).
-
+Beim Failback wird der virtuelle Computer in Azure heruntergefahren und der lokale virtuelle Computer gestartet. Erwarten Sie eine Ausfallzeit für die Anwendung. Führen Sie das Failback zu einer Zeit aus, zu der dies für Ihre Anwendung kein Problem darstellt.

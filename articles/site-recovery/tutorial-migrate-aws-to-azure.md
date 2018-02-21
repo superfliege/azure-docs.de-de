@@ -2,24 +2,18 @@
 title: Migrieren von VMs aus AWS zu Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
 description: "In diesem Artikel wird beschrieben, wie Sie in Amazon Web Services (AWS) ausgeführte VMs mithilfe von Azure Site Recovery zu Azure migrieren."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: ddb412fd-32a8-4afa-9e39-738b11b91118
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/01/2017
+ms.topic: tutorial
+ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 814d8ee4952dd08707849eadc1e4e97ab6087da0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4acdc540ca1a87a4545130eb5fbc096633b0605c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -40,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen einige wenige Ressourcen Azure vorbereitet haben, um die migrierten EC2-Instanzen verwenden zu können. Hierzu zählen ein Speicherkonto, ein Tresor und ein virtuelles Netzwerk.
 
-### <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie von Failover von einem lokalen Standort nach Azure ausführen.
 
@@ -166,7 +160,7 @@ Wählen Sie in **Haben Sie die Bereitstellungsplanung abgeschlossen?** in der Dr
 Wenn Sie alle fünf Abschnitte von **Infrastruktur vorbereiten** durchgearbeitet haben, klicken Sie auf **OK**.
 
 
-## <a name="enable-replication"></a>Replikation aktivieren
+## <a name="enable-replication"></a>Aktivieren der Replikation
 
 Aktivieren Sie die Replikation für jede VM, die migriert werden soll. Wenn die Replikation aktiviert ist, wird der Mobility Service von Site Recovery automatisch installiert. 
 
@@ -214,7 +208,7 @@ Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Überwach
         
 Wenn Sie die Replikation für eine VM aktivieren, kann es länger als 15 Minuten dauern, bis die Änderungen wirksam und im Portal angezeigt werden.
 
-## <a name="run-a-test-failover"></a>Durchführen eines Test-Failovers
+## <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
 
 Beim Durchführen eines Testfailovers geschieht Folgendes:
 

@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: ff8cf813f9c932f867413dbf7e76f949e0de2f26
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 993a8b71b29952394a2ab6a2bdddd0fc5fd241ae
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="scale-application-in-azure-container-service-aks"></a>Skalieren einer Anwendung in Azure Container Service (AKS)
 
@@ -38,10 +38,10 @@ Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchte
 
 Wenn Sie Ihren Kubernetes-Cluster mithilfe der Befehle im vorherigen Tutorial erstellt haben, verfügt er über einen Knoten. Sie können die Anzahl der Knoten manuell anpassen, wenn Sie größere oder kleinere Containerworkloads in Ihrem Cluster planen.
 
-Im folgenden Beispiel wird die Anzahl der Knoten im Kubernetes-Cluster *myK8sCluster* auf drei erhöht. Diese Ausführung dieses Befehls dauert einige Minuten.
+Im folgenden Beispiel wird die Anzahl von Knoten im Kubernetes-Cluster *myAKSCluster* auf drei erhöht. Diese Ausführung dieses Befehls dauert einige Minuten.
 
 ```azurecli
-az aks scale --resource-group=myResourceGroup --name=myK8SCluster --node-count 3
+az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
 ```
 
 Die Ausgabe sieht in etwa wie folgt aus:
@@ -52,7 +52,7 @@ Die Ausgabe sieht in etwa wie folgt aus:
     "count": 3,
     "dnsPrefix": null,
     "fqdn": null,
-    "name": "myK8sCluster",
+    "name": "myAKSCluster",
     "osDiskSizeGb": null,
     "osType": "Linux",
     "ports": null,

@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1fcc432e8437a7fd284a75aa40454848a2af3006
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 471749563fae5b5de6e98e22ebf2ec5cc9365368
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Verwenden von cloud-init zum Ausführen von Bash-Skripts auf einer Linux-VM in Azure
 In diesem Artikel wird gezeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Ausführen eines vorhandenen Bash-Skripts auf einem virtuellen Linux-Computer (VM) oder in VM-Skalierungsgruppen (VMSS) während der Bereitstellung in Azure verwenden. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktion von cloud-init in Azure und zu den unterstützten Linux-Distributionen finden Sie unter [Übersicht über cloud-init](using-cloud-init.md).
@@ -35,13 +35,13 @@ Um diese Funktionalität in Aktion sehen zu können, erstellen Sie zu Testzwecke
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-Vor der Bereitstellung dieses Images müssen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+Vor der Bereitstellung dieses Images müssen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie nun mit dem Befehl [az vm create](/cli/azure/vm#create) eine VM, und geben Sie mit `--custom-data simple_bash.sh` die Bash-Skriptdatei wie folgt an:
+Erstellen Sie nun mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) eine VM, und geben Sie mit `--custom-data simple_bash.sh` die Bash-Skriptdatei wie folgt an:
 
 ```azurecli-interactive 
 az vm create \
@@ -52,7 +52,7 @@ az vm create \
   --generate-ssh-keys 
 ```
 ## <a name="verify-bash-script-has-run"></a>Überprüfen, ob das Bash-Skript ausgeführt wurde
-Stellen Sie eine SSH-Verbindung mit der öffentlichen IP-Adresse Ihrer VM her, die in der Ausgabe über den vorherigen Befehl gezeigt wird. Geben Sie Ihre eigene **öffentliche IP-Adresse** wie folgt ein:
+Stellen Sie eine SSH-Verbindung mit der öffentlichen IP-Adresse Ihrer VM her, die in der Ausgabe über den vorherigen Befehl gezeigt wird. Geben Sie Ihre eigene **publicIpAddress** wie folgt ein:
 
 ```bash
 ssh <publicIpAddress>
@@ -65,7 +65,7 @@ Running config-scripts-user using lock Running command ['/var/lib/cloud/instance
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere cloud-init-Beispiele für Änderungen an der Konfiguration finden Sie unter folgenden Themen:
+Weitere cloud-init-Beispiele für Änderungen an der Konfiguration finden Sie in den folgenden Themen:
  
 - [Hinzufügen weiterer Linux-Benutzer zu virtuellen Computern](cloudinit-add-user.md)
 - [Ausführen eines Paket-Managers zum Aktualisieren vorhandener Pakete beim ersten Start](cloudinit-update-vm.md)

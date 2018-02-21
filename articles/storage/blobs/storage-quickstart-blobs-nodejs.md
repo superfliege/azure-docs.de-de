@@ -2,24 +2,18 @@
 title: "Schnellstart für Azure – Übertragen von Objekten nach/aus Azure Blob Storage mit Node.js| Microsoft-Dokumentation"
 description: "Lernen Sie, wie Sie mit Node.js Objekte nach/aus Azure Blob Storage übertragen."
 services: storage
-documentationcenter: storage
-author: georgewallace
-manager: timlt
-editor: tysonn
-ms.assetid: 
+author: tamram
+manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/30/2017
-ms.author: gwallace
-ms.openlocfilehash: dd4d3abf082767c40760d020c0997b365452e769
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.date: 02/06/2018
+ms.author: tamram
+ms.openlocfilehash: 07845d0e1917c00dbd6098ef2bfbd9dcbbf2f97b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit Node.js
 
@@ -109,9 +103,9 @@ Als Nächstes gehen wir schrittweise durch den Beispielcode, damit Sie verstehen
 
 ### <a name="get-references-to-the-storage-objects"></a>Abrufen von Verweisen auf die Speicherobjekte
 
-Zunächst muss der Verweis auf `BlobService` erstellt werden, das zum Zugreifen auf und Verwalten von Blob Storage verwendet wird. Diese Objekte bauen aufeinander auf – jedes wird vom jeweils nächsten in der Liste verwendet.
+Zunächst muss der Verweis auf das **BlobService**-Objekt erstellt werden, das zum Zugreifen auf und Verwalten von Blob Storage verwendet wird. Diese Objekte bauen aufeinander auf – jedes wird vom jeweils nächsten in der Liste verwendet.
 
-* Erstellen Sie eine Instanz des **[BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor)**-Objekts, das auf den Blob-Dienst im Speicherkonto verweist.
+* Erstellen Sie eine Instanz des [BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor)-Objekts, das auf den Blob-Dienst im Speicherkonto verweist.
 
 * Erstellen Sie einen neuen Container, und legen Sie anschließend Berechtigungen für den Container fest, damit die Blobs öffentlich sind und einfach mit einer URL auf sie zugegriffen werden kann. Der Container beginnt mit **quickstartcontainer-** (Schnellstartcontainer).
 
@@ -126,7 +120,7 @@ blobService.createContainerIfNotExists(blockBlobContainerName, { 'publicAccessLe
 
 ### <a name="upload-blobs-to-the-container"></a>Hochladen von Blobs in den Container
 
-Blob Storage unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am häufigsten verwendet. Sie eignen sich ideal zum Speichern von Text und Binärdaten und werden deshalb für diesen Schnellstart verwendet.
+Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am häufigsten verwendet. Sie eignen sich ideal zum Speichern von Text und Binärdaten und werden deshalb für diesen Schnellstart verwendet.
 
 Um eine Datei in ein Blob hochzuladen, verwenden Sie die [CreateBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromLocalFile)-Methode. Wenn noch kein Blob vorhanden ist, wird durch diesen Vorgang eines erstellt. Andernfalls wird das vorhandene Blob überschrieben.
 
@@ -199,4 +193,4 @@ In diesem Schnellstart haben Sie gelernt, wie Sie mit Node.js Dateien zwischen e
 > [!div class="nextstepaction"]
 > [Gewusst wie: Blob Storage-Vorgänge](storage-nodejs-how-to-use-blob-storage.md)
 
-Weitere Informationen zum Storage-Explorer und Blobs finden Sie unter [Verwalten von Azure Blob Storage-Ressourcen mit dem Speicher-Explorer (Vorschau)](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Die Node.js-Referenz für Azure Storage finden Sie unter [azure-storage package](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest) (azure-storage-Paket).

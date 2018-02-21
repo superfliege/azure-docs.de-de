@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 2489d4bfda5d9a08b35e8d80b6cc9d00bf69117b
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 4a10df360249b4b0b28ecbe4762bbb165ef9bb8d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Verschlüsseln virtueller Datenträger auf einer Linux-VM
 Zum Verbessern der Sicherheit und Compliance von virtuellen Computern können virtuelle Datenträger und der virtuelle Computer selbst verschlüsselt werden. Die Verschlüsselung der virtuellen Computer basiert auf kryptografischen Schlüsseln, die in Azure Key Vault gesichert werden. Diese kryptografischen Schlüssel werden von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. In diesem Artikel wird erläutert, wie Sie virtuelle Datenträger auf einer Linux-VM mithilfe der Azure CLI 2.0 verschlüsseln. Sie können diese Schritte auch per [Azure CLI 1.0](encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
@@ -27,16 +27,16 @@ Zum Verbessern der Sicherheit und Compliance von virtuellen Computern können vi
 ## <a name="quick-commands"></a>Schnellbefehle
 Der folgende Abschnitt enthält Informationen zu den grundlegenden Befehlen für die Verschlüsselung virtueller Datenträger auf Ihrem virtuellen Computer. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#overview-of-disk-encryption)).
 
-Die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) muss installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u. a. *myResourceGroup*, *myKey* und *myVM*.
+Die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) muss installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u. a. *myResourceGroup*, *myKey* und *myVM*.
 
-Aktivieren Sie zunächst in Ihrem Azure-Abonnement mit [az provider register](/cli/azure/provider#register) den Azure Key Vault-Anbieter, und erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*:
+Aktivieren Sie zunächst in Ihrem Azure-Abonnement mit [az provider register](/cli/azure/provider#az_provider_register) den Azure Key Vault-Anbieter, und erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*:
 
 ```azurecli
 az provider register -n Microsoft.KeyVault
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#create) einen Azure-Schlüsseltresor, und aktivieren Sie den Schlüsseltresor zur Verwendung der Datenträgerverschlüsselung. Geben Sie einen eindeutigen Key Vault-Namen für *keyvault_name* an, wie nachfolgend gezeigt:
+Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#az_keyvault_create) einen Azure-Schlüsseltresor, und aktivieren Sie den Schlüsseltresor zur Verwendung der Datenträgerverschlüsselung. Geben Sie einen eindeutigen Key Vault-Namen für *keyvault_name* an, wie nachfolgend gezeigt:
 
 ```azurecli
 keyvault_name=myuniquekeyvaultname
@@ -47,21 +47,21 @@ az keyvault create \
     --enabled-for-disk-encryption True
 ```
 
-Erstellen Sie mithilfe von [az keyvault key create](/cli/azure/keyvault/key#create) einen kryptografischen Schlüssel in Ihrem Schlüsseltresor. Im folgenden Beispiel wird ein Schlüssel mit dem Namen *myKey* erstellt:
+Erstellen Sie mithilfe von [az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create) einen kryptografischen Schlüssel in Ihrem Schlüsseltresor. Im folgenden Beispiel wird ein Schlüssel mit dem Namen *myKey* erstellt:
 
 ```azurecli
 az keyvault key create --vault-name $keyvault_name --name myKey --protection software
 ```
 
-Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) einen Dienstprinzipal unter Verwendung von Azure Active Directory. Der Dienstprinzipal übernimmt die Authentifizierung und sorgt für den Austausch kryptografischer Schlüssel aus Key Vault. Im folgenden Beispiel werden die Werte für die Dienstprinzipal-ID und das Kennwort zur späteren Verwendung in Befehlen gelesen:
+Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) einen Dienstprinzipal unter Verwendung von Azure Active Directory. Der Dienstprinzipal übernimmt die Authentifizierung und sorgt für den Austausch kryptografischer Schlüssel aus Key Vault. Im folgenden Beispiel werden die Werte für die Dienstprinzipal-ID und das Kennwort zur späteren Verwendung in Befehlen gelesen:
 
 ```azurecli
 read sp_id sp_password <<< $(az ad sp create-for-rbac --query [appId,password] -o tsv)
 ```
 
-Das Kennwort wird nur ausgegeben, wenn Sie den Dienstprinzipal erstellen. Falls gewünscht, zeigen Sie das Kennwort an, und notieren Sie es (`echo $sp_password`). Sie können Ihre Dienstprinzipale mit [az ad sp list](/cli/azure/ad/sp#list) auflisten und mit [az ad sp show](/cli/azure/ad/sp#show) zusätzliche Informationen zu einem bestimmten Dienstprinzipal anzeigen.
+Das Kennwort wird nur ausgegeben, wenn Sie den Dienstprinzipal erstellen. Falls gewünscht, zeigen Sie das Kennwort an, und notieren Sie es (`echo $sp_password`). Sie können Ihre Dienstprinzipale mit [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) auflisten und mit [az ad sp show](/cli/azure/ad/sp#az_ad_sp_show) zusätzliche Informationen zu einem bestimmten Dienstprinzipal anzeigen.
 
-Legen Sie mit [az keyvault set-policy](/cli/azure/keyvault#set-policy) Berechtigungen für Ihren Schlüsseltresor fest. Im folgenden Beispiel wird die Dienstprinzipal-ID über den vorherigen Befehl angegeben:
+Legen Sie mit [az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy) Berechtigungen für Ihren Schlüsseltresor fest. Im folgenden Beispiel wird die Dienstprinzipal-ID über den vorherigen Befehl angegeben:
 
 ```azurecli
 az keyvault set-policy --name $keyvault_name --spn $sp_id \
@@ -69,7 +69,7 @@ az keyvault set-policy --name $keyvault_name --spn $sp_id \
     --secret-permissions set
 ```
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#create) eine VM, und fügen Sie einen 5-GB-Datenträger an die VM an. Nur bestimmte Marketplace-Images unterstützen die Datenträgerverschlüsselung. Im folgenden Beispiel wird unter Verwendung eines *CentOS 7.2n*-Images ein virtueller Computer mit dem Namen *myVM* erstellt:
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) eine VM, und fügen Sie einen 5-GB-Datenträger an die VM an. Nur bestimmte Marketplace-Images unterstützen die Datenträgerverschlüsselung. Im folgenden Beispiel wird unter Verwendung eines *CentOS 7.2n*-Images ein virtueller Computer mit dem Namen *myVM* erstellt:
 
 ```azurecli
 az vm create \
@@ -83,7 +83,7 @@ az vm create \
 
 Stellen Sie mithilfe des SSH-Netzwerkprotokolls eine Verbindung mit Ihrer VM her, und verwenden Sie dabei die in der Ausgabe des vorherigen Befehls enthaltene *publicIpAddress*. Erstellen Sie eine Partition und ein Dateisystem, und binden Sie dann den Datenträger ein. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einer Linux-VM zum Einbinden des neuen Datenträgers](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk). Schließen Sie Ihre SSH-Sitzung.
 
-Verschlüsseln Sie Ihre VM mit [az vm encryption enable](/cli/azure/vm/encryption#enable). Das folgende Beispiel verwendet die Variablen *$sp_id* und *$sp_password* aus dem vorherigen Befehl `ad sp create-for-rbac`:
+Verschlüsseln Sie Ihre VM mit [az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_enable). Das folgende Beispiel verwendet die Variablen *$sp_id* und *$sp_password* aus dem vorherigen Befehl `ad sp create-for-rbac`:
 
 ```azurecli
 az vm encryption enable \
@@ -96,19 +96,19 @@ az vm encryption enable \
     --volume-type all
 ```
 
-Es dauert etwas, bis der Vorgang zum Verschlüsseln des Datenträgers abgeschlossen ist. Überwachen Sie den Status des Vorgangs mit [az vm encryption show](/cli/azure/vm/encryption#show):
+Es dauert etwas, bis der Vorgang zum Verschlüsseln des Datenträgers abgeschlossen ist. Überwachen Sie den Status des Vorgangs mit [az vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show):
 
 ```azurecli
 az vm encryption show --resource-group myResourceGroup --name myVM
 ```
 
-Der Status wird als **EncryptionInProgress** angezeigt. Warten Sie, bis der Status für den Betriebssystemdatenträger als **VMRestartPending** angezeigt wird, und starten Sie Ihre VM mit [az vm restart](/cli/azure/vm#restart) neu:
+Der Status wird als **EncryptionInProgress** angezeigt. Warten Sie, bis der Status für den Betriebssystemdatenträger als **VMRestartPending** angezeigt wird, und starten Sie Ihre VM mit [az vm restart](/cli/azure/vm#az_vm_restart) neu:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
 ```
 
-Der Vorgang zur Datenträgerverschlüsselung wird während des Starts abgeschlossen, warten Sie deshalb einige Minuten, bevor Sie den Status der Verschlüsselung mit [az vm encryption show](/cli/azure/vm/encryption#show) erneut überprüfen:
+Der Vorgang zur Datenträgerverschlüsselung wird während des Starts abgeschlossen, warten Sie deshalb einige Minuten, bevor Sie den Status der Verschlüsselung mit [az vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show) erneut überprüfen:
 
 ```azurecli
 az vm encryption show --resource-group myResourceGroup --name myVM
@@ -158,18 +158,18 @@ Weitere Informationen zu unterstützten Szenarien und Einschränkungen finden Si
 
 
 ## <a name="create-azure-key-vault-and-keys"></a>Erstellen der Azure Key Vault-Instanz und der Schlüssel
-Die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) muss installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u. a. *myResourceGroup*, *myKey* und *myVM*.
+Die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) muss installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u. a. *myResourceGroup*, *myKey* und *myVM*.
 
 Erstellen Sie zum Speichern Ihrer kryptografischen Schlüssel zunächst eine Azure Key Vault-Instanz. In Azure Key Vault können Schlüssel, geheime Schlüssel und Kennwörter gespeichert werden, um eine sichere Implementierung in Anwendungen und Diensten zu ermöglichen. Bei der Verschlüsselung virtueller Datenträger dient Key Vault zum Speichern eines kryptografischen Schlüssels, der zum Verschlüsseln oder Entschlüsseln der virtuellen Datenträger verwendet wird.
 
-Aktivieren Sie in Ihrem Azure-Abonnement mit [az provider register](/cli/azure/provider#register) den Azure Key Vault-Anbieter, und erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort `eastus`:
+Aktivieren Sie in Ihrem Azure-Abonnement mit [az provider register](/cli/azure/provider#az_provider_register) den Azure Key Vault-Anbieter, und erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort `eastus`:
 
 ```azurecli
 az provider register -n Microsoft.KeyVault
 az group create --name myResourceGroup --location eastus
 ```
 
-Die Azure Key Vault-Instanz mit den kryptografischen Schlüsseln und die dazugehörigen Computeressourcen wie Speicher und der eigentliche virtuelle Computer müssen sich in der gleichen Region befinden. Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#create) einen Azure-Schlüsseltresor, und aktivieren Sie den Schlüsseltresor zur Verwendung der Datenträgerverschlüsselung. Geben Sie einen eindeutigen Key Vault-Namen für *keyvault_name* an, wie nachfolgend gezeigt:
+Die Azure Key Vault-Instanz mit den kryptografischen Schlüsseln und die dazugehörigen Computeressourcen wie Speicher und der eigentliche virtuelle Computer müssen sich in der gleichen Region befinden. Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#az_keyvault_create) einen Azure-Schlüsseltresor, und aktivieren Sie den Schlüsseltresor zur Verwendung der Datenträgerverschlüsselung. Geben Sie einen eindeutigen Key Vault-Namen für *keyvault_name* an, wie nachfolgend gezeigt:
 
 ```azurecli
 keyvault_name=myuniquekeyvaultname
@@ -182,7 +182,7 @@ az keyvault create \
 
 Kryptografische Schlüssel können mit Softwareschutz oder mit HSM-Schutz (Hardwaresicherheitsmodul) gespeichert werden. Für die Verwendung eines HSMs wird eine Key Vault-Premiuminstanz benötigt. Die Erstellung einer Key Vault-Premiuminstanz ist im Gegensatz zur Verwendung einer Key Vault-Standardinstanz, bei der Schlüssel mit Softwareschutz gespeichert werden, mit zusätzlichen Kosten verbunden. Wenn Sie eine Key Vault-Premiuminstanz erstellen möchten, fügen Sie dem Befehl aus dem vorherigen Schritt `--sku Premium` hinzu. Im folgenden Beispiel werden softwaregeschützte Schlüssel verwendet, da Sie eine Key Vault-Standardinstanz erstellt haben.
 
-Bei beiden Schutzmodellen muss der Azure-Plattform Zugriff gewährt werden, um beim Start des virtuellen Computers die kryptografischen Schlüssel anfordern und die virtuellen Datenträger entschlüsseln zu können. Erstellen Sie mithilfe von [az keyvault key create](/cli/azure/keyvault/key#create) einen kryptografischen Schlüssel in Ihrem Schlüsseltresor. Im folgenden Beispiel wird ein Schlüssel mit dem Namen *myKey* erstellt:
+Bei beiden Schutzmodellen muss der Azure-Plattform Zugriff gewährt werden, um beim Start des virtuellen Computers die kryptografischen Schlüssel anfordern und die virtuellen Datenträger entschlüsseln zu können. Erstellen Sie mithilfe von [az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create) einen kryptografischen Schlüssel in Ihrem Schlüsseltresor. Im folgenden Beispiel wird ein Schlüssel mit dem Namen *myKey* erstellt:
 
 ```azurecli
 az keyvault key create --vault-name $keyvault_name --name myKey --protection software
@@ -192,15 +192,15 @@ az keyvault key create --vault-name $keyvault_name --name myKey --protection sof
 ## <a name="create-the-azure-active-directory-service-principal"></a>Erstellen des Azure Active Directory-Dienstprinzipals
 Wenn virtuelle Datenträger verschlüsselt oder entschlüsselt werden, geben Sie ein Konto an, mit dem die Authentifizierung und der Austausch kryptografischer Schlüssel aus Key Vault abgewickelt werden. Dieses Konto, ein Azure Active Directory-Dienstprinzipal, ermöglicht es der Azure-Plattform, im Auftrag des virtuellen Computers die geeigneten kryptografischen Schlüssel anzufordern. In Ihrem Abonnement steht zwar eine Azure Active Directory-Standardinstanz zur Verfügung, viele Organisationen verwenden jedoch dedizierte Azure Active Directory-Verzeichnisse.
 
-Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) einen Dienstprinzipal unter Verwendung von Azure Active Directory. Im folgenden Beispiel werden die Werte für die Dienstprinzipal-ID und das Kennwort zur späteren Verwendung in Befehlen gelesen:
+Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) einen Dienstprinzipal unter Verwendung von Azure Active Directory. Im folgenden Beispiel werden die Werte für die Dienstprinzipal-ID und das Kennwort zur späteren Verwendung in Befehlen gelesen:
 
 ```azurecli
 read sp_id sp_password <<< $(az ad sp create-for-rbac --query [appId,password] -o tsv)
 ```
 
-Das Kennwort wird nur angezeigt, wenn Sie den Dienstprinzipal erstellen. Falls gewünscht, zeigen Sie das Kennwort an, und notieren Sie es (`echo $sp_password`). Sie können Ihre Dienstprinzipale mit [az ad sp list](/cli/azure/ad/sp#list) auflisten und mit [az ad sp show](/cli/azure/ad/sp#show) zusätzliche Informationen zu einem bestimmten Dienstprinzipal anzeigen.
+Das Kennwort wird nur angezeigt, wenn Sie den Dienstprinzipal erstellen. Falls gewünscht, zeigen Sie das Kennwort an, und notieren Sie es (`echo $sp_password`). Sie können Ihre Dienstprinzipale mit [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) auflisten und mit [az ad sp show](/cli/azure/ad/sp#az_ad_sp_show) zusätzliche Informationen zu einem bestimmten Dienstprinzipal anzeigen.
 
-Zum erfolgreichen Ver- und Entschlüsseln virtueller Datenträger müssen Berechtigungen für den in Key Vault gespeicherten kryptografischen Schlüssel festgelegt werden, damit der Azure Active Directory-Dienstprinzipal die Schlüssel lesen kann. Legen Sie mit [az keyvault set-policy](/cli/azure/keyvault#set-policy) Berechtigungen für Ihren Schlüsseltresor fest. Im folgenden Beispiel wird die Dienstprinzipal-ID über den vorherigen Befehl angegeben:
+Zum erfolgreichen Ver- und Entschlüsseln virtueller Datenträger müssen Berechtigungen für den in Key Vault gespeicherten kryptografischen Schlüssel festgelegt werden, damit der Azure Active Directory-Dienstprinzipal die Schlüssel lesen kann. Legen Sie mit [az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy) Berechtigungen für Ihren Schlüsseltresor fest. Im folgenden Beispiel wird die Dienstprinzipal-ID über den vorherigen Befehl angegeben:
 
 ```azurecli
 az keyvault set-policy --name $keyvault_name --spn $sp_id \
@@ -210,7 +210,7 @@ az keyvault set-policy --name $keyvault_name --spn $sp_id \
 
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-Erstellen Sie mit [az vm create](/cli/azure/vm#create) eine VM für die Verschlüsselung, und fügen Sie einen 5-GB-Datenträger an die VM an. Nur bestimmte Marketplace-Images unterstützen die Datenträgerverschlüsselung. Im folgenden Beispiel wird unter Verwendung eines *CentOS 7.2n*-Images ein virtueller Computer mit dem Namen *myVM* erstellt:
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) eine VM für die Verschlüsselung, und fügen Sie einen 5-GB-Datenträger an die VM an. Nur bestimmte Marketplace-Images unterstützen die Datenträgerverschlüsselung. Im folgenden Beispiel wird unter Verwendung eines *CentOS 7.2n*-Images ein virtueller Computer mit dem Namen *myVM* erstellt:
 
 ```azurecli
 az vm create \
@@ -233,7 +233,7 @@ Um die virtuellen Datenträger zu verschlüsseln, müssen alle vorherigen Kompon
 3. Geben Sie die kryptografischen Schlüssel für die eigentliche Ver- und Entschlüsselung an.
 4. Geben Sie an, ob Sie den Betriebssystem-Datenträger, die allgemeinen Datenträger oder alles verschlüsseln möchten.
 
-Verschlüsseln Sie Ihre VM mit [az vm encryption enable](/cli/azure/vm/encryption#enable). Das folgende Beispiel verwendet die Variablen *$sp_id* und *$sp_password* aus dem vorherigen Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac):
+Verschlüsseln Sie Ihre VM mit [az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_enable). Das folgende Beispiel verwendet die Variablen *$sp_id* und *$sp_password* aus dem vorherigen Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac):
 
 ```azurecli
 az vm encryption enable \
@@ -246,7 +246,7 @@ az vm encryption enable \
     --volume-type all
 ```
 
-Es dauert etwas, bis der Vorgang zum Verschlüsseln des Datenträgers abgeschlossen ist. Überwachen Sie den Status des Vorgangs mit [az vm encryption show](/cli/azure/vm/encryption#show):
+Es dauert etwas, bis der Vorgang zum Verschlüsseln des Datenträgers abgeschlossen ist. Überwachen Sie den Status des Vorgangs mit [az vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show):
 
 ```azurecli
 az vm encryption show --resource-group myResourceGroup --name myVM
@@ -261,7 +261,7 @@ Die Ausgabe ähnelt dem folgenden (abgeschnittenen) Beispiel:
 ]
 ```
 
-Warten Sie, bis der Status für den Betriebssystemdatenträger als **VMRestartPending** angezeigt wird, und starten Sie Ihre VM mit [az vm restart](/cli/azure/vm#restart) neu:
+Warten Sie, bis der Status für den Betriebssystemdatenträger als **VMRestartPending** angezeigt wird, und starten Sie Ihre VM mit [az vm restart](/cli/azure/vm#az_vm_restart) neu:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM

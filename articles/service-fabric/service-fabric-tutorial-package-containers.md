@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: caa7f58860c4540fa6914b1c0f0cfcba437468fa
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: eb838903802de5a04084a60924fc52d988180c11
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Erstellen von Paketen aus Containern und Bereitstellen als Service Fabric-Anwendung
 
@@ -218,9 +218,17 @@ r = redis.StrictRedis(host=redis_server, port=6379, db=0)
 An diesem Punkt des Tutorials ist die Vorlage für eine Service Package-Anwendung zur Bereitstellung in einem Cluster verfügbar. Im nachfolgenden Tutorial wird diese Anwendung bereitgestellt und in einem Service Fabric-Cluster ausgeführt.
 
 ## <a name="create-a-service-fabric-cluster"></a>Erstellen von Service Fabric-Clustern
-Für die Anwendungsbereitstellung in einem Cluster in Azure können Sie einen eigenen Cluster oder einen Partycluster verwenden.
+Um die Anwendung in einem Cluster in Azure bereitzustellen, erstellen Sie einen eigenen Cluster.
 
-Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team verwaltet, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
+Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team ausgeführt, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
+
+Zum Durchführen von Verwaltungsvorgängen im sicheren Partycluster können Sie Service Fabric Explorer, die CLI oder PowerShell verwenden. Zum Verwenden von Service Fabric Explorer müssen Sie die PFX-Datei von der Partycluster-Website herunterladen und das Zertifikat in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Für selbstsignierte Zertifikate aus dem Partycluster wird kein Kennwort verwendet. 
+
+Zum Durchführen von Verwaltungsvorgängen per PowerShell oder CLI benötigen Sie die PFX- (PowerShell) oder die PEM-Datei (CLI). Führen Sie den folgenden Befehl aus, um die PFX-Datei in eine PEM-Datei zu konvertieren:  
+
+```bash
+openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+```
 
 Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
@@ -230,7 +238,7 @@ Sie können die Anwendung mithilfe der Service Fabric-Befehlszeilenschnittstelle
 Stellen Sie eine Verbindung mit dem Service Fabric-Cluster in Azure her. Ersetzen Sie den Platzhalterendpunkt durch Ihren eigenen Endpunkt. Der Endpunkt muss wie unten angegeben einer vollständigen URL entsprechen.
 
 ```bash
-sfctl cluster select --endpoint <http://lin4hjim3l4.westus.cloudapp.azure.com:19080>
+sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
 ```
 
 Verwenden Sie das im Verzeichnis **TestContainer** bereitgestellte Installationsskript, um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.

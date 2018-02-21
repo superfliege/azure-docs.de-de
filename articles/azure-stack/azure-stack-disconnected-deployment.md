@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: afea4b23aca322321b4096cdfdc9d30b087a2f30
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e697dec0f3d104af073fd61bac81a00e182524e1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Planungsentscheidungen zu nicht mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme
-Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-deployment-decisions.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
+Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-connection-models.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
 
 Bei der Bereitstellungsoption ohne Verbindung mit Azure können Sie Azure Stack auch ohne Verbindung mit dem Internet bereitstellen und nutzen. Bei einer nicht mit Azure verbundenen Bereitstellung sind Sie jedoch auf einen AD FS-Identitätsspeicher und das kapazitätsbasierte Abrechnungsmodell beschränkt. 
 
@@ -34,7 +34,7 @@ Wählen Sie diese Option in den folgenden Fällen:
 > [!TIP]
 > Mitunter wird diese Art von Umgebung auch mit einem U-Boot verglichen.
 
-Eine nicht mit Azure verbundene Bereitstellung bedeutet nicht unbedingt, dass Sie später Ihre Azure Stack-Instanz nicht mit Azure für hybride VM-Mandantenszenarien verbinden können. Es bedeutet, dass Sie während der Bereitstellung keine Verbindung mit Azure haben bzw. Azure Active Directory nicht als Identitätsspeicher verwenden möchten. Wenn Sie jedoch nach der Bereitstellung eine Verbindung mit Azure wünschen, und zwar unabhängig davon, welchen Identitätsspeicher Sie verwenden möchten, sollten Sie die Bereitstellungsoption „Mit Azure verbinden“ wählen. 
+Eine nicht mit Azure verbundene Bereitstellung bedeutet nicht unbedingt, dass Sie später Ihre Azure Stack-Instanz nicht mit Azure für hybride VM-Mandantenszenarien verbinden können. Es bedeutet, dass Sie während der Bereitstellung keine Verbindung mit Azure haben bzw. Azure Active Directory nicht als Identitätsspeicher verwenden möchten.
 
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>Funktionen, die in von Azure getrennten Bereitstellungen eingeschränkt oder nicht verfügbar sind 
 Azure Stack wurde so konzipiert, dass die Lösung am besten funktioniert, wenn sie mit Azure verbunden ist. Daher ist es wichtig zu beachten, dass es einige Features und Funktionen gibt, die entweder beeinträchtigt sind oder im von Azure getrennten Modus nicht verfügbar sind. 

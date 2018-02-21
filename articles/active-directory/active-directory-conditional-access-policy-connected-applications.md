@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fb646a56b51960d5b076027d942dabe8f2afbe97
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2354a8bf81189f70bb8d0d63c3df3236403c11fc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory
 
@@ -41,11 +41,11 @@ Beim gerätebasierten bedingten Zugriff werden der **bedingte Zugriff von Azure 
 
 In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermöglicht Azure Active Directory das einmalige Anmelden an Geräten, Apps und Diensten an jedem Ort. Bei bestimmten Ressourcen in Ihrer Umgebung ist das Beschränken des Zugriffs auf die richtigen Benutzer möglicherweise nicht ausreichend. Die richtigen Benutzer müssen möglicherweise auch vertrauenswürdige Geräte verwenden, um auf eine Ressource zuzugreifen. Sie können in Ihrer Umgebung basierend auf den folgenden Komponenten festlegen, was ein vertrauenswürdiges Gerät ist:
 
-- Die [Geräteplattformen](active-directory-conditional-access-azure-portal.md#device-platforms) auf einem Gerät
+- Die [Geräteplattformen](active-directory-conditional-access-conditions.md#device-platforms) auf einem Gerät
 - Ob ein Gerät konform ist
 - Ob ein Gerät einer Domäne angehört 
 
-Die [Geräteplattformen](active-directory-conditional-access-azure-portal.md#device-platforms) sind durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird. Sie können den Zugriff auf bestimmte Ressourcen in der Richtlinie für den gerätebasierten bedingten Zugriff auf bestimmte Plattformen beschränken.
+Die [Geräteplattformen](active-directory-conditional-access-conditions.md#device-platforms) sind durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird. Sie können den Zugriff auf bestimmte Ressourcen in der Richtlinie für den gerätebasierten bedingten Zugriff auf bestimmte Plattformen beschränken.
 
 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 34f14f42150e46edae2d1352827f96a411117a62
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 479e486dca432020d5fcbaf98971a9803888bf98
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -100,7 +100,7 @@ Stellen Sie sicher, dass Sie die erforderlichen Änderungen in Ihren Filtern vor
 
 Im Allgemeinen wird empfohlen, EventFlow und WAD als Aggregationslösungen zu verwenden, da diese einen modularen Ansatz für die Diagnose und Überwachung bieten. Das heißt, wenn Sie die Ausgaben von EventFlow ändern möchten, ist keine Änderung an der eigentlichen Instrumentierung, sondern lediglich eine einfache Änderung an der Konfigurationsdatei erforderlich. Wenn Sie sich jedoch für die Verwendung von Application Insights entscheiden und voraussichtlich die Plattform nicht ändern werden, sollten Sie in Betracht ziehen, das neue SDK von AI einzusetzen, um Ereignisse zu aggregieren und an AI zu senden. Das bedeutet, dass Sie nicht mehr EventFlow zum Senden der Daten an AI konfigurieren müssen, sondern stattdessen das Service Fabric-NuGet-Paket von Application Insights installieren. Details zu diesem Paket finden Sie [hier](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
-Unter [Application Insights-Unterstützung für Microservices und Container](https://azure.microsoft.com/app-insights-microservices/) werden einige der neuen Features beschrieben, an denen gearbeitet wird (derzeit noch in der Betaversion) und mit denen Sie über umfangreichere vordefinierte Überwachungsoptionen mit AI verfügen. Dazu gehören die Abhängigkeitsnachverfolgung (wird beim Erstellen einer AppMap aller Ihrer Dienste und Anwendungen in einem Cluster und der zugehörigen Kommunikation verwendet) und eine bessere Korrelation der Ablaufverfolgungen, die von Ihren Diensten stammen (trägt zur besseren genauen Erkennung eines Problems im Workflow einer App oder eines Diensts bei).
+Unter [Application Insights-Unterstützung für Microservices und Container](https://azure.microsoft.com/en-us/blog/app-insights-microservices/) werden einige der neuen Features beschrieben, an denen gearbeitet wird (derzeit noch in der Betaversion) und mit denen Sie über umfangreichere vordefinierte Überwachungsoptionen mit AI verfügen. Dazu gehören die Abhängigkeitsnachverfolgung (wird beim Erstellen einer AppMap aller Ihrer Dienste und Anwendungen in einem Cluster und der zugehörigen Kommunikation verwendet) und eine bessere Korrelation der Ablaufverfolgungen, die von Ihren Diensten stammen (trägt zur besseren genauen Erkennung eines Problems im Workflow einer App oder eines Diensts bei).
 
 Wenn Sie beim Entwickeln in .NET voraussichtlich einige der Service Fabric-Programmiermodelle verwenden und AI als Plattform zum Visualisieren und Analysieren von Ereignis- und Protokolldaten verwenden möchten, wird empfohlen, das AI SDK für den Workflow der Überwachung und Diagnose zu verwenden. Informationen für den Einstieg in die Verwendung von AI zum Sammeln und Anzeigen Ihrer Protokolle finden Sie [hier](../application-insights/app-insights-asp-net-more.md) und [hier](../application-insights/app-insights-asp-net-trace-logs.md).
 

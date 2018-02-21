@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bef7f6ef13f6d31c16d40deb46f168ae52a9e61b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2e9324cbe7ae683a472ecc0ee93329773886f88
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 
@@ -89,11 +89,11 @@ Nachdem Sie sich bei der VM angemeldet haben, können Sie Anwendungen installier
 exit
 ```
 
-## <a name="understand-vm-images"></a>Grundlegendes zu VM-Images
+## <a name="understand-vm-images"></a>Allgemeines zu VM-Images
 
 Azure Marketplace bietet zahlreiche Images, die zum Erstellen virtueller Computer verwendet werden können. In den vorherigen Schritten wurde ein virtueller Computer mit einem Ubuntu-Image erstellt. In diesem Schritt wird der Marketplace mithilfe der Azure-Befehlszeilenschnittstelle nach einem CentOS-Image durchsucht, das anschließend zum Bereitstellen eines zweiten virtuellen Computers verwendet wird.  
 
-Eine Liste mit den am häufigsten verwendeten Images erhalten Sie mithilfe des Befehls [az vm image list](/cli/azure/vm/image#list).
+Eine Liste mit den am häufigsten verwendeten Images erhalten Sie mithilfe des Befehls [az vm image list](/cli/azure/vm/image#az_vm_image_list).
 
 ```azurecli-interactive 
 az vm image list --output table
@@ -150,7 +150,7 @@ Die Größe eines virtuellen Computers bestimmt die Menge an Computeressourcen (
 
 In der folgenden Tabelle sind Größen in Anwendungsfällen kategorisiert.  
 
-| Typ                     | Größen           |    Beschreibung       |
+| Typ                     | Größen           |    BESCHREIBUNG       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Allgemeiner Zweck](sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
 | [Computeoptimiert](sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
@@ -162,7 +162,7 @@ In der folgenden Tabelle sind Größen in Anwendungsfällen kategorisiert.
 
 ### <a name="find-available-vm-sizes"></a>Ermitteln der verfügbaren VM-Größen
 
-Eine Liste mit den verfügbaren VM-Größen einer bestimmten Region erhalten Sie mithilfe des Befehls [az vm list-sizes](/cli/azure/vm#list-sizes). 
+Eine Liste mit den verfügbaren VM-Größen einer bestimmten Region erhalten Sie mithilfe des Befehls [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes). 
 
 ```azurecli-interactive 
 az vm list-sizes --location eastus --output table
@@ -193,7 +193,7 @@ Hier sehen Sie einen Teil der Ausgabe:
 
 ### <a name="create-vm-with-specific-size"></a>Erstellen eines virtuellen Computers mit einer bestimmten Größe
 
-Im vorherigen Beispiel zur Erstellung eines virtuellen Computers wurde eine Standardgröße verwendet, da keine Größe angegeben wurde. Eine VM-Größe kann bei der Erstellung mit dem Befehl [az vm create](/cli/azure/vm#create) und dem Argument `--size` ausgewählt werden. 
+Im vorherigen Beispiel zur Erstellung eines virtuellen Computers wurde eine Standardgröße verwendet, da keine Größe angegeben wurde. Eine VM-Größe kann bei der Erstellung mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) und dem Argument `--size` ausgewählt werden. 
 
 ```azurecli-interactive 
 az vm create \
@@ -206,24 +206,24 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>Ändern der Größe eines virtuellen Computers
 
-Nach der Bereitstellung eines virtuellen Computers kann dessen Größe geändert werden, um die Ressourcenzuordnung zu erhöhen oder zu verringern. Mit dem Befehl [az vm show](/cli/azure/vm#show) können Sie die aktuelle Größe einer VM anzeigen:
+Nach der Bereitstellung eines virtuellen Computers kann dessen Größe geändert werden, um die Ressourcenzuordnung zu erhöhen oder zu verringern. Mit dem Befehl [az vm show](/cli/azure/vm#az_vm_show) können Sie die aktuelle Größe einer VM anzeigen:
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
 ```
 
-Prüfen Sie vor der Größenänderung eines virtuellen Computers, ob die gewünschte Größe im aktuellen Azure-Cluster verfügbar ist. Der Befehl [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) gibt die Größenliste zurück. 
+Prüfen Sie vor der Größenänderung eines virtuellen Computers, ob die gewünschte Größe im aktuellen Azure-Cluster verfügbar ist. Der Befehl [az vm list-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options) gibt die Größenliste zurück. 
 
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
-Wenn die gewünschte Größe verfügbar ist, kann die Größe des virtuellen Computers im eingeschalteten Zustand geändert werden, er muss jedoch während des Vorgangs neu gestartet werden. Verwenden Sie zum Vornehmen der Größenänderung den Befehl [az vm resize]( /cli/azure/vm#resize).
+Wenn die gewünschte Größe verfügbar ist, kann die Größe des virtuellen Computers im eingeschalteten Zustand geändert werden, er muss jedoch während des Vorgangs neu gestartet werden. Verwenden Sie zum Vornehmen der Größenänderung den Befehl [az vm resize]( /cli/azure/vm#az_vm_resize).
 
 ```azurecli-interactive 
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-Falls die gewünschte Größe im aktuellen Cluster nicht verfügbar ist, muss die Zuordnung des virtuellen Computers aufgehoben werden, damit die Größenänderung erfolgen kann. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm#deallocate), um den virtuellen Computer zu beenden und die Zuordnung aufzuheben. Wenn der virtuelle Computer wieder eingeschaltet wird, werden unter Umständen sämtliche Daten auf dem temporären Datenträger entfernt. Die öffentliche IP-Adresse ändert sich ebenfalls – es sei denn, es wird eine statische IP-Adresse verwendet. 
+Falls die gewünschte Größe im aktuellen Cluster nicht verfügbar ist, muss die Zuordnung des virtuellen Computers aufgehoben werden, damit die Größenänderung erfolgen kann. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm#az_vm_deallocate), um den virtuellen Computer zu beenden und die Zuordnung aufzuheben. Wenn der virtuelle Computer wieder eingeschaltet wird, werden unter Umständen sämtliche Daten auf dem temporären Datenträger entfernt. Die öffentliche IP-Adresse ändert sich ebenfalls – es sei denn, es wird eine statische IP-Adresse verwendet. 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM
@@ -247,7 +247,7 @@ Ein virtueller Azure-Computer kann einen von mehreren Betriebszuständen aufweis
 
 ### <a name="power-states"></a>Betriebszustände
 
-| Betriebszustand | Beschreibung
+| Betriebszustand | BESCHREIBUNG
 |----|----|
 | Wird gestartet | Gibt an, dass der virtuelle Computer gestartet wird. |
 | Wird ausgeführt | Gibt an, dass der virtuelle Computer ausgeführt wird. |
@@ -259,7 +259,7 @@ Ein virtueller Azure-Computer kann einen von mehreren Betriebszuständen aufweis
 
 ### <a name="find-power-state"></a>Ermitteln des Betriebszustands
 
-Verwenden Sie zum Ermitteln des Zustands eines bestimmten virtuellen Computers den Befehl [az vm get instance-view](/cli/azure/vm#get-instance-view). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben. 
+Verwenden Sie zum Ermitteln des Zustands eines bestimmten virtuellen Computers den Befehl [az vm get instance-view](/cli/azure/vm#az_vm_get_instance_view). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben. 
 
 ```azurecli-interactive 
 az vm get-instance-view \

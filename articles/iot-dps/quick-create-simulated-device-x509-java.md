@@ -12,18 +12,14 @@ documentationcenter:
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 508df6e7c677d87c6b893519c59b02880e16d7ec
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: d966a1ce5f30531668c05e68bfe709057c6dee35
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Java-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
-> [!div class="op_single_selector"]
-> * [C](quick-create-simulated-device-x509.md)
-> * [Java](quick-create-simulated-device-x509-java.md)
-> * [C#](quick-create-simulated-device-x509-csharp.md)
-> * [Python](quick-create-simulated-device-x509-python.md)
+[!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Mit diesen Schritten wird veranschaulicht, wie Sie ein X.509-Gerät auf Ihrem Entwicklungscomputer mit Windows-Betriebssystem simulieren und ein Codebeispiel verwenden, um für dieses simulierte Gerät eine Verbindung mit dem Device Provisioning-Dienst und Ihrem IoT Hub herzustellen. 
 
@@ -66,7 +62,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
 
             ![Generator für individuelles Zertifikat](./media/java-quick-create-simulated-device-x509/individual.png)
 
-        1. Erstellen Sie auf Ihrem Windows-Computer eine Datei mit dem Namen **_X509individual.pem_**, öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt der Zwischenablage in diese Datei. Speichern Sie die Datei.
+        1. Erstellen Sie auf Ihrem Windows-Computer eine Datei mit dem Namen **_X509individual.pem_**, öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt der Zwischenablage in diese Datei. Speichern Sie die Datei .
 
         1. Beantworten Sie die Frage _Do you want to input Verification Code_ (Möchten Sie einen Prüfcode eingeben?) mit **N**, und lassen Sie die Programmausgabe für später geöffnet. Notieren Sie sich die Werte _Client Cert_ und _Client Cert Private Key_.
     
@@ -76,7 +72,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
 
             ![Generator für Gruppenzertifikat](./media/java-quick-create-simulated-device-x509/group.png)
 
-        1. Erstellen Sie auf Ihrem Windows-Computer eine Datei mit dem Namen **_X509group.pem_**, öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt aus der Zwischenablage in diese Datei. Speichern Sie die Datei.
+        1. Erstellen Sie auf Ihrem Windows-Computer eine Datei mit dem Namen **_X509group.pem_**, öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt aus der Zwischenablage in diese Datei. Speichern Sie die Datei .
 
         1. Beantworten Sie die Frage _Do you want to input Verification Code_ (Möchten Sie einen Prüfcode eingeben?) mit **Y**, und lassen Sie das Programm für später geöffnet. Notieren Sie sich die Werte _Client Cert_, _Client Cert Private Key_, _Signer Cert_ und _Root Cert_.
 
@@ -122,7 +118,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
             
                 ![Prüfcodegenerator](./media/java-quick-create-simulated-device-x509/validation-generator.png)
 
-            - Erstellen Sie auf Ihrem Windows-Computer eine Datei mit dem Namen **_X509validation.pem_**, öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt aus der Zwischenablage in diese Datei. Speichern Sie die Datei.
+            - Erstellen Sie auf Ihrem Windows-Computer eine Datei mit dem Namen **_X509validation.pem_**, öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt aus der Zwischenablage in diese Datei. Speichern Sie die Datei .
             - Wählen Sie im Azure-Portal die Datei **_X509validation.pem_** aus. Klicken Sie auf **Überprüfen**.
 
             ![Überprüfen des Zertifikats](./media/java-quick-create-simulated-device-x509/validate-certificate.png)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 88e1f17184be07ec8499ad3049f7210b56fdfc15
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: d5e3f3db4726bfb16cbb389cf99b9bf7c511da97
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Erstellen einer vollständigen Linux-VM-Umgebung in Azure mit Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Computer (VMs) in Azure wie jede andere Ressource verwalten. In diesem Artikel wird gezeigt, wie Sie eine vollständige Linux-Umgebung erstellen und Ressourcen mit Ansible unterstützen. Sie können sich auch darüber informieren, wie Sie [einen einfachen virtuellen Computer mit Ansible erstellen](ansible-create-vm.md).
@@ -187,7 +187,7 @@ Um alle diese Abschnitte zusammenzuführen, erstellen Sie das Ansible-Playbook *
         version: latest
 ```
 
-Ansible benötigt eine Ressourcengruppe, in der alle Ressourcen bereitgestellt werden. Erstellen Sie mit [az group create](/cli/azure/vm#create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Ansible benötigt eine Ressourcengruppe, in der alle Ressourcen bereitgestellt werden. Erstellen Sie mit [az group create](/cli/azure/vm#az_vm_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

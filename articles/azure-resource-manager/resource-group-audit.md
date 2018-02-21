@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: ecfb7f726d5447710948405b2dd83fcd1db3dff2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: fb6fb3f7172673be70b1a6dcfd77e42cd982e248
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen
 Mithilfe von Aktivitätsprotokollen können Sie Folgendes ermitteln:
@@ -29,7 +29,11 @@ Mithilfe von Aktivitätsprotokollen können Sie Folgendes ermitteln:
 * Den Status des Vorgangs
 * Die Werte anderer Eigenschaften, mit denen Sie den Vorgang eventuell untersuchen können
 
-[!INCLUDE [resource-manager-audit-limitations](../../includes/resource-manager-audit-limitations.md)]
+Das Aktivitätsprotokoll enthält alle Schreibvorgänge (PUT, POST, DELETE), die für Ihre Ressourcen durchgeführt wurden. Es enthält jedoch keine Lesevorgänge (GET). Eine Liste der Ressourcenvorgänge finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../active-directory/role-based-access-control-resource-provider-operations.md). Sie können bei der Problembehandlung mithilfe der Überwachungsprotokolle einen Fehler ermitteln oder nachverfolgen, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
+
+Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können beliebige Datumsbereiche abfragen, das Startdatum darf jedoch maximal 90 Tage zurückliegen.
+
+
 
 Sie können Informationen aus den Aktivitätsprotokollen über das Portal, PowerShell, die Azure-Befehlszeilenschnittstelle, die Insights-REST-API oder die [Insights-.NET-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Insights/)abrufen.
 

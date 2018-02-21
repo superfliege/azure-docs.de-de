@@ -1,4 +1,4 @@
-1. Klicken Sie im Portal auf der linken Seite auf **+**, und geben Sie für die Suche „Virtuelles Netzwerkgateway“ ein. Suchen Sie in der Ausgabe nach **Virtuelles Netzwerkgateway**, und klicken Sie auf den Eintrag. Klicken Sie auf der Seite **Gateway für virtuelle Netzwerke** unten auf **Erstellen**, um die Seite **Gateway für virtuelle Netzwerke erstellen** zu öffnen.
+1. Klicken Sie im Portal auf der linken Seite auf **+ Ressource erstellen**, und geben Sie für die Suche „Gateway für virtuelle Netzwerke“ ein. Suchen Sie in der Ausgabe nach **Virtuelles Netzwerkgateway**, und klicken Sie auf den Eintrag. Klicken Sie auf der Seite **Gateway für virtuelle Netzwerke** unten auf **Erstellen**, um die Seite **Gateway für virtuelle Netzwerke erstellen** zu öffnen.
 2. Geben Sie auf der Seite **Gateway für virtuelle Netzwerke erstellen** die Werte für das Gateway für virtuelle Netzwerke an.
 
   ![Felder der Seite „Gateway für virtuelle Netzwerke erstellen“](./media/vpn-gateway-add-gw-p2s-rm-portal-include/p2sgw.png "Felder der Seite „Gateway für virtuelle Netzwerke erstellen“")

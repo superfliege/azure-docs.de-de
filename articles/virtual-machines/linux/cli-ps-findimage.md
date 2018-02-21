@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 08/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0c27a7ee9e9a7ab1a3b004e070fa556b56a36a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79eb69b83e4ffc0a4ad7c2631ce4d1306a1e335c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Vorgehensweise zum Suchen nach Linux-VM-Images im Azure Marketplace mit der Azure CLI
 Dieses Thema beschreibt, wie Sie mit Azure CLI 2.0 nach VM-Images im Azure Marketplace suchen. Verwenden Sie diese Informationen, um bei der Erstellung einer Linux-VM ein Marketplace-Image anzugeben.
 
 Stellen Sie sicher, dass Sie die aktuelle Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und bei einem Azure-Konto (`az login`) angemeldet sind.
 
-## <a name="terminology"></a>Terminologie
+## <a name="terminology"></a>Begriff
 
 Marketplace-Images werden in der CLI und anderen Azure-Tools gemäß einer Hierarchie bestimmt:
 
@@ -41,7 +41,7 @@ Zur Angabe eines Marketplace-Images verwenden Sie in der Regel den *URN* des Ima
 
 ## <a name="list-popular-images"></a>Liste von beliebten Images
 
-Führen Sie den Befehl [az vm image list](/cli/azure/vm/image#list) ohne die Option `--all` aus, um eine Liste beliebter VM-Images im Azure Marketplace anzuzeigen. Führen Sie beispielsweise den folgenden Befehl aus, um eine zwischengespeicherte Liste beliebter Images im Tabellenformat anzuzeigen:
+Führen Sie den Befehl [az vm image list](/cli/azure/vm/image#az_vm_image_list) ohne die Option `--all` aus, um eine Liste beliebter VM-Images im Azure Marketplace anzuzeigen. Führen Sie beispielsweise den folgenden Befehl aus, um eine zwischengespeicherte Liste beliebter Images im Tabellenformat anzuzeigen:
 
 ```azurecli
 az vm image list --output table
@@ -134,7 +134,7 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ```
 
 ## <a name="navigate-the-images"></a>Navigieren zu den Images 
-Eine weitere Möglichkeit für die Suche nach einem Image an einem Standort besteht darin, die Befehle [az vm image list-publishers](/cli/azure/vm/image#list-publishers), [az vm image list-offers](/cli/azure/vm/image#list-offers) und [az vm image list-skus](/cli/azure/vm/image#list-skus) nacheinander auszuführen. Mit diesen Befehlen ermitteln Sie folgende Werte:
+Eine weitere Möglichkeit für die Suche nach einem Image an einem Standort besteht darin, die Befehle [az vm image list-publishers](/cli/azure/vm/image#az_vm_image_list_publishers), [az vm image list-offers](/cli/azure/vm/image#az_vm_image_list_offers) und [az vm image list-skus](/cli/azure/vm/image#az_vm_image_list_skus) nacheinander auszuführen. Mit diesen Befehlen ermitteln Sie folgende Werte:
 
 1. Auflistung der Herausgeber von Images
 2. Auflistung der Angebote eines bestimmten Anbieters
@@ -257,4 +257,4 @@ UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201
 UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201708151  16.04.201708151
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-Jetzt können Sie genau das Image auswählen, das Sie verwenden möchten. Notieren Sie sich hierzu den Wert des URN. Übergeben Sie diesen Wert mit dem Parameter `--image`, wenn Sie einen virtuellen Computer mit dem Befehl [az vm create](/cli/azure/vm#create) erstellen. Beachten Sie, dass Sie optional die Versionsnummer im URN durch „latest“ ersetzen können. Diese Version ist immer die neueste Version der Verteilung. Um schnell mithilfe der gefundenen URN-Informationen einen virtuellen Computer zu erstellen, lesen Sie die Informationen unter [Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](tutorial-manage-vm.md).
+Jetzt können Sie genau das Image auswählen, das Sie verwenden möchten. Notieren Sie sich hierzu den Wert des URN. Übergeben Sie diesen Wert mit dem Parameter `--image`, wenn Sie einen virtuellen Computer mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) erstellen. Beachten Sie, dass Sie optional die Versionsnummer im URN durch „latest“ ersetzen können. Diese Version ist immer die neueste Version der Verteilung. Um schnell mithilfe der gefundenen URN-Informationen einen virtuellen Computer zu erstellen, lesen Sie die Informationen unter [Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](tutorial-manage-vm.md).

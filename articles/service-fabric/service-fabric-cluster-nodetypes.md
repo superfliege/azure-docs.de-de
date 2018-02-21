@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/05/2017
+ms.date: 2/5/2018
 ms.author: chackdan
-ms.openlocfilehash: 2bd3053d645d9acd4850fddf7f27237ff954e8c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 720bb83c9d8540549852ce78ee1709f8c8717348
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-Knotentypen und VM-Skalierungsgruppen
 VM-Skalierungsgruppen sind eine Azure Compute-Ressource. Sie können Skalierungsgruppen verwenden, um eine Sammlung virtueller Computer als Gruppe bereitzustellen und zu verwalten. Richten Sie eine separate Skalierungsgruppe für jeden Knotentyp ein, den Sie in einem Azure Service Fabric-Cluster definieren möchten. Sie können jeden Knotentyp einzeln zentral hoch- oder herunterskalieren, bei jedem Typ unterschiedliche Portgruppen öffnen und verschiedene Kapazitätsmetriken verwenden.
@@ -35,7 +35,7 @@ Wenn Sie eine Skalierungsgruppe zentral hochskalieren, wird eine neue Instanz er
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Zuordnen des Lastenausgleichs von Skalierungsgruppen zu Knotentypen und Skalierungsgruppen
 Wenn Sie Ihren Cluster aus dem Azure-Portal bereitgestellt oder die Azure Resource Manager-Beispielvorlage verwendet haben, werden alle Ressourcen aufgelistet, die zu einer Ressourcengruppe gehören. Der Lastenausgleich jeder Skalierungsgruppe oder jedes Knotentyps wird angezeigt. Für den Namen des Lastenausgleichs wird folgendes Format verwendet: **LB-&lt;Knotentypname&gt;**. Ein Beispiel ist „LB-sfcluster4doc-0“, wie in der folgenden Abbildung gezeigt:
 
-![Ressourcen][Resources]
+![angeben][Resources]
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz oder einem Clusterknoten
 Richten Sie eine separate Skalierungsgruppe für jeden Knotentyp ein, den Sie in einem Cluster definiert haben. Sie können die Knotentypen separat zentral hoch- oder herunterskalieren. Sie können auch andere VM-SKUs verwenden. Im Gegensatz zu Einzelinstanz-VMs besitzen Skalierungsgruppeninstanzen keine eigenen virtuellen IP-Adressen. Daher kann es schwierig sein, nach einer IP-Adresse und einem Port zum Herstellen einer Remoteverbindung mit einer bestimmten Instanz zu suchen.
 

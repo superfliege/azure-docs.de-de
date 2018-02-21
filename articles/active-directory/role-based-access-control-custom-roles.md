@@ -3,7 +3,7 @@ title: "Erstellen benutzerdefinierter Rollen für Azure RBAC | Microsoft-Dokumen
 description: "Erfahren Sie, wie Sie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung in Azure für eine präzisere Identitätsverwaltung in Ihrem Azure-Abonnement definieren."
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/11/2017
-ms.author: andredm
+ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 53c8060413f5625273360d9bf23cf27b3f56fb32
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2871ff5eea8fb99040dfab2593d1640d79f51092
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-custom-roles-for-azure-role-based-access-control"></a>Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure
 Erstellen Sie eine benutzerdefinierte Rolle in der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, RBAC), falls keine der integrierten Rollen Ihre speziellen Zugriffsanforderungen erfüllt. Benutzerdefinierte Rollen können mit [Azure PowerShell](role-based-access-control-manage-access-powershell.md), der [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md) (Command-Line Interface, CLI) und der [REST-API](role-based-access-control-manage-access-rest.md) erstellt werden. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Anwendungen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Mandanten gespeichert und können für mehrere Abonnements genutzt werden.
@@ -116,7 +116,7 @@ Mit der **AssignableScopes** -Eigenschaft der benutzerdefinierten Rolle wird auc
 * Wer kann benutzerdefinierte Rollen anzeigen?
     Alle integrierten Rollen in Azure RBAC ermöglichen das Anzeigen von Rollen, die für die Zuweisung verfügbar sind. Benutzer, die den Vorgang `Microsoft.Authorization/roleDefinition/read` für einen Bereich durchführen können, können die RBAC-Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md): Erste Schritte mit RBAC im Azure-Portal.
 * Eine Liste der verfügbaren Vorgänge finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](role-based-access-control-resource-provider-operations.md).
 * Informationen zur Zugriffsverwaltung mit:

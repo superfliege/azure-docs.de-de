@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/12/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 1ce1fc4c03130dfea4e79c89c25cf5a9004e4dc8
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: fd82d77e79f05a67f8e818095753b8dc22ccf314
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -39,7 +39,7 @@ Falls Sie andere Informationen benötigen, hinterlassen Sie einen Kommentar am E
 
 ## <a name="cloud-apps-assignments"></a>Zuweisungen von Cloud-Apps
 
-Mit Richtlinien für bedingten Zugriff steuern Sie, wie Ihre Benutzer auf [Cloud-Apps](active-directory-conditional-access-azure-portal.md#who) zugreifen. Wenn Sie eine Richtlinie für bedingten Zugriff konfigurieren, müssen Sie mindestens eine Cloud-App auswählen. 
+Mit Richtlinien für bedingten Zugriff steuern Sie, wie Ihre Benutzer auf [Cloud-Apps](active-directory-conditional-access-conditions.md#cloud-apps) zugreifen. Wenn Sie eine Richtlinie für bedingten Zugriff konfigurieren, müssen Sie mindestens eine Cloud-App auswählen. 
 
 ![Auswählen der Cloud-Apps für Ihre Richtlinie](./media/active-directory-conditional-access-technical-reference/09.png)
 
@@ -105,7 +105,7 @@ In einer Richtlinie für bedingten Zugriff können Sie die Geräteplattformbedin
 
 ## <a name="client-apps-condition"></a>Client-Apps-Bedingung 
 
-In der Richtlinie für bedingten Zugriff können Sie die [Client-Apps](active-directory-conditional-access-azure-portal.md#client-apps)-Bedingung konfigurieren, um die Richtlinie mit der Client-App zu verknüpfen, die einen Zugriffsversuch initiiert hat. Legen Sie die Client-Apps-Bedingung fest, um den Zugriff zu gewähren oder zu verweigern, wenn mit den folgenden Arten von Client-Apps ein Zugriffsversuch unternommen wird:
+In der Richtlinie für bedingten Zugriff können Sie die [Client-Apps](active-directory-conditional-access-conditions.md#client-apps)-Bedingung konfigurieren, um die Richtlinie mit der Client-App zu verknüpfen, die einen Zugriffsversuch initiiert hat. Legen Sie die Client-Apps-Bedingung fest, um den Zugriff zu gewähren oder zu verweigern, wenn mit den folgenden Arten von Client-Apps ein Zugriffsversuch unternommen wird:
 
 - "Browser"
 - Mobile Apps und Desktop-Apps
@@ -169,10 +169,9 @@ Diese Einstellung hat Auswirkungen auf Zugriffsversuche von den folgenden mobile
 |Outlook 2016 (Office für macOS)|Microsoft Office 365 Exchange Online|Mac OS X|
 |Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung)|Microsoft Office 365 Exchange Online|Windows 8.1, Windows 7|
 |Outlook Mobile-App|Microsoft Office 365 Exchange Online|Android, iOS|
-|PowerBI-App. Die PowerBI-App für Android unterstützt derzeit keinen gerätebasierten bedingten Zugriff.|PowerBI-Dienst|Windows 10, Windows 8.1, Windows 7 und iOS|
+|Power BI-App|PowerBI-Dienst|Windows 10, Windows 8.1, Windows 7 und iOS|
 |Skype for Business|Microsoft Office 365 Exchange Online|Android, iOS |
 |Visual Studio Team Services-App|Visual Studio Team Services|Windows 10, Windows 8.1, Windows 7, iOS, Android|
-
 
 
 ## <a name="approved-client-app-requirement"></a>Genehmigte Client-App als Voraussetzung 
@@ -186,6 +185,7 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 
 - Microsoft Azure Information Protection
 - Microsoft Excel
+- Microsoft Kaizala 
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -193,6 +193,7 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 - Microsoft PowerPoint
 - Microsoft SharePoint
 - Microsoft Skype for Business
+- Microsoft StaffHub
 - Microsoft Teams
 - Microsoft Visio
 - Microsoft Word

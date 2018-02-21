@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 544f189e79733c6476bf71e9ce39ab5f35e3d032
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 8e57ed29560baeea6279a45e8769f4005c123b56
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-a-spring-boot-application"></a>Bereitstellen einer Spring Boot-Anwendung
 Azure Service Fabric ist eine Plattform, mit der verteilte Systeme bereitgestellt und skalierbare und zuverlässige Microservices und Container verwaltet werden können. 
@@ -102,6 +102,14 @@ Sie können nun auf die Spring Boot-Anwendung zugreifen, die in einem Service Fa
 Um die Anwendung in einem Cluster in Azure bereitzustellen, erstellen Sie einen eigenen Cluster.
 
 Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team ausgeführt, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
+
+Zum Durchführen von Verwaltungsvorgängen im sicheren Partycluster können Sie Service Fabric Explorer, die CLI oder PowerShell verwenden. Zum Verwenden von Service Fabric Explorer müssen Sie die PFX-Datei von der Partycluster-Website herunterladen und das Zertifikat in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Für selbstsignierte Zertifikate aus dem Partycluster wird kein Kennwort verwendet. 
+
+Zum Durchführen von Verwaltungsvorgängen per PowerShell oder CLI benötigen Sie die PFX- (PowerShell) oder die PEM-Datei (CLI). Führen Sie den folgenden Befehl aus, um die PFX-Datei in eine PEM-Datei zu konvertieren:  
+
+```bash
+openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+```
 
 Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 

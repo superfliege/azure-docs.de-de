@@ -2,21 +2,21 @@
 title: Replizieren einer Azure-VM in eine andere Azure-Region (Vorschau)
 description: "Dieser Schnellstart enthält eine Anleitung zum Replizieren einer Azure-VM aus einer Azure-Region in eine andere."
 services: site-recovery
-author: rajani-janaki-ram
+author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+ms.topic: quickstart
+ms.date: 02/07/2018
+ms.author: raynew
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/08/2017
-ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 27066c3b5b9d52901dbd3790ba4b5abd97fe7d2b
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 213b218a50506ace2298aa3f77721db1b81e2efe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region-preview"></a>Replizieren einer Azure-VM in eine andere Azure-Region (Vorschau)
 

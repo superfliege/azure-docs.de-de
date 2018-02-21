@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 19b573f77f2ee84600955d00d30bdb16c84e3623
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3cbc25099b99499a6186e57c155d195e75bd61bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD
 
@@ -37,7 +37,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * Sie müssen mit verwalteten Datenträgern eine Azure-VM im Resource Manager-Bereitstellungsmodell erstellen. Wenn Sie keine Linux-VM erstellt haben, können Sie das [Portal](quick-create-portal.md), die [Azure CLI](quick-create-cli.md) oder [Resource Manager-Vorlagen](create-ssh-secured-vm-from-template.md) dazu verwenden. Konfigurieren Sie die VM den Anforderungen entsprechend. Sie können beispielsweise [Datenträger hinzufügen](add-disk.md), Updates einspielen und Anwendungen installieren. 
 
-* Zudem muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+* Zudem muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein.
 
 ## <a name="quick-commands"></a>Schnellbefehle
 
@@ -79,7 +79,7 @@ Verwenden Sie die Azure CLI 2.0, um die VM als generalisiert zu kennzeichnen und
       --name myVM
     ```
 
-3. Erstellen Sie jetzt ein Image aus der VM-Ressource mit [az image create](/cli//azure/image#create). Im folgenden Beispiel wird ein Image namens *myImage* in der Ressourcengruppe *myResourceGroup* mit der VM-Ressource *myVM* erstellt:
+3. Erstellen Sie jetzt ein Image aus der VM-Ressource mit [az image create](/cli/azure/image#az_image_create). Im folgenden Beispiel wird ein Image namens *myImage* in der Ressourcengruppe *myResourceGroup* mit der VM-Ressource *myVM* erstellt:
    
     ```azurecli
     az image create \
@@ -91,7 +91,7 @@ Verwenden Sie die Azure CLI 2.0, um die VM als generalisiert zu kennzeichnen und
    > Das Image wird in derselben Ressourcengruppe wie der virtuelle Quellcomputer erstellt. Sie können aus diesem Image virtuelle Computer in einer beliebigen Ressourcengruppe in Ihrem Abonnement erstellen. Angesichts der Verwaltung können Sie eine spezifische Ressourcengruppe für die VM-Ressourcen und Images erstellen.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Schritt 3: Bereitstellen eines virtuellen Computers anhand des erfassten Images
-Erstellen Sie aus dem erstellten Image einen virtuellen Computer mit [az vm create](/cli/azure/vm#create). Im folgenden Beispiel wird eine VM namens *myVMDeployed* anhand des Image *myImage* erstellt:
+Erstellen Sie aus dem erstellten Image einen virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create). Im folgenden Beispiel wird eine VM namens *myVMDeployed* anhand des Image *myImage* erstellt:
 
 ```azurecli
 az vm create \
@@ -104,7 +104,7 @@ az vm create \
 
 ### <a name="creating-the-vm-in-another-resource-group"></a>Erstellen der VM in einer anderen Ressourcengruppe 
 
-Sie können VMs aus einem Image in jeder Ressourcengruppe innerhalb Ihres Abonnements erstellen. Zum Erstellen eines virtuellen Computers in einer anderen Ressourcengruppe als dem Image geben Sie die vollständige Ressourcen-ID im Image an. Verwenden Sie [az image list](/cli/azure/image#list), um eine Liste von Images anzuzeigen. Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+Sie können VMs aus einem Image in jeder Ressourcengruppe innerhalb Ihres Abonnements erstellen. Zum Erstellen eines virtuellen Computers in einer anderen Ressourcengruppe als dem Image geben Sie die vollständige Ressourcen-ID im Image an. Verwenden Sie [az image list](/cli/azure/image#az_image_list), um eine Liste von Images anzuzeigen. Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
 ```json
 "id": "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/images/myImage",
@@ -112,7 +112,7 @@ Sie können VMs aus einem Image in jeder Ressourcengruppe innerhalb Ihres Abonne
    "name": "myImage",
 ```
 
-Im folgenden Beispiel wird [az vm create](/cli/azure/vm#create) zum Erstellen eines virtuellen Computers in einer anderen Ressourcengruppe als dem Quellimage verwendet, indem die Imageressourcen-ID angegeben wird:
+Im folgenden Beispiel wird [az vm create](/cli/azure/vm#az_vm_create) zum Erstellen eines virtuellen Computers in einer anderen Ressourcengruppe als dem Quellimage verwendet, indem die Imageressourcen-ID angegeben wird:
 
 ```azurecli
 az vm create \
@@ -126,7 +126,7 @@ az vm create \
 
 ## <a name="step-4-verify-the-deployment"></a>Schritt 4: Überprüfen der Bereitstellung
 
-Stellen Sie über SSH eine Verbindung zum erstellen virtuellen Computer her, um die Bereitstellung zu prüfen und den neuen virtuellen Computer zu verwenden. Zum Herstellen einer Verbindung über SSH suchen Sie die IP-Adresse oder den FQDN Ihres virtuellen Computers mit [az vm show](/cli/azure/vm#show):
+Stellen Sie über SSH eine Verbindung zum erstellen virtuellen Computer her, um die Bereitstellung zu prüfen und den neuen virtuellen Computer zu verwenden. Zum Herstellen einer Verbindung über SSH suchen Sie die IP-Adresse oder den FQDN Ihres virtuellen Computers mit [az vm show](/cli/azure/vm#az_vm_show):
 
 ```azurecli
 az vm show \

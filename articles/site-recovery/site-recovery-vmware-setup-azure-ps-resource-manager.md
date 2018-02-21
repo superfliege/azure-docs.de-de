@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/23/2017
+ms.date: 12/19/2017
 ms.author: anoopkv
-ms.openlocfilehash: 035336efa6be0d00c41baba168eaffd80939cc82
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1b75acb13ac4c8990f99f7454a6de5483f6ca2f1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-a-process-server-running-in-azure-resource-manager"></a>Verwalten eines in Azure ausgeführten Prozessservers (Resource Manager)
 > [!div class="op_single_selector"]
-> * [Ressourcen-Manager](./site-recovery-vmware-setup-azure-ps-resource-manager.md)
+> * [Resource Manager](./site-recovery-vmware-setup-azure-ps-resource-manager.md)
 > * [Klassisch ](./site-recovery-vmware-setup-azure-ps-classic.md)
 
 Beim Failback empfiehlt es sich, den Prozessserver in Azure bereitzustellen, wenn die Wartezeit zwischen dem Azure Virtual Network und Ihrem lokalen Netzwerk hoch ist. In diesem Artikel wird beschrieben, wie Sie in Azure ausgeführte Prozessserver einrichten, konfigurieren und verwalten können.
@@ -48,7 +48,7 @@ Beim Failback empfiehlt es sich, den Prozessserver in Azure bereitzustellen, wen
 |Wählen Sie, wo Sie Ihren Prozessserver bereitstellen möchten.|Wählen Sie den Wert **Deploy a failback process server in Azure** (Bereitstellen eines Failbackprozessservers in Azure) aus. |
 |Abonnement|Wählen Sie das Azure-Abonnement aus, in dem Sie das Failover der virtuellen Computer ausgeführt haben.|
 |Ressourcengruppe|Sie können für die Bereitstellung dieses Prozessservers eine Ressourcengruppe erstellen oder den Prozessserver in einer vorhandenen Ressourcengruppe bereitstellen.|
-|Ort|Wählen Sie das Azure-Rechenzentrum aus, auf das das Failover der virtuellen Computer erfolgt ist.|
+|Speicherort|Wählen Sie das Azure-Rechenzentrum aus, auf das das Failover der virtuellen Computer erfolgt ist.|
 |Azure-Netzwerk|Wählen Sie das Azure Virtual Network (VNet) aus, auf das das Failover der virtuellen Computer erfolgt ist. Wenn das Failover der virtuellen Computer auf mehrere Azure VNets erfolgt ist, benötigen Sie einen über VNet bereitgestellten Prozessserver.|
 
 4. Geben Sie die restlichen Eigenschaften für den Prozessserver ein.

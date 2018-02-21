@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 8703d0c06f2507cc3c21d4280d887a8772145a28
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 263983017e08dcc9a8e614c159ef5afaaf1d924e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hoch verfügbaren App unter Linux
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung gemäß CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Tutorial stellen Sie eine Skalierungsgruppe für virtuelle Computer bereit. Folgendes wird vermittelt:
@@ -96,13 +96,13 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupScaleSet*:
+Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupScaleSet*:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#create) eine VM-Skalierungsgruppe. Im folgenden Beispiel werden eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, der virtuelle Computer mithilfe der cloud-init-Datei angepasst und (sofern noch nicht vorhanden) SSH-Schlüssel generiert:
+Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#az_vmss_create) eine VM-Skalierungsgruppe. Im folgenden Beispiel werden eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, der virtuelle Computer mithilfe der cloud-init-Datei angepasst und (sofern noch nicht vorhanden) SSH-Schlüssel generiert:
 
 ```azurecli-interactive 
 az vmss create \
@@ -121,7 +121,7 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 ## <a name="allow-web-traffic"></a>Zulassen von Webdatenverkehr
 Ein Lastenausgleichsmodul wurde automatisch als Teil der VM-Skalierungsgruppe erstellt. Das Lastenausgleichsmodul verteilt den Datenverkehr auf der Grundlage von Lastenausgleichsregeln auf eine Gruppe definierter virtueller Computer. Weitere Informationen zu den Konzepten und der Konfiguration des Load Balancers finden Sie im nächsten Tutorial [Lastenausgleich für virtuelle Computer in Azure](tutorial-load-balancer.md).
 
-Damit Datenverkehr die Web-App erreicht, erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#create) eine Regel. Im folgenden Beispiel wird eine Regel namens *myLoadBalancerRuleWeb* erstellt:
+Damit Datenverkehr die Web-App erreicht, erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) eine Regel. Im folgenden Beispiel wird eine Regel namens *myLoadBalancerRuleWeb* erstellt:
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -136,7 +136,7 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>Testen Ihrer App
-Um die Node.js-App im Web anzuzeigen, rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#show) die öffentliche IP-Adresse des Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für *myScaleSetLBPublicIP* abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
+Um die Node.js-App im Web anzuzeigen, rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) die öffentliche IP-Adresse des Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für *myScaleSetLBPublicIP* abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -157,7 +157,7 @@ Um die Skalierungsgruppe in Aktion zu sehen, führen Sie eine erzwungene Aktuali
 Während des Lebenszyklus der Skalierungsgruppe müssen Sie möglicherweise eine oder mehrere Verwaltungsaufgaben ausführen. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. Azure CLI 2.0 bietet eine schnelle Möglichkeit, um diese Aufgaben auszuführen. Im Folgenden sind einige allgemeine Aufgaben aufgeführt.
 
 ### <a name="view-vms-in-a-scale-set"></a>Anzeigen von virtuellen Computern in einer Skalierungsgruppe
-Verwenden Sie [az vmss list-instances](/cli/azure/vmss#list-instances) wie folgt, um eine Liste der in der Skalierungsgruppe ausgeführten virtuellen Computer anzuzeigen:
+Verwenden Sie [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) wie folgt, um eine Liste der in der Skalierungsgruppe ausgeführten virtuellen Computer anzuzeigen:
 
 ```azurecli-interactive 
 az vmss list-instances \
@@ -177,7 +177,7 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>VM-Instanzen erhöhen oder verringern
-Verwenden Sie [az vmss show](/cli/azure/vmss#show), und führen Sie eine Abfrage nach *sku.capacity* durch, um die Anzahl der zurzeit in einer Skalierungsgruppe vorhandenen Instanzen anzuzeigen:
+Verwenden Sie [az vmss show](/cli/azure/vmss#az_vmss_show), und führen Sie eine Abfrage nach *sku.capacity* durch, um die Anzahl der zurzeit in einer Skalierungsgruppe vorhandenen Instanzen anzuzeigen:
 
 ```azurecli-interactive 
 az vmss show \
@@ -187,7 +187,7 @@ az vmss show \
     --output table
 ```
 
-Sie können dann die Anzahl der virtuellen Computer in der Skalierungsgruppe mit [az vmss scale](/cli/azure/vmss#scale) manuell erhöhen oder verringern. Im folgenden Beispiel wird die Anzahl der virtuellen Computer in der Skalierungsgruppe auf *3* festgelegt:
+Sie können dann die Anzahl der virtuellen Computer in der Skalierungsgruppe mit [az vmss scale](/cli/azure/vmss#az_vmss_scale) manuell erhöhen oder verringern. Im folgenden Beispiel wird die Anzahl der virtuellen Computer in der Skalierungsgruppe auf *3* festgelegt:
 
 ```azurecli-interactive 
 az vmss scale \
@@ -198,7 +198,7 @@ az vmss scale \
 
 
 ### <a name="configure-autoscale-rules"></a>Konfigurieren von Regeln zur automatischen Skalierung
-Anstatt die Anzahl von Instanzen in Ihrer Skalierungsgruppe manuell zu skalieren, können Sie Regeln zur automatischen Skalierung definieren. Diese Regeln überwachen die Instanzen in Ihrer Skalierungsgruppe und reagieren entsprechend basierend auf von Ihnen festgelegten Metriken und Schwellenwerten. Im folgenden Beispiel wird die Anzahl der Instanzen um eine Instanz horizontal hochskaliert, wenn die durchschnittliche CPU-Auslastung über einen Zeitraum von 5 Minuten höher als 60 % ist. Wenn die durchschnittliche CPU-Auslastung über einen Zeitraum von 5 Minuten unter 30 % fällt, werden die Instanzen um eine Instanz horizontal herunterskaliert. Ihre Abonnement-ID wird verwendet, um die Ressourcen-URIs für die verschiedenen Skalierungsgruppenkomponenten zu erstellen. Um diese Regeln mit [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings#create) zu erstellen, kopieren Sie das folgende Profil des Befehls der automatischen Skalierung, und fügen Sie es ein:
+Anstatt die Anzahl von Instanzen in Ihrer Skalierungsgruppe manuell zu skalieren, können Sie Regeln zur automatischen Skalierung definieren. Diese Regeln überwachen die Instanzen in Ihrer Skalierungsgruppe und reagieren entsprechend basierend auf von Ihnen festgelegten Metriken und Schwellenwerten. Im folgenden Beispiel wird die Anzahl der Instanzen um eine Instanz horizontal hochskaliert, wenn die durchschnittliche CPU-Auslastung über einen Zeitraum von 5 Minuten höher als 60 % ist. Wenn die durchschnittliche CPU-Auslastung über einen Zeitraum von 5 Minuten unter 30 % fällt, werden die Instanzen um eine Instanz horizontal herunterskaliert. Ihre Abonnement-ID wird verwendet, um die Ressourcen-URIs für die verschiedenen Skalierungsgruppenkomponenten zu erstellen. Um diese Regeln mit [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings#az_monitor_autoscale_settings_create) zu erstellen, kopieren Sie das folgende Profil des Befehls der automatischen Skalierung, und fügen Sie es ein:
 
 ```azurecli-interactive 
 sub=$(az account show --query id -o tsv)
@@ -271,7 +271,7 @@ Wenn Sie das Profil der automatischen Skalierung wiederverwenden möchten, könn
 
 
 ### <a name="get-connection-info"></a>Verbindungsinformationen abrufen
-Verwenden Sie zum Abrufen der Verbindungsinformationen für die virtuellen Computer in Ihren Skalierungsgruppen [az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info). Durch diesen Befehl werden die öffentliche IP-Adresse und der Port für alle virtuellen Computer ausgegeben, die eine Verbindung mit SSH ermöglichen:
+Verwenden Sie zum Abrufen der Verbindungsinformationen für die virtuellen Computer in Ihren Skalierungsgruppen [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info). Durch diesen Befehl werden die öffentliche IP-Adresse und der Port für alle virtuellen Computer ausgegeben, die eine Verbindung mit SSH ermöglichen:
 
 ```azurecli-interactive 
 az vmss list-instance-connection-info \
@@ -284,7 +284,7 @@ az vmss list-instance-connection-info \
 Sie können Datenträger mit Skalierungsgruppen erstellen und nutzen. In einem vorherigen Tutorial haben Sie gelernt, wie [Azure-Datenträger verwaltet werden](tutorial-manage-disks.md). Erläutert wurden die bewährten Methoden und verbesserte Leistung beim Erstellen von Apps auf normalen Datenträgern statt auf dem Betriebssystem-Datenträger.
 
 ### <a name="create-scale-set-with-data-disks"></a>Erstellen einer Skalierungsgruppe mit Datenträgern
-Fügen Sie zum Erstellen einer Skalierungsgruppe und zum Anfügen von Datenträgern dem Befehl [az vmss create](/cli/azure/vmss#create) den Parameter `--data-disk-sizes-gb` hinzu. Im folgenden Beispiel wird eine Skalierungsgruppe erstellt, wobei an jede Instanz ein *50*-GB-Datenträger angefügt wird:
+Fügen Sie zum Erstellen einer Skalierungsgruppe und zum Anfügen von Datenträgern dem Befehl [az vmss create](/cli/azure/vmss#az_vmss_create) den Parameter `--data-disk-sizes-gb` hinzu. Im folgenden Beispiel wird eine Skalierungsgruppe erstellt, wobei an jede Instanz ein *50*-GB-Datenträger angefügt wird:
 
 ```azurecli-interactive 
 az vmss create \
@@ -301,7 +301,7 @@ az vmss create \
 Bei Entfernen von Instanzen aus einer Skalierungsgruppe werden angefügte Datenträger ebenfalls entfernt.
 
 ### <a name="add-data-disks"></a>Hinzufügen von Datenträgern
-Verwenden Sie [az vmss disk attach](/cli/azure/vmss/disk#attach) zum Hinzufügen eines Datenträgers zu Instanzen in Ihrer Skalierungsgruppe. Im folgenden Beispiel wird jeder Instanz ein *50*-GB-Datenträger hinzugefügt:
+Verwenden Sie [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach) zum Hinzufügen eines Datenträgers zu Instanzen in Ihrer Skalierungsgruppe. Im folgenden Beispiel wird jeder Instanz ein *50*-GB-Datenträger hinzugefügt:
 
 ```azurecli-interactive 
 az vmss disk attach \
@@ -312,7 +312,7 @@ az vmss disk attach \
 ```
 
 ### <a name="detach-data-disks"></a>Trennen von Datenträgern
-Verwenden Sie [az vmss disk detach](/cli/azure/vmss/disk#detach) zum Entfernen eines Datenträgers von Instanzen in Ihrer Skalierungsgruppe. Im folgenden Beispiel wird der Datenträger mit LUN *2* aus jeder Instanz entfernt:
+Verwenden Sie [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach) zum Entfernen eines Datenträgers von Instanzen in Ihrer Skalierungsgruppe. Im folgenden Beispiel wird der Datenträger mit LUN *2* aus jeder Instanz entfernt:
 
 ```azurecli-interactive 
 az vmss disk detach \

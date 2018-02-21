@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: 3c59ad25294fe88f6145b6e55bb498cd958dbca2
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: b39a5790e5a2ef5483428842b537e0189f5f2b32
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -143,10 +143,12 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Serv
 
 1. Installieren von Node.js und npm auf dem Computer
 
+Ubuntu
   ```bash
   sudo apt-get install npm
   sudo apt install nodejs-legacy
   ```
+
 2. Installieren Sie den [Yeoman](http://yeoman.io/)-Vorlagengenerator auf dem Computer über npm.
 
   ```bash
@@ -169,7 +171,7 @@ Installieren Sie das [.NET Core 2.0 SDK für Ubuntu](https://www.microsoft.com/n
 
 Installieren Sie JDK 1.8 und Gradle zum Ausführen von Erstellungsaufgaben, um Service Fabric-Dienste mit Java zu erstellen. Mit dem folgenden Codeausschnitt wird Open JDK 1.8 zusammen mit Gradle installiert. Die Service Fabric-Java-Bibliotheken werden aus Maven abgerufen.
 
-  ```bash
+ ```bash
   sudo apt-get install openjdk-8-jdk-headless
   sudo apt-get install gradle
   ```

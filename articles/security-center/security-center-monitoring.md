@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2018
+ms.date: 02/06/2018
 ms.author: yurid
-ms.openlocfilehash: 04f2dd3dcaa44a243cb9620ab8192e15aae82a01
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 608947ec4a94cad276e34e8d3457f05b06d04ad6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Überwachen der Sicherheitsintegrität in Azure Security Center
 Dieser Artikel unterstützt Sie bei der Überwachung der Richtliniencompliance mithilfe der Überwachungsfunktionen von Azure Security Center.
@@ -87,6 +87,13 @@ Klicken Sie zum Anzeigen der Empfehlungsdetails in der Liste auf den Namen des f
 > [!NOTE]
 > Hier werden die gleichen Sicherheitsempfehlungen aufgeführt wie unter der Option **Empfehlungen**. Weitere Informationen zur Anwendung von Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md). Das gilt nicht nur für virtuelle und physische Computer, sondern für alle Ressourcen, die auf der Kachel **Ressourcenintegrität** verfügbar sind.
 >
+
+#### <a name="unmonitored-vms"></a>Nicht überwachte virtuelle Computer
+Eine VM gilt als nicht von Security Center überwacht, wenn auf der VM die Microsoft Monitoring Agent-Erweiterung nicht ausgeführt wird. Auf einer VM kann bereits ein lokaler Agent installiert sein, z.B. der OMS-Direkt-Agent oder der SCOM-Agent. VMs mit diesen Agents werden als nicht überwacht angesehen, da diese Agents in Security Center nicht vollständig unterstützt werden. Die Microsoft Monitoring Agent-Erweiterung ist erforderlich, um von allen Security Center-Vorteilen vollständig profitieren zu können.
+
+Sie können die Erweiterung auf der nicht überwachten VM zusätzlich zum bereits installierten lokalen Agent installieren. Konfigurieren Sie beide Agents auf die gleiche Weise, und verbinden Sie sie mit demselben Arbeitsbereich. Security Center kann dann mit der Microsoft Monitoring Agent-Erweiterung interagieren und Daten sammeln.  Eine Anleitung zur Installation der Microsoft Monitoring Agent-Erweiterung finden Sie unter [Aktivieren der VM-Erweiterung](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
+
+Weitere Informationen zu den Gründen, warum Security Center keine VMs und Computer erfolgreich überwachen kann, die für die automatische Bereitstellung initialisiert wurden, finden Sie unter [Integritätsprobleme des Überwachungs-Agents](security-center-troubleshooting-guide.md#monitoring-agent-health-issues).
 
 #### <a name="vms--computers-section"></a>Abschnitt „VMs und Computer“
 Der Abschnitt „VMs und Computer“ enthält eine Übersicht über alle Empfehlungen für virtuelle und physische Computer. Jede Spalte steht für eine Gruppe von Empfehlungen, wie im folgenden Screenshot zu sehen:

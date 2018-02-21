@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/10/2017
+ms.date: 02/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 7f55abc84a8afea398cf0e95761d922b77e1c248
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: a6604cca4056acf3ce759eaf56bb9130ef672bc7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen
 
@@ -48,7 +48,7 @@ Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* SSH-Client. Die meisten Betriebssysteme stellen einen SSH-Client über den Befehl `ssh` bereit. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Einen SSH-Client. Die meisten Betriebssysteme stellen einen SSH-Client über den Befehl `ssh` bereit. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Einen Webbrowser, der für die Verwendung eines SOCKS5-Proxys konfiguriert werden kann.
 

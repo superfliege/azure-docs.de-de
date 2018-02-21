@@ -15,14 +15,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: 992920adb1ae3736d43cc5f0bbb2081a20a1674d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd85ab12a552f83a407dfeeca7ee455dcf731989
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Erstellen von virtuellen Netzwerkkarten und Verwenden des internen DNS für die Auflösung von virtuellen Computernamen in Azure
-In diesem Artikel wird gezeigt, wie Sie mit der Azure CLI 2.0 mithilfe von virtuellen Netzwerkkarten (vNICs) und DNS-Bezeichnungsnamen statische interne DNS-Namen für virtuelle Linux-Computer festlegen. Sie können diese Schritte auch mit der [Azure CLI 1.0](static-dns-name-resolution-for-linux-on-azure-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen. Statische DNS-Namen werden für permanente Infrastrukturdienste wie einen Jenkins-Buildserver, der in diesem Dokument als Beispiel dient, oder einen Git-Server verwendet.
+In diesem Artikel wird gezeigt, wie Sie mit der Azure CLI 2.0 mithilfe von virtuellen Netzwerkkarten (vNICs) und DNS-Bezeichnungsnamen statische interne DNS-Namen für virtuelle Linux-Computer festlegen. Sie können diese Schritte auch per [Azure CLI 1.0](static-dns-name-resolution-for-linux-on-azure-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen. Statische DNS-Namen werden für permanente Infrastrukturdienste wie einen Jenkins-Buildserver, der in diesem Dokument als Beispiel dient, oder einen Git-Server verwendet.
 
 Folgende Anforderungen müssen erfüllt sein:
 
@@ -30,12 +30,12 @@ Folgende Anforderungen müssen erfüllt sein:
 * [Dateien mit den öffentlichen und privaten SSH-Schlüsseln](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>Schnellbefehle
-Falls Sie die Aufgabe schnell durchführen müssen, finden Sie im folgenden Abschnitt eine Erläuterung der erforderlichen Befehle. Ausführlichere Informationen und Kontext zu den einzelnen Schritten finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)). Zum Ausführen dieser Schritte muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Falls Sie die Aufgabe schnell durchführen müssen, finden Sie im folgenden Abschnitt eine Erläuterung der erforderlichen Befehle. Ausführlichere Informationen und Kontext zu den einzelnen Schritten finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)). Zum Ausführen dieser Schritte muss die neueste Version der [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein.
 
 Voraussetzungen: Ressourcengruppe, virtuelles Netzwerk und Subnetz, Netzwerksicherheitsgruppe mit eingehenden SSH-Verbindungen.
 
 ### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Erstellen einer virtuellen Netzwerkkarte mit einem statischen internen DNS-Namen
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#create) die vNIC. Das Befehlszeilenschnittstellen-Flag `--internal-dns-name` dient zum Festlegen der DNS-Bezeichnung, die den statischen DNS-Namen für die vNIC bereitstellt. Das folgende Beispiel erstellt eine vNIC namens `myNic`, verbindet diese mit dem virtuellen Netzwerk `myVnet` und erstellt den internen DNS-Namenseintrag `jenkins`:
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) die vNIC. Das Befehlszeilenschnittstellen-Flag `--internal-dns-name` dient zum Festlegen der DNS-Bezeichnung, die den statischen DNS-Namen für die vNIC bereitstellt. Das folgende Beispiel erstellt eine vNIC namens `myNic`, verbindet diese mit dem virtuellen Netzwerk `myVnet` und erstellt den internen DNS-Namenseintrag `jenkins`:
 
 ```azurecli
 az network nic create \
@@ -47,7 +47,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>Bereitstellen eines virtuellen Computers und Herstellen der Verbindung mit der vNIC
-Erstellen Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer. Das Flag `--nics` verbindet die vNIC während der Bereitstellung in Azure mit dem virtuellen Computer. Das folgende Beispiel verwendet Azure Managed Disks, um einen virtuellen Computer namens `myVM` zu erstellen, und fügt dann die vNIC namens `myNic` aus dem vorherigen Schritt an diesen Computer an:
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Das Flag `--nics` verbindet die vNIC während der Bereitstellung in Azure mit dem virtuellen Computer. Das folgende Beispiel verwendet Azure Managed Disks, um einen virtuellen Computer namens `myVM` zu erstellen, und fügt dann die vNIC namens `myNic` aus dem vorherigen Schritt an diesen Computer an:
 
 ```azurecli
 az vm create \
@@ -68,7 +68,7 @@ Interne DNS-Namen können nur innerhalb eines virtuellen Azure-Netzwerks aufgel�
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `myNic` und `myVM` verwendet.
 
 ## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
-Erstellen Sie zunächst die Ressourcengruppe mithilfe von [az group create](/cli/azure/group#create). Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `westus`:
+Erstellen Sie zunächst die Ressourcengruppe mithilfe von [az group create](/cli/azure/group#az_group_create). Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -78,7 +78,7 @@ az group create --name myResourceGroup --location westus
 
 Der nächste Schritt besteht darin, ein virtuelles Netzwerk zu erstellen, in dem die virtuellen Computer gestartet werden sollen. Das virtuelle Netzwerk enthält ein Subnetz für diese exemplarische Vorgehensweise. Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie unter [Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-Erstellen Sie das virtuelle Netzwerk mit [az network vnet create](/cli/azure/network/vnet#create). Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen `myVnet` und ein Subnetz mit dem Namen `mySubnet` erstellt:
+Erstellen Sie das virtuelle Netzwerk mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen `myVnet` und ein Subnetz mit dem Namen `mySubnet` erstellt:
 
 ```azurecli
 az network vnet create \
@@ -92,7 +92,7 @@ az network vnet create \
 ## <a name="create-the-network-security-group"></a>Erstellen der Netzwerksicherheitsgruppe
 Azure-Netzwerksicherheitsgruppen sind gleichwertig mit einer Firewall auf Netzwerkebene. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Erstellen von NSGs in der Azure-Befehlszeilenschnittstelle](../../virtual-network/virtual-networks-create-nsg-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-Erstellen Sie die Netzwerksicherheitsgruppe mit [az network nsg create](/cli/azure/network/nsg#create). Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens `myNetworkSecurityGroup` erstellt:
+Erstellen Sie die Netzwerksicherheitsgruppe mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create). Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens `myNetworkSecurityGroup` erstellt:
 
 ```azurecli
 az network nsg create \
@@ -101,7 +101,7 @@ az network nsg create \
 ```
 
 ## <a name="add-an-inbound-rule-to-allow-ssh"></a>Hinzufügen einer eingehenden Regel zum Zulassen von SSH
-Fügen Sie mithilfe von [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine eingehende Regel für die Netzwerksicherheitsgruppe hinzu. Im folgenden Beispiel wird eine Regel namens `myRuleAllowSSH` erstellt:
+Fügen Sie mithilfe von [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine eingehende Regel für die Netzwerksicherheitsgruppe hinzu. Im folgenden Beispiel wird eine Regel namens `myRuleAllowSSH` erstellt:
 
 ```azurecli
 az network nsg rule create \
@@ -119,7 +119,7 @@ az network nsg rule create \
 ```
 
 ## <a name="associate-the-subnet-with-the-network-security-group"></a>Zuordnen des Subnetzes zur Netzwerksicherheitsgruppe
-Um das Subnetz zur Netzwerksicherheitsgruppe zuzuordnen, verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet#update). Im folgenden Beispiel wird das Subnetz mit dem Namen `mySubnet` zur Netzwerksicherheitsgruppe `myNetworkSecurityGroup` zugeordnet:
+Um das Subnetz zur Netzwerksicherheitsgruppe zuzuordnen, verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update). Im folgenden Beispiel wird das Subnetz mit dem Namen `mySubnet` zur Netzwerksicherheitsgruppe `myNetworkSecurityGroup` zugeordnet:
 
 ```azurecli
 az network vnet subnet update \
@@ -133,7 +133,7 @@ az network vnet subnet update \
 ## <a name="create-the-virtual-network-interface-card-and-static-dns-names"></a>Erstellen der virtuellen Netzwerkkarte und der statischen DNS-Namen
 Azure ist äußerst flexibel. Um jedoch DNS-Namen für die Namensauflösung von virtuellen Computern verwenden zu können, müssen Sie virtuelle Netzwerkkarten (vNICs) erstellen, die eine DNS-Bezeichnung enthalten. vNICs sind wichtig, da Sie sie durch Verbinden mit verschiedenen virtuellen Computern während des gesamten Lebenszyklus der Infrastruktur wiederverwenden können. Auf diese Weise können Sie die vNIC als statische Ressource beibehalten, während die virtuellen Computer temporär sein können. Durch die Verwendung von DNS-Bezeichnungen für die vNIC können Sie eine einfache Namensauflösung von anderen virtuellen Computern im virtuellen Netzwerk ermöglichen. Wenn auflösbare Namen verwendet werden, können andere VMs anhand des DNS-Namens `Jenkins` auf den Automatisierungsserver oder mit `gitrepo` auf den Git-Server zugreifen.  
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#create) die vNIC. Das folgende Beispiel erstellt eine vNIC namens `myNic`, verbindet diese `myVnet` mit dem virtuellen Netzwerk `myVnet` und erstellt den internen DNS-Namenseintrag `jenkins`:
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) die vNIC. Das folgende Beispiel erstellt eine vNIC namens `myNic`, verbindet diese `myVnet` mit dem virtuellen Netzwerk `myVnet` und erstellt den internen DNS-Namenseintrag `jenkins`:
 
 ```azurecli
 az network nic create \
@@ -147,7 +147,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Bereitstellen des virtuellen Computers in der virtuellen Netzwerkinfrastruktur
 Wir verfügen jetzt über ein virtuelles Netzwerk, ein Subnetz und eine Netzwerksicherheitsgruppe, die als Firewall fungiert und unser Subnetz schützt, indem sämtlicher eingehender Datenverkehr mit Ausnahme von Port 22 für SSH blockiert wird. Wir verfügen zudem über eine virtuelle Netzwerkkarte. Jetzt können Sie in dieser bestehenden Netzwerkinfrastruktur einen virtuellen Computer bereitstellen.
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer. Das folgende Beispiel verwendet Azure Managed Disks, um einen virtuellen Computer namens `myVM` zu erstellen, und fügt dann die vNIC namens `myNic` aus dem vorherigen Schritt an diesen Computer an:
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Das folgende Beispiel verwendet Azure Managed Disks, um einen virtuellen Computer namens `myVM` zu erstellen, und fügt dann die vNIC namens `myNic` aus dem vorherigen Schritt an diesen Computer an:
 
 ```azurecli
 az vm create \

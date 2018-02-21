@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
-ms.openlocfilehash: c768bdbb8e1ce2aae3eb5b6db0e48977366c83fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 327816874fb2f2d43192e02410bd31c168e574f7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Vorgehensweise beim Ausfall von Azure Storage
 Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer verfügbar sind. Aufgrund höherer Gewalt können ungeplante Dienstausfälle in einer Region oder auch mehreren Regionen auftreten. Damit Sie mit diesen seltenen Vorkommen umgehen können, stellen wir Ihnen den folgenden allgemeinen Leitfaden für Azure Storage-Dienste zur Verfügung.
@@ -26,10 +26,10 @@ Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer v
 ## <a name="how-to-prepare"></a>So bereiten Sie sich vor
 Es ist wichtig für jeden Kunden, den eigenen Notfallwiederherstellungsplan zu erstellen. Die Wiederherstellung nach einem Speicherausfall erfordert üblicherweise sowohl Personal für den Betrieb als auch automatisierte Vorgehensweise, um wieder funktionsfähige Anwendungen zu erhalten. Weitere Informationen zum Erstellen eines Notfallwiederherstellungsplans finden Sie in der Azure-Dokumentation weiter unten:
 
-* [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen](/azure/architecture/resiliency/disaster-recovery-high-availability-azure-applications.md)
-* [Technischer Leitfaden zur Resilienz in Azure](/azure/architecture/resiliency.md)
+* [Checkliste für Verfügbarkeit](https://docs.microsoft.com/azure/architecture/checklist/availability)
+* [Entwickeln robuster Anwendungen für Azure](/azure/architecture/resiliency)
 * [Azure Site Recovery-Dienste](https://azure.microsoft.com/services/site-recovery/)
-* [Azure Storage-Replikation](storage-redundancy.md)
+* [Azure Storage-Replikation](storage-redundancy)
 * [Azure Backup-Dienst](https://azure.microsoft.com/services/backup/)
 
 ## <a name="how-to-detect"></a>Vorgehensweise zum Erkennen eines Ausfalls von Azure Storage

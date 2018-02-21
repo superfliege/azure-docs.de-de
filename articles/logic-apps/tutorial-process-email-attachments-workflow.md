@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 210731ce2e792452650b7a92cfc542c78a0e8014
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 16db5bc948b1eac0ef996b449d89211fb210a91e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="process-emails-and-attachments-with-a-logic-app"></a>Verarbeiten von E-Mails und Anlagen mit einer Logik-App
 
@@ -52,7 +52,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="h
 
 * Laden Sie den kostenlosen <a href="http://storageexplorer.com/" target="_blank">Microsoft Azure Storage-Explorer</a> herunter, und installieren Sie ihn. Mit diesem Tool können Sie überprüfen, ob Ihr Speichercontainer ordnungsgemäß eingerichtet ist.
 
-## <a name="sign-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an.
 
@@ -62,7 +62,7 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
 
 1. [Erstellen Sie zunächst ein Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) mit den folgenden Einstellungen, um einen Speichercontainer erstellen zu können:
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **Name** | attachmentstorageacct | Der Name Ihres Speicherkontos. | 
    | **Bereitstellungsmodell** | Resource Manager | Das [Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md) zum Verwalten der Ressourcenbereitstellung. | 
@@ -70,9 +70,9 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
    | **Leistung** | Standard | Diese Einstellung gibt die unterstützten Datentypen und die Medien für die Datenspeicherung an. Weitere Informationen finden Sie unter [Speicherkontentypen](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
    | **Replikation** | Lokal redundanter Speicher (LRS) | Diese Einstellung gibt an, wie Ihre Daten kopiert, gespeichert, verwaltet und synchronisiert werden. Weitere Informationen finden Sie unter [Replikation](../storage/common/storage-introduction.md#replication). | 
    | **Sichere Übertragung erforderlich** | Deaktiviert | Diese Einstellung gibt die erforderliche Sicherheit für Anforderungen von Verbindungen an. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md). | 
-   | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements. | 
+   | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements | 
    | **Ressourcengruppe** | LA-Tutorial-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren und Verwalten verwandter Ressourcen verwendet wird. <p>**Hinweis:** Eine Ressourcengruppe befindet sich in einer bestimmten Region. Die Elemente in diesem Tutorial sind unter Umständen nicht in allen Regionen verfügbar. Versuchen Sie aber nach Möglichkeit, die gleiche Region zu verwenden. | 
-   | **Standort** | USA, Osten 2 | Die Region, in der die Informationen zu Ihrem Speicherkonto gespeichert werden sollen. | 
+   | **Location** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrem Speicherkonto gespeichert werden sollen. | 
    | **Konfigurieren virtueller Netzwerke** | Deaktiviert | Behalten Sie für dieses Tutorial die Einstellung **Deaktiviert** bei. | 
    |||| 
 
@@ -128,14 +128,14 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
 1. [Erstellen Sie zunächst eine Funktions-App](../azure-functions/functions-create-function-app-portal.md) mit den folgenden Einstellungen, um eine Funktion erstellen können:
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **App-Name** | CleanTextFunctionApp | Ein global eindeutiger und aussagekräftiger Name für Ihre Funktions-App. | 
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. | 
    | **Ressourcengruppe** | LA-Tutorial-RG | Die gleiche Azure-Ressourcengruppe, die Sie auch zuvor verwendet haben. | 
    | **Hostingplan** | Verbrauchstarif | Diese Einstellung bestimmt die Zuordnung und Skalierung von Ressourcen (beispielsweise Rechenleistung) zum Ausführen Ihrer Funktions-App. Weitere Informationen finden Sie im [Vergleich der Hostingpläne](../azure-functions/functions-scale.md). | 
-   | **Standort** | USA, Osten 2 | Die gleiche Region, die Sie auch zuvor verwendet haben. | 
-   | **Storage** | cleantextfunctionstorageacct | Erstellen Sie ein Speicherkonto für Ihre Funktions-App. Verwenden Sie nur Kleinbuchstaben und Zahlen. <p>**Hinweis:** Dieses Speicherkonto enthält Ihre Funktions-Apps und unterscheidet sich vom zuvor erstellten Speicherkonto für E-Mail-Anlagen. | 
+   | **Location** | USA (Ost) 2 | Die gleiche Region, die Sie auch zuvor verwendet haben. | 
+   | **Speicher** | cleantextfunctionstorageacct | Erstellen Sie ein Speicherkonto für Ihre Funktions-App. Verwenden Sie nur Kleinbuchstaben und Zahlen. <p>**Hinweis:** Dieses Speicherkonto enthält Ihre Funktions-Apps und unterscheidet sich vom zuvor erstellten Speicherkonto für E-Mail-Anlagen. | 
    | **Application Insights** | Aus | Dient zum Aktivieren der Anwendungsüberwachung mit [Application Insights](../application-insights/app-insights-overview.md). Für dieses Tutorial behalten wir jedoch die Einstellung **Aus** bei. | 
    |||| 
 
@@ -215,10 +215,10 @@ Nachdem Sie sich vergewissert haben, dass die Funktion funktioniert, können Sie
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **Name** | LA-ProcessAttachment | Der Name Ihrer Logik-App. | 
+   | **Name** | LA-ProcessAttachment | Der Name Ihrer Logik-App | 
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. | 
    | **Ressourcengruppe** | LA-Tutorial-RG | Die gleiche Azure-Ressourcengruppe, die Sie auch zuvor verwendet haben. |
-   | **Standort** | USA, Osten 2 | Die gleiche Region, die Sie auch zuvor verwendet haben. | 
+   | **Location** | USA (Ost) 2 | Die gleiche Region, die Sie auch zuvor verwendet haben. | 
    | **Log Analytics** | Aus | Behalten Sie für dieses Tutorial die Einstellung **Aus** bei. | 
    |||| 
 
@@ -245,16 +245,16 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
       ![Angeben von Ordner, Intervall und Häufigkeit für die E-Mail-Überprüfung](./media/tutorial-process-email-attachments-workflow/set-up-email-trigger.png)
 
-      | Einstellung | Wert | Beschreibung | 
+      | Einstellung | Wert | BESCHREIBUNG | 
       | ------- | ----- | ----------- | 
       | **Ordner** | Posteingang | Der zu überprüfende E-Mail-Ordner. | 
-      | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen. | 
-      | **Häufigkeit** | Minute | Die Zeiteinheit für die Intervalle zwischen Überprüfungen. | 
+      | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen | 
+      | **Frequency** | Minute | Die Zeiteinheit für die Intervalle zwischen Überprüfungen. | 
       |  |  |  | 
   
    2. Klicken Sie auf **Erweiterte Optionen anzeigen**, und geben Sie folgende Einstellungen an:
 
-      | Einstellung | Wert | Beschreibung | 
+      | Einstellung | Wert | BESCHREIBUNG | 
       | ------- | ----- | ----------- | 
       | **Mit Anlage** | Ja | Ruft nur E-Mails mit Anlagen ab. <p>**Hinweis:** Der Trigger entfernt keine E-Mails aus Ihrem Konto. Er überprüft nur neue Nachrichten und verarbeitet nur E-Mails, die dem Betrefffilter entsprechen. | 
       | **Anlagen einschließen** | Ja | Ruft die Anlagen als Eingabe für Ihren Workflow ab, anstatt nur nach Anlagen zu suchen. | 
@@ -403,7 +403,7 @@ Fügen Sie als Nächstes eine Aktion hinzu, die in Ihrem Speichercontainer ein B
 
    ![Erstellen einer Speicherkontoverbindung](./media/tutorial-process-email-attachments-workflow/create-storage-account-connection-first.png)
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **Verbindungsname** | AttachmentStorageConnection | Ein aussagekräftiger Name für die Verbindung. | 
    | **Speicherkonto** | attachmentstorageacct | Der Name des Speicherkontos, das Sie zuvor zum Speichern von Anlagen erstellt haben. | 
@@ -415,7 +415,7 @@ Fügen Sie als Nächstes eine Aktion hinzu, die in Ihrem Speichercontainer ein B
 
    ![Angeben von Blobinformationen für E-Mail-Text](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body.png)
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **Ordnerpfad** | /attachments | Pfad und Name des zuvor erstellten Containers. Sie können auch zu einem Container navigieren und ihn auswählen. | 
    | **Blobname** | Feld **Von** | Übergeben Sie den Namen des E-Mail-Absenders als Blobname. Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten unter **Wenn eine neue E-Mail empfangen wird** das Feld **Von** aus. | 
@@ -500,7 +500,7 @@ Fügen Sie als Nächstes die Aktion hinzu, die jede Anlage als Blob in Ihrem Spe
 
    ![Angeben der Blobinformationen](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment.png)
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **Ordnerpfad** | /attachments | Pfad und Name des zuvor erstellten Containers. Sie können auch zu einem Container navigieren und ihn auswählen. | 
    | **Blobname** | Feld **Name** | Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten die Option **Name** aus, um den Namen der Anlage für den Blobnamen zu übergeben. | 
@@ -578,7 +578,7 @@ Fügen Sie als Nächstes eine Aktion hinzu, damit Ihre Logik-App E-Mails zur Üb
 
 Testen Sie als Nächstes Ihre Logik-App, die nun wie im folgenden Beispiel aussieht:
 
-![Fertige Logik-App](./media/tutorial-process-email-attachments-workflow/complete.png)
+![Fertiggestellte Logik-App](./media/tutorial-process-email-attachments-workflow/complete.png)
 
 ## <a name="run-your-logic-app"></a>Ausführen Ihrer Logik-App
 

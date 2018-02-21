@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e73494ff4827b74cbb42b2b0f1f9738c78960e23
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 297faeb56ac2d4743bfe5887e369be066e91fbd3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-custom-image-of-an-azure-vm-using-the-cli"></a>Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mithilfe der Befehlszeilenschnittstelle
 
@@ -98,7 +98,7 @@ az image create \
  
 ## <a name="create-vms-from-the-image"></a>Erstellen von VMs anhand des Images
 
-Nachdem Sie ein Image erstellt haben, können Sie mithilfe von [az vm create](/cli/azure/vm#create) anhand des Images eine oder mehrere neue VMs erstellen. Im folgenden Beispiel wird eine VM namens *myVMfromImage* anhand des Images *myImage* erstellt.
+Nachdem Sie ein Image erstellt haben, können Sie mithilfe von [az vm create](/cli/azure/vm#az_vm_create) anhand des Images eine oder mehrere neue VMs erstellen. Im folgenden Beispiel wird eine VM namens *myVMfromImage* anhand des Images *myImage* erstellt.
 
 ```azurecli-interactive 
 az vm create \

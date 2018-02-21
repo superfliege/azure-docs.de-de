@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 7a05836be4a0879fa7103d070c683f45c06cd741
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4ecef0526bcdc61d29ae0ee0ac0d55c5651a1b2b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI verwendet Azure, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern
 ![Daxko/CSI-Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
@@ -28,11 +28,11 @@ Daxko/CSI Software stand vor einer großen Herausforderung: Der Kundenstamm an F
 
 Wie David Molina, Director of Product Development bei Daxko/CSI, erläutert, stellte Azure ein PaaS-Modell (Platform-as-a-Service) für CSI Software bereit, mit dem das Unternehmen die Datenbankverwaltung vereinfachen, die Skalierbarkeit erhöhen und Ressourcen freigeben konnte, die sich jetzt wieder auf die Software anstatt auf den Betrieb konzentrieren können. „Azure SQL-Datenbank war eine hervorragende Option für uns. Wir müssen uns nicht mehr um die Verwaltung von SQL Server-Instanzen, Failoverclustern und all der anderen Infrastrukturkomponenten kümmern – die ideale Lösung für uns.“
 
-Seit der Migration zu Azure benötigt CSI Software nur noch zwei Mitarbeiter, um die mehr als 600 Kundendatenbanken zu verwalten. Das Unternehmen verwendet elastische Azure SQL-Datenbankpools, um Kundendatenbanken je nach Größe und Bedarf zu verschieben.
+Seit der Migration zu Azure benötigt CSI Software nur noch zwei Mitarbeiter, um die mehr als 600 Kundendatenbanken zu verwalten. Das Unternehmen verwendet Pools für elastische Azure SQL-Datenbank-Instanzen, um Kundendatenbanken je nach Größe und Bedarf zu verschieben.
 
-Mr. Molina führt weiter aus: „Unsere Kunden haben die Veränderung sofort bemerkt. Bevor wir elastische Pools einsetzten, kam es zu Zeiten hoher Auslastungen zuweilen zu Timeouts und anderen Problemen. Mit den elastischen Azure-Pools können unsere Kunden das System beliebig hoch belasten und die Software dennoch ohne Probleme verwenden.“
+Mr. Molina führt weiter aus: „Unsere Kunden haben die Veränderung sofort bemerkt. Bevor wir Pools für elastische Datenbanken einsetzten, kam es zu Zeiten hoher Auslastungen zuweilen zu Timeouts und anderen Problemen. Mit den Pools für elastische Azure-Datenbanken können unsere Kunden das System beliebig hoch belasten und die Software dennoch ohne Probleme verwenden.“
 
-Die elastischen Azure-Pools verbesserten nicht nur die Leistung für Kunden, sondern setzten auch Ressourcen bei CSI Software frei, die sich wieder auf die Entwicklung neuer Dienste und Features konzentrieren können und sich nicht mehr um Betrieb und Verwaltung kümmern müssen. Dank dieser IT-Ressourcen konnte CSI Software seine Unternehmenssoftware SpectrumNG verbessern, um die Dienste für die Mitglieder der Fitnessstudios zu optimieren, die Effizienz der Mitarbeiter zu verbessern und sowohl den Mitgliedern als auch den Mitarbeitern mobilen Zugriff auf interaktive Vorgänge und Echtzeitbenachrichtigungen zu gewähren.
+Die Pools für elastische Azure-Datenbanken verbesserten nicht nur die Leistung für Kunden, sondern setzten auch Ressourcen bei CSI Software frei, die sich wieder auf die Entwicklung neuer Dienste und Features konzentrieren können und sich nicht mehr um Betrieb und Verwaltung kümmern müssen. Dank dieser IT-Ressourcen konnte CSI Software seine Unternehmenssoftware SpectrumNG verbessern, um die Dienste für die Mitglieder der Fitnessstudios zu optimieren, die Effizienz der Mitarbeiter zu verbessern und sowohl den Mitgliedern als auch den Mitarbeitern mobilen Zugriff auf interaktive Vorgänge und Echtzeitbenachrichtigungen zu gewähren.
 
 Azure unterstützte CSI Software mithilfe von Automatisierungsoptionen auch dabei, die Entwicklungs- und Qualitätssicherungszyklen zu verkürzen und zu verbessern. Dank der Azure-Implementierung des Unternehmens können Buildmanager Komponenten mit einem einzigen Mausklick packen. David Molina beschreibt es so: „Im Rahmen des Releasezyklus kann die Qualitätssicherung jetzt eine Testumgebung in Azure bereitstellen, die den Produktionsstapel nahezu perfekt imitiert. Wir können Builds sofort in unserer Entwicklungsumgebung bereitstellen, um Änderungen zu überprüfen. Das ist ein enormer Vorteil für uns, da wir vorher keine gleichwertigen Systeme für Tests hatten.“
 
@@ -61,10 +61,10 @@ Für das Onboarding neuer Kunden in Azure verwenden die IT-Mitarbeiter von CSI S
 
 Heute werden etwa 99 Prozent aller Kunden von CSI Software in vier regionalen Azure-Rechenzentren gehostet (Norden-Mitte, Süden-Mitte, Osten und Westen). Da sich die Rechenzentren in der jeweiligen geografischen Region der Kunden befinden, wird die Latenz auf ein Minimum reduziert.
 
-## <a name="azure-elastic-pools-free-up-it-resources"></a>Elastische Azure-Pools für freigesetzte IT-Ressourcen
-Viele der Azure-Funktionen haben CSI Software dabei geholfen, von einem infrastruktur- und vorgangsbasierten System auf eine Lösung umzustellen, die sich auf Funktionen und Entwicklung konzentriert. Dabei profitierte das Unternehmen wahrscheinlich am meisten von den elastischen Pools.
+## <a name="azure-elastic-pools-free-up-it-resources"></a>Pools für elastische Azure-Datenbanken für freigesetzte IT-Ressourcen
+Viele der Azure-Funktionen haben CSI Software dabei geholfen, von einem infrastruktur- und vorgangsbasierten System auf eine Lösung umzustellen, die sich auf Funktionen und Entwicklung konzentriert. Dabei profitierte das Unternehmen wahrscheinlich am meisten von den Pools für elastische Datenbanken.
 
-CSI Software stellt zurzeit etwa 550 Datenbanken für Kunden bereit. Bevor elastische Pools eingesetzt wurden, war es schwierig, diese Mengen an Datenbanken innerhalb einer Struktur mit verschiedenen Ebenen zu verwalten. Betriebsmanager mussten Leistungsebenen basierend auf den Burstanforderungen der Kunden zuweisen, was einen erheblichen Aufwand an IT-Ressourcen erforderte. Mit elastischen Pools können die Manager Mandanten je nach Bedarf einen Premium- oder Standardpool zuweisen und die Kunden dann basierend auf Größe und Anforderungen verschieben. Die Kunden bemerkten die Auswirkungen der elastischen Pools fast sofort: Vor dem Einsatz dieser Pools hatten Kunden bei einem plötzlichen Anstieg der Nutzung mit Timeouts und anderen Problemen zu kämpfen – die elastischen Pools können solche plötzlichen Aktivitätsanstiege ganz einfach bewältigen, und die Kunden können SpectrumNG reibungslos weiterverwenden.
+CSI Software stellt zurzeit etwa 550 Datenbanken für Kunden bereit. Bevor Pools für elastische Datenbanken eingesetzt wurden, war es schwierig, diese Mengen an Datenbanken innerhalb einer Struktur mit verschiedenen Ebenen zu verwalten. Betriebsmanager mussten Leistungsebenen basierend auf den Burstanforderungen der Kunden zuweisen, was einen erheblichen Aufwand an IT-Ressourcen erforderte. Mit Pools für elastische Datenbanken können die Manager Mandanten je nach Bedarf einen Premium- oder Standardpool zuweisen und die Kunden dann basierend auf Größe und Anforderungen verschieben. Die Kunden bemerkten die Auswirkungen der Pools für elastische Datenbanken fast sofort: Vor dem Einsatz dieser Pools hatten Kunden bei einem plötzlichen Anstieg der Nutzung mit Timeouts und anderen Problemen zu kämpfen – die Pools für elastische Datenbanken können solche plötzlichen Aktivitätsanstiege ganz einfach bewältigen, und die Kunden können SpectrumNG reibungslos weiterverwenden.
 
 ## <a name="azure-active-geo-replication-accelerates-reporting"></a>Beschleunigte Berichterstellung dank aktiver Georeplikation in Azure
 Viele Kunden von CSI Software profitieren auch von der aktiven Georeplikation in Azure. Mit der aktiven Georeplikation können bis zu vier lesbare sekundäre Datenbanken in der gleichen oder einer anderen Rechenzentrumsregion konfiguriert werden. CSI Software nutzt die aktive Georeplikation auf zwei Arten: Erstens stehen die sekundären Datenbanken zur Verfügung, falls ein Rechenzentrum ausfällt oder keine Verbindung mit der primären Datenbank hergestellt werden kann. Zweitens sind die sekundären Datenbanken lesbar und können zum Auslagern von schreibgeschützten Arbeitsauslastungen wie beispielsweise Berichtsaufträgen verwendet werden. Einige Kunden von CSI Software nutzen diese Vorteile, um Berichtsworkflows zu beschleunigen.
@@ -87,11 +87,10 @@ Die Plattform verwendet eine serviceorientierte Architektur (SOA), um eine einze
 Azure SQL-Datenbank ist nicht nur ein Segen für SpectrumNG-Kunden, die sich über den schnellen und zuverlässigen Dienst freuen – es bietet auch den IT-Mitarbeitern und Entwicklern von CSI Software erhebliche Vorteile. Indem Betriebsfunktionen in die Azure-Lösung in die Cloud ausgelagert wurden, konnte CSI Software den Aufwand für Ressourcen und Infrastruktur senken und die Entwicklungszyklen erheblich verkürzen. Außerdem muss das Unternehmen nicht mehr jedes kleinste Detail verwalten, um die Datenbankleistung für seine Mandanten zu optimieren.
 
 ## <a name="more-information"></a>Weitere Informationen
-* Weitere Informationen zu elastischen Azure-Pools finden Sie unter [Elastische Pools](sql-database-elastic-pool.md).
+* Weitere Informationen zu Azure-Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 * Weitere Informationen zu Datenbanktools und elastischer Skalierung finden Sie unter [Tools für elastische Datenbanken und elastische Skalierung](sql-database-elastic-scale-get-started.md).
 * Weitere Informationen zum Migrieren einer SQL Server-Datenbank finden Sie unter [Migrieren einer SQL Server-Datenbank in Azure](sql-database-cloud-migrate.md).
 * Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-* Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute).    
 * Weitere Informationen zu Azure Service Bus finden Sie unter [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
 * Weitere Informationen zur automatischen Skalierung finden Sie unter [Skalieren von Clouddiensten](../cloud-services/cloud-services-how-to-scale-portal.md).
 

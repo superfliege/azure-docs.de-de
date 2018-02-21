@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: da3ff0de2a5d6ac8994b7c16b758f976228a53b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 06d264ce9a058cc791d5f6258bcc0b07eab915d8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Gewusst wie: Markieren eines virtuellen Linux-Computers in Azure
 In diesem Artikel werden verschiedene Methoden zum Markieren eines virtuellen Linux-Computers in Azure mithilfe des Resource Manager-Bereitstellungsmodells beschrieben. Tags sind benutzerdefinierte Schlüssel-Wert-Paare, die direkt auf einer Ressource oder einer Ressourcengruppe platziert werden können. Azure unterstützt derzeit bis zu 15 Tags pro Ressource und Ressourcengruppe. Tags können zum Zeitpunkt der Erstellung auf einer Ressource platziert werden oder zu einer vorhandenen Ressource hinzugefügt werden. Beachten Sie, dass Tags nur für Ressourcen unterstützt werden, die über das Resource Manager-Bereitstellungsmodell erstellt wurden.
@@ -27,7 +27,7 @@ In diesem Artikel werden verschiedene Methoden zum Markieren eines virtuellen Li
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-azure-cli"></a>Erstellen von Tags mit der Azure-Befehlszeilenschnittstelle
-Die neueste [Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2) muss installiert sein, damit Sie beginnen können. Außerdem müssen Sie mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Die neueste [Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2) muss installiert sein, damit Sie beginnen können. Außerdem müssen Sie mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein.
 
 Sie können diese Schritte auch per [Azure CLI 1.0](tag-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 

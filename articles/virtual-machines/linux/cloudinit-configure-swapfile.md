@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: a8ccec0dc8ff100c5d067cd50f2a6fa8cb4871fb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7f9defc1f414819cf856fc92f5eb51eafdc67be9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Verwenden von „cloud-init“ zum Konfigurieren einer Auslagerungsdatei auf einer Linux-VM
 Dieser Artikel zeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren der Auslagerungsdatei auf verschiedenen Linux-Distributionen verwenden. Die Auslagerungsdatei wurde traditionell vom Linux-Agent (WALA) konfiguriert – abhängig davon, für welche Distributionen eine Auslagerungsdatei benötigt wurde.  In diesem Dokument wird das Vorgehen für die bedarfsgesteuerte Erstellung der Auslagerungsdatei zur Bereitstellungszeit unter Verwendung von „cloud-init“ beschrieben.  Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
@@ -47,13 +47,13 @@ mounts:
 - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
 ```
 
-Vor der Bereitstellung dieses Images müssen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+Vor der Bereitstellung dieses Images müssen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie nun mit dem Befehl [az vm create](/cli/azure/vm#create) eine VM, und geben Sie mit `--custom-data cloud_init_swapfile.txt` die cloud-init-Datei an, wie im Folgenden gezeigt wird:
+Erstellen Sie nun mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) eine VM, und geben Sie mit `--custom-data cloud_init_swapfile.txt` die cloud-init-Datei an, wie im Folgenden gezeigt wird:
 
 ```azurecli-interactive 
 az vm create \

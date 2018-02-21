@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/21/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: de6b3dcd77132154e583d7333983d6745c4aa3bd
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 19ebb30164eee8e03a3cd8f18b6d575c6eee5438
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff – Vorschauversion
 
@@ -78,14 +78,14 @@ Der Standardwert für diese Einstellung ist **Alle Cloud-Apps**. Bei der Standar
 
 ### <a name="ip-address"></a>IP-Adresse
 
-Die IP-Adresse ist eine einzelne IPv4-Adresse zum Imitieren der [Standortbedingung](active-directory-conditional-access-azure-portal.md#locations). Die Adresse stellt die Adresse des Geräts mit Internetzugang dar, die der Benutzer für die Anmeldung verwendet. Sie können die IP-Adresse eines Geräts überprüfen, indem Sie beispielsweise zu [WhatIsMyIPAddress.com](https://whatismyipaddress.com) navigieren.    
+Die IP-Adresse ist eine einzelne IPv4-Adresse zum Imitieren der [Standortbedingung](active-directory-conditional-access-locations.md). Die Adresse stellt die Adresse des Geräts mit Internetzugang dar, die der Benutzer für die Anmeldung verwendet. Sie können die IP-Adresse eines Geräts überprüfen, indem Sie beispielsweise zu [WhatIsMyIPAddress.com](https://whatismyipaddress.com) navigieren.    
 
 ### <a name="device-platforms"></a>Geräteplattformen
 
-Diese Einstellung imitiert die [Geräteplattformbedingung](active-directory-conditional-access-azure-portal.md#device-platforms) und stellt die Entsprechung von **Alle Plattformen (auch nicht unterstützte)** dar. 
+Diese Einstellung imitiert die [Geräteplattformbedingung](active-directory-conditional-access-conditions.md#device-platforms) und stellt die Entsprechung von **Alle Plattformen (auch nicht unterstützte)** dar. 
 ### <a name="client-apps"></a>Client-Apps
 
-Diese Einstellung imitiert die [Client-Apps-Bedingung](active-directory-conditional-access-azure-portal.md#client-apps).
+Diese Einstellung imitiert die [Client-Apps-Bedingung](active-directory-conditional-access-conditions.md#client-apps).
 Standardmäßig bewirkt diese Einstellung eine Auswertung aller Richtlinien, bei denen **Browser** und/oder **Mobile Apps und Desktopclients** aktiviert ist. Damit werden außerdem Richtlinien erkannt, die **Exchange ActiveSync (EAS)** erzwingen. Sie können diese Einstellung eingrenzen, indem Sie Folgendes auswählen:
 
 - **Browser**, um alle Richtlinien auszuwerten, für die mindestens **Browser** ausgewählt wurde. 
@@ -95,7 +95,7 @@ Standardmäßig bewirkt diese Einstellung eine Auswertung aller Richtlinien, bei
 
 ### <a name="sign-in-risk"></a>Anmelderisiko
 
-Diese Einstellung imitiert die [Anmelderisikobedingung](active-directory-conditional-access-azure-portal.md#sign-in-risk).   
+Diese Einstellung imitiert die [Anmelderisikobedingung](active-directory-conditional-access-conditions.md#sign-in-risk).   
 
 
 ## <a name="evaluation"></a>Auswertung 

@@ -2,23 +2,17 @@
 title: "Planen der Kapazität und Skalierung der VMware-Replikation mit Azure Site Recovery | Microsoft-Dokumentation"
 description: "Verwenden Sie diesen Artikel zum Planen der Kapazität und der Skalierung beim Replizieren von VMware-VMs in Azure mit Azure Site Recovery"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: jwhit
-editor: 
-ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 02/07/2018
 ms.author: rayne
-ms.openlocfilehash: 0f4d82d450a6ca2e73c68452a409f300841dbf32
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 02f5a7270b5d8b7657a585fce99946cff8ed8d67
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Planen der Kapazität und Skalierung der VMware-Replikation mit Azure Site Recovery
 
@@ -45,7 +39,7 @@ Sammeln Sie für die VMware-Replikation mit dem [Azure Site Recovery Deployment 
 16 vCPUs (2 Sockets * 8 Kerne mit 2,5 GHz) | 32 GB | 1 TB | 1 TB bis 2 TB | Zwischen 150 und 200 Computer replizieren.
 Bereitstellen eines weiteren Prozessservers | | | > 2 TB | Stellen Sie zusätzliche Prozessserver bereit, wenn Sie mehr als 200 Computer replizieren oder wenn die tägliche Änderungsrate 2 TB überschreitet.
 
-Hierbei gilt:
+Hinweis:
 
 * Jeder Quellcomputer ist mit 3 Datenträgern von jeweils 100 GB konfiguriert.
 * Bei den Benchmarkingmessungen für den Cachedatenträger wurde ein Speicher aus 8 SAS-Laufwerken mit 10.000 U/min und RAID 10 verwendet.
@@ -85,7 +79,7 @@ Nachdem Sie mit dem [Deployment Planner-Tool](site-recovery-deployment-planner.m
   * Der Registrierungswert **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** gibt die Anzahl von Threads an, die für die Datenübertragung (erste Replikation oder Deltareplikation) eines Datenträgers verwendet werden. Bei einem höheren Wert wird die Netzwerkbandbreite für die Replikation erhöht.
   * Der Registrierungswert **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** gibt die Anzahl von Threads an, die für die Datenübertragung während eines Failbacks verwendet werden.
 
-### <a name="throttle-bandwidth"></a>Bandbreite drosseln
+### <a name="throttle-bandwidth"></a>Bandbreite einschränken
 
 1. Öffnen Sie das Azure Backup-MMC-Snap-In auf dem Computer, der als Prozessserver fungiert. Standardmäßig ist auf dem Desktop oder im Ordner „C:\Programme\Microsoft Azure Recovery Services Agent\bin\wabadmin“ eine Verknüpfung für Backup verfügbar.
 2. Klicken Sie im Snap-In auf **Eigenschaften ändern**.

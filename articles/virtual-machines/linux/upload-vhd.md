@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 7c297725c26ea6c44403a10ecdcc3542f89f10b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2d72094fb34c73e511b1003be25594a1dedddb1e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe der Azure CLI 2.0
 
@@ -35,14 +35,14 @@ Sie haben zwei Möglichkeiten:
 
 ## <a name="quick-commands"></a>Schnellbefehle
 
-Beim Erstellen eines neuen virtuellen Computers aus einem benutzerdefinierten oder spezialisierten Datenträger mit [az vm create](/cli/azure/vm#create) **fügen Sie** den Datenträger an (--attach-os-disk), anstatt ein benutzerdefiniertes oder Marketplace-Image anzugeben (--image). Das folgende Beispiel erstellt einen virtuellen Computer namens *myVM* mithilfe des verwalteten Datenträgers namens *myManagedDisk*, der aus Ihrer benutzerdefinierten VHD erstellt wurde:
+Beim Erstellen eines neuen virtuellen Computers aus einem benutzerdefinierten oder spezialisierten Datenträger mit [az vm create](/cli/azure/vm#az_vm_create) **fügen Sie** den Datenträger an (--attach-os-disk), anstatt ein benutzerdefiniertes oder Marketplace-Image anzugeben (--image). Das folgende Beispiel erstellt einen virtuellen Computer namens *myVM* mithilfe des verwalteten Datenträgers namens *myManagedDisk*, der aus Ihrer benutzerdefinierten VHD erstellt wurde:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location eastus --name myVM \
    --os-type linux --attach-os-disk myManagedDisk
 ```
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Um die folgenden Schritte ausführen zu können, benötigen Sie Folgendes:
 
 * Einen virtuellen Linux-Computer, der für die Verwendung in Azure vorbereitet wurde. Im Abschnitt [Vorbereiten des virtuellen Computers](#prepare-the-vm) in diesem Artikel wird erläutert, wo Sie distributionsspezifische Informationen über das Installieren des Azure Linux-Agents (waagent) finden. Diese Installation ist notwendig, damit die VM in Azure reibungslos funktioniert und damit Sie sich mit SSH mit der VM verbinden können.
@@ -56,7 +56,7 @@ Um die folgenden Schritte ausführen zu können, benötigen Sie Folgendes:
 > 
 
 
-* Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
+* Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sind.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. *myResourceGroup*, *mystorageaccount* und *mydisks*.
 
@@ -87,7 +87,7 @@ Sie können eine benutzerdefinierte VHD hochladen, die bei Ihnen auf einem lokal
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Vor dem Hochladen Ihres benutzerdefinierten Datenträgers und dem Erstellen virtueller Computer müssen Sie zuerst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen.
+Vor dem Hochladen Ihres benutzerdefinierten Datenträgers und dem Erstellen virtueller Computer müssen Sie zuerst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen.
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*: [Azure Managed Disks – Übersicht](../windows/managed-disks-overview.md)
 ```azurecli
@@ -96,9 +96,9 @@ az group create \
     --location eastus
 ```
 
-### <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie mithilfe von [az storage account create](/cli/azure/storage/account#create) ein Speicherkonto für Ihren benutzerdefinierten Datenträger und die virtuellen Computer. 
+Erstellen Sie mithilfe von [az storage account create](/cli/azure/storage/account#az_storage_account_create) ein Speicherkonto für Ihren benutzerdefinierten Datenträger und die virtuellen Computer. 
 
 Das folgende Beispiel erstellt ein Speicherkonto namens *mystorageaccount* in der zuvor erstellten Ressourcengruppe:
 
@@ -112,7 +112,7 @@ az storage account create \
 ```
 
 ### <a name="list-storage-account-keys"></a>Auflisten von Speicherkontoschlüsseln
-Azure generiert zwei 512-Bit-Zugriffsschlüssel für jedes Speicherkonto. Die Zugriffsschlüssel werden für die Authentifizierung beim Speicherkonto verwendet, um beispielsweise Schreibvorgänge auszuführen. Erfahren Sie [hier](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)mehr über das Verwalten von Speicherzugriff. Zeigen Sie mit [az storage account keys list](/cli/azure/storage/account/keys#list) die Zugriffsschlüssel an.
+Azure generiert zwei 512-Bit-Zugriffsschlüssel für jedes Speicherkonto. Die Zugriffsschlüssel werden für die Authentifizierung beim Speicherkonto verwendet, um beispielsweise Schreibvorgänge auszuführen. Erfahren Sie [hier](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)mehr über das Verwalten von Speicherzugriff. Zeigen Sie mit [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) die Zugriffsschlüssel an.
 
 Zeigen Sie die Zugriffsschlüssel für das erstellte Speicherkonto an:
 
@@ -136,7 +136,7 @@ info:    storage account keys list command OK
 Notieren Sie sich **key1**, da Sie ihn in den nächsten Schritten für die Interaktion mit Ihrem Speicherkonto benötigen.
 
 ### <a name="create-a-storage-container"></a>Erstellen eines Speichercontainers
-Auf die gleiche Weise, in der Sie verschiedene Verzeichnisse erstellen, um Ihr lokales Dateisystem logisch zu organisieren, erstellen Sie Container in einem Speicherkonto, um die Datenträger zu organisieren. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten. Erstellen Sie mit [az storage container create](/cli/azure/storage/container#create) einen Container.
+Auf die gleiche Weise, in der Sie verschiedene Verzeichnisse erstellen, um Ihr lokales Dateisystem logisch zu organisieren, erstellen Sie Container in einem Speicherkonto, um die Datenträger zu organisieren. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten. Erstellen Sie mit [az storage container create](/cli/azure/storage/container#az_storage_container_create) einen Container.
 
 Im folgenden Beispiel wird ein Container namens *mydisks* erstellt:
 
@@ -147,7 +147,7 @@ az storage container create \
 ```
 
 ### <a name="upload-the-vhd"></a>Hochladen der VHD
-Laden Sie jetzt Ihren benutzerdefinierten Datenträger mit [az storage blob upload](/cli/azure/storage/blob#upload) hoch. Das Hochladen und Speichern Ihrer benutzerdefinierten Datenträger erfolgt als Seitenblob.
+Laden Sie jetzt Ihren benutzerdefinierten Datenträger mit [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) hoch. Das Hochladen und Speichern Ihrer benutzerdefinierten Datenträger erfolgt als Seitenblob.
 
 Geben Sie Ihren Zugriffsschlüssel, den Container, den Sie im vorherigen Schritt erstellt haben, und dann den Pfad zum benutzerdefinierten Datenträger auf dem lokalen Computer an:
 
@@ -164,7 +164,7 @@ Das Hochladen der VHD kann eine Weile dauern.
 ### <a name="create-a-managed-disk"></a>Erstellen eines verwalteten Datenträgers
 
 
-Erstellen Sie einen verwalteten Datenträger mit [az disk create](/cli/azure/disk#create). Das folgende Beispiel erstellt den verwalteten Datenträger namens *myManagedDisk* aus der VHD, die Sie in Ihr benanntes Speicherkonto und den Container hochgeladen haben:
+Erstellen Sie einen verwalteten Datenträger mit [az disk create](/cli/azure/disk#az_disk_create). Das folgende Beispiel erstellt den verwalteten Datenträger namens *myManagedDisk* aus der VHD, die Sie in Ihr benanntes Speicherkonto und den Container hochgeladen haben:
 
 ```azurecli
 az disk create \
@@ -210,7 +210,7 @@ az disk create \
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Erstellen Sie nun Ihren virtuellen Computer mit [az vm create](/cli/azure/vm#create), und fügen Sie den verwalteten Datenträger als Betriebssystemdatenträger an (--attach-os-disk). Das folgende Beispiel erstellt den virtuellen Computer *MyNewVM* mithilfe des verwalteten Datenträgers, der aus der hochgeladenen VHD erstellt wurde:
+Erstellen Sie nun Ihren virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create), und fügen Sie den verwalteten Datenträger als Betriebssystemdatenträger an (--attach-os-disk). Das folgende Beispiel erstellt den virtuellen Computer *MyNewVM* mithilfe des verwalteten Datenträgers, der aus der hochgeladenen VHD erstellt wurde:
 
 ```azurecli
 az vm create \

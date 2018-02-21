@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 5f60dde981465709c16a9813ca24335c67252585
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b7f05f02249f86e6bee7f89c6ecf8016ede9c4fb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Verwenden eines benutzerdefinierten Docker-Images für Web-App für Container
 
@@ -137,7 +137,7 @@ Eine Registrierung ist eine Anwendung, die Images hostet und Image- sowie Contai
 
 <!--## [Docker Hub](#tab/docker-hub)-->
 
-Docker-Hub ist eine Registrierung für Docker-Images, die Ihnen ermöglicht, Ihre eigenen Repositorys – entweder öffentlich oder privat – zu hosten. Verwenden Sie für die Pushübertragung eines benutzerdefinierten Docker-Images an den öffentlichen Docker-Hub den Befehl [`docker push`](https://docs.docker.com/engine/reference/commandline/push/), und geben Sie Image-Name und -Tag vollständig an. Ein vollständiger Name und ein vollständiges Tag des Images sehen wie folgt aus:
+Docker Hub ist eine Registrierung für Docker-Images, die Ihnen ermöglicht, Ihre eigenen Repositorys – entweder öffentlich oder privat – zu hosten. Verwenden Sie für die Pushübertragung eines benutzerdefinierten Docker-Images an den öffentlichen Docker-Hub den Befehl [`docker push`](https://docs.docker.com/engine/reference/commandline/push/), und geben Sie Image-Name und -Tag vollständig an. Ein vollständiger Name und ein vollständiges Tag des Images sehen wie folgt aus:
 
 ```
 <docker-id>/image-name:tag
@@ -228,7 +228,7 @@ Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Be
 
 Die meisten Docker-Images weisen Umgebungsvariablen auf, die konfiguriert werden müssen. Wenn Sie ein vorhandenes Docker-Image nutzen, das von einer anderen Person erstellt wurde, verwendet das Image unter Umständen einen anderen Port als Port 80. Sie teilen Azure den von Ihrem Image verwendeten Port über die App-Einstellung `WEBSITES_PORT` mit. Die GitHub-Seite für das [Python-Beispiel in diesem Tutorial](https://github.com/Azure-Samples/docker-django-webapp-linux) zeigt an, dass Sie für `WEBSITES_PORT` den Wert _8000_ festlegen müssen.
 
-Verwenden Sie zum Festlegen der App-Einstellungen den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) in der Cloud Shell. Bei App-Einstellungen wird die Groß-/Kleinschreibung berücksichtigt und die Einstellungen sind durch Leerzeichen getrennt.
+Verwenden Sie zum Festlegen der App-Einstellungen den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) in Cloud Shell. Bei App-Einstellungen wird die Groß-/Kleinschreibung berücksichtigt und die Einstellungen sind durch Leerzeichen getrennt.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITES_PORT=8000
@@ -237,7 +237,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 <!-- Depending on your requirements, you may have your docker images in a Public Docker Registry, such as Docker Hub, or a Private Docker Registry, such as Azure Container Registry. Select the appropriate tab for your scenario below: -->
 
 > [!NOTE]
-> Bereitstellung aus einer privaten Docker-Registrierung? Die optionalen Anweisungen hierzu finden Sie unter [Konfigurieren einer Web-App zur Verwendung eines Docker-Containers aus einer privaten Registrierung (optional)](#configure-web-app-to-use-docker-container-from-a-private-registry-optional).
+> Bereitstellung aus einer privaten Docker-Registrierung? Die optionalen Anweisungen hierzu finden Sie unter [Verwenden eines Docker-Images für eine private Registrierung](#use-a-docker-image-from-any-private-registry-optional).
 
 <!-- # [Docker Hub](#tab/docker-hub)-->
 
@@ -345,9 +345,9 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 
 Glückwunsch! Sie haben ein benutzerdefiniertes Docker-Image für eine Web-App für Container konfiguriert.
 
-## <a name="use-a-private-image-from-docker-hub-optional"></a>Verwenden eines privaten Images von Docker-Hub (optional)
+## <a name="use-a-private-image-from-docker-hub-optional"></a>Verwenden eines privaten Images von Docker Hub (optional)
 
-In [Erstellen einer Web-App](#create-a-web-app) haben Sie ein Image auf Docker-Hub im `az webapp create`-Befehl angegeben. Dies ist für ein öffentliches Image ausreichend. Um ein privates Image zu verwenden, müssen Sie die Docker-Konto-ID und das zugehörige Kennwort in Azure Web App konfigurieren.
+In [Erstellen einer Web-App](#create-a-web-app) haben Sie ein Image auf Docker Hub im `az webapp create`-Befehl angegebenen. Dies ist für ein öffentliches Image ausreichend. Um ein privates Image zu verwenden, müssen Sie die Docker-Konto-ID und das zugehörige Kennwort in Azure Web App konfigurieren.
 
 Lassen Sie in der Cloud Shell auf den Befehl `az webapp create` den Befehl [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) folgen. Ersetzen Sie *\<app-name>* sowie _\<docker-id>_ und _\<password>_ durch Ihre Docker-ID und das zugehörige Kennwort.
 

@@ -12,15 +12,15 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: bfc31553c32ac4dbfde55aa30b33025b579f6139
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 09022648c03ffa12aa3b060e5094c40ea5c3d61e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Starten einer Demonstration für die interaktive Kartensuche mit Azure Location Based Services (Vorschau)
 
-In diesem Artikel werden die Funktionen von Azure Location Based Services (Vorschau) oder kurz „LBS“ unter Verwendung einer interaktiven Suche mit Azure Maps veranschaulicht. Zudem werden die grundlegenden Schritte zum Erstellen eines eigenen LBS-Kontos sowie zum Abrufen des Schlüssels für das Konto beschrieben, der in der Demo-Webanwendung verwendet wird. 
+In diesem Artikel werden die Funktionen von Azure Location Based Services (LBS) unter Verwendung einer interaktiven Suche mit Azure Maps veranschaulicht. Zudem werden die grundlegenden Schritte zum Erstellen eines eigenen LBS-Kontos sowie zum Abrufen des Schlüssels für das Konto beschrieben, der in der Demo-Webanwendung verwendet wird. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -34,7 +34,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) links oben auf **Ressource erstellen**.
 2. Geben Sie im Feld *Marketplace durchsuchen* den Namen **location based services** ein.
 3. Klicken Sie unter *Ergebnisse* auf **Location Based Services (Vorschauversion)**. Klicken Sie auf die unterhalb der Karte angezeigte Schaltfläche **Erstellen**. 
-4. Geben Sie auf der Seite **Location Based Services-Konto erstellen** unter *Name* den Namen des neuen Kontos ein, wählen Sie das zu verwendende *Abonnement* aus, und geben Sie den Namen einer neuen oder vorhandenen  *Ressourcengruppe* ein. Wählen Sie den Speicherort für die Ressourcengruppe aus, akzeptieren Sie die *Nutzungsbedingungen für die Vorschau*, und klicken Sie auf **Erstellen**.
+4. Geben Sie auf der Seite **Location Based Services-Konto erstellen** unter *Name* den Namen des neuen Kontos ein, wählen Sie das zu verwendende *Abonnement* aus, und geben Sie den Namen einer neuen oder vorhandenen *Ressourcengruppe* ein. Wählen Sie den Speicherort für die Ressourcengruppe aus, akzeptieren Sie die *Nutzungsbedingungen für die Vorschau*, und klicken Sie auf **Erstellen**.
 
     ![Erstellen eines Location Based Services-Kontos im Portal](./media/quick-demo-map-app/create-lbs-account.png)
 

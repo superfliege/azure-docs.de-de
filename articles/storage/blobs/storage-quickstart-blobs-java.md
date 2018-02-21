@@ -2,18 +2,18 @@
 title: "Azure-Schnellstart – Übertragen von Objekten nach/aus Azure Blob Storage mit Java | Microsoft-Dokumentation"
 description: "Hier lernen Sie schnell, wie Sie mit Java Objekte nach/aus Azure Blob Storage übertragen."
 author: roygara
-manager: timlt
+manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: quickstart
 ms.date: 11/01/2017
-ms.author: v-rogara
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 5676cef446de7a68d3d8fd1a3b6833a5de184ea1
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 12e234b483ca7e3b030256bf1cedaed2bcc120d3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-java"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit Java
 
@@ -96,7 +96,7 @@ Als Nächstes gehen wir schrittweise durch den Beispielcode, damit Sie verstehen
 
 Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreifen auf und Verwalten von Blob Storage verwendet werden. Diese Objekte bauen aufeinander auf – jedes wird vom jeweils nächsten in der Liste verwendet.
 
-* Erstellen Sie eine Instanz des **CloudStorageAccount**-Objekts, das auf das [Speicherkonto](/java/api/com.microsoft.azure.management.storage._storage_account) verweist.
+* Erstellen Sie eine Instanz des [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage._storage_account)-Objekts, das auf das Speicherkonto verweist.
 
     Das **CloudStorageAccount**-Objekt ist eine Darstellung Ihres Speicherobjekts, und es ermöglicht den programmgesteuerten Zugriff und das programmgesteuerte Festlegen von Eigenschaften des Speicherkontos. Mithilfe des **CloudStorageAccount**-Objekts können Sie eine Instanz von **CloudBlobClient** erstellen, was für den Zugriff auf den Blob-Dienst erforderlich ist.
 
@@ -104,9 +104,9 @@ Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreife
 
     Der **CloudBlobClient** stellt Ihnen einen Zugriffspunkt für den Blob-Dienst zur Verfügung, mit dem Sie programmgesteuert auf Blob-Speichereigenschaften zugreifen und sie festlegen können. Mithilfe von **CloudBlobClient** können Sie eine Instanz des **CloudBlobClient**-Objekts erstellen, was zum Erstellen von Containern erforderlich ist.
 
-* Erstellen Sie eine Instanz des **CloudBlobContainer**-Objekts, das den [Container](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container) darstellt, auf den Sie zugreifen. Container werden zum Organisieren der Blobs verwendet, so wie Sie auf Ihrem Computer Ordner zum Organisieren von Dateien verwenden.    
+* Erstellen Sie eine Instanz des [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container)-Objekts, das den Container darstellt, auf den Sie zugreifen. Container werden zum Organisieren der Blobs verwendet, so wie Sie auf Ihrem Computer Ordner zum Organisieren von Dateien verwenden.    
 
-    Sobald Sie über den **CloudBlobContainer** verfügen, können Sie eine Instanz des **CloudBlockBlob**-Objekts erstellen, das auf den speziellen [Blob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob) verweist, der für Sie von Interesse ist, und einen Upload-, Download- oder Kopiervorgang sowie weitere Vorgänge ausführen.
+    Sobald Sie über den **CloudBlobContainer** verfügen, können Sie eine Instanz des [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob)-Objekts erstellen, das auf das gewünschte Blob verweist, und einen Upload-, Download- oder Kopiervorgang sowie weitere Vorgänge ausführen.
 
 > [!IMPORTANT]
 > Die Containernamen müssen klein geschrieben werden. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
@@ -115,7 +115,7 @@ Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreife
 
 In diesem Abschnitt erstellen Sie eine Instanz der Objekte und einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind und einfach mit einer URL auf sie zugegriffen werden kann. Der Name des Containers lautet **quickstartblobs**. 
 
-In diesem Beispiel wird **CreateIfNotExists** verwendet, da bei jedem Ausführen des Beispiels ein neuer Container erstellt werden soll. In einer Produktionsumgebung, in der Sie in der gesamten Anwendung den gleichen Container verwenden, empfiehlt es sich hingegen, **CreateIfNotExists** nur einmal aufzurufen. Alternativ können Sie den Container im Voraus erstellen, damit er nicht im Code erstellt werden muss.
+In diesem Beispiel wird [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.createifnotexists) verwendet, da bei jedem Ausführen des Beispiels ein neuer Container erstellt werden soll. In einer Produktionsumgebung, in der Sie in der gesamten Anwendung denselben Container verwenden, empfiehlt es sich hingegen, **CreateIfNotExists** nur einmal aufzurufen. Alternativ können Sie den Container im Voraus erstellen, damit er nicht im Code erstellt werden muss.
 
 ```java
 // Parse the connection string and create a blob client to interact with Blob storage
@@ -152,7 +152,7 @@ System.out.println("Uploading the sample file ");
 blob.uploadFromFile(sourceFile.getAbsolutePath());
 ```
 
-Es gibt eine Reihe von [Uploadmethoden](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob), die Sie in Kombination mit Blob Storage verwenden können. Beispielsweise können Sie für eine Zeichenfolge die UploadText-Methode anstelle der Upload-Methode verwenden. 
+Es gibt mehrere Uploadmethoden, z.B. [upload](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload), [uploadBlock](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock), [uploadFullBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob), [uploadStandardBlobTier](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier) und [uploadText](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext), die Sie mit BLOB-Speicher verwenden können. Beispielsweise können Sie für eine Zeichenfolge die UploadText-Methode anstelle der Upload-Methode verwenden. 
 
 Blockblobs können jede Art von Text oder Binärdateien darstellen. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
 
@@ -211,3 +211,5 @@ In diesem Schnellstart haben Sie gelernt, wie Sie mit Java Dateien zwischen eine
 > [Gewusst wie: Blob Storage-Vorgänge](storage-java-how-to-use-blob-storage.md)
 
 Weitere Informationen zum Storage-Explorer und Blobs finden Sie unter [Verwalten von Azure Blob Storage-Ressourcen mit dem Speicher-Explorer (Vorschau)](../../vs-azure-tools-storage-explorer-blobs.md).
+
+Weitere Java-Beispiele finden Sie unter [Azure Storage-Beispiele mit Java](../common/storage-samples-java.md).

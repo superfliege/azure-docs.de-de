@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: e52f38d5fb3c100e4275032f9a2a1234961c672b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52f1f1543fe0ef15cf71d2cf1f9a8bfeaae8933f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-blob-storage-from-nodejs"></a>Verwenden des Blob-Speichers mit Node.js
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -33,7 +33,7 @@ In diesem Artikel wird die Durchführung gängiger Szenarien mit Blob Storage de
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
-Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen einer Node.js-Web-App in Azure App Service], [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (mithilfe von Windows PowerShell) und [Erstellen und Bereitstellen einer Node.js-Web-App für Azure mithilfe von WebMatrix](https://www.microsoft.com/web/webmatrix/).
+Anleitungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen einer Node.js-Web-App in Azure App Service](../../app-service/app-service-web-get-started-nodejs.md), [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) – mithilfe von Windows PowerShell – oder [Erstellen und Bereitstellen einer Node.js-Web-App für Azure mithilfe von WebMatrix](https://www.microsoft.com/web/webmatrix/).
 
 ## <a name="configure-your-application-to-access-storage"></a>Konfigurieren der Anwendung für den Speicherzugriff
 Um Azure-Speicher verwenden zu können, müssen Sie das Azure Storage-SDK für Node.js herunterladen. Es enthält eine Reihe von Bibliotheken, die mit den REST-Speicherdiensten kommunizieren.
@@ -121,7 +121,7 @@ blobSvc.setContainerAcl('mycontainer', null /* signedIdentifiers */, {publicAcce
 Das Ergebnis enthält Informationen über den Vorgang, einschließlich der **ETag** -Informationen für den Container.
 
 ### <a name="filters"></a>Filter
-Sie können optionale Filtervorgänge auf Vorgänge anwenden, die mithilfe von **BlobService** ausgeführt werden. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der folgenden Signatur implementieren:
+Sie können optionale Filtervorgänge auf Vorgänge anwenden, die mithilfe von **BlobService** ausgeführt werden. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der Signatur implementieren:
 
 ```nodejs
 function handle (requestOptions, next)
@@ -192,7 +192,7 @@ Um einen Block an einen vorhandenen Anfügeblob anzufügen, verwenden Sie Folgen
 * **appendBlockFromText** – fügt den Inhalt einer Zeichenfolge an ein vorhandenes Anfügeblob an.
 
 > [!NOTE]
-> appendFromXXX-APIs führen einige clientseitige Validierungen aus, um damit unnötige Serveraufrufe zu vermeiden. appendBlockFromXXX-APIs machen dies nicht.
+> appendFromXXX-APIs führen einige clientseitige Validierungen für die Fail-Fast-Fähigkeit aus, um damit unnötige Serveraufrufe zu vermeiden. appendBlockFromXXX-APIs machen dies nicht.
 >
 >
 
@@ -415,7 +415,7 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
 * [API-Referenz zum Azure Storage-SDK für Node][API-Referenz zum Azure Storage-SDK für Node]  
 * [Azure Storage-Teamblog][Azure Storage-Teamblog]  
 * [Azure Storage SDK für Node.js][Azure Storage SDK for Node]-Repository auf GitHub  
-* [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/)  
+* [Node.js Developer Center (in englischer Sprache)](https://azure.microsoft.com/develop/nodejs/)  
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)  
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node  
@@ -425,4 +425,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
 [Azure portal]: https://portal.azure.com  
 [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)  
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/  
-[API-Referenz zum Azure Storage-SDK für Node]: http://dl.windowsazure.com/nodestoragedocs/index.html  
+[API-Referenz zum Azure Storage SDK für Node]: http://dl.windowsazure.com/nodestoragedocs/index.html  

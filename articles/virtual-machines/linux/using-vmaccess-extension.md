@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
-ms.openlocfilehash: 3596b50b68cabf212218825566c0f8313f054f65
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fb3941e0b55f8b5d79c9fc794ec984e074caafe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Verwalten von Administratoren, SSH und Überprüfen oder Reparieren von Datenträgern auf Linux-VMs mit der VMAccess-Erweiterung und der Azure CLI 2.0
 Der Datenträger auf Ihrer Linux-VM zeigt Fehler an. Aus irgendeinem Grund haben Sie das Stammkennwort für Ihre Linux-VM zurückgesetzt oder Ihren privaten SSH-Schlüssel versehentlich gelöscht. Wenn dies früher zu Rechenzentrumszeiten geschah, mussten Sie dorthin fahren und den KVM öffnen, um an die Serverkonsole zu gelangen. Stellen Sie sich die Azure-VMAccess-Erweiterung als diesen KVM-Switch vor, mit dem Sie Zugriff auf die Konsole haben, um den Zugriff auf Linux zurückzusetzen oder Wartung auf Datenträgerebene durchzuführen.
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure VMAccess-Erweiterung einen Datenträger überprüfen oder reparieren, den Benutzerzugriff zurücksetzen, Administratorkonten verwalten oder die SSH-Konfiguration unter Linux zurücksetzen. Sie können diese Schritte auch mit der [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
+In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure VMAccess-Erweiterung einen Datenträger überprüfen oder reparieren, den Benutzerzugriff zurücksetzen, Administratorkonten verwalten oder die SSH-Konfiguration unter Linux zurücksetzen. Sie können diese Schritte auch per [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>Verschiedene Verwendungsmöglichkeiten für die VMAccess-Erweiterung
@@ -33,7 +33,7 @@ Es gibt zwei Möglichkeiten, die VMAccess-Erweiterung auf Ihren virtuellen Linux
 * Verwenden Sie die Azure CLI 2.0 und die erforderlichen Parameter.
 * [Verwenden Sie JSON-Rohdatendateien, die von der VMAccess-Erweiterung verarbeitet](#use-json-files-and-the-vmaccess-extension) und dann verwendet werden können.
 
-In den folgenden Beispielen werden Befehle vom Typ [az vm user](/cli/azure/vm/user) verwendet. Zum Ausführen dieser Schritte muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+In den folgenden Beispielen werden Befehle vom Typ [az vm user](/cli/azure/vm/user) verwendet. Zum Ausführen dieser Schritte muss die neueste Version der [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein.
 
 ## <a name="reset-ssh-key"></a>Zurücksetzen des SSH-Schlüssels
 Das folgende Beispiel setzt den SSH-Schlüssel für den Benutzer `azureuser` auf dem virtuellen Computer `myVM` zurück:
@@ -46,7 +46,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-## <a name="reset-password"></a>Zurücksetzen des Kennworts
+## <a name="reset-password"></a>Kennwort zurücksetzen
 Das folgende Beispiel setzt das Kennwort für den Benutzer `azureuser` auf dem virtuellen Computer `myVM` zurück:
 
 ```azurecli
@@ -91,7 +91,7 @@ az vm user delete \
 
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>Verwenden von JSON-Dateien und der VMAccess-Erweiterung
-Die folgenden Beispiele verwenden JSON-Rohdatendateien. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#set), um Ihre JSON-Dateien aufzurufen. Diese JSON-Dateien können auch aus Azure-Vorlagen heraus aufgerufen werden. 
+Die folgenden Beispiele verwenden JSON-Rohdatendateien. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set), um Ihre JSON-Dateien aufzurufen. Diese JSON-Dateien können auch aus Azure-Vorlagen heraus aufgerufen werden. 
 
 ### <a name="reset-user-access"></a>Zurücksetzen des Benutzerzugriffs
 Wenn Sie nicht mehr auf das Stammverzeichnis Ihres virtuellen Linux-Computers zugreifen können, können Sie ein VMAccess-Skript starten, um den SSH-Schlüssel oder das Kennwort eines Benutzers zurückzusetzen.

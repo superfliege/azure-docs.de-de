@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 02/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 5a5c541f7a912a96547b6b3bec37f0e4066a54e6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c14f4d14584dad27e53504e2413e82764db9dca0
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Tutorial: Rendern einer Szene mit Azure Batch 
 
@@ -32,7 +32,7 @@ In diesem Tutorial rendern Sie eine 3ds Max-Szene mit Batch, indem Sie den [Arno
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die 3ds Max-Beispielszene für dieses Tutorial ist auf [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) zusammen mit einem Bash-Beispielskript und JSON-Konfigurationsdateien zu finden. Die 3ds Max-Szene stammt aus den [Autodesk 3ds Max-Beispieldateien](http:download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-Beispieldateien sind unter einer Creative Commons Attribution-NonCommercial-Share Alike-Lizenz verfügbar. Copyright © Autodesk, Inc.)
+Die 3ds Max-Beispielszene für dieses Tutorial ist auf [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) zusammen mit einem Bash-Beispielskript und JSON-Konfigurationsdateien zu finden. Die 3ds Max-Szene stammt aus den [Autodesk 3ds Max-Beispieldateien](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-Beispieldateien sind unter einer Creative Commons Attribution-NonCommercial-Share Alike-Lizenz verfügbar. Copyright © Autodesk, Inc.)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -195,7 +195,7 @@ az batch job create \
     --pool-id myrenderpool
 ```
 
-### <a name="create-a-task"></a>Erstellen einer Aufgabe
+### <a name="create-a-task"></a>Erstellt eine Aufgabe.
 
 Verwenden Sie den Befehl [az batch task create](/cli/azure/batch/task#az_batch_task_create), um im Auftrag eine Renderaufgabe zu erstellen. In diesem Beispiel geben Sie die Aufgabeneinstellungen in einer JSON-Datei an. Erstellen Sie in Ihrer aktuellen Shell eine Datei mit dem Namen *myrendertask.json*, und fügen Sie dann den folgenden Inhalt ein. Achten Sie darauf, dass der Text richtig kopiert wird. (Sie können die Datei von [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json) herunterladen.)
 
@@ -216,8 +216,8 @@ In der Aufgabe wird ein 3ds Max-Befehl angegeben, um einen einzelnen Frame der S
   "commandLine": "cmd /c \"3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 Robo_Dummy_Lo_Res.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/maxfile/Robo_Dummy_Lo_Res.max",
-        "filePath": "Robo_Dummy_Lo_Res.max"
+        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "filePath": "MotionBlur-DragonFlying.max"
     }
   ],
     "outputFiles": [

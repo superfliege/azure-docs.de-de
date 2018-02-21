@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/09/2017
+ms.date: 02/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 904bbfcd02984b301d9eb9faaa6203f16139eba5
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 7c79e66c6ee4d5aa3ffd052306f57666df866313
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Verwenden der Azure Data Lake-Tools für Visual Studio mit der Hortonworks Sandbox
 
@@ -53,13 +53,13 @@ Stellen Sie sicher, dass Hortonworks Sandbox ausgeführt wird. Führen Sie dann 
 
     ![Screenshot des Dialogfelds mit hervorgehobenen Kennworttextfeld](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
-    Wählen Sie **Weiter**, um fortzufahren.
+    Klicken Sie auf **Weiter**, um fortzufahren.
 
 4. Verwenden Sie das Feld **Kennwort**, um das Kennwort einzugeben, das Sie für das `root`-Konto konfiguriert haben. Behalten Sie für die anderen Felder den Standardwert bei.
 
     ![Screenshot des Dialogfelds mit hervorgehobenen Kennworttextfeld](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
 
-    Wählen Sie **Weiter**, um fortzufahren.
+    Klicken Sie auf **Weiter**, um fortzufahren.
 
 5. Warten Sie, bis die Überprüfung der Dienste abgeschlossen ist. Es kann vorkommen, dass die Überprüfung nicht erfolgreich ist und Sie eine Aufforderung zum Aktualisieren der Konfiguration erhalten. Wenn die Überprüfung nicht erfolgreich ist, klicken Sie auf **Aktualisieren**, und warten Sie, bis die Konfiguration und Verifizierung für den Dienst abgeschlossen ist.
 
@@ -102,7 +102,7 @@ Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit struk
 
     ![Screenshot des Dialogfelds „Auftragsansicht“ mit hervorgehobenem „Auftragsstatus“](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
 
-    Nachdem der **Auftragsstatus** in **Beendet** geändert wurde, wird ein gerichteter azyklischer Graph (Directed Acyclic Graph, DAG) angezeigt. Dieses Diagramm beschreibt den Ausführungspfad, der von Tez beim Verarbeiten der Hive-Abfrage bestimmt wurde. Tez ist das Standardausführungsmodul für Hive auf dem lokalen Cluster.
+    Nachdem der **Auftragsstatus** in **Beendet** geändert wurde, wird ein gerichteter azyklischer Graph (Directed Acyclic Graph, DAG) angezeigt. Dieses Diagramm beschreibt den Ausführungspfad, der von Tez beim Verarbeiten der Hive-Abfrage bestimmt wurde. Tez ist die Standard-Ausführungs-Engine für Hive auf dem lokalen Cluster.
 
     > [!NOTE]
     > Tez ist auch die Standardeinstellung, wenn Sie Linux-basierte HDInsight-Cluster verwenden. Es ist nicht die Standardeinstellung auf Windows-basiertem HDInsight. Um es zu verwenden, müssen Sie die Zeile `set hive.execution.engine = tez;` auf Anfang der Hive-Abfrage einfügen.

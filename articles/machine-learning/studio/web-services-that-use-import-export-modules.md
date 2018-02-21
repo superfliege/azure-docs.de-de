@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.author: v-donglo
-ms.openlocfilehash: 54b0434cb753484bdb8300f4b9c4f7f7ca75c7c8
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.author: raymondl
+ms.openlocfilehash: 626b730bf7f012ee64f51e3aee0970a1a1ac5f66
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>Bereitstellen von Azure ML-Webdiensten, die Module zum Importieren und Exportieren von Daten verwenden
 
-Bei der Erstellung eines Vorhersageexperiments fügen Sie in der Regel eine Webdiensteingabe und -ausgabe hinzu. Wenn Sie das Experiment bereitstellen, können Nutzer Daten über die Webdiensteingabe bzw. -ausgabe senden und empfangen. Für einige Anwendungen sind die Daten eines Nutzers möglicherweise über einen Datenfeed verfügbar oder befinden sich bereits in einer externen Datenquelle, z.B. Azure-Blobspeicher. In diesen Fällen müssen sie nicht mithilfe von Webdiensteingabe und -ausgabe gelesen und geschrieben werden. Sie können stattdessen mit dem Stapelausführungsdienst (Batch Execution Service, BES) mit einem Import Data-Modul aus der Datenquelle gelesen werden, und die Bewertungsergebnisse können mit einem Export Data-Modul an einen anderen Datenspeicherort geschrieben werden.
+Bei der Erstellung eines Vorhersageexperiments fügen Sie in der Regel eine Webdiensteingabe und -ausgabe hinzu. Wenn Sie das Experiment bereitstellen, können Nutzer Daten über die Webdiensteingabe bzw. -ausgabe senden und empfangen. Für einige Anwendungen sind die Daten eines Nutzers möglicherweise über einen Datenfeed verfügbar oder befinden sich bereits in einer externen Datenquelle, z.B. Azure Blob Storage. In diesen Fällen müssen sie nicht mithilfe von Webdiensteingabe und -ausgabe gelesen und geschrieben werden. Sie können stattdessen mit dem Stapelausführungsdienst (Batch Execution Service, BES) mit einem Import Data-Modul aus der Datenquelle gelesen werden, und die Bewertungsergebnisse können mit einem Export Data-Modul an einen anderen Datenspeicherort geschrieben werden.
 
 Die Module Import Data und Export Data können aus verschiedenen Datenspeicherorten wie Web-URL über HTTP, Hive-Abfrage, einer Azure SQL-Datenbank, Azure-Tabellenspeicher und Azure Blob Storage, einem bereitgestellten Datenfeed oder einer lokalen SQL-Datenbank lesen und darin schreiben.
 

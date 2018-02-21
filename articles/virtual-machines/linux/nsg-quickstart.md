@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: eaa3039c369057d39dfce0896b9a4d1cfad75550
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 91908b03522788d470fdb93121f620bfcdef9085
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer mithilfe der Azure-CLI
-In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure CLI 2.0 einen Port für einen virtuellen Computer öffnen. Sie können diese Schritte auch mit der [Azure CLI 1.0](nsg-quickstart-nodejs.md) ausführen.
+In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure CLI 2.0 einen Port für einen virtuellen Computer öffnen. Sie können diese Schritte auch per [Azure CLI 1.0](nsg-quickstart-nodejs.md) ausführen.
 
-Um eine Netzwerksicherheitsgruppe und Regeln erstellen zu können, muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Um eine Netzwerksicherheitsgruppe und Regeln erstellen zu können, muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind etwa *myResourceGroup*, *myNetworkSecurityGroup* oder *myVnet*.
 
@@ -39,7 +39,7 @@ Wenn Sie zusätzliche Kontrolle über die Regeln benötigen (z. B. Definieren ei
 
 
 ## <a name="create-a-network-security-group-and-rules"></a>Erstellen einer Netzwerksicherheitsgruppe und von Regeln
-Erstellen Sie die Netzwerksicherheitsgruppe mit [az network nsg create](/cli/azure/network/nsg#create). Im folgenden Beispiel wird die Netzwerksicherheitsgruppe *myNetworkSecurityGroup* am Standort *USA, Osten* erstellt:
+Erstellen Sie die Netzwerksicherheitsgruppe mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create). Im folgenden Beispiel wird die Netzwerksicherheitsgruppe *myNetworkSecurityGroup* am Standort *USA, Osten* erstellt:
 
 ```azurecli
 az network nsg create \
@@ -48,7 +48,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Fügen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine Regel hinzu, um HTTP-Datenverkehr an Ihren Webserver zuzulassen (oder passen Sie die Regel für Ihr eigenes Szenario an, beispielsweise für SSH-Zugriff oder Datenbankverbindungen). Im folgenden Beispiel wird die Regel *myNetworkSecurityGroupRule* erstellt, um TCP-Datenverkehr an Port 80 zuzulassen:
+Fügen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine Regel hinzu, um HTTP-Datenverkehr an Ihren Webserver zuzulassen (oder passen Sie die Regel für Ihr eigenes Szenario an, beispielsweise für SSH-Zugriff oder Datenbankverbindungen). Im folgenden Beispiel wird die Regel *myNetworkSecurityGroupRule* erstellt, um TCP-Datenverkehr an Port 80 zuzulassen:
 
 ```azurecli
 az network nsg rule create \
@@ -62,7 +62,7 @@ az network nsg rule create \
 
 
 ## <a name="apply-network-security-group-to-vm"></a>Anwenden der Netzwerksicherheitsgruppe auf den virtuellen Computer
-Ordnen Sie die Netzwerksicherheitsgruppe mit [az network nic update](/cli/azure/network/nic#update) der Netzwerkschnittstelle des virtuellen Computers zu. Im folgenden Beispiel wird die vorhandene Netzwerkschnittstelle *myNic* Ihrer Netzwerksicherheitsgruppe *myNetworkSecurityGroup* zugewiesen:
+Ordnen Sie die Netzwerksicherheitsgruppe mit [az network nic update](/cli/azure/network/nic#az_network_nic_update) der Netzwerkschnittstelle des virtuellen Computers zu. Im folgenden Beispiel wird die vorhandene Netzwerkschnittstelle *myNic* Ihrer Netzwerksicherheitsgruppe *myNetworkSecurityGroup* zugewiesen:
 
 ```azurecli
 az network nic update \
@@ -71,7 +71,7 @@ az network nic update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Alternativ können Sie Ihre Netzwerksicherheitsgruppe mit [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) dem Subnetz Ihres virtuellen Netzwerks zuordnen anstatt nur der Netzwerkschnittstelle eines einzelnen virtuellen Computers. Im folgenden Beispiel wird das vorhandene Subnetz *mySubnet* im virtuellen Netzwerk *myVnet* Ihrer Netzwerksicherheitsgruppe *myNetworkSecurityGroup* zugewiesen:
+Alternativ können Sie Ihre Netzwerksicherheitsgruppe mit [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) dem Subnetz Ihres virtuellen Netzwerks zuordnen anstatt nur der Netzwerkschnittstelle eines einzelnen virtuellen Computers. Im folgenden Beispiel wird das vorhandene Subnetz *mySubnet* im virtuellen Netzwerk *myVnet* Ihrer Netzwerksicherheitsgruppe *myNetworkSecurityGroup* zugewiesen:
 
 ```azurecli
 az network vnet subnet update \

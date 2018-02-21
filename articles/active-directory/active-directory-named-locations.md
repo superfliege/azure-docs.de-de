@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 231255d9a119c404c0c947c00414572aaab82719
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b6f80cde24edcbec68309ba033d4da16ee97b731
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="named-locations-in-azure-active-directory"></a>Benannte Orte in Azure Active Directory
 
@@ -26,7 +26,7 @@ Mit benannten Orten können Sie in Ihrer Organisation vertrauenswürdige IP-Adre
 
 - Die Erkennung von [Risikoereignissen](active-directory-reporting-risk-events.md), um die Anzahl der gemeldeten falsch positiven Ergebnisse zu reduzieren.  
 
-- [Standortbasierter bedingter Zugriff](active-directory-conditional-access-azure-portal.md#locations).
+- [Standortbasierter bedingter Zugriff](active-directory-conditional-access-locations.md).
 
 
 In diesem Artikel wird erklärt, wie Sie benannte Orte in Ihrer Umgebung konfigurieren können.
@@ -85,7 +85,7 @@ Sie können auf die Seite mit der Konfiguration des benannten Orts im Abschnitt 
 
     b. Geben Sie im Feld **IP-Bereiche** einen IP-Adressbereich ein. Der IP-Adressbereich muss das Format *Classless Inter-Domain Routing* (CIDR) haben.  
 
-    c. Klicken Sie auf **Erstellen**.
+    c. Klicken Sie auf **Create**.
 
 
 

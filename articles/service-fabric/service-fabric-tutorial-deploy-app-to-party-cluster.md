@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: cb9d20bcb4b863736229bb920f5d4615b2c28c94
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 91d4398589707e8007c4b93639ddb568e39f51a7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Bereitstellen einer Anwendung für einen Partycluster in Azure
 Dieses Tutorial ist der zweite Teil einer Serie und zeigt, wie Sie eine Azure Service Fabric-Anwendung für einen Partycluster in Azure bereitstellen.
@@ -59,14 +59,33 @@ Sie können einen eigenen Cluster statt des Partyclusters verwenden, wenn Sie m�
 > [!NOTE]
 > Partycluster werden nicht gesichert, sodass Ihre Anwendungen und Daten, die Sie in diesem abgelegt haben, möglicherweise für andere Personen sichtbar sind. Stellen Sie nichts bereit, das nicht von anderen gesehen werden soll. Lesen Sie die Nutzungsbedingungen für alle weiteren Details.
 
+Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Das Zertifikat und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
+
+![PFX-Zertifikat und Verbindungsendpunkt](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+
+Installieren Sie das PFX-Zertifikat auf einem Windows-Computer im Zertifikatspeicher *CurrentUser\My*.
+
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
+\CurrentUser\My
+
+
+  PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
+
+
 ## <a name="deploy-the-app-to-the-azure"></a>Bereitstellen der Anwendung in Azure
 Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio für den Partycluster bereitstellen.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und wählen Sie **Veröffentlichen**.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und wählen Sie **Veröffentlichen**. 
 
-    ![Dialogfeld „Veröffentlichen“](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+    ![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-containers/publish-app.png)
 
-2. Tragen Sie den Verbindungsendpunkt des Partyclusters in das Feld **Verbindungendspunkt** ein, und klicken Sie auf **Veröffentlichen**.
+2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und geben Sie die folgenden Informationen an.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des im vorherigen Schritt installierten Zertifikats entsprechen. Klicken Sie auf **Veröffentlichen**. 
 
     Sobald die Veröffentlichung abgeschlossen ist, sollten Sie über den Browser eine Anforderung an die Anwendung senden können.
 
@@ -81,9 +100,9 @@ Service Fabric Explorer ist eine grafische Benutzeroberfläche, um Ihre Anwendun
 
 So entfernen Sie die Anwendung aus dem Partycluster:
 
-1. Navigieren Sie über den von der Party Cluster-Anmeldeseite bereitgestellten Link zu Service Fabric Explorer. Beispielsweise: http://win1kw5649s.westus.cloudapp.azure.com:19080/Explorer/index.html.
+1. Navigieren Sie über den von der Party Cluster-Anmeldeseite bereitgestellten Link zu Service Fabric Explorer. Beispiel: „https://win1kw5649s.westus.cloudapp.azure.com:19080/Explorer/index.html“.
 
-2. Navigieren Sie in Service Fabric Explorer in der Strukturansicht auf der linken Seite zum Knoten **fabric://Voting**.
+2. Navigieren Sie in Service Fabric Explorer in der Strukturansicht auf der linken Seite zum Knoten **fabric:/Voting**.
 
 3. Klicken Sie auf der rechten Seite des Bereichs **Zusammenfassung** auf die Schaltfläche **Aktion**, und klicken Sie auf **Anwendung löschen**. Bestätigen Sie die Löschung der Anwendungsinstanz, um die Instanz Ihrer Anwendung zu entfernen, die im Cluster ausgeführt wird.
 

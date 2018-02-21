@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2c2318d9a5f72800f9cfbd430dca448fd1e5746f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e0d5bd57a40fca837ead42e691e1fa0c802dc013
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Bereitstellen eines Azure Container Service-Clusters (AKS)
 
@@ -41,10 +41,10 @@ Nach dem Registrieren können Sie jetzt einen Kubernetes-Cluster mit AKS erstell
 
 ## <a name="create-kubernetes-cluster"></a>Erstellen eines Kubernetes-Clusters
 
-Das folgende Beispiel erstellt einen Cluster mit dem Namen `myK8sCluster` in einer Ressourcengruppe namens `myResourceGroup`. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] erstellt.
+Das folgende Beispiel erstellt einen Cluster mit dem Namen `myAKSCluster` in einer Ressourcengruppe namens `myResourceGroup`. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] erstellt.
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myK8sCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
 Nach einigen Minuten ist die Bereitstellung abgeschlossen, und es werden Informationen zur AKS-Bereitstellung im JSON-Format zurückgegeben.
@@ -64,7 +64,7 @@ az aks install-cli
 Führen Sie den folgenden Befehl aus, um „kubectl“ für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster zu konfigurieren:
 
 ```azurecli
-az aks get-credentials --resource-group=myResourceGroup --name=myK8sCluster
+az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster
 ```
 
 Um die Verbindung mit dem Cluster zu überprüfen, führen Sie den Befehl [kubectl get nodes][kubectl-get] aus.
@@ -77,14 +77,14 @@ Ausgabe:
 
 ```
 NAME                          STATUS    AGE       VERSION
-k8s-myk8scluster-36346190-0   Ready     49m       v1.7.7
+k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.7
 ```
 
 Nach Abschluss des Tutorials verfügen Sie über einen AKS-Cluster, der für die Verarbeitung von Workloads bereit ist. In nachfolgenden Tutorials wird in diesem Cluster eine Anwendung mit mehreren Containern bereitgestellt, horizontal hochskaliert, aktualisiert und überwacht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde ein Kubernetes-Cluster in AKS bereitgestellt. Die folgenden Schritte wurden ausgeführt:
+In diesem Tutorial wurde ein Kubernetes-Cluster in AKS bereitgestellt. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
 > * Bereitstellen eines Kubernetes-AKS-Clusters

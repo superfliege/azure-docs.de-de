@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: cdd8c5e932815c5741b1091a743d235de882c5b1
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 33b9c36d4600646c36a519e647bd8cc8b6d68666
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
@@ -85,7 +85,7 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel für den Remotedesktop-Datenverkehr
 Um zuzulassen, dass Remotedesktop-Datenverkehr Ihren virtuellen Linux-Computer erreicht, muss eine Netzwerksicherheitsgruppen-Regel erstellt werden, die TCP an Port 3389 an Ihren virtuellen Computer durchlässt. Weitere Informationen zu Netzwerksicherheitsgruppen-Regeln finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Alternativ können Sie [das Azure-Portal zum Erstellen einer Netzwerksicherheitsgruppen-Regel verwenden](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel mit [az vm open-port](/cli/azure/vm#open-port) für Port *3389* erstellt.
+Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel mit [az vm open-port](/cli/azure/vm#az_vm_open_port) für Port *3389* erstellt.
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389

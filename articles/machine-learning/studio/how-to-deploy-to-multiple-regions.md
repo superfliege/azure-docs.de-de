@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: v-donglo
-ms.openlocfilehash: abd6f05e9b9ce711ce55e88f07aa13287c76ebc2
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.author: raymondl
+ms.openlocfilehash: 58c0f5b0ac8e96c2457db4b86dcf2483f68289c6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen
 Die neuen Azure-Webdienste ermöglichen Ihnen das einfache Bereitstellen eines Webdiensts in mehreren Regionen, ohne dass mehrere Abonnements oder Arbeitsbereiche erforderlich sind. 
@@ -34,7 +34,7 @@ Die Preise sind regionsspezifisch. Daher müssen Sie einen Abrechnungsplan für 
 6. Wählen Sie in der Dropdownliste **Resource Group** eine Ressourcengruppe für den Plan aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 7. Geben Sie in **Plan Name** den Namen des Plans ein.
 8. Klicken Sie unter **Plan Options**auf den Abrechnungstarif des neuen Plans.
-9. Klicken Sie auf **Erstellen**.
+9. Klicken Sie auf **Create**.
 
 ## <a name="deploying-the-web-service-to-another-region"></a>Bereitstellen des Webdiensts in einer anderen Region
 1. Klicken Sie auf die Menüoption **Web Services** .

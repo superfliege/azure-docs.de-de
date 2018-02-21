@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/05/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 23cc9ce855eeba9e9a365e42beeee01b09f0fee3
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 6aec2146d83c18a1e1714843cd49890f178e4fb3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Bereitstellen einer Azure Service Fabric-Containeranwendung unter Linux in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -34,50 +34,47 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 > * Skalieren und Durchführen des Failovers für Container in Service Fabric
 
 ## <a name="prerequisite"></a>Voraussetzung
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-  
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+1. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und nutzen möchten, sollten Sie sicherstellen, dass Sie Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie „az --version“ aus, um nach der Version zu suchen. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) Informationen dazu.
+2. Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und nutzen möchten, sollten Sie sicherstellen, dass Sie Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie „az --version“ aus, um nach der Version zu suchen. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="get-application-package"></a>Abrufen des Anwendungspakets
 Zum Bereitstellen von Containern in Service Fabric benötigen Sie eine Gruppe von Manifestdateien (die Anwendungsdefinition), in denen die einzelnen Container und die Anwendung beschrieben ist.
 
 Verwenden Sie „git“ in der Cloud Shell, um eine Kopie der Anwendungsdefinition zu klonen.
 
-```azurecli-interactive
+```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
 
 cd service-fabric-containers/Linux/container-tutorial/Voting
 ```
+## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
 
-## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>Bereitstellen der Container in einem Service Fabric-Cluster in Azure
-Für die Anwendungsbereitstellung in einem Cluster in Azure können Sie einen eigenen Cluster oder einen Partycluster verwenden.
+### <a name="set-up-your-azure-service-fabric-cluster"></a>Einrichten des Azure Service Fabric-Clusters
+Um die Anwendung in einem Cluster in Azure bereitzustellen, erstellen Sie einen eigenen Cluster.
 
-> [!Note]
-> Die Anwendung muss in einem Cluster in Azure und nicht in einem Service Fabric-Cluster auf dem lokalen Entwicklungscomputer bereitgestellt werden. 
->
+Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team ausgeführt, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
 
-Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team verwaltet, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
+Zum Durchführen von Verwaltungsvorgängen im sicheren Partycluster können Sie Service Fabric Explorer, die CLI oder PowerShell verwenden. Zum Verwenden von Service Fabric Explorer müssen Sie die PFX-Datei von der Partycluster-Website herunterladen und das Zertifikat in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Für selbstsignierte Zertifikate aus dem Partycluster wird kein Kennwort verwendet. 
+
+Zum Durchführen von Verwaltungsvorgängen per PowerShell oder CLI benötigen Sie die PFX- (PowerShell) oder die PEM-Datei (CLI). Führen Sie den folgenden Befehl aus, um die PFX-Datei in eine PEM-Datei zu konvertieren:  
+
+```bash
+openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+```
 
 Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 > [!Note]
-> Der Web-Front-End-Dienst ist für das Lauschen auf eingehenden Datenverkehr über Port 80 konfiguriert. Stellen Sie sicher, dass der Port in Ihrem Cluster geöffnet ist. Wenn Sie einen Partycluster verwenden, ist dieser Port geöffnet.
+> Der Web-Front-End-Dienst ist für das Lauschen auf eingehenden Datenverkehr über Port 80 konfiguriert. Stellen Sie sicher, dass der Port in Ihrem Cluster geöffnet ist. Wenn Sie den Partycluster verwenden, ist dieser Port geöffnet.
 >
 
 ### <a name="install-service-fabric-command-line-interface-and-connect-to-your-cluster"></a>Installieren der Service Fabric-Befehlszeilenschnittstelle und Herstellen einer Verbindung mit Ihrem Cluster
-Installieren der [Service Fabric-Befehlszeilenschnittstelle (sfctl)](service-fabric-cli.md) in Ihrer CLI-Umgebung
 
-```azurecli-interactive
-pip3 install --user sfctl 
-export PATH=$PATH:~/.local/bin
-```
+Stellen Sie eine Verbindung mit dem Service Fabric-Cluster in Azure her, indem Sie die Azure CLI verwenden. Der Endpunkt ist der Verwaltungsendpunkt Ihres Clusters, z.B. `https://linh1x87d1d.westus.cloudapp.azure.com:19080`.
 
-Stellen Sie eine Verbindung mit dem Service Fabric-Cluster in Azure her, indem Sie die Azure CLI verwenden. Der Endpunkt ist der Verwaltungsendpunkt Ihres Clusters, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:19080`.
-
-```azurecli-interactive
-sfctl cluster select --endpoint http://linh1x87d1d.westus.cloudapp.azure.com:19080
+```bash
+sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
 ```
 
 ### <a name="deploy-the-service-fabric-application"></a>Bereitstellen der Service Fabric-Anwendung 
@@ -86,13 +83,13 @@ Service Fabric-Containeranwendungen können mithilfe des beschriebenen Service F
 #### <a name="deploy-using-service-fabric-application-package"></a>Bereitstellen mithilfe des Service Fabric-Anwendungspakets
 Verwenden Sie das bereitgestellte Installationsskript, um die Definition der Abstimmungsanwendung in den Cluster zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
 
-```azurecli-interactive
+```bash
 ./install.sh
 ```
 
 #### <a name="deploy-the-application-using-docker-compose"></a>Bereitstellen der Anwendung mithilfe von Docker Compose
 Verwenden Sie Docker Compose mit dem folgenden Befehl, um die Anwendung in dem Service Fabric-Cluster bereitzustellen und zu installieren.
-```azurecli-interactive
+```bash
 sfctl compose create --deployment-name TestApp --file-path docker-compose.yml
 ```
 

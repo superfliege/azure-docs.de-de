@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 6bc370c1f02eedf996824136b117a4021915fc57
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: ded90be3da52770a88dd1746fae2bd3584ba9280
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch einen vorhandenen Datenträger für Daten erweitern. Dieser Artikel erläutert, wie verwaltete Datenträger für eine Linux-VM mithilfe von Azure CLI 2.0 erweitert werden können. Sie können auch den nicht verwalteten Betriebssystemdatenträger mit [Azure CLI 1.0](expand-disks-nodejs.md) erweitern.
@@ -27,13 +27,13 @@ Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating
 > Stellen Sie immer sicher, dass Sie Ihre Daten sichern, bevor Sie Änderungen an der Größe von Datenträgern vornehmen. Weitere Informationen finden Sie unter [Sichern virtueller Linux-Computer in Azure](tutorial-backup-vms.md).
 
 ## <a name="expand-azure-managed-disk"></a>Erweitern eines verwalteten Azure-Datenträgers
-Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
+Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sind.
 
 Für diesen Artikel ist ein vorhandener virtueller Computer in Azure mit mindestens einem angefügten und vorbereiteten Datenträger erforderlich. Wenn Sie noch nicht über einen virtuellen Computer verfügen, den Sie verwenden können, finden Sie entsprechende Informationen unter [Erstellen und Vorbereiten eines virtuellen Computers mit Datenträgern](tutorial-manage-disks.md#create-and-attach-disks).
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispiele für Parameternamen sind *myResourceGroup* und *myVM*.
 
-1. Vorgänge auf virtuellen Festplatten können nicht durchgeführt werden, wenn die VM ausgeführt wird. Heben Sie die Zuordnung der VM mit [az vm deallocate](/cli/azure/vm#deallocate) auf. Im folgenden Beispiel wird die Zuordnung für die VM *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben:
+1. Vorgänge auf virtuellen Festplatten können nicht durchgeführt werden, wenn die VM ausgeführt wird. Heben Sie die Zuordnung der VM mit [az vm deallocate](/cli/azure/vm#az_vm_deallocate) auf. Im folgenden Beispiel wird die Zuordnung für die VM *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -42,7 +42,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
     > [!NOTE]
     > Die VM muss aufgehoben werden, um die virtuelle Festplatte zu erweitern. `az vm stop` gibt die Computerressourcen nicht frei. Verwenden Sie `az vm deallocate`, um Computerressourcen freizugeben.
 
-2. Sie überprüfen die Liste der verwalteten Datenträger in einer Ressourcengruppe mit [az disk list](/cli/azure/disk#list). Im folgenden Beispiel wird eine Liste mit verwalteten Datenträgern in der Ressourcengruppe *myResourceGroup* aufgelistet:
+2. Sie überprüfen die Liste der verwalteten Datenträger in einer Ressourcengruppe mit [az disk list](/cli/azure/disk#az_disk_list). Im folgenden Beispiel wird eine Liste mit verwalteten Datenträgern in der Ressourcengruppe *myResourceGroup* aufgelistet:
 
     ```azurecli
     az disk list \
@@ -51,7 +51,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
         --output table
     ```
 
-    Sie erweitern den erforderlichen Datenträger mit [az disk update](/cli/azure/disk#update). Im folgenden Beispiel wird der verwaltete Datenträger *myDataDisk* auf eine Größe von *200* GB erweitert:
+    Sie erweitern den erforderlichen Datenträger mit [az disk update](/cli/azure/disk#az_disk_update). Im folgenden Beispiel wird der verwaltete Datenträger *myDataDisk* auf eine Größe von *200* GB erweitert:
 
     ```azurecli
     az disk update \
@@ -63,7 +63,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
     > [!NOTE]
     > Wenn Sie einen verwalteten Datenträger erweitern, wird die aktualisierte Größe der nächsten verwalteten Datenträgergröße zugeordnet. Eine Tabelle der verfügbaren verwalteten Datenträgergrößen und -ebenen finden Sie unter [Übersicht über Azure Managed Disks – Preise und Abrechnung](../windows/managed-disks-overview.md#pricing-and-billing).
 
-3. Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#start). Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* gestartet:
+3. Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#az_vm_start). Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* gestartet:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -73,7 +73,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
 ## <a name="expand-disk-partition-and-filesystem"></a>Erweitern der Datenträgerpartition und des Dateisystems
 Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende Partition und das Dateisystem erweitern.
 
-1. SSH mit Ihrer VM mit den entsprechenden Anmeldeinformationen. Sie können die öffentliche IP-Adresse Ihres virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm#show) abrufen:
+1. SSH mit Ihrer VM mit den entsprechenden Anmeldeinformationen. Sie können die öffentliche IP-Adresse Ihres virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm#az_vm_show) abrufen:
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv

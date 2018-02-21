@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: deb2572de363ca5d0dec0f78f2e30ad648e9b5f8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ff9a396f09b675e798e2b2a04fdf0fdb0cdaa09d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="check-traffic-with-a-scheduler-based-logic-app"></a>Überprüfen der Verkehrslage mit einer planerbasierten Logik-App
 
@@ -64,13 +64,13 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **Name** | LA-TravelTime | Der Name Ihrer Logik-App | 
-   | **Abonnement** | <*your-Azure-subscription-name*> | Der Name Ihres Azure-Abonnements | 
-   | **Ressourcengruppe** | LA-TravelTime-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird | 
-   | **Location** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen | 
+   | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements | 
+   | **Ressourcengruppe** | LA-TravelTime-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. | 
+   | **Location** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. | 
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. | 
    |||| 
 
-3. Nachdem Ihre App von Azure bereitgestellt wurde, wird der Designer für Logik-Apps geöffnet, und es wird eine Seite mit einem Einführungsvideo und Vorlagen für allgemeine Logik-App-Mustern angezeigt. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
+3. Nachdem Ihre App von Azure bereitgestellt wurde, wird der Designer für Logik-Apps geöffnet und eine Seite mit einem Einführungsvideo und Vorlagen für allgemeine Logik-App-Mustern angezeigt. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
 
    ![Auswählen der Vorlage „Leere Logik-App“](./media/tutorial-build-scheduled-recurring-logic-app-workflow/choose-logic-app-template.png)
 
@@ -148,7 +148,7 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
    | **Distance unit** (Einheit für Entfernung) | <*Ihre Präferenz*> | Die Einheit der Entfernung für die Route. In diesem Artikel wird die Einheit „Meile“ verwendet.  | 
    | **Travel mode** (Reisemodus) | Driving (Auto) | Der Reisemodus für die Route. Wählen Sie den Modus „Driving“ (Auto). | 
    | **Transit Date-Time** (Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
-   | **Transit Date-Time Type** (Typ für Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
+   | **Date-Time Type** (Datums-/Uhrzeittyp) | Keine | Gilt für nur für den Transitmodus. | 
    |||| 
 
    Weitere Informationen zu diesen Parametern finden Sie unter [Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx) (Berechnen einer Route).

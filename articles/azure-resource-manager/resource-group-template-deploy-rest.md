@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/10/2017
 ms.author: tomfitz
-ms.openlocfilehash: 46856a25fb57bb2c5a3c1aeae13c11655e1a58a5
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b46b36805c2f33b1e066bbee2d0333113a26922a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API
 > [!div class="op_single_selector"]
@@ -88,7 +88,37 @@ Ihre Vorlage kann entweder eine lokale Datei oder eine externe Datei sein, die �
 
 ## <a name="parameter-file"></a>Parameterdatei
 
-[!INCLUDE [resource-manager-parameter-file](../../includes/resource-manager-parameter-file.md)]
+Bei der Verwendung einer Parameterdatei zum Übergeben von Parameterwerten während der Bereitstellung müssen Sie eine JSON-Datei in einem Format wie im folgenden Beispiel erstellen.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "webSiteName": {
+            "value": "ExampleSite"
+        },
+        "webSiteHostingPlanName": {
+            "value": "DefaultPlan"
+        },
+        "webSiteLocation": {
+            "value": "West US"
+        },
+        "adminPassword": {
+            "reference": {
+               "keyVault": {
+                  "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
+               }, 
+               "secretName": "sqlAdminPassword" 
+            }   
+        }
+   }
+}
+```
+
+Die Parameterdatei darf nicht größer als 64 KB sein.
+
+Wenn Sie einen vertraulichen Wert für einen Parameter (z.B. ein Kennwort) angeben müssen, fügen Sie den Wert einem Schlüsseltresor hinzu. Rufen Sie den Schlüsseltresor während der Bereitstellung wie im vorherigen Beispiel gezeigt ab. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Arbeiten mit asynchronen REST-Vorgängen finden Sie unter [Nachverfolgen asynchroner Vorgänge in Azure](resource-manager-async-operations.md).

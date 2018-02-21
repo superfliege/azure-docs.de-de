@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7f95014ac9186815d8ea0c7d271e5c6e19252d73
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 34ad4d7038202bd5efa2b3c210571268a39bf278
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Verwenden des privilegierten Endpunkts in Azure Stack
 
@@ -28,7 +28,7 @@ Als Azure Stack-Operator sollten Sie das Administratorportal, PowerShell oder AP
 
 Der PEP kann beispielsweise für Folgendes verwendet werden:
 
-- Durchführung von Aufgaben auf niedriger Ebene, z.B. [Erfassen von Diagnoseprotokollen](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostics#log-collection-tool).
+- Aufgaben auf niedriger Ebene durchführen, z.B. [Diagnoseprotokolle erfassen](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostics#log-collection-tool).
 - Durchführung zahlreicher Datacenter-Integrationsaufgaben für integrierte Systeme nach der Bereitstellung, z.B. Hinzufügen von DNS-Weiterleitungen nach der Bereitstellung, Einrichten der Microsoft Graph-Integration, der Integration von Active Directory-Verbunddiensten (AD FS), der Zertifikatrotation, usw.
 - Zusammenarbeit mit dem Support zum Erhalt von temporärem, allgemeinem Zugriff für die eingehende Problembehandlung eines integrierten Systems.
 
@@ -78,8 +78,6 @@ Es wird empfohlen, nur über den Hardwarelebenszyklushost oder über einen dediz
       - **Kennwort**: Geben Sie das gleiche Kennwort ein, das während der Installation für das Domänenadministratorkonto AzureStackAdmin bereitgestellt wurde.
     
 3.  Nachdem Sie eine Verbindung hergestellt haben, ändert sich die Aufforderung abhängig von der Umgebung entweder in **[*IP-Adresse oder ERCS VM-Name*]: PS>** oder in **[Azs ercs01]: PS>**. Führen Sie `Get-Command` aus, um die Liste der verfügbaren Cmdlets anzuzeigen.
-
-    ![Die Ausgabe des Cmdlet „Get-Command“ zeigt die Liste der verfügbaren Befehle](media/azure-stack-privileged-endpoint/getcommandoutput.png)
 
     Viele dieser Cmdlets sind nur für integrierte Systemumgebungen vorgesehen (z.B. die Cmdlets im Zusammenhang mit der Datacenter-Integration). In der ASDK wurden die folgenden Cmdlets überprüft:
 

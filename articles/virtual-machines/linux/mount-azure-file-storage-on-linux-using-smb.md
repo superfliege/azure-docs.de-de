@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
 ms.author: v-livech
-ms.openlocfilehash: 9eae17b304f8a987b44ebed8906dabd8ff3a36a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4566e9b236049c336858e9149cca80066b029775
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 
-In diesem Artikel wird beschrieben, wie Sie den Azure File Storage-Dienst auf einem virtuellen Linux-Computer über eine SMB-Bereitstellung mit der Azure CLI 2.0 verwenden. Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Sie können diese Schritte auch mit der [Azure CLI 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen. Folgende Anforderungen müssen erfüllt sein:
+In diesem Artikel wird beschrieben, wie Sie den Azure File Storage-Dienst auf einem virtuellen Linux-Computer über eine SMB-Bereitstellung mit der Azure CLI 2.0 verwenden. Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Sie können diese Schritte auch per [Azure CLI 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen. Folgende Anforderungen müssen erfüllt sein:
 
 - [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
 - [Dateien mit den öffentlichen und privaten SSH-Schlüsseln](mac-create-ssh-keys.md)
@@ -67,7 +67,7 @@ Das Verschieben von Dateien von einem virtuellen Computer auf eine in File Stora
 
 Für diese ausführliche exemplarische Vorgehensweise schaffen wir die Voraussetzungen für die Erstellung der File Storage-Freigabe und die anschließende Bereitstellung per SMB auf einem virtuellen Linux-Computer.
 
-1. Erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe für die Dateifreigabe.
+1. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe für die Dateifreigabe.
 
     Verwenden Sie das folgende Beispiel, um eine Ressourcengruppe mit dem Namen `myResourceGroup` in der Region „USA, Westen“ zu erstellen:
 
@@ -75,7 +75,7 @@ Für diese ausführliche exemplarische Vorgehensweise schaffen wir die Vorausset
     az group create --name myResourceGroup --location westus
     ```
 
-2. Erstellen Sie mit [az storage account create](/cli/azure/storage/account#create) ein Azure-Speicherkonto zum Speichern der eigentlichen Dateien.
+2. Erstellen Sie mit [az storage account create](/cli/azure/storage/account#az_storage_account_create) ein Azure-Speicherkonto zum Speichern der eigentlichen Dateien.
 
     Um mithilfe der Standard_LRS-Speicher-SKU ein Speicherkonto namens „mystorageaccount“ zu erstellen, verwenden Sie folgendes Beispiel:
 
@@ -90,7 +90,7 @@ Für diese ausführliche exemplarische Vorgehensweise schaffen wir die Vorausset
 
     Beim Erstellen eines Speicherkontos werden die Speicherkontoschlüssel als Paar erstellt, sodass eine Rotation der Schlüssel ohne Unterbrechung des Diensts möglich ist. Wenn Sie zum zweiten Schlüssel des Paars wechseln, erstellen Sie ein neues Schlüsselpaar. Neue Speicherkontoschlüssel werden stets als Paar erstellt, damit sichergestellt ist, dass immer mindestens ein ungenutzter Speicherkontoschlüssel vorhanden ist, zu dem gewechselt werden kann.
 
-    Zeigen Sie mit [az storage account keys list](/cli/azure/storage/account/keys#list) die Speicherkontoschlüssel an. Im folgenden Beispiel werden die Speicherkontoschlüssel für das Speicherkonto `mystorageaccount` aufgelistet:
+    Zeigen Sie mit [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) die Speicherkontoschlüssel an. Im folgenden Beispiel werden die Speicherkontoschlüssel für das Speicherkonto `mystorageaccount` aufgelistet:
 
     ```azurecli
     az storage account keys list --resource-group myResourceGroup \
@@ -107,7 +107,7 @@ Für diese ausführliche exemplarische Vorgehensweise schaffen wir die Vorausset
 
 4. Erstellen Sie die File Storage-Freigabe.
 
-    Erstellen Sie mit [az storage share create](/cli/azure/storage/share#create) die File Storage-Freigabe, die die SMB-Freigabe enthält. Das Kontingent wird immer in Gigabyte (GB) angegeben. Übergeben Sie einen der Schlüssel aus dem vorherigen `az storage account keys list`-Befehl. Erstellen Sie mithilfe des folgenden Beispiels eine Freigabe namens „mystorageshare“ mit einem Kontingent von 10 GB:
+    Erstellen Sie mit [az storage share create](/cli/azure/storage/share#az_storage_share_create) die File Storage-Freigabe, die die SMB-Freigabe enthält. Das Kontingent wird immer in Gigabyte (GB) angegeben. Übergeben Sie einen der Schlüssel aus dem vorherigen `az storage account keys list`-Befehl. Erstellen Sie mithilfe des folgenden Beispiels eine Freigabe namens „mystorageshare“ mit einem Kontingent von 10 GB:
 
     ```azurecli
     az storage share create --name mystorageshare \
@@ -137,7 +137,7 @@ Für diese ausführliche exemplarische Vorgehensweise schaffen wir die Vorausset
     Beim Neustart eines virtuellen Linux-Computers wird die Bereitstellung der SMB-Freigabe während des Herunterfahrens aufgehoben. Fügen Sie der Linux-Datei „etc/fstab“ eine Zeile hinzu, damit die SMB-Freigabe beim Starten erneut bereitgestellt wird. Linux verwendet die fstab-Datei, um die Dateisysteme aufzulisten, die während des Startvorgangs bereitgestellt werden müssen. Durch Hinzufügen der SMB-Freigabe wird sichergestellt, dass die File Storage-Freigabe für den virtuellen Linux-Computer ein dauerhaft bereitgestelltes Dateisystem ist. Das Hinzufügen der File Storage-SMB-Freigabe zu einem neuen virtuellen Computer ist möglich, wenn Sie „cloud-init“ verwenden.
 
     ```bash
-    //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountdirectory cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte

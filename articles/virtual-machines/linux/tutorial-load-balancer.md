@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dc25d6106ad67710660b1a5c48270a7082688d51
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: feb2c369fc00d37c9a6af0c0be68cbf7d9e59921
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Lastenausgleich für virtuelle Linux-Computer in Azure zum Erstellen einer hoch verfügbaren Anwendung
-Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial erhalten Sie Informationen zu den verschiedenen Komponenten des Azure Load Balancers, mit denen der Datenverkehr verteilt und hohe Verfügbarkeit bereitgestellt wird. Folgendes wird vermittelt:
+Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Load Balancer-Instanz
@@ -40,7 +40,7 @@ Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="azure-load-balancer-overview"></a>Übersicht über den Azure Load Balancer
-Ein Azure Load Balancer ist ein Load Balancer der Schicht 4 (TCP, UDP), der hohe Verfügbarkeit durch Verteilen des eingehenden Datenverkehrs auf fehlerfreie virtuelle Computer bietet. Der Integritätstest eines Load Balancers überwacht einen bestimmten Port auf jedem virtuellen Computer und verteilt Datenverkehr nur an einen betriebsbereiten virtuellen Computer.
+Ein Azure Load Balancer ist ein Load Balancer der Schicht 4 (TCP, UDP), der Hochverfügbarkeit durch Verteilen des eingehenden Datenverkehrs auf fehlerfreie virtuelle Computer bietet. Der Integritätstest eines Load Balancers überwacht einen bestimmten Port auf jedem virtuellen Computer und verteilt Datenverkehr nur an einen betriebsbereiten virtuellen Computer.
 
 Sie definieren eine Front-End-IP-Konfiguration, die eine oder mehrere öffentliche IP-Adressen enthält. Mit dieser Front-End-IP-Konfiguration sind der Load Balancer und Ihre Anwendungen über das Internet zugänglich. 
 
@@ -52,14 +52,14 @@ Wenn Sie die Schritte im vorherigen Tutorial zum [Erstellen einer VM-Skalierungs
 
 
 ## <a name="create-azure-load-balancer"></a>Erstellen eines Azure Load Balancers
-In diesem Abschnitt wird erläutert, wie Sie die einzelnen Komponenten des Load Balancers erstellen und konfigurieren können. Vor der Erstellung des Load Balancers müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupLoadBalancer*:
+In diesem Abschnitt wird erläutert, wie Sie die einzelnen Komponenten des Load Balancers erstellen und konfigurieren können. Vor der Erstellung des Load Balancers müssen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupLoadBalancer*:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
-Um über das Internet auf Ihre App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Load Balancer. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#create) eine öffentliche IP-Adresse. Das folgende Beispiel erstellt in der Ressourcengruppe *MyResourceGroupLoadBalancer* eine öffentliche IP-Adresse mit dem Namen *MyPublicIP*:
+Um über das Internet auf Ihre App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Load Balancer. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse. Das folgende Beispiel erstellt in der Ressourcengruppe *MyResourceGroupLoadBalancer* eine öffentliche IP-Adresse mit dem Namen *MyPublicIP*:
 
 ```azurecli-interactive 
 az network public-ip create \
@@ -68,7 +68,7 @@ az network public-ip create \
 ```
 
 ### <a name="create-a-load-balancer"></a>Einrichten eines Load Balancers
-Erstellen Sie mit [az network lb create](/cli/azure/network/lb#create) einen Load Balancer. Im folgenden Beispiel wird der Load Balancer *myLoadBalancer* erstellt und die Adresse *myPublicIP* der Front-End-IP-Konfiguration zugewiesen:
+Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az_network_lb_create) einen Load Balancer. Im folgenden Beispiel wird der Load Balancer *myLoadBalancer* erstellt und die Adresse *myPublicIP* der Front-End-IP-Konfiguration zugewiesen:
 
 ```azurecli-interactive 
 az network lb create \
@@ -84,7 +84,7 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
 
 Im folgenden Beispiel wird ein TCP-Test erstellt. Sie können auch benutzerdefinierte HTTP-Tests für differenzierte Integritätsprüfungen erstellen. Bei Verwendung eines benutzerdefinierten HTTP-Tests müssen Sie die Integritätsprüfungsseite erstellen, z.B. *healthcheck.js*. Der Test muss die HTTP-Antwort **200 OK** zurückgeben, damit der Load Balancer den Host nicht aus der Rotation entfernt.
 
-Zum Erstellen eines TCP-Integritätstests verwenden Sie [az network lb probe create](/cli/azure/network/lb/probe#create). Im folgenden Beispiel wird ein Integritätstest mit dem Namen *myHealthProbe* erstellt:
+Zum Erstellen eines TCP-Integritätstests verwenden Sie [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create). Im folgenden Beispiel wird ein Integritätstest mit dem Namen *myHealthProbe* erstellt:
 
 ```azurecli-interactive 
 az network lb probe create \
@@ -98,7 +98,7 @@ az network lb probe create \
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Um sicherzustellen, dass nur fehlerfreie virtuelle Computer Datenverkehr empfangen, definieren Sie zudem den zu verwendenden Integritätstest.
 
-Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#create) eine Load Balancer-Regel. Das folgende Beispiel erstellt eine Regel namens *myLoadBalancerRule*, verwendet den Integritätstest *myHealthProbe* und führt einen Lastenausgleich für den Datenverkehr an Port *80* aus:
+Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) eine Load Balancer-Regel. Das folgende Beispiel erstellt eine Regel namens *myLoadBalancerRule*, verwendet den Integritätstest *myHealthProbe* und führt einen Lastenausgleich für den Datenverkehr an Port *80* aus:
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -114,11 +114,11 @@ az network lb rule create \
 ```
 
 
-## <a name="configure-virtual-network"></a>Konfigurieren des virtuellen Netzwerks
+## <a name="configure-virtual-network"></a>Konfigurieren eines virtuellen Netzwerks
 Vor der Bereitstellung mehrerer virtueller Computer und dem Testen des Load Balancers müssen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen erstellen. Weitere Informationen zu virtuellen Netzwerken finden Sie im Tutorial [Verwalten von virtuellen Azure-Netzwerken](tutorial-virtual-network.md).
 
 ### <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#create) ein virtuelles Netzwerk. Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen *myVnet* und einem Subnetz mit dem Namen *mySubnet* erstellt:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk. Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen *myVnet* und einem Subnetz mit dem Namen *mySubnet* erstellt:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -127,7 +127,7 @@ az network vnet create \
     --subnet-name mySubnet
 ```
 
-Zum Hinzufügen einer Netzwerksicherheitsgruppe verwenden Sie [az network nsg create](/cli/azure/network/nsg#create). Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens *myNetworkSecurityGroup* erstellt:
+Zum Hinzufügen einer Netzwerksicherheitsgruppe verwenden Sie [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create). Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens *myNetworkSecurityGroup* erstellt:
 
 ```azurecli-interactive 
 az network nsg create \
@@ -135,7 +135,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine Netzwerksicherheitsgruppen-Regel. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel namens *myNetworkSecurityGroupRule* erstellt:
+Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine Netzwerksicherheitsgruppen-Regel. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel namens *myNetworkSecurityGroupRule* erstellt:
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -147,7 +147,7 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
-Virtuelle NICs werden mit [az network nic create](/cli/azure/network/nic#create) erstellt. Im folgenden Beispiel werden drei virtuelle NICs erstellt (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen). Sie können jederzeit weitere virtuelle NICs und virtuelle Computer erstellen und dem Load Balancer hinzufügen:
+Virtuelle NICs werden mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) erstellt. Im folgenden Beispiel werden drei virtuelle NICs erstellt (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen). Sie können jederzeit weitere virtuelle NICs und virtuelle Computer erstellen und dem Load Balancer hinzufügen:
 
 ```bash
 for i in `seq 1 3`; do
@@ -215,9 +215,9 @@ runcmd:
 ```
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
-Fügen Sie die virtuellen Computer in eine Verfügbarkeitsgruppe ein, um die hohe Verfügbarkeit Ihrer App zu optimieren. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie im vorherigen Tutorial [Erstellen von hoch verfügbaren virtuellen Computern](tutorial-availability-sets.md).
+Fügen Sie die virtuellen Computer in eine Verfügbarkeitsgruppe ein, um die Hochverfügbarkeit Ihrer App zu optimieren. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie im vorherigen Tutorial [Erstellen von hoch verfügbaren virtuellen Computern](tutorial-availability-sets.md).
 
-Erstellen Sie mithilfe von [az vm availability-set create](/cli/azure/vm/availability-set#create) eine Verfügbarkeitsgruppe. Im folgenden Beispiel wird eine Verfügbarkeitsgruppe namens *myAvailabilitySet* erstellt:
+Erstellen Sie mithilfe von [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) eine Verfügbarkeitsgruppe. Im folgenden Beispiel wird eine Verfügbarkeitsgruppe namens *myAvailabilitySet* erstellt:
 
 ```azurecli-interactive 
 az vm availability-set create \
@@ -225,7 +225,7 @@ az vm availability-set create \
     --name myAvailabilitySet
 ```
 
-Jetzt können Sie mit [az vm create](/cli/azure/vm#create) die virtuellen Computer erstellen. Im folgenden Beispiel werden drei virtuelle Computer erstellt und SSH-Schlüssel generiert, sofern sie noch nicht vorhanden sind:
+Jetzt können Sie mit [az vm create](/cli/azure/vm#az_vm_create) die virtuellen Computer erstellen. Im folgenden Beispiel werden drei virtuelle Computer erstellt und SSH-Schlüssel generiert, sofern sie noch nicht vorhanden sind:
 
 ```bash
 for i in `seq 1 3`; do
@@ -246,7 +246,7 @@ Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von de
 
 
 ## <a name="test-load-balancer"></a>Testen des Load Balancers
-Rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#show) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die wir zuvor erstellt haben:
+Rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die wir zuvor erstellt haben:
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -267,7 +267,7 @@ Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu
 Für die virtuellen Computer, auf denen Ihre App ausgeführt wird, sind unter Umständen gelegentlich Wartungsarbeiten erforderlich (etwa die Installation von Betriebssystemupdates). Zur Bewältigung eines höheren Datenverkehrsaufkommens für Ihre App müssen gegebenenfalls weitere virtuelle Computer hinzugefügt werden. In diesem Abschnitt erfahren Sie, wie Sie einen virtuellen Computer aus dem Load Balancer entfernen oder dem Load Balancer einen virtuellen Computer hinzufügen.
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>Entfernen eines virtuellen Computers aus dem Load Balancer
-Mit [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool#remove) können Sie einen virtuellen Computer aus dem Back-End-Adresspool entfernen. Im folgenden Beispiel wird die virtuelle NIC für **myVM2** aus *myLoadBalancer* entfernt:
+Mit [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_remove) können Sie einen virtuellen Computer aus dem Back-End-Adresspool entfernen. Im folgenden Beispiel wird die virtuelle NIC für **myVM2** aus *myLoadBalancer* entfernt:
 
 ```azurecli-interactive 
 az network nic ip-config address-pool remove \
@@ -280,7 +280,7 @@ az network nic ip-config address-pool remove \
 
 Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Load Balancer den Datenverkehr auf die beiden verbleibenden virtuellen Computer verteilt, auf denen Ihre App ausgeführt wird. Nun können Sie Wartungsarbeiten für den virtuellen Computer durchführen und beispielsweise Betriebssystemupdates installieren oder den virtuellen Computer neu starten.
 
-Verwenden Sie [az network lb address-pool show](/cli/azure/network/lb/address-pool#show), um eine Liste der virtuellen Computer mit NICs anzuzeigen, die mit dem Load Balancer verbunden sind. Die ID der virtuellen NIC kann wie folgt abgefragt und gefiltert werden:
+Verwenden Sie [az network lb address-pool show](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_show), um eine Liste der virtuellen Computer mit NICs anzuzeigen, die mit dem Load Balancer verbunden sind. Die ID der virtuellen NIC kann wie folgt abgefragt und gefiltert werden:
 
 ```azurecli-interactive
 az network lb address-pool show \
@@ -299,7 +299,7 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus. Hier sehen Sie, dass di
 ```
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>Hinzufügen eines virtuellen Computers zum Load Balancer
-Wenn Sie die Wartungsarbeiten für den virtuellen Computer abgeschlossen haben oder die Kapazität erweitern möchten, können Sie dem Back-End-Adresspool mit [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#add) einen virtuellen Computer hinzufügen. Im folgenden Beispiel wird die virtuelle NIC für **myVM2** zu *myLoadBalancer* hinzugefügt:
+Wenn Sie die Wartungsarbeiten für den virtuellen Computer abgeschlossen haben oder die Kapazität erweitern möchten, können Sie dem Back-End-Adresspool mit [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add) einen virtuellen Computer hinzufügen. Im folgenden Beispiel wird die virtuelle NIC für **myVM2** zu *myLoadBalancer* hinzugefügt:
 
 ```azurecli-interactive 
 az network nic ip-config address-pool add \
@@ -310,7 +310,7 @@ az network nic ip-config address-pool add \
     --address-pool myBackEndPool
 ```
 
-Verwenden Sie erneut [az network lb address-pool show](/cli/azure/network/lb/address-pool#show) aus dem vorhergehenden Schritt, um sicherzustellen, dass die virtuelle NIC mit dem Back-End-Adresspool verbunden ist.
+Verwenden Sie erneut [az network lb address-pool show](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_show) aus dem vorhergehenden Schritt, um sicherzustellen, dass die virtuelle NIC mit dem Back-End-Adresspool verbunden ist.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

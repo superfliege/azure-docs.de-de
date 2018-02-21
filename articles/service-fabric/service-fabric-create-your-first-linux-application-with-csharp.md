@@ -12,13 +12,13 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/19/2017
+ms.date: 1/27/2018
 ms.author: subramar
-ms.openlocfilehash: e18dcad73486ab7610c53c269fbc81de73b5147e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7a7bda1b2bab05459e4266f7bac0d32ea4093c8b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Erstellen Ihrer ersten Azure Service Fabric-Anwendung
 > [!div class="op_single_selector"]
@@ -40,11 +40,19 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Serv
 
 1. Installieren von Node.js und npm auf dem Computer
 
-  ```bash
-  sudo apt-get install npm
-  sudo apt install nodejs-legacy
-  ```
-2. Installieren des [Yeoman](http://yeoman.io/)-Vorlagengenerators auf dem Computer über npm
+   Ubuntu
+   ```bash
+   sudo apt-get install npm
+   sudo apt install nodejs-legacy
+   ```
+
+   Red Hat Enterprise Linux 7.4 (Unterstützung der Service Fabric-Vorschauversion)
+   ```bash
+   sudo yum install nodejs
+   sudo yum install npm
+   ```
+
+2. Installieren Sie den [Yeoman](http://yeoman.io/)-Vorlagengenerator auf dem Computer über npm.
 
   ```bash
   sudo npm install -g yo
@@ -118,11 +126,6 @@ Actor-Projekte führen keine eigenständigen Aktionen durch. Sie benötigen eine
 Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die bereits mit `yo` erstellt wurde, die folgenden Schritte aus:
 1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest.  Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
 2. Führen Sie `yo azuresfcsharp:AddService` aus.
-
-## <a name="migrating-from-projectjson-to-csproj"></a>Migrieren von project.json zu .csproj
-1. Wenn Sie „dotnet migrate“ im Stammverzeichnis des Projekts ausführen, wird „project.json“ ins CSPROJ-Format migriert.
-2. Aktualisieren Sie die Projektverweise auf CSPROJ-Dateien in den Projektdateien entsprechend.
-3. Aktualisieren Sie die Projektdateinamen in „build.sh“ in CSPROJ-Dateien.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

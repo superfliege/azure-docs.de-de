@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-is-azure-diagnostics"></a>Was ist die Azure-Diagnose?
 Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts, Azure Virtual Machines unter Microsoft Windows und Service Fabric unterstützt. Andere Azure-Dienste verwenden ihre eigenen separaten Diagnosefunktionen.
@@ -26,7 +26,7 @@ Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine b
 ## <a name="data-you-can-collect"></a>Erfassbare Daten
 Mit der Azure-Diagnose können Sie die folgenden Arten von Daten erfassen:
 
-| Datenquelle | Beschreibung |
+| Data source | BESCHREIBUNG |
 | --- | --- |
 | Leistungsindikatoren |Leistungsindikatoren des Betriebssystems und benutzerdefinierte Leistungsindikatoren |
 | Anwendungsprotokolle |Von Ihrer Anwendung geschriebene Ablaufverfolgungsmeldungen |
@@ -75,6 +75,6 @@ Erste Schritte finden Sie unter [Überwachen einer Service Fabric-Anwendung](../
 ## <a name="general-azure-diagnostics-articles"></a>Allgemeine Artikel zur Azure-Diagnose
 * [Schemakonfiguration der Azure-Diagnose](https://msdn.microsoft.com/library/azure/mt634524.aspx) : Erfahren Sie, wie Sie die Schemadatei so ändern, dass Diagnosedaten gesammelt und weitergeleitet werden. Beachten Sie, dass Sie die Schemadatei auch mit Visual Studio ändern können.
 * [Speichern von Azure-Diagnosedaten in Azure Storage](../cloud-services/cloud-services-dotnet-diagnostics-storage.md): Lernen Sie die Namen der Tabellen und Blobs kennen, in die die Diagnosedaten geschrieben werden.
-* Hier erhalten Sie Informationen zur Verwendung von [Leistungsindikatoren in der Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-performance-counters.md).
+* Hier erhalten Sie Informationen zur Verwendung von [Leistungsindikatoren in der Azure-Diagnose](../cloud-services/diagnostics-performance-counters.md).
 * Erlernen Sie das [Weiterleiten von Azure-Diagnoseinformationen an Application Insights](azure-diagnostics-configure-application-insights.md).
 * Wenn bei der Diagnose Probleme mit dem Starten oder dem Finden von Daten in Azure Storage-Tabellen auftreten, finden Sie weitere Informationen unter [Problembehandlung mit Azure-Diagnose](azure-diagnostics-troubleshooting.md).

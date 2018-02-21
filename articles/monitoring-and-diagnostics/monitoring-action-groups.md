@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
-ms.openlocfilehash: 05775415e210333cf63565e7b5b554d014f6ba23
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 9f7f9dcc473e6925000ebe76a6592779c228a9af
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -58,10 +58,10 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
     b. **Aktionstyp**: Wählen Sie SMS, E-Mail, Webhook, Azure-App, ITSM oder Automation-Runbook aus.
 
-    c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook an. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt. 
+    c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook an. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
 
    > [!NOTE]
-   > Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md). ITSM-Aktionen können zurzeit nur für Aktivitätsprotokollwarnungen durchgeführt werden. Für andere Warnungstypen ist diese Aktion zurzeit nicht verfügbar.
+   > Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md). 
 
 8. Wählen Sie **OK**, um die Aktionsgruppe zu erstellen.
 
@@ -75,6 +75,6 @@ Nachdem Sie eine Aktionsgruppe erstellt haben, wird diese im Abschnitt **Aktions
 * Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](monitoring-sms-alert-behavior.md).  
 * Erweitern Sie Ihr [Verständnis des Webhookschemas für Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts-webhook.md).  
 * Erfahren Sie mehr über den [ITSM-Connector](../log-analytics/log-analytics-itsmc-overview.md).
-* Weitere Informationen zu [Ratenlimits](monitoring-alerts-rate-limiting.md) für Warnungen. 
+* Weitere Informationen zu [Ratenlimits](monitoring-alerts-rate-limiting.md) für Warnungen.
 * Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](monitoring-overview-alerts.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
 * Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](monitoring-activity-log-alerts-on-service-notifications.md).

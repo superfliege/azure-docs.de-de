@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/08/2017
+ms.topic: tutorial
+ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3db1ead1f1a8b83cc47f53b915ed54bb78db7ab3
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 9d8d5f1019b1db255c7aa6937c6d3eebed363378
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Einrichten einer Notfallwiederherstellung für Azure-VMs in eine sekundäre Azure-Region (Vorschau)
 
@@ -164,7 +161,7 @@ Um die Einstellungen für die Standardreplikationsrichtlinie zu überschreiben, 
   Alle Computer in einer Replikationsgruppe verfügen beim Failover über absturz- und anwendungskonsistente Wiederherstellungspunkte. Das Aktivieren der Konsistenz mehrerer virtueller Computer kann sich auf die Leistung der Workload auswirken und sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und eine Konsistenz erforderlich ist.
 
 > [!IMPORTANT]
-  Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird. Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, müssen Sie sicherstellen, dass der ausgehende Datenverkehr auf Port 20004 gemäß Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
+  Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird. Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, stellen Sie sicher, dass der ausgehende Datenverkehr auf Port 20004 gemäß den Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
 
 ### <a name="track-replication-status"></a>Nachverfolgen des Replikationsstatus
 

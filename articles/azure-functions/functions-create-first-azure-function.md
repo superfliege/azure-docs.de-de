@@ -13,14 +13,15 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/17/2017
+ms.date: 01/21/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 754ca6e5297c3be9166efa7a40a5ba3714911c99
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+experiment: 
+ms.openlocfilehash: 82f87447a2176dffd55dcf71155c389398f7d64c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Erstellen Ihrer ersten Funktion im Azure-Portal
 
@@ -30,9 +31,9 @@ Mit Azure Functions können Sie Code in einer [serverlosen](https://azure.micros
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Öffnen Sie das Azure-Portal. Melden Sie sich dazu mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com/) an.
+Melden Sie sich unter <http://portal.azure.com> mit Ihrem Azure-Konto am Azure-Portal an.
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
@@ -64,7 +65,7 @@ Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung se
 
 2. Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie den Wert der Abfragezeichenfolge `&name=<yourname>` am Ende der URL hinzu, und drücken Sie die Taste `Enter` auf Ihrer Tastatur, um die Anforderung auszuführen. Daraufhin sollte die von der Funktion zurückgegebene Antwort im Browser angezeigt werden.  
 
-    Das folgende Beispiel zeigt die Antwort im Edge-Browser. Bei anderen Browsern wird möglicherweise auch XML-Code angezeigt.
+    Im folgenden Beispiel ist die Antwort im Edge-Browser dargestellt (bei anderen Browsern wird unter Umständen auch XML-Code angezeigt):
 
     ![Funktionsantwort im Browser.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
@@ -76,7 +77,7 @@ Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung se
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
+[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

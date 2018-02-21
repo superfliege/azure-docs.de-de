@@ -9,16 +9,13 @@ ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 0ce7585552f39f59f83df88320e52ea257bb74dd
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 16d97765c9340555bfc0db22975a43227cc6b517
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Integrieren von Azure Stack-Sicherheitsfunktionen in Datencenter-Sicherheitslösungen
-
-*Gilt für: Integrierte Azure Stack-Systeme*
-
 Azure Stack wurde unter Berücksichtigung von Sicherheitsaspekten entworfen und entwickelt. Aus diesem Grund ist Azure Stack ein in sich geschlossenes System, in dem die Installation eines Softwaresicherheitsagents nicht unterstützt wird.
 
 Dieser Artikel hilft Ihnen beim Integrieren von Azure Stack-Sicherheitsfunktionen in Sicherheitslösungen, die bereits in Ihrem Datencenter bereitgestellt sind.
@@ -33,7 +30,7 @@ Der Integritätsressourcenanbieter kann über das REST-Protokoll aufgerufen werd
 
 ### <a name="use-azure-storage-explorer-to-view-events"></a>Verwenden des Azure Storage-Explorers zum Anzeigen von Ereignissen
 
-Sie können von Azure Stack erfasste Ereignisse mithilfe des Tools Azure Storage-Explorer abrufen. Dieses steht unter [http://storageexplorer.com](http://storageexplorer.com) zum Download bereit.
+Sie können von Azure Stack erfasste Ereignisse mithilfe des Tools Azure Storage-Explorer abrufen. Sie könen den Azure Storage-Explorer unter [http://storageexplorer.com](http://storageexplorer.com) herunterladen.
 
 Die folgende Vorgehensweise ist ein Beispiel, das Sie zum Konfigurieren des Azure Storage-Explorers für Azure Stack verwenden können:
 
@@ -47,7 +44,7 @@ Die folgende Vorgehensweise ist ein Beispiel, das Sie zum Konfigurieren des Azur
    ![Zugriffsschlüssel](media/azure-stack-integrate-security/access-keys.png)
 
 4. Kopieren Sie den Zugriffsschlüssel in die Zwischenablage.
-5. Öffnen Sie den Azure-Speicher-Explorer.
+5. Öffnen Sie den Azure Storage-Explorer.
 6. Wählen Sie im Menü **Bearbeiten** **Target Azure Stack** (Azure Stack als Ziel verwenden) aus.
 7. Wählen Sie **Konto hinzufügen** aus, und aktivieren Sie anschließend das Kontrollkästchen **Use a storage account name and key** (Einen Speicherkontonamen und -schlüssel verwenden).
 

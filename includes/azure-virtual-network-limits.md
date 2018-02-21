@@ -52,7 +52,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Regeln pro Ressource, Basic | 150 | 250 |
 | Regeln pro Ressource, Standard | 1250 | 1500 |
 | Regeln pro IP-Konfiguration | 299 |299 |
-| Front-End-IP-Konfiguration, Basic | 10 | an den Support wenden |
+| Front-End-IP-Konfiguration, Basic | 10 | 200 |
 | Front-End-IP-Konfiguration, Standard | 10 | 600 |
 | Back-End-Pool, Basic | 100, eine Verfügbarkeitsgruppe | - |
 | Back-End-Pool, Standard | 1000, einzelnes VNET | - |

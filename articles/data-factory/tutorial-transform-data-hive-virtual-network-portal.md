@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: c1dfa969f8665fc06d365bdb91d57382ee04c315
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a7575549225d47e5266ca7e1778c3e61835de1cc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem virtuellen Azure-Netzwerk (VNet) befindet. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -70,6 +70,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 4. Laden Sie die Datei **hivescript.hql** in den Unterordner **hivescripts** hoch.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
+
+1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.    
 2. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
@@ -234,7 +236,7 @@ Beachten Sie folgende Punkte:
 
 ## <a name="trigger-a-pipeline-run"></a>Auslösen einer Pipelineausführung
 
-1. Klicken Sie zum Überprüfen der Pipeline zunächst auf der Symbolleiste auf die Schaltfläche **Überprüfen**. Klicken Sie auf **>>** (Pfeil nach rechts), um das Fenster mit der Ausgabe der **Pipelineüberprüfung** zu schließen. 
+1. Klicken Sie zum Überprüfen der Pipeline zunächst auf der Symbolleiste auf die Schaltfläche **Überprüfen**. Klicken Sie auf **>>** (Pfeil nach rechts), um das Fenster mit der Ausgabe der Pipelineüberprüfung**** zu schließen. 
 
     ![Überprüfen der Pipeline](./media/tutorial-transform-data-using-hive-in-vnet-portal/validate-pipeline.png) 
 2. Klicken Sie auf der Symbolleiste auf „Trigger“ und anschließend auf „Trigger Now“ (Jetzt auslösen), um eine Pipelineausführung auszulösen. 

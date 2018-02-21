@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: be84f68a044a73673e991f04c7fe36a7787b9c3c
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: a4dc2ba7a356c26b75f5c9b519940b32f6763fa4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“
 
 ## <a name="overview"></a>Übersicht
 
-Azure-Speicher bietet drei Speicherebenen für Blobobjektspeicher, damit Sie Ihre Daten je nach Nutzung möglichst kostengünstig speichern können. Die **Speicherebene „Heiß“ (Hot)** von Azure ist für die Speicherung von Daten optimiert, auf die häufig zugegriffen wird. Die **Speicherebene „Kalt“ (Cool)** von Azure ist für die Speicherung von Daten optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Die **Speicherebene „Archiv“** von Azure ist für die Speicherung von Daten optimiert, auf die äußerst selten zugegriffen wird und die mindestens 180 Tage lang mit flexiblen Latenzanforderungen (in der Größenordnung von Stunden) gespeichert werden. Die Archivspeicherebene ist nur auf Blobebene und nicht auf der Speicherkontoebene verfügbar. Bei den Daten der Speicherebene „Cool“ können geringfügige Abstriche bei der Verfügbarkeit gemacht werden, aber Haltbarkeit, Zugriffszeit und Durchsatz müssen sich auf einem ähnlich hohen Niveau wie bei häufig genutzten Daten befinden. Daher kann bei selten genutzten Daten eine Kombination aus einer Vereinbarung zum Servicelevel mit etwas niedrigerer Verfügbarkeit und höheren Zugriffskosten im Vergleich zu häufig genutzten Daten in Kauf genommen werden, um im Gegenzug die Speicherkosten zu verringern. Der Archivspeicher ist offline und ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden.
+Azure-Speicher bietet drei Speicherebenen für Blobobjektspeicher, damit Sie Ihre Daten je nach Nutzung möglichst kostengünstig speichern können. Die **Speicherebene „Heiß“ (Hot)** von Azure ist für die Speicherung von Daten optimiert, auf die häufig zugegriffen wird. Die **Speicherebene „Kalt“ (Cool)** von Azure ist für die Speicherung von Daten optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Die **Speicherebene „Archiv“** von Azure ist für die Speicherung von Daten optimiert, auf die äußerst selten zugegriffen wird und die mindestens 180 Tage lang mit flexiblen Latenzanforderungen (in der Größenordnung von Stunden) gespeichert werden. Die Archivspeicherebene ist nur auf Blobebene und nicht auf der Speicherkontoebene verfügbar. Bei den Daten der Speicherebene „Cool“ können geringfügige Abstriche bei der Verfügbarkeit gemacht werden, aber Haltbarkeit, Zugriffszeit und Durchsatz müssen sich auf einem ähnlich hohen Niveau wie bei häufig genutzten Daten befinden. Daher kann bei selten genutzten Daten eine Kombination aus einer Vereinbarung zum Servicelevel mit etwas niedrigerer Verfügbarkeit und höheren Zugriffskosten im Vergleich zu häufig genutzten Daten in Kauf genommen werden, um im Gegenzug die Speicherkosten zu verringern. Der Archivspeicher ist offline und ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden. Nur die Speicherebenen „Heiß“ und „Kalt“ (nicht „Archiv“) können auf Kontoebene festgelegt werden. Auf Objektebene können alle drei Ebenen festgelegt werden.
 
 Die Speicherung von Daten in der Cloud nimmt immer mehr zu. Um die Kosten für die zunehmenden Speicheranforderungen im Blick zu behalten, ist es hilfreich, die Daten anhand von Attributen wie der Zugriffshäufigkeit und geplanten Aufbewahrungsdauer zu organisieren. So können die Kosten optimiert werden. In der Cloud gespeicherte Daten können sich darin unterscheiden, wie sie über ihre Lebensdauer hinweg generiert, verarbeitet und genutzt werden. Auf einen Teil der Daten wird aktiv zugegriffen, und sie werden während ihrer Lebensdauer geändert. Auf andere Daten wird zu Beginn ihrer Lebensdauer häufig zugegriffen, und die Zugriffe fallen dann deutlich ab, je älter die Daten werden. Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird.
 
@@ -59,7 +59,7 @@ Während sich ein Blob im Archivspeicher befindet, ist er offline und kann nicht
 
 Beispielszenarien für die Verwendung der Speicherebene „Archiv“:
 
-* Langfristige Sicherung, Archivierung und Datasets für die Notfallwiederherstellung
+* Langfristige Sicherung, sekundäre Sicherung und Archivierungsdatasets
 * Originaldaten (Rohdaten), die auch nach der Umwandlung in ein endgültiges verwendbares Format erhalten bleiben müssen (*Beispiel:* Medien-Rohdateien nach der Transcodierung in andere Formate)
 * Compliance- und Archivdaten, die über einen langen Zeitraum gespeichert werden müssen und selten verwendet werden (*Beispiele:* Überwachungsvideos, alte Röntgenbilder/MRT-Scans für Unternehmen aus dem Gesundheitswesen, Audioaufnahmen und Protokolle von Kundenanrufen bei Finanzdienstleistern)
 
@@ -83,7 +83,7 @@ Wenn ein Blob in „Cool“-Richtung verschoben wird (Hot->Cool, Hot->Archiv ode
 
 Wenn Sie für die Kontoebene von „Hot“ zu „Cool“ wechseln, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten berechnet. Für Blob Storage-Konten fallen hierfür keine Gebühren an. Ihnen werden sowohl Gebühren für Lesevorgänge (pro 10.000) als auch für den Datenabruf (pro GB) berechnet, wenn Sie für Ihr Blob Storage- oder GPv2-Konto von „Cool“ zu „Hot“ wechseln. Für alle Blobs, die aus der Ebene „Cool“ oder „Archiv“ verschoben werden, können auch Gebühren für das frühe Löschen anfallen.
 
-### <a name="cool-and-archive-early-deletion-effective-february-1-2018"></a>Frühes Löschen für „Cool“ und „Archiv“ (ab 1. Februar 2018)
+### <a name="cool-and-archive-early-deletion-effective-march-1-2018"></a>Frühzeitiges Löschen für die Speicherebenen „Cool“ und „Archiv“ (ab 1. März 2018)
 
 Zusätzlich zur Gebühr, die pro GB und pro Monat berechnet wird, gilt Folgendes: Alle Blobs, die in die Ebene „Cool“ (nur GPv2-Konten) verschoben werden, unterliegen einem Zeitraum von 30 Tagen für das frühe Löschen für „Cool“, und alle Blobs, die in die Ebene „Archiv“ verschoben werden, unterliegen einem Zeitraum von 180 Tagen für das frühe Löschen für „Archiv“. Diese Gebühr fällt anteilig an. Wenn ein Blob beispielsweise in das Archiv verschoben und dann nach 45 Tagen gelöscht oder in die Ebene „Hot“ verschoben wird, wird Ihnen eine Gebühr für das frühe Löschen berechnet, die 135 Speichertagen (180 minus 45) dieses Blobs im Archiv entspricht.
 
@@ -177,7 +177,7 @@ Die Berechnung für ein Blob basiert immer auf der Ebene, die in der Blobeigensc
 
 **Wie kann ich ermitteln, ob eine Gebühr für das frühe Löschen anfällt, wenn ich ein Blob lösche oder aus der Ebene „Cool“ oder „Archiv“ verschiebe?**
 
-Für alle Blobs, die vor Ablauf von 30 bzw. 180 Tagen gelöscht oder aus der Ebene „Cool“ (nur GPv2-Konten) oder „Archiv“ verschoben werden, fällt eine anteilige Gebühr für frühes Löschen an (ab 1. Februar 2018). Sie können ermitteln, wie lange sich ein Blob auf der Ebene „Cool“ oder „Archiv“ befunden hat, indem Sie in der Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) den Zeitstempel der letzten Ebenenänderung überprüfen. Weitere Informationen finden Sie im Abschnitt [Frühes Löschen für „Cool“ und „Archiv“](#cool-and-archive-early-deletion).
+Für alle Blobs, die vor Ablauf von 30 bzw. 180 Tagen gelöscht oder aus der Ebene „Cool“ (nur GPv2-Konten) oder „Archiv“ verschoben werden, fällt eine anteilige Gebühr für frühes Löschen an (ab 1. März 2018). Sie können ermitteln, wie lange sich ein Blob auf der Ebene „Cool“ oder „Archiv“ befunden hat, indem Sie in der Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) den Zeitstempel der letzten Ebenenänderung überprüfen. Weitere Informationen finden Sie im Abschnitt [Frühes Löschen für „Cool“ und „Archiv“](#cool-and-archive-early-deletion).
 
 **Welche Azure-Tools und SDKs unterstützen das Blobebenentiering und die Speicherebene „Archiv“?**
 

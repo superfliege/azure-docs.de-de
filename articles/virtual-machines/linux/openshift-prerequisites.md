@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: 5e287cd29fb305e78fe6338782838929007b17fc
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 467428462260596f21ba59f49e3c48b5fc2526b6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Allgemeine Voraussetzungen für die Bereitstellung von OpenShift in Azure
 
@@ -52,14 +52,14 @@ In diesem Leitfaden erfahren Sie, wie Sie die Artefakte für die Voraussetzungen
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
-Melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm, oder klicken Sie auf **Ausprobieren**, um Cloud Shell zu verwenden.
+Melden Sie sich mit dem Befehl [az login](/cli/azure/#az_login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm, oder klicken Sie auf **Ausprobieren**, um Cloud Shell zu verwenden.
 
 ```azurecli 
 az login
 ```
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Sie verwenden eine dedizierte Ressourcengruppe zum Hosten des Schlüsseltresors. Diese Gruppe ist von der Ressourcengruppe getrennt, in der die OpenShift-Clusterressourcen bereitgestellt werden. 
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Sie verwenden eine dedizierte Ressourcengruppe zum Hosten des Schlüsseltresors. Diese Gruppe ist von der Ressourcengruppe getrennt, in der die OpenShift-Clusterressourcen bereitgestellt werden. 
 
 Im folgenden Beispiel wird eine Ressourcengruppe namens *keyvaultrg* am Standort *eastus* erstellt:
 
@@ -68,7 +68,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
-Erstellen Sie einen Schlüsseltresor zum Speichern der SSH-Schlüssel für den Cluster, indem Sie den Befehl [az keyvault create](/cli/azure/keyvault#create) verwenden. Der Key Vault-Name muss global eindeutig sein.
+Erstellen Sie einen Schlüsseltresor zum Speichern der SSH-Schlüssel für den Cluster, indem Sie den Befehl [az keyvault create](/cli/azure/keyvault#az_keyvault_create) verwenden. Der Key Vault-Name muss global eindeutig sein.
 
 Im folgenden Beispiel wird ein Schlüsseltresor namens *keyvault* in der Ressourcengruppe *keyvaultrg* erstellt:
 
@@ -100,7 +100,7 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals 
 OpenShift kommuniziert mit Azure unter Verwendung von Benutzername und Kennwort oder eines Dienstprinzipals. Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die Sie mit Apps, Diensten und Automatisierungstools wie OpenShift verwenden können. Sie steuern und definieren die Berechtigungen hinsichtlich der Vorgänge, die der Dienstprinzipal in Azure ausführen können soll. Zur Erhöhung der Sicherheit über die Bereitstellung eines Benutzernamens und Kennworts hinaus wird in diesem Beispiel ein einfacher Dienstprinzipal erstellt.
 
-Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) einen Dienstprinzipal, und geben Sie die Anmeldeinformationen aus, die OpenShift benötigt.
+Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) einen Dienstprinzipal, und geben Sie die Anmeldeinformationen aus, die OpenShift benötigt.
 
 Im folgenden Beispiel wird ein Dienstprinzipal erstellt, mit Berechtigungen vom Typ „Mitwirkender“ ausgestattet und einer Ressourcengruppe namens „myResourceGroup“ zugewiesen. Führen Sie ```az group show --name myResourceGroup --query id``` unter Windows separat aus, und verwenden Sie die Ausgabe in der Option „--scopes“.
 

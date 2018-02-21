@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aec4db684a9067e1dee424f2c0e05e3674f84d1a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8f4d121ba76d63b70fa6976125457942a0e98aa9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-java-application"></a>Erstellen einer Java-Anwendung
 Azure Service Fabric ist eine Plattform, mit der verteilte Systeme bereitgestellt und skalierbare und zuverlässige Microservices und Container verwaltet werden können. 
@@ -39,7 +39,7 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 ## <a name="prerequisites"></a>Voraussetzungen
 So führen Sie diesen Schnellstart durch:
 1. [Installieren Sie das Service Fabric SDK und die Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
-2. [Installieren Sie Git.](https://git-scm.com/)
+2. [Installation von Git](https://git-scm.com/)
 3. [Installieren Sie Eclipse.](https://www.eclipse.org/downloads/)
 4. [Richten Sie eine Java-Umgebung ein](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development), und führen Sie auch die optionalen Schritte für die Installation des Eclipse-Plug-Ins aus. 
 
@@ -79,16 +79,42 @@ Sie können jetzt einen Satz mit Abstimmungsoptionen hinzufügen und die Abstimm
 ## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
 
 ### <a name="set-up-your-azure-service-fabric-cluster"></a>Einrichten des Azure Service Fabric-Clusters
-Um die Anwendung in einem Cluster in Azure bereitzustellen, erstellen Sie einen eigenen Cluster oder einen Partycluster.
+Um die Anwendung in einem Cluster in Azure bereitzustellen, erstellen Sie einen eigenen Cluster.
 
 Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team ausgeführt, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
+
+Zum Durchführen von Verwaltungsvorgängen im sicheren Partycluster können Sie Service Fabric Explorer, die CLI oder PowerShell verwenden. Zum Verwenden von Service Fabric Explorer müssen Sie die PFX-Datei von der Partycluster-Website herunterladen und das Zertifikat in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Für selbstsignierte Zertifikate aus dem Partycluster wird kein Kennwort verwendet. 
+
+Zum Durchführen von Verwaltungsvorgängen per PowerShell oder CLI benötigen Sie die PFX- (PowerShell) oder die PEM-Datei (CLI). Führen Sie den folgenden Befehl aus, um die PFX-Datei in eine PEM-Datei zu konvertieren:  
+
+```bash
+openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+```
 
 Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 > [!Note]
-> Der Web-Front-End-Dienst ist für das Lauschen auf eingehenden Datenverkehr über Port 8080 konfiguriert. Stellen Sie sicher, dass der Port in Ihrem Cluster geöffnet ist. Wenn Sie den Partycluster verwenden, ist dieser Port geöffnet.
+> Der Spring Boot-Dienst ist für das Lauschen auf eingehenden Datenverkehr über Port 8080 konfiguriert. Stellen Sie sicher, dass der Port in Ihrem Cluster geöffnet ist. Wenn Sie den Partycluster verwenden, ist dieser Port geöffnet.
 >
 
+### <a name="add-certificate-information-to-your-application"></a>Hinzufügen von Zertifikatinformationen zu Ihrer Anwendung
+
+Der Zertifikatfingerabdruck muss Ihrer Anwendung hinzugefügt werden, da Service Fabric-Programmiermodelle verwendet werden. 
+
+1. Sie benötigen den Fingerabdruck Ihres Zertifikats in der Datei ```Voting/VotingApplication/ApplicationManiest.xml``` bei der Ausführung in einem sicheren Cluster. Führen Sie den folgenden Befehl aus, um den Fingerabdruck des Zertifikats zu extrahieren:
+
+    ```bash
+    openssl x509 -in [CERTIFICATE_FILE] -fingerprint -noout
+    ```
+
+2. Fügen Sie in ```Voting/VotingApplication/ApplicationManiest.xml``` unter dem Tag **ApplicationManifest** den folgenden Codeausschnitt hinzu. **X509FindValue** sollte der Fingerabdruck aus dem vorherigen Schritt sein (keine Semikolons). 
+
+    ```xml
+    <Certificates>
+        <SecretsCertificate X509FindType="FindByThumbprint" X509FindValue="0A00AA0AAAA0AAA00A000000A0AA00A0AAAA00" />
+    </Certificates>   
+    ```
+    
 ### <a name="deploy-the-application-using-eclipse"></a>Bereitstellen der Anwendung mithilfe von Eclipse
 Nachdem die Anwendung und Ihr Cluster nun bereitstehen, können Sie sie über Eclipse direkt in einem Cluster bereitstellen.
 
@@ -100,8 +126,8 @@ Nachdem die Anwendung und Ihr Cluster nun bereitstehen, können Sie sie über Ec
          {
             "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
             "ConnectionPort": "19080",
-            "ClientKey": "",
-            "ClientCert": ""
+            "ClientKey": "[path_to_your_pem_file_on_local_machine]",
+            "ClientCert": "[path_to_your_pem_file_on_local_machine]"
          }
     }
     ```
@@ -121,7 +147,7 @@ Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und is
 
 Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren:
 
-1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`.
+1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`.
 2. Klicken Sie auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/Voting/VotingWeb** in der Strukturansicht, und wählen Sie **Scale Service** (Dienst skalieren).
 
     ![Service Fabric Explorer – Dienst skalieren](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)

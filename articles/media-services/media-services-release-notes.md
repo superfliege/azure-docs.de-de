@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 4775374b7e91930daa686e48e2869b4891615c4c
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 919851db455e1ac727d8c98346d13e45d4336bc7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 Diese Versionsanmerkungen zu Azure Media Services bieten eine Übersicht über Änderungen im Vergleich zu früheren Versionen und bekannte Probleme.
@@ -163,7 +163,7 @@ Die reservierten Einheiten für die Codierung in den Tarifen „Basic“, „Sta
 ### <a name="azure-sdk-for-php"></a>Azure SDK für PHP
 Das Azure SDK-Team hat eine neue Version des [Azure SDK für PHP](http://github.com/Azure/azure-sdk-for-php)-Pakets veröffentlicht, das Updates und neue Features für Media Services enthält. Insbesondere unterstützt das Media Services SDK für PHP jetzt die neuesten Features für den [Inhaltsschutz](media-services-content-protection-overview.md). Hierbei handelt es sich um die dynamische Verschlüsselung mit AES und DRM (PlayReady und Widevine) mit und ohne Tokeneinschränkungen. Unterstützt wird auch die Skalierung von [Codierungseinheiten](media-services-dotnet-encoding-units.md).
 
-Weitere Informationen finden Sie hier:
+Weitere Informationen finden Sie unter 
 
 * Blog zum [Media Services SDK für PHP](http://southworks.com/blog/2015/12/09/new-microsoft-azure-media-services-sdk-for-php-release-available-with-new-features-and-samples/).
 * Die folgenden [Codebeispiele](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) erleichtern Ihnen den schnellen Einstieg:
@@ -203,7 +203,7 @@ Sie können das [Media Services .NET SDK](https://www.nuget.org/packages/windows
 Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a id="august_changes_15"></a>Release von August 2015
-* Das Media Services-SDK für Java Version 0.8.0 und neue Beispiele sind jetzt verfügbar. Weitere Informationen finden Sie hier:
+* Das Media Services-SDK für Java Version 0.8.0 und neue Beispiele sind jetzt verfügbar. Weitere Informationen finden Sie unter 
   
   * [In diesem Blogbeitrag](http://southworks.com/blog/2015/08/25/microsoft-azure-media-services-sdk-for-java-v0-8-0-released-and-new-samples-available/)
   * [Im Repository für Java-Beispiele](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
@@ -348,8 +348,8 @@ Das Media Services SDK für .NET liegt jetzt in der Version 3.0.0.7 vor.
 * Livestreaming (Vorschau). Weitere Informationen finden Sie unter [Übersicht über Livestreaming mit Azure Media Services](http://msdn.microsoft.com/library/azure/dn783466.aspx).
 * Schlüsselübermittlungsdienst. Weitere Informationen finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts](http://msdn.microsoft.com/library/azure/dn783457.aspx).
 * Dynamische AES-Verschlüsselung. Weitere Informationen finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts](http://msdn.microsoft.com/library/azure/dn783457.aspx).
-* PlayReady-Lizenzübermittlungsdienst. Weitere Informationen finden Sie unter [Verwenden der dynamischen PlayReady-Verschlüsselung und des Lizenzübermittlungsdiensts](http://msdn.microsoft.com/library/azure/dn783467.aspx).
-* Dynamische PlayReady-Verschlüsselung. Weitere Informationen finden Sie unter [Verwenden der dynamischen PlayReady-Verschlüsselung und des Lizenzübermittlungsdiensts](http://msdn.microsoft.com/library/azure/dn783467.aspx).
+* PlayReady-Lizenzübermittlungsdienst. 
+* Dynamische PlayReady-Verschlüsselung. 
 * Media Services PlayReady-Lizenzvorlage. Weitere Informationen finden Sie unter [Media Services PlayReady-Lizenzvorlage – Übersicht].
 * Streamen von im Speicher verschlüsselten Medienobjekten. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit .NET SDK](http://msdn.microsoft.com/library/azure/dn783451.aspx).
 

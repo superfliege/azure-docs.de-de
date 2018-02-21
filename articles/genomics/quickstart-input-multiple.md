@@ -10,18 +10,20 @@ ms.author: grhuynh
 ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
-ms.date: 12/07/2017
-ms.openlocfilehash: d410516f807b7914e15bed1fb93ee58d3e340d1e
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.date: 02/05/2018
+ms.openlocfilehash: 7aeb4d5ad939cefcf8300b78b4afcc9d91ca0624
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Übermitteln eines Workflows mit mehreren Eingaben aus dem gleichen Beispiel
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn Ihre Eingabedatei mehrere FASTQ- oder BAM-Dateien **aus dem gleichen Beispiel** umfasst. Bedenken Sie allerdings, dass eine Übermittlung **keine Mischung aus FASTQ- und BAM-Dateien** enthalten darf.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn Ihre Eingabedatei mehrere FASTQ- oder BAM-Dateien **aus dem gleichen Beispiel** umfasst. Wenn Sie das **gleiche Beispiel** auf dem Sequencer beispielsweise in mehreren Bereichen ausführen, gibt der Sequencer ggf. für jeden Bereich ein FASTQ-Dateipaar aus. Anstatt diese FASTQ-Dateien vor dem Alignment und Variant Calling zu verketten, können Sie alle Eingaben direkt an den `msgen`-Client übermitteln. Die Ausgabe des `msgen`-Clients ist dann ein **einzelner Satz** mit Dateien, der eine BAM-, BAI- und VCF-Datei umfasst. 
 
-In diesem Thema wird vorausgesetzt, dass Sie den `msgen`-Client bereits installiert und ausgeführt haben und mit der Verwendung von Azure Storage vertraut sind. Wenn Sie erfolgreich einen Workflow mit den bereitgestellten Beispieldaten übermittelt haben, können Sie mit dieser Schnellstartanleitung fortfahren. 
+Bedenken Sie allerdings, dass eine Übermittlung **keine Mischung aus FASTQ- und BAM-Dateien** enthalten darf. Außerdem ist es **nicht** möglich, mehrere FASTQ- oder BAM-Dateien von mehreren Einzelpersonen zu übermitteln. 
+
+In diesem Artikel wird vorausgesetzt, dass Sie den `msgen`-Client bereits installiert und ausgeführt haben und mit der Verwendung von Azure Storage vertraut sind. Wenn Sie erfolgreich einen Workflow mit den bereitgestellten Beispieldaten übermittelt haben, können Sie mit dieser Schnellstartanleitung fortfahren. 
 
 
 ## <a name="multiple-bam-files"></a>Mehrere BAM-Dateien
@@ -32,7 +34,7 @@ Angenommen, Sie haben mehrere BAM-Eingabedateien (*reads.bam*, *additional_reads
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>Übermitteln Ihres Auftrags an den `msgen`-Client 
 
-Zur Übermittlung mehrerer BAM-Dateien können Sie deren Namen an das Argument „--input-blob-name-1“ übergeben. Beachten Sie, dass alle Dateien aus dem gleichen Beispiel stammen müssen. Ihre Reihenfolge ist jedoch unerheblich. Im Anschluss finden Sie jeweils ein Beispiel für die Übermittlung über eine Windows-Befehlszeile, über eine Unix-Befehlszeile und unter Verwendung einer Konfigurationsdatei. Zur besseren Übersichtlichkeit wurden Zeilenumbrüche eingefügt:
+Zur Übermittlung mehrerer BAM-Dateien können Sie deren Namen an das Argument „--input-blob-name-1“ übergeben. Beachten Sie, dass alle Dateien aus dem gleichen Beispiel stammen müssen. Ihre Reihenfolge ist jedoch unerheblich. Der folgende Abschnitt enthält ausführliche Informationen zu Beispielübermittlungen über eine Windows-Befehlszeile, über eine Unix-Befehlszeile und unter Verwendung einer Konfigurationsdatei. Zur besseren Übersichtlichkeit wurden Zeilenumbrüche eingefügt:
 
 
 Windows:
@@ -97,7 +99,7 @@ Angenommen, Sie verfügen über mehrere FASTQ-Dateipaare als Eingabe: *reads_1.f
 
 FASTQ-Dateipaare müssen nicht nur aus dem gleichen Beispiel stammen, sondern auch gemeinsam verarbeitet werden.  Wenn sie als Argumente an „--input-blob-name-1“ und „--input-blob-name-2“ übergeben werden, muss auf die Reihenfolge der Dateinamen geachtet werden. 
 
-Im Anschluss finden Sie jeweils ein Beispiel für die Übermittlung über eine Windows-Befehlszeile, über eine Unix-Befehlszeile und unter Verwendung einer Konfigurationsdatei. Zur besseren Übersichtlichkeit wurden Zeilenumbrüche eingefügt:
+Der folgende Abschnitt enthält ausführliche Informationen zu Beispielübermittlungen über eine Windows-Befehlszeile, über eine Unix-Befehlszeile und unter Verwendung einer Konfigurationsdatei. Zur besseren Übersichtlichkeit wurden Zeilenumbrüche eingefügt:
 
 
 Windows:
