@@ -8,6 +8,9 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: Ressourcen-Manager und klassische Bereitstellungen. Dieser Artikel behandelt die Verwendung des Ressourcen-Manager-Modells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 > 
 > 
+> [!WARNING]
+> Das Ändern der Größe des Betriebssystemdatenträgers eines virtuellen Azure-Computers führt dazu, dass dieser neu gestartet wird.
+>
 
 ## <a name="resize-the-os-drive"></a>Ändern der Größe des Betriebssystemlaufwerks
 In diesem Artikel wird beschrieben, wie die Größe des Betriebssystemlaufwerks mit den Ressourcen-Manager-Modulen von [Azure Powershell](/powershell/azureps-cmdlets-docs)geändert wird. Wir demonstrieren die Änderung der Größe des Betriebssystemdatenträgers sowohl für nicht verwaltete als auch für verwaltete Datenträger, da sich der Ansatz zum Ändern der Datenträgergröße bei beiden Datenträgerarten unterscheidet.

@@ -16,7 +16,7 @@ Sie können die von Ihrem Gerät gesendeten Telemetriedaten in der Lösung auf d
 
 ## <a name="act-on-your-device"></a>Aktionen auf Ihrem Gerät
 
-Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Lösung für die Remoteüberwachung die Seite **Geräte**. In der Lösung für die Remoteüberwachung implementieren **Kühlgeräte** beispielsweise eine **Reboot**-Methode.
+Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Lösung für die Remoteüberwachung die Seite **Geräte**. In der Lösung für die Remoteüberwachung implementieren **Kühlgeräte** beispielsweise eine **FirmwareUpdate**-Methode.
 
 1. Wählen Sie **Geräte**, um zur Seite **Geräte** in der Lösung zu navigieren.
 
@@ -26,11 +26,15 @@ Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Lösung für die
 
 1. Um eine Liste der Methoden anzuzeigen, können Sie diese auf Ihrem Gerät aufrufen und **Planen** wählen. Um eine Methode für die Ausführung auf mehreren Geräten zu planen, können Sie mehrere Geräte in der Liste auswählen. Der Bereich **Planen** zeigt die für alle ausgewählten Geräte gemeinsamen Methodentypen an.
 
-1. Wählen Sie **Reboot**, legen den Auftragsnamen auf **RebootPhysicalChiller** fest, und klicken Sie auf **Übernehmen**:
+1. Wählen Sie **FirmwareUpdate** aus, und legen Sie **UpdatePhysischesKühlgerät** als Auftragsnamen fest. Legen Sie die **Firmwareversion** auf **2.0.0** fest, stellen Sie den **Firmware-URI** auf **http://contoso.com/updates/firmware.bin** ein, und wählen Sie dann **Anwenden** aus:
 
-    ![Planen des Neustarts](media/iot-suite-visualize-connecting/deviceschedule.png)
+    ![Planen des Firmwareupdates](media/iot-suite-visualize-connecting/deviceschedule.png)
 
-1. In der Konsole wird bei der Ausführung Ihres Gerätecodes eine Meldung angezeigt, wenn das Gerät die Methode verarbeitet.
+1. In der Konsole wird bei der Ausführung Ihres Gerätecodes eine Reihe von Meldungen angezeigt, während das simulierte Gerät die Methode verarbeitet.
+
+1. Wenn das Update abgeschlossen ist, wird die neue Firmwareversion auf der Seite **Geräte** angezeigt:
+
+    ![Update abgeschlossen](media/iot-suite-visualize-connecting/complete.png)
 
 > [!NOTE]
 > Um den Status des Auftrags in der Lösung nachzuverfolgen, wählen Sie **Anzeigen**.

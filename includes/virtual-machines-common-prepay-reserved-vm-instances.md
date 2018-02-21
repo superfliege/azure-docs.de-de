@@ -30,8 +30,15 @@ Sie können reservierte VM-Instanzen im [Azure-Portal](https://portal.azure.com)
 
     ![Screenshot vor dem Tätigen des Reservierungskaufs](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
 
-## <a name="next-steps-after-buying-a-reservation"></a>Weitere Schritte nach dem Kauf einer Reservierung
+## <a name="next-steps"></a>Nächste Schritte 
 Der Reservierungsrabatt wird automatisch auf die Anzahl der ausgeführten virtuellen Computer angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Sie können den Bereich der Reservierung über das [Azure-Portal](https://portal.azure.com), PowerShell, die CLI oder die API aktualisieren. 
 
-Informationen zum Verwalten einer Reservierung finden Sie unter [Reservierte Azure-VM-Instanzen (RIs)s](../articles/billing/billing-manage-reserved-vm-instance.md).
+Informationen zum Verwalten einer Reservierung finden Sie unter [Verwalten von Azure Reserved Virtual Machine Instances](../articles/billing/billing-manage-reserved-vm-instance.md).
 
+Weitere Informationen zu reservierten VM-Instanzen finden Sie in den folgenden Artikeln.
+
+- [Mit reservierten VM-Instanzen Kosten für virtuelle Computer sparen](../articles/billing/billing-save-compute-costs-reservations.md)
+- [Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen](../articles/billing/billing-understand-vm-reservation-charges.md)
+- [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](../articles/billing/billing-understand-reserved-instance-usage.md)
+- [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+- [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](../articles/billing/billing-reserved-instance-windows-software-costs.md)

@@ -9,7 +9,7 @@ Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des IoT Hub De
 | Maximale Anzahl von Zertifizierungsstellen | 10 |
 
 > [!NOTE]
-> Diese Grenzwerte gelten für die öffentliche Vorschauversion. Sobald der Dienst allgemein verfügbar ist, können Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/) wenden, um die Anzahl von Instanzen in Ihrem Abonnement erhöhen zu lassen.
+> Sie können sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/) wenden, um die Anzahl von Instanzen in Ihrem Abonnement erhöhen zu lassen.
 
 Der Device Provisioning-Dienst drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden:
 
