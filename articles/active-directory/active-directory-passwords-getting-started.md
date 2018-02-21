@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 88123cead40968ebf7327b81f94233529f97aa2f
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 34a6722fdd06cf0b198320e551daccc21956dc69
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -33,7 +33,7 @@ In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionier
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Aktivieren der SSPR für Ihren Azure AD-Mandanten
 
-1. Wählen Sie unter Ihrem vorhandenen Azure AD-Mandanten die Option **Kennwortzurücksetzung**.
+1. Wählen Sie auf Ihrem vorhandenen Azure AD-Mandanten im **Azure-Portal** unter **Azure Active Directory** die Option **Kennwortzurücksetzung**.
 
 2. Wählen Sie auf der Seite **Eigenschaften** unter **Self-Service-Kennwortzurücksetzung aktiviert** eine der folgenden Optionen:
    * **None** (Keine): Niemand kann die SSPR-Funktionalität nutzen.

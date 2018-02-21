@@ -10,17 +10,17 @@ ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
 ms.openlocfilehash: be502e6aef39ee4ed8cfc1f8926cb556dc1defb1
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="mount-an-azure-file-share-with-azure-container-instances"></a>Einbinden einer Azure-Dateifreigabe in Azure Container Instances
 
 Standardmäßig ist Azure Container Instances zustandslos. Wenn der Container abstürzt oder beendet wird, gehen alle Zustände verloren. Um den Zustand nach Ablauf der Lebensdauer des Containers beizubehalten, müssen Sie ein Volume aus einem externen Speicher einbinden. In diesem Artikel wird das Einbinden einer Azure-Dateifreigabe für die Verwendung mit Azure Container Instances veranschaulicht.
 
 > [!NOTE]
-> Zurzeit ist das Einbinden einer Azure-Dateifreigabe in Linux-Container eingeschränkt. Bis alle Features auch in Windows-Containern verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und regionale Verfügbarkeit für Azure Container Instances](container-instances-quotas.md).
+> Zurzeit ist das Einbinden einer Azure-Dateifreigabe in Linux-Container eingeschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 

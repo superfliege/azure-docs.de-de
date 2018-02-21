@@ -84,22 +84,6 @@ sql-database-elastic-pool.md
 | Max. Speicherkapazität pro Datenbank (GB)* | 1024 | 1024 | 1024 | 1024 | 1024 | 
 ||||||||
 
-### <a name="premium-rs-elastic-pool-limits"></a>Grenzwerte für Pools für elastische RS-Datenbanken – Premium
-
-| eDTUs pro Pool | **125** | **250** | **500** | **1000** |
-|:---|---:|---:|---:| ---: | ---: | 
-| Inbegriffener Speicher pro Pool (GB) | 250 | 500 | 750 | 750 |
-| Max. Speicherlösungen pro Pool (GB)* | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 
-| Max. In-Memory-OLTP-Speicher pro Pool (GB) | 1 | 2 | 4 | 10 |
-| Max. Anzahl Datenbanken pro Pool | 50 | 100 | 100 | 100 |
-| Max. gleichzeitige Worker (Anforderungen) pro Pool | 200 | 400 | 800 | 1600 |
-| Max. gleichzeitige Anmeldungen pro Pool | 200 | 400 | 800 | 1600 |
-| Max. gleichzeitige Sitzungen pro Pool | 30000 | 30000 | 30000 | 30000 |
-| Min. Anzahl von eDTU-Lösungen pro Datenbank | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 |
-| Max. Anzahl von eDTU-Lösungen pro Datenbank | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 
-| Max. Speicherkapazität pro Datenbank (GB)* | 1024 | 1024 | 1024 | 1024 | 
-||||||||
-
 > [!IMPORTANT]
 > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Details finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/). Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Details finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
 >

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 89e83dc02f32f6f2a781cf2e35040b29cc3d3c06
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 0e2cd75845eb3613b23409b6bf1ab7d37d992275
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Verwenden von Azure HDInsight Tools for Visual Studio Code
 
@@ -101,6 +101,26 @@ Um Skripts von Visual Studio Code an HDInsight-Cluster übermitteln zu können, 
     - Übermitteln interaktiver PySpark-Abfragen
     - Übermitteln von PySpark-Batchskripts
     - Festlegen von Konfigurationen
+
+**So verknüpfen Sie einen Cluster**
+
+Sie können einen normalen Cluster mithilfe eines verwalteten Ambari-Benutzernamens oder einen Hadoop-Sicherheitscluster mithilfe des Domänenbenutzernamens (z.B. user1@contoso.com) verknüpfen.
+1. Öffnen Sie die Befehlspalette, indem Sie **STRG+UMSCHALT+P** auswählen, und geben Sie dann **HDInsight: Cluster verknüpfen** ein.
+
+   ![Befehl „Cluster verknüpfen“](./media/hdinsight-for-vscode/link-cluster-command.png)
+
+2. Geben Sie die URL des HDInsight-Clusters ein, geben Sie den Benutzername und das Kennwort ein, und wählen Sie den Clustertyp aus. Es werden Erfolgsinformationen angezeigt, wenn die Überprüfung bestanden wurde.
+   
+   ![Dialogfeld „Cluster verknüpfen“](./media/hdinsight-for-vscode/link-cluster-process.png)
+
+   > [!NOTE]
+   > Wir verwenden den verknüpften Benutzernamen und das Kennwort, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat. 
+   
+3. Sie können einen verknüpften Cluster mithilfe des Befehls **Cluster auflisten** anzeigen. Jetzt können Sie ein Skript an diesen verknüpften Cluster übermitteln.
+
+   ![Verknüpfter Cluster](./media/hdinsight-for-vscode/linked-cluster.png)
+
+4. Sie können die Verknüpfung eines Clusters auch aufheben, indem Sie **HDInsight: Verknüpfung eines Clusters aufheben** aus der Befehlspalette eingeben.
 
 ## <a name="list-hdinsight-clusters"></a>Auflisten von HDInsight-Clustern
 
@@ -258,6 +278,9 @@ Mit HDInsight Tools for Visual Studio Code können Sie auch interaktive PySpark-
 Nach dem Übermitteln eines Python-Auftrags werden die Übermittlungsprotokolle in Visual Studio Code im Fenster **AUSGABE** angezeigt. Die **URL der Spark-Benutzeroberfläche** und die **URL der Yarn-Benutzeroberfläche** werden ebenfalls angezeigt. Sie können die URL in einem Webbrowser öffnen, um den Auftragsstatus nachzuverfolgen.
 
 
+   
+
+
 ## <a name="additional-features"></a>Zusätzliche Funktionen
 
 HDInsight Tools for Visual Studio Code unterstützen folgende Features:
@@ -286,7 +309,7 @@ HDInsight Tools for Visual Studio Code unterstützen folgende Features:
 * [Verwenden von externen Paketen mit Jupyter Notebooks](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](spark/apache-spark-jupyter-notebook-install-locally.md)
 * [Visualisieren von Hive-Daten mit Microsoft Power BI in Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Visualize Interactive Query Hive data with Microsoft Power BI using direct query in Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) (Visualisieren von Interactive Query-Hive-Daten mit Microsoft Power BI mittels direkter Abfrage in Azure HDInsight)
+* [Visualisieren von Interactive Query-Hive-Daten mit Power BI in Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
 * [Einrichten der PySpark Interactive-Umgebung für Visual Studio Code](set-up-pyspark-interactive-environment.md)
 * [Verwenden von Zeppelin zum Ausführen von Hive-Abfragen in Azure HDInsight](./hdinsight-connect-hive-zeppelin.md).
 

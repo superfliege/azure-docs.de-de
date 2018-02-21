@@ -93,6 +93,8 @@
         - name: Reliable Services
           href: service-fabric-reliable-services-introduction.md
           items:
+            - name: Lebenszyklus von Replikaten und Instanzen
+              href: service-fabric-concepts-replica-lifecycle.md
             - name: 'Reliable Services-Lebenszyklus – C#'
               href: service-fabric-reliable-services-lifecycle.md
             - name: Reliable Services-Lebenszyklus – Java
@@ -144,8 +146,6 @@
           href: service-fabric-concepts-scalability.md
         - name: Availability of services (in englischer Sprache)
           href: service-fabric-availability-services.md
-        - name: Lebenszyklus von Replikaten und Instanzen
-          href: service-fabric-concepts-replica-lifecycle.md
         - name: Reconfiguration
           href: service-fabric-concepts-reconfiguration.md
         - name: Dienstkommunikation

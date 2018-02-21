@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 117212a2e7e3da7c3e249798eec804a652e0ef58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e34a188271a5ac2fb6cb34a088ec3f650be6cab
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Einrichten von Oracle ASM auf einem virtuellen Azure Linux-Computer  
 
@@ -41,7 +41,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Verwenden Sie zum Erstellen einer Ressourcengruppe den Befehl [az group create](/cli/azure/group#create). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel befindet sich eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus*.
+Verwenden Sie zum Erstellen einer Ressourcengruppe den Befehl [az group create](/cli/azure/group#az_group_create). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel befindet sich eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -49,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>Erstellen einer VM
 
-Verwenden Sie den Befehl [az vm create](/cli/azure/vm#create), um einen virtuellen Computer auf der Grundlage des Oracle Database-Images zu erstellen und diesen für Oracle ASM zu konfigurieren. 
+Verwenden Sie den Befehl [az vm create](/cli/azure/vm#az_vm_create), um einen virtuellen Computer auf der Grundlage des Oracle Database-Images zu erstellen und diesen für Oracle ASM zu konfigurieren. 
 
 Im folgenden Beispiel wird ein virtueller Computer mit dem Namen „myVM“ erstellt, die die Größe „Standard_DS2_v2“ mit vier angefügten Datenträgern mit jeweils 50 GB aufweist. Darüber hinaus werden SSH-Schlüssel erstellt, falls diese nicht bereits am Standardschlüsselspeicherort vorhanden sind.  Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  
 
@@ -475,9 +475,9 @@ Führen Sie zum Installieren von Oracle Grid Infrastructure die folgenden Schrit
 
 6. Auf der Seite **Specify Management Options** (Verwaltungsoptionen angeben) haben Sie die Möglichkeit, EM Cloud Control zu konfigurieren. In diesem Fall wird dieser Schritt übersprungen. Klicken Sie auf `next` (Weiter), um den Vorgang fortzusetzen. 
 
-7. Verwenden Sie auf der Seite **Privileged Operating System Groups** (Privilegierte Betriebssystemgruppen) die Standardeinstellungen. Klicken Sie auf `next` (Weiter), um den Vorgang fortzusetzen.
+7. Verwenden Sie auf der Seite **Privileged Operating System Groups** (Privilegierte Betriebssystemgruppen) die Standardeinstellungen. Klicken Sie auf `next` (Ja), um den Vorgang fortzusetzen.
 
-8. Verwenden Sie auf der Seite **Specify Installation Location** (Installationsort angeben) die Standardeinstellungen. Klicken Sie auf `next` (Weiter), um den Vorgang fortzusetzen.
+8. Verwenden Sie auf der Seite **Specify Installation Location** (Installationsort angeben) die Standardeinstellungen. Klicken Sie auf `next` (Ja), um den Vorgang fortzusetzen.
 
 9. Ändern Sie auf der Seite **Create Inventory** (Bestand erstellen) das Bestandsverzeichnis in `/u01/app/grid/oraInventory`. Klicken Sie auf `next` (Weiter), um den Vorgang fortzusetzen.
 

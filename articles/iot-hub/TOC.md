@@ -38,9 +38,6 @@
 ### [Geräteverwaltung mit IoT-Erweiterung für Azure CLI 2.0](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [Remoteüberwachung und Benachrichtigungen mit Logic Apps](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
-## Verwenden des MXChip IoT DevKit
-### [Verwenden von Azure IoT Suite für Remoteüberwachung](iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
-
 # Anleitungen
 ## Plan
 ### [Vergleichen von IoT Hub und Event Hubs](iot-hub-compare-event-hubs.md)

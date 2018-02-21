@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 4a27ae1402717c91029eda9d635db124f8bb6b8d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 43f045033648534e9c0fea344bbc38da34f8454b
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-by-using-the-azure-portal"></a>Erstellen von HDInsight-Clustern mit Azure Data Lake Store mithilfe des Azure-Portals
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Erfahren Sie, wie Sie im Azure-Portal einen HDInsight-Cluster mit einem Azure Da
 Bevor Sie mit diesem Tutorial beginnen, stellen Sie sicher, dass Sie die folgenden Anforderungen erfüllen:
 
 * **Ein Azure-Abonnement**. Navigieren Sie zu [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein Azure Data Lake-Speicherkonto**. Führen Sie die Schritte in der Anleitung unter [Erste Schritte mit Data Lake Store mithilfe des Azure-Portals](data-lake-store-get-started-portal.md) aus. Sie müssen auch einen Stammordner für das Konto erstellen.  In diesem Tutorial wird ein Stammordner namens __/clusters__ verwendet.
+* **Ein Azure Data Lake Store-Konto**. Führen Sie die Schritte in der Anleitung unter [Erste Schritte mit Data Lake Store mithilfe des Azure-Portals](data-lake-store-get-started-portal.md) aus. Sie müssen auch einen Stammordner für das Konto erstellen.  In diesem Tutorial wird ein Stammordner namens __/clusters__ verwendet.
 * **Azure Active Directory-Dienstprinzipal**. Dieses Tutorial enthält Anweisungen zum Erstellen eines Dienstprinzipals in Azure Active Directory (Azure AD). Sie müssen jedoch Azure AD-Administrator sein, um einen Dienstprinzipal erstellen zu können. Wenn Sie Administrator sind, können Sie diese Voraussetzung ignorieren und mit dem Tutorial fortfahren.
 
     >[!NOTE]
@@ -50,13 +50,13 @@ In diesem Abschnitt erstellen Sie einen HDInsight-Cluster mit Data Lake Store-Ko
 
 **So erstellen Sie einen HDInsight-Cluster mit Data Lake Store als Standardspeicherkonto**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Befolgen Sie die allgemeinen Informationen zum Erstellen von HDInsight-Clustern unter [Erstellen von Clustern](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters).
 3. Wählen Sie auf dem Blatt **Speicher** unter **Primärer Speichertyp** die Option **Data Lake Store** aus, und geben Sie dann die folgenden Informationen ein:
 
     ![Dienstprinzipal für HDInsight-Cluster hinzufügen](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
 
-    - **Data Lake Store-Konto wählen**: Wählen Sie ein vorhandenes Data Lake Store-Konto aus. Ein vorhandenes Data Lake Store-Konto ist erforderlich.  Siehe [Voraussetzungen](#prereuisites).
+    - **Data Lake Store-Konto wählen**: Wählen Sie ein vorhandenes Data Lake Store-Konto aus. Ein vorhandenes Data Lake Store-Konto ist erforderlich.  Siehe [Voraussetzungen](#prerequisites).
     - **Stammpfad**: Geben Sie einen Pfad ein, in dem die clusterspezifischen Dateien gespeichert werden sollen. Im Screenshot lautet der Pfad __/clusters/myhdiadlcluster/__, in dem der Ordner __/clusters__ vorhanden sein muss. Der Ordner *myhdicluster* wird vom Portal erstellt.  *myhdicluster* ist der Clustername.
     - **Data Lake Store-Zugriff**: Konfigurieren Sie den Zugriff zwischen Data Lake Store-Konto und HDInsight-Cluster. Eine Anleitung finden Sie unter [Konfigurieren des Data Lake Store-Zugriffs](#configure-data-lake-store-access).
     - **Zusätzliche Speicherkonten**: Fügen Sie Azure Storage-Konten als zusätzliche Speicherkonten für den Cluster hinzu. Das Hinzufügen zusätzlicher Data Lake Stores erfolgt, indem dem Cluster die Berechtigungen für Daten in weiteren Data Lake Store-Konten erteilt wird, während ein Data Lake Store-Konto als primärer Speichertyp konfiguriert wird. Weitere Informationen finden Sie unter [Konfigurieren des Zugriffs auf Data Lake Store](#configure-data-lake-store-access).
@@ -69,7 +69,7 @@ In diesem Abschnitt erstellen Sie einen HDInsight-Cluster mit Data Lake Store-Ko
 Befolgen Sie die folgenden Anweisungen, um einen HDInsight-Cluster mit einem Azure Data Lake Store-Konto als Standardspeicher und einem Data Lake Store-Konto als zusätzlichem Speicher zu erstellen.
 **So erstellen Sie einen HDInsight-Cluster mit Data Lake Store als Standardspeicherkonto**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Befolgen Sie die allgemeinen Informationen zum Erstellen von HDInsight-Clustern unter [Erstellen von Clustern](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters).
 3. Wählen Sie auf dem Blatt **Speicher** unter **Primärer Speichertyp** die Option **Azure Storage** aus, und geben Sie dann die folgenden Informationen ein:
 

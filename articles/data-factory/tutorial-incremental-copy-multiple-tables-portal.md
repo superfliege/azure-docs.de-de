@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c79bce401b0f1d67d7955f4c97a5dfac5008be0d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 11dedc8866fcc0239fd4a34b7ed73af34c6d5a4e
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -57,7 +57,7 @@ Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 
     b. Erstellen Sie zwei Lookup-Aktivitäten. Verwenden Sie die erste Lookup-Aktivität, um den letzten Grenzwert abzurufen. Verwenden Sie die zweite Lookup-Aktivität, um den neuen Grenzwert abzurufen. Diese Grenzwerte werden an die Copy-Aktivität übergeben.
 
-    c. Erstellen Sie eine Copy-Aktivität, die Zeilen aus dem Quelldatenspeicher kopiert, wobei der Wert der Grenzwertspalte größer als der alte Grenzwert und kleiner als der neue Grenzwert ist. Anschließend werden die Deltadaten aus dem Quelldatenspeicher als neue Datei in einen Azure-Blobspeicher kopiert.
+    c. Erstellen Sie eine Copy-Aktivität, die Zeilen aus dem Quelldatenspeicher kopiert, wobei der Wert der Grenzwertspalte größer als der alte Grenzwert und kleiner als der neue Grenzwert ist. Anschließend werden die Deltadaten aus dem Quelldatenspeicher als neue Datei in Azure Blob Storage kopiert.
 
     d. Erstellen Sie eine StoredProcedure-Aktivität, die den Grenzwert für die Pipeline aktualisiert, die nächstes Mal ausgeführt wird. 
 
@@ -135,7 +135,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     ```
 
-### <a name="create-another-table-in-the-sql-database-to-store-the-high-watermark-value"></a>Erstellen Sie eine andere Tabelle in SQL-Datenbank zum Speichern des hohen Grenzwerts.
+### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Erstellen einer weiteren Tabelle in der Azure SQL-Datenbank zum Speichern des hohen Grenzwerts
 1. Führen Sie den folgenden SQL-Befehl für Ihre SQL-Datenbank aus, um eine Tabelle mit dem Namen `watermarktable` zum Speichern des Grenzwerts zu erstellen: 
     
     ```sql
@@ -157,7 +157,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-sql-database"></a>Erstellen einer gespeicherten Prozedur in SQL-Datenbank 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Erstellen Sie eine gespeicherte Prozedur in der Azure SQL-Datenbank 
 
 Führen Sie den folgenden Befehl zum Erstellen einer gespeicherten Prozedur in Ihrer SQL-Datenbank aus. Mit dieser gespeicherten Prozedur wird der Grenzwert nach jeder Pipelineausführung aktualisiert. 
 
@@ -175,7 +175,7 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures"></a>Erstellen von Datentypen und zusätzlichen gespeicherten Prozeduren
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Erstellen von Datentypen und zusätzlichen gespeicherten Prozeduren in Azure SQL-Datenbank
 Führen Sie die folgende Abfrage aus, um zwei gespeicherte Prozeduren und zwei Datentypen in der SQL-Datenbank zu erstellen. Sie werden zum Zusammenführen der Daten aus Quelltabellen in Zieltabellen verwendet.
 
 ```sql
@@ -228,6 +228,7 @@ END
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
+1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
    ![Neu -> Data Factory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
@@ -412,29 +413,29 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 1. Klicken Sie im linken Bereich auf **+** (Pluszeichen) und dann auf **Pipeline**.
 
     ![Menü „Neue Pipeline“](./media/tutorial-incremental-copy-multiple-tables-portal/new-pipeline-menu.png)
-2. Geben Sie im ****Eigenschaftenfenster auf der Registerkarte **Allgemein** unter **Name** den Namen **IncrementalCopyPipeline** ein. 
+2. **Geben Sie im** Eigenschaftenfenster auf der Registerkarte **Allgemein** unter **Name** den Namen **IncrementalCopyPipeline** ein. 
 
     ![Pipelinename](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
-3. Führen Sie im Eigenschaftenfenster**** einen der folgenden Schritte aus: 
+3. Führen Sie im **Eigenschaftenfenster** einen der folgenden Schritte aus: 
 
     1. Klicken Sie auf **+ NEU**. 
     2. Geben Sie **tableList** für den Parameter **name** ein. 
     3. Wählen Sie für den Parameter **type** die Option **Object**.
 
     ![Pipelineparameter](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
-4. Ziehen Sie die **ForEach**-Aktivität aus der Toolbox **Aktivitäten** in die Oberfläche des Pipeline-Designers. Geben Sie im Eigenschaftenfenster**** auf der Registerkarte **Allgemein** den Text **IterateSQLTables** ein. 
+4. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Iteration & Conditionals** (Iteration und konditionelle Abschnitte), und ziehen Sie die **ForEach**-Aktivität auf die Oberfläche des Pipeline-Designers. Geben Sie im **Eigenschaftenfenster** auf der Registerkarte **Allgemein** den Text **IterateSQLTables** ein. 
 
     ![ForEach-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
-5. Wechseln Sie im Eigenschaftenfenster**** zur Registerkarte **Einstellungen**, und geben Sie unter **Elemente** die Zeichenfolge `@pipeline().parameters.tableList` ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
+5. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Einstellungen**, und geben Sie unter **Elemente** die Zeichenfolge `@pipeline().parameters.tableList` ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
 
     ![ForEach-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 6. Wählen Sie die **ForEach**-Aktivität in der Pipeline, falls sie nicht bereits ausgewählt wurde. Klicken Sie auf die Schaltfläche **Bearbeiten** (Stiftsymbol).
 
     ![ForEach-Aktivität – Bearbeiten](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
-7. Ziehen Sie die **Lookup**-Aktivität aus der Toolbox **Aktivitäten**, und geben Sie unter **Name** den Namen **LookupOldWaterMarkActivity** ein.
+7. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers, und geben Sie unter **Name** den Namen **LookupOldWaterMarkActivity** ein.
 
     ![Erste Lookup-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-name.png)
-8. Wechseln Sie im Eigenschaftenfenster**** zur Registerkarte **Einstellungen**, und führen Sie die folgenden Schritte aus: 
+8. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Einstellungen**, und führen Sie die folgenden Schritte aus: 
 
     1. Wählen Sie **WatermarkDataset** für **Source Dataset**.
     2. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
@@ -465,7 +466,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 12. Verbinden Sie die einzelnen **Lookup**-Aktivitäten jeweils mit der **Copy**-Aktivität. Ziehen Sie das **grüne** Feld, das an die **Lookup**-Aktivität angefügt ist, auf die **Copy**-Aktivität, um die Verbindung herzustellen. Lassen Sie die Maustaste los, wenn sich die Rahmenfarbe der Copy-Aktivität in **Blau** ändert.
 
     ![Verbinden von Lookup- und Copy-Aktivitäten](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
-13. Wählen Sie die **Copy**-Aktivität in der Pipeline aus. Wechseln Sie im Eigenschaftenfenster**** zur Registerkarte **Quelle**. 
+13. Wählen Sie die **Copy**-Aktivität in der Pipeline aus. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Quelle**. 
 
     1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
     2. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
@@ -489,7 +490,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 16. Ziehen Sie die **Stored Procedure**-Aktivität aus der Toolbox **Aktivitäten** in die Oberfläche des Pipeline-Designers. Verbinden Sie die **Copy**-Aktivität mit der **Stored Procedure**-Aktivität. 
 
     ![Copy-Aktivität – Parameter](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
-17. Wählen Sie die **Stored Procedure**-Aktivität in der Pipeline aus, und geben Sie im ****Eigenschaftenfenster auf der Registerkarte **Allgemein** unter **Name** den Namen **StoredProceduretoWriteWatermarkActivity** ein. 
+17. Wählen Sie die **Stored Procedure**-Aktivität in der Pipeline aus, und geben Sie im **Eigenschaftenfenster** auf der Registerkarte **Allgemein** unter **Name** den Namen **StoredProceduretoWriteWatermarkActivity** ein. 
 
     ![Stored Procedure-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
 18. Wechseln Sie zur Registerkarte **SQL-Konto**, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**.
@@ -497,10 +498,11 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
     ![Stored Procedure-Aktivität – SQL-Konto](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 19. Wechseln Sie zur Registerkarte **Gespeicherte Prozedur**, und führen Sie die folgenden Schritte aus:
 
-    1. Geben Sie unter **Name der gespeicherten Prozedur** den Namen `sp_write_watermark` ein. 
-    2. Verwenden Sie die Schaltfläche **Neu**, um die folgenden Parameter hinzuzufügen: 
+    1. Wählen Sie unter **Name der gespeicherten Prozedur** den Namen `sp_write_watermark` aus. 
+    2. Wählen Sie die Option **Import parameter** (Importparameter). 
+    3. Geben Sie die folgenden Werte für die Parameter an: 
 
-        | NAME | Typ | Wert | 
+        | Name | Typ | Wert | 
         | ---- | ---- | ----- |
         | LastModifiedtime | Datetime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Zeichenfolge | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
@@ -545,7 +547,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können die Pipelineausführung anzeigen, die vom **manuellen Trigger** ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. Mit den Links in der Spalte **Aktionen** können Sie Aktivitätsausführungen anzeigen, die der Pipelineausführung zugeordnet sind, und die Pipeline erneut ausführen. 
 
     ![Pipelineausführungen](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
-2. Klicken Sie in der Spalte **Aktionen** auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen). Es werden alle Aktivitätsausführungen angezeigt, die der ausgewählten Pipelineausführung zugeordnet sind. 
+2. Klicken Sie in der Spalte **Aktionen** auf den Link **Aktivitätsausführungen anzeigen**. Es werden alle Aktivitätsausführungen angezeigt, die der ausgewählten Pipelineausführung zugeordnet sind. 
 
     ![Aktivitätsausführungen](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png)
 
@@ -647,7 +649,7 @@ VALUES
 1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können die Pipelineausführung anzeigen, die vom **manuellen Trigger** ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. Mit den Links in der Spalte **Aktionen** können Sie Aktivitätsausführungen anzeigen, die der Pipelineausführung zugeordnet sind, und die Pipeline erneut ausführen. 
 
     ![Pipelineausführungen](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
-2. Klicken Sie in der Spalte **Aktionen** auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen). Es werden alle Aktivitätsausführungen angezeigt, die der ausgewählten Pipelineausführung zugeordnet sind. 
+2. Klicken Sie in der Spalte **Aktionen** auf den Link **Aktivitätsausführungen anzeigen**. Es werden alle Aktivitätsausführungen angezeigt, die der ausgewählten Pipelineausführung zugeordnet sind. 
 
     ![Aktivitätsausführungen](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png) 
 

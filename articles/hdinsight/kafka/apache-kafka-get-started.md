@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/18/2018
 ms.author: larryfr
-ms.openlocfilehash: 6191d81d6b55f5ffe943f800be542d7ea4614eaf
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 639adb2fdc5a7d76c11397b5027199626a0a4016
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Einstieg in Apache Kafka in HDInsight
 
@@ -226,10 +226,12 @@ In diesem Dokument wurden die Grundlagen der Arbeit mit Apache Kafka in HDInsigh
 
 * [Analysieren von Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)
 * [Replizieren von Daten zwischen Kafka-Clustern](apache-kafka-mirroring.md)
-* [Apache Kafka Producer and Consumer APIs](apache-kafka-producer-consumer-api.md) (Apache Kafka – Producer- und Consumer-APIs)
-* [Apache Kafka Streams API](apache-kafka-streams-api.md) (Apache Kafka-Stream-API)
+* [Kafka Producer- und Consumer-APIs mit HDInsight](apache-kafka-producer-consumer-api.md)
+* [Kafka Streams-API mit HDInsight](apache-kafka-streams-api.md)
 * [Verwenden von Apache Spark-Streaming (DStream) mit Kafka in HDInsight](../hdinsight-apache-spark-with-kafka.md)
 * [Verwenden von strukturiertem Spark-Streaming mit Kafka in HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md)
-* [Use Spark Structured Streaming with Kafka and Azure Cosmos DB](../apache-kafka-spark-structured-streaming-cosmosdb.md) (Verwenden von strukturiertem Spark-Streaming mit Kafka und Azure Cosmos DB)
+* [Verwenden von strukturiertem Apache Spark-Streaming zum Verschieben von Daten aus Kafka in HDInsight nach Cosmos DB](../apache-kafka-spark-structured-streaming-cosmosdb.md)
 * [Verwenden von Apache Storm mit Kafka in HDInsight](../hdinsight-apache-storm-with-kafka.md)
 * [Herstellen einer Verbindung mit Kafka über eine Azure Virtual Network-Instanz](apache-kafka-connect-vpn-gateway.md)
+* [Verwenden von Kafka mit Azure Container Service](apache-kafka-azure-container-services.md)
+* [Use Kafka on HDInsight from an Azure Function app](apache-kafka-azure-functions.md) (Verwenden von Kafka in HDInsight über eine Azure-Funktionen-App)

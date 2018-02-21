@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 0d2f98ca2fb39289b2916ddd24590924856507d6
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 50d2545d5145f1d93a1ea9fed3e4f98b474d41b2
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 
@@ -36,7 +36,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](app-insights-asp-net.md). 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
 
 ## <a name="create-a-new-dashboard"></a>Erstellen eines neuen Dashboards
 Ein einzelnes Dashboard kann Ressourcen aus mehreren Anwendungen, Ressourcengruppen und Abonnements enthalten.  Starten Sie das Tutorial, indem Sie ein neues Dashboard für Ihre Anwendung erstellen.  
@@ -88,7 +88,7 @@ Im Bereich **Metriken** können Sie eine Metrik grafisch darstellen, die von App
 
 3. Klicken Sie oben im Bildschirm auf **Dashboard anzeigen**, um zum Dashboard zurückzukehren.
 
-4. Die Übersichtszeitachse wurde Ihrem Dashboard hinzugefügt.  Klicken Sie darauf, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen** und **Änderungen veröffentlichen**. 
+4. Das Diagramm mit den Zeitachsenmetriken wird jetzt Ihrem Dashboard hinzugefügt. Klicken Sie darauf, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen** und **Änderungen veröffentlichen**. 
 
     ![Dashboard mit Metriken](media/app-insights-tutorial-dashboards/dashboard-03.png)
 

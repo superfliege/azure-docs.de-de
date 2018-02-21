@@ -4,9 +4,7 @@
 
 * Virtuelle Computer der N-Serie können nur im Resourcen Manager-Bereitstellungsmodell bereitgestellt werden.
 
-* Wählen Sie beim Erstellen eines virtuellen Computers der N-Serie mit dem Azure-Portal auf dem Blatt **Grundlagen** den **VM-Datenträgertyp** **HDD** aus. Zum Auswählen einer verfügbaren Größe der N-Serie klicken Sie auf dem Blatt **Größe** auf **Alle anzeigen**.
-
-* Virtuelle NC- oder NV-Computer unterstützen keine VM-Datenträger, die durch Azure Storage Premium gesichert sind.
+* Virtuelle Computer der Serie N unterscheiden hinsichtlich des Typs von Azure Storage, den sie für ihre Datenträger unterstützen. Virtuelle NC- oder NV-Computer unterstützen nur VM-Datenträger, die durch Standard Disk Storage (HDD) gesichert sind. Virtuelle NCv2-, ND- und NCv3-Computer (Vorschau) unterstützen nur VM-Datenträger, die durch Premium Disk Storage (SSD) gesichert sind.
 
 * Wenn Sie eine größere Anzahl von virtuellen Computern der N-Serie bereitstellen möchten, sollten Sie ein nutzungsbasiertes Abonnement oder andere Kaufoptionen in Erwägung ziehen. Bei Verwendung eines [kostenlosen Azure-Kontos](https://azure.microsoft.com/free/)können Sie nur eine begrenzte Anzahl von Azure-Compute-Kernen nutzen.
 

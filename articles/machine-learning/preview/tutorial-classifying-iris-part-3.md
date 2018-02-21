@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 12cbd7d9682e70fc5bc65b2eda5b8eddf6bbb7f0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ab0c10b2eeaa4388ef9b4dab90b99b37fa32df74
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Klassifizieren von Iris, Teil 3: Bereitstellen eines Modells
 Bei Azure Machine Learning-Diensten (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -198,7 +198,7 @@ Sie können nun den Echtzeit-Webdienst erstellen.
    * `-n`: Der App-Name, der nur Kleinbuchstaben enthalten darf.
    * `-f`: Der Dateiname des Bewertungsskripts.
    * `--model-file`: Die Modelldatei. In diesem Fall ist dies die pickle-Datei „model.pkl“.
-   * `-r`: Der Typ des Modells. In diesem Fall ist es ein Python-Modell.
+   * `-r`: Die Runtime des Modells. In diesem Fall ist es ein Python-Modell. Gültige Runtimes sind `python` und `spark-py`.
    * `--collect-model-data true`: Dient zum Aktivieren der Datensammlung.
    * `-c`: Pfad zur Datei mit den Conda-Abhängigkeiten, in der zusätzliche Pakete angegeben werden
 
@@ -281,7 +281,7 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
    az ml service keys realtime -i <web service ID>
    ```
 
-## <a name="view-the-collected-data-in-azure-blob-storage"></a>Anzeigen der gesammelten Daten im Azure-Blobspeicher
+## <a name="view-the-collected-data-in-azure-blob-storage"></a>Anzeigen der gesammelten Daten in Azure Blob Storage
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -308,7 +308,7 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
    /modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv
    ```
 
-6. Sie können diese Daten über den Azure-Blobspeicher nutzen. Hierfür gibt es viele verschiedene Tools (Microsoft-Software und Open-Source-Tools). Beispiele:
+6. Sie können diese Daten über Azure Blob Storage nutzen. Hierfür gibt es viele verschiedene Tools (Microsoft-Software und Open-Source-Tools). Beispiele:
 
    - Azure Machine Learning: Öffnen Sie die CSV-Datei, indem Sie die CSV-Datei als Datenquelle hinzufügen. 
    - Excel: Öffnen Sie die täglichen CSV-Dateien als Tabelle.

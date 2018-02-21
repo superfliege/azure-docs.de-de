@@ -3,7 +3,7 @@ title: "DNS Analytics-Lösung in Azure Log Analytics | Microsoft-Dokumentation"
 description: "Richten Sie die DNS Analytics-Lösung in Log Analytics ein, und verwenden Sie sie, um Erkenntnisse über die DNS-Infrastruktur hinsichtlich Sicherheit, Leistung und Betrieb zu sammeln."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
-ms.author: banders
-ms.openlocfilehash: 8f83d019c0168aa5abbf3211b4a599f631e9f426
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.author: magoedte
+ms.openlocfilehash: 8ead058108f39eca8682eccc296760d4b756d336
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -43,9 +43,9 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 | **Verbundene Quelle** | **Unterstützung** | **Beschreibung** |
 | --- | --- | --- |
 | [Windows-Agents](log-analytics-windows-agent.md) | Ja | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
-| [Linux-Agents](log-analytics-linux-agents.md) | Nein | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
+| [Linux-Agents](log-analytics-linux-agents.md) | Nein  | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
 | [System Center Operations Manager-Verwaltungsgruppe](log-analytics-om-agents.md) | Ja | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung des Operations Manager-Agents mit der Operations Management Suite erforderlich. Daten werden von der Verwaltungsgruppe an das Operations Management Suite-Repository weitergeleitet. |
-| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein | Azure-Speicher wird von der Lösung nicht verwendet. |
+| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Azure-Speicher wird von der Lösung nicht verwendet. |
 
 ### <a name="data-collection-details"></a>Details zur Datensammlung
 
@@ -145,7 +145,7 @@ Mit den Informationen können Sie Folgendes identifizieren:
 
 **DDI Analytics-Beispielabfragen**. Enthält eine Liste der am häufigsten verwendeten Suchabfragen, mit denen unformatierte Analysedaten direkt abgerufen werden.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Beispielabfragen](./media/log-analytics-dns/queries.png)
 

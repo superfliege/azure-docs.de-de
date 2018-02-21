@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 10/08/2017
+ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c7d74395b1c8b386ce190906aa5b63b48c1bb1bf
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 80b5055dee35cd6efe62ee949c05aef386a3ba14
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-an-azure-container-registry-using-powershell"></a>Erstellen einer Azure Container Registry-Instanz mit PowerShell
 
@@ -21,7 +21,7 @@ Azure Container Registry ist ein verwalteter Docker-Containerregistrierungsdiens
 
 Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
-Darüber hinaus muss Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac](https://docs.docker.com/docker-for-mac/)-, [Windows](https://docs.docker.com/docker-for-windows/)- oder [Linux](https://docs.docker.com/engine/installation/#supported-platforms)-System konfiguriert werden kann.
+Darüber hinaus muss Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac-][docker-mac], [Windows-][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -57,13 +57,13 @@ Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müss
 $creds = Get-AzureRmContainerRegistryCredential -Registry $registry
 ```
 
-Verwenden Sie anschließend den Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/), um sich bei der ACR-Instanz anzumelden.
+Verwenden Sie anschließend den Befehl [docker login][docker-login], um sich bei der ACR-Instanz anzumelden.
 
 ```bash
 docker login $registry.LoginServer -u $creds.Username -p $creds.Password
 ```
 
-Nach Abschluss des Vorgangs wird eine Erfolgsmeldung zurückgegeben.
+Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück. Möglicherweise wird auch eine Sicherheitswarnung angezeigt, in der die Verwendung des `--password-stdin`-Parameters empfohlen wird. Obwohl in diesem Artikel nicht auf dessen Verwendung eingegangen werden kann, wird empfohlen, diese bewährte Methode anzuwenden. Weitere Informationen zum Befehl [docker login][docker-login] finden Sie in der entsprechenden Referenzdokumentation.
 
 ## <a name="push-image-to-acr"></a>Übertragen eines Images an ACR mithilfe von Push
 
@@ -79,13 +79,13 @@ Das Image muss mit dem ACR-Anmeldeservernamen gekennzeichnet sein. Führen Sie d
 Get-AzureRmContainerRegistry | Select Loginserver
 ```
 
-Markieren Sie das Image mithilfe des Befehls [docker tag](https://docs.docker.com/engine/reference/commandline/tag/). Ersetzen Sie *acrLoginServer* durch den Anmeldeservernamen Ihrer ACR-Instanz.
+Markieren Sie das Image mithilfe des Befehls [docker tag][docker-tag]. Ersetzen Sie *acrLoginServer* durch den Anmeldeservernamen Ihrer ACR-Instanz.
 
 ```bash
 docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
 ```
 
-Nun können Sie die Images mithilfe von [docker push](https://docs.docker.com/engine/reference/commandline/push/) an die ACR-Instanz übertragen. Ersetzen Sie *acrLoginServer* durch den Anmeldeservernamen Ihrer ACR-Instanz.
+Nun können Sie die Images mithilfe von [docker push][docker-push] an die ACR-Instanz übertragen. Ersetzen Sie *acrLoginServer* durch den Anmeldeservernamen Ihrer ACR-Instanz.
 
 ```bash
 docker push <acrLoginServer>/aci-helloworld:v1
@@ -105,3 +105,11 @@ In dieser Schnellstartanleitung haben Sie eine Azure Container Registry-Instanz 
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances-Tutorial](../container-instances/container-instances-tutorial-prepare-app.md)
+
+<!-- LINKS - external -->
+[docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[docker-windows]: https://docs.docker.com/docker-for-windows/

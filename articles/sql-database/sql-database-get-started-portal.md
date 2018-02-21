@@ -14,13 +14,13 @@ ms.workload: Active
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/29/2018
-ms.author: ninarn
-ms.openlocfilehash: 63a16df5f36bba4ffb97529100b878f0a1591127
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 02/12/2018
+ms.author: carlrab
+ms.openlocfilehash: 7a57593825f816a03b59f6c5228243670f1e9e9e
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Erstellen einer Azure SQL-Datenbank im Azure-Portal
 
@@ -81,10 +81,10 @@ Führen Sie diese Schritte aus, um eine SQL-Datenbank mit den Adventure Works LT
    > [!IMPORTANT]
    > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/).
    >
-   >\* Im Premium-Tarif steht derzeit in folgenden Regionen eine Speicherkapazität von mehr als 1 TB zur Verfügung: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* Im Premium-Tarif ist derzeit eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    >
 
-7. Wählen Sie in diesem Schnellstarttutorial die Dienstebene **Standard**, und wählen Sie dann mit dem Schieberegler **100 DTUs (S3)** und **400** GB Speicher aus.
+7. Wählen Sie in diesem Schnellstarttutorial die Dienstebene **Standard**, und wählen Sie dann mit dem Schieberegler **10 DTUs (S0)** und **1** GB Speicher aus.
 
    ![Datenbankerstellung s1](./media/sql-database-get-started-portal/create-database-s1.png)
 
@@ -93,7 +93,7 @@ Führen Sie diese Schritte aus, um eine SQL-Datenbank mit den Adventure Works LT
    > [!IMPORTANT]
    > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/).
    >
-   >\* Im Premium-Tarif steht derzeit in folgenden Regionen eine Speicherkapazität von mehr als 1 TB zur Verfügung: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* Im Premium-Tarif ist derzeit eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    >
 
 9. Klicken Sie auf **Übernehmen**, wenn Sie die Dienstebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  
@@ -138,17 +138,13 @@ Sie können für diese IP-Adresse jetzt eine Verbindung mit dem SQL-Datenbankser
 
 Nachdem Sie nun eine Beispieldatenbank in Azure erstellt haben, können Sie das integrierte Abfragetool im Azure-Portal verwenden, um sich zu vergewissern, dass Sie eine Verbindung mit der Datenbank herstellen und die Daten abfragen können.
 
-1. Suchen Sie auf der SQL-Datenbankseite für Ihre Datenbank im linken Menü nach **Daten-Explorer (Vorschau)**, und klicken Sie darauf.
+1. Klicken Sie auf der Seite „SQL-Datenbank“ für Ihre Datenbank im Menü auf der linken Seite auf **Abfrage-Editor (Vorschau)** und dann auf **Anmelden**.
 
-   ![Suchen des Abfrage-Editors](./media/sql-database-get-started-portal/find-query-editor.PNG)
+   ![Anmeldung](./media/sql-database-get-started-portal/query-editor-login.png)
 
-2. Klicken Sie auf **Anmelden**, überprüfen Sie die Anmeldeinformationen, und klicken Sie dann auf **OK**, um sich über die SQL Server-Authentifizierung mit den zuvor erstellten Serveradministrator-Anmeldedaten anzumelden.
+2. Wählen Sie die SQL Server-Authentifizierung aus, geben Sie die erforderlichen Anmeldeinformationen an, und klicken Sie dann auf **OK**, um sich anzumelden.
 
-   ![Anmeldung](./media/sql-database-get-started-portal/login-menu.png)
-
-3. Klicken Sie auf **OK**, um sich anzumelden.
-
-4. Geben Sie nach der Authentifizierung als **Serveradministrator** im Bereich für den Abfrage-Editor die folgende Abfrage ein:
+3. Geben Sie nach der Authentifizierung als **Serveradministrator** im Bereich für den Abfrage-Editor die folgende Abfrage ein:
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -157,11 +153,11 @@ Nachdem Sie nun eine Beispieldatenbank in Azure erstellt haben, können Sie das 
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-5. Klicken Sie auf **Ausführen**, und sehen Sie sich die Abfrageergebnisse im Bereich **Ergebnisse** an.
+4. Klicken Sie auf **Ausführen**, und sehen Sie sich die Abfrageergebnisse im Bereich **Ergebnisse** an.
 
    ![Abfrage-Editor – Ergebnisse](./media/sql-database-get-started-portal/query-editor-results.png)
 
-6. Schließen Sie die Seite **Daten-Explorer**, und klicken Sie auf **OK**, um Ihre nicht gespeicherten Änderungen zu verwerfen.
+5. Schließen Sie die Seite **Daten-Explorer**, und klicken Sie auf **OK**, um Ihre nicht gespeicherten Änderungen zu verwerfen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

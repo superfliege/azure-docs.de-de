@@ -9,19 +9,19 @@ manager: jhubbard
 editor: 
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
-ms.custom: overview, mvc
+ms.custom: overview
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 12/13/2017
+ms.date: 02/12/2018
 ms.workload: Active
 ms.author: carlrab
 ms.reviewer: carlrab
-ms.openlocfilehash: 7e487ac4b11e4b323cfaed5492c7603776cc98bb
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: f1aff50a97114ea7e221b4461e375d763a161fa6
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
 
@@ -31,6 +31,9 @@ SQL-Datenbank nutzt diese Codebasis gemeinsam mit der [Microsoft SQL Server-Date
 
 - **[Azure-Roadmap für SQL-Datenbank:](https://azure.microsoft.com/roadmap/?category=databases)** Hier können Sie herausfinden, welche neuen Funktionen bereitstehen und was als Nächstes geplant ist. 
 - **[Azure SQL-Datenbank-Blog:](https://azure.microsoft.com/blog/topics/database)** Hier schreiben die Teammitglieder von SQL Server-Produkten Beiträge zu News und Features von SQL-Datenbank. 
+
+> [!IMPORTANT]
+> Informationen zu den Funktionsunterschieden zwischen SQL-Datenbank und SQL Server finden Sie unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md). 
 
 SQL-Datenbank bietet eine vorhersagbare Leistung mit mehreren Serviceleveln, die eine dynamische Skalierung ohne Ausfallzeit, integrierte intelligente Optimierung, globale Skalierbarkeit und Verfügbarkeit sowie erweiterte Sicherheitsoptionen bieten – alles mit nahezu keinem Verwaltungsaufwand. Mit diesen Funktionen können Sie sich auf die schnelle Entwicklung von Apps und die Verkürzung des Zeitraums bis zur Markteinführung konzentrieren, anstatt wertvolle Zeit und Ressourcen für die Verwaltung von virtuellen Computern und der Infrastruktur aufwenden zu müssen. Der SQL-Datenbank-Dienst wird derzeit in 38 Rechenzentren auf der ganzen Welt ausgeführt – und regelmäßig werden neue online geschaltet. Dies ermöglicht die Ausführung Ihrer Datenbank in einem Rechenzentrum in Ihrer Nähe.
 
@@ -44,7 +47,7 @@ Bei SQL-Datenbank ist jede Datenbank von den anderen isoliert und damit portabel
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>Anpassen von Leistung und Skalierung ohne Ausfallzeiten
 
-SQL-Datenbank bietet vier Dienstebenen zur Unterstützung von geringeren und aufwendigeren Datenbank-Workloads: Basic, Standard, Premium und Premium RS. Sie können zu geringen monatlichen Kosten Ihre erste App in einer kleinen Einzeldatenbank erstellen und dann manuell oder programmgesteuert jederzeit die Dienstebene (Tarif) ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
+SQL-Datenbank bietet drei Dienstebenen zur Unterstützung von geringeren und aufwändigeren Datenbank-Workloads: Basic, Standard und Premium. Sie können zu geringen monatlichen Kosten Ihre erste App in einer kleinen Einzeldatenbank erstellen und dann manuell oder programmgesteuert jederzeit die Dienstebene (Tarif) ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
 
    ![Skalieren](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 

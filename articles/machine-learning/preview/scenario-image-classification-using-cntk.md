@@ -11,11 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 53d182d84c8f28c7b4055780a5b41df00fdc8583
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c3ad1cf8651858a2cb1fdadc2beed4e5c7bef56c
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Bildklassifizierung per Azure Machine Learning Workbench
 
@@ -193,7 +193,7 @@ Abschließend wird das Notebook `showResults.py` bereitgestellt, um durch die Te
 ### <a name="step-6-deployment"></a>Schritt 6: Bereitstellung
 `Scripts: 6_callWebservice.py, deploymain.py. Notebook: deploy.ipynb`
 
-Das trainierte System kann jetzt als REST-API veröffentlicht werden. Die Bereitstellung wird im Notebook `deploy.ipynb` erläutert und basiert auf Funktionalität in der Azure Machine Learning Workbench (beachten Sie, den lokalen Projektkernel mit dem Namen „PROJEKTNAME local“ als Kernel festzulegen). Lesen Sie auch den hervorragenden Abschnitt zur Bereitstellung im [Iris-Tutorial](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3), um weitere Informationen zur Bereitstellung zu erhalten.
+Das trainierte System kann jetzt als REST-API veröffentlicht werden. Die Bereitstellung wird im Notebook `deploy.ipynb` erläutert und basiert auf Funktionalität in der Azure Machine Learning Workbench (beachten Sie, den lokalen Projektkernel mit dem Namen „PROJEKTNAME local“ als Kernel festzulegen). Lesen Sie auch den hervorragenden Abschnitt zur Bereitstellung im [Iris-Tutorial](tutorial-classifying-iris-part-3.md), um weitere Informationen zur Bereitstellung zu erhalten.
 
 Nach der Bereitstellung kann der Webdienst mit dem Skript `6_callWebservice.py` aufgerufen werden. Beachten Sie, dass die IP-Adresse des Webdiensts (entweder lokal oder in der Cloud) zuerst im Skript festgelegt werden muss. Im Notebook `deploy.ipynb` wird beschrieben, wie Sie diese IP-Adresse finden.
 
@@ -228,7 +228,7 @@ Wie in der folgenden Abbildung dargestellt, beträgt die Genauigkeit bei Verwend
 
 ### <a name="run-history-tracking"></a>Nachverfolgen des Ausführungsverlaufs
 
-In Azure Machine Learning Workbench wird der Verlauf jeder Ausführung in Azure gespeichert, um auch dann einen Vergleich von zwei oder mehr Ausführungen zu ermöglichen, wenn diese mehrere Wochen auseinander liegen. Dies wird im [Iris-Tutorial](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-2) ausführlich beschrieben. Dies ist auch in den folgenden Screenshots dargestellt, in denen zwei Ausführungen des Skripts `5_evaluate.py` verglichen werden, indem entweder die DNN-Optimierung (`classifier = "dnn"` (Ausführungsnummer 148)) oder SVM-Training (`classifier = "svm"` (Ausführungsnummer 150)) verwendet wird.
+In Azure Machine Learning Workbench wird der Verlauf jeder Ausführung in Azure gespeichert, um auch dann einen Vergleich von zwei oder mehr Ausführungen zu ermöglichen, wenn diese mehrere Wochen auseinander liegen. Dies wird im [Iris-Tutorial](tutorial-classifying-iris-part-2.md) ausführlich beschrieben. Dies ist auch in den folgenden Screenshots dargestellt, in denen zwei Ausführungen des Skripts `5_evaluate.py` verglichen werden, indem entweder die DNN-Optimierung (`classifier = "dnn"` (Ausführungsnummer 148)) oder SVM-Training (`classifier = "svm"` (Ausführungsnummer 150)) verwendet wird.
 
 Im ersten Screenshot führt die DNN-Optimierung zu besseren Genauigkeiten als das SVM-Training für alle Klassen. Im zweiten Screenshot sind alle Metriken dargestellt, die nachverfolgt werden, z.B. die Art der Klassifizierung. Diese Nachverfolgung erfolgt im Skript `5_evaluate.py`, indem die Azure Machine Learning Workbench-Protokollierung aufgerufen wird. Außerdem speichert das Skript die ROC-Kurve und die Konfusionsmatrix im Ordner *outputs*. Der Ordner *outputs* ist ein besonderer Ordner, da sein Inhalt auch von der Workbench-Verlaufsfunktion nachverfolgt wird. Daher kann unabhängig davon, ob lokale Kopien überschrieben wurden, jederzeit auf die Ausgabedateien zugegriffen werden.
 

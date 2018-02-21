@@ -52,18 +52,6 @@ sql-database-single-database-resources.md
 | Max. gleichzeitige Sitzungen | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-### <a name="premium-rs-service-tier"></a>Premium RS-Dienstebene 
-| **Leistungsstufe** | **PRS1** | **PRS2** | **PRS4** | **PRS6** |
-| :--- |---:|---:|---:|---:|---:|---:|
-| Max. DTU-Anzahl | 125 | 250 | 500 | 1000 |
-| Inbegriffener Speicher (GB) | 500 | 500 | 500 | 500 |
-| Max. Speicherlösungen (GB)* | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 |
-| Max. In-Memory-OLTP-Speicher (GB) | 1 | 2 | 4 | 8 |
-| Max. gleichzeitige Worker (Anforderungen)| 200 | 400 | 800 | 1600 |
-| Maximale Anzahl gleichzeitiger Anmeldungen | 200 | 400 | 800 | 1600 |
-| Max. gleichzeitige Sitzungen | 30000 | 30000 | 30000 | 30000 |
-|||||||
-
 > [!IMPORTANT]
 > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
 >

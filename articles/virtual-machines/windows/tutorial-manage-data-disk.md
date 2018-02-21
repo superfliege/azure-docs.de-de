@@ -3,24 +3,24 @@ title: "Verwalten von Azure-Datenträgern mit Azure PowerShell | Microsoft-Dokum
 description: "Tutorial: Verwalten von Azure-Datenträgern mit Azure PowerShell"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/02/2017
-ms.author: nepeters
+ms.date: 02/09/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 58c8ba2682cc9cc8f2089d2a70cc95a03079832e
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: ea38fe599960db42c518603b59a60a920d1f1daf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="manage-azure-disks-with-powershell"></a>Verwalten von Azure-Datenträgern mit PowerShell
 
@@ -35,7 +35,7 @@ Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystem
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
 
@@ -47,29 +47,29 @@ Beim Erstellen eines virtuellen Azure-Computers werden zwei Datenträger automat
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
 
-| Typ | Größe des virtuellen Computers | Max. Größe des temporären Datenträgers (GB) |
+| Typ | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
 |----|----|----|
-| [Allgemeiner Zweck](sizes-general.md) | A- und D-Serie | 800 |
-| [Computeoptimiert](sizes-compute.md) | F-Serie | 800 |
-| [Arbeitsspeicheroptimiert](../virtual-machines-windows-sizes-memory.md) | D- und G-Serie | 6.144 |
-| [Speicheroptimiert](../virtual-machines-windows-sizes-storage.md) | L-Serie | 5.630 |
+| [Allgemeiner Zweck](sizes-general.md) | A-, B- und D-Serie | 1600 |
+| [Computeoptimiert](sizes-compute.md) | F-Serie | 576 |
+| [Arbeitsspeicheroptimiert](sizes-memory.md) | D-, E-, G- und M-Serie | 6.144 |
+| [Speicheroptimiert](sizes-storage.md) | L-Serie | 5.630 |
 | [GPU](sizes-gpu.md) | N-Serie | 1.440 |
 | [Hohe Leistung](sizes-hpc.md) | A- und H-Serie | 2000 |
 
 ## <a name="azure-data-disks"></a>Azure-Datenträger
 
-Zum Installieren von Anwendungen und zum Speichern von Daten können weitere Datenträger hinzugefügt werden. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger hat eine maximale Kapazität von 1 TB. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die an den virtuellen Computer angefügt werden können. Für jede vCPU eines virtuellen Computers können zwei Datenträger angefügt werden. 
+Zum Installieren von Anwendungen und zum Speichern von Daten können weitere Datenträger hinzugefügt werden. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger hat eine maximale Kapazität von 4 TB. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die an den virtuellen Computer angefügt werden können. Für jede vCPU eines virtuellen Computers können zwei Datenträger angefügt werden. 
 
 ### <a name="max-data-disks-per-vm"></a>Max. Anzahl der Datenträger pro virtuellem Computer
 
-| Typ | Größe des virtuellen Computers | Max. Anzahl der Datenträger pro virtuellem Computer |
+| Typ | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
 |----|----|----|
-| [Allgemeiner Zweck](sizes-general.md) | A- und D-Serie | 32 |
-| [Computeoptimiert](sizes-compute.md) | F-Serie | 32 |
-| [Arbeitsspeicheroptimiert](../virtual-machines-windows-sizes-memory.md) | D- und G-Serie | 64 |
-| [Speicheroptimiert](../virtual-machines-windows-sizes-storage.md) | L-Serie | 64 |
-| [GPU](sizes-gpu.md) | N-Serie | 48 |
-| [Hohe Leistung](sizes-hpc.md) | A- und H-Serie | 32 |
+| [Allgemeiner Zweck](sizes-general.md) | A-, B- und D-Serie | 64 |
+| [Computeoptimiert](sizes-compute.md) | F-Serie | 64 |
+| [Arbeitsspeicheroptimiert](sizes-memory.md) | D-, E-, G- und M-Serie | 64 |
+| [Speicheroptimiert](sizes-storage.md) | L-Serie | 64 |
+| [GPU](sizes-gpu.md) | N-Serie | 64 |
+| [Hohe Leistung](sizes-hpc.md) | A- und H-Serie | 64 |
 
 ## <a name="vm-disk-types"></a>VM-Datenträgertypen
 
@@ -81,50 +81,84 @@ Standardspeicher basiert auf Festplatten und stellt eine kostengünstige, perfor
 
 ### <a name="premium-disk"></a>Premium-Datenträger
 
-Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS- und FS-Serie. Premium-Datenträger gibt es in fünf Varianten (P10, P20, P30, P40, P50). Der Datenträgertyp wird durch die Größe des Datenträgers vorgegeben. Bei der Auswahl einer Datenträgergröße wird der Wert auf den nächsten Datenträgertyp aufgerundet. Wenn die Größe beispielsweise unter 128 GB liegt, wird der Datenträgertyp P10 verwendet, bei einer Größe zwischen 129 und 512 GB der Datenträgertyp P20, bei 512 GB der Datenträgertyp P30, bei 2 TB der Datenträgertyp P40 und bei 4 TB der Datenträgertyp P50. 
+Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS- und FS-Serie. Premium-Datenträger gibt es in fünf Varianten (P10, P20, P30, P40, P50). Der Datenträgertyp wird durch die Größe des Datenträgers vorgegeben. Bei der Auswahl einer Datenträgergröße wird der Wert auf den nächsten Datenträgertyp aufgerundet. Wenn die Größe beispielsweise unterhalb von 128 GB liegt, lautet der Datenträgertyp P10, und bei einer Größe zwischen 129 GB und 512 GB lautet der Datenträgertyp P20.
 
 ### <a name="premium-disk-performance"></a>Leistung von Premium-Datenträgern
 
-|Storage Premium-Datenträgertyp | P10 | P20 | P30 |
-| --- | --- | --- | --- |
-| Datenträgergröße (aufgerundet) | 128 GB | 512 GB | 1.024 GB (1 TB) |
-| IOPS pro Datenträger | 500 | 2.300 | 5.000 |
-Durchsatz pro Datenträger | 100 MB/s | 150 MB/s | 200 MB/s |
+|Storage Premium-Datenträgertyp | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Datenträgergröße (aufgerundet) | 32 GB | 64 GB | 128 GB | 512 GB | 1.024GB (1TB) | 2.048 GB (2 TB) | 4.095 GB (4 TB) |
+| Max. IOPS pro Datenträger | 120 | 240 | 500 | 2.300 | 5.000 | 7.500 | 7.500 |
+Durchsatz pro Datenträger | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
 In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. An einen virtuellen Standard_GS5-Computer können beispielsweise 64 Datenträger angefügt werden. Wenn jeder dieser Datenträger die Größe des Typs P30 aufweisen, kann eine maximale Größe von 80.000 IOPS erreicht werden. Ausführliche Informationen zur maximalen IOPS-Anzahl pro VM finden Sie unter [Größen für virtuelle Windows-Computer in Azure](./sizes.md).
 
 ## <a name="create-and-attach-disks"></a>Erstellen und Anfügen von Datenträgern
 
-Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein. Gegebenenfalls können Sie mit diesem [Beispielskript](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) einen virtuellen Computer erstellen. Ersetzen Sie beim Durcharbeiten des Tutorials bei Bedarf den Namen der Ressourcengruppe und des virtuellen Computers.
+Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein. Erstellen Sie, falls erforderlich, mit den folgenden Befehlen einen virtuellen Computer.
+
+Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort für das Administratorkonto auf dem virtuellen Computer fest:
+
+```azurepowershell-interactive
+$cred = Get-Credential
+```
+
+Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) den virtuellen Computer.
+
+```azurepowershell-interactive
+New-AzureRmVm `
+    -ResourceGroupName "myResourceGroupDisk" `
+    -Name "myVM" `
+    -Location "East US" `
+    -VirtualNetworkName "myVnet" `
+    -SubnetName "mySubnet" `
+    -SecurityGroupName "myNetworkSecurityGroup" `
+    -PublicIpAddressName "myPublicIpAddress" `
+    -Credential $cred `
+    -AsJob
+```
+
+Mit dem Parameter `-AsJob` wird die VM als Hintergrundaufgabe erstellt, sodass die PowerShell-Aufforderungen für Sie zurückgegeben werden. Sie können die Details von Hintergrundaufträgen mit dem `Job`-Cmdlet anzeigen.
 
 Erstellen Sie mit [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) die anfängliche Konfiguration. Im folgenden Beispiel wird ein Datenträger mit einer Größe von 128 GB erstellt.
 
 ```azurepowershell-interactive
-$diskConfig = New-AzureRmDiskConfig -Location EastUS -CreateOption Empty -DiskSizeGB 128
+$diskConfig = New-AzureRmDiskConfig `
+    -Location "EastUS" `
+    -CreateOption Empty `
+    -DiskSizeGB 128
 ```
 
 Erstellen Sie den Datenträger mit dem Befehl [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk).
 
 ```azurepowershell-interactive
-$dataDisk = New-AzureRmDisk -ResourceGroupName myResourceGroup -DiskName myDataDisk -Disk $diskConfig
+$dataDisk = New-AzureRmDisk `
+    -ResourceGroupName "myResourceGroupDisk" `
+    -DiskName "myDataDisk" `
+    -Disk $diskConfig
 ```
 
 Rufen Sie mit dem Befehl [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) den virtuellen Computer ab, den Sie dem Datenträger hinzufügen möchten.
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
+$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
 Fügen Sie mit dem Befehl [Add-AzureRmVMDataDisk](/powershell/module/azurerm.compute/add-azurermvmdatadisk) den Datenträger der Konfiguration des virtuellen Computers hinzu.
 
 ```azurepowershell-interactive
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name myDataDisk -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 1
+$vm = Add-AzureRmVMDataDisk `
+    -VM $vm `
+    -Name "myDataDisk" `
+    -CreateOption Attach `
+    -ManagedDiskId $dataDisk.Id `
+    -Lun 1
 ```
 
 Aktualisieren Sie den virtuellen Computer mit dem Befehl [Update-AzureRmVM](/powershell/module/azurerm.compute/add-azurermvmdatadisk).
 
 ```azurepowershell-interactive
-Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm
+Update-AzureRmVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
 ```
 
 ## <a name="prepare-data-disks"></a>Vorbereiten von Datenträgern
@@ -135,7 +169,7 @@ Nach dem Anfügen eines Datenträgers an den virtuellen Computer muss das Betrie
 
 Erstellen Sie eine RDP-Verbindung mit dem virtuellen Computer. Öffnen Sie PowerShell, und führen Sie das folgende Skript aus.
 
-```azurepowershell-interactive
+```azurepowershell
 Get-Disk | Where partitionstyle -eq 'raw' | `
 Initialize-Disk -PartitionStyle MBR -PassThru | `
 New-Partition -AssignDriveLetter -UseMaximumSize | `

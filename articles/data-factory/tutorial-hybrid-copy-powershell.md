@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 221af59c211cc6ce0471718908db1544ca2d75ed
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: a2abe0733f52c1e032a718fd8f870c3ec9686a41
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Tutorial: Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, mit der Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt. 
@@ -45,7 +45,7 @@ Wenn Sie nicht bereits ein Azure-Abonnement besitzen, können Sie ein [kostenlos
 ### <a name="azure-roles"></a>Azure-Rollen
 Damit Sie Data Factory-Instanzen erstellen können, muss dem Benutzerkonto, mit dem Sie sich bei Azure anmelden, die Rolle *Mitwirkender* oder *Besitzer* zugewiesen sein, oder es muss ein *Administrator* des Azure-Abonnements sein. 
 
-Wählen Sie im Azure-Portal in der oberen rechten Ecke Ihren Benutzernamen und dann **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. Beispielanweisungen zum Hinzufügen eines Benutzers zu einer Rolle finden Sie im Artikel [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](../billing/billing-add-change-azure-subscription-administrator.md).
+Wählen Sie im Azure-Portal in der oberen rechten Ecke Ihren Benutzernamen und dann **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. Eine Beispielanleitung zum Hinzufügen eines Benutzers zu einer Rolle finden Sie im Artikel [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](../billing/billing-add-change-azure-subscription-administrator.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 und 2017
 In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als *Quelldatenspeicher*. Die Pipeline in der in diesem Tutorial erstellten Data Factory kopiert Daten aus dieser lokalen SQL Server-Datenbank (Quelle) in Azure Blob Storage (Senke). Anschließend erstellen Sie eine Tabelle mit dem Namen **emp** in Ihrer SQL Server-Datenbank und fügen einige Einträge in die Tabelle ein. 
@@ -202,6 +202,9 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
 
 2. Erstellen Sie eine selbstgehostete Integration Runtime. 
 
+    ```powershell
+    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    ``` 
     Hier ist die Beispielausgabe:
 
     ```json
@@ -210,7 +213,7 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : onpremdf0914
     Name              : myonpremirsp0914
-    Description       :
+    Description       : selfhosted IR description
     ```
 
 3. Führen Sie den folgenden Befehl aus, um den Status der erstellten Integration Runtime abzurufen:
@@ -491,7 +494,7 @@ In diesem Schritt definieren Sie ein Dataset, das Daten in der SQL Server-Datenb
     ```
 
 ### <a name="create-a-dataset-for-azure-blob-storage-sink"></a>Erstellen eines Datasets für Azure Blob Storage (Senke)
-In diesem Schritt definieren Sie ein Dataset für Daten, die in Azure-Blobspeicher kopiert werden sollen. Das Dataset ist vom Typ „AzureBlob“. Es verweist auf den mit Azure Storage verknüpften Dienst, den Sie weiter oben in diesem Tutorial erstellt haben. 
+In diesem Schritt definieren Sie ein Dataset für Daten, die in Azure Blob Storage kopiert werden sollen. Das Dataset ist vom Typ „AzureBlob“. Es verweist auf den mit Azure Storage verknüpften Dienst, den Sie weiter oben in diesem Tutorial erstellt haben. 
 
 Der verknüpfte Dienst enthält die Verbindungsinformationen, die von der Data Factory zur Laufzeit zum Herstellen einer Verbindung mit Ihrem Azure-Speicherkonto verwendet werden. Dieses Dataset gibt den Ordner im Azure-Speicher an, in den die Daten aus der SQL Server-Datenbank kopiert werden. In diesem Tutorial lautet der Ordner *adftutorial/fromonprem*. Hierbei ist `adftutorial` der Blobcontainer und `fromonprem` der Ordner. 
 
@@ -667,7 +670,7 @@ Die Pipeline erstellt den Ausgabeordner *fromonprem* automatisch im Blobcontaine
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die Pipeline in diesem Beispiel kopiert Daten in einem Azure-Blobspeicher von einem Speicherort an einen anderen. Es wurde Folgendes vermittelt:
+Die Pipeline in diesem Beispiel kopiert Daten in Azure Blob Storage von einem Speicherort an einen anderen. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9925b29a60fc46e9ecc775ca132bd2365f64b15
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: c936518c3cc431bb74dcdfe7f967687d3dc71e42
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe der Azure CLI
 
@@ -41,9 +41,9 @@ Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie könn
 
 Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen Computer mit dem Namen *DNS01* und der statischen privaten IP-Adresse *192.168.1.101* zu erstellen, führen Sie die folgenden Schritte aus:
 
-1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an. 
+1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#az_login) bei einem Azure-Konto an. 
 
-2. Erstellen Sie mit dem Befehl [az network public-ip create](/cli/azure/network/public-ip#create) eine öffentliche IP-Adresse für den virtuellen Computer. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
+2. Erstellen Sie mit dem Befehl [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse für den virtuellen Computer. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
 
     > [!NOTE]
     > Möglicherweise benötigen Sie andere Werte für Ihre Argumente in diesem und den nachfolgenden Schritten. Dies ist von Ihrer Umgebung abhängig.
@@ -74,7 +74,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
    * `--name`: Name der öffentlichen IP-Adresse.
    * `--location`: Azure-Region, in der die öffentliche IP-Adresse erstellt werden soll.
 
-3. Führen Sie den Befehl [az network nic create](/cli/azure/network/nic#create) aus, um eine NIC mit statischer privater IP-Adresse zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. 
+3. Führen Sie den Befehl [az network nic create](/cli/azure/network/nic#az_network_nic_create) aus, um eine NIC mit statischer privater IP-Adresse zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. 
    
     ```azurecli
     az network nic create \
@@ -126,7 +126,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
     * `--vnet-name`: Der Name des VNet, in dem die Netzwerkkarte erstellt werden soll.
     * `--subnet`: Der Name des Subnetzes, in dem die Netzwerkkarte erstellt werden soll.
 
-4. Führen Sie den Befehl [azure vm create](/cli/azure/vm/nic#create) aus, um den virtuellen Computer unter Verwendung der zuvor erstellten öffentlichen IP-Adresse und Netzwerkkarte zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
+4. Führen Sie den Befehl [azure vm create](/cli/azure/vm/nic#az_vm_nic_create) aus, um den virtuellen Computer unter Verwendung der zuvor erstellten öffentlichen IP-Adresse und Netzwerkkarte zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
    
     ```azurecli
     az vm create \
@@ -154,7 +154,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
     }
     ```
    
-   Andere Parameter als die grundlegenden Parameter von [az vm create](/cli/azure/vm#create).
+   Andere Parameter als die grundlegenden Parameter von [az vm create](/cli/azure/vm#az_vm_create).
 
    * `--nics`: Name der NIC, mit der der virtuelle Computer verknüpft wird.
    

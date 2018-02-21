@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 659a791124eab002290ac0b7f0898cf1c06c2951
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 72ed9ecd7a4c8e846818f7a19ad25c566fa57f64
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
 
@@ -45,9 +45,9 @@ Sie können ein virtuelles Netzwerk per Resource Manager auch mit anderen Tools 
 
 Führen Sie die folgenden Schritte aus, um mit der Azure-Befehlszeilenschnittstelle ein virtuelles Netzwerk zu erstellen:
 
-1. Installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an.
+1. Installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#az_login) bei einem Azure-Konto an.
 
-2. Erstellen Sie eine Ressourcengruppe für Ihr VNET unter Verwendung des Befehls [az group create](/cli/azure/group#create) mit den Argumenten `--name` und `--location`:
+2. Erstellen Sie eine Ressourcengruppe für Ihr VNET unter Verwendung des Befehls [az group create](/cli/azure/group#az_group_create) mit den Argumenten `--name` und `--location`:
 
     ```azurecli
     az group create --name TestRG --location centralus

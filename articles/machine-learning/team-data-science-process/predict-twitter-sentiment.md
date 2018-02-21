@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: bradsev;
-ms.openlocfilehash: df1124ddb436f0cfeec8f4ed9728fa15278b9325
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 9bae3971f438659c121bfc18a23746a016e5ef97
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="predict-twitter-sentiment-with-word-embeddings-by-using-the-team-data-science-process"></a>Vorhersagen der Twitter-Stimmung mit Worteinbettungen unter Verwendung des Team Data Science-Prozesses
 
@@ -131,7 +131,7 @@ Der letzte Schritt besteht darin, das trainierte Modell zur Stimmungsvorhersage 
 
 ![Kubernetes-Dashboard](./media/predict-twitter-sentiment/kubernetes-dashboard.PNG)
 
-Weitere Informationen zum Operationalisierungsprozess finden Sie unter [Bereitstellen eines Machine Learning-Modells als Webdienst](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy).
+Weitere Informationen zum Operationalisierungsprozess finden Sie unter [Bereitstellen eines Machine Learning-Modells als Webdienst](../preview/model-management-service-deploy.md).
 
 ## <a name="conclusion"></a>Zusammenfassung
 
@@ -141,10 +141,10 @@ In diesem Artikel haben Sie erfahren, wie ein Worteinbettungsmodell unter Verwen
 ## <a name="references"></a>Referenzen
 
 * [Team Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
-* [Verwenden des Team Data Science-Prozesses (TDSP) in Azure Machine Learning](https://aka.ms/how-to-use-tdsp-in-aml)
+* [How to use Team Data Science Process (TDSP) in Azure Machine Learning (Verwenden von Team Data Science-Prozess (TDSP) in Azure Machine Learning)](https://aka.ms/how-to-use-tdsp-in-aml)
 * [TDSP-Projektvorlage für Azure Machine Learning](https://aka.ms/tdspamlgithubrepo)
-* [Azure Machine Learning Workbench](https://docs.microsoft.com/azure/machine-learning/preview/)
+* [Azure Machine Learning Workbench](../preview/index.yml):
 * [Datensatz zum Einkommen in den USA aus dem UCI ML-Repository](https://archive.ics.uci.edu/ml/datasets/adult)
-* [Erkennung von biomedizinischen Entitäten unter Verwendung der Team Data Science-Prozessvorlage (TDSP)](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition)
+* [Erkennung von biomedizinischen Entitäten unter Verwendung der Team Data Science-Prozessvorlage (TDSP)](../preview/scenario-tdsp-biomedical-recognition.md)
 * [Mikolov, Tomas, et al.: „Distributed representations of words and phrases and their compositionality. Advances in neural information processing systems“, 2013.](https://arxiv.org/abs/1310.4546)
 * [Tang, Duyu, et al.: „Learning Sentiment-Specific Word Embedding for Twitter Sentiment Classification“, ACL (1), 2014.](http://www.aclweb.org/anthology/P14-1146)

@@ -1,6 +1,6 @@
 ---
 title: Inkrementelles Kopieren einer Tabelle mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, die inkrementell Daten aus einer Azure SQL-Datenbank in einen Azure-Blobspeicher kopiert.
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, die inkrementell Daten aus Azure SQL-Datenbank in Azure Blob Storage kopiert.
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: ff26d3ae159320f8c726b37eb0c68e6c5f2c2cc3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: edde9d8c6fe070e5323cf63d222c7cd6a8983e8a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in einen Azure-Blobspeicher
-In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle einer Azure SQL-Datenbank in einen Azure-Blobspeicher geladen werden. 
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage
+In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage geladen werden. 
 
 
 > [!NOTE]
@@ -154,6 +154,7 @@ END
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
+1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
    ![Neu -> Data Factory](./media/tutorial-incremental-copy-portal/new-azure-data-factory-menu.png)
@@ -192,7 +193,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 3. Geben Sie im **Eigenschaftenfenster** auf der Seite **Allgemein** für die Pipeline den Namen **IncrementalCopyPipeline** ein. 
 
    ![Pipelinename](./media/tutorial-incremental-copy-portal/pipeline-name.png)
-4. Wir fügen die erste Lookup-Aktivität hinzu, um den alten Grenzwert abzurufen. Erweitern Sie in der Toolbox **Aktivitäten** die Option **SQL-Datenbank**, und ziehen Sie die **Lookup**-Aktivität in die Oberfläche des Pipeline-Designers. Ändern Sie den Namen der Aktivität in **LookupOldWaterMarkActivity**.
+4. Wir fügen die erste Lookup-Aktivität hinzu, um den alten Grenzwert abzurufen. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Ändern Sie den Namen der Aktivität in **LookupOldWaterMarkActivity**.
 
    ![Erste Lookup-Aktivität – Name](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
 5. Wechseln Sie zur Registerkarte **Einstellungen**, und klicken Sie unter **Source Dataset** (Quelldataset) auf **+ Neu**. In diesem Schritt erstellen Sie ein Dataset für Daten in der Tabelle **watermarktable**. Diese Tabelle enthält den alten Grenzwert, der für den vorherigen Kopiervorgang verwendet wurde. 
@@ -224,7 +225,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 11. Wechseln Sie zum Pipeline-Editor, indem Sie oben auf die Registerkarte „Pipeline“ oder in der Strukturansicht auf der linken Seite auf den Namen der Pipeline klicken. Vergewissern Sie sich im Eigenschaftenfenster für die **Lookup**-Aktivität, dass im Feld **Source Dataset** (Quelldataset) die Option **WatermarkDataset** ausgewählt ist. 
 
     ![Pipeline – Altes Grenzwertdataset](./media/tutorial-incremental-copy-portal/pipeline-old-watermark-dataset-selected.png)
-12. Erweitern Sie in der Toolbox **Aktivitäten** die Option **SQL-Datenbank**, und ziehen Sie eine weitere **Lookup**-Aktivität in die Oberfläche des Pipeline-Designers. Legen Sie den Namen im Eigenschaftenfenster auf der Registerkarte **Allgemein** auf **LookupNewWaterMarkActivity** fest. Mit dieser Lookup-Aktivität wird der neue Grenzwert aus der Tabelle mit den Quelldaten auf das Ziel kopiert. 
+12. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie eine weitere **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Legen Sie den Namen im Eigenschaftenfenster auf der Registerkarte **Allgemein** auf **LookupNewWaterMarkActivity** fest. Mit dieser Lookup-Aktivität wird der neue Grenzwert aus der Tabelle mit den Quelldaten auf das Ziel kopiert. 
 
     ![Zweite Lookup-Aktivität – Name](./media/tutorial-incremental-copy-portal/second-lookup-activity-name.png)
 13. Wechseln Sie im Eigenschaftenfenster für die zweite **Lookup**-Aktivität zur Registerkarte **Einstellungen**, und klicken Sie auf **Neu**. Sie erstellen ein Dataset zum Verweisen auf die Quelltabelle, die den neuen Grenzwert (maximaler Wert für LastModifyTime) enthält. 
@@ -295,7 +296,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 
         ![Senkendataset – Verbindungseinstellungen](./media/tutorial-incremental-copy-portal/sink-dataset-connection-settings.png)
 28. Wechseln Sie zum **Pipeline**-Editor, indem Sie oben auf die Registerkarte „Pipeline“ oder in der Strukturansicht auf der linken Seite auf den Namen der Pipeline klicken. 
-29. Erweitern Sie in der Toolbox **Aktivitäten** die Option **SQL-Datenbank**, und ziehen Sie die **Stored Procedure**-Aktivität aus der Toolbox **Aktivitäten** in die Oberfläche des Pipeline-Designers. **Verbinden** Sie die grüne Ausgabe (Erfolgreich) der **Copy**-Aktivität mit der **Stored Procedure**-Aktivität. 
+29. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Stored Procedure**-Aktivität aus der Toolbox **Aktivitäten** auf die Oberfläche des Pipeline-Designers. **Verbinden** Sie die grüne Ausgabe (Erfolgreich) der **Copy**-Aktivität mit der **Stored Procedure**-Aktivität. 
     
     ![Copy-Aktivität – Quelle](./media/tutorial-incremental-copy-portal/connect-copy-to-stored-procedure-activity.png)
 24. Wählen Sie im Pipeline-Designer die Option **Stored Procedure-Aktivität** aus, und ändern Sie den Namen in **StoredProceduretoWriteWatermarkActivity**. 
@@ -306,10 +307,10 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     ![Stored Procedure-Aktivität – SQL-Konto](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Wechseln Sie zur Registerkarte **Gespeicherte Prozedur**, und führen Sie die folgenden Schritte aus: 
 
-    1. Geben Sie **sp_write_watermark** als Name unter **Name der gespeicherten Prozedur** ein. 
-    2. Klicken Sie zum Angeben von Werten für die Parameter der gespeicherten Prozedur im Abschnitt **Parameter der gespeicherten Prozedur** auf **+ Neu**, und geben Sie die folgenden Werte ein: 
+    1. Wählen Sie unter **Name der gespeicherten Prozedur** die Option **sp_write_watermark**. 
+    2. Klicken Sie zum Angeben von Werten für die Parameter der gespeicherten Prozedur auf **Import parameter** (Importparameter), und geben Sie die folgenden Werte für die Parameter ein: 
 
-        | NAME | Typ | Wert | 
+        | Name | Typ | Wert | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Zeichenfolge | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -318,14 +319,15 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 27. Klicken Sie zum Überprüfen der Pipelineeinstellungen in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf >> klicken.   
 
     ![Überprüfen der Pipeline](./media/tutorial-incremental-copy-portal/validate-pipeline.png)
-28. Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Azure Data Factory-Dienst, indem Sie auf die Schaltfläche **Veröffentlichen** klicken. Warten Sie, bis eine Meldung angezeigt wird, dass die Veröffentlichung erfolgreich war. 
+28. Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Azure Data Factory-Dienst, indem Sie die Schaltfläche **Alle veröffentlichen** wählen. Warten Sie, bis eine Meldung angezeigt wird, dass die Veröffentlichung erfolgreich war. 
 
     ![Schaltfläche "Veröffentlichen"](./media/tutorial-incremental-copy-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Auslösen einer Pipelineausführung
-Klicken Sie auf der Symbolleiste auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
+1. Klicken Sie auf der Symbolleiste auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
 
-![Schaltfläche „Trigger Now“ (Jetzt auslösen)](./media/tutorial-incremental-copy-portal/trigger-now.png)
+    ![Schaltfläche „Trigger Now“ (Jetzt auslösen)](./media/tutorial-incremental-copy-portal/trigger-now.png)
+2. Wählen Sie im Fenster **Pipeline Run** (Pipelineausführung) die Option **Fertig stellen**. 
 
 ## <a name="monitor-the-pipeline-run"></a>Überwachen der Pipelineausführung
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 139b694b227834c48f213df328ed437d0f5ae18c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 840e1081d2e65de8f7aa3cd48aed8b24e622adb1
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="deploy-an-azure-app-service-app-by-using-visual-studio-2015"></a>Bereitstellen einer Azure App Service-App mit Visual Studio 2015
 Dieser Artikel beschreibt, wie Azure App Service-Apps (API-Apps, Web-Apps, mobile Apps) mithilfe von Visual Studio 2015 in Azure Deutschland bereitgestellt werden.
@@ -28,7 +28,7 @@ Dieser Artikel beschreibt, wie Azure App Service-Apps (API-Apps, Web-Apps, mobil
 * Konfigurieren Sie Visual Studio anhand [dieser Anweisungen](./germany-get-started-connect-with-vs.md) für das Herstellen einer Verbindung mit einem Azure Deutschland-Konto. 
 
 ## <a name="open-an-app-project-in-visual-studio"></a>Öffnen des App-Projekts in Visual Studio
-Öffnen Sie eine vorhandene App-Projektmappe oder ein Projekt in Visual Studio, oder [erstellen Sie ein Projekt](../app-service/app-service-web-get-started-dotnet.md#create-and-publish-the-web-app). Führen Sie die App dann in Visual Studio aus, um sicherzustellen, dass sie lokal funktioniert.
+Öffnen Sie eine vorhandene App-Projektmappe oder ein Projekt in Visual Studio, oder [erstellen Sie ein Projekt](../app-service/app-service-web-get-started-dotnet-framework.md#create-and-publish-the-web-app). Führen Sie die App dann in Visual Studio aus, um sicherzustellen, dass sie lokal funktioniert.
 
 ## <a name="deploy-to-azure-germany"></a>Bereitstellen in Azure Deutschland
 Nachdem Sie Visual Studio für das Herstellen der Verbindung mit Ihrem Azure Deutschland-Konto konfiguriert haben (was Sie bereits als Voraussetzung erledigt haben), können Sie zum Bereitstellen einer App Service-App genau so vorgehen, wie es in den entsprechenden [Anweisungen für die globale Azure-Umgebung](../app-service/app-service-web-get-started-dotnet.md) beschrieben ist.

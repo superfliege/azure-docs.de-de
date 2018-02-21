@@ -117,12 +117,11 @@
 ### [Analysieren Ihrer Workload](analyze-your-workload.md)
 
 ## Horizontales Skalieren
-### [Computeverwaltung – REST-API](sql-data-warehouse-manage-compute-rest-api.md)
+
 ### [Automatisieren von Computeebenen](manage-compute-with-azure-functions.md)
 
 
 # Verweis
-
 
 ## T-SQL
 ### [Vollständige Referenz](https://docs.microsoft.com/sql/t-sql/language-reference/)
@@ -130,6 +129,7 @@
 ### [SQL DW-Anweisungen](sql-data-warehouse-reference-tsql-statements.md)
 ## [Systemsichten](sql-data-warehouse-reference-tsql-system-views.md)
 ## [PowerShell-Cmdlets](sql-data-warehouse-reference-powershell-cmdlets.md)
+## [REST-APIs](sql-data-warehouse-manage-compute-rest-api.md)
 
 # angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=databases)

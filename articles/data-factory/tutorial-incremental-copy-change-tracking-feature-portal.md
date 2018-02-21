@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 93df74da6e9db1bd03885179cd3917205ab3b4ee
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ddc299d0a292ba17624aa3d0617e420a82f2abf3
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** aus der Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
@@ -151,6 +151,7 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
+1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
    ![Neu -> Data Factory](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory-menu.png)
@@ -360,7 +361,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
 2. Eine neue Registerkarte zum Konfigurieren der Pipeline wird angezeigt. Außerdem wird die Pipeline in der Strukturansicht angezeigt. Ändern Sie im **Eigenschaftenfenster** den Namen der Pipeline in **IncrementalCopyPipeline**.
 
     ![Pipelinename](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
-3. Erweitern Sie in der Toolbox **Aktivitäten** die Option **SQL-Datenbank**, und ziehen Sie die **Lookup**-Aktivität in die Oberfläche des Pipeline-Designers. Legen Sie den Namen der Aktivität auf **LookupLastChangeTrackingVersionActivity** fest. Mit dieser Aktivität wird die Version für die Änderungsnachverfolgung des letzten Kopiervorgangs abgerufen, die in der Tabelle **table_store_ChangeTracking_version** gespeichert ist.
+3. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Legen Sie den Namen der Aktivität auf **LookupLastChangeTrackingVersionActivity** fest. Mit dieser Aktivität wird die Version für die Änderungsnachverfolgung des letzten Kopiervorgangs abgerufen, die in der Tabelle **table_store_ChangeTracking_version** gespeichert ist.
 
     ![Lookup-Aktivität – Name](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
 4. Wechseln Sie im **Eigenschaftenfenster** zu **Einstellungen**, und wählen Sie im Feld **Source Dataset** (Quelldataset) die Option **ChangeTrackingDataset**. 
@@ -408,12 +409,13 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
     ![Stored Procedure-Aktivität – SQL-Konto](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. Wechseln Sie zur Registerkarte **Gespeicherte Prozedur**, und führen Sie die folgenden Schritte aus: 
 
-    1. Geben Sie unter **Name der gespeicherten Prozedur** den Namen **Update_ChangeTracking_Version** ein.  
-    2. Verwenden Sie im Abschnitt **Parameter der gespeicherten Prozedur** die Schaltfläche **+ Neu**, um die folgenden beiden Parameter hinzuzufügen:
+    1. Wählen Sie unter **Name der gespeicherten Prozedur** den Namen **Update_ChangeTracking_Version**.  
+    2. Wählen Sie die Option **Import parameter** (Importparameter). 
+    3. Geben Sie im Abschnitt **Parameter der gespeicherten Prozedur** die folgenden Werte für den Parameter an: 
 
-        | NAME | Typ | Wert | 
+        | Name | Typ | Wert | 
         | ---- | ---- | ----- | 
-        | CurrentTrackingVersion | INT64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
+        | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | Zeichenfolge | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![Stored Procedure-Aktivität – Parameter](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
@@ -423,14 +425,15 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
 15. Klicken Sie in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf **>>** klicken. 
 
     ![Schaltfläche „Überprüfen“](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
-16.  Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Data Factory-Dienst, indem Sie auf die Schaltfläche **Veröffentlichen** klicken. Warten Sie, bis die Meldung **Veröffentlichung erfolgreich** angezeigt wird. 
+16.  Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Data Factory-Dienst, indem Sie auf die Schaltfläche **Alle veröffentlichen** klicken. Warten Sie, bis die Meldung **Veröffentlichung erfolgreich** angezeigt wird. 
 
         ![Schaltfläche "Veröffentlichen"](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Ausführen der inkrementellen Kopierpipeline
-Klicken Sie auf der Symbolleiste der Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
+1. Klicken Sie auf der Symbolleiste der Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
 
-![Menü „Trigger Now“ (Jetzt auslösen)](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+    ![Menü „Trigger Now“ (Jetzt auslösen)](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+2. Wählen Sie im Fenster **Pipeline Run** (Pipelineausführung) die Option **Fertig stellen**.
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Überwachen der inkrementellen Kopierpipeline
 1. Klicken Sie links auf die Registerkarte **Überwachen**. Die Pipelineausführung wird in der Liste mit ihrem Status angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Mit den Links in der Spalte **Aktionen** können Sie Aktivitätsausführungen anzeigen, die der Pipelineausführung zugeordnet sind, und die Pipeline erneut ausführen. 

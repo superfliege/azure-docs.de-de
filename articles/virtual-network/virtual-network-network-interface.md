@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 9f1cf113f75bc5a96af8c33d4b83d1bd0f5c6efd
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: da29ecaaa0f694be3e96baebfd80c09069d7c4a8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -68,7 +68,7 @@ Das Portal stellt keine Option bereit, mit der Sie der Netzwerkschnittstelle bei
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_create)|
 |PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
 
 ## <a name="view-network-interface-settings"></a>Anzeigen der Einstellungen von Netzwerkschnittstellen
@@ -94,7 +94,7 @@ Wenn eine IPv6-Adresse einer Netzwerkschnittstelle zugewiesen ist, gibt die Powe
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#list): Anzeigen von im Abonnement enthaltenen Netzwerkschnittstellen; [az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#show): Anzeigen der Einstellungen für eine Netzwerkschnittstelle|
+|Befehlszeilenschnittstelle (CLI)|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_list): Anzeigen von im Abonnement enthaltenen Netzwerkschnittstellen; [az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_show): Anzeigen der Einstellungen für eine Netzwerkschnittstelle|
 |PowerShell|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json): Anzeigen von im Abonnement enthaltenen Netzwerkschnittstellen oder der Einstellungen für eine Netzwerkschnittstelle|
 
 ## <a name="change-dns-servers"></a>Ändern von DNS-Servern
@@ -114,7 +114,7 @@ Der DHCP-Server von Azure weist den DNS-Server der Netzwerkschnittstelle innerha
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_update)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>Aktivieren oder Deaktivieren der IP-Weiterleitung
@@ -136,7 +136,7 @@ Die Einstellung muss für jede Netzwerkschnittstelle aktiviert werden, die an de
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_update)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="change-subnet-assignment"></a>Ändern der Subnetzzuweisung
@@ -157,7 +157,7 @@ Sie können das Subnetz, aber nicht das virtuelle Netzwerk ändern, dem eine Net
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_ip_config_update)|
 |PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 
@@ -176,7 +176,7 @@ Wenn Sie eine Netzwerkschnittstelle löschen, werden alle ihr zugewiesenen MAC- 
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_delete)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="next-steps"></a>Nächste Schritte

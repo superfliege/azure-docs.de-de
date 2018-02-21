@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
+ms.date: 02/09/2018
 ms.author: yurid
-ms.openlocfilehash: 15257e6ee8744b11fd3965e365cf4fb0e1d429ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a89048b0d49d5b3715931285accafda2406ab969
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Sicherheitsplaybook in Azure Security Center (Vorschauversion)
 In diesem Dokument erfahren Sie, wie Sie mithilfe von Sicherheitsplaybooks in Azure Security Center auf sicherheitsbezogene Probleme reagieren können.
@@ -35,7 +35,7 @@ Gehen Sie wie folgt vor, um in Security Center ein neues Sicherheitsplaybook zu 
 1.  Öffnen Sie das Dashboard **Security Center**.
 2.  Klicken Sie im linken Bereich im Abschnitt **Automation & Orchestration** (Automatisierung und Orchestrierung) auf **Playbooks** (Vorschauversion).
 
-    ![Logik-App](./media/security-center-playbooks/security-center-playbooks-fig1.png)
+    ![Logik-App](./media/security-center-playbooks/security-center-playbooks-fig17.png)
  
 3. Klicken Sie auf der Seite **Security Center - Playbooks** (Vorschauversion) auf die Schaltfläche **Hinzufügen**.
 
@@ -64,7 +64,7 @@ Ein Sicherheitsplaybook kann in Security Center zur Orchestrierung, zur Erlangun
 1.  Öffnen Sie das Dashboard **Security Center**.
 2.  Klicken Sie im linken Bereich unter **Bedrohungserkennung** auf **Security incidents & alerts** (Sicherheitsvorfälle und -warnungen).
 
-    ![Warnungen](./media/security-center-playbooks/security-center-playbooks-fig6.png)
+    ![Alerts](./media/security-center-playbooks/security-center-playbooks-fig6.png)
 
 3.  Klicken Sie auf die Warnung, die Sie untersuchen möchten.
 4.  Klicken Sie im oberen Bereich der Warnungsseite auf die Schaltfläche **Playbooks ausführen**.

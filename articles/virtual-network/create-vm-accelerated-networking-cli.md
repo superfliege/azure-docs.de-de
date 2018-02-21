@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 908d81c363a556917d211e0bcc92188f849fb690
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: c051fec3369ef0d309ecf6c68b17272bb396eeec
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -68,9 +68,9 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
+Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#az_login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
 
-Erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
+Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location centralus
@@ -78,7 +78,7 @@ az group create --name myResourceGroup --location centralus
 
 Sie müssen eine unterstützte Linux-Region aus der Auflistung unter [Linux accelerated networking (Linux-Regionen mit beschleunigtem Netzwerkbetrieb)](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) auswählen.
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#create) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVnet* mit einem Subnetz erstellt:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVnet* mit einem Subnetz erstellt:
 
 ```azurecli
 az network vnet create \
@@ -90,7 +90,7 @@ az network vnet create \
 ```
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
-Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#create) eine Netzwerksicherheitsgruppe. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens *myNetworkSecurityGroup* erstellt:
+Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) eine Netzwerksicherheitsgruppe. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens *myNetworkSecurityGroup* erstellt:
 
 ```azurecli
 az network nsg create \
@@ -117,7 +117,7 @@ az network nsg rule create \
 
 ## <a name="create-a-network-interface-with-accelerated-networking"></a>Erstellen einer Netzwerkschnittstelle mit beschleunigtem Netzwerkbetrieb
 
-Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse. Wenn Sie nicht vorhaben, über das Internet auf den virtuellen Computer zuzugreifen, ist eine öffentliche IP-Adresse nicht erforderlich – diese wird jedoch für die Durchführung der Schritte in diesem Artikel benötigt.
+Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse. Wenn Sie nicht vorhaben, über das Internet auf den virtuellen Computer zuzugreifen, ist keine öffentliche IP-Adresse erforderlich – diese wird jedoch für die Durchführung der Schritte in diesem Artikel benötigt.
 
 ```azurecli
 az network public-ip create \
@@ -125,7 +125,7 @@ az network public-ip create \
     --resource-group myResourceGroup
 ```
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#create) eine Netzwerkschnittstelle mit aktiviertem beschleunigtem Netzwerkbetrieb. Im folgenden Beispiel wird eine Netzwerkschnittstelle mit dem Namen *myNic* im Subnetz *mySubnet* des virtuellen Netzwerks *myVnet* erstellt und die Netzwerksicherheitsgruppe  *myNetworkSecurityGroup* der Netzwerkschnittstelle zugeordnet:
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) eine Netzwerkschnittstelle mit aktiviertem beschleunigtem Netzwerkbetrieb. Im folgenden Beispiel wird eine Netzwerkschnittstelle mit dem Namen *myNic* im Subnetz *mySubnet* des virtuellen Netzwerks *myVnet* erstellt und die Netzwerksicherheitsgruppe  *myNetworkSecurityGroup* der Netzwerkschnittstelle zugeordnet:
 
 ```azurecli
 az network nic create \
@@ -141,7 +141,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nic"></a>Erstellen einer VM und Anfügen der NIC
 Geben Sie bei der Erstellung der VM mit `--nics` die NIC an, die Sie erstellt haben. Sie müssen eine Größe und Verteilung aus der Auflistung unter [Linux accelerated Networking (Linux-Regionen mit beschleunigtem Netzwerkbetrieb)](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) auswählen. 
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVM* mit dem UbuntuLTS-Image und einer Größe erstellt, die beschleunigten Netzwerkbetrieb unterstützt (*Standard_DS4_v2*):
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVM* mit dem UbuntuLTS-Image und einer Größe erstellt, die beschleunigten Netzwerkbetrieb unterstützt (*Standard_DS4_v2*):
 
 ```azurecli
 az vm create \

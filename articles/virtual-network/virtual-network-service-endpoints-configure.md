@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: e2242851d51dee56679231b9f34c8b474ba6578d
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: e705946dca839e6b8e11872ad5431f125b9fb41d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>Konfigurieren der Dienstendpunkte von virtuellen Netzwerken
 
@@ -230,7 +230,7 @@ Get-AzureRmVirtualNetwork -ResourceGroupName "myRG" -Name "myVNet" | Set-AzureRm
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Voraussetzungen für die Einrichtung:
-- Melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm. Weitere Informationen zur Protokollierung finden Sie unter [Get Started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Erste Schritte mit Azure CLI 2.0).
+- Melden Sie sich mit dem Befehl [az login](/cli/azure/#az_login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm. Weitere Informationen zur Protokollierung finden Sie unter [Get Started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Erste Schritte mit Azure CLI 2.0).
  - Das Konto muss über die [Berechtigungen](#provisioning) zum Erstellen eines virtuellen Netzwerks und Dienstendpunkts verfügen.
 
  Eine vollständige Liste mit Befehlen für virtuelle Netzwerke finden Sie auf der Seite mit den [Azure CLI-Befehlen für virtuelle Netzwerke](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest).

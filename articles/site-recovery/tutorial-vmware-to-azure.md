@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 01/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8acc8deff8b635c97e8722d65a728aebf0e49bb3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 3d9248d2501c7fea0492bad2687b6bdfb0b903e8
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
@@ -38,7 +38,7 @@ Bevor Sie beginnen, empfiehlt sich eine [Überprüfung der Architektur](concepts
 1. Klicken Sie unter **Recovery Services-Tresore** auf den Tresornamen, **ContosoVMVault**.
 2. Klicken Sie in **Erste Schritte** auf „Site Recovery“. Klicken Sie dann auf **Infrastruktur vorbereiten**.
 3. Wählen Sie in **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
-4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren? die Option **Nach Azure** aus.
+4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren?** die Option **Nach Azure** aus.
 5. Wählen Sie in **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere Hypervisor** aus. Klicken Sie dann auf **OK**.
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
@@ -68,19 +68,19 @@ Wenn Sie den Konfigurationsserver als hochverfügbaren virtuellen VMware-Compute
 
      ![OVF-Vorlage](./media/tutorial-vmware-to-azure/vcenter-wizard.png)
 
-3. Geben Sie unter **Quelle auswählen** den Speicherort der heruntergeladenen OVF-Vorlage an.
+3. Geben Sie in **Quelle auswählen** den Speicherort der heruntergeladenen OVF-Vorlage an.
 4. Klicken Sie in **Bewertungsdetails** auf **Weiter**.
-5. Übernehmen Sie unter **Name und Ordner auswählen** und **Konfiguration auswählen** die Standardeinstellungen.
+5. Übernehmen Sie in **Name und Ordner auswählen** und **Konfiguration auswählen** die Standardeinstellungen.
 6. Wählen Sie in **Speicher auswählen** unter **Select virtual disk format** (Format für virtuellen Datenträger auswählen) für eine optimale Leistung **Thick Provision Eager Zeroed** (Breite Bereitstellung gegen null) aus.
 4. Übernehmen Sie auf den übrigen Seiten des Assistenten die Standardeinstellungen.
 5. Unter **Bereit für den Abschluss**:
   - Wählen Sie zum Einrichten des virtuellen Computers mit den Standardeinstellungen **Power on after deployment** (Nach Bereitstellung einschalten) > **Fertig stellen** aus.
-  - Wenn Sie eine weitere Netzwerkschnittstelle hinzufügen möchten, deaktivieren Sie **Power on after deployment** (Nach Bereitstellung einschalten), und wählen Sie dann **Fertig stellen** aus. Standardmäßig wird die Konfigurationsservervorlage mit einer einzelnen NIC bereitgestellt, Sie können aber nach der Bereitstellung weitere NICs hinzufügen.
+  - Wenn Sie eine weitere Netzwerkschnittstelle hinzufügen möchten, deaktivieren Sie **Power on after deployment** (Nach Bereitstellung einschalten), und wählen Sie dann **Fertig stellen** aus. Standardmäßig wird die Konfigurationsservervorlage mit einer einzelnen NIC bereitgestellt, Sie können aber nach der Bereitstellung noch weitere NICs hinzufügen.
 
   
 ## <a name="add-an-additional-adapter"></a>Hinzufügen zusätzlicher Adapter
 
-Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, tun Sie dies, bevor Sie den Server im Tresor registrieren. Das Hinzufügen von zusätzlichen Adaptern nach der Registrierung wird nicht unterstützt.
+Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, führen Sie dies durch, bevor Sie den Server im Tresor registrieren. Das Hinzufügen von zusätzlichen Adaptern nach der Registrierung wird nicht unterstützt.
 
 1. Klicken Sie im vSphere-Client mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Einstellungen bearbeiten** aus.
 2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter**. Klicken Sie auf **Weiter**.
@@ -90,12 +90,12 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, tu
 
 ## <a name="register-the-configuration-server"></a>Registrieren des Konfigurationsservers 
 
-1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients ein.
-2. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren. Nehmen Sie den Lizenzvertrag an, und geben Sie ein Administratorkennwort an.
+1. Schalten Sie den virtuellen Computer über die Konsole des VMware vSphere-Clients an.
+2. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren. Nehmen den Lizenzvertrag an, und geben Sie ein Administratorkennwort an.
 3. Melden Sie sich nach Abschluss der Installation als Administrator auf dem virtuellen Computer an.
 4. Bei der ersten Anmeldung wird das Azure Site Recovery-Konfigurationstool gestartet.
 5. Geben Sie einen Namen an, der für die Registrierung des Konfigurationsservers mit Site Recovery verwendet wird. Klicken Sie auf **Weiter**.
-6. Das Tool überprüft, ob der virtuelle Computer eine Verbindung mit Azure herstellen kann. Klicken Sie nach dem Herstellen der Verbindung auf **Anmelden**, um sich bei Ihrem Azure-Abonnement anzumelden. Die Anmeldeinformationen müssen über Zugriff auf den Tresor verfügen, in dem Sie den Konfigurationsserver registrieren möchten.
+6. Das Tool überprüft, ob der virtuelle Computer eine Verbindung mit Azure herstellen kann. Klicken Sie, nachdem die Verbindung hergestellt wurde, auf **Anmelden**, um sich bei Ihrem Azure-Abonnement anzumelden. Die Anmeldeinformationen müssen über Zugriff auf den Tresor verfügen, in dem Sie den Konfigurationsserver registrieren möchten.
 7. Das Tool führt einige Konfigurationsaufgaben und anschließend einen Neustart durch.
 8. Melden Sie sich erneut auf dem Computer an. Der Assistent für die Konfigurationsserververwaltung wird automatisch gestartet.
 
@@ -103,12 +103,12 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, tu
 
 1. Wählen Sie im Assistenten für die Konfigurationsserververwaltung unter **Konnektivität einrichten** die NIC aus, die den Replikationsdatenverkehr empfängt. Klicken Sie anschließend auf **Speichern**. Sie können diese Einstellung nach der Konfiguration nicht mehr ändern.
 2. Wählen Sie unter **Recovery Services-Tresor auswählen** Ihr Azure-Abonnement, die zugehörige Ressourcengruppe und den Tresor aus.
-3. Akzeptieren Sie unter **Drittanbietersoftware installieren** den Lizenzvertrag, und klicken Sie auf **Herunterladen und installieren**, um MySQL Server zu installieren.
-4. Klicken Sie auf **VMware PowerLCI installieren**. Stellen Sie sicher, dass alle Browserfenster geschlossen sind, bevor Sie diesen Schritt ausführen. Klicken Sie anschließend auf **Weiter**.
-5. Unter **Anwendungskonfiguration überprüfen** werden die Voraussetzungen überprüft, bevor Sie fortfahren.
-6. Geben Sie in **vCenter-Server/vSphere ESXi-Server konfigurieren** den FQDN oder die IP-Adresse des vCenter-Servers oder vSphere-Hosts an, auf dem sich die virtuellen Computer befinden, die repliziert werden sollen. Geben Sie den Port, an dem der Server lauscht, sowie einen Anzeigenamen an, der für den VMware-Server im Tresor verwendet werden soll.
+3. Akzeptieren Sie unter **Drittanbieter-Software installieren** den Lizenzvertrag, und klicken Sie auf **Herunterladen und installieren**, um MySQL Server zu installieren.
+4. Klicken Sie auf **VMware PowerCLI installieren**. Stellen Sie sicher, dass alle Browserfenster geschlossen sind, bevor Sie diesen Schritt durchführen. Klicken Sie anschließend auf **Weiter**.
+5. In **Anwendungskonfiguration überprüfen** werden die Voraussetzungen überprüft, bevor Sie fortfahren.
+6. Geben Sie in **vCenter-Server/vSphere ESXi-Server konfigurieren** den FQDN oder die IP-Adresse des vCenter-Servers oder vSphere-Hosts an, auf dem sich die virtuellen Computer befinden, die repliziert werden sollen. Geben Sie den Port, an dem der Server lauscht, sowie einen Anzeigenamen, der für den VMware-Server im Tresor verwendet werden soll, an.
 7. Geben Sie die Anmeldeinformationen an, die der Konfigurationsserver zum Verbinden mit dem VMware-Server verwendet. Site Recovery verwendet diese Anmeldeinformationen für die automatische Erkennung von VMware-VMs, die für die Replikation verfügbar sind. Klicken Sie auf **Hinzufügen** und anschließend auf **Weiter**.
-8. Geben Sie in **Anmeldeinformationen für virtuelle Computer konfigurieren** den Benutzernamen und das Kennwort für die automatische Installation des Mobility Service auf Computern ein, wenn die Replikation aktiviert ist. Für Windows-Computer benötigt das Konto lokale Administratorrechte auf den Computern, die Sie replizieren möchten. Bei Linux geben Sie die Anmeldeinformationen für das root-Konto an.
+8. Geben Sie in **Anmeldeinformationen für virtuelle Computer konfigurieren** den Benutzernamen und das Kennwort an, die für die automatische Installation des Mobility Service auf Computern verwendet werden, wenn die Replikation aktiviert ist. Für Windows-Computer benötigt das Konto lokale Administratorrechte auf den Computern, die Sie replizieren möchten. Bei Linux geben Sie die Anmeldeinformationen für das root-Konto an.
 9. Klicken Sie auf **Konfiguration abschließen**, um die Registrierung abzuschließen. 
 10. Überprüfen Sie nach Abschluss der Registrierung im Azure-Portal, ob der Konfigurationsserver und der VMware-Server auf der Seite **Quelle** im Tresor aufgeführt werden. Klicken Sie dann auf **OK**, um die Einstellungen für das Ziel zu konfigurieren.
 

@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 437c45891d1d20f5fadca8a58954185a3aef56ac
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 26f5acf369dd80d7877ab760806e0e08a49cfe6d
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights
 
@@ -74,7 +74,7 @@ Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in
 
 6.  Die Informationen, die Sie bisher gesammelt haben, bestätigen, dass es Leistungseinbußen gibt. Sie erzählen jedoch wenig über die Grundursache.  Hier kommt der **Profiler** ins Spiel: Er zeigt den tatsächlichen Code, der für den Vorgang ausgeführt wurde, und den Zeitaufwand für die einzelnen Schritte an. Einige Vorgänge haben möglicherweise keine Ablaufverfolgung, da der Profiler in regelmäßigen Abständen ausgeführt wird.  Im Laufe der Zeit sollten weitere Vorgänge aber Ablaufverfolgungen erhalten.  Um den Profiler für den Vorgang zu starten, klicken Sie auf **Profiler-Ablaufverfolgungen**.
 5.  Die Ablaufverfolgung zeigt die einzelnen Ereignisse für jeden Vorgang an, damit Sie die Grundursache für die Dauer des gesamten Vorgangs diagnostizieren können.  Klicken Sie auf eines der obersten Beispiele, die am längsten dauern.
-6.  Klicken Sie auf **Langsamsten Pfad anzeigen**, um den Pfad der Ereignisse zu markieren, die für die hohe Gesamtdauer des Vorgangs verantwortlich sind.  In diesem Beispiel können Sie sehen, dass der langsamste Aufruf von der Methode *FabrikamFiberAzureStorage.GetStorageTableData* stammt. Der Teil, der den Großteil der Zeit beansprucht, ist die Methode *CloudTable.CreateIfNotExist*. Wenn diese Codezeile bei jedem Aufruf der Funktion ausgeführt wird, werden unnötige Netzwerkaufruf- und CPU-Ressourcen verbraucht. Die beste Möglichkeit zum Korrigieren des Code besteht darin, diese Zeile in eine Startmethode einzufügen, die nur einmal ausgeführt wird. 
+6.  Klicken Sie auf **Langsamsten Pfad anzeigen**, um den Pfad der Ereignisse zu markieren, die für die hohe Gesamtdauer des Vorgangs verantwortlich sind.  In diesem Beispiel können Sie sehen, dass der langsamste Aufruf von der Methode *FabrikamFiberAzureStorage.GetStorageTableData* stammt. Der Teil, der den Großteil der Zeit beansprucht, ist die Methode *CloudTable.CreateIfNotExist*. Wenn diese Codezeile bei jedem Aufruf der Funktion ausgeführt wird, werden unnötige Netzwerkaufruf- und CPU-Ressourcen verbraucht. Die beste Möglichkeit zum Korrigieren des Codes besteht darin, diese Zeile in eine Startmethode einzufügen, die nur einmal ausgeführt wird. 
 
     ![Profilerdetails](media/app-insights-tutorial-performance/profiler-details.png)
 

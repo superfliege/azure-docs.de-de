@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/13/2017
 ms.author: barbkess
-ms.openlocfilehash: 80974f7660696887783e97b674e2d9921fe2feac
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 277766c22e25945fb314aa51017a72f415cbab46
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Bewährte Methoden zum Laden von Daten in Azure SQL Data Warehouse
 Dieser Artikel enthält Empfehlungen und Leistungsoptimierungen für das Laden von Daten in Azure SQL Data Warehouse. 
@@ -120,15 +120,19 @@ Eine bewährte Sicherheitsmethode besteht darin, den Zugriffsschlüssel für Ihr
 
 Gehen Sie wie folgt vor, um Schlüssel für Azure Storage-Konten zu rotieren:
 
-1. Erstellen Sie basierend auf dem sekundären Speicherzugriffsschlüssel einen zweiten Satz mit datenbankbezogenen Anmeldeinformationen.
-2. Erstellen Sie basierend auf diesen neuen Anmeldeinformationen eine zweite externe Datenquelle.
-3. Löschen und erstellen Sie die externen Tabellen so, dass sie auf die neuen externen Datenquellen verweisen. 
+Führen Sie für jedes Speicherkonto, dessen Schlüssel sich geändert hat, [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql.md) aus.
 
-Führen Sie die folgenden Bereinigungsaufgaben durch, nachdem Sie Ihre externen Tabellen zur neuen Datenquelle migriert haben:
+Beispiel:
 
-1. Löschen Sie die erste externe Datenquelle.
-2. Löschen Sie die ersten datenbankbezogenen Anmeldeinformationen basierend auf dem primären Speicherzugriffsschlüssel.
-3. Melden Sie sich an Azure an, und generieren Sie den primären Zugriffsschlüssel neu, damit er für die nächste Rotation bereit ist.
+Originalschlüssel wird erstellt
+
+CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1' 
+
+Für den Schlüssel wird von Schlüssel 1 zu Schlüssel 2 rotiert
+
+ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+
+Es sind keine weiteren Änderungen an zugrunde liegenden externen Datenquellen erforderlich.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

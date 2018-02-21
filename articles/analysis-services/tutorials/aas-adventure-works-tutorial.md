@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/08/2018
+ms.date: 02/10/2018
 ms.author: owend
-ms.openlocfilehash: 9b81e011d3e1ed23465bbd554a0c7376b432b585
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ecc95181f61f556b18fa820617ea5ad0636c7a4b
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Tutorial mit Adventure Works
 
@@ -50,7 +50,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
   
 -   Einen Azure Analysis Services-Server. Registrieren Sie sich für eine kostenlose [Textversion von Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) und [erstellen Sie einen Server](../analysis-services-create-server.md). 
 
--   Eine [Azure SQL Data Warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md)-Instanz mit der **AdventureWorksDW-Beispieldatenbank** oder eine SQL Server Data Warehouse-Instanz mit der [AdventureWorks-Beispieldatenbank](http://go.microsoft.com/fwlink/?LinkID=335807).
+-   Eine [Azure SQL Data Warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md)-Instanz mit der **AdventureWorksDW-Beispieldatenbank** oder eine SQL Server Data Warehouse-Instanz mit der [AdventureWorks-Beispieldatenbank](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks).
 
     **Wichtig**: Wenn Sie die Beispieldatenbank auf einer lokalen SQL Server Data Warehouse-Instanz installieren und Ihr Modell für einen Server mit Azure Analysis Services bereitstellen, benötigen Sie ein [lokales Datengateway](../analysis-services-gateway.md).
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.openlocfilehash: 1a9c9354b665294778886441cc6d7f02adb1163f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf6cf780867f9ecf5c5be93dc28fe3e00a0c3f82
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -104,7 +104,7 @@ Die "[Anhängen]" enthalten Informationen zur Verwendung anderer Tools wie Wires
 ## <a name="monitoring-your-storage-service"></a>Überwachung Ihres Speicherdiensts
 Wenn Sie mit der Windows-Leistungsüberwachung vertraut sind, können Sie von Speichermetriken als einem Azure-Speicher-Pendant zu Windows-Leistungsüberwachungsindikatoren ausgehen. In Speichermetriken finden Sie einen umfassenden Metriksatz (Indikatoren in der Windows Performance Monitor-Terminologie) wie Dienstverfügbarkeit, Gesamtzahl der Dienstanfragen, oder Prozentsatz der erfolgreichen Dienstanfragen. Eine vollständige Liste der verfügbaren Kennzahlen finden Sie im Thema zu den [Kennzahlen zur Speicheranalyse – Tabellenschema](http://msdn.microsoft.com/library/azure/hh343264.aspx). Sie können spezifizieren, ob der Speicherdienst die Metriken jede Stunde oder jede Minute sammeln und aggregieren soll. Weitere Informationen zur Metrik-Aktivierung und Überwachung Ihrer Speicherkonten finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](http://go.microsoft.com/fwlink/?LinkId=510865).
 
-Sie können auswählen, welche Stundenmetriken Sie im [Azure-Portal](https://portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](/azure/monitoring-and-diagnostics/monitoring-overview-alerts.md). 
+Sie können auswählen, welche Stundenmetriken Sie im [Azure-Portal](https://portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](/azure/monitoring-and-diagnostics/monitoring-overview-alerts). 
 
 Der Speicherdienst sammelt Metriken nach dem Best-Effort-Prinzip, kann aber nicht jeden Speichervorgang aufzeichnen.
 
@@ -144,7 +144,7 @@ Hilfe für die Schätzung der Größe der verschiedenen Speicherobjekte wie Blob
 ### <a name="monitoring-availability"></a>Verfügbarkeitsüberwachung
 Sie sollten die Verfügbarkeit des Speicherdiensts in Ihrem Speicherkonto überwachen, indem Sie in den Tabellen für Stunden- oder Minutenmetriken den Wert in der Spalte **Availability** überwachen: **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Die Spalte **Availability** enthält einen Prozentwert, der die Verfügbarkeit des Diensts oder API-Vorgangs in der jeweiligen Zeile darstellt. (Der Wert von **RowKey** gibt Aufschluss darüber, ob die Zeile allgemeine Metriken für den Dienst oder Metriken für einen bestimmten API-Vorgang enthält.)
 
-Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der **Verfügbarkeit** auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](http://msdn.microsoft.com/library/azure/hh343260.aspx) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
+Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der **Verfügbarkeit**auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](http://msdn.microsoft.com/library/azure/hh343260.aspx) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
 
 Im [Azure-Portal](https://portal.azure.com) können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die **Verfügbarkeit** den von Ihnen festgelegten Grenzwert unterschreitet.
 
@@ -564,7 +564,7 @@ Wenn die Clientanwendung versucht, einen SAS-Schlüssel ohne die notwendigen Gen
 
 Die folgende Tabelle zeigt eine Muster-Serverprotokollierungsnachricht aus der Speicherprotokollierungsdatei:
 
-| Name | Wert |
+| NAME | Wert |
 | --- | --- |
 | Anfragestartzeit | 2014-05-30T06:17:48.4473697Z |
 | Vorgangsart     | GetBlobProperties            |
@@ -799,7 +799,7 @@ Wenn Sie die Rückverfolgungssession in Microsoft Message Analyzer erstellen, k�
 Weitere Informationen zur Local-Link-Layer-Rückverfolgung von Microsoft Message Analyzer finden Sie unter [Microsoft-PEF-NDIS-PacketCapture Provider](http://technet.microsoft.com/library/jj659264.aspx).
 
 ### <a name="appendix-4"></a>Anhang 4: Verwendung von Excel zur Anzeige von Metrik- und Protokollierungsdaten
-Viele Tools ermöglichen das Herunterladen von Speichermetrikdaten aus dem Azure-Tabellenspeicher in einem abgegrenzten Format, wodurch die Daten einfach in Excel für die Anzeige und Analyse geladen werden können. Speicherprotokollierungsdaten vom Azure-Blob-Speicher verfügen bereits über eine abgetrenntes Format, das Sie in Excel laden können. Allerdings müssen Sie basierend auf den Informationen in [Protokollformat der Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343259.aspx) und [Schema der Tabellen für Speicheranalysemetriken](http://msdn.microsoft.com/library/azure/hh343264.aspx) entsprechende Spaltenüberschriften hinzufügen.
+Viele Tools ermöglichen das Herunterladen von Speichermetrikdaten aus dem Azure-Tabellenspeicher in einem abgegrenzten Format, wodurch die Daten einfach in Excel für die Anzeige und Analyse geladen werden können. Speicherprotokollierungsdaten von Azure Blob Storage verfügen bereits über ein durch Trennzeichen getrenntes Format, das Sie in Excel laden können. Allerdings müssen Sie basierend auf den Informationen in [Protokollformat der Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343259.aspx) und [Schema der Tabellen für Speicheranalysemetriken](http://msdn.microsoft.com/library/azure/hh343264.aspx) entsprechende Spaltenüberschriften hinzufügen.
 
 Um Speicherprotokollierungsdaten in Excel zu importieren, nachdem Sie diese aus dem BLOB-Speicher heruntergeladen haben, gehen Sie folgendermaßen vor:
 
@@ -813,7 +813,7 @@ Wählen Sie in Schritt 1 des **Textimport-Assistenten** die Option **Semikolon**
 Sie können die Application Insights-Funktion für Visual Studio Team Services auch als Bestandteil der Leistungs- und Verfügbarkeitsüberwachung verwenden. Dieses Tool kann:
 
 * Sicherstellen, dass Ihr Webdienst verfügbar und reaktionsschnell ist. Ob Ihre Anwendung eine Website ist, die einen Webdienst verwendet, oder eine Geräteanwendung: Sie kann Ihre URL alle paar Minuten von Standorten auf der ganzen Welt testen, und Ihnen mitteilen, ob es ein Problem gibt.
-* Leistungsprobleme oder Ausnahmen in Ihrem Webdienst schnell diagnostizieren. Finden Sie heraus, ob CPU oder andere Ressourcen gestretched werden, gewinnen Sie Stack-Traces aus Ausnahmen, und durchsuchen Sie Protokolltraces leicht. Wenn die Leistung der Anwendung unter akzeptable Grenzen fällt, können wir Ihnen eine E-Mail senden. Sie können sowohl .NET- als auch Java-Webdienste überwachen.
+* Leistungsprobleme oder Ausnahmen in Ihrem Webdienst schnell diagnostizieren. Finden Sie heraus, ob für CPU oder andere Ressourcen Stretching durchgeführt wird, gewinnen Sie Stapelnachverfolgungen aus Ausnahmen, und durchsuchen Sie ganz einfach Protokollablaufverfolgungen. Wenn die Leistung der Anwendung unter akzeptable Grenzen fällt, können wir Ihnen eine E-Mail senden. Sie können sowohl .NET- als auch Java-Webdienste überwachen.
 
 Weitere Informationen finden Sie unter [Was ist Application Insights](../../application-insights/app-insights-overview.md).
 

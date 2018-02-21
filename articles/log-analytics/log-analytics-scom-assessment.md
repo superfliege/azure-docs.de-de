@@ -3,7 +3,7 @@ title: Optimieren Ihrer System Center Operations Manager-Umgebung mit Azure Log 
 description: "Sie können die Lösung zur System Center Operations Manager-Integritätsüberprüfung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2017
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a66cc13d05c81de571e2710519ad9474304d656
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 86484ca2bc7dc14035f48b8f7b1514a4fc471b74
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimieren Ihrer Umgebung mit der Lösung zur System Center Operations Manager-Integritätsüberprüfung (Vorschauversion)
 
@@ -60,7 +60,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Details zur Datensammlung mit der System Center Operations Manager-Bewertung
 
-Die System Center Operations Manager-Bewertung sammelt Daten aus den folgenden Quellen: 
+Die System Center Operations Manager-Bewertung sammelt Daten aus den folgenden Quellen:
 
 * Registrierung
 * Windows-Verwaltungsinstrumentation (WMI)
@@ -72,7 +72,7 @@ Daten werden auf dem Verwaltungsserver erfasst und alle sieben Tage an Log Analy
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Ausführende Operations Manager-Konten für Log Analytics
 
-Log Analytics basiert auf Management Packs für Workloads, um Dienste bereitzustellen, die einen Mehrwert schaffen. Jede Workload erfordert spezifische Berechtigungen zum Ausführen von Management Packs in einem anderen Sicherheitskontext, z.B. ein Domänenbenutzerkonto. Konfigurieren Sie ein ausführendes Operations Manager-Konto mit privilegierten Anmeldeinformationen. Zusätzliche Informationen finden Sie in der Operations Manager-Dokumentation unter [How to create a Run As account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) (Erstellen eines ausführenden Kontos). 
+Log Analytics basiert auf Management Packs für Workloads, um Dienste bereitzustellen, die einen Mehrwert schaffen. Jede Workload erfordert spezifische Berechtigungen zum Ausführen von Management Packs in einem anderen Sicherheitskontext, z.B. ein Domänenbenutzerkonto. Konfigurieren Sie ein ausführendes Operations Manager-Konto mit privilegierten Anmeldeinformationen. Zusätzliche Informationen finden Sie in der Operations Manager-Dokumentation unter [How to create a Run As account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) (Erstellen eines ausführenden Kontos).
 
 Verwenden Sie die folgenden Informationen, um das ausführende Operations Manager-Konto für die System Center Operations Manager-Integritätsüberprüfung festzulegen.
 
@@ -82,21 +82,21 @@ Das ausführende Konto muss folgende Anforderungen erfüllen, damit Sie den Vorg
 
 * Es muss sich um ein Domänenbenutzerkonto handeln, das auf allen Servern, die eine Operations Manager-Rolle unterstützen, Mitglied der lokalen Administratorgruppe ist. Hierzu zählen Verwaltungsserver, SQL Server-Instanz, die die Betriebs-, Data Warehouse- und ACS-Datenbank hostet, Berichtsserver, Webkonsole und Gatewayserver.
 * Operations Manager-Administratorrolle für die Verwaltungsgruppe, die bewertet wird
-* Wenn das Konto nicht über Systemadministratorrechte für SQL verfügt, führen Sie das [Skript](#sql-script-to-grant-granular-permissions-to-the-run-as-account) aus, um dem Konto in jeder SQL Server-Instanz, die eine Operations Manager-Datenbank oder alle Operations Manager-Datenbanken hosten, differenzierte Berechtigungen zu gewähren. 
+* Wenn das Konto nicht über Systemadministratorrechte für SQL verfügt, führen Sie das [Skript](#sql-script-to-grant-granular-permissions-to-the-run-as-account) aus, um dem Konto in jeder SQL Server-Instanz, die eine Operations Manager-Datenbank oder alle Operations Manager-Datenbanken hosten, differenzierte Berechtigungen zu gewähren.
 
 1. Klicken Sie in der Operations Manager-Konsole auf die Navigationsschaltfläche **Administration**.
 2. Klicken Sie unter **Run As Configuration** (Ausführende Konfiguration) auf **Konten**.
 3. Klicken Sie im Assistenten **Ausführendes Konto erstellen** auf der Seite **Einführung** auf **Weiter**.
 4. Wählen Sie auf der Seite **Allgemeine Eigenschaften** in der Liste **Typ des ausführenden Kontos:** die Option **Windows** aus.
-5. Geben Sie im Textfeld **Anzeigename** einen Anzeigenamen und optional im Feld **Beschreibung** eine Beschreibung ein, und klicken Sie dann auf **Weiter**. 
+5. Geben Sie im Textfeld **Anzeigename** einen Anzeigenamen und optional im Feld **Beschreibung** eine Beschreibung ein, und klicken Sie dann auf **Weiter**.
 6. Wählen Sie auf der Seite **Verteilungssicherheit** die Option **More secure** (Höhere Sicherheit) aus.
-7. Klicken Sie auf **Erstellen**.  
+7. Klicken Sie auf **Create**.  
 
 Das ausführende Konto wurde erstellt. Nun müssen für das Konto Verwaltungsserver in der Verwaltungsgruppe als Ziel festgelegt werden, und das Konto muss mit einem vordefinierten ausführenden Profil verknüpft werden, damit Workflows unter Verwendung der Anmeldedaten ausgeführt werden.  
 
 1. Doppelklicken Sie unter **Run As Configuration** (Ausführende Konfiguration) > **Konten** im Ergebnisbereich auf das zuvor erstellte Konto.
 2. Klicken Sie auf der Registerkarte **Verteilung** für das Feld **Ausgewählte Computer** auf **Hinzufügen**, und fügen Sie den Verwaltungsserver hinzu, an den das Konto verteilt werden soll.  Klicken Sie zum Speichern der Änderungen zweimal auf **OK**.
-3. Klicken Sie unter **Run As Configuration** (Ausführende Konfiguration) auf **Profile**. 
+3. Klicken Sie unter **Run As Configuration** (Ausführende Konfiguration) auf **Profile**.
 4. Suchen Sie nach dem *Profil der SCOM-Bewertung*.
 5. Der Profilname sollte wie folgt lauten: *Microsoft System Center Advisor SCOM Assessment Run As Profile* (Ausführendes Profil für Microsoft System Center Advisor-SCOM-Bewertung).
 6. Klicken Sie mit der rechten Maustaste, aktualisieren Sie die Eigenschaften, und fügen Sie das zuvor erstellte ausführende Konto hinzu.
@@ -209,14 +209,14 @@ Nicht unbedingt. Die Empfehlungen basieren auf den Kenntnissen und Erfahrungen, 
 
 Jede Empfehlung enthält Informationen dazu, warum sie wichtig ist. Ermitteln Sie anhand dieser Anleitung, ob die Umsetzung der Empfehlung bei Berücksichtigung der Art Ihrer IT-Dienste und der geschäftlichen Anforderungen Ihrer Organisation für Sie geeignet ist.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Befolgen von Empfehlungen anhand der Integritätsüberprüfung des Schwerpunktbereichs
+## <a name="use-health-check-focus-area-recommendations"></a>Befolgen von Schwerpunktbereichsempfehlungen der Integritätsüberprüfung
 
 Bevor Sie eine Lösung zur Integritätsüberprüfung in Log Analytics verwenden können, müssen Sie die Lösung installieren. Weitere Informationen zum Installieren von Lösungen finden Sie unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md). Nach der Installation können Sie die Zusammenfassung der Empfehlungen anzeigen, indem Sie im OMS-Portal auf der Seite „Übersicht“ die Kachel „System Center Operations Manager-Integritätsüberprüfung“ verwenden.
 
 Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastruktur sowie Details in den Empfehlungen an.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>So werden Empfehlungen für einen Schwerpunktbereich angezeigt und korrigierende Maßnahmen ergriffen
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an. 
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
 2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 3. Wählen Sie im Log Analytics-Abonnementbereich einen Arbeitsbereich aus, und klicken Sie dann auf die Kachel **OMS-Portal**.  
 4. Klicken Sie auf der Seite **Übersicht** auf die Kachel **System Center Operations Manager-Integritätsüberprüfung**.
@@ -228,7 +228,7 @@ Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastrukt
 
 Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen, mit der Log Analytics verhindert, dass diese Empfehlungen in Ihren Bewertungsergebnissen angezeigt werden.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>So ermitteln Sie Empfehlungen, die Sie ignorieren möchten
 1. Klicken Sie im Azure-Portal auf der Seite mit dem Log Analytics-Arbeitsbereich für Ihren ausgewählten Arbeitsbereich auf die Kachel **Protokollsuche**.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 88fe50460baf8b7180da113b33a03120f39cf44f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 10497097bfda36a0a8a2b6b677ac26394217d8b4
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise
 
@@ -119,7 +119,7 @@ Zu den Aufgaben des IoT Hub in der Lösung zählen auch:
 - Verwendung als Transportkanal für die bidirektionale Kommunikation des OPC Proxy-Moduls
 
 ## <a name="azure-storage"></a>Azure Storage
-Die Lösung nutzt Azure-Blobspeicher als Datenspeicher für den virtuellen Computer sowie zum Speichern von Bereitstellungsdaten.
+Die Lösung nutzt Azure Blob Storage als Datenspeicher für den virtuellen Computer sowie zum Speichern von Bereitstellungsdaten.
 
 ## <a name="web-app"></a>Web-App
 Die als Teil der vorkonfigurierten Lösung bereitgestellte Web-App setzt sich aus einem integrierten OPC UA-Client, der Wartungsverarbeitung und der Telemetrievisualisierung zusammen.
@@ -233,7 +233,7 @@ Sie können mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu di
 
 * [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
 * [Bereitstellen eines Gateways unter Windows oder Linux für die vorkonfigurierte Connected Factory-Lösung](iot-suite-connected-factory-gateway-deployment.md)
-* [OPC Publisher-Referenzimplementierung](iot-suite-connected-factory-publisher.md)
+* [OPC Publisher-Referenzimplementierung](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 

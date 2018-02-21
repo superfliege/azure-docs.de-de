@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: de48d61af0e8056a749715343ef821cfc35cb93d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2b1e3fa7fa57d92dbc3a33af20ed258d674e1625
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, sendet die Pipeline eine E-Mail mit Details zum erfolgreichen Kopiervorgang (beispielsweise die geschriebene Datenmenge). War die Kopieraktivität nicht erfolgreich, sendet die Pipeline eine E-Mail mit Fehlerdetails (beispielsweise die Fehlermeldung). In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
@@ -129,6 +129,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
+1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
    ![Neu -> Data Factory](./media/tutorial-control-flow-portal/new-azure-data-factory-menu.png)
@@ -241,8 +242,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
         - Data Factory-Name: Übergibt den Wert von `@{pipeline().DataFactory}`. Dies ist eine Systemvariable, die Ihnen den Zugriff auf den Namen der entsprechenden Data Factory ermöglicht. Eine Liste der Systemvariablen finden Sie im Artikel [Systemvariablen](control-flow-system-variables.md) 
         - Pipeline-Name: Übergibt den Wert von `@{pipeline().Pipeline}`. Dies ist auch eine Systemvariable, die Ihnen den Zugriff auf den entsprechenden Pipelinenamen ermöglicht. 
         - Empfänger: Übergibt den Wert von „@pipeline(). parameters.receiver“). Zugriff auf die Pipeline-Parameter
-    6. Die **Einstellungen** sollten nun wie in der folgenden Abbildung aussehen: 
-
+    
         ![Einstellungen für die erste Webaktivität](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. Stellen Sie eine Verbindung zwischen der Aktivität **Kopieren** und der Aktivität **Web** her, indem Sie die grüne Schaltfläche neben der Kopieraktivität auf die Webaktivität ziehen. 
 
@@ -266,8 +266,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
             "receiver": "@pipeline().parameters.receiver"
         }
         ```
-    6. Die **Einstellungen** sollten nun wie in der folgenden Abbildung aussehen: 
-    
+
         ![Einstellungen für die zweite Webaktivität](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. Wählen Sie im Pipeline-Designer die Aktivität **Kopieren** aus, klicken Sie auf die Schaltfläche **+->**, und wählen Sie **Fehler** aus.  
 
@@ -278,7 +277,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
 24. Klicken Sie zum Überprüfen der Pipeline auf der Symbolleiste auf die Schaltfläche **Überprüfen**. Schließen der **Pipeline Validierungsausgabe** Fenster, indem Sie auf die  **>>**  Schaltfläche.
 
     ![Überprüfen der Pipeline](./media/tutorial-control-flow-portal/validate-pipeline.png)
-24. Klicken Sie zum Veröffentlichen der Entitäten (Datasets, Pipelines usw.) im Data Factory-Dienst auf **Veröffentlichen**. Warten Sie, bis die Meldung **Erfolgreich veröffentlicht** angezeigt wird.
+24. Wählen Sie zum Veröffentlichen der Entitäten (Datasets, Pipelines usw.) im Data Factory-Dienst die Option **Alle veröffentlichen**. Warten Sie, bis die Meldung **Erfolgreich veröffentlicht** angezeigt wird.
 
     ![Veröffentlichen](./media/tutorial-control-flow-portal/publish-button.png)
  
@@ -306,7 +305,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Auslösen einer nicht erfolgreichen Pipelineausführung
 1. Wechseln Sie im linken Bereich zur Registerkarte **Bearbeiten**. 
-2. Klicken Sie auf der Symbolleiste auf **Trigger** und anschließend auf **Trigger Now** (Jetzt auslösen), um eine Pipelineausführung **auszulösen**. 
+2. Klicken Sie auf der Symbolleiste auf **Trigger** und anschließend auf **Trigger Now** (Jetzt auslösen), um eine **Pipelineausführung**auszulösen. 
 3. Führen Sie im Fenster **Pipeline Run** (Pipelineausführung) die folgenden Schritte aus: 
 
     1. Geben Sie für den Parameter **sourceBlobContainer** die Zeichenfolge **adftutorial/dummy/input** ein. Stellen Sie sicher, dass der Ordner „dummy“ im Container „adftutorial“ nicht vorhanden ist. 
@@ -322,7 +321,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
 2. Klicken Sie für die Pipelineausführung auf den Link **Fehler**, um Fehlerdetails anzuzeigen. 
 
     ![Pipelinefehler](./media/tutorial-control-flow-portal/pipeline-error-message.png)
-2. Klicken **Sie zum Anzeigen von** Aktivitätsausführungen, die mit dieser Pipelineausführung verknüpft sind, in der Spalte **Aktionen** auf den ersten Link. Aktualisieren Sie die Liste mithilfe der Schaltfläche **Aktualisieren**. Beachten Sie, dass die Kopieraktivität in der Pipeline nicht erfolgreich war. Die Webaktivität hat erfolgreich eine Fehler-E-Mail an den angegebenen Empfänger gesendet. 
+2. Klicken Sie zum **Anzeigen von**Aktivitätsausführungen, die mit dieser Pipelineausführung verknüpft sind, in der Spalte **Aktionen** auf den ersten Link. Aktualisieren Sie die Liste mithilfe der Schaltfläche **Aktualisieren**. Beachten Sie, dass die Kopieraktivität in der Pipeline nicht erfolgreich war. Die Webaktivität hat erfolgreich eine Fehler-E-Mail an den angegebenen Empfänger gesendet. 
 
     ![Aktivitätsausführungen](./media/tutorial-control-flow-portal/activity-runs-failure.png)
 4. Klicken Sie in der Spalte **Aktionen** auf den Link **Fehler**, um Fehlerdetails anzuzeigen. 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/01/2018
+ms.date: 02/13/2018
 ms.author: magoedte
-ms.openlocfilehash: d873fe37ba2c4e851df35b9d5afe69b4adbf001c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9125f3db8929a41f49ff3ae53de9f3a71f5bf051
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
 Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Systemen, die die Daten gesendet haben und zu den unterschiedlichen Arten von gesendeten Daten.  Verwenden Sie das Dashboard zur **Log Analytics-Nutzung**, um anzuzeigen, welche Datenmenge an den Log Analytics-Dienst gesendet wird. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
@@ -36,7 +36,9 @@ Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen an
 - Angebote
     - Knoten vom Typ „Insight & Analytics“
     - Knoten vom Typ „Automation & Control“
-    - Knoten vom Typ „Security“
+    - Knoten vom Typ „Security“  
+- Leistung
+    - Zeit zum Erfassen und Indizieren von Daten  
 - Liste der Abfragen
 
 ![Dashboard „Nutzung“](./media/log-analytics-usage/usage-dashboard01.png)
@@ -151,19 +153,6 @@ Klicken Sie auf **Alle anzeigen...**, um die vollständige Liste mit Computern a
 
 Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
 
-## <a name="check-if-there-is-ingestion-latency"></a>Überprüfen, ob es bei der Erfassung zu Wartezeiten kommt
-Bei Log Analytics kommt es bei der Erfassung gesammelter Daten zu erwarteten Wartezeiten.  Die absolute Zeit zwischen der Indizierung von Daten und dem Zeitpunkt der Verfügbarkeit der Daten für die Suche kann nicht vorhersehbar sein. Früher enthielt das Dashboard ein Leistungsdiagramm, auf dem die Dauer zum Erfassen und Indizieren von Daten angezeigt wurde. Infolge der Einführung der neuen Abfragesprache wurde dieses Diagramm vorübergehend entfernt.  Bis zur Veröffentlichung von aktualisierten Metriken für die Wartezeit bei der Datenerfassung können Sie als Übergangslösung mithilfe der folgenden Abfrage die ungefähre Wartezeit für die einzelnen Datentypen ermitteln.  
-
-    search *
-    | where TimeGenerated > ago(8h)
-    | summarize max(TimeGenerated) by Type
-    | extend LatencyInMinutes = round((now() - max_TimeGenerated)/1m,2)
-    | project Type, LatencyInMinutes
-    | sort by LatencyInMinutes desc
-
-> [!NOTE]
-> Die Abfrage für Erfassungswartezeiten zeigt keine Wartezeiten aus der Vergangenheit an und gibt ausschließlich Ergebnisse für die aktuelle Zeit zurück.  Der Wert für *TimeGenerated* wird am Agent für allgemeine Schemaprotokolle und am Sammlungsendpunkt für benutzerdefinierte Protokolle aufgefüllt.  
->
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen dazu, wie Sie die Suchsprache verwenden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md). Sie können Suchabfragen verwenden, um für die Nutzungsdaten eine zusätzliche Analyse durchzuführen.

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecc50a54feca6c3e9304821e0a5bdbb50708bd11
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: cb99f121a1ddf079008ed97edde71b067d6b5edb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-cli"></a>Erstellen von Netzwerksicherheitsgruppen mit der Azure CLI
 
@@ -36,9 +36,9 @@ Die folgenden Beispiele für Azure CLI-Befehle gehen, aufbauend auf dem vorherge
 
 Führen Sie zum Erstellen einer NSG mit dem Namen *NSG-FrontEnd* basierend auf dem oben beschriebenen Szenario die folgenden Schritte aus.
 
-1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an. 
+1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#az_login) bei einem Azure-Konto an. 
 
-2. Erstellen Sie eine NSG mit dem Befehl [az network nsg create](/cli/azure/network/nsg#create). 
+2. Erstellen Sie eine NSG mit dem Befehl [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create). 
 
     ```azurecli
     az network nsg create \
@@ -76,7 +76,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen *NSG-FrontEnd* basierend auf d
 
 
 
-3. Erstellen Sie mit dem Befehl [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine Regel, die den Zugriff auf Port 3389 (RDP) über das Internet zulässt.
+3. Erstellen Sie mit dem Befehl [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine Regel, die den Zugriff auf Port 3389 (RDP) über das Internet zulässt.
 
     > [!NOTE]
     > Abhängig von der verwendeten Shell müssen Sie möglicherweise das Zeichen `*` in den folgenden Argumenten ändern, damit das Argument vor der Ausführung nicht erweitert wird.
@@ -171,7 +171,7 @@ Führen Sie zum Erstellen einer NSG mit dem Namen *NSG-FrontEnd* basierend auf d
     }
     ```
 
-5. Binden Sie die NSG mit dem Befehl [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) an das Subnetz **FrontEnd**.
+5. Binden Sie die NSG mit dem Befehl [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) an das Subnetz **FrontEnd**.
         
     ```azurecli
     az network vnet subnet update \

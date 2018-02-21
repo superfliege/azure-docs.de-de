@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: f2482c7a47c72d192f26f3d8d9b9249af53da25d
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: c8e023d68ec2c7e40675f985d3e13b0714cec8ea
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Vorhersagen der Serverworkload in Terabyte
 
@@ -51,7 +51,7 @@ Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 * Windows 10 (Anleitungen in diesem Beispiel sind für macOS-Systeme im Allgemeinen identisch).
 * Ein virtueller Data Science-Computer (Data Science Virtual Machine, DSVM) für Linux (Ubuntu), vorzugsweise in der Region „USA, Osten“, wo sich die Daten befinden. Sie können einen Ubuntu-DSVM bereitstellen, indem Sie [diese Anleitung](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro) befolgen. Sie können auch [diese Schnellstartanleitung](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu) verwenden. Es wird empfohlen, einen virtuellen Computer mit mindestens 8 Kernen und 32 GB Arbeitsspeicher zu verwenden. 
 
-Gehen Sie gemäß dieser [Anweisung](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide#remove-vm-execution-error-no-tty-present) vor, um auf dem virtuellen Computer für AML Workbench kennwortlosen Zugriff über sudo zu aktivieren.  Sie haben die Wahl, [Authentifizierung über SSH-Schlüssel zum Erstellen und Verwenden des virtuellen Computers in AML Workbench](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration#using-ssh-key-based-authentication-for-creating-and-using-compute-targets) zu verwenden. In diesem Beispiel wird ein Kennwort verwendet, um auf den virtuellen Computer zuzugreifen.  Speichern Sie die folgende Tabelle mit den DSVM-Informationen für die Verwendung in späteren Schritten:
+Gehen Sie gemäß dieser [Anweisung](known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) vor, um auf dem virtuellen Computer für AML Workbench kennwortlosen Zugriff über sudo zu aktivieren.  Sie haben die Wahl, [Authentifizierung über SSH-Schlüssel zum Erstellen und Verwenden des virtuellen Computers in AML Workbench](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets) zu verwenden. In diesem Beispiel wird ein Kennwort verwendet, um auf den virtuellen Computer zuzugreifen.  Speichern Sie die folgende Tabelle mit den DSVM-Informationen für die Verwendung in späteren Schritten:
 
  Feldname| Wert |  
  |------------|------|
@@ -330,7 +330,7 @@ Navigieren Sie in der rechten Seitenleiste von Workbench zu **Ausführungen**, u
 
 In diesem Abschnitt operationalisieren Sie das Modell, das Sie in den vorherigen Schritten erstellt haben, als Webdienst. Außerdem erfahren Sie, wie Sie den Webdienst zum Vorhersagen der Workload verwenden. Verwenden Sie Machine Language-CLIs (Befehlszeilenschnittstellen) für die Operationalisierung, um den Code und die Abhängigkeiten als Docker-Images zu verpacken und das Modell als Containerwebdienst zu veröffentlichen.
 
-Sie können die Eingabeaufforderung in Machine Learning Workbench zum Ausführen der CLIs verwenden.  Außerdem können Sie die CLIs in Ubuntu Linux ausführen, indem Sie die Anleitung im [Installationsleitfaden](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/install-on-ubuntu-linux.md) befolgen. 
+Sie können die Eingabeaufforderung in Machine Learning Workbench zum Ausführen der CLIs verwenden.  Außerdem können Sie die CLIs in Ubuntu Linux ausführen, indem Sie die Anleitung im [Installationsleitfaden](./deployment-setup-configuration.md#using-the-cli) befolgen. 
 
 > [!NOTE]
 > Ersetzen Sie sämtliche Variablen der Argumente in allen folgenden Befehlen durch die tatsächlichen Werte. Das Durcharbeiten dieses Abschnitts dauert ca. 40 Minuten.
@@ -416,7 +416,7 @@ Wählen Sie eine eindeutige Zeichenfolge als Umgebung für die Operationalisieru
 
 8. Skalieren Sie den Webdienst. 
 
-   Weitere Informationen finden Sie unter [How to scale operationalization on your Azure Container Service cluster](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/how-to-scale.md) (Skalieren der Operationalisierung in Ihrem Azure Container Service-Cluster).
+   Weitere Informationen finden Sie unter [How to scale operationalization on your Azure Container Service cluster](how-to-scale-clusters.md) (Skalieren der Operationalisierung in Ihrem Azure Container Service-Cluster).
  
 
 ## <a name="next-steps"></a>Nächste Schritte

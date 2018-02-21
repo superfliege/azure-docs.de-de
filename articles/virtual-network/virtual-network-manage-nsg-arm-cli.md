@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8d9f932746811a5b21dbd667d7c7bdc8f721fb
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 36ff6d8fc956f5c863884e4591cbcb2909fcb200
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-network-security-groups-using-the-azure-cli"></a>Verwalten von Netzwerksicherheitsgruppen mit der Azure CLI
 
@@ -35,10 +35,10 @@ ms.lasthandoff: 11/17/2017
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
 ## <a name="prerequisite"></a>Voraussetzung
-Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an. 
+Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#az_login) bei einem Azure-Konto an. 
 
 ## <a name="view-existing-nsgs"></a>Anzeigen lassen vorhandener NSGs
-Führen Sie zum Anzeigen der Liste von NSGs in einer bestimmten Ressourcengruppe den Befehl [az network nsg list](/cli/azure/network/nsg#list) mit dem Ausgabeformat `-o table` aus:
+Führen Sie zum Anzeigen der Liste von NSGs in einer bestimmten Ressourcengruppe den Befehl [az network nsg list](/cli/azure/network/nsg#az_network_nsg_list) mit dem Ausgabeformat `-o table` aus:
 
 ```azurecli
 az network nsg list -g RG-NSG -o table
@@ -52,7 +52,7 @@ Erwartete Ausgabe:
     centralus   NSG-FrontEnd  Succeeded            RG-NSG           <guid>
 
 ## <a name="list-all-rules-for-an-nsg"></a>Auflisten aller Regeln für eine NSG
-Führen Sie zum Anzeigen der Regeln einer NSG mit dem Namen **NSG-FrontEnd** den Befehl [az network nsg show](/cli/azure/network/nsg#show) mit einem [JMESPATH-Abfragefilter](/cli/azure/query-az-cli2) und dem Ausgabeformat `-o table` aus:
+Führen Sie zum Anzeigen der Regeln einer NSG mit dem Namen **NSG-FrontEnd** den Befehl [az network nsg show](/cli/azure/network/nsg#az_network_nsg_show) mit einem [JMESPATH-Abfragefilter](/cli/azure/query-az-cli2) und dem Ausgabeformat `-o table` aus:
 
 ```azurecli
     az network nsg show \
@@ -75,7 +75,7 @@ Erwartete Ausgabe:
     rdp-rule                                                                               Allow     Inbound      3389             *                 *               Internet
     web-rule                                                                               Allow     Inbound      80               *                 *               Internet
 > [!NOTE]
-> Sie können auch [az network nsg rule list](/cli/azure/network/nsg/rule#list) verwenden, um nur die benutzerdefinierten Regeln einer NSG aufzulisten.
+> Sie können auch [az network nsg rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) verwenden, um nur die benutzerdefinierten Regeln einer NSG aufzulisten.
 >
 
 ## <a name="view-nsg-associations"></a>Anzeigen lassen von NSG-Zuordnungen
@@ -151,7 +151,7 @@ Erwartete Ausgabe:
 ```
 
 ## <a name="change-a-rule"></a>Ändern einer Regel
-Um die zuvor erstellte Regel so zu ändern, dass eingehender Verkehr nur aus dem **Internet** zugelassen wird, führen Sie den Befehl [az network nsg rule update](/cli/azure/network/nsg/rule#update) aus:
+Um die zuvor erstellte Regel so zu ändern, dass eingehender Verkehr nur aus dem **Internet** zugelassen wird, führen Sie den Befehl [az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) aus:
 
 ```azurecli
 az network nsg rule update \
@@ -194,7 +194,7 @@ az network nsg rule delete \
 
 
 ## <a name="associate-an-nsg-to-a-nic"></a>Zuordnen einer NSG zu einer NIC
-Um die NSG **NSG-FrontEnd** der NIC **TestNICWeb1** zuzuordnen, verwenden Sie den Befehl [az network nic update](/cli/azure/network/nic#update):
+Um die NSG **NSG-FrontEnd** der NIC **TestNICWeb1** zuzuordnen, verwenden Sie den Befehl [az network nic update](/cli/azure/network/nic#az_network_nic_update):
 
 ```azurecli
 az network nic update \
@@ -277,7 +277,7 @@ Erwartete Ausgabe:
 
 ## <a name="dissociate-an-nsg-from-a-nic"></a>Aufheben der Zuordnung einer NSG zu einer NIC
 
-Um die Zuordnung der NSG **NSG-FrontEnd** zur NIC **TestNICWeb1** aufzuheben, führen Sie den Befehl [az network nsg rule update](/cli/azure/network/nsg/rule#update) erneut aus, ersetzen Sie dabei jedoch das Argument `--network-security-group` durch eine leere Zeichenfolge (`""`).
+Um die Zuordnung der NSG **NSG-FrontEnd** zur NIC **TestNICWeb1** aufzuheben, führen Sie den Befehl [az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) erneut aus, ersetzen Sie dabei jedoch das Argument `--network-security-group` durch eine leere Zeichenfolge (`""`).
 
 ```azurecli
 az network nic update --resource-group RG-NSG --name TestNICWeb3 --network-security-group ""
@@ -286,7 +286,7 @@ az network nic update --resource-group RG-NSG --name TestNICWeb3 --network-secur
 In der Ausgabe wird der Schlüssel `networkSecurityGroup` auf null festgelegt.
 
 ## <a name="dissociate-an-nsg-from-a-subnet"></a>Aufheben der Zuordnung einer NSG zu einem Subnetz
-Um die Zuordnung der NSG **NSG-FrontEnd** zum Subnetz **FrontEnd** aufzuheben, führen Sie den Befehl [az network nsg rule update](/cli/azure/network/nsg/rule#update) erneut aus, ersetzen Sie dabei jedoch das Argument `--network-security-group` durch eine leere Zeichenfolge (`""`).
+Um die Zuordnung der NSG **NSG-FrontEnd** zum Subnetz **FrontEnd** aufzuheben, führen Sie den Befehl [az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) erneut aus, ersetzen Sie dabei jedoch das Argument `--network-security-group` durch eine leere Zeichenfolge (`""`).
 
 ```azurecli
 az network vnet subnet update \

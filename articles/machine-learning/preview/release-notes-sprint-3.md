@@ -10,17 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/22/2018
-ms.openlocfilehash: f75fcec3b722563949b6553f17c4f3db3e223675
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 266a56d5e247fd4926031e563c8be302599838eb
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="sprint-3---january-2018"></a>Sprint 3 – Januar 2018 
 
 #### <a name="version-number-01171218263"></a>Versionsnummer: 0.1.1712.18263
 
->So können Sie die [Versionsnummer ermitteln](https://docs.microsoft.com/en-us/azure/machine-learning/preview/known-issues-and-troubleshooting-guide).
+>So können Sie die [Versionsnummer ermitteln](known-issues-and-troubleshooting-guide.md).
 
 Willkommen beim vierten Update von Azure Machine Learning Workbench. Nachfolgend werden die Aktualisierungen und Verbesserungen in diesem Sprint beschrieben. Viele dieser Aktualisierungen sind eine direkte Umsetzung des Benutzerfeedbacks. 
 
@@ -42,7 +42,7 @@ Die nachstehende Liste zeigt die detaillierten Aktualisierungen für jeden Kompo
 ### <a name="notebooks"></a>Notebooks
 - Allgemeine Verbesserungen und Fehlerbehebungen
 
-### <a name="data-preparation"></a>Vorbereitung von Daten 
+### <a name="data-preparation"></a>Vorbereitung der Daten 
 - Verbesserte automatische Vorschläge beim Durchführen von Transformationen nach Beispiel
 - Verbesserter Algorithmus für Musterhäufigkeitsprüfung
 - Möglichkeit zum Senden von Beispieldaten und Feedback während der Durchführung von Transformationen nach Beispiel ![Screenshot mit dem Link zum Senden von Feedback bei der Transformation zur Spaltenableitung](media/release-notes-sprint-3/SendFeedbackFromDeriveColumn.png)

@@ -43,6 +43,7 @@
 ## Erstellen und Verwalten von Pools
 ### [Automatisches Skalieren von Computeknoten](batch-automatic-scaling.md)
 ### [Rechenintensive virtuelle Computer](batch-pool-compute-intensive-sizes.md)
+### [Konfigurieren des Zugriffs auf Computeknoten](pool-endpoint-configuration.md)
 ### [Erstellen eines Pools mit einem benutzerdefinierten Image](batch-custom-images.md)
 ### [Erstellen eines Pools in einem virtuellen Netzwerk](batch-virtual-network.md)
 ### [Linux-Computeknoten](batch-linux-nodes.md)

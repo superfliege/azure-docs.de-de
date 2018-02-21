@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 8683b016c4db2c66fb1dd994405b70c3d137a7fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f760165fa8a93bbb7646539af748b647fe63bba
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Erstellen einer Oracle-Datenbank auf einem virtuellem Azure-Computer
 
@@ -33,7 +33,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Verwenden Sie zum Erstellen eines virtuellen Computers (VM) den Befehl [az vm create](/cli/azure/vm#create). 
+Verwenden Sie zum Erstellen eines virtuellen Computers (VM) den Befehl [az vm create](/cli/azure/vm#az_vm_create). 
 
 Im folgenden Beispiel wird ein virtueller Computer namens `myVM` erstellt. Darüber hinaus werden SSH-Schlüssel erstellt, falls sie nicht bereits an einem Standardschlüsselspeicherort vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  
 
@@ -270,7 +270,7 @@ Die Oracle-Datenbank wird standardmäßig nicht automatisch gestartet, wenn Sie 
 
 Abschließend müssen einige externe Endpunkte konfiguriert werden. Beenden Sie zuerst Ihre SSH-Sitzung auf der VM (beim Neustart im vorherigen Schritt sollte eine Beendigung von SSH durchgeführt worden sein), um die Azure-Netzwerksicherheitsgruppe einzurichten, mit der die VM geschützt wird. 
 
-1.  Erstellen Sie zum Öffnen des Endpunkts, den Sie für den Remotezugriff auf die Oracle-Datenbank verwenden, wie folgt mit [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine Netzwerksicherheitsgruppen-Regel: 
+1.  Erstellen Sie zum Öffnen des Endpunkts, den Sie für den Remotezugriff auf die Oracle-Datenbank verwenden, wie folgt mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine Netzwerksicherheitsgruppen-Regel: 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -282,7 +282,7 @@ Abschließend müssen einige externe Endpunkte konfiguriert werden. Beenden Sie 
         --destination-port-range 1521
     ```
 
-2.  Erstellen Sie zum Öffnen des Endpunkts, den Sie für den Remotezugriff auf Oracle EM Express verwenden, wie folgt mit [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine Netzwerksicherheitsgruppen-Regel:
+2.  Erstellen Sie zum Öffnen des Endpunkts, den Sie für den Remotezugriff auf Oracle EM Express verwenden, wie folgt mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine Netzwerksicherheitsgruppen-Regel:
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -294,7 +294,7 @@ Abschließend müssen einige externe Endpunkte konfiguriert werden. Beenden Sie 
         --destination-port-range 5502
     ```
 
-3. Beschaffen Sie bei Bedarf erneut wie folgt die öffentliche IP-Adresse Ihrer VM, indem Sie [az network public-ip show](/cli/azure/network/public-ip#show) verwenden:
+3. Beschaffen Sie bei Bedarf erneut wie folgt die öffentliche IP-Adresse Ihrer VM, indem Sie [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) verwenden:
 
     ```azurecli-interactive
     az network public-ip show \
@@ -316,7 +316,7 @@ Sie können sich mit dem **SYS**-Konto anmelden und das Kontrollkästchen **as s
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Untersuchung Ihrer ersten Oracle-Datenbank unter Azure abgeschlossen haben und die VM nicht länger benötigt wird, können Sie den Befehl [az group delete](/cli/azure/group#delete) verwenden, um die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen zu entfernen.
+Wenn Sie die Untersuchung Ihrer ersten Oracle-Datenbank unter Azure abgeschlossen haben und die VM nicht länger benötigt wird, können Sie den Befehl [az group delete](/cli/azure/group#az_group_delete) verwenden, um die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen zu entfernen.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

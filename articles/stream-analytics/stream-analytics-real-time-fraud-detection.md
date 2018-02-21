@@ -1,3 +1,26 @@
+---
+title: 'Stream Analytics: Betrugserkennung in Echtzeit | Microsoft Docs'
+description: "Erfahren Sie, wie Sie mit Stream Analytics eine Lösung zur Betrugserkennung in Echtzeit erstellen können. Verwenden Sie einen Event Hub für die Ereignisverarbeitung in Echtzeit."
+keywords: Erkennung von Anomalien, Betrugserkennung, Erkennung von Anomalien in Echtzeit
+services: stream-analytics
+documentationcenter: 
+author: SnehaGunda
+manager: jhubbard
+editor: cgronlun
+ms.assetid: c10dd53f-d17a-4268-a561-cb500a8c04eb
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 03/28/2017
+ms.author: sngun
+ms.openlocfilehash: cc581142ca2c75bbee80f9d980c4984b4863a6cf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/14/2018
+---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit
 
 Dieses Tutorial enthält detaillierte Abbildungen zur Verwendung von Azure Stream Analytics. Folgendes wird vermittelt: 
@@ -26,7 +49,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
     >[!NOTE]
     >Windows blockiert möglicherweise die heruntergeladene ZIP-Datei. Wenn Sie die Datei nicht entzippen können, klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie **Eigenschaften**. Wenn die Meldung „Die Datei stammt von einem anderen Computer. Der Zugriff wurde aus Sicherheitsgründen eventuell blockiert.“ angezeigt wird, wählen Sie die Option **Nicht mehr blockieren**, und klicken Sie dann auf **Übernehmen**.
 
-Wenn Sie die Ergebnisse des Stream Analytics-Auftrags untersuchen möchten, benötigen Sie darüber hinaus ein Tool zum Anzeigen der Inhalte eines Azure Blob Storage-Containers. Wenn Sie Visual Studio einsetzen, können Sie [Azure-Tools für Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) oder [Visual Studio Cloud-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) verwenden. Alternativ können Sie eigenständige Tools wie [Azure-Speicher-Explorer](http://storageexplorer.com/) oder [Azure-Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) installieren. 
+Wenn Sie die Ergebnisse des Stream Analytics-Auftrags untersuchen möchten, benötigen Sie darüber hinaus ein Tool zum Anzeigen der Inhalte eines Azure Blob Storage-Containers. Wenn Sie Visual Studio einsetzen, können Sie [Azure-Tools für Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) oder [Visual Studio Cloud-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) verwenden. Alternativ können Sie eigenständige Tools wie [Azure Storage-Explorer](http://storageexplorer.com/) oder [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) installieren. 
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>Erstellen von Azure Event Hubs zum Erfassen von Ereignissen
 
@@ -57,7 +80,7 @@ In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen di
     ![Blatt zum Erstellen eines neuen Event Hubs](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png)
     
  
-7. Klicken Sie auf **Erstellen**.
+7. Klicken Sie auf **Create**.
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Gewähren des Zugriffs auf den Event Hub und Abrufen einer Verbindungszeichenfolge
 
 Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit einer Richtlinie versehen sein, die einen entsprechenden Zugriff ermöglicht. Die Zugriffsrichtlinie erzeugt eine Verbindungszeichenfolge, die Autorisierungsinformationen enthält.
@@ -73,7 +96,7 @@ Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit e
 
     ![Blatt zum Erstellen einer neuen Event Hub-Zugriffsrichtlinie](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png)
  
-4.  Klicken Sie auf **Erstellen**.
+4.  Klicken Sie auf **Create**.
 
 5.  Nachdem die Richtlinie bereitgestellt wurde, klicken sie in der Liste der SAS-Richtlinien darauf.
 
@@ -108,7 +131,7 @@ Bevor Sie die TelcoGenerator-App starten, konfigurieren Sie sie so, dass Aufrufd
 
     ![Konfigurationsdatei der TelcoGenerator-App mit dem Event Hub-Namen und der Verbindungszeichenfolge](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
-4.  Speichern Sie die Datei. 
+4.  Speichern Sie die Datei . 
 
 ### <a name="start-the-app"></a>Starten der App
 1.  Öffnen Sie ein Befehlsfenster, und wechseln Sie zum Ordner, in dem sich die entzippte TelcoGenerator-App befindet.
@@ -150,7 +173,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
 
     ![Erstellen eines neuen Stream Analytics-Auftrags](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png)
 
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Create**.
 
     Der Auftrag wird erstellt, und die Auftragsdetails werden im Portal angezeigt. Die Einrichtung ist jedoch noch nicht abgeschlossen. Bevor Sie den Auftrag starten können, müssen Sie ihn konfigurieren.
 
@@ -173,7 +196,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
 
     ![Erstellen einer neuen Eingabe für einen Stream Analytics-Auftrag](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png)
 
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Create**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Erstellen von Abfragen zum Transformieren von Daten in Echtzeit
 
@@ -183,7 +206,7 @@ Eine einfache Abfrage kann alle eingehenden Daten möglicherweise nur lesen. All
 
 Die Abfragen, die Sie hier erstellen, zeigen nur die transformierten Daten auf dem Bildschirm an. In einem Abschnitt weiter unten konfigurieren Sie eine Ausgabesenke und eine Abfrage, die die transformierten Daten in diese Senke schreibt.
 
-Weitere Informationen zur Sprache finden Sie in der [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/dn834998.aspx)(in englischer Sprache).
+Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://msdn.microsoft.com/library/dn834998.aspx).
 
 ### <a name="get-sample-data-for-testing-queries"></a>Abrufen von Beispieldaten zum Testen von Abfragen
 
@@ -330,7 +353,7 @@ Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In dies
     
     ![Bereich „Neue Ausgabe“ für den Stream Analytics-Auftrag](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png)
     
-4. Klicken Sie auf **Erstellen**. 
+4. Klicken Sie auf **Create**. 
 
     Azure erstellt das Speicherkonto und generiert automatisch einen Schlüssel. 
 
@@ -361,7 +384,7 @@ Der Auftrag ist jetzt konfiguriert. Sie haben eine Eingabe (den Event Hub), eine
 
 Sie haben nun einen Stream Analytics-Auftrag durchgeführt. Der Auftrag überprüft einen Datenstrom von Telefonanrufmetadaten. Dabei wird in Echtzeit nach betrügerischen Telefonanrufen gesucht und Informationen zu diesen betrügerischen Anrufen in den Speicher geschrieben. 
 
-Zum Abschluss dieses Tutorials sollten Sie sich die Daten ansehen, die vom Stream Analytics-Auftrag erfasst werden. Die Daten werden in Blöcken (Dateien) in Azure Blob Storage geschrieben. Sie können ein beliebiges Tool verwenden, das Daten aus dem Azure Blob Storage liest. Wie im Abschnitt „Voraussetzungen“ erwähnt wurde, können Sie Azure-Erweiterungen in Visual Studio oder ein Tool wie [Azure-Speicher-Explorer](http://storageexplorer.com/) oder [Azure-Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) verwenden. 
+Zum Abschluss dieses Tutorials sollten Sie sich die Daten ansehen, die vom Stream Analytics-Auftrag erfasst werden. Die Daten werden in Blöcken (Dateien) in Azure Blob Storage geschrieben. Sie können ein beliebiges Tool verwenden, das Daten aus dem Azure Blob Storage liest. Wie im Abschnitt „Voraussetzungen“ erwähnt wurde, können Sie Azure-Erweiterungen in Visual Studio oder ein Tool wie den [Azure Storage-Explorer](http://storageexplorer.com/) oder [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) verwenden. 
 
 Wenn Sie die Inhalte einer Datei in Blob Storage überprüfen, wird beispielsweise Folgendes angezeigt:
 

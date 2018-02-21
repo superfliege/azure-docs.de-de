@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9360c0ee90f9a4ffdffd7649505699f656833bbe
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 456e5bd722d103f10779aa0cd99bf01fdcf8a7fe
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Folgende Eigenschaften werden für den mit Azure SQL Data Warehouse verknüpften
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die "type"-Eigenschaft muss auf **AzureSqlDW** | Ja |
-| connectionString |Geben Sie Informationen, die zur Verbindung mit der Azure SQL Data Warehouse-Instanz erforderlich sind, für die Eigenschaft "connectionString" ein. Es wird nur Standardauthentifizierung unterstützt. Legen Sie für dieses Feld „SecureString“ fest. |Ja |
+| connectionString |Geben Sie Informationen, die zur Verbindung mit der Azure SQL Data Warehouse-Instanz erforderlich sind, für die Eigenschaft "connectionString" ein. Es wird nur Standardauthentifizierung unterstützt. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 
@@ -269,7 +269,7 @@ PolyBase in SQL Data Warehouse bietet direkte Unterstützung für Azure Blob Sto
 
 Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory die Einstellungen und greift bei der Datenverschiebung automatisch auf den BULKINSERT-Mechanismus zurück.
 
-1. Der **mit der Quelle verknüpfte Dienst** ist vom Typ: **AzureStorage** oder **AzureDataLakeStore**.
+1. Der **mit der Quelle verknüpfte Dienst** ist vom Typ **AzureStorage** oder **AzureDataLakeStore** mit Dienstprinzipalauthentifizierung.
 2. Das **Eingabedataset** ist vom Typ **AzureBlob** oder **AzureDataLakeStoreFile**, und der Formattyp unter den `type`-Eigenschaften lautet **OrcFormat**, **ParquetFormat** oder **TextFormat** mit folgenden Konfigurationen:
 
    1. `rowDelimiter` muss gleich **\n** sein.
@@ -330,7 +330,7 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
 
 ### <a name="staged-copy-using-polybase"></a>gestaffeltes Kopieren mit PolyBase
 
-Falls Ihre Quelldaten die Kriterien aus dem vorherigen Abschnitt nicht erfüllen, können Sie die Daten über einen zwischengeschalteten Azure-Stagingblobspeicher kopieren (darf nicht Storage Premium sein). In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten automatisch durch, um die Datenformatanforderungen von PolyBase zu erfüllen. Laden Sie anschließend die Daten mithilfe von PolyBase in SQL Data Warehouse, und bereinigen Sie dann die temporären Daten in Blob Storage. Unter [Gestaffeltes Kopieren](copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen zur allgemeinen Funktionsweise des Kopierens von Daten über ein Azure-Stagingblob.
+Falls Ihre Quelldaten die Kriterien aus dem vorherigen Abschnitt nicht erfüllen, können Sie die Daten über einen zwischengeschalteten Azure Blob Storage mit Staging kopieren (darf nicht Storage Premium sein). In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten automatisch durch, um die Datenformatanforderungen von PolyBase zu erfüllen. Laden Sie anschließend die Daten mithilfe von PolyBase in SQL Data Warehouse, und bereinigen Sie dann die temporären Daten in Blob Storage. Unter [Gestaffeltes Kopieren](copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen zur allgemeinen Funktionsweise des Kopierens von Daten über ein Azure-Stagingblob.
 
 Erstellen Sie zum Verwenden dieses Features einen [verknüpften Azure Storage-Dienst](connector-azure-blob-storage.md#linked-service-properties), der auf das Azure Storage-Konto mit dem zwischengeschalteten Blobspeicher verweist, und geben Sie dann für die Kopieraktivität die Eigenschaften `enableStaging` und `stagingSettings` an, wie im folgenden Code zu sehen:
 

@@ -3,7 +3,7 @@ title: Optimieren Ihrer SQL Server-Umgebung mit Azure Log Analytics | Microsoft-
 description: "Mit Azure Log Analytics können Sie die SQL-Integritätsüberprüfung-Lösung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09fed11830bbbce23f7098050568d68a3b3bebec
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 5da04e9479ebd6cec886a8c5ca38d040aec2758d
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimieren der SQL-Umgebung mit der SQL Server-Integritätsüberprüfung-Lösung in Log Analytics
 
@@ -43,7 +43,7 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 * Für die SQL-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4 auf jedem Computer installiert sein, auf dem der Microsoft Monitoring Agent (MMA) installiert ist.  Der MMA-Agent wird von System Center 2016 – Operations Manager und Operations Manager 2012 R2 sowie dem Log Analytics-Dienst verwendet.  
 * Die Lösung unterstützt SQL Server Version 2012, 2014 und 2016.
-* Ein Log Analytics-Arbeitsbereich zum Hinzufügen der SQL-Integritätsüberprüfung-Lösung aus dem Azure Marketplace in das Azure-Portal.  Zum Installieren der Lösung müssen Sie ein Administrator oder Mitwirkender des Azure-Abonnements sein. 
+* Ein Log Analytics-Arbeitsbereich zum Hinzufügen der SQL-Integritätsüberprüfung-Lösung aus dem Azure Marketplace in das Azure-Portal.  Zum Installieren der Lösung müssen Sie ein Administrator oder Mitwirkender des Azure-Abonnements sein.
 
   > [!NOTE]
   > Nachdem Sie die Lösung hinzugefügt haben, wird die Datei AdvisorAssessment.exe den Servern mit Agents hinzugefügt. Konfigurationsdaten werden gelesen und dann zur Verarbeitung an den Log Analytics-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf.
@@ -61,12 +61,12 @@ Der Agent auf Ihrer SQL Server-Instanz, der Berichte an die Operations Manager-V
 Wenn die SQL Server-Instanz von Operations Manager überwacht wird, müssen Sie ein ausführendes Operations Manager-Konto konfigurieren. Weitere Informationen finden Sie unter [Ausführende Operations Manager-Konten für Log Analytics](#operations-manager-run-as-accounts-for-log-analytics).
 
 ## <a name="sql-health-check-data-collection-details"></a>SQL-Integritätsüberprüfung – Datensammlungsdetails
-Die SQL-Integritätsüberprüfung sammelt mithilfe des von Ihnen aktivierten Agent Daten aus den folgenden Quellen: 
+Die SQL-Integritätsüberprüfung sammelt mithilfe des von Ihnen aktivierten Agent Daten aus den folgenden Quellen:
 
-* Windows-Verwaltungsinstrumentation (WMI) 
-* Registrierung 
+* Windows-Verwaltungsinstrumentation (WMI)
+* Registrierung
 * Leistungsindikatoren
-* Anzeigen der Ergebnisse der dynamischen SQL Server-Verwaltung 
+* Anzeigen der Ergebnisse der dynamischen SQL Server-Verwaltung
 
 Daten werden auf der SQL Server-Instanz gesammelt und alle sieben Tage an Log Analytics weitergeleitet.
 
@@ -163,10 +163,10 @@ Bevor Sie eine Assessment-Lösung in Log Analytics verwenden können, müssen Si
 Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastruktur sowie Details in den Empfehlungen an.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>So werden Empfehlungen für einen Schwerpunktbereich angezeigt und korrigierende Maßnahmen ergriffen
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an. 
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
 2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 3. Wählen Sie im Log Analytics-Abonnementbereich einen Arbeitsbereich aus, und klicken Sie dann auf die Kachel **Übersicht**.  
-4. Klicken Sie auf der Seite **Übersicht** auf die Kachel **SQL-Integritätsüberprüfung**. 
+4. Klicken Sie auf der Seite **Übersicht** auf die Kachel **SQL-Integritätsüberprüfung**.
 5. Überprüfen Sie auf der Seite **Integritätsüberprüfung** die Zusammenfassungsinformationen in einem der Schwerpunktbereiche, und klicken Sie dann auf einen Schwerpunktbereich, um Empfehlungen für diesen Bereich anzuzeigen.
 6. Auf jeder der Schwerpunktbereichsseiten können Sie mit Prioritäten versehene Empfehlungen für Ihre Umgebung anzeigen. Klicken Sie unter **Betroffene Objekte** auf eine Empfehlung, um Details zu den Gründen für diese Empfehlung anzuzeigen.<br><br> ![Abbildung der Empfehlungen der SQL-Integritätsüberprüfung](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. Sie können die unter **Vorgeschlagene Aktionen**vorgeschlagenen Korrekturmaßnahmen durchführen. Nachdem das Element behandelt wurde, geben spätere Bewertungen an, dass empfohlene Aktionen ausgeführt wurden, und Ihre Bewertung der Einhaltung erhöht sich. Korrigierte Elemente werden als **Passed Objects**angezeigt.
@@ -174,7 +174,7 @@ Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastrukt
 ## <a name="ignore-recommendations"></a>Ignorieren von Empfehlungen
 Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen, mit der Log Analytics verhindert, dass diese Empfehlungen in Ihren Bewertungsergebnissen angezeigt werden.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>Ermitteln von Empfehlungen, die Sie ignorieren möchten
 1. Klicken Sie im Azure-Portal auf der Seite mit dem Log Analytics-Arbeitsbereich für Ihren ausgewählten Arbeitsbereich auf die Kachel **Protokollsuche**.

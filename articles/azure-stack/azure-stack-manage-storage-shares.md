@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: dce4252846732ca5161018103438df1f9ff6146d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 30e5265fbad66ab3c68bc5d5e90687b1a968167b
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Verwalten der Speicherkapazität für Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Die Informationen in diesem Artikel helfen Azure Stack-Cloudbetreibern bei der Überwachung und Verwaltung der Speicherkapazität ihrer Azure Stack-Bereitstellung. Die Speicherinfrastruktur von Azure Stack ordnet einen Teil der Gesamtspeicherkapazität der Azure Stack-Bereitstellung für die Verwendung durch **Speicherdienste** zu. Die Speicherdienste speichern Daten eines Mandanten in Freigaben auf Volumes, die den Knoten der Bereitstellung entsprechen.
 
@@ -130,7 +130,7 @@ Durch die Migration werden alle Containerblobs in der neuen Freigabe konsolidier
 - Wenn Ihnen Berechtigungen für eine Ressourcengruppe fehlen und Sie die zusätzlichen Volumes für Überlaufdaten nicht mithilfe von PowerShell abfragen können, ermitteln Sie die Gesamtgröße der Daten in Zusammenarbeit mit dem Besitzer der entsprechenden Ressourcengruppen und Container, bevor Sie die Daten migrieren.  
 
 > [!IMPORTANT]
-> Bei der Migration von Blobs für einen Container handelt es sich um einen Offlinevorgang, der die Verwendung von PowerShell erfordert. Bis zum Abschluss der Migration sind alle Blobs für den Container, den Sie migrieren, offline und können nicht verwendet werden.
+> Bei der Migration von Blobs für einen Container handelt es sich um einen Offlinevorgang, der die Verwendung von PowerShell erfordert. Bis zum Abschluss der Migration sind alle Blobs für den Container, den Sie migrieren, offline und können nicht verwendet werden. Außerdem sollten Sie es vermeiden, für Azure Stack ein Upgrade durchzuführen, bis alle Migrationsvorgänge abgeschlossen sind.
 
 #### <a name="to-migrate-containers-using-powershell"></a>So migrieren Sie Container mithilfe von PowerShell
 1. Vergewissern Sie sich, dass [Azure PowerShell installiert und konfiguriert](http://azure.microsoft.com/documentation/articles/powershell-install-configure/) ist. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](http://go.microsoft.com/fwlink/?LinkId=394767).

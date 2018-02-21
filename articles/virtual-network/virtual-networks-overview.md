@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jdial
-ms.openlocfilehash: 55aece3f20ee98d21d7bb2b96cb3d039d4849f8f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 892aa03bd058b50fc4868a225dfe602624ff19ef
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-virtual-network"></a>Virtuelles Azure-Netzwerk
 
@@ -44,7 +44,7 @@ Sie können in jedem Azure-[Abonnement](../azure-glossary-cloud-terminology.md?t
 - Verwenden Sie die in Azure enthaltene Namensauflösung, oder geben Sie Ihren eigenen DNS-Server an, der von Ressourcen in einem virtuellen Netzwerk genutzt werden kann. Weitere Informationen zur Namensauflösung in virtuellen Netzwerken finden Sie im Artikel [Namensauflösung für Ressourcen in virtuellen Netzwerken](virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 ## <a name = "internet"></a>Internetkommunikation
-Alle Ressourcen in einem virtuellen Netzwerk können in ausgehender Richtung mit dem Internet kommunizieren. Die private IP-Adresse der Ressource wird von der Azure-Infrastruktur standardmäßig per SNAT-Vorgang (Source Network Address Translated) in eine öffentliche IP-Adresse übersetzt. Weitere Informationen zur Internetkonnektivität in ausgehender Richtung finden Sie im Artikel [Grundlegendes zu ausgehenden Verbindungen in Azure](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address). Um die ausgehende Internetkonnektivität zu verhindern, können Sie benutzerdefinierte Routen oder eine Filterung des Datenverkehrs implementieren.
+Alle Ressourcen in einem virtuellen Netzwerk können in ausgehender Richtung mit dem Internet kommunizieren. Die private IP-Adresse der Ressource wird von der Azure-Infrastruktur standardmäßig per SNAT-Vorgang (Source Network Address Translated) in eine öffentliche IP-Adresse übersetzt. Weitere Informationen zur Internetkonnektivität in ausgehender Richtung finden Sie im Artikel [Grundlegendes zu ausgehenden Verbindungen in Azure](..\load-balancer\load-balancer-outbound-connections.md). Um die ausgehende Internetkonnektivität zu verhindern, können Sie benutzerdefinierte Routen oder eine Filterung des Datenverkehrs implementieren.
 
 Um über das Internet in eingehender Richtung mit Azure-Ressourcen bzw. in ausgehender Richtung ohne SNAT über das Internet kommunizieren zu können, muss einer Ressource eine öffentliche IP-Adresse zugewiesen sein. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im Artikel [Öffentliche IP-Adressen](virtual-network-public-ip-address.md).
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2017
+ms.date: 02/12/2018
 ms.author: larryfr
-ms.openlocfilehash: 5bab7a0646d34de3b6d71370a0fa4216845ee6a2
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: e6cc5fd3d45691dbdc004f346c10d7b4568ae9aa
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics
 
@@ -51,7 +51,7 @@ Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwach
 
    * Geben Sie für __In einem Speicherkonto archivieren__ an, wie viele Tage lang die Daten beibehalten werden sollen.
 
-   * Klicken Sie auf __Speichern__.
+   * Klicken Sie auf __Save__.
 
         > [!NOTE]
         > Wählen Sie entweder __In einem Speicherkonto archivieren__, __An einen Event Hub streamen__ oder __An Log Analytics senden__ aus, bevor Sie auf die Schaltfläche __Speichern__ klicken.
@@ -130,28 +130,28 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 
 #### <a name="request-log-schema"></a>Anforderungsprotokollschema
 
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 | --- | --- | --- |
-| in |String |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |String |Die ID der Ressource, für die der Vorgang erfolgt ist |
-| category |String |Die Protokollkategorie. Beispiel: **Anforderungen**. |
-| operationName |String |Der Name des protokollierten Vorgangs. Beispiel: GetAggregatedJobHistory. |
-| resultType |String |Der Status des Vorgangs, beispielsweise 200. |
-| callerIpAddress |String |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
-| correlationId |String |Der Bezeichner des Protokolls. Dieser Wert kann verwendet werden, um einen Satz zusammengehöriger Protokolleinträgen zu gruppieren. |
-| Identität |Objekt |Die Identität, die das Protokoll erstellt hat. |
+| time |Zeichenfolge |Der Zeitstempel (UTC) des Protokolls. |
+| Ressourcen-ID |Zeichenfolge |Die ID der Ressource, für die der Vorgang erfolgt ist |
+| category |Zeichenfolge |Die Protokollkategorie. Beispiel: **Anforderungen**. |
+| operationName |Zeichenfolge |Der Name des protokollierten Vorgangs. Beispiel: GetAggregatedJobHistory. |
+| resultType |Zeichenfolge |Der Status des Vorgangs, beispielsweise 200. |
+| callerIpAddress |Zeichenfolge |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
+| correlationId |Zeichenfolge |Der Bezeichner des Protokolls. Dieser Wert kann verwendet werden, um einen Satz zusammengehöriger Protokolleinträgen zu gruppieren. |
+| identity |Objekt |Die Identität, die das Protokoll erstellt hat. |
 | Eigenschaften |JSON |Details hierzu finden Sie im nächsten Abschnitt (Eigenschaftenschema des Anforderungsprotokolls). |
 
 #### <a name="request-log-properties-schema"></a>Eigenschaftenschema des Anforderungsprotokolls
 
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 | --- | --- | --- |
-| HttpMethod |String |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
-| Pfad |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| HttpMethod |Zeichenfolge |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
+| path |Zeichenfolge |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 | RequestContentLength |int |Die Inhaltslänge der HTTP-Anforderung. |
-| ClientRequestId |String |Der Bezeichner, der diese Anforderung eindeutig identifiziert |
-| StartTime |String |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
-| EndTime |String |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
+| ClientRequestId |Zeichenfolge |Der Bezeichner, der diese Anforderung eindeutig identifiziert |
+| StartTime |Zeichenfolge |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
+| EndTime |Zeichenfolge |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 
@@ -182,15 +182,15 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 
 #### <a name="audit-log-schema"></a>Überwachungsprotokollschema
 
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 | --- | --- | --- |
-| in |String |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |String |Die ID der Ressource, für die der Vorgang erfolgt ist |
-| category |String |Die Protokollkategorie. Beispiel: **Überwachung**. |
-| operationName |String |Der Name des protokollierten Vorgangs. Beispiel: JobSubmitted. |
-| resultType |String |Ein Unterstatus für den Auftragsstatus (operationName). |
-| resultSignature |String |Weitere Informationen zum Auftragsstatus (operationName). |
-| Identität |String |Der Benutzer, der den Vorgang angefordert hat. Beispiel: susan@contoso.com. |
+| time |Zeichenfolge |Der Zeitstempel (UTC) des Protokolls. |
+| Ressourcen-ID |Zeichenfolge |Die ID der Ressource, für die der Vorgang erfolgt ist |
+| category |Zeichenfolge |Die Protokollkategorie. Beispiel: **Überwachung**. |
+| operationName |Zeichenfolge |Der Name des protokollierten Vorgangs. Beispiel: JobSubmitted. |
+| resultType |Zeichenfolge |Ein Unterstatus für den Auftragsstatus (operationName). |
+| resultSignature |Zeichenfolge |Weitere Informationen zum Auftragsstatus (operationName). |
+| identity |Zeichenfolge |Der Benutzer, der den Vorgang angefordert hat. Beispiel: susan@contoso.com. |
 | Eigenschaften |JSON |Details hierzu finden Sie im nächsten Abschnitt (Eigenschaftenschema des Überwachungsprotokolls). |
 
 > [!NOTE]
@@ -200,15 +200,15 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 
 #### <a name="audit-log-properties-schema"></a>Eigenschaftenschema des Überwachungsprotokolls
 
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 | --- | --- | --- |
-| JobId |String |Die ID, die dem Auftrag zugewiesen ist. |
-| JobName |String |Der Name, der für den Auftrag angegeben wurde. |
-| JobRunTime |String |Die zum Verarbeiten des Auftrags verwendete Laufzeit. |
-| SubmitTime |String |Der Zeitpunkt (UTC), zu dem der Auftrag übermittelt wurde. |
-| StartTime |String |Die Uhrzeit (UTC), zu der der Auftrag nach der Übermittlung gestartet wurde |
-| EndTime |String |Die Uhrzeit, zu der der Auftrag beendet wurde |
-| Parallelität |String |Die Anzahl von Data Lake Analytics-Einheiten, die für diesen Auftrag während der Übermittlung angefordert wurden |
+| JobId |Zeichenfolge |Die ID, die dem Auftrag zugewiesen ist. |
+| JobName |Zeichenfolge |Der Name, der für den Auftrag angegeben wurde. |
+| JobRunTime |Zeichenfolge |Die zum Verarbeiten des Auftrags verwendete Laufzeit. |
+| SubmitTime |Zeichenfolge |Der Zeitpunkt (UTC), zu dem der Auftrag übermittelt wurde. |
+| StartTime |Zeichenfolge |Die Uhrzeit (UTC), zu der der Auftrag nach der Übermittlung gestartet wurde |
+| EndTime |Zeichenfolge |Die Uhrzeit, zu der der Auftrag beendet wurde |
+| Parallelität |Zeichenfolge |Die Anzahl von Data Lake Analytics-Einheiten, die für diesen Auftrag während der Übermittlung angefordert wurden |
 
 > [!NOTE]
 > **SubmitTime**, **StartTime**, **EndTime** und **Parallelität** bietet Informationen zu einem Vorgang. Diese Einträge enthalten nur dann einen Wert, wenn ein Vorgang gestartet oder beendet wurde. Beispiel: **SubmitTime** enthält nur einen Wert, sobald **operationName** den Wert **JobSubmitted** hat.

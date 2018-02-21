@@ -16,6 +16,8 @@
       href: time-series-insights-explorer.md
     - name: Beschränken der Drosselung
       href: time-series-insights-environment-mitigate-latency.md
+    - name: Grundlegendes zur Datenaufbewahrung
+      href: time-series-insights-concepts-retention.md
     - name: Diagnostizieren und Behandeln von Problemen
       href: time-series-insights-diagnose-and-solve-problems.md
     - name: Entwickeln
@@ -38,6 +40,8 @@
       href: time-series-insights-how-to-add-an-event-source-eventhub.md
     - name: Herstellen einer Verbindung mit IoT Hub
       href: time-series-insights-how-to-add-an-event-source-iothub.md
+    - name: Konfigurieren der Datenaufbewahrung
+      href: time-series-insights-how-to-configure-retention.md
     - name: Erstellen eines Verweisdatasets
       href: time-series-insights-add-reference-data-set.md
     - name: Senden von Ereignisse

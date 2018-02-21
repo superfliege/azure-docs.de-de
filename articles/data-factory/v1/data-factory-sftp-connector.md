@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3485120347923dd291663962d528a1e5996b477f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8871012458c97a36b1f8c2cca413319ec7d72e8e
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Verschieben von Daten von einem SFTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -123,7 +123,7 @@ Legen Sie zum Verwenden der Authentifizierung mit öffentlichem SSH-Schlüssel `
 | passPhrase | Geben Sie die Passphrase/das Kennwort zum Entschlüsseln des privaten Schlüssels ein, wenn die Schlüsseldatei mithilfe einer Passphrase geschützt ist. | Ja, wenn die private Schlüsseldatei mithilfe einer Passphrase geschützt ist. |
 
 > [!NOTE]
-> Der SFTP-Connector unterstützt nur OpenSSH-Schlüssel. Stellen Sie sicher, dass Ihre Schlüsseldatei das richtige Format hat. Sie können das Tool Putty für das Konvertieren des PPK-Formats in das OpenSSH-Format nutzen.
+> Der SFTP-Connector unterstützt nur RSA/DSA OpenSSH-Schlüssel. Stellen Sie sicher, dass der Inhalt Ihrer Schlüsseldatei mit „-----BEGIN [RSA/DSA] PRIVATE KEY-----“ beginnt. Wenn die Datei mit dem privaten Schlüssel eine Datei im PPK-Format ist, verwenden Sie das Tool Putty für die Konvertierung aus dem PPK- in das OpenSSH-Format .
 
 #### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>Beispiel: SshPublicKey-Authentifizierung unter Verwendung des Dateipfad des privaten Schlüssels
 

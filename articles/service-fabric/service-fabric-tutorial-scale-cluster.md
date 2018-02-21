@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2017
+ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 63b4747164959b0e95f6d3f1908d1fd265589a98
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: bbbb31687ab0980d62b35d627c4b1708b7ae8288
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="scale-a-service-fabric-cluster"></a>Skalieren eines Service Fabric-Clusters
 
@@ -85,7 +85,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Nach dem Herstellen der Verbindung können Sie mithilfe eines Befehls den Status der einzelnen Knoten im Cluster abrufen. Verwenden Sie für PowerShell den Befehl `Get-ServiceFabricClusterHealth` und für **sfctl** den ``-Befehl.
+Nach dem Herstellen der Verbindung können Sie mithilfe eines Befehls den Status der einzelnen Knoten im Cluster abrufen. Verwenden Sie für PowerShell den Befehl `Get-ServiceFabricClusterHealth` und für **sfctl** den Befehl `sfctl cluster select`.
 
 ## <a name="scale-out"></a>Horizontales Skalieren
 
@@ -95,7 +95,7 @@ Beim horizontalen Hochskalieren werden der Skalierungsgruppe mehr VM-Instanzen h
 $scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity += 1
 
-Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
+Update-AzureRmVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
 ```
 
 Der folgende Code legt die Kapazität auf 6 fest:
@@ -120,11 +120,11 @@ Horizontales Herunterskalieren ist mit horizontalem Hochskalieren vergleichbar. 
 Beim horizontalen Herunterskalieren einer VM-Skalierungsgruppe entfernt die Skalierungsgruppe in den meisten Fällen die zuletzt erstellte VM-Instanz. Sie müssen also den passenden, zuletzt erstellten Service Fabric-Knoten ermitteln. Diesen finden Sie, indem Sie nach dem größten `NodeInstanceId`-Eigenschaftswert der Service Fabric-Knoten suchen. In den Codebeispielen weiter unten wird eine Sortierung nach Knoteninstanz vorgenommen, und es werden Details zur Instanz mit dem größten ID-Wert zurückgegeben. 
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
 ```
 
 ```azurecli
-`sfctl node list --query "sort_by(items[*], &instanceId)[-1]"`
+sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
 Der Service Fabric-Cluster muss wissen, dass dieser Knoten entfernt wird. Hierzu sind drei Schritte erforderlich:
@@ -146,8 +146,9 @@ Nachdem diese drei Schritte für den Knoten ausgeführt wurden, kann er aus der 
 Der folgende Codeblock ruft den zuletzt erstellten Knoten ab und deaktiviert, beendet und entfernt ihn aus dem Cluster.
 
 ```powershell
+#### After you've connected.....
 # Get the node that was created last
-$node = Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
+$node = Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
 
 # Node details for the disable/stop process
 $nodename = $node.NodeName
@@ -202,7 +203,7 @@ else
 }
 ```
 
-Im **sfctl**-Code weiter unten werden mithilfe des folgenden Befehls die Werte **node-name** und **node-instance-id** des zuletzt erstellten Knotens abgerufen: `sfctl node list --query "sort_by(items[*], &instanceId)[-1].[instanceId,name]"`
+Unten im **sfctl**-Code wird der folgende Befehl verwendet, um den Wert **node-name** des zuletzt erstellten Knotens abzurufen: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
 ```azurecli
 # Inform the node that it is going to be removed
@@ -219,10 +220,10 @@ sfctl node remove-state --node-name _nt1vm_5
 > Verwenden Sie die folgenden **sfctl**-Abfragen, um den Status der einzelnen Schritte zu überprüfen:
 >
 > **Überprüfen des Deaktivierungsstatus**  
-> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].nodeDeactivationInfo"`
+> `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
 > **Überprüfen des Beendigungsstatus**  
-> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].isStopped"`
+> `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
 
 

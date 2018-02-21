@@ -3,7 +3,7 @@ title: "Anzeigen von Analysedaten für Azure-Web-Apps | Microsoft-Dokumentation"
 description: "Mithilfe der Lösung Azure-Web-Apps-Analyse können Sie Erkenntnisse über Ihre Azure-Web-Apps gewinnen, indem Sie verschiedene Metriken über alle Azure-Web-App-Ressourcen sammeln."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: banders
-ms.openlocfilehash: d910339cc35e09705e543706b40dfe8e0ea9dd42
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.author: magoedte
+ms.openlocfilehash: 7c22950c391707cdfe14ca242ea82a317be0e46e
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Anzeigen von Analysedaten für Metriken über alle Azure-Web-App-Ressourcen
 
@@ -37,12 +37,12 @@ Mit der Lösung können Sie Folgendes anzeigen:
 
 Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten für Azure-Web-Apps nicht von Agents erfasst. Alle von der Lösung verwendeten Daten stammen direkt von Azure.
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| [Windows-Agents](log-analytics-windows-agent.md) | Nein | Die Lösung erfasst keine Informationen von Windows-Agents. |
-| [Linux-Agents](log-analytics-linux-agents.md) | Nein | Die Lösung erfasst keine Informationen von Linux-Agents. |
-| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
-| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein | Die Lösung sammelt keine Informationen von Azure Storage. |
+| [Windows-Agents](log-analytics-windows-agent.md) | Nein  | Die Lösung erfasst keine Informationen von Windows-Agents. |
+| [Linux-Agents](log-analytics-linux-agents.md) | Nein  | Die Lösung erfasst keine Informationen von Linux-Agents. |
+| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein  | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
+| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Die Lösung sammelt keine Informationen von Azure Storage. |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ Die Lösung Azure-Web-Apps-Analyse sammelt zwei Gruppen von Metriken aus Azure:
   - Durchschnittliche Antwortzeit
   - Bytes gesendet/empfangen
   - CPU-Zeit
-  - Anforderungen
+  - Requests
   - Arbeitssatz für Arbeitsspeicher
   - Httpxxx
 - App Service-Planmetriken
@@ -90,9 +90,9 @@ Wenn Sie die Lösung Azure-Web-Apps-Analyse Ihrem Arbeitsbereich hinzufügen, wi
 
 Klicken Sie auf die Kachel **Azure-Web-Apps-Analyse**, um das Dashboard **Azure-Web-Apps-Analyse** zu öffnen. Das Dashboard enthält die Blätter, die in der folgenden Tabelle angegeben sind. Auf jedem Blatt sind bis zu zehn Einträge aufgeführt, die die Kriterien des Blatts für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, indem Sie unten auf dem Blatt auf **Alle anzeigen** oder auf die Blattüberschrift klicken.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 | --- | --- |
 | Azure-Web-Apps |   |
 | Anforderungstrends für Web-Apps | Zeigt ein Liniendiagramm des Anforderungstrends für Web-Apps für den ausgewählten Datumsbereich sowie eine Liste der häufigsten zehn Webanforderungen. Klicken Sie auf das Liniendiagramm, um eine Protokollsuche nach <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* (MetricName=Requests OR MetricName=Http*) &#124; measure avg(Average) by MetricName interval 1HOUR</code> auszuführen. <br>Klicken Sie auf ein Webanforderungselement, um eine Protokollsuche nach dem Webanforderungs-Metriktrend dieser Anforderung auszuführen. |

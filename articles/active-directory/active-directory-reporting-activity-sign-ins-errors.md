@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
+ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 183e11bed0d2399ffa714bc544f88eb359647b9a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1e5d477aa74d3d0588e33363888d84e860d4b2f8
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -38,9 +38,7 @@ Ihr erster Einstiegspunkt für alle Daten zu Anmeldeaktivitäten ist **[Anmeldun
 
 ![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins-errors/61.png "Anmeldeaktivität")
 
-
 Im Bericht zu den Anmeldungen können Sie alle fehlgeschlagenen Anmeldungen anzeigen, indem Sie unter **Fehler** die Option **Anmeldestatus** wählen.
-
 
 ![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins-errors/06.png "Anmeldeaktivität")
 
@@ -56,51 +54,52 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 
 ## <a name="error-codes"></a>Fehlercodes
 
-| Fehler| Beschreibung |
-| --- | --- |
-| 50001| Der Dienstprinzipal mit dem Namen X wurde im Mandanten mit dem Namen Y nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde. Es kann auch sein, dass der Ressourcenprinzipal nicht im Verzeichnis gefunden wurde oder ungültig ist.|
-| 50008| Die SAML-Assertion fehlt oder wurde im Token falsch konfiguriert.|
-| 50011| Die Antwortadresse fehlt, ist falsch konfiguriert oder stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein.|
-| 50012| Ein Benutzer hat Betrug während der mehrstufigen Authentifizierung gemeldet.|
-| 50053| Das Konto ist gesperrt, weil der Benutzer zu häufig versucht hat, sich mit einer falschen Benutzer-ID bzw. einem falschen Kennwort anzumelden.|
-| 50054| Für die Authentifizierung wurde ein altes Kennwort verwendet.|
-| 50055| Ungültiges Kennwort. Es wurde ein abgelaufenes Kennwort eingegeben.|
-| 50057| Das Benutzerkonto ist deaktiviert.|
-| 50058| In den angegebenen Anmeldeinformationen wurden keine Informationen zur Benutzeridentität gefunden, der Benutzer wurde unter dem Mandanten nicht gefunden, im Hintergrund wurde eine Anforderung gesendet, aber es hat sich kein Benutzer angemeldet, oder der Benutzer konnte vom Dienst nicht authentifiziert werden.|
-| 50074| Der Benutzer hat die MFA-Überprüfung nicht bestanden.|
-| 50079| Der Benutzer muss sich für die zweistufige Authentifizierung registrieren.|
-| 50126| Ungültiger Benutzername bzw. ungültiges Kennwort oder ungültiger lokaler Benutzername bzw. Kennwort.|
-| 50131| Wird für verschiedene Fehler in Bezug auf den bedingten Zugriff verwendet. Beispiele: Fehlerhafter Windows-Gerätestatus, Blockierung der Anforderung aufgrund von verdächtigen Aktivitäten und Entscheidungen gemäß Zugriffs- und Sicherheitsrichtlinien.|
-| 50133| Die Sitzung ist ungültig, weil das Kennwort abgelaufen ist oder vor Kurzem geändert wurde.|
-| 50144| Das Active Directory-Kennwort des Benutzers ist abgelaufen.|
-| 65001| Anwendung X ist nicht berechtigt, auf Anwendung Y zuzugreifen, oder die Berechtigung wurde widerrufen. Oder: Der Benutzer oder Administrator hat der Verwendung der Anwendung mit ID X nicht zugestimmt. Senden Sie eine interaktive Autorisierungsanforderung für diesen Benutzer und diese Ressource. Oder: Der Benutzer oder Administrator hat nicht zugestimmt, die Anwendung mit ID X zu verwenden. Senden Sie eine Autorisierungsanforderung an Ihren Mandantenadministrator, damit dieser im Namen der App Y für Ressource Z fungiert.|
-| 65005| Die für die Anwendung erforderliche Liste für den Ressourcenzugriff enthält keine Anwendungen, die von der Ressource ermittelt werden können, die Clientanwendung hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben.|
-| 70001| Die Anwendung mit dem Namen X wurde im Mandanten mit dem Namen Y nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierung an den falschen Mandanten gesendet.|
-| 80001| Der Authentifizierungs-Agent kann keine Verbindung mit Active Directory herstellen.|
-| 80002| Zeitüberschreitung für die Anforderung zur Kennwortüberprüfung des Authentifizierungs-Agents.|
-| 80003| Der Authentifizierungs-Agent hat eine ungültige Antwort erhalten.|
-| 80004| In der Anmeldeanforderung wurde ein falscher Benutzerprinzipalname (UPN) verwendet.|
-| 80005| Authentifizierungs-Agent: Fehler aufgetreten.|
-| 80007| Der Authentifizierungs-Agent kann das Kennwort des Benutzers nicht überprüfen.|
-| 80010| Der Authentifizierungs-Agent kann das Kennwort nicht entschlüsseln.|
-| 80011| Der Authentifizierungs-Agent kann den Entschlüsselungsschlüssel nicht abrufen.|
-| 81001| Das Kerberos-Ticket des Benutzers ist zu groß.|
-| 81002| Das Kerberos-Ticket des Benutzers kann nicht überprüft werden.|
-| 81003| Das Kerberos-Ticket des Benutzers kann nicht überprüft werden.|
-| 81004| Fehler beim Versuch, die Kerberos-Authentifizierung durchzuführen.|
-| 81008| Das Kerberos-Ticket des Benutzers kann nicht überprüft werden.|
-| 81009| Das Kerberos-Ticket des Benutzers kann nicht überprüft werden.|
-| 81010| Fehler beim nahtlosen einmaligen Anmelden, da das Kerberos-Ticket des Benutzers abgelaufen oder ungültig ist.|
-| 81011| Das Benutzerobjekt konnte anhand der Informationen im Kerberos-Ticket des Benutzers nicht gefunden werden.|
-| 81012| Der Benutzer, der versucht, sich an Azure AD anzumelden, unterscheidet sich von dem Benutzer, der am Gerät angemeldet ist.|
-| 81013| Das Benutzerobjekt konnte anhand der Informationen im Kerberos-Ticket des Benutzers nicht gefunden werden.|
-| 90014| Wird in unterschiedlichen Fällen verwendet, wenn ein erwartetes Feld in den Anmeldeinformationen nicht vorhanden ist.|
-| 90093| Es wurde ein Graph mit einem unzulässigen Fehlercode für die Anforderung zurückgegeben.|
-
+|Error|BESCHREIBUNG|
+|---|---|
+|50001|Der Dienstprinzipal mit dem Namen X wurde im Mandanten mit dem Namen Y nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde. Es kann auch sein, dass der Ressourcenprinzipal nicht im Verzeichnis gefunden wurde oder ungültig ist.|
+|50008|Die SAML-Assertion fehlt oder wurde im Token falsch konfiguriert.|
+|50011|Die Antwortadresse fehlt, ist falsch konfiguriert oder stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein.|
+|50012|Ein Benutzer hat Betrug während der mehrstufigen Authentifizierung gemeldet.|
+|50053|Das Konto ist gesperrt, weil der Benutzer zu häufig versucht hat, sich mit einer falschen Benutzer-ID bzw. einem falschen Kennwort anzumelden.|
+|50054|Für die Authentifizierung wurde ein altes Kennwort verwendet.|
+|50055|Ungültiges Kennwort. Es wurde ein abgelaufenes Kennwort eingegeben.|
+|50057|Das Benutzerkonto ist deaktiviert.|
+|50058|In den angegebenen Anmeldeinformationen wurden keine Informationen zur Benutzeridentität gefunden, der Benutzer wurde unter dem Mandanten nicht gefunden, im Hintergrund wurde eine Anforderung gesendet, aber es hat sich kein Benutzer angemeldet, oder der Benutzer konnte vom Dienst nicht authentifiziert werden.|
+|50074|Der Benutzer hat die MFA-Überprüfung nicht bestanden.|
+|50079|Der Benutzer muss sich für die zweistufige Authentifizierung registrieren.|
+|50089|Fehler bei der Überprüfung des Flow-Tokens aufgrund eines Tokenablaufs.|
+|50097|Gerät ist nicht authentifiziert.|
+|50105|Der angemeldete Benutzer ist keiner Rolle für diese Anwendung zugewiesen.|
+|50126|Ungültiger Benutzername bzw. ungültiges Kennwort oder ungültiger lokaler Benutzername bzw. Kennwort.|
+|50131|Wird für verschiedene Fehler in Bezug auf den bedingten Zugriff verwendet. Beispiele: Fehlerhafter Windows-Gerätestatus, Blockierung der Anforderung aufgrund von verdächtigen Aktivitäten und Entscheidungen gemäß Zugriffs- und Sicherheitsrichtlinien.|
+|50133|Die Sitzung ist ungültig, weil das Kennwort abgelaufen ist oder vor Kurzem geändert wurde.|
+|50144|Das Active Directory-Kennwort des Benutzers ist abgelaufen.|
+|65001|Anwendung X ist nicht berechtigt, auf Anwendung Y zuzugreifen, oder die Berechtigung wurde widerrufen. Oder: Der Benutzer oder Administrator hat der Verwendung der Anwendung mit ID X nicht zugestimmt. Senden Sie eine interaktive Autorisierungsanforderung für diesen Benutzer und diese Ressource. Oder: Der Benutzer oder Administrator hat nicht zugestimmt, die Anwendung mit ID X zu verwenden. Senden Sie eine Autorisierungsanforderung an Ihren Mandantenadministrator, damit dieser im Namen der App Y für Ressource Z fungiert.|
+|65005|Die für die Anwendung erforderliche Liste für den Ressourcenzugriff enthält keine Anwendungen, die von der Ressource ermittelt werden können, die Clientanwendung hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben.|
+|70001|Die Anwendung mit dem Namen X wurde im Mandanten mit dem Namen Y nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierung an den falschen Mandanten gesendet.|
+|80001|Der Authentifizierungs-Agent kann keine Verbindung mit Active Directory herstellen.|
+|80002|Zeitüberschreitung für die Anforderung zur Kennwortüberprüfung des Authentifizierungs-Agents.|
+|80003|Der Authentifizierungs-Agent hat eine ungültige Antwort erhalten.|
+|80004|In der Anmeldeanforderung wurde ein falscher Benutzerprinzipalname (UPN) verwendet.|
+|80005|Authentifizierungs-Agent: Fehler aufgetreten.|
+|80007|Der Authentifizierungs-Agent kann das Kennwort des Benutzers nicht überprüfen.|
+|80010|Der Authentifizierungs-Agent kann das Kennwort nicht entschlüsseln.|
+|80011|Der Authentifizierungs-Agent kann den Entschlüsselungsschlüssel nicht abrufen.|
+|81001|Das Kerberos-Ticket des Benutzers ist zu groß.|
+|81002|Das Kerberos-Ticket des Benutzers kann nicht überprüft werden.|
+|81003|Das Kerberos-Ticket des Benutzers kann nicht überprüft werden.|
+|81004|Fehler beim Versuch, die Kerberos-Authentifizierung durchzuführen.|
+|81008|Das Kerberos-Ticket des Benutzers kann nicht überprüft werden.|
+|81009|Das Kerberos-Ticket des Benutzers kann nicht überprüft werden.|
+|81010|Fehler beim nahtlosen einmaligen Anmelden, da das Kerberos-Ticket des Benutzers abgelaufen oder ungültig ist.|
+|81011|Das Benutzerobjekt konnte anhand der Informationen im Kerberos-Ticket des Benutzers nicht gefunden werden.|
+|81012|Der Benutzer, der versucht, sich an Azure AD anzumelden, unterscheidet sich von dem Benutzer, der am Gerät angemeldet ist.|
+|81013|Das Benutzerobjekt konnte anhand der Informationen im Kerberos-Ticket des Benutzers nicht gefunden werden.|
+|90014|Wird in unterschiedlichen Fällen verwendet, wenn ein erwartetes Feld in den Anmeldeinformationen nicht vorhanden ist.|
+|90093|Es wurde ein Graph mit einem unzulässigen Fehlercode für die Anforderung zurückgegeben.|
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](active-directory-reporting-activity-sign-ins.md).
-

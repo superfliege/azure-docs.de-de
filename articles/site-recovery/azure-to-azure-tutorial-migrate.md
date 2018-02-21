@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/07/2018
 ms.author: raynew
 ms.openlocfilehash: e7b925d2daed11ee4e070cda6bcbd4a3511d9c17
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="migrate-azure-vms-to-another-region"></a>Migrieren virtueller Azure-VMs in eine andere Region
+# <a name="migrate-azure-vms-to-another-region"></a>Migrieren virtueller Azure-Computer zu einer anderen Region
 
 Zusätzlich zur Verwendung des Diensts [Azure Site Recovery](site-recovery-overview.md) zur Verwaltung und Orchestrierung der Notfallwiederherstellung von lokalen Computern und Azure-VMs für die BCDR-Zwecke (Business Continuity/Disaster Recovery, Geschäftskontinuität und Notfallwiederherstellung) können Sie Site Recovery auch zur Migration von Azure-VMs in eine sekundäre Region verwenden. Um Azure-VMs zu migrieren, aktivieren Sie die Replikation für diese VMs und führen für sie ein Failover aus der primären Region in die sekundäre Region Ihrer Wahl durch.
 
@@ -96,7 +96,7 @@ Der neue Tresor wird dem **Dashboard** unter **Alle Ressourcen** und der Hauptse
 2. Wählen Sie unter **Quelle** die Option **Azure – VORSCHAU**.
 3. Wählen Sie unter **Quellstandort** die Azure-Quellregion aus, in der Ihre VMs derzeit ausgeführt werden.
 4. Wählen Sie das Ressourcen-Manager-Bereitstellungsmodell. Wählen Sie dann die **Quellressourcengruppe** aus.
-5. Klicken Sie auf **OK**, um die Einstellungen zu speichern.
+5. Klicken Sie auf **OK** , um die Einstellungen zu speichern.
 
 
 ## <a name="enable-replication-for-azure-vms"></a>Aktivieren der Replikation für Azure-VMs

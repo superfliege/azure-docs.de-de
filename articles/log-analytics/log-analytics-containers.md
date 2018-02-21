@@ -3,7 +3,7 @@ title: "Containerüberwachungslösung in Azure Log Analytics | Microsoft-Dokumen
 description: "Die Containerüberwachungslösung in Log Analytics unterstützt Sie beim Anzeigen und Verwalten Ihrer Docker- und Windows-Containerhosts an einem zentralen Ort."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
-ms.author: magoedte;banders
-ms.openlocfilehash: 4087cb787e43c3d1b40ad082e84534b34918c9e9
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.author: magoedte
+ms.openlocfilehash: b3f78f6cc89a3d4bf8712c339f66b5d50f373919
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Containerüberwachungslösung in Log Analytics
 
@@ -97,7 +97,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
   - Für eigenständige Hosts:
     - Auf unterstützten Linux-Betriebssystemen installieren Sie zunächst Docker, und führen Sie es aus. Anschließend installieren und konfigurieren Sie den [OMS-Agent für Linux](log-analytics-agent-linux.md).  
     - Unter CoreOS kann der OMS-Agent für Linux nicht ausgeführt werden. Stattdessen führen Sie eine Containerversion des OMS-Agents für Linux aus. Lesen Sie [Linux-Containerhosts mit CoreOS](#for-all-linux-container-hosts-including-coreos) oder [Azure Government-Linux-Containerhosts mit CoreOS](#for-all-azure-government-linux-container-hosts-including-coreos), wenn Sie in Azure Government Cloud mit Containern arbeiten.
-    - Installieren Sie unter Windows Server 2016 und Windows 10 das Docker-Modul und den Client, und stellen Sie dann eine Verbindung mit einem Agent her, um Informationen zu sammeln und sie an Log Analytics zu senden. Wenn Sie über eine Windows-Umgebung verfügen, lesen Sie [Installieren und Konfigurieren von Windows-Containerhosts](#install-and-configure-windows-container-hosts).
+    - Installieren Sie unter Windows Server 2016 und Windows 10 die Docker-Engine und den Client, und stellen Sie dann eine Verbindung mit einem Agent her, um Informationen zu sammeln und sie an Log Analytics zu senden. Wenn Sie über eine Windows-Umgebung verfügen, lesen Sie [Installieren und Konfigurieren von Windows-Containerhosts](#install-and-configure-windows-container-hosts).
   - Für Docker-Orchestrierung mit mehreren Hosts:
     - Falls Sie über eine Red Hat OpenShift-Umgebung verfügen, helfen Ihnen die Informationen unter [Konfigurieren eines OMS-Agents für Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift) weiter.
     - Wenn Sie über einen Kubernetes-Cluster verfügen, der den Azure Container Service verwendet, lesen Sie [Konfigurieren eines OMS-Agents für Kubernetes](#configure-an-oms-agent-for-kubernetes).
@@ -105,7 +105,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
     - Wenn Sie über eine Docker Swarm-Modus-Umgebung verfügen, erhalten Sie weitere Informationen unter [Konfigurieren eines OMS-Agent für Docker Swarm](#configure-an-oms-agent-for-docker-swarm).
     - Wenn Sie Container mit Service Fabric verwenden, helfen Ihnen die Informationen unter [Übersicht über Azure Service Fabric ](../service-fabric/service-fabric-overview.md) weiter.
 
-Weitere Informationen zum Installieren und Konfigurieren von Docker-Modulen auf Windows-Computern finden Sie im Artikel [Docker-Modul unter Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+Weitere Informationen zum Installieren und Konfigurieren von Docker-Engines auf Windows-Computern finden Sie im Artikel [Docker-Engine unter Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 > [!IMPORTANT]
 > Docker muss ausgeführt werden, **bevor** Sie den [OMS-Agent für Linux](log-analytics-agent-linux.md) auf Ihren Containerhosts installieren. Wenn Sie den Agent bereits vor der Installation von Docker installiert haben, müssen Sie den OMS-Agent für Linux erneut installieren. Weitere Informationen zu Docker finden Sie auf der [Docker-Website](https://www.docker.com).
@@ -402,8 +402,8 @@ Für Windows Kubernetes verwenden Sie ein Skript, um die YAML-Datei mit Geheimni
         ```
     3. Erstellen Ihres OMS-Agent-DaemonSet durch Ausführen von ``` kubectl create -f omsagentsecret.yaml ```
     4. Führen Sie zur Überprüfung Folgendes aus:
-    
-        ``` 
+
+        ```
         root@ubuntu16-13db:~# kubectl get secrets
         ```
 
@@ -418,13 +418,13 @@ Für Windows Kubernetes verwenden Sie ein Skript, um die YAML-Datei mit Geheimni
         Namespace:      default
         Labels:         <none>
         Annotations:    <none>
-    
+
         Type:   Opaque
-    
+
         Data
         ====
         WSID:   36 bytes
-        KEY:    88 bytes 
+        KEY:    88 bytes
         ```
 
     5. Erstellen Ihres OMS-Agent-DaemonSet durch Ausführen von ```kubectl create -f ws-omsagent-de-secrets.yaml```
@@ -437,9 +437,9 @@ Für Windows Kubernetes verwenden Sie ein Skript, um die YAML-Datei mit Geheimni
     omsagent   1         1         <none>          1h
     ```
 
-3. Zum Installieren des Agents auf den Workerknoten, die Windows ausführen, führen Sie die Schritte im Abschnitt [Installieren und Konfigurieren von Windows-Containerhosts](#install-and-configure-windows-container-hosts) aus. 
+3. Zum Installieren des Agents auf den Workerknoten, die Windows ausführen, führen Sie die Schritte im Abschnitt [Installieren und Konfigurieren von Windows-Containerhosts](#install-and-configure-windows-container-hosts) aus.
 
-#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>Verwenden von Helm zum Bereitstellen des OMS-Agents unter Linux Kubernetes 
+#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>Verwenden von Helm zum Bereitstellen des OMS-Agents unter Linux Kubernetes
 Führen Sie die folgenden Schritte aus, um Helm zum Bereitstellen des OMS-Agents für Ihre Linux Kubernetes-Umgebung zu verwenden.
 
 1. Erstellen Ihres OMS-Agent-DaemonSet durch Ausführen von ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
@@ -510,7 +510,7 @@ Zum Einrichten einer TCP-Named Pipe für Windows Server müssen mehrere Schritte
     }
     ```
 
-Weitere Informationen zur Docker-Daemon-Konfiguration mit Windows-Containern finden Sie unter [Docker-Modul unter Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+Weitere Informationen zur Docker-Daemon-Konfiguration mit Windows-Containern finden Sie unter [Docker-Engine unter Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 
 #### <a name="install-windows-agents"></a>Installieren des Windows-Agents
@@ -653,7 +653,7 @@ Damit zeigen Sie die Liste der Leistungsmetriken an, die für einen einzelnen Co
 ## <a name="example-log-search-queries"></a>Beispielabfragen für die Protokollsuche
 Es ist oft hilfreich, die Erstellung von Abfragen ausgehend von einem oder zwei Beispielen zu beginnen und diese dann an die eigene Umgebung anzupassen. Als Ausgangspunkt können Sie im Bereich **Beispielabfragen** experimentieren, um komplexere Abfragen zu erstellen.
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Containerabfragen](./media/log-analytics-containers/containers-queries.png)
 
