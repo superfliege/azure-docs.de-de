@@ -87,6 +87,7 @@
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
 #### [Node.js](iot-hub-node-node-file-upload.md)
+#### [Python](iot-hub-python-python-file-upload.md)
 ### Erste Schritte mit Gerätezwillingen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-twin-getstarted.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-twin-getstarted.md)
@@ -110,15 +111,19 @@
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-twin-how-to-configure.md)
 #### [Java-Back-End-/Java-Gerät](iot-hub-java-java-twin-how-to-configure.md)
+#### [Python-Back-End/Python-Gerät](iot-hub-python-python-twin-how-to-configure.md)
 ### Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-firmware-update.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-firmware-update.md)
 #### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-firmware-update.md)
 #### [Java-Back-End-/Java-Gerät](iot-hub-java-java-firmware-update.md)
+#### [Python-Back-End/Python-Gerät](iot-hub-python-python-firmware-update.md)
 ### Planen und Übertragen von Aufträgen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-schedule-jobs.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-schedule-jobs.md)
-#### [Java](iot-hub-java-java-schedule-jobs.md)
+#### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-schedule-jobs.md)
+#### [Java-Back-End-/Java-Gerät](iot-hub-java-java-schedule-jobs.md)
+#### [Python-Back-End/Python-Gerät](iot-hub-python-python-schedule-jobs.md)
 
 ## Verwalten
 ### Erstellen eines IoT Hubs 
