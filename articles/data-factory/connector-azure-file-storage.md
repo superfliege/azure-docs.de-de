@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b3f093f84758fe8622f09212b6a11a2c5f3795aa
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 772af3bce6947a92fa62a93a84ee84ee34093d82
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus bzw. in Azure File Storage mithilfe von Azure Data Factory
 
@@ -47,7 +47,7 @@ Folgende Eigenschaften werden für den mit Azure File Storage verknüpften Diens
 | type | Die type-Eigenschaft muss auf **FileServer** festgelegt werden. | Ja |
 | host | Gibt den Azure File Storage-Endpunkt als `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"` an. | Ja |
 | userid | Geben Sie den Benutzer für den Zugriff auf Azure File Storage als `"userid": "AZURE\\<storage name>"` an. | Ja |
-| password | Geben Sie den Speicherzugriffsschlüssel an. Legen Sie für dieses Feld „SecureString“ fest.<br/> | Ja |
+| password | Geben Sie den Speicherzugriffsschlüssel an. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Quelle: Nein, Senke: Ja |
 
 >[!IMPORTANT]
@@ -131,7 +131,7 @@ Wenn Sie Daten aus Azure File Storage kopieren möchten, legen Sie den Quelltyp 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **FileSystemSource** festgelegt werden. |Ja |
-| recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf „true“ festgelegt und die Senke ein dateibasierter Speicher ist, wird kein leerer Ordner/Unterordner in die Senke kopiert bzw. in dieser erstellt.<br/>Zulässige Werte sind **true** (Standard) oder **false**. | Nein  |
+| recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf TRUE festgelegt und die Senke ein dateibasierter Speicher ist, wird ein leerer Ordner/Unterordner nicht in die Senke kopiert bzw. nicht in ihr erstellt.<br/>Zulässige Werte sind **true** (Standard) oder **false**. | Nein  |
 
 **Beispiel:**
 

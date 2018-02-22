@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 3b7096a073b509217a6ed29b53f88f912e6613f6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 7946958bec8b2f444155b5a9701f1f7401fe4f3c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus-Verwaltungsbibliotheken
 
@@ -33,7 +33,7 @@ Die Azure Service Bus-Verwaltungsbibliotheken können dynamisch Service Bus-Name
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung der Service Bus-Verwaltungsbibliotheken müssen Sie zunächst eine Authentifizierung mit dem Dienst Azure Active Directory (AAD) durchführen. AAD erfordert, dass Sie sich als Dienstprinzipal authentifizieren. Dadurch erhalten Sie Zugriff auf Ihre Azure-Ressourcen. Informationen zum Erstellen eines Dienstprinzipals finden Sie in einem der folgenden Artikel:  
+Zur Verwendung der Service Bus-Verwaltungsbibliotheken müssen Sie sich zunächst beim Azure Active Directory-Dienst (Azure AD) authentifizieren. Azure AD erfordert, dass Sie sich als Dienstprinzipal authentifizieren. Dadurch erhalten Sie Zugriff auf Ihre Azure-Ressourcen. Informationen zum Erstellen eines Dienstprinzipals finden Sie in einem der folgenden Artikel:  
 
 * [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 * [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
@@ -45,13 +45,13 @@ In diesen Tutorials erhalten Sie Werte für `AppId` (Client-ID), `TenantId` und 
 
 Das Muster zum Bearbeiten einer beliebigen Service Bus-Ressource folgt einem gemeinsamen Protokoll:
 
-1. Rufen Sie ein Token aus Azure Active Directory mithilfe der **Microsoft.IdentityModel.Clients.ActiveDirectory**-Bibliothek ab.
+1. Rufen Sie mithilfe der **Microsoft.IdentityModel.Clients.ActiveDirectory**-Bibliothek ein Token aus Azure AD ab:
    ```csharp
    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
    var result = await context.AcquireTokenAsync("https://management.core.windows.net/", new ClientCredential(clientId, clientSecret));
    ```
-2. Erstellen Sie das Objekt `ServiceBusManagementClient`.
+2. Erstellen Sie das `ServiceBusManagementClient`-Objekt:
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -60,7 +60,7 @@ Das Muster zum Bearbeiten einer beliebigen Service Bus-Ressource folgt einem gem
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. Legen Sie die `CreateOrUpdate`-Parameter auf Ihre spezifischen Werte fest.
+3. Legen Sie die `CreateOrUpdate`-Parameter auf Ihre spezifischen Werte fest:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()
@@ -69,12 +69,13 @@ Das Muster zum Bearbeiten einer beliebigen Service Bus-Ressource folgt einem gem
        EnablePartitioning = true
    };
    ```
-4. Führen Sie den Aufruf aus.
+4. Führen Sie den Aufruf aus:
 
    ```csharp
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [.NET-Verwaltungsbeispiel](https://github.com/Azure-Samples/service-bus-dotnet-management/)
 * [Microsoft.Azure.Management.ServiceBus-API-Referenz](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

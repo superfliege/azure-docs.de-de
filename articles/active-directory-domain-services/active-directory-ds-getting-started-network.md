@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 02/05/2018
 ms.author: maheshu
-ms.openlocfilehash: 680ffc41ab96d69153ef7039698bf9285ed6ce16
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7c84ac3318bbd63129b04711c62dc441b9d35285
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 
@@ -46,6 +46,9 @@ Die nächste Konfigurationsaufgabe besteht in der Erstellung eines virtuellen Az
 
     ![Auswählen eines virtuellen Netzwerks](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 
+  > [!WARNING]
+  > Stellen Sie sicher, dass Sie einen Adressraum auswählen, der in dem privaten IP-Adressraum liegt. IP-Adressen, die Sie nicht besitzen und die sich im öffentlichen Adressraum befinden, führen zu Fehlern in Azure AD Domain Services.
+
 5. **Bestehendes virtuelles Netzwerk:** Wenn Sie planen, ein bestehendes virtuelles Netzwerk auszuwählen, [erstellen Sie ein dediziertes Subnetz mithilfe der Erweiterung für virtuelle Netzwerke](../virtual-network/virtual-networks-create-vnet-arm-pportal.md), und wählen Sie dieses Subnetz anschließend aus. Klicken Sie auf **Virtuelles Netzwerk**, um ein virtuelles Netzwerk auszuwählen. Klicken Sie auf **Subnetz**, um das dedizierte Subnetz in dem bestehenden virtuellen Netzwerk auszuwählen, in dem Ihre neue verwaltete Domäne aktiviert werden soll. Wenn Sie fertig sind, klicken Sie auf **OK**.
 
     ![Auswählen eines Subnetzes innerhalb des virtuellen Netzwerks](./media/getting-started/domain-services-blade-network-pick-subnet.png)
@@ -54,7 +57,7 @@ Die nächste Konfigurationsaufgabe besteht in der Erstellung eines virtuellen Az
   > **Richtlinien für das Auswählen eines Subnetzes**
   > 1. Verwenden Sie ein dediziertes Subnetz für Azure AD Domain Services. Stellen Sie für dieses Subnetz keine weiteren virtuellen Computer bereit. Diese Konfiguration ermöglicht es Ihnen, Netzwerksicherheitsgruppen (NSGs) für Ihre Workloads bzw. virtuellen Computer zu konfigurieren, ohne Ihre verwaltete Domäne zu unterbrechen. Einzelheiten dazu finden Sie unter [networking considerations for Azure Active Directory Domain Services (Netzwerkaspekte für Azure Active Directory Domain Services)](active-directory-ds-networking.md).
   2. Wählen Sie für die Bereitstellung von Azure AD Domain Services nicht das Gatewaysubnetz, weil es sich dabei um eine nicht unterstützte Konfiguration handelt.
-  3. Stellen Sie sicher, dass das von Ihnen ausgewählte Subnetz über einen ausreichend verfügbaren Adressraum von mindestens 3-5 verfügbaren IP-Adressen verfügt.
+  3. Stellen Sie sicher, dass das von Ihnen ausgewählte Subnetz über einen ausreichend verfügbaren Adressraum von mindestens 3-5 verfügbaren IP-Adressen verfügt und im privaten IP-Adressraum liegt.
   >
 
 6. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite **Administratorgruppe** des Assistenten zu gelangen.

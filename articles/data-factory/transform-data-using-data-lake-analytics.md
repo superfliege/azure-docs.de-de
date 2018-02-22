@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: abnarain
-ms.openlocfilehash: 4ae54bfda21d06d3d6ec963aaa17eba2b6e04de3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a2cf2ac8ac099a92e1534c72d80be6c9647bec59
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,9 +47,12 @@ Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die 
 
 ### <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
 Der mit Azure Data Lake Analytics verknüpfte Dienst erfordert für die Verbindung mit dem Azure Data Lake Analytics-Dienst eine Dienstprinzipalauthentifizierung. Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren Sie in Azure Active Directory (Azure AD) eine Anwendungsentität und gewähren ihr Zugriff auf Data Lake Analytics und den verwendeten Data Lake Store. Eine ausführliche Anleitung finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
+
 * Anwendungs-ID
 * Anwendungsschlüssel 
 * Mandanten-ID
+
+Verwenden Sie den [Assistenten für das Hinzufügen von Benutzern](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user), um Azure Data Lake Analytics die Dienstprinzipalberechtigung zu erteilen.
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 

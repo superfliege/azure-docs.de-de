@@ -3,7 +3,7 @@ title: "Erhöhen der Zugriffsrechte für Mandantenadministratoren – Azure AD |
 description: Dieses Thema beschreibt die integrierten Rollen der rollenbasierten Zugriffssteuerung (RBAC).
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: rqureshi
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2017
-ms.author: andredm
-ms.openlocfilehash: 894ccd13684a79590b75821514ef6922abb8fdaf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: rolyon
+ms.openlocfilehash: 8be842018cadfc36eb74b14a02a8f9bc9ddf098d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Erhöhen der Rechte als Mandantenadministrator mit der rollenbasierten Zugriffssteuerung
 
@@ -101,7 +101,7 @@ Im grundlegenden Vorgang werden die folgenden Schritte verwendet:
 
 Beim Aufruf von *elevateAccess* erstellen Sie eine Rollenzuweisung für sich selbst. Um diese Berechtigungen zu widerrufen, müssen Sie die Zuweisung löschen.
 
-1.  Rufen Sie „GET roleDefinitions where roleName = User Access-Administrator“ auf, um die Namens-GUID der Rolle des Benutzerzugriffsadministrators abzurufen.
+1.  Rufen Sie „GET roleDefinitions“ mit „roleName = User Access-Administrator“ auf, um die Namens-GUID der Rolle des Benutzerzugriffsadministrators abzurufen.
     1.  GET *https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User+Access+Administrator*
 
         ```
@@ -127,9 +127,9 @@ Beim Aufruf von *elevateAccess* erstellen Sie eine Rollenzuweisung für sich sel
     1. GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'*
     
         >[!NOTE] 
-        >Ein Mandantenadministrator sollte nicht viele Zuweisungen haben. Wenn die obige Abfrage zu viele Zuweisungen zurückgibt, können Sie auch Abfragen für alle Zuweisungen auf der Mandantenbereichsebene durchführen und dann die Ergebnisse filtern: GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()*.
+        >Ein Mandantenadministrator sollte nicht über zu viele Zuweisungen verfügen. Wenn die obige Abfrage zu viele Zuweisungen zurückgibt, können Sie auch Abfragen für alle Zuweisungen auf der Mandantenbereichsebene durchführen und dann die Ergebnisse filtern: GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()*
         
-    2. Die obigen Aufrufe geben eine Liste von Rollenzuweisungen zurück. Suchen Sie die Rollenzuweisung, für die der Bereich „/“ ist und die RoleDefinitionId mit der Rollennamen-GUID endet, die Sie in Schritt 1 ermittelt haben, und PrincipalId der ObjectId des Mandantenadministrators entspricht. Die Rollenzuweisung sieht folgendermaßen aus:
+    2. Mit den oben aufgeführten Aufrufe wird eine Liste von Rollenzuweisungen zurückgegeben. Suchen Sie die Rollenzuweisung, für die der Bereich „/“ ist und die RoleDefinitionId mit der Rollennamen-GUID endet, die Sie in Schritt 1 ermittelt haben, und PrincipalId der ObjectId des Mandantenadministrators entspricht. Die Rollenzuweisung sieht folgendermaßen aus:
 
         ```
         {"value":[{"properties":{

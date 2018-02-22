@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/25/2018
-ms.openlocfilehash: 87bd27147d20fec8c5839b744d70f215e2c1ec47
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 3c1c259cc58eb1adab39d9c0ca376726b798186e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Häufig gestellte Fragen zu Azure Database Migration Service
 Dieser Artikel enthält häufig gestellte Fragen zur Verwendung von Azure Database Migration Service sowie entsprechende Antworten.
@@ -81,6 +81,9 @@ Die Datenmigration mit diesem Dienst lässt sich durch folgende Maßnahmen besch
 
 ### <a name="q-how-do-i-set-up-an-azure-virtual-network"></a>F: Wie richte ich ein virtuelles Azure-Netzwerk ein?
 Die Einrichtung eines Azure-VNets wird in mehreren Microsoft-Tutorials ausführlich beschrieben. Die offizielle Dokumentation befindet sich jedoch im Artikel [Virtuelles Azure-Netzwerk](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview).
+
+### <a name="q-why-is-my-azure-database-migration-service-unavailable-or-stopped"></a>F: Warum ist mein Azure Database Migration Service nicht verfügbar oder wurde beendet?
+Wenn der Benutzer den Azure Database Migration Service (DMS) explizit beendet oder der Dienst für einen Zeitraum von 24 Stunden inaktiv ist, wird der Dienst beendet oder automatisch angehalten. In jedem Fall ist der Dienst nicht verfügbar und beendet.  Um aktive Migrationen wieder aufzunehmen, starten Sie den Dienst neu.
 
 ### <a name="q-where-can-i-leave-feedback-about-the-azure-database-migration-service"></a>F: Wo kann ich Feedback zu Azure Database Migration Service abgeben?
 Teilen Sie uns Ihre Meinung mit! Feedback und Vorschläge für Azure Database Migration Service können Sie uns über [UserVoice](https://feedback.azure.com/forums/906100-azure-database-migration-service) zukommen lassen.

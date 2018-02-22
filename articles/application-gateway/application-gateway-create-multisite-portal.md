@@ -1,142 +1,189 @@
 ---
-title: Hosten mehrerer Websites mit Azure Application Gateway| Microsoft-Dokumentation
-description: "Auf dieser Seite finden Sie Anweisungen zum Konfigurieren eines vorhandenen Azure-Anwendungsgateways zum Hosten mehrerer Webanwendungen über dasselbe Gateway mit dem Azure-Portal."
-documentationcenter: na
+title: "Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites – Azure-Portal | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie mit dem Azure-Portal ein Anwendungsgateway erstellen, mit dem mehrere Websites gehostet werden.
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 95f892f6-fa27-47ee-b980-7abf4f2c66a9
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 28a7fcb3e08a9c4b6a27e9fbc8d3ebae309adc62
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 403c6c254d8547b09e42f0b1561e5eff350a1f9b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="configure-an-existing-application-gateway-for-hosting-multiple-web-applications"></a>Konfigurieren eines vorhandenen Anwendungsgateways zum Hosten mehrerer Webanwendungen
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites mit dem Azure-Portal
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-create-multisite-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-> 
-> 
+Sie können mit dem Azure-Portal ein [Hosting mehrerer Websites](application-gateway-multi-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial erstellen Sie Back-End-Pools mithilfe von VM-Skalierungsgruppen. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr von geeigneten Servern in den Pools empfangen wird. In diesem Tutorial wird vorausgesetzt, dass Sie mehrere Domänen besitzen und die Beispiele zu *www.contoso.com* und *www.fabrikam.com* verwenden.
 
-Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Webanwendung über dasselbe Anwendungsgateway bereitzustellen. Das Prinzip basiert auf einem Hostheader in der eingehenden HTTP-Anforderung, anhand dessen bestimmt wird, welcher Listener den Datenverkehr empfängt. Der Listener leitet dann den Datenverkehr an den in der Regeldefinition des Gateways konfigurierten Back-End-Pool. Bei SSL-fähigen Webanwendungen wählt das Anwendungsgateway den passenden Listener für den Webdatenverkehr anhand der SNI-Erweiterung (Servernamensanzeige) aus. Ein gängiges Szenario für das Hosten mehrerer Websites ist der Lastenausgleich von Anforderungen für verschiedene Webdomänen auf verschiedene Back-End-Serverpools. Auf ähnliche Weise können auch mehrere Unterdomänen derselben Stammdomäne im selben Anwendungsgateway gehostet werden.
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-## <a name="scenario"></a>Szenario
+> [!div class="checklist"]
+> * Erstellen eines Anwendungsgateways
+> * Erstellen von virtuellen Computern für Back-End-Server
+> * Erstellen von Back-End-Pools mit den Back-End-Servern
+> * Erstellen der Listener und Routingregeln
+> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Im folgenden Beispiel verarbeitet das Anwendungsgateway Datenverkehr für „contoso.com“ und „fabrikam.com“ mit zwei Back-End-Serverpools: dem Contoso-Serverpool und dem Fabrikam-Serverpool. Mit einem ähnlichen Setup können auch Unterdomänen wie „app.contoso.com“ und „blog.contoso.com“ gehostet werden.
+![Beispiel zum Routing für mehrere Websites](./media/application-gateway-create-multisite-portal/scenario.png)
 
-![Szenario mit mehreren Standorten][multisite]
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Dieses Szenario fügt einem vorhandenen Anwendungsgateway Multisite-Unterstützung hinzu. Damit dieses Szenario vervollständigt werden kann, muss ein vorhandenes Anwendungsgateway zur Konfiguration verfügbar sein. Lesen Sie unter [Erstellen eines Anwendungsgateways mit dem Portal](application-gateway-create-gateway-portal.md), wie ein einfaches Anwendungsgateway im Portal erstellt wird.
+Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 
-Folgende Schritte sind zum Aktualisieren des Anwendungsgateways erforderlich:
+## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-1. Erstellen von Back-End-Pools für jede Website.
-2. Erstellen eines neuen Listeners für jede Website, die das Anwendungsgateway unterstützt
-3. Erstellen von Regeln zum Zuordnen der einzelnen Listener zum entsprechenden Back-End.
+Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. In diesem Beispiel werden zwei Subnetze erstellt: eins für das Anwendungsgateway und eins für die Back-End-Server. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway.
 
-## <a name="requirements"></a>Anforderungen
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Neu**.
+2. Klicken Sie auf **Netzwerk** und dann in der Liste der ausgewählten Elemente auf **Application Gateway**.
+3. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
 
-* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse/VIP sein. Der FQDN kann ebenfalls verwendet werden.
-* **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-* **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll („Http“ oder „Https“; jeweils unter Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird). Bei Anwendungsgateways, die mehrere Websites hosten können, werden zudem der Hostname und SNI-Indikatoren hinzugefügt.
-* **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool verbunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr geleitet werden soll, wenn er einen bestimmten Listener erreicht. Regeln werden in der Reihenfolge verarbeitet, in der sie aufgeführt sind, wobei Datenverkehr gemäß der ersten erfüllten Regel unabhängig von der Spezifizität geleitet wird. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
-* **Zertifikate:** Für jeden Listener ist ein eindeutiges Zertifikat erforderlich, in diesem Beispiel werden 2 Listener für Multisite erstellt. Zwei PFX-Zertifikate und Kennwörter müssen dafür erstellt werden.
+    - *myAppGateway*: Name des Anwendungsgateways
+    - *myResourceGroupAG*: neue Ressourcengruppe
 
-## <a name="create-back-end-pools-for-each-site"></a>Erstellen von Back-End-Pools für jede Website
+    ![Erstellen eines neuen Anwendungsgateways](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
 
-Für jede Website, die das Anwendungsgateway unterstützt, ist ein Back-End-Pool erforderlich. In diesem Fall werden 2 erstellt, einer für contoso11.com und einer für fabrikam11.com.
+4. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
+5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
 
-### <a name="step-1"></a>Schritt 1
+    - *myVNet*: Name des virtuellen Netzwerks
+    - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
+    - *myAGSubnet*: Subnetzname
+    - *10.0.0.0/24*: Adressraum des Subnetzes
 
-Navigieren Sie zu einem vorhandenen Anwendungsgateway im Azure-Portal (https://portal.azure.com). Wählen Sie **Back-End-Pools** und klicken Sie auf **Hinzufügen**
+    ![Virtuelles Netzwerk erstellen](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
 
-![Hinzufügen von Back-End-Pools][7]
+6. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
+7. Klicken Sie auf **Öffentliche IP-Adresse auswählen** und dann auf **Neu erstellen**, und geben Sie den Namen der öffentlichen IP-Adresse ein. In diesem Beispiel heißt die öffentliche IP-Adresse *myAGPublicIPAddress*. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
+8. Übernehmen Sie die Standardwerte für die Listenerkonfiguration, lassen Sie die Web Application Firewall deaktiviert, und klicken Sie dann auf **OK**.
+9. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **OK**, um die Netzwerkressourcen und das Anwendungsgateway zu erstellen. Die Erstellung des Anwendungsgateways kann einige Minuten dauern. Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit dem nächsten Abschnitt fortfahren.
 
-### <a name="step-2"></a>Schritt 2
+### <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes
 
-Geben Sie die Informationen für den Back-End-Pool **pool1** an, die IP-Adressen oder vollqualifizierte Domänennamen für die Back-End-Server, und klicken Sie auf **OK**
+1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myVNet**.
+2. Klicken Sie auf **Subnetze** und dann auf **Subnetz**.
 
-![Back-End-Pool pool1-Einstellungen][8]
+    ![Erstellen eines Subnetzes](./media/application-gateway-create-multisite-portal/application-gateway-subnet.png)
 
-### <a name="step-3"></a>Schritt 3
+3. Geben Sie als Name des Subnetzes *myBackendSubnet* ein, und klicken Sie auf **OK**.
 
-Klicken Sie auf dem Back-End-Pools-Blatt **Hinzufügen**, um einen zusätzlichen Back-End-Pool **pool2** hinzuzufügen, wobei die IP-Adressen oder vollqualifizierte Domänennamen für die Back-End-Server hinzugefügt werden, und klicken Sie auf **OK**
+## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-![Back-End-Pool pool2-Einstellungen][9]
+In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Server für das Anwendungsgateway verwendet werden. Sie installieren außerdem IIS auf den virtuellen Computern, um zu überprüfen, dass der Datenverkehr ordnungsgemäß geroutet wird.
 
-## <a name="create-listeners-for-each-back-end"></a>Erstellen von Listeners für jeden Back-End
+1. Klicken Sie auf **Neu**.
+2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
+3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
-Application Gateway verwendet HTTP 1.1-Hostheader, um mehrere Websites an der gleichen öffentlichen IP-Adresse und dem gleichen Port zu hosten. Der im Portal erstellte Basis-Listener enthält diese Eigenschaft nicht.
+    - *contosoVM*: Name des virtuellen Computers
+    - *azureuser*: Name des Administratorbenutzers
+    - *Azure123456!* als Kennwort
+    - Wählen Sie **Vorhandene verwenden** und dann *myResourceGroupAG* aus.
 
-### <a name="step-1"></a>Schritt 1
+4. Klicken Sie auf **OK**.
+5. Wählen Sie als Größe des virtuellen Computers **DS1_V2** aus, und klicken Sie auf **Auswählen**.
+6. Stellen Sie sicher, dass als virtuelles Netzwerk **myVNet** und als Subnetz **myBackendSubnet** ausgewählt ist. 
+7. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
+8. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
 
-Klicken Sie auf **Listeners** im vorhandenen Anwendungsgateway und auf **Multisite**, um den ersten Listener hinzuzufügen.
+### <a name="install-iis"></a>Installieren von IIS
 
-![Listeners-Übersichtsblatt][1]
+1. Öffnen Sie die interaktive Shell, und vergewissern Sie sich, dass **PowerShell** festgelegt ist.
 
-### <a name="step-2"></a>Schritt 2
+    ![Installieren der benutzerdefinierten Erweiterung](./media/application-gateway-create-multisite-portal/application-gateway-extension.png)
 
-Geben Sie die Informationen für den Listener ein. In diesem Beispiel ist SSL-Beendigung konfiguriert. Erstellen Sie einen neuen Front-End-Port. Laden Sie das PFX-Zertifikat für die SSL-Beendigung hoch. Der einzige Unterschied auf diesem Blatt im Vergleich zum Standard-Basis-Listener-Blatt ist der Hostname.
+2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
 
-![Listener-Eigenschaftsblatt][2]
+    ```azurepowershell-interactive
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    Set-AzureRmVMExtension `
+      -ResourceGroupName myResourceGroupAG `
+      -Location eastus `
+      -ExtensionName IIS `
+      -VMName contosoVM `
+      -Publisher Microsoft.Compute `
+      -ExtensionType CustomScriptExtension `
+      -TypeHandlerVersion 1.4 `
+      -Settings $publicSettings
+    ```
 
-### <a name="step-3"></a>Schritt 3
+3. Erstellen Sie den zweiten virtuellen Computer, und installieren Sie IIS mithilfe der soeben ausgeführten Schritte. Geben Sie die Namen von *fabrikamVM* als Namen und als Wert für „VMName“ in „Set-AzureRmVMExtension“ ein.
 
-Klicken Sie auf **Multisite**, um einen weiteren Listener zu erstellen, wie im vorherigen Schritt für die zweite Website beschrieben. Achten Sie darauf, dass Sie ein anderes Zertifikat für den zweiten Listener verwenden. Der einzige Unterschied auf diesem Blatt im Vergleich zum Standard-Basis-Listener-Blatt ist der Hostname. Geben Sie die Informationen für den Listener ein und klicken Sie auf **OK**.
+## <a name="create-backend-pools-with-the-virtual-machines"></a>Erstellen von Back-End-Pools mit den virtuellen Computern
 
-![Listener-Eigenschaftsblatt][3]
+1. Klicken Sie auf **Alle Ressourcen** und dann auf **myAppGateway**.
+2. Klicken Sie auf **Back-End-Pools** und dann auf **Hinzufügen**.
+3. Geben Sie als Name *contosoPool* ein, und fügen Sie mithilfe von **Ziel hinzufügen** die VM *contosoVM* hinzu.
 
-> [!NOTE]
-> Das Erstellen von Listeners im Azure-Portal für Anwendungsgateways ist eine langwierige Aufgabe, die möglicherweise einige Zeit in Anspruch nimmt, um die beiden Listener in diesem Szenario zu erstellen. Nach Abschluss zeigt das Portal die Listener wie in der folgenden Abbildung dargestellt an:
+    ![Hinzufügen von Back-End-Servern](./media/application-gateway-create-multisite-portal/application-gateway-multisite-backendpool.png)
 
-![Listener-Übersicht][4]
+4. Klicken Sie auf **OK**.
+5. Klicken Sie auf **Back-End-Pools** und dann auf **Hinzufügen**.
+6. Erstellen Sie unter Verwendung der soeben ausgeführten Schritte den Pool *fabrikamPool* mit der VM *fabrikamVM*.
 
-## <a name="create-rules-to-map-listeners-to-backend-pools"></a>Erstellen von Regeln zum Zuordnen von Listeners zu Back-End-Pools
+## <a name="create-listeners-and-routing-rules"></a>Erstellen der Listener und Routingregeln
 
-### <a name="step-1"></a>Schritt 1
+1. Klicken Sie auf **Listener** und anschließend auf **Für mehrere Standorte**.
+2. Geben Sie die folgenden Werte für den Listener ein:
+    
+    - *contosoListener*: Verwenden Sie diesen Name für den Listener.
+    - *www.contoso.com*: Ersetzen Sie diesen Beispielhostnamen durch Ihren Domänennamen.
 
-Navigieren Sie zu einem vorhandenen Anwendungsgateway im Azure-Portal (https://portal.azure.com). Wählen Sie **Regeln**, wählen Sie die vorhandene Standardregel **rule1**, und klicken Sie auf **Bearbeiten**.
+3. Klicken Sie auf **OK**.
+4. Erstellen Sie einen zweiten Listener mit dem Namen *fabrikamListener*, und verwenden Sie hierfür Ihren zweiten Domänennamen. In diesem Beispiel wird *www.fabrikam.com* verwendet.
 
-### <a name="step-2"></a>Schritt 2
+Regeln werden in der Reihenfolge verarbeitet, in der sie aufgeführt sind, wobei Datenverkehr gemäß der ersten erfüllten Regel unabhängig von der Genauigkeit weitergeleitet wird. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
 
-Füllen Sie das Regelblatt wie in der folgenden Abbildung dargestellt aus. Wählen Sie den ersten Listener und den ersten Pool. Klicken Sie zum Abschluss auf **Speichern**.
+In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die während der Erstellung des Anwendungsgateways erstellt wurde. 
 
-![Bearbeiten einer vorhandenen Regel][6]
+1. Klicken Sie auf **Regeln** und anschließend auf **Basis**.
+2. Geben Sie als Name *contosoRule* ein.
+3. Wählen Sie für den Listener *contosoListener* aus.
+4. Wählen Sie für den Back-End-Pool *contosoPool* aus.
 
-### <a name="step-3"></a>Schritt 3
+    ![Erstellen einer pfadbasierten Regel](./media/application-gateway-create-multisite-portal/application-gateway-multisite-rule.png)
 
-Klicken Sie auf **Basic rule** (Basisregel), um die 2. Regel zu erstellen. Füllen Sie das Formular mit dem zweiten Listener und dem zweiten Back-End-Pool aus, und klicken Sie zum Speichern auf **OK**.
+5. Klicken Sie auf **OK**.
+6. Erstellen Sie eine zweite Regel unter Verwendung der Namen *fabrikamRule*, *fabrikamListener* und *fabrikamPool*.
+7. Löschen Sie die Standardregel namens *rule1*, indem Sie darauf klicken und dann **Löschen** auswählen.
 
-![Blatt „einfache Regel hinzufügen“][10]
+## <a name="create-a-cname-record-in-your-domain"></a>Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Dieses Szenario schließt die Konfiguration eines vorhandenen Anwendungsgateways mit Unterstützung für mehrere Websites über das Azure-Portal ab.
+Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Die Verwendung von A-Einträgen wird nicht empfohlen, weil sich die VIP beim Neustart des Anwendungsgateways möglicherweise ändert.
+
+1. Klicken Sie auf **Alle Ressourcen** und dann auf **myAGPublicIPAddress**.
+
+    ![Notieren der DNS-Adresse des Anwendungsgateways](./media/application-gateway-create-multisite-portal/application-gateway-multisite-dns.png)
+
+2. Kopieren Sie die DNS-Adresse, und verwenden Sie sie als Wert für einen neuen CNAME-Eintrag in Ihrer Domäne.
+
+## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
+
+1. Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Verwenden Sie z.B. http://www.contoso.com.
+
+    ![Testen der Contoso-Website im Anwendungsgateway](./media/application-gateway-create-multisite-portal/application-gateway-iistest.png)
+
+2. Ändern Sie die Adresse in Ihre andere Domäne. Die Ausgabe sollte in etwa wie folgt aussehen:
+
+    ![Testen der Fabrikam-Website im Anwendungsgateway](./media/application-gateway-create-multisite-portal/application-gateway-iistest2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie unter [Web Application Firewall für Application Gateway](application-gateway-webapplicationfirewall-overview.md), wie Sie Ihre Websites schützen.
+In diesem Artikel haben Sie Folgendes gelernt:
 
-<!--Image references-->
-[1]: ./media/application-gateway-create-multisite-portal/figure1.png
-[2]: ./media/application-gateway-create-multisite-portal/figure2.png
-[3]: ./media/application-gateway-create-multisite-portal/figure3.png
-[4]: ./media/application-gateway-create-multisite-portal/figure4.png
-[5]: ./media/application-gateway-create-multisite-portal/figure5.png
-[6]: ./media/application-gateway-create-multisite-portal/figure6.png
-[7]: ./media/application-gateway-create-multisite-portal/figure7.png
-[8]: ./media/application-gateway-create-multisite-portal/figure8.png
-[9]: ./media/application-gateway-create-multisite-portal/figure9.png
-[10]: ./media/application-gateway-create-multisite-portal/figure10.png
-[multisite]: ./media/application-gateway-create-multisite-portal/multisite.png
+> [!div class="checklist"]
+> * Erstellen eines Anwendungsgateways
+> * Erstellen von virtuellen Computern für Back-End-Server
+> * Erstellen von Back-End-Pools mit den Back-End-Servern
+> * Erstellen der Listener und Routingregeln
+> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
+
+> [!div class="nextstepaction"]
+> [Erfahren Sie mehr darüber, welche weiteren Möglichkeiten Ihr Anwendungsgateway bietet](application-gateway-introduction.md)

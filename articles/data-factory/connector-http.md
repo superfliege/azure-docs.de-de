@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 232b9bed1ea719dfb76d639bc8d5274551cdab6f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 888b75ad16a3835ca988dd9aa6a146cc26e6370a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Kopieren von Daten von einem HTTP-Endpunkt mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,7 +66,7 @@ Legen Sie die Eigenschaft „authenticationType“ auf **Basic**, **Digest** ode
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Benutzername zum Zugreifen auf den HTTP-Endpunkt | Ja |
-| password | Kennwort für den Benutzer (userName). Legen Sie für dieses Feld „SecureString“ fest. | Ja |
+| password | Kennwort für den Benutzer (userName). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 
 **Beispiel**
 
@@ -100,7 +100,7 @@ Legen Sie zur Verwendung der ClientCertificate-Authentifizierung die Eigenschaft
 |:--- |:--- |:--- |
 | embeddedCertData | Base64-codierte Zertifikatdaten | Geben Sie entweder `embeddedCertData` oder `certThumbprint` an. |
 | certThumbprint | Der Fingerabdruck des Zertifikats, der im Zertifikatspeicher Ihres Computers mit der selbstgehosteten Integrationslaufzeit installiert wurde. Dieser ist nur anwendbar, wenn für „connectVia“ eine Integrationslaufzeit vom Typ „selbstgehostet“ angegeben wird. | Geben Sie entweder `embeddedCertData` oder `certThumbprint` an. |
-| password | Das Kennwort des Zertifikats Legen Sie für dieses Feld „SecureString“ fest. | Nein  |
+| password | Das Kennwort des Zertifikats Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
 
 Wenn Sie „certThumbprint“ für die Authentifizierung verwenden und das Zertifikat im persönlichen Speicher des lokalen Computers installiert wird, müssen Sie der selbstgehosteten Integrationslaufzeit Leseberechtigungen gewähren:
 

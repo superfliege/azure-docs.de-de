@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 4ed83b28fe5f0f1e9626115390f8697dfb2c8ead
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 69431979769a03b62a7f9fd7760e6eb614e37cd6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Schnellstart für Bash in Azure Cloud Shell
 
@@ -59,7 +59,7 @@ Erstellen Sie einen virtuellen Ubuntu-Computer in Ihrer neuen Ressourcengruppe. 
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
-> Die öffentlichen und privaten Schlüssel, mit denen Ihr virtueller Computer authentifiziert wird, werden von der Azure CLI 2.0 standardmäßig in `/User/.ssh/id_rsa` und `/User/.ssh/id_rsa.pub` gespeichert. Der SSH-Ordner bleibt im 5 GB großen Image der angefügten Azure Files-Freigabe erhalten.
+> Die öffentlichen und privaten Schlüssel, mit denen Ihr virtueller Computer authentifiziert wird, werden von der Azure CLI 2.0 standardmäßig in `/home/<user>/.ssh/id_rsa` und `/home/<user>/.ssh/id_rsa.pub` gespeichert. Der SSH-Ordner bleibt im 5 GB großen Image der angefügten Azure Files-Freigabe erhalten.
 
 Ihr Benutzername auf diesem virtuellen Computer ist der Benutzername, der in Cloud Shell verwendet wird ($User@Azure:).
 
@@ -78,5 +78,5 @@ Führen Sie `az group delete -n MyRG` aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erfahren Sie mehr über das Beibehalten von Dateien für Bash in Cloud Shell](persisting-shell-storage.md) <br>
-[Erfahren Sie mehr über Azure CLI 2.0](https://docs.microsoft.com/cli/azure/). <br>
-[Erfahren Sie mehr über Azure Files Storage](../storage/files/storage-files-introduction.md). <br>
+[Erfahren Sie mehr über Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
+[Erfahren Sie mehr über Azure Files-Speicher.](../storage/files/storage-files-introduction.md) <br>

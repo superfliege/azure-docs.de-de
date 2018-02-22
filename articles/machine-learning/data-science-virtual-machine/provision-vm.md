@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: d71d8e44d0327515ed302c5c902ce87587e36c7d
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 6f933c75d4829e3b2c5198aeee324f15490d8a93
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen der Data Science Virtual Machine für Windows in Azure
 Der virtuelle Microsoft Data Science-Computer ist das Image eines virtuellen Windows Azure-Computers (VM), das vorinstalliert und mit einigen gängigen Tools konfiguriert ist, die häufig für Datenanalysen und Machine Learning verwendet werden. Die enthaltenen Tools sind:
 
-* [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning-services/) Workbench
-* [Microsoft ML Server](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
+* [Azure Machine Learning](../preview/index.yml) Workbench
+* [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
 * Anaconda Python Distribution
 * Jupyter-Notebook (mit R, Python, PySpark-Kernels)
 * Visual Studio Community Edition
@@ -35,13 +35,12 @@ Der virtuelle Microsoft Data Science-Computer ist das Image eines virtuellen Win
   * Deep Learning Frameworks: Umfassender Satz von KI-Frameworks, z.B. [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/), [TensorFlow](https://www.tensorflow.org/), [Chainer](https://chainer.org/), mxNet, Keras auf der VM.
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Ein schnelles Machine Learning-System, das verschiedene Verfahren unterstützt, wie z.B. Online, Hashing, Allreduce, Reductions, Learning2Search, Active und Interactive Learning.
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Ein Tool, das eine schnelle und präzise Boosted Tree-Implementierung ermöglicht.
-  * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily, R-Analysetool zum einfachen Lernen): Ein Tool, das die ersten Schritte von Datenanalysen und Machine Learning in R vereinfacht, indem eine GUI-basierte Datenuntersuchung und -modellierung mit automatischer R-Codegenerierung verwendet wird.
+  * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily): ein Tool, das den Einstieg in Datenanalysen und maschinelles Lernen in R vereinfacht. Es ermöglicht ein GUI-basiertes Durchsuchen von Daten sowie das Modellieren mit automatischer R-Codegenerierung.
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/): Eine Software für visuelles Data Mining und Machine Learning in Java.
-  * 
-            [Apache Drill](https://drill.apache.org/): Eine schemalose SQL-Abfrage-Engine für Hadoop, NoSQL und Cloud Storage.  Unterstützt ODBC- und JDBC-Schnittstellen, um NoSQL- und Dateiabfragen mit BI-Standardtools wie PowerBI, Excel und Tableau zu ermöglichen.
+  * [Apache Drill:](https://drill.apache.org/) ein schemaloses SQL-Abfragemodul für Hadoop, NoSQL und Cloud Storage.  Unterstützt ODBC- und JDBC-Schnittstellen, um NoSQL- und Dateiabfragen mit BI-Standardtools wie PowerBI, Excel und Tableau zu ermöglichen.
 * Bibliotheken in R und Python zur Verwendung in Azure Machine Learning und anderen Azure-Diensten
 * Git einschließlich Git Bash für den Einsatz mit Quellcoderepositorys einschließlich GitHub, Visual Studio Team Services
-* Windows-Ports einiger gängiger Linux-Befehlszeilenprogramme (einschließlich awk, sed, perl, grep, find, wget, curl usw.), auf die über die Befehlszeile zugegriffen werden kann. 
+* Windows-Portierungen einiger gängiger Linux-Befehlszeilenprogramme (einschließlich awk, sed, perl, grep, find, wget, curl usw.), auf die über die Befehlszeile zugegriffen werden kann. 
 
 Die Durchführung des Data Science-Vorgangs umfasst eine Aufgabensequenz:
 
@@ -65,7 +64,7 @@ Bevor Sie eine Microsoft Data Science Virtual Machine erstellen können, benöti
 
 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>Erstellen Ihrer Microsoft Data Science Virtual Machine
-Es folgen die Schritte zum Erstellen einer Instanz der Microsoft Data Science Virtual Machine:
+Führen Sie die folgenden Schritte aus, um eine Instanz der Microsoft Data Science Virtual Machine zu erstellen:
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016)zur Auflistung der virtuellen Computer.
 2. Wählen Sie am unteren Seitenrand die Schaltfläche **Erstellen**, um einen Assistenten aufzurufen.![configure-data-science-vm](./media/provision-vm/configure-data-science-virtual-machine.png)
@@ -84,8 +83,8 @@ Es folgen die Schritte zum Erstellen einer Instanz der Microsoft Data Science Vi
    3. **Einstellungen**:
       
       1. **Verwaltete Datenträger verwenden**: Wählen Sie „Verwaltet“, wenn Sie möchten, dass Azure die Datenträger für die VM verwaltet.  Andernfalls müssen Sie ein neues oder vorhandenes Speicherkonto angeben. 
-      2. **Andere Parameter**: In der Regel verwenden Sie einfach die Standardeinstellungen. Sie können den Mauszeiger über den Informationslink bewegen, um Hilfe zu einem bestimmten Feld anzuzeigen, falls Sie nicht die Standardeinstellungen verwenden möchten.
-   4. **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind, und klicken Sie auf **Erstellen**. **HINWEIS**: Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
+      2. **Andere Parameter**: In der Regel verwenden Sie einfach die Standardeinstellungen. Zeigen Sie mit der Maus auf den jeweiligen Informationslink, um Hilfe zu bestimmten Feldern anzuzeigen, falls Sie auch andere als die Standardwerte verwenden möchten.
+    a. **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind, und klicken Sie auf **Erstellen**. **HINWEIS**: Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
 
 > [!NOTE]
 > Die Bereitstellung sollte ungefähr 10 bis 20 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
@@ -102,7 +101,7 @@ Sobald Ihre VM erstellt und bereitgestellt wurde, können Sie beginnen, die inst
 
 ### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
 
-Azure Machine Learning Workbench ist eine Desktopanwendung und Befehlszeilenschnittstelle. Workbench verfügt über eine integrierte Datenvorbereitung, bei der Ihre Schritte zur Datenvorbereitung erlernt werden, während Sie sie ausführen. Außerdem wird die Produktivität durch Features wie Projektmanagement, Ausführungsverlauf und Notebook-Integration gesteigert. Sie können die Vorteile der besten Open Source-Frameworks, z.B. TensorFlow, Cognitive Toolkit, Spark ML und scikit-learn, für die Entwicklung Ihrer Modelle nutzen. Die DSVM enthält ein Desktopsymbol (InstallAMLFromLocal) zum lokalen Extrahieren von Azure Machine Learning Workbench in das Verzeichnis %LOCALAPPDATA% jedes Benutzers. Jeder Benutzer, der Workbench verwendet, muss das einmalige Doppelklicken auf das Desktopsymbol InstallAMLFromLocal durchführen, um seine Workbench-Instanz zu installieren. Azure Machine Learning erstellt und nutzt auch eine Python-Umgebung pro Benutzer, die unter „%LOCALAPPDATA%\amlworkbench\python“ extrahiert wird.
+Azure Machine Learning Workbench ist eine Desktopanwendung und Befehlszeilenschnittstelle. Workbench verfügt über eine integrierte Datenvorbereitung, bei der Ihre Schritte zur Datenvorbereitung erlernt werden, während Sie sie ausführen. Außerdem wird die Produktivität durch Features wie Projektmanagement, Ausführungsverlauf und Notebook-Integration gesteigert. Sie können die Vorteile der besten Open-Source-Frameworks für die Entwicklung Ihrer Modelle nutzen, z.B. TensorFlow, Cognitive Toolkit, Spark ML und scikit-learn. Die DSVM enthält ein Desktopsymbol (InstallAMLFromLocal) zum lokalen Extrahieren von Azure Machine Learning Workbench in das Verzeichnis %LOCALAPPDATA% jedes Benutzers. Jeder Benutzer, der Workbench verwenden möchte, muss einmalig auf das Desktopsymbol „InstallAMLFromLocal“ doppelklicken, um seine Workbench-Instanz zu installieren. Azure Machine Learning erstellt und nutzt auch eine Python-Umgebung pro Benutzer, die unter „%LOCALAPPDATA%\amlworkbench\python“ extrahiert wird.
 
 ### <a name="microsoft-ml-server-developer-edition"></a>Microsoft ML Server Developer Edition
 Wenn Sie zu Analysezwecken Microsoft-Unternehmensbibliotheken für R oder Python (skalierbar) verwenden möchten, können Sie auf der VM die Installation von Microsoft ML Server Developer Edition (zuvor als Microsoft R Server bezeichnet) nutzen. Microsoft ML Server ist eine umfassend bereitstellbare Analytics-Plattform für Unternehmen, die für R und Python verfügbar sowie skalierbar und sicher ist und kommerziell unterstützt wird. Dank vielfältiger Big Data-Statistiken, Vorhersagemodellierung und Machine Learning-Funktionen unterstützt ML Server Analysen vollumfänglich – von der Erkundung über die Analyse bis hin zur Visualisierung und Modellierung. Die Verwendung und Erweiterung der Open Source-Sprachen R und Python sorgt für die vollständige Kompatibilität zwischen Microsoft ML Server und in R bzw. Python geschriebenen Skripten, Funktionen und CRAN/pip/Conda-Paketen für die Datenanalyse in Unternehmen. Mit der Möglichkeit, Daten parallel und in großen Stücken verarbeiten zu können, hebt Microsoft R Server die Speicherbeschränkungen der Open-Source-Sprache R auf. Dies ermöglicht Ihnen auch die Analyse von Daten, deren Größe die des Hauptspeichers bei weitem überschreitet.  Die auf dem virtuellen Computer befindliche Visual Studio Community Edition enthält die R Tools für Visual Studio und die Python-Tools für die Visual Studio-Erweiterung, die eine vollständige IDE für das Arbeiten mit R oder Python bietet. Auf der VM werden außerdem andere IDEs bereitgestellt, z.B. [RStudio](http://www.rstudio.com) und die [PyCharm Community Edition](https://www.jetbrains.com/pycharm/). 
@@ -115,7 +114,7 @@ Für die Entwicklung mithilfe von Python wurden Anaconda Python Distribution 2.
 > 
 > 
 
-Anaconda Python 2.7 wird unter C:\Anaconda installiert, Anaconda Python 3.5 unter C:\Anaconda\envs\py35. Ausführliche Schritte hierzu finden Sie in der [PTVS-Dokumentation](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it) . 
+Anaconda Python 2.7 wird unter C:\Anaconda installiert, Anaconda Python 3.5 unter C:\Anaconda\envs\py35. Ausführliche Schritte hierzu finden Sie in der [PTVS-Dokumentation](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters) . 
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
 Zur Anaconda-Distribution gehört außerdem Jupyter Notebook, eine Umgebung zum Freigeben von Code und Analysen. Es wurde bereits ein Jupyter-Notebook-Server mit Python 2.7, Python 3.5, PySpark, Julia und R-Kernels konfiguriert. Es ist ein Desktopsymbol mit dem Namen „Jupyter-Notebook“ vorhanden, um den Jupyter-Server und den Browser für den Zugriff auf den Notebook-Server zu starten. 
@@ -157,7 +156,7 @@ Mehrere Azure-Tools werden auf dem virtuellen Computer installiert:
 
 * Es gibt eine Desktopverknüpfung, um auf die Azure SDK-Dokumentation zuzugreifen. 
 * **AzCopy**wird zum Verschieben von Daten in Ihr und aus Ihrem Microsoft Azure Storage-Konto verwendet. Geben Sie **Azcopy** in einer Befehlszeile ein, um die Nutzung anzuzeigen. 
-* **Microsoft Azure-Speicher-Explorer**: Wird verwendet, um die Objekte zu durchsuchen, die in Ihrem Azure Storage-Konto gespeichert sind, und Daten in Ihren Azure-Speicher und heraus zu übertragen. Sie können **Speicher-Explorer** in das Suchfeld eingeben oder über das Windows-Startmenü auf dieses Tool zugreifen. 
+* **Microsoft Azure Storage-Explorer:** wird verwendet, um die Objekte zu durchsuchen, die in Ihrem Azure Storage-Konto gespeichert sind, und Daten in und aus Azure Storage zu übertragen. Sie können **Storage-Explorer** in das Suchfeld eingeben oder über das Windows-Startmenü auf dieses Tool zugreifen. 
 * **Adlcopy**: Wird zum Verschieben von Daten in Azure Data Lake verwendet. Geben Sie **adlcopy** in einer Befehlszeile ein, um die Nutzung anzuzeigen. 
 * **dtui**: Wird zum Verschieben von Daten in und aus Azure Cosmos DB verwendet, einer NoSQL-Datenbank in der Cloud. Geben Sie **dtui** in eine Befehlszeile ein. 
 * **Azure Data Factory Integration Runtime**: Ermöglicht das Verschieben von Daten zwischen lokalen Datenquellen und der Cloud. Es wird in Tools wie Azure Data Factory verwendet. 
@@ -197,9 +196,9 @@ Der [**Microsoft-Webplattform-Installer**](https://www.microsoft.com/web/downloa
 Mit den folgenden Schritten können Sie noch mehr lernen und entdecken. 
 
 * Verschaffen Sie sich einen Überblick über die verschiedenen Tools, die auf der Data Science-VM installiert sind, indem Sie das Startmenü öffnen und sich die Liste der installierten Tools ansehen.
-* Informieren Sie sich über Azure Machine Learning Services und Workbench, indem Sie die [Seite mit Schnellstarts und Tutorials](https://docs.microsoft.com/azure/machine-learning/preview/) für das Produkt besuchen. 
+* Informieren Sie sich über Azure Machine Learning Services und Workbench, indem Sie die [Seite mit Schnellstarts und Tutorials](../preview/index.yml) für das Produkt besuchen. 
 * Navigieren Sie zu **C:\Programme\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**, um Beispiele für die RevoScaleR-Bibliothek in R zu finden, die Datenanalysen auf Unternehmensebene unterstützt.  
 * Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](http://aka.ms/dsvmtenthings)
-* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)vollständige Analyselösungen systematisch erstellen.
+* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](../team-data-science-process/index.yml)vollständige Analyselösungen systematisch erstellen.
 * Besuchen Sie den [Azure AI-Katalog](http://gallery.cortanaintelligence.com), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure Machine Learning und dazugehörige Datendienste in Azure verwendet werden. Wir haben auch ein Symbol im **Startmenü** und auf dem Desktop der virtuellen Maschine dieser Galerie bereitgestellt.
 

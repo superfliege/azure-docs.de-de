@@ -6,25 +6,22 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: mattfarm
-ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 0abf2635e08bfc3113e9dec1947b9bb162cd3952
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 57d14b6aa6caca0cc9b075723d4c350b0a50c9f8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
-> 
-> 
 
-Jede API Management-Dienstinstanz verwaltet eine Konfigurationsdatenbank, die Informationen über die Konfiguration und die Metadaten für die Dienstinstanz enthält. Änderungen können an der Dienstinstanz durch Ändern einer Einstellung im Herausgeberportal, mithilfe eines PowerShell-Cmdlets oder durch einen REST-API-Aufruf vorgenommen werden. Neben diesen Methoden können Sie die Dienstinstanzkonfiguration auch mit Git verwalten, um Dienstverwaltungsszenarien wie die folgenden zu ermöglichen:
+Jede API Management-Dienstinstanz verwaltet eine Konfigurationsdatenbank, die Informationen über die Konfiguration und die Metadaten für die Dienstinstanz enthält. Änderungen können an der Dienstinstanz durch Ändern einer Einstellung im Azure-Portal, mithilfe eines PowerShell-Cmdlets oder durch einen REST-API-Aufruf vorgenommen werden. Neben diesen Methoden können Sie die Dienstinstanzkonfiguration auch mit Git verwalten, um Dienstverwaltungsszenarien wie die folgenden zu ermöglichen:
 
 * Verwaltung von Konfigurationsversionen: Laden Sie verschiedene Versionen der Dienstkonfiguration herunter, und speichern Sie sie.
 * Massenänderungen an der Konfiguration: Ändern Sie in einem einzelnen Vorgang mehrere Teile der Dienstkonfiguration in Ihrem lokalen Repository, und integrieren Sie die Änderungen wieder auf dem Server.
@@ -34,7 +31,7 @@ Das folgende Diagramm zeigt eine Übersicht über die verschiedenen Methoden zum
 
 ![Konfigurieren mit Git][api-management-git-configure]
 
-Wenn Sie den Dienst mit dem Herausgeberportal, PowerShell-Cmdlets oder der REST-API ändern, verwalten Sie die Konfigurationsdatenbank des Diensts mithilfe des Endpunkts `https://{name}.management.azure-api.net` , der auf der rechten Seite des Diagramms angezeigt wird. Die linke Seite des Diagramms veranschaulicht, wie Sie die Dienstkonfiguration mithilfe von Git und dem Git-Repository für Ihren Dienst unter `https://{name}.scm.azure-api.net`verwalten können.
+Wenn Sie den Dienst mit dem Azure-Portal, PowerShell-Cmdlets oder der REST-API ändern, verwalten Sie die Konfigurationsdatenbank des Diensts mithilfe des Endpunkts `https://{name}.management.azure-api.net`, der auf der rechten Seite des Diagramms angezeigt wird. Die linke Seite des Diagramms veranschaulicht, wie Sie die Dienstkonfiguration mithilfe von Git und dem Git-Repository für Ihren Dienst unter `https://{name}.scm.azure-api.net`verwalten können.
 
 Die folgenden Schritte bieten eine Übersicht über die Verwaltung Ihrer API Management-Dienstinstanz mit Git.
 
@@ -47,11 +44,8 @@ Die folgenden Schritte bieten eine Übersicht über die Verwaltung Ihrer API Man
 In diesem Artikel wird das Aktivieren und Verwenden von Git für die Verwaltung der Dienstkonfiguration beschrieben. Zudem enthält er eine Referenz für die Dateien und Ordner im Git-Repository.
 
 ## <a name="access-git-configuration-in-your-service"></a>Zugreifen auf die Git-Konfiguration in Ihrem Dienst
-Sie können den Status der Git-Konfiguration schnell anzeigen, indem Sie das Git-Symbol im Herausgeberportal in der oberen rechten Ecke anzeigen. In diesem Beispiel gibt die Statusmeldung an, dass nicht gespeicherte Änderungen am Repository vorhanden sind. Dies liegt daran, dass die API Management-Dienstkonfigurationsdatenbank noch nicht im Repository gespeichert wurde.
 
-![Git-Status][api-management-git-icon-enable]
-
-Um Ihre Git-Konfiguration anzuzeigen und zu konfigurieren, können Sie entweder auf das Git-Symbol klicken, oder Sie klicken auf das Menü **Sicherheit** und navigieren zu der Registerkarte **Konfigurations-Repository**.
+Um Ihre Git-Konfigurationseinstellungen anzuzeigen und zu konfigurieren, können Sie auf das Menü **Sicherheit** klicken und zur Registerkarte **Konfigurationsrepository** navigieren.
 
 ![Git aktivieren][api-management-enable-git]
 
@@ -63,43 +57,30 @@ Um Ihre Git-Konfiguration anzuzeigen und zu konfigurieren, können Sie entweder 
 Informationen zum Aktivieren oder Deaktivieren des Git-Zugriffs mithilfe der REST-API finden Sie unter [Azure API Management-REST-API-Mandanten-Entität](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>So speichern Sie die Dienstkonfiguration im Git-Repository
-Der erste Schritt vor dem Klonen des Repositorys ist, den aktuellen Zustand der Dienstkonfiguration im Repository zu speichern. Klicken Sie auf **Konfiguration im Repository speichern**.
 
-![Konfiguration speichern][api-management-save-configuration]
+Der erste Schritt vor dem Klonen des Repositorys ist, den aktuellen Zustand der Dienstkonfiguration im Repository zu speichern. Klicken Sie auf **In Repository speichern**.
 
 Nehmen Sie auf dem Bestätigungsbildschirm alle gewünschten Änderungen vor, und klicken Sie zum Speichern auf **OK** .
 
-![Konfiguration speichern][api-management-save-configuration-confirm]
-
 Nach einigen Augenblicken wird die Konfiguration gespeichert, und der Konfigurationsstatus des Repositorys wird angezeigt, einschließlich des Datums und der Uhrzeit der letzten Konfigurationsänderung und der letzten Synchronisierung zwischen der Dienstkonfiguration und dem Repository.
-
-![Konfigurationsstatus][api-management-configuration-status]
 
 Sobald die Konfiguration im Repository gespeichert wurde, kann sie geklont werden.
 
 Informationen zum Ausführen dieses Vorgangs mit der REST-API finden Sie unter [Commit der Konfigurationsmomentaufnahme mithilfe der REST-API](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot).
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>So klonen Sie das Repository auf Ihrem lokalen Computer
-Um ein Repository zu klonen, benötigen Sie die URL des Repositorys, einen Benutzernamen und ein Kennwort. Der Benutzername und die URL werden oben auf der Registerkarte **Konfigurationsrepository** angezeigt.
 
-![Klonen mit Git][api-management-configuration-git-clone]
-
-Das Kennwort wird unten auf der Registerkarte **Konfigurationsrepository** generiert.
-
-![Kennwort generieren][api-management-generate-password]
-
-Um ein Kennwort zu generieren, stellen Sie zuerst sicher, dass **Ablauf** auf das gewünschte Ablaufdatum und die gewünschte Uhrzeit festgelegt ist, und klicken Sie dann auf **Token generieren**.
-
-![Kennwort][api-management-password]
+Um ein Repository zu klonen, benötigen Sie die URL des Repositorys, einen Benutzernamen und ein Kennwort. Um den Benutzernamen und weitere Anmeldeinformationen abzurufen, klicken Sie im oberen Bereich der Seite auf **Anmeldeinformationen für Zugriff**.  
+ 
+Um ein Kennwort zu generieren, stellen Sie zuerst sicher, dass der **Ablauf** auf das gewünschte Ablaufdatum und die gewünschte Uhrzeit festgelegt ist, und klicken Sie dann auf **Generieren**.
 
 > [!IMPORTANT]
 > Notieren Sie sich dieses Kennwort. Das Kennwort wird nicht wieder angezeigt, nachdem Sie diese Seite verlassen haben.
 > 
-> 
 
 In den folgenden Beispielen wird das Tool Git Bash aus [Git für Windows](http://www.git-scm.com/downloads) verwendet, Sie können aber auch ein beliebiges Git-Tool verwenden, mit dem Sie vertraut sind.
 
-Öffnen Sie Ihr Git-Tool im gewünschten Ordner, und führen Sie den folgenden Befehl zum Klonen des Git-Repositorys auf Ihrem lokalen Computer aus. Verwenden Sie dazu den Befehl aus dem Herausgeberportal.
+Öffnen Sie Ihr Git-Tool im gewünschten Ordner, und führen Sie den folgenden Befehl zum Klonen des Git-Repositorys auf Ihrem lokalen Computer aus. Verwenden Sie dazu den Befehl aus dem Azure-Portal.
 
 ```
 git clone https://bugbashdev4.scm.azure-api.net/
@@ -116,7 +97,7 @@ git clone https://username:password@bugbashdev4.scm.azure-api.net/
 Wenn dies zu einem Fehler führt, codieren Sie den Kennwortteil des Befehls als URL. Eine schnelle Möglichkeit, dies zu erreichen, ist, Visual Studio zu öffnen und den folgenden Befehl im **Direktfenster**auszugeben. Um das **Direktfenster** zu öffnen, öffnen Sie eine Projektmappe oder ein Projekt in Visual Studio (oder erstellen Sie eine neue leere Konsolenanwendung), und wählen Sie im Menü **Debuggen** erst **Fenster** und dann **Direkt** aus.
 
 ```
-?System.NetWebUtility.UrlEncode("password from publisher portal")
+?System.NetWebUtility.UrlEncode("password from the Azure portal")
 ```
 
 Verwenden Sie das verschlüsselte Kennwort zusammen mit Ihrem Benutzernamen und dem Repositoryspeicherort, um den Git-Befehl zu erstellen.
@@ -128,7 +109,8 @@ git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 Sobald das Repository geklont wurde, können Sie es anzeigen und in Ihrem lokalen Dateisystem verwenden. Weitere Informationen finden Sie unter [Referenz der Datei- und Ordnerstruktur des lokalen Git-Repositorys](#file-and-folder-structure-reference-of-local-git-repository).
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>So aktualisieren Sie Ihr lokales Repository mit der aktuellen Dienstinstanzkonfiguration
-Wenn Sie Ihre API Management-Dienstinstanz im Herausgeberportal oder mit der REST-API ändern, müssen Sie diese Änderungen im Repository speichern, bevor Sie Ihr lokales Repository mit den neuesten Änderungen aktualisieren können. Klicken Sie hierzu im Herausgeberportal auf der Registerkarte **Konfigurationsrepository** auf **Konfiguration im Repository speichern**, und geben Sie dann den folgenden Befehl im lokalen Repository aus.
+
+Wenn Sie Ihre API Management-Dienstinstanz im Azure-Portal oder mit der REST-API ändern, müssen Sie diese Änderungen im Repository speichern, bevor Sie Ihr lokales Repository mit den neuesten Änderungen aktualisieren können. Klicken Sie hierzu im Azure-Portal auf der Registerkarte **Konfigurationsrepository** auf **Konfiguration im Repository speichern**, und führen Sie dann den folgenden Befehl im lokalen Repository aus.
 
 ```
 git pull
@@ -155,16 +137,16 @@ git push
 ```
 
 ## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>So stellen Sie Änderungen an der Dienstkonfiguration der API Management-Dienstinstanz bereit
-Sobald ein Commit für Ihre lokalen Änderungen ausgeführt wurde und sie in das Serverrepository übertragen wurden, können Sie sie Ihrer API Management-Dienstinstanz bereitstellen.
 
-![Bereitstellen][api-management-configuration-deploy]
+Sobald ein Commit für Ihre lokalen Änderungen ausgeführt wurde und sie in das Serverrepository übertragen wurden, können Sie sie Ihrer API Management-Dienstinstanz bereitstellen.
 
 Informationen zum Ausführen dieses Vorgangs mit der REST-API finden Sie unter [Azure API Management-REST-API-Mandanten-Entität](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration).
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Referenz der Datei- und Ordnerstruktur des lokalen Git-Repositorys
+
 Die Dateien und Ordner im lokalen Git-Repository enthalten die Konfigurationsinformationen der Dienstinstanz.
 
-| Item | Beschreibung |
+| Item | BESCHREIBUNG |
 | --- | --- |
 | Stammordner „api-management“ |Enthält die Konfiguration der obersten Ebene für die Dienstinstanz |
 | Ordner „apis“ |Enthält die Konfiguration für die APIs in der Dienstinstanz |
@@ -192,7 +174,6 @@ Diese Dateien können im lokalen System erstellt, gelöscht, bearbeitet und verw
 > * Abonnements
 > * Eigenschaften
 > * Andere Entitäten des Entwicklerportals als Stile
-> 
 > 
 
 ### <a name="root-api-management-folder"></a>Stammordner „api-management“
@@ -223,8 +204,6 @@ Die ersten vier Einstellungen (`RegistrationEnabled`, `UserRegistrationTerms`, `
 | UserRegistrationTermsEnabled |**Nutzungsbedingungen auf der Registrierungsseite anzeigen** |
 | UserRegistrationTermsConsentRequired |**Zustimmung anfordern** |
 
-![Identitätseinstellungen][api-management-identity-settings]
-
 Die nächsten vier Einstellungen (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled` und `DelegationValidationKey`) entsprechen den folgenden Einstellungen auf der Registerkarte **Delegierung** im Abschnitt **Sicherheit**.
 
 | Delegierungseinstellung | Entsprechung |
@@ -233,8 +212,6 @@ Die nächsten vier Einstellungen (`DelegationEnabled`, `DelegationUrl`, `Delegat
 | DelegationUrl |**Delegierungsendpunkt-URL** |
 | DelegatedSubscriptionEnabled |**Produktabonnierung delegieren** |
 | DelegationValidationKey |**Überprüfungsschlüssel delegieren** |
-
-![Delegierungseinstellungen][api-management-delegation-settings]
 
 Die letzte Einstellung, `$ref-policy`, entspricht der globalen Datei mit Richtlinienanweisungen für die Dienstinstanz.
 
@@ -283,15 +260,9 @@ Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz 
 * Verwalten der Dienstinstanz mit den folgenden PowerShell-Cmdlets
   * [Referenz zu PowerShell-Cmdlets für die Dienstbereitstellung](https://msdn.microsoft.com/library/azure/mt619282.aspx)
   * [Referenz zu PowerShell-Cmdlets für die Dienstverwaltung](https://msdn.microsoft.com/library/azure/mt613507.aspx)
-* Verwalten der Dienstinstanz im Herausgeberportal
-  * [Verwalten Ihrer ersten API](import-and-publish.md)
 * Verwalten der Dienstinstanz mit der REST-API
   * [REST-API-Referenz zu API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 
-## <a name="watch-a-video-overview"></a>Überblicksvideo ansehen
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Configuration-over-Git/player]
-> 
-> 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png
 [api-management-git-enabled]: ./media/api-management-configuration-repository-git/api-management-git-enabled.png

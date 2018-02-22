@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: a2d4efc3a3e1480de71528144ae3f025f4879f07
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: def9d5381144026b5ad0e8a076edd3c0692a08f4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Planungsentscheidungen zu mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme
-Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-deployment-decisions.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
+Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-connection-models.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
 
 Die Bereitstellung von mit Azure verbundenem Azure Stack bedeutet, dass Sie entweder Azure Active Directory (Azure AD) oder Active Directory-Verbunddienste (AD FS) als Identitätsspeicher verwenden können. Sie können auch ein Abrechnungsmodell wählen: nutzungsabhängig oder kapazitätsabhängig. Eine mit Azure verbundene Bereitstellung ist die Standardoption, da sie Kunden ermöglicht, den größtmöglichen Nutzen aus Azure Stack zu ziehen, insbesondere bei Hybrid Cloud-Szenarien, die sowohl Azure als auch Azure Stack umfassen. 
 
@@ -45,7 +45,7 @@ Bei Verwendung von Azure AD als Identitätsspeicher werden zwei Azure AD-Konten 
 Wählen Sie diese Option, wenn Sie Ihren eigenen Identitätsspeicher, wie z.B. Ihr unternehmenseigenes Active Directory, für Ihre Dienstadministratorkonten verwenden möchten.  
 
 ## <a name="choose-a-billing-model"></a>Wählen eines Abrechnungsmodells
-Als Abrechnungsmodell können Sie entweder **Nutzungsbasiert** oder **Kapazität** wählen. Bereitstellungen mit nutzungsbasiertem Abrechnungsmodell müssen in der Lage sein, die Nutzung über eine Verbindung mit Azure mindestens einmal alle 30 Tage zu melden. Wenn keine Verbindung verfügbar ist, ist daher das kapazitätsbasierte Abrechnungsmodell die einzige Option. 
+Als Abrechnungsmodell können Sie entweder **Nutzungsbasiert** oder **Kapazität** wählen. Bereitstellungen mit dem nutzungsbasierten Abrechnungsmodell müssen die Nutzung mindestens einmal in 30 Tagen über eine Verbindung mit Azure melden können. Daher ist das nutzungsbasierte Abrechnungsmodell nur für verbundene Bereitstellungen verfügbar.  
 
 ### <a name="pay-as-you-use"></a>Nutzungsbasierte Abrechnung
 Beim nutzungsbasierten Abrechnungsmodell wird die Nutzung einem Azure-Abonnement in Rechnung gestellt. Sie zahlen nur, wenn Sie die Azure Stack-Dienste verwenden. Wenn Sie sich für dieses Modell entscheiden, benötigen Sie ein Azure-Abonnement und die Konto-ID, die diesem Abonnement zugeordnet ist (z.B. serviceadmin@contoso.onmicrosoft.com). EA-, CSP- und CSL-Abonnements werden unterstützt. Die Erstellung von Nutzungsberichten wird während der [Azure Stack-Registrierung](azure-stack-registration.md) konfiguriert.

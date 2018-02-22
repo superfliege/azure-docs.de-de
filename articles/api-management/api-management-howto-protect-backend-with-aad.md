@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 603a22059dcf07c68f4c6576ea1df97d810eacf3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 1ba7a415a56f5147e73faa48fcd51151c3c818a8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>So schützen Sie ein Web-API-Back-End mit Azure Active Directory und API Management
 Im folgenden Video wird gezeigt, wie Sie ein Web-API-Back-End erstellen und es mithilfe des OAuth 2.0-Protokolls mit Azure Active Directory und API Management schützen.  Dieser Artikel enthält eine Übersicht und zusätzliche Informationen zu den Schritten in diesem Video. In diesem 24-minütigen Video wird Folgendes veranschaulicht:
@@ -33,7 +33,7 @@ Im folgenden Video wird gezeigt, wie Sie ein Web-API-Back-End erstellen und es m
 > 
 
 ## <a name="create-an-azure-ad-directory"></a>Erstellen eines Azure AD-Verzeichnisses
-Zum Sichern Ihres Web-API-Back-Ends mit Azure Active Directory benötigen Sie einen AAD-Mandanten. In diesem Video wird ein Mandant mit dem Namen **APIMDemo** verwendet. Zum Erstellen eines AAD-Mandanten melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an und klicken auf **Neu**->**App Services**->**Active Directory**->**Verzeichnis**->**Benutzerdefiniert erstellen**. 
+Zum Schützen Ihres Web-API-Back-Ends mit Azure Active Directory benötigen Sie einen AAD-Mandanten. In diesem Video wird ein Mandant mit dem Namen **APIMDemo** verwendet. Zum Erstellen eines AAD-Mandanten melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an und klicken auf **Neu**->**App Services**->**Active Directory**->**Verzeichnis**->**Benutzerdefiniert erstellen**. 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 

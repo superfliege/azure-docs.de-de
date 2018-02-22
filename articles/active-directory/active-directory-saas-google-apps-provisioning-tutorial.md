@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 0a0dd38fda35b1eee1fdce196a3ed15f6e73dde6
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a90fe2c919e0c5452072c4129dcb7a1135d9ec25
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Google Apps für die automatische Benutzerbereitstellung
 
@@ -155,11 +155,11 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihr Azure AD mit der API für die Benu
 
 19. Ändern Sie den **Bereitstellungsstatus** unter **Einstellungen** in **Ein**, um den Azure AD-Bereitstellungsdienst für Google Apps zu aktivieren.
 
-20. Wählen Sie **Speichern** aus.
+20. Wählen Sie **Speichern**aus.
 
-Daraufhin wird die Erstsynchronisierung aller Benutzer oder Gruppen gestartet, die Google Apps im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die während der Dienstausführung etwa alle 20 Minuten erfolgen. 
+Daraufhin wird die Erstsynchronisierung aller Benutzer oder Gruppen gestartet, die Google Apps im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die während der Dienstausführung etwa alle 40 Minuten erfolgen. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und über Links zu Protokollen zur Bereitstellungsaktivität navigieren. In diesen Protokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre Google Apps-App ausgeführt werden.
 
-Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und über Links zu Bereitstellungsaktivitätsberichten navigieren. In diesen Berichten werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre Google Apps-App ausgeführt werden.
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -14,32 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/22/2017
 ms.author: rajanaki
-ms.openlocfilehash: fafaf3f55f07741d438a06e58713d57d465b1137
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 6ca91cd464235185419fd50725084517725d2359
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="failback-in-site-recovery-for-hyper-v-virtual-machines"></a>Failback in Site Recovery für virtuelle Hyper-V-Computer
 
-In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer, die von Site Recovery geschützt werden, ein Failback durchführen.
+In diesem Artikel wird beschrieben, wie Sie für virtuelle Hyper-V-Computer, die von Site Recovery geschützt werden, ein Failback durchführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+1. Sie sollten vorher unbedingt die Informationen zu den [verschiedenen Typen von Failbacks](concepts-types-of-failback.md) und den entsprechenden Einschränkungen lesen.
 1. Stellen Sie sicher, dass der VMM-Server/Hyper-V-Server am primären Standort verbunden ist.
 2. Sie sollten auf dem virtuellen Computer einen **Commit** ausgeführt haben.
 
-## <a name="why-is-there-no-button-called-failback"></a>Warum gibt es keine Failback-Schaltfläche?
-Im Portal ist keine explizite Geste mit der Bezeichnung „Failback“ vorhanden. Failback ist ein Schritt, bei dem Sie an den primären Standort zurückkehren. Definitionsgemäß ist ein Failover das Ausführen eines Failovers der virtuellen Computer vom primären (lokalen) Standort zum Wiederherstellungsstandort (Azure), und ein Failback ist das Ausführen eines Failovers der virtuellen Computer vom Wiederherstellungsstandort zurück zum primären Standort.
-
-Beim Initiieren eines Failovers enthält das Blatt Informationen zu Richtung des Auftrags. Wenn die Richtung von Azure zu lokal ist, handelt es sich um ein Failback.
-
-## <a name="why-is-there-only-a-planned-failover-gesture-to-failback"></a>Warum ist nur eine Geste für ein geplantes Failover zum Ausführen eines Failbacks vorhanden?
-Azure ist eine hoch verfügbare Umgebung, und Ihre virtuellen Computer sind immer verfügbar. Ein Failback ist eine geplante Aktivität, bei der eine geringfügige Ausfallzeit auftritt, damit die Workloads wieder lokal ausgeführt werden können. Dabei wird kein Datenverlust erwartet. Daher ist nur eine Geste für ein geplantes Failover verfügbar, mit der die virtuellen Computer in Azure deaktiviert und die aktuellen Änderungen heruntergeladen werden und sichergestellt wird, dass kein Datenverlust auftritt.
-
-## <a name="do-i-need-a-process-server-in-azure-to-failback-to-hyper-v"></a>Benötige ich für ein Failback auf Hyper-V einen Prozessserver in Azure?
-Nein, ein Prozessserver ist nur erforderlich, wenn virtuelle VMware-Computer geschützt werden. Es müssen keine zusätzlichen Komponenten für den Schutz bzw. das Failback von virtuellen Hyper-V-Computern bereitgestellt werden.
-
-## <a name="initiate-failback"></a>Initiieren des Failbacks
+## <a name="perform-failback"></a>Durchführen von Failbacks
 Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Replikatcomputer nicht durch Site Recovery geschützt, und der sekundäre Standort fungiert nun als der aktive Standort. Gehen Sie wie folgt vor, um ein Failback zum ursprünglichen primären Standort durchzuführen. Hier erfahren Sie, wie Sie ein geplantes Failover für einen Wiederherstellungsplan durchführen. Alternativ können Sie das Failover über die Registerkarte **Virtuelle Computer** auch für einen einzelnen virtuellen Computer durchführen.
 
 1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover** > **Planned Failover**veröffentlichen.
@@ -52,8 +42,8 @@ Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Rep
 
     - **Daten nur während Failover synchronisieren (vollständiger Download)**: Verwenden Sie diese Option, wenn Sie über einen längeren Zeitraum Azure verwendet haben. Diese Option ist schneller, da erwartet wird, dass die meisten Daten auf dem Datenträger geändert wurden, und keine Zeit mit der Prüfsummenberechnung verschwendet werden soll. Mit der Option wird ein Download des Datenträgers durchgeführt. Sie ist auch nützlich, wenn der lokale virtuelle Computer gelöscht wurde.
 
-    >[!NOTE]
-    >Es wird empfohlen, diese Option zu verwenden, wenn Sie Azure bereits seit einer Weile nutzen (mindestens einen Monat) oder wenn der lokale virtuelle Computer gelöscht wurde. Mit dieser Option werden keine Prüfsummenberechnungen durchgeführt.
+        >[!NOTE]
+        >Es wird empfohlen, diese Option zu verwenden, wenn Sie Azure bereits seit einer Weile nutzen (mindestens einen Monat) oder wenn der lokale virtuelle Computer gelöscht wurde. Mit dieser Option werden keine Prüfsummenberechnungen durchgeführt.
 
 
 4. Wenn die Datenverschlüsselung für die Cloud aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das beim Aktivieren der Datenverschlüsselung im Rahmen der Anbieterinstallation auf dem VMM-Server ausgestellt wurde.
@@ -63,7 +53,7 @@ Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Rep
 8. Der Status des virtuellen Computers weist darauf hin, dass ein Commit aussteht. Klicken Sie auf **Commit** , um ein Commit für das Failover auszuführen.
 9. Klicken Sie anschließend auf **Umgekehrt replizieren** , um das Failback abzuschließen und den virtuellen Computer am primären Standort zu schützen.
 
-## <a name="failback-to-an-alternate-location"></a>Failback zu einem alternativen Standort
+## <a name="failback-to-an-alternate-location-in-hyper-v-environment"></a>Failback zu einem alternativen Standort in der Hyper-V-Umgebung
 Wenn Sie den Schutz zwischen einem [Hyper-V-Standort und Azure](site-recovery-hyper-v-site-to-azure.md) bereitgestellt haben, können Sie ein Failback von Azure zu einem alternativen lokalen Standort durchführen. Dies ist hilfreich, wenn Sie neue lokale Hardware einrichten müssen. Gehen Sie hierzu wie folgt vor:
 
 1. Wenn Sie neue Hardware einrichten möchten, installieren Sie Windows Server 2012 R2 und die Hyper-V-Rolle auf dem Server.
@@ -77,11 +67,24 @@ Wenn Sie den Schutz zwischen einem [Hyper-V-Standort und Azure](site-recovery-hy
    * Phase 2: Sie fährt den virtuellen Computer in Azure herunter, damit keine neuen Änderungen vorgenommen werden. Die letzten Änderungen werden an den lokalen Server übertragen, und der lokale virtuelle Computer wird gestartet.
 7. Klicken Sie auf das Häkchen, um das Failover (Failback) zu starten.
 8. Klicken Sie auf **Aufträge** > <planned failover job> > **Failover abschließen**veröffentlichen. Dadurch wird der Azure-Computer heruntergefahren, die neuesten Änderungen werden an den lokalen virtuellen Computer übertragen, und der lokale virtuelle Computer wird gestartet.
-9. Sie können sich bei dem lokalen virtuellen Computer anmelden und sich vergewissern, dass alles wie erwartet funktioniert. Klicken Sie anschließend auf **Commit** , um das Failover abzuschließen.
+9. Sie können sich bei dem lokalen virtuellen Computer anmelden und sich vergewissern, dass alles wie erwartet funktioniert. Klicken Sie anschließend auf **Commit** , um das Failover abzuschließen. Der Commit löscht den virtuellen Azure-Computer und seine Datenträger und bereitet den virtuellen Computer dafür vor, erneut geschützt zu werden.
 10. Klicken Sie auf **Umgekehrt replizieren** , um den Schutz des lokalen virtuellen Computers zu starten.
 
     > [!NOTE]
     > Wenn Sie den Failbackauftrag während der Datensynchronisierung abbrechen, wird der lokale virtuelle Computer als beschädigt angezeigt. Das liegt daran, dass bei der Datensynchronisierung die aktuellen Daten von den Datenträgern virtueller Azure-Computer auf die lokalen Datenträger kopiert werden. Bis zum Abschluss der Synchronisierung befinden sich die Datenträgerdaten unter Umständen nicht in einem konsistenten Zustand. Wenn der lokale virtuelle Computer nach dem Abbruch der Datensynchronisierung gestartet wird, ist das Starten unter Umständen nicht möglich. Lösen Sie zum Abschließen der Datensynchronisierung das Failover erneut aus.
+
+
+## <a name="why-is-there-no-button-called-failback"></a>Warum gibt es keine Failback-Schaltfläche?
+Im Portal ist keine explizite Geste mit der Bezeichnung „Failback“ vorhanden. Failback ist ein Schritt, bei dem Sie an den primären Standort zurückkehren. Definitionsgemäß ist ein Failback ein Failover von virtuellen Computern aus der Wiederherstellung zum primären Standort.
+
+Beim Initiieren eines Failovers informiert Sie das Blatt über die Richtung, in der die virtuellen Computer verschoben werden. Wenn die Richtung von Azure zu einem lokalen Standort ist, findet ein Failback statt.
+
+## <a name="why-is-there-only-a-planned-failover-gesture-to-failback"></a>Warum ist nur eine Geste für ein geplantes Failover zum Ausführen eines Failbacks vorhanden?
+Azure ist eine hoch verfügbare Umgebung, und Ihre virtuellen Computer sind immer verfügbar. Ein Failback ist eine geplante Aktivität, bei der eine geringfügige Ausfallzeit auftritt, damit die Workloads wieder lokal ausgeführt werden können. Dabei wird kein Datenverlust erwartet. Daher ist nur eine Geste für ein geplantes Failover verfügbar, mit der die virtuellen Computer in Azure deaktiviert und die aktuellen Änderungen heruntergeladen werden und sichergestellt wird, dass kein Datenverlust auftritt.
+
+## <a name="do-i-need-a-process-server-in-azure-to-failback-to-hyper-v"></a>Benötige ich für ein Failback auf Hyper-V einen Prozessserver in Azure?
+Nein, ein Prozessserver ist nur erforderlich, wenn virtuelle VMware-Computer geschützt werden. Es müssen keine zusätzlichen Komponenten für den Schutz bzw. das Failback von virtuellen Hyper-V-Computern bereitgestellt werden.
+
 
 ## <a name="time-taken-to-failback"></a>Failbackdauer
 Die zum Abschließen der Datensynchronisierung und zum Starten des virtuellen Computers erforderliche Zeit, hängt von verschiedenen Faktoren ab. Sie erhalten eine Erläuterung zum Ablauf während der Datensynchronisierung, um einen Einblick hinsichtlich der Dauer zu erhalten.
@@ -92,7 +95,5 @@ Um das Herunterladen von Daten zu beschleunigen, können Sie Ihren MARS-Agent ko
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Nach Abschluss des Failbackauftrags führen Sie einen **Commit** für den virtuellen Computer aus. Der Commit löscht den virtuellen Azure-Computer und seine Datenträger und bereitet den virtuellen Computer dafür vor, erneut geschützt zu werden.
 
 Nach dem **Commit** können Sie das *umgekehrte Replizieren* initiieren. Dadurch wird der erneute Schutz des virtuellen Computers von einem lokalen Standort nach Azure gestartet. Dadurch werden nur die Änderungen repliziert, da der virtuelle Computer in Azure deaktiviert wurde und daher nur differenzielle Änderungen sendet.

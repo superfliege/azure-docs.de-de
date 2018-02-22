@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: f7b621312677c0b250e267770ae0c445ee9f083f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 919618c0779d47f0add02d5e7d3ab9ab4b5bdd10
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack-Firewallintegration
 Es empfiehlt sich, Azure Stack mit einem Firewallgerät zu schützen. Firewalls können zwar bei verteilten Denial-of-Service-Angriffen (DDoS), bei der Angriffserkennung und bei der Inhaltsuntersuchung hilfreich sein, andererseits können sie sich aber auch als Engpass für den Durchsatz von Azure-Speicherdiensten wie Blobs, Tabellen und Warteschlangen erweisen.
@@ -40,8 +40,8 @@ Die Verwendung der NAT für öffentliche VIPs hat folgende Nachteile:
 - Die Verwendung der NAT beeinträchtigt zwar die Benutzerfreundlichkeit, gibt dem Betreiber jedoch die volle Kontrolle über Veröffentlichungsanforderungen.
 - In Hybrid Cloud-Szenarien mit Azure wird die Einrichtung eines VPN-Tunnels zu einem Endpunkt mit NAT nicht unterstützt.
 
-### <a name="ssl-decryption"></a>SSL-ENTSCHLÜSSELUNG
-Gegenwärtig wird empfohlen, die SSL-Entschlüsselung für den gesamten Azure Stack-Datenverkehr zu deaktivieren. Wir werden demnächst Leitfäden zum Aktivieren der SSL-Entschlüsselung für Azure Stack bereitstellen.
+### <a name="ssl-decryption"></a>SSL-Entschlüsselung
+Derzeit wird empfohlen, die SSL-Entschlüsselung bei allem Azure Stack-Datenverkehr zu deaktivieren. Wenn sie in zukünftigen Updates unterstützt wird, werden Anleitungen zum Aktivieren der SSL-Entschlüsselung für Azure Stack bereitgestellt.
 
 ## <a name="edge-firewall-scenario"></a>Szenario mit Edgefirewall
 Azure Stack wird in einer Edgebereitstellung direkt hinter dem Edgerouter oder der Firewall bereitgestellt. In diesen Szenarien kann die Firewall dem Border-Gerät übergeordnet sein oder selbst als Border-Vorrichtung fungieren, sofern diese Equal Cost Multi Path (ECMP) mit BGP oder statischem Routing unterstützt.

@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 3885469ec0e1fcc31386dd0ad7fe6cb5d03ab28e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8a2ce3ca90895262e77c3895867d29c9d3530a2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-activity-log-alerts"></a>Erstellen von Aktivitätsprotokollwarnungen
 
 ## <a name="overview"></a>Übersicht
 Aktivitätsprotokollwarnungen sind Warnungen, die aktiviert werden, wenn ein neues Aktivitätsprotokollereignis auftritt, das die in der Warnung angegebenen Bedingungen erfüllt. Als Azure-Ressourcen können sie mit einer Azure Resource Manager-Vorlage erstellt werden. Sie können auch im Azure-Portal erstellt, aktualisiert oder gelöscht werden. In diesem Artikel werden die Konzepte erläutert, auf denen Aktivitätsprotokollwarnungen basieren. Dann erfahren Sie, wie Sie im Azure-Portal Warnungen zu Aktivitätsprotokollereignissen einrichten können.
+
+> [!NOTE]
+
+>  [Warnungen (Vorschau)](monitoring-overview-unified-alerts.md) bieten zurzeit eine erweiterte Benutzeroberfläche für die Erstellung und Verwaltung von Aktivitätsprotokollen.  [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md)
 
 Normalerweise erstellen Sie Aktivitätsprotokollwarnungen, um Benachrichtigungen zu empfangen, wenn Folgendes geschieht:
 
@@ -43,15 +47,13 @@ Sie können eine Aktivitätsprotokollwarnung basierend auf einer beliebigen Eige
 - **Status**: Der Status des Ereignisses, z.B. „Gestartet“, „Fehler“ oder „Erfolgreich“.
 - **Ereignis initiiert von**: Wird auch als „Aufrufer“ bezeichnet. Die E-Mail-Adresse oder der Azure Active Directory-Bezeichner des Benutzers, der den Vorgang durchgeführt hat.
 
->[!NOTE]
->Sie müssen in Ihrer Warnung mindestens zwei der obigen Kriterien angeben, wobei eines die Kategorie sein muss. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
->
->
+> [!NOTE]
+> Wenn die Kategorie „Verwaltung“ lautet, müssen Sie in Ihrer Warnung mindestens eins der oben genannten Kriterien angeben. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
 
 Bei Aktivierung einer Aktivitätsprotokollwarnung wird eine Aktionsgruppe verwendet, um Aktionen oder Benachrichtigungen zu generieren. Eine Aktionsgruppe ist ein wiederverwendbarer Satz von Benachrichtigungsempfängern, z.B. E-Mail-Adressen, Webhook-URLs oder SMS-Telefonnummern. Mehrere Warnungen können auf die Empfänger verweisen, um Ihre Benachrichtigungskanäle zu zentralisieren und gruppieren. Wenn Sie Ihre Aktivitätsprotokollwarnung definieren, stehen Ihnen zwei Optionen zur Verfügung. Ihre Möglichkeiten:
 
-* Verwenden Sie eine vorhandene Aktionsgruppe in Ihrer Aktivitätsprotokollwarnung. 
-* Erstellen Sie eine neue Aktionsgruppe. 
+* Verwenden Sie eine vorhandene Aktionsgruppe in Ihrer Aktivitätsprotokollwarnung.
+* Erstellen Sie eine neue Aktionsgruppe.
 
 Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](monitoring-action-groups.md).
 
@@ -127,5 +129,5 @@ Nachdem Sie eine Warnung erstellt haben, wird sie auf dem Blatt „Überwachen�
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts-webhook.md).
 - Weitere Informationen zu [Aktionsgruppen](monitoring-action-groups.md).  
 - Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](monitoring-service-notifications.md).
-- Erstellen Sie eine [Aktivitätsprotokollwarnung, um alle automatischen Modulskalierungsvorgänge für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert).
+- Erstellen Sie eine [Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert).
 - Erstellen Sie eine [Aktivitätsprotokollwarnung, um alle Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: negat
-ms.openlocfilehash: 145f4ec92b142a1585ba17bf6e49c7824cc32529
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 59dad832977c4afc39db3773edf9789cd1a704e7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Automatische Betriebssystemupgrades für Azure-VM-Skalierungsgruppen
 
@@ -40,9 +40,7 @@ Das automatische Betriebssystemupgrade weist folgende Merkmale auf:
 In der Vorschau gelten die folgenden Begrenzungen und Einschränkungen:
 
 - Automatische Betriebssystemupgrades unterstützen nur [vier Betriebssystem-SKUs](#supported-os-images). Es gibt keine SLA oder Garantien. Es wird empfohlen, automatische Upgrades in der Vorschau nicht auf kritische Produktionsworkloads anzuwenden.
-- Unterstützung für Skalierungsgruppen im Service Fabric-Cluster wird bald verfügbar sein.
 - Azure-Datenträgerverschlüsselung (zurzeit in der Vorschau) wird derzeit **nicht** mit automatischen Betriebssystemupgrades für VM-Skalierungsgruppen unterstützt.
-- Eine Portalumgebung ist in Kürze verfügbar.
 
 
 ## <a name="register-to-use-automatic-os-upgrade"></a>Registrieren für die Verwendung automatischer Betriebssystemupgrades
@@ -58,17 +56,23 @@ Es dauert ungefähr 10 Minuten, bis der Status als *Registriert* gemeldet wird. 
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-Es wird empfohlen, dass Ihre Anwendungen Integritätsüberprüfungen verwenden. Verwenden Sie zum Registrieren des Anbieterfeatures für Integritätstests [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature) wie folgt:
+> [!NOTE]
+> In Service Fabric-Clustern gilt ein eigenes Konzept der Anwendungsintegrität, aber Skalierungsgruppen ohne Service Fabric verwenden zum Überwachen der Anwendungsintegrität den Lastenausgleichs-Integritätstest. Verwenden Sie zum Registrieren des Anbieterfeatures für Integritätstests [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature) wie folgt:
+>
+> ```powershell
+> Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVmssHealthProbe
+> ```
+>
+> Es dauert wieder ungefähr 10 Minuten, bis der Status als *Registriert* gemeldet wird. Sie können den aktuellen Registrierungsstatus mit [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) überprüfen. Stellen Sie nach der Registrierung wie folgt mit [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) sicher, dass der Anbieter *Microsoft.Network* registriert wurde:
+>
+> ```powershell
+> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+> ```
 
-```powershell
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVmssHealthProbe
-```
+## <a name="portal-experience"></a>Portalfunktion
+Nachdem Sie die oben genannten Registrierungsschritte ausgeführt haben, können Sie zum [Azure-Portal](https://aka.ms/managed-compute) navigieren, um automatische Betriebssystemupgrades für Ihre Skalierungsgruppen zu aktivieren und den Upgradefortschritt anzuzeigen:
 
-Es dauert wieder ungefähr 10 Minuten, bis der Status als *Registriert* gemeldet wird. Sie können den aktuellen Registrierungsstatus mit [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) überprüfen. Stellen Sie nach der Registrierung wie folgt mit [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) sicher, dass der Anbieter *Microsoft.Network* registriert wurde:
-
-```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
+![](./media/virtual-machine-scale-sets-automatic-upgrade/automatic-upgrade-portal.png)
 
 
 ## <a name="supported-os-images"></a>Unterstützte Betriebssystemimages
@@ -85,7 +89,10 @@ Derzeit werden die folgenden SKUs unterstützt (weitere werden später hinzugef�
 
 
 
-## <a name="application-health"></a>Anwendungsintegrität
+## <a name="application-health-without-service-fabric"></a>Anwendungsintegrität ohne Service Fabric
+> [!NOTE]
+> Dieser Abschnitt gilt nur für Skalierungsgruppen ohne Service Fabric. In Service Fabric gilt ein eigenes Konzept der Anwendungsintegrität. Wenn Sie automatische Betriebssystemupgrades mit Service Fabric verwenden, wird das neue Betriebssystemimage nacheinander in einzelnen Updatedomänen bereitgestellt. So wird gewährleistet, dass die in Service Fabric ausgeführten Dienste hochverfügbar bleiben. Weitere Informationen zu den Dauerhaftigkeitsmerkmalen von Service Fabric-Clustern finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+
 Während eines Betriebssystemupgrades werden VM-Instanzen in einer Skalierungsgruppe batchweise nacheinander aktualisiert. Das Upgrade sollte nur fortgesetzt werden, wenn die Kundenanwendung auf den aktualisierten VM-Instanzen fehlerfrei ist. Es wird empfohlen, dass die Anwendung der Upgrade-Engine für das Skalierungsgruppen-Betriebssystem Integritätssignale zur Verfügung stellt. Standardmäßig wertet die Plattform während Betriebssystemupgrades den VM-Energiezustand und den Status der Erweiterungsbereitstellung aus, um festzustellen, ob eine VM-Instanz nach einem Upgrade fehlerfrei ist. Während des Betriebssystemupgrades einer VM-Instanz wird ihr Betriebssystemdatenträger durch einen neuen Datenträger ersetzt, der auf der neuesten Imageversion basiert. Nachdem das Betriebssystemupgrade abgeschlossen wurde, werden die konfigurierten Erweiterungen auf diesen VMs ausgeführt. Erst wenn alle Erweiterungen auf einem virtuellen Computer erfolgreich bereitgestellt wurden, wird die Anwendung als fehlerfrei angesehen. 
 
 Eine Skalierungsgruppe kann optional mit Anwendungsintegritätstests konfiguriert werden, um der Plattform genaue Informationen zum fortlaufenden Status der Anwendung bereitzustellen. Anwendungsintegritätstests sind benutzerdefinierte Lastenausgleichs-Prüfpunkte, die als Integritätssignal verwendet werden. Die auf einer Skalierungsgruppen-VM-Instanz ausgeführte Anwendung kann auf externe HTTP- oder TCP-Anforderungen reagieren und dadurch anzeigen, dass sie fehlerfrei ist. Weitere Informationen zur Funktionsweise von benutzerdefinierten Lastenausgleichstests finden Sie unter [Grundlegendes zu Lastenausgleichstests](../load-balancer/load-balancer-custom-probe-overview.md). Ein Anwendungsintegritätstest ist für automatische Betriebssystemupgrades nicht erforderlich, wird jedoch dringend empfohlen.

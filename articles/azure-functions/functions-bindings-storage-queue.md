@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: 2ca511bf0c145878cc80bdbae694f581fd487820
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ce28b6eea9843ce423b57e539a844b4dacb552aa
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue Storage-Bindungen für Azure Functions
 
@@ -458,6 +458,15 @@ Verwenden Sie einen der folgenden Typen, um in C# und C#-Skripts mehrere Wartesc
 * [CloudQueue](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue)
 
 Verwenden Sie in JavaScript-Funktionen `context.bindings.<name>`, um auf die Ausgabewarteschlangennachricht zuzugreifen. Für die Nutzlast des Warteschlangenelements kann eine Zeichenfolge oder ein JSON-serialisierbares Objekt verwendet werden.
+
+
+## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
+
+| Bindung |  Verweis |
+|---|---|
+| Warteschlange | [Warteschlangen-Fehlercodes](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Blob, Tabelle, Warteschlange | [Speicherfehlercodes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob, Tabelle, Warteschlange |  [Problembehandlung](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

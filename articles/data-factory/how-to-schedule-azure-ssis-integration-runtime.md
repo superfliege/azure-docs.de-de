@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: spelluru
-ms.openlocfilehash: 60a4afdb8a78cffdc7eb1ee82c7daf3b06e5fe15
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 814ef63f317c2c0c9081579c16a12a908c05ff74
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Planen des Startens und Beendens einer Azure SSIS-Integration Runtime 
 Das Ausführen einer Azure SSIS (SQL Server Integration Services)-Integration Runtime (IR) ist mit einer Gebühr verbunden. Sie sollten die IR daher nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und sie andernfalls beenden. Sie können die Data Factory-Benutzeroberfläche oder Azure PowerShell zum [manuellen Starten oder Beenden einer Azure SSIS-IR](manage-azure-ssis-integration-runtime.md) verwenden. Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS-Integration Runtime (IR) mithilfe von Azure Automation und Azure Data Factory. Folgende allgemeine Schritte werden in diesem Artikel beschrieben:
@@ -44,8 +44,9 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus:
 ### <a name="create-an-azure-automation-account"></a>Erstellen eines Azure Automation-Kontos
 Wenn Sie nicht über ein Azure Automation-Konto verfügen, erstellen Sie eines anhand der Anweisungen in diesem Schritt. Eine ausführliche Anleitung finden Sie unter [Erstellen eines Azure Automation-Kontos](../automation/automation-quickstart-create-account.md). Im Rahmen dieses Schritts erstellen Sie ein **ausführendes Azure-Konto** (einen Dienstprinzipal in Ihrem Azure Active Directory) und fügen es der Rolle **Mitwirkender** Ihres Azure-Abonnements hinzu. Stellen Sie sicher, dass es sich um das Abonnement handelt, das die Data Factory mit der Azure SSIS-IR enthält. Azure Automation verwendet dieses Konto für die Authentifizierung bei Azure Resource Manager und die Verarbeitung Ihrer Ressourcen. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.    
-2. Wählen Sie im linken Menü **Neu** aus, dann **Überwachung + Verwaltung** und schließlich **Automatisierung**. 
+1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
+2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.    
+3. Wählen Sie im linken Menü **Neu** aus, dann **Überwachung + Verwaltung** und schließlich **Automatisierung**. 
 
     ![Neu -> Überwachung + Verwaltung -> Automatisierung](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
 2. Gehen Sie im Fenster **Automation-Konto hinzufügen** folgendermaßen vor: 

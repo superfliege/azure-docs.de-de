@@ -16,21 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: genemi
-ms.openlocfilehash: d38cd108821bce05824732bbdbdd322ae8563bde
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 2daf05513127c2d1ab8e4b0196b578e18b6e03e7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Untersuchen einer eigenständigen SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet
 
-In diesem Tutorial stellen Sie die eigenständige SaaS-Anwendung Wingtip Tickets bereit und machen sich mit dieser vertraut. Die Anwendung ist dafür ausgelegt, Features von Azure SQL-Datenbank zu veranschaulichen, mit denen die Aktivierung von SaaS-Szenarien vereinfacht wird.
+In diesem Tutorial stellen Sie die Wingtip Tickets-SaaS-Beispielanwendung bereit, die mit dem Muster für eigenständige Anwendungen oder App-pro-Mandant entwickelt wurde, und untersuchen sie.  Die Anwendung ist darauf ausgelegt, Features von Azure SQL-Datenbank zu veranschaulichen, mit denen die Aktivierung von mehrinstanzenfähigen SaaS-Szenarien vereinfacht wird.
 
-Beim eigenständigen Anwendungsmuster wird für jeden Mandanten eine Azure-Ressourcengruppe mit einer Anwendung für einen einzelnen Mandanten und einer Datenbank mit nur einem Mandanten bereitgestellt.  Für eine Lösung für mehrere Mandanten können mehrere Instanzen der Anwendung bereitgestellt werden.
+Das Muster für eigenständige Anwendungen oder App-pro-Mandant stellt eine Anwendungsinstanz für jeden Mandanten bereit.  Jede Anwendung wird für einen bestimmten Mandanten konfiguriert und in einer separaten Azure-Ressourcengruppe bereitgestellt. Für eine Lösung für mehrere Mandanten werden mehrere Instanzen der Anwendung bereitgestellt. Dieses Muster eignet sich am besten für eine kleinere Anzahl von Mandanten, wenn die Isolierung der Instanzen die höchste Priorität hat. Azure bietet Partnerprogramme, mit denen Ressourcen im Abonnement eines Mandanten bereitgestellt und durch einen Dienstanbieter im Auftrag des Mandanten verwaltet werden. 
 
-In diesem Tutorial stellen Sie für mehrere Mandanten in Ihrem Azure-Abonnement Ressourcengruppen bereit.  Mit diesem Muster wird es ermöglicht, dass Ressourcengruppen im Azure-Abonnement eines Mandanten bereitgestellt werden. Azure verfügt über Partnerprogramme, mit denen diese Ressourcengruppen im Auftrag des Mandanten durch einen Dienstanbieter verwaltet werden können. Der Dienstanbieter ist ein Administrator im Abonnement des Mandanten.
-
-Der Abschnitt zur Bereitstellung weiter unten enthält drei blaue Schaltflächen **Deploy to Azure** (In Azure bereitstellen). Mit jeder Schaltfläche wird eine andere Instanz der Anwendung bereitgestellt. Jede Instanz wurde für einen spezifischen Mandanten angepasst. Wenn Sie auf die einzelnen Schaltflächen klicken, wird die entsprechende Anwendung innerhalb von fünf Minuten vollständig bereitgestellt.  Die Apps werden im Azure-Abonnement bereitgestellt.  Sie haben Vollzugriff auf die einzelnen Anwendungskomponenten, um diese untersuchen und verwenden zu können.
+In diesem Tutorial stellen Sie drei eigenständige Anwendungen für drei Mandanten in Ihrem Azure-Abonnement bereit.  Sie haben Vollzugriff auf die einzelnen Anwendungskomponenten, um diese untersuchen und verwenden zu können.
 
 Der Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) verfügbar.
 
@@ -61,11 +59,10 @@ Stellen Sie die App für die drei bereitgestellten Mandanten bereit:
     > Der Schutz einiger Authentifizierungs- und Serverfirewalls wurde zu Vorführungszwecken absichtlich aufgehoben. **Erstellen Sie eine neue Ressourcengruppe** für jede Anwendungsbereitstellung.  Verwenden Sie keine vorhandene Ressourcengruppe. Verwenden Sie diese Anwendung und alle damit erstellten Ressourcen nicht für die Produktion. Wenn Sie sich umfassend mit den Anwendungen vertraut gemacht haben, löschen Sie alle Ressourcengruppen, um die zugehörige Abrechnung einzustellen.
 
     Es wird empfohlen, bei Ressourcennamen nur Kleinbuchstaben, Zahlen und Bindestriche zu verwenden.
-    * **Ressourcengruppe:** Wählen Sie **Neu erstellen** aus, und geben Sie für die Ressourcengruppe einen **Namen** in Kleinbuchstaben an.
-        * Es wird empfohlen, Sie einen Bindestrich gefolgt von Ihren Initialen und einer Ziffer anzufügen, z.B. *wingtip-sa-af1*.
-        * Wählen Sie einen **Speicherort** in der Dropdownliste aus.
+    * Wählen Sie für **Ressourcengruppe** die Option „Neu erstellen“ aus, und geben Sie dann für die Ressourcengruppe einen Namen in Kleinbuchstaben an. Es wird das Muster **wingtip-sa-\<Veranstaltungsort\>-\<Benutzer\>** empfohlen.  Ersetzen Sie \<Veranstaltungsort\> durch den Namen des Veranstaltungsorts ohne Leerzeichen. Ersetzen Sie \<Benutzer\> durch den Benutzerwert von unten.  Mit diesem Muster können Ressourcengruppennamen z.B. *wingtip-sa-contosoconcerthall-af1*, *wingtip-sa-dogwooddojo-af1* oder *wingtip-sa-fabrikamjazzclub-af1* lauten.
+    * Wählen Sie einen **Speicherort** in der Dropdownliste aus.
 
-    * **Benutzer:** Es wird empfohlen, hierfür einen kurzen Wert auszuwählen, z.B. Ihre Initialen und eine Ziffer (Beispiel: *af1*).
+    * Es wird empfohlen, für **Benutzer** einen kurzen Wert auszuwählen, z.B. Ihre Initialen und eine Ziffer (etwa *af1*).
 
 
 3. **Bereitstellen der Anwendung**.
@@ -73,25 +70,25 @@ Stellen Sie die App für die drei bereitgestellten Mandanten bereit:
     * Klicken Sie auf die entsprechende Option, um den Geschäftsbedingungen zuzustimmen.
     * Klicken Sie auf **Kaufen**.
 
-4. Überwachen Sie den Bereitstellungsstatus aller drei Bereitstellungen, indem Sie auf **Benachrichtigungen** klicken (das Glockensymbol rechts neben dem Suchfeld). Das Bereitstellen der App dauert fünf Minuten.
+4. Überwachen Sie den Status aller drei Bereitstellungen, indem Sie auf **Benachrichtigungen** (das Glockensymbol rechts neben dem Suchfeld) klicken. Das Bereitstellen der Apps dauert ca. 5 Minuten.
 
 
-## <a name="run-the-application"></a>Ausführen der Anwendung
+## <a name="run-the-applications"></a>Ausführen der Anwendungen
 
-In der App werden Veranstaltungsorte vorgestellt. Beispiele hierfür sind Konzerthallen, Jazz-Clubs und Sportclubs. Die Veranstaltungsorte sind die Kunden der Wingtip Tickets-App. In Wingtip Tickets werden Veranstaltungsorte als *Mandanten* registriert. Als Mandant kann ein Veranstaltungsort auf einfache Weise eine Liste mit Veranstaltungen bereitstellen und Tickets an die Kunden verkaufen. Jeder Veranstaltungsort erhält eine personalisierte Website, über die Veranstaltungen aufgeführt und Tickets verkauft werden können. Jeder Mandant ist von anderen Mandanten isoliert und unabhängig. Im Hintergrund erhält jeder Mandant eine separate Anwendungsinstanz mit dazugehöriger eigenständiger SQL-Datenbank.
+In der App werden Veranstaltungsorte vorgestellt.  Die Veranstaltungsorte sind die Mandanten der Anwendung. Jeder Veranstaltungsort erhält eine personalisierte Website, über die Veranstaltungen aufgeführt und Tickets verkauft werden können. Beispiele hierfür sind Konzerthallen, Jazz-Clubs und Sportclubs. Im Beispiel legt der Typ des Veranstaltungsorts das Hintergrundfoto fest, das auf der Website des Veranstaltungsorts angezeigt.   Beim Modell mit eigenständigen Anwendungen erhält jeder Veranstaltungsort eine separate Anwendungsinstanz mit zugehöriger eigenständiger SQL-Datenbank.
 
 1. Öffnen Sie die Ereignisseite für jeden der drei Mandanten in eigenen Browserregisterkarten:
 
-    - http://events.contosoconcerthall.&lt;BENUTZER&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;BENUTZER&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;BENUTZER&gt;.trafficmanager.net
+    - http://events.contosoconcerthall.&lt;Benutzer&gt;.trafficmanager.net
+    - http://events.dogwooddojo.&lt;Benutzer&gt;.trafficmanager.net
+    - http://events.fabrikamjazzclub.&lt;Benutzer&gt;.trafficmanager.net
 
-    (Ersetzen Sie &lt;BENUTZER&gt; für jede URL durch den Benutzerwert Ihrer Bereitstellung.)
+    (Ersetzen Sie in jeder URL &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)
 
    ![Ereignisse](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die App [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Jede mandantenspezifische App-Instanz enthält den Namen des Mandanten als Teil des Domänennamens in der URL. Alle Mandanten-URLs enthalten Ihren spezifischen Wert für **Benutzer**. Die URLs haben das folgende Format:
-- http://events.&lt;Name_des_Veranstaltungsorts&gt;.&lt;BENUTZER&gt;.trafficmanager.net
+- http://events.&lt;Veranstaltungsort&gt;.&lt;Benutzer&gt;.trafficmanager.net
 
 Der **Speicherort** der Datenbank jedes Mandanten ist in den App-Einstellungen der zugehörigen bereitgestellten App enthalten.
 
@@ -103,10 +100,10 @@ In einer Produktionsumgebung erstellen Sie normalerweise einen CNAME-DNS-Eintrag
 Betrachten wir einige der Ressourcen, die bereitgestellt wurden:
 
 1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zur Liste der Ressourcengruppen.
-2. Sehen Sie sich die Ressourcengruppe **wingtip-sa-catalog-&lt;BENUTZER&gt;** an.
-    - In dieser Ressourcengruppe wird der Server **catalog-sa-&lt;BENUTZER&gt;** bereitgestellt. Der Server enthält die Datenbank **tenantcatalog**.
+2. Sehen Sie sich die Ressourcengruppe **wingtip-sa-catalog-&lt;Benutzer&gt;** an.
+    - In dieser Ressourcengruppe wird der Server **catalog-sa-&lt;Benutzer&gt;** bereitgestellt. Der Server enthält die Datenbank **tenantcatalog**.
     - Außerdem sollten die drei Mandantenressourcengruppen angezeigt werden.
-3. Öffnen Sie die Ressourcengruppe **wingtip-sa-fabrikam-&lt;BENUTZER&gt;** mit den Ressourcen für die Bereitstellung des Fabrikam Jazz Club.  Der Server **fabrikamjazzclub-&lt;BENUTZER&gt;** enthält die Datenbank **fabrikamjazzclub**.
+3. Öffnen Sie die Ressourcengruppe **wingtip-sa-fabrikam-&lt;Benutzer&gt;** mit den Ressourcen für die Bereitstellung des Fabrikam Jazz Club.  Der Server **fabrikamjazzclub-&lt;Benutzer&gt;** enthält die Datenbank **fabrikamjazzclub**.
 
 Jede Mandantendatenbank ist eine *eigenständige* Datenbank mit 50 DTUs.
 
@@ -120,6 +117,10 @@ Jede Mandantendatenbank ist eine *eigenständige* Datenbank mit 50 DTUs.
 
 - Weitere Informationen zu mehrinstanzenfähigen SaaS-Anwendungen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen](saas-tenancy-app-design-patterns.md).
 
+ 
+## <a name="delete-resource-groups-to-stop-billing"></a>Löschen von Ressourcengruppen zum Beenden der Abrechnung ##
+
+Wenn Sie die Nutzung des Beispiels beendet haben, löschen Sie alle Ressourcengruppen, die Sie erstellt haben, um die zugehörige Abrechnung zu beenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -129,4 +130,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Bereitstellen der eigenständigen SaaS-Anwendung Wingtip Tickets
 > * Informationen zu Servern und Datenbanken, aus denen sich die App zusammensetzt
 > * Löschen von Beispielressourcen, um die zugehörige Abrechnung einzustellen
+
+Arbeiten Sie als Nächstes das [Tutorial zum Bereitstellen und zum Katalog](saas-standaloneapp-provision-and-catalog.md) durch.
+ 
 

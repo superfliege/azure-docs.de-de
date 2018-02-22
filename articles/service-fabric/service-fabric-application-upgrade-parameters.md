@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: f09dad590f32c10f75484bba9afb7ea60f29d81e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c12c4fc6cabd695101abf922eba77b9cd3ee00fa
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="application-upgrade-parameters"></a>Parameter für Anwendungsupgrades
 In diesem Artikel werden die verschiedenen Parameter beschrieben, die während des Upgrades einer Azure Service Fabric-Anwendung gelten. Die Parameter enthalten den Namen und die Version der Anwendung. Sie sind Schalter, die die während des Upgrades angewendeten Timeouts und Integritätsprüfungen steuern, und geben die Richtlinien an, die bei einem Upgradefehler angewendet werden müssen.
 
 <br>
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | ApplicationName |Der Name der Anwendung, die aktualisiert wird. Beispiele: fabric:/VisualObjects, fabric:/ClusterMonitor |
 | TargetApplicationTypeVersion |Die Version des Anwendungstyps, für den das Upgrade durchgeführt wird. |
@@ -45,24 +45,24 @@ Die Kriterien für die Integritätsevaluierung sind optional. Wenn beim Starten 
 
 <br>
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | ConsiderWarningAsError |Der Standardwert ist "False". Bei der Evaluierung der Integrität der Anwendung während des Upgrades werden die Warnereignisse für die Anwendung als Fehler behandelt. In der Standardeinstellung bewertet Service Fabric Warnereignisse in Bezug auf die Integrität nicht als Fehler, sodass das Upgrade auch bei Warnereignissen fortgesetzt werden kann. |
 | MaxPercentUnhealthyDeployedApplications |Der empfohlene Standardwert ist 0. Geben Sie die maximale Anzahl der bereitgestellten Anwendungen an (siehe dazu den [Abschnitt zur Integrität](service-fabric-health-introduction.md)), die fehlerhaft sein können, bevor die Anwendung als fehlerhaft gilt und das Upgrade abgebrochen wird. Dieser Parameter definiert die Anwendungsintegrität für den Knoten und hilft bei der Ermittlung von Problemen während des Upgrades. Typischerweise erfolgt ein Lastenausgleich der Replikate der Anwendung auf dem anderen Knoten, sodass die Anwendung fehlerfrei zu sein scheint und das Upgrade so fortgesetzt werden kann. Durch Angeben eines strikten Werts für MaxPercentUnhealthyDeployedApplications für die Integrität kann Service Fabric ein Problem mit dem Anwendungspaket schnell erkennen und ein Fail-Fast-Upgrade erzeugen. |
 | MaxPercentUnhealthyServices |Der empfohlene Standardwert ist 0. Geben Sie die maximale Anzahl der Dienste in der Anwendungsinstanz an, die fehlerhaft sein können, bevor die Anwendung als fehlerhaft gilt und das Upgrade abgebrochen wird. |
 | MaxPercentUnhealthyPartitionsPerService |Der empfohlene Standardwert ist 0. Geben Sie die maximale Anzahl der Partitionen in einem Dienst an, die fehlerhaft sein können, bevor der Dienst als fehlerhaft gilt. |
 | MaxPercentUnhealthyReplicasPerPartition |Der empfohlene Standardwert ist 0. Geben Sie die maximale Anzahl der Replikate in einer Partition an, die fehlerhaft sein können, bevor die Partition als fehlerhaft gilt. |
-| UpgradeReplicaSetCheckTimeout |**Statusfreier Dienst**: Service Fabric versucht innerhalb einer Upgradedomäne sicherzustellen, dass zusätzliche Instanzen des Diensts verfügbar sind. Wenn die Anzahl der Zielinstanzen größer als 1 ist, wartet Service Fabric bis zu einem maximalen Timeoutwert darauf, dass mehrere Instanzen verfügbar sind. Dieses Timeout wird mithilfe der „UpgradeReplicaSetCheckTimeout“-Eigenschaft angegeben. Wenn das Timeout überschritten wird, fährt Service Fabric unabhängig von der Anzahl der Dienstinstanzen mit dem Upgrade fort. Wenn die Anzahl der Zielinstanzen gleich 1 ist, wartet Service Fabric nicht, sondern setzt das Upgrade direkt fort. **Statusbehafteter Dienst**: Service Fabric versucht innerhalb einer Upgradedomäne sicherzustellen, dass die Replikatgruppe über ein Quorum verfügt. Service Fabric wartet bis zu einem maximalen Timeoutwert (angegeben durch die UpgradeReplicaSetCheckTimeout-Eigenschaft) darauf, dass ein Quorum verfügbar ist. Wenn das Timeout überschritten wird, fährt Service Fabric unabhängig vom Quorum mit dem Upgrade fort. Diese Einstellung ist für Rollforwards auf „never“ (unbegrenzt) und für Rollbacks auf 900 Sekunden festgelegt. |
+| UpgradeReplicaSetCheckTimeout |<p>**Statusfreier Dienst**: Service Fabric versucht innerhalb einer Upgradedomäne sicherzustellen, dass zusätzliche Instanzen des Diensts verfügbar sind. Wenn die Anzahl der Zielinstanzen größer als 1 ist, wartet Service Fabric bis zu einem maximalen Timeoutwert darauf, dass mehrere Instanzen verfügbar sind. Dieses Timeout wird mithilfe der „UpgradeReplicaSetCheckTimeout“-Eigenschaft angegeben. Wenn das Timeout überschritten wird, fährt Service Fabric unabhängig von der Anzahl der Dienstinstanzen mit dem Upgrade fort. Wenn die Anzahl der Zielinstanzen gleich 1 ist, wartet Service Fabric nicht, sondern setzt das Upgrade direkt fort.</p><p>**Statusbehafteter Dienst**: Service Fabric versucht innerhalb einer Upgradedomäne sicherzustellen, dass die Replikatgruppe über ein Quorum verfügt. Service Fabric wartet bis zu einem maximalen Timeoutwert (angegeben durch die UpgradeReplicaSetCheckTimeout-Eigenschaft) darauf, dass ein Quorum verfügbar ist. Wenn das Timeout überschritten wird, fährt Service Fabric unabhängig vom Quorum mit dem Upgrade fort. Diese Einstellung ist für Rollforwards auf „never“ (unbegrenzt) und für Rollbacks auf 1.200 Sekunden festgelegt.</p> |
 | ForceRestart |Wenn Sie ein Konfigurations- oder Datenpaket aktualisieren, ohne den Dienstcode zu aktualisieren, wird der Dienst nur neu gestartet, wenn die „ForceRestart“-Eigenschaft auf „true“ festgelegt ist. Wenn das Upgrade abgeschlossen ist, benachrichtigt Service Fabric den Dienst, dass ein neues Konfigurations- oder Datenpaket verfügbar ist. Der Dienst muss dann die Änderungen anwenden. Bei Bedarf kann sich der Dienst neu starten. |
 
 <br>
 <br>
-Die Kriterien für MaxPercentUnhealthyServices, MaxPercentUnhealthyPartitionsPerService und MaxPercentUnhealthyReplicasPerPartition können pro Diensttyp für eine Anwendungsinstanz angegeben werden. Das dienstbezogene Festlegen dieser Parameter für eine Anwendung ermöglicht, dass diese verschiedene Diensttypen mit unterschiedlichen Auswertungsrichtlinien enthält. Ein statusfreier Gatewaydienst kann beispielsweise einen MaxPercentUnhealthyPartitionsPerService-Wert aufweisen, der sich von dem Wert für einen statusbehafteten Moduldienst für eine bestimmte Anwendungsinstanz unterscheidet.
+Die Kriterien für MaxPercentUnhealthyServices, MaxPercentUnhealthyPartitionsPerService und MaxPercentUnhealthyReplicasPerPartition können pro Diensttyp für eine Anwendungsinstanz angegeben werden. Das dienstbezogene Festlegen dieser Parameter für eine Anwendung ermöglicht, dass diese verschiedene Diensttypen mit unterschiedlichen Auswertungsrichtlinien enthält. Ein zustandsloser Gatewaydienst kann beispielsweise einen MaxPercentUnhealthyPartitionsPerService-Wert aufweisen, der sich von dem Wert für einen zustandsbehafteten Engine-Dienst für eine bestimmte Anwendungsinstanz unterscheidet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Ihre Anwendung mit Visual Studio upgraden](service-fabric-application-upgrade-tutorial.md) beschreibt das Upgraden von Anwendungen mit Visual Studio.
 
-[Upgrade Ihrer Anwendung mithilfe von PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) werden Sie schrittweise durch das Upgrade der Anwendung mithilfe von PowerShell geführt.
+[Ihre Anwendung mit PowerShell upgraden](service-fabric-application-upgrade-tutorial-powershell.md) beschreibt das Upgraden von Anwendungen mit PowerShell.
 
 [Upgraden Ihrer Anwendung mithilfe der Service Fabric CLI unter Linux](service-fabric-application-lifecycle-sfctl.md#upgrade-application) führt Sie in einzelnen Schritten durch ein Anwendungsupgrade mit der Service Fabric CLI.
 

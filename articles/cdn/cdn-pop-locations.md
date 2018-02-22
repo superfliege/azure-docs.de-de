@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3c1095c67b9a5369a9ac797bf17342499675e244
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 3dd40bb6fc5754ca8f41360cc735a9136b3f89ea
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-cdn-pop-locations"></a>Azure CDN-POP-Standorte
 Dieser Artikel enthält die aktuellen POP-Standorte (Point-of-Presence) für **Azure CDN von Verizon** und **Azure CDN von Akamai**.
@@ -32,9 +32,9 @@ Dieser Artikel enthält die aktuellen POP-Standorte (Point-of-Presence) für **A
 
 | Region | Verizon | Akamai |
 | --- | --- | --- |
-| Nordamerika | Atlanta (Georgia, USA)<br />Boston, MA<br />Chicago, IL<br />Dallas, TX<br />Denver, CO<br />Los Angeles, CA<br />Miami, FL<br />New York, NY<br />Philadelphia, PA<br />San Jose, Kalifornien, USA<br />Seattle, WA<br />Washington DC | Kanada<br />Mexiko<br />USA |
+| Nordamerika | Atlanta (Georgia, USA)<br />Boston, MA<br />Chicago, IL<br />Dallas, TX<br />Denver, CO<br />Los Angeles, CA<br />Miami, FL<br />New York, NY<br />Philadelphia, PA<br />San Jose, Kalifornien, USA<br />Seattle, WA<br />Washington DC<br />Puebla, Mexiko<br />Querétaro, Mexiko | Kanada<br />Mexiko<br />USA |
 | Südamerika | Buenos Aires, Argentinien<br />Rio de Janeiro, Brasilien<br />São Paulo, Brasilien<br />Valparaíso, Chile<br />Barranquilla, Kolumbien<br />Medellin, Kolumbien<br />Quito, Ecuador<br />Lima, Peru | Brasilien<br />Peru |
-| Europa, Norden und Osten | Kopenhagen, Dänemark<br />Helsinki, Finnland<br />Warschau, Polen<br />Stockholm, Schweden | Dänemark<br />Polen<br />Schweden<br /> |
+| Europa, Norden und Osten | Kopenhagen, Dänemark<br />Helsinki, Finnland<br />Riga, Lettland<br />Warschau, Polen<br />Stockholm, Schweden | Dänemark<br />Polen<br />Schweden<br /> |
 | Europa, Westen | Wien, Österreich<br />Paris, Frankreich<br />Frankfurt, Deutschland<br />Amsterdam, Niederlande<br />London, Großbritannien | Österreich<br />Frankreich<br />Deutschland<br />Irland<br />Niederlande<br />Schweiz<br />Vereinigtes Königreich |
 | Europa, Süden | Mailand, Italien<br />Madrid, Spanien | Italien<br />Spanien |
 | Afrika | Johannesburg, Südafrika | |

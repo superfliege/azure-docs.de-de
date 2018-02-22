@@ -12,50 +12,44 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/5/2018
 ms.author: subramar;chackdan
-ms.openlocfilehash: 8d3b922f3d50b645ac9db2cc879a319df1262e0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b0ca553fb96b0a54f3b76d306ed98d95026dcd9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric-Anwendungsupgrade: Weiterführende Themen
-## <a name="adding-or-removing-services-during-an-application-upgrade"></a>Hinzufügen oder Entfernen von Diensten während eines Anwendungsupgrades
-Wenn ein neuer Dienst einer Anwendung hinzugefügt wird, die bereits bereitgestellt ist, und als Upgrade veröffentlicht wird, wird der neue Dienst der bereitgestellten Anwendung hinzugefügt.  Ein solches Upgrade wirkt sich nicht auf die Dienste aus, die bereits Teil der Anwendung waren. Eine Instanz des Diensts, der hinzugefügt wurde, muss jedoch (mithilfe des Cmdlets `New-ServiceFabricService` ) gestartet werden, damit der neue Dienst aktiv ist.
+## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Hinzufügen oder Entfernen von Diensttypen während eines Anwendungsupgrades
+Wenn einer veröffentlichten Anwendung bei einem Upgrade ein neuer Diensttyp hinzugefügt wird, wird der neue Dienst der bereitgestellten Anwendung hinzugefügt. Ein solches Upgrade hat keine Auswirkungen auf Dienstinstanzen, die bereits Teil der Anwendung waren. Es muss jedoch eine Instanz des hinzugefügten Diensttyps erstellt werden, damit der neue Diensttyp aktiviert wird (siehe [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
 
-Im Rahmen eines Upgrades können Dienste auch aus einer Anwendung entfernt werden. Allerdings müssen alle aktuelle Instanzen des zu löschenden Diensts beendet werden, bevor Sie (mithilfe des Cmdlets `Remove-ServiceFabricService` ) mit dem Upgrade fortfahren.
+Entsprechend können im Rahmen eines Upgrades Diensttypen auch aus einer Anwendung entfernt werden. Alle Dienstinstanzen des Diensttyps, der entfernt werden soll, müssen jedoch vor dem Upgrade entfernt werden (siehe [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
 ## <a name="manual-upgrade-mode"></a>Manueller Upgrademodus
 > [!NOTE]
-> Der nicht überwachte manuelle Modus sollte ausschließlich bei einem fehlerhaften oder angehaltenen Upgrade in Betracht gezogen werden. Der überwachte Modus ist der für Service Fabric-Anwendungen empfohlene Modus.
+> Der *Monitored*-Upgrademodus wird für alle Service Fabric-Upgrades empfohlen.
+> Der *UnmonitoredManual*-Upgrademodus sollte ausschließlich bei einem fehlerhaften oder angehaltenen Upgrade in Betracht gezogen werden. 
 >
 >
 
-Azure Service Fabric umfasst mehrere Upgrademodi zur Unterstützung von Entwicklungs- und Produktionsclustern. Die zu wählenden Bereitstellungsoptionen können sich je nach Umgebung unterscheiden.
+Beim *Monitored*-Modus wendet Service Fabric Integritätsrichtlinien an, um sicherzustellen, dass die Anwendung im Verlauf des Upgrades fehlerfrei ist. Wenn die Integritätsrichtlinien verletzt werden, wird abhängig von der angegebenen *FailureAction* das Upgrade entweder angehalten oder automatisch ein Rollback ausgeführt.
 
-Das überwachte parallele Anwendungsupgrade ist das typische in Produktionsumgebungen verwendete Upgrade. Wenn die Upgraderichtlinie angegeben ist, stellt Service Fabric sicher, dass die Anwendung fehlerfrei ist, bevor das Upgrade fortgesetzt wird.
+Im *UnmonitoredManual*-Modus hat der Anwendungsadministrator vollständige Kontrolle über den Fortschritt des Upgrades. Dieser Modus ist hilfreich, wenn eine benutzerdefinierte Auswertung von Integritätsrichtlinien durchgeführt werden soll oder wenn unkonventionelle Upgrades durchgeführt werden, bei denen die Überwachung der Systemintegrität vollständig umgangen wird (z.B. wenn die Anwendung bereits Datenverluste aufweist). Ein Upgrade in diesem Modus wird automatisch nach Abschluss jeder Upgradedomäne angehalten. Es muss mit [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) ausdrücklich fortgesetzt werden. Wenn ein Upgrade angehalten wurde und bereit ist, vom Benutzer fortgesetzt zu werden, lautet der Upgradestatus *RollforwardPending* (siehe [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
 
- Der Anwendungsadministrator kann den manuellen parallelen Upgrademodus für Anwendungen verwenden, um über die verschiedenen Upgradedomänen hinweg eine vollständige Kontrolle über den Upgradeverlauf zu behalten. Dieser Modus eignet sich, wenn eine angepasste oder komplexere Richtlinie zur Integritätsauswertung erforderlich ist oder ein außergewöhnliches Upgrade stattfindet (Beispiel: die Anwendung hat bereits Daten verloren).
-
-Schließlich eignet sich der automatisierte parallele Upgrademodus in Entwicklungs- oder Testumgebungen zur Bereitstellung schneller Iterationszyklen während der Entwicklung von Diensten.
-
-## <a name="change-to-manual-upgrade-mode"></a>Wechseln in den manuellen Upgrademodus
-**Manuell**: Das Anwendungsupgrade wird bei der aktuellen Upgradedomäne gestoppt, und es erfolgt ein Wechsel in den nicht überwachten manuellen Upgrademodus. Der Administrator muss **MoveNextApplicationUpgradeDomainAsync** manuell aufrufen, um das Upgrade fortzusetzen, oder durch Initiieren eines neuen Upgrades einen Rollback auslösen. Wenn das Upgrade in den manuellen Modus wechselt, wird dieser Modus beibehalten, bis ein neues Upgrade initiiert wird. Der **GetApplicationUpgradeProgressAsync**-Befehl gibt „FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING“ zurück.
+Schließlich eignet sich der *UnmonitoredAuto*-Modus für schnelle Upgradedurchläufe während der Dienstentwicklung oder der Testphase, da keine Benutzereingaben erforderlich sind und keine Richtlinien zur Anwendungsintegrität ausgewertet werden.
 
 ## <a name="upgrade-with-a-diff-package"></a>Upgrade mit einem Diff-Paket
-Eine Service Fabric-Anwendung kann durch Bereitstellen eines vollständigen und eigenständigen Anwendungspakets aktualisiert werden. Eine Anwendung kann auch mithilfe eines Diff-Pakets aktualisiert werden, das nur die aktualisierten Anwendungsdateien, das aktualisierte Anwendungsmanifest und die Dienstmanifestdateien enthält.
+Anstatt ein vollständiges Anwendungspaket bereitzustellen, können Upgrades auch durch die Bereitstellung von Diff-Paketen durchgeführt werden. Diese enthalten nur die aktualisierten Code-/Konfigurations-/Datenpakete sowie das vollständige Anwendungsmanifest und sämtliche Dienstmanifeste. Vollständige Anwendungspakete werden für die Erstinstallation einer Anwendung im Cluster benötigt. Nachfolgende Upgrades können über vollständige Anwendungspakete oder Diff-Pakete erfolgen.  
 
-Ein vollständiges Anwendungspaket enthält alle zum Starten und Ausführen einer Service Fabric-Anwendung erforderlichen Dateien. Ein Diff-Paket enthält dagegen nur die Dateien, die sich zwischen der letzten Bereitstellung und dem aktuellen Upgrade geändert haben, sowie das vollständige Anwendungsmanifest und die Dienstmanifestdateien. Bei allen Verweisen im Anwendungs- oder Dienstmanifest, die nicht gefunden werden, wird das Buildlayout im Imagespeicher gesucht.
+Alle Verweise im Anwendungsmanifest oder den Dienstmanifesten eines Diff-Pakets, die im Anwendungspaket nicht gefunden werden können, werden automatisch durch die derzeit bereitgestellte Version ersetzt.
 
-Vollständige Anwendungspakete werden für die Erstinstallation einer Anwendung im Cluster benötigt. Für nachfolgende Upgrades kann entweder ein vollständiges Anwendungspaket oder ein Diff-Paket verwendet werden.
+Szenarien für die Verwendung eines Diff-Pakets:
 
-Situationen, in denen sich ein Diff-Paket anbietet:
+* Das Anwendungspaket ist sehr umfangreich und enthält Verweise auf mehrere Dienstmanifestdateien sowie mehrere Code-, Konfigurations- oder Datenpakete.
+* Das Bereitstellungssystem generiert das Buildlayout direkt aus dem Anwendungsbuildprozess. In diesem Fall weisen neu erstellte Assemblys eine andere Prüfsumme auf, auch wenn sich der Code nicht geändert hat. Bei Verwendung eines vollständigen Anwendungspakets müssten Sie die Version in allen Codepaketen ändern. Bei Verwendung eines Diff-Pakets stellen Sie dagegen nur die geänderten Dateien und die Manifestdateien bereit, in denen sich die Version geändert hat.
 
-* Ein Diff-Paket wird gegenüber einem umfangreichen Anwendungspaket bevorzugt, das auf mehrere Dienstmanifestdateien und/oder mehrere Code-, Konfigurations- oder Datenpakete verweist.
-* Ein Diff-Paket wird in einem Bereitstellungssystem bevorzugt, das das Buildlayout direkt aus dem Anwendungsbuildprozess generiert. In diesem Fall weisen neu erstellte Assemblys eine andere Prüfsumme auf, auch wenn sich der Code nicht geändert hat. Bei Verwendung eines vollständigen Anwendungspakets müssten Sie die Version in allen Codepaketen ändern. Bei Verwendung eines Diff-Pakets stellen Sie dagegen nur die geänderten Dateien und die Manifestdateien bereit, in denen sich die Version geändert hat.
-
-Wenn eine Anwendung mit Visual Studio aktualisiert wird, wird das Diff-Paket automatisch veröffentlicht. Um ein Diff-Paket manuell zu erstellen, müssen das Anwendungsmanifest und die Dienstmanifeste aktualisiert werden. Doch nur die geänderten Pakete dürfen in das endgültige Anwendungspaket eingeschlossen werden.
+Wenn eine Anwendung mit Visual Studio aktualisiert wird, wird automatisch ein Diff-Paket veröffentlicht. Um ein Diff-Paket manuell zu erstellen, müssen das Anwendungsmanifest und die Dienstmanifeste aktualisiert werden. Doch nur die geänderten Pakete dürfen in das endgültige Anwendungspaket eingeschlossen werden.
 
 Beispielsweise beginnen wir mit der folgenden Anwendung (Versionsnummern werden zum einfacheren Verständnis angegeben):
 
@@ -69,7 +63,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-Nun nehmen wir an, dass Sie nur das Codepaket von Service1 mithilfe eines Diff-Pakets mit PowerShell aktualisieren möchten. Ihre aktualisierte Anwendung hat nun die folgende Ordnerstruktur:
+Nehmen Sie an, dass Sie nur das Codepaket von Service1 mithilfe eines Diff-Pakets aktualisieren möchten. Ihre aktualisierte Anwendung enthält die folgenden Versionsänderungen:
 
 ```text
 app1           2.0.0      <-- new version
@@ -88,6 +82,16 @@ app1/
   service1/
     code/
 ```
+
+Das heißt, Sie erstellen wie gewohnt ein vollständiges Anwendungspaket und entfernen dann alle Ordner mit Code-/Konfigurations-/Datenpaketen, deren Version nicht geändert wurde.
+
+## <a name="rolling-back-application-upgrades"></a>Ausführen von Rollbacks für Anwendungsupgrades
+
+Während Upgrades in einem von drei Modi ausgeführt werden können (*Monitored*, *UnmonitoredAuto* oder *UnmonitoredManual*), können Rollback nur im Modus *UnmonitoredAuto* oder *UnmonitoredManual* ausgeführt werden. Ein Rollback im *UnmonitoredAuto*-Modus funktioniert genauso wie das Rollforward – lediglich der Standardwert von *UpgradeReplicaSetCheckTimeout* unterscheidet sich (siehe [Parameter für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md)). Ein Rollback im *UnmonitoredManual*-Modus funktioniert genauso wie das Rollforward – das Rollback wird automatisch nach jeder Upgradedomäne angehalten und muss explizit mit [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) fortgesetzt werden.
+
+Rollbacks können automatisch ausgelöst werden, wenn die Integritätsrichtlinien eines Upgrades im *Monitored*-Modus mit einer *FailureAction* mit dem Wert *Rollback* verletzt werden (siehe [Parameter für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md)), oder ausdrücklich mit [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
+
+Während des Rollbacks können der Wert von *UpgradeReplicaSetCheckTimeout* und der Modus weiterhin jederzeit mit [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) geändert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Ihre Anwendung mit Visual Studio upgraden](service-fabric-application-upgrade-tutorial.md) beschreibt das Upgraden von Anwendungen mit Visual Studio.

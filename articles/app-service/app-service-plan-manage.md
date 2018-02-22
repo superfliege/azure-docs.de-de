@@ -1,6 +1,6 @@
 ---
 title: "Verwalten von App Service-Plänen in Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie App Service-Pläne verschiedene Aufgaben zum Verwalten eines App Service-Plans ausführen."
+description: "Erfahren Sie, wie Sie verschiedene Aufgaben zum Verwalten eines App Service-Plans ausführen."
 keywords: "App Service, Azure App Service, Skalierung, App Services-Plan, ändern, verwalten, Verwaltung"
 services: app-service
 documentationcenter: 
@@ -15,34 +15,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 61179c5bf29ed2c338b45ba909ec01237806cf26
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 1dfe8a903e19ff524a1c4a0228e6aefcbe9ff183
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
-Ein [App Service-Plan](azure-web-sites-web-hosting-plans-in-depth-overview.md) stellt Ressourcen bereit, die zum Ausführen einer App Service-App erforderlich sind. Diese Anleitung veranschaulicht das Verwalten eines App Service-Plans.
+Ein [Azure App Service-Plan](azure-web-sites-web-hosting-plans-in-depth-overview.md) stellt Ressourcen bereit, die zum Ausführen einer App Service-App erforderlich sind. Diese Anleitung veranschaulicht das Verwalten eines App Service-Plans.
 
 ## <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
 > [!TIP]
 > Falls Sie eine App Service-Umgebung haben, finden Sie Informationen dazu im Abschnitt [Create an App Service plan (Erstellen eines App Service-Plans)](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
 
-Sie können einen App Service-Plan eigenständig oder zusammen mit einer Web-App erstellen.
+Sie können einen leeren App Service-Plan erstellen; Sie können einen Plan aber auch im Rahmen der App-Erstellung erstellen.
 
-Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu** > **Web und mobil**, und wählen Sie dann die Option **Web-App** oder eine andere Art von App Service-App aus.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu** > **Web + Mobil**, und wählen Sie dann die Option **Web-App** oder eine andere Art von App Service-App aus.
 
-![Erstellen Sie eine App im Azure-Portal.][createWebApp]
+2. Wählen Sie einen vorhandenen App Service-Plan auswählen, oder erstellen Sie einen Plan für die neue App.
 
-Sie können dann einen vorhandenen App Service-Plan auswählen oder einen Plan für die neue Anwendung erstellen.
+   ![Erstellen Sie eine App im Azure-Portal.][createWebApp]
 
- ![Erstellen eines App Service-Plans][createASP]
+   So erstellen Sie einen Plan:
 
-Klicken Sie zum Erstellen eines App Service-Plans auf **[+] Neu erstellen**, geben Sie den Namen für den **App Service-Plan** ein, und wählen Sie einen geeigneten **Speicherort** aus. Klicken Sie auf **Tarif**, und wählen Sie einen geeigneten Tarif für den Dienst aus. Wählen Sie **Alle anzeigen** aus, um mehr Tarifoptionen anzuzeigen, z. B. **Free** und **Shared**. 
+   a. Wählen Sie **+ Neu erstellen** aus.
 
-Klicken Sie nach dem Auswählen des Tarifs auf die Schaltfläche **Auswählen**.
+      ![Erstellen eines App Service-Plans][createASP] 
+
+   b. Geben Sie einen Namen für Ihren **App Service-Plan** ein.
+
+   c. Wählen Sie unter **Speicherort** einen geeigneten Speicherort aus.
+
+   d. Wählen Sie einen geeigneten **Tarif** für den Dienst aus. Wählen Sie **Alle anzeigen** aus, um mehr Tarifoptionen anzuzeigen, z. B. **Free** und **Shared**. Klicken Sie nach dem Auswählen des Tarifs auf die Schaltfläche **Auswählen**.
 
 <a name="move"></a>
 
@@ -50,13 +56,15 @@ Klicken Sie nach dem Auswählen des Tarifs auf die Schaltfläche **Auswählen**.
 
 Sie können eine App in einen anderen App Service-Plan verschieben, solange sich der Quellplan und der Zielplan in der _gleichen Ressourcengruppe und geografischen Region_ befinden.
 
-Um eine App in einen anderen Plan zu verschieben, navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der zu verschiebenden App.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der App, die Sie verschieben möchten.
 
-Wechseln Sie im **Menü** zum Abschnitt **App Service-Plan**.
+2. Suchen Sie im Menü nach dem Abschnitt **App Service-Plan**.
 
-Wählen Sie **App Service-Plan ändern**, um den Vorgang zu starten.
+3. Wählen Sie **App Service-Plan ändern** aus, um die Auswahlfunktion für den **App Service-Plan** zu öffnen.
 
-Mit **App Service-Plan ändern** wird die Auswahlfunktion für den **App Service-Plan** geöffnet. Wählen Sie einen vorhandenen Plan aus, in den diese App verschoben werden soll. 
+   ![Auswahlelement für App Service-Pläne][change] 
+
+4. Wählen Sie in der Auswahlfunktion **App Service-Plan** einen vorhandenen Plan aus, in den Sie die App verschieben möchten.   
 
 > [!IMPORTANT]
 > Die Seite **App Service-Plan auswählen** wird anhand der folgenden Kriterien gefiltert: 
@@ -64,14 +72,20 @@ Mit **App Service-Plan ändern** wird die Auswahlfunktion für den **App Service
 > - In derselben geografischen Region vorhanden 
 > - Im selben Webspace vorhanden  
 > 
-> Ein _Webspace_ ist ein logisches Konstrukt in App Service, das eine Gruppierung von Serverressourcen definiert. Eine geografische Region (z. B. „USA, Westen“) enthält viele Webspaces, um Kunden mithilfe von App Service zuzuordnen. Derzeit können App Service-Ressourcen nicht zwischen Webspaces verschoben werden. 
+> Ein _Webspace_ ist ein logisches Konstrukt in App Service, das eine Gruppierung von Serverressourcen definiert. Eine geografische Region (z.B. „USA, Westen“) enthält viele Webspaces, um Kunden zuzuordnen, die App Service verwenden. Zurzeit können Sie App Service-Ressourcen nicht zwischen verschiedenen Webspaces verschieben. 
 > 
-
-![Auswahlelement für App Service-Pläne][change]
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Jeder Plan hat einen eigenen Tarif. Wenn Sie beispielsweise eine Website aus dem **Free**-Tarif in den **Standard**-Tarif verschieben, können alle zugewiesenen Apps die Features und Ressourcen des **Standard**-Tarifs nutzen. Allerdings bedeutet das Verschieben einer App von einem Plan mit einem höheren Tarif zu einem Plan mit einem niedrigeren Tarif, dass Sie keinen Zugriff mehr auf bestimmte Features haben. Wenn Ihre Anwendung ein Feature verwendet, das im Zielplan nicht verfügbar ist, erhalten Sie eine Fehlermeldung, die anzeigt, welches Feature verwendet wird, das nicht verfügbar ist. Wenn z. B. eine Ihrer Anwendungen SSL-Zertifikate verwendet, wird möglicherweise die folgende Fehlermeldung angezeigt: `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`In diesem Fall müssen Sie den Tarif des Zielplans zentral auf **Basic** oder höher hochskalieren, oder Sie müssen alle SSL-Verbindungen mit Ihrer App entfernen, bevor Sie die App in den Zielplan verschieben können.
+Jeder Plan hat einen eigenen Tarif. Wenn Sie beispielsweise eine Website aus einem **Free**-Tarif in einen **Standard**-Tarif verschieben, können alle zugewiesenen Apps die Features und Ressourcen des **Standard**-Tarifs nutzen. Allerdings bedeutet das Verschieben einer App von einem Plan mit einem höheren Tarif in einen Plan mit einem niedrigeren Tarif, dass Sie keinen Zugriff mehr auf bestimmte Features haben. Wenn Ihre Anwendung ein Feature verwendet, das im Zielplan nicht verfügbar ist, erhalten Sie eine Fehlermeldung, die anzeigt, welches Feature verwendet wird, das nicht verfügbar ist. 
+
+Wenn beispielsweise eine Ihrer Apps SSL-Zertifikate verwendet, wird Ihnen möglicherweise folgende Fehlermeldung angezeigt:
+
+`Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+
+In diesem Fall müssen Sie einen der folgenden Schritte ausführen, bevor Sie die App in den Zielplan verschieben können:
+- Skalieren Sie den Tarif des Zielplans zentral auf **Basic** oder einen höheren Tarif hoch.
+- Entfernen Sie alle SSL-Verbindungen mit Ihrer App.
 
 ## <a name="move-an-app-to-a-different-region"></a>Verschieben einer App in eine andere Region
 
@@ -80,7 +94,7 @@ Die Region, in der Ihre App ausgeführt wird, ist die Region des App Service-Pla
 Sie finden **App klonen** im Abschnitt **Entwicklungstools** des Menüs.
 
 > [!IMPORTANT]
-> Beim Klonen gelten einige Einschränkungen, über die Sie sich unter [Klonen der Azure App Service-App](app-service-web-app-cloning.md) informieren können.
+> Für das Klonen gelten einige Einschränkungen. Informationen dazu erhalten Sie unter [Klonen der Azure App Service-App](app-service-web-app-cloning.md).
 
 ## <a name="scale-an-app-service-plan"></a>Skalieren eines App Service-Plans
 
@@ -92,10 +106,10 @@ Informationen zum horizontalen Hochskalieren einer App-Instanz finden Sie unter 
 
 ## <a name="delete-an-app-service-plan"></a>Löschen eines App Service-Plans
 
-Um unerwartete Kosten zu vermeiden, löscht App Service den Plan standardmäßig, wenn Sie die letzte App in einem App Service-Plan löschen. Wenn Sie sich dafür entscheiden, den Plan stattdessen beizubehalten, sollten Sie den Plan in den **Free**-Tarif ändern, damit Sie nicht belastet werden.
+Um unerwartete Kosten zu vermeiden, löscht App Service den Plan standardmäßig, wenn Sie die letzte App in einem App Service-Plan löschen. Wenn Sie den Plan beibehalten möchten, sollten Sie ihn in den **Free**-Tarif ändern, damit keine Kosten entstehen.
 
 > [!IMPORTANT]
-> Für **App Service-Pläne**, denen keine Apps zugeordnet sind, fallen trotzdem Gebühren an, da die konfigurierten VM-Instanzen weiterhin reserviert werden.
+> Für App Service-Pläne, denen keine Apps zugeordnet sind, fallen trotzdem Gebühren an, da die konfigurierten VM-Instanzen weiterhin reserviert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

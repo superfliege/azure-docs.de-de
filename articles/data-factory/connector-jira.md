@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Jira mithilfe von Azure Data Factory (Beta)
+title: Kopieren von Daten aus Jira mithilfe von Azure Data Factory (Beta) | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Daten aus Jira mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden."
 services: data-factory
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 74b5a792fcc94c4a9ae45b07604e1b392b8df7d1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 83d8c275e533c59f9380d9c44735912b9219a068
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-beta"></a>Kopieren von Daten aus Jira mithilfe von Azure Data Factory (Beta)
 
@@ -51,7 +51,7 @@ Folgende Eigenschaften werden für den mit Jira verknüpften Dienst unterstützt
 | host | IP-Adresse oder Hostname des Jira-Diensts. (jira.example.com)  | Ja |
 | port | Der TCP-Port, den der Jira-Server verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 443 bei einer Verbindung über HTTPS oder 8080 bei einer Verbindung über HTTP.  | Nein  |
 | username | Der Benutzername für den Zugriff auf den Jira Service.  | Ja |
-| password | Das Kennwort, das dem Benutzernamen entspricht, den Sie im Feld „username“ angegeben haben. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
+| password | Das Kennwort, das dem Benutzernamen entspricht, den Sie im Feld „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |

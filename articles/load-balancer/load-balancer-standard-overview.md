@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: ddcbe895bdaa6eaa49e8ed129fe92b415f2600ef
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: cf7be370ab0d79be9068534f0c43b88f454bc024
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="azure-load-balancer-standard-overview-preview"></a>Übersicht: Azure Load Balancer Standard (Preview)
+# <a name="azure-load-balancer-standard-overview-preview"></a>Übersicht: Azure Load Balancer Standard (Vorschau)
 
 Die SKUs Azure Load Balancer Standard und Public IP Standard ermöglichen Ihnen zusammen das Erstellen hoch skalierbarer und zuverlässiger Architekturen. Anwendungen, die Load Balancer Standard verwenden, können neue Funktionen nutzen. Geringe Latenz, hoher Durchsatz und Skalierung sind für Millionen von Datenflüssen für alle TCP- und UDP-Anwendungen verfügbar.
 
 >[!NOTE]
-> Die Load Balancer Standard-SKU ist zurzeit als Preview verfügbar. Während der Previewphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Verwenden Sie die allgemein verfügbare [Load Balancer Basic-SKU](load-balancer-overview.md) für Ihre Produktionsdienste. Die Features in dieser Preview wie z.B. [Verfügbarkeitszonen](https://aka.ms/availabilityzones) und [HA-Ports](https://aka.ms/haports) erfordern zurzeit eine getrennte Anmeldung. Befolgen Sie die entsprechenden Anweisungen für die Registrierung für diese Features, zusätzlich zur Registrierung für Load Balancer [Standard Preview](#preview-sign-up).
+> Die Load Balancer Standard-SKU ist zurzeit als Vorschau verfügbar. Während der Vorschauphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Verwenden Sie die allgemein verfügbare [Load Balancer Basic-SKU](load-balancer-overview.md) für Ihre Produktionsdienste. Zur Verwendung der [Verfügbarkeitszonen (Vorschau)](https://aka.ms/availabilityzones) mit dieser Vorschau ist zusätzlich zur Registrierung für Load Balancer [Standard (Vorschau)](#preview-sign-up) eine [separate Registrierung](https://aka.ms/availabilityzones) erforderlich.
 
 ## <a name="why-use-load-balancer-standard"></a>Gründe für die Verwendung von Load Balancer Standard
 
@@ -33,7 +33,7 @@ Sie können Load Balancer Standard für das gesamte Spektrum virtueller Rechenze
 
 - [Skalierung auf Unternehmensniveau](#enterprisescale) kann mit Load Balancer-Standard erreicht werden. Dieses Feature kann mit jeder VM-Instanz (Virtual Machine, virtueller Computer) in einem virtuellen Netzwerk und mit bis zu 1.000 VM-Instanzen verwendet werden.
 
-- [Neue Diagnoseerkenntnisse](#diagnosticinsights) unterstützen Sie beim Verstehen, beim Verwalten und bei der Problembehandlung dieser wichtigen Komponente des virtuellen Rechenzentrums. Verwenden Sie Azure Monitor (Preview), um neue mehrdimensionale Metriken für kontinuierliche Datenpfad-Integritätsmessungen anzuzeigen, zu filtern und zu gruppieren. Überwachen Sie Ihre Daten vom Front-End bis zum virtuellen Computer, und erfassen Sie Endpunktintegritätsüberprüfungen für TCP-Verbindungsversuche und ausgehende Verbindungen.
+- [Neue Diagnoseerkenntnisse](#diagnosticinsights) unterstützen Sie beim Verstehen, beim Verwalten und bei der Problembehandlung dieser wichtigen Komponente des virtuellen Rechenzentrums. Verwenden Sie Azure Monitor (Vorschau), um neue mehrdimensionale Metriken für kontinuierliche Datenpfad-Integritätsmessungen anzuzeigen, zu filtern und zu gruppieren. Überwachen Sie Ihre Daten vom Front-End bis zum virtuellen Computer, und erfassen Sie Endpunktintegritätsüberprüfungen für TCP-Verbindungsversuche und ausgehende Verbindungen.
 
 - [Netzwerksicherheitsgruppen](#nsg) sind nun für alle VM-Instanzen erforderlich, die Load Balancer Standard- oder Public IP Standard-SKUs zugeordnet sind. Netzwerksicherheitsgruppen (NSGs) bieten erweiterte Sicherheit für Ihr Szenario.
 
@@ -66,7 +66,7 @@ Eine Anforderung für Verfügbarkeitsgruppen besteht nicht mehr. Sie können abe
 
 ### <a name = "diagnosticinsights"></a>Diagnoseerkenntnisse
 
-Load Balancer Standard bietet neue mehrdimensionale Diagnosefunktionen für öffentliche und interne Load Balancer-Konfigurationen. Diese neuen Metriken werden über Azure Monitor (Preview) bereitgestellt und nutzen alle zugehörigen Funktionen einschließlich der Möglichkeit für die Integration in verschiedene Downstreamconsumer.
+Load Balancer Standard bietet neue mehrdimensionale Diagnosefunktionen für öffentliche und interne Load Balancer-Konfigurationen. Diese neuen Metriken werden über Azure Monitor (Vorschau) bereitgestellt und nutzen alle zugehörigen Funktionen einschließlich der Möglichkeit für die Integration in verschiedene Downstreamconsumer.
 
 | Metrik | BESCHREIBUNG |
 | --- | --- |
@@ -89,7 +89,7 @@ NVA-Anbieter können vollständig vom Anbieter unterstützte, robuste Szenarien 
 
 [!INCLUDE [availability-zones-preview-statement](../../includes/availability-zones-preview-statement.md)]
 
-Vergrößern Sie die Anwendungsresilienz durch die Verwendung von Verfügbarkeitszonen in unterstützten Regionen. Verfügbarkeitszonen sind zurzeit als Preview in bestimmten Regionen verfügbar und erfordern ein zusätzliches Abonnement.
+Vergrößern Sie die Anwendungsresilienz durch die Verwendung von Verfügbarkeitszonen in unterstützten Regionen. Verfügbarkeitszonen sind zurzeit als Vorschau in bestimmten Regionen verfügbar und erfordern ein zusätzliches Abonnement.
 
 ### <a name="automatic-zone-redundancy"></a>Automatische Zonenredundanz
 
@@ -250,7 +250,7 @@ Weitere Informationen zum Konfigurieren von mehreren Front-End-IP-Adressen finde
 
 ## <a name = "sku"></a>Informationen zu SKUs
 
-SKUs sind nur im Rahmen des Azure Resource Manager-Bereitstellungsmodells verfügbar. Diese Preview führt zwei SKUs für Load Balancer- und Public IP-Ressourcen ein: „Basic“ und „Standard“. Die SKUs unterscheiden sich hinsichtlich der Funktionen und Leistungsmerkmale, Einschränkungen sowie einigen systeminternen Verhaltensweisen. Virtual Machines kann mit beiden SKUs verwendet werden. Für Load Balancer- und Public IP-Ressourcen bleiben die SKUs optionale Attribute. Wenn SKUs in einer Szenariodefinition ausgelassen werden, wird standardmäßig die SKU „Basic“ verwendet.
+SKUs sind nur im Rahmen des Azure Resource Manager-Bereitstellungsmodells verfügbar. Diese Vorschau führt zwei SKUs für Load Balancer- und Public IP-Ressourcen ein: „Basic“ und „Standard“. Die SKUs unterscheiden sich hinsichtlich der Funktionen und Leistungsmerkmale, Einschränkungen sowie einigen systeminternen Verhaltensweisen. Virtual Machines kann mit beiden SKUs verwendet werden. Für Load Balancer- und Public IP-Ressourcen bleiben die SKUs optionale Attribute. Wenn SKUs in einer Szenariodefinition ausgelassen werden, wird standardmäßig die SKU „Basic“ verwendet.
 
 >[!IMPORTANT]
 >Die SKU einer Ressource kann nicht geändert werden. Sie können die SKU einer vorhandenen Ressource nicht ändern.  
@@ -259,7 +259,7 @@ SKUs sind nur im Rahmen des Azure Resource Manager-Bereitstellungsmodells verfü
 
 Die [vorhandene Load Balancer-Ressource](load-balancer-overview.md) wird zur SKU „Basic“ und bleibt allgemein verfügbar und unverändert.
 
-Die Load Balancer Standard-SKU ist neu und zurzeit als Preview verfügbar. Die API-Version für Microsoft.Network/loadBalancers vom 1. August 2017 fügt der Ressourcendefinition die Eigenschaft **sku** hinzu:
+Die Load Balancer Standard-SKU ist neu und zurzeit als Vorschau verfügbar. Die API-Version für Microsoft.Network/loadBalancers vom 1. August 2017 fügt der Ressourcendefinition die Eigenschaft **sku** hinzu:
 
 ```json
             "apiVersion": "2017-08-01",
@@ -277,7 +277,7 @@ Load Balancer Standard ist in Regionen, die Verfügbarkeitszonen bieten, automat
 
 Die [vorhandene Public IP-Ressource](../virtual-network/virtual-network-ip-addresses-overview-arm.md) wird zur SKU „Basic“ und bleibt mit allen Funktionen, Leistungsmerkmalen und Einschränkungen allgemein verfügbar.
 
-Die Public IP Standard-SKU ist neu und zurzeit als Preview verfügbar. Die API-Version für Microsoft.Network/publicIPAddresses vom 1. August 2017 fügt der Ressourcendefinition die Eigenschaft **sku** hinzu:
+Die Public IP Standard-SKU ist neu und zurzeit als Vorschau verfügbar. Die API-Version für Microsoft.Network/publicIPAddresses vom 1. August 2017 fügt der Ressourcendefinition die Eigenschaft **sku** hinzu:
 
 ```json
             "apiVersion": "2017-08-01",
@@ -325,13 +325,11 @@ SKUs sind nicht änderbar. Führen Sie die Schritte in diesem Abschnitt aus, um 
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Load Balancer Standard ist zurzeit in den folgenden Regionen verfügbar:
-- USA (Ost) 2
-- USA (Mitte)
-- Nordeuropa
-- USA, Westen-Mitte
-- Europa, Westen
-- Asien, Südosten
+Load Balancer Standard ist zurzeit in allen öffentlichen Cloudregionen verfügbar.
+
+>[!IMPORTANT]
+> Für einen kurzen Zeitraum ist für den Zugriff in Regionen außerhalb der anfänglichen Startregionen („USA, Osten 2“, „USA, Mitte“, „Europa, Norden“, „USA, Westen-Mitte“, „Europa, Westen“, „Asien, Südosten“) die Registrierung zusätzlicher Abonnementfeatures (AllowLBPreviewWave2 und AllowLBPreviewWave3) erforderlich.  [Führen Sie diese Schritte aus](#additionalpreviewregions). Führen Sie alle Schritte aus, auch wenn Sie sich zuvor bereits für AllowLBPreview registriert haben.
+> Diese Anforderung entfällt in den kommenden Wochen.
 
 ## <a name="sku-service-limits-and-abilities"></a>SKU-Diensteinschränkungen und -Funktionen
 
@@ -345,7 +343,7 @@ Die folgende Tabelle vergleicht die Einschränkungen und Funktionen der Load Bal
 | Begrenzung des Back-End-Pools | Verfügbarkeitsgruppe | Virtuelles Netzwerk, Region |
 | Entwurf des Back-End-Pools | Virtuelle Computer in Verfügbarkeitsgruppe, VM-Skalierungsgruppe in Verfügbarkeitsgruppe | Eine beliebige VM-Instanz im virtuellen Netzwerk |
 | HA-Ports | Nicht unterstützt | Verfügbar |
-| Diagnostics | Eingeschränkt, nur öffentlich | Verfügbar |
+| Diagnose | Eingeschränkt, nur öffentlich | Verfügbar |
 | VIP-Verfügbarkeit  | Nicht unterstützt | Verfügbar |
 | Schnelle IP-Mobilität | Nicht unterstützt | Verfügbar |
 |Szenarien für Verfügbarkeitszonen | Nur zonal | Zonal, zonenredundant, zonenübergreifender Lastenausgleich |
@@ -366,10 +364,15 @@ Die folgende Tabelle vergleicht die Einschränkungen und Funktionen der Public I
 
 ## <a name="preview-sign-up"></a>Registrierung für die Vorschauversion
 
-Für die Teilnahme an der Preview der Load Balancer Standard-SKU und der zugehörigen Public IP Standard-SKU registrieren Sie Ihr Abonnement.  Wenn Sie Ihr Abonnement registrieren, erhalten Sie aus PowerShell oder Azure CLI 2.0 Zugriff. Führen Sie zum Registrieren die folgenden Schritte aus:
+Für die Teilnahme an der Vorschau der Load Balancer Standard-SKU und der zugehörigen Public IP Standard-SKU registrieren Sie Ihr Abonnement.  Wenn Sie Ihr Abonnement registrieren, erhalten Sie aus PowerShell oder Azure CLI 2.0 Zugriff. Führen Sie zum Registrieren die folgenden Schritte aus:
 
 >[!NOTE]
->Es kann bis zu eine Stunde in Anspruch nehmen, bis die Registrierung der Load Balancer-Standardfeatures global wirksam wird. Wenn Sie Load Balancer Standard mit [Verfügbarkeitszonen](https://aka.ms/availabilityzones) und [Ports mit Hochverfügbarkeit](https://aka.ms/haports) verwenden möchten, ist für diese Vorschauversionen eine separate Anmeldung erforderlich. Befolgen Sie die entsprechenden Anweisungen für die Registrierung für diese Funktionen.
+>Es kann bis zu eine Stunde in Anspruch nehmen, bis die Registrierung der Load Balancer-Standardfeatures global wirksam wird. Wenn Sie Load Balancer Standard mit [Verfügbarkeitszonen](https://aka.ms/availabilityzones) verwenden möchten, ist für diese Vorschauversionen der Verfügbarkeitszonen eine [separate Anmeldung](https://aka.ms/availabilityzones) erforderlich.
+
+<a name="additionalpreviewregions"></a>
+>[!IMPORTANT]
+> Für einen kurzen Zeitraum ist für den Zugriff in Regionen außerhalb der anfänglichen Startregionen („USA, Osten 2“, „USA, Mitte“, „Europa, Norden“, „USA, Westen-Mitte“, „Europa, Westen“, „Asien, Südosten“) die Registrierung zusätzlicher Abonnementfeatures (AllowLBPreviewWave2 und AllowLBPreviewWave3) erforderlich.  Die nachfolgend aufgeführten Schritte wurden geändert, um zusätzliche Abonnementfeatures zu aktivieren. Führen Sie alle Schritte aus, auch wenn Sie sich zuvor bereits für AllowLBPreview registriert haben. Diese Anforderung entfällt in den kommenden Wochen.
+
 
 ### <a name="sign-up-by-using-azure-cli-20"></a>Registrierung mithilfe von Azure CLI 2.0
 
@@ -377,15 +380,19 @@ Für die Teilnahme an der Preview der Load Balancer Standard-SKU und der zugehö
 
     ```cli
     az feature register --name AllowLBPreview --namespace Microsoft.Network
+    az feature register --name AllowLBPreviewWave2 --namespace Microsoft.Network
+    az feature register --name AllowLBPreviewWave3 --namespace Microsoft.Network
     ```
     
 2. Dieser Vorgang kann bis zu 10 Minuten dauern. Sie können den Status des Vorgangs mithilfe des folgenden Befehls überprüfen:
 
     ```cli
-    az feature show --name AllowLBPreview --namespace Microsoft.Network
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreview']" --output json
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave2']" --output json
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave3']" --output json
     ```
     
-    Fahren Sie mit dem nächsten Schritt fort, wenn für die Featureregistrierung der Status „Registriert“ zurückgegeben wird:
+    Fahren Sie mit dem nächsten Schritt fort, wenn als Status der Featureregistrierung für jedes der oben genannten Abonnementfeatures „Registriert“ zurückgegeben wird. Beispiel:
    
     ```json
     {
@@ -398,35 +405,40 @@ Für die Teilnahme an der Preview der Load Balancer Standard-SKU und der zugehö
     }
     ```
     
-3. Schließen Sie die Registrierung für die Preview ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
+4. Schließen Sie die Registrierung für die Vorschau ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
 
     ```cli
     az provider register --namespace Microsoft.Network
     ```
     
+
 ### <a name="sign-up-by-using-powershell"></a>Registrierung mithilfe von PowerShell
 
 1. Registrieren des Features beim Anbieter:
 
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
+    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
+    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
     ```
     
 2. Dieser Vorgang kann bis zu 10 Minuten dauern. Sie können den Status des Vorgangs mithilfe des folgenden Befehls überprüfen:
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
+    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
+    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
     ```
 
-    Fahren Sie mit dem nächsten Schritt fort, wenn für die Featureregistrierung der Status „Registriert“ zurückgegeben wird:
-   
+  Fahren Sie mit dem nächsten Schritt fort, wenn als Status der Featureregistrierung für jedes der oben genannten Abonnementfeatures „Registriert“ zurückgegeben wird. Beispiel:
+
     ```
     FeatureName      ProviderName        RegistrationState
     -----------      ------------        -----------------
     AllowLBPreview   Microsoft.Network   Registered
     ```
     
-3. Schließen Sie die Registrierung für die Preview ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
+3. Schließen Sie die Registrierung für die Vorschau ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
 
     ```powershell
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
@@ -434,13 +446,13 @@ Für die Teilnahme an der Preview der Load Balancer Standard-SKU und der zugehö
  
 ## <a name="pricing"></a>Preise
 
-Die Abrechnung für die Load Balancer-Standard-SKU basiert auf den konfigurierten Regeln und den verarbeiteten Daten. Während des Previewzeitraums fallen keine Kosten an. Weitere Informationen zu Preisen finden Sie auf den Seiten zu [Load Balancer](https://aka.ms/lbpreviewpricing) und [Public IP](https://aka.ms/lbpreviewpippricing).
+Die Abrechnung für die Load Balancer-Standard-SKU basiert auf den konfigurierten Regeln und den verarbeiteten Daten. Während des Vorschauzeitraums fallen keine Kosten an. Weitere Informationen zu Preisen finden Sie auf den Seiten zu [Load Balancer](https://aka.ms/lbpreviewpricing) und [Public IP](https://aka.ms/lbpreviewpippricing).
 
 Kunden können die Load Balancer-SKU vom Typ „Basic“ weiterhin kostenlos nutzen.
 
 ## <a name="limitations"></a>Einschränkungen
 
-Die folgenden Einschränkungen gelten für die Preview und können jederzeit geändert werden:
+Die folgenden Einschränkungen gelten für die Vorschau und können jederzeit geändert werden:
 
 - Load Balancer-Back-End-Instanzen dürfen sich zurzeit nicht in virtuellen Peernetzwerken befinden. Alle Back-End-Instanzen müssen sich in der gleichen Region befinden.
 - SKUs sind nicht änderbar. Sie können die SKU einer vorhandenen Ressource nicht ändern.
@@ -450,11 +462,14 @@ Die folgenden Einschränkungen gelten für die Preview und können jederzeit ge�
 - IPv6 wird nicht unterstützt.
 - Im Kontext von Verfügbarkeitszonen ist ein Front-End nicht aus zonal in zonenredundant änderbar (und umgekehrt). Nachdem ein Front-End als zonenredundant erstellt wurde, bleibt es zonenredundant. Nachdem ein Front-End als zonal erstellt wurde, bleibt es zonal.
 - Im Kontext von Verfügbarkeitszonen kann eine zonale öffentliche IP-Adresse nicht aus einer Zone in eine andere verschoben werden.
+- [Azure Monitor-Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) werden zu diesem Zeitpunkt nicht unterstützt.
+- Das Portal bietet noch keine Unterstützung für die erweiterten Vorschauregionen.  Verwenden Sie als Problemumgehung Clienttools wie beispielsweise Vorlagen, Azure CLI 2.0 oder PowerShell.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu [Load Balancer Basic](load-balancer-overview.md).
 - Weitere Informationen zu [Verfügbarkeitszonen](../availability-zones/az-overview.md).
+- Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
 - Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) in Azure.
-
+- Weitere Informationen zu [Metriken](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).

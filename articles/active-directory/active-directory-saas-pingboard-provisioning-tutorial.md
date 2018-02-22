@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 36fc33813595183856713f01b5a94f84e1f3db4e
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: b1d2e5468aa5b6a10b93ea118969d66789a17f50
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Pingboard für die automatische Benutzerbereitstellung
 
@@ -93,7 +93,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Pingboard
 
 12. Klicken Sie auf **Speichern**, um die Erstsynchronisierung der Benutzer zu starten, die Pingboard zugewiesen sind.
 
-Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 20 Minuten erfolgen, solange der Dienst ausgeführt wird. Überwachen Sie anhand des Abschnitts **Synchronisierungsdetails** den Fortschritt, und navigieren Sie über Links zu Bereitstellungsaktivitätsberichten. In den Berichten werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre Pingboard-App ausgeführt werden.
+Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Überwachen Sie anhand des Abschnitts **Synchronisierungsdetails** den Fortschritt, und navigieren Sie über Links zu Protokollen zur Bereitstellungsaktivität. In den Protokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre Pingboard-App ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](active-directory-saas-provisioning-reporting.md).
 

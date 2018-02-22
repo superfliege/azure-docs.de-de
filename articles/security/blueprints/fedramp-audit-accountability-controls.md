@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation – Überwachung und Verantwortlichkeit"
-description: "Webanwendungen für FedRAMP – Überwachung und Verantwortlichkeit"
+title: "Azure Security and Compliance Blueprint Automation – Webanwendungen für FedRAMP – Überwachung und Verantwortlichkeit"
+description: "Automation – Webanwendungen für FedRAMP – Überwachung und Verantwortlichkeit"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 83ef9cbb7652bf128d7758237a8e6fbeed6c6565
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: c37d027882882c637585d745ce81111ba30f6257
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="audit-and-accountability-au"></a>Überwachung und Verantwortlichkeit (AU)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die Überwachungsfunktion für diesen Azure-Blueprint wird vom Azure Monitor- und Log Analytics-Dienst in der OMS bereitgestellt. Azure Monitor stellt detaillierte Überwachungsprotokolle zu Aktivitäten im Zusammenhang mit den bereitgestellten Ressourcen zur Verfügung. Diese Protokolle und Protokolle auf Betriebssystemebene werden von Log Analytics gesammelt und im OMS-Repository gespeichert. Log Analytics korreliert Überwachungsdaten für die von dieser Lösung bereitgestellten Ressourcen und kann auf die kundenseitig bereitgestellte Webanwendung erweitert werden. |
+| **Kunde** | Die Überwachungsfunktion für diesen Blueprint wird von Azure Monitor und dem Log Analytics-Dienst in OMS bereitgestellt. Azure Monitor stellt detaillierte Überwachungsprotokolle zu Aktivitäten im Zusammenhang mit den bereitgestellten Ressourcen zur Verfügung. Diese Protokolle und Protokolle auf Betriebssystemebene werden von Log Analytics gesammelt und im OMS-Repository gespeichert. Log Analytics korreliert Überwachungsdaten für die von dieser Lösung bereitgestellten Ressourcen und kann auf die kundenseitig bereitgestellte Webanwendung erweitert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure-Blueprint überwachten Ereignisse beinhalten ausreichende Informationen, um den Zeitpunkt des Eintretens von Ereignissen, die Quelle des Ereignisses, das Ergebnis des Ereignisses und andere ausführliche Informationen zu bestimmen, die zur Untersuchung von Sicherheitsvorfällen dienen. |
+| **Kunde** | Die durch diesen Blueprint überwachten Ereignisse beinhalten ausreichende Informationen, um den Zeitpunkt des Eintretens von Ereignissen, die Quelle des Ereignisses, das Ergebnis des Ereignisses und andere ausführliche Informationen zu bestimmen, die zur Untersuchung von Sicherheitsvorfällen dienen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure-Blueprint überwachten Ereignisse beinhalten diejenigen, die von Azure-Aktivitätsprotokollen für bereitgestellte Ressourcen, Protokollen auf Betriebssystemebene, Active Directory-Protokollen und SQL Server-Protokollen erfasst werden. Kunden können außerdem weitere Ereignisse für die Überwachung auswählen, um Unternehmensanforderungen zu entsprechen. |
+| **Kunde** | Die durch diesen Blueprint überwachten Ereignisse beinhalten diejenigen, die von Azure-Aktivitätsprotokollen für bereitgestellte Ressourcen, Protokollen auf Betriebssystemebene, Active Directory-Protokollen und SQL Server-Protokollen erfasst werden. Kunden können außerdem weitere Ereignisse für die Überwachung auswählen, um Unternehmensanforderungen zu entsprechen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint basiert auf integrierten Überwachungsfunktionen von Azure, Windows Server und SQL Server. Diese Überwachungslösungen erfassen Überwachungsdatensätze mit ausreichender Detailgenauigkeit, um die Anforderungen für diese Regelung zu erfüllen. |
+| **Kunde** | Dieser Blueprint basiert auf integrierten Überwachungsfunktionen von Azure, Windows Server und SQL Server. Diese Überwachungslösungen erfassen Überwachungsdatensätze mit ausreichender Detailgenauigkeit, um die Anforderungen für diese Regelung zu erfüllen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Azure-Aktivitätsprotokollereignisse verwenden ein ausführliches Schema, das Felder für mehr als 20 Typen von Überwachungsinformationen enthält. Neben Aktivitätsprotokollen stellt dieser Azure-Blueprint die Log Analytics-Lösung in der OMS bereit, die unterschiedliche Datenquellen wie Windows-, Linux- und Azure-Diagnoseprotokolle sowie kundenspezifische Protokolle unterstützt.  |
+| **Kunde** | Azure-Aktivitätsprotokollereignisse verwenden ein ausführliches Schema, das Felder für mehr als 20 Typen von Überwachungsinformationen enthält. Neben Aktivitätsprotokollen stellt dieser Blueprint die Log Analytics-Lösung in OMS bereit, die unterschiedliche Datenquellen wie Windows-, Linux- und Azure-Diagnoseprotokolle sowie kundenspezifische Protokolle unterstützt.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Alle von diesem Azure-Blueprint bereitgestellten virtuellen Computer werden in die bereitgestellte Active Directory-Domäne eingebunden. Alle in Domänen eingebundenen virtuellen Computer implementieren eine Gruppenrichtlinie, die für die zentrale Verwaltung der Konfiguration des Überwachungssystems auf Betriebssystemebene konfiguriert werden kann. |
+| **Kunde** | Alle von diesem Blueprint bereitgestellten virtuellen Computer werden in die bereitgestellte Active Directory-Domäne eingebunden. Alle in Domänen eingebundenen virtuellen Computer implementieren eine Gruppenrichtlinie, die für die zentrale Verwaltung der Konfiguration des Überwachungssystems auf Betriebssystemebene konfiguriert werden kann. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint ordnet ausreichende Speicherkapazitäten zu, um Überwachungsdatensätze für einen Zeitraum von einem Jahr aufzubewahren. Alle Überwachungsdatensätze werden vom Log Analytics-Dienst gesammelt, der für einen Aufbewahrungszeitraum von einem Jahr konfiguriert ist. |
+| **Kunde** | Dieser Blueprint ordnet ausreichende Speicherkapazitäten zu, um Überwachungsdatensätze für einen Zeitraum von einem Jahr aufzubewahren. Alle Überwachungsdatensätze werden vom Log Analytics-Dienst gesammelt, der für einen Aufbewahrungszeitraum von einem Jahr konfiguriert ist. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -189,7 +189,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Alle Überwachungsdatensätze, die von den durch diesen Azure-Blueprint generierten Ressourcen bereitgestellt werden, werden von Log Analytics gesammelt und für einen Zeitraum von einem Jahr aufbewahrt. Die Speicherbelegung für die Aufbewahrung dieser Überwachungsdatensätze wird dynamisch zugeordnet, um sicherzustellen, dass genügend Kapazitäten vorhanden sind. |
+| **Kunde** | Alle Überwachungsdatensätze, die von den durch diesen Blueprint generierten Ressourcen bereitgestellt werden, werden von Log Analytics gesammelt und für einen Zeitraum von einem Jahr aufbewahrt. Die Speicherbelegung für die Aufbewahrung dieser Überwachungsdatensätze wird dynamisch zugeordnet, um sicherzustellen, dass genügend Kapazitäten vorhanden sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Alle Überwachungsdatensätze, die von den durch diesen Azure-Blueprint generierten Ressourcen bereitgestellt werden, werden von Log Analytics gesammelt und für einen Zeitraum von einem Jahr aufbewahrt. Die Speicherbelegung für die Aufbewahrung dieser Überwachungsdatensätze wird dynamisch zugeordnet, um sicherzustellen, dass genügend Kapazitäten vorhanden sind. |
+| **Kunde** | Alle Überwachungsdatensätze, die von den durch diesen Blueprint generierten Ressourcen bereitgestellt werden, werden von Log Analytics gesammelt und für einen Zeitraum von einem Jahr aufbewahrt. Die Speicherbelegung für die Aufbewahrung dieser Überwachungsdatensätze wird dynamisch zugeordnet, um sicherzustellen, dass genügend Kapazitäten vorhanden sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint implementiert die Log Analytics-Lösung in der OMS, um Überwachungsdaten für bereitgestellte Ressourcen für Informationen zur organisationsweiten Situation zu zentralisieren. Kunden können Log Analytics bei Bedarf in andere Systeme integrieren. |
+| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS, um Überwachungsdaten für bereitgestellte Ressourcen für Informationen zur organisationsweiten Situation zu zentralisieren. Kunden können Log Analytics bei Bedarf in andere Systeme integrieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint implementiert die Log Analytics-Lösung in der OMS, um Überwachungsdaten von bereitgestellten Ressourcen für eine zentrale Prüfung, Analyse und Berichterstellung zu zentralisieren. |
+| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS, um Überwachungsdaten von bereitgestellten Ressourcen für eine zentrale Prüfung, Analyse und Berichterstellung zu zentralisieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint stellt die Sicherheits- und Überwachungslösung OMS bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt Einblick in den Sicherheitszustand der bereitgestellten Ressourcen. Hierfür werden die in den bereitgestellten OMS-Lösungen verfügbaren Daten herangezogen, die Protokolldaten und Daten zu den Sicherheitsrisiken aus der Bewertung anhand von Baselines und Patches integrieren. |
+| **Kunde** | Dieser Blueprint stellt die Lösung Sicherheit und Überwachung von OMS bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt Einblick in den Sicherheitszustand der bereitgestellten Ressourcen. Hierfür werden die in den bereitgestellten OMS-Lösungen verfügbaren Daten herangezogen, die Protokolldaten und Daten zu den Sicherheitsrisiken aus der Bewertung anhand von Baselines und Patches integrieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -329,7 +329,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die von diesem Azure-Blueprint bereitgestellten virtuellen Windows-Computer implementieren Berechtigungen auf Betriebssystemebene, die die für einen Benutzer in Bezug auf Überwachungsinformationen verfügbaren Aktionen beschränken. In Azure können Benutzern oder Benutzergruppen Rollen (z.B. Besitzer, Mitwirkender, Leser oder eine benutzerdefinierte Rolle) zugewiesen werden, um die verfügbaren Aktionen in Bezug auf alle Ressourcen oder bereitgestellten Lösungen wie Log Analytics zu beschränken.  |
+| **Kunde** | Die von diesem Blueprint bereitgestellten virtuellen Windows-Computer implementieren Berechtigungen auf Betriebssystemebene, die die für einen Benutzer in Bezug auf Überwachungsinformationen verfügbaren Aktionen einschränken. In Azure können Benutzern oder Benutzergruppen Rollen (z.B. Besitzer, Mitwirkender, Leser oder eine benutzerdefinierte Rolle) zugewiesen werden, um die verfügbaren Aktionen in Bezug auf alle Ressourcen oder bereitgestellten Lösungen wie Log Analytics zu beschränken.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint implementiert die Log Analytics-Lösung in der OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. |
+| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint implementiert die Log Analytics-Lösung in der OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Der Inhalt und die zeitliche Reihenfolge der Überwachungsdatensätze werden bei der Sammlung durch Log Analytics nicht geändert. |
+| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Der Inhalt und die zeitliche Reihenfolge der Überwachungsdatensätze werden bei der Sammlung durch Log Analytics nicht geändert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -385,7 +385,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint implementiert die Log Analytics-Lösung in der OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Log Analytics verfügt über eine leistungsstarke Abfragesprache, um im Repository gespeicherte Daten zu extrahieren. |
+| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Log Analytics verfügt über eine leistungsstarke Abfragesprache, um im Repository gespeicherte Daten zu extrahieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Bei den Ressourcen, die von diesem Azure-Blueprint bereitgestellt werden, werden zum Generieren von Zeitstempeln für Überwachungsdatensätze interne Systemuhren verwendet. |
+| **Kunde** | Bei den Ressourcen, die von diesem Blueprint bereitgestellt werden, werden zum Generieren von Zeitstempeln für Überwachungsdatensätze interne Systemuhren verwendet. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Bei den Ressourcen, die von diesem Azure-Blueprint bereitgestellt werden, werden zum Generieren von Zeitstempeln für Überwachungsdatensätze interne Systemuhren verwendet. Zeitstempel werden in UTC erfasst. |
+| **Kunde** | Bei den Ressourcen, die von diesem Blueprint bereitgestellt werden, werden zum Generieren von Zeitstempeln für Überwachungsdatensätze interne Systemuhren verwendet. Zeitstempel werden in UTC erfasst. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -427,7 +427,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Bei den Ressourcen, die von diesem Azure-Blueprint bereitgestellt werden, werden zum Generieren von Zeitstempeln für Überwachungsdatensätze interne Systemuhren verwendet. Interne Systemuhren sind für die Synchronisierung mit einer verbindlichen Zeitquelle konfiguriert. |
+| **Kunde** | Bei den Ressourcen, die von diesem Blueprint bereitgestellt werden, werden zum Generieren von Zeitstempeln für Überwachungsdatensätze interne Systemuhren verwendet. Interne Systemuhren sind für die Synchronisierung mit einer verbindlichen Zeitquelle konfiguriert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -441,7 +441,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Bei den Ressourcen, die von diesem Azure-Blueprint bereitgestellt werden, werden zum Generieren von Zeitstempeln für Überwachungsdatensätze interne Systemuhren verwendet. Interne Systemuhren sind für die Synchronisierung mit einer verbindlichen Zeitquelle konfiguriert. |
+| **Kunde** | Bei den Ressourcen, die von diesem Blueprint bereitgestellt werden, werden zum Generieren von Zeitstempeln für Überwachungsdatensätze interne Systemuhren verwendet. Interne Systemuhren sind für die Synchronisierung mit einer verbindlichen Zeitquelle konfiguriert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -455,7 +455,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Logische Zugriffskontrollen dienen dem Schutz von Überwachungsinformationen und -tools in diesem Azure-Blueprint vor nicht autorisiertem Zugriff, Änderungen und Löschungen. Azure Active Directory erzwingt einen genehmigten logischen Zugriff mithilfe von rollenbasierten Gruppenmitgliedschaften. Die Möglichkeit zum Anzeigen von Überwachungsinformationen und Verwenden von Überwachungstools kann auf Benutzer beschränkt werden, die diese Berechtigungen benötigen. |
+| **Kunde** | Logische Zugriffskontrollen dienen dem Schutz von Überwachungsinformationen und -tools in diesem Blueprint vor nicht autorisierten Zugriffen, Änderungen und Löschungen. Azure Active Directory erzwingt einen genehmigten logischen Zugriff mithilfe von rollenbasierten Gruppenmitgliedschaften. Die Möglichkeit zum Anzeigen von Überwachungsinformationen und Verwenden von Überwachungstools kann auf Benutzer beschränkt werden, die diese Berechtigungen benötigen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -469,7 +469,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint implementiert den Log Analytics-Dienst in der OMS. Bei den bereitgestellten VMs und Azure Diagnosespeicherkonten handelt es sich um Quellen, die mit Log Analytics verbunden sind und separat von ihrem Ursprung aufbewahrt werden. Daten werden nahezu in Echtzeit von der OMS erfasst. |
+| **Kunde** | Dieser Blueprint implementiert den Log Analytics-Dienst in OMS. Bei den bereitgestellten VMs und Azure Diagnosespeicherkonten handelt es sich um Quellen, die mit Log Analytics verbunden sind und separat von ihrem Ursprung aufbewahrt werden. Daten werden nahezu in Echtzeit von der OMS erfasst. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint implementiert den Log Analytics-Dienst in der OMS. Log Analytics stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. |
+| **Kunde** | Dieser Blueprint implementiert den Log Analytics-Dienst in OMS. Log Analytics stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -497,7 +497,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Logische Zugriffskontrollen dienen dem Schutz von Überwachungsinformationen und -tools in diesem Azure-Blueprint vor nicht autorisierten Zugriffen, Änderungen und Löschungen. Azure Active Directory erzwingt einen genehmigten logischen Zugriff mithilfe von rollenbasierten Gruppenmitgliedschaften. Die Möglichkeit zum Anzeigen von Überwachungsinformationen und Verwenden von Überwachungstools kann auf Benutzer beschränkt werden, die diese Berechtigungen benötigen.
+| **Kunde** | Logische Zugriffskontrollen dienen dem Schutz von Überwachungsinformationen und -tools in diesem Blueprint vor nicht autorisierten Zugriffen, Änderungen und Löschungen. Azure Active Directory erzwingt einen genehmigten logischen Zugriff mithilfe von rollenbasierten Gruppenmitgliedschaften. Die Möglichkeit zum Anzeigen von Überwachungsinformationen und Verwenden von Überwachungstools kann auf Benutzer beschränkt werden, die diese Berechtigungen benötigen.
  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
@@ -512,7 +512,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die Überwachungsfunktion für diesen Azure-Blueprint wird vom Azure Monitor- und Log Analytics-Dienst in der OMS bereitgestellt. Azure Monitor stellt detaillierte Überwachungsprotokolle zu Aktivitäten im Zusammenhang mit den bereitgestellten Ressourcen zur Verfügung. Diese Protokolle und Protokolle auf Betriebssystemebene werden von Log Analytics gesammelt und im OMS-Repository gespeichert. Diese Protokolle enthalten ausführliche Datensätze zu Ereignissen von Informationssystemen und können zum Schutz vor Unleugbarkeit beitragen. Darüber hinaus ist der Zugriff auf Daten durch rollenbasierte Zugriffssteuerung beschränkt, um eine nicht autorisierte Änderung oder Löschung von Protokolldaten zu verhindern. |
+| **Kunde** | Die Überwachungsfunktion für diesen Blueprint wird von Azure Monitor und dem Log Analytics-Dienst in OMS bereitgestellt. Azure Monitor stellt detaillierte Überwachungsprotokolle zu Aktivitäten im Zusammenhang mit den bereitgestellten Ressourcen zur Verfügung. Diese Protokolle und Protokolle auf Betriebssystemebene werden von Log Analytics gesammelt und im OMS-Repository gespeichert. Diese Protokolle enthalten ausführliche Datensätze zu Ereignissen von Informationssystemen und können zum Schutz vor Unleugbarkeit beitragen. Darüber hinaus ist der Zugriff auf Daten durch rollenbasierte Zugriffssteuerung beschränkt, um eine nicht autorisierte Änderung oder Löschung von Protokolldaten zu verhindern. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -526,7 +526,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint implementiert den Log Analytics-Dienst in der OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Gesammelte Daten werden gemäß Log Analytics-Konfiguration ein Jahr lang aufbewahrt. |
+| **Kunde** | Dieser Blueprint implementiert den Log Analytics-Dienst in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Gesammelte Daten werden gemäß Log Analytics-Konfiguration ein Jahr lang aufbewahrt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -540,7 +540,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure-Blueprint überwachten Ereignisse beinhalten diejenigen, die von Azure-Aktivitätsprotokollen für bereitgestellte Ressourcen, Protokollen auf Betriebssystemebene, Active Directory-Protokollen und SQL Server-Protokollen erfasst werden. Kunden können außerdem weitere Ereignisse für die Überwachung auswählen, um Unternehmensanforderungen zu entsprechen. |
+| **Kunde** | Die durch diesen Blueprint überwachten Ereignisse beinhalten diejenigen, die von Azure-Aktivitätsprotokollen für bereitgestellte Ressourcen, Protokollen auf Betriebssystemebene, Active Directory-Protokollen und SQL Server-Protokollen erfasst werden. Kunden können außerdem weitere Ereignisse für die Überwachung auswählen, um Unternehmensanforderungen zu entsprechen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -554,7 +554,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Zugriff auf Überwachungsfunktionen wird durch rollenbasierte Zugriffssteuerung in Azure und auf Betriebssystemebene der virtuellen Computer beschränkt. Die Konfiguration der Ereignisse, die zur Überwachung der von diesem Azure-Blueprint bereitgestellten Ressourcen ausgewählt wurden, können von Benutzern mit entsprechender rollenbasierter Autorisierung konfiguriert werden. |
+| **Kunde** | Der Zugriff auf Überwachungsfunktionen wird durch rollenbasierte Zugriffssteuerung in Azure und auf Betriebssystemebene der virtuellen Computer beschränkt. Die Konfiguration der Ereignisse, die zur Überwachung der von diesem Blueprint bereitgestellten Ressourcen ausgewählt wurden, können von Benutzern mit entsprechender rollenbasierter Autorisierung konfiguriert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -568,7 +568,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure-Blueprint überwachten Ereignisse beinhalten diejenigen, die von Azure-Aktivitätsprotokollen für bereitgestellte Ressourcen, Protokollen auf Betriebssystemebene, Active Directory-Protokollen und SQL Server-Protokollen erfasst werden. Kunden können außerdem weitere Ereignisse für die Überwachung auswählen, um Unternehmensanforderungen zu entsprechen. |
+| **Kunde** | Die durch diesen Blueprint überwachten Ereignisse beinhalten diejenigen, die von Azure-Aktivitätsprotokollen für bereitgestellte Ressourcen, Protokollen auf Betriebssystemebene, Active Directory-Protokollen und SQL Server-Protokollen erfasst werden. Kunden können außerdem weitere Ereignisse für die Überwachung auswählen, um Unternehmensanforderungen zu entsprechen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -582,7 +582,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure-Blueprint implementiert den Log Analytics-Dienst in der OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Da Zeitstempel von Überwachungsdatensätzen nicht geändert werden, wird der Audit-Trail zeitlich korreliert. |
+| **Kunde** | Dieser Blueprint implementiert den Log Analytics-Dienst in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Da Zeitstempel von Überwachungsdatensätzen nicht geändert werden, wird der Audit-Trail zeitlich korreliert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -596,5 +596,5 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Zugriff auf Überwachungsfunktionen wird durch rollenbasierte Zugriffssteuerung in Azure und auf Betriebssystemebene der virtuellen Computer beschränkt. Die Konfiguration der Ereignisse, die zur Überwachung der von diesem Azure-Blueprint bereitgestellten Ressourcen ausgewählt wurden, können von Benutzern mit entsprechender rollenbasierter Autorisierung konfiguriert werden. |
+| **Kunde** | Der Zugriff auf Überwachungsfunktionen wird durch rollenbasierte Zugriffssteuerung in Azure und auf Betriebssystemebene der virtuellen Computer beschränkt. Die Konfiguration der Ereignisse, die zur Überwachung der von diesem Blueprint bereitgestellten Ressourcen ausgewählt wurden, können von Benutzern mit entsprechender rollenbasierter Autorisierung konfiguriert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |

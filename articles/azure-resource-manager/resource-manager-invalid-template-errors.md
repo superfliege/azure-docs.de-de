@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 09/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: e58c10cfb4cdd4ba49945e6c19845cbc957d6326
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87bc6e4def624785c5052a9a25f579b022c940ec
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Beheben von Fehlern aufgrund ungültiger Vorlagen
 
@@ -131,6 +131,10 @@ part of the allowed values
 
 Überprüfen Sie die zulässigen Werte in der Vorlage, und geben Sie während der Bereitstellung einen gültigen Wert an.
 
-### <a name="solution-4---circular-dependency-detected"></a>Lösung 4 – Ringabhängigkeit erkannt
+### <a name="solution-4---too-many-target-resource-groups"></a>Lösung 4 – zu viele Zielressourcengruppen
+
+Wenn Sie mehr als fünf Zielressourcengruppen in einer einzelnen Bereitstellung angeben, wird dieser Fehler angezeigt. Sie sollten entweder die Anzahl der Ressourcengruppen in Ihrer Bereitstellung konsolidieren oder einige der Vorlagen als separate Bereitstellungen bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](resource-manager-cross-resource-group-deployment.md).
+
+### <a name="solution-5---circular-dependency-detected"></a>Lösung 5 – Ringabhängigkeit erkannt
 
 Sie erhalten diesen Fehler, wenn Ressourcen auf eine Weise voneinander abhängig sind, die das Starten der Bereitstellung verhindert. Eine Kombination aus Abhängigkeiten bewirkt, dass zwei oder mehr Ressourcen auf andere Ressourcen warten, die sich ebenfalls im Wartezustand befinden. Beispielsweise kann „resource1“ von „resource3“, „resource2“ von „resource1“ und „resource3“ von „resource2“ abhängig sein. Dieses Problem lässt sich normalerweise beheben, indem nicht benötigte Abhängigkeiten entfernt werden.

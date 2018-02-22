@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 3ab7d2d5c3b95d215f3ee9eb9346e8a7895e734c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 505e92b5fc63f570bc4d0f8899ae977b93850356
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Überwachen von Azure-Anwendungen und -Ressourcen
 
@@ -57,8 +57,11 @@ Die folgenden Azure-Dienste bieten umfassende Funktionen für das Sammeln und An
 [Dienstzuordnung](../operations-management-suite/operations-management-suite-service-map.md) bietet durch die Analyse der virtuellen Computer mit ihren verschiedenen Prozessen und Abhängigkeiten von anderen Computern und externen Prozessen einen Einblick in Ihre IaaS-Umgebung.  Die Anwendung integriert Ereignisse, Leistungsdaten und Verwaltungslösungen in Log Analytics, damit Sie diese Daten im Kontext des einzelnen Computers und seiner Beziehung zum Rest der Umgebung anzeigen können.  Dienstzuordnung ähnelt der [Anwendungszuordnung in Application Insights](../application-insights/app-insights-app-map.md), konzentriert sich aber auf die Infrastrukturkomponenten, die Ihre Anwendungen unterstützen.
 
 ### <a name="network-watcher"></a>Network Watcher
-[Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) bietet eine szenariobasierte Überwachung und Diagnose für verschiedene Netzwerkszenarien in Azure.  Die Anwendung speichert Daten zur weiteren Analyse in Azure-Metriken und -Diagnose und bietet zusammen mit [Verwaltungslösungen in Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) die umfassende Überwachung Ihrer Netzwerkressourcen.
-
+[Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) bietet eine szenariobasierte Überwachung und Diagnose für verschiedene Netzwerkszenarien in Azure.  Der Dienst speichert Daten zur weiteren Analyse in Azure-Metriken und -Diagnosediensten und bietet zusammen mit den folgenden Netzwerküberwachungslösungen eine umfassende Überwachung verschiedener Aspekte Ihres Netzwerks:
+* [Netzwerkleistungsmonitor (Network Performance Monitor, NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/): Eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen öffentlichen Clouds, Rechenzentren und lokalen Umgebungen überwacht.
+* [ExpressRoute Monitor](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/): Eine NPM-Funktion, die die gesamte Konnektivität und Leistung von ExpressRoute-Verbindungen überwacht.
+* Traffic Analytics: Eine cloudbasierte Lösung, die Einblick in Benutzer- und Anwendungsaktivitäten in Ihrem Cloudnetzwerk bietet.
+* [DNS-Analyse](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-dns): Bietet Sicherheit, Leistung und vorgangsbezogene Einblicke basierend auf Ihren DNS-Servern.
 
 ### <a name="management-solutions"></a>Verwaltungslösungen
 [Verwaltungslösungen](../log-analytics/log-analytics-add-solutions.md) sind Programmpakete, die Einblicke für eine bestimmte Anwendung oder einen bestimmten Dienst liefern.  Zum Speichern und Analysieren der von ihnen gesammelten Überwachungsdaten nutzen sie Log Analytics.  Microsoft und Partner bieten Verwaltungslösungen zur Überwachung für verschiedene Azure- und Drittanbieterdienste an. Beispiele für Überwachungslösungen sind [Container Monitoring](../log-analytics/log-analytics-containers.md) zum Anzeigen und Verwalten Ihrer Containerhosts und [Azure SQL-Analyse](../log-analytics/log-analytics-azure-sql.md) zum Sammeln und Visualisieren von Leistungsmetriken für SQL Azure-Datenbanken.

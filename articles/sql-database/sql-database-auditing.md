@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.openlocfilehash: 9be945493cf013f472566a2c7a1dda05fd9b0ca9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 791761e33e0daa470668e268e5392a4b9361a1bd
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
@@ -39,8 +39,10 @@ Sie können die SQL-Datenbank-Überwachung für folgende Zwecke verwenden:
 
 Sie können die Überwachung für verschiedene Arten von Ereigniskategorien konfigurieren, wie im Abschnitt [Einrichten der Überwachung für Ihre Datenbank](#subheading-2) erläutert.
 
-Überwachungsprotokolle werden in Ihrem Azure-Abonnement in Azure Blob Storage geschrieben.
-
+> [!IMPORTANT]
+> Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
+>
+> Die **Speicherung in VNET** wird derzeit **nicht unterstützt**.
 
 ## <a id="subheading-8"></a>Definieren von Überwachungsrichtlinien auf Serverebene und auf Datenbankebene
 
@@ -80,7 +82,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
    >Verwenden Sie für alle überwachten Datenbanken dasselbe Speicherkonto, um die Berichtvorlagen für die Überwachung optimal einzusetzen.
 
     <a id="storage-screenshot"></a>![Navigationsbereich][4]
-6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie PowerShell oder die REST-API verwenden. 
+6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie PowerShell oder die REST-API verwenden.
 7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](sql-database-threat-detection-get-started.md).
 8. Klicken Sie auf **Speichern**.
 
@@ -89,7 +91,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 
 
 ## <a id="subheading-3"></a>Analysieren von Überwachungsprotokollen und -berichten
-Überwachungsprotokolle werden in dem Azure-Speicherkonto aggregiert, das Sie während der Einrichtung ausgewählt haben. Sie können Überwachungsprotokolle mithilfe eines Tools wie [Azure-Speicher-Explorer](http://storageexplorer.com/) untersuchen.
+Überwachungsprotokolle werden in dem Azure-Speicherkonto aggregiert, das Sie während der Einrichtung ausgewählt haben. Sie können Überwachungsprotokolle mithilfe eines Tools wie [Azure Storage-Explorer](http://storageexplorer.com/) untersuchen.
 
 Protokolle der Blobüberwachung werden als Sammlung von Blobdateien in einem Container namens **sqldbauditlogs** gespeichert.
 
@@ -125,9 +127,9 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
 
 * Verwenden Sie Power BI. Sie können Überwachungsprotokolldateien in Power BI anzeigen und analysieren. Erfahren Sie mehr über [Power BI, und erhalten Sie Zugriff eine herunterladbare Vorlage](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 
-* Laden Sie Protokolldateien aus Ihrem Azure Storage Blob-Container über das Portal oder mithilfe eines Tools wie [Azure-Speicher-Explorer](http://storageexplorer.com/) herunter.
+* Laden Sie Protokolldateien aus Ihrem Azure Storage-Blobcontainer über das Portal oder mithilfe eines Tools wie [Azure Storage-Explorer](http://storageexplorer.com/) herunter.
     * Nachdem Sie die Protokolldatei lokal heruntergeladen haben, können Sie auf die Datei doppelklicken, um die Protokolle in SSMS zu öffnen, anzuzeigen und zu analysieren.
-    * Sie können mit Azure-Speicher-Explorer auch mehrere Dateien gleichzeitig herunterladen. Klicken Sie mit der rechten Maustaste auf einen bestimmten Unterordner, und wählen Sie **Speichern unter** aus, um die Dateien in einem lokalen Ordner zu speichern.
+    * Sie können mit dem Azure Storage-Explorer auch mehrere Dateien gleichzeitig herunterladen. Klicken Sie mit der rechten Maustaste auf einen bestimmten Unterordner, und wählen Sie **Speichern unter** aus, um die Dateien in einem lokalen Ordner zu speichern.
 
 * Weitere Methoden:
    * Nach dem Herunterladen mehrerer Dateien oder eines Unterordners, der Protokolldateien enthält, können Sie sie lokal zusammenführen, wie in den Anweisungen weiter oben für das Zusammenführen von Überwachungsdateien in SSMS beschrieben.

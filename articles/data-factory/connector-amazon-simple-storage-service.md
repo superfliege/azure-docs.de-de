@@ -8,13 +8,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6df7d74d572a59c83105905fbe0a9e218aadc28f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b5dbf4b7ae0fc1f8871fbf6df1a29f0f7324d83a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,9 +37,9 @@ Der Amazon S3-Connector unterstützt insbesondere das Kopieren von Dateien im je
 Um Daten von Amazon S3 zu kopieren, müssen Sie sicherstellen, dass Ihnen die folgenden Berechtigungen erteilt wurden:
 
 - `s3:GetObject` und `s3:GetObjectVersion` für Amazon S3-Objektvorgänge.
-- `s3:ListBucket` für Amazon S3-Bucketvorgänge. Wenn Sie den Assistent zum Kopieren in Data Factory verwenden, ist außerdem `s3:ListAllMyBuckets` erforderlich.
+- `s3:ListBucket` oder `s3:GetBucketLocation` für Amazon S3-Bucketvorgänge. Wenn Sie den Assistent zum Kopieren in Data Factory verwenden, ist außerdem `s3:ListAllMyBuckets` erforderlich.
 
-Ausführliche Informationen zur vollständigen Liste der Amazon S3-Berechtigungen finden Sie unter [Specifying Permissions in a Policy](http://docs.aws.amazon.com/amazons3/latest/dev/using-with-s3-actions.html) (Angeben von Berechtigungen in einer Richtlinie).
+Ausführliche Informationen zur vollständigen Liste der Amazon S3-Berechtigungen finden Sie unter [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) (Angeben von Berechtigungen in einer Richtlinie).
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -55,7 +55,7 @@ Folgende Eigenschaften werden für den mit Amazon S3 verknüpften Dienst unterst
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **AmazonS3** festgelegt werden. | Ja |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. |Ja |
-| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Legen Sie für dieses Feld „SecureString“ fest. |Ja |
+| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 >[!NOTE]

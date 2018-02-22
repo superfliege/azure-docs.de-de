@@ -12,40 +12,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 02/02/2018
 ms.author: mamit
 ms.custom: 
-ms.openlocfilehash: 5ded43548d9aea106c6e083476df4e735b8c00a6
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 316dcd53509897a6efc387749ca6f9ec268cb7ac
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="explore-the-new-alerts-preview-experience-in-azure-monitor"></a>Erkunden der neuen Oberfläche „Warnungen (Vorschauversion)“ in Azure Monitor
 
 ## <a name="overview"></a>Übersicht
  Die Oberfläche für Warnungen in Azure ist mit einem neuen Design und überarbeiteter Funktionalität ausgestattet. Diese neue Oberfläche ist in Azure Monitor auf der Registerkarte **Warnungen (Vorschauversion)** verfügbar. Im Folgenden werden einige Vorteile durch die Verwendung der neuen Oberfläche „Warnungen (Vorschauversion)“ vorgestellt:
 
- - **Unterscheidung zwischen ausgelösten Warnungen und Warnungsregeln** – Bei der Oberfläche „Warnungen (Vorschauversion)“ wird zwischen Warnungsregeln (der Definition der Bedingung, die eine Warnung auslöst) und ausgelösten Warnungen (einer Instanz zur Auslösung von Warnungsregeln) unterschieden, sodass die Betriebs- und Konfigurationansichten getrennt sind. 
- - **Einheitliche Oberfläche für die Erstellung von Metrik- und Protokollwarnungen** – Die neue Oberfläche „Warnungen (Vorschauversion)“ zum Erstellen führt den Benutzer durch die Konfiguration einer Warnungsregel, was die Auswahl der entsprechenden Warnungselemente vereinfacht. 
+ - **Unterscheidung zwischen ausgelösten Warnungen und Warnungsregeln** – Bei der Oberfläche „Warnungen (Vorschauversion)“ wird zwischen Warnungsregeln (der Definition der Bedingung, die eine Warnung auslöst) und ausgelösten Warnungen (einer Instanz zur Auslösung von Warnungsregeln) unterschieden, sodass die Betriebs- und Konfigurationansichten getrennt sind.
+ - **Einheitliche Oberfläche für die Erstellung von Metrik- und Protokollwarnungen** – Die neue Oberfläche „Warnungen (Vorschauversion)“ zum Erstellen führt den Benutzer durch die Konfiguration einer Warnungsregel, was die Auswahl der entsprechenden Warnungselemente vereinfacht.
  - **Anzeige von ausgelösten Log Analytics-Warnungen im Azure-Portal** – Auf der Oberfläche „Warnungen (Vorschauversion)“ können Sie nun auch ausgelöste Log Analytics-Warnungen in Ihrem Abonnement sehen.  
+ - **Einheitliche Oberfläche für das Erstellen von Aktivitätsprotokollwarnungen** – Sie können nun Aktivitätsprotokollwarnungen direkt unter **Monitor** > **Warnungen (Vorschau)** erstellen. Zuvor konnten Sie diese nur über **Monitor** > **Aktivitätsprotokoll** erstellen.
 
-In den folgenden Abschnitten wird die Funktionsweise der neuen Oberfläche ausführlicher beschrieben. 
+In den folgenden Abschnitten wird die Funktionsweise der neuen Oberfläche ausführlicher beschrieben.
 
 ## <a name="taxonomy"></a>Taxonomie
 Die Oberfläche „Warnungen (Vorschauversion)“ verwendet die folgenden Begriffe, um zwischen Objekten für Benachrichtigungsregeln und ausgelöste Warnungen zu unterscheiden, während die Oberfläche für die Erstellung für verschiedene Warnungstypen vereinheitlicht wird.
 
-- **Zielressource**: Ein Ziel kann eine beliebige Azure-Ressource sein. Eine Zielressource definiert den Umfang und die für Warnungen verfügbaren Signale. Beispiele für Ziele: Virtuelle Computer, Speicherkonten, VM-Skalierungsgruppen, Log Analytics-Arbeitsbereiche oder Lösungen. 
+- **Zielressource**: Ein Ziel kann eine beliebige Azure-Ressource sein. Eine Zielressource definiert den Umfang und die für Warnungen verfügbaren Signale. Beispiele für Ziele: Virtuelle Computer, Speicherkonten, VM-Skalierungsgruppen, Log Analytics-Arbeitsbereiche oder Lösungen.
 
 - **Kriterien**: Kriterien sind eine Kombination aus Signal und Logik, die auf eine Ressource angewendet wird. Beispiele: CPU in Prozent > 70 %, Serverantwortzeit > 4 ms, Anzahl der Ergebnisse einer Protokollabfrage > 100 etc. 
 
-- **Signal**: Signale werden von der Zielressource ausgegeben und können verschiedene Typen annehmen. Diese Vorschau unterstützt Metrik- und Protokollsignaltypen.
+- **Signal**: Signale werden von der Zielressource ausgegeben und können verschiedene Typen annehmen. Diese Vorschau unterstützt **Metrik**, **Aktivitätsprotokoll**, **Application Insights** und **Protokoll** als Signaltypen.
 
 - **Logik**: Eine benutzerdefinierte Logik, um zu überprüfen, ob das Signal den erwarteten Bereich bzw. die erwarten Werte aufweist.  
  
 - **Aktion**: Eine bestimmte Kontaktaufnahme, die an den Empfänger einer Benachrichtigung gesendet wird (z.B. E-Mail an eine Adresse oder das Posten an eine Webhook-URL). Benachrichtigungen können in der Regel mehrere Aktionen auslösen. Die in dieser Vorschauversion unterstützten Warnungstypen unterstützen Aktionsgruppen.  
  
-- **Warnungsregel**: Dies ist die Definition einer Bedingung, die die Warnung auslösen würde. In dieser Vorschauversion erfasst eine Warnungsregel das Ziel und die Kriterien für Warnungen. Die Warnungsregel kann sich im Zustand „Aktiviert“ oder „Deaktiviert“ befinden. 
+- **Warnungsregel**: Dies ist die Definition einer Bedingung, die die Warnung auslösen würde. In dieser Vorschauversion erfasst eine Warnungsregel das Ziel und die Kriterien für Warnungen. Die Warnungsregel kann sich im Zustand „Aktiviert“ oder „Deaktiviert“ befinden.
  
 - **Ausgelöste Warnung**: Diese wird erstellt, wenn eine aktivierte Warnungsregel ausgelöst wird. Das Objekt für ausgelöste Warnungen kann sich im Zustand „Ausgelöst“ oder „Nicht aufgelöst“ befinden.
 
@@ -75,9 +76,12 @@ Auf der Oberfläche „Warnungen (Vorschauversion)“ können Warnungen auf kons
  
 Die Erstellung einer Warnung ist ein dreistufiger Vorgang: Zuerst legt der Benutzer ein Ziel für die Warnung fest, wählt dann das entsprechende Signal aus und gibt anschließend die Logik an, die im Rahmen der Warnungsregel auf das Signal angewendet werden soll. Bei dieser vereinfachten Erstellung muss der Benutzer nicht mehr die Überwachungsquelle oder -signale kennen, bevor er eine Azure-Ressource auswählt. Die allgemeine Oberfläche für die Erstellung filtert automatisch die Liste der verfügbaren Signale basierend auf der ausgewählten Zielressource und führt durch die Logik zur Erstellung von Warnungen.
 
-Weitere Informationen zum Erstellen der folgenden Warnungstypen finden Sie [hier](monitor-alerts-unified-usage.md). 
+Weitere Informationen zum Erstellen der folgenden Warnungstypen finden Sie [hier](monitor-alerts-unified-usage.md).
 - Metrikwarnungen (auf der aktuellen Oberfläche als „Metrikwarnungen nahezu in Echtzeit“ bezeichnet)
 - Protokollwarnungen (Log Analytics)
+- Protokollwarnungen (Aktivitätsprotokolle)
+- Protokollwarnungen (Application Insights)
+
  
 
 ## <a name="alert-types-supported-in-this-preview"></a>In dieser Vorschauversion unterstützte Warnungstypen
@@ -87,8 +91,9 @@ Weitere Informationen zum Erstellen der folgenden Warnungstypen finden Sie [hier
 |-------------|----------------|-------------|
 | Metrik | Azure Monitor | Die auf der aktuellen Oberfläche als [**Metrikwarnungen nahezu in Echtzeit**](monitoring-near-real-time-metric-alerts.md) bezeichneten Metrikwarnungen unterstützen das Auswerten von Metrikbedingungen in Intervallen von bis zu 1 Minute und ermöglichen Regeln mit mehreren Metriken. Eine Liste der unterstützten Ressourcentypen finden Sie [hier](monitoring-near-real-time-metric-alerts.md#what-resources-can-i-create-near-real-time-metric-alerts-for). Andere der [dieser Definition](monitoring-overview-alerts.md#alerts-in-different-azure-services) entsprechenden Metrikwarnungen werden nicht auf der Oberfläche „Warnungen (Vorschauversion)“ unterstützt.|
 | Protokolle  | Log Analytics | Erhalten Sie Benachrichtigungen, oder führen Sie automatisierte Aktionen aus, wenn eine Protokollsuchabfrage für Metrik- und/oder Ereignisdaten bestimmte Kriterien erfüllt.|
-| Protokolle  | Aktivitätsprotokolle | Nicht auf der Oberfläche „Warnungen (Vorschauversion)“ unterstützt |
-| Protokolle  | Application Insights | Nicht auf der Oberfläche „Warnungen (Vorschauversion)“ unterstützt |
+| Protokolle  | Aktivitätsprotokolle | Diese Kategorie enthält die Datensätze für alle Erstellen-, Aktualisieren- und Löschen-Aktionen, die über das ausgewählte Ziel (Ressource/Ressourcengruppe/Abonnement) ausgeführt werden. |
+| Protokolle  | Service Health-Protokolle | Nicht auf der Oberfläche „Warnungen (Vorschauversion)“ unterstützt   |
+| Protokolle  | Application Insights | Diese Kategorie enthält Protokolle mit den Leistungsdaten Ihrer Anwendung. Mithilfe von Analyseabfragen und basierend auf dem Anwendungsdaten können Sie die Bedingungen für die auszuführenden Aktionen definieren. |
 | Metrik | Application Insights | Nicht auf der Oberfläche „Warnungen (Vorschauversion)“ unterstützt |
 | Verfügbarkeitstests | Application Insights | Nicht auf der Oberfläche „Warnungen (Vorschauversion)“ unterstützt |
 
@@ -97,4 +102,4 @@ Weitere Informationen zum Erstellen der folgenden Warnungstypen finden Sie [hier
 - [Erfahren Sie mehr über das Erstellen, Anzeigen und Verwalten von Warnungen mithilfe der neuen Oberfläche „Warnungen (Vorschauversion)“.](monitor-alerts-unified-usage.md)
 - [Erfahren Sie mehr über Protokollwarnungen auf der Oberfläche „Warnungen (Vorschauversion)“.](monitor-alerts-unified-log.md)
 - [Erfahren Sie mehr über Metrikwarnungen auf der Azure-Oberfläche „Warnungen (Vorschauversion)“.](monitoring-near-real-time-metric-alerts.md)
-
+- [Erfahren Sie mehr über Aktivitätsprotokollwarnungen auf der Oberfläche „Warnungen (Vorschau)“.](monitoring-activity-log-alerts-new-experience.md)

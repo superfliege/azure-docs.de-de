@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 63081e2e5a2c792c8e688e7b8aaff0eca40e48a1
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1afb1980f5056482d94aef80d076c8b31d29e7a6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopieren von Daten in einen Azure Search-Index mithilfe von Azure Data Factory
 
@@ -48,7 +48,7 @@ Folgende Eigenschaften werden für den mit Azure Search verknüpften Dienst unte
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **AzureSearch** festgelegt werden. | Ja |
 | URL | URL für den Azure Search-Dienst. | Ja |
-| key | Admin-Schlüssel für den Azure Search-Dienst. Legen Sie für dieses Feld „SecureString“ fest. | Ja |
+| key | Admin-Schlüssel für den Azure Search-Dienst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 > [!IMPORTANT]

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 2c013c11dea5217d564ac15a13a8d11614989057
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f93fc95d6bed517cae3adb706f690941f97c366e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Überlegungen zur Integration von Rechenzentren für integrierte Azure Stack-Systeme
 Wenn Sie an einem mit Azure Stack integrierten System interessiert sind, müsse Sie einige der wichtigsten Aspekte bei der Planung der Bereitstellung verstehen und wissen, wie das System in Ihr Rechenzentrum passt. Dieser Artikel bietet einen allgemeinen Überblick über diese Aspekte, damit Sie wichtige Infrastrukturentscheidungen für Ihr Azure Stack-System mit mehreren Knoten treffen können. Ein Verständnis dieser Aspekte hilft Ihnen bei der Zusammenarbeit mit Ihrem OEM-Hardwareanbieter, sobald dieser Azure Stack in Ihrem Rechenzentrum bereitstellt.  
@@ -45,7 +45,7 @@ Sie müssen bedenken, welchen Identitätsanbieter Sie für die Bereitstellung vo
 
 Ihre Wahl des Identitätsanbieters hat keinen Einfluss auf virtuelle Computer des Mandanten, auf das Identitätssystem sowie auf von ihnen verwendete Konten oder darauf, ob sie einer Active Directory-Domäne usw. beitreten können. Das ist was anderes.
 
-Im Artikel [Bereitstellungsentscheidungen für in Azure Stack integrierte Systeme](.\azure-stack-deployment-decisions.md) erfahren Sie mehr über die Wahl eines Identitätsanbieters.
+Im Artikel [Verbindungsmodell von in Azure Stack integrierten Systemen](.\azure-stack-connection-models.md) erfahren Sie mehr über die Auswahl eines Identitätsanbieters.
 
 ### <a name="ad-fs-and-graph-integration"></a>Integration von AD FS und Graph
 Wenn Sie die Bereitstellung von Azure Stack mithilfe von AD FS als Identitätsanbieter gewählt haben, müssen Sie die AD FS-Instanz für Azure Stack über eine Verbundvertrauensstellung mit einer vorhandenen AD FS-Instanz integrieren. Dies gestattet Identitäten in einer vorhandenen Active Directory-Gesamtstruktur die Authentifizierung mit Ressourcen in Azure Stack.
@@ -53,18 +53,25 @@ Wenn Sie die Bereitstellung von Azure Stack mithilfe von AD FS als Identitätsan
 Sie können auch den Graph-Dienst in Azure Stack mit dem vorhandenen Active Directory integrieren. Dadurch können Sie die rollenbasierte Zugriffssteuerung (RBAC) in Azure Stack verwalten. Wenn der Zugriff auf eine Ressource delegiert wird, sucht die Graph-Komponente das Benutzerkonto mithilfe des LDAP-Protokolls in der vorhandenen Active Directory-Gesamtstruktur.
 
 Das folgende Diagramm zeigt den integrierten Datenverkehrsfluss von AD FS und Graph.
-![Diagramm mit Datenverkehrsfluss für AD FS und Graph](media/azure-stack-deployment-planning/ADFSIntegration.PNG)
+![Diagramm mit Datenverkehrsfluss für AD FS und Graph](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
 
 ## <a name="licensing-model"></a>Lizenzierungsmodell
+Sie müssen entscheiden, welches Lizenzierungsmodell Sie verwenden möchten. Die verfügbaren Optionen hängen davon ab, ob Sie Azure Stack mit einer Internetverbindung bereitstellen:
+- Für eine [verbundene Bereitstellung](azure-stack-connected-deployment.md) können Sie entweder die nutzungs- oder die kapazitätsbasierte Lizenzierung auswählen. Die nutzungsbasierte Lizenzierung erfordert eine Verbindung mit Azure, um die Nutzungsdaten zu melden, die dann über Azure Commerce abgerechnet werden. 
+- Bei einer [Bereitstellung ohne Internetverbindung](azure-stack-disconnected-deployment.md) wird nur die kapazitätsbasierte Lizenzierung unterstützt. 
 
-Sie müssen entscheiden, welches Lizenzierungsmodell Sie verwenden möchten. Für eine verbundene Bereitstellung können Sie entweder die nutzungs- oder die kapazitätsbasierte Lizenzierung auswählen. Die nutzungsbasierte Lizenzierung erfordert eine Verbindung mit Azure, um die Nutzungsdaten zu melden, die dann über Azure Commerce abgerechnet werden. Bei einer Bereitstellung ohne Internetverbindung wird nur die kapazitätsbasierte Lizenzierung unterstützt. Weitere Informationen zu den Lizenzierungsmodellen finden Sie unter [Microsoft Azure Stack – Verpackung und Preise](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+Weitere Informationen zu den Lizenzierungsmodellen finden Sie unter [Microsoft Azure Stack – Verpackung und Preise](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+
 
 ## <a name="naming-decisions"></a>Entscheidungen zur Benennung
 
-Sie müssen entsprechende Überlegungen zur Planung Ihres Azure Stack-Namespace anstellen, insbesondere zum Regionsnamen und zum externen Domänennamen. Der vollqualifizierte Domänennamen (FQDN) der Azure Stack-Bereitstellung für öffentliche Endpunkte ist eine Kombination aus den folgenden beiden Namen: &lt;*Region*&gt;&lt;*Exterer_FQDN*&gt;, z. B. *east.cloud.fabrikam.com*. In diesem Beispiel wären die Azure Stack-Portale unter den folgenden URLs verfügbar:
+Sie müssen entsprechende Überlegungen zur Planung Ihres Azure Stack-Namespace anstellen, insbesondere zum Regionsnamen und zum externen Domänennamen. Der externe vollqualifizierte Domänenname (FQDN) der Azure Stack-Bereitstellung für öffentliche Endpunkte ist eine Kombination aus den folgenden beiden Namen: &lt;*Region*&gt;.&lt;*FQDN*&gt;, z.B. *east.cloud.fabrikam.com*. In diesem Beispiel wären die Azure Stack-Portale unter den folgenden URLs verfügbar:
 
 - https://portal.east.cloud.fabrikam.com
 - https://adminportal.east.cloud.fabrikam.com
+
+> [!IMPORTANT]
+> Der Name der Region für Ihre Azure Stack-Bereitstellung muss eindeutig sein. Er wird in den Portaladressen angezeigt. 
 
 In der folgenden Tabelle sind diese Entscheidungen zur Domänenbenennung zusammengefasst.
 
@@ -128,14 +135,14 @@ Sie können Azure Stack über [ExpressRoute](https://docs.microsoft.com/azure/ex
 
 Das folgende Diagramm zeigt ExpressRoute für ein Szenario mit einzelnem Mandanten (dabei stellt die Verbindung des Kunden die ExpressRoute-Verbindung dar).
 
-![Diagramm mit ExpressRoute-Szenario mit einzelnem Mandanten](media/azure-stack-deployment-planning/ExpressRouteSingleTenant.PNG)
+![Diagramm mit ExpressRoute-Szenario mit einzelnem Mandanten](media/azure-stack-datacenter-integration/ExpressRouteSingleTenant.PNG)
 
 Das folgende Diagramm zeigt ExpressRoute für ein Szenario mit mehreren Mandanten.
 
-![Diagramm mit ExpressRoute-Szenario mit mehreren Mandanten](media/azure-stack-deployment-planning/ExpressRouteMultiTenant.PNG)
+![Diagramm mit ExpressRoute-Szenario mit mehreren Mandanten](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.PNG)
 
 ## <a name="external-monitoring"></a>Externe Überwachung
-Um eine Gesamtübersicht über alle Warnungen Ihrer Azure Stack-Bereitstellung sowie den zugehörigen Geräten zu erhalten und Warnungen zur Ticketerstellung in vorhandene Workflows zur IT-Dienstverwaltung zu integrieren, können Sie Azure Stack mit Überwachungslösungen externer Rechenzentren integrieren.
+Um eine Gesamtübersicht über alle Warnungen Ihrer Azure Stack-Bereitstellung sowie den zugehörigen Geräten zu erhalten und Warnungen zur Ticketerstellung in vorhandene Workflows zum IT-Service-Management zu integrieren, können Sie [Azure Stack mit Überwachungslösungen externer Rechenzentren integrieren](azure-stack-integrate-monitor.md).
 
 Der in der Azure Stack-Lösung enthaltene Hardwarelebenszyklushost ist ein Computer, der sich außerhalb von Azure Stack befindet, und vom OEM-Anbieter bereitgestellte Verwaltungstools für Hardware ausführt. Sie können diese Tools oder andere Lösungen verwenden, die direkt mit vorhandenen Überwachungslösungen in Ihr Rechenzentrum integriert werden.
 
@@ -143,10 +150,10 @@ In der folgenden Tabelle ist die Liste der derzeit verfügbaren Optionen zusamme
 
 | Bereich | Externe Überwachungslösung |
 | -- | -- |
-| Azure Stack-Software | - [Azure Stack Management Pack für Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>- [Nagios-Plug-In](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>- REST-basierte API-Aufrufe | 
-| Physische Server (BMCs über IPMI) | - Operations Manager-Lieferantenverwaltungspaket<br>- Vom OEM-Hardwareanbieter bereitgestellte Lösung<br>- Plug-Ins des Hardwareanbieters Nagios | Vom OEM-Partner unterstützte Überwachungslösung (enthalten) | 
-| Netzwerkgeräte (SNMP) | - Operations Manager-Netzwerkgeräteermittlung<br>- Vom OEM-Hardwareanbieter bereitgestellte Lösung<br>- Nagios Switch-Plug-In |
-| Systemüberwachung für Mandantenabonnements | - [System Center Management Pack für Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
+| Azure Stack-Software | [Azure Stack Management Pack für Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios-Plug-In](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>REST-basierte API-Aufrufe | 
+| Physische Server (BMCs über IPMI) | OEM-Hardware – Operations Manager-Lieferantenverwaltungspaket<br>Vom OEM-Hardwareanbieter bereitgestellte Lösung<br>Plug-Ins des Hardwareanbieters Nagios | Vom OEM-Partner unterstützte Überwachungslösung (enthalten) | 
+| Netzwerkgeräte (SNMP) | Operations Manager-Netzwerkgeräteermittlung<br>Vom OEM-Hardwareanbieter bereitgestellte Lösung<br>Nagios Switch-Plug-In |
+| Systemüberwachung für Mandantenabonnements | [System Center Management Pack für Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 
 
 Beachten Sie folgende Punkte:
@@ -159,7 +166,7 @@ Die Planung der Sicherung und Notfallwiederherstellung umfasst das Planen für d
 
 ### <a name="protect-infrastructure-components"></a>Schützen von Infrastrukturkomponenten
 
-Azure Stack sichert Infrastrukturkomponenten in einer von Ihnen angegebenen Freigabe.
+Sie können Infrastrukturkomponenten von Azure Stack in einer von Ihnen angegebenen SMB-Freigabe [sichern](azure-stack-backup-back-up-azure-stack.md):
 
 - Sie benötigen eine externe SMB-Dateifreigabe auf einem vorhandenen Windows-basierten Dateiserver oder auf einem Gerät eines Drittanbieters.
 - Sie sollten dieselbe Freigabe für die Sicherung von Netzwerkswitches und des Hardwarelebenszyklushosts verwenden. Ihr OEM-Hardwareanbieter unterstützt Sie dabei, eine Anleitung zum Sichern und Wiederherstellen dieser Komponenten bereitzustellen, da sich diese außerhalb von Azure Stack befinden. Sie sind dafür zuständig, die Sicherungsworkflows auf Basis der Empfehlungen des OEM-Anbieters auszuführen.

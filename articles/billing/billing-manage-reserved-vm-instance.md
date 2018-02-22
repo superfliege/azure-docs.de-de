@@ -1,6 +1,6 @@
 ---
-title: Verwalten von reservierten Azure-VM-Instanzen | Microsoft Docs
-description: "Erfahren Sie, wie Sie den Abonnementbereich ändern und den Zugriff auf reservierte Azure-VM-Instanzen verwalten können."
+title: Verwalten von Azure Reserved Virtual Machine Instances | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie den Abonnementbereich ändern und den Zugriff auf Azure Reserved VM Instances verwalten können."
 services: billing
 documentationcenter: 
 author: vikramdesai01
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
 ms.author: vikdesai
-ms.openlocfilehash: e23eea52ff5d27beacf938a1ef153172e24f1aee
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 8f75bab7fc795a59dabfedca5a4889622f66b73a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-reserved-virtual-machine-instances"></a>Verwalten von reservierten Azure-VM-Instanzen
 
@@ -28,7 +28,7 @@ Nachdem Sie eine reservierte Azure-VM-Instanz erworben haben, können Sie die Re
 
 So aktualisieren Sie den Bereich einer Reservierung: 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Wählen Sie **Weitere Dienste** > **Reservierungen** aus.
+2. Klicken Sie auf **Weitere Dienste** > **Reservierungen**.
 3. Wählen Sie die Reservierung aus.
 4. Wählen Sie **Einstellungen** > **Konfiguration** aus.
 5. Ändern Sie den Bereich. Wenn Sie den Bereich aus „Freigegeben“ in „Einzeln“ ändern, können Sie nur Abonnements auswählen, deren Besitzer Sie sind. Es können nur Abonnements ausgewählt werden, die sich im gleichen Abrechnungskontext wie die Reservierung befinden. Der Abrechnungskontext wird durch das Abonnement bestimmt, das Sie beim Kauf der Reservierung ausgewählt haben. Der Bereich gilt nur für nutzungsbasierte Angebote für MS-AZR-0003P-Abonnements und Enterprise-Angebote für MS-AZR-0017P-Abonnements. Bei Enterprise Agreements sind dev/test-Abonnements nicht berechtigt, den Reservierungsrabatt zu erhalten.
@@ -75,6 +75,16 @@ So delegieren Sie die Zugriffsverwaltung für eine Reservierung:
 5.  Wählen Sie **Hinzufügen** > **Rolle** > **Besitzer** (oder eine andere Rolle, wenn Sie eingeschränkten Zugriff erteilen möchten) aus. 
 6. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten. 
 7. Wählen Sie den Benutzer und dann **Speichern** aus.
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu reservierten VM-Instanzen finden Sie in den folgenden Artikeln.
+
+- [Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Mit reservierten VM-Instanzen Kosten für virtuelle Computer sparen](billing-save-compute-costs-reservations.md)
+- [Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen](billing-understand-vm-reservation-charges.md)
+- [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
+- [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](billing-understand-reserved-instance-usage-ea.md)
+- [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

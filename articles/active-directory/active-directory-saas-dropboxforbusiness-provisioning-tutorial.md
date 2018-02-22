@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ff85b5c20d74bde476416bdd70d5a345f4a6fefb
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 6b082127f74ff5f823506c0f75f40c4b4246dcfe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Dropbox für Unternehmen für die automatische Benutzerbereitstellung
 
@@ -88,13 +88,9 @@ Dieser Abschnitt führt Sie durch das Verbinden von Azure AD mit der Dropbox fü
 
 14. Klicken Sie auf **Speichern**.
 
-Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Dropbox für Unternehmen im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 20 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Dropbox für Unternehmen-App ausgeführt werden.
+Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Dropbox für Unternehmen im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Dropbox für Unternehmen-App ausgeführt werden.
 
-Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, um zu überprüfen, ob das Konto mit Dropbox für Unternehmen synchronisiert wurde.
-
-Ein erfolgreich abgeschlossener Benutzerbereitstellungszyklus wird durch einen entsprechenden Status angezeigt.
-
-![Zuweisen von Benutzern](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/IC769523.png "Zuweisen von Benutzern")
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](active-directory-saas-provisioning-reporting.md).
 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

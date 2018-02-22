@@ -1,5 +1,5 @@
 ---
-title: Automatisieren der Entfernung von Ressourcengruppen | Microsoft Docs
+title: Automatisieren der Entfernung von Ressourcengruppen | Microsoft-Dokumentation
 description: PowerShell-Workflow-Version eines Azure Automation-Szenarios mit Runbooks zum Entfernen aller Ressourcengruppen in Ihrem Abonnement.
 services: automation
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: magoedte
-ms.openlocfilehash: e1734bdd22ecfc4e54074f02582f5a8eca7d4f59
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: cb7183cbec1c3efafe58f4508042d329be5dcecf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation-Szenario – Automatisieren der Entfernung von Ressourcengruppen
 Viele Kunden erstellen mehr als eine Ressourcengruppe. Einige werden unter Umständen für die Verwaltung von Produktionsanwendungen verwendet, und andere werden vielleicht als Entwicklungs-, Test- und Stagingumgebungen genutzt. Dabei kann nicht nur die Bereitstellung dieser Ressourcen automatisiert werden, es ist auch möglich, eine Ressourcengruppe mit nur einem Klick außer Betrieb zu setzen. Mit Azure Automation können Sie diese häufig anfallende Verwaltungsaufgabe optimieren. Darüber hinaus ist dieses Szenario auch hilfreich, wenn Sie ein Azure-Abonnement verwenden, für das ein durch ein Mitgliedsangebot wie MSDN oder das Microsoft Partner Network Cloud Essentials-Programm bedingtes Ausgabenlimit gilt.
@@ -52,15 +52,15 @@ Die folgenden Schritte veranschaulichen die Ausführung dieses Runbooks, damit S
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und klicken Sie auf **Runbooks**.
 2. Wählen Sie das Runbook **Remove-ResourceGroup** aus, und klicken Sie auf **Starten**.
-3. Wenn Sie das Runbook starten, öffnet sich das Blatt **Runbook starten**, und Sie können die Parameter konfigurieren. Geben Sie die Namen von Ressourcengruppen in Ihrem Abonnement ein, die Sie für das Testing verwenden können und die keinen Schaden anrichten, falls sie versehentlich gelöscht werden.<br> ![Remove-ResouceGroup – Parameter](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-input-parameters.png)
+3. Wenn Sie das Runbook starten, öffnet sich die Seite **Runbook starten**, und Sie können die Parameter konfigurieren. Geben Sie die Namen von Ressourcengruppen in Ihrem Abonnement ein, die Sie für das Testing verwenden können und die keinen Schaden anrichten, falls sie versehentlich gelöscht werden.
 
    > [!NOTE]
-   > Stellen Sie sicher, dass **Previewmode** auf **true** festgelegt ist, um das Löschen der ausgewählten Ressourcengruppen zu vermeiden.  **Hinweis:** Die Ressourcengruppe mit dem Automation-Konto, unter dem das Runbook ausgeführt wird, wird von diesem Runbook nicht entfernt.  
+   > Stellen Sie sicher, dass **Previewmode** auf **true** festgelegt ist, um das Löschen der ausgewählten Ressourcengruppen zu vermeiden. Die Ressourcengruppe mit dem Automation-Konto, unter dem das Runbook ausgeführt wird, wird von diesem Runbook nicht entfernt.  
    >
    >
-4. Klicken Sie nach dem Konfigurieren aller Parameterwerte auf **OK**, um das Runbook der Ausführungswarteschlange hinzuzufügen.  
+1. Klicken Sie nach dem Konfigurieren aller Parameterwerte auf **OK**, um das Runbook der Ausführungswarteschlange hinzuzufügen.  
 
-Die Details des Runbookauftrags **Remove-ResourceGroup** können Sie im Azure-Portal anzeigen, indem Sie im Runbook die Option **Aufträge** wählen. Die Auftragszusammenfassung zeigt die Eingabeparameter und den Ausgabedatenstrom sowie allgemeine Informationen zum Auftrag und alle aufgetretenen Ausnahmen an.<br> ![Remove-ResourceGroup – Status des Runbookauftrags](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png).
+Die Details des Runbookauftrags **Remove-ResourceGroup** können Sie im Azure-Portal anzeigen, indem Sie im Runbook unter **Aufträge** die Option **Ressource** wählen. Wählen Sie den Auftrag aus, der angezeigt werden soll. Die Auftragszusammenfassung zeigt die Eingabeparameter und den Ausgabedatenstrom sowie allgemeine Informationen zum Auftrag und alle aufgetretenen Ausnahmen an.<br> ![Remove-ResourceGroup – Status des Runbookauftrags](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png).
 
 Die **Auftragszusammenfassung** beinhaltet Meldungen aus den Ausgabe-, Warnungs- und Fehlerdatenströmen. Wählen Sie die Option **Ausgabe**, um detaillierte Ergebnisse der Runbookausführung anzuzeigen.<br> ![Remove-ResourceGroup – Ergebnisse der Runbookausgabe](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-output.png)
 

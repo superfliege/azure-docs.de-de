@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1988d293c78e7fb51f08d040ab96a6d7a3abbb87
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 65eab09a1fcf7e1c2411ee4b96d21ba22e3519b2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-beta"></a>Kopieren von Daten aus Square mithilfe von Azure Data Factory (Beta)
 
@@ -50,7 +50,7 @@ Folgende Eigenschaften werden für den mit Square verknüpften Dienst unterstüt
 | type | Die „type“-Eigenschaft muss auf **Square** festgelegt werden. | Ja |
 | host | Die URL der Square-Instanz. (mystore.mysquare.com)  | Ja |
 | clientId | Die Client-ID, die Ihrer Square-Anwendung zugeordnet ist.  | Ja |
-| clientSecret | Der geheime Clientschlüssel, der Ihrer Square-Anwendung zugeordnet ist. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
+| clientSecret | Der geheime Clientschlüssel, der Ihrer Square-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | redirectUri | Die Umleitungs-URL, die im Dashboard der Square-Anwendung zugewiesen ist. (http://localhost:2500)  | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |

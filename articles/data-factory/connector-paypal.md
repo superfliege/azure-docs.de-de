@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b0cc1bca6035104aba655bdb6fc63a1a66483f0c
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ee15e92a6d6b7054b818a46fb5c207614f6d535f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-beta"></a>Kopieren von Daten aus PayPal mithilfe von Azure Data Factory (Beta)
 
@@ -50,7 +50,7 @@ Folgende Eigenschaften werden für den mit PayPal verknüpften Dienst unterstüt
 | type | Die „type“-Eigenschaft muss auf **PayPal** festgelegt werden. | Ja |
 | host | Die URL der PayPal-Instanz. (api.sandbox.paypal.com)  | Ja |
 | clientId | Die Client-ID, die Ihrer PayPal-Anwendung zugeordnet ist.  | Ja |
-| clientSecret | Der geheime Clientschlüssel, der Ihrer PayPal-Anwendung zugeordnet ist. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
+| clientSecret | Der geheime Clientschlüssel, der Ihrer PayPal-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |

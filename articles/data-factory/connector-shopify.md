@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3b4a1465d53f2a5a542e6a89ef98c588fd805155
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 24c933176d2ce52f74c6afddf6356e464703825c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-beta"></a>Kopieren von Daten aus Shopify mithilfe von Azure Data Factory (Beta)
 
@@ -49,7 +49,7 @@ Folgende Eigenschaften werden für den mit Shopify verknüpften Dienst unterstü
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **Shopify** festgelegt werden. | Ja |
 | host | Der Endpunkt des Shopify-Servers. (mystore.myshopify.com)  | Ja |
-| accessToken | Das API-Zugriffstoken, das für den Zugriff auf Shopify-Daten verwendet werden kann. Das Token läuft nicht ab, wenn es sich im Offlinemodus befindet. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
+| accessToken | Das API-Zugriffstoken, das für den Zugriff auf Shopify-Daten verwendet werden kann. Das Token läuft nicht ab, wenn es sich im Offlinemodus befindet. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |

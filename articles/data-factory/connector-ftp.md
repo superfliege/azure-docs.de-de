@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: debfa7b584e4172821801197be94e597066cdb8d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 69b8581399d2bf7e0f2196f7bbad4e6522979239
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopieren von Daten von einem FTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -57,7 +57,7 @@ Folgende Eigenschaften werden für den mit FTP verknüpften Dienst unterstützt:
 | enableServerCertificateValidation | Gibt an, ob die Überprüfung des SSL-Zertifikats aktiviert werden soll, wenn Sie FTP über SSL/TLS-Kanal verwenden.<br/>Zulässige Werte sind **true** (Standard) oder **false** | Nein  |
 | authenticationType | Gibt den Authentifizierungstyp an.<br/>Zulässige Werte sind **Basic** oder **Anonymous** | Ja |
 | userName | Gibt den Benutzer an, der Zugriff auf den FTP-Server hat. | Nein  |
-| password | Gibt das Kennwort für den Benutzer (userName) an. Legen Sie für dieses Feld „SecureString“ fest. | Nein  |
+| password | Gibt das Kennwort für den Benutzer (userName) an. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel 1: Verwenden der anonymen Authentifizierung**

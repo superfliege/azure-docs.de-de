@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: cefc15e7df0dabd9229196d0175dcf6546a6ebce
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d3ce4d5c6766c41fe32164ebfe623ea8c06b58f9
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-network-security-overview"></a>Die Netzwerksicherheit in Azure im Überblick
 Microsoft Azure verfügt über eine robuste Netzwerkinfrastruktur zur Unterstützung der Konnektivitätsanforderungen Ihrer Anwendungen und Dienste. Netzwerkkonnektivität ist zwischen Ressourcen in Azure, zwischen lokalen und in Azure gehosteten Ressourcen und zu und aus dem Internet und Azure möglich.
@@ -149,7 +149,7 @@ Weitere Informationen:
 
 * [Konfigurieren einer VNet-zu-VNet-Verbindung mit Azure Resource Manager und PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
-## <a name="availability"></a>Availability
+## <a name="availability"></a>Verfügbarkeit
 Verfügbarkeit ist eine der Schlüsselkomponenten eines jeden Sicherheitsprogramms. Wenn Ihre Benutzer und Systeme über das Netzwerk keinen Zugriff auf die benötigten Ressourcen haben, kann der Dienst als gefährdet betrachtet werden. Azure verfügt über Netzwerktechnologien, die die folgenden Mechanismen für hohe Verfügbarkeit unterstützen:
 
 * HTTP-basierter Lastenausgleich
@@ -162,7 +162,7 @@ Der Lastenausgleich ist ein Verfahren, das entwickelt wurde, um Verbindungen zwi
 * Leistung erhöhen – Wenn sie die Verbindungen auf mehrere Geräte aufteilen (Lastenausgleich), muss kein Gerät die Prozessorlast allein stemmen. Stattdessen werden die Verarbeitungs- und Speicheranforderungen für die Bereitstellung der Inhalte über mehrere Geräte verteilt.
 
 ### <a name="http-based-load-balancing"></a>HTTP-basierter Lastenausgleich
-Organisationen, die webbasierte Dienste ausführen, möchten für diese Webdiensten häufig einen HTTP-basierten Lastenausgleich verwenden, um ein angemessenes Maß an Leistung und eine hohe Verfügbarkeit sicherzustellen. Im Gegensatz zu herkömmlichen netzwerkbasierten Lastenausgleichen basieren die Entscheidungen des HTTP-basierten Lastenausgleichs auf Merkmalen des HTTP-Protokolls, nicht auf den Vermittlungs- und Transportschichtprotokollen.
+Organisationen, die webbasierte Dienste ausführen, möchten für diese Webdiensten häufig einen HTTP-basierten Lastenausgleich verwenden, um ein angemessenes Maß an Leistung und Hochverfügbarkeit sicherzustellen. Im Gegensatz zu herkömmlichen netzwerkbasierten Lastenausgleichen basieren die Entscheidungen des HTTP-basierten Lastenausgleichs auf Merkmalen des HTTP-Protokolls, nicht auf den Vermittlungs- und Transportschichtprotokollen.
 
 Azure stellt Ihnen Azure Application Gateway bereit, um Ihnen den HTTP-basierten Lastenausgleich für Ihre webbasierten Dienste bereitzustellen. Azure Application Gateway unterstützt:
 
@@ -227,7 +227,7 @@ Für die externe DNS-Auflösung stehen Ihnen zwei Optionen zur Verfügung:
 
 Viele große Organisationen hosten ihre eigenen DNS-Server lokal. Sie können dies, da sie über die notwendigen Fachkenntnisse im Bereich Netzwerke und die globale Präsenz verfügen.
 
-In den meisten Fällen ist es besser, Ihre DNS-Namensauflösungsdienste bei einem Dienstanbieter zu hosten. Diese Dienstanbieter verfügen über die Fachkenntnisse im Bereich Netzwerke und eine globale Präsenz, sodass eine sehr hohen Verfügbarkeit Ihrer Namensauflösungsdienste gewährleistet werden kann. Verfügbarkeit ist entscheidend für DNS-Dienste, denn falls Ihre Namensauflösungsdienste fehlschlagen, kann keine Verbindung zu Ihren mit dem Internet verbundenen Diensten hergestellt werden.
+In den meisten Fällen ist es besser, Ihre DNS-Namensauflösungsdienste bei einem Dienstanbieter zu hosten. Diese Dienstanbieter verfügen über die Fachkenntnisse im Bereich Netzwerke und eine globale Präsenz, sodass eine sehr hohe Verfügbarkeit Ihrer Namensauflösungsdienste gewährleistet werden kann. Verfügbarkeit ist entscheidend für DNS-Dienste, denn falls Ihre Namensauflösungsdienste fehlschlagen, kann keine Verbindung zu Ihren mit dem Internet verbundenen Diensten hergestellt werden.
 
 Azure bietet Ihnen eine hoch verfügbare und leistungsstarke externe DNS-Lösung in Form von Azure DNS. Diese externe Namensauflösungslösung nutzt die weltweite Azure DNS-Infrastruktur. Sie können damit Ihre Domänen in Azure mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste hosten. Als Teil von Azure bietet Azure DNS auch die strengen Sicherheitskontrollen, die in die Plattform integriert sind.
 

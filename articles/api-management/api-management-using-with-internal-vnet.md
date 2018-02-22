@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: df2ebb6ee8b1f108c751226188556ced907314e1
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: cf062cfcbbb2454adf20a06c31c81a60f6f5719f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Verwenden von Azure API Management mit einem internen virtuellen Netzwerk
 Mit virtuellen Azure-Netzwerken kann API Management APIs verwalten, auf die nicht über das Internet zugegriffen werden kann. Für die Verbindungsherstellung stehen verschiedene VPN-Technologien zur Verfügung. API Management kann in einem virtuellen Netzwerk in zwei Hauptmodi bereitgestellt werden:
@@ -26,7 +26,7 @@ Mit virtuellen Azure-Netzwerken kann API Management APIs verwalten, auf die nich
 * Intern
 
 
-Wenn API Management im Modus für ein internes virtuelles Netzwerk bereitgestellt wird, sind alle Dienstendpunkte (Gateway, Entwicklerportal, Herausgeberportal, direkte Verwaltung und Git) nur in einem virtuellen Netzwerk sichtbar, für das Sie den Zugriff steuern. Keiner der Dienstendpunkte ist auf dem öffentlichen DNS-Server registriert.
+Wenn API Management im Modus für ein internes virtuelles Netzwerk bereitgestellt wird, sind alle Dienstendpunkte (Gateway, Entwicklerportal, Azure-Portal, direkte Verwaltung und Git) nur in einem virtuellen Netzwerk sichtbar, für das Sie den Zugriff steuern. Keiner der Dienstendpunkte ist auf dem öffentlichen DNS-Server registriert.
 
 Mit API Management im internen Modus sind folgende Szenarien möglich:
 * APIs, die in Ihrem privaten Datencenter gehostet werden, können externen Dritten über Site-to-Site- oder Azure ExpressRoute-VPN-Verbindungen sicher zugänglich gemacht werden.
@@ -55,7 +55,7 @@ Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter eine
 
     ![Menü zum Einrichten einer Azure API Management-Instanz in einem internen virtuellen Netzwerk][api-management-using-internal-vnet-menu]
 
-4. Wählen Sie **Speichern** aus.
+4. Wählen Sie **Speichern**aus.
 
 Nach erfolgreicher Bereitstellung sollte die interne virtuelle IP-Adresse des Diensts auf dem Dashboard angezeigt werden.
 
@@ -72,14 +72,14 @@ Verbindungen mit virtuellen Netzwerken können auch mithilfe von PowerShell-Cmdl
 Wenn sich API Management im Modus eines externen virtuellen Netzwerks befindet, wird DNS von Azure verwaltet. Beim Modus eines internen virtuellen Netzwerks müssen Sie das Routing selbst verwalten.
 
 > [!NOTE]
-> Der API Management-Dienst lauscht nicht auf von IP-Adressen stammende Anforderungen. Er reagiert nur auf Anforderungen für den Hostnamen, der für seine Dienstendpunkte konfiguriert ist. Zu diesen Endpunkten zählen Gateway, Entwicklerportal, Herausgeberportal, Endpunkt für die direkte Verwaltung und Git.
+> Der API Management-Dienst lauscht nicht auf von IP-Adressen stammende Anforderungen. Er reagiert nur auf Anforderungen für den Hostnamen, der für seine Dienstendpunkte konfiguriert ist. Zu diesen Endpunkten zählen Gateway, Entwicklerportal, Azure-Portal, Endpunkt für die direkte Verwaltung und Git.
 
 ### <a name="access-on-default-host-names"></a>Zugreifen über Standardhostnamen
 Wenn Sie beispielsweise einen API Management-Dienst namens „Contoso“ erstellen, werden standardmäßig die folgenden Dienstendpunkte konfiguriert:
 
    * Gateway oder Proxy: contoso.azure-api.net
 
-   * Herausgeberportal und Entwicklerportal: contoso.portal.azure-api.net
+   * Azure-Portal und Entwicklerportal: contoso.portal.azure-api.net
 
    * Endpunkt für die direkte Verwaltung: contoso.management.azure-api.net
 

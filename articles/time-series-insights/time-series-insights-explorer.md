@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/30/2017
-ms.openlocfilehash: 04e5465a56b8da9f2a078e513d5176f134fd011d
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: d09292cce1414a1b89e4b75df27d0a689738b4d6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights-Explorer
 In diesem Artikel werden die verschiedenen in der Web-App des Time Series Insights-Explorers verfügbaren Funktionen und Optionen vorgestellt. Sie verwenden den Time Series Insights-Explorer in Ihrem Webbrowser, um Visualisierungen Ihrer Daten zu erstellen.
@@ -37,7 +37,7 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Serie
 
 2. Nachdem Sie eine Umgebung ausgewählt haben, verwenden Sie entweder die Konfigurationen **VON** und **BIS** im oberen Bereich, oder ziehen Sie die gewünschte Zeitspanne.  Klicken Sie auf die Lupe oben rechts, oder klicken Sie mit der rechten Maustaste auf die ausgewählte Zeitspanne, und wählen Sie **Suchen** aus.  
 
-3. Sie können zudem die Verfügbarkeit automatisch einmal pro Minute aktualisieren, indem Sie die Schaltfläche **Auto On** (Automatisch ein) auswählen.
+3. Sie können zudem die Verfügbarkeit automatisch einmal pro Minute aktualisieren, indem Sie die Schaltfläche **Auto On** (Automatisch ein) auswählen.  Beachten Sie, dass die Schaltfläche „Auto-Ein“ nur für das Verfügbarkeitsdiagramm gilt, nicht jedoch für den Inhalt der Hauptvisualisierung.
 
 4. Beachten Sie, dass Sie über das Azure-Cloudsymbol zu Ihrer Umgebung im Azure-Portal gelangen.
 
@@ -55,12 +55,12 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Serie
 
       - **Prädikat:** Über das Prädikat können Sie die Ereignisse mithilfe der unten aufgeführten Operanden schnell filtern. Wenn Sie eine Suche durch Auswählen/Klicken durchführen, wird das Prädikat basierend auf dieser Suche automatisch aktualisiert.      Folgende Operandentypen werden unterstützt:
 
-         |Vorgang  |Unterstützte Typen  |Hinweise  |
+         |Vorgang  |Unterstützte Typen  |Notizen  |
          |---------|---------|---------|
          |<, >, <=, >=     |  Double, DateTime, TimeSpan       |         |
          |=, !=, <>     | String, Bool, Double, DateTime, TimeSpan, NULL        |         |
          |IN     | String, Bool, Double, DateTime, TimeSpan, NULL        |  Alle Operanden müssen denselben Typ aufweisen oder eine NULL-Konstante sein.        |
-         |HAS     | String        |  Im rechten Bereich sind nur konstante Zeichenfolgenliterale zulässig. Leere Zeichenfolgen und NULL sind nicht zulässig.       |
+         |HAS     | Zeichenfolge        |  Im rechten Bereich sind nur konstante Zeichenfolgenliterale zulässig. Leere Zeichenfolgen und NULL sind nicht zulässig.       |
 
       - **Beispiele für Abfragen**
       

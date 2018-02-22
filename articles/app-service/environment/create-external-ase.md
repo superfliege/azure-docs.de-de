@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 70c43b25aea364d7254137b46af31f851dcf8bc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1beb06301807c35a1b070989a0f80f4c8097762
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung #
 
@@ -87,7 +87,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
     b. Geben Sie einen neuen Subnetznamen an.
 
-    c. Wählen Sie die Größe des Subnetzes aus. *Die Größe sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken.* Die empfohlene Größe ist `/25` mit 128 Adressen zur Verarbeitung einer ASE maximaler Größe. `/28` ist beispielsweise nicht zu empfehlen, da nur 16 Adressen verfügbar sind. Schon die Infrastruktur benötigt mindestens fünf Adressen. In einem `/28`-Subnetz können Sie dann nur auf 11 Instanzen skalieren.
+    c. Wählen Sie die Größe des Subnetzes aus. *Die Größe sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken.* Die empfohlene Größe ist `/25` mit 128 Adressen zur Verarbeitung einer ASE maximaler Größe. `/28` ist beispielsweise nicht zu empfehlen, da nur 16 Adressen verfügbar sind. In der Infrastruktur werden mindestens sieben und im Azure-Netzwerk weitere fünf Adressen verwendet. In einem `/28`-Subnetz können Sie höchstens vier Instanzen des App Service-Plans für eine externe ASE und nur drei Instanzen des App Service-Plans für eine ILB-ASE skalieren.
 
     d. Wählen Sie den IP-Bereich des Subnetzes aus.
 

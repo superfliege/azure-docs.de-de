@@ -10,19 +10,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 145c2bc0556010389e78e523fde6fd4b9063f930
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 42643c73368597d1caea4aba12bc7b64b7440970
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Speichern von Anmeldeinformationen in Azure Key Vault
 
 Sie können Anmeldeinformationen für Datenspeicher in einem [Azure Key Vault](../key-vault/key-vault-whatis.md)-Tresor speichern. Azure Data Factory ruft die Anmeldeinformationen ab, wenn eine Aktivität erfolgt, die den Datenspeicher verwendet.
 
-Derzeit unterstützen der [Dynamics-Connector](connector-dynamics-crm-office-365.md), der [Salesforce-Connector](connector-salesforce.md) und einige kürzlich aktivierte Connectors diese Funktion. Weitere Connectors werden später bereitgestellt. Details finden Sie in den jeweiligen Connectorthemen. Für die Geheimnisfelder, die diese Funktion unterstützen, wird folgender Hinweis in der Beschreibung angezeigt: *„Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter „Speichern von Anmeldeinformationen in Key Vault“.“*
+Derzeit unterstützt eine Kopieraktivität mit allen Connectortypen diese Funktion. Ausführliche Informationen finden Sie im Abschnitt „Eigenschaften des verknüpften Diensts“ unter dem [jeweiligen Connectorthema](copy-activity-overview.md#supported-data-stores-and-formats). Unterstützung für andere Aktivitätstypen und den verknüpften Computedienst ist für die Zukunft geplant.
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
@@ -35,10 +35,10 @@ Diese Funktion basiert auf der Data Factory-Dienstidentität. Informationen zur 
 
 Führen Sie die folgenden Schritte aus, um auf in Azure Key Vault gespeicherte Anmeldeinformationen zu verweisen:
 
-1. [Rufen Sie die Data Factory-Dienstidentität](data-factory-service-identity.md#retrieve-service-identity) ab, indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde.
-2. Gewähren Sie der Dienstidentität Zugriff auf Ihren Azure Key Vault-Tresor. Suchen Sie in Ihrem Schlüsseltresor unter „Zugriffssteuerung“ > „Hinzufügen“ diese Dienstidentitätsanwendungs-ID, und fügen Sie mindestens die Berechtigung **Leser** hinzu. Dies ermöglicht der angegebenen Data Factory den Zugriff auf das Geheimnis im Schlüsseltresor.
-3. Erstellen Sie einen verknüpften Dienst, der auf Ihren Azure Key Vault-Tresor verweist. Siehe [Mit Azure Key Vault verknüpfter Dienst](#azure-key-vault-linked-service).
-4. Erstellen Sie einen mit einem Datenspeicher verknüpften Dienst, in dem Sie auf das entsprechende Geheimnis verweisen, das im Schlüsseltresor gespeichert ist. Informationen finden Sie unter [Verweisen auf im Schlüsseltresor gespeicherte Anmeldeinformationen](#reference-credential-stored-in-key-vault).
+1. **[Rufen Sie die Data Factory-Dienstidentität ab](data-factory-service-identity.md#retrieve-service-identity)**, indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde.
+2. **Gewähren Sie der Dienstidentität Zugriff auf Ihren Azure Key Vault-Tresor.** Suchen Sie in Ihrem Schlüsseltresor unter „Zugriffsrichtlinien“ -> „Neue hinzufügen“ nach dieser Dienstidentitätsanwendungs-ID, um ihr in der Dropdownliste „Berechtigungen für Geheimnis“ die **Abrufberechtigung** zu erteilen. Dies ermöglicht der angegebenen Data Factory den Zugriff auf das Geheimnis im Schlüsseltresor.
+3. **Erstellen Sie einen verknüpften Dienst, der auf Ihren Azure Key Vault-Tresor verweist.** Siehe [Mit Azure Key Vault verknüpfter Dienst](#azure-key-vault-linked-service).
+4. **Erstellen Sie einen mit einem Datenspeicher verknüpften Dienst, in dem Sie auf das entsprechende Geheimnis verweisen, das im Schlüsseltresor gespeichert ist.** Informationen finden Sie unter [Verweisen auf ein im Schlüsseltresor gespeichertes Geheimnis](#reference-secret-stored-in-key-vault).
 
 ## <a name="azure-key-vault-linked-service"></a>Mit Azure Key Vault verknüpfter Dienst
 
@@ -63,7 +63,7 @@ Folgende Eigenschaften werden für den mit Azure Key Vault verknüpften Dienst u
 }
 ```
 
-## <a name="reference-credential-stored-in-key-vault"></a>Verweisen auf im Schlüsseltresor gespeicherte Anmeldeinformationen
+## <a name="reference-secret-stored-in-key-vault"></a>Verweisen auf ein im Schlüsseltresor gespeichertes Geheimnis
 
 Die folgenden Eigenschaften werden unterstützt, wenn Sie ein Feld in einem verknüpften Dienst konfigurieren, das auf ein Geheimnis im Schlüsseltresor verweist:
 

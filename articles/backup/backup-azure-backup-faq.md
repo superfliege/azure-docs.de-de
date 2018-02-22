@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: d6ee96b17c6bc85a2278bbe98867a579ff9c550a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: da589905babd20b46ea7bc0baba753415b3b5d5b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Fragen zum Azure Backup-Dienst
 In diesem Artikel werden allgemeine Fragen zu den Azure Backup-Komponenten beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Fragen zu Azure Backup können Sie durch Klicken auf **Kommentare** (rechts) stellen. Kommentare erscheinen am Ende dieses Artikels. Zum Kommentieren wird ein Livefyre-Konto benötigt. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -132,7 +132,8 @@ In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengröße
 | Microsoft Exchange |Summe aller Exchange-Datenbanken eines zu sichernden Exchange-Servers |
 | BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu sichernden Computers |
 
-Bei Azure VM Backup kann jeder virtuelle Computer über bis zu 16 Datenträger mit einer Größe von jeweils bis zu 1023 GB verfügen. 
+Bei Azure VM Backup kann jeder virtuelle Computer über bis zu 16 Datenträger mit einer Größe von jeweils bis zu 1024 GB verfügen. <br>
+Es ist eine [private Vorschau](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a?redir=0) zur Unterstützung von Datenträgern bis zu einer Größe von 4 TB verfügbar. 
 
 ## <a name="retention-policy-and-recovery-points"></a>Aufbewahrungsrichtlinie und Wiederherstellungspunkte
 ### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>Gibt es einen Unterschied zwischen der Aufbewahrungsrichtlinie für DPM und Windows Server bzw. Windows-Client (also unter Windows Server ohne DPM)?<br/>

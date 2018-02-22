@@ -11,59 +11,47 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: ec560bbab3caf4cde090ed3c9a47ccc0afcb2492
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 228cbb103e13c478bea460bb04de43d6480bc60e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management
-API Management bietet die Möglichkeit, Benachrichtigungen über spezifische Ereignisse sowie die E-Mail-Vorlagen zu konfigurieren, die zur Kommunikation mit Administratoren und Entwicklern einer API Management-Instanz verwendet werden. Dieses Thema beschreibt die Konfiguration von Benachrichtigungen für verfügbare Ereignisse und bietet eine Übersicht über die Konfiguration der E-Mail-Vorlagen für diese Ereignisse.
+API Management bietet die Möglichkeit, Benachrichtigungen über spezifische Ereignisse sowie die E-Mail-Vorlagen zu konfigurieren, die zur Kommunikation mit Administratoren und Entwicklern einer API Management-Instanz verwendet werden. Dieser Artikel beschreibt die Konfiguration von Benachrichtigungen für verfügbare Ereignisse und bietet eine Übersicht über die Konfiguration der E-Mail-Vorlagen für diese Ereignisse.
 
-## <a name="publisher-notifications"></a>Konfigurieren von Herausgeberbenachrichtigungen
-Um Benachrichtigungen zu konfigurieren, klicken Sie im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
+## <a name="prerequisites"></a>Voraussetzungen
 
-![Herausgeberportal][api-management-management-console]
+Wenn Sie über keine API Management-Dienstinstanz verfügen, absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
 
-> [!NOTE] 
-> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen unter [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance].
+## <a name="publisher-notifications"> </a>Konfigurieren von Benachrichtigungen
 
-Klicken Sie im Menü **API Management** auf der linken Seite auf **Benachrichtigungen**, um die verfügbaren Benachrichtigungen anzuzeigen.
+1. Wählen Sie Ihre **API MANAGEMENT**-Instanz aus.
+2. Klicken Sie auf **Benachrichtigungen**, um die verfügbaren Benachrichtigungen anzuzeigen.
 
-![Publisher Notifications][api-management-publisher-notifications]
+    ![Herausgeberbenachrichtigungen][api-management-publisher-notifications]
 
-Die folgenden Ereignisse können für Benachrichtigungen konfiguriert werden.
+    Die folgenden Ereignisse können für Benachrichtigungen konfiguriert werden.
 
-* **Abonnementanfragen (mit ausstehender Genehmigung)** - Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen über Abonnementanfragen für API-Anfragen mit ausstehender Genehmigung.
-* **Neue Abonnements** - Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen über neue API-Produktabonnements.
-* **Anwendungsgalerie-Anfragen** - Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen, wenn neue Anwendungen in die Anwendungsgalerie übermittelt werden.
-* **BCC** - Die angegebenen E-Mail-Empfänger und Benutzer erhalten BCC-Kopien aller E-Mails, die an Entwickler verschickt werden.
-* **Neues Problem oder Kommentar** - Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen, wenn neue Probleme oder Kommentare im Entwicklerportal erstellt werden.
-* **Kontoschließung** - Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen, wenn Konten geschlossen werden.
-* **Kurz vor Abonnement-Kontingent** - Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen, wenn sich die Abonnementnutzung dem Nutzungskontingent annähert.
+    * **Abonnementanfragen (mit ausstehender Genehmigung)**: Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen über Abonnementanfragen für API-Anfragen mit ausstehender Genehmigung.
+    * **Neue Abonnements**: Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen über neue API-Produktabonnements.
+    * **Anwendungsgalerie-Anfragen**: Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen, wenn neue Anwendungen in die Anwendungsgalerie übermittelt werden.
+    * **BCC**: Die angegebenen E-Mail-Empfänger und Benutzer erhalten BCC-Kopien aller E-Mails, die an Entwickler verschickt werden.
+    * **Neues Problem oder Kommentar**: Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen, wenn neue Probleme oder Kommentare im Entwicklerportal erstellt werden.
+    * **Kontoschließung**: Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen, wenn Konten geschlossen werden.
+    * **Kurz vor Abonnement-Kontingent**: Die angegebenen E-Mail-Empfänger und Benutzer erhalten E-Mail-Benachrichtigungen, wenn sich die Abonnementnutzung dem Nutzungskontingent annähert.
 
-Für jedes Ereignis können Sie bestimmte E-Mail-Empfänger in das Textfeld E-Mail-Adresse eingeben oder Benutzer aus einer Liste auswählen.
+    Für jedes Ereignis können Sie bestimmte E-Mail-Empfänger in das Textfeld E-Mail-Adresse eingeben oder Benutzer aus einer Liste auswählen.
 
-Geben Sie die E-Mail-Adressen einfach in das Textfeld ein, um die zu benachrichtigenden E-Mail-Adressen zu konfigurieren. Trennen Sie mehrere E-Mail-Adressen mit Kommas.
+3. Geben Sie die E-Mail-Adressen einfach in das Textfeld ein, um die zu benachrichtigenden E-Mail-Adressen zu konfigurieren. Trennen Sie mehrere E-Mail-Adressen mit Kommas.
 
-![Benachrichtigungsempfänger][api-management-email-addresses]
+    ![Benachrichtigungsempfänger][api-management-email-addresses]
+4. Klicken Sie auf **Hinzufügen**.
 
-Um die zu benachrichtigenden Benutzer zu konfigurieren, klicken Sie auf **Empfänger hinzufügen**, markieren Sie die Kontrollkästchen neben den entsprechenden Benutzern, und klicken Sie auf **OK**.
-
-> [!NOTE] 
-> Nur Administratoren werden in der Liste angezeigt.
-
-
-Klicken Sie nach der Konfiguration der Benachrichtigungsempfänger auf **Speichern** , um die Änderungen zu übernehmen.
-
-> [!NOTE] 
-> Wenn Sie die Registerkarte **Publisher Notifications** verlassen, warnt Sie das Herausgeberportal über nicht gespeicherte Änderungen.
-
-
-## <a name="email-templates"></a>Konfigurieren von E-Mail-Vorlagen
-API Management enthält E-Mail-Vorlagen für die E-Mail-Nachrichten, die im Rahmen von Verwaltung und Nutzung des Diensts verschickt werden. Die folgenden E-Mail-Vorlagen werden angeboten.
+## <a name="email-templates"> </a>Konfigurieren von Benachrichtigungsvorlagen
+API Management enthält Benachrichtigungsvorlagen für die E-Mail-Nachrichten, die im Rahmen von Verwaltung und Nutzung des Diensts versendet werden. Die folgenden E-Mail-Vorlagen werden angeboten.
 
 * Übermittlung in Anwendungsgalerie genehmigt
 * Entwickler-Abschiedsbrief
@@ -78,13 +66,9 @@ API Management enthält E-Mail-Vorlagen für die E-Mail-Nachrichten, die im Rahm
 
 Diese Vorlagen können nach Belieben angepasst werden.
 
-Klicken Sie zum Anzeigen und Konfigurieren der E-Mail-Vorlagen für Ihre API Management-Instanz im Menü **API Management** auf der linken Seite auf **Benachrichtigungen**, und wählen Sie die Registerkarte **E-Mail-Vorlagen**.
+Um die E-Mail-Vorlagen für Ihre API Management-Instanz anzuzeigen und zu konfigurieren, klicken Sie auf **Benachrichtigungsvorlagen**.
 
 ![E-Mail-Vorlagen][api-management-email-templates]
-
-Wählen Sie eine Vorlage aus der **Vorlagen** -Dropdownliste aus, um diese anzuzeigen oder zu bearbeiten.
-
-![E-Mail-Vorlagenliste][api-management-email-templates-list]
 
 Jede E-Mail-Vorlage enthält einen Betreff im Nur-Text-Format und einen Text im HTML-Format. Jedes dieser Elemente kann nach Belieben angepasst werden.
 
@@ -92,12 +76,10 @@ Jede E-Mail-Vorlage enthält einen Betreff im Nur-Text-Format und einen Text im 
 
 Die **Parameter** aus der Liste können in den Betreff oder den Text eingefügt werden und werden beim Versand der E-Mail durch den entsprechenden Wert ersetzt. Um einen Parameter einzufügen, platzieren Sie den Cursor an die gewünschte Stelle, und klicken Sie auf den Pfeil links neben dem Parameternamen.
 
-Klicken Sie auf **Vorschau** oder auf **Test senden**, um eine Vorschau der E-Mail zu sehen oder eine Test-E-Mail zu verschicken.
-
 > [!NOTE] 
 > Die Parameter in der Vorschau und beim Testversand werden nicht durch tatsächliche Werte ersetzt.
 
-Klicken Sie auf **Speichern**, um die Änderungen an der E-Mail-Vorlage zu speichern, oder auf **Abbrechen**, um die Änderungen zu verwerfen.
+Klicken Sie auf **Speichern**, um die Änderungen an der E-Mail-Vorlage zu speichern, oder auf **Verwerfen**, um die Änderungen zu verwerfen.
  
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png

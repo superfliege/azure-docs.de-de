@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: larryfr
-ms.openlocfilehash: 1ea20eceb28fead003c7279632b1e75ae1fd3553
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: be6ed6d4c0c3a5fa55166b84b128881d434c4ab2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="apache-kafka-streams-api"></a>Apache Kafka Streams-API
 
@@ -100,6 +100,12 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
     * Starten Sie einen Producer, der in das Thema `test` schreibt.
     * Starten Sie einen Consumer, sodass Sie die in das Thema `wordcounts` geschriebene Ausgabe anzeigen können.
 
+    > [!NOTE]
+    > Sie müssen sicherstellen, dass die Eigenschaft `auto.create.topics.enable` in der Kafka-Broker-Konfigurationsdatei auf `true` gesetzt ist. Diese Eigenschaft kann in der erweiterten Kafka-Broker-Konfigurationsdatei mithilfe der Ambari-Webbenutzeroberfläche angezeigt und geändert werden. Andernfalls müssen Sie das Zwischenthema `RekeyedIntermediateTopic` manuell erstellen, bevor Sie dieses Beispiel mit dem folgenden Befehl ausführen:
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic RekeyedIntermediateTopic  --zookeeper $KAFKAZKHOSTS
+    ```
+    
     Sie könnten diese drei Vorgänge in drei verschiedenen SSH-Sitzungen ausführen. Dann müssten Sie aber für jeden Vorgang `$KAFKABROKERS` und `$KAFKAZKHOSTS` festlegen, indem Sie in jeder SSH-Sitzung Schritt 4 dieses Abschnitts ausführen. Eine einfachere Lösung ist das Hilfsprogramm `tmux`, das die aktuelle SSH-Anzeige in mehrere Abschnitte unterteilen kann. Um Stream, Producer und Consumer mithilfe von `tmux` zu starten, führen Sie folgenden Befehl aus:
 
     ```bash

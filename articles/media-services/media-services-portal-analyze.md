@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 22032aef0cc8b7b015503043028873e70c21ee85
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fee9f8d2204869cbe5cac7f446e8011305e92bfa
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Medienanalyse mithilfe des Azure-Portals
 > [!NOTE]
-> Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
+> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
 ## <a name="overview"></a>Übersicht
 Azure Media Services Media Analytics ist eine Sammlung von Sprach- und Anzeigekomponenten (auf Unternehmensebene zu Compliance, Sicherheit und globaler Reichweite). Daraus können Organisationen und Unternehmen nutzbringende Einblicke in ihre Videodateien erhalten. Eine ausführlichere Übersicht über Azure Media Services Analytics finden Sie in [diesem Thema](media-services-analytics-overview.md). 
 
-In diesem Thema wird beschrieben, wie Sie Medien mit Media Analytics-Medienprozessoren (MPs) über das Azure-Portal verarbeiten. Mit Media Analytics-MPs werden MP4- oder JSON-Dateien erzeugt. Wenn ein Medienprozessor eine MP4-Datei erstellt hat, können Sie die Datei progressiv herunterladen. Wenn ein Medienprozessor eine JSON-Datei erstellt hat, können Sie die Datei aus dem Azure-Blobspeicher herunterladen. 
+In diesem Thema wird beschrieben, wie Sie Medien mit Media Analytics-Medienprozessoren (MPs) über das Azure-Portal verarbeiten. Mit Media Analytics-MPs werden MP4- oder JSON-Dateien erzeugt. Wenn ein Medienprozessor eine MP4-Datei erstellt hat, können Sie die Datei progressiv herunterladen. Wenn ein Medienprozessor eine JSON-Datei erstellt hat, können Sie die Datei aus Azure Blob Storage herunterladen. 
 
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>Auswählen eines zu analysierenden Assets
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
 2. Wählen Sie im Fenster **Einstellungen** die Option **Assets** aus.  
-   .
+   zu erstellen und zu verwalten.
     ![Analysieren von Videos](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
 3. Wählen Sie das Asset aus, das Sie analysieren möchten, und klicken Sie auf die Schaltfläche **Analysieren**.
    
@@ -135,6 +135,17 @@ Ein Anzeigename, über den Sie den Auftrag identifizieren können. In [diesem Ar
 ### <a name="output-file"></a>Ausgabedatei
 Ein Anzeigename, über den Sie den ausgegebenen Inhalt identifizieren können. 
 
+## <a name="azure-media-content-moderator"></a>Azure Media Content Moderator
+Dieser Prozessor hilft Ihnen, potenzielle jugendgefährdende und rassistische Inhalte in Videos zu erkennen. Der Prozessor erkennt automatisch Einstellungen und Keyframes im Video. Er wertet Keyframes auf potenzielle jugendgefährdende oder rassistische Inhalte aus und schlägt basierend auf Standardschwellenwerten Überprüfungen vor. Ausführliche Informationen und Beispiele finden Sie unter [Verwenden von Azure Media Content Moderator zum Erkennen möglicher jugendgefährdender und rassistischer Inhalte](media-services-content-moderation.md)
+
+![Moderieren von Videos](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
+
+### <a name="version"></a>Version 
+Verwenden Sie „2.0“.
+
+### <a name="mode"></a>Mode
+Die Version 2.0 ignoriert die `Mode`-Einstellung.
+
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die Media Services-Lernpfade an.
 
@@ -142,4 +153,3 @@ Sehen Sie sich die Media Services-Lernpfade an.
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

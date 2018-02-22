@@ -11,26 +11,30 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 02/01/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09aa98a35fa8286828a99c49a33a80d5938afe3a
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: d41df9b9d9bd518bb507b0fcde001f35c11e6264
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA (große Instanzen) in Azure 
+# <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) 
+
+>[!IMPORTANT]
+>Diese Dokumentation ist kein Ersatz für die Verwaltungsdokumentation zu SAP HANA oder für SAP Notes. Es wird erwartet, dass die Leser über ein gutes Verständnis und Fachkenntnisse der SAP HANA-Verwaltung und des SAP HANA-Betriebs verfügen. Dies gilt insbesondere für die Themen Sicherung, Wiederherstellung, Hochverfügbarkeit und Notfallwiederherstellung. In dieser Dokumentation werden Screenshots von SAP HANA Studio verwendet. Inhalt, Struktur und grundlegender Aufbau der Bildschirme in den SAP-Verwaltungstools sowie auch die Tools selbst können von Release zu Release von SAP HANA abweichen. Aus diesem Grund sollten Sie unbedingt alle Schritte und Verfahren in Ihrer Umgebung und mit Ihren HANA-Versionen und -Releases ausführen. Einige in dieser Dokumentation beschriebene Vorgänge sind für ein besseres allgemeines Verständnis vereinfacht dargestellt und nicht darauf ausgelegt, als detaillierte Schritte für schließlich vorliegende Betriebshandbücher verwendet zu werden. Wenn Sie Betriebshandbücher für Ihre speziellen Konfigurationen erstellen möchten, müssen Sie Ihre Verfahren testen und umsetzen und in Bezug auf Ihre Konfigurationen dokumentieren. 
+
 
 Hochverfügbarkeit und Notfallwiederherstellung sind wichtige Aspekte bei der Ausführung Ihrer unternehmenskritischen Server mit SAP HANA in Azure (große Instanzen). Es ist wichtig, dass Sie mit SAP, Ihrem Systemintegrator oder Microsoft zusammenarbeiten, um die richtige Strategie für Hochverfügbarkeit und die Notfallwiederherstellung zu implementieren. Außerdem ist es wichtig, die Werte für die RPO (Recovery Point Objective) und die RTO (Recovery Time Objective) zu berücksichtigen, die für Ihre Umgebung gelten.
 
 Microsoft unterstützt mit HANA (große Instanzen) standardmäßig einige SAP HANA-Methoden für Hochverfügbarkeit. Diese Funktionen umfassen:
 
-- **Speicherreplikation**: Die Fähigkeit des Speichersystems, alle Daten an einen anderen Stapel für HANA (große Instanzen) in einer anderen Azure-Region zu replizieren. SAP HANA wird unabhängig von dieser Methode betrieben.
-- **HANA-Systemreplikation**: Die Replikation aller Daten in SAP HANA in ein anderes SAP HANA-System. RTO (Recovery Time Objective) wird durch die Datenreplikation in regelmäßigen Abständen verringert. SAP HANA unterstützt den asynchronen, synchronen In-Memory- und den synchronen Modus. Der synchrone Modus wird nur für SAP HANA-Systeme innerhalb des gleichen Rechenzentrums oder mit einer Entfernung von weniger als 100 km zueinander empfohlen. Beim aktuellen Entwurf mit HANA-„Stapeln“ mit großen Instanzen kann die HANA-Systemreplikation nur für hohe Verfügbarkeit verwendet werden. Die HANA-Systemreplikation muss gegenwärtig mit einer Drittanbieter-Reverseproxykomponente für Notfallwiederherstellungskonfigurationen mit einer anderen Azure-Region als Ziel verwendet werden. 
+- **Speicherreplikation**: Die Fähigkeit des Speichersystems, alle Daten an einen anderen Stapel für HANA (große Instanzen) in einer anderen Azure-Region zu replizieren. SAP HANA wird unabhängig von dieser Methode betrieben. Diese Funktionen bilden den Standardmechanismus für die Notfallwiederherstellung großer HANA-Instanzen.
+- **HANA-Systemreplikation:** die [Replikation aller Daten in SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) in ein anderes SAP HANA-System. RTO (Recovery Time Objective) wird durch die Datenreplikation in regelmäßigen Abständen verringert. SAP HANA unterstützt den asynchronen, synchronen In-Memory- und den synchronen Modus. Der synchrone Modus wird nur für SAP HANA-Systeme innerhalb des gleichen Rechenzentrums oder mit einer Entfernung von weniger als 100 km zueinander empfohlen. Beim aktuellen Entwurf mit HANA-Stapeln („Stamps“) für große Instanzen kann die HANA-Systemreplikation nur für Hochverfügbarkeit in einer Region verwendet werden. Für die HANA-Systemreplikation für Notfallwiederherstellungskonfigurationen mit einer anderen Azure-Region als Ziel ist gegenwärtig eine Reverseproxy- oder Weiterleitungskomponente eines Drittanbieters erforderlich. 
 - **Automatisches Hostfailover**: Eine lokale Wiederherstellungslösung für SAP HANA, die alternativ zur HANA-Systemreplikation verwendet werden kann. Wenn der Masterknoten nicht mehr verfügbar ist, konfigurieren Sie mindestens einen SAP HANA-Standbyknoten im Modus „Horizontal hochskalieren“, und SAP HANA führt automatisch ein Failover auf einen Standbyknoten durch.
 
-SAP HANA in Azure (große Instanzen) wird in zwei Azure-Regionen in drei verschiedenen geopolitischen Regionen (USA, Australien und Europa) angeboten. Zwei unterschiedliche Regionen, die Stapel für HANA (große Instanzen) hosten, sind mit separaten dedizierten Netzwerkverbindungen verbunden, die zum Replizieren von Speichermomentaufnahmen verwendet werden, um Notfallwiederherstellungsmethoden bereitzustellen. Die Replikation ist standardmäßig nicht eingerichtet. Sie wird für Kunden eingerichtet, die die Notfallwiederherstellungsfunktion angefordert haben. Die Speicherreplikation setzt die Verwendung von Speichermomentaufnahmen für HANA (große Instanzen) voraus. Darüber hinaus ist es nicht möglich, eine Azure-Region in einer anderen geopolitischen Region als Notfallwiederherstellungsregion auszuwählen. 
+SAP HANA in Azure (große Instanzen) wird in zwei Azure-Regionen in drei verschiedenen geopolitischen Gebieten (USA, Australien und Europa) angeboten. Das geopolitische Gebiet Japan wird zudem demnächst verfügbar gemacht. Zwei unterschiedliche Regionen in einem geopolitischen Gebiet, die Stapel für große HANA-Instanzen hosten, sind mit separaten dedizierten Netzwerkverbindungen verbunden, die zum Replizieren von Speichermomentaufnahmen für die Bereitstellung von Notfallwiederherstellungsmethoden verwendet werden. Die Replikation ist standardmäßig nicht eingerichtet. Sie wird für Kunden eingerichtet, die die Notfallwiederherstellungsfunktion angefordert haben. Die Speicherreplikation setzt die Verwendung von Speichermomentaufnahmen für HANA (große Instanzen) voraus. Darüber hinaus ist es nicht möglich, eine Azure-Region in einer anderen geopolitischen Region als Notfallwiederherstellungsregion auszuwählen. 
 
 Die folgende Tabelle gibt Aufschluss über die derzeit unterstützten Hochverfügbarkeits- und Notfallwiederherstellungsmethoden sowie über mögliche Kombinationen:
 
@@ -40,7 +44,10 @@ Die folgende Tabelle gibt Aufschluss über die derzeit unterstützten Hochverfü
 | Automatisches Hostfailover: N + M<br /> einschließlich 1 + 1 | Möglich durch Übernahme der aktiven Rolle durch den Standbyknoten.<br /> Steuerung des Rollenwechsels durch HANA. | Dedizierte Notfallwiederherstellungseinrichtung.<br /> Mehrzweck-Notfallwiederherstellungseinrichtung.<br /> Synchronisierung der Notfallwiederherstellung mithilfe der Speicherreplikation. | An alle Knoten (N + M) angefügte HANA-Volumesätze.<br /> Standort für die Notfallwiederherstellung muss über gleiche Anzahl von Knoten verfügen. |
 | HANA-Systemreplikation | Möglich mit Primär-/Sekundäreinrichtung.<br /> Bei einem Failover übernimmt das sekundäre Replikat die Rolle des primären Replikats.<br /> Failoversteuerung durch HANA-Systemreplikation und Betriebssystem. | Dedizierte Notfallwiederherstellungseinrichtung.<br /> Mehrzweck-Notfallwiederherstellungseinrichtung.<br /> Synchronisierung der Notfallwiederherstellung mithilfe der Speicherreplikation.<br /> Die Notfallwiederherstellung mithilfe der HANA-Systemreplikation ist noch nicht ohne Drittanbieterkomponenten möglich. | Separater Satz angefügter Datenträgervolumes für die einzelnen Knoten.<br /> Nur Datenträgervolumes des sekundären Replikats am Produktionsstandort werden am Standort für die Notfallwiederherstellung repliziert.<br /> Am Standort für die Notfallwiederherstellung wird ein einzelner Volumesatz benötigt. | 
 
-Eine dedizierte Notfallwiederherstellungseinrichtung ist eine Einrichtung, bei der die große HANA-Instanzeinheit am Standort für die Notfallwiederherstellung nicht zum Ausführen einer anderen Workload oder eines produktionsfremden Systems verwendet wird. Die Einheit ist passiv und wird nur dann bereitgestellt, wenn eine Notfallwiederherstellung ausgeführt wird. Für viele Kunden stellt dies jedoch nicht die bevorzugte Option dar.
+Eine dedizierte Notfallwiederherstellungseinrichtung ist eine Einrichtung, bei der die große HANA-Instanzeinheit am Standort für die Notfallwiederherstellung nicht zum Ausführen einer anderen Workload oder eines produktionsfremden Systems verwendet wird. Die Einheit ist passiv und wird nur dann bereitgestellt, wenn eine Notfallwiederherstellung ausgeführt wird. Für viele Kunden stellt dieses Setup jedoch nicht die bevorzugte Option dar.
+
+> [!NOTE]
+> [MCOD-Bereitstellungen von SAP HANA](https://launchpad.support.sap.com/#/notes/1681092) (mehrere HANA-Instanzen an einer Einheit) als Grundszenarien funktionieren mit den in der Tabelle aufgeführten Methoden für Hochverfügbarkeit und Notfallwiederherstellung. Eine Ausnahme bildet die Verwendung der HANA-Systemreplikation mit einem automatischen Pacemaker-Failovercluster. In einem solchen Fall wird nur eine HANA-Instanz pro Einheit unterstützt. Im Gegensatz dazu funktionieren in [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000)-Bereitstellungen nur Hochverfügbarkeits- und Notfallwiederherstellungsmethoden ohne Speicher, wenn mehrere Mandanten bereitgestellt werden. Bei einem einzigen bereitgestellten Mandanten sind alle genannten Methoden gültig.  
 
 Eine Mehrzweck-Notfallwiederherstellungseinrichtung ist eine Einrichtung, bei der die große HANA-Instanzeinheit am Standort für die Notfallwiederherstellung eine produktionsfremde Workload ausführt. Bei einem Notfall fahren Sie das produktionsfremde System herunter, binden die speicherreplizierten (zusätzlichen) Volumesätze ein und starten dann die HANA-Produktionsinstanz. Bei den meisten Kunden, die die Notfallwiederherstellung von HANA (große Instanzen) nutzen, kommt diese Konfiguration zum Einsatz. 
 
@@ -60,7 +67,7 @@ Um die Notfallwiederherstellung von HANA (große Instanzen) nutzen zu können, m
 
 Als zweite Maßnahme können Sie alle virtuellen Azure-Netzwerke, die in einer der Regionen mit SAP HANA in Azure (große Instanzen) verbunden sind, mit einer ExpressRoute-Verbindung verbinden, die große HANA-Instanzen in der anderen Region verbindet. Mit dieser *Querverbindung* können Dienste, die in einem virtuellen Azure-Netzwerk in Region 1 ausgeführt werden, eine Verbindung mit Einheiten von HANA (große Instanzen) in Region 2 herstellen (und umgekehrt). Dies ist eine Maßnahme für den Fall, in dem nur einer der MSEE-Standorte, der mit Ihrem lokalen Standort über Azure verbunden ist, ausfällt.
 
-Die folgende Grafik veranschaulicht eine robuste Konfiguration für die Notfallwiederherstellung:
+Die folgende Grafik veranschaulicht eine robuste Konfiguration für Notfallwiederherstellungsfälle:
 
 ![Optimale Konfiguration für die Notfallwiederherstellung](./media/hana-overview-high-availability-disaster-recovery/image1-optimal-configuration.png)
 
@@ -70,8 +77,9 @@ Die folgende Grafik veranschaulicht eine robuste Konfiguration für die Notfallw
 
 Für eine Notfallwiederherstellungseinrichtung mit HANA (große Instanzen) müssen zusätzlich folgende Anforderungen erfüllt sein:
 
-- Es ist erforderlich, SKUs vom Typ „SAP HANA für Azure (große Instanzen)“ mit derselben Größe wie die Produktions-SKUs anzufordern und in der Region für die Notfallwiederherstellung bereitzustellen. In den gegenwärtigen Kundenbereitstellungen werden diese Instanzen zum Ausführen produktionsfremder HANA-Instanzen verwendet. Wir bezeichnen sie als *Mehrzweck-Notfallwiederherstellungseinrichtungen*.   
+- Es ist erforderlich, SKUs vom Typ „SAP HANA für Azure (große Instanzen)“ mit derselben Größe wie die Produktions-SKUs anzufordern und in der Region für die Notfallwiederherstellung bereitzustellen. In den gegenwärtigen Kundenbereitstellungen werden diese Instanzen zum Ausführen produktionsfremder HANA-Instanzen verwendet. Diese Konfigurationen werden als *Mehrzweck-Notfallwiederherstellungseinrichtungen* bezeichnet.   
 - Für jede SKU vom Typ „SAP HANA in Azure (große Instanzen)“, die Sie am Standort für die Notfallwiederherstellung wiederherstellen möchten, muss zusätzlicher Speicher am Standort für die Notfallwiederherstellung angefordert werden. Für die Zuordnung von Speichervolumes kann zusätzlicher Speicher erworben werden. Sie können Volumes zuordnen, die als Ziel für die Speicherreplikation aus Ihrer Azure-Produktionsregion in der Azure-Notfallwiederherstellungsregion fungieren.
+
  
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
@@ -112,9 +120,9 @@ Die zugrunde liegende Speicherinfrastruktur von SAP HANA in Azure (große Instan
 
 Sie können Speichermomentaufnahmen für drei verschiedene Volumeklassen durchführen:
 
-- Eine kombinierte Momentaufnahme für „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“). Diese Momentaufnahme erfordert die Erstellung einer SAP HANA-Momentaufnahme als Vorbereitung für die Speichermomentaufnahme. Die SAP HANA-Momentaufnahme stellt sicher, dass die Datenbank aus Speichersicht in einem konsistenten Zustand verbleibt.
+- Eine kombinierte Momentaufnahme für „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“). Diese Momentaufnahme erfordert die Erstellung einer SAP HANA-Momentaufnahme als Vorbereitung für die Speichermomentaufnahme. Die SAP HANA-Momentaufnahme stellt sicher, dass die Datenbank aus Speichersicht in einem konsistenten Zustand verbleibt und dass für die Wiederherstellung ein Punkt vorhanden ist, an dem sie beginnen kann.
 - Eine separate Momentaufnahme für „/hana/logbackups“
-- Eine Betriebssystempartition (nur für Typ I von HANA (große Instanzen))
+- Eine Betriebssystempartition
 
 
 ### <a name="storage-snapshot-considerations"></a>Aspekte von Speichermomentaufnahmen
@@ -134,12 +142,21 @@ SAP HANA in Azure (große Instanzen) bietet standardmäßig feste Volumegrößen
 
 Die folgenden Abschnitte enthalten Informationen zum Erstellen dieser Momentaufnahmen sowie allgemeine Empfehlungen:
 
-- Obwohl die Hardware 255 Momentaufnahmen pro Volume unterstützen kann, wird dringend empfohlen, deutlich unter diesem Wert zu bleiben.
+- Obwohl die Hardware 255 Snapshots pro Volume unterstützen kann, wird dringend empfohlen, unter diesem Wert zu bleiben.
 - Überwachen und verfolgen Sie den freien Speicherplatz, bevor Sie Speichermomentaufnahmen erstellen.
 - Verringern Sie die Anzahl von Speichermomentaufnahmen basierend auf dem freien Speicherplatz. Sie können die Anzahl der gespeicherten Momentaufnahmen verringern oder die Volumes erweitern. Sie können zusätzlichen Speicher in 1-TB-Schritten anfordern.
 - Deaktivieren Sie Speichermomentaufnahmen für das Volume „/hana/data“ bei Aktivitäten wie dem Verschieben von Daten in SAP HANA mit SAP-Plattformmigrationstools (R3load) oder dem Wiederherstellen von SAP HANA-Datenbanken aus Sicherungen. 
 - Bei größeren Neuorganisationen von SAP HANA-Tabellen sollten Speichermomentaufnahmen nach Möglichkeit vermieden werden.
 - Speichermomentaufnahmen sind eine Voraussetzung, um von den Notfallwiederherstellungsfunktionen von SAP HANA in Azure (große Instanzen) profitieren zu können.
+
+### <a name="pre-requisites-for-leveraging-self-service-storage-snapshots"></a>Voraussetzungen für die Nutzung von Self-Service-Speichermomentaufnahmen
+
+Um zu gewährleisten, dass das Momentaufnahmeskript ausgeführt werden kann, stellen Sie sicher, dass Perl im Linux-Betriebssystem auf dem Server mit HANA (große Instanzen) installiert ist. Perl ist auf Ihrer HANA-Einheit (große Instanzen) vorinstalliert. Verwenden Sie folgenden Befehl, um die Perl-Version zu überprüfen:
+
+`perl -v`
+
+![Der öffentliche Schlüssel wird durch Ausführen dieses Befehls kopiert.](./media/hana-overview-high-availability-disaster-recovery/perl_screen.png)
+
 
 ### <a name="setting-up-storage-snapshots"></a>Einrichten von Speichermomentaufnahmen
 
@@ -152,9 +169,17 @@ Zum Einrichten von Speichermomentaufnahmen mit HANA (große Instanzen) sind folg
 6. Kopieren Sie die Skripts und die Konfigurationsdatei von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) im Speicherort **hdbsql** der SAP HANA-Installation.
 7. Ändern Sie bei Bedarf die Datei „HANABackupDetails.txt“ gemäß den jeweiligen Kundenvorgaben.
 
+### <a name="consideration-for-mcod-scenarios"></a>Überlegung für MCOD-Szenarien
+Wenn Sie ein Betriebssystem mit einem [MCOD-Szenario](https://launchpad.support.sap.com/#/notes/1681092) mit mehreren SAP HANA-Instanzen auf einer HANA-Einheit für große Instanzen ausführen, verfügen Sie über separat bereitgestellte Speichervolumes für jede der unterschiedlichen SAP HANA-Instanzen. In der aktuellen Version der Automatisierung für Self-Service-Momentaufnahmen können nicht für jede SID separate Momentaufnahmen initiiert werden. Die bereitgestellten Funktionen überprüfen die registrierten SAP HANA-Instanzen des Servers in der Konfigurationsdatei (siehe weiter unten) und führen eine gleichzeitige Momentaufnahme der Volumes aller für die Einheit registrierten Instanzen aus.
+ 
+
 ### <a name="step-1-install-the-sap-hana-hdb-client"></a>Schritt 1: Installieren des SAP HANA HDB-Clients
 
-Das für SAP HANA in Azure (große Instanzen) installierte Linux-Betriebssystem enthält die Ordner und Skripts, die benötigt werden, um die SAP HANA-Speichermomentaufnahmen für die Sicherung und Notfallwiederherstellung auszuführen. Überprüfen Sie, ob auf [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) neuere Versionen zur Verfügung stehen. Die neueste Skriptversion ist 2.1.
+Das für SAP HANA in Azure (große Instanzen) installierte Linux-Betriebssystem enthält die Ordner und Skripts, die benötigt werden, um die SAP HANA-Speichermomentaufnahmen für die Sicherung und Notfallwiederherstellung auszuführen. Überprüfen Sie, ob auf [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) neuere Versionen zur Verfügung stehen. Die neueste Skriptversion ist 3.x. Andere Skripts weisen möglicherweise abweichende Nebenversionen innerhalb derselben Hauptversion auf.
+
+>[!IMPORTANT]
+>Beim Wechsel von Version 2.1 der Skripts auf Version 3.0 wurden die Struktur der Konfigurationsdatei und ein Teil der Skriptsyntax geändert. Weitere Informationen finden Sie in den Erläuterungen der entsprechenden Abschnitte. 
+
 Sie müssen allerdings bei der Installation von SAP HANA den SAP HANA HDB-Client für die Einheiten von HANA (große Instanzen) installieren. (Microsoft installiert weder den HDB-Client noch SAP HANA.)
 
 ### <a name="step-2-change-the-etcsshsshconfig"></a>Schritt 2: Ändern von „/etc/ssh/ssh\_config“
@@ -207,9 +232,11 @@ Wenden Sie sich als Nächstes an das Dienstverwaltungsteam für SAP HANA in Azur
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>Schritt 4: Erstellen eines SAP HANA-Benutzerkontos
 
-Um die Erstellung von SAP HANA-Momentaufnahmen zu initiieren, müssen Sie in SAP HANA ein Benutzerkonto erstellen, das die Speichermomentaufnahmeskripts verwenden können. Erstellen Sie hierzu in SAP HANA Studio ein SAP HANA-Benutzerkonto. Dieses Konto benötigt die folgenden Berechtigungen: **Backup Admin** und **Catalog Read**. In diesem Beispiel lautet der Benutzername **SCADMIN**. Beim Namen des in HANA Studio erstellten Benutzerkontos wird die Groß-/Kleinschreibung beachtet. Stellen Sie sicher, dass für die Aufforderung des Benutzers zum Ändern des Kennworts bei der nächsten Anmeldung **Nein** ausgewählt ist.
+Um die Erstellung von SAP HANA-Momentaufnahmen zu initiieren, müssen Sie in SAP HANA ein Benutzerkonto erstellen, das die Speichermomentaufnahmeskripts verwenden können. Erstellen Sie hierzu in SAP HANA Studio ein SAP HANA-Benutzerkonto. Der Benutzer muss unter der SYSTEMDB erstellt werden, NICHT unter der SID-Datenbank. Dieses Konto benötigt die folgenden Berechtigungen: **Backup Admin** und **Catalog Read**. In diesem Beispiel lautet der Benutzername **SCADMIN**. Beim Namen des in HANA Studio erstellten Benutzerkontos wird die Groß-/Kleinschreibung beachtet. Stellen Sie sicher, dass für die Aufforderung des Benutzers zum Ändern des Kennworts bei der nächsten Anmeldung **Nein** ausgewählt ist.
 
 ![Erstellen eines Benutzers in HANA Studio](./media/hana-overview-high-availability-disaster-recovery/image3-creating-user.png)
+
+Bei MCOD-Bereitstellungen mit mehreren SAP HANA-Instanzen in einer Einheit muss dieser Schritt für jede SAP HANA-Instanz wiederholt werden.
 
 ### <a name="step-5-authorize-the-sap-hana-user-account"></a>Schritt 5: Autorisieren des SAP HANA-Benutzerkontos
 
@@ -234,6 +261,8 @@ Im folgenden Beispiel lautet der Benutzer **SCADMIN01**, der Hostname **lhanad01
 ```
 hdbuserstore set SCADMIN01 lhanad01:30115 <backup username> <password>
 ```
+Wenn Sie eine HANA-MCOD-Bereitstellung mit mehreren SAP HANA-Instanzen in einer Einheit verwenden, muss der Schritt für jede SAP HANA-Instanz und den zugeordneten Sicherungsbenutzer in der Einheit wiederholt werden.
+
 Bei einer SAP HANA-Konfiguration für horizontales Hochskalieren müssen sämtliche Skripts über einen einzelnen Server verwaltet werden. In diesem Beispiel muss der SAP HANA-Schlüssel **SCADMIN01** für jeden Host so angepasst werden, dass widergespiegelt wird, welcher Host zum Schlüssel passt. Passen Sie das SAP HANA-Sicherungskonto mit der Instanznummer der HANA-Datenbank an. Der Schlüssel benötigt Administratorrechte auf dem Host, dem er zugewiesen ist. Der Sicherungsbenutzer für Konfigurationen für horizontales Hochskalieren benötigt Zugriffsrechte für alle SAP HANA-Instanzen. Wenn die drei Knoten für horizontales Hochskalieren **lhanad01**, **lhanad02** und **lhanad03** heißen, ergibt sich folgende Befehlsfolge:
 
 ```
@@ -252,14 +281,25 @@ azure_hana_snapshot_details.pl
 azure_hana_snapshot_delete.pl 
 testHANAConnection.pl 
 testStorageSnapshotConnection.pl 
-removeTestStorageSnapshot.pl 
+removeTestStorageSnapshot.pl
+azure_hana_dr_failover.pl
+azure_hana_dr_failover.pl 
 HANABackupCustomerDetails.txt 
 ``` 
 
+Umgang mit den Perl-Skripts: 
 
-Zweck der einzelnen Skripts und Dateien ist Folgender:
+- Ändern Sie niemals die Skripts, sofern Sie nicht durch Microsoft Operations dazu angewiesen werden.
+- Wenn Sie dazu aufgefordert werden, das Skript oder eine Parameterdatei zu ändern, verwenden Sie immer Linux-Text-Editoren wie vi und nicht Windows-Editoren wie Editor. Bei Verwendung von Windows-Editoren kann das Dateiformat beschädigt werden.
+- Verwenden Sie immer die neuesten Skripts. Sie können die neueste Version von GitHub herunterladen.
+- Verwenden Sie dieselbe Version der Skripts für alle Aufgaben.
+- Testen Sie die Skripts, und machen Sie sich mit den erforderlichen Parametern und der Ausgabe der Skripts vertraut, bevor Sie sie direkt im Produktionssystem verwenden.
+- Ändern Sie nicht den Namen des Bereitstellungspunkts des von Microsoft Operations bereitgestellten Servers. In diesen Skripts wird für eine erfolgreiche Ausführung davon ausgegangen, dass diese Standardbereitstellungspunkte verfügbar sind.
 
-- **azure\_hana\_backup.pl**: Planen Sie das Skript mit Cron, damit Speichermomentaufnahmen entweder für HANA-Daten-/Protokoll-/Freigabevolumes, für das Volume „/hana/logbackups“ oder für das Betriebssystem (für Typ I-SKUs großer HANA-Instanzen) ausgeführt werden.
+
+Der Zweck der einzelnen Skripts und Dateien ist folgender:
+
+- **azure\_hana\_backup.pl:** Planen Sie das Skript mit cron, sodass Speichermomentaufnahmen der Daten-/Protokoll-/Freigabevolumes für HANA, des Volumes „/hana/logbackups“ oder des Betriebssystems ausgeführt werden.
 - **azure\_hana\_replication\_status.pl**: Dieses Skript stellt grundlegende Replikationsstatusdetails des Produktionsstandorts für den Notfallwiederherstellungsstandort bereit. Das Skript dient zur Überwachung, um sicherzustellen, dass die Replikation stattfindet, und um die Größe der replizierten Elemente anzuzeigen. Darüber hinaus liefert es Anweisungen für den Fall, dass eine Replikation zu lange dauert oder der Link ausgefallen ist.
 - **azure\_hana\_snapshot\_details.pl**: Dieses Skript liefert eine Liste mit grundlegenden Details zu allen Momentaufnahmen pro Volume, die in Ihrer Umgebung vorhanden sind. Das Skript kann auf dem primären Server oder in einer Servereinheit am Standort für die Notfallwiederherstellung ausgeführt werden. Das Skript enthält die folgenden Informationen, die nach den einzelnen Volumes mit Momentaufnahmen aufgeschlüsselt sind:
    * Größe der gesamten Momentaufnahmen in einem Volume
@@ -272,31 +312,36 @@ Zweck der einzelnen Skripts und Dateien ist Folgender:
 - **azure\_hana\_snapshot\_delete.pl**: Dieses Skript löscht eine Speichermomentaufnahme oder eine Gruppe von Momentaufnahmen. Sie können die SAP HANA-Sicherungs-ID in HANA Studio oder den Namen der Speichermomentaufnahme verwenden. Die Sicherungs-ID ist derzeit nur mit den Momentaufnahmen verknüpft, die für die HANA-Daten-/Protokoll-/Freigabevolumes erstellt werden. Ansonsten gilt: Wenn die Momentaufnahme-ID eingegeben wird, werden alle Momentaufnahmen gesucht, die der eingegebenen Momentaufnahme-ID entsprechen.  
 - **testHANAConnection.pl**: Dieses Skript testet die Verbindung mit der SAP HANA-Instanz und wird zum Einrichten der Speichermomentaufnahmen benötigt.
 - **testStorageSnapshotConnection.pl**: Dieses Skript hat zwei Aufgaben. Es stellt zum einen sicher, dass die Einheit von HANA (große Instanzen), die die Skripts ausführt, Zugriff auf den zugewiesenen virtuellen Speichercomputer und auf die Speichermomentaufnahmen-Schnittstelle Ihrer großen HANA-Instanzen hat. Zum anderen erstellt es eine temporäre Momentaufnahme der HANA-Instanz, die Sie testen. Dieses Skript muss für jede HANA-Instanz auf einem Server ausgeführt werden, um sicherzustellen, dass die Sicherungsskripts wie erwartet funktionieren.
-- **removeTestStorageSnapshot.pl**: Dieses Skript löscht die Testmomentaufnahme, die mit dem Skript **testStorageSnapshotConnection.pl** erstellt wurde. 
-- **HANABackupCustomerDetails.txt**: Bei dieser Datei handelt es sich um eine bearbeitbare Konfigurationsdatei, die Sie an Ihre SAP HANA-Konfiguration anpassen müssen.
+- **removeTestStorageSnapshot.pl**: Dieses Skript löscht die Testmomentaufnahme, die mit dem Skript **testStorageSnapshotConnection.pl** erstellt wurde.
+- **azure\_hana\_dr\_failover.pl:** Skript zum Initiieren eines Notfallwiederherstellungs-Failovers in eine andere Region. Das Skript muss für die HANA-Einheit für große Instanzen in der Notfallwiederherstellungsregion oder für die Einheit für das Failover ausgeführt werden. Dieses Skript beendet die Speicherreplikation von der primären Seite auf die sekundäre Seite, stellt die letzte Momentaufnahme auf den Notfallwiederherstellungsvolumes wieder her und stellt die Bereitstellungspunkte für die Notfallwiederherstellungsvolumes bereit.  
+- **azure\_hana\_test\_dr\_failover.pl:** Skript zum Ausführen eines Testfailovers auf den Notfallwiederherstellungs-Standort. Im Gegensatz zum Skript „azure_hana_dr_failover.pl“ wird bei dieser Ausführung die Speicherreplikation vom primären zum sekundären Replikat nicht unterbrochen. Stattdessen werden Klone der replizierten Speichervolumes auf der Notfallwiederherstellungsseite erstellt, und die Bereitstellungspunkte der geklonten Volumes werden bereitgestellt. 
+- **HANABackupCustomerDetails.txt**: Bei dieser Datei handelt es sich um eine bearbeitbare Konfigurationsdatei, die Sie an Ihre SAP HANA-Konfiguration anpassen müssen. Die Datei „HANABackupCustomerDetails.txt“ ist die Steuerungs- und Konfigurationsdatei für das Skript, das die Speichermomentaufnahmen erstellt. Passen Sie die Datei für Ihre Zwecke und Einrichtung an. Die Angaben für **Storage Backup Name** und **Storage IP Address** sollten Sie vom SAP HANA in Azure-Dienstverwaltungsteam erhalten haben, als Ihre Instanzen bereitgestellt wurden. Reihenfolge, Sortierung und Abstand der Variablen in dieser Datei dürfen nicht verändert werden. Andernfalls werden die Skripts nicht ordnungsgemäß ausgeführt. Darüber hinaus haben Sie vom Dienstverwaltungsteam für SAP HANA in Azure die IP-Adresse des Knotens für zentrales Hochskalieren oder die IP-Adresse des Masterknotens (bei horizontalem Hochskalieren) erhalten. Zudem ist Ihnen auch die Anzahl der HANA-Instanzen bekannt, die Sie während der Installation von SAP HANA erhalten haben. Nun müssen Sie einen Sicherungsnamen zur Konfigurationsdatei hinzufügen.
 
- 
-Die Datei „HANABackupCustomerDetails.txt“ ist die Steuerungs- und Konfigurationsdatei für das Skript, das die Speichermomentaufnahmen erstellt. Passen Sie die Datei für Ihre Zwecke und Einrichtung an. Die Angaben für **Storage Backup Name** und **Storage IP Address** sollten Sie vom SAP HANA in Azure-Dienstverwaltungsteam erhalten haben, als Ihre Instanzen bereitgestellt wurden. Reihenfolge, Sortierung und Abstand der Variablen in dieser Datei dürfen nicht verändert werden. Andernfalls werden die Skripts nicht ordnungsgemäß ausgeführt. Darüber hinaus haben Sie vom Dienstverwaltungsteam für SAP HANA in Azure die IP-Adresse des Knotens für zentrales Hochskalieren oder die IP-Adresse des Masterknotens (bei horizontalem Hochskalieren) erhalten. Zudem ist Ihnen auch die Anzahl der HANA-Instanzen bekannt, die Sie während der Installation von SAP HANA erhalten haben. Nun müssen Sie einen Sicherungsnamen zur Konfigurationsdatei hinzufügen.
+Bei einer Bereitstellung für zentrales oder horizontales Hochskalieren sieht die Konfigurationsdatei nach dem Angeben des Servernamens der HANA-Einheit für große Instanzen und der IP-Adresse des Servers wie im folgenden Beispiel gezeigt aus. Verwenden Sie bei der SAP HANA-Systemreplikation die virtuelle IP-Adresse der Konfiguration für die HANA-Systemreplikation. Füllen Sie alle erforderlichen Felder für jede SAP HANA-SID aus, die Sie sichern oder wiederherstellen möchten. Sie können auch Zeilen von Instanzen, die für eine bestimmte Zeit nicht gesichert werden sollen, auskommentieren, indem Sie einem erforderlichen Feld ein „#“ voranstellen. Außerdem müssen Sie nicht alle SAP HANA-Instanzen eingeben, die sich auf einem Server befinden, wenn die entsprechenden Instanzen nicht gesichert oder wiederhergestellt werden müssen. Das Format muss stets für alle Felder beibehalten werden, andernfalls geben alle Skripts eine Fehlermeldung aus und werden beendet. Sie können jedoch die erforderlichen Datenzeilen für nicht verwendete SID-Informationen nach der letzten verwendeten SAP HANA-Instanz löschen.  Alle Zeilen müssen entweder ausgefüllt, auskommentiert oder gelöscht werden.
 
-Bei einer Bereitstellung für zentrales oder horizontales Skalieren sieht die Konfigurationsdatei nach Angabe des Namens der Speichersicherung und der IP-Adresse des Speichers wie im folgenden Beispiel gezeigt aus. Außerdem müssen Sie in der Konfigurationsdatei die folgenden Daten eingeben:
-- IP-Adresse eines einzelnen Knotens oder Masterknotens
-- HANA-Instanznummer
-- Sicherungsname 
+>[!IMPORTANT]
+>Die Struktur der Datei wurde beim Wechsel von Version 2.1 auf Version 3.0 geändert. Wenn Sie die Skripts der Version 3.0 verwenden möchten, müssen Sie die Struktur der Konfigurationsdatei anpassen. 
+
+
+```
+HANA Server Name: testing01
+HANA Server IP Address: 172.18.18.50
+```
+
+Für jede auf der HANA-Einheit für große Instanzen konfigurierte Instanz oder für die Konfiguration mit horizontaler Skalierung müssen Sie die Daten wie folgt definieren.
+
     
 ```
-#Provided by Microsoft Service Management
-Storage Backup Name: client1hm3backup
-Storage IP Address: 10.240.20.31
-#Node IP addresses, instance numbers, and HANA backup name
-#provided by customer.  HANA backup name created using
-#hdbuserstore utility.
-Node 1 IP Address: 
-Node 1 HANA instance number:
-Node 1 HANA userstore Name:
+######***SID #1 Information***#####
+SID1: h01
+###Provided by Microsoft Operations###
+SID1 Storage Backup Name: clt1h01backup
+SID1 Storage IP Address: 172.18.18.11
+######     Customer Provided    ######
+SID1 HANA instance number: 00
+SID1 HANA HDBuserstore Name: SCADMINH01
 ```
-
->[!NOTE]
->Derzeit werden nur die Details von Knoten 1 im eigentlichen Skript der HANA-Speichermomentaufnahme genutzt. Wir empfehlen Ihnen, den Zugriff auf bzw. von allen HANA-Knoten zu testen. Sollte sich der Masterknoten für die Sicherungen dann einmal ändern, haben Sie bereits sichergestellt, dass ein anderer Knoten seinen Platz einnehmen kann, indem die Details auf Knoten 1 geändert werden.
+Bei Konfigurationen mit horizontaler Skalierung und HANA-Systemreplikationskonfigurationen wird empfohlen, diese Konfiguration auf jedem Knoten zu wiederholen. Durch diese Maßnahme wird sichergestellt, dass bei Fehlern die Sicherungen und die letztliche Speichereplikation weiterhin funktionieren.   
 
 Nachdem Sie alle Konfigurationsdaten in die Datei „HANABackupCustomerDetails.txt“ eingegeben haben, müssen Sie sich vergewissern, dass die Konfigurationen im Hinblick auf die HANA-Instanzdaten korrekt sind. Verwenden Sie das Skript `testHANAConnection.pl`. Für dieses Skript spielt es keine Rolle, ob es sich um eine SAP HANA-Konfiguration für zentrales oder horizontales Hochskalieren handelt.
 
@@ -319,12 +364,19 @@ Im nächsten Schritt wird anhand der Daten, die Sie in der Konfigurationsdatei �
 - Anhand der HANA-Instanz wird für jedes Volume ein Test, ein Dummy oder eine Momentaufnahme erstellt.
 
 Aus diesem Grund ist die HANA-Instanz als ein Argument enthalten. Sollte die Ausführung nicht erfolgreich sein, kann keine Fehlerüberprüfung für die Speicherverbindung durchgeführt werden. Auch wenn keine Fehlerüberprüfung durchgeführt wird, bietet das Skript hilfreiche Hinweise.
+Führen Sie die Befehlsfolge zum Ausführen dieser Tests aus:
 
-Das Skript wird ausgeführt als:
+```
+ssh <StorageUserName>@<StorageIP>
+```
+
+Bei der Übergabe der HANA-Einheit für große Instanzen wurden Ihnen sowohl der Speicherbenutzername als auch die Speicher-IP-Adresse bekannt gegeben.
+
+Führen Sie als zweiten Schritt das Testskript folgendermaßen aus:
 ```
  ./testStorageSnapshotConnection.pl <HANA SID>
 ```
-Als Nächstes versucht das Skript, sich unter Verwendung des öffentlichen Schlüssels aus den vorherigen Einrichtungsschritten und der konfigurierten Daten aus der Datei „HANABackupCustomerDetails.txt“ beim Speicher anzumelden. Im Falle einer erfolgreichen Anmeldung wird Folgendes angezeigt:
+Das Skript versucht, sich mit dem öffentlichen Schlüssel aus den vorherigen Einrichtungsschritten und den konfigurierten Daten aus der Datei „HANABackupCustomerDetails.txt“ beim Speicher anzumelden. Im Falle einer erfolgreichen Anmeldung wird Folgendes angezeigt:
 
 ```
 **********************Checking access to Storage**********************
@@ -380,35 +432,45 @@ Wenn die Testmomentaufnahme erfolgreich mit dem Skript erstellt wurde, können S
 
 ### <a name="step-7-perform-snapshots"></a>Schritt 7: Erstellen von Momentaufnahmen
 
-Nach Abschluss der Vorbereitungsschritte können Sie damit beginnen, die eigentlichen Speichermomentaufnahmen zu konfigurieren. Das zu planende Skript kann für SAP HANA-Konfigurationen mit zentralem und horizontalem Hochskalieren verwendet werden. Die Planung der Skriptausführung sollte über Cron erfolgen. 
+Nach Abschluss der Vorbereitungsschritte können Sie damit beginnen, die eigentlichen Speichermomentaufnahmen zu konfigurieren. Das zu planende Skript kann für SAP HANA-Konfigurationen mit zentralem und horizontalem Hochskalieren verwendet werden. Um das Sicherungsskript regelmäßig normal auszuführen, planen Sie es mit cron. 
 
 Es können drei Typen von Momentaufnahmesicherungen erstellt werden:
 - **HANA**: Kombinierte Momentaufnahmesicherung, bei der die Volumes mit „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) durch die koordinierte Momentaufnahme abgedeckt sind. Auf der Grundlage dieser Momentaufnahme können einzelne Dateien wiederhergestellt werden.
-- **Protokolle**: Momentaufnahmesicherung des Volumes „/hana/logbackups“. Zur Erstellung dieser Speichermomentaufnahme wird keine HANA-Momentaufnahme ausgelöst. Dieses Speichervolume ist das Volume, das die SAP HANA-Transaktionsprotokollsicherungen enthalten soll. SAP HANA-Transaktionsprotokollsicherungen werden häufiger ausgeführt, um die Protokollvergrößerung einzuschränken und potenzielle Datenverluste zu verhindern. Auf der Grundlage dieser Momentaufnahme können einzelne Dateien wiederhergestellt werden. Die Häufigkeit sollte mindestens fünf Minuten betragen.
-- **Start**: Momentaufnahme des Volumes mit der Start-LUN (Logical Unit Number, logische Gerätenummer) der großen HANA-Instanz. Diese Momentaufnahmesicherung steht nur für Typ I-SKUs großer HANA-Instanzen zur Verfügung. Auf der Grundlage der Momentaufnahme des Volumes mit der Start-LUN können keine einzelnen Dateien wiederhergestellt werden. Für SKUs von Typ II großer HANA-Instanzen können Sie eine Sicherung auf Betriebssystemebene durchführen und auch die einzelnen Dateien wiederherstellen. Weitere Einzelheiten finden Sie im Dokument [Vorgehensweise zum Durchführen von Betriebssystemsicherungen für SKUs von Typ II](os-backup-type-ii-skus.md).
+- **Protokolle**: Momentaufnahmesicherung des Volumes „/hana/logbackups“. Zur Erstellung dieser Speichermomentaufnahme wird keine HANA-Momentaufnahme ausgelöst. Dieses Speichervolume ist das Volume, das die SAP HANA-Transaktionsprotokollsicherungen enthalten soll. SAP HANA-Transaktionsprotokollsicherungen werden häufiger ausgeführt, um die Protokollvergrößerung einzuschränken und potenzielle Datenverluste zu verhindern. Auf der Grundlage dieser Momentaufnahme können einzelne Dateien wiederhergestellt werden. Senken Sie die Häufigkeit nicht unter drei Minuten.
+- **Start**: Momentaufnahme des Volumes mit der Start-LUN (Logical Unit Number, logische Gerätenummer) der großen HANA-Instanz. Diese Momentaufnahmesicherung steht nur für Typ I-SKUs großer HANA-Instanzen zur Verfügung. Auf der Grundlage der Momentaufnahme des Volumes mit der Start-LUN können keine einzelnen Dateien wiederhergestellt werden.
 
 
-Die Aufrufsyntax für die drei unterschiedlichen Arten von Momentaufnahmen sieht wie folgt aus:
+>[!NOTE]
+> Die Aufrufsyntax für diese drei verschiedenen Typen von Momentaufnahmen wurde beim Wechsel zu Version 3.0 der Skripts, die die MCOD-Bereitstellung unterstützen, geändert. Es besteht keine Notwendigkeit mehr, die HANA-SID einer Instanz anzugeben. Sie müssen sicherstellen, dass die SAP HANA-Instanzen einer Einheit in der Konfigurationsdatei **HANABackupCustomerDetails.txt** konfiguriert werden.
+
+>[!NOTE]
+> Wenn Sie das Skript zum ersten Mal ausführen, können einige unerwartete Fehler in der Multi-SID-Umgebung angezeigt werden. Führen Sie das Skript einfach erneut aus, dann sollte das Problem bereits behoben sein.
+
+
+
+Die neue Aufrufsyntax zum Ausführen von Speichermomentaufnahmen mit dem Skript **azure_hana_backup.pl** sieht folgendermaßen aus:
+
 ```
 HANA backup covering /hana/data and /hana/shared (includes/usr/sap)
-./azure_hana_backup.pl hana <HANA SID> manual 30
+./azure_hana_backup.pl hana <snapshot_prefix> <snapshot_frequency> <number of snapshots retained>
 
 For /hana/logbackups snapshot
-./azure_hana_backup.pl logs <HANA SID> manual 30
+./azure_hana_backup.pl logs <snapshot_prefix> <snapshot_frequency> <number of snapshots retained>
 
 For snapshot of the volume storing the boot LUN
-./azure_hana_backup.pl boot none manual 30
+./azure_hana_backup.pl boot <HANA Large Instance Type> <snapshot_prefix> <snapshot_frequency> <number of snapshots retained>
 
 ```
 
-Festzulegende Parameter:
+Für die Parameter gelten folgende Details: 
 
 - Der erste Parameter gibt die Art der Momentaufnahmesicherung an. Die zulässige Werte lauten **hana**, **logs** und **boot**. 
-- Der zweite Parameter ist **HANA SID** (wie HM3) oder **keiner**. Wenn der bereitgestellte Wert der ersten Parameters **hana** oder **logs** ist, lautet der Wert dieses Parameters **HANA SID** (wie HM3). Ansonsten ist der Wert für die Sicherung des Startvolumes **keiner**. 
-- Beim dritten Parameter handelt es sich um eine Momentaufnahme- oder Sicherungsbezeichnung für die Art der Momentaufnahme. Sie hat zwei Funktionen. Zum einen dient sie als Namensvorschlag, damit Sie wissen, worum es sich bei diesen Momentaufnahmen handelt. Zum anderen dient sie dazu, dem Skript „azure\_hana\_backup.pl“ die Ermittlung der Anzahl von Speichermomentaufnahmen zu ermöglichen, die unter dieser bestimmten Bezeichnung beibehalten werden. Wenn Sie zwei Speichermomentaufnahme-Sicherungen desselben Typs (z.B. **hana**) mit zwei unterschiedlichen Bezeichnungen planen und definieren, dass 30 Momentaufnahmen pro Sicherung beibehalten werden sollen, erhalten Sie letztlich 60 Speichermomentaufnahmen der betroffenen Volumes. 
-- Der vierte Parameter definiert, wie viele Momentaufnahmen mit dem gleichen Momentaufnahmepräfix (Bezeichnung) gespeichert werden sollen – und damit indirekt die Aufbewahrung der Momentaufnahmen. Dieser Parameter ist für die geplante Ausführung über Cron wichtig. 
+- Der Parameter **<HANA Large Instance Type>** ist notwendig, damit nur Volumesicherungen gestartet werden. Es gibt zwei gültige Werte mit „TypeI“ bzw. „TypeII“, je nach der HANA-Einheit für große Instanzen. Um herauszufinden, welcher „Type“ für Ihre Einheit gilt, lesen Sie [diese Dokumentation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
+- Der Parameter **<snapshot_prefix>** ist eine Momentaufnahme- oder Sicherungsbezeichnung für die Art der Momentaufnahme. Sie hat zwei Funktionen. Zum einen dient sie als Namensvorschlag, damit Sie wissen, worum es sich bei diesen Momentaufnahmen handelt. Zum anderen dient sie dazu, dem Skript „azure\_hana\_backup.pl“ die Ermittlung der Anzahl von Speichermomentaufnahmen zu ermöglichen, die unter dieser bestimmten Bezeichnung beibehalten werden. Wenn Sie zwei Speichermomentaufnahme-Sicherungen desselben Typs (z.B. **hana**) mit zwei unterschiedlichen Bezeichnungen planen und definieren, dass 30 Momentaufnahmen pro Sicherung beibehalten werden sollen, erhalten Sie letztlich 60 Speichermomentaufnahmen der betroffenen Volumes. 
+- Der Parameter **<snapshot_frequency>** ist für künftige Entwicklungen reserviert und hat keinen Einfluss. Es wird empfohlen, ihn jetzt auf „3min“ festzulegen, wenn Sie Sicherungen des Typs Protokoll ausführen, und auf „15min“, wenn Sie die anderen Sicherungstypen ausführen.
+- Der Parameter **<number of snapshots retained>** definiert, wie viele Momentaufnahmen mit dem gleichen Momentaufnahmepräfix (Bezeichnung) gespeichert werden sollen – und damit indirekt die Aufbewahrung der Momentaufnahmen. Dieser Parameter ist für die geplante Ausführung über Cron wichtig. Wenn die Anzahl der Momentaufnahmen mit dem gleichen Wert für snapshot_prefix die durch diesen Parameter angegebene Zahl übersteigt, wird die älteste Momentaufnahme gelöscht, bevor eine neue Speichermomentaufnahme ausgeführt wird.
 
-Beim horizontalen Hochskalieren führt das Skript einige zusätzliche Überprüfungen durch, um sicherzustellen, dass Sie auf alle HANA-Server zugreifen können. Das Skript überprüft außerdem, ob alle HANA-Instanzen den entsprechenden Status der Instanzen zurückgeben, bevor es eine SAP HANA-Momentaufnahme erstellt. Nach der SAP HANA-Momentaufnahme folgt eine Speichermomentaufnahme.
+Beim horizontalen Hochskalieren führt das Skript einige zusätzliche Überprüfungen durch, um sicherzustellen, dass Sie auf alle HANA-Server zugreifen können. Das Skript überprüft außerdem, ob alle HANA-Instanzen den richtigen Status der Instanzen zurückgeben, bevor es eine SAP HANA-Momentaufnahme erstellt. Nach der SAP HANA-Momentaufnahme folgt eine Speichermomentaufnahme.
 
 Bei Ausführung des Skripts `azure_hana_backup.pl` wird die Speichermomentaufnahme in den folgenden drei Phasen erstellt:
 
@@ -418,7 +480,7 @@ Bei Ausführung des Skripts `azure_hana_backup.pl` wird die Speichermomentaufnah
 
 Um das Skript auszuführen, rufen Sie es im ausführbaren HDB-Ordner auf, in den es kopiert wurde. 
 
-Die Aufbewahrungsdauer richtet sich nach der Anzahl von Momentaufnahmen, die bei der Skriptausführung als Parameter übergeben wird (im obigen Beispiel: **30**). Der von Speichermomentaufnahmen abgedeckte Zeitraum ergibt sich also aus zwei Faktoren: dem Ausführungszeitraum und der Anzahl von Momentaufnahmen, die bei der Skriptausführung als Parameter angegeben wird. Wenn die Anzahl gespeicherter Momentaufnahmen die Anzahl übersteigt, die beim Skriptaufruf als Parameter angegeben wurde, wird vor der Erstellung einer neuen Momentaufnahme die älteste Speichermomentaufnahme mit der gleichen Bezeichnung (im obigen Fall: **manual**) gelöscht. Die Anzahl, die Sie als letzten Parameter des Aufrufs angeben, ist die Anzahl der beibehaltenen Momentaufnahmen, die Sie steuern können. Mit dieser Anzahl können Sie indirekt auch den von Momentaufnahmen beanspruchten Speicherplatz steuern. 
+Die Aufbewahrungsdauer richtet sich nach der Anzahl von Momentaufnahmen, die bei der Skriptausführung als Parameter übergeben wird. Der von Speichermomentaufnahmen abgedeckte Zeitraum ergibt sich also aus zwei Faktoren: dem Ausführungszeitraum und der Anzahl von Momentaufnahmen, die bei der Skriptausführung als Parameter angegeben wird. Wenn die Anzahl gespeicherter Momentaufnahmen die beim Skriptaufruf als Parameter angegebene übersteigt, wird vor der Erstellung einer neuen Momentaufnahme die älteste Speichermomentaufnahme mit der gleichen Bezeichnung gelöscht. Die Anzahl, die Sie als letzten Parameter des Aufrufs angeben, ist die Anzahl der beibehaltenen Momentaufnahmen, die Sie steuern können. Mit dieser Anzahl können Sie indirekt auch den von Momentaufnahmen beanspruchten Speicherplatz steuern. 
 
 > [!NOTE]
 >Sobald Sie die Bezeichnung ändern, beginnt der Zählvorgang erneut. Dementsprechend müssen Sie bei der Bezeichnung genau vorgehen, damit Ihre Momentaufnahmen nicht versehentlich gelöscht werden.
@@ -426,36 +488,36 @@ Die Aufbewahrungsdauer richtet sich nach der Anzahl von Momentaufnahmen, die bei
 ### <a name="snapshot-strategies"></a>Strategien für Momentaufnahmen
 Die Momentaufnahmenhäufigkeit für die unterschiedlichen Typen hängt davon ab, ob Sie die Notfallwiederherstellung von HANA (große Instanzen) verwenden. Die Notfallwiederherstellungsfunktionalität von HANA (große Instanzen) hängt von Speichermomentaufnahmen ab. Für die Verwendung von Speichermomentaufnahmen sind eventuell besondere Empfehlungen in Bezug auf die Häufigkeit und Ausführungszeiträume der Speichermomentaufnahmen erforderlich. 
 
-Bei den folgenden Überlegungen und Empfehlungen wird davon ausgegangen, dass Sie die Notfallwiederherstellung von HANA (große Instanzen) *nicht* verwenden. Stattdessen verwenden Sie die Speichermomentaufnahmen, um über Sicherungen zu verfügen und Zeitpunktwiederherstellungen für die letzten 30 Tage bereitstellen zu können. Angesichts der Einschränkungen hinsichtlich der Anzahl von Momentaufnahmen und des Speicherplatzes haben Kunden folgende Anforderungen berücksichtigt:
+Bei den folgenden Überlegungen und Empfehlungen wird davon ausgegangen, dass Sie die Notfallwiederherstellung von HANA (große Instanzen) *nicht* verwenden. Stattdessen verwenden Sie die Speichermomentaufnahmen, um über Sicherungen zu verfügen und eine Zeitpunktwiederherstellung für die letzten 30 Tage zu ermöglichen. Angesichts der Einschränkungen hinsichtlich der Anzahl von Momentaufnahmen und des Speicherplatzes haben Kunden folgende Anforderungen berücksichtigt:
 
 - Zeitraum für Zeitpunktwiederherstellung
 - Belegter Speicherplatz
-- RPO (Recovery Point Objective) und RTO (Recovery Time Objective) für eine potenzielle Notfallwiederherstellung
+- RPO (Recovery Point Objective) und RTO (Recovery Time Objective) für eine potenzielle Wiederherstellung nach einem Notfall.
 - Tatsächliche Ausführung vollständiger HANA-Datenbanksicherungen für Datenträger. Immer wenn eine vollständige Datenbanksicherung für Datenträger oder die Schnittstelle **backint** erfolgt, tritt bei der Ausführung von Speichermomentaufnahmen ein Fehler auf. Wenn Sie zusätzlich zu Speichermomentaufnahmen vollständige Datenbanksicherungen ausführen möchten, sollten Sie sicherstellen, dass die Ausführung von Speichermomentaufnahmen während dieses Zeitraums deaktiviert ist.
 - Die Anzahl von Momentaufnahmen ist pro Volume auf 255 beschränkt.
 
 
-Bei Kunden, die die Notfallwiederherstellung von HANA (große Instanzen) nicht verwenden, ist der Momentaufnahmezeitraum kürzer. In solchen Fällen führen Kunden die kombinierten Momentaufnahmen für „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) in einem Intervall von 12 oder 24 Stunden durch und speichern diese Momentaufnahmen, um einen ganzen Monat abzudecken. Gleiches gilt für die Momentaufnahmen des Protokollsicherungsvolumes. Im Gegensatz dazu werden SAP HANA-Transaktionsprotokollsicherungen für das Protokollsicherungsvolume in einem Intervall von fünf bis 15 Minuten ausgeführt.
+Bei Kunden, die die Notfallwiederherstellung von HANA (große Instanzen) nicht verwenden, ist der Momentaufnahmezeitraum kürzer. In solchen Fällen führen Kunden die kombinierten Momentaufnahmen für „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) in einem Intervall von 12 oder 24 Stunden durch und bewahren diese Momentaufnahmen für einen ganzen Monat auf. Gleiches gilt für die Momentaufnahmen des Protokollsicherungsvolumes. Im Gegensatz dazu werden SAP HANA-Transaktionsprotokollsicherungen für das Protokollsicherungsvolume in einem Intervall von fünf bis 15 Minuten ausgeführt.
 
-Es wird empfohlen, geplante Speichermomentaufnahmen mithilfe von Cron durchzuführen. Außerdem wird empfohlen, dasselbe Skript für alle Sicherungs- und Notfallwiederherstellungsanforderungen zu verwenden. Sie müssen die Skripteingaben so ändern, dass sie den verschiedenen angeforderten Sicherungszeiten entsprechen. Diese Momentaufnahmen werden in Cron abhängig von ihrer Ausführungszeit jeweils unterschiedlich geplant: stündlich, alle 12 Stunden, täglich oder wöchentlich. 
+Es wird empfohlen, geplante Speichermomentaufnahmen mithilfe von cron durchzuführen. Außerdem wird empfohlen, dasselbe Skript für alle Anforderungen der Sicherung und Notfallwiederherstellung zu verwenden. Ändern Sie die Skripteingaben so, dass sie den verschiedenen angeforderten Sicherungszeiten entsprechen. Diese Momentaufnahmen werden in Cron abhängig von ihrer Ausführungszeit jeweils unterschiedlich geplant: stündlich, alle 12 Stunden, täglich oder wöchentlich. 
 
-Im Anschluss sehen Sie ein Beispiel für einen Cron-Zeitplan in „/etc/crontab“:
+Im Anschluss sehen Sie ein Beispiel für einen cron-Zeitplan in „/etc/crontab“:
 ```
-00 1-23 * * * ./azure_hana_backup.pl hana HM3 hourlyhana 46
-10 00 * * *  ./azure_hana_backup.pl hana HM3 dailyhana 28
+00 1-23 * * * ./azure_hana_backup.pl hana hourlyhana 15min 46
+10 00 * * *  ./azure_hana_backup.pl hana dailyhana 15min 28
 00,05,10,15,20,25,30,35,40,45,50,55 * * * *  Perform SAP HANA transaction log backup
-22 12 * * *  ./azure_hana_backup.pl log HM3 dailylogback 28
-30 00 * * *  ./azure_hana_backup.pl boot dailyboot 28
+22 12 * * *  ./azure_hana_backup.pl log dailylogback 3min 28
+30 00 * * *  ./azure_hana_backup.pl boot TypeI dailyboot 15min 28
 ```
 Das vorherige Beispiel enthält eine stündliche kombinierte Momentaufnahme, die die Volumes mit den Speicherorten „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) abdeckt. Diese Art von Momentaufnahme wird für eine schnellere Zeitpunktwiederherstellung der letzten zwei Tage verwendet. Darüber hinaus wird eine tägliche Momentaufnahme für diese Volumes erstellt. Somit verfügen Sie über stündliche Momentaufnahmen für einen Zeitraum von zwei Tagen sowie über tägliche Momentaufnahmen für einen Zeitraum von vier Wochen. Das Volume für die Transaktionsprotokollsicherung wird außerdem täglich gesichert. Diese Sicherungen werden ebenfalls vier Wochen aufbewahrt. In der dritten Zeile von „crontab“ sehen Sie, dass für die Sicherung des HANA-Transaktionsprotokolls ein Ausführungsintervall von fünf Minuten geplant ist. Die Startminuten der verschiedenen Cron-Aufträge zur Erstellung von Speichermomentaufnahmen sind gestaffelt, damit die Momentaufnahmen nicht alle gleichzeitig zu einem bestimmten Zeitpunkt ausgeführt werden. 
 
 Im folgenden Beispiel führen Sie stündlich eine kombinierte Momentaufnahme durch, die die Volumes mit den Speicherorten „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) abdeckt. Diese Momentaufnahmen werden zwei Tage lang aufbewahrt. Die Momentaufnahmen der Volumes mit der Transaktionsprotokollsicherung werden alle fünf Minuten ausgeführt und vier Stunden lang aufbewahrt. Das Ausführungsintervall für die Sicherung der HANA-Transaktionsprotokolldatei ist wie zuvor auf fünf Minuten festgelegt. Die Momentaufnahme des Volumes mit der Transaktionsprotokollsicherung wird jeweils zwei Minuten nach dem Start der Transaktionsprotokollsicherung erstellt. Nach diesen zwei Minuten sollte die Sicherung des SAP HANA-Transaktionsprotokolls für gewöhnlich abgeschlossen sein. Das Volume mit der Start-LUN wird wie zuvor jeweils einmal pro Tag durch eine Speichermomentaufnahme gesichert und vier Wochen lang aufbewahrt.
 
 ```
-10 0-23 * * * ./azure_hana_backup.pl hana HM3 hourlyhana 48
+10 0-23 * * * ./azure_hana_backup.pl hana hourlyhana 15min 48
 0,5,10,15,20,25,30,35,40,45,50,55 * * * *  Perform SAP HANA transaction log backup
-2,7,12,17,22,27,32,37,42,47,52,57 * * * *  ./azure_hana_backup.pl log HM3 logback 48
-30 00 * * *  ./azure_hana_backup.pl boot dailyboot 28
+2,7,12,17,22,27,32,37,42,47,52,57 * * * *  ./azure_hana_backup.pl log logback 3min 48
+30 00 * * *  ./azure_hana_backup.pl boot TypeII dailyboot 15min 28
 ```
 
 Die folgende Grafik veranschaulicht die Sequenzen des vorherigen Beispiels ausgenommen der Start-LUN:
@@ -463,6 +525,9 @@ Die folgende Grafik veranschaulicht die Sequenzen des vorherigen Beispiels ausge
 ![Beziehung zwischen Sicherungen und Momentaufnahmen](./media/hana-overview-high-availability-disaster-recovery/backup_snapshot_updated0921.PNG)
 
 SAP HANA führt regelmäßig Schreibvorgänge für das Volume „/hana/log“ aus, um die Datenbankänderungen, für die ein Commit ausgeführt wurde, zu dokumentieren. In regelmäßigen Abständen schreibt SAP HANA einen Sicherungspunkt auf das Volume „/hana/data“. Wie in „crontab“ angegeben wird alle fünf Minuten eine SAP HANA-Transaktionsprotokollsicherung ausgeführt. Aufgrund der Auslösung einer kombinierten Speichermomentaufnahme für die Volumes „/hana/data“ und „/hana/shared“ wird zudem stündlich eine SAP HANA-Momentaufnahme ausgeführt. Nach erfolgreicher Ausführung der HANA-Momentaufnahme wird die kombinierte Speichermomentaufnahme ausgeführt. Gemäß Angabe in „crontab“ wird alle fünf Minuten (etwa zwei Minuten nach der HANA-Transaktionsprotokollsicherung) die Speichermomentaufnahme des Volumes „/hana/logbackup“ ausgeführt.
+
+> [!NOTE]
+>Wenn Sie Sicherungen von Speichermomentaufnahmen auf den beiden Knoten eines HANA-Systemreplikationssetups planen, müssen Sie sicherstellen, dass sich die Ausführung der Momentaufnahmesicherungen zwischen den beiden Knoten nicht überschneidet. SAP HANA weist eine Einschränkung auf, dass jeweils nur eine HANA-Momentaufnahme verarbeitet werden kann. Da eine HANA-Momentaufnahme eine grundlegende Komponente einer erfolgreichen Sicherung einer Speichermomentaufnahme ist, müssen Sie sicherstellen, dass die Speichermomentaufnahmen des primären und sekundären Knotens und eines möglichen dritten Knotens zeitlich voneinander entfernt liegen.
 
 
 >[!IMPORTANT]
@@ -473,11 +538,11 @@ Sie benötigen Folgendes, wenn Sie für Benutzer eine Zeitpunktwiederherstellung
 - In Extremfällen müssen Sie über die Möglichkeit verfügen, auf eine kombinierte Speichermomentaufnahme für „/hana/data“ und „/hana/shared“ zuzugreifen, die 30 Tage alt ist.
 - Sie benötigen lückenlose Transaktionsprotokollsicherungen, die die Zeit zwischen den kombinierten Speichermomentaufnahmen abdecken. Die älteste Momentaufnahme des Volumes mit der Transaktionsprotokollsicherung muss also 30 Tage alt sein. Dies gilt nicht, wenn Sie die Transaktionsprotokollsicherungen in eine andere NFS-Freigabe in Azure Storage kopieren. In diesem Fall können Sie ältere Transaktionsprotokollsicherungen von dieser NFS-Freigabe abrufen.
 
-Um die Vorteile der Speichermomentaufnahmen und letztendlich der Speicherreplikation von Transaktionsprotokollsicherungen nutzen zu können, müssen Sie den Speicherort ändern, in den SAP HANA die Transaktionsprotokollsicherungen schreibt. Sie können diese Änderung in HANA Studio vornehmen. SAP HANA sichert zwar automatisch vollständige Protokollsegmente, trotzdem sollten Sie ein deterministisches Protokollsicherungsintervall angeben. Dies empfiehlt sich insbesondere bei Verwendung der Notfallwiederherstellungsoption, da Sie in der Regel Protokollsicherungen mit einem deterministischen Intervall ausführen. Im folgenden Fall wurde ein 15-minütiges Protokollsicherungsintervall verwendet.
+Um die Vorteile der Speichermomentaufnahmen und letztendlich der Speicherreplikation von Transaktionsprotokollsicherungen nutzen zu können, müssen Sie den Speicherort ändern, in den SAP HANA die Transaktionsprotokollsicherungen schreibt. Sie können diese Änderung in HANA Studio vornehmen. SAP HANA sichert zwar automatisch vollständige Protokollsegmente, trotzdem sollten Sie ein deterministisches Protokollsicherungsintervall angeben. Dies empfiehlt sich insbesondere bei Verwendung der Notfallwiederherstellungsoption, da Sie in der Regel Protokollsicherungen mit einem deterministischen Intervall ausführen. Im folgenden Fall werden 15 Minuten als Protokollsicherungsintervall festgelegt.
 
 ![Planen von SAP HANA-Sicherungsprotokollen in SAP HANA Studio](./media/hana-overview-high-availability-disaster-recovery/image5-schedule-backup.png)
 
-Sie können Sicherungen wählen, die häufiger als alle 15 Minuten erstellt werden. Dies ist häufig in Verbindung mit der Notfallwiederherstellung der Fall. Einige Kunden führen Transaktionsprotokollsicherungen alle fünf Minuten durch.  
+Sie können Sicherungen wählen, die häufiger als alle 15 Minuten erstellt werden. Eine niedrige Einstellung dieser Art wird häufig in Verbindung mit der Notfallwiederherstellung großer HANA-Instanzen verwendet. Einige Kunden führen Transaktionsprotokollsicherungen alle fünf Minuten durch.  
 
 Falls die Datenbank noch nie gesichert wurde, wird im letzten Schritt eine dateibasierte Datenbanksicherung durchgeführt, um einen einzelnen Sicherungseintrag zu erstellen, der im Sicherungskatalog vorhanden sein muss. Andernfalls kann SAP HANA Ihre angegebenen Protokollsicherungen nicht initiieren.
 
@@ -488,6 +553,30 @@ Nach erfolgreicher Ausführung der ersten Speichermomentaufnahmen können Sie di
 ```
 ./removeTestStorageSnapshot.pl <hana instance>
 ```
+
+Die Ausgabe des Skripts ähnelt etwa der folgenden:
+```
+Checking Snapshot Status for h80
+**********************Checking access to Storage**********************
+Storage Snapshot Access successful.
+**********************Getting list of volumes that match HANA instance specified**********************
+Collecting set of volumes hosting HANA matching pattern *h80* ...
+Volume show completed successfully.
+Adding volume hana_data_h80_mnt00001_t020_vol to the snapshot list.
+Adding volume hana_log_backups_h80_t020_vol to the snapshot list.
+Adding volume hana_shared_h80_t020_vol to the snapshot list.
+**********************Adding list of snapshots to volume list**********************
+Collecting set of snapshots for each volume hosting HANA matching pattern *h80* ...
+**********************Displaying Snapshots by Volume**********************
+hana_data_h80_mnt00001_t020_vol
+Test_HANA_Snapshot.2018-02-06_1753.3
+Test_HANA_Snapshot.2018-02-06_1815.2
+….
+Command completed successfully.
+Exiting with return code: 0
+Command completed successfully.
+```
+
 
 ### <a name="monitoring-the-number-and-size-of-snapshots-on-the-disk-volume"></a>Überwachen der Anzahl und Größe von Momentaufnahmen auf dem Datenträgervolume
 
@@ -512,7 +601,7 @@ Um weitere Informationen zu Momentaufnahmen zu erhalten, können Sie auch das Sk
       - Häufigkeit der Momentaufnahme
       - HANA-Sicherungs-ID im Zusammenhang mit dieser Momentaufnahme, sofern relevant
 
-Die Ausführungssyntax des Skripts sieht wie folgt aus:
+Ausführungssyntax des Skripts:
 
 ```
 ./azure_hana_snapshot_details.pl 
@@ -544,7 +633,7 @@ HANA Backup ID:
 Bei den Momentaufnahmetypen „hana“ und „logs“ können Sie direkt auf den Volumes im Verzeichnis **.snapshot** auf die Momentaufnahmen zugreifen. Dort finden Sie jeweils ein Unterverzeichnis für die einzelnen Momentaufnahmen. Die einzelnen Dateien aus der Momentaufnahme können in dem Zustand, den sie zum Zeitpunkt der Momentaufnahme hatten, aus dem Unterverzeichnis in die eigentliche Verzeichnisstruktur kopiert werden.
 
 >[!NOTE]
->Bei Momentaufnahmen der Start-LUN können keine einzelnen Dateien wiederhergestellt werden. Das Verzeichnis **.snapshot** wird in der Start-LUN nicht verfügbar gemacht. 
+>Die Wiederherstellung einzelner Dateien funktioniert nicht für Momentaufnahmen der Start-LUN, unabhängig vom Typ der HANA-Einheiten (große Instanzen). Das Verzeichnis **.snapshot** wird in der Start-LUN nicht verfügbar gemacht. 
 
 
 ### <a name="reducing-the-number-of-snapshots-on-a-server"></a>Verringern der Anzahl von Momentaufnahmen auf einem Server
@@ -552,13 +641,13 @@ Bei den Momentaufnahmetypen „hana“ und „logs“ können Sie direkt auf den
 Wie bereits beschrieben, können Sie die Anzahl von bestimmten Bezeichnungen von Momentaufnahmen reduzieren, die Sie speichern. Die beiden letzten Parameter des Befehls zum Initiieren einer Momentaufnahme sind die Bezeichnung und die Anzahl von Momentaufnahmen, die Sie beibehalten möchten.
 
 ```
-./azure_hana_backup.pl hana HM3 hanadaily 30
+./azure_hana_backup.pl hana dailyhana 15min 28
 ```
 
-Im obigen Beispiel lautet die Bezeichnung der Momentaufnahme **customer**, und die Anzahl zu speichernder Momentaufnahmen mit dieser Bezeichnung ist auf **30** festgelegt. Als Reaktion auf die Speicherplatzbelegung können Sie die Anzahl von gespeicherten Momentaufnahmen reduzieren. Die Anzahl von Momentaufnahmen kann ganz einfach auf beispielsweise 15 verringert werden, indem der letzte Parameter bei der Skriptausführung auf **15** festgelegt wird:
+Im obigen Beispiel lautet die Bezeichnung der Momentaufnahme **dailyhana**, und die Anzahl zu speichernder Momentaufnahmen mit dieser Bezeichnung ist auf **28** festgelegt. Als Reaktion auf die Speicherplatzbelegung können Sie die Anzahl von gespeicherten Momentaufnahmen reduzieren. Die Anzahl von Momentaufnahmen kann ganz einfach auf beispielsweise 15 verringert werden, indem der letzte Parameter bei der Skriptausführung auf **15** festgelegt wird:
 
 ```
-./azure_hana_backup.pl hana HM3 hanadaily 15
+./azure_hana_backup.pl hana dailyhana 15min 15
 ```
 
 Wenn Sie das Skript mit dieser Einstellung ausführen, beträgt die Anzahl von Momentaufnahmen „15“ (einschließlich der neuen Speichermomentaufnahme). Die 15 neuesten Momentaufnahmen werden gespeichert, und die 15 älteren Momentaufnahmen werden gelöscht.
@@ -566,12 +655,12 @@ Wenn Sie das Skript mit dieser Einstellung ausführen, beträgt die Anzahl von M
  >[!NOTE]
  > Die Anzahl von Momentaufnahmen verringert sich durch dieses Skript jedoch nur, wenn Momentaufnahmen vorhanden sind, die älter als eine Stunde sind. Mit dem Skript werden Momentaufnahmen, die weniger als eine Stunde alt sind, also nicht gelöscht. Diese Einschränkungen beziehen sich auf die bereitgestellten optionalen Funktionen für die Notfallwiederherstellung.
 
-Falls Sie eine Gruppe von Momentaufnahmen mit einer bestimmten Sicherungsbezeichnung (in diesen Syntaxbeispielen: **hanadaily**) nicht mehr benötigen, können Sie das Skript mit **0** als zu speichernde Anzahl ausführen. Hierdurch werden alle Momentaufnahmen mit dieser Bezeichnung entfernt. Das Entfernen aller Momentaufnahmen kann sich aber auf die Funktionen für die Notfallwiederherstellung auswirken.
+Falls Sie eine Gruppe von Momentaufnahmen mit einer bestimmten Sicherungsbezeichnung (in diesen Syntaxbeispielen: **hanadaily**) nicht mehr benötigen, können Sie das Skript mit **0** als zu speichernde Anzahl ausführen. Mit diesem Vermerkdauerparameter werden alle Momentaufnahmen, die mit dieser Bezeichnung übereinstimmen, entfernt. Das Entfernen aller Momentaufnahmen kann sich aber auf die Funktionen für die Notfallwiederherstellung von großen HANA-Instanzen auswirken.
 
-Alternativ können Sie bestimmte Momentaufnahmen auch mithilfe des Skripts `azure_hana_snapshot_delete.pl` löschen. Dieses Skript dient zum Löschen einer Momentaufnahme oder einer Gruppe von Momentaufnahmen – entweder anhand der HANA-Sicherungs-ID aus HANA Studio oder anhand des Namens der Momentaufnahme. Die Sicherungs-ID ist derzeit nur mit den Momentaufnahmen verknüpft, die für den Momentaufnahmetyp **hana** erstellt werden. Bei Momentaufnahmesicherungen vom Typ **logs** und **boot** wird keine SAP HANA-Momentaufnahme erstellt. Daher ist bei diesen Momentaufnahmen auch keine Sicherungs-ID vorhanden. Bei Eingabe des Namens der Momentaufnahme wird auf den verschiedenen Volumes nach allen Momentaufnahmen gesucht, die dem eingegebenen Namen entsprechen. Aufrufsyntax für das Skript:
+Alternativ können Sie bestimmte Momentaufnahmen auch mithilfe des Skripts `azure_hana_snapshot_delete.pl` löschen. Dieses Skript dient zum Löschen einer Momentaufnahme oder einer Gruppe von Momentaufnahmen – entweder anhand der HANA-Sicherungs-ID aus HANA Studio oder anhand des Namens der Momentaufnahme. Die Sicherungs-ID ist derzeit nur mit den Momentaufnahmen verknüpft, die für den Momentaufnahmetyp **hana** erstellt werden. Bei Momentaufnahmesicherungen vom Typ **logs** und **boot** wird keine SAP HANA-Momentaufnahme erstellt. Daher ist bei diesen Momentaufnahmen auch keine Sicherungs-ID vorhanden. Bei Eingabe des Namens der Momentaufnahme wird auf den verschiedenen Volumes nach allen Momentaufnahmen gesucht, die dem eingegebenen Namen entsprechen. Beim Aufrufen des Skripts müssen Sie die SID der HANA-Instanz angeben. Aufrufsyntax für das Skript:
 
 ```
-./azure_hana_snapshot_delete.pl 
+./azure_hana_snapshot_delete.pl <SID>
 
 ```
 
@@ -710,13 +799,13 @@ Sie können anhand dieses Beispiels erkennen, wie das Skript die Erstellung der 
 
 
 ## <a name="disaster-recovery-principles"></a>Prinzipien für die Notfallwiederherstellung
-Mit HANA (große Instanzen) bieten wir eine Notfallwiederherstellungsfunktion zwischen Stapeln für HANA (große Instanzen) in verschiedenen Azure-Regionen an. Wenn Sie beispielsweise Einheiten von HANA (große Instanzen) in der Azure-Region „USA, Westen“ bereitstellen, können Sie Einheiten von HANA (große Instanzen) in der Region „USA, Osten“ als Notfallwiederherstellungseinheiten verwenden. Die Notfallwiederherstellung wird wie bereits erwähnt nicht automatisch konfiguriert, da sie eine weitere kostenpflichtige Einheit von HANA (große Instanzen) in der Notfallwiederherstellungsregion erfordert. Die Notfallwiederherstellungseinrichtung kann mit zentralem und horizontalem Hochskalieren verwendet werden. 
+Große HANA-Instanzen bieten eine Notfallwiederherstellungsfunktion zwischen Stapeln für HANA (große Instanzen) in verschiedenen Azure-Regionen an. Wenn Sie beispielsweise Einheiten von HANA (große Instanzen) in der Azure-Region „USA, Westen“ bereitstellen, können Sie Einheiten von HANA (große Instanzen) in der Region „USA, Osten“ als Notfallwiederherstellungseinheiten verwenden. Die Notfallwiederherstellung wird wie bereits erwähnt nicht automatisch konfiguriert, da sie eine weitere kostenpflichtige Einheit von HANA (große Instanzen) in der Notfallwiederherstellungsregion erfordert. Die Notfallwiederherstellungseinrichtung kann mit zentralem und horizontalem Hochskalieren verwendet werden. 
 
-In den bislang bereitgestellten Szenarien haben unsere Kunden die Einheit in der Notfallwiederherstellungsregion zur Ausführung produktionsfremder Systeme mit einer installierten HANA-Instanz verwendet. Die Einheit von HANA (große Instanzen) muss der gleichen SKU angehören wie die für die Produktion verwendete SKU. Die Datenträgerkonfiguration zwischen der Servereinheit in der Azure-Produktionsregion und der Region für die Notfallwiederherstellung sieht wie folgt aus:
+In den bislang bereitgestellten Szenarien haben Kunden die Einheit in der Notfallwiederherstellungsregion zum Ausführen produktionsfremder Systeme mit einer installierten HANA-Instanz verwendet. Die Einheit von HANA (große Instanzen) muss der gleichen SKU angehören wie die für die Produktion verwendete SKU. Die Datenträgerkonfiguration zwischen der Servereinheit in der Azure-Produktionsregion und der Region für die Notfallwiederherstellung sieht wie folgt aus:
 
 ![Konfiguration mit Notfallwiederherstellungseinrichtung aus Datenträgersicht](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_setup.PNG)
 
-Wie in dieser Übersichtsgrafik dargestellt, müssen Sie anschließend eine zweite Gruppe von Datenträgervolumes anfordern. Die Zieldatenträgervolumes weisen dieselbe Größe wie die Produktionsvolumes für die Produktionsinstanz in den Notfallwiederherstellungseinheiten auf. Diese Datenträgervolumes sind mit der HANA-Servereinheit (große Instanz) am Standort der Notfallwiederherstellung verknüpft. Die folgenden Volumes werden von der Produktionsregion auf den Standort für die Notfallwiederherstellung repliziert:
+Wie in dieser Übersichtsgrafik dargestellt, müssen Sie anschließend eine zweite Gruppe von Datenträgervolumes anfordern. Die Zieldatenträgervolumes weisen dieselbe Größe wie die Produktionsvolumes für die Produktionsinstanz in den Notfallwiederherstellungseinheiten auf. Diese Datenträgervolumes sind mit der HANA-Servereinheit für große Instanzen am Standort der Notfallwiederherstellung verknüpft. Die folgenden Volumes werden von der Produktionsregion auf den Standort für die Notfallwiederherstellung repliziert:
 
 - /hana/data
 - /hana/logbackups 
@@ -724,11 +813,14 @@ Wie in dieser Übersichtsgrafik dargestellt, müssen Sie anschließend eine zwei
 
 Das Volume „/hana/log“ wird nicht repliziert, da das SAP HANA-Transaktionsprotokoll für ein solches Wiederherstellungsverfahren basierend auf diesen Volumes nicht erforderlich ist. 
 
-Die bereitgestellte Notfallwiederherstellungsfunktion basiert auf der Speicherreplikationsfunktion der Infrastruktur für HANA (große Instanzen). Die speicherseitig verwendete Funktion ist kein konstanter Datenstrom mit Änderungen, die asynchron repliziert werden, wenn Änderungen am Speichervolume auftreten. Stattdessen basiert der Mechanismus darauf, dass in regelmäßigen Abständen Momentaufnahmen dieser Volumes erstellt werden. Anschließend werden die Veränderungen zwischen einer bereits replizierten und einer neuen, noch nicht replizierten Momentaufnahme an Zieldatenträgervolumes am Standort für die Notfallwiederherstellung übertragen.  Diese Momentaufnahmen werden in den Volumes gespeichert und müssen im Falle einer Notfallwiederherstellung in diesen Volumes wiederhergestellt werden.  
+Die bereitgestellte Notfallwiederherstellungsfunktion basiert auf der Speicherreplikationsfunktion der Infrastruktur für HANA (große Instanzen). Die speicherseitig verwendete Funktion ist kein konstanter Datenstrom mit Änderungen, die asynchron repliziert werden, wenn Änderungen am Speichervolume auftreten. Stattdessen basiert der Mechanismus darauf, dass in regelmäßigen Abständen Momentaufnahmen dieser Volumes erstellt werden. Anschließend werden die Veränderungen zwischen einer bereits replizierten und einer neuen, noch nicht replizierten Momentaufnahme an Zieldatenträgervolumes am Standort für die Notfallwiederherstellung übertragen.  Diese Momentaufnahmen werden auf den Volumes gespeichert und müssen bei einer Notfallwiederherstellung auf diesen Volumes wiederhergestellt werden.  
 
 Die erste Übertragung der gesamten Daten des Volumes sollte durchgeführt werden, bevor die Menge der Daten kleiner wird als die Veränderungen zwischen den Momentaufnahmen. Somit enthalten die Volumes am Standort für die Notfallwiederherstellung sämtliche Volumemomentaufnahmen, die am Produktionsstandort durchgeführt wurden. Dadurch können Sie mithilfe des Notfallwiederherstellungssystems letztendlich zu einem früheren Status zurückkehren, um verloren gegangene Daten ohne Rollback des Produktionssystems wiederherzustellen.
 
+Bei MCOD-Bereitstellungen mit mehreren unabhängigen SAP HANA-Instanzen auf einer HANA-Einheit (große Instanzen) wird davon ausgegangen, dass der Speicher aller SAP HANA-Instanzen auf der Notfallwiederherstellungsseite repliziert wird.
+
 Wenn die HANA-Systemreplikation am Produktionsstandort als Hochverfügbarkeitsfunktion genutzt wird, werden nur die Volumes der Instanz zweiter Ebene (oder der Replikatinstanz) repliziert. Diese Konfiguration kann zu einer Verzögerung bei der Speicherreplikation am Standort für die Notfallwiederherstellung führen, wenn Sie die sekundäre Replikatservereinheit (Ebene 2) oder die SAP HANA-Instanz in dieser Einheit warten oder herunterfahren. 
+
 
 >[!IMPORTANT]
 >Genau wie bei der mehrschichtigen HANA-Systemreplikation wird durch Herunterfahren der HANA-Instanz (Ebene 2) oder der Servereinheit die Replikation am Standort für die Notfallwiederherstellung blockiert, wenn Sie die Notfallwiederherstellungsfunktion von HANA (große Instanzen) nutzen.
@@ -740,16 +832,20 @@ Wenn die HANA-Systemreplikation am Produktionsstandort als Hochverfügbarkeitsfu
 
 
 ## <a name="preparation-of-the-disaster-recovery-scenario"></a>Vorbereitung für das Notfallwiederherstellungsszenario
-Es wird davon ausgegangen, dass in der Azure-Produktionsregion ein Produktionssystem in HANA (große Instanzen) ausgeführt wird. Im Rahmen der folgenden Dokumentation gehen wir davon aus, dass die SID des HANA-Systems „PRD“ lautet. Darüber hinaus wird davon ausgegangen, dass Sie über ein produktionsfremdes System verfügen, das auf großen HANA-Instanzen in der Azure-Region für die Notfallwiederherstellung ausgeführt wird. Im Rahmen der Dokumentation gehen wir davon aus, dass die SID „TST“ lautet. Die Konfiguration sieht daher wie folgt aus:
+Es wird davon ausgegangen, dass in der Azure-Produktionsregion ein Produktionssystem in HANA (große Instanzen) ausgeführt wird. Im Rahmen der folgenden Dokumentation gehen wir davon aus, dass die SID des HANA-Systems „PRD“ lautet. Darüber hinaus wird davon ausgegangen, dass Sie über ein produktionsfremdes System verfügen, das auf großen HANA-Instanzen in der Azure-Region für die Notfallwiederherstellung ausgeführt wird. Im Rahmen der Dokumentation wird davon ausgegangen, dass die SID „TST“ lautet. Die Konfiguration sieht daher wie folgt aus:
 
 ![Starten der Notfallwiederherstellungseinrichtung](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start1.PNG)
 
-Wenn die Serverinstanz noch nicht mit dem zusätzlichen Speichervolumesatz angefordert wurde, fügt das Dienstverwaltungsteam für SAP HANA in Azure den zusätzlichen Volumesatz als Ziel für das Produktionsreplikat an die HANA-Einheit (große Instanz) an, auf der die TST HANA-Instanz ausgeführt wird. Zu diesem Zweck müssen Sie die SID Ihrer HANA-Produktionsinstanz angeben. Nachdem das Dienstverwaltungsteam für SAP HANA in Azure sichergestellt hat, dass diese Volumes angefügt wurden, müssen Sie die Volumes in die HANA-Einheit (große Instanz) einbinden.
+Wenn die Serverinstanz noch nicht mit dem zusätzlichen Speichervolumesatz angefordert wurde, fügt das Dienstverwaltungsteam für SAP HANA in Azure den zusätzlichen Volumesatz als Ziel für das Produktionsreplikat an die HANA-Einheit (große Instanzen) an, auf der die HANA-Instanz „TST“ ausgeführt wird. Zu diesem Zweck müssen Sie die SID Ihrer HANA-Produktionsinstanz angeben. Nachdem das Dienstverwaltungsteam für SAP HANA in Azure sichergestellt hat, dass diese Volumes angefügt wurden, müssen Sie die Volumes in die HANA-Einheit (große Instanz) einbinden.
 
 ![Nächster Schritt: Notfallwiederherstellungseinrichtung](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start2.PNG)
 
-Als Nächstes installieren Sie in der Azure-Region für die Notfallwiederherstellung die zweite SAP HANA-Instanz auf der HANA-Einheit (große Instanz), in der Sie die HANA-Instanz „TST“ ausführen. Die neu installierte SAP HANA-Instanz muss dieselbe SID aufweisen. Die erstellten Benutzer müssen dieselbe UID und Gruppen-ID wie die Produktionsinstanz aufweisen. Wenn die Installation erfolgreich war, müssen Sie Folgendes tun:
-- Beenden Sie die neu installierte SAP HANA-Instanz auf der HANA-Einheit (große Instanz) in der Azure-Region für die Notfallwiederherstellung.
+Als Nächstes installieren Sie in der Azure-Region für die Notfallwiederherstellung die zweite SAP HANA-Instanz auf der HANA-Einheit (große Instanzen), in der Sie die HANA-Instanz „TST“ ausführen. Die neu installierte SAP HANA-Instanz muss dieselbe SID aufweisen. Die erstellten Benutzer müssen dieselbe UID und Gruppen-ID wie die Produktionsinstanz aufweisen. Wenn die Installation erfolgreich war, müssen Sie Folgendes tun:
+
+- Führen Sie Schritt 2 der Vorbereitung der Speichermomentaufnahme weiter oben in diesem Dokument durch.
+- Erstellen Sie einen öffentlichen Schlüssel für die Notfallwiederherstellungseinheit der HANA-Einheit (große Instanzen), wenn Sie diesen Schritt noch nicht ausgeführt haben. Dieser Vorgang wird als Schritt 3 der Vorbereitung der Speichermomentaufnahme weiter oben in diesem Dokument erläutert.
+- Behalten Sie die Datei **HANABackupCustomerDetails.txt** für die neue HANA-Instanz bei, und testen Sie, ob Verbindungen mit dem Speicher ordnungsgemäß funktionieren.  
+- Beenden Sie die neu installierte SAP HANA-Instanz auf der HANA-Einheit (große Instanzen) in der Azure-Region für die Notfallwiederherstellung.
 - Heben Sie die Bereitstellung dieser PRD-Volumes auf, und wenden Sie sich an das Dienstverwaltungsteam für SAP HANA in Azure. Die Volumes können nicht mehr für die Einheit bereitgestellt werden, da nicht auf diese zugegriffen werden kann, wenn sie als Speicherreplikationsziel fungiert.  
 
 ![Schritt zur Notfallwiederherstellungseinrichtung vor der Einrichtung der Replikation](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
@@ -784,17 +880,46 @@ Sobald das Betriebsteam für HANA (große Instanz) sichergestellt hat, dass die 
 
 ![Schritt zur Notfallwiederherstellungseinrichtung vor der Einrichtung der Replikation](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start4.PNG)
 
-Bei der Replikation werden die Momentaufnahmen nicht auf den PRD-Volumes in den Azure-Regionen für die Notfallwiederherstellung wiederhergestellt. Sie werden lediglich gespeichert. Wenn die Volumes in solch einem Zustand bereitgestellt werden, stellen sie den Status dar, in dem Sie die Bereitstellung dieser Volumes aufgehoben haben, nachdem die PRD SAP HANA-Instanz in der Servereinheit in der Azure-Region für die Notfallwiederherstellung installiert wurde. Darüber hinaus bezeichnen sie die Speichersicherungen, die noch nicht wiederhergestellt wurden.
+Bei der Replikation werden die Momentaufnahmen nicht auf den PRD-Volumes in den Azure-Regionen für die Notfallwiederherstellung wiederhergestellt. Sie werden lediglich gespeichert. Wenn die Volumes in einem solchen Zustand eingebunden werden, stellen sie den Status dar, in dem Sie die Bereitstellung dieser Volumes aufgehoben haben, nachdem die SAP HANA-Instanz „PRD“ in der Servereinheit in der Azure-Region für die Notfallwiederherstellung installiert wurde. Darüber hinaus bezeichnen sie die Speichersicherungen, die noch nicht wiederhergestellt wurden.
 
 Bei einem Failover können Sie anstelle der neuesten Speichermomentaufnahme auch eine ältere Speichermomentaufnahme wiederherstellen.
 
 ## <a name="disaster-recovery-failover-procedure"></a>Verfahren zur Notfallwiederherstellung
-Bei einem Failover auf den Standort für die Notfallwiederherstellung müssen Sie mit dem Betriebsteam von SAP HANA in Azure interagieren. Der Prozess sieht im Groben wie folgt aus:
+Beim Failover auf den Standort für die Notfallwiederherstellung müssen zwei unterschiedliche Fälle berücksichtigt werden:
 
-1. Da Sie mit der Notfallwiederherstellungseinheit von HANA (große Instanzen) eine produktionsfremde Instanz von HANA ausführen, müssen Sie diese Instanz herunterfahren. Wir gehen davon aus, dass eine ruhende HANA Produktionsinstanz vorinstalliert ist.
+- Die SAP HANA-Datenbank muss zum aktuellen Status der Daten zurückgeführt werden. Für diesen Fall steht ein Self-Service-Skript zur Verfügung, mit dem Sie das Failover durchführen können, ohne sich an Microsoft zu wenden. Für das Failback müssen Sie jedoch mit Microsoft zusammenarbeiten.
+- Sie möchten eine Speichermomentaufnahme wiederherstellen, bei der es sich nicht um die letzte replizierte Momentaufnahme handelt. In diesem Fall müssen Sie mit Microsoft zusammenarbeiten. 
+
+>[!NOTE]
+>Die nachstehend beschriebenen Verfahrensschritte müssen auf der HANA-Einheit (große Instanzen) ausgeführt werden, die der Notfallwiederherstellungseinheit entspricht. 
+ 
+Für die Wiederherstellung der letzten replizierten Speichermomentaufnahmen sehen die groben Schritte wie folgt aus: 
+
+1. Da Sie mit der Notfallwiederherstellungseinheit von HANA (große Instanzen) eine produktionsfremde Instanz von HANA ausführen, müssen Sie diese Instanz herunterfahren. Es wird davon ausgegangen, dass eine ruhende HANA-Produktionsinstanz vorinstalliert ist.
+2. Stellen Sie sicher, dass keine SAP HANA-Prozesse ausgeführt werden. Führen Sie für diese Überprüfung den folgenden Befehl aus: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. In der Ausgabe muss der Prozess **hdbdaemon** den Zustand „Beendet“ aufweisen, und es dürfen keine anderen HANA-Prozesse mit dem Zustand „Gestartet“ vorhanden sein.
+3. Führen Sie auf der HANA-Einheit (große Instanzen), die sich auf der Notfallwiederherstellungsseite befindet, das Skript **azure_hana_dr_failover.pl** aus. Das Skript fragt, welche SAP HANA-SID wiederhergestellt werden soll. Geben Sie nach Aufforderung durch das Skript eine (bzw. die einzige) SAP HANA-SID ein, die repliziert wurde und in der Datei „HANABackupCustomerDetails.txt“ auf der HANA-Einheit (große Instanzen) am Standort der Notfallwiederherstellung verwaltet wird. Wenn für mehrere SAP HANA-Instanzen ein Failover ausgeführt werden soll, müssen Sie das Skript mehrmals ausführen und bei der Aufforderung jeweils die SAP HANA-SID eingeben, für die ein Failover und eine Wiederherstellung ausgeführt werden sollen. Anschließend zeigt das Skript eine Liste von Bereitstellungspunkten der Volumes an, die der HANA-Einheit (große Instanzen) hinzugefügt werden. Diese Liste enthält auch die wiederhergestellten Notfallwiederherstellungvolumes.
+4. Binden Sie die wiederhergestellten Notfallwiederherstellungsvolumes mithilfe von Linux-Betriebssystembefehlen in die HANA-Einheit (große Instanzen) am Standort für die Notfallwiederherstellung ein. 
+6. Starten Sie die bislang ruhende SAP HANA-Produktionsinstanz.
+7. Wenn Sie zur Verringerung der RPO-Zeit zusätzlich Protokolle der Transaktionsprotokollsicherung kopiert haben, müssen Sie diese Transaktionsprotokollsicherungen mit dem neu eingebundenen Notfallwiederherstellungsverzeichnis „hana/logbackups“ zusammenführen. Überschreiben Sie keine vorhandenen Sicherungen. Kopieren Sie einfach neuere Sicherungen, die nicht mit der neuesten Replikation einer Speichermomentaufnahme repliziert wurden.
+8. Sie können auch einzelne Dateien über die Momentaufnahme wiederherstellen, die auf dem Volume „/hana/shared/PRD“ in der Azure-Region für die Notfallwiederherstellung repliziert wurden. 
+
+Sie können das Notfallwiederherstellungs-Failover auch ohne Auswirkungen auf die tatsächliche Replikationsbeziehung testen. Befolgen Sie für ein Testfailover die Schritte 1 und 2 der oben aufgeführten Schritte. Schritt 3 wird jedoch geändert.
+
+>[!IMPORTANT]
+>Wenn Sie im Rahmen des **TESTS eines Failovers** mit dem im Folgenden erläuterten Skript am Standort der Notfallwiederherstellung eine Instanz erstellt haben, können Sie auf dieser KEINE Produktionstransaktionen durchführen. Der als Nächstes erläuterte Befehl erstellt einen Satz von Volumes, die keine Beziehung zum primären Standort haben. Eine Synchronisierung zurück an den primären Standort ist daher NICHT möglich. 
+
+Schritt 3 für den **Failovertest** muss folgendermaßen aussehen:
+
+Führen Sie auf der HANA-Einheit (große Instanzen), die sich auf der Notfallwiederherstellungsseite befindet, das Skript **azure_hana_test_dr_failover.pl** aus. Dieses Skript beendet NICHT die Replikationsbeziehung zwischen dem primären Standort und dem Standort der Notfallwiederherstellung. Stattdessen klont dieses Skript die Notfallwiederherstellungs-Speichervolumes. Nach dem Klonvorgang werden die geklonten Volumes auf den Zustand der letzten Momentaufnahme wiederhergestellt und dann auf der Notfallwiederherstellungseinheit eingebunden. Das Skript fragt, welche SAP HANA-SID wiederhergestellt werden soll. Geben Sie eine (bzw. die einzige) SAP HANA-SID ein, die repliziert wurde und in der Datei „HANABackupCustomerDetails.txt“ auf der HANA-Einheit (große Instanzen) am Standort der Notfallwiederherstellung verwaltet wird. Wenn für mehrere SAP HANA-Instanzen ein Test durchgeführt werden soll, müssen Sie das Skript mehrmals ausführen und bei der Aufforderung jeweils die SAP HANA-SID eingeben, für die ein Failovertest ausgeführt werden soll. Anschließend zeigt das Skript eine Liste von Bereitstellungspunkten der Volumes an, die der HANA-Einheit (große Instanzen) hinzugefügt werden. Diese Liste enthält auch die geklonten Notfallwiederherstellungvolumes.
+
+Fahren Sie dann mit den Schritten 4 bis 8 des oben beschriebenen Verfahrens fort.
+
+Wenn Sie ein Failover am Standort der Notfallwiederherstellung ausführen müssen, um einige vor mehreren Stunden gelöschte Daten zu retten, und daher die Notfallwiederherstellungsvolumes auf einen früheren Zeitpunkt als den der letzten Momentaufnahme festgelegt werden müssen, wenden Sie dieses Verfahren an. 
+
+1. Da Sie mit der Notfallwiederherstellungseinheit von HANA (große Instanzen) eine produktionsfremde Instanz von HANA ausführen, müssen Sie diese Instanz herunterfahren. Es wird davon ausgegangen, dass eine ruhende HANA-Produktionsinstanz vorinstalliert ist.
 2. Stellen Sie sicher, dass keine SAP HANA-Prozesse ausgeführt werden. Führen Sie für diese Überprüfung den folgenden Befehl aus: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. In der Ausgabe muss der Prozess **hdbdaemon** den Zustand „Beendet“ aufweisen, und es dürfen keine anderen HANA-Prozesse mit dem Zustand „Gestartet“ vorhanden sein.
 3. Überprüfen Sie, unter welchen Momentaufnahmenamen bzw. welcher SAP HANA-Sicherungs-ID der Standort für die Notfallwiederherstellung wiederhergestellt werden soll. In der Praxis handelt es sich dabei in der Regel um die neueste Momentaufnahme. Wenn Sie verlorene Daten wiederherstellen müssen, wählen Sie eine ältere Momentaufnahme.
-4. Wenden Sie sich über eine Supportanfrage mit hoher Priorität an den Azure-Support, und fordern Sie die Wiederherstellung der Momentaufnahme (Name und Datum der Momentaufnahme) oder HANA-Sicherungs-ID am Standort für die Notfallwiederherstellung an. Standardmäßig stellt das Betriebsteam lediglich das Volume „/hana/data“ her. Wenn auch die Volumes „/hana/logbackups“ wiederhergestellt werden sollen, müssen Sie dies gesondert angeben. *Es wird davon abgeraten, das Volume „/hana/shared“ wiederherzustellen.* Stattdessen sollten Sie bestimmte Dateien wie etwa „global.ini“ aus dem Verzeichnis **.snapshot** und den zugehörigen Unterverzeichnissen auswählen, nachdem Sie erneut das Volume „/hana/shared“ für das PRD-Volume bereitgestellt haben. Auf der Betriebsseite werden folgende Schritte durchgeführt: a. Die Replikation von Momentaufnahmen aus dem Produktionsvolume auf den Notfallwiederherstellungsvolumes wird beendet. Dies könnte bereits der Fall sein, wenn ein Ausfall am Produktionsstandort der Grund dafür ist, dass Sie eine Notfallwiederherstellung durchführen müssen.
+4. Wenden Sie sich über eine Supportanfrage mit hoher Priorität an den Azure-Support, und fordern Sie die Wiederherstellung der Momentaufnahme (Name und Datum der Momentaufnahme) oder HANA-Sicherungs-ID am Standort für die Notfallwiederherstellung an. Standardmäßig stellt das Betriebsteam lediglich das Volume „/hana/data“ her. Wenn auch die Volumes „/hana/logbackups“ wiederhergestellt werden sollen, müssen Sie dies gesondert angeben. *Es wird nicht empfohlen, das Volume „/hana/shared“ wiederherzustellen.* Stattdessen sollten Sie bestimmte Dateien wie etwa „global.ini“ aus dem Verzeichnis **.snapshot** und den zugehörigen Unterverzeichnissen auswählen, nachdem Sie erneut das Volume „/hana/shared“ für das PRD-Volume bereitgestellt haben. Auf der Betriebsseite werden folgende Schritte durchgeführt: a. Die Replikation von Momentaufnahmen aus dem Produktionsvolume auf den Notfallwiederherstellungsvolumes wird beendet. Diese Unterbrechung könnte bereits stattgefunden haben, wenn ein Ausfall am Produktionsstandort der Grund dafür ist, dass Sie das Notfallwiederherstellungsverfahren durchführen müssen.
     b. Der Name der Speichermomentaufnahme oder die Momentaufnahme mit der Sicherungs-ID, den bzw. die Sie auswählen, wird auf den Notfallwiederherstellungsvolumes wiederhergestellt.
     c. Nach der Wiederherstellung können die Notfallwiederherstellungsvolumes in die Einheiten von HANA (große Instanzen) in der Notfallwiederherstellungsregion eingebunden werden.
 5. Binden Sie die Notfallwiederherstellungsvolumes in die Einheit von HANA (große Instanzen) am Standort für die Notfallwiederherstellung ein. 
@@ -828,9 +953,9 @@ Falls die Wiederherstellung auf dem Bildschirm **Fertig stellen** anscheinend ni
 
 
 ### <a name="failback-from-dr-to-a-production-site"></a>Failback vom Standort für die Notfallwiederherstellung auf den Produktionsstandort
-Sie können ein Failback von einem Notfallwiederherstellungsstandort auf einen Produktionsstandort durchführen. Gehen wir davon aus, dass das Failover auf den Standort für die Notfallwiederherstellung auf Probleme in der Azure-Produktionsregion zurückzuführen ist (und nicht darauf, dass Sie verloren gegangene Daten wiederherstellen müssen). Dies bedeutet, dass Sie Ihre SAP-Produktionsworkload für einen gewissen Zeitraum am Standort für die Notfallwiederherstellung ausgeführt haben. Nachdem die Probleme am Produktionsstandort behoben wurden, sollten Sie ein Failback auf Ihren Produktionsstandort durchführen. Da hierbei keine Daten verloren gehen dürfen, umfasst der Wechsel zum Produktionsstandort mehrere Schritte und eine enge Zusammenarbeit mit dem Betriebsteam für SAP HANA in Azure. Nach der Behebung der Probleme müssen Sie sich mit dem Betriebsteam in Verbindung setzen, um die Rücksynchronisierung mit dem Produktionsstandort anhand eines Triggers zu initiieren.
+Sie können ein Failback von einem Notfallwiederherstellungsstandort auf einen Produktionsstandort durchführen. Gehen wir davon aus, dass das Failover auf den Standort für die Notfallwiederherstellung auf Probleme in der Azure-Produktionsregion zurückzuführen ist (und nicht darauf, dass Sie verloren gegangene Daten wiederherstellen müssen). Sie haben Ihre SAP-Produktionsworkload für einen gewissen Zeitraum am Standort für die Notfallwiederherstellung ausgeführt. Nachdem die Probleme am Produktionsstandort behoben wurden, sollten Sie ein Failback auf Ihren Produktionsstandort durchführen. Da hierbei keine Daten verloren gehen dürfen, umfasst der Wechsel zum Produktionsstandort mehrere Schritte und eine enge Zusammenarbeit mit dem Betriebsteam für SAP HANA in Azure. Nach der Behebung der Probleme müssen Sie sich mit dem Betriebsteam in Verbindung setzen, um die Rücksynchronisierung mit dem Produktionsstandort anhand eines Triggers zu initiieren.
 
-Die Abfolge der Schritte sieht folgendermaßen aus:
+Ablauf:
 
 1. Das Betriebsteam für SAP HANA in Azure ruft den Trigger zum Synchronisieren der Produktionsspeichervolumes aus den Speichervolumes für die Notfallwiederherstellung ab, die jetzt den Produktionszustand darstellen. In diesem Zustand wird die Einheit von HANA (große Instanzen) am Produktionsstandort heruntergefahren.
 2. Das Betriebsteam für SAP HANA in Azure überwacht die Replikation und stellt sicher, dass die Daten auf dem neuesten Stand sind, bevor Sie (der Kunde) informiert werden.
@@ -858,7 +983,7 @@ Die Ausgabe wird nach Volume in folgende Abschnitte unterteilt:
 
 Der Linkstatus lautet **Aktiv** – es sei denn, die Verbindung zwischen Standorten ist unterbrochen oder es findet gerade ein Failoverereignis statt. Die Replikationsaktivität gibt Aufschluss darüber, ob momentan Daten repliziert werden, ob sich die Aktivität im Leerlauf befindet oder ob gerade andere Aktivitäten für den Link stattfinden. Für die zuletzt replizierte Momentaufnahme sollte nur `snapmirror…` angezeigt werden. Anschließend folgt die Größe der letzten Momentaufnahme. Zuletzt wird der Zeitabstand angezeigt. Der Zeitabstand ist die Zeit zwischen der geplanten Replikationszeit und dem Abschluss der Replikation. Der Wert für den Zeitabstand kann bei der Datenreplikation mehr als eine Stunde betragen, obwohl die Replikation gestartet wurde. Dies gilt insbesondere bei der ersten Replikation. Der Zeitabstand nimmt bis zum Abschluss der laufenden Replikation immer weiter zu.
 
-Eine Ausgabe kann beispielsweise etwa wie folgt aussehen:
+Beispielausgabe:
 
 ```
 hana_data_hm3_mnt00002_t020_dp

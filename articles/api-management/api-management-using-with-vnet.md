@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 4e3c17a86281176726be64008fa9e59e08e026f0
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: fe5e26a957d18f1f7f5ed360a27bb1f9c9826718
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md).
@@ -61,7 +61,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     Es wird daraufhin eine Liste aller Regionen angezeigt, in denen Ihr API Management-Dienst bereitgestellt wird. Wählen Sie ein VNet und Subnetz für jede Region aus. Die Liste der VNets enthält sowohl klassische als auch virtuelle Ressourcen-Manager-Netzwerke, die in Ihrem Azure-Abonnement für die Region zur Verfügung stehen, die Sie konfigurieren.
     
     > [!NOTE]
-    > Der **Dienstendpunkt** in der obigen Abbildung schließt Gateway/Proxy, Herausgeberportal, Entwicklerportal, GIT und den direkten Verwaltungsendpunkt ein.
+    > Der **Dienstendpunkt** in der obigen Abbildung schließt Gateway/Proxy, Azure-Portal, Entwicklerportal, GIT und den direkten Verwaltungsendpunkt ein.
     > Der **Verwaltungsendpunkt** in der obigen Abbildung ist der im Dienst gehostete Endpunkt zum Verwalten der Konfiguration über das Azure-Portal und PowerShell.
     > Beachten Sie, dass im Diagramm zwar IP-Adressen für die verschiedenen Endpunkte aufgeführt sind, der API Management-Dienst jedoch **ausschließlich** auf die konfigurierten Hostnamen reagiert.
     

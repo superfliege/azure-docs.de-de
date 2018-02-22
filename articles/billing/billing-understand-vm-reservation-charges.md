@@ -1,5 +1,5 @@
 ---
-title: "Grundlegendes zur Anwendung des Rabatts für reservierte Azure-VM-Instanzen | Microsoft-Dokumentation"
+title: "Grundlegendes zur Anwendung des Rabatts für Azure Reserved Virtual Machine Instances | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie der Rabatt für reservierte Azure-VM-Instanzen auf ausgeführte virtuelle Computer angewendet wird."
 services: billing
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: vikdesai
-ms.openlocfilehash: d476380fa841617f7eb914167ebd7d5b8aa611c2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2a3854077c7c8bdb20804c6b3e77500659c3c484
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="understand-how-the-reserved-virtual-machine-instance-discount-is-applied"></a>Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen
 Nachdem Sie eine reservierte VM-Instanz erworben haben, wird der Reservierungsrabatt automatisch auf die virtuellen Computer angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt die Infrastrukturkosten Ihrer virtuellen Computer ab. In der folgenden Tabelle sind die Kosten für virtuelle Computer nach dem Kauf einer Reservierung veranschaulicht. In jedem Fall werden Ihnen die regulären Gebühren für Speicher und Netzwerke berechnet.
@@ -31,7 +31,7 @@ Nachdem Sie eine reservierte VM-Instanz erworben haben, wird der Reservierungsra
 |Virtuelle Windows-Computer mit [Azure-Hybridvorteil](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Die Reservierung deckt die Kosten der Infrastruktur ab. Die Kosten für die Windows-Software werden durch den Azure-Hybridvorteil abgedeckt. Zusätzliche Software wird separat in Rechnung gestellt.| 
 
 ## <a name="application-of-reservation-discount-to-non-windows-vms"></a>Anwendung des Reservierungsrabatts auf virtuelle Nicht-Windows-Computer
- Der Reservierungsrabatt wird auf Stundenbasis auf ausgeführte VM-Instanzen angewendet. Die erworbenen Reservierungen werden zur Anwendung des Reservierungsrabatts auf die von den ausgeführten virtuellen Computern ausgegebene Nutzung abgestimmt. Das folgende Diagramm veranschaulicht die Anwendung einer Reservierung auf die abrechenbare VM-Nutzung. Die Abbildung basiert auf einem Reservierungskauf und zwei entsprechenden VM-Instanzen.
+ Der Reservierungsrabatt wird auf Stundenbasis auf ausgeführte VM-Instanzen angewendet. Die erworbenen Reservierungen werden zur Anwendung des Reservierungsrabatts auf die von den ausgeführten virtuellen Computern ausgegebene Nutzung abgestimmt. Bei virtuellen Computern, die keine volle Stunde lang ausgeführt werden, wird die Reservierung von anderen virtuellen Computern aufgefüllt, die keine Reservierung verwenden. Dazu gehören auch gleichzeitig ausgeführte virtuelle Computer. Am Ende der Stunde wird die Anwendung der Reservierung für virtuelle Computer für diese Stunde gesperrt. Wenn ein virtueller Computer nicht eine ganze Stunde lang ausgeführt wird oder gleichzeitige virtuelle Computer diese Reservierungsstunde nicht auffüllen, ist die Reservierung für diese Stunde nicht vollständig ausgelastet. Das folgende Diagramm veranschaulicht die Anwendung einer Reservierung auf die abrechenbare VM-Nutzung. Die Abbildung basiert auf einem Reservierungskauf und zwei entsprechenden VM-Instanzen.
 
 ![Anwendung der reservierten VM-Instanz](media/billing-reserved-vm-instance-application/billing-reserved-vm-instance-application.png)
 
@@ -44,6 +44,16 @@ Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Reservieru
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Anwendung des Reservierungsrabatts auf virtuelle Windows-Computer
 Wenn Sie Windows-VM-Instanzen ausführen, wird die Reservierung angewendet, um die Infrastrukturkosten abzudecken. Die Anwendung der Reservierung auf die VM-Infrastrukturkosten ist bei virtuellen Windows-Computer und virtuellen Nicht-Windows-Computern identisch. Windows-Software wird separat basierend auf den vCPUs in Rechnung gestellt. Informationen finden Sie unter [Windows software costs not included with Reserved Instances](https://go.microsoft.com/fwlink/?linkid=862756) (Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten). Die Windows-Lizenzierungskosten können mit dem [Azure-Hybridvorteil für Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) abgedeckt werden.
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu reservierten VM-Instanzen finden Sie in den folgenden Artikeln.
+
+- [Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Verwalten von reservierten Azure-VM-Instanzen](billing-manage-reserved-vm-instance.md)
+- [Mit reservierten VM-Instanzen Kosten für virtuelle Computer sparen](billing-save-compute-costs-reservations.md)
+- [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
+- [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](billing-understand-reserved-instance-usage-ea.md)
+- [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

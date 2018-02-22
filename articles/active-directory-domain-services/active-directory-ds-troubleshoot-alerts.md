@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 02/05/2018
 ms.author: ergreenl
-ms.openlocfilehash: b2e0edf3588f3b1db5f4b6641019be1ded9cb50e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8a0b30e6c975bd8f3bfbe70a64c085b729115f24
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – Problembehandlung von Warnungen
 Dieser Artikel enthält Leitfäden für die Problembehandlung aller Warnungen, denen Sie in Ihrer verwalteten Domäne begegnen können.
@@ -28,7 +28,7 @@ Wählen Sie die Schritte zur Problembehandlung aus, die der ID der aufgetretenen
 
 | **Warnungs-ID** | **Warnmeldung** | **Lösung** |
 | --- | --- | :--- |
-| AADDS001 | *Für die verwaltete Domäne ist Secure LDAP über Internet aktiviert. Der Zugriff auf Port 636 ist jedoch nicht mithilfe einer Netzwerksicherheitsgruppe gesperrt. Dies kann Brute-Force-Kennwortangriffe auf Benutzerkonten in der verwalteten Domäne möglich machen.* | [Falsche sichere LDAP-Konfiguration](active-directory-ds-troubleshoot-ldaps.md) |
+| AADDS001 | *Für die verwaltete Domäne ist Secure LDAP über Internet aktiviert. Der Zugriff auf Port 636 ist jedoch nicht über eine Netzwerksicherheitsgruppe gesperrt. Dies kann Brute-Force-Kennwortangriffe auf Benutzerkonten in der verwalteten Domäne möglich machen.* | [Falsche sichere LDAP-Konfiguration](active-directory-ds-troubleshoot-ldaps.md) |
 | AADDS100 | *Das Ihrer verwalteten Domäne zugeordnete Azure AD-Verzeichnis wurde möglicherweise gelöscht. Die verwaltete Domäne befindet sich nicht mehr in einer unterstützten Konfiguration. Microsoft kann Ihre verwaltete Domäne nicht überwachen, verwalten, patchen und synchronisieren.* | [Fehlendes Verzeichnis](#aadds100-missing-directory) |
 | AADDS101 | *Azure AD Domain Services kann in einem Azure AD B2C-Verzeichnis nicht aktiviert werden.* | [Azure AD B2C wird in diesem Verzeichnis ausgeführt](#aadds101-azure-ad-b2c-is-running-in-this-directory) |
 | AADDS102 | *Ein für den ordnungsgemäßen Betrieb von Azure AD Domain Services erforderlicher Dienstprinzipal wurde aus Ihrem Azure AD-Verzeichnis gelöscht. Diese Konfiguration wirkt sich darauf aus, wie Microsoft Ihre verwaltete Domäne überwachen, verwalten, patchen und synchronisieren kann.* | [Fehlender Dienstprinzipal](active-directory-ds-troubleshoot-service-principals.md) |
@@ -75,6 +75,11 @@ Führen Sie die folgenden Schritte aus, um Ihren Dienst wiederherzustellen:
 
 Lesen Sie den Abschnitt **privater IP-v4-Adressbereich** in [diesem Artikel](https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces), bevor Sie beginnen.
 
+Innerhalb des virtuellen Netzwerks können Computer Anforderungen für Azure-Ressourcen ausführen, die sich im gleichen IP-Adressbereich wie die für das Subnetz konfigurierten befinden. Da das virtuelle Netzwerk jedoch für diesen Bereich konfiguriert ist, werden diese Anforderungen innerhalb des virtuellen Netzwerks weitergeleitet und erreichen nicht die vorgesehenen Webressourcen. Dies kann zu unvorhersehbaren Fehlern mit Azure AD Domain Services führen.
+
+**Wenn Sie der Besitzer des in Ihrem virtuellen Netzwerk konfigurierten IP-Adressbereichs sind, kann diese Warnung ignoriert werden. Allerdings kann Azure AD Domain Services die [SLA](https://azure.microsoft.com/support/legal/sla/active-directory-ds/v1_0/)] mit dieser Konfiguration nicht einhalten, da sie zu unvorhersehbaren Fehlern führen kann.**
+
+
 1. [Löschen Sie Ihre verwaltete Domäne](active-directory-ds-disable-aadds.md) aus Ihrem Verzeichnis.
 2. Korrigieren Sie den IP-Adressbereich für das Subnetz
   1. Navigieren Sie zur [Seite „Virtuelle Netzwerke“ im Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
@@ -86,7 +91,7 @@ Lesen Sie den Abschnitt **privater IP-v4-Adressbereich** in [diesem Artikel](htt
   7. Aktualisieren Sie den Adressbereich, und speichern Sie Ihre Änderungen.
 3. Befolgen Sie die Anweisungen im Handbuch [Erste Schritte mit Azure Active Directory Domain Services](active-directory-ds-getting-started.md), um Ihre verwaltete Domäne neu zu erstellen. Achten Sie darauf, ein virtuelles Netzwerk mit einem privaten IP-Adressbereich auszuwählen.
 4. Um den Beitritt Ihrer virtuellen Computer zu Ihrer neuen Domäne zu realisieren, befolgen Sie die Anweisungen in [diesem Handbuch](active-directory-ds-admin-guide-join-windows-vm-portal.md).
-8. Überprüfen Sie in zwei Stunden die Integrität Ihrer Domäne, um sicherzustellen, dass Sie die Schritte ordnungsgemäß abgeschlossen haben.
+8. Um sicherzustellen, dass die Warnung aufgelöst wurde, überprüfen Sie den Status Ihrer Domäne nach zwei Stunden noch einmal.
 
 
 ## <a name="contact-us"></a>Kontakt

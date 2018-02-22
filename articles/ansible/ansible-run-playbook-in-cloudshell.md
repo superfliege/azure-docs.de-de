@@ -1,22 +1,22 @@
 ---
-title: "Ausführen von Ansible in Azure Cloud Shell"
-description: "Hier erfahren Sie, wie Sie verschiedene Ansible-Aufgaben in Azure Cloud Shell ausführen."
+title: "Ausführen von Ansible mit Bash in Azure Cloud Shell"
+description: "Hier erfahren Sie, wie Sie verschiedene Ansible-Aufgaben mit Bash in Azure Cloud Shell ausführen."
 ms.service: ansible
-keywords: Ansible, Azure, DevOps, Bash, CloudShell, Playbook
+keywords: Ansible, Azure, DevOps, Bash, CloudShell, Playbook, Bash
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 02/01/2018
 ms.topic: article
-ms.openlocfilehash: d5a818616d382954d0880bcae58bb13b632ad757
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 0cd0390a381e85c8f047960ce06c581a433d4a2c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="run-ansible-in-the-azure-cloud-shell"></a>Ausführen von Ansible in Azure Cloud Shell
+# <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Ausführen von Ansible mit Bash in Azure Cloud Shell
 
-In diesem Tutorial erfahren Sie, wie Sie verschiedene Ansible-Aufgaben in Azure Cloud Shell ausführen. Diese Aufgaben umfassen das Herstellen einer Verbindung mit einem virtuellen Computer sowie das Erstellen von Ansible-Playbooks zum Erstellen und Löschen einer Azure-Ressourcengruppe.
+In diesem Tutorial erfahren Sie, wie Sie verschiedene Ansible-Aufgaben von Bash aus in Cloud Shell ausführen. Diese Aufgaben umfassen das Herstellen einer Verbindung mit einem virtuellen Computer sowie das Erstellen von Ansible-Playbooks zum Erstellen und Löschen einer Azure-Ressourcengruppe.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -24,12 +24,14 @@ In diesem Tutorial erfahren Sie, wie Sie verschiedene Ansible-Aufgaben in Azure 
 
 - **Azure-Anmeldeinformationen** - [Erstellen von Azure-Anmeldeinformationen und Konfigurieren von Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
-- **Konfigurieren von Azure Cloud Shell:** Sollten Sie noch nicht mit Azure Cloud Shell vertraut sein, finden Sie im Artikel [Schnellstart für Bash in Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart) Informationen zu den ersten Schritten mit Cloud Shell sowie zur Konfiguration.
+- **Konfigurieren von Azure Cloud Shell:** Sollten Sie noch nicht mit Azure Cloud Shell vertraut sein, finden Sie im Artikel [Schnellstart für Bash in Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart) Informationen zu den ersten Schritten mit Cloud Shell sowie zur Konfiguration. Starten Sie hier eine dedizierte Website für Cloud Shell:
+
+[![Cloud Shell starten](https://shell.azure.com/images/launchcloudshell.png "Cloud Shell starten")](https://shell.azure.com)
 
 ## <a name="use-ansible-to-connect-to-a-vm"></a>Herstellen einer Verbindung mit einem virtuellen Computer mithilfe von Ansible
 Ansible hat ein Python-Skript namens [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) erstellt, das API-Anforderungen an Azure Resource Manager richtet, um einen dynamischen Bestand Ihrer Azure-Ressourcen zu generieren. Die folgende Anleitung zeigt Schritt für Schritt, wie Sie unter Verwendung des Skripts `azure_rm.py` eine Verbindung mit einem virtuellen Azure-Computer herstellen:
 
-1. Öffnen Sie Azure Cloud Shell.
+1. Öffnen Sie Bash in Cloud Shell. Der Shell-Typ wird auf der linken Seite des Cloud Shell-Fensters angegeben.
 
 1. Sollten Sie über keinen verwendbaren virtuellen Computer verfügen, geben Sie in Cloud Shell die folgenden Befehle ein, um einen virtuellen Computer zu Testzwecken zu erstellen:
 

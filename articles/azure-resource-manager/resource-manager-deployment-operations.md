@@ -1,5 +1,5 @@
 ---
-title: "Bereitstellungsvorgänge mit Azure Resource Manager | Microsoft Docs"
+title: "Bereitstellungsvorgänge mit Azure Resource Manager | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Azure Resource Manager-Bereitstellungsvorgänge mit dem Portal, mit PowerShell, mit der Azure-Befehlszeilenschnittstelle (CLI) und der REST-API anzeigen."
 services: azure-resource-manager,virtual-machines
 documentationcenter: 
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Anzeigen von Bereitstellungsvorgängen mit Azure Resource Manager
 
 
 Sie können die Vorgänge für eine Bereitstellung im Azure-Portal anzeigen. Die Anzeige der Vorgänge ist wahrscheinlich dann am interessantesten, wenn während der Bereitstellung ein Fehler auftritt. Daher konzentriert sich dieser Artikel auf das Anzeigen von fehlerhaften Vorgängen. Das Portal bietet eine Schnittstelle, mit der Sie die Fehler leicht finden und potenzielle Korrekturen ermitteln können.
 
-[!INCLUDE [resource-manager-troubleshoot-introduction](../../includes/resource-manager-troubleshoot-introduction.md)]
+Sie können die Fehler in Ihrer Bereitstellung anhand der Überwachungsprotokolle oder der Bereitstellungsvorgänge beheben. In diesem Thema werden beide Methoden veranschaulicht. Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
 ## <a name="portal"></a>Portal
 Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
@@ -42,7 +42,7 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
     ![Bereitstellungsfehler anzeigen](./media/resource-manager-deployment-operations/view-error.png)
    
     Diese Fehlermeldung sollte ausreichen, damit Sie mit der Problembehandlung beginnen können. Wenn Sie jedoch weitere Details zu den abgeschlossenen Tasks benötigen, können Sie die Vorgänge wie in den folgenden Schritten erläutert anzeigen.
-4. Sie können alle Bereitstellungsvorgänge auf dem Blatt **Bereitstellung** anzeigen. Wählen Sie einen Vorgang, um weitere Details anzuzeigen.
+4. Sie können alle Bereitstellungsvorgänge anzeigen. Wählen Sie einen Vorgang, um weitere Details anzuzeigen.
    
     ![Vorgänge anzeigen](./media/resource-manager-deployment-operations/view-operations.png)
    
@@ -50,7 +50,7 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
 5. Sie können Ereignisse für die Bereitstellung anzeigen, indem Sie **Ereignisse**wählen.
    
     ![Ereignisse anzeigen](./media/resource-manager-deployment-operations/view-events.png)
-6. Sie sehen alle Ereignisse für die Bereitstellung und können zum Anzeigen weiterer Einzelheiten ein Ereignis auswählen. Beachten Sie auch die Korrelations-IDs. Dieser Wert kann hilfreich sein, wenn Sie bei der Problembehandlung für eine Bereitstellung mit dem technischen Support zusammenarbeiten.
+6. Sie sehen alle Ereignisse für die Bereitstellung und können zum Anzeigen weiterer Einzelheiten ein Ereignis auswählen. Beachten Sie die Korrelations-IDs. Dieser Wert kann hilfreich sein, wenn Sie bei der Problembehandlung für eine Bereitstellung mit dem technischen Support zusammenarbeiten.
    
     ![Ereignisse anzeigen](./media/resource-manager-deployment-operations/see-all-events.png)
 
@@ -178,7 +178,7 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
   }
   ```
 
-2. Rufen Sie Informationen zu Bereitstellungsvorgängen mit dem Vorgang zum Auflisten aller Vorlagenbereistellungsvorgänge mithilfe des Befehls [List or Update](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List) ab. 
+2. Rufen Sie Informationen zu Bereitstellungsvorgängen mit [Alle Vorlagenbereitstellungsvorgänge auflisten](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List) ab. 
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}

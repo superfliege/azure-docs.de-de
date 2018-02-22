@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d90b3c6b0ac899bede210d48cd97210ccbe5cc57
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 4ecbf2b2e144885159ae6d6e3a82b4d6063a3d23
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,7 +62,7 @@ Folgende Eigenschaften werden für den mit MySQL verknüpften Dienst unterstütz
 | database | Name der MySQL-Datenbank. | Ja |
 | schema | Name des Schemas in der Datenbank. | Nein  |
 | username | Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der MySQL-Datenbank an. | Ja |
-| password | Geben Sie das Kennwort für das angegebene Benutzerkonto an. Legen Sie für dieses Feld „SecureString“ fest. | Ja |
+| password | Geben Sie das Kennwort für das angegebene Benutzerkonto an. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
 
 **Beispiel:**

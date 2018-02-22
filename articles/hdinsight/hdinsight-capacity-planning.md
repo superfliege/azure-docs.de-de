@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 391b691e895c672ef872f8b98c88567175ad8030
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 70451c5a69a1a268aef0eb957cb92791b92eb221
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -89,8 +89,7 @@ Die Skalierung eines Clusters wird durch die Menge seiner VM-Knoten bestimmt. F�
 
 Je nach Clustertyp kann durch zusätzliche Workerknoten die Rechenkapazität (z.B. durch weitere Kerne) heraufgesetzt werden, damit jedoch auch der Gesamtbedarf an Arbeitsspeicher zur Unterstützung der In-Memory-Speicherung verarbeiteter Daten für den gesamten Cluster steigen. Wie bei der Wahl von VM-Größe und -Typ gilt für die richtige Clusterskalierung, dass sie in der Regel mit simulierten Workloads oder Testabfragen empirisch ermittelt wird.
 
-Sie können Ihren Cluster für Spitzenlastanforderungen horizontal hochskalieren und wieder herunterskalieren, wenn diese zusätzlichen Knoten nicht mehr benötigt werden.
-<!-- - see [Scaling - best practices](hdinsight-scaling-best-practices.md). -->
+Sie können Ihren Cluster für Spitzenlastanforderungen horizontal hochskalieren und wieder herunterskalieren, wenn diese zusätzlichen Knoten nicht mehr benötigt werden. Weitere Informationen finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Clusterlebenszyklus
 

@@ -456,7 +456,7 @@ Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experi
 ![Ziehen des Datasets in den Hauptbereich](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
-> Dies gilt sowohl für Trainings- als auch Test-DataSets. Achten Sie außerdem darauf, den Datenbanknamen und die Tabellennamen zu verwenden, die Sie für diesen Zweck angegeben haben. Die in der Abbildung verwendeten Werte dienen lediglich zur Veranschaulichung.**
+> Dies gilt sowohl für Trainings- als auch Test-DataSets. Achten Sie außerdem darauf, den Datenbanknamen und die Tabellennamen zu verwenden, die Sie für diesen Zweck angegeben haben. Die in der Abbildung verwendeten Werte dienen lediglich zur Veranschaulichung.\**\
 > 
 > 
 

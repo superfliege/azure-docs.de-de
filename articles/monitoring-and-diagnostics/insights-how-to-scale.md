@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: ancav
-ms.openlocfilehash: 7e16926b5a1c28c0c8c80ee8c17e8c2fdb9e55a7
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 9ff52bd29644c7c585d2a85fcbe49e8800f6a035
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>Manuelles oder automatisches Skalieren der Instanzenzahl
 Im [Azure-Portal](https://portal.azure.com/)können Sie die Anzahl der Instanzen für Ihren Dienst manuell festlegen oder Parameter für die automatische Skalierung festlegen. Dieser Vorgang wird als *horizontales Hochskalieren* oder *horizontales Herunterskalieren* bezeichnet.
@@ -30,7 +30,7 @@ Sie können im Portal skalieren und mit [REST-API](https://msdn.microsoft.com/li
 ## <a name="scaling-manually"></a>Manuelles Skalieren
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen**, und navigieren Sie zu der Ressource, die Sie skalieren möchten, z.B. zu einem **App Service-Plan**.
 2. Klicken Sie auf **Einstellungen > Horizontal hochskalieren (App Service-Plan)**.
-3. Oben auf dem Blatt **Skalierung** wird der Verlauf automatischer Skalierungsvorgänge für den Dienst angezeigt.
+3. Oben auf dem Blatt **Skalierung** wird auf der Registerkarte **Ausführungsverlauf** der Verlauf automatischer Skalierungsvorgänge für den Dienst angezeigt.
    
     ![Blatt "Skalieren"](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
    
@@ -38,7 +38,7 @@ Sie können im Portal skalieren und mit [REST-API](https://msdn.microsoft.com/li
    > In diesem Diagramm werden nur Aktionen angezeigt, die im Rahmen der automatischen Skalierung ausgeführt werden. Wenn Sie die Instanzenzahl manuell anpassen, wird diese Änderung im Diagramm nicht angezeigt.
    > 
    > 
-4. Sie können die Anzahl von **Instanzen** über den Schieberegler manuell anpassen.
+4. Sie können die Anzahl von **Instanzen** auf der Registerkarte **Konfigurieren** manuell anpassen.
 5. Nach dem Klicken auf **Speichern** wird die Instanzenzahl praktisch sofort auf die gewünschte Anzahl skaliert.
 
 ## <a name="scaling-based-on-a-pre-set-metric"></a>Skalierung basierend auf einer voreingestellten Metrik

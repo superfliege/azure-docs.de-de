@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 3de048a88b2a14936f7a49afefc8c96e56909c37
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 6ffec33ba922fc59fa68f2c39a1d5b587e816d0b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Netsuite für die automatische Benutzerbereitstellung
 
@@ -86,9 +86,9 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 12. Klicken Sie auf **Speichern**.
 
-Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Netsuite im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 20 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Netsuite-App ausgeführt werden.
+Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Netsuite im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Netsuite-App ausgeführt werden.
 
-Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, bevor Sie überprüfen, ob das Konto mit Netsuite synchronisiert wurde.
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

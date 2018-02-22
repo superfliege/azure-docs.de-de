@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/4/2018
+ms.date: 2/4/2018
 ms.author: raiye
-ms.openlocfilehash: e645d57dfff040eb05f4d395fac058b2b485933b
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 73d5225653929d4ce4da66eef6b9365a7b5d13fe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem deaktiviert wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -42,6 +42,9 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sind Sie unsicher, was das Gast-BS ist oder wie Gast-BS-Releases funktionieren? Lesen Sie [diesen](#how-it-works) Abschnitt.
 
 ## <a name="news-updates"></a>Neuigkeiten
+###### <a name="january-29-2018"></a>**29. Januar 2018**
+Das Januar-Gastbetriebssystem wurde für die Betriebssystemfamilien 2 (WA-GUEST-OS-2.70_201801-01) und 3 (WA-GUEST-OS-3.57_201801-01) veröffentlicht.
+
 ###### <a name="january-4-2018"></a>**4. Januar 2018**
 Das Januar-Gastbetriebssystem wurde für Betriebssystemfamilien vom Typ 4 (WA-GUEST-OS-4.50_201801-01) und 5 (WA-GUEST-OS-5.15_201801-01) veröffentlicht und enthält wichtige Sicherheitspatches.  
 
@@ -92,7 +95,7 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 | --- | --- | --- | --- |
 | WA-GUEST-OS-5.15_201801-01 |4. Januar 2018 |Post 5.17 |TBD |
 | WA-GUEST-OS-5.14_201712-01 |4. Januar 2018 |Post 5.16 |TBD |
-| WA-GUEST-OS-5.13_201711-01 |14. Dezember 2017 |Post 5.15 |TBD |
+|~~WA-GUEST-OS-5.13_201711-01~~ |14. Dezember 2017 |4. Januar 2018|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-5.11_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
 |~~WA-GUEST-OS-5.10_201708-01~~ |24. August 2017 |14. Dezember 2017 |TBD |
@@ -117,7 +120,7 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 | --- | --- | --- | --- |
 | WA-GUEST-OS-4.50_201801-01 |4. Januar 2018 |Post 4.52 |TBD |
 | WA-GUEST-OS-4.49_201712-01 |4. Januar 2018 |Post 4.51 |TBD |
-| WA-GUEST-OS-4.48_201711-01 |14. Dezember 2017 |Post 4.50 |TBD |
+|~~WA-GUEST-OS-4.48_201711-01~~ |14. Dezember 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-4.46_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
 |~~WA-GUEST-OS-4.45_201708-01~~ |24. August 2017 |14. Dezember 2017 |TBD |
@@ -140,8 +143,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.57_2017801-01 |29. Januar 2018 |Nach Version 3.59 |TBD |
 | WA-GUEST-OS-3.56_201712-01 |4. Januar 2018 |Post 3.58 |TBD |
-| WA-GUEST-OS-3.55_201711-01 |14. Dezember 2017 |Post 3.57 |TBD |
+|~~WA-GUEST-OS-3.55_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |TBD |
 |~~WA-GUEST-OS-3.54_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-3.53_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
 |~~WA-GUEST-OS-3.52_201708-01~~ |24. August 2017 |14. Dezember 2017 |TBD |
@@ -164,8 +168,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.70_201801-01 |29. Januar 2018 |Nach Version 2.72 |TBD |
 | WA-GUEST-OS-2.69_201712-01 |4. Januar 2018 |Post 2.71 |TBD |
-| WA-GUEST-OS-2.68_201711-01 |14. Dezember 2017 |Post 2.70 |TBD |
+|~~WA-GUEST-OS-2.68_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |TBD |
 |~~WA-GUEST-OS-2.67_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-2.66_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
 |~~WA-GUEST-OS-2.65_201708-01~~ |24. August 2017 |14. Dezember 2017 |TBD |

@@ -8,11 +8,11 @@ ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 1fca41a8498cec506298748acd3511a5c5802d26
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 96b12fbddd4293c55e9029b194416541ca44c622
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Auffüllung des UserPrincipalName-Attributs in Azure AD
 
@@ -67,9 +67,10 @@ Da der Wert des UserPrincipalName-Attributs in Azure AD auf die MOERA festgelegt
 Wenn ein Benutzerobjekt zum ersten Mal mit einem Azure AD-Mandanten synchronisiert wurde, überprüft Azure AD Folgendes in der angegebenen Reihenfolge und legt den Wert des MailNickName-Attributs auf den ersten vorhandenen Wert fest:
 
 - Lokales mailNickName-Attribut
-- Präfix des lokalen mail-Attributs
 - Präfix der primären SMTP-Adresse
+- Präfix des lokalen mail-Attributs
 - Präfix des lokalen userPrincipalName-Attributs bzw. der alternativen Anmelde-ID
+- Präfix der sekundären SMTP-Adresse
 
 Wenn die Updates für ein Benutzerobjekt mit dem Azure AD-Mandanten synchronisiert werden, aktualisiert Azure AD den MailNickName-Attributwert nur dann, wenn ein Update für den lokalen mailNickName-Attributwert verfügbar ist.
 
@@ -85,12 +86,12 @@ Die folgenden Beispielszenarien zeigen, wie der UPN basierend auf dem vorgegeben
 
 Lokales Benutzerobjekt:
 - mailNickName      : &lt;nicht festgelegt&gt;
-- mail          : us1@contoso.com
-- proxyAddresses        : {SMTP:us2@contoso.com}
+- proxyAddresses        : {SMTP:us1@contoso.com}
+- mail          : us2@contoso.com
 - userPrincipalName : us3@contoso.com`
 
 Zum ersten Mal mit dem Azure AD-Mandanten synchronisiertes Benutzerobjekt:
-- Legen Sie das MailNickName-Attribut in Azure AD auf ein lokales mail-Attributpräfix fest.
+- Legen Sie das MailNickName-Attribut von Azure AD auf das Präfix der primären SMTP-Adresse fest.
 - Legen Sie die MOERA auf &lt;MailNickName&gt;&#64;&lt;Anfangsdomäne&gt; fest.
 - Legen Sie das UserPrincipalName-Attribut in Azure AD auf die MOERA fest.
 
@@ -103,8 +104,8 @@ Benutzerobjekt des Azure AD-Mandanten:
 
 Lokales Benutzerobjekt:
 - mailNickName      : us4
-- mail          : us1@contoso.com
-- proxyAddresses        : {SMTP:us2@contoso.com}
+- proxyAddresses        : {SMTP:us1@contoso.com}
+- mail          : us2@contoso.com
 - userPrincipalName : us3@contoso.com
 
 Synchronisieren von Updates für das lokale mailNickName-Attribut mit dem Azure AD-Mandanten
@@ -119,8 +120,8 @@ Benutzerobjekt des Azure AD-Mandanten:
 
 Lokales Benutzerobjekt:
 - mailNickName      : us4
-- mail          : us1@contoso.com
-- proxyAddresses        : {SMTP:us2@contoso.com}
+- proxyAddresses        : {SMTP:us1@contoso.com}
+- mail          : us2@contoso.com
 - userPrincipalName : us5@contoso.com
 
 Synchronisieren von Updates für das lokale userPrincipalName-Attribut mit dem Azure AD-Mandanten:
@@ -132,12 +133,12 @@ Benutzerobjekt des Azure AD-Mandanten:
 - MailNickName      : us4
 - UserPrincipalName : us4@contoso.onmicrosoft.com
 
-### <a name="scenario-4-non-verified-upn-suffix--update-on-premises-mail-attribute-and-primary-smtp-address"></a>Szenario 4: Nicht überprüftes UPN-Suffix – Aktualisieren des lokalen mail-Attributs und der primären SMTP-Adresse
+### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>Szenario 4: nicht überprüftes UPN-Suffix – Aktualisieren der primären SMTP-Adresse und des lokalen mail-Attributs
 
 Lokales Benutzerobjekt:
 - mailNickName      : us4
-- mail          : us6@contoso.com
-- proxyAddresses        : {SMTP:us7@contoso.com}
+- proxyAddresses        : {SMTP:us6@contoso.com}
+- mail          : us7@contoso.com
 - userPrincipalName : us5@contoso.com
 
 Synchronisieren von Updates für das lokale mail-Attribut und die primäre SMTP-Adresse im Azure AD-Mandanten
@@ -151,8 +152,8 @@ Benutzerobjekt des Azure AD-Mandanten:
 
 Lokales Benutzerobjekt:
 - mailNickName      : us4
-- mail          : us6@contoso.com
-- proxyAddresses        : {SMTP:us7@contoso.com}
+- proxyAddresses        : {SMTP:us6@contoso.com}
+- mail          : us7@contoso.com
 - serPrincipalName  : us5@verified.contoso.com
 
 Synchronisieren von Updates für das lokale userPrincipalName-Attribut mit dem Azure AD-Mandanten:

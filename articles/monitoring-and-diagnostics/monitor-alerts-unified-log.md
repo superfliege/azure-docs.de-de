@@ -12,20 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: 99d222102ab0245c7c4dc8603eaedcfc88ae7a66
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: f6072e4e8a9ab72f677c35e498e31b5218579f1b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Protokollwarnungen in Azure Monitor – Warnungen (Vorschauversion)
 Dieser Artikel enthält Details zur Funktionsweise von Warnungsregeln in Analytics-Abfragen auf der Azure-Oberfläche „Warnungen (Vorschauversion)“ und beschreibt die Unterschiede verschiedener Arten von Protokollwarnungsregeln.
-Derzeit unterstützt die Azure-Oberfläche „Warnungen (Vorschauversion)“ ausschließlich Protokollabfragen für Abfragen über [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md), die in der [neuen Log Analytics-Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) geschrieben wurden.
+
+Derzeit unterstützen Azure-Warnungen (Vorschau) Protokollwarnungen zu Abfragen von [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) und [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
 
 > [!WARNING]
-> Derzeit unterstützen Protokollwarnungen auf der Azure-Oberfläche „Warnungen (Vorschauversion)“ keine arbeitsbereichs- oder App-übergreifenden Abfragen. 
+
+> Derzeit unterstützen Protokollwarnungen in Azure-Warnungen (Vorschau) keine arbeitsbereichs- oder App-übergreifenden Abfragen.
 
 ## <a name="log-alert-rules"></a>Protokollwarnungsregeln
 
@@ -70,7 +72,16 @@ Warnungsregeln des Typs **Metrische Maßeinheit** erzeugen eine Warnung für jed
 
 **Aggregatfunktion**: Bestimmt die zu erfolgende Berechnung und möglicherweise ein numerisches zu aggregierendes Feld.  Beispielsweise gibt **count()** die Anzahl der Datensätze in der Abfrage zurück, während **avg(CounterValue)** den Durchschnitt des Felds „CounterValue“ in diesem Intervall zurückgibt.
 
+> [!NOTE]
+
+> Die Aggregatfunktion in der Abfrage muss als „AggregatedValue“ benannt und aufgerufen werden und einen numerischen Wert bereitstellen.
+
+
 **Gruppenfeld**: Ein Datensatz mit einem aggregierten Wert wird für jede Instanz dieses Felds erstellt, und für jede kann eine Warnung generiert werden.  Wenn Sie beispielsweise eine Warnung für jeden Computer generieren möchten, wählen Sie **Computer**.   
+
+> [!NOTE]
+
+> Bei Warnungsregeln für Metrikmessungen, die auf Application Insights basieren, können Sie das Feld für die Gruppierung der Daten angeben. Verwenden Sie zu diesem Zweck die Option **Aggregieren auf** in der Regeldefinition.   
 
 **Intervall**: Definiert das Zeitintervall, über das die Daten aggregiert werden.  Bei Angabe von **Fünf Minuten** wird beispielsweise ein Datensatz für jede Instanz des Gruppenfelds erstellt, das für das für die Warnung angegebene Zeitfenster in 5-Minuten-Intervallen aggregiert wird.
 
@@ -93,6 +104,6 @@ Bei diesem Beispiel werden separate Warnungen für srv02 und srv03 erstellt, da 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verschaffen Sie sich einen Überblick über Azure-Warnungen (Vorschauversion).](monitoring-overview-unified-alerts.md) 
+* [Verschaffen Sie sich einen Überblick über Azure-Warnungen (Vorschauversion).](monitoring-overview-unified-alerts.md)
 * Erfahren Sie mehr über die [Verwendung von Azure-Warnungen (Vorschauversion).](monitor-alerts-unified-usage.md)
 * Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md).    

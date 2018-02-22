@@ -87,10 +87,10 @@ Der Abfragezeichenfolgenparameter verfügt über folgende Optionen.
 
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
-| `sb-hc-action` |Ja |Der Parameter muss für die Listener-Rolle **sb-hc-action=listen** sein |
+| `sb-hc-action` |Ja |Der Parameter muss für die Listener-Rolle **sb-hc-action=listen** sein. |
 | `{path}` |Ja |Der URL-codierte Namespace-Pfad der vorkonfigurierten Hybridverbindung auf die dieser Listener registriert wird. Dieser Ausdruck wird an den festen Pfadteil `$hc/` angehängt. |
 | `sb-hc-token` |Ja\* |Der Listener muss ein gültiges URL-codiertes Service Bus Shared Access-Token für den Namespace bereitstellen, oder eine Hybridverbindung, die **Listen** (Lauschen) direkt verleiht. |
-| `sb-hc-id` |Nein  |Diese vom Client bereitgestellte optionale ID ermöglicht die End-to-End-Diagnoseablaufverfolgung. |
+| `sb-hc-id` |Nein |Diese vom Client bereitgestellte optionale ID ermöglicht die End-to-End-Diagnoseablaufverfolgung. |
 
 Wenn die WebSocket-Verbindung nicht hergestellt werden kann, weil der Pfad der Hybridverbindung nicht registriert ist, ein Token ungültig ist oder fehlt oder ein anderer Fehler vorliegt, wird das Fehlerfeedback mithilfe des regulären HTTP 1.1-Statusinformationsmodells bereitgestellt. Die Statusbeschreibung enthält eine Fehlernachverfolgungs-ID, die an die Azure-Supportmitarbeiter übermittelt werden kann:
 
@@ -149,7 +149,7 @@ Die URL muss unverändert für die Erstellung des accept-Sockets verwendet werde
 | --- | --- | --- |
 | `sb-hc-action` |Ja |Zum Akzeptieren eines Sockets muss der Parameter `sb-hc-action=accept` lauten. |
 | `{path}` |Ja |(Siehe folgenden Abschnitt.) |
-| `sb-hc-id` |Nein  |Siehe obige Beschreibung von **id**. |
+| `sb-hc-id` |Nein |Siehe obige Beschreibung von **id**. |
 
 `{path}` ist der URL-codierte Namespacepfad der vorkonfigurierten Hybridverbindung, für die dieser Listener registriert werden soll. Dieser Ausdruck wird an den festen Pfadteil `$hc/` angehängt. 
 
@@ -161,7 +161,7 @@ Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren:
 
 | Code | Error | BESCHREIBUNG |
 | --- | --- | --- |
-| 403 |Verboten |Die URL ist nicht gültig |
+| 403 |Verboten |Die URL ist nicht gültig. |
 | 500 |Interner Fehler |Es ist ein Fehler im Dienst aufgetreten |
 
 Nachdem die Verbindung hergestellt wurde, beendet der Server den WebSocket, wenn der Absender-WebSocket beendet wird oder folgenden Status aufweist:
@@ -191,7 +191,7 @@ Wenn der Vorgang erfolgreich abgeschlossen ist, schlägt dieser Handshake absich
 
 | Code | Error | BESCHREIBUNG |
 | --- | --- | --- |
-| 403 |Verboten |Die URL ist nicht gültig |
+| 403 |Verboten |Die URL ist nicht gültig. |
 | 500 |Interner Fehler |Es ist ein Fehler im Dienst aufgetreten. |
 
 ### <a name="listener-token-renewal"></a>Erneuerung des Listenertokens
@@ -234,7 +234,7 @@ Die Optionen des Abfragezeichenfolgenparameters lauten wie folgt:
 | `sb-hc-action` |Ja |Für die Absenderrolle muss der Parameter `action=connect` lauten. |
 | `{path}` |Ja |(Siehe folgenden Abschnitt.) |
 | `sb-hc-token` |Ja\* |Der Listener muss ein gültiges URL-codiertes Service Bus Shared Access-Token für den Namespace oder die Hybridverbindung bereitstellen, das die Berechtigung **Senden** direkt überträgt. |
-| `sb-hc-id` |Nein  |Eine optionale ID, mit der die End-to-End-Diagnoseablaufverfolgung möglich ist und die während des accept-Handshakes für den Listener verfügbar gemacht wird. |
+| `sb-hc-id` |Nein |Eine optionale ID, mit der die End-to-End-Diagnoseablaufverfolgung möglich ist und die während des accept-Handshakes für den Listener verfügbar gemacht wird. |
 
 Der `{path}` ist der URL-codierte Namespacepfad der vorkonfigurierten Hybridverbindung, für die dieser Listener registriert werden soll. Der `path`-Ausdruck kann mit einem Suffix und einem Abfragezeichenfolgenausdruck für die weitere Kommunikation erweitert werden. Wenn die Hybridverbindung unter dem Pfad `hyco` registriert ist, kann der `path`-Ausdruck `hyco/suffix?param=value&...` lauten, gefolgt von den hier definierten Abfragezeichenfolgenparametern. Ein vollständiger Ausdruck kann dann wie folgt lauten:
 

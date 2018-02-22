@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: b3829f0e1b87451bf0706edc268359be5c4480bc
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 015bf031aea6b79fcca0a416253e9aa47bb245b6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Erstellen einer ASE mit einer Azure Resource Manager-Vorlage
 
@@ -40,7 +40,7 @@ Gehen Sie zum Automatisieren der ASE-Erstellung wie folgt vor:
 
 2. Nach dem Erstellen Ihrer ILB-ASE wird ein SSL-Zertifikat hochgeladen, das Ihrer ILB-ASE-Domäne entspricht.
 
-3. Das hochgeladene SSL-Zertifikat wird der ILB-ASE als SSL-Standardzertifikat zugewiesen.  Dieses Zertifikat wird für SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps die allgemeine Stammdomäne verwenden, die der ASE zugewiesen ist (z.B. https://someapp.mycustomrootcomain.com).
+3. Das hochgeladene SSL-Zertifikat wird der ILB-ASE als SSL-Standardzertifikat zugewiesen.  Dieses Zertifikat wird für SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps die allgemeine Stammdomäne verwenden, die der ASE zugewiesen ist (z.B. https://someapp.mycustomrootdomain.com).
 
 
 ## <a name="create-the-ase"></a>Erstellen der ASE

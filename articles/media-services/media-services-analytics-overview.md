@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: c0bbe6f80370515fa783b12757434897fe2221b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88c854a6a2bc98a6851246c0ac3481869bbd9c34
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics auf der Media Services-Plattform
 ## <a name="overview"></a>Übersicht
@@ -50,6 +50,8 @@ Die Videozusammenfassung kann Ihnen dabei helfen, Zusammenfassungen von langen V
 Azure Media OCR (Optical Character Recognition, Optische Zeichenerkennung) dient zum Umwandeln von Textinhalten in Videodateien in bearbeitbaren und durchsuchbaren digitalen Text. Anschließend können Sie die Extraktion aussagekräftiger Metadaten aus dem Videosignal Ihrer Medien automatisieren.
 ### <a name="scalable-face-redaction"></a>Skalierbare Gesichtsbearbeitung
 Azure Media Redactor ist ein Media Analytics-Medienprozessor, der eine skalierbare Gesichtsbearbeitung in der Cloud ermöglicht. Mit der Gesichtsbearbeitung können Sie Ihr Video ändern, um Gesichter von ausgewählten Personen unscharf anzuzeigen und so unkenntlich zu machen. Sie können den Gesichtsbearbeitungsdienst beispielsweise bei Nachrichten nutzen, wenn es um die öffentliche Sicherheit geht. Die Bearbeitung von Material mit einer Länge von einigen Minuten, das mehrere Gesichter enthält, kann bei manueller Vorgehensweise Stunden dauern. Mit diesem Dienst sind für den Prozess der Gesichtsbearbeitung aber nur einige einfache Schritte erforderlich. Weitere Informationen finden Sie im Artikel [Bearbeiten von Gesichtern mit Azure Media Analytics](media-services-face-redaction.md).
+### <a name="content-moderation"></a>Inhaltsmoderation
+Azure Content Moderator bietet Ihnen hardwareunterstützte Moderation für Ihre Videos. Sie möchten beispielsweise mögliche jugendgefährdende und rassistische Inhalte in Videos erkennen und die gekennzeichneten Inhalte von Ihren menschlichen Moderationsteams überprüfen lassen. Die manuelle Moderation von Videos auf unerwünschten Inhalt ist zeitaufwändig und teuer. Mit diesem Dienst und zugehörigen Überprüfungstools kombinieren Sie hardwareunterstützte Moderation mit den Fähigkeiten der involvierten Personen, um effiziente und kostengünstige Ergebnisse zu erzielen. Weitere Informationen finden Sie im Artikel [Verwenden von Azure Media Content Moderator zum Erkennen möglicher jugendgefährdender und rassistischer Inhalte](media-services-content-moderation.md).
 
 ## <a name="common-scenarios"></a>Häufige Szenarios
 Media Analytics hilft Organisationen und Unternehmen bei der Gewinnung von Erkenntnissen aus Videos und bei der effektiven Verwaltung großer Mengen von Videoinhalten. Mögliche Szenarien:
@@ -69,6 +71,7 @@ In diesem Abschnitt sind alle Media Analytics-Medienprozessoren (MP) aufgeführt
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails
 * Azure Media OCR
+* Azure Media Content Moderator
 
 ### <a name="net"></a>.NET
 Die folgende Funktion verwendet einen der angegebenen MP-Namen und gibt ein MP-Objekt zurück.
@@ -123,11 +126,6 @@ Antwort:
 ## <a name="demos"></a>Demos
 Siehe [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="next-steps"></a>Nächste Schritte
-Überprüfen Sie die Media Services-Lernpfade.
-
-[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
@@ -137,3 +135,8 @@ Siehe [Media Services Analytics – Ankündigung](https://azure.microsoft.com/bl
 <!-- Images -->
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
+
+## <a name="next-steps"></a>Nächste Schritte
+Überprüfen Sie die Media Services-Lernpfade.
+
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

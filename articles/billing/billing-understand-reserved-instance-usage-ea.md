@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: 7ef601033b36ee968cb766d40a0a6b05afa9a1a4
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 515eae3c9a84a171bebc5213f5824e1b50336e34
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="understand--reserved-instance-usage-for-your-enterprise-enrollment"></a>Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung
 Verstehen Sie die Nutzung der reservierten Instanz, indem Sie die Reservierungs-ID von der [Reservierungsseite](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade ) und die Verwendungsdatei aus dem [EA-Portal](https://ea.azure.com) verwenden. Darüber hinaus können Sie die Reservierungsnutzung im [EA-Portal](https://ea.azure.com) im Abschnitt mit der Nutzungsübersicht anzeigen.
@@ -31,13 +31,13 @@ Im folgenden Abschnitt wird davon ausgegangen, dass Sie einen virtuellen Windows
 | Feld | Wert |
 |---| --- |
 |ReservationId |8f82d880-d33e-4e0d-bcb5-6bcb5de0c719|
-|Quantity |1|
+|Menge |1|
 |SKU | Standard_D1|
 |Region | eastus |
 
 ## <a name="reservation-application"></a>Reservierungsanwendung
 
-Der Hardwarebestandteil des virtuellen Computers ist abgedeckt, da der bereitgestellte virtuelle Computer den Reservierungsattributen entspricht. Wenn Sie ermitteln möchten, welche Windows-Software nicht von der reservierten Instanz abgedeckt wird, navigieren Sie zu [Windows software costs not included with Reserved Instances](billing-reserved-instance-windows-software-costs.md) (Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten).
+Der Hardwarebestandteil des virtuellen Computers ist abgedeckt, da der bereitgestellte virtuelle Computer den Reservierungsattributen entspricht. Wenn Sie ermitteln möchten, welche Windows-Software nicht von der reservierten Instanz abgedeckt wird, navigieren Sie zu [Nicht in Reserved Instances enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md).
 
 
 ### <a name="reservation-usage-in-csv"></a>Reservierungsnutzung in CSV
@@ -56,6 +56,16 @@ Die Nutzung reservierter Instanzen wird darüber hinaus im Abschnitt zur Nutzung
 
 1. Hardwarekomponenten des virtuellen Computers werden nicht in Rechnung gestellt, da sie von der reservierten Instanz abgedeckt sind. 
 2. Windows-Software wird in Rechnung gestellt, da der Azure-Hybridvorteil nicht verwendet wird. 
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu reservierten VM-Instanzen finden Sie in den folgenden Artikeln.
+
+- [Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Verwalten von reservierten Azure-VM-Instanzen](billing-manage-reserved-vm-instance.md)
+- [Mit reservierten VM-Instanzen Kosten für virtuelle Computer sparen](billing-save-compute-costs-reservations.md)
+- [Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen](billing-understand-vm-reservation-charges.md)
+- [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
+- [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

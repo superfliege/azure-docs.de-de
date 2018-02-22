@@ -13,13 +13,13 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: 2b55de4de6bb94be78649112161211346090b23a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 
@@ -47,7 +47,7 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
 * Verbinden Sie die einzelnen Computer mithilfe des VPN-Gateways und dem VPN-Client mit dem Netzwerk. Um diese Konfiguration zu aktivieren, führen Sie die folgenden Aufgaben aus:
 
     1. Erstellen Sie ein virtuelles Netzwerk.
-    2. Erstellen Sie ein VPN-Gateway, das eine Punkt-zu-Standort-Konfiguration verwendet. Diese Konfiguration stellt einen VPN-Client bereit, der auf Windows-Clients installiert werden kann.
+    2. Erstellen Sie ein VPN-Gateway, das eine Punkt-zu-Standort-Konfiguration verwendet. Diese Konfiguration kann sowohl für Windows- als auch macOS-Clients verwendet werden.
     3. Installieren Sie HDInsight im virtuellen Netzwerk .
     4. Konfigurieren Sie Kafka zum Ankündigen der IP-Adresse. Diese Konfiguration ermöglicht dem Client das Herstellen einer Verbindung mithilfe der IP-Adressierung anstelle von Domänennamen.
     5. Laden Sie den VPN-Client auf dem Entwicklungssystem herunter, und verwenden Sie ihn.
@@ -57,7 +57,7 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
     > [!WARNING]
     > Diese Konfiguration wird aufgrund der folgenden Einschränkungen nur für Entwicklungszwecke empfohlen:
     >
-    > * Jeder Client muss eine Verbindung mithilfe eines VPN-Software-Clients herstellen. Azure stellt nur einen Windows-basierten Client bereit.
+    > * Jeder Client muss eine Verbindung mithilfe eines VPN-Software-Clients herstellen.
     > * Der VPN-Client übergibt die Anforderungen zur Namensauflösung nicht an das virtuelle Netzwerk. Sie müssen also IP-Adressen für die Kommunikation mit Kafka verwenden. Die IP-Kommunikation erfordert eine zusätzliche Konfiguration auf dem Kafka-Cluster.
 
 Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md).
@@ -232,22 +232,13 @@ Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration 
         -DefaultStorageAccountName "$storageName.blob.core.windows.net" `
         -DefaultStorageAccountKey $defaultStorageKey `
         -DefaultStorageContainer $defaultContainerName `
+        -DisksPerWorkerNode 2 `
         -VirtualNetworkId $network.Id `
         -SubnetName $defaultSubnet.Id
     ```
 
   > [!WARNING]
   > Für diesen Prozess werden etwa 15 Minuten benötigt.
-
-8. Verwenden Sie das folgende Cmdlet, um die URL für den Windows-VPN-Client für das virtuelle Netzwerk abzurufen:
-
-    ```powershell
-    Get-AzureRmVpnClientPackage -ResourceGroupName $resourceGroupName `
-        -VirtualNetworkGatewayName $vpnName `
-        -ProcessorArchitecture Amd64
-    ```
-
-    Verwenden Sie zum Herunterladen des Windows-VPN-Clients den zurückgegebenen URI in Ihrem Webbrowser.
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurieren von Kafka zum Ankündigen der IP-Adresse
 
@@ -299,7 +290,7 @@ Standardmäßig gibt Zookeeper den Domänennamen der Kafka-Broker an Clients zur
 
 ### <a name="connect-to-the-vpn-gateway"></a>Herstellen einer Verbindung mit dem VPN-Gateway
 
-Verwenden Sie zum Herstellen einer Verbindung mit dem VPN-Gateway über einen __Windows-Client__ den Abschnitt __Herstellen einer Verbindung mit Azure__ im Dokument [Konfigurieren einer Point-to-Site-VPN-Verbindung](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#clientcertificate).
+Verwenden Sie zum Herstellen einer Verbindung mit dem VPN-Gateway den Abschnitt __Herstellen einer Verbindung mit Azure__ im Dokument [Konfigurieren einer Point-to-Site-Verbindung](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect).
 
 ## <a id="python-client"></a> Beispiel: Python-Client
 

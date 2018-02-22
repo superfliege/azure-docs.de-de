@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: af185725433b0eacc5d57b90fb2e75edd143a59a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 02850243caaa66a354f06b650a5505a79d7aee54
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – häufig gestellte Fragen
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Redis Cache.
@@ -119,36 +119,36 @@ Nachfolgend sind verschiedene Aspekte aufgeführt, die Ihnen bei der Wahl helfen
 <a name="cache-performance"></a>
 
 ### <a name="azure-redis-cache-performance"></a>Azure Redis Cache-Leistung
-In der folgenden Tabelle sind die maximalen Bandbreitenwerte beim Testen verschiedener Standard- und Premium-Cachegrößen bei Verwendung von `redis-benchmark.exe` aus einem virtuellen IaaS-Computer mit dem Azure Redis Cache-Endpunkt angegeben. 
+In der folgenden Tabelle sind die maximalen Bandbreitenwerte beim Testen verschiedener Standard- und Premium-Cachegrößen bei Verwendung von `redis-benchmark.exe` aus einem virtuellen IaaS-Computer mit dem Azure Redis Cache-Endpunkt angegeben. Für SSL-Durchsatz wird der Redis-Vergleichstest mit stunnel für das Herstellen der Verbindung mit dem Azure-Redis-Cache-Endpunkt verwendet.
 
 >[!NOTE] 
 >Diese Werte werden nicht garantiert, und es gibt keine SLA für diese Werte; sie sollten jedoch typischerweise erreicht werden. Führen Sie Auslastungstests für Ihre Anwendung durch, um die geeignete Cachegröße für Ihre Anwendung zu ermitteln.
->
+>Diese Zahlen können sich ändern, da wir in regelmäßigen Abständen neuere Ergebnisse veröffentlichen.
 >
 
 Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden:
 
-* Der Durchsatz für Caches gleicher Größe ist im Premium-Tarif besser als im Standard-Tarif. Beispielsweise liegt bei einem Cache mit 6 GB der Durchsatz von P1 bei 180.000 RPS im Vergleich zu 49.000 RPS bei C3.
+* Der Durchsatz für Caches gleicher Größe ist im Premium-Tarif besser als im Standard-Tarif. Beispielsweise liegt bei einem Cache mit 6 GB der Durchsatz von P1 bei 180.000 RPS im Vergleich zu 100.000 RPS bei C3.
 * Mit dem Redis-Clustering steigt der Durchsatz linear, je mehr Shards (Knoten) Sie im Cluster verwenden. Wenn Sie beispielsweise einen P4-Cluster mit 10 Shards erstellen, beträgt der verfügbare Durchsatz 400.000 * 10 = 4 Millionen RPS.
 * Der Durchsatz für größere Schlüsselgrößen ist im Premium-Tarif höher als im Standard-Tarif.
 
-| Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Wertgröße |
-| --- | --- | --- | --- | --- |
-| **Standard-Cachegröße** | | |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS)** |
-| C0 |250 MB |Shared |5 / 0,625 |600 |
-| C1 |1 GB |1 |100 / 12,5 |12.200 |
-| C2 |2,5 GB |2 |200 / 25 |24.000 |
-| C3 |6 GB |4 |400 / 50 |49.000 |
-| C4 |13 GB |2 |500 / 62,5 |61.000 |
-| C5 |26 GB |4 |1.000/125 |115.000 |
-| C6 |53 GB |8 |2.000/250 |150.000 |
-| **Premium-Cachegröße** | |**CPU-Kerne pro Shard** | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), pro Shard** |
-| P1 |6 GB |2 |1.500/187,5 |180.000 |
-| P2 |13 GB |4 |3.000/375 |360.000 |
-| P3 |26 GB |4 |3.000/375 |360.000 |
-| P4 |53 GB |8 |6.000/750 |400.000 |
+| Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Wertgröße | 1 KB Wertgröße |
+| --- | --- | --- | --- | --- | --- |
+| **Standard-Cachegröße** | | |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL** |**Anforderungen pro Sekunde (RPS), SLL** |
+| C0 |250 MB |Shared |100 / 12,5 |15.000 |7.500 |
+| C1 |1 GB |1 |500 / 62,5 |38.000 |20.720 |
+| C2 |2,5 GB |2 |500 / 62,5 |41.000 |37.000 |
+| C3 |6 GB |4 |1.000 / 125 |100.000 |90.000 |
+| C4 |13 GB |2 |500 / 62,5 |60.000 |55.000 |
+| C5 |26 GB |4 |1.000/125 |102.000 |93.000 |
+| C6 |53 GB |8 |2.000/250 |126.000 |120.000 |
+| **Premium-Cachegröße** | |**CPU-Kerne pro Shard** | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL, pro Shard** |**Anforderungen pro Sekunde (RPS), SLL, pro Shard** |
+| P1 |6 GB |2 |1.500/187,5 |180.000 |172.000 |
+| P2 |13 GB |4 |3.000/375 |350.000 |341.000 |
+| P3 |26 GB |4 |3.000/375 |350.000 |341.000 |
+| P4 |53 GB |8 |6.000/750 |400.000 |373.000 |
 
-Anweisungen zum Herunterladen von Redis-Tools wie beispielsweise `redis-benchmark.exe`finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands) .
+Anweisungen zum Einrichten von stunnel oder zum Herunterladen von Redis-Tools wie `redis-benchmark.exe` finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands).
 
 <a name="cache-region"></a>
 

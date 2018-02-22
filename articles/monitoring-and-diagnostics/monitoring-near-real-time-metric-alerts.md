@@ -1,6 +1,6 @@
 ---
-title: Near Real-Time Metric Alerts in Azure Monitor | Microsoft Docs
-description: "Near Real-Time Metric Alerts ermöglichen Ihnen die minütliche Überwachung von Azure-Ressourcemetriken."
+title: Near Real-Time Metric Alerts in Azure Monitor | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Near Real-Time Metric Alerts (Metrikwarnungen nahezu in Echtzeit) verwenden, um Azure-Ressourcenmetriken mit einer Häufigkeit ab 1 Minute zu überwachen."
 author: snehithm
 manager: kmadnani1
 editor: 
@@ -15,27 +15,28 @@ ms.topic: article
 ms.date: 12/06/2017
 ms.author: snmuvva
 ms.custom: 
-ms.openlocfilehash: d3e88a98e0ba93a630d131c25ca4dd5cb16f1b1a
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 6370f4596e6b20962c6de0dbcbd5f86c3b7777cc
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="near-real-time-metric-alerts-preview"></a>Near Real-Time Metric Alerts (Preview)
-Azure Monitor unterstützt jetzt einen neuen Typ von Metrikwarnungen, die als „Near Real-Time Metric Alerts (Preview)“ bezeichnet werden. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
-Diese Warnungen unterscheiden sich in verschiedener Hinsicht von regulären Metrikwarnungen.
+# <a name="near-real-time-metric-alerts-preview"></a>Near Real-Time Metric Alerts (Vorschau)
+Azure Monitor unterstützt jetzt einen neuen Typ von Metrikwarnungen, der als „Near Real-Time Metric Alerts (Vorschau)“ bezeichnet wird. Dieses Feature ist zurzeit als öffentliche Vorschauversion verfügbar.
 
-- **Verbesserte Latenz**: Near Real-Time Metric Alerts können Änderungen an Metrikwerten innerhalb einer Minute überwachen.
-- **Mehr Kontrolle über Metrikbedingungen**: Near Real-Time Metric Alerts ermöglichen Benutzern, umfangreichere Warnungsregeln zu definieren. Die Warnungen unterstützen nun die Überwachung der maximalen, minimalen und durchschnittlichen Werte sowie der Gesamtwerte der Metriken.
-- **Kombinierte Überwachung mehrerer Metriken**: Near Real-Time Metric Alerts können mehrere Metriken (zurzeit zwei Metriken) mit einer einzigen Regel überwachen. Die Warnung wird ausgelöst, wenn beide Metriken ihre jeweiligen Schwellenwerte für den angegebenen Zeitraum verletzen.
-- **Modulares Benachrichtigungssystem**: Near Real-Time Metric Alerts verwenden [Aktionsgruppen](monitoring-action-groups.md). Diese Funktion ermöglicht Benutzern das Erstellen von Aktionen auf modulare Weise sowie die Wiederverwendung für viele Warnungsregeln.
+Near Real-Time Metric Alerts unterscheiden sich in verschiedener Hinsicht von regulären Metrikwarnungen:
+
+- **Verbesserte Latenz:** Near Real-Time Metric Alerts können Änderungen an Metrikwerten mit einer Häufigkeit ab einer Minute überwachen.
+- **Mehr Kontrolle über Metrikbedingungen:** Sie können mit Near Real-Time Metric Alerts umfangreichere Warnungsregeln definieren. Die Warnungen unterstützen die Überwachung der maximalen, minimalen und durchschnittlichen Werte sowie der Gesamtwerte der Metriken.
+- **Kombinierte Überwachung mehrerer Metriken:** Near Real-Time Metric Alerts können mehrere Metriken (zurzeit bis zu zwei Metriken) mit einer einzigen Regel überwachen. Eine Warnung wird ausgelöst, wenn beide Metriken ihre jeweiligen Schwellenwerte für den angegebenen Zeitraum überschreiten.
+- **Modulares Benachrichtigungssystem:** Near Real-Time Metric Alerts verwenden [Aktionsgruppen](monitoring-action-groups.md). Sie können mit Aktionsgruppen modulare Aktionen erstellen. Sie können Aktionsgruppen für mehrere Warnungsregeln wiederverwenden.
 
 > [!NOTE]
-> Das Feature Real-Time Metric Alerts ist zurzeit als öffentliche Preview verfügbar. Die Funktionen und die Benutzeroberfläche können jederzeit geändert werden.
+> Das Feature Real-Time Metric Alerts ist zurzeit als öffentliche Vorschauversion verfügbar. Die Funktionen und die Benutzeroberfläche können jederzeit geändert werden.
 >
 
-## <a name="what-resources-can-i-create-near-real-time-metric-alerts-for"></a>Für welche Ressourcen kann ich Real-Time Metric Alerts erstellen?
-Vollständige Liste der Ressourcentypen, die von Real-Time Metric Alerts unterstützt werden:
+## <a name="resources-you-can-use-with-near-real-time-metric-alerts"></a>Ressourcen, die Sie mit Near Real-Time Metric Alerts verwenden können
+Im Folgenden finden Sie eine vollständige Liste der Ressourcentypen, die von Real-Time Metric Alerts unterstützt werden:
 
 * Microsoft.ApiManagement/service
 * Microsoft.Automation/automationAccounts
@@ -57,27 +58,26 @@ Vollständige Liste der Ressourcentypen, die von Real-Time Metric Alerts unterst
 * Microsoft.StreamAnalytics/streamingjobs
 * Microsoft.CognitiveServices/accounts
 
-## <a name="near-real-time-metric-alerts-on-metrics-with-dimensions"></a>Metrikwarnungen nahezu in Echtzeit für Metriken mit Dimensionen
-Metrikwarnungen nahezu in Echtzeit unterstützen Warnungen für Metriken mit Dimensionen. Dimensionen stellen eine Möglichkeit dar, um die Metrik nach der richtigen Ebene zu filtern. Metrikwarnungen nahezu in Echtzeit für Metriken mit Dimensionen werden für folgende Ressourcentypen unterstützt.
+## <a name="near-real-time-metric-alerts-for-metrics-that-use-dimensions"></a>Near Real-Time Metric Alerts für Metriken mit Dimensionen
+Near Real-Time Metric Alerts unterstützen Warnungen für Metriken mit Dimensionen. Mithilfe von Dimensionen können Sie die Metrik nach der richtigen Ebene filtern. Near Real-Time Metric Alerts für Metriken mit Dimensionen werden für folgende Ressourcentypen unterstützt:
 
 * Microsoft.ApiManagement/service
 * Microsoft.Storage/storageAccounts (nur für Speicherkonten in Regionen der USA unterstützt)
 * Microsoft.Storage/storageAccounts/services (nur für Speicherkonten in Regionen der USA unterstützt)
 
+## <a name="create-a-near-real-time-metric-alert"></a>Erstellen von Near Real-Time Metric Alerts
+Derzeit können Sie Near Real-Time Metric Alerts nur im Azure-Portal erstellen. Unterstützung für die Konfiguration von Near Real-Time Metric Alerts über PowerShell, die Azure-Befehlszeilenschnittstelle (CLI) und die REST-API von Azure Monitor wird bald verfügbar sein.
 
-## <a name="create-a-near-real-time-metric-alert"></a>Erstellen eines Real-Time Metric Alerts
-Zurzeit können Real-Time Metric Alerts nur über das Azure Portal erstellt werden. Unterstützung für die Konfiguration von Near Real-Time Metric Alerts über PowerShell, die Befehlszeilenschnittstelle (CLI) und die REST-API von Azure Monitor wird bald verfügbar sein.
+Die Oberfläche zum Erstellen von Near Real-Time Metric Alerts wurde auf die neue Seite **Warnungen (Vorschau)** verschoben. Obwohl auf der aktuellen Seite „Warnungen“ **Add Near Real-Time Metric alert** (Near Real-Time Metric Alert hinzufügen) angezeigt wird, werden Sie zur Seite **Warnungen (Vorschau)** umgeleitet.
 
-Die Oberfläche zum Erstellen von Warnungen für Metrikwarnungen nahezu in Echtzeit wurde zur Oberfläche **Warnungen (Vorschauversion)** migriert. Obwohl auf der aktuellen Seite „Warnungen“ **Metrikwarnung nahezu in Echtzeit hinzufügen** angezeigt wird, werden Sie zur neuen Oberfläche umgeleitet.
+Informationen zum Erstellen von Near Real-Time Metric Alerts finden Sie unter [Erstellen einer Warnungsregel im Azure-Portal](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal).
 
-Sie können anhand der [hier](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal) beschriebenen Schritte eine Metrikwarnung in Echtzeit erstellen.
-
-## <a name="managing-near-real-time-metric-alerts"></a>Verwalten von Near Real-Time Metric Alerts
-Sobald Sie eine **Metrikwarnung nahezu in Echtzeit** erstellt haben, kann diese anhand der [hier](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal) beschriebenen Schritte verwaltet werden.
+## <a name="manage-near-real-time-metric-alerts"></a>Verwalten von Near Real-Time Metric Alerts
+Nach der Erstellung von Near Real-Time Metric Alerts können Sie die Warnungen mithilfe der Schritte in [Verwalten von Warnungen im Azure-Portal](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal) verwalten.
 
 ## <a name="payload-schema"></a>Nutzlast und Schema
 
-Der POST-Vorgang enthält für alle Metrikwarnungen nahezu in Echtzeit die folgende JSON-Nutzlast und das folgende Schema:
+Der POST-Vorgang enthält für alle Near Real-Time Metric Alerts die folgende JSON-Nutzlast und das folgende Schema:
 
 ```json
 {
@@ -123,6 +123,6 @@ Der POST-Vorgang enthält für alle Metrikwarnungen nahezu in Echtzeit die folge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie mehr über die neue Oberfläche „Warnungen (Vorschauversion)“.](monitoring-overview-unified-alerts.md)
-* [Erfahren Sie mehr über Protokollwarnungen in Azure-Warnungen (Vorschauversion).](monitor-alerts-unified-log.md)
-* [Erfahren Sie mehr über Warnungen in Azure.](monitoring-overview-alerts.md)
+* Erfahren Sie mehr über die [neue Oberfläche „Warnungen (Vorschau)“](monitoring-overview-unified-alerts.md).
+* Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen (Vorschau)](monitor-alerts-unified-log.md).
+* Erfahren Sie mehr über [Warnungen in Azure](monitoring-overview-alerts.md).

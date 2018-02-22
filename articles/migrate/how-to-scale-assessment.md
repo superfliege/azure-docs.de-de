@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 67661e03e65cde3ec2f1aafd5ef755899cf0c77b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 2e17d30dcc95677053fd6c8c1ee75fd3cc0afb5b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
@@ -29,7 +29,7 @@ Planen Sie Ihre Ermittlungen und Bewertungen basierend auf den folgenden Limits:
 
 | **Entität** | **Limit für Computer** |
 | ---------- | ----------------- |
-| Projekt    | 1.500              | 
+| Project    | 1.500              | 
 | Ermittlung  | 1.000              |
 | Bewertung | 400               |
 
@@ -88,9 +88,9 @@ Wenn Sie über mehrere Projekte verfügen, müssen Sie die Collectorappliance nu
 
     **Algorithmus** | **Hashwert**
     --- | ---
-    MD5 | 8779eea842a1ac465942295c988ac0c7
-    SHA1 | c136c52a0f785e1fd98865e16479dd103704887d
-    SHA256 | 5143b1144836f01dd4eaf84ff94bc1d2c53f51ad04b1ca43ade0d14a527ac3f9
+    MD5 | cefd96394198b92870d650c975dbf3b8
+    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
+    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
 
     Für OVA-Version 1.0.8.40:
 

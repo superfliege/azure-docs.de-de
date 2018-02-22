@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: 2df003d47291570b31e1091f34994e4023000981
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: ed26abdb76083b9a18f79276ebf4294b4b6967b1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -468,6 +468,13 @@ Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `out string param
 Für das Erstellen mehrerer Nachrichten in einer C#- oder C#-Skriptfunktion können Sie `ICollector<T>` oder `IAsyncCollector<T>` verwenden. Beim Aufrufen der `Add` -Methode wird eine Nachricht erstellt.
 
 Greifen Sie in JavaScript auf die Warteschlange oder das Thema mit `context.bindings.<name>` zu. `<name>` ist der Wert, der in der Eigenschaft `name` von *function.json* angegeben wird. Sie können `context.binding.<name>` eine Zeichenfolge, ein Bytearray oder ein Javascript-Objekt (deserialisiert in JSON) zuweisen.
+
+## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
+
+| Bindung | Verweis |
+|---|---|
+| SERVICE BUS | [Service Bus-Fehlercodes](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
+| SERVICE BUS | [Service Bus-Grenzwerte](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

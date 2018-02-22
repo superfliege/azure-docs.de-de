@@ -1,284 +1,280 @@
 ---
-title: Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites | Microsoft Docs
-description: "Auf dieser Seite finden Sie Anweisungen zum Erstellen und Konfigurieren eines Azure-Anwendungsgateways zum Hosten mehrerer Webanwendungen über dasselbe Gateway."
-documentationcenter: na
+title: "Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites – Azure PowerShell | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell ein Anwendungsgateway erstellen, mit dem mehrere Websites gehostet werden.
 services: application-gateway
-author: amsriva
-manager: rossort
-editor: amsriva
-ms.assetid: b107d647-c9be-499f-8b55-809c4310c783
+author: davidmu1
+manager: timlt
+editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
-ms.author: amsriva
-ms.openlocfilehash: d42efa7d359f5c87c14afbfd138328b37c8ae6c2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 01/26/2018
+ms.author: davidmu
+ms.openlocfilehash: ed385eac624f5c59981c01ee70ba2a1700a78653
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="create-an-application-gateway-for-hosting-multiple-web-applications"></a>Erstellen eines Anwendungsgateways zum Hosten mehrerer Webanwendungen
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites mit Azure PowerShell
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-create-multisite-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
+Sie können mit Azure PowerShell ein [Hosting mehrerer Websites](application-gateway-multi-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](application-gateway-introduction.md) erstellen. In diesem Tutorial erstellen Sie Back-End-Pools mithilfe von VM-Skalierungsgruppen. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr von geeigneten Servern in den Pools empfangen wird. In diesem Tutorial wird vorausgesetzt, dass Sie mehrere Domänen besitzen und die Beispiele zu *www.contoso.com* und *www.fabrikam.com* verwenden.
 
-Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Webanwendung über dasselbe Anwendungsgateway bereitzustellen. Das Prinzip basiert auf einem Hostheader in der eingehenden HTTP-Anforderung, anhand dessen bestimmt wird, welcher Listener den Datenverkehr empfängt. Der Listener leitet dann den Datenverkehr an den in der Regeldefinition des Gateways konfigurierten Back-End-Pool. Bei SSL-fähigen Webanwendungen wählt das Anwendungsgateway den passenden Listener für den Webdatenverkehr anhand der SNI-Erweiterung (Servernamensanzeige) aus. Ein gängiges Szenario für das Hosten mehrerer Websites ist der Lastenausgleich von Anforderungen für verschiedene Webdomänen auf verschiedene Back-End-Serverpools. Auf ähnliche Weise können auch mehrere Unterdomänen derselben Stammdomäne im selben Anwendungsgateway gehostet werden.
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-## <a name="scenario"></a>Szenario
+> [!div class="checklist"]
+> * Einrichten des Netzwerks
+> * Erstellen eines Anwendungsgateways
+> * Erstellen der Listener und Routingregeln
+> * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
+> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Im folgenden Beispiel verarbeitet das Anwendungsgateway Datenverkehr für „contoso.com“ und „fabrikam.com“ mit zwei Back-End-Serverpools: dem Contoso-Serverpool und dem Fabrikam-Serverpool. Mit einem ähnlichen Setup können auch Unterdomänen wie „app.contoso.com“ und „blog.contoso.com“ gehostet werden.
+![Beispiel zum Routing für mehrere Websites](./media/application-gateway-create-multisite-azureresourcemanager-powershell/scenario.png)
 
-![imageURLroute](./media/application-gateway-create-multisite-azureresourcemanager-powershell/multisite.png)
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version aus dem Abschnitt **Windows PowerShell** der [Downloadseite](https://azure.microsoft.com/downloads/)herunterladen und installieren.
-2. Die Server, die Sie dem Back-End-Pool zur Verwendung des Application Gateways hinzugefügt haben, müssen vorhanden sein oder Endpunkte aufweisen, die entweder im virtuellen Netzwerk oder in einem separaten Subnetz erstellt wurden, oder denen eine öffentliche IP-Adresse/VIP zugewiesen wurde.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse/VIP sein. Der FQDN kann ebenfalls verwendet werden.
-* **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-* **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll („Http“ oder „Https“; jeweils unter Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird). Bei Anwendungsgateways, die mehrere Websites hosten können, werden zudem der Hostname und SNI-Indikatoren hinzugefügt.
-* **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool verbunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr geleitet werden soll, wenn er einen bestimmten Listener erreicht. Regeln werden in der Reihenfolge verarbeitet, in der sie aufgeführt sind, wobei Datenverkehr gemäß der ersten erfüllten Regel unabhängig von der Spezifizität geleitet wird. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert.
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mithilfe von [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Azure-Ressourcengruppe.  
+
+```azurepowershell-interactive
+New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
+```
+
+## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
+
+Konfigurieren Sie mithilfe von [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) die Subnetze namens *myBackendSubnet* und *myAGSubnet*. Erstellen Sie das virtuelle Netzwerk *myVNet* mit [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) und den Subnetzkonfigurationen. Erstellen Sie abschließend mithilfe von [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) die öffentliche IP-Adresse mit dem Namen *myAGPublicIPAddress*. Diese Ressourcen werden verwendet, um Netzwerkkonnektivität für das Anwendungsgateway und die zugehörigen Ressourcen bereitzustellen.
+
+```azurepowershell-interactive
+$backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name myBackendSubnet `
+  -AddressPrefix 10.0.1.0/24
+$agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name myAGSubnet `
+  -AddressPrefix 10.0.2.0/24
+$vnet = New-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -Name myVNet `
+  -AddressPrefix 10.0.0.0/16 `
+  -Subnet $backendSubnetConfig, $agSubnetConfig
+$pip = New-AzureRmPublicIpAddress `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -Name myAGPublicIPAddress `
+  -AllocationMethod Dynamic
+```
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Folgende Schritte sind zum Erstellen eines Anwendungsgateways erforderlich:
+### <a name="create-the-ip-configurations-and-frontend-port"></a>Erstellen der IP-Konfigurationen und des Front-End-Ports
 
-1. Erstellen einer Ressourcengruppe für den Ressourcen-Manager
-2. Erstellen eines virtuellen Netzwerks, der Subnetze und einer öffentlichen IP-Adresse für das Anwendungsgateway
-3. Erstellen eines Konfigurationsobjekts für das Anwendungsgateway
-4. Erstellen einer Application Gateway-Ressource
+Ordnen Sie das zuvor erstellte Subnetz *myAGSubnet* mithilfe von [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration) dem Anwendungsgateway zu. Weisen Sie *myAGPublicIPAddress* mithilfe von [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig) dem Anwendungsgateway zu.
 
-## <a name="create-a-resource-group-for-resource-manager"></a>Erstellen einer Ressourcengruppe für den Ressourcen-Manager
-
-Stellen Sie sicher, dass Sie die neueste Version von Azure PowerShell verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
-
-### <a name="step-1"></a>Schritt 1
-
-Anmelden an Azure
-
-```powershell
-Login-AzureRmAccount
-```
-Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.
-
-### <a name="step-2"></a>Schritt 2
-
-Überprüfen Sie die Abonnements für das Konto.
-
-```powershell
-Get-AzureRmSubscription
+```azurepowershell-interactive
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myVNet
+$subnet=$vnet.Subnets[0]
+$gipconfig = New-AzureRmApplicationGatewayIPConfiguration `
+  -Name myAGIPConfig `
+  -Subnet $subnet
+$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig `
+  -Name myAGFrontendIPConfig `
+  -PublicIPAddress $pip
+$frontendport = New-AzureRmApplicationGatewayFrontendPort `
+  -Name myFrontendPort `
+  -Port 80
 ```
 
-### <a name="step-3"></a>Schritt 3
+### <a name="create-the-backend-pools-and-settings"></a>Erstellen der Back-End-Pools und Einstellungen
 
-Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
+Erstellen Sie mit [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool) die Back-End-Pools *contosoPool* und *fabrikamPool* für das Anwendungsgateway. Konfigurieren Sie mit [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings) die Einstellungen für den Pool.
 
-```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+```azurepowershell-interactive
+$contosoPool = New-AzureRmApplicationGatewayBackendAddressPool `
+  -Name contosoPool 
+$fabrikamPool = New-AzureRmApplicationGatewayBackendAddressPool `
+  -Name fabrikamPool 
+$poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
+  -Name myPoolSettings `
+  -Port 80 `
+  -Protocol Http `
+  -CookieBasedAffinity Enabled `
+  -RequestTimeout 120
 ```
 
-### <a name="step-4"></a>Schritt 4
+### <a name="create-the-listeners-and-rules"></a>Erstellen der Listener und Regeln
 
-Erstellen Sie eine Ressourcengruppe. (Überspringen Sie diesen Schritt, wenn Sie eine vorhandene Ressourcengruppe verwenden.)
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an die Back-End-Pools weiterleiten kann. In diesem Tutorial erstellen Sie Listener für jede Ihrer zwei Domänen. In diesem Beispiel werden Listener für die Domänen von *www.contoso.com* und *www.fabrikam.com* erstellt.
 
-```powershell
-New-AzureRmResourceGroup -Name appgw-RG -location "West US"
+Erstellen Sie mit [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) die Listener *contosoListener* und *fabrikamListener*. Verwenden Sie hierbei die zuvor erstellte Front-End-Konfiguration und den zuvor erstellten Front-End-Port. Für die Listener sind Regeln erforderlich, damit bekannt ist, welcher Back-End-Pool für den eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mithilfe von [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) Basisregeln namens *contosoRule* und *fabrikamRule*.
+
+```azurepowershell-interactive
+$contosolistener = New-AzureRmApplicationGatewayHttpListener `
+  -Name contosoListener `
+  -Protocol Http `
+  -FrontendIPConfiguration $fipconfig `
+  -FrontendPort $frontendport `
+  -HostName "www.contoso.com"
+$fabrikamlistener = New-AzureRmApplicationGatewayHttpListener `
+  -Name fabrikamListener `
+  -Protocol Http `
+  -FrontendIPConfiguration $fipconfig `
+  -FrontendPort $frontendport `
+  -HostName "www.fabrikam.com"
+$contosoRule = New-AzureRmApplicationGatewayRequestRoutingRule `
+  -Name contosoRule `
+  -RuleType Basic `
+  -HttpListener $contosoListener `
+  -BackendAddressPool $contosoPool `
+  -BackendHttpSettings $poolSettings
+$fabrikamRule = New-AzureRmApplicationGatewayRequestRoutingRule `
+  -Name fabrikamRule `
+  -RuleType Basic `
+  -HttpListener $fabrikamListener `
+  -BackendAddressPool $fabrikamPool `
+  -BackendHttpSettings $poolSettings
 ```
 
-Alternativ können Sie auch Tags für eine Ressourcengruppe für das Application Gateway erstellen:
+### <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
-```powershell
-$resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway multiple site"}
+Sie haben die erforderlichen unterstützenden Ressourcen erstellt. Geben Sie nun mit [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) Parameter für das Anwendungsgateway *myAppGateway* an, und erstellen Sie es mit [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway).
+
+```azurepowershell-interactive
+$sku = New-AzureRmApplicationGatewaySku `
+  -Name Standard_Medium `
+  -Tier Standard `
+  -Capacity 2
+$appgw = New-AzureRmApplicationGateway `
+  -Name myAppGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -BackendAddressPools $contosoPool, $fabrikamPool `
+  -BackendHttpSettingsCollection $poolSettings `
+  -FrontendIpConfigurations $fipconfig `
+  -GatewayIpConfigurations $gipconfig `
+  -FrontendPorts $frontendport `
+  -HttpListeners $contosoListener, $fabrikamListener `
+  -RequestRoutingRules $contosoRule, $fabrikamRule `
+  -Sku $sku
 ```
 
-Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
+## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
 
-Im obigen Beispiel haben wir eine Ressourcengruppe namens **appgw-RG** mit dem Standort **USA, Westen** erstellt.
+In diesem Beispiel erstellen Sie zwei VM-Skalierungsgruppen, die die zwei von Ihnen erstellten Back-End-Pools unterstützen. Die erstellten Skalierungsgruppen erhalten die Namen *myvmss1* und *myvmss2*. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie IIS installieren. Sie weisen die Skalierungsgruppe dem Back-End-Pool zu, wenn Sie die IP-Einstellungen konfigurieren.
 
-> [!NOTE]
-> Wenn Sie einen benutzerdefinierten Test für Ihr Anwendungsgateway konfigurieren müssen, finden Sie unter [Erstellen eines benutzerdefinierten Tests für Azure Application Gateway mithilfe von PowerShell für Azure-Ressourcen-Manager](application-gateway-create-probe-ps.md)weitere Informationen. Weitere Informationen finden Sie unter [Benutzerdefinierte Tests und Systemüberwachung](application-gateway-probe-overview.md).
-
-## <a name="create-a-virtual-network-and-subnets"></a>Erstellen eines virtuellen Netzwerks und der Subnetze
-
-Das folgende Beispiel zeigt, wie Sie mit dem Ressourcen-Manager ein virtuelles Netzwerk erstellen: In diesem Schritt werden zwei Subnetze erstellt. Das erste Subnetz ist für das Anwendungsgateway. Für das Anwendungsgateway ist ein eigenes Subnetz erforderlich, das Instanzen enthält. In diesem Subnetz können nur andere Anwendungsgateways bereitgestellt werden. Das zweite Subnetz enthält die Back-End-Server der Anwendung.
-
-### <a name="step-1"></a>Schritt 1
-
-Weisen Sie den Adressbereich 10.0.0.0/24 der Subnetzvariablen zu, die das Anwendungsgateway enthalten soll.
-
-```powershell
-$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name appgatewaysubnet -AddressPrefix 10.0.0.0/24
-```
-### <a name="step-2"></a>Schritt 2
-
-Weisen Sie den Adressbereich 10.0.1.0/24 der zweiten Subnetzvariablen zu, die für die Back-End-Pools verwendet wird.
-
-```powershell
-$subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name backendsubnet -AddressPrefix 10.0.1.0/24
-```
-
-### <a name="step-3"></a>Schritt 3
-
-Erstellen Sie ein virtuelles Netzwerk mit dem Namen **appgwvnet** in der Ressourcengruppe **appgw-rg** für die Region „USA, Westen“ mit dem Präfix „10.0.0.0/16“ und den Subnetzen „10.0.0.0/24“ und „10.0.1.0/24“.
-
-```powershell
-$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$subnet2
-```
-
-### <a name="step-4"></a>Schritt 4
-
-Weisen Sie eine Subnetzvariable für die nächsten Schritte zu. Damit wird ein Application Gateway erstellt.
-
-```powershell
-$appgatewaysubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name appgatewaysubnet -VirtualNetwork $vnet
-$backendsubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name backendsubnet -VirtualNetwork $vnet
-```
-
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Erstellen der öffentlichen IP-Adresse für die Front-End-Konfiguration
-
-Erstellen Sie eine öffentliche IP-Ressource namens **publicIP01** in der Ressourcengruppe **appgw-rg** für die Region „USA, Westen“.
-
-```powershell
-$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -name publicIP01 -location "West US" -AllocationMethod Dynamic
-```
-
-Dem Anwendungsgateway wird beim Starten des Diensts eine IP-Adresse zugewiesen.
-
-## <a name="create-application-gateway-configuration"></a>Erstellen einer Application Gateway-Konfiguration
-
-Vor der Erstellung des Anwendungsgateways müssen alle Konfigurationselemente eingerichtet werden. Die folgenden Schritten erstellen die Konfigurationselemente, die für eine Application Gateway-Ressource benötigt werden.
-
-### <a name="step-1"></a>Schritt 1
-
-Erstellen Sie für das Anwendungsgateway eine IP-Konfiguration mit dem Namen **gatewayIP01**. Beim Starten des Anwendungsgateways wird eine IP-Adresse aus dem konfigurierten Subnetz ausgewählt, und der Netzwerkdatenverkehr wird an die IP-Adressen im Back-End-IP-Pool weitergeleitet. Beachten Sie, dass jede Instanz eine eigene IP-Adresse benötigt.
-
-```powershell
-$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $appgatewaysubnet
+```azurepowershell-interactive
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myVNet
+$appgw = Get-AzureRmApplicationGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myAppGateway
+$contosoPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -Name contosoPool `
+  -ApplicationGateway $appgw
+$fabrikamPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -Name fabrikamPool `
+  -ApplicationGateway $appgw
+for ($i=1; $i -le 2; $i++)
+{
+  if ($i -eq 1) 
+  {
+    $poolId = $contosoPool.Id
+  }
+  if ($i -eq 2)
+  {
+    $poolId = $fabrikamPool.Id
+  }
+  $ipConfig = New-AzureRmVmssIpConfig `
+    -Name myVmssIPConfig$i `
+    -SubnetId $vnet.Subnets[1].Id `
+    -ApplicationGatewayBackendAddressPoolsId $poolId
+  $vmssConfig = New-AzureRmVmssConfig `
+    -Location eastus `
+    -SkuCapacity 2 `
+    -SkuName Standard_DS2 `
+    -UpgradePolicyMode Automatic
+  Set-AzureRmVmssStorageProfile $vmssConfig `
+    -ImageReferencePublisher MicrosoftWindowsServer `
+    -ImageReferenceOffer WindowsServer `
+    -ImageReferenceSku 2016-Datacenter `
+    -ImageReferenceVersion latest
+  Set-AzureRmVmssOsProfile $vmssConfig `
+    -AdminUsername azureuser `
+    -AdminPassword "Azure123456!" `
+    -ComputerNamePrefix myvmss$i
+  Add-AzureRmVmssNetworkInterfaceConfiguration `
+    -VirtualMachineScaleSet $vmssConfig `
+    -Name myVmssNetConfig$i `
+    -Primary $true `
+    -IPConfiguration $ipConfig
+  New-AzureRmVmss `
+    -ResourceGroupName myResourceGroupAG `
+    -Name myvmss$i `
+    -VirtualMachineScaleSet $vmssConfig
+}
 ```
 
-### <a name="step-2"></a>Schritt 2
+### <a name="install-iis"></a>Installieren von IIS
 
-Konfigurieren Sie die Back-End-IP-Adresspools **pool01** und **pool2** mit den IP-Adressen **134.170.185.46**, **134.170.188.221**, **134.170.185.50** für **pool1** und **134.170.186.46**, **134.170.189.221**, **134.170.186.50** für **pool2**.
+```azurepowershell-interactive
+$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1"); 
+  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 
-```powershell
-$pool1 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.0.1.100, 10.0.1.101, 10.0.1.102
-$pool2 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool02 -BackendIPAddresses 10.0.1.103, 10.0.1.104, 10.0.1.105
+for ($i=1; $i -le 2; $i++)
+{
+  $vmss = Get-AzureRmVmss `
+    -ResourceGroupName myResourceGroupAG `
+    -VMScaleSetName myvmss$i
+  Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+    -Name "customScript" `
+    -Publisher "Microsoft.Compute" `
+    -Type "CustomScriptExtension" `
+    -TypeHandlerVersion 1.8 `
+    -Setting $publicSettings
+  Update-AzureRmVmss `
+    -ResourceGroupName myResourceGroupAG `
+    -Name myvmss$i `
+    -VirtualMachineScaleSet $vmss
+}
 ```
 
-Dieses Beispiel enthält zwei Back-End-Pools zum Weiterleiten von Netzwerkverkehr basierend auf der angeforderten Site. Ein Pool empfängt Datenverkehr von der Website „contoso.com“, und der andere Pool empfängt Datenverkehr von der Website „fabrikam.com“. Ersetzen Sie die obigen IP-Adressen durch die IP-Adressendpunkte Ihrer eigenen Anwendung. Anstelle interner IP-Adressen können Sie auch öffentliche IP-Adressen, den FQDN oder eine VM-NIC für Back-End-Instanzen verwenden. Verwenden Sie in PowerShell den Parameter „-BackendFQDNs“, um FQDNs anstelle von IPs anzugeben.
+## <a name="create-cname-record-in-your-domain"></a>Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-### <a name="step-3"></a>Schritt 3
+Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Um die DNS-Adresse des Anwendungsgateways abzurufen, können Sie [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) verwenden. Kopieren Sie den Wert von *fqdn* der DNSSettings, und verwenden Sie ihn als Wert für den erstellen CNAME-Eintrag. Die Verwendung von A-Einträgen wird nicht empfohlen, weil sich die VIP beim Neustart des Anwendungsgateways möglicherweise ändert.
 
-Konfigurieren Sie die Application Gateway-Einstellungen **poolsetting01** und **poolsetting02** für den Lastenausgleich des Netzwerkdatenverkehrs im Back-End-Pool. In diesem Beispiel konfigurieren Sie verschiedene Back-End-Pool-Einstellungen für die Back-End-Pools. Jeder Back-End-Pool kann eine eigene Back-End-Pool-Einstellung aufweisen.
-
-```powershell
-$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
-$poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting02" -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 240
+```azurepowershell-interactive
+Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-### <a name="step-4"></a>Schritt 4
+## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Konfigurieren Sie die Front-End-IP-Adresse mit dem öffentlichen IP-Endpunkt.
+Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Verwenden Sie z.B. http://www.contoso.com.
 
-```powershell
-$fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -PublicIPAddress $publicip
-```
+![Testen der Contoso-Website im Anwendungsgateway](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest.png)
 
-### <a name="step-5"></a>Schritt 5
+Ändern Sie die Adresse in Ihre andere Domäne. Die Ausgabe sollte in etwa wie folgt aussehen:
 
-Konfigurieren Sie den Front-End-Port für ein Application Gateway.
-
-```powershell
-$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "fep01" -Port 443
-```
-
-### <a name="step-6"></a>Schritt 6
-
-Konfigurieren Sie zwei SSL-Zertifikate für die beiden Websites, die wir in diesem Beispiel unterstützen. Ein Zertifikat ist für Datenverkehr von „contoso.com“, das andere für Datenverkehr von „fabrikam.com“. Hierbei sollte es sich um Zertifikate handeln, die von einer Zertifizierungsstelle für Ihre Websites ausgestellt wurden. Selbstsignierte Zertifikate werden zwar unterstützt, werden für Produktionsdatenverkehr jedoch nicht empfohlen.
-
-```powershell
-$cert01 = New-AzureRmApplicationGatewaySslCertificate -Name contosocert -CertificateFile <file path> -Password <password>
-$cert02 = New-AzureRmApplicationGatewaySslCertificate -Name fabrikamcert -CertificateFile <file path> -Password <password>
-```
-
-### <a name="step-7"></a>Schritt 7
-
-Konfigurieren Sie zwei Listener für die beiden Websites in diesem Beispiel. In diesem Schritt werden die Listener für die öffentliche IP-Adresse sowie den Port und den Host zum Empfangen von eingehendem Datenverkehr konfiguriert. Der Parameter „HostName“ ist zur Unterstützung mehrerer Websites erforderlich und muss für die entsprechende Website festgelegt werden, für die der Datenverkehr empfangen wird. Der Parameter „RequireServerNameIndication“ muss für Websites, die SSL-Unterstützung für Szenarien mit mehreren Hosts benötigen, auf „True“ festgelegt werden. Wenn SSL-Unterstützung erforderlich ist, müssen Sie auch das SSL-Zertifikat angeben, das für die Sicherheit des Datenverkehrs für diese Webanwendung verwendet wird. Die Kombination aus „FrontendIPConfiguration“, „FrontendPort“ und „HostName“ muss für einen Listener eindeutig sein. Jeder Listener kann ein Zertifikat unterstützen.
-
-```powershell
-$listener01 = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol Https -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -HostName "contoso11.com" -RequireServerNameIndication true  -SslCertificate $cert01
-$listener02 = New-AzureRmApplicationGatewayHttpListener -Name "listener02" -Protocol Https -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -HostName "fabrikam11.com" -RequireServerNameIndication true -SslCertificate $cert02
-```
-
-### <a name="step-8"></a>Schritt 8
-
-Erstellen Sie zwei Regeleinstellungen für die beiden Webanwendungen in diesem Beispiel. Eine Regel verbindet Listener, Back-End-Pools und HTTP-Einstellungen. In diesem Schritt wird das Anwendungsgateway für die Verwendung der Routingregel „Basic“ konfiguriert (eine Regel für jede Website). Der eingehende Datenverkehr jeder Website wird vom konfigurierten Listener der Website empfangen und anschließend unter Verwendung der in den BackendHttpSettings festgelegten Eigenschaften an den jeweils konfigurierten Back-End-Pool geleitet.
-
-```powershell
-$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule01" -RuleType Basic -HttpListener $listener01 -BackendHttpSettings $poolSetting01 -BackendAddressPool $pool1
-$rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule02" -RuleType Basic -HttpListener $listener02 -BackendHttpSettings $poolSetting02 -BackendAddressPool $pool2
-```
-
-### <a name="step-9"></a>Schritt 9
-
-Konfigurieren Sie die Anzahl der Instanzen und die Größe für das Application Gateway.
-
-```powershell
-$sku = New-AzureRmApplicationGatewaySku -Name "Standard_Medium" -Tier Standard -Capacity 2
-```
-
-## <a name="create-application-gateway"></a>Erstellen eines Anwendungsgateways
-
-Erstellen Sie ein Anwendungsgateway mit allen Konfigurationsobjekten aus den vorherigen Schritten.
-
-```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG -Location "West US" -BackendAddressPools $pool1,$pool2 -BackendHttpSettingsCollection $poolSetting01, $poolSetting02 -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslCertificates $cert01, $cert02
-```
-
-> [!IMPORTANT]
-> Die Bereitstellung des Anwendungsgateways ist ein Vorgang mit langer Ausführungsdauer, und es kann einige Zeit dauern, bis er abgeschlossen ist.
-> 
-> 
-
-## <a name="get-application-gateway-dns-name"></a>Abrufen des DNS-Namens des Anwendungsgateways
-
-Nach dem Erstellen des Gateways wird das Front-End für die Kommunikation konfiguriert. Wenn Sie eine öffentliche IP-Adresse verwenden, wird das Anwendungsgateway ein dynamisch zugewiesener DNS-Namen benötigt, der kein Anzeigename ist. Um sicherzustellen, dass die Endbenutzer auf das Anwendungsgateway zugreifen können, kann mit einem CNAME-Eintrag auf den öffentlichen Endpunkt des Anwendungsgateways verwiesen werden. [Konfigurieren eines benutzerdefinierten Domänennamens in Azure](../cloud-services/cloud-services-custom-domain-name-portal.md) Rufen Sie hierzu mithilfe des PublicIPAddress-Elements, das an das Anwendungsgateway angefügt ist, Details zum Anwendungsgateway und den zugeordneten IP/DNS-Namen ab. Verwenden Sie den DNS-Namen des Anwendungsgateways zum Erstellen eines CNAME-Eintrags, der die beiden Webanwendungen an diesen DNS-Namen verweist. Die Verwendung von A-Einträgen wird nicht empfohlen, da sich die VIP beim Neustart des Anwendungsgateways möglicherweise verändert.
-
-```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
-```
-
-```
-Name                     : publicIP01
-ResourceGroupName        : appgw-RG
-Location                 : westus
-Id                       : /subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/publicIPAddresses/publicIP01
-Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
-ResourceGuid             : 00000000-0000-0000-0000-000000000000
-ProvisioningState        : Succeeded
-Tags                     : 
-PublicIpAllocationMethod : Dynamic
-IpAddress                : xx.xx.xxx.xx
-PublicIpAddressVersion   : IPv4
-IdleTimeoutInMinutes     : 4
-IpConfiguration          : {
-                                "Id": "/subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/applicationGateways/appgwtest/frontendIP
-                            Configurations/frontend1"
-                            }
-DnsSettings              : {
-                                "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
-                            }
-```
+![Testen der Fabrikam-Website im Anwendungsgateway](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie unter [Web Application Firewall für Application Gateway](application-gateway-webapplicationfirewall-overview.md), wie Sie Ihre Websites schützen.
+In diesem Artikel haben Sie Folgendes gelernt:
 
+> [!div class="checklist"]
+> * Einrichten des Netzwerks
+> * Erstellen eines Anwendungsgateways
+> * Erstellen der Listener und Routingregeln
+> * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
+> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
+
+> [!div class="nextstepaction"]
+> [Erfahren Sie, welche weiteren Möglichkeiten Ihr Anwendungsgateway bietet](application-gateway-introduction.md)

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: d5f76d532b236e67a4e69eb820e2cfc3033a80c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7cd457fe0660718c3939d39ec1825009c5e4d17
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 ## <a name="overview"></a>Übersicht
 In Azure Media Services (AMS) stellt ein **Kanal** eine Pipeline für die Verarbeitung von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabedatenströme von **Kanälen** empfangen werden können:
 
 * Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTP (MPEG-TS), RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
-* Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für Live Encoding konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
   
   > [!NOTE]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
@@ -65,9 +65,9 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 | Kanalstatus | Portal-UI-Indikatoren | Werden Gebühren berechnet? |
 | --- | --- | --- |
 | Wird gestartet |Wird gestartet |Nein (Übergangsstatus) |
-| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein laufendes Programm) |JA |
+| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein ausgeführtes Programm) |JA |
 | Wird beendet |Wird beendet |Nein (Übergangsstatus) |
-| Stopped |Stopped |Nein |
+| Beendet |Beendet |Nein  |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Automatisches Abschalten nicht verwendeter Kanäle
 Seit dem 25. Januar 2016 stellt Media Services ein Update bereit, das einen Kanal (mit aktiviertem Live Encoding) automatisch beendet, nachdem er für einen längeren Zeitraum nicht verwendet wurde. Dies gilt für Kanäle ohne aktive Programme, die seit längerer Zeit keine Eingabe erhalten haben.
@@ -83,7 +83,7 @@ Im folgenden Diagramm ist ein Livedatenstrom-Workflow dargestellt, bei dem ein S
 Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreaminganwendungen erläutert.
 
 > [!NOTE]
-> Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an „AMSLiveD at Microsoft.com“, wenn Sie einen Kanal für längere Zeit laufen lassen müssen. Beachten Sie, dass für das Live Encoding Gebühren berechnet werden und dass diese Gebühren stundenweise anfallen, wenn Sie einen Live Encoding-Kanal im Zustand „Wird ausgeführt“ belassen.  Es wird empfohlen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden. 
+> Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an amslived@microsoft.com, wenn Sie einen Kanal für längere Zeit ausführen müssen. Beachten Sie, dass für das Live Encoding Gebühren berechnet werden und dass diese Gebühren stundenweise anfallen, wenn Sie einen Live Encoding-Kanal im Zustand „Wird ausgeführt“ belassen.  Es wird empfohlen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden. 
 > 
 > 
 
@@ -262,7 +262,7 @@ Es können bis zu 8 Audiodatenstrom-Sätze angegeben werden, wenn die Eingabe an
 ### <a id="preset"></a>Systemvoreinstellung
 Hier ist die Voreinstellung angegeben, die vom Liveencoder in diesem Kanal verwendet werden soll. Derzeit lautet der einzig zulässige Wert **Default720p** (Standard).
 
-Beachten Sie, dass Sie sich an „AMSLiveD at Microsoft.com“ wenden müssen, wenn Sie benutzerdefinierte Voreinstellungen verwenden möchten.
+Beachten Sie, dass Sie sich an amslived@microsoft.com wenden müssen, wenn Sie benutzerdefinierte Voreinstellungen verwenden möchten.
 
 **Default720p** wird das Video in die folgenden 7 Ebenen codiert:
 
@@ -299,7 +299,7 @@ Dies ist der eindeutige Bezeichner einer Werbepause, der von nachgeschalteten An
 ### <a name="show-slate"></a>Show slate (Slate anzeigen)
 Optional. Hierdurch wird dem Liveencoder signalisiert, bei Werbepausen zum [Standard-Slatebild](media-services-manage-live-encoder-enabled-channels.md#default_slate) zu wechseln und den eingehenden Videodatenstrom auszublenden. Im Slatezustand wird auch die Audioausgabe stummgeschaltet. Die Standardeinstellung lautet **false**. 
 
-Das zu verwendende Bild wird zum Zeitpunkt der Kanalerstellung über die Eigenschaft „Default slate asset Id“ angegeben. Das Slatebild wird gestreckt, um es an die Anzeigebildgröße anzupassen. 
+Das zu verwendende Bild wird zum Zeitpunkt der Kanalerstellung über die Eigenschaft „Default slate asset Id“ angegeben. Für das Slatebild wird Stretching durchgeführt, um es an die Anzeigebildgröße anzupassen. 
 
 ## <a name="insert-slate--images"></a>Einfügen von Slatebildern
 Dem Liveencoder im Kanal kann signalisiert werden, zu einem Slatebild zu wechseln. Auch das Beenden eines aktuellen Slates kann signalisiert werden. 
@@ -329,7 +329,7 @@ Optional. Hier wird die ID des Media Services-Medienobjekts angegeben, welches d
 Wird keine **default slate Asset Id** (ID des Slate-Standardmedienobjekts) angegeben, und die Option **insert slate on ad marker** (Slate bei AD-Marker einfügen) weist die Einstellung **true** auf, so wird ein Standardbild von Azure Media Services verwendet, um den eingehenden Videodatenstrom zu verdecken. Im Slatezustand wird auch die Audioausgabe stummgeschaltet. 
 
 ## <a name="channels-programs"></a>Kanalprogramme
-Einem Kanal sind Programme zugeordnet, mit denen Sie das Veröffentlichen und Speichern von Segmenten in einem Livestream steuern können. Die Programme werden von den Kanälen verwaltet. Die Beziehung zwischen Kanal und Programm ähnelt der bei herkömmlichen Medien: Ein Kanal weist einen konstanten Datenstrom von Inhalten auf, und ein Programm ist auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet.
+Einem Kanal sind Programme zugeordnet, mit denen Sie das Veröffentlichen und Speichern von Segmenten in einem Livestream steuern können. Kanäle verwalten Programme. Die Beziehung zwischen Kanal und Programm ähnelt der bei herkömmlichen Medien: Ein Kanal weist einen konstanten Datenstrom von Inhalten auf, und ein Programm ist auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet.
 
 Über die Länge des **Archivierungsfensters** können Sie die Anzahl der Stunden angeben, für die Sie den aufgezeichneten Inhalt des Programms beibehalten möchten. Dieser Wert kann von mindestens 5 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden. Von der Länge des Archivierungsfensters wird außerdem bestimmt, wie lange von Clients von der aktuellen Liveposition aus maximal rückwärts gesucht werden kann. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Der Wert dieser Eigenschaft legt außerdem fest, wie lange Clientmanifeste wachsen können.
 
@@ -366,7 +366,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 | Wird gestartet |Wird gestartet |Nein (Übergangsstatus) |
 | Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein ausgeführtes Programm) |JA |
 | Wird beendet |Wird beendet |Nein (Übergangsstatus) |
-| Stopped |Stopped |Nein |
+| Beendet |Beendet |Nein  |
 
 > [!NOTE]
 > Derzeit beträgt die durchschnittliche Dauer bis zum Start des Kanals ca. 2 Minuten, aber in Einzelfällen kann dies auch mehr als 20 Minuten dauern. Das Zurücksetzen des Kanals kann bis zu 5 Minuten dauern.
@@ -381,7 +381,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 * In der Standardeinstellung können Sie Ihrem Media Services-Konto nicht mehr als 5 Livekanäle hinzufügen. Hierbei handelt es sich um eine weiche Kontingentgrenze bei allen neuen Konten. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md).
 * Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zugehörigen Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Eingabeprotokoll einen separaten Kanal.
 * Es werden nur Kanäle in Rechnung gestellt, die den Status **Running** (Wird ausgeführt) aufweisen. Weitere Informationen finden Sie in [diesem Abschnitt](media-services-manage-live-encoder-enabled-channels.md#states) .
-* Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an Microsoft.com, wenn Sie einen Kanal für längere Zeit ausführen müssen.
+* Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an amslived@microsoft.com, falls Sie einen Kanal über längere Zeiträume ausführen müssen.
 * Vergewissern Sie sich, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Zustand **Wird ausgeführt** befindet.
 * Bei der Eingabe mehrerer Sprachspuren und beim Ausführen von Live Encoding mit Azure wird nur RTP für die Eingabe mehrerer Sprachen unterstützt. Sie können bis zu 8 Audiodatenströme mit MPEG-2 TS über RTP definieren. Das Erfassen mehrerer Audiospuren mit RTMP oder Smooth Streaming wird derzeit nicht unterstützt. Beim Ausführen der Livecodierung mit [lokalen Liveencodern](media-services-live-streaming-with-onprem-encoders.md)gibt es keine solche Einschränkung, weil alle an AMS gesendeten Daten ohne weitere Verarbeitung über einen Kanal weitergeleitet werden.
 * Die Codierungsvoreinstellung verwendet das Konzept der „max. Bildfrequenz“ von 30 BpS. Wenn die Eingabe 60 BpS/59.97i beträgt, werden die Eingabeframes per Deinterlacing auf 30/29.97 BpS gesenkt. Wenn die Eingabe 50 BpS/50i beträgt, werden die Eingabeframes per Deinterlacing auf 25 BpS gesenkt. Wenn die Eingabe 25 BpS beträgt, bleibt die Ausgabe bei 25 BpS.

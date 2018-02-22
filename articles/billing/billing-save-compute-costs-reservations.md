@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: vikdesai
-ms.openlocfilehash: 96e9cf2fed0b22fd7aa7b9ffeab0e94738ce510d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 799abddc4894bc090d860e7fe100ee65d4d085ab
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>Mit reservierten VM-Instanzen Kosten für virtuelle Computer sparen 
 Reservierte VM-Instanzen ermöglichen Ihnen eine Vorausbezahlung für ein oder drei Jahre Rechenkapazität, um einen Rabatt auf die von Ihnen genutzten virtuellen Computern zu erhalten. Mit einer Vorauszahlung für ein oder drei Jahre reduzieren Sie Ihre Kosten für virtuelle Computer erheblich – im Vergleich mit den Preisen bei nutzungsbasierter Bezahlung um bis zu 72 Prozent. Bei reservierten VM-Instanzen handelt es sich um einen Rechnungsrabatt, der sich nicht auf den Laufzeitstatus von virtuellen Computern auswirkt.
@@ -60,5 +60,14 @@ Reservierungen sind für die meisten VM-Größen bis auf einige Ausnahmen verfü
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sparen Sie durch den Erwerb einer [reservierten VM-Instanz](https://go.microsoft.com/fwlink/?linkid=861721) ab sofort Kosten für Ihre virtuellen Computer. 
+
+Weitere Informationen zu reservierten VM-Instanzen finden Sie in den folgenden Artikeln.
+
+- [Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Verwalten von reservierten Azure-VM-Instanzen](billing-manage-reserved-vm-instance.md)
+- [Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen](billing-understand-vm-reservation-charges.md)
+- [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
+- [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](billing-understand-reserved-instance-usage-ea.md)
+- [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

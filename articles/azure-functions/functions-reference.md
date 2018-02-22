@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 53ba5eaf3272746bd107efbcbae4b5d5889a197f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 461557b415ec816860acb5308e7aeba34468f4ae
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -117,6 +117,8 @@ Der Code für Azure Functions ist Open Source und in GitHub-Repositorys gespeich
 Hier finden Sie eine Tabelle aller unterstützten Bindungen.
 
 [!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
+
+Haben Sie Probleme mit Fehlern, die aus den Bindungen stammen? Lesen Sie die Dokumentation [Fehlerbehandlung in Azure Functions](functions-bindings-error-pages.md).
 
 ## <a name="reporting-issues"></a>Melden von Problemen
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]

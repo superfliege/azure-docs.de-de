@@ -1,6 +1,6 @@
 ---
 title: "Windows-Softwarekosten für reservierte Azure-VM-Instanzen | Microsoft Docs"
-description: "Erfahren Sie, welche Verbrauchseinheiten für Windows-Software für virtuelle Windows-Computer verwendet werden, die für die reservierte Instanz infrage kommen."
+description: "Erfahren Sie, welche Verbrauchseinheiten für Windows-Software nicht in den Kosten für reservierte VM-Instanzen enthalten sind."
 services: billing
 documentationcenter: 
 author: manish-shukla01
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: b985e6e9575ffeedcac5bcb3f94a43d23fdbb85e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: a0bb559369877e1cc5333394102bfb85d3f0bb11
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="windows-software-costs-not-included-with-reserved-instances"></a>Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten
 
-Wenn Sie für Ihren virtuellen Computer der reservierten Instanz nicht über den Azure-Hybridvorteil verfügen, werden Ihnen die in der folgenden Tabelle aufgeführten Verbrauchseinheiten für Windows-Software berechnet:
+Wenn Sie für Ihre reservierten VM-Instanzen keinen Azure-Hybridvorteil besitzen, werden Ihnen die im folgenden Abschnitt aufgeführten Verbrauchseinheiten für Windows-Software berechnet.
+
+## <a name="windows-software-meters-not-included-in-reserved-instance-cost"></a>Kosten für nicht in reservierten Instanzen enthaltene Verbrauchseinheiten für Windows-Software
 
 | MeterId | MeterName in Verwendungsdatei | Von virtuellem Computer verwendet |
 | ------- | ------------------------| --- |
@@ -48,3 +50,13 @@ Wenn Sie für Ihren virtuellen Computer der reservierten Instanz nicht über den
 | 6fdab81b-4284-4df9-8939-c237cc7462fe | Reservierte Windows Server-Instanzen (96 Kerne) | Alle außer B-Serie |
 
 Sie können die Kosten jeder dieser Verbrauchseinheiten über die Azure RateCard-API abrufen. Informationen zum Abrufen der Tarife für eine Azure-Verbrauchseinheit finden Sie unter [Abrufen von Preis- und Metadateninformationen für in einem Azure-Abonnement verwendete Ressourcen](https://msdn.microsoft.com/library/azure/mt219004).
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu reservierten VM-Instanzen finden Sie in den folgenden Artikeln.
+
+- [Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Verwalten von reservierten Azure-VM-Instanzen](billing-manage-reserved-vm-instance.md)
+- [Mit reservierten VM-Instanzen Kosten für virtuelle Computer sparen](billing-save-compute-costs-reservations.md)
+- [Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen](billing-understand-vm-reservation-charges.md)
+- [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
+- [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](billing-understand-reserved-instance-usage-ea.md)

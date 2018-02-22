@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
-ms.openlocfilehash: 3ac630982b47f7105feb034982eae070faa72d9e
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: c4779ada60fab2db5249a107abfc7ca6f80cb16f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
 ## <a name="overview"></a>Übersicht ##
 
- Die Azure [App Service-Umgebung][Intro] ist eine Bereitstellung des Azure App Service in einem Subnetz in Ihrem Azure Virtual Network (VNet). Es gibt zwei Bereitstellungstypen für eine App Service-Umgebung (ASE):
+ Die Azure [App Service-Umgebung][Intro] ist eine Bereitstellung des Azure App Service in einem Subnetz in Ihrem Azure Virtual Network (VNET). Es gibt zwei Bereitstellungstypen für eine App Service-Umgebung (ASE):
 
 - **Externe ASE**: Macht die gehosteten Apps der ASE für eine über das Internet erreichbare IP-Adresse verfügbar. Weitere Informationen finden Sie unter [Erstellen einer externen ASE][MakeExternalASE].
-- **ILB ASE**: Macht die gehosteten Apps der ASE für eine IP-Adresse in Ihrem VNet verfügbar. Der interne Endpunkt ist ein ILB (Internal Load Balancer, interner Lastenausgleich), daher der Name ILB-ASE. Weitere Informationen finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
+- **ILB-ASE**: Macht die gehosteten Apps der ASE für eine IP-Adresse in Ihrem VNET verfügbar. Der interne Endpunkt ist ein ILB (Internal Load Balancer, interner Lastenausgleich), daher der Name ILB-ASE. Weitere Informationen finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
 
-Es gibt nun zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Informationen zur ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro]. ASEv1 kann in einem klassischen oder Resource Manager-VNet bereitgestellt werden. ASEv2 kann nur in einem Ressourcen-Manager-VNet bereitgestellt werden.
+Es gibt nun zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Informationen zur ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro]. ASEv1 kann in einem klassischen oder Resource Manager-VNET bereitgestellt werden. ASEv2 kann nur in einem Ressourcen-Manager-VNET bereitgestellt werden.
 
-Alle Aufrufe, die von einer ASE ins Internet gehen, verlassen das VNet über eine der ASE zugewiesene VIP-Adresse. Die öffentliche IP dieser VIP ist die Quell-IP für alle Aufrufe, die von der ASE ins Internet gehen. Wenn die Apps in Ihrer ASE Ressourcen in Ihrem VNet oder über ein VPN aufrufen, ist die Quell-IP eine der IPs in dem von Ihrer ASE verwendeten Subnetz. Da sich die ASE im VNet befindet, hat sie ohne zusätzliche Konfiguration auch Zugriff auf Ressourcen im VNet. Wenn das VNet mit Ihrem lokalen Netzwerk verbunden ist, verfügen die Apps in der ASE auf über Zugriff auf die dort enthaltenen Ressourcen. Eine weitere Konfiguration der ASE oder der App ist nicht erforderlich.
+Alle Aufrufe, die von einer ASE ins Internet gehen, verlassen das VNET über eine der ASE zugewiesene VIP-Adresse. Die öffentliche IP dieser VIP ist die Quell-IP für alle Aufrufe, die von der ASE ins Internet gehen. Wenn die Apps in Ihrer ASE Ressourcen in Ihrem VNET oder über ein VPN aufrufen, ist die Quell-IP eine der IPs in dem von Ihrer ASE verwendeten Subnetz. Da sich die ASE im VNET befindet, hat sie ohne zusätzliche Konfiguration auch Zugriff auf Ressourcen im VNET. Wenn das VNET mit Ihrem lokalen Netzwerk verbunden ist, verfügen die Apps in der ASE auf über Zugriff auf die dort enthaltenen Ressourcen. Eine weitere Konfiguration der ASE oder der App ist nicht erforderlich.
 
 ![Externe ASE][1] 
 
@@ -47,7 +47,7 @@ Wenn Sie über eine ILB-ASE verfügen, ist die IP-Adresse der ILB der Endpunkt f
 
 Die normalen App-Zugriffsports sind:
 
-| Verwenden Sie | Aus | To |
+| Zweck | From | Zu |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Vom Benutzer konfigurierbar |  80, 443 |
 |  FTP/FTPS    | Vom Benutzer konfigurierbar |  21, 990, 10001-10020 |
@@ -55,11 +55,18 @@ Die normalen App-Zugriffsports sind:
 
 Dies gilt für externe ASEs und ILB-ASEs. Wenn Sie eine externe ASE nutzen, erreichen Sie diese Ports über die öffentliche VIP. Wenn Sie eine ILB-ASE nutzen, erreichen Sie diese Ports über die ILB. Wenn Sie Port 443 sperren, hat dies Auswirkungen auf einige im Portal verfügbare Features. Weitere Informationen finden Sie unter [Portalabhängigkeiten](#portaldep).
 
+## <a name="ase-subnet-size"></a>ASE-Subnetzgröße ##
+
+Die Größe des Subnetzes, das zum Hosten einer ASE verwendet wird, kann nach der ASE-Bereitstellung nicht mehr geändert werden.  Die ASE verwendet eine Adresse für jede Infrastrukturrolle sowie für jede Instanz eines isolierten App Service-Plans.  Zusätzlich werden 5 Adressen für den Azure-Netzwerkbetrieb für jedes erstellte Subnetz verwendet.  Eine ASE ohne App Service-Pläne verwendet 12 Adressen, bevor Sie eine App erstellen.  Wenn es sich um eine ILB-ASE handelt, werden vor dem Erstellen einer App in dieser ASE 13 Adressen verwendet. Beim horizontalen Hochskalieren Ihrer App Service-Pläne sind zusätzliche Adressen für jedes hinzugefügte Front-End erforderlich.  Standardmäßig werden Front-End-Server für je 15 App Service-Planinstanzen hinzugefügt. 
+
+   > [!NOTE]
+   > Im Subnetz kann sich ausschließlich die ASE befinden. Achten Sie darauf, einen Adressbereich auszuwählen, der auf künftiges Wachstum ausgelegt ist. Diese Einstellung kann später nicht geändert werden. Es wird eine Größe von `/25` mit 128 Adressen empfohlen.
+
 ## <a name="ase-dependencies"></a>ASE-Abhängigkeiten ##
 
 Eine eingehende ASE-Zugriffsabhängigkeit ist:
 
-| Verwenden Sie | Aus | To |
+| Zweck | From | Zu |
 |-----|------|----|
 | Verwaltung | App Service-Verwaltungsadressen | ASE-Subnetz: 454, 455 |
 |  Interne ASE-Kommunikation | ASE-Subnetz: Alle Ports | ASE-Subnetz: Alle Ports
@@ -76,10 +83,10 @@ Wenn Sie von der App zugewiesene IP-Adressen verwenden, müssen Sie Datenverkehr
 
 Eine ASE hängt beim ausgehenden Zugriff von mehreren externen Systemen ab. Diese Systemabhängigkeiten werden über DNS-Namen festgelegt und lassen sich keiner festen IP-Adressengruppe zuordnen. Somit erfordert die ASE den ausgehenden Zugriff aus dem ASE-Subnetz auf alle externen IP-Adressen über eine Vielzahl von Ports. Eine ASE weist die folgenden ausgehenden Abhängigkeiten auf:
 
-| Verwenden Sie | Aus | To |
+| Zweck | From | Zu |
 |-----|------|----|
 | Azure Storage | ASE-Subnetz | table.core.windows.net, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 wird nur in ASEv1 benötigt) |
-| Azure SQL-Datenbank | ASE-Subnetz | database.windows.net: 1433, 11000-11999, 14000-14999 (weitere Informationen finden Sie im Artikel zum [Verwenden der Ports von SQL-Datenbank V12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md))|
+| Azure SQL-Datenbank | ASE-Subnetz | database.windows.net: 1433, 11000-11999, 14000-14999 (weitere Informationen finden Sie im Artikel zum [Verwenden der Ports von SQL-Datenbank V12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md))|
 | Azure-Verwaltung | ASE-Subnetz | management.core.windows.net, management.azure.com: 443 
 | SSL-Zertifikatprüfung |  ASE-Subnetz            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
 | Azure Active Directory        | ASE-Subnetz            |  Internet: 443
@@ -91,9 +98,9 @@ Wenn die ASE nicht mehr auf diese Abhängigkeiten zugreifen kann, ist die ASE ni
 
 ### <a name="customer-dns"></a>Kunden-DNS ###
 
-Wenn das VNet mit einem kundendefinierten DNS-Server konfiguriert ist, wird es von den Workloads des Mandanten verwendet. Zu Verwaltungszwecken muss die ASE auch weiterhin mit dem Azure-DNS kommunizieren können. 
+Wenn das VNET mit einem kundendefinierten DNS-Server konfiguriert ist, wird es von den Workloads des Mandanten verwendet. Zu Verwaltungszwecken muss die ASE auch weiterhin mit dem Azure-DNS kommunizieren können. 
 
-Wenn das VNet mit einem Kunden-DNS auf der anderen Seite eines VPN konfiguriert ist, muss der DNS-Server aus dem Subnetz erreichbar sein, das die ASE enthält.
+Wenn das VNET mit einem Kunden-DNS auf der anderen Seite eines VPN konfiguriert ist, muss der DNS-Server aus dem Subnetz erreichbar sein, das die ASE enthält.
 
 <a name="portaldep"></a>
 
@@ -102,14 +109,14 @@ Wenn das VNet mit einem Kunden-DNS auf der anderen Seite eines VPN konfiguriert 
 Neben den funktionalen Abhängigkeiten der ASE gibt es einige weitere zu beachtende Aspekte im Zusammenhang mit der Portalverwendung. Einige der Funktionen im Azure-Portal hängen vom direkten Zugriff auf den _SCM-Standort_ ab. Zu jeder App in Azure App Service gibt es zwei URLs. Die erste URL dient dem Zugriff auf Ihre App. Die zweite URL dient dem Zugriff auf den SCM-Standort, der auch als _Kudu-Konsole_ bezeichnet wird. Funktionen, die den SCM-Standort nutzen:
 
 -   Webaufträge
--   Functions
+-   Funktionen
 -   Protokollstreaming
 -   Kudu
 -   Erweiterungen
 -   Prozess-Explorer
 -   Konsole
 
-Bei Verwendung einer ILB-ASE ist der SCM-Standort von außerhalb des VNet nicht aus dem Internet zugänglich. Wenn Ihre App auf einer ILB-ASE gehostet wird, funktionieren einige Funktionen vom Portal aus nicht.  
+Bei Verwendung einer ILB-ASE ist der SCM-Standort von außerhalb des VNET nicht aus dem Internet zugänglich. Wenn Ihre App auf einer ILB-ASE gehostet wird, funktionieren einige Funktionen vom Portal aus nicht.  
 
 Viele dieser vom SCM-Standort abhängigen Funktionen sind auch direkt in der Kudu-Konsole verfügbar. Sie können sich direkt mit der Konsole verbinden, anstatt das Portal zu verwenden. Wenn Ihre App in einer ILB-ASE gehostet wird, melden Sie sich mit Ihren Veröffentlichungsanmeldeinformationen an. Die URL für den Zugriff auf den SCM-Standort einer in einer ILB-ASE gehosteten App besitzt das folgende Format: 
 
@@ -128,7 +135,7 @@ Funktionen und Webaufträge hängen von der SCM-Website ab. Ihre Verwendung im P
 Eine ASE muss einige IP-Adressen berücksichtigen. Sie lauten wie folgt:
 
 - **Öffentliche eingehende IP-Adresse**: Für den App-Datenverkehr in einer externen ASE und für den Verwaltungsdatenverkehr sowohl in einer externen ASE als auch in einer ILB-ASE.
-- **Ausgehende öffentliche IP-Adresse**: Als „Absender“ für von der ASE ausgehende und das VNet verlassende Verbindungen, die nicht durch ein VPN weitergeleitet werden.
+- **Ausgehende öffentliche IP-Adresse**: Als „Absender“ für von der ASE ausgehende und das VNET verlassende Verbindungen, die nicht durch ein VPN weitergeleitet werden.
 - **ILB-IP-Adresse**: Bei Verwendung einer ILB-ASE.
 - **Von der App zugewiesene IP-basierte SSL-Adressen**: Kann nur in einer externen ASE verwendet werden, wenn gleichzeitig auch IP-basiertes SSL konfiguriert ist.
 
@@ -144,43 +151,43 @@ Wenn eine App über eine eigene IP-basierte SSL-Adresse verfügt, reserviert die
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen ##
 
-[Netzwerksicherheitsgruppen][NSGs] bieten die Möglichkeit, den Netzwerkzugriff innerhalb eines VNet zu steuern. Wenn Sie das Portal verwenden, gibt es auf der niedrigsten Prioritätsstufe eine implizite Ablehnungsregel, durch die alles abgelehnt wird. Sie erstellen also Ihre eigenen Zulassungsregeln.
+[Netzwerksicherheitsgruppen][NSGs] bieten die Möglichkeit, den Netzwerkzugriff innerhalb eines VNET zu steuern. Wenn Sie das Portal verwenden, gibt es auf der niedrigsten Prioritätsstufe eine implizite Ablehnungsregel, durch die alles abgelehnt wird. Sie erstellen also Ihre eigenen Zulassungsregeln.
 
 In einer ASE haben Sie keinen Zugriff auf die VMs, die zum Hosten der eigentlichen ASE verwendet werden. Diese sind in einem Microsoft-Abonnement enthalten. Wenn Sie den Zugriff auf die Apps in der ASE beschränken möchten, legen Sie im ASE-Subnetz Netzwerksicherheitsgruppen fest. Achten Sie dabei sorgfältig auf die ASE-Abhängigkeiten. Wenn Sie Abhängigkeiten blockieren, ist die ASE nicht mehr funktionsfähig.
 
 NSGs können über das Azure-Portal und über PowerShell konfiguriert werden. Die folgenden Informationen beziehen sich auf das Azure-Portal. NSGs können Sie unter **Netzwerk** im Portal als Ressource der obersten Ebene erstellen.
 
-Wenn die Anforderungen in Bezug auf ein- und ausgehenden Datenverkehr berücksichtigt werden, sollten die Netzwerksicherheitsgruppen denen in diesem Beispiel ähneln. Der VNet-Adressbereich ist _192.168.250.0/16_, und das Subnetz, in dem sich die ASE befindet, ist _192.168.251.128/25_.
+Wenn die Anforderungen in Bezug auf ein- und ausgehenden Datenverkehr berücksichtigt werden, sollten die Netzwerksicherheitsgruppen denen in diesem Beispiel ähneln. Der VNET-Adressbereich lautet _192.168.250.0/23_, und das Subnetz, in dem sich die ASE befindet, lautet _192.168.251.128/25_.
 
 Die ersten beiden Anforderungen an den eingehenden Datenverkehr, ohne die die ASE nicht funktionsfähig ist, sind in diesem Beispiel in der Liste an oberster Stelle genannt. Sie ermöglichen die Verwaltung der ASE und die Kommunikation der ASE mit sich selbst. Die anderen Einträge sind alle vom Mandanten konfigurierbar und können den Netzwerkzugriff auf die in der ASE gehosteten Anwendungen steuern. 
 
 ![Eingangssicherheitsregeln][4]
 
-Eine Standardregel ermöglicht den IPs im VNet die Kommunikation mit dem ASE-Subnetz. Eine weitere Standardregel ermöglicht dem Lastenausgleich (auch als öffentliche VIP-Adresse bezeichnet) die Kommunikation mit der ASE. Sie können die Standardregeln anzeigen lassen, indem Sie neben dem Symbol **Hinzufügen** auf **Standardregeln** klicken. Wenn Sie nach den angezeigten NSG-Regeln noch eine Ablehnungsregel für alles andere hinzufügen, unterbinden Sie den Datenverkehr zwischen der VIP und der ASE. Wenn Sie Datenverkehr aus dem VNet verhindern möchten, fügen Sie eine eigene Regel zum Zulassen von eingehendem Datenverkehr hinzu. Verwenden Sie eine auf AzureLoadBalancer festgelegte Quelle mit dem Ziel **Beliebig** und einem Portbereich von **\***. Da die NSG-Regel auf das ASE-Subnetz angewendet wird, müssen Sie kein spezifisches Ziel angeben.
+Eine Standardregel ermöglicht den IPs im VNET die Kommunikation mit dem ASE-Subnetz. Eine weitere Standardregel ermöglicht dem Lastenausgleich (auch als öffentliche VIP-Adresse bezeichnet) die Kommunikation mit der ASE. Sie können die Standardregeln anzeigen lassen, indem Sie neben dem Symbol **Hinzufügen** auf **Standardregeln** klicken. Wenn Sie nach den angezeigten NSG-Regeln noch eine Ablehnungsregel für alles andere hinzufügen, unterbinden Sie den Datenverkehr zwischen der VIP und der ASE. Wenn Sie Datenverkehr aus dem VNET verhindern möchten, fügen Sie eine eigene Regel zum Zulassen von eingehendem Datenverkehr hinzu. Verwenden Sie eine auf AzureLoadBalancer festgelegte Quelle mit dem Ziel **Beliebig** und einem Portbereich von **\***. Da die NSG-Regel auf das ASE-Subnetz angewendet wird, müssen Sie kein spezifisches Ziel angeben.
 
 Wenn Sie der App eine IP-Adresse zugewiesen haben, müssen Sie die Ports geöffnet halten. Sie können die Ports anzeigen lassen, indem Sie **App Service-Umgebung** > **IP-Adressen** auswählen.  
 
-Alle Elemente in den folgenden Regeln für ausgehenden Datenverkehr sind mit Ausnahme des letzten Elements erforderlich. Durch sie ist der Netzwerkzugriff auf die weiter oben im vorliegenden Artikel beschriebenen ASE-Abhängigkeiten möglich. Wenn Sie diese sperren, funktioniert die ASE nicht mehr. Das letzte Listenelement ermöglicht der ASE die Kommunikation mit anderen Ressourcen in Ihrem VNet.
+Alle Elemente in den folgenden Regeln für ausgehenden Datenverkehr sind mit Ausnahme des letzten Elements erforderlich. Durch sie ist der Netzwerkzugriff auf die weiter oben im vorliegenden Artikel beschriebenen ASE-Abhängigkeiten möglich. Wenn Sie diese sperren, funktioniert die ASE nicht mehr. Das letzte Listenelement ermöglicht der ASE die Kommunikation mit anderen Ressourcen in Ihrem VNET.
 
 ![Ausgangssicherheitsregeln][5]
 
-Nach der Festlegung Ihrer NSGs müssen diese dem Subnetz zugewiesen werden, in dem sich Ihre ASE befindet. Wenn Sie das ASE-VNet oder -Subnetz nicht kennen, können Sie es sich auf der ASE-Portalseite anzeigen lassen. Um die NSG Ihrem Subnetz zuzuweisen, öffnen Sie die Benutzeroberfläche des Subnetzes, und wählen Sie die NSG aus.
+Nach der Festlegung Ihrer NSGs müssen diese dem Subnetz zugewiesen werden, in dem sich Ihre ASE befindet. Wenn Sie das ASE-VNET oder -Subnetz nicht kennen, können Sie es sich auf der ASE-Portalseite anzeigen lassen. Um die NSG Ihrem Subnetz zuzuweisen, öffnen Sie die Benutzeroberfläche des Subnetzes, und wählen Sie die NSG aus.
 
 ## <a name="routes"></a>Routen ##
 
-Routen erweisen sich meistens dann als problematisch, wenn Sie Ihr VNet mit Azure ExpressRoute konfigurieren. In einem VNet gibt es drei Typen von Routen:
+Routen sind ein wichtiger Aspekt des erzwungenen Tunnelings und des entsprechenden Umgangs damit. In einem virtuellen Azure-Netzwerk wird das Routing auf der Basis der längsten Präfixübereinstimmung (Longest Prefix Match, LPM) durchgeführt. Wenn mehrere Routen mit identischer längster Präfixübereinstimmung vorhanden sind, wird die Route in der folgenden Reihenfolge beruhend auf ihrem Ursprung ausgewählt:
 
--   Systemrouten
--   BGP-Routen
--   Benutzerdefinierte Routen (UDR)
+- Benutzerdefinierte Route
+- BGP-Route (bei Verwendung von ExpressRoute)
+- Systemroute
 
-BGP-Routen setzen Systemrouten außer Kraft. UDRs überschreiben BGP-Routen. Weitere Informationen zu Routen in virtuellen Azure-Netzwerken finden Sie unter [Benutzerdefinierte Routen – Übersicht][UDRs].
+Weitere Informationen zum Routing in einem virtuellen Netzwerk finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung][UDRs].
 
 Die Azure SQL-Datenbank, mit der die ASE das System verwaltet, verfügt über eine Firewall. Diese fordert, dass der Ursprung der Kommunikation in der öffentlichen VIP der ASE liegt. Verbindungen mit der SQL-Datenbank aus der ASE werden verweigert, wenn sie über die ExpressRoute-Verbindung und von einer anderen IP-Adresse gesendet werden.
 
 Wenn die Antworten auf die eingehenden Verwaltungsanforderungen über ExpressRoute gesendet werden, unterscheiden sich die Antwortadresse und das ursprüngliche Ziel. Durch diesen Konflikt wird die TCP-Kommunikation unterbrochen.
 
-Wenn Ihr VNet mit einer ExpressRoute konfiguriert ist, kann eine funktionsfähige ASE am einfachsten wie folgt erhalten werden:
+Wenn Ihr VNET mit einer ExpressRoute konfiguriert ist, kann eine funktionsfähige ASE am einfachsten wie folgt erhalten werden:
 
 -   ExpressRoute ist so zu konfigurieren, dass _0.0.0.0/0_ angekündigt wird. In der Standardeinstellung wird das Tunneling des gesamten ausgehenden Datenverkehrs lokal erzwungen.
 -   Erstellen Sie eine UDR. Wenden Sie diese in dem Subnetz an, das die ASE mit dem Adresspräfix _0.0.0.0/0_ dem nächsten Hoptyp _Internet_ enthält.
@@ -196,11 +203,11 @@ Führen Sie die folgenden Schritte aus, um eine UDR zu erstellen:
 
 1. Öffnen Sie das Azure-Portal. Wählen Sie **Netzwerk** > **Routingtabellen** aus.
 
-2. Erstellen Sie eine neue Routentabelle in derselben Region wie Ihr VNet.
+2. Erstellen Sie eine neue Routentabelle in derselben Region wie Ihr VNET.
 
 3. Wählen Sie in der Benutzeroberfläche Ihrer Routentabelle **Routen** > **Hinzufügen**.
 
-4. Legen Sie als **Typ des nächsten Hops** **Internet** und als **Adresspräfix** **0.0.0.0/0** fest. Wählen Sie **Speichern** aus.
+4. Legen Sie als **Typ des nächsten Hops** **Internet** und als **Adresspräfix** **0.0.0.0/0** fest. Wählen Sie **Speichern**aus.
 
     Folgendes sollte angezeigt werden:
 
@@ -212,7 +219,7 @@ Führen Sie die folgenden Schritte aus, um eine UDR zu erstellen:
 
 ### <a name="deploy-into-existing-azure-virtual-networks-that-are-integrated-with-expressroute"></a>Bereitstellen in vorhandenen und in ExpressRoute integrierten virtuellen Azure-Netzwerken ###
 
-Um die ASE in einem VNet bereitzustellen, das mit ExpressRoute integriert ist, nehmen Sie eine Vorabkonfiguration des Subnetzes vor, in dem die ASE bereitgestellt werden soll. Stellen Sie sie anschließend mithilfe einer Resource Manager-Vorlage bereit. So erstellen Sie eine ASE in einem Vnet, für das ExpressRoute bereits konfiguriert ist:
+Um die ASE in einem VNET bereitzustellen, das mit ExpressRoute integriert ist, nehmen Sie eine Vorabkonfiguration des Subnetzes vor, in dem die ASE bereitgestellt werden soll. Stellen Sie sie anschließend mithilfe einer Resource Manager-Vorlage bereit. So erstellen Sie eine ASE in einem VNET, für das ExpressRoute bereits konfiguriert ist:
 
 - Erstellen Sie ein Subnetz, um die ASE zu hosten.
 

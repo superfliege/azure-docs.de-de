@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: e5c76ff84fc6409975ce6df076bfe220a092eeec
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 70973684445416d715c5b26d06613b31e0001395
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis – Azure PowerShell
 
@@ -37,7 +37,7 @@ Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Azure-Ressourcengruppe.  
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mithilfe von [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Azure-Ressourcengruppe.  
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
@@ -45,7 +45,7 @@ New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
-Erstellen Sie mit [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) die Subnetzkonfigurationen *myAGSubnet* und *myBackendSubnet*. Erstellen Sie das virtuelle Netzwerk *myVNet* mit [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) und den Subnetzkonfigurationen. Erstellen Sie zum Schluss mithilfe von [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) die öffentliche IP-Adresse mit dem Namen *myAGPublicIPAddress*. Diese Ressourcen werden verwendet, um Netzwerkkonnektivität zum Anwendungsgateway und den zugehörigen Ressourcen bereitzustellen.
+Erstellen Sie mit [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) die Subnetzkonfigurationen *myAGSubnet* und *myBackendSubnet*. Erstellen Sie das virtuelle Netzwerk *myVNet* mit [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) und den Subnetzkonfigurationen. Erstellen Sie abschließend mithilfe von [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) die öffentliche IP-Adresse mit dem Namen *myAGPublicIPAddress*. Diese Ressourcen werden verwendet, um Netzwerkkonnektivität für das Anwendungsgateway und die zugehörigen Ressourcen bereitzustellen.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
@@ -111,7 +111,7 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
 
 Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr entsprechend an den Back-End-Pool weiterleiten kann. In diesem Tutorial werden zwei Listener erstellt. Der erste grundlegende Listener, den Sie erstellen, lauscht an der Stamm-URL auf Datenverkehr. Der zweite Listener, den Sie erstellen, lauscht an bestimmten URLs auf Datenverkehr.
 
-Erstellen Sie den Standardlistener namens *myDefaultListener* mit [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit er weiß, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) eine grundlegende Regel mit dem Namen *rule1*.
+Erstellen Sie den Standardlistener namens *myDefaultListener* mit [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit er weiß, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *rule1*.
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzureRmApplicationGatewayHttpListener `
@@ -352,9 +352,9 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Ändern Sie die URL in http://<ip-address>:8080/video/test.htm, und geben Sie dabei Ihre eigene IP-Adresse an. Die Ausgabe sollte in etwa wie folgt aussehen:
+Ändern Sie die URL in http://<IP-Adresse>:8080/video/test.htm, und ersetzen Sie dabei <IP-Adresse> durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
 
-![Testen der URL für Bilder im Anwendungsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
+![Testen der Images-URL im Anwendungsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
 Ändern Sie die URL in http://<ip-address>:8080/video/test.htm. Die Ausgabe sollte in etwa wie folgt aussehen:
 

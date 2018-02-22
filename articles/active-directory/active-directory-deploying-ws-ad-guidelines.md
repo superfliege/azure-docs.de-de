@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 2c9b072551b467785dbb4aae02492ffae6cdb787
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2a6ac8d9c2f3694cf08357d6ccec874f7e076514
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern
 In diesem Artikel werden die wichtigen Unterschiede zwischen der lokalen Bereitstellung von Windows Server Active Directory Domain Services (AD DS) und den Active Directory-Verbunddiensten (AD FS) und der Bereitstellung auf virtuellen Microsoft Azure-Computern beschrieben.
@@ -258,7 +258,7 @@ Im folgenden Abschnitt werden häufig verwendete Bereitstellungsszenarien beschr
 ![Bereitstellung von AD DS nur in der Cloud](media/active-directory-deploying-ws-ad-guidelines/ADDS_cloud.png)
 **Abbildung 1**
 
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 SharePoint wird auf einer Azure Virtual Machine bereitgestellt, und die Anwendung weist keine Abhängigkeiten von Ressourcen des Unternehmensnetzwerks auf. Für die Anwendung ist Windows Server AD DS erforderlich, aber *nicht* die Windows Server AD DS-Instanz des Unternehmens. Weder Kerberos- noch Verbundvertrauensstellungen sind erforderlich, da Benutzer von der Anwendung selbst in der Windows Server AD DS-Domäne bereitgestellt werden, die in der Cloud ebenfalls auf Azure Virtual Machines gehostet wird.
 
 #### <a name="scenario-considerations-and-how-technology-areas-apply-to-the-scenario"></a>Szenarioaspekte und Gültigkeit von Technologiebereichen für das Szenario
@@ -278,7 +278,7 @@ SharePoint wird auf einer Azure Virtual Machine bereitgestellt, und die Anwendun
 ![Verbund mit standortübergreifender Konnektivität](media/active-directory-deploying-ws-ad-guidelines/Federation_xprem.png)
 **Abbildung 2**
 
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 Eine Ansprüche unterstützende Anwendung, die lokal erfolgreich bereitgestellt wurde und von Unternehmensanwendern genutzt wird, soll direkt über das Internet erreichbar sein. Die Anwendung dient als Web-Front-End für eine SQL-Datenbank, in der die dazugehörigen Daten gespeichert werden. Die von der Anwendung verwendeten SQL-Server befinden sich ebenfalls im Unternehmensnetzwerk. Zwei Windows Server AD FS-Sicherheitstokendienste und ein Lastenausgleichsmodul wurden lokal bereitgestellt, um den Zugriff auf die Unternehmensanwender zu ermöglichen. Auf die Anwendung müssen nun zusätzlich sowohl Geschäftspartner mit ihren eigenen Unternehmensidentitäten als auch vorhandene Unternehmensanwender direkt über das Internet zugreifen können.
 
 Um die Bereitstellungs- und Konfigurationsanforderungen dieser neuen Aufgabenstellung zu vereinfachen und zu erfüllen, wird entschieden, dass zwei zusätzliche Web-Front-Ends und zwei Windows Server AD FS-Proxyserver auf Azure Virtual Machines installiert werden. Alle vier VMs werden direkt über das Internet verfügbar gemacht und mit einer Verbindung mit dem lokalen Netzwerk versehen, indem die Funktion für die Site-to-Site-VPN-Verbindung des Azure Virtual Network verwendet wird.
@@ -302,7 +302,7 @@ Weitere Informationen finden Sie im [Leitfaden zur AD DS Bereitstellung](https:
 ![Standortübergreifende AD DS-Bereitstellung](media/active-directory-deploying-ws-ad-guidelines/ADDS_xprem.png)
 **Abbildung 3**
 
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 Eine LDAP-fähige Anwendung wird auf einer Azure Virtual Machine bereitgestellt. Sie unterstützt die integrierte Windows-Authentifizierung und nutzt Windows Server AD DS als Repository für Konfigurations- und Benutzerprofildaten. Für die Anwendung soll erreicht werden, dass die vorhandene Windows Server AD DS-Instanz des Unternehmens genutzt und das einmalige Anmelden bereitgestellt wird. Die Anwendung unterstützt keine Ansprüche. Außerdem müssen die Benutzer direkt über das Internet auf die Anwendung zugreifen. Um die Leistung und Kosten zu optimieren, wird entschieden, dass zwei weitere Domänencontroller, die Teil der Unternehmensdomäne sind, zusätzlich zur Anwendung in Azure bereitgestellt werden.
 
 #### <a name="scenario-considerations-and-how-technology-areas-apply-to-the-scenario"></a>Szenarioaspekte und Gültigkeit von Technologiebereichen für das Szenario
@@ -329,7 +329,7 @@ Wenn Sie beispielsweise einen Replikatdomänencontroller in einem virtuellen Net
 
 | Windows Server Active Directory-Technologiebereich | Entscheidungen | Faktoren |
 | --- | --- | --- |
-| [Netzwerktopologie](#BKMK_NetworkTopology) |Erstellen Sie ein virtuelles Netzwerk? |<li>Notwendigkeit, auf Unternehmensressourcen zuzugreifen</li> <li>Authentifizierung</li> <li>Kontoverwaltung</li> |
+| [Netzwerktopologie](#BKMK_NetworkTopology) |Erstellen Sie ein virtuelles Netzwerk? |<li>Notwendigkeit, auf Unternehmensressourcen zuzugreifen</li> <li>Authentifizierung</li> <li>Kontenverwaltung</li> |
 | [DC-Bereitstellungskonfiguration](#BKMK_DeploymentConfig) |<li>Separate Gesamtstruktur ohne Vertrauensstellungen bereitstellen?</li> <li>Neue Gesamtstruktur mit Verbund bereitstellen?</li> <li>Neue Gesamtstruktur mit Windows Server Active Directory-Gesamtstruktur-Vertrauensstellung oder Kerberos bereitstellen?</li> <li>Erweitern der Unternehmensgesamtstruktur durch Bereitstellung eines Replikatdomänencontrollers?</li> <li>Erweitern der Unternehmensgesamtstruktur durch Bereitstellung einer neuen untergeordneten Domäne oder einer Domänenstruktur?</li> |<li>Sicherheit</li> <li>Compliance</li> <li>Kosten</li> <li>Resilienz und Fehlertoleranz</li> <li>Anwendungskompatibilität</li> |
 | [Windows Server Active Directory-Standorttopologie](#BKMK_ADSiteTopology) |Wie können Subnetze, Standorte und Standortverknüpfungen mit Azure Virtual Network konfiguriert werden, um den Datenverkehr zu optimieren und die Kosten zu reduzieren? |<li>Subnetz- und Standortdefinitionen</li> <li>Standortverknüpfungseigenschaften und Änderungsbenachrichtigung</li> <li>Replikationskomprimierung</li> |
 | [IP-Adressierung und DNS](#BKMK_IPAddressDNS) |Wie werden IP-Adressen und die Namensauflösung konfiguriert? |<li>Verwenden Sie das Cmdlet „Set-AzureStaticVNetIP“ zum Zuweisen einer statischen IP-Adresse zuzuweisen.</li> <li>Installieren Sie einen Windows Server-DNS-Server, und konfigurieren Sie die Eigenschaften für das virtuelle Netzwerk mit dem Namen und der IP-Adresse des virtuellen Computers, der die Domänencontroller- und DNS-Serverrollen hostet.</li> |
@@ -433,7 +433,7 @@ Verwenden Sie nicht SYSPREP, um DCs bereitzustellen oder zu klonen. Die Möglich
 Wählen Sie aus, wo Sie die Windows Server AD DS-Datenbank, Protokolle und SYSVOL anordnen. Sie müssen auf Azure-Datenträgern bereitgestellt werden.
 
 > [!NOTE]
-> Die Größe von Azure-Datenträgern ist auf 1 TB beschränkt.
+> Die Größe von Azure-Datenträgern ist auf 4 TB beschränkt.
 > 
 > 
 

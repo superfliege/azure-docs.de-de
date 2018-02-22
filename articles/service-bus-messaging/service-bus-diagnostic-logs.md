@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 10/16/2017
+ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 2bf65b7c5b0518da59e767db18fe6f4193e0ab6e
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 4ce724adc9ca167634be9a0b7137b6a3d54211bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus-Diagnoseprotokolle
 
@@ -63,11 +63,11 @@ Protokolle in der Kategorie **OperationalLogs** erfassen, was während Service B
 
 JSON-Zeichenfolgen im Betriebsprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-Name | Beschreibung
+NAME | BESCHREIBUNG
 ------- | -------
 ActivityId | Interne ID zur Nachverfolgung
 EventName | Vorgangsname           
-resourceId | Azure Resource Manager-Ressourcen-ID
+Ressourcen-ID | Azure Resource Manager-Ressourcen-ID
 SubscriptionId | Abonnement-ID
 EventTimeString | Vorgangsdauer
 EventProperties | Vorgangseigenschaften
@@ -93,7 +93,7 @@ Hier ein Beispiel für eine JSON-Zeichenfolge im Betriebsprotokoll:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Klicken Sie auf die folgenden Links, um mehr über Service Bus zu erfahren:
+Unter den folgenden Links erfahren Sie mehr über Service Bus:
 
 * [Einführung in Service Bus](service-bus-messaging-overview.md)
 * [Erste Schritte mit Service Bus](service-bus-dotnet-get-started-with-queues.md)

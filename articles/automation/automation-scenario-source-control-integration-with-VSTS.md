@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
-ms.openlocfilehash: 01f9c01c9e04e02dbb548b68cf99684ba6ddd57e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5afccc4aa7b751958952d1401182f93109cff358
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation-Szenario – Integration der Automation-Quellcodeverwaltung mit Visual Studio Team Services
 
@@ -31,19 +31,19 @@ Dieses Szenario basiert auf zwei PowerShell-Runbooks, die Sie direkt aus dem [Ru
 
 ### <a name="runbooks"></a>Runbooks
 
-Runbook | Beschreibung| 
+Runbook | BESCHREIBUNG| 
 --------|------------|
 Sync-VSTS | Importieren Sie Runbooks oder Konfigurationen aus der VSTS-Quellcodeverwaltung, wenn ein Eincheckvorgang ausgeführt wird. Bei der manuellen Ausführung werden alle Runbooks oder Konfigurationen in das Automation-Konto importiert und veröffentlicht.| 
 Sync-VSTSGit | Importieren Sie Runbooks oder Konfigurationen aus VSTS unter Git-Quellcodeverwaltung, wenn ein Eincheckvorgang ausgeführt wird. Bei der manuellen Ausführung werden alle Runbooks oder Konfigurationen in das Automation-Konto importiert und veröffentlicht.|
 
-### <a name="variables"></a>Variablen
+### <a name="variables"></a>Variables
 
-Variable | Beschreibung|
+Variable | BESCHREIBUNG|
 -----------|------------|
-VSToken | Sichern Sie das erstellte Variablenasset, das das persönliche VSTS-Zugriffstoken enthält. Sie finden Informationen zum Erstellen eines persönlichen VSTS-Zugriffstokens auf der [VSTS-Authentifizierungsseite](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview). 
+VSToken | Sichern Sie das erstellte Variablenasset, das das persönliche VSTS-Zugriffstoken enthält. Sie finden Informationen zum Erstellen eines persönlichen VSTS-Zugriffstokens auf der [VSTS-Authentifizierungsseite](/vsts/accounts/use-personal-access-tokens-to-authenticate).
 ## <a name="installing-and-configuring-this-scenario"></a>Installieren und Konfigurieren dieses Szenarios
 
-Erstellen Sie ein [persönliches Zugriffstoken](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview) in VSTS, mit dem Sie die Runbooks oder Konfigurationen in Ihrem Automation-Konto synchronisieren.
+Erstellen Sie ein [persönliches Zugriffstoken](/vsts/accounts/use-personal-access-tokens-to-authenticate) in VSTS, mit dem Sie die Runbooks oder Konfigurationen in Ihrem Automation-Konto synchronisieren.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPersonalToken.png) 
 
@@ -60,10 +60,10 @@ Sie können dieses Runbook jetzt [veröffentlichen](automation-creating-importin
 
 Erstellen Sie einen [Webhook](automation-webhooks.md) für dieses Sync-VSTS-Runbook, und geben Sie die Parameter an, wie unten dargestellt. Sie müssen die Webhook-URL kopieren, da Sie sie für einen Service Hook in VSTS benötigen. VSAccessTokenVariableName ist der Name (VSToken) der sicheren Variablen, die Sie zuvor für das persönliche Zugriffstoken erstellt haben. 
 
-Für das Integrieren in VSTS (Sync-VSTS.ps1) werden die folgenden Parameter verwendet.
+Für das Integrieren in VSTS (Sync-VSTS.ps1) werden die folgenden Parameter verwendet:
 ### <a name="sync-vsts-parameters"></a>Sync-VSTS-Parameter
 
-Parameter | Beschreibung| 
+Parameter | BESCHREIBUNG| 
 --------|------------|
 WebhookData | Dieser Parameter enthält die vom VSTS Service Hook gesendeten Informationen über das Einchecken. Sie sollten diesen Parameter leer lassen.| 
 ResourceGroup | Dies ist der Name der Ressourcengruppe, in der sich das Automation-Konto befindet.|
@@ -77,7 +77,7 @@ VSAccessTokenVariableName | Der Name der sicheren Variablen (VSToken), die das p
 
 Wenn Sie VSTS mit Git (Sync-VSTSGit.ps1) verwenden, werden die folgenden Parameter verwendet.
 
-Parameter | Beschreibung|
+Parameter | BESCHREIBUNG|
 --------|------------|
 WebhookData | Dieser Parameter enthält die vom VSTS Service Hook gesendeten Informationen über das Einchecken. Sie sollten diesen Parameter leer lassen.| ResourceGroup | Dies ist der Name der Ressourcengruppe, in der sich das Automation-Konto befindet.|
 AutomationAccountName | Der Name des Automation-Kontos, das mit VSTS synchronisiert wird.|
@@ -90,7 +90,7 @@ VSAccessTokenVariableName | Der Name der sicheren Variablen (VSToken), die das p
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSGitWebhook.png)
 
-Erstellen Sie einen Service Hook in VSTS für Eincheckvorgänge in den Ordner, der diesen Webhook beim Einchecken von Code auslöst. Wählen Sie Webhooks als Dienst für die Integration aus, wenn Sie ein neues Abonnement erstellen. Weitere Informationen zu Service Hooks finden Sie in der [VSTS Service Hooks-Dokumentation](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started).
+Erstellen Sie einen Service Hook in VSTS für Eincheckvorgänge in den Ordner, der diesen Webhook beim Einchecken von Code auslöst. Wählen Sie **Webhooks** als Dienst für die Integration aus, wenn Sie ein neues Abonnement erstellen. Weitere Informationen zu Service Hooks finden Sie in der [VSTS Service Hooks-Dokumentation](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started).
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSServiceHook.png)
 
 Sie sollten jetzt in der Lage sein, alle Eincheckvorgänge Ihrer Runbooks und Konfigurationen in VSTS durchzuführen und diese automatisch in Ihrem Automation-Konto zu synchronisieren.

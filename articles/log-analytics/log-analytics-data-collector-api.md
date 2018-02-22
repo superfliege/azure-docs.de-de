@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 88d9c4b23eb676743c004c0d1b3ab45f6cd66055
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 5c6f2b35b48988af533612cb48da8fe79a838cf6
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Public Preview)
 In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Daten von einem REST-API-Client an Log Analytics zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Log Analytics autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
@@ -49,7 +49,7 @@ Um die HTTP-Datensammler-API zu verwenden, erstellen Sie eine POST-Anforderung m
 ### <a name="request-uri-parameters"></a>URI-Parameter der Anforderung
 | Parameter | BESCHREIBUNG |
 |:--- |:--- |
-| CustomerID |Der eindeutige Bezeichner für den Microsoft Operations Management Suite-Arbeitsbereich |
+| CustomerID |Eindeutiger Bezeichner für den Log Analytics-Arbeitsbereich |
 | Ressource |Der Name der API-Ressource: /api/logs |
 | API-Version |Die Version der bei dieser Anforderung verwendeten API. Die aktuelle Version lautet 2016-04-01. |
 
@@ -70,7 +70,7 @@ Dies ist das Format für den „Authorization“-Header:
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-Die *WorkspaceID* ist der eindeutige Bezeichner für den Operations Management Suite-Arbeitsbereich. Die *Signatur* ist ein [HMAC (Hash-based Message Authentication Code)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx), der aus der Anforderung erstellt und dann mit dem [SHA256-Algorithmus](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx) berechnet wird. Anschließend codieren Sie ihn mit der Base64-Codierung.
+*WorkspaceID* ist der eindeutige Bezeichner des Log Analytics-Arbeitsbereichs. Die *Signatur* ist ein [HMAC (Hash-based Message Authentication Code)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx), der aus der Anforderung erstellt und dann mit dem [SHA256-Algorithmus](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx) berechnet wird. Anschließend codieren Sie ihn mit der Base64-Codierung.
 
 Verwenden Sie dieses Format zum Codieren der **SharedKey**-Signaturzeichenfolge:
 
@@ -204,7 +204,8 @@ In den nächsten Abschnitten finden Sie Beispiele für das Senden von Daten an d
 
 Führen Sie für alle Beispiele folgende Schritte aus, um die Variablen für den „Authorization“-Header festzulegen:
 
-1. Wählen Sie im Operations Management Suite-Portal die Kachel **Einstellungen** und dann die Registerkarte **Verbundene Quellen** aus.
+1. Suchen Sie im Azure-Portal Ihren Log Analytics-Arbeitsbereich.
+2. Wählen Sie **Erweiterte Einstellungen** und dann **Verbundene Quellen** aus.
 2. Wählen Sie rechts neben **Arbeitsbereichs-ID** das Symbol „Kopieren“ aus, und fügen Sie die ID als Wert der Variablen für die **Kunden-ID** ein.
 3. Wählen Sie rechts neben **Primärschlüssel** das Symbol „Kopieren“ aus, und fügen Sie die ID als Wert der Variablen für den **gemeinsam verwendeten Schlüssel** ein.
 
@@ -311,7 +312,7 @@ namespace OIAPIExample
         // An example JSON object, with key/value pairs
         static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField3"":""DemoValue3"",""DemoField4"":""DemoValue4""}]";
 
-        // Update customerId to your Operations Management Suite workspace ID
+        // Update customerId to your Log Analytics workspace ID
         static string customerId = "xxxxxxxx-xxx-xxx-xxx-xxxxxxxxxxxx";
 
         // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
@@ -389,7 +390,7 @@ import hashlib
 import hmac
 import base64
 
-# Update the customer ID to your Operations Management Suite workspace ID
+# Update the customer ID to your Log Analytics workspace ID
 customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
 # For the shared key, use either the primary or the secondary Connected Sources client authentication key   

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 8a2211e76150a90e4e10d79fd527decd3cbcc220
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 2bdb8c30ffa630f85d666f3a16ce2b9dcdab6492
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an
 
@@ -31,13 +31,7 @@ Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Mana
 Vorlagen dienen zum Anpassen des Inhalts von systemgenerierten Entwicklerportalseiten (z.B. API-Dokumentation, Produkte, Benutzerauthentifizierung usw.). Sie können die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und verschiedenen lokalisierten Zeichenfolgenressourcen, Symbolen und Seitensteuerelementen flexibel an Ihre Bedürfnisse anpassen.
 
 ## <a name="developer-portal-templates-overview"></a>Übersicht über die Vorlagen im Entwicklerportal
-Die Bearbeitung von Vorlagen erfolgt über das **Entwicklerportal**, während Sie als Administrator angemeldet sind. Öffnen Sie hierzu zuerst das Azure-Portal, und klicken Sie in der Dienstsymbolleiste Ihrer API Management-Instanz auf **Herausgeberportal**.
-
-![Herausgeberportal][api-management-management-console]
-
-Klicken Sie anschließend oben rechts auf **Entwicklerportal**. 
-
-![Entwicklerportal: Menü][api-management-developer-portal-menu]
+Die Bearbeitung von Vorlagen erfolgt über das **Entwicklerportal**, während Sie als Administrator angemeldet sind. Öffnen Sie hierzu zuerst das Azure-Portal, und klicken Sie in der Dienstsymbolleiste Ihrer API Management-Instanz auf **Entwicklerportal**.
 
 Um auf die Vorlagen im Entwicklerportal zuzugreifen, klicken Sie auf der linken Seite auf das Anpassungssymbol, um das Anpassungsmenü zu öffnen, und wählen Sie **Vorlagen**.
 
@@ -65,7 +59,7 @@ Im Bereich **Vorlagendaten** finden Sie Hinweise zum Datenmodell für die Entit�
 
 ![Vorlagendatenmodell][api-management-template-data]
 
-Im vorstehenden Beispiel werden zwei Produkte im Entwicklerportal angezeigt, die aus den Daten abgerufen wurden, die im Bereich **Vorlagendaten** angezeigt werden, wie im nachfolgenden Beispiel gezeigt.
+Im vorstehenden Beispiel werden zwei Produkte im Entwicklerportal angezeigt, die aus den Daten abgerufen wurden, die im Bereich **Vorlagendaten** angezeigt werden, wie im nachfolgenden Beispiel gezeigt:
 
 ```json
 {

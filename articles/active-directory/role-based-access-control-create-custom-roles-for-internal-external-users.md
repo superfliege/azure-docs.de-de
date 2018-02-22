@@ -3,7 +3,7 @@ title: "Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriff
 description: Zuweisen von benutzerdefinierten, mithilfe von PowerShell und der Befehlszeilenschnittstelle erstellten RBAC-Rollen zu internen und externen Benutzern
 services: active-directory
 documentationcenter: 
-author: andreicradu
+author: rolyon
 manager: mtillman
 editor: kgremban
 ms.assetid: 
@@ -13,20 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/06/2017
-ms.author: a-crradu
+ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: b3b65812d453a9f7d93ee4381c4261e685a60376
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 75a45b492c230b19d2f7237f8ea7fe2c49de29bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="intro-on-role-based-access-control"></a>Einführung in die rollenbasierte Zugriffssteuerung
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ist ein nur im Azure-Portal verfügbares Feature, mit dem Besitzer eines Abonnements Benutzern, die bestimmte Ressourcenbereiche in ihrer Umgebung verwalten können, differenzierte Rollen zuweisen.
 
-RBAC ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern arbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung, aber nicht auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche benötigen. Die rollenbasierte Zugriffssteuerung bietet Flexibilität: Sie können ein Azure-Abonnement besitzen, das vom Administratorkonto (Dienstadministratorrolle auf Abonnementebene) verwaltet wird, und mehrere Benutzer dazu einladen, im gleichen Abonnement zu arbeiten, ohne dass diese über Administratorrechte für das Konto verfügen. Aus verwaltungs- und abrechnungstechnischer Sicht ist die rollenbasierte Zugriffssteuerung hinsichtlich Zeit- und Verwaltungsaufwand eine effiziente Option für die Nutzung von Azure in verschiedenen Szenarien.
+RBAC ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern arbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Die rollenbasierte Zugriffssteuerung bietet Flexibilität: Sie können ein Azure-Abonnement besitzen, das vom Administratorkonto (Dienstadministratorrolle auf Abonnementebene) verwaltet wird, und mehrere Benutzer dazu einladen, im gleichen Abonnement zu arbeiten, ohne dass diese über Administratorrechte für das Konto verfügen. Aus verwaltungs- und abrechnungstechnischer Sicht ist die rollenbasierte Zugriffssteuerung hinsichtlich Zeit- und Verwaltungsaufwand eine effiziente Option für die Nutzung von Azure in verschiedenen Szenarien.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für die Nutzung der rollenbasierten Zugriffssteuerung in einer Azure-Umgebung ist Folgendes erforderlich:
@@ -96,7 +96,7 @@ Der Administratorbenutzer muss dann die E-Mail-Adresse des externen Benutzers hi
 Der Benutzer „chessercarlton@gmail.com“ wurde eingeladen, **Besitzer** des Abonnements „Free Trial“ zu werden. Nach dem Senden der Einladung erhält der externe Benutzer eine E-Mail-Bestätigung mit einem Aktivierungslink.
 ![E-Mail-Einladung für eine RBAC-Rolle](./media/role-based-access-control-create-custom-roles-for-internal-external-users/5.png)
 
-Da der neue Benutzer ein organisationsexterner Benutzer ist, sind im Verzeichnis „Default tenant Azure“ keine Attribute für ihn vorhanden. Diese werden erstellt, nachdem der externe Benutzer der Aufnahme in das Verzeichnis zugestimmt hat, das mit dem Abonnement verknüpft ist, für das dem Benutzer eine Rolle zugewiesen wurde.
+Da der neue Benutzer ein organisationsexterner Benutzer ist, sind im Verzeichnis „Default tenant Azure“ keine Attribute für ihn vorhanden. Diese werden erstellt, nachdem der externe Benutzer der Aufnahme in das Verzeichnis zugestimmt hat, das dem Abonnement zugeordnet ist, für das dem Benutzer eine Rolle zugewiesen wurde.
 
 
 
@@ -185,11 +185,11 @@ In größeren Organisationen können RBAC-Rollen auf die gleiche Weise auf Azure
 Bei diesen Gruppen handelt es sich um Sicherheitsgruppen, die nur innerhalb von Azure Active Directory bereitgestellt und verwaltet werden.
 
 ## <a name="create-a-custom-rbac-role-to-open-support-requests-using-powershell"></a>Erstellen einer benutzerdefinierten RBAC-Rolle zum Öffnen von Supportanfragen mithilfe von PowerShell
-Die in Azure verfügbaren integrierten RBAC-Rollen gewähren bestimmte Berechtigungsstufen basierend auf den verfügbaren Ressourcen in der Umgebung. Wenn allerdings keine dieser Rollen die Anforderungen des Administratorbenutzers erfüllt, lässt sich der Zugriff durch Erstellen benutzerdefinierter RBAC-Rollen noch weiter einschränken.
+Die in Azure verfügbaren integrierten RBAC-Rollen gewähren basierend auf den verfügbaren Ressourcen in der Umgebung einen bestimmten Berechtigungsumfang. Wenn allerdings keine dieser Rollen die Anforderungen des Administratorbenutzers erfüllt, lässt sich der Zugriff durch Erstellen benutzerdefinierter RBAC-Rollen noch weiter einschränken.
 
 Um eine benutzerdefinierte RBAC-Rolle zu erstellen, laden Sie eine integrierte Rolle herunter, bearbeiten diese und importieren sie wieder in die Umgebung. Sie können die Rolle entweder über PowerShell oder die Befehlszeilenschnittstelle herunter- und hochladen.
 
-Es ist wichtig, die Voraussetzungen für das Erstellten einer benutzerdefinierten Rolle zu verstehen, mit der sich differenzierter Zugriff auf Abonnementebene erteilen lässt und die dem eingeladenen Benutzer die Flexibilität bietet, Supportanfragen zu eröffnen.
+Es ist wichtig, die Voraussetzungen für das Erstellten einer benutzerdefinierten Rolle zu verstehen, mit der ein differenzierter Zugriff auf Abonnementebene gewährt werden kann, und die dem eingeladenen Benutzer die Flexibilität bietet, Supportanfragen zu erstellen.
 
 Für dieses Beispiel wurde die integrierte Rolle **Leser** angepasst, um dem Benutzer die Option zum Erstellen von Supportanfragen zu bieten. Standardmäßig ermöglicht diese Rolle den Benutzern das Anzeigen aller Ressourcenbereiche, nicht jedoch das Bearbeiten vorhandener oder das Erstellen neuer Ressourcenbereiche.
 
@@ -245,7 +245,7 @@ In diesem Beispiel lautet der benutzerdefinierte Name der RBAC-Rolle „Reader s
 > [!NOTE]
 > Die beiden einzigen integrierten RBAC-Rollen, die das Eröffnen von Supportanfragen ermöglichen, sind **Besitzer** und **Mitwirkender**. Damit ein Benutzer Supportanfragen eröffnen kann, muss dem Benutzer eine RBAC-Rolle für den Abonnementbereich zugewiesen werden, da alle Supportanfragen basierend auf einem Azure-Abonnement erstellt werden.
 
-Diese neue benutzerdefinierte Rolle wurde einem Benutzer im gleichen Verzeichnis zugewiesen.
+Diese neue benutzerdefinierte Rolle wurde einem Benutzer im selben Verzeichnis zugewiesen.
 
 
 

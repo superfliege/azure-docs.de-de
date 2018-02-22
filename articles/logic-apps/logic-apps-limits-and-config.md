@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5e3147cbc9fce6737cfb9b2e93e8bf1662163f3c
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 8de3cc6665fc3861aedcf4f36cdce4a4a776e80d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps-Grenzwerte und -Konfiguration
 
-In diesem Thema werden die aktuellen Grenzwerte und Konfigurationsdetails für Azure Logic Apps beschrieben.
+In diesem Artikel werden die aktuellen Grenzwerte und Konfigurationsdetails für Azure Logic Apps beschrieben.
 
 ## <a name="limits"></a>Einschränkungen
 
@@ -66,7 +66,7 @@ Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 | Max. Wiederholungsintervall | 500 Tage | 
 ||| 
 
-Wenn die Grenzwerte für die Ausführungsdauer oder Speicheraufbewahrung im normalen Verarbeitungsfluss überschritten werden sollen, [wenden Sie sich an uns](mailto://logicappsemail@microsoft.com), damit wir Sie im Hinblick auf Ihre Anforderungen unterstützen können.
+Wenn die Grenzwerte für die Ausführungsdauer oder Speicheraufbewahrung im normalen Verarbeitungsfluss überschritten werden sollen, [wenden Sie sich an das Produktteam](mailto://logicappsemail@microsoft.com), um Unterstützung im Hinblick auf Ihre Anforderungen zu erhalten.
 
 ### <a name="looping-and-debatching-limits"></a>Grenzwerte für Schleifen und Auflösen von Batches
 
@@ -82,18 +82,18 @@ Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 
 ### <a name="throughput-limits"></a>Durchsatzlimits
 
-Folgende Grenzwerte gelten für eine einzelne Instanz der Logik-App.
+Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App-Ressource.
 
 | NAME | Begrenzung | Notizen | 
 | ----- | ----- | ----- | 
-| Aktionsausführungen pro 5 Minuten | 100.000 |<p>Der Grenzwert kann durch Ausführung einer Logik-App im `High Througput`-Modus auf bis zu 300.000 erhöht werden. Legen Sie dazu die `operationOptions`-Eigenschaft unter `runtimeConfiguration` der Workflowressource auf `OptimizedForHighThroughput` fest. <p>Beachten Sie, dass sich dieser Modus für den hohen Durchsatz in der Vorschauphase befindet. Bei Bedarf kann eine Workload auch auf mehrere Apps verteilt werden. | 
+| Aktionsausführungen pro 5 Minuten | 100.000 |<p>Der Grenzwert kann durch Ausführen einer Logik-App im `High Througput`-Modus auf 300.000 erhöht werden. Der Modus mit hohem Durchsatz kann durch Festlegen der `operationOptions`-Eigenschaft unter `runtimeConfiguration` der Workflowressource auf `OptimizedForHighThroughput` konfiguriert werden. <p>Beachten Sie, dass sich dieser Modus für den hohen Durchsatz in der Vorschauphase befindet. Bei Bedarf kann eine Workload auch auf mehrere Apps verteilt werden. | 
 | Gleichzeitige ausgehende Aufrufe für Aktionen | ca. 2.500 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
 | Endpunkt zur Laufzeit: Gleichzeitige eingehende Aufrufe |ca. 1.000 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
 | Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten  | 60.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
 | Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten| 45.000 |Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
 |||| 
 
-Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten werden sollen oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [wenden Sie sich an uns](mailto://logicappsemail@microsoft.com), damit wir Sie im Hinblick auf Ihre Anforderungen unterstützen können.
+Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [wenden Sie sich an das Produktteam](mailto://logicappsemail@microsoft.com), um Unterstützung im Hinblick auf Ihre Anforderungen zu erhalten.
 
 ### <a name="logic-app-definition-limits"></a>Definitionslimits für die Logik-App
 
