@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e83eece09d9802792b87b89fd334ea67df14dc9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ba14244a3f5786ebcd667aa090d0245ce45f741d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Bereitstellen von Active Directory-Verbunddiensten in Azure
 AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche Hochverfügbarkeit mit wenig Aufwand erzielt werden.
@@ -354,7 +354,7 @@ Sie können ein vorhandenes virtuelles Netzwerk verwenden oder beim Bereitstelle
 * [Load Balancer mit Internetzugriff](https://aka.ms/Azure/ILB/Internet)
 * [Speicherkonten](https://aka.ms/Azure/Storage)
 * [Virtuelle Azure-Netzwerke](https://aka.ms/Azure/VNet)
-* [AD FS- und Webanwendungsproxy-Links](http://aka.ms/ADFSLinks) 
+* [AD FS- und Webanwendungsproxy-Links](https://aka.ms/ADFSLinks) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)

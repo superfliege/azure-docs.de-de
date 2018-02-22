@@ -3,8 +3,8 @@ title: "Verfügbarmachen von SQL-Datenbanken für Ihre Azure Stack-Benutzer | Mi
 description: "Dies ist ein Tutorial zum Installieren des SQL Server-Ressourcenanbieters und zum Erstellen von Angeboten, die es Azure Stack-Benutzern ermöglichen, SQL-Datenbanken zu erstellen."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: 
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 7/03/2017
-ms.author: erikje
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: f774888ba3921d0688feddac669ed1dca4667441
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9fd74fa44bb9482ee2285f4305085ee6ff2fb73
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Verfügbarmachen von SQL-Datenbanken für Ihre Azure Stack-Benutzer
 
@@ -71,7 +72,7 @@ Da Sie den SQL Server-Ressourcenanbieter nun bereitgestellt und ein Angebot erst
     - **Ressourcengruppe**: SQL-RG
 3. Klicken Sie auf **Login Settings** (Anmeldeeinstellungen), geben Sie die Anmeldeinformationen für die Datenbank ein, und klicken Sie dann auf **OK**.
 4. Klicken Sie auf **SKU**, wählen Sie die SQL-SKU aus, die Sie für den SQL-Hostserver erstellt haben, und klicken Sie auf **OK**.
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

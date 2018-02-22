@@ -4,7 +4,7 @@ description: "In diesem Artikel erfahren Sie, wie Sie eine SQL Server-Verfügbar
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 1ce90cf4bae66bfd6387a2698fd9b1ba7fc64595
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a954ca10bdec3343dbd8796b50053a1c8c40ff4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurieren einer Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern in verschiedenen Regionen
 
@@ -163,7 +163,7 @@ Sie können ein Failover des Replikats auf die Remoteregion durchführen, um die
 
 Verschieben Sie das primäre Replikat nach dem Testen der Verbindung wieder in Ihr primäres Rechenzentrum, und legen Sie den Verfügbarkeitsmodus wieder auf die normalen Betriebseinstellungen fest. Die folgende Tabelle enthält die normalen Betriebseinstellungen für die in diesem Dokument beschriebene Architektur:
 
-| Standort | Serverinstanz | Rolle | Verfügbarkeitsmodus | Failovermodus
+| Speicherort | Serverinstanz | Rolle | Verfügbarkeitsmodus | Failovermodus
 | ----- | ----- | ----- | ----- | -----
 | Primäres Rechenzentrum | SQL-1 | Primär | Synchron | Automatisch
 | Primäres Rechenzentrum | SQL-2 | Sekundär | Synchron | Automatisch

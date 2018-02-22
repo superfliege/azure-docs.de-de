@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 14e9f9d85bc0c1428240f15831632eafe2a0f80e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d12299d08fa989c0990ae45a41c638470e1075a6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scale-an-azure-container-service-cluster"></a>Skalieren eines Azure Container Service-Clusters
 
@@ -48,9 +48,9 @@ az group delete --name myResourceGroup
 
 Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. Jedes Element in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
-| [az acs scale](/cli/azure/acs#scale) | Skaliert einen ACS-Cluster. |
+| [az acs scale](/cli/azure/acs#az_acs_scale) | Skaliert einen ACS-Cluster. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

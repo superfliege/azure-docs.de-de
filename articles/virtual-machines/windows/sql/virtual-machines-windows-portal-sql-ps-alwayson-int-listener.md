@@ -4,7 +4,7 @@ description: "Es wird beschrieben, wie Sie Verfügbarkeitsgruppenlistener unter 
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 74fa1e4c9cfa608a9a385f3dd82a0599fbcc421c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5efb72f450261e098b638af023001ddb2a5015cf
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 Dieses Thema beschreibt Folgendes:
@@ -28,19 +28,19 @@ Dieses Thema beschreibt Folgendes:
 
 Ein Verfügbarkeitsgruppenlistener ist der Name eines virtuellen Netzwerks, mit dem Clients eine Verbindung herstellen, um Zugriff auf die Datenbank zu erhalten. Auf virtuellen Azure-Computern enthält ein Lastenausgleich die IP-Adresse für den Listener. Mit dem Lastenausgleichsmodul wird Datenverkehr auf die Instanz von SQL Server geleitet, die über den Testport lauscht. Normalerweise wird für eine Verfügbarkeitsgruppe ein interner Load Balancer verwendet. Mit einem internen Azure Load Balancer kann auch eine größere Anzahl von IP-Adressen gehostet werden. Für jede IP-Adresse wird ein bestimmter Testport verwendet. In diesem Dokument wird beschrieben, wie Sie mit PowerShell einen Load Balancer erstellen oder einem vorhandenen Load Balancer für SQL Server-Verfügbarkeitsgruppen IP-Adressen hinzufügen. 
 
-Die Möglichkeit zum Zuweisen von mehreren IP-Adressen zu einem internen Lastenausgleichsmodul ist neu in Azure und nur im Resource Manager-Modell verfügbar. Für diese Aufgabe benötigen Sie eine SQL Server-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern unter dem Resource Manager-Modell bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) können Sie die Verfügbarkeitsgruppe in Azure Resource Manager automatisch erstellen. Mit dieser Vorlage wird die Verfügbarkeitsgruppe automatisch erstellt, einschließlich des internen Lastenausgleichsmoduls. Alternativ können Sie auch eine [Always On-Verfügbarkeitsgruppe manuell konfigurieren](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
+Die Möglichkeit zum Zuweisen von mehreren IP-Adressen zu einem internen Lastenausgleichsmodul ist neu in Azure und nur im Resource Manager-Modell verfügbar. Für diese Aufgabe benötigen Sie eine SQL Server-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern unter dem Resource Manager-Modell bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) können Sie die Verfügbarkeitsgruppe in Azure Resource Manager automatisch erstellen. Mit dieser Vorlage wird die Verfügbarkeitsgruppe automatisch erstellt, einschließlich des internen Lastenausgleichsmoduls. Alternativ können Sie auch eine [Always On-Verfügbarkeitsgruppe manuell konfigurieren](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 Dieses Thema setzt voraus, dass Ihre Verfügbarkeitsgruppen bereits konfiguriert sind.  
 
 Verwandte Themen:
 
-* [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen in einem virtuellen Azure-Computer (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)   
+* [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen in einem virtuellen Azure-Computer (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
 * [Konfigurieren einer VNet-zu-VNet-Verbindung mit Azure Resource Manager und PowerShell](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
 ## <a name="configure-the-windows-firewall"></a>Konfigurieren der Windows-Firewall
-Konfigurieren Sie die Windows-Firewall so, dass der SQL Server-Zugriff zulässig ist. Die Firewallregeln lassen TCP-Verbindungen mit den Ports für die SQL Server-Instanz und den Listenertest zu. Weitere Informationen finden Sie unter [Konfigurieren einer Windows-Firewall für Datenbankmodulzugriff](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Erstellen Sie für den SQL Server-Port und den Testport eine Regel für eingehenden Datenverkehr.
+Konfigurieren Sie die Windows-Firewall so, dass der SQL Server-Zugriff zulässig ist. Die Firewallregeln lassen TCP-Verbindungen mit den Ports für die SQL Server-Instanz und den Listenertest zu. Weitere Informationen finden Sie unter [Konfigurieren einer Windows-Firewall für Datenbank-Engine-Zugriff](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Erstellen Sie für den SQL Server-Port und den Testport eine Regel für eingehenden Datenverkehr.
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Beispielskript: Erstellen eines internen Lastenausgleichsmoduls mit PowerShell
 > [!NOTE]
@@ -158,7 +158,7 @@ $ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConf
 
 1. Starten Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit dem primären Replikat her.
 
-1. Navigieren Sie zu **Hohe Verfügbarkeit mit Always On** | **Verfügbarkeitsgruppen** | **Verfügbarkeitsgruppenlistener**. 
+1. Navigieren Sie zu **Hochverfügbarkeit mit Always On** | **Verfügbarkeitsgruppen** | **Verfügbarkeitsgruppenlistener**. 
 
 1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Eigenschaften**.
 
@@ -196,7 +196,7 @@ Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten f
 
 
 ## <a name="for-more-information"></a>Weitere Informationen
-Weitere Informationen finden Sie unter [Manuelles Konfigurieren der Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
+Weitere Informationen finden Sie unter [Manuelles Konfigurieren der Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 ## <a name="powershell-cmdlets"></a>PowerShell-Cmdlets
 Verwenden Sie die folgenden PowerShell-Cmdlets, um ein internes Lastenausgleichsmodul für virtuelle Azure-Computer zu erstellen.

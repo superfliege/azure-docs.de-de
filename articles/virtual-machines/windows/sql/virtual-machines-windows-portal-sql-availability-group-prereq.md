@@ -4,7 +4,7 @@ description: "Dieses Tutorial zeigt, wie die Voraussetzungen zum Erstellen einer
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 0748e0ffa405fc02f6da7e2c412beec12510fde5
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 85ad53f0b7b4b14784bb0755ee22763d124e63ba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines
 
@@ -50,7 +50,7 @@ Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Kont
 
    ![Ressourcengruppe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Klicken Sie auf **Ressourcengruppe**.
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 6. Geben Sie auf dem Blatt **Ressourcengruppe** unter **Ressourcengruppenname** einen Namen für die Ressourcengruppe ein. Geben Sie beispielsweise **sql-ha-rg** ein.
 7. Falls Sie über mehrere Azure-Abonnements verfügen, vergewissern Sie sich, dass es sich bei dem Abonnement um das Azure-Abonnement handelt, in dem Sie die Verfügbarkeitsgruppe erstellen möchten.
 8. Wählen Sie einen Standort aus. Der Standort ist die Azure-Region, in der die Verfügbarkeitsgruppe erstellt werden soll. In diesem Tutorial erstellen wir alle Ressourcen an einem einzigen Azure-Standort.
@@ -80,7 +80,7 @@ So erstellen Sie das virtuelle Netzwerk:
 
     Die folgende Tabelle enthält die Einstellungen für das virtuelle Netzwerk:
 
-   | **Field** | Wert |
+   | **Feld** | Wert |
    | --- | --- |
    | **Name** |autoHAVNET |
    | **Adressraum** |10.33.0.0/24 |
@@ -88,13 +88,13 @@ So erstellen Sie das virtuelle Netzwerk:
    | **Subnetzadressbereich** |10.33.0.0/29 |
    | **Abonnement** |Geben Sie das Abonnement an, das Sie verwenden möchten. Wenn Sie nur über ein einzelnes Abonnement verfügen, ist die Option **Abonnement** leer. |
    | **Ressourcengruppe** |Wählen Sie **Vorhanden** aus, und wählen Sie dann den Namen der Ressourcengruppe aus. |
-   | **Standort** |Geben Sie den Azure-Standort an. |
+   | **Location** |Geben Sie den Azure-Standort an. |
 
    Ihr Adressraum und Ihr Subnetzadressbereich können sich von den Angaben in der Tabelle unterscheiden. Abhängig von Ihrem Abonnement schlägt das Portal einen verfügbaren Adressraum und den entsprechenden Subnetzadressbereich vor. Ist kein geeigneter Adressraum verfügbar, verwenden Sie ein anderes Abonnement.
 
    Im Beispiel wird der Subnetzname **Admin** verwendet. Dieses Subnetz ist für die Domänencontroller bestimmt.
 
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 
    ![Konfigurieren des virtuellen Netzwerks](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
@@ -120,7 +120,7 @@ Das neue virtuelle Netzwerk verfügt über ein Subnetz mit dem Namen **Admin**. 
 
 In der folgenden Tabelle sind die Netzwerkkonfigurationseinstellungen zusammengefasst:
 
-| **Field** | Wert |
+| **Feld** | Wert |
 | --- | --- |
 | **Name** |**autoHAVNET** |
 | **Adressraum** |Dieser Wert richtet sich nach den verfügbaren Adressräumen in Ihrem Abonnement. Ein typischer Wert wäre etwa 10.0.0.0/16. |
@@ -130,7 +130,7 @@ In der folgenden Tabelle sind die Netzwerkkonfigurationseinstellungen zusammenge
 | **Subnetzadressbereich** |Dieser Wert richtet sich nach den verfügbaren Adressbereichen in Ihrem Abonnement. Ein typischer Wert wäre etwa 10.0.1.0/24. |
 | **Abonnement** |Geben Sie das Abonnement an, das Sie verwenden möchten. |
 | **Ressourcengruppe** |**SQL-HA-RG** |
-| **Standort** |Geben Sie den Speicherort an, den Sie auch für die Ressourcengruppe ausgewählt haben. |
+| **Location** |Geben Sie den Speicherort an, den Sie auch für die Ressourcengruppe ausgewählt haben. |
 
 ## <a name="create-availability-sets"></a>Erstellen von Verfügbarkeitsgruppen
 
@@ -142,7 +142,7 @@ Navigieren Sie zum Erstellen einer Verfügbarkeitsgruppe zur Ressourcengruppe, u
 
 Konfigurieren Sie die beiden Verfügbarkeitsgruppen mit den Parametern in der folgenden Tabelle:
 
-| **Field** | Verfügbarkeitsgruppe für Domänencontroller | Verfügbarkeitsgruppe für SQL Server |
+| **Feld** | Verfügbarkeitsgruppe für Domänencontroller | Verfügbarkeitsgruppe für SQL Server |
 | --- | --- | --- |
 | **Name** |adavailabilityset |sqlavailabilityset |
 | **Ressourcengruppe** |SQL-HA-RG |SQL-HA-RG |
@@ -167,13 +167,13 @@ Wiederholen Sie die obigen Schritte, um zwei virtuelle Computer zu erstellen. Be
 * ad-secondary-dc
 
   > [!NOTE]
-  > Der virtuelle Computer **ad-secondary-dc** ist optional und soll die hohe Verfügbarkeit von Active Directory Domain Services gewährleisten.
+  > Der virtuelle Computer **ad-secondary-dc** ist optional und soll die Hochverfügbarkeit von Active Directory Domain Services gewährleisten.
   >
   >
 
 Die folgende Tabelle enthält die Einstellungen für die beiden Computer:
 
-| **Field** | Wert |
+| **Feld** | Wert |
 | --- | --- |
 | **Name** |Erster Domänencontroller: *ad-primary-dc*.</br>Zweiter Domänencontroller: *ad-secondary-dc*. |
 | **VM-Datenträgertyp** |SSD |
@@ -264,7 +264,7 @@ Nachdem Sie den ersten Domänencontroller erstellt und DNS auf dem ersten Server
 4. Klicken Sie auf **Speichern**.
 
 ### <a name="configure-the-second-domain-controller"></a>Konfigurieren des zweiten Domänencontrollers
-Nach dem Neustart des primären Domänencontrollers können Sie den zweiten Domänencontroller konfigurieren. Dieser optionale Schritt dient zur Gewährleistung einer hohen Verfügbarkeit. Gehen Sie wie folgt vor, um den zweiten Domänencontroller zu konfigurieren:
+Nach dem Neustart des primären Domänencontrollers können Sie den zweiten Domänencontroller konfigurieren. Dieser optionale Schritt dient zur Gewährleistung der Hochverfügbarkeit. Gehen Sie wie folgt vor, um den zweiten Domänencontroller zu konfigurieren:
 
 1. Öffnen Sie im Portal die Ressourcengruppe **SQL-HA-RG**, und wählen Sie den Computer **ad-secondary-dc** aus. Klicken Sie auf dem Blatt **ad-secondary-dc** auf **Verbinden**, um eine RDP-Datei für den Remotedesktopzugriff zu öffnen.
 2. Melden Sie sich mit Ihrem konfigurierten Administratorkonto (**BUILTIN\DomainAdmin**) und Kennwort (**Contoso!0000**) bei dem virtuellen Computer an.

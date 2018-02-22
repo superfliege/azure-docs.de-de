@@ -9,17 +9,17 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 17675f870a015e86f98bf286a9b1c2bbc05c16cd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 803b0bbff12c8ce471c0bff5e22e24601b8ce07f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Schnellstartanleitung: Bereitstellen des ersten IoT Edge-Moduls aus dem Azure-Portal auf einem Windows-Gerät – Vorschau
 
 Bei dieser Schnellstartanleitung verwenden Sie die Azure IoT Edge-Cloudschnittstelle zur Remotebereitstellung von vorgefertigtem Code auf einem IoT Edge-Gerät. Für diese Aufgabe verwenden Sie zunächst Ihr Windows-Gerät, um ein IoT Edge-Gerät zu simulieren. Anschließend können Sie darauf ein Modul bereitstellen.
 
-Wenn Sie kein aktives Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][lnk-account] erstellen, bevor Sie beginnen.
+Wenn Sie über kein aktives Azure-Abonnement verfügen, können Sie ein [kostenloses Konto][lnk-account] erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Bei diesem Tutorial wird davon ausgegangen, dass Sie einen Computer oder virtuel
 3. Installieren Sie [Python 2.7 unter Windows][lnk-python], und vergewissern Sie sich, dass Sie den Pip-Befehl verwenden können.
 4. Führen Sie den folgenden Befehl aus, um das IoT Edge-Steuerskript herunterzuladen.
 
-   ```
+   ```cmd
    pip install -U azure-iot-edge-runtime-ctl
    ```
 
@@ -43,13 +43,13 @@ Bei diesem Tutorial wird davon ausgegangen, dass Sie einen Computer oder virtuel
 >    * Windows IoT Core (Build 16299) auf einem X64-basierten Gerät
 >
 > Im Fall von Windows IoT Core folgen Sie den Anweisungen unter [Installieren der IoT Edge-Laufzeit unter Windows IoT Core][lnk-install-iotcore]. Andernfalls [konfigurieren Sie einfach Docker für die Verwendung von Windows-Containern][lnk-docker-containers], und überprüfen Sie optional die Voraussetzungen mit dem folgenden PowerShell-Befehl:
->    ```
+>    ```powershell
 >    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
 >    ```
 
 ## <a name="create-an-iot-hub-with-azure-cli"></a>Erstellen eines IoT Hubs mit der Azure-Befehlszeilenschnittstelle
 
-Erstellen Sie einen IoT Hub in Ihrem Azure-Abonnement. Der kostenlose IoT Hub kann für diese Schnellstartanleitung verwendet werden. Wenn Sie IoT Hub schon früher verwendet und bereits einen kostenlosen Hub erstellt haben, können Sie diesen Abschnitt überspringen und mit [Registrieren eines IoT Edge-Geräts][anchor-register] fortfahren. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen. 
+Erstellen Sie einen IoT Hub in Ihrem Azure-Abonnement. Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie IoT Hub schon früher verwendet und bereits einen kostenlosen Hub erstellt haben, können Sie diesen Abschnitt überspringen und mit [Registrieren eines IoT Edge-Geräts][anchor-register] fortfahren. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen. 
 
 1. Melden Sie sich beim [Azure-Portal][lnk-portal] an. 
 1. Wählen Sie die Schaltfläche **Cloud Shell** aus. 
@@ -78,23 +78,23 @@ Die IoT Edge-Laufzeit wird auf allen IoT Edge-Geräten bereitgestellt. Sie umfas
 
 Konfigurieren Sie die Laufzeit mit der Verbindungszeichenfolge für das IoT Edge-Gerät aus dem vorherigen Abschnitt.
 
-```
+```cmd
 iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
-Starten Sie die Laufzeit.
+Starten Sie die Runtime.
 
-```
+```cmd
 iotedgectl start
 ```
 
 Überprüfen Sie Docker, um festzustellen, ob der IoT Edge-Agent als Modul ausgeführt wird.
 
-```
+```cmd
 docker ps
 ```
 
-![Siehe edgeAgent in Docker](./media/tutorial-simulate-device-windows/docker-ps.png)
+![Edge-Agent in Docker](./media/tutorial-simulate-device-windows/docker-ps.png)
 
 ## <a name="deploy-a-module"></a>Bereitstellen eines Moduls
 
@@ -102,9 +102,9 @@ docker ps
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 
-Mit dieser Schnellstartanleitung haben Sie ein neues IoT Edge-Gerät erstellt und die IoT Edge-Laufzeit darauf installiert. Anschließend haben Sie das Azure-Portal verwendet, um mit einem Pushvorgang ein IoT Edge-Modul zur Ausführung auf dem Gerät zu übertragen, ohne Änderungen an dem Gerät selbst vornehmen zu müssen. In diesem Fall erstellt das mit einem Pushvorgang übertragene Modul Umgebungsdaten, die Sie für die Tutorials verwenden können. 
+In diesem Schnellstart haben Sie ein neues IoT Edge-Gerät erstellt und die IoT Edge-Runtime darauf installiert. Anschließend haben Sie das Azure-Portal verwendet, um mit einem Pushvorgang ein IoT Edge-Modul zur Ausführung auf dem Gerät zu übertragen, ohne Änderungen an dem Gerät selbst vornehmen zu müssen. In diesem Fall erstellt das mit einem Pushvorgang übertragene Modul Umgebungsdaten, die Sie für die Tutorials verwenden können. 
 
-Öffnen Sie erneut die Eingabeaufforderung auf dem Computer, auf dem das simulierte Gerät ausgeführt wird. Vergewissern Sie sich, dass das über die Cloud bereitgestellte Modul auf dem IoT Edge-Gerät ausgeführt wird. 
+Öffnen Sie erneut eine Eingabeaufforderung auf dem Computer, auf dem das simulierte Gerät ausgeführt wird. Vergewissern Sie sich, dass das über die Cloud bereitgestellte Modul auf dem IoT Edge-Gerät ausgeführt wird. 
 
 ```cmd
 docker ps

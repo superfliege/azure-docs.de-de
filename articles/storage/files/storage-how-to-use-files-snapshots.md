@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: c4a5f7d28601867c383b8b348568e4bb580a81eb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: eb5c7d0fcb9e1106dbc0aa577ba5ecfa1bf6bee7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="work-with-share-snapshots-preview"></a>Arbeiten mit Freigabemomentaufnahmen (Vorschau)
 Eine Freigabemomentaufnahme (Vorschau) ist eine schreibgeschützte Version einer Azure Files-Freigabe, die zu einem bestimmten Zeitpunkt erstellt wird. Erstellte Freigabemomentaufnahmen können gelesen, kopiert oder gelöscht, aber nicht geändert werden. Eine Freigabemomentaufnahme bietet eine Möglichkeit, die Freigabe so zu sichern, wie sie zu einem bestimmten Zeitpunkt dargestellt wird. 
@@ -246,7 +246,6 @@ In der Ausgabe sehen Sie, dass der Inhalt der heruntergeladenen Datei und die zu
 }
 ```
 
-<<<<<<< HEAD
 ### <a name="file-share-snapshot-operations-in-azure-powershell"></a>Vorgänge zu Dateifreigabe-Momentaufnahmen in der Azure PowerShell
 Mit Azure PowerShell können Sie dieselben Aktionen ausführen, z.B. das Auflisten von Freigabemomentaufnahmen, das Durchsuchen des Inhalts von Freigabemomentaufnahmen, das Wiederherstellen oder Herunterladen von Dateien aus Freigabemomentaufnahmen oder das Löschen von Freigabemomentaufnahmen.
 
@@ -281,11 +280,7 @@ $directory = Get-AzureStorageFile -ShareName "ContosoShare06" -Path "ContosoWork
 Get-AzureStorageFileContent -Share $snapshot -Path $file -Destination $directory
 ```
 
-
-## <a name="delete-azure-files-share-snapshot"></a>Löschen von Azure-Dateifreigabemomentaufnahmen
-=======
 ## <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
->>>>>>> 6a1833e10031fbf1ab204bb1f30cb54cf5fbcada
 
 Sie können Freigabemomentaufnahmen mit dem Azure-Portal, PowerShell, der CLI, der REST-API oder einem beliebigen Storage SDK löschen. In den folgenden Abschnitten erfahren Sie, wie Sie mit dem Azure-Portal, der CLI und PowerShell eine Freigabemomentaufnahme löschen.
 

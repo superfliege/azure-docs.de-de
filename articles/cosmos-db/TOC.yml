@@ -131,6 +131,8 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Azure-Ressourcen-Manager-Vorlagen
+      href: 'https://azure.microsoft.com/resources/templates/?term=cosmos+db&pageNumber=1'
 - name: Konzepte
   items:
     - name: Serverlose Datenbank
@@ -342,6 +344,8 @@
           href: logging.md
         - name: Verwalten von Schlüsseln und Konsistenz
           href: manage-account.md
+        - name: Zugriffssteuerung
+          href: access-control.md
         - name: Azure Storage-Explorer
           href: storage-explorer.md
         - name: Sicherheit

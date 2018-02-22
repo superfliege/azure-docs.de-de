@@ -4,7 +4,7 @@ description: "Dieses Lernprogramm verwendet Ressourcen, die mit dem klassischen 
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: a4e2f175-fe56-4218-86c7-a43fb916cc64
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: b99cf767fb931d3f7fe14fcbe7990126244613ed
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fe7384baa6740d316fb5a8ec7b1894f337d88080
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf einer Azure-VM mit PowerShell
 > [!div class="op_single_selector"]
@@ -377,7 +377,7 @@ Der Domänencontrollerserver ist jetzt erfolgreich bereitgestellt. Als Nächstes
     Die SQL Server-VMs sind jetzt bereitgestellt und werden ausgeführt, sie sind aber mit SQL Server mit Standardoptionen installiert.
 
 ## <a name="initialize-the-failover-cluster-vms"></a>Initialisieren der Failovercluster-VMs
-In diesem Abschnitt müssen Sie die drei Server ändern, die Sie für die Failovercluster- und SQL Server-Installation verwenden. Dies bedeutet Folgendes:
+In diesem Abschnitt müssen Sie die drei Server ändern, die Sie für die Failovercluster- und SQL Server-Installation verwenden. Dies gilt insbesondere in folgenden Fällen:
 
 * Alle Server: Sie müssen das Feature **Failoverclustering** installieren.
 * Alle Server: Sie müssen **CORP\Install** als **Computeradministrator** hinzufügen.

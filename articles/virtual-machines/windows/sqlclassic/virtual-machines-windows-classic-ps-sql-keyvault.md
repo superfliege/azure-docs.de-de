@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie die Konfiguration der SQL Server-Verschlüss
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: ab8d41a7-1971-4032-ab71-eb435c455dc1
@@ -16,15 +16,15 @@ ms.workload: iaas-sql-server
 ms.date: 02/17/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a9ac5763bb934bd0646e47c3936f7bdd0d603b1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5fd0fb1f8ac9bb0132c64c195d4cc9c86ef8edd0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Konfigurieren der Azure Key Vault-Integration für SQL Server auf Azure Virtual Machines (klassisch)
 > [!div class="op_single_selector"]
-> * [Ressourcen-Manager](../sql/virtual-machines-windows-ps-sql-keyvault.md)
+> * [Resource Manager](../sql/virtual-machines-windows-ps-sql-keyvault.md)
 > * [Klassisch](../classic/ps-sql-keyvault.md)
 > 
 > 
@@ -50,7 +50,7 @@ Verwenden Sie PowerShell zum Konfigurieren der Azure-Schlüsseltresor-Integratio
 ### <a name="understand-the-input-parameters"></a>Grundlegendes zu den Eingabeparametern
 In der folgenden Tabelle sind die Parameter aufgeführt, die zum Ausführen des PowerShell-Skripts im nächsten Abschnitt erforderlich sind.
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | **$akvURL** |**Schlüsseltresor-URL** |"https://contosokeyvault.vault.azure.net/" |
 | **$spName** |**Dienstprinzipalname** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |

@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a501a852a317ec7d087904c3a675ebefce1bece0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: ae41149bf507e30dc5281fd60a9d6f77d2023293
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Erstellen einer VM-Skalierungsgruppe im Azure-Portal
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung gemäß CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Artikel zu den ersten Schritten erstellen Sie eine VM-Skalierungsgruppe im Azure-Portal. Sie können eine Skalierungsgruppe auch per [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) oder mit [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) erstellen.
@@ -36,7 +36,7 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 ## <a name="create-virtual-machine-scale-set"></a>Erstellen einer VM-Skalierungsgruppe
 Sie können eine Skalierungsgruppe mit einem Windows Server-Image oder Linux-Image wie RHEL, CentOS, Ubuntu oder SLES bereitstellen.
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2. Suchen Sie nach *Skalierungsgruppe*, und wählen Sie **VM-Skalierungsgruppe** sowie **Erstellen** aus.
 3. Geben Sie einen Namen für die Skalierungsgruppe ein (z.B. *myScaleSet*).
 4. Wählen Sie den gewünschten Betriebssystemtyp aus, z.B. *Windows Server 2016 Datacenter*.

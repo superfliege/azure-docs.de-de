@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-Skript – Erstellen einer Failoverrichtlinie für hohe Verfügbarkeit | Microsoft-Dokumentation"
-description: "Azure CLI-Skriptbeispiel – Erstellen einer Failoverrichtlinie für hohe Verfügbarkeit"
+title: "Azure CLI-Skript – Erstellen einer Failoverrichtlinie für Hochverfügbarkeit | Microsoft-Dokumentation"
+description: "Azure CLI-Skriptbeispiel – Erstellen einer Failoverrichtlinie für Hochverfügbarkeit"
 services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
@@ -16,19 +16,19 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.openlocfilehash: 96083d66cc1a2ef179f9313c1b3ed04162c1c048
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 139679eb58516c9eda02f048e8c839e1b7bceb48
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-a-failover-policy-for-high-availability-using-the-azure-cli"></a>Erstellen einer Failoverrichtlinie für hohe Verfügbarkeit mithilfe der Azure CLI
+# <a name="create-a-failover-policy-for-high-availability-using-the-azure-cli"></a>Erstellen einer Failoverrichtlinie für Hochverfügbarkeit mithilfe der Azure CLI
 
-Mithilfe dieses CLI-Beispielskripts wird ein Azure Cosmos DB-Konto erstellt und anschließend für hohe Verfügbarkeit konfiguriert.
+Mithilfe dieses CLI-Beispielskripts wird ein Azure Cosmos DB-Konto erstellt und anschließend für Hochverfügbarkeit konfiguriert.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI in Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -46,12 +46,12 @@ az group delete --name myResourceGroup
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
-| [az group create](/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az cosmosdb create](/cli/azure/sql/server#create) | Erstellt ein Konto für Azure Cosmos DB |
-| [az cosmosdb update](/cli/azure/cosmosdb#update) | Aktualisiert ein Konto für Azure Cosmos DB |
-| [az group delete](/cli/azure/resource#delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az cosmosdb create](/cli/azure/sql/server#az_sql_server_create) | Erstellt ein Konto für Azure Cosmos DB |
+| [az cosmosdb update](/cli/azure/cosmosdb#az_cosmosdb_update) | Aktualisiert ein Konto für Azure Cosmos DB |
+| [az group delete](/cli/azure/resource#az_resource_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

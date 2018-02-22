@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie eine Verbindung mit einer SQL Server-Instanz her
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 6d90904315e5d0a99ead193d1f95b504e796d587
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 7285cf47c3a5ec731cd9cfe311053e9d19886f1d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure
 
@@ -38,7 +38,7 @@ Wenn Sie einen virtuellen SQL Server-Computer über das Azure-Portal bereitstell
 
 Verfügbare Konnektivitätsoptionen:
 
-| Option | Beschreibung |
+| Option | BESCHREIBUNG |
 |---|---|
 | **Öffentlich** | Verbinden mit SQL Server über das Internet |
 | **Privat** | Verbinden mit SQL Server innerhalb des gleichen virtuellen Netzwerks |
@@ -48,7 +48,7 @@ In den folgenden Abschnitten werden die Optionen **Öffentlich** und **Privat** 
 
 ## <a name="connect-to-sql-server-over-the-internet"></a>Verbinden mit SQL Server über das Internet
 
-Wenn Sie mit dem SQL Server-Datenbankmodul eine Verbindung über das Internet herstellen möchten, wählen Sie im Portal beim Bereitstellen für **SQL-Konnektivität** den Typ **Öffentlich** aus. Das Portal führt automatisch folgende Schritte aus:
+Wenn Sie mit der SQL Server-Datenbank-Engine eine Verbindung über das Internet herstellen möchten, wählen Sie im Portal beim Bereitstellen für **SQL-Konnektivität** den Typ **Öffentlich** aus. Das Portal führt automatisch folgende Schritte aus:
 
 * Es aktiviert das TCP/IP-Protokoll für SQL Server.
 * Es konfiguriert eine Firewallregel, um den SQL Server-TCP-Port (standardmäßig 1433) zu öffnen.
@@ -80,7 +80,7 @@ Wenn Sie im Portal für **SQL-Konnektivität** den Typ **Privat** auswählen, we
 > [!IMPORTANT]
 > Durch die VM-Images für die Editionen SQL Server Developer und Express wird das TCP/IP-Protokoll nicht automatisch aktiviert. Für die Editionen Developer und Express müssen Sie den SQL Server-Konfigurations-Manager verwenden, um [das TCP/IP-Protokoll nach dem Erstellen des virtuellen Computers manuell zu aktivieren](#manualtcp).
 
-Private Konnektivität wird häufig in Verbindung mit [Virtual Network](../../../virtual-network/virtual-networks-overview.md) verwendet, was verschiedene Szenarien ermöglicht. Sie können Verbindungen mit VMs innerhalb des gleichen virtuellen Netzwerks herstellen, selbst wenn diese VMs in verschiedenen Ressourcengruppen ausgeführt werden. Mithilfe eines [Site-to-Site-VPN](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)können Sie eine hybride Architektur erstellen, die VMs mit lokalen Netzwerken und Computern verbindet.
+Private Konnektivität wird häufig in Verbindung mit [Virtual Network](../../../virtual-network/virtual-networks-overview.md) verwendet, was verschiedene Szenarien ermöglicht. Sie können Verbindungen mit VMs innerhalb des gleichen virtuellen Netzwerks herstellen, selbst wenn diese VMs in verschiedenen Ressourcengruppen ausgeführt werden. Mithilfe eines [Site-to-Site-VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)können Sie eine hybride Architektur erstellen, die VMs mit lokalen Netzwerken und Computern verbindet.
 
 Virtuelle Netzwerke ermöglichen auch das Einbinden Ihrer Azure-VMs in eine Domäne. Dies ist die einzige Möglichkeit, wie Sie Windows-Authentifizierung mit SQL Server verwenden können. Für alle anderen Verbindungsszenarien muss SQL-Authentifizierung mit Benutzernamen und Kennwörtern verwendet werden.
 
@@ -132,7 +132,7 @@ Obwohl das Portal Optionen zum automatischen Konfigurieren der Konnektivität en
 
 Die folgende Tabelle enthält die Anforderungen für Verbindungen mit SQL Server auf einer Azure-VM.
 
-| Voraussetzung | Beschreibung |
+| Anforderung | BESCHREIBUNG |
 |---|---|
 | [Aktivieren des SQL Server-Authentifizierungsmodus](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Die SQL Server-Authentifizierung ist für eine Remoteverbindung mit dem virtuellen Computer erforderlich, sofern Sie nicht Active Directory in einem virtuellen Netzwerk konfiguriert haben. |
 | [Erstellen einer SQL-Anmeldung](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Wenn Sie die SQL-Authentifizierung verwenden, benötigen Sie eine SQL-Anmeldung mit einem Benutzernamen und einem Kennwort, die auch über die erforderlichen Berechtigungen für die Zieldatenbank verfügt. |

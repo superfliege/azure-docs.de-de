@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: chackdan;maburlik;dekapur
-ms.openlocfilehash: 4b3b1e8a368419fe4014802f7b2a35b7ae3fba3c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: dekapur;chackdan;maburlik
+ms.openlocfilehash: 7d65845d21205e22a3e5b0868acb637ff614fb42
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Erstellen eines eigenständigen Clusters unter Windows Server
 Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern erstellen, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Windows Server-Computer befinden – lokal oder bei einem Cloudanbieter. Service Fabric stellt ein Setuppaket zum Erstellen von Service Fabric-Clustern bereit. Es wird als eigenständiges Paket für Windows Server bezeichnet.
@@ -55,7 +55,7 @@ Hier finden Sie Konfigurationsbeispiele für eigenständige Cluster: <br>
 
 <a id="createcluster"></a>
 
-## <a name="create-the-cluster"></a>Cluster erstellen
+## <a name="create-the-cluster"></a>Erstellen des Clusters
 Service Fabric kann mithilfe der Datei *ClusterConfig.Unsecure.DevCluster.json*, die in den [Beispielen](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples) enthalten ist, in einem Entwicklungscluster mit einem einzigen Computer bereitgestellt werden.
 
 Entpacken Sie das eigenständige Paket auf Ihrem Computer, und kopieren Sie die Beispielkonfigurationsdatei auf den lokalen Computer. Führen Sie anschließend in einer PowerShell-Administratorsitzung das Skript *CreateServiceFabricCluster.ps1* aus dem Ordner des eigenständigen Pakets aus:
@@ -185,7 +185,7 @@ Fügen Sie zum Deaktivieren der Telemetriedaten dem *properties*-Element Ihrer C
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
 ## <a name="preview-features-included-in-this-package"></a>Features in der Vorschauphase in diesem Paket
-Keine
+None (Keine):
 
 
 > [!NOTE]

@@ -4,7 +4,7 @@ description: "In diesem Thema wird beschrieben, wie Azure den Speicher für SQL 
 services: virtual-machines-windows
 documentationcenter: na
 author: ninarn
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: 7d076b970481b68d9c352d54f3452b8e222f5c64
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 21c8b955d48da03559097db93b2cb66029a203ec
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
 Wenn Sie in Azure einen virtuellen SQL Server-Computer konfigurieren, unterstützt Sie das Portal beim Automatisieren Ihrer Speicherkonfiguration. Hierzu gehören auch das Anfügen von Speicher an die VM, das Verfügbarmachen dieses Speichers für SQL Server und die anschließende Konfiguration, um eine Optimierung in Bezug auf Ihre besonderen Leistungsanforderungen zu erzielen.
@@ -130,7 +130,7 @@ In Azure werden die folgenden Einstellungen verwendet, um den Speicherpool auf S
 ## <a name="workload-optimization-settings"></a>Einstellungen für die Workloadoptimierung
 In der folgenden Tabelle sind die drei verfügbaren Optionen für den Workloadtyp und die entsprechenden Optimierungen beschrieben:
 
-| Workloadtyp | Beschreibung | Optimierungen |
+| Workloadtyp | BESCHREIBUNG | Optimierungen |
 | --- | --- | --- |
 | **Allgemein** |Standardeinstellung, die die meisten Workloads unterstützt |Keine |
 | **Transaktionale Verarbeitung** |Optimiert den Speicher für herkömmliche OLTP-Datenbankworkloads |Ablaufverfolgungsflag 1117<br/>Ablaufverfolgungsflag 1118 |

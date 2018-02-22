@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 2fcbed2f83d66a0b4336cd1c464bb02eff3ef229
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e796c8be0a5db8cb67e4a091fa51ed89920852c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-public-ip-address-in-an-availability-zone-with-the-azure-portal"></a>Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit dem Azure-Portal
 
@@ -40,16 +40,16 @@ Melden Sie sich unter „https://portal.azure.com“ am Azure-Portal an.
 
 ## <a name="create-a-zonal-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse in einer Zone
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2. Wählen Sie **Netzwerk** und dann **Öffentliche IP-Adresse** aus.
 3. Geben Sie Werte für die folgenden Einstellungen ein, oder wählen Sie diese aus, wählen Sie Ihr Abonnement aus, akzeptieren Sie die Standardwerte für die verbleibenden Einstellungen, und klicken Sie dann auf **Erstellen**:
 
     |Einstellung|Wert|
     |---|---|
     |SKU| **Basic**: Mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen. Kann jeder Azure-Ressource zugewiesen werden, der eine öffentliche IP-Adresse zugewiesen werden kann, z.B. Netzwerkschnittstellen, VPN Gateways, Application Gateways und Lastenausgleiche mit Internetzugriff. Sie können die öffentliche IP-Adresse einer bestimmten Zone in der Einstellung **Verfügbarkeitszone** zuweisen. Sind nicht zonenredundant. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview) (Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion))](https://docs.microsoft.com/azure/availability-zones/az-overview). **Standard**: Nur mit der statischen Zuordnungsmethode zugewiesen. Kann Netzwerkschnittstellen oder Standardlastenausgleichen mit Internetzugriff zugewiesen werden. Wenn Sie die öffentliche IP-Adresse einem Standardlastenausgleich mit Internetzugriff zuweisen, müssen Sie „Standard“ auswählen. Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU (Standard-SKU von Azure Load Balancer)](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview). Sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden. Die Standard-SKU befindet sich in der Vorschauversion. Bevor Sie eine öffentliche IP-Adresse für eine Standard-SKU erstellen, müssen Sie sich zunächst für die Vorschauversion registrieren. Unter [Register for the standard SKU preview (Registrieren für die Vorschauversion der Standard-SKU)](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#preview-sign-up) können Sie sich für die Vorschauversion registrieren. Die Standard-SKU kann nur an einem unterstützten Speicherort erstellt werden.  Eine Liste mit den unterstützten Standorten (Regionen) finden Sie unter [Region availability](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#region-availability) (Regionsverfügbarkeit). Auf der Seite [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network) (Updates für Azure Virtual Network) erhalten Sie außerdem zusätzlichen Support für Regionen.|   
-    |Name|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
+    |NAME|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
     |Ressourcengruppe|Klicken Sie auf „Neu erstellen“, und geben Sie „myResourceGroup“ ein|
-    |Standort|Europa, Westen|
+    |Speicherort|Europa, Westen|
     |Verfügbarkeitszone|Wenn Sie die **Standard**-SKU ausgewählt haben, können Sie *Zonenredundant* auswählen, wenn Sie möchten, dass die IP-Adresse zonenübergreifend robust ist. Wenn Sie die **Basic**-SKU ausgewählt haben, ist die IP-Adresse nicht zonenübergreifend robust. Unabhängig von der SKU, die Sie auswählen, können Sie die Adresse einer bestimmten Zone zuweisen, wenn Sie möchten. |
 
     Die Einstellungen werden wie in der folgenden Abbildung gezeigt im Portal angezeigt:

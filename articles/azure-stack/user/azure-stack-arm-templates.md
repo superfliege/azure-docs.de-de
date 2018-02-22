@@ -3,8 +3,8 @@ title: Verwenden von Azure Resource Manager-Vorlagen in Azure Stack | Microsoft-
 description: Hier erfahren Sie, wie Sie Azure Resource Manager-Vorlagen in Azure Stack zum Bereitstellen von Ressourcen verwenden.
 services: azure-stack
 documentationcenter: 
-author: heathl17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
 ms.service: azure-stack
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 7648855011e8f77c35713d2d2ae50f2e474a08a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 6d4ef16881ef8dc249116aec706f760b163a2972
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Resource Manager-Vorlagen stellen alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereit. Sie können Vorlagen auch erneut bereitstellen, um Änderungen an den Ressourcen in der Ressourcengruppe vorzunehmen.
 
@@ -30,7 +31,7 @@ Diese Vorlagen können mit dem Microsoft Azure Stack-Portal, PowerShell, über d
 
 Die folgenden Schnellstartvorlagen sind auf [GitHub](http://aka.ms/azurestackgithub)verfügbar:
 
-## <a name="deploy-sharepoint-non-high-availability"></a>Bereitstellen von SharePoint (ohne hohe Verfügbarkeit)
+## <a name="deploy-sharepoint-non-high-availability"></a>Bereitstellen von SharePoint (ohne Hochverfügbarkeit)
 Verwenden Sie die PowerShell DSC-Erweiterung, um eine SharePoint 2013-Farm zu erstellen, die folgende Ressourcen enthält:
 
 * Ein virtuelles Netzwerk
@@ -40,7 +41,7 @@ Verwenden Sie die PowerShell DSC-Erweiterung, um eine SharePoint 2013-Farm zu er
 * Einen virtuellen Computer, der als eigenständiger Server für SQL Server 2014 konfiguriert ist
 * Einen virtuellen Computer, der als eine SharePoint 2013-Farm mit einem Computer konfiguriert ist
 
-## <a name="deploy-ad-non-high-availability"></a>Bereitstellen von AD (ohne hohe Verfügbarkeit)
+## <a name="deploy-ad-non-high-availability"></a>Bereitstellen von AD (ohne Hochverfügbarkeit)
 Verwenden Sie die PowerShell DSC-Erweiterung, um einen Server als AD-Domänencontroller zu erstellen, der folgende Ressourcen enthält:
 
 * Ein virtuelles Netzwerk
@@ -48,7 +49,7 @@ Verwenden Sie die PowerShell DSC-Erweiterung, um einen Server als AD-Domänencon
 * Einen externen Load Balancer
 * Einen virtuellen Computer, der als Domänencontroller für eine neue Gesamtstruktur mit einer einzelnen Domäne konfiguriert ist
 
-## <a name="deploy-adsql-non-high-availability"></a>Bereitstellen von AD/SQL (ohne hohe Verfügbarkeit)
+## <a name="deploy-adsql-non-high-availability"></a>Bereitstellen von AD/SQL (ohne Hochverfügbarkeit)
 Verwenden Sie die PowerShell DSC-Erweiterung, um einen eigenständigen Server für SQL Server 2014 zu erstellen, der folgende Ressourcen enthält:
 
 * Ein virtuelles Netzwerk

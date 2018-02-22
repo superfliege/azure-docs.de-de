@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 397afc28b5f4c4f7f84afde13b6d031d83aaced4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2de214f604469025a8a4accde44359fea0ded7e9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones-preview"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet (Vorschauversion)
 Um Ihre VM-Skalierungsgruppen vor Fehlern auf Rechenzentrumsebene zu schützen, können Sie eine Skalierungsgruppe über mehrere Verfügbarkeitszonen erstellen. Azure-Regionen, die Verfügbarkeitszonen unterstützen, weisen mindestens drei getrennte Zonen auf, mit je eigener, unabhängiger Stromquelle, Netzwerk und Kühlung. Weitere Informationen finden Sie in der [Overview of Availability Zones (Übersicht über Verfügbarkeitszonen)](../availability-zones/az-overview.md).
@@ -30,13 +30,7 @@ Um Ihre VM-Skalierungsgruppen vor Fehlern auf Rechenzentrumsebene zu schützen, 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>Skalierungsgruppen mit einer Zone und zonenredundante Skalierungsgruppen
 Wenn Sie eine VM-Skalierungsgruppe bereitstellen, können eine einzelne Verfügbarkeitszone in einer Region oder mehrere Zonen verwenden.
 
-Wenn Sie eine Skalierungsgruppe in einer einzelnen Zone erstellen, können Sie steuern, in welcher Zone alle diese VM-Instanzen ausgeführt werden. Die Skalierungsgruppe wird dann nur innerhalb dieser Zone verwaltet und automatisch skaliert. Das folgende Diagramm zeigt ein Beispiel dafür, wie Sie mehrere einzelne Skalierungsgruppen mit einer Zone und einem zonenredundanten Lastenausgleich, der den Datenverkehr verteilt, erstellen können:
-
-![Bereitstellung einer Skalierungsgruppe mit einer einzigen Zone mit zonenredundantem Lastenausgleich](media/virtual-machine-scale-sets-use-availability-zones/zonal-vmss.png)
-
-Durch eine zonenredundante Skalierungsgruppe können Sie eine einzelne Skalierungsgruppe erstellen, die sich über mehrere Zonen erstreckt. Während der Erstellung werden VM-Instanzen standardmäßig gleichmäßig auf Zonen verteilt. Wenn in einer der Zonen eine Unterbrechung auftritt, wird eine Skalierungsgruppe nicht automatisch horizontal hochskaliert, um die Kapazität zu erhöhen. Eine bewährte Methode besteht darin, Regeln für die automatische Skalierung anhand der CPU- oder Arbeitsspeicherauslastung zu konfigurieren. Über diese Regeln für automatische Skalierung könnte die Skalierungsgruppe auf den Verlust der VM-Instanzen in dieser einen Zone reagieren, indem neue Instanzen in den verbleibenden betriebsbereiten Zonen horizontal hochskaliert werden. Das folgende Diagramm zeigt ein Beispiel für eine einzelne Skalierungsgruppe, die über mehrere Zonen bereitgestellt wurde:
-
-![Zonenredundante Bereitstellung einer Skalierungsgruppe und Lastenausgleich](media/virtual-machine-scale-sets-use-availability-zones/zone-redundant-vmss.png)
+Wenn Sie eine Skalierungsgruppe in einer einzelnen Zone erstellen, können Sie steuern, in welcher Zone alle diese VM-Instanzen ausgeführt werden. Die Skalierungsgruppe wird dann nur innerhalb dieser Zone verwaltet und automatisch skaliert. Durch eine zonenredundante Skalierungsgruppe können Sie eine einzelne Skalierungsgruppe erstellen, die sich über mehrere Zonen erstreckt. Während der Erstellung werden VM-Instanzen standardmäßig gleichmäßig auf Zonen verteilt. Wenn in einer der Zonen eine Unterbrechung auftritt, wird eine Skalierungsgruppe nicht automatisch horizontal hochskaliert, um die Kapazität zu erhöhen. Eine bewährte Methode besteht darin, Regeln für die automatische Skalierung anhand der CPU- oder Arbeitsspeicherauslastung zu konfigurieren. Über diese Regeln für automatische Skalierung könnte die Skalierungsgruppe auf den Verlust der VM-Instanzen in dieser einen Zone reagieren, indem neue Instanzen in den verbleibenden betriebsbereiten Zonen horizontal hochskaliert werden.
 
 Damit Verfügbarkeitszonen verwendet werden können, muss Ihre Skalierungsgruppe in einer [unterstützten Azure-Region](../availability-zones/az-overview.md#regions-that-support-availability-zones) erstellt werden. Sie müssen sich außerdem [für die Vorschau von Verfügbarkeitszonen registrieren](http://aka.ms/azenroll). Sie können mit einer der folgenden Methoden eine Skalierungsgruppe erstellen, die Verfügbarkeitszonen verwendet:
 

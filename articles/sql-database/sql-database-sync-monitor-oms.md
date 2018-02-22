@@ -2,17 +2,17 @@
 title: "Überwachen der Azure SQL-Datensynchronisierung mit OMS Log Analytics | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung mithilfe von OMS Log Analytics überwachen."
 services: sql-database
-ms.date: 11/7/2017
+ms.date: 11/07/2017
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: ace0eb671556dc980836464a365731d6100eab25
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 8683b3aec569f210529c1188cbbf514f7956b340
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>Überwachen der SQL-Datensynchronisierung (Vorschau) mit OMS Log Analytics 
 
@@ -126,7 +126,7 @@ Gehen Sie wie im Anschluss beschrieben vor, um eine auf OMS Log Analytics basier
 
 1.  Klicken Sie im OMS-Portal auf **Protokollsuche**.
 
-2.  Erstellen Sie eine Abfrage, um die Fehler und Warnungen innerhalb des gewählten Intervalls nach Synchronisierungsgruppe auszuwählen. Beispiel:
+2.  Erstellen Sie eine Abfrage, um die Fehler und Warnungen innerhalb des gewählten Intervalls nach Synchronisierungsgruppe auszuwählen. Beispiel: 
 
     `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
 

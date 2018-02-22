@@ -16,11 +16,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: f0209142da5d94e0ed863a07c9ea694232421cfb
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: c87e62ad82470f2d159da13f02a1f97b629e7fbb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Erste Schritte mit Azure Multi-Factor Authentication-Server
 
@@ -94,7 +94,7 @@ Wenn Sie das Ereignisbestätigungsfeature nicht verwenden und Ihre Benutzer kein
 Führen Sie die folgenden Schritte aus, um den Azure Multi-Factor Authentication-Server im Azure-Portal herunterzuladen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Wählen Sie **Active Directory** > **MFA-Server**.
+2. Klicken Sie auf **Azure Active Directory** > **MFA-Server**.
 3. Wählen Sie **Servereinstellungen** aus.
 4. Wählen Sie **Herunterladen** aus, und befolgen Sie die Anweisungen auf der Downloadseite, um das Installationsprogramm zu speichern. 
 

@@ -4,7 +4,7 @@ description: "In diesem Tutorial erfahren Sie, wie Sie eine SQL Server Always On
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 228ca9ca5fddc493d27bfd6a40df5ee7306d6aa9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70e483f8b64648200bd6f0898a2877c2bf95e590
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
@@ -38,7 +38,7 @@ Für dieses Tutorial werden Grundkenntnisse über SQL Server AlwaysOn-Verfügbar
 
 Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sein müssen, bevor Sie mit dem Tutorial beginnen:
 
-|  |Anforderung |Beschreibung |
+|  |Anforderung |BESCHREIBUNG |
 |----- |----- |----- |
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Zwei SQL Server-Instanzen | - In einer Azure-Verfügbarkeitsgruppe <br/> - In einer einzelnen Domäne <br/> - Mit installiertem Failoverclustering-Feature |
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Dateifreigabe für Clusterzeuge |  
@@ -109,6 +109,7 @@ Fügen Sie die andere SQL Server-Instanz dem Cluster hinzu.
 
 1. Klicken Sie auf **Weiter**.
 
+
 1. Klicken Sie auf **Fertig stellen**.
 
    Im Failovercluster-Manager sehen Sie nun, dass Ihr Cluster über einen neuen Knoten verfügt, und der Knoten wird im Container **Knoten** aufgelistet.
@@ -133,7 +134,9 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
+
 1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Weiter**.
+
 
 1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...**.
 
@@ -170,7 +173,9 @@ Legen Sie als Nächstes das Clusterquorum fest.
 
 1. Geben Sie unter **Dateifreigabenzeugen konfigurieren** den Pfad für die erstellte Freigabe ein. Klicken Sie auf **Weiter**.
 
+
 1. Überprüfen Sie unter **Bestätigung** die Einstellungen. Klicken Sie auf **Weiter**.
+
 
 1. Klicken Sie auf **Fertig stellen**.
 
@@ -182,11 +187,11 @@ Aktivieren Sie als Nächstes das Feature **Verfügbarkeitsgruppen**. Führen Sie
 
 1. Starten Sie über den **Startbildschirm** den **SQL Server-Konfigurations-Manager**.
 2. Klicken Sie in der Browserstruktur auf **SQL Server-Dienste**, klicken Sie dann mit der rechten Maustaste auf den Dienst **SQL Server (MSSQLSERVER)**, und klicken Sie auf **Eigenschaften**.
-3. Klicken Sie auf die Registerkarte **Hohe Verfügbarkeit mit AlwaysOn**, und wählen Sie **AlwaysOn-Verfügbarkeitsgruppen aktivieren** aus:
+3. Klicken Sie auf die Registerkarte **Hochverfügbarkeit mit AlwaysOn**, und wählen Sie **AlwaysOn-Verfügbarkeitsgruppen aktivieren** aus:
 
     ![Aktivieren von AlwaysOn-Verfügbarkeitsgruppen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
 
-4. Klicken Sie auf **Übernehmen**. Klicken Sie im Popupdialogfenster auf **OK** .
+4. Klicken Sie auf **Anwenden**. Klicken Sie im Popupdialogfenster auf **OK** .
 
 5. Starten Sie den SQL Server-Dienst neu.
 
@@ -235,7 +240,9 @@ Repeat these steps on the second SQL Server.
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner der Datenbanksicherung, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
+
 1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Weiter**.
+
 
 1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...**.
 
@@ -267,11 +274,12 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
 ### <a name="create-the-availability-group"></a>Erstellen der Verfügbarkeitsgruppe:
 
-1. Gehen Sie in einer Remotedesktopsitzung mit der ersten SQL Server-Instanz wie folgt vor: Klicken Sie in SSMS im **Objekt-Explorer** mit der rechten Maustaste auf **Hohe Verfügbarkeit mit AlwaysOn**, und klicken Sie anschließend auf **Assistent für neue Verfügbarkeitsgruppen**.
+1. Gehen Sie in einer Remotedesktopsitzung mit der ersten SQL Server-Instanz wie folgt vor: Klicken Sie in SSMS im **Objekt-Explorer** mit der rechten Maustaste auf **Hochverfügbarkeit mit AlwaysOn**, und klicken Sie anschließend auf **Assistent für neue Verfügbarkeitsgruppen**.
 
     ![Starten des Assistenten für neue Verfügbarkeitsgruppen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
 2. Klicken Sie auf der Seite **Einführung** auf **Weiter**. Geben Sie auf der Seite **Namen der Verfügbarkeitsgruppe angeben** unter **Name der Verfügbarkeitsgruppe** den Namen für die Verfügbarkeitsgruppe ein (beispielsweise **AG1**). Klicken Sie auf **Weiter**.
+
 
     ![Assistent für neue Verfügbarkeitsgruppen, Namen der Verfügbarkeitsgruppe angeben](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
@@ -296,6 +304,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
 8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\**. Klicken Sie auf **Weiter**.
 
+
    >[!NOTE]
    >Zur vollständigen Synchronisierung wird die Datenbank der ersten SQL Server-Instanz vollständig gesichert und in der zweiten Instanz wiederhergestellt. Bei umfangreichen Datenbanken wird von einer vollständigen Synchronisierung abgeraten, da sie sehr lange dauern kann. Sie können den Vorgang beschleunigen, indem Sie die Datenbank manuell sichern und mit `NO RECOVERY` wiederherstellen. Falls die Datenbank bereits vor dem Konfigurieren der Verfügbarkeitsgruppe mit `NO RECOVERY` in der zweiten SQL Server-Instanz wiederhergestellt wurde, wählen Sie **Nur verknüpfen** aus. Wenn Sie die Sicherung erst nach dem Konfigurieren der Verfügbarkeitsgruppe erstellen möchten, wählen Sie **Anfängliche Datensynchronisierung überspringen** aus.
 
@@ -315,7 +324,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
 ### <a name="check-the-availability-group"></a>Überprüfen der Verfügbarkeitsgruppe
 
-1. Erweitern Sie im **Objekt-Explorer** den Eintrag **Hohe Verfügbarkeit mit AlwaysOn** und anschließend **Verfügbarkeitsgruppen**. In diesem Container sollte nun die neue Verfügbarkeitsgruppe angezeigt werden. Klicken Sie mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Dashboard anzeigen**.
+1. Erweitern Sie im **Objekt-Explorer** den Eintrag **Hochverfügbarkeit mit AlwaysOn** und anschließend **Verfügbarkeitsgruppen**. In diesem Container sollte nun die neue Verfügbarkeitsgruppe angezeigt werden. Klicken Sie mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Dashboard anzeigen**.
 
    ![Anzeigen des Verfügbarkeitsgruppen-Dashboards](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/76-showdashboard.png)
 
@@ -346,7 +355,7 @@ Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe e
 
    ![Verfügbarkeitsgruppe im Failovercluster-Manager](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1.  Klicken Sie auf **Erstellen**.
+1.  Klicken Sie auf **Create**.
 3. Konfigurieren Sie den Load Balancer mit folgenden Parametern: 
 
    | Einstellung | Field |
@@ -355,10 +364,10 @@ Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe e
    | **Typ** |Intern |
    | **Virtuelles Netzwerk** |Verwenden Sie den Namen des virtuellen Azure-Netzwerks. |
    | **Subnetz** |Verwenden Sie den Namen des Subnetzes, in dem sich der virtuelle Computer befindet.  |
-   | **IP-Adresszuweisung** |Statisch |
+   | **IP-Adresszuweisung** |statischen |
    | **IP-Adresse** |Verwenden Sie eine verfügbare Adresse aus dem Subnetz. |
    | **Abonnement** |Verwenden Sie das gleiche Abonnement wie der virtuelle Computer. |
-   | **Standort** |Verwenden Sie den gleichen Standort wie der virtuelle Computer. |
+   | **Location** |Verwenden Sie den gleichen Standort wie der virtuelle Computer. |
 
    Das Blatt im Azure-Portal sollte wie folgt aussehen:
 
@@ -376,7 +385,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Klicken Sie auf den Lastenausgleich, auf **Back-End-Pools** und anschließend auf **+ Hinzufügen**. Konfigurieren Sie den Back-End-Pool wie folgt:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Geben Sie einen Textnamen ein. | SQLLBBE
    | **Zugeordnet zu** | Auswahlliste | Verfügbarkeitsgruppe
@@ -399,7 +408,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Konfigurieren Sie den Integritätstest wie folgt:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokoll** | Wählen Sie „TCP“ aus. | TCP |
@@ -414,7 +423,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 1. Klicken Sie auf den Lastenausgleich, auf **Load balancing rules** (Lastenausgleichsregeln) und anschließend auf **+Hinzufügen**.
 
 1. Konfigurieren Sie die Lastenausgleichsregeln wie folgt:
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointListener |
    | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Erstellen des Lastenausgleichs erstellt haben. |
@@ -448,7 +457,7 @@ Legen Sie in SQL Server Management Studio den Listenerport fest.
 
 1. Starten Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit dem primären Replikat her.
 
-1. Navigieren Sie zu **Hohe Verfügbarkeit mit Always On** | **Verfügbarkeitsgruppen** | **Verfügbarkeitsgruppenlistener**.
+1. Navigieren Sie zu **Hochverfügbarkeit mit Always On** | **Verfügbarkeitsgruppen** | **Verfügbarkeitsgruppenlistener**.
 
 1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Eigenschaften**.
 

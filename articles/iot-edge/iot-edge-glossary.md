@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2017
+ms.date: 2/15/2018
 ms.author: menchi
-ms.openlocfilehash: 0baba2ef843ac95bfc6682ec2b00d19b9d94e5cf
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 46d45860f70cfa6d0e1dc4ea07f6ec1f0feec6ab
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="glossary-of-iot-edge-terms"></a>Glossar mit IoT Edge-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Edge verwendet werden.
@@ -27,6 +27,6 @@ In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT E
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen im [IoT Hub-Glossar](#iot-hub-devguide-glossary.md)
+* Weitere Informationen im [IoT Hub-Glossar](../iot-hub/iot-hub-devguide-glossary.md)
 * IoT Edge-[Modulentwicklung](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules) lernen
 * IoT Edge-[Bereitstellung](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring) lernen

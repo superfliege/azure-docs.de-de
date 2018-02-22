@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/15/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4727560df897f6c1a0aaa6d7f5d4e1c76fc02a46
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 7515f6b2e074c33488fc44768705896d7c9d8ce6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Grundlegendes zur Azure IoT Edge-Laufzeit und ihre Architektur – Vorschau
 
@@ -64,14 +64,18 @@ Der Edge-Hub ermöglicht die Kommunikation zwischen Modulen. Die Verwendung des 
 
 Ein Modul ruft zum Senden von Daten an den Edge-Hub die SendEventAsync-Methode auf. Das erste Argument gibt an, an welchen Ausgang die Nachricht gesendet werden soll. Mit dem folgenden Pseudocode wird eine Nachricht an output1 gesendet:
 
-    DeviceClient client = new DeviceClient.CreateFromConnectionString(moduleConnectionString, settings); 
-    await client.OpenAsync(); 
-    await client.SendEventAsync(“output1”, message); 
+   ```csharp
+   DeviceClient client = new DeviceClient.CreateFromConnectionString(moduleConnectionString, settings); 
+   await client.OpenAsync(); 
+   await client.SendEventAsync(“output1”, message); 
+   ```
 
 Um eine Nachricht zu empfangen, registrieren Sie einen Rückruf, der eingehende Nachrichten an einem speziellen Eingang verarbeitet. Mit dem folgenden Pseudocode wird die Funktion „messageProcessor“ registriert, die für die Verarbeitung aller an input1 empfangenen Nachrichten verwendet werden soll:
 
-    await client.SetEventHandlerAsync(“input1”, messageProcessor, userContext);
-    
+   ```csharp
+   await client.SetEventHandlerAsync(“input1”, messageProcessor, userContext);
+   ```
+
 Der Lösungsentwickler muss die Regeln angeben, die bestimmen, wie Nachrichten vom Edge-Hub zwischen Modulen übergeben werden. Routingregeln werden in der Cloud definiert und an den Edge-Hub in dessen Gerätezwilling übertragen. Zum Definieren von Routen zwischen Modulen in Azure IoT Edge wird die gleiche Syntax wie für IoT Hub-Routen verwendet. 
 
 <!--- For more info on how to declare routes between modules, see []. --->   

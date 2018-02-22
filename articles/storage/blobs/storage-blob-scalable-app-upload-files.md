@@ -2,23 +2,20 @@
 title: "Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie das Azure-SDK verwenden, um große Mengen von Zufallsdaten parallel in ein Azure Storage-Konto hochzuladen."
 services: storage
-documentationcenter: 
-author: georgewallace
+author: tamram
 manager: jeconnoc
-editor: 
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 12/12/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 98f3f69c6025d61caac20e13b573651854952432
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 39a48007bdcd055df4529074a67b5b8a6db2d8b4
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto
 
@@ -32,7 +29,7 @@ Im zweiten Teil der Reihe lernen Sie Folgendes:
 > * Ausführen der Anwendung
 > * Überprüfen der Anzahl von Verbindungen
 
-Azure-Blobspeicher stellt einen skalierbaren Dienst zum Speichern Ihrer Daten bereit. Um sicherzustellen, dass Ihre Anwendung so leistungsfähig wie möglich ist, sollten Sie die Funktionsweise von Blobspeicher verstehen. Es ist unverzichtbar, die Grenzwerte für Azure-Blobspeicher zu kennen. Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Azure Blob Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
+Azure Blob Storage stellt einen skalierbaren Dienst zum Speichern Ihrer Daten bereit. Um sicherzustellen, dass Ihre Anwendung so leistungsfähig wie möglich ist, sollten Sie die Funktionsweise von Blobspeicher verstehen. Es ist unverzichtbar, die Grenzwerte für Azure-Blobspeicher zu kennen. Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Azure Blob Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
 
 [Partitionsbenennung](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) ist ein weiterer wichtiger Faktor beim Entwerfen einer Hochleistungsanwendung mithilfe von Blobspeichern. Für Azure-Speicher wird ein bereichsbasiertes Partitionierungsschema verwendet, um Skalierung und Lastausgleich vorzunehmen. Diese Konfiguration bedeutet, dass Dateien mit ähnlichen Benennungskonventionen oder Präfixen in derselben Partition gespeichert werden. Diese Logik beinhaltet den Namen des Containers, in den die Dateien hochgeladen werden. In diesem Tutorial verwenden Sie Dateien, die sowohl GUIDs für Namen als auch zufällig generierten Inhalt haben. Die Dateien werden dann in fünf verschiedene Container mit zufälligen Namen hochgeladen.
 

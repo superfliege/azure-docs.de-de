@@ -4,7 +4,7 @@ description: In diesem Artikel wird beschrieben, wie Sie auf Azure Virtual Machi
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 9fc761b1-21ad-4d79-bebc-a2f094ec214d
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2017
 ms.author: mikeray
-ms.openlocfilehash: ec35b4a02c04d5b6d0bbf9049927529258c3825b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8c957b1f2b4466ba68d81885fb014ad4026a47d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -117,7 +117,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
       >[!IMPORTANT]
       >Sie können die Verfügbarkeitsgruppe nicht mehr festlegen oder ändern, nachdem ein virtueller Computer erstellt wurde.
 
-   Wählen Sie über den Azure Marketplace ein Image aus. Sie können ein Marketplace-Image verwenden, das Windows Server und SQL Server oder nur Windows Server enthält. Ausführliche Informationen finden Sie unter [Übersicht über SQL Server auf virtuellen Azure-Computern](../../virtual-machines-windows-sql-server-iaas-overview.md).
+   Wählen Sie über den Azure Marketplace ein Image aus. Sie können ein Marketplace-Image verwenden, das Windows Server und SQL Server oder nur Windows Server enthält. Ausführliche Informationen finden Sie unter [Übersicht über SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
    Die offiziellen SQL Server-Images im Azure-Katalog enthalten eine installierte SQL Server-Instanz sowie die SQL Server-Installationssoftware und den erforderlichen Schlüssel.
 
@@ -147,7 +147,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
    - Klicken Sie unter **Programme und Funktionen** mit der rechten Maustaste auf **Microsoft SQL Server 2016 (64 Bit)**, und klicken Sie dann auf **Deinstallieren/ändern**.
    - Klicken Sie auf **Entfernen**.
    - Wählen Sie die Standardinstanz aus.
-   - Entfernen Sie alle Funktionen unter **Database Engine Services**. Achten Sie darauf, dass Sie **Freigegebene Funktionen** nicht entfernen. Sehen Sie sich die folgende Abbildung an:
+   - Entfernen Sie alle Funktionen unter **Datenbank-Engine-Dienst**. Achten Sie darauf, dass Sie **Freigegebene Funktionen** nicht entfernen. Sehen Sie sich die folgende Abbildung an:
 
       ![Entfernen von Funktionen](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
@@ -157,7 +157,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
 
    Öffnen Sie auf jedem virtuellen Computer die folgenden Ports in der Windows-Firewall.
 
-   | Zweck | TCP-Port | Hinweise
+   | Zweck | TCP-Port | Notizen
    | ------ | ------ | ------
    | SQL Server | 1433 | Dies ist der normale Port für Standardinstanzen von SQL Server. Falls Sie ein Image aus dem Katalog verwendet haben, ist dieser Port automatisch geöffnet.
    | Integritätstest | 59999 | Beliebiger geöffneter TCP-Port. In einem späteren Schritt konfigurieren Sie für den [Integritätstest](#probe) des Lastenausgleichs und den Cluster die Verwendung dieses Ports.  
@@ -346,7 +346,7 @@ So erstellen Sie den Lastenausgleich
 
 1. Klicken Sie auf **+ Hinzufügen**. Durchsuchen Sie den Marketplace nach **Load Balancer**. Klicken Sie auf **Load Balancer**.
 
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Create**.
 
 1. Konfigurieren Sie Folgendes für den Load Balancer (Lastenausgleich):
 
@@ -484,7 +484,7 @@ Melden Sie sich zum Testen der Konnektivität an einem anderen virtuellen Comput
 ## <a name="limitations"></a>Einschränkungen
 Auf virtuellen Azure-Computern wird Microsoft Distributed Transaction Coordinator (DTC) für FCIs nicht unterstützt, da der Lastenausgleich keine Unterstützung für den RPC-Port bietet.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 [Einrichten von S2D mit Remotedesktop (Azure)](http://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 

@@ -14,21 +14,18 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: ca566aed706d4598c6067d42bdbec08d16dc3841
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 2403261f05d9e5aab2e50939720b3eb007aecd6e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Erstellen einer Apache Storm-Topologie in Java
 
 In diesem Artikel erfahren Sie, wie Sie eine Java-basierte Topologie für Apache Storm erstellen. Sie erstellen eine Storm-Topologie, die eine Anwendung zur Wortzählung implementiert. Sie verwenden Maven zum Erstellen und Verpacken des Projekts. Anschließend erfahren Sie, wie Sie die Topologie mit dem Flux-Framework definieren.
-
-> [!NOTE]
-> Das Flux-Framework ist unter Storm 0.10.0 oder höher verfügbar. Storm 0.10.0 ist unter HDInsight 3.3 und 3.4 verfügbar.
 
 Nach Abschluss der Schritte in diesem Dokument können Sie die Topologie für Apache Storm in HDInsight bereitstellen.
 

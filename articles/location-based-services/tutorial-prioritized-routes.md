@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 78e911d17fe8c468cf89ec1477f1c5144e6669b6
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: ac57996e7dced5ef0f0a993889bfc13b1d064167
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Location Based Services
 
@@ -209,9 +209,9 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Azure
     ```
     Mit diesem Codeausschnitt wird ein [XMLHttpRequest](https://xhr.spec.whatwg.org/)-Element erstellt und ein Ereignishandler zum Analysieren der eingehenden Antwort hinzugefügt. Bei einer erfolgreichen Antwort wird ein Array mit Koordinaten für die zurückgegebene Route erstellt und der Ebene `truckRouteLayerName` der Karte hinzugefügt. 
     
-    Mit diesem Codeausschnitt wird die Abfrage außerdem an den Routendienst für Ihren Kontoschlüssel gesendet, um die Route für den angegebenen Start- und Endpunkt zu erhalten. Die folgenden optionalen Parameter werden verwendet, um die Route für einen schweren LKW anzugeben: - Mit dem Parameter `travelMode=truck` wird die Fortbewegungsart als *truck* (LKW) angegeben. Andere unterstützte Fortbewegungsarten sind *taxi*, *bus*, *van*, *motorcycle* und *car* (Standardeinstellung).  
-        - Mit den Parametern `vehicleWidth`, `vehicleHeight` und `vehicleLength` werden die Abmessungen des Fahrzeugs in Metern angegeben. Sie werden nur berücksichtigt, wenn die Fortbewegungsart *truck* (LKW) lautet.  
-        - Mit `vehicleLoadType` wird die Ladung als gefährlich mit ggf. eingeschränkter Nutzung einiger Straßen eingestuft. Derzeit gilt dies nur für den Modus *truck* (LKW).  
+    Mit diesem Codeausschnitt wird die Abfrage außerdem an den Routendienst für Ihren Kontoschlüssel gesendet, um die Route für den angegebenen Start- und Endpunkt zu erhalten. Die folgenden optionalen Parameter werden verwendet, um die Route für einen schweren LKW anzugeben: - Mit dem Parameter `travelMode=truck` wird die Fortbewegungsart als *truck* (LKW) angegeben. Andere unterstützte Fortbewegungsarten sind *taxi*, *bus*, *van*, *motorcycle* und *car* (Standardeinstellung).
+        - Mit den Parametern `vehicleWidth`, `vehicleHeight` und `vehicleLength` werden die Abmessungen des Fahrzeugs in Metern angegeben. Sie werden nur berücksichtigt, wenn die Fortbewegungsart *truck* (LKW) lautet.
+        - Mit `vehicleLoadType` wird die Ladung als gefährlich mit ggf. eingeschränkter Nutzung einiger Straßen eingestuft. Derzeit gilt dies nur für den Modus *truck* (LKW).
 
 2. Fügen Sie den folgenden JavaScript-Code hinzu, um die Route für einen PKW per Routendienst zu erhalten:
 

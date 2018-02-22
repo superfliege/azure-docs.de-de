@@ -4,7 +4,7 @@ description: "In diesem Tutorial werden Ressourcen verwendet, die mit dem klassi
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: fea70b389b1f1d6af963e3f14fdc48e8d857dd53
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 418920899612cac7336af14baff75c58a1cd8bef
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ Erstellen Sie einen Endpunkt mit Lastenausgleich für jeden virtuellen Computer 
 5. Starten Sie Azure PowerShell.  
     Eine neue PowerShell-Sitzung wird geöffnet, und die Azure-Verwaltungsmodule werden geladen.
 
-6. Führen Sie `Get-AzurePublishSettingsFile` aus. Dieses Cmdlet leitet Sie zu einem Browser weiter, damit Sie eine Datei mit Veröffentlichungseinstellungen in ein lokales Verzeichnis herunterladen können. Möglicherweise werden Sie aufgefordert, die Anmeldeinformationen für Ihr Azure-Abonnement einzugeben.
+6. Führen Sie `Get-AzurePublishSettingsFile`aus. Dieses Cmdlet leitet Sie zu einem Browser weiter, damit Sie eine Datei mit Veröffentlichungseinstellungen in ein lokales Verzeichnis herunterladen können. Möglicherweise werden Sie aufgefordert, die Anmeldeinformationen für Ihr Azure-Abonnement einzugeben.
 
 7. Führen Sie den folgenden Befehl `Import-AzurePublishSettingsFile` mit dem Pfad der Datei mit Veröffentlichungseinstellungen aus, die Sie heruntergeladen haben:
 
@@ -106,7 +106,7 @@ Erstellen Sie einen Endpunkt mit Lastenausgleich für jeden virtuellen Computer 
 
 13. Nachdem Sie die Variablen festgelegt haben, kopieren Sie das Skript zum Ausführen aus dem Text-Editor in Ihre PowerShell-Sitzung. Wenn die Eingabeaufforderung weiterhin **>>** anzeigt, drücken Sie erneut die EINGABETASTE, um die Skriptausführung zu starten.
 
-## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Stellen Sie gegebenenfalls sicher, dass KB2854082 installiert ist.
+## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Sicherstellen der Installation von KB2854082, falls erforderlich
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
 
 ## <a name="open-the-firewall-ports-in-availability-group-nodes"></a>Öffnen der Firewallports in Verfügbarkeitsgruppenknoten

@@ -529,7 +529,11 @@
         - name: Herstellen einer Verbindung mit einem sicheren Cluster
           href: service-fabric-connect-to-secure-cluster.md
         - name: Patchen von Clusterknoten
-          href: service-fabric-patch-orchestration-application.md
+          items:
+            - name: Windows
+              href: service-fabric-patch-orchestration-application.md
+            - name: Linux
+              href: service-fabric-patch-orchestration-application-linux.md
     - name: Überwachen und Diagnostizieren
       items:
         - name: OMS
@@ -599,7 +603,7 @@
     - name: Lernpfad
       href: 'https://azure.microsoft.com/documentation/learning-paths/service-fabric/'
     - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Preisrechner

@@ -4,7 +4,7 @@ description: "In diesem Tutorial werden mit dem klassischen Bereitstellungsmodel
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: 7ca7c423-8342-4175-a70b-d5101dfb7f23
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 50326a093adaf3558c56dfd0b38544f0e60be460
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3e56f1741a9cfd3f2d9f786c2ce22eb6a946ef2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Erweitern von lokalen AlwaysOn-Verfügbarkeitsgruppen auf Azure
-AlwaysOn-Verfügbarkeitsgruppen bieten hohe Verfügbarkeit für Datenbankgruppen durch Hinzufügen sekundärer Replikate. Diese Replikate ermöglichen den Failover von Datenbanken bei Ausfällen. Darüber hinaus können Sie für das Auslagern von Lesearbeitslasten oder Sicherungsaufgaben verwendet werden.
+AlwaysOn-Verfügbarkeitsgruppen bieten Hochverfügbarkeit für Datenbankgruppen durch Hinzufügen sekundärer Replikate. Diese Replikate ermöglichen den Failover von Datenbanken bei Ausfällen. Darüber hinaus können Sie für das Auslagern von Lesearbeitslasten oder Sicherungsaufgaben verwendet werden.
 
 Sie können lokale Verfügbarkeitsgruppen nach Microsoft Azure erweitern, indem Sie eine oder mehrere Azure-VMs mit SQL Server bereitstellen und diese dann Ihren lokalen Verfügbarkeitsgruppen als Replikate hinzufügen.
 
@@ -41,7 +41,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
 > [!IMPORTANT]
 > Der **Assistent zum Hinzufügen von Azure-Replikaten** unterstützt lediglich virtuelle Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Für neue VM-Bereitstellungen sollte das neuere Resource Manager-Modell verwendet werden. Wenn Sie VMs mit Resource Manager verwenden, müssen Sie das sekundäre Resource Manager-Azure-Replikat manuell mit Transact-SQL-Befehlen (hier nicht gezeigt) hinzufügen. Dieser Assistent funktioniert nicht im Resource Manager-Szenario.
 
-1. Erweitern Sie in SQL Server Management Studio die Option **Hohe Verfügbarkeit mit Always On** > **Verfügbarkeitsgruppen** > **[Name Ihrer Verfügbarkeitsgruppe]**.
+1. Erweitern Sie in SQL Server Management Studio die Option **Hochverfügbarkeit mit Always On** > **Verfügbarkeitsgruppen** > **[Name Ihrer Verfügbarkeitsgruppe]**.
 2. Klicken Sie mit der rechten Maustaste auf **Verfügbarkeitsreplikate**, und klicken Sie dann auf **Replikat hinzufügen**.
 3. Standardmäßig wird der **Assistent zum Hinzufügen von Replikaten zu Verfügbarkeitsgruppen** angezeigt. Klicken Sie auf **Weiter**.
   Wenn Sie bei einer früheren Ausführung des Assistenten unten auf der Seite die Option **Diese Seite nicht mehr anzeigen** aktiviert haben, wird dieser Bildschirm nicht angezeigt.
@@ -56,7 +56,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
 7. Sie müssen jedes Feld auf der Seite mit Werten auffüllen, die zum Erstellen es virtuellen Azure-Computers (VM) verwendet werden, der für das Hosten des Replikats bestimmt ist.
    
-   | Einstellung | Beschreibung |
+   | Einstellung | BESCHREIBUNG |
    | --- | --- |
    | **Image** |Wählen Sie die gewünschte Kombination aus Betriebssystem und SQL Server aus |
    | **Größe des virtuellen Computers** |Wählen Sie die Größe für die VM, die Ihren Geschäftsanforderungen optimal entspricht |
@@ -75,8 +75,10 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
 11. Klicken Sie auf **Weiter**.
+
 12. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die gewünschte Methode der Datensynchronisierung aus, und klicken Sie auf **Weiter**. Für die meisten Szenarien sollten Sie **Vollständige Datensynchronisation**auswählen. Weitere Informationen zu Methoden der Datensynchronisierung finden Sie unter [Seite „Anfängliche Datensynchronisierung auswählen“ (Assistenten für AlwaysOn-Verfügbarkeitsgruppen)](https://msdn.microsoft.com/library/hh231021.aspx).
 13. Überprüfen Sie die Ergebnisse auf der Seite **Überprüfung**. Beheben Sie noch bestehende Probleme, und führen Sie die Überprüfung ggf. erneut aus. Klicken Sie auf **Weiter**.
+
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
 14. Überprüfen Sie die Einstellungen auf der Seite **Zusammenfassung**, und klicken Sie dann auf **Fertig stellen**.

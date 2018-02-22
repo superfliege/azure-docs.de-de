@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: danlep
 ms.custom: 
-ms.openlocfilehash: 4d48aff7d29def9fa54438a11885b4ff4fba54cc
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 63c2baa2f3924cf2274608df98b854683bc2baa8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal
 
@@ -35,7 +35,7 @@ Melden Sie sich unter „https://portal.azure.com“ am Azure-Portal an.
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
 
@@ -47,7 +47,7 @@ Melden Sie sich unter „https://portal.azure.com“ am Azure-Portal an.
 
     ![Screenshot: VM-Größen](./media/create-portal-availability-zone/create-linux-vm-portal-sizes.png)  
 
-5. Wählen Sie unter **Einstellungen** > **Hohe Verfügbarkeit** eine der nummerierten Zonen aus der Dropdownliste **Verfügbarkeitszone** aus, behalten Sie die restlichen Standardeinstellungen bei, und klicken Sie auf **OK**.
+5. Wählen Sie unter **Einstellungen** > **Hochverfügbarkeit** eine der nummerierten Zonen aus der Dropdownliste **Verfügbarkeitszone** aus, behalten Sie die restlichen Standardeinstellungen bei, und klicken Sie auf **OK**.
 
     ![Auswählen einer Verfügbarkeitszone](./media/create-portal-availability-zone/create-linux-vm-portal-availability-zone.png)
 

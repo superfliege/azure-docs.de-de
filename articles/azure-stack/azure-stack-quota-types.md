@@ -3,8 +3,8 @@ title: Kontingenttypen in Azure Stack | Microsoft-Dokumentation
 description: "In diesem Artikel finden Sie Informationen zu den unterschiedlichen Kontingenttypen, die für Dienste und Ressourcen in Azure Stack verfügbar sind."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/23/2017
-ms.author: erikje
-ms.openlocfilehash: d9bb048ece32bf5b34e05d7459488aa0f24d0d44
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: da4105fa88848b14e5d5d0289859cfd0f85c8fee
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Kontingenttypen in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 [Kontingente](azure-stack-plan-offer-quota-overview.md#plans) definieren die Grenzwerte von Ressourcen, die ein Benutzerabonnement bereitstellen oder nutzen kann. Mithilfe eines Kontingents kann ein Benutzer beispielsweise bis zu fünf virtuelle Computer erstellen. Jede Ressource verfügt über eigene Kontingenttypen.
 

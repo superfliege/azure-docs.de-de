@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 6b0d523dd4c3a03daef0a713c4d57e5ca868af2a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7265af62adf8f380a3a5bd5d9950fb70e9ad6172
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>Bereitstellen von API Management mit Service Fabric
 Dieses Tutorial ist der vierte Teil einer Serie.  Bei der Bereitstellung von Azure API Management mit Service Fabric handelt es sich um ein erweitertes Szenario.  API Management ist nützlich, wenn Sie APIs mit einem umfangreichen Satz von Routingregeln für Ihre Service Fabric-Back-End-Dienste veröffentlichen möchten. Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. In Service Fabric kann ein Gateway ein beliebiger zustandsloser Dienst sein, der für den Eingang von Datenverkehr ausgelegt ist, z.B. eine ASP.NET Core-Anwendung, Event Hubs, IoT Hub oder Azure API Management. 
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oder [Linux-Clusters](service-fabric-tutorial-create-vnet-and-linux-cluster.md) in Azure mithilfe einer Vorlage
-> * [Horizontales Herunter- oder Hochskalieren eines Clusters](/service-fabric-tutorial-scale-cluster.md)
+> * [Horizontales Herunter- oder Hochskalieren eines Clusters](service-fabric-tutorial-scale-cluster.md)
 > * [Aktualisieren der Runtime eines Clusters](service-fabric-tutorial-upgrade-cluster.md)
 > * Bereitstellen von API Management mit Service Fabric
 

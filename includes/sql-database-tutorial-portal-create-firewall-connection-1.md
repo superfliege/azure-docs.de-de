@@ -8,7 +8,7 @@ Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Spe
 
 Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstellen. 
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 
 2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Neu** unter **SQL-Datenbank** die Option **Erstellen** aus.
 

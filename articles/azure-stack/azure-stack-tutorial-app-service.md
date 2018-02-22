@@ -3,8 +3,8 @@ title: "Verfügbarmachen von Web- und API-Apps für Ihre Azure Stack-Benutzer | 
 description: "Tutorial zum Installieren des App Service-Ressourcenanbieters und zum Erstellen von Angeboten, die es Ihren Azure Stack-Benutzern ermöglichen, Web- und API-Apps zu erstellen"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: 
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 7/03/2017
-ms.author: erikje
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: 42d94eea8b9e4db611b821cd84e7d02f1d226293
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 5978706f2cab69c83a49bfd0e15ae904a38c7bab
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Verfügbarmachen von Web- und API-Apps für Ihre Azure Stack-Benutzer
 
@@ -70,7 +71,7 @@ Da Sie den App Service-Ressourcenanbieter nun bereitgestellt und ein Angebot ers
     - **Ressourcengruppe**: DNN-RG
 3. Klicken Sie auf **Login Settings** (Anmeldeeinstellungen), geben Sie die Anmeldeinformationen für die Datenbank ein, und klicken Sie dann auf **OK**. Diese Anmeldeinformationen werden Sie in späteren Schritten verwenden.
 4. Klicken Sie auf **SKU**, wählen Sie die SQL-SKU aus, die Sie für den SQL-Hostserver erstellt haben, und klicken Sie auf **OK**.
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 
 ### <a name="create-a-dnn-app"></a>Erstellen einer DNN-App    
 
@@ -79,7 +80,7 @@ Da Sie den App Service-Ressourcenanbieter nun bereitgestellt und ein Angebot ers
 3. Klicken Sie auf **Erforderliche Einstellungen konfigurieren** > **Neu erstellen**, und geben Sie einen Namen für den **App Service-Plan** ein.
 4. Klicken Sie auf **Tarif** > **F1 Free** > **Auswählen** > **OK**.
 5. Klicken Sie auf **Datenbank**, und geben Sie die Informationen für die SQL-Datenbank ein, die Sie zuvor erstellt haben.
-6. Klicken Sie auf **Erstellen**.
+6. Klicken Sie auf **Create**.
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 

@@ -4,7 +4,7 @@ description: "Enthält bewährte Methoden zum Auswählen des richtigen Preismode
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/17/2017
 ms.author: jroth
-ms.openlocfilehash: fa1611944d266001a54c4d78205c942a5226d97b
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: fe04aa382a3e829b201dbe92442f841fb29fff15
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Preisinformationen für virtuelle Azure-Computer mit SQL Server
 
@@ -91,7 +91,7 @@ Die Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“ empfiehlt s
 
 Um BYOL mit einem virtuellen SQL Server-Computer zu verwenden, müssen Sie über eine Lizenz für SQL Server Standard oder Enterprise sowie über [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1) verfügen. Software Assurance ist in einigen Programmen zur [Volumenlizenzierung](https://www.microsoft.com/en-us/download/details.aspx?id=10585) erforderlich und in anderen Programmen optional.  Die Preisstufen, die in den verschiedenen Volumenlizenzprogrammen angeboten werden, unterscheiden sich je nach Art der Vereinbarung sowie nach Umfang und Nutzungsdauer von SQL Server. Generell bietet das BYOL-Modell für kontinuierliche Arbeitsauslastungen in der Produktion folgende Vorteile:
 
-| BYOL-Vorteil | Beschreibung |
+| BYOL-Vorteil | BESCHREIBUNG |
 |-----|-----|
 | **Kostenersparnis** | Die Nutzung eigener SQL Server-Lizenzen ist kostengünstiger als die nutzungsbasierte Bezahlung, wenn eine Arbeitsauslastung SQL Server Standard oder Enterprise *länger als 10 Monate* kontinuierlich ausführt. |
 | **Langfristige Einsparungen** | Im Durchschnitt ist es in den ersten drei Jahren *pro Jahr um 30%* günstiger, eine SQL Server-Lizenz zu erwerben oder zu verlängern. Nach drei Jahren müssen Sie die Lizenz nicht mehr verlängern, sondern zahlen nur noch für Software Assurance. Ab diesem Punkt ist BYOL *200% günstiger*. |

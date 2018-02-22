@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 3a673d2ad58f85f5437c378a1d05aa4963893df1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 315a879368e522cc17eeff7be766f0c8a38d470b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Spark-Anwendungen über ein VPN
 
@@ -60,7 +60,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 2. Wählen Sie in der Ambari-Benutzeroberfläche die Option **Hosts** aus.
 
     ![Auswählen von „Hosts“ in Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-hosts.png)
-3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn** *. Wählen Sie den ersten Hauptknoten aus.
+3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn***. Wählen Sie den ersten Hauptknoten aus.
 
     ![Suchen nach dem Hauptknoten in Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/cluster-headnodes.png)
 4. Kopieren Sie unten auf der angezeigten Seite im Bereich **Summary** (Zusammenfassung) die **IP-Adresse** des Hauptknotens und den **Hostnamen**.
@@ -160,7 +160,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
                  <name>net.topology.script.file.name</name>
                  <value>/etc/hadoop/conf/topology_script.py</value>
            </property>
-   c. Speichern Sie die Datei.
+   c. Speichern Sie die Datei .
 7. Fügen Sie die Hauptklasse für Ihre Anwendung hinzu. Klicken Sie im **Projekt-Explorer** (Projekt-Explorer) mit der rechten Maustaste auf **src**, zeigen Sie auf **New** (Neu), und wählen Sie dann **Scala Class** (Scala-Klasse) aus.
 
     ![Auswählen der Hauptklasse](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
@@ -275,7 +275,6 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 * [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
 * [Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark-Streaming: Erstellen von Echtzeitstreaminganwendungen mithilfe von Spark in HDInsight](apache-spark-eventhub-streaming.md)
 * [Websiteprotokollanalyse mithilfe von Spark in HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen

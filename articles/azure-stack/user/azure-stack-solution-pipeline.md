@@ -3,8 +3,8 @@ title: Bereitstellen Ihrer App in Azure und Azure Stack | Microsoft-Dokumentatio
 description: Erfahren Sie mehr zum Bereitstellen von Apps in Azure und Azure Stack mit einer hybriden CI/CD-Pipeline.
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
-ms.author: helaw
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: 83bb401d5d65cd2c34015a1a14673363aeee81d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c073376db196b7d6c73c38d6a0a7b2c24949528
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-apps-to-azure-and-azure-stack"></a>Bereitstellen von Apps in Azure und Azure Stack
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Eine hybride Pipeline für [Continuous Integration](https://www.visualstudio.com/learn/what-is-continuous-integration/)/[Continuous Delivery](https://www.visualstudio.com/learn/what-is-continuous-delivery/)(CI/CD) ermöglicht Ihnen das Erstellen, Testen und Bereitstellen Ihrer App in mehreren Clouds.  In diesem Tutorial erstellen Sie eine Beispielumgebung, um zu erfahren, wie eine hybride CI/CD-Pipeline Sie bei Folgendem unterstützen kann:
  
@@ -115,13 +116,13 @@ Da Sie nun eine leere Releasedefinition erstellt und diese mit dem Build verknü
     | ----- | ----- |
     |Authentifizierungsmethode| Anmeldeinformationen eingeben|
     |Server-URL | FTP-URL der Web-App, die vom Azure-Portal abgerufen wurde |
-    |Benutzername | Benutzername, den Sie beim Erstellen der FTP-Anmeldeinformationen für die Web-App konfiguriert haben |
-    |Kennwort | Kennwort, das Sie beim Erstellen der FTP-Anmeldeinformationen für die Web-App erstellt haben|
+    |Username | Benutzername, den Sie beim Erstellen der FTP-Anmeldeinformationen für die Web-App konfiguriert haben |
+    |Password | Kennwort, das Sie beim Erstellen der FTP-Anmeldeinformationen für die Web-App erstellt haben|
     |Quellverzeichnis | $(System.DefaultWorkingDirectory)\**\ |
     |Remoteverzeichnis | /site/wwwroot/ |
     |Beibehalten von Dateipfaden | Aktiviert (aktiviert)|
 
-4.  Klicken Sie unten auf der Seite auf **Speichern**
+4.  Klicken Sie unten auf der Seite auf **Speichern**.
 
 Abschließend konfigurieren Sie mithilfe der folgenden Schritte die Releasedefinition, um den Agent-Pool zu verwenden, der den bereitgestellten Agent enthält:
 1.  Wählen Sie die Releasedefinition aus, und klicken Sie auf **Bearbeiten**.
@@ -159,13 +160,13 @@ Da Sie ein Release erstellt haben, können Sie nun die Schritte konfigurieren, d
     | -----     | ----- |
     |Authentifizierungsmethode| Anmeldeinformationen eingeben|
     |Server-URL | FTP-URL der Web-App, die vom Azure Stack-Portal abgerufen wurde |
-    |Benutzername | Benutzername, den Sie beim Erstellen der FTP-Anmeldeinformationen für die Web-App konfiguriert haben |
-    |Kennwort | Kennwort, das Sie beim Erstellen der FTP-Anmeldeinformationen für die Web-App erstellt haben|
+    |Username | Benutzername, den Sie beim Erstellen der FTP-Anmeldeinformationen für die Web-App konfiguriert haben |
+    |Password | Kennwort, das Sie beim Erstellen der FTP-Anmeldeinformationen für die Web-App erstellt haben|
     |Quellverzeichnis | $(System.DefaultWorkingDirectory)\**\ |
     |Remoteverzeichnis | /site/wwwroot/|
     |Beibehalten von Dateipfaden | Aktiviert (aktiviert)|
 
-2.  Klicken Sie unten auf der Seite auf **Speichern**
+2.  Klicken Sie unten auf der Seite auf **Speichern**.
 
 Konfigurieren Sie abschließend mithilfe der folgenden Schritte die Releasedefinition, um den Agent-Pool zu verwenden, der den bereitgestellten Agent enthält:
 1.  Wählen Sie die Releasedefinition aus, und klicken Sie auf **Bearbeiten**.

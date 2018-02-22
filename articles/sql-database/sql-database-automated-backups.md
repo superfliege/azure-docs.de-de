@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Active
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 25fa8d03a206452c17e5d4ad38211203aeb5dd65
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 57132367faaa4c4869f2415f32897562c8056fb1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Informationen zu automatischen Sicherungen von SQL-Datenbank
 
@@ -41,9 +41,6 @@ Sie können diese Sicherungen für Folgendes verwenden:
 > [!NOTE]
 > In Azure Storage bezieht sich der Begriff *Replikation* auf das Kopieren von Dateien von einem Speicherort zum anderen. Die *Datenbankreplikation* der SQL bezieht sich auf das Beibehalten von mehreren sekundären Datenbanken, die mit einer primären Datenbank synchronisiert werden. 
 > 
-
-## <a name="how-much-backup-storage-is-included-at-no-cost"></a>Wie viel Sicherungsspeicher ist kostenlos enthalten?
-SQL-Datenbank stellt bis zu 200 Prozent Ihres maximal bereitgestellten Datenbankspeichers ohne zusätzliche Kosten als Sicherungsspeicher zur Verfügung. Wenn Sie beispielsweise über eine Standard-Datenbankinstanz mit einer bereitgestellten Größe von 250 GB verfügen, können Sie ohne zusätzliche Kosten 500 GB Sicherungsspeicher nutzen. 
 
 ## <a name="how-often-do-backups-happen"></a>Wie oft erfolgen Sicherungen?
 Vollständige Datenbanksicherungen werden wöchentlich, differenzielle Datenbanksicherungen im Allgemeinen alle paar Stunden und Transaktionsprotokollsicherungen alle 5-10 Minuten ausgeführt. Die erste vollständige Sicherung wird unmittelbar nach der Datenbankerstellung geplant. Sie wird normalerweise innerhalb von 30 Minuten abgeschlossen, aber der Vorgang kann auch länger dauern, wenn es sich um eine sehr große Datenbank handelt. Die erste Sicherung kann bei einer wiederhergestellten Datenbank oder einer Datenbankkopie beispielsweise länger dauern. Nach der ersten vollständigen Sicherung werden alle weiteren Sicherungen automatisch geplant und im Hintergrund verwaltet. Die genaue Zeitplanung für alle Datenbanksicherungen wird vom SQL-Datenbank-Dienst je nach der gesamten Systemworkload bestimmt. 

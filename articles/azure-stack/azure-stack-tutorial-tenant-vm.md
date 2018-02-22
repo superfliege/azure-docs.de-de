@@ -3,8 +3,8 @@ title: "Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer
 description: "Enthält ein Tutorial zum Verfügbarmachen von virtuellen Computern in Azure Stack."
 services: azure-stack
 documentationcenter: 
-author: vhorne
-manager: 
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/23/2017
-ms.author: victorh
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: f6fce4a3230c98295afb19e633bf2801c115831f
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: d169a18df8916cfb8dd30b00248099a3d374aacc
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Als Azure Stack-Cloudadministrator können Sie Angebote erstellen, die von Ihren Benutzern (ggf. auch als Mandanten bezeichnet) abonniert werden können. Mit ihrem Abonnement können Benutzer dann Azure Stack-Dienste nutzen.
 

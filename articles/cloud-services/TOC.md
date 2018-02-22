@@ -20,13 +20,10 @@
 #### [Blob Storage und verbundene Dienste](../visual-studio/vs-storage-cloud-services-getting-started-blobs.md)
 #### [Queue Storage und verbundene Dienste](../visual-studio/vs-storage-cloud-services-getting-started-queues.md)
 #### [Table Storage und verbundene Dienste](../visual-studio/vs-storage-cloud-services-getting-started-tables.md)
-### Konfigurieren von Paketen für fortlaufende Builds
-#### [TFS und Team Build](cloud-services-dotnet-continuous-delivery.md)
 ### [Konfigurieren von Datenverkehrsregeln für eine Rolle](cloud-services-enable-communication-role-instances.md)
 ### [Behandeln von Cloud Services-Lebenszyklusereignissen](cloud-services-role-lifecycle-dotnet.md)
 ### [Socket.io (Node.js)](cloud-services-nodejs-chat-app-socketio.md)
 ### [Tätigen eines Telefonanrufs über Twilio (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
-### [New Relic](../store-new-relic-cloud-services-dotnet-application-performance-management.md)
 
 ### Konfigurieren von Starttasks
 #### [Erstellen von Starttasks](cloud-services-startup-tasks.md)
@@ -73,11 +70,9 @@
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
 ### [Speichern und Anzeigen von Diagnosedaten in Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 ### [Verfolgen eines Clouddiensts mit der Diagnose](cloud-services-dotnet-diagnostics-trace-flow.md)
-### [Senden von Diagnosedaten an Application Insights](cloud-services-dotnet-diagnostics-applicationinsights.md)
 
 ## Problembehandlung
 ### Debuggen 
-#### [Remotedebuggen mit Continuous Delivery aktivieren](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md)
 #### [Optionen für einen Clouddienst](../vs-azure-tools-debugging-cloud-services-overview.md)
 #### [Lokaler Clouddienst mit Visual Studio](../vs-azure-tools-debug-cloud-services-virtual-machines.md)
 #### [Veröffentlichter Clouddienst mit Visual Studio](../vs-azure-tools-intellitrace-debug-published-cloud-services.md)

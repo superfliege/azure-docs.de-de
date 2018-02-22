@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 6caff3237e9694a00fc0847d5612b7a6e08d4b69
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f7d51352aa8411e36f4224804c90c2554d4ef9e6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools
 
@@ -46,7 +46,7 @@ Durch das Verbinden von NSG-Datenflussprotokollen mit dem Elastic Stack können 
 1. Elastic Stack ab Version 5.0 erfordert Java 8. Führen Sie den Befehl `java -version` aus, um Ihre Version zu überprüfen. Wenn Java nicht installiert ist, sehen Sie in der Dokumentation auf der [Oracle-Website](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) nach.
 1. Laden Sie das richtige Binärpaket für Ihr System herunter:
 
-    ```
+    ```bash
     curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
     sudo dpkg -i elasticsearch-5.2.0.deb
     sudo /etc/init.d/elasticsearch start
@@ -56,13 +56,13 @@ Durch das Verbinden von NSG-Datenflussprotokollen mit dem Elastic Stack können 
 
 1. Sie überprüfen die Ausführung von Elasticsearch mit dem Befehl:
 
-    ```
+    ```bash
     curl http://127.0.0.1:9200
     ```
 
     Daraufhin sollte eine Antwort angezeigt werden, die etwa wie folgt aussieht:
 
-    ```
+    ```json
     {
     "name" : "Angela Del Toro",
     "cluster_name" : "elasticsearch",
@@ -83,13 +83,13 @@ Weitere Anweisungen zum Installieren von Elasticsearch finden Sie auf der Seite 
 
 1. Führen Sie die folgenden Befehle zum Installieren von Logstash aus:
 
-    ```
+    ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
 1. Im nächsten Schritt muss Logstash für den Zugriff auf die und die Analyse der Flowprotokolle konfiguriert werden. Erstellen Sie die Datei „logstash.conf“ wie folgt:
 
-    ```
+    ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
@@ -162,13 +162,13 @@ Weitere Anweisungen zum Installieren von Logstash finden Sie in der [offiziellen
 
 Mit diesem Logstash-Plug-In können Sie direkt auf die Flowprotokolle im jeweiligen Speicherkonto zugreifen. Sie installieren dieses Plug-In, indem Sie über das Logstash-Standardinstallationsverzeichnis (in diesem Fall „/usr/share/logstash/bin“) den folgenden Befehl ausführen:
 
-```
+```bash
 logstash-plugin install logstash-input-azureblob
 ```
 
 Führen Sie zum Starten von Logstash folgenden Befehl aus:
 
-```
+```bash
 sudo /etc/init.d/logstash start
 ```
 
@@ -178,14 +178,14 @@ Weitere Informationen zu diesem Plug-In finden Sie in [dieser Dokumentation](htt
 
 1. Führen Sie die folgenden Befehle zum Installieren von Kibana aus:
 
-  ```
+  ```bash
   curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
   tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
   ```
 
 1. Verwenden Sie zum Ausführen von Kibana diese Befehle:
 
-  ```
+  ```bash
   cd kibana-5.2.0-linux-x86_64/
   ./bin/kibana
   ```

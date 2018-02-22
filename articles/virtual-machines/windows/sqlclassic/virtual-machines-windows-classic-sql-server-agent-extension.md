@@ -4,7 +4,7 @@ description: "In diesem Thema wird die Verwaltung der SQL Server-Agent-Erweiteru
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: a9bda2e7-cdba-427c-bc30-77cde4376f3a
@@ -16,15 +16,15 @@ ms.workload: iaas-sql-server
 ms.date: 07/05/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30fa9128cd51a7498449c991b58500ad9acdd3d4
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f48adec11096cfcf7a51aedd316a7b7d3f047568
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Automatisieren von Verwaltungsaufgaben auf Azure Virtual Machines mit der SQL Server-Agent-Erweiterung (klassisch)
 > [!div class="op_single_selector"]
-> * [Ressourcen-Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md)
+> * [Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md)
 > * [Klassisch](../classic/sql-server-agent-extension.md)
 > 
 >
@@ -37,7 +37,7 @@ Die Erweiterung für SQL Server-IaaS-Agent (SQLIaaSAgent) wird auf virtuellen Az
 ## <a name="supported-services"></a>Unterstützte Dienste
 Die Erweiterung für SQL Server-IaaS-Agent unterstützt die folgenden Verwaltungsaufgaben:
 
-| Verwaltungsfeature | Beschreibung |
+| Verwaltungsfeature | BESCHREIBUNG |
 | --- | --- |
 | **SQL – Automatisierte Sicherung** |Dieser Dienst automatisiert die Planung von Sicherungen für alle Datenbanken für die Standardinstanz von SQL Server auf dem virtuellen Computer. Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (klassisch)](../classic/sql-automated-backup.md). |
 | **SQL – Automatisiertes Patchen** |Mit diesem Dienst können Sie ein Wartungsfenster konfigurieren, in dem Updates für die VM ausgeführt werden. Auf diese Weise werden Updates für Ihre Workload während der Spitzenzeiten vermieden. Weitere Informationen finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (klassisch)](../classic/sql-automated-patching.md). |

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: v-craic
-ms.openlocfilehash: c1f83097fe4e5da3a46f693d37b001dbb6831527
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 7a0a86f658ac19bfb197c7e233b8717bf9fba40b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Anfügen oder Trennen eines Datenträgers an einen oder von einem virtuellen Computer in Azure DevTest Labs
 [Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) verwaltet die Speicherkonten, die VM-Datenträgern zugeordnet sind. Ein Benutzer muss lediglich einen neuen Datenträger an eine VM anfügen sowie Typ und Größe, die er benötigt, angeben – der Datenträger wird dann automatisch von Azure erstellt und verwaltet. Anschließend kann der Datenträger von der VM getrennt und später wieder an dieselbe VM oder an eine andere VM, die diesem Benutzer gehört, angefügt werden.
@@ -35,7 +35,7 @@ Bevor Sie einen Datenträger an eine VM anfügen, lesen Sie diese Tipps:
 Führen Sie die folgenden Schritte durch, um einen neuen verwalteten Datenträger zu erstellen und an eine VM in Azure DevTest Labs anzufügen:
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
-1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
+1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus. 
 1. Wählen Sie in der Liste **Meine virtuellen Computer** eine gegenwärtig ausgeführte VM aus.
 1. Klicken Sie im Menü auf der linken Seite auf **Datenträger**.

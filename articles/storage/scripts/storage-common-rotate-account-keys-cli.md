@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: c8c99dd8663eab5b5c1c47d34f110f9dceaace6b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 52531d227c61cddabb7e8471f536e6d5786e95a3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Erstellen eines Speicherkontos und Rotieren der Zugriffsschlüssel für das Konto
 
@@ -45,12 +45,12 @@ az group delete --name myResourceGroup
 
 In diesem Skript werden die folgenden Befehle verwendet, um das Speicherkonto zu erstellen und die Zugriffsschlüssel abzurufen und zu rotieren. Jedes Element in der Tabelle ist mit der Dokumentation des jeweiligen Befehls verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
-| [az group create](/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az storage account create](/cli/azure/storage/account#create) | Erstellt ein Azure Storage-Konto in der angegebenen Ressourcengruppe. |
-| [az storage account keys list](/cli/azure/storage/account/keys#list) | Zeigt die Zugriffsschlüssel für das angegebene Konto an. |
-| [az storage account keys renew](/cli/azure/storage/account/keys#renew) | Generiert den primären oder sekundären Zugriffsschlüssel für das Speicherkonto neu. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Azure Storage-Konto in der angegebenen Ressourcengruppe. |
+| [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) | Zeigt die Zugriffsschlüssel für das angegebene Konto an. |
+| [az storage account keys renew](/cli/azure/storage/account/keys#az_storage_account_keys_renew) | Generiert den primären oder sekundären Zugriffsschlüssel für das Speicherkonto neu. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

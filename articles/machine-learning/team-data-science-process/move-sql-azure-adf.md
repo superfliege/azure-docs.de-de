@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: bradsev
-ms.openlocfilehash: fed2e9af3e9765ce5a2486fe9468d3ca690a0d5d
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 05884fd39db284e268f31987e5ad7a47b9f87ebf
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Verschieben von Daten von einer lokalen SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory
 In diesem Thema wird gezeigt, wie Sie mithilfe von Azure Data Factory (ADF) Daten aus einer lokalen SQL Server-Datenbank über Azure Blob Storage in eine SQL Azure-Datenbank verschieben.
@@ -41,7 +41,7 @@ ADF ermöglicht die Planung und Überwachung von Aufträgen mithilfe einfacher J
 Wir richten eine ADF-Pipeline ein, die zwei Aktivitäten für die Migration von Daten aufweist. Gemeinsam sorgen diese für das tägliche Verschieben von Daten zwischen einer lokalen SQL-Datenbank und einer Azure SQL-Datenbank in der Cloud. Die zwei Aktivitäten sind:
 
 * Kopieren von Daten aus einer lokalen SQL Server-Datenbank in ein Azure Blob Storage-Konto
-* Kopieren von Daten aus dem Azure Blob-Speicherkonto in eine Azure SQL-Datenbank
+* Kopieren von Daten aus dem Azure Blob Storage-Konto in eine Azure SQL-Datenbank-Instanz
 
 > [!NOTE]
 > Die hier gezeigten Schritte wurden dem detaillierteren Tutorial [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md) entnommen und angepasst, das vom ADF-Team bereitgestellt wurde. Verweise auf die entsprechenden Abschnitte dieses Tutorials werden an geeigneten Stellen angegeben.
@@ -100,7 +100,7 @@ Erstellen Sie Tabellen, in denen die Struktur, der Speicherort und die Verfügba
 Die JSON-basierten Definitionen in den Tabellen verwenden die folgenden Namen:
 
 * Der **Tabellenname** in der lokalen SQL Server-Instanz lautet *nyctaxi_data*.
-* the **Containername** im Azure Blob-Speicherkonto lautet *containername*  
+* Der **Containername** im Azure Blob Storage-Konto lautet *containername*  
 
 Für diese ADF-Pipeline sind drei Tabellendefinitionen erforderlich:
 
@@ -178,7 +178,7 @@ Kopieren Sie die JSON-Definition der Tabelle in eine Datei namens *bloboutputtab
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
 
-### <a name="adf-table-azure-sq"></a>SQL Azure-Tabelle
+### <a name="adf-table-azure-sql"></a>SQL Azure-Tabelle
 Die Tabellendefinition für die SQL Azure-Ausgabe finden Sie im Folgenden (dieses Schema ordnet die vom Blob stammenden Daten zu):
 
     {
