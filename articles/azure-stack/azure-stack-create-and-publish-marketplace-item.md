@@ -3,8 +3,8 @@ title: "Erstellen und Veröffentlichen eines Marketplace-Elements in Azure Stack
 description: "Erstellen und veröffentlichen Sie ein Marketplace-Element in Azure Stack."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 77e5f60c-a86e-4d54-aa8d-288e9a889386
 ms.service: azure-stack
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
-ms.author: erikje
-ms.openlocfilehash: 64203ce186665aada98fbe8daed971164a650399
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: jeffgo
+ms.openlocfilehash: 5ac91dac3cb446abaf07492d8b6ec8aa0c120ef4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Erstellen und Veröffentlichen eines Marketplace-Elements
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 ## <a name="create-a-marketplace-item"></a>Erstellen von Marketplace-Elementen
 1. Laden Sie das [Paketerstellungstool des Azure-Katalogs](http://www.aka.ms/azurestackmarketplaceitem) und das Azure Stack Marketplace-Beispielelement herunter.
@@ -72,12 +73,12 @@ ms.lasthandoff: 10/11/2017
 ## <a name="publish-a-marketplace-item"></a>Veröffentlichen von Marketplace-Elementen
 1. Verwenden Sie PowerShell oder Azure Storage-Explorer, um Ihr Marketplace-Element (.azpkg) in Azure Blob Storage hochzuladen. Sie können es in Azure Stack-Speicher oder Azure Storage hochladen. (Es handelt sich um einen temporären Speicherort für das Paket.) Stellen Sie sicher, dass das Blob öffentlich zugänglich ist.
 2. Stellen Sie auf dem virtuellen Clientcomputer in der Microsoft Azure Stack-Umgebung sicher, dass Ihre PowerShell-Sitzung mit Ihren Dienstadministrator-Anmeldeinformationen eingerichtet ist. Eine Anleitung zum Authentifizieren von PowerShell in Azure Stack finden Sie unter [Deploy templates in Azure Stack using PowerShell](user/azure-stack-deploy-template-powershell.md) (Bereitstellen von Vorlagen in Azure Stack mit PowerShell).
-3. Verwenden Sie das PowerShell-Cmdlet **Add-AzureRMGalleryItem**, um das Marketplace-Element in Azure Stack zu veröffentlichen. Beispiel:
+3. Verwenden Sie das PowerShell-Cmdlet **Add-AzureRMGalleryItem**, um das Marketplace-Element in Azure Stack zu veröffentlichen. Beispiel: 
    
        Add-AzureRMGalleryItem -GalleryItemUri `
        https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
    
-   | Parameter | Beschreibung |
+   | Parameter | BESCHREIBUNG |
    | --- | --- |
    | SubscriptionID |Azure-Abonnement-ID. Sie kann mithilfe von PowerShell abgerufen werden. Wenn Sie sie lieber im Portal abrufen möchten, navigieren Sie zum Anbieterabonnement, und kopieren Sie die Abonnement-ID. |
    | GalleryItemUri |Blob-URI für das Katalogpaket, das bereits in den Speicher hochgeladen wurde |
@@ -100,26 +101,26 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="reference-marketplace-item-manifestjson"></a>Referenz: Datei „manifest.json“ für Marketplace-Elemente
 ### <a name="identity-information"></a>Identitätsinformationen
-| Name | Erforderlich | Typ | Einschränkungen | Beschreibung |
+| NAME | Erforderlich | Typ | Einschränkungen | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| Name |X |String |[A-Za-z0-9]+ | |
-| Herausgeber |X |String |[A-Za-z0-9]+ | |
-| Version |X |String |[SemVer, v2](http://semver.org/) | |
+| NAME |X |Zeichenfolge |[A-Za-z0-9]+ | |
+| Herausgeber |X |Zeichenfolge |[A-Za-z0-9]+ | |
+| Version |X |Zeichenfolge |[SemVer, v2](http://semver.org/) | |
 
 ### <a name="metadata"></a>Metadaten
-| Name | Erforderlich | Typ | Einschränkungen | Beschreibung |
+| NAME | Erforderlich | Typ | Einschränkungen | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| displayName |X |String |Empfehlung: 80 Zeichen |Im Portal wird der Elementname unter Umständen nicht richtig angezeigt, wenn er länger als 80 Zeichen ist. |
-| PublisherDisplayName |X |String |Empfehlung: 30 Zeichen |Im Portal wird der Herausgebername unter Umständen nicht richtig angezeigt, wenn er länger als 30 Zeichen ist. |
-| PublisherLegalName |X |String |Maximal 256 Zeichen | |
-| Zusammenfassung |X |String |60–100 Zeichen | |
-| LongSummary |X |String |140–256 Zeichen |Noch nicht für Azure Stack gültig |
-| Beschreibung |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 bis 5.000 Zeichen | |
+| DisplayName |X |Zeichenfolge |Empfehlung: 80 Zeichen |Im Portal wird der Elementname unter Umständen nicht richtig angezeigt, wenn er länger als 80 Zeichen ist. |
+| PublisherDisplayName |X |Zeichenfolge |Empfehlung: 30 Zeichen |Im Portal wird der Herausgebername unter Umständen nicht richtig angezeigt, wenn er länger als 30 Zeichen ist. |
+| PublisherLegalName |X |Zeichenfolge |Maximal 256 Zeichen | |
+| Zusammenfassung |X |Zeichenfolge |60–100 Zeichen | |
+| LongSummary |X |Zeichenfolge |140–256 Zeichen |Noch nicht für Azure Stack gültig |
+| BESCHREIBUNG |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 bis 5.000 Zeichen | |
 
 ### <a name="images"></a>Bilder
 Marketplace verwendet die folgenden Symbole:
 
-| Name | Breite | Höhe | Hinweise |
+| NAME | Breite | Höhe | Notizen |
 | --- | --- | --- | --- |
 | Breite |255 px |115 px |Immer erforderlich |
 | Groß |115 px |115 px |Immer erforderlich |
@@ -133,18 +134,18 @@ Jedes Marketplace-Element muss mit einer Kategorie gekennzeichnet werden, die di
 ### <a name="links"></a>Links
 Jedes Marketplace-Element kann verschiedene Links zu zusätzlichen Inhalten enthalten. Die Links werden als eine Liste der Namen und URIs angegeben.
 
-| Name | Erforderlich | Typ | Einschränkungen | Beschreibung |
+| NAME | Erforderlich | Typ | Einschränkungen | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| displayName |X |String |Maximal 64 Zeichen | |
+| DisplayName |X |Zeichenfolge |Maximal 64 Zeichen | |
 | Uri |X |URI | | |
 
 ### <a name="additional-properties"></a>Zusätzliche Eigenschaften
 Zusätzlich zu den oben genannten Metadaten können Marketplace-Autoren benutzerdefinierte Schlüssel-Wert-Paare mit Daten in der folgenden Form angeben.
 
-| Name | Erforderlich | Typ | Einschränkungen | Beschreibung |
+| NAME | Erforderlich | Typ | Einschränkungen | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| displayName |X |String |Maximal 25 Zeichen | |
-| Wert |X |String |Maximal 30 Zeichen | |
+| DisplayName |X |Zeichenfolge |Maximal 25 Zeichen | |
+| Wert |X |Zeichenfolge |Maximal 30 Zeichen | |
 
 ### <a name="html-sanitization"></a>HTML-Bereinigung
 Für jedes Feld, das HTML zulässt, sind die folgenden Elemente und Attribute zulässig:

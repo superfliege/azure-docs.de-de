@@ -5,15 +5,15 @@ services: backup
 keywords: Sicherung virtueller Computer; virtuelle Computer sichern; VM-Sicherung; VM sichern; Azure-VM sichern; Sicherung und Notfallwiederherstellung
 author: markgalioto
 ms.author: markgal
-ms.date: 09/16/2017
+ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 74ccf95b559b690eb53c2f4df14513dab5a94677
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: f1cfa72d0fb3c83ef6265649b740dec317f0e4b2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
@@ -33,7 +33,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 Der Recovery Services-Tresor enthält die Sicherungsdaten, und Sicherungsrichtlinie, die auf die geschützten virtuellen Computer angewendet wird. Das Sichern virtueller Computer ist ein örtlich gebundener Vorgang. Es ist nicht möglich, einen virtuellen Computer eines Standorts in einem Recovery Services-Tresor an einem anderen Standort zu sichern. An jedem Azure-Standort, der über zu sichernde virtuelle Computer verfügt, muss also mindestens ein Recovery Services-Tresor vorhanden sein.
 
-1. Wählen Sie im linken Menü **Weitere Dienste** aus, und geben Sie in der Dienstliste *Recovery Services* ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Wenn in der Liste die Option „Recovery Services-Tresore“ angezeigt wird, wählen Sie sie aus, um das Menü „Recovery Services-Tresore“ zu öffnen.
+1. Wählen Sie im linken Menü **Alle Dienste** aus, und geben Sie in der Dienstliste *Recovery Services* ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Wenn in der Liste die Option „Recovery Services-Tresore“ angezeigt wird, wählen Sie sie aus, um das Menü „Recovery Services-Tresore“ zu öffnen.
 
     ![Öffnen des Menüs „Recovery Services-Tresor“](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
 
@@ -162,7 +162,7 @@ Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die i
  
 7. Nachdem das Sicherungselement überprüft wurde (ein Häkchen wird angezeigt), wird die Schaltfläche **Sicherung beenden** aktiviert. Klicken Sie auf **Sicherung beenden**, um die Richtlinie zu beenden und die Wiederherstellungspunkte zu löschen. 
 
-    ![Klicken Sie auf „Sicherung beenden“, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png).
+    ![Klicken Sie auf „Sicherung beenden“, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)zu erstellen und zu verwalten.
 
 8. Klicken Sie im Menü von **myRecoveryServicesVault** auf **Löschen**.
 

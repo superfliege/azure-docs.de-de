@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/09/2017
+ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 58fc58049e346d60c0882a91bd04485746a15cbd
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6b5a8c81b1e3e45c85ea84a46054b6a38a886c5b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>host.json-Referenz für Azure Functions
 
@@ -115,7 +115,7 @@ Gibt an, wie viele Funktionsaufrufe aggregiert werden, wenn [Metriken für Appli
 }
 ```
 
-|Eigenschaft  |Standard | BESCHREIBUNG |
+|Eigenschaft |Standard  | BESCHREIBUNG |
 |---------|---------|---------| 
 |batchSize|1000|Maximale Anzahl der zu aggregierenden Anforderungen.| 
 |flushTimeout|00:00:30|Maximal zu aggregierender Zeitraum.| 
@@ -237,25 +237,7 @@ Steuerelemente, die nach Protokollen filtern, die von einem [ILogger-Objekt](fun
 
 Konfigurationseinstellungen für [Trigger und Bindungen der Speicherwarteschlange](functions-bindings-storage-queue.md).
 
-```json
-{
-    "queues": {
-      "maxPollingInterval": 2000,
-      "visibilityTimeout" : "00:00:30",
-      "batchSize": 16,
-      "maxDequeueCount": 5,
-      "newBatchThreshold": 8
-    }
-}
-```
-
-|Eigenschaft  |Standard | BESCHREIBUNG |
-|---------|---------|---------| 
-|maxPollingInterval|60000|Das maximale Intervall in Millisekunden zwischen Warteschlangenumfragen.| 
-|visibilityTimeout|0|Das Zeitintervall zwischen Wiederholungsversuchen, wenn bei der Verarbeitung einer Nachricht ein Fehler auftritt.| 
-|batchSize|16|Die Anzahl der Warteschlangennachrichten, die parallel abgerufen und verarbeitet werden. Der maximale Wert beträgt 32.| 
-|maxDequeueCount|5|Die Anzahl der Versuche zum Verarbeiten einer Nachricht, bevor diese in die Warteschlange für nicht verarbeitete Nachrichten verschoben wird.| 
-|newBatchThreshold|batchSize/2|Der Schwellenwert, ab dem ein neuer Nachrichtenbatch abgerufen wird.| 
+[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -268,6 +250,7 @@ Konfigurationseinstellung für [Service Bus-Trigger und -Bindungen](functions-bi
 Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informationen finden Sie unter [GitHub-Problem zur Singleton-Unterstützung](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
 ```json
+{
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",

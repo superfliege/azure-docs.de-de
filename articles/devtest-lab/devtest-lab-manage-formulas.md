@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3dcd285761774c3cd1050976894f1f15db61b52c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 330f6ae246697d54c6bce0690346652b5f2e2dd0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Verwalten von Azure DevTest Labs-Formeln
 
@@ -40,7 +40,7 @@ In den folgenden Schritten wird beschrieben, wie Sie eine Formel auf der Basis e
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 
-2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
+2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 
@@ -87,7 +87,7 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 > 
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
-2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
+2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf dem Blatt **Übersicht** des Labs den virtuellen Computer aus, aus dem Sie die Formel erstellen möchten.
    
@@ -104,7 +104,7 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
-2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
+2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf dem Blatt für das Lab die Option **Formulas (reusable bases)**(Formeln (wiederverwendbare Basis)) aus.
    
@@ -116,7 +116,7 @@ Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
-2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
+2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf dem Blatt **Einstellungen** für das Lab **Formeln**.
    

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: v-craic
-ms.openlocfilehash: 55a6c5cd5a0544b297bb68841c5ff0314f48dcc9
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: b4582dd03ceb1c2104f6e93c55a65e5a2b968c0a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -65,7 +65,7 @@ Zum Organisieren von Azure Resource Manager-Vorlagen in einem Repository sind fo
 Mit den folgenden Schritten können Sie Ihrem Lab über das Azure-Portal ein Repository hinzufügen: 
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
-1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
+1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.   
 1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.
 
@@ -92,10 +92,10 @@ Im nächsten Abschnitt erfahren Sie, wie Sie Umgebungen auf der Grundlage einer 
 
 ## <a name="create-an-environment-from-a-resource-manager-template-using-the-azure-portal"></a>Erstellen einer Umgebung auf der Grundlage einer Azure Resource Manager-Vorlage im Azure-Portal
 
-Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde, können Ihre Lab-Benutzer mit folgenden Schritten eine Umgebung über das Azure-Portal erstellen:
+Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde, können Ihre Labbenutzer mit folgenden Schritten eine Umgebung über das Azure-Portal erstellen:
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
-1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
+1. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.   
 1. Wählen Sie die Bereich des Labs die Option **Hinzufügen+** aus.
 1. Im Bereich **Basis auswählen** werden die Basisimages, die Sie mit Ihren Azure Resource Manager-Vorlagen verwenden können, zuerst aufgeführt. Wählen Sie die gewünschte Azure Resource Manager-Vorlage aus.
@@ -169,7 +169,7 @@ Führen Sie diese Schritte aus, um Ihren Lab-Benutzern das Zugriffsrecht „Mitw
 
     ![Konfigurieren von Zugriffsrechten für Lab-Benutzer](./media/devtest-lab-create-environment-from-arm/configure-access-rights.png)
 
-1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern**aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nach der Erstellung des virtuellen Computers können Sie im Verwaltungsbereich des virtuellen Computers die Option **Verbinden** auswählen, um eine Verbindung mit dem virtuellen Computer herzustellen.
