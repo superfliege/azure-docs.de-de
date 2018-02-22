@@ -220,7 +220,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-Sobald Sie mit den Änderungen fertig sind, **starten** Sie die Anwendung, sodass diese erstellt und die aktuelle Version bereitgestellt wird. Sobald die Anwendung bereitgestellt ist, navigieren Sie zu [localhost:8080](localhost:8080), und fügen Sie einige Abstimmungsoptionen hinzu oder löschen Sie vorhandene. Wechseln Sie dann zu Ihrer Application Insights-Ressource zurück, um die Ablaufverfolgung der letzten Ausführung anzuzeigen (wie zuvor kann es 1–2 Minuten dauern, bis diese in Application Insights angezeigt wird). Für alle Stimmen, die Sie hinzugefügt und gelöscht haben, sollte nun „Benutzerdefiniertes Ereignis“ zusammen mit der Antworttelemetrie angezeigt werden. 
+Sobald Sie mit den Änderungen fertig sind, **starten** Sie die Anwendung, sodass diese erstellt und die aktuelle Version bereitgestellt wird. Sobald die Anwendung bereitgestellt ist, navigieren Sie zu [localhost:8080](localhost:8080), und fügen Sie einige Abstimmungsoptionen hinzu oder löschen Sie vorhandene. Wechseln Sie dann zu Ihrer Application Insights-Ressource zurück, um die Ablaufverfolgung der letzten Ausführung anzuzeigen (wie zuvor kann es 1–2 Minuten dauern, bis diese in Application Insights angezeigt wird). Für alle Stimmen, die Sie hinzugefügt und gelöscht haben, sollte nun “Benutzerdefiniertes Ereignis* zusammen mit der Antworttelemetrie angezeigt werden. 
 
 ![Benutzerdefinierte Ereignisse](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 

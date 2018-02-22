@@ -76,7 +76,7 @@ Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung)\*, Wind
 >
 > Bei Linux-Distributionen werden nur die vordefinierten Kernel, die bei Veröffentlichungen/Updates von Nebenversionen der Distribution enthalten sind, unterstützt.
 >
-> Upgrades von Hauptversionen einer Linux-Distribution auf einem mit Azure Site Recovery geschützten virtuellen VMware-Computer oder einem physischen Server werden nicht unterstützt. Deaktivieren Sie während des Upgrades des Betriebssystems von einer Hauptversion auf eine andere (z.B. CentOS 6.* nach CentOS 7.*) die Replikation für den Computer, aktualisieren Sie das Betriebssystem auf dem Computer, und aktivieren Sie dann die Replikation erneut.
+> Upgrades von Hauptversionen einer Linux-Distribution auf einem mit Azure Site Recovery geschützten virtuellen VMware-Computer oder einem physischen Server werden nicht unterstützt. Deaktivieren Sie während des Upgrades des Betriebssystems von einer Hauptversion auf eine andere (z.B. CentOS 6.* nach CentOS 7.\*) die Replikation für den Computer, aktualisieren Sie das Betriebssystem auf dem Computer, und aktivieren Sie dann die Replikation erneut.
 > 
 
 

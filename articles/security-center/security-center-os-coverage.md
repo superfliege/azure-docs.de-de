@@ -43,10 +43,10 @@ Unterstützte Linux-Betriebssysteme:
 
 * Ubuntu-Versionen 12.04, 14.04, 16.04, 16.10
 * Debian-Versionen 7, 8
-* CentOS-Versionen 6.\*, 7.*
-* Red Hat Enterprise Linux-Versionen (RHEL) 6.\*, 7.*
-* SUSE Linux Enterprise Server-Versionen (SLES) 11 SP4+, 12.*
-* Oracle Linux-Versionen 6.\*, 7.*
+* CentOS-Versionen 6.\*, 7.\*
+* Red Hat Enterprise Linux-Versionen (RHEL) 6.\*, 7.\*
+* SUSE Linux Enterprise Server-Versionen (SLES) 11 SP4+, 12.\*
+* Oracle Linux-Versionen 6.\*, 7.\*
 
 > [!NOTE]
 > Verhaltensanalysen für virtuelle Computer sind für Linux-Betriebssysteme noch nicht verfügbar.

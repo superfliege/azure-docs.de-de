@@ -1188,7 +1188,7 @@ Solange das bestehende IOPS-Kontingent pro Datenträger den Anforderungen entspr
 Wenn mehr IOPS erforderlich sind, wird ausdrücklich empfohlen, Windows-Speicherpools (nur verfügbar unter Windows Server 2012 und höher) oder Windows-Striping für Windows 2008 R2 zu verwenden, um ein einzelnes großes, logisches Gerät aus mehreren bereitgestellten Datenträgern zu erstellen (siehe auch Kapitel [Software-RAID][dbms-guide-2.2] dieses Dokuments). Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere bereitgestellte Datenträger verteilt werden.
 
 #### <a name="backup--restore"></a>Sichern und Wiederherstellen
-Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR-Tools für Oracle genauso unterstützt wie auf standardmäßigen Windows Server-Betriebssystemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
+Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR*Tools für Oracle genauso unterstützt wie auf standardmäßigen Windows Server-Betriebssystemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
 
 #### <a name="high-availability"></a>Hochverfügbarkeit
 Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser Dokumentation][virtual-machines-windows-classic-configure-oracle-data-guard].
@@ -1226,7 +1226,7 @@ Solange das bestehende IOPS-Kontingent pro Datenträger den Anforderungen entspr
 Wenn mehr IOPS erforderlich sind, wird dringend empfohlen, LVM (Logical Volume Manager) oder MDADM zu verwenden, um ein großes logisches Volume über mehrere bereitgestellte Datenträger zu erstellen. Weitere Informationen finden Sie in diesem Dokument im Kapitel [Software-RAID][dbms-guide-2.2]. Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere bereitgestellte Datenträger verteilt werden.
 
 #### <a name="backup--restore"></a>Sichern und Wiederherstellen
-Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR-Tools für Oracle genauso unterstützt wie auf Bare-Metal-Systemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
+Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR*Tools für Oracle genauso unterstützt wie auf Bare-Metal-Systemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
 
 #### <a name="high-availability"></a>Hochverfügbarkeit
 Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser Dokumentation][virtual-machines-windows-classic-configure-oracle-data-guard].

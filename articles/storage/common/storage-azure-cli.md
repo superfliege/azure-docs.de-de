@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: tamram
-ms.openlocfilehash: 00b608f36caf51e27a1751560df0ffb1308695c4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 509c702054961c9d9fa525242ce0542059e32d81
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Verwenden der Azure CLI 2.0 mit Azure Storage
 
@@ -196,10 +196,10 @@ az storage account create \
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
-```
 
-### Set default Azure storage account environment variables
-You can have multiple storage accounts in your Azure subscription. To select one of them to use for all subsequent storage commands, you can set these environment variables:
+
+### <a name="set-default-azure-storage-account-environment-variables"></a>Festlegen eines Azure-Standardspeicherkontos in Umgebungsvariablen
+Sie können mehrere Speicherkonten in Ihrem Azure-Abonnement verwenden. Um eines für alle nachfolgenden Speicherbefehle auszuwählen, können Sie diese Umgebungsvariablen festlegen:
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -225,7 +225,7 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 >
 
 ## <a name="create-and-manage-blobs"></a>Erstellen und Verwalten von Blobs
-Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Azure Blob Storage-Konzepten bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](/rest/api/storageservices/blob-service-concepts).
+Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Azure Blob Storage-Konzepten bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](/rest/api/storageservices/blob-service-concepts).
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Mit dem Befehl `az storage container create` können Sie einen Container erstellen:
@@ -243,7 +243,7 @@ Sie können eine der drei Ebenen von Lesezugriff für einen neuen Container fest
 Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../blobs/storage-manage-access-to-resources.md).
 
 ### <a name="upload-a-blob-to-a-container"></a>Hochladen eines Blobs in einen Container
-Azure-Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Laden Sie Blobs mithilfe des Befehls `blob upload` in einen Container hoch:
+Azure Blob Storage unterstützt Block-, Anfüge- und Seitenblobs. Laden Sie Blobs mithilfe des Befehls `blob upload` in einen Container hoch:
 
 ```azurecli
 az storage blob upload \
@@ -252,7 +252,7 @@ az storage blob upload \
     --name <blob_name>
 ```
 
- Standardmäßig lädt der Befehl `blob upload` VHD-Dateien in Seitenblobs oder andernfalls Blockblobs hoch. Um einen anderen Typ anzugeben, wenn Sie ein Blob hochladen, können Sie das Argument `--type` angeben. Uulässige Werte sind `append`, `block` und `page`.
+ Standardmäßig lädt der Befehl `blob upload` *.VHD -Dateien in Seitenblobs oder andernfalls Blockblobs hoch. Um einen anderen Typ anzugeben, wenn Sie ein Blob hochladen, können Sie das Argument `--type` angeben. Uulässige Werte sind `append`, `block` und `page`.
 
  Weitere Informationen zu den verschiedenen Blobtypen finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
 

@@ -65,7 +65,7 @@ Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von 
     * Von einem Systemprozess wurde ein ungewöhnlicher Prozess erstellt.
     * Vom Windows Update-Dienst wurde ein ungewöhnlicher Prozess gestartet.
     * Ein Prozess wurde mit einer ungewöhnlichen Befehlszeile ausgeführt. Dies kann darauf hindeuten, dass ein legitimer Prozess zur Ausführung schädlicher Inhalte gekapert wurde.
-    * Es wurde versucht, über die Befehlszeile alle ausführbaren Dateien (EXE-Dateien) in einem Verzeichnis zu starten.
+    * Es wurde versucht, über die Befehlszeile alle ausführbaren Dateien (*.EXE -Dateien) in einem Verzeichnis zu starten.
     * Ein Prozess wurde vom PsExec-Hilfsprogramm (das zur Remoteausführung von Prozessen verwendet werden kann) ausgeführt.
     * Die übergeordnete ausführbare Datei von Apache Tomcat® (Tomcat#.exe) wurde verwendet, um verdächtige untergeordnete Prozesse zu starten, die zum Hosten oder Starten schädlicher Befehle geeignet sind.
     * Der Programmkompatibilitäts-Assistent (pcalua.exe) von Microsoft Windows wurde verwendet, um potenziell schädlichen ausführbaren Code zu starten.

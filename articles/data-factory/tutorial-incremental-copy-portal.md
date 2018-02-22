@@ -302,7 +302,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 24. Wählen Sie im Pipeline-Designer die Option **Stored Procedure-Aktivität** aus, und ändern Sie den Namen in **StoredProceduretoWriteWatermarkActivity**. 
 
     ![Stored Procedure-Aktivität – Name](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. Wechseln Sie zur Registerkarte **SQL-Konto**, und wählen Sie unter **Verknüpfter Dienst** die Option *AzureSqlDatabaseLinkedService*. 
+25. Wechseln Sie zur Registerkarte **SQL-Konto** und wählen Sie unter **Verknüpfter Dienst** die Option *AzureSqlDatabaseLinkedService** . 
 
     ![Stored Procedure-Aktivität – SQL-Konto](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Wechseln Sie zur Registerkarte **Gespeicherte Prozedur**, und führen Sie die folgenden Schritte aus: 
