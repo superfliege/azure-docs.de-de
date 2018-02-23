@@ -25,10 +25,6 @@
   items:
     - name: Struktur von Azure Policy-Definitionen
       href: policy-definition.md
-- name: Anleitungen
-  items:
-    - name: Erstellen von Richtlinien mit der REST-API
-      href: policy-insights.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
