@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: e1bc0f27b14beef91b4deb68dc625d75195445fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6611bd07ad4c65953349c62cae3ece735fd85e70
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Sichern des privilegierten Zugriffs in Azure AD
 Das Sichern des privilegierten Zugriffs ist ein entscheidender erster Schritt, um die geschäftlichen Ressourcen in einem modernen Unternehmen zu schützen. Mit privilegierten Konten werden IT-Systeme verwaltet. Cyberkriminelle versuchen diese Konten anzugreifen, um Zugriff auf die Daten und Systeme eines Unternehmens zu erhalten. Zum Schutz des privilegierten Zugriffs empfiehlt es sich, Konten und Systeme zu isolieren, um sie vor dem Zugriff durch böswillige Benutzer zu schützen.
@@ -50,7 +50,7 @@ Weitere Informationen finden Sie unter [MFA für Office 365 und MFA für Azure](
 ## <a name="time-bound-privileges"></a>Zeitgebundene Berechtigungen
 Einige Organisationen stellen möglicherweise fest, dass zu viele Benutzer Rollen mit hohen Berechtigungen innehaben. Möglicherweise wurden Benutzer für eine bestimmte Aktivität zu einer Rolle hinzugefügt, beispielsweise zur Anmeldung bei einem Dienst, haben diese Berechtigung später aber nicht mehr häufig verwendet.
 
-Damit die Offenlegungszeit von Berechtigungen gesenkt und die Sichtbarkeit ihrer Verwendung erhöht wird, erteilen Sie Benutzern ihre Berechtigungen nur „just in Time“ (JIT), oder weisen Sie diese Rollen für eine verkürzte Dauer zu und vertrauen darauf, dass die Berechtigungen automatisch widerrufen werden. Für Azure Active Directory, Azure Resources (Preview) und Microsoft Online Services können Sie [Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM)verwenden.
+Damit die Offenlegungszeit von Berechtigungen gesenkt und die Sichtbarkeit ihrer Verwendung erhöht wird, erteilen Sie Benutzern ihre Berechtigungen nur „just in Time“ (JIT), oder weisen Sie diese Rollen für eine verkürzte Dauer zu und vertrauen darauf, dass die Berechtigungen automatisch widerrufen werden. Für Azure Active Directory, Azure Resources (Preview) und Microsoft Online Services können Sie [Azure AD Privileged Identity Management (PIM)](https://aka.ms/AzurePIM)verwenden.
 
 ![PIM-Dashboard][2]
 
@@ -68,7 +68,7 @@ Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory beim Auth
 * Aktivieren von [Azure AD Identity Protection](../active-directory-identityprotection.md)
 * Aktivieren der [Steuerung des bedingten Zugriffs](../active-directory-conditional-access-azure-portal.md)
 
-Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden Sie im Abschnitt „Customer responsibilities and roadmap“ (Zuständigkeiten des Kunden und Kundenroadmap) des Dokuments [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer) (Microsoft-Cloudsicherheit für Unternehmensarchitekten). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zu [Cybersecurity solutions](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)(Cybersicherheitslösungen).
+Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden Sie im Abschnitt „Customer responsibilities and roadmap“ (Zuständigkeiten des Kunden und Kundenroadmap) des Dokuments [Microsoft Cloud Security for Enterprise Architects](https://aka.ms/securecustomer) (Microsoft-Cloudsicherheit für Unternehmensarchitekten). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zu [Cybersecurity solutions](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)(Cybersicherheitslösungen).
 
 <!--Image references-->
 [1]: ../media/active-directory-privileged-identity-management-configure/Search_PIM.png

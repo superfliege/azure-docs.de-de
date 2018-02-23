@@ -53,7 +53,7 @@
         - name: Mobile Apps
           tocHref: /azure/app-service-mobile/
           topicHref: /azure/app-service-mobile/
-    - name: Ratgeber
+    - name: Advisor
       tocHref: /azure/advisor/
       topicHref: /azure/advisor/
     - name: Application Gateway
@@ -101,7 +101,7 @@
     - name: Unterstützungsmöglichkeiten
       tocHref: /azure/azure-supportability/
       topicHref: /azure/azure-supportability/
-    - name: 'Backup '
+    - name: Sicherung
       tocHref: /azure/backup/
       topicHref: /azure/backup/
     - name: Batch
@@ -254,6 +254,9 @@
     - name: Schlüsseltresor
       tocHref: /azure/key-vault/
       topicHref: /azure/key-vault/
+    - name: Location Based Services
+      tocHref: /azure/location-based-services/
+      topicHref: /azure/location-based-services/
     - name: Lastenausgleichsmodul
       tocHref: /azure/load-balancer/
       topicHref: /azure/load-balancer/

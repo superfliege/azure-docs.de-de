@@ -79,6 +79,14 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: Wiederherstellen von Daten von Azure Backup Server
           href: backup-azure-alternate-dpm-server.md
+    - name: Azure-Dateifreigaben
+      items:
+        - name: Sichern von Azure-Dateifreigaben
+          href: backup-azure-files.md
+        - name: Sichern von Azure-Dateifreigaben – häufig gestellte Fragen
+          href: backup-azure-files-faq.md
+        - name: Problembehandlung beim Sichern von Azure-Dateifreigaben
+          href: troubleshoot-azure-files.md
     - name: Virtuelle Azure-Computer
       items:
         - name: Vorbereiten des virtuellen Computers
@@ -183,7 +191,7 @@
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
         - name: Behandeln von Problemen mit Azure Backup Server
           href: backup-azure-mabs-troubleshoot.md
-        - name: Behandeln von Problemen mit System Center Data Protection Manager
+        - name: Behandeln von Problemen in System Center Data Protection Manager
           href: backup-azure-scdpm-troubleshooting.md
         - name: Behandeln von Problemen mit dem Azure Backup-Agent
           href: backup-azure-mars-troubleshoot.md

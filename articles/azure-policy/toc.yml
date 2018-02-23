@@ -13,7 +13,7 @@
       href: assign-policy-definition-ps.md
     - name: Zuweisen einer Richtlinie – Azure CLI
       href: assign-policy-definition-cli.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen und Verwalten einer Azure-Richtlinie
       href: create-manage-policy.md
@@ -25,13 +25,17 @@
   items:
     - name: Struktur von Azure Policy-Definitionen
       href: policy-definition.md
-- name: Referenz
+- name: Anleitungen
+  items:
+    - name: Erstellen von Richtlinien mit der REST-API
+      href: policy-insights.md
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/policy
     - name: Azure PowerShell
       href: '/powershell/module/azurerm.resources/#policies'
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

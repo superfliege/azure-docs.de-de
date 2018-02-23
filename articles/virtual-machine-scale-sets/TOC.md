@@ -30,6 +30,9 @@
 #### [Erweiterte automatische Skalierung](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Anwendungen in Skalierungsgruppen](virtual-machine-scale-sets-deploy-app.md)
 ### [Verwenden von Datenträgern mit Skalierungsgruppen](virtual-machine-scale-sets-attached-disks.md)
+### Verschlüsseln von Datenträgern in Skalierungsgruppen
+#### [Verwenden von PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md)
+#### [Verwenden von Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md)
 ### [Verwenden umfangreicher Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md)
 ### [Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger](virtual-machine-scale-sets-convert-template-to-md.md)
 

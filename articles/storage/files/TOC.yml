@@ -82,7 +82,7 @@
           href: storage-sync-files-server-registration.md
         - name: Hinzufügen eines Azure-Dateisynchronisierungsserver-Endpunkts
           href: storage-sync-files-server-endpoint.md
-        - name: Verwenden des Speicher-Explorers mit Azure File Storage
+        - name: Verwenden des Storage-Explorers mit Azure File Storage
           href: ../../vs-azure-tools-storage-explorer-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure-Automatisierung
           href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -190,14 +190,16 @@
       href: 'https://azure.microsoft.com/updates/?product=storage'
     - name: Videos
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
-    - name: Azure-Speicher-Explorer
+    - name: Azure Storage-Explorer
       items:
-        - name: Speicher-Explorer
+        - name: Storage-Explorer
           href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Versionshinweise für Speicher-Explorer
+        - name: Versionshinweise für den Storage-Explorer
           href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Problembehandlung für Speicher-Explorer
+        - name: Beheben von Problemen mit dem Storage-Explorer
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Barrierefreiheit des Speicher-Explorers
+          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: NuGet-Pakete
       items:
         - name: Azure Storage-Clientbibliothek für .NET

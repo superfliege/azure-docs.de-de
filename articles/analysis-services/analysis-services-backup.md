@@ -12,13 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: f96e72e4decd475e7859eb7f70046a277b718ac8
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 52db3916392c3ff304311717b12a163213197717
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -80,8 +80,8 @@ Bevor Sie eine Sicherung durchführen, müssen Sie die Speichereinstellungen fü
 ### <a name="powershell"></a>PowerShell
 Verwenden Sie das Cmdlet [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet).
 
-## <a name="restore"></a>Wiederherstellen
-Bei der Wiederherstellung muss sich die Sicherungsdatei im Speicherkonto befinden, das Sie für den Server konfiguriert haben. Wenn Sie eine Sicherungsdatei aus einem lokalen Speicherort in Ihr Speicherkonto verschieben müssen, verwenden Sie den [Microsoft Azure-Speicher-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) oder das Befehlszeilenprogramm [AzCopy](../storage/common/storage-use-azcopy.md). 
+## <a name="restore"></a>Restore 
+Bei der Wiederherstellung muss sich die Sicherungsdatei im Speicherkonto befinden, das Sie für den Server konfiguriert haben. Wenn Sie eine Sicherungsdatei aus einem lokalen Speicherort in Ihr Speicherkonto verschieben müssen, verwenden Sie den [Microsoft Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) oder das Befehlszeilenprogramm [AzCopy](../storage/common/storage-use-azcopy.md). 
 
 
 
@@ -111,5 +111,5 @@ Verwenden Sie das Cmdlet [Restore-ASDatabase](https://docs.microsoft.com/sql/ana
 ## <a name="related-information"></a>Verwandte Informationen
 
 [Azure-Speicherkonten](../storage/common/storage-create-storage-account.md)  
-[Hohe Verfügbarkeit](analysis-services-bcdr.md)     
+[Hochverfügbarkeit](analysis-services-bcdr.md)     
 [Verwalten von Azure Analysis Services](analysis-services-manage.md)

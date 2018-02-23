@@ -378,9 +378,9 @@
               href: saas-dbpertenant-restore-single-tenant.md
             - name: Verwalten des Mandantenschemas
               href: saas-tenancy-schema-management.md
-            - name: Ausführen von Ad-hoc-Abfragen
-              href: saas-tenancy-adhoc-analytics.md
-            - name: ETL für die Analyse
+            - name: Mandantenübergreifende Berichte
+              href: saas-tenancy-cross-tenant-reporting.md
+            - name: ETL für Analysen
               href: saas-tenancy-tenant-analytics.md
         - name: Mehrinstanzenfähige Datenbank
           items:
@@ -394,7 +394,7 @@
               href: saas-multitenantdb-adhoc-reporting.md
             - name: Verwalten des Mandantenschemas
               href: saas-multitenantdb-schema-management.md
-            - name: ETL für die Analyse
+            - name: ETL für Analysen
               href: saas-multitenantdb-tenant-analytics.md
     - name: Entwickeln von Apps
       items:

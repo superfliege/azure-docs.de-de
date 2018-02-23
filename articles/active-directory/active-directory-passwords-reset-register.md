@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: barlan
 ms.custom: end-user;seohack1
-ms.openlocfilehash: ffdffc0c471970e5a7e7a0bb291658cefe99ed71
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: dbb82e125381a4307ed742294f880600612ffc52
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="register-for-self-service-password-reset"></a>Registrieren für die Self-Service-Kennwortzurücksetzung
 
@@ -31,7 +31,7 @@ Endbenutzer können ihr Kennwort mithilfe der Self-Service-Kennwortzurücksetzun
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>Registrieren oder Bestätigen von Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung
 
-1. Öffnen Sie auf Ihrem Gerät den Webbrowser, und rufen Sie die [Registrierungsseite für die Kennwortzurücksetzung](http://aka.ms/ssprsetup) auf.
+1. Öffnen Sie auf Ihrem Gerät den Webbrowser, und rufen Sie die [Registrierungsseite für die Kennwortzurücksetzung](https://aka.ms/ssprsetup) auf.
 2. Geben Sie Ihren vom Administrator bereitgestellten Benutzernamen und das dazugehörige Kennwort ein.
 3. Abhängig von der Konfiguration durch Ihr IT-Team können einige der folgenden Optionen konfiguriert und überprüft werden. Wenn der Administrator von Ihnen zur Verwendung Ihrer Informationen autorisiert wurde, kann er einige der Informationen für Sie auffüllen.
     * **Bürotelefon:** Diese Option kann nur vom Administrator festgelegt werden.
@@ -56,12 +56,12 @@ Unter Umständen werden Sie von den Administratoren nach einer Weile zur Bestät
 | --- | --- | --- |
 | Nach der Eingabe meiner Benutzer-ID wird mir die Seite „Wenden Sie sich an Ihren Administrator“ angezeigt. | Wenden Sie sich an Ihren Administrator. <br> <br> Es wurde ermittelt, dass das Kennwort Ihres Benutzerkontos nicht von Microsoft verwaltet wird. Ihr Kennwort kann daher nicht automatisch zurückgesetzt werden. <br> <br> Weitere Unterstützung erhalten Sie vom IT-Team. | Diese Meldung wird angezeigt, weil Ihr IT-Team Ihr Kennwort in Ihrer lokalen Umgebung verwaltet und das Zurücksetzen des Kennworts über den Link **Zugriff auf Ihr Konto nicht möglich** nicht gestattet ist. <br> <br> Wenn Sie Ihr Kennwort zurücksetzen möchten, wenden Sie sich direkt an das IT-Team, um Unterstützung zu erhalten. Teilen Sie dem Team mit, dass Sie Ihr Kennwort zurücksetzen möchten, damit es dieses Feature für Sie aktivieren kann.|
 | Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Ihr Konto ist für ein Zurücksetzen des Kennworts nicht aktiviert“. | Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert. <br> <br> Ihr IT-Team hat Ihr Konto nicht zur Verwendung mit diesem Dienst eingerichtet. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil Ihr IT-Team die Kennwortzurücksetzung über den Link **Zugriff auf Ihr Konto nicht möglich** für Ihre Organisation nicht aktiviert oder Ihnen keine Berechtigung für die Nutzung dieses Features erteilt hat. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zur **Kontaktaufnahme mit einem Administrator**. Daraufhin wird eine E-Mail an das IT-Team Ihres Unternehmens gesendet. Die E-Mail informiert das Team darüber, dass Sie Ihr Kennwort zurücksetzen möchten, damit es dieses Feature für Sie aktivieren kann. |
-| Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Das Konto konnte nicht überprüft werden“. | Das Konto konnte nicht überprüft werden. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil die Kennwortzurücksetzung für Sie zwar aktiviert ist, Sie sich aber nicht für die Nutzung dieses Diensts registriert haben. Wenn Sie sich für die Kennwortzurücksetzung registrieren möchten, rufen Sie die [Registrierungsseite für die Kennwortzurücksetzung](http://aka.ms/ssprsetup) auf, sobald Sie wieder auf Ihr Konto zugreifen können. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zur **Kontaktaufnahme mit einem Administrator**, um eine E-Mail an das IT-Team Ihres Unternehmens zu senden. |
+| Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Das Konto konnte nicht überprüft werden“. | Das Konto konnte nicht überprüft werden. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil die Kennwortzurücksetzung für Sie zwar aktiviert ist, Sie sich aber nicht für die Nutzung dieses Diensts registriert haben. Wenn Sie sich für die Kennwortzurücksetzung registrieren möchten, rufen Sie die [Registrierungsseite für die Kennwortzurücksetzung](https://aka.ms/ssprsetup) auf, sobald Sie wieder auf Ihr Konto zugreifen können. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zur **Kontaktaufnahme mit einem Administrator**, um eine E-Mail an das IT-Team Ihres Unternehmens zu senden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Ändern Ihres Kennworts mithilfe der Self-Service-Kennwortzurücksetzung](active-directory-passwords-update-your-own-password.md)
-* [Registrierungsseite für die Kennwortzurücksetzung](http://aka.ms/ssprsetup)
+* [Registrierungsseite für die Kennwortzurücksetzung](https://aka.ms/ssprsetup)
 * [Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com/)
 * Falls Sie sich nicht bei Ihrem Microsoft-Konto anmelden können, klicken Sie [hier](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).
 

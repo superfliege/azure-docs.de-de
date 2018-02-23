@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 53e946bba6bbd882e78b51ee8d222ab0d3ec056a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 38bad0641d97028b435e05458d597bda378a8363
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-database-roles-and-users"></a>Verwalten von Datenbankrollen und Benutzern
 
@@ -46,7 +46,7 @@ Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit
   
 4.  Wählen Sie eine der folgenden Berechtigungen aus:  
   
-    |Berechtigung|Beschreibung|  
+    |Berechtigung|BESCHREIBUNG|  
     |----------------|-----------------|  
     |**Keine**|Mitglieder können das Modellschema nicht ändern und keine Daten abfragen.|  
     |**Lesen**|Mitglieder können (basierend auf Zeilenfiltern) Daten abfragen, jedoch das Modellschema nicht ändern.|  
@@ -73,7 +73,7 @@ Zum Hinzufügen von Rollen und Benutzern zu einer bereitgestellten Modelldatenba
 2. Geben Sie in **Rolle erstellen** einen Rollennamen und eine Beschreibung ein.
 
 3. Wählen Sie eine Berechtigung aus.
-   |Berechtigung|Beschreibung|  
+   |Berechtigung|BESCHREIBUNG|  
    |----------------|-----------------|  
    |**Vollzugriff (Administrator)**|Mitglieder können das Modellschema ändern, Prozesse ausführen und alle Daten abfragen.| 
    |**Datenbank verarbeiten**|Mitglieder können Prozesse ausführen und alle Vorgänge verarbeiten. Sie können das Modellschema nicht ändern und keine Daten abfragen.|  
@@ -121,7 +121,7 @@ In diesem Beispiel werden der Rolle „Analyst“ ein externer B2B-Benutzer und 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>So fügen Sie Rollen und Benutzer mit PowerShell hinzu oder verwalten diese
 Das [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx)-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwaltung und das allgemeine Cmdlet „Invoke-ASCmd“, das TMSL-Abfragen (Tabular Model Scripting Language) und -Skripts akzeptiert. Die folgenden Cmdlets werden zum Verwalten von Datenbankrollen und Benutzern verwendet.
   
-|Cmdlet|Beschreibung|
+|Cmdlet|BESCHREIBUNG|
 |------------|-----------------| 
 |[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Hinzufügen eines Mitglieds zu einer Datenbankrolle.| 
 |[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Entfernen eines Mitglieds aus einer Datenbankrolle.|   
@@ -136,7 +136,7 @@ Zeilenfilter können nur für Rollen mit den Berechtigungen „Lesen“ und „L
   
 Zeilenfilter gelten für die angegebenen Zeilen und zugehörige Zeilen. Wenn für eine Tabelle mehrere Beziehungen definiert sind, wenden Filter Sicherheitseinstellungen für die jeweils aktive Beziehung an. Zeilenfilter überschneiden sich mit anderen für zugehörige Tabellen definierte Zeilenfiltern, z.B.:  
   
-|Tabelle|DAX-Ausdruck|  
+|Table|DAX-Ausdruck|  
 |-----------|--------------------|  
 |Region|=Region[Country]="USA"|  
 |ProductCategory|=ProductCategory[Name]="Bicycles"|  

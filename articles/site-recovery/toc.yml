@@ -36,15 +36,15 @@
         - name: Vorbereiten von Azure
           href: tutorial-prepare-azure.md
         - name: Vorbereiten lokaler Hyper-V-Instanzen
-          href: tutorial-prepare-on-premises-hyper-v.md
+          href: hyper-v-prepare-on-premises-tutorial.md
         - name: Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer
-          href: tutorial-hyper-v-to-azure.md
+          href: hyper-v-azure-tutorial.md
         - name: Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer in VMM-Clouds
-          href: tutorial-hyper-v-vmm-to-azure.md
+          href: hyper-v-vmm-azure-tutorial.md
         - name: Durchführen eines Notfallwiederherstellungsverfahrens
           href: tutorial-dr-drill-azure.md
         - name: Ausführen von Failover und Failback
-          href: tutorial-hyper-v-to-azure-failover-failback.md
+          href: hyper-v-azure-failover-failback-tutorial.md
     - name: Migrieren zu Azure
       items:
         - name: Vorbereiten vonAzure für die lokale Replikation
@@ -64,11 +64,11 @@
         - name: VMware-zu-Azure-Architektur
           href: concepts-vmware-to-azure-architecture.md
         - name: Hyper-V-zu-Azure-Architektur
-          href: concepts-hyper-v-to-azure-architecture.md
+          href: hyper-v-azure-architecture.md
         - name: Physisch-zu-Azure-Architektur
           href: concepts-physical-to-azure-architecture.md
         - name: Hyper-V-zu-sekundärem-Standort-Architektur
-          href: concepts-hyper-v-to-secondary-architecture.md
+          href: hyper-v-vmm-architecture.md
     - name: Matrix für Supportanforderungen
       items:
         - name: Azure zu Azure – Supportmatrix
@@ -76,7 +76,7 @@
         - name: VMware zu Azure – Supportmatrix
           href: support-matrix-vmware-to-azure.md
         - name: Hyper-V zu Azure – Supportmatrix
-          href: support-matrix-hyper-v-to-azure.md
+          href: hyper-v-azure-support-matrix.md
         - name: Lokal zu Azure – Supportmatrix
           href: site-recovery-support-matrix-to-azure.md
         - name: Lokal zu sekundärem Standort – Supportmatrix
@@ -97,6 +97,8 @@
           href: azure-to-azure-about-networking.md
         - name: Einrichten der Netzwerkzuordnung für die Notfallwiederherstellung für virtuelle Azure-Computer (Vorschauversion)
           href: azure-to-azure-network-mapping.md
+        - name: Einrichten der Replikation für Netzwerkzuordnungen von virtuellen Hyper-V-Computern in VMM
+          href: hyper-v-vmm-network-mapping.md
         - name: Beibehalten der IP für die Notfallwiederherstellung für virtuelle Azure-Computer (Vorschauversion)
           href: site-recovery-retain-ip-azure-vm-failover.md
         - name: Vorbereiten der Netzwerkzuordnung für die Hyper-V-VM-Replikation in Azure
@@ -104,7 +106,7 @@
         - name: Einrichten von IP-Adressen für den Zugriff auf Azure nach einem Failover
           href: concepts-on-premises-to-azure-networking.md
         - name: Einrichten von IP-Adressen für den Zugriff auf einen sekundären Standort nach einem Failover
-          href: concepts-on-premises-to-on-premises-networking.md
+          href: hyper-v-vmm-networking.md
         - name: Verwaltung von Netzwerkschnittstellen für Szenarien vom Typ „Lokal auf Azure“
           href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
     - name: Notfallwiederherstellung
@@ -113,15 +115,15 @@
           href: azure-to-azure-replicate-after-migration.md
         - name: Notfallwiederherstellung von physischen Servern in Azure
           href: tutorial-physical-to-azure.md
-        - name: Replizieren von Hyper-V-VMs an einem sekundären Standort
-          href: tutorial-vmm-to-vmm.md
-        - name: Replizieren von virtuellen VMware-Computern und physischen Servern an einem sekundären Standort
+        - name: Notfallwiederherstellung von virtuellen Hyper-V-Computern an einem sekundären Standort
+          href: hyper-v-vmm-disaster-recovery.md
+        - name: Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern an einem sekundären Standort
           href: tutorial-vmware-to-vmware.md
         - name: Durchführen eines Notfallwiederherstellungsverfahrens in Azure
           href: site-recovery-test-failover-to-azure.md
-        - name: Durchführen eines Notfallwiederherstellungsverfahrens an einem sekundären Standort
-          href: site-recovery-test-failover-vmm-to-vmm.md
-        - name: Virtuelle VMware-Computer mit Unterstützung mehrerer Mandanten in Azure
+        - name: Ausführen eines Notfallwiederherstellungsverfahrens für virtuelle Hyper-V-Computer an einem sekundären Standort
+          href: hyper-v-vmm-test-failover.md
+        - name: Notfallwiederherstellung von virtuellen VMware-Computern mit Unterstützung mehrerer Mandanten in Azure
           href: site-recovery-multi-tenant-support-vmware-using-csp.md
     - name: Failover und Failback
       items:
@@ -130,17 +132,15 @@
         - name: Hinzufügen von Azure-Runbooks zu Wiederherstellungsplänen
           href: site-recovery-runbook-automation.md
         - name: Hinzufügen von VMM-Skripts zu Wiederherstellungsplänen
-          href: site-recovery-how-to-add-vmmscript.md
+          href: hyper-v-vmm-recovery-script.md
         - name: Failover
           items:
             - name: Informationen zum Failover
               href: site-recovery-failover.md
-            - name: Ausführen eines Testfailovers an einem sekundären Standort
-              href: tutorial-dr-drill-secondary.md
             - name: Durchführen von Failover und Failback für physische Server
               href: physical-to-azure-failover-failback.md
-            - name: Durchführen von Failover und Failback zwischen lokalen Standorten
-              href: tutorial-vmm-to-vmm-failover-failback.md
+            - name: Durchführen von Failover und Failback für virtuelle Hyper-V-Computer zwischen lokalen Standorten
+              href: hyper-v-vmm-failover-failback.md
         - name: Erneutes Schützen von Computern nach einem Failover
           items:
             - name: Erneutes Schützen von einer sekundären zu einer primären Azure-Region
@@ -152,7 +152,7 @@
             - name: Failback von Azure nach VMware
               href: site-recovery-how-to-failback-azure-to-vmware.md
             - name: Failback von Azure nach Hyper-V
-              href: site-recovery-failback-from-azure-to-hyper-v.md
+              href: hyper-v-azure-failback.md
         - name: Einrichten eines Linux-Masterzielservers für Failbacks
           href: site-recovery-how-to-install-linux-master-target.md
     - name: Migrieren
@@ -182,15 +182,15 @@
           href: null
           items:
             - name: Übersicht und Voraussetzungen
-              href: site-recovery-hyper-v-deployment-planner.md
+              href: hyper-v-deployment-planner-overview.md
             - name: Ausführen des Bereitstellungsplanertools
-              href: site-recovery-hyper-v-deployment-planner-run.md
+              href: hyper-v-deployment-planner-run.md
             - name: Analysieren des generierten Berichts
-              href: site-recovery-hyper-v-deployment-planner-analyze-report.md
+              href: hyper-v-deployment-planner-analyze-report.md
             - name: Analysieren der Kostenvorkalkulation
-              href: site-recovery-hyper-v-deployment-planner-cost-estimation.md
-        - name: Leistungsskalierungstests für die Hyper-V-Replikation zwischen lokalen Standorten
-          href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md
+              href: hyper-v-deployment-planner-cost-estimation.md
+        - name: Leistungsskalierungstests für die Hyper-V-Replikation an einem sekundären Standort
+          href: hyper-v-vmm-performance-results.md
     - name: Konfigurieren
       items:
         - name: Einrichten der Quellumgebung
@@ -214,7 +214,7 @@
             - name: Ausschließen von Datenträgern von der Replikation von VMware zu Azure
               href: site-recovery-exclude-disk.md
             - name: Ausschließen von Datenträgern von der Replikation von Hyper-V zu Azure
-              href: site-recovery-hyper-v-exclude-disk.md
+              href: hyper-v-exclude-disk.md
         - name: Aktivieren der Replikation
           items:
             - name: Ermöglichen der Replikation von Azure zu Azure
@@ -234,11 +234,11 @@
         - name: Replizieren virtueller VMware-Computer in Azure mithilfe von PowerShell
           href: site-recovery-vmware-to-azure-powershell.md
         - name: Einrichten der Hyper-V-Replikation in Azure (ohne VMM) mit PowerShell
-          href: site-recovery-deploy-with-powershell-resource-manager.md
+          href: hyper-v-azure-powershell-resource-manager.md
         - name: Einrichten der Hyper-V-Replikation in Azure (mit VMM) mit PowerShell
           href: site-recovery-vmm-to-azure-powershell-resource-manager.md
         - name: Einrichten der Hyper-V-Replikation an einem sekundären VMM-Standort mit PowerShell
-          href: site-recovery-vmm-to-vmm-powershell-resource-manager.md
+          href: hyper-v-vmm-powershell-resource-manager.md
     - name: Workloads
       items:
         - name: Active Directory und DNS

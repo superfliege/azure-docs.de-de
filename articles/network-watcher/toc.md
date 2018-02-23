@@ -61,6 +61,7 @@
 # Anleitung
 ## [Überwachen von VPN Gateway mit Azure Automation](network-watcher-monitor-with-azure-automation.md)
 ## [Diagnostizieren der lokalen Konnektivität über VPN Gateway](network-watcher-diagnose-on-premises-connectivity.md)
+## [Überwachen von Netzwerkverbindungen](connection-monitor.md)
 ## [Durchführen von Compliance- und Auditüberprüfungen in Ihrem Netzwerk mithilfe von PowerShell](network-watcher-nsg-auditing-powershell.md)
 ## [Analysieren von Application Gateway-Protokollen in Azure Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
 ## Paketerfassung

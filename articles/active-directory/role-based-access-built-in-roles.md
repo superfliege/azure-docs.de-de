@@ -15,11 +15,11 @@ ms.date: 01/30/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 520a52161438c967b7614ab01b2e9892612254f0
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 82fa6d3f04dc528c0e2d95dae82e7a7f8787ea7c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure umfasst die folgenden integrierten Rollen, die Benutzern, Gruppen und Diensten zugewiesen werden können. Die Definitionen integrierter Rollen können nicht geändert werden. Sie können jedoch [benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md) zur Anpassung an die spezifischen Anforderungen Ihrer Organisation erstellen.
@@ -61,7 +61,6 @@ In diesem Artikel werden nur die heute vorhandenen verschiedenen Rollen behandel
 | [Überwachungsleser](#monitoring-reader) |Kann alle Überwachungsdaten lesen |
 | [Überwachungsmitwirkender](#monitoring-contributor) |Kann Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten |
 | [Mitwirkender von virtuellem Netzwerk](#network-contributor) |Kann alle Netzwerkressourcen verwalten |
-| [Mitwirkender von New Relic APM-Konto](#new-relic-apm-account-contributor) |Kann New Relic Application Performance Management-Konten und -Anwendungen verwalten |
 | [Besitzer](#owner) |Kann alles verwalten, einschließlich des Zugriffs |
 | [Leser](#reader) |Kann alles anzeigen, jedoch keine Änderungen vornehmen |
 | [Mitwirkender von Redis-Cache](#redis-cache-contributor) |Kann Redis-Caches verwalten |
@@ -440,19 +439,6 @@ Kann alle Netzwerkressourcen verwalten
 | Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
-
-### <a name="new-relic-apm-account-contributor"></a>Mitwirkender von New Relic APM-Konto
-Kann New Relic Application Performance Management-Konten und -Anwendungen verwalten
-
-| **Aktionen** |  |
-| --- | --- |
-| Microsoft.Authorization/*/read |Lesen von Rollen und Rollenzuweisungen |
-| Microsoft.Insights/alertRules/* |Erstellen und Verwalten von Warnungsregeln |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Lesen des Status der Ressourcen |
-| Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-| Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
-| Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
-| NewRelic.APM/accounts/* |Erstellen und Verwalten von New Relic Application Performance Management-Konten |
 
 ### <a name="owner"></a>Owner (Besitzer)
 Kann alles verwalten, einschließlich des Zugriffs

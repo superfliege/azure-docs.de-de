@@ -5,7 +5,7 @@
 ## [Häufig gestellte Fragen](service-bus-faq.md)
 
 # Schnellstarts
-## [Erstellen eines Namespace](service-bus-create-namespace-portal.md)
+## [Erstellen eines Namespaces](service-bus-create-namespace-portal.md)
 ## Verwenden von Warteschlangen
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
@@ -41,6 +41,8 @@
 #### [Nachrichtenübertragungen, Sperren und Abrechnung](message-transfers-locks-settlement.md)
 #### [Nachrichtensequenzierung und -zeitstempel](message-sequencing.md)
 #### [Nachrichtenablauf (Gültigkeitsdauer)](message-expiration.md)
+#### [Behandlung von Nachrichten mithilfe von Azure Event Grid](service-bus-to-event-grid-integration-concept.md)
+#### [Azure Event Grid-Beispiele](service-bus-to-event-grid-integration-example.md)
 ### [Authentifizierung und Autorisierung](service-bus-authentication-and-authorization.md)
 #### [Migrieren von ACS zu SAS](service-bus-migrate-acs-sas.md)
 #### [Authentifizierung mit SAS (Shared Access Signatures)](service-bus-sas.md)
@@ -71,7 +73,7 @@
 ### [Diagnoseprotokolle](service-bus-diagnostic-logs.md)
 ### [Anhalten und Reaktivieren von Messagingentitäten](entity-suspend.md)
 ### [Verwenden von Azure Resource Manager-Vorlagen](service-bus-resource-manager-overview.md)
-#### [Erstellen eines Namespace](service-bus-resource-manager-namespace.md)
+#### [Erstellen eines Namespaces](service-bus-resource-manager-namespace.md)
 #### [Erstellen eines Namespace und einer Warteschlange](service-bus-resource-manager-namespace-queue.md)
 #### [Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic.md)
 #### [Erstellen einer Autorisierungsregel für Namespace und Warteschlange](service-bus-resource-manager-namespace-auth-rule.md)

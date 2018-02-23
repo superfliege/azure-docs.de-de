@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: magoedte
-ms.openlocfilehash: 4424cbb83bdb31c60e15d62f9387b4050611a98d
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 7ffd424de2a7224b5ac50fa228289c5397092b2e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation (Vorschauversion)
 
@@ -79,7 +79,7 @@ Alle übergeordneten Runbooks enthalten den Parameter *WhatIf*. Bei der Festlegu
 |ScheduledStartStop_Parent | Aktion: Beenden oder Starten <br> WhatIf: TRUE oder FALSE | Dies wirkt sich auf alle virtuellen Computer des Abonnements aus. Bearbeiten Sie **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames**, damit die Ausführung nur für diese Zielressourcengruppen erfolgt. Sie können zudem bestimmte VMs ausschließen, indem Sie die Variable **External_ExcludeVMNames** aktualisieren. *WhatIf* verhält sich wie in den anderen Runbooks.|  
 |SequencedStartStop_Parent | Aktion: Beenden oder Starten <br> WhatIf: TRUE oder FALSE | Erstellen Sie auf jeder VM, für die Sie die Aktivität zum Starten/Beenden verwenden möchten, Tags mit den Namen **SequenceStart** und **SequenceStop**. Der Wert des Tags muss eine positive ganze Zahl (1, 2, 3) sein, die der Reihenfolge entspricht, in der das Starten oder Beenden durchgeführt werden soll. *WhatIf* verhält sich wie in den anderen Runbooks. <br> **Hinweis:** VMs müssen sich in Ressourcengruppen befinden, die in Azure Automation-Variablen als „External_Start_ResourceGroupNames“, „External_Stop_ResourceGroupNames“ und „External_ExcludeVMNames“ definiert sind. Diese müssen über die entsprechenden Tags verfügen, damit Aktionen wirksam werden.|
 
-### <a name="variables"></a>Variablen
+### <a name="variables"></a>Variables
 
 In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen aufgeführt.  Sie sollten nur Variablen ändern, die über das Präfix **External** verfügen. Wenn Sie Variablen mit dem Präfix **Internal** ändern, hat dies unerwünschte Auswirkungen.  
 
@@ -113,9 +113,9 @@ In allen Szenarien müssen die Variablen **External_Start_ResourceGroupNames**, 
 
 In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten Standardzeitpläne aufgeführt.  Sie können sie ändern oder Ihre eigenen benutzerdefinierten Zeitpläne erstellen.  Standardmäßig sind alle deaktiviert, mit Ausnahme von **Scheduled_StartVM** und **Scheduled_StopVM**.
 
-Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappenden Zeitplanaktionen führen kann. Am besten ermitteln Sie, welche Optimierungen Sie ausführen möchten, und nehmen dann die entsprechenden Änderungen vor.  Weitere Erläuterungen finden Sie in den Beispielszenarien im Übersichtsabschnitt.   
+Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappenden Zeitplanaktionen führen kann. Am besten ermitteln Sie, welche Optimierungen Sie ausführen möchten, und nehmen dann die entsprechenden Änderungen vor.  Weitere Erläuterungen finden Sie in den Beispielszenerien im Übersichtsabschnitt.   
 
-|**Zeitplanname** | **Häufigkeit** | **Beschreibung**|
+|**Zeitplanname** | **Frequency** | **Beschreibung**|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Alle 8 Stunden | Führt das Runbook „AutoStop_CreateAlert_Parent“ alle acht Stunden aus. Hiermit werden dann die VM-basierten Werte unter „External_Start_ResourceGroupNames“, „External_Stop_ResourceGroupNames“ und „External_ExcludeVMNames“ in Azure Automation-Variablen beendet.  Alternativ hierzu können Sie mithilfe des Parameters „VMList“ eine durch Kommas getrennte Liste mit VMs angeben.|  
 |Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter *Stop* jeden Tag zum angegebenen Zeitpunkt aus.  Beendet automatisch alle VMs, für die die Regeln der Ressourcenvariablen erfüllt werden. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Scheduled-StartVM**).|  
@@ -129,7 +129,7 @@ Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappend
 
 Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit dem Automation-Konto hinzuzufügen und anschließend die Variablen zum Anpassen der Lösung zu konfigurieren.
 
-1. Klicken Sie im Azure-Portal auf **Neu**.<br> ![Azure portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.<br> ![Azure portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
 2. Geben Sie im Bereich „Marketplace“ ein Schlüsselwort ein, z.B. **Starten** oder **Starten/Beenden**. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Alternativ hierzu können Sie ein oder mehrere Schlüsselwörter des vollständigen Namens der Lösung eingeben und dann die EINGABETASTE drücken.  Wählen Sie **VMs außerhalb der Geschäftszeiten starten/beenden [Vorschau]** in den Suchergebnissen aus.  
 3. Sehen Sie sich im Bereich **VMs außerhalb der Geschäftszeiten starten/beenden [Vorschau]** für die ausgewählte Lösung die Zusammenfassung an, und klicken Sie dann auf **Erstellen**.  
 4. Der Bereich **Lösung hinzufügen** wird angezeigt. Sie werden aufgefordert, die Lösung vor dem Importieren in Ihr Automation-Abonnement zu konfigurieren.<br><br> ![Blatt „Lösung hinzufügen“ der VM-Verwaltung](media/automation-solution-vm-management/azure-portal-add-solution-01.png)<br><br>

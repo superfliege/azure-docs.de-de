@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 5ba7ef5aa2cccad7cda3cb39459a5a5722516524
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 33115ee35670407c3b046f70a5fbebc47284b4b9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 Azure Analysis Services-Server unterstützen das Herstellen von Verbindungen mit lokalen Datenquellen in der Organisation oder mit Datenquellen in der Cloud. Weitere unterstützte Datenquellen werden ständig hinzugefügt. Das Zurückkehren zu dieser Seite lohnt sich. 
@@ -29,7 +29,7 @@ Die folgenden Datenquellen werden derzeit unterstützt:
 | Cloud  |
 |---|
 | Azure Blob Storage*  |
-| Azure SQL-Datenbank  |
+| Azure SQL-Datenbank  |
 | Azure Data Warehouse |
 
 
@@ -60,7 +60,7 @@ Die folgenden Datenquellenanbieter werden für In-Memory- oder Direktabfrage-Dat
 | **Datenquelle** | **In-Memory** | **DirectQuery** |
 |  --- | --- | --- |
 | Azure SQL Data Warehouse |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server |
-| Azure SQL-Datenbank |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server | |
+| Azure SQL-Datenbank |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server | |
 
 ### <a name="on-premises-via-gateway"></a>Lokal (über Gateway)
 |**Datenquelle** | **In-Memory** | **DirectQuery** |

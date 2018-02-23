@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 19cd4ae8dc0ca3efa4eca51e5a6ba102338b4ef9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eaf9e7088c8c88140ea690c13ff7e0c7026b8f86
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (öffentliche Vorschau)
 Sie können die Gültigkeitsdauer eines Tokens angeben, das von Azure Active Directory (Azure AD) ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
@@ -73,7 +73,7 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 | Eigenschaft | Richtlinien-Eigenschaftszeichenfolge | Betrifft | Standard | Minimum | Maximum |
 | --- | --- | --- | --- | --- | --- |
 | Gültigkeitsdauer Zugriffstoken |AccessTokenLifetime |Zugriffstoken, ID-Token, SAML2-Token |1 Stunde |10 Minuten |1 Tag |
-| Max. Zeit der Inaktivität für Aktualisierungstoken |MaxInactiveTime |Aktualisierungstoken |14 Tage |10 Minuten |90 Tage |
+| Max. Zeit der Inaktivität für Aktualisierungstoken |MaxInactiveTime |Aktualisierungstoken |90 Tage |10 Minuten |90 Tage |
 | Max. Alter Single-Factor-Aktualisierungstoken |MaxAgeSingleFactor |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 | Max. Alter Multi-Factor-Aktualisierungstoken |MaxAgeMultiFactor |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 | Max. Alter Single-Factor-Sitzungstoken |MaxAgeSessionSingleFactor<sup>2</sup> |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
@@ -131,7 +131,7 @@ Die Gültigkeit des Tokens wird zum Zeitpunkt seiner Verwendung überprüft. Die
 
 **Betrifft:** Zugriffstoken, ID-Token
 
-**Zusammenfassung:** Diese Richtlinie steuert, wie lange Zugriffstoken und ID-Token für diese Ressource als gültig angesehen werden. Durch das Reduzieren des Werts für die Eigenschaft „Gültigkeitsdauer Zugriffstoken“ wird das Risiko verringert, dass ein Zugriffstoken oder ID-Token von einem böswilligen Akteur für einen längeren Zeitraum verwendet wird. (Diese Token können nicht widerrufen werden.) Der Nachteil hierbei ist, dass die Leistung beeinträchtigt wird, da die Token häufiger ersetzt werden müssen.
+**Zusammenfassung:** Diese Richtlinie gesteuert, wie lange Zugriffstoken und ID-Token für diese Ressource als gültig angesehen werden. Durch das Reduzieren des Werts für die Eigenschaft „Gültigkeitsdauer Zugriffstoken“ wird das Risiko verringert, dass ein Zugriffstoken oder ID-Token von einem böswilligen Akteur für einen längeren Zeitraum verwendet wird. (Diese Token können nicht widerrufen werden.) Der Nachteil hierbei ist, dass die Leistung beeinträchtigt wird, da die Token häufiger ersetzt werden müssen.
 
 ### <a name="refresh-token-max-inactive-time"></a>Max. Zeit der Inaktivität für Aktualisierungstoken
 **Zeichenfolge:** MaxInactiveTime
@@ -183,7 +183,7 @@ Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authe
 ## <a name="example-token-lifetime-policies"></a>Beispiel: Tokengültigkeitsdauer-Richtlinien
 In Azure AD sind viele Szenarien möglich, was das Erstellen und Verwalten von Tokengültigkeitsdauern für Apps, Dienstprinzipale und Ihre gesamte Organisation betrifft. In diesem Abschnitt werden einige allgemeine Richtlinienszenarien beschrieben, die es ermöglichen, neue Regeln für folgende Festlegungen vorzugeben:
 
-* Token Lifetime (Tokengültigkeitsdauer)
+* Tokengültigkeitsdauer
 * Max. Inaktivitätszeit von Token
 * Max. Alter von Token
 
@@ -363,7 +363,7 @@ Erstellt eine neue Richtlinie.
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |Zeichenfolge mit dem Namen der Richtlinie. |`-DisplayName "MyTokenPolicy"` |
@@ -380,7 +380,7 @@ Ruft alle Azure AD-Richtlinien oder eine angegebene Richtlinie ab.
 Get-AzureADPolicy
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [Optional] |Die **ObjectId (Id)** der gewünschten Richtlinie. |`-Id <ObjectId of Policy>` |
 
@@ -393,7 +393,7 @@ Ruft alle Apps und Dienstprinzipale ab, die mit einer Richtlinie verknüpft sind
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der gewünschten Richtlinie. |`-Id <ObjectId of Policy>` |
 
@@ -406,7 +406,7 @@ Aktualisiert eine vorhandene Richtlinie.
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der gewünschten Richtlinie. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |Zeichenfolge mit dem Namen der Richtlinie. |`-DisplayName "MyTokenPolicy"` |
@@ -424,7 +424,7 @@ Löscht die angegebene Richtlinie.
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der gewünschten Richtlinie. | `-Id <ObjectId of Policy>` |
 
@@ -440,7 +440,7 @@ Verknüpft die angegebene Richtlinie mit einer Anwendung.
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |Die **ObjectId** der Richtlinie. | `-RefObjectId <ObjectId of Policy>` |
@@ -454,7 +454,7 @@ Ruft die Richtlinie ab, die einer Anwendung zugewiesen ist.
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 
@@ -467,7 +467,7 @@ Entfernt eine Richtlinie aus einer Anwendung.
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |Die **ObjectId** der Richtlinie. | `-PolicyId <ObjectId of Policy>` |
@@ -484,7 +484,7 @@ Verknüpft die angegebene Richtlinie mit einem Dienstprinzipal.
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |Die **ObjectId** der Richtlinie. | `-RefObjectId <ObjectId of Policy>` |
@@ -498,7 +498,7 @@ Ruft alle Richtlinien ab, die mit dem angegebenen Dienstprinzipal verknüpft sin
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 
@@ -511,7 +511,7 @@ Entfernt die Richtlinie aus dem angegebenen Dienstprinzipal.
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |Die **ObjectId** der Richtlinie. | `-PolicyId <ObjectId of Policy>` |

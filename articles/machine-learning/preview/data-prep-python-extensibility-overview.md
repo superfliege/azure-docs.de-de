@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 76ed1a93af22620ccc2074168b3ff20f6bb4c37d
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 936d3718c84cad49221e64b65e60bea7e37a523c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-preparations-python-extensions"></a>Python-Erweiterungen für die Datenvorbereitung
 Die Azure Machine Learning-Datenvorbereitung enthält Erweiterbarkeit auf mehreren Ebenen, um Funktionslücken zwischen integrierten Funktionen zu füllen. In diesem Dokument wird die Erweiterbarkeit mithilfe des Python-Skripts erläutert. 
@@ -101,7 +101,7 @@ Sie müssen die Datei „conda_dependencies.yml“ im Ordner „aml_config“ im
 ### <a name="windows"></a>Windows 
 Sie finden den Speicherort unter Windows, indem Sie nach der App-spezifischen Installation von Python und dem zugehörigen Skriptverzeichnis suchen. Dies ist der Standardspeicherort:  
 
-`C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts.` 
+`C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts` 
 
 Führen Sie anschließend einen der folgenden Befehlen aus: 
 
@@ -114,7 +114,7 @@ oder
 ### <a name="mac"></a>Mac 
 Sie finden den Speicherort auf einem Mac, indem Sie nach der App-spezifischen Installation von Python und dem zugehörigen Skriptverzeichnis suchen. Dies ist der Standardspeicherort: 
 
-`/Users/<user>/Library/Caches/AmlWorkbench>/Python/bin` 
+`/Users/<user>/Library/Caches/AmlWorkbench/Python/bin` 
 
 Führen Sie anschließend einen der folgenden Befehlen aus: 
 

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 683badcfb67dd9e98058d560a6b13d1a3474d3e9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19c8d9084c9ce03d347e58b3359b65cdbcd80651
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Ein mehrstufiger Ansatz für die Azure AD-Kennwortsicherheit
 
 In diesem Artikel werden einige Best Practices beschrieben, die Sie als Benutzer oder Administrator verwenden können, um Ihre Azure Active Directory- (Azure AD) und Microsoft-Konten zu schützen.
 
  > [!NOTE]
- > **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
+ > **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)weiter.
  >
  > Azure AD-Administratoren können Benutzerkennwörter mithilfe der Anleitungen im Artikel [Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory](active-directory-users-reset-password-azure-portal.md) zurücksetzen.
  >
@@ -46,7 +46,7 @@ Azure AD und das Microsoft-Kontosystem nutzen in der Branche bewährte Ansätze,
 * Dynamisch gesperrte Kennwörter
 * Intelligente Kennwortsperrung
 
-Informationen zur Kennwortverwaltung nach dem neuesten Forschungsstand finden Sie im Whitepaper [Password Guidance](http://aka.ms/passwordguidance) (Anleitung für Kennwörter).
+Informationen zur Kennwortverwaltung nach dem neuesten Forschungsstand finden Sie im Whitepaper [Password Guidance](https://aka.ms/passwordguidance) (Anleitung für Kennwörter).
 
 ### <a name="dynamically-banned-passwords"></a>Dynamisch gesperrte Kennwörter
 
