@@ -22,7 +22,7 @@
 ### [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 ## [Erstellen einer mit Azure verbundenen Funktion](https://docs.microsoft.com/azure/azure-functions/functions-create-an-azure-connected-function)
-## [Bereitstellen einer Web-App unter Linux mit Docker](https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image) 
+## [Bereitstellen einer Web-App unter Linux mit Docker](https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go) 
 
 # Beispiele
 ## Azure-Befehlszeilenschnittstelle
