@@ -23,6 +23,7 @@
 ### [Lokal verbinden – VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Lokal verbinden – dediziert](../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
+
 # Erste Schritte
 ## [Erstellen Ihres ersten virtuellen Netzwerks](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
@@ -47,6 +48,7 @@
 ### [Verwalten der Paketerfassung](../network-watcher/network-watcher-packet-capture-manage-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Bestimmen von Routing – nächster Abschnitt](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [IP-Datenflussüberprüfung für einen virtuellen Computer](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Übersicht über die Netzwerküberwachung](network-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Beispielskripts
 ### [Azure-CLI](cli-samples.md)

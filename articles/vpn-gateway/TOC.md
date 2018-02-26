@@ -19,6 +19,8 @@
 ### [Azure-CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)
 
+## [Herunterladen von Konfigurationsskripts für ein VPN-Gerät](vpn-gateway-download-vpndevicescript.md)
+
 ## Konfigurieren von Point-to-Site-Verbindungen – native Azure-Zertifikatauthentifizierung
 ### Konfigurieren einer P2S-VPN-Verbindung
 #### [Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

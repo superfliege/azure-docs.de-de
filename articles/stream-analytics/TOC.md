@@ -62,6 +62,7 @@
 ### [Überlegungen zur Ereignissortierung](stream-analytics-out-of-order-and-late-events.md)
 ### [Grenzwerte für Event Hub-Leser](stream-analytics-event-hub-consumer-groups.md)
 ### [Diagnoseprotokolle](stream-analytics-job-diagnostic-logs.md)
+### [Abrufen falsch formatierter Ereignisse](stream-analytics-malformed-events.md)
 
 ## Automatisieren
 ### [Verwenden des .NET-Verwaltungs SDK](stream-analytics-dotnet-management-sdk.md)

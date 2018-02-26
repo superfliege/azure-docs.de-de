@@ -197,7 +197,7 @@
           items:
             - name: Quellumgebung – VMware zu Azure
               href: site-recovery-set-up-vmware-to-azure.md
-            - name: Bereitstellen des Konfigurationsservers für VMware und physische Server
+            - name: Bereitstellen des Konfigurationsservers für die VMware-Notfallwiederherstellung
               href: how-to-deploy-configuration-server.md
             - name: Quellumgebung – physisch zu Azure
               href: site-recovery-set-up-physical-to-azure.md
@@ -267,8 +267,10 @@
       items:
         - name: Verwalten von Prozessservern in Azure
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
-        - name: Verwalten des Konfigurationsservers
+        - name: Verwalten des Konfigurationsservers für die VMware-Notfallwiederherstellung
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
+        - name: Verwalten des Konfigurationsservers für die Notfallwiederherstellung physischer Computer
+          href: physical-manage-configuration-server.md
         - name: Verwalten von vCenter-Servern
           href: site-recovery-vmware-to-azure-manage-vCenter.md
         - name: Verwalten der Mehrinstanzenfähigkeit mit CSP

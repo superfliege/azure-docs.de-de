@@ -48,61 +48,62 @@
           href: security-center-customize-os-security-config.md
         - name: Sicherheitsrichtlinie mit Azure-Richtlinie
           href: security-center-azure-policy.md
-    - name: Überwachen der Sicherheitsintegrität
-      href: security-center-monitoring.md
-    - name: Identität und Zugriff
-      href: security-center-identity-access.md
     - name: Implementieren von Sicherheitsempfehlungen
       href: security-center-recommendations.md
-    - name: Computesicherheit
-      href: security-center-virtual-machine-recommendations.md
+    - name: Überwachen der Sicherheitsintegrität
+      href: security-center-monitoring.md
       items:
-        - name: Anwenden der Datenträgerverschlüsselung
-          href: security-center-apply-disk-encryption.md
-        - name: Systemupdates anwenden
-          href: security-center-apply-system-updates.md
-        - name: Aktivieren der Verschlüsselung für das Speicherkonto
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: VM-Agent aktivieren
-          href: security-center-enable-vm-agent.md
-        - name: Endpoint Protection installieren
-          href: security-center-install-endpoint-protection.md
-        - name: Neustart nach Systemupdates
-          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
-        - name: Optimieren von Sicherheitskonfigurationen
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: Betriebssystemversion aktualisieren
-          href: security-center-update-os-version.md
-        - name: Keine Sicherheitsrisikobewertung installiert
-          href: security-center-vulnerability-assessment-recommendations.md
-    - name: Netzwerksicherheit
-      href: security-center-network-recommendations.md
-      items:
-        - name: Hinzufügen einer Firewall der nächsten Generation
-          href: security-center-add-next-generation-firewall.md
-        - name: Aktivieren von Netzwerksicherheitsgruppen
-          href: security-center-enable-network-security-groups.md
-        - name: Einschränken des Zugriffs über Endpunkte mit Internetzugriff
-          href: security-center-restrict-access-through-internet-facing-endpoints.md
-        - name: Datenverkehr nur durch Firewall der nächsten Generation leiten
-          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
-    - name: Speicher- und Datensicherheit
-      href: security-center-sql-service-recommendations.md
-      items:
-        - name: Aktivieren der Überwachung und Bedrohungserkennung in SQL-Datenbanken
-          href: security-center-enable-auditing-on-sql-databases.md
-        - name: Aktivieren der Überwachung und Bedrohungserkennung in SQL Server-Instanzen
-          href: security-center-enable-auditing-on-sql-servers.md
-        - name: Transparent Data Encryption aktivieren
-          href: security-center-enable-transparent-data-encryption.md
-    - name: Anwendungssicherheit
-      href: security-center-application-recommendations.md
-      items:
-        - name: Web Application Firewall hinzufügen
-          href: security-center-add-web-application-firewall.md
-        - name: Finalize application protection (Anwendungsschutz abschließen)
-          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
-    - name: Schutzmaßnahmen für die Cloud
+        - name: Computesicherheit
+          href: security-center-virtual-machine-recommendations.md
+          items:
+            - name: Anwenden der Datenträgerverschlüsselung
+              href: security-center-apply-disk-encryption.md
+            - name: Systemupdates anwenden
+              href: security-center-apply-system-updates.md
+            - name: Aktivieren der Verschlüsselung für das Speicherkonto
+              href: security-center-enable-encryption-for-storage-account.md
+            - name: VM-Agent aktivieren
+              href: security-center-enable-vm-agent.md
+            - name: Endpoint Protection installieren
+              href: security-center-install-endpoint-protection.md
+            - name: Neustart nach Systemupdates
+              href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
+            - name: Optimieren von Sicherheitskonfigurationen
+              href: security-center-remediate-os-vulnerabilities.md
+            - name: Betriebssystemversion aktualisieren
+              href: security-center-update-os-version.md
+            - name: Keine Sicherheitsrisikobewertung installiert
+              href: security-center-vulnerability-assessment-recommendations.md
+        - name: Netzwerksicherheit
+          href: security-center-network-recommendations.md
+          items:
+            - name: Hinzufügen einer Firewall der nächsten Generation
+              href: security-center-add-next-generation-firewall.md
+            - name: Aktivieren von Netzwerksicherheitsgruppen
+              href: security-center-enable-network-security-groups.md
+            - name: Einschränken des Zugriffs über Endpunkte mit Internetzugriff
+              href: security-center-restrict-access-through-internet-facing-endpoints.md
+            - name: Datenverkehr nur durch Firewall der nächsten Generation leiten
+              href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
+        - name: Speicher- und Datensicherheit
+          href: security-center-sql-service-recommendations.md
+          items:
+            - name: Aktivieren der Überwachung und Bedrohungserkennung in SQL-Datenbanken
+              href: security-center-enable-auditing-on-sql-databases.md
+            - name: Aktivieren der Überwachung und Bedrohungserkennung in SQL Server-Instanzen
+              href: security-center-enable-auditing-on-sql-servers.md
+            - name: Transparent Data Encryption aktivieren
+              href: security-center-enable-transparent-data-encryption.md
+        - name: Anwendungssicherheit
+          href: security-center-application-recommendations.md
+          items:
+            - name: Web Application Firewall hinzufügen
+              href: security-center-add-web-application-firewall.md
+            - name: Finalize application protection (Anwendungsschutz abschließen)
+              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
+        - name: Identität und Zugriff
+          href: security-center-identity-access.md
+    - name: Anwenden von Schutzmaßnahmen für die Cloud
       items:
         - name: Bedarfsabhängiger Zugriff
           href: security-center-just-in-time.md
@@ -136,7 +137,7 @@
           href: security-center-threat-intel.md
         - name: Untersuchung
           href: security-center-investigation.md
-    - name: Automatisieren und Orchestrieren
+    - name: Automatisieren des Sicherheitsworkflows
       items:
         - name: Logic Apps-Playbooks
           href: security-center-playbooks.md

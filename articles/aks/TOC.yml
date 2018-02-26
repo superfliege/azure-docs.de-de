@@ -55,6 +55,8 @@
       items:
         - name: Statische IP-Adresse
           href: static-ip.md
+        - name: Eingang und TLS
+          href: ingress.md
     - name: Sicherheit und Authentifizierung
       items:
         - name: Erstellen eines Dienstprinzipals

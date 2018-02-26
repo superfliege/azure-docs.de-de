@@ -3,6 +3,7 @@
 ## [Ressourcenanbieter und -typen](resource-manager-supported-services.md)
 ## [Resource Manager-Bereitstellung und klassische Bereitstellung](resource-manager-deployment-model.md)
 ## [Abonnementgovernance](resource-manager-subscription-governance.md)
+## [Organisieren von Ressourcen mit Verwaltungsgruppen](management-groups-overview.md)
 
 # Erste Schritte
 ## [Erstellen und Bereitstellen der Vorlage](resource-manager-create-first-template.md)
@@ -45,7 +46,8 @@
 ### [REST-API](resource-manager-rest-api.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
-### [Organisieren von Abonnements mit Verwaltungsgruppen](../billing/billing-enterprise-mgmt-group-overview.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Erstellen von Verwaltungsgruppen](management-groups-create.md)
+### [Verwalten Ihrer Verwaltungsgruppen](management-groups-manage.md)
 ### [Governancebeispiele](resource-manager-subscription-examples.md)
 ### [Verwaltete Anwendungen](../managed-applications/overview.md)
 

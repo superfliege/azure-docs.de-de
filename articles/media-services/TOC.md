@@ -36,11 +36,9 @@
 #### [Speicherkontenübergreifendes Verwalten von Assets](meda-services-managing-multiple-storage-accounts.md)
 ### [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md)
 ## [Konfigurieren von Postman](media-rest-apis-with-postman.md)
-### On-Demand-Streaming
-#### [Umgebung](postman-environment.md)
-#### [Sammlung](postman-collection.md)
-### Livestreaming
-#### [Sammlung](postman-live-streaming-collection.md)
+### [On-Demand-Streamingsammlung](postman-collection.md)
+### [Livestreamingsammlung](postman-live-streaming-collection.md)
+### [Umgebung](postman-environment.md)
 ## Hochladen von Inhalten
 ### Hochladen von Dateien in ein Konto
 #### [Azure portal](media-services-portal-upload-files.md)
