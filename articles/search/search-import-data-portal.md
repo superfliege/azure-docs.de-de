@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: 710543b5423d2b651545151eb4a8d426720e28e0
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 286408fb0c3aa2b83cf17a4646f6f7420b6884f4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>Importieren von Daten in Azure Search über das Portal
 Im Azure-Portal steht auf dem Azure Search-Dashboard der **Datenimport-Assistent** zur Verfügung, mit dem Sie Daten in einen Index laden können. 
@@ -43,13 +43,13 @@ Der Datenimport-Assistent unterstützt die folgenden Datenquellen:
 * Azure SQL-Datenbank
 * Relationale SQL Server-Daten auf einem virtuellen Azure-Computer
 * Azure Cosmos DB
-* Azure-Blobspeicher
+* Azure Blob Storage
 * Azure-Tabellenspeicher
 
 Als Eingabe ist ein vereinfachtes Dataset erforderlich. Sie können Daten nur aus einer einzelnen Tabelle, Datenbanksicht oder entsprechenden Datenstruktur importieren. Diese Datenstruktur muss vor dem Ausführen des Assistenten erstellt werden.
 
 ## <a name="connect-to-your-data"></a>Herstellen einer Verbindung mit Ihren Daten
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie das Servicedashboard. Sie können auf der Navigationsleiste auf **Weitere Dienste** klicken, um nach vorhandenen Suchdiensten des aktuellen Abonnements zu suchen. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie das Servicedashboard. Sie können auf der Navigationsleiste auf **Alle Dienste** klicken, um nach vorhandenen Suchdiensten des aktuellen Abonnements zu suchen. 
 2. Klicken Sie auf der Befehlsleiste auf **Daten importieren** , um das gleichnamige Blatt zu öffnen.  
 3. Klicken Sie auf **Mit Ihren Daten verbinden** , um eine von einem Indexer verwendete Datenquellendefinition anzugeben. Bei abonnementinternen Datenquellen kann der Assistent Verbindungsinformationen in der Regel erkennen und lesen, was insgesamt den Konfigurationsaufwand minimiert.
 

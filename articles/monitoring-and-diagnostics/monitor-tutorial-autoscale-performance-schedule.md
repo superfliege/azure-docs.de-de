@@ -7,14 +7,14 @@ services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
 ms.topic: tutorial
-ms.date: 09/25/2017
+ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 012183b8e6c15d62eda2534985bf73140187d7af
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f956a9436126c2a46d80b20770d7d86309e5b3af
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
@@ -35,31 +35,29 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Erstellen einer Web-App und eines App Service-Plans
-1. Klicken Sie im linken Navigationsbereich auf die Option **Neu**.
-
+1. Klicken Sie im linken Navigationsbereich auf die Option **Ressource erstellen**.
 2. Suchen Sie nach dem Element *Web-App*, wählen Sie es aus, und klicken Sie auf **Erstellen**.
+3. Wählen Sie einen App-Namen wie *MyTestScaleWebApp*. Erstellen Sie eine neue Ressourcengruppe mit dem Namen „myResourceGroup“, und platzieren Sie sie in die Ressourcengruppe Ihrer Wahl.
 
-3. Wählen Sie einen App-Namen wie *MyTestScaleWebApp*. Erstellen Sie eine neue Ressourcengruppe mit dem Namen *myResourceGroup*, und platzieren Sie sie in die Ressourcengruppe Ihrer Wahl.
-
-Ihre Ressourcen sollten innerhalb weniger Minuten bereitgestellt werden. Im restlichen Teil dieses Tutorials verwenden Sie die Web-App und den zugehörigen App Service-Plan.
+Ihre Ressourcen sollten innerhalb weniger Minuten bereitgestellt werden. Verwenden Sie die Web-App und den dazugehörigen App Service-Plan im weiteren Verlauf dieses Tutorials.
 
    ![Erstellen eines neuen App Service-Plans im Portal](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
 
 ## <a name="navigate-to-autoscale-settings"></a>Navigieren zu den Einstellungen für die automatische Skalierung
-1. Klicken Sie im linken Navigationsbereich auf die Option **Überwachen**. Nachdem die Seite geladen wurde, wählen Sie die Registerkarte **Automatisch skalieren**.
+1. Klicken Sie im linken Navigationsbereich auf die Option **Überwachen**. Warten Sie, bis die Seite geladen wurde, und klicken Sie dann auf die Registerkarte **Automatisch skalieren**.
 2. Eine Liste der Ressourcen in Ihrem Abonnement, die die automatische Skalierung unterstützen, wird hier aufgeführt. Ermitteln Sie den App Service-Plan, der zuvor im Tutorial erstellt wurde, und klicken Sie darauf.
 
     ![Navigieren zu den Einstellungen für die automatische Skalierung](./media/monitor-tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. Klicken Sie in der Einstellung für die automatische Skalierung auf die Schaltfläche **Automatische Skalierung aktivieren**.
 
-In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm zur automatischen Skalierung gemäß der folgenden Abbildung ausfüllen:
+In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm für die automatische Skalierung so ausfüllen, dass er wie in der folgenden Abbildung aussieht:
 
    ![Speichern einer Einstellung für die automatische Skalierung](./media/monitor-tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
  ## <a name="configure-default-profile"></a>Konfigurieren des Standardprofils
-1. Geben Sie einen **Namen** für die Einstellung für die automatische Skalierung an.
-2. Vergewissern Sie sich, dass der **Skalierungsmodus** im Standardprofil auf „Auf eine bestimmte Anzahl von Instanzen skalieren“ festgelegt ist.
+1. Geben Sie unter **Name** einen Namen für die Einstellung für die automatischen Skalierung an.
+2. Vergewissern Sie sich im Standardprofil, dass der **Skalierungsmodus** auf „Auf eine bestimmte Anzahl von Instanzen skalieren“ festgelegt ist.
 3. Legen Sie die Anzahl der Instanzen auf **1** fest. Durch diese Einstellung wird sichergestellt, dass das die Anzahl der Instanzen im Standardprofil auf „1“ zurückgesetzt wird, wenn kein anderes Profil aktiv oder wirksam ist.
 
   ![Navigieren zu den Einstellungen für die automatische Skalierung](./media/monitor-tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
@@ -81,7 +79,7 @@ In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm zur automatische
 
 ## <a name="create-a-scale-out-rule"></a>Erstellen einer Regel zum horizontalen Hochskalieren
 
-1. Führen Sie im „Profil Montag bis Freitag“ folgende Schritte durch:
+1. Führen Sie in „Monday to Friday profile“ folgende Schritte durch:
 
 2. Klicken Sie auf den Link **Regel hinzufügen**.
 
@@ -91,9 +89,9 @@ In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm zur automatische
 
 5. Legen Sie **Operator** auf „Größer als“, **Schwellenwert** auf „10“ und **Dauer** auf „5“ Minuten fest.
 
-6. Legen Sie **Vorgang** auf „Anzahl erhöhen um“, **Anzahl der Instanzen** auf „1“ und **Abkühlen** auf „5“ Minuten fest.
+6. Legen Sie **Vorgang** auf „Anzahl erhöhen um“, **Anzahl von Instanzen** auf „1“ und **Abkühlen (Minuten)** auf fünf Minuten fest.
 
-7. Klicken Sie auf die Schaltfläche **Hinzufügen**.
+7. Klicken Sie auf die Schaltfläche **Hinzufügen** .
 
 Mit dieser Regel wird sichergestellt, dass zur Steuerung des Ladevorgangs eine zusätzliche Instanz zu Ihrem App Service-Plan hinzugefügt wird, wenn Ihre Web-App innerhalb von maximal fünf Minuten mehr als zehn Anforderungen empfängt.
 
@@ -102,7 +100,7 @@ Mit dieser Regel wird sichergestellt, dass zur Steuerung des Ladevorgangs eine z
 ## <a name="create-a-scale-in-rule"></a>Erstellen einer Regel zum horizontalen Herunterskalieren
 Es wird empfohlen, bei der Erstellung einer Regel zum horizontalen Herunterskalieren stets auch eine Regel zum horizontalen Hochskalieren hinzuzufügen. So wird eine übermäßige Bereitstellung Ihrer Ressourcen verhindert. Eine übermäßige Bereitstellung bedeutet, dass mehr Instanzen ausgeführt werden, als für die Verarbeitung der aktuellen Last erforderlich sind. 
 
-1. Führen Sie im „Profil Montag bis Freitag“ folgende Schritte durch:
+1. Führen Sie in „Monday to Friday profile“ folgende Schritte durch:
 
 2. Klicken Sie auf den Link **Regel hinzufügen**.
 
@@ -112,13 +110,13 @@ Es wird empfohlen, bei der Erstellung einer Regel zum horizontalen Herunterskali
 
 5. Legen Sie **Operator** auf „Kleiner als“, **Schwellenwert** auf „5“ und **Dauer** auf „5“ Minuten fest.
 
-6. Legen Sie **Vorgang** auf „Anzahl verringern um“, **Anzahl der Instanzen** auf „1“ und **Abkühlen** auf „5“ Minuten fest.
+6. Legen Sie **Vorgang** auf „Anzahl verringern um“, **Anzahl von Instanzen** auf „1“ und **Abkühlen (Minuten)** auf fünf Minuten fest.
 
-7. Klicken Sie auf die Schaltfläche **Hinzufügen**.
+7. Klicken Sie auf die Schaltfläche **Hinzufügen** .
 
     ![Erstellen einer Regel zum horizontalen Herunterskalieren](./media/monitor-tutorial-autoscale-performance-schedule/Scale-In-Rule.png)
 
-8. **Speichern** der Einstellung für die automatische Skalierung
+8. **Speichern** der Einstellung für die automatische Skalierung.
 
     ![Speichern einer Einstellung für die automatische Skalierung](./media/monitor-tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
@@ -127,7 +125,7 @@ Um die Bedingung zum horizontalen Hochskalieren in der zuvor erstellten Einstell
 
 1. Öffnen Sie ein Browserfenster, und navigieren Sie zu der Web-App, die Sie zuvor in diesem Tutorial erstellt haben. Die URL für Ihre Web-App finden Sie im Azure-Portal, indem Sie zu Ihrer Web-App-Ressource navigieren und dann auf der Registerkarte „Übersicht“ auf die Schaltfläche **Durchsuchen** klicken.
 
-2. Aktualisieren Sie die Seite in schneller Abfolge mehr als 10-mal.
+2. Aktualisieren Sie die Seite mehr als zehnmal in schneller Folge.
 
 3. Klicken Sie im linken Navigationsbereich auf die Option **Überwachen**. Nachdem die Seite geladen wurde, wählen Sie die Registerkarte **Automatisch skalieren**.
 
@@ -135,7 +133,7 @@ Um die Bedingung zum horizontalen Hochskalieren in der zuvor erstellten Einstell
 
 5. Klicken Sie in der Einstellung für die automatische Skalierung auf die Registerkarte **Ausführungsverlauf**.
 
-6. Ein Diagramm wird angezeigt, das die Anzahl der Instanzen des App Service-Plans im Zeitverlauf darstellt.
+6. Ein Diagramm wird angezeigt, dass die Anzahl der Instanzen des App Service-Plans im Zeitverlauf darstellt.
 
 7. In wenigen Minuten sollte die Anzahl der Instanzen von „1“ auf „2“ steigen.
 
@@ -168,7 +166,7 @@ Die Bedingung zum horizontalen Herunterskalieren in der Einstellung für die aut
 
 2. Klicken Sie auf der Seite mit Ihren Ressourcen auf **Löschen**, bestätigen Sie den Löschvorgang, indem Sie **Ja** in das Textfeld eingeben, und klicken Sie anschließend auf **Löschen**.
 
-3. Wählen Sie anschließend die Ressource des App Service-Plans aus, und klicken Sie auf **Löschen**
+3. Wählen Sie anschließend die Ressource des App Service-Plans aus, und klicken Sie auf **Löschen**.
 
 4. Bestätigen Sie den Löschvorgang, indem Sie **Ja** in das Textfeld eingeben, und klicken Sie anschließend auf **Löschen**.
 

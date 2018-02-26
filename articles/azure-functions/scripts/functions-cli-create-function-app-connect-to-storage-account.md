@@ -16,15 +16,17 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 363a3fd1c80538495658720274840b921baa8675
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: b4dad0bba7a147f294c5d9ce3a1a1aa8e95058f3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="integrate-function-app-into-azure-storage-account"></a>Integrieren der Funktionen-App in ein Azure-Speicherkonto
+# <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>Erstellen einer Funktions-App, die eine Verbindung mit einem Azure Storage-Konto herstellt
 
-Dieses Beispielskript erstellt eine Funktionen-App und ein Speicherkonto.
+Dieses Azure Functions-Beispielskript erstellt eine Funktions-App und stellt eine Verbindung zwischen der Funktion und einem Azure Storage-Konto her. Die erstellte App-Einstellung mit der Verbindung kann mit einem [Storage-Trigger oder einer Storage-Bindung](..\functions-bindings-storage-blob.md) verwendet werden. 
+
+[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,11 +51,11 @@ Nach Ausführung des Skriptbeispiels werden mit dem folgenden Befehl die Ressour
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
-| [az login](https://docs.microsoft.com/cli/azure/#login) | Melden Sie sich bei Azure an. |
+| [az login](https://docs.microsoft.com/cli/azure/#az_login) | Melden Sie sich bei Azure an. |
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellen Sie eine Ressourcengruppe mit einem Speicherort. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | Erstellen Sie ein Speicherkonto. |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | Speicherkonto erstellen |
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | Erstellen Sie eine neue Funktionen-App. |
 | [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Bereinigen |
 

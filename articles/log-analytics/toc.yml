@@ -107,7 +107,7 @@
           href: 'https://docs.loganalytics.io'
         - name: Wechsel von der Legacysprache
           href: log-analytics-log-search-transition.md
-        - name: Arbeitsbereichsübergreifende Suchvorgänge
+        - name: Ressourcenübergreifende Suchvorgänge
           href: log-analytics-cross-workspace-search.md
         - name: Ausführen von Aktionen aus Suchergebnissen
           href: log-analytics-log-search-takeaction.md

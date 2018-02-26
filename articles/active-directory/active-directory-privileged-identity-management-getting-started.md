@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/17/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: 11b5d1bc4e931ad902b623fe55e62097ae40d8ef
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9f51daabef7d1e02917869e4e6943b8ea28b56f5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>Erste Schritte mit Azure AD Privileged Identity Management
 
@@ -33,7 +33,7 @@ Bevor Sie Azure AD Privileged Identity Management verwenden können, müssen Sie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Verzeichnisses an.
 2. Wenn Ihre Organisation über mehr als ein Verzeichnis verfügt, klicken Sie in der oberen rechten Ecke des Azure-Portals auf Ihren Benutzernamen. Wählen Sie das Verzeichnis aus, in dem Sie PIM verwenden möchten.
-3. Wählen Sie **Weitere Dienste** aus, und verwenden Sie das Textfeld „Filter“, um nach **Azure AD Privileged Identity Management** zu suchen.
+3. Wählen Sie **Alle Dienste** aus, und verwenden Sie das Textfeld „Filter“, um nach **Azure AD Privileged Identity Management** zu suchen.
 4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
 
 Wenn Sie die erste Person sind, die Azure AD Privileged Identity Management in Ihrem Verzeichnis verwendet, werden Ihnen automatisch die Rollen **Sicherheitsadministrator** und **Administrator für privilegierte Rollen** im Verzeichnis zugewiesen. Nur Administratoren für privilegierte Rollen können Azure AD-Verzeichnisrollenzuweisungen von Benutzern verwalten. Darüber hinaus können Sie den [Sicherheits-Assistenten](active-directory-privileged-identity-management-security-wizard.md) ausführen. Dieser Assistent führt Sie durch die Erstermittlung und -zuweisung.

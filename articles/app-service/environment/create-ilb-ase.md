@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 9f7343102cf7af6d7f2ba6b4b2f08b7b855da6f8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -55,7 +55,7 @@ Es gibt einige Dinge, die Sie mit einer ILB-ASE nicht machen können:
 
 So erstellen Sie eine ILB-ASE:
 
-1. Wählen Sie im Azure-Portal **Neu** > **Web und mobil** > **App Service-Umgebung** aus.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web + Mobil** > **App Service-Umgebung**.
 
 2. Wählen Sie Ihr Abonnement aus.
 
@@ -106,7 +106,7 @@ Wenn Sie **VIP-Typ** auf **Intern** festlegen, wird der ASE-Name nicht in der Do
 
 Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App normalerweise in einer ASE erstellen würden.
 
-1. Wählen Sie im Azure-Portal **Neu** > **Web und mobil** > **Web** oder **Mobil** bzw. **API-App** aus.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web + Mobil** > **Web** oder **Mobil** oder **API-App**.
 
 2. Geben Sie den Namen der App ein.
 

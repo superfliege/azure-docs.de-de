@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 897c45322148aeb088f1ec2e7f8d9f46b58c71aa
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 04e379e1bbd84929fca68cf2de8ebfcc217a51d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Analysieren Ihrer mobilen Apps mit App Center und Application Insights
 
@@ -66,20 +66,20 @@ Um sicherzustellen, dass Ihre benutzerdefinierten Ereignisse empfangen werden, w
 Sobald Ihre App benutzerdefinierte Ereignisse sendet und diese von App Center empfangen werden, müssen Sie eine Application Insights-Ressource für App Center im Azure-Portal erstellen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Wählen Sie **Neu** > **Überwachung + Verwaltung** > **Application Insights** aus.
+2. Klicken Sie auf **Ressource erstellen** > **Überwachung + Verwaltung** > **Application Insights**.
 
     ![Hinzufügen einer Application Insights-Ressource](./media/app-insights-mobile-center-quickstart/add.png)
 
     Ein Konfigurationsfeld wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der unten stehenden Tabelle aus.
 
-    | Einstellungen        |  Wert           | Beschreibung  |
+    | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Ein global eindeutiger Wert wie z.B. „myApp-iOS“ | Der Name, der die zu überwachende App identifiziert. |
    | **Anwendungstyp** | App Center-Anwendung | Der Typ der zu überwachenden App. |
    | **Ressourcengruppe**     | Eine neue Ressourcengruppe, oder eine vorhandene aus dem Menü | Die Ressourcengruppe, in der die neue Application Insights-Ressource erstellt werden soll |
-   | **Standort** | Ein Standort aus dem Menü | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
+   | **Location** | Ein Standort aus dem Menü | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Create**.
 
 Wenn Ihre App mehrere Plattformen unterstützt (iOS, Android usw.), ist es am sinnvollsten, mehrere Application Insights-Ressourcen zu erstellen, eine für jede Plattform.
 

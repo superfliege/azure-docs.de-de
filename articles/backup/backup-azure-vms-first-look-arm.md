@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50f908a166cb56d5654778ebb1f57ab956bf34a1
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: b91da3e3c99cec3a63d747062d4ae9f62720a872
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Sichern virtueller Azure-Computer in Recovery Services-Tresoren
 
@@ -50,9 +50,9 @@ Je nach Anzahl von virtuellen Computern, die Sie schützen möchten, können Sie
 Führen Sie die folgenden Schritte aus, um den Sicherungsauftrag im Azure-Portal über das Blatt „VM-Verwaltung“ zu konfigurieren. Die folgenden Schritte gelten nur für virtuelle Computer im Azure-Portal.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im Menü „Hub“ auf **Weitere Dienste**, und geben Sie im Dialogfeld „Filter“ den Text **Virtuelle Computer** ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Wenn Sie den Eintrag „Virtuelle Computer“ sehen, können Sie ihn auswählen.
+2. Klicken Sie im Menü „Hub“ auf **Alle Dienste**, und geben Sie im Dialogfeld „Filter“ den Text **Virtuelle Computer** ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Wenn Sie den Eintrag „Virtuelle Computer“ sehen, können Sie ihn auswählen.
 
-  ![Klicken Sie im Menü „Hub“ auf „Weitere Dienste“, um das Textdialogfeld zu öffnen, und geben Sie „Virtuelle Computer“ ein.](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
+  ![Screenshot, der das Navigieren zu „Virtuelle Computer“ über „Alle Dienste“ zeigt](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
 
   Die Liste mit den virtuellen Computern (VMs) des Abonnements wird angezeigt.
 
@@ -131,7 +131,7 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
 So erstellen Sie einen Recovery Services-Tresor
 
 1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com/) an, sofern Sie noch nicht angemeldet sind.
-2. Klicken Sie im Menü „Hub“ auf **Weitere Dienste**, und geben Sie im Dialogfeld „Filter“ den Text **Recovery Services** ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Klicken Sie in der Liste auf „Recovery Services-Tresore“, wenn der Eintrag angezeigt wird.
+2. Klicken Sie im Menü „Hub“ auf **Alle Dienste**, und geben Sie im Dialogfeld „Filter“ den Text **Recovery Services** ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Klicken Sie in der Liste auf „Recovery Services-Tresore“, wenn der Eintrag angezeigt wird.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
@@ -202,7 +202,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Auswählen eines Sicherungsziels, Festlegen der Richtlinie und Definieren von zu schützenden Elementen
 Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen Computer registrieren, um sicherzustellen, dass alle neuen virtuellen Computer, die dem Abonnement hinzugefügt wurden, identifiziert werden. Bei diesem Vorgang wird Azure nach der Liste virtueller Computer im Abonnement abgefragt. Außerdem werden zusätzliche Informationen wie der Clouddienstname und die Region erfasst. „Szenario“ bezeichnet im Kontext des Azure-Portals das, was Sie dem Recovery Services-Tresor hinzufügen möchten. Die Richtlinie gibt die Häufigkeit und den Zeitpunkt für die Erstellung von Wiederherstellungspunkten an. Darüber hinaus enthält die Richtlinie die Beibehaltungsdauer für die Wiederherstellungspunkte.
 
-1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 2 fortfahren. Klicken Sie andernfalls im Hub-Menü auf **More Services** (Weitere Dienste), geben Sie in der Ressourcenliste **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
+1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 2 fortfahren. Klicken Sie andernfalls auf **Alle Dienste**. Geben Sie **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 

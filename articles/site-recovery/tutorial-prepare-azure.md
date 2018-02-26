@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 63290127b298efced14ad34e9223840f3229f046
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d1aadd6b44d64f0bdb35ea02d628bedfc366ad3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Replikation von lokalen Computern
 
@@ -60,8 +60,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 
 ## <a name="create-a-vault"></a>Erstellen eines Tresors
 
-1. Klicken Sie im Menü im Azure-Portal auf **Neu**>**Überwachung & Verwaltung**>
-   **Backup und Site Recovery**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Überwachung und Verwaltung** > **Backup und Site Recovery**.
 2. Geben Sie unter **Name**einen Anzeigenamen an, mit dem der Tresor identifiziert wird. In diesem Tutorial verwenden wir **ContosoVMVault**.
 3. Wählen Sie die vorhandene Ressourcengruppe mit dem Namen **contosoRG** aus.
 4. Geben Sie die Azure-Region **Europa, Westen** an, die wir in diesen Tutorials verwenden.
@@ -75,8 +74,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 
 Wenn die Azure-VMs nach einem Failover aus dem Speicher erstellt werden, werden sie mit diesem Netzwerk verknüpft.
 
-1. Klicken Sie im Menü im [Azure-Portal](https://portal.azure.com) auf **Neu**>**Netzwerk**>
-   **Virtuelles Netzwerk**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
 2. Belassen Sie als Auswahl für das Bereitstellungsmodell **Resource Manager**. „Resource Manager“ ist das empfohlene Bereitstellungsmodell.
    - Geben Sie einen Netzwerknamen an. Der Name muss innerhalb der Azure-Ressourcengruppe eindeutig sein. Wir verwenden den Namen **ContosoASRnet**
    - Verwenden Sie die vorhandene Ressourcengruppe **contosoRG**.

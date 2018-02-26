@@ -7,14 +7,14 @@ services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 08d63d47a99bdf9480299a74634bc0e9a09e691e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c1a6271d0cb2157cb23f1dd4193eadba2c1679b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Erhalten einer Benachrichtigung, wenn ein Metrikwert eine Bedingung erfüllt
 
@@ -26,15 +26,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 
-2. Suchen Sie nach **Logik-App**, und wählen Sie diese Option aus. Erstellen Sie eine neue Ressourcengruppe namens **MyResourceGroup**. Verwenden Sie den Standardspeicherort. Klicken Sie auf die Schaltfläche **Erstellen** .
+2. Suchen Sie nach **Logik-App**, und wählen Sie diese Option aus. Klicken Sie auf die Schaltfläche **Erstellen** .
 
-3. Geben Sie die Informationen der Logik-App ein, und überprüfen Sie die Option **An Dashboard anheften**. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
+3. Geben Sie die in der folgenden Abbildung gezeigten Logik-App-Informationen ein.  Verwenden Sie den Standardort. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.  Klicken Sie auf **Erstellen**, wenn Sie fertig sind. 
 
     ![Eingeben grundlegender Informationen zu Ihrer Logik-App im Portal](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
 
@@ -47,7 +47,7 @@ Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 
 6. Richten Sie Werte wie in der folgenden Abbildung dargestellt ein.
 
-    ![Konfigurieren des Logik-App-Triggers im Bereich „Portal“](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-triggers.png). 
+    ![Konfigurieren des Logik-App-Triggers im Bereich „Portal“](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-triggers.png)zu erstellen und zu verwalten. 
 
 7. Wählen Sie im Designer den Trigger **Serie** aus.
 
@@ -61,6 +61,8 @@ Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 
 12. Klicken Sie auf **Speichern**.
 
+13. Es kann bis zu fünf Minuten dauern, bis die Ausführungsaktionen der Logik-App ausgeführt werden.  
+
 ## <a name="view-metrics-for-your-logic-app"></a>Anzeigen von Metriken für die Logik-App
 
 1. Klicken Sie im linken Navigationsbereich auf die Option **Überwachen**.
@@ -71,7 +73,7 @@ Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 
 4. Ändern Sie den **Zeitraum** des Diagramms so, dass Daten für die letzte Stunde angezeigt werden.
 
-5. Jetzt sollte ein Diagramm angezeigt werden, das die Gesamtzahl der Ausführungen angibt, die Ihre Logik-App in der letzten Stunde gestartet hat.
+5. Jetzt sollte ein Diagramm angezeigt werden, das die Gesamtzahl der Ausführungen angibt, die Ihre Logik-App in der letzten Stunde gestartet hat. Sollten keine zu sehen sein, vergewissern Sie sich, dass seit dem letzten Schritt mindestens fünf Minuten vergangen sind. Aktualisieren Sie dann Ihren Browser. 
 
     ![Zeichnen eines Metrikdiagramms für die Logik-App-Ressource](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
 

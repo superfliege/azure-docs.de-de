@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 38a8792588e013a0105ea57b20b2560f0acf02e6
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: c5b0f5250a08915e987a1eb5229f2c4648e660fd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Erste Schritte mit Azure Data Lake Store über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 ## <a name="create-an-azure-data-lake-store-account"></a>Erstellen eines Azure Data Lake-Speicherkontos
 
 1. Melden Sie sich am neuen [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf **NEU**, auf **Daten und Speicher** und anschließend auf **Azure Data Lake Store**. Prüfen Sie die Informationen auf dem Blatt **Azure Data Lake Store**, und klicken Sie dann in der unteren linken Ecke des Blatts auf **Erstellen**.
+2. Klicken Sie auf **Ressource erstellen**, auf **Daten und Speicher** und anschließend auf **Azure Data Lake Store**. Prüfen Sie die Informationen auf dem Blatt **Azure Data Lake Store**, und klicken Sie dann in der unteren linken Ecke des Blatts auf **Erstellen**.
 3. Geben Sie auf dem Blatt **Neuer Data Lake Store** die Werte wie im folgenden Screenshot gezeigt an:
    
     ![Erstellen eines neuen Azure Data Lake Store-Kontos](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Erstellen eines neuen Azure Data Lake-Kontos")

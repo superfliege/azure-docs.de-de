@@ -12,15 +12,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: b7ea43419cbbb5f5d38f8ad721d564650c3681a6
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 84758fbf8f19728370280d5d94acb478ff739019
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Erstellen einer neuen Azure API Management-Dienstinstanz
 
-Azure API Management (APIM) unterstützt Organisationen beim Veröffentlichen von APIs für externe Entwickler, Partnerentwickler und interne Entwickler, um das volle Potenzial von Daten und Diensten ausschöpfen zu können. API Management bietet die Kernkompetenzen zur Sicherstellung eines erfolgreichen API-Programms in Form von Entwicklerengagement, geschäftlichen Erkenntnissen, Analysen, Sicherheit und Schutz. Mit APIM können Sie moderne API-Gateways für vorhandene Back-End-Dienste erstellen und verwalten, die an einem beliebigen Ort gehostet werden. Weitere Informationen finden Sie im Thema [Übersicht](api-management-key-concepts.md).
+Azure API Management (APIM) unterstützt Organisationen beim Veröffentlichen von APIs für externe Entwickler, Partnerentwickler und interne Entwickler, um das volle Potenzial von Daten und Diensten ausschöpfen zu können. API Management bietet die Kernkompetenzen zur Sicherstellung eines erfolgreichen API-Programms in Form von Entwicklerengagement, geschäftlichen Erkenntnissen, Analysen, Sicherheit und Schutz. Mit APIM können Sie moderne API-Gateways für vorhandene Back-End-Dienste, die an einem beliebigen Ort gehostet werden, erstellen und verwalten. Weitere Informationen finden Sie im Thema [Übersicht](api-management-key-concepts.md).
 
 In dieser Schnellstartanleitung werden die Schritte zum Erstellen einer neuen API Management-Instanz mit dem Azure-Portal beschrieben.
 
@@ -34,9 +34,9 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
 ## <a name="create-a-new-service"></a>Erstellen eines neuen Diensts
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) **Neu** > **Enterprise Integration** > **API Management**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Enterprise Integration** > **API Management**.
 
-    Alternativ können Sie **Neu** wählen, `API management` in das Suchfeld eingeben und die EINGABETASTE drücken. Klicken Sie auf **Erstellen**.
+    Alternativ können Sie **Neu** wählen, `API management` in das Suchfeld eingeben und die EINGABETASTE drücken. Klicken Sie auf **Create**.
 
 2. Geben Sie im Fenster **API Management-Dienst** Einstellungen ein.
 
@@ -47,7 +47,7 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
     |**Name**|Eindeutiger Name für Ihren API Management-Dienst| Den Namen können Sie später nicht mehr ändern. Der Name des Diensts wird verwendet, um einen Standarddomänennamen in der Form *{Name}.azure-api.net* zu generieren. Wenn Sie einen benutzerdefinierten Domänennamen verwenden möchten, lesen Sie [Configure a custom domain name](configure-custom-domain.md) (Konfigurieren eines benutzerdefinierten Domänennamens). <br/> Der Dienstname wird verwendet, um auf den Dienst und die entsprechende Azure-Ressource zu verweisen.|
     |**Abonnement**|Ihr Abonnement | Das Abonnement, unter dem diese neue Dienstinstanz erstellt wird. Sie können aus den verschiedenen Azure-Abonnements, auf die Sie Zugriff haben, ein Abonnement auswählen.|
     |**Ressourcengruppe**|*apimResourceGroup*|Sie können eine neue oder eine vorhandene Ressource auswählen. Eine Ressourcengruppe ist eine Sammlung von Ressourcen mit gleichem Lebenszyklus, gleichen Berechtigungen und gleichen Richtlinien. [Hier](../azure-resource-manager/resource-group-overview.md#resource-groups) erhalten Sie weitere Informationen.|
-    |**Standort**|*USA, Westen*|Wählen Sie die geografische Region in Ihrer Nähe aus. Im Dropdownlistenfeld werden nur die verfügbaren Regionen für den API Management-Dienst angezeigt. |
+    |**Location**|*USA, Westen*|Wählen Sie die geografische Region in Ihrer Nähe aus. Im Dropdownlistenfeld werden nur die verfügbaren Regionen für den API Management-Dienst angezeigt. |
     |**Name der Organisation**|Der Name Ihrer Organisation|Dieser Name wird an verschiedenen Stellen verwendet, u.a. im Titel des Entwicklerportals und im Absender von Benachrichtigungs-E-Mails.|
     |**Administrator-E-Mail**|*admin@org.com*|Legen Sie die E-Mail-Adresse fest, an die alle Benachrichtigungen von **API Management** gesendet werden.|
     |**Preisstufe**|*Entwickler*|Legen Sie den Tarif **Entwickler** fest, um den Dienst zu bewerten. Dieser Tarif ist nicht für die Produktion bestimmt. Weitere Informationen zum Skalieren der API Management-Tarife finden Sie unter [Upgrade and scale an API Management instance](upgrade-and-scale.md) (Upgraden und Skalieren einer API Management-Instanz).|
@@ -63,14 +63,14 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 Wenn die Ressourcengruppe und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit den folgenden Schritten entfernen:
 
 
-1. Klicken Sie im Azure-Portal auf ![Pfeil](./media/get-started-create-service-instance/arrow.png).
+1. Klicken Sie im Azure-Portal auf ![Pfeil](./media/get-started-create-service-instance/arrow.png)zu erstellen und zu verwalten.
 2. Klicken Sie auf **Ressourcengruppen**.
 3. Suchen Sie Ihre Ressourcengruppe.
-4. Klicken Sie auf „. . .“ , und löschen Sie die Gruppe.
+4. Klicken Sie auf „. zu erstellen und zu verwalten. .“ , und löschen Sie die Gruppe.
 
 ![cleanup](./media/get-started-create-service-instance/cleanup.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Import and publish your first API](import-and-publish.md) (Importieren und Veröffentlichen Ihrer ersten API)
+> [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md)

@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 02/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 4c7f48c993d66dd79538fd73ccaed1355c2e8cdd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d2d317d6c66aa0fb81779c3a8a192b6a50571d1f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Erstellen Ihres ersten Containers in Azure Container Instances
 Azure Container Instances erleichtert die Erstellung und Verwaltung von Docker-Containern in Azure, ohne dass Sie virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen. In dieser Schnellstartanleitung erstellen Sie einen Container in Azure und machen ihn mit einer öffentlichen IP-Adresse über das Internet verfügbar. Dieser Vorgang wird mit einem einzelnen Befehl durchgeführt. Nach wenigen Sekunden wird in Ihrem Browser Folgendes angezeigt:
@@ -40,41 +40,32 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Zum Erstellen eines Containers müssen Sie einen Namen, ein Docker-Image und eine Azure-Ressourcengruppe für den Befehl [az container create][az-container-create] angeben. Der Container kann außerdem mit einer öffentlichen IP-Adresse über das Internet verfügbar gemacht werden, dies ist jedoch optional. In dieser Schnellstartanleitung stellen Sie einen Container bereit, der eine kleine, in [Node.js][node-js] geschriebene Web-App hostet.
+Zum Erstellen eines Containers müssen Sie einen Namen, ein Docker-Image und eine Azure-Ressourcengruppe für den Befehl [az container create][az-container-create] angeben. Durch Angeben einer DNS-Namensbezeichnung kann der Container optional auch für das Internet verfügbar gemacht werden. In dieser Schnellstartanleitung stellen Sie einen Container bereit, der eine kleine, in [Node.js][node-js] geschriebene Web-App hostet.
+
+Führen Sie den folgenden Befehl aus, um eine Containerinstanz zu starten. Der Wert `--dns-name-label` muss innerhalb der Azure-Region, in der Sie die Instanz erstellen, eindeutig sein. Passen Sie den Wert also ggf. entsprechend an.
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name mycontainer --image microsoft/aci-helloworld --ip-address public --ports 80
+az container create --resource-group myResourceGroup --name mycontainer --image microsoft/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
 Innerhalb weniger Sekunden erhalten Sie eine Antwort auf Ihre Anforderung. Der Container befindet sich zunächst im Zustand **Wird erstellt...**, wird aber innerhalb weniger Sekunden gestartet. Sie können den Status mit dem Befehl [az container show][az-container-show] überprüfen:
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer
+az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
 ```
 
-Am unteren Rand der Ausgabe werden der Bereitstellungsstatus und die IP-Adresse des Containers angezeigt:
+Wenn Sie den Befehl ausführen, werden der vollständig qualifizierte Domänenname (Fully Qualified Domain Name, FQDN) des Containers und der Bereitstellungsstatus angezeigt:
 
-```json
-...
-"ipAddress": {
-      "ip": "13.88.176.27",
-      "ports": [
-        {
-          "port": 80,
-          "protocol": "TCP"
-        }
-      ]
-    },
-    "location:": "eastus",
-    "name": "mycontainer",
-    "osType": "Linux",
-    "provisioningState": "Succeeded"
-...
+```console
+$ az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+FQDN                               ProvisioningState
+---------------------------------  -------------------
+aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Sobald sich der Container im Zustand **Erfolgreich** befindet, ist er über den Browser unter der angegebenen IP-Adresse erreichbar.
+Wenn der Container den Status **Erfolgreich** hat, ist er über den Browser unter seinem FQDN erreichbar:
 
-![Mit Azure Container Instances bereitgestellte App im Browser][aci-app-browser]
+![Screenshot eines Browsers mit ausgeführter Anwendung in einer Azure-Containerinstanz][aci-app-browser]
 
 ## <a name="pull-the-container-logs"></a>Herunterladen der Containerprotokolle
 

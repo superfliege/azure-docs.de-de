@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: f9692156fa2c1eaf9d3a617d339cdbc210bf6dd1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2043f635e30de208a29a3da2fcde6bf2a1223fc8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -161,7 +161,7 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 
 Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Weitere Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Alle Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
 2. Geben Sie einen Namen für Ihr Speicherkonto ein.
 3. Legen Sie das Feld **Kontoart** auf **StorageV2 (General Purpose v2)** fest.
 4. Übernehmen Sie für das Feld **Replikation** die Einstellung **Lokal redundanter Speicher (LRS)**. Alternativ hierzu können Sie **Zonenredundanter Speicher (ZRS – Vorschau)**, **Georedundanter Speicher (GRS)** oder **Read-Access Geo Redundant-Speicher (RA-GRS)** wählen.

@@ -2,23 +2,20 @@
 title: Sicherer Zugriff auf Anwendungsdaten in der Cloud mit Azure Storage | Microsoft-Dokumentation
 description: "Verwenden von SAS-Token, Verschlüsselung und HTTPS zum Schutz Ihrer Anwendungsdaten in der Cloud"
 services: storage
-documentationcenter: 
-author: georgewallace
-manager: timlt
-editor: 
+author: tamram
+manager: jeconnoc
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 09/19/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: c43165e230a00b6a4408637fd2290a21800d07b9
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 7b7a45073d8d518700f866d9701c3ba64e665dc2
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Sichern des Zugriffs auf die Daten einer Anwendung in der Cloud
 
@@ -53,7 +50,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>Konfigurieren von SAS-Token für Miniaturbilder
 
-In Teil 1 dieser Tutorialreihe wurden Bilder aus einem öffentlichen Container in der Webanwendung angezeigt. In diesem Teil der Reihe verwenden Sie [SAS-Token (Secure Access Signature)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature), um die Miniaturbilder abzurufen. SAS-Token ermöglichen den eingeschränkten Zugriff auf einen Container oder ein Blob in Abhängigkeit von IP, Protokoll, Zeitintervall und gewährten Rechten.
+In Teil 1 dieser Tutorialreihe wurden Bilder aus einem öffentlichen Container in der Webanwendung angezeigt. In diesem Teil der Reihe verwenden Sie [SAS-Token (Shared Access Signature)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature), um die Miniaturbilder abzurufen. SAS-Token ermöglichen den eingeschränkten Zugriff auf einen Container oder ein Blob in Abhängigkeit von IP, Protokoll, Zeitintervall und gewährten Rechten.
 
 In diesem Beispiel wird der Branch `sasTokens` im Quellcoderepository verwendet, der ein aktualisiertes Codebeispiel enthält. Löschen Sie die vorhandene GitHub-Bereitstellung mit [az webapp deployment source delete](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete). Anschließend konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config).  
 

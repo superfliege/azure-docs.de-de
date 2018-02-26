@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Erstellen einer Pipeline mithilfe einer Resource Manager-Vorlage | Microsoft-Dokumentation'
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mithilfe einer Azure Resource Manager-Vorlage. Diese Pipeline kopiert Daten aus einem Azure-Blobspeicher in eine Azure SQL-Datenbank.
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mithilfe einer Azure Resource Manager-Vorlage. Diese Pipeline kopiert Daten aus Azure Blob Storage in Azure SQL-Datenbank.
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 20a2e50fa3e1f81655566d9dfd7fb0cc62a2844c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 898d3a6fe7b3fa5be6f70eb2e0e7f3a48f82adef
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Tutorial: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen einer Data Factory-Pipeline zum Kopieren von Daten 
 > [!div class="op_single_selector"]
@@ -340,7 +340,7 @@ Erstellen Sie eine JSON-Datei namens **ADFCopyTutorialARM-Parameters.json** mit 
 ## <a name="monitor-pipeline"></a>Überwachen der Pipeline
 
 1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im linken Menü auf **Data Factorys**, oder klicken Sie auf **Weitere Dienste** und anschließend unter der Kategorie **INTELLIGENCE + ANALYSE** auf **Data Factorys**.
+2. Klicken Sie im linken Menü auf **Data Factorys**, oder klicken Sie auf **Alle Dienste** und anschließend unter der Kategorie **INTELLIGENCE + ANALYSE** auf **Data Factorys**.
    
     ![Menü „Data Factorys“](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
 3. Suchen Sie auf der Seite **Data Factorys** nach Ihrer Data Factory (AzureBlobToAzureSQLDatabaseDF). 

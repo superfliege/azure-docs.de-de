@@ -1,10 +1,10 @@
 ---
 title: 'Verbinden eines virtuellen Azure-Netzwerks mit einem anderen VNet per VNet-zu-VNet-Verbindung: PowerShell | Microsoft-Dokumentation'
-description: "In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie virtuelle Netzwerke mit einer VNet-zu-VNet-Verbindung und PowerShell verbinden."
+description: Stellen Sie mithilfe von PowerShell eine VNet-zu-VNet-Verbindung zwischen virtuellen Netzwerken her.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 54cb7a9630a64be1a3012604929613fe0a843666
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8f2ecf4f10c5506b79adb033c67c41a4b1e17777
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
 
-In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNet-zu-VNet“ virtuelle Netzwerke verbinden. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Beim Verbinden von VNets aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein.
+In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken eine VNet-zu-VNet-Verbindung herstellen. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Beim Verbinden von VNets aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein.
 
 Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
-> * [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
+> * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Verbinden von verschiedenen Bereitstellungsmodellen – Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/13/2017
-ms.openlocfilehash: 9a2648d800b803bf0d9d565a806e627c49bb1a00
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 1f25e6daa7378be4463bb0322cd702163dff5c3f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Erstellen von Vorschaukonten für Azure Machine Learning und Installieren von Azure Machine Learning Workbench
 Der Azure Machine Learning-Dienst (Vorschauversion) ist eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Sie stellt eine Hilfe für professionelle Data Scientists dar, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -37,7 +37,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-azure-machine-learning-accounts"></a>Erstellen von Azure Machine Learning-Konten
 Verwenden Sie das Azure-Portal für die Bereitstellung von Azure Machine Learning-Konten: 
-1. Wählen Sie in der linken oberen Ecke des Portals die Schaltfläche **Neu** (+) aus.
+1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+).
 
 2. Geben Sie in der Suchleiste **Machine Learning** ein. Wählen Sie das Suchergebnis mit dem Namen **Machine Learning-Experimentieren (Vorschauversion)** aus.  Klicken Sie auf das Sternsymbol, um diese Auswahl im Azure-Portal als Favorit festzulegen.
 

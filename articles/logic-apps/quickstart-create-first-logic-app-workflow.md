@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9b6b9df01f0e56cac3fe45bd0ef8290ca1587a1a
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Logik-App-Workflows – Azure-Portal
 
@@ -38,7 +38,7 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
 
 ## <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App 
 
-1. Navigieren Sie über das Hauptmenü von Azure zu **Neu** > **Enterprise Integration** > **Logik-App**.
+1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Unternehmensintegration** > **Logik-App**.
 
    ![Erstellen einer Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
@@ -48,9 +48,9 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **Name** | MyFirstLogicApp | Der Name für Ihre Logik-App | 
-   | **Abonnement** | <*your-Azure-subscription-name*> | Der Name Ihres Azure-Abonnements | 
-   | **Ressourcengruppe** | My-First-LA-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird | 
+   | **Name** | MyFirstLogicApp | Der Name Ihrer Logik-App | 
+   | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements | 
+   | **Ressourcengruppe** | My-First-LA-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. | 
    | **Location** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen | 
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. | 
    |||| 
@@ -75,7 +75,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
    | ------- | ----- | ----------- | 
    | **Die URL des RSS-Feeds** | ```http://feeds.reuters.com/reuters/topNews``` | Der Link für den RSS-Feed, den Sie überwachen möchten | 
    | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen | 
-   | **Frequency** | Minute | Die Zeiteinheit für die Intervalle zwischen Überprüfungen  | 
+   | **Frequency** | Minute | Die Zeiteinheit für die Intervalle zwischen Überprüfungen.  | 
    |  |  |  | 
 
    Das Intervall und die Häufigkeit definieren zusammen den Zeitplan für den Trigger Ihrer Logik-App. 
@@ -162,13 +162,13 @@ Hier ist ein Beispiel für eine E-Mail angegeben, die von dieser Logik-App gesen
 
 ![Gesendete E-Mail bei neuem RSS-Feedelement](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Überprüfen Sie Ihren Ordner mit den Junk-E-Mails, falls Sie keine E-Mails erhalten. E-Mails dieser Art werden unter Umständen durch Ihren Junk-E-Mail-Filter umgeleitet. 
+Sollten Sie keine E-Mails erhalten, überprüfen Sie Ihren Ordner für Junk-E-Mails. E-Mails dieser Art werden unter Umständen durch Ihren Junk-E-Mail-Filter umgeleitet. 
 
 Glückwunsch! Sie haben Ihre erste Logik-App erstellt und ausgeführt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe, die Ihre Logik-App und alle zugehörigen Ressourcen enthält, nicht mehr benötigt wird, löschen Sie sie. Wechseln Sie im Azure-Hauptmenü zu **Ressourcengruppen**, und wählen Sie die Ressourcengruppe für Ihre Logik-App aus. Klicken Sie auf **Ressourcengruppe löschen**. Geben Sie den Ressourcengruppennamen zur Bestätigung ein, und klicken Sie auf **Löschen**.
+Wenn Sie sie nicht mehr benötigen, löschen Sie die Ressourcengruppe mit Ihrer Logik-App und den dazugehörigen Ressourcen. Wechseln Sie im Azure-Hauptmenü zu **Ressourcengruppen**, und wählen Sie die Ressourcengruppe für Ihre Logik-App aus. Klicken Sie auf **Ressourcengruppe löschen**. Geben Sie den Ressourcengruppennamen zur Bestätigung ein, und klicken Sie auf **Löschen**.
 
 ![„Ressourcengruppen“ > „Übersicht“ > „Ressourcengruppe löschen“](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 

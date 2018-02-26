@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4aee1b0ded7a26df802ca2f05d6e93c153fa0476
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 76fcdff6804cd1fa66c846597218d351eb6f4c77
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk
 Dieses Tutorial ist der erste Teil einer Serie. Es wird beschrieben, wie Sie einen Service Fabric-Cluster mit Windows in einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-overview.md) und einer [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) bereitstellen, indem Sie PowerShell und eine Vorlage verwenden. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können.  Informationen zum Erstellen eines Linux-Clusters per Azure CLI finden Sie unter [Erstellen eines sicheren Linux-Clusters in Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
@@ -39,7 +39,7 @@ In diesem Tutorial lernen Sie Folgendes:
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines sicheren Clusters in Azure
-> * [Horizontales Herunter- oder Hochskalieren eines Clusters](/service-fabric-tutorial-scale-cluster.md)
+> * [Horizontales Herunter- oder Hochskalieren eines Clusters](service-fabric-tutorial-scale-cluster.md)
 > * [Aktualisieren der Runtime eines Clusters](service-fabric-tutorial-upgrade-cluster.md)
 > * [Bereitstellen von API Management mit Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 

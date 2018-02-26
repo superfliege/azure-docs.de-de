@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d2cf578d6328e6e53d1081b9ab4de3ad262390df
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 69a2967be1709c3b3e3bd9fa5854482ecc5e3aba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** aus der Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
@@ -445,7 +445,7 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGr
 ### <a name="monitor-the-full-copy-pipeline"></a>Überwachen der vollständigen Kopierpipeline
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf **Weitere Dienste**, führen Sie eine Suche mit dem Schlüsselwort `data factories` durch, und wählen Sie **Data Factorys**. 
+2. Klicken Sie auf **Alle Dienste**, führen Sie eine Suche mit dem Schlüsselwort `data factories` durch, und wählen Sie **Data Factorys** aus. 
 
     ![Menü „Data Factorys“](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-data-factories-menu-1.png)
 3. Suchen Sie in der Liste mit den Data Factorys nach **Ihrer Data Factory**, und wählen Sie sie aus, um die Seite „Data Factory“ anzuzeigen. 

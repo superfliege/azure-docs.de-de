@@ -1,4 +1,4 @@
-Melden Sie sich zum Erstellen eines Caches beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie dann auf **Neu** > **Datenbanken** > **Redis Cache**.
+Melden Sie sich zum Erstellen eines Caches zunächst beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie dann auf **Ressource erstellen** > **Datenbanken** > **Redis Cache**.
 
 > [!NOTE]
 > Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero) .
@@ -16,12 +16,12 @@ Melden Sie sich zum Erstellen eines Caches beim [Azure-Portal](https://portal.az
 > 
 > 
 
-Geben Sie auf dem Blatt **Neuer Redis Cache** die gewünschte Konfiguration für den Cache an.
+Geben unter **Neuer Redis Cache** die gewünschte Konfiguration für den Cache an.
 
 ![Cache erstellen](media/redis-cache-create/redis-cache-cache-create.png) 
 
 * Geben Sie unter **DNS-Name** einen eindeutigen Cachenamen für den Cacheendpunkt ein. Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Zahlen, Buchstaben und das Zeichen `-` enthalten. Der Cachename darf weder mit dem Zeichen `-` beginnen oder enden, noch mehrere aufeinanderfolgende Zeichen vom Typ `-` enthalten.
-* Wählen Sie unter **Abonnement**das Azure-Abonnement für den Cache aus. Wenn das Konto nur über ein einzelnes Abonnement verfügt, wird automatisch dieses Abonnement ausgewählt, und die Dropdownliste **Abonnement** wird nicht angezeigt.
+* Wählen Sie unter **Abonnement**das Azure-Abonnement für den Cache aus. Falls das Konto nur über ein einzelnes Abonnement verfügt, wird automatisch dieses Abonnement ausgewählt, und die Dropdownliste **Abonnement** wird nicht angezeigt.
 * Unter **Ressourcengruppe**können Sie eine Ressourcengruppe für Ihren Cache auswählen oder erstellen. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../articles/azure-resource-manager/resource-group-overview.md). 
 * Unter **Standort** können Sie einen geografischen Standort für Ihren Cache auswählen. Um optimale Leistungen zu erzielen, empfiehlt Microsoft, den Cache in der Region zu erstellen, in der sich auch die Cacheclientanwendung befindet.
 * Verwenden Sie **Tarif**, um die gewünschte Größe und die Merkmale für den Cache auszuwählen.

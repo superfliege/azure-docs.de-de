@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 7640d2ba495d465f06bd918df0c08f0d85b42e76
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 80df81f365ac884bc1f44268e615975407f485f0
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -29,9 +29,9 @@ Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-
 ## <a name="access-azure-and-azure-active-directory"></a>Zugreifen auf Azure und Azure Active Directory
 **F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, im Azure-Portal auf Azure AD zuzugreifen?**
 
-**A:** Für den Zugriff auf das Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, können Sie unter [http://aka.ms/accessAAD](http://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt ausführen. Andernfalls müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
+**A:** Für den Zugriff auf das Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, können Sie unter [https://aka.ms/accessAAD](https://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt ausführen. Andernfalls müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter 
 
 * [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 * [Verwalten des Verzeichnisses für Ihr Office 365-Abonnement in Azure](active-directory-manage-o365-subscription.md)
@@ -160,7 +160,7 @@ Eine vollständige Liste mit integrierten Anwendungen finden Sie unter [Active D
 
 **A:** Mit Azure AD Premium können Sie jede beliebige Anwendung hinzufügen und konfigurieren. Abhängig von den Funktionen Ihrer Anwendung und Ihren Präferenzen können Sie SSO und die automatische Bereitstellung konfigurieren.  
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter 
 
 * [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
 * [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md)
@@ -182,7 +182,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von in Azure AD integriert
 
 **A:** Azure AD unterstützt für die Authentifizierung und Autorisierung viele standardisierte Protokolle wie SAML 2.0, OpenID Connect, OAuth 2.0 und WS-Federation. Außerdem unterstützt Azure AD Kennworttresore und Funktionen für die automatisierte Anmeldung für Apps, die nur die formularbasierte Authentifizierung unterstützen.  
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter 
 
 * [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md)
 * [Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx)

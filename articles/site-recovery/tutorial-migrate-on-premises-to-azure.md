@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/07/2018
+ms.date: 02/18/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ee9397406cbca21d8bd53019d9daac5a037f508c
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 406f0890da1ef4123b16082e7371d67f6328ea2c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
@@ -45,7 +45,7 @@ Von paravirtualisierten Treibern exportierte Geräte werden nicht unterstützt.
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
 1. Melden Sie sich unter [Azure-Portal](https://portal.azure.com) > **Recovery Services** an.
-2. Klicken Sie auf **Neu** > **Überwachung und Verwaltung** > **Backup und Site Recovery**.
+2. Klicken Sie auf **Ressource erstellen** > **Überwachung + Verwaltung** > **Backup und Site Recovery**.
 3. Geben Sie in **Name** den Anzeigenamen **ContosoVMVault** ein. Wenn Sie mehrere Abonnements haben, wählen Sie das gewünschte aus.
 4. Erstellen Sie die Ressourcengruppe **ContosoRG**.
 5. Geben Sie eine Azure-Region an. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/)unter „Geografische Verfügbarkeit“.
@@ -72,7 +72,7 @@ Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert wer
 
 - [Einrichten](tutorial-vmware-to-azure.md#set-up-the-source-environment) der Quellumgebung für VMware-VMs.
 - [Einrichten](tutorial-physical-to-azure.md#set-up-the-source-environment) der Quellumgebung für physische Server.
-- [Einrichten](tutorial-hyper-v-to-azure.md#set-up-the-source-environment) der Quellumgebung für Hyper-V-VMs.
+- [Einrichten](hyper-v-azure-tutorial.md#set-up-the-source-environment) der Quellumgebung für Hyper-V-VMs.
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
 
@@ -86,14 +86,14 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 
 - [Richten Sie eine Replikationsrichtlinie ](tutorial-vmware-to-azure.md#create-a-replication-policy) für VMware-VMs ein.
 - [Richten Sie eine Replikationsrichtlinie](tutorial-physical-to-azure.md#create-a-replication-policy) für physische Server ein.
-- [Richten Sie eine Replikationsrichtlinie](tutorial-hyper-v-to-azure.md#set-up-a-replication-policy) für Hyper-V-VMs ein.
+- [Richten Sie eine Replikationsrichtlinie](hyper-v-azure-tutorial.md#set-up-a-replication-policy) für Hyper-V-VMs ein.
 
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
 - [Aktivieren Sie die Replikation](tutorial-vmware-to-azure.md#enable-replication) für VMware-VMs.
 - [Aktivieren Sie die Replikation](tutorial-physical-to-azure.md#enable-replication) für physische Server.
-- [Aktivieren Sie die Replikation](tutorial-hyper-v-to-azure.md#enable-replication) für Hyper-V-VMs.
+- [Aktivieren Sie die Replikation](hyper-v-azure-tutorial.md#enable-replication) für Hyper-V-VMs.
 
 
 ## <a name="run-a-test-migration"></a>Ausführen einer Testmigration

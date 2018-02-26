@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8922759295928a59114fcea55470d113d59b9387
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 198cd5164ce3840503aca359767638e135f164bc
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Einrichten von Application Insights für Ihre ASP.NET-Website
 
@@ -28,7 +28,7 @@ Die Einrichtung ist mit wenigen Mausklicks in Visual Studio erledigt. Das Volume
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie benötigen Folgendes, um Application Insights Ihrer ASP.NET-Website hinzuzufügen:
 
-- Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
+- Installieren Sie [Visual Studio 2017 für Windows](https://www.visualstudio.com/downloads/) mit folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 

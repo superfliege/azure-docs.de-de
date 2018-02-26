@@ -8,11 +8,11 @@ ms.author: tomfitz
 ms.date: 01/30/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 01472ffc7a98cd2c99793c8675efe2cefffe5558
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f37d496d43bb24c51d6e1c11b77d9ceba48b7b23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit dem Azure Portal und Event Grid
 
@@ -43,7 +43,7 @@ Event Grid-Themen sind Azure-Ressourcen und müssen in einer Azure-Ressourcengru
 
 Ein Thema bietet einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. 
 
-1. Klicken Sie zum Erstellen eines Themas in der Ressourcengruppe auf **Weitere Dienste**, und suchen Sie nach *Event Grid*. Wählen Sie die Option **Event Grid-Themen** aus.
+1. Klicken Sie zum Erstellen eines Themas in der Ressourcengruppe auf **Alle Dienste**, und suchen Sie nach *Event Grid*. Wählen Sie die Option **Event Grid-Themen** aus.
 
    ![Erstellen eines Event Grid-Themas](./media/custom-event-quickstart-portal/create-event-grid-topic.png)
 
@@ -61,13 +61,13 @@ Ein Thema bietet einen benutzerdefinierten Endpunkt für die Veröffentlichung I
 
 ## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
 
-Vor dem Abonnieren des Themas erstellen wir zunächst den Endpunkt für die Ereignisnachricht. Wir schreiben allerdings keinen Code, um eine Reaktion auf das Ereignis auszulösen, sondern erstellen einen Endpunkt, der die Nachrichten sammelt, damit Sie sie anzeigen können. RequestBin und Hookbin sind Open Source-Drittanbietertools, mit denen Sie einen Endpunkt erstellen und Anforderungen anzeigen können, die an ihn gesendet werden. Klicken Sie in [RequestBin](https://requestb.in/) auf **Create a RequestBin** (RequestBin erstellen), oder klicken Sie in [Hookbin](https://hookbin.com/) auf **Create New Endpoint** (Neuen Endpunkt erstellen).  Kopieren Sie die Bin-URL. Sie wird zum Abonnieren des Themas benötigt.
+Vor dem Abonnieren des Themas erstellen wir zunächst den Endpunkt für die Ereignisnachricht. Wir schreiben allerdings keinen Code, um eine Reaktion auf das Ereignis auszulösen, sondern erstellen einen Endpunkt, der die Nachrichten sammelt, damit Sie sie anzeigen können. RequestBin und Hookbin sind Open-Source-Drittanbietertools, mit denen Sie einen Endpunkt erstellen und Anforderungen anzeigen können, die an ihn gesendet werden. Klicken Sie in [RequestBin](https://requestb.in/) auf **Create a RequestBin** (RequestBin erstellen), oder klicken Sie in [Hookbin](https://hookbin.com/) auf **Create New Endpoint** (Neuen Endpunkt erstellen).  Kopieren Sie die Bin-URL. Sie wird zum Abonnieren des Themas benötigt.
 
 ## <a name="subscribe-to-a-topic"></a>Abonnieren eines Themas
 
 Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten. 
 
-1. Klicken Sie zum Erstellen eines Event Grid-Abonnements erneut auf **Weitere Dienste**, und suchen Sie nach *Event Grid*. Wählen Sie die Option **Event Grid-Abonnements** aus.
+1. Klicken Sie zum Erstellen eines Event Grid-Abonnements erneut auf **Alle Dienste**, und suchen Sie nach *Event Grid*. Wählen Sie die Option **Event Grid-Abonnements** aus.
 
    ![Erstellen eines Event Grid-Abonnements](./media/custom-event-quickstart-portal/create-subscription.png)
 
@@ -106,7 +106,7 @@ CURL ist ein Hilfsprogramm zum Ausführen von HTTP-Anforderungen. In diesem Arti
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpunkt gesendet, den Sie beim Abonnieren konfiguriert haben. Navigieren Sie zur zuvor erstellten Endpunkt-URL. Oder klicken Sie im geöffneten Browser auf die Option zum Aktualisieren. Das soeben gesendete Ereignis wird angezeigt.
+Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpunkt gesendet, den Sie beim Abonnieren konfiguriert haben. Browsen Sie zur zuvor erstellten Endpunkt-URL. Oder klicken Sie im geöffneten Browser auf die Option zum Aktualisieren. Das soeben gesendete Ereignis wird angezeigt.
 
 ```json
 [{

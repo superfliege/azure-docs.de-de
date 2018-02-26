@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: e705946dca839e6b8e11872ad5431f125b9fb41d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1e52b89cf8ac1a8ddeaa7e08ebd3734d1affe98e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>Konfigurieren der Dienstendpunkte von virtuellen Netzwerken
 
@@ -62,8 +62,8 @@ Während der Vorschauphase wird das Feature für VNET-Dienstendpunkte für besti
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
 Melden Sie sich mit Ihrem Azure-Konto an Azure an. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine kostenlose Testversion registrieren. Das Konto muss über die [Berechtigungen](#provisioning) zum Erstellen eines virtuellen Netzwerks und Dienstendpunkts verfügen.
-2. Klicken Sie auf „+Neu“ > „Netzwerk“ > „Virtuelles Netzwerk“ > „+Hinzufügen“.
-3. Geben Sie unter „Virtuelles Netzwerk erstellen“ die folgenden Werte ein, und klicken Sie anschließend auf „Erstellen“:
+2. Klicken Sie auf **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** > **+Hinzufügen**.
+3. Geben Sie unter „Virtuelles Netzwerk erstellen“ die folgenden Werte ein, und klicken Sie anschließend auf **Erstellen**:
 
 Einstellung | Wert
 ------- | -----

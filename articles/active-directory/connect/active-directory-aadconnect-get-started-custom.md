@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2018
+ms.date: 02/15/2018
 ms.author: billmath
-ms.openlocfilehash: a12bd2ec296acfb810c8805c92941e5bf70c6ccb
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ee16fe9e15e52fea482e0db34857780449c2ccb4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](active-directory-aadconnect-get-started-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -39,7 +39,7 @@ Bei der Installation der Synchronisierungsdienste können Sie den optionalen Kon
 | Optionale Konfiguration | BESCHREIBUNG |
 | --- | --- |
 | Verwenden eines vorhandenen SQL Servers |Ermöglicht Ihnen die Angabe des SQL-Servernamens und des Instanznamens. Wählen Sie diese Option aus, wenn Sie bereits über einen Datenbankserver verfügen, den Sie verwenden möchten. Geben Sie unter **Instanzname** den Instanznamen, ein Komma und die Portnummer ein, falls das Browsen für SQL Server nicht aktiviert ist. |
-| Verwenden eines vorhandenen Dienstkontos |Für Azure AD Connect wird standardmäßig ein virtuelles Dienstkonto für die Synchronisierungsdienste genutzt. Wenn Sie einen Remote-SQL Server oder einen Proxy mit Authentifizierungsanforderung verwenden, benötigen Sie ein **verwaltetes Dienstkonto** oder ein Dienstkonto in der Domäne und das Kennwort. Geben Sie in diesen Fällen das zu verwendende Konto ein. Stellen Sie sicher, dass der die Installation ausführende Benutzer ein SA in SQL ist, damit das Dienstkonto erstellt werden kann. Siehe [Azure AD Connect-Konten und -Berechtigungen](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account) |
+| Verwenden eines vorhandenen Dienstkontos |Für Azure AD Connect wird standardmäßig ein virtuelles Dienstkonto für die Synchronisierungsdienste genutzt. Wenn Sie einen Remote-SQL Server oder einen Proxy mit Authentifizierungsanforderung verwenden, benötigen Sie ein **verwaltetes Dienstkonto** oder ein Dienstkonto in der Domäne und das Kennwort. Geben Sie in diesen Fällen das zu verwendende Konto ein. Stellen Sie sicher, dass der die Installation ausführende Benutzer ein SA in SQL ist, damit das Dienstkonto erstellt werden kann.  Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). </br></br>Mit dem neuesten Build kann der SQL-Administrator nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Install Azure AD Connect using SQL delegated administrator permissions](active-directory-aadconnect-sql-delegation.md) (Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators).|
 | Angeben benutzerdefinierter Synchronisierungsgruppen |Azure AD Connect erstellt beim Installieren der Synchronisierungsdienste standardmäßig vier lokale Gruppen auf dem Server. Diese Gruppen sind: Administratorengruppe, Operatorengruppe, Durchsuchen-Gruppe und die Gruppe "Kennwort zurücksetzen". Hier können Sie Ihre eigenen Gruppen angeben. Die Gruppen müssen sich lokal auf dem Server befinden und dürfen nicht in der Domäne sein. |
 
 ### <a name="user-sign-in"></a>Benutzeranmeldung
@@ -96,7 +96,7 @@ Auf dieser Seite können Sie die UPN-Domänen anzeigen, die in der lokalen AD DS
 > Beim Aktivieren der Passthrough-Authentifizierung müssen Sie mindestens über eine verifizierte Domäne verfügen, um im Assistenten fortfahren zu können.
 
 > [!WARNING]
-> Eine alternative ID ist nicht mit allen Office 365-Workloads kompatibel. Weitere Informationen finden Sie unter [Konfigurieren der alternativen Anmelde-ID](https://technet.microsoft.com/library/dn659436.aspx).
+> Eine alternative ID ist nicht mit allen Office 365-Workloads kompatibel. Weitere Informationen finden Sie unter [Konfigurieren der alternativen Anmelde-ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 >
 >
 

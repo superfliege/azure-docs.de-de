@@ -1,10 +1,10 @@
 ---
-title: Erstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal | Microsoft-Dokumentation
+title: "Erstellen eines virtuellen Windows-Computers mit SQL Server über das Portal | Microsoft-Dokumentation"
 description: "In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal einen virtuellen Windows-Computer mit SQL Server 2017 erstellen."
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 2bf2382094f88c8c57077df10473b5f3a2e4c127
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e6ae3937a9805dfec8784efaf8370117754a03ad
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Erstellen eines virtuellen Windows-Computer mit SQL Server 2017 im Azure-Portal
+# <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Schnellstartanleitung: Erstellen eines virtuellen Windows-Computers mit SQL Server 2017 über das Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Windows](quickstart-sql-vm-create-portal.md)
@@ -27,13 +27,16 @@ ms.lasthandoff: 12/12/2017
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie im Azure-Portal einen virtuellen SQL Server-Computer erstellen.
 
+> [!TIP]
+> Sie erfahren, wie Sie schnell einen virtuellen SQL-Computer bereitstellen und eine Verbindung damit herstellen. Weitere Informationen zu anderen Bereitstellungsoptionen für virtuelle SQL-Computer finden Sie im [Bereitstellungshandbuch für virtuelle Windows-Computer mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md).
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a id="select"></a> Auswählen eines SQL Server-VM-Images
 
 1. Melden Sie sich mit Ihrem Konto beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Klicken Sie im Azure-Portal auf **Neu**. Das Portal wird mit dem Fenster **Neu** geöffnet.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**. 
 
 1. Geben Sie in das Suchfeld die Zeichenfolge **SQL Server 2017 Developer on Windows Server 2016** ein, und drücken Sie die EINGABETASTE.
 
@@ -44,7 +47,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    > [!TIP]
    > In diesem Tutorial wird die Developer Edition verwendet, weil es sich um eine Edition von SQL Server mit vollem Funktionsumfang handelt, die zu Testzwecken in der Entwicklung kostenlos ist. Sie zahlen nur für die Ausführung der VM. Umfassende Informationen zu Preisen finden Sie unter [Preisinformationen für virtuelle Azure-Computer mit SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md).
 
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Create**.
 
 ## <a id="configure"></a> Angeben grundlegender Informationen
 
@@ -111,7 +114,7 @@ Sie können die Bereitstellung über das Azure-Portal überwachen. Auf der Schal
    > [!TIP]
    > Falls Sie SQL Server Management Studio nicht haben, können Sie die Suite [hier](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) herunterladen.
 
-1. Bearbeiten Sie im Dialogfeld **Mit Server verbinden** oder **Verbindung mit Datenbankmodul herstellen** den Wert **Servername**. Geben Sie die öffentliche IP-Adresse des virtuellen Computers ein. Fügen Sie dann ein Komma und den benutzerdefinierten Port **1401** hinzu, den wir beim Konfigurieren des neuen virtuellen Computers angegeben haben. Beispiel: `11.22.33.444,1401`.
+1. Bearbeiten Sie im Dialogfeld **Mit Server verbinden** oder **Verbindung mit Datenbank-Engine herstellen** den Wert **Servername**. Geben Sie die öffentliche IP-Adresse des virtuellen Computers ein. Fügen Sie dann ein Komma und den benutzerdefinierten Port **1401** hinzu, den wir beim Konfigurieren des neuen virtuellen Computers angegeben haben. Beispiel: `11.22.33.444,1401`.
 
 1. Wählen Sie im Feld **Authentifizierung** den Eintrag **SQL Server-Authentifizierung**.
 

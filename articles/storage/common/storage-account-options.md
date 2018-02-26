@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: bdbcdc7d46d5395b28cf9ba7066703ce5da900a5
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: aa8704b9991dde639b50a5b6c9a27ad5cd08ad02
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-storage-account-options"></a>Optionen für Azure Storage-Konten
 
@@ -125,7 +125,7 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie im Menü „Hub“ die Option **Neu** > **Daten und Speicher** > **Speicherkonto** aus.
+2. Klicken Sie im Menü „Hub“ auf **Ressource erstellen** > **Daten und Speicher** > **Speicherkonto**.
 
 3. Geben Sie einen Namen für Ihr Speicherkonto ein.
 
@@ -159,7 +159,7 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Navigieren Sie zu Ihrem Speicherkonto, wählen Sie „Alle Ressourcen“, und wählen Sie dann Ihr Speicherkonto aus.
+2. Navigieren Sie zu Ihrem Speicherkonto, klicken Sie auf **Alle Ressourcen**, und wählen Sie dann Ihr Speicherkonto aus.
 
 3. Klicken Sie im Abschnitt „Einstellungen“ auf **Konfiguration**.
 
@@ -173,7 +173,7 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Navigieren Sie zu Ihrem Speicherkonto, wählen Sie „Alle Ressourcen“, und wählen Sie dann Ihr Speicherkonto aus.
+2. Navigieren Sie zu Ihrem Speicherkonto, klicken Sie auf **Alle Ressourcen**, und wählen Sie dann Ihr Speicherkonto aus.
 
 3. Klicken Sie auf dem Blatt „Einstellungen“ auf **Konfiguration**, um die Kontokonfiguration anzuzeigen bzw. zu ändern.
 
@@ -185,7 +185,7 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie zum Navigieren zu Ihrem Blob in Ihrem Speicherkonto die Option „Alle Ressourcen“, und wählen Sie Ihr Speicherkonto, Ihren Container und dann Ihr Blob aus.
+2. Klicken Sie auf **Alle Ressourcen**, und wählen Sie Ihr Speicherkonto, Ihren Container und dann Ihr Blob aus, um zu Ihrem Blob in Ihrem Speicherkonto zu navigieren.
 
 3. Klicken Sie auf dem Blatt „Blob-Eigenschaften“ auf das Dropdownmenü **Zugriffsebene**, um die Speicherebene **Hot**, **Cool** oder **Archiv** auszuwählen.
 

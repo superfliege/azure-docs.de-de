@@ -5,16 +5,16 @@ services: application-insights
 keywords: 
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/15/2017
+ms.date: 12/12/2017
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 065638c1d724865f45b0c1e2691041848f90ad00
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ccd55633f71be172edc330459bf8610f2146ad8d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Starten der Überwachung Ihrer ASP.NET Core-Webanwendung
 
@@ -44,20 +44,20 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen Anwendung erfassen, unabhängig davon, ob die Anwendung lokal oder in der Cloud ausgeführt wird. Geben Sie folgendermaßen vor, um diese Daten anzuzeigen.
 
-1. Wählen Sie **Neu** > **Überwachung + Verwaltung** > **Application Insights** aus.
+1. Klicken Sie auf **Ressource erstellen** > **Überwachung + Verwaltung** > **Application Insights**.
 
    ![Hinzufügen einer Application Insights-Ressource](./media/app-insights-dotnetcore-quick-start/0001-dc.png)
 
-    Es wird ein Dialogfeld für die Konfiguration geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der unten stehenden Tabelle aus.
+    Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
-    | Einstellungen        |  Wert           | Beschreibung  |
+    | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
    | **Anwendungstyp** | ASP.NET-Webanwendung | Der Typ der zu überwachenden App. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
-   | **Standort** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
+   | **Location** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
-2. Klicken Sie auf **Erstellen**.
+2. Klicken Sie auf **Create**.
 
 ## <a name="configure-app-insights-sdk"></a>Konfigurieren des Application Insights SDK
 

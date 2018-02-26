@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 12/04/2017
 ms.author: heidist
-ms.openlocfilehash: 098faa777746ac23ce7e88aa01fc727f88d4259c
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 528fd6e82079f37c1e9f907e081a1e918abd241e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>Erstellen, Abfragen und Filtern eines Azure Search-Index im Portal
 
@@ -43,10 +43,10 @@ In diesem Tutorials wird vorausgesetzt, dass Sie über ein [Azure-Abonnement](ht
 Wenn Sie nicht sofort einen Dienst bereitstellen möchten, können Sie sich eine sechsminütige Demo der Schritte in diesem Tutorial ansehen (etwa ab der dritten Minute [dieses Übersichtsvideos für Azure Search](https://channel9.msdn.com/Events/Connect/2016/138)).
 
 ## <a name="find-your-service"></a>Suchen nach dem Dienst
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Öffnen Sie das Service-Dashboard des Azure-Suchdiensts. Falls Sie die Dienstkachel nicht an Ihr Dashboard angeheftet haben, finden Sie Ihren Dienst wie folgt: 
    
-   * Klicken Sie auf der Navigationsleiste links unten im Navigationsbereich auf **Weitere Dienste**.
+   * Klicken Sie auf der Navigationsleiste im linken Navigationsbereich auf **Alle Dienste**.
    * Geben Sie in das Suchfeld den Suchbegriff *Suche* ein, um eine Liste mit Suchdiensten für Ihr Abonnement zu erhalten. Ihr Dienst sollte in der Liste angezeigt werden. 
 
 ## <a name="check-for-space"></a>Überprüfen des Speicherplatzes

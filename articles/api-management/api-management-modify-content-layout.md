@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-ms.openlocfilehash: 708c803c36c182ed90e04731b12d4ade00ae7ffb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bcf48ab8dd3b57ace70fa713074b13a992940002
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Ändern des Inhalts und Layouts von Seiten im Entwicklerportal in Azure API Management
 Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Management anzupassen:
 
 * [Bearbeiten des Inhalts von statischen Seiten und Seitenlayoutelementen][modify-content-layout] (in diesem Leitfaden beschrieben)
 * [Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden][customize-styles]
-* [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden][portal-templates] (z.B. API-Dokumente, Produkte, Benutzerauthentifizierung usw.)
+* [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden][portal-templates] (beispielsweise API-Dokumente, Produkte, Benutzerauthentifizierung usw.)
 
 ## <a name="page-structure"></a>Struktur von Seiten im Entwicklerportal
 
@@ -35,43 +35,26 @@ Das Entwicklerportal basiert auf einem Content Management-System. Das Layout jed
 
 Alle Widgets können bearbeitet werden. 
 * Die Kerninhalte für jede einzelne Seite befinden sich im Widget „Contents“ (Inhalt). Das Bearbeiten einer Seite ist also gleichbedeutend mit dem Bearbeiten des Inhalts dieses Widgets.
-* Alle Seitenlayoutelemente sind in den verbleibenden Widgets enthalten. An diesen Widgets vorgenommene Änderungen gelten für alle Seiten. Sie werden als „Layoutwidgets“ bezeichnet.
+* Alle Seitenlayoutelemente sind in den verbleibenden Widgets enthalten. An diesen Widgets vorgenommene Änderungen werden auf alle Seiten angewendet. Sie werden als „Layoutwidgets“ bezeichnet.
 
-Bei der täglichen Bearbeitung von Seiten wird normalerweise nur das Widget „Contents“ (Inhalte) geändert, das für jede Seite unterschiedlichen Inhalt aufweist.
+Bei der alltäglichen Bearbeitung von Seiten wird häufig nur das Inhaltswidget geändert, das unterschiedliche Inhalte für die einzelnen Seiten enthält.
 
 ## <a name="modify-layout-widget"></a>Ändern des Inhalts eines Layoutwidgets
 
-Die Inhalte im Entwicklerportal werden über das Herausgeberportal geändert, das im Azure-Portal aufgerufen werden kann. Um dorthin zu gelangen, klicken Sie auf der Dienstsymbolleiste Ihrer API Management-Instanz auf **Herausgeberportal**.
+Das Entwicklerportal kann über das Azure-Portal aufgerufen werden. 
 
-![Herausgeberportal][api-management-management-console]
-
-Klicken Sie zum Bearbeiten des Inhalts dieses Widgets links im Menü **Entwicklerportal** auf **Widgets**. In diesem Beispiel ändern wir den Inhalt des Widgets „Header“ (Kopfzeile). Wählen Sie in der Liste das Widget **Header** (Kopfzeile) aus.
-
-![Kopfzeilen-Widget][api-management-widgets-header]
-
-Sie können den Inhalt der Kopfzeile im Feld **Body** bearbeiten. Ändern Sie den Text wie gewünscht, und klicken Sie dann unten auf der Seite auf **Speichern**.
+1. Klicken Sie auf der Symbolleiste Ihrer API Management-Instanz auf **Entwicklerportal**.
+2. Klicken Sie auf der linken Seite im Menü des **Entwicklerportals** auf das Symbol mit den beiden Pinseln, um den Inhalt von Widgets zu ändern. 
+3. Scrollen Sie zum Ändern des Headerinhalts in der Liste auf der linken Seite zum Abschnitt **Header**.
+    
+    Die Widgets können über die Felder bearbeitet werden.
+4. Klicken Sie am unteren Rand der Seite auf **Veröffentlichen**, wenn Sie zum Veröffentlichen Ihrer Änderungen bereit sind.
 
 Die neue Kopfzeile wird jetzt auf allen Seiten im Entwicklerportal angezeigt.
 
-> Klicken Sie in der oberen Leiste auf **Entwicklerportal** , um das Entwicklerportal aus dem Herausgeberportal zu öffnen.
-> 
-> 
-
-## <a name="edit-page-contents"></a>Bearbeiten der Seiteninhalte
-
-Klicken Sie im Menü **Entwicklerportal** des Herausgeberportals auf **Inhalte**, um eine Liste aller vorhandenen Inhaltsseiten anzuzeigen.
-
-![Inhalt verwalten][api-management-customization-manage-content]
-
-Klicken Sie auf die **Willkommensseite**, um den Inhalt zu bearbeiten, der auf der Startseite des Entwicklerportals angezeigt wird. Nehmen Sie die gewünschten Änderungen vor, zeigen Sie die Änderungen in einer Vorschau an, und klicken Sie anschließend auf **Jetzt veröffentlichen**, um sie für alle Benutzer sichtbar zu machen.
-
-> Die Startseite verwendet ein spezielles Layout, mit dem ein Banner am oberen Rand angezeigt werden kann. Dieses Banner kann nicht im Abschnitt **Inhalt** bearbeitet werden. Um dieses Banner zu bearbeiten, klicken Sie im **Entwicklerportal** auf **Widgets**, wählen Sie in der Dropdownliste **Aktuelle Ebene** die Ebene **Startseite** aus, und öffnen Sie dann im Abschnitt **Ausgewählte** das Element **Banner**. Sie können den Inhalt dieses Widgets ebenso wie alle anderen Seiten bearbeiten.
-> 
-> 
-
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"> </a>Nächste Schritte
 * [Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden][customize-styles]
-* [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden][portal-templates] (z.B. API-Dokumente, Produkte, Benutzerauthentifizierung usw.)
+* [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden][portal-templates] (beispielsweise API-Dokumente, Produkte, Benutzerauthentifizierung usw.)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

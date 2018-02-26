@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6c796377b90fb3cd697f6d77589e3995b3eac338
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: ea842ecb40e2aff3316ed255388412597bb28eae
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Was sind VM-Skalierungsgruppen in Azure?
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können. Da alle virtuellen Computer in einer Skalierungsgruppe gleich konfiguriert sind, ermöglichen Skalierungsgruppen eine echte automatische Skalierung ohne Vorabbereitstellung virtueller Computer. Das erleichtert die Erstellung umfangreicher Dienste, die auf hohe Computeleistung, umfangreiche Daten und Workloads in Containern ausgelegt sind.
@@ -33,7 +33,7 @@ Die folgenden Videos enthalten weitere Informationen zu Skalierungsgruppen:
 * [VM-Skalierungsgruppen mit Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 ## <a name="creating-and-managing-scale-sets"></a>Erstellen und Verwalten von Skalierungsgruppen
-Eine Skalierungsgruppe können Sie im [Azure-Portal](https://portal.azure.com) wie folgt erstellen: Wählen Sie **Neu** aus, und geben Sie **Skalierung** in die Suchleiste ein. In den Ergebnissen wird **VM-Skalierungsgruppe** aufgeführt. Sie können anschließend die Pflichtfelder ausfüllen, um Ihre Skalierungsgruppe anzupassen und bereitzustellen. Im Portal stehen auch Optionen zum Einrichten grundlegender Regeln für die automatische Skalierung auf der Grundlage der CPU-Auslastung zur Verfügung. Ihre Skalierungsgruppe können Sie über das Azure-Portal, mithilfe von [Azure PowerShell-Cmdlets](virtual-machine-scale-sets-windows-manage.md) oder mithilfe der Azure CLI 2.0 verwalten.
+Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine Skalierungsgruppe, indem Sie auf **Ressource erstellen** klicken und **Skalierung** in die Suchleiste eingeben. In den Ergebnissen wird **VM-Skalierungsgruppe** aufgeführt. Sie können anschließend die Pflichtfelder ausfüllen, um Ihre Skalierungsgruppe anzupassen und bereitzustellen. Im Portal stehen auch Optionen zum Einrichten grundlegender Regeln für die automatische Skalierung auf der Grundlage der CPU-Auslastung zur Verfügung. Ihre Skalierungsgruppe können Sie über das Azure-Portal, mithilfe von [Azure PowerShell-Cmdlets](virtual-machine-scale-sets-windows-manage.md) oder mithilfe der Azure CLI 2.0 verwalten.
 
 Skalierungsgruppen können in [Verfügbarkeitszonen](virtual-machine-scale-sets-use-availability-zones.md) übergreifend bereitgestellt werden.
 

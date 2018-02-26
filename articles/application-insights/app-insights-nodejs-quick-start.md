@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b2c8b8cab312f581a9ceb14179a0a7cab94516d6
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 30b75f577b5e68614131e6476586921a752768dc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Starten der Überwachung Ihrer Node.js-Webanwendung
 
@@ -40,11 +40,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen Anwendung erfassen, unabhängig davon, ob die Anwendung lokal oder in der Cloud ausgeführt wird. Geben Sie folgendermaßen vor, um diese Daten anzuzeigen.
 
-1. Wählen Sie **Neu** > **Überwachung + Verwaltung** > **Application Insights** aus.
+1. Klicken Sie auf **Ressource erstellen** > **Überwachung + Verwaltung** > **Application Insights**.
 
    ![Hinzufügen einer Application Insights-Ressource](./media/app-insights-nodejs-quick-start/001-u.png)
 
-   Es wird ein Dialogfeld für die Konfiguration geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der unten stehenden Tabelle aus.
+   Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
     | Einstellungen        | Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|

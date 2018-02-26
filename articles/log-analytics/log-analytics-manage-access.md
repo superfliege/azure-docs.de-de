@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 1549408c6885ee556a142ab7de613ebb1629070d
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 5121535768b7fb430486c1c2c623e1a3a488858f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
@@ -34,7 +34,7 @@ Sie benötigen Folgendes, um einen Arbeitsbereich zu erstellen:
 ## <a name="determine-the-number-of-workspaces-you-need"></a>Bestimmen der benötigten Anzahl von Arbeitsbereichen
 Ein Arbeitsbereich ist eine Azure-Ressource. Es handelt sich hierbei um einen Container, in dem Daten gesammelt, aggregiert, analysiert und im Azure-Portal angezeigt werden.
 
-Sie können mehrere Arbeitsbereiche pro Azure-Abonnement verwenden und über den Zugriff auf mehr als einen Arbeitsbereich verfügen. Eine Verringerung der Anzahl von Arbeitsbereichen ermöglicht Ihnen das Abfragen und Korrelieren der größten Datenmenge, da es nicht möglich ist, mehrere Arbeitsbereiche auf einmal abzufragen. In diesem Abschnitt wird beschrieben, wann es hilfreich sein kann, mehr als einen Arbeitsbereich zu erstellen.
+Sie können mehrere Arbeitsbereiche pro Azure-Abonnement verwenden und über den Zugriff auf mehr als einen Arbeitsbereich verfügen. Bislang konnten nur Daten innerhalb des aktuellen Arbeitsbereichs analysiert werden, was bei Abfragen für mehrere in Ihrem Abonnement definierte Arbeitsbereiche hinderlich war. Nun können Sie [Abfragen für mehrere Arbeitsbereiche ausführen](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search) und sich so einen systemweiten Überblick über Ihre Daten verschaffen. In diesem Abschnitt wird beschrieben, wann es hilfreich sein kann, mehr als einen Arbeitsbereich zu erstellen.
 
 Ein Arbeitsbereich bietet jetzt Folgendes:
 
@@ -61,11 +61,11 @@ Sie können im Azure-Portal die Details zu Ihrem Arbeitsbereich anzeigen.
 
 #### <a name="view-workspace-information-in-the-azure-portal"></a>Anzeigen von Arbeitsbereichsinformationen im Azure-Portal
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**.  Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Log Analytics**.  
-    ![Azure-Hub](./media/log-analytics-manage-access/hub.png)  
-3. Wählen Sie auf dem Blatt mit den Log Analytics-Abonnements einen Arbeitsbereich aus.
-4. Auf dem Blatt zum Arbeitsbereich werden Details zum Arbeitsbereich und Links zu weiteren Informationen angezeigt.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie auf **Alle Dienste**.  Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Log Analytics**.  
+    ![Screenshot mit dem linken Azure-Menü](./media/log-analytics-manage-access/hub.png)  
+3. Wählen Sie auf der Seite mit den Log Analytics-Abonnements einen Arbeitsbereich aus.
+4. Auf der Seite für den Arbeitsbereich werden Details zum Arbeitsbereich und Links zu weiteren Informationen angezeigt.  
     ![Informationen zum Arbeitsbereich](./media/log-analytics-manage-access/workspace-details.png)  
 
 
@@ -83,7 +83,7 @@ In der folgenden Tabelle sind die Zugriffsmöglichkeiten aufgeführt, die für d
 
 |                          | Log Analytics-Portal | Azure-Portal | API (einschließlich PowerShell) |
 |--------------------------|----------------------|--------------|----------------------------|
-| Log Analytics-Benutzerrollen | Ja                  | Nein           | Nein                         |
+| Log Analytics-Benutzerrollen | Ja                  | Nein            | Nein                          |
 | Rollenbasierter Zugriff in Azure  | Ja                  | Ja          | Ja                        |
 
 > [!NOTE]
@@ -95,7 +95,7 @@ Mit den älteren Log Analytics-Benutzerrollen wird nur der Zugriff auf Aktivitä
 
 Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich:
 
-| Aktion                                                          | Azure-Berechtigungen erforderlich | Hinweise |
+| anzuzeigen.                                                          | Azure-Berechtigungen erforderlich | Notizen |
 |-----------------------------------------------------------------|--------------------------|-------|
 | Hinzufügen und Entfernen von Verwaltungslösungen                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
 | Ändern des Tarifs                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -114,12 +114,12 @@ Mitglieder der Rolle *Log Analytics-Leser* können folgende Aktionen ausführen:
 - Anzeigen und Durchsuchen aller Überwachungsdaten 
 - Anzeigen von Überwachungseinstellungen (einschließlich der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen)
 
-| Typ    | Berechtigung | Beschreibung |
+| Typ    | Berechtigung | BESCHREIBUNG |
 | ------- | ---------- | ----------- |
-| Aktion | `*/read`   | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
-| Aktion | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Ausführen von Protokollsuchabfragen (v2) |
-| Aktion | `Microsoft.OperationalInsights/workspaces/search/action` | Ausführen von Protokollsuchabfragen (v1) |
-| Aktion | `Microsoft.Support/*` | Öffnen von Supportfällen |
+| anzuzeigen. | `*/read`   | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
+| anzuzeigen. | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Ausführen von Protokollsuchabfragen (v2) |
+| anzuzeigen. | `Microsoft.OperationalInsights/workspaces/search/action` | Ausführen von Protokollsuchabfragen (v1) |
+| anzuzeigen. | `Microsoft.Support/*` | Öffnen von Supportfällen |
 |Keine Aktion | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Verhindert das Lesen des Arbeitsbereichsschlüssels, der zum Verwenden der Datensammlungs-API und zum Installieren von Agents erforderlich ist |
 
 
@@ -136,7 +136,7 @@ Mitglieder der Rolle *Log Analytics-Mitwirkender* können folgende Aktionen ausf
 > [!NOTE] 
 > Durch Hinzufügen einer VM-Erweiterung zu einem virtuellen Computer können Sie die vollständige Kontrolle über einen virtuellen Computer erlangen.
 
-| Berechtigung | Beschreibung |
+| Berechtigung | BESCHREIBUNG |
 | ---------- | ----------- |
 | `*/read`     | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
 | `Microsoft.Automation/automationAccounts/*` | Erstellen und Konfigurieren von Azure Automation-Konten (einschließlich Hinzufügen und Bearbeiten von Runbooks) |
@@ -164,15 +164,15 @@ Wenn Sie mindestens über die Azure-Leseberechtigung für den Log Analytics-Arbe
 Beim Öffnen des OMS-Portals wechseln Sie zu den bisher verwendeten Log Analytics-Benutzerrollen. Falls Sie im Log Analytics-Portal nicht über eine Rollenzuweisung verfügen, [überprüft der Dienst Ihre Azure-Berechtigungen für den Arbeitsbereich](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource).
 Ihre Rollenzuweisung im OMS-Portal wird wie folgt ermittelt:
 
-| Bedingungen                                                   | Zugewiesene Log Analytics-Benutzerrolle | Hinweise |
+| Bedingungen                                                   | Zugewiesene Log Analytics-Benutzerrolle | Notizen |
 |--------------------------------------------------------------|----------------------------------|-------|
 | Ihr Konto gehört zu einer älteren Log Analytics-Benutzerrolle.     | Angegebene Log Analytics-Benutzerrolle | |
 | Ihr Konto gehört nicht zu einer älteren Log Analytics-Benutzerrolle. <br> Vollständige Azure-Berechtigungen für den Arbeitsbereich (Berechtigung `*` <sup>1</sup>) | Administrator ||
 | Ihr Konto gehört nicht zu einer älteren Log Analytics-Benutzerrolle. <br> Vollständige Azure-Berechtigungen für den Arbeitsbereich (Berechtigung `*` <sup>1</sup>). <br> *Keine Aktionen* von `Microsoft.Authorization/*/Delete` und `Microsoft.Authorization/*/Write` | Mitwirkender ||
 | Ihr Konto gehört nicht zu einer älteren Log Analytics-Benutzerrolle. <br> Azure-Leseberechtigung | Nur Leseberechtigung ||
 | Ihr Konto gehört nicht zu einer älteren Log Analytics-Benutzerrolle. <br> Azure-Berechtigungen werden nicht verstanden. | Nur Leseberechtigung ||
-| Für per Cloudlösungsanbieter (CSP) verwaltete Abonnements. <br> Das Konto, mit dem Sie angemeldet sind, befindet sich unter der Azure Active Directory-Instanz, die mit dem Arbeitsbereich verknüpft ist. | Administrator | Normalerweise der Kunde eines CSP |
-| Für per Cloudlösungsanbieter (CSP) verwaltete Abonnements. <br> Das Konto, mit dem Sie angemeldet sind, befindet sich nicht unter der Azure Active Directory-Instanz, die mit dem Arbeitsbereich verknüpft ist. | Mitwirkender | Normalerweise der CSP |
+| Für per Cloud Solution Provider (CSP) verwaltete Abonnements. <br> Das Konto, mit dem Sie angemeldet sind, befindet sich unter der Azure Active Directory-Instanz, die mit dem Arbeitsbereich verknüpft ist. | Administrator | Normalerweise der Kunde eines CSP |
+| Für per Cloud Solution Provider (CSP) verwaltete Abonnements. <br> Das Konto, mit dem Sie angemeldet sind, befindet sich nicht unter der Azure Active Directory-Instanz, die mit dem Arbeitsbereich verknüpft ist. | Mitwirkender | Normalerweise der CSP |
 
 <sup>1</sup> Weitere Informationen zu Rollendefinition finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md). Beim Auswerten von Rollen ist die Aktion `*` nicht äquivalent zu `Microsoft.OperationalInsights/workspaces/*`.
 
@@ -257,7 +257,7 @@ Ab dem 26. September 2016 müssen alle Arbeitsbereiche bei der Erstellung mit ei
     > Damit Sie einen Arbeitsbereich verknüpfen können, muss Ihr Azure-Konto bereits Zugriff auf den zu verknüpfenden Arbeitsbereich haben.  Anders ausgedrückt: Das Konto, das Sie für den Zugriff auf das Azure-Portal verwenden, muss **identisch** mit dem Konto sein, mit dem Sie auf den Arbeitsbereich zugreifen. Ist dies nicht der Fall, lesen Sie unter [Hinzufügen eines Benutzers zu einem vorhandenen Arbeitsbereich](#add-a-user-to-an-existing-workspace) weiter.
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>So verknüpfen Sie einen Arbeitsbereich mit einem Azure-Abonnement im Azure-Portal
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 2. Suchen Sie nach **Log Analytics**, und wählen Sie diese Option aus.
 3. Ihre Liste mit den vorhandenen Arbeitsbereichen wird angezeigt. Klicken Sie auf **Hinzufügen**.  
    ![Liste der Arbeitsbereiche](./media/log-analytics-manage-access/manage-access-link-azure01.png)
@@ -270,8 +270,8 @@ Ab dem 26. September 2016 müssen alle Arbeitsbereiche bei der Erstellung mit ei
 7. Bei Bedarf können Sie die Werte für die folgenden Elemente ändern:
    * Abonnement
    * Ressourcengruppe
-   * Ort
-   * Tarif   
+   * Speicherort
+   * Tarif  
      ![Ändern von Werten](./media/log-analytics-manage-access/manage-access-link-azure05.png)
 8. Klicken Sie auf **OK**. Der Arbeitsbereich ist jetzt mit Ihrem Azure-Konto verknüpft.
 

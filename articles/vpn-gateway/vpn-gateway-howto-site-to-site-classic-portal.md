@@ -1,10 +1,10 @@
 ---
 title: 'Herstellen einer Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk: Site-to-Site-VPN (klassisch): Portal | Microsoft-Dokumentation'
-description: "Schritte zum Erstellen einer IPsec-Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk über das öffentliche Internet. Anhand dieser Schritte können Sie über das Portal eine standortübergreifende Site-to-Site-VPN Gateway-Verbindung erstellen."
+description: "Erstellen Sie über das öffentliche Internet eine IPsec-Verbindung zwischen Ihrem lokalen Netzwerk und dem klassischen virtuellen Azure-Netzwerk."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-service-management
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: eb8fe1ea6d4de066744a6277c1aec96073c1703c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 9fa8455e3be6dced5717e2a7399d0eae0e26a09b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Erstellen einer Site-to-Site-Verbindung über das Azure-Portal (klassisch)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/18/2017
 In diesem Artikel wird beschrieben, wie Sie das Azure-Portal zum Erstellen einer Site-to-Site-VPN Gateway-Verbindung zwischen Ihrem lokalen Netzwerk und dem VNET verwenden. Die Schritte in diesem Artikel gelten für das klassische Bereitstellungsmodell. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -88,7 +88,7 @@ Wenn Sie ein virtuelles Netzwerk für eine S2S-Verbindung erstellen, müssen Sie
 
   ![Seite „Virtuelles Netzwerk erstellen“](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Seite „Virtuelles Netzwerk erstellen“")
 5. Überprüfen Sie, ob es sich um das richtige **Abonnement** handelt. Das Abonnement kann über die Dropdownliste geändert werden.
-6. Klicken Sie auf **Ressourcengruppe**, und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, indem Sie einen Namen eingeben. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
+6. Klicken Sie auf **Ressourcengruppe**, und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, indem Sie einen Namen eingeben. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
 7. Wählen Sie als Nächstes für das VNet die Einstellungen für **Standort** aus. Der Standort gibt an, wo sich die in diesem VNet bereitgestellten Ressourcen befinden.
 8. Wenn das VNET komfortabel auf dem Dashboard zur Verfügung stehen soll, wählen Sie **An Dashboard anheften** aus. Klicken Sie auf **Erstellen**, um das VNET zu erstellen.
 
@@ -190,7 +190,7 @@ In diesem Schritt legen Sie den gemeinsam verwendeten Schlüssel fest und erstel
   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
   ```
 
-### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>Schritt 2: Festlegen des gemeinsam verwendeten Schlüssels und Erstellen der Verbindung
+### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>Schritt 2: Festlegen des gemeinsam verwendeten Schlüssels und Erstellen der Verbindung
 
 Beim Verwenden von PowerShell und des klassischen Bereitstellungsmodells sind die Namen der Ressourcen im Portal in einigen Fällen nicht die Namen, die Azure in Bezug auf die Nutzung von PowerShell erwartet. Mit den folgenden Schritten können Sie die Netzwerkkonfigurationsdatei exportieren, um die genauen Werte für die Namen zu erhalten.
 

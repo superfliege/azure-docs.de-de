@@ -3,22 +3,23 @@ title: "Azure Stack-Schnellstart – Erstellen einer VM mit dem Portal"
 description: "Azure Stack-Schnellstart – Erstellen einer Linux-VM mit dem Portal"
 services: azure-stack
 cloud: azure-stack
-author: vhorne
-manager: byronr
+author: brenduns
+manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/25/2017
-ms.author: victorh
+ms.date: 12/11/2017
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: a97372002052570ccad2bb8bc442eb0dd1ca76d9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d4aef23e2de327fabb1f0304d8a3db1497d55827
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Erstellen eines virtuellen Linux-Computers mit dem Azure Stack-Portal
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Virtuelle Azure Stack-Computer können über das Azure Stack-Portal erstellt werden. Bei dieser Methode können Sie die browserbasierte Benutzeroberfläche nutzen, um eine VM und alle dazugehörigen Ressourcen zu erstellen und zu konfigurieren. Dieser Schnellstart veranschaulicht das schnelle Erstellen eines virtuellen Linux-Computers und das Installieren eines Webservers darauf.
 
@@ -59,10 +60,10 @@ Melden Sie sich beim Azure Stack-Portal an. Die Adresse des Azure Stack-Portals 
 
 ## <a name="create-the-virtual-machine"></a>Erstellen des virtuellen Computers
 
-1. Klicken Sie in der linken oberen Ecke des Azure Stack-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie links oben im Azure Stack-Portal auf **Ressource erstellen**.
 
 2. Wählen Sie **Compute** und dann **Ubuntu Server 16.04 LTS**.
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Create**.
 
 4. Geben Sie die Informationen zum virtuellen Computer ein. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel**. Achten Sie beim Einfügen in Ihren öffentlichen SSH-Schlüssel (den Sie zuvor in einer Datei gespeichert haben) darauf, führende oder nachstehende Leerzeichen zu entfernen. Klicken Sie zum Abschluss auf **OK**.
 

@@ -1,73 +1,60 @@
 ---
-title: "Azure CLI-Skriptbeispiel – Erstellen eines Batch-Kontos | Microsoft-Dokumentation"
-description: "Azure CLI-Skriptbeispiel – Erstellen eines Batch-Kontos"
+title: "Azure CLI-Skriptbeispiel: Erstellen eines Batch-Kontos – Batch-Dienst | Microsoft-Dokumentation"
+description: "Azure CLI-Skriptbeispiel: Erstellen eines Batch-Kontos im Modus „Batch-Dienst“"
 services: batch
 documentationcenter: 
-author: annatisch
-manager: daryls
-editor: tysonn
+author: dlepow
+manager: jeconnoc
+editor: 
 ms.assetid: 
 ms.service: batch
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
-ms.author: antisch
-ms.openlocfilehash: fd2f4682a04c557b69bbfce115f41c54a96d462c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/29/2018
+ms.author: danlep
+ms.openlocfilehash: e8e8e475c1fe32346dde39e187a007ec7f62a2f3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-a-batch-account-with-the-azure-cli"></a>Erstellen eines Batch-Kontos mit der Azure-Befehlszeilenschnittstelle (CLI)
+# <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI-Beispiel: Erstellen eines Batch-Kontos im Modus „Batch-Dienst“
 
-Dieses Skript erstellt ein Azure Batch-Konto und zeigt, wie verschiedene Eigenschaften des Kontos abgefragt und aktualisiert werden können.
+Dieses Skript erstellt ein Azure Batch-Konto im Modus „Batch-Dienst“ und zeigt, wie verschiedene Eigenschaften des Kontos abgefragt und aktualisiert werden. Wenn Sie ein Batch-Konto im Standardmodus „Batch-Dienst“ erstellen, werden die Computeknoten standardmäßig intern durch den Batch-Dienst zugewiesen. Zugeordnete Computeknoten unterliegen einem separaten vCPU-Kontingent (Kernkontingent), und das Konto kann entweder über Anmeldeinformationen eines gemeinsam verwendeten Schlüssels oder über ein Azure Active Directory-Token authentifiziert werden.
 
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Installieren Sie Azure CLI mithilfe der Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn dies noch nicht erfolgt ist.
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Azure CLI-Version 2.0.20 verwenden. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
 
-## <a name="batch-account-sample-script"></a>Beispielskript für ein Batch-Konto
+## <a name="example-script"></a>Beispielskript
 
-Wenn Sie ein Batch-Konto erstellen, werden die Computeknoten standardmäßig intern vom Batch-Dienst zugewiesen. Zugeordnete Computeknoten unterliegen einem separaten Kernkontingent, und das Konto kann entweder über Anmeldeinformationen eines gemeinsam verwendeten Schlüssels oder ein Azure Active Dirctory-Token authentifiziert werden.
-
-[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account.sh "Create Account")]
-
-## <a name="batch-account-using-user-subscription-sample-script"></a>Beispielskript für ein Batch-Konto mit Benutzerabonnement
-
-Sie können die Computeknoten auch von Batch selbst in Ihrem eigenen Azure-Abonnement erstellen lassen.
-Konten, die Computeknoten in Ihrem Abonnement zuordnen, müssen über ein Azure Active Directory-Token authentifiziert werden, und die zugeordneten Computeknoten werden auf Ihr Abonnementkontingent angerechnet. Um ein Konto in diesem Modus zu erstellen, muss eine Schlüsseltresorreferenz angegeben werden.
-
-[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account-user-subscription.sh  "Create Account using User Subscription")]
+[!code-azurecli-interactive[main](../../../cli_scripts/batch/create-account/create-account.sh "Create Account")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
-Nachdem Sie eines der oben gezeigten Beispielskripts ausgeführt haben, entfernen Sie mit dem folgenden Befehl die Ressourcengruppe und alle zugehörigen Ressourcen (einschließlich Batch-Konten, Azure-Speicherkonten und Azure-Schlüsseltresore).
+Führen Sie den folgenden Befehl aus, um die Ressourcengruppe und alle dazugehörigen Ressourcen zu entfernen:
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengruppe, ein Batch-Konto und alle zugehörigen Ressourcen zu erstellen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az batch account create](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_create) | Erstellt das Batch-Konto.  |
-| [az batch account set](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_set) | Aktualisiert die Eigenschaften des Batch-Kontos.  |
-| [az batch account show](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_show) | Ruft Details zum angegebenen Batch-Konto ab.  |
-| [az batch account keys list](https://docs.microsoft.com/cli/azure/batch/account/keys#az_batch_account_keys_list) | Ruft die Zugriffsschlüssel zum angegebenen Batch-Konto ab.  |
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | Authentifiziert das angegebene Batch-Konto zur weiteren CLI-Interaktion.  |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Speicherkonto. |
-| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_create) | Erstellt einen Schlüsseltresor. |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_set_policy) | Aktualisiert die Sicherheitsrichtlinie des angegebenen Schlüsseltresors. |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Erstellt das Batch-Konto. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Speicherkonto. |
+| [az batch account set](/cli/azure/batch/account#az_batch_account_set) | Aktualisiert die Eigenschaften des Batch-Kontos.  |
+| [az batch account show](/cli/azure/batch/account#az_batch_account_show) | Ruft Details zum angegebenen Batch-Konto ab.  |
+| [az batch account keys list](/cli/azure/batch/account/keys#az_batch_account_keys_list) | Ruft die Zugriffsschlüssel zum angegebenen Batch-Konto ab.  |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Authentifiziert das angegebene Batch-Konto zur weiteren CLI-Interaktion.  |
+| [az group delete](/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
-
-Zusätzliche Batch-CLI-Skriptbeispiele finden Sie in der [Dokumentation zur Azure Batch-CLI](../batch-cli-samples.md).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure/overview).

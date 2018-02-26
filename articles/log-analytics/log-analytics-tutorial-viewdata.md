@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 09/26/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: dfcbb925a16ca1e53d10b7bf70d03e62bc9dae69
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: fc5dcc945750b4ab4eef337dbd96bd051bb4dd81
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten
 
@@ -36,12 +36,12 @@ Für die Erstellung und Bearbeitung von Abfragen sowie die interaktive Verwendun
 In diesem Tutorial arbeiten wir mit der Protokollsuche im Azure-Portal. 
 
 ## <a name="log-in-to-azure-portal"></a>Anmelden beim Azure-Portal
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an. 
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an. 
 
 ## <a name="open-the-log-search-portal"></a>Öffnen des Portals für die Protokollsuche 
 Öffnen Sie zunächst das Portal für die Protokollsuche.   
 
-1. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 2. Klicken Sie im Log Analytics-Abonnementbereich auf einen Arbeitsbereich, und wählen Sie dann die Kachel **Protokollsuche**.<br> ![Schaltfläche „Protokollsuche“](media/log-analytics-tutorial-viewdata/azure-portal-01.png)
 
 Am oberen Rand der Log Analytics-Ressourcenseite im Portal wird Ihnen ein Banner auffallen, das Sie zu einem Upgrade einlädt.<br> ![Log Analytics-Upgradehinweis im Azure-Portal](media/log-analytics-tutorial-viewdata/log-analytics-portal-upgradebanner.png)
@@ -50,7 +50,7 @@ Log Analytics hat kürzlich eine neue Abfragesprache eingeführt, die das Erstel
 
 Das Upgrade ist einfach.  Starten Sie den Prozess, indem Sie auf das Banner **Weitere Informationen und Upgrade** klicken.  Lesen Sie die zusätzlichen Informationen auf der Seite „Upgradeinformationen“, und klicken Sie dann auf **Jetzt aktualisieren**.
 
-Dieser Vorgang dauert einige Minuten, und während dieser Zeit können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. Weitere Informationen über die Vorzüge der neuen Sprache finden Sie unter [Warum gibt es eine neue Sprache?](log-analytics-log-search-upgrade.md#why-the-new-language).
+Dieser Vorgang dauert einige Minuten. Während dieser Zeit können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. Weitere Informationen über die Vorzüge der neuen Sprache finden Sie unter [Warum gibt es eine neue Sprache?](log-analytics-log-search-upgrade.md#why-the-new-language).
 
 ## <a name="create-a-simple-search"></a>Erstellen einer einfachen Suche
 Die schnellste Methode, Daten für die weitere Verwendung abzurufen, besteht in einer einfachen Abfrage, die alle Datensätze aus der Tabelle zurückgibt.  Wenn Windows- oder Linux-Clients mit Ihrem Arbeitsbereich verbunden sind, liegen die Daten in der Ereignistabelle (Windows) bzw. in der Syslog-Tabelle (Linux) vor.

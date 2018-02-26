@@ -1,10 +1,10 @@
 ---
 title: 'Verbinden eines virtuellen Netzwerks mit einem anderen VNet per VNet-zu-VNet-Verbindung: Azure CLI | Microsoft-Dokumentation'
-description: "In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie virtuelle Netzwerke mit einer VNet-zu-VNet-Verbindung und Azure CLI verbinden."
+description: Stellen Sie unter Verwendung der Azure-Befehlszeilenschnittstelle eine VNet-zu-VNet-Verbindung zwischen virtuellen Netzwerken her.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/29/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 663e3cb35308b354c7221e34ac6fcfc8eda15f2a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 32afd5bd3f972aa1cb1d90e0b10ebff4a761f2e3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung mithilfe der Azure CLI
 
-In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNet-zu-VNet“ virtuelle Netzwerke verbinden. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Beim Verbinden von VNets aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein.
+In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken eine VNet-zu-VNet-Verbindung herstellen. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Beim Verbinden von VNets aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein.
 
 Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und die Azure-Befehlszeilenschnittstelle. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
-> * [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
+> * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Verbinden von verschiedenen Bereitstellungsmodellen – Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
@@ -243,12 +243,12 @@ Sie verfügen jetzt über zwei VNETs mit VPN Gateways. Im nächsten Schritt werd
   az network vnet-gateway show -n VNet4GW -g TestRG4
   ```
 
-3. Erstellen Sie die Verbindung zwischen „TestVNet1“ und „TestVNet4“. In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet4. In den Beispielen wird auf einen gemeinsam verwendeten Schlüssel verwiesen. Sie können eigene Werte für den gemeinsam verwendeten Schlüssel verwenden. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
+3. Erstellen Sie die Verbindung zwischen TestVNet1 und TestVNet4. In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet4. In den Beispielen wird auf einen gemeinsam verwendeten Schlüssel verwiesen. Sie können eigene Werte für den gemeinsam verwendeten Schlüssel verwenden. Wichtig ist dabei, dass der gemeinsam verwendete Schlüssel für beide Verbindungen übereinstimmen muss. Das Erstellen einer Verbindung kann etwas dauern.
 
   ```azurecli
   az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW 
   ```
-4. Erstellen Sie die Verbindung zwischen „TestVNet4“ und „TestVNet1“. Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet4 mit TestVNet1. Stellen Sie sicher, dass die freigegebenen Schlüssel übereinstimmen. Das Herstellen der Verbindung dauert einige Minuten.
+4. Erstellen Sie die Verbindung zwischen TestVNet4 und TestVNet1. Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet4 mit TestVNet1. Stellen Sie sicher, dass die freigegebenen Schlüssel übereinstimmen. Das Herstellen der Verbindung dauert einige Minuten.
 
   ```azurecli
   az network vpn-connection create -n VNet4ToVNet1 -g TestRG4 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW -l westus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1G
@@ -257,12 +257,12 @@ Sie verfügen jetzt über zwei VNETs mit VPN Gateways. Im nächsten Schritt werd
 
 ### <a name="samerg"></a>So verbinden Sie VNETs, die sich in derselben Ressourcengruppe befinden
 
-1. Erstellen Sie die Verbindung zwischen „TestVNet1“ und „TestVNet4“. In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet4. Beachten Sie, dass die Ressourcengruppen in den Beispielen identisch sind. In den Beispielen wird auch auf einen gemeinsam verwendeten Schlüssel verwiesen. Sie können Ihre eigenen Werte für den gemeinsam verwendeten Schlüssel nutzen, der gemeinsam verwendete Schlüssel muss jedoch für beide Verbindungen übereinstimmen. Das Erstellen einer Verbindung kann etwas dauern.
+1. Erstellen Sie die Verbindung zwischen TestVNet1 und TestVNet4. In diesem Schritt erstellen Sie die Verbindung von TestVNet1 mit TestVNet4. Beachten Sie, dass die Ressourcengruppen in den Beispielen identisch sind. In den Beispielen wird auch auf einen gemeinsam verwendeten Schlüssel verwiesen. Sie können Ihre eigenen Werte für den gemeinsam verwendeten Schlüssel nutzen, der gemeinsam verwendete Schlüssel muss jedoch für beide Verbindungen übereinstimmen. Das Erstellen einer Verbindung kann etwas dauern.
 
   ```azurecli
   az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 VNet4GW
   ```
-2. Erstellen Sie die Verbindung zwischen „TestVNet4“ und „TestVNet1“. Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet4 mit TestVNet1. Stellen Sie sicher, dass die freigegebenen Schlüssel übereinstimmen. Das Herstellen der Verbindung dauert einige Minuten.
+2. Erstellen Sie die Verbindung zwischen TestVNet4 und TestVNet1. Dieser Schritt ähnelt dem obigen Schritt, aber hier erstellen Sie jetzt die Verbindung von TestVNet4 mit TestVNet1. Stellen Sie sicher, dass die freigegebenen Schlüssel übereinstimmen. Das Herstellen der Verbindung dauert einige Minuten.
 
   ```azurecli
   az network vpn-connection create -n VNet4ToVNet1 -g TestRG1 --vnet-gateway1 VNet4GW -l eastus --shared-key "eeffgg" --vnet-gateway2 VNet1GW

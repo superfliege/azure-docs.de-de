@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: f0cdafdb88604b8874a245751246d219e8df3813
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 704391a60b4ba777b8fd2b156db2ea5587498383
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
 
@@ -116,7 +116,7 @@ Führen Sie folgende Schritte aus, um die Anwendung in der Cloud auszuführen:
 Ein Azure-Clouddienst ist die Umgebung, in der die Anwendung ausgeführt wird.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) in Ihrem Browser.
-2. Klicken Sie auf **Neu > Compute > Clouddienst**.
+2. Klicken Sie auf **„Ressource erstellen“ > „Compute“ > „Clouddienst“**.
 
 3. Geben Sie im Eingabefeld für den DNS-Namen ein URL-Präfix für den Clouddienst ein.
 
@@ -126,7 +126,7 @@ Ein Azure-Clouddienst ist die Umgebung, in der die Anwendung ausgeführt wird.
 5. Wählen Sie die Region aus, in der Sie Ihre Anwendung bereitstellen möchten.
 
     Dieses Feld gibt an, in welchem Datencenter der Clouddienst gehostet wird. Für eine Produktionsanwendung würden Sie die für Ihre Kunden am nächsten gelegene Region auswählen. Wählen Sie für dieses Tutorial die Ihnen am nächsten gelegene Region aus.
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 
     In der folgenden Abbildung wird ein Clouddienst mit der URL „CSvccontosoads.cloudapp.net“ erstellt.
 
@@ -135,7 +135,7 @@ Ein Azure-Clouddienst ist die Umgebung, in der die Anwendung ausgeführt wird.
 ### <a name="create-an-azure-sql-database"></a>Erstellen einer Azure SQL-Datenbank
 Wenn die Anwendung in der Cloud ausgeführt wird, verwendet sie eine cloudbasierte Datenbank.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu > Datenbanken > SQL-Datenbank**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **„Ressource erstellen“ > „Datenbanken“ > „SQL-Datenbank“**.
 2. Geben Sie unter **Datenbankname** den Wert *contosoads*ein.
 3. Klicken Sie in der **Ressourcengruppe** auf **Vorhandene verwenden**, und wählen Sie die Ressourcengruppe aus, die für den Clouddienst verwendet wird.
 4. Klicken Sie in der folgenden Abbildung auf **Server – Erforderliche Einstellungen konfigurieren** und dann auf **Neuen Server erstellen**.
@@ -155,14 +155,14 @@ Wenn die Anwendung in der Cloud ausgeführt wird, verwendet sie eine cloudbasier
 9. Klicken Sie für den neuen Server auf **Auswählen**.
 
     ![Neuer SQL-Datenbankserver](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klicken Sie auf **Erstellen**.
+10. Klicken Sie auf **Create**.
 
 ### <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 Azure-Speicherkonten bieten Ressourcen zum Speichern von Warteschlangen- und Blobdaten in der Cloud.
 
 In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für Anwendungsdaten und Protokolldaten sowie für Test- und Produktionsdaten erstellen. In diesem Tutorial verwenden wir nur ein einzelnes Konto.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu > Speicher > Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **„Ressource erstellen“ > „Storage“ > „Speicherkonto – Blob, Datei, Tabelle, Warteschlange“**.
 2. Geben Sie im Feld **Name** ein URL-Präfix ein.
 
     Dieses Präfix zusammen mit dem Text unterhalb des Eingabefelds ergibt die eindeutige URL Ihres Speicherkontos. Falls das eingegebene Präfix bereits von einer anderen Person verwendet wird, müssen Sie ein anderes Präfix auswählen.
@@ -178,7 +178,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
     Wenn sich Clouddienst und Speicherkonto in unterschiedlichen Datencentern (d. h. unterschiedlichen Regionen) befinden, steigt die Latenz an und Sie müssen für die Bandbreite außerhalb des Datencenters bezahlen. Die Bandbreite innerhalb eines Datencenters ist kostenlos.
 
     Mit Azure-Affinitätsgruppen können Sie die Distanz zwischen Ressourcen in einem Datencenter und somit die Latenz minimieren. Dieses Tutorial verwendet keine Affinitätsgruppen. Anweisungen finden Sie unter [Erstellen einer Affinitätsgruppe in Azure](http://msdn.microsoft.com/library/jj156209.aspx).
-7. Klicken Sie auf **Erstellen**.
+7. Klicken Sie auf **Create**.
 
     ![Neues Speicherkonto](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -213,7 +213,7 @@ Sie werden eine [Web.config-Transformation](http://www.asp.net/mvc/tutorials/dep
     ![Verbindungszeichenfolgen](./media/cloud-services-dotnet-get-started/connstrings.png)
 3. Löschen Sie in der Transformationsdatei *Web.Release.config* den Teil `{connectionstring}`, und fügen Sie stattdessen die ADO.NET-Verbindungszeichenfolge aus dem Azure-Portal ein.
 4. Ersetzen Sie in der Verbindungszeichenfolge, die Sie in die Transformationsdatei *Web.Release.config* eingefügt haben, `{your_password_here}` durch das Kennwort, das Sie für die neue SQL-Datenbank eingerichtet haben.
-5. Speichern Sie die Datei.  
+5. Speichern Sie die Datei .  
 6. Kopieren Sie die Verbindungszeichenfolge (ohne die umgebenden Anführungszeichen), um diese in den folgenden Schritten bei der Konfiguration des Workerrollen-Projekts zur Verfügung zu haben.
 7. Klicken Sie im **Projektmappen-Explorer** unter **Rollen** im Clouddienstprojekt mit der rechten Maustaste auf **ContosoAdsWorker**, und klicken Sie auf **Eigenschaften**.
 

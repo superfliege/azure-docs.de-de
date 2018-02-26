@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 9919e326613ce81db32f1d72a8cb5e3668992885
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f8082b632e9fef4aa5d46deb35e415f2b1c55dda
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud
-Azure Active Directory (Azure AD) Connect Health unterstützt Sie bei der Überwachung Ihrer lokalen Identitätsinfrastruktur und Synchronisierungsdienste und vermittelt Ihnen wichtige Einblicke. Sie können für eine zuverlässige Verbindung mit Office 365 und Microsoft Online Services sorgen, indem Sie Überwachungsfunktionen für Ihre wichtigen Identitätskomponenten bereitstellen, z. B. Active Directory Federation Services (AD FS), Azure AD Connect-Server (Synchronisierungsmodul), Active Directory-Domänencontroller usw. Außerdem sind die wichtigen Datenpunkte dieser Komponenten hierbei leicht zugänglich, sodass Sie Informationen zur Nutzung und andere wichtige Einblicke erhalten und fundierte Entscheidungen treffen können.
+Azure Active Directory (Azure AD) Connect Health unterstützt Sie bei der Überwachung Ihrer lokalen Identitätsinfrastruktur und Synchronisierungsdienste und vermittelt Ihnen wichtige Einblicke. Sie können für eine zuverlässige Verbindung mit Office 365 und Microsoft Online Services sorgen, indem Sie Überwachungsfunktionen für Ihre wichtigen Identitätskomponenten bereitstellen, z.B. Active Directory Federation Services (AD FS), Azure AD Connect-Server (Synchronisierungsmodul), Active Directory-Domänencontroller usw. Außerdem sind die wichtigen Datenpunkte dieser Komponenten hierbei leicht zugänglich, sodass Sie Informationen zur Nutzung und andere wichtige Einblicke erhalten und fundierte Entscheidungen treffen können.
 
 Die Informationen werden im [Azure AD Connect Health-Portal](https://aka.ms/aadconnecthealth)angezeigt. Im Azure AD Connect Health-Portal können Sie Warnungen, Leistungsüberwachungsdaten, Nutzungsanalysen und andere Informationen anzeigen. Azure AD Connect Health ermöglicht Ihnen an einem zentralen Ort einen Gesamtüberblick über die Integrität Ihrer wichtigsten Identitätskomponenten.
 
@@ -110,7 +110,7 @@ Der Einstieg in Azure AD Connect Health ist einfach:
 Das Azure AD Connect Health-Portal zeigt Warnungen, Leistungsüberwachungsdaten und Nutzungsanalysen an. Mit der URL „https://aka.ms/aadconnecthealth“ gelangen Sie zum Hauptblatt von Azure AD Connect Health. Sie können es sich wie ein Fenster vorstellen. Auf dem Hauptblatt werden die Option **Schnellstart**, die Dienste von Azure AD Connect Health und weitere Konfigurationsoptionen angezeigt. Im folgenden Screenshot sehen Sie diese Elemente und darunter finden Sie ihre Beschreibung. Nachdem Sie die Agents bereitgestellt haben, wird der Integritätsdienst für die Dienste automatisch identifiziert, die von Azure AD Connect Health überwacht werden.
 
 > [!NOTE]
-> Informationen zur Lizenzierung finden Sie unter [Häufig gestellte Fragen zu Azure AD Connect](active-directory-aadconnect-health-faq.md) oder [Seite zur Preisgestaltung von Azure AD](https://aka.ms/aadpricing).
+> Informationen zur Lizenzierung finden Sie unter [Häufig gestellte Fragen zu Azure AD Connect Health](active-directory-aadconnect-health-faq.md) sowie auf der [Seite zur Preisgestaltung von Azure AD](https://aka.ms/aadpricing).
     
 ![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health/portal4.png)
 

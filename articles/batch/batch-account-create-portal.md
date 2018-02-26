@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2e1b5ae05429cba34e3ea71f95414417bffd99a6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5efe804806cb9c14a483e7393f0e8202897d53d6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -41,7 +41,7 @@ Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie in der [Funkt
 > Wenn Sie ein Batch-Konto erstellen, sollten Sie im Allgemeinen den Standardmodus **Batch-Dienst** verwenden, in dem Pools im Hintergrund in von Azure verwalteten Abonnements zugeordnet werden. Die Alternative (der Modus **Benutzerabonnement**) wird für die meisten Szenarien nicht mehr empfohlen. In diesem Modus werden virtuelle Batch-Computer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Wenn Sie ein Batch-Konto im Benutzerabonnementmodus erstellen möchten, müssen Sie auch Ihr Abonnement in Azure Batch registrieren und das Konto einer Azure Key Vault-Instanz zuordnen.
 
 1. Melden Sie sich beim [Azure-Portal][azure_portal] an.
-2. Klicken Sie auf **Neu**, und durchsuchen Sie den Marketplace nach **Batch-Dienst**.
+2. Klicken Sie auf **Ressource erstellen**, und durchsuchen Sie den Marketplace nach **Batch-Dienst**.
 
     ![Batch im Marketplace][marketplace_portal]
 3. Wählen Sie **Batch-Dienst** aus, klicken Sie auf **Erstellen**, und geben Sie Einstellungen für das **neue Batch-Konto** ein. Orientieren Sie sich an den folgenden Details:
@@ -85,7 +85,7 @@ Klicken Sie nach der Kontoerstellung auf das Konto, um auf dessen Einstellungen 
 
 ## <a name="linked-azure-storage-account"></a>Verknüpftes Azure-Speicherkonto
 
-Sie können ein allgemeines Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen. Dies ist in zahlreichen Szenarien hilfreich. Das Feature [Anwendungspakete](batch-application-packages.md) von Batch verwendet ebenso wie die .NET-Bibliothek [Batch-Dateikonventionen](batch-task-output.md) Azure-Blobspeicher. Diese optionalen Features unterstützen Sie beim Bereitstellen der von Ihren Batch-Aufgaben ausgeführten Anwendungen und Beibehalten der von ihnen erzeugten Daten.
+Sie können ein allgemeines Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen. Dies ist in zahlreichen Szenarien hilfreich. Das Feature [Anwendungspakete](batch-application-packages.md) von Batch verwendet ebenso wie die .NET-Bibliothek [Batch-Dateikonventionen](batch-task-output.md) Azure Blob Storage. Diese optionalen Features unterstützen Sie beim Bereitstellen der von Ihren Batch-Aufgaben ausgeführten Anwendungen und Beibehalten der von ihnen erzeugten Daten.
 
 Wir empfehlen die Erstellung eines neuen Speicherkontos, das ausschließlich von Ihrem Batch-Konto verwendet wird. Azure Batch unterstützt derzeit nur allgemeine Speicherkonten. Dieser Kontotyp ist unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md) in Schritt 5 ([Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account)) beschrieben.
 

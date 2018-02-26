@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 5008d8f0ce36f09ff26bf10fadbf14da6b474ea9
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 77b30610072fb7f573597d035dcc161b4739ec7c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen einer Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: allgemein verfügbar](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Version 2 – Vorschauversion](quickstart-create-data-factory-resource-manager-template.md) 
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage eine Azure Data Factory erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in einem Azure-Blobspeicher. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie im Tutorial [Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory](transform-data-using-spark.md). 
+In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage eine Azure Data Factory erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie im Tutorial [Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory](transform-data-using-spark.md). 
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Build your first data factory with Data Factory version 1](v1/data-factory-build-your-first-pipeline-using-arm.md) (Erstellen Ihrer ersten Data Factory mit Data Factory Version 1) weiter.
@@ -428,7 +428,7 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
     ```
 
 ## <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
-1. Klicken Sie nach der Anmeldung beim [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, führen Sie eine Schlüsselwortsuche durch (beispielsweise nach **data fa**), und wählen Sie **Data Factorys** aus.
+1. Klicken Sie nach der Anmeldung beim [Azure-Portal](https://portal.azure.com/) auf **Alle Dienste**, führen Sie eine Schlüsselwortsuche durch (beispielsweise nach **data fa**), und wählen Sie **Data Factorys** aus.
 
     ![Menü zum Durchsuchen von Data Factorys](media/quickstart-create-data-factory-resource-manager-template/browse-data-factories-menu.png)
 2. Klicken Sie auf der Seite **Data Factorys** auf die Data Factory, die Sie erstellt haben. Filtern Sie die Liste mit dem Namen Ihrer Data Factory, falls dies erforderlich ist.  

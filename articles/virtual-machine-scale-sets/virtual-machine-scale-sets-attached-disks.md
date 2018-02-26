@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 88d4012145172bcd393070904980898d9923ea1c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 52ea7e35b941d5b1e45f39203757e4a3644cc9a5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
 [Skalierungsgruppen für virtuelle Azure-Computer](/azure/virtual-machine-scale-sets/) unterstützen jetzt virtuelle Computer mit angefügten Datenträgern. Datenträger können im Speicherprofil für die Skalierungsgruppen definiert werden, die mit Azure Managed Disks erstellt wurden. Bisher waren das Betriebssystemlaufwerk und die temporären Laufwerke die einzigen Optionen für direkt angefügten Speicher für virtuelle Computer.
@@ -61,6 +61,59 @@ Eine weitere Möglichkeit zum Erstellen einer Skalierungsgruppe mit angefügten 
 ```
 
 Ein vollständiges Beispiel für eine Skalierungsgruppenvorlage mit einem angefügten Datenträger, die Sie direkt bereitstellen können, finden Sie hier: [https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data](https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data).
+
+## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>Erstellen eines Service Fabric-Clusters mit angefügten Datenträgern
+Jedem [Knotentyp](../service-fabric/service-fabric-cluster-nodetypes.md) in einem in Azure ausgeführten [Service Fabric](/azure/service-fabric)-Cluster liegt eine VM-Skalierungsgruppe zugrunde.  Mit einer Azure Resource Manager-Vorlage können Sie Datenträger an die Skalierungsgruppen anfügen, aus denen sich der Service Fabric-Cluster zusammensetzt. Sie können eine [vorhandene Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates) als Ausgangspunkt verwenden. Fügen Sie in der Vorlage im Speicherprofil (_storageProfile_) der Ressourcen vom Typ _Microsoft.Compute/virtualMachineScaleSets_ einen Abschnitt namens _dataDisks_ ein, und stellen Sie die Vorlage bereit. Im folgenden Beispiel wird ein Datenträger mit einer Kapazität von 128 GB angefügt:
+
+```json
+"dataDisks": [
+    {
+    "diskSizeGB": 128,
+    "lun": 0,
+    "createOption": "Empty"
+    }
+]
+```
+
+Die Datenträger können automatisch partitioniert, formatiert und eingebunden werden, wenn der Cluster bereitgestellt wird.  Fügen Sie dem Erweiterungsprofil (_extensionProfile_) des VM-Profils (_virtualMachineProfile_) der Skalierungsgruppen eine benutzerdefinierte Skripterweiterung hinzu.
+
+Fügen Sie Folgendes hinzu, um die Datenträger in einem Windows-Cluster automatisch vorzubereiten:
+
+```json
+{
+    "name": "customScript",    
+    "properties": {    
+        "publisher": "Microsoft.Compute",    
+        "type": "CustomScriptExtension",    
+        "typeHandlerVersion": "1.8",    
+        "autoUpgradeMinorVersion": true,    
+        "settings": {    
+        "fileUris": [
+            "https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.ps1"
+        ],
+        "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File prepare_vm_disks.ps1"
+        }
+    }
+}
+```
+Fügen Sie Folgendes hinzu, um die Datenträger in einem Linux-Cluster automatisch vorzubereiten:
+```json
+{
+    "name": "lapextension",
+    "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+        "fileUris": [
+            "https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"
+        ],
+        "commandToExecute": "bash prepare_vm_disks.sh"
+        }
+    }
+}
+```
 
 ## <a name="adding-a-data-disk-to-an-existing-scale-set"></a>Hinzufügen eines Datenträgers zu einer vorhandenen Skalierungsgruppe
 > [!NOTE]

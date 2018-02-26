@@ -12,11 +12,11 @@ ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.technology: database-engine
-ms.openlocfilehash: 8d714718e4fc27f0abbfede8fe6d0e2693698ec1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4105e0b4038f5dc09c503ac90ba7ad67c2fd93b8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen SQL Server-Computers über das Azure-Portal
 
@@ -39,19 +39,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a id="create"></a> Erstellen eines virtuellen Linux-Computers mit SQL Server
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Klicken Sie im linken Bereich auf **Neu**.
+1. Klicken Sie im linken Bereich auf **Ressource erstellen**.
 
-1. Klicken Sie im Bereich **Neu** auf **Compute**.
+1. Klicken Sie im Bereich **Ressource erstellen** auf **Compute**.
 
 1. Klicken Sie neben der Überschrift **Vorgestellt** auf **Alle anzeigen**.
 
    ![Alle VM-Images anzeigen](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
-1. Geben Sie im Suchfeld die Zeichenfolge **SQL Server 2017** ein, und starten Sie die Suche durch Drücken der**** EINGABETASTE.
+1. Geben Sie im Suchfeld die Zeichenfolge **SQL Server 2017** ein, und starten Sie die Suche durch Drücken der **EINGABETASTE**.
 
-1. Klicken Sie auf das**** Filtersymbol, begrenzen Sie die Suche auf **Linux-basierte** Images von **Microsoft**, und klicken Sie anschließend auf **Fertig**.
+1. Klicken Sie auf das **Filtersymbol**, begrenzen Sie die Suche auf **Linux-basierte** Images von **Microsoft**, und klicken Sie anschließend auf **Fertig**.
 
     ![Suchfilter für VM-Images mit SQL Server 2017](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
@@ -60,7 +60,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    > [!TIP]
    > Mit der Developer Edition können Sie für Entwicklungs- und Testaufgaben die Features der Enterprise Edition ohne SQL Server-Lizenzkosten nutzen. Sie zahlen nur für die Ausführung des virtuellen Linux-Computers.
 
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Create**.
 
 1. Geben Sie im Fenster **Grundlagen** die Details für Ihren virtuellen Linux-Computer an. 
 

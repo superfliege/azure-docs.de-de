@@ -3,58 +3,59 @@ title: "Azure CLI-Skriptbeispiel: Hinzufügen einer Anwendung in Batch | Microso
 description: "Azure CLI-Skriptbeispiel: Hinzufügen einer Anwendung in Batch"
 services: batch
 documentationcenter: 
-author: annatisch
-manager: daryls
-editor: tysonn
+author: dlepow
+manager: jeconnoc
+editor: 
 ms.assetid: 
 ms.service: batch
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
-ms.author: antisch
-ms.openlocfilehash: cbfe8ab565ecf7f298a9a6c0f0c8298c675f178c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/29/2018
+ms.author: danlep
+ms.openlocfilehash: 348e94e745350173196aeb64df3a814a05dd9144
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="adding-applications-to-azure-batch-with-azure-cli"></a>Hinzufügen von Anwendungen in Azure Batch mit der Azure-Befehlszeilenschnittstelle
+# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI-Beispiel: Hinzufügen einer Anwendung zu einem Azure Batch-Konto
 
-Dieses Skript veranschaulicht die Einrichtung einer Anwendung für die Verwendung mit einem Azure Batch-Pool oder -Task. Für das Einrichten einer Anwendung fassen Sie die ausführbare Datei mit sämtlichen Abhängigkeiten in einer ZIP-Datei zusammen. In diesem Beispiel hat die ausführbare ZIP-Datei den Namen „my-application-exe.zip“.
+Dieses Skript veranschaulicht das Hinzufügen einer Anwendung für die Verwendung mit einem Azure Batch-Pool oder einer Azure Batch-Aufgabe. Um eine Anwendung einzurichten, die Sie Ihrem Batch-Konto hinzufügen können, fassen Sie die ausführbare Datei mit sämtlichen Abhängigkeiten in einer ZIP-Datei zusammen. 
 
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-- Installieren Sie Azure CLI gemäß den Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn dies noch nicht erfolgt ist.
-- Erstellen Sie ein Batch-Konto, falls Sie noch keins besitzen. Ein Beispielskript zum Erstellen eines Kontos finden Sie unter [Erstellen eines Batch-Kontos mit der Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account).
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Azure CLI-Version 2.0.20 verwenden. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
 
-## <a name="sample-script"></a>Beispielskript
+## <a name="example-script"></a>Beispielskript
 
-[!code-azurecli[main](../../../cli_scripts/batch/add-application/add-application.sh "Add Application")]
+[!code-azurecli-interactive[main](../../../cli_scripts/batch/add-application/add-application.sh "Add Application")]
 
-## <a name="clean-up-application"></a>Bereinigen der Anwendung
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
-Nachdem Sie das oben aufgeführte Beispielskript ausgeführt haben, führen Sie die folgenden Befehle aus, um die Anwendung und alle hochgeladenen Anwendungspakete zu entfernen.
+Führen Sie den folgenden Befehl aus, um die Ressourcengruppe und alle dazugehörigen Ressourcen zu entfernen:
 
-```azurecli
-az batch application package delete -g myresourcegroup -n mybatchaccount --application-id myapp --version 1.0 --yes
-az batch application delete -g myresourcegroup -n mybatchaccount --application-id myapp --yes
+```azurecli-interactive
+az group delete --name myResourceGroup
 ```
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Dieses Skript verwendet die folgenden Befehle für das Erstellen einer Anwendung und das Hochladen eines Anwendungspakets.
+Das Skript verwendet die folgenden Befehle.
 Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
-| [az batch application create](https://docs.microsoft.com/cli/azure/batch/application#az_batch_application_create) | Erstellt eine Anwendung  |
-| [az batch application set](https://docs.microsoft.com/cli/azure/batch/application#az_batch_application_set) | Aktualisiert die Eigenschaften einer Anwendung  |
-| [az batch application package create](https://docs.microsoft.com/cli/azure/batch/application/package#az_batch_application_package_create) | Fügt der angegebenen Anwendung ein Anwendungspaket hinzu  |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Speicherkonto. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Erstellt das Batch-Konto. |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Authentifiziert das angegebene Batch-Konto zur weiteren CLI-Interaktion.  |
+| [az batch application create](/cli/azure/batch/application#az_batch_application_create) | Erstellt eine Anwendung  |
+| [az batch application package create](/cli/azure/batch/application/package#az_batch_application_package_create) | Fügt der angegebenen Anwendung ein Anwendungspaket hinzu  |
+| [az batch application set](/cli/azure/batch/application#az_batch_application_set) | Aktualisiert die Eigenschaften einer Anwendung  |
+| [az group delete](/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
-
-Zusätzliche Batch-CLI-Skriptbeispiele finden Sie in der [Dokumentation zur Azure Batch-CLI](../batch-cli-samples.md).

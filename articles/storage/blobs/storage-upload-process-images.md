@@ -3,22 +3,20 @@ title: Hochladen von Bilddaten in die Cloud mit Azure Storage | Microsoft Docs
 description: Verwenden von Azure Blob Storage mit einer Web-App zum Speichern von Anwendungsdaten
 services: storage
 documentationcenter: 
-author: georgewallace
-manager: timlt
-editor: 
+author: tamram
+manager: jeconnoc
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 09/19/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: eae23bed2792e41f73c22658d238e2b03beba17b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e3c40d0f3db1a33a405a341a714a7ce199908ca4
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Hochladen von Bilddaten in die Cloud mit Azure Storage
 
@@ -67,11 +65,11 @@ az storage account create --name <blob_storage_account> \
  
 ## <a name="create-blob-storage-containers"></a>Erstellen von Blob Storage-Containern
  
-Die App verwendet zwei Container im Blob Storage-Konto. Container ähneln Ordnern und werden zum Speichern von Blobs verwendet. In den Container _images_ lädt die App Bilder mit voller Auflösung hoch. In einem späteren Teil der Serie lädt eine Azure-Funktions-App Miniaturansichten der Bilder mit geänderter Größe in den Container _thumbs_ hoch. 
+Die App verwendet zwei Container im Blob Storage-Konto. Container ähneln Ordnern und werden zum Speichern von Blobs verwendet. In den Container _images_ lädt die App Bilder mit voller Auflösung hoch. In einem späteren Teil der Reihe lädt eine Azure-Funktionen-App Miniaturansichten der Bilder mit angepasster Größe in den Container _thumbnails_ hoch. 
 
 Rufen Sie mit dem Befehl [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) den Speicherkontoschlüssel ab. Sie verwenden diesen Schlüssel dann zum Erstellen von zwei Containern mit dem Befehl [az storage container create](/cli/azure/storage/container#az_storage_container_create).  
  
-In diesem Fall ist „`<blob_storage_account>`“ der Name des Blob Storage-Kontos, das Sie erstellt haben. Der öffentliche Zugriff des Containers _images_ ist auf `off` festgelegt, der öffentliche Zugriff des Containers _thumbs_ auf `container`. Die Einstellung `container` für den öffentlichen Zugriff ermöglicht die Anzeige der Miniaturansichten durch Personen, die die Webseite besuchen.
+In diesem Fall ist „`<blob_storage_account>`“ der Name des Blob Storage-Kontos, das Sie erstellt haben. Der öffentliche Zugriff des Containers _images_ ist auf `off` festgelegt, der öffentliche Zugriff des Containers _thumbnails_ auf `container`. Die Einstellung `container` für den öffentlichen Zugriff ermöglicht die Anzeige der Miniaturansichten durch Personen, die die Webseite besuchen.
  
 ```azurecli-interactive 
 blobStorageAccount=<blob_storage_account>
@@ -82,7 +80,7 @@ blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 az storage container create -n images --account-name $blobStorageAccount \
 --account-key $blobStorageAccountKey --public-access off 
 
-az storage container create -n thumbs --account-name $blobStorageAccount \
+az storage container create -n thumbnails --account-name $blobStorageAccount \
 --account-key $blobStorageAccountKey --public-access container
 
 echo "Make a note of your blob storage account key..." 
@@ -135,7 +133,7 @@ Im folgenden Befehl ist `<blob_storage_account>` der Name des Blob Storage-Konto
 az webapp config appsettings set --name <web_app> --resource-group myResourceGroup \
 --settings AzureStorageConfig__AccountName=<blob_storage_account> \
 AzureStorageConfig__ImageContainer=images  \
-AzureStorageConfig__ThumbnailContainer=thumbs \
+AzureStorageConfig__ThumbnailContainer=thumbnails \
 AzureStorageConfig__AccountKey=<blob_storage_key>  
 ``` 
 
@@ -196,15 +194,15 @@ Stellen Sie sicher, dass das Bild im Container angezeigt wird.
 
 Um die Miniaturansichtenanzeige zu testen, laden Sie ein Bild in den Miniaturansichtencontainer hoch, um sicherzustellen, dass die Anwendung den Miniaturansichtencontainer lesen kann.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie im linken Menü **Speicherkonten** aus, und wählen Sie dann den Namen Ihres Speicherkontos aus. Wählen Sie unter **Blob-Dienst** die Option **Container** aus, und wählen Sie dann den Container **thumbs** aus. Klicken Sie auf **Hochladen**, um den Bereich **Blob hochladen** zu öffnen.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie im linken Menü **Speicherkonten** aus, und wählen Sie dann den Namen Ihres Speicherkontos aus. Wählen Sie unter **Blob-Dienst** die Option **Container** aus, und wählen Sie dann den Container **thumbnails** aus. Klicken Sie auf **Hochladen**, um den Bereich **Blob hochladen** zu öffnen.
 
 Wählen Sie eine Datei mit der Dateiauswahl aus, und wählen Sie dann **Hochladen** aus.
 
-Navigieren Sie zurück zu Ihrer App, um zu überprüfen, ob das in den Container **thumbs** hochgeladene Bild sichtbar ist.
+Navigieren Sie wieder zu Ihrer App, um zu überprüfen, ob das in den Container **thumbnails** hochgeladene Bild sichtbar ist.
 
 ![Bildcontaineransicht](media/storage-upload-process-images/figure2.png)
 
-Wählen Sie im Azure-Portal im Container **thumbs** das Bild aus, das Sie hochgeladen haben, und wählen Sie dann **Löschen** aus, um dieses Bild zu löschen. Im zweiten Teil der Serie automatisieren Sie das Erstellen der Miniaturansichten. Daher wird dieses Testbild nicht mehr benötigt.
+Wählen Sie im Azure-Portal im Container **thumbnails** das Bild aus, das Sie hochgeladen haben, und klicken Sie anschließend auf **Löschen**, um das Bild zu löschen. Im zweiten Teil der Serie automatisieren Sie das Erstellen der Miniaturansichten. Daher wird dieses Testbild nicht mehr benötigt.
 
 CDN kann zum Zwischenspeichern von Inhalt aus Ihrem Azure-Speicherkonto aktiviert werden. Weitere Informationen zum Aktivieren von CDN mit dem Azure-Speicherkonto (in diesem Tutorial nicht beschrieben) finden Sie hier: [Integrieren eines Azure-Speicherkontos in Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md).
 

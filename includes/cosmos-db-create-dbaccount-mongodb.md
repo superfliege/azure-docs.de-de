@@ -1,17 +1,17 @@
 1. Melden Sie sich in einem neuen Fenster beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im linken Menü auf **Neu**, dann auf **Datenbanken** und anschließend unter **Azure Cosmos DB** auf **Erstellen**.
+2. Klicken Sie im linken Menü auf **Ressource erstellen** > **Datenbanken** > **Azure Cosmos DB** > **Erstellen**.
    
    ![Screenshot des Azure-Portals mit Hervorhebung von „Weitere Dienste“ und „Azure Cosmos DB“](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png)
 
-3. Legen Sie auf dem Blatt **Neues Konto** die gewünschte Konfiguration für das Azure Cosmos DB-Konto fest. 
+3. Legen Sie im Bereich **Neues Konto** die gewünschte Konfiguration für das Azure Cosmos DB-Konto fest. 
 
     Mit Azure Cosmos DB können Sie zwischen vier Programmiermodellen wählen: Gremlin (Graph), MongoDB, SQL und Table (Schlüssel-Wert). 
        
     In diesem Schnellstart werden wir mit der MongoDB-API programmieren, sodass Sie **MongoDB** auswählen, wenn Sie das Formular ausfüllen. Beachten Sie, dass Azure Cosmos DB eine hoch verfügbare, weltweit verteilte Datenbank-Dienstplattform für Ihre unternehmenskritischen Anwendungen bereitstellen kann, wenn Sie über Diagrammdaten aus einer Social Media-App, Dokumentdaten aus einer Katalog-App oder Schlüssel-/Wertdaten (Tabelle) verfügen.
 
-    Füllen Sie das Blatt **Neues Konto** mithilfe der Informationen in der Tabelle aus.
+    Füllen Sie den Bereich **Neues Konto** aus. Orientieren Sie sich dabei an den Informationen in der Tabelle.
  
-    ![Screenshot des Blatts „Neue Azure Cosmos DB“](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
+    ![Screenshot des Bereichs für eine neue Azure Cosmos DB-Instanz](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
    
     Einstellung|Empfohlener Wert|BESCHREIBUNG
     ---|---|---

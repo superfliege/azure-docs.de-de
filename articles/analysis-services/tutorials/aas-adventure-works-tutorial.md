@@ -15,17 +15,17 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/10/2018
 ms.author: owend
-ms.openlocfilehash: ecc95181f61f556b18fa820617ea5ad0636c7a4b
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 3bc0ed965aea043fd5c105752ec39d07c4af818f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Tutorial mit Adventure Works
 
 Dieses Tutorial enthält Lektionen zum Erstellen und Bereitstellen eines tabellarischen Modells mit dem Kompatibilitätsgrad 1400 mit Visual Studio und [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
 
-Wenn Sie mit Analysis Services und der tabellarischen Modellierung noch nicht vertraut sind, können Sie in diesem Tutorial am schnellsten erfahren, wie Sie mit Visual Studio ein einfaches tabellarisches Modell erstellen und bereitstellen. Sobald alle Voraussetzungen erfüllt sind, nimmt das Tutorial etwa zwei bis drei Stunden in Anspruch.  
+Wenn Sie mit Analysis Services und der tabellarischen Modellierung noch nicht vertraut sind, ist dieses Tutorial die schnellste Methode, um zu erfahren, wie Sie mit Visual Studio ein einfaches tabellarisches Modell erstellen und bereitstellen. Sobald alle Voraussetzungen erfüllt sind, nimmt das Tutorial etwa zwei bis drei Stunden in Anspruch.  
   
 ## <a name="what-you-learn"></a>Lerninhalt   
   
@@ -43,7 +43,7 @@ Wenn Sie mit Analysis Services und der tabellarischen Modellierung noch nicht ve
   
 -   Wie Sie Modellobjekte und -daten sichern können, indem Sie Rollen mit Benutzern erstellen.  
   
--   Wie Sie ein tabellarischen Modell an einen Server mit **Azure Analysis Services** oder an einen lokalen Server mit SQL Server 2017 Analysis Services bereitstellen können.  
+-   Wie Sie ein tabellarisches Modell über SSDT für einen Server mit **Azure Analysis Services** oder für einen Server mit **SQL Server 2017 Analysis Services** bereitstellen können.  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
 Für dieses Tutorial benötigen Sie Folgendes:  

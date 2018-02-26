@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 7ae0fbf5f7566bd3f1f6591501b8b004a1e5cb0f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b73222d9b31ff840273bdb91a15f7eaf37ad2508
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -45,9 +45,9 @@ Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der ein
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-Melden Sie sich auf dem [Azure-Portal](http://portal.azure.com)an.
+Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
 
-Klicken Sie auf **Neu** > **Container** > **Azure Container Registry**.
+Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Registry**.
 
 ![Erstellen einer Containerregistrierung über das Azure-Portal][tut-portal-01]
 

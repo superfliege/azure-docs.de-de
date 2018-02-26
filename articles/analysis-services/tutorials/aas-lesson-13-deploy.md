@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 3442de96f346ef211672064584700a7ce183d929
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 251795f394d30418e1c03ec7b92fec40a75b2c3d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy"></a>Bereitstellen
 
@@ -28,7 +28,7 @@ In dieser Lektion konfigurieren Sie Bereitstellungseigenschaften, indem Sie eine
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **5 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 12: Analysieren in Excel](../tutorials/aas-lesson-12-analyze-in-excel.md) abgeschlossen haben.  
+Dieser Artikel ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 12: Analysieren in Excel](../tutorials/aas-lesson-12-analyze-in-excel.md) abgeschlossen haben.  
 
 > [!IMPORTANT]  
 > Sie müssen über [Administratorberechtigungen](../analysis-services-server-admins.md) auf dem Analysis Services-Remoteserver verfügen, um dort Modelle bereitstellen zu können.  
@@ -67,6 +67,9 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
   
 3. Wenn die Bereitstellung erfolgreich abgeschlossen ist, können Sie auf **Schließen** klicken.  
   
+
+In dieser Lektion wird die einfachste und am häufigsten verwendete Methode zur Bereitstellung eines tabellarischen Modells über SSDT beschrieben. Erweiterte Bereitstellungsoptionen wie etwa der Bereitstellungs-Assistent oder die Automatisierung mit XMLA und AMO sind flexibler und bieten eine bessere Konsistenz sowie geplante Bereitstellungen. Weitere Informationen finden Sie unter [Tabular model solution deployment](https://docs.microsoft.com/sql/analysis-services/tabular-models/tabular-model-solution-deployment-ssas-tabular) (Bereitstellung tabellarischer Modelllösungen).
+
 ## <a name="conclusion"></a>Zusammenfassung  
 Glückwunsch! Nun ist das Schreiben und Bereitstellen Ihres ersten tabellarischen Modells mit Analysis Services abgeschlossen. Dieses Tutorial hat Sie beim Durchführen der am häufigsten vorkommenden Aufgaben beim Erstellen eines tabellarischen Modells begleitet. Nachdem Ihr Modell „Adventure Works Internet Sales“ nun bereitgestellt wurde, können Sie SSMS zur Verwaltung des Modells verwenden. Außerdem können Sie Nachverarbeitungsskripts und einen Sicherungsplan erstellen. Außerdem können Benutzer jetzt eine Verbindung mit dem Modell mithilfe einer Berichterstellungsclientanwendung, wie z.B. Microsoft Excel oder Power BI, herstellen.  
 

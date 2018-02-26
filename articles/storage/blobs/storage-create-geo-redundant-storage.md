@@ -2,23 +2,19 @@
 title: "Herstellen von Hochverfügbarkeit für Anwendungsdaten in Azure | Microsoft-Dokumentation"
 description: "Verwenden von georedundantem Speicher mit Lesezugriff zur Herstellung von Hochverfügbarkeit für Anwendungsdaten"
 services: storage
-documentationcenter: 
-author: georgewallace
+author: tamram
 manager: jeconnoc
-editor: 
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: 
 ms.topic: tutorial
-ms.date: 12/23/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 612d6db6dff569c0ccbda1c88f7ef1c37e98cd47
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 7b7625b3250d7e5b4cdb4090f34072eb58dda07c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Herstellen von Hochverfügbarkeit für Anwendungsdaten mit Azure Storage
 
@@ -64,7 +60,7 @@ Ein Speicherkonto stellt einen eindeutigen Namespace zum Speichern Ihrer Azure S
 
 Führen Sie die folgenden Schritte aus, um ein georedundantes Speicherkonto mit Lesezugriff zu erstellen:
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 
 2. Klicken Sie zuerst auf der Seite **Neu** auf **Speicher** und anschließend unter **Empfohlen** auf **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.
 3. Füllen Sie das Speicherkontoformular wie in der Abbildung dargestellt mit den folgenden Angaben aus, und klicken Sie auf **Erstellen**.

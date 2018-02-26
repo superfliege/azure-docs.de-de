@@ -16,15 +16,17 @@ ms.workload: web
 ms.date: 10/04/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 9436cafa775f2ad658c0c9901f7f8eae769c7052
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f3e4ce63a8b418b68494262df8a771ac553ad22d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="create-a-function-app-for-serverless-execution"></a>Erstellen einer Funktionen-App für die serverlose Ausführung
+# <a name="create-a-function-app-for-serverless-code-execution"></a>Erstellen einer Funktions-App für die serverlose Codeausführung
 
-Dieses Beispielskript erstellt eine Azure-Funktionen-App, die einen Container für Ihre Funktionen darstellt. Die Funktionen-App wird mithilfe des [Verbrauchsplans](../functions-scale.md#consumption-plan) erstellt, der sich ideal für ereignisgesteuerte serverlose Workloads eignet.
+Dieses Azure Functions-Beispielskript erstellt eine Funktions-App, die als Container für Ihre Funktionen fungiert. Die Funktions-App wird unter Verwendung des [Verbrauchsplans](../functions-scale.md#consumption-plan) erstellt, der sich ideal für ereignisgesteuerte serverlose Workloads eignet.
+
+[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +46,7 @@ Dieses Skript erstellt eine Azure-Funktionen-App mithilfe des [Verbrauchsplans](
 
 Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. Das Skript verwendet die folgenden Befehle:
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Azure Storage-Konto. |

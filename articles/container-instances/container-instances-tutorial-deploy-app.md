@@ -6,20 +6,20 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 01/02/2018
+ms.date: 02/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 471caa1b24dc7017c70782c072b2068f9635244b
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 250f74b1a05959b93000452c4d5f025311f379d8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>Bereitstellen eines Containers für Azure Container Instances
 
 Dies ist das letzte Tutorial einer dreiteiligen Reihe. In den vorhergehenden Teilen der Reihe wurde [ein Containerimage erstellt](container-instances-tutorial-prepare-app.md) und [mithilfe von Push an eine Azure Container Registry-Instanz übermittelt](container-instances-tutorial-prepare-acr.md). Zum Abschluss der Tutorialreihe wird der Container in diesem Tutorial für Azure Container Instances bereitgestellt.
 
-Dieses Tutorial umfasst Folgendes:
+In diesem Tutorial haben Sie Folgendes durchgeführt:
 
 > [!div class="checklist"]
 > * Bereitstellen des Containers aus der Azure Container Registry-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
@@ -50,13 +50,15 @@ Kennwort der Containerregistrierung:
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-Um das Containerimage aus der Containerregistrierung mit einer Ressourcenanforderung von einem CPU-Kern und 1 GB Speicher bereitzustellen, führen Sie den folgenden Befehl aus. Ersetzen Sie `<acrLoginServer>` und `<acrPassword>` durch die Werte, die Sie mit den beiden vorhergehenden Befehlen abgerufen haben.
+Um das Containerimage aus der Containerregistrierung mit einer Ressourcenanforderung von einem CPU-Kern und 1 GB Speicher bereitzustellen, führen Sie den folgenden Befehl aus. Ersetzen Sie `<acrLoginServer>` und `<acrPassword>` durch die Werte, die Sie mit den beiden vorhergehenden Befehlen abgerufen haben. Ersetzen Sie `<acrName>` durch den Namen Ihrer Containerregistrierung.
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
 ```
 
-Innerhalb weniger Sekunden sollten Sie eine erste Antwort vom Azure Resource Manager erhalten. Verwenden Sie zum Anzeigen des Bereitstellungsstatus den Befehl [az container show][az-container-show]:
+Innerhalb weniger Sekunden sollten Sie eine erste Antwort vom Azure Resource Manager erhalten. Der Wert `--dns-name-label` muss innerhalb der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Aktualisieren Sie den Wert im vorherigen Beispiel, wenn Sie beim Ausführen des Befehls eine Fehlermeldung bezüglich der **DNS-Namensbezeichnung** erhalten.
+
+Verwenden Sie zum Anzeigen des Bereitstellungsstatus den Befehl [az container show][az-container-show]:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
@@ -66,15 +68,15 @@ Führen Sie den Befehl [az container show][az-container-show] erneut aus, bis de
 
 ## <a name="view-the-application-and-container-logs"></a>Anzeigen der Anwendungs- und Containerprotokolle
 
-Wenn die Bereitstellung erfolgreich war, zeigen Sie mit dem Befehl [az container show][az-container-show] die öffentliche IP-Adresse des Containers an:
+Wenn die Bereitstellung erfolgreich war, zeigen Sie mit dem Befehl [az container show][az-container-show] den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Containers an:
 
 ```bash
-az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.ip
+az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Beispielausgabe: `"13.88.176.27"`
+Beispielausgabe: `"aci-demo.eastus.azurecontainer.io"`
 
-Zum Anzeigen der ausgeführten Anwendung navigieren Sie in Ihrem bevorzugten Browser zur öffentlichen IP-Adresse.
+Navigieren Sie zum Anzeigen der ausgeführten Anwendung in Ihrem bevorzugten Browser zum angezeigten DNS-Namen:
 
 ![„Hello World“-Anwendung im Browser][aci-app-browser]
 

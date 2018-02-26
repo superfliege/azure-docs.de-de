@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b8577a02f0c9396b64af986950fddaa1e00925ec
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 247f86dafe35d69dd742583d246862b739d9fe90
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-use-availability-sets"></a>Verwenden von Verfügbarkeitsgruppen
 
@@ -119,7 +119,7 @@ Get-AzureRmVMSize `
 
 Sie können mit dem Azure Advisor auch weitere Informationen zu Methoden zur Verbesserung der Verfügbarkeit Ihrer virtuellen Computer abrufen. Der Azure Advisor unterstützt Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, wählen Sie die Option **Weitere Dienste** aus, und geben Sie **Advisor** ein. Das Advisor-Dashboard zeigt personalisierte Empfehlungen für das ausgewählte Abonnement. Weitere Informationen finden Sie unter [Erste Schritte mit dem Azure Advisor](../../advisor/advisor-get-started.md).
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, wählen Sie die Option **Alle Dienste** aus, und geben Sie **Advisor** ein. Das Advisor-Dashboard zeigt personalisierte Empfehlungen für das ausgewählte Abonnement. Weitere Informationen finden Sie unter [Erste Schritte mit dem Azure Advisor](../../advisor/advisor-get-started.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

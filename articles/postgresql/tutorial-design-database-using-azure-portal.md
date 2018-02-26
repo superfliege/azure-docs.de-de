@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 11/03/2017
-ms.openlocfilehash: 1a210f813319a4f21c7c246002c968b8093f8a4e
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 215de7113421670dae5745ddd5fc2cc22d2143e1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>Entwerfen Ihrer ersten Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals
 
@@ -40,9 +40,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
 Eine Azure-Datenbank für PostgreSQL-Server wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-compute-unit-and-storage.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) erstellt.
 
-Erstellen Sie einen Azure-Datenbank für PostgreSQL-Server in diesen Schritten:
-1.  Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **+ Neu**.
-2.  Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Datenbanken** die Option **Azure-Datenbank für PostgreSQL**.
+Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-Server zu erstellen:
+1.  Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
+2.  Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Datenbanken** die Option **Azure-Datenbank für PostgreSQL** aus.
  ![Azure-Datenbank für PostgreSQL – Erstellen der Datenbank](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
 
 3.  Geben Sie die folgenden Informationen in das Formular für den neuen Server ein, wie in der obigen Abbildung dargestellt:
@@ -50,7 +50,7 @@ Erstellen Sie einen Azure-Datenbank für PostgreSQL-Server in diesen Schritten:
     - Abonnement: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource vorhanden ist oder in Rechnung gestellt wird.
     - Ressourcengruppe: **myresourcegroup**
     - Serveradministrator-Anmeldename und ein Kennwort Ihrer Wahl
-    - Ort
+    - Speicherort
     - PostgreSQL-Version
 
   > [!IMPORTANT]
@@ -154,7 +154,7 @@ Um die neu erstellte Tabelle in der Liste der Tabellen anzuzeigen, geben Sie Fol
 ```
 
 ## <a name="load-data-into-the-tables"></a>Laden von Daten in die Tabellen
-Jetzt können Sie einige Daten in die Tabelle einfügen. Führen Sie im geöffneten Eingabeaufforderungsfenster die folgende Abfrage zum Einfügen einiger Datenzeilen aus.
+Jetzt können Sie Daten in die Tabelle einfügen. Führen Sie im geöffneten Eingabeaufforderungsfenster die folgende Abfrage zum Einfügen einiger Datenzeilen aus.
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);

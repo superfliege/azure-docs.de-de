@@ -1,4 +1,4 @@
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**, und wählen Sie dann **Compute** > **Funktionen-App** aus. 
+1. Klicken Sie links oben im Azure-Portal auf **Ressource erstellen** und anschließend auf **Compute** > **Funktionen-App**. 
 
     ![Erstellen einer Funktions-App im Azure-Portal](./media/functions-create-function-app-portal/function-app-create-flow.png)
 

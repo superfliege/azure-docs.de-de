@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 00e0f169c7de2521b15b89c2d935967e51b38960
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: e444e46b9044d822731683781112be83c8c6db04
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal
 
@@ -31,7 +31,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 
 2. Wählen Sie **Internet der Dinge** und **IoT Hub**, und klicken Sie auf die Schaltfläche **Erstellen**. 
 
@@ -44,9 +44,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>Erstellen einer neuen Instanz für den IoT Hub Device Provisioning-Dienst
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 
-2. Verwenden Sie die Option *Marketplace durchsuchen*, um den Marketplace nach dem **Device Provisioning-Dienst** zu durchsuchen. Wählen Sie den **IoT Device Provisioning-Dienst** aus, und klicken Sie auf die Schaltfläche **Erstellen**. 
+2. Verwenden Sie die Option *Marketplace durchsuchen*, um den Marketplace nach dem **Device Provisioning-Dienst** zu durchsuchen. Wählen Sie den **IoT Hub Device Provisioning-Dienst** aus, und klicken Sie auf die Schaltfläche **Erstellen**. 
 
 3. Geben Sie Ihrer Instanz des Device Provisioning-Diensts einen **Namen**. Wählen Sie das Abonnement aus, das für diese Instanz verwendet werden soll, und geben Sie eine neue oder vorhandene Ressourcengruppe an. Wählen Sie den Standort aus. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 

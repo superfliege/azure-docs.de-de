@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: bebfdfdf72014019a49a6da0e512e72932b096ac
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 22eeccfd692cca74bc0cf12c3400d717c103332f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Durchforsten einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
 
@@ -121,7 +121,7 @@ In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
 
-2. Klicken Sie auf **Neu** > **SQL-Datenbank**, um eine Datenbank, einen Server und eine Ressourcengruppe zu erstellen. Dabei können Sie die Standardwerte und den günstigsten Tarif verwenden. Die Erstellung eines Servers hat unter anderem den Vorteil, dass Sie einen Administratorbenutzernamen und ein Kennwort angeben können. Diese werden in einem späteren Schritt zum Erstellen und Laden von Tabellen benötigt.
+2. Klicken Sie auf **Ressource erstellen** > **SQL-Datenbank**, um eine Datenbank, einen Server und eine Ressourcengruppe zu erstellen. Dabei können Sie die Standardwerte und den günstigsten Tarif verwenden. Die Erstellung eines Servers hat unter anderem den Vorteil, dass Sie einen Administratorbenutzernamen und ein Kennwort angeben können. Diese werden in einem späteren Schritt zum Erstellen und Laden von Tabellen benötigt.
 
    ![Seite für die neue Datenbank](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 

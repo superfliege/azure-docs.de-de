@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 8f0f575319eec0517366079c637ad7565530ac70
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 5274ec13ec2d04194e2dd4c8ec93be0f78329b23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-internal-load-balancer-in-the-azure-portal"></a>Erstellen eines internen Lastenausgleichs über das Azure-Portal
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/11/2018
 Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen internen Lastenausgleich zu erstellen:
 
 1. Öffnen Sie einen Browser, navigieren Sie zum [Azure-Portal](http://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
-2. Klicken Sie oben links auf dem Bildschirm auf **Neu** > **Netzwerk** > **Lastenausgleich**.
+2. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Lastenausgleich**.
 3. Geben Sie auf dem Blatt **Lastenausgleich erstellen** einen **Namen** für den Lastenausgleich ein.
 4. Klicken Sie unter **Typ** auf **Intern**.
 5. Klicken Sie auf **Virtuelles Netzwerk**, und wählen Sie dann das virtuelle Netzwerk aus, in dem Sie den Lastenausgleich erstellen möchten.

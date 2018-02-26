@@ -10,11 +10,11 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 71f5e4d1288a361c4b52ff45fb4c6601fa39a757
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: ed2048755317649d160bcfd71519af715067b99b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Schnellstartanleitung: Ausführen eines Workflows über den Microsoft Genomics-Dienst
 
@@ -84,7 +84,7 @@ Diese Pakete können Sie mithilfe von `pip` oder `easy_install` oder mithilfe vo
 
 
 ### <a name="test-the-microsoft-genomics-client"></a>Testen des Microsoft Genomics-Clients
-Laden Sie zum Testen des Microsoft Genomics-Clients die Konfigurationsdatei aus Ihrem Genomics-Konto herunter. Navigieren Sie zu Ihrem Genomics-Konto. Klicken Sie hierzu links unten auf **Weitere Dienste**, und filtern Sie nach Genomics-Konten.
+Laden Sie zum Testen des Microsoft Genomics-Clients die Konfigurationsdatei aus Ihrem Genomics-Konto herunter. Navigieren Sie zu Ihrem Genomics-Konto. Klicken Sie hierzu links oben auf **Alle Dienste**, und filtern Sie nach Genomics-Konten.
 
 
 ![Filtern nach Microsoft Genomics im Azure-Portal](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Filtern nach Microsoft Genomics im Azure-Portal")

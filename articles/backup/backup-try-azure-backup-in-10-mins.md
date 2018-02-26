@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 8/15/2017
 ms.author: markgal;
-ms.openlocfilehash: 7a016ed92c68ce624aeb09d766adbc6fc8ba2b42
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb631eff77932b6bdcf858256c47c9d7381a58c1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>Einführung: Sichern von Dateien und Ordnern in einer Resource Manager-Bereitstellung
 In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner eines Windows Server-Computers (oder eines Windows-Computers) mithilfe einer Resource Manager-Bereitstellung in Azure sichern. Dies ist ein Tutorial, in dem die Grundlagen beschrieben werden. Wenn Sie mit Azure Backup starten möchten, befinden Sie sich am richtigen Ort.
@@ -33,7 +33,7 @@ Um Ihre Dateien und Ordner zu sichern, müssen Sie einen Recovery Services-Treso
 
 ### <a name="to-create-a-recovery-services-vault"></a>So erstellen Sie einen Recovery Services-Tresor
 1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com/) an, sofern Sie noch nicht angemeldet sind.
-2. Klicken Sie im Hub-Menü auf **More Services** (Weitere Dienste), geben Sie in der Ressourcenliste **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
+2. Klicken Sie im Hub-Menü auf **Alle Dienste**, geben Sie in der Ressourcenliste **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
@@ -53,7 +53,7 @@ Um Ihre Dateien und Ordner zu sichern, müssen Sie einen Recovery Services-Treso
 6. Gehen Sie im Abschnitt **Ressourcengruppe** wie folgt vor:
 
     * Wählen Sie **Neu erstellen** aus, wenn Sie eine neue Ressourcengruppe erstellen möchten.
-    Oder
+    oder
     * Wählen Sie **Use existing** (Vorhandene verwenden) aus, und klicken Sie auf das Dropdownmenü, um eine Liste mit verfügbaren Ressourcengruppen anzuzeigen.
 
   Umfassende Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).

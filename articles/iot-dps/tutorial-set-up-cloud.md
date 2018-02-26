@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 088d127521ce89d3a82e30ad8797fe5746ae7e03
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 247c2155943d651c3be7791571522b652cf63483
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst
 
@@ -38,7 +38,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 Führen Sie zum Erstellen einer neuen Device Provisioning-Dienstinstanz folgende Schritte durch:
 
-1. Klicken Sie im Azure-Portal oben links auf **Neu**.
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2. Geben Sie in das Suchfeld **Gerätebereitstellung** ein. 
 3. Klicken Sie auf **IoT Hub Device Provisioning-Dienst**.
 4. Geben Sie in das Formular **IoT Hub Device Provisioning-Dienst** folgende Informationen ein:
@@ -52,7 +52,7 @@ Führen Sie zum Erstellen einer neuen Device Provisioning-Dienstinstanz folgende
 
    ![Eingeben grundlegender Informationen zum DPS im Portal](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 6. Der *ID-Bereich* dient zum Identifizieren von Registrierungs-IDs und gewährleistet, dass die Registrierungs-ID eindeutig ist. Klicken Sie zum Abrufen dieses Werts auf **Übersicht**, um die Seite **Zusammenfassung** für den Device Provisioning-Dienst zu öffnen. Kopieren Sie den Wert von **ID-Bereich** zur späteren Verwendung an einem temporären Speicherort.
 7. Notieren Sie sich auch den Wert von **Dienstendpunkt**, oder kopieren Sie ihn zur späteren Verwendung an einem temporären Speicherort. 
 

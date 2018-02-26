@@ -10,15 +10,19 @@ ms.author: cfowler
 ms.date: 01/09/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: c4224bc7973cd1e3ca36799db9f23a124fcba807
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 9ad38a7ff00e5cea2cf958b4cb69679a27f84d4a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="create-a-function-in-azure-that-is-deployed-from-github"></a>Erstellen einer Funktion in Azure, die aus GitHub bereitgestellt wird
+# <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Erstellen einer Funktions-App in Azure, die über GitHub bereitgestellt wird
 
-Dieses Beispielskript erstellt mit dem [Verbrauchsplan](../functions-scale.md#consumption-plan) eine Funktionen-App mit den zugehörigen Ressourcen und stellt Ihren Funktionscode kontinuierlich aus einem GitHub-Repository bereit. In diesem Beispiel benötigen Sie Folgendes:
+Dieses Azure Functions-Beispielskript erstellt eine Funktions-App unter Verwendung des [Verbrauchsplans](../functions-scale.md#consumption-plan) (zusammen mit den dazugehörigen Ressourcen). Darüber hinaus konfiguriert das Skript den Funktionscode für Continuous Deployment über ein GitHub-Repository. 
+
+[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
+
+In diesem Beispiel benötigen Sie Folgendes:
 
 * Ein GitHub-Repository mit Funktionscode, für das Sie über Administratorberechtigungen verfügen.
 * Ein [persönliches Zugriffstoken (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use) für Ihr GitHub-Konto.

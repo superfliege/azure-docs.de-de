@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/01/2017
-ms.openlocfilehash: f427b23ca4b48da79759584bdcc98c1002c054c1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 88fd06d45d0cd966199ce198578eedd349adc2c8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Erstellen eines Servers für Azure-Datenbank für MySQL über das Azure-Portal
 Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal in etwa fünf Minuten einen Server für Azure-Datenbank für MySQL erstellen.  
@@ -24,12 +24,12 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Navigieren Sie in Ihrem Webbrowser zum [Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen einer Azure-Datenbank für MySQL-Server
+## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Servers für Azure-Datenbank für MySQL
 Ein Server für Azure-Datenbank für MySQL wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-compute-unit-and-storage.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) erstellt.
 
 Führen Sie die folgenden Schritte aus, um einen Server für Azure-Datenbank für MySQL zu erstellen:
 
-1. Wählen Sie in der linken oberen Ecke des Portals die Schaltfläche **Neu** (+) aus.
+1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+).
 
 2. Wählen Sie **Datenbanken** > **Azure-Datenbank für MySQL** aus. Sie können auch **MySQL** in das Suchfeld eingeben, um nach dem Dienst zu suchen.
 
@@ -43,11 +43,11 @@ Führen Sie die folgenden Schritte aus, um einen Server für Azure-Datenbank fü
     Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
     Ressourcengruppe | myresourcegroup | Geben Sie einen neuen oder vorhandenen Ressourcengruppennamen an.
     Serveradministratoranmeldung | myadmin | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
-    Kennwort | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto an. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
+    Password | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto an. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
     Kennwort bestätigen | *Beliebig*| Bestätigen Sie das Kennwort des Administratorkontos.
-    Ort | *Die Region, die Ihren Benutzern am nächsten liegt*| Wählen Sie den Speicherort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt.
+    Speicherort | *Die Region, die Ihren Benutzern am nächsten liegt*| Wählen Sie den Speicherort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt.
     Version | *Die neueste Version*| Die neueste Version (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
-    Tarif  | **Basic**, **50 Compute-Einheiten**, **50 GB** | Wählen Sie die Dienstebene und die Leistungsstufe für Ihre neue Datenbank aus. Wählen Sie auf der oberen Registerkarte den Tarif **Basic** aus. Wählen Sie das linke Ende des Schiebereglers **Compute-Einheiten** aus, um für diese Schnellstartanleitung den kleinstmöglichen Wert festzulegen. Wählen Sie **OK** aus, um die Tarifauswahl zu speichern. Weitere Informationen erhalten Sie auf dem folgenden Screenshot.
+    Tarif | **Basic**, **50 Compute-Einheiten**, **50 GB** | Wählen Sie die Dienstebene und die Leistungsstufe für Ihre neue Datenbank aus. Wählen Sie auf der oberen Registerkarte den Tarif **Basic** aus. Wählen Sie das linke Ende des Schiebereglers **Compute-Einheiten** aus, um für diese Schnellstartanleitung den kleinstmöglichen Wert festzulegen. Wählen Sie **OK** aus, um die Tarifauswahl zu speichern. Weitere Informationen erhalten Sie auf dem folgenden Screenshot.
     An Dashboard anheften | Prüfen | Aktivieren Sie dieses Kontrollkästchen, um die komfortable Nachverfolgung Ihres Servers auf der Titelseite des Dashboards im Azure-Portal zu ermöglichen.
 
     > [!IMPORTANT]
@@ -122,7 +122,7 @@ Als Erstes verwenden wir das [mysql](https://dev.mysql.com/doc/refman/5.7/en/mys
     mysql --host myserver4demo.mysql.database.azure.com --user myadmin@myserver4demo -p
     ```
 
-    mysql-Parameter |Empfohlener Wert|Beschreibung
+    mysql-Parameter |Empfohlener Wert|BESCHREIBUNG
     ---|---|---
     --host | *Servername* | Der Servername, den Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt **myserver4demo.mysql.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.mysql.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
     --user | *Anmeldename des Serveradministrators* |Der Anmeldename des Serveradministrators, den Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
@@ -198,8 +198,8 @@ Führen Sie die folgenden Schritte aus, um über das GUI-Tool MySQL Workbench ei
     Verbindungsmethode | Standard (TCP/IP) | Standard (TCP/IP) ist ausreichend. |
     Hostname | *Servername* | Der Servername, den Sie weiter oben beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt **myserver4demo.mysql.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.mysql.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt.|
      Port | 3306 | Der Port, der beim Herstellen der Verbindung mit Ihrem Server für Azure-Datenbank für MySQL verwendet werden soll. |
-    Benutzername |  *Anmeldename des Serveradministrators* | Die Anmeldeinformationen des Serveradministrators, die Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielbenutzername lautet **myadmin@myserver4demo**. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
-    Kennwort | *Ihr Kennwort* | Wählen Sie die Schaltfläche **In Vault speichern** aus, um das Kennwort zu speichern. |
+    Username |  *Anmeldename des Serveradministrators* | Die Anmeldeinformationen des Serveradministrators, die Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielbenutzername lautet **myadmin@myserver4demo**. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
+    Password | *Ihr Kennwort* | Wählen Sie die Schaltfläche **In Vault speichern** aus, um das Kennwort zu speichern. |
 
 4. Wählen Sie **Verbindung testen** aus, um zu testen, ob alle Parameter ordnungsgemäß konfiguriert sind. Wählen Sie dann **OK** aus, um die Verbindung zu speichern. 
 

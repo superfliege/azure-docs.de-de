@@ -1,7 +1,7 @@
 Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt einen Service Bus-Namespace erstellt haben.
 
 1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
-2. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**. (Wird **Service Bus** nicht angezeigt, klicken Sie auf **More services** (Weitere Dienste)).
+2. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**. (Sollte **Service Bus** nicht angezeigt werden, klicken Sie auf **Alle Dienste**.)
 3. Klicken Sie auf den Namespace, in dem die Warteschlange erstellt werden soll. In diesem Fall: **sbnstest1**.
    
     ![Erstellen einer Warteschlange][createqueue1]

@@ -6,7 +6,7 @@ Wenn Sie mit dem Azure-Portal ein VNET im Resource Manager-Bereitstellungsmodell
 >
 
 1. Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
-2. Klicken Sie auf **Neu**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge „Virtuelles Netzwerk“ ein. Klicken Sie in der zurückgegebenen Liste auf **Virtuelles Netzwerk**, um die Seite **Virtual Network** zu öffnen.
+2. Klicken Sie auf **Ressource erstellen**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge „Virtuelles Netzwerk“ ein. Klicken Sie in der zurückgegebenen Liste auf **Virtuelles Netzwerk**, um die Seite **Virtual Network** zu öffnen.
 3. Wählen Sie unten auf der Seite „Virtuelles Netzwerk“ in der Liste **Bereitstellungsmodell auswählen** die Option **Resource Manager** aus, und klicken Sie dann auf **Erstellen**. Die Seite „Virtuelles Netzwerk erstellen“ wird geöffnet.
 
     ![Seite „Virtuelles Netzwerk erstellen“](./media/vpn-gateway-basic-vnet-s2s-rm-portal-include/vnet.png "Seite „Virtuelles Netzwerk erstellen“")

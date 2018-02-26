@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 07/19/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 5874e6ce7d19c5106bc88ce9ff7fddd1842e0c3b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 85783d58b2b02a9d0c6230429bebf2806514dee5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Einrichten eines Azure Active Directory-Mandanten
 In Azure Active Directory (Azure AD) ist ein [Mandant](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) ein Stellvertreter einer Organisation.  Es handelt sich um eine dedizierte Instanz des Azure AD-Diensts, den eine Organisation erhält und besitzt, nachdem sie sich für einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Office 365 registriert hat.  Jeder Azure AD-Mandant ist eindeutig und von anderen Azure AD-Mandanten getrennt.  
@@ -44,7 +44,7 @@ Wenn Sie sich zuvor mit Ihrem persönlichen Microsoft-Konto für ein Azure-Abonn
 Gehen Sie dazu folgendermaßen vor.  Alternativ können Sie einen neuen Mandanten und in diesem Mandanten einen Administrator erstellen, indem Sie einen ähnlichen Prozess befolgen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit Ihrem persönlichen Konto an.
-2. Navigieren Sie im Portal (in der linken Navigationsleiste unter **More Services** (Weitere Dienste) zum Abschnitt „Azure Active Directory“.
+2. Navigieren Sie auf der linken Navigationsleiste unter **Alle Dienste** zum Abschnitt „Azure Active Directory“ des Portals.
 3. Sie werden automatisch am „Standardverzeichnis“ angemeldet. Falls nicht, können Sie das Verzeichnis wechseln, indem Sie oben rechts auf Ihren Kontonamen klicken.
 4. Wählen Sie im Abschnitt **Schnelle Aufgaben** die Option **Benutzer hinzufügen**.
 5. Geben Sie zum Hinzufügen eines Benutzers die folgenden Details in das Formular ein:
@@ -58,7 +58,7 @@ Gehen Sie dazu folgendermaßen vor.  Alternativ können Sie einen neuen Mandante
 8. Um das temporäre Kennwort zu ändern, melden Sie sich bei [https://login.microsoftonline.com](https://login.microsoftonline.com) mit diesem neuen Benutzerkonto an, und ändern Sie das Kennwort nach der entsprechenden Aufforderung.
 
 ## <a name="use-an-organizational-azure-subscription"></a>Verwenden eines Azure-Organisationsabonnements
-Wenn Sie sich zuvor mit Ihrem Organisationskonto für ein Azure-Abonnement registriert haben, verfügen Sie bereits über einen Mandanten!  Im [Azure-Portal](https://portal.azure.com) sollte ein Mandant angezeigt werden, wenn Sie zu „Weitere Dienste“ und „Azure Active Directory“ navigieren.  Sie können diesen Mandanten gemäß Ihren Anforderungen nutzen.
+Wenn Sie sich zuvor mit Ihrem Organisationskonto für ein Azure-Abonnement registriert haben, verfügen Sie bereits über einen Mandanten!  Im [Azure-Portal](https://portal.azure.com) sollte ein Mandant angezeigt werden, wenn Sie zu „Alle Dienste“ und „Azure Active Directory“ navigieren.  Sie können diesen Mandanten gemäß Ihren Anforderungen nutzen.
 
 ## <a name="start-from-scratch"></a>Ganz von vorn beginnen
 Wenn Ihnen diese genannten Schritte unverständlich sind, machen Sie sich keine Sorgen. Erstellen Sie einfach im [Azure-Portal](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) ein neues Azure AD-Verzeichnis. Nachdem Sie den Vorgang abgeschlossen haben, erhalten Sie einen eigenen Azure AD-Mandanten mit dem Domänennamen, den Sie bei der Registrierung gewählt haben.  Sie finden Ihren Mandanten im [Azure-Portal](https://portal.azure.com), indem Sie im linken Navigationsbereich zu **Azure Active Directory** navigieren.

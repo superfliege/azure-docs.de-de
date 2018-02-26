@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 0ab45043e2f75ff07a2a1a48e69507be185b56ab
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 063c92a006696afb998799c312515c79c19a48f4
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung
 
@@ -61,7 +61,7 @@ Viele Kunden sind der Meinung, dass eine E-Mail-Kampagne mit einfachen Anweisung
 Viele Kunden entscheiden sich für das Hosten einer Webseite und das Erstellen eines DNS-Stammeintrags, beispielsweise „https://passwords.contoso.com“. Sie füllen diese Seite mit Links zu den folgenden Informationen auf:
 
 * [Portal zur Azure AD-Kennwortzurücksetzung: https://aka.ms/sspr](https://aka.ms/sspr)
-* [Portal zur Registrierung für die Azure AD-Kennwortzurücksetzung: http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)
+* [Portal zur Registrierung für die Azure AD-Kennwortzurücksetzung: https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
 * [Portal zur Änderung des Azure AD-Kennworts: https://account.activedirectory.windowsazure.com/ChangePassword.aspx](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)
 * Weitere organisationsspezifische Informationen
 

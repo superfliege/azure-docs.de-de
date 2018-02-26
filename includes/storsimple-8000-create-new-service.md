@@ -5,7 +5,7 @@
 
 1. Melden Sie sich mithilfe Ihrer Microsoft-Kontoanmeldeinformationen beim [Azure-Portal](https://portal.azure.com/)an.
 
-2. Klicken Sie im Azure-Portal auf **+** und dann im Marketplace auf **Alle anzeigen**.
+2. Klicken Sie im Azure-Portal auf **Ressource erstellen** und dann im Marketplace auf **Alle anzeigen**.
 
     ![Erstellen eines StorSimple-Geräte-Managers](./media/storsimple-8000-create-new-service/createssdevman1.png)
 

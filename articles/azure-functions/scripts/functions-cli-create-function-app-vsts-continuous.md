@@ -9,15 +9,19 @@ ms.date: 01/09/2018
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: bf9428f23e851bae3485ec3d724dfb9ccd2af4c1
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 789f4e0b325475ddc3ff7aeb6e014f3814ac3458
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="create-a-function-in-azure-that-is-deployed-from-visual-studio-team-services"></a>Erstellen einer Funktion in Azure, die aus Visual Studio Team Services bereitgestellt wird
+# <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>Erstellen einer Funktions-App und Bereitstellen von Funktionscode über Visual Studio Team Services
 
-In diesem Thema wird gezeigt, wie sich mit Azure Functions eine [serverlose](https://azure.microsoft.com/overview/serverless-computing/) Funktions-App über den [Verbrauchsplan](../functions-scale.md#consumption-plan) erstellen lässt. Die Funktions-App, die als Container für Ihre Funktionen fungiert, wird ständig aus einem VSTS-Repository (Visual Studio Team Services) bereitgestellt. Um dieses Thema durchzuarbeiten, benötigen Sie Folgendes:
+In diesem Thema wird gezeigt, wie sich mit Azure Functions eine [serverlose](https://azure.microsoft.com/overview/serverless-computing/) Funktions-App über den [Verbrauchsplan](../functions-scale.md#consumption-plan) erstellen lässt. Die Funktions-App, die als Container für Ihre Funktionen fungiert, wird ständig aus einem VSTS-Repository (Visual Studio Team Services) bereitgestellt. 
+
+[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
+
+Um dieses Thema durchzuarbeiten, benötigen Sie Folgendes:
 
 * Ein VSTS-Repository, das Ihr Funktions-App-Projekt enthält und für das Sie Administratorberechtigungen haben.
 * Ein [persönliches Zugriffstoken (PAT)](https://docs.microsoft.com/vsts/accounts/use-personal-access-tokens-to-authenticate), um auf Ihr VSTS-Repository zuzugreifen.

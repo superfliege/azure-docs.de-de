@@ -1,10 +1,10 @@
 ---
 title: "VPN Gateway-Übersicht: Erstellen von standortübergreifenden VPN-Verbindungen mit virtuellen Azure-Netzwerken | Microsoft-Dokumentation"
-description: "In dieser VPN Gateway-Übersicht wird beschrieben, wie sie per VPN-Verbindung über das Internet eine Verbindung mit virtuellen Azure-Netzwerken herstellen können. Der Artikel enthält Diagramme mit grundlegenden Verbindungskonfigurationen."
+description: "In diesem Artikel erfahren Sie, was ein VPN Gateway ist und wie Sie über das Internet eine VPN-Verbindung mit virtuellen Azure-Netzwerken herstellen. Der Artikel enthält Diagramme mit grundlegenden Verbindungskonfigurationen."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: ae8de17c6b2ca8e1b9888612221c7f39b629c1b1
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: ebecbfa3279a71cda005f60c32247e9e95dd6646
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="about-vpn-gateway"></a>Informationen zu VPN Gateway
 
@@ -27,15 +27,11 @@ Ein VPN-Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem versc
 
 Jedes virtuelle Netzwerk kann nur ein VPN-Gateway aufweisen. Sie können aber mehrere Verbindungen mit dem gleichen VPN-Gateway erstellen. Ein Beispiel hierfür ist eine Verbindungskonfiguration mit mehreren Standorten. Wenn Sie mehrere Verbindungen mit dem gleichen VPN-Gateway erstellen, teilen sich alle VPN-Tunnel (einschließlich Point-to-Site-VPNs) die für das Gateway zur Verfügung stehende Bandbreite.
 
-### <a name="whatis"></a>Was ist ein Gateway für virtuelle Netzwerke?
+## <a name="whatis"></a>Was ist ein Gateway für virtuelle Netzwerke?
 
 Ein Gateway für virtuelle Netzwerke besteht aus mindestens zwei virtuellen Computern, die in einem speziellen Subnetz namens „GatewaySubnet“ bereitgestellt werden. Die virtuellen Computer in „GatewaySubnet“ werden beim Erstellen des Gateways für virtuelle Netzwerke erstellt. Virtuelle Computer im Gateway für virtuelle Netzwerke werden so konfiguriert, dass sie spezifische Routingtabellen und Gatewaydienste für das Gateway enthalten. Sie können die virtuellen Computer, die Teil des Gateways für virtuelle Netzwerke sind, nicht direkt konfigurieren, und Sie sollten nie zusätzliche Ressourcen in „GatewaySubnet“ bereitstellen.
 
 Beim Erstellen des Gateways für virtuelle Netzwerke mit dem Gatewaytyp „Vpn“ wird ein bestimmter Gatewaytyp für virtuelle Netzwerke erstellt, mit dem Datenverkehr verschlüsselt wird: ein VPN-Gateway. Die Erstellung eines VPN-Gateways kann bis zu 45 Minuten dauern. Dies liegt daran, dass die virtuellen Computer für das VPN-Gateway im Gatewaysubnetz bereitgestellt und mit den angegebenen Einstellungen konfiguriert werden. Die von Ihnen ausgewählte Gateway-SKU bestimmt, wie leistungsfähig die virtuellen Computer sind.
-
-## <a name="gwsku"></a>Gateway-SKUs
-
-[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ## <a name="configuring"></a>Konfigurieren von VPN Gateway
 
@@ -52,6 +48,10 @@ Sie können zunächst mit einem Konfigurationstool wie dem Azure-Portal Ressourc
 ### <a name="models"></a>Bereitstellungsmodell
 
 Die Konfigurationsschritte für ein VPN-Gateway hängen davon ab, mit welchem Bereitstellungsmodell Sie das virtuelle Netzwerk erstellt haben. Wenn Sie Ihr VNET beispielsweise mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie die Richtlinien und Anleitungen für das klassische Bereitstellungsmodell, um die Einstellungen für das VPN Gateway zu erstellen und zu konfigurieren. Weitere Informationen zu Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md).
+
+## <a name="gwsku"></a>Gateway-SKUs
+
+[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ## <a name="diagrams"></a>Diagramme zur Verbindungstopologie
 

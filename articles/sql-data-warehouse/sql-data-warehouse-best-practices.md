@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 12/06/2017
+ms.date: 02/20/2018
 ms.author: barbkess
-ms.openlocfilehash: 861c2c977fa9d0341125127852bc7747dfd6001a
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 50d02b657ec3063b0ca4078844563b4ba7932f37
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Bewährte Methoden für Azure SQL Data Warehouse
 Dieser Artikel enthält eine Sammlung vieler bewährter Methoden, mit denen Sie die optimale Leistung mit Ihrem Azure SQL Data Warehouse erzielen.  Einige Konzepte dieses Artikels sind einfach und leicht zu erklären, während andere Konzepte etwas komplizierter sind, sodass in diesem Artikel nicht ausführlicher darauf eingegangen wird.  Dieser Artikel soll Ihnen als einfache Anleitung dienen und Sie auf wichtige Punkte aufmerksam machen, die Sie beim Erstellen des Data Warehouse beachten sollten.  In jedem Abschnitt wird ein Konzept vorgestellt, und es sind Links zu Artikeln mit ausführlicheren Informationen angegeben, in denen näher auf ein Konzept eingegangen wird.
@@ -29,14 +29,8 @@ Lassen Sie sich von diesem Artikel nicht entmutigen, wenn Sie sich gerade erst m
 Eine Anleitung zum Laden finden Sie unter [Guidance for loading data into Azure SQL Data Warehouse](guidance-for-loading-data.md) (Anleitung zum Laden von Daten in Azure SQL Data Warehouse).
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Reduzieren von Kosten durch das Pausieren und Skalieren
-Ein wichtiges Feature von SQL Data Warehouse ist die Möglichkeit, die Anwendung zu pausieren, wenn Sie sie nicht verwenden. Es werden dann keine Computeressourcen berechnet.  Ein weiteres wichtiges Feature ist die Möglichkeit zum Skalieren der Ressourcen.  Das Pausieren und Skalieren kann über das Azure-Portal oder mit PowerShell-Befehlen durchgeführt werden.  Machen Sie sich mit diesen Features vertraut, da sie erheblich zur Kostenreduzierung für Ihr Data Warehouse beitragen können, wenn Sie es nicht verwenden.  Wenn das Data Warehouse immer verfügbar sein soll, können Sie die Skalierung auf die kleinste Größe (DW100) in Betracht ziehen, anstatt zu pausieren.
+Weitere Informationen zur Kostensenkung durch Anhalten und Skalieren finden Sie im [Artikel zur Computeverwaltung](sql-data-warehouse-manage-compute-overview.md). 
 
-Weitere Informationen finden Sie unter [Anhalten von Computeressourcen][Pause compute resources], [Fortsetzen von Computeressourcen][Resume compute resources] und [Skalieren von Computeressourcen].
-
-## <a name="drain-transactions-before-pausing-or-scaling"></a>Beseitigen von Transaktionen vor dem Pausieren oder Skalieren
-Beim Anhalten oder Skalieren Ihres SQL Data Warehouse werden Ihre Abfragen hinter den Kulissen abgebrochen, wenn Sie die Anforderung zum Anhalten oder Skalieren initiieren.  Das Abbrechen einer einfachen SELECT-Abfrage ist ein schneller Vorgang und hat fast keinerlei Auswirkung auf den Zeitraum, der für das Pausieren oder Skalieren Ihrer Instanz anfällt.  Dagegen können Transaktionsabfragen, bei denen die Daten oder die Struktur der Daten geändert wird, unter Umständen nicht so schnell beendet werden.  **Transaktionsabfragen müssen laut Definition entweder vollständig abgeschlossen sein, oder es muss ein Rollback der Änderungen durchgeführt werden.**  Ein Rollback der Schritte, die von einer Transaktionsabfrage ausgeführt wurden, kann genauso lange oder sogar länger als die ursprüngliche Änderung dauern, die mit der Abfrage durchgeführt werden sollte.  Wenn Sie beispielsweise eine Abfrage abbrechen, mit der Zeilen gelöscht werden, und die Abfrage bereits eine Stunde lang ausgeführt wurde, kann es eine Stunde dauern, bis die gelöschten Zeilen wieder eingefügt wurden.  Wenn Sie das Pausieren oder Skalieren bei aktiven Transaktionen ausführen, kann das Pausieren oder Skalieren lange dauern, weil erst gewartet werden muss, bis das Rollback abgeschlossen ist.
-
-Siehe auch: [Grundlagen von Transaktionen][Understanding transactions], [Optimieren von Transaktionen][Optimizing transactions]
 
 ## <a name="maintain-statistics"></a>Verwalten von Statistiken
 Im Gegensatz zu SQL Server, wobei Statistiken zu Spalten, automatisch erkannt und erstellt oder aktualisiert werden, ist für SQL Data Warehouse eine manuelle Verwaltung der Statistiken erforderlich.  Dies soll in Zukunft geändert werden, aber vorerst sollten Sie Ihre Statistiken selbst verwalten, um sicherzustellen, dass die SQL Data Warehouse-Pläne optimiert sind.  Die vom Optimierer erstellten Pläne sind nur so gut wie die verfügbaren Statistiken.  **Das Erstellen von erfassten Statistiken für jede Spalte ist eine einfache Möglichkeit zum Einsteigen in das Thema Statistiken.**  Genauso wichtig ist es, Statistiken zu aktualisieren, da für Ihre Daten erhebliche Änderungen durchgeführt werden.  Ein konservativer Ansatz ist das Aktualisieren von Statistiken jeden Tag oder nach jedem Ladevorgang.  Es gibt immer Vor- und Nachteile, was die Leistung einerseits und die Kosten für die Erstellung und Aktualisierung von Statistiken andererseits betrifft. Falls die Verwaltung aller Statistiken zu lange dauert, können Sie versuchen, selektiver auszuwählen, welche Spalten über Statistiken verfügen sollen oder häufig aktualisiert werden müssen.  Beispielsweise können Sie Datumsspalten aktualisieren, wenn täglich neue Werte hinzugefügt werden. **Die größten Vorteile ergeben sich, wenn Sie Statistiken zu Spalten in Verknüpfungen, in der WHERE-Klausel verwendete Spalten und Spalten in GROUP BY nutzen.**
@@ -138,7 +132,7 @@ Verwenden Sie die Seite für [Azure SQL Data Warehouse-Feedback][Azure SQL Data 
 [Monitor your workload using DMVs]: ./sql-data-warehouse-manage-monitor.md
 [Pause compute resources]: ./sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
 [Resume compute resources]: ./sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
-[Skalieren von Computeressourcen]: ./sql-data-warehouse-manage-compute-overview.md#scale-compute
+[Scale compute resources]: ./sql-data-warehouse-manage-compute-overview.md#scale-compute
 [Understanding transactions]: ./sql-data-warehouse-develop-transactions.md
 [Optimizing transactions]: ./sql-data-warehouse-develop-best-practices-transactions.md
 [Troubleshooting]: ./sql-data-warehouse-troubleshoot.md

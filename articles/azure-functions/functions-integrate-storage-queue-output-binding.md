@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 07b864c72696fbcfc0119b978e2ab9a51307291a
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: a17897dc76b47f3fb7b6eb5076160faf6c5ae9c9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions
 
@@ -40,7 +40,7 @@ So führen Sie diesen Schnellstart durch:
 
 In diesem Abschnitt verwenden Sie die Benutzeroberfläche des Portals, um der zuvor erstellten Funktion eine Queue Storage-Ausgabebindung hinzuzufügen. Durch diese Bindung können Sie mit minimalem Programmieraufwand eine Meldung in einer Warteschlange erstellen. Sie müssen keinen Code für Aufgaben wie das Öffnen einer Speicherverbindung, das Erstellen einer Warteschlange oder das Abrufen eines Verweises auf eine Warteschlange schreiben. Die Azure Functions-Laufzeit und die Warteschlangen-Ausgabebindung nehmen Ihnen diese Aufgaben ab.
 
-1. Öffnen Sie im Azure-Portal die Seite „Funktions-App“ für die Funktions-App, die Sie in [Erstellen Ihrer ersten Funktion im Azure-Portal](functions-create-first-azure-function.md) erstellt haben. Klicken Sie hierzu auf **Weitere Dienste > Funktionen-Apps**, und wählen Sie dann Ihre Funktions-App aus.
+1. Öffnen Sie im Azure-Portal die Seite „Funktions-App“ für die Funktions-App, die Sie in [Erstellen Ihrer ersten Funktion im Azure-Portal](functions-create-first-azure-function.md) erstellt haben. Klicken Sie hierzu auf **Alle Dienste > Funktionen-Apps**, und wählen Sie dann Ihre Funktions-App aus.
 
 2. Wählen Sie die Funktion aus, die Sie im Rahmen der vorherigen Schnellstartanleitung erstellt haben.
 
@@ -115,7 +115,7 @@ Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto v
 
 Überspringen Sie diesen Abschnitt, wenn Sie den Storage-Explorer bereits installiert und bereits eine Verbindung mit dem Speicherkonto hergestellt haben, das Sie in dieser Schnellstartanleitung verwenden.
 
-2. Führen Sie das Tool [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, und wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus. Klicken Sie anschließend auf **Weiter**.
+2. Führen Sie das Tool [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, und wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus. Klicken Sie anschließend auf **Weiter**.
 
     ![Führen Sie das Tool Storage Account-Explorer aus.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 

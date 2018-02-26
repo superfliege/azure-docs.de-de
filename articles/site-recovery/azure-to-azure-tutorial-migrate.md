@@ -7,11 +7,11 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/07/2018
 ms.author: raynew
-ms.openlocfilehash: e7b925d2daed11ee4e070cda6bcbd4a3511d9c17
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: cb815f7d9c0556efcce58b53d6037e3fc8ed9c78
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrieren virtueller Azure-Computer zu einer anderen Region
 
@@ -75,7 +75,7 @@ Stellen Sie sicher, dass alle neuesten Stammzertifikate auf den Azure-VMs vorhan
 Erstellen Sie den Tresor in einer beliebigen Region außer der Quellregion.
 
 1. Melden Sie sich unter [Azure-Portal](https://portal.azure.com) > **Recovery Services** an.
-2. Klicken Sie auf **Neu** > **Überwachung und Verwaltung** > **Backup und Site Recovery**.
+2. Klicken Sie auf **Ressource erstellen** > **Überwachung + Verwaltung** > **Backup und Site Recovery**.
 3. Geben Sie in **Name** den Anzeigenamen **ContosoVMVault** ein. Wenn Sie mehrere Abonnements haben, wählen Sie das gewünschte aus.
 4. Erstellen Sie die Ressourcengruppe **ContosoRG**.
 5. Geben Sie eine Azure-Region an. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/)unter „Geografische Verfügbarkeit“.

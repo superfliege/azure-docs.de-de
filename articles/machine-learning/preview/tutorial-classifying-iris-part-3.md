@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: ab0c10b2eeaa4388ef9b4dab90b99b37fa32df74
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 54f81a93876549d624cef6c37dd659af084d0b37
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Klassifizieren von Iris, Teil 3: Bereitstellen eines Modells
 Bei Azure Machine Learning-Diensten (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -285,7 +285,7 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach Ihren Speicherkonten. Wählen Sie hierzu **Weitere Dienste**.
+2. Suchen Sie nach Ihren Speicherkonten. Wählen Sie hierzu **Alle Dienste**.
 
 3. Geben Sie im Suchfeld **Speicherkonten** ein, und drücken Sie anschließend die **Eingabetaste**.
 

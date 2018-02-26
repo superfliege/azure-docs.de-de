@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 02/21/2018
 ms.author: yurid
-ms.openlocfilehash: 959c0e8693f4bba49488bbe85e334599823ad0ed
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: a5c95fc7ddf78987d8a7b135d54f359eb5c49946
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Verstehen der Sicherheitswarnungen in Azure Security Center
 In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen und verwandte Informationen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen und Vorfällen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
@@ -65,7 +65,7 @@ Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von 
     * Von einem Systemprozess wurde ein ungewöhnlicher Prozess erstellt.
     * Vom Windows Update-Dienst wurde ein ungewöhnlicher Prozess gestartet.
     * Ein Prozess wurde mit einer ungewöhnlichen Befehlszeile ausgeführt. Dies kann darauf hindeuten, dass ein legitimer Prozess zur Ausführung schädlicher Inhalte gekapert wurde.
-    * Es wurde versucht, über die Befehlszeile alle ausführbaren Dateien (*.EXE -Dateien) in einem Verzeichnis zu starten.
+    * Es wurde versucht, über die Befehlszeile alle ausführbaren Dateien (EXE-Dateien) in einem Verzeichnis zu starten.
     * Ein Prozess wurde vom PsExec-Hilfsprogramm (das zur Remoteausführung von Prozessen verwendet werden kann) ausgeführt.
     * Die übergeordnete ausführbare Datei von Apache Tomcat® (Tomcat#.exe) wurde verwendet, um verdächtige untergeordnete Prozesse zu starten, die zum Hosten oder Starten schädlicher Befehle geeignet sind.
     * Der Programmkompatibilitäts-Assistent (pcalua.exe) von Microsoft Windows wurde verwendet, um potenziell schädlichen ausführbaren Code zu starten.
@@ -93,16 +93,11 @@ Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von 
 * **Deaktivieren und Löschen von IIS-Protokolldateien:** Diese Warnung weist darauf hin, dass IIS-Protokolldateien deaktiviert und/oder gelöscht wurden, wodurch Angreifer häufig versuchen, ihre Spuren zu verwischen.
 * **Verdächtige Dateilöschung:** Diese Warnung weist auf eine verdächtige Löschung von Dateien hin, die von einem Angreifer verwendet werden kann, um Beweise für schädliche Binärdateien zu beseitigen.
 * **Alle Schattenkopien von Dateien wurden gelöscht:** Diese Warnung weist auf die Löschung von Schattenkopien hin.
-* **Eine Verlaufsdatei wurde gelöscht:** Diese Warnung weist darauf hin, dass die Protokolldatei mit dem Befehlsverlauf gelöscht wurde, was bedeuten kann, dass ein Angreifer versucht hat, seine Spuren zu verwischen.
 * **Verdächtige Dateibereinigungsbefehle:** Diese Warnung weist auf eine Kombination aus systeminfo-Befehlen hin, die zum Ausführen einer selbstständigen Bereinigungsaktivität nach einer Kompromittierung dienen.  *systeminfo.exe* ist ein legitimes Windows-Tool, es wird jedoch selten wie hier zweimal hintereinander und gefolgt von einem Löschbefehl ausgeführt.
 * **Verdächtige Kontoerstellung:** Diese Warnung weist darauf hin, dass ein Konto erstellt wurde, das große Ähnlichkeit mit einem vorhandenen integrierten Konto mit Administratorrechten hat. Dieses Verfahren kann von Angreifern verwendet werden, um unentdeckt ein nicht autorisiertes Konto zu erstellen.
-* **Verdächtige Anmeldeaktivität:** Diese Warnung weist auf eine ungewöhnliche Anmeldeaktivität hin, die möglicherweise auf einen SMB-Brute-Force-Angriff (Server Message Block) hindeutet. Wenn die betroffene Ressource als IIS-Server fungiert, ist diese Warnung unter Umständen auf eine spezifische legitime IIS-Authentifizierungskonfiguration zurückzuführen.
 * **Verdächtige Volumeschattenkopie-Aktivität:** Diese Warnung weist auf eine Schattenkopie-Löschaktivität für die Ressource hin. Volumeschattenkopie (Volume Shadow Copy, VSC) ist ein wichtiges Artefakt, das Datenmomentaufnahmen speichert. Diese Aktivität ist in der Regel auf Ransomware zurückzuführen, kann aber auch legitim sein.
 * **Persistenzmodus der Windows-Registrierung:** Diese Warnung weist darauf hin, dass versucht wurde, eine ausführbare Datei in der Windows-Registrierung zu verankern. Malware verwendet dieses Verfahren häufig, um einen Systemstart zu überstehen.
-* **Windows-Firewall deaktiviert:** Diese Warnung weist auf die Deaktivierung einer Windows-Firewall hin.
 * **Verdächtige neue Firewallregel:** Diese Warnung weist darauf hin, dass über *netsh.exe* eine neue Firewallregel hinzugefügt wurde, die Datenverkehr einer ausführbaren Datei an einem verdächtigen Ort zulässt.
-* **Der Gruppe „Administratoren“ wurde ein neuer Benutzer hinzugefügt:** Diese Warnung weist darauf hin, dass der lokalen Administratorgruppe ein neuer Benutzer hinzugefügt wurde.
-* **Ein neuer Dienst wurde erstellt:** Diese Warnung weist darauf hin, dass ein neuer Dienst erstellt wurde.
 * **Verdächtige XCOPY-Ausführungen:** Diese Warnung weist auf eine Reihe von XCOPY-Ausführungen hin, was ein Indiz dafür sein kann, dass einer Ihrer Computer kompromittiert und zur Verteilung von Schadsoftware verwendet wurde.
 * **Unterdrückung der Anzeige eines rechtlichen Hinweises für Benutzer bei der Anmeldung:** Diese Warnung weist auf eine Änderung des Registrierungsschlüssels hin, der steuert, ob Benutzern bei der Anmeldung ein rechtlicher Hinweis angezeigt wird. Diese Aktivität wird von Angreifern häufig durchgeführt, nachdem ein Host kompromittiert wurde.
 * **Ungewöhnliche Mischung aus Groß- und Kleinbuchstaben in der Befehlszeile erkannt:** Diese Warnung weist auf die Verwendung einer Mischung aus Groß- und Kleinbuchstaben in der Befehlszeile hin – eine Technik, die von Angreifern genutzt wird, um einer Entdeckung durch Computerregeln mit Berücksichtigung der Groß-/Kleinschreibung oder einer Entdeckung durch hashbasierte Computerregeln zu entgehen.
@@ -123,15 +118,10 @@ Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von 
 * **Verdächtige Änderungen für „Set-ExecutionPolicy“ und WinRM:** Diese Warnung weist auf Konfigurationsänderungen hin, die mit der Verwendung der schädlichen ChinaChopper-Webshell in Verbindung gebracht werden.
 * **Deaktivierung wichtiger Dienste:** Diese Warnung weist darauf hin, dass mit dem Befehl „net.exe stop“ wichtige Dienste wie SharedAccess oder das Windows-Sicherheitscenter beendet wurden.
 * **Verdächtige Verwendung des FTP-Switchs „-s“:** Diese Warnung weist auf die Verwendung des FTP-Switchs „-s“ hin. Dieser kann von Schadsoftware zum Herstellen einer Verbindung mit einem FTP-Remoteserver und zum Herunterladen weiterer schädlicher Binärdateien verwendet werden.
-* **Vorbereitung der Exfiltration von Dokumenten mittels IIS-Hintertür:** Diese Warnung weist darauf hin, dass Dokumente gesammelt und für die Exfiltration vorbereitet werden.
 * **Verdächtige Ausführung des Befehls „VBScript.Encode“:** Diese Warnung weist auf die Ausführung des Befehls *VBScript.Encode* hin. Dieser Befehl codiert Skripts in unlesbaren Text, was die Untersuchung des Codes erschwert.
 * **VBScript-HTTP-Objektzuordnung:** Diese Warnung weist auf die Erstellung einer VBScript-Datei über die Eingabeaufforderung hin – eine Vorgehensweise, die zum Herunterladen schädlicher Dateien verwendet werden kann.
 * **Auf der Einrastfunktion basierender Angriff:** Diese Warnung weist darauf hin, dass sich ein Angreifer unter Umständen über eine Binärdatei für die Barrierefreiheit (etwa die Einrastfunktion, die Bildschirmtastatur oder die Sprachausgabe) Hintertürzugriff verschafft.
 * **Anzeichen für Petya-Ransomware:** Diese Warnung weist auf die Erkennung von Techniken hin, die mit der Petya-Ransomware in Verbindung gebracht werden.
-* **Ein Kernelmodul wurde geladen:** Diese Warnung weist darauf hin, dass ein Kernelmodul geladen wurde.
-* **Ein Kernelmodul wurde entfernt:** Diese Warnung weist darauf hin, dass ein Kernelmodul entfernt wurde.
-* **Ungewöhnliche Anmeldung bei einem Computer:** Diese Warnung weist darauf hin, dass sich ein Benutzer über eine ungewöhnliche IP-Adresse angemeldet hat.
-* **Eine Datei wurde heruntergeladen und ausgeführt:** Diese Warnung weist darauf hin, dass eine Datei auf den Computer heruntergeladen, mit Ausführungsrechten versehen und ausgeführt wurde.
 * **AMSI-Deaktivierungsversuch:** Diese Warnung weist darauf hin, dass versucht wurde, die Überprüfungsschnittstelle der Antischadsoftware (Antimalware Scan Interface, AMSI) zu deaktivieren, was die Deaktivierung der Schadsoftwareerkennung zur Folge hätte.
 * **Ransomware-Indikatoren:** Diese Warnung weist auf verdächtige Aktivitäten hin, die üblicherweise mit Sperrbildschirm- und Verschlüsselungs-Ransomware in Verbindung stehen.
 * **Verdächtige Ausgabedatei der Ablaufverfolgungssammlung:** Diese Warnung weist darauf hin, dass eine Ablaufverfolgung (beispielsweise für Netzwerkaktivitäten) erfasst und an einen ungewöhnlichen Dateityp ausgegeben wurde.
@@ -145,14 +135,8 @@ Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von 
 * **Dynamische PS-Skripterstellung:** Diese Warnung weist auf die dynamische Erstellung eines PowerShell-Skripts hin. Angreifer können auf diese Weise progressiv ein Skript erstellen, um IDS-Systeme zu umgehen.
 * **Metasploit-Indikatoren:** Diese Warnung weist auf Aktivitäten in Verbindung mit dem Metasploit Framework hin, das eine Reihe von Funktionen und Tools für Angreifer bereitstellt.
 * **Verdächtige Kontoaktivität:** Diese Warnung weist darauf hin, dass versucht wurde, über ein Konto, das vor Kurzem kompromittiert wurde, eine Verbindung mit einem Computer herzustellen.
-* **Möglicher verdächtiger Zugriff auf Planungsaufgaben:** Diese Warnung weist auf die Ausführung eines Cron-Auftrags hin, was Angreifern ggf. die zeitplangesteuerte Ausführung schädlicher Programme ermöglicht.
-* **Möglicher verdächtiger Zugriff auf die Befehlsverlaufsdatei:** Diese Warnung weist auf ungewöhnlichen Zugriff auf die Befehlsverlaufsdatei hin.
 * **Kontoerstellung:** Diese Warnung weist auf die Erstellung eines neuen Kontos auf dem Computer hin.
-* **Änderung von Bash-Einstellungen:** Diese Warnung weist darauf hin, dass auf eine Bash-Profildatei zugegriffen wurde, was ein Indiz dafür sein kann, dass ein Angreifer versucht, schädliche Programme auf der Grundlage eines Zeitplans auszuführen.
-* **Verdächtige Sequenz nicht erfolgreicher sudo-Versuche:** Diese Warnung weist auf eine Sequenz nicht erfolgreicher sudo-Befehle hin – häufig ein Anzeichen für Brute-Force-Angriffe, die darauf abzielen, Berechtigungen durch nicht autorisierte Benutzer auszuweiten.
-* **Verdächtige Sequenz erfolgreicher sudo-Versuche:** Diese Warnung weist auf eine Sequenz nicht erfolgreicher sudo-Versuche hin, auf die ein erfolgreicher sudo-Versuch folgt – häufig ein Anzeichen für Brute-Force-Angriffe, die darauf abzielen, Berechtigungen durch nicht autorisierte Benutzer auszuweiten.
-* **Der Sudoer-Gruppe wurde ein neuer Benutzer hinzugefügt:** Diese Warnung weist darauf hin, dass der Sudoer-Gruppe ein Benutzer hinzugefügt wurde, was den Mitgliedern das Ausführen von Befehlen mit hohen Berechtigungen ermöglicht.
-* **Netzwerkanmeldung mit Klartext-Anmeldeinformationen:** Diese Warnung weist darauf hin, dass eine Netzwerkanmeldung festgestellt wurde, bei der das Kennwort im Klartextformat über das Netzwerk gesendet wurde. Dies ist häufig bei Anmeldungen mit einem ASP-Skript über die ADVAPI der Fall oder wenn sich ein Benutzer unter Verwendung des Standardauthentifizierungsmodus von IIS bei IIS anmeldet. Die Standardauthentifizierung wird nicht empfohlen – es sei denn, sie ist von einer Verschlüsselungsebene wie SSL umschlossen (sodass ausschließlich HTTPS-Verbindungen verwendet werden).
+
 
 ### <a name="crash-analysis"></a>Absturzanalyse
 
@@ -206,6 +190,8 @@ Sollten weitere Informationen verfügbar sein, wird dies im Sicherheitsincident 
 - Protokolllöschereignisse
 - Von unbekannten Geräten angeschlossene Plug & Play-Geräte
 - Warnungen, die nicht handlungsrelevant sind
+- Erstellung eines neuen Kontos
+- Die Datei wurde mit dem CertUtil-Tool entschlüsselt. 
 
 ![Warnung vor ungewöhnlichem Zugriff](./media/security-center-alerts-type/security-center-alerts-type-fig20.png)
 

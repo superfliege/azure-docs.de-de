@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 41d7e42f203170e4fa3b8e3a8c973e23808f941b
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: bb08a60a9ec2db0fa145f75e00be96bc05664e32
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET
 
@@ -55,7 +55,7 @@ Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen die Azure Cosmos DB
 - 99,99 % Verfügbarkeit innerhalb einer einzelnen Region sowie die Möglichkeit zum Hinzufügen weiterer Regionen für höhere Verfügbarkeit und [branchenführende umfassende SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) zu allgemeiner Verfügbarkeit
 - Arbeiten mit dem vorhandenen Azure Storage-.NET-SDK und keine Änderungen am Code der Anwendung
 
-Dieses Tutorial erläutert die Azure Cosmos DB-Tabelle-API unter Verwendung des .NET SDK. Sie können das [Azure Storage SDK](https://aka.ms/tableapinuget) von NuGet herunterladen.
+Dieses Tutorial erläutert die Azure Cosmos DB-Tabelle-API unter Verwendung des .NET SDK. Das [.NET SDK für die Azure Cosmos DB-Tabellen-API](https://aka.ms/tableapinuget) können Sie von NuGet herunterladen.
 
 Weitere Informationen zu komplexen Azure Table Storage-Aufgaben finden Sie unter:
 
@@ -279,7 +279,7 @@ TableResult retrievedResult = table.Execute(retrieveOperation);
 >
 
 ## <a name="query-entities-using-automatic-secondary-indexes"></a>Abfragen von Entitäten mit automatischen sekundären Indizes
-Tabellen können mithilfe der `TableQuery`-Klasse abgefragt werden. Azure Cosmos DB besitzt ein schreiboptimiertes Datenbankmodul, das alle Spalten in der Tabelle automatisch indiziert. Indizierung ist in Azure Cosmos DB unabhängig von Schemas. Aus diesem Grund wird Ihr Schema auch dann automatisch indiziert, wenn es von Zeile zu Zeile unterschiedlich ist oder sich im Laufe der Zeit weiterentwickelt. Da Azure Cosmos DB automatische sekundäre Indizes unterstützt, können Abfragen von Eigenschaften den Index nutzen und effizient verarbeitet werden.
+Tabellen können mithilfe der `TableQuery`-Klasse abgefragt werden. Azure Cosmos DB besitzt eine schreiboptimierte Datenbank-Engine, die alle Spalten in der Tabelle automatisch indiziert. Indizierung ist in Azure Cosmos DB unabhängig von Schemas. Aus diesem Grund wird Ihr Schema auch dann automatisch indiziert, wenn es von Zeile zu Zeile unterschiedlich ist oder sich im Laufe der Zeit weiterentwickelt. Da Azure Cosmos DB automatische sekundäre Indizes unterstützt, können Abfragen von Eigenschaften den Index nutzen und effizient verarbeitet werden.
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");

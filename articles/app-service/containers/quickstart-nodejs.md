@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 0013b3b1e95d733191aeafcffcda078a352d034f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 33889e391d3060f08294f81b35f180c1318d9f4c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js-Web-App in Azure App Service unter Linux
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/03/2018
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-nodejs/hello-world-in-browser.png)
 
-Die Schritte in diesem Tutorial können unter Mac, Windows oder Linux ausgeführt werden.
+Die Schritte in diesem Tutorial können unter Mac, Windows oder Linux ausgeführt werden. Sie können sich auch an [diesem Video](#video) orientieren, in dem dieser Artikel behandelt wird.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -180,6 +180,10 @@ Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Ver
 Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App angezeigt. 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
+
+## <a name="video"></a>Video
+
+[!VIDEO https://www.youtube.com/embed/S9eqK7xPKqU]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
