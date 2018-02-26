@@ -3,7 +3,7 @@ title: "Azure SQL Analytics-Lösung in Log Analytics | Microsoft-Dokumentation"
 description: "Die Azure SQL Analytics-Lösung hilft Ihnen bei der Verwaltung Ihrer Azure SQL-Datenbanken."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
-ms.author: magoedte;banders
-ms.openlocfilehash: e2176a41a115d77a60a8348d2d1b5928109dd65b
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: magoedte
+ms.openlocfilehash: 624c861db9bb318c368cef04965da0a73dd028d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL Analytics (Vorschau) in Log Analytics
 
@@ -31,7 +31,7 @@ Zurzeit unterstützt diese Vorschaulösung bis zu 150.000 Azure SQL-Datenbanken 
 Die Azure SQL Analytics-Lösung unterstützt Sie wie andere für Log Analytics verfügbare Lösungen bei der Überwachung und dem Empfang von Benachrichtigungen über den Zustand der Azure-Ressourcen, in diesem Fall von Azure SQL-Datenbank. Microsoft Azure SQL-Datenbank ist ein skalierbarer relationaler Datenbankdienst, der vertraute SQL Server-ähnliche Funktionen für Anwendungen bereitstellt, die in der Azure-Cloud ausgeführt werden. Log Analytics unterstützt Sie beim Erfassen, Korrelieren und Visualisieren strukturierter und nicht strukturierter Daten.
 
 Einen Überblick über die praktische Verwendung der Azure SQL-Analyse und über typische Verwendungsszenarien finden Sie im eingebetteten Video:
-          
+
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
@@ -60,14 +60,14 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 Führen Sie die folgenden Schritte aus, um die Azure SQL Analytics-Lösung Ihrem Arbeitsbereich hinzuzufügen.
 
 1. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem Arbeitsbereich die Azure SQL Analytics-Lösung hinzu.
-2. Klicken Sie im Azure-Portal auf **Neu** (das Symbol +), und wählen Sie dann in der Liste der Ressourcen **Überwachung und Verwaltung** aus.  
+2. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Überwachung + Verwaltung**.  
     ![Überwachung und Verwaltung](./media/log-analytics-azure-sql/monitoring-management.png)
 3. Klicken Sie in der Liste **Überwachung und Verwaltung** auf **See all** (Alle anzeigen).
 4. Klicken Sie in der Liste **Empfohlen** auf **Weitere Informationen**, suchen Sie in der neuen Liste **Azure SQL Analytics (Vorschau)**, und wählen Sie dann diese Option aus.  
     ![Azure SQL Analytics-Lösung](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. Klicken Sie auf dem Blatt **Azure SQL Analytics (Vorschau)** auf **Erstellen**.  
+5. Klicken Sie im Bereich **Azure SQL Analytics (Vorschau)** auf **Erstellen**.  
     ![Erstellen](./media/log-analytics-azure-sql/portal-create.png)
-6. Wählen Sie auf dem Blatt **Neue Lösung erstellen** den Arbeitsbereich aus, dem Sie die Lösung hinzufügen möchten, und klicken Sie dann auf **Erstellen**.  
+6. Wählen Sie im Bereich **Neue Lösung erstellen** den Arbeitsbereich aus, dem Sie die Lösung hinzufügen möchten, und klicken Sie dann auf **Erstellen**.  
     ![Zu Arbeitsbereich hinzufügen](./media/log-analytics-azure-sql/add-to-workspace.png)
 
 
@@ -97,15 +97,15 @@ Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azu
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Anzeigen von Azure SQL Analytics-Daten
 
-Klicken Sie auf die Kachel **Azure SQL Analytics**, um das Dashboard von Azure SQL Analytics zu öffnen. Das Dashboard umfasst die Übersicht über alle Datenbanken, die aus verschiedenen Perspektiven überwacht werden. Damit verschiedene Perspektiven funktionieren, müssen Sie die richtigen Metriken oder Protokolle auf Ihren SQL-Ressourcen aktivieren, die dann an den Azure Log Analytics-Arbeitsbereich gestreamt werden. 
+Klicken Sie auf die Kachel **Azure SQL Analytics**, um das Dashboard von Azure SQL Analytics zu öffnen. Das Dashboard umfasst die Übersicht über alle Datenbanken, die aus verschiedenen Perspektiven überwacht werden. Damit verschiedene Perspektiven funktionieren, müssen Sie die richtigen Metriken oder Protokolle auf Ihren SQL-Ressourcen aktivieren, die dann an den Azure Log Analytics-Arbeitsbereich gestreamt werden.
 
 ![Azure SQL-Analyse – Übersicht](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
-Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive. Nach Auswahl der Perspektive wird der Drilldown-Bericht geöffnet.
+Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive. Nach Auswahl der Perspektive wird der Drilldownbericht geöffnet.
 
 ![Azure SQL-Analyse – Zeitlimits](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
 
-Jede Perspektive bietet Zusammenfassungen zum Abonnement, Server, Pool für elastische Datenbanken und zur Datenbankebene. Darüber hinaus zeigt jede Perspektive auf der rechten Seite einen speziellen Bericht an. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown nach fortgesetzt.
+Jede Perspektive bietet Zusammenfassungen zum Abonnement, Server, Pool für elastische Datenbanken und zur Datenbankebene. Darüber hinaus zeigt jede Perspektive auf der rechten Seite eine Perspektive an, die für den Bericht spezifisch ist. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown fortgesetzt.
 
 | Perspektive | BESCHREIBUNG |
 | --- | --- |
@@ -142,7 +142,7 @@ Durch die Abfragedauer- und Abfragewartevorgänge-Perspektive können Sie die Le
 
 Sie können problemlos Warnungen mit den Daten erstellen, die aus Azure SQL-Datenbank-Ressourcen stammen. Hier sind einige nützliche Abfragen für die [Protokollsuche](log-analytics-log-searches.md), die Sie für Warnungen verwenden können:
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 
 *Hohe DTU in Azure SQL-Datenbank*

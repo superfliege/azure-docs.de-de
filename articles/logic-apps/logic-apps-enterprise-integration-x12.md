@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bfad01d8c14cdd972ebe8e4038f226ffe0da93b1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7a274ad33b7181d238203290cf63937df5f13bbc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von X12-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
@@ -39,12 +39,12 @@ Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-in
 
 ## <a name="create-an-x12-agreement"></a>Erstellen einer X12-Vereinbarung
 
-1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Weitere Dienste** aus. 
+1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Alle Dienste** aus. 
 
     > [!TIP]
-    > Sollte **Weitere Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise erst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
+    > Sollte **Alle Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise zuerst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
 
-    ![Im linken Menü die Option „Weitere Dienste“ auswählen](./media/logic-apps-enterprise-integration-x12/account-1.png)
+    ![Wählen Sie im linken Menü die Option „Alle Dienste“ aus.](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
 2.  Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.  
 

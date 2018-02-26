@@ -1,10 +1,10 @@
 ---
-title: "Empfehlungen zur Leistung – Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Azure SQL-Datenbankratgeber gibt Empfehlungen für Ihre SQL-Datenbanken, die die aktuelle Abfrageleistung verbessern können."
+title: 'Empfehlungen zur Leistung: Azure SQL-Datenbank | Microsoft Docs'
+description: "Azure SQL-Datenbank stellt Empfehlungen für Ihre SQL-Datenbanken bereit, die die aktuelle Abfrageleistung verbessern können."
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: monicar
 ms.assetid: 1db441ff-58f5-45da-8d38-b54dc2aa6145
 ms.service: sql-database
@@ -14,60 +14,70 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
-ms.author: sstein
-ms.openlocfilehash: ea1069d4ec29ad66562a6798a8b13998d0d2ef89
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.author: 
+ms.openlocfilehash: b3cd5f2138f4d16a1a1590b025d020410ebcce3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="performance-recommendations"></a>Empfehlungen zur Leistung
+# <a name="performance-recommendations-for-sql-database"></a>Empfehlungen zur Leistung für SQL-Datenbank
 
-Azure SQL-Datenbank lernt mit Ihrer Anwendung und passt sich daran an. Darüber hinaus bietet der Dienst benutzerdefinierte Empfehlungen, mit denen Sie die Leistung Ihrer SQL-Datenbanken maximieren können. Die Leistung kann kontinuierlich durch die Analyse Ihres Nutzungsverlauf von SQL-Datenbank bewertet werden. Die Empfehlungen, die gegeben werden, basieren auf einem für die Datenbank eindeutigen Workloadmuster und tragen zur Verbesserung der Leistung bei.
+Azure SQL-Datenbank lernt und passt sich an Ihre Anwendung an. Das Produkt bietet maßgeschneiderte Empfehlungen, die es Ihnen ermöglichen, die Leistung Ihrer SQL-Datenbanken zu maximieren. Die SQL-Datenbank wertet kontinuierlich den Nutzungsverlauf Ihrer SQL-Datenbanken aus und analysiert ihn. Die Empfehlungen, die bereitgestellt werden, basieren auf für die Datenbank eindeutigen Workloadmustern und tragen zur Verbesserung der Leistung bei.
 
 > [!TIP]
 > Die [automatische Optimierung](sql-database-automatic-tuning.md) ist die empfohlene Methode zur Leistungsoptimierung. [Intelligent Insights](sql-database-intelligent-insights.md) ist die empfohlene Methode zum Überwachen der Leistung. 
 >
 
 ## <a name="create-index-recommendations"></a>Empfehlungen zum Erstellen eines Index
-Azure SQL-Datenbank überwacht kontinuierlich die ausgeführten Abfragen und erkennt die Indizes, die die Leistung verbessern könnten. Sobald es genügend Vertrauen gibt, das ein bestimmter Index fehlt, wird eine neue Empfehlung **Index erstellen** erstellt. Azure SQL-Datenbank baut Vertrauen auf, indem berechnet wird, welche Leistungsgewinn der Index mit der Zeit bringen würde. Je nach geschätztem Leistungsgewinn werden Empfehlungen als Hoch, Mittel oder Niedrig eingestuft. 
+SQL-Datenbank überwacht kontinuierlich die ausgeführten Abfragen und erkennt die Indizes, die die Leistung verbessern könnten. Sobald genügend Vertrauen besteht, dass ein bestimmter Index fehlt, wird eine neue Empfehlung **Index erstellen** erstellt.
 
-Indizes, die mit Empfehlungen erstellt wurden, sind immer als „auto_created“-Indizes gekennzeichnet. Sie können in der Ansicht „sys.indexes“ sehen, welche Indizes „auto_created“ sind. Automatisch erstellte Indizes blockieren keine ALTER/RENAME-Befehle. Wenn Sie versuchen, eine Spalte zu löschen, die einen automatisch erstellten Index hat, läuft der Befehl weiter und der automatisch erstellte Index wird ebenso durch den Befehl gelöscht. Reguläre Indizes würden den Befehl ALTER/RENAME für Spalten blockieren, die indiziert sind.
+ Azure SQL-Datenbank baut Vertrauen auf, indem berechnet wird, zu welchem Leistungsgewinn der Index mit der Zeit führen würde. Je nach geschätztem Leistungsgewinn werden Empfehlungen als „Hoch“, „Mittel“ oder „Niedrig“ eingestuft. 
 
-Nachdem die Empfehlung zum Erstellen eines Indexes angewendet wurde, vergleicht Azure SQL-Datenbank die Leistung der Abfragen mit der Baselineleistung. Wenn der neue Index die Leistung verbessert hat, wird die Empfehlung als erfolgreich gekennzeichnet. Zudem wird ein Auswirkungsbericht erstellt. Wenn der Index nicht zum gewünschten Ergebnis geführt hat, wird er automatisch rückgängig gemacht. Auf diese Weise stellt Azure SQL-Datenbank sicher, dass Empfehlungen die Leistung der Datenbank nur verbessern.
+Indizes, die mit Empfehlungen erstellt wurden, sind immer als automatisch erstellte Indizes gekennzeichnet. Sie können in der Ansicht „sys.indexes“ erkennen, welche Indizes automatisch erstellt wurden. Automatisch erstellte Indizes blockieren keine ALTER/RENAME-Befehle. 
 
-Jede **Index erstellen**-Empfehlung hat eine Backoffrichtlinie, die verhindert, dass die Empfehlung bei einem hohen Ressourcenverbrauch einer Datenbank oder eines Pools angewendet wird. In der Backoffrichtlinie werden CPU, Daten-E/A, Protokoll-E/A und verfügbarer Speicher berücksichtigt. Wenn CPU, Daten-E/A oder Protokoll-E/A in den letzten 30 Minuten über 80 % lagen, wird die Indexerstellung verschoben. Wenn der verfügbare Speicher nach der Indexerstellung bei unter 10 % liegen würde, geht die Empfehlung in den Status „Fehler“ über. Falls nach einigen Tagen die automatische Optimierung weiterhin davon ausgeht, dass dieser Index von Vorteil wäre, wird der Prozess erneut gestartet. Dieser Prozess wird wiederholt, bis es genügend freier Speicherplatz zum Erstellen eines Indexes verfügbar ist oder der Index nicht mehr als vorteilhaft betrachtet wird.
+Wenn Sie versuchen, die Spalte mit einem automatisch erstellten Index zu löschen, wird der Befehl übergeben. Der automatisch erstellte Index wird ebenfalls mit dem Befehl gelöscht. Reguläre Indizes blockieren den Befehl ALTER/RENAME für Spalten, die indiziert sind.
+
+Nachdem die Empfehlung zum Erstellen eines Indexes angewendet wurde, vergleicht Azure SQL-Datenbank die Leistung der Abfragen mit der Baselineleistung. Wenn der neue Index die Leistung verbessert, wird die Empfehlung als erfolgreich gekennzeichnet, und der Auswirkungsbericht steht zur Verfügung. Wenn der Index nicht zu einer Leistungsverbesserung geführt hat, wird er automatisch rückgängig gemacht. SQL-Datenbank verwendet diesen Prozess, um sicherzustellen, dass Empfehlungen die Leistung der Datenbank verbessern.
+
+Jede Empfehlung **Index erstellen** verfügt über eine Backoffrichtlinie, die verhindert, dass die Empfehlung bei einem hohen Ressourcenverbrauch einer Datenbank oder eines Pools angewendet wird. In der Backoffrichtlinie werden CPU, Daten-E/A, Protokoll-E/A und verfügbarer Speicher berücksichtigt. 
+
+Wenn CPU, Daten-E/A oder Protokoll-E/A während der letzten 30 Minuten über 80 % lagen, wird die Empfehlung zum Erstellen eines Indexes aufgeschoben. Wenn der verfügbare Speicher nach der Indexerstellung unter 10 % liegt, geht die Empfehlung in den Status „Fehler“ über. Falls nach einigen Tagen die automatische Optimierung weiterhin davon ausgeht, dass dieser Index von Vorteil wäre, wird der Prozess erneut gestartet. 
+
+Dieser Prozess wird wiederholt, bis genügend freier Speicherplatz zum Erstellen eines Indexes verfügbar ist oder der Index nicht mehr als vorteilhaft betrachtet wird.
 
 ## <a name="drop-index-recommendations"></a>Empfehlungen zum Löschen eines Indexes
-Zusätzlich zum Erkennen eines fehlenden Indexes analysiert die Azure SQL-Datenbank kontinuierlich die Leistung der vorhandenen Indizes. Wenn der Index nicht verwendet wird, empfiehlt die Azure SQL-Datenbank, dass dieser gelöscht wird. Das Löschen eines Indexes wird in zwei Fällen empfohlen:
-* Der Index ist ein Duplikat eines anderes Indexes (gleiche indizierte und enthaltene Spalte, gleiches Partitionsschema und gleiche Filter)
-* Der Index wurde über einen längeren Zeitraum nicht verwendet (93 Tage)
+Zusätzlich zum Erkennen fehlender Indizes analysiert die SQL-Datenbank kontinuierlich die Leistung der vorhandenen Indizes. Wenn der Index nicht verwendet wird, empfiehlt die Azure SQL-Datenbank seine Löschung. Das Löschen eines Indexes wird in zwei Fällen empfohlen:
+* Der Index ist ein Duplikat eines anderes Indexes (gleiche indizierte und enthaltene Spalte, gleiches Partitionsschema und gleiche Filter).
+* Der Index wurde für einen längeren Zeitraum (93 Tage) nicht verwendet.
 
-„Index löschen“-Empfehlungen durchlaufen auch die Überprüfung nach der Implementierung. Wenn die Leistung verbessert wurde, wird ein Auswirkungsbericht erstellt. Für den Fall, dass eine Verringerung der Leistung erkannt wird, wird die Empfehlung rückgängig gemacht.
+„Index löschen“-Empfehlungen durchlaufen auch die Überprüfung nach der Implementierung. Wenn die Leistung verbessert wird, ist ein Auswirkungsbericht verfügbar. Wenn die Leistung beeinträchtigt wird, wird die Empfehlung zurückgesetzt.
 
 
 ## <a name="parameterize-queries-recommendations"></a>Empfehlungen zum Parametrisieren von Abfragen
-Empfehlungen zum **Parametrisieren von Abfragen** werden angezeigt, wenn eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer derselbe Abfrageausführungsplan daraus hervorgeht. Diese Bedingung eröffnet die Möglichkeit zum Anwenden einer erzwungenen Parametrisierung, sodass Abfragepläne zwischengespeichert und wiederverwendet werden, um die Leistung zu steigern und die Ressourcennutzung zu reduzieren. 
+Empfehlungen zum *Parametrisieren von Abfragen* werden angezeigt, wenn eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer derselbe Abfrageausführungsplan daraus hervorgeht. Diese Bedingung eröffnet die Möglichkeit, erzwungene Parametrisierung anzuwenden. Durch die erzwungene Parametrisierung können Abfragepläne in Zukunft zwischengespeichert und wiederverwendet werden. Dies verbessert die Leistung und verringert den Ressourcenverbrauch. 
 
-Jede an SQL Server gerichtete Abfrage muss zunächst kompiliert werden, um einen Ausführungsplan zu erstellen. Alle generierten Pläne werden dem Plancache hinzugefügt, und bei erneuter Ausführung derselben Abfrage kann dieser Plan aus dem Cache wiederverwendet werden. Dadurch wird eine erneute Kompilierung überflüssig. 
+Jede für SQL Server ausgestellte Abfrage muss zunächst kompiliert werden, um einen Ausführungsplan zu erstellen. Jeder generierte Plan wird dem Plancache hinzugefügt. Nachfolgende Ausführungen derselben Abfrage können dieser Plan aus dem Cache wiederverwenden. Auf diese Weise wird eine erneute Kompilierung überflüssig. 
 
-Anwendungen, die Abfragen mit nicht parametrisierten Werten senden, können den nötigen Leistungsaufwand erhöhen, weil für jede dieser Abfragen mit unterschiedlichen Parameterwerten jeweils ein neuer Ausführungsplan kompiliert werden muss. In vielen Fällen werden für die gleichen Abfragen mit unterschiedlichen Parameterwerten die gleichen Ausführungspläne generiert, aber diese Pläne werden dem Plancache separat hinzugefügt. Die Neukompilierung von Ausführungsplänen verbraucht Datenbankressourcen, erhöht die Abfragedauer und führt zu einem Überlauf des Plancache, wodurch Pläne aus dem Cache verdrängt werden. Sie können das entsprechende Verhalten von SQL Server ändern, indem Sie für die Datenbank die Option für erzwungene Parametrisierung festlegen. 
+Abfragen mit nicht parametrisierten Werten können zu Mehrkosten bei der Leistung führen, da der Ausführungsplan jedes Mal neu kompiliert wird, wenn die nicht parametrisierten Werte unterschiedlich sind. In vielen Fällen werden für die gleichen Abfragen mit unterschiedlichen Parameterwerten die gleichen Ausführungspläne generiert. Diese Pläne werden dem Plancache jedoch separat hinzugefügt. 
 
-Damit Sie die Auswirkungen dieser Empfehlung besser abschätzen können, wird Ihnen ein Vergleich zwischen der tatsächlichen CPU-Auslastung und der prognostizierten CPU-Auslastung nach Anwendung der Empfehlung angezeigt. Neben der geringeren CPU-Auslastung profitieren Sie auch von einer Verkürzung der Abfragedauer um die Zeit, die normalerweise für die Kompilierung benötigt würde. Außerdem wird auch der Plancache deutlich weniger beansprucht, sodass die meisten Pläne im Cache bleiben und wiederverwendet werden können. Sie können diese Empfehlung schnell und einfach umsetzen, indem Sie auf den Befehl **Anwenden** klicken. 
+Der Vorgang der Neukompilierung von Ausführungsplänen verbraucht Datenbankressourcen, erhöht die Abfragedauer und führt zu einem Überlauf des Plancaches. Diese Ereignisse bewirken ihrerseits, dass Pläne aus dem Cache entfernt werden. Sie können das entsprechende SQL Server-Verhalten ändern, indem Sie für die Datenbank die Option für erzwungene Parametrisierung festlegen. 
 
-Nach dem Anwenden dieser Empfehlung wird die erzwungene Parametrisierung innerhalb weniger Minuten für Ihre Datenbank aktiviert. Anschließend startet ein Überwachungsprozess, der ungefähr 24 Stunden ausgeführt wird. Nach Ablauf dieses Zeitraums können Sie einen Überprüfungsbericht anzeigen, der die CPU-Auslastung Ihrer Datenbank für die 24 Stunden vor und nach dem Anwenden der Empfehlung zeigt. Der SQL Database Advisor verfügt über einen Sicherheitsmechanismus, der die angewendete Empfehlung automatisch wieder zurücknimmt, falls ein Absinken der Leistung beobachtet wird.
+Damit Sie die Auswirkungen dieser Empfehlung besser abschätzen können, wird ein Vergleich zwischen der tatsächlichen CPU-Auslastung und der prognostizierten CPU-Auslastung nach Anwendung der Empfehlung bereitgestellt. Diese Empfehlung kann Sie dabei unterstützen, CPU-Einsparungen zu erzielen. Sie kann Ihnen auch helfen, die Abfragedauer und den Mehraufwand für den Plancache zu verringern. Dies bedeutet, dass eine größere Anzahl der Pläne im Cache verbleiben und wiederverwendet werden kann. Sie können diese Empfehlung schnell umsetzen, indem Sie den Befehl **Anwenden** auswählen. 
+
+Nachdem Sie diese Empfehlung angewendet haben, wird innerhalb von Minuten erzwungenen Parametrisierung für Ihre Datenbank aktiviert. Sie startet den Überwachungsvorgang, der ungefähr 24 Stunden andauert. Nach Ablauf dieses Zeitraums können Sie den Überprüfungsbericht anzeigen. Dieser Bericht zeigt die CPU-Auslastung Ihrer Datenbank 24 Stunden bevor und nachdem die Empfehlung angewendet wurde. Der SQL Database Advisor verfügt über einen Sicherheitsmechanismus, der die angewendete Empfehlung automatisch wieder zurücknimmt, falls ein Absinken der Leistung erkannt wird.
 
 ## <a name="fix-schema-issues-recommendations-preview"></a>Empfehlungen zum Beheben von Schemaproblemen (Vorschau)
 
 > [!IMPORTANT]
-> Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. Nutzen Sie für die automatische Überwachung von Problemen mit der Datenbankleistung zukünftig [Intelligent Insights](sql-database-intelligent-insights.md). Schemaprobleme, die zuvor von den Empfehlungen zum Beheben von Schemaproblemen abgedeckt wurden, werden ebenfalls behandelt.
+> Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. Wir empfehlen die Verwendung von [Intelligent Insights](sql-database-intelligent-insights.md) zum Überwachen Ihrer Datenbankleistungsprobleme, einschließlich der Schemaprobleme, die zuvor durch die Empfehlungen zum Beheben von Schemaproblemen abgedeckt wurden.
 > 
 
-Empfehlungen zum **Beheben von Schemaproblemen** werden angezeigt, wenn der SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Azure SQL-Datenbank auftreten. Diese Empfehlung wird in der Regel angezeigt, wenn in Ihrer Datenbank innerhalb einer Stunde mehrere schemabezogene Fehler auftreten (ungültiger Spaltenname, ungültiger Objektname usw.).
+Empfehlungen zum **Beheben von Schemaproblemen** werden angezeigt, wenn der SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Diese Empfehlung wird in der Regel angezeigt, wenn in Ihrer Datenbank innerhalb einer Stunde mehrere schemabezogene Fehler auftreten (ungültiger Spaltenname, ungültiger Objektname usw.).
 
-Bei Schemaproblemen handelt es sich um eine Klasse von Syntaxproblemen in SQL Server, die auftreten, wenn die Definition einer SQL-Abfrage nicht auf die Definition des Datenbankschemas abgestimmt ist. Dies kann z.B. der Fall sein, wenn eine der von der Abfrage erwarteten Spalten in der Zieltabelle fehlt oder umgekehrt. 
+„Schemaprobleme“ sind eine Klasse von Syntaxfehlern in SQL Server. Sie treten auf, wenn die Definition der SQL-Abfrage und die Definition des Datenbankschemas nicht übereinstimmen. Dies kann z.B. der Fall sein, wenn eine der von der Abfrage erwarteten Spalten in der Zieltabelle fehlt oder umgekehrt. 
 
-Empfehlungen zum Beheben von Schemaproblemen werden angezeigt, wenn der Azure SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Azure SQL-Datenbank auftreten. Die folgende Tabelle zeigt die möglichen Fehler in Bezug auf Schemaprobleme:
+Die Empfehlung zum Beheben von Schemaproblemen wird angezeigt, wenn der Azure SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Die folgende Tabelle zeigt die möglichen Fehler in Bezug auf Schemaprobleme:
 
 | SQL-Fehlercode | Message |
 | --- | --- |
@@ -79,11 +89,11 @@ Empfehlungen zum Beheben von Schemaproblemen werden angezeigt, wenn der Azure SQ
 | 8144 |Für die '*'-Prozedur oder -Funktion wurden zu viele Argumente angegeben. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überwachen Sie Ihre Empfehlungen, und wenden Sie sie weiterhin an, um die Leistung zu optimieren. Datenbankworkloads sind dynamisch und ändern sich ständig. Der SQL Database Advisor setzt die Überwachung fort und bietet Empfehlungen, mit denen sich die Leistung Ihrer Datenbank erhöhen lässt. 
+Überwachen Sie Ihre Empfehlungen, und wenden Sie sie weiterhin an, um die Leistung zu optimieren. Datenbankworkloads sind dynamisch und ändern sich ständig. Der SQL Database Advisor setzt die Überwachung fort und stellt Empfehlungen bereit, mit denen sich die Leistung Ihrer Datenbank verbessern lässt. 
 
 * Weitere Informationen zur automatischen Optimierung von Datenbankindizes und Abfrageausführungsplänen finden Sie unter [Automatische Optimierung der Azure SQL-Datenbank](sql-database-automatic-tuning.md).
 * Weitere Informationen zum automatischen Überwachen der Datenbankleistung mit der automatisierten Diagnose und der Ursachenanalyse von Leistungsproblemen finden Sie unter [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md).
-* Weiter Informationen zur Verwendung von Leistungsempfehlungen im Azure-Portal finden Sie unter [Performance recommendations in the Azure portal (Leistungsempfehlungen im Azure-Portal)](sql-database-advisor-portal.md).
+*  Weitere Informationen zur Verwendung von Leistungsempfehlungen im Azure-Portal finden Sie unter [Performance recommendations in the Azure portal (Leistungsempfehlungen im Azure-Portal)](sql-database-advisor-portal.md).
 * Unter [Query Performance Insight](sql-database-query-performance.md) erfahren Sie, wie Sie die Auswirkungen Ihrer wichtigsten Abfragen auf die Leistung anzeigen und untersuchen können.
 
 

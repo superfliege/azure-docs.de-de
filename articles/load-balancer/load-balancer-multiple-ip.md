@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: ecb64aa13b3b08f7b054a0665df3dc0cdb3e09bd
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 02388162ac4d2d86255c0a65d8b94253047f3983
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
 
@@ -89,7 +89,7 @@ Erstellen Sie Ihren Lastenausgleich für die Konfiguration:
 
 1. Navigieren Sie zum Azure-Portal: http://portal.azure.com. Melden Sie sich mit Ihrem Azure-Konto an.
 
-2. Wählen Sie oben links auf dem Bildschirm **Neu** > **Netzwerk** > **Load Balancer**. Wählen Sie als Nächstes die Option **Erstellen**.
+2. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Load Balancer** aus. Wählen Sie als Nächstes die Option **Erstellen**.
 
 3. Geben Sie unter **Lastenausgleich erstellen** einen Namen für Ihren Lastenausgleich ein. In diesem Szenario verwenden wir den Namen **mylb**.
 

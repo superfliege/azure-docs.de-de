@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/14/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: b3c7c19543d50ed91129a2040bea1db1c4df1ea7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0d33f434dccae7836ae7774afbdf9b80d4685eb4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Häufig gestellte Fragen zu Azure Cost Management
 
@@ -117,9 +117,9 @@ Wählen Sie zum Hinzufügen von zusätzlichen CSP-Konten zu einer Entität beim 
 
 Sie verfügen möglicherweise über mehrere Azure-Konten mit verschiedenen Währungen. In Kostenberichten in Cloudyn wird jedoch nicht mehr als ein Währungstyp pro Bericht angezeigt.
 
-Wenn Sie über mehrere Abonnements mit verschiedenen Währungen verfügen, werden eine übergeordnete Entität und ihre untergeordneten Entitätenwährungen mit dem Symbol **$** angezeigt. Es wird empfohlen, die Verwendung unterschiedlicher Währungen in derselben Entitätshierarchie zu vermeiden. Anders gesagt: Alle Ihre Abonnements, die in einer Entitätsstruktur organisiert sind, sollten dieselbe Währung verwenden.
+Wenn Sie über mehrere Abonnements mit verschiedenen Währungen verfügen, werden eine übergeordnete Entität und ihre untergeordneten Entitätenwährungen in USD **$** angezeigt. Es wird empfohlen, die Verwendung unterschiedlicher Währungen in derselben Entitätshierarchie zu vermeiden. Anders gesagt: Alle Ihre Abonnements, die in einer Entitätsstruktur organisiert sind, sollten dieselbe Währung verwenden.
 
-Cloudyn erkennt automatisch die Währung Ihres Enterprise Agreement-Abonnements Währung und stellt sie ordnungsgemäß in Berichten dar.  Allerdings zeigt Cloudyn nur das Symbol **$** für CSP- und Azure-Web-Direct-Konten an.
+Cloudyn erkennt automatisch die Währung Ihres Enterprise Agreement-Abonnements Währung und stellt sie ordnungsgemäß in Berichten dar.  Allerdings zeigt Cloudyn nur USD **$** für CSP- und Azure-Web-Direct-Konten an.
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Was sind Cloudyn-Zeitachsen für die Datenaktualisierung?
 
