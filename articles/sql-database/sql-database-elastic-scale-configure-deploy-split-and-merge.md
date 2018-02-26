@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 203e1f8842c229088102412afa5de8f967837041
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 4505aebc8919a5d7b8f3debe0db9f49b465176bf
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-a-split-merge-service"></a>Bereitstellen eines Split-Merge-Diensts
 Mit dem Split-Merge-Tool können Sie Daten zwischen Sharddatenbanken verschieben. Siehe [Skalierung mit dem Split-Merge-Tool für elastische Datenbanken](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -39,8 +39,8 @@ Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatab
 2. Achten Sie darauf, dass Ihr Azure SQL-Datenbankserver Verbindungen mit Azure-Diensten zulässt. Stellen Sie im Portal in den **Firewalleinstellungen** sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** auf **Ein** festgelegt ist. Klicken Sie auf das Symbol "Speichern".
    
    ![Zulässige Dienste][1]
-3. Erstellen Sie ein Azure Storage-Konto, das für die Diagnoseausgabe verwendet wird. Öffnen Sie das Azure-Portal. Klicken Sie in der linken Leiste auf **Neu**, und klicken Sie auf **Daten und Speicher** und anschließend auf **Speicher**.
-4. Erstellen Sie einen Azure-Cloud-Dienst, der den Split-Merge-Dienst enthält.  Öffnen Sie das Azure-Portal. Klicken Sie in der linken Leiste auf **Neu** und dann auf **Compute**, **Clouddienst**, und **Erstellen**. 
+3. Erstellen Sie ein Azure Storage-Konto, das für die Diagnoseausgabe verwendet wird. Öffnen Sie das Azure-Portal. Klicken Sie in der linken Leiste auf **Ressource erstellen**, klicken Sie auf **Daten und Speicher** und dann auf **Speicher**.
+4. Erstellen Sie einen Azure-Cloud-Dienst, der den Split-Merge-Dienst enthält.  Öffnen Sie das Azure-Portal. Klicken Sie in der linken Leiste auf **Ressource erstellen** und dann auf **Compute**, **Clouddienst** und **Erstellen**. 
 
 ## <a name="configure-your-split-merge-service"></a>Konfigurieren des Split-Merge-Diensts
 ### <a name="split-merge-service-configuration"></a>Konfiguration des Split-Merge-Diensts

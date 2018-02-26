@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f3bc2f14b182e502c651ff44ef49b88cd34e1f50
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 5de67b6f1ce79934a3a6aab623d2e77a56a8ce76
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können – Vorschau
 
@@ -28,7 +28,7 @@ Das *Bereitstellungsmanifest* ist ein JSON-Dokument, das Folgendes beschreibt:
 
 In den Azure IoT Edge-Tutorials erstellen Sie ein Bereitstellungsmanifest mithilfe eines Assistenten im Azure IoT Edge-Portal. Sie können auch ein Bereitstellungsmanifest programmgesteuert mithilfe von REST oder des IoT Hub Service SDK anwenden. Weitere Informationen zu IoT Edge-Bereitstellungen finden Sie unter [Bereitstellen und Überwachen][lnk-deploy].
 
-Allgemein beschrieben konfiguriert das Bereitstellungsmanifest die gewünschten Eigenschaften der IoT Edge-Module, die auf einem IoT Edge-Gerät bereitgestellt werden. Zwei dieser Module sind immer vorhanden: der Edge-Agent und der Edge-Hub.
+Allgemein beschrieben konfiguriert das Bereitstellungsmanifest die gewünschten Eigenschaften eines Modulzwillings für IoT Edge-Module, die auf einem IoT Edge-Gerät bereitgestellt werden. Zwei dieser Module sind immer vorhanden: der Edge-Agent und der Edge-Hub.
 
 Das Manifest folgt dieser Struktur:
 
@@ -112,6 +112,8 @@ Das Bereitstellungsmanifest kann für jedes im Edge-Agent-Abschnitt angegebene B
 Wenn die gewünschten Eigenschaften im Bereitstellungsmanifest angegeben sind, überschreiben sie alle gewünschten Eigenschaften, die gegenwärtig im Modulzwilling vorhanden sind.
 
 Wenn Sie die gewünschten Eigenschaften eines Modulzwillings nicht im Bereitstellungsmanifest angeben, ändert IoT Hub den Modulzwilling nicht ab, und Sie können die gewünschten Eigenschaften programmgesteuert festlegen.
+
+Die gleichen Verfahren, mit denen Sie Gerätezwillinge ändern, werden auch zum Ändern von Modulzwillingen verwendet. Weitere Informationen finden Sie im [Entwicklerhandbuch für Gerätezwillinge](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins).   
 
 ### <a name="deployment-manifest-example"></a>Beispiel für ein Bereitstellungsmanifest
 
@@ -240,16 +242,16 @@ In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten I
 | configurationHealth.{deploymentId}.health | `healthy`, wenn der von der Bereitstellung {deploymentId} festgelegte Runtimestatus aller Module `running` oder `stopped` ist, andernfalls `unhealthy` |
 | runtime.platform.OS | Meldung des auf dem Gerät ausgeführten Betriebssystems |
 | runtime.platform.architecture | Meldung der CPU-Architektur auf dem Gerät |
-| systemModules.edgeAgent.runtimeStatus | Gemeldete Status des Edge-Agents: {"running" \| "unhealthy"} |
+| systemModules.edgeAgent.runtimeStatus | Gemeldeter Status des Edge-Agents: {"running" \| "unhealthy"} |
 | systemModules.edgeAgent.statusDescription | Textbeschreibung des gemeldeten Status des Edge-Agents. |
-| systemModules.edgeHub.runtimeStatus | Aktueller Status des Edge-Hubs: {"running" \| "stopped" \| "failed" \| "backoff" \| "unhealthy" } |
+| systemModules.edgeHub.runtimeStatus | Aktueller Status des Edge-Hubs: { "running" \| "stopped" \| "failed" \| "backoff" \| "unhealthy" } |
 | systemModules.edgeHub.statusDescription | Textbeschreibung des aktuellen Status des Edge-Hub, falls „fehlerhaft“ |
 | systemModules.edgeHub.exitCode | Der vom Edge-Hubcontainer gemeldete Exitcode beim Beenden |
 | systemModules.edgeHub.startTimeUtc | Zeitpunkt des letzten Starts des Edge-Hubs |
 | systemModules.edgeHub.lastExitTimeUtc | Zeitpunkt des letzten Beendens des Edge-Hubs |
 | systemModules.edgeHub.lastRestartTimeUtc | Zeitpunkt des letzten Neustarts des Edge-Hubs |
 | systemModules.edgeHub.lastRestartTimeUtc | Neustarthäufigkeit dieses Moduls aufgrund der Neustartrichtlinie |
-| modules.{moduleId}.runtimeStatus | Aktueller Modulstatus: { "running" \| "stopped" \| "failed" \| "backoff" \| "unhealthy" } |
+| modules.{moduleId}.runtimeStatus | Aktueller Status des Moduls: { "running" \| "stopped" \| "failed" \| "backoff" \| "unhealthy" } |
 | modules.{moduleId}.statusDescription | Textbeschreibung des aktuellen Modulstatus, falls fehlerhaft |
 | modules.{moduleId}.exitCode | Der vom Modulcontainer gemeldete Exitcode beim Beenden |
 | modules.{moduleId}.startTimeUtc | Zeitpunkt des letzten Modulstarts |
@@ -277,7 +279,7 @@ Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanife
 | lastDesiredVersion | Dieser ganzzahlige Wert gibt die letzte Version der gewünschten Eigenschaften an, die vom Edge-Hub verarbeitet wurde. |
 | lastDesiredStatus.code | Dieser Statuscode nennt die letzten gewünschten Eigenschaften, die der Edge-Hub erkannt hat. Zulässige Werte: `200` Success (Erfolg), `400` Invalid Configuration (ungültige Konfiguration), `500` Failed (Fehler) |
 | lastDesiredStatus.description | Textbeschreibung des Status |
-| clients.{device or module identity}.status | Konnektivitätsstatus dieses Geräts oder Moduls. Mögliche Werte {"connected" \| "disconnected"}. Nur Modulidentitäten können den Status „disconnected“ aufweisen. Nachgeschaltete Geräte, die eine Verbindung mit dem Edge-Hub herstellen, erscheinen nur bei erfolgreicher Verbindung. |
+| clients.{device or module identity}.status | Konnektivitätsstatus dieses Geräts oder Moduls. Mögliche Werte: {"connected" \| "disconnected"}. Nur Modulidentitäten können den Status „disconnected“ aufweisen. Nachgeschaltete Geräte, die eine Verbindung mit dem Edge-Hub herstellen, erscheinen nur bei erfolgreicher Verbindung. |
 | clients.{device or module identity}.lastConnectTime | Letzter Verbindungszeitpunkt des Geräts oder Moduls |
 | clients.{device or module identity}.lastDisconnectTime | Letzter Trennungszeitpunkt des Geräts oder Moduls |
 

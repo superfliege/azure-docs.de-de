@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: fc9a0068de5f9464133eec0b043fbba1dc0fbde7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 68009b74a410f7e854de675a1d8d0c32e310d2c9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von EDIFACT-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
@@ -42,12 +42,12 @@ Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise
 
 ## <a name="create-an-edifact-agreement"></a>Erstellen einer EDIFACT-Vereinbarung 
 
-1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Weitere Dienste** aus.
+1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Alle Dienste** aus.
 
     > [!TIP]
-    > Sollte **Weitere Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise erst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
+    > Sollte **Alle Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise zuerst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
 
-    ![Im linken Menü die Option „Weitere Dienste“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+    ![Wählen Sie im linken Menü die Option „Alle Dienste“ aus.](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
 2. Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
 
@@ -70,9 +70,9 @@ Sollten keine Integrationskonten angezeigt werden, [erstellen Sie zunächst ein 
 
     ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-    | Eigenschaft | Beschreibung |
+    | Eigenschaft | BESCHREIBUNG |
     | --- | --- |
-    | Name |Name der Vereinbarung |
+    | NAME |Name der Vereinbarung |
     | Vereinbarungstyp | Muss EDIFACT lauten. |
     | Hostpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
     | Hostidentität |Ein Bezeichner für den Hostpartner. |
@@ -98,21 +98,21 @@ Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewäh
 
 ### <a name="identifiers"></a>Bezeichner
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | UNB6.1 (Empfängerverweiskennwort) |Geben Sie einen alphanumerischen Wert mit 1 bis 14 Zeichen ein. |
 | UNB6.2 (Empfängerverweisqualifizierer) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal zwei Zeichen ein. |
 
 ### <a name="acknowledgments"></a>Danksagungen
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Nachrichtenquittung (CONTRL) |Wählen Sie dieses Kontrollkästchen, um eine technische Bestätigung (CONTRL) an den Austauschabsender zurückzugeben. Die Bestätigung wird anhand der Sendeeinstellungen für die Vereinbarung an den Austauschabsender gesendet. |
 | Bestätigung (CONTRL) |Aktivieren Sie dieses Kontrollkästchen, um eine funktionale Bestätigung (CONTRL) an den Austauschabsender zurückzugeben. Die Bestätigung wird anhand der Sendeeinstellungen für die Vereinbarung an den Austauschabsender gesendet. |
 
 ### <a name="schemas"></a>Schemas
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | UNH2.1 (TYP) |Wählen Sie einen Transaktionssatztyp aus. |
 | UNH2.2 (VERSION) |Geben Sie die Nachrichtenversionsnummer ein. (Mindestens ein Zeichen, maximal drei Zeichen.) |
@@ -120,10 +120,10 @@ Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewäh
 | UNH2.5 (ZUGEWIESENER CODE FÜR ZUORDNUNG) |Geben Sie den zugewiesenen Code ein. (Maximal sechs Zeichen. Muss alphanumerisch sein.) |
 | UNG2.1 (ID FÜR APP-SENDER) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 35 Zeichen ein. |
 | UNG2.2 (CODEQUALIFIZIERER FÜR APP-SENDER) |Geben Sie einen alphanumerischen Wert mit maximal vier Zeichen ein. |
-| SCHEMA |Wählen Sie im zugeordneten Integrationskonto das gewünschte Schema aus, das Sie zuvor hochgeladen haben. |
+| Schema |Wählen Sie im zugeordneten Integrationskonto das gewünschte Schema aus, das Sie zuvor hochgeladen haben. |
 
 ### <a name="control-numbers"></a>Kontrollnummern
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Doppelte Austauschkontrollnummern nicht zulassen |Wählen Sie diese Eigenschaft aus, um doppelte Austauschvorgänge zu blockieren. Bei Aktivierung wird mit der EDIFACT-Decodierungsaktion sichergestellt, dass die Austauschkontrollnummer (UNB5) für den empfangenen Austausch nicht mit einer zuvor verarbeiteten Austauschkontrollnummer übereinstimmt. Wenn eine Übereinstimmung erkannt wird, wird der Austausch nicht verarbeitet. |
 | Innerhalb der folgenden Anzahl von Tagen auf UNB5-Duplikate prüfen |Wenn Sie sich gegen das Zulassen von doppelten Austauschkontrollnummern entschieden haben, können Sie die Anzahl von Tagen angeben, nach denen die Überprüfung durchgeführt werden soll. Geben Sie hierzu einen geeigneten Wert für diese Einstellung an. |
@@ -135,7 +135,7 @@ Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewäh
 
 Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Nachrichtentyp |Wählen Sie den EDI-Nachrichtentyp aus. |
 | EDI-Überprüfung |Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
@@ -146,7 +146,7 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 
 ### <a name="internal-settings"></a>Interne Einstellungen
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Leere XML-Tags erstellen, wenn nachfolgende Trennzeichen zulässig sind |Aktivieren Sie dieses Kontrollkästchen, damit der Austauschabsender leere XML-Tags für nachfolgende Trennzeichen einbezieht. |
 | Austausch in Transaktionssätze trennen – Transaktionssätze bei Fehler anhalten|Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument, indem der geeignete Umschlag auf den Transaktionssatz angewendet wird. Hält nur die Transaktionssätze an, die die Überprüfung nicht bestehen. |
@@ -171,7 +171,7 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 
 ### <a name="identifiers"></a>Bezeichner
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | UNB1.2 (Syntaxversion) |Wählen Sie einen Wert zwischen **1** und **4** aus. |
 | UNB2.3 (Adresse für Rückmeldung des Absenders) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 14 Zeichen ein. |
@@ -181,14 +181,14 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 | UNB7 (Anwendungsverweis-ID) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 14 Zeichen ein. |
 
 ### <a name="acknowledgment"></a>Bestätigung
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Nachrichtenquittung (CONTRL) |Aktivieren Sie dieses Kontrollkästchen, wenn der gehostete Partner den Empfang einer technischen Bestätigung (CONTRL) erwartet. Diese Einstellung gibt an, dass der gehostete Partner, der die Nachricht sendet, eine Bestätigung vom Gastpartner anfordert. |
 | Bestätigung (CONTRL) |Aktivieren Sie dieses Kontrollkästchen, wenn der gehostete Partner den Empfang einer funktionalen Bestätigung (CONTRL) erwartet. Diese Einstellung gibt an, dass der gehostete Partner, der die Nachricht sendet, eine Bestätigung vom Gastpartner anfordert. |
 | SG1/SG4-Schleife für akzeptierte Transaktionssätze generieren |Wenn Sie sich für die Anforderung einer funktionalen Bestätigung entschieden haben, können Sie dieses Kontrollkästchen aktivieren, um die Generierung von SG1/SG4-Schleifen in funktionalen CONTRL-Bestätigungen für akzeptierte Transaktionssätze zu erzwingen. |
 
 ### <a name="schemas"></a>Schemas
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | UNH2.1 (TYP) |Wählen Sie einen Transaktionssatztyp aus. |
 | UNH2.2 (VERSION) |Geben Sie die Nachrichtenversionsnummer ein. |
@@ -196,7 +196,7 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 | SCHEMA |Wählen Sie das zu verwendende Schema aus. Schemas befinden sich in Ihrem Integrationskonto. Um auf Ihre Schemas zuzugreifen, verknüpfen Sie zuerst Ihr Integrationskonto mit Ihrer Logik-App. |
 
 ### <a name="envelopes"></a>Umschläge
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | UNB8 (Verarbeitungsprioritätscode) |Geben Sie einen alphabetischen Wert mit einer Länge von maximal einem Zeichen ein. |
 | UNB10 (Kommunikationsvereinbarung ) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 40 Zeichen ein. |
@@ -208,10 +208,10 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 
 Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen Satz zu verwendender Trennzeichen eingeben. Wenn ein Zeichensatz nicht für ein bestimmtes Nachrichtenschema angegeben ist, wird der Standardzeichensatz verwendet.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | UNB1.1 (Systembezeichner) |Wählen Sie den EDIFACT-Zeichensatz aus, der auf den ausgehenden Austauschvorgang angewendet werden soll. |
-| SCHEMA |Wählen Sie in der Dropdownliste ein Schema aus. Nach Abschluss der einzelnen Zeilen wird jeweils automatisch eine neue Zeile hinzugefügt. Wählen Sie für das ausgewählte Schema den gewünschten Trennzeichensatz aus. Orientieren Sie sich dabei an den folgenden Trennzeichenbeschreibungen. |
+| Schema |Wählen Sie in der Dropdownliste ein Schema aus. Nach Abschluss der einzelnen Zeilen wird jeweils automatisch eine neue Zeile hinzugefügt. Wählen Sie für das ausgewählte Schema den gewünschten Trennzeichensatz aus. Orientieren Sie sich dabei an den folgenden Trennzeichenbeschreibungen. |
 | Eingabetyp |Wählen Sie in der Dropdownliste einen Eingabetyp aus. |
 | Komponententrennzeichen |Geben Sie ein einzelnes Zeichen zum Trennen zusammengesetzter Datenelemente ein. |
 | Datenelementtrennzeichen |Geben Sie ein einzelnes Zeichen zum Trennen einfacher Datenelemente in zusammengesetzten Datenelementen ein. |
@@ -219,7 +219,7 @@ Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen 
 | Suffix |Wählen Sie das Zeichen, das mit dem Segmentbezeichner verwendet wird. Wenn Sie ein Suffix angeben, kann das Segmentabschlusszeichen-Datenelement leer sein. Wenn das Segmentabschlusszeichen leer gelassen wird, müssen Sie ein Suffix angeben. |
 
 ### <a name="control-numbers"></a>Kontrollnummern
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | UNB5 (Austauschkontrollnummer) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um einen ausgehenden Austausch zu generieren. Präfix und Suffix sind optional. Die Kontrollnummer ist erforderlich. Die Kontrollnummer wird für jede neue Nachricht um den Wert 1 erhöht. Das Präfix und das Suffix bleibt jeweils gleich. |
 | UNG5 (Gruppenkontrollnummer) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um die Gruppenkontrollnummer zu generieren. Präfix und Suffix sind optional. Die Kontrollnummer ist erforderlich. Die Kontrollnummer wird für jede neue Nachricht um den Wert 1 erhöht, bis der Maximalwert erreicht ist. Das Präfix und das Suffix bleiben gleich. |
@@ -229,7 +229,7 @@ Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen 
 
 Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Nachrichtentyp |Wählen Sie den EDI-Nachrichtentyp aus. |
 | EDI-Überprüfung |Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
