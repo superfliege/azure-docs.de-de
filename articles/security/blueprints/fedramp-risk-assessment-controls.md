@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation – Risikobewertung"
-description: "Webanwendungen für FedRAMP – Risikobewertung"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – Risikobewertung"
+description: "Automatisierung von Webanwendungen für FedRAMP – Risikobewertung"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1c6bc0bc120c6ad80ff28155f73d127352a8bdc3
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 7abdb674b9d6bb000ce9a8e1861d012c1882f2a5
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="risk-assessment-ra"></a>Risikobewertung (Risk Assessment, RA)
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Sicherheits- und Überwachungslösung OMS bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. „Bewertung anhand von Baselines“ bewertet einen Satz von Registrierungsschlüsseln, Überwachungsrichtlinieneinstellungen und Sicherheitsrichtlinieneinstellungen sowie von Microsoft empfohlene Werte für diese Einstellungen. „Updatebewertung“ bewertet die Status verfügbarer Updates auf allen bereitgestellten VMs. |
+| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung von OMS bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. „Bewertung anhand von Baselines“ bewertet einen Satz von Registrierungsschlüsseln, Überwachungsrichtlinieneinstellungen und Sicherheitsrichtlinieneinstellungen sowie von Microsoft empfohlene Werte für diese Einstellungen. „Updatebewertung“ bewertet die Status verfügbarer Updates auf allen bereitgestellten VMs. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Sicherheits- und Überwachungslösung OMS bereit. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. Erkannten Problemen wird ein Schweregrad zugewiesen. Common Configuration Enumeration-IDs (CCE) sind für Regeln zur „Bewertung anhand von Baselines“ bereitgestellt.  |
+| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung von OMS bereit. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. Erkannten Problemen wird ein Schweregrad zugewiesen. Common Configuration Enumeration-IDs (CCE) sind für Regeln zur „Bewertung anhand von Baselines“ bereitgestellt.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Sicherheits- und Überwachungslösung OMS bereit. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. Die Bewertungskriterien dieser Lösungen werden automatisch aktualisiert. |
+| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung von OMS bereit. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. Die Bewertungskriterien dieser Lösungen werden automatisch aktualisiert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Sicherheits- und Überwachungslösung OMS bereit. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. Die Bewertungskriterien dieser Lösungen werden automatisch aktualisiert. |
+| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung von OMS bereit. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. Die Bewertungskriterien dieser Lösungen werden automatisch aktualisiert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Sicherheits- und Überwachungslösung OMS bereit. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. „Updatebewertung“ führt die Bewertung sowohl für Windows- als auch Linux-VMs durch. „Bewertung anhand von Baselines“ führt die Bewertung für virtuelle Windows-Computer mithilfe einer von Microsoft auf Basis in der Branche bewährter Methoden entwickelten Baseline durch. |
+| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung von OMS bereit. Innerhalb der Lösung sind zwei Sicherheitsdomänen verfügbar: „Updatebewertung“ und „Bewertung anhand von Baselines“. „Updatebewertung“ führt die Bewertung sowohl für Windows- als auch Linux-VMs durch. „Bewertung anhand von Baselines“ führt die Bewertung für virtuelle Windows-Computer mithilfe einer von Microsoft auf Basis in der Branche bewährter Methoden entwickelten Baseline durch. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Microsoft Monitoring Agent-Dienst, der auf virtuellen Computern konfiguriert ist, die von diesem Azure Blueprint bereitgestellt werden, wird als automatischer Dienst mit den erforderlichen Berechtigungen für Bewertungsaktivitäten konfiguriert. |
+| **Kunde** | Der Microsoft Monitoring Agent-Dienst, der auf virtuellen Computern konfiguriert ist, die durch diesen Blueprint bereitgestellt werden, wird als automatischer Dienst mit den erforderlichen Berechtigungen für Bewertungsaktivitäten konfiguriert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -329,5 +329,5 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Sicherheits- und Überwachungslösung OMS bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt High-Level-Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind. |
+| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung von OMS bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt High-Level-Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |

@@ -1,6 +1,6 @@
 ---
-title: "Azure Blueprint Automation: Webanwendungen für FedRAMP"
-description: "Azure Blueprint Automation: Webanwendungen für FedRAMP"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP"
+description: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d0521d68bab8bd0b7db53a512da6d37033abd85e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="azure-blueprint-automation---web-applications-for-fedramp"></a>Azure Blueprint Automation: Webanwendungen für FedRAMP
+# <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP
 
 ## <a name="overview"></a>Übersicht
 
-Das [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov) ist ein Programm der US-Regierung, das einen standardisierten Ansatz zur Sicherheitsbewertung, Autorisierung und kontinuierlichen Überwachung von Cloudprodukten und -diensten bietet. „Azure Blueprint Automation: Webanwendungen für FedRAMP“ bietet Anleitungen für den Einsatz einer mit FedRAMP konformen IaaS-Umgebung (Infrastructure-as-a-Service), die für eine einfache, internetfähige Webanwendung geeignet ist. Diese Lösung automatisiert die Bereitstellung und Konfiguration von Azure-Ressourcen für eine allgemeine Referenzarchitektur. Sie zeigt Wege auf, wie Kunden spezifische Sicherheits- und Konformitätsanforderungen erfüllen können und dient als Grundlage für Kunden, um ihre eigenen Lösungen in Azure zu entwickeln und zu konfigurieren. Die Lösung implementiert eine Teilmenge der Regulierungen aus der FedRAMP High-Grundlage (basierend auf NIST SP 800-53). Weitere Informationen zu den FedRAMP High-Anforderungen und zu dieser Lösung finden Sie unter [FedRAMP High-Anforderungen: Übersicht](fedramp-controls-overview.md). ***Hinweis: Diese Lösung wird für Azure Government bereitgestellt.***
+Das [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov) ist ein Programm der US-Regierung, das einen standardisierten Ansatz zur Sicherheitsbewertung, Autorisierung und kontinuierlichen Überwachung von Cloudprodukten und -diensten bietet. Diese Azure Security and Compliance Blueprint-Automatisierung bietet Anleitungen für den Einsatz einer mit FedRAMP konformen IaaS-Umgebung (Infrastructure-as-a-Service), die für eine einfache, internetfähige Webanwendung geeignet ist. Diese Lösung automatisiert die Bereitstellung und Konfiguration von Azure-Ressourcen für eine allgemeine Referenzarchitektur. Sie zeigt Wege auf, wie Kunden spezifische Sicherheits- und Konformitätsanforderungen erfüllen können und dient als Grundlage für Kunden, um ihre eigenen Lösungen in Azure zu entwickeln und zu konfigurieren. Die Lösung implementiert eine Teilmenge der Regulierungen aus der FedRAMP High-Grundlage (basierend auf NIST SP 800-53). Weitere Informationen zu den FedRAMP High-Anforderungen und zu dieser Lösung finden Sie unter [FedRAMP High-Anforderungen: Übersicht](fedramp-controls-overview.md). ***Hinweis: Diese Lösung wird für Azure Government bereitgestellt.***
 
 Diese Architektur soll Kunden als Grundlage für die Anpassung an ihre spezifischen Anforderungen dienen. Sie sollte nicht unverändert in einer Produktionsumgebung verwendet werden. Es reicht nicht aus, eine Anwendung ohne Änderungen in dieser Umgebung bereitzustellen, um die Anforderungen der FedRAMP High-Grundlage vollständig zu erfüllen. Beachten Sie Folgendes:
 - Diese Architektur bietet eine Grundlage, um Kunden bei der Verwendung von Azure in FedRAMP-konformer Weise zu unterstützen.
@@ -36,17 +36,17 @@ Klicken Sie [hier](https://aka.ms/fedrampblueprintrepo), um Anleitungen zur Bere
 
 ## <a name="solution-components"></a>Lösungskomponenten
 
-Azure Blueprint Automation stellt automatisch eine Referenzarchitektur für IaaS-Webanwendungen mit vorkonfigurierten Sicherheitsregulierungen bereit, um Kunden bei der Einhaltung der FedRAMP-Anforderungen zu unterstützen. Die Lösung besteht aus Azure Resource Manager-Vorlagen und PowerShell-Skripts, die die Ressourcenbereitstellung und -konfiguration steuern. Begleitende Azure Blueprint-[Konformitätsdokumentation](#compliance-documentation) wird zur Verfügung gestellt, die auf die Vererbung der Sicherheitsregulierungen aus Azure verweist und die bereitgestellten Ressourcen und Konfigurationen beschreibt, die die Sicherheitsregulierungen aus NIST SP 800-53 berücksichtigen, wodurch Unternehmen in die Lage versetzt werden, Konformitätsverpflichtungen schneller zu erfüllen.
+Diese Azure Security and Compliance Blueprint-Automatisierung stellt automatisch eine Referenzarchitektur für IaaS-Webanwendungen mit vorkonfigurierten Sicherheitsregulierungen bereit, um Kunden bei der Einhaltung der FedRAMP-Anforderungen zu unterstützen. Die Lösung besteht aus Azure Resource Manager-Vorlagen und PowerShell-Skripts, die die Ressourcenbereitstellung und -konfiguration steuern. Die begleitende [Konformitätsdokumentation](#compliance-documentation) verweist auf die Vererbung der Sicherheitsregulierungen aus Azure und beschreibt die bereitgestellten Ressourcen und Konfigurationen, die auf die Sicherheitsregulierungen aus NIST SP 800-53 abgestimmt sind, sodass Unternehmen ihren Konformitätsverpflichtungen schneller nachkommen können.
 
 ## <a name="architecture-diagram"></a>Architekturdiagramm
 
 Diese Lösung stellt eine Referenzarchitektur für eine IaaS-Webanwendung mit einem Datenbank-Back-End bereit. Die Architektur umfasst eine Webschicht, eine Datenschicht, eine Active Directory-Infrastruktur, ein Application Gateway und ein Lastenausgleichsmodul. Virtuelle Computer, die in den Web- und Datenschichten bereitgestellt werden, werden in einer Verfügbarkeitsgruppe konfiguriert, und SQL Server-Instanzen werden in einer AlwaysOn-Verfügbarkeitsgruppe für Hochverfügbarkeit konfiguriert. Virtuelle Computer sind in Domänen eingebunden, und Active Directory-Gruppenrichtlinien werden verwendet, um Sicherheits- und Konformitätskonfigurationen auf Betriebssystemebene durchzusetzen. Eine Management Jumpbox (Bastionhost) bietet Administratoren eine sichere Verbindung für den Zugriff auf bereitgestellte Ressourcen.
 
-![alt text](images/fedramp-architectural-diagram.png?raw=true "IaaS-Webanwendung: Blueprint Automation für FedRAMP-konforme Umgebungen")
+![Alternativer Text](images/fedramp-architectural-diagram.png?raw=true "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP")
 
 Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungsarchitektur finden Sie im Abschnitt [Bereitstellungsarchitektur](#deployment-architecture).
 
-* **Azure Virtual Machines**
+* **Dokumentation zu virtuellen Computern**
     - (1) Management/Bastion (Windows Server 2016 Datacenter)
     - (2) Active Directory-Domänencontroller (Windows Server 2016 Datacenter)
     - (2) SQL Server-Clusterknoten (SQL Server 2016 unter Windows Server 2012 R2)
@@ -60,7 +60,7 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungs
     - (1) /16 virtuelle Netzwerke
     - (5) /24 Subnetze
     - DNS-Einstellungen werden auf beiden Domänencontrollern festgelegt.
-* **Azure Load Balancer**
+* **Azure-Lastenausgleich**
     - (1) SQL-Lastenausgleich
 * **Azure Application Gateway**
     - (1) WAF Application Gateway (aktiviert)
@@ -71,7 +71,7 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungs
     - (7) Georedundante Speicherkonten
 * **Azure Backup**
     - (1) Recovery Services-Tresor
-* **Azure Key Vault**
+* **Azure-Schlüsseltresor**
     - (1) Schlüsseltresor
 * **Azure Active Directory**
 * **Azure Resource Manager**
@@ -130,7 +130,7 @@ Um den Verschlüsselungsanforderungen von ruhenden Daten gerecht zu werden, verw
 
 Die SQL-Datenbank ist so konfiguriert, dass sie [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) verwendet, die Echtzeitverschlüsselung und -entschlüsselung von Daten und Protokolldateien ausführt, um ruhende Informationen zu schützen. TDE gewährleistet, dass gespeicherte Daten keinen unbefugten Zugriffen ausgesetzt sind. 
 
-#### <a name="azure-disk-encryption"></a>Azure-Datenträgerverschlüsselung
+#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Azure Disk Encryption wird zur Verschlüsselung der Datenträger von virtuellen Windows-IaaS-Computern verwendet. [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) nutzt die BitLocker-Funktion von Windows, um Volumeverschlüsselung für Betriebssysteme und Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel zu erleichtern.
 
@@ -182,7 +182,7 @@ Eine Management Jumpbox (Bastionhost) bietet Administratoren eine sichere Verbin
 
 ### <a name="patch-management"></a>Patchverwaltung
 
-Virtuelle Windows-Computer, die von dieser Blueprint Automation-Lösung bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates von Windows Update Service erhalten. Diese Lösung stellt auch die OMS Azure Automation-Lösung bereit, mit der Updatebereitstellungen erstellt werden können, um Patches auf Windows-Servern bei Bedarf bereitzustellen.
+Virtuelle Windows-Computer, die durch diese Azure Security and Compliance Blueprint-Automatisierung bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates von Windows Update Service erhalten. Diese Lösung stellt auch die OMS Azure Automation-Lösung bereit, mit der Updatebereitstellungen erstellt werden können, um Patches auf Windows-Servern bei Bedarf bereitzustellen.
 
 ### <a name="operations-management"></a>Operations Management
 
@@ -211,11 +211,11 @@ Die [Kundenzuständigkeitsmatrix](https://aka.ms/blueprinthighcrm) (Excel-Arbeit
 
 ### <a name="control-implementation-matrix"></a>Regulierungsimplementierungsmatrix
 
-Die [Regulierungsimplementierungsmatrix](https://aka.ms/blueprintwacim) (Excel-Arbeitsmappe) listet alle Sicherheitsregulierungen auf, die für die FedRAMP High-Grundlage erforderlich sind. Die Matrix gibt für jede Regulierung (oder Unterregulierung), die in der Kundenzuständigkeitsmatrix als Kundenzuständigkeit bezeichnet wird, an, ob 1) Blueprint Automation die Regulierung implementiert, und bietet 2) eine Beschreibung, wie die Implementierung mit den Regulierungsanforderungen übereinstimmt. Dieser Inhalt ist auch [hier](fedramp-controls-overview.md) verfügbar.
+Die [Regulierungsimplementierungsmatrix](https://aka.ms/blueprintwacim) (Excel-Arbeitsmappe) listet alle Sicherheitsregulierungen auf, die für die FedRAMP High-Grundlage erforderlich sind. Die Matrix gibt für jede Regulierung (oder Unterregulierung), die in der Kundenzuständigkeitsmatrix als Kundenzuständigkeit bezeichnet wird, an, ob die Blueprintautomatisierung die Regulierung implementiert, und beschreibt, inwiefern die Implementierung den Regulierungsanforderungen entspricht. Dieser Inhalt ist auch [hier](fedramp-controls-overview.md) verfügbar.
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
-Diese Azure Blueprint-Lösung besteht aus JSON-Konfigurationsdateien und PowerShell-Skripts, die vom API-Dienst von Azure Resource Manager verwaltet werden, um Ressourcen innerhalb von Azure bereitzustellen. Ausführlichere Bereitstellungsanweisungen finden Sie [hier](https://aka.ms/fedrampblueprintrepo). ***Hinweis: Diese Lösung wird für Azure Government bereitgestellt.***
+Diese Azure Security and Compliance Blueprint-Automatisierung besteht aus JSON-Konfigurationsdateien und PowerShell-Skripts, die vom API-Dienst von Azure Resource Manager verwaltet werden, um Ressourcen innerhalb von Azure bereitzustellen. Ausführlichere Bereitstellungsanweisungen finden Sie [hier](https://aka.ms/fedrampblueprintrepo). ***Hinweis: Diese Lösung wird für Azure Government bereitgestellt.***
 
 #### <a name="quickstart"></a>Schnellstart
 1. Klonen oder laden Sie [dieses](https://aka.ms/fedrampblueprintrepo) GitHub-Repository auf die lokale Arbeitsstation herunter.

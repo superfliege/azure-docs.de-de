@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation – Physischer Schutz und Schutz der Umgebung"
-description: "Webanwendungen für FedRAMP – Physischer Schutz und Schutz der Umgebung"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – Physischer Schutz und Schutz der Umgebung"
+description: "Automatisierung von Webanwendungen für FedRAMP – Physischer Schutz und Schutz der Umgebung"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9e9e473285f4e82e1da40b8c3d496d65733fbd45
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 792b9da0f4e5ec73c39f56a6e4805cf3c37133c4
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="physical-and-environmental-protection-pe"></a>Physischer Schutz und Schutz der Umgebung (Physical and Environmental Protection, PE)
 
@@ -428,7 +428,7 @@ ms.lasthandoff: 11/23/2017
 |||
 |---|---|
 | **Kunde** | Kunden haben keinen physischen Zugriff auf Systemressourcen in Azure-Rechenzentren. |
-| **Anbieter (Microsoft Azure)** | Microsoft Azure hat eine langfristige alternative Stromversorgung für das Informationssystem implementiert, die die minimal erforderliche Betriebsfähigkeit bei einem erweiterten Ausfall der primären Stromquelle aufrechterhalten kann. Wenn die Stromversorgung ausfällt oder auf einen nicht akzeptablen Spannungspegel sinkt, übernehmen unterbrechungsfreie Stromversorgungssysteme (USV) sofort die Stromversorgung. Diese Stromversorgung reicht aus, um die Server zu betreiben, bis die Notstromaggregate starten. Notstromaggregate sichern die Stromversorgung bei längeren Ausfallzeiten und geplanter Wartung und können bei Naturkatastrophen dank lokaler Kraftstoffreserven den Betrieb des Rechenzentrums gewährleisten. Azure betreibt Dieselgeneratoren in vielen seiner Rechenzentren. Notstromaggregate werden verwendet, um die Stabilität der Netzstromversorgung zu unterstützen, oder in außergewöhnlichen Reparatur- und Wartungssituationen, die erfordern, dass die Rechenzentren vom Stromnetz getrennt werden müssen. |
+| **Anbieter (Microsoft Azure)** | Microsoft Azure hat eine langfristige alternative Stromversorgung für das Informationssystem implementiert, die die minimal erforderliche Betriebsfähigkeit bei einem erweiterten Ausfall der primären Stromquelle aufrechterhalten kann. Wenn die Stromversorgung ausfällt oder auf einen nicht akzeptablen Spannungspegel sinkt, übernehmen unterbrechungsfreie Stromversorgungssysteme (USVs) sofort die Stromversorgung. Diese Stromversorgung reicht aus, um die Server zu betreiben, bis die Notstromaggregate starten. Notstromaggregate sichern die Stromversorgung bei längeren Ausfallzeiten und geplanter Wartung und können bei Naturkatastrophen dank lokaler Kraftstoffreserven den Betrieb des Rechenzentrums gewährleisten. Azure betreibt Dieselgeneratoren in vielen seiner Rechenzentren. Notstromaggregate werden verwendet, um die Stabilität der Netzstromversorgung zu unterstützen, oder in außergewöhnlichen Reparatur- und Wartungssituationen, die erfordern, dass die Rechenzentren vom Stromnetz getrennt werden müssen. |
 
 
  ## <a name="nist-800-53-control-pe-12"></a>NIST 800-53, Regelung PE-12

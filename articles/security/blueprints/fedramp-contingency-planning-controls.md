@@ -1,6 +1,6 @@
 ---
-title: 'FedRAMP Azure Blueprint Automation: Notfallplanung'
-description: "Webanwendungen für FedRAMP: Notfallplanung"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – Notfallplanung"
+description: "Automatisierung von Webanwendungen für FedRAMP – Notfallplanung"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: f6e07903b9d7bd69398f23ace168299c6c1bdf44
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: f993271656e9484881ccac357acb3d50830c219e
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="contingency-planning-cp"></a>Notfallplanung (CP)
 
 > [!NOTE]
-> Diese Regulierungen werden von NIST und dem U.S. Department of Commerce als Teil der NIST-Sonderveröffentlichung 800-53 Revision 4 definiert. Informationen zu Testverfahren und Anleitungen für jede Regulierung finden Sie unter NIST 800-53 Rev. 4.
+> Diese Regelungen werden von NIST und dem U.S. Department of Commerce als Teil der NIST-Sonderveröffentlichung 800-53 Revision 4 definiert. Informationen zu Testverfahren und Anleitungen für jede Regelung finden Sie unter NIST 800-53 Rev. 4.
 
 ## <a name="nist-800-53-control-cp-1"></a>NIST 800-53, Regelung CP-1
 
@@ -372,7 +372,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Alle Speicherkonten, die von diesem Azure Blueprint bereitgestellt werden, werden repliziert, um Hochverfügbarkeit mit geografisch redundantem Speicher (GRS) sicherzustellen. GRS stellt sicher, dass die Daten in eine sekundäre Region repliziert werden: Sechs Kopien aller Daten werden an separaten Knoten in zwei Rechenzentren vorgehalten. |
+| **Kunde** | Alle Speicherkonten, die durch diesen Blueprint bereitgestellt werden, werden repliziert, um Hochverfügbarkeit mit geografisch redundantem Speicher (GRS) sicherzustellen. GRS stellt sicher, dass die Daten in eine sekundäre Region repliziert werden: Sechs Kopien aller Daten werden an separaten Knoten in zwei Rechenzentren vorgehalten. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -386,7 +386,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Alle Speicherkonten, die von diesem Azure Blueprint bereitgestellt werden, werden repliziert, um Hochverfügbarkeit mit geografisch redundantem Speicher (GRS) sicherzustellen. Physische Sicherheitsmaßnahmen sind in allen Azure-Rechenzentren gleichartig implementiert. |
+| **Kunde** | Alle Speicherkonten, die durch diesen Blueprint bereitgestellt werden, werden repliziert, um Hochverfügbarkeit mit geografisch redundantem Speicher (GRS) sicherzustellen. Physische Sicherheitsmaßnahmen sind in allen Azure-Rechenzentren gleichartig implementiert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -400,7 +400,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Alle Speicherkonten, die von diesem Azure Blueprint bereitgestellt werden, werden repliziert, um Hochverfügbarkeit mit geografisch redundantem Speicher (GRS) sicherzustellen. GRS stellt sicher, dass die Daten in eine sekundäre Region repliziert werden. Die primäre und sekundäre Region werden einander zugeordnet, um sicherzustellen, dass ausreichend Abstand zwischen den Rechenzentren besteht, um bei einem Ausfall eines großen Gebiets oder bei einem Notfall die Verfügbarkeit sicherzustellen. |
+| **Kunde** | Alle Speicherkonten, die durch diesen Blueprint bereitgestellt werden, werden repliziert, um Hochverfügbarkeit mit geografisch redundantem Speicher (GRS) sicherzustellen. GRS stellt sicher, dass die Daten in eine sekundäre Region repliziert werden. Die primäre und sekundäre Region werden einander zugeordnet, um sicherzustellen, dass ausreichend Abstand zwischen den Rechenzentren besteht, um bei einem Ausfall eines großen Gebiets oder bei einem Notfall die Verfügbarkeit sicherzustellen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -414,7 +414,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Alle Speicherkonten, die von diesem Azure Blueprint bereitgestellt werden, werden repliziert, um Hochverfügbarkeit mit geografisch redundantem Speicher (GRS) sicherzustellen. GRS stellt sicher, dass die Daten in eine sekundäre Region repliziert werden. Kunden müssen sicherstellen, dass das Azure-Datenreplikationsmodell mit den Notfallzielen kompatibel ist. |
+| **Kunde** | Alle Speicherkonten, die durch diesen Blueprint bereitgestellt werden, werden repliziert, um Hochverfügbarkeit mit geografisch redundantem Speicher (GRS) sicherzustellen. GRS stellt sicher, dass die Daten in eine sekundäre Region repliziert werden. Kunden müssen sicherstellen, dass das Azure-Datenreplikationsmodell mit den Notfallzielen kompatibel ist. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -442,7 +442,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint enthält Orientierungshilfen dafür, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für eine vollständige Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. |
+| **Kunde** | Dieser Blueprint enthält Informationen dazu, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für uneingeschränkte Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -456,7 +456,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint enthält Orientierungshilfen dafür, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für eine vollständige Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Beim Bereitstellen in einer alternativen Azure-Region wird die Anlagenbereitstellung von Azure transparent verwaltet. |
+| **Kunde** | Dieser Blueprint enthält Informationen dazu, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für uneingeschränkte Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Beim Bereitstellen in einer alternativen Azure-Region wird die Anlagenbereitstellung von Azure transparent verwaltet. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -470,7 +470,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint enthält Orientierungshilfen dafür, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für eine vollständige Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Sicherheitsvorkehrungen sind in allen Azure-Rechenzentren gleichartig implementiert. |
+| **Kunde** | Dieser Blueprint enthält Informationen dazu, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für uneingeschränkte Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Sicherheitsvorkehrungen sind in allen Azure-Rechenzentren gleichartig implementiert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -484,7 +484,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint enthält Orientierungshilfen dafür, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für eine vollständige Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Azure-Rechenzentren sind geografisch getrennt. |
+| **Kunde** | Dieser Blueprint enthält Informationen dazu, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für uneingeschränkte Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Azure-Rechenzentren sind geografisch getrennt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -512,7 +512,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint enthält Orientierungshilfen dafür, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für eine vollständige Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Beim Bereitstellen in einer alternativen Azure-Region wird Ressourcenverfügbarkeit von Azure transparent verwaltet. |
+| **Kunde** | Dieser Blueprint enthält Informationen dazu, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für uneingeschränkte Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Beim Bereitstellen in einer alternativen Azure-Region wird Ressourcenverfügbarkeit von Azure transparent verwaltet. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -526,7 +526,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint enthält Orientierungshilfen dafür, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für eine vollständige Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Beim Bereitstellen in einer alternativen Azure-Region wird die Vorbereitung physischer Ressourcen von Azure transparent verwaltet. |
+| **Kunde** | Dieser Blueprint enthält Informationen dazu, wie diese Lösung gleichzeitig in mehreren Regionen bereitgestellt und für uneingeschränkte Redundanz an einem alternativen Verarbeitungsstandort konfiguriert werden kann. Beim Bereitstellen in einer alternativen Azure-Region wird die Vorbereitung physischer Ressourcen von Azure transparent verwaltet. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -652,7 +652,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert einen Recovery Services-Tresor. Daten auf Benutzerebene werden in der bereitgestellten SQL-Datenbank mithilfe der SQL-VM-IaaS-Erweiterung implementiert. |
+| **Kunde** | Dieser Blueprint stellt einen Recovery Services-Tresor bereit. Daten auf Benutzerebene werden in der bereitgestellten SQL-Datenbank mithilfe der SQL-VM-IaaS-Erweiterung implementiert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -666,7 +666,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert einen Recovery Services-Tresor. Eine Azure Backup-Richtlinie wird für alle virtuellen Computer definiert und implementiert die Aufbewahrung eines täglich, wöchentlich, monatlich und jährlich erstellten Sicherungsimage.  |
+| **Kunde** | Dieser Blueprint stellt einen Recovery Services-Tresor bereit. Eine Azure Backup-Richtlinie wird für alle virtuellen Computer definiert und implementiert die Aufbewahrung eines täglich, wöchentlich, monatlich und jährlich erstellten Sicherungsimage.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -694,7 +694,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Vertraulichkeit und Integrität aller von diesem Azure Blueprint bereitgestellten Speicherblobs werden mithilfe von Azure SSE geschützt. Dabei kommt eine 256-Bit-AES-Verschlüsselung für alle ruhenden Daten zum Einsatz. |
+| **Kunde** | Vertraulichkeit und Integrität aller durch diesen Blueprint bereitgestellten Speicherblobs werden mithilfe von Azure SSE geschützt. Dabei kommt eine 256-Bit-AES-Verschlüsselung für alle ruhenden Daten zum Einsatz. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -750,7 +750,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Alle in diesem Azure Blueprint bereitgestellten Speicherkonten einschließlich der zu Sicherungszwecken verwendeten implementieren georedundanten Speicher, der sicherstellt, dass sechs Kopien sämtlicher Daten auf separaten Knoten in zwei Rechenzentren verwaltet werden. |
+| **Kunde** | Alle im Rahmen dieses Blueprints bereitgestellten Speicherkonten (einschließlich der zu Sicherungszwecken verwendeten Speicherkonten) implementieren georedundanten Speicher, der sicherstellt, dass sechs Kopien sämtlicher Daten auf separaten Knoten in zwei Rechenzentren verwaltet werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -778,7 +778,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint stellt SQL Server in einer AlwaysOn-Verfügbarkeitsgruppe bereit. SQL Server pflegt ein Transaktionsprotokoll, das die Transaktionswiederherstellung im Falle eines Systemfehlers unterstützt. |
+| **Kunde** | Dieser Blueprint stellt SQL Server in einer AlwaysOn-Verfügbarkeitsgruppe bereit. SQL Server pflegt ein Transaktionsprotokoll, das die Transaktionswiederherstellung im Falle eines Systemfehlers unterstützt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 

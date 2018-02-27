@@ -1,6 +1,6 @@
 ---
-title: 'FedRAMP Azure Blueprint Automation: Zugriffssteuerung'
-description: "Webanwendungen für FedRAMP: Zugriffssteuerung"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – Zugriffssteuerung"
+description: "Automatisierung von Webanwendungen für FedRAMP – Zugriffssteuerung"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: a7a840b338af3aa6c6a71f2db3cff1e36a8a6794
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 73ce33bc6136b9b76661dc9e29b3a11c3eabc5f8
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="access-control-ac"></a>Zugriffssteuerung (Access Control, AC)
 
 > [!NOTE]
-> Diese Regelungen werden von NIST und dem U.S. Department of Commerce als Teil der NIST-Sonderveröffentlichung 800-53 Revision 4 definiert. Informationen zu Testverfahren und Anleitungen für alle Regelungen finden Sie in NIST 800-53 Rev. 4.
+> Diese Regelungen werden von NIST und dem U.S. Department of Commerce als Teil der NIST-Sonderveröffentlichung 800-53 Revision 4 definiert. Informationen zu Testverfahren und Anleitungen für die einzelnen Regelungen finden Sie unter NIST 800-53 Rev. 4.
 
 ## <a name="nist-800-53-control-ac-1"></a>NIST 800-53, Regelung AC-1
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint basiert auf und implementiert die folgenden Systemkontotypen: Azure Active Directory-Benutzer (dienen zum Bereitstellen der Lösung und zum Verwalten des Zugriffs auf Azure-Ressourcen), Windows-Benutzer (werden von Active Directory verwaltet) und SQL Server-Dienstkonto. |
+| **Kunde** | In diesem Blueprint werden folgende Systemkontotypen zugrunde gelegt und implementiert: Azure Active Directory-Benutzer (dienen zum Bereitstellen der Lösung und zum Verwalten des Zugriffs auf Azure-Ressourcen), Windows-Benutzer (werden von Active Directory verwaltet) und SQL Server-Dienstkonto. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert das Identitäts- und Zugriffsdashboard aus OMS Security & Audit. Dieses Dashboard ermöglicht Konto-Managern das Überwachen der Nutzung von Informationssystemkonten. |
+| **Kunde** | Dieser Blueprint implementiert das Dashboard für Identität und Zugriff aus der Sicherheits- und Überwachungslösung von OMS. Dieses Dashboard ermöglicht Konto-Managern das Überwachen der Nutzung von Informationssystemkonten. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert das Identitäts- und Zugriffsdashboard aus OMS Security & Audit. Dieses Dashboard ermöglicht Konto-Managern das Überwachen der Nutzung von Informationssystemkonten. OMS kann so konfiguriert werden, dass Warnungen gesendet werden, wenn ungewöhnliche Aktivitäten vermutet werden oder andere vordefinierte Ereignisse auftreten. |
+| **Kunde** | Dieser Blueprint implementiert das Dashboard für Identität und Zugriff aus der Sicherheits- und Überwachungslösung von OMS. Dieses Dashboard ermöglicht Konto-Managern das Überwachen der Nutzung von Informationssystemkonten. OMS kann so konfiguriert werden, dass Warnungen gesendet werden, wenn ungewöhnliche Aktivitäten vermutet werden oder andere vordefinierte Ereignisse auftreten. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint stellt keine temporären oder Notfallkonten bereit. Sofern keine manuelle Deaktivierung erfolgt, deaktiviert der bereitgestellte Domänencontroller alle inaktiven Konten automatisch nach 35 Tagen. |
+| **Kunde** | Dieser Blueprint stellt keine temporären Konten oder Notfallkonten bereit. Sofern keine manuelle Deaktivierung erfolgt, deaktiviert der bereitgestellte Domänencontroller alle inaktiven Konten automatisch nach 35 Tagen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Domänencontroller, der von diesem Azure Blueprint bereitgestellt wird, ist so konfiguriert, dass er alle Benutzerkonten nach 35 Tagen Inaktivität deaktiviert. |
+| **Kunde** | Der Domänencontroller, der von diesem Blueprint bereitgestellt wird, ist so konfiguriert, dass er alle Benutzerkonten nach 35 Tagen Inaktivität deaktiviert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert die folgenden Systemkontotypen: Azure Active Directory-Benutzer, Windows-Benutzer und SQL Server-Dienstkonto. Aktionen bei der Azure Active Directory-Kontoverwaltung generieren ein Ereignis im Azure-Aktivitätsprotokoll; Aktionen bei der Verwaltung von Betriebssystemebenenkonten generieren ein Ereignis im Systemprotokoll. Diese Protokolle werden von Log Analytics gesammelt und im OMS-Repository gespeichert. OMS kann so konfiguriert werden, dass beim Auftreten vordefinierter Ereignisse Warnungen versendet werden.  |
+| **Kunde** | Dieser Blueprint implementiert die folgenden Systemkontotypen: Azure Active Directory-Benutzer, Windows-Benutzer und SQL Server-Dienstkonto. Aktionen bei der Azure Active Directory-Kontoverwaltung generieren ein Ereignis im Azure-Aktivitätsprotokoll; Aktionen bei der Verwaltung von Betriebssystemebenenkonten generieren ein Ereignis im Systemprotokoll. Diese Protokolle werden von Log Analytics gesammelt und im OMS-Repository gespeichert. OMS kann so konfiguriert werden, dass beim Auftreten vordefinierter Ereignisse Warnungen versendet werden.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert die folgenden Systemkontotypen: Azure Active Directory-Benutzer, Windows-Benutzer und SQL Server-Dienstkonto. Azure Active Directory-Kontoberechtigungen werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, wobei Benutzern Rollen zugewiesen werden. Berechtigungen für Active Directory-Konten werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, indem Benutzer Sicherheitsgruppen zugewiesen werden. Diese rollenbasierten Schemas können vom Kunden zur Erfüllung unternehmenswichtiger Anforderungen erweitert werden. |
+| **Kunde** | Dieser Blueprint implementiert die folgenden Systemkontotypen: Azure Active Directory-Benutzer, Windows-Benutzer und SQL Server-Dienstkonto. Azure Active Directory-Kontoberechtigungen werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, wobei Benutzern Rollen zugewiesen werden. Berechtigungen für Active Directory-Konten werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, indem Benutzer Sicherheitsgruppen zugewiesen werden. Diese rollenbasierten Schemas können vom Kunden zur Erfüllung unternehmenswichtiger Anforderungen erweitert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert das Identitäts- und Zugriffsdashboard aus OMS Security & Audit. Dieses Dashboard ermöglicht Konto-Managern das Überwachen der Nutzung von Informationssystemkonten. Diese Lösung kann abgefragt werden, um privilegierte Rollenzuweisungen zu melden. |
+| **Kunde** | Dieser Blueprint implementiert das Dashboard für Identität und Zugriff aus der Sicherheits- und Überwachungslösung von OMS. Dieses Dashboard ermöglicht Konto-Managern das Überwachen der Nutzung von Informationssystemkonten. Diese Lösung kann abgefragt werden, um privilegierte Rollenzuweisungen zu melden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -315,7 +315,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Auf Ressourcen, die von diesem Azure Blueprint bereitgestellt werden, werden keine freigegebenen oder Gruppenkonten aktiviert. |
+| **Kunde** | Für Ressourcen, die von diesem Blueprint bereitgestellt werden, werden keine gemeinsam genutzten Konten oder Gruppenkonten aktiviert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -329,7 +329,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Auf Ressourcen, die von diesem Azure Blueprint bereitgestellt werden, werden keine freigegebenen oder Gruppenkonten aktiviert. |
+| **Kunde** | Für Ressourcen, die von diesem Blueprint bereitgestellt werden, werden keine gemeinsam genutzten Konten oder Gruppenkonten aktiviert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -343,7 +343,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie kann in Active Directory eingerichtet und so konfiguriert werden, dass tageszeitliche Beschränkungen oder sonstige Bedingungen für die Kontonutzung implementiert werden. |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie kann in Active Directory eingerichtet und so konfiguriert werden, dass tageszeitliche Beschränkungen oder sonstige Bedingungen für die Kontonutzung implementiert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert das Identitäts- und Zugriffsdashboard aus OMS Security & Audit. Dieses Dashboard ermöglicht Konto-Managern die Überwachung von Zugriffsversuchen auf bereitgestellte Ressourcen. |
+| **Kunde** | Dieser Blueprint implementiert das Dashboard für Identität und Zugriff aus der Sicherheits- und Überwachungslösung von OMS. Dieses Dashboard ermöglicht Konto-Managern die Überwachung von Zugriffsversuchen auf bereitgestellte Ressourcen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert das Identitäts- und Zugriffsdashboard aus OMS Security & Audit. Dieses Dashboard ermöglicht Konto-Managern die Überwachung von Zugriffsversuchen auf bereitgestellte Ressourcen. Diese Lösung kann so konfiguriert werden, dass Warnungen gesendet werden, wenn ungewöhnliche Aktivitäten vermutet werden oder andere vordefinierte Ereignisse auftreten. |
+| **Kunde** | Dieser Blueprint implementiert das Dashboard für Identität und Zugriff aus der Sicherheits- und Überwachungslösung von OMS. Dieses Dashboard ermöglicht Konto-Managern die Überwachung von Zugriffsversuchen auf bereitgestellte Ressourcen. Diese Lösung kann so konfiguriert werden, dass Warnungen gesendet werden, wenn ungewöhnliche Aktivitäten vermutet werden oder andere vordefinierte Ereignisse auftreten. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint erzwingt die Autorisierungen für den logischen Zugriff mithilfe der rollenbasierten Zugriffssteuerung, die von Azure Active Directory durch Zuweisen von Rollen zu Benutzern, von Active Directory durch Zuweisen von Benutzern zu Sicherheitsgruppen sowie durch Maßnahmen auf der Windows-Betriebssystemebene erzwungen werden. Azure Active Directory-Rollen, die Benutzern oder Gruppen zugewiesen sind, steuern den logischen Zugriff auf Ressourcen in Azure auf Ressourcen-, Gruppen- oder Abonnementebene. Active Directory-Sicherheitsgruppen steuern den logischen Zugriff auf Ressourcen und Funktionen auf Betriebssystemebene. |
+| **Kunde** | Dieser Blueprint erzwingt die Autorisierungen für den logischen Zugriff mithilfe der rollenbasierten Zugriffssteuerung, die von Azure Active Directory durch Zuweisen von Rollen zu Benutzern, von Active Directory durch Zuweisen von Benutzern zu Sicherheitsgruppen sowie durch Maßnahmen auf der Windows-Betriebssystemebene erzwungen werden. Azure Active Directory-Rollen, die Benutzern oder Gruppen zugewiesen sind, steuern den logischen Zugriff auf Ressourcen in Azure auf Ressourcen-, Gruppen- oder Abonnementebene. Active Directory-Sicherheitsgruppen steuern den logischen Zugriff auf Ressourcen und Funktionen auf Betriebssystemebene. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint erzwingt Informationsflussbeschränkungen mithilfe von Netzwerksicherheitsgruppen, die auf die Subnetze, in denen Ressourcen bereitgestellt werden, auf Application Gateway und den Lastenausgleich angewendet werden. Netzwerksicherheitsgruppen stellen sicher, dass der Informationsfluss zwischen Ressourcen auf Grundlage genehmigter Regeln gesteuert wird. Application Gateway und der Lastenausgleich routen Datenverkehr auf Grundlage genehmigter Regeln dynamisch an bestimmte Ressourcen. |
+| **Kunde** | Dieser Blueprint erzwingt Informationsflussbeschränkungen mithilfe von Netzwerksicherheitsgruppen, die auf die Subnetze, in denen Ressourcen bereitgestellt werden, sowie auf Application Gateway und den Lastenausgleich angewendet werden. Netzwerksicherheitsgruppen stellen sicher, dass der Informationsfluss zwischen Ressourcen auf Grundlage genehmigter Regeln gesteuert wird. Application Gateway und der Lastenausgleich routen Datenverkehr auf Grundlage genehmigter Regeln dynamisch an bestimmte Ressourcen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert eine rollenbasierte Zugriffssteuerung, mit der die Trennung von Aufgaben entsprechend den Anforderungen der Organisation konfiguriert werden kann. Azure Active Directory-Kontoberechtigungen werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, wobei Benutzern Rollen zugewiesen werden. Berechtigungen für Active Directory-Konten werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, indem Benutzer Sicherheitsgruppen zugewiesen werden. |
+| **Kunde** | Dieser Blueprint implementiert eine rollenbasierte Zugriffssteuerung, mit der die Trennung von Aufgaben entsprechend den Anforderungen der Organisation konfiguriert werden kann. Azure Active Directory-Kontoberechtigungen werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, wobei Benutzern Rollen zugewiesen werden. Berechtigungen für Active Directory-Konten werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, indem Benutzer Sicherheitsgruppen zugewiesen werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -497,7 +497,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert eine rollenbasierte Zugriffssteuerung, um Benutzer auf ausdrücklich zugewiesene Berechtigungen zu beschränken. Azure Active Directory-Kontoberechtigungen werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, wobei Benutzern Rollen zugewiesen werden. Berechtigungen für Active Directory-Konten werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, indem Benutzer Sicherheitsgruppen zugewiesen werden.  |
+| **Kunde** | Dieser Blueprint implementiert eine rollenbasierte Zugriffssteuerung, um Benutzer auf explizit zugewiesene Berechtigungen zu beschränken. Azure Active Directory-Kontoberechtigungen werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, wobei Benutzern Rollen zugewiesen werden. Berechtigungen für Active Directory-Konten werden mithilfe der rollenbasierten Zugriffssteuerung implementiert, indem Benutzer Sicherheitsgruppen zugewiesen werden.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -595,7 +595,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert eine rollenbasierte Zugriffssteuerung, um Benutzer auf ausdrücklich zugewiesene Berechtigungen zu beschränken. Schutzmaßnahmen virtueller Computer auf Betriebssystemebene gestatten keine Ausführung von Software auf einer höheren Berechtigungsebene als der des ausführenden Benutzers. |
+| **Kunde** | Dieser Blueprint implementiert eine rollenbasierte Zugriffssteuerung, um Benutzer auf explizit zugewiesene Berechtigungen zu beschränken. Schutzmaßnahmen virtueller Computer auf Betriebssystemebene gestatten keine Ausführung von Software auf einer höheren Berechtigungsebene als der des ausführenden Benutzers. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -609,7 +609,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert den Log Analytics-Dienst in OMS. Bereitgestellte virtuelle Computer und Azure-Diagnosespeicherkonten sind verbundene Datenquellen für Log Analytics. Auf diese Weise wird sichergestellt, dass die Ausführung privilegierter Funktionen überwacht wird. |
+| **Kunde** | Dieser Blueprint implementiert den Log Analytics-Dienst in OMS. Bereitgestellte virtuelle Computer und Azure-Diagnosespeicherkonten sind verbundene Datenquellen für Log Analytics. Auf diese Weise wird sichergestellt, dass die Ausführung privilegierter Funktionen überwacht wird. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -623,7 +623,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint implementiert eine rollenbasierte Zugriffssteuerung, um Benutzer auf ausdrücklich zugewiesene Berechtigungen zu beschränken.  |
+| **Kunde** | Dieser Blueprint implementiert eine rollenbasierte Zugriffssteuerung, um Benutzer auf explizit zugewiesene Berechtigungen zu beschränken.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -637,7 +637,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Das Azure-Portal beschränkt aufeinander folgende ungültige Anmeldeversuche von Benutzern. Auf der Betriebssystemebene wird eine Gruppenrichtlinie auf alle virtuellen Computer angewendet, die von diesem Azure Blueprint bereitgestellt wurden. Die Richtlinie beschränkt die Anzahl aufeinander folgender ungültiger Anmeldeversuche von Benutzern auf maximal 3 in einem Zeitraum von 15 Minuten. |
+| **Kunde** | Das Azure-Portal beschränkt aufeinander folgende ungültige Anmeldeversuche von Benutzern. Auf der Betriebssystemebene wird eine Gruppenrichtlinie auf alle virtuellen Computer angewendet, die von diesem Blueprint bereitgestellt werden. Die Richtlinie beschränkt die Anzahl ungültiger aufeinander folgender Anmeldeversuche von Benutzern auf maximal drei in einem Zeitraum von 15 Minuten. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -651,7 +651,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Das Azure-Portal sperrt Konten nach aufeinanderfolgenden ungültigen Anmeldeversuchen von Benutzern. Auf der Betriebssystemebene wird eine Gruppenrichtlinie auf alle virtuellen Computer angewendet, die von diesem Azure Blueprint bereitgestellt wurden. Die Richtlinie sperrt Konten nach drei aufeinander folgenden ungültigen Benutzeranmeldeversuchen für drei Stunden. |
+| **Kunde** | Das Azure-Portal sperrt Konten nach aufeinanderfolgenden ungültigen Anmeldeversuchen von Benutzern. Auf der Betriebssystemebene wird eine Gruppenrichtlinie auf alle virtuellen Computer angewendet, die von diesem Blueprint bereitgestellt werden. Die Richtlinie sperrt Konten nach drei aufeinander folgenden ungültigen Benutzeranmeldeversuchen für drei Stunden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -673,13 +673,13 @@ ms.lasthandoff: 11/23/2017
 
 #### <a name="system-use-notification"></a>Benachrichtigung zur Systemnutzung
 
-**AC-8.a** Das Informationssystem zeigt Benutzern [Festsetzung: eine von der Organisation definierte Nachricht oder ein Banner zur Systemnutzung ] an, bevor der Zugriff auf das System gewährt wird, um Datenschutz- und Sicherheitshinweise entsprechend den gültigen US-amerikanischen Bundesgesetzen, Durchführungsverordnungen, Anordnungen, Verordnungen, Standards und Leitlinien anzugeben, und meldet außerdem, dass Benutzer auf ein Informationssystem der US-Regierung zugreifen, die Nutzung des Informationssystems möglicherweise überwacht, aufgezeichnet und geprüft wird, dass die Nutzung des Informationssystems durch Unbefugte untersagt ist und kriminal- und zivilrechtlich verfolgt werden kann, und dass der Benutzer durch Nutzung des Informationssystems seine Zustimmung zur Überwachung und Aufzeichnung gewährt. 
+**AC-8.a** Das Informationssystem zeigt Benutzern [Aufgabe: eine von der Organisation definierte Nachricht oder ein Banner zur Systemnutzung] an, bevor der Zugriff auf das System gewährt wird, um Datenschutz- und Sicherheitshinweise entsprechend den gültigen US-amerikanischen Bundesgesetzen, Präsidentenverfügungen, Anordnungen, Verordnungen, Standards und Leitlinien anzugeben, und weist außerdem darauf hin, dass Benutzer auf ein Informationssystem der US-Regierung zugreifen, dass die Nutzung des Informationssystems möglicherweise überwacht, aufgezeichnet und überprüft wird, dass die Nutzung des Informationssystems durch Unbefugte untersagt ist und zivil- und strafrechtlich verfolgt werden kann und dass sich der Benutzer durch die Nutzung des Informationssystems mit der Überwachung und Aufzeichnung einverstanden erklärt.
 
 **Zuständigkeiten:** `Customer Only`
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Benachrichtigung zur Systemnutzung, die Benutzern vor der Anmeldung angezeigt wird. Hinweis: Das Azure-Blueprint implementiert eine exemplarische Systemnutzungsbenachrichtigung. Der Kunde muss den Text bearbeiten, um die Anforderungen der Organisation und/oder des Gesetzgebers zu erfüllen. |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Benachrichtigung zur Systemnutzung, die Benutzern vor der Anmeldung angezeigt wird. Hinweis: Dieser Blueprint implementiert eine exemplarische Systemnutzungsbenachrichtigung. Der Kunde muss den Text bearbeiten, um die Anforderungen der Organisation und/oder des Gesetzgebers zu erfüllen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -693,7 +693,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Benachrichtigung zur Systemnutzung, die Benutzern vor der Anmeldung angezeigt wird. Der Benutzer muss die Benachrichtigung bestätigen, um sich anmelden zu können. |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Benachrichtigung zur Systemnutzung, die Benutzern vor der Anmeldung angezeigt wird. Der Benutzer muss die Benachrichtigung bestätigen, um sich anmelden zu können. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -721,7 +721,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Eine Betriebssystemrichtlinie wird für alle virtuellen Computer implementiert, die von diesem Azure Blueprint bereitgestellt werden. Die Richtlinie implementiert Beschränkungen der Anzahl gleichzeitiger Sitzungen (zwei Sitzungen). |
+| **Kunde** | Eine Betriebssystemrichtlinie wird für alle virtuellen Computer implementiert, die durch diesen Blueprint bereitgestellt werden. Die Richtlinie implementiert Beschränkungen der Anzahl gleichzeitiger Sitzungen (zwei Sitzungen). |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -735,7 +735,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Inaktivitätssperre für RDP-Sitzungen. Benutzer können die Sperre auch manuell initiieren. |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Inaktivitätssperre für RDP-Sitzungen. Benutzer können die Sperre auch manuell initiieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -749,7 +749,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Inaktivitätssperre für RDP-Sitzungen. Benutzer müssen sich erneut authentifizieren, um die Sitzungssperre aufzuheben.  |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Inaktivitätssperre für RDP-Sitzungen. Benutzer müssen sich erneut authentifizieren, um die Sitzungssperre aufzuheben.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -763,7 +763,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Inaktivitätssperre für RDP-Sitzungen. Die Sitzungssperre verbirgt Informationen, die zuvor sichtbar waren. |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Eine Gruppenrichtlinie implementiert eine Inaktivitätssperre für RDP-Sitzungen. Die Sitzungssperre verbirgt Informationen, die zuvor sichtbar waren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -777,7 +777,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die Remotedesktop-Sitzungshostkonfiguration für die virtuellen Windows-Computer, die von diesem Azure Blueprint bereitgestellt werden, können so konfiguriert werden, dass sie die Anforderungen der Organisation an die Sitzungsbeendigung erfüllen. |
+| **Kunde** | Die Remotedesktop-Sitzungshostkonfiguration für die virtuellen Windows-Computer, die durch diesen Blueprint bereitgestellt werden, können so konfiguriert werden, dass sie die Anforderungen der Organisation an die Sitzungsbeendigung erfüllen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -791,7 +791,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Das Azure-Portal und die VM-Betriebssysteme, die von diesem Azure Blueprint bereitgestellt werden, ermöglichen Benutzern das Einleiten einer Abmeldung. |
+| **Kunde** | Das Azure-Portal und die VM-Betriebssysteme, die durch diesen Blueprint bereitgestellt werden, ermöglichen Benutzern das Einleiten einer Abmeldung. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -805,7 +805,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Das Azure-Portal und die VM-Betriebssysteme, die von diesem Azure Blueprint bereitgestellt werden, ermöglichen Benutzern das Einleiten einer Abmeldung. Beim Abmeldevorgang wird den Benutzern signalisiert, dass die Sitzung beendet wurde. |
+| **Kunde** | Das Azure-Portal und die VM-Betriebssysteme, die durch diesen Blueprint bereitgestellt werden, ermöglichen Benutzern das Einleiten einer Abmeldung. Beim Abmeldevorgang wird den Benutzern signalisiert, dass die Sitzung beendet wurde. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -875,7 +875,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint bietet Remotezugriff auf das Informationssystem über das Azure-Portal, über eine Remotedesktopverbindung per Jumpbox oder über eine kundenseitig implementierte Webanwendung. Zugriffe auf das Azure-Portal und Remotedesktopsitzungen werden überwacht und können über OMS eingesehen werden. Der Kunde muss in der Webanwendung erforderlichenfalls Maßnahmen zur Remotezugriffssteuerung implementieren. |
+| **Kunde** | Dieser Blueprint bietet Remotezugriff auf das Informationssystem über das Azure-Portal, über eine Remotedesktopverbindung per Jumpbox oder über eine kundenseitig implementierte Webanwendung. Zugriffe auf das Azure-Portal und Remotedesktopsitzungen werden überwacht und können über OMS eingesehen werden. Der Kunde muss in der Webanwendung erforderlichenfalls Maßnahmen zur Remotezugriffssteuerung implementieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -889,7 +889,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Remotezugriff auf Ressourcen, die von diesem Azure Blueprint bereitgestellt werden (einschließlich Azure-Portal, Remotedesktopverbindung und Webanwendungsgateway), ist mit TLS gesichert. |
+| **Kunde** | Der Remotezugriff auf Ressourcen, die durch diesen Blueprint bereitgestellt werden (einschließlich Azure-Portal, Remotedesktopverbindung und Webanwendungsgateway), ist durch TLS geschützt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -903,7 +903,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Remotezugriff auf die von diesem Azure Blueprint bereitgestellte fiktive Webanwendung erfolgt über ein Anwendungsgateway. Remotezugriffe auf alle anderen Ressourcen erfolgen über eine Jumpbox. Es sind keine weiteren öffentlich zugänglichen Endpunkte vorhanden. |
+| **Kunde** | Der Remotezugriff auf die durch diesen Blueprint bereitgestellte fiktive Webanwendung erfolgt über ein Anwendungsgateway. Remotezugriffe auf alle anderen Ressourcen erfolgen über eine Jumpbox. Es sind keine weiteren öffentlich zugänglichen Endpunkte vorhanden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -945,7 +945,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieses Azure Blueprint bietet Remotezugriff auf das Informationssystem über das Azure-Portal, über eine Remotedesktopverbindung per Jumpbox oder über eine Webanwendung. Wenn ein Azure Active Directory-Konto deaktiviert oder entfernt wird, wird der Zugriff auf das Azure-Portal sofort unterbunden. Ähnlich wird, wenn ein VM-Konto auf Betriebssystem ebene deaktiviert oder entfernt wird, der Remotedesktopzugriff über die Jumpbox sofort getrennt. Kunden müssen eine Trennung des Remotezugriffs für die Webanwendung implementieren. |
+| **Kunde** | Dieser Blueprint bietet Remotezugriff auf das Informationssystem über das Azure-Portal, über eine Remotedesktopverbindung per Jumpbox oder über eine Webanwendung. Wenn ein Azure Active Directory-Konto deaktiviert oder entfernt wird, wird der Zugriff auf das Azure-Portal sofort unterbunden. Ähnlich wird, wenn ein VM-Konto auf Betriebssystem ebene deaktiviert oder entfernt wird, der Remotedesktopzugriff über die Jumpbox sofort getrennt. Kunden müssen eine Trennung des Remotezugriffs für die Webanwendung implementieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -1113,7 +1113,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die Informationstechnikgruppe des Kunden auf Unternehmensebene ist berechtigt, die Einhaltung der Informationssicherheitsanforderungen der Organisation durch den Clouddienstanbieter zu überprüfen und eine unternehmensweite Genehmigung zur Verwendung zugehöriger Clouddienstangebote zu gewähren. Azure wurde vom Federal Risk and Authorization Management Program (FedRAMP) Joint Authorization Board (JAB) eine Provisional Authorities to Operate (P-ATO) gewährt. Azure wird durch eine durch das FedRAMP autorisierte externe Bewertungsorganisation (Third-Party Assessment Organisation, 3PAO) bewertet, um die Einhaltung der Anforderungen an Sicherheitsmaßnahmen sowie weiterer Anforderungen zu nachzuweisen. |
+| **Kunde** | Die Informationstechnikgruppe des Kunden auf Unternehmensebene ist berechtigt, die Einhaltung der Informationssicherheitsanforderungen der Organisation durch den Clouddienstanbieter zu überprüfen und eine unternehmensweite Genehmigung zur Verwendung zugehöriger Clouddienstangebote zu gewähren. Azure wurde vom Federal Risk and Authorization Management Program (FedRAMP) Joint Authorization Board (JAB) eine Provisional Authorities to Operate (P-ATO) gewährt. Azure wird durch eine durch das FedRAMP autorisierte externe Bewertungsorganisation (Third-Party Assessment Organisation, 3PAO) bewertet, um die Einhaltung der Anforderungen an Sicherheitsmaßnahmen sowie weiterer Anforderungen nachzuweisen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen | Microsoft-Dokumentation"
-description: "Leiten Sie Aktivitätsprotokollereignisse für benutzerdefinierte Aktionen an andere Dienste weiter. Senden Sie z.B. SMS, melden Sie Fehler oder benachrichtigen Sie Teams über Chat/Messagingdienst."
+title: "Aufrufen eines Webhooks für eine Azure-Aktivitätsprotokollwarnung | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie Aktivitätsprotokollereignisse für benutzerdefinierte Aktionen an andere Dienste weiterleiten. So können Sie beispielsweise SMS-Nachrichten senden, Fehler protokollieren oder ein Team per Chat-/Messagingdienst benachrichtigen."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,30 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: johnkem
-ms.openlocfilehash: 08467aed4e1601b32598fc42515d9c38b601a9d4
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9872c30d123f0a7443e28dc58ee0d4e16572a390
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="call-a-webhook-on-azure-activity-log-alerts"></a>Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen
-Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, Fehler protokollieren, ein Team per Chat-/Messagingdienst benachrichtigen oder beliebige andere Aktionen ausführen. In diesem Artikel wird beschrieben, wie Sie einen Webhook festlegen, der beim Auslösen einer Azure-Aktivitätsprotokollwarnung aufgerufen werden soll. Außerdem erfahren Sie, wie die Nutzlast für die HTTP-POST-Methode für einen Webhook aussieht. Informationen zur Einrichtung und zum Schema einer Azure-Metrikwarnung finden Sie auf [dieser Seite](insights-webhooks-alerts.md). Sie können auch eine Aktivitätsprotokollwarnung einrichten, bei deren Aktivierung eine E-Mail gesendet wird.
+# <a name="call-a-webhook-on-an-azure-activity-log-alert"></a>Aufrufen eines Webhooks für eine Azure-Aktivitätsprotokollwarnung
+Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, um Fehler zu protokollieren, um ein Team per Chat-/Messagingdienst zu benachrichtigen oder um verschiedene andere Aktionen auszuführen. Sie können auch eine Aktivitätsprotokollwarnung einrichten, bei deren Aktivierung eine E-Mail gesendet wird.
+
+In diesem Artikel erfahren Sie, wie Sie einen Webhook festlegen, der beim Auslösen einer Azure-Aktivitätsprotokollwarnung aufgerufen wird. Außerdem erfahren Sie, wie die Nutzlast für die HTTP-POST-Methode für einen Webhook aussieht. Informationen zur Einrichtung und zum Schema einer Azure-Metrikwarnung finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](insights-webhooks-alerts.md). 
 
 > [!NOTE]
-> Dieses Feature befindet sich zurzeit in der Vorschau und wird zu einem späteren Zeitpunkt entfernt.
+> Das Feature, das das Aufrufen eines Webhooks für eine Azure-Aktivitätsprotokollwarnung unterstützt, befindet sich derzeit noch in der Vorschauphase.
 >
 >
 
-Aktivitätsprotokollwarnungen können mithilfe von [Azure PowerShell-Cmdlets](insights-powershell-samples.md#create-metric-alerts), mithilfe der [plattformübergreifenden Befehlszeilenschnittstelle](insights-cli-samples.md#work-with-alerts) oder mithilfe der [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn933805.aspx) eingerichtet werden. Derzeit können Sie keine mithilfe des Azure-Portals festlegen.
+Aktivitätsprotokollwarnungen können mithilfe von [Azure PowerShell-Cmdlets](insights-powershell-samples.md#create-metric-alerts), mithilfe einer [plattformübergreifenden Befehlszeilenschnittstelle](insights-cli-samples.md#work-with-alerts) oder über die [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/azure/dn933805.aspx) eingerichtet werden. Das Azure-Portal kann derzeit nicht zum Einrichten einer Aktivitätsprotokollwarnung verwendet werden.
 
-## <a name="authenticating-the-webhook"></a>Authentifizieren des Webhooks
-Der Webhook kann mithilfe folgender Methoden authentifiziert werden:
+## <a name="authenticate-the-webhook"></a>Authentifizieren des Webhooks
+Der Webhook kann mithilfe einer der folgenden Methoden authentifiziert werden:
 
-1. **Tokenbasierte Autorisierung:** Der Webhook-URI wird mit einer Token-ID gespeichert, z.B. `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
-2. **Einfache Autorisierung:** Der Webhook-URI wird mit einem Benutzernamen und Kennwort gespeichert, z.B. `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`.
+* **Tokenbasierte Autorisierung:** Der Webhook-URI wird mit einer Token-ID gespeichert. Beispiel: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+* **Standardautorisierung:** Der Webhook-URI wird mit einem Benutzernamen und Kennwort gespeichert. Beispiel: `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
 
 ## <a name="payload-schema"></a>Nutzlast und Schema
-Der POST-Vorgang enthält für alle aktivitätsprotokollbasierten Warnungen die folgende JSON-Nutzlast und das folgende Schema. Dieses Schema ähnelt dem Schema metrikbasierter Warnungen.
+Der POST-Vorgang enthält für alle aktivitätsprotokollbasierten Warnungen die folgende JSON-Nutzlast und das folgende Schema. Dieses Schema ähnelt dem Schema für metrikbasierte Warnungen.
 
 ```json
 {
@@ -102,38 +104,38 @@ Der POST-Vorgang enthält für alle aktivitätsprotokollbasierten Warnungen die 
 }
 ```
 
-| Elementname | BESCHREIBUNG |
+| Elementname | Beschreibung |
 | --- | --- |
-| status |Wird für Metrikwarnungen verwendet. Muss für Aktivitätsprotokollwarnungen immer auf „activated“ festgelegt werden. |
+| status |Wird für Metrikwarnungen verwendet. Muss für Aktivitätsprotokollwarnungen immer auf „Aktiviert“ festgelegt werden.|
 | context |Der Kontext des Ereignisses. |
-| activityLog | Die Protokolleigenschaften des Ereignisses|
-| authorization |Die RBAC-Eigenschaften des Ereignisses. Hierzu zählen üblicherweise „action“, „role“ und „scope“. |
-| action | Von der Warnung erfasste Aktion |
-| scope | Bereich der Warnung (d.h. Ressource)|
-| channels | Vorgang |
-| claims | Eine Auflistung von Informationen im Zusammenhang mit den Ansprüchen |
-| caller |GUID oder Benutzername des Benutzers, der den Vorgang, UPN-Anspruch oder SPN-Anspruch ausgeführt hat (sofern verfügbar) Kann für bestimmte Systemaufrufe NULL sein. |
-| correlationId |Üblicherweise eine GUID in Zeichenfolgenformat. Ereignisse mit „correlationId“ gehören zur gleichen übergeordneten Aktion und besitzen üblicherweise den gleichen correlationId-Wert. |
-| Beschreibung |Die bei der Erstellung der Warnung festgelegte Warnungsbeschreibung. |
+| activityLog | Die Protokolleigenschaften des Ereignisses.|
+| authorization |Die Eigenschaften der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) des Ereignisses. Zu diesen Eigenschaften zählen üblicherweise **action**, **role** und **scope**. |
+| action | Die von der Warnung erfasste Aktion. |
+| scope | Der Bereich der Warnung (also die Ressource).|
+| channels | Der Vorgang. |
+| claims | Eine Auflistung von Informationen im Zusammenhang mit den Ansprüchen. |
+| caller |Die GUID oder der Benutzername des Benutzers, der den Vorgang, UPN-Anspruch oder SPN-Anspruch ausgeführt hat (sofern verfügbar). Kann für bestimmte Systemaufrufe NULL sein. |
+| correlationId |Üblicherweise eine GUID in Zeichenfolgenformat. Ereignisse mit **correlationId** gehören zur gleichen übergeordneten Aktion. Sie besitzen üblicherweise den gleichen **correlationId**-Wert. |
+| Beschreibung |Die Warnungsbeschreibung, die beim Erstellen der Warnung festgelegt wurde. |
 | eventSource |Der Name des Azure-Diensts oder der Infrastruktur, der bzw. die das Ereignis generiert hat. |
-| eventTimestamp |Zeitpunkt, zu dem das Ereignis aufgetreten ist |
-| eventDataId |Eindeutiger Bezeichner für das Ereignis. |
-| level |Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“, „Information“ und „Ausführlich“ |
-| operationName |Name des Vorgangs. |
-| operationId |Üblicherweise eine gemeinsame GUID für alle Ereignisse des gleichen Vorgangs. |
-| Ressourcen-ID |Ressourcen-ID der betroffenen Ressource. |
+| eventTimestamp |Die Zeit, zu der das Ereignis aufgetreten ist. |
+| eventDataId |Der eindeutige Bezeichner des Ereignisses. |
+| level |Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“, „Information“ oder „Ausführlich“. |
+| operationName |Der Name des Vorgangs. |
+| operationId |In der Regel eine gemeinsame GUID der Ereignisse. Die GUID entspricht in der Regel einem einzelnen Vorgang. |
+| Ressourcen-ID |Die Ressourcen-ID der betroffenen Ressource. |
 | resourceGroupName |Der Name der Ressourcengruppe für die betroffene Ressource. |
 | resourceProviderName |Der Ressourcenanbieter der betroffenen Ressource. |
-| status |Eine Zeichenfolge. Der Status des Vorgangs. Gängige Werte: „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“, „Resolved“. |
-| subStatus |Enthält üblicherweise den HTTP-Statuscode des zugehörigen REST-Aufrufs. Es können auch weitere Zeichenfolgen enthalten sein, die einen Unterstatus beschreiben. Gängige subStatus-Werte: „OK“ (HTTP-Statuscode: 200), „Erstellt“ (HTTP-Statuscode: 201), „Akzeptiert“ (HTTP-Statuscode: 202), „Kein Inhalt“ (HTTP-Statuscode: 204), „Ungültige Anforderung“ (HTTP-Statuscode: 400), „Nicht gefunden“ (HTTP-Statuscode: 404), „Konflikt“ (HTTP-Statuscode: 409), „Interner Serverfehler“ (HTTP-Statuscode: 500), „Dienst nicht verfügbar“ (HTTP-Statuscode: 503), „Gatewaytimeout“ (HTTP-Statuscode: 504) |
+| status |Ein Zeichenfolgenwert, der den Status des Vorgangs angibt. Gängige Werte: „Gestartet“, „In Bearbeitung“, „Erfolgreich“, „Fehler“, „Aktiv“ und „Aufgelöst“. |
+| subStatus |Enthält üblicherweise den HTTP-Statuscode des zugehörigen REST-Aufrufs. Es können auch weitere Zeichenfolgen enthalten sein, die einen Unterstatus beschreiben. Gängige subStatus-Werte: „OK“ (HTTP-Statuscode: 200), „Erstellt“ (HTTP-Statuscode: 201), „Akzeptiert“ (HTTP-Statuscode: 202), „Kein Inhalt“ (HTTP-Statuscode: 204), „Ungültige Anforderung“ (HTTP-Statuscode: 400), „Nicht gefunden“ (HTTP-Statuscode: 404), „Konflikt“ (HTTP-Statuscode: 409), „Interner Serverfehler“ (HTTP-Statuscode: 500), „Dienst nicht verfügbar“ (HTTP-Statuscode: 503) und „Gatewaytimeout“ (HTTP-Statuscode: 504). |
 | subscriptionId |Die Azure-Abonnement-ID. |
 | submissionTimestamp |Die Zeit, zu der das Ereignis durch den Azure-Dienst generiert wurde, der die Anforderung verarbeitet hat. |
 | resourceType | Der Ressourcentyp, der das Ereignis generiert hat|
-| Eigenschaften |Eine Gruppe von `<Key, Value>`-Paaren (`Dictionary<String, String>`) mit Details zum Ereignis. |
+| Eigenschaften |Ein Satz von Schlüssel-Wert-Paaren mit Details zum Ereignis. Beispiel: `Dictionary<String, String>`. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zum Aktivitätsprotokoll](monitoring-overview-activity-logs.md)
-* [Ausführen von Azure Automation-Skripts (Runbooks) für Azure-Warnungen](http://go.microsoft.com/fwlink/?LinkId=627081)
-* [Senden einer SMS über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
-* [Senden einer Slack-Nachricht auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
-* [Senden einer Nachricht an eine Azure-Warteschlange auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
+* Informieren Sie sich ausführlicher über das [Aktivitätsprotokoll](monitoring-overview-activity-logs.md).
+* Erfahren Sie, wie Sie [Azure Automation-Skripts (Runbooks) für Azure-Warnungen ausführen](http://go.microsoft.com/fwlink/?LinkId=627081).
+* Informieren Sie sich über das [Senden einer SMS-Nachricht über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
+* Informieren Sie sich über das [Senden einer Slack-Nachricht auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
+* Informieren Sie sich über das [Senden einer Nachricht an eine Azure-Warteschlange auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.

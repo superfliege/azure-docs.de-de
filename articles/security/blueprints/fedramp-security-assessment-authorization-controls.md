@@ -1,6 +1,6 @@
 ---
-title: 'FedRAMP Azure Blueprint Automation: Sicherheitsbewertung und -autorisierung'
-description: "Webanwendungen für FedRAMP: Sicherheitsbewertung und -autorisierung"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – Sicherheitsbewertung und -autorisierung"
+description: "Automatisierung von Webanwendungen für FedRAMP – Sicherheitsbewertung und -autorisierung"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 24c3e53d12f1479ba2d6b17bf28ebb7e5912206e
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: d1c9846589adaef0baeeaf16077c8e74bef1cd9f
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="security-assessment-and-authorization-ca"></a>Sicherheitsbewertung und -autorisierung (CA)
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Azure Application Gateway und Netzwerksicherheitsgruppen werden bereitgestellt, um die externe Konnektivität auf Ressourcen zu beschränken, die durch dieses Azure Blueprint bereitgestellt werden. Auf Netzwerksicherheitsgruppen angewendete Regelsätze werden mit einem Schema konfiguriert, das den Zugriff standardmäßig verweigert. |
+| **Kunde** | Azure Application Gateway und Netzwerksicherheitsgruppen werden bereitgestellt, um die externe Konnektivität auf Ressourcen zu beschränken, die durch diesen Blueprint bereitgestellt werden. Auf Netzwerksicherheitsgruppen angewendete Regelsätze werden mit einem Schema konfiguriert, das den Zugriff standardmäßig verweigert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 

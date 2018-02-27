@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation – Identifikation und Authentifizierung"
-description: "Webanwendungen für FedRAMP – Identifikation und Authentifizierung"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – Identifizierung und Authentifizierung"
+description: "Automatisierung von Webanwendungen für FedRAMP – Identifizierung und Authentifizierung"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 5ceac04f3f5c58ac5810dda6c99b40ebc8ad736f
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 21b5c453716f99be26c8dd6400bb3489477b4956
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="identification-and-authentication-ia"></a>Identifikation und Authentifizierung (IA)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Über diesen Azure Blueprint erstellte Konten weisen eindeutige Bezeichner auf. Integrierte Konten ohne eindeutige Bezeichner werden deaktiviert oder entfernt. |
+| **Kunde** | Durch diesen Blueprint erstellte Konten verfügen über eindeutige Bezeichner. Integrierte Konten ohne eindeutige Bezeichner werden deaktiviert oder entfernt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Auf Ressourcen, die von diesem Azure Blueprint bereitgestellt werden, werden keine freigegebenen oder Gruppenkonten aktiviert. |
+| **Kunde** | Für Ressourcen, die von diesem Blueprint bereitgestellt werden, werden keine gemeinsam genutzten Konten oder Gruppenkonten aktiviert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Zugriff auf die von diesem Azure Blueprint bereitgestellten Ressourcen ist über die integrierte Kerberos-Funktionalität von Azure Active Directory, Active Directory und dem Windows-Betriebssystem vor Replay-Angriffen geschützt. Bei der Kerberos-Authentifizierung enthält der vom Client gesendete Authentifikator zusätzliche Daten, z.B. eine verschlüsselte IP-Adressenliste, die Clientzeitstempel und die Ticketlebensdauer. Wenn ein Paket erneut verwendet wird, erfolgt eine Überprüfung des Zeitstempels. Ist der Zeitstempel älter als oder genauso alt wie der vorherige Authentifikator, wird das Paket zurückgewiesen. |
+| **Kunde** | Der Zugriff auf die durch diesen Blueprint bereitgestellten Ressourcen ist durch die integrierte Kerberos-Funktion von Azure Active Directory, Active Directory und dem Windows-Betriebssystem vor Replay-Angriffen geschützt. Bei der Kerberos-Authentifizierung enthält der vom Client gesendete Authentifikator zusätzliche Daten, z.B. eine verschlüsselte IP-Adressenliste, die Clientzeitstempel und die Ticketlebensdauer. Wenn ein Paket erneut verwendet wird, erfolgt eine Überprüfung des Zeitstempels. Ist der Zeitstempel älter als oder genauso alt wie der vorherige Authentifikator, wird das Paket zurückgewiesen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Zugriff auf die von diesem Azure Blueprint bereitgestellten Ressourcen ist über die integrierte Kerberos-Funktionalität von Azure Active Directory, Active Directory und dem Windows-Betriebssystem vor Replay-Angriffen geschützt. Bei der Kerberos-Authentifizierung enthält der vom Client gesendete Authentifikator zusätzliche Daten, z.B. eine verschlüsselte IP-Adressenliste, die Clientzeitstempel und die Ticketlebensdauer. Wenn ein Paket erneut verwendet wird, erfolgt eine Überprüfung des Zeitstempels. Ist der Zeitstempel älter als oder genauso alt wie der vorherige Authentifikator, wird das Paket zurückgewiesen. |
+| **Kunde** | Der Zugriff auf die durch diesen Blueprint bereitgestellten Ressourcen ist durch die integrierte Kerberos-Funktion von Azure Active Directory, Active Directory und dem Windows-Betriebssystem vor Replay-Angriffen geschützt. Bei der Kerberos-Authentifizierung enthält der vom Client gesendete Authentifikator zusätzliche Daten, z.B. eine verschlüsselte IP-Adressenliste, die Clientzeitstempel und die Ticketlebensdauer. Wenn ein Paket erneut verwendet wird, erfolgt eine Überprüfung des Zeitstempels. Ist der Zeitstempel älter als oder genauso alt wie der vorherige Authentifikator, wird das Paket zurückgewiesen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Über diesen Azure Blueprint erfolgt während der Bereitstellung eine Aufforderung zur Eingabe kundenspezifischer Bezeichner für individuelle Konten.  |
+| **Kunde** | Dieser Blueprint fordert während der Bereitstellung zur Eingabe kundenspezifischer Bezeichner für individuelle Konten auf.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint implementierte einen geplanten Task für Active Directory, mit dem Konten nach 35 Tagen Inaktivität automatisch deaktiviert werden. |
+| **Kunde** | Dieser Blueprint implementiert eine geplante Aufgabe für Active Directory, sodass Konten nach 35 Tagen Inaktivität automatisch deaktiviert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der gesamte anfängliche Authentifikatorinhalt für Konten, die über diesen Azure Blueprint erstellt werden, erfüllt die in IA-5 (1) dargelegten Anforderungen, die bei Angabe durch den Kunden während der Bereitstellung überprüft werden.  |
+| **Kunde** | Der gesamte anfängliche Authentifikatorinhalt für Konten, die durch diesen Blueprint erstellt werden, erfüllt die in IA-5 (1) dargelegten Anforderungen, die bei Angabe durch den Kunden während der Bereitstellung überprüft werden.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -315,7 +315,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Von diesem Azure Blueprint verwendete Authentifikatoren erfüllen die Anforderungen an die Stärke gemäß FedRAMP. |
+| **Kunde** | Von diesem Blueprint verwendete Authentifikatoren erfüllen die FedRAMP-spezifischen Sicherheitsanforderungen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -343,7 +343,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Bei allen Authentifikatoren für über diesen Azure Blueprint bereitgestellte Komponenten wurden die Standardeinstellungen abgeändert. Authentifikatoren werden während der Bereitstellung dieser Lösung kundenseitig angegeben. |
+| **Kunde** | Bei allen Authentifikatoren für Komponenten dieses Blueprints wurden die Standardeinstellungen geändert. Authentifikatoren werden während der Bereitstellung dieser Lösung kundenseitig angegeben. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Es wird eine Gruppenrichtlinie erstellt und konfiguriert, um Beschränkungen der Kennwortgültigkeitsdauer (60 Tage) zu implementieren. |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Es wird eine Gruppenrichtlinie erstellt und konfiguriert, um Beschränkungen der Kennwortgültigkeitsdauer (60 Tage) zu implementieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -385,7 +385,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint implementiert Key Vault, um Authentifizierungsinhalte vor einer unbefugten Offenlegung und Änderung zu schützen. Die folgenden Authentifikatoren werden in Key Vault gespeichert: das Azure-Kennwort für das bereitgestellte Konto, das VM-Administratorkennwort, das SQL Server-Dienstkontokennwort. |
+| **Kunde** | Dieser Blueprint implementiert Key Vault, um Authentifikatorinhalte vor unbefugter Offenlegung und Änderung zu schützen. In Key Vault werden folgende Authentifikatoren gespeichert: das Azure-Kennwort für das bereitgestellte Konto, das Administratorkennwort für den virtuellen Computer und das Kennwort für das SQL Server-Dienstkonto. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint implementiert Key Vault, um Authentifizierungsinhalte vor einer unbefugten Offenlegung und Änderung zu schützen. Die folgenden Authentifikatoren werden in Key Vault gespeichert: das Azure-Kennwort für das bereitgestellte Konto, das VM-Administratorkennwort, das SQL Server-Dienstkontokennwort. Key Vault verschlüsselt Schlüssel und Geheimnisse (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel und Kennwörter) durch das Verwenden von Schlüsseln, die durch Hardwaresicherheitsmodule (HSMs) geschützt werden. |
+| **Kunde** | Dieser Blueprint implementiert Key Vault, um Authentifikatorinhalte vor unbefugter Offenlegung und Änderung zu schützen. In Key Vault werden folgende Authentifikatoren gespeichert: das Azure-Kennwort für das bereitgestellte Konto, das Administratorkennwort für den virtuellen Computer und das Kennwort für das SQL Server-Dienstkonto. Key Vault verschlüsselt Schlüssel und Geheimnisse (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel und Kennwörter) durch das Verwenden von Schlüsseln, die durch Hardwaresicherheitsmodule (HSMs) geschützt werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Auf Ressourcen, die von diesem Azure Blueprint bereitgestellt werden, werden keine freigegebenen oder Gruppenkonten aktiviert. |
+| **Kunde** | Für Ressourcen, die von diesem Blueprint bereitgestellt werden, werden keine gemeinsam genutzten Konten oder Gruppenkonten aktiviert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -427,7 +427,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Es wird eine Gruppenrichtlinie erstellt und konfiguriert, um die Anforderungen an die Kennwortkomplexität für lokale VM-Konten und AD-Konten durchzusetzen.  |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Es wird eine Gruppenrichtlinie erstellt und konfiguriert, um die Anforderungen an die Kennwortkomplexität für lokale VM-Konten und AD-Konten durchzusetzen.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -469,7 +469,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Es wird eine Gruppenrichtlinie erstellt und konfiguriert, um Beschränkungen für Kennwörter durchzusetzen, die den Mindestwert (1 Tag) und den Höchstwert (60 Tage) für die Gültigkeitsdauer von lokalen Konten und AD-Konten erzwingen. |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Es wird eine Gruppenrichtlinie erstellt und konfiguriert, um Beschränkungen für Kennwörter durchzusetzen, die den Mindestwert (1 Tag) und den Höchstwert (60 Tage) für die Gültigkeitsdauer von lokalen Konten und AD-Konten erzwingen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Es wird eine Gruppenrichtlinie eingerichtet und konfiguriert, um Einschränkungen zur Wiederverwendung (24 Kennwörter) für lokale Konten und AD-Konten zu erzwingen. |
+| **Kunde** | Dieser Blueprint stellt einen Domänencontroller bereit, mit dem alle bereitgestellten virtuellen Computer verknüpft sind. Es wird eine Gruppenrichtlinie eingerichtet und konfiguriert, um Einschränkungen zur Wiederverwendung (24 Kennwörter) für lokale Konten und AD-Konten zu erzwingen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -581,7 +581,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Zu den mit diesem Azure Blueprint bereitgestellten Benutzerkonten gehören AD-Konten und lokale Benutzerkonten. Beide bieten Mechanismen, um die Einhaltung festgelegter Kennwortanforderungen zum Erstellen eines anfänglichen Kennworts und bei Kennwortänderungen zu erzwingen. Azure Active Directory dient als automatisiertes Tool zur Ermittlung, ob Kennwortauthentifikatoren sicher genug sind, um die in IA-5 (1) dargelegten Anforderungen in Bezug auf Kennwortlänge, Komplexität, Rotation und Gültigkeitsdauer zu erfüllen. Azure Active Directory stellt sicher, dass die Kennwortauthentifikatorstärke bei der Erstellung diese Standards erfüllt. Kundenseitig angegebene Kennwörter zur Bereitstellung dieser Lösung werden überprüft, damit sie die Anforderungen an die Kennwortsicherheit erfüllen. |
+| **Kunde** | Zu den mit diesem Blueprint bereitgestellten Benutzerkonten gehören AD-Konten und lokale Benutzerkonten. Beide bieten Mechanismen, um die Einhaltung festgelegter Kennwortanforderungen zum Erstellen eines anfänglichen Kennworts und bei Kennwortänderungen zu erzwingen. Azure Active Directory dient als automatisiertes Tool zur Ermittlung, ob Kennwortauthentifikatoren sicher genug sind, um die in IA-5 (1) dargelegten Anforderungen in Bezug auf Kennwortlänge, Komplexität, Rotation und Gültigkeitsdauer zu erfüllen. Azure Active Directory stellt sicher, dass die Kennwortauthentifikatorstärke bei der Erstellung diese Standards erfüllt. Kundenseitig angegebene Kennwörter zur Bereitstellung dieser Lösung werden überprüft, damit sie die Anforderungen an die Kennwortsicherheit erfüllen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -609,7 +609,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Es werden keine unverschlüsselten statischen Authentifikatoren in Anwendungen, Zugriffsskripts oder Funktionstasten eingebettet, die mit diesem Azure Blueprint bereitgestellt werden. Skripts oder Anwendungen, die einen Authentifikator verwendet, rufen vor jeder Verwendung einen Azure Key Vault-Container auf. Der Zugriff auf Azure Key Vault-Container wird überwacht. Damit können Verstöße gegen dieses Verbot erkannt werden, wenn für den Zugriff auf ein System ein Dienstkonto ohne einen zugehörigen Aufruf an den Azure Key Vault-Container verwendet wird. |
+| **Kunde** | Es werden keine unverschlüsselten statischen Authentifikatoren in Anwendungen, Zugriffsskripts oder Funktionsschlüssel eingebettet, die durch diesen Blueprint bereitgestellt werden. Skripts oder Anwendungen, die einen Authentifikator verwendet, rufen vor jeder Verwendung einen Azure Key Vault-Container auf. Der Zugriff auf Azure Key Vault-Container wird überwacht. Damit können Verstöße gegen dieses Verbot erkannt werden, wenn für den Zugriff auf ein System ein Dienstkonto ohne einen zugehörigen Aufruf an den Azure Key Vault-Container verwendet wird. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -651,7 +651,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die mit diesem Azure Blueprint bereitgestellten Ressourcen sind so konfiguriert, dass sie keine Verwendung von zwischengespeicherten Authentifikatoren erlauben. Für die Authentifizierung bei bereitgestellten virtuellen Computern ist es erforderlich, dass zum Zeitpunkt der Authentifizierung ein Authentifikator eingegeben wird. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten Ressourcen sind so konfiguriert, dass keine zwischengespeicherten Authentifikatoren verwendet werden können. Für die Authentifizierung bei bereitgestellten virtuellen Computern ist es erforderlich, dass zum Zeitpunkt der Authentifizierung ein Authentifikator eingegeben wird. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -665,7 +665,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Zugriff auf Ressourcen, die mit diesem Azure Blueprint bereitgestellt werden, erfolgt über Remotedesktop und basiert auf der Windows-Authentifizierung. Das Standardverhalten von Windows-Authentifizierungssitzungen maskiert Kennwörter bei der Eingabe während einer Authentifizierungssitzung.  |
+| **Kunde** | Der Zugriff auf Ressourcen, die durch diesen Blueprint bereitgestellt werden, erfolgt über Remotedesktop und basiert auf der Windows-Authentifizierung. Das Standardverhalten von Windows-Authentifizierungssitzungen maskiert Kennwörter bei der Eingabe während einer Authentifizierungssitzung.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -679,7 +679,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Windows-Authentifizierung, Remotedesktop und BitLocker werden von diesem Azure Blueprint verwendet. Diese Komponenten können für die Nutzung von gemäß FIPS 140 überprüften Kryptografiemodulen konfiguriert werden. |
+| **Kunde** | Von diesem Blueprint werden Windows-Authentifizierung, Remotedesktopdienste und BitLocker verwendet. Diese Komponenten können für die Nutzung von gemäß FIPS 140 überprüften Kryptografiemodulen konfiguriert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 

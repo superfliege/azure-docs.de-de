@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation – Integrität von System und Informationen"
-description: "Webanwendungen für FedRAMP – Integrität von System und Informationen"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – System- und Informationsintegrität"
+description: "Automatisierung von Webanwendungen für FedRAMP – System- und Informationsintegrität"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1dc6805a5a1f610f06ce58bd4bd644346436294e
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 2d744032c2a35fbbedf34397861c3bb03aa39939
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="system-and-information-integrity-si"></a>Integrität von System und Informationen (SI)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die OMS Automation & Control-Lösung bereit, um den Status von Updates für die in dieser Architektur bereitgestellten virtuellen Windows-Computer nachzuverfolgen. Auf dem OMS-Dashboard zeigt die Kachel „Updateverwaltung“ den Fehlerbehebungsstatus für alle bereitgestellten Windows-Server. |
+| **Kunde** | Dieser Blueprint stellt die OMS Automation & Control-Lösung bereit, um den Status von Updates für die in dieser Architektur bereitgestellten virtuellen Windows-Computer nachzuverfolgen. Auf dem OMS-Dashboard zeigt die Kachel „Updateverwaltung“ den Fehlerbehebungsstatus für alle bereitgestellten Windows-Server. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Virtuelle Windows-Computer, die von diesem Azure Blueprint bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates vom Windows Update-Dienst erhalten. Diese Lösung stellt auch die OMS Automation & Control-Lösung bereit, mit der Updatebereitstellungen erstellt werden können, um bei Bedarf Patches auf Windows-Servern bereitzustellen. |
+| **Kunde** | Virtuelle Windows-Computer, die durch diesen Blueprint bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates vom Windows Update-Dienst erhalten. Diese Lösung stellt auch die OMS Automation & Control-Lösung bereit, mit der Updatebereitstellungen erstellt werden können, um bei Bedarf Patches auf Windows-Servern bereitzustellen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die OMS Automation & Control-Lösung bereit, um den Status von Updates für die in dieser Architektur bereitgestellten virtuellen Windows-Computer nachzuverfolgen. Auf dem OMS-Dashboard zeigt die Kachel „Updateverwaltung“ den Fehlerbehebungsstatus für alle bereitgestellten Windows-Server. Updatebereitstellungen können erstellt werden, um bei Bedarf Patches auf Windows-Servern bereitzustellen. |
+| **Kunde** | Dieser Blueprint stellt die OMS Automation & Control-Lösung bereit, um den Status von Updates für die in dieser Architektur bereitgestellten virtuellen Windows-Computer nachzuverfolgen. Auf dem OMS-Dashboard zeigt die Kachel „Updateverwaltung“ den Fehlerbehebungsstatus für alle bereitgestellten Windows-Server. Updatebereitstellungen können erstellt werden, um bei Bedarf Patches auf Windows-Servern bereitzustellen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die OMS Automation & Control-Lösung bereit, um den Status von Updates für die in dieser Architektur bereitgestellten virtuellen Windows-Computer nachzuverfolgen. Für jeden verwalteten Windows-Computer wird zweimal pro Tag ein Scanvorgang durchgeführt. Alle 15 Minuten wird die Windows-API aufgerufen, um den letzten Updatezeitpunkt abzufragen und zu ermitteln, ob sich der Status geändert hat. Wenn ja, wird ein Konformitätsscan initiiert. |
+| **Kunde** | Dieser Blueprint stellt die OMS Automation & Control-Lösung bereit, um den Status von Updates für die in dieser Architektur bereitgestellten virtuellen Windows-Computer nachzuverfolgen. Für jeden verwalteten Windows-Computer wird zweimal pro Tag ein Scanvorgang durchgeführt. Alle 15 Minuten wird die Windows-API aufgerufen, um den letzten Updatezeitpunkt abzufragen und zu ermitteln, ob sich der Status geändert hat. Wenn ja, wird ein Konformitätsscan initiiert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. |
+| **Kunde** | Dieser Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Diese Erweiterung ist so konfiguriert, dass das Antischadsoftware-Modul und die Schutzsignaturen automatisch aktualisiert werden, sobald Releases verfügbar sind. |
+| **Kunde** | Dieser Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Diese Erweiterung ist so konfiguriert, dass die Antischadsoftware-Engine und die Schutzsignaturen automatisch aktualisiert werden, sobald Releases verfügbar sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -189,7 +189,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Diese Erweiterung ist so konfiguriert, dass sowohl Echtzeitscans als auch regelmäßige (wöchentliche) Scans durchgeführt, das Antischadsoftware-Modul und die Schutzsignaturen automatisch aktualisiert und automatische Korrekturmaßnahmen durchgeführt werden. |
+| **Kunde** | Dieser Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Diese Erweiterung ist so konfiguriert, dass sowohl Echtzeitüberprüfungen als auch regelmäßige (wöchentliche) Überprüfungen durchgeführt, die Antischadsoftware-Engine und die Schutzsignaturen automatisch aktualisiert und automatische Korrekturmaßnahmen durchgeführt werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Azure OMS stellt zentrale Funktionen zum Überprüfen des aktuellen Status der Antischadsoftware-Lösung bereit. |
+| **Kunde** | Dieser Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Azure OMS stellt zentrale Funktionen zum Überprüfen des aktuellen Status der Antischadsoftware-Lösung bereit. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Diese Erweiterung ist so konfiguriert, dass das Antischadsoftware-Modul und die Schutzsignaturen automatisch aktualisiert werden, sobald Releases verfügbar sind. |
+| **Kunde** | Dieser Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Diese Erweiterung ist so konfiguriert, dass die Antischadsoftware-Engine und die Schutzsignaturen automatisch aktualisiert werden, sobald Releases verfügbar sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Diese Erweiterung ist für die Ausführung einer heuristischen Erkennung konfiguriert. |
+| **Kunde** | Dieser Blueprint stellt über die Microsoft Antischadsoftware-Erweiterung für virtuelle Computer hostbasierten Schutz vor Schadsoftware für alle bereitgestellten virtuellen Windows-Computer bereit. Diese Erweiterung ist für die Ausführung einer heuristischen Erkennung konfiguriert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Log Analytics-Lösung und die Sicherheits- und Überwachungslösung von OMS bereit. Diese Lösung bietet eine umfassende Übersicht über die Sicherheitslage sowie über Angriffe und Anzeichen möglicher Angriffe. Das Sicherheits- und Überwachungsdashboard gewährt High-Level-Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind. |
+| **Kunde** | Dieser Blueprint stellt die Log Analytics-Lösung und die Sicherheits- und Überwachungslösung von OMS bereit. Diese Lösung bietet eine umfassende Übersicht über die Sicherheitslage sowie über Angriffe und Anzeichen möglicher Angriffe. Das Sicherheits- und Überwachungsdashboard gewährt High-Level-Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Sicherheits- und Überwachungslösung von OMS bereit. Die Domäne für Identifizierung und Zugriff stellt ein Dashboard mit einer Übersicht über den Identitätszustand des Informationssystems bereit, einschließlich der Anzahl von nicht erfolgreichen Anmeldeversuchen und der aktuellen Anzahl von angemeldeten Konten. Die in diesem Dashboard verfügbaren Informationen können beim Identifizieren einer potenziell verdächtigen Aktivität helfen. |
+| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung von OMS bereit. Die Domäne für Identifizierung und Zugriff stellt ein Dashboard mit einer Übersicht über den Identitätszustand des Informationssystems bereit, einschließlich der Anzahl von nicht erfolgreichen Anmeldeversuchen und der aktuellen Anzahl von angemeldeten Konten. Die in diesem Dashboard verfügbaren Informationen können beim Identifizieren einer potenziell verdächtigen Aktivität helfen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Log Analytics-Lösung und die Sicherheits- und Überwachungslösung von OMS bereit. Das Sicherheits- und Überwachungsdashboard gewährt High-Level-Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind, und gewährt auch Einblick in Überwachungsdaten der VM-Betriebssysteme. |
+| **Kunde** | Dieser Blueprint stellt die Log Analytics-Lösung und die Sicherheits- und Überwachungslösung von OMS bereit. Das Sicherheits- und Überwachungsdashboard gewährt High-Level-Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind, und gewährt auch Einblick in Überwachungsdaten der VM-Betriebssysteme. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Logische Zugriffskontrollen werden verwendet, um Überwachungsinformationen in diesem Azure Blueprint vor nicht autorisierten Zugriffen, Änderungen und Löschungen zu schützen. Azure Active Directory erzwingt einen genehmigten logischen Zugriff mithilfe von rollenbasierten Gruppenmitgliedschaften. Die Möglichkeit zum Anzeigen von Überwachungsinformationen und Verwenden von Überwachungstools kann auf Benutzer beschränkt werden, die diese Berechtigungen benötigen. |
+| **Kunde** | Logische Zugriffskontrollen werden verwendet, um Überwachungsinformationen in diesem Blueprint vor nicht autorisierten Zugriffen, Änderungen und Löschungen zu schützen. Azure Active Directory erzwingt einen genehmigten logischen Zugriff mithilfe von rollenbasierten Gruppenmitgliedschaften. Die Möglichkeit zum Anzeigen von Überwachungsinformationen und Verwenden von Überwachungstools kann auf Benutzer beschränkt werden, die diese Berechtigungen benötigen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Log Analytics-Lösung und verschiedene OMS-Lösungen bereit, einschließlich der Sicherheits- und Überwachungslösung. Log Analytics bietet eine Analyse von Ereignissen nahezu in Echtzeit über bereitgestellte Ressourcen hinweg. OMS-Lösungen bieten einen umfassenden Überblick über den Sicherheitszustand in allen Lösungsdomänen. OMS gewährt Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind. OMS kann so konfiguriert werden, dass basierend auf definierten Kriterien Warnungen generiert werden. |
+| **Kunde** | Dieser Blueprint stellt die Log Analytics-Lösung und verschiedene OMS-Lösungen bereit (einschließlich der Sicherheits- und Überwachungslösung). Log Analytics bietet eine Analyse von Ereignissen nahezu in Echtzeit über bereitgestellte Ressourcen hinweg. OMS-Lösungen bieten einen umfassenden Überblick über den Sicherheitszustand in allen Lösungsdomänen. OMS gewährt Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind. OMS kann so konfiguriert werden, dass basierend auf definierten Kriterien Warnungen generiert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt verschiedene OMS-Lösungen bereit, einschließlich der Sicherheits- und Überwachungslösung. Log Analytics bietet eine Analyse von Ereignissen nahezu in Echtzeit über bereitgestellte Ressourcen hinweg. OMS-Lösungen bieten einen umfassenden Überblick über den Sicherheitszustand in allen Lösungsdomänen. OMS kann so konfiguriert werden, dass basierend auf definierten Kriterien Warnungen generiert werden. |
+| **Kunde** | Dieser Blueprint stellt verschiedene OMS-Lösungen bereit (einschließlich der Sicherheits- und Überwachungslösung). Log Analytics bietet eine Analyse von Ereignissen nahezu in Echtzeit über bereitgestellte Ressourcen hinweg. OMS-Lösungen bieten einen umfassenden Überblick über den Sicherheitszustand in allen Lösungsdomänen. OMS kann so konfiguriert werden, dass basierend auf definierten Kriterien Warnungen generiert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -441,7 +441,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt die Log Analytics-Lösung und verschiedene OMS-Lösungen bereit, einschließlich der Sicherheits- und Überwachungslösung. OMS gewährt Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind. |
+| **Kunde** | Dieser Blueprint stellt die Log Analytics-Lösung und verschiedene OMS-Lösungen bereit (einschließlich der Sicherheits- und Überwachungslösung). OMS gewährt Einblick in den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten OMS-Lösungen verfügbar sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -511,7 +511,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint erfasst Überwachungsdaten aus bereitgestellten Ressourcen, einschließlich Daten aus hostbasierten Überwachungsfunktionen. Microsoft Monitoring Agent wird auf allen virtuellen Windows-Computern installiert, um Überwachungsdaten zu erfassen, die von Log Analytics und anderen OMS-Lösungen verwendet werden. |
+| **Kunde** | Dieser Blueprint erfasst Überwachungsdaten aus bereitgestellten Ressourcen. Dazu zählen auch Daten aus hostbasierten Überwachungsfunktionen. Microsoft Monitoring Agent wird auf allen virtuellen Windows-Computern installiert, um Überwachungsdaten zu erfassen, die von Log Analytics und anderen OMS-Lösungen verwendet werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -665,7 +665,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows bietet Echtzeitüberprüfung, -schutz und -wiederherstellung der Dateiintegrität von Systemkerndateien, die als Teil von Windows oder im Rahmen von autorisierten Windows-Systemaktualisierungen über die WRP-Funktion (Windows Resource Protection) installiert werden. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows bietet Echtzeitüberprüfung, -schutz und -wiederherstellung der Dateiintegrität von Systemkerndateien, die als Teil von Windows oder im Rahmen von autorisierten Windows-Systemaktualisierungen über die WRP-Funktion (Windows Resource Protection) installiert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -679,7 +679,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows bietet Echtzeitüberprüfung, -schutz und -wiederherstellung der Dateiintegrität von Systemkerndateien, die als Teil von Windows oder im Rahmen von autorisierten Windows-Systemaktualisierungen über die WRP-Funktion (Windows Resource Protection) installiert werden. WRP ermöglicht eine Integritätsüberprüfung in Echtzeit. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows bietet Echtzeitüberprüfung, -schutz und -wiederherstellung der Dateiintegrität von Systemkerndateien, die als Teil von Windows oder im Rahmen von autorisierten Windows-Systemaktualisierungen über die WRP-Funktion (Windows Resource Protection) installiert werden. WRP ermöglicht eine Integritätsüberprüfung in Echtzeit. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -693,7 +693,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows bietet Echtzeitüberprüfung, -schutz und -wiederherstellung der Dateiintegrität von Systemkerndateien, die als Teil von Windows oder im Rahmen von autorisierten Windows-Systemaktualisierungen über die WRP-Funktion (Windows Resource Protection) installiert werden.  |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows bietet Echtzeitüberprüfung, -schutz und -wiederherstellung der Dateiintegrität von Systemkerndateien, die als Teil von Windows oder im Rahmen von autorisierten Windows-Systemaktualisierungen über die WRP-Funktion (Windows Resource Protection) installiert werden.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -749,7 +749,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Im Rahmen dieses Azure Blueprint werden keine Mailserver bereitgestellt. |
+| **Kunde** | Im Rahmen dieses Blueprints werden keine Mailserver bereitgestellt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -763,7 +763,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Im Rahmen dieses Azure Blueprint werden keine Mailserver bereitgestellt. |
+| **Kunde** | Im Rahmen dieses Blueprints werden keine Mailserver bereitgestellt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -777,7 +777,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Im Rahmen dieses Azure Blueprint werden keine Mailserver bereitgestellt. |
+| **Kunde** | Im Rahmen dieses Blueprints werden keine Mailserver bereitgestellt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -791,7 +791,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Im Rahmen dieses Azure Blueprint werden keine Mailserver bereitgestellt. |
+| **Kunde** | Im Rahmen dieses Blueprints werden keine Mailserver bereitgestellt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -819,7 +819,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die von diesem Azure Blueprint bereitgestellten Ressourcen nutzen kommerzielle Betriebssysteme und Softwareanwendungen. Diese Software verwendet Best Practices der Branche, um sicherzustellen, dass in Fehlermeldungen keine vertraulichen Daten offengelegt werden. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten Ressourcen nutzen kommerzielle Betriebssysteme und Softwareanwendungen. Diese Software verwendet Best Practices der Branche, um sicherzustellen, dass in Fehlermeldungen keine vertraulichen Daten offengelegt werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -833,7 +833,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die von diesem Azure Blueprint bereitgestellten Ressourcen nutzen kommerzielle Betriebssysteme und Softwareanwendungen. Diese Software verwendet Best Practices der Branche, um Fehlermeldungen bereitzustellen, die für den Kontext des Benutzers geeignet sind, der die Meldung erhält. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten Ressourcen nutzen kommerzielle Betriebssysteme und Softwareanwendungen. Diese Software verwendet Best Practices der Branche, um Fehlermeldungen bereitzustellen, die für den Kontext des Benutzers geeignet sind, der die Meldung erhält. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -861,5 +861,5 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. In Windows sind Schutzmechanismen implementiert, um die Codeausführung in eingeschränkten Arbeitsspeicherbereichen zu verhindern: No Execute (NX), zufällige Anordnung des Adressraumlayouts (Address Space Layout Randomization, ASLR) und Datenausführungsverhinderung (Data Execution Prevention, DEP). |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. In Windows sind Schutzmechanismen implementiert, um die Codeausführung in eingeschränkten Arbeitsspeicherbereichen zu verhindern: No Execute (NX), zufällige Anordnung des Adressraumlayouts (Address Space Layout Randomization, ASLR) und Datenausführungsverhinderung (Data Execution Prevention, DEP). |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |

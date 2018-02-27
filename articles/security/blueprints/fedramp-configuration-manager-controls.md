@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation – Konfigurationsverwaltung"
-description: "Webanwendungen für FedRAMP – Konfigurationsverwaltung"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – Konfigurationsverwaltung"
+description: "Automatisierung von Webanwendungen für FedRAMP – Konfigurationsverwaltung"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: e93aa430b7150f07210f5d1f37e2027d95334a59
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 6566783769d37ee829df3894fdb5673b4edafd2c
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="configuration-management-cm"></a>Konfigurationsverwaltung (Configuration Management, CM)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die Azure Resource Manager-Vorlagen und begleitenden Ressourcen, aus denen dieser Azure Blueprint besteht, stellen die Baseline einer „Konfiguration als Code“ für die bereitgestellte Architektur dar. Die Lösung wird über GitHub zur Verfügung gestellt, das auch für die Konfigurationssteuerung verwendet werden kann. Im Leistungsumfang der Lösung ist eine DSC-Baseline (Desired State Configuration) für jeden bereitgestellten virtuellen Computer inbegriffen. |
+| **Kunde** | Die Azure Resource Manager-Vorlagen und begleitenden Ressourcen, aus denen dieser Blueprint besteht, stellen die Baseline einer „Konfiguration als Code“ für die bereitgestellte Architektur dar. Die Lösung wird über GitHub zur Verfügung gestellt, das auch für die Konfigurationssteuerung verwendet werden kann. Im Leistungsumfang der Lösung ist eine DSC-Baseline (Desired State Configuration) für jeden bereitgestellten virtuellen Computer inbegriffen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die Azure Resource Manager-Vorlagen und begleitenden Ressourcen, aus denen dieser Azure Blueprint besteht, stellen die Baseline einer „Konfiguration als Code“ für die bereitgestellte Architektur dar. Die Lösung wird über GitHub zur Verfügung gestellt, das auch für die Konfigurationssteuerung verwendet werden kann. Im Azure-Portal steht ein Automatisierungsskript für alle bereitgestellten Ressourcen zur Verfügung, das eine stets aktuelle Darstellung dieser Ressourcen bietet.  |
+| **Kunde** | Die Azure Resource Manager-Vorlagen und begleitenden Ressourcen, aus denen dieser Blueprint besteht, stellen die Baseline einer „Konfiguration als Code“ für die bereitgestellte Architektur dar. Die Lösung wird über GitHub zur Verfügung gestellt, das auch für die Konfigurationssteuerung verwendet werden kann. Im Azure-Portal steht ein Automatisierungsskript für alle bereitgestellten Ressourcen zur Verfügung, das eine stets aktuelle Darstellung dieser Ressourcen bietet.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -455,7 +455,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die von diesem Azure Blueprint bereitgestellten virtuellen Computer implementieren Windows AppLocker, um anzugeben, welche Benutzer bestimmte Anwendungen installieren und/oder ausführen können. Darüber hinaus sind alle Windows-Betriebssystemupdates digital signiert. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer implementieren Windows AppLocker, um anzugeben, welche Benutzer bestimmte Anwendungen installieren und/oder ausführen können. Darüber hinaus sind alle Windows-Betriebssystemupdates digital signiert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -497,7 +497,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint umfasst eine DSC-Baseline (Desired State Configuration) für jeden bereitgestellten virtuellen Computer. Diese deklarativen PowerShell-Skripts definieren und konfigurieren die Ressourcen, auf die diese angewendet werden. Die DSC-Baseline für die von dieser Lösung bereitgestellten Ressourcen kann vom Kunden erweitert werden, um unternehmenskritische Anforderungen zu erfüllen. |
+| **Kunde** | Dieser Blueprint enthält eine DSC-Baseline (Desired State Configuration) für jeden bereitgestellten virtuellen Computer. Diese deklarativen PowerShell-Skripts definieren und konfigurieren die Ressourcen, auf die diese angewendet werden. Die DSC-Baseline für die von dieser Lösung bereitgestellten Ressourcen kann vom Kunden erweitert werden, um unternehmenskritische Anforderungen zu erfüllen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -511,7 +511,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint umfasst eine DSC-Baseline (Desired State Configuration) für jeden bereitgestellten virtuellen Computer. Die Baselines werden bei der Bereitstellung automatisch durch benutzerdefinierte Skript-VM-Erweiterungen auf virtuelle Computer angewendet. |
+| **Kunde** | Dieser Blueprint enthält eine DSC-Baseline (Desired State Configuration) für jeden bereitgestellten virtuellen Computer. Die Baselines werden bei der Bereitstellung automatisch durch benutzerdefinierte Skript-VM-Erweiterungen auf virtuelle Computer angewendet. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -539,7 +539,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt Automation DSC bereit. Automation DSC stimmt Computerkonfigurationen mit einer bestimmten von der Organisation definierten Konfiguration ab. |
+| **Kunde** | Dieser Blueprint stellt Automation DSC bereit. Automation DSC stimmt Computerkonfigurationen mit einer bestimmten von der Organisation definierten Konfiguration ab. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -553,7 +553,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt Azure Automation DSC bereit. Automation DSC stimmt Computerkonfigurationen mit einer bestimmten von der Organisation definierten Konfiguration ab und überwacht außerdem fortlaufend Änderungen. |
+| **Kunde** | Dieser Blueprint stellt Azure Automation DSC bereit. Automation DSC stimmt Computerkonfigurationen mit einer bestimmten von der Organisation definierten Konfiguration ab und überwacht außerdem fortlaufend Änderungen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -567,7 +567,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt Azure Automation DSC bereit. Als Teil der Operations Management Suite (OMS) von Azure kann Automation DSC so konfiguriert werden, dass bei Feststellung von Fehlkonfigurationen eine Benachrichtigung generiert wird oder diese behoben werden. |
+| **Kunde** | Dieser Blueprint stellt Azure Automation DSC bereit. Als Teil der Operations Management Suite (OMS) von Azure kann Automation DSC so konfiguriert werden, dass bei Feststellung von Fehlkonfigurationen eine Benachrichtigung generiert wird oder diese behoben werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -581,7 +581,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die von diesem Azure Blueprint bereitgestellten Ressourcen sind so konfiguriert, dass die Mindestfunktionalität für den jeweiligen vorgesehenen Einsatzzweck bereitgestellt wird. Im Leistungsumfang eines jeden bereitgestellten virtuellen Computers ist eine DSC-Baseline (Desired State Configuration) inbegriffen. Diese deklarativen PowerShell-Skripts definieren und konfigurieren die Ressourcen, auf die diese angewendet werden. Die DSC-Baseline für die von dieser Lösung bereitgestellten Ressourcen kann vom Kunden erweitert werden, um die Funktionalität weiter zu beschränken und so unternehmenskritische Anforderungen erfüllen zu können. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten Ressourcen sind so konfiguriert, dass die Mindestfunktionen für den jeweiligen vorgesehenen Einsatzzweck bereitgestellt werden. Im Leistungsumfang eines jeden bereitgestellten virtuellen Computers ist eine DSC-Baseline (Desired State Configuration) inbegriffen. Diese deklarativen PowerShell-Skripts definieren und konfigurieren die Ressourcen, auf die diese angewendet werden. Die DSC-Baseline für die von dieser Lösung bereitgestellten Ressourcen kann vom Kunden erweitert werden, um die Funktionalität weiter zu beschränken und so unternehmenskritische Anforderungen erfüllen zu können. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -595,7 +595,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt Azure Application Gateway und Netzwerksicherheitsgruppen bereit, mit denen die Nutzung nur auf die erforderlichen Ports und Protokolle beschränkt werden kann. Kunden können für Application Gateway, Netzwerksicherheitsgruppen und DSC-Baselines für virtuelle Computer weitere Konfigurationen vornehmen, um die Verwendung von Funktionen, Ports, Protokollen und Diensten ausschließlich auf die Bereitstellung der vorgesehenen Funktionalität zu beschränken. |
+| **Kunde** | Dieser Blueprint stellt Azure Application Gateway und Netzwerksicherheitsgruppen bereit, mit denen die Nutzung auf die erforderlichen Ports und Protokolle beschränkt werden kann. Kunden können für Application Gateway, Netzwerksicherheitsgruppen und DSC-Baselines für virtuelle Computer weitere Konfigurationen vornehmen, um die Verwendung von Funktionen, Ports, Protokollen und Diensten ausschließlich auf die Bereitstellung der vorgesehenen Funktionalität zu beschränken. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -693,7 +693,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Azure Resource Manager bietet eine stets aktuelle Liste der bereitgestellten Ressourcen und kann zur Kennzeichnung und Gruppierung von Ressourcen für die Bestandsverwaltung angepasst werden. Die von dieser Lösung bereitgestellten Ressourcen erhalten ein bestimmtes Ressourcentag, das mit der Systemgrenze verknüpft werden kann. |
+| **Kunde** | Dieser Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Azure Resource Manager bietet eine stets aktuelle Liste der bereitgestellten Ressourcen und kann zur Kennzeichnung und Gruppierung von Ressourcen für die Bestandsverwaltung angepasst werden. Die von dieser Lösung bereitgestellten Ressourcen erhalten ein bestimmtes Ressourcentag, das mit der Systemgrenze verknüpft werden kann. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -707,7 +707,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Azure Resource Manager bietet eine stets aktuelle Liste der bereitgestellten Ressourcen, die im Azure-Portal zur Einsicht zur Verfügung stehen. |
+| **Kunde** | Dieser Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Azure Resource Manager bietet eine stets aktuelle Liste der bereitgestellten Ressourcen, die im Azure-Portal zur Einsicht zur Verfügung stehen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -721,7 +721,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Auf dem Ressourcenblatt im Azure-Portal werden alle bereitgestellten Ressourcen aufgelistet, sodass beim Bereitstellen und Entfernen von Ressourcen stets der aktuelle Bestand dargestellt wird. |
+| **Kunde** | Dieser Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Auf dem Ressourcenblatt im Azure-Portal werden alle bereitgestellten Ressourcen aufgelistet, sodass beim Bereitstellen und Entfernen von Ressourcen stets der aktuelle Bestand dargestellt wird. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -735,7 +735,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Auf dem Ressourcenblatt im Azure-Portal werden alle bereitgestellten Ressourcen aufgelistet, sodass beim Bereitstellen und Entfernen von Ressourcen stets der aktuelle Bestand dargestellt wird. |
+| **Kunde** | Dieser Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Auf dem Ressourcenblatt im Azure-Portal werden alle bereitgestellten Ressourcen aufgelistet, sodass beim Bereitstellen und Entfernen von Ressourcen stets der aktuelle Bestand dargestellt wird. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -777,7 +777,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Bei Azure-Ressourcentags handelt es sich um Schlüssel-Wert-Paare, die zur Kategorisierung von Ressourcen für Verantwortlichkeits- und/oder Verwaltungszwecke verwendet werden können. |
+| **Kunde** | Dieser Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Bei Azure-Ressourcentags handelt es sich um Schlüssel-Wert-Paare, die zur Kategorisierung von Ressourcen für Verantwortlichkeits- und/oder Verwaltungszwecke verwendet werden können. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -791,7 +791,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Azure Resource Manager bietet eine stets aktuelle Liste der bereitgestellten Ressourcen. Die von dieser Lösung bereitgestellten Ressourcen erhalten ein bestimmtes Ressourcentag, das mit der Systemgrenze verknüpft werden kann. |
+| **Kunde** | Dieser Blueprint stellt alle Ressourcen in einer Azure Resource Manager-Ressourcengruppe bereit. Azure Resource Manager bietet eine stets aktuelle Liste der bereitgestellten Ressourcen. Die von dieser Lösung bereitgestellten Ressourcen erhalten ein bestimmtes Ressourcentag, das mit der Systemgrenze verknüpft werden kann. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -861,7 +861,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Im Leistungsumfang sind Windows- und SQL Server-Lizenzen für die von diesem Azure Blueprint bereitgestellten Ressourcen inbegriffen. Dies ist ein integriertes Feature von Azure. Organisationen mit bestehenden Softwarelizenzbedingungen können die Bereitstellung alternativer Lizenzmodelle in Erwägung ziehen. |
+| **Kunde** | Für die durch diesen Blueprint bereitgestellten Ressourcen sind Windows- und SQL Server-Lizenzen inbegriffen. Dies ist ein integriertes Feature von Azure. Organisationen mit bestehenden Softwarelizenzbedingungen können die Bereitstellung alternativer Lizenzmodelle in Erwägung ziehen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -875,7 +875,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Im Leistungsumfang sind Windows- und SQL Server-Lizenzen für die von diesem Azure Blueprint bereitgestellten Ressourcen inbegriffen. Der Benutzer ist nicht verpflichtet, die Nutzung der Lizenzen gesondert nachzuverfolgen. |
+| **Kunde** | Für die durch diesen Blueprint bereitgestellten Ressourcen sind Windows- und SQL Server-Lizenzen inbegriffen. Der Benutzer ist nicht verpflichtet, die Nutzung der Lizenzen gesondert nachzuverfolgen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -889,7 +889,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Bei diesem Azure Blueprint werden keine Peer-to-Peer-Dateifreigabefunktionen bereitgestellt. |
+| **Kunde** | Durch diesen Blueprint werden keine Peer-to-Peer-Dateifreigabefunktionen bereitgestellt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 

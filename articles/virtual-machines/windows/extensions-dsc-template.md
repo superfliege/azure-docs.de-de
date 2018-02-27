@@ -1,32 +1,40 @@
 ---
-title: "Resource Manager-Vorlage für die Konfiguration des gewünschten Zustands | Microsoft Docs"
-description: "Definition der Resource Manager-Vorlage für die Konfiguration des gewünschten Zustands in Azure mit Beispielen und Problembehandlung"
+title: "Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen | Microsoft-Dokumentation"
+description: "Resource Manager-Vorlagendefinition für die Erweiterung zum Konfigurieren des gewünschten Zustands in Azure"
 services: virtual-machines-windows
 documentationcenter: 
-author: zjalexander
+author: mgreenegit
 manager: timlt
 editor: 
-tags: azure-service-management,azure-resource-manager
-keywords: 
+tags: azure-resource-manager
+keywords: DSC
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 09/15/2016
-ms.author: zachal
-ms.openlocfilehash: 4292f9d8cd181073fdf0adff99fcb9624e0e9f55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/02/2018
+ms.author: migreene
+ms.openlocfilehash: f638d1530541526316f6e409f1efd44f136992a5
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="windows-vmss-and-desired-state-configuration-with-azure-resource-manager-templates"></a>Windows VMSS und Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
-Dieser Artikel beschreibt die Resource Manager-Vorlage für den [Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+# <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
+
+Dieser Artikel beschreibt die Azure Resource Manager-Vorlage für den [Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+
+*Hinweis: Die Schemabeispiele können geringfügig abweichen.*
+*Das Schema wurde im Oktober 2016 geändert.*
+*Details finden Sie auf dieser Seite im Abschnitt*
+*[Aktualisieren des früheren Formats](##Updating-from-the-Previous-Format)*.
 
 ## <a name="template-example-for-a-windows-vm"></a>Vorlagenbeispiel für einen virtuellen Windows-Computer
+
 Der folgende Codeausschnitt wird in den Ressourcenabschnitt der Vorlage eingefügt.
+Die DSC-Erweiterung erbt die Standarderweiterungseigenschaften, wie in der [VirtualMachineExtension-Klasse](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.) dokumentiert.
 
 ```json
             "name": "Microsoft.Powershell.DSC",
@@ -39,28 +47,35 @@ Der folgende Codeausschnitt wird in den Ressourcenabschnitt der Vorlage eingefü
               "properties": {
                   "publisher": "Microsoft.Powershell",
                   "type": "DSC",
-                  "typeHandlerVersion": "2.20",
+                  "typeHandlerVersion": "2.72",
                   "autoUpgradeMinorVersion": true,
                   "forceUpdateTag": "[parameters('dscExtensionUpdateTagVersion')]",
                   "settings": {
-                      "configuration": {
-                          "url": "[concat(parameters('_artifactsLocation'), '/', variables('dscExtensionArchiveFolder'), '/', variables('dscExtensionArchiveFileName'))]",
-                          "script": "dscExtension.ps1",
-                          "function": "Main"
-                      },
-                      "configurationArguments": {
-                          "nodeName": "[variables('vmName')]"
-                      }
-                  },
-                  "protectedSettings": {
-                      "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
-                  }
-              }
-
+                    "configurationArguments": {
+                        {
+                            "Name": "RegistrationKey",
+                            "Value": {
+                                "UserName": "PLACEHOLDER_DONOTUSE",
+                                "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                            },
+                        },
+                        "RegistrationUrl" : "[parameters('registrationUrl1')]",
+                        "NodeConfigurationName" : "nodeConfigurationNameValue1"
+                        }
+                        },
+                        "protectedSettings": {
+                            "Items": {
+                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
+                                    }
+                        }
+                    }
 ```
 
 ## <a name="template-example-for-windows-vmss"></a>Vorlagenbeispiel für Windows VMSS
-Ein VMSS-Knoten weist den Abschnitt „properties“ mit dem Attribut „VirtualMachineProfile“, „extensionProfile“ auf. DSC wird unter „extensions“ hinzugefügt. 
+
+Ein VMSS-Knoten weist den Abschnitt „properties“ mit dem Attribut „VirtualMachineProfile“, „extensionProfile“ auf. DSC wird unter „extensions“ hinzugefügt.
+
+Die DSC-Erweiterung erbt die Standarderweiterungseigenschaften, wie in der [VirtualMachineScaleSetExtension-Klasse](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet) dokumentiert.
 
 ```json
 "extensionProfile": {
@@ -70,30 +85,40 @@ Ein VMSS-Knoten weist den Abschnitt „properties“ mit dem Attribut „Virtual
                     "properties": {
                         "publisher": "Microsoft.Powershell",
                         "type": "DSC",
-                        "typeHandlerVersion": "2.20",
+                        "typeHandlerVersion": "2.72",
                         "autoUpgradeMinorVersion": true,
                         "forceUpdateTag": "[parameters('DscExtensionUpdateTagVersion')]",
                         "settings": {
-                            "configuration": {
-                                "url": "[concat(parameters('_artifactsLocation'), '/', variables('DscExtensionArchiveFolder'), '/', variables('DscExtensionArchiveFileName'))]",
-                                "script": "DscExtension.ps1",
-                                "function": "Main"
-                            },
                             "configurationArguments": {
-                                "nodeName": "localhost"
-                            }
+                                {
+                                    "Name": "RegistrationKey",
+                                    "Value": {
+                                        "UserName": "PLACEHOLDER_DONOTUSE",
+                                        "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                                    },
+                                },
+                                "RegistrationUrl" : "[parameters('registrationUrl1')]",
+                                "NodeConfigurationName" : "nodeConfigurationNameValue1"
+                        }
                         },
                         "protectedSettings": {
-                            "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
+                            "Items": {
+                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
+                                    }
                         }
                     }
-                }
-            ]
+                ]
+            }
         }
 ```
 
 ## <a name="detailed-settings-information"></a>Ausführliche Einstellungsinformationen
+
 Dies ist das Schema für den Bereich mit den Einstellungen der Azure DSC-Erweiterung in einer Azure Resource Manager-Vorlage.
+
+*Eine Liste mit den verfügbaren Argumenten für das Standardkonfigurationsskript*
+*finden Sie weiter unten im Abschnitt*
+*[Standardkonfigurationsskript](##Default-Configuration-Script)*.
 
 ```json
 
@@ -118,7 +143,7 @@ Dies ist das Schema für den Bereich mit den Einstellungen der Azure DSC-Erweite
     "downloadMappings": {
       "customWmfLocation": "http://myWMFlocation"
     }
-  } 
+  }
 },
 "protectedSettings": {
   "configurationArguments": {
@@ -138,21 +163,40 @@ Dies ist das Schema für den Bereich mit den Einstellungen der Azure DSC-Erweite
 ```
 
 ## <a name="details"></a>Details
+
 | Eigenschaftenname | Typ | Beschreibung |
 | --- | --- | --- |
-| settings.wmfVersion |string |Gibt die Version von Windows Management Framework an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf „neueste“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind **„4.0“, „5.0“, „5.0PP“ und „neueste“**. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist „neueste“. |
-| settings.configuration.url |string |Gibt den URL-Speicherort an, von dem die ZIP-Datei Ihrer DSC-Konfiguration herunterzuladen ist. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.script“ und/oder „settings.configuration.function“ definiert sind. |
-| settings.configuration.script |string |Gibt den Dateinamen des Skripts an, das die Definition Ihrer DSC-Konfiguration enthält. Dieses Skript muss sich im Stammverzeichnis der ZIP-Datei befinden, die von der durch die configuration.url-Eigenschaft angegebenen URL heruntergeladen wurde. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.script“ definiert sind. |
-| settings.configuration.function |string |Gibt den Namen Ihrer DSC-Konfiguration an. Die Konfiguration mit diesem Namen muss im Skript enthalten sein, das durch „configuration.script“ definiert ist. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.function“ definiert sind. |
+| settings.wmfVersion |Zeichenfolge |Gibt die Version von Windows Management Framework an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf „neueste“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind **„4.0“, „5.0“, „5.0PP“ und „neueste“**. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist „neueste“. |
+| settings.configuration.url |Zeichenfolge |Gibt den URL-Speicherort an, von dem die ZIP-Datei Ihrer DSC-Konfiguration herunterzuladen ist. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.script“ und/oder „settings.configuration.function“ definiert sind. Wenn für diese Eigenschaften kein Wert angegeben ist, ruft die Erweiterung das Standardkonfigurationsskript auf, um LCM-Metadaten festzulegen, und es müssen Argumente angegeben werden. |
+| settings.configuration.script |Zeichenfolge |Gibt den Dateinamen des Skripts an, das die Definition Ihrer DSC-Konfiguration enthält. Dieses Skript muss sich im Stammverzeichnis der ZIP-Datei befinden, die von der durch die configuration.url-Eigenschaft angegebenen URL heruntergeladen wurde. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.script“ definiert sind. Wenn für diese Eigenschaften kein Wert angegeben ist, ruft die Erweiterung das Standardkonfigurationsskript auf, um LCM-Metadaten festzulegen, und es müssen Argumente angewendet werden. |
+| settings.configuration.function |Zeichenfolge |Gibt den Namen Ihrer DSC-Konfiguration an. Die Konfiguration mit diesem Namen muss im Skript enthalten sein, das durch „configuration.script“ definiert ist. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.function“ definiert sind. Wenn für diese Eigenschaften kein Wert angegeben ist, ruft die Erweiterung das Standardkonfigurationsskript auf, um LCM-Metadaten festzulegen, und es müssen Argumente angegeben werden. |
 | settings.configurationArguments |Sammlung |Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft ist nicht verschlüsselt. |
-| settings.configurationData.url |string |Gibt die URL an, unter der die Datei mit Ihren Konfigurationsdaten (PSD1) heruntergeladen werden kann, um sie als Eingabe für Ihre DSC-Konfiguration zu nutzen. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationDataUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen. |
-| settings.privacy.dataEnabled |string |Aktiviert bzw. deaktiviert die Erfassung von Telemetriedaten. Die einzig möglichen Werte für diese Eigenschaft sind **„Aktivieren“, „Disable“ oder „$null“**. Wird die Eigenschaft leer gelassen oder „null“ angegeben, ist die Telemetrie aktiviert. Der Standardwert ist ''. [Weitere Informationen](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) |
+| settings.configurationData.url |Zeichenfolge |Gibt die URL an, unter der die Datei mit Ihren Konfigurationsdaten (PSD1) heruntergeladen werden kann, um sie als Eingabe für Ihre DSC-Konfiguration zu nutzen. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationDataUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen. |
+| settings.privacy.dataEnabled |Zeichenfolge |Aktiviert bzw. deaktiviert die Erfassung von Telemetriedaten. Die einzig möglichen Werte für diese Eigenschaft sind **„Aktivieren“, „Disable“ oder „$null“**. Wird die Eigenschaft leer gelassen oder „null“ angegeben, ist die Telemetrie aktiviert. Der Standardwert ist ''. [Weitere Informationen](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) |
 | settings.advancedOptions.downloadMappings |Sammlung |Definiert alternative Speicherorte zum Herunterladen von WMF. [Weitere Informationen](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx) |
 | protectedSettings.configurationArguments |Sammlung |Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft ist verschlüsselt. |
-| protectedSettings.configurationUrlSasToken |string |Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft ist verschlüsselt. |
-| protectedSettings.configurationDataUrlSasToken |string |Gibt das SAS-Token für den Zugriff auf durch „configurationData.url“ definierte URL an. Diese Eigenschaft ist verschlüsselt. |
+| protectedSettings.configurationUrlSasToken |Zeichenfolge |Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft ist verschlüsselt. |
+| protectedSettings.configurationDataUrlSasToken |Zeichenfolge |Gibt das SAS-Token für den Zugriff auf durch „configurationData.url“ definierte URL an. Diese Eigenschaft ist verschlüsselt. |
+
+## <a name="default-configuration-script"></a>Standardkonfigurationsskript
+
+Weitere Informationen zu diesen Werten finden Sie auf der Dokumentationsseite für den lokalen Konfigurations-Manager unter [Grundlegende Einstellungen](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings).
+Mit dem Standardkonfigurationsskript der DSC-Erweiterung können nur die LCM-Eigenschaften aus der folgenden Tabelle konfiguriert werden:
+
+| Eigenschaftenname | Typ | Beschreibung |
+| --- | --- | --- |
+| settings.configurationArguments.RegistrationKey |securestring |Erforderliche Eigenschaft. Gibt den Schlüssel, der für die Registrierung eines Knotens beim Azure Automation-Dienst verwendet wird, als Kennwort eines PowerShell-Anmeldeinformationsobjekts an. Dieser Wert kann durch Verwendung der listkeys-Methode für das Automation-Konto automatisch ermittelt werden und sollte als geschützte Einstellung geschützt werden. |
+| settings.configurationArguments.RegistrationUrl |Zeichenfolge |Erforderliche Eigenschaft. Gibt die URL des Azure Automation-Endpunkts an, an dem der Knoten die Registrierung durchführt. Dieser Wert kann durch Verwendung der reference-Methode für das Automation-Konto automatisch ermittelt werden. |
+| settings.configurationArguments.NodeConfigurationName |Zeichenfolge |Erforderliche Eigenschaft. Gibt die Knotenkonfiguration im Azure Automation-Konto an, die dem Knoten zugewiesen werden soll. |
+| settings.configurationArguments.ConfigurationMode |Zeichenfolge |Gibt den Modus für den lokalen Konfigurations-Manager an. Gültige Optionen: „ApplyOnly“, „ApplyandMonitor“ und „ApplyandAutoCorrect“.  Standardwert: ApplyAndMonitor. |
+| settings.configurationArguments.RefreshFrequencyMins | UInt32 | Gibt an, wie oft der lokale Konfigurations-Manager das Automation-Konto auf Updates überprüft.  Standardwert: 30.  Mindestwert: 15. |
+| settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Gibt an, wie oft der LCM die aktuelle Konfiguration überprüft.  Standardwert: 15.  Mindestwert: 15. |
+| settings.configurationArguments.RebootNodeIfNeeded | boolean | Gibt an, ob ein Knoten automatisch neu gestartet werden kann, wenn dies durch einen DSC-Vorgang angefordert wird.  Der Standardwert ist „false“. |
+| settings.configurationArguments.ActionAfterReboot | Zeichenfolge | Gibt an, was nach einem Neustart geschieht, wenn eine Konfiguration angewendet wird. Gültige Optionen: „ContinueConfiguration“ und „StopConfiguration“. Standardwert: ContinueConfiguration. |
+| settings.configurationArguments.AllowModuleOverwrite | boolean | Gibt an, ob der LCM vorhandene Module auf dem Knoten überschreibt.  Der Standardwert ist „false“. |
 
 ## <a name="settings-vs-protectedsettings"></a>„Settings“ im Vergleich zu „ProtectedSettings“
+
 Alle Einstellungen werden auf dem virtuellen Computer in einer Einstellungstextdatei gespeichert.
 Eigenschaften unter „Settings“ sind öffentliche Eigenschaften, da sie in der Einstellungstextdatei nicht verschlüsselt sind.
 Eigenschaften unter „ProtectedSettings“ sind mit einem Zertifikat verschlüsselt und werden auf dem virtuellen Computer in dieser Datei nicht als Nur-Text angezeigt.
@@ -171,8 +215,37 @@ Wenn die Konfiguration Anmeldeinformationen erfordert, können diese in „Prote
 ```
 
 ## <a name="example"></a>Beispiel
+
+Das folgende Beispiel zeigt das Standardverhalten für die DSC-Erweiterung. Dabei werden Metadateneinstellungen für den lokalen Konfigurations-Manager angegeben, und es findet eine Registrierung beim Azure Automation DSC-Dienst statt.
+Konfigurationsargumente sind erforderlich und werden an das Standardkonfigurationsskript übergeben, um LCM-Metadaten festzulegen.
+
+```json
+"settings": {
+    "configurationArguments": {
+        {
+            "Name": "RegistrationKey",
+            "Value": {
+                "UserName": "PLACEHOLDER_DONOTUSE",
+                "Password": "PrivateSettingsRef:registrationKeyPrivate"
+            },
+        },
+        "RegistrationUrl" : "[parameters('registrationUrl1')]",
+        "NodeConfigurationName" : "nodeConfigurationNameValue1"
+  }
+},
+"protectedSettings": {
+    "Items": {
+                "registrationKeyPrivate": "[parameters('registrationKey1']"
+            }
+}
+```
+
+## <a name="example-using-configuration-script-in-azure-storage"></a>Beispiel für die Verwendung des Konfigurationsskripts in Azure Storage
+
 Das folgende Beispiel wird aus dem Abschnitt „Erste Schritte“ der Seite [DSC-Erweiterung: Handler-Übersicht](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)abgeleitet.
-In diesem Beispiel werden Resourcen Manager-Vorlagen anstelle von Cmdlets zum Bereitstellen der Erweiterung verwendet. Speichern Sie die Konfiguration „IisInstall.ps1“, fügen Sie die einer ZIP-Datei hinzu, und laden Sie die Datei unter einer zugänglichen URL hoch. In diesem Beispiel wird Azure-Blobspeicher verwendet, ZIP-Dateien können jedoch von beliebigen Speicherorten heruntergeladen werden.
+In diesem Beispiel werden Resourcen Manager-Vorlagen anstelle von Cmdlets zum Bereitstellen der Erweiterung verwendet.
+Speichern Sie die Konfiguration „IisInstall.ps1“, fügen Sie die einer ZIP-Datei hinzu, und laden Sie die Datei unter einer zugänglichen URL hoch.
+In diesem Beispiel wird Azure Blob Storage verwendet, ZIP-Dateien können jedoch von beliebigen Speicherorten heruntergeladen werden.
 
 In der Azure Resource Manager-Vorlage weist der folgende Code den virtuellen Computer an, die richtige Datei herunterzuladen und die entsprechende PowerShell-Funktion auszuführen:
 
@@ -183,7 +256,6 @@ In der Azure Resource Manager-Vorlage weist der folgende Code den virtuellen Com
         "script": "IisInstall.ps1",
         "function": "IISInstall"
     }
-    } 
 },
 "protectedSettings": {
     "configurationUrlSasToken": "odLPL/U1p9lvcnp..."
@@ -191,6 +263,7 @@ In der Azure Resource Manager-Vorlage weist der folgende Code den virtuellen Com
 ```
 
 ## <a name="updating-from-the-previous-format"></a>Aktualisieren des früheren Formats
+
 Alle Einstellungen im vorherigen Format (das die öffentlichen Eigenschaften „ModulesUrl“, „ConfigurationFunction“, „SasToken“ oder „Properties“ enthält) werden automatisch an das aktuelle Format angepasst und wie bisher ausgeführt.
 
 Das frühere Einstellungsschema sah folgendermaßen aus:
@@ -206,7 +279,7 @@ Das frühere Einstellungsschema sah folgendermaßen aus:
         "ParameterToConfigurationFunction2":  "Value2",
         "ParameterOfTypePSCredential1": {
             "UserName": "UsernameValue1",
-            "Password": "PrivateSettingsRef:Key1" 
+            "Password": "PrivateSettingsRef:Key1"
         },
         "ParameterOfTypePSCredential2": {
             "UserName": "UsernameValue2",
@@ -214,7 +287,7 @@ Das frühere Einstellungsschema sah folgendermaßen aus:
         }
     }
 },
-"protectedSettings": { 
+"protectedSettings": {
     "Items": {
         "Key1": "PasswordValue1",
         "Key2": "PasswordValue2"
@@ -240,32 +313,44 @@ So wird das frühere Format an das aktuelle Format angepasst:
 | protectedSettings.configurationDataUrlSasToken |SAS-Token aus „protectedSettings.DataBlobUri“ |
 
 ## <a name="troubleshooting---error-code-1100"></a>Problembehandlung – Fehlercode 1100
+
 Fehlercode 1100 gibt an, dass ein Problem mit der Benutzereingabe in die DSC-Erweiterung vorliegt.
 Der Text dieser Fehler ist nicht festgelegt und kann sich ändern.
 Hier finden Sie einige Fehler, die auftreten können, und die entsprechenden Behebungen.
 
 ### <a name="invalid-values"></a>Ungültige Werte
-„Privacy.dataCollection ist „{0}“. Die einzig möglichen Werte sind “, „Aktivieren“ und „Deaktivieren““ „WmfVersion ist „{0}“. Einzig mögliche Werte sind ... und „neueste“.“
+
+„Privacy.dataCollection ist „{0}“.
+Die einzig möglichen Werte sind '', 'Aktivieren' und 'Deaktivieren'.“
+„WmfVersion“ ist '{0}'.
+Einzig mögliche Werte sind ... und 'neueste'.“
 
 Problem: Ein bereitgestellter Wert ist nicht zulässig.
 
-Lösung: Ändern Sie den ungültigen Wert in einen gültigen Wert. Sehen Sie in der Tabelle im Abschnitt „Details“ nach.
+Lösung: Ändern Sie den ungültigen Wert in einen gültigen Wert.
+Sehen Sie in der Tabelle im Abschnitt „Details“ nach.
 
 ### <a name="invalid-url"></a>Ungültige URL
+
 „ConfigurationData.url ist „{0}“. Dies ist keine gültige URL“. „DataBlobUri ist „{0}“. Dies ist keine gültige URL“. „Configuration.url ist „{0}“. Dies ist keine gültige URL“
 
 Problem: Ein bereitgestellte URL ist ungültig.
 
-Lösung: Überprüfen Sie alle Ihre angegebenen URLs. Stellen Sie sicher, dass alle URLs in gültige Speicherorte aufgelöst werden, auf die die Erweiterung auf dem Remotecomputer zugreifen kann.
+Lösung: Überprüfen Sie alle Ihre angegebenen URLs.
+Stellen Sie sicher, dass alle URLs in gültige Speicherorte aufgelöst werden, auf die die Erweiterung auf dem Remotecomputer zugreifen kann.
 
 ### <a name="invalid-configurationargument-type"></a>Ungültiger ConfigurationArgument-Typ
+
 „Ungültiger ConfigurationArgument-Typ {0}“
 
-Problem: Die ConfigurationArguments-Eigenschaft kann nicht in ein Hashtabellenobjekt aufgelöst werden. 
+Problem: Die ConfigurationArguments-Eigenschaft kann nicht in ein Hashtabellenobjekt aufgelöst werden.
 
-Lösung: Stellen Sie sicher, dass Ihre ConfigurationArguments-Eigenschaft eine Hashtabelle ist. Nutzen Sie das im vorherigen Beispiel bereitgestellte Format. Achten Sie auf Anführungszeichen, Kommas und Klammern.
+Lösung: Stellen Sie sicher, dass Ihre ConfigurationArguments-Eigenschaft eine Hashtabelle ist.
+Nutzen Sie das im vorherigen Beispiel bereitgestellte Format.
+Achten Sie auf Anführungszeichen, Kommas und Klammern.
 
 ### <a name="duplicate-configurationarguments"></a>„ConfigurationArguments“ doppelt vorhanden
+
 „Doppelte Argumente „{0}“ sowohl in öffentlichen und geschützten configurationArguments-Elementen gefunden“
 
 Problem: „ConfigurationArguments“ in öffentlichen Einstellungen und „ConfigurationArguments“ in geschützten Einstellungen enthalten Eigenschaften mit dem gleichen Namen.
@@ -287,17 +372,17 @@ Lösung: Entfernen Sie eine der doppelten Eigenschaften.
 
 Problem: Eine definierte Eigenschaft benötigt eine andere Eigenschaft, die nicht vorhanden ist.
 
-Lösungen: 
+Lösungen:
 
-* Geben Sie die fehlende Eigenschaft an.
-* Entfernen Sie die Eigenschaft, die die fehlende Eigenschaft benötigt.
+- Geben Sie die fehlende Eigenschaft an.
+- Entfernen Sie die Eigenschaft, die die fehlende Eigenschaft benötigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zu DSC und Skalierungsgruppen für virtuelle Computer finden Sie unter [Using Virtual Machine Scale Sets with the Azure DSC Extension](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)
 
-Weitere Informationen finden Sie unter [Sichere Verwaltung von Anmeldeinformationen durch DSC](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Informationen zu DSC und Skalierungsgruppen für virtuelle Computer finden Sie unter [Verwenden von VM-Skalierungsgruppen mit der Azure DSC-Erweiterung](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
 
-Weitere Informationen zum Azure DSC-Erweiterungs-Handler finden Sie unter [Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Weitere Informationen finden Sie unter [Sichere Verwaltung von Anmeldeinformationen durch DSC](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](https://msdn.microsoft.com/powershell/dsc/overview). 
+Weitere Informationen zum Azure DSC-Erweiterungs-Handler finden Sie unter [Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
+Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](https://msdn.microsoft.com/powershell/dsc/overview).

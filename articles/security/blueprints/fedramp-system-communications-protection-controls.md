@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation – System- und Kommunikationsschutz"
-description: "Webanwendungen für FedRAMP – System- und Kommunikationsschutz"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – System- und Kommunikationsschutz"
+description: "Automatisierung von Webanwendungen für FedRAMP – System- und Kommunikationsschutz"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 02e2d07eb29d0d5d436afed1cdab4fe710674a8c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: ce0917cec67612736103932903eab18d7f0f21bb
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="system-and-communications-protection-sc"></a>System- und Kommunikationsschutz (System and Communications, SC)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint trennt die Benutzerfunktionalität von den Funktionen zur Systemverwaltung durch Erzwingung logischer Zugriffskontrollen und der Systemarchitektur. Die Benutzerfunktionalität ist auf kundenseitig bereitgestellte Webanwendungsoberflächen beschränkt. Oberflächen für Funktionen der Systemverwaltung sind von den Benutzeroberflächen getrennt. Die gesamte Verwaltungskonnektivität erfolgt über einen sicheren Bastion Host (Jumpbox), der sich in einem verwalteten Subnetz befindet und dessen Regeln für Netzwerksicherheitsgruppen so gestaltet sind, dass der Zugriff auf Produktionsressourcen in geeigneter Weise eingeschränkt wird. |
+| **Kunde** | Dieser Blueprint erzwingt logische Zugriffssteuerungen und die Systemarchitektur, um Benutzerfunktionen von Systemverwaltungsfunktionen zu trennen. Die Benutzerfunktionalität ist auf kundenseitig bereitgestellte Webanwendungsoberflächen beschränkt. Oberflächen für Funktionen der Systemverwaltung sind von den Benutzeroberflächen getrennt. Die gesamte Verwaltungskonnektivität erfolgt über einen sicheren Bastion Host (Jumpbox), der sich in einem verwalteten Subnetz befindet und dessen Regeln für Netzwerksicherheitsgruppen so gestaltet sind, dass der Zugriff auf Produktionsressourcen in geeigneter Weise eingeschränkt wird. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows verwaltet für jeden ausgeführten Prozess eine eigene Ausführungsdomäne, indem jedem Prozess ein privater virtueller Adressraum zugewiesen wird. Darüber hinaus implementiert die Lösung eine Architektur sowie Zugriffskontrollen, die darauf ausgelegt sind, Sicherheitsfunktionen bei Bedarf zu isolieren. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows verwaltet für jeden ausgeführten Prozess eine eigene Ausführungsdomäne, indem jedem Prozess ein privater virtueller Adressraum zugewiesen wird. Darüber hinaus implementiert die Lösung eine Architektur sowie Zugriffskontrollen, die darauf ausgelegt sind, Sicherheitsfunktionen bei Bedarf zu isolieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Das Betriebssystem verwaltet Ressourcen (z.B. Speicher), sodass Informationen nur für Benutzer und Rollen mit entsprechenden Berechtigungen zugänglich sind. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Das Betriebssystem verwaltet Ressourcen (z.B. Speicher), sodass Informationen nur für Benutzer und Rollen mit entsprechenden Berechtigungen zugänglich sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt eine Application Gateway-Instanz bereit, die Web Application Firewall- und Lastausgleichsfunktionen umfasst. Bereitgestellte virtuelle Computer unterstützen die Web- und Datenbankebene. Zudem wird Active Directory in einer skalierbaren Verfügbarkeitsgruppe bereitgestellt. |
+| **Kunde** | Dieser Blueprint stellt eine Application Gateway-Instanz bereit, die Web Application Firewall- und Lastenausgleichsfunktionen umfasst. Bereitgestellte virtuelle Computer unterstützen die Web- und Datenbankebene. Zudem wird Active Directory in einer skalierbaren Verfügbarkeitsgruppe bereitgestellt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Jeder Windows-Prozess stellt die Ressourcen bereit, die zum Ausführen eines Programms erforderlich sind. Die Ressourcenpriorität wird vom Betriebssystem verwaltet. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Jeder Windows-Prozess stellt die Ressourcen bereit, die zum Ausführen eines Programms erforderlich sind. Die Ressourcenpriorität wird vom Betriebssystem verwaltet. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt eine Application Gateway-Instanz und einen Lastenausgleich bereit und konfiguriert Regeln für Netzwerksicherheitsgruppen, um das Pendeln über die Außengrenzen und zwischen den Subnetzen im Inneren zu steuern. Ereignis- und Diagnoseprotokolle zu Application Gateway, Lastenausgleich und Netzwerksicherheitsgruppen werden von OMS Log Analytics gesammelt, um Kunden die Überwachung zu ermöglichen. |
+| **Kunde** | Dieser Blueprint stellt eine Application Gateway-Instanz und einen Lastenausgleich bereit und konfiguriert Regeln für Netzwerksicherheitsgruppen, um das Pendeln an Außengrenzen und zwischen den internen Subnetzen zu steuern. Ereignis- und Diagnoseprotokolle zu Application Gateway, Lastenausgleich und Netzwerksicherheitsgruppen werden von OMS Log Analytics gesammelt, um Kunden die Überwachung zu ermöglichen. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt Ressourcen in einer Architektur mit einem separaten Websubnetz, Datenbanksubnetz, Active Directory-Subnetz und Verwaltungssubnetz bereit. Subnetze werden logisch durch Regeln für Netzwerksicherheitsgruppen getrennt, die auf die einzelnen Subnetze angewendet werden, um den Datenverkehr zwischen den Subnetzen auf das für die System- und Verwaltungsfunktionen erforderliche Maß einzuschränken (sodass beispielsweise externer Datenverkehr keinen Zugriff auf die Datenbank-, Verwaltungs- oder Active Directory-Subnetze hat). |
+| **Kunde** | Dieser Blueprint stellt Ressourcen in einer Architektur mit einem separaten Websubnetz, Datenbanksubnetz, Active Directory-Subnetz und Verwaltungssubnetz bereit. Subnetze werden logisch durch Regeln für Netzwerksicherheitsgruppen getrennt, die auf die einzelnen Subnetze angewendet werden, um den Datenverkehr zwischen den Subnetzen auf das für die System- und Verwaltungsfunktionen erforderliche Maß einzuschränken (sodass beispielsweise externer Datenverkehr keinen Zugriff auf die Datenbank-, Verwaltungs- oder Active Directory-Subnetze hat). |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt eine Application Gateway-Instanz bereit, um externe Verbindungen mit einer vom Kunden bereitgestellten Webanwendung zu verwalten. Externe Verbindungen für den Verwaltungszugriff sind auf einen Bastion Host bzw. eine Jumpbox beschränkt, die in einem Verwaltungssubnetz bereitgestellt wird, dessen Netzwerksicherheitsregeln externe Verbindungen auf autorisierte IP-Adressen beschränken. |
+| **Kunde** | Dieser Blueprint stellt eine Application Gateway-Instanz bereit, um externe Verbindungen mit einer vom Kunden bereitgestellten Webanwendung zu verwalten. Externe Verbindungen für den Verwaltungszugriff sind auf einen Bastion Host bzw. eine Jumpbox beschränkt, die in einem Verwaltungssubnetz bereitgestellt wird, dessen Netzwerksicherheitsregeln externe Verbindungen auf autorisierte IP-Adressen beschränken. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt zwei öffentliche IP-Adressen bereit: eine mit Application Gateway verknüpfte IP-Adresse und eine mit dem Bastion Host bzw. der Jumpbox für die Verwaltung verknüpften IP-Adresse. |
+| **Kunde** | Dieser Blueprint stellt zwei öffentliche IP-Adressen bereit: eine mit Application Gateway verknüpfte IP-Adresse und eine mit dem Bastion Host bzw. der Jumpbox für die Verwaltung verknüpften IP-Adresse. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt zwei öffentliche IP-Adressen bereit: eine mit Application Gateway verknüpfte IP-Adresse und eine mit dem Bastion Host bzw. der Jumpbox für die Verwaltung verknüpften IP-Adresse. Die Verwaltung dieser Schnittstellen erfolgt über Software-Defined Networking. |
+| **Kunde** | Dieser Blueprint stellt zwei öffentliche IP-Adressen bereit: eine mit Application Gateway verknüpfte IP-Adresse und eine mit dem Bastion Host bzw. der Jumpbox für die Verwaltung verknüpften IP-Adresse. Die Verwaltung dieser Schnittstellen erfolgt über Software-Defined Networking. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -189,7 +189,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt zwei öffentliche IP-Adressen bereit: eine mit Application Gateway verknüpfte IP-Adresse und eine mit dem Bastion Host bzw. der Jumpbox für die Verwaltung verknüpften IP-Adresse. Die Verwaltung dieser Schnittstellen erfolgt über Software-Defined Networking. |
+| **Kunde** | Dieser Blueprint stellt zwei öffentliche IP-Adressen bereit: eine mit Application Gateway verknüpfte IP-Adresse und eine mit dem Bastion Host bzw. der Jumpbox für die Verwaltung verknüpften IP-Adresse. Die Verwaltung dieser Schnittstellen erfolgt über Software-Defined Networking. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Das von diesem Azure Blueprint bereitgestellte Webanwendungsgateway wird mit einem HTTPS-Listener konfiguriert, wodurch die Vertraulichkeit und Integrität der Kommunikationssitzungen gewährleistet werden. Vertraulichkeit und Integrität werden auch durch verschlüsselte Remotedesktopverbindungen mit der Jumpbox bereitgestellt. |
+| **Kunde** | Das durch diesen Blueprint bereitgestellte Webanwendungsgateway wird mit einem HTTPS-Listener konfiguriert, wodurch die Vertraulichkeit und Integrität der Kommunikationssitzungen gewährleistet werden. Vertraulichkeit und Integrität werden auch durch verschlüsselte Remotedesktopverbindungen mit der Jumpbox bereitgestellt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Regelsätze, die auf von diesem Azure Blueprint bereitgestellte Netzwerksicherheitsgruppen angewendet werden, werden mit einem Schema konfiguriert, das den Zugriff standardmäßig verweigert. |
+| **Kunde** | Regelsätze, die auf durch diesen Blueprint bereitgestellte Netzwerksicherheitsgruppen angewendet werden, werden mit einem Schema konfiguriert, das den Zugriff standardmäßig verweigert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die von diesem Azure Blueprint bereitgestellten virtuellen Computer werden mit einer aktivierten hostbasierten Firewall konfiguriert. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer werden mit einer aktivierten hostbasierten Firewall konfiguriert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -315,7 +315,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt Ressourcen in einer Architektur mit einem separaten Verwaltungssubnetz für die kundenseitige Bereitstellung von Informationssicherheitstools und unterstützenden Komponenten bereit. Subnetze werden anhand von Regeln für Netzwerksicherheitsgruppen logisch getrennt. |
+| **Kunde** | Dieser Blueprint stellt Ressourcen in einer Architektur mit einem separaten Verwaltungssubnetz für die kundenseitige Bereitstellung von Informationssicherheitstools und unterstützenden Komponenten bereit. Subnetze werden anhand von Regeln für Netzwerksicherheitsgruppen logisch getrennt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt Ressourcen in einer Architektur mit einem separaten Websubnetz, Datenbanksubnetz, Active Directory-Subnetz und Verwaltungssubnetz bereit. Subnetze werden logisch durch Regeln für Netzwerksicherheitsgruppen getrennt, die auf die einzelnen Subnetze angewendet werden, um den Datenverkehr zwischen den Subnetzen auf das für die System- und Verwaltungsfunktionen erforderliche Maß einzuschränken. |
+| **Kunde** | Dieser Blueprint stellt Ressourcen in einer Architektur mit einem separaten Websubnetz, Datenbanksubnetz, Active Directory-Subnetz und Verwaltungssubnetz bereit. Subnetze werden logisch durch Regeln für Netzwerksicherheitsgruppen getrennt, die auf die einzelnen Subnetze angewendet werden, um den Datenverkehr zwischen den Subnetzen auf das für die System- und Verwaltungsfunktionen erforderliche Maß einzuschränken. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -385,7 +385,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint konfiguriert Ressourcen so, dass nur sichere Protokolle für die Kommunikation verwendet werden. Die WAF-Komponente von Application Gateway ist dafür konfiguriert, Kommunikation von externen Benutzern über HTTPS/TLS anzunehmen und mit dem Back-End-Pool ausschließlich über HTTPS/TLS zu kommunizieren. SQL Server ist für die Kommunikation ausschließlich über HTTPS/TLS konfiguriert. Remotedesktopdienste werden für die Verwendung von sicheren Verbindungen konfiguriert. |
+| **Kunde** | Dieser Blueprint konfiguriert Ressourcen so, dass nur sichere Protokolle für die Kommunikation verwendet werden. Die WAF-Komponente von Application Gateway ist dafür konfiguriert, Kommunikation von externen Benutzern über HTTPS/TLS anzunehmen und mit dem Back-End-Pool ausschließlich über HTTPS/TLS zu kommunizieren. SQL Server ist für die Kommunikation ausschließlich über HTTPS/TLS konfiguriert. Remotedesktopdienste werden für die Verwendung von sicheren Verbindungen konfiguriert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Dieser Azure Blueprint stellt eine Azure Key Vault-Instanz bereit. Der Azure-Schlüsseltresor unterstützt Sie dabei, kryptografische Schlüssel und geheime Schlüssel zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Azure Key Vault kann durch die Schlüsselgenerierungsfunktion eines mit FIPS 140-2 Level 2 konformen Hardwaresicherheitsmoduls (HSM) Schlüssel generieren. |
+| **Kunde** | Dieser Blueprint stellt eine Azure Key Vault-Instanz bereit. Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Azure Key Vault kann durch die Schlüsselgenerierungsfunktion eines mit FIPS 140-2 Level 2 konformen Hardwaresicherheitsmoduls (HSM) Schlüssel generieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -427,7 +427,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Azure Key Vault wird verwendet, um die in diesem Azure Blueprint verwendeten Kryptografieschlüssel und Geheimnisse zu speichern. Key Vault optimiert den Schlüsselverwaltungsprozess für Schlüssel, die auf Daten zugreifen und diese verschlüsseln. In Key Vault werden folgende Authentifikatoren gespeichert: das Azure-Kennwort für das bereitgestellte Konto, das Administratorkennwort für den virtuellen Computer und das Kennwort für das SQL Server-Dienstkonto. |
+| **Kunde** | Azure Key Vault wird verwendet, um die in diesem Blueprint verwendeten Kryptografieschlüssel und Geheimnisse zu speichern. Key Vault optimiert den Schlüsselverwaltungsprozess für Schlüssel, die auf Daten zugreifen und diese verschlüsseln. In Key Vault werden folgende Authentifikatoren gespeichert: das Azure-Kennwort für das bereitgestellte Konto, das Administratorkennwort für den virtuellen Computer und das Kennwort für das SQL Server-Dienstkonto. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -469,7 +469,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Windows-Authentifizierung, Remotedesktopdienste und BitLocker werden von diesem Azure Blueprint verwendet. Diese Komponenten können für die Nutzung von gemäß FIPS 140 überprüften Kryptografiemodulen konfiguriert werden. |
+| **Kunde** | Von diesem Blueprint werden Windows-Authentifizierung, Remotedesktopdienste und BitLocker verwendet. Diese Komponenten können für die Nutzung von gemäß FIPS 140 überprüften Kryptografiemodulen konfiguriert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Es gibt keine gemeinsamen Computergeräte, die im Rahmen dieses Azure Blueprint bereitgestellt werden. Hinweis: Zum Geltungsbereich der in Azure bereitgestellten Systeme gehören keine physischen gemeinsamen Computergeräte. |
+| **Kunde** | Im Rahmen dieses Blueprints werden keine gemeinsamen Computergeräte bereitgestellt. Hinweis: Zum Geltungsbereich der in Azure bereitgestellten Systeme gehören keine physischen gemeinsamen Computergeräte. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -497,7 +497,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Es gibt keine gemeinsamen Computergeräte, die im Rahmen dieses Azure Blueprint bereitgestellt werden. Hinweis: Zum Geltungsbereich der in Azure bereitgestellten Systeme gehören keine physischen gemeinsamen Computergeräte. |
+| **Kunde** | Im Rahmen dieses Blueprints werden keine gemeinsamen Computergeräte bereitgestellt. Hinweis: Zum Geltungsbereich der in Azure bereitgestellten Systeme gehören keine physischen gemeinsamen Computergeräte. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -567,7 +567,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Im Rahmen dieses Azure Blueprint werden keine VoIP-Technologien (Voice over IP) bereitgestellt. |
+| **Kunde** | Im Rahmen dieses Blueprints werden keine VoIP-Technologien (Voice over IP) bereitgestellt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -581,7 +581,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Im Rahmen dieses Azure Blueprint werden keine VoIP-Technologien (Voice over IP) bereitgestellt. |
+| **Kunde** | Im Rahmen dieses Blueprints werden keine VoIP-Technologien (Voice over IP) bereitgestellt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -651,7 +651,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Remotezugriff auf Ressourcen, die von diesem Azure Blueprint bereitgestellt werden (einschließlich Azure-Portal, Remotedesktopverbindung und Webanwendungsgateway), ist mit TLS geschützt. TLS stellt die Echtheit der Kommunikation auf Sitzungsebene sicher. |
+| **Kunde** | Der Remotezugriff auf Ressourcen, die durch diesen Blueprint bereitgestellt werden (einschließlich Azure-Portal, Remotedesktopverbindung und Webanwendungsgateway), ist durch TLS geschützt. TLS stellt die Echtheit der Kommunikation auf Sitzungsebene sicher. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -665,7 +665,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Der Remotezugriff auf Ressourcen, die von diesem Azure Blueprint bereitgestellt werden (einschließlich Azure-Portal, Remotedesktopverbindung und Webanwendungsgateway), ist mit TLS geschützt. Das Azure-Portal und Remotedesktopsitzungen machen Sitzungs-IDs bei der Abmeldung ungültig. Die Invalidierung von Websitzungen wird durch WAF-Regeln (Web Application Firewall) von Azure Application Gateway erzwungen. Die WAF wendet eine sitzungsbasierte Cookieaffinität an und führt nach 30 Minuten Inaktivität des Clients ein Sitzungstimeout durch. (Der Zeitraum kann nach der Bereitstellung entsprechend den organisationsspezifischen Regeln konfiguriert werden.) |
+| **Kunde** | Der Remotezugriff auf Ressourcen, die durch diesen Blueprint bereitgestellt werden (einschließlich Azure-Portal, Remotedesktopverbindung und Webanwendungsgateway), ist durch TLS geschützt. Das Azure-Portal und Remotedesktopsitzungen machen Sitzungs-IDs bei der Abmeldung ungültig. Die Invalidierung von Websitzungen wird durch WAF-Regeln (Web Application Firewall) von Azure Application Gateway erzwungen. Die WAF wendet eine sitzungsbasierte Cookieaffinität an und führt nach 30 Minuten Inaktivität des Clients ein Sitzungstimeout durch. (Der Zeitraum kann nach der Bereitstellung entsprechend den organisationsspezifischen Regeln konfiguriert werden.) |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -707,7 +707,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die von diesem Azure Blueprint bereitgestellten virtuellen Computer implementieren Datenträgerverschlüsselung, um die Vertraulichkeit und Integrität von ruhenden Informationen zu schützen. Die Azure-Datenträgerverschlüsselung für Windows wird mithilfe des BitLocker-Features von Windows implementiert. SQL Server ist für die Verwendung der TDE-Technologie (Transparent Data Encryption) konfiguriert, die Echtzeitverschlüsselung und -entschlüsselung von Daten und Protokolldateien ausführt, um ruhende Informationen zu schützen. TDE gewährleistet, dass gespeicherte Daten keinen unbefugten Zugriffen ausgesetzt sind. Kunden können bei Bedarf zusätzliche Kontrollmaßnahmen auf Anwendungsebene anwenden, um die Integrität der gespeicherten Informationen zu schützen. Die Vertraulichkeit und Integrität aller von dieser Azure Blueprint-Instanz bereitgestellten Speicherblobs sind durch die Verwendung der Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) geschützt. Die SSE schützt ruhende Daten innerhalb von Azure-Speicherkonten mithilfe von 256-Bit-AES-Verschlüsselung. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer implementieren Datenträgerverschlüsselung, um die Vertraulichkeit und Integrität ruhender Informationen zu schützen. Die Azure-Datenträgerverschlüsselung für Windows wird mithilfe des BitLocker-Features von Windows implementiert. SQL Server ist für die Verwendung der TDE-Technologie (Transparent Data Encryption) konfiguriert, die Echtzeitverschlüsselung und -entschlüsselung von Daten und Protokolldateien ausführt, um ruhende Informationen zu schützen. TDE gewährleistet, dass gespeicherte Daten keinen unbefugten Zugriffen ausgesetzt sind. Kunden können bei Bedarf zusätzliche Kontrollmaßnahmen auf Anwendungsebene anwenden, um die Integrität der gespeicherten Informationen zu schützen. Die Vertraulichkeit und Integrität aller durch diesen Blueprint bereitgestellten Speicherblobs sind durch die Verwendung der Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) geschützt. Die SSE schützt ruhende Daten innerhalb von Azure-Speicherkonten mithilfe von 256-Bit-AES-Verschlüsselung. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -721,5 +721,5 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **Kunde** | Die durch diesen Azure Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows verwaltet für jeden ausgeführten Prozess eine eigene Ausführungsdomäne, indem jedem Prozess ein privater virtueller Adressraum zugewiesen wird. |
+| **Kunde** | Die durch diesen Blueprint bereitgestellten virtuellen Computer führen Windows-Betriebssysteme aus. Windows verwaltet für jeden ausgeführten Prozess eine eigene Ausführungsdomäne, indem jedem Prozess ein privater virtueller Adressraum zugewiesen wird. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |

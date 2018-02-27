@@ -1,6 +1,6 @@
 ---
-title: 'FedRAMP Azure Blueprint Automation: Personalsicherheit'
-description: "Webanwendungen für FedRAMP: Personalsicherheit"
+title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP – Personalsicherheit"
+description: "Automatisierung von Webanwendungen für FedRAMP – Personalsicherheit"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ace6a78fe08d1dbabeb435d76e686ba9c61aac99
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 2b9095d0420987f9cad758e3c883a9e2b5cd60c4
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="personnel-security-ps"></a>Personalsicherheit (PS)
 
 > [!NOTE]
-> Diese Regulierungen werden von NIST und dem U.S. Department of Commerce als Teil der NIST-Sonderveröffentlichung 800-53 Revision 4 definiert. Informationen zu Testverfahren und Anleitungen für jede Regulierung finden Sie unter NIST 800-53 Rev. 4.
+> Diese Regelungen werden von NIST und dem U.S. Department of Commerce als Teil der NIST-Sonderveröffentlichung 800-53 Revision 4 definiert. Informationen zu Testverfahren und Anleitungen für jede Regulierung finden Sie unter NIST 800-53 Rev. 4.
 
 ## <a name="nist-800-53-control-ps-1"></a>NIST 800-53, Regulierung PS-1
 

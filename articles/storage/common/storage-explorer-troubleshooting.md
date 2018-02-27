@@ -1,5 +1,5 @@
 ---
-title: "Azure Storage Explorer – Leitfaden zur Problembehandlung | Microsoft-Dokumentation"
+title: "Azure Storage-Explorer – Leitfaden zur Problembehandlung | Microsoft-Dokumentation"
 description: "Übersicht über die beiden Debugfeatures von Azure"
 services: virtual-machines
 documentationcenter: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: 3187939fa813f941c2fe12a359df474a6c487c71
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 2f62de428d1915b1e070350a2837f24c3486f8c7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – Leitfaden zur Problembehandlung
+# <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
-Bei der Vorschauversion von Microsoft Azure Storage Explorer handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. Die App kann mit Storage-Konten verbunden werden, die in Azure, unabhängigen Clouds und Azure Stack gehostet werden.
+Bei der Vorschauversion von Microsoft Azure Storage-Explorer handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. Die App kann mit Storage-Konten verbunden werden, die in Azure, nationalen Clouds und Azure Stack gehostet werden.
 
-In diesem Leitfaden sind Lösungen für häufig aufgetretene Probleme in Storage Explorer zusammengefasst.
+In diesem Leitfaden sind Lösungen für häufig aufgetretene Probleme im Storage-Explorer zusammengefasst.
 
 ## <a name="sign-in-issues"></a>Probleme bei der Anmeldung
 
-Es werden nur AAD-Konten (Azure Active Directory) unterstützt. Wenn Sie ein AD FS-Konto verwenden, wird davon ausgegangen, dass die Anmeldung beim Storage Explorer nicht funktioniert. Bevor Sie fortfahren, starten Sie die Anwendung neu, und prüfen Sie, ob die Probleme so behoben werden können.
+Es werden nur AAD-Konten (Azure Active Directory) unterstützt. Wenn Sie ein AD FS-Konto verwenden, wird davon ausgegangen, dass die Anmeldung beim Storage-Explorer nicht funktioniert. Bevor Sie fortfahren, starten Sie die Anwendung neu, und prüfen Sie, ob die Probleme so behoben werden können.
 
 ### <a name="error-self-signed-certificate-in-certificate-chain"></a>Fehler: selbstsigniertes Zertifikat in der Zertifikatkette
 
@@ -38,7 +38,7 @@ Für diesen Fehler gibt es verschiedene Ursachen. Die beiden gängigsten Ursache
 
 2. Sie führen eine Anwendung aus, z.B. eine Antivirensoftware, die in die empfangenen HTTPS-Nachrichten ein selbstsigniertes SSL-Zertifikat einfügt.
 
-Wenn in Storage Explorer eines dieser Probleme auftritt, kann nicht mehr festgestellt werden, ob die empfangene HTTPS-Nachricht manipuliert wurde. Wenn Sie über eine Kopie des selbstsignierten Zertifikats verfügen, können Sie festlegen, dass es in Storage Explorer als vertrauenswürdig eingestuft wird. Wenn Sie nicht sicher sind, woher das Zertifikat eingefügt wurde, können Sie dies mit den folgenden Schritten feststellen:
+Wenn im Storage-Explorer eines dieser Probleme auftritt, kann nicht mehr festgestellt werden, ob die empfangene HTTPS-Nachricht manipuliert wurde. Wenn Sie über eine Kopie des selbstsignierten Zertifikats verfügen, können Sie festlegen, dass es im Storage-Explorer als vertrauenswürdig eingestuft wird. Wenn Sie nicht sicher sind, woher das Zertifikat eingefügt wurde, können Sie dies mit den folgenden Schritten feststellen:
 
 1. Installieren Sie OpenSSL.
 
@@ -57,9 +57,9 @@ Wenn in Storage Explorer eines dieser Probleme auftritt, kann nicht mehr festges
 
 5. Wenn Sie selbstsignierte Zertifikate gefunden haben, kopieren Sie für jedes Zertifikat den gesamten Inhalt von einschließlich **-----BEGIN CERTIFICATE-----** bis **-----END CERTIFICATE-----**, und fügen Sie ihn in eine neue CER-Datei ein.
 
-6. Öffnen Sie Storage Explorer, klicken Sie auf **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren**, suchen Sie über die Dateiauswahl die erstellten CER-Dateien, wählen Sie sie aus, und öffnen Sie sie.
+6. Öffnen Sie den Storage-Explorer, klicken Sie auf **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren**, suchen Sie über die Dateiauswahl die erstellten CER-Dateien, wählen Sie sie aus, und öffnen Sie sie.
 
-Wenn Sie mit den Schritten oben keine selbstsignierten Zertifikate finden, wenden Sie sich für weitere Unterstützung über das Feedbacktool an uns.
+Wenn Sie mit den oben beschriebenen Schritten keine selbstsignierten Zertifikate finden, wenden Sie sich über das Feedbacktool an uns, um weitere Unterstützung zu erhalten.
 
 ### <a name="unable-to-retrieve-subscriptions"></a>Abonnements können nicht abgerufen werden
 
@@ -69,11 +69,11 @@ Wenn Sie nach erfolgreicher Anmeldung Ihre Abonnements nicht abrufen können, f�
 
 - Stellen Sie sicher, dass die Anmeldung mit der richtigen Umgebung (Azure, Azure China, Azure Deutschland, Azure US-Regierung oder Benutzerdefinierte Umgebung/Azure Stack) erfolgt ist.
 
-- Wenn Sie sich hinter einem Proxy befinden, stellen Sie sicher, dass Sie den Storage Explorer-Proxy richtig konfiguriert haben.
+- Wenn Sie sich hinter einem Proxy befinden, stellen Sie sicher, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
 
 - Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
 
-- Löschen Sie die folgenden Dateien aus Ihrem Stammverzeichnis (d.h. „C:\Users\ContosoUser“), und fügen Sie dann das Konto wieder hinzu:
+- Löschen Sie die folgenden Dateien aus Ihrem Stammverzeichnis (d.h. „C:\Users\ContosoUser“), und fügen Sie dann das Konto erneut hinzu:
 
     - .adalcache
 
@@ -91,7 +91,7 @@ Wenn die Authentifizierungsseite nicht angezeigt wird, führen Sie zum Beheben d
 
 - Je nach Verbindungsgeschwindigkeit kann es eine Weile dauern, bis die Anmeldeseite geladen wird. Warten Sie mindestens eine Minute, bevor Sie das Dialogfeld für die Authentifizierung schließen.
 
-- Wenn Sie sich hinter einem Proxy befinden, stellen Sie sicher, dass Sie den Storage Explorer-Proxy richtig konfiguriert haben.
+- Wenn Sie sich hinter einem Proxy befinden, stellen Sie sicher, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
 
 - Zeigen Sie durch Drücken der Taste F12 die Entwicklerkonsole an. Prüfen Sie in den Antworten in der Entwicklerkonsole, ob diese Aufschluss darüber geben, warum die Authentifizierung nicht funktioniert.
 
@@ -116,7 +116,7 @@ Wenn Sie ein Konto nicht entfernen können oder der Link für die erneute Authen
     - „~/.config/StorageExplorer“ für Linux
 
 > [!NOTE]
->  Wenn Sie diese Dateien löschen, müssen Sie alle Ihre Anmeldeinformationen erneut eingeben.
+>  Nach dem Löschen der oben aufgeführten Dateien müssen Sie sich an Ihren Konten erneut anmelden.
 
 ## <a name="proxy-issues"></a>Proxyprobleme
 
@@ -130,7 +130,7 @@ Vergewissern Sie sich zunächst, dass Sie die folgenden Informationen richtig ei
 
 Wenn weiterhin Probleme auftreten, gehen Sie zur Behebung folgendermaßen vor:
 
-- Wenn Sie ohne Verwendung des Proxys eine Verbindung mit dem Internet herstellen können, überprüfen Sie, ob Storage Explorer ohne aktivierte Proxyeinstellungen ausgeführt wird. Wenn dies der Fall ist, liegt möglicherweise ein Problem mit den Proxyeinstellungen vor. Identifizieren Sie die Probleme zusammen mit dem Administrator für den Proxyserver.
+- Wenn Sie ohne Verwendung des Proxys eine Verbindung mit dem Internet herstellen können, überprüfen Sie, ob der Storage-Explorer ohne aktivierte Proxyeinstellungen ausgeführt wird. Wenn dies der Fall ist, liegt möglicherweise ein Problem mit den Proxyeinstellungen vor. Identifizieren Sie die Probleme zusammen mit dem Administrator für den Proxyserver.
 
 - Überprüfen Sie, ob andere Anwendungen, die den Proxyserver verwenden, wie erwartet ausgeführt werden.
 
@@ -138,7 +138,7 @@ Wenn weiterhin Probleme auftreten, gehen Sie zur Behebung folgendermaßen vor:
 
 - Vergewissern Sie sich, dass Antworten von den Dienstendpunkten empfangen werden können. Geben Sie eine der Endpunkt-URLs im Browser ein. Wenn Sie eine Verbindung herstellen können, sollten Sie eine XML-Antwort wie „InvalidQueryParameterValue“ oder eine ähnliche erhalten.
 
-- Wenn eine andere Person auch Storage Explorer mit Ihrem Proxyserver verwendet, überprüfen Sie, ob diese Person eine Verbindung herstellen kann. Wenn dies der Fall ist, müssen Sie sich möglicherweise an den Administrator für den Proxyserver wenden.
+- Wenn eine andere Person auch den Storage-Explorer mit Ihrem Proxyserver verwendet, überprüfen Sie, ob diese Person eine Verbindung herstellen kann. Wenn dies der Fall ist, müssen Sie sich möglicherweise an den Administrator für den Proxyserver wenden.
 
 ### <a name="tools-for-diagnosing-issues"></a>Tools zum Diagnostizieren von Problemen
 
@@ -148,7 +148,7 @@ Wenn Sie über Netzwerktools verfügen, z.B. Fiddler für Windows, können Sie d
 
 - Überprüfen Sie die vom Netzwerktool verwendete Portnummer.
 
-- Geben Sie die URL des lokalen Hosts und die Portnummer des Netzwerktools als Proxyeinstellungen in Storage Explorer ein. Bei korrekter Eingabe beginnt das Netzwerktool mit der Protokollierung der vom Storage Explorer an Verwaltungs- und Dienstendpunkte gesendeten Netzwerkanforderungen. Wenn Sie in einem Browser beispielsweise „https://cawablobgrs.blob.core.windows.net/“ für den Blobendpunkt eingeben, erhalten Sie eine Antwort ähnlich der folgenden, in der angegeben wird, dass die Ressource vorhanden ist, Sie jedoch keinen Zugriff darauf haben.
+- Geben Sie die URL des lokalen Hosts und die Portnummer des Netzwerktools als Proxyeinstellungen im Storage-Explorer ein. Bei korrekter Eingabe beginnt das Netzwerktool mit der Protokollierung der vom Storage-Explorer an Verwaltungs- und Dienstendpunkte gesendeten Netzwerkanforderungen. Wenn Sie in einem Browser beispielsweise „https://cawablobgrs.blob.core.windows.net/“ für den Blobendpunkt eingeben, erhalten Sie eine Antwort ähnlich der folgenden, in der angegeben wird, dass die Ressource vorhanden ist, Sie jedoch keinen Zugriff darauf haben.
 
 ![Codebeispiel](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
@@ -158,7 +158,7 @@ Wenn Ihre Proxyeinstellungen richtig sind, müssen Sie sich möglicherweise an d
 
 - sicherstellen, dass der Proxy nicht den Datenverkehr zu Azure Verwaltungs- oder Ressourcenendpunkten blockiert.
 
-- das von Ihrem Proxyserver verwendete Authentifizierungsprotokoll überprüfen. NTLM-Proxys werden derzeit von Storage Explorer nicht unterstützt.
+- das von Ihrem Proxyserver verwendete Authentifizierungsprotokoll überprüfen. NTLM-Proxys werden derzeit vom Storage-Explorer nicht unterstützt.
 
 ## <a name="unable-to-retrieve-children-error-message"></a>Fehlermeldung: Untergeordnete Elemente können nicht abgerufen werden
 
@@ -176,10 +176,18 @@ Wenn Sie eine Verbindung mit einem Dienst über eine SAS-URL herstellen und dies
 Wenn Sie versehentlich eine ungültige SAS-URL angefügt haben und diese nicht trennen können, führen Sie diese Schritte aus:
 1.  Drücken Sie im Storage-Explorer F12, um das Fenster mit den Entwicklertools zu öffnen.
 2.  Klicken Sie auf der Registerkarte „Anwendung“ und dann in der Struktur auf der linken Seite auf „Lokaler Speicher“ > „file://“.
-3.  Suchen Sie den Schlüssel, der dem Diensttyp des problematischen SAS-URI zugeordnet ist. Wenn z.B. der fehlerhafte SAS-URI für einen Blobcontainer gilt, suchen Sie den Schlüssel „StorageExplorer_AddStorageServiceSAS_v1_blob“.
+3.  Suchen Sie den Schlüssel, der dem Diensttyp des problematischen SAS-URI zugeordnet ist. Wenn z.B. der fehlerhafte SAS-URI für einen Blobcontainer gilt, suchen Sie nach dem Schlüssel mit dem Namen `StorageExplorer_AddStorageServiceSAS_v1_blob`.
 4.  Der Wert des Schlüssels sollte ein JSON-Array sein. Suchen Sie das Objekt, das dem fehlerhaften URI zugeordnet ist, und entfernen Sie es.
 5.  Drücken Sie STRG+R, um den Storage-Explorer neu zu laden.
 
+## <a name="linux-dependencies"></a>Linux-Abhängigkeiten
+
+Für andere Linux-Distributionen als Ubuntu 16.04 müssen Sie einige Abhängigkeiten ggf. manuell installieren. Die folgenden Pakete sind im Allgemeinen erforderlich:
+* libgconf-2-4
+* libsecret
+* Aktuelle GCC
+
+Abhängig von Ihrer Distribution müssen Sie möglicherweise weitere Pakete installieren. Die [Anmerkungen zu dieser Version](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) des Storage-Explorers enthalten spezielle Schritte für einige Distributionen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
