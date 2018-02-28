@@ -86,7 +86,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Speicher-
 
 3. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
 
-4. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie löschen möchten, und wählen Sie im Kontextmenü die Option **Löschen**. Sie können auch die ENTF-TASTE **** drücken, um die derzeit ausgewählte Dateifreigabe zu löschen.
+4. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie löschen möchten, und wählen Sie im Kontextmenü die Option **Löschen**. Sie können auch die **ENTF-TASTE** drücken, um die derzeit ausgewählte Dateifreigabe zu löschen.
 
     ![Löschen](media/vs-azure-tools-storage-explorer-files/image6.png)
 

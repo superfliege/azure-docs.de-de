@@ -44,7 +44,7 @@ Unter **Events dashboard** (Ereignis-Dashboard) wird eine Übersicht über die A
 
  Der obere Bereich des Dashboards zeigt den Verlauf aller Ereignisse, die in der letzten Woche verarbeitet wurden. In der unteren Hälfte des Dashboards sind relevante Ereignisse sowie alle Ereignisse nach Typ aufgeführt:
 
- - Zu relevanten Ereignissen ****zählen von Security Center bereitgestellte Ereignisabfragen sowie von Ihnen erstellte und hinzugefügte Ereignisabfragen. Das Dashboard bietet außerdem eine Kurzübersicht über die Anzahl der einzelnen relevanten Ereignisse.
+ - **Zu relevanten Ereignissen** zählen von Security Center bereitgestellte Ereignisabfragen sowie von Ihnen erstellte und hinzugefügte Ereignisabfragen. Das Dashboard bietet außerdem eine Kurzübersicht über die Anzahl der einzelnen relevanten Ereignisse.
  - Unter **All events by type** (Alle Ereignisse nach Typ) werden die empfangenen Ereignistypen und die Anzahl der einzelnen Typen angezeigt. Beispiele für Ereignistypen: SecurityEvent, CommonSecurityLog, WindowsFirewall und W3CIISLog.
 
 > [!NOTE]

@@ -71,7 +71,7 @@ Sie erstellen zunächst einen neuen Migrationsplan. Gehen Sie wie folgt vor, um 
     > [!NOTE]
     > Der Analysevorgang kann je nach Anzahl der Arbeitsbereichssammlungen und Umfang der Inhalte in den Arbeitsbereichssammlungen einige Minuten dauern.
 
-7. Nach Abschluss des Analysevorgangs**** werden Sie aufgefordert, den Migrationsplan zu speichern.
+7. Nach Abschluss des **Analysevorgangs** werden Sie aufgefordert, den Migrationsplan zu speichern.
 
 Damit haben Sie den Migrationsplan mit Ihrem Azure-Abonnement verbunden. Es folgen Informationen zum Ablauf beim Arbeiten mit dem Migrationsplan. Dieser umfasst die Schritte Analysieren und Planen der Migration, Herunterladen, Erstellen von Gruppen und Hochladen.
 

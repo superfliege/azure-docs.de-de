@@ -28,7 +28,7 @@ In der Stagingumgebung wird Ihr Angebot in einem privaten "Sandkasten" bereitges
    
     ![Abbildung](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
 2. Sollten Sie vom Veröffentlichungsportal auf Fehler hingewiesen werden, beheben Sie sie.
-3. Geben Sie im Dialogfeld für den Zugriff auf Ihr in der Stagingumgebung bereitgestelltes Angebot **** die Azure-Abonnements an, die Sie für die Vorschau Ihres Angebots im [Azure-Vorschauportal](https://portal.azure.com)verwenden möchten.
+3. Geben Sie im Dialogfeld für den Zugriff auf Ihr in der **Stagingumgebung bereitgestelltes Angebot** die Azure-Abonnements an, die Sie für die Vorschau Ihres Angebots im [Azure-Vorschauportal](https://portal.azure.com)verwenden möchten.
    
    > [!NOTE]
    > Erstellen Sie bei virtuellen Computern und Lösungsvorlagen bitte **nicht** eine Whitelist von Abonnements der Typen CSP, DreamSpark oder Azure in Open.
