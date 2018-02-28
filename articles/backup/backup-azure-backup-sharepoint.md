@@ -217,7 +217,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
    > Da die SharePoint-Farm mit langfristiger Aufbewahrung in Azure geschützt ist, sind auf dem DPM-Server keine Kataloginformationen (Metadaten) verfügbar. Wenn also eine Zeitpunktwiederherstellung einer SharePoint-Inhaltsdatenbank erforderlich ist, muss die SharePoint-Farm neu katalogisiert werden.
    > 
    > 
-3. Klicken Sie auf die entsprechende Option ****.
+3. Klicken Sie auf **die entsprechende** Option.
    
     ![DPM SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
    

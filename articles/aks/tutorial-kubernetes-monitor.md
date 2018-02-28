@@ -42,7 +42,7 @@ Klicken Sie im Azure-Portal auf **Ressource erstellen**, und suchen Sie nach `Co
 
 Erstellen Sie einen neuen OMS-Arbeitsbereich, oder wählen Sie einen vorhandenen aus. Das OMS-Arbeitsbereichsformular unterstützt Sie bei diesem Vorgang.
 
-Aktivieren Sie beim Erstellen des Arbeitsbereichs das Kontrollkästchen **	An das Dashboard anheften**, damit Informationen leicht abrufbar sind.
+Aktivieren Sie beim Erstellen des Arbeitsbereichs das Kontrollkästchen **An das Dashboard anheften**, damit Informationen leicht abrufbar sind.
 
 ![OMS-Arbeitsbereich](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
 
