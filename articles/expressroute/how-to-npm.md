@@ -1,9 +1,9 @@
 ---
-title: "Konfigurieren des Netzwerkleistungsmonitors für Azure ExpressRoute-Verbindungen (Vorschau) | Microsoft-Dokumentation"
-description: "Konfigurieren des Netzwerkleistungsmonitors für Azure ExpressRoute-Verbindungen (Vorschau)"
+title: "Konfigurieren des Netzwerkleistungsmonitors für Azure ExpressRoute-Leitungen | Microsoft-Dokumentation"
+description: "Konfigurieren Sie die cloudbasierte Netzwerküberwachung für Azure ExpressRoute-Leitungen."
 documentationcenter: na
 services: expressroute
-author: cherylmc
+author: ajaycode
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2018
-ms.author: pareshmu
-ms.openlocfilehash: 269c2e8a7867521b34128980e33ed97aa7b62a04
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.date: 02/14/2018
+ms.author: agummadi
+ms.openlocfilehash: 4d5bf1550ecd5982e51c0ae8d3917102d2f7c253
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute (Vorschau)
+# <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
 Der Netzwerkleistungsmonitor (Network Performance Monitor, NPM) ist eine cloudbasierte Lösung für die Netzwerküberwachung, die die Konnektivität zwischen Azure-Cloudbereitstellungen und lokalen Standorten (Zweigstellen usw.) überwacht. Der Netzwerkleistungsmonitor ist Teil von Microsoft Operations Management Suite (OMS). Der Netzwerkleistungsmonitor bietet nun eine Erweiterung für ExpressRoute, durch die Sie die Netzwerkleistung über ExpressRoute-Verbindungen überwachen können, die dafür konfiguriert sind, privates Peering zu verwenden. Wenn Sie den Netzwerkleistungsmonitor für ExpressRoute konfigurieren, können Sie Netzwerkprobleme erkennen, die identifiziert und entfernt werden sollen.
 
@@ -62,9 +62,15 @@ Sie können ExpressRoute-Verbindungen in jedem Teil der Welt mit einem Arbeitsbe
 
 Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte oder Dienste zu überwachen, und bereits einen Arbeitsbereich in einer der unterstützten Regionen besitzen, können Sie die Schritte 1 und 2 überspringen und Ihre Konfiguration mit Schritt 3 beginnen.
 
-## <a name="configure"></a>Schritt 1: Erstellen eines Arbeitsbereichs (im Abonnement der mit den ExpressRoute-Leitungen verknüpften VNETs)
+## <a name="configure"></a>Schritt 1: Erstellen eines Arbeitsbereichs
+
+Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den ExpressRoute-Leitungen verknüpft sind.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, in dem Peering der VNETs mit Ihrer ExpressRoute-Leitung eingerichtet ist. Suchen Sie anschließend über den **Marketplace** in der Liste der Dienste nach „Netzwerkleistungsmonitor“. Klicken Sie in die Ausgabe, um die Seite **Netzwerkleistungsmonitor** zu öffnen.
+
+>[!NOTE]
+>Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden.  Wenn Sie einen vorhandenen Arbeitsbereich verwenden möchten, müssen Sie sicherstellen, dass der Arbeitsbereich zur neuen Abfragesprache migriert wurde. [Weitere Informationen](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+>
 
   ![Portal](.\media\how-to-npm\3.png)<br><br>
 2. Klicken Sie im unteren Bereich der Hauptseite **Netzwerkleistungsmonitor** auf **Erstellen**, um die Seite **Network Performance Monitor – Create new solution** (Netzwerkleistungsmonitor – Neue Lösung erstellen) zu öffnen. Klicken Sie auf **OMS Workspace – select a workspace** (OMS-Arbeitsbereich – Arbeitsbereich auswählen), um die Seite „Arbeitsbereich“ zu öffnen. Klicken Sie auf **+ Neuen Arbeitsbereich erstellen**, um die Seite „Arbeitsbereich“ zu öffnen.
@@ -79,29 +85,25 @@ Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte ode
   >[!NOTE]
   >Die ExpressRoute-Verbindung kann sich an einer beliebigen Stelle auf der ganzen Welt befinden. Sie muss nicht in der gleichen Region wie der Arbeitsbereich liegen.
   >
-
-
+  
   ![Arbeitsbereich](.\media\how-to-npm\4.png)<br><br>
 4. Klicken Sie auf **OK**, um die Einstellungsvorlage zu speichern und bereitzustellen. Sobald die Vorlage überprüft wurde, klicken Sie auf **Erstellen**, um den Arbeitsbereich bereitzustellen.
 5. Nachdem der Arbeitsbereich bereitgestellt wurde, navigieren Sie zu der Ressource **NetworkMonitoring(Name)**, die Sie erstellt haben. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Für die Lösung ist eine weitere Konfiguration erforderlich**.
 
   ![Zusätzliche Konfiguration](.\media\how-to-npm\5.png)
-6. Wählen Sie auf der Seite **Willkommen beim Netzwerkleistungsmonitor** **TCP für synthetische Transaktionen verwenden** aus, und klicken Sie dann auf **Absenden**. Die TCP-Transaktionen werden nur zum Herstellen und Trennen der Verbindung verwendet. Über diese TCP-Verbindungen werden keine Daten gesendet.
-
-  ![TCP für synthetische Transaktionen](.\media\how-to-npm\6.png)
 
 ## <a name="agents"></a>Schritt 2: Installieren und Konfigurieren von Agents
 
 ### <a name="download"></a>2.1: Herunterladen der Setup-Datei für den Agent
 
-1. Klicken Sie auf der Seite **Netzwerkleistungsmonitor – TCP-Setup** Ihrer Ressource im Abschnitt **OMS-Agents installieren** auf den Agent, der dem Prozessor Ihres Servers entspricht, und laden Sie die Setup-Datei herunter.
+1. Wechseln Sie zur Registerkarte **Allgemeine Einstellungen** auf der Seite **Konfiguration des Netzwerkleistungsmonitors** für Ihre Ressource. Klicken Sie auf den Agent, der dem Prozessoren des Servers aus dem Abschnitt **Installieren der OMS-Agents** entspricht, und laden Sie die Setupdatei herunter.
 
   >[!NOTE]
   >Der Agent muss auf einem Windows Server-Computer (2008 SP1 oder höher) installiert werden. Die Überwachung von ExpressRoute-Leitungen unter Verwendung des Windows Desktop- oder Linux-Betriebssystem wird nicht unterstützt. 
   >
   >
 2. Kopieren Sie dann die **Arbeitsbereich-ID** und den **Primärschlüssel**, und fügen Sie diese in Editor ein.
-3. Laden Sie im Abschnitt **Agents konfigurieren** das PowerShell-Skript herunter. Das PowerShell-Skript unterstützt Sie beim Öffnen des relevanten Firewallports für die TCP-Transaktionen.
+3. Laden Sie das PowerShell-Skript aus dem Abschnitt **Konfigurieren der OMS-Agents für die Überwachung per TCP-Protokoll** herunter. Das PowerShell-Skript unterstützt Sie beim Öffnen des relevanten Firewallports für die TCP-Transaktionen.
 
   ![PowerShell-Skript](.\media\how-to-npm\7.png)
 
@@ -211,7 +213,7 @@ Die Seite des Netzwerkleistungsmonitors enthält eine Seite für ExpressRoute, d
 
   ![Dashboard](.\media\how-to-npm\dashboard.png)
 
-### <a name="circuits"></a>Liste der Verbindungen
+### <a name="circuits"></a>Liste der Leitungen
 
 Klicken Sie auf die Kachel **ExpressRoute-Verbindungen**, um eine Liste aller überwachten ExpressRoute-Verbindungen anzuzeigen. Sie können eine Verbindung auswählen und deren Integritätsstatus, Trenddiagramme für den Paketverlust, Bandbreitennutzung und Latenz anzuzeigen. Die Diagramme sind interaktiv. Sie können ein benutzerdefiniertes Zeitfenster für das Zeichnen der Diagramme auswählen. Sie können die Maus über einen Bereich des Diagramms ziehen, um dieses zu vergrößern und detaillierte Datenpunkte anzuzeigen.
 

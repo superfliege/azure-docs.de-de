@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.openlocfilehash: b190fea06ffc2406d781c7edad091f097cca9c2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82915a92464f240591777595e878a534cde0136c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Verwenden von Power BI zum Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit
 
@@ -38,7 +38,7 @@ Sie erfahren, wie Sie mit Power BI von Azure IoT Hub empfangene Sensordaten in E
 - Erstellen und konfigurieren Sie einen Stream Analytics-Auftrag zum Übertragen von Daten von Ihrem IoT Hub zu Ihrem Power BI-Konto, und führen Sie ihn aus.
 - Erstellen und veröffentlichen Sie einen Power BI-Bericht zum Visualisieren der Daten.
 
-## <a name="what-you-need"></a>Erforderliches Element
+## <a name="what-you-need"></a>Voraussetzungen
 
 - Abschluss des Tutorials [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), in dem die folgenden Anforderungen behandelt werden:
   - Ein aktives Azure-Abonnement.
@@ -52,7 +52,7 @@ Sie erfahren, wie Sie mit Power BI von Azure IoT Hub empfangene Sensordaten in E
 
 ### <a name="create-a-stream-analytics-job"></a>Erstellen eines Stream Analytics-Auftrags
 
-1. Klicken Sie im Azure-Portal auf „Neu > Internet der Dinge (IoT) > Stream Analytics-Auftrag“.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressource erstellen** > **Internet der Dinge** > **Stream Analytics-Auftrag**.
 1. Geben Sie die folgenden Informationen für den Auftrag ein.
 
    **Auftragsname**: Der Name des Auftrags. Der Name muss global eindeutig sein.
@@ -65,7 +65,7 @@ Sie erfahren, wie Sie mit Power BI von Azure IoT Hub empfangene Sensordaten in E
 
    ![Erstellen eines Stream Analytics-Auftrags in Azure](media/iot-hub-live-data-visualization-in-power-bi/2_create-stream-analytics-job-azure.png)
 
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Create**.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Hinzufügen einer Eingabe zum Stream Analytics-Auftrag
 
@@ -78,7 +78,7 @@ Sie erfahren, wie Sie mit Power BI von Azure IoT Hub empfangene Sensordaten in E
    **Quelle**: Wählen Sie **IoT Hub** aus.
 
    **Consumergruppe**: Wählen Sie die Consumergruppe aus, die Sie zuvor erstellt haben.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Create**.
 
    ![Hinzufügen einer Eingabe zum Stream Analytics-Auftrag in Azure](media/iot-hub-live-data-visualization-in-power-bi/3_add-input-to-stream-analytics-job-azure.png)
 
@@ -98,7 +98,7 @@ Sie erfahren, wie Sie mit Power BI von Azure IoT Hub empfangene Sensordaten in E
    **Datasetname**: Geben Sie einen Datasetnamen ein.
 
    **Tabellenname**: Geben Sie einen Tabellennamen ein.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Create**.
 
    ![Hinzufügen einer Ausgabe zum Stream Analytics-Auftrag in Azure](media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6a9128f45d4199404019cee594842d59c7f1aaf3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b1915288feff8f1d9fc780fef40a247d1c35839
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="resource-providers-and-types"></a>Ressourcenanbieter und -typen
 
@@ -263,9 +263,9 @@ Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwen
 
 Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen aus diesem Ressourcenanbieter vorhanden sind.
 
-Wählen Sie **Weitere Dienste** aus, um Informationen für einen bestimmten Ressourcenanbieter anzuzeigen.
+Wählen Sie **Alle Dienste** aus, um Informationen zu einem bestimmten Ressourcenanbieter anzuzeigen.
 
-![„Weitere Dienste“ auswählen](./media/resource-manager-supported-services/more-services.png)
+![Auswahl von „Alle Dienste“](./media/resource-manager-supported-services/more-services.png)
 
 Suchen Sie nach **Ressourcen-Explorer**, und wählen Sie ihn in den verfügbaren Optionen aus.
 

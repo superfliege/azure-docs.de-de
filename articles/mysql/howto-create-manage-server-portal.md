@@ -9,11 +9,11 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 6e9c541aac1241b6af0e4a58f5591d46f9a98c40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b73fe2214a165d7c02c0a58551d8b84bee39f919
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Erstellen und Verwalten eines Servers mit Azure-Datenbank für MySQL im Azure-Portal
 In diesem Artikel wird beschrieben, wie Sie auf schnelle Weise einen neuen Server für eine Azure Database for MySQL erstellen können. Außerdem erhalten Sie Informationen zum Verwalten des Servers mithilfe des Azure-Portals. Die Serververwaltung umfasst das Anzeigen von Serverdetails und Datenbanken, die Kennwortzurücksetzung und das Löschen des Servers.
@@ -21,10 +21,10 @@ In diesem Artikel wird beschrieben, wie Sie auf schnelle Weise einen neuen Serve
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen einer Azure-Datenbank für MySQL-Server
+## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Servers für Azure-Datenbank für MySQL
 Führen Sie die folgenden Schritte aus, um einen Server für eine Azure Database for MySQL mit dem Namen „mysqlserver4demo“ zu erstellen.
 
-1. Klicken Sie oben links im Azure-Portal auf die Schaltfläche **Neu**.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 
 2. Wählen Sie auf der Seite „Neu“ die Option **Datenbanken** und anschließend auf der Seite „Datenbanken“ die Option **Azure Database for MySQL** aus.
 

@@ -1,5 +1,5 @@
 ---
-title: "Einführung in Azure Network Watcher | Microsoft Docs"
+title: "Einführung in Azure Network Watcher | Microsoft-Dokumentation"
 description: "Diese Seite enthält eine Übersicht über den Network Watcher-Dienst für die Überwachung und Visualisierung von verbundenen Ressourcen in Azure."
 services: network-watcher
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: eecb20d4a53478471c238018d8fbd5a5f9cb79d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8a8e0653221af126ea137b1450ce27c29791ae3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Übersicht über die Azure-Netzwerküberwachung
 
@@ -46,7 +46,7 @@ Network Watcher verfügt derzeit über die folgenden Funktionen:
 * **[Problembehandlung für Virtual Network-Gateways und -Verbindungen:](network-watcher-troubleshoot-manage-rest.md)** bietet die Möglichkeit zum Beheben von Problemen, die bei Virtual Network-Gateways und -Verbindungen auftreten können.
 * **[Grenzwerte für Netzwerkabonnements:](#network-subscription-limits)** ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
 * **[Konfigurieren von Diagnoseprotokollen:](#diagnostic-logs)** stellt einen zentralen Bereich für das Aktivieren oder Deaktivieren von Diagnoseprotokollen für Netzwerkressourcen in einer Ressourcengruppe bereit.
-* **[Konnektivität (Vorschau):](network-watcher-connectivity-overview.md)** Überprüft, ob von einem virtuellen Computer zu einem bestimmten Endpunkt eine direkte TCP-Verbindung hergestellt werden kann.
+* **[Problembehandlung für Verbindungen:](network-watcher-connectivity-overview.md)** Überprüft, ob von einem virtuellen Computer zu einem bestimmten, um Azure-Kontext erweiterten Endpunkt eine direkte TCP-Verbindung hergestellt werden kann.
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Rollenbasierte Zugriffssteuerung (RBAC) in Network Watcher
 
@@ -57,9 +57,9 @@ Network Watcher verwendet das [Azure-Modell zur rollenbasierten Zugriffssteuerun
 |Microsoft.Storage/ |Lesen|
 |Microsoft.Authorization/| Lesen| 
 |Microsoft.Resources/subscriptions/resourceGroups/| Lesen|
-|Microsoft.Storage/storageAccounts/listServiceSas/ | Aktion|
-|Microsoft.Storage/storageAccounts/listAccountSas/ |Aktion|
-|Microsoft.Storage/storageAccounts/listKeys/ | Aktion|
+|Microsoft.Storage/storageAccounts/listServiceSas/ | anzuzeigen.|
+|Microsoft.Storage/storageAccounts/listAccountSas/ |anzuzeigen.|
+|Microsoft.Storage/storageAccounts/listKeys/ | anzuzeigen.|
 |Microsoft.Compute/virtualMachines/ |Lesen|
 |Microsoft.Compute/virtualMachines/ |Schreiben|
 |Microsoft.Compute/virtualMachineScaleSets/ |Lesen|

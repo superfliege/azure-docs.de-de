@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
-ms.openlocfilehash: c71e188b74ebfd9420f840957e83190cf476b584
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2042bc44df7d3d61bf52d28a910dae1b125b9fdb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -81,7 +81,7 @@ Ja. Sie können benutzerdefinierte Routen (UDR) verwenden. Weitere Informationen
 Nein. Wir bieten keine Multicasting- oder Broadcastingunterstützung.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>Welche Protokolle werden innerhalb von VNets unterstützt?
-Sie können die Protokolle TCP, UDP und ICMP TCP/IP in VNets verwenden. Verkapselte Multicast-, Broadcast- und IP-in-IP-Pakete sowie GRE-Pakete (Generic Routing Encapsulation) werden blockiert. 
+Sie können die Protokolle TCP, UDP und ICMP TCP/IP in VNets verwenden. Unicast wird innerhalb von VNETs unterstützt, mit Ausnahme von DHCP (Dynamic Host Configuration Protocol) per Unicast (Quellport UDP/68 Quelle, Zielport UDP 67). Verkapselte Multicast-, Broadcast- und IP-in-IP-Pakete sowie GRE-Pakete (Generic Routing Encapsulation) werden blockiert. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Kann ich meine Standardrouter innerhalb eines VNet mit "ping" abfragen?
 Nein.

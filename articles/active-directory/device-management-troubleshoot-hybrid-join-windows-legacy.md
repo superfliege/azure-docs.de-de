@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f1b92c604e20198714e9697bf4d08b3f71f23ae3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5657df412b1f2b7d4d43d7551289620ae4d77de2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
@@ -82,6 +82,18 @@ Wenn die Hybrideinbindung in Azure AD nicht erfolgreich war, enthält das Dialog
 - Sie sind nicht als Domänenbenutzer angemeldet
 
     ![Workplace Join für Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/03.png)
+    
+    Dieses Problem kann aus verschiedenen Gründen auftreten:
+    
+    1. Der angemeldete Benutzer ist kein Domänenbenutzer (sondern beispielsweise ein lokaler Benutzer). Eine Azure AD-Hybrideinbindung auf Geräten niedriger Ebene wird nur für Domänenbenutzer unterstützt.
+    
+    2. „Autoworkplace.exe“ kann sich aus irgendeinem Grund nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Einige mögliche Gründe: Probleme bei ausgehenden Netzwerkverbindungen mit Azure AD-URLs (überprüfen Sie die Voraussetzungen) oder MFA ist für den Benutzer aktiviert/konfiguriert, aber WIAORMUTLIAUTHN ist auf dem Verbundserver nicht konfiguriert (überprüfen Sie die Konfigurationsschritte). Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch „Autoworkplace.exe“ daran gehindert wird, unbeaufsichtigt ein Token abzurufen. 
+    
+    3. Wenn die Organisation das nahtlose einmalige Anmelden von Azure AD verwendet, sind die folgenden URLs in den IE-Intraneteinstellungen des Geräts nicht vorhanden:
+    - https://autologon.microsoftazuread-sso.com
+    - https://aadg.windows.net.nsatc.net
+    
+    Die Einstellung „Aktualisierungen der Statusleiste per Skript zulassen“ muss für die Intranetzone aktiviert sein.
 
 - Ein Kontingent wurde erreicht
 

@@ -14,59 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/19/2018
+ms.date: 02/13/2018
 ms.author: larryfr
-ms.openlocfilehash: 5f66e60249af489e695029cbb072f3cc881bb039
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: af5fe44b611e8ff9d93aba8a30c71213c452aff9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Verwenden der Ambari-Hive-Ansicht mit Hadoop in HDInsight
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-In diesem Artikel wird das folgende Thema erläutert: Ausführen von Hive-Abfragen mithilfe der Ambari-Hive-Ansicht. Ambari ist ein Verwaltungs- und Überwachungsdienstprogramm, das mit Linux-basierten HDInsight-Clustern bereitgestellt wird. Eines der in Ambari bereitgestellten Features ist eine Webbenutzeroberfläche, die zum Ausführen von Hive-Abfragen verwendet werden kann.
-
-> [!NOTE]
-> Ambari verfügt über viele Funktionen, die in diesem Dokument nicht beschrieben werden. Weitere Informationen finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).
+In diesem Artikel wird das folgende Thema erläutert: Ausführen von Hive-Abfragen mithilfe der Ambari-Hive-Ansicht. In der Hive-Ansicht können Sie Hive-Abfragen direkt in Ihrem Webbrowser erstellen, optimieren und ausführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Linux-basierter HDInsight-Cluster. Weitere Informationen zur Erstellung von Clustern finden Sie unter [Erste Schritte mit Hadoop in HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* Ein Linux-basierter Hadoop-Cluster in HDInsight, Version 3.4 oder höher.
 
-> [!IMPORTANT]
-> Die Schritte in diesem Dokument erfordern einen Azure HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > [!IMPORTANT]
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a name="open-the-hive-view"></a>Öffnen der Hive-Ansicht
+* Aus einem Webbrowser
 
-Sie können Ambari-Ansichten vom Azure-Portal aus öffnen. Wählen Sie Ihren HDInsight-Cluster, und wählen Sie dann im Abschnitt **Quicklinks** die Option **Ambari-Ansichten**.
+## <a name="run-a-hive-query"></a>Ausführen einer Hive-Abfrage
 
-![Abschnitt „Quicklinks“ des Portals](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
-Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
+2. Wählen Sie Ihren HDInsight-Cluster, und wählen Sie dann im Abschnitt **Quicklinks** die Option **Ambari-Ansichten**.
 
-![Die ausgewählte Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
+    ![Abschnitt „Quicklinks“ des Portals](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
 
-> [!NOTE]
-> Beim Zugriff auf Ambari werden Sie aufgefordert, sich bei der Website zu authentifizieren. Geben Sie den Administratorkontonamen (standardmäßig `admin`) und das Kennwort ein, den bzw. das Sie beim Erstellen des Clusters verwendet haben.
+    Wenn Sie aufgefordert werden, sich zu authentifizieren, verwenden Sie den Kontonamen und das Kennwort der Clusteranmeldung (standardmäßig `admin`), die Sie bei der Erstellung des Clusters angegeben haben.
 
-Eine Seite ähnlich der folgenden Abbildung wird angezeigt:
+3. Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
 
-![Abbildung des Arbeitsblatts „Abfragen“ für die Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/ambari-hive-view.png)
+    ![Die ausgewählte Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
 
-## <a name="run-a-query"></a>Ausführen einer Abfrage
+    Die Seite „Hive-Ansicht“ ähnelt der folgenden Abbildung:
 
-Um eine Hive-Abfrage auszuführen, verwenden Sie die folgenden Schritte aus der Hive-Ansicht.
+    ![Abbildung des Arbeitsblatts „Abfragen“ für die Hive-Ansicht](./media/apache-hadoop-use-hive-ambari-view/ambari-hive-view.png)
 
-1. Kopieren Sie folgende HiveQL-Anweisungen aus der Registerkarte __Query__ (Abfrage) in das Arbeitsblatt:
+4. Kopieren Sie folgende HiveQL-Anweisungen aus der Registerkarte __Query__ (Abfrage) in das Arbeitsblatt:
 
     ```hiveql
     DROP TABLE log4jLogs;
-    CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+    CREATE EXTERNAL TABLE log4jLogs(
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
+        WHERE t4 = '[ERROR]' 
+        GROUP BY t4;
     ```
 
     Diese Anweisungen führen die folgenden Aktionen aus:
@@ -82,42 +87,20 @@ Um eine Hive-Abfrage auszuführen, verwenden Sie die folgenden Schritte aus der 
 
    * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte „t4“ den Wert „[ERROR]“ enthält.
 
-     > [!NOTE]
-     > Wenn Sie erwarten, dass die zugrunde liegenden Daten über eine externe Quelle, z.B. einen automatisierten Prozess zum Hochladen von Daten oder einen anderen MapReduce-Vorgang aktualisiert werden, verwenden Sie externe Tabellen. Durch das Löschen einer externen Tabelle werden *nicht* die Daten, sondern nur die Tabellendefinitionen gelöscht.
-
     > [!IMPORTANT]
     > Belassen Sie die Auswahl der __Database__ (Datenbank) bei __default__ (Standard). Die Beispiele in diesem Dokument verwenden die Standarddatenbank, die in HDInsight enthalten ist.
 
-2. Klicken Sie auf die Schaltfläche **Execute** (Ausführen) unter dem Arbeitsblatt, um die Abfrage zu starten. Die Schaltfläche wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
+5. Klicken Sie auf die Schaltfläche **Execute** (Ausführen) unter dem Arbeitsblatt, um die Abfrage zu starten. Die Schaltfläche wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
 
-3. Nach Abschluss der Abfrage werden in der Registerkarte **Results** (Ergebnisse) die Ergebnisse des Vorgangs angezeigt. Der folgende Text ist das Ergebnis der Abfrage:
+6. Nach Abschluss der Abfrage werden in der Registerkarte **Results** (Ergebnisse) die Ergebnisse des Vorgangs angezeigt. Der folgende Text ist das Ergebnis der Abfrage:
 
-        sev       cnt
-        [ERROR]   3
+        loglevel       count
+        [ERROR]        3
 
     Sie können auf der Registerkarte **Logs** die vom Auftrag erstellten Protokollinformationen anzeigen.
 
    > [!TIP]
    > Im Dropdowndialogfeld **Save results** in der oberen linken Ecke des Abschnitts **Query Process Results** können Sie Ergebnisse herunterladen oder speichern.
-
-4. Wählen Sie die ersten vier Zeilen dieser Abfrage aus, und klicken Sie auf **Execute**. Beachten Sie, dass keine Ergebnisse vorliegen, wenn der Auftrag abgeschlossen ist. Wenn ein Teil der Abfrage ausgewählt ist, werden bei Verwendung der Schaltfläche **Ausführen** nur die ausgewählten Anweisungen ausgeführt. In diesem Fall enthielt die Auswahl nicht die letzte Anweisung, die Zeilen aus der Tabelle abruft. Wenn Sie nur diese Zeile auswählen und **Ausführen** verwenden, sollten die erwarteten Ergebnisse angezeigt werden.
-
-5. Um ein Arbeitsblatt hinzuzufügen, klicken Sie auf die Schaltfläche **New Worksheet** (Neues Arbeitsblatt) am unteren Rand des **Query Editor** (Abfrage-Editors). Geben Sie in das neue Arbeitsblatt die folgenden HiveQL-Anweisungen ein:
-
-    ```hiveql
-    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-    INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
-    ```
-
-  Diese Anweisungen führen die folgenden Aktionen aus:
-
-   * **CREATE TABLE IF NOT EXISTS**: Erstellt eine Tabelle, sofern diese noch nicht vorhanden ist. Da das Schlüsselwort **EXTERNAL** nicht verwendet wird, wird eine interne Tabelle erstellt. Eine interne Tabelle wird im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet. Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
-
-   * **ALS ORC GESPEICHERT**: Speichert die Daten im ORC-Format (Optimized Row Columnar). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
-
-   * **ÜBERSCHREIBEN EINFÜGEN ... SELECT**: Wählt Zeilen in der Tabelle **log4jLogs** aus, die `[ERROR]` enthalten, und fügt die Daten dann in die Tabelle **errorLogs** ein.
-
-Verwenden Sie die Schaltfläche **Ausführen**, um diese Abfrage auszuführen. Die Registerkarte **Ergebnisse** enthält keine Informationen, wenn die Abfrage keine Zeilen zurückgibt. Sobald die Abfrage abgeschlossen ist, sollte der Status **SUCCEEDED** angezeigt werden.
 
 ### <a name="visual-explain"></a>Visuelle Erläuterung
 
@@ -152,9 +135,14 @@ In der Registerkarte **Query** können Sie optional auch Abfragen speichern. Nac
 
 ![Abbildung der Registerkarte „Gespeicherte Abfragen“](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
 
+> [!TIP]
+> Gespeicherte Abfragen werden im Standard-Clusterspeicher gespeichert. Sie finden die gespeicherten Abfragen im Pfad `/user/<username>/hive/scripts`. Diese werden als Textdateien vom Typ `.hql` gespeichert.
+>
+> Wenn Sie den Cluster löschen, den Speicher jedoch beibehalten, können Sie die Abfragen mit einem Hilfsprogramm wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) oder Data Lake Storage-Explorer (aus dem [Azure-Portal](https://portal.azure.com)) abrufen.
+
 ## <a name="user-defined-functions"></a>Benutzerdefinierte Funktionen
 
-Sie können Hive kann auch über benutzerdefinierte Funktionen (UDF) erweitern. Mit einer UDF-Datei können Sie Funktionen oder Logik implementieren, die sich nicht einfach in HiveQL modellieren lässt.
+Sie können Hive über benutzerdefinierte Funktionen (UDF) erweitern. Mit einer UDF-Datei können Sie Funktionen oder Logik implementieren, die sich nicht einfach in HiveQL modellieren lässt.
 
 Deklarieren und speichern Sie eine Gruppe von UDFs mit der Registerkarte **UDF** ganz oben in der Hive-Ansicht. Diese UDFs können im **Abfrage-Editor** verwendet werden.
 

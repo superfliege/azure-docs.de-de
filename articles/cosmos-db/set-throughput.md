@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: 8797910651c54baa3529b015d4195cf2a5c06ece
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: afbb3392a4726ea067bf19c117792b866d9e79f3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Festlegen von Durchsatz für Azure Cosmos DB-Container
 
@@ -49,7 +49,7 @@ In der folgenden Tabelle sind die für Container verfügbaren Durchsätze aufgef
 ## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>Festlegen des Durchsatzes mithilfe des Azure-Portals
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) in einem neuen Fenster.
-2. Klicken Sie in der linken Leiste auf **Azure Cosmos DB**, oder klicken Sie unten auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, und klicken Sie dann auf **Azure Cosmos DB**.
+2. Klicken Sie in der linken Leiste auf **Azure Cosmos DB**, oder klicken Sie unten auf **Alle Dienste**, scrollen Sie zu **Datenbanken**, und klicken Sie dann auf **Azure Cosmos DB**.
 3. Wählen Sie Ihr Cosmos DB-Konto aus.
 4. Klicken Sie im neuen Fenster im Navigationsmenü auf **Daten-Explorer**.
 5. Erweitern Sie im neuen Fenster die Datenbank und den Container, und klicken Sie dann auf **Skalierungseinstellungen**.

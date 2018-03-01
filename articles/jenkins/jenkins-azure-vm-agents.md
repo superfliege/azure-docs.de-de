@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: dbb30809ab68079666ecfa81a896c1d5101fb6fb
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 4d45ed14be499ed927f1433e134a029066146eea
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalieren Ihrer Jenkins-Bereitstellungen für verschiedene Anforderungen mit Azure-VM-Agents
 
@@ -91,7 +91,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
             }
      ```
 
-    Der fertig gestellte sollte folgende Werte verwenden: das Feld `id` für die **Subscription ID**, den `appId`-Wert für die **Client ID**, `password` für das **Client Secret** und eine URL für den **OAuth 2.0 Token Endpoint** `https://login.windows.net/<tenant_value>`. Wählen Sie **Add**, um den Dienstprinzipal hinzuzufügen, und konfigurieren Sie dann das Plug-In für die Verwendung der neu erstellten Anmeldeinformationen.
+    Der fertig gestellte Dienstprinzipal sollte folgende Werte verwenden: das Feld `id` für die **Subscription ID**, den `appId`-Wert für die **Client ID**, `password` für das **Client Secret** und `tenant` für die **Tenant ID**. Wählen Sie **Add**, um den Dienstprinzipal hinzuzufügen, und konfigurieren Sie dann das Plug-In für die Verwendung der neu erstellten Anmeldeinformationen.
 
     ![Konfigurieren eines Azure-Dienstprinzipals](./media/jenkins-azure-vm-agents/new-service-principal.png)
 

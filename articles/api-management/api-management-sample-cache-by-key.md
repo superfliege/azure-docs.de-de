@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 4a41e4e0be44e855ead253ad76fe5a3af52070ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 838850d38c9df51fabcf620831371bed401e9492
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Benutzerdefiniertes Caching in Azure API Management
-Der Azure API Management-Dienst verfügt über eine integrierte Unterstützung für das [HTTP-Antwort-Caching](api-management-howto-cache.md) mit der Ressourcen-URL als Schlüssel. Der Schlüssel kann durch Anforderungsheader mithilfe der `vary-by` -Eigenschaften geändert werden. Dies ist nützlich, wenn ganze HTTP-Antworten (auch als Darstellungen bezeichnet) zwischengespeichert werden sollen. Die neuen [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) und [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) bieten die Möglichkeit zum Speichern und Abrufen von zufälligen Datenelementen aus Richtliniendefinitionen. Die neuen Richtlinien [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) -Richtlinie, da Sie nun Antworten von externen Diensten zwischenspeichern können.
+Der Azure API Management-Dienst verfügt über eine integrierte Unterstützung für das [HTTP-Antwort-Caching](api-management-howto-cache.md) mit der Ressourcen-URL als Schlüssel. Der Schlüssel kann durch Anforderungsheader mithilfe der `vary-by`-Eigenschaften geändert werden. Dies ist nützlich, wenn ganze HTTP-Antworten (auch als Darstellungen bezeichnet) zwischengespeichert werden sollen. Die neuen [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) und [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) bieten die Möglichkeit zum Speichern und Abrufen von zufälligen Datenelementen aus Richtliniendefinitionen. Die neuen Richtlinien [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest)-Richtlinie, da Sie nun Antworten von externen Diensten zwischenspeichern können.
 
 ## <a name="architecture"></a>Architektur
-Der API Management-Dienst verwendet einen freigegebenen Einzelmandanten-Datencache, sodass Sie beim Skalieren auf mehrere Einheiten weiterhin Zugriff auf die gleichen zwischengespeicherten Daten erhalten. Wenn Sie jedoch mit einer Bereitstellung arbeiten, die mehrere Regionen umfasst, gibt es in allen Regionen unabhängige Caches. Aus diesem Grund ist es wichtig, den Cache nicht als Datenspeicher zu behandeln, der als einzige Quelle für einzelne Informationen fungiert. Wenn dies der Fall ist und Sie sich später dazu entschieden haben, die Vorteile der Bereitstellung in mehreren Regionen zu nutzen, könnten Kunden mit Benutzern, die in mehreren Regionen unterwegs sind, den Zugriff auf die zwischengespeicherten Daten verlieren.
+Der API Management-Dienst verwendet einen freigegebenen Einzelmandanten-Datencache, sodass Sie beim Skalieren auf mehrere Einheiten weiterhin Zugriff auf die gleichen zwischengespeicherten Daten erhalten. Wenn Sie jedoch mit einer Bereitstellung arbeiten, die mehrere Regionen umfasst, gibt es in allen Regionen unabhängige Caches. Es ist wichtig, den Cache nicht als Datenspeicher zu behandeln, der als einzige Quelle für einzelne Informationen fungiert. Wenn dies der Fall ist und Sie sich später dazu entschieden haben, die Vorteile der Bereitstellung in mehreren Regionen zu nutzen, könnten Kunden mit Benutzern, die in mehreren Regionen unterwegs sind, den Zugriff auf die zwischengespeicherten Daten verlieren.
 
 ## <a name="fragment-caching"></a>Fragment-Caching
 Es gibt bestimmte Fälle, in denen die zurückgegebenen Antworten Daten enthalten, die teuer zu bestimmen sind und dennoch für einen angemessenen Zeitraum aktuell bleiben. Nehmen Sie beispielsweise einen Dienst, der von einer Fluggesellschaft erstellt wurde, um Informationen zu Flugreservierungen, dem Status von Flügen usw. bereitzustellen. Wenn der Benutzer am Punkteprogramm der Fluggesellschaft teilnimmt, sind zusätzlich dazu Informationen zum aktuellen Status und den gesammelten Meilen vorhanden. Diese benutzerbezogenen Informationen können in einem separaten System gespeichert werden; es kann aber auch wünschenswert sein, dass sie in den Antworten enthalten sind, die zum Flugstatus und den Reservierungen zurückgegeben werden. Dies kann durch einen Prozess namens Fragment-Caching erreicht werden. Die primäre Darstellung kann vom Ursprungsserver zurückgegeben werden, indem irgendein Token verwendet wird, das angibt, wo die benutzerbezogenen Informationen eingefügt werden sollen. 
@@ -42,13 +42,13 @@ Betrachten Sie die folgende JSON-Antwort aus einer Back-End-API:
 }  
 ```
 
-Und die sekundäre Ressource unter `/userprofile/{userid}` , die folgendermaßen aussieht:
+Und die sekundäre Ressource unter `/userprofile/{userid}`, die folgendermaßen aussieht:
 
 ```json
 { "username" : "Bob Smith", "Status" : "Gold" }
 ```
 
-Um die geeigneten Benutzerinformationen zu bestimmen, die enthalten sein sollen, muss zunächst der Endbenutzer identifiziert werden. Dieser Mechanismus hängt von der Implementierung ab. Als Beispiel verwende ich den `Subject`-Anspruch eines `JWT`-Tokens. 
+Um die geeigneten Benutzerinformationen zu bestimmen, die eingeschlossen werden sollen, muss API Management zunächst den Endbenutzer identifizieren. Dieser Mechanismus hängt von der Implementierung ab. Als Beispiel verwende ich den `Subject`-Anspruch eines `JWT`-Tokens. 
 
 ```xml
 <set-variable
@@ -56,7 +56,7 @@ Um die geeigneten Benutzerinformationen zu bestimmen, die enthalten sein sollen,
   value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 ```
 
-Wir speichern diesen `enduserid`-Wert zur späteren Verwendung in einer Kontextvariablen. Im nächsten Schritt wird festgestellt, ob eine vorherige Anforderung bereits die Benutzerinformationen abgerufen und im Cache gespeichert hat. Dazu verwenden wir die `cache-lookup-value` -Richtlinie.
+API Management speichert diesen `enduserid`-Wert zur späteren Verwendung in einer Kontextvariablen. Im nächsten Schritt wird festgestellt, ob eine vorherige Anforderung bereits die Benutzerinformationen abgerufen und im Cache gespeichert hat. Hierzu verwendet API Management die Richtlinie `cache-lookup-value`.
 
 ```xml
 <cache-lookup-value
@@ -64,7 +64,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-Wenn kein Eintrag im Cache vorhanden ist, der dem Schlüsselwert entspricht, wird keine `userprofile` -Kontextvariable erstellt. Wir überprüfen den Erfolg der Suche mithilfe der `choose` -Ablaufsteuerungsrichtlinie.
+Wenn kein Eintrag im Cache vorhanden ist, der dem Schlüsselwert entspricht, wird keine `userprofile` -Kontextvariable erstellt. API Management überprüft den Erfolg der Suche mithilfe der Ablaufsteuerungsrichtlinie `choose`.
 
 ```xml
 <choose>
@@ -74,7 +74,7 @@ Wenn kein Eintrag im Cache vorhanden ist, der dem Schlüsselwert entspricht, wir
 </choose>
 ```
 
-Wenn die `userprofile` -Kontextvariable nicht vorhanden ist, werden wir eine HTTP-Anforderung zum Abrufen vornehmen müssen.
+Wenn die Kontextvariable `userprofile` nicht vorhanden ist, muss API Management eine HTTP-Anforderung ausführen, um die Variable abzurufen.
 
 ```xml
 <send-request
@@ -91,7 +91,7 @@ Wenn die `userprofile` -Kontextvariable nicht vorhanden ist, werden wir eine HTT
 </send-request>
 ```
 
-Wir verwenden die `enduserid` , um die URL in der Profilressource zu erstellen. Nachdem wir die Antwort erhalten haben, können wir den Textkörper aus der Antwort ziehen und sie wieder in einer Kontextvariablen speichern.
+API Management verwendet `enduserid`, um die URL in der Profilressource zu erstellen. Nachdem API Management die Antwort empfangen hat, wird der Textkörper aus der Antwort extrahiert und in einer Kontextvariablen gespeichert.
 
 ```xml
 <set-variable
@@ -99,7 +99,7 @@ Wir verwenden die `enduserid` , um die URL in der Profilressource zu erstellen. 
     value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 ```
 
-Um eine erneute HTTP-Anforderung zu vermeiden, wenn derselbe Benutzer eine weitere Anforderung sendet, können wir das Benutzerprofil im Cache speichern.
+Um eine erneute HTTP-Anforderung durch API Management zu vermeiden, wenn derselbe Benutzer eine weitere Anforderung sendet, kann das Benutzerprofil im Cache gespeichert werden.
 
 ```xml
 <cache-store-value
@@ -107,11 +107,11 @@ Um eine erneute HTTP-Anforderung zu vermeiden, wenn derselbe Benutzer eine weite
     value="@((string)context.Variables["userprofile"])" duration="100000" />
 ```
 
-Wir speichern den Wert im Cache mit genau demselben Schlüssel, mit dem wir ihn ursprünglich versucht haben, abzurufen. Die Dauer, die wir zum Speichern des Werts wählen, sollte darauf basieren, wie oft die Informationen geändert werden und wie tolerant Benutzer mit veralteten Informationen umgehen. 
+API Management speichert den Wert mit genau demselben Schlüssel im Cache, mit dem API Management ursprünglich versucht hat, ihn abzurufen. Die Dauer, die API Management zum Speichern des Werts auswählt, sollte darauf basieren, wie oft die Informationen geändert werden und wie tolerant Benutzer mit veralteten Informationen umgehen. 
 
-Bitte beachten Sie, dass das Abrufen aus dem Cache noch immer eine prozessunabhängige Netzwerkanforderung ist, was die Dauer unter Umständen um Dutzende Millisekunden verlängert. Die Vorteile ergeben sich dann, wenn es im Vergleich dazu wesentlich länger dauert, die Benutzerprofilinformationen zu bestimmen, wenn Datenbankabfragen oder aggregierte Informationen aus mehreren Back-Ends benötigt werden.
+Bitte beachten Sie, dass das Abrufen aus dem Cache noch immer eine prozessunabhängige Netzwerkanforderung ist, was die Dauer unter Umständen um Dutzende Millisekunden verlängert. Die Vorteile ergeben sich dann, wenn es im Vergleich dazu länger dauert, die Benutzerprofilinformationen zu bestimmen, wenn Datenbankabfragen oder aggregierte Informationen aus mehreren Back-Ends benötigt werden.
 
-Als letzten Schritt im Prozess wird die zurückgegebene Antwort mit unseren Benutzerprofilinformationen aktualisiert.
+Als letzter Schritt im Prozess wird die zurückgegebene Antwort mit den Benutzerprofilinformationen aktualisiert.
 
 ```xml
 <!-- Update response body with user profile-->
@@ -120,7 +120,7 @@ Als letzten Schritt im Prozess wird die zurückgegebene Antwort mit unseren Benu
     to="@((string)context.Variables["userprofile"])" />
 ```
 
-Ich habe mich dazu entschieden, die Anführungszeichen als Teil des Tokens hinzuzufügen, sodass die Antwort weiterhin ein gültiges JSON-Format besitzt, auch wenn sie nicht ersetzt werden muss. Dies erleichtert in erster Linie das Debugging.
+Sie können die Anführungszeichen als Teil des Tokens hinzufügen, sodass die Antwort weiterhin ein gültiges JSON-Format besitzt, auch wenn sie nicht ersetzt werden muss.  
 
 Nachdem Sie alle Schritte miteinander kombiniert haben, ist das Endergebnis eine Richtlinie, die wie folgt aussieht:
 
@@ -137,7 +137,7 @@ Nachdem Sie alle Schritte miteinander kombiniert haben, ist das Endergebnis eine
           key="@("userprofile-" + context.Variables["enduserid"])"
           variable-name="userprofile" />
 
-        <!-- If we don’t find it in the cache, make a request for it and store it -->
+        <!-- If API Management doesn’t find it in the cache, make a request for it and store it -->
         <choose>
             <when condition="@(!context.Variables.ContainsKey("userprofile"))">
                 <!-- Make HTTP request to get user profile -->
@@ -181,9 +181,9 @@ Dieser Ansatz des Zwischenspeicherns wird hauptsächlich für Websites verwendet
 Dieselbe Art von Fragment-Caching kann mithilfe eines Redis-Cachingservers auf den Back-End-Webservern durchgeführt werden. Allerdings ist es nützlich, für diesen Vorgang den API Management-Dienst zu nutzen, wenn die zwischengespeicherten Fragmente aus anderen Back-Ends als die primären Antworten stammen.
 
 ## <a name="transparent-versioning"></a>Transparente Versionsverwaltung
-Es ist üblich, dass mehrere unterschiedliche Versionen von API-Implementierungen zu jedem Zeitpunkt unterstützt werden. Grund dafür kann zum Beispiel sein, dass verschiedene Umgebungen wie z. B. die Entwicklungs-, Test- oder Produktionsumgebung unterstützt werden sollen, oder um ältere Versionen der API zu unterstützen, damit API-Benutzer Zeit zum Migrieren auf neuere Versionen haben. 
+Es ist üblich, dass mehrere unterschiedliche Versionen von API-Implementierungen zu jedem Zeitpunkt unterstützt werden. Grund dafür kann zum Beispiel sein, dass verschiedene Umgebungen (z.B. Entwicklungs-, Test- oder Produktionsumgebung) unterstützt werden sollen, oder um ältere Versionen der API zu unterstützen, damit API-Benutzer Zeit zum Migrieren auf neuere Versionen haben. 
 
-Statt die Cliententwickler dazu anzuhalten, die URLs von `/v1/customers` auf `/v2/customers` zu ändern, besteht ein Ansatz darin, in den Benutzerprofildaten die aktuell verwendete API-Version zu speichern und die entsprechende Back-End-URL aufzurufen. Um die richtige Back-End-URL zu bestimmen, die einen bestimmten Client aufruft, müssen einige Konfigurationsdaten abgefragt werden. Durch Zwischenspeichern der Konfigurationsdaten können wir die durch diese Suche verursachten Leistungseinbußen minimieren.
+Statt die Cliententwickler dazu anzuhalten, die URLs von `/v1/customers` in `/v2/customers` zu ändern, besteht ein Ansatz darin, in den Benutzerprofildaten die aktuell verwendete API-Version zu speichern und die entsprechende Back-End-URL aufzurufen. Um die richtige Back-End-URL zu bestimmen, die einen bestimmten Client aufruft, müssen einige Konfigurationsdaten abgefragt werden. Durch Zwischenspeichern der Konfigurationsdaten kann API Management die durch diese Suche verursachten Leistungseinbußen minimieren.
 
 Der erste Schritt besteht darin, den für die Konfiguration der gewünschten Version verwendeten Bezeichner zu bestimmen. In diesem Beispiel habe ich die Version dem Abonnement-Produktschlüssel zugeordnet. 
 
@@ -191,7 +191,7 @@ Der erste Schritt besteht darin, den für die Konfiguration der gewünschten Ver
 <set-variable name="clientid" value="@(context.Subscription.Key)" />
 ```
 
-Wir führen anschließend eine Cachesuche durch, um festzustellen, ob wir bereits die gewünschte Clientversion abgerufen haben.
+Anschließend führt API Management eine Cachesuche durch, um festzustellen, ob die gewünschte Clientversion bereits abgerufen wurde.
 
 ```xml
 <cache-lookup-value
@@ -199,14 +199,14 @@ key="@("clientversion-" + context.Variables["clientid"])"
 variable-name="clientversion" />
 ```
 
-Dann prüfen wir, ob wir sie nicht im Cache finden.
+Dann überprüft API Management, ob die gewünschte Version im Cache gefunden wurde.
 
 ```xml
 <choose>
     <when condition="@(!context.Variables.ContainsKey("clientversion"))">
 ```
 
-Falls dies nicht der Fall ist, rufen wir sie ab.
+Falls dem nicht so ist, ruft API Management die Clientversion ab.
 
 ```xml
 <send-request
@@ -243,7 +243,7 @@ Schließlich aktualisieren wir die Back-End-URL, sodass die Version des Diensts 
       base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
 ```
 
-Die vollständige Richtlinie sieht wie folgt aus.
+Die vollständige Richtlinie sieht wie folgt aus:
 
 ```xml
 <inbound>
@@ -251,7 +251,7 @@ Die vollständige Richtlinie sieht wie folgt aus.
     <set-variable name="clientid" value="@(context.Subscription.Key)" />
     <cache-lookup-value key="@("clientversion-" + context.Variables["clientid"])" variable-name="clientversion" />
 
-    <!-- If we don’t find it in the cache, make a request for it and store it -->
+    <!-- If API Management doesn’t find it in the cache, make a request for it and store it -->
     <choose>
         <when condition="@(!context.Variables.ContainsKey("clientversion"))">
             <send-request mode="new" response-variable-name="clientconfiguresponse" timeout="10" ignore-error="true">
@@ -277,7 +277,3 @@ Anstatt eine bevorzugte Version der API für jeden Abonnement-Schlüssel zurück
 
 ## <a name="summary"></a>Zusammenfassung
 Die Freiheit, den Azure API Management-Cache zum Speichern aller Art von Daten zu verwenden, ermöglicht den effizienten Zugriff auf Konfigurationsdaten, was sich auf die Art und Weise auswirkt, wie eine eingehende Anforderung verarbeitet wird. Der Cache kann auch zum Speichern von Datenfragmenten genutzt werden, was die aus einer Back-End-API zurückgegebenen Antworten erweitern kann.
-
-## <a name="next-steps"></a>Nächste Schritte
-Bitte geben Sie uns im Disqus-Thread Feedback zu diesem Thema, wenn es weitere Szenarien gibt, die Sie mit diesen Richtlinien erzeugt haben, oder wenn es Szenarien gibt, die Sie erzielen möchten, wobei Sie nicht wissen, wie dies momentan möglich ist.
-

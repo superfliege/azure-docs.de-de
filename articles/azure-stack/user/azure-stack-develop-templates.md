@@ -3,8 +3,8 @@ title: "Entwickeln von Vorlagen für Azure Stack | Microsoft-Dokumentation"
 description: "Informationen zu bewährten Methoden für Azure Stack-Vorlagen"
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 8a5bc713-6f51-49c8-aeed-6ced0145e07b
 ms.service: azure-stack
@@ -12,25 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
-ms.author: helaw
-ms.openlocfilehash: b9109c58b29d5f09f1a86068a87c5e7f839228af
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.date: 02/20/2018
+ms.author: brenduns
+ms.reviewer: jeffgo
+ms.openlocfilehash: bbd6cc68f1c16d48380cf498d6b089abe923e95a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Aspekte zu Azure Resource Manager-Vorlagen
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Bei der Entwicklung Ihrer Anwendung ist es wichtig, die Portabilität von Vorlagen zwischen Azure und Azure Stack sicherzustellen.  In diesem Thema werden Aspekte beim Entwickeln von Azure Resource Manager-[Vorlagen](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) behandelt, sodass Sie Prototypen Ihrer Anwendung erstellen und die Bereitstellung in Azure ohne Zugriff auf eine Azure Stack-Umgebung testen können.
+Bei der Entwicklung Ihrer Anwendung ist es wichtig, die Portabilität von Vorlagen zwischen Azure und Azure Stack sicherzustellen. Dieser Artikel stellt Überlegungen beim Entwickeln von Azure Resource Manager-[Vorlagen](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) vor, sodass Sie Prototypen Ihrer Anwendung erstellen und die Bereitstellung in Azure ohne Zugriff auf eine Azure Stack-Umgebung testen können.
 
 ## <a name="resource-provider-availability"></a>Verfügbarkeit des Ressourcenanbieters
-Die Vorlage, die Sie bereitstellen möchten, verwendet einen Microsoft Azure-Dienst, der bereits verfügbar oder als Vorschau in Azure Stack verfügbar ist.
+Die Vorlage, die Sie bereitstellen möchten, darf nur Microsoft Azure-Dienste verwenden, die in Azure Stack bereits verfügbar sind oder sich in der Vorschau befinden.
 
 ## <a name="public-namespaces"></a>Öffentliche Namespaces
-Da Azure Stack in Ihrem Rechenzentrum gehostet wird, weist die Lösung andere Dienstendpunkt-Namespaces als die öffentliche Azure-Cloud auf. Daher verursachen hartcodierte öffentliche Endpunkte in Resource Manager-Vorlagen Fehler, wenn Sie versuchen, sie in Azure Stack bereitzustellen. Stattdessen können Sie die Funktionen *reference* und *concatenate* verwenden, um den Dienstendpunkt basierend auf Werten dynamisch zu erstellen, die während der Bereitstellung vom Ressourcenanbieter abgerufen wurden. Statt beispielsweise *blob.core.windows.net* in Ihrer Vorlage anzugeben, rufen Sie [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) ab, um den Endpunkt *osDisk.URI* dynamisch festzulegen:
+Da Azure Stack in Ihrem Rechenzentrum gehostet wird, weist die Lösung andere Dienstendpunkt-Namespaces als die öffentliche Azure-Cloud auf. Daher verursachen hartcodierte öffentliche Endpunkte in Azure Resource Manager-Vorlagen Fehler, wenn Sie versuchen, sie in Azure Stack bereitzustellen. Stattdessen können Sie die Funktionen *reference* und *concatenate* verwenden, um den Dienstendpunkt basierend auf Werten dynamisch zu erstellen, die während der Bereitstellung vom Ressourcenanbieter abgerufen wurden. Statt beispielsweise *blob.core.windows.net* in Ihrer Vorlage anzugeben, rufen Sie [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) ab, um den Endpunkt *osDisk.URI* dynamisch festzulegen:
 
      "osDisk": {"name": "osdisk","vhd": {"uri": 
      "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, variables('vmStorageAccountContainerName'),
@@ -46,23 +47,21 @@ Azure Service-Versionen können zwischen Azure und Azure Stack unterschiedlich s
 | Speicher |`'2016-01-01'`, `'2015-06-15'`, `'2015-05-01-preview'` |
 | KeyVault | `'2015-06-01'` |
 | App Service |`'2015-08-01'` |
-| MySQL |`'2015-09-01'` |
-| SQL |`'2014-04-01-preview'` |
 
 ## <a name="template-functions"></a>Funktionen von Azure-Ressourcen-Manager-Vorlagen
-Ressourcen-Manager-[Funktionen](../../azure-resource-manager/resource-group-template-functions.md) ermöglichen das Erstellen dynamischer Vorlagen. Beispielsweise können Sie Funktionen für Aufgaben wie die folgenden verwenden:
+Azure Resource Manager-[Funktionen](../../azure-resource-manager/resource-group-template-functions.md) ermöglichen das Erstellen dynamischer Vorlagen. Beispielsweise können Sie Funktionen für Aufgaben wie die folgenden verwenden:
 
 * Verketten oder Kürzen von Zeichenfolgen 
 * Verweisen auf Werte aus anderen Ressourcen
 * Durchlaufen von Ressourcen zur Bereitstellung mehrerer Instanzen 
 
-Beachten Sie beim Erstellen Ihrer Vorlagen, dass einige Funktionen im Azure Stack Development Kit nicht verfügbar sind und nicht verwendet werden dürfen. Dabei handelt es sich um diese Funktionen:
+Dieser Funktionen sind in Azure Stack nicht verfügbar:
 
-* Skip
+* Überspringen
 * Take
 
 ## <a name="resource-location"></a>Speicherort von Ressourcen
-Resource Manager-Vorlagen nutzen das Attribut „location“ zum Angeben des Speicherorts von Ressourcen während der Bereitstellung. In Azure verweisen Speicherorte auf eine Region wie USA, Westen oder Südamerika. In Azure Stack sind Speicherorte anders, weil Azure Stack sich in Ihrem Rechenzentrum befindet.  Um sicherzustellen, dass Vorlagen zwischen Azure und Azure Stack übertragbar sind, müssen Sie auf den Speicherort der Ressourcengruppe verweisen, während Sie einzelne Ressourcen bereitstellen. Nutzen Sie hierfür `[resourceGroup().Location]`, um sicherzustellen, dass alle Ressourcen den Speicherort der Ressourcengruppe erben.  Der folgende Auszug aus einer Resource Manager-Vorlage ist ein Beispiel dieser Funktion beim Bereitstellen eines Speicherkontos:
+Azure Resource Manager-Vorlagen nutzen ein location-Attribut zum Platzieren von Ressourcen während der Bereitstellung. In Azure verweisen Speicherorte auf eine Region wie USA, Westen oder Südamerika. In Azure Stack sind Speicherorte anders, weil Azure Stack sich in Ihrem Rechenzentrum befindet. Um sicherzustellen, dass Vorlagen zwischen Azure und Azure Stack übertragbar sind, müssen Sie auf den Speicherort der Ressourcengruppe verweisen, während Sie einzelne Ressourcen bereitstellen. Nutzen Sie hierfür `[resourceGroup().Location]`, um sicherzustellen, dass alle Ressourcen den Speicherort der Ressourcengruppe erben. Der folgende Auszug ist ein Beispiel für die Verwendung dieser Funktion beim Bereitstellen eines Speicherkontos:
 
     "resources": [
     {

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 716e7b5bab8725dea0fd2b760d0e46e8e892c5b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7ec63810fe78b38c574ec39369d5926f80e595e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-an-integration-account"></a>Was ist ein Integrationskonto?
 
@@ -26,9 +26,9 @@ Mit einem Integrationskonto können Apps für die Unternehmensintegration Artefa
 
 ## <a name="create-an-integration-account"></a>Erstellen eines Integrationskontos
 
-1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Weitere Dienste** aus.
+1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im Menü links **Alle Dienste** aus.
 
-    ![„Weitere Dienste“ auswählen](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![Auswahl von „Alle Dienste“](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
 
@@ -85,9 +85,9 @@ Nachdem Ihr Integrationskonto nun mit Ihrer Logik-App verknüpft ist, können Si
 
 ## <a name="delete-your-integration-account"></a>Löschen Ihres Integrationskontos
 
-1. Wählen Sie **Weitere Dienste**.
+1. Wählen Sie **Alle Dienste** aus.
 
-    ![„Weitere Dienste“ auswählen](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![Auswahl von „Alle Dienste“](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
 
@@ -110,9 +110,9 @@ Gehen Sie wie folgt vor, wenn Sie ein Integrationskonto in ein anderes Azure-Abo
 > [!IMPORTANT]
 > Nach dem Verschieben eines Integrationskontos müssen alle Skripts mit den neuen Ressourcen-IDs aktualisiert werden.
 
-1. Wählen Sie **Weitere Dienste**.
+1. Wählen Sie **Alle Dienste** aus.
 
-    ![„Weitere Dienste“ auswählen](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![Auswahl von „Alle Dienste“](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
 

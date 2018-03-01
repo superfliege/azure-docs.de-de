@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: it-pro
 ms.date: 11/09/2017
 ms.author: billmath
-ms.openlocfilehash: e2e6e5c40dc4a9f67f94c45f8394512db3f777f5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: deaa52a062eb01450f760324e01e520fcbe894e1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-sign-in-auto-acceleration-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren der automatischen Anmeldebeschleunigung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -83,7 +83,7 @@ Das Festlegen der automatischen Beschleunigung für die Anmeldung an einer Anwen
 
 1. Erstellen einer Startbereichsermittlungsrichtlinie für die automatische Beschleunigung.
 
-2. Ermitteln des Dienstprinzipals, an den die Richtlinie angefügt wird.
+2. Ermitteln des Dienstprinzipals, an den die Richtlinie angefügt wird
 
 3. Anfügen der Richtlinie an den Dienstprinzipal Die Richtlinien wurden möglicherweise in einem Mandanten erstellt, aber sie besitzen keinerlei Auswirkungen, bis sie an eine Entität angefügt werden. 
 
@@ -175,7 +175,7 @@ Um die automatische Beschleunigung zu aktivieren, nachdem Sie über eine Richtli
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Schritt 2: Ermitteln des Dienstprinzipals, dem die Richtlinie zugewiesen werden soll  
 Sie benötigen die **ObjectID** der Dienstprinzipale, denen Sie die Richtlinie zuweisen möchten. Es gibt mehrere Möglichkeiten, die **ObjectID** von Dienstprinzipalen zu ermitteln.    
 
-Sie können das Portal verwenden, oder Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen. Sie können auch zum [Graph-Tester](https://graphexplorer.cloudapp.net/) navigieren und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Da Sie PowerShell verwenden, können Sie das Cmdlet „get-AzureADServicePrincipal“, verwenden, um die Dienstprinzipale sowie deren IDs aufzulisten.
+Sie können das Portal verwenden, oder Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen. Sie können auch zum [Graph-Tester](https://graphexplorer.cloudapp.net/) navigieren und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Da Sie PowerShell verwenden, können Sie das Cmdlet Get-AzureADServicePrincipal, verwenden, um die Dienstprinzipale sowie deren IDs aufzulisten.
 
 #### <a name="step-3-assign-the-policy-to-your-service-principal"></a>Schritt 3: Zuweisen der Richtlinie zu Ihrem Dienstprinzipal  
 Nachdem Sie über die **ObjectID** des Dienstprinzipals der Anwendung verfügen, für die Sie automatische Beschleunigung konfigurieren möchten, führen Sie den folgenden Befehl aus. Dieser Befehl ordnet die Richtlinie zur Startbereichsermittlung, die Sie in Schritt 1 erstellt haben, dem Dienstprinzipal zu, den Sie in Schritt 2 ermittelt haben.

@@ -4,7 +4,7 @@ description: "Erläutert das Feature „Automatisierte Sicherung“ für virtuel
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/05/2017
+ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: e7e14b0243f82c672392d5ab4bb6aca01156465b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ecae49e70a0fdd30be8a0872d02abcf4a4c228bd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automated-backup-v2-for-sql-server-2016-azure-virtual-machines-resource-manager"></a>Automatisierte Sicherung v2 für Azure Virtual Machines mit SQL Server 2016 (Resource Manager)
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/21/2017
 > * [SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
 > * [SQL Server 2016](virtual-machines-windows-sql-automated-backup-v2.md)
 
-Die automatisierte Sicherung v2 konfiguriert automatisch [Managed Backup für Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) für alle vorhandenen und neuen Datenbanken auf einem virtuellen Azure-Computer, auf dem die Standard-, Enterprise- oder Developer-Edition von SQL Server 2016 ausgeführt wird. Dies bietet Ihnen die Möglichkeit, reguläre Datenbanksicherungen zu konfigurieren, die permanenten Azure-Blob-Speicher nutzen. Die automatisierte Sicherung v2 basiert auf der [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer](virtual-machines-windows-sql-server-agent-extension.md).
+Die automatisierte Sicherung v2 konfiguriert automatisch [Managed Backup für Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) für alle vorhandenen und neuen Datenbanken auf einem virtuellen Azure-Computer, auf dem die Standard-, Enterprise- oder Developer-Edition von SQL Server 2016 ausgeführt wird. Dies bietet Ihnen die Möglichkeit, reguläre Datenbanksicherungen zu konfigurieren, die permanenten Azure Blob Storage nutzen. Die automatisierte Sicherung v2 basiert auf der [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer](virtual-machines-windows-sql-server-agent-extension.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -48,7 +48,7 @@ Um die automatisierte Sicherung v2 verwenden zu können, müssen die folgenden V
 > [!IMPORTANT]
 > Die automatisierte Sicherung v2 kann mit SQL Server 2016 verwendet werden. Wenn Sie SQL Server 2014 verwenden, können Sie Ihre Datenbanken mithilfe der automatisierten Sicherung v1 sichern. Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server 2014-VMs in Azure](virtual-machines-windows-sql-automated-backup.md).
 
-**Datenbankkonfiguration**:
+**Datenbankkonfiguration:**
 
 - Zieldatenbanken müssen das vollständige Wiederherstellungsmodell verwenden. Weitere Informationen zu den Auswirkungen des vollständigen Wiederherstellungsmodells auf Sicherungen finden Sie unter [Sichern beim vollständigen Wiederherstellungsmodell](https://technet.microsoft.com/library/ms190217.aspx).
 - Für Systemdatenbanken muss nicht das vollständige Wiederherstellungsmodell verwendet werden. Falls Sie allerdings Protokollsicherungen für das Modell oder für MSDB benötigen, müssen Sie das vollständige Wiederherstellungsmodell verwenden.
@@ -66,27 +66,27 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für die automatis
 
 ### <a name="basic-settings"></a>Basic Settings
 
-| Einstellung | Bereich (Standard) | Beschreibung |
+| Einstellung | Bereich (Standard) | BESCHREIBUNG |
 | --- | --- | --- |
 | **Automatisierte Sicherung** | Aktivieren/Deaktivieren (deaktiviert) | Aktiviert oder deaktiviert die automatisierte Sicherung v2 für einen virtuellen Azure-Computer mit SQL Server 2016 Standard oder Enterprise. |
 | **Aufbewahrungszeitraum** | 1 bis 30 Tage (30 Tage) | Die Anzahl von Tagen, für die Sicherungen aufbewahrt werden. |
 | **Speicherkonto** | Azure-Speicherkonto | Ein Azure-Speicherkonto, mit dem Dateien der automatisierten Sicherung im Blob-Speicher gespeichert werden. An diesem Speicherort wird ein Container zum Speichern aller Sicherungsdateien erstellt. Die Namenskonvention für die Sicherungsdatei enthält das Datum, die Uhrzeit sowie die Datenbank-GUID. |
-| **Verschlüsselung** |Aktivieren/Deaktivieren (deaktiviert) | Aktiviert oder deaktiviert die Verschlüsselung. Bei aktivierter Verschlüsselung befinden sich die Zertifikate zum Wiederherstellen der Sicherung im angegebenen Speicherkonto im gleichen **automaticbackup**-Container und verwenden die gleiche Namenskonvention. Wenn das Kennwort geändert wird, wird ein neues Zertifikat mit diesem Kennwort generiert, das alte Zertifikat bleibt jedoch zum Wiederherstellen vorheriger Sicherungen erhalten. |
-| **Kennwort** |Kennworttext | Ein Kennwort für Verschlüsselungsschlüssel. Ein Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde. |
+| **Verschlüsselung** |Aktivieren/Deaktivieren (deaktiviert) | Aktiviert oder deaktiviert die Verschlüsselung. Wenn die Verschlüsselung aktiviert ist, befinden sich die Zertifikate zum Wiederherstellen der Sicherung im angegebenen Speicherkonto. Dabei wird derselbe **automaticbackup**-Container mit der gleichen Namenskonvention verwendet. Wenn das Kennwort geändert wird, wird ein neues Zertifikat mit diesem Kennwort generiert, das alte Zertifikat bleibt jedoch zum Wiederherstellen vorheriger Sicherungen erhalten. |
+| **Kennwort** |Kennworttext | Ein Kennwort für Verschlüsselungsschlüssel. Dieses Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde. |
 
 ### <a name="advanced-settings"></a>Erweiterte Einstellungen
 
-| Einstellung | Bereich (Standard) | Beschreibung |
+| Einstellung | Bereich (Standard) | BESCHREIBUNG |
 | --- | --- | --- |
 | **System Database Backups** (Systemdatenbanksicherungen) | Aktivieren/Deaktivieren (deaktiviert) | Ist dieses Feature aktiviert, werden auch die Systemdatenbanken (Master, MSDB und Modell) gesichert. Vergewissern Sie sich bei der MSDB- und der Modelldatenbank, dass sie sich im vollständigen Wiederherstellungsmodus befinden, wenn Sie Protokollsicherungen erstellen möchten. Für die Masterdatenbank werden niemals Protokollsicherungen erstellt. Und für die TempDB-Datenbank werden gar keine Sicherungen ausgeführt. |
-| **Sicherungszeitplan** | Manuell/Automatisiert (Automatisiert) | Der Sicherungszeitplan wird standardmäßig automatisch auf der Grundlage des Protokollwachstums bestimmt. Bei einem manuellen Sicherungszeitplan kann der Benutzer das gewünschte Zeitfenster für Sicherungen angeben. In diesem Fall werden Sicherungen ausschließlich gemäß dem angegebenen Intervall und während des angegebenen Zeitfensters eines bestimmten Tags durchgeführt. |
+| **Sicherungszeitplan** | Manuell/Automatisiert (automatisch) | Der Sicherungszeitplan wird standardmäßig automatisch auf der Grundlage des Protokollwachstums festgelegt. Bei einem manuellen Sicherungszeitplan kann der Benutzer das gewünschte Zeitfenster für Sicherungen angeben. In diesem Fall werden Sicherungen ausschließlich gemäß dem angegebenen Intervall und während des angegebenen Zeitfensters eines bestimmten Tags durchgeführt. |
 | **Full backup frequency** (Intervall für vollständige Sicherungen) | Täglich/Wöchentlich | Intervall für vollständige Sicherungen. In beiden Fällen werden vollständige Sicherungen während des nächsten geplanten Zeitfensters gestartet. Bei Verwendung der wöchentlichen Option können sich die Sicherungen über mehrere Tage erstrecken, bis alle Datenbanken erfolgreich gesichert wurden. |
 | **Full backup start time** (Startzeit für vollständige Sicherungen) | 00:00–23:00 (01:00) | Die Startzeit eines bestimmten Tags, an dem eine vollständige Sicherung stattfinden kann. |
 | **Full backup time window** (Zeitfenster für vollständige Sicherungen) | 1–23 Stunden (1 Stunde) | Das Zeitfenster eines bestimmten Tags, an dem eine vollständige Sicherung stattfinden kann. |
 | **Log backup frequency** (Intervall für Protokollsicherungen) | 5–60 Minuten (60 Minuten) | Intervall für Protokollsicherungen. |
 
 ## <a name="understanding-full-backup-frequency"></a>Grundlegendes zum Intervall für vollständige Sicherungen
-Es ist wichtig, den Unterschied zwischen täglichen und wöchentlichen vollständigen Sicherungen zu verstehen. Daher sehen wir uns im Anschluss zwei Beispielszenarien an.
+Es ist wichtig, den Unterschied zwischen täglichen und wöchentlichen vollständigen Sicherungen zu verstehen. Betrachten Sie die folgenden beiden Beispielszenarien.
 
 ### <a name="scenario-1-weekly-backups"></a>Szenario 1: Wöchentliche Sicherungen
 Sie verfügen über einen virtuellen SQL Server-Computer mit einer Reihe sehr großer Datenbanken.

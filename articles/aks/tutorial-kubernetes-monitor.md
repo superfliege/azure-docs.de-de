@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0f55e368586910b771115b39b5ec9b286f031069
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2fedd615733e3bf51469d3b69d5fe51e3e99087e
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="monitor-azure-container-service-aks"></a>Überwachen von Azure Container Service (AKS)
 
@@ -42,7 +42,7 @@ Klicken Sie im Azure-Portal auf **Ressource erstellen**, und suchen Sie nach `Co
 
 Erstellen Sie einen neuen OMS-Arbeitsbereich, oder wählen Sie einen vorhandenen aus. Das OMS-Arbeitsbereichsformular unterstützt Sie bei diesem Vorgang.
 
-Aktivieren Sie beim Erstellen des Arbeitsbereichs das Kontrollkästchen **An das Dashboard anheften**, damit Informationen leicht abrufbar sind.
+Aktivieren Sie beim Erstellen des Arbeitsbereichs das Kontrollkästchen **	An das Dashboard anheften**, damit Informationen leicht abrufbar sind.
 
 ![OMS-Arbeitsbereich](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
 
@@ -133,13 +133,13 @@ spec:
 
 Erstellen Sie das DaemonSet mit dem folgenden Befehl:
 
-```azurecli-interactive
+```azurecli
 kubectl create -f oms-daemonset.yaml
 ```
 
 Führen Sie den folgenden Befehl aus, um zu überprüfen, ob das DaemonSet erstellt wurde:
 
-```azurecli-interactive
+```azurecli
 kubectl get daemonset
 ```
 

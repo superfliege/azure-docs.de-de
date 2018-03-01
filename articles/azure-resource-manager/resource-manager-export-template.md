@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: c8f19a4f0aadbee2de97bb3ec85c2c85b493a394
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0af34a64cd3cc33519f2cc69653982e00e4c1e9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen
 In diesem Artikel erfahren Sie, wie Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement exportieren. Anhand dieser generierten Vorlage können Sie sich näher mit der Vorlagensyntax befassen.
@@ -33,7 +33,7 @@ In diesem Thema werden beide Methoden unter Verwendung des Portals beschrieben.
 ## <a name="deploy-resources"></a>Bereitstellen von Ressourcen
 Zu Beginn stellen wir zunächst Ressourcen für Azure bereit, die Sie für den Export als Vorlage verwenden können. Falls Ihr Abonnement bereits eine Ressourcengruppe enthält, die Sie in eine Vorlage exportieren möchten, können Sie diesen Abschnitt überspringen. Im weiteren Verlauf dieses Artikels wird davon ausgegangen, dass Sie die Web-App und die SQL-Datenbanklösung aus diesem Abschnitt bereitgestellt haben. Bei Verwendung einer anderen Lösung unterscheidet sich das Verfahren möglicherweise geringfügig, die Schritte zum Exportieren einer Vorlage sind jedoch gleich. 
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Neu** aus.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressource erstellen**.
    
       ![„Neu“ auswählen](./media/resource-manager-export-template/new.png)
 2. Suchen Sie nach **Web-App und SQL**, und wählen Sie es in den verfügbaren Optionen aus.

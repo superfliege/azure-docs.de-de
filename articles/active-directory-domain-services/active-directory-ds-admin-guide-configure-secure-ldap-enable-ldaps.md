@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 02/23/2018
 ms.author: maheshu
-ms.openlocfilehash: d55abe651f69e3539e7584b40a7aedf419bccda1
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 8b6c1dec6f97311e5fb92f2adef8685b59cbeb2c
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne
 
@@ -113,7 +113,6 @@ Die folgende Tabelle zeigt ein Beispiel einer NSG, die Sie konfigurieren können
 ## <a name="troubleshooting"></a>Problembehandlung
 Wenn Sie Probleme beim Herstellen einer Verbindung mit der verwalteten Domäne über sicheres LDAP haben, führen Sie die folgenden Schritte zur Problembehandlung aus:
 * Stellen Sie sicher, dass die Ausstellerkette des sicheren LDAP-Zertifikats auf dem Client als vertrauenswürdig eingestuft wird. Sie könnten die Stammzertifizierungsstelle dem vertrauenswürdigen Stammzertifikatspeicher auf dem Client hinzufügen, um die Vertrauensstellung einzurichten.
-* Stellen Sie sicher, dass das sichere LDAP-Zertifikat nicht von einer Zwischenzertifizierungsstelle ausgegeben wurde, die standardmäßig auf einem neuen Windows-Computer nicht als vertrauenswürdig eingestuft wird.
 * Stellen Sie sicher, dass der LDAP-Client (z.B. „ldp.exe“) eine Verbindung mit dem sicheren LDAP-Endpunkt mit einem DNS-Namen herstellt, nicht mit der IP-Adresse.
 * Stellen Sie sicher, dass der DNS-Name, mit dem der LDAP-Client eine Verbindung herstellt, in die öffentliche IP-Adresse für sicheres LDAP in der verwalteten Domäne aufgelöst wird.
 * Stellen Sie sicher, dass das sichere LDAP-Zertifikat für die verwaltete Domäne den DNS-Namen im Attribut für den Antragsteller oder den alternativen Antragstellernamen aufweist.

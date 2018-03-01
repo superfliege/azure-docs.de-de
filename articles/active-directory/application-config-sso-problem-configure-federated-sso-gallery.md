@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: b0dcb4de19e0da208b9335621111641e1eb86882
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 86ddb91ae16da797e32c6e1a8a8b2cd8fca989a8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens im Verbund für eine Azure AD-Kataloganwendung
 
@@ -39,9 +39,9 @@ Wenn Sie den Bezeichner oder die Antwort-URL nicht konfigurieren können, vergew
 
 Abrufen der für die Anwendung vorkonfigurierten Muster:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an. Fahren Sie mit Schritt 7 fort, Wenn das Blatt für die Anwendungskonfiguration in Azure AD bereits angezeigt wird.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an. Fahren Sie mit Schritt 7 fort, Wenn das Blatt für die Anwendungskonfiguration in Azure AD bereits angezeigt wird.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -67,7 +67,7 @@ Abrufen der für die Anwendung vorkonfigurierten Muster:
 
    * Im Lernprogramm für die Anwendung erhalten Sie ebenfalls Informationen über die unterstützten Muster. Wechseln Sie im Abschnitt **Konfigurieren des einmaligen Anmeldens in Azure AD** zum Schritt zum Konfigurieren der Werte im Abschnitt **Domäne und URLs**.
 
-Wenn die Werte nicht mit den in Azure AD vorkonfigurierten Mustern übereinstimmen, haben Sie folgende Möglichkeiten. Sie können:
+Wenn die Werte nicht mit den in Azure AD vorkonfigurierten Mustern übereinstimmen, haben Sie folgende Möglichkeiten. Ihre Möglichkeiten:
 
 -   Wenden Sie sich an den Hersteller der Anwendung, um Werte zu erhalten, die den in Azure AD vorkonfigurierten Mustern entsprechen.
 
@@ -81,11 +81,11 @@ In Azure AD wird das Format für das NameID-Attribut (Benutzer-ID) auf Grundlage
 
 ## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Ich kann die Azure AD-Metadaten zum Abschließen der Konfiguration in der Anwendung nicht finden.
 
-Führen Sie zum Herunterladen der Metadaten für die Anwendung oder des Zertifikats aus Azure AD die folgenden Schritte aus:
+Führen Sie zum Herunterladen der Metadaten oder des Zertifikats für die Anwendung aus Azure AD die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 

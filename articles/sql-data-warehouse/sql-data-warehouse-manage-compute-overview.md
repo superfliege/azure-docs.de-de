@@ -1,6 +1,6 @@
 ---
-title: "Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht) | Microsoft Docs"
-description: "Funktionen zur horizontalen Leistungshochskalierung in Azure SQL Data Warehouse. Führen Sie eine horizontale Skalierung durch, indem Sie DWUs anpassen oder Computeressourcen anhalten und fortsetzen, um Kosten zu sparen."
+title: Verwalten von Computeressourcen in Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: "Erfahren Sie mehr über die Funktionen zur horizontalen Leistungsskalierung in Azure SQL Data Warehouse. Skalieren Sie durch Anpassen der DWUs horizontal hoch, oder senken Sie die Kosten durch Anhalten des Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -13,36 +13,30 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 3/23/2017
+ms.date: 02/20/2018
 ms.author: elbutter
-ms.openlocfilehash: d795abe5254d47a72a468b0989e46829a5c5142a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 7e6ae6e59b53dd79dab5e2504cf7a43a30e55353
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)
-> [!div class="op_single_selector"]
-> * [Übersicht](sql-data-warehouse-manage-compute-overview.md)
-> * [Portal](sql-data-warehouse-manage-compute-portal.md)
-> * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
-> * [REST](sql-data-warehouse-manage-compute-rest-api.md)
-> * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
->
->
+# <a name="manage-compute-in-azure-sql-data-warehouse"></a>Verwalten von Computeressourcen in Azure SQL Data Warehouse
+Erfahren Sie mehr über die Verwaltung von Computeressourcen in Azure SQL Data Warehouse. Senken Sie die Kosten, indem Sie das Data Warehouse anhalten, oder skalieren Sie das Data Warehouse, um Leistungsanforderungen zu erfüllen. 
 
-In der Architektur von SQL Data Warehouse werden Speicher- und Computeressourcen voneinander getrennt, sodass diese unabhängig voneinander skaliert werden können. Daher können die Computeressourcen skaliert werden, um Leistungsanforderungen unabhängig von der Datenmenge zu erfüllen. Eine logische Konsequenz dieser Architektur ist es, dass die [Abrechnung][billed] für Compute- und Speicherressourcen unabhängig voneinander erfolgt. 
+## <a name="what-is-compute-management"></a>Was ist Computeverwaltung?
+In der Architektur von SQL Data Warehouse werden Speicher- und Computeressourcen voneinander getrennt, sodass diese unabhängig voneinander skaliert werden können. Daher können Sie Computeressourcen skalieren, um Leistungsanforderungen unabhängig vom Datenspeicher zu erfüllen. Sie können Computeressourcen auch anhalten und fortsetzen. Eine logische Konsequenz dieser Architektur ist es, dass die [Abrechnung](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) für Compute- und Speicherressourcen unabhängig voneinander erfolgt. Wenn Sie Ihr Data Warehouse für eine Weile nicht verwenden müssen, können Sie Computekosten sparen, indem Sie Computeressourcen anhalten. 
 
-Diese Übersicht erläutert, wie die horizontale Hochskalierung bei SQL Data Warehouse funktioniert und wie Sie die SQL Data Warehouse-Funktionen zum Anhalten, Fortsetzen und Skalieren verwenden. 
+## <a name="scaling-compute"></a>Skalieren von Computeressourcen
+Sie können Computeressourcen horizontal hoch- und wieder herunterskalieren, indem Sie die Einstellung für [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md) für das Data Warehouse anpassen. Die Lade- und die Abfrageleistung kann linear erhöht werden, wenn Sie weitere Data Warehouse-Einheiten hinzufügen. SQL Data Warehouse bietet [Dienstebenen](performance-tiers.md#service-levels) für Data Warehouse-Einheiten, mit denen eine deutlich erkennbare Änderung der Leistung sichergestellt ist, wenn Sie horizontal hoch- oder herunterskalieren. 
 
-## <a name="how-compute-management-operations-work-in-sql-data-warehouse"></a>Funktionsweise der Computeverwaltung in SQL Data Warehouse
-Die Architektur für SQL Data Warehouse besteht aus einem Steuerknoten, mehreren Computeknoten und der Speicherebene, die sich über 60 Verteilungen erstreckt. 
+Schritte zur horizontalen Skalierung finden Sie in den Schnellstarts zum [Azure-Portal](quickstart-scale-compute-portal.md), zu [PowerShell](quickstart-scale-compute-powershell.md) oder zu [T-SQL](quickstart-scale-compute-tsql.md). Sie können auch horizontale Skalierungsvorgänge mit einer [REST-API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) ausführen.
 
-Während einer normalen aktiven Sitzung in SQL Data Warehouse verwaltet der Hauptknoten Ihres Systems die Metadaten und enthält den Optimierer für verteilte Abfragen. Unterhalb dieses Hauptknotens befinden sich die Computeknoten und die Speicherebene. Bei einer DWU 400 besteht Ihr System aus einem Hauptknoten, vier Computeknoten und der Speicherebene, die sich über 60 Verteilungen erstreckt. 
+Um einen Skalierungsvorgang auszuführen, beendet SQL Data Warehouse zunächst alle eingehenden Abfragen und führt dann einen Rollback der Transaktionen durch, um einen konsistenten Zustand zu gewährleisten. Die Skalierung tritt erst auf, wenn der Transaktionsrollback abgeschlossen ist. Für einen Skalierungsvorgang trennt das System die Speicherebene von den Computeknoten, fügt Computeknoten hinzu und verbindet dann die Speicherebene wieder mit der Computeebene. Jedes Data Warehouse wird als 60 Verteilungen gespeichert, die auf die Computeknoten gleichmäßig verteilt sind. Durch Hinzufügen von weiteren Computeknoten wird die Computeleistung erhöht. Mit zunehmender Anzahl von Computeknoten verringert sich die Anzahl der Verteilungen pro Computeknoten, sodass mehr Computeleistung für Ihre Abfragen bereitsteht. Mit abnehmender Anzahl von Data Warehouse-Einheiten verringert sich die Anzahl der Computeknoten, was die Computeressourcen für Abfragen verringert.
 
-Wenn Sie einen Vorgang zum Skalieren oder Anhalten starten, beendet das System zunächst alle eingehenden Abfragen und führt dann ein Rollback der Transaktionen durch, um einen konsistenten Zustand zu gewährleisten. Bei Skalierungsvorgängen erfolgt die Skalierung nur einmal, sobald das Rollback der Transaktionen abgeschlossen ist. Bei einem Vorgang zum zentralen Hochskalieren stellt das System die gewünschte zusätzliche Anzahl von Computeknoten bereit und beginnt dann damit, die Computeknoten erneut an die Speicherebene anzufügen. Bei einem Vorgang zum zentralen Herunterskalieren werden die nicht benötigten Knoten freigegeben, und die verbleibenden Computeknoten fügen sich selbst erneut an die geeignete Anzahl von Verteilungen an. Bei einem Anhaltevorgang werden alle Computeknoten freigegeben, und das System führt verschiedene Metadatenvorgänge durch, um das finale System in einen stabilen Zustand zu versetzen.
+Die folgende Tabelle zeigt, wie sich die Anzahl von Verteilungen pro Computeknoten ändert, wenn sich die Data Warehouse-Einheiten ändern.  DWU6000 bietet 60 Computeknoten und führt zu einer viel höheren Abfrageleistung als DWU100. 
 
-| DWU  | \# Computeknoten | \# Verteilungen pro Knoten |
+| Data Warehouse-Einheiten  | \# Computeknoten | \# Verteilungen pro Knoten |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
@@ -57,163 +51,72 @@ Wenn Sie einen Vorgang zum Skalieren oder Anhalten starten, beendet das System z
 | 3000 | 30                 | 2                            |
 | 6000 | 60                 | 1                            |
 
-Zum Verwalten der Computeleistung stehen die drei folgenden primären Funktionen zur Verfügung:
 
-1. Anhalten
-2. Fortfahren
-3. Skalieren
+## <a name="finding-the-right-size-of-data-warehouse-units"></a>Ermitteln der richtigen Größe der Data Warehouse-Einheiten
 
-Jeder dieser Vorgänge kann mehrere Minuten in Anspruch nehmen. Wenn Sie das Skalieren/Anhalten/Fortsetzen automatisch durchführen, empfiehlt es sich, eine Logik zu implementieren, die sicherstellt, dass bestimmte Vorgänge abgeschlossen wurden, bevor mit einer andern Aktion fortgefahren wird. 
+Um von den Leistungsvorteilen der Skalierung insbesondere für größere Data Warehouse-Einheiten zu profitieren, sollten Sie ein Dataset von mindestens 1 TB verwenden. Um die optimale Anzahl der Data Warehouse-Einheiten für das Data Warehouse zu ermitteln, versuchen Sie, hoch und herunter zu skalieren. Führen Sie nach dem Laden Ihrer Daten einige Abfragen mit verschiedenen Mengen an Datawarehouse-Einheiten aus. Da die Skalierung schnell erfolgt, können Sie innerhalb einer Stunde verschiedene Leistungsebenen ausprobieren. 
 
-Überprüfen Sie den Datenbankzustand auf verschiedenen Endpunkten, um sicherzugehen, dass die Automatisierung dieser Vorgänge ordnungsgemäß implementiert werden kann. Über das Portal erhalten Sie bei Abschluss eines Vorgangs eine Benachrichtigung und Informationen zum aktuellen Zustand der Datenbanken. Das Portal ermöglicht aber keine programmgesteuerte Überprüfung des Zustands. 
+Empfehlungen für die Ermittlung der besten Anzahl von Data Warehouse-Einheiten:
 
->  [!NOTE]
->
->  Funktionen für die Computeverwaltung stehen nicht auf allen Endpunkten zur Verfügung.
->
->  
+- Beginnen Sie bei einem in der Entwicklung befindlichen Data Warehouse mit einer geringen Anzahl von Data Warehouse-Einheiten.  Ein guter Ausgangspunkt ist DW400 oder DW200.
+- Überwachen Sie die Anwendungsleistung, und beobachten Sie dabei die Anzahl der ausgewählten Data Warehouse-Einheiten im Vergleich zur beobachteten Leistung.
+- Gehen Sie von einer linearen Skalierung aus, und bestimmen Sie, um wie viel Sie die Data Warehouse-Einheiten erhöhen oder verringern müssen. 
+- Nehmen Sie weitere Anpassungen vor, bis Sie die optimale Leistungsstufe für Ihre geschäftlichen Anforderungen erreichen.
 
-|              | Fortsetzen | Skalieren | Überprüfen des Datenbankzustands |
-| ------------ | ------------ | ----- | -------------------- |
-| Azure-Portal | Ja          | Ja   | **Nein**               |
-| PowerShell   | Ja          | Ja   | Ja                  |
-| REST-API     | Ja          | Ja   | Ja                  |
-| T-SQL        | **Nein**       | Ja   | Ja                  |
+## <a name="when-to-scale-out"></a>Fälle für das horizontale Hochskalieren
+Das horizontale Hochskalieren von Data Warehouse-Einheiten wirkt sich auf die folgenden Aspekte der Leistung aus:
 
+- Lineares Verbessern der Systemleistung bei Scans, Aggregationen und CTAS-Anweisungen.
+- Erhöhen der Anzahl von Readern und Writern für des Laden von Daten.
+- Maximieren der Anzahl von gleichzeitigen Abfragen und Parallelitätsslots.
 
+Empfehlungen für Fälle, in den Sie Data Warehouse-Einheiten skalieren sollten:
 
-<a name="scale-compute-bk"></a>
+- Bevor Sie einen umfangreichen Vorgang zum Laden oder Transformieren von Daten durchführen, skalieren Sie horizontal hoch, damit die Daten schneller verfügbar sind.
+- Skalieren Sie während der Hauptgeschäftszeiten horizontal hoch, um eine größere Anzahl gleichzeitiger Abfragen verarbeiten zu können. 
 
-## <a name="scale-compute"></a>Skalieren von Computeressourcen
+## <a name="what-if-scaling-out-does-not-improve-performance"></a>Welche Optionen gibt es, wenn horizontales Hochskalieren die Leistung nicht verbessert?
 
-Die Leistung in SQL Data Warehouse wird in Data Warehouse-Einheiten [Data Warehouse Units, (DWUs)][Data Warehouse Units, (DWUs)] gemessen. Dies ist eine abstrahierte Maßeinheit für Computeressourcen wie z.B. CPU, Arbeitsspeicher und E/A-Bandbreite. Um die Systemleistung zu skalieren, stehen Benutzern verschiedene Möglichkeiten zur Verfügung: das Portal, T-SQL und REST-APIs. 
+Fügen Sie Data Warehouse-Einheiten hinzu, um die Parallelität zu erhöhen. Wenn die Arbeit gleichmäßig zwischen den Computeknoten verteilt wird, wird die Abfrageleistung durch die zusätzliche Parallelität verbessert. Wenn das horizontale Hochskalieren die Leistung nicht ändert, sind einige Ursachen denkbar. Die Daten können über die Verteilungen verstreut sein, oder Abfragen führen zu umfangreichen Datenverschiebung. Informationen zu Leistungsproblemen bei Abfragen finden Sie unter [Behandlung von Problemen mit der Abfrageleistung](sql-data-warehouse-troubleshoot.md#performance). 
 
-### <a name="how-do-i-scale-compute"></a>Wie skaliere ich Computeressourcen?
-Die Computeleistung für SQL Data Warehouse wird durch Ändern der DWU-Einstellung verwaltet. Die Leistung steigt linear, wenn Sie für bestimmte Vorgänge weitere DWUs hinzufügen.  Wir bieten DWU-Pakete, die sicherstellen, dass sich die Leistung merklich ändert, wenn Sie Ihr System zentral hoch- oder herunterskalieren. 
+## <a name="pausing-and-resuming-compute"></a>Anhalten und Fortsetzen von Computeressourcen
+Das Anhalten einer Computeressource bewirkt, dass die Speicherebene von den Computeknoten getrennt wird. Die Computeressourcen werden aus Ihrem Konto freigegeben. Computeressourcen werden Ihnen nicht berechnet, während Computeressourcen angehalten sind. Beim Fortsetzen von Computeressourcen wird der Speicher wieder mit den Computeknoten verbunden, die Computeressourcen werden wieder berechnet. Wenn Sie ein Data Warehouse anhalten, geschieht Folgendes:
 
-Zum Anpassen der DWUs können Sie eine beliebige dieser individuellen Methoden verwenden.
+* Compute- und Speicherressourcen werden an den Pool der verfügbaren Ressourcen im Rechenzentrum zurückgegeben.
+* Die Kosten für Data Warehouse-Einheiten sind für die Dauer der Pause gleich null.
+* Die Speicherung von Daten ist nicht betroffen, und Ihre Daten bleiben intakt. 
+* SQL Data Warehouse bricht alle Vorgänge ab, die gerade ausgeführt werden oder in der Warteschlange stehen.
 
-* [Skalieren von Computeleistung mit dem Azure-Portal][Scale compute power with Azure portal]
-* [Skalieren von Computeleistung mit PowerShell][Scale compute power with PowerShell]
-* [Skalieren von Computeleistung mit REST-APIs][Scale compute power with REST APIs]
-* [Skalieren von Computeleistung mit TSQL][Scale compute power with TSQL]
+Wenn Sie ein Data Warehouse fortsetzen, geschieht Folgendes:
 
-### <a name="how-many-dwus-should-i-use"></a>Wie viele DWUs sollte ich verwenden?
+* SQL Data Warehouse lädt Compute- und Speicherressourcen entsprechend Ihrer Einstellung für Data Warehouse-Einheiten.
+* Computeressourcen werden wieder für die Data Warehouse-Einheiten berechnet.
+* Ihre Daten sind verfügbar.
+* Wenn das Data Warehouse online ist, müssen Sie Ihre Workloadabfragen neu starten.
 
-Damit Sie verstehen, wie Ihr idealer DWU-Wert lautet, sollten Sie versuchsweise hoch- und herunterskalieren und nach dem Laden der Daten einige Abfragen ausführen. Da die Skalierung schnell erfolgt, können Sie innerhalb einer Stunde verschiedene Leistungsebenen ausprobieren. 
+Wenn das Data Warehouse immer verfügbar sein soll, könnten Sie es auf die kleinste Größe herunterskalieren, statt es anzuhalten. 
 
-> [!Note] 
-> SQL Data Warehouse ist für die Verarbeitung großer Datenmengen konzipiert. Um die Skalierungsleistung mit eigenen Augen zu sehen – insbesondere bei größeren DWUs –, sollten Sie ein großes Dataset mit 1 TB oder mehr verwenden.
+Schritte zum Anhalten und Fortsetzen finden Sie in den Schnellstarts zum [Azure-Portal](pause-and-resume-compute-portal.md) oder zu [PowerShell](pause-and-resume-compute-powershell.md). Sie Können auch die [REST-API zum Anhalten](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) oder die [REST-API zum Fortsetzen](sql-data-warehouse-manage-compute-rest-api.md#resume-compute) verwenden.
 
-Empfehlungen für das Finden der besten DWU-Anzahl für Ihre Workload:
+## <a name="drain-transactions-before-pausing-or-scaling"></a>Beseitigen von Transaktionen vor dem Pausieren oder Skalieren
+Es wird empfohlen, dass vorhandene Transaktionen abgeschlossen werden, bevor Sie einen Anhalte- oder Skalierungsvorgang initiieren.
 
-1. Beginnen Sie bei einem in der Entwicklung befindlichen Data Warehouse mit einer niedrigeren DWU-Leistungsebene.  Ein guter Ausgangspunkt ist DW400 oder DW200.
-2. Überwachen Sie die Anwendungsleistung, und beobachten Sie dabei die Anzahl der ausgewählten DWUs im Vergleich zur beobachteten Leistung.
-3. Bestimmen Sie durch Annahme einer linearen Skalierung, wie viel schneller oder langsamer die Leistung für Sie sein muss, um die optimale Leistungsstufe für Ihre Anforderungen zu erreichen.
-4. Erhöhen oder verringern Sie die Anzahl von DWUs proportional dazu, wie viel schneller oder langsamer Ihre Workload ausgeführt werden soll. 
-5. Nehmen Sie weitere Anpassungen vor, bis Sie die optimale Leistungsstufe für Ihre geschäftlichen Anforderungen erreichen.
+Beim Anhalten oder Skalieren Ihres SQL Data Warehouse werden Ihre Abfragen hinter den Kulissen abgebrochen, wenn Sie die Anforderung zum Anhalten oder Skalieren initiieren.  Das Abbrechen einer einfachen SELECT-Abfrage ist ein schneller Vorgang und hat fast keinerlei Auswirkung auf den Zeitraum, der für das Pausieren oder Skalieren Ihrer Instanz anfällt.  Dagegen können Transaktionsabfragen, bei denen die Daten oder die Struktur der Daten geändert wird, unter Umständen nicht so schnell beendet werden.  **Transaktionsabfragen müssen laut Definition entweder vollständig abgeschlossen sein, oder es muss ein Rollback der Änderungen durchgeführt werden.**  Ein Rollback der Schritte, die von einer Transaktionsabfrage ausgeführt wurden, kann genauso lange oder sogar länger als die ursprüngliche Änderung dauern, die mit der Abfrage durchgeführt werden sollte.  Wenn Sie beispielsweise eine Abfrage abbrechen, mit der Zeilen gelöscht werden, und die Abfrage bereits eine Stunde lang ausgeführt wurde, kann es eine Stunde dauern, bis die gelöschten Zeilen wieder eingefügt wurden.  Wenn Sie das Pausieren oder Skalieren bei aktiven Transaktionen ausführen, kann das Pausieren oder Skalieren lange dauern, weil erst gewartet werden muss, bis das Rollback abgeschlossen ist.
 
-> [!NOTE]
->
-> Die Abfrageleistung steigt bei höherem Parallelisierungsgrad nur, wenn die Verarbeitung auf mehrere Computeknoten aufgeteilt werden kann. Wenn Sie feststellen, dass sich die Systemleistung durch Skalierung nicht ändert, lesen Sie unsere Artikel zum Thema Leistungsoptimierung, um zu ermitteln, ob möglicherweise Ihre Daten ungleichmäßig verteilt sind oder sehr viele Datenverschiebungen stattfinden. 
+Siehe auch: [Grundlagen von Transaktionen](sql-data-warehouse-develop-transactions.md) und [Optimieren von Transaktionen][Optimieren von Transaktionen](sql-data-warehouse-develop-best-practices-transactions.md).
 
-### <a name="when-should-i-scale-dwus"></a>Wann sollte ich DWUs skalieren?
-Die Skalierung von DWUs ändert die folgenden wichtigen Szenarien:
+## <a name="automating-compute-management"></a>Automatisieren der Computeverwaltung
+Informationen zum Automatisieren der Computeverwaltungsvorgänge finden Sie unter [Verwenden von Azure Functions zum Automatisieren von SQL DW-Computeebenen](manage-compute-with-azure-functions.md).
 
-1. Lineare Änderung der Systemleistung bei Scans, Aggregationen und CTAS-Anweisungen
-2. Erhöhen der Anzahl von Readern und Writern beim Laden mit PolyBase
-3. Maximale Anzahl von gleichzeitigen Abfragen und Parallelitätsslots
+Jeder Vorgang zum horizontalen Skalieren, Anhalten und Fortsetzen kann mehrere Minuten in Anspruch nehmen. Wenn Sie das Skalieren, Anhalten oder Fortsetzen automatisch durchführen, empfiehlt es sich, eine Logik zu implementieren, die sicherstellt, dass bestimmte Vorgänge abgeschlossen wurden, bevor mit einer anderen Aktion fortgefahren wird. Überprüfen Sie den Data Warehouse-Zustand über verschiedene Endpunkte, um sicherzugehen, dass die Automatisierung dieser Vorgänge ordnungsgemäß implementiert werden kann. 
 
-Empfehlungen für den Zeitpunkt für die Skalierung von DWUs:
+Informationen zum Überprüfen des Data Warehouse-Zustands finden Sie in den Schnellstarts zu [PowerShell](quickstart-scale-compute-powershell.md#check-database-state) oder [T-SQL](quickstart-scale-compute-tsql.md#check-database-state). Sie können den Data Warehouse-Zustand auch mit einer [REST-API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state) überprüfen.
 
-1. Bevor Sie einen umfangreichen Vorgang zum Laden oder Transformieren von Daten durchführen, skalieren Sie die DWUs zentral hoch, damit die Daten schneller verfügbar sind.
-2. Skalieren Sie die DWUs während der Hauptgeschäftszeiten, um eine größere Anzahl gleichzeitiger Abfragen verarbeiten zu können. 
-
-<a name="pause-compute-bk"></a>
-
-## <a name="pause-compute"></a>Anhalten von Computeressourcen
-[!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
-
-Verwenden Sie zum Anhalten einer Datenbank eine dieser individuellen Methoden.
-
-* [Anhalten von Computeressourcen mit dem Azure-Portal][Pause compute with Azure portal]
-* [Anhalten von Computeressourcen mit PowerShell][Pause compute with PowerShell]
-* [Anhalten von Computeressourcen mit REST-APIs][Pause compute with REST APIs]
-
-<a name="resume-compute-bk"></a>
-
-## <a name="resume-compute"></a>Fortsetzen von Computeressourcen
-[!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
-
-Verwenden Sie zum Fortsetzen einer Datenbank eine dieser individuellen Methoden.
-
-* [Fortsetzen von Computeressourcen mit dem Azure-Portal][Resume compute with Azure portal]
-* [Fortsetzen von Computeressourcen mit PowerShell][Resume compute with PowerShell]
-* [Fortsetzen von Computeressourcen mit REST-APIs][Resume compute with REST APIs]
-
-<a name="check-compute-bk"></a>
-
-## <a name="check-database-state"></a>Überprüfen des Datenbankzustands 
-
-Verwenden Sie zum Fortsetzen einer Datenbank eine dieser individuellen Methoden.
-
-- [Überprüfen des Datenbankzustands mit T-SQL][Check database state with T-SQL]
-- [Überprüfen des Datenbankzustands mit PowerShell][Check database state with PowerShell]
-- [Überprüfen des Datenbankzustands mit REST-APIs][Check database state with REST APIs]
 
 ## <a name="permissions"></a>Berechtigungen
 
-Zum Skalieren der Datenbank sind die in [ALTER DATABASE][ALTER DATABASE] beschriebenen Berechtigungen erforderlich.  Zum Anhalten und Fortsetzen ist die Berechtigung [Mitwirkender von SQL DB][SQL DB Contributor] erforderlich, insbesondere „Microsoft.Sql/servers/databases/action“.
+Zum Skalieren des Data Warehouse sind die in [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse.md) beschriebenen Berechtigungen erforderlich.  Zum Anhalten und Fortsetzen ist die Berechtigung [Mitwirkender von SQL DB](../active-directory/role-based-access-built-in-roles.md#sql-db-contributor) erforderlich, insbesondere „Microsoft.Sql/servers/databases/action“.
 
-<a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zu zusätzlichen zentralen Leistungskonzepten finden Sie in den folgenden Artikeln:
-
-* [Workload- und Parallelitätsverwaltung][Workload and concurrency management]
-* [Tabellenentwurf – Übersicht][Table design overview]
-* [Tabellenverteilung][Table distribution]
-* [Tabellenindizierung][Table indexing]
-* [Tabellenpartitionierung][Table partitioning]
-* [Tabellenstatistiken][Table statistics]
-* [Best Practices][Best practices]
-
-<!--Image reference-->
-
-<!--Article references-->
-[billed]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
-[Scale compute power with Azure portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-power
-[Scale compute power with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
-[Scale compute power with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk
-[Scale compute power with TSQL]: ./sql-data-warehouse-manage-compute-tsql.md#scale-compute-bk
-
-[capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
-
-[Pause compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md
-[Pause compute with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#pause-compute-bk
-[Pause compute with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#pause-compute-bk
-
-[Resume compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md
-[Resume compute with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#resume-compute-bk
-[Resume compute with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
-
-[Check database state with T-SQL]: ./sql-data-warehouse-manage-compute-tsql.md#check-database-state-and-operation-progress
-[Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
-[Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
-
-[Workload and concurrency management]: ./sql-data-warehouse-develop-concurrency.md
-[Table design overview]: ./sql-data-warehouse-tables-overview.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Table indexing]: ./sql-data-warehouse-tables-index.md
-[Table partitioning]: ./sql-data-warehouse-tables-partition.md
-[Table statistics]: ./sql-data-warehouse-tables-statistics.md
-[Best practices]: ./sql-data-warehouse-best-practices.md
-[development overview]: ./sql-data-warehouse-overview-develop.md
-
-[SQL DB Contributor]: ../active-directory/role-based-access-built-in-roles.md#sql-db-contributor
-
-<!--MSDN references-->
-[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
-
-<!--Other Web references-->
-[Azure portal]: http://portal.azure.com/
+Ein weiterer Aspekt der Verwaltung von Computeressourcen ist das Zuordnen der verschiedenen Computeressourcen zu einzelnen Abfragen. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).

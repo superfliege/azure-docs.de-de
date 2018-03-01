@@ -3,8 +3,8 @@ title: Verwalten des Ablaufs von Webinhalt im Azure Content Delivery Network | M
 description: Erfahren Sie, wie Sie den Ablauf von Inhalten aus Azure-Web-Apps/Cloud Services, ASP.NET oder IIS in Azure CDN verwalten.
 services: cdn
 documentationcenter: .NET
-author: zhangmanling
-manager: erikre
+author: dksimpson
+manager: akucer
 editor: 
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
 ms.service: cdn
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: dca6ca5f21f4a4f1701af57eb40d92094b6a4754
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: db7b5053cb926d2ec86c7feea4ac411acbeb1ae2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Verwalten des Ablaufs von Webinhalt im Azure Content Delivery Network
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/21/2017
 
 Dateien von öffentlich zugänglichen Ursprungswebservern können bis zum Ende ihrer Gültigkeitsdauer im Azure Content Delivery Network (CDN) zwischengespeichert werden. Die Gültigkeitsdauer wird durch den `Cache-Control`-Header in der HTTP-Antwort des Ursprungsservers bestimmt. In diesem Artikel erfahren Sie, wie Sie `Cache-Control`-Header für das Web-Apps-Feature von Microsoft Azure App Service, Azure Cloud Services, ASP.NET-Anwendungen und Internetinformationsdienste-Websites (Internet Information Services, IIS) festlegen. Die Konfiguration ist dabei jeweils ähnlich. Sie können den `Cache-Control`-Header entweder mithilfe von Konfigurationsdateien oder programmgesteuert festlegen. 
 
-Sie können die Cacheeinstellungen auch über das Portal durch Festlegen von [CDN-Cacheregeln](cdn-caching-rules.md) steuern. Wenn Sie Cacheregeln einrichten und ihr Zwischenspeicherverhalten auf **Außer Kraft setzen** oder **Cache umgehen** festlegen, werden die in diesem Artikel erörterten vom Ursprung angegebenen Cacheeinstellungen ignoriert. Weitere Informationen zu allgemeinen Cachekonzepten finden Sie unter [How caching works](cdn-how-caching-works.md) (Funktionsweise von Caching).
+Sie können die Cacheeinstellungen auch über das Portal durch Festlegen von [CDN-Cacheregeln](cdn-caching-rules.md) steuern. Wenn Sie Cacheregeln erstellen und das Zwischenspeicherverhalten auf **Außerkraftsetzung** oder **Cache umgehen** festlegen, werden die in diesem Artikel erörterten vom Ursprung angegebenen Cacheeinstellungen ignoriert. Weitere Informationen zu allgemeinen Cachekonzepten finden Sie unter [How caching works](cdn-how-caching-works.md) (Funktionsweise von Caching).
 
 > [!TIP]
 > Sie haben auch die Möglichkeit, für eine Datei keine Gültigkeitsdauer festzulegen. In diesem Fall wendet Azure CDN automatisch eine Standardgültigkeitsdauer von sieben Tagen an, es sei denn, Sie haben Cacheregeln im Azure-Portal eingerichtet. Diese Standardgültigkeitsdauer gilt nur für die Optimierung allgemeiner Webbereitstellungen. Bei der Optimierung großer Dateien beträgt die Standardgültigkeitsdauer einen Tag, bei der Optimierung für das Medienstreaming beträgt die Standardgültigkeitsdauer ein Jahr.
@@ -36,16 +36,64 @@ Sie können die Cacheeinstellungen auch über das Portal durch Festlegen von [CD
 > Weitere Informationen dazu, wie Azure CDN den Zugriff auf Dateien und andere Ressourcen beschleunigen kann, finden Sie in der [Übersicht über Azure Content Delivery Network](cdn-overview.md).
 > 
 
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Festlegen von Cache-Control-Headern mithilfe von CDN-Cacheregeln
+Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Webserver ist die Verwendung von Cacheregeln im Azure-Portal. Weitere Informationen zu CDN-Cacheregeln finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure Content Delivery Network mit Cacheregeln](cdn-caching-rules.md).
+
+> [!NOTE] 
+> Cacheregeln sind nur für die Profile **Azure CDN von Verizon Standard** und **Azure CDN von Akamai Standard** verfügbar. Für **Azure CDN von Verizon Premium**-Profile müssen Sie die [Azure CDN-Regel-Engine](cdn-rules-engine.md) im **Verwaltungsportal** verwenden, um von einer ähnlichen Funktionalität zu profitieren.
+
+**So navigieren Sie zur Seite mit den CDN-Cacheregeln**
+
+1. Wählen Sie im Azure-Portal ein CDN-Profil und anschließend den Endpunkt für den Webserver aus.
+
+2. Wählen Sie im linken Bereich unter „Einstellungen“ die Option **Cacheregeln** aus.
+
+   ![Schaltfläche für CDN-Cacheregeln](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
+
+   Die Seite **Cacheregeln** wird geöffnet.
+
+   ![Seite zur CDN-Zwischenspeicherung](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
+
+
+**So legen Sie mit globalen Cacheregeln Cache-Control-Header für einen Webserver fest**
+
+1. Legen Sie unter **Globale Cacheregeln** die Option **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** auf **Abfragezeichenfolgen ignorieren** fest. Legen Sie dann das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest.
+      
+2. Geben Sie für **Dauer bis Cacheablauf** einen Wert von 3600 im Feld **Sekunden** ein, oder geben Sie im Feld **Stunden** den Wert 1 an. 
+
+   ![Beispiel für globale CDN-Cacheregeln](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
+
+   Mit diesen globalen Cacheregeln wird eine Cachedauer von 1 Stunde festgelegt, die sich auf alle Anforderungen an den Endpunkt auswirkt. Der festgelegte Ablauf überschreibt alle `Cache-Control`- oder `Expires`-HTTP-Header, die durch die vom Endpunkt festgelegten Ursprungsserver gesendet werden.   
+
+3. Wählen Sie **Speichern** aus.
+
+**So legen Sie mit benutzerdefinierten Cacheregeln Cache-Control-Header für einen Webserver fest**
+
+1. Erstellen Sie unter **Benutzerdefinierte Cacheregeln** zwei Übereinstimmungsbedingungen:
+
+     a. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert** `/webfolder1/*` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 4 ein.
+
+     b. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert** `/webfolder1/file1.txt` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 2 ein.
+
+    ![Beispiel für benutzerdefinierte CDN-Cacheregeln](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
+
+    Die erste benutzerdefinierte Cacheregel legt eine Cachedauer von vier Stunden für alle Dateien im Ordner `/webfolder1` auf dem Ursprungsserver fest, der durch Ihren Endpunkt angegeben wird. Die zweite Regel setzt für die Datei `file1.txt` die erste Regel außer Kraft und legt eine Cachedauer von zwei Stunden fest.
+
+2. Wählen Sie **Speichern**aus.
+
+
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Festlegen von Cache-Control-Headern mithilfe von Konfigurationsdateien
-Bei statischen Inhalten wie Bildern und Stylesheets können Sie die Aktualisierungshäufigkeit durch Ändern der Konfigurationsdateien **ApplicationHost.config** oder **Web.config** für Ihre Webanwendung steuern. Das `<system.webServer>/<staticContent>/<clientCache>`-Element in beiden Dateien legt den `Cache-Control`-Header für Ihren Inhalt fest.
+Bei statischen Inhalten wie Bildern und Stylesheets können Sie die Aktualisierungshäufigkeit durch Ändern der Konfigurationsdateien **ApplicationHost.config** oder **Web.config** für Ihre Webanwendung steuern. Um den `Cache-Control`-Header für Ihren Inhalt festzulegen, verwenden Sie das `<system.webServer>/<staticContent>/<clientCache>`-Element in einer der beiden Dateien.
 
 ### <a name="using-applicationhostconfig-files"></a>Verwenden der „ApplicationHost.config“-Datei
 Die Datei **ApplicationHost.config** ist die Stammdatei des Konfigurationssystems für die Internetinformationsdienste. Die Konfigurationseinstellungen in einer **ApplicationHost.config**-Datei wirken sich auf alle Anwendungen in der Website aus, werden aber durch die Einstellungen aller für eine Webanwendung vorhandenen **Web.config**-Dateien außer Kraft gesetzt.
 
 ### <a name="using-webconfig-files"></a>Verwenden von Web.config-Dateien
-Mit einer **Web.config**-Datei können Sie das Verhalten Ihrer gesamten Webanwendung oder eines bestimmten Verzeichnisses in Ihrer Webanwendung anpassen. In der Regel befindet sich im Stammordner Ihrer Webanwendung mindestens eine **Web.config**-Datei. Für jede **Web.config**-Datei in einem bestimmten Ordner gilt: Die Konfigurationseinstellungen wirken sich auf alle Inhalte dieses Ordners sowie aller Unterordner aus, solange diese nicht auf Unterordnerebene von einer anderen **Web.config**-Datei außer Kraft gesetzt werden. Sie können z.B. ein `<clientCache>`-Element in einer **Web.config**-Datei im Stammordner Ihrer Webanwendung festlegen, um alle statischen Inhalte Ihrer Webanwendung drei Tage lang zwischenzuspeichern. Sie können auch eine **Web.config**-Datei in einem Unterordner mit variableren Inhalten hinzufügen (z.B. `\frequent`) und das `<clientCache>`-Element dieser Datei so festlegen, dass der Inhalt des Unterordners sechs Stunden lang zwischengespeichert wird. Dies führt zu folgendem Ergebnis: Der Inhalt der gesamten Website wird drei Tage lang zwischengespeichert, mit Ausnahme aller Inhalte im Verzeichnis `\frequent`, die nur sechs Stunden lang zwischengespeichert werden.  
+Mit einer **Web.config**-Datei können Sie das Verhalten Ihrer gesamten Webanwendung oder eines bestimmten Verzeichnisses in Ihrer Webanwendung anpassen. In der Regel befindet sich im Stammordner Ihrer Webanwendung mindestens eine **Web.config**-Datei. Für jede **Web.config**-Datei in einem bestimmten Ordner gilt: Die Konfigurationseinstellungen wirken sich auf alle Inhalte dieses Ordners sowie aller Unterordner aus, solange diese nicht auf Unterordnerebene von einer anderen **Web.config**-Datei außer Kraft gesetzt werden. 
 
-Das folgende XML-Beispiel veranschaulicht, wie Sie das `<clientCache>`-Element in einer Konfigurationsdatei festlegen, um ein maximales Alter von drei Tagen anzugeben:  
+Sie können z.B. ein `<clientCache>`-Element in einer **Web.config**-Datei im Stammordner Ihrer Webanwendung festlegen, um alle statischen Inhalte Ihrer Webanwendung drei Tage lang zwischenzuspeichern. Sie können auch eine **Web.config**-Datei in einem Unterordner mit variableren Inhalten hinzufügen (z.B. `\frequent`) und das `<clientCache>`-Element dieser Datei so festlegen, dass der Inhalt des Unterordners sechs Stunden lang zwischengespeichert wird. Dies führt zu folgendem Ergebnis: Der Inhalt der gesamten Website wird drei Tage lang zwischengespeichert, mit Ausnahme aller Inhalte im Verzeichnis `\frequent`, die nur sechs Stunden lang zwischengespeichert werden.  
+
+Das folgende Beispiel einer XML-Konfigurationsdatei veranschaulicht, wie Sie das `<clientCache>`-Element festlegen, um ein maximales Alter von drei Tagen anzugeben:  
 
 ```xml
 <configuration>

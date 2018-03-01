@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 6f9786b75f5160ceaa4dd269a91d7f3a4b6700d5
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 5e6a79a9b716b6797a1af21f0dcb911219b77207
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Sammeln von Modelldaten mithilfe der Datensammlung
 
@@ -88,7 +88,7 @@ Um die Modelldatensammlung zu verwenden, müssen Sie die folgenden Änderungen a
 So zeigen Sie die gesammelten Daten im Blobspeicher an:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Weitere Dienste** aus.
+2. Wählen Sie **Alle Dienste** aus.
 3. Geben Sie im Suchfeld **Speicherkonten** ein, und drücken Sie die EINGABETASTE.
 4. Wählen Sie auf dem Suchblatt **Speicherkonten** die Ressource **Speicherkonto** aus. Verwenden Sie die folgenden Schritte, um Ihr Speicherkonto zu ermitteln:
 

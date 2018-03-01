@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: e92a9d5900e3e0fe71084e5003010d419e44cb39
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 811cc6cea80acbe6cbbf4533c1f9a8c9c7f53702
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Erstellen eines virtuellen Computers auf der Grundlage einer spezialisierten VHD in einem Speicherkonto
 
@@ -118,7 +118,7 @@ Sie können eine VHD in ein anderes Speicherkonto kopieren, das beim Erstellen e
 ### <a name="before-you-begin"></a>Voraussetzungen
 Stellen Sie sicher, dass Sie:
 
-* über Informationen zu den **Quell- und Zielspeicherkonten** verfügen. Für die Quell-VM benötigen Sie den Speicherkonto- und den Containernamen. Der Containername ist üblicherweise **vhds**. Außerdem müssen Sie über ein Zielspeicherkonto verfügen. Wenn Sie nicht bereits über eines verfügen, können Sie entweder mithilfe des Portals (**Weitere Dienste** > „Speicherkonten“ > „Hinzufügen“) oder des Cmdlets [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) eines erstellen. 
+* über Informationen zu den **Quell- und Zielspeicherkonten** verfügen. Für die Quell-VM benötigen Sie den Speicherkonto- und den Containernamen. Der Containername ist üblicherweise **vhds**. Außerdem müssen Sie über ein Zielspeicherkonto verfügen. Wenn Sie nicht bereits über eines verfügen, können Sie mithilfe des Portals (**Alle Dienste** > „Speicherkonten“ > „Hinzufügen“) oder des Cmdlets [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) eines erstellen. 
 * das [AzCopy-Tool](../../storage/common/storage-use-azcopy.md) heruntergeladen und installiert haben. 
 
 ### <a name="deallocate-the-vm"></a>Aufheben der Zuordnung der VM
@@ -138,7 +138,7 @@ Sie benötigen die URLs der Quell- und Zielspeicherkonten. Die URLs sehen wie fo
 
 Sie können das Azure-Portal oder Azure PowerShell verwenden, um die URL abzurufen:
 
-* **Portal:** Klicken Sie auf **>** für **Weitere Dienste** > **Speicherkonten** > *Speicherkonto* > **Blobs**. Ihre VHD-Quelldatei befindet sich wahrscheinlich im Container **vhds**. Klicken Sie für den Container auf **Eigenschaften**, und kopieren Sie den Text mit der Bezeichnung **URL**. Sie benötigen die URLs des Quell- und des Zielcontainers. 
+* **Portal:** Klicken Sie auf **>** für **Alle Dienste** > **Speicherkonten** > *Speicherkonto* > **Blobs**. Ihre VHD-Quelldatei befindet sich wahrscheinlich im Container **vhds**. Klicken Sie für den Container auf **Eigenschaften**, und kopieren Sie den Text mit der Bezeichnung **URL**. Sie benötigen die URLs des Quell- und des Zielcontainers. 
 * **PowerShell:** Verwenden Sie [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm), um die Informationen des virtuellen Computers **myVM** in der Ressourcengruppe **myResourceGroup** abzurufen. Suchen Sie in den Ergebnissen im Abschnitt **Speicherprofil** nach dem **VHD-URI**. Der erste Teil des URI ist die URL zum Container, und der zweite Teil ist der Betriebssystem-VHD-Name für die VM.
 
 ```powershell
@@ -148,7 +148,7 @@ Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>Abrufen der Speicherzugriffsschlüssel
 Suchen Sie die Zugriffsschlüssel für die Quell- und Zielspeicherkonten. Weitere Informationen zu Zugriffsschlüsseln finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md).
 
-* **Portal:** Klicken Sie auf **Weitere Dienste** > **Speicherkonten** > *Speicherkonto* > **Zugriffsschlüssel**. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
+* **Portal:** Klicken Sie auf **Alle Dienste** > **Speicherkonten** > *Speicherkonto* > **Zugriffsschlüssel**. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
 * **PowerShell:** Verwenden Sie [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey), um den Speicherschlüssel für das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** abzurufen. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
 
 ```powershell
@@ -311,8 +311,8 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ```
 
-### <a name="verify-that-the-vm-was-created"></a>Sicherstellen, dass der virtuelle Computer erstellt wurde
-Der neu erstellte virtuelle Computer müsste nun im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** angezeigt werden. Alternativ dazu können Sie ihn mit den folgenden PowerShell-Befehlen anzeigen:
+### <a name="verify-that-the-vm-was-created"></a>Stellen Sie sicher, dass der virtuelle Computer erstellt wurde
+Der neu erstellte virtuelle Computer sollte nun im [Azure-Portal](https://portal.azure.com) unter **Alle Dienste** > **Virtuelle Computer** angezeigt werden. Alternativ dazu können Sie ihn mit den folgenden PowerShell-Befehlen anzeigen:
 
 ```powershell
 $vmList = Get-AzureRmVM -ResourceGroupName $rgName

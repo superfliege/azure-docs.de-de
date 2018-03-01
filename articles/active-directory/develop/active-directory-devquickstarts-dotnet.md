@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9b1118b0159437e179b09b179571ed1460c3daf6
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 91efb85d17bd6ba57b1dc14253257f3f20e37c92
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-net-desktop-wpf-getting-started"></a>Erste Schritte mit .NET-Desktop (WPF) in Azure AD
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -47,7 +47,7 @@ Damit Ihre Anwendung Tokens abrufen kann, müssen Sie sie zunächst beim Azure A
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
-3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
+3. Klicken Sie im linken Navigationsbereich auf **Alle Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen**.
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **systemeigene Clientanwendung**.
   * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.

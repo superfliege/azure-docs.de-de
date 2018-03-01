@@ -1,6 +1,6 @@
 ---
-title: "Komponentenreferenz für den Ansicht-Designer in Azure Log Analytics | Microsoft-Dokumentation"
-description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal mit verschiedenen Visualisierungen von Daten im Log Analytics-Arbeitsbereich erstellen. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Visualisierungskomponenten, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind."
+title: Referenzleitfaden zu den Ansicht-Designer-Teilen in Azure Log Analytics | Microsoft-Dokumentation
+description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen in Ihrem Log Analytics-Arbeitsbereich anzeigen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,334 +14,336 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 1fdfb237fcea6a10d38f3be8524ea5fbcf1f3728
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6fd19cce955e1f06c9b6f5a9ef5d85d9fd63c1c1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="log-analytics-view-designer-visualization-part-reference"></a>Referenz der Visualisierungskomponenten im Ansicht-Designer in Log Analytics
-Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal mit verschiedenen Visualisierungen von Daten aus Ihrem Log Analytics-Arbeitsbereich erstellen. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Visualisierungskomponenten, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
+# <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungsteilen in Log Analytics
+Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen aus Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
 
-Weitere verfügbare Artikel für den Ansicht-Designer:
+Weitere Informationen zum Ansicht-Designer finden Sie hier:
 
-* [Ansicht-Designer](log-analytics-view-designer.md): Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
-* [Referenz der Kacheln](log-analytics-view-designer-tiles.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
+* [Ansicht-Designer](log-analytics-view-designer.md): Bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
+* [Kachelreferenz](log-analytics-view-designer-tiles.md): Dient als Referenz zu den Einstellungen für die einzelnen verfügbaren Kacheln in den benutzerdefinierten Ansichten.
 
 >[!NOTE]
-> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, müssen die Abfragen in allen Ansichten in der [neuen Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856078) geschrieben werden.  Alle Ansichten, die vor dem Upgrade des Arbeitsbereichs erstellt wurde, werden automatisch konvertiert.
+> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, müssen die Abfragen in allen Ansichten in der [neuen Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856078) geschrieben werden. Alle Ansichten, die vor dem Upgrade des Arbeitsbereichs erstellt wurden, werden automatisch konvertiert.
 
-Die folgende Tabelle beschreibt die verschiedenen Typen von Kacheln, die im Ansicht-Designer verfügbar sind.  In den folgenden Abschnitten werden jeder Kacheltyp im Detail und dessen Eigenschaften beschrieben.
+Die verfügbaren Ansicht-Designer-Kacheltypen werden in der folgenden Tabelle beschrieben:
 
-| Ansichtstyp | BESCHREIBUNG |
+| Ansichtstyp | Beschreibung |
 |:--- |:--- |
-| [Liste der Abfragen](#list-of-queries-part) |Zeigt eine Liste der Protokollsuchabfragen an.  Die Benutzer kann auf die einzelnen Abfragen klicken, um die Ergebnisse anzuzeigen. |
-| [Zahl und Liste](#number-amp-list-part) |Die Kopfzeile weist eine einzelne Zahl auf, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an. |
-| [Zwei Zahlen und Liste](#two-numbers-amp-list-part) |Die Kopfzeile weist zwei Zahlen auf, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an. |
-| [Ring und Liste](#donut-amp-list-part) |Die Kopfzeile zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer Protokollabfrage zusammenfasst.  Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar. |
-| [Zwei Zeitachsen und Liste](#two-timelines-amp-list-part) |Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. In einer Legende wird eine einzelne Zahl dargestellt, die eine Wertespalte in einer Protokollabfrage zusammenfasst.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an. |
-| [Informationen](#information-part) |Die Kopfzeile zeigt statischen Text und einen optionalen Link an.  Die Liste zeigt ein oder mehrere Elemente mit statischem Text und Titel an. |
-| [Liniendiagramm, Legende und Liste](#line-chart-callout-amp-list-part) |Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf und eine Legende mit einem zusammengefassten Wert an.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an. |
-| [Liniendiagramm und Liste](#line-chart-amp-list-part) |Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an. |
-| [Komponente mit Liniendiagrammstapel](#stack-of-line-charts-part) |Zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im zeitlichen Verlauf an. |
+| [Liste der Abfragen](#list-of-queries-part) |Zeigt eine Liste der Protokollsuchabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. |
+| [Zahl und Liste](#number-amp-list-part) |Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Zwei Zahlen und Liste](#two-numbers-amp-list-part) |Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Ringdiagramm und Liste](#donut-amp-list-part) |Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar. |
+| [Zwei Zeitachsen und Liste](#two-timelines-amp-list-part) |Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. In einer Legende wird eine einzelne Zahl dargestellt, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Informationen](#information-part) |Die Kopfzeile zeigt statischen Text und einen optionalen Link. Die Liste zeigt mindestens ein Element mit einer statischen Kachel und Text. |
+| [Liniendiagramm, Legende und Liste](#line-chart-callout-amp-list-part) |Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf und eine Legende mit einem zusammengefassten Wert an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Liniendiagramm und Liste](#line-chart-amp-list-part) |Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf. |
+| [Komponente mit Liniendiagrammstapel](#stack-of-line-charts-part) |Zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an. |
+
+Die nächsten Abschnitte beschreiben die Kacheltypen und ihre Eigenschaften ausführlich.
 
 ## <a name="list-of-queries-part"></a>Komponente mit der Liste der Abfragen
-Zeigt eine Liste der Protokollsuchabfragen an.  Die Benutzer kann auf die einzelnen Abfragen klicken, um die Ergebnisse anzuzeigen.  Die Ansicht enthält standardmäßig eine einzelne Abfrage, und Sie können auf **+ Abfrage** klicken, um zusätzliche Abfragen hinzuzufügen.
+Das Teil mit der Liste der Abfragen zeigt eine Liste der Protokollsuchabfragen an. Sie können einzelne Abfragen auswählen, um die Ergebnisse anzuzeigen. Die Ansicht enthält standardmäßig eine einzelne Abfrage, und Sie können **+ Abfrage** wählen, um zusätzliche Abfragen hinzuzufügen.
 
 ![Ansicht der Liste der Abfragen](media/log-analytics-view-designer/view-list-queries.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
-| Titel |Text, der oben in der Ansicht angezeigt wird. |
-| Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Vorab ausgewählte Filter |Durch Trennzeichen getrennte Liste von Eigenschaften, die in den linken Filterbereich aufgenommen werden sollen, wenn der Benutzer eine Abfrage auswählt. |
-| Rendermodus |Anfängliche Ansicht, die angezeigt wird, wenn die Abfrage ausgewählt wird.  Der Benutzer kann alle verfügbaren Ansichten auswählen, nachdem er die Abfrage geöffnet hat. |
+| Titel |Der Text, der im oberen Bereich der Ansicht angezeigt wird. |
+| Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
+| Vorab ausgewählte Filter |Eine durch Trennzeichen getrennte Liste von Eigenschaften, die in den linken Filterbereich aufgenommen werden sollen, wenn Sie eine Abfrage auswählen. |
+| Rendermodus |Die anfängliche Ansicht, die bei Auswahl der Abfrage angezeigt wird. Sie können nach dem Öffnen der Abfrage alle verfügbaren Ansichten auswählen. |
 | **Abfragen** | |
-| Suchabfrage |Die auszuführende Abfrage. |
-| Anzeigename |Beschreibender Name der Abfrage, der für den Benutzer angezeigt wird. |
+| Suchabfrage |Dies ist die auszuführende Abfrage. |
+| Anzeigename | Der beschreibende Name, der angezeigt wird. |
 
-## <a name="number--list-part"></a>Komponente mit Zahl und Liste
-Die Kopfzeile weist eine einzelne Zahl auf, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
+## <a name="number-and-list-part"></a>Teil mit Zahl und Liste
+Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
 ![Ansicht der Liste der Abfragen](media/log-analytics-view-designer/view-number-list.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
-| Gruppentitel |Text, der oben in der Ansicht angezeigt wird. |
-| Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Symbol |Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
-| Symbol verwenden |Wählen Sie diese Option aus, damit das Symbol angezeigt wird. |
+| Gruppentitel |Der Text, der im oberen Bereich der Ansicht angezeigt wird. |
+| Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
+| Symbol |Die Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
+| Symbol verwenden |Wählen Sie diesen Link, um das Symbol anzuzeigen. |
 | **Titel** | |
-| Legende |Text, der oben in der Kopfzeile angezeigt wird. |
-| Abfragen |Abfrage, die für die Kopfzeile ausgeführt wird.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
+| Legende |Der Text, der oben in der Kopfzeile angezeigt wird. |
+| Abfragen |Die Abfrage, die für die Kopfzeile ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | **Liste** | |
-| Abfragen |Abfrage, die für die Liste ausgeführt wird.  Die ersten beiden Eigenschaften für die ersten zehn Datensätze in den Ergebnissen werden angezeigt.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Balken werden automatisch basierend auf dem relativen Wert der numerischen Spalte erstellt.<br><br>Verwenden Sie den Befehl zum Sortieren in der Abfrage, um die Datensätze in der Liste zu sortieren.  Der Benutzer kann auf „Alle anzeigen“ klicken, um die Abfrage auszuführen und alle Datensätze zurückzugeben. |
-| Diagramm ausblenden |Wählen Sie diese Option, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
-| Sparklines aktivieren |Wählen Sie diese Option, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Farbe der Balken oder Sparklines. |
-| Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**&gt; Spaltentitel** |
-| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
-| Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
+| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die ersten beiden Eigenschaften für die ersten zehn Datensätze in den Ergebnissen werden angezeigt. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Balken werden automatisch basierend auf dem relativen Wert der numerischen Spalte erstellt.<br><br>Verwenden Sie den Befehl `Sort` in der Abfrage, um die Datensätze in der Liste zu sortieren. Sie können **Alle anzeigen** auswählen, um die Abfrage auszuführen und alle Datensätze zurückzugeben. |
+| Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
+| Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Farbe |Die Farbe der Balken oder Sparklines. |
+| Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| **Liste** |**> Spaltentitel** |
+| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
-| Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
+| Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
-## <a name="two-numbers--list-part"></a>Komponente mit zwei Zahlen und Liste
-Die Kopfzeile weist zwei Zahlen auf, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
+## <a name="two-numbers-and-list-part"></a>Teil mit zwei Zahlen und Liste
+Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
 ![Ansicht mit zwei Zahlen und Liste](media/log-analytics-view-designer/view-two-numbers-list.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
-| Gruppentitel |Text, der oben in der Ansicht angezeigt wird. |
-| Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Symbol |Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
-| Symbol verwenden |Wählen Sie diese Option aus, damit das Symbol angezeigt wird. |
+| Gruppentitel |Der Text, der im oberen Bereich der Ansicht angezeigt wird. |
+| Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
+| Symbol |Die Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
+| Symbol verwenden |Wählen Sie diesen Link, um das Symbol anzuzeigen. |
 | **Titel** | |
-| Legende |Text, der oben in der Kopfzeile angezeigt wird. |
-| Abfragen |Abfrage, die für die Kopfzeile ausgeführt wird.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
+| Legende |Der Text, der oben in der Kopfzeile angezeigt wird. |
+| Abfragen |Die Abfrage, die für die Kopfzeile ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | **Liste** | |
-| Abfragen |Abfrage, die für die Liste ausgeführt wird.  Die ersten beiden Eigenschaften für die ersten zehn Datensätze in den Ergebnissen werden angezeigt.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Balken werden automatisch basierend auf dem relativen Wert der numerischen Spalte erstellt.<br><br>Verwenden Sie den Befehl zum Sortieren in der Abfrage, um die Datensätze in der Liste zu sortieren.  Der Benutzer kann auf „Alle anzeigen“ klicken, um die Abfrage auszuführen und alle Datensätze zurückzugeben. |
-| Diagramm ausblenden |Wählen Sie diese Option, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
-| Sparklines aktivieren |Wählen Sie diese Option, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Farbe der Balken oder Sparklines. |
-| Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**&gt; Spaltentitel** |
-| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
-| Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
+| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die ersten beiden Eigenschaften für die ersten zehn Datensätze in den Ergebnissen werden angezeigt. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Balken werden automatisch basierend auf dem relativen Wert der numerischen Spalte erstellt.<br><br>Verwenden Sie den Befehl `Sort` in der Abfrage, um die Datensätze in der Liste zu sortieren. Sie können **Alle anzeigen** auswählen, um die Abfrage auszuführen und alle Datensätze zurückzugeben. |
+| Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
+| Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Farbe |Die Farbe der Balken oder Sparklines. |
+| Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| **Liste** |**> Spaltentitel** |
+| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
-| Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
+| Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
-## <a name="donut--list-part"></a>Komponente mit Ring und Liste
-Die Kopfzeile zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer Protokollabfrage zusammenfasst.  Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar.
+## <a name="donut-and-list-part"></a>Teil mit Ringdiagramm und Liste
+Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar.
 
-![Ansicht mit Ring und Liste](media/log-analytics-view-designer/view-donut-list.png)
+![Ansicht mit Ringdiagramm und Liste](media/log-analytics-view-designer/view-donut-list.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
-| Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
-| Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Symbol |Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
-| Symbol verwenden |Wählen Sie diese Option aus, damit das Symbol angezeigt wird. |
+| Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
+| Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
+| Symbol |Die Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
+| Symbol verwenden |Wählen Sie diesen Link, um das Symbol anzuzeigen. |
 | **Kopfzeile** | |
-| Titel |Text, der oben in der Kopfzeile angezeigt wird. |
-| Untertitel |Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
+| Titel |Der Text, der oben in der Kopfzeile angezeigt wird. |
+| Untertitel |Der Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Ring** | |
-| Abfragen |Abfrage, die für den Ring ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein. |
+| Abfragen |Die Abfrage, die für das Ringdiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. |
 | **Ring** |**&gt; Mitte** |
-| Text |Text, der unter dem Wert im Ring angezeigt wird. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie zu einem einzelnen Wert zusammenzufassen.<br><br>– Summe: Die Werte aller Datensätze werden addiert.<br>– Prozentsatz: Prozentsatz der Datensätze, die von den Werten in **Vom Vorgang in der Mitte verwendete Ergebniswerte** zurückgegeben werden, von der Gesamtanzahl der Datensätze in der Abfrage. |
-| Vom Vorgang in der Mitte verwendete Ergebniswerte |Klicken Sie optional auf das Pluszeichen, um einen oder mehrere Werte hinzuzufügen.  Die Ergebnisse der Abfrage werden auf Datensätze mit den von Ihnen angegebenen Eigenschaftswerten beschränkt.  Wenn keine Werte hinzugefügt werden, werden alle Datensätze in die Abfrage aufgenommen. |
+| Text |Der Text, der unter dem Wert innerhalb des Ringdiagramms angezeigt wird. |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie als Einzelwert zusammenzufassen.<ul><li>Summe: Addiert die Werte aller Datensätze.</li><li>Prozentsatz: Das Verhältnis der Datensätze, die von den Werten in **Vom Vorgang in der Mitte verwendete Ergebniswerte** zurückgegeben werden, von der Gesamtanzahl der Datensätze in der Abfrage.</li></ul> |
+| Vom Vorgang in der Mitte verwendete Ergebniswerte |Klicken Sie optional auf das Pluszeichen (+), um einen oder mehrere Werte hinzuzufügen. Die Ergebnisse der Abfrage werden auf Datensätze mit den von Ihnen angegebenen Eigenschaftswerten beschränkt. Wenn keine Werte hinzugefügt werden, werden alle Datensätze in die Abfrage aufgenommen. |
 | **Weitere Optionen** |**&gt; Farben** |
 | Farbe 1<br>Farbe 2<br>Farbe 3 |Wählen Sie die Farbe für jeden der im Ring angezeigten Werte aus. |
-| **Weitere Optionen** |**&gt; Erweiterte Farbzuordnung** |
+| **Weitere Optionen** |**> Erweiterte Farbzuordnung** |
 | Feldwert |Geben Sie den Namen eines Felds ein, um es in einer anderen Farbe anzuzeigen, wenn es im Ring enthalten ist. |
 | Farbe |Wählen Sie die Farbe für das eindeutige Feld aus. |
 | **Liste** | |
-| Abfragen |Abfrage, die für die Liste ausgeführt wird.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
-| Diagramm ausblenden |Wählen Sie diese Option, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
-| Sparklines aktivieren |Wählen Sie diese Option, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Farbe der Balken oder Sparklines. |
-| Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**&gt; Spaltentitel** |
-| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
-| Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
+| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
+| Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Farbe |Die Farbe der Balken oder Sparklines. |
+| Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| **Liste** |**> Spaltentitel** |
+| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
-| Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
+| Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
-## <a name="two-timelines--list-part"></a>Komponente mit zwei Zeitachsen und Liste
-Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. In einer Legende wird eine einzelne Zahl dargestellt, die eine Wertespalte in einer Protokollabfrage zusammenfasst.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
+## <a name="two-timelines-and-list-part"></a>Teil mit zwei Zeitachsen und Liste
+Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. In einer Legende wird eine einzelne Zahl dargestellt, die eine Wertspalte in einer Protokollabfrage zusammenfasst. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
 ![Ansicht mit zwei Zeitachsen und Liste](media/log-analytics-view-designer/view-two-timelines-list.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
-| Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
-| Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Symbol |Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
-| Symbol verwenden |Wählen Sie diese Option aus, damit das Symbol angezeigt wird. |
+| Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
+| Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
+| Symbol |Die Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
+| Symbol verwenden |Wählen Sie diesen Link, um das Symbol anzuzeigen. |
 | **Erstes Diagramm<br>Zweites Diagramm** | |
-| Legende |Text, der unter der Legende für die erste Reihe angezeigt wird. |
-| Farbe |Farbe, die für die Säulen in der Reihe verwendet wird. |
-| Abfragen |Abfrage, die für die erste Reihe ausgeführt wird.  Die Angabe der Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende zu einem einzelnen Wert zusammenzufassen.<br><br>– Summe: Summe der Werte von allen Datensätzen.<br>– Durchschnitt: Durchschnitt der Werte von allen Datensätzen.<br>– Letztes Beispiel: Wert aus dem letzten Intervall im Diagramm.<br>– Erstes Beispiel: Wert aus dem ersten Intervall im Diagramm.<br>– Anzahl: Anzahl aller von der Abfrage zurückgegebenen Datensätze. |
+| Legende |Der Text, der unter der Legende für die erste Datenreihe angezeigt wird. |
+| Farbe |Die Farbe, die für die Säulen in der Reihe verwendet wird. |
+| Abfragen |Die Abfrage, die für die erste Reihe ausgeführt wird. Die Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Summe: Die Summe der Werte aller Datensätze.</li><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Erstes Beispiel: Der Wert aus dem ersten Intervall im Diagramm.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li></ul> |
 | **Liste** | |
-| Abfragen |Abfrage, die für die Liste ausgeführt wird.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
-| Diagramm ausblenden |Wählen Sie diese Option, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
-| Sparklines aktivieren |Wählen Sie diese Option, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Farbe der Balken oder Sparklines. |
-| Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**&gt; Spaltentitel** |
-| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
-| Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
+| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
+| Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Farbe |Die Farbe der Balken oder Sparklines. |
+| Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| **Liste** |**> Spaltentitel** |
+| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
-| Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
+| Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
 ## <a name="information-part"></a>Komponente mit Informationen
-Die Kopfzeile zeigt statischen Text und einen optionalen Link an.  Die Liste zeigt ein oder mehrere Elemente mit statischem Text und Titel an.
+Die Kopfzeile zeigt statischen Text und einen optionalen Link. Die Liste zeigt mindestens ein Element mit einer statischen Kachel und Text.
 
 ![Ansicht mit Informationen](media/log-analytics-view-designer/view-information.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
-| Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
-| Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Farbe |Hintergrundfarbe der Kopfzeile. |
+| Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
+| Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
+| Farbe |Die Hintergrundfarbe der Kopfzeile. |
 | **Kopfzeile** | |
-| Image |Bilddatei, die in der Kopfzeile angezeigt wird. |
-| Bezeichnung |Text, der in der Kopfzeile angezeigt wird. |
+| Image |Die Bilddatei, die in der Kopfzeile angezeigt wird. |
+| Bezeichnung |Der Text, der in der Kopfzeile angezeigt wird. |
 | **Kopfzeile** |**&gt; Link** |
-| Bezeichnung |Text des Links. |
-| Url |URL für den Link. |
+| Bezeichnung |Der Text des Links |
+| Url |Die URL für den Link |
 | **Informationselemente** | |
-| Titel |Text, der für Titel der einzelnen Elemente angezeigt wird. |
-| Inhalt |Text, der für die einzelnen Elemente angezeigt wird. |
+| Titel |Der Text, der für den Titel der einzelnen Elemente angezeigt wird. |
+| Inhalt |Der Text, der für die einzelnen Elemente angezeigt wird. |
 
-## <a name="line-chart-callout--list-part"></a>Komponente mit Liniendiagramm, Legende und Liste
-Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf und eine Legende mit einem zusammengefassten Wert an.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
+## <a name="line-chart-callout-and-list-part"></a>Teil mit Liniendiagramm, Legende und Liste
+Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf und eine Legende mit einem zusammengefassten Wert an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
 ![Ansicht mit Liniendiagramm, Legende und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
-| Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
-| Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Symbol |Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
-| Symbol verwenden |Wählen Sie diese Option aus, damit das Symbol angezeigt wird. |
+| Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
+| Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
+| Symbol |Die Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
+| Symbol verwenden |Wählen Sie diesen Link, um das Symbol anzuzeigen. |
 | **Kopfzeile** | |
-| Titel |Text, der oben in der Kopfzeile angezeigt wird. |
-| Untertitel |Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
+| Titel |Der Text, der oben in der Kopfzeile angezeigt wird. |
+| Untertitel |Der Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Liniendiagramm** | |
-| Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
+| Abfragen |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
 | **Liniendiagramm** |**&gt; Legende** |
-| Legendentitel |Text, der über dem Wert der Legende angezeigt wird. |
-| Reihenname |Eigenschaftswert für die Reihe, die für den Wert der Legende verwendet wird.  Wenn keine Reihe angegeben wird, werden alle Datensätze der Abfrage verwendet. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende zu einem einzelnen Wert zusammenzufassen.<br><br>– Durchschnitt: Durchschnitt der Werte von allen Datensätzen.<br>– Anzahl: Anzahl aller von der Abfrage zurückgegebenen Datensätze.<br>– Letztes Beispiel: Wert aus dem letzten Intervall im Diagramm.<br>– Max: Höchstwert aus den Intervallen im Diagramm.<br>– Min: Mindestwert aus den Intervallen im Diagramm.<br>– Summe: Summe der Werte von allen Datensätzen. |
-| **Liniendiagramm** |**&gt; Y-Achse** |
-| Logarithmische Skala verwenden |Wählen Sie diese Option aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
-| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an.  Diese Informationen werden verwendet, um Bezeichnungen im Diagramm anzuzeigen, die Werttypen angeben, und um optional Werte zu konvertieren.  Der Typ der Einheit gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in „Aktuelle Einheit“.  Bei Auswahl eines Werts in „Konvertieren in“ werden die numerischen Werte vom Typ in „Aktuelle Einheit“ in den Typ in „Konvertieren in“ konvertiert. |
-| Benutzerdefinierte Bezeichnung |Text, der für die Y-Achse neben der Bezeichnung für den Typ der Einheit angezeigt wird.  Wenn keine Bezeichnung angegeben ist, wird nur der Typ der Einheit angezeigt. |
+| Legendentitel |Der Text, der über dem Legendenwert angezeigt wird. |
+| Reihenname |Eigenschaftswert für die Reihe, die für den Wert der Legende verwendet wird. Wenn keine Reihe angegeben wird, werden alle Datensätze der Abfrage verwendet. |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li><li>Min: Der Mindestwert aus den Intervallen im Diagramm.</li><li>Summe: Die Summe der Werte aller Datensätze.</li></ul> |
+| **Liniendiagramm** |**> Y-Achse** |
+| Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
+| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
+| Benutzerdefinierte Bezeichnung |Der Text, der für die Y-Achse neben der Bezeichnung für den Typ der *Einheit* angezeigt wird. Wenn keine Bezeichnung angegeben ist, wird nur der Typ der *Einheit* angezeigt. |
 | **Liste** | |
-| Abfragen |Abfrage, die für die Liste ausgeführt wird.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
-| Diagramm ausblenden |Wählen Sie diese Option, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
-| Sparklines aktivieren |Wählen Sie diese Option, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Farbe der Balken oder Sparklines. |
-| Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**&gt; Spaltentitel** |
-| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
-| Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
+| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
+| Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Farbe |Die Farbe der Balken oder Sparklines. |
+| Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| **Liste** |**> Spaltentitel** |
+| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
-| Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
+| Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
-## <a name="line-chart--list-part"></a>Komponente mit Liniendiagramm und Liste
-Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
+## <a name="line-chart-and-list-part"></a>Teil mit Liniendiagramm und Liste
+Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an. Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Verlauf.
 
 ![Ansicht mit Liniendiagramm und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
-| Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
-| Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Symbol |Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
-| Symbol verwenden |Wählen Sie diese Option aus, damit das Symbol angezeigt wird. |
+| Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
+| Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
+| Symbol |Die Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
+| Symbol verwenden |Wählen Sie diesen Link, um das Symbol anzuzeigen. |
 | **Kopfzeile** | |
-| Titel |Text, der oben in der Kopfzeile angezeigt wird. |
-| Untertitel |Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
+| Titel |Der Text, der oben in der Kopfzeile angezeigt wird. |
+| Untertitel |Der Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Liniendiagramm** | |
-| Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
-| **Liniendiagramm** |**&gt; Y-Achse** |
-| Logarithmische Skala verwenden |Wählen Sie diese Option aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
-| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an.  Diese Informationen werden verwendet, um Bezeichnungen im Diagramm anzuzeigen, die Werttypen angeben, und um optional Werte zu konvertieren.  Der Typ der Einheit gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in „Aktuelle Einheit“.  Bei Auswahl eines Werts in „Konvertieren in“ werden die numerischen Werte vom Typ in „Aktuelle Einheit“ in den Typ in „Konvertieren in“ konvertiert. |
-| Benutzerdefinierte Bezeichnung |Text, der für die Y-Achse neben der Bezeichnung für den Typ der Einheit angezeigt wird.  Wenn keine Bezeichnung angegeben ist, wird nur der Typ der Einheit angezeigt. |
+| Abfragen |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
+| **Liniendiagramm** |**> Y-Achse** |
+| Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
+| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
+| Benutzerdefinierte Bezeichnung |Der Text, der für die Y-Achse neben der Bezeichnung für den Typ der *Einheit* angezeigt wird. Wenn keine Bezeichnung angegeben ist, wird nur der Typ der *Einheit* angezeigt. |
 | **Liste** | |
-| Abfragen |Abfrage, die für die Liste ausgeführt wird.  Die Anzahl der von der Abfrage zurückgegebenen Datensätze wird angezeigt. |
-| Diagramm ausblenden |Wählen Sie diese Option, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
-| Sparklines aktivieren |Wählen Sie diese Option, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Farbe der Balken oder Sparklines. |
-| Vorgang |Vorgang, der für die Sparkline ausgeführt werden soll.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Trennzeichen für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu zergliedern.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#name-value-separator). |
-| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
-| **Liste** |**&gt; Spaltentitel** |
-| NAME |Text, der oben in der ersten Spalte der Liste angezeigt wird. |
-| Wert |Text, der oben in der zweiten Spalte der Liste angezeigt wird. |
+| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
+| Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Farbe |Die Farbe der Balken oder Sparklines. |
+| Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
+| Navigationsabfrage |Die Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#navigation-query). |
+| **Liste** |**> Spaltentitel** |
+| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
-| Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
+| Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
 ## <a name="stack-of-line-charts-part"></a>Komponente mit Liniendiagrammstapel
-Zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im zeitlichen Verlauf an.
+Der Liniendiagrammstapel zeigt drei separate Liniendiagramme mit mehreren Reihen aus einer Protokollabfrage im Verlauf an, wie hier dargestellt:
 
 ![Liniendiagrammstapel](media/log-analytics-view-designer/view-stack-line-charts.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
-| Gruppentitel |Text, der oben auf der Kachel angezeigt wird. |
-| Neue Gruppe |Wählen Sie diese Option aus, um in der Ansicht auf der Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Symbol |Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
+| Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
+| Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
+| Symbol |Die Bilddatei, die neben dem Ergebnis in der Kopfzeile angezeigt wird. |
 | **Diagramm 1<br>Diagramm 2<br>Diagramm 3** |**&gt; Kopfzeile** |
-| Titel |Text, der oben im Diagramm angezeigt wird. |
-| Untertitel |Text, der unter dem Titel oben im Diagramm angezeigt wird. |
+| Titel |Der Text, der im oberen Bereich des Diagramms angezeigt wird. |
+| Untertitel |Der Text, der unter dem Titel oben im Diagramm angezeigt wird. |
 | **Diagramm 1<br>Diagramm 2<br>Diagramm 3** |**Liniendiagramm** |
-| Abfragen |Abfrage, die für das Liniendiagramm ausgeführt wird.  Die erste Eigenschaft sollte ein Textwert und die zweite Eigenschaft ein numerischer Wert sein.  Dies ist normalerweise eine Abfrage, in der das Schlüsselwort für die **Maßeinheit** verwendet wird, um die Ergebnisse zusammenzufassen.  Wenn in der Abfrage das Schlüsselwort für das **Intervall** verwendet wird, wird für die X-Achse des Diagramms dieses Intervall verwendet.  Wenn die Abfrage das Schlüsselwort für das **Intervall** nicht enthält, werden stündliche Intervalle für die X-Achse verwendet. |
-| **Diagramm** |**&gt; Y-Achse** |
-| Logarithmische Skala verwenden |Wählen Sie diese Option aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
-| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an.  Diese Informationen werden verwendet, um Bezeichnungen im Diagramm anzuzeigen, die Werttypen angeben, und um optional Werte zu konvertieren.  Der Typ der Einheit gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in „Aktuelle Einheit“.  Bei Auswahl eines Werts in „Konvertieren in“ werden die numerischen Werte vom Typ in „Aktuelle Einheit“ in den Typ in „Konvertieren in“ konvertiert. |
-| Benutzerdefinierte Bezeichnung |Text, der für die Y-Achse neben der Bezeichnung für den Typ der Einheit angezeigt wird.  Wenn keine Bezeichnung angegeben ist, wird nur der Typ der Einheit angezeigt. |
+| Abfragen |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
+| **Diagramm** |**> Y-Achse** |
+| Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
+| Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
+| Benutzerdefinierte Bezeichnung |Der Text, der für die Y-Achse neben der Bezeichnung für den Typ der *Einheit* angezeigt wird. Wenn keine Bezeichnung angegeben ist, wird nur der Typ der *Einheit* angezeigt. |
 
 ## <a name="common-settings"></a>Allgemeine Einstellungen
-In den folgenden Abschnitten werden die Einstellungen beschrieben, die für verschiedene Visualisierungskomponenten gelten.
+In den folgenden Abschnitten werden die Einstellungen beschrieben, die für verschiedene Visualisierungsteile gelten.
 
-### <a name="name-value-separator">Trennzeichen für Name und Wert</a>
-Ein Trennzeichen, um die Texteigenschaft aus einer Listenabfrage in mehrere Werte zu zergliedern.  Wenn Sie ein Trennzeichen angeben, können Sie Namen für die einzelnen Felder getrennt durch dieses Trennzeichen im Feld „Name“ bereitstellen.
+### <a name="name-value-separator"></a>Trennlinie für Name und Wert
+Die Trennlinie für Name und Wert ist ein einstelliges Trennzeichen, um die Texteigenschaft aus einer Listenabfrage in mehrere Werte zu gliedern. Wenn Sie ein Trennzeichen angeben, können Sie Namen für die einzelnen Felder getrennt durch dieses Trennzeichen im Feld **Name** bereitstellen.
 
-Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude12* auf.  Sie könnten - als Trennzeichen für Name und Wert und *Ort-Gebäude* als Namen angeben.  Dadurch wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* zergliedert.
+Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude 12* auf. Sie können eine Bindestrich (-) als Trennlinie für Name und Wert festlegen und *Ort-Gebäude* als Namen angeben. Durch diesen Ansatz wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* gliedert.
 
-### <a name="navigation-query">Navigationsabfrage</a>
-Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Verwenden Sie *{ausgewähltes Element}*, um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.
+### <a name="navigation-query"></a>Navigationsabfrage
+Die Navigationsabfrage ist eine Abfrage, die ausgeführt wird, wenn Sie ein Element in der Liste auswählen. Verwenden Sie *{ausgewähltes Element}*, um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.
 
-Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt.  Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt.
+Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt. Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt.
 
-### <a name="sparklines">Sparklines</a>
-Eine Sparkline ist ein kleines Liniendiagramm, das den Wert eines Listeneintrags im Lauf der Zeit veranschaulicht.  Bei Visualisierungskomponenten mit einer Liste können Sie auswählen, ob ein horizontaler Balken mit dem relativen Wert einer numerischen Spalte oder eine Sparkline mit dem Wert im Verlauf der Zeit angezeigt werden soll.
+### <a name="sparklines"></a>Sparklines
+Eine Sparkline ist ein kleines Liniendiagramm, das den Wert eines Listeneintrags im Lauf der Zeit veranschaulicht. Bei Visualisierungsteilen mit einer Liste können Sie auswählen, ob ein horizontaler Balken mit dem relativen Wert einer numerischen Spalte oder eine Sparkline mit dem Wert im Verlauf angezeigt werden soll.
 
-In der folgenden Tabelle sind Einstellungen für Sparklines beschrieben.
+In der folgenden Tabelle sind Einstellungen für Sparklines beschrieben:
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
-| Sparklines aktivieren |Wählen Sie diese Option, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. |
-| Vorgang |Wenn Sparklines aktiviert sind, ist dies der Vorgang, der für jede Eigenschaft in der Liste ausgeführt wird, um die Werte für die Sparkline zu berechnen.<br><br>– Letztes Beispiel: Letzter Wert für die Reihe im Zeitintervall.<br>– Max: Höchstwert für die Reihe im Zeitintervall.<br>– Min: Mindestwert für die Reihe im Zeitintervall.<br>– Summe: Summe der Werte für die Reihe im Zeitintervall.<br>– Zusammenfassung: Verwendet den gleichen Measure-Befehl wie die Abfrage in der Kopfzeile. |
+| Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. |
+| Vorgang |Wenn Sparklines aktiviert sind, ist dies der Vorgang, der für jede Eigenschaft in der Liste ausgeführt wird, um die Werte für die Sparkline zu berechnen.<ul><li>Letztes Beispiel: Der letzte Wert für die Reihe im Zeitintervall.</li><li>Max: Der Höchstwert für die Reihe im Zeitintervall.</li><li>Min: Der Mindestwert für die Reihe im Zeitintervall.</li><li>Summe: Die Summe der Werte für die Reihe im Zeitintervall.</li><li>Zusammenfassung: Verwendet den gleichen `measure`-Befehl wie die Abfrage in der Kopfzeile.</li></ul> |
 
-### <a name="thresholds">Schwellenwerte</a>
-Schwellenwerte ermöglichen die Anzeige eines farbigen Symbols neben jedem Element einer Liste, damit Sie Elemente, die einen bestimmten Wert überschreiten oder innerhalb eines bestimmten Bereichs liegen, auf einen Blick erkennen können.  Sie können beispielsweise folgende Farbgebung festlegen: ein grünes Symbol für Elemente mit akzeptablem Wert, ein gelbes Symbol für Elemente mit einem Wert in einem Bereich, der auf eine Warnung hindeutet, und ein rotes Symbol für Elemente, die einen Fehlerwert überschreiten.
+### <a name="thresholds"></a>Schwellenwerte
+Mithilfe von Schwellenwerten können Sie ein farbiges Symbol neben jedem Element in einer Liste anzeigen. Schwellenwerte bieten Ihnen einen schnellen visuellen Indikator für Elemente, die einen bestimmten Wert überschreiten oder innerhalb eines bestimmten Bereichs liegen. Sie können beispielsweise folgende Farbgebung festlegen: ein grünes Symbol für Elemente mit akzeptablem Wert, ein gelbes Symbol für Elemente mit einem Wert in einem Bereich, der auf eine Warnung hindeutet, und ein rotes Symbol für Elemente, die einen Fehlerwert überschreiten.
 
-Wenn Sie Schwellenwerte für eine Komponente aktivieren, müssen Sie mindestens einen Schwellenwert angeben.  Wenn der Wert eines Elements größer ist als ein Schwellenwert und kleiner als der nächste Schwellenwert, wird die entsprechende Farbe verwendet.  Wenn das Element größer ist als der höchste Schwellenwert, wird die entsprechende Farbe verwendet.   
+Wenn Sie Schwellenwerte für eine Komponente aktivieren, müssen Sie mindestens einen Schwellenwert angeben. Wenn der Wert eines Elements größer ist als ein Schwellenwert und kleiner als der nächste Schwellenwert, wird die entsprechende Farbe für diesen Wert verwendet. Wenn das Element größer ist als der höchste Schwellenwert, wird eine andere Farbe verwendet. 
 
-Jeder Schwellenwertsatz verfügt über einen Schwellenwert mit dem Wert **Standard**.  Wenn keine anderen Werte überschritten werden, wird die entsprechende Farbe verwendet.  Sie können Schwellenwerte hinzufügen oder entfernen, indem Sie auf die Schaltfläche **+** oder **x** klicken.
+Jeder Schwellenwertsatz verfügt über einen Schwellenwert mit dem Wert **Standard**. Wenn keine anderen Werte überschritten werden, wird diese Farbe verwendet. Sie können Schwellenwerte hinzufügen oder entfernen, indem Sie auf die Schaltfläche **Hinzufügen** (+) oder **Löschen** (x) klicken.
 
-In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben.
+In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben:
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
-| Schwellenwerte aktivieren |Wählen Sie diese Option, um links neben jedem Wert ein Farbsymbol anzuzeigen, das den Integritätsstatus des Werts in Relation zu den festgelegten Schwellenwerten angibt. |
-| NAME |Name zur Identifikation des Schwellenwerts. |
-| Schwellenwert |Der Wert für den Schwellenwert.  Die Farbe der Integrität für jedes Listenelement ist auf die Farbe des höchsten Schwellenwerts festgelegt, den der Wert des Listenelements überschritten hat.  Es gibt einen Standardschwellenwert, dessen Farbe verwendet wird, wenn keine Schwellenwerte überschritten wurden. |
-| Farbe |Die Farbe für den Schwellenwert. |
+| Schwellenwerte aktivieren |Wählen Sie diesen Link, um ein Farbsymbol links von jedem Wert anzuzeigen. Das Symbol gibt die Integrität des Werts relativ zu den angegebenen Schwellenwerten an. |
+| Name |Der Name des Schwellenwerts |
+| Schwellenwert |Der Wert für den Schwellenwert. Die Farbe der Integrität für jedes Listenelement ist auf die Farbe des höchsten Schwellenwerts festgelegt, den der Wert des Listenelements überschritten hat. Wenn keine Schwellenwerte überschritten werden, wird eine Standardfarbe verwendet. |
+| Farbe |Die Farbe, die den Schwellenwert angibt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.

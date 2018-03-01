@@ -1,22 +1,26 @@
 ---
-title: Bereitstellen von VM-Skalierungsgruppen in Azure Stack
-description: "Erfahren Sie, wie Cloudadministratoren VM-Skalierungsgruppen zum Azure Stack-Marketplace hinzufügen können."
+title: Bereitstellen von VM-Skalierungsgruppen in Azure Stack | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Cloudbediener VM-Skalierungsgruppen zum Azure Stack-Marketplace hinzufügen können."
 services: azure-stack
-author: anjayajodha
+author: brenduns
+manager: femila
+editor: 
+ms.assetid: 
 ms.service: azure-stack
 ms.topic: article
 ms.date: 9/25/2017
-ms.author: anajod
+ms.author: brenduns
+ms.reviewer: anajod
 keywords: 
-ms.openlocfilehash: 31aeb963bdf4fd32712bc6f29f64060ec1c77cb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e4c1145b8ff4665024b4532cf9cc9ac6a0a24a1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Bereitstellen von VM-Skalierungsgruppen in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 VM-Skalierungsgruppen sind eine Azure Stack-Computeressource. Verwenden Sie sie zum Bereitstellen und Verwalten eines Satzes identischer virtueller Computer. Da alle virtuellen Computer gleich konfiguriert sind, ist bei Skalierungsgruppen keine Vorabbereitstellung der virtuellen Computer erforderlich. Es ist einfacher, umfangreiche Dienste zu erstellen, die auf hohe Rechenleistung, Big Data und Workloads in Containern ausgelegt sind.
 

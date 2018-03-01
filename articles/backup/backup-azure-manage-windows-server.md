@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: markgal
-ms.openlocfilehash: 58080d0e045f1825e89287fc421b7e84db36331e
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 925aa88d32f6f5cea252616cf079faf35857eb8a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Überwachen und Verwalten von Azure Recovery Services-Tresoren und -Servern für Windows-Computer
 
@@ -32,13 +32,11 @@ Dieser Artikel enthält eine Übersicht über die Aufgaben im Rahmen der Sicheru
 Das Dashboard des Recovery Services-Tresors enthält die Details oder Attribute eines Recovery Services-Tresors.
 
 1. Melden Sie sich mit Ihrem Azure-Abonnement am [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im Hubmenü auf **Weitere Dienste**.
-
-    ![Öffnen der Liste mit den Recovery Services-Tresoren – Schritt 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
+2. Klicken Sie auf **Alle Dienste**. 
 
 3. Sie möchten einen Recovery Services-Tresor öffnen. Beginnen Sie im Dialogfeld mit der Eingabe der Zeichenfolge **Recovery Services**. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Recovery Services-Tresore**, um die Liste mit den Recovery Services-Tresoren in Ihrem Abonnement anzuzeigen.
 
-    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-manage-windows-server/browse-to-rs-vaults-2.png) <br/>
+     ![Öffnen der Liste mit den Recovery Services-Tresoren – Schritt 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
 
     Die Liste mit den Recovery Services-Tresoren wird geöffnet.
 
@@ -74,9 +72,9 @@ Am oberen Rand des Dashboards:
 ## <a name="alerts-for-backups-using-azure-backup-agent"></a>Warnungen für Sicherungen mit dem Azure Backup-Agent:
 | Warnstufe | Gesendete Warnungen |
 | --- | --- |
-| Kritisch |Sicherungsfehler, Wiederherstellungsfehler |
-| Warnung |Sicherung mit Warnungen abgeschlossen (wenn weniger als 100 Dateien aufgrund von Beschädigung nicht gesichert und mehr als 1.000.000 Dateien erfolgreich gesichert werden) |
-| Information |Keine |
+| Kritisch | Für Sicherungsfehler, Wiederherstellungsfehler und verzögerte Löschvorgänge, z.B. beim Beenden des Schutzes durch das Löschen von Daten |
+| Warnung | Für abgeschlossene Sicherung mit Warnungen (wenn weniger als 100 Dateien aufgrund von Beschädigung nicht gesichert und mehr als 1.000.000 Dateien erfolgreich gesichert wurden) |
+| Information | Aktuell sind keine Informationsmeldungen für den Azure Backup-Agent verfügbar. |
 
 ## <a name="manage-backup-alerts"></a>Verwalten von Sicherungswarnungen
 Klicken Sie auf die Kachel **Sicherungswarnungen**, um das Menü **Sicherungswarnungen** zu öffnen und Warnungen zu verwalten.
@@ -307,7 +305,7 @@ A3. Nachfolgend sind Fälle aufgeführt, in denen die Benachrichtigung nicht ges
 2. Wenn der Prozess nicht ausgeführt wird, öffnen Sie die **Systemsteuerung**, und durchsuchen Sie die Liste der Dienste. Starten Sie den **Microsoft Azure Recovery Services Management-Agent** bzw. starten Sie ihn neu.
 
     Weitere Informationen finden Sie in den Protokollen unter:<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` Beispiel:<br/>
+   Beispiel: `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>Nächste Schritte

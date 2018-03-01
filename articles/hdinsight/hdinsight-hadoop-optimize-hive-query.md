@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 4bd7f5b584030f9c1554b56895493837d2eac357
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3577b06bfb23457c17099902a7ac9fb8eb6e3087
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optimieren von Hive-Abfragen in Azure HDInsight
 
@@ -41,14 +41,16 @@ Weitere Informationen zu den von HDInsight unterstützten virtuellen Computern f
 
 ## <a name="enable-tez"></a>Aktivieren von Tez
 
-[Apache Tez](http://hortonworks.com/hadoop/tez/) ist eine Alternative zum Ausführungsmodul MapReduce:
+
+            [Apache Tez](http://hortonworks.com/hadoop/tez/) ist eine Alternative zur Ausführungs-Engine MapReduce:
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
 Tez ist jedoch aus folgenden Gründen schneller:
 
-* **Ausführen eines gerichteten azyklischen Graphen als einzelnen Auftrag im MapReduce-Modul**. Der gerichtete azyklische Graph erfordert, dass auf jede Gruppe von Mappern eine Gruppe von Reducern folgt. Dadurch müssen für jede Hive-Abfrage mehrere MapReduce-Aufträge gestartet werden. Für Tez gilt diese Einschränkung nicht. Es kann auch ein komplexes DAG in einem Auftrag verarbeiten, so dass weniger Aufträge gestartet werden müssen.
-* **Vermeiden unnötiger Schreibvorgänge**. Aufgrund der Eröffnung mehrerer Aufträge für eine Hive-Abfrage im MapReduce-Modul wird die Ausgabe jedes Auftrags in den HDFS-Zwischenspeicher geschrieben. Tez hingegen minimiert die Anzahl der Aufträge für jede Hive-Abfrage und vermeidet so unnötige Schreibvorgänge.
+* 
+            **Ausführen eines gerichteten azyklischen Graphen als einzelnen Auftrag in der MapReduce-Engine**. Der gerichtete azyklische Graph erfordert, dass auf jede Gruppe von Mappern eine Gruppe von Reducern folgt. Dadurch müssen für jede Hive-Abfrage mehrere MapReduce-Aufträge gestartet werden. Für Tez gilt diese Einschränkung nicht. Es kann auch ein komplexes DAG in einem Auftrag verarbeiten, so dass weniger Aufträge gestartet werden müssen.
+* **Vermeiden unnötiger Schreibvorgänge**. Aufgrund der Eröffnung mehrerer Aufträge für eine Hive-Abfrage in der MapReduce-Engine wird die Ausgabe jedes Auftrags in den HDFS-Zwischenspeicher geschrieben. Tez hingegen minimiert die Anzahl der Aufträge für jede Hive-Abfrage und vermeidet so unnötige Schreibvorgänge.
 * **Minimierung von Startverzögerungen**. Tez minimiert Startverzögerungen durch Reduzierung der Anzahl der für den Start erforderlichen Mapper sowie durch eine insgesamt bessere Optimierung.
 * **Wiederverwendung von Containern**. Tez versucht, Container möglichst wiederzuverwenden, und verringert so Latenzzeiten aufgrund von Containerstarts.
 * **Techniken für die fortlaufende Optimierung**. Bislang erfolgte die Optimierung in der Regel in der Kompilierungsphase. Nun aber stehen mehr Informationen zu den Eingaben zur Verfügung, die auch während der Laufzeit eine Optimierung ermöglichen. Tez verwendet fortlaufende Optimierungstechniken, durch die der Plan noch weit in der Laufzeitphase optimiert werden kann.
@@ -113,7 +115,7 @@ Für die erstellte Partitionstabelle können Sie eine statische oder eine dynami
 Weitere Informationen finden Sie unter [Partitionierte Tabellen](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
 ## <a name="use-the-orcfile-format"></a>Verwenden des Dateiformats ORC
-Hive unterstützt verschiedene Dateiformate. Beispiel:
+Hive unterstützt verschiedene Dateiformate. Beispiel: 
 
 * **Text**: Dies ist das Standarddateiformat. Es funktioniert in den meisten Szenarien.
 * **Avro**: Dieses Dateiformat eignet sich besonders für Interoperabilitätsszenarien.
@@ -137,7 +139,7 @@ Zum Aktivieren von ORC erstellen Sie zunächst eine Tabelle mit der Klausel *Sto
     PARTITIONED BY(L_SHIPDATE STRING)
     STORED AS ORC;
 
-Danach fügen Sie der ORC-Tabelle Daten aus der Stagingtabelle hinzu. Zum Beispiel:
+Danach fügen Sie der ORC-Tabelle Daten aus der Stagingtabelle hinzu. Beispiel: 
 
     INSERT INTO TABLE lineitem_orc
     SELECT L_ORDERKEY as L_ORDERKEY, 

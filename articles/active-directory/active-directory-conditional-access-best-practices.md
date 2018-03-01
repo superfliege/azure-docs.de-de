@@ -13,24 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/12/2017
+ms.date: 02/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 8c6707505a6331b53e06b1de60575dd3637ea477
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 16f9179b6cbaee00a2afbe2efe090cb3eb8b204a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
-In diesem Thema erfahren Sie, was Sie wissen sollten und was Sie beim Konfigurieren von Richtlinien für den bedingten Zugriff vermeiden sollten. Bevor Sie dieses Thema lesen, sollten Sie sich mit den Konzepten und der Terminologie vertraut machen, die in [Bedingter Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal.md) beschrieben werden.
+Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Dieser Artikel bietet Folgendes:
 
-## <a name="what-you-should-know"></a>Wichtige Informationen
+- Wichtige Informationen 
+- Aktionen, die Sie beim Konfigurieren von Richtlinien für den bedingten Zugriff vermeiden sollten 
 
-### <a name="whats-required-to-make-a-policy-work"></a>Was ist erforderlich, damit eine Richtlinie funktioniert?
+Für diesen Artikel wird davon ausgegangen, dass Sie mit den Konzepten und Begriffen vertraut sind, die in [Bedingter Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal.md) beschrieben werden.
 
-Wenn Sie eine neue Richtlinie erstellen, wurden keine Benutzer, Gruppen, Anwendungen oder Zugriffssteuerungen ausgewählt.
+
+
+## <a name="whats-required-to-make-a-policy-work"></a>Was ist erforderlich, damit eine Richtlinie funktioniert?
+
+Wenn Sie eine neue Richtlinie erstellen, werden keine Benutzer, Gruppen, Apps oder Zugriffssteuerungen ausgewählt.
 
 ![Cloud-Apps](./media/active-directory-conditional-access-best-practices/02.png)
 
@@ -38,36 +43,46 @@ Wenn Sie eine neue Richtlinie erstellen, wurden keine Benutzer, Gruppen, Anwendu
 Damit Ihre Richtlinie funktioniert, müssen Sie Folgendes konfigurieren:
 
 
-|Was           | Vorgehensweise                                  | Warum|
+|Element           | Vorgehensweise                                  | Grund|
 |:--            | :--                                  | :-- |
-|**Cloud-Apps** |Sie müssen eine oder mehrere Apps auswählen.  | Das Ziel einer Richtlinie für bedingten Zugriff liegt darin, es Ihnen zu ermöglichen, genau festzulegen, wie autorisierte Benutzer auf Ihre Apps zugreifen können.|
-| **Benutzer und Gruppen** | Sie müssen mindestens einen Benutzer oder eine Gruppe auswählen, die autorisiert ist, auf die ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet. |
-| **Steuerelemente** | Wählen Sie mindestens eine Zugriffssteuerung aus. | Ihr Richtlinienprozessor muss wissen, was er zu tun hat, wenn die Bedingungen erfüllt sind.|
+|**Cloud-Apps** |Sie müssen eine oder mehrere Apps auswählen.  | Ziel einer Richtlinie für den bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
+| **Benutzer und Gruppen** | Sie müssen mindestens einen Benutzer oder eine Gruppe auswählen, der bzw. die dazu autorisiert ist, auf die von Ihnen ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet. |
+| **Steuerelemente** | Wählen Sie mindestens eine Zugriffssteuerung aus. | Ihr Richtlinienprozessor muss wissen, was zu tun ist, wenn die Bedingungen erfüllt sind.|
 
 
-Zusätzlich zu diesen grundlegenden Anforderungen sollten Sie in vielen Fällen auch eine Bedingung konfigurieren. Während eine Richtlinie auch ohne eine konfigurierte Bedingung funktionieren würde, sind die Bedingungen ausschlaggebend für die Optimierung des Zugriffs auf Ihre Apps.
 
 
-![Cloud-Apps](./media/active-directory-conditional-access-best-practices/04.png)
-
-
+## <a name="what-you-should-know"></a>Wichtige Informationen
 
 ### <a name="how-are-assignments-evaluated"></a>Wie werden Zuweisungen ausgewertet?
 
-Alle Zuweisungen sind logisch per **UND**-Operator verbunden. Wenn Sie mehr als eine Zuweisung konfiguriert haben, müssen die Bedingungen aller Zuweisungen erfüllt sein, damit die Richtlinie ausgelöst wird.  
+Alle Zuweisungen sind logisch per **UND**-Operator verbunden. Wenn Sie mehr als eine Zuweisung konfiguriert haben, müssen die Bedingungen aller Zuweisungen erfüllt sein, damit eine Richtlinie ausgelöst wird.  
 
-Falls Sie eine Standortbedingung konfigurieren müssen, die für alle Verbindungen von außerhalb des Organisationsnetzwerks gelten, können Sie dies wie folgt erreichen:
+Beim Konfigurieren einer Standortbedingung, die für alle Verbindungen von außerhalb des Organisationsnetzwerks gilt, gehen Sie folgendermaßen vor:
 
-- Einschließen: **All locations** (Alle Standorte)
-- Ausschließen: **All trusted IPs** (Alle vertrauenswürdigen IPs)
+- Schließen Sie **Alle Standorte** ein.
+- Schließen Sie **Alle vertrauenswürdigen IPs** aus.
+
+
+### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>Was ist zu tun, wenn Ihr Zugriff auf das Azure AD-Verwaltungsportal gesperrt ist?
+
+Wenn Ihr Zugriff auf das Azure AD-Portal aufgrund einer falschen Einstellung in einer Richtlinie für den bedingten Zugriff gesperrt wurde, gehen Sie folgendermaßen vor:
+
+- Überprüfen Sie, ob weitere Administratoren in Ihrer Organisation vorhanden sind, die noch nicht gesperrt sind. Ein Administrator mit Zugriff auf das Azure-Portal kann die Richtlinie deaktivieren, die Ihre Anmeldung sperrt. 
+
+- Wenn keiner der Administratoren in Ihrer Organisation die Richtlinie aktualisieren kann, müssen Sie eine Supportanfrage übermitteln. Der Microsoft-Support kann Richtlinien für den bedingten Zugriff, die den Zugriff verhindern, überprüfen und aktualisieren.
+
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Was passiert, wenn Sie im klassischen Azure-Portal und im Azure-Portal Richtlinien konfiguriert haben?  
+
 Beide Richtlinien werden von Azure Active Directory erzwungen, und ein Benutzer erhält nur dann Zugriff, wenn alle Anforderungen erfüllt sind.
 
 ### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Was passiert, wenn Sie im Intune Silverlight-Portal und im Azure-Portal über Richtlinien verfügen?
+
 Beide Richtlinien werden von Azure Active Directory erzwungen, und ein Benutzer erhält nur dann Zugriff, wenn alle Anforderungen erfüllt sind.
 
 ### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Was passiert, wenn ich mehrere Richtlinien für denselben Benutzer konfiguriert habe?  
+
 Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewertet, und es wird sichergestellt, dass alle Anforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird.
 
 
@@ -76,9 +91,13 @@ Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewert
 Ja, Sie können Exchange ActiveSync in einer Richtlinie für den bedingten Zugriff verwenden.
 
 
+
+
+
+
 ## <a name="what-you-should-avoid-doing"></a>Das sollten Sie vermeiden
 
-Das Framework für bedingten Zugriff bietet Ihnen mehr Flexibilität bei der Konfiguration. Mehr Flexibilität bedeutet jedoch auch, dass Sie jede Konfigurationsrichtlinie vor dem Freigeben sorgfältig prüfen sollten, um unerwünschte Ergebnisse zu vermeiden. Achten Sie in diesem Fall besonders auf Zuweisungen, die sich auf komplette Sätze auswirken, z.B. **alle Benutzer/Gruppen/Cloud-Apps**.
+Das Framework für bedingten Zugriff bietet Ihnen mehr Flexibilität bei der Konfiguration. Mehr Flexibilität bedeutet jedoch auch, dass Sie jede Konfigurationsrichtlinie vor dem Veröffentlichen sorgfältig prüfen sollten, um unerwünschte Ergebnisse zu vermeiden. Achten Sie in diesem Fall besonders auf Zuweisungen, die sich auf komplette Sätze auswirken, z.B. **alle Benutzer/Gruppen/Cloud-Apps**.
 
 Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 
@@ -97,10 +116,27 @@ Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 - **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
 
 
+## <a name="how-should-you-deploy-a-new-policy"></a>Wie stellen Sie eine neue Richtlinie bereit?
+
+Im ersten Schritt sollten Sie Ihre Richtlinie mit dem [Was-wäre-wenn-Tool](active-directory-conditional-access-whatif.md) bewerten.
+
+Wenn Sie bereit sind, eine neue Richtlinie in Ihrer Umgebung bereitzustellen, sollten Sie dies in mehreren Phasen tun:
+
+1. Wenden Sie die Richtlinie auf eine kleine Gruppe von Benutzern an, und überprüfen Sie, ob sie sich erwartungsgemäß verhält. 
+
+2.  Wenn Sie die Richtlinie auf einen größeren Benutzerkreis erweitern, schließen Sie weiterhin alle Administratoren von der Richtlinie aus. So wird sichergestellt, dass Administratoren weiterhin Zugriff haben und die Richtlinie bei Bedarf aktualisieren können.
+
+3. Wenden Sie eine Richtlinie nur dann auf alle Benutzer an, wenn es wirklich notwendig ist. 
+
+Es wird empfohlen, ein Benutzerkonto zu erstellen, für das Folgendes gilt:
+
+- Nur zur Richtlinienverwaltung gedacht 
+- Von allen Richtlinien ausgeschlossen
+
 
 ## <a name="policy-migration"></a>Richtlinienmigration
 
-Aus den folgenden Gründen sollten Sie das Migrieren der Richtlinien, die Sie nicht im Azure-Portal erstellt haben, in Erwägung ziehen:
+Aus den folgenden Gründen sollten Sie eine Migration der Richtlinien in Erwägung ziehen, die Sie nicht im Azure-Portal erstellt haben:
 
 - Sie können jetzt Szenarien berücksichtigen, die bisher nicht behandelt werden konnten.
 
@@ -108,7 +144,7 @@ Aus den folgenden Gründen sollten Sie das Migrieren der Richtlinien, die Sie ni
 
 - Sie können alle bedingten Zugriffsrichtlinien an einem zentralen Ort verwalten.
 
-- Das klassische Azure-Portal wird eingestellt.   
+- Das klassische Azure-Portal wurde eingestellt.   
 
 
 Weitere Informationen finden Sie unter [Migrieren klassischer Richtlinien in das Azure-Portal](active-directory-conditional-access-migration.md).

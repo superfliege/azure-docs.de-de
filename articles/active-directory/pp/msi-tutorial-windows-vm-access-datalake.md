@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a0e352efb05890d824842acf2c75d8836750546f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 742b76e17b7ad00a70b0d18895c0b59ebe044d47
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Data Lake Store
 
@@ -45,7 +45,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie können MSI auch auf einem vorhandenen virtuellen Computer aktivieren.
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
 3. Geben Sie die Informationen zum virtuellen Computer ein. Der **Benutzername** und das **Kennwort**, die hier erstellt werden, sind die Anmeldeinformationen, die Sie für die Anmeldung beim virtuellen Computer verwenden.
 4. Wählen Sie in der Dropdownliste das richtige **Abonnement** für den virtuellen Computer aus.

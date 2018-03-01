@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 265d58ce4098ea924318dfe2959397d60a0721d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5c8562b89b70236d9d65a5f8765ae386d6831b4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
@@ -33,19 +33,19 @@ Es gibt zwei Möglichkeiten, wie Sie Anmeldefelder für benutzerdefinierte Anwen
 
 -   Manuelle Erfassung von Anmeldefeldern
 
-Die **automatische Erfassung von Anmeldefeldern** funktioniert bei den meisten HTML-fähigen Anmeldeseiten, wenn diese **bekannte DIV-IDs für die Eingabefelder von Benutzernamen und Kennwörtern** verwenden. Hierbei wird HTML-Scraping auf der Seite durchgeführt, um DIV-IDs zu suchen, die bestimmte Kriterien erfüllen. Anschließend werden die Metadaten der Anwendung gespeichert, sodass später Kennwörter wiedergegeben werden können.
+Die **automatische Erfassung von Anmeldefeldern** funktioniert bei den meisten HTML-fähigen Anmeldeseiten, wenn diese **bekannte DIV-IDs für die Eingabefelder von Benutzernamen und Kennwörtern** verwenden. Hierbei wird HTML-Scraping auf der Seite durchgeführt, um DIV-IDs zu suchen, die bestimmte Kriterien erfüllen. Anschließend werden die Metadaten für diese Anwendung gespeichert, damit später Kennwörter wiedergegeben werden können.
 
 Die **manuelle Erfassung von Anmeldefeldern** kann verwendet werden, falls es bei der Anwendung **keine Herstellerbezeichnungen** für die Eingabefelder gibt, die für die Anmeldung verwendet werden. Die manuelle Erfassung von Anmeldefeldern kann auch verwendet werden, wenn der **Hersteller mehrere Felder rendert**, die nicht automatisch erfasst werden können. Azure AD kann Daten für alle Felder auf der Anmeldeseite speichern. Hierfür müssen Sie uns lediglich mitteilen, wo sich diese Felder auf der Seite befinden.
 
-**Falls die automatische Erfassung von Anmeldefeldern nicht funktioniert, empfehlen wir in der Regel, die manuelle Option auszuprobieren.**
+Allgemein gilt: **Falls die automatische Erfassung von Anmeldefeldern nicht funktioniert, versuchen Sie es mit der manuellen Option.**
 
 ### <a name="how-to-automatically-capture-sign-in-fields-for-an-application"></a>So erfassen Sie Anmeldefelder für eine Anwendung automatisch
 
 Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort** für eine Anwendung mit der **automatischen Erfassung von Anmeldefeldern** zu konfigurieren:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -61,21 +61,21 @@ Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort
 
 8.  Wählen Sie den Modus **Kennwortbasiertes Anmelden** aus.
 
-9.  Geben Sie die **Anmelde-URL** ein. Dies ist die URL, unter der Benutzer ihren Benutzernamen und ihr Kennwort eingeben, um sich anzumelden. **Stellen Sie sicher, dass die Anmeldefelder unter der angegebenen URL sichtbar sind**.
+9.  Geben Sie die **Anmelde-URL**. Dies ist die URL, an der Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. **Stellen Sie sicher, dass die Anmeldefelder unter der angegebenen URL sichtbar sind**.
 
-10. Klicken Sie auf die Schaltfläche **Save** .
+10. Klicken Sie auf die Schaltfläche **Speichern**.
 
-11. Diese URL wird von uns dann automatisch auf ein Eingabefeld für einen Benutzernamen und ein Kennwort untersucht, und Sie können Azure AD verwenden, um auf sichere Weise Kennwörter an diese Anwendung zu übertragen, indem Sie die Zugriffsbereich-Browsererweiterung verwenden.
+11. Diese URL wird anschließend automatisch auf ein Eingabefeld für einen Benutzernamen und ein Kennwort untersucht, und Sie können Azure AD verwenden, um auf sichere Weise Kennwörter an diese Anwendung zu übertragen, indem Sie die Zugriffsbereich-Browsererweiterung verwenden.
 
 ## <a name="how-to-manually-capture-sign-in-fields-for-an-application"></a>So erfassen Sie Anmeldefelder für eine Anwendung manuell
 
-Wenn Sie Anmeldefelder manuell erfassen möchten, muss die Browsererweiterung für den Zugriffsbereich installiert sein. Diese **darf nicht InPrivate, inkognito oder privat ausgeführt werden.** Um die Browsererweiterung zu installieren, führen Sie die Schritte im Abschnitt [Installieren der Browsererweiterung für den Zugriffsbereich](#i-cannot-manually-detect-sign-in-fields-for-my-application) aus.
+Wenn Sie Anmeldefelder manuell erfassen möchten, muss die Browsererweiterung für den Zugriffsbereich installiert sein. Diese **darf nicht InPrivate, inkognito oder privat ausgeführt werden**. Um die Browsererweiterung zu installieren, führen Sie die Schritte im Abschnitt [Installieren der Browsererweiterung für den Zugriffsbereich](#i-cannot-manually-detect-sign-in-fields-for-my-application) aus.
 
 Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort** für eine Anwendung mit der **manuellen Erfassung von Anmeldefeldern** zu konfigurieren:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -91,11 +91,11 @@ Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort
 
 8.  Wählen Sie den Modus **Kennwortbasiertes Anmelden** aus.
 
-9.  Geben Sie die **Anmelde-URL** ein. Dies ist die URL, unter der Benutzer ihren Benutzernamen und ihr Kennwort eingeben, um sich anzumelden. **Stellen Sie sicher, dass die Anmeldefelder unter der angegebenen URL sichtbar sind**.
+9.  Geben Sie die **Anmelde-URL**. Dies ist die URL, an der Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. **Stellen Sie sicher, dass die Anmeldefelder unter der angegebenen URL sichtbar sind**.
 
 10. Klicken Sie auf die Schaltfläche **Save** .
 
-11. Diese URL wird von uns dann automatisch auf ein Eingabefeld für einen Benutzernamen und ein Kennwort untersucht, und Sie können Azure AD verwenden, um auf sichere Weise Kennwörter an diese Anwendung zu übertragen, indem Sie die Zugriffsbereich-Browsererweiterung verwenden. Falls hierbei ein Fehler auftritt, können Sie mit Schritt 12 fortfahren, um **den Anmeldemodus für die Verwendung der manuellen Erkennung von Anmeldefeldern zu ändern**.
+11. Diese URL wird anschließend automatisch auf ein Eingabefeld für einen Benutzernamen und ein Kennwort untersucht, und Sie können Azure AD verwenden, um auf sichere Weise Kennwörter an diese Anwendung zu übertragen, indem Sie die Zugriffsbereich-Browsererweiterung verwenden. Falls hierbei ein Fehler auftritt, können Sie mit Schritt 12 fortfahren, um **den Anmeldemodus für die Verwendung der manuellen Erkennung von Anmeldefeldern zu ändern**.
 
 12. Klicken Sie auf **&lt;AppName&gt;-Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren**.
 
@@ -115,9 +115,9 @@ Dieser Fehler wird angezeigt, wenn die automatische Erkennung von Anmeldefeldern
 
 In seltenen Fällen schlägt die Aktualisierung der Konfiguration für einmaliges Anmelden fehl. Versuchen Sie, diesen Fehler zu beheben, indem Sie die Konfiguration für einmaliges Anmelden erneut speichern.
 
-Sollte dieser Vorgang wiederholt fehlschlagen, erstellen Sie eine Supportanfrage, und geben Sie die Informationen an, die in den Abschnitten [Anzeigen von Details einer Portalbenachrichtigung](#i-cannot-manually-detect-sign-in-fields-for-my-application) und [Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) erfasst wurden.
+Falls das Problem weiterhin besteht, erstellen Sie eine Supportanfrage, und geben Sie die Informationen an, die in den Abschnitten [Anzeigen von Details einer Portalbenachrichtigung](#i-cannot-manually-detect-sign-in-fields-for-my-application) und [Anfordern von Unterstützung durch das Senden von Benachrichtigungsdetails an einen Supporttechniker](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) erfasst wurden.
 
-## <a name="i-cannot-manually-detect-sign-in-fields-for-my-application"></a>Die manuelle Erkennung von Anmeldefeldern für meine Anwendung funktioniert nicht.
+## <a name="i-cannot-manually-detect-sign-in-fields-for-my-application"></a>Die Anmeldefelder für meine Anwendung werden nicht manuell erkannt
 
 Sollte die manuelle Erkennung nicht funktionieren, können Sie einige der folgenden Verhaltensweisen feststellen:
 
@@ -139,9 +139,9 @@ Sollte die manuelle Erkennung nicht funktionieren, können Sie einige der folgen
 
 -   Versuchen Sie, die manuelle Erfassung erneut durchzuführen, und vergewissern Sie sich dabei, dass sich die roten Marker über den richtigen Feldern befinden.
 
--   Wenn die manuelle Erfassung oder die Anmeldeseite nicht mehr reagiert (Fall 3 oben), versuchen Sie, die manuelle Erfassung erneut durchzuführen. Drücken Sie dieses Mal nach Abschluss des Vorgangs jedoch die Taste **F12**, um die Entwicklerkonsole des Browsers zu öffnen. Öffnen Sie die **Konsole**, und geben Sie **window.location="&lt;Anmelde-URL, die Sie beim Konfigurieren der App angegeben haben&gt;"** ein. Drücken Sie dann die **Eingabetaste**. So erzwingen Sie eine Seitenumleitung, die den Erfassungsprozess beendet. Die erfassten Felder werden gespeichert.
+-   Wenn die manuelle Erfassung oder die Anmeldeseite nicht mehr reagiert (Fall 3 oben), versuchen Sie, die manuelle Erfassung erneut durchzuführen. Drücken Sie dieses Mal nach Abschluss des Vorgangs jedoch die Taste **F12**, um die Entwicklerkonsole des Browsers zu öffnen. Öffnen Sie die **Konsole**, und geben Sie **window.location="&lt;Anmelde-URL, die Sie beim Konfigurieren der App angegeben haben&gt;"** ein. Drücken Sie dann die **EINGABETASTE**. So erzwingen Sie eine Seitenumleitung, die den Erfassungsprozess beendet und die erfassten Felder speichert.
 
-Wenn keiner dieser Ansätze funktioniert, können wir weiterhelfen. Erstellen Sie eine Supportanfrage mit den Details Ihrer Lösungsversuche. Geben Sie außerdem die Informationen an, die in den Abschnitten [Anzeigen von Details einer Portalbenachrichtigung](#i-cannot-manually-detect-sign-in-fields-for-my-application) und [Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) erfasst wurden (sofern zutreffend).
+Wenn keiner dieser Ansätze funktioniert, fordern Sie Unterstützung beim Support an. Erstellen Sie eine Supportanfrage mit den Details Ihrer Lösungsversuche. Geben Sie außerdem die Informationen an, die in den Abschnitten [Anzeigen von Details einer Portalbenachrichtigung](#i-cannot-manually-detect-sign-in-fields-for-my-application) und [Anfordern von Unterstützung durch das Senden von Benachrichtigungsdetails an einen Supporttechniker](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) erfasst wurden (sofern zutreffend).
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
@@ -179,7 +179,7 @@ Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgend
   >
   >
 
-3.  Hiermit öffnen Sie das Blatt **Benachrichtigungsdetails**.
+3.  Der Bereich **Benachrichtigungsdetails** wird geöffnet.
 
 4.  Diese Informationen helfen Ihnen, das Problem besser zu verstehen.
 
@@ -187,9 +187,9 @@ Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgend
 
 6.  Klicken Sie auf das **Symbol** **Kopieren** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Anfordern von Unterstützung durch das Senden von Benachrichtigungsdetails an einen Supporttechniker
 
-Es ist sehr wichtig, dass Sie dem Supporttechniker **alle unten aufgelisteten Details** mitteilen, wenn Sie Hilfe benötigen, damit dieser schnell helfen kann. Hierfür können Sie ganz einfach **einen Screenshot erstellen**, oder Sie klicken auf das Symbol **Fehler kopieren** rechts neben dem Textfeld **Fehler kopieren**.
+Es ist sehr wichtig, dass Sie dem Supporttechniker **alle unten aufgelisteten Details** mitteilen, wenn Sie Hilfe benötigen, damit dieser schnell helfen kann. Sie können entweder **einen Screenshot erstellen**, oder Sie klicken auf das Symbol **Fehler kopieren** rechts neben dem Textfeld **Fehler kopieren**.
 
 ## <a name="notification-details-explained"></a>Erläuterung der Benachrichtigungsdetails
 
@@ -225,7 +225,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
     -   Beispiel: **tperkins@f128.info**
 
--   **Mandanten-ID:** die eindeutige ID des Mandanten, bei dem der Benutzer Mitglied ist, der den Vorgang durchgeführt hat
+-   **Mandanten-ID:** die eindeutige ID des Mandanten, dem der Benutzer angehört, der den Vorgang durchgeführt hat
 
     -   Beispiel: **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
@@ -243,7 +243,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
     -   Beispiel*: **Fehler**
 
--   **Objekt-Id**: **(kann leer sein)** die Objekt-ID, für die der Vorgang durchgeführt wurde
+-   **Objekt-ID**: **(kann leer sein)** die Objekt-ID, für die der Vorgang durchgeführt wurde
 
     -   Beispiel: **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 

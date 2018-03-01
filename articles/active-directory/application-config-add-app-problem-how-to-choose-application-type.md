@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 57dddcc9114aeec1337b5b5ad8cfda3004fb0a76
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4a5ee41349a97493636327e3bda25cbd507867c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Auswählen des zu verwendenden Anwendungstyps beim Hinzufügen einer Anwendung
 
@@ -29,7 +29,7 @@ Dieser Artikel bietet Informationen zu den vier wichtigsten Typen von Anwendunge
 
 ## <a name="supported-application-types-in-azure-ad"></a>In Azure AD unterstützte Anwendungstypen
 
-Azure AD unterstützt vier wichtige Anwendungstypen, die Sie mithilfe der **Hinzufügen**-Funktion unter **Unternehmensanwendungen** hinzufügen können. Diese umfassen:
+Azure AD unterstützt vier wichtige Anwendungstypen, die Sie mithilfe der **Hinzufügen**-Funktion unter **Unternehmensanwendungen** hinzufügen können. Das umfasst:
 
 -   **Azure AD-Kataloganwendungen**: Anwendungen, die für das einmalige Anmelden mit Azure AD vorab integriert wurden.
 
@@ -37,11 +37,11 @@ Azure AD unterstützt vier wichtige Anwendungstypen, die Sie mithilfe der **Hinz
 
 -   **Benutzerdefiniert entwickelte Anwendungen**: Anwendungen, die Ihre Organisation auf der Azure AD-Anwendungsentwicklungsplattform entwickeln möchte, die aber möglicherweise noch nicht vorhanden sind.
 
--   **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Alle gewünschten Weblinks und alle Anwendungen, die Felder für Benutzername und Kennwort generieren, SAML- oder OpenID Connect-Protokolle oder SCIM unterstützen und die Sie für das einmalige Anmelden in Azure AD integrieren möchten.
+-   **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Hierbei kann es sich um beliebige Weblinks oder Anwendungen handeln, die Felder für Benutzername und Kennwort generieren, SAML oder OpenID Connect-Protokolle oder SCIM unterstützen, und die Sie für das einmalige Anmelden in Azure AD integrieren möchten.
 
-## <a name="features-and-capabilities-supported-by-all-the-above-application-types"></a>Von allen oben genannten Anwendungstypen unterstützte Features und Funktionen
+## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>Von allen vorstehend genannten Anwendungstypen unterstützte Features und Funktionen
 
-Die folgenden Funktionen werden von allen vier oben genannten Anwendungstypen in Azure AD unterstützt:
+Die folgenden Funktionen werden von allen vier vorstehend genannten Anwendungstypen in Azure AD unterstützt:
 
 -   **Schnellstart**: Stellen Sie Anwendungen im Handumdrehen bereit, indem Sie [einfache Bereitstellungsschritte](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started) ausführen.
 
@@ -61,13 +61,13 @@ Die folgenden Funktionen werden von allen vier oben genannten Anwendungstypen in
 
 ## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Von bestimmten Anwendungstypen unterstützte Modi für das einmalige Anmelden und die Bereitstellung
 
-Die Tabelle unten beschreibt die verschiedenen Modi für das einmalige Anmelden und die Bereitstellung, die von den oben genannten Anwendungstypen unterstützt werden. In dieser Tabelle erfahren Sie, welche Anwendung Sie hinzufügen müssen, um ein bestimmtes Ziel zu erreichen.
+Die folgende Tabelle beschreibt die verschiedenen Modi für das einmalige Anmelden und die Bereitstellung, die von den vorstehenden Anwendungstypen unterstützt werden. In dieser Tabelle erfahren Sie, welche Anwendung Sie hinzufügen müssen, um ein bestimmtes Ziel zu erreichen.
 
   ![Tabelle der Anwendungstypen](./media/application-tables/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Auswählen eines Modus für das einmalige Anmelden
 
-Hier werden die unterstützten Modi für das **einmalige Anmelden** für Azure AD-Anwendungen aufgeführt.
+Nachfolgend werden die unterstützten Modi für das **einmalige Anmelden** für Azure AD-Anwendungen aufgeführt.
 
 -   **Azure AD-SSO deaktiviert**: Wählen Sie diesen **Modus für das einmalige Anmelden** aus, wenn Sie noch nicht dazu bereit sind, diese Anwendung in das einmalige Anmelden über Azure AD zu integrieren, oder wenn Sie die Anwendung einfach nur testen möchten.
 
@@ -98,7 +98,7 @@ Hier werden die unterstützten Modi für das **einmalige Anmelden** für Azure A
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Modi für das einmalige Anmelden für benutzerdefiniert entwickelte Anwendungen
 
-[Benutzerdefiniert entwickelte Anwendungen](#_Custom-Developed_Applications) unterstützen weitere Modi für das einmalige Anmelden, die oben nicht aufgeführt sind. Diese umfassen:
+[Benutzerdefiniert entwickelte Anwendungen](#_Custom-Developed_Applications) unterstützen weitere Modi für das einmalige Anmelden, die oben nicht aufgeführt sind. Hierzu zählen:
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)-basiertes Anmelden
 
@@ -108,15 +108,15 @@ Hier werden die unterstützten Modi für das **einmalige Anmelden** für Azure A
 
 -   [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)-basiertes Anmelden
 
-Weitere Informationen zum Erstellen einer benutzerdefiniert entwickelten Anwendung, die diese Modi für das einmalige Anmelden unterstützt, finden Sie im [Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+Weitere Informationen zum Erstellen einer benutzerdefiniert entwickelten Anwendung, die diese Modi für das einmalige Anmelden unterstützt, finden Sie im [Entwicklerleitfaden zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
 ## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Festlegen des Modus für das einmalige Anmelden für eine Anwendung
 
-Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, führen Sie folgende Schritte aus:
+Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, folgen Sie diesen Anweisungen:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -150,13 +150,13 @@ Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, f�
 
 ## <a name="how-to-set-an-applications-provisioning-mode"></a>Festlegen des Bereitstellungsmodus einer Anwendung
 
-Um den **Bereitstellungsmodus** für eine Anwendung festzulegen, führen Sie folgende Schritte aus:
+Um den **Bereitstellungsmodus** für eine Anwendung festzulegen, folgen Sie diesen Anweisungen:
 
-Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, führen Sie folgende Schritte aus:
+Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, folgen Sie diesen Anweisungen:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 

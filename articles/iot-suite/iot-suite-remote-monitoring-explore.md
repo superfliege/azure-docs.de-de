@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/15/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d8943db3ec6ef5875b2b884d42ea25dbb44a30e5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5bc01c7e70e6837989c6bebd843ba1f41c8c5aeb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung
 
@@ -31,6 +31,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Reagieren auf einen Alarm
 > * Aktualisieren der Firmware auf Ihren Geräten
 > * Organisieren Ihrer Objekte
+> * Anhalten und Starten der simulierten Geräte
 
 Im folgenden Video wird eine exemplarische Vorgehensweise zur Remoteüberwachungslösung gezeigt:
 
@@ -230,6 +231,16 @@ Sie können die Tagwerte zum Erstellen von Filtern verwenden.
 
 Der Contoso-Bediener kann Geräte jetzt anhand des Betriebsteams abfragen, ohne auf den Geräten hierfür etwas ändern zu müssen.
 
+## <a name="stop-simulated-devices"></a>Anhalten der simulierten Geräte
+
+Im Menü „Einstellungen“ können Sie die simulierten Geräte anhalten. Dadurch verringern Sie die Kosten für das Testen und Untersuchen der Lösung. So halten Sie die simulierten Geräte an oder starten sie
+
+1. Wählen Sie das Symbol **Einstellungen** aus.
+
+1. Schalten Sie dann **Wird ausgeführt** ein oder aus:
+
+    ![Einstellungsmenü](media/iot-suite-remote-monitoring-explore/settings.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
@@ -239,6 +250,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Reagieren auf einen Alarm
 > * Aktualisieren der Firmware auf Ihren Geräten
 > * Organisieren Ihrer Objekte
+> * Anhalten und Starten der simulierten Geräte
 
 Nachdem Sie sich mit der Remoteüberwachungslösung vertraut gemacht haben, schlagen wir vor, dass Sie sich als Nächstes über die erweiterten Features der Remoteüberwachungslösung informieren:
 

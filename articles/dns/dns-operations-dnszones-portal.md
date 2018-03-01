@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: gwallace
-ms.openlocfilehash: 69a509612e6204fc93dd42bf2fe69cb165b5777c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cfb1debf9447cd66856b73166a133d5d498fcc79
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Verwalten von DNS-Zonen im Azure-Portal
 
@@ -31,7 +31,7 @@ In diesem Artikel wird gezeigt, wie DNS-Zonen mithilfe des Azure-Portals verwalt
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
 1. Melden Sie sich auf dem Azure-Portal an.
-2. Klicken Sie im Hubmenü auf **Neu > Netzwerk** und anschließend auf **DNS-Zone**, um das Blatt „DNS-Zone erstellen“ zu öffnen.
+2. Klicken Sie im Hubmenü auf **Ressource erstellen > Netzwerk** und anschließend auf **DNS-Zone**, um das Blatt „DNS-Zone erstellen“ zu öffnen.
 
     ![DNS-Zone](./media/dns-operations-dnszones-portal/openzone650.png)
 
@@ -43,7 +43,7 @@ In diesem Artikel wird gezeigt, wie DNS-Zonen mithilfe des Azure-Portals verwalt
    |**Name**|contoso.com|Der Name der DNS-Zone.|
    |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem die DNS-Zone erstellt werden soll.|
    |**Ressourcengruppe**|**Neu erstellen:** contosoDNSRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
-   |**Location**|USA (West)||
+   |**Location**|USA (Westen)||
 
 > [!NOTE]
 > Die Ressourcengruppe bezieht sich auf den Standort der Ressourcengruppe und hat keine Auswirkung auf die DNS-Zone. Der Speicherort der DNS-Zone ist immer global und wird nicht angezeigt.

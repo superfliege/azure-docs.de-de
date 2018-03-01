@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 16b206b97f71eeffbb4fddb9e447649034998672
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 97803d62ee42d777336dc87c34a16eff426d24d0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 Dieser Artikel zeigt, wie Azure Active Directory Domain Services (Azure AD DS) mithilfe des Azure-Portals aktiviert werden kann.
@@ -26,7 +26,7 @@ Dieser Artikel zeigt, wie Azure Active Directory Domain Services (Azure AD DS) m
 Um den Assistenten zum **Aktivieren von Azure AD Domain Services** zu starten, führen Sie die folgenden Schritte aus:
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie im linken Bereich auf **Neu**.
+2. Klicken Sie im linken Bereich auf **Ressource erstellen**.
 3. Geben Sie auf dem Blatt **Neu** in der Suchleiste **Domain Services** ein.
 
     ![Suche nach Domänendiensten](./media/getting-started/search-domain-services.png)

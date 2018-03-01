@@ -1,5 +1,5 @@
 ---
-title: "Grundlegendes zur Verwendung eines Azure IoT Edge-Geräts als Gateway für andere Geräte | Microsoft-Dokumentation"
+title: "Verwenden von Azure IoT Edge-Geräten als Gateways | Microsoft-Dokumentation"
 description: "Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder nicht transparenten Gateway-Geräts oder eines Proxy-Gateway-Geräts, das Daten von mehreren nachgeschalteten Geräten in die Cloud sendet oder lokal verarbeitet."
 services: iot-edge
 keywords: 
@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/27/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 3f2f9258b97d4886f41a2b991ff4de7e16379245
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: fe7ad2444b9378550e9624e3d109c8be4fd29f23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway---preview"></a>Verwendung eines IoT Edge-Geräts als Gateway – Vorschauversion
 

@@ -16,13 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 6f7d8e8b3d1ed7c8a06f7e11fea492eec8b60409
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ee6371faa9c3cc72104ba0eb05d17226679fa420
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Erfassen Sie ein Image eines virtuellen Azure Windows-Computers, der mit dem klassischen Bereitstellungsmodell erstellt wurde.
+# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Erfassen eines Images eines virtuellen Azure Windows-Computers, der mit dem klassischen Bereitstellungsmodell erstellt wurde
 > [!IMPORTANT]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Informationen zum Ressourcen-Manager-Modell finden Sie unter [Erstellen verwalteter Images generalisierter virtueller Computer in Azure](../capture-image-resource.md).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
@@ -57,7 +57,7 @@ Es empfiehlt sich, vor der Erfassung eines Images eines Azure virtuellen Compute
 
    ![Sysprep ausführen](./media/capture-image/SysprepGeneral.png)
 5. Sysprep fährt den virtuellen Computer herunter. Dadurch wird der Status des virtuellen Computers im Azure-Portal in **Angehalten** geändert.
-6. Klicken Sie im Azure-Portal auf **Virtuelle Computer (klassisch)**, und wählen Sie den virtuellen Computer aus, den Sie erfassen möchten. Die Gruppe **VM-Images (klassisch)** wird nach Aufruf von **Weitere Dienste** unter **Compute** aufgeführt.
+6. Klicken Sie im Azure-Portal auf **Virtuelle Computer (klassisch)**, und wählen Sie den virtuellen Computer aus, den Sie erfassen möchten. Die Gruppe **VM-Images (klassisch)** wird nach Aufruf von **Alle Dienste** unter **Compute** aufgeführt.
 
 7. Klicken Sie in der Befehlsleiste auf **Aufnehmen**.
 
@@ -74,7 +74,7 @@ Es empfiehlt sich, vor der Erfassung eines Images eines Azure virtuellen Compute
     ![Image-Erfassung erfolgreich](./media/capture-image/VMCapturedImageAvailable.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Zu diesem Zweck erstellen Sie einen virtuellen Computer durch Auswählen der Menüoption **Weitere Dienste** am unteren Rand des Menüs „Dienste“. Klicken Sie dann in der Gruppe **Compute** auf **VM-Images (klassisch)**. Anweisungen dazu finden Sie unter [Erstellen eines virtuellen Computers von einem Image](createportal.md).
+Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Zu diesem Zweck erstellen Sie einen virtuellen Computer durch Auswählen der Menüoption **Alle Dienste** im unteren Bereich des Menüs „Dienste“. Wählen Sie dann in der Gruppe **Compute** die Option **VM-Images (klassisch)** aus. Anweisungen dazu finden Sie unter [Erstellen eines virtuellen Computers von einem Image](createportal.md).
 
 [How to sign in to a virtual machine running Windows Server]:connect-logon.md
 [How to Use Sysprep: An Introduction]: http://technet.microsoft.com/library/bb457073.aspx

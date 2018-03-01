@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: ba4e8fe0d54deb4a980174ff7d0904854c794d3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c352c67aa0e9392c9e9d68822abeb27344bd8b7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-monitor"></a>Erste Schritte mit Azure Monitor
-Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an einem zentralen Ort verwalten können. Mit Azure Monitor können Sie Metriken und Protokolle aus den Ressourcen in Azure visualisieren, abfragen, weiterleiten und archivieren und ggf. notwendige Maßnahmen ergreifen. Sie können im Portal auf dem Blatt „Monitor“, über [Monitor PowerShell-Cmdlets](insights-powershell-samples.md), in einer [plattformübergreifenden Befehlszeilenschnittstelle](insights-cli-samples.md) oder in [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/dn931943.aspx) mit diesen Daten arbeiten. In diesem Artikel werden einige wichtige Komponenten von Azure Monitor beschrieben, indem zu Demonstrationszwecken das Portal verwendet wird.
+Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an einem zentralen Ort verwalten können. Mit Azure Monitor können Sie Metriken und Protokolle aus den Ressourcen in Azure visualisieren, abfragen, weiterleiten und archivieren und ggf. notwendige Maßnahmen ergreifen. Sie können im Azure-Portal, mit [Monitor PowerShell-Cmdlets](insights-powershell-samples.md), in einer [plattformübergreifenden Befehlszeilenschnittstelle](insights-cli-samples.md) oder in [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/dn931943.aspx) mit diesen Daten arbeiten. In diesem Artikel werden einige wichtige Komponenten von Azure Monitor beschrieben, indem zu Demonstrationszwecken das Portal verwendet wird.
 
 ## <a name="walkthrough"></a>Exemplarische Vorgehensweise
-1. Navigieren Sie im Portal zu **Weitere Dienste**, und suchen Sie die Option **Überwachen**. Klicken Sie auf das Sternsymbol, um diese Option zu Ihrer Favoritenliste hinzuzufügen. So ist sie über die linke Navigationsleiste immer schnell zu erreichen.
+1. Navigieren Sie im Portal zu **Alle Dienste**, und suchen Sie die Option **Monitor**. Klicken Sie auf das Sternsymbol, um diese Option zu Ihrer Favoritenliste hinzuzufügen. So ist sie über die linke Navigationsleiste immer schnell zu erreichen.
 
     ![Azure Monitor in der Dienstliste](./media/monitoring-get-started/monitor-more-services.png)
-2. Klicken Sie auf die Option **Überwachen**, um das Blatt **Überwachen** zu öffnen. Auf diesem Blatt sind alle Überwachungseinstellungen und -daten in einer konsolidierten Ansicht zusammengefasst. Zunächst wird der Abschnitt **Aktivitätsprotokoll** geöffnet.
+2. Klicken Sie auf die Option **Monitor**, um die Seite **Monitor** zu öffnen. Auf dieser Seite sind alle Überwachungseinstellungen und -daten in einer konsolidierten Ansicht zusammengefasst. Zunächst wird der Abschnitt **Aktivitätsprotokoll** geöffnet.
 
-    ![Navigation auf dem Blatt „Monitor“](./media/monitoring-get-started/monitor-blade-nav.png)
+    ![Monitor-Navigation](./media/monitoring-get-started/monitor-blade-nav.png)
 
     Azure Monitor bietet drei grundlegende Kategorien von Überwachungsdaten: das **Aktivitätsprotokoll**, **Metriken** und **Diagnoseprotokolle**.
 3. Klicken Sie auf **Aktivitätsprotokoll** , um sicherzustellen, dass der Abschnitt „Aktivitätsprotokoll“ angezeigt wird.
 
-    ![Blatt „Aktivitätsprotokoll“](./media/monitoring-get-started/monitor-act-log-blade.png)
+    ![Aktivitätsprotokoll](./media/monitoring-get-started/monitor-act-log-blade.png)
 
     Im [**Aktivitätsprotokoll**](monitoring-overview-activity-logs.md) werden alle Vorgänge beschrieben, die in den Ressourcen in Ihrem Abonnement durchgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Erstell-, Aktualisierungs- und Löschvorgänge ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Das Aktivitätsprotokoll enthält beispielsweise Informationen darüber, wann und von wem eine Web-App beendet wurde. Aktivitätsprotokollereignisse werden auf der Plattform gespeichert und sind 90 Tage verfügbar.
 
@@ -50,12 +50,12 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
 6. Wechseln Sie zurück zum Dashboard. Sie sehen nun, dass die Abfrage (und die Anzahl von Ergebnissen) auf Ihrem Dashboard angezeigt wird. Dies ist hilfreich, wenn Sie schnell wichtige Aktionen anzeigen möchten, die für Ihr Abonnement kürzlich aufgetreten sind, z.B., wenn eine neue Rolle zugewiesen oder eine VM gelöscht wurde.
 
     ![An das Dashboard angeheftete Aktivitätsprotokolle](./media/monitoring-get-started/monitor-act-log-db.png)
-7. Kehren Sie zurück zur Kachel **Überwachen**, und klicken Sie auf den Abschnitt **Metriken**. Zunächst müssen Sie durch Filtern und Auswählen der Optionen mit der Dropdownliste oben auf dem Blatt eine Ressource auswählen.
+7. Kehren Sie zurück zur Kachel **Überwachen**, und klicken Sie auf den Abschnitt **Metriken**. Zunächst müssen Sie durch Filtern und Auswählen der Optionen mit der Dropdownliste oben auf der Seite eine Ressource auswählen.
 
     ![Ressourcen für Metriken filtern](./media/monitoring-get-started/monitor-met-filter.png)
 
     [**Metriken**](monitoring-overview-metrics.md) werden von allen Azure-Ressourcen ausgegeben. In dieser Ansicht sind alle Metriken in einer zentralen Konsole zusammengefasst, damit Sie sich leicht einen Überblick über die Leistung Ihrer Ressourcen verschaffen können. Sehen Sie sich darüber hinaus auch unsere [brandneue Oberfläche zur Erstellung von Diagrammen mit Metriken](https://aka.ms/azuremonitor/new-metrics-charts) an, indem Sie auf die Registerkarte **Metriken (Vorschau)** klicken.
-8. Sobald Sie eine Ressource ausgewählt haben, werden alle verfügbaren Metriken auf der linken Seite des Blatts angezeigt. Sie können mehrere Metriken auf einmal in einem Diagramm darstellen, indem Sie die gewünschten Metriken auswählen und den Diagrammtyp und Zeitraum ändern. Sie können auch alle Metrikwarnungen anzeigen, die für diese Ressource eingerichtet wurden.
+8. Sobald Sie eine Ressource ausgewählt haben, werden alle verfügbaren Metriken links auf der Seite angezeigt. Sie können mehrere Metriken auf einmal in einem Diagramm darstellen, indem Sie die gewünschten Metriken auswählen und den Diagrammtyp und Zeitraum ändern. Sie können auch alle Metrikwarnungen anzeigen, die für diese Ressource eingerichtet wurden.
 
     ![Blatt "Metrik"](./media/monitoring-get-started/monitor-metric-blade.png)
 
@@ -64,14 +64,14 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
    >
    >
 9. Wenn Sie mit dem Diagramm zufrieden sind, können Sie es über die Schaltfläche **Anheften** an Ihr Dashboard anheften.
-10. Kehren Sie zum Blatt **Überwachen** zurück, und klicken Sie auf **Diagnoseprotokolle**.
+10. Kehren Sie zu **Monitor** zurück, und klicken Sie auf **Diagnoseprotokolle**.
 
     ![Blatt „Diagnoseprotokolle“](./media/monitoring-get-started/monitor-diaglogs-blade.png)
 
     [**Diagnoseprotokolle**](monitoring-overview-of-diagnostic-logs.md) sind *von* einer Ressource ausgegebene Protokolle, in denen Daten zum Betrieb dieser bestimmten Ressource erfasst werden. Regelzähler für Netzwerksicherheitsgruppen und Workflowprotokolle für Logik-Apps sind Beispiele für solche Diagnoseprotokolle. Diese Protokolle können in einem Speicherkonto gespeichert, an einen Event Hub gestreamt oder an [Log Analytics](../log-analytics/log-analytics-overview.md) gesendet werden. Log Analytics ist das Operational Intelligence-Produkt von Microsoft für erweiterte Suchen und Warnungen.
 
     Um zu überprüfen, ob die entsprechenden Diagnoseprotokolle aktiviert sind, können Sie im Portal eine Liste aller Ressourcen in Ihrem Abonnement anzeigen und filtern.
-11. Klicken Sie auf dem Blatt „Diagnoseprotokolle“ auf eine Ressource. Wenn Diagnoseprotokolle in einem Speicherkonto gespeichert sind, sehen Sie nun eine Liste mit stündlich erstellten Protokollen, die Sie direkt herunterladen können.
+11. Klicken Sie auf der Seite „Diagnoseprotokolle“ auf eine Ressource. Wenn Diagnoseprotokolle in einem Speicherkonto gespeichert sind, sehen Sie nun eine Liste mit stündlich erstellten Protokollen, die Sie direkt herunterladen können.
 
     ![Diagnoseprotokolle für eine Ressource](./media/monitoring-get-started/monitor-diaglogs-detail.png)
 
@@ -80,7 +80,7 @@ Azure Monitor ist der Plattformdienst, mit dem Sie Ihre Azure-Ressourcen an eine
     ![Aktivieren von Diagnoseprotokollen](./media/monitoring-get-started/monitor-diaglogs-enable.png)
 
     Wenn Sie Diagnoseprotokolle in Log Analytics eingerichtet haben, können Sie diese dann im Portal im Abschnitt **Protokollsuche** suchen.
-12. Navigieren Sie auf dem Blatt „Überwachen“ zum Abschnitt **Warnungen** .
+12. Navigieren Sie auf der Seite „Monitor“ zum Abschnitt **Warnungen**.
 
     ![Blatt „Warnungen“ für öffentliche Vorschau](./media/monitoring-get-started/monitor-alerts-nopp.png)
 

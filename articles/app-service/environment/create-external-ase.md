@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: e1beb06301807c35a1b070989a0f80f4c8097762
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 439fadeb01ccad58642492eb49ef25f866a9a9dd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung #
 
@@ -59,7 +59,7 @@ Der App Service-Plan ist ein Container mit Apps. Wenn Sie in App Service eine Ap
 
 Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen Sie folgendermaßen vor:
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu** > **Web und mobil** > **Web-App**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Web + Mobil** > **Web-App**.
 
     ![Erstellung der Web-App][1]
 
@@ -97,7 +97,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
 Wenn Sie eine eigenständige ASE erstellen, enthält sie keinerlei Elemente. Für eine leere ASE fällt trotzdem eine monatliche Gebühr für die Infrastruktur an. Führen Sie diese Schritte aus, um eine ASE mit einem ILB oder eine ASE in einer eigenen Ressourcengruppe zu erstellen. Nach dem Erstellen der ASE können Sie mit der ganz normalen Vorgehensweise Apps darin erstellen. Wählen Sie Ihre neue ASE als Standort aus.
 
-1. Suchen Sie im Azure Marketplace nach **App Service Environment**, oder wählen Sie **Neu** > **Web und mobil** > **App Service Environment** aus. 
+1. Suchen Sie im Azure Marketplace nach **App Service-Umgebung**, oder wählen Sie **Neu** > **Web + Mobil** > **App Service-Umgebung** aus. 
 
 2. Geben Sie den Namen Ihrer ASE ein. Dieser Name wird für die in der ASE erstellten Apps verwendet. Wenn der Name *mynewdemoase* lautet, ist der Name der Unterdomäne *.mynewdemoase.p.azurewebsites.net*. Wenn Sie eine App namens *mytestapp* erstellen, kann sie unter der Adresse „mytestapp.mynewdemoase.p.azurewebsites.net“ aufgerufen werden. Sie dürfen keine Leerzeichen im Namen verwenden. Bei Verwendung von Großbuchstaben wird der entsprechende Domänenname dennoch vollständig in Kleinbuchstaben geschrieben. Bei Verwendung eines ILB wird Ihr ASE-Name nicht in Ihrer Unterdomäne verwendet, sondern stattdessen explizit während der ASE-Erstellung angegeben.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect Sync: Verzeichniserweiterungen | Microsoft Docs'
+title: 'Azure AD Connect Sync: Verzeichniserweiterungen | Microsoft-Dokumentation'
 description: Dieses Thema beschreibt das Verzeichniserweiterungsfeature in Azure AD Connect.
 services: active-directory
 documentationcenter: 
@@ -14,19 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9abd035b13a0d51c534eb8cac50c045012399a69
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4430f445a836f4baa90511c71bb734eda8674249
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
-Verzeichniserweiterungen ermöglichen Ihnen das Erweitern des Schemas in Azure AD mit Ihren eigenen Attributen aus dem lokalen Active Directory. Dank dieses Features können Sie Branchen-Apps erstellen, die weiterhin lokal verwaltete Attribute nutzen. Diese Attribute können über [Azure AD Graph-Verzeichniserweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) oder über [Microsoft Graph](https://graph.microsoft.io/) genutzt werden. Sie können die verfügbaren Attribute je nach Lösung mithilfe von [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) oder [Microsoft Graph-Explore](https://developer.microsoft.com/en-us/graph/graph-explorer)r anzeigen.
+Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Azure AD Graph-API-Verzeichniserweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) oder über [Microsoft Graph](https://graph.microsoft.io/) genutzt werden. Sie können die verfügbaren Attribute mithilfe von [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) bzw. des [Microsoft Graph-Testers](https://developer.microsoft.com/en-us/graph/graph-explorer) anzeigen.
 
-Derzeit können diese Attribute nicht von Office 365-Workloads genutzt werden.
+Derzeit können diese Attribute von keiner Office 365-Workload genutzt werden.
 
 Sie konfigurieren im Installations-Assistenten im Pfad der benutzerdefinierten Einstellungen, welche zusätzlichen Attribute synchronisiert werden sollen.
+
 ![Schemaerweiterungs-Assistent](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png)  
+
 Bei der Installation werden folgenden Attribute als zulässige Kandidaten angezeigt:
 
 * Benutzer- und Gruppenobjekttypen
@@ -35,29 +37,28 @@ Bei der Installation werden folgenden Attribute als zulässige Kandidaten angeze
 
 
 >[!NOTE]
-> Azure AD Connect unterstützt zwar das Synchronisieren mehrwertiger AD-Attribute für Azure AD als mehrwertige Verzeichniserweiterungen, doch gibt es derzeit keine Funktionen in Azure AD, die die Verwendung mehrwertiger Verzeichniserweiterungen unterstützen.
+> Azure AD Connect unterstützt die Synchronisierung von mehrwertigen Active Directory-Attributen in Azure AD als mehrwertige Verzeichniserweiterungen. Zurzeit unterstützt jedoch kein Feature in Azure AD die Verwendung von Verzeichniserweiterungen mit mehreren Werten.
 
-Die Attributliste wird aus dem Schemacache gelesen, der im Zuge der Installation von Azure AD Connect erstellt wurde. Wenn Sie das Active Directory-Schema um zusätzliche Attribute erweitert haben, ist eine [Aktualisierung des Schemas erforderlich](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema), damit die neuen Attribute angezeigt werden.
+Die Attributliste wird aus dem Schemacache gelesen, der im Zuge der Installation von Azure AD Connect erstellt wird. Wenn Sie das Active Directory-Schema um zusätzliche Attribute erweitert haben, müssen Sie [das Schema aktualisieren](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema), damit die neuen Attribute angezeigt werden.
 
 Ein Objekt in Azure AD kann bis zu 100 Attribute für Verzeichniserweiterungen aufweisen. Die maximale Länge beträgt 250 Zeichen. Längere Attributwerte werden vom Synchronisierungsmodul gekürzt.
 
-Während der Installation von Azure AD Connect wird eine Anwendung registriert, in der diese Attribute verfügbar sind. Diese Anwendung wird im Azure-Portal angezeigt.  
+Während der Installation von Azure AD Connect wird eine Anwendung registriert, in der diese Attribute verfügbar sind. Diese Anwendung wird im Azure-Portal angezeigt.
+
 ![Schemaerweiterungs-App](./media/active-directory-aadconnectsync-feature-directory-extensions/extension3new.png)
 
-Die Attribute haben das Präfix „extension\_{AppClientId}\_“. Die AppClientId besitzt für alle Attribute in Ihrem Azure AD-Mandanten den gleichen Wert.
+Die Attribute weisen das Präfix „extension\_{AppClientId}\_“ auf. Die AppClientId besitzt für alle Attribute in Ihrem Azure AD-Mandanten den gleichen Wert.
 
-Diese Attribute sind jetzt über den **Azure AD Graph** verfügbar:
+Diese Attribute sind jetzt über die Azure AD Graph-API verfügbar. Sie können sie mithilfe von [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) abfragen.
 
-Der Azure AD Graph kann über den Azure AD Graph-Explorer abgefragt werden: [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
+![Azure AD Graph-Explorer](./media/active-directory-aadconnectsync-feature-directory-extensions/extension4.png)
 
-![Graph](./media/active-directory-aadconnectsync-feature-directory-extensions/extension4.png)
-
-Alternativ kann die **Microsoft Graph-API** verwendet werden:
-
-Die Microsoft Graph-API kann über den Microsoft Graph-Explorer abgefragt werden: [https://developer.microsoft.com/en-us/graph/graph-explorer#](https://developer.microsoft.com/en-us/graph/graph-explorer#).
+Sie können die Attribute auch mithilfe des [Microsoft Graph-Testers](https://developer.microsoft.com/en-us/graph/graph-explorer#) über die Microsoft Graph-API abfragen.
 
 >[!NOTE]
-> Sie müssen explizit angeben, dass das Attribut zurückgegeben wird. Wählen Sie dazu die Attribute wie folgt explizit aus: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division. Weitere Informationen finden Sie unter [Verwenden von Abfrageparametern zum Anpassen von Antworten](https://developer.microsoft.com/en-us/graph/docs/concepts/query_parameters#select-parameter).
+> Sie müssen angeben, dass die Attribute zurückgegeben werden. Wählen Sie explizit Attribute wie das folgende aus: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division. 
+>
+> Weitere Informationen finden Sie unter [Microsoft Graph: Verwenden von Abfrageparametern](https://developer.microsoft.com/en-us/graph/docs/concepts/query_parameters#select-parameter).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .

@@ -15,7 +15,7 @@ Virtuelle Festplatten und VMs sind zwei unterschiedliche Ressourcen in Azure. Au
 
 Der erste Schritt beim Wiederherstellen Ihres virtuellen Computers besteht im Löschen der VM-Ressource. Das Löschen der VM belässt die virtuellen Festplatten in Ihrem Speicherkonto. Nach dem Löschen des virtuellen Computers können Sie die virtuelle Festplatte an einen anderen virtuellen Computer anfügen und die Fehler beheben. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 2. Klicken Sie im Menü auf der linken Seite auf **Virtuelle Computer (klassisch)**.
 3. Wählen Sie den virtuellen Computer aus, auf dem ein Problem auftritt, klicken Sie auf **Datenträger**, und ermitteln Sie anschließend den Namen der virtuellen Festplatte. 
 4. Wählen Sie den virtuellen Betriebssystemdatenträger aus, und überprüfen Sie den **Speicherort**, um das Speicherkonto zu ermitteln, das die virtuelle Festplatte enthält. Im folgenden Beispiel ist die Zeichenfolge unmittelbar vor „.blob.core.windows.net“ der Name des Speicherkontos.
@@ -48,7 +48,7 @@ Wenn die vorhandene virtuelle Festplatte eingebunden ist, können Sie die erford
 ## <a name="unmount-and-detach-the-original-virtual-hard-disk"></a>Aufheben der Bereitstellung und Trennen der ursprünglichen virtuellen Festplatte
 Heben Sie nach der Behebung aller Fehler die Bereitstellung auf, und trennen Sie die vorhandene virtuelle Festplatte von Ihrem virtuellen Problembehandlungscomputer. Die virtuelle Festplatte kann erst wieder für einen anderen virtuellen Computer verwendet werden, nachdem die Lease freigegeben wurde, die die virtuelle Festplatte an den virtuellen Problembehandlungscomputer anfügt.  
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 2. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer (klassisch)** aus.
 3. Suchen Sie nach dem virtuellen Wiederherstellungscomputer. Wählen Sie „Datenträger“ aus, klicken Sie mit der rechten Maustaste auf den Datenträger, und wählen Sie anschließend **Trennen** aus.
 
@@ -57,6 +57,6 @@ Heben Sie nach der Behebung aller Fehler die Bereitstellung auf, und trennen Sie
 Verwenden Sie das [Azure-Portal](https://portal.azure.com), um einen virtuellen Computers auf der Grundlage der ursprünglichen Festplatte zu erstellen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Wählen Sie am oberen linken Rand des Portals **Neu** > **Compute** > **Virtueller Computer** > **Aus Katalog** aus.
+2. Wählen Sie links oben im Portal **Ressource erstellen** > **Compute** > **Virtueller Computer** > **Aus Katalog** aus.
 3. Wählen Sie im Abschnitt **Image auswählen** die Option für Ihre **eigenen Datenträger** und anschließend die ursprüngliche virtuelle Festplatte aus. Überprüfen Sie den Standort. Hierbei handelt es sich um die Region, in der der virtuelle Computer bereitgestellt werden muss. Wählen Sie „Weiter“ aus.
 4. Geben Sie im Abschnitt **Konfiguration des virtuellen Computers** den Namen des virtuellen Computers ein, und wählen Sie eine Größe für den virtuellen Computer aus.

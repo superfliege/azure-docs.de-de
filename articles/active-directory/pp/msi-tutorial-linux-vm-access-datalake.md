@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: dc3ebf3ba232241677dc7aace4f835cee0cf54a7
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e2a2b885dd0dc5b240aef234ef1ff139d788de3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Data Lake Store
 
@@ -45,7 +45,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 In diesem Tutorial wird ein neuer virtueller Linux-Computer erstellt. Sie können MSI auch auf einem vorhandenen virtuellen Computer aktivieren.
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2. Wählen Sie **Compute** und dann **Ubuntu Server 16.04 LTS**.
 3. Geben Sie die Informationen zum virtuellen Computer ein. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel** oder **Kennwort**. Mit den erstellten Anmeldeinformationen können Sie sich auf dem virtuellen Computer anmelden.
 

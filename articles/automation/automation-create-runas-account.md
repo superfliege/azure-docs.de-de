@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 74d363be48972b40ba6a50b845acea78e1b5cc20
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 30ed7c2f9a65f66d9d45b1bdd5be2957cfe1d08a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualisieren der Automation-Kontoauthentifizierung mit ausführenden Konten 
 Sie können Ihr vorhandenes Automation-Konto über das Azure-Portal oder mit PowerShell aktualisieren, wenn folgende Voraussetzungen erfüllt sind:
@@ -49,7 +49,7 @@ Wenn Sie [PowerShell zum Erstellen der ausführenden Konten verwenden](#create-r
 
 Gehen Sie wie folgt vor, um die Werte für *SubscriptionID*, *ResourceGroup* und *AutomationAccountName* abzurufen. Hierbei handelt es sich um erforderliche Parameter für das Skript:
 
-1. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Automation** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie die Option **Automation-Konten**.
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Automation** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie die Option **Automation-Konten**.
 2. Wählen Sie auf der Seite „Automation-Konto“ Ihr Automation-Konto und dann unter **Kontoeinstellungen** die Option **Eigenschaften**.  
 3. Notieren Sie sich die Werte auf der Seite **Eigenschaften**.<br><br> ![Blatt „Eigenschaften“ des Automation-Kontos](media/automation-create-runas-account/automation-account-properties.png)  
 
@@ -65,7 +65,7 @@ Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, bevor 
 Führen Sie in diesem Abschnitt die folgenden Schritte aus, um im Azure-Portal Ihr Azure Automation-Konto zu aktualisieren.  Sie erstellen das ausführende Konto und das klassische ausführende Konto separat. Wenn Sie keine klassischen Ressourcen verwalten müssen, ist es nur erforderlich, das ausführende Azure-Konto zu erstellen.  
 
 1. Melden Sie sich mit einem Konto, das Mitglied der Rolle „Abonnement-Administratoren“ und Co-Administrator des Abonnements ist, beim Azure-Portal an.
-2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Automation** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie die Option **Automation-Konten**.
+2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Automation** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie die Option **Automation-Konten**.
 3. Wählen Sie auf der Seite **Automation-Konten** in der entsprechenden Liste Ihr Automation-Konto aus.
 4. Wählen Sie im linken Bereich im Abschnitt **Kontoeinstellungen** die Option **Ausführende Konten**.  
 5. Abhängig vom benötigten Konto wählen Sie **Ausführendes Azure-Konto** oder **Klassisches ausführendes Azure-Konto** aus.  Nach der Auswahl wird das Blatt **Ausführendes Azure-Konto hinzufügen** oder **Klassisches ausführendes Azure-Konto hinzufügen** angezeigt. Überprüfen Sie die Übersichtsinformationen, und klicken Sie auf **Erstellen**, um mit dem Erstellen des ausführenden Kontos fortzufahren.  

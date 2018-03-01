@@ -13,17 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2018
+ms.date: 02/15/2018
 ms.author: saurinsh
-ms.openlocfilehash: 6284b246c071fb99a8b47845aca34b6262e5b856
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: b4d71eeb0aab75e67e851f867f194ed7578d0d1c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>Konfigurieren einer in die Domäne eingebundenen HDInsight-Sandboxumgebung
 
-Erfahren Sie, wie Sie Azure HDInsight-Cluster mit einem eigenständigen Active Directory-Verzeichnis und [Apache Ranger](http://hortonworks.com/apache/ranger/) einrichten, und profitieren Sie von einer strengen Authentifizierung und umfassenden Richtlinien für die rollenbasierte Zugriffssteuerung (RBAC). Weitere Informationen finden Sie unter [Introduce Domain-joined HDInsight clusters (Einführung in HDInsight-Cluster mit Domänenverknüpfung)](apache-domain-joined-introduction.md).
+Erfahren Sie, wie Sie Azure HDInsight-Cluster mit einem eigenständigen Active Directory-Verzeichnis und [Apache Ranger](http://hortonworks.com/apache/ranger/) einrichten, und profitieren Sie von einer strengen Authentifizierung und umfassenden Richtlinien für die rollenbasierte Zugriffssteuerung (RBAC). Weitere Informationen finden Sie unter [Introduce Domain-joined HDInsight clusters (Einführung in HDInsight-Cluster mit Domänenverknüpfung)](apache-domain-joined-introduction.md). 
+
+> [!IMPORTANT]
+> Standardmäßig kann dieses Setup nur mit Azure Storage-Konten verwendet werden. Für die Verwendung mit Azure Data Lake Store müssen Sie Active Directory mit einem neuen Azure Active Directory synchronisieren.
 
 Ohne in die Domäne eingebundene HDInsight-Cluster kann jeder Cluster nur ein Hadoop-HTTP-Benutzerkonto und ein SSH-Benutzerkonto verwenden.  Die Authentifizierung mehrere Benutzer kann folgendermaßen erreicht werden:
 
@@ -40,6 +43,7 @@ In diesem Artikel wird die Verwendung eines eigenständigen Active Directory-Ver
     - Erstellen des HDInsight-Clusters
 
 > [!IMPORTANT]
+> 
 > Oozie ist auf HDInsight mit Domänenverknüpfung nicht aktiviert.
 
 ## <a name="prerequisite"></a>Voraussetzung

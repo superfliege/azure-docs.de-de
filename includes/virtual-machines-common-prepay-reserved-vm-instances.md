@@ -8,7 +8,7 @@ Sie können reservierte VM-Instanzen im [Azure-Portal](https://portal.azure.com)
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>Erwerben einer reservierten VM-Instanz
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf **Weitere Dienste** > **Reservierungen**.
+2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Klicken Sie auf **Hinzufügen**, um eine neue Reservierung zu erwerben.
 4. Füllen Sie die erforderlichen Felder aus. Ausgeführte VM-Instanzen, die den ausgewählten Attributen entsprechen, sind für den Reservierungsrabatt berechtigt. Die tatsächliche Anzahl der VM-Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und von der ausgewählten Menge ab.
 

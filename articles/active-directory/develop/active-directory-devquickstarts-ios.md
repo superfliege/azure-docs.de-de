@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 36c6f6d2449d1e137f85e0f657f0399f9df8ee55
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 93df6f5e6c966fdf4909a4c21ebc36bff4283a59
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-ios-getting-started"></a>Erste Schritte mit iOS in Azure AD
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -63,7 +63,7 @@ Damit Ihre Anwendung Token abrufen kann, müssen Sie sie zunächst bei Ihrem Azu
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnisliste** den Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
-3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie anschließend **Azure Active Directory** aus.
+3. Klicken Sie im linken Navigationsbereich auf **Alle Dienste**, und wählen Sie anschließend **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **native Clientanwendung**.
   * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.

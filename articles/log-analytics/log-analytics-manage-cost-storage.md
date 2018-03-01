@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 35064c792b72222d59b1d3f0913a92a4a2b34612
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 5143abdde715424a41a53bb661db342acf817e0c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-cost-of-data-retention-with-your-log-analytics-workspace"></a>Verwalten der Kosten für Datenaufbewahrung in Ihrem Log Analytics-Arbeitsbereich
 Wenn Sie sich bei Log Analytics anmelden, besteht abhängig vom ausgewählten Tarif ein Grenzwert dafür, wie lange die durch Ihre verbundenen Quellen generierten Daten in Ihrem Arbeitsbereich gespeichert werden.  In diesem Artikel werden die Erwägungen hervorgehoben, die die Kosten für das Aufbewahren dieser Daten über verschiedene Zeiträume und die Konfiguration des genannten Grenzwerts beeinflussen können.   
@@ -44,7 +44,7 @@ Wenn Sie im Tarif *Free* feststellen, dass Sie die zulässige Menge konsistent �
 ## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums 
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an. 
-2. Klicken Sie links unten auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+2. Klicken Sie auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 3. Wählen Sie im Abonnementbereich von Log Analytics den zu ändernden Arbeitsbereich in der Liste aus.
 4. Klicken Sie auf der Seite des Arbeitsbereichs im linken Bereich auf **Aufbewahrung**.
 5. Verwenden Sie im Aufbewahrungsbereich für den Arbeitsbereich den Schieberegler, um die Anzahl Tage zu erhöhen oder zu verringern, und klicken Sie dann auf **Speichern**.  Wenn Sie sich im Tarif *Free* befinden, können Sie den Datenaufbewahrungszeitraum nicht ändern. Sie müssen in einen kostenpflichtigen Tarif wechseln, um diese Einstellung zu steuern.<br><br> ![Ändern des Datenaufbewahrungszeitraums für den Arbeitsbereich](media/log-analytics-manage-cost/manage-cost-change-retention.png)

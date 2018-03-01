@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/07/2017
 ms.author: robb
-ms.openlocfilehash: c463479b7eaee5a0548c8891dd3a20ef070dd39b
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 5f2b68e800f484a64e79f965fc855aebe090186a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-service-health"></a>Azure Service Health
 Azure Service Health stellt zeitnahe und persönliche Informationen bereit, wenn sich Probleme in Azure-Diensten auf Ihre Dienste auswirken.  Zudem unterstützt Sie der Dienst bei der Vorbereitung auf anstehende geplante Wartungen.
@@ -32,8 +32,13 @@ Service Health verfolgt drei Typen von Integritätsereignissen nach, die sich au
     ![Service Health-Ereignisse](./media/service-health-overview/azure-service-health-overview-7.png)
 
 ## <a name="get-started-with-service-health"></a>Erste Schritte mit Service Health
-Um Ihr Service Health-Dashboard zu starten, wählen Sie auf dem Dashboard Ihres Portals die Kachel „Service Health“ aus. Wenn Sie die Kachel zuvor entfernt haben oder ein benutzerdefiniertes Dashboard verwenden, suchen Sie den Service Health-Dienst unter „Weitere Dienste“ (unten links auf Ihrem Dashboard).
+Um Ihr Service Health-Dashboard zu starten, wählen Sie auf dem Dashboard Ihres Portals die Kachel „Service Health“ aus. 
+
 ![Erste Schritte mit Service Health](./media/service-health-overview/azure-service-health-overview-1.png)
+
+Wenn Sie die Kachel zuvor entfernt haben oder ein benutzerdefiniertes Dashboard verwenden, suchen Sie den Service Health-Dienst unter **Alle Dienste** (oben links auf Ihrem Dashboard).
+
+![Erste Schritte mit Service Health](./media/service-health-overview/azure-service-health-overview-1a.png)
 
 ## <a name="see-current-issues-which-impact-your-services"></a>Anzeigen aktueller Probleme, die sich auf Ihre Dienste auswirken
 Die Ansicht **Dienstprobleme** zeigt laufende Probleme in Azure-Diensten an, die sich auf Ihre Ressourcen auswirken. Sie können nachvollziehen, wann das Problem aufgetreten ist und welche Dienste und Regionen betroffen sind. Sie können auch das aktuelle Update lesen, um zu verstehen, was Azure unternimmt, um das Problem zu lösen. 

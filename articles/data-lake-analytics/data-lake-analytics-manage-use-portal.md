@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15b3b44e45a59f44bd9bbd96dce867cc87fa410c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -32,15 +32,15 @@ Erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Kontodatenquellen, -Ben
 
 ### <a name="create-an-account"></a>Erstellen eines Kontos
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf **Neu** > **Intelligence + Analyse** > **Data Lake Analytics**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie auf **Ressource erstellen** > **Intelligence + Analyse** > **Data Lake Analytics**.
 3. Wählen Sie Werte für die folgenden Elemente: 
    1. **Name**: Der Name des Data Lake Analytics-Kontos.
    2. **Abonnement**: Das für das Konto verwendete Azure-Abonnement.
    3. **Ressourcengruppe**: Die Azure-Ressourcengruppe, in der das Konto erstellt werden soll. 
    4. **Standort**: Das Azure-Rechenzentrum für das Data Lake Analytics-Konto. 
    5. **Data Lake Store**: Der Standardspeicher, der für das Data Lake Analytics-Konto verwendet werden soll. Das Data Lake Store-Konto und das Data Lake Analytics-Konto müssen sich am selben Ort befinden.
-4. Klicken Sie auf **Erstellen**. 
+4. Klicken Sie auf **Create**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Löschen eines Data Lake Analytics-Kontos
 
@@ -58,7 +58,7 @@ Bevor Sie ein Data Lake Analytics-Konto löschen, löschen Sie dessen Data Lake 
 
 Data Lake Analytics unterstützt die folgenden Datenquellen:
 
-* Data Lake Store
+* Data Lake-Speicher
 * Azure Storage
 
 Sie können den Daten-Explorer zum Durchsuchen von Datenquellen und zum Durchführen von grundlegenden Dateiverwaltungsvorgängen verwenden. 
@@ -70,7 +70,7 @@ Sie können den Daten-Explorer zum Durchsuchen von Datenquellen und zum Durchfü
 3. Klicken Sie auf **Datenquelle hinzufügen**.
     
    * Zum Hinzufügen eines Data Lake Store-Kontos benötigen Sie den Kontonamen und Zugriff auf das Konto, um eine Abfrage durchführen zu können.
-   * Zum Hinzufügen eines Azure Blob-Speichers benötigen Sie das Speicherkonto und den Kontoschlüssel. Diese finden Sie im Speicherkonto im Portal.
+   * Zum Hinzufügen von Azure Blob Storage benötigen Sie das Speicherkonto und den Kontoschlüssel. Diese finden Sie im Speicherkonto im Portal.
 
 ## <a name="set-up-firewall-rules"></a>Einrichten von Firewallregeln
 

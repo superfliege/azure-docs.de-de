@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 8915abbb27184c2f0b47747e422e5a4fa7bc1cbb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0379592f1c4f6e9d3f6fd2127b8e34e99a8b0176
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Anleitung zum Erstellen eines VM-Images für Azure Marketplace
 In diesem Artikel ( **Schritt 2**) werden Sie durch die Vorbereitung der virtuellen Festplatten (VHDs) geführt, die Sie im Azure Marketplace bereitstellen möchten. Ihre VHDs bilden die Grundlage Ihrer SKU. Der Prozess variiert in Abhängigkeit davon, ob Sie eine Linux- oder Windows-basierte SKU bereitstellen. Dieser Artikel deckt beide Szenarien ab. Dieser Vorgang kann parallel zum [Erstellen und Registrieren eines Kontos][link-acct-creation] ausgeführt werden.
@@ -127,7 +127,7 @@ Es wird dringend empfohlen, die VHD in der Cloud mithilfe des Remotedesktopproto
 
 **Herstellen der Verbindung mit dem [Microsoft Azure-Portal][link-azure-portal] über RDP**
 
-1. Wählen Sie **Durchsuchen** > **VMs**.
+1. Wählen Sie **Alle Dienste** > **VMs** aus.
 2. Das Blatt „Virtuelle Computer“ wird geöffnet. Stellen Sie sicher, dass der virtuelle Computer, mit dem Sie eine Verbindung herstellen möchten, ausgeführt wird, und wählen Sie ihn dann in der Liste der bereitgestellten virtuellen Computer aus.
 3. Es wird ein Blatt geöffnet, auf dem der ausgewählte virtuelle Computer beschrieben wird. Klicken Sie am oberen Rand auf **Verbinden**.
 4. Sie werden aufgefordert, den Benutzernamen und das Kennwort einzugeben, den bzw. das Sie während der Bereitstellung angegeben haben.
@@ -136,7 +136,7 @@ Es wird dringend empfohlen, die VHD in der Cloud mithilfe des Remotedesktopproto
 
 Zum Herunterladen einer Remotedesktopdatei auf einen lokalen Computer können Sie das [Cmdlet Get-AzureRemoteDesktopFile][link-technet-2] verwenden. Hierzu müssen Sie den Namen des Diensts und den Namen des virtuellen Computers kennen. Wenn Sie den virtuellen Computer im [Microsoft Azure-Portal][link-azure-portal] erstellt haben, finden Sie diese Informationen unter „VM-Eigenschaften“:
 
-1. Wählen Sie im Microsoft Azure-Portal **Durchsuchen** > **VMs**.
+1. Wählen Sie im Microsoft Azure-Portal **Alle Dienste** > **VMs** aus.
 2. Das Blatt „Virtuelle Computer“ wird geöffnet. Wählen Sie den virtuellen Computer aus, den Sie bereitgestellt haben.
 3. Es wird ein Blatt geöffnet, auf dem der ausgewählte virtuelle Computer beschrieben wird.
 4. Klicken Sie auf **Eigenschaften**.
@@ -214,7 +214,6 @@ Zum Bereitstellen eines virtuellen Computers aus einem Benutzer-VM-Image können
 
 1. Navigieren Sie zu **Neu** > **Compute** > **Virtueller Computer** > **From gallery** (Aus Katalog)
 
-    ![Abbildung][img-manage-vm-new]
 2. Wechseln Sie zu **Meine Images**, und wählen Sie dann das VM-Image aus, aus dem ein virtueller Computer bereitgestellt werden soll:
 
    1. Achten Sie genau darauf, welches Image Sie auswählen, da unter **Meine Images** sowohl Betriebssystemimages als auch VM-Images aufgeführt werden.
@@ -302,15 +301,15 @@ Hinweis: Die folgenden Anweisungen gelten nur für nicht verwaltete Datenträger
 Die SAS-URL kann auf verschiedene Weisen generiert werden, um Ihre VHD in Azure Marketplace freizugeben.
 Es folgen die drei empfohlenen Tools:
 
-1.  Azure-Speicher-Explorer
-2.  Microsoft Speicher-Explorer
+1.  Azure Storage-Explorer
+2.  Microsoft Storage-Explorer
 3.  Azure-Befehlszeilenschnittstelle
 
-**Azure-Speicher-Explorer (empfohlen für Windows-Benutzer)**
+**Azure Storage-Explorer (empfohlen für Windows-Benutzer)**
 
-Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Azure-Speicher-Explorer.
+Es folgen die Schritte zum Generieren der SAS-URL mithilfe des Azure Storage-Explorers.
 
-1. Laden Sie [Azure Storage Explorer 6 Preview 3](https://azurestorageexplorer.codeplex.com/) von CodePlex herunter. Wechseln Sie zu [Azure Storage Explorer 6 Preview](https://azurestorageexplorer.codeplex.com/), und klicken Sie auf **downloads**.
+1. Laden Sie [Azure Storage-Explorer 6 (Vorschau 3)](https://azurestorageexplorer.codeplex.com/) von CodePlex herunter. Wechseln Sie zu [Azure Storage-Explorer 6 (Vorschau)](https://azurestorageexplorer.codeplex.com/), und klicken Sie auf **Downloads**.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_01.png)
 
@@ -327,11 +326,11 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Azure-Speicher-Ex
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_04.png)
 
-6. Sobald Azure-Speicher-Explorer mit Ihrem Speicherkonto verbunden ist, wird er gestartet und zeigt den gesamten Inhalt des Speicherkontos. Wählen Sie den Container aus, in den Sie die VHD-Datei mit dem Betriebssystem-Datenträger (auch normale Datenträger, wenn dies für Ihr Szenario zutrifft) kopiert haben.
+6. Sobald der Azure Storage-Explorer mit Ihrem Speicherkonto verbunden ist, wird er gestartet und zeigt den gesamten Inhalt des Speicherkontos. Wählen Sie den Container aus, in den Sie die VHD-Datei mit dem Betriebssystem-Datenträger (auch normale Datenträger, wenn dies für Ihr Szenario zutrifft) kopiert haben.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_05.png)
 
-7. Nach der Auswahl des Blob-Containers startet der Azure-Speicher-Explorer und zeigt die Dateien im Container an. Wählen Sie die Image-Datei (.vhd), die gesendet werden soll.
+7. Nach der Auswahl des Blobcontainers startet der Azure Storage-Explorer und zeigt die Dateien im Container an. Wählen Sie die Image-Datei (.vhd), die gesendet werden soll.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_06.png)
 
@@ -369,11 +368,11 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Azure-Speicher-Ex
 
 13. Wiederholen Sie die Schritte 6-10 für jede VHD in der SKU.
 
-**Microsoft Azure-Speicher-Explorer (Windows/MAC/Linux)**
+**Microsoft Azure Storage-Explorer (Windows/MAC/Linux)**
 
-Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Microsoft Azure-Speicher-Explorer.
+Es folgen die Schritte zum Generieren der SAS-URL mithilfe des Microsoft Azure Storage-Explorers.
 
-1.  Laden Sie Microsoft Azure-Speicher-Explorer von der Website [http://storageexplorer.com/](http://storageexplorer.com/) herunter. Wechseln Sie zu [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html), und klicken Sie auf **Free download for Windows**.
+1.  Laden Sie den Microsoft Azure Storage-Explorer von der Website [http://storageexplorer.com/](http://storageexplorer.com/) herunter. Wechseln Sie zu [Microsoft Azure Storage-Explorer](http://storageexplorer.com/releasenotes.html), und klicken Sie auf **Free download for Windows**.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_10.png)
 
@@ -381,7 +380,7 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Microsoft Azure-S
 
 3.  Klicken Sie auf **Konto hinzufügen**.
 
-4.  Konfigurieren Sie Microsoft Azure-Speicher-Explorer für Ihr Abonnement, indem Sie sich bei Ihrem Konto anmelden.
+4.  Konfigurieren Sie den Microsoft Azure Storage-Explorer für Ihr Abonnement, indem Sie sich bei Ihrem Konto anmelden.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
 

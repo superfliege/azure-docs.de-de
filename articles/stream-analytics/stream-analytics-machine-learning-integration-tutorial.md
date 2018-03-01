@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/06/2017
 ms.author: samacha
-ms.openlocfilehash: 243ee799d2cddb1baf5b8046eee6eaf182463d2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d06681c687f5cd3eb10d375499266c7e78be1558
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning
 Dieser Artikel beschreibt, wie Sie schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning-Integration einrichten. Sie nutzen ein Stimmungsanalysemodell für Machine Learning aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Über die Cortana Intelligence Suite können Sie diese Aufgabe ausführen, ohne sich um die Komplexität der Erstellung eines Analysemodells für die Stimmung kümmern zu müssen.
@@ -57,7 +57,7 @@ Im Allgemeinen führen Sie mit den Aufgaben in diesem Artikel folgende Aktionen 
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Erstellen eines Speichercontainers und Hochladen der CSV-Eingabedatei
 Für diesen Schritt können Sie eine beliebige CSV-Datei verwenden, also z.B. auch die bei GitHub verfügbare.
 
-1. Klicken Sie im Azure-Portal auf **Neu** &gt; **Storage** &gt; **Speicherkonto**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** &gt; **Speicher** &gt; **Speicherkonto**.
 
    ![Neues Speicherkonto erstellen](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-create-storage-account.png)
 
@@ -128,7 +128,7 @@ Sie können jetzt einen Stream Analytics-Auftrag erstellen, der die Beispiel-Twe
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).  
 
-2. Klicken Sie auf **Neu** > **Internet der Dinge** > **Stream Analytics-Auftrag**. 
+2. Klicken Sie auf **Ressource erstellen** > **Internet der Dinge** > **Stream Analytics-Auftrag**. 
 
    ![Azure-Portal-Pfad zum Abrufen eines neuen Stream Analytics-Auftrags](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
    
@@ -160,7 +160,7 @@ Der Auftrag ruft seine Eingabe aus der CSV-Datei ab, die Sie zuvor in den Blobsp
 
     ![Einstellungen für die neue Auftragseingabe](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Create**.
 
 ### <a name="configure-the-job-output"></a>Konfigurieren der Auftragsausgabe
 Der Auftrag sendet die Ergebnisse an denselben Blobspeicher, aus dem er die Eingaben abruft. 
@@ -179,7 +179,7 @@ Der Auftrag sendet die Ergebnisse an denselben Blobspeicher, aus dem er die Eing
 
    ![Einstellungen für die neue Auftragsausgabe](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
 
-4. Klicken Sie auf **Erstellen**.   
+4. Klicken Sie auf **Create**.   
 
 
 ### <a name="add-the-machine-learning-function"></a>Hinzufügen der Machine Learning-Funktion 
@@ -204,7 +204,7 @@ In diesem Abschnitt des Tutorials definieren Sie eine Funktion im Stream Analysi
   
     ![Einstellungen für das Hinzufügen einer Machine Learning-Funktion zum Stream Analytics-Auftrag](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
     
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 
 ### <a name="create-a-query-to-transform-the-data"></a>Erstellen einer Abfrage zum Transformieren der Daten
 

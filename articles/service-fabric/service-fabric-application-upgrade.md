@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5fed3b5b127a2b398b99ab2b46c762920e9dc249
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 765931d8a888432e0cc77ff86d597b6e2a029a2a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-Anwendungsupgrade
 Eine Azure Service Fabric Anwendung ist eine Sammlung von Diensten. Während eines Upgrades vergleicht Service Fabric das neue [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) mit der vorherigen Version und ermittelt, welche Dienste in der Anwendung aktualisiert werden müssen. Service Fabric vergleicht die Versionsnummern in den Dienstmanifesten mit den Versionsnummern in der vorherigen Version. Wenn sich ein Dienst nicht geändert hat, wird er nicht aktualisiert.
@@ -47,16 +47,16 @@ Der Modus, den wir für Upgrades von Anwendungen empfehlen, ist der überwachte 
 Der nicht überwachte manuelle Modus benötigt nach jedem Upgrade in einer Updatedomäne einen manuellen Eingriff, um das Upgrade für die nächste Updatedomäne zu starten. Es werden keine Service Fabric-Integritätsprüfungen ausgeführt. Der Administrator überprüft den Zustand oder Status vor dem Upgrade in der nächsten Updatedomäne.
 
 ## <a name="upgrade-default-services"></a>Durchführen eines Upgrades von Standarddiensten
-Standarddienste in der Service Fabric-Anwendung können während des Upgradevorgangs einer Anwendung aktualisiert werden. Standarddienste werden im [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) definiert. Für das Aktualisieren von Standarddiensten gelten folgende Standardregeln:
+Einige im [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) definierte Standarddienstparameter können auch als Teil eines Anwendungsupgrades aktualisiert werden. Es können nur die Dienstparameter, die über [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) geändert werden können, als Teil eines Upgrades geändert werden. Das Ändern von Standarddiensten während des Anwendungsupgrades gestaltet sich wie folgt:
 
-1. Standarddienste im neuen [Anwendungsmanifest](service-fabric-application-and-service-manifests.md), die im Cluster nicht vorhanden sind, werden erstellt.
+1. Standarddienste im neuen Anwendungsmanifest, die im Cluster nicht bereits vorhanden sind, werden erstellt.
+2. Standarddienste, die im vorherigen und im neuen Anwendungsmanifest vorhanden sind, werden aktualisiert. Die Parameter des vorhandenen Diensts werden durch die Parameter des Standarddiensts im neuen Anwendungsmanifest überschrieben. Das Anwendungsupgrade wird bei einem Fehler beim Aktualisieren des Standarddiensts automatisch zurückgesetzt.
+3. Die im neuen Anwendungsmanifest nicht vorhandenen Standarddienste werden gelöscht, wenn sie im Cluster vorhanden sind. **Beachten Sie, dass das Löschen eines Standarddiensts dazu führt, dass alle Status des Diensts gelöscht werden und dass der Löschvorgang nicht rückgängig gemacht werden kann.**
+
+Wenn ein Anwendungsupgrade zurückgesetzt wird, werden die Standarddienstparameter auf ihre alten Werte vor dem Start des Upgrades zurückgesetzt. Gelöschte Dienste können jedoch nicht mit ihrem alten Status neu erstellt werden.
+
 > [!TIP]
-> [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) muss auf TRUE festgelegt werden, um die folgenden Regeln zu aktivieren. Dieses Feature wird ab Version 5.5 unterstützt.
-
-2. Standarddienste, die sowohl im vorherigen [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) als auch in der neuen Version vorhanden sind, werden aktualisiert. Die im Cluster bereits vorhandenen Dienstbeschreibungen werden durch die der neuen Version überschrieben. Das Anwendungsupgrade führt bei einem Fehler beim Aktualisieren des Standarddiensts automatisch einen Rollback durch.
-3. Standarddienste, die im vorherigen [Anwendungsmanifest](service-fabric-application-and-service-manifests.md), aber nicht in der neuen Version enthalten sind, werden gelöscht. **Beachten Sie, dass dieses Löschen von Standarddiensten nicht rückgängig gemacht werden kann.**
-
-Falls für ein Anwendungsupgrade ein Rollback ausgeführt wird, werden Standarddienste auf den Status vor Beginn des Upgrades zurückgesetzt. Gelöschte Dienste können jedoch nicht erstellt werden.
+> Die Clusterkonfigurationseinstellung [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) muss auf *true* festgelegt werden, damit die Regeln 2) und 3) oben (Aktualisieren und Löschen von Standarddiensten) gelten. Dieses Feature wird ab Service Fabric Version 5.5 unterstützt.
 
 ## <a name="application-upgrade-flowchart"></a>Flussdiagramm eines Anwendungsupgrades
 Das Flussdiagramm unter diesem Absatz kann Ihnen dabei helfen, den Upgradevorgang einer Service Fabric-Anwendung zu verstehen. Im Speziellen ist hier schematisch dargestellt, wie die Timeouts, z.B. *HealthCheckStableDuration*, *HealthCheckRetryTimeout* und *UpgradeHealthCheckInterval*, beim Steuern helfen, wenn das Upgrade in einer Updatedomäne als erfolgreich oder fehlgeschlagen gilt.

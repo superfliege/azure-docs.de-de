@@ -9,16 +9,17 @@ editor:
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: ac4e3b36b08223f7e3b54850ed53a8185e85f0d2
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 0004db332ec13e23ed49f2c19e3454a516ca6a40
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard
 Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Während der Free-Tarif nur eingeschränkte Sicherheit für Ihre Azure-Ressourcen bietet, erweitert der Standard-Tarif diese Funktionen auf lokale Umgebungen und andere Clouds. Security Center Standard hilft Ihnen, Sicherheitsrisiken zu finden und zu beseitigen, Zugriffs- und Anwendungssteuerungen anzuwenden, um böswillige Aktivitäten zu blockieren, Bedrohungen mithilfe von Analysen und intelligenter Funktionen zu erkennen und bei Angriffen schnell zu reagieren. Sie können Security Center Standard die ersten 60 Tage kostenlos testen.
@@ -77,7 +78,7 @@ So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent
 2. Wählen Sie das Abonnement aus.
 3. Klicken Sie unter **Sicherheitsrichtlinie** auf **Datensammlung**.
 4. Klicken Sie unter **Datensammlung** auf **Ein**, um die automatische Bereitstellung zu aktivieren.
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
   ![Aktivieren der automatischen Bereitstellung][6]
 
@@ -92,14 +93,14 @@ Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser
 2. Wählen Sie das Abonnement oder die Richtlinie aus, für das bzw. die Sie zu „Free“ zurückwechseln möchten. Der Bereich **Sicherheitsrichtlinie** wird geöffnet.
 3. Wählen Sie unter **RICHTLINIENKOMPONENTEN** die Option **Tarif**.
 4. Wählen Sie **Free**, um für das Abonnement vom Tarif „Standard“ zu „Free“ zu wechseln.
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
 Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
 
 1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Sicherheitsrichtlinie**.
 2. Wählen Sie das Abonnement aus, für das Sie die automatische Bereitstellung deaktivieren möchten.
-3. Wählen Sie unter **Sicherheitsrichtlinie – Datensammlung** unter **Onboarding** die Option **Aus**, um die automatische Bereitstellung zu deaktivieren.
-4. Wählen Sie **Speichern** aus.
+3. Wählen Sie im Bereich **Sicherheitsrichtlinie – Datensammlung** unter **Onboarding** die Option **Aus**, um die automatische Bereitstellung zu deaktivieren.
+4. Wählen Sie **Speichern**aus.
 
 >[!NOTE]
 > Wenn Sie die automatische Bereitstellung deaktivieren, wird Microsoft Monitoring Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.

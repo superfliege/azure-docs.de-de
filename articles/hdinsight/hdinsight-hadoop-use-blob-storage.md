@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 0c1b192dc8481448252b6bc2e3801d6a6f3daa0d
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 7e60e33330357d08d69e3372fd3eea1aadb4a141
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Verwenden von Azure Storage mit Azure HDInsight-Clustern
 
@@ -39,9 +39,9 @@ Azure Storage stellt eine robuste, universelle Speicherlösung dar, die probleml
 > | Speicherkontotyp | Speicherebene | Für HDInsight unterstützt |
 > | ------- | ------- | ------- |
 > | Allgemeines Speicherkonto | Standard | __Ja__ |
-> | &nbsp; | Premium | Nein |
-> | Blob Storage-Konto | Heiß | Nein |
-> | &nbsp; | Kalt | Nein |
+> | &nbsp; | Premium | Nein  |
+> | Blob Storage-Konto | Heiß | Nein  |
+> | &nbsp; | Kalt | Nein  |
 
 Die Verwendung des Standard-Blobcontainers zum Speichern von Geschäftsdaten wird nicht empfohlen. Stattdessen empfiehlt es sich, den Standard-Blobcontainer nach jeder Verwendung zu löschen, um die Speicherkosten zu verringern. Beachten Sie, dass der Standardcontainer Anwendungs- und Systemprotokolle enthält. Stellen Sie sicher, dass Sie die Protokolle abrufen, bevor Sie den Container löschen.
 
@@ -302,7 +302,7 @@ Beim Erstellen eines HDInsight-Clusters geben Sie das Azure Storage-Konto an, de
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde beschrieben, wie Sie HDFS-kompatiblen Azure Storage mit HDInsight verwenden. Dadurch können Sie skalierbare Datenerfassungslösungen mit langfristiger Archivierung aufbauen und HDInsight verwenden, um die Informationen innerhalb der gespeicherten strukturierten und unstrukturierten Daten zu entsperren.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter 
 
 * [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
 * [Erste Schritte mit Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)

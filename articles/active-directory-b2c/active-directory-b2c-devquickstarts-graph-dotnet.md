@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: 33df6c4255d4ca672e65237c8be45b3f0bc7864e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: dd84a8da348d0d534ba19a3d61970ec0d8c66cc8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -45,7 +45,7 @@ Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung übe
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie Ihren Azure AD B2C-Mandanten aus, indem Sie in der rechten oberen Ecke der Seite Ihr Konto auswählen.
-3. Wählen Sie im linken Navigationsbereich **Weitere Dienste**, und klicken Sie auf **App-Registrierungen** und auf **Hinzufügen**.
+3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, und klicken Sie auf **App-Registrierungen** und dann auf **Hinzufügen**.
 4. Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. 
     1. Wählen Sie **Web-App/API** als Anwendungstyp aus.    
     2. Geben Sie **einen beliebigen Umleitungs-URI** (z.B. https://B2CGraphAPI) an, da dieser für dieses Beispiel nicht relevant ist.  

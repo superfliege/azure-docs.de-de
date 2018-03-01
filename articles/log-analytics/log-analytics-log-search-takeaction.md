@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: b3c3b036a8294e17aec103ba470402c1f8f707d8
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: c59a32e1b2d460e04c4c6f5d1be2dd655abbef27
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Führen Sie die Aktion mit einem Automation-Runbook über ein Log Analytics-Protokollsuchergebnis aus
 
@@ -32,17 +32,18 @@ Sie können in einem Protokollsuchergebnis in Azure Log Analytics nun **Take act
 
 Zum Ausführen einer Aktion zu einem Ereignis und Initiieren eines Runbooks über die Protokollsuchergebnisse erstellen Sie zuerst eine Protokollsuche. Über die Ergebnisse können Sie bei Bedarf ein Runbook aufrufen.  Dieser Schritt kann über die Protokollsuchfunktion im [Azure-Portal](../log-analytics/log-analytics-log-search-new.md) ausgeführt werden.  In diesem Beispiel führen Sie eine Protokollsuche über das Azure-Portal mit einer einfachen Demonstration dieser Funktion aus.
 
-1. Klicken Sie im Azure-Portal im Hub-Menü auf **Weitere Dienste**, und wählen Sie **Log Analytics** aus.  
-2. Wählen Sie auf dem Blatt „Log Analytics“ Ihren Log Analytics-Arbeitsbereich und auf dem Arbeitsbereichsblatt **Protokollsuche** aus.  
-3. Führen Sie auf dem Blatt „Protokollsuche“ eine Protokollsuche aus.  
-4. Klicken Sie in den Protokollsuchergebnissen auf die Auslassungszeichen auf der linken Seite eines der Felder, und wählen Sie **Take action on** (Aktion ausführen für) aus.<br><br> ![Ausführen von Aktionen aus Suchergebnissen](./media/log-analytics-log-search-takeaction/log-search-takeaction-menuoption.png) 
-5. Wählen Sie auf dem Blatt „Take action“ (Aktion ausführen) **Runbook ausführen** aus. Auf dem Blatt **Runbook ausführen** können Sie ein Runbook auswählen, das ausgeführt werden soll.  Sie können jedes Runbook im Automation-Konto auswählen, das mit dem Log Analytics-Arbeitsbereich verknüpft ist.  Beachten Sie Folgendes:
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie **Log Analytics** aus.  
+2. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus.
+3. Wählen Sie im Arbeitsbereich **Protokollsuche** aus.  
+4. Führen Sie auf der Seite „Protokollsuche“ eine Protokollsuche durch.  
+5. Klicken Sie in den Protokollsuchergebnissen auf die Auslassungszeichen auf der linken Seite eines der Felder, und wählen Sie **Take action on** (Aktion ausführen für) aus.<br><br> ![Ausführen von Aktionen aus Suchergebnissen](./media/log-analytics-log-search-takeaction/log-search-takeaction-menuoption.png) 
+6. Wählen Sie **Runbook ausführen** und anschließend ein Runbook für die Ausführung aus.  Sie können jedes Runbook im Automation-Konto auswählen, das mit dem Log Analytics-Arbeitsbereich verknüpft ist.  Beachten Sie Folgendes:
 
     * Runbooks werden nach Tags organisiert
     * Die Werte der Runbook-Eingabeparameter können direkt aus den Feldern des Suchergebnisses ausgewählt werden.  Eine Dropdownliste wird angezeigt, in der alle verfügbaren Felder des Ergebnisses eingeblendet werden, in denen Sie eine Wahl treffen können.  
     * Sie können angeben, dass das Runbook auf einem [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md) ausgeführt werden soll, den Sie auf dem Computer installiert haben, auf dem das Problem auftritt. Voraussetzung ist jedoch eine entsprechende Hybrid Runbook Worker-Gruppe, die nur diesen Computer als Mitglied enthält.  Wenn der Name der Hybrid Worker-Gruppe mit dem Namen des Computers aus dem Protokollsuchergebnis übereinstimmt, wird die Gruppe automatisch ausgewählt.    
 
-6. Nachdem Sie auf **Ausführen** geklickt haben, wird das Runbookauftragsblatt geöffnet, in dem Sie den Status des Auftrags überprüfen können.   
+6. Nachdem Sie auf **Ausführen** geklickt haben, wird die Seite mit Runbookaufträgen geöffnet, auf der Sie den Status des Auftrags überprüfen können.   
 
 Wenn Sie ein Runbook auswählen, das so konfiguriert wurde, dass es [von einer Log Analytics-Warnung aufgerufen wird](../automation/automation-invoke-runbook-from-omsla-alert.md), hat es einen Eingabeparameter mit dem Namen **WebhookData**, der vom Typ **Object** ist.  Wenn der Eingabeparameter obligatorisch ist, müssen Sie die Suchergebnisse an das Runbook übergeben, damit es die JSON-formatierte Zeichenfolge in einen Objekttyp konvertieren kann, sodass Sie nach bestimmten Elementen filtern können, auf die Sie in Runbook-Aktivitäten verweisen.  Wählen Sie dazu **Suchergebnis (Objekt)** in der Dropdownliste aus.<br><br> ![Wählen Sie das Webhook-Datenobjekt für den Runbook-Parameter aus](media/log-analytics-log-search-takeaction/select-runbook-and-properties.png)   
     

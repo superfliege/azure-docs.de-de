@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 5e6910ea52f880e28378c9bf7fde02d080bc2e58
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 98dc12a857d910e8822dcfbb61209aa9ef773f47
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health-Vorgänge
 In diesem Thema werden die verschiedenen Vorgänge beschrieben, die Sie mit Azure Active Directory (Azure AD) Connect Health durchführen können.
@@ -42,6 +42,9 @@ Sie können Azure AD Connect Health so konfigurieren, dass E-Mail-Benachrichtigu
 
 ## <a name="delete-a-server-or-service-instance"></a>Löschen eines Servers oder einer Serverinstanz
 
+>[!NOTE] 
+> Um eine Löschung durchzuführen, ist eine Azure AD Premium-Lizenz erforderlich.
+
 In einigen Fällen möchten Sie unter Umständen einen Server aus der Überwachung entfernen. Hier sind die Informationen angegeben, die Sie zum Entfernen eines Servers aus dem Azure AD Connect Health-Dienst benötigen.
 
 Beim Löschen eines Servers sind folgende Punkte zu beachten:
@@ -51,7 +54,11 @@ Beim Löschen eines Servers sind folgende Punkte zu beachten:
 * Bei dieser Aktion werden die Daten, die von diesem Server bereits erfasst wurden, nicht gelöscht. Diese Daten werden in Übereinstimmung mit der Azure-Datenaufbewahrungsrichtlinie gelöscht.
 * Wenn Sie nach dem Ausführen dieser Aktion die Überwachung des gleichen Servers erneut starten möchten, müssen Sie den Health-Agent auf diesem Server deinstallieren und dann erneut installieren.
 
-### <a name="to-delete-a-server-from-the-azure-ad-connect-health-service"></a>So löschen Sie einen Server aus dem Azure AD Connect Health-Dienst
+### <a name="delete-a-server-from-the-azure-ad-connect-health-service"></a>Löschen eines Servers aus dem Azure AD Connect Health-Dienst
+
+>[!NOTE] 
+> Um eine Löschung durchzuführen, ist eine Azure AD Premium-Lizenz erforderlich.
+
 Azure AD Connect Health für Active Directory-Verbunddienste (AD FS) und Azure AD Connect (Sync):
 
 1. Öffnen Sie das Blatt **Server**, indem Sie auf dem Blatt **Serverliste** den Namen des Servers auswählen, den Sie entfernen möchten.
@@ -93,7 +100,7 @@ Azure AD Connect Health unterstützt die folgenden integrierten Rollen:
 
 | Rolle | Berechtigungen |
 | --- | --- |
-| Besitzer |Besitzer können innerhalb von Azure AD Connect Health den *Zugriff verwalten* (z.B. einem Benutzer oder einer Gruppe Rollen zuweisen), im Portal *alle Informationen anzeigen* (z.B. Warnungen) und *Einstellungen ändern* (z.B. E-Mail-Benachrichtigungen). <br>Standardmäßig wird diese Rolle globalen Azure AD-Administratoren zugewiesen und kann nicht geändert werden. |
+| Owner (Besitzer) |Besitzer können innerhalb von Azure AD Connect Health den *Zugriff verwalten* (z.B. einem Benutzer oder einer Gruppe Rollen zuweisen), im Portal *alle Informationen anzeigen* (z.B. Warnungen) und *Einstellungen ändern* (z.B. E-Mail-Benachrichtigungen). <br>Standardmäßig wird diese Rolle globalen Azure AD-Administratoren zugewiesen und kann nicht geändert werden. |
 | Mitwirkender |Beitragende können innerhalb von Azure AD Connect Health im Portal *alle Informationen anzeigen* und *Einstellungen ändern* (z.B. E-Mail-Benachrichtigungen). |
 | Leser |Leser können innerhalb von Azure AD Connect Health *alle Informationen anzeigen* (z.B. Warnungen). |
 
@@ -133,7 +140,7 @@ Jetzt haben die aufgeführten Benutzer und Gruppen gemäß ihren zugewiesenen Ro
 >
 
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Schritt 3: Freigeben des Blattspeicherorts für Benutzer oder Gruppen
-1. Nachdem Sie Berechtigungen zugewiesen haben, können Benutzer [hier](http://aka.ms/aadconnecthealth) auf Azure AD Connect Health zugreifen.
+1. Nachdem Sie Berechtigungen zugewiesen haben, können Benutzer [hier](https://aka.ms/aadconnecthealth) auf Azure AD Connect Health zugreifen.
 2. Auf dem Blatt können Benutzer das Blatt oder einzelne Teile davon im Dashboard anheften. Hierfür wird einfach das Symbol **An Dashboard anheften** verwendet.<br>
    ![Screenshot: Rollenbasierte Zugriffssteuerung von Azure AD Connect Health – Blatt zum Anheften mit Hervorhebung des entsprechenden Symbols](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 

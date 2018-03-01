@@ -4,7 +4,7 @@ description: "Eine ausführliche Anleitung zum Erstellen eines Listeners für ei
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/01/2017
+ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 09fed7e785708d4afe64905de973becc188181d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0399f9ef969098216e080140a67f81725b670115
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurieren eines Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, auf denen Azure Resource Manager ausgeführt wird. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
 
 Für diese Aufgabe benötigen Sie eine SQL Server-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern mit Resource Manager bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) können Sie die Verfügbarkeitsgruppe in Resource Manager automatisch erstellen. Diese Vorlage nimmt Ihnen die Erstellung eines internen Load Balancers ab. 
 
-Alternativ können Sie aber auch eine [Verfügbarkeitsgruppe manuell konfigurieren](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
+Alternativ können Sie aber auch eine [Verfügbarkeitsgruppe manuell konfigurieren](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 Dieser Artikel setzt voraus, dass Ihre Verfügbarkeitsgruppen bereits konfiguriert sind.  
 
 Verwandte Themen:
 
-* [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf einem virtuellen Azure-Computer (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)   
+* [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf einem virtuellen Azure-Computer (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
 * [Konfigurieren einer VNet-zu-VNet-Verbindung mit Azure Resource Manager und PowerShell](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 Im Rahmen dieses Artikels erstellen und konfigurieren Sie mithilfe des Azure-Portals einen Load Balancer. Nach Abschluss des Verfahrens konfigurieren Sie den Cluster so, dass er die IP-Adresse aus dem Load Balancer für den Verfügbarkeitsgruppenlistener verwendet.
@@ -72,9 +72,9 @@ Erstellen Sie zuerst den Load Balancer.
    | **Private IP-Adresse** |Geben Sie eine verfügbare IP-Adresse aus dem Subnetz an. Verwenden Sie diese IP-Adresse beim Erstellen eines Listeners im Cluster. Die Adresse wird später in einem PowerShell-Skript für die Variable `$ILBIP` verwendet. |
    | **Abonnement** |Dieses Feld wird unter Umständen angezeigt, wenn Sie über mehrere Abonnements verfügen. Wählen Sie das Abonnement aus, mit dem diese Ressource verknüpft werden soll. Hierbei handelt es sich üblicherweise um das gleiche Abonnement wie bei allen Ressourcen für die Verfügbarkeitsgruppe. |
    | **Ressourcengruppe** |Wählen Sie die Ressourcengruppe aus, in der sich die SQL Server-Instanzen befinden. |
-   | **Standort** |Wählen Sie die Azure-Region aus, in der sich die SQL Server-Instanzen befinden. |
+   | **Location** |Wählen Sie die Azure-Region aus, in der sich die SQL Server-Instanzen befinden. |
 
-6. Klicken Sie auf **Erstellen**. 
+6. Klicken Sie auf **Create**. 
 
 Azure erstellt den Load Balancer. Der Load Balancer gehört zu einem bestimmten Netzwerk, Subnetz, einer bestimmten Ressourcengruppe und einem bestimmten Standort. Überprüfen Sie nach Abschluss des Vorgangs die Einstellungen für den Load Balancer in Azure. 
 
@@ -177,7 +177,7 @@ Wenn die Clusterressourcen und Abhängigkeiten ordnungsgemäß konfiguriert sind
 
 1. Starten Sie SQL Server Management Studio, und stellen Sie dann eine Verbindung mit dem primären Replikat her.
 
-2. Navigieren Sie zu **Hohe Verfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppenlistener**.  
+2. Navigieren Sie zu **Hochverfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppenlistener**.  
     Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. 
 
 3. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie dann auf **Eigenschaften**.
@@ -269,6 +269,34 @@ Nachdem Sie eine IP-Adresse für den Listener hinzugefügt haben, konfigurieren 
 6. [Legen Sie die Clusterparameter in PowerShell fest](#setparam).
 
 Konfigurieren Sie nach der Konfiguration der Verfügbarkeitsgruppe für die Verwendung der neuen IP-Adresse die Verbindung für den Listener. 
+
+## <a name="add-load-balancing-rule-for-distributed-availability-group"></a>Hinzufügen einer Lastenausgleichsregel für eine verteilte Verfügbarkeitsgruppe
+
+Wenn eine Verfügbarkeitsgruppe an einer verteilten Verfügbarkeitsgruppe beteiligt ist, benötigt der Lastenausgleich eine zusätzliche Regel. In dieser Regel wird der vom Listener der verteilten Verfügbarkeitsgruppe verwendete Port gespeichert.
+
+>[!IMPORTANT]
+>Dieser Schritt ist nur erforderlich, wenn die Verfügbarkeitsgruppe an einer [verteilten Verfügbarkeitsgruppe](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups) beteiligt ist. 
+
+1. Erstellen Sie auf jedem Server, der an der verteilten Verfügbarkeitsgruppe beteiligt ist, eine eingehende Regel für den Listener-TCP-Port der verteilten Verfügbarkeitsgruppe. In vielen Beispielen in der Dokumentation wird 5022 verwendet. 
+
+1. Klicken Sie im Azure-Portal auf den Lastenausgleich, klicken Sie auf **Lastenausgleichsregeln**, und klicken Sie dann auf **+ Hinzufügen**. 
+
+1. Erstellen Sie die Lastenausgleichsregel mit den folgenden Einstellungen:
+
+   |Einstellung |Wert
+   |:-----|:----
+   |**Name** |Name zum Identifizieren der Lastenausgleichsregel für die verteilte Verfügbarkeitsgruppe 
+   |**Frontend IP address** (Front-End-IP-Adresse) |Verwenden Sie dieselbe Front-End-IP-Adresse wie die Verfügbarkeitsgruppe.
+   |**Protokoll** |TCP
+   |**Port** |5022 – der Port für den [Endpunktlistener der verteilten Verfügbarkeitsgruppe](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Es kann sich um einen beliebigen verfügbaren Port handeln.  
+   |**Back-End-Port** | 5022 – verwenden Sie denselben Wert wie bei **Port**.
+   |**Back-End-Pool** |Der Pool, der die virtuellen Computer mit den SQL Server-Instanzen enthält. 
+   |**Integritätstest** |Wählen Sie den Test aus, den Sie erstellt haben.
+   |**Sitzungspersistenz** |Keine
+   |**Leerlaufzeitüberschreitung (Minuten)** |Standard (4)
+   |**Floating IP (Direct Server Return)** | Aktiviert
+
+Wiederholen Sie diese Schritte für den Lastenausgleich in den anderen Verfügbarkeitsgruppen, die Teil der verteilten Verfügbarkeitsgruppe sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

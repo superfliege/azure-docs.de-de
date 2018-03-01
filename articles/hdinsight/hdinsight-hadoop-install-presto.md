@@ -12,13 +12,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: af6bf1d69761520d20d0a0c5d872377793f6650b
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 1e6f1e1ee37592d974cab01ca229995c4ff6b70e
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Presto in HDInsight Hadoop-Clustern
 
@@ -28,7 +28,8 @@ In diesem Thema erfahren Sie, wie Sie Presto mithilfe von Skriptaktionen in HDIn
 > Die Schritte in diesem Dokument erfordern einen **HDInsight 3.5 Hadoop-Cluster** mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [HDInsight-Versionen](hdinsight-component-versioning.md).
 
 ## <a name="what-is-presto"></a>Was ist Presto?
-[Presto](https://prestodb.io/overview.html) ist ein schnelles, verteiltes SQL-Abfragemodul für Big Data. Presto eignet sich für interaktive Abfragen von mehreren Petabyte an Daten. Weitere Informationen zu den Komponenten von Presto und zu ihrer Zusammenarbeit finden Sie unter [Presto-Konzepte](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst).
+
+            [Presto](https://prestodb.io/overview.html) ist eine schnelle, verteilte SQL-Abfrage-Engine für Big Data. Presto eignet sich für interaktive Abfragen von mehreren Petabyte an Daten. Weitere Informationen zu den Komponenten von Presto und zu ihrer Zusammenarbeit finden Sie unter [Presto-Konzepte](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst).
 
 > [!WARNING]
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.

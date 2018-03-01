@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 82b9c861fee820cdb0ca1891e0e62436f422d838
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 98784783beccc19df916920fc41364a23e6bae11
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>Erstellen eines Auftrags zur Verarbeitung von Datenanalysen für Stream Analytics
 Die Ressource der obersten Ebene in Azure Stream Analytics ist ein Stream Analytics-Auftrag.  Er besteht aus einer oder mehreren Eingabedatenquellen, einer Abfrage zum Ausdrücken der Datentransformation und mindestens einem Ausgabeziel, in das Ergebnisse geschrieben werden. Dadurch kann der Benutzer die Verarbeitung von Datenanalysen für Streamingdatenszenarien durchführen.
 
 Erstellen Sie zuerst einen neuen Stream Analytics-Auftrag, um mit der Verwendung von Stream Analytics zu beginnen.  Beachten Sie, dass diese Aktion keine Auswirkungen auf die Abrechnung hat, bis der Auftrag gestartet wird.
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
-2. Wählen Sie **Neu** > **Daten + Analysen** > **Stream Analytics-Auftrag** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Wählen Sie **Ressource erstellen** > **Daten + Analysen** > **Stream Analytics-Auftrag** aus.
 3. Klicken Sie auf **Erstellen**.
    
 3. Geben Sie die gewünschte Konfiguration für den Stream Analytics-Auftrag an.

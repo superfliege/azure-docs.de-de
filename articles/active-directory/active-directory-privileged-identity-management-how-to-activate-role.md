@@ -1,5 +1,5 @@
 ---
-title: Aktivieren oder Deaktivieren einer Rolle | Microsoft Docs
+title: Aktivieren oder Deaktivieren einer Rolle | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie mit der Anwendung Azure Privileged Identity Management Rollen für privilegierte Identitäten aktivieren."
 services: active-directory
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 8bd8a72653699df4f4953053d61c16e30a2a101d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a524e1f9d739b42cd63de82291d98ff8c59f2f5f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management
 Azure Active Directory (AD) Privileged Identity Management (PIM) vereinfacht die Art und Weise, in der Unternehmen den privilegierten Zugriff auf Ressourcen in Azure AD und anderen Onlinediensten von Microsoft wie Office 365 oder Microsoft Intune verwalten.  
@@ -31,9 +31,9 @@ Dieser Artikel richtet sich an Administratoren, die ihre Rolle in Azure AD Privi
 ## <a name="add-the-privileged-identity-management-application"></a>Hinzufügen der Anwendung Privileged Identity Management
 Verwenden Sie die Anwendung Azure AD Privileged Identity Management im [Azure-Portal](https://portal.azure.com/) , um eine Rollenaktivierung anzufordern, auch wenn Sie in einem anderen Portal oder in PowerShell arbeiten werden. Wenn sich die Anwendung Azure AD Privileged Identity Management nicht in Ihrem Azure-Portal befindet, führen Sie die folgenden Schritte aus, um zu beginnen.
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie in der oberen rechten Ecke des Azure-Portals Ihren Benutzernamen, und wählen Sie das Verzeichnis aus, in dem Sie arbeiten möchten.
-3. Wählen Sie **Weitere Dienste** aus, und verwenden Sie das Textfeld „Filter“, um nach **Azure AD Privileged Identity Management** zu suchen.
+3. Wählen Sie **Alle Dienste** aus, und verwenden Sie das Textfeld „Filter“, um nach **Azure AD Privileged Identity Management** zu suchen.
 4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
 
 ## <a name="activate-a-role"></a>Aktivieren einer Rolle

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: tamram
-ms.openlocfilehash: 26d4adf4f74f9aacc4cf8cf24be293ebdb4d63c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 054e9686a1acae09f4dd3b7d841d82eae1fc88a9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Authentifizieren von Batch Management-Lösungen mit Active Directory
 
@@ -49,7 +49,7 @@ Als Nächstes müssen Sie den Zugriff auf Ihre Anwendung an die Azure Resource M
 
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 
-1. Wählen Sie im linken Navigationsbereich des Azure-Portals die Option **Weitere Dienste**, und klicken Sie auf **App-Registrierungen** und auf **Hinzufügen**.
+1. Wählen Sie im linken Navigationsbereich des Azure-Portals **Alle Dienste** aus, klicken Sie auf **App-Registrierungen** und dann auf **Hinzufügen**.
 2. Suchen Sie in der Liste mit den App-Registrierungen nach dem Namen Ihrer Anwendung:
 
     ![Suchen nach Ihrem Anwendungsnamen](./media/batch-aad-auth-management/search-app-registration.png)

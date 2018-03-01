@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2017
+ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 815d2f289e18a97eff0a05ad1d7dfe4cad1fdfc5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 843582a980280a14f033c6d27965867c063039e2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -34,6 +34,73 @@ Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisi
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Download | [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="117490"></a>1.1.749.0
+Status: für ausgewählte Kunden veröffentlicht
+
+>[!NOTE]
+>Wenn das Upgrade auf diese neue Version abgeschlossen ist, wird automatisch ein vollständiger Synchronisierungs- und Importvorgang für den Azure AD-Connector und ein vollständiger Synchronisierungsvorgang für den AD-Connector ausgelöst. Da dies je nach Größe Ihrer Azure AD Connect-Umgebung einen längeren Zeitraum in Anspruch nehmen kann, stellen Sie sicher, dass Sie die notwendigen Schritte unternommen haben, um diesen Vorgang zu unterstützen. Nehmen Sie das Upgrade andernfalls zu einem passenderen Zeitpunkt vor.
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+#### <a name="fixed-issues"></a>Behobene Probleme
+* Es wurde ein Problem mit dem Zeitfenster für Hintergrundaufgaben auf der Seite „Partitionsfilterung“ behoben, das beim Wechsel auf die nächste Seite entstand.
+* Es wurde ein Problem mit dem Zeitfenster für Hintergrundaufgaben auf der Seite „Partitionsfilterung“ behoben, das beim Wechsel auf die nächste Seite entstand.
+
+* Es wurde ein Problem behoben, das während einer benutzerdefinierten ConfigDB-Aktion zu einer Zugriffsverletzung führte.
+
+* Es wurde ein Problem mit der Wiederherstellung nach einem SQL-Verbindungstimeout behoben.
+
+* Es wurde ein Problem behoben, bei dem Zertifikate mit SAN-Platzhaltern eine Voraussetzungsprüfung nicht bestanden.
+
+* Es wurde ein Problem behoben, das zu einem Absturz von „miiserver.exe“ während eines Azure AD-Connectorexports führte.
+
+* Es wurde ein Problem mit ungültigen Kennworteingabeversuchen behoben, die beim Ausführen des Azure AD Connect-Assistenten zum Ändern der Konfiguration auf dem Domänencontroller protokolliert wurden.
+
+
+#### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+
+* Es wurden Datenschutzeinstellungen für die Datenschutz-Grundverordnung (DSGVO) hinzugefügt.  Im Rahmen der DSGVO sind wir verpflichtet, die Arten von Kundendaten anzugeben, die an Microsoft weitergegeben werden (Daten zu Telemetrie, Integrität usw.), Links zur detaillierten Onlinedokumentation bereitzustellen und unseren Kunden die Möglichkeit zu bieten, ihre Voreinstellungen zu ändern.  Es werden folgende neue Funktionen bereitgestellt:
+
+
+    - Benachrichtigung zu Datenweitergabe und Datenschutz – bei Neuinstallationen auf der Seite mit den Lizenzbedingungen.
+    - Benachrichtigung zu Datenweitergabe und Datenschutz auf der Upgradeseite.
+    - Eine neue Aufgabe „Datenschutzeinstellungen“, in der Benutzer ihre Einstellungen ändern können.
+
+* Anwendungstelemetrie: Administratoren können diese Datenklasse nach Bedarf aktivieren/deaktivieren
+
+* Azure AD Health-Daten: Administratoren müssen das Health-Portal öffnen, um die zugehörigen Einstellungen zu konfigurieren.
+   Sobald die Dienstrichtlinie geändert wurde, wird sie von den Agents gelesen und erzwungen.
+
+* Zusätzliche Aktionen zum Konfigurieren des Geräterückschreibens und eine Statusanzeige für die Seiteninitialisierung.
+
+* Verbesserte allgemeine Diagnose mit HTML-Berichten und vollständiger Datenerfassung in einem ZIP-Text- bzw. HTML-Bericht.
+
+* Die Zuverlässigkeit des automatischen Upgrades wurde verbessert, und es wurden zusätzliche Telemetriedaten hinzugefügt, um sicherzustellen, dass die Integrität des Servers ermittelt werden kann.
+
+* Eingeschränkte Berechtigungen für privilegierte Konten im AD Connector-Konto.
+
+  * Bei Neuinstallationen schränkt der Assistent die Berechtigungen ein, über die privilegierte Konten im MSOL-Konto verfügen, nachdem das MSOL-Konto erstellt wurde.
+
+Die Änderungen gelten für Folgendes:
+1. Express-Installationen
+2. Benutzerdefinierte Installationen mit Konto für die automatische Erstellung
+
+* Das Installationsprogramm wurde geändert, sodass bei einer Neuinstallation von Azure AD Connect keine SA-Berechtigung mehr erforderlich ist.
+
+* Ein neues Hilfsprogramm wurde hinzugefügt, um Synchronisierungsprobleme für ein bestimmtes Objekt zu beheben. Es steht in den zusätzlichen Problembehebungsaufgaben des Azure AD Connect-Assistenten unter der Option zum Beheben von Problemen bei der Objektsynchronisierung zur Verfügung. Zurzeit überprüft das Hilfsprogramm Folgendes:
+
+  * Diskrepanz beim UserPrincipalName zwischen dem synchronisierten Benutzerobjekt und dem Benutzerkonto im Azure AD-Mandanten.
+  * Ausschluss des Objekts von der Synchronisierung aufgrund der Domänenfilterung.
+  * Ausschluss des Objekts von der Synchronisierung aufgrund der Filterung nach Organisationseinheit.
+
+* Ein neues Hilfsprogramm wurde hinzugefügt, um den aktuellen Kennworthash zu synchronisieren, der im lokalen Active Directory-Verzeichnis für ein bestimmtes Benutzerkonto gespeichert ist.
+
+Das Hilfsprogramm erfordert keine Kennwortänderung. Es steht in den zusätzlichen Problembehebungsaufgaben des Azure AD Connect-Assistenten unter der Option zum Beheben von Problemen bei der Kennworthashsynchronisierung zur Verfügung.
+
+
+
+
+
 
 ## <a name="116540"></a>1.1.654.0
 Status: 12. Dezember 2017

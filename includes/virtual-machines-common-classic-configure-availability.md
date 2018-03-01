@@ -21,9 +21,7 @@ Dafür können Sie entweder das Azure-Portal oder die Azure PowerShell-Befehle v
 So verwenden Sie das Azure-Portal:
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com)an, falls Sie dies noch nicht getan haben.
-2. Klicken Sie im Hub-Menü auf **+ Neu** und anschließend auf **Virtueller Computer**.
-   
-    ![Alternativer Bildtext](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
+2. Klicken Sie auf **Ressource erstellen** > **Compute**.
 3. Wählen Sie das zu verwendende Marketplace-VM-Image aus. Sie können auswählen, ob Sie einen virtuellen Linux- oder einen virtuellen Windows-Computer erstellen.
 4. Stellen Sie für den ausgewählten virtuellen Computer sicher, dass als Bereitstellungsmodell **Klassisch** festgelegt ist, und klicken Sie dann auf **Erstellen**.
    
@@ -42,7 +40,7 @@ Beachten Sie die Informationen unter [Erstellen von virtuellen Windows-Computern
 Im Azure-Portal können Sie einer vorhandenen Verfügbarkeitsgruppe vorhandene klassische virtuelle Computer hinzufügen oder eine neue Verfügbarkeitsgruppe für Computer erstellen. (Beachten Sie, dass die virtuellen Computer in derselben Verfügbarkeitsgruppe zum selben Clouddienst gehören müssen.) Die Schritte sind beinah identisch. Mit Azure PowerShell können Sie einer vorhandenen Verfügbarkeitsgruppe den virtuellen Computer hinzufügen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an, falls Sie dies noch nicht getan haben.
-2. Klicken Sie im Hub-Menü auf **Virtuelle Computer (klassisch)**.
+2. Klicken Sie im linken Menü auf **Virtuelle Computer (klassisch)**.
    
     ![Alternativer Bildtext](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
 3. Klicken Sie in der Liste der virtuellen Computer auf die Namen der virtuellen Computer, die Sie der Gruppe hinzufügen möchten.

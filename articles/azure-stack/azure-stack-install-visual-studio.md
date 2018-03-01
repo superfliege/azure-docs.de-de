@@ -3,8 +3,8 @@ title: Installieren von Visual Studio und Herstellen einer Verbindung mit Azure 
 description: Erfahren Sie, welche Schritte zum Installieren von Visual Studio und zum Herstellen einer Verbindung mit Azure Stack erforderlich sind.
 services: azure-stack
 documentationcenter: 
-author: heathl17
-manager: byronr
+author: jeffgilb
+manager: femila
 editor: 
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
 ms.service: azure-stack
@@ -12,17 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 5487125095f05b2fbfa9489c5b4733f61c0212d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/21/2018
+ms.author: jeffgilb
+ms.reviewer: unknown
+ms.openlocfilehash: e73aba26a2409c710d962b9df45f6601b0e05340
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Installieren von Visual Studio und Herstellen einer Verbindung mit Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Verwenden Sie Visual Studio zum Erstellen und Bereitstellen von Azure Resource Manager-[Vorlagen](user/azure-stack-arm-templates.md) in Azure Stack. Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Visual Studio entweder über das [Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) oder über einen Windows-basierten externen Client (wenn Sie über [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) verbunden sind) zu installieren. Mit diesen Schritten führen Sie eine neue Installation von Visual Studio 2015 Community Edition durch. Lesen Sie mehr über die [Koexistenz](https://msdn.microsoft.com/library/ms246609.aspx) zwischen anderen Versionen von Visual Studio.
 

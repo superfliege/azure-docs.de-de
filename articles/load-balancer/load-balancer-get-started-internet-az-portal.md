@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/20/2017
 ms.author: kumud
-ms.openlocfilehash: e28983f6015f8dcaa546c20fd9bc8d986a15ab5d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9b4275497798db5310f2a28aeb6c582b1a7429c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Erstellen eines öffentlichen Load Balancer Standard mit zonenredundantem öffentlichen IP-Adressen-Front-End mithilfe des Azure-Portals
 
@@ -44,7 +44,7 @@ Melden Sie sich unter „https://portal.azure.com“ am Azure-Portal an.
 ## <a name="create-a-zone-redundant-load-balancer"></a>Erstellen eines zonenredundanten Lastenausgleichs
 
 1. Navigieren Sie in einem Browser zum Azure-Portal [http://portal.azure.com](http://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
-2. Klicken Sie links oben auf dem Bildschirm auf **Neu** > **Netzwerk** > **Lastenausgleich**.
+2. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Lastenausgleich**.
 3. Geben Sie bei **„Create load balancer“ (Lastenausgleich erstellen) unter **Name** **myPublicLB** ein.
 4. Wählen Sie unter **Typ** die Option **Öffentlich** aus.
 5. Wählen Sie unter „SKU“ **Standard (Vorschau)** aus.

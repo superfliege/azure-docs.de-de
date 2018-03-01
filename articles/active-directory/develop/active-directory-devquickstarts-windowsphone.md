@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c078ae22255190a37d75a4100ebfffcb6288c4cb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: fc243f4ca6d323bf2b90cb9ab8fa9b77e1df9f8e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-windows-phone-getting-started"></a>Erste Schritte mit Windows Phone in Azure AD
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -55,7 +55,7 @@ Damit Ihre Anwendung Tokens abrufen kann, müssen Sie sie zunächst beim Azure A
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
-3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
+3. Klicken Sie im linken Navigationsbereich auf **Alle Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen**.
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **systemeigene Clientanwendung**.
   * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.

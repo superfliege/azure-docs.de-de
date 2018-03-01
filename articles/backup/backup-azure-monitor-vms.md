@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: ebd7a886f5853ec3fa9b6e816083e9edd868ef76
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 1e9f6d44965e8a6cd9529ef860f0fb57fd8e572d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Überwachen von Warnungen für Sicherungen von virtuellen Azure-Computern
 Warnungen sind Antworten des Diensts mit dem Hinweis, dass ein Ereignisschwellenwert erreicht oder überschritten wurde. Informationen zur zeitlichen Entstehung von Problemen können sehr wichtig sein, um die Geschäftskosten gering zu halten. Auftretende Warnungen halten sich normalerweise nicht an einen Zeitplan, und daher ist es wichtig informiert zu werden, sobald die Warnungen auftreten. Beispiel: Wenn bei einem Sicherungs- oder Wiederherstellungsauftrag ein Fehler auftritt, wird innerhalb von fünf Minuten nach Auftreten des Fehlers eine Warnung gesendet. Im Dashboard des Tresors werden auf der Kachel „Sicherungswarnungen“ Ereignisse der Ebenen „Kritisch“ und „Warnung“ angezeigt. In den Einstellungen der Sicherungswarnungen können Sie alle Ereignisse anzeigen. Aber was ist zu tun, wenn eine Warnung bei der Arbeit an einem anderen Problem auftritt? Wenn Sie nicht wissen, wann die Warnung auftritt, kann dies nur ein unbedeutender Vorfall sein, oder es kann zu einer Kompromittierung von Daten kommen. Stellen Sie wie folgt sicher, dass die richtigen Personen über eine Warnung benachrichtigt werden: Konfigurieren Sie den Dienst so, dass beim Auftreten Warnungsbenachrichtigungen per E-Mail gesendet werden. Weitere Informationen zum Einrichten von E-Mail-Benachrichtigungen finden Sie unter [Konfigurieren von Benachrichtigungen](backup-azure-monitor-vms.md#configure-notifications).
@@ -70,9 +70,9 @@ So richten Sie E-Mail-Benachrichtigungen für Warnungen ein
    ### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Welche Warnungstypen sind für die Azure IaaS-VM-Sicherung verfügbar?
    | Warnstufe | Gesendete Warnungen |
    | --- | --- |
-   | Kritisch |Sicherungsfehler, Wiederherstellungsfehler |
-   | Warnung |Keine |
-   | Information |Keine |
+   | Kritisch | Für Sicherungsfehler, Wiederherstellungsfehler |
+   | Warnung | Für erfolgreiche Sicherungen mit Warnungen (z.B. einige fehlerhafte Schreibvorgänge beim Erstellen einer Momentaufnahme) |
+   | Information | Aktuell sind keine Informationsmeldungen für die Azure-VM-Sicherung verfügbar. |
 
 ### <a name="are-there-situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Gibt es Fälle, in denen keine E-Mail gesendet wird, auch wenn Benachrichtigungen konfiguriert wurden?
 Es gibt Situationen, in denen keine Warnung gesendet wird, obwohl die Benachrichtigungen richtig konfiguriert wurden. In den folgenden Situationen werden keine E-Mail-Benachrichtigungen gesendet, um unnötige Warnungen zu vermeiden:

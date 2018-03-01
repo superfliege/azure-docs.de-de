@@ -8,7 +8,7 @@ Mit diesen Schritten können Sie viele Zuordnungsfehler virtueller Computer behe
 * Ändern Sie die Größe des virtuellen Computers.<br>
     Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > Ihr virtueller Computer > **Einstellungen** > **Größe**. Ausführliche Schritte finden Sie unter [Ändern der Größe des virtuellen Computers](https://msdn.microsoft.com/library/dn168976.aspx).
 * Löschen Sie alle virtuellen Computer aus dem Clouddienst, und erstellen Sie die virtuellen Computer neu.<br>
-    Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > Ihr virtueller Computer > **Löschen**. Klicken Sie dann auf **Neu** > **Compute** > [Image des virtuellen Computers].
+    Klicken Sie auf **Alle durchsuchen** > **Virtuelle Computer (klassisch)** > Ihr virtueller Computer > **Löschen**. Klicken Sie auf **Ressource erstellen** > **Compute** > [VM-Image].
 
 ### <a name="troubleshoot-common-allocation-failures-in-the-azure-resource-manager-deployment-model"></a>Problembehandlung bei häufigen Zuordnungsfehler im Azure-Ressourcen-Manager-Bereitstellungsmodell
 Mit diesen Schritten können Sie viele Zuordnungsfehler virtueller Computer beheben:

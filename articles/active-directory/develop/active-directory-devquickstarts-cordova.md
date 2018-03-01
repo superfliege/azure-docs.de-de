@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: vittorib
 ms.custom: aaddev
-ms.openlocfilehash: b489add83a462d1d3902831d63be0b70e2443718
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: d6f1d545265f0965a03afb23e5791cdd5e5e379c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-cordova-getting-started"></a>Azure AD Cordova – Erste Schritte
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -88,7 +88,7 @@ Azure AD stellt Token nur für bekannte Anwendungen aus. Bevor Sie Azure AD übe
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnis** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
-3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
+3. Klicken Sie im linken Bereich auf **Alle Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Folgen Sie den Aufforderungen, und erstellen Sie eine **systemeigene Clientanwendung**. (Cordova-Apps sind zwar HTML-basiert, wir erstellen hier aber trotzdem eine systemeigene Clientanwendung. Bei Verwendung einer anderen Option als **Systemeigene Clientanwendung** funktioniert die Anwendung nicht.)
   * **Name**: Beschreibt die Anwendung für Benutzer.

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: c051fec3369ef0d309ecf6c68b17272bb396eeec
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e4c875d07905b56c0d3eb346c839f7a4917531de
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -48,8 +48,8 @@ Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 * **Ubuntu 16.04**: 4.11.0-1013 oder eine höhere Kernelversion
 * **SLES SP3**: 4.4.92-6.18 oder eine höhere Kernelversion
-* **RHEL**: 7.4.2017120423 oder eine höhere Kernelversion
-* **CentOS**: 7.4.20171206 oder eine höhere Kernelversion
+* **RHEL 7.4:** 7.4.2017120423 oder eine höhere Kernelversion
+* **CentOS 7.4:** 7.4.20171206 oder eine höhere Kernelversion
 
 ## <a name="supported-vm-instances"></a>Unterstützte VM-Instanzen
 Der beschleunigte Netzwerkbetrieb wird für die meisten Größen universeller, computeoptimierter Instanzen mit mindestens 4 vCPUs unterstützt. Bei Instanzen wie D/DSv3 oder E/ESv3, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 8 vCPUs unterstützt.  Zu den unterstützten Reihen zählen D/DSv2, D/DSv3, E/ESv3, F/Fs/Fsv2 und Ms/Mms. 

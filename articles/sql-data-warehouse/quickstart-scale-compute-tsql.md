@@ -14,15 +14,15 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 01/31/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 9d6ecd53fc034fd7014b17c98f1c5a99088723fe
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f984f9b348f589e20cb8a4b68578ddef84d8292d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Schnellstart: Skalieren von Computeressourcen in Azure SQL Data Warehouse mithilfe von T-SQL
 
-Skalieren Sie Computeressourcen in Azure SQL Data Warehouse mithilfe von T-SQL und SQL Server Management Studio (SSMS). Skalieren Sie Computeressourcen hoch, um eine bessere Leistung zu erzielen, oder skalieren Sie sie herunter, um Kosten einzusparen. 
+Skalieren Sie Computeressourcen in Azure SQL Data Warehouse mithilfe von T-SQL und SQL Server Management Studio (SSMS). [Skalieren Sie Computeressourcen zentral hoch](sql-data-warehouse-manage-compute-overview.md), um eine bessere Leistung zu erzielen, oder skalieren Sie sie zentral herunter, um Kosten einzusparen. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -66,7 +66,7 @@ Die Einstellung des Dienstziels enthält die Anzahl der Data Warehouse-Einheiten
 So zeigen Sie die aktuellen Data Warehouse-Einheiten für Ihr Data Warehouse an
 
 1. Erweitern Sie unterhalb der Verbindung mit **mynewserver 20171113.database.windows.net** den Knoten **Systemdatenbanken**.
-2. Klicken Sie mit der rechten Maustaste auf **Master** und dann auf **Neue Abfrage**. Ein neues Abfragefenster wird geöffnet.
+2. Klicken Sie mit der rechten Maustaste auf **master** und dann auf **Neue Abfrage**. Ein neues Abfragefenster wird geöffnet.
 3. Führen Sie die folgende Abfrage aus, um eine Auswahl aus der dynamischen Verwaltungssicht „sys.database_service_objectives“ zu treffen. 
 
     ```sql

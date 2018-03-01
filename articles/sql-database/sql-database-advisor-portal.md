@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 2b725c60dbcb9737b00ffd5fb43273b26dda1ea8
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: fe76be59d6ee09049ed8c1343d1a91e42646c262
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 
@@ -32,7 +32,7 @@ Zum Anzeigen und Anwenden von Empfehlungen zur Leistung benötigen Sie die richt
 Verwenden Sie die folgenden Schritte, um Empfehlungen zur Leistung im Azure-Portal zu suchen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **Weitere Dienste** > **SQL-Datenbanken**, und klicken Sie auf Ihre Datenbank.
+2. Wechseln Sie zu **Alle Dienste** > **SQL-Datenbanken**, und wählen Sie Ihre Datenbank aus.
 3. Navigieren Sie zu **Empfehlungen zur Leistung**, um die verfügbaren Empfehlungen für die ausgewählte Datenbank anzuzeigen.
 
 Empfehlungen zur Leistung werden in einer Tabelle angezeigt, ähnlich wie in folgender Abbildung dargestellt:
@@ -101,7 +101,7 @@ Sie können den Azure SQL-Datenbank so konfigurieren, dass Empfehlungen automati
 
 1. Klicken Sie auf der Seite **Empfehlungen** auf **Automatisieren**:
    
-    ![Ratgebereinstellungen](./media/sql-database-advisor-portal/settings.png)
+    ![Advisor-Einstellungen](./media/sql-database-advisor-portal/settings.png)
 2. Zu automatisierende Aktionen auswählen:
    
     ![Empfohlene Indizes](./media/sql-database-advisor-portal/automation.png)

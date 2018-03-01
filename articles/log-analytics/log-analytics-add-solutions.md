@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68bf84d0f848b60885d3976d3991b606e77ed074
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: f6ec6dd46d28518baf6f105dd232a4b0e77a8c6f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich
 
@@ -46,8 +46,7 @@ Sie können Verwaltungslösungen aus Azure Marketplace installieren, indem Sie u
 
 ## <a name="add-a-management-solution"></a>Hinzufügen einer Verwaltungslösung
 1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com) an, sofern Sie noch nicht angemeldet sind.
-2. Wählen Sie unter **Marketplace** auf dem Blatt **Neu** die Option **Überwachung und Verwaltung**.
-3. Klicken Sie auf dem Blatt **Überwachung und Verwaltung** auf **See all** (Alle anzeigen).  
+2. Klicken Sie auf **Ressource erstellen** > **Überwachung + Verwaltung** > **Alle anzeigen**.  
     ![Blatt „Überwachung und Verwaltung“](./media/log-analytics-add-solutions/monitoring-management-blade.png)  
 4. Klicken Sie rechts neben **Verwaltungslösungen** auf **More** (Mehr).
 5. Wählen Sie auf dem Blatt **Verwaltungslösungen** eine Verwaltungslösung aus, die Sie einem Arbeitsbereich hinzufügen möchten.  

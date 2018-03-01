@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
-ms.openlocfilehash: e74a3e918a7c7426c743447e23ede9938ce3f63e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a865290602f64335e8b7cbfadf00d83234ae812d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Hochladen eines Zertifikats für die Azure-Dienstverwaltung
 Verwaltungszertifikate ermöglichen Ihnen die Authentifizierung mit dem von Azure bereitgestellten klassischen Bereitstellungsmodell. Diese Zertifikate werden in vielen Programmen und Tools (z.B. Visual Studio oder Azure SDK) zum Automatisieren der Konfiguration und Bereitstellung verschiedener Azure-Dienste verwendet. 
@@ -38,7 +38,7 @@ Sie können auch [Azure Active Directory](https://azure.microsoft.com/en-us/serv
 Sobald Sie ein Verwaltungszertifikat erstellt haben (CER-Datei nur mit dem öffentlichen Schlüssel), können Sie es in das Portal hochladen. Wenn das Zertifikat im Portal verfügbar ist, kann jeder Benutzer mit einem entsprechenden Zertifikat (privater Schlüssel) über die Verwaltungs-API eine Verbindung herstellen und auf die Ressourcen für das zugehörige Abonnement zugreifen.
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
-2. Klicken Sie unten in der Azure-Dienstliste auf **Weitere Dienste**, und wählen Sie dann in der Dienstgruppe _Allgemein_ die Option **Abonnements** aus.
+2. Klicken Sie unten in der Azure-Dienstliste auf **Alle Dienste**, und wählen Sie dann in der Dienstgruppe _Allgemein_ die Option **Abonnements** aus.
 
     ![Abonnementmenü](./media/azure-api-management-certs/subscriptions_menu.png)
 

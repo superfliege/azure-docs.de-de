@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: b76f6f7f53bc649fbc740a79e182f81f3fd983c7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Einrichten von Tomcat7 auf einem virtuellen Linux-Computer mit Microsoft Azure
 Apache Tomcat (oder einfach Tomcat, früher auch Jakarta Tomcat) ist ein Open-Source-Webserver und Servlet-Container und wurde von der Apache Software Foundation (ASF) entwickelt. Tomcat implementiert das Java-Servlet und die Java Server Pages-Spezifikationen (JSP) von Sun Microsystems. Tomcat bietet eine reine Java-HTTP-Webserverumgebung, in der Java-Code ausgeführt wird. In der einfachsten Konfiguration wird Tomcat in einem einzelnen Betriebssystem-Prozess ausgeführt. Dieser Prozess führt eine Java Virtual Machine (JVM) aus. Jede HTTP-Anforderung von einem Browser an Tomcat wird als separater Thread im Tomcat-Prozess verarbeitet.  
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um den SSH-Authentifizierungsschlüssel 
 6. Klicken Sie auf **Save private key** (Privaten Schlüssel speichern), und speichern Sie den Schlüssel dann in einer Datei namens „privateKey.ppk“.
 
 ### <a name="step-2-create-the-image-in-the-azure-portal"></a>Schritt 2: Erstellen des Images im Azure-Portal
-1. Klicken Sie im [Portal](https://portal.azure.com/) auf der Taskleiste auf **Neu**, um ein Image zu erstellen. Wählen Sie dann das Linux-Image aus, das auf Ihren Anforderungen basiert. Dieses Beispiel verwendet das Ubuntu 14.04-Image.
+1. Klicken Sie im [Portal](https://portal.azure.com/) auf der Taskleiste auf **Ressource erstellen**, um ein Image zu erstellen. Wählen Sie dann das Linux-Image basierend auf Ihren Anforderungen aus. Dieses Beispiel verwendet das Ubuntu 14.04-Image.
 ![Screenshot des Portals mit der Schaltfläche „Neu“][3]
 
 2. Geben Sie unter **Hostname** den Namen der URL ein, die Sie und Internetclients für den Zugriff auf diesen virtuellen Computer verwenden. Legen Sie den letzten Teil des DNS-Namens fest, z.B. als „tomcatdemo“. Azure generiert dann diese URL: tomcatdemo.cloudapp.net.  
@@ -221,7 +221,7 @@ Sie können die Tomcat-Benutzerkonfigurationsdatei bearbeiten, um die Administra
 
     sudo vi  /etc/tomcat7/tomcat-users.xml   
 
-Beispiel:  
+Beispiel:   
 ![Screenshot der Ausgabe des Befehls „sudo vi“][17]  
 
 > [!NOTE]
@@ -246,7 +246,7 @@ Nachdem die Verbindung hergestellt wurde, müsste in etwa Folgendes angezeigt we
 
      Überprüfen Sie die Endpunkteinstellungen des öffentlichen und des privaten Ports, und stellen Sie sicher, dass der private Port mit dem Tomcat-Überwachungsport identisch ist. Anweisungen zum Konfigurieren von Endpunkten für den virtuellen Computer finden Sie unter „Phase1: Erstellen eines Images“ in diesem Artikel.  
 
-     Öffnen Sie zur Bestimmung des Tomcat-Überwachungsports „/etc/httpd/conf/httpd.conf“ (Red Hat-Version) oder „/etc/tomcat7/server.xml“ (Debian-Version). Standardmäßig ist der Tomcat-Überwachungsport 8080. Beispiel:  
+     Öffnen Sie zur Bestimmung des Tomcat-Überwachungsports „/etc/httpd/conf/httpd.conf“ (Red Hat-Version) oder „/etc/tomcat7/server.xml“ (Debian-Version). Standardmäßig ist der Tomcat-Überwachungsport 8080. Beispiel:   
 
         <Connector port="8080" protocol="HTTP/1.1"  connectionTimeout="20000"   URIEncoding="UTF-8"            redirectPort="8443" />  
 
@@ -303,7 +303,7 @@ Dies wurde unter CentOS 6.3 getestet.
 
   Verwenden Sie die Option "-R", um die Berechtigungen auch auf alle Dateien in einem Verzeichnis anzuwenden.  
 
-  Dieser Befehl funktioniert auch für Verzeichnisse. Die Option „-R“ ändert die Berechtigungen für alle Dateien und Verzeichnisse innerhalb des Verzeichnisses. Beispiel:  
+  Dieser Befehl funktioniert auch für Verzeichnisse. Die Option „-R“ ändert die Berechtigungen für alle Dateien und Verzeichnisse innerhalb des Verzeichnisses. Beispiel:   
 
      sudo chown -R username:group directory  
 

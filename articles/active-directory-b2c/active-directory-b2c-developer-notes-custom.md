@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/13/2017
 ms.author: joroja
-ms.openlocfilehash: 064ccec58406e08ae68320b59fcf2a96952a41ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f65ad324e1bf0887ea293254621466a2f1ddaff
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Versionshinweise für benutzerdefinierte Azure Active Directory B2C-Richtlinien – Öffentliche Vorschauversion
 Der Featuresatz für benutzerdefinierte Richtlinien ist jetzt als öffentliche Vorschauversion für alle Azure AD B2C-Kunden (Azure Active Directory B2C) zur Evaluierung verfügbar. Dieser Featuresatz ist für fortgeschrittene Identitätsentwickler bestimmt, die sehr komplexe Identitätslösungen erstellen.  
@@ -60,13 +60,13 @@ Um von der öffentlichen Vorschauversion in vollem Umfang zu profitieren, ist es
 ## <a name="features-by-stage-and-known-issues"></a>Features nach Phase und bekannte Probleme
 Funktionen für benutzerdefinierte Richtlinien und Identity Experience Framework werden laufend und schnell weiterentwickelt.  Die folgende Tabelle dient als Index für die Verfügbarkeit von Features und Komponenten.
 
-Fragen können Sie in Stack Overflow unter [aka.ms/aadb2cso](http://aka.ms/aadb2cso) stellen.
+Fragen können Sie in Stack Overflow unter [https://aka.ms/aadb2cso](https://aka.ms/aadb2cso) stellen.
 
 
 ### <a name="identity-providers-tokens-protocols"></a>Identitätsanbieter, Token, Protokolle
 Schnittstellen mit externen Komponenten und Anwendungen
 
-| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Hinweise |
+| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Notizen |
 |---------------------------------------------|-------------|---------|----|-------|
 | IDP-OpenIDConnect |  | x |  | z.B. Google+ |
 | IDP-OAUTH2 |  | x |  | z.B. Facebook  |
@@ -83,7 +83,7 @@ Schnittstellen mit externen Komponenten und Anwendungen
 ### <a name="component-support"></a>Unterstützung für Komponenten
 
 
-| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Hinweise |
+| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Notizen |
 |-------------------------------------------|-------------|---------|----|-------|
 | Azure Multi-Factor Authentication |  | x |  |  |
 | Azure Active Directory als lokales Verzeichnis |  | x |  |  |
@@ -94,7 +94,7 @@ Schnittstellen mit externen Komponenten und Anwendungen
 
 ### <a name="content-definition"></a>Inhaltsdefinition
 
-| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Hinweise |
+| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Notizen |
 |-----------------------------------------------------------------------------|-------------|---------|----|-------|
 |   Fehlerseite, api.error |  | x |  |  |
 |   IDP-Auswahlseite, api.idpselections |  | x |  |  |
@@ -109,7 +109,7 @@ Schnittstellen mit externen Komponenten und Anwendungen
 
 
 ### <a name="app-ief-integration"></a>App-IEF-Integration
-| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Hinweise |
+| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Notizen |
 |--------------------------------------------------|-------------|---------|----|-------------------------------------------------|
 | Abfragezeichenfolgen-Parameter „id_token_hint“ | x |  |  |  |
 | Abfragezeichenfolgen-Parameter „domain_hint“ |  | x |  | verfügbar als Anspruch, kann an IDP übergeben werden |
@@ -120,7 +120,7 @@ Schnittstellen mit externen Komponenten und Anwendungen
 
 ### <a name="session-management"></a>Sitzungsverwaltung
 
-| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Hinweise |
+| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Notizen |
 |---------------------------------|-------------|---------|----|-------|
 | SSO-Sitzungsanbieter |  | x |  |  |
 | Sitzungsanbieter mit externer Anmeldung |  | x |  |  |
@@ -128,14 +128,14 @@ Schnittstellen mit externen Komponenten und Anwendungen
 
 
 ### <a name="security"></a>Sicherheit
-| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Hinweise |
+| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Notizen |
 |---------------------------------------------|-------------|---------|----|-------|
 | Richtlinienschlüssel – Generieren, Manuell, Hochladen |  | x |  |  |
 | Richtlinienschlüssel – RSA/Zertifikate, Geheimnisse |  | x |  |  |
 
 
 ### <a name="developer-interface"></a>Entwicklerschnittstelle
-| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Hinweise |
+| Feature | Entwicklung | Vorschau | Allgemein verfügbar | Notizen |
 |---------------------------------------------|-------------|---------|----|-------|
 | Azure-Portal – IEF UX |  | x |  |  |
 | Application Insights, UserJourney-Protokolle  |  | x |  |  |

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.openlocfilehash: 4e43c7a7cea903a2e94e60a519f6ead1e6f932e3
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: d1e70d8f9fb929e3877c88fd4c1169a0c76ac2a6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Problembehandlung für die Log Analytics-VM-Erweiterung
 Dieser Artikel enthält Hilfe zur Problembehandlung von Fehlern, die im Zusammenhang mit der Log Analytics-VM-Erweiterung für virtuelle Windows- und Linux-Computer mit Microsoft Azure auftreten können, sowie Vorschläge für mögliche Problemlösungen.
@@ -26,7 +26,7 @@ Dieser Artikel enthält Hilfe zur Problembehandlung von Fehlern, die im Zusammen
 Um den Status der Erweiterung zu überprüfen, führen Sie im Azure-Portal die folgenden Schritte aus.
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
-2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Ressourcenliste **Virtuelle Computer** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Virtuelle Computer** aus.
+2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Ressourcenliste **Virtuelle Computer** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Virtuelle Computer** aus.
 3. Suchen Sie in der Liste der virtuellen Computer nach dem entsprechenden Computer, und wählen Sie ihn aus.
 3. Klicken Sie auf dem virtuellen Computer auf **Erweiterungen**.
 4. Überprüfen Sie in der Liste, ob die Log Analytics-Erweiterung aktiviert oder deaktiviert ist.  Bei Linux wird der Agent als **OMSAgentforLinux** und bei Windows als **MicrosoftMonitoringAgent** aufgeführt.

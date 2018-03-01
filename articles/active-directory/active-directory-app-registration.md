@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.openlocfilehash: 4f32f57d4c8b3e13d2aa31b04ee10bb46a6c71f7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8f5d4ba82fcf3c963373b0e90b707a7d86fc0fea
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>Registrieren Ihrer Anwendung bei Ihrem Azure Active Directory-Mandanten
 
 Sie können Ihre Anwendung mithilfe des Azure-Portals beim Azure Active Directory-Mandanten (Azure AD) registrieren. Dabei wird eine Anwendungs-ID für die Anwendung erstellt und für den Empfang von Token aktiviert.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie Ihren Azure AD-Mandanten aus, indem Sie in der oberen rechten Ecke der Seite Ihr Konto wählen.
-3. Wählen Sie im linken Navigationsbereich **Weitere Dienste**, und klicken Sie auf **App-Registrierungen** und auf **Hinzufügen**.
+3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, und klicken Sie auf **App-Registrierungen** und dann auf **Hinzufügen**.
 4. Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in unseren [Schnellstarts](active-directory-developers-guide.md).
   * Geben Sie für Webanwendungen die **Anmelde-URL** an. Dies ist die Basis-URL Ihrer App, unter der sich Benutzer anmelden können, z.B. `http://localhost:12345`.
 <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
@@ -38,9 +38,9 @@ Sie können Ihre Anwendung mithilfe des Azure-Portals beim Azure Active Director
 
 Mit dem Azure-Portal können Sie einfach die Einstellungen einer vorhandenen Anwendung ändern. Sie können beispielsweise eine Antwort-URL konfigurieren, unter der Azure AD Tokenantworten ausgibt. Konfigurieren Sie gegebenenfalls auch Berechtigungen für andere Anwendungen, beispielsweise um Ihrer Anwendung den Zugriff auf die Microsoft Graph-API zu ermöglichen. Alle diese Schritte können Sie über die Seite mit den Anwendungseinstellungen ausführen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie Ihren Azure AD-Mandanten aus, indem Sie in der oberen rechten Ecke der Seite Ihr Konto wählen.
-3. Wählen Sie im linken Navigationsbereich **Weitere Dienste**, klicken Sie auf **App-Registrierungen**, und wählen Sie Ihre Anwendung in der Liste aus.
+3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, klicken Sie auf **App-Registrierungen**, und wählen Sie Ihre Anwendung in der Liste aus.
 4. Klicken Sie auf **Einstellungen**, um die Seite „Einstellungen“ für die Anwendung zu öffnen.
   * Auf der Seite **Eigenschaften** können Sie die allgemeine Informationen für die Anwendung ändern. Dazu gehören Anwendungsname, Anmelde-URL und Abmelde-URL.
   * Auf der Seite **Antwort-URLs** können Sie eine Antwort-URL hinzufügen, an die Azure AD Tokenantworten sendet.
@@ -52,9 +52,9 @@ Mit dem Azure-Portal können Sie einfach die Einstellungen einer vorhandenen Anw
 
 Mithilfe des Inline-Manifest-Editors können Sie bestimmte Anwendungseigenschaften ändern, die nicht direkt im Azure-Portal verfügbar gemacht werden. Sie können ihn beispielsweise zum Ändern des App-ID-URIs der Anwendung oder zum Aktivieren des impliziten OAuth2.0-Flows anstelle des Standardflows für den Autorisierungsgewährungscode verwenden.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie Ihren Azure AD-Mandanten aus, indem Sie in der oberen rechten Ecke der Seite Ihr Konto wählen.
-3. Wählen Sie im linken Navigationsbereich **Weitere Dienste**, klicken Sie auf **App-Registrierungen**, und wählen Sie Ihre Anwendung in der Liste aus.
+3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, klicken Sie auf **App-Registrierungen**, und wählen Sie Ihre Anwendung in der Liste aus.
 4. Klicken Sie auf der Anwendungsseite auf **Manifest**, um den Inline-Manifest-Editor zu öffnen.
 5. Sie können das Manifest direkt ändern und anschließend speichern. Alternativ können Sie das Manifest herunterladen, um es in Ihrem bevorzugten Editor zu öffnen, und anschließend das aktualisierte Manifest hochladen.
 

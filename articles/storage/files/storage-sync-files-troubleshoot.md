@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 7562e43f58f303ea34a08b8b9e056a0c3d0c10d0
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 378330149aebc1936846472a522631308fe3eb80
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Problembehandlung bei der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -43,6 +43,10 @@ StorageSyncAgent.msi /l*v Installer.log
 > [!Note]  
 > Bei der Agent-Installation tritt ein Fehler auf, wenn der Computer für die Nutzung von Microsoft Update eingerichtet ist und der Windows Update-Dienst nicht ausgeführt wird.
 
+<a id="agent-installation-on-DC"></a>**Die Agent-Installation führt auf dem Active Directory-Domänencontroller zu einem Fehler**, wenn Sie versuchen, den Synchronisierungs-Agent auf einem Active Directory-Domänencontroller zu installieren, bei dem sich der Besitzer der PDC-Rolle unter Windows Server 2008 R2 oder einer älteren Version des Betriebssystems befindet.
+
+Um dieses Problem zu beheben, übertragen Sie die PDC-Rolle auf einen anderen Domänencontroller unter Windows Server 2012 R2 oder höher und installieren dann den Synchronisierungsdienst.
+
 <a id="agent-installation-websitename-failure"></a>**Fehler bei der Installation des Agents: „Storage Sync Agent Wizard ended prematurely“ (Assistent für Speichersynchronisierungs-Agent wurde vorzeitig beendet)**  
 Dieses Problem kann auftreten, wenn der Standardname der IIS-Website geändert wurde. Um dieses Problem zu umgehen, benennen Sie die IIS-Standardwebsite in „Default Web Site“ um, und versuchen Sie die Installation erneut. Dieses Problem wird in einem zukünftigen Update des Agents behoben. 
 
@@ -51,6 +55,8 @@ Wenn ein Server für einen Speichersynchronisierungsdienst nicht unter **Registr
 1. Melden Sie sich an dem Server an, den Sie registrieren möchten.
 2. Öffnen Sie den Datei-Explorer, und wechseln Sie dann zum Installationsverzeichnis des Storage-Synchronisierungs-Agents (der Standardspeicherort ist C:\Programme\Azure\StorageSyncAgent). 
 3. Führen Sie „ServerRegistration.exe“ aus, und schließen Sie den Assistenten ab, um den Server bei einem Storage-Synchronisierungsdienst zu registrieren.
+
+
 
 <a id="server-already-registered"></a>**Bei der Serverregistrierung wird während der Installation des Azure File Sync-Agents die folgende Meldung angezeigt: „Dieser Server ist bereits registriert.“** 
 
@@ -95,9 +101,7 @@ Für die Erstellung eines Cloudendpunkts muss Ihr Benutzerkonto über die folgen
 
 Die folgenden integrierten Rollen verfügen über die erforderlichen Microsoft-Autorisierungsberechtigungen:  
 * Owner (Besitzer)
-* Benutzerzugriffsadministrator
-
-So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen verfügt:  
+* Benutzerzugriffsadministrator: So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen verfügt  
 1. Wählen Sie im Azure-Portal **Ressourcengruppen** aus.
 2. Wählen Sie die Ressourcengruppe aus, in der sich das Speicherkonto befindet, und wählen Sie dann **Zugriffssteuerung (IAM)** aus.
 3. Wählen Sie die **Rolle** (z.B. Besitzer oder Mitwirkender) für Ihr Benutzerkonto aus.
@@ -105,11 +109,24 @@ So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen v
     * **Rollenzuweisung** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
     * **Rollendefinition** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
 
-<a id="server-endpoint-createjobfailed"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134375898)**                                                                                                                           
+<a id="server-endpoint-createjobfailed"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134375898)**                                                                                                                    
 Dieses Problem tritt auf, wenn sich der Serverendpunktpfad auf dem Systemvolume befindet und Cloudtiering aktiviert ist. Das Cloudtiering wird auf dem Systemvolume nicht unterstützt. Um einen Serverendpunkt auf dem Systemvolume zu erstellen, deaktivieren Sie Cloudtiering, wenn Sie den Serverendpunkt erstellen.
 
 <a id="server-endpoint-deletejobexpired"></a>**Fehler beim Löschen des Serverendpunkts: „MgmtServerJobExpired“**                
 Dieses Problem tritt auf, wenn der Server offline ist oder keine Netzwerkkonnektivität hat. Ist der Server nicht mehr verfügbar, heben Sie die Registrierung des Servers im Portal auf, wodurch die Serverendpunkte gelöscht werden. Um die Serverendpunkte zu löschen, führen Sie die Schritte aus, die unter [Aufheben der Registrierung eines Servers mit Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service) beschrieben sind.
+
+<a id="server-endpoint-provisioningfailed"></a>**Die Seite „Eigenschaften des Serverendpunkts“ kann nicht geöffnet werden, oder die Cloudtiering-Richtlinie kann nicht aktualisiert werden.**
+
+Dieses Problem kann auftreten, wenn bei einem Verwaltungsvorgang auf dem Serverendpunkt ein Fehler auftritt. Wenn die Seite „Eigenschaften des Serverendpunkts“ nicht im Azure-Portal geöffnet wird, kann ein Aktualisieren des Serverendpunkts mithilfe von PowerShell-Befehlen auf dem Server dieses Problem beheben. 
+
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+# Get the server endpoint id based on the server endpoint DisplayName property
+Get-AzureRmStorageSyncServerEndpoint -SubscriptionId mysubguid -ResourceGroupName myrgname -StorageSyncServiceName storagesvcname -SyncGroupName mysyncgroup
+
+# Update the free space percent policy for the server endpoint
+Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -VolumeFreeSpacePercent 60
+```
 
 ## <a name="sync"></a>Synchronisierung
 <a id="afs-change-detection"></a>**Wie lange dauert es, bis eine Datei auf Servern in der Synchronisierungsgruppe synchronisiert wird, wenn ich die Datei direkt auf meiner Azure-Dateifreigabe mithilfe von SMB oder über das Portal erstellt habe?**  

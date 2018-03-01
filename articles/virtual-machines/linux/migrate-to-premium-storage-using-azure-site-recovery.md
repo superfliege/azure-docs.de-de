@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 5912a395798f2a37ed939b771698282ae594ce8e
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 5d6eb958169b7bf04e206c861250ffd98670652b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrieren zu Storage Premium mithilfe von Azure Site Recovery
 
@@ -80,7 +80,7 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 ### <a name="step-1-create-a-recovery-services-vault"></a>Schritt 1: Erstellen eines Recovery Services-Tresors
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Wählen Sie **Neu** > **Verwaltung** > **Backup** und anschließend **Site Recovery (OMS)** aus. Alternativ können Sie auch **Durchsuchen** > **Recovery Services-Tresor** > **Hinzufügen** auswählen. 
+2. Wählen Sie **Ressource erstellen** > **Verwaltung** > **Backup** und **Site Recovery (OMS)** aus. Alternativ können Sie auch **Durchsuchen** > **Recovery Services-Tresor** > **Hinzufügen** auswählen. 
 3. Geben Sie eine Region für die Replikation virtueller Computer an. Wählen Sie für eine Migration in derselben Region die Region aus, in der sich Ihre Quell-VMs und Quellspeicherkonten befinden. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Schritt 2: Auswählen der Schutzziele 

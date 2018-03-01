@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Analysis Services-Servers in Azure | Microsoft Docs
+title: Erstellen eines Analysis Services-Servers in Azure | Microsoft-Dokumentation
 description: Informationen zum Erstellen einer Analysis Services-Serverinstanz in Azure.
 services: analysis-services
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 10f34fe17c6b8faad3bcb7bcffe9d9c3c0d8b10a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 54b9c9df1c368575c271a44e4738a2fc25ac4798
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Erstellen eines Azure Analysis Services-Servers im Azure-Portal
 In diesem Artikel werden die Schritte zum Erstellen einer Analysis Services-Serverressource in Ihrem Azure-Abonnement beschrieben.
@@ -37,7 +37,7 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 > 
 
 ## <a name="to-create-a-server-in-azure-portal"></a>Erstellen eines Servers im Azure-Portal
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
 2. Klicken Sie auf **+ Neu** > **Daten + Analyse** > **Analysis Services**.
 3. Füllen Sie auf dem Blatt **Analysis Services** die erforderlichen Felder aus, und klicken Sie dann auf **Erstellen**.
    
@@ -48,9 +48,9 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
    * **Ressourcengruppe:** Diese Container sind auf das Verwalten einer Azure-Ressourcensammlung ausgelegt. Weitere Informationen finden Sie unter [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md).
    * **Standort:** An diesem Standort des Azure-Rechenzentrums wird der Server gehostet. Wählen Sie einen Standort in der Nähe Ihrer größten Benutzerbasis aus.
    * **Tarif:** Wählen Sie einen Tarif aus. Tabellenmodelle von bis zu 400 GB werden unterstützt. Weitere Informationen finden Sie unter [Azure Analysis Services – Preise](https://azure.microsoft.com/pricing/details/analysis-services/).
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Create**.
 
-Die Erstellung dauert in der Regel weniger als eine Minute, meist nur wenige Sekunden. Wenn Sie **Add to Portal** (Zu Portal hinzufügen) ausgewählt haben, navigieren Sie zu Ihrem Portal, um den neuen Server anzuzeigen. Oder navigieren Sie zu **Weitere Dienste** > **Analysis Services**, um zu überprüfen, ob der Server bereit ist.
+Die Erstellung dauert in der Regel weniger als eine Minute, meist nur wenige Sekunden. Wenn Sie **Add to Portal** (Zu Portal hinzufügen) ausgewählt haben, navigieren Sie zu Ihrem Portal, um den neuen Server anzuzeigen. Oder navigieren Sie zu **Alle Dienste** > **Analysis Services**, um zu überprüfen, ob der Server bereit ist.
 
  ![Dashboard](./media/analysis-services-create-server/aas-create-server-dashboard.png)
 

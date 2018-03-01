@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2b9ad6da3963fefc5441581d113f6f690bd72be0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d46b869815fef44a8137bb5121133a1c0140ca30
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="working-with-management-solutions-in-azure-preview"></a>Arbeiten mit Verwaltungslösungen in Azure (Vorschau)
 > [!NOTE]
@@ -36,7 +36,7 @@ Es gibt mehrere Methoden zum Suchen und Installieren von Verwaltungslösungen, w
 Von Microsoft und vertrauenswürdigen Partnern bereitgestellte Verwaltungslösungen können aus dem Azure Marketplace in das Azure-Portal installiert werden.
 
 1. Melden Sie sich beim Azure-Portal an.
-2. Wählen Sie im linken Bereich **Weitere Dienste** aus.
+2. Wählen Sie im linken Bereich **Alle Dienste** aus.
 3. Scrollen Sie entweder hinunter zu **Lösungen**, oder tippen Sie *Lösungen* in das Dialogfeld **Filter** ein.
 4. Klicken Sie auf die Schaltfläche **+ Hinzufügen**.
 5. Suchen Sie nach für Sie interessanten Lösungen, indem Sie entweder zu dieser navigieren, auf die Schaltfläche **Filter** klicken, oder etwas in das Feld **Alles durchsuchen** eingeben.
@@ -92,7 +92,7 @@ Sie können die Verknüpfung zwischen einem Log Analytics-Arbeitsbereich und ein
 Verwenden Sie das folgende Verfahren zum Anzeigen der Verwaltungslösungen in den Arbeitsbereichen, die mit Ihrem Azure-Abonnement verknüpft sind.
 
 1. Melden Sie sich beim Azure-Portal an.
-2. Wählen Sie im linken Bereich **Weitere Dienste** aus.
+2. Wählen Sie im linken Bereich **Alle Dienste** aus.
 3. Scrollen Sie entweder hinunter zu **Lösungen**, oder tippen Sie *Lösungen* in das Dialogfeld **Filter** ein.
 4. Es werden Lösungen aufgelistet, die in all Ihren Arbeitsbereichen installiert sind.
 

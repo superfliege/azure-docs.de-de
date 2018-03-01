@@ -1,5 +1,5 @@
 ---
-title: Laden von mehreren Terabyte Daten in SQL Data Warehouse | Microsoft Docs
+title: Laden von mehreren Terabyte Daten in SQL Data Warehouse | Microsoft-Dokumentation
 description: Veranschaulicht, wie 1 TB Daten in weniger als 15 Minuten mithilfe von Azure Data Factory in SQL Data Warehouse geladen werden kann
 services: data-factory
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3350645d4f173a6d0d007ff9095bb3115600a13b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1b931de564417ab98207321d7798613b187e411f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
@@ -114,8 +114,8 @@ Nachdem die vorbereitenden Schritte abgeschlossen sind, kann jetzt die Kopierakt
 
 ## <a name="launch-copy-wizard"></a>Starten des Kopier-Assistenten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie oben links auf **+ NEU**, und klicken Sie auf **Intelligence + Analytics** (Intelligence und Analyse) und dann auf **Data Factory**.
-3. Gehen Sie auf dem Blatt **Neue Data Factory** wie folgt vor:
+2. Klicken Sie links oben auf **Ressource erstellen** und anschließend auf **Intelligence + Analyse** und **Data Factory**.
+3. Gehen Sie im Bereich **Neue Data Factory** wie folgt vor:
 
    1. Geben Sie **LoadIntoSQLDWDataFactory** als **Name** ein.
        Der Name der Azure Data Factory muss global eindeutig sein. Ändern Sie bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar** den Namen der Data Factory (z.B.in „yournameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  

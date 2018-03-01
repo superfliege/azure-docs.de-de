@@ -1,10 +1,10 @@
 ---
-title: "Einrichten von hoher Verfügbarkeit für virtuelle Computer im Azure Resource Manager-Modus | Microsoft-Dokumentation"
+title: "Einrichten von Hochverfügbarkeit für virtuelle Computer im Azure Resource Manager-Modus | Microsoft-Dokumentation"
 description: "In diesem Tutorial erfahren Sie, wie Sie eine AlwaysOn-Verfügbarkeitsgruppe mit virtuellen Computern im Azure Resource Manager-Modus erstellen."
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a612ffd5a68e34cb0a367a6a883495ef26aeb4bc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatisches Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe in Azure Virtual Machines: Resource Manager
 
@@ -63,8 +63,8 @@ In diesem Tutorial verwenden Sie das Azure-Portal zu folgenden Zwecken:
 Azure bietet ein Katalogimage für die gesamte Lösung. Gehen Sie wie folgt vor, um die Vorlage zu suchen:
 
 1. Melden Sie sich mit Ihrem Konto beim Azure-Portal an.
-2. Klicken Sie im Azure-Portal auf **+Neu**, um das Blatt **Neu** zu öffnen.
-3. Suchen Sie auf dem Blatt **Neu** die Option **AlwaysOn**.
+2. Klicken Sie im Azure-Portal auf **Ressource erstellen**, um den Bereich **Neu** zu öffnen.
+3. Suchen Sie im Bereich **Neu** nach **Always On**.
    ![Suchen der AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 4. Suchen Sie in den Suchergebnissen nach **SQL Server AlwaysOn-Cluster**.
    ![AlwaysOn-Vorlage](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)

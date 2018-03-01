@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 880be5f27ca4198004511e01e63cdb3d72f107d5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1dc727f46785d2896544d8ef9098259f9ab994d1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
 
@@ -35,7 +35,7 @@ Um Ihr Problem zu beheben, beginnen Sie mit [Allgemeine zu berücksichtigende Pr
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Allgemeine zu berücksichtigende Problembereiche beim Anwendungszugriff
 
-Im Folgenden finden Sie eine Liste der allgemeinen Problembereiche, mit denen Sie fortfahren können, wenn Sie eine Vorstellung haben, wo Sie anfangen sollten. Es wird jedoch empfohlen, für einen schnellen Einstieg die [Exemplarische Vorgehensweise: Schritte zur Behandlung von Problemen beim Zugriff auf Microsoft-Anwendungen](#walkthrough-steps-to-troubleshoot-microsoft-application-access) zu lesen.
+Im Folgenden finden Sie eine Liste der allgemeinen Problembereiche, die Sie untersuchen können, wenn Sie eine Vorstellung haben, wo Sie anfangen sollten. Es wird jedoch empfohlen, für einen schnellen Einstieg die [Exemplarische Vorgehensweise: Schritte zur Behandlung von Problemen beim Zugriff auf Microsoft-Anwendungen](#walkthrough-steps-to-troubleshoot-microsoft-application-access) zu lesen.
 
 -   [Probleme mit dem Konto des Benutzers](#problems-with-the-users-account)
 
@@ -89,7 +89,7 @@ Im Folgenden werden einige allgemeine Probleme beschrieben, die auftreten könne
 
 ## <a name="problems-with-the-users-account"></a>Probleme mit dem Konto des Benutzers
 
-Der Anwendungszugriff kann aufgrund eines Problems mit einem Benutzer blockiert werden, die der Anwendung zugewiesen ist. Im Folgenden finden Sie einige Möglichkeiten, Probleme mit Benutzerkonten und Kontoeinstellungen zu beheben:
+Der Anwendungszugriff kann aufgrund eines Problems mit einem Benutzer blockiert werden, die der Anwendung zugewiesen ist. Nachfolgend finden Sie einige Möglichkeiten zum Lösen von Problemen mit Benutzerkonten und Kontoeinstellungen:
 
 -   [Überprüfen, ob ein Benutzerkonto in Azure Active Directory vorhanden ist](#check-if-a-user-account-exists-in-azure-active-directory)
 
@@ -113,9 +113,9 @@ Der Anwendungszugriff kann aufgrund eines Problems mit einem Benutzer blockiert 
 
 Um zu überprüfen, ob das Konto eines Benutzers vorhanden ist, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -131,9 +131,9 @@ Um zu überprüfen, ob das Konto eines Benutzers vorhanden ist, führen Sie die 
 
 Um den Status eines Benutzerkontos zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -141,7 +141,7 @@ Um den Status eines Benutzerkontos zu überprüfen, führen Sie die folgenden Sc
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Profil**.
 
@@ -151,9 +151,9 @@ Um den Status eines Benutzerkontos zu überprüfen, führen Sie die folgenden Sc
 
 Um das Kennwort eines Benutzers zurückzusetzen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -161,11 +161,11 @@ Um das Kennwort eines Benutzers zurückzusetzen, führen Sie die folgenden Schri
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
-7.  Klicken Sie oben auf dem Blatt des Benutzers auf die Schaltfläche **Kennwort zurücksetzen**.
+7.  Klicken Sie oben im Benutzerbereich auf die Schaltfläche **Kennwort zurücksetzen**.
 
-8.  Klicken Sie auf dem Blatt **Kennwort zurücksetzen**, das geöffnet wird, auf die Schaltfläche **Kennwort zurücksetzen**.
+8.  Klicken Sie im jetzt angezeigten Bereich **Kennwort zurücksetzen** auf die Schaltfläche **Kennwort zurücksetzen**.
 
 9.  Kopieren Sie das **temporäre Kennwort**, oder **geben Sie ein neues Kennwort ein**.
 
@@ -183,9 +183,9 @@ Um die Self-Service-Kennwortzurücksetzung zu aktivieren, führen Sie die folgen
 
 Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -193,9 +193,9 @@ Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führ
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  Klicken Sie oben auf dem Blatt auf die Schaltfläche **Multi-Factor Authentication**.
+6.  Klicken Sie oben im Bereich auf die Schaltfläche **Multi-Factor Authentication**.
 
-7.  Wenn das **Multi-Factor Authentication-Verwaltungsportal** geöffnet ist, stellen Sie sicher, dass Sie sich auf der Registerkarte **Benutzer** befinden.
+7.  Nachdem das **Multi-Factor Authentication-Verwaltungsportal** geladen wurde, stellen Sie sicher, dass Sie sich auf der Registerkarte **Benutzer** befinden.
 
 8.  Suchen Sie den Benutzer, indem Sie die Liste der Benutzer durchsuchen, filtern oder sortieren.
 
@@ -205,11 +205,11 @@ Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führ
 
 ### <a name="check-a-users-authentication-contact-info"></a>Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers
 
-Um die Kontaktinformationen eines Benutzers zu überprüfen, die für Multi-Factor Authentication, bedingten Zugriff, Identity Protection und Kennwortzurücksetzung verwendet werden, führen Sie die folgenden Schritte aus:
+Um die Kontaktinformationen zur Authentifizierung des Benutzers zu überprüfen, die für Multi-Factor Authentication, bedingten Zugriff, Identity Protection und Kennwortzurücksetzung verwendet werden, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -217,7 +217,7 @@ Um die Kontaktinformationen eines Benutzers zu überprüfen, die für Multi-Fact
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Profil**.
 
@@ -229,9 +229,9 @@ Um die Kontaktinformationen eines Benutzers zu überprüfen, die für Multi-Fact
 
 Um die Gruppenmitgliedschaften eines Benutzers zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -239,17 +239,17 @@ Um die Gruppenmitgliedschaften eines Benutzers zu überprüfen, führen Sie die 
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Gruppen**, um zu ermitteln, in welchen Gruppen der Benutzer Mitglied ist.
 
 ### <a name="check-a-users-assigned-licenses"></a>Überprüfen der zugewiesenen Lizenzen eines Benutzers
 
-Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die einem Benutzer zugewiesen sind:
+Um die einem Benutzer zugewiesenen Lizenzen zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -257,7 +257,7 @@ Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die ein
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen dem Benutzer derzeit zugewiesen sind.
 
@@ -265,9 +265,9 @@ Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die ein
 
 Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -275,7 +275,7 @@ Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen dem Benutzer derzeit zugewiesen sind.
 
@@ -289,7 +289,7 @@ Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus
 
 ## <a name="problems-with-groups"></a>Probleme mit Gruppen
 
-Der Anwendungszugriff kann aufgrund eines Problems mit einer Gruppe blockiert werden, die der Anwendung zugewiesen ist. Im Folgenden finden Sie einige Möglichkeiten, Probleme mit Gruppen und Gruppenmitgliedschaften zu beheben:
+Der Anwendungszugriff kann aufgrund eines Problems mit einer Gruppe blockiert werden, die der Anwendung zugewiesen ist. Nachfolgend finden Sie einige Möglichkeiten zum Lösen von Problemen mit Gruppen und Gruppenmitgliedschaften:
 
 -   [Überprüfen der Mitgliedschaft einer Gruppe](#check-a-groups-membership)
 
@@ -303,11 +303,11 @@ Der Anwendungszugriff kann aufgrund eines Problems mit einer Gruppe blockiert we
 
 ### <a name="check-a-groups-membership"></a>Überprüfen der Mitgliedschaft einer Gruppe
 
-Führen Sie die folgenden Schritte aus, um die Mitgliedschaft einer Gruppe zu überprüfen:
+Um die Mitgliedschaften einer Gruppe zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -321,11 +321,11 @@ Führen Sie die folgenden Schritte aus, um die Mitgliedschaft einer Gruppe zu ü
 
 ### <a name="check-a-dynamic-groups-membership-criteria"></a>Überprüfen der Mitgliedschaftskriterien einer dynamischen Gruppe 
 
-Führen Sie die folgenden Schritte aus, um die Mitgliedschaftskriterien einer dynamischen Gruppe zu überprüfen:
+Um die Mitgliedschaftskriterien einer dynamischen Gruppe zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -341,11 +341,11 @@ Führen Sie die folgenden Schritte aus, um die Mitgliedschaftskriterien einer dy
 
 ### <a name="check-a-groups-assigned-licenses"></a>Überprüfen der zugewiesenen Lizenzen einer Gruppe
 
-Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die einer Gruppe zugewiesen sind:
+Um die einer Gruppe zugewiesenen Lizenzen zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -359,11 +359,11 @@ Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die ein
 
 ### <a name="reprocess-a-groups-licenses"></a>Erneutes Verarbeiten der Lizenzen einer Gruppe
 
-Führen Sie die folgenden Schritte aus, um die Lizenzen, die einer Gruppe zugewiesen sind, erneut zu verarbeiten:
+Um die einer Gruppe zugewiesenen Lizenzen erneut zu verarbeiten, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -384,11 +384,11 @@ Führen Sie die folgenden Schritte aus, um die Lizenzen, die einer Gruppe zugewi
 
 ### <a name="assign-a-group-a-license"></a>Zuweisen von Lizenzen zu einer Gruppe
 
-Führen Sie die folgenden Schritte aus, um einer Gruppe eine Lizenz zuzuweisen:
+Um einer Gruppe eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -419,9 +419,9 @@ Führen Sie die folgenden Schritte aus, um einer Gruppe eine Lizenz zuzuweisen:
 
 So überprüfen oder validieren Sie eine einzelne Richtlinie für bedingten Zugriff
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -442,9 +442,9 @@ So überprüfen oder validieren Sie eine einzelne Richtlinie für bedingten Zugr
 
 So überprüfen oder validieren Sie die derzeit konfigurierte Richtlinie für bedingten Zugriff einer einzelnen Anwendung
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -474,9 +474,9 @@ So überprüfen oder validieren Sie die derzeit konfigurierte Richtlinie für be
 
 So überprüfen oder validieren Sie eine einzelne Richtlinie für bedingten Zugriff
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -490,7 +490,7 @@ So überprüfen oder validieren Sie eine einzelne Richtlinie für bedingten Zugr
 
 ## <a name="problems-with-application-consent"></a>Probleme mit der Anwendungszustimmung
 
-Der Anwendungszugriff kann blockiert werden, wenn kein ordnungsgemäßer Berechtigungszustimmungsvorgang stattgefunden hat. Im Folgenden werden einige Möglichkeiten beschrieben, wie Sie Probleme mit der Anwendungszustimmung beheben können:
+Der Anwendungszugriff kann blockiert werden, wenn kein ordnungsgemäßer Berechtigungszustimmungsvorgang stattgefunden hat. Nachfolgend finden Sie einige Möglichkeiten zum Lösen von Problemen im Zusammenhang mit Anwendungsgenehmigungen:
 
 -   [Durchführen einer Zustimmung auf Benutzerebene](#perform-a-user-level-consent-operation)
 
@@ -514,13 +514,13 @@ Der Anwendungszugriff kann blockiert werden, wenn kein ordnungsgemäßer Berecht
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Durchführen einer Zustimmung auf Administratorebene für eine Anwendung mit einem Mandanten
 
--   Für **Anwendungen mit einem Mandanten**, die Berechtigungen anfordern (z.B. Anwendungen, die Sie selbst entwickeln oder deren Besitzer in Ihrer Organisation Sie sind), können Sie eine **Zustimmung auf Administratorebene** im Namen aller Benutzer durchführen, indem Sie sich als globaler Administrator anmelden und im oberen Bereich des Blatts **Anwendungsregistrierung &gt; Alle Anwendungen &gt; App auswählen &gt; Erforderliche Berechtigungen** auf die Schaltfläche **Berechtigungen erteilen** klicken.
+-   Für **Anwendungen mit einem Mandanten**, die Berechtigungen anfordern (z.B. Anwendungen, die Sie selbst entwickeln oder deren Besitzer in Ihrer Organisation Sie sind), können Sie eine **Zustimmung auf Administratorebene** im Namen aller Benutzer durchführen, indem Sie sich als globaler Administrator anmelden und oben im Bereich **Anwendungsregistrierung &gt; Alle Anwendungen &gt; App auswählen &gt; Erforderliche Berechtigungen** auf die Schaltfläche **Berechtigungen erteilen** klicken.
 
 -   Für **Anwendungen, die mit der ersten oder zweiten Version des Anwendungsmodells entwickelt wurden**, können Sie diese Zustimmung auf Administratorebene erzwingen, indem Sie die Anweisungen im Abschnitt **Anfordern der Berechtigungen von einem Verzeichnisadministrator** von [Verwenden des Endpunkts für die Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) befolgen.
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Durchführen einer Zustimmung auf Administratorebene für eine mehrinstanzenfähige Anwendung
 
--   Für **mehrinstanzenfähige Anwendungen**, die Berechtigungen anfordern (z.B. von Drittanbietern oder von Microsoft entwickelte Anwendungen), können Sie eine **Zustimmung auf Administratorebene** durchführen. Melden Sie sich als globaler Administrator an, und klicken Sie auf die Schaltfläche **Berechtigungen erteilen** auf dem Blatt **Unternehmensanwendungen &gt; Alle Anwendungen &gt; App auswählen &gt; Berechtigungen** (demnächst verfügbar) klicken.
+-   Für **mehrinstanzenfähige Anwendungen**, die Berechtigungen anfordern (z.B. von Drittanbietern oder von Microsoft entwickelte Anwendungen), können Sie eine **Zustimmung auf Administratorebene** durchführen. Melden Sie sich als globaler Administrator an, und klicken Sie auf die Schaltfläche **Berechtigungen erteilen** im Bereich **Unternehmensanwendungen &gt; Alle Anwendungen &gt; App auswählen &gt; Berechtigungen** (demnächst verfügbar).
 
 -   Sie können Sie diese Zustimmung auf Administratorebene auch erzwingen, indem Sie die Anweisungen im Abschnitt **Anfordern der Berechtigungen von einem Verzeichnisadministrator** von [Verwenden des Endpunkts für die Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) befolgen.
 

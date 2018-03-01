@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: d264bd47d76db8015a64f09248c57c94572e2693
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 906105e737087de91e7393861e9057f8acb06aa4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals
 
@@ -31,21 +31,21 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure Resource Manager-Ber
 
 ## <a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 
-Wenn Sie einen virtuellen Computer mit mehreren IP-Adressen oder einer statischen privaten IP-Adresse erstellen möchten, müssen Sie ihn mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle erstellen. Informationen zur Vorgehensweise erhalten Sie, indem Sie am Anfang dieses Artikels auf die Option „PowerShell“ oder „CLI“ klicken. Sie können einen virtuellen Computer mit einer einzelnen dynamischen privaten IP-Adresse und (optional) einer einzelnen öffentlichen IP-Adresse über das Portal erstellen. Führen Sie dazu die Schritte in den Artikeln [Erstellen eines virtuellen Windows-Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md) bzw. [Erstellen eines virtuellen Linux-Computers](../virtual-machines/linux/quick-create-portal.md) aus. Nach der Erstellung des virtuellen Computers können Sie über das Portal den IP-Adresstyp von dynamisch in statisch ändern und weitere IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem virtuellen Computer](#add) in diesem Artikel aus.
+Wenn Sie einen virtuellen Computer mit mehreren IP-Adressen oder einer statischen privaten IP-Adresse erstellen möchten, müssen Sie ihn mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle erstellen. Informationen zur Vorgehensweise erhalten Sie, indem Sie am Anfang dieses Artikels auf eine der Optionen „PowerShell“ oder „CLI“ klicken. Sie können einen virtuellen Computer mit einem einzelnen dynamischen privaten IP-Adresse und (optional) einer einzelnen öffentlichen IP-Adresse erstellen. Verwenden Sie das Portal anhand der Schritte in einem der Artikel [Erstellen einer Windows-VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) bzw. [Erstellen einer Linux-VM](../virtual-machines/linux/quick-create-portal.md). Nach der Erstellung des virtuellen Computers können Sie über das Portal den IP-Adresstyp von dynamisch in statisch ändern und weitere IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem virtuellen Computer](#add) in diesem Artikel aus.
 
 ## <a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
 
-Sie können einer NIC private und öffentliche IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte aus. In den Beispielen in den folgenden Abschnitten wird davon ausgegangen, dass Sie bereits einen virtuellen Computer mit den im [Szenario](#Scenario) in diesem Artikel beschriebenen drei IP-Konfigurationen erstellt haben, dies ist jedoch nicht erforderlich.
+Sie können einer NIC private und öffentliche IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte aus. In den Beispielen in den folgenden Abschnitten wird davon ausgegangen, dass Sie bereits einen virtuellen Computer mit den im [Szenario](#Scenario) beschriebenen drei IP-Konfigurationen haben, dies ist jedoch nicht erforderlich.
 
 ### <a name="coreadd"></a>Grundlegende Schritte
 
 1. Navigieren Sie zum Azure-Portal unter „https://portal.azure.com“, und melden Sie sich, falls erforderlich, an.
 2. Klicken Sie im Portal auf **Weitere Dienste**, geben Sie in das Feld „Filter“ *virtuelle Computer* ein, und klicken Sie dann auf **Virtuelle Computer**.
-3. Klicken Sie auf dem Blatt **VMs** Blatt auf die VM, der Sie IP-Adressen hinzufügen möchten. Klicken Sie auf dem angezeigten Blatt des virtuellen Computers auf **Netzwerkschnittstellen**, und wählen Sie die Netzwerkschnittstelle aus, der Sie die IP-Adressen hinzufügen möchten. Im Beispiel in der folgenden Abbildung wurde die NIC mit dem Namen *myNIC* vom virtuellen Computer mit dem Namen *MyVM* ausgewählt:
+3. Klicken Sie im Bereich **Virtuelle Computer** auf die VM, der Sie IP-Adressen hinzufügen möchten. Klicken Sie im angezeigten Bereich des virtuellen Computers auf **Netzwerkschnittstellen**, und wählen Sie die Netzwerkschnittstelle aus, der Sie die IP-Adressen hinzufügen möchten. Im Beispiel in der folgenden Abbildung wurde die NIC mit dem Namen *myNIC* vom virtuellen Computer mit dem Namen *MyVM* ausgewählt:
 
     ![Netzwerkschnittstelle](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
-4. Klicken Sie auf dem Blatt, das für die ausgewählte NIC angezeigt wird, auf **IP-Konfigurationen**.
+4. Klicken Sie in dem Bereich, der für die ausgewählte NIC angezeigt wird, auf **IP-Konfigurationen**.
 
 Führen Sie die Schritte in einem der folgenden Abschnitte aus, abhängig vom Typ der IP-Adresse, die Sie hinzufügen möchten.
 
@@ -54,14 +54,14 @@ Führen Sie die Schritte in einem der folgenden Abschnitte aus, abhängig vom Ty
 Führen Sie die folgenden Schritte aus, um eine neue private IP-Adresse hinzuzufügen:
 
 1. Führen Sie die Schritte im Abschnitt [Grundlegende Schritte](#coreadd) in diesem Artikel aus.
-2. Klicken Sie auf **Hinzufügen**. Erstellen Sie in dem angezeigten Blatt **IP-Konfiguration hinzufügen** eine IP-Konfiguration mit dem Namen *IPConfig-4* mit *10.0.0.7* als *statische* private IP-Adresse, und klicken Sie dann auf **OK**.
+2. Klicken Sie auf **Hinzufügen**. Erstellen Sie in dem angezeigten Bereich **IP-Konfiguration hinzufügen** eine IP-Konfiguration mit dem Namen *IPConfig-4* mit *10.0.0.7* als *statische* private IP-Adresse, und klicken Sie dann auf **OK**.
 
     > [!NOTE]
     > Wenn Sie eine statische IP-Adresse hinzufügen möchten, müssen Sie eine nicht verwendete, gültige Adresse im Subnetz angeben, mit dem die NIC verbunden ist. Wenn die ausgewählte Adresse nicht verfügbar ist, wird im Portal ein „X“ für die IP-Adresse angezeigt, und Sie müssen eine andere Adresse auswählen.
 
-3. Nachdem Sie auf „OK“ geklickt haben, wird das Blatt geschlossen und die neue IP-Konfiguration aufgelistet. Klicken Sie auf **OK**, um das Blatt **IP-Konfiguration hinzufügen** zu schließen.
+3. Nachdem Sie auf „OK“ geklickt haben, wird der Bereich geschlossen, und die neue IP-Konfiguration wird aufgeführt. Klicken Sie auf **OK**, um den Bereich **IP-Konfiguration hinzufügen** zu schließen.
 4. Klicken Sie auf **Hinzufügen** um weitere IP-Konfigurationen hinzuzufügen, oder schließen Sie alle geöffneten Blätter, um das Hinzufügen von IP-Adressen abzuschließen.
-5. Fügen Sie die privaten IP-Adressen dem Betriebssystem des virtuellen Computers hinzu. Führen Sie dazu die Schritte für Ihr Betriebssystem im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus.
+5. Fügen Sie dem Betriebssystem des virtuellen Computers die privaten IP-Adressen hinzu, indem Sie die Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel ausführen.
 
 ### <a name="add-a-public-ip-address"></a>Hinzufügen einer öffentlichen IP-Adresse
 
@@ -76,8 +76,8 @@ Eine öffentliche IP-Adresse wird hinzugefügt, indem eine öffentliche IP-Adres
 Eine öffentliche IP-Adresse ist eine Einstellung für eine öffentliche IP-Adressressource. Wenn Sie über eine öffentliche IP-Adressressource verfügen, die aktuell keiner IP-Konfiguration zugeordnet ist, und die Sie einer IP-Konfiguration zuordnen möchten, überspringen Sie die folgenden Schritte, und führen Sie die geeigneten Schritte in einem der nachfolgenden Abschnitte aus. Wenn Sie über keine öffentliche IP-Adressressource verfügen, führen Sie die folgenden Schritte aus, um eine zu erstellen:
 
 1. Navigieren Sie zum Azure-Portal unter „https://portal.azure.com“, und melden Sie sich, falls erforderlich, an.
-3. Klicken Sie im Portal auf **Neu** > **Netzwerke** > **Öffentliche IP-Adresse**.
-4. Geben Sie im angezeigten Blatt **Öffentliche IP-Adresse erstellen** einen **Namen** ein, wählen Sie einen **Zuweisungstyp für die IP-Adresse**, ein **Abonnement**, eine **Ressourcengruppe** und einen **Speicherort** aus, und klicken Sie dann auf **Erstellen**, wie in der folgenden Abbildung gezeigt:
+3. Klicken Sie im Portal auf **Ressource erstellen** > **Netzwerke** > **Öffentliche IP-Adresse**.
+4. Geben Sie im angezeigten Bereich **Öffentliche IP-Adresse erstellen** einen **Namen** ein, wählen Sie einen Typ für die **IP-Adresszuweisung**, ein **Abonnement**, eine **Ressourcengruppe** und einen **Speicherort** aus, und klicken Sie dann auf **Erstellen**, wie in der folgenden Abbildung gezeigt:
 
     ![Erstellen einer öffentlichen IP-Adressressource](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
@@ -86,9 +86,9 @@ Eine öffentliche IP-Adresse ist eine Einstellung für eine öffentliche IP-Adre
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Zuordnen der öffentlichen IP-Adressressource zu einer neuen IP-Konfiguration
 
 1. Führen Sie die Schritte im Abschnitt [Grundlegende Schritte](#coreadd) in diesem Artikel aus.
-2. Klicken Sie auf **Hinzufügen**. Erstellen Sie in dem angezeigten Blatt **IP-Konfiguration hinzufügen** eine IP-Konfiguration mit dem Namen *IPConfig-4*. Aktivieren Sie die **öffentliche IP-Adresse**, und wählen Sie im angezeigten Blatt **Öffentliche IP-Adresse wählen** eine vorhandene, verfügbare öffentliche IP-Adressressource aus.
+2. Klicken Sie auf **Hinzufügen**. Erstellen Sie in dem angezeigten Bereich **IP-Konfiguration hinzufügen** eine IP-Konfiguration mit dem Namen *IPConfig-4*. Aktivieren Sie die **Öffentliche IP-Adresse**, und wählen Sie im angezeigten Bereich **Öffentliche IP-Adresse wählen** eine vorhandene, verfügbare öffentliche IP-Adressressource aus.
 
-    Nachdem Sie die öffentliche IP-Adressressource ausgewählt haben, klicken Sie auf **OK**, um das Blatt zu schließen. Wenn Sie über keine vorhandene öffentliche IP-Adresse verfügen, können Sie mithilfe der Schritte im Abschnitt [Erstellen einer öffentlichen IP-Adressressource](#create-public-ip) in diesem Artikel eine Adresse erstellen. 
+    Nachdem Sie die öffentliche IP-Adressressource ausgewählt haben, klicken Sie auf **OK**, um den Bereich zu schließen. Wenn Sie über keine vorhandene öffentliche IP-Adresse verfügen, können Sie mithilfe der Schritte im Abschnitt [Erstellen einer öffentlichen IP-Adressressource](#create-public-ip) in diesem Artikel eine Adresse erstellen. 
 
 3. Überprüfen Sie die neue IP-Konfiguration. Selbst wenn Sie nicht explizit eine private IP-Adresse zugewiesen haben, wurde der IP-Konfiguration automatisch eine private IP-Adresse zugewiesen, da alle IP-Konfigurationen eine private IP-Adresse aufweisen müssen.
 4. Klicken Sie auf **Hinzufügen** um weitere IP-Konfigurationen hinzuzufügen, oder schließen Sie alle geöffneten Blätter, um das Hinzufügen von IP-Adressen abzuschließen.
@@ -98,9 +98,9 @@ Eine öffentliche IP-Adresse ist eine Einstellung für eine öffentliche IP-Adre
 
 1. Führen Sie die Schritte im Abschnitt [Grundlegende Schritte](#coreadd) in diesem Artikel aus.
 2. Klicken Sie auf die IP-Konfiguration, der Sie die öffentliche IP-Adressressource hinzufügen möchten.
-3. Klicken Sie auf dem angezeigten Blatt „IPConfig“ auf **IP-Adresse**.
-4. Wählen Sie auf dem angezeigten Blatt **Öffentliche IP-Adresse wählen** eine öffentliche IP-Adresse aus.
-5. Klicken Sie auf **Speichern**. Die Blätter werden dann geschlossen. Wenn Sie über keine vorhandene öffentliche IP-Adresse verfügen, können Sie mithilfe der Schritte im Abschnitt [Erstellen einer öffentlichen IP-Adressressource](#create-public-ip) in diesem Artikel eine Adresse erstellen.
+3. Klicken Sie im angezeigten Bereich „IPConfig“ auf **IP-Adresse**.
+4. Wählen Sie im angezeigten Bereich **Öffentliche IP-Adresse wählen** eine öffentliche IP-Adresse aus.
+5. Klicken Sie auf **Speichern**, um den Bereich zu schließen. Wenn Sie über keine vorhandene öffentliche IP-Adresse verfügen, können Sie mithilfe der Schritte im Abschnitt [Erstellen einer öffentlichen IP-Adressressource](#create-public-ip) in diesem Artikel eine Adresse erstellen.
 3. Überprüfen Sie die neue IP-Konfiguration.
 4. Klicken Sie auf **Hinzufügen** um weitere IP-Konfigurationen hinzuzufügen, oder schließen Sie alle geöffneten Blätter, um das Hinzufügen von IP-Adressen abzuschließen. Fügen Sie dem Betriebssystem nicht die öffentliche IP-Adresse hinzu.
 

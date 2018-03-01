@@ -12,250 +12,214 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: ae5ccb83a0088cb7c9668f18620b74f9f3f1e9b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e2f988fd62753e1ebed702728dee7ede65c72c4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="manage-resources-with-azure-powershell-and-resource-manager"></a>Verwalten von Ressourcen mit Azure PowerShell und Resource Manager
+# <a name="manage-resources-with-azure-powershell"></a>Verwalten von Ressourcen mit Azure PowerShell
 
-In diesem Artikel erfahren Sie, wie Sie Ihre Lösungen mit Azure PowerShell und Azure Resource Manager verwalten. Wenn Sie nicht mit Resource Manager vertraut sind, finden Sie weitere Informationen unter [Übersicht über Resource Manager](resource-group-overview.md). In diesem Artikel geht es um Verwaltungsaufgaben. In diesem Tutorial führen Sie folgende Schritte aus:
+[!include[Resource Manager governance introduction](../../includes/resource-manager-governance-intro.md)]
 
-1. Erstellen einer Ressourcengruppe
-2. Hinzufügen einer Ressource zur Ressourcengruppe
-3. Hinzufügen eines Tags zur Ressource
-4. Abfragen von Ressourcen basierend auf Namen oder Tagwerten
-5. Anwenden und Entfernen einer Sperre für die Ressource
-6. Löschen einer Ressourcengruppe
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Das Bereitstellen einer Resource Manager-Vorlage für Ihr Abonnement wird in diesem Artikel nicht erläutert. Informationen darüber finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](resource-group-template-deploy.md).
+Wenn Sie PowerShell lokal installieren und nutzen möchten, lesen Sie die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
-## <a name="get-started-with-azure-powershell"></a>Erste Schritte mit Azure PowerShell
+## <a name="understand-scope"></a>Der Bereich
 
-Wenn Azure PowerShell nicht installiert ist, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+[!include[Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
 
-Wenn Sie Azure PowerShell in der Vergangenheit installiert, aber nicht vor kurzem aktualisiert haben, sollten Sie die neueste Version installieren. Sie können die Version über dieselbe Methode aktualisieren, die Sie für die Installation verwendet haben. Beispiel: Wenn Sie den Webplattform-Installer verwendet haben, starten Sie ihn erneut, und suchen Sie nach einem Update.
+In diesem Artikel wenden Sie alle Verwaltungseinstellungen auf eine Ressourcengruppe an, Sie können diese Einstellungen also am Ende problemlos entfernen.
 
-Zur Prüfung Ihrer Version des Azure-Ressourcenmodells verwenden Sie das folgende Cmdlet:
+Zuerst erstellen wir eine Ressourcengruppe.
 
-```powershell
-Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
+```azurepowershell-interactive
+Set-AzureRmContext -Subscription <subscription-name>
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-Dieser Artikel wurde für Version 3.3.0 aktualisiert. Wenn Sie über eine frühere Version verfügen, stimmt Ihre Umgebung möglicherweise nicht mit den in diesem Artikel gezeigten Schritten überein. Eine Dokumentation zu den Cmdlets in dieser Version finden Sie unter [AzureRM.Resources Module](/powershell/module/azurerm.resources) (AzureRM.Resources-Modul).
+Die Ressourcengruppe ist derzeit leer.
 
-## <a name="log-in-to-your-azure-account"></a>Melden Sie sich bei Ihrem Azure-Konto an.
-Bevor Sie an Ihrer Lösung arbeiten, müssen Sie sich bei Ihrem Konto anmelden.
+## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Um sich bei Ihrem Azure-Konto anzumelden, verwenden Sie das Cmdlet **Login-AzureRmAccount**.
+[!include[Resource Manager governance policy](../../includes/resource-manager-governance-rbac.md)]
 
-```powershell
-Login-AzureRmAccount
+### <a name="assign-a-role"></a>Zuweisen einer Rolle
+
+In diesem Artikel stellen Sie einen virtuellen Computer und das zugehörige virtuelle Netzwerk bereit. Zum Verwalten virtueller Computerlösungen gibt es drei ressourcenspezifische Rollen, die Zugriff auf häufig benötigte Ressourcen bereitstellen:
+
+* [Mitwirkender von virtuellen Computern](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
+* [Mitwirkender von virtuellem Netzwerk](../active-directory/role-based-access-built-in-roles.md#network-contributor)
+* [Mitwirkender von Speicherkonto](../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+
+Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../active-directory/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe zur entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch zu einer Rolle für einen bestimmten Bereich zuweisen. 
+
+Das folgende Beispiel erstellt eine Gruppe und weist diese zur Rolle „Mitwirkender von virtuellen Computern“ für die Ressourcengruppe zu. Um den Befehl `New-AzureAdGroup` auszuführen, müssen Sie entweder die [Azure Cloud Shell](/azure/cloud-shell/overview) verwenden oder [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/).
+
+```azurepowershell-interactive
+$adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
+  -MailNickName vmDemoGroup `
+  -MailEnabled $false `
+  -SecurityEnabled $true
+New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+  -ResourceGroupName myResourceGroup `
+  -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Sie werden vom Cmdlet zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto aufgefordert. Nach dem Anmelden werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen.
+In der Regel müssen Sie den Prozess für die Rollen **Mitwirkender von virtuellem Netzwerk** und **Mitwirkender von Speicherkonto** wiederholen, um sicherzustellen, dass die Benutzer den richtigen Rollen für die Verwaltung der bereitgestellten Ressourcen zugewiesen werden. In diesem Artikel können Sie diese Schritte überspringen.
 
-Das Cmdlet gibt Informationen über Ihr Konto und das Abonnement zurück, die für die Aufgaben verwendet werden sollen.
+## <a name="azure-policies"></a>Azure-Richtlinien
 
-```powershell
-Environment           : AzureCloud
-Account               : example@contoso.com
-TenantId              : {guid}
-SubscriptionId        : {guid}
-SubscriptionName      : Example Subscription One
-CurrentStorageAccount :
+[!include[Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
 
+### <a name="apply-policies"></a>Anwenden von Richtlinien
+
+Ihr Abonnement enthält bereits verschiedene Richtliniendefinitionen. Verwenden Sie folgenden Befehl, um die verfügbaren Richtliniendefinitionen anzuzeigen:
+
+```azurepowershell-interactive
+(Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-Wenn Sie über mehrere Abonnements verfügen, können Sie zu einem anderen Abonnement wechseln. Zunächst sehen wir uns alle Abonnements für Ihr Konto an.
+Die vorhandenen Richtliniendefinitionen werden angezeigt. Der Richtlinientyp lautet entweder **BuiltIn** oder **Custom**. Durchsuchen Sie die Definitionen, um eine Definition zu finden, in der eine Bedingung beschrieben wird, die Sie zuweisen möchten. In diesem Artikel weisen Sie Richtlinien zu, mit denen Folgendes erreicht wird:
 
-```powershell
-Get-AzureRmSubscription
+* Begrenzen der Standorte für alle Ressourcen
+* Begrenzen der SKUs für virtuelle Computer
+* Überwachen von virtuellen Computern, die keine verwalteten Datenträger verwenden
+
+```azurepowershell-interactive
+$locations ="eastus", "eastus2"
+$skus = "Standard_DS1_v2", "Standard_E2s_v2"
+
+$rg = Get-AzureRmResourceGroup -Name myResourceGroup
+
+$locationDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
+$skuDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
+$auditDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
+
+New-AzureRMPolicyAssignment -Name "Set permitted locations" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $locationDefinition `
+  -listOfAllowedLocations $locations
+New-AzureRMPolicyAssignment -Name "Set permitted VM SKUs" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $skuDefinition `
+  -listOfAllowedSKUs $skus
+New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $auditDefinition
 ```
 
-Aktivierte und deaktivierte Abonnements werden zurückgegeben.
+## <a name="deploy-the-virtual-machine"></a>Bereitstellen des virtuellen Computers
 
-```powershell
-SubscriptionName : Example Subscription One
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Enabled
+Sie haben Rollen und Richtlinien zugewiesen und können daher Ihre Lösung bereitstellen. Die Standardgröße ist „Standard_DS1_v2“ – eine Ihrer zulässigen SKUs. Wenn Sie diesen Schritt ausführen, werden Sie aufgefordert, Anmeldeinformationen einzugeben. Die Werte, die Sie eingeben, werden als Benutzername und Kennwort für den virtuellen Computer konfiguriert.
 
-SubscriptionName : Example Subscription Two
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Enabled
-
-SubscriptionName : Example Subscription Three
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Disabled
+```azurepowershell-interactive
+New-AzureRmVm -ResourceGroupName "myResourceGroup" `
+     -Name "myVM" `
+     -Location "East US" `
+     -VirtualNetworkName "myVnet" `
+     -SubnetName "mySubnet" `
+     -SecurityGroupName "myNetworkSecurityGroup" `
+     -PublicIpAddressName "myPublicIpAddress" `
+     -OpenPorts 80,3389
 ```
 
-Um zu einem anderen Abonnement zu wechseln, geben Sie den Namen des Abonnements mit dem **Set-AzureRmContext**-Cmdlet an.
+Nach Abschluss der Bereitstellung können Sie weitere Verwaltungseinstellungen auf die Lösung anwenden.
 
-```powershell
-Set-AzureRmContext -SubscriptionName "Example Subscription Two"
+## <a name="lock-resources"></a>Sperren von Ressourcen
+
+[!include[Resource Manager governance locks](../../includes/resource-manager-governance-locks.md)]
+
+### <a name="lock-a-resource"></a>Sperren einer Ressource
+
+Verwenden Sie folgenden Befehl, um den virtuellen Computer und die Netzwerksicherheitsgruppe zu sperren:
+
+```azurepowershell-interactive
+New-AzureRmResourceLock -LockLevel CanNotDelete `
+  -LockName LockVM `
+  -ResourceName myVM `
+  -ResourceType Microsoft.Compute/virtualMachines `
+  -ResourceGroupName myResourceGroup
+New-AzureRmResourceLock -LockLevel CanNotDelete `
+  -LockName LockNSG `
+  -ResourceName myNetworkSecurityGroup `
+  -ResourceType Microsoft.Network/networkSecurityGroups `
+  -ResourceGroupName myResourceGroup
 ```
 
-## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+Der virtuelle Computer kann nur gelöscht werden, wenn Sie die Sperre explizit entfernen. Dieser Schritt wird unter [Bereinigen von Ressourcen](#clean-up-resources) gezeigt.
 
-Bevor Sie Ressourcen für Ihr Abonnement bereitstellen, müssen Sie eine Ressourcengruppe erstellen, die die Ressourcen enthält.
+## <a name="tag-resources"></a>Markieren von Ressourcen
 
-Um eine Ressourcengruppe zu erstellen, verwenden Sie das Cmdlet **New-AzureRmResourceGroup** . Der Befehl verwendet den **Name**-Parameter, um einen Namen für die Ressourcengruppe anzugeben, und den **Location**-Parameter, um ihren Speicherort anzugeben.
+[!include[Resource Manager governance tags](../../includes/resource-manager-governance-tags.md)]
 
-```powershell
-New-AzureRmResourceGroup -Name TestRG1 -Location "South Central US"
+### <a name="tag-resources"></a>Markieren von Ressourcen
+
+[!include[Resource Manager governance tags Powershell](../../includes/resource-manager-governance-tags-powershell.md)]
+
+Um Tags auf einen virtuellen Computer anzuwenden, verwenden Sie folgenden Befehl:
+
+```azurepowershell-interactive
+$r = Get-AzureRmResource -ResourceName myVM `
+  -ResourceGroupName myResourceGroup `
+  -ResourceType Microsoft.Compute/virtualMachines
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
 ```
 
-Die Ausgabe weist das folgende Format auf:
+### <a name="find-resources-by-tag"></a>Suchen von Ressourcen nach Tag
 
-```powershell
-ResourceGroupName : TestRG1
-Location          : southcentralus
-ProvisioningState : Succeeded
-Tags              :
-ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1
+Um Ressourcen anhand von Tagname und -wert zu suchen, verwenden Sie folgenden Befehl:
+
+```azurepowershell-interactive
+(Find-AzureRmResource -TagName Environment -TagValue Test).Name
 ```
 
-Wenn Sie die Ressourcengruppe später abrufen müssen, verwenden Sie das folgende Cmdlet:
+Sie können die zurückgegebenen Werte für Verwaltungstasks verwenden, z.B. zum Beenden aller virtuellen Computer mit einem Tagwert.
 
-```powershell
-Get-AzureRmResourceGroup -ResourceGroupName TestRG1
+```azurepowershell-interactive
+Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
 ```
 
-Um alle Ressourcengruppen in Ihrem Abonnement zu erhalten, geben Sie keinen Namen an:
+### <a name="view-costs-by-tag-values"></a>Anzeigen von Kosten nach Tagwert
 
-```powershell
-Get-AzureRmResourceGroup
+Nachdem Sie Tags auf Ressourcen angewendet haben, können Sie die Kosten für Ressourcen mit diesen Tags anzeigen. Es dauert eine Weile, bis die Kostenanalyse die jüngste Nutzung anzeigt, daher werden möglicherweise noch keine Kosten angezeigt. Wenn die Kosten verfügbar sind, können Sie diese für Ressourcen in verschiedenen Ressourcengruppen Ihres Abonnements anzeigen. Benutzer müssen über [Zugriff auf Abrechnungsinformationen auf Abonnementebene](../billing/billing-manage-access.md) verfügen, um die Kosten sehen zu können.
+
+Um Kosten nach Tag im Portal anzuzeigen, wählen Sie Ihr Abonnement und danach **Kostenanalyse** aus.
+
+![Kostenanalyse](./media/powershell-azure-resource-manager/select-cost-analysis.png)
+
+Filtern Sie die Anzeige nach Tagwert, und wählen Sie **Anwenden** aus.
+
+![Anzeigen von Kosten nach Tag](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
+
+Sie können auch die [Azure-Abrechnungs-APIs](../billing/billing-usage-rate-card-overview.md) verwenden, um Kosten programmgesteuert anzuzeigen.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Die gesperrte Netzwerksicherheitsgruppe kann erst gelöscht werden, wenn die Sperre entfernt wird. Um die Sperre zu entfernen, verwenden Sie folgenden Befehl:
+
+```azurepowershell-interactive
+Remove-AzureRmResourceLock -LockName LockVM `
+  -ResourceName myVM `
+  -ResourceType Microsoft.Compute/virtualMachines `
+  -ResourceGroupName myResourceGroup
+Remove-AzureRmResourceLock -LockName LockNSG `
+  -ResourceName myNetworkSecurityGroup `
+  -ResourceType Microsoft.Network/networkSecurityGroups `
+  -ResourceGroupName myResourceGroup
 ```
 
-## <a name="add-resources-to-a-resource-group"></a>Hinzufügen von Ressourcen zu einer Ressourcengruppe
-
-Um eine Ressource zur Ressourcengruppe hinzuzufügen, können Sie das **New-AzureRmResource**-Cmdlet oder ein Cmdlet verwenden, das spezifisch für den Typ der Ressource ist, die Sie erstellen (z.B. **New-AzureRmStorageAccount**). Sie finden es möglicherweise einfacher, ein für einen Ressourcentyp spezifisches Cmdlet zu verwenden, da es Parameter für die Eigenschaften enthält, die für die neue Ressource erforderlich sind. Für die Verwendung von **New-AzureRmResource** müssen Sie alle Eigenschaften kennen, die ohne Aufforderung festgelegt werden müssen.
-
-Das Hinzufügen einer Ressource über Cmdlets kann jedoch künftig für Verwirrung sorgen, da die neue Ressource nicht in einer Resource Manager-Vorlage vorhanden ist. Microsoft empfiehlt die Definition der Infrastruktur für Ihre Azure-Lösung in einer Resource Manager-Vorlage. Vorlagen ermöglichen Ihnen das zuverlässige und wiederholte Bereitstellen Ihrer Lösung. Für diesen Artikel erstellen Sie ein Speicherkonto mit einem PowerShell-Cmdlet. Später erstellen Sie jedoch eine Vorlage aus Ihrer Ressourcengruppe.
-
-Das folgende Cmdlet erstellt ein Speicherkonto. Geben Sie einen eindeutigen Namen für das Speicherkonto anstelle des im Beispiel angezeigten Namens an. Der Name muss zwischen drei und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten. Wenn Sie den im Beispiel angezeigten Namen verwenden, erhalten Sie eine Fehlermeldung, da dieser Name bereits verwendet wird.
+Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) entfernen.
 
 ```powershell
-New-AzureRmStorageAccount -ResourceGroupName TestRG1 -AccountName mystoragename -Type "Standard_LRS" -Location "South Central US"
+Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
-
-Wenn Sie diese Ressource später abrufen müssen, verwenden Sie das folgende Cmdlet:
-
-```powershell
-Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
-```
-
-## <a name="add-a-tag"></a>Hinzufügen eines Tags
-
-Tags ermöglichen das Organisieren Ihrer Ressourcen gemäß unterschiedlichen Eigenschaften. Beispiel: Sie verfügen über verschiedene Ressourcen in verschiedenen Ressourcengruppen, die zur selben Abteilung gehören. Sie können für diese Ressourcen ein Abteilungstag und einen Wert anwenden, um zu markieren, dass sie derselben Kategorie angehören. Alternativ können Sie markieren, ob eine Ressource in einer Produktionsumgebung oder Testumgebung verwendet wird. In diesem Artikel weisen Sie nur einer Ressource Tags zu. In Ihrer Umgebung ist es aber wahrscheinlich am sinnvollsten, allen Ressourcen Tags zuzuweisen.
-
-Das folgende Cmdlet wendet zwei Tags auf Ihr Speicherkonto an:
-
-```powershell
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
- ```
-
-Tags werden als einzelnes Objekt aktualisiert. Um ein Tag zu einer Ressource hinzuzufügen, die bereits Tags enthält, rufen Sie zuerst die vorhandenen Tags ab. Fügen Sie das neue Tag dem Objekt hinzu, das die vorhandenen Tags enthält, und wenden Sie sämtliche Tags neu auf die Ressource an.
-
-```powershell
-$tags = (Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1).Tags
-$tags += @{Status="Approved"}
-Set-AzureRmResource -Tag $tags -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
-```
-
-## <a name="search-for-resources"></a>Suchen nach Ressourcen
-
-Verwenden Sie das **Find-AzureRmResource**-Cmdlet zum Abrufen von Ressourcen für andere Suchbedingungen.
-
-* Um eine Ressource anhand des Namens abzurufen, geben Sie den **ResourceNameContains**-Parameter an:
-
-  ```powershell
-  Find-AzureRmResource -ResourceNameContains mystoragename
-  ```
-
-* Um alle Ressourcen in einer Ressourcengruppe abzurufen, geben Sie den **ResourceGroupNameContains**-Parameter an:
-
-  ```powershell
-  Find-AzureRmResource -ResourceGroupNameContains TestRG1
-  ```
-
-* Um alle Ressourcen mit einem Tagnamen und Wert abzurufen, geben Sie den **TagName**- und den **TagValue**-Parameter an:
-
-  ```powershell
-  Find-AzureRmResource -TagName Dept -TagValue IT
-  ```
-
-* Um alle Ressourcen mit einem bestimmten Ressourcentyp abzurufen, geben Sie den **ResourceType**-Parameter an:
-
-  ```powershell
-  Find-AzureRmResource -ResourceType Microsoft.Storage/storageAccounts
-  ```
-
-## <a name="get-resource-id"></a>Abrufen der Ressourcen-ID
-
-Viele Befehle akzeptieren eine Ressourcen-ID als Parameter. Verwenden Sie zum Abrufen der ID für eine Ressource und zum Speichern in einer Variablen Folgendes:
-
-```powershell
-$webappID = (Get-AzureRmResource -ResourceGroupName exampleGroup -ResourceName exampleSite).ResourceId
-```
-
-## <a name="lock-a-resource"></a>Sperren einer Ressource
-
-Wenn Sie sicherstellen müssen, dass eine wichtige Ressource nicht versehentlich gelöscht oder geändert wird, wenden Sie eine Sperre für die Ressource an. Geben Sie entweder **CanNotDelete** oder **ReadOnly** an.
-
-Zum Erstellen oder Löschen von Verwaltungssperren benötigen Sie Zugriff auf `Microsoft.Authorization/*`- oder `Microsoft.Authorization/locks/*`-Aktionen. Unter den integrierten Rollen verfügen nur „Besitzer“ und „Benutzerzugriffsadministrator“ über diese Aktionen.
-
-Verwenden Sie zum Anwenden einer Sperre das folgende Cmdlet:
-
-```powershell
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-```
-
-Die gesperrte Ressource im vorherigen Beispiel kann erst gelöscht werden, wenn die Sperre aufgehoben wird. Eine Sperre entfernen Sie folgendermaßen:
-
-```powershell
-Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-```
-
-Weitere Informationen zum Setzen von Sperren finden Sie unter [Sperren von Ressourcen mit dem Azure Resource Manager](resource-group-lock-resources.md).
-
-## <a name="remove-resources-or-resource-group"></a>Entfernen von Ressourcen oder Ressourcengruppen
-Sie können eine Ressource oder Ressourcengruppe entfernen. Wenn Sie eine Ressourcengruppe entfernen, entfernen Sie auch alle Ressourcen in dieser Ressourcengruppe.
-
-* Um eine Ressource aus der Ressourcengruppe zu löschen, verwenden Sie das Cmdlet **Remove-AzureRmResource** . Dieses Cmdlet löscht die Ressource, aber nicht die Ressourcengruppe.
-
-  ```powershell
-  Remove-AzureRmResource -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-  ```
-
-* Um eine Ressourcengruppe und alle ihre Ressourcen zu löschen, verwenden Sie das **Remove-AzureRmResourceGroup**-Cmdlet.
-
-  ```powershell
-  Remove-AzureRmResourceGroup -Name TestRG1
-  ```
-
-Bei beiden Cmdlets werden Sie aufgefordert zu bestätigen, dass Sie die Ressource oder Ressourcengruppe entfernen möchten. Wenn der Vorgang die Ressource oder Ressourcengruppe löscht, wird **true** zurückgegeben.
-
-## <a name="run-resource-manager-scripts-with-azure-automation"></a>Ausführen von Resource Manager-Skripts mit Azure Automation
-
-In diesem Artikel wird gezeigt, wie grundlegende Vorgänge für Ihre Ressourcen mit Azure PowerShell ausgeführt werden. Bei fortgeschritteneren Verwaltungsszenarios können Sie ein Skript erstellen und es je nach Bedarf oder basierend auf einem Zeitplan wiederverwenden. [Azure Automation](../automation/automation-intro.md) bietet eine Möglichkeit zum Automatisieren häufig verwendeter Skripts, die Ihre Azure-Lösungen verwalten.
-
-In den folgenden Themen wird gezeigt, wie Sie mit Azure Automation, Resource Manager und PowerShell Verwaltungsaufgaben effektiv ausführen:
-
-- Informationen zum Erstellen eines Runbooks finden Sie unter [Mein erstes PowerShell-Runbook](../automation/automation-first-runbook-textual-powershell.md).
-- Informationen zum Arbeiten mit Scriptkatalogen finden Sie unter [Runbook und Modulkataloge für Azure Automation](../automation/automation-runbook-gallery.md).
-- Informationen zu Runbooks, die virtuelle Computer starten und beenden, finden Sie unter [Azure Automation-Szenario: Erstellen eines Zeitplans für das Starten und Herunterfahren virtueller Azure-Computer mithilfe von Tags im JSON-Format](../automation/automation-scenario-start-stop-vm-wjson-tags.md).
-- Informationen zu Runbooks, die virtuelle Computer außerhalb der Geschäftszeiten starten und beenden, finden Sie unter [Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Automation](../automation/automation-solution-vm-management.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Erstellen von Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
-* Informationen zum Bereitstellen von Vorlagen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
+* Weitere Informationen zum Überwachen Ihrer virtuellen Computer finden Sie unter [Überwachen und Aktualisieren eines virtuellen Windows-Computers mit Azure PowerShell](../virtual-machines/windows/tutorial-monitoring.md).
+* Informationen zum Implementieren empfohlener Sicherheitsmethoden über Azure Security Center finden Sie unter [Überwachen der Sicherheit virtueller Computer mit Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
 * Sie können vorhandene Ressourcen in eine neue Ressourcengruppe verschieben. Beispiele finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-

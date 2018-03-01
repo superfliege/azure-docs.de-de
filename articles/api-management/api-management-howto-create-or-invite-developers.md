@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Benutzerkonten in Azure API Management | Microsoft Docs
+title: Verwalten von Benutzerkonten in Azure API Management | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Benutzer in Azure API Management erstellen und einladen.
 services: api-management
 documentationcenter: 
@@ -11,73 +11,63 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 6f2fd5e4c1a51fe9d1652c9970bcd8d76b25ab60
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 501210c3fab2659deb9594e1bbd9aa51912187e9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Verwalten von Benutzerkonten in Azure API Management
 In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Management verfügbar machen. Diese Anleitung beschreibt die Erstellung und Einladung von Entwicklern zur Nutzung Ihrer API und der Produkte, die Sie über die API Management-Instanz bereitgestellt haben. Informationen zum programmgesteuerten Verwalten von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://msdn.microsoft.com/library/azure/dn776330.aspx) in der [Referenz zu API Management REST](https://msdn.microsoft.com/library/azure/dn776326.aspx).
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+Absolvieren Sie die Aufgaben im folgenden Artikel: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
+
+[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+
 ## <a name="create-developer"></a>Erstellen eines neuen Entwicklers
-Klicken Sie im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**, um einen neuen Entwickler zu erstellen. Daraufhin gelangen Sie zum API Management-Herausgeberportal. Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen unter [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance].
 
-![Herausgeberportal][api-management-management-console]
+Um einen neuen Benutzer hinzuzufügen, führen Sie die Schritte in diesem Abschnitt aus:
 
-Klicken Sie im Menü **API Management** auf der linken Seite auf **Benutzer**, und klicken Sie anschließend auf **Benutzer hinzufügen**.
+1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** aus.
+2. Klicken Sie auf **+ Hinzufügen**.
+3. Geben Sie die erforderlichen Informationen für den Benutzer ein.
+4. Klicken Sie auf **Hinzufügen**.
 
-![Entwickler erstellen][api-management-create-developer]
+    ![Hinzufügen eines neuen Benutzers](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-Geben Sie **E-Mail**, **Kennwort** und **Name** für den neuen Entwickler ein, und klicken Sie auf **Speichern**.
-
-![Entwickler erstellen][api-management-add-new-user]
-
-Neu erstellte Entwicklerkonten sind standardmäßig **Aktiv** und werden der Gruppe **Entwickler** zugewiesen.
-
-![Neuer Entwickler][api-management-new-developer]
-
-Entwicklerkonten mit dem Status **Aktiv** können sämtliche APIs aufrufen, die sie abonniert haben. Informationen zum Zuordnen des neu erstellten Entwicklers zu weiteren Gruppen finden Sie unter [Zuordnen von Entwicklern zu Gruppen][How to associate groups with developers].
+Neu erstellte Entwicklerkonten sind standardmäßig **Aktiv** und werden der Gruppe **Entwickler** zugewiesen. Entwicklerkonten mit dem Status **Aktiv** können sämtliche APIs aufrufen, die sie abonniert haben. Informationen zum Zuordnen des neu erstellten Entwicklers zu weiteren Gruppen finden Sie unter [Zuordnen von Entwicklern zu Gruppen][How to associate groups with developers].
 
 ## <a name="invite-developer"></a>Einladen eines Entwicklers
-Klicken Sie im Menü **API Management** auf der linken Seite auf **Benutzer**, und klicken Sie anschließend auf **Benutzer einladen**, um einen Entwickler einzuladen.
+Um einen Entwickler einzuladen, führen Sie die Schritte in diesem Abschnitt aus:
 
-![Entwickler einladen][api-management-invite-developer]
-
-Geben Sie Name und E-Mail-Adresse des Entwicklers ein, und klicken Sie auf **Einladen**.
-
-![Entwickler einladen][api-management-invite-developer-window]
+1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** aus.
+2. Klicken Sie auf **+Einladen**.
 
 Eine Bestätigungsmeldung wird angezeigt. Der neu eingeladene Entwickler wird jedoch erst in der Liste angezeigt, wenn die Einladung angenommen wurde. 
-
-![Bestätigung der Einladung][api-management-invite-developer-confirmation]
 
 Wenn Sie einen Entwickler einladen, wird eine E-Mail an diesen Entwickler geschickt. Diese E-Mail wird anhand einer Vorlage erstellt und ist konfigurierbar. Weitere Informationen finden Sie unter [Konfigurieren von E-Mail-Vorlagen][Configure email templates].
 
 Nachdem die Einladung angenommen wurde, ist das Konto aktiv.
 
 ## <a name="block-developer"></a> Deaktivieren oder erneutes Aktivieren eines Entwicklerkontos
+
 Neu erstellte oder eingeladene Entwicklerkonten sind standardmäßig **Aktiv**. Klicken Sie auf **Blockieren**, um ein Entwicklerkonto zu deaktivieren. Klicken Sie auf **Aktivieren**, um ein blockiertes Entwicklerkonto erneut zu aktivieren. Blockierte Entwicklerkonten haben keinen Zugriff auf das Entwicklerportal und können keine APIs aufrufen. Klicken Sie zum Löschen eines Benutzerkontos auf **Löschen**.
 
-![Entwickler blockieren][api-management-new-developer]
+Um einen Benutzer zu blockieren, führen Sie die folgenden Schritte aus.
+
+1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** aus.
+2. Klicken Sie auf den Benutzer, den Sie blockieren möchten.
+3. Klicken Sie auf **Blockieren**.
 
 ## <a name="reset-a-user-password"></a>Zurücksetzen des Benutzerkennworts
-Klicken Sie zum Zurücksetzen des Kennworts für ein Benutzerkonto auf den Namen des Kontos.
-
-![Kennwort zurücksetzen][api-management-view-developer]
-
-Klicken Sie auf **Kennwort zurücksetzen** , um einen Link an den Benutzer zu senden, mit dem das Kennwort zurückgesetzt werden kann.
-
-![Zurücksetzen des Kennworts][api-management-reset-password]
 
 Informationen zur programmgesteuerten Verwendung von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://msdn.microsoft.com/library/azure/dn776330.aspx) in der [Referenz zu API Management REST](https://msdn.microsoft.com/library/azure/dn776326.aspx). Um das Kennwort eines Benutzerkontos auf einen bestimmten Wert zurückzusetzen, können Sie den Vorgang [Aktualisieren eines Benutzers](https://msdn.microsoft.com/library/azure/dn776330.aspx#UpdateUser) verwenden und das gewünschte Kennwort angeben.
 
-## <a name="pending-verification"></a>Ausstehende Bestätigung
-![Ausstehende Bestätigung][api-management-pending-verification]
-
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"> </a>Nächste Schritte
 Nachdem Sie das Entwicklerkonto erstellt haben, können Sie das Konto zu Rollen zuweisen und Produkte und APIs abonnieren. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][How to create and use groups].
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png

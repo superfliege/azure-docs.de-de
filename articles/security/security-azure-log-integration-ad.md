@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 08/08/2017
+ms.date: 02/16/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 8a1295cc86057ed72940e774d0bd423d61142e31
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f45f43a0296a7d90a68b0526f805ea50a1ce6c6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrieren von Azure Active Directory-Überwachungsprotokollen
 
 Azure AD-Überwachungsereignisse (Azure Active Directory) helfen Ihnen, privilegierte Aktionen zu bestimmen, die in Azure Active Directory aufgetreten sind. Sie können die Typen von Ereignissen anzeigen, die Sie nachverfolgen können, indem Sie [Azure Active Directory-Überwachungsberichtereignisse](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md) überprüfen.
+
 
 > [!NOTE]
 > Zur Vorbereitung auf die Schritte in diesem Artikel müssen zunächst die Schritte im Artikel [Erste Schritte](security-azure-log-integration-get-started.md) ausgeführt werden.
@@ -70,7 +71,5 @@ Weitere Informationen zur Azure-Protokollintegration finden Sie auf den folgende
 
 * [Microsoft Azure Log Integration for Azure logs](https://www.microsoft.com/download/details.aspx?id=53324) (Microsoft Azure-Protokoll-Integration für Azure-Protokolle, in englischer Sprache): Diese Seite im Download Center bietet Details, Systemanforderungen und Installationsanweisungen für die Azure-Protokollintegration.
 * [Einführung in die Microsoft Azure-Protokollintegration](security-azure-log-integration-overview.md): Dieser Artikel stellt die Azure-Protokollintegration, die wichtigsten Funktionen sowie die Funktionsweise vor.
-* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner, in englischer Sprache): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird.
 * [Azure-Protokollintegration – Häufig gestellte Fragen](security-azure-log-integration-faq.md): In diesem Artikel werden Fragen zur Azure-Protokollintegration beantwortet.
-* [Integrieren von Security Center-Warnungen mithilfe der Azure-Protokollintegration](../security-center/security-center-integrating-alerts-with-log-integration.md): In diesem Artikel erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Protokollanalyse- oder SIEM-Lösung synchronisieren.
 * [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für Azure-Diagnose und Azure-Überwachungsprotokolle, in englischer Sprache): In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Vorgänge Ihrer Azure-Ressourcen verschaffen können.

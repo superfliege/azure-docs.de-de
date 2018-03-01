@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d46f04a3e9fdb1beaf11c769ecdd7b807c5f817f
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 51734f5b39e9ca8af65048f2a7efd5c61cd53204
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Azure AD AngularJS – Erste Schritte
 
@@ -48,7 +48,7 @@ Sie müssen die App zuerst in Ihrem Azure AD-Mandanten registrieren, um damit Be
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie in mehreren Verzeichnissen angemeldet sind, müssen Sie ggf. prüfen, ob Sie das richtige Verzeichnis anzeigen. Klicken Sie dazu auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnisliste** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
-3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
+3. Klicken Sie im linken Bereich auf **Alle Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue Webanwendung und/oder Web-API.
   * **Name**: Beschreibt die Anwendung für Benutzer.
@@ -143,7 +143,7 @@ Die obigen Angaben beschreiben die erforderlichen Mindestvoraussetzungen zum Ers
     ...
     ```
 
-* In manchen Fällen möchten Sie überprüfen, ob der Benutzer angemeldet ist. Sie können auch das `userInfo` -Objekt verwenden, um diese Informationen zu sammeln.  In `index.html` können Sie beispielsweise je nach Authentifizierungsstatus entweder die Schaltfläche **Anmelden** oder **Abmelden** anzeigen:
+* In manchen Fällen möchten Sie überprüfen, ob der Benutzer angemeldet ist. Sie können auch das `userInfo`-Objekt verwenden, um diese Informationen zu sammeln.  In `index.html` können Sie beispielsweise je nach Authentifizierungsstatus entweder die Schaltfläche **Anmelden** oder **Abmelden** anzeigen:
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>

@@ -15,11 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: robmcm
-ms.openlocfilehash: 768c94fe0d2d6cfafc1f8b57256012e01de0f7a9
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b166d2af56051b7d90eba0d50e1ea41f96c1109e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>Ausführen eines Java-Anwendungsservers auf einem virtuellen Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde
 > [!IMPORTANT]
@@ -43,8 +43,8 @@ Die abgeschlossene Installation hat zum Ergebnis, dass Tomcat auf einem virtuell
 [!INCLUDE [create-account-and-vms-note](../../../../includes/create-account-and-vms-note.md)]
 
 ## <a name="to-create-a-virtual-machine"></a>So erstellen Sie einen virtuellen Computer
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.  
-2. Klicken Sie auf **Neu**, klicken Sie auf **Compute**, klicken Sie dann auf **Alles anzeigen** in **Ausgewählte Apps**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
+2. Klicken Sie auf **Ressource erstellen**, auf **Compute** und dann unter **Ausgewählte Apps** auf **Alles anzeigen**.
 3. Klicken Sie auf **JDK**, klicken Sie auf **JDK 8** im Bereich **JDK**.  
    Für den Fall, dass Sie Legacyanwendungen haben, die nicht in JDK 8 ausgeführt werden können, sind VM-Images verfügbar, die **JDK 6** und **JDK 7** unterstützen.
 4. Wählen Sie im Bereich „JDK 8“ die Option **Klassisch** aus, und klicken Sie dann auf **Erstellen**.
@@ -90,7 +90,7 @@ Sobald Tomcat ausgeführt wird, können Sie auf Tomcat zugreifen, indem Sie die 
 Um von externen Computern aus festzustellen, ob Tomcat ausgeführt wird, müssen Sie einen Endpunkt erstellen und einen Port öffnen.
 
 ## <a name="to-create-an-endpoint-for-your-virtual-machine"></a>So erstellen Sie einen Endpunkt für den virtuellen Computer
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Virtuelle Computer (klassisch)**.
 3. Klicken Sie auf den Namen des virtuellen Computers, auf dem der Java-Anwendungsserver ausgeführt wird.
 4. Klicken Sie auf **Endpunkte**.
@@ -122,7 +122,7 @@ Um von externen Computern aus festzustellen, ob Tomcat ausgeführt wird, müssen
 10. Geben Sie im Bildschirm **Name** einen Namen für die Regel an, beispielsweise **HttpIn** (der Name der Regel muss jedoch nicht mit dem Namen des Endpunkts übereinstimmen). Klicken Sie anschließend auf **Fertig stellen**.  
     ![Neue eingehende Regel – Name][NewRuleName]
 
-An diesem Punkt sollte Ihre Tomcat-Website in einem externen Browser angezeigt werden. Geben Sie in die Adressleiste des Browsers eine URL mit dem Format **http://*Ihr\_DNS\_Name*.cloudapp.net** ein, wobei  ***Ihr\_DNS\_Name***** der DNS-Name ist, den Sie beim Erstellen des virtuellen Computers angegeben haben.
+An diesem Punkt sollte Ihre Tomcat-Website in einem externen Browser angezeigt werden. Geben Sie in die Adressleiste des Browsers eine URL im Format **http://*Ihr\_DNS\_Name*.cloudapp.net** ein, wobei ***Ihr\_DNS\_Name*** der DNS-Name ist, den Sie beim Erstellen des virtuellen Computers angegeben haben.
 
 ## <a name="application-lifecycle-considerations"></a>Überlegungen zum Lebenszyklus von Anwendungen
 * Sie können Ihr eigenes Archiv für Web-Anwendungen (WAR) erstellen und im Ordner **webapps** hinzufügen. Erstellen Sie z. B. ein elementares dynamisches JSP-Webprojekt (Java Service Page), und exportieren Sie das Projekt als WAR-Datei. Kopieren Sie die WAR-Datei im nächsten Schritt in den Apache Tomcat-Ordner **ebapps** auf dem virtuellen Computer, und führen Sie die Datei dann in einem Browser aus.

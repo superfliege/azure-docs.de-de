@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 16c72f8c22307a124fdb670aabca771084c0d1ec
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: aaa9705aed59b5cf78100eda9997bb1ca74845b9
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning-Experimentieren-Dienst – Konfigurationsdateien
 
@@ -34,13 +34,13 @@ Es folgen die relevanten Dateien in diesem Ordner:
 ## <a name="condadependenciesyml"></a>conda_dependencies.yml
 Diese Datei ist eine [Conda-Umgebungsdatei](https://conda.io/docs/using/envs.html#create-environment-file-by-hand), die die Laufzeitversion und Pakete von Python angibt, von denen Ihr Code abhängt. Wenn Azure ML Workbench ein Skript in einem Docker-Container oder einem HDInsight-Cluster ausführt, wird eine [Conda-Umgebung](https://conda.io/docs/using/envs.html) für das ausgeführte Skript erstellt. 
 
-In dieser Datei geben Sie die Python-Pakete an, die das Skript für die Ausführung benötigt. Der Azure ML-Experimentieren-Dienst erstellt die Conda-Umgebung im Docker-Image gemäß Ihrer Abhängigkeitsliste. Die Paketliste hier muss vom Ausführungsmodul erreichbar sein. Aus diesem Grund müssen Pakete in Kanälen aufgelistet werden, z.B.:
+In dieser Datei geben Sie die Python-Pakete an, die das Skript für die Ausführung benötigt. Der Azure ML-Experimentieren-Dienst erstellt die Conda-Umgebung im Docker-Image gemäß Ihrer Abhängigkeitsliste. Die Paketliste hier muss von der Ausführungs-Engine erreichbar sein. Aus diesem Grund müssen Pakete in Kanälen aufgelistet werden, z.B.:
 
 * [continuum.io](https://anaconda.org/conda-forge/repo)
 * [PyPI](https://pypi.python.org/pypi)
 * ein öffentlich zugänglicher Endpunkt (URL)
 * oder ein lokaler Dateipfad
-* andere vom Ausführungsmodul erreichbare Pakete
+* andere von der Ausführungs-Engine erreichbare Pakete
 
 >[!NOTE]
 >Bei der Ausführung auf einem HDInsight-Cluster erstellt Azure ML Workbench nur für die Ausführung eine Conda-Umgebung. Dadurch können verschiedene Benutzer auf verschiedenen Python-Umgebungen im gleichen Cluster ausgeführt werden.  
@@ -76,7 +76,7 @@ Azure ML Workbench verwendet die gleichen Conda-Umgebung ohne Neuerstellung, so 
 ## <a name="sparkdependenciesyml"></a>spark_dependencies.yml
 Diese Datei gibt den Spark-Anwendungsnamen an, wenn Sie ein PySpark-Skript und Spark-Pakete übermitteln, die installiert werden müssen. Sie können auch jedes öffentliche Maven-Repository sowie das Spark-Paket angeben, das in diesen Maven-Repositorys gefunden werden kann.
 
-Beispiel:
+Beispiel: 
 
 ```yaml
 configuration:
@@ -141,9 +141,10 @@ Die Datei _\<Computezielname>.compute_ gibt Verbindungs- und Konfigurationsinfor
 
 **password**: Das verschlüsselte Kennwort für die SSH-Verbindung.
 
-**sharedVolumes**: Flag, das signalisiert, dass das Ausführungsmodul die Docker-Funktion „freigegebene Volumes“ verwenden sollte, um Projektdateien hin und her zu senden. Ist dieses Flag aktiviert, kann die Ausführung beschleunigt werden, da Docker direkt auf Projekte zugreifen kann, ohne sie kopieren zu müssen. Es wird empfohlen, _FALSE_ festzulegen, wenn das Docker-Modul unter Windows ausgeführt wird, da das Freigeben von Volumes für Docker unter Windows unzuverlässig sein kann. Legen Sie es auf _TRUE_ fest, wenn das Modul auf MacOS oder Linux ausgeführt wird.
 
-**NvidiaDocker**: Wird dieses Flag auf _TRUE_ festgelegt, so weist es den Azure ML-Experimentieren-Dienst dazu an, den Befehl _nvidia-Docker_ anstelle des normalen _docker_-Befehls zu verwenden, um das Docker-Image zu starten. Das _Nvidia-Docker_-Modul gewährt dem Docker-Container Zugriff auf die GPU-Hardware. Die Einstellung ist erforderlich, wenn die GPU-Ausführung im Docker-Container stattfinden soll. Nur der Linux-Host unterstützt _Nvidia-docker_. Angenommen, die Linux-basierte DSVM in Azure wird mit _Nvidia-Docker_ bereitgestellt. _nvidia-docker_ wird ab jetzt unter Windows nicht unterstützt.
+            **sharedVolumes**: Flag, das signalisiert, dass die Ausführungs-Engine die Docker-Funktion „freigegebene Volumes“ verwenden sollte, um Projektdateien hin und her zu senden. Ist dieses Flag aktiviert, kann die Ausführung beschleunigt werden, da Docker direkt auf Projekte zugreifen kann, ohne sie kopieren zu müssen. Es wird empfohlen, _FALSE_ festzulegen, wenn die Docker-Engine unter Windows ausgeführt wird, da das Freigeben von Volumes für Docker unter Windows unzuverlässig sein kann. Legen Sie es auf _TRUE_ fest, wenn das Modul auf MacOS oder Linux ausgeführt wird.
+
+**NvidiaDocker**: Wird dieses Flag auf _TRUE_ festgelegt, so weist es den Azure ML-Experimentieren-Dienst dazu an, den Befehl _nvidia-Docker_ anstelle des normalen _docker_-Befehls zu verwenden, um das Docker-Image zu starten. Die _Nvidia-Docker_-Engine gewährt dem Docker-Container Zugriff auf die GPU-Hardware. Die Einstellung ist erforderlich, wenn die GPU-Ausführung im Docker-Container stattfinden soll. Nur der Linux-Host unterstützt _Nvidia-docker_. Angenommen, die Linux-basierte DSVM in Azure wird mit _Nvidia-Docker_ bereitgestellt. _nvidia-docker_ wird ab jetzt unter Windows nicht unterstützt.
 
 **NativeSharedDirectory**: Diese Eigenschaft gibt das Basisverzeichnis (z.B.: _~/.azureml/share/_) an, in dem Dateien gespeichert werden können, um auf mehreren Ausführungen auf dem gleichen Computeziel freigegeben werden zu können. Wenn diese Einstellung für die Ausführung auf einem Docker-Container verwendet wird, muss _SharedVolumes_ auf TRUE festgelegt werden. Andernfalls schlägt die Ausführung fehl.
 
@@ -166,8 +167,8 @@ _"az ml Experiment übermitteln foo.runconfig"_ führt den Befehl mit der _myscr
 **Environment Variables** (Umgebungsvariablen): In diesem Abschnitt können Benutzer Umgebungsvariablen als Teil ihrer Ausführungen festlegen. Benutzer können Umgebungsvariablen mit Name/Wert-Paaren im folgenden Format angeben:
 ```
 EnvironmentVariables:
-"EXAMPLE_ENV_VAR1": "Example Value1"
-"EXAMPLE_ENV_VAR2": "Example Value2"
+  "EXAMPLE_ENV_VAR1": "Example Value1"
+  "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
 Im Benutzercode kann auf diese Umgebungsvariablen zugegriffen werden. Mit dem folgenden Python-Code wird beispielsweise die Umgebungsvariable „EXAMPLE_ENV_VAR“ ausgegeben

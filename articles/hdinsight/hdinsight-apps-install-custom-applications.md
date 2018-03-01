@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 3bf8ff367fcf88c76c2dc711a6daeffdcb3258b7
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 4065c08e647ff708e1d8c4fa52563da7f83ef0c1
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsight
 
@@ -79,7 +79,7 @@ Sie können den Status der Anwendung im Azure-Portal nachverfolgen und sich so v
 
 **So öffnen Sie das Hue-Portal**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **HDInsight-Cluster** .  Sollte diese Option nicht angezeigt werden, klicken Sie auf **Durchsuchen** und anschließend auf **HDInsight-Cluster**.
 3. Klicken Sie auf den Cluster, in dem Sie die Anwendung installiert haben.
 4. Klicken Sie auf dem Blatt **Einstellungen** unter der Kategorie **Allgemein** auf **Anwendungen**. Die Anwendung **Hue** wird in der Liste auf dem Blatt **Installierte Apps** angezeigt.
@@ -111,12 +111,12 @@ HDInsight-Anwendungen können auf unterschiedliche Weise gelöscht werden.
 ### <a name="use-portal"></a>Mithilfe des Portals
 **So entfernen Sie eine Anwendung mithilfe des Portals**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **HDInsight-Cluster** .  Sollte diese Option nicht angezeigt werden, klicken Sie auf **Durchsuchen** und anschließend auf **HDInsight-Cluster**.
 3. Klicken Sie auf den Cluster, in dem Sie die Anwendung installiert haben.
 4. Klicken Sie auf dem Blatt **Einstellungen** unter der Kategorie **Allgemein** auf **Anwendungen**. Eine Liste mit installierten Anwendungen wird angezeigt. Im Rahmen dieses Tutorials wird **Hue** auf dem Blatt **Installierte Apps** angezeigt.
 5. Klicken Sie mit der rechten Maustaste auf die zu entfernende Anwendung, und klicken Sie anschließend auf **Löschen**.
-6. Klicken Sie auf **Ja** , um zu bestätigen.
+6. Klicken Sie auf **Ja**, um zu bestätigen.
 
 Über das Portal können Sie auch den Cluster oder die Ressourcengruppe löschen, die die Anwendung enthält.
 

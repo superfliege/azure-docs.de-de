@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: 82cd6e04693d0cf38b7608fb380a723291c87ffe
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8ad9c3a779ca52140a78ae905e4825f3144976aa
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -92,7 +92,7 @@ Zum Authentifizieren mit integrierter Authentifizierung müssen Sie Ihrer Anwend
 
 Sobald Sie [die Anwendung registriert haben](#register-your-application-with-an-azure-ad-tenant), befolgen Sie diese Schritte im Azure-Portal, um ihr Zugriff auf den Batch-Dienst zu gewähren:
 
-1. Wählen Sie im linken Navigationsbereich des Azure-Portals die Option **Weitere Dienste**, und klicken Sie auf **App-Registrierungen**.
+1. Wählen Sie im linken Navigationsbereich des Azure-Portals die Option **Alle Dienste** aus. Klicken Sie auf **App-Registrierungen**.
 2. Suchen Sie in der Liste mit den App-Registrierungen nach dem Namen Ihrer Anwendung:
 
     ![Suchen nach Ihrem Anwendungsnamen](./media/batch-aad-auth/search-app-registration.png)
@@ -124,7 +124,7 @@ Bei Authentifizierung Ihrer Anwendung bei einem Dienstprinzipal sendet sie die A
 
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 
-1. Wählen Sie im linken Navigationsbereich des Azure-Portals die Option **Weitere Dienste**, und klicken Sie auf **App-Registrierungen**.
+1. Wählen Sie im linken Navigationsbereich des Azure-Portals die Option **Alle Dienste** aus. Klicken Sie auf **App-Registrierungen**.
 2. Suchen Sie in der Liste mit den App-Registrierungen nach dem Namen Ihrer Anwendung.
 3. Zeigen Sie das Blatt **Einstellungen** an. Wählen Sie im Abschnitt **API-Zugriff** die Option **Schlüssel**.
 4. Um einen Schlüssel zu erstellen, geben Sie eine Beschreibung für den Schlüssel ein. Wählen Sie dann für den Schlüssel eine Dauer von einem oder zwei Jahren. 

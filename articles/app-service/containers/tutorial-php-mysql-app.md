@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9212e2a0063446cc6f1fd5faeb7ee61888fc0ecf
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7c3107d7385413d15445a8b3a3cd2476973ab632
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>Erstellen einer PHP- und MySQL-Web-App in Azure App Service unter Linux
 
@@ -320,7 +320,7 @@ In diesem Schritt stellen Sie die mit MySQL verbundene PHP-Anwendung in Azure Ap
 Die Laravel-Anwendung wird im Verzeichnis _/public_ gestartet. Für das PHP-Docker-Image für App Service wird Apache verwendet, und das Anpassen des `DocumentRoot`-Elements für Laravel ist nicht möglich. Sie können aber `.htaccess` verwenden, um alle Anforderungen so umzuschreiben, dass sie nicht auf das Stammverzeichnis verweisen, sondern auf _/public_. Im Repositorystamm wurde bereits ein `.htaccess`-Element für diese Zwecke hinzugefügt. Hiermit ist Ihre Laravel-Anwendung bereit für die Bereitstellung.
 
 > [!NOTE] 
-> Falls Sie die Umschreibung per _.htaccess_ nicht nutzen möchten, können Sie Ihre Laravel-Anwendung stattdessen mit einem [benutzerdefinierten Docker-Image](quickstart-custom-docker-image.md) bereitstellen.
+> Falls Sie die Umschreibung per _.htaccess_ nicht nutzen möchten, können Sie Ihre Laravel-Anwendung stattdessen mit einem [benutzerdefinierten Docker-Image](quickstart-docker-go.md) bereitstellen.
 >
 >
 
@@ -338,7 +338,7 @@ Die Laravel-Anwendung wird im Verzeichnis _/public_ gestartet. Für das PHP-Dock
 
 ### <a name="configure-database-settings"></a>Konfigurieren der Datenbankeinstellungen
 
-In App Service legen Sie Umgebungsvariablen als _App-Einstellungen_ fest, indem Sie den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) verwenden.
+Legen Sie in App Service mit dem Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) Umgebungsvariablen als _App-Einstellungen_ fest.
 
 Mit dem folgenden Befehl werden die App-Einstellungen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` und `DB_PASSWORD` konfiguriert. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;mysql_server_name>_.
 

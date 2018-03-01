@@ -1,4 +1,4 @@
-Klicken Sie auf die Schaltfläche **Neu**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge `Azure Active Directory B2C` ein.
+Klicken Sie auf die Schaltfläche **Ressource erstellen**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge `Azure Active Directory B2C` ein.
 
 ![Hervorgehobene Schaltfläche „Hinzufügen“ und Text „Azure Active Directory B2C“ im Feld „Marketplace durchsuchen“](./media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
@@ -12,7 +12,7 @@ Wählen Sie **Neuen Azure AD B2C-Mandanten erstellen**. In den Einstellungen in 
 
 ![Erstellen des Azure AD B2C-Mandanten mit Beispieltext in den verfügbaren Feldern](./media/active-directory-b2c-create-tenant/create-new-b2c-tenant.png)
 
-| Einstellung      | Beispielwert  | Beschreibung                                        |
+| Einstellung      | Beispielwert  | BESCHREIBUNG                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **Name der Organisation** | Contoso | Der Name der Organisation | 
 | **Name der Anfangsdomäne** |  ContosoB2CTenant | Der Domänenname für den B2C-Mandanten. Standardmäßig enthält der Name der Anfangsdomäne den Text „.onmicrosoft.com“. Wählen Sie beim Erstellen eines Testmandanten einen nicht für die Produktion bestimmten Namen, z.B. „ContosoB2CTesting“. |

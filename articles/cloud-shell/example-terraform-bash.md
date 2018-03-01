@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen mit Terraform und Bash in Azure Cloud Shell | Microsoft-Dokumentation
-description: Bereitstellen von Azure-Ressourcen mit Terraform in Bash
+title: Bereitstellen mit Terraform aus Bash in Azure Cloud Shell | Microsoft-Dokumentation
+description: Bereitstellen mit Terraform aus Bash in Azure Cloud Shell
 services: Azure
 documentationcenter: 
 author: tomarcher
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: c75b5d521dc3eacaf5c5921c35442b1afeb4fa13
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6df6a3a5242e0a5fc5c03136e1cd20967a93487a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="terraform-and-bash-in-cloud-shell"></a>Terraform und Bash in Cloud Shell
+# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Bereitstellen mit Terraform aus Bash in Azure Cloud Shell
 In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Ressourcengruppe mit dem [AzureRM-Anbieter von Terraform](https://www.terraform.io/docs/providers/azurerm/index.html) erstellen. 
 
 [Hashicorp Terraform](https://www.terraform.io/) ist ein Open Source-Tool, das APIs in deklarative Konfigurationsdateien umwandelt, die an Teammitglieder weitergegeben und von diesen bearbeitet, überprüft und versioniert werden können. Der Microsoft AzureRM-Anbieter wird verwendet, um mit Ressourcen zu interagieren, die vom Azure Resource Manager über die AzureRM-APIs unterstützt werden. 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 97e8d23d90821489575b3ac6e8f1e810b7ce25a9
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 51dca8955745b40a9126b142ea15e707fe58bc72
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-personal-data-in-microsoft-azure"></a>Verwalten personenbezogener Daten in Microsoft Azure
 
@@ -59,7 +59,7 @@ Dazu müssen Sie sich mit einem Konto anmelden, das als globaler Administrator f
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
+2. Wählen Sie **Alle Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 
     ![media/image1.png](media/manage-personal-data-azure/image001.png)
 
@@ -83,7 +83,7 @@ Dazu müssen Sie sich mit einem Konto anmelden, das als globaler Administrator f
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
+2. Wählen Sie **Alle Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 
     ![](media/manage-personal-data-azure/image001.png)
 

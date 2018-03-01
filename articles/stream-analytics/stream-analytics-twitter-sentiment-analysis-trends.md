@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: samacha
-ms.openlocfilehash: 98230a8b61d1776a9ab23fd416af306efc700959
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96a169343481f1cdf43af82a7768cfe08cbd4886
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -33,7 +33,7 @@ Die Twitter-Trendanalyse in Echtzeit ist ein gutes Beispiel für ein Analysetool
 
 Ein Unternehmen, das über eine Nachrichtenwebsite verfügt, ist daran interessiert, sich durch Seiteninhalte mit direkter Relevanz für die Leser gegenüber der Konkurrenz einen Vorteil zu verschaffen. Das Unternehmen verwendet eine Analyse sozialer Medien für Themen mit Relevanz für Leser und führt dazu Standpunktanalysen von Twitter-Daten in Echtzeit durch.
 
-Das Unternehmen benötigt Echtzeitanalysen des Tweet-Umfangs und der Stimmung im Hinblick auf wichtige Themen, um zu erkennen, welche Themen sich auf Twitter in Echtzeit zu Trendthemen entwickeln. Anders ausgedrückt: Es wird also ein Analysemodul für Standpunktanalysen basierend auf diesem Feed in sozialen Medien benötigt.
+Das Unternehmen benötigt Echtzeitanalysen des Tweet-Umfangs und der Stimmung im Hinblick auf wichtige Themen, um zu erkennen, welche Themen sich auf Twitter in Echtzeit zu Trendthemen entwickeln. Anders ausgedrückt: Es wird also eine Analyse-Engine für Standpunktanalysen basierend auf diesem Feed in sozialen Medien benötigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Tutorial verwenden Sie eine Clientanwendung, die eine Verbindung mit Twitter herstellt und nach Tweets mit bestimmten Hashtags sucht (die Sie festlegen können). Um die Anwendung auszuführen und die Tweets mit Azure Stream Analytics zu analysieren, benötigen Sie Folgendes:
@@ -51,7 +51,7 @@ Die Beispielanwendung generiert Ereignisse und überträgt sie mithilfe von Push
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>Erstellen eines Event Hub-Namespace und eines Event Hubs
 In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen diesem Namespace dann einen Event Hub hinzu. Event Hub-Namespaces werden verwendet, um verwandte Ereignisbusinstanzen logisch zu gruppieren. 
 
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Neu** > **Internet der Dinge** > **Event Hub**. 
+1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Ressource erstellen** > **Internet der Dinge** > **Event Hub**. 
 
 2. Geben Sie auf dem Blatt **Namespace erstellen** einen Namen für den Namespace ein (z.B. `<yourname>-socialtwitter-eh-ns`). Sie können einen beliebigen Namen für den Namespace verwenden. Der Name muss lediglich für eine URL gültig und innerhalb von Azure eindeutig sein. 
     
@@ -69,7 +69,7 @@ In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen di
 
     ![Blatt zum Erstellen eines neuen Event Hubs](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7. Klicken Sie auf **Erstellen**.
+7. Klicken Sie auf **Create**.
 
 
 ### <a name="grant-access-to-the-event-hub"></a>Gewähren des Zugriffs auf den Event Hub
@@ -87,7 +87,7 @@ Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit e
 
     ![Blatt zum Erstellen einer neuen Event Hub-Zugriffsrichtlinie](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.  Klicken Sie auf **Erstellen**.
+4.  Klicken Sie auf **Create**.
 
 5.  Nachdem die Richtlinie bereitgestellt wurde, klicken sie in der Liste der SAS-Richtlinien darauf.
 
@@ -200,7 +200,7 @@ Im folgenden Verfahren werden beide Ansätze beschrieben.
 
 Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben, können wir einen Stream Analytics-Auftrag einrichten, um diese Ereignisse in Echtzeit zu analysieren.
 
-1. Klicken Sie im Azure-Portal auf **Neu** > **Internet der Dinge** > **Stream Analytics-Auftrag**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Internet der Dinge** > **Stream Analytics-Auftrag**.
 
 2. Vergeben Sie einen Namen für den Auftrag `socialtwitter-sa-job`, und geben Sie ein Abonnement, eine Ressourcengruppe und einen Speicherort an.
 
@@ -208,7 +208,7 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
 
     ![Erstellen eines neuen Stream Analytics-Auftrags](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Create**.
 
     Der Auftrag wird erstellt, und die Auftragsdetails werden im Portal angezeigt.
 
@@ -229,7 +229,7 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
 
     ![Erstellen einer neuen Eingabe für einen Stream Analytics-Auftrag](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Create**.
 
 
 ## <a name="specify-the-job-query"></a>Festlegen der Auftragsabfrage
@@ -314,7 +314,7 @@ In diesem Tutorial schreiben Sie die aggregierten Tweet-Ereignisse aus der Auftr
     
     ![Blatt „Neue Ausgabe“ für den Stream Analytics-Auftrag](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4. Klicken Sie auf **Erstellen**. 
+4. Klicken Sie auf **Create**. 
 
     Azure erstellt das Speicherkonto und generiert automatisch einen Schlüssel. 
 
@@ -343,7 +343,7 @@ Es werden eine Auftragseingabe, eine Abfrage und eine Ausgabe angegeben. Sie kö
 
 Nachdem die Ausführung Ihres Auftrags gestartet wurde und der Auftrag den Twitter-Datenstrom in Echtzeit verarbeitet, können Sie die Ausgabe für die Standpunktanalyse anzeigen.
 
-Sie können ein Tool wie [Azure-Speicher-Explorer](https://http://storageexplorer.com/) oder [Azure-Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) verwenden, um die Auftragsausgabe in Echtzeit anzuzeigen. In dieser Ansicht können Sie [Power BI](https://powerbi.com/) dazu verwenden, Ihre Anwendung zu erweitern, um ein benutzerdefiniertes Dashboard wie das im nachstehenden Screenshot einzuschließen:
+Sie können ein Tool wie den [Azure Storage-Explorer](https://http://storageexplorer.com/) oder [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) verwenden, um die Auftragsausgabe in Echtzeit anzuzeigen. In dieser Ansicht können Sie [Power BI](https://powerbi.com/) dazu verwenden, Ihre Anwendung zu erweitern, um ein benutzerdefiniertes Dashboard wie das im nachstehenden Screenshot einzuschließen:
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 

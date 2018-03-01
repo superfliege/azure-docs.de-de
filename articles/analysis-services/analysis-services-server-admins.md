@@ -13,21 +13,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 6a42baf9fd880264e4130c009f27935a4743de21
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: d90f1e3df8f5934d5c334ec72b5726f105842ca1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-server-administrators"></a>Verwalten von Serveradministratoren
-„Serveradministratoren“ muss eine gültige Benutzergruppe in Azure Active Directory (Azure AD) für den Mandanten sein, in dem sich der Server befindet. Zum Verwalten von Serveradministratoren können Sie die Option **Analysis Services-Administratoren** auf dem Blatt für die Steuerung des Servers im Azure-Portal oder die Servereigenschaften in SSMS verwenden. 
+„Serveradministratoren“ muss eine gültige Benutzergruppe in Azure Active Directory (Azure AD) für den Mandanten sein, in dem sich der Server befindet. Zum Verwalten von Serveradministratoren können Sie die Option **Analysis Services-Administratoren** für Ihren Server im Azure-Portal oder die Servereigenschaften in SSMS verwenden. 
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>So fügen Sie Serveradministratoren über das Azure-Portal hinzu
-1. Klicken Sie auf dem Steuerungsblatt für den Server auf **Analysis Services-Administratoren**.
-2. Klicken Sie auf dem Blatt **\<Servername >-Analysis Services-Administratoren** auf **Hinzufügen**.
-3. Wählen Sie auf dem Blatt **Serveradministratoren hinzufügen** Benutzerkonten in Ihrem Azure AD aus, oder laden Sie externe Benutzer per E-Mail ein.
+1. Klicken Sie im Azure-Portal im Bereich für Ihren Server auf **Analysis Services-Administratoren**.
+2. Klicken Sie unter **\<Servername> – Analysis Services-Administratoren** auf **Hinzufügen**.
+3. Wählen Sie unter **Serveradministratoren hinzufügen** Benutzerkonten aus Ihrem Azure AD-Verzeichnis aus, oder laden Sie externe Benutzer per E-Mail ein.
 
     ![Serveradministratoren im Azure-Portal](./media/analysis-services-server-admins/aas-manage-users-admins.png)
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: bd86d4b13c8f61f278589e5c1d705ad91b3e3d4c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 02236e7f7ec6be0df5082d2cde3d616e628c3927
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Fehler auf der Seite einer Anwendung nach dem Anmelden
 
@@ -33,11 +33,11 @@ Es gibt mehrere mögliche Gründe, warum die Anwendung die Antwort von Azure AD 
 
 ## <a name="missing-attributes-in-the-saml-response"></a>Fehlende Attribute in der SAML-Antwort
 
-Führen Sie die folgenden Schritte aus, um in der Azure AD-Konfiguration, die in der Azure AD-Antwort gesendet werden soll, ein Attribut hinzuzufügen:
+Führen Sie die folgenden Schritte aus, um in der Azure AD-Konfiguration ein Attribut hinzuzufügen, das in der Azure AD-Antwort gesendet werden soll:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -71,9 +71,9 @@ Beim Anmelden bei der Anwendung tritt ein Fehler auf, da in der SAML-Antwort Att
 
 Um den Benutzer-ID-Wert zu ändern, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -97,11 +97,11 @@ In Azure AD wird das Format für das NameID-Attribut (Benutzer-ID) auf Grundlage
 
 ## <a name="the-application-expects-a-different-signature-method-for-the-saml-response"></a>Andere Signaturmethode für die SAML-Antwort von der Anwendung erwartet
 
-Eventuell müssen Sie ändern, welche Teile des SAML-Tokens von Azure Active Directory digital signiert werden. Führen Sie die folgenden Schritte aus:
+Eventuell müssen Sie ändern, welche Teile des SAML-Tokens von Azure Active Directory digital signiert werden. Folgen Sie diesen Schritten:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -133,9 +133,9 @@ Standardmäßig signiert Azure AD das SAML-Token mit dem sichersten Algorithmus.
 
 Um den Signaturalgorithmus zu ändern, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 

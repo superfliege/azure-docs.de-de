@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a41c09cc5a13c8326e22e315801b81c86d125c0e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da7050edae282c90c4f92c588ce8fe501ccba50d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung
 
@@ -31,7 +31,7 @@ Die Registerkarte **Bereitstellung** im linken Navigationsbereich für eine Unte
 
 Wenn für eine bestimmte Anwendung nur der Modus „Manuell“ angezeigt wird, bedeutet dies, dass für die App noch kein automatischer Azure AD-Bereitstellungsconnector erstellt wurde. Oder es bedeutet, dass die App die erforderliche Benutzerverwaltungs-API nicht unterstützt, über die ein automatisierter Bereitstellungsconnector erstellt wird.
 
-Wenn Sie die Unterstützung für die automatische Bereitstellung für eine bestimmte App anfordern möchten, können Sie eine unter <http://aka.ms/aadapprequest> eine Anforderung ausfüllen.
+Wenn Sie die Unterstützung für die automatische Bereitstellung für eine bestimmte App anfordern möchten, können Sie unter [Azure Active Directory Application Requests](https://aka.ms/aadapprequest) eine Anforderung ausfüllen.
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Konfigurieren einer Anwendung für die automatische Bereitstellung
 

@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure Table Storage mit .NET | Microsoft Docs
+title: Erste Schritte mit Azure Table Storage mit .NET | Microsoft-Dokumentation
 description: Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud.
 services: cosmos-db
 documentationcenter: .net
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: mimig
-ms.openlocfilehash: f95d66950feb8729a7edcad3e02ea9a932123e16
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 317adaac1551cf00e25640f1d99429ad76d598a2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Erste Schritte mit Azure Table Storage mit .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -85,7 +85,7 @@ Sie können die Azure Cosmos DB-Tabellenbibliothek in jeder Art von .NET-Anwendu
 ### <a name="use-nuget-to-install-the-required-packages"></a>Verwenden von NuGet zum Installieren der erforderlichen Pakete
 Es gibt drei Pakete, auf die Sie in Ihrem Projekt verweisen müssen, um dieses Tutorial abzuschließen:
 
-* [Allgemeine Azure Storage-Bibliothek für .NET (Vorschau)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/) –  
+* [Allgemeine Azure Storage-Bibliothek für .NET (Vorschauversion 8.6.0)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/8.6.0-preview). 
 * [Microsoft Azure Cosmos DB-Tabellenbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Azure Table Storage-Konto bzw. Ihrem Konto für die Azure Cosmos DB-Tabellen-API.
 * [Microsoft Azure Configuration Manager Library für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
 
@@ -570,7 +570,7 @@ do
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit den Grundlagen des Tabellenspeichers vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-* Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
+* Beim [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * Weitere Beispiele für Tabellenspeicher finden Sie unter [Getting Started with Azure Table Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/)
 * In der Referenzdokumentation für den Tabellenspeicherdienst finden Sie alle Details zu verfügbaren APIs:
 * [Referenz zur Storage-Clientbibliothek für .NET](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)

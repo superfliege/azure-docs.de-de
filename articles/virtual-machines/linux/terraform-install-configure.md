@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2017
 ms.author: echuvyrov
-ms.openlocfilehash: c156776103a466af8923ba7249d96835ff339268
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: dada9c70eef2adb2704e276a5401509581e37538
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure
  
@@ -80,12 +80,13 @@ az vm list-sizes --location westus
 
 ## <a name="configure-terraform-environment-variables"></a>Konfigurieren der Terraform-Umgebungsvariablen
 
-Konfigurieren Sie Terraform so, dass Mandanten-ID, Abonnement-ID, Client-ID und geheimer Clientschlüssel vom Dienstprinzipal verwendet werden, wenn Sie Azure-Ressourcen erstellen. Legen Sie die folgenden Umgebungsvariablen fest, die automatisch von den [Azure-Terraform-Modulen verwendet werden](https://registry.terraform.io/modules/Azure).
+Konfigurieren Sie Terraform so, dass Mandanten-ID, Abonnement-ID, Client-ID und geheimer Clientschlüssel vom Dienstprinzipal verwendet werden, wenn Sie Azure-Ressourcen erstellen. Sie können die Umgebung auch festlegen, wenn Sie mit einer anderen als der öffentlichen Azure-Cloud arbeiten. Legen Sie die folgenden Umgebungsvariablen fest, die automatisch von den [Azure-Terraform-Modulen verwendet werden](https://registry.terraform.io/modules/Azure).
 
 - ARM_SUBSCRIPTION_ID
 - ARM_CLIENT_ID
 - ARM_CLIENT_SECRET
 - ARM_TENANT_ID
+- ARM_ENVIRONMENT
 
 Dieses Beispiel-Shell-Skript können Sie dazu verwenden, diese Variablen festzulegen:
 
@@ -96,6 +97,9 @@ export ARM_SUBSCRIPTION_ID=your_subscription_id
 export ARM_CLIENT_ID=your_appId
 export ARM_CLIENT_SECRET=your_password
 export ARM_TENANT_ID=your_tenant_id
+
+# Not needed for public, required for usgovernment, german, china
+export ARM_ENVIRONMENT=public
 ```
 
 ## <a name="run-a-sample-script"></a>Ausführen eines Beispielskripts

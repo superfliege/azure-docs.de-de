@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: c10362fa1d5d9e4316dd94a3d08c9e1fcd3eb985
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: d76f756e7a6fe77886f0d4e00ab8b23273b4e09d
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Leitfaden zur Notfallwiederherstellung für Daten in Data Lake Store
 
-Die Daten in Ihrem Azure Data Lake Store-Konto sind über automatisierte Replikate vor vorübergehenden Hardwareausfällen innerhalb einer Region geschützt. So wird für Dauerhaftigkeit und eine hohe Verfügbarkeit gesorgt, und die Vereinbarung zum Servicelevel (SLA) für Azure Data Lake Store wird erfüllt. In diesem Artikel wird beschrieben, wie Sie Ihre Daten weiter vor selten auftretenden regionsweiten Ausfällen oder dem versehentlichen Löschen schützen.
+Die Daten in Ihrem Azure Data Lake Store-Konto sind über automatisierte Replikate vor vorübergehenden Hardwareausfällen innerhalb einer Region geschützt. So wird für Dauerhaftigkeit und Hochverfügbarkeit gesorgt, und die Vereinbarung zum Servicelevel (SLA) für Azure Data Lake Store wird erfüllt. In diesem Artikel wird beschrieben, wie Sie Ihre Daten weiter vor selten auftretenden regionsweiten Ausfällen oder dem versehentlichen Löschen schützen.
 
 ## <a name="disaster-recovery-guidance"></a>Leitfäden zur Notfallwiederherstellung
 Es ist wichtig für jeden Kunden, den eigenen Notfallwiederherstellungsplan zu erstellen. Weitere Informationen zum Erstellen eines Notfallwiederherstellungsplans finden Sie in der Azure-Dokumentation weiter unten. Hier sind einige Ressourcen angegeben, die beim Erstellen Ihres eigenen Plans hilfreich sind.
 
-* [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Technischer Leitfaden zur Resilienz in Azure](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>Bewährte Methoden

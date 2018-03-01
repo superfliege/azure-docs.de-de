@@ -14,27 +14,27 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewr: japere
-ms.openlocfilehash: 7ff6817bafdfe1943d70639c7f3c69c417f5f94a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 25e8bd404bc5b622568b8885f241c743f82f59cc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>Anzeige von Anwendungen im Zugriffsbereich
 
-Der Zugriffsbereich ist ein webbasiertes Portal, in dem Benutzer mit einem Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Diese Anwendungen werden im Namen des Benutzers im Azure AD-Portal konfiguriert. Der Administrator kann die Anwendung für den Benutzer direkt oder für eine Gruppe bereitstellen, zu der der Benutzer gehört. Beide Verfahren führen dazu, dass die Anwendung im Zugriffsbereich des Benutzers angezeigt wird.
+Der Zugriffsbereich ist ein webbasiertes Portal, mit dem Benutzer mit einem Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Diese Anwendungen werden im Namen des Benutzers im Azure AD-Portal konfiguriert. Der Administrator kann die Anwendung für den Benutzer direkt oder für eine Gruppe bereitstellen, zu der der Benutzer gehört. Beide Verfahren führen dazu, dass die Anwendung im Zugriffsbereich des Benutzers angezeigt wird.
 
 ## <a name="general-issues-to-check-first"></a>Allgemeine Probleme, die zuerst überprüft werden sollten
 
--   Wenn eine Anwendung kürzlich für einen Benutzer oder eine Gruppe entfernt wurde, zu der der Benutzer gehört, sollte sich der Benutzer vom Zugriffsbereich abmelden und nach einigen Minuten wieder anmelden, um festzustellen, ob die Anwendung entfernt wurde.
+-   Wenn eine Anwendung für einen Benutzer oder eine Gruppe entfernt wurde, zu der der Benutzer gehört, sollte sich der Benutzer vom Zugriffsbereich abmelden und nach einigen Minuten wieder anmelden, um festzustellen, ob die Anwendung entfernt wurde.
 
--   Wenn eine Lizenz kürzlich für einen Benutzer oder eine Gruppe entfernt wurde, zu der der Benutzer gehört, kann es je nach Größe und Komplexität der Gruppe lange dauern, bis die Änderungen durchgeführt wurden. Lassen Sie vor der Anmeldung beim Zugriffsbereich etwas Zeit verstreichen.
+-   Wenn eine Lizenz für einen Benutzer oder eine Gruppe entfernt wurde, zu der der Benutzer gehört, kann es je nach Größe und Komplexität der Gruppe lange dauern, bis die Änderungen durchgeführt wurden. Lassen Sie vor der Anmeldung beim Zugriffsbereich etwas Zeit verstreichen.
 
 ## <a name="problems-related-to-assigning-applications-to-users"></a>Probleme beim Zuweisen von Anwendungen zu Benutzern
 
 Möglicherweise wird eine Anwendung im Zugriffsbereich eines Benutzers angezeigt, da der Benutzer der Anwendung zuvor zugewiesen war. Nachfolgend sind einige Möglichkeiten aufgeführt, dies zu überprüfen:
 
--   [Überprüfen, ob der Benutzer der Anwendung zugewiesen ist](#check-if-a-user-is-assigned-to-the-application)
+-   [Überprüfen, ob der Anwendung ein Benutzer zugewiesen ist](#check-if-a-user-is-assigned-to-the-application)
 
 -   [Überprüfen, ob dem Benutzer eine Lizenz für die Anwendung zugewiesen ist](#check-if-a-user-is-under-a-license-related-to-the-application)
 
@@ -43,9 +43,9 @@ Möglicherweise wird eine Anwendung im Zugriffsbereich eines Benutzers angezeigt
 
 Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer der Anwendung zugewiesen ist:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -63,11 +63,11 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer der 
 
 ### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Überprüfen, ob dem Benutzer eine Lizenz für die Anwendung zugewiesen ist
 
-Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die einem Benutzer zugewiesen sind:
+Um die einem Benutzer zugewiesenen Lizenzen zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die ein
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen dem Benutzer derzeit zugewiesen sind.
 
@@ -91,11 +91,11 @@ Möglicherweise wird eine Anwendung im Zugriffsbereich eines Benutzers angezeigt
 
 ### <a name="check-a-users-group-memberships"></a>Überprüfen der Gruppenmitgliedschaften eines Benutzers
 
-Führen Sie die folgenden Schritte aus, um die Mitgliedschaft einer Gruppe zu überprüfen:
+Um die Mitgliedschaften einer Gruppe zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -103,7 +103,7 @@ Führen Sie die folgenden Schritte aus, um die Mitgliedschaft einer Gruppe zu ü
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Gruppen**.
 
@@ -113,9 +113,9 @@ Führen Sie die folgenden Schritte aus, um die Mitgliedschaft einer Gruppe zu ü
 
 ### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Überprüfen, ob ein Benutzer Mitglied einer Gruppe ist, die einer Lizenz zugewiesen ist
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -123,7 +123,7 @@ Führen Sie die folgenden Schritte aus, um die Mitgliedschaft einer Gruppe zu ü
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Gruppen**.
 

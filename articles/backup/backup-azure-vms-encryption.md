@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 10/13/2017
 ms.author: pajosh;markgal;trinadhk; sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509e891207d1469ed244eab4512ec66420284fd5
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 4a1a3c5eb5550967e0a0e045ec508a86cd80ee03
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup
 In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtuellen Computern mit Azure Backup beschrieben. Außerdem enthält er Details zu unterstützten Szenarien, Voraussetzungen und Problembehandlungsschritten für Fehler.
@@ -48,7 +48,7 @@ In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtu
 Führen Sie die folgenden Schritte zum Festlegen des Sicherungsziels, Definieren der Richtlinie, Konfigurieren von Elementen und Auslösen der Sicherung aus.
 
 ### <a name="configure-backup"></a>Konfigurieren der Sicherung
-1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit dem nächsten Schritt fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben und sich im Azure-Portal befinden, klicken Sie im **Hub**-Menü auf **Durchsuchen**.
+1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit dem nächsten Schritt fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben und sich im Azure-Portal befinden, wählen Sie **Alle Dienste** aus.
 
    a. Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
 
@@ -98,7 +98,7 @@ Wenn virtuelle Computer bereits in einem Recovery Services-Tresor gesichert und 
 
 ## <a name="provide-permissions-to-backup"></a>Gewähren von Berechtigungen für Backup
 Gehen Sie anhand der folgenden Schritte vor, um Backup die erforderlichen Berechtigungen für den Zugriff auf den Schlüsseltresor und für die Ausführung der Sicherung von verschlüsselten virtuellen Computern zu gewähren:
-1. Klicken Sie auf **Weitere Dienste**, und suchen Sie nach **Schlüsseltresore**.
+1. Wählen Sie **Alle Dienste** aus, und suchen Sie nach **Schlüsseltresore**.
 
     ![Schlüsseltresore](./media/backup-azure-vms-encryption/search-key-vault.png)
     
@@ -141,7 +141,7 @@ Stellen Sie zum Wiederherstellen verschlüsselter virtueller Computer zunächst 
 ## <a name="troubleshooting-errors"></a>Problembehandlung
 | Vorgang | Fehlerdetails | Lösung |
 | --- | --- | --- |
-|Backup  | Backup verfügt nicht über ausreichende Berechtigungen für den Schlüsseltresor zur Sicherung verschlüsselter virtueller Computer. | Backup müssen diese Berechtigungen anhand der [Schritte im vorherigen Abschnitt](#provide-permissions-to-azure-backup) gewährt werden. Sie können auch die PowerShell-Schritte im Abschnitt „Aktivieren des Schutzes“ in der PowerShell-Dokumentation unter [Verwenden von AzureRM.RecoveryServices.Backup-Cmdlets zum Sichern virtueller Computer](backup-azure-vms-automation.md#back-up-azure-vms) ausführen. |  
+|Sicherung | Backup verfügt nicht über ausreichende Berechtigungen für den Schlüsseltresor zur Sicherung verschlüsselter virtueller Computer. | Backup müssen diese Berechtigungen anhand der [Schritte im vorherigen Abschnitt](#provide-permissions-to-azure-backup) gewährt werden. Sie können auch die PowerShell-Schritte im Abschnitt „Aktivieren des Schutzes“ in der PowerShell-Dokumentation unter [Verwenden von AzureRM.RecoveryServices.Backup-Cmdlets zum Sichern virtueller Computer](backup-azure-vms-automation.md#back-up-azure-vms) ausführen. |  
 | Restore  |Sie können diesen verschlüsselten virtuellen Computer nicht wiederherstellen, da der diesem virtuellen Computer zugeordnete Schlüsseltresor nicht vorhanden ist. |Erstellen Sie einen Schlüsseltresor anhand der Vorgehensweise unter [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md). Verwenden Sie die Informationen unter [Wiederherstellen von Key Vault-Schlüssel und -Geheimschlüssel für verschlüsselte virtuelle Computer mithilfe von Azure Backup](backup-azure-restore-key-secret.md), um einen Schlüssel und ein Geheimnis wiederherzustellen, falls diese Angaben nicht schon vorhanden sind. |
 | Restore  |Sie können diesen verschlüsselten virtuellen Computer nicht wiederherstellen, da der Schlüssel und das Geheimnis, der bzw. das diesem virtuellen Computer zugeordnet ist, nicht vorhanden sind. |Verwenden Sie die Informationen unter [Wiederherstellen von Key Vault-Schlüssel und -Geheimschlüssel für verschlüsselte virtuelle Computer mithilfe von Azure Backup](backup-azure-restore-key-secret.md), um einen Schlüssel und ein Geheimnis wiederherzustellen, falls diese Angaben nicht schon vorhanden sind. |
 | Restore  |Backup ist nicht zum Zugreifen auf Ressourcen in Ihrem Abonnement autorisiert. |Stellen Sie wie zuvor erwähnt Datenträger zunächst gemäß den Schritten im Abschnitt „Wiederherstellen von gesicherten Datenträgern“ unter [Auswählen einer Konfiguration für die VM-Wiederherstellung](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration) wieder her. Verwenden Sie anschließend PowerShell zum [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |

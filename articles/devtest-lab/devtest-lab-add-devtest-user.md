@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs | Microsoft Docs"
+title: "Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs | Microsoft-Dokumentation"
 description: "Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs über das Azure-Portal oder PowerShell"
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: 2921356f848739d602807236006f9867eaa2a4e4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 348952626e13b9ac73ca2ec8e101bf02e416dc9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -64,7 +64,7 @@ Besitzer und Benutzer können über das Azure-Portal auf der Lab-Ebene hinzugef�
 Die folgenden Schritte führen Sie durch den Prozess des Hinzufügens eines Besitzers oder Benutzers zu einem Lab in Azure DevTest Labs:
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
-2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
+2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 4. Wählen Sie auf dem Blatt des Labs **Konfiguration**aus. 
 5. Wählen Sie auf dem Blatt **Konfiguration** die Option **Benutzer** aus.
@@ -118,7 +118,7 @@ Sie können einem Lab über das entsprechende Blatt im [Azure-Portal](http://go.
 Um einen Besitzer zu einem Azure-Abonnement hinzuzufügen, gehen Sie folgendermaßen vor:
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
-2. Wählen Sie **Weitere Dienste** und dann **Abonnements** aus der Liste aus.
+2. Wählen Sie **Alle Dienste** und dann **Abonnements** aus der Liste aus.
 3. Wählen Sie das gewünschte Abonnement aus.
 4. Wählen Sie das Symbol **Zugriff** aus. 
    

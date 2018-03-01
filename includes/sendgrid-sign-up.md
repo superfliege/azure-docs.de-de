@@ -2,7 +2,7 @@ Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit d
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>So registrieren Sie ein SendGrid-Konto
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
-2. Klicken Sie im Menü auf der linken Seite auf **Neu**.
+2. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** aus.
 
     ![command-bar-new][command-bar-new]
 3. Klicken Sie auf **Add-Ons** und anschließend auf **E-Mail-Zustellung über SendGrid**.
@@ -45,7 +45,7 @@ Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit d
 
     ![api-keys][api-keys]
 
-3. Klicken Sie auf das Dropdownfeld **Create API Key** (API-Schlüssel erstellen), und wählen Sie **General API Key** (Allgemeiner API-Schlüssel) aus.
+3. Klicken Sie auf **API-Schlüssel erstellen**.
 
     ![general-api-key][general-api-key]
 4. Geben Sie mindestens einen Wert für **Name of this key** (Name dieses Schlüssels) an, gewähren Sie Vollzugriff für **Mail Send** (Senden von E-Mails), und wählen Sie **Save** (Speichern).

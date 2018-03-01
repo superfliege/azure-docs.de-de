@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8820691f5b7c6dbd2c15faede75de123f779b167
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: b0b5b991b7d2baaa40ebedbd19247717e91aa027
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="faq-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory
 
@@ -128,5 +128,4 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
 - Der VM-Agent unter Windows unterstützt zurzeit keine vom Benutzer zugewiesenen MSIs. 
-- Das Zuweisen einer Rolle zu einer MSI für den Zugriff auf eine Ressource erfordert derzeit keine besonderen Berechtigungen. 
 - Wenn ein virtueller Computer über eine vom Benutzer zugewiesene MSI, aber nicht über eine vom System zugewiesene MSI verfügt, wird die MSI auf der Portal-Benutzeroberfläche als aktiviert dargestellt. Um die vom System zugewiesene MSI zu aktivieren, verwenden Sie eine Azure Resource Manager-Vorlage, die Azure-Befehlszeilenschnittstelle oder ein SDK.

@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 86e19d5bb942937779665eb60d9dc0654c16747d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fa5f9afbc595f06bd41e8670fab7730b610f570e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Konfigurieren von Python in Azure App Service-Web-Apps
 Dieses Lernprogramm beschreibt die Optionen für das Authoring und Konfigurieren einer grundlegenden Web Server Gateway Interface (WSGI)-kompatiblen Python-Anwendung für [Azure App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -36,7 +36,7 @@ Der Azure Marketplace enthält Vorlagen für die Frameworks Bottle, Django und F
 ## <a name="web-app-creation-on-azure-portal"></a>Web-App-Erstellung im Azure-Portal
 Bei diesem Tutorial wird davon ausgegangen, dass Sie über ein Azure-Abonnement verfügen und Zugriff auf das Azure-Portal haben.
 
-Wenn Sie noch nicht über eine Web-App verfügen, können Sie eine über das [Azure-Portal](https://portal.azure.com) erstellen.  Klicken Sie in der linken oberen Ecke auf „NEU“ und anschließend auf **Web und mobil** > **Web-App**.
+Wenn Sie noch nicht über eine Web-App verfügen, können Sie eine über das [Azure-Portal](https://portal.azure.com) erstellen. Klicken Sie oben links auf **Ressource erstellen** > **Web + Mobil** > **Web-Apps**.
 
 ## <a name="git-publishing"></a>Git-Veröffentlichung
 Konfigurieren Sie die Git-Veröffentlichung für Ihre neu erstellte Web-App anhand der Anleitung unter [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md). In diesem Tutorial wird die Python-Web-App mit Git erstellt, verwaltet und für Azure App Service veröffentlicht.

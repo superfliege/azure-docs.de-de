@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
 ms.author: bhanupr
-ms.openlocfilehash: 77478616eae27828a57a36dc0aaf3884e80ce403
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 08795e6aafc6ccb43bad59189676a8680c03c966
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services
 
@@ -36,9 +36,11 @@ In diesem Artikel erfahren Sie, wie Sie in die Domäne eingebundene HDInsight-Cl
 Sie müssen einen Azure AD DS erstellen, um einen HDInsight-Cluster erstellen zu können. Informationen zum Erstellen eines Azure AD DS finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
 > [!NOTE]
-> Nur die Mandantenadministratoren verfügen über Berechtigungen zum Erstellen von Domänendiensten. Stellen Sie bei Verwendung von Azure Data Lake Store (ADLS) als Standardspeicher für HDInsight sicher, dass der Azure AD-Standardmandant für ADLS mit der Domäne für den HDInsight-Cluster identisch ist. 
+> Nur die Mandantenadministratoren verfügen über Berechtigungen zum Erstellen von Domänendiensten. Stellen Sie bei Verwendung von Azure Data Lake Store (ADLS) als Standardspeicher für HDInsight sicher, dass der Azure AD-Standardmandant für ADLS mit der Domäne für den HDInsight-Cluster identisch ist. Damit dieses Setup mit Azure Data Lake Store funktioniert, muss die mehrstufige Authentifizierung für Benutzer, die Zugriff auf den Cluster haben sollen, deaktiviert werden.
 
 Nachdem der Domänendienst bereitgestellt wurde, müssen Sie ein Dienstkonto in der Gruppe **Azure AD DC-Administratoren** anlegen, um den HDInsight-Cluster zu erstellen. Das Dienstkonto muss ein globaler Administrator im Azure AD sein.
+
+Für durch Azure AD Domain Services verwaltete Domänen müssen Sie Secure LDAP konfigurieren. Informationen zum Aktivieren von Secure LDAP finden Sie unter [Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 
 ## <a name="create-a-domain-joined-hdinsight-cluster"></a>Erstellen eines in die Domäne eingebundenen HDInsight-Clusters
 

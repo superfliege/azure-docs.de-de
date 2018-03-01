@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/15/2018
 ms.author: danoble
-ms.openlocfilehash: 40d7b8a52f67d116ab764b9716c917d5c7865467
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 2512ba4ea89bd3477c7901cda29ab3682d834195
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -195,6 +195,11 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `Cosmos
   <td></td>
 </tr>
 <tr>
+  <td>GetStatus</td>
+  <td>Ruft den Status des Azure Cosmos DB-Emulators ab. Der Status wird durch den Exitcode angegeben: 1 = wird gestartet, 2 = wird ausgeführt, 3 = beendet. Ein negativer Exitcode gibt an, dass ein Fehler aufgetreten ist. Es wird keine andere Ausgabe erzeugt.</td>
+  <td>CosmosDB.Emulator.exe /GetStatus</td>
+  <td></td>
+<tr>
   <td>Shutdown</td>
   <td>Fährt den Azure Cosmos DB-Emulator herunter.</td>
   <td>CosmosDB.Emulator.exe /Shutdown</td>
@@ -318,6 +323,40 @@ Gehen Sie wie folgt vor, um die Anzahl von Sammlungen zu ändern, die für den A
 4. Installieren Sie die neueste Version des [Azure Cosmos DB-Emulators](https://aka.ms/cosmosdb-emulator).
 5. Starten Sie den Emulator mit dem PartitionCount-Flag, indem Sie einen Wert <= 250 festlegen. Beispiel: `C:\Program Files\Azure CosmosDB Emulator>CosmosDB.Emulator.exe /PartitionCount=100`.
 
+## <a name="controlling-the-emulator"></a>Steuern des Emulators
+
+Der Emulator bietet ein PowerShell-Modul für das Starten, Beenden, Deinstallieren und Abrufen des Status des Diensts. Gehen Sie zur Verwendung wie folgt vor:
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+```
+
+oder legen Sie das `PSModules`-Verzeichnis auf `PSModulesPath`, und importieren Sie es wie folgt:
+
+```powershell
+$env:PSModulesPath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
+Import-Module Microsoft.Azure.CosmosDB.Emulator
+```
+
+Hier sehen Sie eine Zusammenfassung der Befehle zum Steuern des Emulators über PowerShell:
+
+### `Get-CosmosDbEmulatorStatus`
+
+Gibt einen dieser ServiceControllerStatus-Werte aus: ServiceControllerStatus.StartPending, ServiceControllerStatus.Running oder ServiceControllerStatus.Stopped.
+
+### `Start-CosmosDbEmulator [-NoWait]`
+
+Startet den Emulator. Standardmäßig wartet der Befehl, bis der Emulator bereit ist, Anforderungen entgegenzunehmen. Verwenden Sie die Option -NoWait, wenn Sie möchten, dass das Cmdlet zurückgegeben wird, sobald der Emulator gestartet wurde.
+
+### `Stop-CosmosDbEmulator [-NoWait]`
+
+Beendet den Emulator. Standardmäßig wartet dieser Befehl, bis der Emulator vollständig heruntergefahren ist. Verwenden Sie die Option -NoWait, wenn Sie möchten, dass das Cmdlet zurückgegeben wird, sobald der Emulator heruntergefahren wird.
+
+### `Uninstall-CosmosDbEmulator [-RemoveData]`
+
+Deinstalliert den Emulator und entfernt optional den gesamten Inhalt von $env:LOCALAPPDATA\CosmosDbEmulator.
+Das Cmdlet stellt sicher, dass der Emulator vor der Deinstallation beendet wird.
+
 ## <a name="running-on-docker"></a>Ausführen unter Docker
 
 Der Azure Cosmos DB-Emulator kann unter Docker für Windows ausgeführt werden. Der Emulator funktioniert nicht unter Docker für Oracle Linux.
@@ -416,7 +455,29 @@ Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an ein
 
 Sie können die Versionsnummer überprüfen, indem Sie mit der rechten Maustaste auf das lokale Emulatorsymbol in der Taskleiste und auf das Menüelement „Info“ klicken.
 
-### <a name="120-released-on-january-26-2018"></a>1.20, veröffentlicht am 26. Januar 2018
+### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4, freigegeben am 14. Februar 2018
+
+In dieser Version gibt es ein neues Feature und zwei Fehlerbehebungen. Vielen Dank an die Kunden, die uns geholfen haben, diese Probleme zu finden und zu beheben.
+
+#### <a name="bug-fixes"></a>Fehlerbehebungen
+
+1. Der Emulator funktioniert jetzt auf Computern mit einem Kern oder zwei Kernen (oder virtuellen CPUs).
+
+   Cosmos DB weist Aufgaben zu, um verschiedene Dienste auszuführen. Die Anzahl der zugewiesenen Aufgaben ist ein Vielfaches der Anzahl von Kernen auf einem Host. Das Standardvielfache ist gut für Produktionsumgebungen geeignet, in denen viele Kerne vorhanden sind. Auf Computern mit höchstens zwei Prozessoren werden jedoch keine Aufgaben zugewiesen, um diese Dienste auszuführen, wenn dieses Vielfache angewendet wird.
+
+   Dies wurde korrigiert, indem ein Feature zur Außerkraftsetzung der Konfiguration zum Emulator hinzugefügt wurde. Es wird jetzt ein Vielfaches von 1 angewendet. Die Anzahl der Aufgaben, die für die Ausführung verschiedener Dienste zugewiesen wurden, entspricht nun der Anzahl der Kerne auf einem Host.
+
+   Wenn wir nichts anderes für diese Version getan hätten, dann hätten wir dieses Problem gelöst. Viele Entwicklungs-/Testumgebungen, die den Emulator hosten, haben einen Kern oder zwei Kerne.
+
+2. Es ist nicht mehr erforderlich, für den Emulator Microsoft Visual C++ 2015 Redistributable zu installieren.
+
+   Neuinstallationen von Windows (Desktop- und Server-Editionen) enthalten dieses weiterverteilbare Paket nicht. Daher sind die weiterverteilbaren Binärdateien nun direkt im Emulator enthalten.
+
+#### <a name="features"></a>Features
+
+Viele der befragten Kunden gaben an, dass es von Vorteil wäre, wenn der Emulator skriptfähig wäre. Daher haben wir in dieser Version einige Skriptfunktionen hinzugefügt. Der Emulator enthält nun ein PowerShell-Modul zum Starten, Beenden und Abrufen des Status sowie, um sich selbst zu deinstallieren: `Microsoft.Azure.CosmosDB.Emulator`. 
+
+### <a name="120911-released-on-january-26-2018"></a>1.20.91.1, veröffentlicht am 26. Januar 2018
 
 * Die Pipeline für die MongoDB-Aggregation wurde standardmäßig aktiviert.
 

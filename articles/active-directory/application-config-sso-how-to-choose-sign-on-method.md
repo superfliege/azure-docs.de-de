@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: c75eba01cc98a5ed3df4f51cb024d82be49f97f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4363f308f9bfa685b0f4e946cdd97d34b6ece197
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>Bestimmen der zu verwendenden Methode für das einmalige Anmelden
 
@@ -25,13 +25,13 @@ In diesem Artikel erhalten Sie Informationen zu den von Azure AD unterstützten 
 
 ## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Von bestimmten Anwendungstypen unterstützte Modi für das einmalige Anmelden und die Bereitstellung
 
-Die Tabelle unten beschreibt die verschiedenen Modi für das einmalige Anmelden und die Bereitstellung, die von den oben genannten Anwendungstypen unterstützt werden. In dieser Tabelle erfahren Sie, welche Anwendung Sie hinzufügen müssen, um ein bestimmtes Ziel zu erreichen.
+Die folgende Tabelle beschreibt die verschiedenen Modi für das einmalige Anmelden und die Bereitstellung, die von den vorstehenden Anwendungstypen unterstützt werden. In dieser Tabelle erfahren Sie, welche Anwendung Sie hinzufügen müssen, um ein bestimmtes Ziel zu erreichen.
 
   ![Tabelle der Anwendungstypen](./media/application-tables/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Auswählen eines Modus für das einmalige Anmelden
 
-Hier werden die unterstützten Modi für das **einmalige Anmelden** für Azure AD-Anwendungen aufgeführt.
+Nachfolgend werden die unterstützten Modi für das **einmalige Anmelden** für Azure AD-Anwendungen aufgeführt.
 
 -   **Azure AD-SSO deaktiviert**: Wählen Sie diesen **Modus für das einmalige Anmelden** aus, wenn Sie noch nicht dazu bereit sind, diese Anwendung in das einmalige Anmelden über Azure AD zu integrieren, oder wenn Sie die Anwendung einfach nur testen möchten.
 
@@ -39,7 +39,7 @@ Hier werden die unterstützten Modi für das **einmalige Anmelden** für Azure A
 
 -   **Kennwortbasierte Anmeldung**: Wählen Sie [Kennwortbasierte Anmeldung](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) als **Modus für das einmalige Anmelden** aus, wenn Ihre Anwendung HTML-basierte Felder für Benutzername und Kennwort generiert und Sie diese Informationen sicher speichern möchten, damit die Felder für Benutzername und Kennwort in der Anwendung später automatisch ausgefüllt werden können.
 
--   **SAML-basierte Anmeldung**: Wählen Sie [SAML-basierte Anmeldung](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) als Modus für das einmalige Anmelden aus, wenn Ihre Anwendung die Protokolle SAML oder OpenID Connect unterstützt oder wenn Sie Benutzer basierend auf Regeln, die Sie in Ihrem SAML-Ansprüchen definieren, zu bestimmten Anwendungsrollen zuordnen möchten. *(**Hinweis:** Diese Option ist nicht verfügbar, wenn für eine Anwendung der Anwendungsproxy konfiguriert ist.)*
+-   **SAML-basierte Anmeldung**: Wählen Sie [SAML-basierte Anmeldung](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) als Modus für das einmalige Anmelden aus, wenn Ihre Anwendung die Protokolle SAML oder OpenID Connect unterstützt, oder wenn Sie Benutzer basierend auf Regeln, die Sie in Ihrem SAML-Ansprüchen definieren, zu bestimmten Anwendungsrollen zuordnen möchten. *(**Hinweis:** Diese Option ist nicht verfügbar, wenn für eine Anwendung der Anwendungsproxy konfiguriert ist.)*
 
 -   **Headerbasierte Anmeldung**: Wählen Sie [Headerbasierte Anmeldung](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) als Modus für das einmalige Anmelden aus, wenn das einmalige Anmelden bei einer Anwendung mit PingAccess-Funktion erfolgen soll, die die HTTP-Header-basierte Authentifizierung unterstützt. *(**Hinweis:** Diese Option ist nur verfügbar, wenn für eine Anwendung der Anwendungsproxy sowie PingAccess konfiguriert sind.)*
 
@@ -47,7 +47,7 @@ Hier werden die unterstützten Modi für das **einmalige Anmelden** für Azure A
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Modi für das einmalige Anmelden für benutzerdefiniert entwickelte Anwendungen
 
-[Benutzerdefiniert entwickelte Anwendungen](#_Custom-Developed_Applications) unterstützen weitere Modi für das einmalige Anmelden, die oben nicht aufgeführt sind. Diese umfassen:
+[Benutzerdefiniert entwickelte Anwendungen](#_Custom-Developed_Applications) unterstützen weitere Modi für das einmalige Anmelden, die oben nicht aufgeführt sind. Hierzu zählen:
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)-basiertes Anmelden
 
@@ -61,11 +61,11 @@ Weitere Informationen zum Erstellen einer benutzerdefiniert entwickelten Anwendu
 
 ## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Festlegen des Modus für das einmalige Anmelden für eine Anwendung
 
-Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, führen Sie folgende Schritte aus:
+Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, folgen Sie diesen Anweisungen:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 

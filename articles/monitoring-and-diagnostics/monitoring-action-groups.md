@@ -1,8 +1,8 @@
 ---
 title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
-author: anirudhcavale
-manager: orenr
+author: dkamstra
+manager: chrad
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
-ms.author: ancav
-ms.openlocfilehash: 9f7f9dcc473e6925000ebe76a6592779c228a9af
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 02/16/2018
+ms.author: dukek
+ms.openlocfilehash: 772b9c2b9532bd2cc37ad89db92545297eecd903
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
 In diesem Artikel wird beschrieben, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 
-Sie können eine Liste von Aktionen mit Aktionsgruppen konfigurieren. Diese Gruppen können Sie dann verwenden, wenn Sie Aktivitätsprotokollwarnungen definieren. Diese Gruppen können Sie dann bei jeder Aktivitätsprotokollwarnung wiederverwenden, die Sie definieren, um sicherzustellen, dass jedes Mal, wenn die Aktivitätsprotokollwarnung ausgelöst wird, die gleichen Aktionen ausgeführt werden.
+Sie können eine Liste von Aktionen mit Aktionsgruppen konfigurieren. Diese Gruppen können Sie dann bei jeder Warnung wiederverwenden, die Sie definieren, um sicherzustellen, dass jedes Mal, wenn eine Warnung ausgelöst wird, die gleichen Aktionen ausgeführt werden.
 
 Eine Aktivitätsgruppe kann bis zu zehn Aktionen jedes Aktionstyps enthalten. Jede Aktion besteht aus den folgenden Eigenschaften:
 
@@ -56,7 +56,7 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
     a. **Name**: Geben Sie einen eindeutigen Bezeichner für diese Aktion an.
 
-    b. **Aktionstyp**: Wählen Sie SMS, E-Mail, Webhook, Azure-App, ITSM oder Automation-Runbook aus.
+    b. **Aktionstyp**: Wählen Sie E-Mail, SMS, Azure-App, Webhook, ITSM oder Automation-Runbook aus.
 
     c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook an. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
 

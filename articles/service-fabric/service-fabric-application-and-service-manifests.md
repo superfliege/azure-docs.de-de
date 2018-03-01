@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/07/2017
+ms.date: 2/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8e0cf78aef7e973188ce9581ec94f012f6ecde90
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 35288fe5473ab788916503d986aa5360b150b947
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste
 In diesem Artikel wird beschrieben, wie Service Fabric-Anwendungen und -Dienste mit den Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ definiert und mit Versionsangaben versehen werden.  Eine Dokumentation des XML-Schemas für diese Manifestdateien finden Sie unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md).
@@ -70,7 +70,7 @@ Das Dienstmanifest definiert deklarativ der Diensttyp und die Version. Es legt D
 
 Die durch **EntryPoint** angegebene ausführbare Datei ist üblicherweise der Diensthost mit langer Ausführungsdauer. **SetupEntryPoint** ist ein privilegierter Einstiegspunkt, der mit den gleichen Anmeldeinformationen wie Service Fabric (i.d.R. dem *LocalSystem*-Konto) vor jedem anderen Einstiegspunkt ausgeführt wird.  Das Vorhandensein eines separaten Setupeinstiegspunkts vermeidet, dass der Diensthost über längere Zeiträume mit hohen Berechtigungen ausgeführt werden muss. Die von **EntryPoint** angegebene ausführbare Datei wird ausgeführt, nachdem **SetupEntryPoint** erfolgreich beendet wurde. Wenn der Prozess beendet wird oder abstürzt, wird der resultierende Prozess überwacht und neu gestartet (er beginnt wieder mit **SetupEntryPoint**).  
 
-Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Ausführung einer ausführbaren Datei vor dem Starten des Diensts sowie die Ausführung eines Vorgangs mit erhöhten Rechten. Beispiel:
+Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Ausführung einer ausführbaren Datei vor dem Starten des Diensts sowie die Ausführung eines Vorgangs mit erhöhten Rechten. Beispiel: 
 
 * Einrichten und Initialisieren von Umgebungsvariablen, die die ausführbare Datei des Diensts benötigt. Dies ist nicht auf Dateien beschränkt, die mit den Service Fabric-Programmiermodellen geschrieben wurden. „npm.exe“ benötigt beispielsweise einige Umgebungsvariablen, die zum Bereitstellen einer node.js-Anwendung konfiguriert wurden.
 * Einrichten einer Zugriffssteuerung durch Installieren von Sicherheitszertifikaten.
@@ -177,7 +177,7 @@ For more information about other features supported by application manifests, re
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Packen einer Anwendung](service-fabric-package-apps.md) und Vorbereiten der Anwendung für die Bereitstellung
+- [Packen einer Anwendung](service-fabric-package-apps.md) und Vorbereiten der Anwendung für die Bereitstellung.
 - [Bereitstellen und Entfernen von Anwendungen](service-fabric-deploy-remove-applications.md)
 - [Konfigurieren von Parametern und Umgebungsvariablen für verschiedene Anwendungsinstanzen](service-fabric-manage-multiple-environment-app-configuration.md)
 - [Konfigurieren von Sicherheitsrichtlinien für Ihre Anwendung](service-fabric-application-runas-security.md)

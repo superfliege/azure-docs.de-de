@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 92816a5b1a74be5b64d974ad9ade47374db5db10
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5998aa0e0b281ead859c24d792c3e175e3cca899
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Führen Sie die folgenden Schritte aus, um Probleme bei NSGs für einen virtuell
 Sie können die vollständige Liste der effektiven Sicherheitsregeln für eine NIC über den virtuellen Computer selbst anzeigen. Zudem können Sie NSG-Regeln für die NIC und das Subnetz auf dem Blatt für die effektiven Regeln hinzufügen, ändern und löschen, wenn Sie über die Berechtigungen zum Durchführen dieser Vorgänge verfügen.
 
 1. Melden Sie sich mit einem Azure-Konto unter „https://portal.azure.com“ beim Azure-Portal an. Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
-2. Klicken Sie auf **Weitere Dienste** und dann in der angezeigten Liste auf **Virtuelle Computer**.
+2. Klicken Sie auf **Alle Dienste** und dann in der angezeigten Liste auf **Virtuelle Computer**.
 3. Wählen Sie in der angezeigten Liste einen virtuellen Computer für die Problembehandlung aus. Für den entsprechenden virtuellen Computer wird dann ein Blatt mit Optionen angezeigt.
 4. Klicken Sie auf **Diagnose und Problembehandlung**, und wählen Sie dann ein gängiges Problem aus. In diesem Beispiel wird **Ich kann keine Verbindung mit meinem virtuellen Windows-Computer herstellen** ausgewählt. 
    
@@ -96,7 +96,7 @@ Sie können die vollständige Liste der effektiven Sicherheitsregeln für eine N
 Wenn der Datenverkehr auf dem virtuellen Computer für eine bestimmte NIC beeinträchtigt ist, können Sie eine vollständige Liste der effektiven Regeln für die NIC über den Kontext der Netzwerkschnittstellen anzeigen, indem Sie die folgenden Schritte ausführen:
 
 1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an.
-2. Klicken Sie auf **Weitere Dienste** und dann in der angezeigten Liste auf **Netzwerkschnittstellen**.
+2. Klicken Sie auf **Alle Dienste** und dann in der angezeigten Liste auf **Netzwerkschnittstellen**.
 3. Wählen Sie eine Netzwerkschnittstelle aus. In der folgenden Abbildung wird eine NIC mit dem Namen *VM1-NIC1* ausgewählt.
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image5.png)
@@ -113,7 +113,7 @@ Wenn der Datenverkehr auf dem virtuellen Computer für eine bestimmte NIC beeint
 Wenn Sie NSG-Regeln ändern, können Sie die Auswirkung der für einen bestimmten virtuellen Computer hinzugefügten Regeln überprüfen. Sie können eine vollständige Liste der effektiven Sicherheitsregeln für alle NICs anzeigen, auf die eine bestimmte NSG angewendet wird, ohne auf dem Blatt der entsprechenden NSG den Kontext wechseln zu müssen. Führen Sie zur Problembehandlung der effektiven Regeln in einer NSG die folgenden Schritte aus:
 
 1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an.
-2. Klicken Sie auf **Weitere Dienste** und dann in der angezeigten Liste auf **Netzwerksicherheitsgruppen**.
+2. Klicken Sie auf **Alle Dienste** und dann in der angezeigten Liste auf **Netzwerksicherheitsgruppen**.
 3. Wählen Sie eine NSG aus. In der folgenden Abbildung wurde eine NSG mit dem Namen „VM1-nsg“ ausgewählt.
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image6.png)

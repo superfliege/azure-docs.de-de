@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4f58a587c1f10aea1cee89e46fa9ec340e0d21c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db2d9313e443ebc9dd32fcb905b0ae62219e4bbf
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>Überprüfen von XML mit Schemas für Azure Logic Apps und Enterprise Integration Pack
 
@@ -26,9 +26,9 @@ Schemas bestätigen, dass empfangene XML-Dokumente gültig sind und die erwartet
 
 ## <a name="add-a-schema"></a>Hinzufügen eines Schemas
 
-1. Klicken Sie im Azure-Portal auf **Weitere Dienste**.
+1. Wählen Sie im Azure-Portal **Alle Dienste** aus.
 
-    ![Azure-Portal, „Weitere Dienste“](media/logic-apps-enterprise-integration-schemas/overview-11.png)
+    ![Azure-Portal, „Alle Dienste“](media/logic-apps-enterprise-integration-schemas/overview-11.png)
 
 2. Geben Sie im Filtersuchfeld das Wort **Integration** ein, und wählen Sie in der Liste mit den Ergebnissen den Eintrag **Integrationskonten** aus.
 
@@ -58,7 +58,7 @@ Die Schritte hierfür richten sich nach der Zugriffsebene für den Blobcontainer
 
 **So bestimmen Sie diese Zugriffsebene**
 
-1.  Öffnen Sie den **Azure-Speicher-Explorer**. 
+1.  Öffnen Sie den **Azure Storage-Explorer**. 
 
 2.  Wählen Sie unter **Blobcontainer** den gewünschten Blobcontainer aus. 
 
@@ -66,7 +66,7 @@ Die Schritte hierfür richten sich nach der Zugriffsebene für den Blobcontainer
 
 Führen Sie die folgenden Schritte aus, wenn die Blob-Sicherheitszugriffsebene **Öffentlich** lautet.
 
-![Azure-Speicher-Explorer mit Hervorhebung von „Blobcontainer“, „Sicherheit“ und „Öffentlich“](media/logic-apps-enterprise-integration-schemas/blob-public.png)
+![Azure Storage-Explorer mit Hervorhebung von „Blobcontainer“, „Sicherheit“ und „Öffentlich“](media/logic-apps-enterprise-integration-schemas/blob-public.png)
 
 1. Laden Sie das Schema in Ihr Speicherkonto hoch, und kopieren Sie den URI.
 
@@ -78,7 +78,7 @@ Führen Sie die folgenden Schritte aus, wenn die Blob-Sicherheitszugriffsebene *
 
 Führen Sie die folgenden Schritte aus, wenn die Blob-Sicherheitszugriffsebene **Kein anonymer Zugriff** lautet.
 
-![Azure-Speicher-Explorer mit Hervorhebung von „Blobcontainer“, „Sicherheit“ und „Kein anonymer Zugriff“](media/logic-apps-enterprise-integration-schemas/blob-1.png)
+![Azure Storage-Explorer mit Hervorhebung von „Blobcontainer“, „Sicherheit“ und „Kein anonymer Zugriff“](media/logic-apps-enterprise-integration-schemas/blob-1.png)
 
 1. Laden Sie das Schema in Ihr Speicherkonto hoch.
 

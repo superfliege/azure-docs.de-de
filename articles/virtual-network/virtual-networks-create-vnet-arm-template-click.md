@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81602766848a91331c8d811ea1c8ec3ffae44b96
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a59ea7c9e111f8ae5b0d9bd620faa5495c3924b7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Erstellen eines virtuellen Netzwerks mit einer Azure Resource Manager-Vorlage
 
@@ -39,9 +39,9 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Resource Manager-Bereitstell
 - [PowerShell (klassisch)](virtual-networks-create-vnet-classic-netcfg-ps.md)
 - [CLI (klassisch)](virtual-networks-create-vnet-classic-cli.md)
 
-Sie erfahren, wie Sie eine vorhandene ARM-Vorlage von GitHub herunterladen und ändern sowie die Vorlage aus GitHub, PowerShell und der Azure-Befehlszeilenschnittstelle bereitstellen.
+Erfahren Sie, wie Sie eine vorhandene Azure Resource Manager-Vorlage von GitHub herunterladen und ändern und wie Sie die Vorlage über GitHub, PowerShell und die Azure-Befehlszeilenschnittstelle bereitstellen.
 
-Wenn Sie die ARM-Vorlage, ohne sie zu ändern, einfach direkt aus GitHub bereitstellen, springen Sie zu [Bereitstellen einer Vorlage aus Github](#deploy-the-arm-template-by-using-click-to-deploy).
+Wenn Sie die Azure Resource Manager-Vorlage ohne Änderungen einfach direkt aus GitHub bereitstellen möchten, sollten Sie den Abschnitt zum [Bereitstellen einer Vorlage aus GitHub](#deploy-the-arm-template-by-using-click-to-deploy) lesen.
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
@@ -52,11 +52,11 @@ Sie können die vorhandene Vorlage zum Erstellen von einem VNET und zwei Subnetz
 2. Klicken Sie auf **azuredeploy.json**, und klicken Sie dann auf **RAW**.
 3. Speichern Sie die Datei in einem lokalen Ordner auf Ihrem Computer.
 4. Wenn Sie mit Vorlagen vertraut sind, fahren Sie mit Schritt 7 fort.
-5. Öffnen Sie die Datei, die Sie gerade gespeichert haben, und sehen Sie sich den Inhalt unter **parameters** in Zeile 5 an. ARM-Vorlagenparameter enthalten Platzhalter für Werte, die während der Bereitstellung ausgefüllt werden können.
+5. Öffnen Sie die Datei, die Sie gespeichert haben, und betrachten Sie den Inhalt unter **parameters** in Zeile 5. Die Parameter der Azure-Ressourcen-Manager-Vorlage stellen Platzhalter für Werte dar, die während der Bereitstellung ausgefüllt werden können.
    
-   | Parameter | Beschreibung |
+   | Parameter | BESCHREIBUNG |
    | --- | --- |
-   | **location** |Azure-Region, in der das VNet erstellt wird |
+   | **Speicherort** |Azure-Region, in der das VNET erstellt wird |
    | **vnetName** |Name für das neue VNet |
    | **addressPrefix** |Adressraum für das VNet im CIDR-Format |
    | **subnet1Name** |Name für das erste VNet |
@@ -231,7 +231,7 @@ Sie können vordefinierte Azure Resource Manager-Vorlagen wiederverwenden, die i
    
     ![Senden der Bereitstellungskachel im Vorschauportal](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
 
-10. Nachdem die Bereitstellung abgeschlossen ist, klicken Sie im Azure-Portal auf **Weitere Dienste**, geben Sie *virtuelle Netzwerke* in das Filterfeld ein, das angezeigt wird, und klicken Sie dann auf „virtuelle Netzwerke“, um das Blatt „virtuelle Netzwerke“ anzuzeigen. Klicken Sie auf dem Blatt auf *TestVNet*. Klicken Sie auf dem Blatt *TestVNet* auf **Subnetze**, um die erstellten Subnetze anzuzeigen, wie in der folgenden Abbildung dargestellt:
+10. Nachdem die Bereitstellung abgeschlossen ist, klicken Sie im Azure-Portal auf **Alle Dienste**, geben Sie *Virtuelle Netzwerke* in das angezeigte Filterfeld ein, und klicken Sie dann auf „Virtuelle Netzwerke“, um das Blatt „Virtuelle Netzwerke“ anzuzeigen. Klicken Sie auf dem Blatt auf *TestVNet*. Klicken Sie auf dem Blatt *TestVNet* auf **Subnetze**, um die erstellten Subnetze anzuzeigen, wie in der folgenden Abbildung dargestellt:
     
      ![Erstellen von VNet im Vorschauportal](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.png)
 

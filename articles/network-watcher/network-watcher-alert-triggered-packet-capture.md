@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 1b3da4d6e4593f3c71995ef9331fcea2d5b6ec19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdd4b7ddd5ebaf0187ed4943a518a83fc2531da4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
 
@@ -65,7 +65,7 @@ In diesem Szenario passiert Folgendes:
 
 Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erstellen einer Paketerfassung erstellt.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Neu** > **Compute** > **Funktionen-App** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Ressource erstellen** > **Compute** > **Funktions-App** aus.
 
     ![Erstellen einer Funktions-App][1-1]
 
@@ -361,7 +361,7 @@ Wenn die Kriterien für die Warnung erfüllt sind, wird eine Paketerfassung erst
 
 Wenn die Erfassungsdatei lokal gespeichert ist, können Sie sie abrufen, indem Sie sich auf dem virtuellen Computer anmelden.
 
-Eine Anleitung zum Herunterladen von Dateien aus Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Sie können auch den [Speicher-Explorer](http://storageexplorer.com/) verwenden.
+Eine Anleitung zum Herunterladen von Dateien aus Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Sie können auch den [Storage-Explorer](http://storageexplorer.com/) verwenden.
 
 Nach dem Herunterladen Ihrer Erfassung können Sie diese mit einem beliebigen Tool anzeigen, das für Dateien vom Typ **.cap** geeignet ist. Hier finden Sie zwei Links zu geeigneten Tools:
 

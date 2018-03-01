@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: e9983cb29c59ebf29dd247c2e6f70cc052eab39d
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: cf4721e57d846db299ec6b8cdb7dc8cceb9d638f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Installieren externer Python-Pakete für Jupyter Notebooks in Apache Spark-Clustern unter HDInsight mithilfe von Skriptaktionen
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Hier erfahren Sie, wie Sie mithilfe von Skriptaktionen einen Apache Spark-Cluste
 
 Sie können den [Paketindex](https://pypi.python.org/pypi) nach einer vollständigen Liste mit verfügbaren Paketen durchsuchen. Sie können die Liste der verfügbaren Pakete auch aus anderen Quellen abrufen. So können Sie beispielsweise Pakete installieren, die über [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) oder [conda-forge](https://conda-forge.org/feedstocks/) verfügbar gemacht wurden.
 
-In diesem Artikel erfahren Sie, wie Sie das [TensorFlow](https://www.tensorflow.org/)-Paket per Skriptaktion in Ihrem Cluster installieren und es über das Jupyter-Notebook verwenden.
+In diesem Artikel erfahren Sie, wie Sie das Paket [TensorFlow](https://www.tensorflow.org/) per Skriptaktion in Ihrem Cluster installieren und über das Jupyter Notebook verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie benötigen Folgendes:
@@ -79,7 +79,7 @@ Sie benötigen Folgendes:
         sess = tf.Session()
         print(sess.run(hello))
 
-    Das Ergebnis sieht so aus:
+    Das Ergebnis sieht wie folgt aus:
     
     ![Ausführung des TensorFlow-Codes](./media/apache-spark-python-package-installation/execution.png "Ausführung des TensorFlow-Codes")
 
@@ -90,7 +90,6 @@ Sie benötigen Folgendes:
 * [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
 * [Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark-Streaming: Erstellen von Echtzeit-Streaminganwendungen mithilfe von Spark in HDInsight](apache-spark-eventhub-streaming.md)
 * [Websiteprotokollanalyse mithilfe von Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen
