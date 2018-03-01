@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 96faa0cf518e4b02b5ba9fd8aedaf21bd6288b02
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 62b21db5c52287c1d0d058cba3a433434c364777
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Analysieren und Verarbeiten von JSON-Dokumenten mithilfe von Apache Hive in Azure HDInsight
 
@@ -59,7 +59,7 @@ Erfahren Sie mehr über das Verarbeiten und Analysieren von JSON-Dateien (JavaSc
                     ]
     }
 
-Die Datei finden Sie unter **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Weitere Informationen zur Verwendung von Azure-Blobspeicher mit HDInsight finden Sie unter [Verwenden des HDFS-kompatiblen Azure-Blobspeichers mit Hadoop in HDInsight](../hdinsight-hadoop-use-blob-storage.md). Sie können die Datei in den Standardcontainer des Clusters kopieren.
+Die Datei finden Sie unter **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Weitere Informationen zur Verwendung von Azure Blob Storage mit HDInsight finden Sie unter [Verwenden von HDFS-kompatiblem Azure Blob Storage mit Hadoop in HDInsight](../hdinsight-hadoop-use-blob-storage.md). Sie können die Datei in den Standardcontainer des Clusters kopieren.
 
 In diesem Tutorial verwenden Sie die Hive-Konsole. Anweisungen zum Öffnen der Hive-Konsole finden Sie unter [Verwenden von Hive mit Hadoop in HDInsight über den Remotedesktop](apache-hadoop-use-hive-remote-desktop.md).
 
@@ -151,7 +151,6 @@ Verwandte Artikel finden Sie unter:
 * [Verwenden von Hive und HiveQL mit Hadoop in HDInsight zum Analysieren einer Apache Log4j-Beispieldatei](../hdinsight-use-hive.md)
 * [Analysieren von Flugverspätungsdaten mit Hive in HDInsight](../hdinsight-analyze-flight-delay-data.md)
 * [Analysieren von Twitter-Daten mit Hive in HDInsight](../hdinsight-analyze-twitter-data.md)
-* [Ausführen eines Hadoop-Auftrags mit Azure Cosmos DB und HDInsight](../../cosmos-db/run-hadoop-with-hdinsight.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

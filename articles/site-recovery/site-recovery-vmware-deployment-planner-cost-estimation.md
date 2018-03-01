@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/28/2017
+ms.date: 02/22/2018
 ms.author: nisoneji
-ms.openlocfilehash: 36309eb85244435a853013448c83d125420c001c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 0a4d8958c0bbbe8b0242bfe8943d01ef66afec74
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation  
 
@@ -154,7 +154,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Unterstützte Währungen
 Der Azure Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die folgenden Währungen erstellen:
 
-|Currency|Name||Currency|Name||Currency|Name|
+|Currency|NAME||Currency|NAME||Currency|NAME|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentinische Pesos ($)||AUD|Australischer Dollar ($)||BRL|Brasilianischer Real (R$)|
 |CAD|Kanadischer Dollar ($)||CHF|Schweizer Franken (chf)||DKK|Dänische Krone (kr)|

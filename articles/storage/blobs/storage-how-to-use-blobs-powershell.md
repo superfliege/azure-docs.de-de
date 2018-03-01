@@ -2,27 +2,21 @@
 title: "Ausführen von Vorgängen für den Azure Blob Storage (Objektspeicher) mit PowerShell | Microsoft-Dokumentation"
 description: "Tutorial: Ausführen von Vorgängen für den Azure Blob Storage (Objektspeicher) mit PowerShell"
 services: storage
-documentationcenter: storage
-author: robinsh
-manager: timlt
-editor: tysonn
-ms.assetid: 
+author: tamram
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
-ms.author: robinsh
-ms.openlocfilehash: 170c3091efc90f640792682377ed10e2eab0cab3
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.author: tamram
+ms.openlocfilehash: 8b87ecc3fefe5338269a6ad584e9a097ff3fb633
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="perform-azure-blob-storage-operations-with-azure-powershell"></a>Ausführen von Vorgängen für Azure Blob Storage mit Azure PowerShell
 
-Der Azure-Blobspeicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Objektdaten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Artikel werden grundlegende Vorgänge für den Azure Blob Storage wie das Hochladen, Herunterladen und Löschen von Blobs beschrieben. Folgendes wird vermittelt:
+Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Objektdaten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Artikel werden grundlegende Vorgänge für den Azure Blob Storage wie das Hochladen, Herunterladen und Löschen von Blobs beschrieben. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Containers 
@@ -382,5 +376,5 @@ In diesem Tutorial haben Sie Informationen zur grundlegenden Verwaltung des Blob
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell Storage-Cmdlets
 * [Storage PowerShell-Cmdlets](/powershell/module/azurerm.storage#storage)
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure-Speicher-Explorer
-* Beim [Microsoft Azure-Speicher-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage-Explorer
+* Beim [Microsoft Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.

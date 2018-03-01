@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/29/2017
+ms.date: 02/22/2018
 ms.author: asgang
-ms.openlocfilehash: 028aa0f23c3a7c98c4801d9e306c5dcfa35aab80
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 1b63515970f81b1cab679287d84707d531fd102a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="replicate-applications-running-on-vmware-virtual-machines-to-azure"></a>Replizieren von Anwendungen, die auf virtuellen VMware-Computern ausgeführt werden, in Azure
 
@@ -33,7 +33,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 2.  [Einrichten der Zielumgebung in Azure](site-recovery-prepare-target-vmware-to-azure.md)
 
 
-## <a name="enable-replication"></a>Replikation aktivieren
+## <a name="enable-replication"></a>Aktivieren der Replikation
 ### <a name="before-you-start"></a>Vorbereitung
 Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 
@@ -83,7 +83,7 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
     >    * Die Computer in einer Replikationsgruppe werden gemeinsam repliziert und verfügen beim Failover über gemeinsame ausfallsichere und app-konsistente Wiederherstellungspunkte.
     >    * Fassen Sie VMs und physische Server zusammen, damit sie Ihre Workloads widerspiegeln. Das Aktivieren von Multi-VM-Konsistenz kann die Workloadleistung beeinträchtigen. Nutzen Sie sie nur, wenn mehrere Computer dieselbe Workload ausführen und Konsistenz erforderlich ist.
 
-    ![Replikation aktivieren](./media/site-recovery-vmware-to-azure/enable-replication7.png)
+    ![Aktivieren der Replikation](./media/site-recovery-vmware-to-azure/enable-replication7.png)
 14. Klicken Sie auf **Replikation aktivieren**. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
 > [!NOTE]

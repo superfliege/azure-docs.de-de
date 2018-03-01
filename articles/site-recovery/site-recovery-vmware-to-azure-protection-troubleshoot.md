@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 02/22/2018
 ms.author: asgang
-ms.openlocfilehash: 7a8cd09731ccdf7ad7385f7e707125c3902ebdf2
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9e0c602646009b20c8d4f8a29d55b7f44a089131
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="troubleshoot-on-premises-vmwarephysical-server-replication-issues"></a>Problembehebung von Replikationsfehlern bei lokalen VMware-Servern/physischen Servern
 Sie erhalten unter Umständen eine bestimmte Fehlermeldung, wenn Sie ihre virtuellen VMware-Computer oder Ihre physischen Server mithilfe von Azure Site Recovery schützen. In diesem Artikel werden einige der häufigeren Fehlermeldungen beschrieben, zusammen mit Problemlösungsschritten zur Fehlerbehebung.
@@ -45,13 +45,13 @@ Wenn keine Verbindung hergestellt werden kann, lassen Sie den eingehenden Port 9
 
 Öffnen Sie den Task-Manager auf dem Prozessservercomputer (drücken Sie STRG+UMSCHALT+ESC). Wechseln Sie zur Registerkarte „Leistung“, und klicken Sie auf den Link „Ressourcenmonitor öffnen“. Wechseln Sie ausgehend vom Resource Manager zur Registerkarte „Netzwerk“. Prüfen Sie ob „cbengine.exe“ unter „Prozesse mit Netzwerkaktivität“ aktiv große Datenmengen (in MB) sendet.
 
-![Replikation aktivieren](./media/site-recovery-protection-common-errors/cbengine.png)
+![Aktivieren der Replikation](./media/site-recovery-protection-common-errors/cbengine.png)
 
 Führen Sie andernfalls die folgenden Schritte aus:
 
 * **Prüfen Sie, ob der Prozessserver eine Verbindung mit Azure Blob herstellen kann**: Wählen Sie „cbengine.exe“ aus, und überprüfen Sie unter „TCP-Verbindungen“, ob zwischen dem Prozessserver und der Azure Storage Blob-URL eine Verbindung besteht.
 
-![Replikation aktivieren](./media/site-recovery-protection-common-errors/rmonitor.png)
+![Aktivieren der Replikation](./media/site-recovery-protection-common-errors/rmonitor.png)
 
 Navigieren Sie andernfalls zur Systemsteuerung > „Dienste“, und prüfen Sie, ob die folgenden Dienste ausgeführt werden:
 
@@ -67,7 +67,7 @@ Starten Sie alle nicht ausgeführten Dienste (bzw. starten Sie sie neu), und üb
 
 Öffnen Sie das aktuelle Fehlerprotokoll (CBEngineCurr.errlog) unter `%programfiles%\Microsoft Azure Recovery Services Agent\Temp`, und suchen Sie nach „443“ und „connection attempt failed“.
 
-![Replikation aktivieren](./media/site-recovery-protection-common-errors/logdetails1.png)
+![Aktivieren der Replikation](./media/site-recovery-protection-common-errors/logdetails1.png)
 
 Wenn Probleme auftreten, verwenden Sie in der Befehlszeile des Prozessservers Telnet zum Pingen Ihrer öffentlichen Azure-IP-Adresse (im der Abbildung oben unleserlich gemacht), die Sie mithilfe von Port 443 in „CBEngineCurr.currLog“ gefunden haben.
 
@@ -107,11 +107,11 @@ So überprüfen Sie, was Sie bei der Einrichtung des Konfigurationsservers angeg
 Stellen Sie nun sicher, dass die gleichen Einstellungen vom Azure Site Recovery-Agent zum Senden von Daten verwendet werden.
 Suchen Sie nach „Microsoft Azure Backup“.
 
-![Replikation aktivieren](./media/site-recovery-protection-common-errors/mab.png)
+![Aktivieren der Replikation](./media/site-recovery-protection-common-errors/mab.png)
 
 Klicken Sie nach dem Öffnen auf „Aktion“ > „Eigenschaften ändern“. Auf der Registerkarte „Proxykonfiguration“ wird Ihnen die Proxyadresse angezeigt, die mit der unter den Registrierungseinstellungen angezeigten Adresse übereinstimmen muss. Wenn dies nicht der Fall ist, passen Sie die Adresse an.
 
-![Replikation aktivieren](./media/site-recovery-protection-common-errors/mabproxy.png)
+![Aktivieren der Replikation](./media/site-recovery-protection-common-errors/mabproxy.png)
 
 * **Prüfen Sie, ob die Bandbreite auf dem Prozessserver eingeschränkt ist**: Erhöhen Sie die Bandbreite, und überprüfen Sie, ob das Problem weiterhin besteht.
 
