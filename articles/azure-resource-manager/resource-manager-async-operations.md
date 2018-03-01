@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9fe3d98cd345aae45722295b6c1b7fc3e9036e95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9015347042ea9cce221ec5febd4ae60cbeac9315
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="track-asynchronous-azure-operations"></a>Nachverfolgen asynchroner Vorgänge in Azure
 Einige Azure-REST-Vorgänge werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. In diesem Thema wird beschrieben, wie der Status asynchroner Vorgänge mithilfe von Werten nachverfolgt wird, die in der Antwort zurückgegeben werden.  
@@ -194,5 +194,4 @@ Wenn die Anforderung noch ausgeführt wird, erhalten Sie den Statuscode 202. Wen
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu den einzelnen REST-Vorgängen finden Sie in der [REST-API-Dokumentation](/rest/api/).
-* Informationen zum Verwalten von Ressourcen mit der Ressourcen-Manager-REST-API finden Sie unter [Verwenden der Ressourcen-Manager-REST-API](resource-manager-rest-api.md).
 * Informationen zum Bereitstellen von Vorlagen mit der Ressourcen-Manager-REST-API finden Sie unter [Bereitstellen von Ressourcen mit Ressourcen-Manager-Vorlagen und der Ressourcen-Manager-REST-API](resource-group-template-deploy-rest.md).

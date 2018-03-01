@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 8aff62dd32395c1ef292942e977467779f945931
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2a4d17673340d145de9a3514f920c74f7eebf6b6
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-examples"></a>Beispiele für die Integration von Azure Service Bus in Azure Event Grid
 
@@ -118,7 +118,7 @@ Klicken Sie auf „Speichern und ausführen“.
 
 ## <a name="connect-function-and-namespace-via-event-grid"></a>Verbinden von Funktion und Namespace über Event Grid
 
-Im nächsten Schritt werden die Funktion und der Service Bus-Namespace miteinander verbunden. In diesem Beispiel wird das Azure-Portal verwendet. Auf der Seite [Konzepte](service-bus-to-event-grid-integration-concept.md) erfahren Sie, wie Sie das gleiche Ergebnis mit PowerShell oder über die Azure-Befehlszeilenschnittstelle erzielen.
+Im nächsten Schritt werden die Funktion und der Service Bus-Namespace miteinander verbunden. In diesem Beispiel wird das Azure-Portal verwendet. Auf der Seite [Konzepte](service-bus-to-event-grid-integration-concept.md erfahren Sie, wie Sie das gleiche Ergebnis mit PowerShell oder über die Azure-Befehlszeilenschnittstelle erzielen.
 
 Navigieren Sie zum Erstellen eines neuen Azure Event Grid-Abonnements im Azure-Portal zu Ihrem Namespace, und klicken Sie auf das Blatt „Event Grid“. Klicken Sie auf „+ Ereignisabonnement“.
 
@@ -190,10 +190,10 @@ Speichern Sie die Logik-App, und senden Sie eine Nachricht an Ihr Service Bus-Th
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich ausführlicher über [Azure Event Grid](https://docs.microsoft.com/en-us/azure/azure-functions/).
-* Erfahren Sie mehr über [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/).
-* Erfahren Sie mehr über [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/).
-* Weitere Informationen zu [Azure Service Bus](https://docs.microsoft.com/en-us/azure/azure-functions/)
+* Informieren Sie sich ausführlicher über [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/).
+* Erfahren Sie mehr über [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
+* Erfahren Sie mehr über [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
+* Weitere Informationen zu [Azure Service Bus](https://docs.microsoft.com/azure/service-bus/)
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png
 [3]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid3.png

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 764a41dc9e890de85c3bfab3d2f78d5a07b39dff
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: dff9eaad252a71942b07212b7cfa9d9ddf346a3f
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster
 
@@ -201,7 +201,7 @@ Das folgende Diagramm enthält Hilfestellungen zum Migrieren Ihrer Hive-Workload
 | Auf Windows-basierten Clustern verwende ich ... | Auf Linux-basierten Clustern verwende ich ... |
 | --- | --- |
 | **Hive-Editor** |[Hive-Ansicht in Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md) |
-| `set hive.execution.engine=tez;` zum Aktivieren von Tez |Tez ist das Standardausführungsmodul für Linux-basierte Cluster. Die SET-Anweisung wird also nicht mehr benötigt. |
+| `set hive.execution.engine=tez;` zum Aktivieren von Tez |Tez ist die Standard-Ausführungs-Engine für Linux-basierte Cluster. Die SET-Anweisung wird also nicht mehr benötigt. |
 | Benutzerdefinierte C#-Funktionen | Informationen zum Überprüfen von C#-Komponenten mit Linux-basiertem HDInsight finden Sie unter [Migrieren von .NET-Lösungen in Linux-basiertes HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
 | CMD-Dateien oder -Skripts auf dem Server, die als Teil eines Hive-Auftrags aufgerufen wurden |Verwenden von Bash-Skripts |
 | `hive` -Befehl von Remotedesktop |Verwenden von [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) oder [Hive in einer SSH-Sitzung](hdinsight-hadoop-use-hive-ssh.md) |
@@ -237,7 +237,7 @@ Wenn C#-Anwendungen in Ihrem Workflow verwendet werden, überprüfen Sie diese A
 | Storm-Benutzeroberfläche |Die Storm-Benutzeroberfläche ist unter „https://CLUSTERNAME.azurehdinsight.net/stormui“ verfügbar. |
 | Visual Studio zum Erstellen, Bereitstellen und Verwalten von C#- oder Hybridtopologien |Visual Studio kann verwendet werden, um C#-Topologien (SCP.NET) oder Hybridtopologien in Linux-basiertem Storm in HDInsight zu erstellen, bereitzustellen und zu verwalten. Es kann nur mit Clustern verwendet werden, die nach dem 28.10.2016 erstellt wurden. |
 
-## <a name="hbase"></a>HBase
+## <a name="hbase"></a>hbase
 
 Auf Linux-basierten Clustern ist `/hbase-unsecure`der übergeordnete ZNode für HBase. Legen Sie dies in der Konfiguration für alle Java-Clientanwendungen fest, die native HBase-Java-API verwenden.
 

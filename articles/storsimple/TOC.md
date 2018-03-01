@@ -1,3 +1,5 @@
+# [StorSimple-Dokumentation](index.md)
+
 # StorSimple Virtual Array
 
 ## Übersicht

@@ -1,3 +1,5 @@
+# [Dokumentation zu Azure Advisor](index.md)
+
 # Übersicht
 ## [Was ist Azure Advisor?](advisor-overview.md)
 
@@ -10,7 +12,7 @@
 # Erste Schritte
 ## [Erste Schritte mit Advisor](advisor-get-started.md)
 
-# Referenz
+# Verweis
 ## [REST-API](https://docs.microsoft.com/rest/api/advisor)
 ## [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://docs.microsoft.com/cli/azure/advisor)
 
@@ -20,8 +22,8 @@
 ## [Redis Cache](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)
 ## [App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)
 
-# Ressourcen
-## [Azure-Ratgeber – Videos](https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor)
+# angeben
+## [Azure Advisor – Videos](https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 

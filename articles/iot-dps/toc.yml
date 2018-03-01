@@ -7,8 +7,10 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Einrichten der automatischen Bereitstellung
+    - name: Einrichten der automatischen Bereitstellung – Portal
       href: quick-setup-auto-provision.md
+    - name: Einrichten der automatischen Bereitstellung – Vorlage
+      href: quick-setup-auto-provision-rm.md
     - name: Erstellen eines simulierten Geräts
       items:
         - name: TPM
@@ -91,6 +93,8 @@
       href: how-to-revoke-device-access-portal.md
     - name: Aufheben der Bereitstellung von Geräten
       href: how-to-unprovision-devices.md
+    - name: Ausführen eines Eigentumsnachweises für X.509-Zertifizierungsstellenzertifikate
+      href: how-to-verify-certificates.md
     - name: Verwenden von HSM mit SDK
       href: use-hsm-with-sdk.md
     - name: Steuern des Zugriffs auf den Bereitstellungsdienst
@@ -99,6 +103,8 @@
       href: how-to-manage-dps-with-cli.md
     - name: Verwenden der SDK-Tools für die Entwicklung
       href: how-to-use-sdk-tools.md
+    - name: Herstellen einer Verbindung mit dem MXChip IoT DevKit
+      href: how-to-connect-mxchip-iot-devkit.md
 - name: Verweis
   items:
     - name: REST

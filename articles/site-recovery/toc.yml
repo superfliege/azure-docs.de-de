@@ -24,13 +24,13 @@
         - name: Vorbereiten von Azure
           href: tutorial-prepare-azure.md
         - name: Lokales Vorbereiten von VMware
-          href: tutorial-prepare-on-premises-vmware.md
+          href: vmware-azure-tutorial-prepare-on-premises.md
         - name: Einrichten der Notfallwiederherstellung
-          href: tutorial-vmware-to-azure.md
+          href: vmware-azure-tutorial.md
         - name: Durchführen eines Notfallwiederherstellungsverfahrens
           href: tutorial-dr-drill-azure.md
         - name: Ausführen von Failover und Failback
-          href: tutorial-vmware-to-azure-failover-failback.md
+          href: vmware-azure-tutorial-failover-failback.md
     - name: Virtuelle Hyper-V-Computer
       items:
         - name: Vorbereiten von Azure
@@ -50,9 +50,9 @@
         - name: Vorbereiten vonAzure für die lokale Replikation
           href: tutorial-prepare-azure.md
         - name: Migrieren von lokalen Computern zu Azure
-          href: tutorial-migrate-on-premises-to-azure.md
+          href: migrate-tutorial-on-premises-azure.md
         - name: Migrieren von AWS-Instanzen zu Azure
-          href: tutorial-migrate-aws-to-azure.md
+          href: migrate-tutorial-aws-azure.md
         - name: Migrieren virtueller Azure-Computer zu einer anderen Region
           href: azure-to-azure-tutorial-migrate.md
 - name: Konzepte
@@ -62,11 +62,11 @@
         - name: Azure-zu-Azure-Architektur
           href: azure-to-azure-architecture.md
         - name: VMware-zu-Azure-Architektur
-          href: concepts-vmware-to-azure-architecture.md
+          href: vmware-azure-architecture.md
         - name: Hyper-V-zu-Azure-Architektur
           href: hyper-v-azure-architecture.md
         - name: Physisch-zu-Azure-Architektur
-          href: concepts-physical-to-azure-architecture.md
+          href: physical-azure-architecture.md
         - name: Hyper-V-zu-sekundärem-Standort-Architektur
           href: hyper-v-vmm-architecture.md
     - name: Matrix für Supportanforderungen
@@ -114,11 +114,11 @@
         - name: Notfallwiederherstellung von virtuellen Azure-Computern nach der Migration zu Azure
           href: azure-to-azure-replicate-after-migration.md
         - name: Notfallwiederherstellung von physischen Servern in Azure
-          href: tutorial-physical-to-azure.md
+          href: physical-azure-disaster-recovery.md
         - name: Notfallwiederherstellung von virtuellen Hyper-V-Computern an einem sekundären Standort
           href: hyper-v-vmm-disaster-recovery.md
         - name: Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern an einem sekundären Standort
-          href: tutorial-vmware-to-vmware.md
+          href: vmware-physical-secondary-disaster-recovery.md
         - name: Durchführen eines Notfallwiederherstellungsverfahrens in Azure
           href: site-recovery-test-failover-to-azure.md
         - name: Ausführen eines Notfallwiederherstellungsverfahrens für virtuelle Hyper-V-Computer an einem sekundären Standort
@@ -236,7 +236,7 @@
         - name: Einrichten der Hyper-V-Replikation in Azure (ohne VMM) mit PowerShell
           href: hyper-v-azure-powershell-resource-manager.md
         - name: Einrichten der Hyper-V-Replikation in Azure (mit VMM) mit PowerShell
-          href: site-recovery-vmm-to-azure-powershell-resource-manager.md
+          href: hyper-v-vmm-powershell-resource-manager.md
         - name: Einrichten der Hyper-V-Replikation an einem sekundären VMM-Standort mit PowerShell
           href: hyper-v-vmm-powershell-resource-manager.md
     - name: Workloads
@@ -290,7 +290,7 @@
         - name: Probleme beim Failover auf Azure
           href: site-recovery-failover-to-azure-troubleshoot.md
         - name: Probleme beim erneuten Schützen und Failback
-          href: troubleshoot-failback-reprotect.md
+          href: vmware-azure-troubleshoot-failback-reprotect.md
         - name: Überwachen von Azure Site Recovery
           href: site-recovery-monitor-and-troubleshoot.md
 - name: Verweis

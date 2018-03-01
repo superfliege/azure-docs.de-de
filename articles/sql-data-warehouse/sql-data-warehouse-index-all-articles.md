@@ -16,10 +16,10 @@ ms.custom: reference
 ms.date: 03/30/2017
 ms.author: barbkess
 ms.openlocfilehash: 9fe41f12960dc099700e01573b4f03ebf63f8749
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="all-topics-for-azure-sql-data-warehouse-service"></a>Alle Themen für den Azure SQL Data Warehouse-Dienst
 Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Data Warehouse-Dienst** in Azure auf. Sie können auf dieser Webseite mit **STRG+F**nach Schlüsselwörtern suchen, um aktuell interessante Themen zu finden.

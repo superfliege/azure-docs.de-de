@@ -12,17 +12,17 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 273efe0bdef421d753ea51e01060d48351cbe6fc
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 532dd399d2d5fcbab616744dd02f4a95078cbb1b
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="multi-tenant-support-in-azure-site-recovery-for-replicating-vmware-virtual-machines-to-azure-through-csp"></a>Unterstützung mehrerer Mandanten in Azure Site Recovery für die Replikation von VMware-VMs in Azure über das CSP-Programm
 
-Azure Site Recovery unterstützt für Mandantenabonnements Umgebungen mit mehreren Mandanten. Unterstützt wird außerdem die Mehrmandantenfähigkeit für Mandantenabonnements, die über das CSP-Programm (Cloud Solution Provider, Cloud-Lösungsanbieter) erstellt und verwaltet werden. In diesem Artikel wird das Implementieren und Verwalten von VMware-zu-Azure-Szenarien mit mehreren Mandanten detailliert behandelt. Weitere Informationen zum Erstellen und Verwalten von Mandantenabonnements finden Sie unter [Verwalten der Mehrinstanzenfähigkeit mit dem CSP-Programm (Cloud Solution Provider)](site-recovery-manage-multi-tenancy-with-csp.md).
+Azure Site Recovery unterstützt für Mandantenabonnements Umgebungen mit mehreren Mandanten. Unterstützt wird außerdem die Mehrmandantenfähigkeit für Mandantenabonnements, die über das Microsoft Cloud Solution Provider-Programm (CSP) erstellt und verwaltet werden. In diesem Artikel wird das Implementieren und Verwalten von VMware-zu-Azure-Szenarien mit mehreren Mandanten detailliert behandelt. Weitere Informationen zum Erstellen und Verwalten von Mandantenabonnements finden Sie unter [Verwalten der Mehrinstanzenfähigkeit mit dem CSP-Programm (Cloud Solution Provider)](site-recovery-manage-multi-tenancy-with-csp.md).
 
 Diese Anleitung bezieht sich umfassend auf die vorhandene Dokumentation zum Replizieren von VMware-VMs in Azure. Weitere Informationen finden Sie unter [Replizieren von virtuellen VMware-Computern in Azure mithilfe von Site Recovery](site-recovery-vmware-to-azure.md).
 

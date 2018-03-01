@@ -66,9 +66,7 @@
     - name: angeben
       items:
         - name: Tarife
-          href: concepts-service-tiers.md
-        - name: Compute-Einheiten
-          href: concepts-compute-unit-and-storage.md
+          href: concepts-pricing-tiers.md
         - name: Einschränkungen
           href: concepts-limits.md
     - name: Datenzugriff und Sicherheit
@@ -77,6 +75,12 @@
           href: concepts-firewall-rules.md
         - name: Konfigurieren von SSL
           href: concepts-ssl-connection-security.md
+    - name: Geschäftskontinuität
+      items:
+        - name: Übersicht
+          href: concepts-business-continuity.md
+        - name: Sichern und Wiederherstellen
+          href: concepts-backup.md
     - name: Überwachen
       href: concepts-monitoring.md
     - name: Entwicklung
@@ -137,6 +141,12 @@
       items:
         - name: Erstellen von Warnungen zu Metriken
           href: howto-alert-on-metric.md
+    - name: Problembehandlung
+      items:
+        - name: Beheben von Problemen mit der Abfrageleistung
+          href: howto-troubleshoot-query-performance.md
+        - name: Verwenden von Ansichten im Systemschema
+          href: howto-troubleshoot-sys-schema.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

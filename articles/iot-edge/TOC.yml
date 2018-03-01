@@ -1,10 +1,11 @@
-- name: Azure IoT Edge-Dokumentation
+- name: Dokumentation zu Azure IoT Edge
   href: index.yml
 - name: Übersicht
   items:
     - name: About Azure IoT Edge (Informationen zu Azure IoT Edge)
       href: how-iot-edge-works.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Bereitstellen im Edge-Bereich – Linux/Mac
       href: quickstart-linux.md

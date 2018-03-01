@@ -7,20 +7,20 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e00c4ab2fc8bb13a765f7c2154555607dddfc651
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 9d9fbefd81fed506bcc025fa0f44315ec831cf0d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="detect-issues-using-threshold-based-rules"></a>Erkennen von Problemen mithilfe schwellenwertbasierter Regeln
 
-In diesem Tutorial werden die Funktionen des Regelmoduls in der Remoteüberwachungslösung veranschaulicht. Zur Einführung dieser Funktionen wird in diesem Tutorial ein Szenario in der Contoso IoT-Anwendung verwendet.
+In diesem Tutorial werden die Funktionen der Regel-Engine in der Remoteüberwachungslösung veranschaulicht. Zur Einführung dieser Funktionen wird in diesem Tutorial ein Szenario in der Contoso IoT-Anwendung verwendet.
 
 Contoso verfügt über eine Regel, die eine kritische Warnung generiert, wenn der von einem Gerät des Typs **Chiller** gemeldete Druck 250 PSI überschreitet. Als Bediener möchten Sie **Chiller**-Geräte identifizieren, die möglicherweise problematische Sensoren aufweisen, indem Sie nach Anfangsdruckspitzen suchen. Um diese Geräte zu identifizieren, erstellen Sie eine Regel, die eine Warnung generiert, wenn der Druck 150 PSI überschreitet.
 
@@ -66,13 +66,13 @@ Verwenden Sie zum Erstellen der Regel die folgenden Werte:
 
 | Einstellung          | Wert                                 |
 | ---------------- | ------------------------------------- |
-| Name             | Chiller warning                       |
+| NAME             | Chiller warning                       |
 | Quelle           | **Chillers** device group             |
 | Trigger field    | pressure                              |
 | Trigger operator | Größer als                          |
 | Trigger value    | 150                                   |
 | Schweregrad   | Warnung                               |
-| Beschreibung      | Chiller pressure has exceeded 150 PSI |
+| BESCHREIBUNG      | Chiller pressure has exceeded 150 PSI |
 
 Um die neue Regel zu speichern, wählen Sie **Apply** (Übernehmen) aus.
 

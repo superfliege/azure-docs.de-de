@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7f3cc81327d1d247fb8e19e256eafb009a5bf162
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d7c32e5ae02e294ee88c19f058e04249c7c9969e
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Verwenden externer Dienste über den Azure API Management-Dienst
 Mit den im Azure API Management-Dienst verfügbaren Richtlinien können Sie zahlreiche nützliche Aufgaben durchführen, ausschließlich basierend auf der eingehenden Anforderung, der ausgehenden Antwort und den grundlegenden Konfigurationsinformationen. Die Interaktionsfähigkeit mit externen Diensten mithilfe von API Management-Richtlinien eröffnet jedoch viele weitere Möglichkeiten.
@@ -69,7 +69,7 @@ Die `send-request` -Richtlinie ermöglicht die Nutzung eines externen Diensts zu
 ### <a name="authorizing-reference-tokens"></a>Autorisieren von Verweistoken
 Eine wichtige Funktion von API Management ist der Schutz der Back-End-Ressourcen. Wenn der von Ihrer API verwendete Autorisierungsserver [JWT-Token](http://jwt.io/) als Teil des OAuth2-Ablaufs erstellt, wie dies bei [Azure Active Directory](../active-directory/active-directory-aadconnect.md) der Fall ist, dann können Sie mithilfe der `validate-jwt`-Richtlinie die Gültigkeit des Tokens überprüfen. Einige Autorisierungsserver erstellen sogenannte [Verweistoken](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/), die nicht ohne Rückruf des Autorisierungsservers überprüft werden können.
 
-### <a name="standardized-introspection"></a>Standardisierte Selbstprüfung (Introspection)
+### <a name="standardized-introspection"></a>Standardisierte Introspection
 In der Vergangenheit gab es keine standardisierte Methode zur Überprüfung eines Verweistokens mit einem Autorisierungsserver. Die IETF hat jedoch den vor kurzem vorgeschlagenen Standard [RFC 7662](https://tools.ietf.org/html/rfc7662) veröffentlicht, der definiert, wie ein Ressourcenserver die Gültigkeit eines Tokens überprüfen kann.
 
 ### <a name="extracting-the-token"></a>Extrahieren des Tokens
@@ -156,7 +156,7 @@ Schließlich erhalten Sie die folgende Richtlinie:
 </inbound>
 ```
 
-Dies ist nur eines von vielen Beispielen, wie die `send-request`-Richtlinie verwendet werden kann, um nützliche externe Dienste in den Anforderungs- und Antwortprozess zu integrieren, der den API Management-Dienst durchläuft.
+Dies ist nur eines von vielen Beispielen, wie die `send-request` -Richtlinie verwendet werden kann, um nützliche externe Dienste in den Anforderungs- und Antwortprozess zu integrieren, der den API Management-Dienst durchläuft.
 
 ## <a name="response-composition"></a>Antwortkomposition
 Mit der `send-request`-Richtlinie können Sie eine primäre Anforderung an ein Back-End-System verbessern, wie im vorherigen Beispiel gezeigt. Sie kann auch als vollständiger Ersatz für den Back-End-Aufruf verwendet werden. Mithilfe dieser Technik können Sie mühelos zusammengesetzte Ressourcen erstellen, die aus verschiedenen Systemen aggregiert werden.
@@ -282,11 +282,4 @@ Bei der Konfiguration des Platzhaltervorgangs können Sie festlegen, dass die Da
 
 ## <a name="summary"></a>Zusammenfassung
 Der Azure API Management-Dienst bietet flexible Richtlinien, die selektiv auf den HTTP-Verkehr angewendet werden können und die Zusammensetzung der Back-End-Dienste ermöglichen. Unabhängig davon, ob Sie das API-Gateway mit Alarmfunktionen, Überprüfungs- und Validierungsfunktionen verbessern möchten oder ob Sie neue zusammengesetzte Ressourcen basierend auf mehreren Back-End-Diensten erstellen möchten, bieten die `send-request` -Richtlinie und verwandte Richtlinien vollkommen neue Möglichkeiten.
-
-## <a name="watch-a-video-overview-of-these-policies"></a>Überblicksvideo zu diesen Richtlinien
-Informieren Sie sich im folgenden Video ausführlicher über die in diesem Artikel behandelten Richtlinien [send-one-way-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest), [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) und [return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse):
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Send-Request-and-Return-Response-Policies/player]
-> 
-> 
 

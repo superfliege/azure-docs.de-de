@@ -4,17 +4,17 @@ description: Dieses Dokument beschreibt die Schritte und Konzepte zur Nutzung vo
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 120611f98c97fa4c5bfa2a44aece47f246d9ec57
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4d388af3175bce5df6108ff0fd836707cca5040a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="consuming-web-services"></a>Nutzen von Webdiensten
 Sobald Sie ein Modell als in Echtzeit arbeitenden Webdienst bereitgestellt haben, können Sie Daten an ihn senden und Vorhersagen von verschiedenen Plattformen und Anwendungen abrufen. Der in Echtzeit arbeitende Webdienst macht eine REST-API zum Abrufen von Vorhersagen verfügbar. Sie können Daten im ein- oder mehrzeiligen Format an den Webdienst senden, um eine oder mehrere Vorhersagen gleichzeitig zu erhalten.
@@ -35,7 +35,7 @@ Sie können die derzeit bereitgestellten Dienste und Docker-Images mithilfe des 
 Nachdem der Webdienst erfolgreich bereitgestellt wurde, verwenden Sie den folgenden Befehl, um die Dienst-URL und andere Details für das Aufrufen des Dienstendpunkts abzurufen. 
 
 ```
-az ml service usage realtime -i <service name>
+az ml service usage realtime -i <web service id>
 ```
 
 Dieser Befehl gibt die Dienst-URL, die erforderlichen Anforderungsheader, die Swagger-URL und Beispieldaten für den Aufruf des Diensts aus, wenn das API-Schema des Diensts zur Bereitstellungszeit bereitgestellt wurde.
@@ -43,7 +43,7 @@ Dieser Befehl gibt die Dienst-URL, die erforderlichen Anforderungsheader, die Sw
 Sie können den Dienst mithilfe der CLI direkt testen, ohne eine HTTP-Anforderung zusammenzustellen. Geben Sie dazu den CLI-Beispielbefehl mit den Eingabedaten ein:
 
 ```
-az ml service run realtime -i <service name> -d "Your input data"
+az ml service run realtime -i <web service id> -d "Your input data"
 ```
 
 ## <a name="get-the-service-api-key"></a>Abrufen des API-Schlüssels des Diensts

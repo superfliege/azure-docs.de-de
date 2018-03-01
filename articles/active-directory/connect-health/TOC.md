@@ -11,8 +11,12 @@
 ## [Azure AD Connect Health-Vorgänge](active-directory-aadconnect-health-operations.md)
 ## [Fehler während der Synchronisierung](../active-directory-aadconnect-troubleshoot-sync-errors.md)
 
+# Problembehandlung
+## [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
+## [Die Daten des Integritätsdiensts sind nicht aktuell.](active-directory-aadconnect-health-data-freshness.md)
+
 # Verweis
-## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
 ## [Einhaltung der DSGVO und Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
@@ -23,5 +27,4 @@
 
 # angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
-##[Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

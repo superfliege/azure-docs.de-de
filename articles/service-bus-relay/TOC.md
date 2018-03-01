@@ -1,9 +1,11 @@
+# [Dokumentation zu Service Bus Relay](index.md)
+
 # Übersicht
 ## [Was ist Relay?](relay-what-is-it.md)
 ## [Häufig gestellte Fragen](relay-faq.md)
 
 # Schnellstarts
-## [Erstellen eines Namespace](relay-create-namespace-portal.md)
+## [Erstellen eines Namespaces](relay-create-namespace-portal.md)
 ## [Erstellen einer hybriden lokalen/Cloudanwendung](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Hybridverbindungen
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)

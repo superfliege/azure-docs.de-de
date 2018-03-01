@@ -3,7 +3,7 @@ title: "Einrichten von IP-Adressen für das Verbinden mit Azure nach einem Failo
 description: "Erfahren Sie, wie Sie IP-Adressen für die Verbindung mit Azure-VMs nach einem Failover von lokalen Computern mit Azure Site Recovery einrichten."
 services: site-recovery
 documentationcenter: 
-author: prateek9us
+author: mayanknayar
 manager: carmonm
 editor: 
 ms.assetid: f02cdbea-0940-48bf-9fa5-f38d9e584fae
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/14/2017
-ms.author: pratshar
-ms.openlocfilehash: 5519a965d9828cfa1e73ba12f8acd1d509a36a66
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 02/27/2018
+ms.author: manayar
+ms.openlocfilehash: b9aeaf1dc6d471ba993dd470403ba60ce68153fc
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Einrichten von IP-Adressen für Verbindungen mit Azure nach einem Failover
 
@@ -36,7 +36,7 @@ In diesem Artikel lernen Sie Folgendes:
 Bei der Planung der Replikation und Failoverstrategie ist eine der wichtigsten Fragen, wie eine Verbindung zum virtuellen Azure-Computer nach einem Failover hergestellt werden kann. Es gibt verschiedene Auswahlmöglichkeiten beim Entwerfen der Netzwerkstrategie für die virtuellen Azure-Replikatcomputer.
 
 - **Verwenden einer anderen IP-Adresse**: Sie können sich entscheiden, einen anderen IP-Adressbereich für das replizierte Netzwerk des virtuellen Azure-Computers zu verwenden. In diesem Szenario erhält der virtuelle Computer eine neue IP-Adresse nach einem Failover. Dazu ist eine DNS-Aktualisierung erforderlich.
-- **Behalten derselben IP-Adresse**: Sie möchten möglicherweise für das Azure-Netzwerk nach dem Failover denselben IP-Adressbereich verwenden, der sich an Ihrem lokalen Primärstandort befindet. Das Verwenden derselben IP-Adressen vereinfacht die Wiederherstellung, indem Probleme im Zusammenhang mit dem Netzwerk nach dem Failover reduziert werden. Wenn Sie in Azure replizieren, müssen Sie Routen mit dem neuen Speicherort der IP-Adressen nach dem Failover aktualisieren. 
+- **Behalten derselben IP-Adresse**: Sie möchten möglicherweise für das Azure-Netzwerk nach dem Failover denselben IP-Adressbereich verwenden, der sich an Ihrem lokalen Primärstandort befindet. Das Verwenden derselben IP-Adressen vereinfacht die Wiederherstellung, indem Probleme im Zusammenhang mit dem Netzwerk nach dem Failover reduziert werden. Wenn Sie in Azure replizieren, müssen Sie Routen mit dem neuen Speicherort der IP-Adressen nach dem Failover aktualisieren.
 
 ## <a name="retaining-ip-addresses"></a>Beibehalten der IP-Adressen
 
@@ -78,7 +78,7 @@ Da Woodgrove in der Lage sein muss, seine virtuellen Computer zu Azure zu repliz
 #### <a name="site-to-site-connection"></a>Standort-zu-Standort-Verbindung
 
 Nach einem Failover kann Woodgrove zusätzlich zu einer VNet-zu-VNet-Verbindung eine Standort-zu-Standort-VPN-Konnektivität einrichten:
-- Beim Einrichten einer Standort-zu-Standort-Verbindung im Azure-Netzwerk können Sie nur dann Datenverkehr an den lokalen Standort (local-ntwork) weiterleiten, wenn sich der IP-Adressbereich vom lokalen IP-Adressbereich unterscheidet. Der Grund dafür ist, dass Azure gestreckte Subnetze nicht unterstützt. Sie können also im Azure-Netzwerk das lokale Netzwerk 192.168.1.0/24 nicht hinzufügen, wenn Sie über das lokale Subnetz 192.168.1.0/24 verfügen. Dies ist zu erwarten, da Azure nicht weiß, dass keine aktiven Computer im Subnetz vorhanden sind und dass das Subnetz nur für die Notfallwiederherstellung erstellt wird.
+- Beim Einrichten einer Standort-zu-Standort-Verbindung im Azure-Netzwerk können Sie nur dann Datenverkehr an den lokalen Standort (local-ntwork) weiterleiten, wenn sich der IP-Adressbereich vom lokalen IP-Adressbereich unterscheidet. Der Grund dafür ist, dass Azure Stretchingsubnetze nicht unterstützt. Sie können also im Azure-Netzwerk das lokale Netzwerk 192.168.1.0/24 nicht hinzufügen, wenn Sie über das lokale Subnetz 192.168.1.0/24 verfügen. Dies ist zu erwarten, da Azure nicht weiß, dass keine aktiven Computer im Subnetz vorhanden sind und dass das Subnetz nur für die Notfallwiederherstellung erstellt wird.
 - Es dürfen keine Konflikte zwischen den Subnetzen im Netzwerk und dem lokalen Netzwerk vorliegen, damit ein korrekten Netzwerkdatenverkehr aus einem Azure-Netzwerk gewährleistet wird.
 
 
@@ -86,11 +86,7 @@ Nach einem Failover kann Woodgrove zusätzlich zu einer VNet-zu-VNet-Verbindung 
 
 ## <a name="assigning-new-ip-addresses"></a>Zuweisen von neuen IP-Adressen
 
-In diesem [Blogbeitrag](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) wird erläutert, wie die Azure-Netzwerkinfrastruktur festgelegt wird, wenn Sie IP-Adressen nach dem Failover nicht beibehalten müssen. Es wird mit der Beschreibung einer Anwendung begonnen, danach wird die Erstellung eines lokalen Netzwerks in Azure erklärt, und schließlich finden Sie Informationen zum Ausführen von Failoverszenarios. 
+In diesem [Blogbeitrag](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) wird erläutert, wie die Azure-Netzwerkinfrastruktur festgelegt wird, wenn Sie IP-Adressen nach dem Failover nicht beibehalten müssen. Es wird mit der Beschreibung einer Anwendung begonnen, danach wird die Erstellung eines lokalen Netzwerks in Azure erklärt, und schließlich finden Sie Informationen zum Ausführen von Failoverszenarios.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Ausführen eines Failovers](site-recovery-failover.md)
-
-
-
-

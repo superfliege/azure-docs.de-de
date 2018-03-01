@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 26ef6f69ef2f2d50628f4d0b021159526c9a04a7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4765a38689d5476331c593b89e54f94d4bd310c3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-mailing-list-requests-with-a-logic-app"></a>Verwalten von Adressenlistenanforderungen mit einer Logik-App
 
@@ -55,7 +55,7 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
 
 ## <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App
 
-1. Navigieren Sie über das Hauptmenü von Azure zu **Neu** > **Enterprise Integration** > **Logik-App**.
+1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Unternehmensintegration** > **Logik-App**.
 
    ![Erstellen einer Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app.png)
 
@@ -65,10 +65,10 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **Name** | LA-MailingList | Der Name Ihrer Logik-App. | 
-   | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements. | 
+   | **Name** | LA-MailingList | Der Name Ihrer Logik-App | 
+   | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements | 
    | **Ressourcengruppe** | LA-MailingList-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. | 
-   | **Standort** | USA, Osten 2 | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. | 
+   | **Location** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. | 
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. | 
    |||| 
 
@@ -96,11 +96,11 @@ Jede Logik-App beginnt mit einem Trigger, der ausgelöst wird, wenn ein bestimmt
 
       ![Angeben von Ordner, Intervall und Häufigkeit für die E-Mail-Überprüfung](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | Einstellung | Wert | Beschreibung | 
+      | Einstellung | Wert | BESCHREIBUNG | 
       | ------- | ----- | ----------- | 
       | **Ordner** | Posteingang | Der zu überwachende E-Mail-Ordner. | 
-      | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen. | 
-      | **Häufigkeit** | Stunde | Die Zeiteinheit für die Intervalle zwischen Überprüfungen.  | 
+      | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen | 
+      | **Frequency** | Hour | Die Zeiteinheit für die Intervalle zwischen Überprüfungen.  | 
       |  |  |  | 
 
    2. Klicken Sie auf **Erweiterte Optionen anzeigen**. Geben Sie im Feld **Filter für Betreff** den folgenden Text ein, auf den der Trigger den E-Mail-Betreff überprüfen soll: ```subscribe-test-members-ML```
@@ -116,7 +116,7 @@ Jede Logik-App beginnt mit einem Trigger, der ausgelöst wird, wenn ein bestimmt
    Ihre Logik-App befindet sich jetzt im Livemodus, überprüft bislang aber lediglich Ihre eingehenden E-Mails. 
    Fügen Sie daher eine Aktion hinzu, die reagiert, wenn der Trigger ausgelöst wird.
 
-## <a name="send-approval-email"></a>Senden einer Genehmigungs-E-Mail
+## <a name="send-approval-email"></a>Genehmigungs-E-Mail senden
 
 Nachdem Sie nun über einen Trigger verfügen, fügen Sie als Nächstes eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, die eine E-Mail zur Genehmigung oder Ablehnung der Anforderung sendet. 
 
@@ -128,7 +128,7 @@ Nachdem Sie nun über einen Trigger verfügen, fügen Sie als Nächstes eine [Ak
 
    ![Festlegen der Einstellungen für die Genehmigungs-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **An** | <*E-Mail-Adresse der genehmigenden Person*> | Die E-Mail-Adresse der genehmigenden Person. Zu Testzwecken können Sie hier Ihre eigene Adresse angeben. | 
    | **Benutzeroptionen** | Genehmigen, Ablehnen | Die Antwortoptionen, zwischen denen die genehmigende Person wählen kann. Standardmäßig kann die genehmigende Person zwischen „Genehmigen“ und „Ablehnen“ wählen. | 
@@ -197,7 +197,7 @@ Suchen Sie nach „mailchimp“, und wählen Sie die folgende Aktion aus: **Mail
 
    ![Angeben der Informationen für „Mitglied zu Liste hinzufügen“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **Listen-ID** | test-members-ML | Der Name Ihrer MailChimp-Adressenliste. | 
    | **Status** | subscribed | Der Abonnementstatus für das neue Mitglied. Weitere Informationen finden Sie unter <a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage Subscribers with the MailChimp API</a> (Verwalten von Abonnenten mit der MailChimp-API). | 
@@ -249,7 +249,7 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
    ![Angeben der Informationen für die Erfolgs-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **An** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Erfolgs-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
    | **Betreff** | <*Betreff der Erfolgs-E-Mail*> | Der Betreff der Erfolgs-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten das angegebene Feld aus: <p>Mitglied erfolgreich zu „test-members-ML“ hinzugefügt: **E-Mail-Adresse** | 
@@ -274,7 +274,7 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
    ![Angeben der Informationen für die Fehler-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | Einstellung | Wert | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **An** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Fehler-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
    | **Betreff** | <*Betreff für Fehler-E-Mail*> | Der Betreff der Fehler-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten das angegebene Feld aus: <p>Fehler: Mitglied wurde „test-members-ML“ nicht hinzugefügt: **E-Mail-Adresse** | 
@@ -285,7 +285,7 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
 Testen Sie als Nächstes Ihre Logik-App, die nun in etwa wie folgt aussieht:
 
- ![Fertige Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-complete.png)
+ ![Fertiggestellte Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-complete.png)
 
 ## <a name="run-your-logic-app"></a>Ausführen Ihrer Logik-App
 

@@ -1,3 +1,5 @@
+# [DNS-Dokumentation](index.md)
+
 # Übersicht
 
 ## [Was ist Azure DNS?](dns-overview.md)
@@ -9,9 +11,9 @@
 # Erste Schritte
 
 ## Erstellen einer DNS-Zone und eines Eintrags
-### [Azure-Portal](dns-getstarted-portal.md)
+### [Azure portal](dns-getstarted-portal.md)
 ### [Azure PowerShell](dns-getstarted-powershell.md)
-### [Azure-Befehlszeilenschnittstelle](dns-getstarted-cli.md)
+### [Azure-CLI](dns-getstarted-cli.md)
 
 ## Erstellen einer privaten DNS-Zone und eines Eintrags
 ### [PowerShell](private-dns-getstarted-powershell.md)
@@ -21,14 +23,14 @@
 # Anleitung
 
 ## Verwalten von DNS-Zonen
-### [Azure-Portal](dns-operations-dnszones-portal.md)
+### [Azure portal](dns-operations-dnszones-portal.md)
 ### [Azure PowerShell](dns-operations-dnszones.md)
 ### [Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli.md)
 
 ## Verwalten von DNS-Einträgen
-### [Azure-Portal](dns-operations-recordsets-portal.md)
+### [Azure portal](dns-operations-recordsets-portal.md)
 ### [Azure PowerShell](dns-operations-recordsets.md)
-### [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md)
+### [Azure-CLI](dns-operations-recordsets-cli.md)
 
 ## Verwalten von Reverse-DNS
 ### [Übersicht](dns-reverse-dns-overview.md)
@@ -44,10 +46,10 @@
 ## Problembehandlung
 ### [Handbuch zur Problembehandlung](dns-troubleshoot.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=dns)
 ## [Azure PowerShell](/powershell/module/azurerm.dns)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/dns)
+## [Azure-CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)
@@ -63,7 +65,7 @@
 ## [Traffic Manager](/azure/traffic-manager/)
 ## [Web-Apps](/azure/app-service/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Funktionsanfragen](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)

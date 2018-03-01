@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: b565ef0f7672d1288e922e28551ad3f6ec5b6cb7
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: bf34bc5a65c2beb55c7039868e4d90d83d28de51
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Debuggen von Tez-Aufträgen in HDInsight mithilfe von Ambari-Ansichten
 
@@ -35,7 +35,7 @@ Die Ambari-Webbenutzeroberfläche für HDInsight enthält eine Tez-Ansicht, die 
 
 ## <a name="understanding-tez"></a>Grundlegendes zu Tez
 
-Tez ist ein erweiterbares Framework für die Datenverarbeitung in Hadoop, das eine schnellere Verarbeitung als übliche MapReduce-Verfahren bietet. Bei Linux-basierten Clustern ist Tez das Standardmodul für Hive.
+Tez ist ein erweiterbares Framework für die Datenverarbeitung in Hadoop, das eine schnellere Verarbeitung als übliche MapReduce-Verfahren bietet. Bei Linux-basierten Clustern ist Tez die Standard-Engine für Hive.
 
 Tez erstellt einen gerichteten azyklischen Graphen (Directed Acyclic Graph, DAG), der die Reihenfolge der Aktionen beschreibt, die für Aufgaben erforderlich sind. Einzelne Aktionen werden auch Scheitelpunkte genannt und führen einen Teil des gesamten Auftrags aus. Die tatsächliche Ausführung des Auftrags, die von einem Scheitelpunkt beschrieben wird, heißt Aufgabe und kann auf mehrere Knoten im Cluster verteilt werden.
 
@@ -48,7 +48,7 @@ Die Tez-Ansicht stellt Verlaufsdaten und Informationen zu laufenden Prozessen be
 
 ## <a name="generate-a-dag"></a>Generieren eines gerichteten azyklischen Graphen (DAG)
 
-Die Tez-Ansicht enthält nur Daten, wenn ein Auftrag, der das Tez-Modul verwendet, derzeit ausgeführt wird oder zuvor ausgeführt wurde. Einfache Hive-Abfragen können ohne Tez aufgelöst werden. Komplexere Abfragen mit Filterung, Gruppierung, Sortierung, Joins usw. verwenden das Tez-Modul.
+Die Tez-Ansicht enthält nur Daten, wenn ein Auftrag, der die Tez-Engine verwendet, derzeit ausgeführt wird oder zuvor ausgeführt wurde. Einfache Hive-Abfragen können ohne Tez aufgelöst werden. Komplexere Abfragen mit Filterung, Gruppierung, Sortierung, Joins usw. verwenden die Tez-Engine.
 
 Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen:
 

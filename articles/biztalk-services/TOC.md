@@ -1,3 +1,5 @@
+# [Dokumentation zu BizTalk Services](index.md)
+
 # Übersicht
 ## [Editionen](biztalk-editions-feature-chart.md)
 
@@ -22,12 +24,12 @@
 ### [Übersicht](integration-hybrid-connection-overview.md)
 ### [Erstellen und Verwalten](integration-hybrid-connection-create-manage.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [Preise](https://azure.microsoft.com/pricing/details/biztalk-services/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-## [Versionshinweise](biztalk-release-notes.md)
+## [Anmerkungen zu dieser Version](biztalk-release-notes.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=biztalk-services)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/biztalk-services)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/biztalk-services)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)

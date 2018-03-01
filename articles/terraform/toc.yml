@@ -1,3 +1,5 @@
+- name: Dokumentation zu Terraform in Azure
+  href: index.yml
 - name: Übersicht
   items:
     - name: Informationen zu Terraform in Azure
@@ -11,7 +13,7 @@
     - name: Erstellen eines virtuellen Linux-Computers
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen eines VM-Clusters mit Terraform-Modulen
       href: terraform-create-vm-cluster-module.md
@@ -29,7 +31,7 @@
   items:
     - name: Konfigurationsvorlagen
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Modulregistrierung
       href: 'https://registry.terraform.io/modules/Azure'

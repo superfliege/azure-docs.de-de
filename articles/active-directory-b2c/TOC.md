@@ -1,3 +1,5 @@
+# [Azure AD B2C: Konzentrieren Sie sich auf Ihre App, wir kümmern uns um Registrierung und Anmeldung](index.md)
+
 # [Übersicht](active-directory-b2c-overview.md)
 
 # Erste Schritte

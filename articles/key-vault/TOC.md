@@ -1,6 +1,8 @@
+# [Dokumentation zu Key Vault](index.md)
+
 # Übersicht
 ## [Was ist Key Vault?](key-vault-whatis.md)
-## [Übersicht über den Dienst](https://azure.microsoft.com/services/key-vault/)
+## [Übersicht über die Dienste](https://azure.microsoft.com/services/key-vault/)
 
 # Erste Schritte
 ## [Erste Schritte mit Key Vault](key-vault-get-started.md)
@@ -37,10 +39,10 @@
 ## Automatisieren
 ### [Azure Automation](automation-manage-key-vault.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
 ## [Azure PowerShell](/powershell/module/azurerm.keyvault)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/keyvault)
+## [Azure-CLI](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
 ## [Java](/java/api/com.microsoft.azure.keyvault)
 ## Node.js
@@ -54,7 +56,7 @@
 ## [Erweiterbare Schlüsselverwaltung mit Key Vault](https://msdn.microsoft.com/en-us/library/azure/dn198405)
 ## [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
-# Ressourcen
+# angeben
 ## [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Blog](http://blogs.technet.com/b/kv/)

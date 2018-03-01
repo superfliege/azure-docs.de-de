@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: 87ed4015e06e0a05e628e8e356b835b9b886eb5c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: de20dae10ae6b43adcbc5040a8a71ba5650bafec
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="build-a-python-and-postgresql-web-app-in-azure"></a>Erstellen einer Python- und PostgreSQL-Web-App in Azure
 
@@ -132,7 +132,7 @@ In diesem Schritt erstellen Sie eine PostgreSQL-Datenbank in Azure. Wenn Ihre Ap
 
 ### <a name="create-a-postgresql-server"></a>Erstellen eines PostgreSQL-Servers
 
-Erstellen Sie einen PostgreSQL-Server mit dem Befehl [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create).
+Erstellen Sie mit dem Befehl [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) einen PostgreSQL-Server.
 
 Ersetzen Sie im folgenden Befehl den Platzhalter *\<postgresql_name>* durch einen eindeutigen Servernamen und den Platzhalter *\<admin_username>* durch einen Benutzernamen. Der Servername dient als Teil Ihrer PostgreSQL-Endpunkts (`https://<postgresql_name>.postgres.database.azure.com`). Daher muss der Name auf allen Servern in Azure eindeutig sein. Der Benutzername ist erforderlich, um das anfängliche Konto des Administratorbenutzers für die Datenbank zu erstellen. Sie werden aufgefordert, ein Kennwort für diesen Benutzer auszuwählen.
 
@@ -247,7 +247,7 @@ Ihr Git-Repository enthält bereits die folgenden Dateien, die zum Ausführen de
 
 ### <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
 <a name="create"></a>
 ### <a name="create-a-web-app"></a>Erstellen einer Web-App
@@ -345,7 +345,7 @@ FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" 
 FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
-Navigieren Sie in Ihrem Browser zu „http://localhost:5000“, um die Änderungen anzuzeigen. Erstellen Sie eine Testregistrierung.
+Navigieren Sie in Ihrem Browser zu http://localhost:5000, um die Änderungen anzuzeigen. Erstellen Sie eine Testregistrierung.
 
 ![Lokal ausgeführte Python Flask-Anwendung](./media/app-service-web-tutorial-python-postgresql/local-app-v2.png)
 

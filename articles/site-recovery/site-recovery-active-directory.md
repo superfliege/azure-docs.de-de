@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 71e28d7c91526de07e64a294873d3f25fe5378f7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e07b868883b0154ad38ba2f7f51dd2db663525a0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Verwenden von Azure Site Recovery zum Schützen von Active Directory und DNS
 
@@ -80,7 +80,7 @@ Bei den meisten Anwendungen muss ein Domänencontroller oder ein DNS-Server vorh
     ![Azure-Testnetzwerk](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
-    > Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP-Adresse zu erstellen, die in den Einstellungen des virtuellen Computers unter **Compute und Netzwerk** angegeben sind. Wenn ein Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im (in alphabetischer Reihenfolge) ersten Subnetz erstellt. 
+    > Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP-Adresse zu erstellen, die in den Einstellungen des virtuellen Computers unter **Compute und Netzwerk** angegeben sind. Wenn ein Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im (in alphabetischer Reihenfolge) ersten Subnetz erstellt.
     >
     > Wenn die Ziel-IP-Adresse Teil des ausgewählten Subnetzes ist, versucht Site Recovery, die Testfailover-VM mit der Ziel-IP-Adresse zu erstellen. Wenn die Ziel-IP-Adresse nicht Teil des ausgewählten Subnetzes ist, wird die Testfailover-VM mit der nächsten verfügbaren IP-Adresse im ausgewählten Subnetz erstellt.
     >
@@ -110,7 +110,7 @@ Ab Windows Server 2012 [sind zusätzliche Sicherheitsmechanismen in Active Direc
 
 Wenn **VM-GenerationID** zurückgesetzt wird, wird der **InvocationID**-Wert der AD DS-Datenbank auch zurückgesetzt. Darüber hinaus wird der RID-Pool verworfen und SYSVOL als nicht autorisierend gekennzeichnet. Weitere Informationen finden Sie unter [Einführung in die Virtualisierung der Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) und [Sichere Virtualisierung von DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
 
-Ein Failover in Azure könnte **VM-GenerationID** zurücksetzen. Das Zurücksetzen von **VM-GenerationID** löst beim Starten der virtuellen Domänencontrollercomputer in Azure zusätzliche Sicherheitsmechanismen aus. Dies kann zu einer *erheblichen Verzögerung* bei der Anmeldung beim virtuellen Domänencontrollercomputer führen. 
+Ein Failover in Azure könnte **VM-GenerationID** zurücksetzen. Das Zurücksetzen von **VM-GenerationID** löst beim Starten der virtuellen Domänencontrollercomputer in Azure zusätzliche Sicherheitsmechanismen aus. Dies kann zu einer *erheblichen Verzögerung* bei der Anmeldung beim virtuellen Domänencontrollercomputer führen.
 
 Da dieser Domänencontroller nur in einem Testfailover verwendet wird, sind keine Virtualisierungsschutzmechanismen erforderlich. Um sicherzustellen, dass der Wert **VM-GenerationID** für den virtuellen Domänencontrollercomputer nicht geändert wird, können Sie auf dem lokalen Domänencontroller den folgenden DWORD-Wert in **4** ändern:
 
@@ -165,20 +165,20 @@ Wenn Virtualisierungssicherheitsmechanismen nach einem Testfailover ausgelöst w
 Wenn die oben genannten Bedingungen erfüllt sind, ist es wahrscheinlich, dass der Domänencontroller funktioniert. Falls nicht, führen Sie die folgenden Schritte aus:
 
 1. Führen Sie eine autoritative Wiederherstellung des Domänencontrollers durch. Beachten Sie Folgendes:
-    * Wir empfehlen zwar nicht die [FRS-Replikation](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), doch führen Sie bei Verwendung der FRS-Replikation die Schritte für eine autorisierende Wiederherstellung aus. Der Prozess wird in [Verwenden des BurFlags-Registrierungsschlüssels zur erneuten Initialisierung des Dateireplikationsdiensts](https://support.microsoft.com/kb/290762) beschrieben. 
-    
+    * Wir empfehlen zwar nicht die [FRS-Replikation](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), doch führen Sie bei Verwendung der FRS-Replikation die Schritte für eine autorisierende Wiederherstellung aus. Der Prozess wird in [Verwenden des BurFlags-Registrierungsschlüssels zur erneuten Initialisierung des Dateireplikationsdiensts](https://support.microsoft.com/kb/290762) beschrieben.
+
         Weitere Informationen zu BurFlags finden Sie im Blogbeitrag [D2 and D4: What is it for? (D2 und D4: Wofür ist das gut?)](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Wenn Sie die DFSR-Replikation verwenden, führen Sie die Schritte für eine autorisierende Wiederherstellung aus. Der Prozess wird in [Eine autorisierende und nicht autorisierende Synchronisierung für DFSR-repliziertes SYSVOL erzwingen (wie „D4/D2“ für FRS)](https://support.microsoft.com/kb/2218556) beschrieben. 
-    
+    * Wenn Sie die DFSR-Replikation verwenden, führen Sie die Schritte für eine autorisierende Wiederherstellung aus. Der Prozess wird in [Eine autorisierende und nicht autorisierende Synchronisierung für DFSR-repliziertes SYSVOL erzwingen (wie „D4/D2“ für FRS)](https://support.microsoft.com/kb/2218556) beschrieben.
+
         Sie können auch die PowerShell-Funktionen verwenden. Weitere Informationen finden Sie unter [DFSR-SYSVOL authoritative/non-authoritative restore PowerShell functions (DFSR-SYSVOL: PowerShell-Funktionen für autorisierende/nicht autorisierende Wiederherstellung)](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 
-2. Umgehen Sie die angeforderte Erstsynchronisierung, indem Sie den folgenden Registrierungsschlüssel auf dem lokalen Domänencontroller auf **0** festlegen. Wenn dieses DWORD-Element nicht vorhanden ist, können Sie es unter dem Knoten **Parameter** erstellen. 
+2. Umgehen Sie die angeforderte Erstsynchronisierung, indem Sie den folgenden Registrierungsschlüssel auf dem lokalen Domänencontroller auf **0** festlegen. Wenn dieses DWORD-Element nicht vorhanden ist, können Sie es unter dem Knoten **Parameter** erstellen.
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
     Weitere Informationen finden Sie unter [Problembehandlung bei DNS-Ereignis-ID 4013: Der DNS-Server konnte die Active Directory-integrierten DNS-Zonen nicht laden](https://support.microsoft.com/kb/2001093).
 
-3. Deaktivieren Sie die Anforderung, dass ein globaler Katalogserver zur Überprüfung der Benutzeranmeldung verfügbar sein muss. Legen Sie hierzu auf dem lokalen Domänencontroller für den folgenden Registrierungsschlüssel **1** fest. Wenn dieses DWORD-Element nicht vorhanden ist, können Sie es unter dem Knoten **Lsa** erstellen. 
+3. Deaktivieren Sie die Anforderung, dass ein globaler Katalogserver zur Überprüfung der Benutzeranmeldung verfügbar sein muss. Legen Sie hierzu auf dem lokalen Domänencontroller für den folgenden Registrierungsschlüssel **1** fest. Wenn dieses DWORD-Element nicht vorhanden ist, können Sie es unter dem Knoten **Lsa** erstellen.
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
