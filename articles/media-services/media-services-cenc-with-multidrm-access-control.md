@@ -151,7 +151,7 @@ Die folgende Tabelle zeigt die Zuordnung.
 | **Sicherheitstokendienst (Security Token Service, STS)** |Azure AD |
 | **Workflow des DRM-Schutzes** |Dynamischer Schutz in Media Services |
 | **DRM-Lizenzbereitstellung** |* Media Services-Lizenzbereitstellung (PlayReady, Widevine, FairPlay) <br/>* Axinom-Lizenzserver <br/>* Benutzerdefinierter PlayReady-Lizenzserver |
-| **Ursprung** |* Media Services-Streamingendpunkt |
+| **Ursprung** |Media Services-Streamingendpunkt |
 | **Schlüsselverwaltung** |Für Referenzimplementierung nicht erforderlich |
 | **Content Management** |C#-Konsolenanwendung |
 
