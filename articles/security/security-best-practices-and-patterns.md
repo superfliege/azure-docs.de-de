@@ -1,6 +1,6 @@
 ---
 title: "Sicherheit in Azure – bewährte Methoden und Muster | Microsoft Docs"
-description: "Der Artikel enthält eine Einführung zu bewährten Methoden und Mustern zur Sicherheit in Azure und eine Aufstellung der bewährten Sicherheitsmethoden für verschiedene Azure-Ressourcen."
+description: "Der Artikel enthält eine Liste der bewährten Methoden zur Azure-Sicherheit und Muster für verschiedene Azure-Ressourcen."
 services: azure-security
 documentationcenter: na
 author: TomShinder
@@ -12,38 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: terrylan
-ms.openlocfilehash: c8a25d64f3925ec963d8d02c827bd2045994feac
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 2/16/2018
+ms.author: 
+ms.openlocfilehash: 5176f679971d542e67dfc6ff04a729fa52bc3f6e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Sicherheit in Azure – bewährte Methoden und Muster
-Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muster zur Azure-Sicherheit zur Verfügung. Besuchen Sie unbedingt regelmäßig diese Website, um stets über Updates unserer wachsenden Liste bewährter Methoden und Muster zur Azure-Sicherheit informiert zu sein:  
 
-* [Bewährte Methoden für die Azure-Netzwerksicherheit](azure-security-network-security-best-practices.md)
+* [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
+* [Bewährte Methoden für die Azure-Datenbanksicherheit](azure-database-security-best-practices.md)
 * [Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure](azure-security-data-encryption-best-practices.md)
 * [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](azure-security-identity-management-best-practices.md)
-* [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)
-* [Azure IaaS Security Best Practices (Bewährte Methoden für die Azure IaaS-Sicherheit)] (azure-security-iaas.md)
-* [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
+* [Bewährte Methoden für die Azure-Netzwerksicherheit](azure-security-network-security-best-practices.md)
+* [Bewährte Methoden für Azure Operational Security](azure-operational-security-best-practices.md)
+* [Bewährte Methoden für Azure PaaS](https://docs.microsoft.com/azure/security/security-paas-deployments) 
+* [Bewährte Methoden für die Azure Service Fabric-Sicherheit](security-best-practices-and-patterns.md)
+* [Bewährte Methoden für die Sicherheit virtueller Azure-Computer](azure-service-fabric-security-best-practices.md)
 * [Implementing a secure hybrid network architecture in Azure (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
-* [Azure PaaS – Best Practices] (https://docs.microsoft.com/azure/security/security-paas-deployments)
+* [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)* [Schützen von PaaS-Datenbanken in Azure](security-paas-applications-using-sql.md)
+* [Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure App Service](security-paas-applications-using-app-services.md)
+* [Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure Storage](security-paas-applications-using-storage.md)
+* [Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure](azure-security-iaas.md)
 
-Azure bietet eine sichere Plattform, auf der Sie Ihre Lösungen erstellen können. Wir bieten auch Dienste und Technologien, um Ihre Lösungen in Azure sicherer zu gestalten. Wegen der zahlreichen verfügbaren Optionen möchten viele von Ihnen erfahren, was Microsoft als bewährte Methoden und Muster zur Verbesserung der Sicherheit empfehlen kann.
 
-Wir verstehen Ihr Interesse und haben zu diesem Zweck eine Sammlung von Dokumenten erstellt, die im jeweiligen Kontext Vorgehensweisen beschreiben, die Sie verwenden können und die bei der Verbesserung der Sicherheit von Azure-Bereitstellungen hilfreich sind.
 
-In diesen Artikeln über bewährte Methoden und Muster erörtern wir eine Sammlung bewährter Methoden und nützlicher Muster für bestimmte Themen. Diese bewährten Methoden und Muster sind aus unseren Erfahrungen mit diesen Technologien und den Erfahrungen von Kunden wie Ihnen abgeleitet.
-
-Für jede bewährte Methode erläutern wir Folgendes:
-
-* Wobei es bei der bewährten Methode geht
-* Warum Sie die bewährte Methode nutzen sollten
-* Was die Folge sein könnte, wenn Sie die bewährte Methode nicht aktivieren
-* Mögliche Alternativen zur bewährten Methode
-* Wie Sie erfahren können, wie Sie die empfohlenen Vorgehensweisen aktivieren
-
-Das Angebot an Artikeln zur Sicherheitsarchitektur von Azure sowie zu bewährten Methoden wird in Zukunft noch erweitert. Themenwünsche können im Diskussionsbereich am Ende dieser Seite geäußert werden.

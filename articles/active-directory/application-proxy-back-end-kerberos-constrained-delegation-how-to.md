@@ -3,7 +3,7 @@ title: "Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Dele
 description: "Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für Anwendungsproxy"
 services: active-directory
 documentationcenter: 
-author: daveba
+author: MarkusVi
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 7b31f53e14e3f9a175e5dda95a18eb89dbca99dc
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 02/09/2018
+ms.author: markvi
+ms.reviewer: harshja
+ms.openlocfilehash: a580b0afbd34623986ea8a3f60147a937c423e5e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für Anwendungsproxy
 
@@ -33,7 +34,7 @@ Dieser Artikel geht von den folgenden Annahmen aus:
 
 -   Die veröffentlichte Zielanwendung basiert auf IIS und der Microsoft-Implementierung von Kerberos.
 
--   Die Server- und Anwendungshosts befinden sich in einer einzelnen Active Directory-Domäne. Ausführliche Informationen zu domänen- und gesamtstrukturübergreifenden Szenarien finden Sie im [KCD-Whitepaper](http://aka.ms/KCDPaper).
+-   Die Server- und Anwendungshosts befinden sich in einer einzelnen Active Directory-Domäne. Ausführliche Informationen zu domänen- und gesamtstrukturübergreifenden Szenarien finden Sie im [KCD-Whitepaper](https://aka.ms/KCDPaper).
 
 -   Die behandelte Anwendung wird in einem Azure-Mandanten mit aktivierter Vorauthentifizierung veröffentlicht. Benutzer müssen sich mithilfe der formularbasierten Authentifizierung bei Azure authentifizieren. In diesem Artikel werden keine Szenarien mit umfassender Clientauthentifizierung behandelt. Dies wird jedoch irgendwann in der Zukunft hinzugefügt.
 
@@ -51,7 +52,7 @@ Dies gilt Insbesondere für den Abschnitt zum Konfigurieren von KCD unter 2012R2
 
 -   Vermeiden Sie nach Möglichkeit das Platzieren aktiver IPS-/IDS-Geräte zwischen Connectorhosts und Domänencontrollern, da diese manchmal übermäßig stark eingreifen und mit dem RPC-Hauptdatenverkehr in Konflikt geraten.
 
-Es empfiehlt sich, die Delegierung in möglichst einfachen Szenarien zu testen. Je mehr Variablen Sie einführen, desto schwieriger kann sich der Vorgang gestalten. Wenn Sie Ihre Tests z. B. auf einen einzelnen Connector beschränken, kann dies wertvolle Zeit sparen. Nachdem die Probleme behoben wurden, können weitere Connectors hinzugefügt werden.
+Sie sollten die Delegierung im einfachsten Szenario testen. Je mehr Variablen Sie einführen, desto schwieriger kann sich der Vorgang gestalten. Wenn Sie Ihre Tests z. B. auf einen einzelnen Connector beschränken, kann dies wertvolle Zeit sparen. Nachdem die Probleme behoben wurden, können weitere Connectors hinzugefügt werden.
 
 Ebenfalls tragen möglicherweise auch Umgebungsfaktoren zu einem Problem bei. Minimieren Sie während der Tests die Architektur auf das erforderliche Minimum, um diese Umgebungsfaktoren zu vermeiden. Beispielsweise sind falsch konfigurierte interne Firewall-ACLs nicht ungewöhnlich. Daher sollte sämtlicher Datenverkehr von einem Connector nach Möglichkeit direkt zu den Domänencontrollern und zur Back-End-Anwendung geleitet werden. 
 
@@ -79,7 +80,7 @@ Wenn Sie so weit gekommen sind, ist das Hauptproblem definitiv vorhanden. Untert
 
 **Clientvorauthentifizierung**: Der externe Benutzer authentifiziert sich über einen Browser bei Azure.
 
-Die Möglichkeit zur Vorauthentifizierung bei Azure ist für das einmalige Anmelden mit KCD zwingend erforderlich. Dies sollte zuerst getestet und behandelt werden, falls Probleme auftreten. Die Vorauthentifizierungsphase hat keinen Bezug zu KCD oder zur veröffentlichten Anwendung. Es sollte relativ einfach sein, mögliche Unstimmigkeiten zu beheben, indem Sie eine Plausibilitätsprüfung durchführen, ob das betroffene Konto in Azure vorhanden und es nicht deaktiviert/blockiert ist. Die Fehlerantwort im Browser ist in der Regel aussagekräftig genug, um die Ursache zu verstehen. Sie können auch unsere anderen Dokumentationen zur Problembehandlung zu Rate ziehen, falls Sie unsicher sind.
+Die Möglichkeit zur Vorauthentifizierung bei Azure ist für das einmalige Anmelden mit KCD zwingend erforderlich. Sie sollten dies testen und ggf. auftretende Probleme beheben. Die Vorauthentifizierungsphase hat keinen Bezug zu KCD oder zur veröffentlichten Anwendung. Es sollte relativ einfach sein, mögliche Unstimmigkeiten zu beheben, indem Sie eine Plausibilitätsprüfung durchführen, ob das betroffene Konto in Azure vorhanden und es nicht deaktiviert/blockiert ist. Die Fehlerantwort im Browser ist in der Regel aussagekräftig genug, um die Ursache zu verstehen. Sie können auch unsere anderen Dokumentationen zur Problembehandlung zu Rate ziehen, falls Sie unsicher sind.
 
 **Delegierungsdienst**: Der Azure-Proxy-Connector ruft im Auftrag von Benutzern ein Kerberos-Dienstticket aus einem KDC (Kerberos-Verteilungscenter) ab.
 
@@ -105,7 +106,7 @@ Die entsprechenden Einträge im Ereignisprotokoll hätten dann die Ereignis-IDs 
 
 Eine Netzwerkablaufverfolgung, die den Datenaustausch zwischen dem Connectorhost und einem Domänen-KDC erfasst, wäre dann der nächstbeste Schritt zum Abrufen weiterer allgemeiner Details zu den Problemen. Weitere Informationen finden Sie im [vertiefenden Papier zur Problembehandlung](https://aka.ms/proxytshootpaper).
 
-Wenn die Ticketausstellung ordnungsgemäß funktioniert, sollte in den Protokollen ein Ereignis erscheinen, laut dem ein Authentifizierungsfehler aufgetreten ist, weil die Anwendung den Code 401 zurückgegeben hat. Hierdurch wird in der Regel angezeigt, dass die Zielanwendung Ihr Ticket ablehnt, daher setzen Sie den Vorgang mit der folgenden nächsten Phase fort.
+Wenn die Ticketausstellung ordnungsgemäß funktioniert, sollte in den Protokollen ein Ereignis erscheinen, laut dem ein Authentifizierungsfehler aufgetreten ist, weil die Anwendung den Code 401 zurückgegeben hat. Dies deutet typischerweise darauf hin, dass die Zielanwendung Ihr Ticket ablehnt, fahren Sie deshalb mit der nächsten Phase fort:
 
 **Zielanwendung**: Der Consumer des Kerberos-Tickets, das vom Connector bereitgestellt wurde.
 
@@ -125,7 +126,7 @@ In dieser Phase wird davon ausgegangen, dass der Connector bereits ein Kerberos-
 
 2.  Entfernen Sie NTLM vorübergehend aus der Anbieterliste der IIS-Website, und greifen Sie direkt über Internet Explorer auf dem Connectorhost auf die App zu. Ohne NTLM in der Anbieterliste sollten Sie in der Lage sein, nur mithilfe von Kerberos auf die Anwendung zuzugreifen. Wenn dies fehlschlägt, weist es darauf hin, dass ein Problem mit der Konfiguration der Anwendung vorliegt und die Kerberos-Authentifizierung nicht funktioniert.
 
-Wenn Kerberos nicht verfügbar ist, prüfen Sie die Authentifizierungseinstellungen der Anwendung in IIS, um sicherzustellen, dass die Aushandlung ganz am Anfang und NTLM direkt darunter aufgeführt ist. (Keine Aushandlung: kerberos oder Aushandlung: PKU2U). Setzen Sie den Vorgang nur fort, wenn Kerberos funktionsfähig ist.
+Wenn Kerberos nicht verfügbar ist, prüfen Sie die Authentifizierungseinstellungen der Anwendung in IIS, um sicherzustellen, dass die Aushandlung ganz am Anfang und NTLM direkt darunter aufgeführt ist. (Keine Aushandlung: Kerberos oder Aushandlung: PKU2U). Setzen Sie den Vorgang nur fort, wenn Kerberos funktionsfähig ist.
 
    ![Windows-Authentifizierungsanbieter](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    
@@ -152,6 +153,16 @@ Wenn Kerberos nicht verfügbar ist, prüfen Sie die Authentifizierungseinstellun
 -   Wechseln Sie zu IIS, wählen Sie die Option **Konfigurations-Editor** für die Anwendung aus, und navigieren Sie zu **system.webServer/security/authentication/windowsAuthentication**, um sicherzustellen, dass für **UseAppPoolCredentials** der Wert **True** festgelegt ist.
 
    ![Option für Anmeldeinformationen der Anwendungspools der IIS-Konfiguration](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
+
+Nach dem Ändern dieses Werts in **True** müssen alle zwischengespeicherten Kerberos-Tickets vom Back-End-Server entfernt werden. Führen Sie dazu den folgenden Befehl aus:
+
+```powershell
+Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
+``` 
+
+Weitere Informationen finden Sie unter [Purge the Kerberos client ticket cache for all sessions](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf) (Löschen des Kerberos-Clientticketcaches für alle Sitzungen).
+
+
 
 Obwohl es beim Optimieren der Leistung von Kerberos-Vorgängen hilfreich ist, wird das Ticket für den angeforderten Dienst mithilfe des Computerkontos entschlüsselt, wenn der Kernel-Modus aktiviert bleibt. Dies wird auch als lokales System bezeichnet. Wenn daher der Wert „true“ festgelegt ist, wird die KCD gestoppt, wenn die Anwendung auf mehreren Servern in einer Farm gehostet wird.
 

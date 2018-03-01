@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/21/2017
 ms.author: billmath
-ms.openlocfilehash: b533df58d24b3bc76a229ad09c682d1d8aeaf741
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2d172b22d00f21062237a1af1742bad6a03c864c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -75,10 +75,10 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungs
 
 ## <a name="step-3-roll-out-the-feature"></a>Schritt 3: Ausrollen des Features
 
-Zum Durchführen des Rollouts für das Feature müssen Sie den Intranetzoneneinstellungen Ihrer Benutzer mithilfe der Gruppenrichtlinie in Active Directory die folgenden Azure AD-URLs hinzufügen:
+Um das Rollout für das Feature durchzuführen, müssen Sie den Intranetzoneneinstellungen Ihrer Benutzer mithilfe der Gruppenrichtlinie in Active Directory die folgende Azure AD-URL hinzufügen:
 
 - https://autologon.microsoftazuread-sso.com
-- https://aadg.windows.net.nsatc.net
+
 
 Darüber hinaus müssen Sie mithilfe der Gruppenrichtlinie eine Richtlinieneinstellung für eine Intranetzone namens **Aktualisierungen der Statusleiste per Skript zulassen** aktivieren. 
 
@@ -87,7 +87,7 @@ Darüber hinaus müssen Sie mithilfe der Gruppenrichtlinie eine Richtlinieneinst
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Warum müssen Sie Einstellungen von Benutzern für Intranetzonen ändern?
 
-Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zone (Internet oder Intranet). Beispielsweise ist http://contoso/ der Intranetzone und http://intranet.contoso.com/ der Internetzone zugeordnet (da die URL einen Punkt enthält). Browser senden keine Kerberos-Tickets an Cloudendpunkte wie die beiden Azure AD-URLs, sofern die jeweilige URL nicht explizit als Teil der Intranetzone des Browsers definiert ist.
+Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zone (Internet oder Intranet). Beispielsweise ist http://contoso/ der Intranetzone und http://intranet.contoso.com/ der Internetzone zugeordnet (da die URL einen Punkt enthält). Browser senden keine Kerberos-Tickets an Cloudendpunkte wie die Azure AD-URL, sofern Sie die URL nicht explizit zur Intranetzone des Browsers hinzufügen.
 
 ### <a name="detailed-steps"></a>Ausführliche Schritte
 
@@ -96,7 +96,7 @@ Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zo
 3. Navigieren Sie zu **Benutzerkonfiguration** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“**. Wählen Sie dann **Liste der Site zu Zonenzuweisungen**.
     ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso6.png)
 4. Aktivieren Sie die Richtlinie, und geben Sie die folgenden Werte in das Dialogfeld ein:
-   - **Wertname**: Die Azure AD-URLs, an die die Kerberos-Tickets weitergeleitet werden.
+   - **Wertname**: Die Azure AD-URL, an die die Kerberos-Tickets weitergeleitet werden.
    - **Wert** (Daten): **1** gibt die Intranetzone an.
 
    Das Ergebnis sieht wie folgt aus:
@@ -104,13 +104,9 @@ Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zo
     Wert: https://autologon.microsoftazuread-sso.com
   
     Data 1
-        
-   Wert: https://aadg.windows.net.nsatc.net
-
-    Data 1
 
    >[!NOTE]
-   > Wenn Sie das nahtlose einmalige Anmelden für einige Benutzer verbieten möchten (beispielsweise weil sich diese Benutzer bei freigegebenen Kiosken anmelden), legen Sie die vorherigen Werte auf **4** fest. Diese Aktion fügt der Zone eingeschränkter Sites die Azure AD-URLs hinzu, und löst für das nahtlose einmalige Anmelden ständig einen Fehler aus.
+   > Wenn Sie das nahtlose einmalige Anmelden für einige Benutzer verbieten möchten (beispielsweise weil sich diese Benutzer bei freigegebenen Kiosken anmelden), legen Sie die vorherigen Werte auf **4** fest. Diese Aktion fügt die Azure AD-URL zur Zone eingeschränkter Sites hinzu und löst für das nahtlose einmalige Anmelden ständig einen Fehler aus.
    >
 
 5. Klicken Sie auf **OK** und anschließend erneut auf **OK**.
@@ -146,9 +142,9 @@ Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://w
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome (nur Mac OS)
 
-Informationen dazu, wie Sie in Google Chrome unter Mac OS und anderen nicht Windows-basierten Plattformen die Azure AD-URLs für die integrierte Authentifizierung auf eine Whitelist setzen, finden Sie unter [The Chromium Project Policy List](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) (Richtlinienliste von The Chromium Projects).
+Informationen dazu, wie Sie in Google Chrome unter Mac OS und anderen Nicht-Windows-Plattformen die Azure AD-URL für die integrierte Authentifizierung auf eine Whitelist setzen, finden Sie unter [The Chromium Project Policy List](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) (Richtlinienliste von The Chromium Project).
 
-Das Ausrollen der Azure AD-URLs für Firefox und Google Chrome unter Mac mithilfe von Active Directory-Gruppenrichtlinienerweiterungen von Drittanbietern kann in diesem Artikel nicht behandelt werden.
+Das Rollout der Azure AD-URL für Firefox und Google Chrome unter Mac mithilfe von Active Directory-Gruppenrichtlinienerweiterungen von Drittanbietern kann in diesem Artikel nicht behandelt werden.
 
 #### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 

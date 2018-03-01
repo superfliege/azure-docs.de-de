@@ -1,24 +1,18 @@
 ---
-title: Verwenden des Azure-Blobspeichers (Objektspeicher) mit Java | Microsoft Docs
+title: Verwenden von Azure Blob Storage (Objektspeicher) mit Java | Microsoft-Dokumentation
 description: Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher).
 services: storage
-documentationcenter: java
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 2e223b38-92de-4c2f-9254-346374545d32
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: 91ef09916dbb587305572ea640fb4408ea9aebb6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b243aa7a4e9aa3028259258292d1271867d28f4
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="how-to-use-blob-storage-from-java"></a>Verwenden des Blob-Speichers mit Java
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -26,9 +20,9 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="overview"></a>Übersicht
-Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+Azure Blob Storage ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
-In diesem Artikel wird die Durchführung gängiger Szenarien mit dem Microsoft Azure-Blob-Speicher demonstriert. Die Beispiele wurden in Java geschrieben und verwenden das [Azure Storage-SDK für Java][Azure Storage SDK for Java]. Die behandelten Szenarien umfassen das **Hochladen**, **Auflisten**, **Herunterladen** und **Löschen** von Blobs. Weitere Informationen zu Blobs finden Sie im Abschnitt [Nächste Schritte](#Next-Steps) .
+In diesem Artikel wird die Durchführung gängiger Szenarien mit Microsoft Azure Blob Storage demonstriert. Die Beispiele wurden in Java geschrieben und verwenden das [Azure Storage-SDK für Java][Azure Storage SDK for Java]. Die behandelten Szenarien umfassen das **Hochladen**, **Auflisten**, **Herunterladen** und **Löschen** von Blobs. Weitere Informationen zu Blobs finden Sie im Abschnitt [Nächste Schritte](#Next-Steps) .
 
 > [!NOTE]
 > Ein SDK steht für Entwickler zur Verfügung, die Azure Storage auf Android-Geräten verwenden. Weitere Informationen finden Sie unter [Azure Storage-SDK für Android][Azure Storage SDK for Android].
@@ -218,7 +212,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="delete-a-blob"></a>Löschen eines Blobs
+## <a name="delete-a-blob"></a>Löschen eines BLOBs
 Zum Löschen eines Blobs rufen Sie einen Blobverweis ab und rufen dann **deleteIfExists**auf.
 
 ```java

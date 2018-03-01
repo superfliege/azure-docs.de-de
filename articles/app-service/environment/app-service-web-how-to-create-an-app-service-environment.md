@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: ef0dc1b820f42b73af3af3882085729ecc21230c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2741ea2931ddd7989fc05e1cddbeedb80bf30410
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Erstellen einer App Service-Umgebung v1 
 
@@ -32,7 +32,7 @@ Die App Service-Umgebung (ASE) ist eine Premium-Dienstoption von Azure App Servi
 ### <a name="before-you-create-your-ase"></a>Bevor Sie Ihre ASE erstellen
 Es ist wichtig, die Aspekte zu berücksichtigen, die Sie ändern können. Die folgenden Aspekte Ihrer ASE können Sie nicht ändern, nachdem sie erstellt wurde:
 
-* Ort
+* Speicherort
 * Abonnement
 * Ressourcengruppe
 * Verwendetes VNET
@@ -42,13 +42,13 @@ Es ist wichtig, die Aspekte zu berücksichtigen, die Sie ändern können. Die fo
 Stellen Sie bei der Auswahl eines VNET und Angabe eines Subnetzes sicher, dass es auf künftiges Wachstum ausgelegt ist. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>Erstellen einer App Service-Umgebung v1
-Um eine App Service-Umgebung v1 zu erstellen, müssen Sie den Azure Marketplace nach ***App Service-Umgebung v1*** durchsuchen oder „Neu“ > „Web und mobil“ > „App Service-Umgebung“ verwenden. So erstellen Sie eine ASEv1
+Um eine App Service-Umgebung v1 zu erstellen, müssen Sie den Azure Marketplace nach ***App Service-Umgebung v1*** durchsuchen oder **Ressource erstellen** -> **Web + Mobil** -> **App Service-Umgebung** verwenden. So erstellen Sie eine ASEv1
 
-1. Geben Sie den Namen Ihrer ASE an. Der Name, der für die ASE angegeben wird, wird für die in der ASE erstellten Apps verwendet. Wenn der Name der App Service-Umgebung „appsvcenvdemo“ ist, lautet der Unterdomänenname „.*appsvcenvdemo.p.azurewebsites.net*“. Wenn Sie also eine App namens *mytestapp* erstellt haben, wäre diese unter der Adresse *mytestapp.appsvcenvdemo.p.azurewebsites.net* aufrufbar. Sie dürfen im Namen Ihrer ASE keine Leerzeichen verwenden. Bei Verwendung von Großbuchstaben im Namen wird der entsprechende Domänenname dennoch vollständig in Kleinbuchstaben geschrieben. Bei Verwendung eines ILB wird Ihr ASE-Name nicht in Ihrer Unterdomäne verwendet, jedoch stattdessen explizit während der ASE-Erstellung angegeben.
+1. Geben Sie den Namen Ihrer ASE an. Der für die ASE angegebene Name wird für die in der ASE erstellten Apps verwendet. Wenn der Name der App Service-Umgebung „appsvcenvdemo“ lautet, erhält die Unterdomäne den Namen *appsvcenvdemo.p.azurewebsites.net*. Wenn Sie also eine App namens *mytestapp* erstellt haben, kann diese über *mytestapp.appsvcenvdemo.p.azurewebsites.net* aufgerufen werden. Sie dürfen im Namen Ihrer ASE keine Leerzeichen verwenden. Bei Verwendung von Großbuchstaben im Namen wird der Domänenname dennoch vollständig in Kleinbuchstaben geschrieben. Bei Verwendung eines ILB wird Ihr ASE-Name nicht in Ihrer Unterdomäne verwendet, sondern stattdessen explizit während der ASE-Erstellung angegeben.
    
     ![][1]
-2. Wählen Sie Ihr Abonnement aus. Das für Ihre ASE verwendete Abonnement ist auch dasjenige, in dem alle Apps in dieser ASE erstellt werden. Sie können Ihre ASE nicht in einem VNET platzieren, das sich in einem anderen Abonnement befindet.
-3. Wählen eine neue Ressourcengruppe aus, oder geben Sie eine an. Die Ressourcengruppe, die für Ihre ASE verwendet wird, muss identisch mit derjenigen sein, die für das VNET verwendet wird. Wenn Sie ein bereits vorhandenes VNET auswählen, wird die Auswahl der Ressourcengruppe für Ihre ASE entsprechend derjenigen Ihres VNET aktualisiert.
+2. Wählen Sie Ihr Abonnement aus. Das für Ihre ASE verwendete Abonnement gilt auch für alle Apps, die Sie in dieser ASE erstellen. Sie können Ihre ASE nicht in einem VNET platzieren, das einem anderen Abonnement angehört.
+3. Wählen eine neue Ressourcengruppe aus, oder geben Sie eine an. Die Ressourcengruppe, die für Ihre ASE verwendet wird, muss identisch mit derjenigen sein, die für das VNET verwendet wird. Wenn Sie ein bereits vorhandenes VNET auswählen, wird die Auswahl der Ressourcengruppe für Ihre ASE gemäß VNET aktualisiert.
    
     ![][2]
 4. Treffen Sie Ihre Auswahl für „Virtuelles Netzwerk“ und „Speicherort“. Sie können ein neues VNET erstellen oder ein bereits vorhandenes VNET auswählen. Wenn Sie ein neues VNET auswählen, können Sie einen Namen und Speicherort angeben. Das neue VNET hat den Adressbereich 192.168.250.0/23 und ein Subnetz namens **default**, das als 192.168.250.0/24 definiert ist. Sie können auch einfach ein bereits vorhandenes klassisches oder Resource Manager-VNET auswählen. Die Auswahl des VIP-Adresstyps bestimmt, ob auf Ihre ASE ein direkter Zugriff aus dem Internet möglich ist (extern) oder ob ein interner·Load Balancer (ILB) verwendet wird. Mehr hierzu erfahren Sie unter [Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung][ILBASE]. Wenn Sie einen VIP-Adresstyp des Typs „Extern“ auswählen, können Sie auswählen, mit wie vielen externen IP-Adressen das System für IPSSL-Zwecke erstellt wird. Bei Auswahl von „Intern“ müssen Sie die Unterdomäne angeben, die Ihrer ASE verwenden soll. ASEs können in virtuellen Netzwerken bereitgestellt werden, die *entweder* öffentliche Adressbereiche *oder* RFC1918-Adressräume (d.h. private Adressen) verwenden. Um ein virtuelles Netzwerk mit einem öffentlichen Adressbereich zu verwenden, müssen Sie das VNET vorab erstellen. Bei Auswahl eines bereits bestehenden VNET müssen Sie während der Erstellung der ASE ein neues Subnetz erstellen. **Eine vorab erstelltes Subnetz kann nicht im Portal verwendet werden. Sie können eine ASE mit einem bereits vorhandenen Subnetz erstellen, wenn Sie Ihre ASE mithilfe einer Resource Manager-Vorlage erstellen.** Zum Erstellen einer App anhand einer Vorlage befolgen Sie die Angaben unter [Erstellen einer App Service-Umgebung aus einer Vorlage][ILBAseTemplate] und [Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen][ASEfromTemplate].

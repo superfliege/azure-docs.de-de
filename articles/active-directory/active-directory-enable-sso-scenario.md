@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Anwendungen mit Azure Active Directory | Microsoft Docs
+title: Verwalten von Anwendungen mit Azure Active Directory | Microsoft-Dokumentation
 description: "Dieser Artikel erläutert die Vorteile der Integration von Azure Active Directory in lokale, Cloud- und SaaS-Anwendungen."
 services: active-directory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: e825e6be79efad5dfb385f96901a2b5682027963
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: f4035e4c1ef2bc78256ed842bc4b1ac65ecf8b53
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Verwalten von Anwendungen mit Azure Active Directory
 Abgesehen vom eigentlichen Workflow oder Inhalt gibt es für Unternehmen zwei grundlegende Anforderungen für alle Anwendungen:
@@ -78,7 +78,7 @@ Bei Verwendung von Azure AD zum Verwalten von Anwendungen und zum Aktivieren der
 * Die Authentifizierung erfolgt über das lokale (z. B. AD) oder das Azure AD-Konto des Benutzers.
 * Die Autorisierung wird anhand der Azure AD-Zuweisungs- und Schutzrichtlinie ausgeführt und gewährleistet eine konsistente Endbenutzeroberfläche. Sie ermöglicht Ihnen das Hinzufügen von Zuweisungs-, Standort- und MFA-Bedingungen für beliebige Anwendungen, unabhängig von deren internen Funktionen.
 
-Es wichtig zu verstehen, dass die Anwendung der Autorisierung auf die Zielanwendung davon abhängt, wie die Anwendung in Azure AD integriert wurde.
+Es wichtig zu verstehen, dass die Durchsetzung der Autorisierung für die Zielanwendung davon abhängt, wie die Anwendung in Azure AD integriert wurde.
 
 * **Vom Dienstanbieter vorinstallierte Anwendungen** Wie Office 365 und Azure handelt es sich hierbei um Anwendungen, die direkt auf Azure AD aufbauen und es für ihre umfassenden Identitäts- und Zugriffsverwaltungsfunktionen verwenden. Der Zugriff auf diese Anwendungen wird über Verzeichnisinformationen und die Ausstellung von Token aktiviert.
 * **Von Microsoft vorinstallierte und benutzerdefinierte Anwendungen** Hierbei handelt es sich um unabhängige Cloudanwendungen, die auf einem internen Anwendungsverzeichnis basieren und unabhängig von Azure AD verwendet werden können. Der Zugriff auf diese Anwendungen wird durch das Ausgeben anwendungsspezifischer Anmeldeinformationen ermöglicht, die einem Anwendungskonto zugeordnet werden. Abhängig von den Anwendungsfunktionen handelt es sich bei den Anmeldeinformationen um ein Verbundtoken oder um einen Benutzernamen und ein Kennwort für ein Konto, das zuvor in der Anwendung bereitgestellt wurde.
@@ -90,13 +90,13 @@ Wenn ein Benutzer Ihrer Organisation beitritt, müssen Sie z. B. für die primä
 In modernen Unternehmen sind die IT-Abteilungen häufig nicht über alle verwendeten Cloudanwendungen unterrichtet. Mit Cloud App Discovery bietet Azure AD Ihnen auch eine Lösung zum Erkennen dieser Anwendungen.
 
 ## <a name="account-management"></a>Kontenverwaltung
-Ursprünglich ist das Verwalten von Konten in den verschiedenen Anwendungen ein manueller Prozess, der von IT- oder Supportpersonal in der Organisation durchgeführt wird. Azure AD hat die Kontenverwaltung vollständig über alle von Dienstanbietern integrierten Anwendungen und über solche vorinstallierten Anwendungen von Microsoft hinweg automatisiert, die eine automatische Benutzerbereitstellung oder SAML JIT unterstützen.
+Traditionell ist das Verwalten von Konten in den verschiedenen Anwendungen ein manueller Prozess, der vom IT- oder Supportpersonal in der Organisation durchgeführt wird. Azure AD automatisiert die Kontenverwaltung vollständig über alle von Dienstanbietern integrierten Anwendungen und von Microsoft vorab integrierten Anwendungen hinweg, die eine automatische Benutzerbereitstellung oder SAML-Just-In-Time-Bereitstellung unterstützen.
 
 ## <a name="automated-user-provisioning"></a>Automatisierte Benutzerbereitstellung
 Einige Anwendungen bieten Automatisierungsschnittstellen für die Erstellung und Entfernung (oder Deaktivierung) von Konten. Wenn ein Anbieter eine solche Schnittstelle anbietet, wird sie von Azure AD genutzt. Dadurch werden die Betriebskosten reduziert, da Verwaltungsaufgaben automatisch ausgeführt werden, und die Sicherheit Ihrer Umgebung verbessert sich, da das Risiko eines unbefugten Zugriffs sinkt.
 
 ## <a name="access-management"></a>Zugriffsverwaltung
-Mithilfe von Azure AD können Sie den Zugriff auf Anwendungen mit individuellen oder regelgesteuerten Zuweisungen verwalten. Sie können die Zugriffsverwaltung auch an die richtigen Personen in der Organisation delegieren, um eine optimale Aufsicht sicherzustellen und die Belastung des Helpdesks zu reduzieren.
+Mit Azure AD können Sie den Zugriff auf Anwendungen mithilfe individueller oder regelgesteuerter Zuweisungen verwalten. Sie können die Zugriffsverwaltung auch an die richtigen Personen in der Organisation delegieren, um eine optimale Aufsicht sicherzustellen und die Belastung des Helpdesks zu reduzieren.
 
 ## <a name="on-premises-applications"></a>Lokale Anwendungen
 Mit dem integrierten Anwendungsproxy können Sie lokale Anwendungen für Ihre Benutzer veröffentlichen, um sowohl von einer konsistenten Zugriffsoberfläche mit moderner Cloudanwendung als auch von den Vorteilen der Azure AD-Überwachungs-, Berichterstellungs- und Sicherheitsfunktionen zu profitieren.

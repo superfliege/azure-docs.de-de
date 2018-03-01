@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: a75ad760fe7f9663c5b43500581170d5f8671a13
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2879daf4b5ba072a3a9b11ec87c01e5904b6a5dc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-preparations-user-guide"></a>Benutzerleitfaden zur Datenvorbereitung 
 Die Benutzeroberfläche der Azure Machine Learning-Datenvorbereitung bietet zahlreiche umfangreiche Funktionen. Dieser Artikel beschreibt die komplexesten Bereiche der Benutzeroberfläche.
@@ -89,7 +89,7 @@ Zum Forken gehen Sie folgendermaßen vor:
 4. Wählen Sie unter **Conditions** (Bedingungen) die Option **Create Dataflow Containing the Filtered Out Rows** (Datenfluss erstellen, der die ausgefilterten Zeilen enthält) aus, um das nicht angezeigte Resultset in einen neuen Datenfluss zu forken.
 
 
-Dieses Verfahren wird häufig verwendet, um eine Datenmenge zu separieren, die weiterer Vorbereitung bedarf. Im Anschluss an die Analyse des geforkten Datasets werden die Daten für gewöhnlich mit dem Resultset im ursprünglichen Datenfluss gemergt. Um Daten zu mergen (das Gegenteil eines Forkvorgangs), verwenden Sie eine der folgenden Aktionen:
+Dieses Verfahren wird häufig verwendet, um eine Datenmenge zu separieren, die weiterer Vorbereitung bedarf. Nach der Vorbereitung des geforkten Datasets werden die Daten für gewöhnlich mit dem Resultset im ursprünglichen Datenfluss gemergt. Um Daten zu mergen (das Gegenteil eines Forkvorgangs), verwenden Sie eine der folgenden Aktionen:
 
 - **Anfügen von Zeilen** Mergen Sie mindestens zwei Datenflüsse vertikal (zeilenweise). 
 - **Anfügen von Spalten** Mergen Sie mindestens zwei Datenflüsse horizontal (spaltenweise).

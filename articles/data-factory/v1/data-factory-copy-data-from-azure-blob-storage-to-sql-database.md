@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 41ead775c8ce1919d8c3813b58c8a4d648c8bc64
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e166e73ba45e229d8049738fa4a79f5dc117d806
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüll
 Sie benötigen in diesem Tutorial den Kontonamen und -schlüssel Ihres Azure-Speicherkontos. Notieren Sie sich **Kontoname** und **Kontoschlüssel** Ihres Azure-Speicherkontos.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie im linken Menü auf **Weitere Dienste**, und wählen Sie **Speicherkonten** aus.
+2. Klicken Sie im Menü links auf **Alle Dienste**, und wählen Sie **Speicherkonten** aus.
 
     ![Durchsuchen > Speicherkonten](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
 3. Wählen Sie auf dem Blatt **Speicherkonten** das **Azure-Speicherkonto** aus, das Sie in diesem Tutorial verwenden möchten.
@@ -70,7 +70,7 @@ Sie benötigen in diesem Tutorial den Kontonamen und -schlüssel Ihres Azure-Spe
 ## <a name="collect-sql-server-database-user-names"></a>Erfassen der Namen von SQL Server, Datenbank und Benutzer
 Sie benötigen in diesem Tutorial die Namen von Azure SQL-Server, -Datenbank und -Benutzer. Notieren Sie sich den Namen des **Servers**, der **Datenbank** und des **Benutzers** Ihrer Azure SQL-Datenbank.
 
-1. Klicken Sie links im **Azure-Portal** auf **Weitere Dienste**, und wählen Sie **SQL-Datenbanken** aus.
+1. Klicken Sie links im **Azure-Portal** auf **Alle Dienste**, und wählen Sie **SQL-Datenbanken** aus.
 2. Wählen Sie auf dem Blatt **SQL-Datenbanken** die **Datenbank**, die Sie in diesem Tutorial verwenden möchten. Notieren Sie sich den **Datenbanknamen**.  
 3. Klicken Sie auf dem Blatt **SQL-Datenbank** unter **EINSTELLUNGEN** auf **Eigenschaften**.
 4. Notieren Sie sich die Werte für **SERVERNAME** und **SERVER-ADMIN-ANMELDUNG**.
@@ -79,13 +79,13 @@ Sie benötigen in diesem Tutorial die Namen von Azure SQL-Server, -Datenbank und
 ## <a name="allow-azure-services-to-access-sql-server"></a>Gewähren des Zugriffs auf SQL Server für Azure-Dienste
 Stellen Sie sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihren Azure SQL-Server **aktiviert** ist, damit der Data Factory-Dienst auf Ihren Azure SQL-Server zugreifen kann. Führen Sie folgende Schritte aus, um diese Einstellung zu überprüfen und zu aktivieren:
 
-1. Klicken Sie links auf den Hub **Weitere Dienste** und dann auf **SQL Server**.
+1. Klicken Sie links im Hub auf **Alle Dienste** und anschließend auf **SQL Server**.
 2. Wählen Sie Ihren Server aus, und klicken Sie unter **EINSTELLUNGEN** auf **Firewall**.
 3. Klicken Sie auf dem Blatt **Firewalleinstellungen** für **Zugriff auf Azure-Dienste erlauben** auf **EIN**.
 4. Schließen Sie alle Blätter, indem Sie auf **X**klicken.
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>Vorbereiten von Blob Storage und SQL-Datenbank
-Nun bereiten Sie Ihrer Azure-Blobspeicher und die Azure SQL-Datenbank durch Ausführen der folgenden Schritte auf das Lernprogramm vor:  
+Nun bereiten Sie Ihre Azure Blob Storage-Instanz und Azure SQL-Datenbank durch Ausführen der folgenden Schritte auf das Tutorial vor:  
 
 1. Starten Sie den Editor. Kopieren Sie den folgenden Text, und speichern Sie ihn in der Datei **emp.txt** im Ordner **C:\ADFGetStarted** auf der Festplatte.
 
@@ -93,9 +93,9 @@ Nun bereiten Sie Ihrer Azure-Blobspeicher und die Azure SQL-Datenbank durch Ausf
     John, Doe
     Jane, Doe
     ```
-2. Verwenden Sie Tools wie [Azure-Speicher-Explorer](http://storageexplorer.com/) zum Erstellen des Containers **adftutorial** und zum Hochladen der Datei **emp.txt** in den Container.
+2. Verwenden Sie Tools wie den [Azure Storage-Explorer](http://storageexplorer.com/) zum Erstellen des Containers **adftutorial** und zum Hochladen der Datei **emp.txt** in den Container.
 
-    ![Azure-Speicher-Explorer. Kopieren von Daten aus Blob Storage in SQL-Datenbank](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
+    ![Azure Storage-Explorer. Kopieren von Daten aus Blob Storage in SQL-Datenbank](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
 3. Verwenden Sie das folgende SQL-Skript, um die Tabelle **emp** in der Azure SQL-Datenbank zu erstellen.  
 
     ```SQL

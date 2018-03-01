@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem; magoedte
-ms.openlocfilehash: d59abde29fc7b73a799e5bf3659b02f824b693de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df20e174abb9960ad378221008ac7261fd0582f1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen
 
@@ -163,7 +163,7 @@ Stellen Sie sicher, dass für alle Ihre Ressourcen Diagnoseeinstellungen festgel
 
 ![Das Blatt „Diagnoseprotokolle“ im Portal](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
 
-Möglicherweise müssen Sie auf „Weitere Dienste“ klicken, um den Abschnitt „Überwachung“ zu finden.
+Möglicherweise müssen Sie auf „Alle Dienste“ klicken, um den Abschnitt „Überwachen“ zu finden.
 
 Hier können Sie alle Ressourcen anzeigen und filtern, die Diagnoseeinstellungen unterstützen, um zu ermitteln, ob die Diagnose dafür aktiviert ist. Sie können auch einen Drilldown ausführen, um zu sehen, ob mehrere Einstellungen für eine Ressource festgelegt sind, und überprüfen, zu welchem Speicherkonto, Event Hubs-Namespace und/oder Log Analytics-Arbeitsbereich die Daten fließen.
 

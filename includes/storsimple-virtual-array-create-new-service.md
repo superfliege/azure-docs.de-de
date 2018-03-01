@@ -2,7 +2,7 @@
 
 1.  Melden Sie sich mit Ihren Microsoft-Kontoanmeldeinformationen unter dieser URL beim Azure-Portal an: <https://portal.azure.com/>. Falls Sie das Gerät im Government-Portal bereitstellen, melden Sie sich bei <https://portal.azure.us/> an.
 
-2.  Klicken Sie im Azure-Portal auf **+ Neu** &gt; **Speicher** &gt; **Virtuelle StorSimple-Serie**.
+2.  Klicken Sie im Azure-Portal auf **+ Ressource erstellen** &gt; **Storage** &gt; **Virtuelle StorSimple-Serie**.
 
     ![Erstellen eines neuen Diensts](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 

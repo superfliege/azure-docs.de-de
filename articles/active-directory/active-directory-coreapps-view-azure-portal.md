@@ -16,22 +16,22 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: fd933ee33212007a58903b607055f437cc9206fd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bcde742690e57d9195725fba524ee64cc691b30
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Anzeigen aller von Ihnen verwaltbaren Unternehmens-Apps in Azure Active Directory
-Sie können Ihre Unternehmens-Apps in Azure Active Directory (Azure AD) verwalten. Hierzu zählt das Anzeigen der Apps, die Sie verwalten können, das Zuweisen von Benutzern oder Gruppen zu einer App, das Verwalten der Eigenschaften für die App, beispielsweise Anwendungsname oder -logo, und sogar das Deaktivieren einer Anwendung, mit sich Benutzer nicht mehr bei der App anmelden können.
+Sie können Ihre Unternehmens-Apps in Azure Active Directory (Azure AD) verwalten. Sie können Apps anzeigen, die Sie verwalten können, Benutzer oder Gruppen zu einer App zuweisen, App-Eigenschaften wie Name oder Logo verwalten und sogar eine App deaktivieren, sodass Benutzer sich nicht mehr anmelden können.
 
 ## <a name="how-do-i-view-all-my-apps"></a>Wie zeige ich alle meine Apps an?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
-3. Wählen Sie auf dem Blatt **Azure Active Directory –** ***Verzeichnisname*** (d.h. dem Azure AD-Blatt für das Verzeichnis, das Sie verwalten) **Unternehmensanwendungen** aus.
+2. Wählen Sie **Alle Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+3. Wählen Sie im Bereich **Azure Active Directory –** ***Verzeichnisname*** (also dem Azure AD-Bereich für das Verzeichnis, das Sie verwalten) den Eintrag **Unternehmensanwendungen** aus.
 
     ![Öffnen von Unternehmens-Apps](./media/active-directory-coreapps-view-azure-portal/open-enterprise-apps.png)
-4. Wählen Sie auf dem Blatt **Unternehmensanwendungen** die Einstellung **Alle Anwendungen** aus. Von diesem Blatt aus können Sie die zu verwaltenden Apps auswählen, die angezeigten Spalten ändern oder die Liste filtern, um die gewünschte App zu ermitteln (Sie können beispielsweise nur die deaktivierten Apps anzeigen).
+4. Wählen Sie im Bereich **Unternehmensanwendungen** die Option **Alle Anwendungen** aus. Von diesem Bereich aus können Sie die zu verwaltenden Apps auswählen, die angezeigten Spalten ändern oder die Liste filtern, um die gewünschte App zu ermitteln (Sie können beispielsweise nur die deaktivierten Apps anzeigen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](active-directory-coreapps-assign-user-azure-portal.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: a9b7490fd51a2a39e6438856041fb25110ddde69
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: facbb980f57b4e70c34b238a8b8fbd988cb20d57
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -36,14 +36,14 @@ Wenn Sie sich für dieses Szenario interessieren, wird empfohlen, entweder über
 
 Einige Aspekte, die zu berücksichtigen sind: 
 
-1. Die Service Fabric-Clusterressource in Azure ist derzeit regional, ebenso wie die VM-Skalierungsgruppen, auf denen der Cluster beruht. Das bedeutet, dass Sie bei einem regionalen Ausfall den Cluster nicht mehr über Azure Resource Manager oder das Azure-Portal verwalten können. Dieser Fall kann eintreten, auch wenn der Cluster weiterhin ausgeführt wird und Sie direkt mit ihm interagieren können. Darüber hinaus bietet Azure heute nicht die Möglichkeit, ein einzelnes virtuelles Netzwerk einzurichten, das in alle Regionen verwendet werden kann. Das bedeutet, dass für einen Cluster mit mehreren Regionen in Azure entweder [öffentliche IP-Adressen für jeden virtuellen Computer in den VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) oder [Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) erforderlich sind. Diese Netzwerkoptionen haben unterschiedliche Auswirkungen auf Kosten, Leistung und – in gewissem Maße – auf das Anwendungsdesign. Daher ist vor der Bereitstellung einer solchen Umgebung eine sorgfältige Analyse und Planung erforderlich.
-2. Wartung, Verwaltung und Überwachung dieser Computer können kompliziert werden, insbesondere, wenn sie sich über verschiedene _Arten_ von Umgebungen erstrecken (beispielsweise zwischen verschiedenen Cloudanbietern oder zwischen lokalen Ressourcen und Azure). Machen Sie sich daher unbedingt mit Upgrades, Überwachung, Verwaltung und Diagnose für Cluster und Anwendungen vertraut, bevor Sie Produktionsworkloads in einer solchen Umgebung ausführen. Wenn Sie bei der Behebung derartiger Probleme in Azure oder Ihren eigenen Datencentern bereits viel Erfahrung haben, können die gleichen Lösungsansätze wahrscheinlich auch beim Erstellen oder Ausführung des Service Fabric-Clusters angewendet werden. 
+1. Die Service Fabric-Clusterressource in Azure ist derzeit regional, ebenso wie die VM-Skalierungsgruppen, auf denen der Cluster beruht. Das bedeutet, dass Sie bei einem regionalen Ausfall den Cluster nicht mehr über Azure Resource Manager oder das Azure-Portal verwalten können. Dieser Fall kann eintreten, auch wenn der Cluster weiterhin ausgeführt wird und Sie direkt mit ihm interagieren können. Darüber hinaus bietet Azure heute nicht die Möglichkeit, ein einzelnes virtuelles Netzwerk einzurichten, das in alle Regionen verwendet werden kann. Das bedeutet, dass für einen Cluster mit mehreren Regionen in Azure entweder [öffentliche IP-Adressen für jeden virtuellen Computer in den VM Scale Sets-Instanzen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) oder [Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) erforderlich sind. Diese Netzwerkoptionen haben unterschiedliche Auswirkungen auf Kosten, Leistung und – in gewissem Maße – auf das Anwendungsdesign. Daher ist vor der Bereitstellung einer solchen Umgebung eine sorgfältige Analyse und Planung erforderlich.
+2. Wartung, Verwaltung und Überwachung dieser Computer können kompliziert werden, insbesondere, wenn sie sich über verschiedene _Arten_ von Umgebungen erstrecken (beispielsweise zwischen verschiedenen Cloudanbietern oder zwischen lokalen Ressourcen und Azure). Machen Sie sich daher unbedingt mit Upgrades, Überwachung, Verwaltung und Diagnose für Cluster und Anwendungen vertraut, bevor Sie Produktionsworkloads in einer solchen Umgebung ausführen. Wenn Sie bei der Behebung derartiger Probleme in Azure oder Ihren eigenen Datencentern bereits Erfahrung haben, können die gleichen Lösungsansätze wahrscheinlich auch beim Erstellen oder Ausführen des Service Fabric-Clusters angewendet werden. 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Erhalten Service Fabric-Knoten automatisch Betriebssystemupdates?
 
 Heute noch nicht, aber auch dies ist eine häufig gestellte Anforderung, die Azure umsetzen möchte.
 
-In der Zwischenzeit haben wir eine [Anwendung](service-fabric-patch-orchestration-application.md) zum Patchen und Aktualisieren der Betriebssysteme bereitgestellt, die Ihren SF-Knoten zugrunde liegen.
+In der Zwischenzeit haben wir eine [Anwendung](service-fabric-patch-orchestration-application.md) zum Patchen und Aktualisieren der Betriebssysteme bereitgestellt, die Ihren Service Fabric-Knoten zugrunde liegen.
 
 Die Herausforderung von Betriebssystemupdates besteht darin, dass dafür in der Regel ein Neustart des Computers erforderlich ist, was zu einer vorübergehenden Unterbrechung der Verfügbarkeit führt. Dies ist für sich gesehen noch kein Problem, weil Service Fabric Datenverkehr für diese Dienste automatisch an andere Knoten umleitet. Wenn Betriebssystemupdates jedoch nicht über den Cluster koordiniert werden, besteht die Gefahr, dass viele Knoten gleichzeitig ausfallen. Diese gleichzeitigen Neustarts können für einen Dienst oder zumindest für eine bestimmte Partition (bei einem zustandsbehafteten Dienst) zum vollständigen Verlust der Verfügbarkeit führen.
 
@@ -67,7 +67,7 @@ Diese Mindestwerte gelten, weil auf dem Service Fabric-Cluster ein Satz zustands
 
 Untersuchen wir vor diesem Hintergrund einige mögliche Clusterkonfigurationen:
 
-**Ein Knoten**: Diese Option bietet keine hohe Verfügbarkeit, da jeglicher Verlust dieses einzigen Knotens den Verlust des gesamten Clusters bedeutet.
+**Ein Knoten**: Diese Option bietet keine Hochverfügbarkeit, da jeglicher Verlust dieses einzigen Knotens den Verlust des gesamten Clusters bedeutet.
 
 **Zwei Knoten**: Ein Quorum für einen Dienst, der über zwei Knoten bereitgestellt wird (N = 2), ist 2 (2/2 + 1 = 2). Wenn ein einzelnes Replikat verloren geht, ist es unmöglich, ein Quorum zu erstellen. Da es zum Ausführen eines Dienstupgrades erforderlich ist, ein Replikat vorübergehend außer Betrieb zu nehmen, ist dies keine nützlich Konfiguration.
 
@@ -86,15 +86,18 @@ Wenn Sie Cluster erstellen möchten, um Ihre Anwendung vor der Bereitstellung zu
 
 Wir arbeiten an einer optimierten Lösung, derzeit müssen Sie jedoch das Upgrade durchführen. Sie müssen das Betriebssystemimage nacheinander auf den einzelnen virtuellen Computern des Clusters aktualisieren. 
 
+### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Kann ich die angefügten Datenträger in einem Clusterknotentyp (VM-Skalierungsgruppe) verschlüsseln?
+Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angefügten Datenträgern](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [Verschlüsseln von Datenträgern (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) und [Verschlüsseln von Datenträgern (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
+
 ## <a name="container-support"></a>Containerunterstützung
 
 ### <a name="why-are-my-containers-that-are-deployed-to-sf-unable-to-resolve-dns-addresses"></a>Warum können meine Container, die in SF bereitgestellt werden, keine DNS-Adressen auflösen?
 
 Dieses Problem wurde für Cluster gemeldet, die Version 5.6.204.9494 verwenden. 
 
-**Abhilfemaßnahmen:** Befolgen Sie die Angaben in [diesem Dokument](service-fabric-dnsservice.md), um den DNS-Service Fabric-Dienst in Ihrem Cluster zu aktivieren.
+**Abhilfemaßnahme:** Befolgen Sie die Angaben in [diesem Dokument](service-fabric-dnsservice.md), um den DNS-Service Fabric-Dienst in Ihrem Cluster zu aktivieren.
 
-**Behebung:** Führen Sie ein Upgrade auf eine unterstützte Clusterversion über 5.6.204.9494 durch, sobald diese verfügbar ist. Wenn für Ihren Cluster automatische Upgrades festgelegt wurden, wird der Cluster automatisch auf die Version aktualisiert, in der dieses Problem behoben wurde.
+**Korrektur:** Führen Sie ein Upgrade auf eine unterstützte Clusterversion über 5.6.204.9494 durch, sobald diese verfügbar ist. Wenn für Ihren Cluster automatische Upgrades festgelegt wurden, wird der Cluster automatisch auf die Version aktualisiert, in der dieses Problem behoben wurde.
 
   
 ## <a name="application-design"></a>Anwendungsentwurf
@@ -112,20 +115,20 @@ Zuverlässige Sammlungen sind in der Regel [partitioniert](service-fabric-concep
 
 Akteure sind als unabhängige Einheiten von Zustand und Compute vorgesehen, daher wird davon abgeraten, zur Laufzeit umfassende Abfragen des Akteurzustands durchzuführen. Wenn Sie eine Abfrage über den vollständigen Satz von Akteurzuständen durchführen müssen, sollten Sie Folgendes in Betracht ziehen:
 
-- Ersetzen Sie Ihre Akteurdienste durch zustandsbehaftete zuverlässige Dienste, z.B. die Anzahl von Netzwerkanforderungen, um alle Daten von der Anzahl von Akteuren bis hin zur Anzahl der Partitionen in Ihrem Dienst zu erfassen.
+- Ersetzen Sie Ihre Akteurdienste durch zustandsbehaftete zuverlässige Dienste mit der Anzahl von Netzwerkanforderungen, um alle Daten von der Anzahl von Akteuren bis hin zur Anzahl der Partitionen in Ihrem Dienst zu erfassen.
 - Entwerfen Sie Ihre Akteure so, dass sie in regelmäßigen Abständen ihren Zustand mithilfe von Push an einen externen Speicher übertragen, um eine einfachere Abfrage zu ermöglichen. Wie oben erwähnt, ist dieser Ansatz nur umsetzbar, wenn die von Ihnen durchgeführten Abfragen für das Laufzeitverhalten nicht erforderlich sind.
 
 ### <a name="how-much-data-can-i-store-in-a-reliable-collection"></a>Wie viele Daten kann ich in einer zuverlässigen Sammlung speichern?
 
 Zuverlässige Dienste werden in der Regel partitioniert, sodass die speicherbare Menge nur durch die Anzahl der Computer im Cluster und durch die Menge des verfügbaren Arbeitsspeichers auf diesen Computern begrenzt wird.
 
-Nehmen Sie beispielsweise an, Sie hätten eine zuverlässige Sammlung in einem Dienst mit 100 Partitionen und 3 Replikaten, in der Objekte von durchschnittlich 1 KB gespeichert werden. Nehmen Sie außerdem an, Sie hätten einen Cluster mit 10 Computern mit jeweils 16 GB Arbeitsspeicher. Gehen wir der Einfachheit halber und für eine sehr konservative Schätzung davon aus, dass das Betriebssystem und die Systemdienste, die Service Fabric-Runtime und Ihre Dienste 6 GB davon beanspruchen, sodass pro Computer 10 GB oder für den gesamten Cluster 100 GB übrig bleiben.
+Nehmen Sie beispielsweise an, Sie hätten eine zuverlässige Sammlung in einem Dienst mit 100 Partitionen und 3 Replikaten, in der Objekte von durchschnittlich 1 KB gespeichert werden. Nehmen Sie außerdem an, Sie hätten einen Cluster mit 10 Computern mit jeweils 16 GB Arbeitsspeicher. Gehen wir der Einfachheit halber und für eine konservative Schätzung davon aus, dass das Betriebssystem und die Systemdienste, die Service Fabric-Runtime und Ihre Dienste 6 GB davon beanspruchen, sodass pro Computer 10 GB oder für den gesamten Cluster 100 GB übrig bleiben.
 
 Denken Sie daran, dass jedes Objekt dreimal gespeichert werden muss (ein primäres Objekt und zwei Replikate). Demnach hätten Sie genügend Arbeitsspeicher für ca. 35 Millionen Objekte in Ihrer Sammlung, wenn Sie mit voller Kapazität arbeiten. Wir empfehlen jedoch, den gleichzeitigen Ausfall einer Fehlerdomäne und einer Upgradedomäne aufzufangen, was in etwa 1/3 der Kapazität ausmacht, und würden daher die Anzahl auf ungefähr 23 Millionen verringern.
 
 Beachten Sie, dass bei dieser Berechnung zudem Folgendes vorausgesetzt wird:
 
-- Die Daten sind einigermaßen gleichmäßig über die Partitionen verteilt, oder Sie melden Auslastungsmetriken an den Resource Manager des Clusters. Standardmäßig führt Service Fabric basierend auf der Replikatanzahl einen Lastenausgleich durch. In unserem obigen Beispiel würden 10 primäre Replikate und 20 sekundäre Replikate auf jedem Knoten im Cluster platziert. Dies funktioniert gut für Lasten, die gleichmäßig auf die Partitionen verteilt sind. Wenn die Last nicht gleichmäßig verteilt ist, müssen Sie die Last melden, damit der Resource Manager kleinere Replikate zusammenlegen und zulassen kann, dass größere Replikate auf einem einzelnen Knoten mehr Arbeitsspeicher beanspruchen.
+- Die Daten sind einigermaßen gleichmäßig über die Partitionen verteilt, oder Sie melden Auslastungsmetriken an den Resource Manager des Clusters. Standardmäßig führt Service Fabric basierend auf der Replikatanzahl einen Lastenausgleich durch. Im vorherigen Beispiel würden 10 primäre Replikate und 20 sekundäre Replikate auf jedem Knoten im Cluster platziert. Dies funktioniert gut für Lasten, die gleichmäßig auf die Partitionen verteilt sind. Wenn die Last nicht gleichmäßig verteilt ist, müssen Sie die Last melden, damit der Resource Manager kleinere Replikate zusammenlegen und zulassen kann, dass größere Replikate auf einem einzelnen Knoten mehr Arbeitsspeicher beanspruchen.
 
 - Der betreffende zuverlässige Dienst ist der einzige im Cluster, auf dem der Zustand gespeichert wird. Da Sie einem Cluster mehrere Dienste bereitstellen können, müssen Sie die Ressourcen berücksichtigen, die jeder Dienst zum Ausführen und Verwalten seines Zustands benötigt.
 
@@ -145,7 +148,7 @@ Container bieten eine einfache Möglichkeit zum Paketieren von Diensten und ihre
 
 Wir möchten die Reliable Services- und Reliable Actors-Frameworks als Open Source-Projekte auf GitHub bereitstellen und nehmen Community-Beiträge zu diesen Projekten an. Folgen Sie dem [Service Fabric-Blog](https://blogs.msdn.microsoft.com/azureservicefabric/), in dem Sie weitere Details finden, sobald sie angekündigt werden.
 
-Derzeit gibt es keine Pläne für die Open Source-Bereitstellung der Service Fabric-Laufzeit.
+Derzeit gibt es keine Pläne für die Open Source-Bereitstellung der Service Fabric-Runtime.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 7fbca027d02512671cb380e9b440b03ffef86b89
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 66c356d6d42254e7443b645bff3393daca67012b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sample-of-custom-source-connections-python"></a>Beispiele für benutzerdefinierte Quellverbindungen (Python) 
 Lesen Sie vor diesem Anhang den Artikel [Python-Erweiterungen für die Datenvorbereitung](data-prep-python-extensibility-overview.md).
@@ -45,7 +45,7 @@ Nun sollten Sie data.world-Bibliotheken importieren können.
 
 #### <a name="load-data-into-data-preparation"></a>Laden von Daten bei der Datenvorbereitung
 
-Erstellen Sie einen neuen skriptbasierte Datenfluss. Laden Sie dann mithilfe des folgenden Skripts Daten aus „data.world“.
+Erstellen Sie eine Transformation „Datenfluss transformieren (Skript)“. Laden Sie dann mithilfe des folgenden Skripts Daten aus „data.world“.
 
 ```python
 #paths = df['Path'].tolist()

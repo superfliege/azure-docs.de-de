@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 8f1477c5fd8f57a815eeb603d2bde580bf78cca2
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: a2422d8a79d102accb72476f6934bae38603973a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Datenerfassungstools für die Data Science-VM
 
@@ -84,6 +84,17 @@ Im Anschluss sind einige der Datenverschiebungstools aufgeführt, die auf der DS
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `bcp` ein, um die Hilfe anzuzeigen.    |
 | Links zu Beispielen      | [bcp (Hilfsprogramm)](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | Verwandte Tools auf der DSVM      | SQL Server, sqlcmd      |
+
+## <a name="blobfuse"></a>blobfuse
+
+|    |           |
+| ------------- | ------------- |
+| Was ist das?   | Ein Tool zum Einbinden eines Azure-Blobcontainers im Linux-Dateisystem.      |
+| Unterstützte DSVM-Versionen      | Linux      |
+| Typische Verwendung      | Lese- und Schreibzugriff auf Blobs in einem Container      |
+|  Verwendung/Ausführung    |   Führen Sie _blobfuse_ auf einem Terminal aus.    |
+| Links zu Beispielen      | [blobfuse auf GitHub) [https://github.com/Azure/azure-storage-fuse]      |
+| Verwandte Tools auf der DSVM      | Azure-Befehlszeile      |
 
 
 ## <a name="microsoft-data-management-gateway"></a>Microsoft-Datenverwaltungsgateway

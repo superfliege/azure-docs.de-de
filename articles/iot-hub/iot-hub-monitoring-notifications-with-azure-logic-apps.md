@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.openlocfilehash: 7a611912ae55eb22103539dbba9f1a06aaa543b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0caa3397723f9cd0476e85d52a8d30ae283b6e47
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-Remoteüberwachung und -Benachrichtigungen mit Azure Logic Apps zum Herstellen einer Verbindung zwischen Ihrem IoT Hub und Postfach
 
@@ -39,7 +39,7 @@ Sie erfahren, wie Sie eine Logik-App erstellen, die Ihren IoT Hub und Ihr Postfa
 * Fügen Sie mit Ihrem IoT Hub einen Endpunkt und eine Routingregel hinzu.
 * Erstellen, konfigurieren und testen Sie eine Logik-App.
 
-## <a name="what-you-need"></a>Erforderliches Element
+## <a name="what-you-need"></a>Voraussetzungen
 
 * Abschluss des Tutorials [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), in dem die folgenden Anforderungen behandelt werden:
   * Ein aktives Azure-Abonnement.
@@ -50,7 +50,7 @@ Sie erfahren, wie Sie eine Logik-App erstellen, die Ihren IoT Hub und Ihr Postfa
 
 ### <a name="create-a-service-bus-namespace"></a>Erstellen eines Service Bus-Namespaces
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu** > **Unternehmensintegration** > **Service Bus**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Unternehmensintegration** > **Service Bus**.
 1. Geben Sie die folgenden Informationen ein:
 
    **Name**: Der Name des Service Bus.
@@ -60,7 +60,7 @@ Sie erfahren, wie Sie eine Logik-App erstellen, die Ihren IoT Hub und Ihr Postfa
    **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe wie für Ihren IoT Hub.
 
    **Speicherort**: Verwenden Sie denselben Speicherort, den Ihr IoT Hub verwendet.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Create**.
 
    ![Erstellen eines Service Bus-Namespaces im Azure-Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1_create-service-bus-namespace-azure-portal.png)
 
@@ -111,7 +111,7 @@ Sie erfahren, wie Sie eine Logik-App erstellen, die Ihren IoT Hub und Ihr Postfa
 
 ### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu** > **Unternehmensintegration** > **Logik-App**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Unternehmensintegration** > **Logik-App**.
 1. Geben Sie Folgendes ein:
 
    **Name**: Der Name der Logik-App.
@@ -119,7 +119,7 @@ Sie erfahren, wie Sie eine Logik-App erstellen, die Ihren IoT Hub und Ihr Postfa
    **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe wie für Ihren IoT Hub.
 
    **Speicherort**: Verwenden Sie denselben Speicherort, den Ihr IoT Hub verwendet.
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Create**.
 
 ### <a name="configure-the-logic-app"></a>Konfigurieren der Logik-App
 

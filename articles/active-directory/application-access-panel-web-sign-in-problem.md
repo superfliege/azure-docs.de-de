@@ -1,6 +1,6 @@
 ---
-title: Problem beim Anmelden bei der Website des Zugriffsbereichs | Microsoft-Dokumentation
-description: "Leitfaden zur Behandlung von Problemen, die bei der Anmeldung beim Zugriffsbereich auftreten können"
+title: Problem beim Anmelden bei der Zugriffspanelwebsite | Microsoft-Dokumentation
+description: "Leitfaden zur Behandlung von Problemen, die bei der Anmeldung beim Zugriffspanel auftreten können"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 0f50a705d4453970d039c2219aef8e1a411fd533
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 83c3a893fe18f2de2acc4fdbc9b048c92cc71d15
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="problem-signing-in-to-the-access-panel-website"></a>Problem beim Anmelden bei der Website des Zugriffsbereichs
+# <a name="problem-signing-in-to-the-access-panel-website"></a>Problem beim Anmelden bei der Zugriffspanelwebsite
 
-Der Zugriffsbereich ist ein webbasiertes Portal, in dem Benutzer, die in Azure Active Directory (Azure AD) über ein Geschäfts-, Schul- oder Unikonto verfügen, cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Ein Benutzer, der über Azure AD-Editionen verfügt, kann über den Zugriffsbereich auch die Funktionen für die Self-Service-basierte Gruppen- und App-Verwaltung nutzen. Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
+Das Zugriffspanel ist ein webbasiertes Portal, in dem Benutzer, die in Azure Active Directory (Azure AD) über ein Geschäfts-, Schul- oder Unikonto verfügen, cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Ein Benutzer, der über Azure AD-Editionen verfügt, kann über das Zugriffspanel auch die Funktionen für die Self-Service-basierte Gruppen- und App-Verwaltung nutzen. Das Zugriffspanel ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
 
-Benutzer können sich beim Zugriffsbereich anmelden, wenn sie über ein Geschäfts-, Schul- oder Unikonto in Azure AD verfügen.
+Benutzer können sich beim Zugriffspanel anmelden, wenn sie über ein Geschäfts-, Schul- oder Unikonto in Azure AD verfügen.
 
 -   Benutzer können direkt von Azure AD authentifiziert sein.
 
@@ -32,7 +32,7 @@ Benutzer können sich beim Zugriffsbereich anmelden, wenn sie über ein Geschäf
 
 -   Benutzer können durch Windows Server Active Directory authentifiziert sein.
 
-Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und das Azure-Portal oder eine Office 365-Anwendung verwendet hat, kann dieser Benutzer den Zugriffsbereich nutzen, ohne sich erneut anmelden zu müssen. Benutzer, die nicht authentifiziert sind, werden aufgefordert, sich mit dem Benutzernamen und Kennwort für ihr Konto in Azure AD anzumelden. Wenn die Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
+Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und das Azure-Portal oder eine Office 365-Anwendung verwendet hat, kann dieser Benutzer das Zugriffspanel nutzen, ohne sich erneut anmelden zu müssen. Nicht authentifizierte Benutzer werden aufgefordert, sich mit dem Benutzernamen und Kennwort für ihr Konto in Azure AD anzumelden. Wenn die Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
 
 ## <a name="general-issues-to-check-first"></a>Allgemeine Probleme, die zuerst überprüft werden sollten 
 
@@ -50,13 +50,13 @@ Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und d
 
 -   Stellen Sie sicher, dass der Benutzerzugriff nicht durch eine **Richtlinie für bedingten Zugriff** oder eine **Identity Protection**-Richtlinie blockiert wird.
 
--   Stellen Sie sicher, dass die **Kontaktinformationen für die Authentifizierung** des Benutzers aktuell sind, sodass Multi-Factor Authentication-Richtlinien oder Richtlinien für bedingten Zugriff erzwungen werden können.
+-   Stellen Sie sicher, dass die **Kontaktinformationen für die Authentifizierung** des Benutzers aktuell sind, sodass Multi-Factor Authentication-Richtlinien oder Richtlinien für den bedingten Zugriff erzwungen werden können.
 
 -   Stellen Sie sicher, dass der Benutzer die Cookies im Browser gelöscht hat, bevor er versucht, sich erneut anzumelden.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Erfüllen der Browseranforderungen für den Zugriffsbereich
+## <a name="meeting-browser-requirements-for-the-access-panel"></a>Erfüllen der Browseranforderungen für das Zugriffspanel
 
-Der Zugriffsbereich erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
+Das Zugriffspanel erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für das Zugriffspanel im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
 
 Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
@@ -71,7 +71,7 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
 ## <a name="problems-with-the-users-account"></a>Probleme mit dem Konto des Benutzers
 
-Der Zugriff auf den Zugriffsbereich kann aufgrund eines Problems mit dem Benutzerkonto blockiert sein. Im Folgenden finden Sie einige Möglichkeiten, Probleme mit Benutzerkonten und Kontoeinstellungen zu lösen:
+Der Zugriff auf das Zugriffspanel kann aufgrund eines Problems mit dem Benutzerkonto blockiert sein. Nachfolgend finden Sie einige Möglichkeiten zum Lösen von Problemen mit Benutzerkonten und Kontoeinstellungen:
 
 -   [Überprüfen, ob ein Benutzerkonto in Azure Active Directory vorhanden ist](#check-if-a-user-account-exists-in-azure-active-directory)
 
@@ -95,9 +95,9 @@ Der Zugriff auf den Zugriffsbereich kann aufgrund eines Problems mit dem Benutze
 
 Um zu überprüfen, ob das Konto eines Benutzers vorhanden ist, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -113,9 +113,9 @@ Um zu überprüfen, ob das Konto eines Benutzers vorhanden ist, führen Sie die 
 
 Um den Status eines Benutzerkontos zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -123,7 +123,7 @@ Um den Status eines Benutzerkontos zu überprüfen, führen Sie die folgenden Sc
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Profil**.
 
@@ -133,9 +133,9 @@ Um den Status eines Benutzerkontos zu überprüfen, führen Sie die folgenden Sc
 
 Um das Kennwort eines Benutzers zurückzusetzen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -143,11 +143,11 @@ Um das Kennwort eines Benutzers zurückzusetzen, führen Sie die folgenden Schri
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
-7.  Klicken Sie oben auf dem Blatt des Benutzers auf die Schaltfläche **Kennwort zurücksetzen**.
+7.  Klicken Sie oben im Benutzerbereich auf die Schaltfläche **Kennwort zurücksetzen**.
 
-8.  Klicken Sie auf dem Blatt **Kennwort zurücksetzen**, das geöffnet wird, auf die Schaltfläche **Kennwort zurücksetzen**.
+8.  Klicken Sie im jetzt angezeigten Bereich **Kennwort zurücksetzen** auf die Schaltfläche **Kennwort zurücksetzen**.
 
 9.  Kopieren Sie das **temporäre Kennwort**, oder **geben Sie ein neues Kennwort ein**.
 
@@ -165,9 +165,9 @@ Um die Self-Service-Kennwortzurücksetzung zu aktivieren, führen Sie die folgen
 
 Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -175,7 +175,7 @@ Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führ
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  Klicken Sie oben auf dem Blatt auf die Schaltfläche **Multi-Factor Authentication**.
+6.  Klicken Sie oben im Bereich auf die Schaltfläche **Multi-Factor Authentication**.
 
 7.  Wenn das **Multi-Factor Authentication-Verwaltungsportal** geöffnet ist, stellen Sie sicher, dass Sie sich auf der Registerkarte **Benutzer** befinden.
 
@@ -184,17 +184,17 @@ Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führ
 9.  Wählen Sie den Benutzer aus der Benutzerliste aus, und wählen Sie die gewünschte Option für die Multi-Factor Authentication: **Aktivieren**, **Deaktivieren** oder **Erzwingen**.
 
    >[!NOTE]
-   >Wenn ein Benutzer sich im Status **Erzwungen** befindet, können Sie den Status vorübergehend auf **Deaktiviert** festlegen, damit der Benutzer sich wieder bei seinem Konto anmelden kann. Sobald der Benutzer wieder bei seinem Konto angemeldet ist, können Sie den Status zu **Aktiviert** ändern, damit der Benutzer bei der nächsten Anmeldung seine Kontaktinformationen erneut registrieren muss. Alternativ können Sie Schritte unter [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info) ausführen, um diese Daten für den Benutzer zu überprüfen oder festzulegen.
+   >Wenn ein Benutzer sich im Status **Erzwungen** befindet, können Sie den Status vorübergehend auf **Deaktiviert** festlegen, damit der Benutzer sich wieder bei seinem Konto anmelden kann. Sobald der Benutzer wieder bei seinem Konto angemeldet ist, können Sie den Status in **Aktiviert** ändern, damit der Benutzer bei der nächsten Anmeldung seine Kontaktinformationen erneut registrieren muss. Alternativ können Sie Schritte unter [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info) ausführen, um diese Daten für den Benutzer zu überprüfen oder festzulegen.
    >
    >
 
 ### <a name="check-a-users-authentication-contact-info"></a>Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers
 
-Um die Kontaktinformationen eines Benutzers zu überprüfen, die für Multi-Factor Authentication, bedingten Zugriff, Identity Protection und Kennwortzurücksetzung verwendet werden, führen Sie die folgenden Schritte aus:
+Um die Kontaktinformationen zur Authentifizierung des Benutzers zu überprüfen, die für Multi-Factor Authentication, bedingten Zugriff, Identity Protection und Kennwortzurücksetzung verwendet werden, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -202,7 +202,7 @@ Um die Kontaktinformationen eines Benutzers zu überprüfen, die für Multi-Fact
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Profil**.
 
@@ -214,9 +214,9 @@ Um die Kontaktinformationen eines Benutzers zu überprüfen, die für Multi-Fact
 
 Um die Gruppenmitgliedschaften eines Benutzers zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -224,17 +224,17 @@ Um die Gruppenmitgliedschaften eines Benutzers zu überprüfen, führen Sie die 
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Gruppen**, um zu ermitteln, in welchen Gruppen der Benutzer Mitglied ist.
 
 ### <a name="check-a-users-assigned-licenses"></a>Überprüfen der zugewiesenen Lizenzen eines Benutzers
 
-Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die einem Benutzer zugewiesen sind:
+Um die einem Benutzer zugewiesenen Lizenzen zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -242,7 +242,7 @@ Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die ein
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen dem Benutzer derzeit zugewiesen sind.
 
@@ -250,9 +250,9 @@ Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die ein
 
 Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -260,7 +260,7 @@ Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen dem Benutzer derzeit zugewiesen sind.
 

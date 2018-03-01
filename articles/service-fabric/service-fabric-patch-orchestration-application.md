@@ -12,19 +12,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/9/2017
+ms.date: 1/16/2018
 ms.author: nachandr
-ms.openlocfilehash: 13c11902e275d1023e474d717800b3a36a6b31f2
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: bb3afdd3afa81664589f738945a63d20013d5291
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
+> [!div class="op_single_selector"]
+> * [Windows](service-fabric-patch-orchestration-application.md)
+> * [Linux](service-fabric-patch-orchestration-application-linux.md)
+>
+>
+
 Die Anwendung für die Patchorchestrierung ist eine Azure Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann.
 
-Die App für die Patchorchestrierung bietet Folgendes:
+Die App für die Patchorchestrierung umfasst die folgenden Funktionen:
 
 - **Automatische Installation von Betriebssystemupdates**. Betriebssystemupdates werden automatisch heruntergeladen und installiert. Clusterknoten werden bei Bedarf ohne Ausfall des Clusters neu gestartet.
 
@@ -61,15 +67,15 @@ Für die App für die Patchorchestrierung muss der Reparatur-Manager-Systemdiens
 In Azure-Clustern auf Dauerhaftigkeitsstufe „Silver“ ist der Reparatur-Manager-Dienst standardmäßig aktiviert. Bei Azure-Clustern mit der Dauerhaftigkeitsstufe „Gold“ ist der Reparatur-Manager-Dienst möglicherweise aktiviert, abhängig davon, wann diese Cluster erstellt wurden. In Azure-Clustern auf Dauerhaftigkeitsstufe „Bronze“ ist der Reparatur-Manager-Dienst standardmäßig nicht aktiviert. Wenn der Dienst bereits aktiviert ist, wird er im Service Fabric Explorer im Abschnitt mit den Systemdiensten aufgeführt.
 
 ##### <a name="azure-portal"></a>Azure-Portal
-Sie können den Reparatur-Manager beim Einrichten des Clusters über das Azure-Portal aktivieren. Wählen Sie bei der Clusterkonfiguration unter **Add-On-Features** die Option **Reparatur-Manager einschließen**.
+Sie können den Reparatur-Manager beim Einrichten des Clusters über das Azure-Portal aktivieren. Wählen Sie bei der Clusterkonfiguration unter **Add-On-Features** die Option **Reparatur-Manager einschließen** aus.
 ![Abbildung zur Aktivierung des Reparatur-Managers über das Azure-Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
-##### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
-Alternativ können Sie den Reparatur-Manager-Dienst für neue und vorhandene Service Fabric-Cluster über die [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die Beispielvorlagen verwenden oder eine benutzerdefinierte Resource Manager-Vorlage erstellen. 
+##### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager-Bereitstellungsmodell
+Alternativ können Sie den Reparatur-Manager-Dienst für neue und vorhandene Service Fabric-Cluster über das [Azure Resource Manager-Bereitstellungsmodell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die Beispielvorlagen verwenden oder eine benutzerdefinierte Vorlage für das Azure Resource Manager-Bereitstellungsmodell erstellen. 
 
-So aktivieren Sie den Reparatur-Manager-Dienst per [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
+So aktivieren Sie den Reparatur-Manager-Dienst mithilfe einer [Vorlage für das Azure Resource Manager-Bereitstellungsmodell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)
 
-1. Überprüfen Sie zunächst, ob `apiversion` für die `Microsoft.ServiceFabric/clusters`-Ressource auf `2017-07-01-preview` festgelegt ist, wie im folgenden Codeausschnitt gezeigt. Liegt eine andere Einstellung vor, müssen Sie `apiVersion` auf den Wert `2017-07-01-preview` aktualisieren:
+1. Überprüfen Sie zunächst, ob `apiversion` für die Ressource `Microsoft.ServiceFabric/clusters` auf `2017-07-01-preview` festgelegt ist. Wenn eine andere Einstellung vorliegt, müssen Sie `apiVersion` auf den Wert `2017-07-01-preview` oder höher aktualisieren:
 
     ```json
     {
@@ -141,13 +147,13 @@ Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen ents
 |MaxResultsToCache    |Long                              | Maximale Anzahl von Windows Update-Ergebnissen, die zwischengespeichert werden sollen. <br>Der Standardwert ist 3000, wobei Folgendes angenommen wird: <br> – Es sind 20 Knoten vorhanden. <br> – Jeden Monat können fünf Updates auf einem Knoten erfolgen. <br> – Pro Vorgang können zehn Ergebnisse vorliegen. <br> – Es sollen die Ergebnisse für die letzten drei Monaten gespeichert werden. |
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br>                         Zulässige Werte sind: <br>                                                           <b>NodeWise</b>. Windows Update wird immer nur auf jeweils einem Knoten installiert. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update wird immer nur in jeweils einer Upgradedomäne installiert. (Höchstens alle Knoten in einer Upgradedomäne können Windows Update verwenden.)
 |LogsDiskQuotaInMB   |Long  <br> (Standardwert: 1024)               |Maximale Größe der Protokolle für die App für die Patchorchestrierung in MB, die lokal auf jedem Knoten beibehalten werden können.
-| WUQuery               | string<br>(Standardwert: "IsInstalled=0")                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
-| InstallWindowsOSOnlyUpdates | Bool <br> (Standardwert: True)                 | Dieses Flag ermöglicht die Installation von Windows-Betriebssystemupdates.            |
+| WUQuery               | Zeichenfolge<br>(Standardwert: "IsInstalled=0")                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
+| InstallWindowsOSOnlyUpdates | Boolescher Wert <br> (Standardwert: True)                 | Dieses Flag ermöglicht die Installation von Windows-Betriebssystemupdates.            |
 | WUOperationTimeOutInMinutes | int <br>(Standardwert: 90)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
 | WURescheduleCount     | int <br> (Standardwert: 5)                  | Gibt an, wie oft der Dienst das Windows Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
 | WURescheduleTimeInMinutes | int <br>(Standardwert: 30) | Das Intervall, nach dem der Dienst das Windows-Update erneut plant, falls der Fehler weiterhin besteht. |
-| WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: „Wöchentlich, Mittwoch, 7:00:00“)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT,HH:MM:SS, z.B. Monatlich, 5,12:22:32. <br> – Wöchentlich, TAG,HH:MM:SS, z.B. Wöchentlich, Dienstag, 12:22:32.  <br> – Täglich, HH:MM:SS, z.B. Täglich, 12:22:32.  <br> – Keine: Gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Alle Uhrzeiten sind in UTC angegeben.|
-| AcceptWindowsUpdateEula | Bool <br>(Standardwert: true) | Wenn Sie dieses Flag festlegen, akzeptiert die Anwendung den Endbenutzer-Lizenzvertrag für Windows Update für den Besitzer des Computers.              |
+| WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: „Wöchentlich, Mittwoch, 7:00:00“)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS, z.B. Monatlich, 5,12:22:32. <br> – Wöchentlich, TAG,HH:MM:SS, z.B. Wöchentlich, Dienstag, 12:22:32.  <br> – Täglich, HH:MM:SS, z.B. Täglich, 12:22:32.  <br> – Keine: Gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Die Uhrzeiten sind in UTC angegeben.|
+| AcceptWindowsUpdateEula | Boolescher Wert <br>(Standardwert: true) | Wenn Sie dieses Flag festlegen, akzeptiert die Anwendung den Endbenutzer-Lizenzvertrag für Windows Update für den Besitzer des Computers.              |
 
 > [!TIP]
 > Wenn Windows Update sofort ausgeführt werden soll, legen Sie `WUFrequency` relativ zum Zeitpunkt der Anwendungsbereitstellung fest. Angenommen, Sie haben einen Testcluster mit fünf Knoten und möchten die App ca. um 17:00 Uhr (UTC) bereitstellen. Wenn Sie davon ausgehen, dass das Upgrade oder die Bereitstellung der Anwendung maximal 30 Minuten dauert, legen Sie WUFrequency auf „Täglich, 17:30:00“ fest.
@@ -218,8 +224,8 @@ Feld | Werte | Details
 -- | -- | --
 OperationResult | 0: Erfolgreich<br> 1: Erfolgreich mit Fehlern<br> 2: Fehlgeschlagen<br> 3 : Abgebrochen<br> 4: Abgebrochen mit Timeout | Gibt das Ergebnis des Gesamtvorgangs an (schließt normalerweise die Installation eines oder mehrerer Updates ein).
 ResultCode | Das Gleiche wie bei OperationResult | Diese Feld gibt das Ergebnis eines Installationsvorgangs für ein einzelnes Update an.
-OperationType | 1: Installation<br> 0: Suchen und Herunterladen| Die Installation ist der einzige OperationType, der standardmäßig in den Ergebnissen angezeigt werden würde.
-WindowsUpdateQuery | Der Standardwert ist „IsInstalled=0“. |Windows Update-Abfrage, welche für die Suche nach Updates verwendet wurde. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
+OperationType | 1: Installation<br> 0: Suchen und Herunterladen| „Installation“ ist der einzige Wert für OperationType, der standardmäßig in den Ergebnissen angezeigt wird.
+WindowsUpdateQuery | Der Standardwert ist „IsInstalled=0“. |Windows Update-Abfrage, die für die Suche nach Updates verwendet wurde. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
 RebootRequired | TRUE: Neustart war erforderlich<br> FALSE: Neustart war nicht erforderlich | Gibt an, ob ein Neustart erforderlich war, um die Installation des Updates abzuschließen.
 
 Wenn noch keine Aktualisierung geplant ist, ist die JSON-Ausgabe leer.
@@ -307,7 +313,7 @@ A: Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils
 
 F: **Warum werden in den über REST-APIs abgerufenen Windows Update-Ergebnissen einige Updates angezeigt, nicht aber im Windows Update-Verlauf auf dem Computer?**
 
-A: Einige Produktupdates müssen im jeweiligen Update-/Patchverlauf überprüft werden. So werden beispielsweise Windows Defender-Updates unter Windows Server 2016 nicht im Windows Update-Verlauf angezeigt.
+A: Einige Produktupdates werden nur im jeweiligen Update-/Patchverlauf angezeigt. So werden beispielsweise Windows Defender-Updates unter Windows Server 2016 nicht im Windows Update-Verlauf angezeigt.
 
 ## <a name="disclaimers"></a>Haftungsausschlüsse
 

@@ -9,16 +9,17 @@ editor:
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 50cbbca9181d67bc41632a4650c76b9636a72356
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 8d9b0fcc8b72f947cbc64c6ac9a428ac29f8dfd2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Windows-Computern in Azure Security Center
 Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z.B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Microsoft Monitoring Agent bereitstellen.
@@ -73,7 +74,7 @@ Jetzt müssen Sie die heruntergeladene Datei auf dem Zielcomputer installieren.
 
 Nach Abschluss wird der **Microsoft Monitoring Agent** in der **Systemsteuerung** angezeigt. Sie können hier Ihre Konfiguration überprüfen und sicherstellen, dass der Agent verbunden ist.
 
-Weitere Informationen zur Installation und Konfiguration des Agents finden Sie unter [Verbinden von Windows-Computern](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup).
+Weitere Informationen zur Installation und Konfiguration des Agents finden Sie unter [Verbinden von Windows-Computern](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup-wizard).
 
 Jetzt können Sie Ihre Azure-VMs und Nicht-Azure-Computer zentral überwachen. Unter **Compute** haben Sie einen Überblick über alle VMs und Computer mit Empfehlungen. Jede Spalte steht für eine Gruppe von Empfehlungen. Die Farbe stellt den aktuellen Sicherheitsstatus der VM oder des Computers für diese Empfehlung dar. In Security Center werden in Sicherheitswarnungen außerdem alle erkannten Bedrohungen für diese Computer angezeigt.
 

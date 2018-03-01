@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 08426b6142dd125a5981d65635ecc55336cb3d15
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 21a050373a9901220e106534464a8c13565bb3d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Einschränkungen von Azure Cloud Shell
 
@@ -33,7 +33,6 @@ Der Computer mit Ihrer Cloud Shell-Sitzung besteht nur vorübergehend und wird r
 * Mit eingebundenem Speicher werden nur Änderungen im `clouddrive`-Verzeichnis gespeichert. In Bash bleibt Ihr `$Home`-Verzeichnis ebenfalls erhalten.
 * Azure-Dateifreigaben können nur innerhalb Ihrer [zugewiesenen Region](persisting-shell-storage.md#mount-a-new-clouddrive) eingebunden werden.
   * Führen Sie in Bash `env` aus, um für Ihre Region die Einstellung `ACC_LOCATION` zu ermitteln.
-* Azure Files unterstützt nur Konten mit lokal redundantem Speicher und georedundantem Speicher.
 
 ### <a name="browser-support"></a>Browserunterstützung
 
@@ -55,18 +54,11 @@ Cloud Shell ist für interaktive Anwendungsfälle konzipiert. Daher werden lange
 
 ### <a name="user-permissions"></a>Benutzerberechtigungen
 
-Berechtigungen werden als reguläre Benutzer ohne sudo-Zugriff festgelegt. Installationen außerhalb des Verzeichnisses `$Home` werden nicht gespeichert.
-
-### <a name="clouddrive-smb-limited-permissions"></a>Clouddrive SMB – eingeschränkte Berechtigungen
-Bestimmte Befehle im Verzeichnis `clouddrive` (beispielsweise `git clone`) verfügen nicht über die erforderlichen Berechtigungen für das Lesen/Schreiben bestimmter Dateien. Wenn dieses Problem auftritt, wiederholen Sie den Vorgang aus Ihrem `$Home` Verzeichnis, für das keine SMB-Einschränkungen gelten.
+Berechtigungen werden als reguläre Benutzer ohne sudo-Zugriff festgelegt. Installationen außerhalb des Verzeichnisses `$Home` oder `clouddrive` werden nicht gespeichert.
 
 ### <a name="editing-bashrc"></a>Bearbeiten von „.bashrc“
 
-Gehen Sie bei der Bearbeitung von „.bashrc“ vorsichtig vor, da sonst unerwartete Fehler in Cloud Shell auftreten können.
-
-### <a name="bashhistory"></a>.bash_history
-
-Der Verlauf der Bashbefehle ist möglicherweise aufgrund einer Unterbrechung der Cloud Shell-Sitzung oder gleichzeitiger Sitzungen inkonsistent.
+Gehen Sie bei der Bearbeitung von „.bashrc“ vorsichtig vor, da sonst unerwartete Fehler mit Bash in Cloud Shell auftreten können.
 
 ## <a name="powershell-limitations"></a>PowerShell-Einschränkungen
 

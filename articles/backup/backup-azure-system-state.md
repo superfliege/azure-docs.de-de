@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: saurse;markgal
-ms.openlocfilehash: 5481e9139f18cb88ce5152776fa18df3f9441c80
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: e7dce94e56a8b51dd1c47e306aeb1d11d0dfb45c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Sichern des Windows-Systemstatus in der Ressourcen Manager-Bereitstellung
 Dieser Artikel beschreibt, wie Sie den Systemstatus von Windows Server in Azure sichern. Dies ist ein Tutorial, in dem die Grundlagen beschrieben werden.
@@ -33,7 +33,7 @@ Um den Systemstatus von Windows Server zu sichern, müssen Sie einen Recovery Se
 
 ### <a name="to-create-a-recovery-services-vault"></a>So erstellen Sie einen Recovery Services-Tresor
 1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com/) an, sofern Sie noch nicht angemeldet sind.
-2. Klicken Sie im Hub-Menü auf **More Services** (Weitere Dienste), geben Sie in der Ressourcenliste **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
+2. Klicken Sie im Hub-Menü auf **Alle Dienste**, geben Sie in der Ressourcenliste **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-system-state/open-rs-vault-list.png) <br/>
 
@@ -53,7 +53,7 @@ Um den Systemstatus von Windows Server zu sichern, müssen Sie einen Recovery Se
 6. Gehen Sie im Abschnitt **Ressourcengruppe** wie folgt vor:
 
     * Wählen Sie **Neu erstellen** aus, wenn Sie eine Ressourcengruppe erstellen möchten.
-    Oder
+    oder
     * Wählen Sie **Use existing** (Vorhandene verwenden) aus, und klicken Sie auf das Dropdownmenü, um eine Liste mit verfügbaren Ressourcengruppen anzuzeigen.
 
   Umfassende Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).

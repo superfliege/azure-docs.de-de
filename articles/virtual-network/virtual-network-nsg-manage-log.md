@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6beb9ae1b64e27df0a4eefefd592c7850efc7d2d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)
 
@@ -46,7 +46,7 @@ Diagnoseprotokollierung muss für *jede* NSG aktiviert sein, für die Sie Daten 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Um die Protokollierung über das Portal zu aktivieren, melden Sie sich beim [Portal](https://portal.azure.com) an. Klicken Sie auf **Weitere Dienste**, und geben Sie dann *Netzwerksicherheitsgruppen* ein. Wählen Sie die NSG aus, für die Sie die Protokollierung aktivieren möchten. Befolgen Sie die Anweisungen für Nicht-Computeressourcen im Artikel [Enable Diagnostic Logs in the portal](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) (Aktivieren von Diagnoseprotokollen im Portal). Wählen Sie **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter** oder beide Kategorien von Protokollen.
+Um die Protokollierung über das Portal zu aktivieren, melden Sie sich beim [Portal](https://portal.azure.com) an. Klicken Sie auf **Alle Dienste**, und geben Sie dann *Netzwerksicherheitsgruppen* ein. Wählen Sie die NSG aus, für die Sie die Protokollierung aktivieren möchten. Befolgen Sie die Anweisungen für Nicht-Computeressourcen im Artikel [Enable Diagnostic Logs in the portal](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) (Aktivieren von Diagnoseprotokollen im Portal). Wählen Sie **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter** oder beide Kategorien von Protokollen.
 
 ### <a name="powershell"></a>PowerShell
 

@@ -14,14 +14,14 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 01/23/2018
 ms.author: barbkess
-ms.openlocfilehash: f8b4e29595c6a71696cf2c4939ad4c6c096a28b5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 30dede32b35f995f89e2946af34da10353f55212
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen für ein Azure SQL Data Warehouse im Azure-Portal
-Halten Sie Computeressourcen für ein Azure SQL Data Warehouse an, um Kosten zu sparen. Setzen Sie die Computeressourcen fort, wenn Sie das Data Warehouse verwenden möchten.
+Halten Sie Computeressourcen für ein Azure SQL Data Warehouse an, um Kosten zu sparen. [Setzen Sie die Computeressourcen fort](sql-data-warehouse-manage-compute-overview.md), wenn Sie das Data Warehouse verwenden möchten.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -69,7 +69,7 @@ Führen Sie die folgenden Schritte aus, um ein SQL Data Warehouse fortzusetzen.
 5. Sie werden in einer Meldung aufgefordert, den Startvorgang zu bestätigen. Klicken Sie auf **Ja**.
 6. Beachten Sie, dass der **Status** als **Wird fortgesetzt** angezeigt wird.
 
-    ![Status „Wird fortgesetzt“](media/pause-and-resume-compute-portal/resuming.png)
+    ![Wird fortgesetzt](media/pause-and-resume-compute-portal/resuming.png)
 
 7. Wenn das Data Warehouse wieder online ist, lautet der Status **Online**, und die Bezeichnung der Optionsschaltfläche lautet **Anhalten**.
 8. Die Computeressourcen für das Data Warehouse sind jetzt online, und Sie können den Dienst verwenden. Es fallen wieder Kosten für die Computeressourcen an.
@@ -102,4 +102,4 @@ Führen Sie die folgenden Schritte aus, um Ressourcen nach Wunsch zu bereinigen.
 Sie haben die Computeressourcen für Ihr Data Warehouse angehalten und fortgesetzt. Weitere Informationen zu Azure SQL Data Warehouse erhalten Sie im Tutorial zum Laden von Daten.
 
 > [!div class="nextstepaction"]
->[Laden von Daten in ein SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Laden von Daten in ein SQL-Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

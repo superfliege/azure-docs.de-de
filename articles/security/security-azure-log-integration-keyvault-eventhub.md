@@ -8,18 +8,22 @@ editor: TomShinder
 ms.assetid: 
 ms.service: security
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 02/16/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 3cd80817bf8b2ef2f66e9942eddc186a3eb5b5e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5bd27c94569228693d1a9c80c6e5362b50c4a44
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Tutorial zur Azure-Protokollintegration: Verarbeiten von Azure Key Vault-Ereignissen mithilfe von Event Hubs
 
 Sie können die Azure-Protokollintegration verwenden, um protokollierte Ereignisse abzurufen und sie Ihrem Sicherheits- und Ereignisverwaltungssystem (SIEM) zur Verfügung zu stellen. Dieses Tutorial veranschaulicht anhand eines Beispiels, wie Sie über Azure Event Hubs bezogene Protokolle mithilfe der Azure-Protokollintegration verarbeiten können.
+
+>[!IMPORTANT]
+>Die bevorzugte Methode für die Integration von Azure-Protokollen ist der Azure Monitor-Connector Ihres SIEM-Anbieters unter Verwendung dieser [Anweisungen](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Wenn jedoch der SIEM-Anbieter keinen Connector für Azure Monitor anbietet, können Sie Azure Log Integration möglicherweise als eine temporäre Lösung verwenden (sofern Ihr SIEM von Azure Log Integration unterstützt wird), bis ein solcher Connector verfügbar ist.
+
  
 Führen Sie die einzelnen Schritte des Beispiels in diesem Tutorial aus, um zu erfahren, wie die Azure-Protokollintegration und Event Hubs zusammenarbeiten und wie der jeweilige Schritt die Lösung unterstützt. Auf der Grundlage dieser Erkenntnisse können Sie dann eigene Schritte entwickeln, die die speziellen Anforderungen Ihres Unternehmens unterstützen.
 

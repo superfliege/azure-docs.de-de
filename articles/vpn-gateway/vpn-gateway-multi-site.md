@@ -1,6 +1,6 @@
 ---
 title: 'Herstellen einer Verbindung zwischen einem virtuellen Netzwerk und mehreren Standorten mithilfe von VPN Gateway und PowerShell: Klassisch | Microsoft-Dokumentation'
-description: "In diesem Artikel werden die Schritte zum Verbinden mehrerer lokaler Standorte mit einem virtuellen Netzwerk erläutert. Dabei wird ein VPN-Gateway im klassischen Bereitstellungsmodell verwendet."
+description: Verbinden Sie mehrere lokale Standorte mithilfe eines VPN-Gateways mit einem klassischen virtuellen Netzwerk.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2017
+ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 434f84dc6244eddce9b172a617722b218360ffc2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c0af4271df0e88354edb717b8d6f4c99ab29e573
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klassisch)](vpn-gateway-multi-site.md)
 >
 >
@@ -162,7 +162,7 @@ Importieren Sie die Netzwerkkonfigurationsdatei. Wenn Sie diese Datei mit den Ä
 ## <a name="6-download-keys"></a>6. Herunterladen der Schlüssel
 Nachdem die neuen Tunnel hinzugefügt wurden, rufen Sie mit dem PowerShell-Cmdlet „Get-AzureVNetGatewayKey“ die vorinstallierten IPsec-/IKE-Schlüssel für jeden Tunnel ab.
 
-Beispiel:
+Beispiel: 
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"

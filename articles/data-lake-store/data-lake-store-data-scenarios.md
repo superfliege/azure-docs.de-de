@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 6428c6d9fcb577f18221ee48a61456c460bd8176
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: bd69d3c353c7f44efb37e2359412aa3a9f3e8f8d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Verwenden von Azure Data Lake-Speicher für Big Data-Anforderungen
 Es gibt vier wichtige Phasen in der Big Data-Verarbeitung:
@@ -38,9 +38,9 @@ In diesem Abschnitt werden die unterschiedlichen Quellen von Daten hervorgehoben
 ### <a name="ad-hoc-data"></a>Ad-hoc-Daten:
 Dies steht für kleinere Datasets, die zum Erstellen von Prototypen einer Big Data-Anwendung verwendet werden. Es gibt, abhängig von der Quelle der Daten, verschiedene Möglichkeiten zum Erfassen von Ad-hoc-Daten.
 
-| Datenquelle | Erfassen Sie mit |
+| Data source | Erfassen Sie mit |
 | --- | --- |
-| Lokalem Computer |<ul> <li>[Azure-Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Plattformübergreifende Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Verwenden von Data Lake-Tools für Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Lokalem Computer |<ul> <li>[Node.js-Funktion „HTTPTrigger“](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Plattformübergreifende Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Verwenden von Data Lake-Tools für Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage-Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Ausführung von DistCp auf einem HDInsight-Cluster](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Streamingdaten

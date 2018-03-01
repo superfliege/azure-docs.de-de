@@ -9,17 +9,17 @@ editor:
 ms.assetid: 3263bb3d-befc-428c-9f80-53de65761697
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: yurid
-ms.custom: mvc
-ms.openlocfilehash: 2ea4dc75c6285379d7a7eb3e85d28c89ae520dc8
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 95cc85f0c742d465ab1ed68d6c29b61a6919dd5b
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>Schnellstartanleitung: Herstellen einer Verbindung für Sicherheitslösungen mit Security Center
 
@@ -72,20 +72,20 @@ Bevor Sie mit den unten angegebenen Schritten fortfahren, müssen Sie warten, bi
 Im folgenden Beispiel werden die Ergebnisse dieser Schritte angezeigt: ![CommonSecurityLog](./media/quick-security-solutions/common-sec-log.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstartanleitungen und Tutorials fortzufahren, sollten Sie weiter den Tarif „Standard“ ausführen und die automatische Bereitstellung aktiviert lassen. Gehen Sie wie folgt vor, falls Sie nicht fortfahren oder zum Free-Tarif zurückkehren möchten:
+Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstartanleitungen und Tutorials fortzufahren, sollten Sie weiter den Tarif „Standard“ nutzen und die automatische Bereitstellung aktiviert lassen. Gehen Sie wie folgt vor, falls Sie nicht fortfahren oder zum Free-Tarif zurückkehren möchten:
 
 1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Sicherheitsrichtlinie**.
 2. Wählen Sie das Abonnement oder die Richtlinie aus, für das bzw. die Sie zu „Free“ zurückwechseln möchten. Der Bereich **Sicherheitsrichtlinie** wird geöffnet.
 3. Wählen Sie unter **RICHTLINIENKOMPONENTEN** die Option **Tarif**.
 4. Wählen Sie **Free**, um für das Abonnement vom Tarif „Standard“ zu „Free“ zu wechseln.
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
 Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
 
 1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Sicherheitsrichtlinie**.
 2. Wählen Sie das Abonnement aus, für das Sie die automatische Bereitstellung deaktivieren möchten.
 3. Wählen Sie im Bereich **Sicherheitsrichtlinie – Datensammlung** unter **Onboarding** die Option **Aus**, um die automatische Bereitstellung zu deaktivieren.
-4. Wählen Sie **Speichern** aus.
+4. Wählen Sie **Speichern**aus.
 
 >[!NOTE]
 > Wenn Sie die automatische Bereitstellung deaktivieren, wird Microsoft Monitoring Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.

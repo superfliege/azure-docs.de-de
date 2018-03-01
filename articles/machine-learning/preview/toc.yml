@@ -9,17 +9,17 @@
       href: model-management-overview.md
 - name: Schnellstarts
   items:
-    - name: Installieren und Erstellen
+    - name: Installieren und Starten
       href: quickstart-installation.md
 - name: Tutorials
   items:
-    - name: 1 – Vorbereiten von Daten
+    - name: '1: Vorbereiten von Daten'
       href: tutorial-classifying-iris-part-1.md
-    - name: 2 – Erstellen eines Modells
+    - name: '2: Erstellen von Modellen'
       href: tutorial-classifying-iris-part-2.md
-    - name: 3 – Bereitstellen eines Modells
+    - name: '3: Bereitstellen von Modellen'
       href: tutorial-classifying-iris-part-3.md
-    - name: 4 – Erweiterte Datenvorbereitung
+    - name: '4: Erweiterte Datenvorbereitung'
       href: tutorial-bikeshare-dataprep.md
 - name: Konzepte
   items:

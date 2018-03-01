@@ -12,17 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 08/07/2017
+ms.date: 02/16/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: bfdc7154160bb6bb7dc9c46eb2352ce74310c4de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 615bfb1ea86d31733fc1db7139cd995fbbbac7aa
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-log-integration-faq"></a>Azure-Protokollintegration – Häufig gestellte Fragen
-In diesem Artikel werden häufig gestellte Fragen zur Azure-Protokollintegration beantwortet. 
+
+In diesem Artikel werden häufig gestellte Fragen zur Azure-Protokollintegration beantwortet.
+
+>[!IMPORTANT]
+>Die bevorzugte Methode für die Integration von Azure-Protokollen ist der Azure Monitor-Connector Ihres SIEM-Anbieters unter Verwendung dieser [Anweisungen](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Wenn jedoch der SIEM-Anbieter keinen Connector für Azure Monitor anbietet, können Sie Azure Log Integration möglicherweise als eine temporäre Lösung verwenden (sofern Ihr SIEM von Azure Log Integration unterstützt wird), bis ein solcher Connector verfügbar ist.
 
 Die Azure-Protokollintegration ist ein Dienst des Windows-Betriebssystems, mit dem Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) integrieren können. Diese Integration bietet ein einheitliches Dashboard für alle Ihre Objekte, ob lokal oder in der Cloud. Sie können dann Sicherheitsereignisse für Ihre Anwendungen aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben.
 
@@ -34,11 +38,11 @@ Ja. Es fallen keine Gebühren für die Integration der Software für die Azure-P
 Derzeit ist sie im kommerziellen Azure sowie Azure Government erhältlich, in China und Deutschland ist sie nicht verfügbar.
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Wie kann ich die Speicherkonten anzeigen, aus denen die Azure-Protokollintegration Azure-VM-Protokolle bezieht?
-Führen Sie den Befehl **azlog source list**aus.
+Führen Sie den Befehl **AzLog source list** aus.
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>Wie erkenne ich, aus welchem Abonnement die Protokolle der Azure-Protokollintegration stammen?
 
-Bei Überwachungsprotokollen, die sich in den **AzureResourcemanagerJson**-Verzeichnissen befinden, ist die Abonnement-ID im Namen der Protokolldatei enthalten. Dies gilt auch für Protokolle im Ordner **AzureSecurityCenterJson**. Beispiel:
+Bei Überwachungsprotokollen, die sich in den **AzureResourcemanagerJson**-Verzeichnissen befinden, ist die Abonnement-ID im Namen der Protokolldatei enthalten. Dies gilt auch für Protokolle im Ordner **AzureSecurityCenterJson**. Beispiel: 
 
 20170407T070805_2768037.0000000023.**1111e5ee-1111-111b-a11e-1e111e1111dc**.json
 
@@ -47,7 +51,7 @@ Bei Azure Active Directory-Überwachungsprotokollen ist die Mandanten-ID Teil de
 Die Namen von Diagnoseprotokollen, die von einem Event-Hub gelesen werden, enthalten nicht die Abonnement-ID. Stattdessen enthalten sie den Anzeigenamen, der im Rahmen der Erstellung der Event Hub-Quelle angegeben wird. 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>Wie kann ich die Proxykonfiguration aktualisieren?
-Falls Ihre Proxyeinstellung keinen direkten Azure-Speicherzugriff ermöglicht, öffnen Sie die Datei **AZLOG.EXE.CONFIG** (im Verzeichnis **C:\Programme\Microsoft Azure-Protokollintegration**). Fügen Sie in der Datei den Abschnitt **defaultProxy** mit der Proxyadresse Ihrer Organisation hinzu. Beenden Sie anschließend den Dienst mithilfe des Befehls **net stop azlog**, und starten Sie ihn mithilfe des Befehls **net start azlog** erneut.
+Falls Ihre Proxyeinstellung keinen direkten Azure-Speicherzugriff ermöglicht, öffnen Sie die Datei **AZLOG.EXE.CONFIG** (im Verzeichnis **C:\Programme\Microsoft Azure-Protokollintegration**). Fügen Sie in der Datei den Abschnitt **defaultProxy** mit der Proxyadresse Ihrer Organisation hinzu. Beenden Sie anschließend den Dienst mithilfe des Befehls **net stop AzLog**, und starten Sie ihn mithilfe des Befehls **net start AzLog** erneut.
 
     <?xml version="1.0" encoding="utf-8"?>
     <configuration>
@@ -74,7 +78,7 @@ Der XML-Code des Ereignisses enthält die folgenden Metadaten – einschließlic
 ![Ereignis-XML][1]
 
 ## <a name="error-messages"></a>Fehlermeldungen
-### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>Warum tritt beim Ausführen des Befehls **azlog createazureid** der folgende Fehler auf?
+### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>Warum tritt beim Ausführen des Befehls ```AzLog createazureid``` der folgende Fehler auf?
 Fehler
 
   *Failed to create AAD Application - Tenant 72f988bf-86f1-41af-91ab-2d7cd011db37 - Reason = 'Forbidden' - Message = 'Insufficient privileges to complete the operation.' (Fehler beim Erstellen der AAD-Anwendung. Mandant: 72f988bf-86f1-41af-91ab-2d7cd011db37. Ursache: Unzulässig. Meldung: Nicht genügend Berechtigungen zum Abschließen des Vorgangs.)*

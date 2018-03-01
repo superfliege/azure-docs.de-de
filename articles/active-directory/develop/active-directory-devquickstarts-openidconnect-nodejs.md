@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: a0079c1f4265e1c2564b85247cf5f5e0289799db
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 0a3bbfe32bde0cd3971450f5a9a909dcf8b5d793
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Erste Schritte mit der Node.js-Web-App in Azure AD
 Hier wird Passport für Folgendes verwendet:
@@ -48,14 +48,14 @@ Die fertige Anwendung wird außerdem am Ende dieses Lernprogramms bereitgestellt
 
 2. Wählen im Menü oben auf der Seite Ihr Konto aus. Wählen Sie in der **Verzeichnisliste** den Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 
-3. Wählen Sie im Menü auf der linken Seite **Weitere Dienste** und dann **Azure Active Directory**.
+3. Wählen Sie im Menü auf der linken Seite **Alle Dienste** und dann **Azure Active Directory**.
 
 4. Wählen Sie **App-Registrierungen** und dann **Hinzufügen** aus.
 
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung** und/oder **Web-API**.
   * Am **Namen** der Anwendung sollten die Benutzer die Funktion der Anwendung ablesen können.
 
-  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet `http://localhost:3000/auth/openid/return``.
+  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet `http://localhost:3000/auth/openid/return`.
 
 6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
 7. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Üblicherweise wird das Format `https://<tenant-domain>/<app-name>` verwendet, z. B.: `https://contoso.onmicrosoft.com/my-first-aad-app`.
@@ -181,7 +181,7 @@ Der obige Code erfasst alle Benutzer, die sich an unserem Server authentifiziere
             };
     ```
 
-5.  Als Nächstes fügen Sie den Code hinzu, um das Express-Modul zu laden. Hier verwend wir die standardmäßigen Muster für „/views“ und „/routes“, die Express bietet.
+5.  Als Nächstes fügen Sie den Code hinzu, um die Express-Engine zu laden. Hier verwend wir die standardmäßigen Muster für „/views“ und „/routes“, die Express bietet.
 
     ```JavaScript
 
@@ -206,7 +206,7 @@ Der obige Code erfasst alle Benutzer, die sich an unserem Server authentifiziere
 
     ```
 
-6. Fügen Sie abschließend die Routen hinzu, die die eigentlichen Anmeldeanforderungen an das Modul `passport-azure-ad` übergeben:
+6. Fügen Sie abschließend die Routen hinzu, die die eigentlichen Anmeldeanforderungen an die Engine `passport-azure-ad` übergeben:
 
     ```JavaScript
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/16/2018
 ms.author: jgao
-ms.openlocfilehash: 9924a9656f2e2e268356b8ce293d58afc3d535a9
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: cfaad24e7bf1c38f3be1e13c88fc932be0bd502c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Installieren von Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
@@ -33,13 +33,12 @@ Die folgende Liste zeigt die veröffentlichten Anwendungen:
 * **AtScale Intelligence Platform** verwandelt Ihren HDInsight-Cluster in einen OLAP-Server mit horizontaler Hochskalierung. Die Anwendung ermöglicht Ihnen das Abfragen von Milliarden von Datenzeilen. Dabei werden interaktiv die BI-Tools von Microsoft Excel, Power BI, Tableau-Software oder QlikView verwendet.
 * **Cask CDAP für HDInsight** stellt die erste einheitliche Integrationsplattform für Big Data bereit, die die Zeit bis zur Einführung in der Produktion für Datenanwendungen und Data Lakes um 80 % reduziert. Diese Anwendung unterstützt nur Standard HBase 3.4-Cluster.
 * **DATAIKU DDS on HDInsight** erlaubt Datenexperten, Prototypen für hochspezifische Dienste zu entwickeln und diese Dienste anschließend zu erstellen und bereitzustellen, um Rohdaten in wirkungsvolle Unternehmensprognosen zu verwandeln.
-* **Datameer**: [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) bietet Analysten eine Möglichkeit, Big-Data-Ergebnisse interaktiv zu ermitteln, zu analysieren und zu visualisieren. Binden Sie zusätzliche Datenquellen auf einfache Weise ein, um neue Beziehungen zu ermitteln und die benötigten Antworten schnell zu erhalten.
 * **H2O Artificial Intelligence für HDInsight (Beta):** H2O Sparkling Water unterstützt die folgenden verteilten Algorithmen: GLM, Naïve Bayes, Distributed Random Forest, Gradient Boosting Machine, Deep Neural Networks, Deep Learning, K-Means, PCA, Generalized Low Rank Models, Anomalieerkennung und Autoencoder.
 * **Kyligence Analytics Platform:** Kyligence Analytics Platform (KAP) ist ein Data Warehouse für Unternehmen, das von Apache Kylin und Apache Hadoop unterstützt wird. Es ermöglicht Abfragelatenzen unter einer Sekunde in riesigen Datensätzen und vereinfacht die Datenanalyse für Geschäftsbenutzer und Analytiker. 
 * **Self-Service Data Prep von Paxata**
-* **SnapLogic Hadooplex:** Mit SnapLogic Hadooplex unter HDInsight können Kunden geschäftliche Erkenntnisse schneller gewinnen, indem Self-Service-Dateneingabe und -vorbereitung aus nahezu jeder Quelle für die Microsoft Azure-Cloudplaftform bereitgestellt werden.
 * **Spark Job Server für KNIME Spark Executor:** Spark Job Server für KNIME Spark Executor wird zum Verbinden der KNIME Analytics-Plattform mit HDInsight-Clustern verwendet.
 * **Streamsets Data Collector für HDInsight** stellt eine voll ausgestattete integrierte Entwicklungsumgebung (IDE) bereit, mit der Sie n:n-Erfassungspipelines entwerfen, testen, bereitstellen und verwalten können. Diese Pipelines mischen Strom- und Batchdaten und enthalten eine Reihe von datenstrominternen Transformationen – ohne benutzerdefinierten Code schreiben zu müssen. 
+* **[Trifacta](http://www.trifacta.com/)**  ermöglicht es Dateningenieuren und -analysten, die vielfältigen Daten von heute effizienter zu erforschen und aufzubereiten, indem sie maschinelles Lernen nutzen, um eine bestmögliche Benutzererfahrung, einen bahnbrechenden Workflow und eine überragende Architektur zu bieten.
 * **WANdisco Fusion HDI-App** ermöglicht dauerhafte konsistente Konnektivität mit Daten, während diese sich ändern, und zwar unabhängig vom Speicherort. Sie bietet Ihnen jederzeit und an jedem Ort Zugriff auf Ihre Daten – ohne Ausfallzeiten oder Unterbrechungen.
 
 Für die Anleitungen in diesem Artikel wird das Azure-Portal verwendet. Sie können die Azure Resource Manager-Vorlage auch aus dem Portal exportieren oder eine Kopie der Resource Manager-Vorlage von Anbietern erhalten und Azure PowerShell und die Azure CLI zum Bereitstellen der Vorlage verwenden.  Weitere Informationen finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
@@ -58,14 +57,10 @@ Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen
 4. Klicken Sie in der Kategorie **Konfigurationen** auf **Anwendungen**. Sie sehen eine Liste mit installierten Anwendungen. Sollte „Anwendungen“ nicht angezeigt werden, sind für diese Version des HDInsight-Clusters keine Anwendungen vorhanden.
    
     ![HDInsight-Anwendungen – Portal-Menü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
-5. Klicken Sie im Menü auf **Hinzufügen**. 
-   
-    ![HDInsight-Anwendungen – Installierte Apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps.png)
-   
-    Eine Liste mit den vorhandenen HDInsight-Anwendungen wird angezeigt.
+5. Klicken Sie im Menü auf **Hinzufügen**. Eine Liste mit den vorhandenen HDInsight-Anwendungen wird angezeigt.
    
     ![HDInsight-Anwendungen – Verfügbare Anwendungen](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
-6. Klicken Sie auf eine Anwendung, stimmen Sie den rechtlichen Bedingungen zu, und klicken Sie dann auf **Auswählen**.
+6. Klicken Sie auf eine der verfügbaren Anwendungen, und folgen Sie dann den Anweisungen zum Akzeptieren der rechtlichen Bedingungen.
 
 Sie können den Status der Installation über die Portalbenachrichtigungen verfolgen. (Klicken Sie oben im Portal auf das Glockensymbol.) Nach der Installation wird die Anwendung in der Liste „Installierte Apps“ angezeigt.
 
@@ -80,7 +75,7 @@ Im Portal wird eine Liste mit den installierten HDInsight-Anwendungen für einen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **HDInsight-Cluster** . 
 3. Klicken Sie auf einen HDInsight-Cluster.
-4. Klicken Sie in **Einstellungen** unter der Kategorie **Allgemein** auf **Anwendungen**. Die installierten Apps werden auf der rechten Seite aufgeführt. 
+4. Klicken Sie in **Einstellungen** unter der Kategorie **Konfiguration** auf **Anwendungen**. Die installierten Apps werden auf der rechten Seite aufgeführt. 
    
     ![HDInsight-Anwendungen – Installierte Apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. Klicken Sie auf eine installierte Anwendung, um die Eigenschaft anzuzeigen. Die Eigenschaft zeigt Folgendes:

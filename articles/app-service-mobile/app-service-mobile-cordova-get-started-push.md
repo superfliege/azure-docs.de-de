@@ -1,6 +1,6 @@
 ---
-title: "Hinzufügen von Pushbenachrichtigungen zur Apache Cordova-App mit Azure Mobile Apps | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über die Verwendung von Azure Mobile Apps zum Senden von Pushbenachrichtigungen an Ihre Apache Cordova-App."
+title: "Hinzufügen von Pushbenachrichtigungen zu einer Apache Cordova-App mit dem Mobile Apps-Feature von Azure App Service | Microsoft-Dokumentation"
+description: "Erfahren Sie mehr über die Verwendung von Mobile Apps zum Senden von Pushbenachrichtigungen an Ihre Apache Cordova-App."
 services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
@@ -14,56 +14,56 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 05fa692f9331cf6b5178c3e9dca60ad2598dc609
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 6af5fa51f2e6553431b9f0aa2dbb368651e7e209
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Apache Cordova-App
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Übersicht
-In diesem Tutorial fügen Sie Pushbenachrichtigungen zum [Apache Cordova-Schnellstartprojekt] hinzu, damit jedes Mal, wenn ein Datensatz eingefügt wird, eine Pushbenachrichtigung an das Gerät gesendet wird.
+In diesem Tutorial fügen Sie Pushbenachrichtigungen zum [Apache Cordova-Schnellstartprojekt][5] hinzu, damit jedes Mal, wenn ein Datensatz eingefügt wird, eine Pushbenachrichtigung an das Gerät gesendet wird.
 
-Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Erweiterungspaket für Pushbenachrichtigungen hinzufügen. Weitere Informationen finden Sie unter [Arbeiten mit dem .NET Back-End-Server SDK für Azure Mobile Apps][1].
+Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Erweiterungspaket für Pushbenachrichtigungen hinzufügen. Weitere Informationen finden Sie unter [Arbeiten mit dem .NET Back-End-Server SDK für Mobile Apps][1].
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Tutorial wird eine Apache Cordova-Anwendung beschrieben, die in Visual Studio 2015 entwickelt und auf dem Google Android Emulator, einem Android-Gerät, einem Windows-Gerät und einem iOS-Gerät ausgeführt wird.
+Bei diesem Tutorial wird davon ausgegangen, dass Sie über eine Apache Cordova-Anwendung verfügen, die mit Visual Studio 2015 entwickelt wurde. Diese Anwendung sollte auf dem Google Android-Emulator, einem Android-Gerät, einem Windows-Gerät oder einem iOS-Gerät ausgeführt werden.
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Einen PC mit [Visual Studio Community 2015][2] oder einer höheren Version
+* Einen PC mit [Visual Studio Community 2015][2] oder höher 
 * [Visual Studio-Tools für Apache Cordova][4]
 * Ein [aktives Azure-Konto][3]
 * Ein abgeschlossenes [Apache Cordova-Schnellstartprojekt][5]
 * (Android) Ein [Google-Konto][6] mit einer verifizierten E-Mail-Adresse
-* (iOS) Eine [Apple Developer Program-Mitgliedschaft][7] und ein iOS-Gerät (iOS Simulator unterstützt keine Pushvorgänge)
+* (iOS) Eine [Apple Developer Program-Mitgliedschaft][7] und ein iOS-Gerät (der iOS-Simulator unterstützt keine Pushvorgänge)
 * (Windows) Ein [Windows Store-Entwicklerkonto][8] und ein Windows 10-Gerät
 
 ## <a name="configure-hub"></a>Konfigurieren eines Notification Hubs
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-[Video mit den Schritten in diesem Abschnitt ansehen][9]
+[Sehen Sie sich ein Video mit den Schritten in diesem Abschnitt an][9].
 
 ## <a name="update-the-server-project"></a>Aktualisieren des Serverprojekts
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
 ## <a name="add-push-to-app"></a>Ändern Ihrer Cordova-App
-Stellen Sie sicher, dass Ihr Apache Cordova-App-Projekt zur Verarbeitung von Pushbenachrichtigungen bereit ist. Installieren Sie dazu das Cordova-Push-Plug-In sowie alle plattformspezifischen Pushdienste.
+Um sicherzustellen, dass Ihr Apache Cordova-App-Projekt zur Verarbeitung von Pushbenachrichtigungen bereit ist, installieren Sie das Cordova-Push-Plug-In sowie alle plattformspezifischen Pushdienste.
 
 #### <a name="update-the-cordova-version-in-your-project"></a>Aktualisieren Sie die Cordova-Version in Ihrem Projekt.
-Falls in Ihrem Projekt nicht mindestens die Apache Cordova-Version 6.1.1 verwendet wird, aktualisieren Sie das Clientprojekt. So aktualisieren Sie das Projekt:
+Falls Ihr Projekt eine Apache Cordova-Version vor Version 6.1.1 verwendet, aktualisieren Sie das Clientprojekt. Führen Sie die folgenden Schritte aus, um das Projekt zu aktualisieren: 
 
 * Klicken Sie mit der rechten Maustaste auf `config.xml`, um den Konfigurations-Designer zu öffnen.
-* Wählen Sie die Registerkarte „Plattformen“ aus.
-* Wählen Sie im Textfeld **Cordova CLI** die Option „6.1.1“ aus.
-* Wählen Sie **Erstellen** und dann **Projektmappe erstellen**, um das Projekt zu aktualisieren.
+* Wählen Sie die Registerkarte **Plattformen** aus.
+* Wählen Sie im Textfeld **Cordova CLI** die Option **6.1.1** aus. 
+* Zum Aktualisieren des Projekts wählen Sie nacheinander **Build** und **Projektmappe erstellen** aus.
 
 #### <a name="install-the-push-plugin"></a>Installieren des Push-Plug-Ins
-Apache Cordova-Anwendungen bieten keine native Verarbeitung von Geräte- und Netzwerkfunktionen.  Diese Funktionen werden über Plug-Ins bereitgestellt, die entweder über [npm][10] oder über GitHub veröffentlicht werden.  Das `phonegap-plugin-push` -Plug-In wird zur Verarbeitung von Netzwerk-Pushbenachrichtigungen verwendet.
+Apache Cordova-Anwendungen bieten keine native Verarbeitung von Geräte- und Netzwerkfunktionen.  Diese Funktionen werden über Plug-Ins bereitgestellt, die entweder über [npm][10] oder über GitHub veröffentlicht werden. Das `phonegap-plugin-push`-Plug-In verarbeitet Netzwerk-Pushbenachrichtigungen.
 
-Das Push-Plug-In lässt sich auf eine der folgenden Arten installieren:
+Sie können das Push-Plug-In auf eine der folgenden Arten installieren:
 
 **Über die Befehlszeile:**
 
@@ -73,35 +73,40 @@ Führen Sie den folgenden Befehl aus:
 
 **In Visual Studio:**
 
-1. Öffnen Sie im Projektmappen-Explorer die Datei `config.xml`, klicken Sie auf **Plug-Ins** > **Benutzerdefiniert**, wählen Sie **Git** als Installationsquelle aus, und geben Sie dann `https://github.com/phonegap/phonegap-plugin-push` als Quelle ein.
+1. Öffnen Sie im Projektmappen-Explorer die Datei `config.xml`. Wählen Sie anschließend **Plug-Ins** > **Benutzerdefiniert** aus. Wählen Sie dann **Git** als Installationsquelle aus. 
+    
+2. Geben Sie `https://github.com/phonegap/phonegap-plugin-push` als Quelle ein.
 
-   ![][img1]
+    ![Datei „config.xml“ im Projektmappen-Explorer öffnen][img1]
 
-2. Klicken Sie auf den Pfeil neben der Installationsquelle.
-3. Falls Sie bereits über eine numerische Projekt-ID für das Google Developer Console-Projekt verfügen, können Sie diese hier unter **SENDER_ID** hinzufügen. Geben Sie andernfalls einen Platzhalterwert (beispielsweise „777777“) ein.  Falls Sie Android nutzen möchten, können Sie diesen Wert später in der Datei „config.xml“ ändern.
-     Beachten Sie, dass ab Version 2.0.0 das SENDER_ID-Element aus der Installationszeit entfernt wurde und „google-services.json“ im Stammordner Ihres Projekts installiert werden muss.  [Hier](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md) finden Sie weitere Details
-4. Klicken Sie auf **Hinzufügen**.
+3. Klicken Sie auf den Pfeil neben der Installationsquelle.
+
+4. Falls Sie bereits über eine numerische Projekt-ID für das Google Developer Console-Projekt verfügen, können Sie diese hier unter **SENDER_ID** hinzufügen. Geben Sie andernfalls einen Platzhalterwert ein, z.B. „777777“. Falls Sie Android nutzen möchten, können Sie diesen Wert später in der Datei „config.xml“ aktualisieren.
+
+    >[!NOTE]
+    >Ab Version 2.0.0 muss die Datei „google-services.json“ im Stammordner Ihres Projekts installiert sein, damit die Sender-ID konfiguriert werden kann. Weitere Informationen finden Sie in der [Installationsdokumentation](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md).
+5. Wählen Sie **Hinzufügen**.
 
 Das Push-Plug-In ist jetzt installiert.
 
 #### <a name="install-the-device-plugin"></a>Installieren des Geräte-Plug-Ins
-Verwenden Sie das gleiche Verfahren wie beim Installieren des Push-Plug-Ins.  Fügen Sie das Geräte-Plug-In aus der Liste mit den Kern-Plug-Ins hinzu. (Klicken Sie auf **Plug-Ins** > **Kern**.) Sie benötigen dieses Plug-In zum Abrufen des Plattformnamens.
+Verwenden Sie das gleiche Verfahren wie beim Installieren des Push-Plug-Ins. Fügen Sie das Geräte-Plug-In aus der Liste der Kern-Plug-Ins hinzu. (Um es zu suchen, wählen Sie **Plug-Ins** > **Kern** aus.) Sie benötigen dieses Plug-In zum Abrufen des Plattformnamens.
 
-#### <a name="register-your-device-on-application-start-up"></a>Registrieren des Geräts beim Start der Anwendung
-Zu Beginn fügen wir etwas Code für Android ein. Die App kann später für die Ausführung unter iOS oder Windows 10 angepasst werden.
+#### <a name="register-your-device-when-the-application-starts"></a>Registrieren des Geräts beim Start der Anwendung 
+Zu Beginn fügen wir etwas Code für Android ein. Sie können die App später für die Ausführung unter iOS oder Windows 10 anpassen.
 
-1. Fügen Sie einen Aufruf von **registerForPushNotifications** während des Rückrufs für den Anmeldeprozess oder am Ende der **onDeviceReady**-Methode hinzu:
+1. Fügen Sie während des Rückrufs für den Anmeldeprozess einen Aufruf von **registerForPushNotifications** hinzu. Alternativ dazu können Sie den Aufruf auch am Ende der **onDeviceReady**-Methode hinzufügen:
 
-        // Login to the service.
+        // Log in to the service.
         client.login('google')
             .then(function () {
-                // Create a table reference
+                // Create a table reference.
                 todoItemTable = client.getTable('todoitem');
 
-                // Refresh the todoItems
+                // Refresh the todoItems.
                 refreshDisplay();
 
-                // Wire up the UI Event Handler for the Add Item
+                // Wire up the UI Event Handler for the Add Item.
                 $('#add-item').submit(addItemHandler);
                 $('#refresh').on('click', refreshDisplay);
 
@@ -110,11 +115,11 @@ Zu Beginn fügen wir etwas Code für Android ein. Die App kann später für die 
 
             }, handleError);
 
-    Dieses Beispiel zeigt den Aufruf von **RegisterForPushNotifications** nach erfolgreicher Authentifizierung.  Sie können `registerForPushNotifications()` so oft aufrufen wie erforderlich.
+    Dieses Beispiel zeigt den Aufruf von **RegisterForPushNotifications** nach erfolgreicher Authentifizierung. Sie können `registerForPushNotifications()` so oft aufrufen wie erforderlich.
 
 2. Fügen Sie die neue **registerForPushNotifications** -Methode wie folgt hinzu:
 
-        // Register for Push Notifications. Requires that phonegap-plugin-push be installed.
+        // Register for push notifications. Requires that phonegap-plugin-push be installed.
         var pushRegistration = null;
         function registerForPushNotifications() {
           pushRegistration = PushNotification.init({
@@ -162,7 +167,7 @@ Zu Beginn fügen wir etwas Code für Android ein. Die App kann später für die 
 Arbeiten Sie diesen Abschnitt durch, um Pushbenachrichtigungen für Android zu aktivieren.
 
 #### <a name="enable-gcm"></a>Aktivieren von Firebase Cloud Messaging
-Da dieses Tutorial ursprünglich für die Google Android-Plattform bestimmt war, müssen Sie Firebase Cloud Messaging aktivieren.
+Da Ihr Ziel zunächst die Google Android-Plattform ist, müssen Sie Firebase Cloud Messaging aktivieren.
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
@@ -170,13 +175,13 @@ Da dieses Tutorial ursprünglich für die Google Android-Plattform bestimmt war,
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 #### <a name="configure-your-cordova-app-for-android"></a>Konfigurieren der Cordova-App für Android
-Öffnen Sie in der Cordova-App die Datei „config.xml“, und ersetzen Sie `Your_Project_ID` durch die numerische Projekt-ID für Ihre App aus der [Google Developers Console][18].
+Öffnen Sie die Datei „config.xml“ in Ihrer Cordova-App. Ersetzen Sie dann `Your_Project_ID` durch die numerische Projekt-ID für Ihre App aus der [Google Developer Console][18].
 
         <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
             <variable name="SENDER_ID" value="Your_Project_ID" />
         </plugin>
 
-Öffnen Sie die Datei „index.js“, und aktualisieren Sie den Code, um die numerische Projekt-ID zu verwenden.
+Öffnen Sie „index.js“. Aktualisieren Sie dann den Code, sodass Ihre numerische Projekt-ID verwendet wird.
 
         pushRegistration = PushNotification.init({
             android: { senderID: 'Your_Project_ID' },
@@ -185,62 +190,62 @@ Da dieses Tutorial ursprünglich für die Google Android-Plattform bestimmt war,
         });
 
 #### <a name="configure-device"></a>Konfigurieren Ihres Android-Geräts für USB-Debugging
-Bevor Sie Ihre Anwendung auf Ihrem Android-Gerät bereitstellen können, müssen Sie das USB-Debugging aktivieren.  Führen Sie die folgenden Schritte auf Ihrem Android-Telefon aus:
+Bevor Sie Ihre Anwendung auf Ihrem Android-Gerät bereitstellen können, müssen Sie das USB-Debugging aktivieren. Führen Sie die folgenden Schritte auf Ihrem Android-Telefon aus:
 
-1. Navigieren Sie zu **Einstellungen** > **Geräteinformationen**, und tippen Sie dann mehrfach auf die **Buildnummer**, bis der Entwicklermodus aktiviert wird (ungefähr siebenmal).
-2. Wechseln Sie zurück zu **Einstellungen** > **Entwickleroptionen**, und aktivieren Sie dort **USB-Debugging**. Schließen Sie dann Ihr Android-Telefon mit einem USB-Kabel an den Entwicklungs-PC an.
+1. Wechseln Sie zu **Einstellungen** > **Telefoninfo**. Tippen Sie dann mehrfach auf die **Buildnummer**, bis der Entwicklermodus aktiviert wird (ungefähr siebenmal).
+2. Aktivieren Sie unter **Einstellungen** > **Entwickleroptionen** die Option **USB-Debugging**. Verbinden Sie dann Ihr Android-Telefon über ein USB-Kabel mit Ihrem Entwicklungs-PC.
 
-Wir haben diese Vorgehensweise mit einem Google Nexus 5X-Gerät unter Android 6.0 (Marshmallow) getestet.  Das Verfahren ist jedoch für alle modernen Android-Versionen gleich.
+Wir haben diese Vorgehensweise mit einem Google Nexus 5X-Gerät unter Android 6.0 (Marshmallow) getestet. Das Verfahren ist jedoch für alle modernen Android-Versionen gleich.
 
 #### <a name="install-google-play-services"></a>Installieren der Google Play-Dienste
 Das Push-Plug-In nutzt Android Google Play-Dienste für Pushbenachrichtigungen.
 
-1. Klicken Sie in Visual Studio auf **Tools** > **Android** > **Android SDK-Manager**, erweitern Sie den Ordner **Extras**, und aktivieren Sie die Kontrollkästchen, damit die folgenden SDKs installiert werden:
+1. Wählen Sie in Visual Studio die Optionen **Tools** > **Android** > **Android SDK-Manager** aus. Erweitern Sie dann den Ordner **Extras**. Aktivieren Sie die entsprechenden Kontrollkästchen, um sicherzustellen, dass jedes der folgenden SDKs installiert wird:
 
    * Android 2.3 oder höher
    * Google Repository Version 27 oder höher
    * Google Play Services 9.0.2 oder höher
 
-2. Klicken Sie auf **Pakete installieren**, und warten Sie, bis die Installation abgeschlossen ist.
+2. Klicken Sie auf **Pakete installieren**. Warten Sie, bis die Installation abgeschlossen ist.
 
 Die aktuellen erforderlichen Bibliotheken werden in der [phonegap-plugin-push installation documentation][19] (Dokumentation zur Pushinstallation des PhoneGap-Plug-Ins) aufgelistet.
 
 #### <a name="test-push-notifications-in-the-app-on-android"></a>Testen von Pushbenachrichtigungen in der App unter Android
-Sie können die Pushbenachrichtigungen jetzt testen, indem Sie die App ausführen und Elemente in die TodoItem-Tabelle einfügen. Zum Testen können Sie das gleiche Gerät oder ein zweites Gerät verwenden – vorausgesetzt, Sie nutzen das gleiche Back-End. Testen Sie Ihre Cordova-App auf der Android-Plattform mit einer der folgenden Methoden:
+Sie können die Pushbenachrichtigungen jetzt testen, indem Sie die App ausführen und Elemente in die TodoItem-Tabelle einfügen. Zum Testen können Sie das gleiche Gerät oder ein zweites Gerät verwenden, sofern Sie das gleiche Back-End nutzen. Testen Sie Ihre Cordova-App auf der Android-Plattform mit einer der folgenden Methoden:
 
-* **Auf einem physischen Gerät:** Schließen Sie Ihr Android-Gerät mit einem USB-Kabel an den Entwicklungscomputer an.  Wählen Sie anstelle von **Google Android Emulator** den Eintrag **Gerät** aus. Visual Studio stellt die Anwendung auf dem Gerät bereit und führt sie aus.  Anschließend können Sie mit der Anwendung auf dem Gerät interagieren.
+* *Auf einem physischen Gerät:* Schließen Sie Ihr Android-Gerät mit einem USB-Kabel an den Entwicklungscomputer an.  Wählen Sie anstelle von **Google Android Emulator** den Eintrag **Gerät** aus. Visual Studio stellt die Anwendung auf dem Gerät bereit und führt sie aus. Anschließend können Sie mit der Anwendung auf dem Gerät interagieren.
 
-  Verbessern Sie Ihre Entwicklungsumgebung.  Anwendungen für die Bildschirmübertragung (beispielsweise [Mobizen][20]) können Sie bei der Entwicklung einer Android-Anwendung unterstützen.  Mobizen projiziert Ihren Android-Bildschirm in einen Webbrowser auf Ihrem PC.
+  Anwendungen für die Bildschirmfreigabe (beispielsweise [Mobizen][20]) können Sie bei der Entwicklung von Android-Anwendungen unterstützen. Mobizen projiziert Ihren Android-Bildschirm in einen Webbrowser auf Ihrem PC.
 
-* **Mit einem Android-Emulator:** Bei Verwendung eines Emulators sind zusätzliche Konfigurationsschritte erforderlich.
+* *Mit einem Android-Emulator:* Bei Verwendung eines Emulators sind zusätzliche Konfigurationsschritte erforderlich.
 
     Stellen Sie sicher, dass die Bereitstellung auf einem virtuellen Gerät erfolgt, bei dem Google-APIs als Ziel festgelegt sind, wie beim AVD-Manager (Android Virtual Device) zu sehen.
 
-    ![](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
+    ![Android Virtual Device Manager](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
 
     Wenn Sie einen schnelleren x86-Emulator verwenden möchten, [installieren Sie den HAXM-Treiber][11], und konfigurieren Sie den Emulator so, dass er diesen Treiber verwendet.
 
-    Fügen Sie auf dem Android-Gerät ein Google-Konto hinzu, indem Sie auf **Apps** > **Einstellungen** > **Konto hinzufügen** klicken und anschließend die Anweisungen befolgen.
+    Fügen Sie auf dem Android-Gerät ein Google-Konto hinzu, indem Sie auf **Apps** > **Einstellungen** > **Konto hinzufügen** tippen. Folgen Sie dann den Anweisungen.
 
-    ![](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
+    ![Hinzufügen eines Google-Kontos zum Android-Gerät](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
     Führen Sie wie zuvor die todolist-App aus und fügen Sie ein neues todo-Element ein. Dieses Mal wird im Benachrichtigungsbereich ein Benachrichtigungssymbol angezeigt. Öffnen Sie die Benachrichtigungsschublade, um den vollständigen Text der Benachrichtigung anzuzeigen.
 
-    ![](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
+    ![Anzeigen einer Benachrichtigung](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
 
 ## <a name="optional-configure-and-run-on-ios"></a>(Optional) Konfigurieren und Ausführen unter iOS
 In diesem Abschnitt wird die Ausführung des Cordova-Projekts auf iOS-Geräten beschrieben. Wenn Sie nicht mit iOS-Geräten arbeiten, können Sie diesen Abschnitt überspringen.
 
 #### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Installieren und Ausführen des iOS-remotebuild-Agents auf einem Macintosh-Computer oder in einem Clouddienst
-Bevor Sie eine Cordova-App unter iOS mit Visual Studio ausführen können, müssen Sie im [iOS Setup Guide][12] (iOS-Einrichtungsleitfaden) die Schritte zum Installieren und Ausführen des remotebuild-Agents ausführen.
+Bevor Sie eine Cordova-App mithilfe von Visual Studio unter iOS ausführen können, müssen Sie im [iOS Setup Guide][12] (iOS-Einrichtungsleitfaden) die Schritte zum Installieren und Ausführen des Remotebuild-Agents ausführen.
 
-Vergewissern Sie sich, dass Sie die App für iOS erstellen können. Die Schritte im Einrichtungsleitfaden sind erforderlich, um die Erstellung für iOS in Visual Studio durchzuführen. Falls Sie nicht über einen Macintosh-Computer verfügen, können Sie für iOS den remotebuild-Agent unter einem Dienst wie MacInCloud nutzen. Weitere Informationen finden Sie unter [Build and simulate a Cordova iOS app in the cloud][21] (Erstellen und Simulieren einer Cordova-iOS-App in der Cloud).
+Vergewissern Sie sich, dass Sie die App für iOS erstellen können. Die Schritte im Einrichtungsleitfaden sind erforderlich, um die App für iOS in Visual Studio zu erstellen. Falls Sie nicht über einen Mac-Computer verfügen, können Sie den Remotebuild-Agent in einem Dienst wie z.B. MacInCloud nutzen, um Apps für iOS zu erstellen. Weitere Informationen finden Sie unter [Build and simulate a Cordova iOS app in the cloud][21] (Erstellen und Simulieren einer Cordova-iOS-App in der Cloud).
 
 > [!NOTE]
 > Zur Verwendung des Push-Plug-Ins unter iOS wird mindestens XCode 7 benötigt.
 
 #### <a name="find-the-id-to-use-as-your-app-id"></a>Suchen nach der ID zur Verwendung als App-ID
-Öffnen Sie vor dem Registrieren Ihrer App für Pushbenachrichtigungen die Datei „config.xml“ in Ihrer Cordova-App, suchen Sie im Widgetelement nach dem Attributwert `id` , und kopieren Sie ihn zur späteren Verwendung. Im folgenden XML-Code lautet die ID `io.cordova.myapp7777777`.
+Öffnen Sie vor dem Registrieren Ihrer App für Pushbenachrichtigungen die Datei „config.xml“ in Ihrer Cordova-App, suchen Sie im Widgetelement nach dem Attributwert `id`, und kopieren Sie diesen zur späteren Verwendung. Im folgenden XML-Code lautet die ID `io.cordova.myapp7777777`.
 
         <widget defaultlocale="en-US" id="io.cordova.myapp7777777"
           version="1.0.0" windows-packageVersion="1.1.0.0" xmlns="http://www.w3.org/ns/widgets"
@@ -257,32 +262,32 @@ Verwenden Sie diesen Bezeichner später beim Erstellen einer App-ID im Entwickle
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
 #### <a name="verify-that-your-app-id-matches-your-cordova-app"></a>Überprüfen, ob die App-ID mit der Cordova-App übereinstimmt
-Wenn die App-ID, die Sie unter Ihrem Apple-Entwicklerkonto erstellt haben, bereits mit der ID des Widget-Elements in der Datei „config.xml“ übereinstimmt, können Sie diesen Schritt überspringen. Gehen Sie wie folgt vor, wenn die IDs nicht übereinstimmen:
+Wenn die App-ID, die Sie in Ihrem Apple Developer-Konto erstellt haben, bereits mit der ID des Widgetelements in der Datei „config.xml“ übereinstimmt, können Sie diesen Schritt überspringen. Gehen Sie wie folgt vor, wenn die IDs nicht übereinstimmen:
 
 1. Löschen Sie den Ordner „platforms“ aus Ihrem Projekt.
 2. Löschen Sie den Ordner „plugins“ aus Ihrem Projekt.
 3. Löschen Sie den Ordner „node_modules“ aus Ihrem Projekt.
-4. Aktualisieren Sie das Attribut „id“ des Widget-Elements in der Datei „config.xml“, um die App-ID zu verwenden, die Sie im Apple-Entwicklerkonto erstellt haben.
+4. Aktualisieren Sie das Attribut „id“ des Widgetelements in der Datei „config.xml“, um die App-ID zu verwenden, die Sie im Apple Developer-Konto erstellt haben.
 5. Erstellen Sie das Projekt neu.
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>Testen von Pushbenachrichtigungen in der iOS-App
-1. Stellen Sie in Visual Studio sicher, dass **iOS** als Bereitstellungsziel ausgewählt ist, und wählen Sie dann die Option **Gerät** für die Ausführung auf Ihrem verbundenen iOS-Gerät.
+1. Stellen Sie in Visual Studio sicher, dass **iOS** als Bereitstellungsziel ausgewählt ist. Wählen Sie dann **Gerät** aus, um die Pushbenachrichtigungen auf Ihrem verbundenen iOS-Gerät auszuführen.
 
-    Die Ausführung ist auf einem iOS-Gerät möglich, das per iTunes mit dem PC verbunden ist. Der iOS-Simulator unterstützt keine Pushbenachrichtigungen.
+    Sie können die Pushbenachrichtigungen auf einem iOS-Gerät ausführen, das über iTunes mit Ihrem PC verbunden ist. Der iOS-Simulator unterstützt keine Pushbenachrichtigungen.
 
-2. Klicken Sie in Visual Studio auf die Schaltfläche **Ausführen**, oder drücken Sie **F5** , um das Projekt zu erstellen und die App auf einem iOS-Gerät zu starten. Klicken Sie dann auf **OK**, um Pushbenachrichtigungen zu akzeptieren.
+2. Klicken Sie in Visual Studio auf die Schaltfläche **Ausführen**, oder drücken Sie die Taste **F5**, um das Projekt zu erstellen und die App auf einem iOS-Gerät zu starten. Wählen Sie dann **OK** aus, um Pushbenachrichtigungen zu akzeptieren.
 
    > [!NOTE]
    > Bei der erstmaligen Ausführung fordert die App eine Bestätigung für Pushbenachrichtigungen an.
 
-3. Geben Sie in der App eine Aufgabe ein, und klicken Sie dann auf das Pluszeichen (+).
-4. Stellen Sie sicher, dass Sie eine Benachrichtigung erhalten haben, und klicken Sie dann auf OK, um diese zu schließen.
+3. Geben Sie in der App eine Aufgabe ein, und klicken Sie dann auf das Pluszeichen (**+**).
+4. Überprüfen Sie, ob eine Benachrichtigung empfangen wurde. Wählen Sie dann **OK**, um die Benachrichtigung zu verwerfen.
 
 ## <a name="optional-configure-and-run-on-windows"></a>(Optional) Konfigurieren und Ausführen unter Windows
-In diesem Abschnitt wird die Ausführung des Apache Cordova-App-Projekts auf Windows 10-Geräten beschrieben. (Das PhoneGap-Push-Plug-In wird unter Windows 10 unterstützt). Wenn Sie nicht mit Windows-Geräten arbeiten, können Sie diesen Abschnitt überspringen.
+Dieser Abschnitt beschreibt die Ausführung des Apache Cordova-App-Projekts auf Windows 10-Geräten (das PhoneGap-Push-Plug-In wird unter Windows 10 unterstützt). Wenn Sie nicht mit Windows-Geräten arbeiten, können Sie diesen Abschnitt überspringen.
 
 #### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>Registrieren der Windows-App für Pushbenachrichtigungen mit WNS
-Um die Store-Optionen in Visual Studio zu nutzen, wählen Sie in der Liste mit den Projektmappenplattformen ein Windows-Ziel aus, z.B. **Windows-x64** oder **Windows-x86** (meiden Sie **Windows-AnyCPU** für Pushbenachrichtigungen).
+Um die Store-Optionen in Visual Studio zu nutzen, wählen Sie in der Liste mit den Projektmappenplattformen ein Windows-Ziel aus, z.B. **Windows-x64** oder **Windows-x86**. (Meiden Sie **Windows-AnyCPU** für Pushbenachrichtigungen.)
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
@@ -292,9 +297,9 @@ Um die Store-Optionen in Visual Studio zu nutzen, wählen Sie in der Liste mit d
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
 #### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>Konfigurieren der Cordova-App für die Unterstützung von Windows-Pushbenachrichtigungen
-Öffnen Sie den Konfigurations-Designer (per Klick mit der rechten Maustaste auf die Datei „config.xml“ und Auswahl von **Designer anzeigen**), und wählen Sie die Registerkarte **Windows** und unter **Windows-Zielversion** dann **Windows 10** aus.
+Klicken Sie mit der rechten Maustaste auf **config.xml**, um den Konfigurations-Designer zu öffnen. Wählen Sie anschließend **Ansicht-Designer**. Klicken Sie dann auf die Registerkarte **Windows**, und wählen Sie dann unter **Windows-Zielversion** die Option**Windows 10** aus.
 
-Öffnen Sie die Datei „build.json“, um Pushbenachrichtigungen in Ihren Standardbuilds (Debugbuilds) zu unterstützen. Kopieren Sie die „Releasekonfiguration“ in Ihre Debugkonfiguration.
+Öffnen Sie die Datei „build.json“, um Pushbenachrichtigungen in Ihren Standardbuilds (Debugbuilds) zu unterstützen. Kopieren Sie dann die „Releasekonfiguration“ in Ihre Debugkonfiguration.
 
         "windows": {
             "release": {
@@ -303,7 +308,7 @@ Um die Store-Optionen in Visual Studio zu nutzen, wählen Sie in der Liste mit d
             }
         }
 
-Nach dem Update sollte „build.json“ folgenden Code enthalten:
+Nach dem Update sollte die Datei „build.json“ folgenden Code enthalten:
 
     "windows": {
         "release": {
@@ -316,22 +321,22 @@ Nach dem Update sollte „build.json“ folgenden Code enthalten:
             }
         }
 
-Erstellen Sie die App, und stellen Sie sicher, dass keine Fehler auftreten. Ihre Client-App sollte sich nun für die Benachrichtigungen vom Back-End für die mobile App registrieren. Wiederholen Sie die Schritte in diesem Abschnitt für alle Windows-Projekte Ihrer Projektmappe.
+Erstellen Sie die App, und stellen Sie sicher, dass keine Fehler auftreten. Ihre Client-App sollte sich nun für die Benachrichtigungen vom Mobile Apps-Back-End registrieren. Wiederholen Sie die Schritte in diesem Abschnitt für alle Windows-Projekte Ihrer Projektmappe.
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Testen von Pushbenachrichtigungen in Ihrer Windows-App
 Stellen Sie in Visual Studio sicher, dass eine Windows-Plattform als Bereitstellungsziel ausgewählt ist, z.B. **Windows-x64** oder **Windows-x86**. Wählen Sie zum Ausführen der App auf einem Windows 10-PC, auf dem Visual Studio gehostet wird, die Option **Lokaler Computer**.
 
-Klicken Sie auf die Schaltfläche Ausführen, um das Projekt zu erstellen und die App zu starten.
+1. Klicken Sie auf die Schaltfläche **Ausführen**, um das Projekt zu erstellen und die App zu starten.
 
-Geben Sie in der App einen Namen für ein neues TodoItem ein, und klicken Sie dann auf das Pluszeichen (+), um es hinzuzufügen.
+2. Geben Sie in der App einen Namen für ein neues TodoItem ein, und klicken Sie dann auf das Pluszeichen (**+**), um es hinzuzufügen.
 
 Überprüfen Sie, ob beim Hinzufügen des Elements eine Benachrichtigung empfangen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Pushbenachrichtigungen finden Sie unter [Notification Hubs][17].
-* Setzen Sie das Tutorial mit dem Schritt [Hinzufügen von Authentifizierung zu Ihrer Apache Cordova-App][14] fort, sofern Sie diesen Schritt nicht bereits ausgeführt haben.
+* Setzen Sie das Tutorial mit dem Schritt [Hinzufügen von Authentifizierung][14] zu Ihrer Apache Cordova-App fort, sofern Sie diesen Schritt nicht bereits ausgeführt haben.
 
-Erfahren Sie, wie Sie die SDKs nutzen,
+Erfahren Sie, wie Sie die folgenden SDKs verwenden:
 
 * [Apache Cordova SDK][15]
 * [ASP.NET Server SDK][1]

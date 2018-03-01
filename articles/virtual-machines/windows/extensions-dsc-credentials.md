@@ -1,6 +1,6 @@
 ---
-title: "Übergeben von Anmeldeinformationen an Azure mithilfe von DSC | Microsoft Docs"
-description: "Überblick über das sichere Übergeben von Anmeldeinformationen an virtuelle Azure-Computer mithilfe von PowerShell DSC"
+title: "Übergeben von Anmeldeinformationen an Azure mithilfe von Desired State Configuration | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Anmeldeinformationen an virtuelle Azure-Computer mithilfe von PowerShell Desired State Configuration (DSC) sicher übergeben."
 services: virtual-machines-windows
 documentationcenter: 
 author: zjalexander
@@ -16,26 +16,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: zachal,migreene
-ms.openlocfilehash: 140ca3cc9b72afac720e5bcf1d620ac9b1b72132
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a0a565c0bb7e17315c7b0475f3213b620a3e2d6c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="passing-credentials-to-the-azure-dsceextension-handler"></a>Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungshandler
+# <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungshandler
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-In diesem Artikel wird die Erweiterung der Konfiguration für den gewünschten Zustand (Desired State Configuration; DSC) für Azure behandelt.
-Einen Überblick über den DSC-Erweiterungshandler finden Sie unter [Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+In diesem Artikel wird die Desired State Configuration-Erweiterung (DSC) für Azure behandelt. Eine Übersicht über den DSC-Erweiterungshandler finden Sie unter [Einführung in den Handler der Azure Desired State Configuration-Erweiterung](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="passing-in-credentials"></a>Übergeben von Anmeldeinformationen
+## <a name="pass-in-credentials"></a>Übergeben von Anmeldeinformationen
 
-Möglicherweise müssen Sie als Teil des Konfigurationsvorganges Benutzerkonten einrichten, auf Dienste zugreifen oder ein Programm im Benutzerkontext installieren. Um diese Aktionen durchführen zu können, müssen Sie Anmeldeinformationen bereitstellen.
+Möglicherweise müssen Sie im Rahmen des Konfigurationsvorgangs Benutzerkonten einrichten, auf Dienste zugreifen oder ein Programm im Benutzerkontext installieren. Um diese Aktionen durchführen zu können, müssen Sie Anmeldeinformationen bereitstellen.
 
-DSC lässt parametrisierte Konfigurationen zu, in denen Anmeldeinformationen in die Konfiguration übergeben und sicher in MOF-Dateien gespeichert werden.
-Der Azure-Erweiterungs-Handler vereinfacht die Verwaltung von Anmeldeinformationen, indem er die automatische Verwaltung von Zertifikaten bietet.
+Mit DSC können Sie parametrisierte Konfigurationen einrichten. In einer parametrisierten Konfiguration werden Anmeldeinformationen an die Konfiguration übergeben und sicher in MOF-Dateien gespeichert. Der Azure-Erweiterungshandler vereinfacht die Verwaltung von Anmeldeinformationen, indem er eine automatische Verwaltung von Zertifikaten bereitstellt.
 
-Ziehen Sie das folgende DSC-Konfigurationsskript, das ein lokales Benutzerkonto mit dem angegebenen Kennwort erstellt, in Betracht:
+Das folgende DSC-Konfigurationsskript erstellt ein lokales Benutzerkonto mit dem angegebenen Kennwort:
 
 ```powershell
 configuration Main
@@ -61,15 +59,13 @@ configuration Main
 }
 ```
 
-Es ist wichtig, dass *node localhost* Teil der Konfiguration ist.
-Ohne diese Anweisung funktionieren die folgenden Schritte nicht, da der Erweiterungshandler insbesondere nach der „node localhost“-Anweisung sucht.
-Es ist ebenfalls wichtig, dass die Typumwandlung *[PsCredential]*enthalten ist, da dieser spezifische Typ die Verschlüsselung der Anmeldeinformationen durch die Erweiterung auslöst.
+Es ist wichtig, **node localhost** in die Konfiguration einzuschließen. Der Erweiterungshandler sucht insbesondere nach der **node localhost**-Anweisung. Wenn diese Anweisung nicht vorhanden ist, funktionieren die folgenden Schritte nicht. Außerdem muss die Typumwandlung **[PsCredential]** eingeschlossen werden. Dieser spezifische Typ löst die Verschlüsselung der Anmeldeinformationen durch die Erweiterung aus.
 
-Veröffentlichen dieses Skripts im Blobspeicher:
+So veröffentlichen Sie dieses Skript in Azure Blob Storage
 
 `Publish-AzureVMDscConfiguration -ConfigurationPath .\user_configuration.ps1`
 
-Einrichten der Azure DSC-Erweiterung und Bereitstellen der Anmeldeinformationen:
+So richten Sie die Azure DSC-Erweiterung ein und stellen die Anmeldeinformationen bereit
 
 ```powershell
 $configurationName = "Main"
@@ -83,21 +79,15 @@ $vm = Set-AzureVMDSCExtension -VM $vm -ConfigurationArchive $configurationArchiv
 $vm | Update-AzureVM
 ```
 
-## <a name="how-credentials-are-secured"></a>Schützen der Anmeldeinformationen
+## <a name="how-a-credential-is-secured"></a>Schützen von Anmeldeinformationen
 
-Auf das Ausführen dieses Codes folgt die Aufforderung, Anmeldeinformationen anzugeben.
-Sobald diese angegeben werden, werden sie kurzfristig im Arbeitsspeicher gespeichert.
-Bei der Veröffentlichung mit dem `Set-AzureVmDscExtension`-Cmdlet werden sie über HTTPS an die VM übertragen, wobei Azure sie verschlüsselt auf den Datenträger speichert. Dafür wird das lokale VM-Zertifikat verwendet.
-Sie werden dann für kurze Zeit im Arbeitsspeicher entschlüsselt und wieder verschlüsselt, um an DSC übergeben zu werden.
+Auf das Ausführen dieses Codes folgt die Aufforderung, Anmeldeinformationen anzugeben. Nachdem die Anmeldeinformationen bereitgestellt sind, werden sie kurz im Arbeitsspeicher gespeichert. Beim Veröffentlichen der Anmeldeinformationen mithilfe des Cmdlets **Set-AzureVmDscExtension** werden sie über HTTPS an den virtuellen Computer übertragen. Auf dem virtuellen Computer speichert Azure die Anmeldeinformationen verschlüsselt über das lokale VM-Zertifikat auf dem Datenträger. Die Anmeldeinformationen werden dann für kurze Zeit im Arbeitsspeicher entschlüsselt und wieder verschlüsselt, um an DSC übergeben zu werden.
 
-Dieses Verhalten unterscheidet sich von der [Verwendung von sicheren Konfigurationen ohne den Erweiterungs-Handler](https://msdn.microsoft.com/powershell/dsc/securemof). Die Azure-Umgebung bietet eine Möglichkeit zum sicheren Übertragen von Konfigurationsdaten über Zertifikate. Bei der Verwendung des DSC-Erweiterungs-Handlers besteht keine Notwendigkeit, $CertificatePath oder einen $CertificateID/$Thumbprint-Eintrag in ConfigurationData bereitzustellen.
+Dieser Vorgang unterscheidet sich von der [Verwendung von sicheren Konfigurationen ohne den Erweiterungshandler](https://msdn.microsoft.com/powershell/dsc/securemof). Die Azure-Umgebung bietet eine Möglichkeit zum sicheren Übertragen von Konfigurationsdaten über Zertifikate. Mit dem DSC-Erweiterungshandler besteht keine Notwendigkeit, **$CertificatePath** oder einen Eintrag **$CertificateID**/ **$Thumbprint** in **ConfigurationData** anzugeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure DSC-Erweiterungs-Handler finden Sie unter [Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-Sehen Sie sich die [Azure Resource Manager-Vorlage für die DSC-Erweiterung](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)an.
-
-Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](https://msdn.microsoft.com/powershell/dsc/overview).
-
-Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, finden Sie, indem Sie den [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) nach weiteren DSC-Ressourcen durchsuchen.
+* Lesen Sie die [Einführung in den Azure DSC-Erweiterungshandler](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Sehen Sie sich die [Azure Resource Manager-Vorlage für die DSC-Erweiterung](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)an.
+* Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](https://msdn.microsoft.com/powershell/dsc/overview).
+* Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, sowie weitere DSC-Ressourcen finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).

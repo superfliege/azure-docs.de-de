@@ -14,14 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 04f76d15f12b52d7b47011010a5ce20cc45174ee
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 5bb2ee2b9b838cc9feca60eca6b2c721ca58ed45
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>Serialisieren von Daten in Hadoop mit der Microsoft Avro-Bibliothek
 
@@ -103,7 +103,7 @@ Das Beispiel mit den ersten vier Beispielen kann von der Website mit <a href="ht
 
 Das fünfte Beispiel zeigt die Verwendung eines benutzerdefinierten Komprimierungscodecs für Avro-Objektcontainerdateien. Ein Beispiel mit dem Code für dieses Beispiel kann von der Website mit <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-67159111" target="_blank">Azure-Codebeispielen</a> heruntergeladen werden.
 
-Das sechste Beispiel zeigt, wie mithilfe der Avro-Serialisierung Daten in Azure-Blobspeicher hochgeladen und anschließend mithilfe von Hive in einem HDInsight (Hadoop)-Cluster analysiert werden. Es kann von der Website mit <a href="https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3" target="_blank">Azure-Codebeispielen</a> heruntergeladen werden.
+Das sechste Beispiel zeigt, wie mithilfe der Avro-Serialisierung Daten in Azure Blob Storage hochgeladen und anschließend mithilfe von Hive in einem HDInsight (Hadoop)-Cluster analysiert werden. Es kann von der Website mit <a href="https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3" target="_blank">Azure-Codebeispielen</a> heruntergeladen werden.
 
 Nachfolgend finden Sie die Links zu den sechs in diesem Thema behandelten Beispielen:
 
@@ -1366,7 +1366,7 @@ Das sechste Beispiel veranschaulicht verschiedene Programmierungstechniken im Zu
 Das Beispiel führt die folgenden Aufgaben aus:
 
 * Herstellen einer Verbindung mit einem vorhandenen HDInsight-Dienstcluster.
-* Serialisieren mehrerer CSV-Dateien und Hochladen des Ergebnisses in Azure-Blobspeicher. (Die CSV-Dateien werden zusammen mit dem Beispiel verteilt und stellen AMEX Stock-Verlaufsdaten dar, die von [Infochimps](http://www.infochimps.com/) für den Zeitraum 1970-2010 verteilt wurden. Das Beispiel liest CSV-Dateidaten, konvertiert die Datensätze in Instanzen der **Stock** -Klasse und serialisiert sie anschließend mithilfe von Reflexion. Die Definition des Typs "Stock" wird anhand eines JSON-Schemas mithilfe des Hilfsprogramms für die Codegenerierung in der Microsoft Avro-Bibliothek erstellt.
+* Serialisieren mehrerer CSV-Dateien und Hochladen des Ergebnisses in Azure Blob Storage. (Die CSV-Dateien werden zusammen mit dem Beispiel verteilt und stellen AMEX Stock-Verlaufsdaten dar, die von [Infochimps](http://www.infochimps.com/) für den Zeitraum 1970-2010 verteilt wurden. Das Beispiel liest CSV-Dateidaten, konvertiert die Datensätze in Instanzen der **Stock** -Klasse und serialisiert sie anschließend mithilfe von Reflexion. Die Definition des Typs "Stock" wird anhand eines JSON-Schemas mithilfe des Hilfsprogramms für die Codegenerierung in der Microsoft Avro-Bibliothek erstellt.
 * Erstellen einer neuen externen Tabelle mit dem Namen **Stocks** in Hive, die anschließend mit den im vorherigen Schritt hochgeladenen Daten verknüpft wird.
 * Ausführen einer Abfrage mithilfe von Hive der Tabelle **Stocks** .
 

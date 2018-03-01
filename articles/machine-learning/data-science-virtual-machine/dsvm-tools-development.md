@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: b6a333d075e0391adca4f37bbff8918391a22fde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6aef0fbe44e19b515c2bc10c0e7c38fabac10dae
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Entwicklungstools auf der Data Science-VM
 
@@ -52,6 +52,15 @@ Die Data Science-VM (DSVM) bündelt mehrere beliebte Tools und IDEs zu einer pro
 | Typische Verwendung      |  R-Entwicklung     |
 | Verwendung/Ausführung      | Desktopverknüpfung (`C:\Program Files\RStudio\bin\rstudio.exe`) unter Windows, Desktopverknüpfung (`/usr/bin/rstudio`) unter Linux      |
 | Verwandte Tools auf der DSVM      |   Visual Studio 2017, Visual Studio Code, Juno      |
+
+## <a name="rstudio--server"></a>RStudio Server 
+|    |           |
+| ------------- | ------------- |
+| Was ist das?   | Webbasierte IDE für R    |
+| Unterstützte DSVM-Versionen      | Linux      |
+| Typische Verwendung      |  R-Entwicklung     |
+| Verwendung/Ausführung      | Aktivieren Sie den Dienst mit _systemctl enable rstudio-server_, und starten Sie dann den Dienst mit _systemctl start rstudio-server_. Anschließend können Sie sich bei RStudio Server unter http://your-vm-ip:8787 anmelden.       |
+| Verwandte Tools auf der DSVM      |   Visual Studio 2017, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
 |    |           |

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: sngun
-ms.openlocfilehash: cc581142ca2c75bbee80f9d980c4984b4863a6cf
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: a3b61b0eeef9ffc97b0cc06a8de44859e4d6db85
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit
 
@@ -61,7 +61,7 @@ Um einen Datenstrom zu analysieren, *erfassen* Sie diesen in Azure. Eine typisch
 ### <a name="create-a-namespace-and-event-hub"></a>Erstellen eines Namespace und eines Event Hubs
 In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen diesem Namespace dann einen Event Hub hinzu. Event Hub-Namespaces werden verwendet, um verwandte Ereignisbusinstanzen logisch zu gruppieren. 
 
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Neu** > **Internet der Dinge** > **Event Hub**. 
+1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Ressource erstellen** > **Internet der Dinge** > **Event Hub**. 
 
 2. Geben Sie im Bereich **Namespace erstellen** einen Namen für den Namespace ein (z.B. `<yourname>-eh-ns-demo`). Sie können einen beliebigen Namen für den Namespace verwenden. Der Name muss lediglich für eine URL gültig und innerhalb von Azure eindeutig sein. 
     
@@ -165,7 +165,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
 
 ### <a name="create-the-job"></a>Erstellen des Auftrags 
 
-1. Klicken Sie im Azure-Portal auf **Neu** > **Internet der Dinge** > **Stream Analytics-Auftrag**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Internet der Dinge** > **Stream Analytics-Auftrag**.
 
 2. Vergeben Sie einen Namen für den Auftrag `sa_frauddetection_job_demo`, und geben Sie ein Abonnement, eine Ressourcengruppe und einen Speicherort an.
 

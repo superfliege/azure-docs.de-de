@@ -10,15 +10,15 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: ff0159facd693b83230c731eb7e76f0a9495fdf2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: dd603f07c20811543e07b21683b065bc873786a5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-source-wizard"></a>Datenquellen-Assistent #
 
-Der Datenquellen-Assistent bietet eine schnelle und einfache Möglichkeit, um ein Dataset ohne Code in Azure ML Workbench einzubinden. In diesem Tool können Sie auch eine Beispielstrategie für das Dataset auswählen. 
+Der Datenquellen-Assistent bietet eine schnelle und einfache Möglichkeit, um ein Dataset ohne Code in Azure ML Workbench einzubinden. In diesem Tool können Sie auch eine Beispielstrategie für das Dataset und Datentypen für die Spalten auswählen. 
 
 ## <a name="step-1-trigger-the-data-source-wizard"></a>Schritt 1: Auslösen des Datenquellen-Assistenten ## 
 
@@ -51,6 +51,8 @@ Der Datenquellen-Assistent kann automatisch den Dateityp, Trennzeichen und die C
 
 Der Datenquellen-Assistent erkennt automatisch die Datentypen der Spalten des Datasets. Wenn die Erkennung fehlerhaft sein sollte oder Sie einen anderen Datentyp erzwingen möchten, können Sie den Datentyp manuell ändern. Die Spalte **BEISPIELAUSGABEDATEN** zeigt Beispiele dafür an, wie die Daten aussehen.
 
+Für Spalten, für die bei der Datenvorbereitung ermittelt wird, dass sie Datumsangaben enthalten, werden Sie möglicherweise aufgefordert, die Reihenfolge von Monat und Tag im Datumsformat auszuwählen. Beispielsweise könnte 1/2/2013 den 2. Januar (wählen Sie hierzu *Tag-Monat* aus ) oder den 1. Februar (wählen Sie *Monat-Tag* aus) darstellen.
+
 ![Schritt 6](media/data-source-wizard/step4.png)
 
 ## <a name="step-6-choose-sampling-strategy-for-data"></a>Schritt 6: Auswählen einer Strategie für die Stichprobenentnahme von Daten ##
@@ -70,7 +72,7 @@ Einige Beispielstrategien werden je nach Datenherkunft möglicherweise nicht unt
 
 ## <a name="step-7-path-column-handling"></a>Schritt 7: Verarbeitung der Pfadspalte ##
 
-Wenn der Dateipfad wichtige Daten enthält, können Sie festlegen, dass dieser als erste Spalte im Dataset eingefügt werden soll. Dies ist hilfreich, wenn Sie mehrere Dateien einbinden. Alternativ können Sie festlegen, dass diese nicht eingefügt werden sollen.
+Wenn der Dateipfad wichtige Daten enthält, können Sie festlegen, dass dieser als erste Spalte im Dataset eingefügt werden soll. Diese Option ist hilfreich, wenn Sie mehrere Dateien einbinden. Alternativ können Sie festlegen, dass diese nicht eingefügt werden sollen.
 
 ![Schritt 7](media/data-source-wizard/step6.png)
 

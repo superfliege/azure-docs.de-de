@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
 ms.author: vikdesai
-ms.openlocfilehash: 8f75bab7fc795a59dabfedca5a4889622f66b73a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f3f5f974630c4bf1c68599e26612ed729b55bcfc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-reserved-virtual-machine-instances"></a>Verwalten von reservierten Azure-VM-Instanzen
 
@@ -28,7 +28,7 @@ Nachdem Sie eine reservierte Azure-VM-Instanz erworben haben, können Sie die Re
 
 So aktualisieren Sie den Bereich einer Reservierung: 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf **Weitere Dienste** > **Reservierungen**.
+2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Wählen Sie die Reservierung aus.
 4. Wählen Sie **Einstellungen** > **Konfiguration** aus.
 5. Ändern Sie den Bereich. Wenn Sie den Bereich aus „Freigegeben“ in „Einzeln“ ändern, können Sie nur Abonnements auswählen, deren Besitzer Sie sind. Es können nur Abonnements ausgewählt werden, die sich im gleichen Abrechnungskontext wie die Reservierung befinden. Der Abrechnungskontext wird durch das Abonnement bestimmt, das Sie beim Kauf der Reservierung ausgewählt haben. Der Bereich gilt nur für nutzungsbasierte Angebote für MS-AZR-0003P-Abonnements und Enterprise-Angebote für MS-AZR-0017P-Abonnements. Bei Enterprise Agreements sind dev/test-Abonnements nicht berechtigt, den Reservierungsrabatt zu erhalten.
@@ -69,7 +69,7 @@ Sie können den Zugriff auf Reservierungen unabhängig von den Abonnements verwa
  
 So delegieren Sie die Zugriffsverwaltung für eine Reservierung: 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2.  Wählen Sie **Weitere Dienste** > **Reservierung** aus, um Reservierungen aufzulisten, auf die Sie zugreifen können.
+2.  Wählen Sie **Alle Dienste** > **Reservierungen** aus, um Reservierungen aufzulisten, auf die Sie Zugriff haben.
 3.  Wählen Sie die Reservierung aus, für die Sie den Zugriff an andere Benutzer delegieren möchten.
 4.  Wählen Sie im Menü die Option **Zugriffssteuerung (IAM)** aus.
 5.  Wählen Sie **Hinzufügen** > **Rolle** > **Besitzer** (oder eine andere Rolle, wenn Sie eingeschränkten Zugriff erteilen möchten) aus. 

@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/27/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 1e9d5ca475424c99b30c62252f4b0abc9bd09078
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 0f3e8f00b1cee1141277f4dee21fabf993e69ba0
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="connect-to-azure-hdinsight-and-run-hive-queries-using-data-lake-tools-for-visual-studio"></a>Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Hive-Abfragen mithilfe von Data Lake Tools für Visual Studio
 
@@ -220,7 +220,7 @@ Das Ausführen von Abfragen über HiveServer2 hat zwar viele Leistungsvorteile, 
 | Fenster schließen |Die Ausführung über HiveServer2 ist eine „synchrone“ Methode, sodass das Fenster geöffnet bleiben muss. Wenn Sie die Fenster schließen, wird die Ausführung der Abfrage abgebrochen. |Senden über WebHCat ist eine "asynchrone" Methode, sodass Sie die Abfrage über WebHCat senden und Visual Studio schließen können. Sie können jederzeit zurückkehren und die Ergebnisse anzeigen. |
 
 ### <a name="tez-hive-job-performance-graph"></a>Leistungsdiagramm für Tez Hive-Auftrag
-In den Data Lake-Tools wird das Anzeigen von Leistungsdiagrammen für die Hive-Aufträge unterstützt, die vom Tez-Ausführungsmodul ausgeführt werden. Informationen zum Aktivieren von Tez finden Sie unter [Verwenden von Hive in HDInsight](hdinsight-use-hive.md). Nachdem Sie in Visual Studio einen Hive-Job gesendet haben, wird das Diagramm in Visual Studio angezeigt, wenn der Auftrag abgeschlossen ist.  Sie müssen unter Umständen auf die Schaltfläche **Aktualisieren** klicken, um den aktuellen Auftragsstatus zu erhalten.
+In den Data Lake-Tools wird das Anzeigen von Leistungsdiagrammen für die Hive-Aufträge unterstützt, die von der Tez-Ausführungs-Engine ausgeführt werden. Informationen zum Aktivieren von Tez finden Sie unter [Verwenden von Hive in HDInsight](hdinsight-use-hive.md). Nachdem Sie in Visual Studio einen Hive-Job gesendet haben, wird das Diagramm in Visual Studio angezeigt, wenn der Auftrag abgeschlossen ist.  Sie müssen unter Umständen auf die Schaltfläche **Aktualisieren** klicken, um den aktuellen Auftragsstatus zu erhalten.
 
 > [!NOTE]
 > Dieses Feature ist nur für höhere HDInsight-Clusterversionen als 3.2.4.593 verfügbar und funktioniert nur für abgeschlossene Aufträge, wenn Sie Ihren Auftrag über WebHCat übermittelt haben. (Dieses Diagramm wird angezeigt, wenn Sie Ihre Abfrage über HiveServer2 ausführen.) 
@@ -254,7 +254,7 @@ Data Lake-Tools für Visual Studio unterstützen das Erstellen und Senden von Pi
 * Das von Visual Studio erstellte HQL-Skript wird je nach der lokalen Regionseinstellung des Benutzer codiert. Es wird unter Umständen nicht richtig ausgeführt, wenn der Benutzer das Skript als Binärdaten in einen Cluster hochlädt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Data Lake (HDInsight)-Toolpakets eine Verbindung mit HDInsight-Clustern herstellen und Hive-Abfragen ausführen. Weitere Informationen finden Sie unter:
+In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Data Lake (HDInsight)-Toolpakets eine Verbindung mit HDInsight-Clustern herstellen und Hive-Abfragen ausführen. Weitere Informationen finden Sie unter 
 
 * [Verwenden von Hadoop Hive in HDInsight](hdinsight-use-hive.md)
 * [Erste Schritte mit Hadoop in HDInsight](apache-hadoop-linux-tutorial-get-started.md)

@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: 0129a48e43e90001785a5977d4b0d1fd9fa9fd7d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ab0cd45334581f6f5c6dd6e86939e018df5de074
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurieren von Routenfiltern für Microsoft-Peering: Azure-Portal
 > [!div class="op_single_selector"]
-> * [Azure-Portal](how-to-routefilter-portal.md)
+> * [Node.js-Funktion „HTTPTrigger“](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
-> * [Azure-Befehlszeilenschnittstelle](how-to-routefilter-cli.md)
+> * [Azure-CLI](how-to-routefilter-cli.md)
 > 
 
 Routenfilter stellen eine Möglichkeit dar, um eine Teilmenge von unterstützten Diensten durch das Microsoft-Peering zu nutzen. Die in diesem Artikel erläuterten Schritte unterstützen Sie bei der Konfiguration und Verwaltung von Routenfiltern für ExpressRoute-Verbindungen.
@@ -92,7 +92,7 @@ Erstellen Sie eine Liste von BGP-Communitywerten, die Sie im Routenfilter verwen
 Ein Routenfilter kann nur eine Regel aufweisen, die zudem vom Typ „Zulassen“ sein muss. Diese Regel kann eine Liste von BGP-Communitywerten enthalten, die ihr zugeordnet sind.
 
 ### <a name="1-create-a-route-filter"></a>1. Erstellen eines Routenfilters
-Sie können einen Routenfilter erstellen, indem Sie die Option zum Erstellen einer neuen Ressource auswählen. Klicken Sie auf **Neu** > **Netzwerk** > **Routenfilter**, wie in der Abbildung unten gezeigt:
+Sie können einen Routenfilter erstellen, indem Sie die Option zum Erstellen einer neuen Ressource auswählen. Klicken Sie auf **Ressource erstellen** > **Netzwerk** > **Routenfilter**, wie in der Abbildung unten gezeigt:
 
 ![Erstellen eines Routenfilters](.\media\how-to-routefilter-portal\CreateRouteFilter1.png)
 

@@ -16,18 +16,18 @@ ms.date: 08/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 8f1013419f7e54f5760636f169635b84c8bd118e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c569bde2a480ff191dd3079f3ca93a7400cadb3e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Verwalten der Einstellungen für eine Gruppe in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie die Einstellungen für eine Gruppe in Azure Active Directory (Azure AD) ändern.
 
 ## <a name="how-do-i-find-and-change-the-settings"></a>Wie finde und ändere ich die Einstellungen?
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators für das Verzeichnis an.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
+2. Wählen Sie **Alle Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 
    ![Öffnen des Blatts „Benutzer und Gruppen“](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus.

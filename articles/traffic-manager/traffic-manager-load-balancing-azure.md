@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-ms.openlocfilehash: ae9bd30b76786f94f0d836a39137da696fdb94a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86867a9d6d2c43e6505b1a06672546a017172bfe
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Verwenden von Lastenausgleichsdiensten in Azure
 
@@ -63,8 +63,8 @@ Das folgende Diagramm zeigt die Architektur dieses Szenarios:
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>Schritt 1: Erstellen eines Traffic Manager-Profils
 
-1. Klicken Sie im Azure-Portal auf **Neu**, und suchen Sie im Marketplace nach „Traffic Manager-Profil“.
-2. Geben Sie auf dem Blatt **Traffic Manager-Profil erstellen** die folgenden grundlegende Informationen ein:
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil** > **Erstellen**.
+2. Geben Sie die folgenden grundlegenden Informationen ein:
 
   * **Name**: Geben Sie Ihren Traffic Manager-Profilen einen DNS-Präfixnamen.
   * **Routingmethode:** Wählen Sie die Routingmethode für Datenverkehr in der Richtlinie aus. Weitere Informationen zu den Methoden finden Sie unter [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md).
@@ -78,7 +78,7 @@ Das folgende Diagramm zeigt die Architektur dieses Szenarios:
 
 ### <a name="step-2-create-the-application-gateways"></a>Schritt 2: Erstellen des Anwendungsgateways
 
-1. Klicken Sie im Azure-Portal auf **Neu** > **Netzwerk** > **Application Gateway**.
+1. Klicken Sie im Azure-Portal im linken Bereich auf **Ressource erstellen** > **Netzwerk** > **Application Gateway**.
 2. Geben Sie die folgenden allgemeinen Informationen zum Anwendungsgateway an:
 
   * **Name**: Der Name des Anwendungsgateways.
@@ -100,15 +100,15 @@ Ein Anwendungsgateway, das mit einer pfadbasierten Regel konfiguriert wird, ben�
 
 1. Wechseln Sie von Ihrer Ressourcengruppe zur Instanz des Anwendungsgateways, das Sie im vorherigen Abschnitt erstellt haben.
 2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** aus, und klicken Sie dann auf **Hinzufügen**, um die VMs hinzuzufügen, die Sie den Back-End-Pools der Webebene zuordnen möchten.
-3. Geben Sie auf dem Blatt **Back-End-Pool hinzufügen** den Namen des Back-End-Pools und alle IP-Adressen der Computer ein, die sich im Pool befinden. In diesem Szenario stellen wir eine Verbindung mit zwei Back-End-Serverpools mit virtuellen Computern her.
+3. Geben Sie den Namen des Back-End-Pools und alle IP-Adressen der Computer im Pool ein. In diesem Szenario stellen wir eine Verbindung mit zwei Back-End-Serverpools mit virtuellen Computern her.
 
-  ![Application Gateway-Blatt „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+  ![Application Gateway: „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
 4. Wählen Sie anschließend in den **Einstellungen** des Anwendungsgateways **Regeln** aus, und klicken Sie dann auf die Schaltfläche **Pfadbasiert**, um eine Regel hinzuzufügen.
 
   ![Application Gateway-Regeln: Schaltfläche „Pfadbasiert“](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
-5. Geben Sie auf dem Blatt **Pfadbasierte Regel hinzufügen** die folgenden Informationen an, um die Regel zu konfigurieren.
+5. Geben Sie die folgenden Informationen an, um die Regel zu konfigurieren.
 
    Grundlegende Einstellungen:
 
@@ -138,13 +138,13 @@ In diesem Szenario wird Traffic Manager mit Anwendungsgateways verbunden (die en
 
   ![Traffic Manager-Endpunkte: Schaltfläche „Hinzufügen“](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
-3. Erstellen Sie auf dem Blatt **Endpunkt hinzufügen** einen Endpunkt durch Eingabe der folgenden Informationen:
+3. Erstellen Sie einen Endpunkt durch Eingabe der folgenden Informationen:
 
   * **Typ**: Wählen Sie den Typ des Endpunkts für den Lastenausgleich aus. Wählen Sie in diesem Szenario **Azure-Endpunkt**, da wir diesen mit den Anwendungsgatewayinstanzen verbinden, die wir zuvor konfiguriert haben.
   * **Name**: Geben Sie den Namen des Endpunkts ein.
   * **Zielressourcentyp**: Wählen Sie **Öffentliche IP-Adresse** aus. Wählen Sie unter **Zielressource** die öffentliche IP des zuvor konfigurierten Anwendungsgateways aus.
 
-   ![Traffic Manager-Blatt „Endpunkt hinzufügen“](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
+   ![Traffic Manager: „Endpunkt hinzufügen“](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
 4. Sie können nun Ihre Einrichtung überprüfen, indem Sie mit dem DNS Ihres Traffic Manager-Profils darauf zugreifen (in diesem Beispiel: TrafficManagerScenario.trafficmanager.net). Sie können Anforderungen erneut senden, VMs und Webserver hoch- oder herunterfahren, die in verschiedenen Regionen erstellt wurden, und die Einstellungen für Ihr Traffic Manager-Profil ändern, um Ihre Einrichtung zu testen.
 
@@ -156,8 +156,8 @@ Wenn Ihr Cluster mit hoher Verfügbarkeit SQL Server AlwaysOn verwendet, finden 
 
 Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden Sie unter [Erstellen eines internen Lastenausgleichs über das Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
 
-1. Klicken Sie im Azure-Portal auf **Neu** > **Netzwerk** > **Load Balancer**.
-2. Wählen Sie auf dem Blatt **Lastenausgleich erstellen** einen Namen für Ihren Lastenausgleich aus.
+1. Klicken Sie im Azure-Portal im linken Bereich auf **Ressource erstellen** > **Netzwerk** > **Lastenausgleich**.
+2. Wählen Sie einen Namen für den Lastenausgleich aus.
 3. Legen Sie **Typ** auf **Intern** fest, und wählen Sie das entsprechende virtuelle Netzwerk und Subnetz aus, in dem sich der Lastenausgleich befinden soll.
 4. Wählen Sie unter **IP-Adresszuweisung** entweder **Dynamisch** oder **Statisch** aus.
 5. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe für den Lastenausgleich aus.
@@ -169,18 +169,18 @@ Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden S
 1. Suchen Sie in der Ressourcengruppe den Lastenausgleich, den Sie in den vorherigen Schritten erstellt haben.
 2. Klicken Sie unter **Einstellungen** auf **Back-End-Pools** und dann auf **Hinzufügen**, um einen neuen Back-End-Pool hinzuzufügen.
 
-  ![Load Balancer-Blatt „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+  ![Lastenausgleich: „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
-3. Geben Sie auf dem Blatt **Back-End-Pool** hinzufügen einen Namen für den Back-End-Pool ein.
+3. Geben Sie einen Namen für den Back-End-Pool ein.
 4. Fügen Sie dem Back-End-Pool entweder einzelne VMs oder eine Verfügbarkeitsgruppe hinzu.
 
 #### <a name="configure-a-probe"></a>Konfigurieren eines Tests
 
 1. Wählen Sie in Ihrem Lastenausgleich unter **Einstellungen** den Punkt **Tests** aus, und klicken Sie dann auf **Hinzufügen**, um einen Test hinzuzufügen.
 
- ![Load Balancer-Blatt „Test hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+ ![Lastenausgleich: „Test hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
-2. Geben Sie auf dem Blatt **Test hinzufügen** den Namen für den Test ein.
+2. Geben Sie einen Namen für den Test ein.
 3. Wählen Sie **Protokoll** für den Test aus. Bei einer Datenbank ist es vermutlich besser, einen TCP-Test statt eines HTTP-Tests durchzuführen. Weitere Informationen zu Lastenausgleichstests finden Sie unter [Grundlegendes zu Lastenausgleichstests](../load-balancer/load-balancer-custom-probe-overview.md).
 4. Geben Sie den **Port** Ihrer Datenbank ein, der beim Zugreifen auf den Test verwendet werden soll.
 5. Geben Sie unter **Intervall** an, wie häufig die Anwendung getestet werden soll.
@@ -190,7 +190,7 @@ Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden S
 #### <a name="configure-the-load-balancing-rules"></a>Konfigurieren der Lastenausgleichsregeln
 
 1. Wählen Sie unter **Einstellungen** in Ihrem Lastenausgleich **Lastenausgleichsregeln** aus, und klicken Sie auf **Hinzufügen**, um eine Regel zu erstellen.
-2. Geben Sie auf dem Blatt **Lastenausgleichsregel hinzufügen** den **Namen** der Lastenausgleichsregel ein.
+2. Geben Sie einen **Namen** für die Lastenausgleichsregel ein.
 3. Wählen Sie **Front-End-IP-Adresse des Lastenausgleichs**, **Protokoll** und **Port** aus.
 4. Geben Sie unter **Back-End-Port** den Port an, der im Back-End-Pool verwendet werden soll.
 5. Wählen Sie den **Back-End-Pool** und den **Test** aus, den Sie in den vorherigen Schritten erstellt haben, um die Regel darauf anzuwenden.
@@ -201,7 +201,7 @@ Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden S
 
 ### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>Schritt 5: Verbinden von VMs der Webebene mit Load Balancer
 
-Jetzt konfigurieren wir die IP-Adresse und den Load Balancer-Front-End-Port in den Anwendungen, die auf Ihren VMs der Webebene ausgeführt werden, für alle Datenbankverbindungen. Diese Konfiguration ist spezifisch für die Anwendung, die auf diesen VMs ausgeführt wird. Informationen zum Konfigurieren der IP-Zieladresse und des Ports finden Sie in der Dokumentation der Anwendung. Um die IP-Adresse des Front-End zu suchen, navigieren Sie im Azure-Portal auf dem Blatt **Einstellungen für Lastenausgleich** zum Front-End-IP-Pool.
+Jetzt konfigurieren wir die IP-Adresse und den Load Balancer-Front-End-Port in den Anwendungen, die auf Ihren VMs der Webebene ausgeführt werden, für alle Datenbankverbindungen. Diese Konfiguration ist spezifisch für die Anwendung, die auf diesen VMs ausgeführt wird. Informationen zum Konfigurieren der IP-Zieladresse und des Ports finden Sie in der Dokumentation der Anwendung. Um die IP-Adresse des Front-Ends zu suchen, navigieren Sie im Azure-Portal unter **Einstellungen für Lastenausgleich** zum Front-End-IP-Pool.
 
 ![Load Balancer-Navigationsbereich „Front-End-IP-Adresspool“](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 

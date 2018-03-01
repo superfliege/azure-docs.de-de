@@ -3,8 +3,8 @@ In diesem Abschnitt aktualisieren Sie Code in Ihrem vorhandenen Mobile Apps-Back
 Wählen Sie ein geeignetes Verfahren für die Art Ihres Back-End-Projekts ([.NET-Back-End](#dotnet) oder [Node.js-Back-End](#nodejs)).
 
 ### <a name="dotnet"></a>.NET-Back-End-Projekt
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. Suchen Sie nach `Microsoft.Azure.NotificationHubs`, und klicken Sie dann auf **Installieren**. Dadurch wird die Notification Hubs-Bibliothek zum Senden von Benachrichtigungen von Ihrem Back-End installiert.
-2. Öffnen Sie **Controller** > **TodoItemController.cs** im Serverprojekt, und fügen Sie die folgenden using-Anweisungen hinzu:
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt. Wählen Sie dann **NuGet-Pakete verwalten** aus. Suchen Sie nach `Microsoft.Azure.NotificationHubs`, und wählen Sie dann **Installieren** aus. Dadurch wird die Notification Hubs-Bibliothek zum Senden von Benachrichtigungen vom Back-End installiert.
+2. Öffnen Sie im Serverprojekt **Controller** > **TodoItemController.cs**. Fügen Sie dann die folgenden using-Anweisungen hinzu:
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
@@ -16,7 +16,7 @@ Wählen Sie ein geeignetes Verfahren für die Art Ihres Back-End-Projekts ([.NET
         MobileAppSettingsDictionary settings =
             this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
-        // Get the Notification Hubs credentials for the Mobile App.
+        // Get the Notification Hubs credentials for the mobile app.
         string notificationHubName = settings.NotificationHubName;
         string notificationHubConnection = settings
             .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
@@ -25,8 +25,8 @@ Wählen Sie ein geeignetes Verfahren für die Art Ihres Back-End-Projekts ([.NET
         NotificationHubClient hub = NotificationHubClient
         .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
-        // Sending the message so that all template registrations that contain "messageParam"
-        // will receive the notifications. This includes APNS, GCM, WNS, and MPNS template registrations.
+        // Send the message so that all template registrations that contain "messageParam"
+        // receive the notifications. This includes APNS, GCM, WNS, and MPNS template registrations.
         Dictionary<string,string> templateParams = new Dictionary<string,string>();
         templateParams["messageParam"] = item.Text + " was added to the list.";
 
@@ -45,7 +45,7 @@ Wählen Sie ein geeignetes Verfahren für die Art Ihres Back-End-Projekts ([.NET
                 .Error(ex.Message, null, "Push.SendAsync Error");
         }
 
-    Damit wird eine Vorlagenbenachrichtigung gesendet, die „item.Text“ enthält, wenn ein neues Element eingefügt wird.
+    Mit diesem Vorgang wird eine Vorlagenbenachrichtigung gesendet, die „item.Text“ enthält, wenn ein neues Element eingefügt wird.
 4. Veröffentlichen Sie das Serverprojekt erneut.
 
 ### <a name="nodejs"></a>Node.js-Back-End-Projekt
@@ -60,17 +60,17 @@ Wählen Sie ein geeignetes Verfahren für die Art Ihres Back-End-Projekts ([.NET
 
         table.insert(function (context) {
         // For more information about the Notification Hubs JavaScript SDK,
-        // see http://aka.ms/nodejshubs
+        // see http://aka.ms/nodejshubs.
         logger.info('Running TodoItem.insert');
 
         // Define the template payload.
         var payload = '{"messageParam": "' + context.item.text + '" }';  
 
-        // Execute the insert.  The insert returns the results as a Promise,
+        // Execute the insert. The insert returns the results as a promise.
         // Do the push as a post-execute action within the promise flow.
         return context.execute()
             .then(function (results) {
-                // Only do the push if configured
+                // Only do the push if configured.
                 if (context.push) {
                     // Send a template notification.
                     context.push.send(null, payload, function (error) {
@@ -81,7 +81,7 @@ Wählen Sie ein geeignetes Verfahren für die Art Ihres Back-End-Projekts ([.NET
                         }
                     });
                 }
-                // Don't forget to return the results from the context.execute()
+                // Don't forget to return the results from the context.execute().
                 return results;
             })
             .catch(function (error) {
@@ -91,5 +91,5 @@ Wählen Sie ein geeignetes Verfahren für die Art Ihres Back-End-Projekts ([.NET
 
         module.exports = table;  
 
-    Damit wird eine Vorlagenbenachrichtigung gesendet, die „item.Text“ enthält, wenn ein neues Element eingefügt wird.
+    Mit diesem Vorgang wird eine Vorlagenbenachrichtigung gesendet, die „item.Text“ enthält, wenn ein neues Element eingefügt wird.
 3. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut.

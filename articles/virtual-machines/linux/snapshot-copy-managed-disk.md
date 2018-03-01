@@ -13,15 +13,15 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: da00c48f7da5a9be146f4fdb626c93db746c0f9b
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 152c5a1103d32af27f689086cfcc9cc1a7acc5d3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme 
 
-Erstellen Sie eine Momentaufnahme eines Betriebssystem oder eines VHD-Datenträgers für die Sicherung oder zum Behandeln von VM-Problemen. Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer virtuellen Festplatte. 
+Erstellen Sie eine Momentaufnahme eines Betriebssystem oder eines VHD-Datenträgers für die Sicherung oder zum Behandeln von VM-Problemen. Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. 
 
 ## <a name="use-azure-cli-20-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme mithilfe von Azure CLI 2.0
 
@@ -64,15 +64,15 @@ Die Ausgabe sollte ungefähr wie folgt aussehen:
 
 ## <a name="use-azure-portal-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme im Azure-Portal 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie zunächst links oben auf **Neu**, und suchen Sie nach **Momentaufnahme**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie zunächst links oben auf **Ressource erstellen**, und suchen Sie nach **Momentaufnahme**.
 3. Klicken Sie auf dem Blatt „Momentaufnahme“ auf **Erstellen**.
 4. Geben Sie einen **Namen** für die Momentaufnahme ein.
 5. Wählen Sie eine vorhandene [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md#resource-groups) aus, oder geben Sie den Namen für eine neue Ressourcengruppe ein. 
 6. Wählen Sie den Standort eines Azure-Rechenzentrums aus.  
 7. Wählen Sie für **Quelldatenträger** den verwalteten Datenträger aus, für den eine Momentaufnahme erstellt werden soll.
 8. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wir empfehlen **Standard_LRS**, es sei denn, Sie benötigen eine Speicherung auf einem Hochleistungsdatenträger.
-9. Klicken Sie auf **Erstellen**.
+9. Klicken Sie auf **Create**.
 
 Wenn Sie vorhaben, die Momentaufnahme zum Erstellen eines verwalteten Datenträgers zu nutzen und an eine VM anzufügen, die hohe Leistung benötigt, verwenden Sie den Parameter `--sku Premium_LRS` mit dem Cmdlet `az snapshot create`. Dadurch wird die Momentaufnahme so erstellt, dass sie als verwalteter Premium-Datenträger gespeichert wird. Verwaltete Premium-Datenträger bieten eine bessere Leistung, da es sich um SSDs (Solid-State Drives) handelt. Allerdings sind sie auch teurer als Standard-Datenträger (HDDs).
 

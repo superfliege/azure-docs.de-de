@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 71929b449f2a0fa55327fd3f9741208506859e85
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 6478d577c52ffa23c3149c8213f182eaa1e466bd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics
 
@@ -70,6 +70,9 @@ Ereignisse, die in falscher Reihenfolge eingehen, sich aber im festgelegten Tole
 * **Verworfen**: Ereignisse werden verworfen.
 
 Wenn Ereignisse, die innerhalb des Toleranzfensters für Fehlordnung eingegangen sind, in Stream Analytics neu angeordnet werden, wird die Ausgabe der Abfrage um das Toleranzfenster für Fehlordnung verzögert.
+
+### <a name="early-events"></a>Frühe Ereignisse
+Bei der Verarbeitung nach Anwendungszeit werden Ereignisse, deren Anwendungszeit mehr als 5 Minuten vor der Ankunftszeit liegt, entweder gelöscht oder gemäß der ausgewählten Konfigurationsoption angepasst.
 
 ### <a name="example"></a>Beispiel
 

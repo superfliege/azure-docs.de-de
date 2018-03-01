@@ -15,11 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 76997f2e31f3edd6260b2ae19631236bc1c0c1b6
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: ccccdf58fbb84605bc5dff29d870b373134f1f97
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>Ausführen einer rechenintensiven Aufgabe in Java auf einem virtuellen Computer
 > [!IMPORTANT] 
@@ -52,7 +52,7 @@ Es folgt ein Beispiel für die Java-Anwendung, die die rechenintensive Aufgabe �
 
 ## <a name="to-create-a-virtual-machine"></a>So erstellen Sie einen virtuellen Computer
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie nacheinander auf **Neu**, **Compute**, **Virtueller Computer** und **Aus Katalog**.
+2. Klicken Sie nacheinander auf **Ressource erstellen**, **Compute**, **Virtueller Computer** und **Aus Katalog**.
 3. Wählen Sie im Dialogfeld **Image ds virtuellen Computers auswählen** die Option **JDK 7 Windows Server 2012** aus.
    Beachten Sie, dass **JDK 6 Windows Server 2012** verfügbar ist, wenn Sie Legacyanwendungen haben, die noch nicht in JDK 7 ausgeführt werden können.
 4. Klicken Sie auf **Weiter**.

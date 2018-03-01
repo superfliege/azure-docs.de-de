@@ -1,6 +1,6 @@
 ---
 title: "Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten: Azure Resource Manager: PowerShell | Microsoft-Dokumentation"
-description: "In diesem Artikel wird schrittweise beschrieben, wie Sie die Konfiguration von routenbasierten Azure-VPN-Gateways für mehrere richtlinienbasierte VPN-Geräte mit Azure Resource Manager und PowerShell durchführen."
+description: "Konfigurieren Sie routenbasierte Azure-VPN-Gateways für mehrere richtlinienbasierte VPN-Geräte mit Azure Resource Manager und PowerShell."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/27/2017
+ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: db4d8837fb5c5d15364422e957e4914966215674
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90c855e768f403098e535391afb55e3c78044b0a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie ein routenbasiertes Azure-VPN-Gatewa
 
 Richtlinien- *und* routenbasierte VPN-Geräte unterscheiden sich darin, wie die IPsec-Datenverkehrsselektoren für eine Verbindung festgelegt werden:
 
-* Für **richtlinienbasierte** VPN-Geräte werden die Kombinationen aus Präfixen beider Netzwerke verwendet, um zu definieren, wie Datenverkehr mithilfe von IPsec-Tunneln verschlüsselt bzw. entschlüsselt wird. Dies wird normalerweise basierend auf Firewallgeräten erstellt, für die eine Paketfilterung durchgeführt wird. Die Ver- und Entschlüsselung von IPsec-Tunneln wird dem Modul für die Paketfilterung und -verarbeitung hinzugefügt.
+* Für **richtlinienbasierte** VPN-Geräte werden die Kombinationen aus Präfixen beider Netzwerke verwendet, um zu definieren, wie Datenverkehr mithilfe von IPsec-Tunneln verschlüsselt bzw. entschlüsselt wird. Dies wird normalerweise basierend auf Firewallgeräten erstellt, für die eine Paketfilterung durchgeführt wird. Die Ver- und Entschlüsselung von IPsec-Tunneln wird der Engine für die Paketfilterung und -verarbeitung hinzugefügt.
 * Für **routenbasierte** VPN-Geräte werden Any-to-Any-Datenverkehrsselektoren (mit Platzhalter) verwendet, und mit Routing-/Weiterleitungstabellen wird das Leiten von Datenverkehr an verschiedene IPsec-Tunnel ermöglicht. Die Basis für die Erstellung bilden normalerweise Routerplattformen, auf denen jeder IPsec-Tunnel als Netzwerkschnittstelle oder virtuelle Tunnelschnittstelle (VTI) modelliert ist.
 
 Die beiden Modelle sind in den folgenden Diagrammen dargestellt:
@@ -140,7 +140,7 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 
 ### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>Schritt 2: Erstellen einer S2S-VPN-Verbindung mit einer IPsec/IKE-Richtlinie
 
-#### <a name="1-create-an-ipsecike-policy"></a>1. Erstellen einer IPsec/IKE-Richtlinie
+#### <a name="1-create-an-ipsecike-policy"></a>1. Erstellen Sie eine IPsec/IKE-Richtlinie.
 
 > [!IMPORTANT]
 > Sie müssen eine IPsec/IKE-Richtlinie erstellen, um für die Verbindung die Option „UsePolicyBasedTrafficSelectors“ zu aktivieren.

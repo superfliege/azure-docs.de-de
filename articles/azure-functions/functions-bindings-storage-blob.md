@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/27/2017
+ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 120a65a271291b75661d7d070cbd4a7222edd18a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9294d19ea78a2b9cf4282d627eddd16e6588d3ee
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
@@ -227,13 +227,22 @@ Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `T paramName`, um
 
 Wie angemerkt muss für einige dieser Typen in *function.json* die Bindungsrichtung `inout` angegeben werden. Diese Richtung wird vom Standard-Editor im Azure-Portal nicht unterstützt, sodass Sie den erweiterten Editor verwenden müssen.
 
-Wenn Textblobs erwartet werden, kann für die Bindung der .NET-Typ `string` verwendet werden. Dies wird nur empfohlen, wenn die Blobgröße klein ist, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden.
+Wenn Textblobs erwartet werden, kann für die Bindung der .NET-Typ `string` verwendet werden. Dies wird nur empfohlen, wenn die Blobgröße klein ist, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter unten in diesem Artikel.
 
 Verwenden Sie in JavaScript `context.bindings.<name>`, um auf die Eingabeblobdaten zuzugreifen.
 
 ## <a name="trigger---blob-name-patterns"></a>Trigger: Blobnamensmuster
 
-Ein Blobnamensmuster kann in der Eigenschaft `path` (in *function.json*) oder im Konstruktor des Attributs `BlobTrigger` angegeben werden. Das Namensmuster kann ein [Filter oder Bindungsausdruck](functions-triggers-bindings.md#binding-expressions-and-patterns) sein.
+Ein Blobnamensmuster kann in der Eigenschaft `path` (in *function.json*) oder im Konstruktor des Attributs `BlobTrigger` angegeben werden. Das Namensmuster kann ein [Filter oder Bindungsausdruck](functions-triggers-bindings.md#binding-expressions-and-patterns) sein. Die folgenden Abschnitte enthalten einige Beispiele.
+
+### <a name="get-file-name-and-extension"></a>Abrufen von Dateiname und Erweiterung
+
+Das folgende Beispiel zeigt, wie Sie den Blobdateinamen und die Erweiterung separat binden:
+
+```json
+"path": "input/{blobname}.{blobextension}",
+```
+Wenn das Blob *original-Blob1.txt* heißt, lauten die Werte der Variablen `blobname` und `blobextension` im Funktionscode *original-Blob1* und *txt*.
 
 ### <a name="filter-on-blob-name"></a>Filtern nach Blobname
 
@@ -262,15 +271,6 @@ Wenn in Dateinamen nach geschweiften Klammern gesucht werden soll, müssen doppe
 ```
 
 Wenn der Blobname *{20140101}-soundfile.mp3* lautet, erhält die Variable `name` im Funktionscode den Wert *soundfile.mp3*. 
-
-### <a name="get-file-name-and-extension"></a>Abrufen von Dateiname und Erweiterung
-
-Das folgende Beispiel zeigt, wie Sie den Blobdateinamen und die Erweiterung separat binden:
-
-```json
-"path": "input/{blobname}.{blobextension}",
-```
-Wenn das Blob *original-Blob1.txt* heißt, lauten die Werte der Variablen `blobname` und `blobextension` im Funktionscode *original-Blob1* und *txt*.
 
 ## <a name="trigger---metadata"></a>Trigger: Metadaten
 
@@ -309,6 +309,14 @@ Wenn bei allen fünf Versuchen Fehler auftreten, fügt Azure Functions der Stora
 * ContainerName
 * BlobName
 * ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
+
+## <a name="trigger---concurrency-and-memory-usage"></a>Trigger: Nebenläufigkeit und Arbeitsspeichernutzung
+
+Der Blobtrigger verwendet intern eine Warteschlange, sodass die maximal zulässige Anzahl gleichzeitiger Funktionsaufrufe durch die [Warteschlangenkonfiguration in „host.json“](functions-host-json.md#queues) gesteuert wird. Durch die Standardeinstellungen wird die Anzahl gleichzeitiger Aufrufe auf 24 beschränkt. Dieser Grenzwert gilt separat für jede Funktion, die einen Blobtrigger verwendet.
+
+[Der Verbrauchstarif](functions-scale.md#how-the-consumption-plan-works) schränkt eine Funktions-App auf einem virtuellen Computer (VM) auf 1,5 GB an Arbeitsspeicher ein. Der Arbeitsspeicher wird von jeder parallel ausgeführten Funktionsinstanz und durch die Functions-Runtime selbst verwendet. Wenn eine durch einen Blob ausgelöste Funktion das gesamte Blob in den Arbeitsspeicher lädt, entspricht der maximal von dieser Funktion verwendete Arbeitsspeicher nur für Blobs dem 24-fachen der maximalen Blobgröße. Beispiel: Eine Funktions-App, die drei Funktionen mit Blobtrigger umfasst und die Standardeinstellungen verwendet, weist pro VM eine maximale Nebenläufigkeit von 3 × 24 = 72 Funktionsaufrufen auf.
+
+JavaScript-Funktionen laden das gesamte Blob in den Arbeitsspeicher, C#-Funktionen zeigen dieses Verhalten bei einer Bindung an `string`.
 
 ## <a name="trigger---polling-for-large-containers"></a>Trigger: Abfragen für große Container
 

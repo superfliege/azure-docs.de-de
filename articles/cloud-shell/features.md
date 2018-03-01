@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: a2c5348ea2ea02917472c1c3ae3bb518364c6848
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 300630919ed832b059dd96fa0f35f89b52b0430d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Features und Tools für Bash in Azure Cloud Shell
 
@@ -48,9 +48,13 @@ Dateien außerhalb von `$Home` und der Zustand des Computers werden nicht sitzun
 
 [Erfahren Sie mehr über das Beibehalten von Dateien in Bash in Cloud Shell.](persisting-shell-storage.md)
 
+### <a name="deep-integration-with-open-source-tooling"></a>Enge Integration in Open Source-Tools
+
+Bash in Cloud Shell schließt eine vorkonfigurierte Authentifizierung für Open Source-Tools wie z.B. Terraform und Ansible ein. Probieren Sie es mithilfe der exemplarischen Vorgehensweisen aus.
+
 ## <a name="tools"></a>Tools
 
-|Category (Kategorie)   |NAME   |
+|Kategorie   |Name   |
 |---|---|
 |Linux-Tools            |Bash<br> sh<br> tmux<br> dig<br>               |
 |Azure-Tools            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) und [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard) <br> [Service Fabric-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) <br> [blobxfer](https://github.com/Azure/blobxfer#blobxfer) |

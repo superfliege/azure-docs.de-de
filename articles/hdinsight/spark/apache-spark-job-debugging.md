@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: fb2487ec854260bacf98789bd1be482172ead6a7
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 5606df8770cf611d7d278800c9871bee17c5b895
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debuggen von Apache Spark-Aufträgen, die in HDInsight ausgeführt werden
 
-In diesem Artikel erfahren Sie, wie Sie Spark-Aufträge, die in HDInsight ausgeführt werden, mit der YARN-Benutzeroberfläche, der Spark-Benutzeroberfläche und dem Spark-Verlaufsserver nachverfolgen und debuggen. In diesem Artikel starten wir einen Spark-Auftrag über das Notebook **Machine Learning: Vorhersageanalyse von Lebensmittelkontrolldaten mithilfe von MLlib**, das im Spark-Cluster verfügbar ist. Sie können die folgenden Schritte auch ausführen, um eine Anwendung nachzuverfolgen, die Sie mit einer anderen Methode wie z.B. **spark-submit** übermittelt haben.
+In diesem Artikel erfahren Sie, wie Sie Spark-Aufträge, die in HDInsight ausgeführt werden, mit der YARN-Benutzeroberfläche, der Spark-Benutzeroberfläche und dem Spark-Verlaufsserver nachverfolgen und debuggen. Sie starten einen Spark-Auftrag über das im Spark-Cluster verfügbare Notebook **Machine learning: Predictive analysis on food inspection data using MLLib** (Maschinelles Lernen: Vorhersageanalyse von Lebensmittelkontrolldaten mithilfe von MLLib). Sie können mithilfe der folgenden Schritte auch eine Anwendung nachverfolgen, die Sie mit einer anderen Methode wie z.B. **spark-submit** übermittelt haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie benötigen Folgendes:
@@ -34,12 +34,12 @@ Sie benötigen Folgendes:
 * Sie sollten mit der Ausführung des Notebooks **[Machine Learning: Vorhersageanalyse von Lebensmittelkontrolldaten mithilfe von MLlib](apache-spark-machine-learning-mllib-ipython.md)** begonnen haben. Für eine Anleitung zum Ausführen dieses Notebooks folgen Sie dem Link.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Nachverfolgen einer Anwendung auf der YARN-Benutzeroberfläche
-1. Starten Sie die YARN-Benutzeroberfläche. Klicken Sie auf dem Clusterblatt auf **Cluster-Dashboard** und dann auf **YARN**.
+1. Starten Sie die YARN-Benutzeroberfläche. Klicken Sie auf **Cluster-Dashboard** und dann auf **YARN**.
    
     ![YARN-Benutzeroberfläche starten](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > Alternativ können Sie die YARN-Benutzeroberfläche auch über die Ambari-Benutzeroberfläche starten. Klicken Sie zum Starten der Ambari-Benutzeroberfläche auf dem Clusterblatt auf **Cluster-Dashboard** und dann auf **HDInsight-Cluster-Dashboard**. Klicken Sie auf der Ambari-Benutzeroberfläche auf **YARN**, auf **Quick Links**, auf den aktiven Ressourcen-Manager und dann auf **ResourceManager UI** (ResourceManager-UI).    
+   > Alternativ können Sie die YARN-Benutzeroberfläche auch über die Ambari-Benutzeroberfläche starten. Klicken Sie zum Starten der Ambari-Benutzeroberfläche auf **Clusterdashboard** und dann auf **HDInsight-Clusterdashboard**. Klicken Sie auf der Ambari-Benutzeroberfläche auf **YARN**, auf **QuickLinks**, auf den aktiven Ressourcen-Manager und dann auf **Resource Manager UI** (Ressourcen-Manager-UI).    
    > 
    > 
 2. Da Sie den Spark-Auftrag mit Jupyter-Notebooks gestartet haben, hat die Anwendung den Namen **remotesparkmagics** (dies ist der Name für alle Anwendungen, die über die Notebooks gestartet werden). Klicken Sie auf die Anwendungs-ID für den Anwendungsnamen, um weitere Informationen zum Auftrag abzurufen. Dadurch wird die Anwendungsansicht geöffnet.
@@ -122,7 +122,6 @@ Wenn ein Auftrag abgeschlossen ist, werden die Informationen zum Auftrag auf dem
 * [Erstellen einer eigenständigen Anwendung mit Scala](apache-spark-create-standalone-application.md)
 * [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](apache-spark-livy-rest-interface.md)
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](apache-spark-intellij-tool-plugin.md)
-* [Spark-Streaming: Erstellen von Echtzeit-Streaminganwendungen mithilfe von Spark in HDInsight](apache-spark-eventhub-streaming.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](apache-spark-zeppelin-notebook.md)
 * [Verfügbare Kernels für Jupyter-Notebook im Spark-Cluster für HDInsight](apache-spark-jupyter-notebook-kernels.md)

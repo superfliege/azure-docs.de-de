@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: ea91fdd58dd3b5c118fe390afe1eb355e3c26570
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 39680d4e70cc47cfa119b3a46e8d51ea87fa618d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal
 
@@ -47,7 +47,7 @@ In diesem Thema wird veranschaulicht, wie Sie das [Azure-Portal](https://portal.
 
 Nachdem Sie eine Ressourcengruppe erstellt haben, können Sie Ressourcen dafür über den Marketplace bereitstellen. Der Marketplace bietet vordefinierte Lösungen für gängige Szenarien.
 
-1. Klicken Sie zum Starten einer Bereitstellung auf **Neu**.
+1. Klicken Sie zum Starten einer Bereitstellung auf **Ressource erstellen**.
 
    ![Neue Ressource](./media/resource-group-template-deploy-portal/new-resources.png)
 
@@ -79,7 +79,7 @@ Nachdem Sie eine Ressourcengruppe erstellt haben, können Sie Ressourcen dafür 
 
 Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Marketplace zu nutzen, können Sie eine angepasste Vorlage erstellen, mit der die Infrastruktur für Ihre Lösung definiert wird. Informationen zum Erstellen von Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 
-1. Klicken Sie zum Bereitstellen einer benutzerdefinierten Vorlage über das Portal auf **Neu**, suchen Sie nach **Vorlagenbereitstellung**, und wählen Sie diese Option aus.
+1. Klicken Sie zum Bereitstellen einer benutzerdefinierten Vorlage über das Portal auf **Ressource erstellen**, suchen Sie nach **Vorlagenbereitstellung**, und wählen Sie diese Option aus.
 
    ![Suchen der Vorlagenbereitstellung](./media/resource-group-template-deploy-portal/search-template.png)
 
@@ -103,7 +103,7 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 
    ![Auswählen des Speicherkontos](./media/resource-group-template-deploy-portal/add-storage-account.png)
 
-1. Der Editor fügt automatisch JSON als Ressourcentyp hinzu. Beachten Sie, dass ein Parameter zum Festlegen des Speicherkontotyps enthalten ist. Wählen Sie **Speichern** aus.
+1. Der Editor fügt automatisch JSON als Ressourcentyp hinzu. Beachten Sie, dass ein Parameter zum Festlegen des Speicherkontotyps enthalten ist. Wählen Sie **Speichern**aus.
 
    ![Anzeigen der Vorlage](./media/resource-group-template-deploy-portal/show-json.png)
 

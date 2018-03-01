@@ -3,7 +3,7 @@ title: "Installieren eines Linux-Masterzielservers für ein Failover von Azure a
 description: "Bevor Sie die Schritte zum erneuten Schützen eines virtuellen Linux-Computers ausführen können, benötigen Sie einen Linux-Masterzielserver. Hier wird beschrieben, wie Sie die Installation durchführen."
 services: site-recovery
 documentationcenter: 
-author: rajani-janaki-ram
+author: nsoneji
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 11/22/2017
-ms.author: rajanaki
-ms.openlocfilehash: 11f9385c1082011ee690f48f2579b6f3b156d125
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 02/22/2018
+ms.author: nisoneji
+ms.openlocfilehash: 27b38eafd9ab5da11d66ede4d446a4952e30c534
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>Installieren eines Linux-Masterzielservers
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -74,11 +74,11 @@ Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit 
     ![Sprache auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image1.png)
 1. Wählen Sie **Install Ubuntu Server**, und drücken Sie die **EINGABETASTE**.
 
-    ![„Install Ubuntu Server“ auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image2.png)
+    ![„Ubuntu Server installieren“ auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image2.png)
 
 1.  Wählen Sie **English** als bevorzugte Sprache aus, und drücken Sie die **EINGABETASTE**.
 
-    ![„English“ als bevorzugte Sprache auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
+    ![Englisch als bevorzugte Sprache auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
 
 1. Wählen Sie unter **Time Zone** die entsprechende Option aus, und drücken Sie die **EINGABETASTE**.
 
@@ -105,7 +105,7 @@ Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit 
 
 1.  Wählen Sie als Nächstes zur Verschlüsselung Ihres Stammverzeichnisses die Option **No** (Standardoption), und drücken Sie die **EINGABETASTE**.
 
-1. Wenn die richtige Zeitzone angezeigt wird, wählen Sie **Yes** (Standardoption) aus, und drücken Sie dann die **EINGABETASTE**. Wenn Sie die Zeitzone ändern möchten, wählen Sie **No**.
+1. Wenn die richtige Zeitzone angezeigt wird, wählen Sie **Yes** (Standardoption) aus, und drücken Sie dann die **EINGABETASTE**. Wenn Sie die Zeitzone ändern möchten, wählen Sie **Nein** aus.
 
 1. Wählen Sie aus den Optionen zum Partitionierungsverfahren **Guided – use entire disk**, und drücken Sie die **EINGABETASTE**.
 
@@ -126,9 +126,9 @@ Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit 
      ![Option zum Verwalten von Upgrades auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
 
     > [!WARNING]
-    > Da für den Azure Site Recovery-Masterzielserver eine ganz bestimmte Version von Ubuntu erforderlich ist, müssen Sie sicherstellen, dass die Kernelupgrades für den virtuellen Computer deaktiviert sind. Wenn sie aktiviert sind, verursacht jedes reguläre Upgrade Fehlfunktionen auf dem Masterzielserver. Stellen Sie sicher, dass die Option **No automatic updates** ausgewählt ist.
+    > Da für den Azure Site Recovery-Masterzielserver eine ganz bestimmte Version von Ubuntu erforderlich ist, müssen Sie sicherstellen, dass die Kernelupgrades für den virtuellen Computer deaktiviert sind. Wenn sie aktiviert sind, verursacht jedes reguläre Upgrade Fehlfunktionen auf dem Masterzielserver. Stellen Sie sicher, dass die Option **Keine automatischen Updates** ausgewählt ist.
 
-1.  Wählen Sie die Standardoptionen aus. Wenn Sie OpenSSH für eine SSH-Verbindung verwenden möchten, wählen Sie die Option **OpenSSH server** aus, und wählen Sie dann **Continue**.
+1.  Wählen Sie die Standardoptionen aus. Wenn Sie OpenSSH für eine SSH-Verbindung verwenden möchten, wählen Sie die Option **OpenSSH Server** aus, und wählen Sie dann **Weiter** aus.
 
     ![Software auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image19.png)
 

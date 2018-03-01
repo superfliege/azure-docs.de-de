@@ -1,5 +1,5 @@
 ---
-title: "Azure Monitor – PowerShell-Schnellstartbeispiele | Microsoft Docs"
+title: "Azure Monitor – PowerShell-Schnellstartbeispiele | Microsoft-Dokumentation"
 description: "Verwenden Sie PowerShell für den Zugriff auf Azure Monitor-Features wie die automatische Skalierung, Warnungen, Webhooks und die Suche in Aktivitätsprotokollen."
 author: rboucher
 manager: carmonm
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 36836a4528c8ba04eee1c5234fd6d4e0f9545913
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 3479b9c5bc1c8c77d2c6012b40dc9cd8f8e1708b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor – PowerShell-Schnellstartbeispiele
-In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können. Azure Monitor ermöglicht Ihnen die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps. Sie können damit auch Warnbenachrichtigungen senden oder Web-URLs basierend auf Werten von konfigurierten Telemetriedaten aufrufen.
+In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können.
 
 > [!NOTE]
 > Azure Monitor ist der neue Name für den Dienst, der bis 25. September 2016 als „Azure Insights“ bezeichnet wurde. Die Namespaces und somit die folgenden Befehle enthalten jedoch weiterhin das Wort „insights“.
@@ -147,7 +147,7 @@ In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Ers
 
 | Parameter | value |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| NAME |simpletestdiskwrite |
 | Standort für diese Warnungsregel |USA (Ost) |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -199,6 +199,22 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 ```
 
 Eine vollständige Liste der verfügbaren Optionen für `Get-AzureRmMetricDefinition` finden Sie unter [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
+
+## <a name="create-and-manage-activity-log-alerts"></a>Erstellen und Verwalten von Aktivitätsprotokollwarnungen
+Sie können mit dem Cmdlet `Set-AzureRmActivityLogAlert` eine Aktivitätsprotokollwarnung festlegen. Eine Aktivitätsprotokollwarnung erfordert, dass Sie zuerst Ihre Bedingungen als Wörterbuch der Bedingungen definieren und dann eine Warnung erstellen, die diese Bedingungen verwendet.
+
+```PowerShell
+
+$condition1 = New-AzureRmActivityLogAlertCondition -Field 'category' -Equals 'Administrative'
+$condition2 = New-AzureRmActivityLogAlertCondition -Field 'operationName' -Equals 'Microsoft.Compute/virtualMachines/write'
+$additionalWebhookProperties = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+$additionalWebhookProperties.Add('customProperty', 'someValue')
+$actionGrp1 = New-AzureRmActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
+Set-AzureRmActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGroupName 'myResourceGroup' -Scope '/' -Action $actionGrp1 -Condition $condition1, $condition2
+
+```
+
+Die weiteren Webhookeigenschaften sind optional. Mit `Get-AzureRmActivityLogAlert` erhalten Sie wieder den Inhalt einer Aktivitätsprotokollwarnung.
 
 ## <a name="create-and-manage-autoscale-settings"></a>Erstellen und Verwalten von Einstellungen zur automatischen Skalierung
 Für eine Ressource (Web-App, virtueller Computer, Clouddienst oder VM-Skalierungsgruppe) kann nur eine Einstellung zur automatischen Skalierung konfiguriert werden.

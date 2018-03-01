@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 4765b71714e88ee91cb9938ad4bb34033cf12422
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ef04e557aca69e5a15bb38d816ca9f9b9ffaf502
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Unerwartete Anwendung in der Liste meiner Anwendungen
 
@@ -25,11 +25,11 @@ Dieser Artikel bietet Informationen dazu, wie Anwendungen in der Liste **Alle An
 
 ## <a name="how-to-see-all-applications-in-your-tenant"></a>Anzeigen aller Anwendungen im Mandanten
 
-Um alle Anwendungen in Ihrem Mandanten anzuzeigen, müssen Sie das **Filter**-Steuerelement der Liste **Alle Anwendungen** auf **Alle Anwendungen** festlegen. Führen Sie dazu die folgenden Schritte aus:
+Um alle Anwendungen in Ihrem Mandanten anzuzeigen, müssen Sie das **Filter**-Steuerelement der Liste **Alle Anwendungen** auf **Alle Anwendungen** festlegen. Folgen Sie diesen Schritten:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -39,7 +39,7 @@ Um alle Anwendungen in Ihrem Mandanten anzuzeigen, müssen Sie das **Filter**-St
 
 6.  Klicken Sie oberhalb der Liste **Alle Anwendungen** auf das Steuerelement **Filter**.
 
-7.  Legen Sie auf dem Blatt **Filter** die Option **Anzeigen** auf **Alle Anwendungen** fest.
+7.  Legen Sie im Bereich **Filter** die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
 ## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Warum wird eine bestimmte Anwendung in der Liste mit all meinen Anwendungen angezeigt?
 
@@ -53,7 +53,7 @@ Bei einer Filterung nach **Alle Anwendungen** zeigt die **Liste** **Alle Anwendu
 
    3. **Benutzerdefiniert entwickelte Anwendungen**: Anwendungen, die Ihre Organisation auf der Azure AD-Anwendungsentwicklungsplattform entwickeln möchte, die aber möglicherweise noch nicht vorhanden sind.
 
-   4. **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Alle gewünschten Weblinks und alle Anwendungen, die Felder für Benutzername und Kennwort generieren, SAML- oder OpenID Connect-Protokolle oder SCIM unterstützen und die Sie für das einmalige Anmelden in Azure AD integrieren möchten.
+   4. **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Hierbei kann es sich um beliebige Weblinks oder Anwendungen handeln, die Felder für Benutzername und Kennwort generieren, SAML oder OpenID Connect-Protokolle oder SCIM unterstützen, und die Sie für das einmalige Anmelden in Azure AD integrieren möchten.
 
 2.  Beim Registrieren für eine oder Anmelden bei einer Drittanbieteranwendung, die in Azure Active Directory integriert ist.<sup></sup> Beispiele hierfür sind [Smartsheet](https://app.smartsheet.com/b/home) oder [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
@@ -85,11 +85,11 @@ Um alle Benutzeranmeldungen bei einer Anwendung zu deaktivieren, führen Sie die
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Ich möchte eine Anwendung vollständig löschen.
 
-Befolgen Sie die nachstehenden Anweisungen, um **eine Anwendung zu löschen**:
+Um eine **Anwendung zu löschen**, führen Sie die folgenden Schritte aus:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** oder **Co-Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
@@ -101,17 +101,17 @@ Befolgen Sie die nachstehenden Anweisungen, um **eine Anwendung zu löschen**:
 
 6.  Wählen Sie die Anwendung aus, die Sie löschen möchten.
 
-7.  Nachdem die Anwendung geladen wurde, klicken Sie auf dem Blatt **Übersicht** der Anwendung auf **Löschen**.
+7.  Nachdem die Anwendung geladen wurde, klicken Sie im Bereich **Übersicht** der Anwendung auf das Symbol **Löschen**.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Ich möchte alle zukünftigen Vorgänge für die Benutzerzustimmung für jede Anwendung deaktivieren.
 
 Die Deaktivierung der Benutzerzustimmung für das gesamte Verzeichnis führt dazu, dass Endbenutzer keiner Anwendung zustimmen können. Administratoren können weiterhin im Namen von Benutzern zustimmen. Weitere Informationen zur Zustimmung zu Anwendungen sowie zum Aktivieren bzw. Deaktivieren der Zustimmung finden Sie unter [Grundlegendes zur Benutzer- und Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
 
-Befolgen Sie die nachstehenden Anweisungen, um **alle zukünftigen Vorgänge der Benutzerzustimmung in Ihrem gesamten Verzeichnis zu deaktivieren**:
+Führen Sie die folgenden Schritte aus, um **alle zukünftigen Vorgänge der Benutzerzustimmung in Ihrem gesamten Verzeichnis zu deaktivieren**:
 
-1.  Melden Sie sich beim [**Azure-Portal**](https://portal.azure.com/) als **Globaler Administrator** an.
+1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie unten im Hauptnavigationsmenü auf der linken Seite auf **Weitere Dienste** klicken.
+2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
 3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 

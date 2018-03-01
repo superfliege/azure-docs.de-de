@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 020e2996f40ed4a48affd3776e44e382c40cb3c0
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 96b92690cd164b1012380f82a1d1bd3336350e57
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Erstellen und Bereitstellen eines Clouddiensts
 Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: *Schnellerfassung* und *Benutzerdefiniert erstellen*.
@@ -59,15 +59,15 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 
 ## <a name="create-and-deploy"></a>Erstellen und Bereitstellen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie auf **Neu > Compute**, führen Sie einen Bildlauf nach unten zu **Clouddienst** aus, und klicken Sie darauf.
+2. Klicken Sie auf **Ressource erstellen > Compute**, scrollen Sie nach unten zu **Clouddienst**, und klicken Sie darauf.
 
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. Geben Sie auf dem neuen Blatt **Clouddienst** einen Wert für **DNS-Name** ein.
+3. Geben Sie im Bereich für den neuen **Clouddienst** einen Wert für **DNS-Name** ein.
 4. Erstellen Sie eine neue **Ressourcengruppe** , oder wählen Sie eine vorhandene Ressourcengruppe aus.
 5. Wählen Sie einen **Speicherort**aus.
-6. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus. Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
+6. Klicken Sie auf **Paket**. Der Bereich **Paket hochladen** wird geöffnet. Füllen Sie die erforderlichen Felder aus. Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
 7. Stellen Sie sicher, dass **Bereitstellung starten** aktiviert ist.
-8. Klicken Sie auf **OK**, um das Blatt **Paket hochladen** zu schließen.
+8. Klicken Sie auf **OK**, um den Bereich **Paket hochladen** zu schließen.
 9. Wenn Sie keine Zertifikate hinzufügen möchten, klicken Sie auf **Erstellen**.
 
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/select-package.png)
@@ -75,9 +75,9 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 ## <a name="upload-a-certificate"></a>Hochladen eines Zertifikats
 Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert](cloud-services-configure-ssl-certificate-portal.md#modify)wurde, können Sie das Zertifikat jetzt hochladen.
 
-1. Wählen Sie **Zertifikate**. Wählen Sie auf dem Blatt **Zertifikate hinzufügen** die PFX-Datei mit dem SSL-Zertifikat aus, und geben Sie das **Kennwort** für das Zertifikat ein.
-2. Klicken Sie auf **Zertifikat anfügen** und anschließend auf dem Blatt **Zertifikate hinzufügen** auf **OK**.
-3. Klicken Sie auf dem Blatt **Clouddienst** auf **Erstellen**. Wenn sich die Bereitstellung im Status **Ready** befindet, können Sie mit den nächsten Schritten fortfahren.
+1. Wählen Sie **Zertifikate** aus. Wählen Sie im Bereich **Zertifikate hinzufügen** die PFX-Datei mit dem SSL-Zertifikat aus, und geben Sie das **Kennwort** für das Zertifikat ein.
+2. Klicken Sie auf **Zertifikat anfügen** und anschließend im Bereich **Zertifikate hinzufügen** auf **OK**.
+3. Klicken Sie im Bereich **Clouddienst** auf **Erstellen**. Wenn sich die Bereitstellung im Status **Ready** befindet, können Sie mit den nächsten Schritten fortfahren.
 
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: genemi
-ms.openlocfilehash: 2daf05513127c2d1ab8e4b0196b578e18b6e03e7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fbc63cebe8c1456f5eb34666d15f4e00fd55fe5b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Untersuchen einer eigenständigen SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet
 
@@ -100,9 +100,7 @@ In einer Produktionsumgebung erstellen Sie normalerweise einen CNAME-DNS-Eintrag
 Betrachten wir einige der Ressourcen, die bereitgestellt wurden:
 
 1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zur Liste der Ressourcengruppen.
-2. Sehen Sie sich die Ressourcengruppe **wingtip-sa-catalog-&lt;Benutzer&gt;** an.
-    - In dieser Ressourcengruppe wird der Server **catalog-sa-&lt;Benutzer&gt;** bereitgestellt. Der Server enthält die Datenbank **tenantcatalog**.
-    - Außerdem sollten die drei Mandantenressourcengruppen angezeigt werden.
+2. Die drei Mandantenressourcengruppen sollten angezeigt werden.
 3. Öffnen Sie die Ressourcengruppe **wingtip-sa-fabrikam-&lt;Benutzer&gt;** mit den Ressourcen für die Bereitstellung des Fabrikam Jazz Club.  Der Server **fabrikamjazzclub-&lt;Benutzer&gt;** enthält die Datenbank **fabrikamjazzclub**.
 
 Jede Mandantendatenbank ist eine *eigenständige* Datenbank mit 50 DTUs.
@@ -131,6 +129,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Informationen zu Servern und Datenbanken, aus denen sich die App zusammensetzt
 > * Löschen von Beispielressourcen, um die zugehörige Abrechnung einzustellen
 
-Arbeiten Sie als Nächstes das [Tutorial zum Bereitstellen und zum Katalog](saas-standaloneapp-provision-and-catalog.md) durch.
+Gehen Sie als Nächstes das Tutorial [Bereitstellen und Katalogisieren](saas-standaloneapp-provision-and-catalog.md) durch, in dem Sie die Verwendung eines Katalogs von Mandanten untersuchen, die viele mandantenübergreifende Szenarien ermöglicht, z.B. Schemaverwaltung oder Mandantenanalyse.
  
 

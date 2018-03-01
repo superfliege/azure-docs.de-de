@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Service Map in der Operations Management Suite (OMS) | Microsoft-Dokumentation
-description: "Service Map ist eine Lösung in der Operations Management Suite, die automatisch Anwendungskomponenten auf Windows- und Linux-Systemen ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Informationen zum Bereitstellen von Service Map in Ihrer Umgebung und zur Verwendung der Lösung in einer Vielzahl von Szenarien."
+title: "Verwenden der Service Map-Lösung in Azure | Microsoft-Dokumentation"
+description: "Service Map ist eine Lösung in Azure, die Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Informationen zum Bereitstellen von Service Map in Ihrer Umgebung und zur Verwendung der Lösung in einer Vielzahl von Szenarien."
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 993dff7657a73803ca21677e19b08946fb89bfa2
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 84a43a4f04d7cd89d0d968acb436d196353eb81d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="use-the-service-map-solution-in-operations-management-suite"></a>Verwenden von Service Map in der Operations Management Suite (OMS)
+# <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
 
-In diesem Artikel werden die Details der Verwendung von Service Map beschrieben. Weitere Informationen zum Konfigurieren von Service Map und zum Onboarding von Agents finden Sie unter [Konfigurieren von Service Map in der Operations Management Suite (OMS)](operations-management-suite-service-map-configure.md).
+In diesem Artikel werden die Details der Verwendung von Service Map beschrieben. Weitere Informationen zum Konfigurieren von Service Map und zum Onboarding von Agents finden Sie unter [Konfigurieren von Service Map in Azure](operations-management-suite-service-map-configure.md).
 
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Anwendungsfälle: Berücksichtigen von Abhängigkeiten in IT-Prozessen
@@ -32,7 +32,7 @@ In diesem Artikel werden die Details der Verwendung von Service Map beschrieben.
 Service Map erstellt automatisch eine allgemeine Referenzzuordnung der Abhängigkeiten für all Ihre Server, Prozesse und Drittanbieterdienste. Service Map ermittelt alle TCP-Abhängigkeiten und bildet diese ab. Dabei werden unerwartete Verbindungen, von Ihnen benötigte Remotesysteme von Drittanbietern und Abhängigkeiten von Elementen in traditionell weniger transparenten Netzwerkbereichen wie z.B. Active Directory identifiziert. Service Map ermittelt fehlerhafte Netzwerkverbindungen, die Ihre verwalteten Systeme herzustellen versuchen, sodass Sie mögliche Fehlkonfigurationen der Server, Dienstausfälle und Netzwerkprobleme erkennen können.
 
 ### <a name="incident-management"></a>Incident Management
-Service Map macht Schluss mit dem Rätselraten bei der Problemermittlung und zeigt Ihnen, wie Ihre Systeme miteinander verbunden sind und sich gegenseitig beeinflussen. Sie können nicht nur fehlerhafte Verbindungen identifizieren, sondern auch verbundenen Clients, sodass Sie falsch konfigurierte Loadbalancer, eine unerwartete oder übermäßige Auslastung kritischer Dienste und eine nicht autorisierte Clientkommunikation – z.B. zwischen Entwicklercomputern und Produktionssystemen – identifizieren können. Dank integrierter Workflows und OMS-Änderungsnachverfolgung können Sie erkennen, können Sie auch sehen, ob die Ursache eines Incidents durch ein Änderungsereignis auf einem Back-End-Computer oder in einem Back-End-Dienst zurückzuführen ist.
+Service Map macht Schluss mit dem Rätselraten bei der Problemermittlung und zeigt Ihnen, wie Ihre Systeme miteinander verbunden sind und sich gegenseitig beeinflussen. Sie können nicht nur fehlerhafte Verbindungen identifizieren, sondern auch verbundenen Clients, sodass Sie falsch konfigurierte Loadbalancer, eine unerwartete oder übermäßige Auslastung kritischer Dienste und eine nicht autorisierte Clientkommunikation – z.B. zwischen Entwicklercomputern und Produktionssystemen – identifizieren können. Dank integrierter Workflows mit Änderungsnachverfolgung können Sie auch sehen, ob die Ursache eines Incidents auf ein Änderungsereignis auf einem Back-End-Computer oder in einem Back-End-Dienst zurückzuführen ist.
 
 ### <a name="migration-assurance"></a>Sichere Migrationen
 Mithilfe der Dienstzuordnung können Sie Azure-Migrationen effektiv planen, beschleunigen und überprüfen. Damit können Sie sicherstellen, dass nichts zurückbleibt und dass keine überraschenden Ausfälle auftreten. Sie können alle voneinander abhängigen Systeme ermitteln, die gemeinsam migriert werden müssen, die Systemkonfiguration und -kapazität bewerten und herausfinden, ob ein ausgeführtes System noch benötigt wird oder eher stillgelegt als migriert werden sollte. Nach der Migration können Sie die Clientauslastung und -identität überprüfen, um sicherzustellen, dass Testsysteme und Kunden eine Verbindung herstellen können. Wenn bei der Subnetzplanung und den Firewalldefinitionen Probleme auftreten, weisen Verbindungsfehler in den Service Map-Zuordnungen auf die Systeme hin, die Konnektivität benötigen.
@@ -41,7 +41,7 @@ Mithilfe der Dienstzuordnung können Sie Azure-Migrationen effektiv planen, besc
 Wenn Sie Azure Site Recovery verwenden und Hilfe beim Definieren der Wiederherstellungsreihenfolge für Ihre Anwendungsumgebung benötigen, kann der Service Map Ihnen automatisch zeigen, welche Systeme auf welche Weise voneinander abhängig sind, damit Sie sicherstellen können, dass Ihr Wiederherstellungsplan zuverlässig ist. Wenn Sie einen wichtigen Server oder eine Gruppe auswählen und sich die dazugehörigen Clients anschauen, können Sie bestimmen, welche Front-End-Systeme wiederhergestellt werden müssen, nachdem der Server wiederhergestellt wurde und wieder verfügbar ist. Wenn Sie sich umgekehrt die Back-End-Abhängigkeiten eines wichtigen Servers anschauen, können Sie bestimmen, welche Systeme wiederhergestellt werden müssen, bevor Ihre untersuchten Systeme wiederhergestellt werden.
 
 ### <a name="patch-management"></a>Patchverwaltung
-Service Map erweitert die Verwendung des OMS-Tools zur Bewertung von Systemupdates, indem es anzeigt, welche anderen Teams und Server von Ihrem Dienst abhängig sind. Auf diese Weise können Sie diese benachrichtigen, bevor Sie Ihre Systeme zum Patchen herunterfahren. Service Map erweitert auch die Patchverwaltung in der OMS, indem es anzeigt, ob Ihre Dienste verfügbar und ordnungsgemäß verbunden sind, nachdem die Patches aufgespielt und die Dienste neu gestartet wurden.
+Service Map erweitert die Nutzung der Bewertung von Systemupdates durch die Anzeige, welche anderen Teams und Server von Ihrem Dienst abhängig sind. Auf diese Weise können Sie sie benachrichtigen, bevor Sie Ihre Systeme zum Patchen herunterfahren. Service Map erweitert auch die Patchverwaltung durch die Anzeige, ob Ihre Dienste verfügbar und ordnungsgemäß verbunden sind, nachdem die Patches aufgespielt und die Dienste neu gestartet wurden.
 
 
 ## <a name="mapping-overview"></a>Übersicht über die Zuordnung
@@ -54,7 +54,7 @@ Computer können in der Zuordnung erweitert werden, um die ausgeführten Prozess
 Standardmäßig zeigt Service Map Abhängigkeitsinformationen der letzten 30 Minuten an. Mithilfe der Zeitauswahl in der linken oberen Ecke können Sie Zuordnungen nach historischen Zeiträumen (maximal eine Stunde) abfragen, um zu zeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung. Service Map-Daten werden in kostenpflichtigen Arbeitsbereichen 30 Tage lang gespeichert, in kostenlosen Arbeitsbereichen 7 Tage lang.
 
 ## <a name="status-badges-and-border-coloring"></a>Statusbadges und Rahmenfarbe
-Am unteren Rand jedes Servers in der Zuordnung wird möglicherweise eine Liste der Statusbadges mit Statusinformationen über den Server angezeigt. Die Badges weisen darauf hin, dass relevante Informationen für den Server aus einer der OMS-Lösungsintegrationen vorliegen. Durch Klicken auf einen Badge gelangen Sie direkt zu den Statusdetails im rechten Bereich. Aktuell sind folgende Statusbadges verfügbar: Warnungen, Service Desk, Änderungen, Sicherheit und Updates.
+Am unteren Rand jedes Servers in der Zuordnung wird möglicherweise eine Liste der Statusbadges mit Statusinformationen über den Server angezeigt. Die Badges weisen darauf hin, dass relevante Informationen für den Server aus einer der Lösungsintegrationen vorliegen. Durch Klicken auf einen Badge gelangen Sie direkt zu den Statusdetails im rechten Bereich. Aktuell sind folgende Statusbadges verfügbar: Warnungen, Service Desk, Änderungen, Sicherheit und Updates.
 
 Je nach Schweregrad der Statusbadges können die Computerknotenrahmen rot (kritisch), gelb (Warnung) oder blau (Information) sein. Die Farbe stellt den schwerwiegendsten Status aller Statusbadges dar. Ein grauer Rahmen gibt einen Knoten an, der keine Statusindikatoren an.
 
@@ -168,12 +168,12 @@ Wenn Sie rechts oberhalb eines Servers auf die Auslassungszeichen (...) klicken,
 Über **Seiteninterne Links anzeigen** wird der Serverknoten mit allen seiteninternen Links (TCP-Verbindungen, die bei Prozessen auf dem Server starten und enden) neu gezeichnet. Wenn seiteninterne Links angezeigt werden, ändert sich der Menübefehl in **Seiteninterne Links anzeigen**, sodass Sie diese deaktivieren können.
 
 ## <a name="computer-summary"></a>Computerzusammenfassung
-Der Bereich **Computerzusammenfassung** enthält eine Übersicht der Betriebssysteme eines Servers, der Zahl der Abhängigkeiten und der Daten anderer OMS-Lösungen. Hierzu zählen Leistungsmetriken, Service Desk-Tickets, Änderungsnachverfolgung, Sicherheit und Updates.
+Der Bereich **Computerzusammenfassung** enthält eine Übersicht über das Betriebssystem eines Servers, die Zahl der Abhängigkeiten und die Daten anderer Lösungen. Hierzu zählen Leistungsmetriken, Service Desk-Tickets, Änderungsnachverfolgung, Sicherheit und Updates.
 
 ![Bereich „Computerzusammenfassung“](media/oms-service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>Computer- und Prozesseigenschaften
-Beim Navigieren in einer Service Map-Zuordnung können Sie Computer und Prozesse auswählen, um zusätzlichen Kontext zu deren Eigenschaften zu erhalten. Folgende Informationen zu Computern können angezeigt werden: DNS-Name, IPv4-Adressen, CPU- und Arbeitsspeicherkapazität, VM-Typ, Betriebssystemversion, Uhrzeit des letzten Neustarts und die IDs ihrer OMS- und Service Map-Agents.
+Beim Navigieren in einer Service Map-Zuordnung können Sie Computer und Prozesse auswählen, um zusätzlichen Kontext zu deren Eigenschaften zu erhalten. Folgende Informationen zu Computern können angezeigt werden: DNS-Name, IPv4-Adressen, CPU- und Arbeitsspeicherkapazität, VM-Typ, Betriebssystem und Version, Uhrzeit des letzten Neustarts und die IDs ihrer OMS- und Service Map-Agents.
 
 ![Bereich „Computereigenschaften“](media/oms-service-map/machine-properties.png)
 
@@ -185,8 +185,8 @@ Der Bereich **Prozessübersicht** bietet zusätzliche Informationen über die Ko
 
 ![Bereiche „Prozessübersicht“](media/oms-service-map/process-summary.png)
 
-## <a name="operations-management-suite-alerts-integration"></a>Integration in OMS-Warnungen
-Service Map ist in OMS-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im **Computerwarnungsbereich** werden die Warnungen aufgelistet.
+## <a name="alerts-integration"></a>Integration von Warnungen
+Service Map ist in Warnungen in Log Analytics integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im **Computerwarnungsbereich** werden die Warnungen aufgelistet.
 
 ![Bereich „Computerwarnungen“](media/oms-service-map/machine-alerts.png)
 
@@ -197,13 +197,13 @@ Damit Service Map die relevanten Warnungen anzeigt, müssen Sie eine Warnungsreg
 ![Warnungskonfiguration](media/oms-service-map/alert-configuration.png)
 
 
-## <a name="operations-management-suite-log-events-integration"></a>Integration in OMS-Protokollereignisse
+## <a name="log-events-integration"></a>Integration von Protokollereignissen
 Service Map ist in die Protokollsuche integriert, um die Anzahl aller verfügbaren Protokollereignisse für den ausgewählten Server während des ausgewählten Zeitraums anzuzeigen. Sie können auf eine beliebige Zeile in der Liste der Ereignisanzahl klicken, um zur Protokollsuche zu wechseln und die einzelnen Protokollereignisse anzuzeigen.
 
 ![Bereich „Computerprotokollereignisse“](media/oms-service-map/log-events.png)
 
-## <a name="operations-management-suite-service-desk-integration"></a>Integration in OMS-Service Desk
-Die Integration von Service Map in den IT Service Management Connector erfolgt automatisch, wenn beide Lösungen in Ihrem OMS-Arbeitsbereich aktiviert und konfiguriert sind. Die Integration in Service Map wird als „Service Desk“ bezeichnet. Weitere Informationen finden Sie unter [Centrally manage ITSM work items using IT Service Management Connector (Zentrales Verwalten von ITSM-Arbeitselementen mit dem IT Service Management Connector)](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
+## <a name="service-desk-integration"></a>Integration von Service Desk
+Die Integration von Service Map in den ITSM-Connector erfolgt automatisch, wenn beide Lösungen in Ihrem Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind. Die Integration in Service Map wird als „Service Desk“ bezeichnet. Weitere Informationen finden Sie unter [Centrally manage ITSM work items using IT Service Management Connector (Zentrales Verwalten von ITSM-Arbeitselementen mit dem IT Service Management Connector)](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
 
 Im Bereich **Computer-Service Desk** wird eine Liste aller IT Service Management-Ereignisse für den ausgewählten Server im ausgewählten Zeitraum angezeigt. Der Server zeigt ein Symbol an, wenn es aktuelle Elemente gibt. Diese werden im Bereich „Computer-Service Desk“ angezeigt.
 
@@ -214,8 +214,8 @@ Klicken Sie auf **Arbeitselement anzeigen**, um das Element in der verbundenen I
 Klicken Sie auf **In Protokollsuche anzeigen**, um die Details des Elements in der Protokollsuche anzuzeigen.
 
 
-## <a name="operations-management-suite-change-tracking-integration"></a>Integration in OMS-Änderungsnachverfolgung
-Die Integration von Service Map in die Änderungsnachverfolgung erfolgt automatisch, wenn beide Lösungen im OMS-Arbeitsbereich aktiviert und konfiguriert werden.
+## <a name="change-tracking-integration"></a>Integration der Änderungsnachverfolgung
+Die Integration von Service Map in die Änderungsnachverfolgung erfolgt automatisch, wenn beide Lösungen im Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind.
 
 Der Bereich für die **Nachverfolgung von Änderungen auf einem Computer** zeigt eine Liste aller Änderungen an, wobei die jüngste Änderung zuerst angezeigt wird. Der Bereich bietet auch einen Link, mit dem Sie die Protokollsuche aufrufen und weitere Details anzeigen können.
 
@@ -226,7 +226,7 @@ Die folgende Abbildung ist eine Detailansicht eines ConfigurationChange-Ereignis
 ![Ereignis „ConfigurationChange“](media/oms-service-map/configuration-change-event.png)
 
 
-## <a name="operations-management-suite-performance-integration"></a>Integration in die OMS-Leistung
+## <a name="performance-integration"></a>Leistungsintegration
 Im **Computerleistungsbereich** werden Standardleistungsmetriken für den ausgewählten Server angezeigt. Die Metriken umfassen CPU-Auslastung, Speicherauslastung, über das Netzwerk gesendete und empfangene Bytes und eine Liste der wichtigsten Prozesse nach über das Netzwerk gesendeten und empfangenen Bytes.
 
 ![Computerleistungsbereich](media/oms-service-map/machine-performance.png)
@@ -245,20 +245,20 @@ Linux:
 - Network Adapter(*)\\Gesendete Bytes/s
 - Network Adapter(*)\\Empfangene Bytes/s
 
-Um die Leistungsdaten für das Netzwerk abzurufen, muss auch die Wire Data 2.0-Lösung in der OMS aktiviert sein.
+Um die Leistungsdaten für das Netzwerk abzurufen, muss auch die Wire Data 2.0-Lösung im Arbeitsbereich aktiviert sein.
  
-## <a name="operations-management-suite-security-integration"></a>Integration in OMS-Sicherheit
-Die Integration von Service Map in Sicherheit und Überwachung erfolgt automatisch, wenn beide Lösungen im OMS-Arbeitsbereich aktiviert und konfiguriert werden.
+## <a name="security-integration"></a>Sicherheitsintegration
+Die Integration von Service Map in Sicherheit und Überwachung erfolgt automatisch, wenn beide Lösungen im Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind.
 
-Im **Computersicherheitsbereich** werden Daten aus der Sicherheits- und Überwachungslösung von OMS für den ausgewählten Server angezeigt. Im Bereich wird ggf. eine Zusammenfassung herausragender Sicherheitsprobleme für den Server angezeigt, die während des ausgewählten Zeitraums aufgetreten sind. Beim Klicken auf ein Sicherheitsproblem wird eine Protokollsuche nach ausführlichen Informationen zu diesen durchgeführt.
+Im Bereich für **Computersicherheit** werden Daten aus der Sicherheits- und Überwachungslösung für den ausgewählten Server angezeigt. Im Bereich wird ggf. eine Zusammenfassung herausragender Sicherheitsprobleme für den Server angezeigt, die während des ausgewählten Zeitraums aufgetreten sind. Beim Klicken auf ein Sicherheitsproblem wird eine Protokollsuche nach ausführlichen Informationen zu diesen durchgeführt.
 
 ![Bereich für Computersicherheit](media/oms-service-map/machine-security.png)
 
 
-## <a name="operations-management-suite-updates-integration"></a>Integration in OMS-Updates
-Die Integration von Service Map in die Updateverwaltung erfolgt automatisch, wenn beide Lösungen in Ihrem OMS-Arbeitsbereich aktiviert und konfiguriert sind.
+## <a name="updates-integration"></a>Integration von Updates
+Die Integration von Service Map in die Updateverwaltung erfolgt automatisch, wenn beide Lösungen im Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind.
 
-Der Bereich **Computerupdates** zeigt die Daten der OMS-Updateverwaltungslösung des ausgewählten Servers an. Im Bereich wird ggf. für den ausgewählten Zeitraum eine Zusammenfassung fehlender Updates für den Server angezeigt.
+Im Bereich für **Computerupdates** werden Daten aus der Updateverwaltungslösung für den ausgewählten Server angezeigt. Im Bereich wird ggf. für den ausgewählten Zeitraum eine Zusammenfassung fehlender Updates für den Server angezeigt.
 
 ![Bereich für die Änderungsnachverfolgung auf einem Computer](media/oms-service-map/machine-updates.png)
 
@@ -272,8 +272,8 @@ Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers
 
 Es gibt intern generierte Eigenschaften, mit denen Sie eindeutige Prozessen und Computer identifizieren können:
 
-- Computer: Verwenden Sie „ResourceId“ oder „ResourceName_s“ zur eindeutigen Identifizierung eines Computers in einem OMS-Arbeitsbereich.
-- Prozess: Verwenden Sie „ResourceId“ zur eindeutigen Identifizierung eines Prozesses in einem OMS-Arbeitsbereich. „ResourceName_s“ ist innerhalb des Kontexts des Computers, auf dem der Prozess ausgeführt wird (MachineResourceName_s), eindeutig. 
+- Computer: Verwenden Sie „ResourceId“ oder „ResourceName_s“ zur eindeutigen Identifizierung eines Computers in einem Log Analytics-Arbeitsbereich.
+- Prozess: Verwenden Sie „ResourceId“ zur eindeutigen Identifizierung eines Prozesses in einem Log Analytics-Arbeitsbereich. „ResourceName_s“ ist innerhalb des Kontexts des Computers, auf dem der Prozess ausgeführt wird (MachineResourceName_s), eindeutig. 
 
 Da für einen angegebenen Prozess und Computer in einem angegebenen Zeitraum möglicherweise mehrere Datensätze vorhanden sind, können Abfragen mehrere Datensätze für denselben Computer oder Prozess zurückgeben. Wenn nur der aktuellste Datensatz zurückgegeben werden soll, fügen Sie der Abfrage „| dedup ResourceId“ hinzu.
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: sasubram
-ms.openlocfilehash: 9e1dcd38e7c05a234e4b8d7a6190770d813a227f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 06de162a82fa096780b4d7faa79ca1c91f9202fa
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B-Zusammenarbeit: API und Anpassung
 
@@ -77,7 +77,7 @@ Die API kann in folgenden Autorisierungsmodi ausgeführt werden:
 In diesem Modus benötigt der jeweilige Benutzer der API die Berechtigungen, B2B-Einladungen zu erstellen.
 
 ### <a name="app-only-mode"></a>Reiner App-Modus
-Im reinen App-Modus benötigt die App die Berechtigungsbereiche „User.ReadWrite.All“ oder „Directory.ReadWrite.All“, damit die Einladung erfolgreich ist.
+Im reinen App-Modus benötigt die App den Berechtigungsbereich „User.Invite.All“, damit die Einladung erfolgreich ist.
 
 Weitere Informationen finden Sie unter https://graph.microsoft.io/docs/authorization/permission_scopes.
 
@@ -100,14 +100,14 @@ Zudem können Sie sich die Referenz für die Einladungs-API unter [https://devel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Kollaboration:
+Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
 * [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md)
 * [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-iw-add-users.md)
 * [Die Elemente der Einladungs-E-Mail von B2B-Zusammenarbeit](active-directory-b2b-invitation-email.md)
 * [B2B-Zusammenarbeit: Einlösen von Einladungen](active-directory-b2b-redemption-experience.md)
-* [Lizenzierung von Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
+* [Lizenzierung der Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
 * [Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-troubleshooting.md)
 * [Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-faq.md)
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)

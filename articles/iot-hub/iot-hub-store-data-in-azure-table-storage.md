@@ -1,6 +1,6 @@
 ---
 title: Speichern Ihrer IoT Hub-Nachrichten im Azure-Datenspeicher | Microsoft-Dokumentation
-description: "Verwenden Sie das Nachrichtenrouting von IoT Hub, um Ihre IoT Hub-Nachrichten in Ihrem Azure-Blobspeicher zu speichern. IoT Hub-Nachrichten enthalten Informationen wie Sensordaten, die von Ihrem IoT-Gerät gesendet werden."
+description: "Verwenden Sie das Nachrichtenrouting von IoT Hub, um Ihre IoT Hub-Nachrichten in Azure Blob Storage zu speichern. IoT Hub-Nachrichten enthalten Informationen wie Sensordaten, die von Ihrem IoT-Gerät gesendet werden."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: xshi
-ms.openlocfilehash: 5419f0fb86f2a7b051ffc7fda17c74cf15178a6b
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: f6b334dbc9903d0080b74052062de7564aa4a993
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>Speichern von IoT Hub-Nachrichten mit Sensordaten in Ihrem Azure-Blobspeicher
+# <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>Speichern von IoT Hub-Nachrichten mit Sensordaten in Azure Blob Storage
 
 ![Lückenloses Diagramm](media/iot-hub-store-data-in-azure-table-storage/1_route-to-storage.png)
 
@@ -33,10 +33,10 @@ Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktions-App zum S
 
 ## <a name="what-you-do"></a>Aufgaben
 
-- Erstellen Sie ein Azure-Speicherkonto.
+- Erstellen eines Azure-Speicherkontos
 - Bereiten Sie Ihren IoT Hub zum Weiterleiten von Nachrichten an den Speicher vor.
 
-## <a name="what-you-need"></a>Erforderliches Element
+## <a name="what-you-need"></a>Voraussetzungen
 
 - [Richten Sie Ihr Gerät ein](iot-hub-raspberry-pi-kit-node-get-started.md), um folgende Anforderungen zu erfüllen:
   - Ein aktives Azure-Abonnement
@@ -45,7 +45,7 @@ Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktions-App zum S
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu** > **Speicher** > **Speicherkonto** > **Erstellen**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Storage** > **Speicherkonto** > **Erstellen**.
 
 2. Geben Sie die erforderlichen Informationen für das Speicherkonto ein:
 
@@ -57,7 +57,7 @@ Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktions-App zum S
 
    * **An Dashboard anheften**: Aktivieren Sie diese Option für den leichteren Zugriff auf Ihren IoT Hub über das Dashboard.
 
-3. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Create**.
 
 ## <a name="prepare-your-iot-hub-to-route-messages-to-storage"></a>Vorbereiten Ihres IoT Hub zum Weiterleiten von Nachrichten an den Speicher
 
@@ -90,9 +90,9 @@ Klicken Sie im Bereich „Routen“ auf **Hinzufügen**, und geben Sie einen Nam
 
 1. Führen Sie die Beispielanwendung auf Ihrem Gerät aus, um Nachrichten an Ihren IoT Hub zu senden.
 
-2. [Laden Sie den Azure Storage Explorer herunter, und installieren Sie ihn](http://storageexplorer.com/).
+2. [Laden Sie den Azure Storage-Explorer herunter, und installieren Sie ihn](http://storageexplorer.com/).
 
-3. Öffnen Sie den Storage Explorer. Klicken Sie auf **Azure-Konto hinzufügen** > **Anmelden**, und melden Sie sich bei Ihrem Azure-Konto an.
+3. Öffnen Sie den Storage-Explorer. Klicken Sie auf **Azure-Konto hinzufügen** > **Anmelden**, und melden Sie sich bei Ihrem Azure-Konto an.
 
 4. Klicken Sie auf Ihr Azure-Abonnement > **Speicherkonten** > Ihr Speicherkonto > **Blobcontainer** > Ihr Container.
 

@@ -1,6 +1,6 @@
 ---
-title: "Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)"
-description: "Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)"
+title: "Versionshinweise für Microsoft Azure Storage-Explorer (Vorschauversion)"
+description: "Versionshinweise für den Microsoft Azure Storage-Explorer (Vorschauversion)"
 services: storage
 documentationcenter: na
 author: cawa
@@ -14,25 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: fb47ceb63d45a3e896d55d8c304562cc667d0414
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: d23ddfb881695b2310d379a9112e6ab8305c0cce
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)
+# <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Versionshinweise für Microsoft Azure Storage-Explorer (Vorschauversion)
 
-Dieser Artikel enthält die Versionsanmerkungen für Azure Storage-Explorer 0.9.4 (Vorschauversion) sowie die Versionsanmerkungen für frühere Versionen.
+Dieser Artikel enthält die Versionshinweise für den Azure Storage-Explorer 0.9.5 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
 
-Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie unter Windows, MacOS und Linux komfortabel mit Azure Storage-Daten arbeiten können.
+Bei der [Vorschauversion des Microsoft Azure Storage-Explorers](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können.
+
+## <a name="version-095"></a>Version 0.9.5
+06.02.2018
+
+### <a name="download-azure-storage-explorer-095-preview"></a>Herunterladen des Azure Storage-Explorers 0.9.5 (Vorschauversion)
+- [Azure Storage-Explorer 0.9.5 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 0.9.5 (Vorschauversion) für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 0.9.5 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Neu
+
+* Unterstützung für Momentaufnahmen von Dateifreigaben:
+    * Erstellen und verwalten Sie Momentaufnahmen für Ihre Dateifreigaben.
+    * Wechseln Sie beim Durchsuchen problemlos zwischen den Ansichten der Momentaufnahmen Ihrer Dateifreigaben.
+    * Stellen Sie frühere Versionen Ihrer Dateien wieder her.
+* Unterstützung der Vorschauversion für Azure Data Lake Store:
+    * Stellen Sie Verbindungen mit Ihren ADLS-Ressourcen unter mehreren Konten her.
+    * Stellen Sie mit ADL-URIs Verbindungen mit ADLS-Ressourcen her, und geben Sie diese frei.
+    * Führen Sie grundlegende Vorgänge für Dateien und Ordner rekursiv aus.
+    * Heften Sie einzelne Ordner an den Schnellzugriff an.
+    * Zeigen Sie Ordnerstatistiken an.
+
+### <a name="fixes"></a>Fehlerbehebungen
+* Leistungsverbesserungen beim Starten
+* Verschiedene Fehlerbehebungen
+
+### <a name="known-issues"></a>Bekannte Probleme
+* Storage-Explorer unterstützt keine ADFS-Konten.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Im Bereich mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-094--093"></a>Version 0.9.4/0.9.3
 01/21/2018
 
 ### <a name="download-azure-storage-explorer-094-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.4 (Vorschauversion)
-- [Azure Storage-Explorer 0.9.4 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage-Explorer 0.9.4 (Vorschauversion) für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage-Explorer 0.9.4 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [Azure Storage-Explorer 0.9.4 (Vorschauversion) für Windows herunterladen](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [Azure Storage-Explorer 0.9.4 (Vorschauversion) für Mac herunterladen](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [Azure Storage-Explorer 0.9.4 (Vorschauversion) für Linux herunterladen](https://go.microsoft.com/fwlink/?LinkId=809308)
 
 ### <a name="new"></a>Neu
 * Das vorhandene Storage-Explorer-Fenster wird in folgenden Fällen wiederverwendet:
@@ -53,7 +107,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Tastenkombinationen für „Explorer anzeigen“ und „Kontenverwaltung anzeigen“ sollten entsprechend STRG/BEFEHL+UMSCHALT+E oder STRG/BEFEHL+UMSCHALT+A sein.
 * Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
 * Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
-* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
 * Im Bereich mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
@@ -76,15 +130,30 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
     sudo apt-get install libgconf-2-4
     ```
 
+## <a name="previous-releases"></a>Vorgängerversionen
+
+* [Version 0.9.2](#version-092)
+* [Version 0.9.1 / 0.9.0](#version-091)
+* [Version 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [Version 0.8.13](#version-0813)
+* [Version 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
+* [Version 0.8.9 / 0.8.8](#version-089--088)
+* [Version 0.8.7](#version-087)
+* [Version 0.8.6](#version-086)
+* [Version 0.8.5](#version-085)
+* [Version 0.8.4](#version-084)
+* [Version 0.8.3](#version-083)
+* [Version 0.8.2](#version-082)
+* [Version 0.8.0](#version-080)
+* [Version 0.7.20160509.0](#version-07201605090)
+* [Version 0.7.20160325.0](#version-07201603250)
+* [Version 0.7.20160129.1](#version-07201601291)
+* [Version 0.7.20160105.0](#version-07201601050)
+* [Version 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-092"></a>Version 0.9.2
 01.11.2017
-
-### <a name="download-azure-storage-explorer-092-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.2 (Vorschauversion)
-* [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Windows herunterladen](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Mac herunterladen](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [Azure Storage Explorer 0.9.2 (Vorschauversion) für Linux herunterladen](https://go.microsoft.com/fwlink/?LinkId=809308)
-
-
 
 ### <a name="hotfixes"></a>Hotfixes
 * Abhängig von der lokalen Zeitzone waren beim Bearbeiten von Edm.DateTime-Werten für Tabellenentitäten unerwartete Datenänderungen möglich. Der Editor verwendet nun ein Nur-Text-Feld, mit dem die Edm.DateTime-Werte präzise und einheitlich gesteuert werden können.
@@ -122,7 +191,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Tastenkombinationen für „Explorer anzeigen“ und „Kontenverwaltung anzeigen“ sollten entsprechend STRG/BEFEHL+UMSCHALT+E oder STRG/BEFEHL+UMSCHALT+A sein.
 * Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
 * Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
-* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
 * Im Bereich mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
@@ -144,32 +213,6 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-
-
-
-
-
-## <a name="previous-releases"></a>Vorgängerversionen
-
-* [Version 0.9.1 / 0.9.0](#version-091)
-* [Version 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [Version 0.8.13](#version-0813)
-* [Version 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
-* [Version 0.8.9 / 0.8.8](#version-089--088)
-* [Version 0.8.7](#version-087)
-* [Version 0.8.6](#version-086)
-* [Version 0.8.5](#version-085)
-* [Version 0.8.4](#version-084)
-* [Version 0.8.3](#version-083)
-* [Version 0.8.2](#version-082)
-* [Version 0.8.0](#version-080)
-* [Version 0.7.20160509.0](#version-07201605090)
-* [Version 0.7.20160325.0](#version-07201603250)
-* [Version 0.7.20160129.1](#version-07201601291)
-* [Version 0.7.20160105.0](#version-07201601050)
-* [Version 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-091--090-preview"></a>Version 0.9.1/0.9.0 (Vorschauversion)
 10/20/2017
@@ -202,7 +245,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Tastenkombinationen für „Explorer anzeigen“ und „Kontenverwaltung anzeigen“ sollten entsprechend STRG/BEFEHL+UMSCHALT+E oder STRG/BEFEHL+UMSCHALT+A sein.
 * Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
 * Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
-* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
 * Im Bereich mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
@@ -229,7 +272,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 21.08.2017
 
 ### <a name="new"></a>Neu
-* Beim Öffnen eines Blobs fordert Speicher-Explorer Sie zum Hochladen der heruntergeladenen Datei auf, wenn eine Änderung erkannt wird
+* Beim Öffnen eines Blobs fordert Storage-Explorer Sie zum Hochladen der heruntergeladenen Datei auf, wenn eine Änderung erkannt wird
 * Verbesserter Azure Stack-Anmeldevorgang
 * Die Leistung beim gleichzeitigen Hochladen/Herunterladen zahlreicher kleiner Dateien wurde verbessert.
 
@@ -238,7 +281,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Bei einigen Blobtypen führt die Auswahl von „Ersetzen“ während eines Uploadkonflikts manchmal zu einem Neustart des Uploads.
 * In Version 0.8.15 wurden Uploads manchmal bei 99 Prozent angehalten.
 * Beim Hochladen von Dateien in eine Dateifreigabe trat beim Upload ein Fehler auf, wenn Sie ein noch nicht vorhandenes Verzeichnis ausgewählt haben.
-* Speicher-Explorer hat falsche Zeitstempel für Shared Access Signatures und Tabellenabfragen generiert.
+* Der Storage-Explorer hat falsche Zeitstempel für Shared Access Signatures und Tabellenabfragen generiert.
 
 
 ### <a name="known-issues"></a>Bekannte Probleme
@@ -246,7 +289,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Wenn Sie versuchen, eine Datei mit einem ungültigen Windows-Dateinamen zu öffnen, wird für den Download der Fehler „Datei nicht gefunden“ angezeigt.
 * Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Dies ist eine Einschränkung der Azure Storage-Knotenbibliothek.
 * Nach dem Abschluss des Blob-Uploads wird die Registerkarte aktualisiert, von der der Upload initiiert wurde. Dies ist eine Änderung gegenüber dem früheren Verhalten; sie bewirkt zudem, dass Sie wieder in das Stammverzeichnis des Containers gelangen, in dem Sie sich befinden.
-* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
 * Im Bereich mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
@@ -272,13 +315,13 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 * Die Electron-Version wurde auf 1.7.2 aktualisiert, sodass verschiedene wichtige Sicherheitsupdates genutzt werden können
 * Sie können nun rasch über das Hilfemenü auf den Onlineleitfaden zur Problembehandlung zugreifen
-* Speicher-Explorer – [Leitfaden zur Problembehandlung][2]
+* Storage-Explorer – [Leitfaden zur Problembehandlung][2]
 * [Anweisungen][3] zum Herstellen einer Verbindung mit einem Azure Stack-Abonnement
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
 * Schaltflächen im Dialogfeld zum Bestätigen des Löschens von Ordnern reagieren nicht auf Mausklicks unter Linux. Die Problemumgehung besteht darin, die Eingabetaste zu verwenden
-* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
 * Im Panel mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
@@ -297,7 +340,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 #### <a name="new"></a>Neu
 
-* Speicher-Explorer – [Leitfaden zur Problembehandlung][2]
+* Storage-Explorer – [Leitfaden zur Problembehandlung][2]
 * [Anweisungen][3] zum Herstellen einer Verbindung mit einem Azure Stack-Abonnement
 
 #### <a name="fixes"></a>Fehlerbehebungen
@@ -311,7 +354,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 #### <a name="known-issues"></a>Bekannte Probleme
 
-* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird
 * Beim Vergrößern oder Verkleinern der Anzeige wurde die Zoomstufe u.U. vorübergehend auf den Standardwert zurückgesetzt
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
 * Im Panel mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern
@@ -332,7 +375,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 #### <a name="new"></a>Neu
 
-* Speicher-Explorer wird nun automatisch geschlossen, wenn Sie ein Update aus der Updatebenachrichtigung installieren
+* Storage-Explorer wird nun automatisch geschlossen, wenn Sie ein Update aus der Updatebenachrichtigung installieren
 * Der direkte schnelle Zugriff verbessert Ihre Arbeit mit häufig aufgerufenen Ressourcen
 * Im Blobcontainer-Editor ist nun ersichtlich, zu welchem virtuellen Computer ein geleaster Blob gehört
 * Das linke Panel kann nun reduziert werden
@@ -380,7 +423,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 #### <a name="new"></a>Neu
 
-* Speicher-Explorer 0.8.9 lädt automatisch die neueste Version für Updates herunter.
+* Storage-Explorer 0.8.9 lädt automatisch die neueste Version für Updates herunter.
 * Hotfix: Beim Anfügen eines Speicherkontos mit einem vom Portal generierten SAS-URI trat ein Fehler auf.
 * Sie können nun Blob-Momentaufnahmen erstellen, verwalten und höher stufen.
 * Sie können sich nun bei Azure China-, Azure Deutschland- und Azure US Government-Konten anmelden.
@@ -416,7 +459,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 #### <a name="fixes"></a>Fehlerbehebungen
 
-* Behoben: Speicher-Explorer ist unter Mac jetzt eine vertrauenswürdige App
+* Behoben: Storage-Explorer ist unter Mac jetzt eine vertrauenswürdige App
 * Behoben: Ubuntu 14.04 wird wieder unterstützt
 * Behoben: Die Benutzeroberflächenoption „Konto hinzufügen“ blinkte manchmal beim Laden von Abonnements
 * Behoben: Es kam vor, dass im Navigationsbereich auf der linken Seite nicht alle Speicherressourcen aufgeführt wurden
@@ -430,7 +473,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Beim Schnellzugriff kann das Navigieren zur Zielressource einige Sekunden dauern. Dies hängt davon ab, wie viele Ressourcen Sie verwenden
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
 * Bei der Suche wird auf ca. 50.000 Knoten gesucht. Anschließend kann es zu einer Leistungsbeeinträchtigung oder zu Ausnahmefehlern kommen
-* Wenn Sie den Speicher-Explorer unter macOS zum ersten Mal verwenden, werden unter Umständen mehrere Eingabeaufforderungen angezeigt, in denen die Berechtigung des Benutzers zum Zugreifen auf den Schlüsselbund abgefragt wird. Es wird empfohlen, die Option „Immer zulassen“ zu wählen, damit die Eingabeaufforderung nicht mehr angezeigt wird
+* Wenn Sie den Storage-Explorer unter macOS zum ersten Mal verwenden, werden unter Umständen mehrere Eingabeaufforderungen angezeigt, in denen die Berechtigung des Benutzers zum Zugreifen auf den Schlüsselbund abgefragt wird. Es wird empfohlen, die Option „Immer zulassen“ zu wählen, damit die Eingabeaufforderung nicht mehr angezeigt wird
 
 18.11.2016
 ### <a name="version-086"></a>Version 0.8.6
@@ -463,7 +506,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 #### <a name="known-issues"></a>Bekannte Probleme
 
-* Diese Version von Speicher-Explorer wird nicht unter Ubuntu 14.04 ausgeführt
+* Diese Version des Storage-Explorers wird nicht unter Ubuntu 14.04 ausgeführt
 * Wenn mehrere Registerkarten für dieselbe Ressource geöffnet werden sollen, klicken Sie nicht ständig auf die gleiche Ressource. Klicken Sie auf eine andere Ressource, wechseln Sie zurück, und klicken Sie dann auf die ursprüngliche Ressource, um sie in einer weiteren Registerkarte zu öffnen
 * Der Schnellzugriff funktioniert nur mit abonnementbasierten Elementen. Lokale Ressourcen oder Ressourcen, die per Schlüssel oder SAS-Token angefügt werden, werden in dieser Version nicht unterstützt
 * Beim Schnellzugriff kann das Navigieren zur Zielressource einige Sekunden dauern. Dies hängt davon ab, wie viele Ressourcen Sie verwenden
@@ -619,7 +662,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Unterstützung von Warteschlangen: Anzeigen, Hinzufügen und Entfernen von Nachrichten aus der Warteschlange
 * Generieren von SAS-URIs für Speicherkonten
 * Herstellen einer Verbindung mit Speicherkonten mit SAS-URIs
-* Updatebenachrichtigungen für künftige Aktualisierungen von Speicher-Explorer
+* Updatebenachrichtigungen für künftige Aktualisierungen von Storage-Explorer
 * Aktualisiertes Erscheinungsbild
 
 #### <a name="fixes"></a>Fehlerbehebungen

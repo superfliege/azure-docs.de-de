@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 5dd90d527afd81ad225b9693b126f48e48bde884
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 37f50d962ff73330a23c0f7397b93c84dd2e8181
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Verwenden einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Key Vault 
 
@@ -47,7 +47,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt. Sie können MSI auch auf einem vorhandenen virtuellen Computer aktivieren.
 
-1.  Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1.  Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 2.  Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
 3.  Geben Sie die Informationen zum virtuellen Computer ein. Der **Benutzername** und das **Kennwort**, die hier erstellt werden, sind die Anmeldeinformationen, die Sie für die Anmeldung beim virtuellen Computer verwenden.
 4.  Wählen Sie in der Dropdownliste das richtige **Abonnement** für den virtuellen Computer aus.
@@ -77,7 +77,7 @@ Mithilfe von MSI kann der Code Zugriffstoken zur Authentifizierung von Ressource
 
 Zunächst müssen Sie eine Key Vault erstellen und der Identität des virtuellen Computers den Zugriff darauf erteilen.   
 
-1. Wählen Sie oben auf der linken Navigationsleiste **+ Neu**, dann **Sicherheit und Identität** und anschließend **Key Vault**.  
+1. Wählen Sie oben in der linken Navigationsleiste **Ressource erstellen** > **Sicherheit + Identität** > **Key Vault** aus.  
 2. Geben Sie unter **Name** einen Namen für die neue Key Vault an. 
 3. Suchen Sie die Key Vault in dem Abonnement und in der Ressourcengruppe, in der sich auch der zuvor erstellte virtuelle Computer befindet. 
 4. Wählen Sie **Zugriffsrichtlinien** aus, und klicken Sie auf **Neue hinzufügen**. 

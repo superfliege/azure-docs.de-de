@@ -4,13 +4,13 @@ description: "Bietet eine Übersicht über Bewertungsberechnungen im Azure Migra
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: 10bc249aa70852dce71c96e46319925cececdd8b
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 886977764517f1fec89eee77fc3263d30ff9ab31
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 
@@ -21,7 +21,7 @@ Der [Azure Migrate](migrate-overview.md)-Dienst bewertet Gruppen von lokalen Com
 
 Mit der Abhängigkeitsvisualisierung in Azure Migrate können Sie Gruppen für die Migrationsbewertung mit höherer Zuverlässigkeit erstellen. Die Abhängigkeitsvisualisierung ermöglicht die Darstellung von Netzwerkabhängigkeiten bestimmter Computer oder Computergruppen. Dadurch wird sichergestellt, dass bei der Migration keine Funktionen verloren gehen (oder Computer vergessen werden), wenn Apps und Workloads über mehrere Computer hinweg ausgeführt werden.  
 
-## <a name="how-does-it-work"></a>Funktionsweise
+## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
 Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnung](../operations-management-suite/operations-management-suite-service-map.md) in [Log Analytics](../log-analytics/log-analytics-overview.md).
 - Wenn Sie ein Azure Migrate-Projekt erstellen, wird in Ihrem Abonnement ein OMS Log Analytics-Arbeitsbereich erstellt.
@@ -35,7 +35,7 @@ Zur Verwendung der Abhängigkeitsvisualisierung müssen Sie Agents auf alle loka
 
 ## <a name="do-i-need-to-pay-for-it"></a>Fallen dadurch Kosten an?
 
-Ja. Der Log Analytics-Arbeitsbereich wird standardmäßig erstellt. Er wird aber nur verwendet, wenn Sie die Abhängigkeitsvisualisierung in Azure Migrate nutzen. Wenn Sie die Abhängigkeitsvisualisierung nutzen oder den Arbeitsbereich außerhalb von Azure Migrate verwenden, werden Ihnen die Kosten für die Verwendung des Arbeitsbereichs berechnet.  Weitere Informationen zur Preisgestaltung der Dienstzuordnungslösung finden Sie [hier](https://azure.microsoft.com/pricing/details/insight-analytics/). 
+Weitere Informationen zu den Preisen von Azure Migrate finden Sie [hier](https://azure.microsoft.com/pricing/details/azure-migrate/). 
 
 ## <a name="how-do-i-manage-the-workspace"></a>Wie verwalte ich den Arbeitsbereich?
 

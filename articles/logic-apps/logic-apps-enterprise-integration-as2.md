@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 6a283d8772e48aa6671d88288c2083d891a220d5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: fa61bbecc51c4f3163bd1cc077391bb102662297
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von AS2-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
@@ -40,12 +40,12 @@ Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise
 
 1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an.  
 
-2.  Wählen Sie im linken Menü die Option **Weitere Dienste** aus. Geben Sie im Suchfeld den Begriff **integration** als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
+2.  Wählen Sie im Menü links **Alle Dienste** aus. Geben Sie im Suchfeld den Begriff **integration** als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
 
     > [!TIP]
-    > Sollte **Weitere Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise erst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
+    > Falls **Alle Dienste** nicht angezeigt wird, müssen Sie das Menü möglicherweise zuerst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
 
-    ![Weitere Dienste, nach „Integration“ filtern, „Integrationskonten“ auswählen](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+    ![Alle Dienste, nach „Integration“ filtern, „Integrationskonten“ auswählen](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
 3. Wählen Sie auf dem geöffneten Blatt **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
 Sollten keine Integrationskonten angezeigt werden, [erstellen Sie zunächst ein Konto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Alles über Integrationskonten").  

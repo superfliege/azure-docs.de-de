@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 426a456f8d979c8fb68b469f01eb68f378e876e8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a17d0918ea5938daf81c469fd6402a7dc9764831
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren vom lokalen Standort in Azure
 
@@ -77,7 +77,7 @@ Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung)\*, Wind
 > Bei Linux-Distributionen werden nur die vordefinierten Kernel, die bei Veröffentlichungen/Updates von Nebenversionen der Distribution enthalten sind, unterstützt.
 >
 > Upgrades von Hauptversionen einer Linux-Distribution auf einem mit Azure Site Recovery geschützten virtuellen VMware-Computer oder einem physischen Server werden nicht unterstützt. Deaktivieren Sie während des Upgrades des Betriebssystems von einer Hauptversion auf eine andere (z.B. CentOS 6.* nach CentOS 7.\*) die Replikation für den Computer, aktualisieren Sie das Betriebssystem auf dem Computer, und aktivieren Sie dann die Replikation erneut.
-> 
+>
 
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>Unterstützte Ubuntu-Kernel-Versionen für VMware-/physische Server
@@ -166,7 +166,7 @@ Multipfad (MPIO)<br></br>Getestet mit: Microsoft DSM, EMC PowerPath 5.7 SP4, EMC
 VMDK | Ja | N/V
 VHD/VHDX | N/V | Ja
 Gen 2-VM | N/V | Ja
-EFI/UEFI| Nur bei Migration zu Azure für Windows Server 2012 und höher. </br></br> ** Siehe Hinweis am Ende der Tabelle.  | Ja
+EFI/UEFI| Migration zu Azure nur bei virtuellen VMware-Computern mit Windows Server 2012 und höher. </br></br> ** Siehe Hinweis am Ende der Tabelle.  | Ja
 Freigegebener Clusterdatenträger | Nein  | Nein 
 Verschlüsselter Datenträger | Nein  | Nein 
 NFS | Nein  | N/V
@@ -182,10 +182,11 @@ Ausschließen von Datenträgern | Ja | Ja
 Multipfad (MPIO) | N/V | Ja
 
 > [!NOTE]
-> ** Virtuelle VMware-Computer oder physische Server unter Windows Server 2012 oder höher mit UEFI Boot können zu Azure migriert werden. Es gelten folgende Einschränkungen.
+> ** Virtuelle VMware-Computer unter Windows Server 2012 oder höher mit UEFI Boot können zu Azure migriert werden. Es gelten folgende Einschränkungen.
 > - Nur bei Migration zu Azure. Ein Failback auf einen lokalen VMware-Standort wird nicht unterstützt.
 > - Auf dem Betriebssystemdatenträger des Servers werden höchstens vier Partitionen unterstützt.
 > - Erfordert Azure Site Recovery Mobility Service-Version 9.13 oder höher.
+> - Nicht bei physischen Servern unterstützt.
 
 **Azure-Speicher** | **VMware-/physische Server** | **Hyper-V (mit/ohne Virtual Machine Manager)**
 --- | --- | ---

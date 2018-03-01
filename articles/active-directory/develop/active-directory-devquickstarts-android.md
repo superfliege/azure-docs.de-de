@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Android – Erste Schritte | Microsoft Docs"
+title: "Azure AD Android – Erste Schritte | Microsoft-Dokumentation"
 description: "In diesem Thema erfahren Sie, wie eine Android-Anwendung erstellt wird, die sich für die Anmeldung in Azure AD integriert und über OAuth 2.0 durch Azure AD geschützte APIs aufruft."
 services: active-directory
 documentationcenter: android
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 619334b3ca65654fd845a62c2fc068156d94d6fc
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 6c949c07c95c5d965b31725bce4ab2deac646bca
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-android-getting-started"></a>Azure AD Android – Erste Schritte
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -52,7 +52,7 @@ Es wird davon ausgegangen, dass Sie die zuvor erwähnte TODO-REST-API registrier
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnis** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
-3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
+3. Klicken Sie im linken Bereich auf **Alle Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Geben Sie einen Anzeigenamen für die Anwendung ein, z.B. **TodoListService**, wählen Sie **Webanwendung und/oder Web-API** aus, und klicken Sie auf **Weiter**.
 6. Geben Sie als Anmelde-URL die Basis-URL für das Beispiel ein. Standardmäßig ist dies `https://localhost:8080`.
@@ -70,7 +70,7 @@ Es wird davon ausgegangen, dass Sie die zuvor erwähnte Beispielanwendung regist
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnis** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
-3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
+3. Klicken Sie im linken Bereich auf **Alle Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Geben Sie einen Anzeigenamen für die Anwendung ein, z.B. **TodoListClient-Android**, wählen Sie **Systemeigene Clientanwendung** aus, und klicken Sie auf **Weiter**.
 6. Geben Sie als Umleitungs-URI `http://TodoListClient` ein. Klicken Sie auf **Fertig stellen**.
@@ -278,7 +278,7 @@ Für eine automatische Tokenanforderung wird die Popup-Benutzeroberfläche nicht
 
 Mit dieser Methode können Sie auch einen Synchronisierungsaufruf durchführen. Sie können „null“ auf „callback“ (Rückruf) festlegen oder acquireTokenSilentSync verwenden.
 
-### <a name="diagnostics"></a>Diagnostics
+### <a name="diagnostics"></a>Diagnose
 Dies sind die wichtigsten Informationsquellen zum Diagnostizieren von Problemen:
 
 * Ausnahmen

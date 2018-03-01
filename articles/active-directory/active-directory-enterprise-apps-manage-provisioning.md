@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 122dbdb838377a36020f9ec692b38544004e676c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 846ec63d47ebc787fa1edbf1968f1a843e96ac9d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zur Verwaltung der automatischen Bereitstellung und der Aufhebung der Bereitstellung von Benutzerkonten für Anwendungen, die dies unterstützen – insbesondere für Anwendungen, die aus der Kategorie „Vorgestellt“ des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Suchen Ihrer Apps im Portal
-Alle Anwendungen, die von einem Verzeichnisadministrator mithilfe des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) konfiguriert werden, können im [Azure-Portal](https://portal.azure.com) angezeigt und verwaltet werden. Die Anwendungen können im Abschnitt **Weitere Dienste** &gt; **Unternehmensanwendungen** im Portal gefunden werden. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden.
+Alle Anwendungen, die von einem Verzeichnisadministrator mithilfe des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) konfiguriert werden, können im [Azure-Portal](https://portal.azure.com) angezeigt und verwaltet werden. Sie finden die Anwendungen im Portal im Abschnitt **Alle Dienste** &gt; **Unternehmensanwendungen**. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden.
 
-![Blatt „Unternehmensanwendungen“][0]
+![Bereich für Unternehmensanwendungen][0]
 
-Wählen Sie auf der linken Seite den Link **All applications** (Alle Anwendungen), um eine Liste aller konfigurierten Apps anzuzeigen, einschließlich Apps, die aus dem Katalog hinzugefügt wurden. Beim Auswählen einer App wird das Ressourcenblatt die App geladen, in dem Berichte für App angezeigt und eine Reihe von Einstellungen verwaltet werden können.
+Wählen Sie auf der linken Seite den Link **All applications** (Alle Anwendungen), um eine Liste aller konfigurierten Apps anzuzeigen, einschließlich Apps, die aus dem Katalog hinzugefügt wurden. Beim Auswählen einer App wird der Ressourcenbereich für die App geladen, in dem Berichte für die App angezeigt und eine Reihe von Einstellungen verwaltet werden können.
 
 Einstellungen für die Bereitstellung von Benutzerkonten können durch Auswählen der Option **Bereitstellung** auf der linken Seite verwaltet werden.
 
-![Blatt „Anwendungsressource“][1]
+![Bereich für Anwendungsressourcen][1]
 
 ## <a name="provisioning-modes"></a>Bereitstellungsmodi
-Das Blatt **Bereitstellung** beginnt mit dem Menü **Modus**, das anzeigt, welche Bereitstellungsmodi für eine Unternehmensanwendung unterstützt werden, und deren Konfiguration ermöglicht. Die verfügbaren Optionen umfassen:
+Der Bereich **Bereitstellung** beginnt mit dem Menü **Modus**, das anzeigt, welche Bereitstellungsmodi für eine Unternehmensanwendung unterstützt werden, und in dem Sie die Modi konfigurieren können. Die verfügbaren Optionen umfassen:
 
 * **Automatisch**: Diese Option wird angezeigt, wenn Azure AD die automatische API-basierte Bereitstellung bzw. das Aufheben der Bereitstellung von Benutzerkonten für diese Anwendung unterstützt. Bei Auswahl dieses Modus wird eine Schnittstelle angezeigt, die Administratoren durch folgende Aufgaben führt: Konfiguration von Azure AD zum Herstellen einer Verbindung mit der Benutzerverwaltungs-API der Anwendung, Erstellen von Kontozuordnungen und -workflows, die den Fluss von Benutzerkontodaten zwischen Azure AD und der App definieren und Verwaltung des Azure AD-Bereitstellungsdiensts.
 * **Manuell** : Diese Option wird angezeigt, wenn Azure AD die automatische Bereitstellung von Benutzerkonten für diese Anwendung nicht unterstützt. Diese Option bedeutet, dass in der Anwendung gespeicherte Benutzerkontodatensätze basierend auf den Benutzerverwaltungs- und Bereitstellungsfunktionen dieser Anwendung (einschließlich SAML Just-in-Time-Bereitstellung) mit einem externen Prozess verwaltet werden müssen.
@@ -54,7 +54,7 @@ Hier können Administratoren anzeigen und bearbeiten, welche Benutzerattribute z
 
 Zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps ist eine vorkonfigurierte Sammlung von Zuordnungen vorhanden. Einige Apps verwalten andere Objekttypen, z. B. Gruppen oder Kontakte. Bei Auswahl einer dieser Zuordnungen in die Tabelle wird rechts der Mapping-Editor geöffnet, in dem Zuordnungen angezeigt und angepasst werden können.
 
-![Blatt „Anwendungsressource“][2]
+![Bereich für Anwendungsressourcen][2]
 
 Unterstützte Anpassungen umfassen:
 
@@ -81,6 +81,6 @@ Es wird ein Link zum **Bericht über die Bereitstellungsaktivität** bereitgeste
 Wir hoffen, dass Sie mit Ihren Erfahrungen mit Azure AD zufrieden sind. Es wäre schön, wenn Sie uns weiter Feedback senden würden! Feedback und Verbesserungsvorschläge können Sie uns im [Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal) über den Abschnitt **Verwaltungsportal** zukommen lassen.  Wir haben großen Spaß daran, jeden Tag neue Dinge zu entwickeln, und Ihr Feedback hilft uns, die nächsten Ziele anzugehen und zu definieren.
 
 
-[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
+[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.PNG
 [1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG

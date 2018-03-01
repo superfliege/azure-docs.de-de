@@ -12,11 +12,11 @@ Virtuelle Netzwerke sind das empfohlene Verfahren zum Verbinden virtueller Compu
 So verbinden Sie virtuelle Computer in einem virtuellen Netzwerk:
 
 1. Erstellen Sie das virtuelle Netzwerk im [Azure-Portal](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md), und geben Sie die klassische Bereitstellung an.
-2. Erstellen Sie die Gruppe von Clouddiensten für Ihre Bereitstellung entsprechend Ihrem Entwurf für Verfügbarkeitsgruppen und Lastenausgleich. Klicken Sie im Azure-Portal für jeden Clouddienst auf **Neu > Compute > Clouddienst**.
+2. Erstellen Sie die Gruppe von Clouddiensten für Ihre Bereitstellung entsprechend Ihrem Entwurf für Verfügbarkeitsgruppen und Lastenausgleich. Klicken Sie im Azure-Portal für jeden Clouddienst auf **Ressource erstellen > Compute > Clouddienst**.
 
   Wenn Sie die Details für den Clouddienst angeben, wählen Sie die gleiche _Ressourcengruppe_ wie für das virtuelle Netzwerk aus.
 
-3. Klicken Sie zum Erstellen der neuen virtuellen Computer jeweils auf **Neu > Compute**, und wählen Sie dann das entsprechende VM-Image unter **Ausgewählte Apps** aus.
+3. Klicken Sie zum Erstellen der neuen virtuellen Computer jeweils auf **Ressource erstellen > Compute**, und wählen Sie dann das entsprechende VM-Image unter **Ausgewählte Apps** aus.
 
   Wählen Sie auf dem Blatt **Grundlegende Einstellungen** für den virtuellen Computer die gleiche _Ressourcengruppe_ wie für das virtuelle Netzwerk aus.
 

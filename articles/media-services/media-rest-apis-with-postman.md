@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: a24b73a93bddbeb5b56ddfdf604fa99faccea442
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 72b110cac8d4945c958d760ff98e2da2f2796b62
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurieren von Postman für Media Services-REST-API-Aufrufe
 
@@ -33,7 +33,7 @@ Diese Umgebung und Sammlung werden in Artikeln verwendet, die zeigen, wie versch
 
 ## <a name="configure-the-environment"></a>Konfigurieren der Umgebung 
 
-1. Erstellen Sie eine JSON-Datei, die die Umgebungsvariablen enthält, die in AMS-Tutorials verwendet werden. Weisen Sie der Datei den Namen **AzureMediaServices.postman_environment.json** zu. Öffnen Sie die Datei, und fügen Sie den Code ein, der die Postman-Umgebung über [diese Codeliste](postman-environment.md) definiert. 
+1. Erstellen Sie eine JSON-Datei, die die Umgebungsvariablen enthält, die in AMS-Tutorials verwendet werden. Benennen Sie die Datei (z.B. **AzureMediaServices.postman_environment.json**). Öffnen Sie die Datei, und fügen Sie den Code ein, der die Postman-Umgebung über [diese Codeliste](postman-environment.md) definiert. 
 2. Öffnen Sie **Postman**.
 3. Wählen Sie auf der rechten Seite des Bildschirms die Option **Manage environment** (Umgebung verwalten) aus.
 
@@ -48,7 +48,7 @@ Diese Umgebung und Sammlung werden in Artikeln verwendet, die zeigen, wie versch
 
 ## <a name="configure-the-collection"></a>Konfigurieren der Sammlung
 
-1. Erstellen Sie eine JSON-Datei, die die Sammlung **Postman** mit allen Vorgängen enthält, die zum Hochladen einer Datei in Media Services erforderlich sind. Weisen Sie der Datei den Namen **AzureMediaServicesOperations.postman_collection.json** zu. Öffnen Sie die Datei, und fügen Sie den Code ein, der die **Postman**-Sammlung über [diese Codeliste](postman-collection.md) definiert.
+1. Erstellen Sie eine JSON-Datei, die die Sammlung **Postman** mit allen Vorgängen enthält, die zum Hochladen einer Datei in Media Services erforderlich sind. Benennen Sie die Datei (z.B. **AzureMediaServicesOperations.postman_collection.json**). Öffnen Sie die Datei, und fügen Sie den Code ein, der die **Postman**-Sammlung über [diese Codeliste](postman-collection.md) definiert.
 2. Klicken Sie auf **Import**, um die Sammlungsdatei zu importieren.
 3. Wählen Sie die Datei **AzureMediaServicesOperations.postman_collection.json** aus.
 

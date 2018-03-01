@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
-ms.openlocfilehash: 1902e5c18cd7083ceeda79e6b9e779e4baaf175a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf7eb967760338626cd7e0465b16dc570e5f582a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-power-bi-embedded-capacity-in-the-azure-portal"></a>Einrichten von Power BI Embedded-Kapazität im Azure-Portal
 
@@ -41,7 +41,7 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie **+ (Neu)** > **Daten + Analysen** aus.
+2. Wählen Sie **Ressource erstellen** > **Daten + Analysen** aus.
 
 3. Geben Sie in das Suchfeld *Power BI Embedded* ein.
 
@@ -51,18 +51,18 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
     ![Zum Einrichten neuer Kapazität auszufüllende Felder](media/create-capacity/azure-portal-create-power-bi-embedded.png)
 
-    |Einstellung |Beschreibung |
+    |Einstellung |BESCHREIBUNG |
     |---------|---------|
     |**Ressourcenname**|Ein Name zur Identifizierung der Kapazität. Der Ressourcenname wird im Power BI-Verwaltungsportal sowie im Azure-Portal angezeigt.|
     |**Abonnement**|Das Abonnement, für das Sie die Kapazität einrichten möchten.|
     |**Ressourcengruppe**|Die Ressourcengruppe, die diese neue Kapazität enthält. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).|
     |**Power BI-Kapazitätsadministrator**|Power BI-Kapazitätsadministratoren können die Kapazität im Power-BI-Verwaltungsportal anzeigen und anderen Benutzern Zuweisungsberechtigungen erteilen. Ihr Konto ist standardmäßig das Kapazitätsadministratorkonto. Der Kapazitätsadministrator muss zu Ihrem Power BI-Mandanten gehören.|
-    |**Standort**|Der Standort, an dem Power BI für Ihren Mandanten gehostet wird. Diese Einstellung wird automatisch aufgelöst. Ein anderer Standort kann nicht ausgewählt werden.|
-    |**Tarif**|Wählen Sie die SKU (Anzahl der virtuellen Kerne und Arbeitsspeichergröße), die Ihre Anforderungen erfüllt.  Einzelheiten finden Sie unter [Power BI Embedded – Preise](https://azure.microsoft.com/pricing/details/power-bi-embedded/).|
+    |**Location**|Der Standort, an dem Power BI für Ihren Mandanten gehostet wird. Diese Einstellung wird automatisch aufgelöst. Ein anderer Standort kann nicht ausgewählt werden.|
+    |**Preisstufe**|Wählen Sie die SKU (Anzahl der virtuellen Kerne und Arbeitsspeichergröße), die Ihre Anforderungen erfüllt.  Einzelheiten finden Sie unter [Power BI Embedded – Preise](https://azure.microsoft.com/pricing/details/power-bi-embedded/).|
 
 6. Klicken Sie auf **Erstellen**.
 
-Die Einrichtung dauert in der Regel weniger als eine Minute, meist nur wenige Sekunden. Wenn Sie **An Dashboard anheften** ausgewählt haben, navigieren Sie zum Dashboard, um zu prüfen, ob Ihre neue Kapazität angezeigt wird. Oder navigieren zu **Weitere Dienste** > **Power BI Embedded**, um zu prüfen, ob Ihre Kapazität einsatzbereit ist.
+Die Einrichtung dauert in der Regel weniger als eine Minute, meist nur wenige Sekunden. Wenn Sie **An Dashboard anheften** ausgewählt haben, navigieren Sie zum Dashboard, um zu prüfen, ob Ihre neue Kapazität angezeigt wird. Oder navigieren zu **Alle Dienste** > **Power BI Embedded**, um zu prüfen, ob Ihre Kapazität einsatzbereit ist.
 
 ![Dashboard im Azure-Portal mit Power BI Embedded-Kapazität](media/create-capacity/azure-portal-dashboard.png)
 

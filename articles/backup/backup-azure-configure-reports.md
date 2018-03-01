@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40433df5ebe90aec3a9294f2c5a6083c4567b161
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: e32e84eacee3a43b948b0a4b4177ab956b34ca3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für Azure Backup mithilfe von Recovery Services-Tresor beschrieben und wie Sie auf diese mithilfe von PowerBI zugreifen können. Nachdem Sie diese Schritte ausgeführt haben, können Sie direkt in Power BI alle Berichte anzeigen, Berichte anpassen und erstellen. 
@@ -38,7 +38,7 @@ In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für 
 
 ## <a name="configure-storage-account-for-reports"></a>Konfigurieren des Speicherkontos für Berichte
 Mit den folgenden Schritten konfigurieren Sie das Speicherkonto für Recovery Services-Tresore mithilfe von Azure Portal. Es handelt sich dabei um eine nur einmal durchzuführende Konfiguration. Nachdem das Speicherkonto konfiguriert ist, können sie direkt in Power BI Berichte über das Inhaltspaket und die Nutzung anzeigen.
-1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit dem nächsten Schritt fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben und sich im Azure-Portal befinden, klicken Sie im Hub-Menü auf **Durchsuchen**.
+1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit dem nächsten Schritt fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben und sich im Azure-Portal befinden, klicken Sie auf **Alle Dienste**.
 
    * Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
    * Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wenn **Recovery Services-Tresore**angezeigt wird, klicken Sie auf den Eintrag.
@@ -80,7 +80,7 @@ Mit den folgenden Schritten konfigurieren Sie das Speicherkonto für Recovery Se
 ## <a name="view-reports-in-power-bi"></a>Anzeigen von Berichten in Power BI 
 Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfiguriert wurde, dauert es etwa 24 Stunden, bis die ersten Daten an das Speicherkonto übermittelt werden. Nach Ablauf von 24 Stunden nach dem Konfigurieren des Speicherkontos können Sie mit den folgenden Schritten Berichte in Power BI anzeigen:
 1. Melden Sie sich bei Power BI [an](https://powerbi.microsoft.com/landing/signin/).
-2. Klicken Sie auf **Abrufen von Daten**, und klicken Sie in der Inhaltspaket-Bibliothek unter **Dienste** auf „Abrufen“. Folgen Sie den Schritten, die in der [Power BI-Dokumentation für den Zugriff auf das Inhaltspaket](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-packs-services/) beschrieben werden.
+2. Klicken Sie auf **Daten abrufen**, und klicken Sie dann in der Bibliothek des Inhaltspakets unter **Dienste** auf **Abrufen**. Folgen Sie den Schritten, die in der [Power BI-Dokumentation für den Zugriff auf das Inhaltspaket](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-packs-services/) beschrieben werden.
 
      ![Importieren eines Inhaltspakets](./media/backup-azure-configure-reports/content-pack-import.png)
 3. Geben Sie **Azure Backup** in die Suchleiste ein, und klicken Sie auf **Jetzt abrufen**.
@@ -150,7 +150,7 @@ Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfigu
 ## <a name="troubleshooting-errors"></a>Problembehandlung
 | Fehlerdetails | Lösung |
 | --- | --- |
-| Nach dem Einrichten des Speicherkontos für Backup-Berichte wird unter **Speicherkonto** weiterhin **Nicht konfiguriert** angezeigt. | Wenn das Speicherkonto erfolgreich konfiguriert wurde, werden die Berichtsdaten trotz dieses Problems übertragen. Um dieses Problem zu beheben, wechseln Sie im Azure-Portal zu „Weitere Dienste“ > „Diagnoseeinstellungen“ > „RS-Tresor“ > „Einstellung bearbeiten“. Löschen Sie die zuvor konfigurierte Einstellung, und erstellen Sie auf demselben Blatt eine neue Einstellung. Legen Sie dieses Mal das Feld **Name** auf **service** fest. Damit sollte das konfigurierte Speicherkonto angezeigt werden. |
+| Nach dem Einrichten des Speicherkontos für Backup-Berichte wird unter **Speicherkonto** weiterhin **Nicht konfiguriert** angezeigt. | Wenn das Speicherkonto erfolgreich konfiguriert wurde, werden die Berichtsdaten trotz dieses Problems übertragen. Um dieses Problem zu beheben, wechseln Sie im Azure-Portal zu „Alle Dienste“ > „Diagnoseeinstellungen“ > „RS-Tresor“ > „Einstellung bearbeiten“. Löschen Sie die zuvor konfigurierte Einstellung, und erstellen Sie auf demselben Blatt eine neue Einstellung. Legen Sie dieses Mal das Feld **Name** auf **service** fest. Damit sollte das konfigurierte Speicherkonto angezeigt werden. |
 |Nach dem Importieren des Azure Backup-Inhaltspakets in Power BI wird der Fehler **404 - Container nicht gefunden** ausgelöst. | Wie in diesem Dokument beschrieben, müssen Sie nach dem Konfigurieren von Berichten im Recovery Services-Tresor 24 Stunden warten, bis sie korrekt in Power BI angezeigt werden. Wenn Sie versuchen, früher als 24 Stunden danach auf die Berichte zuzugreifen, erhalten Sie diesen Fehler, da noch nicht genügend Daten für gültige Berichte vorhanden sind. |
 
 ## <a name="next-steps"></a>Nächste Schritte

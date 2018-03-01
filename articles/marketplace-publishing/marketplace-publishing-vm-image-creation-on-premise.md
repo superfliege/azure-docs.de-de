@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77771f1e690bdfb59d42989a34068634f35f845d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Entwickeln eines lokalen Images eines virtuellen Computers für Azure Marketplace
 Es wird dringend empfohlen, virtuelle Azure-Festplatten (Azure-VHDs) direkt in der Cloud mithilfe des Remotedesktopprotokolls zu entwickeln. Bei Bedarf ist es jedoch auch möglich, eine VHD herunterzuladen und mithilfe lokaler Infrastruktur zu entwickeln.  
@@ -92,12 +92,12 @@ Um ein Speicherkonto zu erstellen, können Sie das [Microsoft Azure-Portal](http
 
 **Erstellen eines Speicherkontos im Microsoft Azure-Portal**
 
-1. Klicken Sie auf **Neu**.
+1. Klicken Sie auf **Ressource erstellen**.
 2. Wählen Sie **Speicher**.
 3. Geben Sie den Namen des Speicherkontos ein, und wählen Sie dann einen Speicherort aus.
    
    ![Abbildung](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
-4. Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Create**.
 5. Das Blatt für das erstellte Speicherkonto sollte geöffnet werden. Wählen Sie andernfalls **Durchsuchen** > **Speicherkonten** aus. Wählen Sie auf dem Blatt „Speicherkonto“ das erstellte Speicherkonto aus.
 6. Wählen Sie **Container**aus.
    
@@ -146,6 +146,6 @@ Verwenden Sie das Cmdlet [Add-AzureVhd](http://msdn.microsoft.com/library/dn4951
 Verwenden Sie folgenden Befehl im [Linux-Befehlszeilentool](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2): azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Erstellen eines Images eines virtuellen Computers für den Marketplace](marketplace-publishing-vm-image-creation.md)
+* [Erstellen eines VM-Images für den Marketplace](marketplace-publishing-vm-image-creation.md)
 * [Einrichten von Azure PowerShell](marketplace-publishing-powershell-setup.md)
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64746f7b1a09e35b35e794f5a11d69bef39a03a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
 
@@ -48,7 +48,7 @@ Wenn Sie über keine ASE verfügen, können Sie eine erstellen. Folgen Sie hierz
 
 So erstellen Sie eine Web-App in einer ASE:
 
-1. Wählen Sie **Neu** > **Web + Mobil** > **Web-App** aus.
+1. Wählen Sie **Ressource erstellen** > **Web + Mobil** > **Web-Apps** aus.
 
 2. Geben Sie einen Namen für die Web-App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE.
 

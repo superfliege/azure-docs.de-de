@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7176ebd0515008147bd3797dcb760f35e2d85d45
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: e68b70ce87a6fedab1b85bf2800a50e512910dea
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Problembehandlung: Ein Objekt wird nicht mit Azure AD synchronisiert
 
 Wenn ein Objekt wie erwartet nicht mit Azure AD synchronisiert wird, kann das verschiedene Ursachen haben. Wenn Sie eine E-Mail mit Fehlerbenachrichtigung von Azure AD erhalten haben, oder Sie die Fehler im Azure AD Connect Health sehen, dann lesen Sie stattdessen [Beheben von Fehlern während der Synchronisierung](active-directory-aadconnect-troubleshoot-sync-errors.md). Wenn Sie ein Problem behandeln möchten, in dem das Objekt nicht in Azure AD ist, dann ist dieses Thema für Sie das Richtige. Es wird beschrieben, wie Fehler in der lokalen Komponente Azure AD Connect-Synchronisierung gefunden werden.
+
+>[!IMPORTANT]
+>Verwenden Sie für eine Azure Active Directory Connect-Bereitstellung der Version <verison> oder höher die [Problembehandlungsaufgabe im Assistenten](active-directory-aadconnect-troubleshoot-objectsync.md), um Probleme bei der Objektsynchronisierung zu beheben. 
 
 Um den Fehler zu finden, müssen Sie an einigen verschiedenen Stellen in folgender Reihenfolge suchen:
 
@@ -78,7 +81,7 @@ Wenn Sie das gesuchte Objekt nicht finden, wurde es möglicherweise mit der [dom
 
 Eine andere nützliche Suche besteht darin, den Azure AD-Connector auszuwählen. Wählen Sie dafür im **Bereich** **Pending Import**(ausstehender Import) aus und anschließend das Kontrollkästchen **Hinzufügen**. Bei dieser Suche werden Ihnen alle synchronisierten Objekte in Azure AD angezeigt, die nicht mit einem lokalen Objekt zugeordnet werden können.  
 ![Verwaiste Suche des Connectorbereichs](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearchorphan.png)  
-Diese Objekte wurden von einem anderen Synchronisierungsmodul oder einem Synchronisierungsmodul mit einer anderen Filterkonfiguration erstellt. In dieser Ansicht wird eine Liste der **verwaisten** Objekte angezeigt, die nicht mehr verwaltet werden. Sie sollten diese Liste überprüfen, und diese Objekte mit den [Azure AD PowerShell](http://aka.ms/aadposh)-Cmdlets entfernen.
+Diese Objekte wurden von einem anderen Synchronisierungsmodul oder einem Synchronisierungsmodul mit einer anderen Filterkonfiguration erstellt. In dieser Ansicht wird eine Liste der **verwaisten** Objekte angezeigt, die nicht mehr verwaltet werden. Sie sollten diese Liste überprüfen, und diese Objekte mit den [Azure AD PowerShell](https://aka.ms/aadposh)-Cmdlets entfernen.
 
 ### <a name="cs-import"></a>CS Import
 Beim Öffnen eines Connectorbereichsobjekts befinden sich oben mehrere Registerkarten. Auf der Registerkarte **Importieren** werden die Daten angezeigt, die nach einem Import bereitgestellt werden.  

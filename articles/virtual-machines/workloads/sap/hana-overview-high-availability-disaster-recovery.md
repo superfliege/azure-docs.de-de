@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 02/01/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d41df9b9d9bd518bb507b0fcde001f35c11e6264
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9ef09e33803a976e05e555ec7ae9eb872d237137
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) 
 
@@ -111,7 +111,7 @@ Es gibt zwei Sicherungs- und Wiederherstellungsoptionen für SAP HANA in Azure (
 Die zugrunde liegende Speicherinfrastruktur von SAP HANA in Azure (große Instanzen) unterstützt Speichermomentaufnahmen von Volumes. Sicherung und Wiederherstellung von Volumes werden unterstützt, dabei ist jedoch Folgendes zu beachten:
 
 - Anstelle von vollständigen Datenbanksicherungen werden in regelmäßigen Abständen Speichervolume-Momentaufnahmen erstellt.
-- Beim Auslösen einer Momentaufnahme für die Volumes „/hana/data“, „hana/log“ und „/hana/shared“ (einschließlich „/usr/sap“) initiiert die Speichermomentaufnahme vor dem Ausführen der Speichermomentaufnahme eine SAP HANA-Momentaufnahme. Diese SAP HANA-Momentaufnahme ist der Einrichtungspunkt für nachfolgende Wiederherstellungen von Protokollen, nachdem die Speichermomentaufnahme wiederhergestellt wurde.
+- Beim Auslösen einer Momentaufnahme für die Volumes „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) initiiert die Speichermomentaufnahme vor dem Ausführen der Speichermomentaufnahme eine SAP HANA-Momentaufnahme. Diese SAP HANA-Momentaufnahme ist der Einrichtungspunkt für nachfolgende Wiederherstellungen von Protokollen, nachdem die Speichermomentaufnahme wiederhergestellt wurde.
 - Nach erfolgreicher Erstellung der Speichermomentaufnahme wird die SAP HANA-Momentaufnahme gelöscht.
 - Transaktionsprotokollsicherungen werden in regelmäßigen Abständen erstellt und auf dem Volume „/hana/logbackups“ oder in Azure gespeichert. Sie können für das Volume „/hana/logbackups“ mit den Transaktionsprotokollsicherungen eine separate Momentaufnahmeerstellung auslösen. In diesem Fall müssen Sie keine HANA-Momentaufnahme ausführen.
 - Wenn Sie eine Datenbank zu einem bestimmten Zeitpunkt wiederherstellen müssen, fordern Sie beim Microsoft Azure-Support (bei einem Produktionsausfall) oder beim Dienstverwaltungsteam für SAP HANA in Azure die Wiederherstellung einer bestimmten Speichermomentaufnahme an. Ein Beispiel ist eine geplante Wiederherstellung eines Sandkastensystems in seinen ursprünglichen Zustand.
@@ -149,7 +149,7 @@ Die folgenden Abschnitte enthalten Informationen zum Erstellen dieser Momentaufn
 - Bei größeren Neuorganisationen von SAP HANA-Tabellen sollten Speichermomentaufnahmen nach Möglichkeit vermieden werden.
 - Speichermomentaufnahmen sind eine Voraussetzung, um von den Notfallwiederherstellungsfunktionen von SAP HANA in Azure (große Instanzen) profitieren zu können.
 
-### <a name="pre-requisites-for-leveraging-self-service-storage-snapshots"></a>Voraussetzungen für die Nutzung von Self-Service-Speichermomentaufnahmen
+### <a name="prerequisites-for-leveraging-self-service-storage-snapshots"></a>Voraussetzungen für die Nutzung von Self-Service-Speichermomentaufnahmen
 
 Um zu gewährleisten, dass das Momentaufnahmeskript ausgeführt werden kann, stellen Sie sicher, dass Perl im Linux-Betriebssystem auf dem Server mit HANA (große Instanzen) installiert ist. Perl ist auf Ihrer HANA-Einheit (große Instanzen) vorinstalliert. Verwenden Sie folgenden Befehl, um die Perl-Version zu überprüfen:
 
@@ -290,7 +290,7 @@ HANABackupCustomerDetails.txt
 Umgang mit den Perl-Skripts: 
 
 - Ändern Sie niemals die Skripts, sofern Sie nicht durch Microsoft Operations dazu angewiesen werden.
-- Wenn Sie dazu aufgefordert werden, das Skript oder eine Parameterdatei zu ändern, verwenden Sie immer Linux-Text-Editoren wie vi und nicht Windows-Editoren wie Editor. Bei Verwendung von Windows-Editoren kann das Dateiformat beschädigt werden.
+- Wenn Sie dazu aufgefordert werden, das Skript oder eine Parameterdatei zu ändern, verwenden Sie immer einen Linux-Text-Editor wie vi und nicht einen Windows-Editor wie Editor. Bei Verwendung von Windows-Editoren kann das Dateiformat beschädigt werden.
 - Verwenden Sie immer die neuesten Skripts. Sie können die neueste Version von GitHub herunterladen.
 - Verwenden Sie dieselbe Version der Skripts für alle Aufgaben.
 - Testen Sie die Skripts, und machen Sie sich mit den erforderlichen Parametern und der Ausgabe der Skripts vertraut, bevor Sie sie direkt im Produktionssystem verwenden.
@@ -299,7 +299,7 @@ Umgang mit den Perl-Skripts:
 
 Der Zweck der einzelnen Skripts und Dateien ist folgender:
 
-- **azure\_hana\_backup.pl:** Planen Sie das Skript mit cron, sodass Speichermomentaufnahmen der Daten-/Protokoll-/Freigabevolumes für HANA, des Volumes „/hana/logbackups“ oder des Betriebssystems ausgeführt werden.
+- **azure\_hana\_backup.pl:** Planen Sie das Skript mit cron, sodass Speichermomentaufnahmen der Daten- und Freigabevolumes für HANA, des Volumes „/hana/logbackups“ oder des Betriebssystems ausgeführt werden.
 - **azure\_hana\_replication\_status.pl**: Dieses Skript stellt grundlegende Replikationsstatusdetails des Produktionsstandorts für den Notfallwiederherstellungsstandort bereit. Das Skript dient zur Überwachung, um sicherzustellen, dass die Replikation stattfindet, und um die Größe der replizierten Elemente anzuzeigen. Darüber hinaus liefert es Anweisungen für den Fall, dass eine Replikation zu lange dauert oder der Link ausgefallen ist.
 - **azure\_hana\_snapshot\_details.pl**: Dieses Skript liefert eine Liste mit grundlegenden Details zu allen Momentaufnahmen pro Volume, die in Ihrer Umgebung vorhanden sind. Das Skript kann auf dem primären Server oder in einer Servereinheit am Standort für die Notfallwiederherstellung ausgeführt werden. Das Skript enthält die folgenden Informationen, die nach den einzelnen Volumes mit Momentaufnahmen aufgeschlüsselt sind:
    * Größe der gesamten Momentaufnahmen in einem Volume

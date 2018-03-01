@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 1cfe7ec37ad8b24a8bd9ab2bf67e95675a57b675
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b71aa004095a94bea84623fd2b5dbdfc1f81af0
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger Web-App-Leistung in Azure App Service
 In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)beheben.
@@ -62,11 +62,11 @@ Folgende Metriken können Sie z. B. für Ihre Web-App überwachen:
 * Durchschnittliche Reaktionszeit
 * CPU-Zeit
 * Arbeitssatz für Arbeitsspeicher
-* Anforderungen
+* Requests
 
 ![Überwachen der Web-App-Leistung](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter 
 
 * [Überwachen von Web-Apps in Azure App Service](web-sites-monitor.md)
 * [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
@@ -83,18 +83,14 @@ Informationen zur Einrichtungen finden Sie unter [Gewusst wie: Überwachen von A
 Ein Video zur Endgeräteüberwachung finden Sie unter [Pflegen von Azure-Websites plus Endgeräteüberwachung - mit Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) .
 
 #### <a name="application-performance-monitoring-using-extensions"></a>Überwachung der Anwendungsleistung mithilfe von Erweiterungen
-Sie können die Anwendungsleistung auch mit *Websiteerweiterungen* überwachen.
+Sie können die Anwendungsleistung auch mit einer *Websiteerweiterung* überwachen.
 
 Jede App Service-Web-App bietet einen erweiterbaren Verwaltungsendpunkt, mit dem Sie eine Reihe leistungsstarker Tools verwenden können, die als Websiteerweiterungen bereitgestellt werden. Zu den Erweiterungen zählen Folgende: 
 
 - Quellcodeeditoren wie [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx) 
 - Verwaltungstools für verbundene Ressourcen wie eine MySQL-Datenbank, die mit einer Web-App verbunden ist
 
-[Azure Application Insights](/services/application-insights/) und [New Relic](/marketplace/partners/newrelic/newrelic/) sind zwei der verfügbaren Websiteerweiterungen für die Leistungsüberwachung. Um New Relic zu verwenden, müssen Sie einen Agent zur Laufzeit installieren. Um Azure Application Insights zu verwenden, erstellen Sie Ihren Code mit einem SDK neu. Sie können auch eine Erweiterung installieren, die Zugriff auf zusätzliche Daten bietet. Mit dem SDK können Sie Code schreiben, um die Auslastung und Leistung Ihrer Anwendung genauer zu überwachen.
-
-Informationen zum Verwenden von Application Insights finden Sie unter [Leistung in Webanwendungen überwachen](../application-insights/app-insights-web-monitor-performance.md).
-
-Informationen zum Verwenden von New Relic finden Sie unter [Verwaltung der Anwendungsleistung mit New Relic unter Azure](../store-new-relic-cloud-services-dotnet-application-performance-management.md).
+Ebenfalls zur Verfügung steht [Azure Application Insights](/services/application-insights/), eine Websiteerweiterung für die Leistungsüberwachung. Um Application Insights zu verwenden, erstellen Sie ihren Code mit einem SDK neu. Sie können auch eine Erweiterung installieren, die Zugriff auf zusätzliche Daten bietet. Mit dem SDK können Sie Code schreiben, um die Auslastung und Leistung Ihrer Anwendung genauer zu überwachen. Weitere Informationen finden Sie unter [Leistungsüberwachung in Webanwendungen](../application-insights/app-insights-web-monitor-performance.md).
 
 <a name="collect" />
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: e326a512bdb9c30068845b51e86795a410e6c9b3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 49683da9f03871cbe5c27dd06d27111864eb489e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -55,7 +55,7 @@ Bevor Sie mit dieser exemplarischen Vorgehensweise beginnen, müssen folgende Vo
 In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data Factory-Instanz mit dem Namen **ADFTutorialOnPremDF**.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf **+ NEU**, auf **Intelligence + Analyse** und dann auf **Data Factory**.
+2. Klicken Sie auf **Ressource erstellen**, dann auf **Intelligence + Analyse** und schließlich auf **Data Factory**.
 
    ![Neu -> Data Factory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
 3. Geben Sie auf der Seite **Neue Data Factory** unter „Name“ die Zeichenfolge **ADFTutorialOnPremDF** ein.
@@ -185,10 +185,10 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
 4. Klicken Sie auf **Bereitstellen**, um **AzureStorageLinkedService** bereitzustellen.
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
-In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und ausgehende Daten für den Kopiervorgang darstellen (lokale SQL Server-Datenbank = > Azure-Blobspeicher). Führen Sie vor dem Erstellen von Datasets die folgenden Schritte aus (ausführliche Schritte finden Sie im Anschluss an die Liste):
+In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und ausgehende Daten für den Kopiervorgang darstellen (lokale SQL Server-Datenbank =&gt; Azure Blob Storage). Führen Sie vor dem Erstellen von Datasets die folgenden Schritte aus (ausführliche Schritte finden Sie im Anschluss an die Liste):
 
 * Erstellen Sie eine Tabelle mit dem Namen **emp** in der SQL Server-Datenbank, die Sie der Data Factory als verknüpften Dienst hinzugefügt haben, und fügen Sie verschiedene Beispieleinträge in die Tabelle ein.
-* Erstellen Sie einen Blob-Container mit dem Namen **adftutorial** im Azure-Blob-Speicherkonto, das Sie der Data Factory als verknüpften Dienst hinzugefügt haben.
+* Erstellen Sie einen Blobcontainer mit dem Namen **adftutorial** im Azure Blob Storage-Konto, das Sie der Data Factory als verknüpften Dienst hinzugefügt haben.
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Vorbereitung des lokalen SQL Servers für das Lernprogramm
 1. Verwenden Sie in der Datenbank, die Sie für den lokalen verknüpften SQL Server-Dienst (**SqlServerLinkedService**) angegeben haben, das folgende SQL-Skript zum Erstellen der Tabelle **emp** in der Datenbank.
@@ -251,7 +251,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 
 ### <a name="create-output-dataset"></a>Erstellen des Ausgabedatasets
 
-1. Klicken Sie im **Data Factory-Editor** auf der Symbolleiste auf **Neues Dataset** und dann auf **Azure-Blobspeicher**.
+1. Klicken Sie im **Data Factory-Editor** auf der Symbolleiste auf **Neues Dataset** und dann auf **Azure Blob Storage** .
 2. Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:
 
     ```JSON   
@@ -408,9 +408,9 @@ In diesem Schritt verwenden Sie das Azure-Portal zur Überwachung der Aktivität
 6. Klicken Sie auf **X** , um alle Seiten zu schließen, bis wieder
 7. die Startseite für **ADFTutorialOnPremDF** angezeigt wird.
 8. Optional: Klicken Sie auf **Pipelines**, dann auf **ADFTutorialOnPremDF**, und zeigen Sie Details zu den Eingabetabellen (**Genutzt**) oder Ausgabedatasets (**Erstellt**) an.
-9. Verwenden Sie Tools wie z.B. [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/), um zu überprüfen, ob ein Blob oder eine Datei für jede Stunde erstellt wird.
+9. Verwenden Sie Tools wie z.B. den [Microsoft Storage-Explorer](http://storageexplorer.com/), um zu überprüfen, ob ein Blob oder eine Datei für jede Stunde erstellt wird.
 
-   ![Azure-Speicher-Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   ![Azure Storage-Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie alle Informationen zum Datenverwaltungsgateway.

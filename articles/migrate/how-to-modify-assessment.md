@@ -4,36 +4,37 @@ description: "In diesem Artikel wird beschrieben, wie Sie eine Bewertung für di
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 06/02/2017
 ms.author: raynew
-ms.openlocfilehash: ce47790f6214864afdba33eb5cbe3a9e49b81cd5
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 8babdbc30e062c7b289e90a674cec3222943e48d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="customize-an-assessment"></a>Anpassen einer Bewertung
 
-[Azure Migrate](migrate-overview.md) erstellt Bewertungen mit Standardeinstellungen. Nach dem Erstellen einer Bewertung können Sie diese Standardeinstellungen entsprechend den Anweisungen in diesem Artikel ändern.
+[Azure Migrate](migrate-overview.md) erstellt Bewertungen mit Standardeigenschaften. Nach dem Erstellen einer Bewertung können Sie die Standardeigenschaften entsprechend den Anweisungen in diesem Artikel ändern.
 
 
-## <a name="edit-assessment-values"></a>Bearbeiten von Bewertungswerten
+## <a name="edit-assessment-properties"></a>Bearbeiten von Bewertungseigenschaften
 
-1. Wählen Sie im Azure Migrate-Projekt auf der Seite **Bewertungen** die Bewertung aus, und klicken Sie auf **Eigenschaften bearbeiten**.
-2. Ändern Sie die Einstellungen entsprechend den Angaben in der folgenden Tabelle.
+1. Wählen Sie auf der Seite **Bewertungen** des Migrationsprojekts die Bewertung aus, und klicken Sie auf **Eigenschaften bearbeiten**.
+2. Ändern Sie die Eigenschaften entsprechend der folgenden Tabelle:
 
     **Einstellung** | **Details** | **Standard**
     --- | --- | ---
     **Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll. |  „USA, Westen 2“ ist der Standardstandort.
-    **Speicherredundanz** | Der Speichertyp, der von den Azure-VMs nach der Migration verwendet wird. | Derzeit wird nur die Replikation vom Typ [Lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) unterstützt.
-    **Komfortfaktor** | Der Komfortfaktor ist ein Puffer, der während der Bewertung verwendet wird. Verwenden Sie ihn, um Elemente wie z.B. saisonbedingte Nutzung, kurzer Leistungsverlauf, wahrscheinliche Zunahme der zukünftigen Verwendung zu berücksichtigen. | Die Standardeinstellung ist 1.3x.
-    **Perfomance history** (Leistungsverlauf) | Zeitraum für die Auswertung des Leistungsverlaufs. | Standardmäßig ist ein Monat festgelegt.
-    **Perzentilwert der Nutzung** | Der für den Leistungsverlauf zu berücksichtigende Perzentilwert. | Der Standardwert ist 95 %.
-    **Preisstufe** | Sie können den [Tarif](https://azure.microsoft.com/blog/basic-tier-virtual-machines-2/) für einen virtuellen Computer angeben.  | Standardmäßig wird der Tarif [Standard](../virtual-machines/windows/sizes-general.md) verwendet.
-    **Angebot** | Geltende [Azure-Angebote](https://azure.microsoft.com/support/legal/offer-details/). | [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) ist die Standardeinstellung.
+    **Speicherredundanz** | Die Speicherredundanz, die von den virtuellen Azure-Computern nach der Migration verwendet wird. | Der Standardwert ist [Lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage). Azure Migrate unterstützt nur Bewertungen, die auf verwalteten Datenträgern basieren. Verwaltete Datenträger wiederum unterstützen nur LRS, daher ist für die Eigenschaft derzeit nur die LRS-Option verfügbar. 
+    **Größenkriterium** | Das Kriterium, das in Azure Migrate zur Größenanpassung virtueller Computer für Azure verwendet werden soll. Sie können eine *leistungsbasierte* Größenanpassung vornehmen oder die Größe der virtuellen Computer *lokal* ändern, ohne den Leistungsverlauf zu berücksichtigen. | Die leistungsbasierte Größenanpassung ist die Standardoption.
+    **Leistungsverlauf** | Die zur Bewertung der Leistung der virtuellen Computer zu berücksichtigende Dauer. Diese Eigenschaft ist nur anwendbar, wenn als Größenkriterium die *leistungsbasierte Größenanpassung* festgelegt ist. | Standardmäßig ist ein Tag festgelegt.
+    **Perzentilwert der Nutzung** | Der für die Größenanpassung zu berücksichtigende Perzentilwert des festgelegten Leistungsbeispiels. Diese Eigenschaft ist nur anwendbar, wenn als Größenkriterium die *leistungsbasierte Größenanpassung* festgelegt ist.  | Der Standardwert ist das 95. Perzentil.
+    **Preisstufe** | Sie können den [Tarif (Basic/Standard)](../virtual-machines/windows/sizes-general.md) für die virtuellen Azure-Zielcomputer angeben. Wenn Sie beispielsweise eine Produktionsumgebung migrieren möchten, sollten Sie den Standard-Tarif angeben, der virtuelle Computer mit geringer Latenz umfasst, jedoch auch kostenintensiver sein kann. Bei einer Entwicklungs- und Testumgebung sollten Sie dagegen den Basic-Tarif angeben, der virtuelle Computer mit einer höheren Latenz und geringeren Kosten umfasst. | Standardmäßig wird der Tarif [Standard](../virtual-machines/windows/sizes-general.md) verwendet.
+    **Komfortfaktor** | Bei Azure Migrate wird während der Bewertung ein Puffer (Komfortfaktor) berücksichtigt. Dieser Puffer wird zusätzlich zu den Daten zur Computernutzung für VMs (CPU, Arbeitsspeicher, Datenträger und Netzwerk) angewendet. Beim Komfortfaktor geht es um Bereiche wie saisonale Nutzung, kurzer Leistungsverlauf und voraussichtliche zukünftige Zunahme der Nutzung.<br/><br/> Beispiel: Für eine VM mit zehn Kernen und 20% Auslastung ergibt sich normalerweise eine VM mit zwei Kernen. Bei einem Komfortfaktor von 2.0x ist das Ergebnis dagegen eine VM mit vier Kernen. | Die Standardeinstellung ist 1.3x.
+    **Angebot** | Das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/), für das Sie registriert sind. | [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) ist die Standardeinstellung.
     **Währung** | Rechnungswährung. | Der Standardwert ist US-Dollar.
-    **Rabatt (%)** | Alle abonnementspezifischen Rabatte, die Sie zusätzlich zu allen Angeboten erhalten. | Die Standardeinstellung ist 0 %.
-    **Azure-Hybridnutzungsvorteil** | Gibt an, ob Sie für den [Azure-Hybridnutzungsvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) registriert sind. Wenn diese Einstellung auf „Ja“ festgelegt ist, werden für virtuelle Windows-Computer Azure-Preise veranschlagt. | Die Standardeinstellung ist „Ja“.
+    **Rabatt (%)** | Alle abonnementspezifischen Rabatte, die Sie zusätzlich zum Azure-Angebot erhalten. | Die Standardeinstellung ist 0 %.
+    **Azure-Hybridvorteil** | Geben Sie an, ob Sie über die Software Assurance verfügen und den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) nutzen können. Wenn diese Einstellung auf „Ja“ festgelegt ist, werden für virtuelle Windows-Computer Nicht-Windows-Azure-Preise veranschlagt. | Die Standardeinstellung ist „Ja“.
 
 3. Klicken Sie auf **Speichern**, um die Bewertung zu aktualisieren.
 

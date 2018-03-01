@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 221ee6990fe0b5bfc9e745fc85543c4e04e41bd3
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: ac8000abc35cba89c4bf655a4806636933ab8d08
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Verwenden von Azure Data Lake Store zum Erfassen von Daten von Event Hubs
 
@@ -27,7 +27,7 @@ Hier erfahren Sie, wie Sie Azure Data Lake Store zum Erfassen von Daten verwende
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Ein Azure Data Lake-Speicherkonto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit dem Azure Data Lake Store](data-lake-store-get-started-portal.md).
+* **Ein Azure Data Lake Store-Konto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit dem Azure Data Lake Store](data-lake-store-get-started-portal.md).
 
 *  **Ein Event Hubs-Namespace**. Anweisungen hierzu finden Sie unter [Erstellen eines Event Hubs-Namespaces](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Stellen Sie sicher, dass das Data Lake Store-Konto und der Event Hubs-Namespace im selben Azure-Abonnement enthalten sind.
 
@@ -102,7 +102,7 @@ In diesem Abschnitt erstellen Sie einen Event Hub innerhalb eines Event Hubs-Nam
 
     e. Übernehmen Sie für **Beispielnamensformate für Erfassungsdateien** den Standardwert. Diese Option steuert die Ordnerstruktur, die unter dem Erfassungsordner erstellt wird.
 
-    f. Klicken Sie auf **Erstellen**.
+    f. Klicken Sie auf **Create**.
 
 ## <a name="test-the-setup"></a>Testen der Einstellungen
 
@@ -121,5 +121,5 @@ Sobald die Daten sich in Data Lake Store befinden, können Sie Analyseaufträge 
   
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
+* [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)
 * [Kopieren von Daten aus Azure Storage-Blobs in den Data Lake-Speicher](data-lake-store-copy-data-azure-storage-blob.md)

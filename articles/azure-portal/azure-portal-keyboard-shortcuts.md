@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.openlocfilehash: 595039953d73c90f9772bdf62cffae4bbbc1220a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 6c37dcbf14ee765aa803f41b91445c8f1cabcfdb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Tastenkombinationen im Azure-Portal
 Dieser Artikel stellt die Tastaturkombinationen vor, die im Azure-Portal verwendet werden können. Für einzelne Dienste gibt es möglicherweise eigene Tastenkombinationen.
@@ -28,7 +28,7 @@ Dieser Artikel stellt die Tastaturkombinationen vor, die im Azure-Portal verwend
 |Aufgabe |Drücken Sie |
 | --- | --- |
 |Neue Ressource erstellen|G+N|
-|Den Bereich „Weitere Dienste öffnen“|G+B|
+|Bereich „Alle Dienste“ öffnen|G+B|
 |Durchsuchen von Ressourcen|G+/| 
 |Ressourcenmenüelemente durchsuchen|STRG+/ |
 |Das im linken Bereich ausgewählte Element nach oben verschieben |ALT+UMSCHALT+NACH-OBEN-TASTE|

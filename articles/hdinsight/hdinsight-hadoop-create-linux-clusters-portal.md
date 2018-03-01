@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 6601e93cf3ff3a97c5c77f5fdff712fe28aff795
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c200b405d8ae2548e16548b88683cf6de4aef2b3
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -75,7 +75,6 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mithilfe der
 
     * Klicken Sie auf **Weiter**.
 
-
 4. Geben Sie unter **Speicher** an, ob Azure Storage (WASB) oder Data Lake Store als Standardspeicher verwendet werden soll. Weitere Informationen finden Sie weiter unten in der Tabelle.
 
     ![Erstellen eines neuen Clusters im Azure-Portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "Erstellen eines neuen Clusters im Azure-Portal")
@@ -86,8 +85,7 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mithilfe der
     | **Azure Data Lake Store als Standardspeicher** | Wählen Sie für **Primärer Speichertyp** **Data Lake Store** aus, und befolgen Sie dann die Anweisungen im Artikel [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). |
     | **Externe Metastores**                      | Optional können Sie eine SQL-Datenbank angeben, die zum Speichern von Hive- und Oozie-Metadaten für den Cluster verwendet werden soll. Wählen Sie für **SQL-Datenbank für Hive auswählen** eine SQL-Datenbank aus, und geben Sie dann den Benutzernamen und das Kennwort für die Datenbank ein. Wiederholen Sie diese Schritte für Oozie-Metadaten.<br><br>Noch ein paar Überlegungen zur Verwendung der Azure SQL-Datenbank für Metastores. <ul><li>Die als Metastore verwendete Azure SQL-Datenbank muss für die Konnektivität mit anderen Azure-Diensten konfiguriert sein, inklusive Azure HDInsight. Klicken Sie im Dashboard der Azure SQL-Datenbank mit der rechten Maustaste auf den Servernamen. Dies ist der Server, auf dem die SQL-Datenbankinstanz läuft. Öffnen Sie die Serveransicht, klicken Sie auf **Konfigurieren**, wählen Sie unter **Azure Services** den Wert **Ja** aus, und klicken Sie auf **Speichern**.</li><li>Verwenden Sie beim Erstellen eines Metastores keinen Datenbanknamen, der Gedankenstriche oder Bindestriche enthält, da dadurch der Clustererstellungsprozess misslingen kann.</li></ul> |
 
-    Klicken Sie auf **Weiter**.
- 
+    Klicken Sie auf **Weiter**. 
 
     > [!WARNING]
     > Die Verwendung eines zusätzlichen Speicherkontos an einem anderen Ort als dem HDInsight-Cluster wird nicht unterstützt.
@@ -118,7 +116,6 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mithilfe der
     | **Virtual Network** | Wählen Sie ein virtuelles Azure-Netzwerk und das Subnetz aus, wenn Sie den Cluster in einem virtuellen Netzwerk platzieren möchten. Informationen zur Verwendung von HDInsight mit Virtual Network, einschließlich spezifischer Konfigurationsanforderungen für Virtual Network, finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). |
 
     Klicken Sie auf **Weiter**.
-
 
 8. Überprüfen Sie unter **Zusammenfassung** die Informationen, die Sie zuvor eingegeben haben, und klicken Sie dann auf **Erstellen**.
 

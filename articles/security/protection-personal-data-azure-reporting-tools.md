@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.openlocfilehash: 7ce6297d7d6b61ac95df58db3fa1a2a0a123a64e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 397161cf2eaea9712fec352a45f5fc49e8da486c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Dokumentschutz personenbezogener Daten mit Azure-Berichtstools
 
@@ -144,7 +144,7 @@ Die Daten im Aktivitätsprotokoll und andere Ressourcen von Azure Monitor könne
 
 - Sie können die Daten mithilfe der Azure Monitor-REST-API, mit CLI-Befehlen, mit [PowerShell](https://docs.microsoft.com/powershell/)-Cmdlets oder dem .NET SDK abfragen.
 
-Wählen Sie zum Einstieg in Azure Monitor die Option **Weitere Dienste** im Azure-Portal aus.
+Wählen Sie zum Einstieg in Azure Monitor die Option **Alle Dienste** im Azure-Portal aus.
 
 1. Scrollen Sie im Abschnitt **Überwachung und Verwaltung** nach unten zu **Monitor**.
 
@@ -188,7 +188,7 @@ Bedenken Sie, dass Diagnosedaten nicht dauerhaft gespeichert werden, wenn sie ni
 
 2. Übertragen Sie die Daten. Die Anforderung zum Übertragen der Diagnosedaten kann über die Konfigurationsdatei erfolgen. Bei SDK 2.4 und früher können Sie die Anforderung auch programmgesteuert vornehmen.
 
-3. Sie können die Daten mit dem [Azure-Speicher-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer), dem [Server-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) in Visual Studio oder mit [Azure Diagnostics Manager](https://www.cerebrata.com/products/azure-diagnostics-manager) in Azure Management Studio anzeigen.
+3. Sie können die Daten mit dem [Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer), dem [Server-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) in Visual Studio oder mit [Azure Diagnostics Manager](https://www.cerebrata.com/products/azure-diagnostics-manager) in Azure Management Studio anzeigen.
 
 Weitere Informationen zum Ausführen der einzelnen Schritte finden Sie unter [Speichern und Anzeigen von Diagnosedaten in Azure Storage](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage).
 

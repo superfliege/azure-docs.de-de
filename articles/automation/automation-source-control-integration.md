@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;sngun
-ms.openlocfilehash: bb1ce4ceaa3d0c9aea014fc810ea269641dec14c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 15e69105d4171c63b4ccef0b072bccf49a2e9ceb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 Durch die Integration der Quellcodeverwaltung können Sie Runbooks in Ihrem Automation-Konto einem GitHub-Repository für die Quellcodeverwaltung zuordnen. Sie können mit der Quellcodeverwaltung einfach mit Ihrem Team zusammenarbeiten, Änderungen nachverfolgen und Ihre Runbooks auf frühere Versionen zurücksetzen. Die Quellcodeverwaltung ermöglicht beispielsweise das Synchronisieren verschiedener Verzweigungen der Quellcodeverwaltung Ihrer Automation-Konten für Entwicklung, Test oder Produktion. Dadurch können Sie Code, der in Ihrer Entwicklungsumgebung getestet wurde, in Ihr Automation-Produktionskonto hochstufen.
@@ -36,10 +36,9 @@ Sie müssen nur zwei Schritte ausführen, um die Quellcodeverwaltung für Ihr Au
 Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure Automation verknüpfen möchten, dann melden Sie sich bei Ihrem vorhandenen Konto an, und beginnen Sie mit Schritt 2. Navigieren Sie andernfalls zu [GitHub](https://github.com/), registrieren Sie sich für ein neues Konto, und [erstellen Sie ein neues Repository](https://help.github.com/articles/create-a-repo/).
 
 ## <a name="step-2--set-up-source-control-in-azure-automation"></a>Schritt 2: Einrichten der Quellcodeverwaltung in Azure Automation
-1. Klicken Sie im Azure-Portal auf der Seite „Automation-Konto“ auf **Quellcodeverwaltung einrichten**. 
+1. Klicken Sie im Azure-Portal auf der Seite „Automation-Konto“ unter **Kontoeinstellungen** auf **Quellcodeverwaltung**. 
    
-    ![Einrichten der Quellcodeverwaltung](media/automation-source-control-integration/automation_01_SetUpSourceControl.png)
-2. Die Seite **Quellcodeverwaltung** wird geöffnet. Hier können Sie die Details Ihres GitHub-Kontos konfigurieren. Nachfolgend sehen Sie die Liste der zu konfigurierenden Parameter:  
+1. Die Seite **Quellcodeverwaltung** wird geöffnet. Hier können Sie die Details Ihres GitHub-Kontos konfigurieren. Nachfolgend sehen Sie die Liste der zu konfigurierenden Parameter:  
    
    | **Parameter** | **Beschreibung** |
    |:--- |:--- |
@@ -66,19 +65,19 @@ Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure
      
      | **Parameter** | **Wert** |
      |:--- |:--- |
-     | Name |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Typ |String |
+     | NAME |Microsoft.Azure.Automation.SourceControl.Connection |
+     | Typ |Zeichenfolge |
      | Wert |{„Verzweigung“:\<*Name Ihrer Verzweigung*>, „Runbook-Ordnertyp“:\<*Runbook-Ordnerpfad*>, „Anbietertyp“:\<*hat einen Wert 1 für GitHub*>, „Verzeichnis“:\<*Name Ihres Repositorys*>, „Benutzername“:\<*Ihr GitHub-Benutzername*>} |
 
     * Die Variable **Microsoft.Azure.Automation.SourceControl.OauthToken**enthält den sicher verschlüsselten Wert Ihres OAuth-Tokens.  
 
     |**Parameter**            |**Wert** |
     |:---|:---|
-    | Name  | Microsoft.Azure.Automation.SourceControl.OauthToken |
+    | NAME  | Microsoft.Azure.Automation.SourceControl.OauthToken |
     | Typ | Unbekannte (Verschlüsselt) |
     | Wert | <*Verschlüsseltes OAuthToken*> |  
 
-    ![Variablen](media/automation-source-control-integration/automation_04_Variables.png)  
+    ![Variables](media/automation-source-control-integration/automation_04_Variables.png)  
 
     * **Automation-Quellcodeverwaltung** wird Ihrem GitHub-Konto als autorisierte Anwendung hinzugefügt. So zeigen Sie die Anwendung an: Navigieren Sie auf Ihrer GitHub-Startseite zu **Profil** > **Einstellungen** > **Anwendungen**. Diese Anwendung ermöglicht Azure-Automation die Synchronisierung Ihres GitHub-Repositorys mit einem Automation-Konto.  
 

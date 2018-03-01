@@ -15,11 +15,11 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
-ms.openlocfilehash: 1ee30aadc1bd07e7ac9a1894e4be832436ab5910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: fa19f3dc7dded712102d4ba9b66dd4df1bfd20dd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Ruby on Rails-Webanwendung auf Azure VM
 In diesem Lernprogramm wird gezeigt, wie Sie eine Ruby on Rails-Website auf Azure mit einem virtuellen Linux-Computer hosten.  
@@ -38,7 +38,7 @@ Zur Erstellung des virtuellen Computers können Sie das Azure-Portal oder die Az
 
 ### <a name="azure-portal"></a>Azure-Portal
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf **Neu**, und geben Sie dann „Ubuntu Server 14.04“ in das Suchfeld ein. Klicken Sie auf den Eintrag, der von der Suche zurückgegeben wird. Wählen Sie für das Bereitstellungsmodell **Klassisch** aus, und klicken Sie dann auf „Erstellen“.
+2. Klicken Sie auf **Ressource erstellen**, und geben Sie dann „Ubuntu Server 14.04“ in das Suchfeld ein. Klicken Sie auf den Eintrag, der von der Suche zurückgegeben wird. Wählen Sie für das Bereitstellungsmodell **Klassisch** aus, und klicken Sie dann auf „Erstellen“.
 3. Geben Sie auf dem Blatt „Basics“ (Grundlagen) die Werte für die Pflichtfelder an: Name (der VM), Benutzername, Authentifizierungstyp und die dazugehörigen Anmeldeinformationen, das Azure-Abonnement, die Ressourcengruppe und den Speicherort.
 
    ![Erstellen eines neuen Ubuntu-Images](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)

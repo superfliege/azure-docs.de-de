@@ -10,13 +10,13 @@ ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 096fcce979bd488a0fe9dead2b1232a057d0ae02
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6123039ba5eeb720e0ca590fa69af915da91367c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions---preview"></a>Reagieren auf Ereignisse in IoT Hub mithilfe von Event Grid zum Auslösen von Aktionen – Vorschau
 
@@ -43,7 +43,7 @@ IoT Hub veröffentlicht die folgenden Ereignistypen:
 
 | Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
-| Microsoft.Devices.DeviceCreated | Veröffentlicht das Registrieren eines Geräts bei einem IoT Hub. |
+| Microsoft.Devices.DeviceCreated | Wird ausgelöst, wenn ein Gerät bei einem IoT Hub registriert wird. |
 | Microsoft.Devices.DeviceDeleted | Veröffentlicht das Löschen eines Geräts von einem IoT Hub. | 
 
 Konfigurieren Sie entweder mit dem Azure-Portal oder der Azure CLI, welche Ereignisse von jedem IoT Hub veröffentlicht werden sollen. Ein Beispiel finden Sie in dem Tutorial [Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Logik-Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md). 
@@ -107,7 +107,7 @@ Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Az
 
 ## <a name="filter-events"></a>Filtern von Ereignissen
 
-IoT Hub-Ereignisabonnements können Ereignisse basierend auf Ereignistyp und Gerätename filtern. Betrefffilter funktionieren in Event Grid auf Grundlage von **Präfix**- und **Suffix**-Übereinstimmungen, sodass Ereignisse mit einem übereinstimmenden Betreff an den Abonnenten übermittelt werden. 
+IoT Hub-Ereignisabonnements können Ereignisse basierend auf Ereignistyp und Gerätename filtern. Betrefffilter in Event Grid funktionieren anhand von Übereinstimmungen bei **Präfix** und **Suffix**. Der Filter verwendet einen `AND`-Operator, sodass Ereignisse mit einem Betreff, der sowohl mit dem Präfix als auch mit dem Suffix übereinstimmt, an den Abonnenten übermittelt werden. 
 
 Der Betreff von IoT-Ereignissen verwendet das Format:
 

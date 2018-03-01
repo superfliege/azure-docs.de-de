@@ -5,21 +5,18 @@ services: azure-stack
 author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/16/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: e368109adc7db4c589ac37b28c4891cb3ec5346f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8af533147f3cc12f2334a43e7b672c69d0d25802
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten
-
-*Gilt für: Integrierte Azure Stack-Systeme*
-
-Azure Stack richtet für die eigenen Infrastrukturrollen verschiedene Endpunkte (virtuelle IP-Adressen, VIPs) ein. Diese VIPs stammen aus dem öffentlichen IP-Adresspool. Jede VIP wird durch eine Zugriffssteuerungsliste (Access Control List, ACL) auf der softwaredefinierten Netzwerkebene geschützt. Für zusätzlichen Schutz werden außerdem übergreifende ACLs für die physischen Switches (TORs und BMC) verwendet. Für jeden Endpunkt in der externen DNS-Zone, die zum Zeitpunkt der Bereitstellung angegeben wurde, wird ein DNS-Eintrag erstellt.
+Azure Stack richtet für die eigenen Infrastrukturrollen verschiedene virtuelle IP-Adressen (VIPs) ein. Diese VIPs stammen aus dem öffentlichen IP-Adresspool. Jede VIP wird durch eine Zugriffssteuerungsliste (Access Control List, ACL) auf der softwaredefinierten Netzwerkebene geschützt. Für zusätzlichen Schutz werden außerdem übergreifende ACLs für die physischen Switches (TORs und BMC) verwendet. Für jeden Endpunkt in der externen DNS-Zone, die zum Zeitpunkt der Bereitstellung angegeben wurde, wird ein DNS-Eintrag erstellt.
 
 
 Das folgende Architekturdiagramm zeigt die verschiedenen Netzwerkebenen und ACLs:
@@ -28,7 +25,7 @@ Das folgende Architekturdiagramm zeigt die verschiedenen Netzwerkebenen und ACLs
 
 ## <a name="ports-and-protocols-inbound"></a>Ports und Protokolle (eingehend)
 
-Die folgende Tabelle gibt Aufschluss über die Infrastruktur-VIPs, die für die Veröffentlichung von Azure Stack-Endpunkten für externe Netzwerke benötigt werden. Die Liste enthält jeweils den Endpunkt, den erforderlichen Port und das Protokoll. Informationen zu erforderlichen Endpunkten für zusätzliche Ressourcenanbieter (etwa für den SQL-Ressourcenanbieter) finden Sie in der Bereitstellungsdokumentation des jeweiligen Ressourcenanbieters.
+Im Folgenden werden Infrastruktur-VIPs aufgeführt, die für die Veröffentlichung von Azure Stack-Endpunkten in externen Netzwerken benötigt werden. Die Liste enthält jeweils den Endpunkt, den erforderlichen Port und das Protokoll. Informationen zu erforderlichen Endpunkten für zusätzliche Ressourcenanbieter (etwa für den SQL-Ressourcenanbieter) finden Sie in der Bereitstellungsdokumentation des jeweiligen Ressourcenanbieters.
 
 Interne Infrastruktur-VIPs sind nicht aufgeführt, da sie zum Veröffentlichen von Azure Stack nicht benötigt werden.
 
@@ -52,7 +49,11 @@ Interne Infrastruktur-VIPs sind nicht aufgeführt, da sie zum Veröffentlichen v
 |Speichertabelle|&#42;.table.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Speicherblob|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |SQL-Ressourcenanbieter|sqladapter.dbadapter.*&lt;Region>.&lt;FQDN>*|HTTPS|44300-44304|
-|MySQL-Ressourcenanbieter|mysqladapter.dbadapter.*&lt;Region>.&lt;FQDN>*|HTTPS|44300-44304
+|MySQL-Ressourcenanbieter|mysqladapter.dbadapter.*&lt;Region>.&lt;FQDN>*|HTTPS|44300-44304|
+|App Service|&#42;.appservice.*&lt;region>.&lt;fqdn>*|TCP|80 (HTTP)<br>443 (HTTPS)<br>8172 (MSDeploy)|
+|  |&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
+|  |api.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)<br>44300 (Azure Resource Manager)|
+|  |ftp.appservice.*&lt;region>.&lt;fqdn>*|TCP, UDP|21, 1021, 10001–101000 (FTP)<br>990 (FTPS)|
 
 ## <a name="ports-and-urls-outbound"></a>Ports und URLs (ausgehend)
 

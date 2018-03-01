@@ -11,7 +11,7 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Abrufen der Verbindungszeichenfolge aus dem Azure-Portal
 Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbindungszeichenfolge, die für die Interaktion des Clientprogramms mit Azure SQL-Datenbank benötigt wird. 
 
-1. Wählen Sie **Alle durchsuchen** > **SQL-Datenbanken** aus.
+1. Wählen Sie **Alle Dienste** > **SQL-Datenbanken** aus.
 
 2. Geben Sie in das Textfeld „Filter“ nahe der oberen linken Ecke des Blattes **SQL-Datenbanken** den Namen der Datenbank ein.
 
@@ -19,7 +19,6 @@ Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbind
 
 4. Nachdem das Blatt für die Datenbank angezeigt wird, können Sie der visuellen Einfachheit halber die Schaltflächen zum **Minimieren** auswählen, um die Blätter auszublenden, die Sie zum Durchsuchen und Filtern verwendet haben. 
    
-    ![Filtern zum Isolieren der Datenbank][10-FilterDatabase]
 5. Wählen Sie auf dem Blatt für die Datenbank **Datenbankverbindungszeichenfolgen anzeigen** aus.
 
 6. Wenn Sie die ADO.NET-Verbindungsbibliothek verwenden wollen, kopieren Sie die Zeichenfolge mit der Bezeichnung **ADO**. 
@@ -31,7 +30,7 @@ Weitere Informationen finden Sie unter [Verbindungszeichenfolgen und Konfigurati
 
 <!-- Image references. -->
 
-[10-FilterDatabase]: ./media/sql-database-include-connection-string-20-portalshots/connqry-connstr-a.png
+
 
 [20-CopyAdoConnectionString]: ./media/sql-database-include-connection-string-20-portalshots/connqry-connstr-b.png
 

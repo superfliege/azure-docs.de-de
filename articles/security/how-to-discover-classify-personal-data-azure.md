@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 0d99df534da4575f3c34ec6b3475cdd1bdc3308a
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 011fe26c297ff991af1282c1ff3914031a99f1e4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Ermitteln, Identifizieren und Klassifizieren von persönlichen Daten in Microsoft Azure
 
@@ -59,22 +59,22 @@ Dies ist besonders hilfreich, wenn Sie nach persönlichen Daten für einen besti
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
+2. Wählen Sie **Alle Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 
    ![Gewusst wie: Suchen nach Benutzerprofil- und Arbeitsinformationen](media/how-to-discover-classify-personal-data-azure/user-profile.png)
 
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Benutzer** aus.
 
-  ![Öffnen von „Benutzer und Gruppen“](media/how-to-discover-classify-personal-data-azure/users-groups.png)
+      ![Öffnen von „Benutzer und Gruppen“](media/how-to-discover-classify-personal-data-azure/users-groups.png)
 
 4. Wählen Sie auf dem Blatt **Benutzer und Gruppen - Benutzer** einen Benutzer in der Liste aus, und klicken Sie dann auf dem Blatt für den ausgewählten Benutzer auf **Profil**, um Benutzerprofilinformationen anzuzeigen, die möglicherweise persönliche Daten enthalten.
 
-  ![Benutzer auswählen](media/how-to-discover-classify-personal-data-azure/select-user.png)
+      ![Benutzer auswählen](media/how-to-discover-classify-personal-data-azure/select-user.png)
 
 5. Sie können bei Bedarf Benutzerprofilinformationen hinzufügen oder ändern und anschließend auf der Befehlsleiste auf **Speichern** klicken.
 6. Klicken Sie auf dem Blatt für den ausgewählten Benutzer auf **Arbeitsinformationen**, um Arbeitsinformationen für den Benutzer anzuzeigen, die möglicherweise persönliche Daten enthalten.
 
- ![Anzeigen von Arbeitsinformationen](media/how-to-discover-classify-personal-data-azure/work-info.png)
+     ![Anzeigen von Arbeitsinformationen](media/how-to-discover-classify-personal-data-azure/work-info.png)
 
 7. Sie können bei Bedarf Arbeitsinformationen für den Benutzer hinzufügen oder ändern und anschließend auf der Befehlsleiste auf **Speichern** klicken.
 

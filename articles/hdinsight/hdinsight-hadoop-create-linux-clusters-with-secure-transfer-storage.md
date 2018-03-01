@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 9b537595fd8224536f67989d7529f6030347bfab
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: fd27837e4b40b34551092be5d75eb770730d97a4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Erstellen von Hadoop-Clustern mit Speicherkonten mit sicherer Übertragung in Azure HDInsight
 
@@ -45,7 +45,7 @@ In diesem Abschnitt erstellen Sie einen Hadoop-Cluster in HDInsight mit einer [A
 
 2. Erstellen Sie den Cluster wie folgt: 
 
-    - Geben Sie die HDInsight-Version 3.6 an.  Die Standardversion ist 3.5. Es wird mindestens Version 3.6 benötigt.
+    - Geben Sie die HDInsight-Version 3.6 an.  Es wird mindestens Version 3.6 benötigt.
     - Geben Sie ein Speicherkonto mit sicherer Übertragung an.
     - Verwenden Sie einen kurzen Namen für das Speicherkonto.
     - Speicherkonto und Blobcontainer müssen vorab erstellt werden. 

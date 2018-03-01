@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: cfdee4450b0ef88d593d401009a7d7f29c24780b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 855cb5b9cda873a2966465062d0164b2b054b1cd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -387,7 +387,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
 15. Laden Sie „MyDotNetActivity.zip“ als Blob in den customactivitycontainer in einer Azure Blob Storage-Instanz für **allgemeine Zwecke** hoch (keine Blob Storage-Instanz vom Typ „Hot“ oder „Cool“), auf den von AzureStorageLinkedService verwiesen wird.  
 
 > [!IMPORTANT]
-> Wenn Sie dieses .NET-Aktivitätsprojekt einer Lösung in Visual Studio hinzufügen, die ein Data Factory-Projekt enthält, und dem .NET-Aktivitätsprojekt einen Verweis vom Data Factory-Anwendungsprojekt hinzufügen, müssen Sie die letzten beiden Schritte nicht durchführen (ZIP-Datei selbst erstellen und in den Azure-Blobspeicher für allgemeine Zwecke hochladen). Beim Veröffentlichen von Data Factory-Entitäten mit Visual Studio werden diese Schritte automatisch durch den Veröffentlichungsprozess ausgeführt. Weitere Informationen finden Sie im Abschnitt [Data Factory-Projekt in Visual Studio](#data-factory-project-in-visual-studio).
+> Wenn Sie dieses .NET-Aktivitätsprojekt einer Lösung in Visual Studio hinzufügen, die ein Data Factory-Projekt enthält, und dem .NET-Aktivitätsprojekt einen Verweis vom Data Factory-Anwendungsprojekt hinzufügen, müssen Sie die letzten beiden Schritte nicht durchführen (ZIP-Datei selbst erstellen und in Azure Blob Storage für allgemeine Zwecke hochladen). Beim Veröffentlichen von Data Factory-Entitäten mit Visual Studio werden diese Schritte automatisch durch den Veröffentlichungsprozess ausgeführt. Weitere Informationen finden Sie im Abschnitt [Data Factory-Projekt in Visual Studio](#data-factory-project-in-visual-studio).
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>Erstellen einer Pipeline mit benutzerdefinierter Aktivität
 Sie haben eine benutzerdefinierte Aktivität erstellt und die ZIP-Datei mit Binärdateien in einen Blobcontainer in einem Azure Storage-Konto für **allgemeine Zwecke** hochgeladen. In diesem Abschnitt erstellen Sie eine Instanz von Azure Data Factory mit einer Pipeline, die die benutzerdefinierte Aktivität verwendet.
@@ -421,7 +421,7 @@ In diesem Abschnitt erstellen Sie Folgendes:
 
 ### <a name="step-1-create-the-data-factory"></a>Schritt 1: Erstellen der Data Factory
 1. Gehen Sie nach der Anmeldung beim Azure-Portal wie folgt vor:
-   1. Klicken Sie im linken Menü auf **NEU** .
+   1. Klicken Sie im Menü links auf **Ressource erstellen**.
    2. Klicken Sie auf dem Blatt **Neu** auf **Daten und Analysen**.
    3. Klicken Sie auf dem Blatt **Datenanalyse** auf **Data Factory**.
    
@@ -682,7 +682,7 @@ Das folgende Diagramm veranschaulicht die Beziehung zwischen Azure Data Factory-
 ## <a name="troubleshoot-failures"></a>Beheben von Fehlern
 Die Problembehandlung umfasst einige grundlegende Verfahren:
 
-1. Wenn der folgende Fehler angezeigt wird, kann es sein, dass Sie anstelle eines Azure-Blobspeichers für allgemeine Zwecke einen Blobspeicher vom Typ „Hot/Cool“ verwenden. Laden Sie die ZIP-Datei in ein **Azure Storage-Konto für allgemeine Zwecke** hoch. 
+1. Wenn der folgende Fehler angezeigt wird, kann es sein, dass Sie anstelle einer Azure Blob Storage-Instanz für allgemeine Zwecke eine Blob Storage-Instanz vom Typ „Hot/Cool“ verwenden. Laden Sie die ZIP-Datei in ein **Azure Storage-Konto für allgemeine Zwecke** hoch. 
  
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
@@ -706,7 +706,7 @@ Die Problembehandlung umfasst einige grundlegende Verfahren:
    Prüfen Sie auch die Datei **system-0.log** auf Systemfehlermeldungen und -ausnahmen.
 4. Schließen Sie die **PDB-Datei** in die ZIP-Datei ein, sodass in den Fehlerdetails Informationen wie etwa die **Aufrufliste** zur Verfügung stehen, wenn ein Fehler auftritt.
 5. Alle Dateien in der ZIP-Datei für die benutzerdefinierte Aktivität müssen sich auf der **obersten Ebene** befinden und dürfen keine Unterordner besitzen.
-6. Stellen Sie sicher, dass **assemblyName** (MyDotNetActivity.dll), **entryPoint**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) und **packageLinkedService** (sollte auf den Azure-Blobspeicher für **allgemeine Zwecke** verweisen, der die ZIP-Datei enthält) auf die richtigen Werte festgelegt sind.
+6. Stellen Sie sicher, dass **assemblyName** (MyDotNetActivity.dll), **entryPoint** (MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) und **packageLinkedService** (sollte auf Azure Blob Storage für **allgemeine Zwecke** mit der ZIP-Datei verweisen) auf die richtigen Werte festgelegt sind.
 7. Wenn Sie einen Fehler behoben haben und den Slice erneut verarbeiten wollen, klicken Sie auf dem Blatt **OutputDataset** mit der rechten Maustaste auf den Slice und klicken Sie anschließend auf **Ausführen**.
 8. Wenn die folgende Fehlermeldung angezeigt wird, verwenden Sie eine Version des Azure Storage-Pakets, die höher als 4.3.0 ist. Das Startprogramm des Data Factory-Diensts erfordert Version 4.3 von WindowsAzure.Storage. Wenn Sie die neuere Version der Azure Storage-Assembly verwenden müssen, helfen Ihnen die Informationen zum Umgehen dieses Problems im Abschnitt [Anwendungsdomänenisolierung](#appdomain-isolation) weiter. 
 
@@ -1033,7 +1033,7 @@ Das Beispiel [Azure Data Factory – Lokale Umgebung](https://github.com/gbrueck
 ## <a name="sample-custom-activities-on-github"></a>Benutzerdefinierte Beispielaktivitäten in GitHub
 | Beispiel | Aktion der benutzerdefinierten Aktivität |
 | --- | --- |
-| [Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Lädt Daten von einem HTTP-Endpunkt mit einer benutzerdefinierten C#-Aktivität in Data Factory in den Azure-Blobspeicher herunter. |
+| [Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Lädt Daten von einem HTTP-Endpunkt mit einer benutzerdefinierten C#-Aktivität in Data Factory in Azure Blob Storage herunter. |
 | [Beispiel zur Twitter-Stimmungsanalyse](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Ruft ein Azure ML-Modell auf, um Stimmungsanalysen, Bewertungen, Vorhersagen usw. durchzuführen. |
 | [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Ruft ein R-Skript auf, indem „RScript.exe“ in Ihrem HDInsight-Cluster ausgeführt wird, in dem R bereits installiert ist. |
 | [Anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Verwendet andere Assemblyversionen als das Data Factory-Startprogramm |

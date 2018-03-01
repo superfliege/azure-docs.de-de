@@ -16,17 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
-ms.openlocfilehash: 47154202d0a8f7704561676fa645b5ccdb5b8c01
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 8e86648195811a666a197b6ee06ad610a1c8d568
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: Schützen von vertraulichen Daten in SQL-Datenbank und Speichern der Verschlüsselungsschlüssel im Windows-Zertifikatspeicher
 
 In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenbankverschlüsselung unter Einsatz des [Always-Encrypted-Assistenten](https://msdn.microsoft.com/library/mt459280.aspx) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) sichern. Sie erfahren hier auch, wie Sie Ihre Verschlüsselungsschlüssel im Windows-Zertifikatspeicher speichern.
 
-Always Encrypted ist eine neue Datenverschlüsselungstechnologie in Azure SQL-Datenbank und SQL Server, mit der vertrauliche ruhende Daten auf dem Server, auf dem Weg zwischen Client und Server und während der Verwendung geschützt werden. So wird sichergestellt, dass vertrauliche Daten im Datenbanksystem niemals im Klartextformat auftauchen. Nach der Verschlüsselung der Daten können nur Clientanwendungen oder App-Server, für die Zugriff auf die Schlüssel besteht, auf Klartextdaten zugreifen. Ausführliche Informationen finden Sie unter [Always Encrypted (Database Engine)](https://msdn.microsoft.com/library/mt163865.aspx).
+Always Encrypted ist eine neue Datenverschlüsselungstechnologie in Azure SQL-Datenbank und SQL Server, mit der vertrauliche ruhende Daten auf dem Server, auf dem Weg zwischen Client und Server und während der Verwendung geschützt werden. So wird sichergestellt, dass vertrauliche Daten im Datenbanksystem niemals im Klartextformat auftauchen. Nach der Verschlüsselung der Daten können nur Clientanwendungen oder App-Server, für die Zugriff auf die Schlüssel besteht, auf Klartextdaten zugreifen. Ausführliche Informationen finden Sie unter [Always Encrypted (Datenbank-Engine)](https://msdn.microsoft.com/library/mt163865.aspx).
 
 Nach dem Konfigurieren der Datenbank für die Verwendung von Always Encrypted erstellen Sie eine Clientanwendung in C# mit Visual Studio, um mit den verschlüsselten Daten zu arbeiten.
 
@@ -47,8 +47,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-­Datenbank
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie auf **Neu** > **Daten und Speicher** > **SQL-Datenbank**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Klicken Sie auf **Ressource erstellen** > **Daten und Speicher** > **SQL-Datenbank**.
 3. Erstellen Sie auf einem neuen oder vorhandenen Server eine **leere** Datenbank mit dem Namen **Clinic**. Ausführliche Anweisungen zum Erstellen einer Datenbank im Azure-Portal finden Sie unter [Ihre erste Azure SQL-Datenbank](sql-database-get-started-portal.md).
    
     ![Leere Datenbank erstellen](./media/sql-database-always-encrypted/create-database.png)
@@ -63,7 +63,7 @@ Später in diesem Tutorial benötigen Sie die Verbindungszeichenfolge. Nachdem d
 ## <a name="connect-to-the-database-with-ssms"></a>Herstellen einer Verbindung für die Datenbank mit SSMS
 Öffnen Sie SSMS, und stellen Sie für die Clinic-Datenbank eine Verbindung mit dem Server her.
 
-1. Öffnen Sie SSMS. (Klicken Sie auf **Verbinden** > **Datenbankmodul**, um das Fenster **Mit Server verbinden** zu öffnen, falls es nicht geöffnet ist.)
+1. Öffnen Sie SSMS. (Klicken Sie auf **Verbinden** > **Datenbank-Engine**, um das Fenster **Mit Server verbinden** zu öffnen, falls es nicht geöffnet ist.)
 2. Geben Sie Ihren Servernamen und die Anmeldeinformationen ein. Den Servernamen finden Sie auf dem Blatt „SQL-Datenbank“ und in der zuvor kopierten Verbindungszeichenfolge. Geben Sie den vollständigen Servernamen ein, einschließlich *database.windows.net*.
    
     ![Verbindungszeichenfolge kopieren](./media/sql-database-always-encrypted/ssms-connect.png)
@@ -485,7 +485,7 @@ Sie sehen, dass die verschlüsselten Spalten keine Klartextdaten enthalten.
 Um SSMS zu verwenden, um auf die Klartextdaten zuzugreifen, können Sie der Verbindung den Parameter **Column Encryption Setting=enabled** hinzufügen.
 
 1. Klicken Sie in SSMS im **Objekt-Explorer** mit der rechten Maustaste auf Ihren Server, und klicken Sie dann auf **Trennen**.
-2. Klicken Sie auf **Verbinden** > **Datenbankmodul**, um das Fenster **Mit Server verbinden** zu öffnen, und klicken Sie dann auf **Optionen**.
+2. Klicken Sie auf **Verbinden** > **Datenbank-Engine**, um das Fenster **Mit Server verbinden** zu öffnen, und klicken Sie dann auf **Optionen**.
 3. Klicken Sie auf **Zusätzliche Verbindungsparameter**, und geben Sie **Column Encryption Setting=enabled** ein.
    
     ![Neue Konsolenanwendung](./media/sql-database-always-encrypted/ssms-connection-parameter.png)

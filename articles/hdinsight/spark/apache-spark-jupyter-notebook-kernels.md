@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: b561352d702d1c5a415ebebc253869b8a56d68d8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 2be4477528c9109151c4737eabc16741cc020ce8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Kernel für Jupyter-Notebook in Spark-Clustern in Azure HDInsight 
 
@@ -80,7 +80,7 @@ Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Note
    
     In der folgenden Tabelle sind die verschiedenen über den Kernel verfügbaren Magics aufgeführt.
 
-   | Magic | Beispiel | Beschreibung |
+   | Magic | Beispiel | BESCHREIBUNG |
    | --- | --- | --- |
    | help |`%%help` |Generiert eine Tabelle mit allen verfügbaren Magics mit Beispiel und Beschreibung. |
    | info |`%%info` |Gibt Sitzungsinformationen für den aktuellen Livy-Endpunkt heraus. |
@@ -88,7 +88,7 @@ Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Note
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Führt eine Hive-Abfrage für sqlContext aus. Wenn der Parameter `-o` übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](http://pandas.pydata.org/) -Dataframe beibehalten. |
    | local |`%%local`<br>`a=1` |Der gesamte Code in den folgenden Zeilen wird lokal ausgeführt. Der Code muss gültiger Python2-Code sein, unabhängig vom verwendeten Kernel. Sogar wenn Sie beim Erstellen des Notebooks **PySpark3** oder **Spark**-Kernels gewählt haben und die `%%local`-Magic in einer Zelle verwenden, darf diese Zelle nur gültigen Python2-Code enthalten. |
    | Protokolle |`%%logs` |Gibt die Protokolle für die aktuelle Livy-Sitzung aus. |
-   | delete |`%%delete -f -s <session number>` |Löscht eine bestimmte Sitzung des aktuellen Livy-Endpunkts. Beachten Sie, dass Sie die Sitzung, die für den Kernel selbst initiiert wird, nicht löschen können. |
+   | delete |`%%delete -f -s <session number>` |Löscht eine bestimmte Sitzung des aktuellen Livy-Endpunkts. Die Sitzung, die für den Kernel selbst initiiert wird, können Sie nicht löschen. |
    | cleanup |`%%cleanup -f` |Löscht alle Sitzungen für den aktuellen Livy-Endpunkt, einschließlich dieser Notebook-Sitzung. Das Force-Flag „-f“ ist obligatorisch |
 
    > [!NOTE]
@@ -100,7 +100,7 @@ Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Note
 ## <a name="parameters-supported-with-the-sql-magic"></a>Mit %%sql-Magic unterstützte Parameter
 Die `%%sql`-Magic unterstützt verschiedene Parameter, mit denen Sie steuern können, welche Art der Ausgabe Sie erhalten, wenn Sie Abfragen ausführen. In der folgenden Tabelle werden die Ausgaben aufgeführt.
 
-| Parameter | Beispiel | Beschreibung |
+| Parameter | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Verwenden Sie diesen Parameter, um das Ergebnis der Abfrage im %%local-Python-Kontext als [Pandas](http://pandas.pydata.org/) -Dataframe beizubehalten. Der Name der Datenrahmenvariablen ist der Variablenname, den Sie angeben. |
 | -q |`-q` |Verwenden Sie diese Option, um die Visualisierungen für die Zelle auszuschalten. Wenn Sie den Inhalt einer Zelle nicht automatisch visualisieren, sondern einfach als Dataframe erfassen möchten, verwenden Sie `-q -o <VARIABLE>`. Wenn Sie Visualisierungen deaktivieren möchten, ohne die Ergebnisse zu erfassen (z.B. zum Ausführen einer SQL-Abfrage wie etwa einer `CREATE TABLE`-Anweisung), verwenden Sie einfach `-q` ohne Angabe eines `-o`-Arguments. |
@@ -156,11 +156,10 @@ Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit
 ## <a name="seealso"></a>Weitere Informationen
 * [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Szenarios
+### <a name="scenarios"></a>Szenarien
 * [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
 * [Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark-Streaming: Erstellen von Echtzeitstreaminganwendungen mithilfe von Spark in HDInsight](apache-spark-eventhub-streaming.md)
 * [Websiteprotokollanalyse mithilfe von Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen
@@ -176,4 +175,4 @@ Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit
 
 ### <a name="manage-resources"></a>Verwalten von Ressourcen
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)

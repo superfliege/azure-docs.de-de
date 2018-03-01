@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 02/15/2018
 ms.author: terrylan
-ms.openlocfilehash: fd238f0b2d877f7f57a27ce495dae8de1ab9c066
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3b57cacec729bd2f2dd4acdbb9c15e69ab9f5c85
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Unterstützte Plattformen in Azure Security Center
-Die Überwachung des Sicherheitsstatus und entsprechende Empfehlungen sind für virtuelle Computer (VMs) verfügbar, die mit dem klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell erstellt wurden.
+Die Überwachung des Sicherheitsstatus und entsprechende Empfehlungen sind für virtuelle Computer (VMs), die mit dem klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell erstellt wurden, und für Computer verfügbar.
 
 > [!NOTE]
 > Erfahren Sie mehr über das [klassische und das Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) für Azure-Ressourcen.
 >
 >
 
-## <a name="supported-platforms-for-windows-vms"></a>Unterstützte Plattformen für Windows-VMs
+## <a name="supported-platforms-for-windows-computers-and-vms"></a>Unterstützte Plattformen für Windows-Computer und -VMs
 Unterstützte Windows-Betriebssysteme:
 
 * Windows Server 2008
@@ -38,12 +38,12 @@ Unterstützte Windows-Betriebssysteme:
 * Windows Server 2016
 
 
-## <a name="supported-platforms-for-linux-vms"></a>Unterstützte Plattformen für Linux-VMs
+## <a name="supported-platforms-for-linux-computers-and-vms"></a>Unterstützte Plattformen für Linux-Computer und -VMs
 Unterstützte Linux-Betriebssysteme:
 
 * Ubuntu-Versionen 12.04, 14.04, 16.04, 16.10
 * Debian-Versionen 7, 8
-* CentOS-Versionen 6.\*, 7.\*
+* CentOS-Versionen 6.\*, 7.*
 * Red Hat Enterprise Linux-Versionen (RHEL) 6.\*, 7.\*
 * SUSE Linux Enterprise Server-Versionen (SLES) 11 SP4+, 12.\*
 * Oracle Linux-Versionen 6.\*, 7.\*

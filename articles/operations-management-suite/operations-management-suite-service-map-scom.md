@@ -1,6 +1,6 @@
 ---
 title: Integration von Service Map in System Center Operations Manager | Microsoft Docs
-description: "Service Map ist eine Lösung in der Operations Management Suite, die automatisch Anwendungskomponenten auf Windows- und Linux-Systemen ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel erläutert die Verwendung von Service Map zum automatischen Erstellen von Diagrammen der verteilten Anwendungen in Operations Manager."
+description: "Service Map ist eine Lösung in Azure, die Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel erläutert die Verwendung von Service Map zum automatischen Erstellen von Diagrammen der verteilten Anwendungen in Operations Manager."
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: af1f683f08ff6b70b23ff265f39b9a76f92f4be2
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 906a90acb8754ff4b70235256cd184e2611ff5a0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Integration von Service Map in System Center Operations Manager
   > [!NOTE]
   > Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
   > 
   
-Service Map in der Operations Management Suite ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und bildet die Kommunikation zwischen Diensten ab. In Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich. Weitere Informationen finden Sie in der [Dokumentation zu Service Map](operations-management-suite-service-map.md).
+Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich. Weitere Informationen finden Sie in der [Dokumentation zu Service Map](operations-management-suite-service-map.md).
 
 Mit dieser Integration zwischen Service Map und System Center Operations Manager können Sie basierend auf dynamischen Abhängigkeitszuordnungen in Service Map automatisch Diagramme der verteilten Anwendungen in Operations Manager erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Eine Operations Manager-Verwaltungsgruppe (2012 R2 oder höher), die eine Gruppe von Servern verwaltet.
-* Ein Operations Management Suite-Arbeitsbereich mit aktivierter Service Map-Lösung
+* Ein Log Analytics-Arbeitsbereich mit aktivierter Service Map-Lösung.
 * Eine Gruppe von Servern (mindestens eine), die über Operations Manager verwaltet werden und Daten an Service Map senden. Es werden Windows- und Linux-Server unterstützt.
-* Ein Dienstprinzipal mit Zugriff auf das Azure-Abonnement, das dem Operations Management Suite-Arbeitsbereich zugeordnet ist. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals](#creating-a-service-principal).
+* Ein Dienstprinzipal mit Zugriff auf das Azure-Abonnement, das dem Log Analytics-Arbeitsbereich zugeordnet ist. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals](#creating-a-service-principal).
 
 ## <a name="install-the-service-map-management-pack"></a>Installieren des Service Map Management Pack
 Sie aktivieren die Integration zwischen Operations Manager und Service Map durch Importieren des Management Pack-Pakets Microsoft.SystemCenter.ServiceMap (Microsoft.SystemCenter.ServiceMap.mpb). Sie können das Management Pack-Paket aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=55763) herunterladen. Das Paket enthält die folgenden Management Packs:
@@ -55,7 +55,7 @@ Um die Service Map-Integration zu konfigurieren, führen Sie folgende Schritte a
 
     ![Das Fenster „Verbindungskonfiguration“](media/oms-service-map/scom-config-spn.png)
 
-3. Wählen Sie im Fenster **Subscription Selection** (Abonnementauswahl) das Azure-Abonnement, die Azure-Ressourcengruppe (diejenige, die den Operations Management Suite-Arbeitsbereich enthält) und den Operations Management Suite-Arbeitsbereich, und klicken Sie dann auf **Weiter**.
+3. Wählen Sie im Fenster **Abonnementauswahl** das Azure-Abonnement, die Azure-Ressourcengruppe (diejenige, die den Log Analytics-Arbeitsbereich enthält) und den Log Analytics-Arbeitsbereich, und klicken Sie dann auf **Weiter**.
 
     ![Der Operations Manager-Konfigurationsarbeitsbereich](media/oms-service-map/scom-config-workspace.png)
 
@@ -73,22 +73,22 @@ Um die Service Map-Integration zu konfigurieren, führen Sie folgende Schritte a
 
     ![Die Operations Manager-Konfigurationsgruppe](media/oms-service-map/scom-config-group.png)
 
-6. Optional: Wählen Sie den Ressourcenpool „Verwaltungsserver“ für die Kommunikation mit Operations Management Suite aus, und klicken Sie auf **Arbeitsbereich hinzufügen**.
+6. Optional: Wählen Sie den Ressourcenpool „Verwaltungsserver“ für die Kommunikation mit Log Analytics aus, und klicken Sie auf **Arbeitsbereich hinzufügen**.
 
     ![Der Operations Manager-Konfigurationsressourcenpool](media/oms-service-map/scom-config-pool.png)
 
-    Es kann eine Minute dauern, den Operations Management Suite-Arbeitsbereich zu konfigurieren und registrieren. Sobald er konfiguriert ist, wird in Operations Manager die erste Service Map-Synchronisierung von der Operations Management Suite aus initiiert.
+    Es kann eine Minute dauern, den Log Analytics-Arbeitsbereich zu konfigurieren und registrieren. Nach Abschluss der Konfiguration wird in Operations Manager die erste Service Map-Synchronisierung initiiert.
 
     ![Der Operations Manager-Konfigurationsressourcenpool](media/oms-service-map/scom-config-success.png)
 
 
 ## <a name="monitor-service-map"></a>Überwachen von Service Map
-Nachdem die Verbindung des Operations Management Suite-Arbeitsbereichs hergestellt ist, wird ein neuer Ordner „Service Map“ im Bereich **Überwachung** der Operations Manager-Konsole angezeigt.
+Nachdem die Verbindung mit dem Log Analytics-Arbeitsbereichs hergestellt wurde, wird ein neuer Ordner „Service Map“ im Bereich **Überwachung** der Operations Manager-Konsole angezeigt.
 
 ![Operations Manager-Bereich „Überwachung“](media/oms-service-map/scom-monitoring.png)
 
 Der Ordner „Service Map“ umfasst vier Knoten:
-* **Aktive Warnungen**: Listet alle aktiven Warnungen zur Kommunikation zwischen Operations Manager und Service Map auf.  Beachten Sie, dass diese Warnungen nicht die Operations Management Suite-Warnungen sind, die mit Operations Manager synchronisiert werden. 
+* **Aktive Warnungen**: Listet alle aktiven Warnungen zur Kommunikation zwischen Operations Manager und Service Map auf.  Beachten Sie, dass diese Warnungen nicht die Log Analytics-Warnungen sind, die mit Operations Manager synchronisiert werden. 
 
 * **Server**: Hier wird die Liste der überwachten Server angezeigt, die für die Synchronisierung mit Service Map konfiguriert sind.
 
@@ -103,7 +103,7 @@ Der Ordner „Service Map“ umfasst vier Knoten:
     ![Das Diagramm der verteilten Anwendungen im Operations Manager](media/oms-service-map/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Bearbeiten oder Löschen des Arbeitsbereichs
-Sie können den konfigurierten Arbeitsbereich im Bereich der **Service Map-Übersicht** (Bereich **Verwaltung** > **Operations Management Suite** > **Service Map**) bearbeiten oder löschen. Sie können zurzeit nur einen Operations Management Suite-Arbeitsbereich konfigurieren.
+Sie können den konfigurierten Arbeitsbereich im Bereich der **Service Map-Übersicht** (Bereich **Verwaltung** > **Operations Management Suite** > **Service Map**) bearbeiten oder löschen. Aktuell können Sie nur einen Log Analytics-Arbeitsbereich konfigurieren.
 
 ![Der Bereich zum Bearbeiten des Arbeitsbereichs im Operations Manager ](media/oms-service-map/scom-edit-workspace.png)
 
@@ -120,7 +120,7 @@ Die Regel _Microsoft.SystemCenter.ServiceMapImport.Rule_ wird erstellt, um regel
 ## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
 
 Das aktuelle Design weist folgende Probleme und Einschränkungen auf:
-* Sie können nur eine Verbindung mit einem einzelnen Operations Management Suite-Arbeitsbereich herstellen.
+* Sie können nur eine Verbindung mit einem einzigen Log Analytics-Arbeitsbereich herstellen.
 * Sie können im Bereich **Erstellen** der „Service Map-Servergruppe“ zwar manuell Server hinzufügen, aber die Zuordnungen für diese Server werden nicht sofort synchronisiert.  Sie werden beim nächsten Synchronisierungszyklus von Service Map aus synchronisiert.
 * Wenn Sie Änderungen an den vom Management Pack erstellten Diagrammen der verteilten Anwendungen vornehmen, werden diese Änderungen wahrscheinlich bei der nächsten Synchronisierung mit Service Map überschrieben.
 

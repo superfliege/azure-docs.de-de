@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: d61b29f1327f57bc32b2c53de3fe58e53fcf3cac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2510a4aed34b6a156cc9a9da6215de5956aac023
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>Schützen personenbezogener Daten mit Netzwerksicherheitsfunktionen: Azure Application Gateway und Netzwerksicherheitsgruppen
 
@@ -59,18 +59,9 @@ Sie können ein Anwendungsgateway mit WAF erstellen oder WAF einem vorhandenen A
 
 Führen Sie folgende Schritte aus, um ein neues Anwendungsgateway mit aktivierter WAF zu erstellen:
 
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie im Bereich **Favoriten** des Portals auf **Neu**.
-
-2. Klicken Sie auf dem Blatt **Neu** auf **Netzwerk**.
-
-3. Klicken Sie auf **Application Gateway**.
-
-4. Navigieren Sie zum Azure-Portal, und klicken Sie auf **Neu \> Netzwerk \> Application Gateway**.
-
-   ![Erstellen von Anwendungsgateways](media/protect-netsec/app-gateway-01.png)
-
-5. Geben Sie im dann angezeigten Blatt **Grundlagen** die Werte für die folgenden Felder ein: Name, Ebene (Standard oder WAF), SKU-Größe (Klein, Mittel oder Groß), Instanzanzahl (2 für hohe Verfügbarkeit), Abonnement, Ressourcengruppe und Standort.
-
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+2. Wählen Sie **Ressource erstellen** > **Netzwerk** > **Application Gateway** aus.
+5. Geben Sie im dann angezeigten Blatt **Grundlagen** die Werte für die folgenden Felder ein: Name, Ebene (Standard oder WAF), SKU-Größe (Klein, Mittel oder Groß), Instanzanzahl (2 für Hochverfügbarkeit), Abonnement, Ressourcengruppe und Standort.
 6. Klicken Sie auf dem Blatt **Einstellungen**, das unter **Virtuelles Netzwerk** angezeigt wird, auf **Virtuelles Netzwerk auswählen**. Damit wird das Blatt „Virtuelles Netzwerk auswählen“ geöffnet.
 
 7. Klicken Sie auf **Neu erstellen**, um das Blatt **Virtuelles Netzwerk erstellen** zu öffnen.
@@ -126,7 +117,7 @@ Weitere Anweisungen zur Planung und Implementierung von NSGs sowie ein Beispiels
 
 Führen Sie folgende Schritte aus, um Regeln für eingehenden Datenverkehr in einer vorhandenen NSG zu erstellen:
 
-1. Klicken Sie auf **Durchsuchen** und dann auf **Netzwerksicherheitsgruppen**.
+1. Klicken Sie auf **Alle Dienste** und dann auf **Netzwerksicherheitsgruppen**.
 
 2. Klicken Sie in der Liste der NSGs auf **NSG-FrontEnd** und dann auf **Eingangssicherheitsregeln**.
 

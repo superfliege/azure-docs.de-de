@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: b031807073313e9e093dbc7576ecfd3d2a970abe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e8540409c6174ad02bd2d9d57c53e0279f49871
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Erstellen einer Web-App in einer App Service-Umgebung v1
 
@@ -38,7 +38,7 @@ Dieses Tutorial zeigt, wie Sie Web-Apps und App Service-Pläne in einer [App Ser
 Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erstellt haben. Wenn das nicht der Fall ist, finden Sie weitere Informationen unter [Erstellen einer App Service-Umgebung](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu > Web und mobil > Web-App**. 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen > Web + Mobil > Web-App**. 
    
     ![][1]
 2. Wählen Sie Ihr Abonnement aus.  

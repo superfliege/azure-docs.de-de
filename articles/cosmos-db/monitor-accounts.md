@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mimig
-ms.openlocfilehash: f07489172306b4f6d03b5a9b1399ed92e007c3c1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0e9a47e6a1a5c7a44c5553742d6c5c81f8ca7286
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-azure-cosmos-db"></a>Überwachen von Microsoft Azure Cosmos DB
 Sie können Ihre Azure Cosmos DB-Konten im [Azure-Portal](https://portal.azure.com/) überwachen. Für jedes Konto in Azure Cosmos DB ist eine vollständige Sammlung von Metriken verfügbar, mit der der Durchsatz, der Speicher, die Verfügbarkeit, die Latenz und die Konsistenz überwacht werden kann.
@@ -26,7 +26,7 @@ Sie können Ihre Azure Cosmos DB-Konten im [Azure-Portal](https://portal.azure.c
 Metriken können auf der Seite „Konto“, der neuen Seite „Metriken“ oder in Azure Monitor überprüft werden.
 
 ## <a name="view-performance-metrics-on-the-metrics-page"></a>Anzeigen von Leistungsmetriken auf der Seite „Metriken“
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **Azure Cosmos DB** und dann auf den Namen des Azure Cosmos DB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Alle Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **Azure Cosmos DB** und dann auf den Namen des Azure Cosmos DB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
 2. Wenn die neue Seite geladen wird, klicken Sie im Ressourcenmenü unter **Überwachung** auf **Metriken**.
 3. Wenn sich die Seite „Metriken“ öffnet, wählen Sie aus der Dropdownliste **Sammlung(en)** die Sammlung aus, die überprüft werden soll.
 
@@ -42,7 +42,7 @@ Metriken können auf der Seite „Konto“, der neuen Seite „Metriken“ oder 
 5. Wählen Sie in der Liste mit **verfügbaren Metriken** die anzuzeigenden Metriken aus. Verwenden Sie die STRG-TASTE, um mehrere Metriken auszuwählen. 
 
 ## <a name="view-performance-metrics-on-the-account-page"></a>Anzeigen von Leistungsmetriken auf der Seite „Konto“
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **Azure Cosmos DB** und dann auf den Namen des Azure Cosmos DB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Alle Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **Azure Cosmos DB** und dann auf den Namen des Azure Cosmos DB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
 2. Der Fokus **Überwachung** zeigt standardmäßig folgende Kacheln an:
    
    * Gesamtanforderungen des aktuellen Tags.
@@ -53,7 +53,7 @@ Metriken können auf der Seite „Konto“, der neuen Seite „Metriken“ oder 
 4. Auf der Seite **Metrik** werden die Details zur Gesamtzahl der Anforderungen angezeigt. 
 
 ## <a name="set-up-alerts-in-the-portal"></a>Einrichten von Warnungen im Portal
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, dann auf **Azure Cosmos DB** und anschließend auf den Namen des Azure Cosmos DB-Kontos, für das Sie Warnungen zu Leistungsmetriken einrichten möchten.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Alle Dienste**, dann auf **Azure Cosmos DB** und anschließend auf den Namen des Azure Cosmos DB-Kontos, für das Sie Warnungen zu Leistungsmetriken einrichten möchten.
 2. Klicken Sie im Ressourcenmenü auf **Warnungsregeln**, um die Seite „Warnungsregeln“ zu öffnen.  
    ![Screenshot des ausgewählten Warnungsregelnteils](./media/monitor-accounts/madocdb10.5.png)
 3. Klicken Sie auf der Seite **Warnungsregeln** auf **Warnung hinzufügen**.  

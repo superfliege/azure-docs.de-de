@@ -16,18 +16,18 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 1aaebb66287edc375909f7367648da6cf5f4cc40
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 25ab1da5a07874596bf5ec62313e672af83a9bb9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Anzeigen von oder Suchen nach Ihren Benutzergruppen in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie alle Gruppen in Azure Active Directory (Azure AD) anzeigen. Eines der Features der Benutzerverwaltung von Azure AD ist, dass Sie Gruppen verwenden können, um Verwaltungsaufgaben auszuführen, z.B. gleichzeitig einer Anzahl von Benutzern Lizenzen und Berechtigungen zuweisen.
 
 ## <a name="how-do-i-see-all-the-groups"></a>Wie zeige ich alle Gruppen an?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
+2. Wählen Sie **Alle Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 
    ![Öffnen von Benutzern und Gruppen](./media/active-directory-groups-view-azure-portal/search-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
-ms.openlocfilehash: ab5d184fde2cbcb517b325624c8405954b4d0972
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7f86ebf3e79812eb50e58cbb320336cbd1149e6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="pause-and-start-your-power-bi-embedded-capacity-in-the-azure-portal"></a>Anhalten und Starten Ihrer Power BI Embedded-Kapazität im Azure-Portal
 
@@ -35,9 +35,9 @@ Durch das Anhalten der Kapazität wird die Rechnungsstellung verhindert. Das Anh
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie **Weitere Dienste** > **Power BI Embedded** aus, um Ihre Kapazitäten anzuzeigen.
+2. Wählen Sie **Alle Dienste** > **Power BI Embedded** aus, um Ihre Kapazitäten anzuzeigen.
 
-    ![Weitere Dienste im Azure-Portal](media/pause-start/azure-portal-more-services.png)
+    ![„Alle Dienste“ im Azure-Portal](media/pause-start/azure-portal-more-services.png)
 
 3. Wählen Sie die Kapazität aus, die Sie anhalten möchten.
 
@@ -57,9 +57,9 @@ Setzen Sie die Nutzung durch Starten Ihrer Kapazität fort. Mit dem Starten Ihre
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie **Weitere Dienste** > **Power BI Embedded** aus, um Ihre Kapazitäten anzuzeigen.
+2. Wählen Sie **Alle Dienste** > **Power BI Embedded** aus, um Ihre Kapazitäten anzuzeigen.
 
-    ![Weitere Dienste im Azure-Portal](media/pause-start/azure-portal-more-services.png)
+    ![„Alle Dienste“ im Azure-Portal](media/pause-start/azure-portal-more-services.png)
 
 3. Wählen Sie die Kapazität aus, die Sie starten möchten.
 

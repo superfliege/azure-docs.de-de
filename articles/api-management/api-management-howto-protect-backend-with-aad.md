@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 1ba7a415a56f5147e73faa48fcd51151c3c818a8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 695db2f5e6ffe794d76d0b9126dc231ed8a87d2c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>So schützen Sie ein Web-API-Back-End mit Azure Active Directory und API Management
 Im folgenden Video wird gezeigt, wie Sie ein Web-API-Back-End erstellen und es mithilfe des OAuth 2.0-Protokolls mit Azure Active Directory und API Management schützen.  Dieser Artikel enthält eine Übersicht und zusätzliche Informationen zu den Schritten in diesem Video. In diesem 24-minütigen Video wird Folgendes veranschaulicht:
@@ -37,7 +37,7 @@ Zum Schützen Ihres Web-API-Back-Ends mit Azure Active Directory benötigen Sie 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
-In diesem Beispiel wird ein Verzeichnis namens **APIMDemo** mit der Standarddomäne namens **DemoAPIM.onmicrosoft.com** erstellt. Dieses Verzeichnis wird während des gesamten Videos verwendet.
+In diesem Beispiel wird ein Verzeichnis namens **APIMDemo** mit einer Standarddomäne namens **DemoAPIM.onmicrosoft.com** erstellt. Dieses Verzeichnis wird während des gesamten Videos verwendet.
 
 ![Azure Active Directory][api-management-create-aad]
 
@@ -50,7 +50,7 @@ Klicken Sie in der Liste **Vorlage auswählen** auf **Web-API**, um ein Web-API-
 
 ![Neues Projekt][api-management-new-project]
 
-Klicken Sie auf **Organisationskonten**, und geben Sie die **Domäne** Ihres AAD-Mandanten an. In diesem Beispiel wird die Domäne **DemoAPIM.onmicrosoft.com**verwendet. Die Domäne Ihres Verzeichnisses kann auf der Registerkarte **Domänen** Ihres Verzeichnisses abgerufen werden.
+Klicken Sie auf **Organisationskonten**, und geben Sie die **Domäne** Ihres AAD-Mandanten an. In diesem Beispiel lautet die Domäne **DemoAPIM.onmicrosoft.com**. Die Domäne Ihres Verzeichnisses kann auf der Registerkarte **Domänen** Ihres Verzeichnisses abgerufen werden.
 
 ![Domänen][api-management-aad-domains]
 
@@ -400,7 +400,7 @@ Klicken Sie im Menü „API Management“ auf der linken Seite auf **Sicherheit*
 
 ![Autorisierungsserver hinzufügen][api-management-add-authorization-server]
 
-Geben Sie in die Felder **Name** und **Beschreibung** einen Namen bzw. eine optionale Beschreibung ein. Anhand dieser Felder wird der OAuth 2.0-Autorisierungsserver innerhalb der Instanz des API Management-Diensts identifiziert. In diesem Beispiel wird die **Autorisierungsserverdemo** verwendet. Wenn Sie später einen OAuth 2.0-Server für die Authentifizierung für eine API angeben, wählen Sie diesen Namen.
+Geben Sie in die Felder **Name** und **Beschreibung** einen Namen bzw. eine optionale Beschreibung ein. Anhand dieser Felder wird der OAuth 2.0-Autorisierungsserver innerhalb der Instanz des API Management-Diensts identifiziert. In diesem Beispiel wird **Autorisierungsserverdemo** verwendet. Wenn Sie später einen OAuth 2.0-Server für die Authentifizierung für eine API angeben, wählen Sie diesen Namen.
 
 Geben Sie als **Seiten-URL für Clientregistrierung** einen Platzhalterwert ein, z.B. `http://localhost`.  **Seiten-URL für Clientregistrierung** verweist auf die Seite, die Benutzer zum Erstellen und Konfigurieren eigener Konten für OAuth 2.0-Anbieter nutzen können, die eine Benutzerverwaltung für Konten unterstützen. In diesem Beispiel werden von Benutzern keine eigenen Konten erstellt und konfiguriert, daher wird ein Platzhalter verwendet.
 
@@ -434,7 +434,7 @@ Geben Sie anschließend Clientanmeldeinformationen an. Dabei handelt es sich um 
 
 Zum Abrufen der **Client-ID** navigieren Sie zur Registerkarte **Konfigurieren** der AAD-Anwendung für das Entwicklerportal und kopieren die **Client-ID**.
 
-Zum Abrufen des **Clientgeheimnisses** klicken Sie im Abschnitt **Schlüssel** auf die Dropdownliste **Dauer auswählen** und geben ein Intervall an. In diesem Beispiel wird 1 Jahr als Intervall verwendet.
+Zum Abrufen des **Clientgeheimnisses** klicken Sie im Abschnitt **Schlüssel** auf die Dropdownliste **Dauer auswählen** und geben ein Intervall an. In diesem Beispiel wird 1 Jahr verwendet.
 
 ![Client-ID][api-management-aad-client-id]
 
@@ -495,7 +495,7 @@ Klicken Sie auf **Senden**, und notieren Sie den **Antwortstatus** von **200 OK*
 Mit dem nächsten Verfahren im Video (ab 16:30) wird eine einfache Desktopanwendung zum Aufzurufen der API konfiguriert. Im ersten Schritt wird die Desktopanwendung in Azure AD registriert und erhält Zugriff auf das Verzeichnis und den Back-End-Dienst. Ab 18:25 folgt eine Demonstration der Desktopanwendung, die einen Vorgang in der Rechner-API aufruft.
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Konfigurieren einer JWT-Überprüfungsrichtlinie zur Vorautorisierung von Anforderungen
-Das letzte Verfahren im Video beginnt bei 20:48. Sie erfahren, wie Sie mit der Richtlinie [JWT überprüfen](https://msdn.microsoft.com/library/azure/034febe3-465f-4840-9fc6-c448ef520b0f#ValidateJWT) Anforderungen vorab autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn die Anforderung nicht von der Richtlinie „JWT überprüfen“ überprüft wird, wird sie von API Management blockiert und nicht an das Back-End weitergegeben.
+Das letzte Verfahren im Video beginnt bei 20:48. Sie erfahren, wie Sie mit der Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) Anforderungen vorab autorisieren, indem die Zugriffstoken für jede eingehende Anforderung überprüft werden. Wenn die Anforderung nicht von der Richtlinie „JWT überprüfen“ überprüft wird, wird sie von API Management blockiert und nicht an das Back-End weitergegeben.
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

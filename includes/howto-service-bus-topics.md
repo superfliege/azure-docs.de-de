@@ -3,11 +3,11 @@ Service Bus-Themen und -Abonnements unterstützen ein Modell der Messagingkommun
 
 ![TopicConcepts](./media/howto-service-bus-topics/sb-topics-01.png)
 
-Anders als bei Service Bus-Warteschlangen, bei denen jede Nachricht von einem einzelnen Consumer verarbeitet wird, bieten Themen und Abonnements eine 1:n-Kommunikationsform mit einem Veröffentlichungs- und Abonnementsmuster. Es ist möglich, mehrere Abonnements zu einem Thema anzumelden. Wenn eine Nachricht an ein Thema gesendet wird, steht sie in jedem Abonnement zur Verfügung, wo sie unabhängig von den anderen Abonnements verarbeitet wird.
+Anders als bei Service Bus-Warteschlangen, wo jede Nachricht von einem einzelnen Consumer verarbeitet wird, bieten Themen und Abonnements eine „1:n“-Kommunikationsform mit einem Veröffentlichungs- und Abonnementsmuster. Es ist möglich, mehrere Abonnements zu einem Thema anzumelden. Wenn eine Nachricht an ein Thema gesendet wird, steht sie in jedem Abonnement zur Verfügung, wo sie unabhängig von den anderen Abonnements verarbeitet wird.
 
-Ein Themenabonnement ähnelt einer virtuellen Warteschlange, die Kopien der Nachrichten enthält, die an das Thema gesendet wurden. Sie können optional auch Filterregeln für einzelne Abonnements eines Themas anmelden. Auf diese Weise können Sie filtern oder einschränken, welche Nachrichten an ein Thema von welchen Themenabonnements empfangen werden.
+Ein Themenabonnement ähnelt einer virtuellen Warteschlange, die Kopien der Nachrichten enthält, die an das Thema gesendet wurden. Optional können Sie Filterregeln für ein Thema auf Abonnementbasis registrieren. Filterregeln ermöglichen das Filtern oder Einschränken der empfangenen Meldungen zu einem Thema durch Themenabonnements.
 
-Mit Service Bus-Themen und -Abonnements können Sie sehr viele Nachrichten an sehr viele Benutzer und Anwendungen verarbeiten.
+Mit Service Bus-Themen und -Abonnements können Sie sehr viele Nachrichten an viele Benutzer und Anwendungen verarbeiten.
 
 ## <a name="create-a-namespace"></a>Erstellen eines Namespace
 Um mit der Verwendung von Service Bus-Themen und -Abonnements in Azure beginnen zu können, müssen Sie zuerst einen *Dienstnamespace*erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
@@ -15,7 +15,7 @@ Um mit der Verwendung von Service Bus-Themen und -Abonnements in Azure beginnen 
 So erstellen Sie einen Namespace
 
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
-2. Klicken Sie im linken Navigationsbereich des Portals auf **Neu** > **Enterprise Integration** > **Service Bus**.
+2. Klicken Sie im linken Navigationsbereich des Portals auf **Ressource erstellen**, anschließend auf **Unternehmensintegration** und dann auf **Service Bus**.
 3. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
 4. Ist der Name verfügbar, wählen Sie den Tarif („Basic“, „Standard“ oder Premium“) aus.
 5. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
@@ -27,11 +27,11 @@ So erstellen Sie einen Namespace
 
 ### <a name="obtain-the-credentials"></a>Abrufen der Anmeldeinformationen
 1. Klicken Sie in der Liste mit den Namespaces auf den neu erstellten Namespacenamen.
-2. Klicken Sie auf dem Blatt **Service Bus-Namespace** auf **Richtlinien für gemeinsamen Zugriff**.
-3. Klicken Sie auf dem Blatt **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
+2. Klicken Sie im Bereich **Service Bus-Namespace** auf **Richtlinien für gemeinsamen Zugriff**.
+3. Klicken Sie im Bereich **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
    
     ![connection-info][connection-info]
-4. Klicken Sie auf dem Blatt **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Kopierschaltfläche, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren.
+4. Klicken Sie im Bereich **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Kopierschaltfläche, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren.
    
     ![connection-string][connection-string]
 

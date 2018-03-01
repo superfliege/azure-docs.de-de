@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: d65341ae79a8894d054503e0b0807dee3e4cca8c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e3df23e8803d8b34cc4178f8047d0fe2172d04be
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Sicherheit im Azure Data Lake-Speicher
 Viele Unternehmen nutzen Big-Data-Analysen zur Gewinnung von Unternehmenseinblicken, um fundierte Entscheidungen treffen zu können. Ein Unternehmen verfügt unter Umständen über eine komplexe und regulierte Umgebung mit einer wachsenden Zahl von unterschiedlichen Benutzern. Unternehmen müssen sicherstellen, dass wichtige Geschäftsdaten sicherer gespeichert werden und dass einzelnen Benutzern die richtige Zugriffsebene gewährt wird. Azure Data Lake Store ist so konzipiert, dass diese Sicherheitsanforderungen besser erfüllt werden können. In diesem Artikel werden die Sicherheitsfunktionen von Data Lake Store beschrieben, z.B.:
@@ -97,7 +97,7 @@ Zeigen Sie für Überwachungspfade der Kontoverwaltung die Spalten an, die Sie p
 ![Überwachungsprotokolle](./media/data-lake-store-security-overview/audit-logs.png "Überwachungsprotokolle")
 
 ### <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Sie können Datenzugriff-Überwachungspfade im Azure-Portal (in den Diagnoseeinstellungen) festlegen und ein Azure-Blobspeicherkonto erstellen, unter dem die Protokolle gespeichert werden.
+Sie können Datenzugriff-Überwachungspfade im Azure-Portal (in den Diagnoseeinstellungen) festlegen und ein Azure Blob Storage-Konto erstellen, unter dem die Protokolle gespeichert werden.
 
 ![Diagnoseprotokolle](./media/data-lake-store-security-overview/diagnostic-logs.png "Diagnoseprotokolle")
 

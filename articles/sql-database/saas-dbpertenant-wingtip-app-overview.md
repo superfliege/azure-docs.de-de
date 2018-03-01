@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: sstein
-ms.openlocfilehash: d17c361d2249cc95be78cde143925251ad65db44
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 2871d2b1208013808958e8a5b0c62fce31af86ec
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
-# <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>Einführung zum Beispiel einer mehrinstanzenfähigen SQL-Datenbank-SaaS-App
+# <a name="introduction-to-a-multi-tenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Einführung in eine mehrinstanzenfähige SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 
-Bei der SaaS-Anwendung *Wingtip* handelt es sich um eine mehrinstanzenfähige Beispiel-App, mit der die einzigartigen Vorteile der SQL-Datenbank veranschaulicht werden. Die App verwendet eine SaaS-Anwendungsmuster mit Datenbank pro Mandant, um mit mehreren Mandanten zu kommunizieren. Die App ist auf die Vorstellung der Funktionen von Azure SQL-Datenbank ausgelegt, die SaaS-Szenarien ermöglichen, einschließlich verschiedener SaaS-Entwurfs- und -Verwaltungsmuster. Um einen schnellen Einstieg sicherzustellen, wird die SaaS-App Wingtip in weniger als fünf Minuten bereitgestellt.
+Die Anwendung *Wingtip SaaS* ist eine Beispiel-App mit mehreren Mandanten. Die App verwendet das SaaS-Anwendungsmuster mit einer Datenbank pro Mandant, um mit mehreren Mandanten zu kommunizieren. Die App stellt Features von Azure SQL-Datenbank vor, die mithilfe verschiedener SaaS-Entwurfs- und -Verwaltungsmuster SaaS-Szenarien ermöglichen. Um einen schnellen Einstieg sicherzustellen, wird die SaaS-App Wingtip in weniger als fünf Minuten bereitgestellt.
 
-Der Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) verfügbar. Schritte zum Herunterladen und Entsperren des Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
+Der Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) verfügbar. Bevor Sie beginnen, lesen Sie die Schritte zum Herunterladen und Entsperren der Wingtip Tickets-Verwaltungsskripts unter [Allgemeine Hinweise](saas-tenancy-wingtip-app-guidance-tips.md).
 
 ## <a name="application-architecture"></a>Anwendungsarchitektur
 
-Die SaaS-App Wingtip verwendet das Modell mit einer Datenbank pro Mandant sowie elastische SQL-Pools, um die Effizienz zu maximieren. Für die Bereitstellung von Mandanten und deren Zuordnung mit den jeweiligen Daten wird eine Katalogdatenbank verwendet. Die SaaS-Kernanwendung Wingtip verwendet einen Pool mit drei Beispielmandanten sowie eine Katalogdatenbank. Um die zahlreichen Tutorials zur SaaS-Anwendung Wingtip zu absolvieren, sind bei der ersten Bereitstellung Add-Ons erforderlich, wenn analytische Datenbanken, datenbankübergreifende Schemaverwaltung usw. eingeführt werden.
+Die SaaS-App Wingtip verwendet das Modell mit einer Datenbank pro Mandant sowie Pools für elastische SQL-Datenbanken, um die Effizienz zu maximieren. Für die Bereitstellung von Mandanten und deren Zuordnung mit den jeweiligen Daten wird eine Katalogdatenbank verwendet. Die SaaS-Kernanwendung Wingtip verwendet einen Pool mit drei Beispielmandanten sowie eine Katalogdatenbank. Um die zahlreichen Tutorials zur SaaS-Anwendung Wingtip zu absolvieren, sind bei der ersten Bereitstellung Add-Ons erforderlich, wenn analytische Datenbanken, datenbankübergreifende Schemaverwaltung usw. eingeführt werden.
 
 
 ![Architektur der SaaS-Anwendung Wingtip](media/saas-dbpertenant-wingtip-app-overview/app-architecture.png)
@@ -40,7 +40,7 @@ Wenn Sie die Tutorials durchgehen und mit der App arbeiten, ist es wichtig, sich
 Untersuchen Sie nach der Bereitstellung der App die folgenden Tutorials, die auf der erstmaligen Bereitstellung aufbauen. In diesen Tutorials werden allgemeine SaaS-Muster behandelt, die die integrierten Funktionen der SQL-Datenbank sowie der von SQL Data Warehouse und anderen Azure-Dienste nutzen. Die Tutorials enthalten PowerShell-Skripts sowie ausführliche Erläuterungen, die das Verständnis und das Implementieren derselben SaaS-Verwaltungsmustern in Ihren Anwendungen erheblich erleichtern.
 
 
-| Tutorial | Beschreibung |
+| Tutorial | BESCHREIBUNG |
 |:--|:--|
 | [Anweisungen und Tipps zu einer mehrinstanzenfähigen SaaS-Beispiel-App in Azure SQL-Datenbank](saas-tenancy-wingtip-app-guidance-tips.md) | **BEGINNEN SIE HIER.** Laden Sie PowerShell-Skripts herunter, und führen Sie sie aus, um Teile der Anwendung vorzubereiten. |
 |[Bereitstellen und Kennenlernen der SaaS-Anwendung Wingtip](saas-dbpertenant-get-started-deploy.md)|  Stellen Sie die SaaS-Anwendung Wingtip in Ihrem Azure-Abonnement bereit, und machen Sie sich mit ihr vertraut. |
@@ -48,13 +48,13 @@ Untersuchen Sie nach der Bereitstellung der App die folgenden Tutorials, die auf
 |[Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md)| Hier erfahren Sie, wie Überwachungsfunktionen der SQL-Datenbank verwendet und Benachrichtigungen festgelegt werden, wenn Leistungsschwellenwerte überschritten werden. |
 |[Überwachen mit Log Analytics (OMS)](saas-dbpertenant-log-analytics.md) | Hier erfahren Sie, wie mithilfe von [Log Analytics](../log-analytics/log-analytics-overview.md) große Mengen von Ressourcen über mehrere Pools hinweg überwacht werden. |
 |[Wiederherstellen einzelner Mandanten](saas-dbpertenant-restore-single-tenant.md)| Hier erfahren Sie, wie Sie eine Mandantendatenbank zu einem früheren Zeitpunkt wiederherstellen. Die Schritte zum Wiederherstellen einer parallelen Datenbank und die Onlineschaltung der vorhandenen Mandantendatenbank werden ebenfalls erläutert. |
-|[Verwalten von Mandantenschemas](saas-tenancy-schema-management.md)| Hier erfahren Sie, wie Sie Schemas und Verweisdaten über alle Wingtip-SaaS-Mandanten hinweg aktualisieren. |
-|[Ausführen von Ad-hoc-Analysen](saas-tenancy-adhoc-analytics.md) | Erstellen Sie eine Datenbank für Ad-hoc-Analysen, und führen Sie verteilte Echtzeitabfragen für alle Mandanten aus.  |
-|[Ausführen von Mandantenanalysen](saas-tenancy-tenant-analytics.md) | Extrahieren Sie für die Offlineausführung von Analyseabfragen Mandantendaten in eine Analysedatenbank oder ein Data Warehouse. |
+|[Manage schema for multiple tenants in the WTP SaaS application](saas-tenancy-schema-management.md) (Verwalten des Schemas für mehrere Mandanten in der SaaS-Anwendung WTP)| Erfahren Sie, wie Sie Schemas und Verweisdaten in allen Mandantendatenbanken aktualisieren. |
+|[Ausführen von mandantenübergreifenden verteilten Abfragen](saas-tenancy-cross-tenant-reporting.md) | Erstellen Sie eine Datenbank für Ad-hoc-Analysen, und führen Sie verteilte Echtzeitabfragen für alle Mandanten aus.  |
+|[Ausführen von Analysen für extrahierte Mandantendaten](saas-tenancy-tenant-analytics.md) | Extrahieren Sie Mandantendaten in eine Analysedatenbank oder ein Data Warehouse für Offlineanalyseabfragen. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Anweisungen und Tipps zu einer mehrinstanzenfähigen SaaS-Beispiel-App in Azure SQL-Datenbank](saas-tenancy-wingtip-app-guidance-tips.md)
+- [Allgemeine Richtlinien und Tipps für das Bereitstellen und Verwenden des Wingtip Tickets-SaaS-App-Beispiels](saas-tenancy-wingtip-app-guidance-tips.md)
 
 - [Bereitstellen der SaaS-Anwendung Wingtip](saas-dbpertenant-get-started-deploy.md)

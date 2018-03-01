@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
-ms.openlocfilehash: e037f5c29cabf8e5d0d3e7ded187280a0652d5c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54a2defd6bfe2396e24584c686698d3215893cfd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Visualisieren von Echtzeit-Sensordaten über Azure IoT Hub mithilfe des Web-Apps-Features von Azure App Service
 
@@ -39,7 +39,7 @@ In diesem Tutorial erfahren Sie, wie Sie von IoT Hub empfangene Echtzeit-Sensord
 - Laden Sie eine Webanwendung hoch, die von der Web-App gehostet wird.
 - Öffnen Sie die Web-App, um Temperatur- und Luftfeuchtigkeitsdaten in Ihrem IoT Hub in Echtzeit anzuzeigen.
 
-## <a name="what-you-need"></a>Erforderliches Element
+## <a name="what-you-need"></a>Voraussetzungen
 
 - [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md), das folgende Anforderungen beinhaltet:
   - Ein aktives Azure-Abonnement
@@ -49,7 +49,7 @@ In diesem Tutorial erfahren Sie, wie Sie von IoT Hub empfangene Echtzeit-Sensord
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-1. Klicken Sie im [Azure-Portal](https://ms.portal.azure.com/) auf **Neu** > **Web und mobil** > **Web-App**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Web + Mobil** > **Web-App**.
 2. Geben Sie einen eindeutigen Auftragsnamen an. Überprüfen Sie das Abonnement. Geben Sie eine Ressourcengruppe und einen Speicherort an. Wählen Sie **An Dashboard anheften** aus, und klicken Sie dann auf **Erstellen**.
 
    Es wird empfohlen, denselben Standort wie den Ihrer Ressourcengruppe auszuwählen. Dies beschleunigt die Verarbeitung und senkt die Datenübertragungskosten.

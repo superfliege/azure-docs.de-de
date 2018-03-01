@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 4cad3343461a6c7eda78566b3d2552b1e3591960
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 203c8399153d2bc2d855fc2602b01ed074852687
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sample-of-destination-connections-python"></a>Beispiele für Zielverbindungen (Python) 
 Lesen Sie vor diesem Anhang den Artikel [Python-Erweiterungen für die Datenvorbereitung](data-prep-python-extensibility-overview.md).
@@ -29,7 +29,7 @@ Das Schreiben in Excel erfordert eine zusätzliche Bibliothek. Hinzufügen von n
 
 Vor dem Schreiben in Excel sind möglicherweise weitere Änderungen erforderlich. Einige der bei der Datenvorbereitung verwendeten Datentypen werden in einigen Zielformaten nicht unterstützt. Wenn beispielsweise „Error“-Objekte vorhanden sind, werden diese nicht ordnungsgemäß nach Excel serialisiert. Bevor Sie versuchen, nach Excel zu schreiben, benötigen Sie daher eine Transformation „Fehlerwerte ersetzen“, die Fehler aus den Spalten entfernt.
 
-Wenn alle oben aufgeführten Aufgaben durchgeführt wurden, schreibt die folgende Zeile die Datentabelle in ein einziges Arbeitsblatt eines Excel-Dokuments. Fügen Sie eine Transformation „DataFlow schreiben (Skript)“ hinzu. Geben Sie dann den folgenden Code in einen Ausdrucksabschnitt ein.
+Wenn alle oben aufgeführten Aufgaben durchgeführt wurden, schreibt die folgende Zeile die Datentabelle in ein einziges Arbeitsblatt eines Excel-Dokuments. Fügen Sie eine Transformation „Datenfluss transformieren (Skript)“ hinzu. Geben Sie dann den folgenden Code in einen Ausdrucksabschnitt ein.
 
 
 ### <a name="on-windows"></a>Unter Windows 

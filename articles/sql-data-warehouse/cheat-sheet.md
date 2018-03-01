@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 12/14/2017
+ms.date: 02/20/2018
 ms.author: acomet
-ms.openlocfilehash: a16c2230c26865913285cb8cbd5b0f81426acdd1
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 6c8278be32ae6c6452283ba946a36f363dd4d76d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Spickzettel für Azure SQL Data Warehouse
 Dieser Spickzettel bietet nützliche Tipps und bewährte Methoden zum Erstellen von Azure SQL Data Warehouse-Lösungen. Bevor Sie beginnen, können Sie mehr über jeden Schritt erfahren, indem Sie [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns) lesen. In diesem Artikel wird erläutert, was SQL Data Warehouse ist, und was es nicht ist.
@@ -39,7 +39,7 @@ Wenn Sie im Voraus wissen, welche Arten von Vorgängen vorhanden sind, können S
 
 ## <a name="data-migration"></a>Datenmigration
 
-Laden Sie zunächst Ihre Daten in [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) oder Azure-Blobspeicher. Verwenden Sie anschließend PolyBase, um die Daten in SQL Data Warehouse in eine Stagingtabelle zu laden. Verwenden Sie die folgende Konfiguration:
+Laden Sie zunächst Ihre Daten in [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) oder Azure Blob Storage. Verwenden Sie anschließend PolyBase, um die Daten in SQL Data Warehouse in eine Stagingtabelle zu laden. Verwenden Sie die folgende Konfiguration:
 
 | Entwurf | Empfehlung |
 |:--- |:--- |
@@ -54,7 +54,7 @@ Weitere Informationen hierzu finden Sie unter [Datenmigration], [Laden von Daten
 
 Abhängig von den Tabelleneigenschaften sollten Sie folgende Strategien verwenden:
 
-| Typ | Für folgende Fälle empfohlen| In folgenden Fällen mit Vorsicht zu behandeln|
+| Typ | Für folgende Fälle empfohlen| In folgenden Fälle mit Vorsicht zu behandeln|
 |:--- |:--- |:--- |
 | Repliziert | • Kleine Dimensionstabellen in einem Sternschema mit max. 2 GB Speicher nach Komprimierung (ca. 5-facher Komprimierung) |• Viele Schreibtransaktionen für Tabellen (z.B. „insert“, „upsert“, „delete“, „update“)<br></br>• Häufige Änderungen an der Bereitstellung von DWUs (Data Warehouse Einheiten)<br></br>• Nutzung von lediglich 2 bis 3 Spalten, aber die Tabelle hat viele Spalten<br></br>• Indizierung einer replizierten Tabelle |
 | Roundrobin (Standard) | • Temporäre/Stagingtabellen<br></br> • Fehlen eines eindeutigen Verknüpfungsschlüssels oder einer geeigneten Spalte |• Schwache Leistung aufgrund von Datenverschiebungen |
@@ -121,7 +121,7 @@ Schließlich erhält jede Ressourcenklasse, wenn Sie die computeoptimierte Stufe
 Weitere Informationen finden Sie im Artikel zum Arbeiten mit [Ressourcenklassen und Parallelität].
 
 ## <a name="lower-your-cost"></a>Senkung Ihrer Kosten
-Ein wichtiges Feature von SQL Data Warehouse ist die Möglichkeit, den Dienst anzuhalten, wenn Sie ihn nicht verwenden. Es werden dann keine Computeressourcen berechnet. Ein weiteres wichtiges Feature ist die Möglichkeit zum Skalieren der Ressourcen. Das Anhalten und Skalieren kann über das Azure-Portal oder mit PowerShell-Befehlen durchgeführt werden.
+Ein wichtiges Feature von SQL Data Warehouse ist die Fähigkeit, [Computeressourcen zu verwalten](sql-data-warehouse-manage-compute-overview.md). Sie können Data Warehouse anhalten, wenn Sie den Dienst nicht verwenden. Es werden dann keine Computeressourcen berechnet. Sie können Ressourcen anhand Ihrer Leistungsanforderungen skalieren. Verwenden Sie zum Anhalten das [Azure-Portal](pause-and-resume-compute-portal.md) oder [PowerShell](pause-and-resume-compute-powershell.md). Verwenden Sie zum Skalieren das [Azure-Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md) oder eine [REST-API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 Mit Azure Functions können Sie nun jederzeit eine automatische Skalierung veranlassen:
 

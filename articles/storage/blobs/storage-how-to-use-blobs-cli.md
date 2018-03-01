@@ -1,28 +1,22 @@
 ---
-title: "Ausführen von Vorgängen für den Azure-Blobspeicher (Objektspeicher) über die Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie Blobs in den Azure-Blobspeicher hochladen bzw. daraus herunterladen. Außerdem erfahren Sie, wie Sie eine SAS (Shared Access Signature) erstellen, um den Zugriff auf ein Blob in Ihrem Speicherkonto zu verwalten."
+title: "Ausführen von Vorgängen für Azure Blob Storage (Objektspeicher) über die Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Blobs in Azure Blob Storage hochladen bzw. daraus herunterladen. Außerdem erfahren Sie, wie Sie eine SAS (Shared Access Signature) erstellen, um den Zugriff auf ein Blob in Ihrem Speicherkonto zu verwalten."
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/15/2017
 ms.author: tamram
-ms.openlocfilehash: d47d85af7412def342437aedf35c3d129662451d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4f781508652ee784fff61c8ecc76cb87ea47f0c2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="perform-blob-storage-operations-with-azure-cli"></a>Ausführen von Blobspeichervorgängen über die Azure-Befehlszeilenschnittstelle
 
-Der Azure-Blobspeicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Objektdaten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Tutorial werden grundlegende Azure-Blobspeichervorgänge wie das Hochladen, Herunterladen und Löschen von Blobs behandelt. Folgendes wird vermittelt:
+Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Objektdaten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Tutorial werden grundlegende Azure Blob Storage-Vorgänge wie das Hochladen, Herunterladen und Löschen von Blobs behandelt. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Containers
@@ -291,5 +285,5 @@ Die folgenden Ressourcen enthalten weitere Informationen zur Verwendung der Azur
 * Azure-Befehlszeilenschnittstelle
   * [Log in with Azure CLI 2.0](/cli/azure/authenticate-azure-cli) (Anmelden mit Azure CLI 2.0): Hier finden Sie Informationen zu den verschiedenen Authentifizierungsmethoden mit der Befehlszeilenschnittstelle. Hierzu zählt unter anderem die nicht interaktive Anmeldung per [Dienstprinzipal](/cli/azure/authenticate-azure-cli#logging-in-with-a-service-principal) zum Ausführen unbeaufsichtigter Azure-CLI-Skripts.
   * [Azure CLI 2.0: Befehlsreferenz](/cli/azure/)
-* Microsoft Azure-Speicher-Explorer
-  * Beim [Microsoft Azure-Speicher-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie unter Windows, macOS und Linux visuell mit Azure Storage-Daten arbeiten können.
+* Microsoft Azure Storage-Explorer
+  * Beim [Microsoft Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie unter Windows, macOS und Linux visuell mit Azure Storage-Daten arbeiten können.

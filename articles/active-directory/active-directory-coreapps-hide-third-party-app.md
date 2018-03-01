@@ -15,11 +15,11 @@ ms.date: 01/04/2018
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 00307311ca2bc1432f2de3755575adf1804f9c77
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: dc314d8d2a0e7a099b0eff294d43995ea3809c90
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory
 
@@ -38,7 +38,7 @@ Je nach Ihrer Situation können Sie die Schritte unten verwenden, um Anwendungen
 Befolgen Sie folgende Schritte, um eine Anwendung im Zugriffsbereich eines Benutzers und in den App-Startfeldern von Office 365 auszublenden.
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2.  Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+2.  Wählen Sie **Alle Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 3.  Klicken Sie auf dem Bildschirm **Azure Active Directory – *Verzeichnisname*** (d.h. dem Azure AD-Bildschirm für das Verzeichnis, das Sie verwalten) auf **Unternehmensanwendungen**.
 ![Unternehmens-Apps](media/active-directory-coreapps-hide-third-party-app/app1.png)
 4.  Wählen Sie **Alle Anwendungen** auf dem Bildschirm **Unternehmensanwendungen** aus. Es wird eine Liste aller Apps angezeigt, die Sie verwalten können.
@@ -54,7 +54,7 @@ Befolgen Sie folgende Schritte, um eine Anwendung im Zugriffsbereich eines Benut
 Mithilfe der folgenden Schritte können Sie alle Office 365-Anwendungen im Zugriffsbereich ausblenden. Diese Apps werden im Office 365-Portal weiterhin angezeigt.
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2.  Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+2.  Wählen Sie **Alle Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 3.  Wählen Sie auf dem Bildschirm **Azure Active Directory – *Verzeichnisname*** (d.h. dem Azure AD-Bildschirm für das Verzeichnis, das Sie verwalten) **Benutzereinstellungen** aus.
 4.  Wählen Sie auf dem Bildschirm **Benutzereinstellungen** unter **Unternehmensanwendungen** für **Benutzer können Office 365-Apps nur im Office 365-Portal anzeigen** den Wert **Ja** aus.
 

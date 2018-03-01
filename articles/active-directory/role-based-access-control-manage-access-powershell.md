@@ -1,5 +1,5 @@
 ---
-title: Verwalten der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) mit Azure PowerShell | Microsoft Docs
+title: Verwalten der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) mit Azure PowerShell | Microsoft-Dokumentation
 description: "So verwalten Sie RBAC mit Azure PowerShell einschließlich der Auflistung von Rollen, der Zuweisung von Rollen und dem Löschen von Rollenzuweisungen."
 services: active-directory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: fa364c8f43d38bfa40c2d08cc1fe2d2d46629217
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5e7e01502a173cb93216c77dd43f61094fd88148
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/09/2018
 > * [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
 > * [REST-API](role-based-access-control-manage-access-rest.md)
 
-Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und in der Azure Resource Management-API können Sie den Zugriff auf Ihr Abonnement differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
+Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) definieren Sie den Zugriff für Benutzer, Gruppen und Dienstprinzipale durch Zuweisen von Rollen in einem bestimmten Bereich. In diesem Artikel wird die Verwaltung des Zugriffs mithilfe von Azure PowerShell beschrieben.
 
 Bevor Sie PowerShell verwenden können, um die RBAC zu verwalten, benötigen Sie Folgendes:
 

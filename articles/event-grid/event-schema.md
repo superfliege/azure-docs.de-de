@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 2b0039c7b90ef6f003641e096521f84885171c26
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9d1f0eed28a1c1c6776ddba89480adcedfc599a5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
@@ -30,7 +30,7 @@ Das folgende Beispiel zeigt die Eigenschaften, die von allen Ereignisherausgeber
 [
   {
     "topic": string,
-    "subject": string,    
+    "subject": string,
     "id": string,
     "eventType": string,
     "eventTime": string,
@@ -72,7 +72,7 @@ Das für ein Azure Blob Storage-Ereignis veröffentlichte Schema sieht beispiels
   }
 ]
 ```
- 
+
 ## <a name="event-properties"></a>Ereigniseigenschaften
 
 Alle Ereignisse enthalten die gleichen Daten der obersten Ebene:
@@ -93,6 +93,8 @@ Weitere Informationen zu den Eigenschaften im Datenobjekt finden Sie in der Erei
 * [Azure-Abonnements (Verwaltungsvorgänge)](event-schema-subscriptions.md)
 * [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
+* [Service Bus](event-schema-service-bus.md)
+* [IoT Hub](event-schema-iot-hub.md)
 * [Ressourcengruppen (Verwaltungsvorgänge)](event-schema-resource-groups.md)
 
 Für benutzerdefinierte Themen bestimmt der Ereignisherausgeber das Datenobjekt. Die Daten der obersten Ebene müssen die gleichen Felder wie über Standardressourcen definierte Ereignisse enthalten. Beim Veröffentlichen von Ereignissen in benutzerdefinierten Themen sollten Sie erwägen, den Betreff zur Unterstützung der Weiterleitung und Filterung zu modellieren.

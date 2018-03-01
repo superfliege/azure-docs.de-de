@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49b4bbfda4518b03ef6080bec1e2a493933af4f5
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e9145b9cb85cda9179f7ce46de017a0ab3a38924
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen
 
@@ -42,7 +42,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com "Azure-Portal") an, falls Sie dies noch nicht getan haben.
 
-2. Navigieren Sie über das Hauptmenü von Azure zu **Neu** > **Enterprise Integration** > **Logik-App**.
+2. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Unternehmensintegration** > **Logik-App**.
 
    ![Azure-Portal, Neu, Enterprise Integration, Logik-App](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 

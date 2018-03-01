@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 2de788fabcae501d1a388bcea6b7759c9ea269cc
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 793f35bfd2e5e6b22e0804f01a69c0c20990d211
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Einrichten von Azure Key Vault mit End-to-End-Schlüsselrotation und Überwachung
 ## <a name="introduction"></a>Einführung
@@ -255,12 +255,12 @@ Der nächste Schritt besteht im [Erstellen einer Azure Service Bus-Warteschlange
 
 1. Erstellen Sie einen Service Bus-Namespace (falls ein solcher bereits vorhanden ist, den Sie verwenden möchten, fahren Sie mit Schritt 2 fort).
 2. Wechseln Sie im Azure-Portal zum Service Bus, und wählen Sie den Namespace aus, in dem die Warteschlange erstellt werden soll.
-3. Wählen Sie **Neu** und dann **Service Bus -> Warteschlange** aus, und geben Sie die erforderlichen Details ein.
+3. Wählen Sie **Ressource erstellen** > **Unternehmensintegration** > **Service Bus** aus, und geben Sie dann die erforderlichen Details ein.
 4. Wählen Sie die Service Bus-Verbindungsinformationen aus, indem Sie den Namespace auswählen und auf **Verbindungsinformationen** klicken. Sie benötigen diese Informationen für den nächsten Teil.
 
 Als Nächstes [erstellen Sie eine Azure-Funktion](../azure-functions/functions-create-first-azure-function.md) zum Abfragen der Schlüsseltresorprotokolle im Speicherkonto und Auswählen neuer Ereignisse. Dies ist eine Funktion, die gemäß einem Zeitplan ausgelöst wird.
 
-Wählen Sie zum Erstellen einer Azure-Funktion im Azure-Portal **Neu -> Funktionen-App** aus. Während der Erstellung können Sie einen vorhandenen Hostingplan verwenden oder einen neuen erstellen. Sie können sich auch für dynamisches Hosten entscheiden. Weitere Informationen zu Optionen für das Hosten von Funktionen finden Sie unter [Skalieren von Azure Functions](../azure-functions/functions-scale.md).
+Um eine Azure-Funktion zu erstellen, wählen Sie **Ressource erstellen** aus, suchen im Marketplace nach _Funktions-App_ und klicken dann auf **Erstellen**. Während der Erstellung können Sie einen vorhandenen Hostingplan verwenden oder einen neuen erstellen. Sie können sich auch für dynamisches Hosten entscheiden. Weitere Informationen zu Optionen für das Hosten von Funktionen finden Sie unter [Skalieren von Azure Functions](../azure-functions/functions-scale.md).
 
 Nachdem die Azure-Funktion erstellt wurde, navigieren Sie zu der Funktion. Wählen Sie eine Timerfunktion und C\# aus. Klicken Sie dann auf **Diese Funktion erstellen**.
 

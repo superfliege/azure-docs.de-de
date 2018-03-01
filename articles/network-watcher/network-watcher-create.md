@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 687e5b65e89ae2a79d8e9aa5c4345c91b4943d3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb1e3f9a93d18e949cb42ac0a4e09129cfe414f6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Erstellen einer Azure Network Watcher-Instanz
 
@@ -29,7 +29,7 @@ Network Watcher ist ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Erstellen einer Network Watcher-Instanz im Portal
 
-Navigieren Sie zu **Weitere Dienste** > **Netzwerk** > **Network Watcher**. Sie können alle Abonnements auswählen, für die Sie Network Watcher aktivieren möchten. Mit dieser Aktion erstellen Sie eine Network Watcher-Instanz in jeder verfügbaren Region.
+Navigieren Sie zu **Alle Dienste** > **Netzwerk** > **Network Watcher**. Sie können alle Abonnements auswählen, für die Sie Network Watcher aktivieren möchten. Mit dieser Aktion erstellen Sie eine Network Watcher-Instanz in jeder verfügbaren Region.
 
 ![Erstellen einer Network Watcher-Instanz][1]
 
@@ -49,7 +49,7 @@ New-AzureRmNetworkWatcher -Name "NetworkWatcher_westcentralus" -ResourceGroupNam
 
 ## <a name="create-a-network-watcher-with-the-rest-api"></a>Erstellen einer Network Watcher-Instanz mit der REST-API
 
-ARMClient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
+ARMclient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
 
 ### <a name="log-in-with-armclient"></a>Anmelden mit ARMClient
 

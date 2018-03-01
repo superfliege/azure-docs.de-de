@@ -1,7 +1,7 @@
 ---
-title: "Häufig gestellte Fragen zu Azure IoT Suite | Microsoft Azure | Microsoft Docs"
+title: "Häufig gestellte Fragen zu Azure IoT Suite | Microsoft Azure | Microsoft-Dokumentation"
 description: "Häufig gestellte Fragen zu IoT Suite"
-services: 
+services: iot-suite
 suite: iot-suite
 documentationcenter: 
 author: dominicbetts
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2017
+ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 432b4c080572c72dc131ee198a59c81631495415
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c79c90c4f6c28153d4d299015a06a6bc37145081
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Häufig gestellte Fragen zu IoT Suite
 
-Informationen finden Sie auch in den [häufig gestellten Fragen](iot-suite-faq-cf.md) zur verbundenen Factory.
+Siehe auch die [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md) und die [häufig gestellten Fragen zur Remoteüberwachung](iot-suite-faq-rm-v2.md).
 
 ### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>Wo kann ich den Quellcode für die vorkonfigurierte Lösung finden?
 
@@ -33,17 +33,6 @@ Der Quellcode wird in den folgenden GitHub-Repositorys gespeichert:
 * [Remote monitoring preconfigured solution (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) (Vonkonfigurierte Remoteüberwachungslösung (Java))
 * [Predictive maintenance preconfigured solution](https://github.com/Azure/azure-iot-predictive-maintenance) (Vorkonfigurierte Predictive Maintenance-Lösung)
 * [Connected factory preconfigured solution](https://github.com/Azure/azure-iot-connected-factory) (Vorkonfigurierte Lösung für eine verbundene Factory)
-
-### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Wie hoch sind die Kosten für die Bereitstellung der neuen Remoteüberwachungslösung?
-
-Die neue vorkonfigurierte Lösung bietet zwei Bereitstellungsoptionen:
-
-* Die Option *Basic* für Entwickler, die niedrigere Entwicklungskosten wünschen, oder für Kunden, die eine Demonstrationsversion oder ein Proof of Concept erstellen möchten.
-* Die Option *Standard* für Unternehmen, die eine produktionsbereite Infrastruktur bereitstellen möchten.
-
-### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Wie kann ich sicherstellen, dass ich die Kosten beim Entwickeln meiner Lösung gering halte?
-
-Zusätzlich zur Bereitstellung von zwei unterschiedlichen Bereitstellungen verfügt die neue Remoteüberwachungslösung über eine Einstellung zum Aktivieren oder Deaktivieren aller simulierten Geräte nach Bedarf. Durch die Deaktivierung der Simulation werden die in der Lösung erfassten Daten und somit die Gesamtkosten reduziert.
 
 ### <a name="is-the-new-microservices-architecture-available-for-all-the-three-preconfigured-solutions"></a>Ist die neue Microservices-Architektur für alle drei vorkonfigurierten Lösungen verfügbar?
 
@@ -57,18 +46,14 @@ In den letzten beiden Jahren hat sich die Cloudarchitektur stark weiterentwickel
 
 Ja, die neue Remoteüberwachung ist in den gleichen geografischen Regionen verfügbar.
 
-### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Worin besteht der Unterschied zwischen der Basic- und der Standard-Bereitstellung? Wie treffe ich die Wahl zwischen den beiden Bereitstellungsoptionen?
-
-Jede Bereitstellungsoption entspricht unterschiedlichen Anforderungen. Die Basic-Bereitstellung dient dem Einstieg und der Entwicklung eines Proof of Concept und kleiner Pilotprojekte. Sie bietet eine optimierte Architektur mit den erforderlichen Mindestressourcen und geringen Kosten. Die Standard-Bereitstellung dient dem Erstellen und Anpassen einer produktionsbereiten Lösung und bietet eine Bereitstellung mit allen dafür erforderlichen Elementen. Für Zuverlässigkeit und Skalierbarkeit werden Anwendungsmicroservices als Docker-Container erstellt und über einen Orchestrator bereitgestellt (standardmäßig ist Kubernetes ausgewählt). Der Orchestrator ist für die Bereitstellung, Skalierung und Verwaltung der Anwendung zuständig. Sie sollten eine Option basierend auf Ihren aktuellen Anforderungen auswählen. Je nach Projektphase können Sie jeweils eine der beiden Optionen oder eine Kombination aus beiden verwenden.
-
-### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-suite"></a>Kann ich meine bestehenden Investitionen in Azure IoT Suite weiterhin nutzen?
-
-Ja. Jede aktuell vorhandene Lösung wird in Ihrem Azure-Abonnement weiterhin ausgeführt, und der Quellcode bleibt in GitHub verfügbar.
-
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>Was ist der Unterschied zwischen dem Löschen einer Ressourcengruppe im Azure-Portal und dem Klicken auf "Löschen" für eine vorkonfigurierte Lösung in "azureiotsuite.com"?
 
 * Wenn Sie in [azureiotsuite.com](https://www.azureiotsuite.com/) eine vorkonfigurierte Lösung löschen, werden alle Ressourcen gelöscht, die beim Erstellen der vorkonfigurierten Lösung bereitgestellt waren. Wenn Sie dieser Ressourcengruppe weitere Ressourcen hinzugefügt haben, werden diese ebenfalls gelöscht.
 * Wenn Sie die Ressourcengruppe im [Azure-Portal](https://portal.azure.com) löschen, werden nur die Ressourcen in dieser Ressourcengruppe gelöscht. Sie müssen auch die Azure Active Directory-Anwendung löschen, die der vorkonfigurierten Lösung zugeordnet ist.
+
+### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-suite"></a>Kann ich meine bestehenden Investitionen in Azure IoT Suite weiterhin nutzen?
+
+Ja. Jede aktuell vorhandene Lösung wird in Ihrem Azure-Abonnement weiterhin ausgeführt, und der Quellcode bleibt in GitHub verfügbar.
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Wie viele IoT Hub-Instanzen kann ich in einem Abonnement bereitstellen?
 
@@ -77,10 +62,6 @@ Standardmäßig können Sie [10 IoT Hubs pro Abonnement](../azure-subscription-s
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Wie viele Instanzen von Cosmos DB kann ich in einem Abonnement bereitstellen?
 
 50. Sie können ein [Azure-Supportticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) erstellen, um dieses Limit zu erhöhen. Standardmäßig können Sie jedoch nur 50 Cosmos DB-Instanzen pro Abonnement bereitstellen.
-
-### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Wie konfiguriere ich eine dynamische Zuordnung auf dem Dashboard?
-
-Weitere Informationen finden Sie unter [Aktualisieren des Zuordnungsschlüssels zum Anzeigen von Geräten in einer dynamischen Zuordnung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Wie viele Bing Maps-APIs im Tarif „Free“ kann ich in einem Abonnement bereitstellen?
 
@@ -105,6 +86,7 @@ Informationen hierzu finden Sie im Blogbeitrag von Eric Golpe: [Walkthrough of D
 
 Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
 
+* [Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-explore.md)
 * [Übersicht über die vorkonfigurierte Predictive Maintenance-Lösung](iot-suite-predictive-overview.md)
 * [Übersicht über die vorkonfigurierte Lösung für eine verbundene Factory](iot-suite-connected-factory-overview.md)
 * [Sicherheit im Internet der Dinge von Anfang an](securing-iot-ground-up.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 128abd504785227c1f27debd329d46d358e6e516
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d62be25678044ead469f65362b6f47c1a2df893b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Nachverfolgen der B2B-Kommunikation in Microsoft Operations Management Suite (OMS)
 
@@ -47,7 +47,7 @@ Nach dem Einrichten der B2B-Kommunikation zwischen zwei laufenden Geschäftsproz
 
 Damit OMS für Ihre Logik-App B2B-Nachrichten nachverfolgt, müssen Sie die Lösung **B2B-Logik-App-Verwaltung** dem OMS-Portal hinzufügen. Informieren Sie sich über das [Hinzufügen von Lösungen zu OMS](../log-analytics/log-analytics-get-started.md).
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Weitere Dienste** aus. Suchen Sie nach „Log Analytics“, und wählen Sie die Option **Log Analytics** aus, wie hier zu sehen:
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste** aus. Suchen Sie nach „Log Analytics“, und wählen Sie die Option **Log Analytics** aus, wie hier zu sehen:
 
    ![Suchen nach Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
