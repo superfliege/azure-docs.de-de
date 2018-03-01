@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 02/22/2018
 ms.author: krnese
-ms.openlocfilehash: 118a2e775ae3d036f58989d9778104e372e8c701
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: eb837858fe81fa1f2d4966051bd4b7b068defe8b
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>Bereitstellen des Mobility Service in Azure Automation DSC für die VM-Replikation
 In Operations Management Suite bieten wir Ihnen eine umfassende Lösung zur Sicherung und Notfallwiederherstellung, die Sie im Rahmen Ihres Geschäftskontinuitätsplans nutzen können.
@@ -273,7 +273,7 @@ Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\' | Sel
 ```
 Wenn die Ausgabe leer ist, können Sie fortfahren. Andernfalls sollten Sie den Server während eines Wartungsfensters neu starten.
 
-Starten Sie PowerShell Integrated Scripting Environment (ISE), und führen Sie das folgende Skript aus, um die Konfiguration auf dem Server anzuwenden. Dies ist im Grunde eine lokale DSC-Konfiguration, die das lokale Konfigurations-Manager-Modul anweist, die Registrierung beim Automation DSC-Dienst vorzunehmen und die spezifische Konfiguration (ASRMobilityService.localhost) abzurufen.
+Starten Sie PowerShell Integrated Scripting Environment (ISE), und führen Sie das folgende Skript aus, um die Konfiguration auf dem Server anzuwenden. Dies ist im Grunde eine lokale DSC-Konfiguration, die die lokale Konfigurations-Manager-Engine anweist, die Registrierung beim Automation DSC-Dienst vorzunehmen und die spezifische Konfiguration (ASRMobilityService.localhost) abzurufen.
 
 ```powershell
 [DSCLocalConfigurationManager()]
@@ -314,7 +314,7 @@ metaconfig -URL 'https://we-agentservice-prod-1.azure-automation.net/accounts/<Y
 Set-DscLocalConfigurationManager .\metaconfig -Force -Verbose
 ```
 
-Diese Konfiguration führt dazu, dass sich das lokale Konfigurations-Manager-Modul selbst bei Automation DSC registriert. Sie bestimmt auch, wie das Modul ausgeführt werden soll, was im Fall einer Konfigurationsabweichung geschehen soll (ApplyAndAutoCorrect) und wie die Konfiguration fortgesetzt werden soll, falls ein Neustart erforderlich ist.
+Diese Konfiguration führt dazu, dass sich die lokale Konfigurations-Manager-Engine selbst bei Automation DSC registriert. Sie bestimmt auch, wie die Engine ausgeführt werden soll, was im Fall einer Konfigurationsabweichung geschehen soll (ApplyAndAutoCorrect) und wie die Konfiguration fortgesetzt werden soll, falls ein Neustart erforderlich ist.
 
 Nachdem Sie dieses Skript ausgeführt haben, sollte der Knoten die Registrierung bei Automation DSC starten.
 
@@ -338,7 +338,7 @@ Get-DscConfigurationStatus
 
 Die Ausgabe zeigt, dass der Server seine Konfiguration erfolgreich abgerufen hat:
 
-![Ausgabe](./media/site-recovery-automate-mobilitysevice-install/successful-config.png)
+![Output](./media/site-recovery-automate-mobilitysevice-install/successful-config.png)
 
 Darüber hinaus verfügt das Mobility Service-Setup über ein eigenes Protokoll, das unter „*Systemlaufwerk*\ProgramData\ASRSetupLogs“ gespeichert wird.
 

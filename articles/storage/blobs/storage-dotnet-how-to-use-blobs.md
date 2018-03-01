@@ -2,23 +2,17 @@
 title: Erste Schritte mit Azure Blob Storage (Objektspeicher) mit .NET | Microsoft Docs
 description: Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher).
 services: storage
-documentationcenter: .net
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: d18a8fc8-97cb-4d37-a408-a6f8107ea8b3
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: tamram
-ms.openlocfilehash: 87594d2688e3cd01f5e7db8f5be8ca513969e774
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dff18f41cc7264c523e6ae423a5d86661ab9918
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>Erste Schritte mit Azure Blob Storage mit .NET
 
@@ -26,9 +20,9 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
-Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+Azure Blob Storage ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
-### <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
+### <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
 In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendete Szenarien mit Azure Blob Storage schreiben. Die beschriebenen Szenarien umfassen das Hochladen, Auflisten, Herunterladen und Löschen von Blobs.
 
 **Voraussetzungen:**
@@ -99,7 +93,7 @@ container.SetPermissions(
 Jede Person im Internet kann Blobs in einem öffentlichen Container anzeigen. Sie können sie aber nur bearbeiten oder löschen, wenn Sie über den entsprechenden Kontozugriffsschlüssel oder eine SAS (Shared Access Signature) verfügen.
 
 ## <a name="upload-a-blob-into-a-container"></a>Hochladen eines Blobs in einen Container
-Azure Blob-Speicher unterstützt Blockblobs und Seitenblobs.  In den meisten Fällen wird die Verwendung von Blockblobs empfohlen.
+Azure Blob Storage unterstützt Block- und Seitenblobs.  In den meisten Fällen wird die Verwendung von Blockblobs empfohlen.
 
 Rufen Sie einen Containerverweis ab und verwenden Sie diesen zum Abrufen eines Blockblobverweises, um eine Datei in einen Blockblob hochzuladen. Sobald Sie über einen Blobverweis verfügen, können Sie jeden Datenstrom in diesen hochladen, indem Sie die **UploadFromStream** -Methode aufrufen. Bei diesem Vorgang wird das Blob erstellt, falls es nicht bereits vorhanden ist, oder überschrieben, falls es vorhanden ist.
 
@@ -387,8 +381,8 @@ Azure Storage unterstützt das Verschlüsseln von Blobdaten sowohl auf dem Clien
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr zu erfahren.
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure-Speicher-Explorer
-* Beim [Microsoft Azure-Speicher-Explorer (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage-Explorer
+* Beim [Microsoft Azure Storage-Explorer (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
 
 ### <a name="blob-storage-samples"></a>Beispiele für Blobspeicher
 * [Getting Started with Azure Blob Storage in .NET (Erste Schritte mit Azure Blob Storage in .NET)](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
@@ -400,4 +394,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
 ### <a name="conceptual-guides"></a>Konzeptionelle Richtlinien
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Erste Schritte mit Dateispeicher für .NET](../files/storage-dotnet-how-to-use-files.md)
-* [Verwenden von Azure-Blobspeicher mit dem WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)
+* [Verwenden von Azure Blob Storage mit dem WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)

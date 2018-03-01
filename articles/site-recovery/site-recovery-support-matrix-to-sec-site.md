@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 02/22/2018
 ms.author: raynew
-ms.openlocfilehash: da120d8e325867eaf9eb8b9be1ae8d9152db54c4
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 256bad0c3c06182b6be2b647ae27db90fe69724d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Unterstützungsmatrix für die Replikation an einen sekundären Standort mit Azure Site Recovery
 
@@ -70,15 +70,15 @@ Nur Linux-Computer mit dem folgenden Speicher können repliziert werden:
 NIC-Teaming | Ja | Ja
 VLAN | Ja | Ja
 IPv4 | Ja | Ja
-IPv6 | Nein | Nein
+IPv6 | Nein  | Nein 
 
 ### <a name="guest-vms"></a>Gast-VMs
 
 **Konfiguration** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
-NIC-Teaming | Nein | Nein
+NIC-Teaming | Nein  | Nein 
 IPv4 | Ja | Ja
-IPv6 | Nein | Nein
+IPv6 | Nein  | Nein 
 Statische IP-Adresse (Windows) | Ja | Ja
 Statische IP-Adresse (Linux) | Ja | Ja
 Multi-NIC | Ja | Ja
@@ -90,7 +90,7 @@ Multi-NIC | Ja | Ja
 
 **Speicher (Host)** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
-NFS | Ja | –
+NFS | Ja | N/V
 SMB 3.0 | N/V | Ja
 SAN (ISCSI) | Ja | Ja
 Multipfad (MPIO) | Ja | Ja
@@ -99,19 +99,19 @@ Multipfad (MPIO) | Ja | Ja
 
 **Konfiguration** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
-VMDK | Ja | –
+VMDK | Ja | N/V
 VHD/VHDX | N/V | Ja (bis zu 16 Datenträger)
-Gen 2-VM | – | Ja
-Freigegebener Clusterdatenträger | Ja  | Nein
-Verschlüsselter Datenträger | Nein | Nein
+Gen 2-VM | N/V | Ja
+Freigegebener Clusterdatenträger | Ja  | Nein 
+Verschlüsselter Datenträger | Nein  | Nein 
 UEFI| Ja | N/V
-NFS | Nein | Nein
-SMB 3.0 | Nein | Nein
+NFS | Nein  | Nein 
+SMB 3.0 | Nein  | Nein 
 RDM | Ja | N/V
 Datenträger > 1 TB | Ja | Ja
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja | Ja
-Speicherplätze | Nein | Ja
-Datenträger laufendem Systembetrieb hinzufügen/entfernen | Ja | Nein
+Speicherplätze | Nein  | Ja
+Datenträger laufendem Systembetrieb hinzufügen/entfernen | Ja | Nein 
 Ausschließen von Datenträgern | Ja | Ja
 Multipfad (MPIO) | N/V | Ja
 
@@ -119,8 +119,8 @@ Multipfad (MPIO) | N/V | Ja
 
 **Aktion** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
-Verschieben von Tresoren zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) | Nein | Nein
-Verschieben von Speicher, Netzwerk, Azure-VMs zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) | Nein | Nein
+Verschieben von Tresoren zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) | Nein  | Nein 
+Verschieben von Speicher, Netzwerk, Azure-VMs zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) | Nein  | Nein 
 
 ## <a name="provider-and-agent"></a>Anbieter und Agent
 

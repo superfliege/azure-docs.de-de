@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: masnider;
-ms.openlocfilehash: 601b1c7713c9785d949c1c72000ec7f3f63dd682
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c583d99a63c13a0a2ab351f82a4f5ff6840788a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="reliable-services-overview"></a>Übersicht über Reliable Services
 Azure Service Fabric vereinfacht das Schreiben und Verwalten zustandsloser und zustandsbehafteter Dienste (Reliable Services). Dieses Thema behandelt Folgendes:
@@ -43,7 +43,7 @@ Reliable Services bietet ein einfaches, leistungsfähiges High-Level-Programmier
   * Gewähren von Zugriff für die Reliable Collections auf viele weitere Funktionen – all dies über ein erstklassiges Programmiermodell in verschiedenen Programmiersprachen
 * Ein einfaches Modell für die Ausführung Ihres eigenen Codes, das den gewohnten Programmiermodellen ähnelt. Der Code besitzt einen klar definierten Einstiegspunkt und einen leicht zu verwaltenden Lebenszyklus.
 * Ein austauschbares Kommunikationsmodell. Verwenden Sie die gewünschte Transportmethode, z.B. HTTP mit [Web-API](service-fabric-reliable-services-communication-webapi.md), Websockets, benutzerdefinierte TCP-Protokolle oder eine andere Methode. Reliable Services bieten einige nützliche vorkonfigurierte Optionen. Sie können aber auch eigene Optionen bereitstellen.
-* Für zustandsbehaftete Dienste ermöglicht das Reliable Services-Programmiermodell eine konsistente und zuverlässige Speicherung des Zustands direkt innerhalb des Diensts anhand von [Reliable Collections](service-fabric-reliable-services-reliable-collections.md). Reliable Collections sind ein einfacher Satz hoch verfügbarer Auflistungsklassen, die jedem vertraut sind, der bereits mit C#-Auflistungen gearbeitet hat. Bisher benötigten Dienste externe Systeme für die zuverlässige Zustandsverwaltung. Mit Reliable Collections können Sie den Zustand zusammen mit Ihren Berechnungen speichern und dabei von der gleichen hohen Verfügbarkeit und Zuverlässigkeit profitieren, die Sie von hoch verfügbaren externen Speichern gewohnt sind. Dieses Modell verbessert auch die Latenz, da Sie die Berechnungen und die für die Funktionsweise erforderlichen Zustände zusammenstellen können.
+* Für zustandsbehaftete Dienste ermöglicht das Reliable Services-Programmiermodell eine konsistente und zuverlässige Speicherung des Zustands direkt innerhalb des Diensts anhand von [Reliable Collections](service-fabric-reliable-services-reliable-collections.md). Reliable Collections sind ein einfacher Satz hoch verfügbarer Auflistungsklassen, die jedem vertraut sind, der bereits mit C#-Auflistungen gearbeitet hat. Bisher benötigten Dienste externe Systeme für die zuverlässige Zustandsverwaltung. Mit Reliable Collections können Sie den Zustand zusammen mit Ihren Berechnungen speichern und dabei von der gleichen Hochverfügbarkeit und Zuverlässigkeit profitieren, die Sie von externen Hochverfügbarkeitsspeichern gewohnt sind. Dieses Modell verbessert auch die Latenz, da Sie die Berechnungen und die für die Funktionsweise erforderlichen Zustände zusammenstellen können.
 
 Sehen Sie sich dieses Microsoft Virtual Academy-Video an, das eine Übersicht über Reliable Services bietet: <center>
 <a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">
@@ -71,7 +71,7 @@ Wenn Sie mit Reliable Services von nicht vertraut sind – lesen Sie weiter! Wen
 Nachdem Sie diese Programmiermodell nun kennen, werfen wir einen Blick auf zwei Dienste, um zu sehen, wie diese Elemente zusammenspielen.
 
 ### <a name="stateless-reliable-services"></a>Zustandslose Reliable Services
-Ein Dienst ist zustandslos, wenn der Dienstzustand nicht aufrufübergreifend im Dienst beibehalten wird. Jeder vorhandene Zustand kann vollständig verworfen werden und erfordert weder Synchronisierung noch Replikation, Persistenz oder hohe Verfügbarkeit.
+Ein Dienst ist zustandslos, wenn der Dienstzustand nicht aufrufübergreifend im Dienst beibehalten wird. Jeder vorhandene Zustand kann vollständig verworfen werden und erfordert weder Synchronisierung noch Replikation, Persistenz oder Hochverfügbarkeit.
 
 Denken Sie beispielsweise an einen Rechner, der keinen Speicher hat und alle Zahlen und durchzuführenden Operationen gleichzeitig erhält.
 

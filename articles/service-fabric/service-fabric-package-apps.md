@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 93c86f4805257aee8e04ef80e33b3cec0fd3c67d
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 0db49b9bd50c640175292671f813d23d960b52e1
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="package-an-application"></a>Packen einer Anwendung
 In diesem Artikel wird beschrieben, wie eine Service Fabric-Anwendung paketiert und für die Bereitstellung vorbereitet wird.
@@ -85,7 +85,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ```
 
-Dieser Fehler gibt an, dass die Datei *MySetup.bat*, auf die im Dienstmanifest **SetupEntryPoint** verwiesen wird, im Codepaket fehlt. Nach dem Hinzufügen der fehlenden Datei wird die Überprüfung der Anwendung erfolgreich abgeschlossen:
+Dieser Fehler gibt an, dass die Datei *MySetup.bat* , auf die im Dienstmanifest **SetupEntryPoint** verwiesen wird, im Codepaket fehlt. Nach dem Hinzufügen der fehlenden Datei wird die Überprüfung der Anwendung erfolgreich abgeschlossen:
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -127,7 +127,7 @@ Bei der Komprimierung wird das gültige Service Fabric-Paket durch die komprimie
 Sie können ein Paket komprimieren, indem Sie den Powershell-Befehl [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) mit dem Schalter `CompressPackage` ausführen. Das Paket kann anhand desselben Befehls mit dem Schalter `UncompressPackage` dekomprimiert werden.
 
 Mit dem folgenden Befehl wird das Paket komprimiert, ohne dass es im Abbildspeicher kopiert wird. Mit [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) ohne `SkipCopy`-Flag können Sie ein komprimiertes Paket bei Bedarf in ein oder mehrere Service Fabric-Cluster kopieren.
-Das Paket enthält nun ZIP-Dateien für die Pakete `code`, `config` und `data`. Das Anwendungsmanifest und die Dienstmanifeste werden nicht gezippt, da sie für viele interne Vorgänge erforderlich sind. Beispielsweise muss bei der Paketfreigabe und der Extraktion des Namens und der Version von Anwendungstypen für bestimmte Überprüfungen immer auf die Manifeste zugegriffen werden. Eine Komprimierung der Manifeste würde dazu führen, dass diese Vorgänge unwirksam werden.
+Das Paket enthält nun ZIP-Dateien für die Pakete `code`, `config` und `data` . Das Anwendungsmanifest und die Dienstmanifeste werden nicht gezippt, da sie für viele interne Vorgänge erforderlich sind. Beispielsweise muss bei der Paketfreigabe und der Extraktion des Namens und der Version von Anwendungstypen für bestimmte Überprüfungen immer auf die Manifeste zugegriffen werden. Eine Komprimierung der Manifeste würde dazu führen, dass diese Vorgänge unwirksam werden.
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
