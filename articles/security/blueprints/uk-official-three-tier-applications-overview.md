@@ -1,6 +1,6 @@
 ---
-title: "Azure Blueprint Automation: dreischichtige Webanwendungen für UK-OFFICIAL"
-description: "Azure Blueprint Automation: dreischichtige Webanwendungen für UK-OFFICIAL"
+title: "Azure Security and Compliance Blueprint – Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL"
+description: "Azure Security and Compliance Blueprint – Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 5f5694367d9be2ae66c7303cfea063b7f4979307
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="azure-blueprint-automation-three-tier-web-applications-for-uk-official"></a>Azure Blueprint Automation: dreischichtige Webanwendungen für UK-OFFICIAL
+# <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure Security and Compliance Blueprint – Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL
 
 ## <a name="overview"></a>Übersicht
 
  Dieser Artikel enthält Anleitungen und Automatisierungsskripts zum Bereitstellen einer webbasierten, dreischichtigen Microsoft Azure-Architektur, die sich für das Verarbeiten vieler Workloads eignet, die im Vereinigten Königreich als OFFICIAL klassifiziert werden.
 
- Unter Nutzung eines Infrastruktur-als-Code-Ansatzes stellt die Sammlung von Vorlagen für [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (ARM) eine Umgebung bereit, die an den 14 [Cloudsicherheitsprinzipien](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) des UK National Cyber Security Centre (NCSC) und den [Critical Security Controls](https://www.cisecurity.org/critical-controls.cfm) (Kritische Sicherheitsregulierungen) des Centers for Internet Security (CIS) ausgerichtet ist.
+ Bei Verwendung eines Infrastruktur-als-Code-Ansatzes stellt die Sammlung von Vorlagen für [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) eine Umgebung bereit, die an den 14 [Cloudsicherheitsprinzipien](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) des UK National Cyber Security Centre (NCSC) und den [Critical Security Controls](https://www.cisecurity.org/critical-controls.cfm) (Kritische Sicherheitsregulierungen) des Center for Internet Security (CIS) ausgerichtet ist.
 
  Das NCSC empfiehlt, dass seine Cloudsicherheitsprinzipien von Kunden für die Beurteilung der Sicherheitseigenschaften des Diensts und zum Verstehen der Aufteilung der Zuständigkeit zwischen Kunde und Lieferant verwendet werden. Wir haben zu jedem dieser Prinzipien Informationen zur Verfügung gestellt, die Ihnen das Verständnis der Aufteilung der Zuständigkeiten erleichtern sollen.
 
- Diese Architektur und die zugeordneten ARM-Vorlagen werden vom Microsoft-Whitepaper [Azure Blueprint for the UK Government](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1) (Azure Blueprint für Regierungsbehörden des Vereinigten Königreichs) unterstützt. In diesem Dokument wird katalogisiert, wie Azure-Dienste sich an den 14 Prinzipien der Cloudsicherheit gemäß UK NCSC ausrichten, was es Organisationen ermöglicht, ihre Fähigkeit zur Einhaltung ihrer Complianceverpflichtungen zu beschleunigen, indem sie cloudbasierte Dienste global und im Vereinigten Königreich in der Microsoft Azure Cloud nutzen.
+ Diese Architektur und die entsprechende Azure Resource Manager-Vorlagen werden vom Microsoft-Whitepaper [14 Cloud Security Controls for UK cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1) (14 Sicherheitskontrollen für die UK-Cloud mithilfe von Microsoft Azure) unterstützt. In diesem Dokument wird katalogisiert, wie Azure-Dienste sich an den 14 Prinzipien der Cloudsicherheit gemäß UK NCSC ausrichten, was es Organisationen ermöglicht, ihre Fähigkeit zur Einhaltung ihrer Complianceverpflichtungen zu beschleunigen, indem sie cloudbasierte Dienste global und im Vereinigten Königreich in der Microsoft Azure Cloud nutzen.
 
  Mit dieser Vorlage wird die Infrastruktur für den Workload bereitgestellt. Der Anwendungscode und unterstützende Software der Geschäftsschicht und der Datenschicht muss installiert und konfiguriert sein. Ausführlichere Bereitstellungsanweisungen finden Sie [hier](https://aka.ms/ukwebappblueprintrepo).
 
@@ -195,17 +195,17 @@ Diese VNets werden nach wie vor als separate Ressourcen verwaltet, erscheinen ab
 
 ### <a name="security"></a>Sicherheit
 
-**Verwaltungssicherheit**: Dieser Azure Blueprint ermöglicht Administratoren das Herstellen von Verbindungen mit dem Verwaltungs-VNet und der Jumpbox mithilfe von RDP von einer vertrauenswürdigen Quelle. Der Netzwerkverkehr für das Verwaltungs-VNet wird mithilfe von NSGs gesteuert. Der Zugriff auf Port 3389 ist auf Datenverkehr von einem vertrauenswürdigen IP-Bereich eingeschränkt, der auf das Subnetz zugreifen kann, das die Jumpbox enthält.
+**Verwaltungssicherheit**: Dieser Blueprint ermöglicht Administratoren das Herstellen von Verbindungen mit dem Verwaltungs-VNET und der Jumpbox mithilfe von RDP von einer vertrauenswürdigen Quelle. Der Netzwerkverkehr für das Verwaltungs-VNet wird mithilfe von NSGs gesteuert. Der Zugriff auf Port 3389 ist auf Datenverkehr von einem vertrauenswürdigen IP-Bereich eingeschränkt, der auf das Subnetz zugreifen kann, das die Jumpbox enthält.
 
 Kunden können sich außerdem für die Verwendung eines [Verwaltungsmodells mit erhöhter Sicherheit](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access) entscheiden, um die Umgebung beim Herstellen von Verbindungen mit dem Verwaltungs-VNet und der Jumpbox zu schützen. Es wird empfohlen, dass Kunden mit erhöhtem Sicherheitsbedarf eine [Arbeitsstation mit privilegiertem Zugriff](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw) und eine RDGateway-Konfiguration verwendet werden. Die Verwendung von virtuellen Netzwerkappliances und öffentlichen/privaten DMZs bietet weitere Steigerungen der Sicherheit.
 
-**Schützen des Netzwerks**: [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSGs) werden für jedes Subnetz empfohlen, um eine zweite Schutzebene vor eingehendem Verkehr bereitzustellen, der ein fehlerhaft konfiguriertes oder deaktiviertes Gateway umgeht. Beispiel: [ARM-Vorlage für die Bereitstellung einer NSG](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups).
+**Schützen des Netzwerks**: [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSGs) werden für jedes Subnetz empfohlen, um eine zweite Schutzebene vor eingehendem Verkehr bereitzustellen, der ein fehlerhaft konfiguriertes oder deaktiviertes Gateway umgeht. Beispiel: [Resource Manager-Vorlage für das Bereitstellen einer NSG](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)
 
 **Schützen öffentlicher Endpunkte**: Das Internetgateway macht Anwendungsdienste über das Internet für Benutzer verfügbar. Datenverkehr, der auf diese Dienste zugreift, wird mithilfe eines [Application Gateways](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) geschützt, das eine Web Application Firewall und HTTPS-Protokollverwaltung bereitstellt.
 
 **IP-Bereiche**: Bei den in der Architektur verwendeten IP-Bereichen handelt es sich um Vorschläge. Kunden sollten ihre eigene Umgebung berücksichtigen und geeignete Bereiche verwenden.
 
-**Hybridkonnektivität**: Die cloudbasierten Workloads sind mit dem lokalen Rechenzentrum durch IPSEC-VPN mithilfe des Azure VPN-Gateways verbunden. Kunden sollten sicherstellen, dass sie ein geeignetes VPN-Gateway für Verbindungen mit Azure verwenden. Beispiel: [VPN-Gateway-ARM-Vorlage](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Kunden, die umfangreiche, unternehmenswichtige Workloads mit Big Data-Anforderungen ausführen, sollten eine Hybridnetzwerkarchitektur unter Verwendung von [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) für private Netzwerkkonnektivität mit den Microsoft-Clouddiensten in Erwägung ziehen.
+**Hybridkonnektivität**: Die cloudbasierten Workloads sind mit dem lokalen Rechenzentrum durch IPSEC-VPN mithilfe des Azure VPN Gateways verbunden. Kunden sollten sicherstellen, dass sie ein geeignetes VPN-Gateway für Verbindungen mit Azure verwenden. Beispiel: [Resource Manager-Vorlage für VPN Gateway](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection) Kunden, die umfangreiche, unternehmenswichtige Workloads mit Big Data-Anforderungen ausführen, sollten eine Hybridnetzwerkarchitektur unter Verwendung von [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) für private Netzwerkkonnektivität mit den Microsoft-Clouddiensten in Erwägung ziehen.
 
 **Trennung der Zuständigkeiten** (Separation of Concerns): Diese Referenzarchitektur trennt die VNets für Verwaltungsvorgänge und Geschäftsvorgänge. Separate VNets und Subnetze ermöglichen die Verwaltung des Datenverkehrs zwischen Netzwerksegmenten, einschließlich Einschränkungen für eingehenden und ausgehenden Datenverkehr, mithilfe von NSGs und berücksichtigen die bewährten Methoden für [Microsoft-Clouddienste und Netzwerksicherheit](https://docs.microsoft.com/azure/best-practices-network-security).
 
@@ -221,17 +221,17 @@ Kunden können sich außerdem für die Verwendung eines [Verwaltungsmodells mit 
 
 Der Crown Commercial Service (eine Agentur, die an der Verbesserung der Handels- und Beschaffungsaktivitäten der Regierung arbeitet) hat die Klassifizierung der in den Bereich fallenden Unternehmensclouddienste von Microsoft neu als G-Cloud v6 festgelegt und dabei alle Angebote von Microsoft auf der Stufe OFFICIAL berücksichtigt. Details zu Azure und G-Cloud finden Sie im [Azure UK G-Cloud security assessment summary](https://www.microsoft.com/en-us/trustcenter/compliance/uk-g-cloud) (Zusammenfassung der Sicherheitsbewertung von Azure UK G-Cloud).
 
-Diese UK-OFFICIAL Azure Blueprint-Lösung ist an den 14 Prinzipien zur Cloudsicherheit ausgerichtet, die in den [Cloudsicherheitsprinzipien](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) der NCSC dokumentiert sind, um eine Umgebung sicherzustellen, die als UK-OFFICIAL klassifizierte Workloads unterstützt.
+Dieser Blueprint ist an den 14 Prinzipien zur Cloudsicherheit ausgerichtet, die in den [Cloudsicherheitsprinzipien](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) der NCSC dokumentiert sind, um eine Umgebung sicherzustellen, die als UK-OFFICIAL klassifizierte Workloads unterstützt.
 
 Die [Kundenzuständigkeitsmatrix](https://aka.ms/blueprintuk-gcrm) (Excel-Arbeitsmappe) listet alle 14 Prinzipien der Cloudsicherheit auf, und die Matrix gibt für jedes Prinzip (oder jeden Teilbereich eines Prinzips) an, ob die Implementierung des Prinzips in die Zuständigkeit von Microsoft oder in die des Kunden fällt, oder ob sie von beiden geteilt wird.
 
-Die [Prinzipimplementierungsmatrix](https://aka.ms/ukwebappblueprintpim) (Excel-Arbeitsmappe) listet alle 14 Prinzipien der Cloudsicherheit auf, und die Matrix gibt für jedes Prinzip (oder jeden Teilbereich eines Prinzips), das in der Kundenzuständigkeitsmatrix als in der Kundenzuständigkeit liegend ausgewiesen ist, an, 1) ob das Prinzip durch Azure Blueprint Automation implementiert wird und gibt 2) eine Beschreibung, wie die Implementierung die Anforderung(en) des Prinzips abdeckt. Dieser Inhalt ist auch [hier](https://github.com/Azure/uk-official-three-tier-webapp/blob/master/principles-overview.md) verfügbar.
+Die [Prinzipimplementierungsmatrix](https://aka.ms/ukwebappblueprintpim) (Excel-Arbeitsmappe) listet alle 14 Prinzipien der Cloudsicherheit auf, und die Matrix gibt für jedes Prinzip (oder jeden Teilbereich eines Prinzips), das in der Kundenzuständigkeitsmatrix als in der Kundenzuständigkeit liegend ausgewiesen ist, an, 1) ob das Prinzip durch die Blueprint-Automatisierung implementiert wird und gibt 2) eine Beschreibung, wie die Implementierung die Anforderung(en) des Prinzips abdeckt. Dieser Inhalt ist auch [hier](https://github.com/Azure/uk-official-three-tier-webapp/blob/master/principles-overview.md) verfügbar.
 
 Darüber hinaus hat die CSA (Cloud Security Alliance) die Cloud Control Matrix veröffentlicht, um Kunden bei der Bewertung von Cloudanbietern zu unterstützen und ihnen das Benennen der Fragen zu ermöglichen, die vor der Umstellung auf Clouddienste beantwortet werden sollten. Als Antwort darauf hat Microsoft Azure das CSA Consensus Assessment Initiative Questionnaire ([CSA CAIQ](https://www.microsoft.com/en-us/TrustCenter/Compliance/CSA)) beantwortet, das beschreibt, wie Microsoft den vorgeschlagenen Prinzipien Rechnung trägt.
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
-Es gibt zwei Methoden, die von bereitstellenden Benutzern zum Bereitstellen dieser Azure Blueprint-Lösung verwendet werden können. Die erste Methode verwendet ein PowerShell-Skript, während die zweite Methode das Azure-Portal zum Bereitstellen der Referenzarchitektur nutzt. Ausführlichere Bereitstellungsanweisungen finden Sie [hier](https://aka.ms/ukwebappblueprintrepo).
+Es gibt zwei Methoden, die von bereitstellenden Benutzern zum Bereitstellen dieser Blueprint-Automatisierung verwendet werden können. Die erste Methode verwendet ein PowerShell-Skript, während die zweite Methode das Azure-Portal zum Bereitstellen der Referenzarchitektur nutzt. Ausführlichere Bereitstellungsanweisungen finden Sie [hier](https://aka.ms/ukwebappblueprintrepo).
 
 ## <a name="disclaimer"></a>Haftungsausschluss
 

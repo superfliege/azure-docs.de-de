@@ -4,7 +4,7 @@ description: "Markieren Sie ein Subnetz als Dienstendpunkt eines virtuellen Netz
 services: sql-database
 documentationcenter: 
 author: MightyPen
-manager: jhubbard
+manager: craigg
 editor: 
 tags: 
 ms.assetid: 
@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 01/31/2018
-ms.author: genemi
-ms.openlocfilehash: d4179c590ef418633158dd5a5dbadbc8c20bcde7
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.date: 02/20/2018
+ms.reviewer: genemi
+ms.author: dmalik
+ms.openlocfilehash: 33ce521903265f60715f66220c4d038cf6d86671
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
@@ -127,9 +128,6 @@ Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s
 
 Bei Azure SQL-Datenbank gelten für Regeln für ein virtuelles Netzwerk folgende Einschränkungen:
 
-- Derzeit funktionieren Azure-Web-Apps in Subnetzen mit aktivierten **Dienstendpunkten** noch nicht wie erwartet. Wir arbeiten an der Bereitstellung dieser Funktion.
-    - Solange die Funktion noch nicht vollständig implementiert wurde, empfehlen wir, dass Sie Ihre Web-App auf ein anderes Subnetz verschieben, für das keine Dienstendpunkte für SQL aktiviert sind.
-
 - In der Firewall für Ihre SQL-Datenbank verweist jede Regel für ein virtuelles Netzwerk auf ein Subnetz. Alle Subnetze, auf die verwiesen wird, müssen in derselben geografischen Region gehostet werden, in der die SQL-Datenbank gehostet wird.
 
 - Für jeden Azure SQL-Datenbankserver können für ein angegebenes virtuelles Netzwerk maximal 128 Einträge in der Zugriffssteuerungsliste vorhanden sein.
@@ -142,6 +140,12 @@ Bei Azure SQL-Datenbank gelten für Regeln für ein virtuelles Netzwerk folgende
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, Regeln für virtuelle Netzwerke jedoch nicht:
     - [Virtuelles privates Netzwerk zwischen Standorten][vpn-gateway-indexmd-608y]
     - Lokal über [ExpressRoute][expressroute-indexmd-744v]
+
+#### <a name="considerations-when-using-service-endpoints"></a>Überlegungen zur Verwendung von Dienstendpunkten
+Stellen Sie bei der Verwendung von Dienstendpunkten für die Azure SQL-Datenbank folgende Überlegungen an:
+
+- **Ausgehend zu öffentlichen IP-Adressen der Azure SQL-Datenbank ist erforderlich,**: Netzwerksicherheitsgruppen (NSGs) müssen für IP-Adressen der Azure SQL-Datenbank geöffnet werden, um Verbindungen zuzulassen. Sie erreichen dies, indem Sie [Diensttags](../virtual-network/security-overview.md#service-tags) der Netzwerksicherheitsgruppe für die Azure SQL-Datenbank verwenden.
+- **Azure Database for PostgreSQL und Azure Database for MySQL werden nicht unterstützt**: Dienstendpunkte werden für Azure Database for PostgreSQL oder MySQL nicht unterstützt. Durch das Aktivieren der Dienstendpunkte zur SQL-Datenbank wird die Verbindung zu diesen Diensten unterbrochen. Hierfür gibt es jedoch eine Lösung. Wenden Sie sich an *dmalik@microsoft.com*.
 
 #### <a name="expressroute"></a>ExpressRoute
 
@@ -170,6 +174,8 @@ Der Abfrage-Editor für Azure SQL-Datenbank wird auf virtuellen Computern in Azu
 #### <a name="table-auditing"></a>Tabellenüberwachung
 Derzeit stehen Ihnen zwei Möglichkeiten zum Aktivieren der Überwachung für Ihre SQL-Datenbank-Instanz zur Verfügung. Die Tabellenüberwachung führt zu einem Fehler, nachdem Sie Dienstendpunkte in Ihrer Azure SQL Server-Instanz aktiviert haben. Um dieses Problem zu umgehen, wechseln Sie zur Blobüberwachung.
 
+#### <a name="impact-on-data-sync"></a>Auswirkungen auf die Datensynchronisierung
+Azure SQLDB verfügt über das Feature zur Synchronisierung von Daten, die auf Grundlage von Azure-IP-Adressen eine Verbindung zu Ihren Datenbanken herstellt. Bei der Verwendung von Dienstendpunkten ist es wahrscheinlich, dass Sie den Zugriff **Alle Azure-Dienste zulassen** auf Ihrem logischen Server deaktivieren. Dadurch wird die Datensynchronisierungsfunktion unterbrochen.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage
 
@@ -177,7 +183,7 @@ In Azure Storage ist dasselbe Feature implementiert, mit dem Sie die Konnektivit
 Wenn Sie dieses Feature mit einem Speicherkonto verwenden, das von einer Azure SQL Server-Instanz verwendet wird, können Probleme auftreten. Im Folgenden finden Sie eine Liste mit Erläuterungen der Azure SQLDB-Features, die davon betroffen sind.
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-PolyBase wird häufig verwendet, um Daten aus Speicherkonten in Azure SQLDW zu laden. Wenn das Speicherkonto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen beschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen.
+PolyBase wird häufig verwendet, um Daten aus Speicherkonten in Azure SQLDW zu laden. Wenn das Speicherkonto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen beschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Hierfür gibt es jedoch eine Lösung. Wenden Sie sich an *dmalik@microsoft.com*, um weitere Informationen zu erhalten.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB-Blobüberwachung
 Bei der Blobüberwachung werden die Überwachungsprotokolle in Ihr eigenes Speicherkonto gepusht. Wenn dieses Speicherkonto das Feature für VNET-Dienstendpunkte verwendet, wird die Konnektivität zwischen Azure SQLDB und dem Speicherkonto unterbrochen.

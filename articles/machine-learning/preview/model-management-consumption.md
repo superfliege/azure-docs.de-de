@@ -10,26 +10,26 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 64141afe421ace44fe71c04f8a2fba48144633c9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 120611f98c97fa4c5bfa2a44aece47f246d9ec57
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="consuming-web-services"></a>Nutzen von Webdiensten
 Sobald Sie ein Modell als in Echtzeit arbeitenden Webdienst bereitgestellt haben, können Sie Daten an ihn senden und Vorhersagen von verschiedenen Plattformen und Anwendungen abrufen. Der in Echtzeit arbeitende Webdienst macht eine REST-API zum Abrufen von Vorhersagen verfügbar. Sie können Daten im ein- oder mehrzeiligen Format an den Webdienst senden, um eine oder mehrere Vorhersagen gleichzeitig zu erhalten.
 
-Bei Nutzung eines [Azure Machine Learning-Webdiensts](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy) kommuniziert eine externe Anwendung synchron mit einem Vorhersagemodell, indem ein HTTP POST-Aufruf an die Dienst-URL gerichtet wird. Um einen Webdienst aufrufen zu können, muss die Clientanwendung den API-Schlüssel angeben, der beim Bereitstellen einer Vorhersage erstellt wird, und die Anforderungsdaten in den POST-Anforderungstext einfügen.
+Bei Nutzung eines [Azure Machine Learning-Webdiensts](model-management-service-deploy.md) kommuniziert eine externe Anwendung synchron mit einem Vorhersagemodell, indem ein HTTP POST-Aufruf an die Dienst-URL gerichtet wird. Um einen Webdienst aufrufen zu können, muss die Clientanwendung den API-Schlüssel angeben, der beim Bereitstellen einer Vorhersage erstellt wird, und die Anforderungsdaten in den POST-Anforderungstext einfügen.
 
 Beachten Sie, dass API-Schlüssel nur im Modus für die Bereitstellung in einem Cluster verfügbar sind. Lokale Webdienste haben keine Schlüssel.
 
 ## <a name="service-deployment-options"></a>Dienstbereitstellungsoptionen
-Azure Machine Learning-Webdienste können mithilfe des Docker-Moduls in cloudbasierten Clustern sowohl für Produktions- und Testszenarien als auch auf lokalen Arbeitsstationen bereitgestellt werden. Die Funktionalität des Vorhersagemodells ist in beiden Fällen gleich. Die clusterbasierte Bereitstellung bietet skalierbare und leistungsstarke Lösungen auf Basis von Azure Container Services, während die lokale Bereitstellung für das Debugging genutzt werden kann. 
+Azure Machine Learning-Webdienste können mithilfe der Docker-Engine in cloudbasierten Clustern sowohl für Produktions- und Testszenarien als auch auf lokalen Arbeitsstationen bereitgestellt werden. Die Funktionalität des Vorhersagemodells ist in beiden Fällen gleich. Die clusterbasierte Bereitstellung bietet skalierbare und leistungsstarke Lösungen auf Basis von Azure Container Services, während die lokale Bereitstellung für das Debugging genutzt werden kann. 
 
 Die Azure Machine Learning-CLI und -API bieten komfortable Befehle zum Erstellen und Verwalten von Compute-Umgebungen für Dienstimplementierungen mithilfe der Option ```az ml env```. 
 
 ## <a name="list-deployed-services-and-images"></a>Auflisten der bereitgestellten Dienste und Images
-Sie können die derzeit bereitgestellten Dienste und Docker-Images mithilfe des CLI-Befehls ```az ml service list realtime -o table``` auflisten. Beachten Sie, dass dieser Befehl stets für die aktuelle Compute-Umgebung ausgeführt wird und keine Dienste anzeigt, die in einer Umgebung bereitgestellt sind, die nicht als aktuell festgelegt ist. Legen Sie die Umgebung mit ```az ml env set``` fest. 
+Sie können die derzeit bereitgestellten Dienste und Docker-Images mithilfe des CLI-Befehls ```az ml service list realtime -o table``` auflisten. Beachten Sie, dass dieser Befehl stets für die aktuelle Compute-Umgebung ausgeführt wird. Es werden keine Dienste angezeigt, die in einer Umgebung bereitgestellt sind, die nicht als aktuell festgelegt ist. Legen Sie die Umgebung mit ```az ml env set``` fest. 
 
 ## <a name="get-service-information"></a>Abrufen von Dienstinformationen
 Nachdem der Webdienst erfolgreich bereitgestellt wurde, verwenden Sie den folgenden Befehl, um die Dienst-URL und andere Details für das Aufrufen des Dienstendpunkts abzurufen. 
@@ -38,9 +38,9 @@ Nachdem der Webdienst erfolgreich bereitgestellt wurde, verwenden Sie den folgen
 az ml service usage realtime -i <service name>
 ```
 
-Dieser Befehl gibt die Dienst-URL, erforderlichen Anforderungsheader, Swagger-URL und Beispieldaten für den Aufruf des Diensts aus, wenn das API-Schema des Diensts zur Bereitstellungszeit bereitgestellt wurde.
+Dieser Befehl gibt die Dienst-URL, die erforderlichen Anforderungsheader, die Swagger-URL und Beispieldaten für den Aufruf des Diensts aus, wenn das API-Schema des Diensts zur Bereitstellungszeit bereitgestellt wurde.
 
-Sie können den Dienst mithilfe der CLI direkt testen, ohne eine HTTP-Anforderung zusammenzustellen, indem Sie den CLI-Beispielbefehl mit den Eingabedaten eingeben:
+Sie können den Dienst mithilfe der CLI direkt testen, ohne eine HTTP-Anforderung zusammenzustellen. Geben Sie dazu den CLI-Beispielbefehl mit den Eingabedaten ein:
 
 ```
 az ml service run realtime -i <service name> -d "Your input data"
@@ -62,7 +62,7 @@ Es gibt mehrere Möglichkeiten zum Abrufen von Dienstprotokollen, um das Dienstv
 - CLI-Befehl ```az ml service logs realtime -i <service id>```. Dieser Befehl funktioniert im Cluster- und lokalen Modus.
 - Wenn die Dienstprotokollierung bei der Bereitstellung aktiviert wurde, werden der Dienstprotokolle auch an Application Insights gesendet werden. Der CLI-Befehl ```az ml service usage realtime -i <service id>``` zeigt die Application Insights-URL an. Beachten Sie, dass die Application Insights-Protokolle mit einer Verzögerung von 2 bis 5 Minuten angezeigt werden.
 - Clusterprotokolle können über die Kubernetes-Konsole angezeigt werden, mit der beim Festlegen der aktuellen Clusterumgebung mit ```az ml env set``` eine Verbindung hergestellt wird.
-- Lokale Docker-Protokolle sind in den Protokollen des Docker-Moduls verfügbar, sollte der Dienst lokal ausgeführt werden.
+- Lokale Docker-Protokolle sind in den Protokollen der Docker-Engine verfügbar, sollte der Dienst lokal ausgeführt werden.
 
 ## <a name="call-the-service-using-c"></a>Aufrufen des Diensts mithilfe von C#
 Verwenden Sie die Dienst-URL zum Senden einer Anforderung aus einer C#-Konsolenanwendung. 

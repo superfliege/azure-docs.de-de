@@ -6,21 +6,20 @@ documentationcenter:
 author: curtand
 manager: mtillman
 editor: 
-ms.assetid: 7fc27e8e-b55f-4194-9b8f-2e95705fb731
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.tgt_pltfrm: 
+ms.devlang: 
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 02/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.custom: it-pro;
-ms.openlocfilehash: 918e1c535ea8779a8aff3d94c6f1ef2cb2a17fd5
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.custom: it-pro
+ms.openlocfilehash: 1fed14fc117c7652e677a245625502c1810068ff
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Zuweisen von Administratorrollen in Azure Active Directory
 
@@ -64,7 +63,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **Gasteinladender**: Benutzer mit dieser Rolle können Einladungen für Azure Active Directory B2B-Gastbenutzer verwalten, wenn die Benutzereinstellung „Mitglieder können einladen“ auf „Nein“ gesetzt ist. Weitere Informationen zur B2B-Zusammenarbeit finden Sie unter [Informationen zur Vorschau der Azure AD B2B-Zusammenarbeit](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Es sind keine anderen Berechtigungen eingeschlossen.
 
-* **Information Protection-Administrator**: Benutzer mit dieser Rolle können im Azure-Portal auf Azure Information Protection zugreifen. Sie können Bezeichnungen für die Azure Information Protection-Richtlinie konfigurieren, Schutzvorlagen verwalten und den Schutz aktivieren.
+* **Information Protection Administrator (Vorschauversion)**: Benutzer mit dieser Rolle verfügen nur über Benutzerrechte für den Azure Information Protection-Dienst. Ihnen werden keine Benutzerrechte für Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health oder Office 365 Security & Compliance Center gewährt. Sie können Bezeichnungen für die Azure Information Protection-Richtlinie konfigurieren, Schutzvorlagen verwalten und den Schutz aktivieren.
 
 * **Intune-Dienstadministrator**: Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft Intune Online, wenn der Dienst vorhanden ist. Darüber hinaus beinhaltet diese Rolle die Möglichkeit, Benutzer und Geräte zum Zuordnen von Richtlinien zu verwalten sowie Gruppen zu erstellen und zu verwalten.
 
@@ -128,11 +127,10 @@ Die folgenden Administratorrollen sind verfügbar:
 | --- | --- |
 | <p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Office-Supporttickets</p><p>Ändern von Kennwörtern ausschließlich für Benutzer und andere Helpdeskadministratoren</p>|<p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Anzeigen von Berichten</p>|
 
-### <a name="information-protection-administrator"></a>Information Protection-Administrator 
+### <a name="information-protection-administrator-preview"></a>Information Protection Administrator (Vorschauversion)
 Geben Sie in | Möglich
 -------- | ---------
-Azure Information Protection | * Konfigurieren von globalen sowie bereichsbezogenen Richtlinien und Bezeichnungen<br>* Verwalten, Konfigurieren und Aktualisieren von Schutzvorlagen<br>* Aktivieren der Schutzaktivierung für die Verwendung 
-Privileged Identity Management | * Leseberechtigungen<br>* Azure AD-Rollenmitgliedschaften oder -Einstellungen können nicht verwaltet werden.
+Azure Information Protection | <li>Konfigurieren von Bezeichnungen und Einstellungen in globalen und bereichsbezogenen Richtlinien<li>Konfigurieren und Verwalten von Schutzvorlagen<li>Aktivieren oder Deaktivieren des Schutzes
  
 ### <a name="reports-reader"></a>Meldet Reader 
 Möglich | Nicht möglich

@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 48e8eb91a5febcc1109bee3404bb534bd0391f88
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 90510520e5f6bbfa8aea4026d7437a4a4881984f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics (OMS) mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank
 
-In diesem Tutorial richten Sie *Log Analytics([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* zum Überwachen von Pools für elastische Datenbanken sowie Datenbanken ein. Dieses Tutorial baut auf dem Tutorial [Überwachen der Leistung der SaaS-Anwendung Wingtip](saas-dbpertenant-performance-monitoring.md) auf. Es zeigt, wie Sie mit *Log Analytics* die im Azure-Portal bereitgestellte Überwachungs- und Warnungsfunktionalität erweitern können. Log Analytics eignet sich für umfassende Überwachung und Warnungen, da Hunderte von Pools und Hunderttausende Datenbanken unterstützt werden. Zudem verfügen Sie damit über eine einzige Überwachungslösung, in der die Überwachung unterschiedlicher Anwendungen und Azure-Dienste für mehrere Azure-Abonnements integriert werden kann.
+In diesem Tutorial richten Sie *Log Analytics([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* zum Überwachen von Pools für elastische Datenbanken sowie Datenbanken ein. Dieses Tutorial baut auf dem Tutorial [Überwachen der Leistung der SaaS-Anwendung Wingtip](saas-dbpertenant-performance-monitoring.md) auf. Es zeigt, wie Sie mit *Log Analytics* die im Azure-Portal bereitgestellte Überwachungs- und Warnungsfunktionalität erweitern können. Log Analytics unterstützt die Überwachung von zigtausend elastischen Pools und mehreren hunderttausend Datenbanken. Mit Log Analytics verfügen Sie über eine einzige Überwachungslösung, in der die Überwachung von unterschiedlichen Anwendungen und Azure-Diensten für mehrere Azure-Abonnements integriert werden kann.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -39,50 +39,51 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 Im [Tutorial zum Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md) finden Sie eine Beschreibung der SaaS-Szenarien und -Muster, und es wird erläutert, wie sie die Anforderungen an eine Überwachungslösung beeinflussen.
 
-## <a name="monitoring-and-managing-performance-with-log-analytics-oms"></a>Überwachen und Verwalten der Leistung mit Log Analytics (OMS)
+## <a name="monitoring-and-managing-database-and-elastic-pool-performance-with-log-analytics-or-operations-management-suite-oms"></a>Überwachen und Verwalten der Leistung von Datenbanken und elastischen Pools mit Log Analytics oder Operations Management Suite (OMS)
 
-In SQL-Datenbank sind Überwachung und Warnung für Datenbanken und Pools verfügbar. Diese integrierte Überwachung und Warnungen sind ressourcenspezifisch und eignen sich für eine kleine Anzahl von Ressourcen. Sie sind weniger geeignet, um umfassendere Installationen zu überwachen oder einen einheitlichen Überblick über verschiedene Ressourcen und Abonnements zu liefern.
+Bei SQL-Datenbank sind Überwachung und Warnung für Datenbanken und Pools im Azure-Portal verfügbar. Diese integrierte Überwachung und Warnung ist bequem, aber ressourcenspezifisch und eignet sich daher weniger für die Überwachung großer Installationen oder für die Bereitstellung einer einheitlichen, ressourcen- und abonnementübergreifenden Ansicht.
 
-Für Szenarien mit hoher Nutzung kann Log Analytics verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen ausgegebener Diagnoseprotokolle und Telemetriedaten bietet, die im Log Analytics-Arbeitsbereich gesammelt werden, der Telemetriedaten aus vielen Diensten sammeln und zum Abfragen und Festlegen von Warnungen verwendet werden kann. Log Analytics bietet eine integrierte Abfragesprache und Tools zur Datenvisualisierung, welche die Analyse und Visualisierung operativer Daten ermöglichen. Die SQL-Analyse-Lösung bietet mehrere vordefinierte Überwachungs- und Warnungsansichten für Pools für elastische Datenbanken und Datenbanken. Zudem können Sie eigene Ad-hoc-Abfragen hinzufügen und diese ggf. speichern. OMS bietet außerdem einen Designer für benutzerdefinierte Ansichten.
+Bei Szenarien mit hohem Volumen kann Log Analytics zur Überwachung und Warnung eingesetzt werden. Log Analytics ist ein separater Azure-Dienst, der die Analyse von Diagnoseprotokollen und Telemetriedaten ermöglicht, die in einem Arbeitsbereich von möglicherweise vielen Diensten gesammelt werden. Mit der integrierten Abfragesprache und den Tools zur Datenvisualisierung ermöglicht Log Analytics die Analyse operativer Daten. Die SQL-Analyselösung bietet mehrere vordefinierte Überwachungs- und Warnungsansichten und -abfragen für elastische Pools und Datenbanken. OMS bietet außerdem einen Designer für benutzerdefinierte Ansichten.
 
 Sowohl Log Analytics-Arbeitsbereiche als auch Analyselösungen können im Azure-Portal und in OMS geöffnet werden. Das Azure-Portal stellt den neueren Zugangspunkt dar, bleibt jedoch möglicherweise in einigen Bereichen hinter dem OMS-Portal zurück.
 
-### <a name="create-data-by-starting-the-load-generator"></a>Erstellen von Daten durch Starten des Lastengenerators 
+### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Erstellen von Leistungsdiagnosedaten durch Simulieren einer Arbeitsauslastung für Ihre Mandanten 
 
-1. Öffnen Sie **Demo-PerformanceMonitoringAndManagement.ps1** in der **PowerShell ISE**. Lassen Sie dieses Skript geöffnet, da Sie während dieses Szenarios u.U. mehrere Lastgenerierungsszenarien ausführen.
-1. Wenn Sie über weniger als fünf Mandanten verfügen, stellen Sie einen Batch von Mandanten bereit, um einen interessanteren Überwachungskontext herzustellen:
-   1. Legen Sie **$DemoScenario = 1** fest, **Bereitstellen eines Batchs von Mandanten**
-   1. Betätigen Sie **F5**, um das Skript auszuführen.
+1. Öffnen Sie in der **PowerShell ISE** *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\die Datei **Demo-PerformanceMonitoringAndManagement.ps1***. Lassen Sie dieses Skript geöffnet, da Sie während dieses Szenarios u.U. mehrere Lastgenerierungsszenarien ausführen.
+1. Falls noch nicht geschehen, stellen Sie einen Batch von Mandanten bereit, um einen interessanteren Überwachungskontext herzustellen. Dieser Vorgang dauert einige Minuten:
+   1. Legen Sie **$DemoScenario = 1** fest, _Bereitstellen eines Batchs von Mandanten_
+   1. Um das Skript ausführen und weitere 17 Mandanten bereitzustellen, drücken Sie **F5**.  
 
-1. Legen Sie **$DemoScenario** = 2 fest, **Generieren einer Last mit normaler Intensität (ca. 40 DTUs)**.
-1. Betätigen Sie **F5**, um das Skript auszuführen.
+1. Starten Sie jetzt den Lastgenerator, um eine simulierte Auslastung für alle Mandanten auszuführen.  
+    1. Legen Sie **$DemoScenario = 2** fest, _Generieren einer Last mit normaler Intensität (ca. 30 DTUs)_.
+    1. Betätigen Sie **F5**, um das Skript auszuführen.
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 
-Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
+Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-PowerShell-Skripts finden Sie unter [Allgemeine Hinweise](saas-tenancy-wingtip-app-guidance-tips.md).
 
 ## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>Installieren und Konfigurieren von Log Analytics und der Azure SQL-Analyselösung
 
-Log Analytics ist ein separater Dienst, der konfiguriert werden muss. Log Analytics erfasst Protokolldaten sowie Telemetriedaten und Metriken in einem Log Analytics-Arbeitsbereich. Ein Arbeitsbereich ist eine Ressource und muss wie andere Ressourcen in Azure erstellt werden. Der Arbeitsbereich muss zwar nicht in der Ressourcengruppe erstellt werden, in der sich auch die überwachte(n) Anwendung(en) befinden, dies ist jedoch häufig am sinnvollsten. Für die Wingtip Tickets SaaS Database Per Tenant SaaS-App kann der Arbeitsbereich auf einfache Weise zusammen mit der Anwendung gelöscht werden, indem die Ressourcengruppe gelöscht wird.
+Log Analytics ist ein separater Dienst, der konfiguriert werden muss. Log Analytics erfasst Protokolldaten sowie Telemetriedaten und Metriken in einem Log Analytics-Arbeitsbereich. Ein Log Analytics-Arbeitsbereich ist eine Ressource und muss wie andere Ressourcen in Azure erstellt werden. Es ist am sinnvollsten, den Arbeitsbereich in der Ressourcengruppe zu erstellen, in der sich auch die überwachte(n) Anwendung(en) befinden, auch wenn dies nicht unbedingt erforderlich ist. Bei der Wingtip Tickets-App wird durch das Verwenden einer einzigen Ressourcengruppe sichergestellt, dass der Arbeitsbereich mit der Anwendung gelöscht wird.
 
-1. Öffnen Sie ...\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\*Demo-LogAnalytics.ps1* in der **PowerShell ISE**.
+1. Öffnen Sie in der **PowerShell ISE** *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\**Demo-LogAnalytics.ps1***.
 1. Betätigen Sie **F5**, um das Skript auszuführen.
 
-An dieser Stelle sollten Sie in der Lage sein, Log Analytics im Azure-Portal (oder im OMS-Portal) zu öffnen. Es dauert einige Minuten, bis Telemetriedaten im Log Analytics-Arbeitsbereich erfasst und angezeigt werden. Je länger Sie dem System Zeit zum Sammeln von Daten lassen, desto interessanter wird das Ergebnis. Dies ist ein guter Zeitpunkt, eine Pause einzulegen – vergewissern Sie sich nur, dass der Last-Generator immer noch ausgeführt wird!
-
+An dieser Stelle sollten Sie in der Lage sein, Log Analytics im Azure-Portal (oder im OMS-Portal) zu öffnen. Es dauert einige Minuten, bis Telemetriedaten im Log Analytics-Arbeitsbereich erfasst und angezeigt werden. Je länger Sie dem System Zeit zum Sammeln von Diagnosedaten lassen, desto interessanter wird das Ergebnis. Dies ist ein guter Zeitpunkt, eine Pause einzulegen – vergewissern Sie sich nur, dass der Last-Generator immer noch ausgeführt wird!
 
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Überwachen von Pools und Datenbanken mithilfe von Log Analytics und der SQL-Analyselösung
 
 
 Öffnen Sie in dieser Übung Log Analytics und das OMS-Portal, um die Telemetriedaten zu untersuchen, die für die Datenbanken und -Pools gesammelt werden.
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und öffnen Sie Log Analytics, indem Sie auf „Weitere Dienste“ klicken und nach Log Analytics suchen:
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und öffnen Sie Log Analytics, indem Sie auf **Alle Dienste** klicken und dann nach Log Analytics suchen:
 
    ![Öffnen von Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. Wählen Sie den Arbeitsbereich *wtploganalytics-&lt;BENUTZER&gt;* aus.
+1. Wählen Sie den Arbeitsbereich namens _wtploganalytics-&lt;Benutzer&gt;_ aus.
 
 1. Wählen Sie **Übersicht** aus, um die Log Analytics-Lösung im Azure-Portal zu öffnen.
+
    ![Link „Übersicht“](media/saas-dbpertenant-log-analytics/click-overview.png)
 
     > [!IMPORTANT]
@@ -92,33 +93,48 @@ An dieser Stelle sollten Sie in der Lage sein, Log Analytics im Azure-Portal (od
 
     ![Übersicht](media/saas-dbpertenant-log-analytics/overview.png)
 
-    ![Analytics](media/saas-dbpertenant-log-analytics/analytics.png)
+    ![Analytics](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
-1. Die Ansicht im Blatt mit der Lösung kann seitwärts gescrollt werden, und es ist eine eigene Bildlaufleiste am unteren Rand vorhanden (ggf. muss das Blatt aktualisiert werden).
+1. Die Ansichten in der Lösung werden mithilfe einer eigenen Bildlaufleiste am unteren Rand seitwärts gescrollt (bei Bedarf muss die Seite aktualisiert werden).
 
-1. Durchsuchen Sie die verschiedenen Ansichten, indem Sie darauf klicken. Sie können auch auf einzelne Ressourcen klicken, um einen Drilldown-Explorer zu öffnen, in dem Sie oben links den Zeit-Schieberegler verwenden oder auf eine vertikale Leiste klicken können, um einen kürzeren Zeitraum zu untersuchen. In dieser Ansicht können Sie einzelne Datenbanken oder Pools auswählen, um sich auf bestimmte Ressourcen zu konzentrieren:
+1. Erkunden Sie die Übersichtsseite, indem Sie auf die Kacheln oder auf eine einzelne Datenbank klicken, um einen Drilldown-Explorer zu öffnen.
 
-    ![Diagramm](media/saas-dbpertenant-log-analytics/chart.png)
+1. Ändern Sie die Filtereinstellung zum Modifizieren des Zeitbereichs – wählen Sie für dieses Lernprogramm _Letzte Stunde_ aus.
 
-1. Wenn Sie zurück zum Blatt mit der Lösung wechseln und ans äußerste rechte Ende scrollen, sehen Sie dort gespeicherte Abfragen. Sie können darauf klicken, um sie zu öffnen und zu untersuchen. Sie können mit diesen experimentieren und Änderungen daran vornehmen, und Sie können interessante selbst erstellte Abfragen speichern. Diese können Sie später erneut öffnen und mit anderen Ressourcen verwenden.
+    ![Zeitfilter](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-1. Wechseln Sie zurück zum Blatt mit dem Log Analytics-Arbeitsbereich, und wählen Sie dort „OMS-Portal“, um die Lösung dort zu öffnen.
+1. Wählen Sie eine einzelne Datenbank aus, um die Verwendung von Abfragen und Metriken für diese Datenbank zu erkunden.
 
-    ![OMS](media/saas-dbpertenant-log-analytics/oms.png)
+    ![Datenbankanalyse](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
-1. Im OMS-Portal können Sie Warnungen konfigurieren. Klicken Sie auf den Warnungsbereich der DTU-Ansicht für Datenbanken.
+1. Scrollen Sie zur Anzeige der Nutzungsmetriken die Analyseseite nach rechts.
+ 
+     ![Datenbankmetriken](media/saas-dbpertenant-log-analytics/log-analytics-database-metrics.png)
 
-1. Die Ansicht „Protokollsuche“ wird geöffnet. Dort sehen Sie ein Balkendiagramm der dargestellten Metriken.
+1. Scrollen Sie die Analyseseite nach links, und klicken Sie in der Liste „Ressourceninfo“ auf die Kachel "Server". Dadurch wird eine Seite mit den Pools und Datenbanken auf dem Server geöffnet. 
 
-    ![Protokollsuche](media/saas-dbpertenant-log-analytics/log-search.png)
+     ![Ressourceninfo](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
 
-1. Wenn Sie auf der Symbolleiste auf „Warnung“ klicken, wird die Warnungskonfiguration angezeigt, die Sie ändern können.
+ 
+     ![Server mit Pools und Datenbanken](media/saas-dbpertenant-log-analytics/log-analytics-server.png)
 
-    ![Hinzufügen einer Warnungsregel](media/saas-dbpertenant-log-analytics/add-alert.png)
+1. Klicken Sie auf der geöffneten Serverseite, auf der die Pools und Datenbanken auf dem Server angezeigt werden, auf den Pool.  Scrollen Sie auf der daraufhin geöffneten Poolseite nach rechts, um die Metriken des Pools anzuzeigen.  
 
-Überwachung und Warnungen in Log Analytics und OMS basieren auf Abfragen der Daten im Arbeitsbereich – im Gegensatz zu den Warnungen auf den Blättern für einzelne Ressourcen, die ressourcenspezifisch sind. Somit können Sie beispielsweise eine Warnung definieren, die alle Datenbanken abdeckt, anstatt eine Warnung pro Datenbank zu definieren. Sie können auch eine Warnung schreiben, die eine zusammengesetzte Abfrage für mehrere Ressourcentypen verwendet. Abfragen sind nur durch die im Arbeitsbereich verfügbaren Daten beschränkt.
+     ![Metriken des Pools](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
 
-Die Rechnungsstellung für Log Analytics für SQL-Datenbank basiert auf dem jeweiligen Datenvolumen im Arbeitsbereich. In diesem Tutorial haben Sie einen kostenlosen Arbeitsbereich erstellt, der auf 500 MB pro Tag beschränkt ist. Sobald dieser Grenzwert erreicht wurde, werden dem Arbeitsbereich keine Daten mehr hinzugefügt.
+
+
+1. Wechseln Sie zurück zum Log Analytics-Arbeitsbereich, und wählen Sie **OMS-Portal** aus, um den dortigen Arbeitsbereich zu öffnen.
+
+    ![OMS](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+
+Im OMS-Portal können Sie die Protokoll- und Metrikdaten im Arbeitsbereich weiter untersuchen.  
+
+Überwachung und Warnung in Log Analytics und OMS beruhen – im Gegensatz zu den Warnungen, die im Azure-Portal für jede Ressource definiert werden – auf Abfragen der Daten im Arbeitsbereich. Da Warnungen auf Abfragen beruhen, können Sie statt einer Warnung pro Datenbank eine einzige Warnung definieren, die alle Datenbanken abdeckt. Abfragen sind nur durch die im Arbeitsbereich verfügbaren Daten beschränkt.
+
+Weitere Informationen zum Abfragen und Festlegen von Warnungen mit OMS finden Sie unter [Arbeiten mit Warnungsregeln in Log Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-alerts-creating).
+
+Die Rechnungsstellung für Log Analytics für SQL-Datenbank basiert auf dem jeweiligen Datenvolumen im Arbeitsbereich. In diesem Tutorial haben Sie einen kostenlosen Arbeitsbereich erstellt, der auf 500 MB pro Tag beschränkt ist. Sobald dieser Grenzwert erreicht wird, werden dem Arbeitsbereich keine Daten mehr hinzugefügt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,5 +1,5 @@
 ---
-title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft Docs"
+title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Azure-Funktionen auf dem lokalen Computer codieren und testen, bevor Sie sie in Azure Functions ausführen."
 services: functions
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: c1a9310d0a09d714f1d58f29e5683097c9dc6b90
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8b85457c5df9fb15c7eebe8b6fe8fb904f9e6009
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Lokales Codieren und Testen von Azure Functions
 
@@ -150,7 +150,7 @@ Wenn keine gültige Speicherverbindungszeichenfolge für **AzureWebJobsStorage**
 ### <a name="configure-app-settings"></a>Konfigurieren von App-Einstellungen
 
 Um einen Wert für Verbindungszeichenfolgen festzulegen, können Sie eine der folgenden Optionen ausführen:
-* Geben Sie die Verbindungszeichenfolge aus [Azure-Speicher-Explorer](http://storageexplorer.com/) ein.
+* Geben Sie die Verbindungszeichenfolge aus dem [Azure Storage-Explorer](http://storageexplorer.com/) ein.
 * Verwenden Sie einen der folgenden Befehle:
 
     ```
@@ -231,6 +231,9 @@ Um den Host zu starten und JavaScript-Debuggen einzurichten, führen Sie Folgend
 ```
 func host start --debug vscode
 ```
+
+> [!IMPORTANT]
+> Für das Debuggen wird nur Node.js 8.x unterstützt. Node.js 9.x wird nicht unterstützt. 
 
 Wählen Sie dann in Visual Studio Code in der Ansicht **Debuggen** **Anfügen an Azure Functions**. Sie können Haltepunkte anfügen, Variablen prüfen und Code schrittweise ausführen.
 

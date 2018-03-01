@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: ca858408ecb258cc64645571d048de93449689d6
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: ee1a2eeeda95b03b185090841cf93c4183c5fce2
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten
 In diesem Artikel wird beschrieben, wie Sie die Kommunikation zwischen verschiedenen Knoten eines eigenständigen Windows-Clusters sichern. Außerdem wird beschrieben, wie Sie mithilfe von X.509-Zertifikaten Clients authentifizieren, die sich mit diesem Cluster verbinden. Mit der Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster und bereitgestellte Anwendungen zugreifen und Verwaltungsaufgaben ausführen können. Die Zertifikatsicherheit sollte auf dem Cluster aktiviert werden, wenn der Cluster erstellt wird.  
@@ -48,6 +48,12 @@ Laden Sie als Erstes das [Service Fabric-Paket für Windows Server](service-fabr
             ],
             "X509StoreName": "My"
         },
+        "ClusterCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames" : "Root"
+            }
+        ],
         "ServerCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
@@ -62,6 +68,12 @@ Laden Sie als Erstes das [Service Fabric-Paket für Windows Server](service-fabr
             ],
             "X509StoreName": "My"
         },
+        "ServerCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames" : "Root"
+            }
+        ],
         "ClientCertificateThumbprints": [
             {
                 "CertificateThumbprint": "[Thumbprint]",
@@ -79,6 +91,12 @@ Laden Sie als Erstes das [Service Fabric-Paket für Windows Server](service-fabr
                 "IsAdmin": true
             }
         ],
+        "ClientCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames": "Root"
+            }
+        ]
         "ReverseProxyCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
@@ -110,10 +128,13 @@ In der folgenden Tabelle sind die Zertifikate aufgeführt, die Sie für die Einr
 | --- | --- |
 | ClusterCertificate |Empfohlen für eine Testumgebung. Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können zwei verschiedene Zertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt „Thumbprint“ und den Fingerabdruck des sekundären Zertifikats in den Variablen unter „ThumbprintSecondary“ fest. |
 | ClusterCertificateCommonNames |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können einen oder zwei allgemeine Clusterzertifikatnamen verwenden. „CertificateIssuerThumbprint“ entspricht dem Fingerabdruck des Zertifikatausstellers dieses Zertifikats. Wenn mehrere Zertifikate mit dem gleichen allgemeinen Namen verwendet werden, können Sie mehrere Fingerabdrücke für Zertifikataussteller angeben.|
+| ClusterCertificateIssuerStores |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat entspricht dem Zertifikataussteller des Clusterzertifikats. Sie können den allgemeinen Ausstellernamen und den entsprechenden Speichername unter diesem Abschnitt angeben, anstatt den Fingerabdruck des Zertifikatausstellers unter „ClusterCertificateCommonNames“ bereitzustellen.  Dies vereinfacht das Rollover von Clusterausstellerzertifikaten. Wenn mehrere Clusterzertifikate verwendet werden, können mehrere Zertifikataussteller angegeben werden. Ein leeres IssuerCommonName-Objekt setzt alle Zertifikate in den entsprechenden Speichern auf die Whitelist, die unter „X509StoreNames“ angegeben sind.|
 | ServerCertificate |Empfohlen für eine Testumgebung. Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. Der Einfachheit halber können Sie für „ClusterCertificate“ und „ServerCertificate“ dasselbe Zertifikat auswählen. Sie können zwei verschiedene Serverzertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt „Thumbprint“ und den Fingerabdruck des sekundären Zertifikats in den Variablen unter „ThumbprintSecondary“ fest. |
 | ServerCertificateCommonNames |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. „CertificateIssuerThumbprint“ entspricht dem Fingerabdruck des Zertifikatausstellers dieses Zertifikats. Wenn mehrere Zertifikate mit dem gleichen allgemeinen Namen verwendet werden, können Sie mehrere Fingerabdrücke für Zertifikataussteller angeben. Der Einfachheit halber können Sie für „ClusterCertificateCommonNames“ und „ServerCertificateCommonNames“ dasselbe Zertifikat auswählen. Sie können einen oder zwei allgemeine Serverzertifikatnamen verwenden. |
+| ServerCertificateIssuerStores |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat entspricht dem Zertifikataussteller des Serverzertifikats. Sie können den allgemeinen Ausstellernamen und den entsprechenden Speichername unter diesem Abschnitt angeben, anstatt den Fingerabdruck des Zertifikatausstellers unter „ServerCertificateCommonNames“ bereitzustellen.  Dies vereinfacht das Rollover von Serverausstellerzertifikaten. Wenn mehrere Serverzertifikate verwendet werden, können mehrere Zertifikataussteller angegeben werden. Ein leeres IssuerCommonName-Objekt setzt alle Zertifikate in den entsprechenden Speichern auf die Whitelist, die unter „X509StoreNames“ angegeben sind.|
 | ClientCertificateThumbprints |Installieren Sie diese Zertifikate auf den authentifizierten Clients. Auf den Computern, denen Sie Zugriff auf den Cluster gewähren möchten, können Sie verschiedene Clientzertifikate installieren. Legen Sie den Fingerabdruck eines Zertifikats jeweils in der Variablen „CertificateThumbprint“ fest. Wenn Sie „IsAdmin“ auf *TRUE* festlegen, kann der Client, auf dem dieses Zertifikat installiert ist, Administratorverwaltungsaktivitäten für den Cluster durchführen. Wenn „IsAdmin“ auf *FALSE* festgelegt ist, kann der Client mit diesem Zertifikat Aktionen durchführen, die nur für Benutzerzugriffsrechte (üblicherweise Lesezugriffe) zulässig sind. Weitere Informationen zu Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac). |
 | ClientCertificateCommonNames |Legen Sie den allgemeinen Namen des ersten Clientzertifikats für „CertificateCommonName“ fest. „CertificateIssuerThumbprint“ ist der Fingerabdruck für den Aussteller dieses Zertifikats. Weitere Informationen zu allgemeinen Namen und zum Zertifikataussteller finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx). |
+| ClientCertificateIssuerStores |Empfohlen für eine Produktionsumgebung. Dieses Zertifikat entspricht dem Zertifikataussteller des Clientzertifikats (sowohl Administrator- als auch Nicht-Administratorrollen). Sie können den allgemeinen Ausstellernamen und den entsprechenden Speichername unter diesem Abschnitt angeben, anstatt den Fingerabdruck des Zertifikatausstellers unter „ClientCertificateCommonNames“ bereitzustellen.  Dies vereinfacht das Rollover von Clientausstellerzertifikaten. Wenn mehrere Clientzertifikate verwendet werden, können mehrere Zertifikataussteller angegeben werden. Ein leeres IssuerCommonName-Objekt setzt alle Zertifikate in den entsprechenden Speichern auf die Whitelist, die unter „X509StoreNames“ angegeben sind.|
 | ReverseProxyCertificate |Empfohlen für eine Testumgebung. Dieses optionale Zertifikat kann zum Schutz des [Reverseproxys](service-fabric-reverseproxy.md) angegeben werden kann. Stellen Sie bei Verwendung dieses Zertifikats sicher, dass „reverseProxyEndpointPort“ unter „nodeTypes“ festgelegt ist. |
 | ReverseProxyCertificateCommonNames |Empfohlen für eine Produktionsumgebung. Dieses optionale Zertifikat kann zum Schutz des [Reverseproxys](service-fabric-reverseproxy.md) angegeben werden kann. Stellen Sie bei Verwendung dieses Zertifikats sicher, dass „reverseProxyEndpointPort“ unter „nodeTypes“ festgelegt ist. |
 
@@ -123,7 +144,7 @@ Im Folgenden sehen Sie ein Beispiel für eine Clusterkonfiguration mit Cluster-,
  {
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2016-09-26",
+    "apiVersion": "10-2017",
     "nodes": [{
         "nodeName": "vm0",
         "metadata": "Replace the localhost below with valid IP address or FQDN",
@@ -162,12 +183,21 @@ Im Folgenden sehen Sie ein Beispiel für eine Clusterkonfiguration mit Cluster-,
                 "ClusterCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myClusterCertCommonName",
-                      "CertificateIssuerThumbprint": "7c fc 91 97 13 66 8d 9f a8 ee 71 2b a2 f4 37 62 00 03 49 0d"
+                      "CertificateCommonName": "myClusterCertCommonName"
                     }
                   ],
                   "X509StoreName": "My"
                 },
+                "ClusterCertificateIssuerStores": [
+                    {
+                        "IssuerCommonName": "ClusterIssuer1",
+                        "X509StoreNames" : "Root"
+                    },
+                    {
+                        "IssuerCommonName": "ClusterIssuer2",
+                        "X509StoreNames" : "Root"
+                    }
+                ],
                 "ServerCertificateCommonNames": {
                   "CommonNames": [
                     {
@@ -221,6 +251,7 @@ Im Folgenden sehen Sie ein Beispiel für eine Clusterkonfiguration mit Cluster-,
 
 ## <a name="certificate-rollover"></a>Zertifikatrollover
 Wenn Sie anstelle eines Fingerabdrucks den allgemeinen Namen des Zertifikats verwenden, ist für den Zertifikatrollover kein Upgrade der Clusterkonfiguration erforderlich. Stellen Sie bei Upgrades der Fingerabdrücke der Zertifikataussteller sicher, dass die neue Fingerabdruckliste und die alte Liste eine Schnittmenge aufweisen. Sie müssen zuerst ein Konfigurationsupgrade mit den neuen Zertifikataussteller-Fingerabdrücken durchführen und dann die neuen Zertifikate (Cluster-/Serverzertifikate und Zertifikate der Zertifikataussteller) im Speicher installieren. Bewahren Sie das alte Zertifikat des Zertifikatausstellers nach der Installation des neuen Zertifikats mindestens zwei Stunden im Zertifikatspeicher auf.
+Bei Verwendung von Zertifikatausstellerspeichern muss kein Konfigurationsupgrade für das Rollover des Ausstellerzertifikats ausgeführt werden. Installieren Sie das neue Ausstellerzertifikat mit einem späteren Ablaufdatum im entsprechenden Zertifikatspeicher, und entfernen Sie das alte Ausstellerzertifikat nach ein paar Stunden.
 
 ## <a name="acquire-the-x509-certificates"></a>Erwerben der X.509-Zertifikate
 Zum Schutz der Kommunikation zwischen Clustern müssen Sie zuerst X.509-Zertifikate für die Clusterknoten abrufen. Um die Verbindungsherstellung für diesen Cluster auf autorisierte Computer und Benutzer zu beschränken, müssen Sie Zertifikate für die Clientcomputer abrufen und installieren.
@@ -315,7 +346,7 @@ Nach dem Konfigurieren des Abschnitts „security“ der Datei „ClusterConfig.
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Sobald der gesicherte eigenständige Windows-Cluster ausgeführt wird und Sie die authentifizierten Clients für die Verbindungsherstellung eingerichtet haben, führen Sie die Schritte im Abschnitt [Herstellen einer Verbindung mit einem Cluster mit PowerShell](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) aus, um die Verbindung herzustellen. Beispiel:
+Sobald der gesicherte eigenständige Windows-Cluster ausgeführt wird und Sie die authentifizierten Clients für die Verbindungsherstellung eingerichtet haben, führen Sie die Schritte im Abschnitt [Herstellen einer Verbindung mit einem Cluster mit PowerShell](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) aus, um die Verbindung herzustellen. Beispiel: 
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: 37860425460496c5fc2451713d1d3ec58ac9106d
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0c34b7ce028ef0fae77322513f62557fa9f9929c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure Store
 Dieser Artikel enthält schrittweise Anweisungen, wie Sie mit dem Import/Export-Dienst von Azure große Datenmengen auf sichere Weise in Azure Blob Storage und Azure Files übertragen können, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Storage auf Festplattenlaufwerke und zum Versand an Ihre lokalen Standorte nutzen. Daten von einer einzelnen internen SATA-Festplatte können entweder in Azure Blob Storage oder in Azure Files importiert werden. 
@@ -87,7 +87,7 @@ Sie können diesen Dienst in folgenden Szenarien verwenden:
 In diesem Abschnitt werden die Voraussetzungen zur Nutzung dieses Diensts aufgeführt. Lesen Sie sich diese Informationen sorgfältig durch, bevor Sie Ihre Laufwerke verschicken.
 
 ### <a name="storage-account"></a>Speicherkonto
-Sie müssen über ein Azure-Abonnement und ein oder mehrere Speicherkonten verfügen, um den Import/Export-Dienst nutzen zu können. Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
+Sie müssen über ein Azure-Abonnement und ein oder mehrere Speicherkonten verfügen, um den Import/Export-Dienst nutzen zu können. Azure Import/Export unterstützt nur Blobspeicherkonten sowie klassische und allgemeine Speicherkonten V1. Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
 
 ### <a name="data-types"></a>Datentypen
 Sie können den Import/Export-Dienst von Azure verwenden, um Daten in **Blockblobs**, **Seitenblobs** oder **Dateien** zu kopieren. Umgekehrt können Sie mit diesem Dienst nur **Blockblobs**, **Seitenblobs** oder **Anfügeblobs** aus dem Azure-Speicher exportieren. Der Dienst unterstützt nur den Import von Azure Files in Azure-Speicher. Das Exportieren von Azure Files wird derzeit nicht unterstützt.
@@ -299,7 +299,7 @@ Wenn Sie Festplatten an Azure schicken, übernehmen Sie die Versandkosten des Ku
 
 **Transaktionskosten**
 
-Für das Importieren von Daten in Azure Storage fallen keine Transaktionskosten an. Die standardmäßigen Gebühren für ausgehende Übertragungen fallen an, wenn Daten aus Blob Storage exportiert werden. Weitere Informationen zu Transaktionskosten finden Sie unter [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/)
+Neben den standardmäßigen Speichertransaktionskosten beim Importieren von Daten in Azure Storage gibt es keine zusätzlichen Transaktionskosten. Die standardmäßigen Gebühren für ausgehende Übertragungen fallen an, wenn Daten aus Blob Storage exportiert werden. Weitere Informationen zu Transaktionskosten finden Sie unter [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 
 
@@ -498,7 +498,7 @@ Nein. Sie müssen sowohl für den Import als auch den Export Ihre eigenen Laufwe
 
 **Wie kann ich auf Daten zugreifen, die von diesem Dienst importiert werden?**
 
-Sie können über das Azure-Portal oder mithilfe eines eigenständigen Tools, dem Speicher-Explorer, auf die Daten in Ihrem Azure-Speicherkonto zugreifen. https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer 
+Sie können über das Azure-Portal oder mithilfe eines eigenständigen Tools, dem Storage-Explorer, auf die Daten in Ihrem Azure Storage-Konto zugreifen. https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer 
 
 **Wie sehen meine Daten nach Abschluss des Importauftrags im Speicherkonto aus? Wird meine Verzeichnishierarchie beibehalten?**
 

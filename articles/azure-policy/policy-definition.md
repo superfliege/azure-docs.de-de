@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: af373e2770ad020b3a3eb669424c001670ec9204
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -66,14 +66,11 @@ Zusätzliche Vorlagenbeispiele für Azure Policy finden Sie unter [Templates for
 
 ## <a name="mode"></a>Mode
 
-Es wird empfohlen, dass Sie `mode` auf `all` festlegen, damit eine Richtlinienzuweisung sämtliche Ressourcengruppen und -typen überprüft. Ihnen wird unter [Allow custom VM image from a Resource Group (Zulassen eines benutzerdefinierten VM-Images aus einer Ressourcengruppe)](scripts/allow-custom-vm-image.md) ein Beispiel für eine Richtliniendefinition angezeigt, die Tags für Ressourcengruppen erzwingen.
+Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausgewertet werden. Unterstützte Modi:
+* `all`: Ressourcengruppen und alle Ressourcentypen werden ausgewertet. 
+* `indexed`: Nur Ressourcentypen, die Tags und Speicherort unterstützen, werden ausgewertet.
 
-Wenn Sie ihn auf **alle** setzen, werden Ressourcengruppen und alle Ressourcentypen für die Richtlinie ausgewertet. Das Portal verwendet **alle** für alle Richtlinien. Wenn Sie PowerShell oder Azure-CLI verwenden, müssen Sie den `mode`-Parameter angeben und auf **alle** setzen.
-
-Sämtliche Richtliniendefinitionen, die über das Portal erstellt werden, verwenden einen `all`-Modus. Wenn Sie allerdings PowerShell oder Azure CLI verwenden möchten, müssen Sie den `mode`-Parameter angeben und auf `all` festlegen.
-
-Wenn Sie den Modus auf `indexed` festlegen, wird die Richtlinienzuweisung nur auf Ressourcentypen geprüft, die Tags und den Standort unterstützen.
-
+Es wird empfohlen, **mode** auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder die Azure CLI verwenden, müssen Sie den **mode**-Parameter angeben und auf `all` setzen. 
 
 ## <a name="parameters"></a>Parameter
 
@@ -265,6 +262,7 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 | Microsoft.Compute/virtualMachines/imageVersion | Hiermit wird die Version des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
 | Microsoft.Compute/virtualMachines/osDisk.Uri | Hiermit wird der VHD-URI festgelegt. |
 | Microsoft.Compute/virtualMachines/sku.name | Legen Sie die Größe des virtuellen Computers fest. |
+| Microsoft.Compute/virtualMachines/availabilitySet.id | Hiermit wird die Verfügbarkeitsgruppen-ID festgelegt für den virtuellen Computer festgelegt. |
 
 **Microsoft.Compute/virtualMachines/extensions**
 
@@ -335,6 +333,7 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 | Microsoft.Storage/storageAccounts/enableFileEncryption | Hiermit wird festgelegt, ob der Dienst die Daten beim Speichern im Dateispeicherdienst verschlüsselt. |
 | Microsoft.Storage/storageAccounts/sku.name | Hiermit wird der SKU-Name festgelegt. |
 | Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Hiermit wird festgelegt, dass nur HTTPS-Datenverkehr zum Speicherdienst zugelassen wird. |
+| Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id | Überprüfen Sie, ob der Virtual Network-Dienstendpunkt aktiviert ist. |
 
 ## <a name="initiatives"></a>Initiativen
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Monitor – integrierte Partnerlösungen | Microsoft Docs"
+title: "Azure Monitor – integrierte Partnerlösungen | Microsoft-Dokumentation"
 description: "Erfahren Sie mehr über die Partnerlösungen für Azure Monitor und wie Sie auf die jeweilige Dokumentation zur Integration der Lösungen zugreifen können."
 author: johnkemnetz
 manager: orenr
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/16/2017
 ms.author: johnkem
-ms.openlocfilehash: 46b6ec12655b64b8fce6e103d5d71a4e8021890e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abd5ef0ffbaaa78ae4c968fdd208916825d0398a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 | Partner |  |  |
@@ -26,16 +26,16 @@ ms.lasthandoff: 10/11/2017
 | [![Partnerlogo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![Partnerlogo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![Partnerlogo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
 | [![Partnerlogo][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![Partnerlogo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partnerlogo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |
 | [![Partnerlogo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![Partnerlogo][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![Partnerlogo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |
-| [![Partnerlogo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] | [![Partnerlogo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partnerlogo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
-| [![Partnerlogo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![Partnerlogo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partnerlogo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
+| [![Partnerlogo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partnerlogo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] | [![Partnerlogo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor]  |
+| [![Partnerlogo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partnerlogo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
 
 ## <a name="alertlogic-log-manager"></a>Alert Logic Log Manager
-Alert Logic Log Manager erfasst Protokolle von virtuellen Computern, Anwendungen und der Azure-Plattform für Sicherheitsanalysen und zur Datenaufbewahrung, inklusive des Azure-Aktivitätsprotokolls über die Azure Monitor-API.  Diese Informationen werden dazu verwendet, Complianceanforderungen zu erfüllen und Verstöße zu erkennen.
+Alert Logic Log Manager erfasst Protokolldateien von virtuellen Computern, Anwendungen und der Azure-Plattform für Sicherheitsanalysen und zur Datenaufbewahrung. Außerdem wird das Azure-Aktivitätsprotokoll über die Azure Monitor-API erfasst. Diese Informationen werden dazu verwendet, Complianceanforderungen zu erfüllen und Verstöße zu erkennen.
 
 [Zur Dokumentation][alertlogic-doc]
 
 ## <a name="appdynamics"></a>AppDynamics
-Application Performance Management (APM) von AppDynamics ermöglicht Anwendungsbesitzern eine schnelle Problembehandlung bei Leistungsengpässen und die Leistungsoptimierung ihrer in Azure-Umgebungen ausgeführten Anwendungen. AppDynamics APM ist nahtlos in den Azure Marketplace integriert und kann zur Überwachung folgender Komponenten und Dienste eingesetzt werden: Azure Cloud Services (PaaS) (einschließlich Web- und Workerrollen), Virtual Machines (IaaS), Remotediensterkennung (Microsoft Azure Service Bus), Microsoft Azure-Warteschlangen für Microsoft Azure-Remotedienste (Azure-Blob), Azure-Warteschlangen (Microsoft Service Bus), Datenspeicher, Microsoft Azure Blob Storage.
+Application Performance Management (APM) von AppDynamics ermöglicht Anwendungsbesitzern eine schnelle Problembehandlung bei Leistungsengpässen und die Leistungsoptimierung ihrer in Azure-Umgebungen ausgeführten Anwendungen. Es kann zur Überwachung folgender Komponenten und Dienste eingesetzt werden: Azure Cloud Services (PaaS), Web- und Workerrollen, Virtual Machines (IaaS), Remotediensterkennung (Microsoft Azure Service Bus), Microsoft Azure-Warteschlangen, Microsoft Azure-Remotedienste (Azure-Blob), Azure-Warteschlangen (Microsoft Service Bus), Datenspeicher und Microsoft Azure Blob Storage. AppDynamics APM ist in Azure Marketplace verfügbar.
 
 [Zur Dokumentation][appdynamics-doc]
 
@@ -50,45 +50,42 @@ Circonus ist eine Mikroservicesüberwachungs- und -analyseplattform für lokale 
 [Zur Dokumentation][circonus-doc]
 
 ## <a name="cloudhealth"></a>CloudHealth
-Vereinheitlichen und automatisieren Sie Ihre Cloud mit einer Plattform, die extra konzipiert wurde, damit Sie in erheblichem Umfang Zeit und Geld sparen. Mit unvergleichlicher Transparenz, intuitiver Optimierung und extrem stabilen Governancemethoden setzt CloudHealth bei der Cloudverwaltung ganz neue Maßstäbe. Mit der Cloudhealth-Plattform können Unternehmen und MSPs eine maximale Rendite für Cloudinvestitionen erzielen und fundierte Entscheidungen zu Kosten, Nutzung, Leistung und Sicherheit treffen.
+Vereinheitlichen und automatisieren Sie Ihre Cloud mit einer Plattform, die extra konzipiert wurde, damit Sie Zeit und Geld sparen. CloudHealth bietet Transparenz, intuitive Optimierung und extrem stabile Governancemethoden für die Cloudverwaltung. Mit der Cloudhealth-Plattform können Unternehmen und MSPs eine maximale Rendite für Cloudinvestitionen erzielen. Außerdem können fundierte Entscheidungen zu Kosten, Nutzung, Leistung und Sicherheit getroffen werden.
 
 [Weitere Informationen.][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
-CloudMonix bietet Überwachung, Automatisierung und selbstheilende Dienste für die Microsoft Azure Platform.
+CloudMonix bietet Überwachung, Automatisierung und selbstreparierende Dienste für die Microsoft Azure Platform.
 
 [Zur Dokumentation][cloudmonix-doc]
 
 ## <a name="cloudyn"></a>Cloudyn
-Cloudyn verwaltet und optimiert hybride Cloudbereitstellungen auf mehreren Plattformen, um Unternehmen dabei zu unterstützen, ihr gesamtes Cloudpotenzial auszuschöpfen. Die SaaS-Lösung liefert einen Überblick über Nutzung, Leistung und Kosten sowie Einblicke und Handlungsempfehlungen für intelligente Optimierung und Cloud-Governance. Cloudyn bietet eine genaue verbrauchsbasierte Kostenzuteilung und eine hierarchische Kostenzuteilungsverwaltung – so haben Sie Ihre Abrechnungen immer im Blick. Cloudyn ist in Azure Monitor integriert, um Einblicke und Handlungsempfehlungen zur Optimierung Ihrer Azure-Bereitstellung zu geben.
+Cloudyn verwaltet und optimiert hybride Cloudbereitstellungen auf mehreren Plattformen, um Unternehmen dabei zu unterstützen, ihr gesamtes Cloudpotenzial auszuschöpfen. Die SaaS-Lösung liefert einen Überblick über Nutzung, Leistung und Kosten. Sie bietet Einblicke und Handlungsempfehlungen für intelligente Optimierung und Cloud-Governance. Cloudyn bietet eine genaue verbrauchsbasierte Kostenzuteilung und eine hierarchische Kostenzuteilungsverwaltung – so haben Sie Ihre Abrechnungen immer im Blick. Cloudyn ist in Azure Monitor integriert, um Einblicke und Handlungsempfehlungen zur Optimierung Ihrer Azure-Bereitstellung zu geben.
 
 [Zur Dokumentation][cloudyn-doc]
 
 ## <a name="datadog"></a>Datadog
-Datadog ist der weltweit führende Überwachungsdienst für Anwendungen in der Cloud, der Daten von Servern, Datenbanken, Tools und Diensten zusammenfasst, um Ihnen eine einheitliche Ansicht über Ihren gesamten Stapel zu bieten. Diese Funktionen werden auf einer SaaS-basierten Datenanalyseplattform bereitgestellt, auf der Entwicklungs- und Betriebsteams zusammenarbeiten können, um Ausfallzeiten zu vermeiden, Leistungsprobleme zu lösen und sicherzustellen, dass Entwicklungs- und Bereitstellungszyklen rechtzeitig abgeschlossen werden. Durch die Integration von Datadog in Azure können Sie Metriken aus Ihrer gesamten Infrastruktur sammeln und anzeigen, VM-Metriken mit Metriken auf Anwendungsebene korrelieren und Ihre Metriken mit jeder Kombination aus Eigenschaften und benutzerdefinierten Tags segmentieren.
+Datadog ist der weltweit führende Überwachungsdienst für Anwendungen in der Cloud. Er fasst Daten von Servern, Datenbanken, Tools und Diensten zusammen, um Ihnen eine einheitliche Gesamtansicht zu bieten. Diese Funktionen werden auf einer SaaS-basierten Datenanalyseplattform bereitgestellt. Dieser Dienst ermöglicht das Zusammenarbeiten von Entwicklungs- und Betriebsteams, um Ausfallzeiten zu vermeiden, Leistungsprobleme zu lösen und sicherzustellen, dass Entwicklungs- und Bereitstellungszyklen rechtzeitig abgeschlossen werden. Durch die Integration von Datadog in Azure können Sie Metriken aus Ihrer gesamten Infrastruktur sammeln und anzeigen. Sie können VM-Metriken mit Metriken auf Anwendungsebene korrelieren. Außerdem haben Sie die Möglichkeit, Ihre Metriken anhand einer beliebigen Kombination von Eigenschaften und benutzerdefinierten Tags zu segmentieren.
 
 [Zur Dokumentation][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
-OneAgent von Dynatrace lässt sich über Azure-Erweiterungsmechanismen in virtuelle Azure-Computer und App Services integrieren. So kann Dynatrace OneAgent Leistungsmetriken zu Hosts, Netzwerk und Diensten erfassen. Neben der einfachen Anzeige von Metriken kann Dynatrace auch vollständige Umgebungen detailliert visualisieren und so Transaktionen von der Clientseite bis hin zur Datenbankschicht anzeigen. Die auf künstlicher Intelligenz beruhende Korrelation von Problemen und die vollständig integrierte Ursachenanalyse, einschließlich Informationen über Code und Datenbank auf Methodenebene, vereinfachen Problembehandlungen und Leistungsoptimierungen erheblich.
+OneAgent von Dynatrace lässt sich über Azure-Erweiterungsmechanismen in virtuelle Azure-Computer und App Services integrieren. So kann Dynatrace OneAgent Leistungsmetriken zu Hosts, Netzwerk und Diensten erfassen. Neben der einfachen Anzeige von Metriken kann Dynatrace auch vollständige Umgebungen visualisieren. Es werden Transaktionen von der Clientseite bis hin zur Datenbankschicht angezeigt. Dynatrace bietet auf künstlicher Intelligenz beruhende Korrelation von Problemen und die vollständig integrierte Ursachenanalyse zur Bereitstellung von Einblicken in Code und Datenbank auf Methodenebene. Durch diese Einblicke werden die Problembehandlung und Leistungsoptimierungen wesentlich vereinfacht.
 
 [Zur Dokumentation][dynatrace-doc]
 
-## <a name="newrelic"></a>NewRelic
-[Weitere Informationen][newrelic-doc]
-
 ## <a name="opsgenie"></a>OpsGenie
-OpsGenie agiert als Verteiler für die von Azure generierten Warnungen. OpsGenie ermittelt anhand von Bereitschaftsplänen und Eskalationstypen, welche Personen bei Ereignissen per E-Mail, SMS, Telefonanruf oder Pushbenachrichtigung informiert werden müssen. Kurz gesagt: Azure generiert Warnungen für erkannte Probleme, und OpsGenie stellt sicher, dass sie von den richtigen Personen bearbeitet werden.
+OpsGenie agiert als Verteiler für die von Azure generierten Warnungen. OpsGenie ermittelt anhand von Bereitschaftsplänen und Eskalationstypen, welche Personen benachrichtigt werden müssen. Diese können per E-Mail, Textnachricht (SMS), Telefonanruf oder Pushbenachrichtigung informiert werden. Azure generiert Warnungen für erkannte Probleme. OpsGenie stellt sicher, dass sie von den richtigen Personen bearbeitet werden.
 
 [Zur Dokumentation][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
-PagerDuty, die führende Incidentmanagementlösung, liefert bereits erstklassigen Support für Azure-Warnungen für Metriken. Nun unterstützt PagerDuty neben Benachrichtigungen zu Metriken auf Plattformebene für Azure-Dienste auch Benachrichtigungen für Azure Monitor-Warnungen, Benachrichtigungen über automatische Skalierungen und Überwachungsprotokollereignisse. Durch diese Verbesserungen erhalten Benutzer nun einen verbesserten Einblick in den Kern der Azure Platform und profitieren gleichzeitig von den Incidentmanagementfunktionen von PagerDuty für Antworten in Echtzeit. Unsere erweiterte Azure-Integration wird über Webhooks realisiert, was eine schnelle und einfache Einrichtung und Anpassung ermöglicht.
+PagerDuty, die führende Incidentmanagementlösung, liefert bereits erstklassigen Support für Azure-Warnungen für Metriken. PagerDuty unterstützt Benachrichtigungen für Azure Monitor-Warnungen, Benachrichtigungen über automatische Skalierungen, Überwachungsprotokollereignisse und Metriken auf Plattformebene für Azure-Dienste. Durch diese Verbesserungen erhalten Sie einen verbesserten Einblick in den Kern der Azure Platform. Außerdem profitieren Sie von den Incidentmanagementfunktionen von PagerDuty für Antworten in Echtzeit. Die erweiterte Azure-Integration wird über Webhooks realisiert. Webhooks ermöglichen Ihnen eine schnelle und einfache Einrichtung und Anpassung der Lösung.
 
 [Zur Dokumentation][pagerduty-doc]
 
 ## <a name="sciencelogic"></a>ScienceLogic
-ScienceLogic stellt die IT-Dienstüberprüfungsplattform der nächsten Generation bereit, mit der Sie jede Technologie überall verwalten können.  In einer einzigen Plattform bietet ScienceLogic die Skalierung, Sicherheit, Automatisierung und Resilienz, die zum Vereinfachen der immer komplexeren Verwaltung sich ständig wandelnder IT-Ressourcen, Dienste und Anwendungen erforderlich sind.  Die ScienceLogic-Plattform verwendet Azure-APIs für die Kommunikation mit Microsoft Azure.  Mit ScienceLogic erhalten Sie in Echtzeit Einblicke in Ihre Azure-Dienste und -Ressourcen, damit Sie sofort über Fehler informiert werden und diese schneller beheben können. Sie können Azure auch zusammen mit Ihren anderen Clouds und Ihren Systemen und Diensten im Rechenzentrum verwalten.
+ScienceLogic stellt die IT-Dienstüberprüfungsplattform der nächsten Generation bereit, mit der Sie jede Technologie überall verwalten können. ScienceLogic bietet die Skalierung, Sicherheit, Automatisierung und Resilienz, die zum Vereinfachen der Verwaltungsaufgaben für IT-Ressourcen, Dienste und Anwendungen erforderlich sind. Die ScienceLogic-Plattform verwendet Azure-APIs für die Kommunikation mit Microsoft Azure. Mit ScienceLogic erhalten Sie in Echtzeit Einblicke in Ihre Azure-Dienste und -Ressourcen. Auf diese Weise werden Sie sofort über Fehler informiert und können diese schneller beheben. Sie können Azure auch zusammen mit Ihren anderen Clouds und Ihren Systemen und Diensten im Rechenzentrum verwalten.
 
 [Weitere Informationen][sciencelogic-doc]
 
@@ -98,7 +95,7 @@ Das Azure Monitor-Add-On für Splunk steht [hier in der Splunkbase zur Verfügun
 [Zur Dokumentation][splunk-doc]
 
 ## <a name="sumo-logic"></a>Sumo Logic
-Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatenanalyse und stellt über den gesamten Anwendungslebenszyklus und Stapel hinweg kontinuierlich Echtzeitinformationen aus strukturierten, teilweise strukturierten und unstrukturierten Daten bereit. Über 1.000 Kunden auf der ganzen Welt greifen bei der Erstellung sowie beim Betrieb und Schutz ihrer modernen Anwendungen und Cloudinfrastrukturen auf die Analysen und Insights von Sumo Logic zurück. Mit Sumo Logic erhalten Kunden nicht nur eine mehrinstanzenfähige, dienstmodellbasierte Lösung zur Unterstützung ihrer kontinuierlichen Innovationsanstrengungen, sondern verschaffen sich auch einen Wettbewerbsvorteil und profitieren von einem höheren geschäftlichen Nutzen und mehr Wachstum.
+Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatenanalyse und stellt über den gesamten Anwendungslebenszyklus und Stapel hinweg kontinuierlich Echtzeitinformationen aus strukturierten, teilweise strukturierten und unstrukturierten Daten bereit. Über 1.000 Kunden auf der ganzen Welt greifen bei der Erstellung sowie beim Betrieb und Schutz ihrer Anwendungen und Cloudinfrastrukturen auf die Analysen und Einblicke von Sumo Logic zurück. Mit Sumo Logic erhalten Kunden eine mehrinstanzenfähige, dienstmodellbasierte Lösung, durch die sie sich einen Wettbewerbsvorteil verschaffen und von einem höheren geschäftlichen Nutzen und mehr Wachstum profitieren können.
 
 [Weitere Informationen][sumologic-doc]
 
@@ -118,7 +115,6 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [cloudyn-anchor]: #cloudyn "Cloudyn"
 [datadog-anchor]: #datadog "Datadog"
 [dynatrace-anchor]: #dynatrace "Dynatrace"
-[newrelic-anchor]: #newrelic "NewRelic"
 [opsgenie-anchor]: #opsgenie "OpsGenie"
 [pagerduty-anchor]: #pagerduty "PagerDuty"
 [sciencelogic-anchor]: #sciencelogic "ScienceLogic"
@@ -135,7 +131,6 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [cloudyn-logo]: ./media/partner-logos/cloudyn.png
 [datadog-logo]: ./media/partner-logos/datadog.png
 [dynatrace-logo]: ./media/partner-logos/dynatrace.png
-[newrelic-logo]: ./media/partner-logos/newrelic.png
 [opsgenie-logo]: ./media/partner-logos/opsgenie.png
 [pagerduty-logo]: ./media/partner-logos/pagerduty.png
 [sciencelogic-logo]: ./media/partner-logos/sciencelogic.png
@@ -152,7 +147,6 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Einführung in Cloudyn"
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Datadog-Dokumentation"
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace-Dokumentation"
-[newrelic-doc]: https://newrelic.com/azure "NewRelic-Dokumentation"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie-Dokumentation"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty-Dokumentation"
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic-Dokumentation"

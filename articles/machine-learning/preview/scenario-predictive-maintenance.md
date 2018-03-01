@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 0299e73aecca3b3e5714b37c8b0b776ec8561e29
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 21cf8201236224244e6ed34f91f9c5c601ab9a79
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>Vorbeugende Wartung in der Praxis.
 
-Die Auswirkungen von ungeplanten Ausfällen von Ausrüstung können für jedes Unternehmen schädlich sein. Es ist deshalb entscheidend, für den ausfallsicheren Betrieb der Feldausrüstung zu sorgen, um die Auslastung und Leistung zu erhöhen, indem teure, ungeplante Ausfallzeiten minimiert werden. Eine frühzeitige Identifizierung von Problemen ermöglicht die Bereitstellung eingeschränkter Wartungsressourcen auf kosteneffektive Weise und eine Verbesserung der Qualitäts- und Lieferkettenprozesse. 
+Die Auswirkungen von ungeplanten Ausfällen von Ausrüstung können für jedes Unternehmen schädlich sein. Es ist entscheidend, für den ausfallsicheren Betrieb der Feldausrüstung zu sorgen, um die Auslastung und Leistung zu erhöhen, indem teure, ungeplante Ausfallzeiten minimiert werden. Eine frühzeitige Identifizierung von Problemen ermöglicht die Bereitstellung eingeschränkter Wartungsressourcen auf kosteneffektive Weise und eine Verbesserung der Qualitäts- und Lieferkettenprozesse. 
 
 In diesem Szenario wird ein relativ [umfangreiches simuliertes Dataset](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) untersucht, um durch ein Predictive Maintenance Data Science-Projekt mit Datenerfassung, Featureentwicklung, Modellerstellung sowie Modellbetrieb und Modellbereitstellung zu führen. Der Code für den gesamten Prozess ist in Jupyter-Notebooks mit PySpark in Azure ML-Workbench geschrieben. Das endgültige Modell wird mithilfe der Azure Machine Learning-Modellverwaltung implementiert, um in Echtzeit Vorhersagen über Geräteausfälle zu machen.   
 
 ## <a name="link-to-the-gallery-github-repository"></a>Link zum Katalog des GitHub-Repositorys
 
-Im Folgenden finden Sie den Link zum öffentlichen GitHub-Repository: [https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)
+Im Folgenden finden Sie den Link zum öffentlichen GitHub-Repository für Problemberichte und Beiträge: [https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)
 
 
 ## <a name="use-case-overview"></a>Übersicht über den Anwendungsfall
@@ -40,7 +40,7 @@ Das Geschäftsproblem für diese simulierten Daten ist die Vorhersage von Proble
 
 * Ein [Azure-Konto](https://azure.microsoft.com/en-us/free/) (kostenlose Testversionen verfügbar)
 * Eine installierte Kopie der [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](./quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
-* Die Azure Machine Learning-Operationalisierung erfordert eine lokal eingerichteten Bereitstellungsumgebung und ein [Konto zur Modellverwaltung](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview).
+* Die Azure Machine Learning-Operationalisierung erfordert eine lokal eingerichteten Bereitstellungsumgebung und ein [Konto zur Modellverwaltung](model-management-overview.md).
 
 Dieses Beispiel kann in beliebigen AML Workbench-Computekontexten ausgeführt werden. Es wird jedoch empfohlen, für die Ausführung einen Computer mit mindestens 16 GB Arbeitsspeicher zu wählen. Dieses Szenario wurde auf einem Windows 10-Computer mit einer remote ausgeführten DS4_V2 Standard [Data Science Virtual Machine für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) erstellt und getestet.
 
@@ -52,8 +52,8 @@ Erstellen Sie ein neues Projekt mit diesem Beispiel als Vorlage:
 1.  Öffnen Sie Azure Machine Learning Workbench.
 2.  Klicken Sie auf der Seite **Projekte** auf **+**, wählen Sie **Neues Projekt** aus, und signieren Sie es.
 3.  Geben Sie die Informationen für das neue Projekt im Bereich **Neues Projekt erstellen** ein
-4.  Geben Sie im Suchfeld **Suche Projektvorlagen** „Vorbeugende Wartung“ ein, und wählen Sie die Vorlage aus
-5.  Klicken Sie auf **Erstellen**
+4.  Geben Sie „Vorbeugende Wartung“ ins Suchfeld **Projektvorlagen suchen** ein, und wählen Sie die Vorlage **Predictive Maintenance** aus.
+5.  Klicken Sie auf die Schaltfläche **Erstellen**.
 
 ## <a name="prepare-the-notebook-server-computation-target"></a>Vorbereiten des Berechnungsziels des Notebook-Servers
 
@@ -125,13 +125,15 @@ Dieses Szenario bietet dem Leser einen Überblick über die Erstellung einer vor
 
 ## <a name="references"></a>Referenzen
 
-Dieser Anwendungsfall wurde zuvor für mehrere Plattformen entwickelt:
+Weitere Beispiele für Predictive Maintenance-Anwendungsfälle sind für eine Vielzahl von Plattformen verfügbar:
 
 * [Predictive Maintenance Solution Template (Lösungsvorlage für die vorbeugende Wartung)](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
 * [Predictive Maintenance Modeling Guide (Modellhandbuch für die vorbeugende Wartung)](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
 * [Predictive Maintenance Modeling Guide using SQL R Services (Modellhandbuch für die vorbeugende Wartung mit SQL R Services)](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
 * [Predictive Maintenance Modeling Guide Python Notebook (Modellhandbuch für die vorbeugende Wartung mit Python Notebook)](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
 * [Predictive Maintenance using PySpark (Vorbeugende Wartung mit PySpark)](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
+* [Deep Learning für Predictive Maintenance](
+ https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-deep-learning-for-predictive-maintenance)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

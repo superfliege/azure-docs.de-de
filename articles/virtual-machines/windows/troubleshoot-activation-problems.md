@@ -14,17 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: f6095d98ada2974bce03ec8f5527367837daafd3
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: fd3f52de40c6d448d457824bcc675db036d2cb86
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Wenn Sie Probleme beim Aktivieren eines virtuellen Azure Windows-Computers haben, der von einem benutzerdefinierten Image erstellt wurde, können Sie die in diesem Dokument bereitgestellten Informationen verwenden, um das Problem zu lösen. 
+
+## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Grundlegendes zu Azure KMS-Endpunkten für die Windows-Produktaktivierung von Azure Virtual Machines
+Abhängig von der Cloudregion, in der sich der virtuelle Computer befindet, verwendet Azure verschiedene Endpunkte für die KMS-Aktivierung. Verwenden Sie für dieses Handbuchs zur Problembehandlung den für Ihre Region vorgesehenen KMS-Endpunkt.
+
+* Azure Public Cloud-Regionen: kms.core.windows.net:1688
+* Nationale Cloudregionen für Azure China: kms.core.chinacloudapi.cn:1688
+* Nationale Cloudregionen für Azure Deutschland: kms.core.cloudapi.de:1688
+* Nationale Cloudregionen für Azure US Gov: kms.core.usgovcloudapi.net:1688
 
 ## <a name="symptom"></a>Symptom
 

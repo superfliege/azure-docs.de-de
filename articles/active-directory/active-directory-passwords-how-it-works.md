@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 8799931f6233f0f18b56bea39e3cbcbbf51274e9
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 0cf26846a8f42238de09727a03dc6b50dff746b6
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -78,7 +78,7 @@ Standardmäßig werden nur die Cloudattribute „Bürotelefon“ und „Mobiltel
 
 Benutzer können ihr Kennwort nur dann zurücksetzen, wenn für sie Daten in den Authentifizierungsmethoden vorliegen, die der Administrator aktiviert und als erforderlich festgelegt hat.
 
-Wenn ein Benutzer nicht möchte, dass seine Mobiltelefonnummer im Verzeichnis sichtbar ist, sie aber dennoch für die Kennwortzurücksetzung verwenden möchte, sollten Administratoren die Daten nicht in das Verzeichnis übernehmen. Der Benutzer sollte sein **Authentifizierungstelefon**-Attribut dann über das [Registrierungsportal für die Kennwortzurücksetzung](http://aka.ms/ssprsetup) auffüllen. Administratoren können diese Informationen im Profil des Benutzers anzeigen, sie werden jedoch nicht an anderer Stelle veröffentlicht.
+Wenn ein Benutzer nicht möchte, dass seine Mobiltelefonnummer im Verzeichnis sichtbar ist, sie aber dennoch für die Kennwortzurücksetzung verwenden möchte, sollten Administratoren die Daten nicht in das Verzeichnis übernehmen. Der Benutzer sollte sein **Authentifizierungstelefon**-Attribut dann über das [Registrierungsportal für die Kennwortzurücksetzung](https://aka.ms/ssprsetup) auffüllen. Administratoren können diese Informationen im Profil des Benutzers anzeigen, sie werden jedoch nicht an anderer Stelle veröffentlicht.
 
 ### <a name="the-number-of-authentication-methods-required"></a>Anzahl erforderlicher Authentifizierungsmethoden
 
@@ -180,7 +180,7 @@ Zum Aktivieren dieser Option müssen Benutzer, für die die Kennwortzurücksetzu
 * Verbundanwendungen
 * Benutzerdefinierte Anwendungen unter Verwendung von Azure AD
 
-Wenn die Erzwingung der Registrierung deaktiviert ist, können Benutzer ihre Kontaktinformationen dennoch manuell registrieren. Sie können entweder [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) aufrufen oder im Zugriffsbereich auf der Registerkarte **Profil** auf den Link **Für das Zurücksetzen des Kennworts registrieren** klicken.
+Wenn die Erzwingung der Registrierung deaktiviert ist, können Benutzer ihre Kontaktinformationen dennoch manuell registrieren. Sie können entweder [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) aufrufen oder im Zugriffsbereich auf der Registerkarte **Profil** auf den Link **Für das Zurücksetzen des Kennworts registrieren** klicken.
 
 > [!NOTE]
 > Benutzer können das Registrierungsportal für die Kennwortzurücksetzung durch Klicken auf **Abbrechen** oder durch Schließen des Fensters schließen. Sie werden jedoch bei jeder Anmeldung zur Registrierung aufgefordert, bis die Registrierung durchgeführt wurde.

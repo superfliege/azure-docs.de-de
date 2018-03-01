@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/4/2018
+ms.date: 2/4/2018
 ms.author: raiye
-ms.openlocfilehash: 675a304e2ca913c8b9cd18fb2f2a41abfd8f28d4
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 7e6b16465be1e032bd5e5fe94c95e6b2259a6704
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
@@ -26,8 +26,14 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 ## <a name="january-guest-os"></a>Gastbetriebssystem Januar
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-| N/V | [4056898] |Nur Windows-Sicherheit |4.50 |3. Januar 2018 |
-| N/V | [4056890] |Nur Windows-Sicherheit |5.15 |3. Januar 2018 |
+| Rel 18-01 | [4056898], [4056897], [4056899] |Nur Windows-Sicherheit |2.70, 3.57, 4.50 |3. Januar 2018 |
+| Rel 18-01 | [4056890], [4056892] |Nur Windows-Sicherheit |5.15 |3. Januar 2018 |
+| N/V | [4054518] |Nicht sicherheitsrelevanter Rollup für Dezember |2.70 |12. Dezember 2017 |
+| N/V | [4054520] |Nicht sicherheitsrelevanter Rollup für Dezember |3.57 |12. Dezember 2017 |
+| N/V | [4054519] |Nicht sicherheitsrelevanter Rollup für Dezember |4.50 |12. Dezember 2017 |
+| N/V | [4051956] |Zeitzonenupdate vom Januar |2.70, 3.57, 4.50 |12. Dezember 2017 |
+
+
 
 ## <a name="december-guest-os"></a>Gastbetriebssystem Dezember
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -35,8 +41,8 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-12 | [4053579], [4054517] |Sicherheitsupdates für Windows 10 |4.49, 5.14 |12. Dezember 2017 |
 | Rel 17-12 | [4054521], [4054522], [4054523] |Nur Windows-Sicherheit |2.69, 3.56, 4.49 |12. Dezember 2017 |
 | Rel 17-12 | [4052978] |Internet Explorer |2.69, 3.56, 4.49 |12. Dezember 2017 |
-| Rel 17-12 | [4052978] |Flash |3.56, 4.49, 5.14 |12. Dezember 2017 |
-| N/V | [4048957] |Nicht sicherheitsrelevanter Rollup für November |2.67 |14. November 2017 |
+| Rel 17-12 | [4052978] |Blinken |3.56, 4.49, 5.14 |12. Dezember 2017 |
+| N/V | [4048957] |Nicht sicherheitsrelevanter Rollup für November |2.69 |14. November 2017 |
 | N/V | [4048959] |Nicht sicherheitsrelevanter Rollup für November |3.56 |14. November 2017 |
 | N/V | [4048958] |Nicht sicherheitsrelevanter Rollup für November |4.49 |14. November 2017 |
 | N/V | [4049068] |Zeitzonenupdate Dezember |2.69, 3.56, 4.49 |12. Dezember 2017 |
@@ -47,8 +53,8 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-11 | [4048953] |Windows 10-Updates |5.13 |14. November 2017 |
 | Rel 17-11 | [4048960], [4048962], [4048961] |Nur Windows-Sicherheit |2.68, 3.55, 4.48 |14. November 2017 |
 | Rel 17-11 | [4047206] |Internet Explorer |2.68, 3.55, 4.48 |14. November 2017 |
-| Rel 17-11 | [4048951] |Flash |3.55, 4.48, 5.13 |14. November 2017 |
-| N/V | [4041681] |Nicht sicherheitsrelevanter Rollup für Oktober |2.67 |10. Oktober 2017 |
+| Rel 17-11 | [4048951] |Blinken |3.55, 4.48, 5.13 |14. November 2017 |
+| N/V | [4041681] |Nicht sicherheitsrelevanter Rollup für Oktober |2.68 |10. Oktober 2017 |
 | N/V | [4041690] |Nicht sicherheitsrelevanter Rollup für Oktober |3.55 |10. Oktober 2017 |
 | N/V | [4041693] |Nicht sicherheitsrelevanter Rollup für Oktober |4.48 |10. Oktober 2017 |
 | N/V | [3191566] |Update für Windows Management Framework 5.1  |2.68 |14. November 2017 |
@@ -102,7 +108,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-07 | [4025337] |Nur Windows-Sicherheit |2.64 |11. Juli 2017 |
 | Rel 17-07 | [4025333] |Nur Windows-Sicherheit |4.44 |11. Juli 2017 |
 | Rel 17-07 | [4025343] |Nur Windows-Sicherheit |3.51 |11. Juli 2017 |
-| Rel 17-07 | [4025376] |Flash |3.51, 4.44, 5.9 |11. Juli 2017 |
+| Rel 17-07 | [4025376] |Blinken |3.51, 4.44, 5.9 |11. Juli 2017 |
 | Rel 17-07 | [4025252] |Internet Explorer |2.64, 3.51, 4.44 |11. Juli 2017 |
 | N/V | [4020322] |Zeitzonenupdate |2.64, 3.51, 4.44 |11. Juli 2017 |
 | N/V | [4022719] |Nicht sicherheitsrelevanter Rollup für Juni |2.64 |13. Juni 2017 |
@@ -582,7 +588,14 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
 
 [4056898]: http://support.microsoft.com/kb/4056898
+[4056897]: http://support.microsoft.com/kb/4056897
+[4056899]: http://support.microsoft.com/kb/4056899
 [4056890]: http://support.microsoft.com/kb/4056890 
+[4056892]: http://support.microsoft.com/kb/4056892
+[4054518]: http://support.microsoft.com/kb/4054518
+[4054520]: http://support.microsoft.com/kb/4054520
+[4054519]: http://support.microsoft.com/kb/4054519
+[4051956]: http://support.microsoft.com/kb/4051956
 
 [4053579]: http://support.microsoft.com/kb/4053579
 [4054517]: http://support.microsoft.com/kb/4054517 

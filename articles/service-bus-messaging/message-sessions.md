@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: sethm
-ms.openlocfilehash: 16f641c7b6fdd1d6730d2ae229c93ce4a33b9492
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 7a594e5951f6e90c9151fbaf231675d6ed091d1f
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Nachrichtensitzungen: FIFO (First In, First Out) 
 
@@ -45,7 +45,7 @@ Sitzungen ermöglichen das gleichzeitige Demultiplexing von verschachtelten Nach
 
 ![][1]
 
-Ein [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession)-Empfänger wird vom Client erstellt, der eine Sitzung annimmt. In C# ruft der Client [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) oder [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) auf. Im reaktiven Rückrufmodell registriert er einen Sitzungshandler, was weiter unten erläutert wird.
+Ein [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession)-Empfänger wird vom Client erstellt, der eine Sitzung annimmt. In C# ruft der Client [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) oder [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) auf. Im reaktiven Rückrufmodell registriert er einen Sitzungshandler.
 
 Wenn die [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) akzeptiert wird und solange sie von einem Client aufrechterhalten wird, hält dieser Client eine exklusive Sperre für alle Nachrichten mit der [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId), die in der Warteschlange oder im Abonnement vorhanden sind, sowie für alle Nachrichten mit der **SessionId**, die noch während der laufenden Sitzung eingehen.
 
@@ -72,6 +72,8 @@ Der Sitzungszustand ermöglicht eine von der Anwendung definierte Anmerkung eine
 Aus Service Bus-Sicht ist der Nachrichtensitzungszustand ein undurchsichtiges binäres Objekt, das Daten von der Größe einer Nachricht aufnehmen kann, die bei Service Bus Standard 256 KB und bei Service Bus Premium 1 MB beträgt. Der Verarbeitungszustand relativ zu einer Sitzung kann innerhalb des Sitzungszustands gespeichert werden, oder der Sitzungszustand kann auf einen Speicherort oder Datenbankdatensatz verweisen, der solche Informationen enthält.
 
 Die APIs zum Verwalten des Sitzungszustands, [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) und [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState), befinden sich in den C#- und Java-APIs im [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession)-Objekt. Eine Sitzung, für die zuvor kein Sitzungszustand festgelegt wurde, gibt für **GetState** einen **null**-Verweis zurück. Das Löschen des zuvor festgelegten Sitzungszustands erfolgt mit [SetState(null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_).
+
+Beachten Sie, dass der Sitzungszustand bleibt, bis er gelöscht wird (Rückgabe: **NULL**), auch wenn alle Nachrichten in einer Sitzung verarbeitet werden.
 
 Alle vorhandenen Sitzungen in einer Warteschlange oder einem Abonnement können in der Java-API mit der **SessionBrowser**-Methode und im .NET-Client mit [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) für [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) und [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) aufgelistet werden.
 

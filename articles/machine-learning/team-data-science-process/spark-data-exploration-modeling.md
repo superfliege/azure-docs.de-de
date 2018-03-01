@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 4b8023b8b2c33ce9fc1a6294e21b1518abbc392b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 078e1d209d0472051e2ec2804e67518a92285413
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Durchsuchen von Daten und Modellierung mit Spark
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -856,7 +856,7 @@ Diese Modelle wurden in der Einführung beschrieben. Jeder Codeabschnitt zur Mod
 3. **Speichern des Modells** im Blob für die zukünftige Nutzung
 
 ### <a name="linear-regression-with-sgd"></a>Lineare Regression mit SGD
-Der Code in diesem Abschnitt zeigt, wie skalierte Features zum Trainieren einer linearen Regression verwendet werden, die das stochastische Gradientenverfahren (SGD) für die Optimierung verwendet, und wie das Modell bewertet, evaluiert und in Azure-Blobspeicher (WASB) gespeichert wird.
+Der Code in diesem Abschnitt zeigt, wie skalierte Features zum Trainieren einer linearen Regression verwendet werden, die das stochastische Gradientenverfahren (SGD) für die Optimierung verwendet, und wie das Modell bewertet, evaluiert und in Azure Blob Storage (WASB) gespeichert wird.
 
 > [!TIP]
 > Nach unserer Erfahrung können Probleme mit der Konvergenz von LinearRegressionWithSGD-Modellen auftreten, und die Parameter müssen sorgfältig geändert/optimiert werden, um ein gültiges Modell zu erhalten. Das Skalieren von Variablen ist bei der Konvergenz hilfreich. 
@@ -969,7 +969,7 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 49,21 Sekunden
 ### <a name="gradient-boosting-trees-regression"></a>Gradient-Boosted-Strukturenregression
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
 
-**Trainieren und bewerten **
+**Trainieren und bewerten**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 

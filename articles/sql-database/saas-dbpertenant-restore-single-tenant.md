@@ -16,28 +16,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.openlocfilehash: ee2bc6d8b75b92243c0550db0044895e41c9474b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 46471073f88247510f45d6c4152afa43be6e1aaa
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
-# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>Wiederherstellen einer Azure SQL-Datenbank-Instanz eines einzelnen Mandanten in einer mehrinstanzenfähigen SaaS-App
+# <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Wiederherstellen eines einzelnen Mandanten mit einer SaaS-Anwendung mit einer Datenbank pro Mandant
 
-Die Wingtip Tickets SaaS-App wird mittels eines Datenbank-pro-Mandant-Modells erstellt, wobei jeder Mandant seine eigene Datenbank besitzt. Einer der Vorteile dieses Modells ist, dass die Daten eines einzigen Mandanten mühelos isoliert – d.h. ohne Auswirkungen auf andere Mandanten – wiederhergestellt werden können.
+Mit dem Modell „eine Datenbank pro Mandant“ ist es ganz einfach, einen einzelnen Mandanten – ohne Auswirkungen auf andere Mandanten – auf einen früheren Zeitpunkt wiederherzustellen.
 
 In diesem Tutorial lernen Sie zwei Muster der Datenwiederherstellung kennen:
 
 > [!div class="checklist"]
 
 > * Wiederherstellen einer Datenbank in eine parallele Datenbank (Seite-an-Seite)
-> * Direktes Wiederherstellen einer Datenbank
+> * Direktes Wiederherstellen einer Datenbank mit Ersetzen der vorhandenen Datenbank
 
 
 |||
 |:--|:--|
-| **Wiederherstellen des Mandanten mit dem Status eines früheren Zeitpunkts in eine parallele Datenbank** | Dieses Muster kann der Mandant zu Überprüfung, Überwachung, Konformität usw. verwenden. Die ursprüngliche Datenbank bleibt online und unverändert. |
-| **Direktes Wiederherstellen des Mandanten** | Dieses Muster dient normalerweise zum Wiederherstellen eines Mandanten mit dem Status eines früheren Zeitpunkts, nachdem ein Mandant versehentlich Daten gelöscht hat. Die ursprüngliche Datenbank wird offline geschaltet und durch die wiederhergestellte Datenbank ersetzt. |
+| **Wiederherstellen in eine parallele Datenbank** | Dieses Muster kann zu Überprüfungs-, Überwachungs-, Compliance- und anderen Zwecken verwendet werden, um einem Mandanten das Überprüfen des Zustands seiner Daten zu einem früheren Zeitpunkt zu ermöglichen.  Die aktuelle Datenbank des Mandanten bleibt online und unverändert erhalten. |
+| **Direktes Wiederherstellen** | Dieses Muster wird normalerweise zum Wiederherstellen eines Mandanten auf einen früheren Zeitpunkt verwendet, nachdem der Mandant versehentlich Daten gelöscht oder beschädigt hat. Die ursprüngliche Datenbank wird offline geschaltet und durch die wiederhergestellte Datenbank ersetzt. |
 |||
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
@@ -45,27 +45,27 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 * Die Wingtip-SaaS-App wird bereitgestellt. Unter [Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-Anwendung, die Azure SQL-Datenbank verwendet](saas-dbpertenant-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
 * Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="introduction-to-the-saas-tenant-restore-pattern"></a>Einführung in das SaaS-Muster zur Mandantenwiederherstellung
+## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>Einführung in die SaaS-Muster zur Mandantenwiederherstellung
 
-Es gibt zwei einfache Muster zum Wiederherstellen der Daten eines einzelnen Mandanten. Da Mandantendatenbanken voneinander isoliert sind, hat das Wiederherstellen eines Mandanten keine Auswirkungen auf Daten anderer Mandanten.
+Es gibt zwei einfache Muster zum Wiederherstellen der Daten eines einzelnen Mandanten. Da Mandantendatenbanken voneinander isoliert sind, hat das Wiederherstellen eines Mandanten keine Auswirkungen auf Daten anderer Mandanten.  Die PITR-Funktion (Point in Time Restore) der SQL-Datenbank wird in beiden Mustern verwendet.  Mit PITR wird stets eine neue Datenbank erstellt.   
 
-Im ersten Muster werden die Daten in eine neue Datenbank wiederhergestellt. Der Mandant erhält dann zusammen mit seinen Produktionsdaten Zugriff auf diese Datenbank. Anhand dieses Musters kann ein Mandantenadministrator die wiederhergestellten Daten prüfen und potenziell zum selektiven Überschreiben aktueller Datenwerte verwenden. Es liegt am SaaS-App-Designer, zu bestimmen, wie anspruchsvoll die Optionen für die Datenwiederherstellung sein sollen. In einigen Szenarien mag es ausreichen, die Daten einfach in dem Status überprüfen zu können, in dem sie sich zu einem bestimmten Zeitpunkt befanden. Wenn die Datenbank die [Georeplikation](sql-database-geo-replication-overview.md) verwendet, empfiehlt es sich, die erforderlichen Daten aus der wiederhergestellten Kopie in die ursprüngliche Datenbank zu kopieren. Wenn Sie die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen, müssen Sie die Georeplikation neu konfigurieren und synchronisieren.
+Beim ersten Muster (**Paralleles Wiederherstellen**) wird eine neue Datenbank parallel zur aktuellen Datenbank des Mandanten erstellt. Der Mandant erhält anschließend schreibgeschützten Zugriff auf die wiederhergestellte Datenbank. Die wiederhergestellten Daten können überprüft und möglicherweise zum Überschreiben der aktuellen Datenwerte verwendet werden. Es ist Aufgabe des App-Designers, die Art des Mandantenzugriffs auf die wiederhergestellte Datenbank zu bestimmen und festzulegen, welche Optionen für die Wiederherstellung bereitgestellt werden. In manchen Szenarien reicht es bereits aus, dem Mandanten nur das Überprüfen seiner Daten zu einem früheren Zeitpunkt zu ermöglichen. 
 
-Im zweiten Muster, wo davon ausgegangen wird, dass der Mandant einen Verlust oder eine Beschädigung von Daten erlitten hat, wird seine Produktionsdatenbank in dem Status wiederhergestellt, in dem sie sich zu einem früheren Zeitpunkt befunden hat. Bei dem Muster mit direkter Wiederherstellung wird der Mandant für kurze Zeit offline geschaltet, während die Datenbank wiederhergestellt und wieder online geschaltet wird. Die ursprüngliche Datenbank wird gelöscht, kann aber immer noch wiederhergestellt werden, wenn Sie zum Status eines früheren Zeitpunkts zurückkehren müssen. Eine Variante dieses Muster könnte die Datenbank umbenennen, statt sie zu löschen, auch wenn die Umbenennung der Datenbank keinen zusätzlichen Vorteil im Hinblick auf Sicherheit bietet.
+Das zweite Muster (**Direktes Wiederherstellen**) ist hilfreich, wenn Daten verloren gegangen sind oder beschädigt wurden und der Mandant die Daten auf einen früheren Zeitpunkt wiederherstellen möchte.  Der Mandant wird offline geschaltet, während die Datenbank wiederhergestellt wird. Die ursprüngliche Datenbank wird gelöscht, und die wiederhergestellte Datenbank wird umbenannt. Der Zugriff auf die Sicherungskette der ursprünglichen Datenbank bleibt nach dem Löschvorgang erhalten, sodass Sie bei Bedarf die Datenbank auf einen früheren Zeitpunkt wiederherstellen können.
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant
+Wenn die Datenbank die [Georeplikation](sql-database-geo-replication-overview.md) und die parallele Wiederherstellung verwendet, empfiehlt es sich, alle erforderlichen Daten aus der wiederhergestellten Kopie in die ursprüngliche Datenbank zu kopieren. Wenn Sie die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen, müssen Sie die Georeplikation neu konfigurieren und synchronisieren.
+
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 
 Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 
+## <a name="before-you-start"></a>Vorbereitung
+
+Wenn eine Datenbank erstellt wird, kann es 10 bis 15 Minuten dauern, bevor die erste vollständige Sicherung für eine Wiederherstellung verfügbar ist.  Wenn Sie nur die Anwendung installiert haben, müssen Sie möglicherweise einige Minuten warten, bevor Sie dieses Szenario ausprobieren können.
+
 ## <a name="simulate-a-tenant-accidentally-deleting-data"></a>Simulieren des versehentlichen Löschens von Daten durch den Mandanten
 
-Um diese Wiederherstellungsszenarien zu demonstrieren, müssen wir *versehentlich* einige Daten in einer der Mandantendatenbanken löschen. Sie können zwar jeden Datensatz löschen, aber der nächste Schritt richtet die Demo so ein, dass keine Blockade durch Verletzungen der referenziellen Integrität entstehen kann! Es werden auch einige Ticketkaufdaten hinzugefügt, die Sie weiter unten in den *Wingtip SaaS Analytics-Tutorials* verwenden können.
-
-Führen Sie das Ticketgeneratorskript aus, und erstellen Sie zusätzliche Daten. Der Ticketgenerator kauft absichtlich nicht Tickets für das letzte Ereignis jedes Mandanten.
-
-1. Öffnen Sie ...\\Learning Modules\\Utilities\\*Demo-TicketGenerator.ps1* in der *PowerShell ISE*.
-1. Drücken Sie **F5**, um das Skript auszuführen und Kunden- und Ticketverkaufsdaten zu generieren.
-
+Um diese Wiederherstellungsszenarien zu demonstrieren, müssen Sie zuerst ein Ereignis in einer Mandantendatenbank *versehentlich* löschen. 
 
 ### <a name="open-the-events-app-to-review-the-current-events"></a>Öffnen der Events-App, um die aktuellen Ereignisse zu prüfen
 
@@ -78,14 +78,14 @@ Führen Sie das Ticketgeneratorskript aus, und erstellen Sie zusätzliche Daten.
    ![Letztes Ereignis](media/saas-dbpertenant-restore-single-tenant/last-event.png)
 
 
-### <a name="run-the-demo-scenario-to-accidentally-delete-the-last-event"></a>Ausführen des Demoszenarios, um das letzte Ereignis versehentlich zu löschen
+### <a name="accidentally-delete-the-last-event"></a>"Versehentliches" Löschen des letzten Ereignisses
 
 1. Öffnen Sie ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\*Demo-RestoreTenant.ps1* in der *PowerShell ISE*, und legen Sie den folgenden Wert fest:
-   * **$DemoScenario** = **1** – Festlegen auf **1**: Ereignisse ohne Ticketverkäufe löschen.
-1. Drücken Sie **F5**, um das Skript auszuführen, und löschen Sie das letzte Ereignis. Es wird eine Bestätigungsmeldung ähnlich der folgenden angezeigt:
+   * **$DemoScenario** = **1** – Löschen des letzten Ereignisses (keine Ticketverkäufe).
+1. Drücken Sie **F5**, um das Skript auszuführen, und löschen Sie das letzte Ereignis. Die folgende Bestätigungsmeldung sollte angezeigt werden:
 
    ```Console
-   Deleting unsold events from Contoso Concert Hall ...
+   Deleting last unsold event from Contoso Concert Hall ...
    Deleted event 'Seriously Strauss' from Contoso Concert Hall venue.
    ```
 
@@ -96,42 +96,41 @@ Führen Sie das Ticketgeneratorskript aus, und erstellen Sie zusätzliche Daten.
 
 ## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>Wiederherstellen einer Mandantendatenbank parallel mit der Produktionsdatenbank
 
-In dieser Übung wird die Datenbank der Contoso Concert Hall mit dem Status eines bestimmten Zeitpunkts vor dem Löschen des Ereignisses wiederhergestellt. Nachdem das Ereignis in den vorherigen Schritten gelöscht wurde, möchten Sie es wiederherstellen und die gelöschten Daten anzeigen. Sie müssen die Produktionsdatenbank mit dem gelöschten Datensatz nicht wiederherstellen, jedoch müssen Sie die alte Datenbank wiederherstellen, um aus geschäftlichen Gründen auf die alten Daten zuzugreifen.
+In dieser Übung wird die Datenbank der Contoso Concert Hall mit dem Status eines bestimmten Zeitpunkts vor dem Löschen des Ereignisses wiederhergestellt. In diesem Szenario wird davon ausgegangen, dass Sie die gelöschten Daten in einer parallelen Datenbank nur überprüfen möchten.
 
- Das Skript *Restore-TenantInParallel.ps1* erstellt eine parallele Mandantendatenbank und einen parallelen Katalogeintrag – beide mit dem Namen *ContosoConcertHall\_old*. Dieses Wiederherstellungsmuster eignet sich am besten zur Wiederherstellung nach einem geringfügigen Datenverlust oder für Wiederherstellungsszenarien in Verbindung mit Konformität und Überwachung. Es ist auch die empfohlene Vorgehensweise bei Verwendung der [Georeplikation](sql-database-geo-replication-overview.md).
+ Mit dem Skript *Restore-TenantInParallel.ps1* wird eine parallele Mandantendatenbank namens *ContosoConcertHall\_old* mit einem parallelen Katalogeintrag erstellt. Dieses Wiederherstellungsmuster eignet sich optimal zur Wiederherstellung nach einem geringfügigen Datenverlust oder für die Überprüfung von Daten zu Compliance- oder Überwachungszwecken. Es ist auch die empfohlene Vorgehensweise bei Verwendung der [Georeplikation](sql-database-geo-replication-overview.md).
 
-1. Führen Sie den Abschnitt [Simulieren des versehentlichen Löschens von Daten durch den Mandanten](#simulate-a-tenant-accidentally-deleting-data) aus.
-1. Öffnen Sie ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\_Demo-RestoreTenant.ps1_ in der *PowerShell ISE*.
-1. Legen Sie für **$DemoScenario** = **2** fest – mit **2** legen Sie die *parallele Wiederherstellung des Mandanten* fest.
+1. Schließen Sie den Abschnitt [Simulieren des versehentlichen Löschens von Daten durch den Mandanten](#simulate-a-tenant-accidentally-deleting-data) ab.
+1. Öffnen Sie in der *PowerShell ISE* ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\_Demo-RestoreTenant.ps1_.
+1. Legen Sie **$DemoScenario** = **2** fest, um das *Szenario zur parallelen Wiederherstellung des Mandanten* auszuwählen.
 1. Drücken Sie **F5** , um das Skript auszuführen.
 
-Das Skript stellt die Mandantendatenbank (in einer parallelen Datenbank) mit dem Status eines früheren Zeitpunkts wieder her, der vor dem Zeitpunkt liegt, zu dem Sie das Ereignis im vorherigen Abschnitt gelöscht haben. Es erstellt eine zweite Datenbank, entfernt ggf. vorhandene Katalogmetadaten aus dieser Datenbank, und fügt die Datenbank unter dem Eintrag *ContosoConcertHall\_old* dem Katalog hinzu.
+Mit dem Skript wird die Mandantendatenbank auf einen Zeitpunkt vor dem Löschen des Ereignisses wiederhergestellt. Die Datenbank wird in eine neue Datenbank namens _ContosoConcertHall\_old_ wiederhergestellt. Die Katalogmetadaten in der wiederhergestellten Datenbank werden gelöscht, und die Datenbank wird anschließend mithilfe eines aus dem Namen *ContosoConcertHall\_old* erstellten Schlüssels dem Katalog hinzugefügt.
 
-Das Demoskript öffnet die Ereignisseseite in Ihrem Browser. Beachten Sie bei der URL: ```http://events.wtp.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` zeigt Daten aus der wiederhergestellten Datenbank an, wobei *_old* dem Namen angefügt ist.
+Mit dem Demoskript wird die Seite mit den Ereignissen für diese neuen Mandantendatenbank in Ihrem Browser geöffnet. Anhand der URL ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` können Sie erkennen, dass auf dieser Seite Daten aus der wiederhergestellten Datenbank angezeigt werden, wobei dem Namen *_old* angefügt ist.
 
 Scrollen Sie durch die im Browser aufgelisteten Ereignisse, um sich davon zu überzeugen, dass das im vorherigen Abschnitt gelöschte Ereignis wiederhergestellt wurde.
 
-Beachten Sie: Sie würden einem Mandanten wohl kaum Zugriff auf wiederhergestellte Daten bieten, indem Sie den wiederhergestellten Mandanten als zusätzlichen Mandanten mit eigener Events-App zum Suchen nach Tickets verfügbar machen, aber dies veranschaulicht ideal das Wiederherstellungsmuster.
+Hinweis: Sie würden einem Mandanten wohl kaum Zugriff auf wiederhergestellte Daten bieten, indem Sie den wiederhergestellten Mandanten als zusätzlichen Mandanten mit eigener Events-App verfügbar machen; dies trägt aber zur Veranschaulichung des Wiederherstellungsmusters bei. In der Praxis würden Sie wahrscheinlich schreibgeschützten Zugriff auf die alten Daten gewähren und die wiederhergestellte Datenbank für einen bestimmten Zeitraum beibehalten. Im Beispiel können Sie, wenn Sie fertig sind, den wiederhergestellten Mandanteneintrag durch Ausführen des Szenarios _Entfernen des wiederhergestellten Mandanten_ löschen.
 
-In der Praxis würden Sie wahrscheinlich nur diese wiederhergestellte Datenbank für einen festgelegten Zeitraum beibehalten. Zum Abschluss können Sie den wiederhergestellten Mandanteneintrag durch Aufruf des Skripts *Remove-RestoredTenant.ps1* löschen.
-
-1. Legen Sie **$DemoScenario** auf **4** fest, um das Szenario zum *Entfernen des wiederhergestellten Mandanten* auszuwählen.
+1. Legen Sie **$DemoScenario** = **4** fest, um das *Szenario zum Entfernen des wiederhergestellten Mandanten* auszuwählen.
 1. **Starten Sie****die Ausführung mit****F5.**
 1. Der Eintrag *ContosoConcertHall\_old* ist jetzt aus dem Katalog gelöscht. Fahren Sie fort, und schließen Sie die Ereignisseseite für diesen Mandanten in Ihrem Browser.
 
 
 ## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>Direktes Wiederherstellen eines Mandanten, Ersetzen der vorhandenen Mandantendatenbank
 
-In dieser Übung wird der Mandant Contoso Concert Hall mit dem Status eines bestimmten Zeitpunkts vor dem Löschen des Ereignisses wiederhergestellt. Das *Restore-TenantInPlace*-Skript stellt die aktuelle Mandantendatenbank in einer neuen Datenbank mit dem Status eines früheren Zeitpunkts wieder her und löscht die ursprüngliche Datenbank. Dieses Wiederherstellungsmuster eignet sich optimal für die Wiederherstellung bei schwerwiegender Datenbeschädigung, da der Mandant in diesem Fall möglicherweise mit bedeutendem Datenverlust rechnen müsste.
+In dieser Übung wird der Mandant „Contoso Concert Hall“ auf einen Zeitpunkt vor dem Löschen des Ereignisses wiederhergestellt. Mit dem Skript *Restore-TenantInPlace* wird eine Mandantendatenbank in eine neue Datenbank wiederhergestellt und die ursprüngliche Datenbank gelöscht.  Dieses Wiederherstellungsmuster eignet sich optimal für die Wiederherstellung bei einer schwerwiegenden Datenbeschädigung, da der Mandant in diesem Fall möglicherweise mit eheblichem Datenverlust rechnen muss.
 
 1. Öffnen Sie die Datei **Demo-RestoreTenant.ps1** in der PowerShell ISE.
-1. Legen Sie **$DemoScenario** auf **5** fest, um das *Szenario zum direkten Wiederherstellen des Mandanten* auszuwählen.
+1. Legen Sie **$DemoScenario** = **5** fest, um das *Szenario zum direkten Wiederherstellen des Mandanten* auszuwählen.
 1. Starten Sie die Ausführung mit **F5**.
 
-Das Skript stellt die Mandantendatenbank mit dem Status wieder her, der fünf Minuten vor dem Löschen des Ereignisses bestand. Hierzu wird der Mandant Contoso Concert Hall offline geschaltet, sodass keine weiteren Datenupdates durchgeführt werden. Dann wird eine parallele Datenbank aus dem Wiederherstellungspunkt wiederhergestellt und mit einem Zeitstempel benannt, um sicherzustellen, dass der Datenbankname nicht mit dem Namen der vorhandenen Mandantendatenbank in Konflikt tritt. Als Nächstes wird die alte Mandantendatenbank gelöscht, und die wiederhergestellte Datenbank wird mit dem Namen der ursprünglichen umbenannt. Schließlich wird Contoso Concert Hall wieder online geschaltet, um den App-Zugriff auf die wiederhergestellte Datenbank zu ermöglichen.
+Mit dem Skript wird die Mandantendatenbank auf einen Zeitpunkt vor dem Löschen des Ereignisses wiederhergestellt. Zuerst wird der Mandant „Contoso Concert Hall“ offline geschaltet, um weitere Aktualisierungen zu verhindern. Anschließend wird durch die Wiederherstellung vom Wiederherstellungspunkt eine parallele Datenbank erstellt.  Die wiederhergestellte Datenbank wird nach dem Zeitstempel benannt, um sicherzustellen, dass der Datenbankname nicht mit dem Namen der vorhandenen Mandantendatenbank in Konflikt steht. Als Nächstes wird die alte Mandantendatenbank gelöscht, und die wiederhergestellte Datenbank wird mit dem Namen der ursprünglichen umbenannt. Schließlich wird Contoso Concert Hall wieder online geschaltet, um den App-Zugriff auf die wiederhergestellte Datenbank zu ermöglichen.
 
 Sie haben die Datenbank erfolgreich mit dem Status zu einem bestimmten Zeitpunkt vor dem Löschen des Ereignisses wiederhergestellt. Die Ereignisseseite wird geöffnet, sodass Sie sich von der Wiederherstellung des letzten Ereignisses überzeugen können.
 
+Beachten Sie, dass Sie nach dem Wiederherstellen der Datenbank weitere 10 bis 15 Minuten warten müssen, bis die erste vollständige Sicherung für ein erneutes Wiederherstellen verfügbar ist. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

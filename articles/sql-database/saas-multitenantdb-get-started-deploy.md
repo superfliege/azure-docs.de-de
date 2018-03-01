@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: genemi
-ms.openlocfilehash: a7e6e319fb2fa8fee762055b625427403d14d679
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 3bbfdccd020f5efc7510d9688ea38f5e1af4ebde
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding, die Azure SQL-Datenbank verwendet
 
-In diesem Tutorial wird beschrieben, wie Sie eine mehrinstanzenfähige SaaS-Beispiel-Datenbankanwendung mit dem Namen Wingtip Tickets bereitstellen und untersuchen. Die Wingtip-App ist dafür ausgelegt, Features von Azure SQL-Datenbank zu veranschaulichen, mit denen die Implementierung von SaaS-Szenarien vereinfacht wird.
+In diesem Tutorial wird beschrieben, wie Sie eine mehrinstanzenfähige SaaS-Beispielanwendung mit dem Namen Wingtip Tickets bereitstellen und untersuchen. Die Wingtip Tickets-App ist dafür ausgelegt, Features von Azure SQL-Datenbank zu veranschaulichen, mit denen die Implementierung von SaaS-Szenarien vereinfacht wird.
 
-Bei dieser Implementierung von Wingtips wird ein mehrinstanzenfähiges Datenbankmuster mit Sharding verwendet. Das Sharding erfolgt nach Mandantenbezeichner. Mandantendaten werden entsprechend den Werten der Mandanten-ID an eine bestimmte Datenbank verteilt. Unabhängig davon, wie viele Mandanten eine bestimmte Datenbank enthält, sind alle Datenbanken in dem Sinne mehrinstanzenfähig, dass die Tabellenschemas eine Mandanten-ID enthalten. 
+Bei dieser Implementierung der Wingtip Tickets-App wird ein mehrinstanzenfähiges Datenbankmuster mit Sharding verwendet. Das Sharding erfolgt nach Mandantenbezeichner. Mandantendaten werden entsprechend den Werten der Mandanten-ID an eine bestimmte Datenbank verteilt. 
 
 Diese Datenbankmuster ermöglichen Ihnen, in jedem Shard oder jeder Datenbank einen oder mehrere Mandanten zu speichern. Sie können die Optimierung nach den niedrigsten Kosten vornehmen, indem jede Datenbank von mehreren Mandanten gemeinsam genutzt wird. Oder Sie können die Optimierung im Hinblick auf Isolation vornehmen, indem Sie in jeder Datenbank nur einen einzigen Mandanten speichern. Ihre Wahl für die Optimierung kann für jeden einzelnen Mandanten unabhängig vorgenommen werden. Sie können Ihre Wahl treffen, wenn der Mandant zum ersten Mal gespeichert wird, oder Sie können Ihre Meinung später ändern. Die Anwendung ist so konzipiert, dass sie in beiden Fällen gut funktioniert.
 
 #### <a name="app-deploys-quickly"></a>App wird schnell bereitgestellt
 
-Der folgende Abschnitt zur Bereitstellung enthält die blaue Schaltfläche **Bereitstellung in Azure**. Wenn Sie auf die Schaltfläche klicken, ist die Wingtip-App bereits fünf Minuten später vollständig bereitgestellt. Die Wingtip-App wird in der Azure-Cloud ausgeführt und verwendet die Azure SQL-Datenbank. Wingtip wird in Ihrem Azure-Abonnement bereitgestellt. Sie haben vollen Zugriff auf die einzelnen Anwendungskomponenten.
+Die App wird in der Azure-Cloud ausgeführt und verwendet Azure SQL-Datenbank. Der folgende Abschnitt zur Bereitstellung enthält die blaue Schaltfläche **Bereitstellung in Azure**. Wenn auf die Schaltfläche geklickt wird, wird die App innerhalb von fünf Minuten vollständig in Ihrem Azure-Abonnement bereitgestellt. Sie haben vollen Zugriff auf die einzelnen Anwendungskomponenten.
 
 Die Anwendung wird mit Daten für drei Beispielmandanten bereitgestellt. Die Mandanten werden zusammen in einer mehrinstanzenfähigen Datenbank gespeichert.
 
@@ -40,7 +40,7 @@ Jeder kann den C#- und PowerShell-Quellcode für Wingtip Tickets aus [dem GitHub
 #### <a name="learn-in-this-tutorial"></a>In diesem Tutorial lernen Sie Folgendes kennen:
 
 > [!div class="checklist"]
-> - Bereitstellen der Wingtip-SaaS-Anwendung
+> - Bereitstellen der Wingtip Tickets SaaS-Anwendung
 > - Abrufen des Quellcodes der Anwendung und der Verwaltungsskripts
 > - Informationen zu Servern und Datenbanken, aus denen sich die App zusammensetzt
 > - Zuordnen der Mandanten zu den zugehörigen Daten mithilfe des *Katalogs*
@@ -59,11 +59,11 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 #### <a name="plan-the-names"></a>Planen von Namen
 
-Bei den Schritten in diesem Abschnitt gibt es zwei Stellen, an denen Sie Namen für sich als *Benutzer* und für Ihre neue *Ressourcengruppe* eingeben müssen. Für eine Person mit dem Namen *Ann Finley* empfehlen wir die folgenden Namen:
-- *Benutzer:* &nbsp; **af1** &nbsp; *(ihre Initialen mit einer Ziffer)*
-- *Ressourcengruppe:* &nbsp; **wingtip af1** &nbsp; *(Es wird empfohlen, den Namen durchgängig in Kleinbuchstaben zu schreiben. Fügen Sie einen Bindestrich und dann den Benutzernamen an.)*
+In den Schritten in diesem Abschnitt geben Sie einen Wert für *Benutzer* an, mit dem sichergestellt wird, dass Ressourcennamen global eindeutig sind, sowie einen Namen für die *Ressourcengruppe*, die alle Ressourcen enthält, die durch eine Bereitstellung der App erstellt werden. Für eine Person mit dem Namen *Ann Finley* wird Folgendes empfohlen:
+- *Benutzer:* **af1** *(Die Initialen mit einer Ziffer. Verwenden Sie einen anderen Wert (z. B. „af2“), wenn Sie die App ein zweites Mal bereitstellen.)*
+- *Ressourcengruppe:* **wingtip-dpt-af1** *(„wingtip-dpt“ gibt an, dass es sich um die App für eine Datenbank pro Mandant handelt. Durch Anhängen des Benutzernamens „af1“ wird der Name der Ressourcengruppe mit den Namen der darin enthaltenen Ressourcen korreliert.)*
 
-Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
+Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese. 
 
 #### <a name="steps"></a>Schritte
 
@@ -72,7 +72,7 @@ Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
 
     [![Schaltfläche „Bereitstellung in Azure“][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
-2. Geben Sie die erforderlichen Parameterwerte für die Bereitstellung ein.
+1. Geben Sie die erforderlichen Parameterwerte für die Bereitstellung ein.
 
     > [!IMPORTANT]
     > Verwenden Sie für diese Demo keine bereits vorhandenen Ressourcengruppen, -server oder -pools. Wählen Sie stattdessen **Neue Ressourcengruppe erstellen** aus. Wenn Sie sich umfassend mit der Anwendung vertraut gemacht haben, löschen Sie diese Ressourcengruppe, um die zugehörige Abrechnung einzustellen.
@@ -82,12 +82,12 @@ Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
         - Wählen Sie einen **Speicherort** in der Dropdownliste aus.
     - Für **Benutzer**: Es wird empfohlen, einen kurzen Wert für **Benutzer** auszuwählen.
 
-3. **Bereitstellen der Anwendung**.
+1. **Bereitstellen der Anwendung**.
 
     - Klicken Sie auf die entsprechende Option, um den Geschäftsbedingungen zuzustimmen.
     - Klicken Sie auf **Kaufen**.
 
-4. Überwachen Sie den Bereitstellungsstatus, indem Sie auf **Benachrichtigungen** klicken (das Glockensymbol rechts neben dem Suchfeld). Das Bereitstellen der Wingtip-App dauert ungefähr fünf Minuten.
+1. Überwachen Sie den Bereitstellungsstatus, indem Sie auf **Benachrichtigungen** klicken (das Glockensymbol rechts neben dem Suchfeld). Das Bereitstellen der Wingtip-App dauert ungefähr fünf Minuten.
 
    ![Bereitstellung erfolgreich](media/saas-multitenantdb-get-started-deploy/succeeded.png)
 
@@ -126,20 +126,20 @@ Jeder Veranstaltungsort erhält eine personalisierte Web-App, über die Veransta
 
 Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu den Mandanten in der jeweiligen Bereitstellung aufgeführt. Anhand der folgenden Schritte können Sie die Webseite **Veranstaltungshub** und die jeweilige Web-App erkunden:
 
-1. Öffnen Sie den **Ereignis-Hub** in Ihrem Webbrowser:
-    - http://events.wingtip.&lt;USER&gt;.trafficmanager.net &nbsp; *(ersetzen Sie &gt;USER* durch den Benutzerwert Ihrer Bereitstellung)&lt;
+1. Öffnen Sie den **Veranstaltungshub** in Ihrem Webbrowser:
+    - http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net &nbsp; *(ersetzen Sie &gt;Benutzer* durch den Benutzerwert Ihrer Bereitstellung)&lt;
 
-    ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
+    ![Veranstaltungshub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
-2. Klicken Sie im **Ereignis-Hub** auf **Fabrikam Jazz Club**.
+2. Klicken Sie im **Veranstaltungshub** auf **Fabrikam Jazz Club**.
 
-   ![Ereignisse](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Veranstaltungen](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 #### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die Wingtip-App den [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Die Veranstaltungsseite für die einzelnen Mandanten enthalten den Mandantennamen in der URL. Jede URL enthält auch den jeweiligen Benutzerwert. Bei jeder URL wird durch Ausführung der folgenden Schritte die Erfüllung des angezeigten Formats sichergestellt:
 
-- http://events.wingtip.&lt;BENUTZER&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Die Veranstaltungs-App analysiert den Mandantennamen aus der URL. Der Mandantenname in der vorangehenden Beispiel-URL lautet *fabrikamjazzclub*.
 2. Die App hashcodiert anschließend den Mandantennamen, um einen Schlüssel für den Zugriff auf einen Katalog mithilfe der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) zu erstellen.
@@ -149,7 +149,7 @@ Zum Steuern der Verteilung eingehender Anforderungen nutzt die Wingtip-App den [
 #### <a name="events-hub"></a>Veranstaltungshub
 
 1. Im **Veranstaltungshub** werden alle im Katalog registrierten Mandanten sowie deren Veranstaltungen aufgelistet.
-2. Der **Ereignis-Hub** ruft mit erweiterten Metadaten im Katalog den Namen des Mandanten für die jeweilige Zuordnung ab, um die URL zu erstellen.
+2. Der **Veranstaltungshub** ruft mit erweiterten Metadaten im Katalog den Namen des Mandanten für die jeweilige Zuordnung ab, um die URL zu erstellen.
 
 In einer Produktionsumgebung erstellen Sie typischerweise einen CNAME-DNS-Eintrag zum [Zuordnen einer Unternehmensinternetdomäne](../traffic-manager/traffic-manager-point-internet-domain.md) zum Traffic Manager-Profil.
 
@@ -213,7 +213,7 @@ Betrachten wir nun einige der Ressourcen, die bereitgestellt wurden:
 
    ![Ressourcengruppe](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. Klicken Sie auf den Server **catalog-mt&lt;BENUTZER&gt;**. Der Katalogserver enthält zwei Datenbanken: *tenantcatalog* und *basetenantdb*. Die Datenbank *basetenantdb* ist eine leere Vorlagendatenbank. Kopieren Sie diese Vorlagendatenbank, um eine neue Mandantendatenbank für mehrere oder für nur einen Mandanten zu erstellen.
+2. Klicken Sie auf den Server **catalog-mt&lt;Benutzer&gt;**. Der Katalogserver enthält zwei Datenbanken: *tenantcatalog* und *basetenantdb*. Die Datenbank *basetenantdb* ist eine leere Vorlagendatenbank. Kopieren Sie diese Vorlagendatenbank, um eine neue Mandantendatenbank für mehrere oder für nur einen Mandanten zu erstellen.
 
    ![Katalogserver](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -228,13 +228,13 @@ Betrachten wir nun einige der Ressourcen, die bereitgestellt wurden:
 
 Wenn der Lastengenerator mehrere Minuten ausgeführt wurde, sollten genügend Telemetriedaten verfügbar sein, um einige der in das Azure-Portal integrierten Datenbanküberwachungsfunktionen zu betrachten.
 
-1. Navigieren Sie zum Server **tenants1-mt&lt;BENUTZER&gt;**, und klicken Sie auf **tenants1**, um die Ressourcenverwendung für die Datenbank anzuzeigen, die vier Mandanten enthält. Jeder Mandant unterliegt einer sporadischen hohen Auslastung durch den Lastengenerator:
+1. Navigieren Sie zum Server **tenants1-mt&lt;Benutzer&gt;**, und klicken Sie auf **tenants1**, um die Ressourcenverwendung für die Datenbank anzuzeigen, die vier Mandanten enthält. Jeder Mandant unterliegt einer sporadischen hohen Auslastung durch den Lastengenerator:
 
    ![Überwachen von tenants1](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
 
    Das DTU-Workloaddiagramm veranschaulicht auf verständliche Weise, wie eine mehrinstanzenfähige Datenbank eine nicht vorhersagbare Arbeitslast über viele Mandanten hinweg unterstützen kann. In diesem Fall wendet der Lastengenerator eine sporadische Last von ungefähr 30 Datenübertragungseinheiten auf jeden Mandant an. Diese Last entspricht einer 60-prozentigen Auslastung einer Datenbank mit 50 Datenübertragungseinheiten. Spitzen, die die 60 % überschreiten, sind das Ergebnis der auf mehrere Mandanten gleichzeitig angewendeten Last.
 
-2. Navigieren Sie zum **tenants1-mt&lt;USER&gt;**-Server, und klicken Sie auf die Datenbank **salixsalsa**. Sie können die Ressourcenverwendung für diese Datenbank, die nur einen einzigen Mandanten enthält, sehen.
+2. Navigieren Sie zum Server **tenants1-mt&lt;Benutzer&gt;**, und klicken Sie auf die Datenbank **salixsalsa**. Sie können die Ressourcenverwendung für diese Datenbank, die nur einen einzigen Mandanten enthält, sehen.
 
    ![Datenbank „salixsalsa“](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 

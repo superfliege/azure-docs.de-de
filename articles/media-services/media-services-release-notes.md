@@ -115,7 +115,7 @@ Weitere Informationen zu diesen Eigenschaften finden Sie unter [StreamingEndpoin
 Wenn eine Codierungsaufgabe an Media Encoder Standard oder Media Encoder Premium gesendet wird, erstellt die Aufgabe eine [Streamingmanifestdatei](media-services-deliver-content-overview.md) (*.ism) im Ausgabemedienobjekt. Im letzten Dienstrelease wurde die Syntax dieser Streamingmanifestdatei aktualisiert.
 
 > [!NOTE]
-> Die Syntax der Streamingmanifestdatei (*.ism) ist für die interne Verwendung reserviert. Dies soll in zukünftigen Releases geändert werden. Ändern oder bearbeiten Sie den Inhalt dieser Datei nicht.
+> Die Syntax der Streamingmanifestdatei (.ism) ist für die interne Verwendung reserviert. Dies soll in zukünftigen Releases geändert werden. Ändern oder bearbeiten Sie den Inhalt dieser Datei nicht.
 > 
 > 
 
@@ -123,7 +123,7 @@ Wenn eine Codierungsaufgabe an Media Encoder Standard oder Media Encoder Premium
 Seit dem letzten Dienstrelease enthält das Ausgabemedienobjekt nach Abschluss einer Codierungsaufgabe, die mindestens eine MP4-Datei generiert, darüber hinaus eine Streamingclient-Manifestdatei (*.ismc). Die ISMC-Datei trägt zur Verbesserung des dynamischen Streamings bei. 
 
 > [!NOTE]
-> Die Syntax der Clientmanifestdatei (*.ismc) ist für die interne Verwendung reserviert. Dies soll in zukünftigen Releases geändert werden. Ändern oder bearbeiten Sie den Inhalt dieser Datei nicht.
+> Die Syntax der Clientmanifestdatei (.ismc) ist für die interne Verwendung reserviert. Dies soll in zukünftigen Releases geändert werden. Ändern oder bearbeiten Sie den Inhalt dieser Datei nicht.
 > 
 > 
 

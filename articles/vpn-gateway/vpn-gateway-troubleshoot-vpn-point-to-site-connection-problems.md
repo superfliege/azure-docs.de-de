@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: genli
-ms.openlocfilehash: 69d363b5ff0b94884cf6d13ae0260f3747e4e69a
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 83d96a2706e879f8817540e85369729289be9456
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Punkt-zu-Standort-Verbindungsprobleme
 
@@ -65,11 +65,18 @@ Wenn Sie versuchen, mithilfe des VPN-Client mit einem virtuellen Netzwerk von Az
 
 ### <a name="cause"></a>Ursache
 
-Dieses Problem tritt auf, wenn der öffentliche Schlüssel des Stammzertifikats nicht in das VPN-Gateway von Azure hochgeladen wurde. Es kann auch auftreten, wenn der Schlüssel beschädigt oder abgelaufen ist.
+Dieses Problem tritt auf, wenn eine der folgenden Bedingungen zutrifft:
+
+- Die benutzerdefinierten Routen (User-Defined Routes, UDR) mit der Standardroute für das Gatewaysubnetz ist falsch festgelegt.
+- Der öffentliche Schlüssel des Stammzertifikats wird nicht in das VPN-Gateway von Azure hochgeladen. 
+- Der Schlüssel ist beschädigt oder abgelaufen.
 
 ### <a name="solution"></a>Lösung
 
-Überprüfen Sie zur Behebung dieses Problems den Status des Stammzertifikats im Azure-Portal, um festzustellen, ob es widerrufen wurde. Wenn es nicht widerrufen wurde, versuchen Sie, das Stammzertifikat zu löschen und es erneut hochzuladen. Weitere Informationen finden Sie unter [Erstellen von Zertifikaten](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
+Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
+
+1. Entfernen Sie die UDR für das Gatewaysubnetz. Stellen Sie sicher, dass die UDR sämtlichen Datenverkehr ordnungsgemäß weiterleitet.
+2. Überprüfen Sie den Status des Stammzertifikats im Azure-Portal, um festzustellen, ob es widerrufen wurde. Wenn es nicht widerrufen wurde, versuchen Sie, das Stammzertifikat zu löschen und es erneut hochzuladen. Weitere Informationen finden Sie unter [Erstellen von Zertifikaten](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
 
 ## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN-Clientfehler: Eine Zertifikatkette wurde verarbeitet, aber beendet 
 
@@ -89,7 +96,7 @@ Wenn Sie versuchen, mithilfe des VPN-Client mit einem virtuellen Netzwerk von Az
     | Azuregateway-*GUID*.cloudapp.net  | Aktueller Benutzer\Vertrauenswürdige Stammzertifizierungsstellen|
     | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Lokaler Computer\Vertrauenswürdige Stammzertifizierungsstellen|
 
-2. Wenn die Zertifikate bereits im Speicherort vorhanden sind, versuchen Sie, die Zertifikate zu löschen und neu zu installieren. Das **azuregateway-*GUID*.cloudapp.net** Zertifikat finden Sie im VPN-Clientkonfigurationspaket, das Sie vom Azure-Portal heruntergeladen haben. Sie können Dateiarchivierer verwenden, um die Dateien aus dem Paket zu extrahieren.
+2. Wenn die Zertifikate bereits im Speicherort vorhanden sind, versuchen Sie, die Zertifikate zu löschen und neu zu installieren. Das Zertifikat **azuregateway-*GUID*.cloudapp.net** befindet sich im VPN-Clientkonfigurationspaket, das Sie aus dem Azure-Portal heruntergeladen haben. Sie können Dateiarchivierer verwenden, um die Dateien aus dem Paket zu extrahieren.
 
 ## <a name="file-download-error-target-uri-is-not-specified"></a>Dateidownloadfehler: Ziel-URI ist nicht angegeben
 
@@ -146,7 +153,7 @@ Extrahieren Sie das VPN-Clientkonfigurationspaket, und suchen Sie nach der CER-D
 
 Wenn Sie versuchen, die Änderungen für das VPN-Gateway im Azure-Portal zu speichern, erhalten Sie die folgende Fehlermeldung:
 
-*Fehler beim Speichern des Gateways für virtuelle Netzwerke *Gatewayname&lt;**&gt;. Die Daten für die &lt;*Zertifikat-ID*&gt; des Zertifikats sind ungültig.**
+**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;*Gatewayname*&gt;. Die Daten für das Zertifikat &lt;*Zertifikat-ID*&gt; sind ungültig.**
 
 ### <a name="cause"></a>Ursache 
 
@@ -181,7 +188,7 @@ Stellen Sie sicher, dass die Daten im Zertifikat keine ungültigen Zeichen wie Z
 
 Wenn Sie versuchen, die Änderungen für das VPN-Gateway im Azure-Portal zu speichern, erhalten Sie die folgende Fehlermeldung: 
 
-**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;*Gatewayname*&gt;. Fehler: Der Ressourcenname &lt;*Zertifikatname, den Sie versuchen hochzuladen,*&gt; ist ungültig.
+**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;*Gatewayname*&gt;. Der Ressourcenname &lt;*Name des hochzuladenden Zertifikats*&gt; ist ungültig.**
 
 ### <a name="cause"></a>Ursache
 
@@ -199,7 +206,7 @@ Wenn Sie versuchen, das VPN-Clientkonfigurationspaket herunterzuladen, erhalten 
 
 Dieser Fehler kann durch ein vorübergehendes Netzwerkproblem verursacht werden. Versuchen Sie, das VPN-Paket nach ein paar Minuten erneut herunterzuladen.
 
-## <a name="azure-vpn-gateway-upgrade-all-p2s-clients-are-unable-to-connect"></a>Azure VPN Gatewayupgrade: Alle P2S-Clients können keine Verbindung herstellen
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway-Upgrade: Alle P2S-Clients können keine Verbindung herstellen
 
 ### <a name="cause"></a>Ursache
 
@@ -207,7 +214,7 @@ Wenn mehr als 50 Prozent der Lebensdauer des Zertifikats vorbei sind, wird das Z
 
 ### <a name="solution"></a>Lösung
 
-Erstellen Sie neue Zertifikate, und verteilen Sie diese erneut an die VPN-Clients, um das Problem zu beheben. 
+Stellen Sie das P2S-Paket für alle Clients erneut bereit, um dieses Problem zu beheben.
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Zu viele VPN-Clients gleichzeitig verbunden
 
@@ -234,6 +241,10 @@ Wenn die Adresse zu Klasse A gehört, wenden Sie /8 an.
 Wenn die Adresse zu Klasse B gehört, wenden Sie /16 an
 
 Wenn die Adresse zu Klasse C gehört, wenden Sie /24 an.
+
+### <a name="solution"></a>Lösung
+
+Sorgen Sie dafür, dass Routen für andere Netzwerke in die Routingtabelle aufgenommen werden. Verwenden Sie dabei die längste Präfixübereinstimmung oder eine niedrigere Metrik (höhere Priorität) als P2S. 
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN-Client kann nicht auf die Netzwerkdateifreigaben zugreifen
 
@@ -262,7 +273,7 @@ Sie entfernen die Punkt-zu-Standort-VPN-Verbindung und installieren anschließen
 
 ### <a name="solution"></a>Lösung
 
-Löschen Sie die alte VPN-Client-Konfigurationsdateien von **C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections**, und führen Sie anschließend das VPN-Client-Installationsprogramm erneut aus, um das Problem zu beheben.
+Löschen Sie zum Beheben des Problems die alten VPN-Clientkonfigurationsdateien unter **C:\users\username\AppData\Microsoft\Network\Connections\<ID des virtuellen Netzwerks>**, und führen Sie anschließend das VPN-Clientinstallationsprogramm erneut aus.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Auflösung des FQDN der Ressourcen in der lokalen Domäne durch den Point-to-Site-VPN-Client nicht möglich
 
@@ -301,7 +312,7 @@ Diese Fehlermeldung tritt auf, wenn der Client nicht auf „http://crl3.digicert
 
 ### <a name="cause"></a>Ursache
 
-Dieser Fehler tritt auf, wenn der für die Authentifizierung des VPN-Clients verwendete RADIUS-Server falsche Einstellungen aufweist. 
+Dieser Fehler tritt auf, wenn der für die Authentifizierung des VPN-Clients verwendete RADIUS-Server falsche Einstellungen aufweist oder das Azure-Gateway den RADIUS-Server nicht erreicht.
 
 ### <a name="solution"></a>Lösung
 
@@ -312,3 +323,45 @@ Stellen Sie sicher, dass der RADIUS-Server ordnungsgemäß konfiguriert ist. Wei
 ### <a name="cause"></a>Ursache
 
 Das Stammzertifikat wurde nicht installiert. Das Stammzertifikat ist im **Zertifikatspeicher für vertrauenswürdige Anbieter** des Clients installiert.
+
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN-Clientfehler: Die Remoteverbindung wurde aufgrund von VPN-Tunnelfehlern nicht hergestellt. (Fehler 800) 
+
+### <a name="cause"></a>Ursache
+
+Der NIC-Treiber ist veraltet.
+
+### <a name="solution"></a>Lösung
+
+Aktualisieren Sie den NIC-Treiber:
+
+1. Klicken Sie auf **Start**, geben Sie **Geräte-Manager** ein, und wählen Sie ihn in der Liste der Ergebnisse aus. Wenn Sie zur Eingabe eines Administratorkennworts oder einer Bestätigung aufgefordert werden, geben Sie das Kennwort oder eine entsprechende Bestätigung ein.
+2. Suchen Sie in der Kategorie **Netzwerkadapter** die NIC, die Sie aktualisieren möchten.  
+3. Doppelklicken Sie auf den Gerätenamen, und klicken Sie auf **Treiber aktualisieren** und anschließend auf **Automatisch nach aktualisierter Treibersoftware suchen**.
+4. Wenn Windows keinen neuen Treiber findet, können Sie auf der Website des Geräteherstellers nach Treibern suchen und sie gemäß den Anweisungen installieren.
+5. Starten Sie den Computer neu, und versuchen Sie erneut, eine Verbindung herzustellen.
+
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Fehler: „Dateidownloadfehler. Ziel-URI ist nicht angegeben“
+
+### <a name="cause"></a>Ursache
+
+Die Ursache hierfür ist ein falsches konfiguriertes Gateway.
+
+### <a name="solution"></a>Lösung
+
+Als Azure-VPN-Gatewaytyp muss „VPN“ und als VPN-Typ muss **RouteBased** festgelegt sein.
+
+## <a name="vpn-package-installer-doesnt-complete"></a>Das Installationsprogramm für VPN-Pakete wird nicht ausgeführt.
+
+### <a name="cause"></a>Ursache
+
+Dieses Problem kann durch vorherige VPN-Clientinstallationen verursacht werden. 
+
+### <a name="solution"></a>Lösung
+
+Löschen Sie die alten VPN-Clientkonfigurationsdateien unter **C:\users\username\AppData\Microsoft\Network\Connections\<ID des virtuellen Netzwerks>**, und führen Sie das VPN-Clientinstallationsprogramm erneut aus. 
+
+## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>Der VPN-Client wechselt nach einiger Zeit in den Ruhezustand oder Energiesparmodus.
+
+### <a name="solution"></a>Lösung
+
+Überprüfen Sie die Einstellungen für Standbymodus und Ruhezustand auf dem Computer, auf dem der VPN-Client ausgeführt wird.

@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: 549b6abf5728e50ee365f40326263d391e4b26fd
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: c6c83f4ac93dd105b2f311250061b8880f5d2a5b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Mandantenübergreifende Analysen mit extrahierten Daten
 
@@ -72,11 +72,11 @@ Informationen darüber, wie regelmäßig einzelne Mandanten den Dienst verwenden
 
 Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-- Die mehrinstanzenfähige Wingtip Tickets-SaaS-Datenbankanwendung wurde bereitgestellt. Unter [Bereitstellen und Kennenlernen der App Wingtip Tickets SaaS Multi-tenant Database](saas-multitenantdb-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
-- [Quellcode](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) und Wingtip-SaaS-Skripts können von GitHub heruntergeladen werden. Achten Sie darauf, die *ZIP-Datei zu entsperren*, bevor Sie ihren Inhalt extrahieren. Schritte zum Herunterladen und Entsperren des Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
+- Die mehrinstanzenfähige Wingtip Tickets-SaaS-Datenbankanwendung wurde bereitgestellt. Unter [Bereitstellen und Kennenlernen der App „Wingtip Tickets SaaS Multi-tenant Database“](saas-multitenantdb-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+- [Quellcode](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) und Wingtip-SaaS-Skripts können von GitHub heruntergeladen werden. Achten Sie darauf, die *ZIP-Datei zu entsperren*, bevor Sie ihren Inhalt extrahieren. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 - Power BI Desktop wird installiert. [Power BI Desktop herunterladen](https://powerbi.microsoft.com/downloads/)
 - Der Batch zusätzlicher Mandanten wurde bereitgestellt. Weitere Informationen finden Sie im [**Tutorial zum Bereitstellen von Mandanten**](saas-multitenantdb-provision-and-catalog.md).
-- Ein Auftragskonto und die Auftragskontodatenbank wurden erstellt. Weitere Informationen zu den entsprechenden Schritten finden Sie im [**Tutorial zur Schemaverwaltung**](saas-multitenantdb-schema-management.md#create-a-job-account-database-and-new-job-account).
+- Ein Auftrags-Agent und die Auftrags-Agent-Datenbank wurden erstellt. Weitere Informationen zu den entsprechenden Schritten finden Sie im [**Tutorial zur Schemaverwaltung**](saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
 ### <a name="create-data-for-the-demo"></a>Erstellen von Daten für die Demo
 

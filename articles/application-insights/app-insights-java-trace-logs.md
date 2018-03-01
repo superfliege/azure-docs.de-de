@@ -11,23 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e441c9cbd15bb1528ea8e8a781f90900af90cf2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ef813ec3f9f654fb3786fba4135a04e403928e9a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
 Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
 
 ## <a name="install-the-java-sdk"></a>Installieren des Java SDK
 
-Installieren Sie das [Application Insights SDK für Java][java], falls noch nicht geschehen.
-
-(Wenn Sie keine HTTP-Anforderungen verfolgen möchten, können Sie den größten Teil der XML-Konfigurationsdatei weglassen, das `InstrumentationKey`-Element muss jedoch mindestens enthalten sein. Sie sollten auch `new TelemetryClient()` aufrufen, um das SDK zu initialisieren.)
-
+Befolgen Sie die Anweisungen zum Installieren des [Application Insights SDK für Java][java], falls noch nicht geschehen.
 
 ## <a name="add-logging-libraries-to-your-project"></a>Hinzufügen von Protokollierungsbibliotheken zu Ihrem Projekt
 *Wählen Sie die geeignete Methode für Ihr Projekt.*
@@ -101,13 +98,14 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
 ```
 
 #### <a name="otherwise-"></a>Andernfalls...
-Laden Sie den entsprechenden Appender herunter, extrahieren Sie ihn, und fügen Sie Ihrem Projekt die entsprechende Bibliothek hinzu:
+Befolgen Sie die Richtlinien für die manuelle Installation des Application Insights Java SDK, laden Sie die JAR-Datei für den entsprechenden Appender herunter (klicken Sie dazu auf der Maven-Hauptseite im Downloadabschnitt auf den Link „jar“), und fügen Sie die heruntergeladene JAR-Datei für den Appender zum Projekt hinzu.
 
-| Protokollierungstool | Download | Bibliothek |
+| Protokollierungstool | Herunterladen | Bibliothek |
 | --- | --- | --- |
-| Logback |[SDK mit Logback-Appender](https://aka.ms/xt62a4) |applicationinsights-logging-logback |
-| Log4J v2. 0 |[SDK mit Log4J-v2-Appender](https://aka.ms/qypznq) |applicationinsights-logging-log4j2 |
-| Log4J v1. 2 |[SDK mit Log4J-v1. 2-Appender](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1_2 |
+| Logback |[JAR-Datei für Logback-Appender](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
+| Log4J v2. 0 |[JAR-Datei für Log4J-v2-Appender](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
+| Log4J v1. 2 |[JAR-Datei für Log4J-v1.2-Appender](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>Hinzufügen des Appenders zu Ihrem Protokollierungsframework
 Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit der Konfigurationsdatei für Log4J oder Logback zusammen: 
@@ -128,7 +126,7 @@ Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit
 
 ```XML
 
-    <Configuration packages="com.microsoft.applicationinsights.Log4j">
+    <Configuration packages="com.microsoft.applicationinsights.log4j.v2">
       <Appenders>
         <ApplicationInsightsAppender name="aiAppender" />
       </Appenders>
@@ -157,6 +155,8 @@ Die Application Insights-Appender können von jeder konfigurierten Protokollieru
 
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>Untersuchen Ihrer Ablaufverfolgungen im Application Insights-Portal
 Nachdem Sie das Projekt so konfiguriert haben, dass Ablaufverfolgungen an Application Insights gesendet werden, können Sie diese Ablaufverfolgungen im Application Insights-Portal auf dem Blatt [Suche][diagnostic] anzeigen und durchsuchen.
+
+Über Protokollierungen übermittelte Ausnahmen werden im Portal als Ausnahmetelemetrie angezeigt.
 
 ![Öffnen Sie im Application Insights-Portal das Blatt „Suche“.](./media/app-insights-java-trace-logs/10-diagnostics.png)
 

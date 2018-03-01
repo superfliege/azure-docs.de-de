@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dastrock
-ms.openlocfilehash: f3de9016fe29a51ab2c7fb9e93fcd33af0f0e871
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: f634adbacc8e1fc128ecef15ad38f2f8b28eb25d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrieren aus dem Azure Access Control Service
 
@@ -180,7 +180,7 @@ Eine andere Möglichkeit ist die Umsetzung [dieses Codebeispiels](https://github
 
 Wenn Sie sich für diesen Ansatz entscheiden, müssen Sie mit dem [Rollover von Signaturschlüsseln in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover) vertraut sein. Dieser Ansatz verwendet den globalen Azure AD-Signaturschlüssel zum Ausstellen von Token. Standardmäßig aktualisiert WIF Signaturschlüssel nicht automatisch. Wenn Azure AD durch die globalen Signaturschlüssel wechselt, muss Ihre WIF-Implementierung entsprechend vorbereitet sein und die Änderungen akzeptieren.
 
-Wenn die Integration in Azure AD über das OpenID Connect- oder das OAuth-Protokoll möglich ist, wird diese Vorgehensweise empfohlen. Unter [Azure Active Directory für Entwickler](http://aka.ms/aaddev) stehen ausführliche Dokumentationen und Anweisungen für die Integration von Azure AD in Ihre Webanwendung zur Verfügung.
+Wenn die Integration in Azure AD über das OpenID Connect- oder das OAuth-Protokoll möglich ist, wird diese Vorgehensweise empfohlen. Unter [Azure Active Directory für Entwickler](https://aka.ms/aaddev) stehen ausführliche Dokumentationen und Anweisungen für die Integration von Azure AD in Ihre Webanwendung zur Verfügung.
 
 <!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
@@ -231,7 +231,7 @@ Wenn Sie zu dem Urteil gelangen, dass Azure AD B2C den besten Migrationspfad fü
 In einigen Fällen stellt sich möglicherweise heraus, dass Azure AD und Azure AD B2C nicht ausreichen, um Access Control ohne tiefgreifende Codeänderungen in Ihren Webanwendungen zu ersetzen. Hier einige typische Beispiele:
 
 - Webanwendungen, die WIF oder WS-Verbund für die Anmeldung bei sozialen Netzwerken als Identitätsanbieter verwenden, z. B. Google oder Facebook.
-- Webanwendungen, die mithilfe des WS-Verbundprotokolls einen direkten Verbund mit einem Unternehmens-Identitätsanbieter betreiben.
+- Webanwendungen, die mithilfe des WS-Verbundprotokolls einen direkten Verbund mit einem Unternehmensidentitätsanbieter betreiben.
 - Webanwendungen, die das von einem sozialen Netzwerk (wie Google oder Facebook) als Identitätsanbieter ausgestellte Token als Anspruch in den von Access Control ausgestellten Token benötigen.
 - Webanwendungen mit komplexen Tokentransformationsregeln, die von Azure AD oder Azure AD B2C nicht reproduziert werden können.
 - Webanwendungen mit mehreren Mandanten, die ACS für die zentrale Verwaltung des Verbunds mit mehreren verschiedenen Identitätsanbietern verwenden
@@ -243,7 +243,7 @@ In diesen Fällen kann es sinnvoll sein, die Webanwendung zu einem anderen Cloud
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) ist ein flexibler Cloudidentitätsdienst, der eine [allgemeine Migrationsanleitung für Access Control-Kunden](https://auth0.com/acs) erstellt hat und seinerseits nahezu alle von ACS unterstützten Funktionen unterstützt. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) bietet zwei Lösungen, die ACS ähnlich sind. PingOne ist ein Cloudidentitätsdienst, der viele der Funktionen von ACS unterstützt, und PingFederate ist ein ähnliches lokales Identitätsprodukt, das höhere Flexibilität bietet. Weitere Details zur Verwendung dieser Produkte finden Sie in [Ping's ACS retirement guidance](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) (Ping-Leitfaden zur Einstellung von ACS).  |
+| ![Pingen](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) bietet zwei Lösungen, die ACS ähnlich sind. PingOne ist ein Cloudidentitätsdienst, der viele der Funktionen von ACS unterstützt, und PingFederate ist ein ähnliches lokales Identitätsprodukt, das höhere Flexibilität bietet. Weitere Details zur Verwendung dieser Produkte finden Sie in [Ping's ACS retirement guidance](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) (Ping-Leitfaden zur Einstellung von ACS).  |
 
 Unser Ziel bei der Arbeit mit Ping Identity und Auth0 besteht darin, sicherzustellen, dass für alle Access Control-Kunden ein Migrationspfad für ihre Apps und Dienste besteht, der den erforderlichen Arbeitsaufwand bei der Umstellung von Access Control minimiert.
 
@@ -305,7 +305,7 @@ In diesen Fällen kann es sinnvoll sein, die Webanwendung zu einem anderen Cloud
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) ist ein flexibler Cloudidentitätsdienst, der eine [allgemeine Migrationsanleitung für Access Control-Kunden](https://auth0.com/acs) erstellt hat und seinerseits nahezu alle von ACS unterstützten Funktionen unterstützt. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) bietet zwei Lösungen, die ACS ähnlich sind. PingOne ist ein Cloudidentitätsdienst, der viele der Funktionen von ACS unterstützt, und PingFederate ist ein ähnliches lokales Identitätsprodukt, das höhere Flexibilität bietet. Weitere Details zur Verwendung dieser Produkte finden Sie in [Ping's ACS retirement guidance](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) (Ping-Leitfaden zur Einstellung von ACS).  |
+| ![Pingen](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) bietet zwei Lösungen, die ACS ähnlich sind. PingOne ist ein Cloudidentitätsdienst, der viele der Funktionen von ACS unterstützt, und PingFederate ist ein ähnliches lokales Identitätsprodukt, das höhere Flexibilität bietet. Weitere Details zur Verwendung dieser Produkte finden Sie in [Ping's ACS retirement guidance](https://www.pingidentity.com/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) (Ping-Leitfaden zur Einstellung von ACS).  |
 
 Unser Ziel bei der Arbeit mit Ping Identity und Auth0 besteht darin, sicherzustellen, dass für alle Access Control-Kunden ein Migrationspfad für ihre Apps und Dienste besteht, der den erforderlichen Arbeitsaufwand bei der Umstellung von Access Control minimiert.
 

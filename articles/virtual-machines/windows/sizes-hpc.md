@@ -1,6 +1,6 @@
 ---
 title: "Größen von virtuellen Azure Windows-Computern – HPC | Microsoft-Dokumentation"
-description: "Auflistung der verschiedenen verfügbaren Größen für virtuelle Windows HPC-Computer (High Performance Computing) in Azure. Listet Informationen zur Anzahl der vCPUs, Datenträger und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite für Größen dieser Serie auf."
+description: "Auflistung der verschiedenen verfügbaren Größen für virtuelle Windows HPC-Computer (High Performance Computing) in Azure. Dieser Artikel listet Informationen zur Anzahl von vCPUs, Datenträgern und Netzwerkschnittstellenkarten sowie zum Speicherdurchsatz und zur Netzwerkbandbreite für Größen dieser Serie auf."
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/28/2017
+ms.date: 02/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: fc2cae8208baa211db2166c9d66a83153fa7b445
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: dfeb6b0cbd74ff5a5b11b730c6413df189096ab8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Größen von virtuellen HPC-Computern (High Performance Computing)
 
@@ -36,13 +36,7 @@ Eine Teilmenge der rechenintensiven Instanzen (H16r, H16mr, A8 und A9) verfügt 
 
 Es folgen Anforderungen an RDMA-fähige Windows-VMs für den Zugriff auf das Azure RDMA-Netzwerk: 
 
-* **Betriebssystem**
-  
-  Windows Server 2012 R2, Windows Server 2012
-  
-  > [!NOTE]
-  > Windows Server 2016 unterstützt derzeit keine RDMA-Verbindungen in Azure.
-  >
+* **Betriebssystem**: Windows Server 2016, Windows Server 2012 R2, Windows Server 2012
 
 * **Verfügbarkeitsgruppe oder Clouddienst :** Stellen Sie die RDMA-fähigen VMs in der gleichen Verfügbarkeitsgruppe (bei Verwenden des Azure Resource Manager-Bereitstellungsmodells) oder im gleichen Clouddienst (bei Verwenden des klassischen Bereitstellungsmodells) bereit. Bei Verwendung von Azure Batch müssen sich die RDMA-fähigen virtuellen Computer im gleichen Pool befinden.
 
@@ -52,7 +46,7 @@ Es folgen Anforderungen an RDMA-fähige Windows-VMs für den Zugriff auf das Azu
 
 * **RDMA-Netzwerkadressbereich:** Für das RDMA-Netzwerk in Azure wird der Adressbereich 172.16.0.0/16 reserviert. Wenn Sie MPI-Anwendungen auf Instanzen ausführen möchten, die in einem virtuellen Azure-Netzwerk bereitgestellt wurden, vergewissern Sie sich, dass der Adressraum des virtuellen Netzwerks sich nicht mit dem RDMA-Netzwerk überschneidet.
 
-* **VM-Erweiterung HpcVmDrivers**: Auf RDMA-fähigen VMs müssen Sie die Erweiterung HpcVmDrivers hinzufügen, um Windows-Netzwerkgerätetreiber für RDMA-Verbindungen zu installieren. (In bestimmten Bereitstellungen von A8- und A9-Instanzen wird die Erweiterung HpcVmDrivers automatisch hinzugefügt.) Um die VM-Erweiterung einer VM hinzuzufügen, können Sie [Azure PowerShell](/powershell/azure/overview)-Cmdlets verwenden. 
+* **VM-Erweiterung HpcVmDrivers**: Fügen Sie auf RDMA-fähigen VMs die Erweiterung HpcVmDrivers hinzu, um Windows-Netzwerkgerätetreiber für RDMA-Verbindungen zu installieren. (In bestimmten Bereitstellungen von A8- und A9-Instanzen wird die Erweiterung HpcVmDrivers automatisch hinzugefügt.) Um die VM-Erweiterung einer VM hinzuzufügen, können Sie [Azure PowerShell](/powershell/azure/overview)-Cmdlets verwenden. 
 
   
   Der folgende Befehl installiert die neueste Version 1.1 der Erweiterung HpcVMDrivers auf einer vorhandenen RDMA-fähigen VM mit dem Namen *myVM*, die in der Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *USA, Westen* bereitgestellt ist:

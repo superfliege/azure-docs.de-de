@@ -1,6 +1,6 @@
 ---
-title: Steuerelemente beim bedingten Zugriff mit Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Steuerelemente beim bedingten Zugriff mit Azure Active Directory funktionieren.
+title: Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory funktionieren.
 services: active-directory
 keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
 documentationcenter: 
@@ -13,28 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 533229ae90828a0aeba9f10cbdfdb70afa21e1c5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c5a2ab3b8d2fe55eee1f67e4b697a1e5b0dd2daf
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="controls-in-azure-active-directory-conditional-access"></a>Steuerelemente beim bedingten Zugriff mit Azure Active Directory 
+# <a name="access-controls-in-azure-active-directory-conditional-access"></a>Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory 
 
-Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. In einer Richtlinie für den bedingten Zugriff definieren Sie die Antwort („do this“) auf eine bestimmte Bedingung („when this happens“). Im Kontext des bedingten Zugriffs gilt: 
+Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Bei einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion („do this“) für den Grund der Auslösung Ihrer Richtlinie („when this happens“). 
 
-- „**When this happens**“ wird als **Bedingungsanweisung**  bezeichnet.
+![Kontrolle](./media/active-directory-conditional-access-controls/10.png)
 
-- „**Then do this**“ wird als **Kontrolle** bezeichnet.
 
-![Kontrolle](./media/active-directory-conditional-access-controls/11.png)
+Im Kontext des bedingten Zugriffs gilt: 
+
+- „**When this happens**“ fällt unter **Bedingungen**.
+
+- „**Then do this**“ fällt unter **Zugriffssteuerungen**.
+
 
 Die Kombination aus Bedingungsanweisung und Ihren Kontrollen ergibt eine Richtlinie für den bedingten Zugriff.
 
-![Kontrolle](./media/active-directory-conditional-access-controls/12.png)
+![Kontrolle](./media/active-directory-conditional-access-controls/61.png)
 
 Jedes Steuerelement ist entweder eine Anforderung, die von der Person oder dem System erfüllt werden muss, die bzw. das sich anmeldet, oder eine Einschränkung der Aktionen, die der Benutzer nach der Anmeldung durchführen kann. 
 
