@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 83d23323f050f670680499ecb428c07c94096418
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 880eaedcba2c0cdfe057ddb2460cf6a19bf8298e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Standardbenutzerberechtigungen in Azure Active Directory
 
@@ -37,7 +37,7 @@ Die Standardberechtigungen für Gäste sind per Voreinstellung eingeschränkt. G
 ------------ | --------- | ----------
 Benutzer und Kontakte | Alle öffentlichen Eigenschaften von Benutzern und Kontakten lesen<br>Gäste einladen<br>Eigenes Kennwort ändern<br>Eigene Mobiltelefonnummer verwalten<br>Eigenes Foto verwalten<br>Eigene Aktualisierungstoken für ungültig erklären | Eigene Eigenschaften lesen<br>Eigenschaften für Anzeigename, E-Mail-Adresse, Anmeldename, Foto, Benutzerprinzipalname und Benutzertyp anderer Benutzer und Kontakte lesen<br>Eigenes Kennwort ändern
 Gruppen   | Sicherheitsgruppen erstellen<br>Office 365-Gruppen erstellen<br>Alle Eigenschaften von Gruppen lesen<br>Nicht ausgeblendete Gruppenmitgliedschaften lesen<br>Ausgeblendete Office 365-Gruppenmitgliedschaften für eingebundene Gruppe lesen<br>Eigenschaften, Besitz und Mitgliedschaft von Gruppen im Besitz des Benutzers verwalten<br>Gäste zu Gruppen im Besitz des Benutzers hinzufügen<br>Einstellungen für dynamische Mitgliedschaften verwalten<br>Gruppen im Besitz des Benutzers löschen<br>Office 365-Gruppen im Besitz des Benutzers wiederherstellen | Alle Eigenschaften von Gruppen lesen<br>Nicht ausgeblendete Gruppenmitgliedschaften lesen<br>Ausgeblendete Office 365-Gruppenmitgliedschaften für eingebundene Gruppen lesen<br>Gruppen im Besitz des Benutzers verwalten<br>Gäste zu Gruppen im Besitz des Benutzers hinzufügen (sofern zulässig)<br>Gruppen im Besitz des Benutzers löschen<br>Office 365-Gruppen im Besitz des Benutzers wiederherstellen           
-Anwendungen | Neue Anwendung registrieren (erstellen)<br>Eigenschaften für registrierte Anwendungen und Unternehmensanwendungen lesen<br>Anwendungseigenschaften, Zuweisungen und Anmeldeinformationen für Anwendungen im Besitz des Benutzers verwalten<br>Anwendungskennwort für Benutzer erstellen oder löschen<br>Anwendungen im Besitz des Benutzers löschen<br>Anwendungen im Besitz des Benutzers wiederherstellen | Eigenschaften für registrierte Anwendungen und Unternehmensanwendungen lesen<br>Anwendungseigenschaften, Zuweisungen und Anmeldeinformationen für Anwendungen im Besitz des Benutzers verwalten<br>Anwendungen im Besitz des Benutzers löschen<br>Anwendungen im Besitz des Benutzers wiederherstellen
+ANWENDUNGEN | Neue Anwendung registrieren (erstellen)<br>Eigenschaften für registrierte Anwendungen und Unternehmensanwendungen lesen<br>Anwendungseigenschaften, Zuweisungen und Anmeldeinformationen für Anwendungen im Besitz des Benutzers verwalten<br>Anwendungskennwort für Benutzer erstellen oder löschen<br>Anwendungen im Besitz des Benutzers löschen<br>Anwendungen im Besitz des Benutzers wiederherstellen | Eigenschaften für registrierte Anwendungen und Unternehmensanwendungen lesen<br>Anwendungseigenschaften, Zuweisungen und Anmeldeinformationen für Anwendungen im Besitz des Benutzers verwalten<br>Anwendungen im Besitz des Benutzers löschen<br>Anwendungen im Besitz des Benutzers wiederherstellen
 Geräte | Alle Eigenschaften von Geräten lesen<br>Alle Eigenschaften von Geräten im Besitz des Benutzers verwalten<br> | Keine Berechtigungen<br>Geräte im Besitz des Benutzers löschen<br>
 Verzeichnis | Alle Unternehmensinformationen lesen<br>Alle Domänen lesen<br>Alle Partnerverträge lesen | Anzeigenamen und überprüfte Domänen lesen
 Rollen und Bereiche | Alle administrativen Rollen und Mitgliedschaften lesen<br>Alle Eigenschaften und Mitgliedschaften von administrativen Einheiten lesen | Keine Berechtigungen              
@@ -59,7 +59,7 @@ Fähigkeit zum Registrieren (Erstellen) von Anwendungen | Durch das Festlegen di
 Administratoren und Benutzer in der Rolle „Gasteinladender“ dürfen Gäste einladen | Das Festlegen dieser Option auf „Nein“ hindert alle Benutzer daran, Gäste einzuladen. Siehe „Konfigurieren von Standardberechtigungen für Mitgliedsbenutzer“. Weitere Informationen finden Sie unter [Apps, Berechtigungen und Zustimmung in Azure Active Directory](active-directory-apps-permissions-consent.md).
 Mitglieder können Gäste einladen | Das Festlegen dieser Einstellung auf „Nein“ hindert alle Benutzer daran, Gäste einzuladen. Globale Administratoren, Benutzerkontoadministratoren und Gasteinladende können weiterhin Gäste einladen. Weitere Informationen finden Sie unter [Apps, Berechtigungen und Zustimmung in Azure Active Directory](active-directory-apps-permissions-consent.md).
 Zugriff auf Azure AD-Verwaltungsportal einschränken | Das Festlegen dieser Option auf „Nein“ hindert Benutzer daran, auf das Azure Active Directory-Portal zuzugreifen.
-Fähigkeit zum Lesen anderer Benutzer | Weitere Informationen finden Sie unter [Apps, Berechtigungen und Zustimmung in Azure Active Directory](active-directory-apps-permissions-consent.md).
+Fähigkeit zum Lesen anderer Benutzer | Diese Einstellung ist nur in PowerShell verfügbar. Wenn diese Einstellung auf $false festgelegt ist, wird verhindert, dass alle Nicht-Administratoren Benutzerinformationen aus dem Verzeichnis lesen. Nicht verhindert wird jedoch, dass Benutzerinformationen in anderen Microsoft-Diensten wie Exchange Online gelesen werden können. Diese Einstellung ist für besondere Umstände bestimmt; die Einstellung auf $false wird nicht empfohlen.
 
 ## <a name="object-ownership"></a>Objektbesitz
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 608f5ec2fb4b8fa374778cb4f506f1d25eb7642b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 01f845e0cb987eb4e4e9baa62478d3ff6991fb7e
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>HTTP- und Webhookbindungen in Azure Functions
 
@@ -493,6 +493,9 @@ Standardmäßig verfügen alle Funktionsrouten über das Präfix *api*. Sie kön
 ### <a name="authorization-keys"></a>Autorisierungsschlüssel
 
 HTTP-Trigger ermöglichen die Verwendung von Schlüsseln zum Verbessern der Sicherheit. Ein standardmäßiger HTTP-Trigger kann diese als API-Schlüssel verwenden, sodass der Schlüssel in der Anforderung vorhanden sein muss. Webhooks können Schlüssel verwenden, um Anforderungen auf unterschiedliche Arten zu autorisieren, je nachdem, welche Methode vom Anbieter unterstützt wird.
+
+> [!NOTE]
+> Bei der lokalen Ausführung von Funktionen wird die Autorisierung unabhängig von der in `function.json` festgelegten `authLevel` deaktiviert. Mit der Veröffentlichung in Azure Functions wird `authLevel` sofort wirksam.
 
 Schlüssel werden als Teil Ihrer Funktionen-App in Azure gespeichert und sind im Ruhezustand verschlüsselt. Um vorhandene Schlüssel anzuzeigen, neue Schlüssel zu erstellen oder Schlüsseln neue Werte zuzuweisen, navigieren Sie im Portal zu einer Ihrer Funktionen, und wählen Sie „Verwalten“ aus. 
 

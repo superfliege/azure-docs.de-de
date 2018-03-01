@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 0d48d0b008d76cfb2d7d7815a69774976e184467
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: aee7352ce6f8dd854ce0c6c61c5485fb9a35bb23
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-Bindungen für Azure Functions
 
@@ -49,7 +49,7 @@ Wenn Ihre Funktion zuerst aktiviert wird, gibt es nur eine Instanz der Funktion.
 
 * **Es wird eine weitere Funktionsinstanz hinzugefügt** – Die Skalierungslogik von Azure Functions bestimmt, dass „Function_0“ über mehr Nachrichten verfügt, als sie verarbeiten kann. Daher wird eine neue Instanz, „Function_1“, erstellt. Event Hubs erkennt, dass eine neue EPH-Instanz versucht, Nachrichten zu lesen. Event Hubs starten den Lastenausgleich für die Partitionen über die EPH-Instanzen hinweg, z. B. werden die Partitionen 0-4 der „Function_0“ und die Partitionen 5-9 der „Function_1“ zugewiesen. 
 
-* **N weitere Funktionsinstanzen hinzufügen** – Die Skalierungslogik von Azure Functions bestimmt, dass sowohl „Function_0“ als auch „Function_1“ mehr Nachrichten aufweisen, als sie verarbeiten können. Es wird erneut für „Function_2...N“ skaliert, wobei N größer ist als die Event Hub-Paritionen. Event Hubs wird für die Partitionen über Instanzen von „Function_0...9“ hinweg einen Lastenausgleich vornehmen.
+* **N weitere Funktionsinstanzen hinzufügen** – Die Skalierungslogik von Azure Functions bestimmt, dass sowohl „Function_0“ als auch „Function_1“ mehr Nachrichten aufweisen, als sie verarbeiten können. Es wird erneut für „Function_2...N“ skaliert, wobei N größer ist als die Event Hub-Partitionen. Event Hubs wird für die Partitionen über Instanzen von „Function_0...9“ hinweg einen Lastenausgleich vornehmen.
 
 Das Besondere an der aktuellen Skalierungslogik von Azure Functions ist die Tatsache, dass N größer ist als die Anzahl der Partitionen. Auf diese Weise wird sichergestellt, dass es immer Instanzen von EPH gibt, die leicht verfügbar sind, um schnell eine Sperre für die Partition(en) zu erhalten, sobald sie über andere Instanzen verfügbar werden. Den Benutzern werden nur die Ressourcen berechnet, die bei der Ausführung der Funktionsinstanz in Anspruch genommen werden, und nicht die Kosten für diese übermäßige Bereitstellung.
 
@@ -405,6 +405,12 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `out string paramName`, um Nachrichten zu senden. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Um mehrere Nachrichten zu schreiben, können Sie `ICollector<string>` oder `IAsyncCollector<string>` anstelle von `out string` verwenden.
 
 Greifen Sie in JavaScript mit `context.bindings.<name>` auf das Ausgabeereignis zu. `<name>` ist der Wert, der in der Eigenschaft `name` von *function.json* angegeben wird.
+
+## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
+
+| Bindung | Verweis |
+|---|---|
+| Event Hub | [Betriebsleitfaden](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

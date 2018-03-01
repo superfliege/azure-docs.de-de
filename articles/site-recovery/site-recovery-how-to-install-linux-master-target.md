@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 11/22/2017
 ms.author: rajanaki
-ms.openlocfilehash: 7b2416617696e1df30b08f039ab39bfe7b57e093
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 11f9385c1082011ee690f48f2579b6f3b156d125
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>Installieren eines Linux-Masterzielservers
-Nach dem Failover Ihrer virtuellen Computer können Sie für die virtuellen Computer ein Failback zum lokalen Standort ausführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
+Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
 
 Falls es sich bei Ihrem geschützten virtuellen Computer um einen virtuellen Windows-Computer handelt, benötigen Sie ein Windows-Masterziel. Bei einem virtuellen Linux-Computer benötigen Sie ein Linux-Masterziel. Lesen Sie die folgenden Schritte, um Informationen zum Erstellen und Installieren eines Linux-Masterziels zu erhalten.
 
 > [!IMPORTANT]
-> Ab Version 9.10.0 des Masterzielservers kann der neueste Masterzielserver nur auf einem Ubuntu 16.04 Server installiert werden. Neue Installationen sind auf CentOS6.6-Servern nicht zugelassen. Sie können Ihre alten Masterzielserver jedoch weiterhin mithilfe der Version 9.10.0 aktualisieren.
+> Ab Version 9.10.0 des Masterzielservers kann der neueste Masterzielserver nur auf einem Ubuntu 16.04 Server installiert werden. Neue Installationen sind auf CentOS6.6-Servern nicht zugelassen. Sie können Ihre alten Masterzielserver aber weiterhin mit der Version 9.10.0 aktualisieren.
 
 ## <a name="overview"></a>Übersicht
 Dieser Artikel enthält Anleitungen zum Installieren eines Linux-Masterziels.
@@ -37,12 +37,12 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 
 * Zur Auswahl des Hosts, auf dem Sie das Masterziel bereitstellen, ermitteln Sie, ob das Failback zu einem vorhandenen, lokalen virtuellen Computer oder zu einem neuen virtuellen Computer führt. 
     * Bei einem vorhandenen virtuellen Computer muss der Host des Masterziels über Zugriff auf die Datenspeicher des virtuellen Computers verfügen.
-    * Falls kein lokaler virtueller Computer vorhanden ist, wird das Failback des virtuellen Computers auf demselben Host wie das Masterziel erstellt. Sie können einen beliebigen ESXi-Host zum Installieren des Masterziels verwenden.
+    * Falls kein lokaler virtueller Computer vorhanden ist (bei einer Wiederherstellung an einem alternativen Speicherort), wird das Failback des virtuellen Computers auf demselben Host wie das Masterziel erstellt. Sie können einen beliebigen ESXi-Host zum Installieren des Masterziels verwenden.
 * Das Masterziel sollte sich in einem Netzwerk befinden, das mit dem Prozessserver und dem Konfigurationsserver kommunizieren kann.
-* Die Version des Masterziels darf nicht höher als die des Prozess- und des Konfigurationsservers sein. Beispiel: Bei Version 9.4 des Konfigurationsservers kann die Version des Masterziels 9.4 oder 9.3, aber nicht 9.5 sein.
+* Die Version des Masterziels darf nicht höher als die des Prozess- und des Konfigurationsservers sein. Beispiel: Bei Version 9.4 des Konfigurationsservers kann die Version des Masterziels 9.4 oder 9.3 lauten, aber nicht 9.5.
 * Das Masterziel kann nur ein virtueller VMware-Computer und kein physischer Server sein.
 
-## <a name="create-the-master-target-according-to-the-sizing-guidelines"></a>Erstellen des Masterziels gemäß den Richtlinien zum Festlegen der Größe
+## <a name="sizing-guidelines-for-creating-master-target-server"></a>Größenrichtlinien zum Erstellen eines Masterzielservers
 
 Erstellen Sie das Masterziel gemäß den folgenden Richtlinien zum Festlegen der Größe:
 - **RAM:** 6 GB oder mehr
@@ -66,119 +66,90 @@ Folgende Ubuntu-Kernels werden unterstützt:
 
 Führen Sie die folgenden Schritte aus, um das 64-Bit-Betriebssystem Ubuntu 16.04.2 zu installieren:
 
-**Schritt 1:** Rufen Sie den [Downloadlink](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64) auf, und wählen Sie den nächstgelegenen Spiegel aus, von dem Sie ein ISO-Image mit Ubuntu 16.04.2 minimal 64 Bit herunterladen.
-
+1.   Rufen Sie den [Downloadlink](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64) auf, wählen Sie den nächstgelegenen Spiegel aus, und laden Sie ein ISO-Image mit Ubuntu 16.04.2 minimal 64 Bit herunter.
 Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit in das DVD-Laufwerk ein, und starten Sie das System.
 
-**Schritt 2:** Wählen Sie **Englisch** als bevorzugte Sprache aus, und drücken Sie die **EINGABETASTE**.
+1.  Wählen Sie **English** als bevorzugte Sprache aus, und drücken Sie die **EINGABETASTE**.
+    
+    ![Sprache auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image1.png)
+1. Wählen Sie **Install Ubuntu Server**, und drücken Sie die **EINGABETASTE**.
 
-![Sprache auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image1.png)
+    ![„Install Ubuntu Server“ auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image2.png)
 
-**Schritt 3:** Wählen Sie **Ubuntu Server installieren**, und drücken Sie die **EINGABETASTE**.
+1.  Wählen Sie **English** als bevorzugte Sprache aus, und drücken Sie die **EINGABETASTE**.
 
-![„Ubuntu Server installieren“ auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image2.png)
+    ![„English“ als bevorzugte Sprache auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
 
-**Schritt 4:** Wählen Sie **Englisch** als bevorzugte Sprache aus, und drücken Sie die **EINGABETASTE**.
+1. Wählen Sie unter **Time Zone** die entsprechende Option aus, und drücken Sie die **EINGABETASTE**.
 
-![Englisch als bevorzugte Sprache auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
+    ![Richtige Zeitzone auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
 
-**Schritt 5:** Wählen Sie die entsprechende Option aus den Optionen **Zeitzone** aus, und drücken Sie **EINGABETASTE**.
+1. Wählen Sie **No** (die Standardoption) aus, und drücken Sie die **EINGABETASTE**.
 
-![Richtige Zeitzone auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
+     ![Tastatur konfigurieren](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
+1. Wählen Sie **English (USA)** als Ursprungsland für die Tastatur aus, und drücken Sie die **EINGABETASTE**.
 
-**Schritt 6:** Wählen Sie **Nein** (die Standardoption) aus, und drücken Sie die **EINGABETASTE**.
+1. Wählen Sie **English (USA)** als Tastaturlayout aus, und drücken Sie die **EINGABETASTE**.
 
+1. Geben Sie im Feld **Hostname** den Hostnamen für Ihren Server ein, und wählen Sie dann **Continue**.
 
-![Tastatur konfigurieren](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
+1. Erstellen Sie ein Benutzerkonto, indem Sie den Benutzernamen eingeben, und wählen Sie dann **Continue**.
 
-**Schritt 7:** Wählen Sie **Englisch (USA)** als Ursprungsland für die Tastatur aus, und drücken Sie die **EINGABETASTE**.
+      ![Erstellen eines Benutzerkontos](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image9.png)
 
-![USA als Ursprungsland auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image6.png)
+1. Geben Sie das Kennwort für das neue Benutzerkonto ein, und wählen Sie **Continue**.
 
-**Schritt 8:** Wählen Sie **Englisch (USA)** als Tastaturlayout aus, und drücken Sie die **EINGABETASTE**.
+1.  Bestätigen Sie das Kennwort für den neuen Benutzer, und wählen Sie **Continue**.
 
-![Englisch (USA) als Tastaturlayout auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image7.png)
+    ![Kennwörter bestätigen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
 
-**Schritt 9:** Geben Sie im Feld **Hostname** den Hostnamen für Ihren Server ein, und wählen Sie dann **Weiter** aus.
+1.  Wählen Sie als Nächstes zur Verschlüsselung Ihres Stammverzeichnisses die Option **No** (Standardoption), und drücken Sie die **EINGABETASTE**.
 
-![Hostnamen für Ihren Server eingeben](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image8.png)
+1. Wenn die richtige Zeitzone angezeigt wird, wählen Sie **Yes** (Standardoption) aus, und drücken Sie dann die **EINGABETASTE**. Wenn Sie die Zeitzone ändern möchten, wählen Sie **No**.
 
-**Schritt 10:** Erstellen Sie ein Benutzerkonto, indem Sie den Benutzernamen eingeben, und wählen Sie dann **Weiter** aus.
+1. Wählen Sie aus den Optionen zum Partitionierungsverfahren **Guided – use entire disk**, und drücken Sie die **EINGABETASTE**.
 
-![Erstellen eines Benutzerkontos](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image9.png)
+     ![Option für Partitionierungsverfahren auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
 
-**Schritt 11:** Geben Sie das Kennwort für das neue Benutzerkonto ein, und wählen Sie dann **Weiter** aus.
+1.  Wählen Sie den geeigneten Datenträger unter **Select disk to partition** aus, und drücken Sie die **EINGABETASTE**.
 
-![Kennwort eingeben](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image10.png)
+    ![Datenträger auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
 
-**Schritt 12:** Bestätigen Sie das Kennwort für den neuen Benutzer, und wählen Sie dann **Weiter** aus.
+1.  Wählen Sie **Yes**, um die Änderungen auf den Datenträger zu schreiben, und drücken Sie die **EINGABETASTE**.
 
-![Kennwörter bestätigen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
+1.  Wählen Sie in der Auswahl für die Proxykonfiguration die Standardoption, und wählen Sie dann **Continue**, und drücken Sie die **EINGABETASTE**.
 
-**Schritt 13:** Wählen Sie **Nein** (die Standardoption) aus, und drücken Sie die **EINGABETASTE**.
+     ![Standardoption auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
 
-![Benutzer und Kennwörter einrichten](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image12.png)
+1.  Wählen Sie in der Auswahl zur Verwaltung von Upgrades auf Ihrem System die Option **No automatic updates**, und drücken Sie die **EINGABETASTE**.
 
-**Schritt 14:** Wenn die richtige Zeitzone angezeigt wird, wählen Sie **Ja** (die Standardoption) aus, und drücken Sie dann die **EINGABETASTE**.
+     ![Option zum Verwalten von Upgrades auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
 
-Wenn Sie die Zeitzone ändern möchten, wählen Sie **Nein** aus.
+    > [!WARNING]
+    > Da für den Azure Site Recovery-Masterzielserver eine ganz bestimmte Version von Ubuntu erforderlich ist, müssen Sie sicherstellen, dass die Kernelupgrades für den virtuellen Computer deaktiviert sind. Wenn sie aktiviert sind, verursacht jedes reguläre Upgrade Fehlfunktionen auf dem Masterzielserver. Stellen Sie sicher, dass die Option **No automatic updates** ausgewählt ist.
 
-![Uhrzeit konfigurieren](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image13.png)
+1.  Wählen Sie die Standardoptionen aus. Wenn Sie OpenSSH für eine SSH-Verbindung verwenden möchten, wählen Sie die Option **OpenSSH server** aus, und wählen Sie dann **Continue**.
 
-**Schritt 15:** Wählen Sie aus den Optionen zum Partitionierungsverfahren **Guided - use entire disk** (Geführt – gesamten Datenträger verwenden) aus, und drücken Sie die **EINGABETASTE**.
+    ![Software auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image19.png)
 
-![Option für Partitionierungsverfahren auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
+1. Wählen Sie in der Auswahl für die Installation des GRUB-Startladeprogramms die Option **Yes**, und drücken Sie anschließend die **EINGABETASTE**.
 
-**Schritt 16:** Wählen Sie den geeigneten Datenträger aus den Optionen **Select disk to partition** (Zu partitionierenden Datenträger auswählen) aus, und drücken Sie die **EINGABETASTE**.
+1. Wählen Sie das entsprechende Gerät für die Installation des Startladeprogramms (vorzugsweise **/dev/sda**) aus, und drücken Sie dann die **EINGABETASTE**.
 
+1. Wählen Sie **Continue**, und drücken Sie die **EINGABETASTE**, um die Installation abzuschließen.
 
-![Datenträger auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
+    ![Installation abschließen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
 
-**Schritt 17:** Wählen Sie **Ja** aus, um die Änderungen auf den Datenträger zu schreiben, und drücken Sie die **EINGABETASTE**.
+1. Nach Abschluss der Installation melden Sie sich mit den neuen Benutzeranmeldeinformationen beim virtuellen Computer an. (Weitere Informationen finden Sie in **Schritt 10**.)
 
-![Änderungen auf Datenträger schreiben](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image16.png)
+1. Verwenden Sie die im folgenden Screenshot dargestellten Schritte, um das ROOT-Benutzerkennwort festzulegen. Melden Sie sich dann als ROOT-Benutzer an.
 
-**Schritt 18:** Wählen Sie die Standardoption und dann **Weiter** aus, und drücken Sie die **EINGABETASTE**.
-
-![Standardoption auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
-
-**Schritt 19:** Wählen Sie die entsprechende Option zum Verwalten von Upgrades auf Ihrem System aus, und drücken Sie die **EINGABETASTE**.
-
-![Option zum Verwalten von Upgrades auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
-
-> [!WARNING]
-> Da der Azure Site Recovery-Masterzielserver eine ganz bestimmte Version von Ubuntu erfordert, müssen Sie sicherstellen, dass die Kernelupgrades für den virtuellen Computer deaktiviert sind. Wenn sie aktiviert sind, verursacht jedes reguläre Upgrade Fehlfunktionen auf dem Masterzielserver. Stellen Sie sicher, dass die Option **Keine automatischen Updates** ausgewählt ist.
+    ![ROOT-Benutzerkennwort festlegen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
 
 
-**Schritt 20:** Wählen Sie die Standardoption aus. Wenn Sie OpenSSH für eine SSH-Verbindung verwenden möchten, wählen Sie die Option **OpenSSH Server** aus, und wählen Sie dann **Weiter** aus.
+### <a name="configure-the-machine-as-a-master-target-server"></a>Konfigurieren des Computers als Masterzielserver
 
-![Software auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image19.png)
-
-**Schritt 21:** Wählen Sie **Ja** aus, und drücken Sie dann die **EINGABETASTE**.
-
-![GRUB-Startladeprogramm installieren](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image20.png)
-
-**Schritt 22:** Wählen Sie das entsprechende Gerät für die Installation des Startladeprogramms (vorzugsweise **/dev/sda**) aus, und drücken Sie dann die **EINGABETASTE**.
-
-![Gerät für die Installation des Startladeprogramms auswählen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image21.png)
-
-**Schritt 23:** Wählen Sie **Weiter** aus, und drücken Sie die **EINGABETASTE**, um die Installation abzuschließen.
-
-![Installation abschließen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
-
-Nach Abschluss der Installation melden Sie sich mit den neuen Benutzeranmeldeinformationen beim virtuellen Computer an. (Weitere Informationen finden Sie in **Schritt 10**.)
-
-Führen Sie die im folgenden Screenshot dargestellten Schritte aus, um das ROOT-Benutzerkennwort festzulegen. Melden Sie sich dann als ROOT-Benutzer an.
-
-![ROOT-Benutzerkennwort festlegen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
-
-
-### <a name="prepare-the-machine-for-configuration-as-a-master-target-server"></a>Vorbereiten des Computers auf die Konfiguration als Masterzielserver
-Als Nächstes bereiten Sie den Computer auf die Konfiguration als Masterzielserver vor.
-
-Aktivieren Sie den Parameter **disk.EnableUUID = TRUE**, um die ID für jede SCSI-Festplatte eines virtuellen Linux-Computers abzurufen.
-
-Um diesen Parameter zu aktivieren, führen Sie die folgenden Schritte aus:
+Der Parameter **disk.EnableUUID = TRUE** muss aktiviert werden, um die ID für jede SCSI-Festplatte eines virtuellen Linux-Computers abzurufen. Um diesen Parameter zu aktivieren, führen Sie die folgenden Schritte aus:
 
 1. Fahren Sie den virtuellen Computer herunter.
 
@@ -206,18 +177,14 @@ Um diesen Parameter zu aktivieren, führen Sie die folgenden Schritte aus:
 
 #### <a name="disable-kernel-upgrades"></a>Deaktivieren des Kernelupgrades
 
-Der Azure Site Recovery-Masterzielserver erfordert eine bestimmte Version von Ubuntu. Stellen Sie daher sicher, dass die Kernelupgrades für den virtuellen Computer deaktiviert sind.
-
-Wenn Kernelupgrades aktiviert sind, verursacht jedes reguläre Upgrade Fehlfunktionen auf dem Masterzielserver.
+Für den Azure Site Recovery-Masterzielserver ist eine bestimmte Version von Ubuntu erforderlich. Stellen Sie daher sicher, dass die Kernelupgrades für den virtuellen Computer deaktiviert sind. Wenn Kernelupgrades aktiviert sind, kann dies zu einer Fehlfunktion des Masterzielservers führen.
 
 #### <a name="download-and-install-additional-packages"></a>Herunterladen und Installieren zusätzlicher Pakete
 
 > [!NOTE]
 > Stellen Sie sicher, dass Sie über eine Internetverbindung verfügen, um zusätzliche Pakete herunterzuladen und zu installieren. Wenn keine Internetverbindung vorhanden ist, müssen Sie diese RPM-Pakete manuell suchen und installieren.
 
-```
-apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx
-```
+ `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 
 ### <a name="get-the-installer-for-setup"></a>Herunterladen des Installationsprogramms zur Einrichtung
 
@@ -229,11 +196,10 @@ Wenn Ihr Masterziel über eine Internetverbindung verfügt, können Sie die folg
 
 Geben Sie zum Herunterladen mit Linux Folgendes ein:
 
-```
-wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz
-```
+`wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz`
 
-Stellen Sie sicher, dass Sie das Installationsprogramm herunterladen und im Basisverzeichnis entzippen. Wenn Sie es in **/usr/Local** entzippen, schlägt die Installation fehl.
+> [!WARNING]
+> Stellen Sie sicher, dass Sie das Installationsprogramm herunterladen und im Basisverzeichnis entzippen. Wenn Sie es in **/usr/Local** entzippen, schlägt die Installation fehl.
 
 
 #### <a name="access-the-installer-from-the-process-server"></a>Zugriff auf das Installationsprogramm über den Prozessserver
@@ -249,44 +215,44 @@ Gehen Sie zum Vornehmen von Änderungen an der benutzerdefinierten Konfiguration
 
 
 1. Führen Sie den folgenden Befehl aus, um die Binärdatei zu entpacken.
-    ```
-    tar -zxvf latestlinuxmobsvc.tar.gz
-    ```
+
+    `tar -zxvf latestlinuxmobsvc.tar.gz`
+
     ![Screenshot des auszuführenden Befehls](./media/site-recovery-how-to-install-linux-master-target/image16.png)
 
 2. Führen Sie den folgenden Befehl aus, um die Berechtigung zu erteilen.
-    ```
-    chmod 755 ./ApplyCustomChanges.sh
-    ```
+
+    `chmod 755 ./ApplyCustomChanges.sh`
+
 
 3. Führen Sie den folgenden Befehl aus, um das Skript auszuführen.
-    ```
-    ./ApplyCustomChanges.sh
-    ```
+    
+    `./ApplyCustomChanges.sh`
+
 > [!NOTE]
-> Führen Sie das Skript nur einmal auf dem Server aus. Fahren Sie den Server herunter. Starten Sie den Server anschließenden neu, nachdem Sie einen Datenträger hinzufügen, wie in den nächsten Schritten beschrieben.
+> Führen Sie das Skript nur einmal auf dem Server aus. Fahren Sie anschließend den Server herunter. Starten Sie den Server neu, nachdem Sie einen Datenträger hinzugefügt haben, wie in den nächsten Schritten beschrieben.
 
 ### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Hinzufügen eines Aufbewahrungsdatenträgers mit dem virtuellen Linux-Masterzielcomputer
 
 Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu erstellen:
 
-1. Fügen Sie einen neuen 1 TB-Datenträger auf dem virtuellen Linux-Masterzielcomputer hinzu, und starten Sie den Computer anschließend.
+1. Fügen Sie auf dem virtuellen Linux-Masterzielcomputer einen neuen Datenträger mit 1 TB hinzu, und starten Sie anschließend den Computer.
 
 2. Ermitteln Sie mit dem Befehl **multipath -ll** die Multipfad-ID des Aufbewahrungsdatenträgers.
+    
+     `multipath -ll`
 
-    ```
-    multipath -ll
-    ```
-    ![Die Multipfad-ID des Aufbewahrungsdatenträgers](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
+        ![The multipath ID of the retention disk](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
 
 3. Formatieren Sie das Laufwerk, und erstellen Sie dann ein Dateisystem auf dem neuen Laufwerk.
 
-    ```
-    mkfs.ext4 /dev/mapper/<Retention disk's multipath id>
-    ```
+    
+    `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
+    
     ![Erstellen eines Dateisystems auf dem Laufwerk](./media/site-recovery-how-to-install-linux-master-target/media/image23.png)
 
 4. Nach dem Erstellen des Dateisystems stellen Sie den Aufbewahrungsdatenträger bereit.
+
     ```
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
@@ -294,9 +260,9 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
     ![Bereitstellen des Aufbewahrungsdatenträgers](./media/site-recovery-how-to-install-linux-master-target/media/image24.png)
 
 5. Erstellen Sie den **fstab**-Eintrag, um den Aufbewahrungsdatenträger bei jedem Systemstart bereitzustellen.
-    ```
-    vi /etc/fstab
-    ```
+    
+    `vi /etc/fstab`
+    
     Drücken Sie **EINFG**, um mit der Bearbeitung der Datei zu beginnen. Erstellen Sie eine neue Zeile, und fügen Sie den folgenden Text ein. Bearbeiten Sie die Multipfad-ID des Datenträgers auf Basis der hervorgehobenen Multipfad-ID aus dem vorherigen Befehl.
 
     **/dev/mapper/<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
@@ -314,18 +280,14 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
 
 1. Kopieren Sie die Passphrase unter **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** auf dem Konfigurationsserver. Speichern Sie diese dann im gleichen Verzeichnis als **passphrase.txt**, indem Sie den folgenden Befehl ausführen:
 
-    ```
-    echo <passphrase> >passphrase.txt
-    ```
+    `echo <passphrase> >passphrase.txt`
+
     Beispiel: 
+
+       `echo itUx70I47uxDuUVY >passphrase.txt`
     
-    ```
-    echo itUx70I47uxDuUVY >passphrase.txt
-    ```
 
-2. Notieren Sie die IP-Adresse des Konfigurationsservers. Sie benötigen sie im nächsten Schritt.
-
-3. Führen Sie den folgenden Befehl aus, um den Masterzielserver zu installieren und den Server auf dem Konfigurationsserver zu registrieren.
+2. Notieren Sie sich die IP-Adresse des Konfigurationsservers. Führen Sie den folgenden Befehl aus, um den Masterzielserver zu installieren und den Server auf dem Konfigurationsserver zu registrieren.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -338,7 +300,7 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-    Warten Sie, bis das Skript abgeschlossen wurde. Wenn das Masterziel erfolgreich registriert wurde, ist es auf der **Site Recovery-Infrastrukturseite** im Portal aufgeführt.
+Warten Sie, bis das Skript abgeschlossen wurde. Wenn das Masterziel erfolgreich registriert wurde, ist es auf der **Site Recovery-Infrastrukturseite** im Portal aufgeführt.
 
 
 #### <a name="install-the-master-target-by-using-interactive-installation"></a>Installieren des Masterziels mithilfe der interaktiven Installation
@@ -369,34 +331,35 @@ Nachdem die Installation abgeschlossen ist, registrieren Sie den Konfigurationss
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-   Warten Sie, bis das Skript abgeschlossen wurde. Wenn das Masterziel erfolgreich registriert wurde, wird es auf der **Site Recovery-Infrastrukturseite** im Portal aufgeführt.
+     Warten Sie, bis das Skript abgeschlossen wurde. Wenn das Masterziel erfolgreich registriert wurde, wird es auf der **Site Recovery-Infrastrukturseite** im Portal aufgeführt.
 
-
-### <a name="upgrade-the-master-target"></a>Aktualisieren des Masterziels
-
-Führen Sie das Installationsprogramm aus. Es erkennt automatisch, dass der Agent auf dem Masterzielserver installiert ist. Wählen Sie zum Aktualisieren **Y** aus.  Nachdem das Setup abgeschlossen wurde, überprüfen Sie die Version des installierten Masterziels mithilfe des folgenden Befehls:
-
-    ```
-    cat /usr/local/.vx_version
-    ```
-
-Wie Sie sehen, ist im Feld **Version** die Versionsnummer des Masterziels angegeben.
 
 ### <a name="install-vmware-tools-on-the-master-target-server"></a>Installieren von VMware-Tools auf dem Masterzielserver
 
 Installieren Sie VMware-Tools auf dem Masterziel, damit es die Datenspeicher erkennen kann. Wenn die Tools nicht installiert werden, werden die Datenspeicher nicht auf dem Bildschirm für das erneute Schützen angezeigt. Nach der Installation von VMware-Tools müssen Sie einen Neustart durchführen.
 
-## <a name="next-steps"></a>Nächste Schritte
-Nach Abschluss der Installation und Registrierung des Masterziels erscheint das Masterziel im Abschnitt **Masterziel** in der **Site Recovery-Infrastruktur** in der Übersicht der Konfigurationsserver.
+### <a name="upgrade-the-master-target-server"></a>Aktualisieren des Masterzielservers
 
-Sie können jetzt mit [Reprotection](site-recovery-how-to-reprotect.md) (Erneuter Schutz) und Failback fortfahren.
+Führen Sie das Installationsprogramm aus. Es erkennt automatisch, dass der Agent auf dem Masterzielserver installiert ist. Wählen Sie zum Aktualisieren **Y** aus.  Nachdem das Setup abgeschlossen wurde, überprüfen Sie die Version des installierten Masterziels mithilfe des folgenden Befehls:
+
+`cat /usr/local/.vx_version`
+
+
+Sie sehen, dass im Feld **Version** die Versionsnummer des Masterziels angegeben ist.
 
 ## <a name="common-issues"></a>Häufige Probleme
 
-* Stellen Sie sicher, dass Sie Storage vMotion nicht auf Verwaltungskomponenten wie dem Masterziel aktivieren. Wenn das Masterziel nach erfolgreichem erneuten Schützen verschoben wird, können die Datenträger des virtuellen Computers nicht getrennt werden. In diesem Fall tritt beim Failback ein Fehler auf.
+* Stellen Sie sicher, dass Sie Storage vMotion nicht auf Verwaltungskomponenten wie dem Masterziel aktivieren. Wenn das Masterziel nach dem erfolgreichen erneuten Schützen verschoben wird, können die Datenträger des virtuellen Computers nicht getrennt werden. In diesem Fall tritt beim Failback ein Fehler auf.
 
 * Das Masterziel darf keine Momentaufnahmen auf dem virtuellen Computer aufweisen. Wenn Momentaufnahmen vorhanden sind, schlägt das Failback fehl.
 
-* Aufgrund von benutzerdefinierten NIC-Konfigurationen bei einigen Kunden ist die Netzwerkschnittstelle während des Systemstarts deaktiviert, und der Masterziel-Agent kann nicht initialisiert werden. Stellen Sie sicher, dass die folgenden Eigenschaften richtig festgelegt sind. Überprüfen Sie diese Eigenschaften in den Dateien der Ethernet-Karte: „/etc/sysconfig/network-scripts/ifcfg-eth*“.
+* Aufgrund von benutzerdefinierten NIC-Konfigurationen ist die Netzwerkschnittstelle während des Systemstarts deaktiviert, und der Masterziel-Agent kann nicht initialisiert werden. Stellen Sie sicher, dass die folgenden Eigenschaften richtig festgelegt sind. Überprüfen Sie diese Eigenschaften in den Dateien der Ethernet-Karte: „/etc/sysconfig/network-scripts/ifcfg-eth*“.
     * BOOTPROTO=dhcp
     * ONBOOT=yes
+
+
+## <a name="next-steps"></a>Nächste Schritte
+Nach Abschluss der Installation und Registrierung des Masterziels erscheint es im Abschnitt **Masterziel** der **Site Recovery-Infrastruktur** in der Übersicht für die Konfigurationsserver.
+
+Sie können jetzt mit [Reprotection](site-recovery-how-to-reprotect.md) (Erneuter Schutz) und Failback fortfahren.
+

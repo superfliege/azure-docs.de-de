@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 02/12/2018
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 303a36fc966cd92399de92b4d52f75c114b75781
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c3bd28316e3d2e7596021d6964594002d47d160a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Einstellbare Datenkonsistenzebenen in Azure Cosmos DB
 Azure Cosmos DB ist für jedes Datenmodell von Grund auf im Hinblick auf eine globale Verteilung konzipiert. Es bietet planbare Garantien für geringe Wartezeiten sowie mehrere klar definierte gelockerte Konsistenzmodelle. Azure Cosmos DB bietet derzeit fünf Konsistenzebenen: Stark, Begrenzte Veraltung, Sitzung, Konsistentes Präfix und Letztlich. „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „Letztlich“ werden als gelockerte Konsistenzmodelle bezeichnet, da sie weniger Konsistenz bieten als „Stark“ (das Modell mit der höchstmöglichen Konsistenz). 
@@ -117,6 +117,10 @@ Bei benutzerdefinierten Ressourcen entspricht die Konsistenzebene für Abfragen 
 | Keine |Wählen Sie „Stark“, „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ oder „Letztlich“. |Nicht zutreffend |
 
 Wie bei Leseanforderungen kann die Konsistenzebene einer bestimmten Abfrageanforderung in jeder API heruntergestuft werden.
+
+## <a name="consistency-levels-for-the-mongodb-api"></a>Konsistenzebenen für die MongoDB-API
+
+Azure Cosmos DB implementiert derzeit MongoDB-Version 3.4, in der zwei Konsistenzeinstellungen zur Verfügung stehen: starke Konsistenz und letztliche Konsistenz. Da Azure Cosmos DB mehrere APIs enthält, werden die Konsistenzeinstellungen auf Kontoebene angewendet, und die Konsistenz wird durch die einzelnen APIs gesteuert.  Bis MongoDB 3.6 gab es das Konzept für Sitzungskonsistenz nicht. Wenn Sie für ein MongoDB-API-Konto die Nutzung der Sitzungskonsistenz festgelegt haben, wurde bei Verwendung der MongoDB-APIs die Konsistenz auf „Letztlich“ festgelegt. Falls Sie für ein MongoDB-API-Konto eine Garantie für das Lesen eigener Schreibvorgänge benötigen, sollte die Standardkonsistenzebene auf „Stark“ oder „Begrenzte Veraltung“ festgelegt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie weitere Informationen zu Konsistenzebenen und deren Vor- und Nachteile möchten, empfehlen wir die folgenden Ressourcen:

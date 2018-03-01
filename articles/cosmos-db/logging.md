@@ -12,36 +12,61 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 02/20/2018
 ms.author: mimig
-ms.openlocfilehash: b8f92953634f9294805521d8b925ed67d121a17d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0d76e3bea8b3d24c4232c699354320f6b873722e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Diagnoseprotokollierung für Azure Cosmos DB
 
-Sobald Sie damit begonnen haben, eine oder mehrere Azure Cosmos DB-Datenbanken zu verwenden, möchten Sie wahrscheinlich überwachen, wie und wann auf Ihre Datenbanken zugegriffen wird. Mit der Diagnoseprotokollierung in Azure Cosmos DB können Sie diese Überwachung durchführen. Durch Aktivieren der Diagnoseprotokollierung können Sie Protokolle an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und/oder nach [Log Analytics](https://azure.microsoft.com/services/log-analytics/) exportieren, einem Teil der [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite).
+Sobald Sie damit begonnen haben, eine oder mehrere Azure Cosmos DB-Datenbanken zu verwenden, möchten Sie wahrscheinlich überwachen, wie und wann auf Ihre Datenbanken zugegriffen wird. Dieser Artikel enthält eine Übersicht über alle auf der Azure-Plattform verfügbaren Protokolle. Anschließend wird erläutert, wie die Diagnoseprotokollierung zu Überwachungszwecken für das Senden von Protokollen an [Azure Storage](https://azure.microsoft.com/services/storage/) aktiviert wird, diese in [Azure Event Hubs ](https://azure.microsoft.com/services/event-hubs/) gestreamt und/oder in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) exportiert werden, das Teil der [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) ist.
+
+## <a name="logs-available-in-azure"></a>In Azure verfügbare Protokolle
+
+Bevor wir uns mit der Überwachung Ihres Azure Cosmos DB-Kontos befassen, sollten einige Punkte zur Protokollierung und Überwachung verdeutlicht werden. Auf der Azure-Plattform stehen verschiedene Typen von Protokollen bereit. Es gibt [Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [Metriken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), Ereignisse, Taktüberwachung, Vorgangsprotokolle usw. Es gibt eine Vielzahl von Protokollen. Eine vollständige Liste der Protokolle ist in [Azure Log Analytics](https://azure.microsoft.com/en-us/services/log-analytics/) im Azure-Portal enthalten. 
+
+Die folgende Abbildung zeigt die verschiedenen Arten verfügbarer Azure-Protokolle.
+
+![Verschiedene Arten von Azure-Protokollen](./media/logging/azurelogging.png)
+
+In den folgenden Erläuterungen werden Azure-Aktivitätsprotokolle, Azure-Diagnoseprotokolle und Metriken behandelt. Was ist der Unterschied zwischen diesen drei Protokollen? 
+
+### <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
+
+Das Azure-Aktivitätsprotokoll ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Das Aktivitätsprotokoll meldet Ereignisse der Steuerungsebene für Ihre Abonnements unter der Kategorie „Administration“. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. 
+
+Das Aktivitätsprotokoll unterscheidet sich von Diagnoseprotokollen. Aktivitätsprotokolle enthalten Daten zu den Vorgängen an einer Ressource von außen („Steuerungsebene“). Im Kontext von Azure Cosmos DB sind einige der Vorgänge auf Steuerungsebene das Erstellen einer Sammlung, Auflisten von Schlüsseln, Löschen von Schlüsseln, Auflisten der Datenbank usw. Diagnoseprotokolle werden von einer Ressource ausgegeben und enthalten Informationen zu den Vorgängen dieser Ressource („Datenebene“). Einige Beispiele für Diagnoseprotokolle auf Datenebene sind Löschen, Einfügen, Readfeed-Vorgang usw.
+
+Aktivitätsprotokolle (Vorgänge auf Steuerungsebene) können weitaus umfangreicher sein und die vollständige E-Mail-Adresse des Aufrufers, die IP-Adresse des Aufrufers, den Ressourcennamen, den Vorgangsnamen und die Mandanten-ID usw. enthalten. Das Aktivitätsprotokoll enthält verschiedene [Kategorien](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema) von Daten. Umfassende Informationen zu den Schemas dieser Kategorien finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema).  Diagnoseprotokolle können jedoch restriktiv sein, da personenbezogene Daten häufig daraus entfernt werden. Daher ist möglicherweise die IP-Adresse des Aufrufers vorhanden, jedoch wurde der letzte Inhaltsteil entfernt.
+
+### <a name="azure-metrics"></a>Azure-Metriken
+
+[Azure-Metriken](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics) umfassen die wichtigsten Typen von Azure-Telemetriedaten (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen ausgegeben werden. Mit Metriken können Sie Informationen zu Durchsatz, Speicher, Konsistenz, Verfügbarkeit und Latenz Ihrer Azure Cosmos DB-Ressourcen anzeigen. Weitere Informationen finden Sie unter [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md).
+
+### <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
+
+Azure-Diagnoseprotokolle werden von einer Ressource ausgegeben und stellen umfangreiche und in kurzen Abständen erfasste Betriebsdaten der Ressource bereit. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp. Diagnoseprotokolle auf Ressourcenebene unterscheiden sich auch von Diagnoseprotokollen auf Gastbetriebssystemebene. Diagnoseprotokolle auf Gastbetriebssystemebene werden von einem Agent erfasst, der auf einem virtuellen Computer oder einem anderen Ressourcentyp ausgeführt wird. Für Diagnoseprotokolle auf Ressourcenebene ist kein Agent erforderlich, und ressourcenspezifische Daten werden von der Azure-Plattform selbst erfasst. Für Diagnoseprotokolle auf Gastbetriebssystemebene werden Daten dagegen aus dem Betriebssystem und den Anwendungen erfasst, die auf einem virtuellen Computer ausgeführt werden.
 
 ![Diagnoseprotokollierung in Storage, Event Hubs oder Operations Management Suite mithilfe von Log Analytics](./media/logging/azure-cosmos-db-logging-overview.png)
 
-Verwenden Sie dieses Tutorial für den Einstieg in die Arbeit mit der Azure Cosmos DB-Protokollierung über das Azure-Portal, die CLI oder PowerShell.
-
-## <a name="what-is-logged"></a>Was wird protokolliert?
+### <a name="what-is-logged-by-azure-diagnostic-logs"></a>Was wird in Azure-Diagnoseprotokollen erfasst?
 
 * Alle authentifizierten Back-End-Anforderungen (TCP/REST) werden über alle APIs hinweg protokolliert. Dies umfasst auch Anforderungen, die aufgrund von Zugriffsberechtigungen, Systemfehlern oder fehlerhaften Anforderungen nicht erfolgreich sind. Unterstützung für vom Benutzer initiierte Graph-, Cassandra- und Table API-Anforderungen ist zurzeit nicht verfügbar.
 * Vorgänge für die Datenbank selbst; hierzu zählen CRUD-Vorgänge für alle Dokumente, Container und Datenbanken.
 * Vorgänge für Kontoschlüssel; dies umfasst das Erstellen, Ändern oder Löschen dieser Schlüssel.
 * Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Wenn Anforderungen beispielsweise über kein Bearertoken verfügen oder falsch formatiert oder abgelaufen sind, ist deren Token ungültig.
 
-## <a name="prerequisites"></a>Voraussetzungen
-Für dieses Tutorial benötigen Sie die folgenden Ressourcen:
+<a id="#turn-on"></a>
+## <a name="turn-on-logging-in-the-azure-portal"></a>Aktivieren der Protokollierung im Azure-Portal
+
+Zum Aktivieren der Diagnoseprotokollierung sind die folgenden Ressourcen erforderlich:
 
 * Azure Cosmos DB-Konto, -Datenbank und -Container müssen vorhanden sein. Anweisungen zum Erstellen dieser Ressourcen finden Sie unter [Erstellen eines Datenbankkontos mit dem Azure-Portal](create-sql-api-dotnet.md#create-a-database-account), [CLI-Beispiele](cli-samples.md) und [PowerShell-Beispiele](powershell-samples.md).
 
-<a id="#turn-on"></a>
-## <a name="turn-on-logging-in-the-azure-portal"></a>Aktivieren der Protokollierung im Azure-Portal
+Gehen Sie zum Aktivieren der Diagnoseprotokollierung im Azure-Portal wie folgt vor:
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) in Ihrem Azure Cosmos DB-Konto im linken Navigationsbereich auf **Diagnoseprotokolle**, und klicken Sie dann auf **Diagnose aktivieren**.
 
@@ -98,7 +123,7 @@ Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen 
 
 ## <a name="turn-on-logging-using-powershell"></a>Aktivieren der Protokollierung mit PowerShell
 
-Zum Aktivieren der Protokollierung mit PowerShell benötigen Sie mindestens Azure Powershell, Version 1.0.1.
+Zum Aktivieren der Diagnoseprotokollierung mit PowerShell benötigen Sie mindestens Azure Powershell, Version 1.0.1.
 
 Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
@@ -315,7 +340,7 @@ Weitere Informationen zu den Daten in jedem einzelnen JSON-Blob finden Sie unter
 
 ## <a name="managing-your-logs"></a>Verwalten der Protokolle
 
-Protokolle werden zwei Stunden nach Ausführung des Azure Cosmos DB-Vorgangs in Ihrem Konto verfügbar gemacht. Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe:
+Diagnoseprotokolle werden zwei Stunden nach Ausführung des Azure Cosmos DB-Vorgangs in Ihrem Konto verfügbar gemacht. Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe:
 
 * Verwenden Sie zum Schützen der Protokolle standardmäßige Azure-Zugriffssteuerungsmethoden, indem Sie einschränken, wer darauf zugreifen kann.
 * Löschen Sie Protokolle, die im Speicherkonto nicht mehr aufbewahrt werden sollen.
@@ -325,7 +350,7 @@ Protokolle werden zwei Stunden nach Ausführung des Azure Cosmos DB-Vorgangs in 
 <a id="#view-in-loganalytics"></a>
 ## <a name="view-logs-in-log-analytics"></a>Anzeigen von Protokollen in Log Analytics
 
-Wenn Sie beim Aktivieren der Protokollierung die Option **An Log Analytics senden** ausgewählt haben, werden Diagnosedaten aus Ihrer Sammlung innerhalb von zwei Stunden an Log Analytics weitergeleitet. Dies bedeutet: Wenn Sie sofort nach dem Aktivieren der Protokollierung Log Analytics anzeigen, sehen Sie keine Daten. Warten Sie zwei Stunden, und wiederholen Sie den Vorgang. 
+Wenn Sie beim Aktivieren der Diagnoseprotokollierung die Option **An Log Analytics senden** ausgewählt haben, werden Diagnosedaten aus Ihrer Sammlung innerhalb von zwei Stunden an Log Analytics weitergeleitet. Dies bedeutet: Wenn Sie sofort nach dem Aktivieren der Protokollierung Log Analytics anzeigen, sehen Sie keine Daten. Warten Sie zwei Stunden, und wiederholen Sie den Vorgang. 
 
 Bevor Sie Ihre Protokolle anzeigen, sollten Sie überprüfen, ob Ihr Log Analytics-Arbeitsbereich zur Verwendung der neuen Log Analytics-Abfragesprache aktualisiert wurde. Um dies zu überprüfen, öffnen Sie das [Azure-Portal](https://portal.azure.com), klicken Sie ganz links auf **Log Analytics**, und wählen Sie dann den Arbeitsbereichsnamen wie in der folgenden Abbildung dargestellt. Die Seite **OMS-Arbeitsbereich** wird angezeigt, wie in der folgenden Abbildung dargestellt.
 

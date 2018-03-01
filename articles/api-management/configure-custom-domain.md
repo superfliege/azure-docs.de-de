@@ -11,15 +11,18 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: 0f1c9e8e8298647721f16962d3f6756c74f8c8ef
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 96e233a26af95d4373323867046ca01fe1304608
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens 
 
 Wenn Sie eine APIM-Instanz (API Management) erstellen, wird sie von Azure einer Unterdomäne von azure-api.net (beispielsweise `apim-service-name.azure-api.net`) zugewiesen. Sie können Ihre APIM-Endpunkte jedoch unter Ihrem eigenen Domänennamen (beispielsweise **contoso.com**) verfügbar machen. In diesem Tutorial erfahren Sie, wie Sie Endpunkten, die durch eine Azure API Management-Instanz verfügbar gemacht werden, einen vorhandenen benutzerdefinierten DNS-Namen zuordnen.
+
+> [!WARNING]
+> Kunden, die das Anheften von Zertifikaten nutzen möchten, um die Sicherheit ihrer Anwendungen zu erhöhen, müssen einen benutzerdefinierten Domänennamen und ein von ihnen verwaltetes Zertifikat (nicht das Standardzertifikat) verwenden. Kunden, die stattdessen das Standardzertifikat anheften, übernehmen eine harte Abhängigkeit für die Eigenschaften des nicht von ihnen verwalteten Zertifikats. Dies ist kein empfohlenes Verfahren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

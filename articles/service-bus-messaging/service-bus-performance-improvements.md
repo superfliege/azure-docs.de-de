@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/31/2018
 ms.author: sethm
-ms.openlocfilehash: be702f0b08ce14012db9da10d874031c7a5a562b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: aba53fcadb9cefa70afc175dd02e4723eb6e5f5d
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -111,7 +111,12 @@ Die Batchverarbeitung wirkt sich nicht auf die Anzahl der abrechenbaren Messagin
 
 ## <a name="batching-store-access"></a>Batchverarbeitung des Speicherzugriffs
 
-Um den Durchsatz einer Warteschlange, eines Themas oder eines Abonnements zu erhöhen, verarbeitet Service Bus beim Schreiben in den internen Speicher mehrere Nachrichten als Batch. Ist diese Funktion für eine Warteschlange oder ein Thema aktiviert, erfolgt das Schreiben von Nachrichten in den Speicher als Batch. Ist diese Funktion für eine Warteschlange oder ein Abonnement aktiviert, erfolgt das Löschen von Nachrichten aus dem Speicher als Batch. Wenn für eine Entität Speicherzugriff als Batch aktiviert ist, verzögert Service Bus einen Schreibvorgang in den Speicher für diese Entität für bis zu 20 ms. Weitere Speichervorgänge, die während dieses Intervalls auftreten, werden dem Batch hinzugefügt. Speicherzugriff als Batch wirkt sich nur auf Vorgänge zum **Senden** und **Abschließen** aus, Empfangsvorgänge sind nicht betroffen. Speicherzugriff als Batch ist eine Eigenschaft einer Entität. Die Batchverarbeitung erfolgt für alle Entitäten, die Speicherzugriff als Batch ermöglichen.
+Um den Durchsatz einer Warteschlange, eines Themas oder eines Abonnements zu erhöhen, verarbeitet Service Bus beim Schreiben in den internen Speicher mehrere Nachrichten als Batch. Ist diese Funktion für eine Warteschlange oder ein Thema aktiviert, erfolgt das Schreiben von Nachrichten in den Speicher als Batch. Ist diese Funktion für eine Warteschlange oder ein Abonnement aktiviert, erfolgt das Löschen von Nachrichten aus dem Speicher als Batch. Wenn für eine Entität Speicherzugriff als Batch aktiviert ist, verzögert Service Bus einen Schreibvorgang in den Speicher für diese Entität für bis zu 20 ms. 
+
+> [!NOTE]
+> Es besteht keine Gefahr, dass bei der Batchverarbeitung Nachrichten verloren gehen, auch wenn am Ende eines Batchintervalls von 20 ms ein Service Bus-Fehler auftritt. 
+
+Weitere Speichervorgänge, die während dieses Intervalls auftreten, werden dem Batch hinzugefügt. Speicherzugriff als Batch wirkt sich nur auf Vorgänge zum **Senden** und **Abschließen** aus, Empfangsvorgänge sind nicht betroffen. Speicherzugriff als Batch ist eine Eigenschaft einer Entität. Die Batchverarbeitung erfolgt für alle Entitäten, die Speicherzugriff als Batch ermöglichen.
 
 Beim Erstellen neuer Warteschlangen, Themen oder Abonnements ist der Speicherzugriff als Batch standardmäßig aktiviert. Um den Speicherzugriff als Batch zu deaktivieren, legen Sie vor dem Erstellen der Entität die [EnableBatchedOperations][EnableBatchedOperations]-Eigenschaft auf **FALSE** fest. Beispiel: 
 

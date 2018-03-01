@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: a43d2ea10bfd6de2f8177283821f7aad59e9f610
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 40414afbfcd456353b4290585ccd9d594fbf55dd
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal
 
@@ -61,7 +61,10 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und klicken Sie auf
 Auf der Übersichtsseite wird eine Liste mit allen vorhandenen Paketerfassungen angezeigt. Der Status spielt dabei keine Rolle.
 
 > [!NOTE]
-> Für die Paketerfassung ist eine Verbindung mit dem Speicherkonto über Port 443 erforderlich.
+> Für die Paketerfassung sind folgende Verbindungen erforderlich:
+> * Ausgehende Verbindung mit dem Speicherkonto über Port 443
+> * Eingehende und ausgehende Verbindung mit 169.254.169.254
+> * Eingehende und ausgehende Verbindung mit 168.63.129.16
 
 ![Übersichtsseite zur Paketerfassung][1]
 
@@ -128,7 +131,7 @@ Klicken Sie in der Paketerfassungsansicht auf das **Kontextmenü** (...), oder k
 
 ## <a name="download-a-packet-capture"></a>Herunterladen einer Paketerfassung
 
-Nachdem die Paketerfassungssitzung abgeschlossen wurde, wird die Erfassungsdatei in den Blobspeicher oder in eine lokale Datei auf dem virtuellen Computer hochgeladen. Der Speicherort der Paketerfassung wird beim Erstellen der Sitzung definiert. Ein nützliches Tool für den Zugriff auf diese in einem Speicherkonto gespeicherten Erfassungsdateien ist der Microsoft Azure-Speicher-Explorer, der hier heruntergeladen werden kann: http://storageexplorer.com/
+Nachdem die Paketerfassungssitzung abgeschlossen wurde, wird die Erfassungsdatei in den Blobspeicher oder in eine lokale Datei auf dem virtuellen Computer hochgeladen. Der Speicherort der Paketerfassung wird beim Erstellen der Sitzung definiert. Ein nützliches Tool für den Zugriff auf diese in einem Speicherkonto gespeicherten Erfassungsdateien ist der Microsoft Azure Storage-Explorer, der hier heruntergeladen werden kann: http://storageexplorer.com/
 
 Wenn ein Speicherkonto angegeben wird, werden Paketerfassungsdateien in einem Speicherkonto am folgenden Speicherort gespeichert:
 ```

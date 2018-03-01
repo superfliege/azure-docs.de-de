@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 01/29/2018
+ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: af845d62b8e635449ada98cdea23f407815ffeb0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c0dc3181d3cd5c642dfca1c0f6031b83726478c0
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="what-are-azure-sql-database-service-tiers"></a>Was sind die Dienstebenen von SQL-Datenbank?
+# <a name="what-are-azure-sql-database-service-tiers"></a>Wie heißen die Dienstebenen von SQL-Datenbank?
 
-[Azure SQL-Datenbank](sql-database-technical-overview.md) bietet die Dienstebenen **Basic**, **Standard**, **Premium** und **Premium RS** sowohl für [einzelne Datenbanken](sql-database-single-database-resources.md) als auch für [Pools für elastische Datenbanken](sql-database-elastic-pool.md). Dienstebenen unterscheiden sich in erster Linie durch eine Reihe zur Wahl stehender Leistungsstufen und Speichergrößen sowie den Preis.  Alle Dienstebenen bieten Flexibilität beim Wechsel von Leistungsstufe und Speichergröße.  Einzelne Datenbanken und Pools für elastische Datenbanken werden stündlich basierend auf Dienstebene, Leistungsstufe und Speichergröße abgerechnet.   
+[Azure SQL-Datenbank](sql-database-technical-overview.md) bietet die Dienstebenen **Basic**, **Standard** und **Premium** sowohl für [einzelne Datenbanken](sql-database-single-database-resources.md) als auch für [Pools für elastische Datenbanken](sql-database-elastic-pool.md). Dienstebenen unterscheiden sich in erster Linie durch eine Reihe zur Wahl stehender Leistungsstufen und Speichergrößen sowie den Preis.  Alle Dienstebenen bieten Flexibilität beim Wechsel von Leistungsstufe und Speichergröße.  Einzelne Datenbanken und Pools für elastische Datenbanken werden stündlich basierend auf Dienstebene, Leistungsstufe und Speichergröße abgerechnet.   
 
 ## <a name="choosing-a-service-tier"></a>Auswählen einer Dienstebene
 
 Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Geschäftskontinuität, Speicher und Leistung ab.
-| | **Basic** | **Standard** |**Premium** |**Premium RS** |
+| | **Basic** | **Standard** |**Premium**  |
 | :-- | --: |--:| --:| --:| 
-|Zielworkload|Entwicklung und Produktion|Entwicklung und Produktion|Entwicklung und Produktion|Workload, die Datenverlust aufgrund von Dienstfehlern bis zu 5 Minuten tolerieren kann|
+|Zielworkload|Entwicklung und Produktion|Entwicklung und Produktion|Entwicklung und Produktion||
 |Betriebszeit-SLA|99,99 %|99,99 %|99,99 %|Während der Vorschau nicht zutreffend|
-|Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|35 Tage|
-|CPU|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|Mittel|
-|E/A-Durchsatz|Niedrig  | Mittel | Größenordnung höher als Standard|Identisch mit Premium|
-|E/A-Latenz|Höher als Premium|Höher als Premium|Niedriger als Basic und Standard|Identisch mit Premium|
-|Columnstore-Indizierung und In-Memory-OLTP|N/V|N/V|Unterstützt|Unterstützt|
+|Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|
+|CPU|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|
+|E/A-Durchsatz|Niedrig  | Mittel | Größenordnung höher als Standard|
+|E/A-Latenz|Höher als Premium|Höher als Premium|Niedriger als Basic und Standard|
+|Columnstore-Indizierung und In-Memory-OLTP|N/V|N/V|Unterstützt|
 |||||
 
 ## <a name="performance-level-and-storage-size-limits"></a>Einschränkungen von Leistungsstufe und Speichergröße
@@ -46,21 +46,21 @@ Leistungsstufen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 
 ### <a name="single-databases"></a>Einzeldatenbanken
 
-|  | **Basic** | **Standard** | **Premium** | **Premium RS**|
+|  | **Basic** | **Standard** | **Premium** | 
 | :-- | --: | --: | --: | --: |
-| Maximale Speichergröße* | 2 GB | 1 TB | 4 TB  | 1 TB  |
-| Maximale DTU-Anzahl | 5 | 3000 | 4000 | 1000 |
+| Maximale Speichergröße* | 2 GB | 1 TB | 4 TB  | 
+| Maximale DTU-Anzahl | 5 | 3000 | 4000 | |
 ||||||
 
 ### <a name="elastic-pools"></a>Pools für elastische Datenbanken
 
-| | **Basic** | **Standard** | **Premium** | **Premium RS**|
+| | **Basic** | **Standard** | **Premium** | 
 | :-- | --: | --: | --: | --: |
-| Maximale Speichergröße pro Datenbank*  | 2 GB | 1 TB | 1 TB | 1 TB |
-| Maximale Speichergröße pro Pool* | 156 GB | 4 TB | 4 TB | 1 TB |
-| Maximale Anzahl von eDTUs pro Datenbank | 5 | 3000 | 4000 | 1000 |
-| Maximale Anzahl von eDTUs pro Pool | 1600 | 3000 | 4000 | 1000 |
-| Maximale Anzahl von Datenbanken pro Pool | 500  | 500 | 100 | 100 |
+| Maximale Speichergröße pro Datenbank*  | 2 GB | 1 TB | 1 TB | 
+| Maximale Speichergröße pro Pool* | 156 GB | 4 TB | 4 TB | 
+| Maximale Anzahl von eDTUs pro Datenbank | 5 | 3000 | 4000 | 
+| Maximale Anzahl von eDTUs pro Pool | 1600 | 3000 | 4000 | 
+| Maximale Anzahl von Datenbanken pro Pool | 500  | 500 | 100 | 
 ||||||
 
 > [!IMPORTANT]

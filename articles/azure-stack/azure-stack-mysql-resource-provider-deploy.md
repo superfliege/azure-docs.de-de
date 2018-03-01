@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: db7daf61fa80854c17b58252d7d6cb30c329dfb1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3273f435cb65411c85e3a22369682d51e7a12baf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Verwenden von MySQL-Datenbanken in Microsoft Azure Stack
 
@@ -36,7 +36,7 @@ Der Ressourcenanbieter besteht aus drei Komponenten:
 
 - **Dem virtuellen Computer des MySQL-Ressourcenanbieteradapters**, einem virtuellen Windows-Computer, der die Anbieterdienste ausführt.
 
-- **Dem Ressourcenanbieter selbst**, der die Bereitstellungsanforderungen verarbeitet und Datenbankressourcen verfügbar macht.
+- **Dem Ressourcenanbieter selbst**, der die Bereitstellungsanforderungen verarbeitet und Datenbankressourcen verfügbar macht
 
 - **Servern, die MySQL Server hosten**, die Kapazität für Datenbanken bereitstellen und als „Hostserver“ bezeichnet werden.
 
@@ -88,7 +88,7 @@ Das Systemkonto muss über die folgenden Berechtigungen verfügen:
 
     - Unter „DependencyFilesLocalPath“ ist nur eine Zertifikatdatei vorhanden.
     
-    - Der Dateiname darf keine Sonderzeichen enthalten.
+    - Der Dateiname darf keine Sonderzeichen oder Leerzeichen enthalten.
 
 
 5. Öffnen Sie eine **neue** PowerShell-Administratorkonsole mit erhöhten Rechten. Wechseln Sie dann zu dem Verzeichnis, in das Sie die Dateien extrahiert haben. Verwenden Sie ein neues Fenster, um Probleme aufgrund von falschen PowerShell-Modulen zu vermeiden, die bereits in Ihrem System geladen sind.

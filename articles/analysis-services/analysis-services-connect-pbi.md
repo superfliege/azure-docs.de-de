@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/10/2018
+ms.date: 02/10/2018
 ms.author: owend
-ms.openlocfilehash: ea1094d0ce858cd7df9c49f18fb81b07e31fca53
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 568c18fb0591284995f5986f98b3762a9d19b056
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="connect-with-power-bi"></a>Herstellen einer Verbindung mit Power BI
 
@@ -38,7 +38,9 @@ Sobald Sie in Azure einen Server erstellt, und ein tabellarisches Modell bereitg
 
 3. Wenn Sie den Namen der Datenbank für tabellarische Modelle oder die Perspektive kennen, mit der Sie sich verbinden wollen, fügen Sie ihn unter **Datenbanken** ein. Andernfalls können Sie dieses Feld leer lassen und später eine Datenbank oder Perspektive auswählen.
 
-4. Lassen Sie den Standardwert **Live verbinden** ausgewählt, und klicken Sie dann auf **Verbinden**. Importverbindungen werden derzeit nicht unterstützt.
+4. Wählen Sie eine Verbindungsoption aus, und klicken Sie dann auf **Verbinden**. 
+
+    Sowohl **Live verbinden** als auch **Importieren** wird unterstützt. Es wird jedoch empfohlen, Liveverbindungen zu verwenden, da beim Importmodus einige Einschränkungen gelten. Insbesondere kann während des Imports die Serverleistung beeinträchtigt sein. Falls das Modell im Power BI-Dienst aktualisiert werden soll, wird darüber hinaus die Einstellung **Zugriff über Power BI zulassen** nur angewendet, wenn **Live verbinden** ausgewählt wird.
 
 5. Geben Sie bei der entsprechenden Aufforderung Ihre Anmeldeinformationen ein. 
 

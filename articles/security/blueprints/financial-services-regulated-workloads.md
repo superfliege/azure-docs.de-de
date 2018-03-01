@@ -1,6 +1,6 @@
 ---
-title: "Azure Blueprint Automation – Finanzdienstleistungen für regulierte Workloads"
-description: "Blueprint für Finanzdienstleistungen für regulierte Workloads"
+title: "Azure Security and Compliance Blueprint – Finanzdienstleistungen für geregelte Workloads (FFIEC)"
+description: "Azure Security and Compliance Blueprint – Finanzdienstleistungen für geregelte Workloads (FFIEC)"
 services: security
 documentationcenter: na
 author: simorjay
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 19e26c16866dada8dcff04a520ce4c208d67c365
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: a1167f56f595f905c6338868806351345c06b91a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-blueprint-automation-financial-services-blueprint-for-regulated-workloads"></a>Azure Blueprint Automation: Blueprint für Finanzdienstleistungen für regulierte Workloads
+# <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Azure Security and Compliance Blueprint – Finanzdienstleistungen für geregelte Workloads (FFIEC)
 
 ## <a name="overview"></a>Übersicht
 
-Mithilfe des Blueprints für Finanzdienstleistungen für regulierte Workloads können Sie eine sichere und konforme PaaS-Webanwendung (Platform as a Service) bereitstellen, die sensible Daten in der Cloud verarbeiten kann. Der Blueprint besteht aus automatisierten Skripts und Leitfäden, die eine einfache Referenzarchitektur und einen Entwurf vorstellen und die Einführung von Microsoft Azure-Lösungen vereinfachen. Dieser Blueprint veranschaulicht eine End-to-End-Lösung, die die Anforderungen von Organisationen erfüllt, die nach einem Möglichkeiten suchen, um die Belastungen und Kosten einer Bereitstellung in der Cloud zu verringern.
+Mithilfe des Blueprints für Finanzdienstleistungen für regulierte Workloads (Azure Security and Compliance Blueprint – Finanzdienstleistungen für geregelte Workloads (FFIEC)) können Sie eine sichere und konforme PaaS-Webanwendung (Platform as a Service) bereitstellen, die sensible Daten in der Cloud verarbeiten kann. Der Blueprint besteht aus automatisierten Skripts und Leitfäden, die eine einfache Referenzarchitektur und einen Entwurf vorstellen und die Einführung von Microsoft Azure-Lösungen vereinfachen. Dieser Blueprint veranschaulicht eine End-to-End-Lösung, die die Anforderungen von Organisationen erfüllt, die nach einem Möglichkeiten suchen, um die Belastungen und Kosten einer Bereitstellung in der Cloud zu verringern.
 
 Dieser Blueprint ist auf die Erfüllung der strengen Konformitätsstandards verschiedener Institutionen ausgerichtet. Hierzu zählen z.B. das American Institute of Certified Public Accountants mit Standards wie SOC 1 und SOC 2, DSS 3.2 des Payment Card Industry Data Security Standards Council sowie die Standards von FFIEC für das Sammeln, Speichern und Abrufen vertraulicher Finanzdaten. Darin wird die ordnungsgemäße Verarbeitung solcher Daten durch die Bereitstellung einer Lösung veranschaulicht, die Finanzdaten in einer sicheren, konformen Umgebung mit mehreren Stufen verwaltet. Die Lösung wird als Azure-basierte End-to-End-PaaS-Lösung bereitgestellt. 
 
@@ -52,7 +52,7 @@ Die Architektur, die die Bereitstellungsfunktionen der Azure PCI-DSS-Compliance-
 
 Der Blueprint behandelt den weiter unten angegebenen Anwendungsfall.
 
-> In diesem Szenario wird veranschaulicht, wie ein fiktiver Webstore sensible Daten in eine Azure-basierte PaaS-Cloudlösung migriert hat. Die Beispiellösung veranschaulicht die Verarbeitung und die Sammlung grundlegender Benutzerinformationen sowie ausgewählter sensibler Daten. Dieses Dokument basiert auf den Inhalten des Artikels „Azure Blueprint Automation: Zahlungsabwicklung für PCI-DSS-konforme Umgebungen“ zur Verarbeitung von Zahlungskartendaten. Der Artikel [Review and Guidance for Implementation](https://aka.ms/pciblueprintprocessingoverview) (Überblick über die Implementierung und Leitfaden), der einen Überblick über die PCI-DSS-konformen Umgebungen enthält, liefert weitere Informationen.
+> In diesem Szenario wird veranschaulicht, wie ein fiktiver Webstore sensible Daten in eine Azure-basierte PaaS-Cloudlösung migriert hat. Die Beispiellösung veranschaulicht die Verarbeitung und die Sammlung grundlegender Benutzerinformationen sowie ausgewählter sensibler Daten. Dieses Dokument basiert auf den Inhalten des Artikels „Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung“. Der Artikel [Review and Guidance for Implementation](https://aka.ms/pciblueprintprocessingoverview) (Überblick über die Implementierung und Leitfaden), der einen Überblick über die PCI-DSS-konformen Umgebungen enthält, liefert weitere Informationen.
 
 ### <a name="use-case"></a>Anwendungsfall
 Für die Migration von Finanzdaten mit Zahlungskartendaten in die Cloud ist ein kleiner Webstore namens *Contoso Webstore* verfügbar. 
@@ -111,7 +111,7 @@ Edna Benson ist Empfangsdame und Sachbearbeiterin. Sie ist dafür verantwortlich
 - Edna kann Finanzdaten überschreiben.
 - Mit dem Konto „Edna“ ist es nicht möglich, Finanzdaten ungefiltert anzuzeigen.
 
-> Im Contoso Webstore ist der Benutzer zum Testen der Möglichkeiten der bereitgestellten Umgebung automatisch der Benutzer **Edna**.
+
 
 ### <a name="contoso-webstore---estimated-pricing"></a>Contoso Webstore – geschätzte Kosten
 
@@ -172,7 +172,7 @@ Jede der Netzwerkschichten hat eine dedizierte Netzwerksicherheitsgruppe (NSG):
 - Eine NSG für die verwaltende Jumpbox (Bastionhost bzw. geschützter Host)
 - Eine NSG für die App Service-Umgebung
 
-Jede der Netzwerksicherheitsgruppen (NSG) hat bestimmte Ports und Protokolle, die für den sicheren und richtigen Betrieb der Lösung geöffnet sind. Weitere Informationen finden Sie unter [PCI-Anleitungen für Netzwerksicherheitsgruppen](#network-security-groups).
+Jede der Netzwerksicherheitsgruppen (NSG) hat bestimmte Ports und Protokolle, die für den sicheren und richtigen Betrieb der Lösung geöffnet sind. 
 
 Darüber hinaus werden die folgenden Konfigurationen für jede NSG aktiviert:
 
@@ -272,7 +272,7 @@ Ein virtueller Computer wurde als ein Jumpbox (Bastionshost) mit den folgenden K
 
 Das [Azure Security Center](https://azure.microsoft.com/services/security-center/) bietet eine zentrale Ansicht der Sicherheitsstatus sämtlicher Azure-Ressourcen. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und schnell Ressourcen ermitteln, die Ihre Aufmerksamkeit erfordern.  
 
-Bei [Azure-Ratgeber](/azure/advisor/advisor-overview) handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
+Beim [Azure Advisor](/azure/advisor/advisor-overview) handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
 
 [Microsoft Antimalware](/azure/security/azure-security-antimalware) für Azure Cloud Services und virtuelle Computer ist eine Echtzeitschutz-Lösung, mit der Viren, Spyware und andere Schadsoftware identifiziert und entfernt werden können. Sie können Warnungen konfigurieren, die ausgelöst werden, wenn bekannte Schadsoftware oder unerwünschte Software versucht, sich selbst zu installieren oder auf Azure-Systemen ausgeführt zu werden.
 
@@ -305,7 +305,7 @@ Die standardmäßige Bereitstellung dient dazu, ein Mindestmaß an Security Cent
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
-Die Komponenten für die Bereitstellung dieser Lösung sind im [Repository für Zahlungsverarbeitungs-Blueprintcode][code-repo] verfügbar. Die Bereitstellung der grundlegenden Architektur erfordert mehrere Schritte, die über Microsoft PowerShell 5.x ausgeführt werden. Um eine Verbindung mit der Website herzustellen, müssen Sie einen benutzerdefinierten Domänennamen (z. B. „contoso.com“) bereitstellen. Dies wird mit dem Parameter `-customHostName` in Schritt 2 angegeben. Weitere Informationen finden Sie unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Ein benutzerdefinierter Domänenname ist nicht erforderlich, um die Lösung erfolgreich bereitzustellen und auszuführen, aber es wird Ihnen nicht möglich sein, zu Demonstrationszwecken eine Verbindung mit der Website herzustellen.
+Die Komponenten für die Bereitstellung dieser Lösung sind im [Blueprint-Coderepository][code-repo] verfügbar. Die Bereitstellung der grundlegenden Architektur erfordert mehrere Schritte, die über Microsoft PowerShell 5.x ausgeführt werden. Um eine Verbindung mit der Website herzustellen, müssen Sie einen benutzerdefinierten Domänennamen (z. B. „contoso.com“) bereitstellen. Dies wird mit dem Parameter `-customHostName` in Schritt 2 angegeben. Weitere Informationen finden Sie unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Ein benutzerdefinierter Domänenname ist nicht erforderlich, um die Lösung erfolgreich bereitzustellen und auszuführen, aber es wird Ihnen nicht möglich sein, zu Demonstrationszwecken eine Verbindung mit der Website herzustellen.
 
 In den Skripts werden Domänenbenutzer zu dem Azure AD-Mandanten hinzugefügt, den Sie angeben. Microsoft empfiehlt, einen neuen Azure AD-Mandanten zur Verwendung beim Testen zu erstellen.
 
@@ -361,7 +361,7 @@ Microsoft empfiehlt ausdrücklich, eine Neuinstallation von PowerShell zu verwen
     
 ## <a name="threat-model"></a>Bedrohungsmodell
 
-Ein Datenflussdiagramm (DFD) und ein Beispielbedrohungsmodell für den Contoso-Webstore ([Azure Blueprint Program](https://aka.ms/pciblueprintthreatmodel)).
+Ein Datenflussdiagramm (DFD) und ein Beispielbedrohungsmodell für den Contoso-Webstore ([Azure Blueprint Program](https://aka.ms/pciblueprintthreatmodel))
 
 ![](images/pci-threat-model.png)
 

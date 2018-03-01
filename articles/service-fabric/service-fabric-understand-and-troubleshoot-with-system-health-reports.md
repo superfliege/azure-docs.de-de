@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: cd9a144baf06422b425a0bc6c516600d6fcd4b97
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: f2a07d58938ae77701d8df8099ec0aedf1524d6b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
 Azure Service Fabric-Komponenten erstellen direkt Integritätsberichte für alle Entitäten im Cluster. Im [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden Entitäten basierend auf den Systemberichten erstellt und gelöscht. Darüber hinaus werden sie in einer Hierarchie organisiert, in der Interaktionen zwischen den Entitäten erfasst werden.
@@ -638,6 +638,21 @@ Andere API-Aufrufe, die unterbrochen werden können, befinden sich in der **IRep
 
 - **IReplicator.BuildReplica(<Remote ReplicaId>)**: Diese Warnung weist auf ein Problem im Buildprozess hin. Weitere Informationen finden Sie unter [Replikatlebenszyklus](service-fabric-concepts-replica-lifecycle.md). Dies ist möglicherweise auf eine Fehlkonfiguration der Replikationsadresse zurückzuführen. Entsprechende Informationen finden Sie unter [Konfigurieren zustandsbehafteter Reliable Services](service-fabric-reliable-services-configuration.md) und [Angeben von Ressourcen in einem Dienstmanifest](service-fabric-service-manifest-resources.md). Ursache kann auch ein Problem mit dem Remoteknoten sein.
 
+### <a name="replicator-system-health-reports"></a>Systemintegritätsberichte für Replikatoren
+**Replikationswarteschlange ist voll:**
+**System.Replicator** gibt eine Warnung aus, wenn die Replikationswarteschlange voll ist. Beim primären Replikat ist die Replikationswarteschlange in der Regel voll, weil sekundäre Replikate beim Bestätigen von Vorgängen sehr langsam sind. Beim sekundären Element geschieht dies gewöhnlich, wenn der Dienst langsam beim Anwenden der Vorgänge ist. Die Warnung wird gelöscht, wenn die Warteschlange nicht mehr voll ist.
+
+* **SourceId**: System.Replicator
+* **Property**: **PrimaryReplicationQueueStatus** oder **SecondaryReplicationQueueStatus**, je nach Replikatrolle.
+* **Nächste Schritte:** Gilt der Bericht für das primäre Element, überprüfen Sie die Verbindung zwischen den Knoten im Cluster. Wenn alle Verbindungen fehlerfrei sind, kann mindestens ein langsames sekundäres Element mit hoher Datenträgerwartezeit für die Anwendung auf Vorgänge vorhanden sein. Wurde der Bericht für das sekundäre Element erstellt, überprüfen Sie die zuerst die Datenträgernutzung und -leistung im Knoten und anschließend die ausgehende Verbindung vom langsamen Knoten zum primären Element.
+
+**RemoteReplicatorConnectionStatus:**
+**System.Replicator** für das primäre Replikat gibt eine Warnung aus, wenn bei der Verbindung mit einem sekundären Replikator (Remotereplikator) Fehler auftreten. Die Adresse des Remotereplikators wird in der Meldung des Berichts angezeigt. Dadurch kann einfacher erkannt werden, ob eine falsche Konfiguration übergeben wurde oder Netzwerkfehler zwischen den Replikatoren auftreten.
+
+* **SourceId**: System.Replicator
+* **Property**: **RemoteReplicatorConnectionStatus**
+* **Nächste Schritte:** Überprüfen Sie die Fehlermeldung, und stellen Sie sicher, dass die Adresse des Remotereplikators richtig konfiguriert ist. (Wenn der Remotereplikator beispielsweise mit der Überwachungsadresse „localhost“ beginnt, ist er von außen nicht erreichbar.) Wenn die Adresse korrekt aussieht, überprüfen Sie die Verbindung zwischen dem primären Knoten und der Remoteadresse, um mögliche Netzwerkfehler zu ermitteln.
+
 ### <a name="replication-queue-full"></a>Replikationswarteschlange ist voll
 **System.Replicator** gibt eine Warnung aus, wenn die Replikationswarteschlange voll ist. Beim primären Replikat ist die Replikationswarteschlange in der Regel voll, weil sekundäre Replikate beim Bestätigen von Vorgängen sehr langsam sind. Beim sekundären Element geschieht dies gewöhnlich, wenn der Dienst langsam beim Anwenden der Vorgänge ist. Die Warnung wird gelöscht, wenn die Warteschlange nicht mehr voll ist.
 
@@ -747,7 +762,7 @@ HealthEvents                       :
 System.Hosting meldet einen Fehler, wenn das Herunterladen des Anwendungspakets nicht erfolgreich war.
 
 * **SourceId**: System.Hosting
-* **Property**: **Download:***RolloutVersion*
+* **Property**: **Download:***RolloutVersion*.
 * **Nächste Schritte**: Untersuchen Sie, warum das Herunterladen auf dem Knoten nicht erfolgreich war.
 
 ## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage-Systemintegritätsberichte
@@ -825,7 +840,7 @@ HealthEvents               :
 System.Hosting meldet einen Fehler, wenn das Herunterladen des Dienstpakets nicht erfolgreich war.
 
 * **SourceId**: System.Hosting
-* **Property**: **Download:***RolloutVersion*
+* **Property**: **Download:***RolloutVersion*.
 * **Nächste Schritte**: Untersuchen Sie, warum das Herunterladen auf dem Knoten nicht erfolgreich war.
 
 ### <a name="upgrade-validation"></a>Upgradeüberprüfung

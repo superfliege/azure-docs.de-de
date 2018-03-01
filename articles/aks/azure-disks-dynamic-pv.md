@@ -8,13 +8,13 @@ ms.service: container-service
 ms.topic: article
 ms.date: 1/25/2018
 ms.author: nepeters
-ms.openlocfilehash: e1f5b68d5d39dd846ebec525d1e83a6c0ef4971a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: aa89cf9fe4e2cd5b63017558e89401de86effdc9
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="persistent-volumes-with-azure-disks---dynamic-provisioning"></a>Persistente Volumes mit Azure-Datenträgern: dynamische Bereitstellung
+# <a name="persistent-volumes-with-azure-disks"></a>Persistente Volumes mit Azure-Datenträgern
 
 Ein persistentes Volume stellt ein Speicherelement dar, das für die Verwendung in einem Kubernetes-Cluster bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. Dieses Dokument beschreibt die dynamische Bereitstellung eines Azure-Datenträgers als persistentes Kubernetes-Volume in einem AKS-Cluster. 
 

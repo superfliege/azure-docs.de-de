@@ -5,13 +5,13 @@ services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 02/04/2018
 ms.author: anoopkv
-ms.openlocfilehash: e9e4bfc86df2cae1facac62472c915d91fb8c84c
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 9cdabfb4e24423d76e4f247f184ac4156c3b257b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-the-configuration-server"></a>Verwalten des Konfigurationsservers
 
@@ -72,6 +72,22 @@ Sie können den Konfigurationsserver bei Bedarf im selben Tresor erneut registri
       net stop obengine
       net start obengine
       ```
+## <a name="upgrade-the-configuration-server"></a>Aktualisieren Sie den Konfigurationsserver
+
+Sie führen Updaterollups aus, um den Konfigurationsserver zu aktualisieren. Updates können für maximal N-4 Versionen angewendet werden. Beispiel:
+
+- Wenn Sie Version 9.7, 9.8, 9.9 oder 9.10 ausführen, können Sie direkt auf 9.11 aktualisieren.
+- Falls Sie Version 9.6 oder früher ausführen und auf 9.11 aktualisieren möchten, müssen Sie zuerst das Upgrade auf Version 9.7 durchführen, bevor das Upgrade auf 9.11 möglich ist.
+
+Links zu Updaterollups zum Aktualisieren aller Versionen des Konfigurationsservers sind auf der [Wiki-Seite zu den Updates](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx) verfügbar.
+
+Aktualisieren Sie den Server wie folgt:
+
+1. Laden Sie die Datei mit dem Update-Installer auf den Konfigurationsserver herunter.
+2. Doppelklicken Sie auf die Datei, um das Installationsprogramm auszuführen.
+3. Das Installationsprogramm erkennt die aktuelle Version, die auf dem Computer ausgeführt wird.
+4. Klicken Sie auf **OK**, um den Vorgang zu bestätigen und das Upgrade durchzuführen. 
+
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>Löschen oder Aufheben der Registrierung eines Konfigurationsservers
 

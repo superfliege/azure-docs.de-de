@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: f3d89c627f462c9e34b2ff067972be56f5bed32f
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e94f08b9b9dad20c6f47367c47eb49aea59f4bd8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
 Mit der [allgemeinen Verfügbarkeit von Azure App Service]können Azure Mobile Services-Websites problemlos direkt migriert werden, um alle Features von Azure App Service zu nutzen.  Dieses Dokument erläutert, was Sie erwarten können, wenn Sie Ihre Website von Azure Mobile Services zu Azure App Service migrieren.
@@ -32,7 +32,7 @@ Die Migration Ihres Azure Mobile Service wandelt den Mobile Service in eine [Azu
 Microsoft empfiehlt Ihnen, Ihren Azure Mobile Service zu migrieren, um die Features von Azure App Service zu nutzen, einschließlich:
 
 * Neue Hostfeatures, u.a. [WebJobs] und [benutzerdefinierte Domänennamen].
-* Überwachung und Problembehandlung mit New Relic oder [Application Insights].
+* Überwachung und Problembehandlung mit [Application Insights].
 * Integrierte DevOps-Tools, einschließlich [Stagingslots], Rollback und Test in der Produktion.
 * [Automatische Skalierung], Lastenausgleich und [Leistungsüberwachung].
 

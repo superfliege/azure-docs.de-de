@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: 248b96cc97367ca2cb3fd82c9824d43dfee43c0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="scale-up-an-app-in-azure"></a>Zentrales Hochskalieren einer App in Azure
 
 > [!NOTE]
-> Der neue Tarif **PremiumV2** bietet Ihnen schnellere CPUs, SSD-Speicher und eine Verdopplung des Verhältnisses von Speicher zu Kern im Vergleich mit vorhandenen Tarifen. Informationen zum zentralen Hochskalieren auf den Tarif **PremiumV2** finden Sie unter [Konfigurieren der PremiumV2-Ebene für App Service](app-service-configure-premium-tier.md).
+> Der neue Tarif **PremiumV2** bietet Ihnen schnellere CPUs und SSD-Speicher und verdoppelt das Verhältnis von Speicher zu Kern im Vergleich mit vorhandenen Tarifen. Mit diesem Leistungsvorteil können Sie Geld sparen, da Apps in weniger Instanzen ausgeführt werden. Informationen zum zentralen Hochskalieren auf den Tarif **PremiumV2** finden Sie unter [Konfigurieren der PremiumV2-Ebene für App Service](app-service-configure-premium-tier.md).
 >
 
 In diesem Artikel wird die Vorgehensweise beim Skalieren Ihrer App in Azure App Service beschrieben. Es gibt zwei Workflows für die Skalierung: zentrales Hochskalieren und horizontales Hochskalieren. Dieser Artikel befasst sich mit dem Workflow zum zentralen Hochskalieren.
@@ -81,11 +81,6 @@ Wenn Ihre App von anderen Diensten abhängt, beispielsweise von Azure SQL-Datenb
 ## <a name="compare-pricing-tiers"></a>Vergleichen von Tarifen
 Ausführliche Informationen, z.B. VM-Größen für jeden Tarif, finden Sie unter [App Service-Preisdetails](https://azure.microsoft.com/pricing/details/web-sites/).
 Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie unterstützte Features in jedem Tarif finden Sie unter [App Service-Grenzwerte](../azure-subscription-service-limits.md#app-service-limits).
-
-> [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte und keine Verpflichtungen erforderlich.
-> 
-> 
 
 <a name="Next Steps"></a>
 

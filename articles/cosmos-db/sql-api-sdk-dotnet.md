@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 02/12/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6937cc0fc744d6e3a783d77b2a16b6fc09f3bf
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 796a455ffb906a47ab4ac9ae069537b0d7a31156
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -53,6 +53,14 @@ ms.lasthandoff: 12/18/2017
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
+
+* Die Regression wurde korrigiert, bei der „FeedOptions.MaxItemCount = -1“ einen System.ArithmeticException-Fehler mit dem Hinweis ausgelöst hat, dass die Seitengröße negativ ist.
+* Eine neue ToString()-Funktion wurde zu „QueryMetrics“ hinzugefügt.
+* Partitionsstatistiken wurden beim Lesen von Sammlungen verfügbar gemacht.
+* Die PartitionKey-Eigenschaft wurde zu „ChangeFeedOptions“ hinzugefügt.
+* Kleinere Fehlerbehebungen
+
 ### <a name="a-name11911191"></a><a name="1.19.1"/>1.19.1
 
 * Fügt die Möglichkeit hinzu, eindeutige Indizes für die Dokumente anzugeben, indem die UniqueKeyPolicy-Eigenschaft für die DocumentCollection-Klasse verwendet wird.
@@ -277,6 +285,7 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.20.1](#1.20.1) |05. Februar 2018 |--- |
 | [1.19.1](#1.19.1) |16. November 2017 |--- |
 | [1.19.0](#1.19.0) |10. November 2017 |--- |
 | [1.18.1](#1.18.1) |07. November 2017 |--- |

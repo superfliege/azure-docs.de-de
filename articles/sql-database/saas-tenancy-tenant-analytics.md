@@ -1,5 +1,5 @@
 ---
-title: "Ausführen von Analyseabfragen in Datenbanken | Microsoft-Dokumentation"
+title: "Ausführen mandantenübergreifender Analysen mit extrahierten Daten| Microsoft-Dokumentation"
 description: "Mandantenübergreifende Analyseabfragen mithilfe von Daten, die aus mehreren Datenbanken von Azure SQL-Datenbank extrahiert wurden"
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
@@ -15,18 +15,18 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: fb4311f28f55cfeb3f07a441adde18ae95f39e90
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 62f09a7ff353783b0f54202554d126bf59ee941a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Mandantenübergreifende Analysen mit extrahierten Daten
 
-Dieses Tutorial führt Sie durch ein vollständiges Analyseszenario. Das Szenario veranschaulicht, wie Unternehmen mithilfe von Analysen intelligentere Entscheidungen treffen können. Sie verwenden Analysen auf der Grundlage von Daten, die aus den einzelnen Mandantendatenbank extrahiert wurden, um Einblicke in das Mandantenverhalten zu erhalten. Dies umfasst auch ihre Verwendung der Wingtip Tickets SaaS-Beispielanwendung. Dieses Szenario umfasst drei Schritte: 
+Dieses Tutorial führt Sie durch ein vollständiges Analyseszenario. Das Szenario veranschaulicht, wie Unternehmen mithilfe von Analysen intelligentere Entscheidungen treffen können. Sie verwenden Analysen auf der Grundlage von Daten, die aus den einzelnen Mandantendatenbanken extrahiert wurden, um Einblicke in das Mandantenverhalten und die Anwendungsnutzung zu erhalten. Dieses Szenario umfasst drei Schritte: 
 
-1.  **Extrahieren von Daten** aus jeder Mandantendatenbank in einen Analysespeicher
-2.  **Optimieren der extrahierten Daten** für die Verarbeitung bei der Analyse
+1.  **Extrahieren** von Daten aus jeder Mandantendatenbank und **Laden** in einen Analysespeicher
+2.  **Transformieren der extrahierten Daten** für die Verarbeitung bei der Analyse
 3.  **Verwenden von Business Intelligence-Tools** zum Darstellen hilfreicher Einblicke für die Entscheidungsfindung 
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -42,29 +42,28 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="offline-tenant-analytics-pattern"></a>Analysemuster für Offlinemandanten
 
-Die von Ihnen entwickelten SaaS-Anwendungen haben Zugriff auf eine große Menge von Mandantendaten, die in der Cloud gespeichert sind. Die Daten stellen eine umfassende Quelle für Einsichten in den Betrieb und die Nutzung Ihrer Anwendung sowie über das Verhalten der Mandanten dar. An diesen Informationen können Sie sich bei der Entwicklung von Features, Verbesserungen der Benutzerfreundlichkeit und anderen Investitionen in App und Plattform orientieren.
+Mehrinstanzenfähige SaaS-Anwendungen verfügen in der Regel über eine große Menge von Mandantendaten, die in der Cloud gespeichert sind. Diese Daten stellen eine umfassende Quelle für Einsichten in den Betrieb und die Nutzung Ihrer Anwendung sowie das Verhalten Ihrer Mandanten dar. An diesen Informationen können Sie sich bei der Entwicklung von Features, Verbesserungen der Benutzerfreundlichkeit und anderen Investitionen in App und Plattform orientieren.
 
-Der Zugriff auf die Daten für alle Mandanten ist einfach, wenn sämtliche Daten sich in nur einer mehrinstanzenfähigen Datenbank befinden. Komplexer wird der Zugriff, wenn die Daten auf Tausende von Datenbanken verteilt sind. Zur Vereinfachung können Sie die Daten in eine Analysedatenbank oder ein Data Warehouse extrahieren. Sie können den Analysespeicher abfragen, um Einblicke in die Ticketdaten aller Mandanten zu erhalten.
+Der Zugriff auf Daten für alle Mandanten ist einfach, wenn sämtliche Daten sich in nur einer mehrinstanzenfähigen Datenbank befinden. Komplexer wird der Zugriff, wenn die Daten möglicherweise auf Tausende von Datenbanken verteilt sind. Eine Möglichkeit, um die Komplexität zu verringern und die Auswirkungen von Analyseabfragen auf Transaktionsdaten zu minimieren, besteht darin, Daten in eine speziell entworfene Analysedatenbank oder ein Data Warehouse zu extrahieren.
 
-In diesem Tutorial wird ein vollständiges Analyseszenario für diese SaaS-Beispielanwendung gezeigt. Zunächst werden die Daten mithilfe elastischer Aufträge aus den einzelnen Mandantendatenbanken extrahiert. Die Daten werden in den Analysespeicher übertragen. Der Analysespeicher kann entweder eine SQL-Datenbank oder ein SQL Data Warehouse sein. Für umfangreiche Datenextraktionen wird [Azure Data Factory](../data-factory/introduction.md) empfohlen.
+In diesem Tutorial wird ein vollständiges Analyseszenario für die Wingtip Tickets SaaS-Anwendung gezeigt. Zuerst werden Daten mithilfe von *elastischen Aufträgen* aus den einzelnen Mandantendatenbanken extrahiert und in Stagingtabellen in einem Analysespeicher geladen. Der Analysespeicher kann entweder eine SQL-Datenbank oder ein SQL Data Warehouse sein. Für umfangreiche Datenextraktionen wird [Azure Data Factory](../data-factory/introduction.md) empfohlen.
 
-Als Nächstes werden die aggregierten Daten in mehrere Tabellen im [Sternschema](https://www.wikipedia.org/wiki/Star_schema) aufgeteilt. Die Tabellen bestehen aus einer zentralen Faktentabelle und den zugehörigen Dimensionstabellen:
+Als Nächstes werden die aggregierten Daten in mehrere Tabellen im [Sternschema](https://www.wikipedia.org/wiki/Star_schema) transformiert. Die Tabellen bestehen aus einer zentralen Faktentabelle und den zugehörigen Dimensionstabellen.  Für Wingtip Tickets:
 
 - Die zentrale Faktentabelle im Sternschema enthält die Ticketdaten.
-- Die Dimensionstabellen enthalten Daten zu den Veranstaltungsorten, Veranstaltungen, Kunden und Kaufdaten.
+- Die Dimensionstabellen beschreiben Veranstaltungsorte, Veranstaltungen, Kunden und Kaufdaten.
 
-Zusammen ermöglichen die zentrale Tabelle und die Dimensionstabellen eine effiziente Analyseverarbeitung. Das in diesem Tutorial verwendete Sternschema wird in der folgenden Abbildung gezeigt:
+Zusammen ermöglichen die zentrale Faktentabelle und die Dimensionstabellen eine effiziente Analyseverarbeitung. Das in diesem Tutorial verwendete Sternschema wird in der folgenden Abbildung gezeigt:
  
 ![architectureOverView](media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-Schließlich werden die Tabellen im Sternschema abgefragt. Die Abfrageergebnisse werden angezeigt, um die Erkenntnisse über das Verhalten der Mandanten und ihre Verwendung der Anwendung hervorzuheben. Mit diesem Sternschema können Sie Abfragen ausführen, um u.a. Folgendes zu ermitteln:
+Schließlich wird der Analysespeicher mithilfe von **PowerBI** abgefragt, um die Erkenntnisse über das Verhalten der Mandanten und ihre Verwendung der Wingtip Tickets-Anwendung hervorzuheben. Sie führen Abfragen zu folgenden Zwecken aus:
+ 
+- Anzeigen der relativen Beliebtheit einzelner Veranstaltungsorte
+- Hervorheben von Mustern beim Ticketverkauf für verschiedene Veranstaltungen
+- Anzeigen des relativen Erfolgs verschiedener Veranstaltungsorte beim Ausverkauf der jeweiligen Veranstaltung
 
-- Wer kauft Tickets und für welchen Veranstaltungsort?
-- Verborgene Muster und Trends in den folgenden Bereichen:
-    - Die Ticketverkäufe
-    - Die relative Beliebtheit einzelner Veranstaltungsorte
-
-Informationen darüber, wie regelmäßig einzelne Mandanten den Dienst verwenden, ermöglichen das Erstellen von Serviceplänen, um die Bedürfnisse noch besser erfüllen zu können. Dieses Tutorial enthält grundlegende Beispiele für Erkenntnisse, die aus Mandantendaten abgeleitet werden können.
+Anhand der Informationen, wie die einzelnen Mandanten den Dienst verwenden, können Möglichkeiten zur Vermarktung und Verbesserung des Diensts für einen größeren Erfolg der Mandanten geprüft werden. Dieses Tutorial enthält grundlegende Beispiele für die Arten von Erkenntnissen, die aus Mandantendaten abgeleitet werden können.
 
 ## <a name="setup"></a>Einrichtung
 
@@ -76,7 +75,7 @@ Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Vor
 - [Quellcode](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) und Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant können von GitHub heruntergeladen werden. Weitere Informationen finden Sie in den Downloadanweisungen. Achten Sie darauf, die *ZIP-Datei zu entsperren*, bevor Sie ihren Inhalt extrahieren. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 - Power BI Desktop wird installiert. [Power BI Desktop herunterladen](https://powerbi.microsoft.com/downloads/)
 - Der Batch zusätzlicher Mandanten wurde bereitgestellt. Weitere Informationen finden Sie im [**Tutorial zum Bereitstellen von Mandanten**](saas-dbpertenant-provision-and-catalog.md).
-- Ein Auftragskonto und die Auftragskontodatenbank wurden erstellt. Weitere Informationen zu den entsprechenden Schritten finden Sie im [**Tutorial zur Schemaverwaltung**](saas-tenancy-schema-management.md#create-a-job-account-database-and-new-job-account).
+- Ein Auftragskonto und die Auftragskontodatenbank wurden erstellt. Weitere Informationen zu den entsprechenden Schritten finden Sie im [**Tutorial zur Schemaverwaltung**](saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
 ### <a name="create-data-for-the-demo"></a>Erstellen von Daten für die Demo
 
@@ -119,7 +118,7 @@ Zeigen Sie durch Erweitern des Knotens für den Analysespeicher die folgenden Da
 
 ### <a name="create-target-groups"></a>Erstellen von Zielgruppen 
 
-Bevor Sie fortfahren, stellen Sie sicher, dass Sie das Auftragskonto und die Datenbank „jobaccount“ bereitgestellt haben. In den nächsten Schritten werden elastische Aufträge zum Extrahieren von Daten aus den einzelnen Mandantendatenbanken und zum Speichern der Daten im Analysespeicher verwendet. Der zweite Auftrag teilt die Daten dann auf und speichert sie in Tabellen im Sternschema. Diese zwei Aufträge werden für zwei unterschiedliche Zielgruppen ausgeführt, nämlich **TenantGroup** und **AnalyticsGroup**. Der Auftrag zum Extrahieren wird für die Gruppe TenantGroup ausgeführt, die sämtliche Mandantendatenbanken enthält. Der Auftrag zum Aufteilen wird für die Gruppe AnalyticsGroup ausgeführt, die nur den Analysespeicher enthält. Erstellen Sie die Zielgruppen anhand der folgenden Schritte:
+Bevor Sie fortfahren, stellen Sie sicher, dass Sie das Auftragskonto und die Datenbank „jobaccount“ bereitgestellt haben. In den nächsten Schritten werden elastische Aufträge zum Extrahieren von Daten aus den einzelnen Mandantendatenbanken und zum Speichern der Daten im Analysespeicher verwendet. Der zweite Auftrag teilt die Daten dann auf und speichert sie in Tabellen im Sternschema. Diese zwei Aufträge werden für zwei unterschiedliche Zielgruppen ausgeführt, nämlich **TenantGroup** und **AnalyticsGroup**. Der Auftrag zum Extrahieren wird für die Gruppe „TenantGroup“ ausgeführt, die sämtliche Mandantendatenbanken enthält. Der Auftrag zum Aufteilen wird für die Gruppe „AnalyticsGroup“ ausgeführt, die nur den Analysespeicher enthält. Erstellen Sie die Zielgruppen anhand der folgenden Schritte:
 
 1. Stellen Sie in SSMS eine Verbindung mit der Datenbank **jobaccount** auf dem Server catalog-dpt-&lt;Benutzer&gt; her.
 2. Öffnen Sie in SSMS „*…\Learning Modules\Operational Analytics\Tenant Analytics\TargetGroups.sql*“. 
@@ -139,7 +138,7 @@ Jeder Auftrag extrahiert die entsprechenden Daten und sendet sie an den Analyses
 2. Öffnen Sie in SSMS „*...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*“.
 3. Ändern Sie @User oben im Skript, und ersetzen Sie dabei <User> durch den Benutzernamen, der beim Bereitstellen der Wingtip SaaS-App verwendet wurde. 
 4. Drücken Sie F5 zum Ausführen des Skripts, das den Auftrag zum Extrahieren der Ticket- und Kundendaten aus den einzelnen Mandantendatenbanken erstellt und ausführt. Der Auftrag speichert die Daten im Analysespeicher.
-5. Fragen Sie die Tabelle TicketsRawData in der Datenbank „tenantanalytics“ ab, um sicherzustellen, dass die Tabelle mit Ticketinformationen von allen Mandanten aufgefüllt wurde.
+5. Fragen Sie die Tabelle „TicketsRawData“ in der Datenbank „tenantanalytics“ ab, um sicherzustellen, dass die Tabelle mit Ticketinformationen von allen Mandanten aufgefüllt wurde.
 
 ![ticketExtracts](media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
@@ -157,7 +156,7 @@ In diesem Abschnitt des Tutorials definieren Sie einen Auftrag, der die extrahie
 
 1. Stellen Sie in SSMS eine Verbindung mit der Datenbank **jobaccount** auf dem Server catalog-dpt-&lt;Benutzer&gt; her.
 2. Öffnen Sie in SSMS „*…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*“.
-3. Drücken Sie **F5** zum Ausführen des Skripts, mit dem ein Auftrag definiert wird, der die gespeicherte Prozedur sp_ShredRawExtractedData im Analysespeicher aufruft.
+3. Drücken Sie **F5** zum Ausführen des Skripts, mit dem ein Auftrag definiert wird, der die gespeicherte Prozedur „sp_ShredRawExtractedData“ im Analysespeicher aufruft.
 4. Warten Sie lange genug, damit der Auftrag erfolgreich ausgeführt werden kann.
     - Überprüfen Sie in der Spalte **Lifecycle** der Tabelle „jobs.jobs_execution“ den Status des Auftrags. Stellen Sie vor dem Fortfahren sicher, dass der Auftrag **erfolgreich** abgeschlossen wurde. Bei einer erfolgreichen Ausführung werden die Daten ähnlich wie im folgenden Diagramm dargestellt:
 
@@ -172,7 +171,7 @@ Die Daten in der Tabelle im Sternschema enthalten sämtliche Daten zu Ticketverk
 Gehen Sie gemäß den folgenden Schritte vor, um eine Verbindung mit Power BI herzustellen und die Ansichten, die Sie zuvor erstellt haben, zu importieren:
 
 1. Starten Sie Power BI Desktop.
-2. Wählen Sie im Menüband „Start“ die Optionen **Daten abrufen** und **Mehr** aus. aus.
+2. Wählen Sie im Menüband „Start“ die Optionen **Daten abrufen** und **Mehr** aus.
 3. Wählen Sie im Fenster **Daten abrufen** die Option „Azure SQL-Datenbank“ aus.
 4. Geben Sie im Datenbank-Anmeldefenster den Servernamen (catalog-dpt-&lt;Benutzer&gt;.database.windows.net) ein. Wählen Sie **Importieren** für **Datenkonnektivitätsmodus** aus, und klicken Sie dann auf „OK“. 
 

@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 1141245739f86a482bb0b5f550fd3b89d1213ce1
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 9b156f80ae2b52ea7cb07bcb2c047d35d07b9154
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -376,7 +376,7 @@ Um das Skript zu verwenden, geben Sie die Erweiterung mit Ihren Azure Active Dir
 
 1. Führen Sie Windows PowerShell als Administrator aus.
 
-2. Geben Sie an der PowerShell-Eingabeaufforderung **cd c:\Programme\Microsoft\AzureMfa\Config** ein, und drücken Sie die EINGABETASTE.
+2. Geben Sie an der PowerShell-Eingabeaufforderung **cd "c:\Program Files\Microsoft\AzureMfa\Config"** ein, und drücken Sie die EINGABETASTE.
 
 3. Geben Sie an der nächsten Eingabeaufforderung **.\AzureMfsNpsExtnConfigSetup.ps1** ein, und drücken Sie die EINGABETASTE. Das Skript überprüft, ob das Azure AD PowerShell-Modul installiert ist. Wenn es nicht installiert ist, installiert das Skript das Modul für Sie.
  

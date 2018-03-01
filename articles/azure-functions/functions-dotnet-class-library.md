@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3de1e9b042a7a356c3c88e604e1e26c256d85657
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 8a098d2ecc004b1593310579c47c53778858e799
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -40,6 +40,9 @@ In Visual Studio wird mit der **Azure Functions**-Projektvorlage ein C#-Klassenb
 
 * [host.json](functions-host-json.md): Speichert Konfigurationseinstellungen, die sich auf alle Funktionen im Projekt auswirken, wenn es lokal oder in Azure ausgeführt wird.
 * [local.settings.json](functions-run-local.md#local-settings-file): Speichert App-Einstellungen und Verbindungszeichenfolgen, die verwendet werden, wenn das Projekt lokal ausgeführt wird.
+
+> [!IMPORTANT]
+> Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Verwenden Sie zum Deaktivieren einer Funktion das Attribut[Disable](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs). Fügen Sie beispielsweise die boolesche App-Einstellung „MY_TIMER_DISABLED“ hinzu, und wenden Sie `[Disable("MY_TIMER_DISABLED")]` auf Ihre Funktion an. Anschließend können Sie sie durch Änderung der App-Einstellung aktivieren und deaktivieren.
 
 ### <a name="functionname-and-trigger-attributes"></a>„FunctionName“ und Trigger-Attribute
 
@@ -83,7 +86,7 @@ public static class SimpleExampleWithOutput
 
 ### <a name="conversion-to-functionjson"></a>Konvertierung in „function.json“
 
-Im Buildprozess wird eine *function.json*-Datei in einem Funktionsordner im Ordner für Builds erstellt. Diese Datei ist nicht dazu vorgesehen, direkt bearbeitet zu werden. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. 
+Im Buildprozess wird eine *function.json*-Datei in einem Funktionsordner im Ordner für Builds erstellt. Wie bereits erwähnt ist diese Datei nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. 
 
 Der Zweck dieser Datei besteht darin, Informationen für den Skalierungscontroller bereitzustellen, die dieser für [Skalierungsentscheidungen hinsichtlich des Verbrauchsplans](functions-scale.md#how-the-consumption-plan-works) verwenden kann. Aus diesem Grund hat die Datei nur Triggerinformationen und keine Eingabe- oder Ausgabebindungen.
 

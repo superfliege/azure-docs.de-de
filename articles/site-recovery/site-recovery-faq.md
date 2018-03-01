@@ -1,24 +1,18 @@
 ---
-title: "Häufig gestellte Fragen zu Azure Site Recovery | Microsoft Docs"
+title: "Häufig gestellte Fragen zu Azure Site Recovery | Microsoft-Dokumentation"
 description: "Dieser Artikel enthält häufig gestellte Fragen zu Azure Site Recovery."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: 5cdc4bcd-b4fe-48c7-8be1-1db39bd9c078
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/19/2017
+ms.date: 02/18/2018
 ms.author: raynew
-ms.openlocfilehash: 82cec6df5d5d6ecf1147cac29b8fc46966ea57de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1a7d57c1f1f84e7ce3b931c2911ae7394b066f8d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
 Dieser Artikel enthält häufig gestellte Fragen zur Azure Site Recovery. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -36,7 +30,7 @@ Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfal
 
 
 ### <a name="can-i-replicate-azure-vms"></a>Können virtuelle Azure-Computer repliziert werden?
-Ja, Sie können die unterstützten virtuellen Azure-Computer zwischen Azure-Regionen replizieren. [detaillierte Kapazitätsplanung](site-recovery-azure-to-azure.md)
+Ja, Sie können die unterstützten virtuellen Azure-Computer zwischen Azure-Regionen replizieren. [Weitere Informationen](site-recovery-azure-to-azure.md)
 
 ### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>Was benötige ich in Hyper-V, um die Replikation mit Site Recovery zu orchestrieren?
 Was Sie für Hyper-V-Hostserver benötigen, richtet sich nach dem Bereitstellungsszenario. Sehen Sie sich die Voraussetzungen für Hyper-V an:
@@ -161,15 +155,15 @@ Ein Failover erfolgt nicht automatisch. Sie initiieren Failover mit einem Mauskl
 
 Zum Automatisieren können Sie den lokalen Orchestrator oder Operations Manager verwenden, um einen Fehler bei virtuellen Computern zu erkennen und dann das Failover mithilfe des SDK auszulösen.
 
-* [hier](site-recovery-create-recovery-plans.md) .
+* [Weitere Informationen](site-recovery-create-recovery-plans.md) .
 * [Weitere Informationen](site-recovery-failover.md) .
 * [Weitere Informationen](site-recovery-failback-azure-to-vmware.md) .
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-failover-back-to-a-different-host"></a>Angenommen, mein lokaler Host reagiert nicht mehr oder ist abgestürzt. Kann ein Failover zurück auf einen anderen Host ausgeführt werden?
 Ja, Sie können über die Wiederherstellung an einem alternativen Speicherort ein Failback auf einen anderen Host als Azure ausführen. Unter den folgenden Links für virtuelle VMware-Computer und virtuelle Hyper-V-Computer werden die verfügbaren Optionen beschrieben.
 
-* [Für virtuelle VMware-Computer](site-recovery-how-to-failback-azure-to-vmware.md#fail-back-to-the-original-or-alternate-location)
-* [Für virtuelle Hyper-V-Computer](site-recovery-failback-from-azure-to-hyper-v.md#failback-to-an-alternate-location)
+* [Für virtuelle VMware-Computer](concepts-types-of-failback.md#alternate-location-recovery-alr)
+* [Für virtuelle Hyper-V-Computer](hyper-v-azure-failback.md#perform-failback)
 
 ## <a name="service-providers"></a>Dienstanbieter
 ### <a name="im-a-service-provider-does-site-recovery-work-for-dedicated-and-shared-infrastructure-models"></a>Ich bin ein Dienstanbieter. Ist Site Recovery für dedizierte und gemeinsam genutzte Infrastrukturmodelle geeignet?
