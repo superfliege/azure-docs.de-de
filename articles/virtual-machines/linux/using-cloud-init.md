@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 88133aff36aaef544d555cb121e23ff23fcc3367
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 2d110705a86fa8bc05859bd8bfde34b0b5b11575
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init-Unterstützung für virtuelle Computer in Azure
 In diesem Artikel wird die bereits vorhandene Unterstützung für [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren virtueller Computer (VM) oder VM-Skalierungsgruppen (VMSS) während der Bereitstellung in Azure erläutert. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden.  
@@ -29,7 +29,7 @@ In diesem Artikel wird die bereits vorhandene Unterstützung für [cloud-init](h
 
 Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 
- Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos bei VMs und VM-Skalierungsgruppen (VMSS). In der folgenden Tabelle sind die aktuell verfügbaren cloud-init-fähigen Images für die Azure-Plattform aufgeführt:
+ Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos bei VMs und VM Scale Sets (VMSS). In der folgenden Tabelle sind die aktuell verfügbaren cloud-init-fähigen Images für die Azure-Plattform aufgeführt:
 
 | Herausgeber | Angebot | SKU | Version | cloud-init-fähig
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -38,6 +38,8 @@ Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. ni
 |CoreOS |CoreOS |Stable |neueste |Ja |
 |OpenLogic |CentOS |7-CI |neueste |preview |
 |RedHat |RHEL |7-RAW-CI |neueste |preview |
+
+Während der Vorschauphase unterstützt Azure Stack die Bereitstellung von RHEL 7.4 und CentOS 7.4 mithilfe von cloud-init nicht.
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Was ist der Unterschied zwischen cloud-init und Linux-Agent (WALA)?
 WALA ist ein für die Azure-Plattform spezifischer Agent zum Bereitstellen und Konfigurieren von virtuellen Computern und zum Behandeln von Azure-Erweiterungen. Wir ergänzen das Konfigurieren von virtuellen Computern um cloud-init anstelle des Linux-Agents, damit cloud-init-Kunden ihre vorhandenen cloud-init-Skripts verwenden können.  Wenn Sie in cloud-init-Skripts zum Konfigurieren von Linux-Systemen investiert haben, sind für die Aktivierung **keine zusätzlichen Einstellungen erforderlich**. 
@@ -49,7 +51,7 @@ WALA-Konfigurationen von virtuellen Computern sind zeitlich beschränkt auf die 
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>Bereitstellen von cloud-init-fähigen virtuellen Computern
 Das Bereitstellen eines clout-init-fähigen virtuellen Computers besteht einfach aus dem Verweisen auf eine cloud-init-fähige Distribution während der Bereitstellung.  Die Verwalter von Linux-Distributionen müssen cloud-init in ihren bei Azure veröffentlichten Basisimages aktivieren und integrieren. Nachdem Sie sich vergewissert haben, dass das Image, das Sie bereitstellen möchten, cloud-init unterstützt, können Sie es mit der Azure-Befehlszeilenschnittstelle bereitstellen. 
 
-Der erste Schritt der Bereitstellung dieses Images ist die Erstellung einer Ressourcengruppe mit dem Befehl [az group create](/cli/azure/group#create). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Der erste Schritt der Bereitstellung dieses Images ist die Erstellung einer Ressourcengruppe mit dem Befehl [az group create](/cli/azure/group#az_group_create). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 

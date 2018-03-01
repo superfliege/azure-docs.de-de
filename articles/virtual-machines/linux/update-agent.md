@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mingzhan
-ms.openlocfilehash: c79e37976a58ae5384b5856e0f7f258a773ef0fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 455de7bc0bca86ad542b6606181b0daf146a5e6a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Vorgehensweise zum Aktualisieren des Azure Linux-Agents auf einer VM
 
@@ -29,6 +29,9 @@ Zum Aktualisieren Ihres [Azure Linux-Agents](https://github.com/Azure/WALinuxAge
 - Eine SSH-Verbindung mit diesem virtuellen Linux-Computer.
 
 Sie müssen zunächst immer nach einem Paket im Linux-Distributionsrepository suchen. Es kann vorkommen, dass es sich bei dem verfügbaren Paket möglicherweise nicht um die neueste Version handelt. Durch die Aktivierung von AutoUpdate wird jedoch gewährleistet, dass der Linux-Agent stets das neueste Update erhält. Falls Probleme bei der Installation mit dem Paket-Manager auftreten sollten, wenden Sie sich an den Support des Distributionsanbieters.
+
+## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Unterstützte VM-Agent-Mindestversion in Azure
+Sehen Sie sich die Informationen zur [unterstützten Mindestversion für VM-Agents in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) an, bevor Sie den Vorgang fortsetzen.
 
 ## <a name="updating-the-azure-linux-agent"></a>Aktualisieren des Azure Linux-Agents
 

@@ -1,10 +1,10 @@
 ---
 title: 'Verbinden von klassischen virtuellen Netzwerken mit Azure Resource Manager-VNETs: Portal | Microsoft Docs'
-description: Hier erfahren Sie, wie Sie mithilfe von VPN Gateway und des Portals eine VPN-Verbindung zwischen klassischen VNets und Resource Manager-VNets erstellen.
+description: Erstellen einer VPN-Verbindung zwischen klassischen VNETs und Resource Manager-VNETs mithilfe von VPN Gateway und des Portals
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 5a90498c-4520-4bd3-a833-ad85924ecaf9
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2017
+ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8fd058d74d00ecc980d295ee6bd9680ff832f891
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 40a380a04088e948a7e81625963a5915980764c3
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
 
@@ -33,7 +33,7 @@ In diesem Artikel wird erläutert, wie Sie klassische VNets mit Resource Manager
 
 Das Verbinden eines klassischen VNet mit einem Resource Manager-VNet ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen. Sie können auch eine Verbindung zwischen VNets in unterschiedlichen Abonnements und Regionen erstellen. Es ist auch möglich, VNets zu verbinden, die bereits über Verbindungen mit lokalen Netzwerken verfügen, sofern sie mit einem dynamischen oder routenbasierten Gateway konfiguriert wurden. Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen](#faq) . 
 
-Wenn sich Ihre VNets in der gleichen Region befinden, kann es stattdessen hilfreich sein, sie mittels VNet-Peering zu verbinden. Beim VNet-Peering wird kein VPN-Gateway verwendet. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md). 
+Falls Sie noch kein Gateway für virtuelle Netzwerke besitzen und keins erstellen möchten, können Sie stattdessen die VNETS mittels VNET-Peering verbinden. Beim VNET-Peering wird kein VPN-Gateway verwendet. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="before"></a>Voraussetzungen
 
@@ -196,16 +196,16 @@ In diesem Abschnitt ersetzen Sie die Platzhalter-IP-Adresse, die Sie beim Festle
 2. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk auf **Übersicht**.
 3. Klicken Sie unter **VPN-Verbindungen** auf den Namen des lokalen Standorts in der Abbildung.
 
-    ![VPN-Verbindungen](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-Verbindungen")
+  ![VPN-Verbindungen](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-Verbindungen")
 4. Klicken Sie auf der Seite **Standort-zu-Standort-VPN-Verbindungen** auf den Namen des Standorts.
 
-    ![Standortname](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Lokaler Standortname")
+  ![Standortname](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Lokaler Standortname")
 5. Klicken Sie auf der Seite „Verbindung“ für den lokalen Standort auf den Namen des lokalen Standorts, um die Seite **Lokaler Standort** zu öffnen.
 
-    ![Öffnen von „Lokaler Standort“](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Öffnen von „Lokaler Standort“")
+  ![Öffnen von „Lokaler Standort“](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Öffnen von „Lokaler Standort“")
 6. Ersetzen Sie auf der Seite **Lokaler Standort** die **IP-Adresse des VPN-Gateways** durch die IP-Adresse des Ressourcen-Manager-Gateways.
 
-    ![Gateway-IP-Adresse](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Gateway-IP-Adresse")
+  ![Gateway-IP-Adresse](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Gateway-IP-Adresse")
 7. Klicken Sie auf **OK**, um die IP-Adresse zu aktualisieren.
 
 ## <a name="RMtoclassic"></a>Abschnitt 4 – Erstellen der Verbindung zwischen dem Resource Manager-VNET und dem klassischen VNET
@@ -223,34 +223,46 @@ In den folgenden Schritten konfigurieren Sie mithilfe des Azure-Portals die Verb
 9. Erstellen Sie einen **gemeinsam verwendeten Schlüssel**. Dieser Schlüssel wird auch bei der Verbindung verwendet, die Sie zwischen dem klassischen VNET und dem Resource Manager-VNET erstellen. Sie können den Schlüssel generieren oder einen solchen erstellen. In unserem Beispiel wird „abc123“ verwendet, aber Sie können (und sollten) einen komplexeren Wert verwenden.
 10. Klicken Sie auf **OK**, um die Verbindung zu erstellen.
 
-##<a name="classictoRM"></a>Abschnitt 5 – Erstellen der Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET
+## <a name="classictoRM"></a>Abschnitt 5 – Erstellen der Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET
 
 In den folgenden Schritten konfigurieren Sie die Verbindung zwischen dem klassischen VNET und dem Resource Manager-VNET. Für diese Schritte ist PowerShell erforderlich. Diese Verbindung kann nicht im Portal erstellt werden. Stellen Sie sicher, dass Sie sowohl die SM-PowerShell-Cmdlets (klassisch) als auch die RM-PowerShell-Cmdlets (Resource Manager) heruntergeladen und installiert haben.
 
 ### <a name="1-connect-to-your-azure-account"></a>1. Herstellen einer Verbindung mit Ihrem Azure-Konto
 
-Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und melden Sie sich bei Ihrem Azure-Konto an. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto auf. Nachdem Sie sich angemeldet haben, werden Ihre Kontoeinstellungen heruntergeladen, sodass sie in Azure PowerShell verfügbar sind.
+Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und melden Sie sich bei Ihrem Azure-Konto an. Nachdem Sie sich angemeldet haben, werden Ihre Kontoeinstellungen heruntergeladen, sodass sie in Azure PowerShell verfügbar sind. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto für das Resource Manager-Bereitstellungsmodell auf:
 
 ```powershell
 Login-AzureRmAccount
 ```
-   
-Falls Sie mehrere Abonnements haben, benötigen Sie eine Liste Ihrer Azure-Abonnements.
+
+Rufen Sie eine Liste Ihrer Azure-Abonnements ab.
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Geben Sie das Abonnement an, das Sie verwenden möchten. 
+Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement an, das Sie verwenden möchten.
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "Name of subscription"
 ```
 
-Fügen Sie Ihr Azure-Konto hinzu, um die klassischen PowerShell-Cmdlets zu verwenden. Dazu können Sie den folgenden Befehl verwenden:
+Melden Sie sich anschließend an, um die klassischen PowerShell-Cmdlets zu verwenden (Dienstverwaltung). Verwenden Sie den folgenden Befehl, um Ihr Azure-Konto für das klassische Bereitstellungsmodell hinzuzufügen:
 
 ```powershell
 Add-AzureAccount
+```
+
+Rufen Sie eine Liste Ihrer Abonnements ab. Dieser Schritt kann je nach Azure-Modulinstallation beim Hinzufügen der Dienstverwaltungs-Cmdlets notwendig sein.
+
+```powershell
+Get-AzureSubscription
+```
+
+Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement an, das Sie verwenden möchten.
+
+```powershell
+Select-AzureSubscription -SubscriptionName "Name of subscription"
 ```
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2. Anzeigen der Werte der Netzwerkkonfigurationsdatei

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 0fd6de8b59400270e42d428664df74d81d790f62
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: c132baad4d26fe481fa022329da32815b6994ad7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -634,6 +634,14 @@ Die Table Storage-Ausgabebindung unterstützt folgende Szenarien:
 * **Schreiben von Zeilen in JavaScript**
 
   In JavaScript-Funktionen erfolgt der Zugriff auf die Tabellenausgabe mithilfe von `context.bindings.<name>`.
+
+## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
+
+| Bindung | Verweis |
+|---|---|
+| Table | [Tabellenfehlercodes](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Blob, Tabelle, Warteschlange | [Speicherfehlercodes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob, Tabelle, Warteschlange | [Problembehandlung](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: fcc7e1cbacc7889c9525207b238162e6caa6b00b
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 20115897bb5ae2638588e79d80700fa8ece06104
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Service Bus-Metriken in Azure Monitor (Vorschauversion)
 
@@ -28,7 +28,7 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 ## <a name="access-metrics"></a>Zugreifen auf Metriken
 
-Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie die Operation Management Suite und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
+Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie die Operation Management Suite (OMS) und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
 
 Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) in Azure Monitor konfiguriert.
 
@@ -59,7 +59,7 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 
 Zählt die Anzahl der Anforderungen von Daten und Verwaltungsvorgängen
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | Eingehende Anforderungen (Vorschau) | Die Anzahl der Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 |Erfolgreiche Anforderungen (Vorschau)|Die Anzahl der erfolgreichen Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
@@ -69,14 +69,14 @@ Zählt die Anzahl der Anforderungen von Daten und Verwaltungsvorgängen
 
 ## <a name="message-metrics"></a>Nachrichtenmetriken
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 |Eingehende Nachrichten (Vorschau)|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Service Bus gesendet wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 |Ausgehende Nachrichten (Vorschau)|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum von Service Bus empfangen wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 
 ## <a name="connection-metrics"></a>Verbindungsmetriken
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 |ActiveConnections (Vorschau)|Die Anzahl der aktiven Verbindungen in einem Namespace und bei einer Entität<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 |Geöffnete Verbindungen (Vorschau)|Die Anzahl der geöffneten Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
@@ -84,7 +84,7 @@ Zählt die Anzahl der Anforderungen von Daten und Verwaltungsvorgängen
 
 ## <a name="resource-usage-metrics"></a>Metriken zur Ressourcennutzung
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 |CPU-Auslastung pro Namespace (Vorschau)|Der Prozentsatz der CPU-Auslastung des Namespace<br/><br/> Einheit: Prozent <br/> Aggregationstyp: Maximum <br/> Dimension: EntityName|
 |Arbeitsspeichernutzung pro Namespace (Vorschau)|Der Prozentsatz der Arbeitsspeichernutzung des Namespace<br/><br/> Einheit: Prozent <br/> Aggregationstyp: Maximum <br/> Dimension: EntityName|
@@ -93,7 +93,7 @@ Zählt die Anzahl der Anforderungen von Daten und Verwaltungsvorgängen
 
 Azure Service Bus unterstützt folgende Dimensionen für Metriken in Azure Monitor. Das Hinzufügen von Dimensionen zu Ihren Metriken ist optional. Wenn Sie keine Dimensionen hinzufügen, werden Metriken auf Namespaceebene angegeben. 
 
-|Dimensionsname|Beschreibung|
+|Dimensionsname|BESCHREIBUNG|
 | ------------------- | ----------------- |
 |EntityName| Service Bus unterstützt Messagingentitäten unter dem Namespace.|
 

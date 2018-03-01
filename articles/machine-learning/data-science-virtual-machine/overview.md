@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: a8b9efffd6373ee33026e915b0a14e15d41295b3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 3cedc16e3a420fd846b7860b69f4b19591ad1777
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Einführung in Azure Data Science Virtual Machine für Linux und Windows
 
-Der virtuelle Computer für Data Science (DSVM) ist ein benutzerdefiniertes VM-Image in der Microsoft Azure-Cloud, das speziell für Data Science konfiguriert wurde. Es hat viele beliebte Data Science und andere Tools vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können. Er ist unter Windows Server und unter Linux verfügbar. Wir bieten eine Windows-Edition von DSVM für Windows Server 2016 und 2012. Wir bieten eine Linux-Edition des DSVM in Linux-Distributionen auf der Basis von Ubuntu 16.04 LTS und OpenLogic 7.2 CentOS an. 
+Der virtuelle Computer für Data Science (DSVM) ist ein benutzerdefiniertes VM-Image in der Microsoft Azure-Cloud, das speziell für Data Science konfiguriert wurde. Es hat viele beliebte Data Science und andere Tools vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können. Er ist unter Windows Server und unter Linux verfügbar. Wir bieten eine Windows-Edition von DSVM für Windows Server 2016 und 2012. Wir bieten Linux-Editionen von DSVM für Ubuntu 16.04 LTS und CentOS 7.4.
 
 In diesem Thema wird erläutert, was Sie mit der Data Science-VM tun können, außerdem einige der wichtigsten Szenarios für die Verwendung des virtuellen Computers, sowie die wichtigsten Features für die Windows- und Linux-Versionen, und es enthält Anweisungen zu deren Verwendung.
 
@@ -49,7 +49,7 @@ Data Science Hackathons/Wettbewerbe oder umfangreiche Datenmodelle und Auswertun
 Die Data Science-VM kann zur Auswertung oder zum Lernen von Tools wie Microsoft ML Server, SQL Server, Visual Studio-Tools, Jupyter, Deep Learning-/ML-Toolkits und neue Tools, die in der Community beliebt sind, mit minimalem Einrichtungsaufwand verwendet werden. Da die Data Science-VM schnell eingerichtet werden kann, kann sie in anderen kurzfristigen Szenarios wie z.B. der Replikation veröffentlichter Experimente, Ausführen von Demos, dem Folgen exemplarischer Vorgehensweisen in Online-Sitzungen oder für Konferenz-Demos verwendet werden.
 
 ### <a name="deep-learning"></a>Deep Learning
-Der virtuelle Computer für Data Science kann zum Modelltraining mit Deep Learning-Algorithmen auf Basis von GPU-Hardware (Grafikprozessoren) verwendet werden. Durch die Skalierungsfunktionen für VMs der Azure-Cloud hilft die DSVM Ihnen, GPU-basierte Hardware in der Cloud nach Bedarf einsetzen zu können. Sie können zu einer GPU-basierten VM wechseln, wenn Sie große Modelle trainieren oder schnelle Berechnungen benötigen, während Sie den gleichen Betriebssystem-Datenträger beibehalten.  Die Windows Server 2016-Edition von DSVM enthält vorinstallierte GPU-Treiber und -Frameworks und eine GPU-Version der Deep Learning-Algorithmen. Unter Linux ist Deep Learning für GPUs nur in der Edition [Data Science Virtual Machine für Linux (Ubuntu)](http://aka.ms/dsvm/ubuntu) aktiviert. Sie können die Ubuntu-Edition oder die Windows Server 2016-Editionen der Data Science-VM auf virtuellen Azure-Computern ohne GPU-Aktivierung bereitstellen. In diesem Fall werden jedoch die Deep Learning-Frameworks auf den CPU-Modus zurückgesetzt. Wir haben bereits in der Vergangenheit für Windows Server 2012 ein [Deep Learning-Toolkit](http://aka.ms/dsvm/deeplearning) veröffentlicht. Nun wird allerdings empfohlen, dass Sie Windows Server 2016 für Windows-basierte Deep Learning-Workloads verwenden. Die DSVM-Edition für Linux auf CentOS-Basis enthält nur die CPU-Builds einiger Deep Learning-Tools (Microsoft Cognitive Toolkit, Tensorflow, MXNet). Diese sind jedoch nicht mit dem GPU-Treiber und den Frameworks vorinstalliert. 
+Der virtuelle Computer für Data Science kann zum Modelltraining mit Deep Learning-Algorithmen auf Basis von GPU-Hardware (Grafikprozessoren) verwendet werden. Durch die Skalierungsfunktionen für VMs der Azure-Cloud hilft die DSVM Ihnen, GPU-basierte Hardware in der Cloud nach Bedarf einsetzen zu können. Sie können zu einer GPU-basierten VM wechseln, wenn Sie große Modelle trainieren oder schnelle Berechnungen benötigen, während Sie den gleichen Betriebssystem-Datenträger beibehalten.  Die Windows Server 2016-Edition von DSVM enthält vorinstallierte GPU-Treiber und -Frameworks sowie GPU-Versionen der Deep Learning-Frameworks. Unter Linux ist Deep Learning für GPUs sowohl in CentOS als auch Ubuntu DSVMs aktiviert. Sie können die Ubuntu-, CentOS- oder Windows 2016-Edition der Data Science-VM auf virtuellen Azure-Computern ohne GPU-Aktivierung bereitstellen. In diesem Fall werden jedoch die Deep Learning-Frameworks auf den CPU-Modus zurückgesetzt. 
 
 ## <a name="whats-included-in-the-data-science-vm"></a>Was ist in der Data Science-VM enthalten?
 Der virtuelle Computer für Data Science hat viele beliebte Data Science- und Deep Learning-Tools bereits installiert und konfiguriert. Darüber hinaus enthält er Tools, die die Arbeit mit verschiedenen Azure-Daten und Analyse-Produkten erleichtern. Sie können Vorhersagemodelle für umfangreiche Datasets mithilfe von Microsoft ML Server (R, Python) oder SQL Server 2017 untersuchen und erstellen. Eine Reihe von anderen Tools der Open-Source-Community und von Microsoft sind ebenfalls enthalten, sowie Beispiel-Code und Notebooks. Die folgende Tabelle enthält eine Aufzählung und einen Vergleich der wichtigsten Komponenten Windows- und Linux-Editionen des virtuellen Computers für Data Science.
@@ -92,6 +92,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/overview) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Azure PowerShell | J | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | J | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Blob-FUSE-Treiber](https://github.com/Azure/azure-storage-fuse) | N | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Adlcopy (Azure Data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | J | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [DocDB-Datenmigrationstool](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | J | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft-Datenverwaltungsgateway:](https://msdn.microsoft.com/library/dn879362.aspx) Verschieben von Daten zwischen lokalen Speicherorten und der Cloud | J | N |
@@ -105,7 +106,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Rattle](http://rattle.togaware.com/) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [LightGBM](https://github.com/Microsoft/LightGBM) | N | Y (nur Ubuntu) |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [H2O](https://www.h2o.ai/h2o/) | N | Y (nur Ubuntu) |
-| **GPU-basierte Deep Learning-Tools** |Windows Server 2016-Edition  |Ubuntu-Edition |
+| **GPU-basierte Deep Learning-Tools** |Windows Server 2016-Edition  | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (ehemals CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Tensorflow](https://www.tensorflow.org/) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [MXNet](http://mxnet.io/) | J | J|
@@ -113,7 +114,10 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Torch](http://torch.ch/) | N | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Theano](https://github.com/Theano/Theano) | N | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Keras](https://keras.io/)| N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [PyTorch](http://pytorch.org/)| N | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Nvidia Digits](https://github.com/NVIDIA/DIGITS) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet Model Server](https://github.com/awslabs/mxnet-model-server) | N | J |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow Serving](https://www.tensorflow.org/serving/) | N | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [CUDA, CUDNN, Nvidia-Treiber](https://developer.nvidia.com/cuda-toolkit) | J | J |
 | **Big Data Platform (nur Devtest)**|||
 | &nbsp;&nbsp;&nbsp;&nbsp;* Lokale [Spark](http://spark.apache.org/)-Instanz | N | J |
@@ -125,7 +129,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 * Erstellen Sie eine Instanz der gewünschten Windows DSVM-Edition, indem Sie zur
   * [Windows Server 2016-basierten DSVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm) navigieren.
   
-  or 
+  oder 
   * zur [Windows Server 2012-basierten DSVM](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/). 
 * Klicken Sie auf **JETZT HERUNTERLADEN**.
 * Melden Sie sich an dem virtuellen Computer aus Ihrem Remotedesktop unter Verwendung der Anmeldeinformationen an, die Sie beim Erstellen des virtuellen Computers angegeben haben.
@@ -135,9 +139,9 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 * Erstellen Sie eine Instanz der gewünschten Linux DSVM-Edition, indem Sie zur 
   * [Ubuntu-basierten DSVM](http://aka.ms/dsvm/ubuntu)
 
-  or
+  oder
 
-  * [OpenLogic CentOS-basierten DSVM](http://aka.ms/dsvm/centos) navigieren.
+  * [CentOS-basierten DSVM](http://aka.ms/dsvm/centos) navigieren.
 
   
 * Klicken Sie auf **Jetzt herunterladen**.

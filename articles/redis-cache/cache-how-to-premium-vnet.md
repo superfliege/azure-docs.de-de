@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 74ec104bebec2004a8b7116865c2394c02b12638
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 5ed5af627fa8ec8007f095face2cbf115ead4b27
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"
 Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Redis Cache-Instanz mit einem VNet konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNet kann nur über virtuelle Computer und Anwendungen innerhalb des VNet zugegriffen werden. In diesem Artikel wird erläutert, wie die Unterstützung eines virtuellen Netzwerks für eine Azure Redis Cache-Instanz vom Typ „Premium“ konfiguriert wird.
@@ -117,6 +117,7 @@ Es liegen Anforderungen für sieben ausgehende Ports vor.
 | 20226 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 | 13000-13999 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 | 15000-15999 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
+| 6379-6380 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 
 
 ### <a name="inbound-port-requirements"></a>Anforderungen für eingehende Ports
@@ -125,7 +126,7 @@ Es liegen Anforderungen für acht eingehende Portbereiche vor. Eingehende Anford
 
 | Port(s) | Richtung | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich | (Redis-Subnetz) |Virtuelles Netzwerk, Azure Load Balancer |
+| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich | (Redis-Subnetz) | (Redis-Subnetz), Virtual Network, Azure Load Balancer |
 | 8443 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 | 8500 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) |Azure Load Balancer |
 | 10221-10231 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz), Azure Load Balancer |
@@ -146,7 +147,7 @@ Es gibt Netzwerkverbindungsanforderungen für Azure Redis Cache, die ursprüngli
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Wie kann ich sicherstellen, dass mein Cache in einem VNET funktioniert?
 
 >[!IMPORTANT]
->Wenn eine Verbindung mit einer in VNET gehosteten Azure Redis Cache-Instanz hergestellt wird, müssen sich Ihre Cacheclients, einschließlich aller Testanwendungen oder Diagnosepingtools, im selben VNET befinden.
+>Wenn eine Verbindung mit einer in einem VNET gehosteten Azure Redis Cache-Instanz hergestellt wird, müssen sich Ihre Cacheclients im selben VNET oder in einem VNET mit aktiviertem VNET-Peering befinden. Dies schließt alle Testanwendungen oder Diagnosepingtools ein. Unabhängig davon, wo die Clientanwendung gehostet wird, müssen Netzwerksicherheitsgruppen so konfiguriert sein, dass der Netzwerkdatenverkehr des Clients die Redis-Instanz erreichen kann.
 >
 >
 

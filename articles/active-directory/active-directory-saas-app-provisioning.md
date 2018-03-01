@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: cd82ef109abbc5707db4c02c2f14f9d55dfb74e3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e14ba62ce2d6c48e47a6b75387bcede68bb1a5b0
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Was ist eine automatisierte Benutzerbereitstellung für SaaS-Apps?
@@ -34,8 +34,8 @@ Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen
 **Die automatisierte Benutzerbereitstellung bietet außerdem folgende Funktionalität:**
 
 * Abgleich vorhandener Identitäten zwischen Quell- und Zielsystemen.
-* Optionen zur Anpassung von Azure AD an die aktuellen Konfigurationen der Apps und Systeme, die Ihre Organisation zurzeit verwendet.
-* Optionale E-Mail-Warnungen zu Bereitstellungsfehlern.
+* Anpassbare Attributzuordnungen, die definieren, welche Benutzerdaten vom Quellsystem an das Zielsystem fließen sollen.
+* Optionale E-Mail-Warnungen zu Bereitstellungsfehlern
 * Berichterstellung und Aktivitätsprotokolle unterstützen Sie bei der Überwachung und Problembehandlung.
 
 ## <a name="why-use-automated-provisioning"></a>Argumente für die automatisierte Bereitstellung
@@ -44,8 +44,8 @@ Nachfolgend werden einige Gründe aufgeführt, die für die Verwendung dieser Fu
 * Vermeiden von Kosten, Ineffizienz und Fehlern, die in Zusammenhang mit manuellen Bereitstellungsvorgängen auftreten.
 * Vermeiden der Kosten im Zusammenhang mit dem Hosten und Verwalten benutzerdefiniert entwickelter Bereitstellungslösungen und Skripts.
 * Sicherstellen, dass Ihre Organisation Benutzeridentitäten sofort aus wichtigen SaaS-Apps entfernen kann, wenn Benutzer die Organisation verlassen.
-* Einfaches gleichzeitiges Importieren zahlreicher Benutzer in eine bestimmte SaaS-Anwendung oder in ein bestimmtes System.
-* Mit dieser Bereitstellungslösung werden dieselben App-Zugriffsrichtlinien angewendet wie diejenigen, die Sie für die einmalige Azure AD-Anmeldung (SSO) definiert haben.
+* Einfaches Importieren einer großen Zahl von Benutzern in eine bestimmte SaaS-Anwendung oder ein bestimmtes System.
+* Vorteil eines einzelnen Richtliniensatzes für die Ermittlung, wer bereitgestellt wird und wer sich an einer App anmelden kann.
 
 
 ## <a name="how-does-automatic-provisioning-work"></a>Funktionsweise der automatischen Bereitstellung
@@ -64,20 +64,23 @@ Der **Azure AD-Bereitstellungsdienst** stellt Benutzer für SaaS-Apps und andere
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Welche Anwendungen und Systeme kann ich mit der automatischen Benutzerbereitstellung von Azure AD verwenden?
 
-Azure AD unterstützt standardmäßig verschiedene beliebte SaaS-Apps und Personalsysteme und bietet allgemeine Unterstützung für Apps, die bestimmte Teile des [SCIM 2.0-Standards](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) implementieren.
+Azure AD unterstützt standardmäßig verschiedene beliebte SaaS-Apps und Personalsysteme und bietet allgemeine Unterstützung für Apps, die bestimmte Teile des SCIM 2.0-Standards implementieren.
 
-Alle ausgewählten Apps im Azure AD-Anwendungskatalog unterstützen die automatisierte Benutzerbereitstellung. [Die Liste der ausgewählten Apps kann hier eingesehen werden.](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)
+Eine Aufstellung aller Anwendungen, für die Azure AD einen vorab integrierten Bereitstellungsconnector unterstützt, finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung](active-directory-saas-tutorial-list.md).
 
-Damit eine Anwendung die automatisierte Benutzerbereitstellung unterstützt, müssen zunächst die erforderlichen Benutzerverwaltungsendpunkte bereitgestellt werden, die externen Programmen die Automatisierung der Erstellung, Wartung und Entfernung von Benutzern ermöglichen. Daher sind nicht alle SaaS-Apps mit diesem Feature kompatibel. Für Apps, die Benutzerverwaltungs-APIs unterstützen, kann das Azure AD-Entwicklerteam anschließend einen Bereitstellungsconnector erstellen. Diese Tätigkeit wird in Abhängigkeit von den Anforderungen bestehender und potenzieller Kunden priorisiert. 
+Informationen dazu, wie Sie einer Anwendung die Unterstützung für die Azure AD-Benutzerbereitstellung hinzufügen, finden Sie unter [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md).
 
-Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungsunterstützung für zusätzliche Anwendungen anzufordern, senden Sie uns eine Nachricht über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/category/172035-user-provisioning). 
+Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungsunterstützung für zusätzliche Anwendungen anzufordern, senden Sie uns eine Nachricht über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
+
+> [!NOTE]
+> Damit eine Anwendung die automatisierte Benutzerbereitstellung unterstützt, müssen zunächst die erforderlichen APIs für die Benutzerverwaltung bereitgestellt werden, die externen Programmen die Automatisierung der Erstellung, Wartung und Entfernung von Benutzern ermöglichen. Daher sind nicht alle SaaS-Apps mit diesem Feature kompatibel. Für Apps, die Benutzerverwaltungs-APIs unterstützen, kann das Azure AD-Entwicklerteam anschließend einen Bereitstellungsconnector erstellen. Diese Tätigkeit wird in Abhängigkeit von den Anforderungen bestehender und potenzieller Kunden priorisiert. 
     
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Wie richte ich die automatische Bereitstellung für eine Anwendung ein?
 
-Die Konfiguration des Azure AD-Bereitstellungsdiensts für eine bestimmte Anwendung beginnt im **[Azure-Portal](https://potal.azure.com)**. Klicken Sie im Abschnitt **Azure Active Directory > Unternehmensanwendungen** auf **Hinzufügen**. Klicken Sie anschließend auf **Alle**, und fügen Sie dann abhängig von Ihrem Szenario eine der folgenden Optionen hinzu:
+Die Konfiguration des Azure AD-Bereitstellungsdiensts für eine bestimmte Anwendung beginnt im **[Azure-Portal](https://portal.azure.com)**. Klicken Sie im Abschnitt **Azure Active Directory > Unternehmensanwendungen** auf **Hinzufügen**. Klicken Sie anschließend auf **Alle**, und fügen Sie dann abhängig von Ihrem Szenario eine der folgenden Optionen hinzu:
 
-* Alle Anwendungen im Abschnitt **Ausgewählte Anwendungen** unterstützen die automatische Bereitstellung.
+* Alle Anwendungen im Abschnitt **Ausgewählte Anwendungen** unterstützen die automatische Bereitstellung. Weitere Anwendungen finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung]active-directory-saas-tutorial-list.md).
 
 * Verwenden Sie die Option „Nicht-Kataloganwendung“ für benutzerdefiniert entwickelte SCIM-Integrationen.
 
@@ -88,7 +91,7 @@ Die Bereitstellung wird auf der Registerkarte **Bereitstellung** des Anwendungsv
 ![Einstellungen](./media/active-directory-saas-app-provisioning/provisioning_settings0.PNG)
 
 
-* Für den Azure AD-Bereitstellungsdienst müssen **Administratoranmeldeinformationen** angegeben werden, die die Verbindungsherstellung mit der von der Anwendung bereitgestellten Benutzerverwaltungs-API ermöglichen.
+* Für den Azure AD-Bereitstellungsdienst müssen **Administratoranmeldeinformationen** angegeben werden, die die Verbindungsherstellung mit der von der Anwendung bereitgestellten Benutzerverwaltungs-API ermöglichen. In diesem Abschnitt können Sie auch E-Mail-Benachrichtigungen aktivieren, wenn für die Anmeldeinformationen ein Fehler auftritt oder der Bereitstellungsauftrag in [Quarantäne](#quarantine) versetzt wird.
 
 * Konfigurierbare **Attributzuordnungen** geben an, welche Felder im Quellsystem (beispielsweise Azure AD) mit welchen Feldern im Zielsystem (beispielsweise ServiceNow) synchronisiert werden sollen. Sofern dies vom Zielsystem unterstützt wird, können Sie in diesem Abschnitt neben Benutzerkonten auch die Bereitstellung von Gruppen konfigurieren. Dies ist jedoch optional. Mithilfe des Eigenschaftenabgleichs können Sie auswählen, welche Felder für den Kontenabgleich zwischen den Systemen herangezogen werden sollen. Mithilfe von [Ausdrücken](active-directory-saas-writing-expressions-for-attribute-mappings.md) können Sie die aus dem Quellsystem abgerufenen Werte vor dem Schreiben in das Zielsystem ändern und transformieren. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](active-directory-saas-customizing-attribute-mappings.md).
 
@@ -96,9 +99,9 @@ Die Bereitstellung wird auf der Registerkarte **Bereitstellung** des Anwendungsv
 
 * **Bereichsdefinitionsfilter** teilen dem Bereitstellungsdienst mit, welche Benutzer und welche Gruppe aus dem Quellsystem im Zielsystem bereitgestellt werden sollen bzw. für welche Benutzer und für welche Gruppe diese Bereitstellung aufgehoben werden soll. Zwei Aspekte der Bereichsdefinitionsfilter werden zusammen ausgewertet und bestimmen, wer zum Geltungsbereich für die Bereitstellung gehört:
 
-* **Filter für Attributwerte:** Über das Menü „Quellobjektbereich“ in den Attributzuordnungen kann nach bestimmten Attributwerten gefiltert werden. So können Sie beispielsweise angeben, dass nur Benutzer mit dem Abteilungsattribut „Vertrieb“ zum Geltungsbereich für die Bereitstellung gehören sollen.
+    * **Filter für Attributwerte:** Über das Menü „Quellobjektbereich“ in den Attributzuordnungen kann nach bestimmten Attributwerten gefiltert werden. So können Sie beispielsweise angeben, dass nur Benutzer mit dem Abteilungsattribut „Vertrieb“ zum Geltungsbereich für die Bereitstellung gehören sollen. Weitere Informationen finden Sie unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](active-directory-saas-scoping-filters.md).
 
-* **Filter für Zuweisungen:** Über das Bereichsmenü im Abschnitt „Bereitstellung“ &gt; „Einstellungen“ des Portals können Sie angeben, ob nur zugewiesene Benutzer und Gruppen zum Geltungsbereich für die Bereitstellung gehören oder ob alle Benutzer im Azure AD-Verzeichnis bereitgestellt werden sollen. Informationen zum Zuweisen von Benutzern und Gruppen finden Sie unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md).
+    * **Filter für Zuweisungen:** Über das Bereichsmenü im Abschnitt „Bereitstellung“ &gt; „Einstellungen“ des Portals können Sie angeben, ob nur zugewiesene Benutzer und Gruppen zum Geltungsbereich für die Bereitstellung gehören oder ob alle Benutzer im Azure AD-Verzeichnis bereitgestellt werden sollen. Informationen zum Zuweisen von Benutzern und Gruppen finden Sie unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md).
     
 * **Einstellungen** steuern den Betrieb des Bereitstellungsdiensts für eine Anwendung (unter anderem, ob er derzeit ausgeführt wird).
 
@@ -106,39 +109,92 @@ Die Bereitstellung wird auf der Registerkarte **Bereitstellung** des Anwendungsv
 
 ![Einstellungen](./media/active-directory-saas-app-provisioning/audit_logs.PNG)
 
+> [!NOTE]
+> Der Benutzerbereitstellungsdienst von Azure AD kann auch über die [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) konfiguriert und verwaltet werden.
+
+
 ## <a name="what-happens-during-provisioning"></a>Vorgänge während der Bereitstellung
 
-1. Wenn Sie die Bereitstellung für eine Anwendung das erste Mal aktivieren, werden die folgenden Aktionen ausgeführt:
-   * Azure AD versucht, vorhandene Benutzer in der SaaS-App mit den entsprechenden Identitäten im Verzeichnis abzugleichen. Wenn ein Benutzer dem Abgleich entspricht, wird ihm *nicht* automatisch das einmalige Anmelden ermöglicht. Damit ein Benutzer auf die Anwendung zugreifen kann, muss er explizit in Azure AD der App zugewiesen werden, entweder direkt oder über eine Gruppenmitgliedschaft.
-   * Wenn Sie bereits angegeben haben, welche Benutzer der Anwendung zugewiesen werden sollen, aber Azure AD keine vorhandenen Konten für diese Benutzer findet, stellt Azure AD für die Benutzer neue Konten in der Anwendung bereit.
-2. Nach Abschluss der oben beschriebenen Erstsynchronisierung prüft Azure AD alle 20 Minuten, ob folgende Änderungen vorliegen:
-   * Wenn der Anwendung neue Benutzer zugewiesen wurden (entweder direkt oder über eine Gruppenmitgliedschaft), werden sie mit einem neuen Konto in der SaaS-App bereitgestellt.
-   * Wenn der Zugriff eines Benutzers entfernt wurde, wird das dazugehörige Konto in der SaaS-App als deaktiviert gekennzeichnet. (Benutzer werden niemals vollständig gelöscht, um Sie im Falle einer Fehlkonfiguration vor Datenverlusten zu schützen.)
-   * Wenn ein Benutzer vor Kurzem der Anwendung zugewiesen wurde und bereits über ein Konto in der SaaS-App verfügt, wird das Konto als aktiviert gekennzeichnet, und bestimmte Benutzereigenschaften werden ggf. aktualisiert, wenn sie im Vergleich zum Verzeichnis veraltet sind.
-   * Im Verzeichnis geänderte Benutzerinformationen (beispielsweise Telefonnummer oder Bürostandort) werden in der SaaS-Anwendung entsprechend aktualisiert.
+Wenn Azure AD das Quellsystem ist, verwendet der Bereitstellungsdienst das [Feature „Differenzielle Abfragen“ der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query), um Benutzer und Gruppen zu überwachen. Der Bereitstellungsdienst führt eine erste Synchronisierung für das Quellsystem und das Zielsystem aus, gefolgt von regelmäßigen inkrementellen Synchronisierungen. 
+
+### <a name="initial-sync"></a>Erste Synchronisierung
+Nachdem der Bereitstellungsdienst gestartet wurde, umfasst die erste jemals durchgeführte Synchronisierung Folgendes:
+
+1. Abfragen aller Benutzer und Gruppen aus dem Quellsystem und Abrufen aller Attribute, die in den [Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md) definiert sind.
+2. Filtern der zurückgegebenen Benutzer und Gruppen, indem alle konfigurierten [Zuweisungen](active-directory-coreapps-assign-user-azure-portal.md) oder [attributbasierten Bereichsfilter](active-directory-saas-scoping-filters.md) verwendet werden.
+3. Wenn für einen Benutzer ermittelt wird, dass er zugewiesen ist oder in den Bereich für die Bereitstellung fällt, sendet der Dienst eine Anfrage zu einem übereinstimmenden Benutzer an das Zielsystem, indem die angegebenen [Abgleichattribute](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties) verwendet werden. Beispiel: Wenn der userPrincipal-Name auf dem Quellsystem das übereinstimmende Attribut ist und dem userName auf dem Zielsystem zugeordnet ist, fragt der Bereitstellungsdienst beim Zielsystem userNames ab, die mit den Werten von userPrincipal-Namen auf dem Quellsystem übereinstimmen.
+4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden.
+5. Falls ein übereinstimmender Benutzer gefunden wird, wird er aktualisiert, indem die vom Quellsystem bereitgestellten Attribute verwendet werden.
+6. Wenn die Attributzuordnungen „Referenzattribute“ enthalten, führt der Dienst auf dem Zielsystem zusätzliche Updates durch, um die referenzierten Objekte zu erstellen und zu verknüpfen. Ein Benutzer kann auf dem Zielsystem beispielsweise über das Attribut „Manager“ verfügen, das mit einem anderen Benutzer verknüpft ist, der im Zielsystem erstellt wurde.
+7. Legen Sie am Ende der ersten Synchronisierung einen Grenzwert fest, der als Startpunkt für die nachfolgenden inkrementellen Synchronisierungen dient.
+
+Einige Anwendungen, z.B. ServiceNow, Google Apps und Box, unterstützen nicht nur die Bereitstellung von Benutzern, sondern auch die Bereitstellung von Gruppen und ihrer Mitglieder. Wenn die Gruppenbereitstellung in den [Zuordnungen](active-directory-saas-customizing-attribute-mappings.md) aktiviert ist, synchronisiert der Bereitstellungsdienst die Benutzer und Gruppen und anschließend die Gruppenmitgliedschaften. 
+
+### <a name="incremental-syncs"></a>Inkrementelle Synchronisierungen
+Nach der ersten Synchronisierung gilt für alle nachfolgenden Synchronisierungen Folgendes:
+
+1. Fragen Sie vom Quellsystem alle Benutzer und Gruppen ab, die aktualisiert wurden, seitdem der letzte Grenzwert gespeichert wurde.
+2. Filtern der zurückgegebenen Benutzer und Gruppen, indem alle konfigurierten [Zuweisungen](active-directory-coreapps-assign-user-azure-portal.md) oder [attributbasierten Bereichsfilter](active-directory-saas-scoping-filters.md) verwendet werden.
+3. Wenn für einen Benutzer ermittelt wird, dass er zugewiesen ist oder in den Bereich für die Bereitstellung fällt, sendet der Dienst eine Anfrage zu einem übereinstimmenden Benutzer an das Zielsystem, indem die angegebenen [Abgleichattribute](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties) verwendet werden.
+4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden.
+5. Falls ein übereinstimmender Benutzer gefunden wird, wird er aktualisiert, indem die vom Quellsystem bereitgestellten Attribute verwendet werden.
+6. Wenn die Attributzuordnungen „Referenzattribute“ enthalten, führt der Dienst auf dem Zielsystem zusätzliche Updates durch, um die referenzierten Objekte zu erstellen und zu verknüpfen. Ein Benutzer kann auf dem Zielsystem beispielsweise über das Attribut „Manager“ verfügen, das mit einem anderen Benutzer verknüpft ist, der im Zielsystem erstellt wurde.
+7. Wenn ein Benutzer, der sich zuvor im Bereich für die Bereitstellung befunden hat, aus dem Bereich entfernt (und die Zuweisung aufgehoben) wird, deaktiviert der Dienst den Benutzer im Zielsystem per Update.
+8. Wenn ein Benutzer, der sich zuvor im Bereich für die Bereitstellung befunden hat, im Quellsystem deaktiviert oder vorläufig gelöscht wird, deaktiviert der Dienst den Benutzer im Zielsystem per Update.
+9. Wenn ein Benutzer, der sich zuvor im Bereich für die Bereitstellung befunden hat, im Quellsystem endgültig gelöscht wird, löscht der Dienst den Benutzer im Zielsystem. In Azure AD werden Benutzer 30 Tage nach dem vorläufigen Löschen endgültig gelöscht.
+10. Legen Sie am Ende der inkrementellen Synchronisierung einen neuen Grenzwert fest, der als Startpunkt für die nachfolgenden inkrementellen Synchronisierungen dient.
+
+>[!NOTE]
+> Sie können Erstellungs-, Aktualisierungs- und Löschvorgänge optional deaktivieren, indem Sie die Kontrollkästchen für **Zielobjektaktionen** im Abschnitt [Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md) verwenden. Die Logik zum Deaktivieren eines Benutzers während eines Updates wird ebenfalls per Attributzuordnung über ein Feld wie „accountEnabled“ gesteuert.
+
+Der Bereitstellungsdienst fährt damit fort, so lange nacheinander inkrementelle Synchronisierungen durchzuführen (die Intervalle sind in den [einzelnen Tutorials der Anwendungen](active-directory-saas-tutorial-list.md) angegeben), bis eines der folgenden Ereignisse eintritt:
+
+* Der Dienst wird mit dem Azure-Portal oder mit dem entsprechenden Graph-API-Befehl manuell beendet. 
+* Eine neue erste Synchronisierung wird ausgelöst, indem im Azure-Portal die Option **Clear state and restart** (Status löschen und neu starten) oder der entsprechende Graph-API-Befehl verwendet wird. Hierdurch werden alle gespeicherten Grenzwerte gelöscht, und alle Quellobjekte erneut ausgewertet.
+* Eine neue erste Synchronisierung wird aufgrund einer Änderung in den Attributzuordnungen oder Bereichsfiltern ausgelöst. Hierdurch werden ebenfalls alle gespeicherten Grenzwerte gelöscht und alle Quellobjekte erneut ausgewertet.
+* Der Bereitstellungsprozess wird aufgrund einer hohen Fehlerrate in Quarantäne versetzt (siehe unten) und verbleibt mehr als vier Wochen lang in diesem Zustand. In diesem Fall wird der Dienst automatisch deaktiviert.
+
+### <a name="errors-and-retries"></a>Fehler und Wiederholungen 
+Wenn ein einzelner Benutzer im Zielsystem aufgrund eines Fehlers nicht hinzugefügt, aktualisiert oder gelöscht werden kann, wird während des nächsten Synchronisierungszyklus versucht, den Vorgang zu wiederholen. Falls für den Benutzer weiterhin ein Fehler auftritt, wird die Häufigkeit der Wiederholungen allmählich verringert, bis schließlich nur noch ein Versuch pro Tag durchgeführt wird. Zum Beheben des Fehlers müssen Administratoren die [Überwachungspfade](active-directory-saas-provisioning-reporting.md) auf Ereignisse vom Typ „Process Escrow“ (Prozesshinterlegung) prüfen, um die Grundursache zu ermitteln, und dann entsprechende Maßnahmen ergreifen. Beispiele für häufig auftretende Fehler sind:
+
+* Für Benutzer ist auf dem Quellsystem ein bestimmtes Attribut nicht angegeben, das auf dem Zielsystem erforderlich ist.
+* Benutzer verfügen auf dem Quellsystem über einen Attributwert, für den auf dem Zielsystem eine eindeutige Einschränkung besteht, und der gleiche Wert ist auch in einem anderen Benutzerdatensatz vorhanden.
+
+Diese Fehler können behoben werden, indem die Attributwerte für den betroffenen Benutzer im Quellsystem oder die Attributzuordnungen angepasst werden, um Konflikte zu vermeiden.   
+
+### <a name="quarantine"></a>Quarantäne
+Falls die meisten oder alle Aufrufe an das Zielsystem dauerhaft aufgrund eines Fehlers nicht erfolgreich sind (z.B. bei ungültigen Administratoranmeldeinformationen), wird der Bereitstellungsauftrag in den Zustand „Quarantäne“ versetzt. Dies ist im [Zusammenfassungsbericht für die Bereitstellung](active-directory-saas-provisioning-reporting.md) angegeben. Wenn im Azure-Portal E-Mail-Benachrichtigungen konfiguriert wurden, wird auch eine E-Mail gesendet. 
+
+In der Quarantäne wird die Häufigkeit der inkrementellen Synchronisierungen allmählich auf einmal pro Tag verringert. 
+
+Die Quarantäne für den Bereitstellungsauftrag wird aufgehoben, nachdem alle relevanten Fehler behoben wurden, und der nächste Synchronisierungszyklus beginnt. Falls der Bereitstellungsauftrag länger als vier Wochen in Quarantäne verbleibt, wird er deaktiviert.
 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-**Wie häufig schreibt Azure AD Verzeichnisänderungen in die SaaS-Apps?**
-
-Nach Abschluss der vollständigen Erstsynchronisierung prüft der Azure AD-Bereitstellungsdienst üblicherweise alle 20 Minuten, ob Änderungen vorliegen. 
-
-Wenn die SaaS-App mehrere Fehler zurückgibt (beispielsweise bei ungültigen Administratoranmeldeinformationen), verringert Azure AD die Häufigkeit auf eine Abfrage pro Tag, bis die Fehler behoben wurden. In diesem Fall wird der Azure AD-Bereitstellungsdienst in einen Quarantänezustand versetzt und gibt dies im [Zusammenfassungsbericht für die Bereitstellung](active-directory-saas-provisioning-reporting.md) an.
 
 **Wie lange dauert die Bereitstellung meiner Benutzer?**
 
-Nach Abschluss der vollständigen Erstsynchronisierung werden in der Regel innerhalb von 20 bis 40 Minuten inkrementelle Änderungen vorgenommen. Wenn Sie den Großteil Ihres Verzeichnisses bereitstellen möchten, hängt die Dauer von Ihrer Benutzer- und Gruppenanzahl ab. Die Leistung ist abhängig von der Leistung der Benutzerverwaltungs-APIs, die die Bereitstellungsdienste verwenden, um Daten aus dem Quellsystem zu lesen und in das Zielsystem zu schreiben. 
+Die Leistung unterscheidet sich jeweils in Abhängigkeit davon, ob Ihr Bereitstellungsauftrag eine erste oder eine inkrementelle Synchronisierung durchführt.
+
+Bei einer ersten Synchronisierung hängt die Dauer bis zum Abschluss direkt davon ab, wie viele Benutzer, Gruppen und Gruppenmitglieder im Quellsystem vorhanden sind. Für sehr kleine Quellsysteme mit nur Hunderten von Objekten können erste Synchronisierungen innerhalb von wenigen Minuten durchgeführt werden. Bei Quellsystemen mit mehreren Tausend oder Millionen von kombinierten Objekten kann dieser Vorgang aber sehr lange dauern.
+
+Bei inkrementellen Synchronisierungen hängt die Dauer davon ab, wie viele Änderungen im jeweiligen Synchronisierungszyklus erkannt werden. Wenn weniger als 5.000 Änderungen für Benutzer oder der Gruppenmitgliedschaft erkannt werden, können diese meist innerhalb eines 40-minütigen Zyklus synchronisiert werden. 
+
+Beachten Sie hierbei, dass die Gesamtleistung sowohl vom Quell- als auch vom Zielsystem abhängig ist. Bei einigen Zielsystemen werden Limits für die Anforderungsrate und Drosselung implementiert, die sich bei umfangreichen Synchronisierungsvorgängen auf die Leistung auswirken können. Dies wird von den vordefinierten Azure AD-Bereitstellungsconnectors für diese Systeme berücksichtigt.
 
 Die Leistung wird zudem beeinträchtigt, wenn viele Fehler auftreten und der Bereitstellungsdienst in den Quarantänezustand versetzt wurde. (Die Fehler werden in den [Überwachungsprotokollen](active-directory-saas-provisioning-reporting.md) erfasst.)
 
-**Was ist eine vollständige Erstsynchronisierung, und warum dauert sie länger als nachfolgende Synchronisierungen?**
+**Wie kann ich die Synchronisierungsleistung verbessern?**
 
-Bei der erstmaligen Ausführung des Azure AD-Bereitstellungsdiensts für eine bestimmte App wird eine Momentaufnahme der Benutzer (und optional der Gruppen) des Quellverzeichnisses erstellt. Diese Momentaufnahme ermöglicht dem Bereitstellungsdienst die Verringerung der Roundtrips zu den Quell- und Ziel-APIs sowie eine höhere Effizienz bei nachfolgenden Deltasynchronisierungen. 
+Die meisten Leistungsprobleme treten bei den ersten Synchronisierungen von Systemen auf, die über eine große Zahl von Gruppen und Gruppenmitgliedern verfügen.
 
-Bei sehr kleinen Verzeichnissen ist die vollständige Erstsynchronisierung von Benutzern häufig nach wenigen Minuten abgeschlossen. Bei umfangreicheren Verzeichnissen kann der Vorgang dagegen mehrere Stunden dauern. Die Erstsynchronisierung von Unternehmensverzeichnissen mit mehreren hunderttausend Benutzern kann viele Stunden in Anspruch nehmen. Die nach der Erstsynchronisierung stattfindenden Deltasynchronisierungen sind allerdings wesentlich schneller.
+Wenn keine Synchronisierung von Gruppen oder Gruppenmitgliedschaften erforderlich ist, kann die Synchronisierungsleistung wie folgt deutlich verbessert werden:
+
+1. Legen Sie im Menü **Bereitstellung > Einstellungen > Bereich** die Option **Alle synchronisieren** fest, anstatt zugewiesene Benutzer und Gruppen zu synchronisieren.
+2. Verwenden Sie [Bereichsfilter](active-directory-saas-scoping-filters.md) anstelle von Zuweisungen, um die Liste mit den bereitgestellten Benutzern zu filtern.
 
 > [!NOTE]
-> Bei Anwendungen, die die Bereitstellung von Gruppen und Gruppenmitgliedschaften unterstützen, dauert die vollständige Erstsynchronisierung erheblich länger, wenn diese Option aktiviert wird. Wenn Sie in Ihrer Anwendung keine Gruppennamen und Gruppenmitgliedschaften bereitstellen möchten, deaktivieren Sie diese Option in den [Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md) Ihrer Bereitstellungskonfiguration.
+> Für Anwendungen, die die Bereitstellung von Gruppennamen und Gruppeneigenschaften (z.B. ServiceNow und Google Apps) unterstützen, bewirkt eine Deaktivierung dieser Option auch eine Verringerung der erforderlichen Dauer für die erste Synchronisierung. Wenn Sie in Ihrer Anwendung keine Gruppennamen und Gruppenmitgliedschaften bereitstellen möchten, deaktivieren Sie diese Option in den [Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md) Ihrer Bereitstellungskonfiguration.
 
 **Wie kann ich den Fortschritt des aktuellen Bereitstellungsauftrags verfolgen?**
 
@@ -148,17 +204,20 @@ Informationen finden Sie in der [Anleitung zur Erstellung von Bereitstellungsber
 
 Alle Fehler werden in den Überwachungsprotokollen von Azure AD erfasst. Weitere Informationen finden Sie in der [Anleitung zur Erstellung von Bereitstellungsberichten](active-directory-saas-provisioning-reporting.md).
 
+**Wie kann ich eine Anwendung erstellen, die mit dem Bereitstellungsdienst funktioniert?**
+
+Weitere Informationen finden Sie unter [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning).
+
 **Wie kann ich Feedback an das Entwicklerteam senden?**
 
 Setzen Sie über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung.
 
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
 * [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](active-directory-saas-customizing-attribute-mappings.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Bereichsfilter für die Benutzerbereitstellung](active-directory-saas-scoping-filters.md)
 * [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md)
-* [Kontobereitstellungsbenachrichtigungen](active-directory-saas-account-provisioning-notifications.md)
-* [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
+* [Azure AD synchronization API overview](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
 

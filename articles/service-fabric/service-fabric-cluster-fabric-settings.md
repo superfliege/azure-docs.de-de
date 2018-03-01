@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 2e609b205c32d2ea5ca58586e9f8ba9623ef7580
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 23f063d89c5030d440d50765eee9d121b4d8f5ba
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
 In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
@@ -178,7 +178,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-paas"></a>Name des Abschnitts: Paas
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| ClusterId |string, Standardwert "" |Nicht zulässig|Der X509-Zertifikatspeicher, der vom Fabric für den Konfigurationsschutz verwendet wird. |
+| ClusterId |string, Standardwert "" |Nicht zulässig|X509-Zertifikatspeicher, der vom Fabric für den Konfigurationsschutz verwendet. |
 
 ### <a name="section-name-fabrichost"></a>Name des Abschnitts: FabricHost
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -482,17 +482,32 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-securityclientx509names"></a>Abschnittsname: Security/ClientX509Names
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
+|PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 
 ### <a name="section-name-securityclusterx509names"></a>Abschnittsname: Security/ClusterX509Names
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
+|PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 
 ### <a name="section-name-securityserverx509names"></a>Abschnittsname: Security/ServerX509Names
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
+|PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
+
+### <a name="section-name-securityclientcertificateissuerstores"></a>Abschnittsname: Security/ClientCertificateIssuerStores
+| **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap, Standardwert: None |Dynamisch|X509-Zertifikatspeicher des Zertifikatausstellers für Clientzertifikate; Name = clientIssuerCN; Wert = kommagetrennte Liste der Speicher |
+
+### <a name="section-name-securityclustercertificateissuerstores"></a>Abschnittsname: Security/ClusterCertificateIssuerStores
+| **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap, Standardwert: None |Dynamisch|X509-Zertifikatspeicher des Zertifikatausstellers für Clusterzertifikate; Name = clusterIssuerCN; Wert = kommagetrennte Liste der Speicher |
+
+### <a name="section-name-securityservercertificateissuerstores"></a>Abschnittsname: Security/ServerCertificateIssuerStores
+| **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap, Standardwert: None |Dynamisch|X509-Zertifikatspeicher des Zertifikatausstellers für Serverzertifikate; Name = serverIssuerCN; Wert = kommagetrennte Liste der Speicher |
 
 ### <a name="section-name-securityclientaccess"></a>Name des Abschnitts: Security/ClientAccess
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -525,7 +540,7 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 | DeactivateNode |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Deaktivierung eines Knotens. |
 | DeactivateNodesBatch |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Deaktivierung mehrerer Knoten. |
 | RemoveNodeDeactivations |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Zurücksetzen der Deaktivierung mehrerer Knoten. |
-| GetNodeDeactivationStatus |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Überprüfen des Deaktivierungsstatus. |
+| GetNodeDeactivationStatus |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Überprüfen des Deaktivierungstatus. |
 | NodeStateRemoved |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für Berichte zur Entfernung des Knotenstatus. |
 | RecoverPartition |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für die Wiederherstellung einer Partition. |
 | RecoverPartitions |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für die Wiederherstellung von Partitionen. |
@@ -555,35 +570,35 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 | StartClusterConfigurationUpgrade |string, Standardwert „Admin“ |Dynamisch| Löst StartClusterConfigurationUpgrade auf einer Partition aus. |
 | GetUpgradesPendingApproval |string, Standardwert „Admin“ |Dynamisch| Löst GetUpgradesPendingApproval auf einer Partition aus. |
 | StartApprovedUpgrades |string, Standardwert „Admin“ |Dynamisch| Löst StartApprovedUpgrades auf einer Partition aus. |
-| Pingen |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für Clientpingvorgänge. |
-| Abfragen |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für Abfragen. |
-| NameExists |string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Sicherheitskonfiguration für Überprüfungen auf das Vorhandensein von Benennungs-URIs. |
-| EnumerateSubnames |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für die Enumeration von Benennungs-URIs. |
-| EnumerateProperties |string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Sicherheitskonfiguration für die Enumeration von Benennungseigenschaften. |
-| PropertyReadBatch |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für Lesevorgänge in Benennungseigenschaften. |
-| GetServiceDescription |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für Dienstbenachrichtigungen mit langen Abrufzeiten und das Lesen von Dienstbeschreibungen. |
-| ResolveService |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für die Dienstauflösung auf Konfliktbasis. |
-| ResolveNameOwner |string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Sicherheitskonfiguration für die Auflösung des Benennungs-URI-Besitzers. |
-| ResolvePartition |string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Sicherheitskonfiguration für die Auflösung von Systemdiensten. |
-| ServiceNotifications |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für Dienstbenachrichtigungen auf Ereignisbasis. |
-| PrefixResolveService |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für die Dienstpräfixauflösung auf Konfliktbasis. |
-| GetUpgradeStatus |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für das Abrufen des Anwendungsupgradestatus. |
-| GetFabricUpgradeStatus |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für das Abrufen des Clusterupgradestatus. |
-| InvokeInfrastructureQuery |string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Sicherheitskonfiguration für das Abfragen von Infrastrukturaufgaben. |
-| Auflisten |string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Sicherheitskonfiguration für den Imagespeicherclient-Dateiauflistungsvorgang. |
-| ResetPartitionLoad |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für das Zurücksetzen der failoverUnit-Auslastung. |
-| ToggleVerboseServicePlacementHealthReporting | string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für Umschalten von ausführlichen Integritätsberichten zur Dienstplatzierung. |
-| GetPartitionDataLossProgress | string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Ruft den Status für einen API-Aufruf zum Auslösen von Datenverlusten ab. |
-| GetPartitionQuorumLossProgress | string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Ruft den Status für einen API-Aufruf zum Auslösen von Quorumverlusten ab. |
-| GetPartitionRestartProgress | string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Ruft den Status für einen API-Aufruf zum Neustarten einer Partition ab. |
-| GetChaosReport | string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Ruft den Status des Chaos innerhalb eines angegebenen Zeitbereichs ab. |
-| GetNodeTransitionProgress | string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für das Abrufen des Status eines Knotenübergangsbefehls. |
-| GetClusterConfigurationUpgradeStatus | string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Löst GetClusterConfigurationUpgradeStatus auf einer Partition aus. |
-| GetClusterConfiguration | string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Löst GetClusterConfiguration auf einer Partition aus. |
+| Pingen |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für Clientpingvorgänge. |
+| Abfragen |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für Abfragen. |
+| NameExists |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für Überprüfungen auf das Vorhandensein von Benennungs-URIs. |
+| EnumerateSubnames |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für die Enumeration von Benennungs-URIs. |
+| EnumerateProperties |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für die Enumeration von Benennungseigenschaften. |
+| PropertyReadBatch |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für Lesevorgänge in Benennungseigenschaften. |
+| GetServiceDescription |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für Dienstbenachrichtigungen mit langen Abrufzeiten und das Lesen von Dienstbeschreibungen. |
+| ResolveService |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für die Dienstauflösung auf Konfliktbasis. |
+| ResolveNameOwner |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für die Auflösung des Benennungs-URI-Besitzers. |
+| ResolvePartition |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für die Auflösung von Systemdiensten. |
+| ServiceNotifications |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für Dienstbenachrichtigungen auf Ereignisbasis. |
+| PrefixResolveService |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für die Dienstpräfixauflösung auf Konfliktbasis. |
+| GetUpgradeStatus |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für das Abrufen des Anwendungsupgradestatus. |
+| GetFabricUpgradeStatus |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für das Abrufen des Clusterupgradestatus. |
+| InvokeInfrastructureQuery |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für das Abfragen von Infrastrukturaufgaben. |
+| Auflisten |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für den Imagespeicherclient-Dateiauflistungsvorgang. |
+| ResetPartitionLoad |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für das Zurücksetzen der failoverUnit-Auslastung. |
+| ToggleVerboseServicePlacementHealthReporting | string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für Umschalten von ausführlichen Integritätsberichten zur Dienstplatzierung. |
+| GetPartitionDataLossProgress | string, Standardwert „Admin\|\|User“ | Dynamisch|Ruft den Status für einen API-Aufruf zum Auslösen von Datenverlusten ab. |
+| GetPartitionQuorumLossProgress | string, Standardwert „Admin\|\|User“ |Dynamisch| Ruft den Status für einen API-Aufruf zum Auslösen von Quorumverlusten ab. |
+| GetPartitionRestartProgress | string, Standardwert „Admin\|\|User“ |Dynamisch| Ruft den Status für einen API-Aufruf zum Neustarten einer Partition ab. |
+| GetChaosReport | string, Standardwert „Admin\|\|User“ |Dynamisch| Ruft den Status des Chaos innerhalb eines angegebenen Zeitbereichs ab. |
+| GetNodeTransitionProgress | string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für das Abrufen des Status eines Knotenübergangsbefehls. |
+| GetClusterConfigurationUpgradeStatus | string, Standardwert „Admin\|\|User“ |Dynamisch| Löst GetClusterConfigurationUpgradeStatus auf einer Partition aus. |
+| GetClusterConfiguration | string, Standardwert „Admin\|\|User“ | Dynamisch|Löst GetClusterConfiguration auf einer Partition aus. |
 |CreateComposeDeployment|string, Standardwert L"Admin"| Dynamisch|Erstellt eine Compose-Bereitstellung, die durch Compose-Dateien beschrieben wird. |
 |DeleteComposeDeployment|string, Standardwert L"Admin"| Dynamisch|Löscht die Compose-Bereitstellung. |
 |UpgradeComposeDeployment|string, Standardwert L"Admin"| Dynamisch|Führt ein Upgrade der Compose-Bereitstellung aus. |
-|ResolveSystemService|string, Standardwert L"Admin\|\|Benutzer"|Dynamisch| Sicherheitskonfiguration für die Auflösung von Systemdiensten. |
+|ResolveSystemService|string, Standardwert L"Admin\|\|User"|Dynamisch| Sicherheitskonfiguration für die Auflösung von Systemdiensten. |
 |GetUpgradeOrchestrationServiceState|string, Standardwert L"Admin"| Dynamisch|Schließt GetUpgradeOrchestrationServiceState für eine Partition ein. |
 |GetUpgradeOrchestrationServiceState|string, Standardwert L"Admin"| Dynamisch|Schließt SetUpgradeOrchestrationServiceState für eine Partition ein. |
 
@@ -672,7 +687,7 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 |DeploymentRetryBackoffInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Backoffintervall für den Fehler bei der Bereitstellung. Bei jedem Continuous Deployment-Fehler wiederholt das System die Bereitstellung bis zu MaxDeploymentFailureCount Mal. Das Wiederholungsintervall ist das Produkt aus dem Continuous Deployment-Fehler und dem Backoffintervall der Bereitstellung. |
 |EnableActivateNoWindow| Boolesch, Standardwert FALSE|Dynamisch| Der aktivierte Prozess wird im Hintergrund ohne Konsole erstellt. |
 |EnableProcessDebugging|Boolesch, Standardwert FALSE|Dynamisch| Ermöglicht das Starten von Anwendungshosts unter dem Debugger. |
-|EndpointProviderEnabled| Boolesch, Standardwert FALSE|statischen| Ermöglicht die Verwaltung von Endpunktressourcen durch Fabric. Erfordert die Angabe des Start- und Endportbereichs der Anwendungen in FabricNode. |
+|EndpointProviderEnabled| Boolesch, Standardwert FALSE|statischen| Ermöglicht die Verwaltung von Endpunktressourcen durch Fabric. Erfordert die Angabe des Start- und Endportbereichs dder Anwendungen in FabricNode. |
 |FabricContainerAppsEnabled| Boolesch, Standardwert FALSE|statischen| |
 |FirewallPolicyEnabled|Boolesch, Standardwert FALSE|statischen| Ermöglicht das Öffnen von Firewallports für die Endpunktressourcen mit expliziten Ports, die in ServiceManifest angegeben werden. |
 |GetCodePackageActivationContextTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die CodePackageActivationContext-Aufrufe. Dies gilt nicht für Ad-hoc-Dienste. |
@@ -721,8 +736,6 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 |MaxDataMigrationTimeout |Zeit in Sekunden, Standardwert 600 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das maximale Zeitlimit für Wiederherstellungsvorgänge nach der Datenmigration nach einer Fabric-Aktualisierung. |
 |MaxOperationRetryDelay |Zeit in Sekunden, Standardwert 5|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Die maximale Verzögerung für interne Wiederholungen, wenn Fehler gefunden werden. |
 |ReplicaSetCheckTimeoutRollbackOverride |Zeit in Sekunden, Standardwert 1200 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Wenn ReplicaSetCheckTimeout auf den maximalen DWORD-Wert festgelegt ist, wird dies mit dem Wert dieser Konfiguration für Rollbacks überschrieben. Der Wert für Rollforwards wird nie überschrieben. |
-|ImageBuilderJobQueueThrottle |Ganze Zahl, Standardwert 10 |Dynamisch|Drosselung der Threadanzahl für die Auftragswarteschlange des Image Builder-Proxys für Anwendungsanforderungen. |
-|MaxExponentialOperationRetryDelay|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(30)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Die maximale exponentielle Verzögerung für interne Wiederholungen, wenn wiederholt Fehler auftreten. |
 
 ### <a name="section-name-defragmentationemptynodedistributionpolicy"></a>Abschnittsname: DefragmentationEmptyNodeDistributionPolicy
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |

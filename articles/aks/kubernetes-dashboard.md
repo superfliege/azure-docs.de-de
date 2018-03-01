@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f13ca506197ff8b9b86cf1f69300fd974b9ddd5a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c830400ca1ccd7273ba3acfbd4f17eb2081add87
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Kubernetes-Dashboard mit Azure Container Service (AKS)
 
@@ -23,7 +23,7 @@ Das Kubernetes-Dashboard kann über die Azure-Befehlszeilenschnittstelle gestart
 
 Bei den Schritten in diesem Dokument wird davon ausgegangen, dass Sie einen AKS-Cluster erstellt und eine kubectl-Verbindung mit dem Cluster hergestellt haben. Informationen hierzu finden Sie in der [AKS-Schnellstartanleitung][aks-quickstart].
 
-Außerdem muss mindestens Version 2.0.21 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie „az --version“ aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
+Außerdem muss mindestens Version 2.0.27 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie „az --version“ aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
 
 ## <a name="start-kubernetes-dashboard"></a>Starten des Kubernetes-Dashboards
 

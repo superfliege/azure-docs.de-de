@@ -1,6 +1,6 @@
 ---
-title: "Zahlungsabwicklungsplan für PCI-DSS-konforme Umgebungen"
-description: PCI-DSS-Anforderung
+title: "Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung"
+description: "Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung"
 services: security
 documentationcenter: na
 author: simorjay
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 7f85c8b0377e57f08044bac41dbddbbedb7a4f55
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 3e97862091e6ea334f2437bd8424b79952f41bf4
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-blueprint-automation-payment-processing-for-pci-dss-compliant-environments"></a>Azure Blueprint Automation: Zahlungsabwicklung für PCI-DSS-konforme Umgebungen
+# <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung
 
 ## <a name="overview"></a>Übersicht
 
@@ -43,7 +43,7 @@ Die grundlegende Architektur besteht aus den folgenden Komponenten:
 - **Bereitstellungsvorlagen**. In dieser Bereitstellung werden [Azure Resource Manager-Vorlagen](/azure/azure-resource-manager/resource-group-overview#template-deployment) verwendet, um die Komponenten der Architektur automatisch in Microsoft Azure bereitzustellen, indem während des Setups Konfigurationsparameter angegeben werden.
 - **Automatisierte Bereitstellungsskripts**. Diese Skripts unterstützen beim Bereitstellen der End-to-End-Lösung. Zu den Skripts gehören:
     - Ein Skript zur Modulinstallation und zur Einrichtung für [globale Administratoren](/azure/active-directory/active-directory-assign-admin-roles-azure-portal). Mit diesem Skript werden die erforderlichen PowerShell-Module und globalen Administratorrollen installiert und wird geprüft, ob diese ordnungsgemäß konfiguriert sind.
-    - Ein PowerShell-Installationsskript wird verwendet, um die End-to-End-Lösung bereitzustellen. Diese wird als ZIP-Datei und BACPAC-Datei bereitgestellt, die eine vorgefertigte Demowebanwendung mit [Beispielinhalten für eine SQL-Datenbank](https://github.com/Microsoft/azure-sql-security-sample) enthalten. Den Quellcode für diese Lösung finden Sie im [Coderepository für den Zahlungsabwicklungsplan][code-repo]. 
+    - Ein PowerShell-Installationsskript wird verwendet, um die End-to-End-Lösung bereitzustellen. Diese wird als ZIP-Datei und BACPAC-Datei bereitgestellt, die eine vorgefertigte Demowebanwendung mit [Beispielinhalten für eine SQL-Datenbank](https://github.com/Microsoft/azure-sql-security-sample) enthalten. Den Quellcode für diese Lösung finden Sie im [Blueprint-Coderepository][code-repo]. 
 
 ## <a name="architectural-diagram"></a>Architekturdiagramm
 
@@ -72,7 +72,7 @@ Benutzerrollen, mit denen der Anwendungsfall veranschaulicht und ein Einblick in
 
 #### <a name="role-site-and-subscription-admin"></a>Rolle: Website- und Abonnementadministrator
 
-|Element      |Beispiel|
+|Item      |Beispiel|
 |----------|------|
 |Benutzername: |`adminXX@contosowebstore.com`|
 | Name: |`Global Admin Azure PCI Samples`|
@@ -84,7 +84,7 @@ Benutzerrollen, mit denen der Anwendungsfall veranschaulicht und ein Einblick in
 
 #### <a name="role-sql-administrator"></a>Rolle: SQL-Administrator
 
-|Element      |Beispiel|
+|Item      |Beispiel|
 |----------|------|
 |Benutzername: |`sqlAdmin@contosowebstore.com`|
 | Name: |`SQLADAdministrator PCI Samples`|
@@ -97,7 +97,7 @@ Benutzerrollen, mit denen der Anwendungsfall veranschaulicht und ein Einblick in
 
 #### <a name="role-clerk"></a>Rolle: Sachbearbeiterin
 
-|Element      |Beispiel|
+|Item      |Beispiel|
 |----------|------|
 |Benutzername:| `receptionist_EdnaB@contosowebstore.com`|
 | Name: |`Edna Benson`|
@@ -110,8 +110,6 @@ Edna Benson ist Empfangsdame und Sachbearbeiterin. Sie ist dafür verantwortlich
 - Edna kann Kundeninformationen erstellen und lesen.
 - Edna kann Kundeninformationen ändern.
 - Edna kann Kreditkartennummer, Ablaufdatum und Kreditkartenprüfnummer überschreiben oder ersetzen.
-
-> Im Contoso Webstore wird der Benutzer zum Testen der Möglichkeiten der bereitgestellten Umgebung automatisch als Benutzerin **Edna** angenommen.
 
 ### <a name="contoso-webstore---estimated-pricing"></a>Contoso Webstore – geschätzte Kosten
 
@@ -133,7 +131,7 @@ In dieser Lösung wurden die folgenden Azure-Dienste verwendet. Details zur Bere
 >- Azure-Automatisierung
 >- Azure Automation-Runbooks
 >- Azure DNS
->- Azure Virtual Network
+>- Virtuelles Azure-Netzwerk
 >- Virtueller Azure-Computer
 >- Azure-Ressourcengruppe und Richtlinien
 >- Azure Blob Storage
@@ -158,7 +156,7 @@ Die grundlegende Architektur verringert das Risiko von Sicherheitsschwachstellen
 - [Präventionsmodus](/azure/application-gateway/application-gateway-web-application-firewall-portal) mit OWASP 3.0-Regelsatz
 - Aktivieren der [Diagnoseprotokollierung](/azure/application-gateway/application-gateway-diagnostics)
 - [Benutzerdefinierte Integritätstests](/azure/application-gateway/application-gateway-create-gateway-portal)
-- [Azure Security Center](https://azure.microsoft.com/services/security-center) und [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) bieten zusätzlichen Schutz und zusätzliche Benachrichtigungen. Azure Security Center stellt außerdem ein Reputationssystem bereit.
+- [Azure Security Center](https://azure.microsoft.com/services/security-center) und [Azure Advisor](/azure/advisor/advisor-security-recommendations) bieten zusätzlichen Schutz und zusätzliche Benachrichtigungen. Azure Security Center stellt außerdem ein Reputationssystem bereit.
 
 #### <a name="virtual-network"></a>Virtuelles Netzwerk
 
@@ -191,7 +189,7 @@ Die Architektur schützt ruhende Daten durch Verwenden von Verschlüsselung, Dat
 
 Um die Anforderungen für verschlüsselte ruhende Daten zu erfüllen, wird für den gesamten [Azure Storage](https://azure.microsoft.com/services/storage/) die Verschlüsselung [Storage Service Encryption](/azure/storage/storage-service-encryption) verwendet.
 
-#### <a name="azure-sql-database"></a>Azure SQL-Datenbank
+#### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 
 In der SQL-Datenbankinstanz werden die folgenden Datenbanksicherheitsmaßnahmen verwendet:
 
@@ -208,7 +206,7 @@ In der SQL-Datenbankinstanz werden die folgenden Datenbanksicherheitsmaßnahmen 
 [Operations Management Suite (OMS)](/azure/operations-management-suite/) kann für den Contoso Webstore umfangreiche Protokollierung aller System- und Benutzeraktivitäten bereitstellen, einschließlich Protokollierung von Karteninhaberdaten. Änderungen können auf Ihre Richtigkeit hin überprüft werden. 
 
 - **Aktivitätsprotokolle:** [Aktivitätsprotokolle](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in Ihrem Abonnement ausgeführt wurden.
-- **Diagnoseprotokolle:** [Diagnoseprotokolle](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von jeder Ressource ausgegeben werden. Diese Protokolle umfassen Windows-Ereignissystemprotokolle, Azure-Blobspeicher-, -Tabellen- und -Warteschlangenprotokolle.
+- **Diagnoseprotokolle:** [Diagnoseprotokolle](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von jeder Ressource ausgegeben werden. Diese Protokolle umfassen Windows-Ereignissystemprotokolle, Azure Blob Storage-, Tabellen- und Warteschlangenprotokolle.
 - **Firewallprotokolle:** Das Application Gateway stellt umfassende Diagnose- und Zugriffsprotokolle bereit. Firewallprotokolle stehen für Application Gateway-Ressourcen zur Verfügung, für die WAF aktiviert ist.
 - **Protokollarchivierung:** Alle Diagnoseprotokolle sind so konfiguriert, dass sie in ein zentrales und verschlüsseltes Azure-Speicherkonto für die Archivierung mit einer definierten Beibehaltungsdauer (2 Tage) geschrieben werden. Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden. [Log Analytics](https://azure.microsoft.com/services/log-analytics) ist ein OMS-Dienst, mit dem Daten gesammelt und analysiert werden können, die von Ressourcen in Ihren Cloud- und lokalen Umgebungen generiert wurden.
 
@@ -268,7 +266,7 @@ Ein virtueller Computer wurde als ein Jumpbox (Bastionshost) mit den folgenden K
 
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) bietet eine zentrale Ansicht der Sicherheitsstatus sämtlicher Azure-Ressourcen. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und schnell Ressourcen ermitteln, die Ihre Aufmerksamkeit erfordern.  
 
-Bei [Azure-Ratgeber](/azure/advisor/advisor-overview) handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Verfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
+Beim [Azure Advisor](/azure/advisor/advisor-overview) handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
 
 [Microsoft Antimalware](/azure/security/azure-security-antimalware) für Azure Cloud Services und virtuelle Computer ist eine Echtzeitschutz-Lösung, mit der Viren, Spyware und andere Schadsoftware identifiziert und entfernt werden können. Sie können Warnungen konfigurieren, die ausgelöst werden, wenn bekannte Schadsoftware oder unerwünschte Software versucht, sich selbst zu installieren oder auf Ihren Azure-Systemen ausgeführt zu werden.
 
@@ -357,7 +355,7 @@ Es wird dringend empfohlen, eine Neuinstallation von PowerShell zu verwenden, um
     
 ## <a name="threat-model"></a>Bedrohungsmodell
 
-Ein Datenflussdiagramm (DFD) und ein Beispielbedrohungsmodell für den Contoso-Webstore ([Azure Blueprint Program](https://aka.ms/pciblueprintthreatmodel)).
+Ein Datenflussdiagramm (DFD) und ein Beispielbedrohungsmodell für den Contoso-Webstore ([Azure Blueprint Program](https://aka.ms/pciblueprintthreatmodel))
 
 ![](images/pci-threat-model.png)
 

@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Subnetze virtueller Netzwerke in Azure hinzu
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,98 +13,87 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/10/2017
+ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 413ec2ef4fcc7752b95984a209818eeba535746e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f8b60a27e760ae74c7f068844fad1ae0d4324366
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke
 
-Erfahren Sie, wie Sie Subnetze virtueller Netzwerke hinzufügen, ändern oder löschen. 
-
-Wenn Sie mit virtuellen Netzwerken nicht vertraut sind, sollten Sie vor dem Hinzufügen, Ändern oder Löschen eines Subnetzes die Artikel [Übersicht über Azure Virtual Network](virtual-networks-overview.md) und [Erstellen, Ändern oder Löschen von virtuellen Netzwerken](virtual-network-manage-network.md) lesen. Alle in einem virtuellen Netzwerk bereitgestellten Azure-Ressourcen werden in einem Subnetz innerhalb eines virtuellen Netzwerks bereitgestellt. In der Regel werden innerhalb eines virtuellen Netzwerks mehrere Subnetze erstellt:
-- **Filtern von Datenverkehr zwischen Subnetzen**. Sie können Netzwerksicherheitsgruppen auf Subnetze anwenden, um den ein- und ausgehenden Netzwerkdatenverkehr für alle Ressourcen im virtuellen Netzwerk (z.B. virtuelle Computer) zu filtern. Weitere Informationen zum Erstellen von Netzwerksicherheitsgruppen finden Sie unter [Erstellen von Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-pportal.md).
-- **Steuern der Routings zwischen Subnetzen**. Azure erstellt Standardrouten, damit Datenverkehr automatisch zwischen Subnetzen weitergeleitet wird. Sie können die Azure-Standardrouten überschreiben, indem Sie benutzerdefinierte Routen erstellen. Weitere Informationen zu benutzerdefinierten Routen finden Sie unter [Benutzerdefinierte Routen](virtual-network-create-udr-arm-ps.md). 
-
-In diesem Artikel wird beschrieben, wie Sie für über das Azure Resource Manager-Bereitstellungsmodell erstellte virtuelle Netzwerke Subnetze hinzufügen, ändern und löschen.
+Erfahren Sie, wie Sie Subnetze virtueller Netzwerke hinzufügen, ändern oder löschen. Wenn Sie mit virtuellen Netzwerken nicht vertraut sind, sollten Sie vor dem Hinzufügen, Ändern oder Löschen eines Subnetzes die Artikel [Übersicht über Azure Virtual Network](virtual-networks-overview.md) und [Erstellen, Ändern oder Löschen von virtuellen Netzwerken](virtual-network-manage-network.md) lesen. Alle in einem virtuellen Netzwerk bereitgestellten Azure-Ressourcen werden in einem Subnetz innerhalb eines virtuellen Netzwerks bereitgestellt.
  
-## <a name="before"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 
-Bevor Sie mit den Aufgaben, die in diesem Artikel beschrieben werden, beginnen, müssen die folgenden Voraussetzungen erfüllt sein:
+Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Abschnitten dieses Artikels durchführen:
 
-- Wenn Sie noch nicht mit der Arbeit mit virtuellen Netzwerken vertraut sind, sollten Sie die Übung unter [Erstellen Ihres ersten virtuellen Azure-Netzwerks](quick-create-portal.md) durchgehen. Diese Übung hilft Ihnen dabei, sich mit virtuellen Netzwerken vertraut zu machen.
-- Weitere Informationen zu Grenzwerten für virtuelle Netzwerke finden Sie in [Azure-Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
-- Melden Sie sich mit Ihrem Azure-Konto beim Azure-Portal, der Azure-Befehlszeilenschnittstelle (Azure CLI) oder bei Azure PowerShell an. Falls Sie noch kein Azure-Konto besitzen, registrieren Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free).
-- Wenn Sie PowerShell-Befehle verwenden möchten, um die Aufgaben in diesem Artikel auszuführen, müssen Sie zunächst [Azure PowerShell installieren und konfigurieren](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass die neueste Version der Azure PowerShell-Cmdlets installiert ist. Hilfe zu den Beispielen für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
-- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle verwenden möchten, um die Aufgaben in diesem Artikel auszuführen, gehen Sie wie folgt vor:
-    - [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass die neueste Version der Azure CLI installiert ist.
-    - Verwenden der Azure Cloud Shell. Anstatt die CLI und ihre Abhängigkeiten zu installieren, können Sie die Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure CLI ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie die Cloud Shell verwenden möchten, klicken Sie oben im Azure-Portal auf das Cloud Shell-Symbol (**>_**). 
+- Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
+- Öffnen Sie bei Verwendung des Portals die Seite „https://portal.azure.com“, und melden Sie sich mit Ihrem Azure-Konto an.
+- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.2.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.26 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
-  Um Hilfe zu Azure CLI-Befehlen zu erhalten, geben Sie `az <command> --help` ein.
+## <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes
 
-## <a name="create-subnet"></a>Hinzufügen eines Subnetzes
-
-So fügen Sie ein Subnetz hinzu
-
-1. Melden Sie sich beim [Portal](https://portal.azure.com) mit einem Konto an, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
-2. Geben Sie im Portal in das Suchfeld **Virtuelle Netzwerke** ein. Klicken Sie in den Suchergebnissen auf **Virtuelle Netzwerke**.
-3. Klicken Sie auf dem Blatt **Virtuelle Netzwerke** auf das virtuelle Netzwerk, dem Sie ein Subnetz hinzufügen möchten.
-4. Klicken Sie auf dem Blatt „Virtuelles Netzwerk“ auf **Subnetze**.
-5. Klicken Sie auf **+ Subnetz**.
-6. Geben Sie auf dem Blatt **Subnetz hinzufügen** Werte für die folgenden Parameter ein:
+1. Geben Sie oben im Portal *virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
+2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk aus, dem Sie ein Subnetz hinzufügen möchten.
+3. Wählen Sie unter **EINSTELLUNGEN** die Option **Subnetze** aus.
+4. Wählen Sie **+ Subnetz** aus.
+5. Geben Sie Werte für die folgenden Parameter ein:
     - **Name:** Der Name muss innerhalb des virtuellen Netzwerks eindeutig sein.
-    - **Adressbereich:** Der Bereich muss innerhalb des Adressraums für das virtuelle Netzwerk eindeutig sein. Der Bereich darf keine Überschneidungen mit anderen Subnetzadressbereichen innerhalb des virtuellen Netzwerks aufweisen. Der Adressraum muss mithilfe der CIDR-Notation (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing) angegeben werden. In einem virtuellen Netzwerk mit dem Adressraum 10.0.0.0/16 können Sie beispielsweise für ein Subnetz den Adressraum 10.0.0.0/24 definieren. Der kleinste Bereich, den Sie angeben können, ist /29, der acht IP-Adressen für das Subnetz bereitstellt. Azure reserviert die erste und letzte Adresse in jedem Subnetz aus Gründen der Protokollkonformität. Drei weitere Adressen sind für die Nutzung durch Azure-Dienste reserviert. Demzufolge führt das Einrichten eines Subnetzes mit dem Adressbereich /29 zu drei nutzbaren IP-Adressen im Subnetz. Wenn Sie ein virtuelles Netzwerk mit einem VPN-Gateway verbinden möchten, müssen Sie ein Gatewaysubnetz erstellen. Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) im Abschnitt „Gatewaysubnetz“. Unter bestimmten Bedingungen können Sie den Adressbereich ändern, nachdem das Subnetz hinzugefügt wurde. Informationen zum Ändern des Adressbereichs eines Subnetzes finden Sie im Abschnitt [Ändern der Subnetzeinstellungen](#change-subnet) dieses Artikels.
-    - **Netzwerksicherheitsgruppe:** Optional können Sie dem Subnetz eine vorhandene Netzwerksicherheitsgruppe zum Steuern der Filterung von ein- und ausgehendem Netzwerkdatenverkehr für das Subnetz zuordnen. Die Netzwerksicherheitsgruppe muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Sie muss darüber hinaus mit dem Resource Manager-Bereitstellungsmodell erstellt worden sein. Weitere Informationen zum Erstellen von Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-pportal.md).
-    - **Routingtabelle:** Optional können Sie dem Subnetz eine vorhandene Routingtabelle zur Steuerung der Weiterleitung von Netzwerkdatenverkehr zu anderen Netzwerken zuordnen. Die Routingtabelle muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Sie muss darüber hinaus mit dem Resource Manager-Bereitstellungsmodell erstellt worden sein. Weitere Informationen zum Erstellen von Routingtabellen finden Sie unter [Benutzerdefinierte Routen](virtual-network-create-udr-arm-ps.md).
+    - **Adressbereich:** Der Bereich muss innerhalb des Adressraums für das virtuelle Netzwerk eindeutig sein. Der Bereich darf keine Überschneidungen mit anderen Subnetzadressbereichen innerhalb des virtuellen Netzwerks aufweisen. Der Adressraum muss mithilfe der CIDR-Notation (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing) angegeben werden. In einem virtuellen Netzwerk mit dem Adressraum 10.0.0.0/16 können Sie beispielsweise für ein Subnetz den Adressraum 10.0.0.0/24 definieren. Der kleinste Bereich, den Sie angeben können, ist /29, der acht IP-Adressen für das Subnetz bereitstellt. Azure reserviert die erste und letzte Adresse in jedem Subnetz aus Gründen der Protokollkonformität. Drei weitere Adressen sind für die Nutzung durch Azure-Dienste reserviert. Demzufolge führt das Einrichten eines Subnetzes mit dem Adressbereich /29 zu drei nutzbaren IP-Adressen im Subnetz. Wenn Sie ein virtuelles Netzwerk mit einem VPN-Gateway verbinden möchten, müssen Sie ein Gatewaysubnetz erstellen. Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) im Abschnitt „Gatewaysubnetz“. Unter bestimmten Bedingungen können Sie den Adressbereich ändern, nachdem das Subnetz hinzugefügt wurde. Informationen zum Ändern des Adressbereichs eines Subnetzes finden Sie im Abschnitt [Ändern der Subnetzeinstellungen](#change-subnet-settings).
+    - **Netzwerksicherheitsgruppe:** Sie können einem Subnetz keine oder eine vorhandene Netzwerksicherheitsgruppe zuordnen, um ein- und ausgehenden Netzwerkdatenverkehr für das Subnetz zu filtern. Die Netzwerksicherheitsgruppe muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Erfahren Sie mehr über [Netzwerksicherheitsgruppen](security-overview.md) und das [Erstellen einer Netzwerksicherheitsgruppe](virtual-networks-create-nsg-arm-pportal.md).
+    - **Routingtabelle:** Sie können einem Subnetz keine oder eine vorhandene Routingtabelle zuordnen, um die Weiterleitung von Netzwerkdatenverkehr an andere Netzwerke zu steuern. Die Routingtabelle muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Erfahren Sie mehr über [Azure-Routing](virtual-networks-udr-overview.md) und das [Erstellen einer Routingtabelle](create-user-defined-route-portal.md).
+    - **Dienstendpunkte:** Für ein Subnetz können keine oder mehrere Dienstendpunkte aktiviert sein. Zum Aktivieren eines Dienstendpunkts für einen Dienst wählen Sie Dienste, für die Sie Dienstendpunkte aktivieren möchten, in der Liste **Dienste** aus. Zum Entfernen eines Dienstendpunkts heben Sie die Auswahl des Diensts auf, für den der Dienstendpunkt entfernt werden soll. Weitere Informationen zu Dienstendpunkten finden Sie unter der Übersicht über [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md). Nach dem Aktivieren eines Dienstendpunkts für einen Dienst müssen Sie auch Netzwerkzugriff für das Subnetz für eine mit dem Dienst erstellte Ressource aktivieren. Beispiel: Wenn Sie den Dienstendpunkt für *Microsoft.Storage* aktivieren, müssen Sie auch Netzwerkzugriff auf alle Azure Storage-Konten aktivieren, auf die Netzwerkzugriff gewährt werden soll. Ausführliche Informationen zum Aktivieren des Netzwerkzugriffs auf Subnetze, für die ein Dienstendpunkt aktiviert ist, finden Sie in der Dokumentation zum jeweiligen Dienst, für den Sie den Dienstendpunkt aktiviert haben.
+6. Um das Subnetz dem ausgewählten virtuellen Netzwerk hinzuzufügen, wählen Sie **OK**.
+
+**Befehle**
+
+- Azure CLI: [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create)
+- PowerShell: [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig)
+
+## <a name="change-subnet-settings"></a>Ändern von Subnetzeinstellungen
+
+1. Geben Sie oben im Portal *virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
+2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk mit dem Subnetz aus, für das Sie Einstellungen ändern möchten.
+3. Wählen Sie unter **EINSTELLUNGEN** die Option **Subnetze** aus.
+4. Wählen Sie in der Liste der Subnetze das Subnetz aus, für das Sie Einstellungen ändern möchten. Sie können die folgenden Einstellungen ändern:
+
+    - **Adressbereich**: Wenn innerhalb des Subnetzes keine Ressourcen bereitgestellt sind, können Sie den Adressbereich ändern. Wenn Ressourcen im Subnetz vorhanden sind, müssen Sie die Ressourcen zuerst entweder in ein anderes Subnetz verschieben oder aus dem Subnetz löschen. Die Schritte zum Verschieben oder Löschen einer Ressource variieren abhängig von der Ressource. Informationen zum Verschieben oder Löschen von Ressourcen in Subnetzen finden Sie in der Dokumentation zum jeweiligen Ressourcentyp, den Sie verschieben oder löschen möchten. Die Einschränkungen für den **Adressbereich** finden Sie in Schritt 5 von [Hinzufügen eines Subnetzes](#add-a-subnet).
     - **Benutzer:** Sie können den Zugriff auf das Subnetz über integrierte Rollen oder eigene benutzerdefinierte Rollen steuern. Weitere Informationen zum Zuweisen von Rollen und Benutzern für den Zugriff auf das Subnetz finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten des Zugriffs auf Ihre Azure-Ressourcen](../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-access).
-7. Um das Subnetz dem ausgewählten virtuellen Netzwerk hinzuzufügen, klicken Sie auf **OK**.
+    - Weitere Informationen zum Ändern von **Netzwerksicherheitsgruppen**, **Routingtabellen**, **Benutzern** und **Dienstendpunkten** finden Sie in Schritt 5 von [Hinzufügen eines Subnetzes](#add-a-subnet).
+5. Wählen Sie **Speichern** aus.
 
 **Befehle**
 
-|Tool|Get-Help|
-|---|---|
-|Azure-Befehlszeilenschnittstelle|[az network vnet subnet create](/cli/azure/network/vnet/subnet?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|PowerShell|[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json), [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+- Azure CLI: [az network vnet subnet update](/cli/azure/network/vnet#az_network_vnet_update)
+- PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
-## <a name="change-subnet"></a>Ändern von Subnetzeinstellungen
+## <a name="delete-a-subnet"></a>Löschen eines Subnetzes
 
-Sie ändern Netzwerksicherheitsgruppen, Routingtabellen und den Benutzerzugriff auf ein Subnetz über die Verwaltung von Ressourcen in einem Subnetz. Informationen zu diesen Einstellungen finden Sie unter [Hinzufügen von Subnetzen](#create-subnet) in Schritt 6. Wenn Sie den Adressbereich eines Subnetzes ändern möchten, müssen Sie zunächst alle Ressourcen in dem Subnetz löschen. Die Schritte zum Löschen einer Ressource variieren abhängig von der Ressource. Informationen zum Löschen von Ressourcen in Subnetzen finden Sie in der Dokumentation zum jeweiligen Ressourcentyp, den Sie löschen möchten. So ändern Sie den Adressbereich für ein Subnetz
+Sie können ein Subnetz erst löschen, wenn es keine Ressourcen mehr enthält. Falls das Subnetz noch Ressourcen enthält, müssen Sie diese Ressourcen zunächst löschen, bevor das Subnetz gelöscht werden kann. Die Schritte zum Löschen einer Ressource variieren abhängig von der Ressource. Informationen zum Löschen von Ressourcen in Subnetzen finden Sie in der Dokumentation zum jeweiligen Ressourcentyp, den Sie löschen möchten.
 
-1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
-2. Geben Sie im Portal in das Suchfeld **Virtuelle Netzwerke** ein. Klicken Sie in den Suchergebnissen auf **Virtuelle Netzwerke**.
-3. Klicken Sie auf dem Blatt **Virtuelle Netzwerke** auf das virtuelle Netzwerk, für dessen Subnetz Sie den Adressbereich ändern möchten.
-4. Klicken Sie auf das Subnetz, dessen Adressbereich geändert werden soll.
-5. Geben Sie auf dem Blatt „Subnetz“ im Feld **Adressbereich** den neuen Adressbereich ein. Der Bereich muss innerhalb des Adressraums für das virtuelle Netzwerk eindeutig sein. Der Bereich darf keine Überschneidungen mit anderen Subnetzadressbereichen innerhalb des virtuellen Netzwerks aufweisen. Der Adressraum muss in der CIDR-Notation angegeben werden. In einem virtuellen Netzwerk mit dem Adressraum 10.0.0.0/16 können Sie beispielsweise für ein Subnetz den Adressraum 10.0.0.0/24 definieren. Der kleinste Bereich, den Sie angeben können, ist /29, der acht IP-Adressen für das Subnetz bereitstellt. Azure reserviert die erste und letzte Adresse in jedem Subnetz aus Gründen der Protokollkonformität. Drei weitere Adressen sind für die Nutzung durch Azure-Dienste reserviert. Als Ergebnis ist ein Subnetz mit einem Adressbereich des Typs „/29“ mit drei verwendbaren IP-Adressen verfügbar. Wenn Sie ein virtuelles Netzwerk mit einem VPN-Gateway verbinden möchten, müssen Sie ein Gatewaysubnetz erstellen. Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) im Abschnitt „Gatewaysubnetz“. Unter bestimmten Bedingungen können Sie den Adressbereich ändern, nachdem das Subnetz erstellt wurde. Informationen zum Ändern des Adressbereichs eines Subnetzes finden Sie im Abschnitt [Ändern der Subnetzeinstellungen](#change-subnet) dieses Artikels.
-6. Klicken Sie auf **Speichern**.
+1. Geben Sie oben im Portal *virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
+2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk mit dem Subnetz aus, das Sie löschen möchten.
+3. Wählen Sie unter **EINSTELLUNGEN** die Option **Subnetze** aus.
+4. Wählen Sie in der Liste der Subnetze auf der rechten Seite **...** für das Subnetz, das Sie löschen möchten.
+5. Wählen Sie **Löschen** und dann **Ja**.
 
 **Befehle**
 
-|Tool|Get-Help|
-|---|---|
-|Azure-Befehlszeilenschnittstelle|[az network vnet subnet update](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|PowerShell|[Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+- Azure CLI: [az network vnet delete](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_delete)
+- PowerShell: [Remove-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/remove-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
+## <a name="permissions"></a>Berechtigungen
 
-## <a name="delete-subnet"></a>Löschen eines Subnetzes
+Zum Durchführen von Aufgaben für Subnetze muss Ihr Konto der Rolle [Netzwerkmitwirkender](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, die über die entsprechenden Berechtigungen in der folgenden Tabelle verfügt:
 
-Sie können ein Subnetz erst löschen, wenn es keine Ressourcen mehr enthält. Falls das Subnetz noch Ressourcen enthält, müssen Sie diese Ressourcen zunächst löschen, bevor das Subnetz gelöscht werden kann. Die Schritte zum Löschen einer Ressource variieren abhängig von der Ressource. Informationen zum Löschen von Ressourcen in Subnetzen finden Sie in der Dokumentation zum jeweiligen Ressourcentyp, den Sie löschen möchten. So löschen Sie ein Subnetz
-
-1. Melden Sie sich beim [Portal](https://portal.azure.com) mit einem Konto an, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
-2. Geben Sie im Portal in das Suchfeld **Virtuelle Netzwerke** ein. Klicken Sie in den Suchergebnissen auf **Virtuelle Netzwerke**.
-3. Klicken Sie auf dem Blatt **Virtuelle Netzwerke** auf das virtuelle Netzwerk, aus dem Sie ein Subnetz löschen möchten.
-4. Klicken Sie auf dem Blatt des virtuellen Netzwerks unter **Einstellungen** auf **Subnetze**.
-5. Klicken Sie auf dem eingeblendeten Blatt „Subnetze“ in der Liste der Subnetze mit der rechten Maustaste auf das Subnetz, das Sie löschen möchten. Klicken Sie dann erst auf **Löschen** und danach auf **Ja**, um das Subnetz zu löschen.
-
-**Befehle**
-
-|Tool|Get-Help|
-|---|---|
-|Azure-Befehlszeilenschnittstelle|[az network vnet delete](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|PowerShell|[Remove-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/remove-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Wenn Sie einen virtuellen Computer in einem Subnetz erstellen möchten, lesen Sie unter [Erstellen eines virtuellen Netzwerks und Bereitstellen von virtuellen Computern im Subnetz](quick-create-portal.md#create-virtual-machines) nach.
+|Vorgang                                                                |   Vorgangsname                               |
+|-----------------------------------------------------------------------  |   -------------------------------------------  |
+|Microsoft.Network/virtualNetworks/subnets/read                           |   Subnetz des virtuellen Netzwerks abrufen                   |
+|Microsoft.Network/virtualNetworks/subnets/write                          |   Virtual Network-Subnetz erstellen oder aktualisieren      |
+|Microsoft.Network/virtualNetworks/subnets/delete                         |   Subnetz des virtuellen Netzwerks löschen                |
+|Microsoft.Network/virtualNetworks/subnets/join/action                    |   Virtuellem Netzwerk beitreten                         |
+|Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   Dienst mit einem Subnetz verknüpfen                     |
+|Microsoft.Network/virtualNetworks/subnets/virtualMachines/read           |   Virtuelle Computer für ein Virtual Network-Subnetz abrufen  |

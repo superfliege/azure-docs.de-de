@@ -1,5 +1,5 @@
 ---
-title: "Tutorial für SaaS-Anwendungen mit einer Datenbank pro Mandant – Azure SQL-Datenbank | Microsoft Docs"
+title: "Tutorial für SaaS-Anwendungen mit einer Datenbank pro Mandant – Azure SQL-Datenbank | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Sie die mehrinstanzenfähige Wingtip Tickets-SaaS-Anwendung bereitstellen und kennenlernen, mit der Datenbanken pro Mandant und andere SaaS-Muster per Azure SQL-Datenbank dargestellt werden."
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: genemi
-ms.openlocfilehash: 5342b5290fab9826a2b38cd7ada63a6736c77601
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: cbe8a04abbf2dada7cc43e57e823c3a41bf83fe7
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-and-explore-a-multi-tenant-saas-application-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Bereitstellen und Untersuchen einer mehrinstanzenfähigen SaaS-Anwendung, die das Muster mit einer Datenbank pro Mandant mit Azure SQL-Datenbank verwendet
 
@@ -50,18 +50,21 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 ## <a name="deploy-the-wingtip-tickets-saas-application"></a>Bereitstellen des Wingtip Tickets SaaS-Anwendung
 
-Stellen Sie die App bereit:
+#### <a name="plan-the-names"></a>Planen von Namen
 
-1. Wählen Sie Werte aus, die Sie für die folgenden Parameter benötigen, und notieren Sie sie:
+In den Schritten in diesem Abschnitt geben Sie einen Wert für *Benutzer* an, mit dem sichergestellt wird, dass Ressourcennamen global eindeutig sind, sowie einen Namen für die *Ressourcengruppe*, die alle Ressourcen enthält, die durch eine Bereitstellung der App erstellt werden. Für eine Person mit dem Namen *Ann Finley* wird Folgendes empfohlen:
+- *Benutzer:* **af1** *(Die Initialen mit einer Ziffer. Verwenden Sie einen anderen Wert (z. B. „af2“), wenn Sie die App ein zweites Mal bereitstellen.)*
+- *Ressourcengruppe:* **wingtip-dpt-af1** *(„wingtip-dpt“ gibt an, dass es sich um die App für eine Datenbank pro Mandant handelt. Durch Anhängen des Benutzernamens „af1“ wird der Name der Ressourcengruppe mit den Namen der darin enthaltenen Ressourcen korreliert.)*
 
-    - **Benutzer**: Wählen Sie einen kurzen Wert, z. B. Ihre Initialen gefolgt von einer Ziffer. Beispiel: *af1*. Der Benutzerparameter darf nur Buchstaben, Zahlen und Bindestriche (keine Leerzeichen) enthalten. Das erste und das letzte Zeichen müssen Buchstaben oder Zahlen sein. Es wird empfohlen, alle Buchstaben klein zu schreiben.
-    - **Ressourcengruppe**: Bei jeder Bereitstellung der Wingtip-Anwendung müssen Sie einen anderen eindeutigen Namen für die neue Ressourcengruppe auswählen. Es wird empfohlen, den Benutzernamen an einen Basisnamen für die Ressourcengruppe anzufügen. Der Name für eine Ressourcengruppe kann beispielsweise *wingtip-af1* lauten. Auch hier wird empfohlen, alle Buchstaben klein zu schreiben.
+Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese. 
 
-2. Öffnen Sie die Bereitstellungsvorlage für Wingtip Tickets SaaS Database per Tenant im Azure-Portal, indem Sie auf die blaue Schaltfläche **Bereitstellung in Azure** klicken.
+#### <a name="steps"></a>Schritte
+
+1. Öffnen Sie die Bereitstellungsvorlage für Wingtip Tickets SaaS Database per Tenant im Azure-Portal, indem Sie auf die blaue Schaltfläche **Bereitstellung in Azure** klicken.
 
    <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-3. Geben Sie die Werte für die erforderlichen Parameter in die Vorlage ein:
+1. Geben Sie die Werte für die erforderlichen Parameter in die Vorlage ein:
 
     > [!IMPORTANT]
     > Die Sicherheit einiger Authentifizierungs- und Serverfirewalls wurde zu Vorführungszwecken absichtlich aufgehoben. Es wird empfohlen, eine *neue Ressourcengruppe* zu erstellen. Verwenden Sie keine vorhandenen Ressourcengruppen, Server oder Pools. Verwenden Sie diese Anwendung, die Skripts oder damit bereitgestellten Ressourcen nicht für die Produktion. Wenn Sie sich umfassend mit der Anwendung vertraut gemacht haben, löschen Sie diese Ressourcengruppe, um die zugehörige Abrechnung einzustellen.
@@ -70,12 +73,12 @@ Stellen Sie die App bereit:
     - **Speicherort:** Wählen Sie in der Dropdownliste einen **Speicherort** aus.
     - **Benutzer:** Verwenden Sie den zuvor ausgewählten Wert für den Benutzernamen.
 
-4. Stellen Sie die Anwendung bereit.
+1. Stellen Sie die Anwendung bereit.
 
     - Klicken Sie auf die entsprechende Option, um den Geschäftsbedingungen zuzustimmen.
     - Klicken Sie auf **Kaufen**.
 
-5. Überwachen Sie den Bereitstellungsstatus, indem Sie auf **Benachrichtigungen** klicken (das Glockensymbol rechts neben dem Suchfeld). Das Bereitstellen der Wingtip Tickets SaaS-App dauert ungefähr fünf Minuten.
+1. Überwachen Sie den Bereitstellungsstatus, indem Sie auf **Benachrichtigungen** klicken (das Glockensymbol rechts neben dem Suchfeld). Das Bereitstellen der Wingtip Tickets SaaS-App dauert ungefähr fünf Minuten.
 
    ![Bereitstellung erfolgreich](media/saas-dbpertenant-get-started-deploy/succeeded.png)
 
@@ -98,10 +101,10 @@ Skripts befinden sich im Ordner „*...\\WingtipTicketsSaaS-DbPerTenant-master\\
 
 ## <a name="update-the-user-configuration-file-for-this-deployment"></a>Aktualisieren der Benutzerkonfigurationsdatei für diese Bereitstellung
 
-Ändern Sie vor dem Ausführen von Skripts die Werte *resource group* und *user* in der Datei **UserConfig.psm1**. Legen Sie diese Variablen auf die Werte fest, die Sie während der Bereitstellung angegeben haben.
+Ändern Sie vor dem Ausführen von Skripts die Werte *resource group* und *user* in der Datei *User Config*. Legen Sie diese Variablen auf die Werte fest, die Sie während der Bereitstellung angegeben haben.
 
-1. Öffnen Sie „...\\Learning Modules\\*UserConfig.psm1*“ in der *PowerShell ISE*. 
-2. Aktualisieren Sie *ResourceGroupName* und *Name* mit den jeweiligen Werten für Ihre Bereitstellung (nur in den Zeilen 10 und 11).
+1. Öffnen Sie „...\\Learning Modules\\**UserConfig.psm1**“ in der **PowerShell ISE**. 
+2. Aktualisieren Sie **ResourceGroupName** und **Name** mit den jeweiligen Werten für Ihre Bereitstellung (nur in den Zeilen 10 und 11).
 3. Speichern Sie die Änderungen!
 
 Auf diese Werte wird in fast jedem Skript verwiesen.
@@ -112,39 +115,39 @@ In der App werden Veranstaltungsorte vorgestellt. Beispiele hierfür sind Konzer
 
 Innerhalb der App wird für jeden Mandanten eine SQL-Datenbank in einem Pool für elastische SQL-Datenbanken bereitgestellt.
 
-Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandanten in Ihrer Bereitstellung aufgeführt.
+Auf einer zentralen **Veranstaltungshub**-Seite wird eine Liste mit Links zu den Mandanten in Ihrer Bereitstellung aufgeführt.
 
-1. Öffnen Sie den *Event Hub* in Ihrem Webbrowser: http://events.wingtip-dpt.&lt;BENUTZER&gt;.trafficmanager.net (ersetzen Sie &lt;BENUTZER&gt; durch den Benutzerwert Ihrer Bereitstellung):
+1. Öffnen Sie den *Veranstaltungshub* in Ihrem Webbrowser: http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net (ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung):
 
-    ![Events Hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
+    ![Veranstaltungshub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. Klicken Sie im **Ereignis-Hub** auf *Fabrikam Jazz Club*.
+2. Klicken Sie im **Veranstaltungshub** auf *Fabrikam Jazz Club*.
 
     ![Ereignisse](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 #### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-Die Wingtip-Anwendung verwendet [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md), um die Verteilung eingehender Anforderungen zu steuern. Die URL für den Zugriff auf den Event Hub für einen Mandanten muss das folgende Format aufweisen:
+Die Wingtip-Anwendung verwendet [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md), um die Verteilung eingehender Anforderungen zu steuern. Die URL für den Zugriff auf die Veranstaltungsseite für einen bestimmten Mandanten verwendet das folgende Format:
 
-- http://events.wingtip-dpt.&lt;BENUTZER&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/fabrikamjazzclub
 
 In der folgenden Tabelle werden die Teile des oben genannten Formats erläutert.
 
-| URL-Teil | Beschreibung |
-| :------- | :---------- |
-| http://events.wingtip-dpt | Die Veranstaltungs-Teile der Wingtip-App<br /><br />Durch den ***-dpt***-Teil unterscheidet sich die Wingtip-Implementierung *Datenbank pro Mandant* von anderen, leicht abweichenden Implementierungen. Andere Artikel der Dokumentation bieten z. B. Wingtip für *Standalone* (*-sa*) oder für *Multi-tenant DB*. |
-| .*&lt;BENUTZER&gt;* | In unserem Beispiel *af1* |
+| URL-Teil        | BESCHREIBUNG       |
+| :-------------- | :---------------- |
+| http://events.wingtip-dpt | Die Veranstaltungs-Teile der Wingtip-App<br /><br /> Durch *-dpt* unterscheidet sich die Wingtip Tickets-Implementierung *mit einer Datenbank pro Mandant* von anderen Implementierungen, z. B. der *eigenständigen* Implementierung mit einer App pro Mandant (*-sa*) oder der Implementierung mit einer *mehrinstanzenfähigen Datenbank* (*-mt*). |
+| .*&lt;Benutzer&gt;* | In unserem Beispiel *af1* |
 | .trafficmanager.net/ | Azure Traffic Manager, Basis-URL |
-| fabrikamjazzclub | Für den Mandanten mit dem Namen *Fabrikam Jazz Club* |
+| fabrikamjazzclub | Gibt den Mandanten mit dem Namen *Fabrikam Jazz Club* an. |
 | &nbsp; | &nbsp; |
 
 1. Der Mandantenname wird von der Veranstaltungs-App aus der URL analysiert.
 2. Der Mandantenname wird verwendet, um einen Schlüssel zu erstellen.
 3. Der Schlüssel wird für den Zugriff auf den Katalog verwendet, um den Speicherort der Mandantendatenbank abzurufen.
     - Der Katalog wird mit *Shardzuordnungsverwaltung* implementiert.
-4. Der *Event Hub* nutzt erweiterte Metadaten im Katalog, um eine Liste mit Veranstaltungs-URLs abzurufen.
+4. Der *Veranstaltungshub* verwendet erweiterte Metadaten im Katalog, um die Liste der Veranstaltungsseiten-URLs für jeden Mandanten zu erstellen.
 
-In einer Produktionsumgebung erstellen Sie normalerweise einen CNAME-DNS-Eintrag zum [*Zuordnen einer Unternehmensinternetdomäne*](../traffic-manager/traffic-manager-point-internet-domain.md) zum Traffic Manager-Profil.
+In einer Produktionsumgebung erstellen Sie normalerweise einen CNAME-DNS-Eintrag zum [*Zuordnen einer Unternehmensinternetdomäne*](../traffic-manager/traffic-manager-point-internet-domain.md) zum DNS-Namen von Traffic Manager.
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>Generieren von Last in den Mandantendatenbanken
 
@@ -156,30 +159,18 @@ Die Bursts treten in zufälligen Intervallen auf.
 Es dauert einige Minuten, bis das Auslastungsmuster ermittelt ist. Daher ist es am besten, den Generator mindestens drei oder vier Minuten laufen zu lassen, bevor die Auslastung überwacht wird.
 
 1. Öffnen Sie in der *PowerShell ISE* das Skript „...\\Learning Modules\\Utilities\\*Demo-LoadGenerator.ps1*“.
-2. Drücken Sie **F5**, um das Skript auszuführen und den Auslastungsgenerator zu starten. (Lassen Sie in diesem Fall die Standardparameterwerte unverändert.)
+1. Drücken Sie **F5**, um das Skript auszuführen und den Auslastungsgenerator zu starten. (Lassen Sie in diesem Fall die Standardparameterwerte unverändert.)
+1. Sie werden aufgefordert, sich bei Ihrem Azure-Konto anzumelden und, falls erforderlich, das zu verwendende Abonnement auszuwählen.
 
-Sie sollten dieselbe PowerShell ISE-Instanz nicht wiederverwenden, außer vielleicht für die erneute Ausführung von *Demo-LoadGenerator.ps1*. Wenn Sie andere PowerShell-Skripts ausführen möchten, starten Sie eine separate PowerShell ISE.
-
-#### <a name="rerun-with-different-parameters"></a>Erneute Ausführung mit anderen Parametern
-
-Wenn Sie den Workloadtest mit anderen Parametern erneut ausführen möchten, gehen Sie folgendermaßen vor:
-
-1. Beenden Sie *LoadGenerator.ps1*.
-    - Drücken Sie entweder **STRG+C**, oder klicken Sie auf die Schaltfläche **Beenden**.
-    - Unvollständige Hintergrundaufträge, die noch ausgeführt werden, werden durch die Beendigung weder beendet noch beeinträchtigt.
-
-2. Führen Sie *Demo-LoadGenerator.ps1* erneut aus.
-    - Bei der erneuten Ausführung werden zuerst alle Hintergrundaufträge beendet, die u. U. noch *sp_CpuLoadGenerator* ausführen.
-
-Alternativ können Sie die PowerShell ISE-Instanz beenden, wodurch alle Hintergrundaufträge beendet werden. Starten Sie dann eine neue PowerShell ISE-Instanz, und führen Sie *Demo-LoadGenerator.ps1* erneut aus.
+Das Lastengeneratorskript startet einen Hintergrundauftrag für jede Datenbank im Katalog und hält dann an.  Wenn Sie das Lastengeneratorskript erneut ausführen, hält es zunächst alle aktuell ausgeführten Hintergrundaufträge an, bevor neue Aufträge gestartet werden.
 
 #### <a name="monitor-the-background-jobs"></a>Überwachen der Hintergrundaufträge
 
 Wenn Sie die Hintergrundaufträge steuern und überwachen möchten, können Sie folgende Cmdlets verwenden:
 
-- Get-Job
-- Receive-Job
-- Stop-Job
+- `Get-Job`
+- `Receive-Job`
+- `Stop-Job`
 
 #### <a name="demo-loadgeneratorps1-actions"></a>Aktionen von Demo-LoadGenerator.ps1
 
@@ -188,17 +179,19 @@ Wenn Sie die Hintergrundaufträge steuern und überwachen möchten, können Sie 
 1. *Demo-LoadGenerator.ps1* startet *LoadGenerator.ps1* im Vordergrund.
     - Beide PS1-Dateien werden unter den Ordnern *Learning Modules\\Utilities\\* gespeichert.
 
-2. *LoadGenerator.ps1* durchläuft alle Mandantendatenbanken, die im Katalog registriert sind.
+1. *LoadGenerator.ps1* durchläuft alle Mandantendatenbanken im Katalog.
 
-3. Für jede Mandantendatenbank startet *LoadGenerator.ps1* die Ausführung der gespeicherten Transact-SQL-Prozedur mit dem Namen *sp_CpuLoadGenerator*.
-    - Die Ausführungen werden im Hintergrund gestartet, indem das *Invoke-SqlAzureWithRetry*-Cmdlet aufgerufen wird.
-    - *sp_CpuLoadGenerator* durchläuft für die Standarddauer von 60 Sekunden eine SQL-SELECT-Anweisung. Das Zeitintervall zwischen den Ausgaben der SELECT-Anweisung variiert je nach Parameterwerten.
+1. *LoadGenerator.ps1* startet einen PowerShell-Hintergrundauftrag für jede Mandantendatenbank: 
+    - Standardmäßig werden die Hintergrundaufträge für 120 Minuten ausgeführt.
+    - Jeder Auftrag bewirkt eine CPU-basierte Last in einer Mandantendatenbank durch Ausführen von *Sp_CpuLoadGenerator*.  Die Intensität und Dauer der Last variiert abhängig von `$DemoScenario`. 
+    - *Sp_CpuLoadGenerator* durchläuft eine SQL-SELECT-Anweisung, die eine hohe CPU-Auslastung bewirkt. Das Zeitintervall zwischen den Ausgaben der SELECT-Anweisung variiert je nach Parameterwerten, um eine steuerbare CPU-Auslastung zu erzeugen. Auslastungsgrade und Intervalle werden zufällig festgelegt, um realistischere Auslastungen zu simulieren.
     - Diese SQL-Datei wird unter *WingtipTenantDB\\dbo\\StoredProcedures\\* gespeichert.
 
-4. *LoadGenerator.ps1* startet für jede Mandantendatenbank außerdem das *Start-Job*-Cmdlet.
-    - *Start-Job* imitiert eine Workload von Ticketverkäufen.
+1. Falls `$OneTime = $false`, startet der Lastengenerator die Hintergrundaufträge und setzt dann die Ausführung fort, wobei alle 10 Sekunden eine Überprüfung auf neue Mandanten erfolgt, die bereitgestellt werden. Wenn Sie `$OneTime = $true` festlegen, startet der Lastengenerator die Hintergrundaufträge und beendet dann die Ausführung im Vordergrund. Behalten Sie `$OneTime = $false` für dieses Tutorial bei.
 
-5. *LoadGenerator.ps1* wird weiterhin ausgeführt und überwacht die Umgebung auf neu bereitgestellte Mandanten.
+  Verwenden Sie STRG+C oder den Stoppvorgang STRG+UNTBR, wenn Sie den Lastengenerator beenden oder neu starten möchten. 
+
+  Wenn der Lastengenerator weiter im Vordergrund ausgeführt wird, verwenden Sie eine andere Instanz von PowerShell ISE, um andere PowerShell-Skripts auszuführen.
 
 &nbsp;
 
@@ -208,7 +201,8 @@ Bevor Sie zum nächsten Abschnitt übergehen, lassen Sie den Auslastungsgenerato
 
 Bei der Erstbereitstellung werden drei Beispielmandanten erstellt. Jetzt erstellen Sie einen weiteren Mandanten, um zu sehen, wie sich dies auf die bereitgestellte Anwendung auswirkt. Der Arbeitsablauf zum Bereitstellen neuer Mandanten in der Wingtip-App wird im [Tutorial zum Bereitstellen und zum Katalog](saas-dbpertenant-provision-and-catalog.md) erläutert. In dieser Phase erstellen Sie in weniger als einer Minute einen neuen Mandanten.
 
-1. Öffnen Sie „...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*“ in der *PowerShell ISE*.
+1. Öffnen Sie eine neue *PowerShell ISE*.
+1. Öffnen Sie „...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*“.
 2. Drücken Sie **F5** , um das Skript auszuführen. (Lassen Sie die Standardwerte unverändert.)
 
    > [!NOTE]
@@ -224,14 +218,14 @@ Nach der erfolgreichen Bereitstellung wird die Website für *Veranstaltungen* de
 
 ![Neuer Mandant](./media/saas-dbpertenant-get-started-deploy/red-maple-racing.png)
 
-Aktualisieren Sie den *Event Hub*, damit der neue Mandant in der Liste angezeigt wird.
+Aktualisieren Sie den *Veranstaltungshub*, damit der neue Mandant in der Liste angezeigt wird.
 
 ## <a name="explore-the-servers-pools-and-tenant-databases"></a>Untersuchen der Server, Pools und Mandantendatenbanken
 
 Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Auslastung gestartet haben, sehen wir uns einige der bereitgestellten Ressourcen an:
 
 1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu Ihrer Liste der SQL-Server, und öffnen Sie den Server **catalog-dpt-&lt;BENUTZER&gt;**.
-    - Der Katalogserver enthält die beiden Datenbanken **tenantcatalog** und **basetenantdb** (eine Datenbank, die kopiert wird, um neue Mandanten zu erstellen).
+    - Der Katalogserver enthält die beiden Datenbanken **tenantcatalog** und **basetenantdb** (eine Vorlagendatenbank, die kopiert wird, um neue Mandanten zu erstellen).
 
    ![Datenbanken](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
@@ -249,18 +243,18 @@ Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Auslastu
 
 Nachdem *LoadGenerator.ps1* mehrere Minuten ausgeführt wurde, sollten genügend Daten verfügbar sein, um einige Überwachungsfunktionen kennenzulernen. Diese Funktionen sind in Pools und Datenbanken integriert.
 
-Navigieren Sie zum Server **tenants1-dpt-&lt;BENUTZER&gt;**, und klicken Sie auf **Pool1**, um die Ressourcenverwendung für den Pool anzuzeigen. In den folgenden Diagrammen wurde der Auslastungsgenerator eine Stunde lang ausgeführt.
+Navigieren Sie zum Server **tenants1-dpt-&lt;Benutzer&gt;**, und klicken Sie auf **Pool1**, um die Ressourcenverwendung für den Pool anzuzeigen. In den folgenden Diagrammen wurde der Auslastungsgenerator eine Stunde lang ausgeführt.
 
    ![Überwachen des Pools](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
 - Das erste Diagramm mit der Bezeichnung **Ressourcenverwendung** zeigt die eDTU-Nutzung des Pools.
-- Das zweite Diagramm zeigt die eDTU-Nutzung der obersten fünf Datenbanken im Pool.
+- Das zweite Diagramm zeigt die eDTU-Nutzung der fünf aktivsten Datenbanken im Pool.
 
-Die beiden Diagramme veranschaulichen, dass Pools für elastische Datenbanken und SQL-Datenbank gut für Workloads von SaaS-Anwendungen geeignet sind.
+Die beiden Diagramme veranschaulichen, dass Pools für elastische Datenbanken und SQL-Datenbank gut für unvorhersehbare Workloads von SaaS-Anwendungen geeignet sind.
 Die Diagramme zeigen, dass vier Datenbanken jeweils mit Bursts auf bis zu 40 eDTUs in einem 50-eDTU-Pool problemlos unterstützt werden. Der 50-eDTU-Pool kann auch größere Workloads unterstützen.
-Wenn sie als eigenständige Datenbanken bereitgestellt wurden, muss es sich hierbei jeweils um eine S2-Datenbank (50 DTUs) handeln, damit Bursts unterstützt werden.
+Wenn sie als eigenständige Datenbanken bereitgestellt wurden, muss es sich bei jeder um eine S2-Datenbank (50 DTUs) handeln, damit Bursts unterstützt werden.
 Die Kosten für vier eigenständige S2-Datenbanken würden fast den dreifachen Preis des Pools ausmachen.
-In der Praxis betreiben SQL-Datenbank-Kunden derzeit bis zu 500 Datenbanken in Pools mit 200 eDTUs.
+In der Praxis betreiben SQL-Datenbank-Kunden bis zu 500 Datenbanken in Pools mit 200 eDTUs.
 Weitere Informationen finden Sie im [Tutorial zur Leistungsüberwachung](saas-dbpertenant-performance-monitoring.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

@@ -1,10 +1,10 @@
 ---
 title: 'Verbinden von klassischen virtuellen Netzwerken mit Azure Resource Manager-VNets: PowerShell | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie mithilfe von VPN Gateway und PowerShell eine VPN-Verbindung zwischen klassischen VNets und Resource Manager-VNets erstellen.
+description: Erstellen einer VPN-Verbindung zwischen klassischen VNETs und Resource Manager-VNETs mithilfe von VPN Gateway und PowerShell
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
@@ -13,19 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: da5bddba3a1fad74b2ee08fd2f34d1b01c7345c8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a3afd89a928854a1b03bfd4c5645ea12dbb638fc
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell
 
-
-
-In diesem Artikel wird erläutert, wie Sie klassische VNets mit Resource Manager-VNets verbinden, damit die Ressourcen in den separaten Bereitstellungsmodellen miteinander kommunizieren können. Die Schritte in diesem Artikel werden mit PowerShell ausgeführt. Sie können diese Konfiguration aber auch im Azure-Portal durch Auswählen des Artikels in dieser Liste erstellen.
+In diesem Artikel wird erläutert, wie Sie klassische VNETs mit Resource Manager-VNETs verbinden, damit die Ressourcen in den separaten Bereitstellungsmodellen miteinander kommunizieren können. Die Schritte in diesem Artikel werden mit PowerShell ausgeführt. Sie können diese Konfiguration aber auch im Azure-Portal durch Auswählen des Artikels in dieser Liste erstellen.
 
 > [!div class="op_single_selector"]
 > * [Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -35,7 +33,7 @@ In diesem Artikel wird erläutert, wie Sie klassische VNets mit Resource Manager
 
 Das Verbinden eines klassischen VNet mit einem Resource Manager-VNet ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen. Sie können auch eine Verbindung zwischen VNets in unterschiedlichen Abonnements und Regionen erstellen. Es ist auch möglich, VNets zu verbinden, die bereits über Verbindungen mit lokalen Netzwerken verfügen, sofern sie mit einem dynamischen oder routenbasierten Gateway konfiguriert wurden. Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen](#faq) . 
 
-Wenn sich Ihre VNets in der gleichen Region befinden, kann es stattdessen hilfreich sein, sie mittels VNet-Peering zu verbinden. Beim VNet-Peering wird kein VPN-Gateway verwendet. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md). 
+Falls Sie noch kein Gateway für virtuelle Netzwerke besitzen und keins erstellen möchten, können Sie stattdessen die VNETS mittels VNET-Peering verbinden. Beim VNET-Peering wird kein VPN-Gateway verwendet. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
 
 ## <a name="before"></a>Voraussetzungen
 
@@ -76,10 +74,22 @@ Gateway-IP-Adressierungskonfiguration = gwipconfig
 
 ## <a name="createsmgw"></a>Abschnitt 1 – Konfigurieren des klassischen VNet
 ### <a name="1-download-your-network-configuration-file"></a>1. Herunterladen der Netzwerkkonfigurationsdatei
-1. Melden Sie sich in der PowerShell-Konsole mit erhöhten Rechten bei Ihrem Azure-Konto an. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto auf. Nach dem Anmelden werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen. Für diesen Teil der Konfiguration verwenden Sie die SM-PowerShell-Cmdlets.
+1. Melden Sie sich in der PowerShell-Konsole mit erhöhten Rechten bei Ihrem Azure-Konto an. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto auf. Nach dem Anmelden werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen. In diesem Abschnitt werden die klassischen Azure PowerShell-Cmdlets für die Dienstverwaltung (Service Management, SM) verwendet.
 
   ```powershell
   Add-AzureAccount
+  ```
+
+  Rufen Sie jetzt Ihr Azure-Abonnement ab.
+
+  ```powershell
+  Get-AzureSubscription
+  ```
+
+  Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
+
+  ```powershell
+  Select-AzureSubscription -SubscriptionName "Name of subscription"
   ```
 2. Exportieren Sie Ihre Azure-Netzwerkkonfigurationsdatei, indem Sie den folgenden Befehl ausführen. Sie können den Speicherort der zu exportierenden Datei bei Bedarf ändern.
 
@@ -169,13 +179,13 @@ Gehen Sie wie im Folgenden beschrieben vor, um ein VPN-Gateway für das RM-VNet 
   Login-AzureRmAccount
   ``` 
    
-  Falls Sie mehrere Abonnements haben, benötigen Sie eine Liste Ihrer Azure-Abonnements.
+  Rufen Sie eine Liste Ihrer Azure-Abonnements ab.
 
   ```powershell
   Get-AzureRmSubscription
   ```
    
-  Geben Sie das Abonnement an, das Sie verwenden möchten.
+  Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement an, das Sie verwenden möchten.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
@@ -308,4 +318,3 @@ Zum Erstellen einer Verbindung zwischen den Gateways ist PowerShell erforderlich
 ## <a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
-

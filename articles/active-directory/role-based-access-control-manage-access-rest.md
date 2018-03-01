@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
-ms.openlocfilehash: d449b53d348471275cea3c7129245569e2151864
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ba25340e41cefe2b7847a39a6c9182cd0fc057d3
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/09/2018
 > * [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
 > * [REST-API](role-based-access-control-manage-access-rest.md)
 
-Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und der Azure Resource Manager-API können Sie den Zugriff auf Ihr Abonnement und Ihre Ressourcen differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
+Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) definieren Sie den Zugriff für Benutzer, Gruppen und Dienstprinzipale durch Zuweisen von Rollen in einem bestimmten Kontext. In diesem Artikel wird die Verwaltung des Zugriffs mithilfe der REST-API beschrieben.
 
 ## <a name="list-all-role-assignments"></a>Auflisten aller Rollenzuweisungen
 Listet alle Rollenzuweisungen mit dem angegebenen Bereich und den zugehörigen Unterbereichen auf.

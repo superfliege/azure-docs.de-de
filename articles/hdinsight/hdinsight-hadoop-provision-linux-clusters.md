@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/14/2017
 ms.author: jgao
-ms.openlocfilehash: af4538bb398e6b18aeb9703ba5099b0e2c70fa64
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 39c1be51d7aa54691a6ff55483138a603c3fabed
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.
 
@@ -127,6 +127,8 @@ Während der Konfiguration geben Sie für den Standardspeicherendpunkt einen Blo
 
 ### <a name="optional-metastores"></a>Optionale Metastores
 Sie können optionale Hive- oder Oozie Metastores erstellen. Allerdings unterstützen nicht alle Clustertypen Metastores, und Azure SQL Data Warehouse ist nicht mit Metastores kompatibel. 
+
+Weitere Informationen finden Sie unter [Verwenden von externen Metadatenspeichern in Azure HDInsight](./hdinsight-use-external-metadata-stores.md).
 
 > [!IMPORTANT]
 > Verwenden Sie beim Erstellen eines benutzerdefinierten Metastores keinen Datenbanknamen, der Gedankenstriche, Bindestriche oder Leerzeichen enthält. Dies kann dazu führen, dass der Clustererstellungsprozess fehlschlägt.

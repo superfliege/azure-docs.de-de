@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: e454778c558b9c17c47ad9eb651737aa0b5e2605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 80d625a6ab2d3c6d5de0a90fbff0760888154d70
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="streaming-endpoints-overview"></a>Streamingendpunkte – Übersicht 
 
@@ -42,7 +42,7 @@ Dieses Thema bietet einen Überblick über die wichtigsten Funktionen, die von S
 
 Ab der Media Services-Version vom Januar 2017 gibt es zwei Streamingtypen: **Standard** und **Premium**. Diese Typen sind Teil der Streamingendpunktversion „2.0“.
 
-Typ|Beschreibung
+Typ|BESCHREIBUNG
 ---|---
 **Standard**|Dies ist die Standardoption, die für die Mehrzahl der Szenarien funktioniert.<br/>Bei dieser Option erhalten Sie eine feste/begrenzte SLA. Die ersten 15 Tage nach Starten des Streamingendpunkts sind kostenlos.<br/>Wenn Sie mehrere Streamingendpunkte erstellen, ist nur der erste die ersten 15 Tage kostenlos. Die anderen werden nach ihrer Inbetriebnahme in Rechnung gestellt. <br/>Beachten Sie, dass die kostenlose Testversion nur für neu erstellte Media Services-Konten und den Standard-Streamingendpunkt gilt. Für vorhandene Streamingendpunkte und zusätzlich erstellte Streamingendpunkte gibt es keinen kostenlosen Testzeitraum, auch wenn diese auf Version 2.0 aktualisiert oder mit Version 2.0 erstellt wurden.
 **Premium**|Diese Option eignet sich für professionelle Szenarien, die eine höhere Skalierung oder mehr Steuerung erfordern.<br/>Eine variable SLA, die auf erworbener Premium-Streamingeinheitskapazität basiert, dedizierte Streamingendpunkte in einer isolierten Umgebung und keine Konkurrenz um Ressourcen.
@@ -67,17 +67,17 @@ Wenn Ihr Streamingendpunkt der **Version 1.0** mindestens eine Premium-Streaming
 
 |Typ|StreamingEndpointVersion|ScaleUnits|CDN|Abrechnung|SLA| 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
-|Klassisch|1,0|0|NA|Kostenlos|NA|
+|Klassisch|1.0|0|Nicht verfügbar|Kostenlos|Nicht verfügbar|
 |Standard-Streamingendpunkt|2,0|0|Ja|Kostenpflichtig|Ja|
-|Premium-Streamingeinheiten|1,0|>0|Ja|Kostenpflichtig|Ja|
-|Premium-Streamingeinheiten|2,0|>0|Ja|Kostenpflichtig|Ja|
+|Premium-Streamingeinheiten|1.0|>0|Ja|Kostenpflichtig|Ja|
+|Premium-Streamingeinheiten|2.0|>0|Ja|Kostenpflichtig|Ja|
 
 ### <a name="features"></a>Features
 
 Feature|Standard|Premium
 ---|---|---
-Erste 15 Tage kostenlos| Ja |Nein
-Durchsatz |Bis zu 600 Mbit/s, wenn Azure CDN nicht verwendet wird. Wird mit CDN skaliert.|200 Mbit/s pro Streamingeinheit. Wird mit CDN skaliert.
+Erste 15 Tage kostenlos| Ja |Nein 
+Throughput |Bis zu 600 Mbit/s, wenn Azure CDN nicht verwendet wird. Wird mit CDN skaliert.|200 Mbit/s pro Streamingeinheit. Wird mit CDN skaliert.
 SLA | 99,9|99,9 (200 Mbit/s pro Streamingeinheit).
 CDN|Azure CDN, CDN eines Drittanbieters oder kein CDN.|Azure CDN, CDN eines Drittanbieters oder kein CDN.
 Die Abrechnung erfolgt anteilsmäßig| Täglich|Täglich
@@ -86,12 +86,12 @@ Dynamische Paketerstellung|Ja|Ja
 Skalieren|Automatische Skalierung bis zum Zieldurchsatz.|Zusätzliche Streamingeinheiten
 IP-Filterung/G20/Benutzerdefinierter Host|Ja|Ja
 Progressiver Download|Ja|Ja
-Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Professionelle Nutzung.<br/>Wenn Sie glauben, dass Ihre Anforderungen über „Standard“ hinausgehen. Kontaktieren Sie uns (amsstreaming bei microsoft.com, wenn Sie eine gleichzeitige Zielgruppe von mehr als 50.000 Teilnehmern erwarten.
+Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Professionelle Nutzung.<br/>Wenn Sie glauben, dass Ihre Anforderungen über „Standard“ hinausgehen. Kontaktieren Sie uns (amsstreaming@microsoft.com), wenn Sie eine Zielgruppe von mehr als 50.000 Teilnehmern gleichzeitig erwarten.
 
 
 ## <a name="migration-between-types"></a>Migration zwischen Typen
 
-Aus | Zu | Aktion
+From | Zu | anzuzeigen.
 ---|---|---
 Klassisch|Standard|Muss abonnieren
 Klassisch|Premium| Skalierung (Zusätzliche Streamingeinheiten)

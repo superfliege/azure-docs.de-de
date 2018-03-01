@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 02/09/2017
+ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 5dc245a29a9106156c207ed7394f8bb289db729e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0a7bce49a73d60785f09f270894afc4037661e10
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Optimieren der Leistung bei Azure SQL-Datenbank
 
@@ -34,10 +34,10 @@ Hierbei handelt es sich um manuelle Methoden, da Sie die Entscheidung treffen m�
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Erhöhen der Leistungsstufe Ihrer Datenbank
 
-Azure SQL-Datenbank bietet vier [Diensttarife](sql-database-what-is-a-dtu.md), aus denen Sie wählen können: Basic, Standard, Premium und Premium RS (die Leistung wird in Datenbankdurchsatzeinheiten [Database Throughput Units, [DTUs](sql-database-service-tiers.md)] gemessen). Auf jeder Dienstebene sind die Ressourcen, die von der SQL-Datenbank genutzt werden können, streng voneinander isoliert, und es wird eine vorhersagbare Leistung für die Dienstebene sichergestellt. In diesem Artikel erhalten Sie nützliche Informationen zum Auswählen der Dienstebene für Ihre Anwendung. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung beschrieben, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
+Azure SQL-Datenbank bietet drei [Dienstebenen](sql-database-service-tiers.md), aus denen Sie wählen können: Basic, Standard und Premium (die Leistung wird in Datenbankdurchsatzeinheiten [Database Throughput Units, [DTUs](sql-database-what-is-a-dtu.md)] gemessen). Auf jeder Dienstebene sind die Ressourcen, die von der SQL-Datenbank genutzt werden können, streng voneinander isoliert, und es wird eine vorhersagbare Leistung für die Dienstebene sichergestellt. In diesem Artikel erhalten Sie nützliche Informationen zum Auswählen der Dienstebene für Ihre Anwendung. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung beschrieben, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
 
 > [!NOTE]
-> In diesem Artikel geht es schwerpunktmäßig um die Verbesserung der Leistung für Einzeldatenbanken in Azure SQL-Datenbank. Informationen zur Verbesserung der Leistung für elastische Pools finden Sie unter [Wo sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md). Beachten Sie aber, dass Sie viele Optimierungsempfehlungen in diesem Artikel auf Datenbanken in einem elastischen Pool anwenden und ähnliche Leistungsvorteile erzielen können.
+> In diesem Artikel geht es schwerpunktmäßig um die Verbesserung der Leistung für Einzeldatenbanken in Azure SQL-Datenbank. Informationen zur Verbesserung der Leistung für Pools für elastische Datenbanken finden Sie unter [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md). Beachten Sie aber, dass Sie viele Optimierungsempfehlungen in diesem Artikel auf Datenbanken in einem Pool für elastische Datenbanken anwenden und ähnliche Leistungsvorteile erzielen können.
 > 
 
 * **Basic**: Der Diensttarif Basic bietet eine gute vorhersage Leistung für jede Datenbankstunde. In einer Basic-Datenbank sorgen ausreichende Ressourcen für eine gute Leistung einer kleinen Datenbank, in der nicht mehrere gleichzeitige Anforderungen auftreten. Zu den typischen Anwendungsfällen für die Verwendung des Diensttarifs Basic gehören Folgende:
@@ -49,7 +49,6 @@ Azure SQL-Datenbank bietet vier [Diensttarife](sql-database-what-is-a-dtu.md), a
   * **Hohe Spitzenlast**. Eine Anwendung, für die zum Durchführen der Vorgänge hohe Werte in Bezug auf CPU, Arbeitsspeicher oder Eingang/Ausgang (I/O) erforderlich sind, wird eine dedizierte, hohe Leistungsebene benötigt. Falls ein Datenbankvorgang über einen längeren Zeitraum mehrere CPU-Kerne nutzt, ist dies beispielsweise ein Kandidat für die Dienstebene Premium.
   * **Hohe Zahl von gleichzeitigen Anforderungen**: Einige Datenbankanwendungen verarbeiten viele gleichzeitige Anforderungen, z.B. bei einer Website mit hohem Datenverkehrsaufkommen. Für die Dienstebenen Basic und Standard gelten bei der Anzahl von gleichzeitigen Anforderungen bestimmte Einschränkungen pro Datenbank. Für Anwendungen, die mehr Verbindungen benötigen, muss eine angemessene Reservierungsgröße gewählt werden, um die maximale Anzahl von erforderlichen Anforderungen verarbeiten zu können.
   * **Niedrige Latenz**. Für einige Anwendungen muss eine Reaktion der Datenbank in kürzester Zeit garantiert werden. Wenn eine bestimmte gespeicherte Prozedur im Rahmen eines größeren Kundenvorgangs aufgerufen wird, kann unter Umständen die Anforderung bestehen, dass die Rückgabe für diesen Aufruf in 99 Prozent der Fälle innerhalb von maximal 20 Millisekunden erfolgt. Diese Art von Anwendung profitiert von der Dienstebene Premium, da sichergestellt ist, dass genügend erforderliche Rechenleistung verfügbar ist.
-* **Premium RS**: Der Tarif Premium RS ist speziell für E/A-intensive Workloads konzipiert, die nicht die höchsten Verfügbarkeitsgarantien benötigen. Beispiele hierfür sind das Testen von Hochleistungsworkloads oder eine analytische Workload, wo die Datenbank nicht das bevorzugte System ist.
 
 Die Dienstebene, die Sie für Ihre SQL-Datenbank benötigen, richtet sich nach den Spitzenlastanforderungen für die einzelnen Ressourcendimensionen. Bei einigen Anwendungen wird nur ein geringer Anteil einer Ressource genutzt, aber dafür bestehen erhebliche Anforderungen in Bezug auf andere Ressourcen.
 
@@ -78,7 +77,7 @@ In diesem Abschnitt werden einige Verfahren beschrieben, mit denen Sie Azure SQL
 Mit den folgenden Tools im Azure-Portal können Sie Leistungsprobleme der SQL-Datenbank analysieren und beheben:
 
 * [Query Performance Insight](sql-database-query-performance.md)
-* [SQL-Datenbankratgeber](sql-database-advisor.md)
+* [SQL Database Advisor](sql-database-advisor.md)
 
 Das Azure-Portal enthält weitere Informationen zu diesen beiden Tools und ihrer Verwendung. Es ist ratsam, zuerst die Tools im Azure-Portal auszuprobieren, um Probleme effizient diagnostizieren und beheben zu können. Es wird empfohlen, in besonderen Fällen die als Nächstes beschriebenen Ansätze für die manuelle Optimierung beim Fehlen von Indizes und für die Abfragenoptimierung zu nutzen.
 
@@ -278,6 +277,6 @@ Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von L
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Dienstebenen finden Sie unter [SQL-Datenbankoptionen und -leistung](sql-database-service-tiers.md)
-* Weitere Informationen zu elastischen Pools finden Sie unter [Was ist ein elastischer Azure-Pool?](sql-database-elastic-pool.md).
-* Informationen zur Leistung und zu elastischen Pools finden Sie unter [Wann ein elastischer Pool in Frage kommt](sql-database-elastic-pool-guidance.md).
+* Weitere Informationen zu Pools für elastische Datenbanken finden Sie unter [Was ist ein Pool für elastische Azure-Datenbanken?](sql-database-elastic-pool.md).
+* Informationen zur Leistung und zu Pools für elastische Datenbanken finden Sie unter [Wann ein Pool für elastische Datenbanken in Frage kommt](sql-database-elastic-pool-guidance.md).
 

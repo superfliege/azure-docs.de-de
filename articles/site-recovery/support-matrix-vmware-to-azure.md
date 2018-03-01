@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: raynew
-ms.openlocfilehash: ead133318d8660e8b8f4b3e9c5dddb6d75878b19
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 88fc17b635cc96defd1b6f766b9b2ac2c63f2fa7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Unterstützungsmatrix für die Replikation von VMware-VMs und physischen Servern in Azure
 
@@ -22,8 +22,8 @@ Dieser Artikel zeigt eine Übersicht über die unterstützten Komponenten und Ei
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
-**Szenario** | **Details** 
---- | --- 
+**Szenario** | **Details**
+--- | ---
 **Virtuelle VMware-Computer** | Sie können die Notfallwiederherstellung für lokale VMware-VMs in Azure ausführen. Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
 **Physische Server** | Sie können die Notfallwiederherstellung für lokale physische Windows- und Linux-Server in Azure ausführen. Dieses Szenario können Sie im Azure-Portal bereitstellen.
 
@@ -49,7 +49,7 @@ Betriebssystem des Computers (Linux) | Red Hat Enterprise Linux : 5.2 bis 5.11, 
 >
 > - Bei Linux-Distributionen werden nur die vordefinierten Kernel, die bei Veröffentlichungen/Updates von Nebenversionen der Distribution enthalten sind, unterstützt.
 >
-> - Upgrades von Hauptversionen einer Linux-Distribution auf einem mit Azure Site Recovery geschützten virtuellen VMware-Computer oder einem physischen Server werden nicht unterstützt. Deaktivieren Sie während des Upgrades des Betriebssystems von einer Hauptversion auf eine andere (z.B. CentOS 6.* nach CentOS 7.*) die Replikation für den Computer, aktualisieren Sie das Betriebssystem auf dem Computer, und aktivieren Sie dann die Replikation erneut.
+> - Upgrades von Hauptversionen einer Linux-Distribution auf einem mit Azure Site Recovery geschützten virtuellen VMware-Computer oder einem physischen Server werden nicht unterstützt. Deaktivieren Sie während des Upgrades des Betriebssystems von einer Hauptversion auf eine andere (z.B. CentOS 6.* nach CentOS 7.\*) die Replikation für den Computer, aktualisieren Sie das Betriebssystem auf dem Computer, und aktivieren Sie dann die Replikation erneut.
 >
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu-Kernelversionen
@@ -83,86 +83,91 @@ XFSv5 | XFSv5-Features auf XFS-Dateisystemen wie Metadaten-Prüfsummen werden ab
 
 ## <a name="network"></a>Netzwerk
 
-**Komponente** | **Unterstützt** 
---- | --- 
+**Komponente** | **Unterstützt**
+--- | ---
 NIC-Teaming im Hostnetzwerk | Unterstützt für VMware-VMs <br/><br/>Nicht unterstützt für die Replikation physischer Computer
-VLAN im Hostnetzwerk | Ja 
-IPv4 im Hostnetzwerk | Ja 
-IPv6 im Hostnetzwerk | Nein  
-NIC-Teaming im Gast-/Servernetzwerk | Nein  
-IPv4 im Gast-/Servernetzwerk | Ja 
-IPv6 im Gast-/Servernetzwerk | Nein  
-Statische IP im Gast-/Servernetzwerk (Windows) | Ja 
+VLAN im Hostnetzwerk | Ja
+IPv4 im Hostnetzwerk | Ja
+IPv6 im Hostnetzwerk | Nein 
+NIC-Teaming im Gast-/Servernetzwerk | Nein 
+IPv4 im Gast-/Servernetzwerk | Ja
+IPv6 im Gast-/Servernetzwerk | Nein 
+Statische IP im Gast-/Servernetzwerk (Windows) | Ja
 Statische IP im Gast-/Servernetzwerk (Linux) | Ja <br/><br/>VMs werden für die Verwendung von DHCP bei Failback konfiguriert  
-Mehrere NICs im Gast-/Servernetzwerk | Ja 
+Mehrere NICs im Gast-/Servernetzwerk | Ja
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure-VM-Netzwerk (nach Failover)
 
-**Komponente** | **Unterstützt** 
---- | --- 
-ExpressRoute | Ja 
-ILB | Ja 
-ELB | Ja 
-Traffic Manager | Ja 
-Multi-NIC | Ja 
-Reservierte IP-Adresse | Ja 
-IPv4 | Ja 
-Quell-IP-Adresse beibehalten | Ja 
-Dienstendpunkte im virtuellen Netzwerk<br/><br/> (Azure Storage-Firewalls und -VNETs) | Nein  
+**Komponente** | **Unterstützt**
+--- | ---
+ExpressRoute | Ja
+ILB | Ja
+ELB | Ja
+Traffic Manager | Ja
+Multi-NIC | Ja
+Reservierte IP-Adresse | Ja
+IPv4 | Ja
+Quell-IP-Adresse beibehalten | Ja
+Dienstendpunkte im virtuellen Netzwerk<br/><br/> (Azure Storage-Firewalls und -VNETs) | Nein 
 
 
 ## <a name="storage"></a>Speicher
 
 
-**Komponente** | **Unterstützt** 
---- | --- 
-Host-NFS | Ja für VMware<br/><br/> Nein für physische Server 
+**Komponente** | **Unterstützt**
+--- | ---
+Host-NFS | Ja für VMware<br/><br/> Nein für physische Server
 Host-SAN (iSCSI) | Ja
 Multipfad auf dem Host (MPIO) | Ja – getestet mit: Microsoft DSM, EMC PowerPath 5.7 SP4, EMC PowerPath DSM für CLARiiON
-Gast-/Server-VMDK | Ja 
-Gast-/Server-EFI/UEFI| Teilweise (nur bei Migration zu Azure für Windows Server 2012 und höher.) </br></br> ** Siehe Hinweis am Ende der Tabelle.
-Freigegebener Gast-/Server-Clusterdatenträger | Nein  
-Verschlüsselter Gast-/Serverdatenträger | Nein  
-Gast-/Server-NFS | Nein  
+Gast-/Server-VMDK | Ja
+Gast-/Server-EFI/UEFI| Teilweise (nur bei virtuellen VMware-Computern und Migration zu Azure für Windows Server 2012 und höher.) </br></br> ** Siehe Hinweis am Ende der Tabelle.
+Freigegebener Gast-/Server-Clusterdatenträger | Nein 
+Verschlüsselter Gast-/Serverdatenträger | Nein 
+Gast-/Server-NFS | Nein 
 Gast/Server-SMB 3.0 | Nein 
-Gast-/Server-RDM | Ja<br/><br/> Nicht verfügbar für physische Server 
-Gast-/Serverdatenträger > 1 TB | Ja<br/><br/>Bis zu 4.095 GB 
+Gast-/Server-RDM | Ja<br/><br/> Nicht verfügbar für physische Server
+Gast-/Serverdatenträger > 1 TB | Ja<br/><br/>Bis zu 4.095 GB
 Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 4k | Ja
-Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 512 Bytes | Ja 
-Gast-/Servervolume mit Stripesetdatenträgern > 1 TB<br/><br/> Verwaltung von LVM- und logischen Volumes auf Gast/Server – Speicherplätze: nein | Hinzufügen/Entfernen von Datenträgern im laufenden Betrieb auf Gast/Server: nein | Datenträgerausschluss auf Gast/Server: ja | Multipfadfunktionen (MPIO) auf Gast/Server: keine Angabe
+Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 512 Bytes | Ja
+Gast-/Servervolume mit Stripesetdatenträgern > 4 TB <br><br/>LVM (logische Volumeverwaltung) | Ja
+Gast/Server – Speicherplätze | Nein 
+Gast/Server – Datenträger bei laufendem Systembetrieb hinzufügen/entfernen | Nein 
+Gast/Server – Datenträger ausschließen | Ja
+Gast-Server – Multipfad (MPIO) | N/V
 
 > [!NOTE]
-> ** Virtuelle VMware-Computer oder physische Server unter Windows Server 2012 oder höher mit UEFI Boot können zu Azure migriert werden. Es gelten folgende Einschränkungen.
+> ** UEFI ** Virtuelle VMware-Computer unter Windows Server 2012 oder höher mit UEFI Boot können zu Azure migriert werden. Es gelten folgende Einschränkungen.
 > - Es wird nur die Migration zu Azure unterstützt. Ein Failback zu einem lokalen VMware-Standort wird nicht unterstützt.
 > - Der Server sollte über höchstens 4 Partitionen auf dem Betriebssystem-Datenträger verfügen.
 > - Erfordert Azure Site Recovery Mobility Service-Version 9.13 oder höher.
+> - Nicht bei physischen Servern unterstützt.
 
 
 ## <a name="azure-storage"></a>Azure-Speicher
 
-**Komponente** | **Unterstützt** 
---- | --- 
-LRS | Ja 
-GRS | Ja 
-RA-GRS | Ja 
-Speicherebene „Kalt“ | Nein  
-Speicherebene „Heiß“| Nein  
-Blockblobs | Nein  
-Verschlüsselung ruhender Daten (SSE)| Ja 
-Storage Premium | Ja 
-Import-/Exportdienst | Nein  
-Dienstendpunkte im virtuellen Netzwerk<br/><br/> Azure Storage-Firewalls und VNET-Dienstendpunkte in Zielspeicher-/Cachespeicherkonto (zum Speichern von Replikationsdaten) konfiguriert | Nein  
-Allgemeine V2-Speicherkonten (heiße und kalte Ebene) | Nein  
+**Komponente** | **Unterstützt**
+--- | ---
+LRS | Ja
+GRS | Ja
+RA-GRS | Ja
+Speicherebene „Kalt“ | Nein 
+Speicherebene „Heiß“| Nein 
+Blockblobs | Nein 
+Verschlüsselung ruhender Daten (SSE)| Ja
+Storage Premium | Ja
+Import-/Exportdienst | Nein 
+Dienstendpunkte im virtuellen Netzwerk<br/><br/> Azure Storage-Firewalls und VNET-Dienstendpunkte in Zielspeicher-/Cachespeicherkonto (zum Speichern von Replikationsdaten) konfiguriert | Nein 
+Allgemeine V2-Speicherkonten (heiße und kalte Ebene) | Nein 
 
 
 ## <a name="azure-compute"></a>Azure Compute
 
-**Feature** | **Unterstützt** 
---- | --- 
-Verfügbarkeitsgruppen | Ja 
+**Feature** | **Unterstützt**
+--- | ---
+Verfügbarkeitsgruppen | Ja
 HUB | Ja   
-Verwaltete Datenträger | Ja 
+Verwaltete Datenträger | Ja
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen
 
@@ -176,7 +181,7 @@ Lokale virtuelle Computer, die Sie in Azure replizieren, müssen die in dieser T
 **Anzahl von Betriebssystemdatenträgern** | 1 | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 **Anzahl von Datenträgern für Daten** | Maximal 64, wenn Sie **VMware-VMs in Azure** replizieren, maximal 16, wenn Sie **Hyper-V-VMs in Azure** replizieren | Für die Überprüfung der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 **Größe des VHD-Datenträgers** | Bis zu 4.095 GB | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-**Netzwerkadapter** | Es werden mehrere Adapter unterstützt. | 
+**Netzwerkadapter** | Es werden mehrere Adapter unterstützt. |
 **Freigegebene VHD** | Nicht unterstützt | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 **FC-Datenträger** | Nicht unterstützt | Beim Überprüfen der Voraussetzungen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 **Festplattenformat** | VHD  <br/><br/> VHDX | Obwohl VHDX in Azure derzeit nicht unterstützt wird, führt Site Recovery automatisch die Konvertierung von VHDX in VHD durch, wenn Sie das Failover auf Azure anstoßen. Wenn Sie das Failover in den lokalen Speicher durchführen, wird für die virtuellen Computer weiterhin das VHDX-Format verwendet.
@@ -186,10 +191,10 @@ Lokale virtuelle Computer, die Sie in Azure replizieren, müssen die in dieser T
 
 ## <a name="vault-tasks"></a>Tresortasks
 
-**Aktion** | **Unterstützt** 
---- | --- 
-Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  
-Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  
+**Aktion** | **Unterstützt**
+--- | ---
+Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein 
+Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein 
 
 
 ## <a name="mobility-service"></a>Mobilitätsdienst

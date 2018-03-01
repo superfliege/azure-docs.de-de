@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 2e377ef96f6c2b5866ad258a88d6403fd0bb1e41
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 87bbbd1fdcb9afb59de0bda29e99e23e0b9ad104
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -28,7 +28,7 @@ Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwa
 * **Azure Event Hubs**: Wird für die Integration von Telemetriedaten von SQL-Datenbank in Ihrer benutzerdefinierte Überwachungslösung oder Hotpipelines verwendet.
 * **Azure Log Analytics**: Wird für eine einsatzbereite Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung verwendet.
 
-    ![Architektur](./media/sql-database-metrics-diag-logging/architecture.png)
+    ![Architecture](./media/sql-database-metrics-diag-logging/architecture.png)
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
@@ -180,7 +180,7 @@ Das Überwachen einer SQL-Datenbankflotte mit Log Analytics ist einfach. Es sind
 
 ### <a name="create-a-log-analytics-resource"></a>Erstellen einer Log Analytics-Ressource
 
-1. Wählen Sie im Menü auf der linken Seite **Neu** aus.
+1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** aus.
 
 2. Wählen Sie **Überwachung und Verwaltung** aus.
 
@@ -271,7 +271,7 @@ Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus
 
 ### <a name="query-store-runtime-statistics"></a>Laufzeitstatistiken für den Abfragespeicher
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
@@ -322,7 +322,7 @@ Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://d
 
 ### <a name="query-store-wait-statistics"></a>Wartestatistiken des Abfragespeichers
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
@@ -360,7 +360,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 
 ### <a name="errors-dataset"></a>Fehlerdataset
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
@@ -377,7 +377,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |ElasticPoolName_s|Der Name des Pools für elastische Datenbanken, zu dem die Datenbank gehört (falls vorhanden).|
 |DatabaseName_s|Der Name der Datenbank.|
 |ResourceId|Der Ressourcen-URI.|
-|Nachricht|Die Fehlermeldung im Nur-Text-Format.|
+|Message|Die Fehlermeldung im Nur-Text-Format.|
 |user_defined_b|Das benutzerdefiniertes Fehlerbit.|
 |error_number_d|Fehlercode|
 |Severity|Der Schweregrad des Fehlers.|
@@ -389,7 +389,7 @@ Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com
 
 ### <a name="database-wait-statistics-dataset"></a>Dataset zur Wartestatistik der Datenbank
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
@@ -418,7 +418,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 
 ### <a name="time-outs-dataset"></a>Dataset zu Timeouts
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|
@@ -441,7 +441,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 
 ### <a name="blockings-dataset"></a>Dataset der Blockierungen
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |TenantId|Ihre Mandanten-ID.|
 |SourceSystem|Immer: Azure|

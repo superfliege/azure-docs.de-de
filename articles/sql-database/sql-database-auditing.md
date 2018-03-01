@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.openlocfilehash: 791761e33e0daa470668e268e5392a4b9361a1bd
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 0994bdc7e6c86e10f7002649830fc59ad3d1a045
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
@@ -42,7 +42,8 @@ Sie können die Überwachung für verschiedene Arten von Ereigniskategorien konf
 > [!IMPORTANT]
 > Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
 >
-> Die **Speicherung in VNET** wird derzeit **nicht unterstützt**.
+> * Bei **Storage Premium** werden Anfügeblobs derzeit **nicht unterstützt**.
+> * Die **Speicherung in VNET** wird derzeit **nicht unterstützt**.
 
 ## <a id="subheading-8"></a>Definieren von Überwachungsrichtlinien auf Serverebene und auf Datenbankebene
 
