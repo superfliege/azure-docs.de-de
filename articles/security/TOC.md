@@ -1,4 +1,3 @@
-
 # [Dokumentation zur Azure-Sicherheit](index.md)
 # [Architektur und Entwurf](azure-security.md)
 ## [Erweiterte Bedrohungserkennung](azure-threat-detection.md)
@@ -110,9 +109,9 @@
 ### [Anforderung 10 – Überwachung](./blueprints/pci-dss-requirement-10-monitoring.md)
 ### [Anforderung 11 – Testen](./blueprints/pci-dss-requirement-11-testing.md)
 ### [Anforderung 12 – Richtlinie](./blueprints/pci-dss-requirement-12-policy.md)
-
 ## [UK-OFFICIAL](./blueprints/uk-official-three-tier-applications-overview.md)
 ### [Übersicht über Prinzipien](./blueprints/uk-official-three-tier-applications-principles-overview.md)
+## [HIPAA-/HITRUST-Gesundheitsdaten und KI](./blueprints/azure-health.md)
 
 # [Whitepaper](security-white-papers.md)
 # [Technische Übersichten](security-overviews.md)
@@ -139,5 +138,4 @@
 #### [Eingabeüberprüfung](azure-security-threat-modeling-tool-input-validation.md)
 #### [Sensible Daten](azure-security-threat-modeling-tool-sensitive-data.md)
 #### [Sitzungsverwaltung](azure-security-threat-modeling-tool-session-management.md)
-
 

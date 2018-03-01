@@ -12,25 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.author: sethm
-ms.openlocfilehash: 9b7be70d726edfa9dbda3719d431e532106724b6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 08b78f59dc758f12556f332546ccb6043bef2812
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="what-is-event-hubs"></a>Was ist Event Hubs?
 
 Azure Event Hubs ist eine hochgradig skalierbare Datenstreamingplattform und ein Dienst zur Erfassung von Ereignissen, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Durch die Möglichkeit, [Funktionen zum Veröffentlichen/Abonnieren](/biztalk/core/publish-and-subscribe-architecture) mit niedriger Latenz und umfangreicher Skalierung anzubieten, fungiert Event Hubs als Einstiegspunkt für Big Data.
-
-## <a name="why-use-event-hubs"></a>Vorteile von Event Hubs
-
-Die Ereignis- und Telemetrieverarbeitungsfunktionen von Event Hubs machen ihn besonders hilfreich für:
-
-* Anwendungsinstrumentation
-* Benutzerumgebung oder Workflowverarbeitung
-* Internet der Dinge (IoT)-Szenarien
 
 Beispielsweise bietet Event Hubs die Nachverfolgung von Verhaltensweisen in mobilen Apps, Informationen zum Datenverkehr von Webfarmen, Ereigniserfassung in Konsolenspielen oder von Industriemaschinen, vernetzten Fahrzeugen oder anderen Geräten erfasste Telemetriedaten.
 

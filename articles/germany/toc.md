@@ -1,3 +1,4 @@
+# [Azure Deutschland-Dokumentation](index.md)
 
 # Übersicht
 ## [Was ist Azure Deutschland?](germany-welcome.md)
@@ -17,19 +18,19 @@
 ### [Abonnement](germany-manage-subscriptions.md)
 
 
-# Referenzen
+# Verweis
 ## [Images](germany-image-gallery.md)
 
 ## Dienste
 ### [Compute](germany-services-compute.md)
-### [Speicher](germany-services-storage.md)
+### [Storage](germany-services-storage.md)
 ### [Datenbank](germany-services-database.md)
 ### [Netzwerk](germany-services-networking.md)
 ### [Sicherheit und Identität](germany-services-securityandidentity.md)
 ### [Web und Mobil](germany-services-webandmobile.md)
 ### [Internet der Dinge (IoT)](germany-services-iot.md)
 
-# Ressourcen
+# angeben
 ## [Azure Deutschland-Website](https://azure.microsoft.com/overview/clouds/germany/)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://blogs.msdn.microsoft.com/azuregermany/)

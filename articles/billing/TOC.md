@@ -1,3 +1,5 @@
+# [Dokumentation zur Azure-Abrechnung](index.md)
+
 # Erste Schritte
 ## [Vermeiden unerwarteter Kosten](billing-getting-started.md)
 ## [Erstellen von Diensten im Rahmen des kostenlosen Kontos](billing-create-free-services-included-free-account.md)
@@ -47,14 +49,14 @@
 ### [Keine Abonnements gefunden](billing-no-subscriptions-found.md)
 ### [Enterprise-Kostenansicht deaktiviert](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
-# Referenz
+# Verweis
 ## [API-Übersicht](billing-usage-rate-card-overview.md)
 ## [Übersicht über die API für Unternehmensberichte](billing-enterprise-api.md)
 ## [REST: Rechnung](/rest/api/billing)
 ## [REST: Nutzung und RateCard](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
 ## [Partnerlösung: Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Support kontaktieren](../azure-supportability/how-to-create-azure-support-request.md)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

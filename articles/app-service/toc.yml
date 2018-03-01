@@ -57,6 +57,8 @@
       href: app-service-cli-samples.md
     - name: Azure PowerShell
       href: app-service-powershell-samples.md
+    - name: Resource Manager-Vorlagen
+      href: app-service-rm-template-samples.md
 - name: Konzepte
   items:
     - name: So funktioniert App Service
@@ -111,6 +113,8 @@
           href: app-service-deployment-credentials.md
         - name: Erstellen von Stagingumgebungen
           href: web-sites-staged-publishing.md
+        - name: Anleitung für Resource Manager-Vorlagen
+          href: web-sites-rm-template-guidance.md
     - name: Zuordnen einer benutzerdefinierte Domäne
       items:
         - name: Kaufen einer Domäne

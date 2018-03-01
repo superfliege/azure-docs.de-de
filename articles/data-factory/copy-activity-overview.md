@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 2095d75ed042ae8be02ae0a1570f8e77d06a3563
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: faad821d406ac155516696c1207c8c9deef8fdab
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -170,7 +170,7 @@ Klicken Sie unter **Aktionen** auf den Link **Details**, um Details und Leistung
 
 Ausführungsdetails der Kopieraktivität und Leistungsmerkmale werden auch im Ausgabeabschnitt im Ausführungsergebnis der Kopieraktivität zurückgegeben. Im Anschluss finden Sie eine umfassende Liste. Angezeigt werden jeweils nur Details, die für Ihr Kopierszenario relevant sind. Informationen zum Überwachen der Aktivitätsausführung finden Sie im [Abschnitt mit Schnellstartanleitungen für die Überwachung ](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
 
-| Eigenschaftenname  | Beschreibung | Unit |
+| Eigenschaftenname  | BESCHREIBUNG | Unit |
 |:--- |:--- |:--- |
 | dataRead | Größe der Daten, die aus der Quelle gelesen werden | Int64-Wert in **Bytes** |
 | dataWritten | Größe der Daten, die in die Senke geschrieben werden | Int64-Wert in **Bytes** |
@@ -244,6 +244,6 @@ In Version 1 unterstützte Azure Data Factory das Lesen oder Schreiben von parti
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Schnellstartanleitungen, Tutorials und Beispielen:
 
-- [Kopieren von Daten von einem Speicherort in einen anderen Speicherort im gleichen Azure-Blobspeicher](quickstart-create-data-factory-dot-net.md)
+- [Kopieren von Daten von einem Speicherort an einen anderen Speicherort in der gleichen Azure Blob Storage-Instanz](quickstart-create-data-factory-dot-net.md)
 - [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](tutorial-copy-data-dot-net.md)
 - [Kopieren von Daten aus einer lokalen SQL Server-Instanz in Azure](tutorial-hybrid-copy-powershell.md)

@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 5d0f266047e1b083cdf23f8d1c55950a46406f61
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 346fd26696480b6226c5e836e9876685fb408f96
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
@@ -49,10 +49,10 @@ Informationen dazu, wie Sie eine Functions-App so einrichten, dass sie die 2.0-V
 
 Um eine Erweiterung über das Azure-Portal zu installieren, navigieren Sie zu einer Vorlage oder Bindung, die auf die Erweiterung verweist. Erstellen Sie eine neue Funktion, und wählen Sie auf dem Bildschirm für die Vorlagenauswahl das Szenario „Microsoft Graph“ aus. Wählen Sie eine der Vorlagen in diesem Szenario aus. Alternativ können Sie zur Registerkarte „Integration“ einer vorhandenen Funktion navigieren und eine der in diesem Artikel behandelten Bindungen auswählen.
 
-In beiden Fällen wird eine Warnung angezeigt, die die zu installierende Erweiterung angibt. Klicken Sie auf **Installieren**, um die Erweiterung zu erhalten.
+In beiden Fällen wird eine Warnung angezeigt, die die zu installierende Erweiterung angibt. Klicken Sie auf **Installieren**, um die Erweiterung zu erhalten. Jede Erweiterung muss nur einmal pro Funktions-App installiert werden. 
 
 > [!Note] 
-> Jede Erweiterung muss nur einmal pro Funktions-App installiert werden. Der Installationsvorgang im Portal kann bis zu 10 Minuten eines Verbrauchstarifs aufbrauchen.
+> Der Installationsvorgang im Portal kann bis zu 10 Minuten eines Verbrauchstarifs aufbrauchen.
 
 Wenn Sie Visual Studio verwenden, können Sie die Erweiterungen durch Installieren dieser NuGet-Pakete erhalten:
 - [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/)

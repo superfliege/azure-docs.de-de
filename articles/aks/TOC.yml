@@ -77,6 +77,10 @@
       items:
         - name: Verwenden des Kubernetes-Dashboards
           href: kubernetes-dashboard.md
+    - name: Problembehandlung
+      items:
+        - name: SSH-Knotenzugriff
+          href: aks-ssh.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

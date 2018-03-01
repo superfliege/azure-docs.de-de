@@ -1,3 +1,5 @@
+# [Data Catalog-Dokumentation](index.md)
+
 # Übersicht
 ## [Was ist Data Catalog?](data-catalog-what-is-data-catalog.md)
 ## [Gängige Szenarios](data-catalog-common-scenarios.md)
@@ -7,7 +9,7 @@
 ## [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md)
 ## [Azure Data Catalog-Einführung](data-catalog-adopting-data-catalog.md)
 ## [Voraussetzungen](data-catalog-prerequisites.md)
-## [Häufig gestellte Fragen](data-catalog-frequently-asked-questions.md)
+## [HÄUFIG GESTELLTE FRAGEN](data-catalog-frequently-asked-questions.md)
 
 # Anleitung
 ## [Registrieren von Datenquellen](data-catalog-how-to-register.md)
@@ -23,19 +25,19 @@
 ## [Sicherer Zugriff auf den Datenkatalog](data-catalog-how-to-secure-catalog.md)
 ## [Anzeigen verwandter Datenressourcen](data-catalog-how-to-view-related-data-assets.md) 
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=data-catalog)
 ## [REST](/rest/api/datacatalog/)
 ## [Referenz zur Suchsyntax](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [Entwicklerkonzepte](data-catalog-developer-concepts.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Tastenkombinationen für Azure Data Catalog](data-catalog-keyboard-shortcuts.md)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Preise](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-## [Versionshinweise](data-catalog-whats-new.md)
+## [Anmerkungen zu dieser Version](data-catalog-whats-new.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=data-catalog)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 ## [Terminologie](data-catalog-terminology.md)

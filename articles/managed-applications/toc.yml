@@ -1,10 +1,11 @@
-- name: Verwaltete Azure-Anwendungen
+- name: Dokumentation zu verwalteten Azure-Anwendungen
   href: index.yml
 - name: Übersicht
   items:
     - name: Informationen zu verwalteten Anwendungen
       href: overview.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Verwaltete Anwendung erstellen
       href: managed-apps-quickstart-cli.md

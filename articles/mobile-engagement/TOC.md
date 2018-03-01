@@ -1,3 +1,5 @@
+# [Dokumentation zu Mobile Engagement](index.md)
+
 # [Übersicht](mobile-engagement-overview.md)
 ## [Vergleich mit verwandten Diensten](mobile-engagement-comparison.md)
 ## [Featureübersicht](mobile-engagement-key-features.md)
@@ -114,7 +116,7 @@
 ### [Dienstanforderungsinformationen](mobile-engagement-troubleshooting-guide-sr-info.md)
 ### [Dienstgrenzwerte/Drosselungen](../azure-subscription-service-limits.md#mobile-engagement-limits)
 
-# Referenz
+# Verweis
 ## [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement)
 
 
@@ -126,7 +128,7 @@
 ### [Windows Universal Apps SDK](mobile-engagement-windows-store-sdk-content.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-sdk-content.md)
 
-# Ressourcen
+# angeben
 ## [.NET-API-Beispiel](mobile-engagement-dotnet-sdk-service-api.md)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Preise](https://azure.microsoft.com/pricing/details/mobile-engagement/)

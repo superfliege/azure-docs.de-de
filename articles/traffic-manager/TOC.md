@@ -1,3 +1,5 @@
+# [Dokumentation zu Traffic Manager](index.md)
+
 # Übersicht
 ## [Was ist Traffic Manager?](traffic-manager-overview.md)
 ## [Routingmethoden](traffic-manager-routing-methods.md)
@@ -31,7 +33,7 @@
 ## Problembehandlung
 ### [Problembehandlung beim Status „Heruntergestuft“ in Traffic Manager](traffic-manager-troubleshooting-degraded.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
 ## [Azure PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/traffic-manager)
@@ -46,7 +48,7 @@
 ## [Load Balancer](/azure/load-balancer/)
 ## [Azure DNS](/azure/dns/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)

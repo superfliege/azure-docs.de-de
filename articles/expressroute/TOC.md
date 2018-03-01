@@ -1,3 +1,5 @@
+# [ExpressRoute-Dokumentation](index.md)
+
 # Übersicht
 ## [Was ist ExpressRoute?](expressroute-introduction.md)
 ## [ExpressRoute – FAQ](expressroute-faqs.md)
@@ -19,24 +21,24 @@
 ## Erstellen und Ändern einer Verbindung
 ### [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-circuit-arm.md)
-### [Azure-Befehlszeilenschnittstelle](howto-circuit-cli.md)
+### [Azure-CLI](howto-circuit-cli.md)
 ## Erstellen und Ändern einer Peeringkonfiguration
 ### [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-routing-arm.md)
-### [Azure-Befehlszeilenschnittstelle](howto-routing-cli.md)
+### [Azure-CLI](howto-routing-cli.md)
 ## Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 ### [Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-linkvnet-arm.md)
-### [Azure-Befehlszeilenschnittstelle](howto-linkvnet-cli.md)
+### [Azure-CLI](howto-linkvnet-cli.md)
 ## [Konfigurieren eines Site-to-Site-VPNs über Microsoft-Peering](site-to-site-vpn-over-microsoft-peering.md)
 ## Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute
-### [Azure-Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [Azure portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [Konfigurieren von parallel bestehenden ExpressRoute- und Site-to-Site-Verbindungen](expressroute-howto-coexist-resource-manager.md)
 ## Konfigurieren von Routenfiltern für das Microsoft-Peering
-### [Azure-Portal](how-to-routefilter-portal.md)
+### [Azure portal](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)
-### [Azure-Befehlszeilenschnittstelle](how-to-routefilter-cli.md)
+### [Azure-CLI](how-to-routefilter-cli.md)
 ## [Umstellen von öffentlichem Peering auf Microsoft-Peering](how-to-move-peering.md)
 ## [Umstellen einer Verbindung vom klassischen Modell auf das Resource Manager-Modell](expressroute-howto-move-arm.md)
 ## [Migrieren von zugeordneten virtuellen Netzwerken vom klassischen Modell zu Resource Manager](expressroute-migration-classic-resource-manager.md)
@@ -64,9 +66,9 @@
 ### [Abrufen von ARP-Tabellen](expressroute-troubleshooting-arp-resource-manager.md)
 ### [Abrufen von ARP-Tabellen (klassisch)](expressroute-troubleshooting-arp-classic.md)
 
-# Referenz
+# Verweis
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#expressroute)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/express-route)
+## [Azure-CLI](/cli/azure/network/express-route)
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (klassisch)](https://msdn.microsoft.com/library/azure/dn606310)
 
@@ -77,7 +79,7 @@
 ## [Load Balancer](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Fallstudien](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [Netzwerkblog](https://azure.microsoft.com/blog/topics/networking/)

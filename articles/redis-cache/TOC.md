@@ -1,9 +1,11 @@
+# [Dokumentation zu Redis Cache](index.md)
+
 # Übersicht
 ##[Gründe für die Verwendung von Redis Cache](https://azure.microsoft.com/services/cache/)
 ##[Informationen zu den Features des Premium-Tarifs](cache-premium-tier-intro.md)
 ## Szenarien
 ###[Zugreifen auf Elemente in einem Cache](cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache)
-###[Konfigurieren hoher Verfügbarkeit](https://azure.microsoft.com/pricing/details/cache/)
+###[Konfigurieren von Hochverfügbarkeit](https://azure.microsoft.com/pricing/details/cache/)
 ###[Herstellen einer sicheren Verbindung mithilfe von SSL](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)
 ###[Migrieren von Managed Cache Service](cache-migrate-to-redis.md)
 ###[Muster und Übungen zum Caching](../best-practices-caching.md?toc=%2fazure%2fredis-cache%2ftoc.json)
@@ -47,7 +49,7 @@
 ## Integrieren in Spring Boot
 ###[Verwenden einer Spring Boot Initializer-App mit Redis Cache](cache-java-spring-boot-initializer-with-redis-cache.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=redis-cache)
 ## [Azure PowerShell](/powershell/module/azurerm.rediscache)
 ## [Azure CLI-Vorschau](/cli/azure/redis)
@@ -57,7 +59,7 @@
 ## [Redis-Befehle](http://redis.io/commands#)
 ## [REST](https://docs.microsoft.com/rest/api/redis/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=databases)
 ## [Preise](https://azure.microsoft.com/pricing/details/cache/)
 ## [Redis Cache – Beispiele](cache-redis-samples.md)

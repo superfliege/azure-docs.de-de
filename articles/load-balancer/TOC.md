@@ -1,3 +1,5 @@
+# [Dokumentation zu Load Balancer](index.md)
+
 # Übersicht
 ## [Was ist der Load Balancer?](load-balancer-overview.md)
 ## [Was ist Load Balancer Standard?](load-balancer-standard-overview.md)
@@ -39,7 +41,7 @@
 ## [Verwenden mehrerer IP-Konfigurationen](load-balancer-multiple-ip.md)
 ### [Verwenden mehrerer IP-Konfigurationen (CLI)](load-balancer-multiple-ip-cli.md)
 ### [Verwenden mehrerer IP-Konfigurationen (PowerShell)](load-balancer-multiple-ip-powershell.md)
-## [Log Analytics für den Azure Load Balancer](load-balancer-monitor-log.md)
+## [Protokollanalysen für den Azure Load Balancer](load-balancer-monitor-log.md)
 ## [Konfigurieren von DHCPv6 für virtuelle Linux-Computer](load-balancer-ipv6-for-linux.md)
 ## [Konfigurieren von Hochverfügbarkeitsports für internen Lastenausgleich](load-balancer-configure-ha-ports.md)
 
@@ -54,7 +56,7 @@
 #### [Konfigurieren des öffentlichen Lastenausgleichs (klassische Cloud)](load-balancer-get-started-internet-classic-cloud.md)
 #### [Konfigurieren des öffentlichen Lastenausgleichs (klassische CLI)](load-balancer-get-started-internet-classic-cli.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer)
 ## [Azure PowerShell](/powershell/module/azurerm.network)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/lb)
@@ -74,7 +76,7 @@
 ## [Traffic Manager](/azure/traffic-manager/)
 ## [DNS](/azure/dns/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Preise](https://azure.microsoft.com/pricing/details/load-balancer/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

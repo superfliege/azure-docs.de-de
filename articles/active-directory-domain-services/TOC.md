@@ -1,8 +1,11 @@
+# [Dokumentation zu Azure AD Domain Services](index.md)
+
 # Übersicht
 ## [Was ist Azure AD Domain Services?](active-directory-ds-overview.md)
 ## Ist der Dienst für Sie geeignet?
 ### [Vergleichen mit Windows Server AD](active-directory-ds-comparison.md)
 ### [Vergleichen mit Azure AD Join](active-directory-ds-compare-with-azure-ad-join.md)
+## [Neuerungen](https://azure.microsoft.com/updates/?product=active-directory-ds)
 ## [Funktionen](active-directory-ds-features.md)
 ## [Szenarios](active-directory-ds-scenarios.md)
 ## [Funktionsweise der Synchronisierung](active-directory-ds-synchronization.md)
@@ -16,6 +19,7 @@
 ## [Aufgabe 5: Aktivieren der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md)
 
 # Anleitung
+## [Überprüfen der Integrität einer verwalteten Domäne](active-directory-ds-check-health.md)
 ## [Verwenden von Azure AD Domain Services in Azure CSP-Abonnements](active-directory-ds-csp.md)
 ## [Enable Azure AD Domain Services using PowerShell (Aktivieren von Azure AD Domain Services mit PowerShell)](active-directory-ds-enable-using-powershell.md)
 ## Beitreten zu einer verwalteten Domäne
@@ -28,7 +32,7 @@
 ## Verwalten einer verwalteten Domäne
 ### [Verwalten einer verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 ### [Verwalten des DNS in einer verwalteten Domäne](active-directory-ds-admin-guide-administer-dns.md)
-### [Überprüfen der Domänenintegrität](active-directory-ds-check-health.md)
+
 ### Konfigurieren von sicherem LDAP für eine verwaltete Domäne
 #### [Aufgabe 1: Erwerben eines Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [Aufgabe 2: Exportieren des Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

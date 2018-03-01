@@ -1,3 +1,5 @@
+# [Dokumentation zu Application Gateway](index.md)
+
 # Übersicht
 ## [Was ist Application Gateway?](application-gateway-introduction.md)
 ## [Application Gateway – häufig gestellte Fragen](application-gateway-faq.md)

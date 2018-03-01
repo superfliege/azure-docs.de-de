@@ -1,3 +1,5 @@
+# [Dokumentation zu DevTest Labs](index.md)
+
 # Übersicht
 ## [Informationen zu Azure DevTest Labs](devtest-lab-overview.md)
 ## [Konzepte](devtest-lab-concepts.md)
@@ -43,7 +45,7 @@
 ### [Erstellen eines benutzerdefinierten Images aus einer VHD mithilfe von PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 ### [Hochladen der VHD-Datei mit AzCopy](devtest-lab-upload-vhd-using-azcopy.md)
 ### [Hochladen der VHD-Datei mithilfe von PowerShell](devtest-lab-upload-vhd-using-powershell.md)
-### [Hochladen der VHD-Datei mithilfe des Speicher-Explorers](devtest-lab-upload-vhd-using-storage-explorer.md)
+### [Hochladen der VHD-Datei mithilfe des Storage-Explorers](devtest-lab-upload-vhd-using-storage-explorer.md)
 
 ## Verwalten wiederverwendbarer Vorlagen
 ### [Hinzufügen eines Git-Repositorys für Artefakte und Vorlagen](devtest-lab-add-artifact-repo.md)

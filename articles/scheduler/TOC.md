@@ -1,4 +1,4 @@
-
+# [Dokumentation zu Scheduler](index.md)
 
 # Übersicht
 ## [Was ist Azure Scheduler?](scheduler-intro.md)
@@ -20,17 +20,17 @@
 ## Schützen
 ### [Ausgehende Authentifizierung](scheduler-outbound-authentication.md)
 
-# Referenz
+# Verweis
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
 ## [REST](/rest/api/scheduler)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
 ## [Preise](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=scheduler)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
 
 

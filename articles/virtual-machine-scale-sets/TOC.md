@@ -1,3 +1,5 @@
+# [Dokumentation zu Virtual Machines Scale Sets](index.md)
+
 # Übersicht
 ## [Was sind Skalierungsgruppen für virtuelle Computer?](virtual-machine-scale-sets-overview.md)
 

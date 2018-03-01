@@ -1,4 +1,4 @@
-- name: Azure Databricks-Dokumentation
+- name: Dokumentation zu Azure Databricks
   href: index.yml
 - name: Übersicht
   items:
@@ -9,7 +9,7 @@
   items:
     - name: Erstellen eines Databricks-Arbeitsbereichs
       href: quickstart-create-databricks-workspace-portal.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Häufig gestellte Fragen
       href: frequently-asked-questions-databricks.md

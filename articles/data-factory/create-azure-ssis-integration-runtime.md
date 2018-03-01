@@ -1,9 +1,9 @@
 ---
-title: Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft-Dokumentation
+title: Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft Docs
 description: "Erfahren Sie, wie eine Azure-SSIS Integration Runtime erstellt wird, damit Sie das SSIS-Paket in der Azure-Cloud ausführen können."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: douglaslMS
 manager: jhubbard
 editor: monicar
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
-ms.author: spelluru
-ms.openlocfilehash: f3616214dc63716a382b4374ff82bec33e876177
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: douglasl
+ms.openlocfilehash: 879489dffbf713b5fadb72a58638e462938aaf26
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft-Dokumentation
 In diesem Artikel werden die Schritte für die Bereitstellung einer Azure-SSIS-Integrationslaufzeit (Integration Runtime, IR) in Azure Data Factory beschrieben. Anschließend können Sie SQL Server Data Tools (SSDT) oder SQL Server Management Studio (SSMS) zum Bereitstellen von SQL Server Integration Services-Paketen (SSIS) für diese Runtime in Azure verwenden.
@@ -106,8 +106,7 @@ In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals (insbesondere der D
     2. Geben Sie den **Standort** für die Integration Runtime an. Es werden nur unterstützte Standorte angezeigt.
     3. Wählen Sie die **Größe des Knotens** aus, der mit der SSIS Runtime konfiguriert werden soll.
     4. Geben Sie die **Anzahl von Knoten** im Cluster an.
-    5. Klicken Sie auf **Weiter**.
- 
+    5. Klicken Sie auf **Weiter**. 
 1. Gehen Sie unter **SQL-Einstellungen** wie folgt vor: 
 
     ![SQL-Einstellungen](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
@@ -117,8 +116,7 @@ In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals (insbesondere der D
     3. Geben Sie den **Administratorbenutzernamen** ein.
     4. Geben Sie das **Administratorkennwort** ein.  
     5. Wählen Sie die **Dienstebene** für die SSISDB-Datenbank aus. Der Standardwert lautet „Basic“.
-    6. Klicken Sie auf **Weiter**.
- 
+    6. Klicken Sie auf **Weiter**. 
 1.  Wählen Sie auf der Seite **Erweiterte Einstellungen** einen Wert für **Maximum Parallel Executions Per Node** (Maximale Anzahl von parallelen Ausführungen pro Knoten) aus.   
 
     ![Erweiterte Einstellungen](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)    
