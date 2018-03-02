@@ -8,12 +8,30 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
+<<<<<<< HEAD
 ms.date: 02/28/2018
 ms.openlocfilehash: a1ebbc088b54112ed625412a347b054fd3361782
 ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
+=======
+<<<<<<< HEAD
+ms.date: 02/28/2018
+ms.openlocfilehash: a1ebbc088b54112ed625412a347b054fd3361782
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/28/2018
+=======
+ms.date: 02/12/2018
+ms.openlocfilehash: 5afe3fc2d39c6ab0996b1ee68a4158ccacc7e86a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/14/2018
+>>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
+>>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Firewallregeln für Azure-Datenbank für MySQL-Server
 Firewalls verhindern jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
