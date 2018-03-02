@@ -1,27 +1,28 @@
 ---
-title: "Schnellstart: Erstellen einer Azure-Datenbank für MySQL-Server – Azure-Portal | Microsoft-Dokumentation"
+title: "Schnellstartanleitung: Erstellen eines Azure Database for MySQL-Servers – Azure-Portal"
 description: "Dieser Artikel führt Sie durch die Verwendung des Azure-Portals, um in etwa fünf Minuten schnell eine Azure-Beispieldatenbank für MySQL-Server zu erstellen."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/01/2017
-ms.openlocfilehash: 88fd06d45d0cd966199ce198578eedd349adc2c8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 02/28/2018
+ms.openlocfilehash: 925ea8f365c4a7e987809cb56dfbfbb638b103fd
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Erstellen eines Servers für Azure-Datenbank für MySQL über das Azure-Portal
-Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal in etwa fünf Minuten einen Server für Azure-Datenbank für MySQL erstellen.  
+
+Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal in etwa fünf Minuten einen Azure Database for MySQL-Server erstellen.  
 
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 Navigieren Sie in Ihrem Webbrowser zum [Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Servers für Azure-Datenbank für MySQL
@@ -33,44 +34,46 @@ Führen Sie die folgenden Schritte aus, um einen Server für Azure-Datenbank fü
 
 2. Wählen Sie **Datenbanken** > **Azure-Datenbank für MySQL** aus. Sie können auch **MySQL** in das Suchfeld eingeben, um nach dem Dienst zu suchen.
 
-    ![Option „Azure-Datenbank für MySQL“](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+   ![Option „Azure-Datenbank für MySQL“](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
 
-4. Geben Sie die folgenden Informationen in das Formular für den neuen Server ein, wie in der obigen Abbildung dargestellt:
+3. Geben Sie im Formular für den neuen Server folgende Informationen an:
+   
+   ![Formular für die Servererstellung](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
 
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung** 
     ---|---|---
-    Servername | Eindeutiger Servername | Wählen Sie einen eindeutigen Namen, der Ihren Server für Azure-Datenbank für MySQL identifiziert. (Beispiel: myserver4demo.) Der Domänenname *mysql.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Es muss zwischen drei und 63 Zeichen lang sein.
+    Servername | Eindeutiger Servername | Wählen Sie einen eindeutigen Namen, der Ihren Server für Azure-Datenbank für MySQL identifiziert. Beispiel: mydemoserver. Der Domänenname *.mysql.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Es muss zwischen drei und 63 Zeichen lang sein.
     Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
-    Ressourcengruppe | myresourcegroup | Geben Sie einen neuen oder vorhandenen Ressourcengruppennamen an.
+    Ressourcengruppe | *myresourcegroup* | Geben Sie einen neuen oder vorhandenen Ressourcengruppennamen an.    Ressourcengruppe|*myresourcegroup*| Ein neuer Ressourcengruppenname oder ein bereits vorhandener Name aus Ihrem Abonnement
+    Quelle auswählen | *Leer* | Wählen Sie *Leer* aus, um einen neuen Server ohne Vorlage zu erstellen. (Wählen Sie *Sicherung* aus, wenn Sie einen Server auf der Grundlage einer Geosicherung eines vorhandenen Azure Database for MySQL-Servers erstellen.)
     Serveradministratoranmeldung | myadmin | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
     Password | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto an. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
     Kennwort bestätigen | *Beliebig*| Bestätigen Sie das Kennwort des Administratorkontos.
-    Speicherort | *Die Region, die Ihren Benutzern am nächsten liegt*| Wählen Sie den Speicherort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt.
+    Speicherort | *Die Region, die Ihren Benutzern am nächsten liegt*| Wählen Sie den Standort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt.
     Version | *Die neueste Version*| Die neueste Version (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
-    Tarif | **Basic**, **50 Compute-Einheiten**, **50 GB** | Wählen Sie die Dienstebene und die Leistungsstufe für Ihre neue Datenbank aus. Wählen Sie auf der oberen Registerkarte den Tarif **Basic** aus. Wählen Sie das linke Ende des Schiebereglers **Compute-Einheiten** aus, um für diese Schnellstartanleitung den kleinstmöglichen Wert festzulegen. Wählen Sie **OK** aus, um die Tarifauswahl zu speichern. Weitere Informationen erhalten Sie auf dem folgenden Screenshot.
-    An Dashboard anheften | Prüfen | Aktivieren Sie dieses Kontrollkästchen, um die komfortable Nachverfolgung Ihres Servers auf der Titelseite des Dashboards im Azure-Portal zu ermöglichen.
-
+    Tarif | **Universell**, **Gen 4**, **2 virtuelle Kerne**, **5 GB**, **7 Tage**, **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Tarif**aus. Klicken Sie als Nächstes auf die Registerkarte **Universell**. *Gen 4*, *2 virtuelle Kerne*, *5 GB* und *7 Tage* sind die Standardwerte für **Computegeneration**, **Virtueller Kern**, **Speicher** und **Aufbewahrungszeit für Sicherung**. Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
+  
     > [!IMPORTANT]
     > Der hier angegebene Benutzername und das Kennwort für den Serveradministrator werden im weiteren Verlauf dieser Schnellstartanleitung für die Anmeldung beim Server und bei den dazugehörigen Datenbanken benötigt. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
     > 
 
-    ![Azure-Portal – Erstellen von MySQL durch Ausfüllen des Formulars mit den erforderlichen Angaben](./media/quickstart-create-mysql-server-database-using-azure-portal/3_create-server.png)
+   ![Erstellen des Servers – Tariffenster](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
 
 4.  Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung kann bis zu 20 Minuten dauern.
    
 5.  Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** (Glockensymbol) aus, um den Bereitstellungsprozess zu überwachen.
+   
+  Unter Ihrem Server werden standardmäßig folgende Datenbanken erstellt: **information_schema**, **mysql**, **performance_schema** und **sys**.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurieren einer Firewallregel auf Serverebene
 
 Der Dienst „Azure-Datenbank für MySQL“ erstellt eine Firewall auf der Serverebene. Diese Firewall verhindert, dass externe Anwendungen und Tools eine Verbindung mit dem Server und den Datenbanken auf dem Server herstellen – es sei denn, es wird eine Firewallregel erstellt, um die Firewall für bestimmte IP-Adressen zu öffnen. 
 
-1.   Navigieren Sie nach Abschluss der Bereitstellung zu Ihrem Server. Bei Bedarf können Sie danach suchen. Wählen Sie beispielsweise im Menü auf der linken Seite die Option **Alle Ressourcen** aus. Geben Sie dann den Servernamen (beispielsweise **myserver4demo**) ein, um nach dem neu erstellten Server zu suchen. Wählen Sie den Servernamen in der Liste mit den Suchergebnissen aus. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
+1.   Navigieren Sie nach Abschluss der Bereitstellung zu Ihrem Server. Bei Bedarf können Sie danach suchen. Wählen Sie beispielsweise im Menü auf der linken Seite die Option **Alle Ressourcen** aus. Geben Sie dann den Servernamen (beispielsweise **mydemoserver**) ein, um nach dem neu erstellten Server zu suchen. Wählen Sie den Servernamen in der Liste mit den Suchergebnissen aus. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
 
 2. Wählen Sie auf der Serverseite die Option **Verbindungssicherheit** aus.
 
 3.  Wählen Sie unter der Überschrift **Firewallregeln** in der Spalte **Regelname** das leere Textfeld aus, um mit der Erstellung der Firewallregel zu beginnen. 
-
-   ![Verbindungssicherheit – Firewallregeln](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
 
    Im Rahmen dieser Schnellstartanleitung lassen wir für den Server alle IP-Adressen zu, indem wir die Felder der einzelnen Spalten mit folgenden Werten versehen:
 
@@ -78,6 +81,8 @@ Der Dienst „Azure-Datenbank für MySQL“ erstellt eine Firewall auf der Serve
    ---|---|---
    AllowAllIps |  0.0.0.0 | 255.255.255.255
    
+   ![Verbindungssicherheit – Firewallregeln](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
+
    Das Zulassen aller IP-Adressen stellt ein Sicherheitsrisiko dar. Hierbei handelt es sich um ein vereinfachtes Beispiel. In der Praxis müssen Sie die genauen IP-Adressbereiche kennen, die für Ihre Anwendungen und Benutzer hinzugefügt werden sollen. 
 
 4. Wählen Sie auf der oberen Symbolleiste der Seite **Verbindungssicherheit** die Option **Speichern** aus. Warten Sie, bis die Benachrichtigung mit dem Hinweis erscheint, dass das Update erfolgreich abgeschlossen wurde, bevor Sie fortfahren. 
@@ -89,13 +94,13 @@ Der Dienst „Azure-Datenbank für MySQL“ erstellt eine Firewall auf der Serve
 ## <a name="get-the-connection-information"></a>Abrufen der Verbindungsinformationen
 Für die Verbindungsherstellung mit Ihrem Datenbankserver benötigen Sie den vollständigen Servernamen und die Administratoranmeldeinformationen. Diese Werte haben Sie möglicherweise zuvor im Rahmen des Schnellstartartikels notiert. Falls nicht, finden Sie den Servernamen und die Anmeldeinformationen auf der Seite **Übersicht** des Servers oder auf der Seite **Eigenschaften** im Azure-Portal.
 
-Führen Sie die folgenden Schritte aus: 
+Führen Sie die folgenden Schritte aus, um nach diesen Werten zu suchen: 
 
 1. Öffnen Sie die Seite **Übersicht** für Ihren Server. Notieren Sie sich den **Servernamen** und den **Anmeldenamen des Serveradministrators**. 
 
 2. Zeigen Sie mit dem Cursor auf das jeweilige Feld. Daraufhin erscheint rechts neben dem Text ein Kopiersymbol. Wählen Sie das Kopiersymbol aus, um die Werte zu kopieren.
 
-In diesem Beispiel lautet der Servername **myserver4demo.mysql.database.azure.com** und die Serveradministratoranmeldung **myadmin@myserver4demo**.
+In diesem Beispiel lautet der Servername **mydemoserver.mysql.database.azure.com** und die Serveradministratoranmeldung **myadmin@mydemoserver**.
 
 ## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>Herstellen einer Verbindung mit MySQL mithilfe des mysql-Befehlszeilentools
 Es gibt verschiedene Anwendungen, mit denen Sie eine Verbindung mit Ihrem Server für Azure-Datenbank für MySQL herstellen können. 
@@ -103,28 +108,29 @@ Es gibt verschiedene Anwendungen, mit denen Sie eine Verbindung mit Ihrem Server
 Als Erstes verwenden wir das [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)-Befehlszeilentool, um das Herstellen einer Verbindung mit dem Server zu veranschaulichen. Sie können auch wie hier beschrieben einen Webbrowser und Azure Cloud Shell verwenden, ohne zusätzliche Software zu installieren. Wenn das mysql-Hilfsprogramm lokal installiert ist, können Sie auch von dort eine Verbindung herstellen.
 
 1. Starten Sie Azure Cloud Shell über das Terminalsymbol (**>_**), das rechts oben im Azure-Portal zur Verfügung steht.
+![Terminalsymbol für Azure Cloud Shell](./media/quickstart-create-mysql-server-database-using-azure-portal/7-cloud-console.png)
 
 2.  Azure Cloud Shell wird in Ihrem Browser geöffnet und ermöglicht die Eingabe von Bash-Shellbefehlen.
 
-    ![Eingabeaufforderung – Beispiel für die mysql-Befehlszeile](./media/quickstart-create-mysql-server-database-using-azure-portal/7_connect-to-server.png)
+   ![Eingabeaufforderung – Beispiel für die mysql-Befehlszeile](./media/quickstart-create-mysql-server-database-using-azure-portal/8-bash.png)
 
 3. Stellen Sie an der Cloud Shell-Eingabeaufforderung eine Verbindung mit Ihrem Server für Azure-Datenbank für MySQL her, indem Sie die mysql-Befehlszeile eingeben.
 
     Verwenden Sie das folgende Format, um mit dem mysql-Hilfsprogramm eine Verbindung mit dem Server für Azure-Datenbank für MySQL herzustellen:
 
     ```bash
-    mysql --host <fully qualified servername> --user <serveradminlogin@servername> -p
+    mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
     ```
 
     Mithilfe des folgenden Befehls wird beispielsweise eine Verbindung mit unserem Beispielserver hergestellt:
 
     ```azurecli-interactive
-    mysql --host myserver4demo.mysql.database.azure.com --user myadmin@myserver4demo -p
+    mysql --host mydemoserver.mysql.database.azure.com --user myadmin@mydemoserver -p
     ```
 
     mysql-Parameter |Empfohlener Wert|BESCHREIBUNG
     ---|---|---
-    --host | *Servername* | Der Servername, den Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt **myserver4demo.mysql.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.mysql.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
+    --host | *Servername* | Der Servername, den Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt **mydemoserver.mysql.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.mysql.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
     --user | *Anmeldename des Serveradministrators* |Der Anmeldename des Serveradministrators, den Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
     -p | *Auf Eingabeaufforderung warten* |Geben Sie dann das gleiche Kennwort an, das Sie auch beim Erstellen des Servers angegeben haben. Hinweis: Die Zeichen für das Kennwort werden während der Eingabe nicht in der Bash-Eingabeaufforderung angezeigt. Drücken Sie nach Eingabe des Kennworts die **EINGABETASTE**.
 
@@ -190,15 +196,15 @@ Führen Sie die folgenden Schritte aus, um über das GUI-Tool MySQL Workbench ei
 
 3. Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** die Informationen zu Ihrer Serververbindung ein. Als Beispiele werden Platzhalterwerte angezeigt. Ersetzen Sie Hostname, Benutzername und Kennwort durch Ihre eigenen Werte.
 
-    ![Einrichten einer neuen Verbindung](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
+   ![Einrichten einer neuen Verbindung](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
     |Einstellung |Empfohlener Wert|Feldbeschreibung|
     |---|---|---|
      Verbindungsname | Beispielverbindung | Eine Bezeichnung für diese Verbindung. |
     Verbindungsmethode | Standard (TCP/IP) | Standard (TCP/IP) ist ausreichend. |
-    Hostname | *Servername* | Der Servername, den Sie weiter oben beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt **myserver4demo.mysql.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.mysql.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt.|
+    Hostname | *Servername* | Der Servername, den Sie weiter oben beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt **mydemoserver.mysql.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.mysql.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt.|
      Port | 3306 | Der Port, der beim Herstellen der Verbindung mit Ihrem Server für Azure-Datenbank für MySQL verwendet werden soll. |
-    Username |  *Anmeldename des Serveradministrators* | Die Anmeldeinformationen des Serveradministrators, die Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielbenutzername lautet **myadmin@myserver4demo**. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
+    Username |  *Anmeldename des Serveradministrators* | Die Anmeldeinformationen des Serveradministrators, die Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielbenutzername lautet **myadmin@mydemoserver**. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
     Password | *Ihr Kennwort* | Wählen Sie die Schaltfläche **In Vault speichern** aus, um das Kennwort zu speichern. |
 
 4. Wählen Sie **Verbindung testen** aus, um zu testen, ob alle Parameter ordnungsgemäß konfiguriert sind. Wählen Sie dann **OK** aus, um die Verbindung zu speichern. 
@@ -225,9 +231,9 @@ Wenn Sie nur den neu erstellten Server löschen möchten, gehen Sie wie folgt vo
 
 2.  Wählen Sie auf der Seite **Übersicht** die Option **Löschen** aus. 
 
-    ![Azure-Datenbank für MySQL – Löschen des Servers](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
+   ![Azure-Datenbank für MySQL – Löschen des Servers](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
 
-3.  Prüfen Sie den Namen des zu löschenden Servers, und zeigen Sie die betroffenen Datenbanken an. Geben Sie den Servernamen (in unserem Beispiel: **myserver4demo**) in das Feld ein. Klicken Sie auf **Löschen**.
+3.  Prüfen Sie den Namen des zu löschenden Servers, und zeigen Sie die betroffenen Datenbanken an. Geben Sie den Servernamen (in unserem Beispiel: **mydemoserver**) in das Feld ein. Klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

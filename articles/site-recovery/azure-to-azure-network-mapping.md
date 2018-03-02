@@ -12,7 +12,6 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-<<<<<<< HEAD
 ms.date: 02/27/2018
 ms.author: manayar
 ms.openlocfilehash: 8f347827c640729112e2e8f4c11288b6bcb176ea
@@ -20,15 +19,6 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
-=======
-ms.date: 12/15/2017
-ms.author: manayar
-ms.openlocfilehash: d7dd35a8382f4a99ababbe804c5c71b29148c44a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
->>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Zuordnen virtueller Netzwerke in verschiedenen Azure-Regionen
 
@@ -80,11 +70,7 @@ Wenn die Netzwerkzuordnung bereits erfolgt ist, können Sie das virtuelle Zielne
 
 
 ## <a name="subnet-selection"></a>Subnetzauswahl
-<<<<<<< HEAD
 Das Subnetz des virtuellen Zielcomputers wird basierend auf dem Namen des Subnetzes des virtuellen Quellcomputers ausgewählt. Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie der virtuelle Quellcomputer verfügbar ist, wird dieses Subnetz für den virtuellen Zielcomputer ausgewählt. Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das Subnetz als Zielsubnetz ausgewählt, das in der alphabetischen Reihenfolge an erster Stelle steht.
-=======
-Das Subnetz des virtuellen Zielcomputers wird basierend auf dem Namen des Subnetzes des virtuellen Quellcomputers ausgewählt. Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie der virtuelle Quellcomputer verfügbar ist, wird dieses Subnetz für den virtuellen Zielcomputer ausgewählt. Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das Subnetz als Zielsubnetz ausgewählt, das in der alphabetischen Reihenfolge an erster Stelle steht. 
->>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 
 Zum Ändern des Subnetzes rufen Sie die **Compute- und Netzwerkeinstellungen** für den virtuellen Computer auf.
 
