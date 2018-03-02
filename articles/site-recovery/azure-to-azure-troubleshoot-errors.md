@@ -7,6 +7,7 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
+<<<<<<< HEAD
 ms.date: 02/22/2018
 ms.author: sujayt
 ms.openlocfilehash: 7292948c40b184a58eb3e27aecac28e2227a29f8
@@ -14,6 +15,15 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/24/2018
+=======
+ms.date: 02/12/2018
+ms.author: sujayt
+ms.openlocfilehash: be43e34976682847c4756e062ec5b638ebc26063
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/13/2018
+>>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsprobleme
 

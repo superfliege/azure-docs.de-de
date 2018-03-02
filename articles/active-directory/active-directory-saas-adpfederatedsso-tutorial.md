@@ -14,11 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: jeedes
+<<<<<<< HEAD
 ms.openlocfilehash: ad12dfd525afe1bde7026535dceb25556abf0a96
 ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/24/2018
+=======
+ms.openlocfilehash: 76bbee514eac36aec8eaf84e8a20f85a27559fc7
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/11/2018
+>>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-federated-sso"></a>Tutorial: Azure Active Directory-Integration in ADP Federated SSO
 
@@ -197,8 +205,12 @@ Nach der Bestätigung durch Ihren ADP-Vertriebsbeauftragten konfigurieren Sie Ih
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 7. Wählen Sie im Dialogfeld **Einmaliges Anmelden** unter **Modus** die Option **Anmeldung über Link**, um Ihre Anwendung mit **ADP Federated SSO** zu verknüpfen.
+<<<<<<< HEAD
+=======
+<!---Loc Comment:Sentence "to link your application to ADP Federated SSO." should be concatenated with the previous sentence--->
+>>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 
-    ![SSO über Link](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
+    ![Single sign-on linked](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
 
 8. Navigieren Sie zum Abschnitt **Anmelde-URL konfigurieren**, und führen Sie die folgenden Schritte aus:
 
