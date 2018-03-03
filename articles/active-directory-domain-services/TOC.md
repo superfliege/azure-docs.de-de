@@ -22,6 +22,7 @@
 ## [Überprüfen der Integrität einer verwalteten Domäne](active-directory-ds-check-health.md)
 ## [Verwenden von Azure AD Domain Services in Azure CSP-Abonnements](active-directory-ds-csp.md)
 ## [Enable Azure AD Domain Services using PowerShell (Aktivieren von Azure AD Domain Services mit PowerShell)](active-directory-ds-enable-using-powershell.md)
+## [Überprüfen der Domänenintegrität](active-directory-ds-check-health.md)
 ## Beitreten zu einer verwalteten Domäne
 ### [Virtueller Windows Server-Computer](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [Virtueller Windows Server-Computer aus einer Vorlage](active-directory-ds-join-windows-vm-template.md)
@@ -32,7 +33,6 @@
 ## Verwalten einer verwalteten Domäne
 ### [Verwalten einer verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 ### [Verwalten des DNS in einer verwalteten Domäne](active-directory-ds-admin-guide-administer-dns.md)
-
 ### Konfigurieren von sicherem LDAP für eine verwaltete Domäne
 #### [Aufgabe 1: Erwerben eines Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [Aufgabe 2: Exportieren des Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
