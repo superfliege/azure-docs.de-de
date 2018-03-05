@@ -4,10 +4,9 @@
 ## [Bash – Schnellstart](quickstart.md)
 ## [PowerShell – Schnellstart](quickstart-powershell.md)
 
-# Konzepte
+# Features und Tools
 ## [Bash – Features und Tools](features.md)
 ## [PowerShell – Features und Tools](features-powershell.md)
-## [Einschränkungen](limitations.md)
 
 # Vorgehensweise
 ## [Bash – Beibehalten von Speicher](persisting-shell-storage.md)
@@ -20,7 +19,7 @@
 
 # [Einbetten von Cloud Shell](embed-cloud-shell.md)
 
-# [Problembehandlung](troubleshooting.md)
+# [Problembehandlung und Einschränkungen](troubleshooting.md)
 
 # Verweis
 ## [Azure-CLI](/cli/azure)

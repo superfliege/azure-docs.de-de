@@ -31,7 +31,7 @@
       href: tutorial-load-balancer.md
     - name: '8: Verwalten von Netzwerken'
       href: tutorial-virtual-network.md
-    - name: '9: Sichern virtueller Computer'
+    - name: 9 – Sichern virtueller Computer
       href: tutorial-backup-vms.md
     - name: '10: Steuern virtueller Computer'
       href: tutorial-govern-resources.md
@@ -108,6 +108,8 @@
           href: disk-scalability-targets.md
         - name: Sicherung und Notfallwiederherstellung für Datenträger
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Problembehandlung für angefügte VHDs
+          href: troubleshoot-vhds.md
     - name: Netzwerk
       href: network-overview.md
     - name: Automatisch skalierende Anwendungen

@@ -13,19 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: mbullwin
-<<<<<<< HEAD
 ms.openlocfilehash: fae3269e21d0f760ae77a70333047306c07c2961
 ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
-=======
-ms.openlocfilehash: ef813ec3f9f654fb3786fba4135a04e403928e9a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
->>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
 Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
@@ -108,7 +100,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
 #### <a name="otherwise-"></a>Andernfalls...
 Befolgen Sie die Richtlinien für die manuelle Installation des Application Insights Java SDK, laden Sie die JAR-Datei für den entsprechenden Appender herunter (klicken Sie dazu auf der Maven-Hauptseite im Downloadabschnitt auf den Link „jar“), und fügen Sie die heruntergeladene JAR-Datei für den Appender zum Projekt hinzu.
 
-| Protokollierungstool | Herunterladen | Bibliothek |
+| Protokollierungstool | Download | Bibliothek |
 | --- | --- | --- |
 | Logback |[JAR-Datei für Logback-Appender](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v2. 0 |[JAR-Datei für Log4J-v2-Appender](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
