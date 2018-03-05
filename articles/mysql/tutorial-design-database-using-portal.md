@@ -1,20 +1,20 @@
 ---
-title: "Entwerfen Ihrer ersten Azure Database for MySQL-Datenbank – Azure-Portal | Microsoft-Dokumentation"
+title: "Entwerfen Ihrer ersten Azure Database for MySQL-Datenbank – Azure-Portal"
 description: "In diesem Tutorial wird das Erstellen und Verwalten von Azure-Datenbank für MySQL-Server und der Datenbank mithilfe des Azure-Portals erläutert."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: tutorial
-ms.date: 11/03/2017
+ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: 76cccf9e2ce0a1e59b43646c43ac165d46dade4a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 272c1ba67fb1a907d739d23ce1d965f57c3a1074
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>Entwerfen Ihrer ersten Azure Database for MySQL-Datenbank
 Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Mit dem Azure-Portal können Sie mühelos Ihren Server verwalten und eine Datenbank entwerfen.
@@ -37,31 +37,36 @@ In diesem Tutorial verwenden Sie das Azure-Portal, um Folgendes zu lernen:
 Ein Azure-Datenbank für MySQL-Server wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-compute-unit-and-storage.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) erstellt.
 
 1. Navigieren Sie zu **Datenbanken** > **Azure-Datenbank für MySQL**. Wenn Sie MySQL-Server nicht unter der Kategorie **Datenbanken** finden, klicken Sie auf **Alle anzeigen**, um alle verfügbaren Datenbankdienste anzuzeigen. Sie können auch **Azure Datenbank für MySQL** in das Suchfeld eingeben, um den Dienst schnell zu finden.
-![2-1 Navigieren zu MySQL](./media/tutorial-design-database-using-portal/2_1-Navigate-to-MySQL.png)
+   
+   ![Navigieren zu MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png)
 
-2. Klicken Sie auf die Kachel **Azure-Datenbank für MySQL**, und klicken Sie dann auf **Erstellen**.
+2. Klicken Sie auf die Kachel **Azure-Datenbank für MySQL**, und klicken Sie dann auf **Erstellen**. Füllen Sie das Azure Database for MySQL-Formular aus.
+   
+   ![Erstellen des Formulars](./media/tutorial-design-database-using-portal/2-create-form.png)
 
-Füllen Sie in diesem Beispiel das Azure Database for MySQL-Formular mit den folgenden Informationen aus:
+    **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung** 
+    ---|---|---
+    Servername | Eindeutiger Servername | Wählen Sie einen eindeutigen Namen, der Ihren Server für Azure-Datenbank für MySQL identifiziert. Beispiel: mydemoserver. Der Domänenname *.mysql.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Es muss zwischen drei und 63 Zeichen lang sein.
+    Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
+    Ressourcengruppe | *myresourcegroup* | Geben Sie einen neuen oder vorhandenen Ressourcengruppennamen an.    Ressourcengruppe|*myresourcegroup*| Ein neuer Ressourcengruppenname oder ein bereits vorhandener Name aus Ihrem Abonnement
+    Quelle auswählen | *Leer* | Wählen Sie *Leer* aus, um einen neuen Server ohne Vorlage zu erstellen. (Wählen Sie *Sicherung* aus, wenn Sie einen Server auf der Grundlage einer Geosicherung eines vorhandenen Azure Database for MySQL-Servers erstellen).
+    Serveradministratoranmeldung | myadmin | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
+    Password | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto an. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
+    Kennwort bestätigen | *Beliebig*| Bestätigen Sie das Kennwort des Administratorkontos.
+    Speicherort | *Die Region, die Ihren Benutzern am nächsten liegt*| Wählen Sie den Speicherort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt.
+    Version | *Die neueste Version*| Die neueste Version (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
+    Tarif | **Universell**, **Gen 4**, **2 virtuelle Kerne**, **5 GB**, **7 Tage**, **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Tarif**aus. Klicken Sie als Nächstes auf die Registerkarte **Universell**. *Gen 4*, *2 virtuelle Kerne*, *5 GB* und *7 Tage* sind die Standardwerte für **Computegeneration**, **Virtueller Kern**, **Speicher** und **Aufbewahrungszeit für Sicherung**. Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
+    
+   ![Tarif](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
-| **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung** |
-|---|---|---|
-| *Servername* | myserver4demo  | Der Servername muss global eindeutig sein. |
-| *Abonnement* | mysubscription | Wählen Sie in der Dropdownliste Ihr Abonnement aus. |
-| *Ressourcengruppe* | myresourcegroup | Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine bereits vorhandene. |
-| *Serveradministratoranmeldung* | myadmin | Legen Sie den Namen des Administratorkontos fest. |
-| *Kennwort* |  | Legen Sie ein sicheres Kennwort für das Administratorkonto fest. |
-| *Kennwort bestätigen* |  | Bestätigen Sie das Kennwort des Administratorkontos. |
-| *Standort* |  | Wählen Sie eine verfügbare Region aus. |
-| *Version* | 5.7 | Wählen Sie die neueste Version aus. |
-| *Leistung konfigurieren* | 50 Compute-Einheiten, 50 GB (Basic)  | Wählen Sie **Tarif**, **Compute-Einheiten**, **Speicher (GB)** aus, und klicken Sie dann auf **OK**. |
-| *An Dashboard anheften* | Prüfen | Es wird empfohlen, dieses Kontrollkästchen zu aktivieren, damit Sie den Server später einfacher finden. |
-Klicken Sie dann auf **Erstellen**. In ein oder zwei Minuten wird eine neue Azure-Datenbank für MySQL-Server in der Cloud ausgeführt. Sie können in der Symbolleiste auf die Schaltfläche **Benachrichtigungen** klicken, um den Bereitstellungsprozess zu überwachen.
+3. Klicken Sie auf **Create**. In ein oder zwei Minuten wird eine neue Azure-Datenbank für MySQL-Server in der Cloud ausgeführt. Sie können in der Symbolleiste auf die Schaltfläche **Benachrichtigungen** klicken, um den Bereitstellungsprozess zu überwachen.
 
 ## <a name="configure-firewall"></a>Konfigurieren der Firewall
 Azure SQL-Datenbanken für MySQL werden durch eine Firewall geschützt. Standardmäßig werden alle Verbindungen mit dem Server und den Datenbanken im Server abgelehnt. Vor dem erstmaligen Herstellen einer Verbindung mit Azure-Datenbank für MySQL müssen Sie die Firewall konfigurieren, um die öffentliche Netzwerk-IP-Adresse (oder den IP-Adressbereich) des Clientcomputers hinzuzufügen.
 
 1. Klicken Sie auf den neu erstellten Server und dann auf **Verbindungssicherheit**.
-   ![3-1 Verbindungssicherheit](./media/tutorial-design-database-using-portal/3_1-Connection-security.png)
+   
+   ![Verbindungssicherheit](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. Wählen Sie **Meine IP-Adresse hinzufügen**, oder konfigurieren Sie hier Firewallregeln. Denken Sie nach dem Erstellen der Regeln daran, auf **Speichern** zu klicken.
 Sie können jetzt mit dem mysql-Befehlszeilentool oder dem Benutzeroberflächentool MySQL Workbench eine Verbindung mit dem Server herstellen.
 
@@ -73,17 +78,17 @@ Rufen Sie den vollqualifizierten **Servernamen** und **Anmeldenamen des Serverad
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im linken Menü auf **Alle Ressourcen**, geben Sie den Namen ein, und suchen Sie nach Ihrer Azure-Datenbank für MySQL-Server. Wählen Sie den Servernamen aus, um die Details anzuzeigen.
 
-2. Klicken Sie unter der Überschrift „Einstellungen“ auf **Eigenschaften**. Notieren Sie sich den **SERVERNAMEN** und **ANMELDENAMEN DES SERVERADMINISTRATORS**. Sie können neben jedem Feld auf die Schaltfläche „Kopieren“ klicken, um die Informationen in die Zwischenablage zu kopieren.
-   ![4-2 Servereigenschaften](./media/tutorial-design-database-using-portal/4_2-server-properties.png)
+2. Notieren Sie sich die Werte für **Servername** und **Anmeldename des Serveradministrators** auf der Seite **Übersicht**. Sie können neben jedem Feld auf die Schaltfläche „Kopieren“ klicken, um die Informationen in die Zwischenablage zu kopieren.
+   ![4-2 Servereigenschaften](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-In diesem Beispiel lautet der Servername *myserver4demo.mysql.database.azure.com* und die Serveradministratoranmeldung *myadmin@myserver4demo*.
+In diesem Beispiel lautet der Servername *mydemoserver.mysql.database.azure.com* und die Serveradministratoranmeldung *myadmin@mydemoserver*.
 
 ## <a name="connect-to-the-server-using-mysql"></a>Herstellen einer Verbindung mit dem Server unter Verwendung von mysql
 Verwenden Sie das [Befehlszeilentool mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) zum Herstellen einer Verbindung mit Ihrer Azure-Datenbank für MySQL-Server. Sie können das mysql-Befehlszeilentool mit der Azure Cloud Shell im Browser oder von Ihrem Computer über die lokal installierten MySQL-Tools ausführen. Um die Azure Cloud Shell zu starten, klicken Sie in einem Codeblock in diesem Artikel auf die Schaltfläche `Try It`, oder besuchen Sie das Azure-Portal, und klicken Sie auf das Symbol `>_` rechts oben auf der Symbolleiste. 
 
 Geben Sie den Befehl für das Herstellen einer Verbindung ein:
 ```azurecli-interactive
-mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p
+mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Leere Datenbank erstellen
@@ -139,11 +144,11 @@ Angenommen, Sie haben versehentlich eine wichtige Datenbanktabelle gelöscht und
 
 1. Suchen Sie im Azure-Portal Ihre Azure-Datenbank für MySQL. Klicken Sie auf der Seite **Übersicht** auf der Symbolleiste auf **Wiederherstellen**. Die Seite „Wiederherstellen“ wird geöffnet.
 
-   ![10-1 Wiederherstellen einer Datenbank](./media/tutorial-design-database-using-portal/10_1-restore-a-db.png)
+   ![10-1 Wiederherstellen einer Datenbank](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
 2. Geben Sie im Formular **Wiederherstellen** die erforderlichen Informationen ein.
    
-   ![10-2 Wiederherstellungsformular](./media/tutorial-design-database-using-portal/10_2-restore-form.png)
+   ![10-2 Wiederherstellungsformular](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
    - **Wiederherstellungspunkt**: Wählen Sie aus dem angezeigten Zeitraum einen Zeitpunkt aus, auf den Sie wiederherstellen möchten. Stellen Sie sicher, dass Sie die lokale Zeitzone in UTC konvertieren.
    - **Auf neuem Server wiederherstellen**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.

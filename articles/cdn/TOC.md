@@ -18,9 +18,9 @@
 ### [Konfigurieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
 ## Optimieren von Inhalten
 ### [Übersicht über die Optimierung](cdn-optimization-overview.md)
-#### [Optimierung großer Dateien](cdn-large-file-optimization.md)
-#### [Medienstreaming-Optimierung](cdn-media-streaming-optimization.md)
-#### [Beschleunigung dynamischer Websites](cdn-dynamic-site-acceleration.md)
+####[Optimierung großer Dateien](cdn-large-file-optimization.md)
+####[Medienstreaming-Optimierung](cdn-media-streaming-optimization.md)
+####[Beschleunigung dynamischer Websites](cdn-dynamic-site-acceleration.md)
  
 ## Verwalten
 ### [Verwalten mit Azure PowerShell](cdn-manage-powershell.md)
@@ -70,10 +70,14 @@
 ## [REST](/rest/api/cdn/)
 
 # angeben
-## [Regel-Engine – Referenz](cdn-rules-engine-reference.md)
-### [Regel-Engine – Bedingte Ausdrücke](cdn-rules-engine-reference-conditional-expressions.md)
-### [Regel-Engine – Features](cdn-rules-engine-reference-features.md)
-### [Regel-Engine – Übereinstimmungsbedingungen](cdn-rules-engine-reference-match-conditions.md)
+##  
+            [Regel-Engine – Referenz](cdn-rules-engine-reference.md)
+### 
+            [Regel-Engine – Bedingte Ausdrücke](cdn-rules-engine-reference-conditional-expressions.md)
+### 
+            [Regel-Engine – Features](cdn-rules-engine-reference-features.md)
+### 
+            [Regel-Engine – Übereinstimmungsbedingungen](cdn-rules-engine-reference-match-conditions.md)
 ## [Azure CDN-POP-Standorte](cdn-pop-locations.md)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
