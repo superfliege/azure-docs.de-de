@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Azure Service Fabric-Containeranwendung unter Windows | Microsoft-Dokumentation
-description: Erstellen Sie Ihre erste Windows-Containeranwendung unter Azure Service Fabric.
+description: In diesem Schnellstart erstellen Sie Ihre erste Windows-Containeranwendung unter Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,16 +12,16 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/25/18
+ms.date: 02/27/18
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4043c600dcc79cc85b66d66051416218507432af
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 7a8d28ef842ba77355628c79c20fa7fd3c693380
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>Bereitstellen einer Service Fabric-Containeranwendung unter Windows in Azure
+# <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>Schnellstart: Bereitstellen einer Service Fabric-Containeranwendung unter Windows in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
 
 Zum Ausführen einer vorhandenen Anwendung eines Windows-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In dieser Schnellstartanleitung erfahren Sie, wie Sie ein vorgefertigtes Docker-Containerimage in einer Service Fabric-Anwendung bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über einen aktiven Container für Windows Server 2016 Nano Server und IIS. Diese Schnellstartanleitung enthält Informationen zum Bereitstellen eines Windows-Containers. Informationen zum Bereitstellen eines Linux-Containers finden Sie in [dieser Schnellstartanleitung](service-fabric-quickstart-containers-linux.md).
@@ -48,21 +48,25 @@ Starten Sie Visual Studio als Administrator.  Wählen Sie **Datei** > **Neu** > 
 
 Wählen Sie **Service Fabric-Anwendung**, benennen Sie sie „MyFirstContainer“, und klicken Sie auf **OK**.
 
-Wählen Sie in der Liste **Dienstvorlagen** die Option **Container** aus.
+Wählen Sie unter **Gehostete Container und Anwendungen** die Vorlage **Container**.
 
 Geben Sie unter **Imagename** die Zeichenfolge „microsoft/iis:nanoserver“ ([Basisimage für Windows Server Nano Server und IIS](https://hub.docker.com/r/microsoft/iis/)) ein. 
 
 Nennen Sie den Dienst „MyContainerService“, und klicken Sie auf **OK**.
 
 ## <a name="configure-communication-and-container-port-to-host-port-mapping"></a>Konfigurieren der Kommunikation und der Zuordnung von Containerport zu Hostport
-Der Dienst benötigt einen Endpunkt für die Kommunikation.  Sie können einem `Endpoint` in der Datei „ServiceManifest.xml“ nun das Protokoll, den Port und den Typ hinzufügen. Im Rahmen dieser Schnellstartanleitung lauscht der im Container ausgeführte Dienst an Port 80: 
+Der Dienst benötigt einen Endpunkt für die Kommunikation.  Im Rahmen dieser Schnellstartanleitung lauscht der im Container ausgeführte Dienst an Port 80.  Öffnen Sie im Projektmappen-Explorer die Datei *MyFirstContainer/ApplicationPackageRoot/MyContainerServicePkg/ServiceManifest.xml*.  Aktualisieren Sie den vorhandenen `Endpoint` in der Datei „ServiceManifest.xml“, und fügen Sie Protokoll, Port und URI-Schema hinzu: 
 
 ```xml
-<Endpoint Name="MyContainerServiceTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
+<Resources>
+    <Endpoints>
+        <Endpoint Name="MyContainerServiceTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
+   </Endpoints>
+</Resources>
 ```
 Durch die Bereitstellung von `UriScheme` wird automatisch der Containerendpunkt im Service Fabric Naming Service registriert, damit er einfacher erkennbar ist. Eine vollständige „ServiceManifest.xml“-Beispieldatei finden Sie am Ende dieses Artikels. 
 
-Konfigurieren Sie auch die Zuordnung vom Containerport zum Hostport, indem Sie in `ContainerHostPolicies` in der Datei „ApplicationManifest.xml“ eine `PortBinding`-Richtlinie angeben.  In dieser Schnellstartanleitung hat `ContainerPort` den Wert 80, und `EndpointRef` hat den Wert „MyContainerServiceTypeEndpoint“ (der im Dienstmanifest angegebene Endpunkt).  Anforderungen, die beim Dienst an Port 80 eingehen, werden im Container dem Port 80 zugeordnet.  
+Konfigurieren Sie die Zuordnung von Containerport zu Hostport, sodass an Port 80 eingehende Anforderungen für den Dienst dem Port 80 des Containers zugeordnet werden.  Öffnen Sie im Projektmappen-Explorer die Datei *MyFirstContainer/ApplicationPackageRoot/ApplicationManifest.xml*, und geben Sie in `ContainerHostPolicies` eine `PortBinding`-Richtlinie an.  In dieser Schnellstartanleitung hat `ContainerPort` den Wert 80, und `EndpointRef` hat den Wert „MyContainerServiceTypeEndpoint“ (der im Dienstmanifest angegebene Endpunkt).    
 
 ```xml
 <ServiceManifestImport>
@@ -79,9 +83,7 @@ Konfigurieren Sie auch die Zuordnung vom Containerport zum Hostport, indem Sie i
 Eine vollständige ApplicationManifest.xml-Beispieldatei finden Sie am Ende dieses Artikels.
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
-Für die Anwendungsbereitstellung in einem Cluster in Azure können Sie entweder einem Partycluster beitreten oder [einen eigenen Cluster in Azure erstellen](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-
-Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. 
+Zum Bereitstellen der Anwendung in einem Cluster in Azure können Sie einen Partycluster einbinden. Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. 
 
 Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Das Zertifikat und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
 
@@ -108,7 +110,7 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MyFirstContainer**, und wählen Sie **Veröffentlichen** aus. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 
-Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und geben Sie die folgenden Informationen an.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des im vorherigen Schritt installierten Zertifikats entsprechen. 
+Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und überprüfen Sie die Informationen zu den Verbindungsparametern.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des im vorherigen Schritt installierten Zertifikats entsprechen. 
 
 ![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-containers/publish-app.png)
 
@@ -187,7 +189,6 @@ Im Anschluss finden Sie die vollständigen Dienst- und Anwendungsmanifeste, die 
         <PortBinding ContainerPort="80" EndpointRef="MyContainerServiceTypeEndpoint"/>
       </ContainerHostPolicies>
     </Policies>
-
   </ServiceManifestImport>
   <DefaultServices>
     <!-- The section below creates instances of service types, when an instance of this 

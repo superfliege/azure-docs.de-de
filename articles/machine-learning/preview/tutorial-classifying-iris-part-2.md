@@ -1,24 +1,24 @@
 ---
-title: "Erstellen eines Modells für Azure Machine Learning-Dienste (Vorschau) | Microsoft-Dokumentation"
-description: "Dieses Tutorial in voller Länge zeigt, wie End-to-End-Azure Machine Learning-Dienste (Vorschau) verwendet werden können. Dies ist der zweite Teil der Reihe, in dem es um das Experimentieren geht."
+title: "Tutorial zum Erstellen eines Modells für Azure Machine Learning-Dienste (Vorschau) | Microsoft-Dokumentation"
+description: "Dieses Tutorial in voller Länge zeigt, wie Azure Machine Learning-Dienste (Vorschau) konsistent verwendet werden können. Dies ist der zweite Teil der Reihe, in dem es um das Experimentieren geht."
 services: machine-learning
 author: hning86
-ms.author: haining
+ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/06/2017
-ms.openlocfilehash: 3337ba9fa6845deb98813259821f77ff713f9eb1
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/28/2018
+ms.openlocfilehash: f52d4268c3983b419a6393bbd651301022688029
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="classify-iris-part-2-build-a-model"></a>Klassifizieren von Iris – Teil 2: Erstellen eines Modells
-Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten vorbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
+# <a name="tutorial-classify-iris-part-2---build-a-model"></a>Tutorial: Klassifizieren von Iris – Teil 2: Erstellen eines Modells
+Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten aufbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
 
 Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe. In diesem Teil des Tutorials verwenden Sie Azure Machine Learning-Dienste (Vorschauversion), um Folgendes zu erfahren:
 
@@ -32,7 +32,9 @@ Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe. In diesem Teil des
 > * Ausführen von Skripts in einer Docker-Remoteumgebung
 > * Ausführen von Skripts in einer Azure HDInsight-Cloudumgebung
 
-In diesem Tutorial wird das zeitlose Schwertlilien-Dataset ([Iris flower data set](https://en.wikipedia.org/wiki/Iris_flower_data_set)) verwendet. Die Screenshots sind Windows-spezifisch, aber die Benutzeroberfläche für Mac OS ist nahezu identisch.
+In diesem Tutorial wird das zeitlose Schwertlilien-Dataset ([Iris flower data set](https://en.wikipedia.org/wiki/Iris_flower_data_set)) verwendet. Die Screenshots sind Windows-spezifisch, aber die Darstellung ist unter Mac OS nahezu identisch.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Arbeiten Sie den ersten Teil dieser Tutorialreihe durch. Führen Sie vor dem vorliegenden Tutorial die Schritte im [Tutorial zum Vorbereiten von Daten](tutorial-classifying-iris-part-1.md) aus, um Azure Machine Learning-Ressourcen zu erstellen und die Azure Machine Learning Workbench-Anwendung zu installieren.
@@ -374,6 +376,10 @@ Sie können dieses Skript auch in einem HDInsight Spark-Cluster ausführen. Erfa
    >Wenn Sie den Befehl für einen HDInsight-Remotecluster ausführen, können Sie auch die Details zur YARN-Auftragsausführung (Yet Another Resource Negotiator) unter `https://<cluster_name>.azurehdinsight.net/yarnui` anzeigen, indem Sie das Benutzerkonto `admin` verwenden.
 
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem zweiten Teil der dreiteiligen Tutorialreihe wurde beschrieben, wie Sie Azure Machine Learning-Dienste für folgende Zwecke verwenden:
 > [!div class="checklist"]
@@ -389,4 +395,4 @@ In diesem zweiten Teil der dreiteiligen Tutorialreihe wurde beschrieben, wie Sie
 Sie können nun mit dem dritten Teil der Reihe fortfahren. Sie haben das logistische Regressionsmodell erstellt und können es nun als Echtzeit-Webdienst bereitstellen.
 
 > [!div class="nextstepaction"]
-> [Bereitstellen eines Modells](tutorial-classifying-iris-part-3.md)
+> [Tutorial 3: Klassifizieren von Iris – Bereitstellen von Modellen](tutorial-classifying-iris-part-3.md)

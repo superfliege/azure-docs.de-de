@@ -1,22 +1,22 @@
 ---
-title: Zuweisen des Zugriffs in der Azure-Kostenverwaltung | Microsoft-Dokumentation
-description: "Sie weisen den Zugriff für Kostenverwaltungsdaten mit Benutzerkonten zu, die Ebenen des Zugriffs auf Entitäten definieren."
+title: 'Tutorial: Zuweisen des Zugriffs in Azure Cost Management | Microsoft-Dokumentation'
+description: "In diesem Tutorial wird beschrieben, wie Sie den Zugriff auf Kostenverwaltungsdaten mit Benutzerkonten zuweisen, die Ebenen für den Zugriff auf Entitäten definieren."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 89639e6d9c06edf110dc8432fbefe1fbfd1298c9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0e2edc946c5d6ada1049fbd6a960ec138f7088f2
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Kostenverwaltungsdaten
+# <a name="tutorial-assign-access-to-cost-management-data"></a>Tutorial: Zuweisen des Zugriffs auf Kostenverwaltungsdaten
 
 Der Zugriff auf Kostenverwaltungsdaten wird über die Benutzer- oder Entitätsverwaltung bereitgestellt. Cloudyn-Benutzerkonten steuern den Zugriff auf *Entitäten* und administrative Funktionen. Es gibt zwei Arten des Zugriffs: Administrator und Benutzer. Sofern keine benutzerspezifische Änderung erfolgt, ermöglicht der Administratorzugriff eine unbeschränkte Nutzung sämtlicher Funktionen im Cloudyn-Portal, einschließlich Benutzerverwaltung, Empfängerlistenverwaltung und des Zugriffs auf alle Entitätsdaten auf Stammentitätsebene. Der Benutzerzugriff ist für Endbenutzer ausgelegt, die über ihren Zugriff auf Entitätsdaten Berichte anzeigen oder erstellen.
 
@@ -29,7 +29,12 @@ Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos wurde ein
 > * Erstellen eines Benutzers mit Benutzerzugriff
 > * Erstellen von Entitäten
 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Sie benötigen ein Azure-Abonnement.
+- Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
 
 ## <a name="create-a-user-with-admin-access"></a>Erstellen eines Benutzers mit Administratorzugriff
 
@@ -83,7 +88,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen eines Benutzers mit Benutzerzugriff
 > * Erstellen von Entitäten
 
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie anhand von Verlaufsdaten Ausgaben vorhersagen.
+Fahren Sie mit dem folgenden Artikel fort, falls Sie den Azure Resource Manager-API-Zugriff für Ihre Konten nicht bereits aktiviert haben.
 
 > [!div class="nextstepaction"]
-> [Vorhersage zukünftiger Ausgaben](tutorial-forecast-spending.md)
+> [Aktivieren von Azure-Abonnements und -Konten](activate-subs-accounts.md)

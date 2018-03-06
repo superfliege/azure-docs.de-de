@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: 328b2778a68e32d95b666124bf7bba969a5f52a6
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4ac26c02e1893097c858380c07f520e6570fd3db
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
 > [!div class="op_single_selector"]
@@ -35,7 +35,6 @@ Azure Service Fabric wird nicht nativ unter Mac OS X ausgeführt. Für die Ausf�
 
 * Mindestens 4 GB RAM
 * Neueste Version von [Docker](https://www.docker.com/)
-* Zugriff auf ein [Docker-Containerimage vom Typ „Service Fabric One-Box“](https://hub.docker.com/r/servicefabricoss/service-fabric-onebox/).
 
 >[!TIP]
 >
@@ -45,10 +44,10 @@ Azure Service Fabric wird nicht nativ unter Mac OS X ausgeführt. Für die Ausf�
 ## <a name="create-a-local-container-and-set-up-service-fabric"></a>Erstellen eines lokalen Containers und Einrichten von Service Fabric
 Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzurichten und darin einen Service Fabric-Cluster auszuführen:
 
-1. Rufen Sie das Service Fabric-One-Box-Containerimage per Pull aus dem Docker Hub-Repository ab:
+1. Rufen Sie das Service Fabric-One-Box-Containerimage per Pullvorgang aus dem Docker Hub-Repository ab. Standardmäßig wird dann das Image mit der aktuellen Version von Service Fabric per Pullvorgang bereitgestellt. Bestimmte Revisionen finden Sie auf der Seite [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
 
     ```bash
-    docker pull servicefabricoss/service-fabric-onebox
+    docker pull microsoft/service-fabric-onebox
     ```
 
 2. Aktualisieren Sie die Konfiguration des Docker-Daemons auf dem Host mit den folgenden Einstellungen, und starten Sie den Docker-Daemon neu: 
@@ -71,14 +70,14 @@ Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzur
 3. Starten Sie eine Service Fabric-One-Box-Containerinstanz, und verwenden Sie das Image, das Sie im ersten Schritt abgerufen haben:
 
     ```bash
-    docker run -itd -p 19080:19080 --name sfonebox servicefabricoss/service-fabric-onebox
+    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
     ```
     >[!TIP]
     >Geben Sie einen Namen für Ihre Containerinstanz an, um die Lesbarkeit zu verbessern. 
     >
     >Wenn Ihre Anwendung an bestimmten Ports lauscht, müssen diese mit zusätzlichen Tags vom Typ `-p` angegeben werden. Beispiel: Wenn Ihre Anwendung an Port 8080 lauscht, fügen Sie das folgende `-p`-Tag hinzu:
     >
-    >`run docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox servicefabricoss/service-fabric-onebox`
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
 4. Melden Sie sich im interaktiven SSH-Modus am Docker-Container an:
@@ -157,10 +156,10 @@ Installieren Sie das [.NET Core 2.0 SDK für Mac](https://www.microsoft.com/net/
 
 Azure Service Fabric stellt ein Plug-In für Neon Eclipse für die Java-IDE bereit. Das Plug-In vereinfacht den Prozess der Erstellung und Bereitstellung von Java-Diensten. Führen Sie [diese Schritte](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon) aus, um das Service Fabric-Plug-In für Eclipse zu installieren oder auf die aktuelle Version zu aktualisieren. Die anderen Schritte unter [Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen](service-fabric-get-started-eclipse.md) gelten ebenfalls: Erstellen einer Anwendung, Hinzufügen eines Diensts zu einer Anwendung, Deinstallieren einer Anwendung usw.
 
-Der letzte Schritt besteht im Instanziieren des Containers mit einem Pfad, der mit Ihrem Host gemeinsam verwendet wird. Für das Plug-In ist diese Art der Instanziierung erforderlich, damit es mit dem Docker-Container auf Ihrem Mac verwendet werden kann. Beispiel:
+Der letzte Schritt besteht im Instanziieren des Containers mit einem Pfad, der mit Ihrem Host gemeinsam verwendet wird. Für das Plug-In ist diese Art der Instanziierung erforderlich, damit es mit dem Docker-Container auf Ihrem Mac verwendet werden kann. Beispiel: 
 
 ```bash
-docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox servicefabricoss/service-fabric-onebox
+docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox microsoft/service-fabric-onebox
 ```
 
 Die Attribute sind wie folgt definiert:

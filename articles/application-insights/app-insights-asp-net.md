@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 198cd5164ce3840503aca359767638e135f164bc
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 4fea71509b2dec897a3dafef627e243ae25447ad
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Einrichten von Application Insights für Ihre ASP.NET-Website
 
@@ -35,6 +35,9 @@ Sie benötigen Folgendes, um Application Insights Ihrer ASP.NET-Website hinzuzuf
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="ide"></a> Schritt 1: Hinzufügen des Application Insights SDK
+
+> [!IMPORTANT]
+> Der Prozess zum Hinzufügen von Application Insights variiert je nach ASP.NET-Vorlagentyp. Wählen Sie bei Verwendung der Vorlage **Leer** oder **Mobile Azure-App** die Option **Projekt** > **Application Insights-Telemetrie hinzufügen**. Alle anderen ASP.NET-Vorlagen finden Sie unten in den Anleitungen. 
 
 Klicken Sie mit der rechten Maustaste im Projektmappen-Explorer auf den Namen Ihrer Web-App, und wählen Sie **Application Insights konfigurieren**.
 

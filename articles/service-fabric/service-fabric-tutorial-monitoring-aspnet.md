@@ -1,6 +1,6 @@
 ---
 title: "Überwachung und Diagnose für ASP.NET Core-Dienste in Azure Service Fabric | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie eine Überwachung und Diagnose für eine ASP.NET Core-Anwendung in Azure Service Fabric einrichten."
+description: "In diesem Tutorial wird beschrieben, wie Sie eine Überwachung und Diagnose für eine ASP.NET Core-Anwendung in Azure Service Fabric einrichten."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bb6aca8d99e32948b8a01a2f893bcf40d160a76c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 26cca3604faa46e7398b24a2e8c25a6ad9650c18
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric
+# <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric
 Dieses Tutorial ist der vierte Teil einer Serie. Es beschreibt die Schritte zur Einrichtung von Überwachung und Diagnose für eine ASP.NET Core-Anwendung, die auf einem Service Fabric-Cluster mithilfe von Application Insights ausgeführt wird. Aus der Anwendung, die im ersten Teil des Tutorials erstellt wurde ([Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)), werden Telemetriedaten gesammelt. 
 
 Im vierten Teil der Tutorialserie lernen Sie Folgendes:

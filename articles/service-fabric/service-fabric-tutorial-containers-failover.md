@@ -1,6 +1,6 @@
 ---
 title: Failover und Skalierung einer Azure Service Fabric-Container-App | Microsoft-Dokumentation
-description: "Erfahren Sie, wie ein Failover in einer Azure Service Fabric-Containeranwendung ausgeführt wird.  Zudem erhalten Sie Informationen darüber, wie die in einem Cluster ausgeführten Container und Dienste skaliert werden."
+description: "In diesem Tutorial erfahren Sie, wie ein Failover in einer Azure Service Fabric-Containeranwendung durchgeführt wird.  Zudem erhalten Sie Informationen darüber, wie die in einem Cluster ausgeführten Container und Dienste skaliert werden."
 services: service-fabric
 documentationcenter: 
 author: suhuruli
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 21dd9dfbc90c26236c43e2c334305ca97f63d361
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 27d1918125b8c2f79f6506470ae43354e402f9af
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Failover und Skalierung von Containerdiensten mit Service Fabric
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Tutorial: Failover und Skalierung von Containerdiensten mit Service Fabric
 
 Dieses Tutorial ist der dritte Teil einer Reihe. In diesem Tutorial wird beschrieben, wie ein Failover in Service Fabric-Containeranwendungen ausgeführt wird. Zudem erfahren Sie, wie Sie Container skalieren. In diesem Tutorial haben Sie Folgendes durchgeführt:
 
@@ -45,7 +45,7 @@ Führen Sie die folgenden Schritte aus, um für den Front-End-Container ein Fail
 
 ![noderestart][noderestart]
 
-Beachten Sie, wie der Knotenname, der angibt, wo die Front-End-Container ausgeführt werden, nun in den Namen eines anderen Knoten im Cluster geändert wird. Nach einigen Minuten sollten Sie wieder zu der Anwendung navigieren können und sehen, dass die Anwendung nun auf einem anderen Knoten ausgeführt wird.
+Beachten Sie Folgendes: Der Knotenname (der angibt, wo die Front-End-Container ausgeführt werden) wird in einen anderen Knoten im Cluster geändert. Nach einigen Minuten sollten Sie wieder zu der Anwendung navigieren können und sehen, dass die Anwendung nun auf einem anderen Knoten ausgeführt wird.
 
 ## <a name="scale-containers-and-services-in-a-cluster"></a>Skalieren von Containern und Diensten in einem Cluster
 Service Fabric-Container können für einen Cluster skaliert werden, um die Last für die Dienste auszugleichen. Sie skalieren einen Container, indem Sie die Anzahl der Instanzen ändern, die im Cluster ausgeführt werden.
@@ -70,7 +70,7 @@ Mit dieser einfachen Verwaltungsaufgabe haben wir die Ressourcen verdoppelt, die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde ein Failover für einen Container sowie die Skalierung einer Anwendung veranschaulicht. Die folgenden Schritte wurden ausgeführt:
+In diesem Tutorial wurde ein Failover für einen Container sowie die Skalierung einer Anwendung veranschaulicht. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
 > * Ausführen eines Failovers für einen Container in einem Service Fabric-Cluster  

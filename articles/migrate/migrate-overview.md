@@ -4,14 +4,14 @@ description: "Enthält eine Übersicht über den Azure Migrate-Dienst."
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/08/2018
+ms.date: 02/26/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a9e04c7fa2a32ab7be8844b962f4bccdf260af23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 45eac1d1ecb173ba0a62ab13f47b7ee6e12f7af3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -48,11 +48,11 @@ Mit einer Bewertung können Sie die Azure-Eignung lokaler virtueller Computer er
 
 **Eigenschaft** | **Details**
 --- | ---
-**Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll. Der Zielstandort ist standardmäßig auf „USA, Westen 2“ festgelegt. 
+**Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll.<br/><br/>Azure Migrate unterstützt derzeit 30 Regionen, z.B. „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „China, Osten“, „China, Norden“, „Asien, Osten“, „USA, Osten“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“. Der Zielstandort ist standardmäßig auf „USA, Westen 2“ festgelegt. 
 **Speicherredundanz** | Die Art von [Speicherredundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy), die von den virtuellen Azure-Computern nach der Migration verwendet wird. Standardmäßig wird lokal redundanter Speicher (LRS) verwendet. Hinweis: Azure Migrate unterstützt nur Bewertungen, die auf verwalteten Datenträgern basieren. Verwaltete Datenträger unterstützen wiederum nur LRS. Daher ist für die Eigenschaft derzeit nur die LRS-Option verfügbar. 
 **Größenkriterium** | Das Kriterium, das in Azure Migrate zur Größenanpassung virtueller Computer für Azure verwendet werden soll. Sie können die Größenanpassung auf der Grundlage des *Leistungsverlaufs* der lokalen virtuellen Computer vornehmen oder die Größe der virtuellen Computer ohne Berücksichtigung des Leistungsverlaufs *an die lokale Umgebung* für Azure anpassen. Standardmäßig wird die leistungsbasierte Größenanpassung verwendet.
 **Tarife** | Für die Kostenberechnung berücksichtigt die Bewertung, ob Sie über Software Assurance verfügen und ob Sie Anspruch auf den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) haben. Außerdem werden [Azure-Angebote](https://azure.microsoft.com/support/legal/offer-details/) berücksichtigt, für die Sie möglicherweise registriert sind, und Sie können abonnementspezifische Rabatte (in Prozent) angeben, die Sie ggf. zusätzlich zum Angebot erhalten. 
-**Preisstufe** | Sie können den [Tarif (Basic/Standard)](../virtual-machines/windows/sizes-general.md) für die virtuellen Azure-Zielcomputer angeben. Wenn Sie beispielsweise eine Produktionsumgebung migrieren möchten, empfiehlt sich die Verwendung des Standard-Tarifs. Dieser bietet virtuelle Computer mit geringer Wartezeit, ist jedoch unter Umständen teurer. Bei einer Entwicklungs- und Testumgebung sollten Sie dagegen den Basic-Tarif verwenden. Dieser bietet virtuelle Computer mit höherer Wartezeit und kostet weniger. Standardmäßig wird der Tarif [Standard](../virtual-machines/windows/sizes-general.md) verwendet.
+**Preisstufe** | Sie können den [Tarif (Basic/Standard)](../virtual-machines/windows/sizes-general.md) für die virtuellen Azure-Zielcomputer angeben. Wenn Sie beispielsweise eine Produktionsumgebung migrieren möchten, sollten Sie den Standard-Tarif angeben, der virtuelle Computer mit geringer Latenz umfasst, jedoch auch kostenintensiver sein kann. Bei einer Entwicklungs- und Testumgebung sollten Sie dagegen den Basic-Tarif angeben, der virtuelle Computer mit einer höheren Latenz und geringeren Kosten umfasst. Standardmäßig wird der Tarif [Standard](../virtual-machines/windows/sizes-general.md) verwendet.
 **Leistungsverlauf** | Nur relevant bei Verwendung eines leistungsbasierten Größenkriteriums. Standardmäßig bewertet Azure Migrate die Leistung lokaler Computer anhand des Leistungsverlaufs des letzten Tags mit einem 95-prozentigen Perzentilwert. Diese Werte können in den Bewertungseigenschaften geändert werden. 
 **Komfortfaktor** | Bei Azure Migrate wird während der Bewertung ein Puffer (Komfortfaktor) berücksichtigt. Dieser Puffer wird zusätzlich zu den Daten zur Computernutzung für VMs (CPU, Arbeitsspeicher, Datenträger und Netzwerk) angewendet. Beim Komfortfaktor geht es um Bereiche wie saisonale Nutzung, kurzer Leistungsverlauf und voraussichtliche zukünftige Zunahme der Nutzung.<br/><br/> Beispiel: Für eine VM mit zehn Kernen und 20% Auslastung ergibt sich normalerweise eine VM mit zwei Kernen. Bei einem Komfortfaktor von 2.0x ist das Ergebnis dagegen eine VM mit vier Kernen. Die Standardeinstellung für den Komfortfaktor lautet 1.3x.
 

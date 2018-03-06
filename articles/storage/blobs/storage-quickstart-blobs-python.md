@@ -1,22 +1,22 @@
 ---
-title: "Azure-Schnellstart – Übertragen von Objekten nach/aus Azure Blob Storage mit Python | Microsoft-Dokumentation"
-description: "Hier lernen Sie schnell, wie Sie mit Python Objekte nach/aus Azure Blob Storage übertragen."
+title: "Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Python | Microsoft-Dokumentation"
+description: "In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für Python, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten."
 services: storage
-author: ruthogunnnaike
+author: tamram
 manager: jeconnoc
+ms.custom: mvc
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: quickstart
-ms.date: 10/12/2017
-ms.author: v-ruogun
-ms.openlocfilehash: 50f43e6ef9ee60cbf489bb8d0c1c64ca61a393e1
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.date: 02/22/2018
+ms.author: tamram
+ms.openlocfilehash: a82ec92449730a784e7cd36d7f364a9a4516c15f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/24/2018
 ---
-#  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit Python
+# <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Python
+
 In diesem Schnellstart erfahren Sie, wie Sie mit Python Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. 
 
 ## <a name="prerequisites"></a>Voraussetzungen

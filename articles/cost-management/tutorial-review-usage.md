@@ -1,22 +1,25 @@
 ---
-title: "Überprüfen von Nutzung und Kosten in der Azure-Kostenverwaltung | Microsoft-Dokumentation"
-description: "Überprüfen Sie Nutzung und Kosten, um Trends nachzuverfolgen, Ineffizienz zu erkennen und Warnungen zu erstellen."
+title: "Tutorial: Überprüfen von Nutzung und Kosten in Azure Cost Management | Microsoft-Dokumentation"
+description: "In diesem Tutorial überprüfen Sie die Nutzung und die Kosten, um Trends nachzuverfolgen, Ineffizienz zu erkennen und Warnungen zu erstellen."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 72c5c9ff13577e7b4008c42133742d8de4904ae0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e8f09a90ae9a4dd54d81335de2494f0dcbe09485
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="review-usage-and-costs"></a>Überprüfen der Nutzung und der Kosten
+<!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
+-->
+
+# <a name="tutorial-review-usage-and-costs"></a>Tutorial: Überprüfen der Nutzung und der Kosten
 
 Die Azure-Kostenverwaltung von Cloudyn zeigt Nutzung und Kosten auf, sodass Sie Trends nachverfolgen, Ineffizienz erkennen und Warnungen erstellen können. Alle Nutzungs- und Kostendaten werden in Cloudyn-Dashboards und -Berichten angezeigt. In den Beispielen dieses Tutorials erhalten Sie schrittweise Anleitungen zum Überprüfen von Nutzung und Kosten anhand von Dashboards und Berichten. In diesem Tutorial lernen Sie Folgendes:
 
@@ -25,7 +28,12 @@ Die Azure-Kostenverwaltung von Cloudyn zeigt Nutzung und Kosten auf, sodass Sie 
 > * Erkennen von Ineffizienz bei der Nutzung
 > * Erstellen von Warnungen für ungewöhnliche oder zu hohe Ausgaben
 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Sie benötigen ein Azure-Abonnement.
+- Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
 
 ## <a name="open-the-cloudyn-portal"></a>Öffnen des Cloudyn-Portals
 
@@ -98,7 +106,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen von Warnungen für ungewöhnliche oder zu hohe Ausgaben
 
 
-Im nächsten Tutorial erfahren Sie, wie Sie den Zugriff auf Daten steuern.
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie anhand von Verlaufsdaten Ausgaben vorhersagen.
 
 > [!div class="nextstepaction"]
-> [Steuern des Zugriffs auf Daten](tutorial-user-access.md)
+> [Vorhersage zukünftiger Ausgaben](tutorial-forecast-spending.md)

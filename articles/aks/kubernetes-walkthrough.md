@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 63fb091166dcb3773354221e6c6628f6205bb308
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8e64ab3214633ae2f34234514dca5e7bb7b1896e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Bereitstellen eines Azure Container Service-Clusters
 
@@ -39,6 +39,7 @@ Nach dem Registrieren können Sie jetzt einen Kubernetes-Cluster mit AKS erstell
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
+Beim Erstellen einer Ressourcengruppe werden Sie zum Angeben eines Standorts aufgefordert. Dies ist der Standort, an dem sich Ihre Ressourcen in Azure befinden. Während sich AKS in der Vorschauphase befindet, sind nur einige Optionen für Standorte verfügbar. Dies sind: `eastus, westeurope, centralus, canadacentral, canadaeast`.
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
@@ -88,7 +89,7 @@ Führen Sie den folgenden Befehl aus, um „kubectl“ für die Verbindungsherst
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Verwenden Sie zum Überprüfen der Verbindung mit Ihrem Cluster den Befehl [kubectl get][kubectl-get], um eine Liste der Clusterknoten zu erhalten.
+Verwenden Sie zum Überprüfen der Verbindung mit Ihrem Cluster den Befehl [kubectl get][kubectl-get], um eine Liste der Clusterknoten zu erhalten. Beachten Sie Folgendes: Es kann einige Minuten dauern, bis die Anzeige erfolgt.
 
 ```azurecli-interactive
 kubectl get nodes
@@ -103,9 +104,9 @@ k8s-myAKSCluster-36346190-0   Ready     agent     2m        v1.7.7
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Eine Kubernetes-Manifestdatei definiert einen gewünschten Zustand (Desired State) – also beispielsweise, welche Containerimages ausgeführt werden sollen. In diesem Beispiel wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden.
+Eine Kubernetes-Manifestdatei definiert einen gewünschten Zustand (Desired State) – also beispielsweise, welche Containerimages ausgeführt werden sollen. In diesem Beispiel wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden. Das bereitgestellte Image ist eine Beispielanwendung, aber Sie können sich über das [Erstellen eines Images](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-app) und [Bereitstellen in der Azure Container Registry](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-acr) informieren, um eine eigene Anwendung zu verwenden.
 
-Erstellen Sie eine Datei mit dem Namen `azure-vote.yaml`, und fügen Sie den folgenden YAML-Code ein: Wenn Sie in Azure Cloud Shell arbeiten, kann diese Datei mit vi oder Nano wie bei Verwendung eines virtuellen oder physischen Systems erstellt werden.
+Erstellen Sie eine Datei mit dem Namen `azure-vote.yaml`, und fügen Sie den folgenden YAML-Code ein: Wenn Sie in Azure Cloud Shell arbeiten, kann diese Datei mit vi oder Nano wie bei Verwendung eines virtuellen oder physischen Systems erstellt werden. Wenn Sie lokal arbeiten, können Sie Visual Studio Code zum Erstellen dieser Datei verwenden, indem Sie `code azure-vote.yaml` ausführen.
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -231,7 +232,7 @@ In dieser Schnellstartanleitung haben Sie einen Kubernetes-Cluster und eine Anwe
 Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispiel vom Code bis zur Bereitstellung finden Sie im Kubernetes-Clustertutorial.
 
 > [!div class="nextstepaction"]
-> [Verwalten eines AKS-Clusters:][aks-tutorial]
+> [AKS-Tutorial][aks-tutorial]:
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

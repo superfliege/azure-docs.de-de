@@ -1,23 +1,21 @@
 ---
-title: "Azure-Schnellstartanleitung: Übertragen von Objekten nach/aus Azure Blob Storage über das Azure-Portal | Microsoft-Dokumentation"
-description: Hier erfahren Sie, wie Sie das Azure-Portal verwenden, um Blobs in Azure Blob Storage hochzuladen, daraus herunterzuladen und aufzulisten.
+title: "Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage über das Azure-Portal | Microsoft-Dokumentation"
+description: "In diesem Schnellstart verwenden Sie das Azure-Portal, um ein Speicherkonto und einen Container zu erstellen. Anschließend verwenden Sie das Azure-Portal, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten."
 services: storage
-documentationcenter: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
 ms.topic: quickstart
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.author: tamram
-ms.openlocfilehash: f647a5b78ee2fa362c4dea6ee9003ac56e0f7f7d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: b03c3a26a6218bea8317749f43b4f74f6b3b4101
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-portal"></a>Übertragen von Objekten nach/aus Azure Blob Storage über das Azure-Portal
+# <a name="quickstart-upload-download-and-list-blobs-using-the-azure-portal"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com/) einen Container in Azure Storage erstellen und Blockblobs in diesen Container hochladen bzw. daraus herunterladen.
 

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: cdfb5db7b304a18d6945328abc0ca7ebf2f9ec6a
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>Erstellen einer Funktion, die durch einen GitHub-Webhook ausgelöst wird
 
@@ -67,7 +67,7 @@ Erstellen Sie als Nächstes einen Webhook in Ihrem GitHub-Repository.
 
 ## <a name="configure-the-webhook"></a>Konfigurieren des Webhooks
 
-1. Navigieren Sie in GitHub zu einem Repository, das Sie besitzen. Sie können auch ein anderes Repository verwenden, das Sie verzweigt haben. Wenn Sie ein Verzeichnis verzweigen müssen, verwenden Sie <https://github.com/Azure-Samples/functions-quickstart>.
+1. Navigieren Sie in GitHub zu einem Repository, das Sie besitzen. Sie können auch ein anderes Repository verwenden, das Sie verzweigt haben. Verwenden Sie <https://github.com/Azure-Samples/functions-quickstart>, wenn Sie ein Repository forken müssen.
 
 1. Klicken Sie auf **Einstellungen** > **Webhooks** > **Webhook hinzufügen**.
 
@@ -80,8 +80,8 @@ Erstellen Sie als Nächstes einen Webhook in Ihrem GitHub-Repository.
 | Einstellung | Empfohlener Wert | BESCHREIBUNG |
 |---|---|---|
 | **URL der Nutzlast** | Der kopierte Wert | Verwenden Sie den von **</> Abrufen der Funktions-URL** zurückgegebenen Wert. |
-| **Geheimnis**   | Der kopierte Wert | Verwenden Sie den von **</> Abrufen des GitHub-Geheimnisses** zurückgegebenen Wert. |
 | **Inhaltstyp** | Anwendung/json | Die Funktion erwartet eine JSON-Nutzlast. |
+| **Geheimnis**   | Der kopierte Wert | Verwenden Sie den von **</> Abrufen des GitHub-Geheimnisses** zurückgegebenen Wert. |
 | Ereignistrigger | Auswählen einzelner Ereignisse erlauben | Es sollen nur Problemmeldungsereignisse ausgelöst werden.  |
 | | Problembericht |  |
 
@@ -107,7 +107,7 @@ Der Webhook ist nun so konfiguriert, dass Ihre Funktion ausgelöst wird, wenn ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben eine Funktion erstellt, die ausgeführt wird, wenn eine Anforderung von einem GitHub-Webhook empfangen wurde.
+Sie haben eine Funktion erstellt, die ausgelöst wird, wenn eine Anforderung von einem GitHub-Webhook empfangen wurde.
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

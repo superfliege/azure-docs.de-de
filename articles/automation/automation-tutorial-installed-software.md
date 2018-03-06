@@ -5,16 +5,16 @@ services: automation
 keywords: "Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgung"
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.topic: tutorial
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bdd638d0612a8ddee1a0ddb4fd4579f8da14b887
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 97cd2c91ca2c70b044518c43d49356918202d5ff
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Ermitteln der Software, die auf Ihren Azure-Computern und anderen Computern installiert ist
 
@@ -41,35 +41,17 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Änderungsnachverfolgung und Bestandsfunktion
 
-In diesem Tutorial müssen Sie zuerst die Änderungsnachverfolgung und die Bestandsfunktion für Ihre VM aktivieren. Dieser Schritt ist nicht erforderlich, falls Sie zuvor eine andere Automatisierungslösung für eine VM aktiviert haben.
+In diesem Tutorial müssen Sie zuerst die Änderungsnachverfolgung und die Bestandsfunktion für Ihre VM aktivieren. Wenn Sie die Lösung **Änderungsnachverfolgung** für Ihre VM zuvor nicht aktiviert haben, ist dieser Schritt nicht erforderlich.
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer**, und wählen Sie in der Liste eine VM aus.
 2. Klicken Sie im Menü auf der linken Seite unter dem Abschnitt **Vorgänge** auf **Bestand**. Die Seite **Änderungsnachverfolgung und Bestand aktivieren** wird geöffnet.
 
-Eine Überprüfung wird durchgeführt, um zu ermitteln, ob die Bestandsfunktion für diesen virtuellen Computer aktiviert ist.
-Die Überprüfung umfasst Prüfungen für einen Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto, und ob die Lösung im Arbeitsbereich vorhanden ist.
+![Banner für die Konfiguration zur Integration der Bestandsfunktion](./media/automation-tutorial-installed-software/enableinventory.png)
+
+Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
 
 Mit einem [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Bestandsfunktion generiert werden.
 Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
-
-Der Überprüfungsprozess prüft auch, ob der virtuelle Computer mit dem Microsoft Monitoring Agent (MMA) und Hybrid Worker bereitgestellt wird.
-Dieser Agent wird verwendet, um mit dem virtuellen Computer zu kommunizieren und Informationen zur installierten Software abzurufen.
-Der Überprüfungsprozess prüft auch, ob der virtuelle Computer mit dem Microsoft Monitoring Agent (MMA) und Automation Hybrid Runbook Worker bereitgestellt wird.
-
-Wenn diese Voraussetzungen nicht erfüllt sind, wird ein Banner angezeigt, über das Sie die Lösung aktivieren können.
-
-![Banner für die Konfiguration zur Integration der Bestandsfunktion](./media/automation-tutorial-installed-software/enableinventory.png)
-
-Klicken Sie auf das Banner, um die Lösung zu aktivieren.
-Wenn bei der Überprüfung festgestellt wird, dass eine der folgenden Voraussetzungen fehlt, wird sie automatisch hinzugefügt:
-
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich
-* [Automation](./automation-offering-get-started.md)
-* Ein [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) ist auf dem virtuellen Computer aktiviert.
-
-Der Bildschirm **Änderungsnachverfolgung und Bestand** wird geöffnet. Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
-
-![Aktivieren des Fensters mit der Lösung für die Änderungsnachverfolgung](./media/automation-tutorial-installed-software/installed-software-enable.png)
 
 Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Während dieses Zeitraums sollten Sie das Browserfenster nicht schließen.
 Nachdem die Lösung aktiviert wurde, werden Informationen zur installierten Software und Änderungen der VM-Datenflüsse zu Log Analytics angezeigt.
@@ -137,4 +119,4 @@ In diesem Tutorial wurde beschrieben, wie Sie den Softwarebestand beispielsweise
 Fahren Sie mit der Übersicht über die Lösung für die Änderungsnachverfolgung und den Bestand fort, um mehr darüber zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Lösung für die Änderungsnachverfolgung und den Bestand](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json)
+> [Lösung für die Änderungsnachverfolgung und den Bestand](automation-change-tracking.md)

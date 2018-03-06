@@ -1,25 +1,21 @@
 ---
-title: "Azure-Schnellstart – Übertragen von Objekten nach/aus Azure Blob Storage mit .NET | Microsoft-Dokumentation"
-description: "Hier lernen Sie schnell, wie Sie mit .NET Objekte nach/aus Azure Blob Storage übertragen."
+title: "Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit .NET | Microsoft-Dokumentation"
+description: "In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für .NET, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten."
 services: storage
-documentationcenter: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 12/04/2017
+ms.date: 02/22/2018
 ms.author: tamram
-ms.openlocfilehash: 5020f070a8eb9215f175fc3ff3a905cff28ce37f
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 265691ff189c628156f234083645a4b2ca4b637b
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit .NET
+# <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET
 
 In diesem Schnellstart erfahren Sie, wie Sie die .NET-Clientbibliothek für Azure Storage zum Hochladen, Herunterladen und Auflisten von Blockblobs in einem Container verwenden.
 

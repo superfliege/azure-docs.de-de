@@ -5,13 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/07/2018
+ms.date: 02/27/2018
 ms.author: raynew
-ms.openlocfilehash: cb815f7d9c0556efcce58b53d6037e3fc8ed9c78
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: MVC
+ms.openlocfilehash: abae7cbd21a2c7f49dc1fe85711b80dc43a10517
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrieren virtueller Azure-Computer zu einer anderen Region
 
@@ -75,7 +76,7 @@ Stellen Sie sicher, dass alle neuesten Stammzertifikate auf den Azure-VMs vorhan
 Erstellen Sie den Tresor in einer beliebigen Region außer der Quellregion.
 
 1. Melden Sie sich unter [Azure-Portal](https://portal.azure.com) > **Recovery Services** an.
-2. Klicken Sie auf **Ressource erstellen** > **Überwachung + Verwaltung** > **Backup und Site Recovery**.
+2. Klicken Sie auf **Ressource erstellen** > **Überwachung und Verwaltung** > **Backup und Site Recovery**.
 3. Geben Sie in **Name** den Anzeigenamen **ContosoVMVault** ein. Wenn Sie mehrere Abonnements haben, wählen Sie das gewünschte aus.
 4. Erstellen Sie die Ressourcengruppe **ContosoRG**.
 5. Geben Sie eine Azure-Region an. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/)unter „Geografische Verfügbarkeit“.
@@ -123,7 +124,8 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourceng
 2. Wählen Sie unter **Failover** die Option **Neueste** aus. Die Einstellung für den Verschlüsselungsschlüssel ist für dieses Szenario nicht relevant.
 3. Wählen Sie **Computer vor Beginn des Failovers herunterfahren** aus. Site Recovery versucht, die Quell-VM herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
 4. Überprüfen Sie, ob die Azure-VM wie erwartet in Azure angezeigt wird.
-5. Klicken Sie in **Replizierte Elemente** mit der rechten Maustaste auf die VM > **Migration abschließen**. Dadurch wird der Migrationsvorgang abgeschlossen und die Replikation für die VM beendet.
+5. Klicken Sie unter **Replizierte Elemente** mit der rechten Maustaste auf die VM und dann auf **Commit**. Dies beendet den Migrationsprozess.
+6. Wenn der Commitvorgang abgeschlossen ist, können Sie auf **Replikation deaktivieren** klicken.  Die Replikation für die VM wird beendet.
 
 
 

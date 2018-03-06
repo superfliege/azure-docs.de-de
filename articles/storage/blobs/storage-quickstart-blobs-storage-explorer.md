@@ -1,21 +1,21 @@
 ---
-title: "Azure-Schnellstart – Übertragen von Objekten nach/aus Azure Blob Storage mit dem Azure Storage-Explorer | Microsoft-Dokumentation"
-description: "Hier lernen Sie schnell, wie Sie mit dem Azure Storage-Explorer Objekte nach/aus Azure Blob Storage übertragen."
+title: "Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Azure Storage-Explorer | Microsoft-Dokumentation"
+description: "In diesem Schnellstart verwenden Sie Azure Storage-Explorer, um ein Speicherkonto und einen Container zu erstellen. Anschließend verwenden Sie Storage-Explorer, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten."
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/20/2018
+ms.date: 02/22/2018
 ms.author: tamram
-ms.openlocfilehash: 5a91a39a340f20197e49a8045f0ee65c924469cb
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 72503dd0216d9d987d1222491c6e11d46a4d38a3
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-azure-storage-explorer"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit dem Azure Storage-Explorer
+# <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Azure Storage-Explorer
 
 [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) ist eine Benutzeroberfläche für mehrere Plattformen, die zum Verwalten des Inhalts Ihrer Speicherkonten verwendet wird. In dieser Anleitung wird ausführlich beschrieben, wie sie Azure Storage-Explorer zum Übertragen von Dateien zwischen einem lokalen Datenträger und Azure Blob Storage verwenden.
 

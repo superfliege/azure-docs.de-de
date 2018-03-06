@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b946964c162f47a283c37c6eae7e7152e27b6033
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e7ddb3046b0725b3afcea2ed6a533388a89cf306
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -36,7 +36,7 @@ Bevor Sie beginnen, empfiehlt sich eine [Überprüfung der Architektur](concepts
 ## <a name="select-a-replication-goal"></a>Auswählen eines Replikationsziels
 
 
-1. Klicken Sie in **Alle Dienste** > **Recovery Services-Tresore** auf den Namen des Tresors, der im vorherigen Tutorial vorbereitet wurde: **ContosoVMVault**.
+1. Wählen Sie unter **Alle Dienste** > **Recovery Services-Tresore** den Tresor aus, der im vorherigen Tutorial vorbereitet wurde: **ContosoVMVault**.
 2. Klicken Sie in **Erste Schritte** auf **Site Recovery**. Klicken Sie dann auf **Infrastruktur vorbereiten**.
 3. Wählen Sie in **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
 4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren?** die Option **Nach Azure** aus.
@@ -46,13 +46,13 @@ Bevor Sie beginnen, empfiehlt sich eine [Überprüfung der Architektur](concepts
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
-Um die Quellumgebung einzurichten, fügen Sie Hyper-V-Hosts zu einem Hyper-V-Standort hinzu, laden den Azure Site Recovery-Anbieter und den Azure Recovery Services-Agent herunter und installieren sie. Anschließend registrieren Sie den Hyper-V-Standort im Tresor. 
+Um die Quellumgebung einzurichten, fügen Sie Hyper-V-Hosts einem Hyper-V-Standort hinzu und laden den Azure Site Recovery-Anbieter und den Azure Recovery Services-Agent herunter und installieren diese Komponenten. Anschließend registrieren Sie den Hyper-V-Standort im Tresor. 
 
 1. Klicken Sie unter **Bereiten Sie die Infrastruktur vor** auf **Quelle**.
-2. Klicken Sie auf **-Hyper-V-Standort**, und geben Sie den Namen des Standorts ein, der im vorherigen Tutorial erstellt wurde, **ContosoHyperVSite**.
+2. Klicken Sie auf **+Hyper-V-Standort**, und geben Sie den Namen des Standorts ein, der im vorherigen Tutorial erstellt wurde: **ContosoHyperVSite**.
 3. Klicken Sie auf **+Hyper-V-Server**.
 4. Laden Sie die Setupdatei für den Anbieter herunter.
-5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des Anbietersetups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
+5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen Schlüssel zum Durchführen des Setups für den Anbieter. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
     ![Anbieter herunterladen](./media/hyper-v-azure-tutorial/download.png)
     
@@ -68,7 +68,7 @@ Führen Sie die Setupdatei für den Anbieter (AzureSiteRecoveryProvider.exe) auf
 5. Wählen Sie unter **Proxyeinstellungen** die Option **Direkt mit Azure Site Recovery verbinden (ohne Proxyserver)** aus.
 6. Klicken Sie nach der Registrierung des Servers im Tresor unter **Registrierung** auf**Fertig stellen**.
 
-Azure Site Recovery ruft die Metadaten vom Hyper-V-Server ab, und der Server wird in **Site Recovery-Infrastruktur** > **Hyper-V-Hosts** angezeigt. Dies kann bis zu 30 Minuten dauern.
+Azure Site Recovery ruft die Metadaten vom Hyper-V-Server ab, und der Server wird in **Site Recovery-Infrastruktur** > **Hyper-V-Hosts** angezeigt. Dieser Vorgang kann bis zu 30 Minuten dauern.
 
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
@@ -83,6 +83,9 @@ Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkon
 
 
 ## <a name="set-up-a-replication-policy"></a>Einrichten einer Replikationsrichtlinie
+
+> [!NOTE]
+> Für Richtlinien zur Replikation von Hyper-V in Azure wird die 15-Minuten-Option für die Kopierhäufigkeit ausgesondert. Dafür sind eine 5-Minuten- und eine 30-Sekunden-Option verfügbar. Replikationsrichtlinien mit einer Kopierhäufigkeit von 15 Minuten werden automatisch auf die 5-Minuten-Option aktualisiert. Die Optionen für 5 Minuten und 30 Sekunden ermöglichen im Vergleich zur 15-Minuten-Option eine verbesserte Replikationsleistung und bessere RPO-Werte (Recovery Point Objective) mit minimaler Auswirkung auf die Bandbreitennutzung und das Datenübertragungsvolumen.
 
 1. Klicken Sie auf **Infrastruktur vorbereiten** > **Replikationseinstellungen** > **+Erstellen und zuordnen**.
 2. Geben Sie unter **Richtlinie erstellen und zuordnen** den Richtliniennamen **ContosoReplicationPolicy** an.

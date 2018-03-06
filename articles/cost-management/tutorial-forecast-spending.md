@@ -1,27 +1,34 @@
 ---
-title: Vorhersage der Ausgaben mit Azure-Kostenverwaltung | Microsoft-Dokumentation
-description: Prognostizieren Sie Ausgaben mithilfe von historischer Nutzung und Ausgabendaten.
+title: 'Tutorial: Prognostizieren der Ausgaben mit Azure Cost Management | Microsoft-Dokumentation'
+description: In diesem Tutorial wird beschrieben, wie Sie die Ausgaben prognostizieren, indem Sie die Daten zum Nutzungsverlauf und zu den Ausgaben verwenden.
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 03624efc419efe46aef472007b438442ce22eb9c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 35142cb40560db848c71da266bbaa1881f12e15d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="forecast-future-spending"></a>Vorhersage zukünftiger Ausgaben
+# <a name="tutorial-forecast-future-spending"></a>Tutorial: Prognostizieren zukünftiger Ausgaben
 
 Mit der Azure-Kostenverwaltung von Cloudyn können Sie zukünftige Ausgaben mithilfe von historischer Nutzung und Ausgabendaten prognostizieren. Sie verwenden Cloudyn-Berichte, um alle Kostenprognosedaten anzuzeigen. Die Beispiele dieses Tutorials führen Sie in einer exemplarischen Vorgehensweise durch das Überprüfen der Kostenprognosen mithilfe der Berichte. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Vorhersage zukünftiger Ausgaben
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Sie benötigen ein Azure-Abonnement.
+- Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
 
 ## <a name="forecast-future-spending"></a>Vorhersage zukünftiger Ausgaben
 

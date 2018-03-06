@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 1/5/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 59beaac1d8619c3f4afa1c75074546a849dfce6b
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: a16db0f23f93083e9a17d2b12f9215a964e07c9a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -55,8 +55,8 @@ Falls Sie unsicher sind, welche Azure Backup-Komponente für Ihre Anforderungen 
 | --- | --- | --- | --- | --- |
 | Azure Backup-Agent (MARS) |<li>Sicherung von Dateien und Ordnern auf physischen oder virtuellen Windows-Computern (virtuelle Computer können sich am lokalen Standort oder in Azure befinden)<li>Kein separater Sicherungsserver erforderlich |<li>Drei Sicherungen pro Tag <li>Nicht anwendungsorientiert, nur Wiederherstellung auf Datei-, Ordner- und Volumeebene <li>  Keine Unterstützung für Linux |<li>Dateien <li>Ordner <li>Systemstatus |Recovery Services-Tresor |
 | System Center DPM |<li>Anwendungsabhängige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Kann einen Recovery Services-Tresor verwenden<li>Linux-Unterstützung für Hyper-V- und VMware-VMs <li>Sichern und Wiederherstellen von virtuellen VMware-Computern mit DPM 2012 R2 |Oracle-Workloads können nicht gesichert werden.|<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Recovery Services-Tresor<li> Lokal angefügter Datenträger<li>  Band (nur lokal) |
-| Azure Backup Server |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Kann einen Recovery Services-Tresor verwenden<li>Linux-Unterstützung für Hyper-V- und VMware-VMs<li>Sichern und Wiederherstellen von virtuellen VMware-Computern <li>Keine System Center-Lizenz erforderlich |<li>Oracle-Workloads können nicht gesichert werden.<li>Aktives Azure-Abonnement immer erforderlich<li>Keine Unterstützung der Bandsicherung |<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Recovery Services-Tresor<li> Lokal angefügter Datenträger |
-| Azure IaaS-VM-Sicherung |<li>Native Sicherungen für Windows/Linux<li>Keine bestimmte Agent-Installation erforderlich<li>Sicherung auf Fabric-Ebene ohne Sicherungsinfrastruktur |<li>Tägliche Sicherung von virtuellen Computern <li>Wiederherstellung von virtuellen Computern nur auf Datenträgerebene<li>Keine lokale Sicherung möglich |<li>VMs <li>Alle Datenträger (mit PowerShell) |<p>Recovery Services-Tresor</p> |
+| Azure Backup Server |<li>Anwendungsabhängige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Kann einen Recovery Services-Tresor verwenden<li>Linux-Unterstützung für Hyper-V- und VMware-VMs<li>Sichern und Wiederherstellen von virtuellen VMware-Computern <li>Keine System Center-Lizenz erforderlich |<li>Oracle-Workloads können nicht gesichert werden.<li>Aktives Azure-Abonnement immer erforderlich<li>Keine Unterstützung der Bandsicherung |<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Recovery Services-Tresor<li> Lokal angefügter Datenträger |
+| Azure IaaS-VM-Sicherung |<li>Anwendungsabhängige Momentaufnahmen (VSS)<li>Native Sicherungen für Windows/Linux<li>Keine bestimmte Agent-Installation erforderlich<li>Sicherung auf Fabric-Ebene ohne Sicherungsinfrastruktur |<li>Tägliche Sicherung von virtuellen Computern <li>Wiederherstellung von virtuellen Computern nur auf Datenträgerebene<li>Keine lokale Sicherung möglich |<li>VMs <li>Alle Datenträger (mit PowerShell) |<p>Recovery Services-Tresor</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Was sind die Bereitstellungsszenarien für jede Komponente?
 | Komponente | Bereitstellung in Azure möglich? | Lokale Bereitstellung möglich? | Unterstützter Zielspeicher |
@@ -104,7 +104,7 @@ Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst eine
 >
 
 ### <a name="restore-premium-storage-vms"></a>Wiederherstellen virtueller Storage Premium-Computer
-Virtuelle Storage Premium-Computer können entweder unter Storage Premium oder in einem normalen Speicher wiederhergestellt werden. In der Regel wird der Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf Storage Premium wiederhergestellt. Unter Umständen ist es jedoch kostengünstiger, den Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf dem Standardspeicher wiederherzustellen. Diese Art der Wiederherstellung ist möglich, wenn Sie einen Teil der Dateien des virtuellen Computers benötigen.
+Virtuelle Storage Premium-Computer können entweder unter Storage Premium oder im Standardspeicher wiederhergestellt werden. In der Regel wird der Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf Storage Premium wiederhergestellt. Unter Umständen ist es aber kostengünstiger, den Wiederherstellungspunkt eines virtuellen Storage Premium-Computers im Standardspeicher wiederherzustellen. Diese Art der Wiederherstellung ist möglich, wenn Sie einen Teil der Dateien des virtuellen Computers benötigen.
 
 ## <a name="using-managed-disk-vms-with-azure-backup"></a>Verwendung von virtuellen Computer auf verwalteten Datenträgern
 Azure Backup schützt virtuelle Computer auf verwalteten Datenträgern. Bei verwalteten Datenträgern entfällt die Verwaltung von Speicherkonten für virtuelle Computer, und die Bereitstellung virtueller Computer wird erheblich vereinfacht.
@@ -233,7 +233,7 @@ Mit Azure Backup werden Daten lokal und in der Cloud geschützt. Azure Site Reco
 
 Die folgenden Konzepte können Ihnen als Unterstützung beim Treffen wichtiger Entscheidungen in Bezug auf die Sicherung und Notfallwiederherstellung dienen.
 
-| Konzept | Details | Backup  | Notfallwiederherstellung |
+| Konzept | Details | Sicherung | Notfallwiederherstellung |
 | --- | --- | --- | --- |
 | Recovery Point Objective (RPO) |Dies ist der Umfang des zulässigen Datenverlusts, falls eine Wiederherstellung durchgeführt werden muss. |Sicherungslösungen weisen eine große Varianz beim akzeptablen RPO auf. Sicherungen virtueller Computer haben zumeist ein RPO von einem Tag, während Datenbanksicherungskopien RPOs von bis zu 15 Minuten aufweisen. |Lösungen für die Notfallwiederherstellung haben niedrige RPO-Werte. Die Kopie für die Notfallwiederherstellung kann einige Sekunden bzw. einige Minuten hinterherhinken. |
 | Recovery Time Objective (RTO) |Der Zeitraum, der für eine Wiederherstellung erforderlich ist. |Aufgrund des höheren RPO-Werts ist die Datenmenge, die eine Sicherungslösung verarbeiten muss, meist wesentlich größer, was zu längeren RTOs führt. Beispielsweise kann das Wiederherstellen von Daten von Bändern Tage dauern, was davon abhängt, wie lange der Transport des Bands von einem standortexternen Aufbewahrungsort dauert. |Lösungen für die Notfallwiederherstellung weisen kleinere RTOs auf, da sie synchroner mit der Quelle sind. Weniger Änderungen müssen verarbeitet werden. |

@@ -1,6 +1,6 @@
 ---
 title: Skalieren eines Azure Service Fabric-Clusters | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum schnellen Skalieren eines Service Fabric-Clusters.
+description: "Dieses Tutorial enthält Informationen zum schnellen Skalieren eines Service Fabric-Clusters."
 services: service-fabric
 documentationcenter: .net
 author: Thraka
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: bbbb31687ab0980d62b35d627c4b1708b7ae8288
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 21ef6d1981464d5943338c20fb06a218fc0e447d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="scale-a-service-fabric-cluster"></a>Skalieren eines Service Fabric-Clusters
+# <a name="tutorial-scale-a-service-fabric-cluster"></a>Tutorial: Skalieren eines Service Fabric-Clusters
 
 Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie Ihren vorhandenen Cluster horizontal hoch- und herunterskalieren. In diesem Tutorial erfahren Sie, wie Sie Ihren Cluster skalieren und gegebenenfalls zurückgebliebene Ressourcen bereinigen.
 

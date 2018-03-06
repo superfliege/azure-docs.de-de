@@ -5,15 +5,15 @@ services: automation
 keywords: "Änderung, Nachverfolgung, Automatisierung"
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0aefa175d676bd7e98841d3a1e9ff5a8c90b7deb
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Problembehandlung für Änderungen in Ihrer Umgebung
 
@@ -47,37 +47,19 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 In diesem Tutorial müssen Sie zuerst die Änderungsnachverfolgung und die Bestandsfunktion für Ihre VM aktivieren. Dieser Schritt ist nicht erforderlich, falls Sie zuvor eine andere Automatisierungslösung für eine VM aktiviert haben.
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer**, und wählen Sie in der Liste eine VM aus.
-1. Klicken Sie im Menü auf der linken Seite unter dem Abschnitt **Vorgänge** auf **Bestand**. Die Seite **Änderungsnachverfolgung und Bestand aktivieren** wird geöffnet.
+1. Klicken Sie im Menü auf der linken Seite unter dem Abschnitt **VORGÄNGE** auf **Bestand**. Die Seite **Änderungsnachverfolgung** wird geöffnet.
 
-Es wird eine Überprüfung durchgeführt, um zu ermitteln, ob die Änderungsnachverfolgung und die Bestandsfunktion für diese VM aktiviert ist.
-Die Überprüfung umfasst Prüfungen für einen Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto, und ob die Lösung im Arbeitsbereich vorhanden ist.
+![Aktivieren der Änderung](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) Die Anzeige **Änderungsnachverfolgung** wird geöffnet. Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
 
 Mit einem [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Bestandsfunktion generiert werden.
 Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
 
-Der Überprüfungsprozess prüft auch, ob der virtuelle Computer mit dem Microsoft Monitoring Agent (MMA) und Hybrid Worker bereitgestellt wird.
+Beim Onboarding wird die VM mit dem Microsoft Monitoring Agent (MMA) und Hybrid Worker bereitgestellt.
 Dieser Agent wird verwendet, um mit dem virtuellen Computer zu kommunizieren und Informationen zur installierten Software abzurufen.
-Der Überprüfungsprozess prüft auch, ob der virtuelle Computer mit dem Microsoft Monitoring Agent (MMA) und Automation Hybrid Runbook Worker bereitgestellt wird.
-
-Wenn diese Voraussetzungen nicht erfüllt sind, wird ein Banner angezeigt, das Ihnen die Möglichkeit bietet, die Lösung zu aktivieren.
-
-![Banner für die Konfiguration zur Integration der Änderungsnachverfolgung und Bestandsfunktion](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
-
-Klicken Sie auf das Banner, um die Lösung zu aktivieren.
-Wenn bei der Überprüfung festgestellt wird, dass eine der folgenden Voraussetzungen fehlt, wird sie automatisch hinzugefügt:
-
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich
-* [Automation](./automation-offering-get-started.md)
-* Ein [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) ist auf dem virtuellen Computer aktiviert.
-
-Der Bildschirm **Änderungsnachverfolgung und Bestand** wird geöffnet. Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
-
-![Aktivieren des Fensters mit der Lösung für die Änderungsnachverfolgung](./media/automation-tutorial-troubleshoot-changes/installed-software-enable.png)
 
 Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Während dieses Zeitraums sollten Sie das Browserfenster nicht schließen.
 Nachdem die Lösung aktiviert wurde, werden Informationen zur installierten Software und Änderungen der VM-Datenflüsse zu Log Analytics angezeigt.
 Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse verfügbar sind.
-
 
 ## <a name="using-change-tracking-in-log-analytics"></a>Verwenden der Änderungsnachverfolgung in Log Analytics
 
@@ -107,40 +89,47 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 1. Wählen Sie auf der Registerkarte **Windows-Registrierung** die Option **Hinzufügen**.
     Das Fenster **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** wird geöffnet.
 
-   ![Hinzufügen der Registrierung für die Änderungsnachverfolgung](./media/automation-vm-change-tracking/change-add-registry.png)
+3. Geben Sie unter **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** die Informationen zu dem Schlüssel ein, der nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-2. Wählen Sie unter **Aktiviert** die Option **Wahr**.
-3. Fügen Sie im Feld **Elementname** einen Anzeigenamen hinzu.
-4. (Optional) Geben Sie im Feld **Gruppe** einen Gruppennamen ein.
-5. Geben Sie im Feld **Windows-Registrierungsschlüssel** den Namen des Registrierungsschlüssels ein, den Sie nachverfolgen möchten.
-6. Wählen Sie **Speichern** aus.
+|Eigenschaft  |Beschreibung  |
+|---------|---------|
+|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
+|Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
+|Windows Registry Key   | Der Pfad für die Überprüfung auf die Datei, z.B. „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup“      |
 
 ### <a name="add-a-windows-file"></a>Hinzufügen einer Windows-Datei
 
 1. Wählen Sie auf der Registerkarte **Windows-Dateien** die Option **Hinzufügen**. Das Fenster **Windows-Datei für Änderungsnachverfolgung hinzufügen** wird geöffnet.
 
-   ![Hinzufügen einer Windows-Datei für die Änderungsnachverfolgung](./media/automation-vm-change-tracking/change-add-win-file.png)
+1. Geben Sie unter **Windows-Datei für Änderungsnachverfolgung hinzufügen** die Informationen zu der Datei oder dem Verzeichnis ein, die bzw. das nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-2. Wählen Sie unter **Aktiviert** die Option **Wahr**.
-3. Fügen Sie im Feld **Elementname** einen Anzeigenamen hinzu.
-4. (Optional) Geben Sie im Feld **Gruppe** einen Gruppennamen ein.
-5. Geben Sie im Feld **Pfad eingeben** den vollständigen Pfad und Dateinamen der Datei ein, die nachverfolgt werden soll.
-6. Wählen Sie **Speichern** aus.
+|Eigenschaft  |BESCHREIBUNG  |
+|---------|---------|
+|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
+|Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
+|Enter Path     | Der zu überprüfende Pfad für die Datei, z.B. „c:\temp\myfile.txt“       |
 
 ### <a name="add-a-linux-file"></a>Hinzufügen einer Linux-Datei
 
 1. Wählen Sie auf der Registerkarte **Linux-Dateien** die Option **Hinzufügen**. Das Fenster **Linux-Datei für Änderungsnachverfolgung hinzufügen** wird geöffnet.
 
-   ![Hinzufügen einer Linux-Datei für die Änderungsnachverfolgung](./media/automation-vm-change-tracking/change-add-linux-file.png)
+1. Geben Sie unter **Linux-Datei für Änderungsnachverfolgung hinzufügen** die Informationen zu der Datei oder dem Verzeichnis ein, die bzw. das nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-2. Wählen Sie unter **Aktiviert** die Option **Wahr**.
-3. Fügen Sie im Feld **Elementname** einen Anzeigenamen hinzu.
-4. (Optional) Geben Sie im Feld **Gruppe** einen Gruppennamen ein.
-5. Geben Sie im Feld **Pfad eingeben** den vollständigen Pfad und Dateinamen der Datei ein, die nachverfolgt werden soll.
-6. Wählen Sie im Feld **Pfadtyp** entweder die Option **Datei** oder **Verzeichnis**.
-7. Wählen Sie unter **Rekursion** die Option **Ein**, um Änderungen für den angegebenen Pfad und alle Dateien und Pfade darunter nachzuverfolgen. Wählen Sie **Aus**, um nur den ausgewählten Pfad bzw. die Datei nachzuverfolgen.
-8. Wählen Sie unter **Sudo verwenden** die Option `sudo`Ein**, um Dateien nachzuverfolgen, die zum Zugreifen den Befehl**  benötigen. Wählen Sie andernfalls die Option **Aus**.
-9. Wählen Sie **Speichern** aus.
+|Eigenschaft  |BESCHREIBUNG  |
+|---------|---------|
+|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
+|Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
+|Enter Path     | Der zu überprüfende Pfad für die Datei, z.B. „/etc/*.conf“       |
+|Path Type     | Typ des nachzuverfolgenden Elements (mögliche Werte sind „File“ und „Directory“)        |
+|Recursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
+|Use Sudo     | Diese Einstellung bestimmt, ob sudo beim Prüfen auf das Element verwendet wird         |
+|Links     | Diese Einstellung bestimmt, wie symbolische Links beim Durchlaufen von Verzeichnissen behandelt werden.<br> **Ignore**: Symbolische Links werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Follow**: Folgt den symbolischen Links während der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>**Manage**: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
+
+   > [!NOTE]   
+   > Die Linkoption „Manage“ wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
 
 ## <a name="enable-activity-log-connection"></a>Aktivieren der Aktivitätsprotokollverbindung
 
@@ -188,4 +177,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Fahren Sie mit der Übersicht über die Lösung für die Änderungsnachverfolgung und den Bestand fort, um mehr darüber zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Lösung für die Änderungsnachverfolgung und den Bestand](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json)
+> [Lösung für die Änderungsnachverfolgung und den Bestand](automation-change-tracking.md)

@@ -1,22 +1,22 @@
 ---
-title: "Azure-Schnellstart – Übertragen von Objekten nach/aus Azure Blob Storage mit Go | Microsoft-Dokumentation"
-description: "Hier lernen Sie schnell, wie Sie mit der Programmiersprache „Go“ Objekte nach/aus Azure Blob Storage übertragen."
+title: "Azure-Schnellstart – Hochladen, Herunterladen und Auflisten von Blobs in Azure Storage mit Go | Microsoft-Dokumentation"
+description: "In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container. Anschließend verwenden Sie die Speicherclientbibliothek für Go, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten."
 services: storage
 author: seguler
-manager: jahogg
+manager: jeconnoc
+ms.custom: mvc
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: go
 ms.topic: quickstart
-ms.date: 01/29/2018
+ms.date: 02/22/2018
 ms.author: seguler
-ms.openlocfilehash: 4ba9721dc12bc50b20ad85019b1df51a56b52ebc
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a30d012ea663b04028a4b0ebb2880532a596500b
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/24/2018
 ---
-#  <a name="transfer-objects-tofrom-azure-blob-storage-using-go"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit Go
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Go
+
 In diesem Schnellstart erfahren Sie, wie Sie mit der Programmiersprache „Go“ Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. 
 
 ## <a name="prerequisites"></a>Voraussetzungen

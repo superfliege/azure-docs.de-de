@@ -1,6 +1,6 @@
 ---
 title: "Überwachung und Diagnose für Windows-Container in Azure Service Fabric | Microsoft-Dokumentation"
-description: "Einrichten der Überwachung und Diagnose für Windows-Container, die unter Azure Service Fabric orchestriert sind."
+description: "In diesem Tutorial richten Sie die Überwachung und Diagnose für Windows-Container ein, die unter Azure Service Fabric orchestriert sind."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8fe3266cfcb7141684f9e1b5dfa74d6569c23b24
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: de77d10e4875173c7a067e945e473887d3cc7422
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="monitor-windows-containers-on-service-fabric-using-oms"></a>Überwachen von Windows-Containern unter Service Fabric mit OMS
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-oms"></a>Tutorial: Überwachen von Windows-Containern unter Service Fabric mit OMS
 
 Dieser dritte Teil eines Tutorials führt Sie schrittweise durch die OMS-Einrichtung zum Überwachen Ihrer Windows-Container, die unter Service Fabric orchestriert sind.
 

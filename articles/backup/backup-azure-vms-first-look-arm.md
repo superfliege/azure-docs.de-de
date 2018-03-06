@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b91da3e3c99cec3a63d747062d4ae9f62720a872
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fdaf1349ddf623e2634360e891d959105c504093
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Sichern virtueller Azure-Computer in Recovery Services-Tresoren
 
@@ -239,7 +239,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
 
     ![Workload auswählen](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-    Der ausgewählte virtuelle Computer wird überprüft. Falls die erwarteten virtuellen Computer nicht angezeigt werden, sollten Sie überprüfen, ob sie sich am gleichen Azure-Standort wie der Recovery Services-Tresor befinden. Der Standort des Recovery Services-Tresors wird auf dem Tresordashboard angezeigt.
+    Der ausgewählte virtuelle Computer wird überprüft. Falls die erwarteten virtuellen Computer nicht angezeigt werden, sollten Sie überprüfen, ob sie sich an demselben Azure-Standort wie der Recovery Services-Tresor befinden und nicht bereits geschützt sind. Der Standort des Recovery Services-Tresors wird auf dem Tresordashboard angezeigt.
 
 6. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie auf dem Blatt „Backup“ auf **Sicherung aktivieren**, um die Richtlinie für den Tresor und für die virtuellen Computer bereitzustellen. Das Bereitstellen der Sicherungsrichtlinie führt nicht zur Erstellung des ersten Wiederherstellungspunkts für den virtuellen Computer.
 

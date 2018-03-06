@@ -1,6 +1,6 @@
 ---
 title: "Erstellen von Containerimages für Azure Service Fabric | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Containerimages für eine Service Fabric-Anwendung mit mehreren Containern erstellen."
+description: "In diesem Tutorial erfahren Sie, wie Sie Containerimages für eine Service Fabric-Anwendung mit mehreren Containern erstellen."
 services: service-fabric
 documentationcenter: 
 author: suhuruli
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb7a357369b605464b9986123f3c026fd1595a6f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 13cf13ce4a1456731d08f356ca405119ce1a6480
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="create-container-images-for-service-fabric"></a>Erstellen von Containerimages für Service Fabric
+# <a name="tutorial-create-container-images-for-service-fabric"></a>Tutorial: Erstellen von Containerimages für Service Fabric
 
 Dieses Tutorial ist der erste Teil einer Tutorialreihe, in der die Verwendung von Containern in einem Linux-basierten Service Fabric-Cluster veranschaulicht wird. In diesem Tutorial wird eine Anwendung mit mehreren Containern für die Verwendung mit Service Fabric vorbereitet. In den nachfolgenden Tutorials werden diese Images als Teil einer Service Fabric-Anwendung verwendet. In diesem Tutorial lernen Sie Folgendes: 
 

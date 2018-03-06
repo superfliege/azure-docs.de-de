@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2017
+ms.date: 02/28/2018
 ms.author: eamono
 ms.custom: mvc
-ms.openlocfilehash: e277aa44dfe625780d72a78010f0638c73a6b182
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4c97cda2f16c769d0510b6a661bd03b20f488b62
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation
 
@@ -34,7 +34,7 @@ In diesem Tutorial wird beschrieben, wie Sie Update-, Änderungsnachverfolgungs-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Abschließen dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
+Für dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
 * [Automation-Konto](automation-offering-get-started.md) zum Verwalten von Computern.
@@ -42,7 +42,7 @@ Zum Abschließen dieses Tutorials müssen folgende Voraussetzungen erfüllt sein
 
 ## <a name="onboard-an-azure-vm"></a>Integrieren einer Azure-VM
 
-Um virtuelle Azure-Computer automatisch zu integrieren, muss eine vorhanden VM mithilfe der Lösung für die Änderungsnachverfolgung oder Updateverwaltung integriert werden. In diesem Schritt integrieren Sie eine VM mithilfe der Updateverwaltung und Änderungsnachverfolgung.
+Es gibt mehrere Möglichkeiten, Computer zu integrieren. Sie können die Lösung von einem virtuellen Computer, [über Ihr Automation-Konto](automation-onboard-solutions-from-vm.md) oder per [Runbook](automation-onboard-solutions-from-automation-account.md) integrieren. In diesem Tutorial wird das Aktivieren der Updateverwaltung per Runbook Schritt für Schritt beschrieben. Um virtuelle Azure-Computer bedarfsgesteuert zu integrieren, muss eine vorhandene VM mit der Lösung für die Änderungsnachverfolgung oder Updateverwaltung integriert werden. In diesem Schritt integrieren Sie eine VM mithilfe der Updateverwaltung und Änderungsnachverfolgung.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 

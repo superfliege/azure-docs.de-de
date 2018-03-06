@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5398605f98c9e115255057cfad0c4c2c2e14737c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 20f9be1a0274b40a684fe12207cf9fe1f33969c8
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 > [!div class="op_single_selector"]
@@ -387,6 +387,7 @@ Windows Server-Container (Modus „Prozessisolation“) sind mit neueren Version
 ```xml
 <ContainerHostPolicies> 
          <ImageOverrides> 
+           <Image Name="myregistry.azurecr.io/samples/helloworldappDefault" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
          </ImageOverrides> 
@@ -406,6 +407,7 @@ Die Buildversion für Windows Server 2016 lautet 14393, und die Buildversion fü
 
 Falls das zugrunde liegende Betriebssystem auf der VM Build 16299 (Version 1709) ist, wird von Service Fabric das Containerimage gewählt, das dieser Windows Server-Version entspricht.  Wenn im Anwendungsmanifest neben gekennzeichneten Containerimages auch ein nicht gekennzeichnetes Containerimage angegeben ist, behandelt Service Fabric dieses nicht gekennzeichnete Image als eine Komponente, die versionsübergreifend funktioniert. Es wird empfohlen, die Containerimages explizit zu kennzeichnen.
 
+Das nicht gekennzeichnete Containerimage setzt das Image außer Kraft, das im ServiceManifest-Element angegeben wurde. Mit dem Image „myregistry.azurecr.io/samples/helloworldappDefault“ wird also der Imagename (ImageName) „myregistry.azurecr.io/samples/helloworldapp“ im ServiceManifest-Element außer Kraft gesetzt.
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Vollständige Beispiele für Service Fabric-Anwendungs- und Dienstmanifeste
 Dies sind die vollständigen Dienst- und Anwendungsmanifeste, die in diesem Artikel verwendet werden.
@@ -430,6 +432,9 @@ Dies sind die vollständigen Dienst- und Anwendungsmanifeste, die in diesem Arti
       <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
       <ContainerHost>
         <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
+        <!-- Pass comma delimited commands to your container: dotnet, myproc.dll, 5" -->
+        <!--Commands> dotnet, myproc.dll, 5 </Commands-->
+        <Commands></Commands>
       </ContainerHost>
     </EntryPoint>
     <!-- Pass environment variables to your container: -->    

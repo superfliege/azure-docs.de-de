@@ -1,20 +1,20 @@
 ---
-title: "Herstellen einer Verbindung mit Azure-Datenbank für MySQL über MySQL Workbench | Microsoft-Dokumentation"
+title: "Herstellen einer Verbindung mit Azure Database for MySQL über MySQL Workbench"
 description: "Diese Schnellstartanleitung veranschaulicht die Verwendung von MySQL Workbench – einem Tool, mit dem Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen und Daten daraus abfragen können."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: seanli1988
 ms.service: mysql-database
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 01/24/2018
-ms.openlocfilehash: 89ccd30abfb6f25563ceb4493514c3d102ea37fe
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 02/28/2018
+ms.openlocfilehash: 7c49f3586036efd5784f63fcd79dacea6fb51546
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten
 Dieser Schnellstart zeigt, wie Sie mit der Anwendung MySQL Workbench eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. 
@@ -32,15 +32,12 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
-2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie dann nach dem soeben erstellten Server, z.B. **myserver4demo**.
+2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie dann nach dem soeben erstellten Server, z.B. **mydemoserver**.
 
 3. Klicken Sie auf den Servernamen.
 
-4. Wählen Sie die Seite **Eigenschaften** des Servers aus, und notieren Sie sich den **Servernamen** und **den Anmeldenamen des Serveradministrators**.
-
- ![Servername für Azure-Datenbank für MySQL](./media/connect-workbench/1-server-properties-name-login.png)
- 
-5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Anmeldenamen des Serveradministrators anzuzeigen und ggf. das Kennwort zurückzusetzen.
+4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators**. Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
+ ![Servername für Azure-Datenbank für MySQL](./media/connect-php/1_server-overview-name-login.png)
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Herstellen einer Verbindung mit dem Server unter Verwendung von MySQL Workbench 
 So stellen Sie eine Verbindung mit dem Server für Azure MySQL mithilfe des GUI-Tools „MySQL Workbench“ her:
@@ -55,9 +52,9 @@ So stellen Sie eine Verbindung mit dem Server für Azure MySQL mithilfe des GUI-
     |---|---|---|
     |   Verbindungsname | Beispielverbindung | Geben Sie eine Bezeichnung für diese Verbindung an. |
     | Verbindungsmethode | Standard (TCP/IP) | Standard (TCP/IP) ist ausreichend. |
-    | Hostname | *Servername* | Geben Sie den Servernamen an, den Sie zuvor beim Erstellen von Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt „myserver4demo.mysql.database.azure.com“. Verwenden Sie den vollqualifizierten Domänennamen (\*.mysql.database.azure.com), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt.  |
+    | Hostname | *Servername* | Geben Sie den Servernamen an, den Sie zuvor beim Erstellen von Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt „mydemoserver.mysql.database.azure.com“. Verwenden Sie den vollqualifizierten Domänennamen (\*.mysql.database.azure.com), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt.  |
     | Port | 3306 | Verwenden Sie immer den Port 3306, wenn Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen. |
-    | Username |  *Anmeldename des Serveradministrators* | Geben Sie den Anmeldename des Serveradministrators ein, den Sie zuvor beim Erstellen von Azure-Datenbank für MySQL verwendet haben. Unser Beispielbenutzername lautet myadmin@myserver4demo. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
+    | Username |  *Anmeldename des Serveradministrators* | Geben Sie den Anmeldename des Serveradministrators ein, den Sie zuvor beim Erstellen von Azure-Datenbank für MySQL verwendet haben. Unser Beispielbenutzername lautet myadmin@mydemoserver. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
     | Password | Ihr Kennwort | Klicken Sie auf die Schaltfläche **In Vault speichern**, um das Kennwort zu speichern. |
 
 3.   Klicken Sie auf **Verbindung testen**, um zu testen, ob alle Parameter richtig konfiguriert wurden. 
@@ -69,8 +66,7 @@ So stellen Sie eine Verbindung mit dem Server für Azure MySQL mithilfe des GUI-
         Es wird eine neue SQL-Registerkarte mit einem leeren-Editor geöffnet, auf der Sie Ihre Abfragen eingeben können.
     
         > [!NOTE]
-        > Standardmäßig ist SSL-Sicherheit in Verbindung mit Ihrer Azure-Datenbank für MySQL-Server erforderlich und wird erzwungen. In der Regel ist mit SSL-Zertifikaten keine zusätzliche Konfiguration erforderlich, damit MySQL Workbench eine Verbindung mit Ihrem Server herstellen kann. Es empfiehlt sich jedoch, die Zertifizierung der SSL-Zertifizierungsstelle mit MySQL Workbench zu binden. Weitere Informationen zum Herunterladen und Binden der Zertifizierung finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit der Azure-Datenbank für MySQL](./howto-configure-ssl.md).  
-        > Wenn Sie SSL deaktivieren müssen, besuchen Sie das Azure-Portal, und klicken Sie auf die Seite „Verbindungssicherheit“, um die Umschaltfläche „SSL-Verbindung erzwingen“ zu deaktivieren. Bearbeiten Sie zum Deaktivieren der SSL-Option in MySQL Workbench auf der Startseite des Dashboards die Verbindung (Schraubenschlüsselsymbol), und legen Sie auf der Registerkarte „SSL“ der Verbindung die Option **SSL verwenden** auf **Nein** fest. Sollte diese SSL-Einstellung nicht korrekt konfiguriert sein, wird möglicherweise folgende Fehlermeldung angezeigt: „Lost connection to MySQL server at 'reading final connect information', system error: 0“ (Die Verbindung mit dem MySQL-Server wurde beim Lesen der endgültigen Verbindungsinformationen unterbrochen. Systemfehler: 0).
+        > Standardmäßig ist SSL-Sicherheit in Verbindung mit Ihrer Azure-Datenbank für MySQL-Server erforderlich und wird erzwungen. In der Regel ist mit SSL-Zertifikaten keine zusätzliche Konfiguration erforderlich, damit MySQL Workbench eine Verbindung mit Ihrem Server herstellen kann. Es empfiehlt sich jedoch, die Zertifizierung der SSL-Zertifizierungsstelle mit MySQL Workbench zu binden. Weitere Informationen zum Herunterladen und Binden der Zertifizierung finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit der Azure-Datenbank für MySQL](./howto-configure-ssl.md).  Wenn Sie SSL deaktivieren müssen, besuchen Sie das Azure-Portal, und klicken Sie auf die Seite „Verbindungssicherheit“, um die Umschaltfläche „SSL-Verbindung erzwingen“ zu deaktivieren.
 
 ## <a name="create-a-table-insert-data-read-data-update-data-delete-data"></a>Erstellen einer Tabelle, Einfügen von Daten, Lesen von Daten, Aktualisieren von Daten, Löschen von Daten
 1. Kopieren Sie den SQL-Beispielcode, und fügen Sie ihn auf einer leeren SQL-Registerkarte ein, um Beispieldaten zu veranschaulichen.

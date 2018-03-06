@@ -1,22 +1,22 @@
 ---
-title: Verwalten von Kosten mit Azure Cost Management | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Kosten mit Kostenzuteilung sowie Showback- und Chargeback-Berichten verwalten.
+title: 'Tutorial: Verwalten von Kosten mit Azure Cost Management | Microsoft-Dokumentation'
+description: In diesem Tutorial wird beschrieben, wie Sie Kosten per Kostenzuteilung und mit Showback- und Chargeback-Berichten verwalten.
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 804b50d6ba054bbb0eb60b659c98f161ea5272ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7e9f11e702dbbe8864f8a0c307777c922e5f028d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="manage-costs-by-using-azure-cost-management"></a>Verwalten von Kosten mit Azure Cost Management
+# <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Tutorial: Verwalten von Kosten mit Azure Cost Management
 
 Sie verwalten die Kosten und erstellen Showback-Berichte in Azure Cost Management von Cloudyn, indem Sie die Kosten basierend auf Tags zuteilen. Beim Prozess der Kostenzuteilung werden Kosten Ihren verbrauchten Cloudressourcen zugewiesen. Die Kosten werden vollständig zugeteilt, wenn Ihre gesamten Ressourcen mit Tags kategorisiert sind. Nachdem die Kosten zugeteilt wurden, können Sie für Ihre Benutzer über Dashboards und Berichte Showback- oder Chargeback-Informationen bereitstellen. Es kann aber sein, dass viele Ressourcen kein Tag aufweisen oder nicht mit einem Tag versehen werden können, wenn Sie mit der Nutzung von Cost Management beginnen.
 
@@ -27,6 +27,13 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Verwenden von benutzerdefinierten Tags zum Zuteilen von Kosten
 > * Erstellen von Showback- und Chargeback-Berichten
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Sie benötigen ein Azure-Abonnement.
+- Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
 
 ## <a name="use-custom-tags-to-allocate-costs"></a>Verwenden von benutzerdefinierten Tags zum Zuteilen von Kosten
 
@@ -122,7 +129,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 
 
-Fahren Sie mit der Cloudyn-Dokumentation fort, um mehr über die ersten Schritte mit Cloudyn und die Verwendung der Features von Cloudyn zu erfahren.
+Im nächsten Tutorial erfahren Sie, wie Sie den Zugriff auf Daten steuern.
 
 > [!div class="nextstepaction"]
-> [Cloudyn-Dokumentation](https://support.cloudyn.com/hc/)
+> [Steuern des Zugriffs auf Daten](tutorial-user-access.md)

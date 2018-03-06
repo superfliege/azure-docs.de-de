@@ -1,6 +1,6 @@
 ---
 title: Erstellen und Bereitstellen einer Service Fabric-Containeranwendung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Definition einer Azure Service Fabric-Anwendung mit Yeoman generieren und aus der Anwendung ein Paket erstellen.
+description: In diesem Tutorial wird beschrieben, wie Sie die Definition einer Azure Service Fabric-Anwendung mit Yeoman generieren und aus der Anwendung ein Paket erstellen.
 services: service-fabric
 documentationcenter: 
 author: suhuruli
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb838903802de5a04084a60924fc52d988180c11
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 6e3200676807bbd9a15c5c7b19312a2e0c18d77a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Erstellen von Paketen aus Containern und Bereitstellen als Service Fabric-Anwendung
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>Tutorial: Packen und Bereitstellen von Containern als Service Fabric-Anwendung
 
 Dieses Tutorial ist der zweite Teil einer Reihe. In diesem Tutorial wird ein Tool zum Generieren einer Vorlage (Yeoman) zum Generieren einer Service Fabric-Anwendungsdefinition verwendet. Diese Anwendung kann dann zum Bereitstellen von Containern in Service Fabric verwendet werden. In diesem Tutorial lernen Sie Folgendes: 
 

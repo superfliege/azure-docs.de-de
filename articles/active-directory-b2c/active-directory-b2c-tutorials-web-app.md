@@ -1,6 +1,6 @@
 ---
 title: "Verwenden von Azure Active Directory B2C für die Benutzerauthentifizierung in einer ASP.NET-Web-App (Tutorial)"
-description: "Tutorial zur Verwendung von Azure Active Directory B2C für die Anmeldung und Registrierung von Benutzern in einer ASP.NET-Web-App."
+description: "Tutorial zur Verwendung von Azure Active Directory B2C zum Bereitstellen einer Benutzeranmeldung für eine ASP.NET-Web-App."
 services: active-directory-b2c
 author: PatAltimore
 ms.author: patricka
@@ -9,11 +9,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: ee006476f9e40e9d1a6e7213cb1881ca46ea75c2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1d1e0ce51d86ebcdbf0a2a423ff64b3814413d86
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>Tutorial: Authentifizieren von Benutzern mit Azure Active Directory B2C in einer ASP.NET-Web-App
 
@@ -45,7 +45,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Admi
 
 2. Klicken Sie in den B2C-Einstellungen auf **Anwendungen** und anschließend auf **Hinzufügen**.
 
-    Verwenden Sie die folgenden Einstellungen, um die Beispiel-Web-App bei Ihrem Mandanten zu registrieren.
+    Verwenden Sie die folgenden Einstellungen, um die Beispiel-Web-App bei Ihrem Mandanten zu registrieren:
 
     ![Hinzufügen einer neuen App](media/active-directory-b2c-tutorials-web-app/web-app-registration.png)
 
@@ -147,9 +147,9 @@ Bei der ASP.NET-Beispiel-Web-App handelt es sich um eine einfache App zum Erstel
 
 Die Beispielprojektmappe enthält zwei Projekte:
 
-**Web-App-Beispiel-App (TaskWebApp):** Web-App zum Erstellen und Bearbeiten einer Aufgabenliste. Die Web-App verwendet die **Registrierungs- oder Anmelderichtlinie** für die Registrierung oder Anmeldung von Benutzern mit einer E-Mail-Adresse.
+**Web-App-Beispiel-App (TaskWebApp):** Web-App zum Erstellen und Bearbeiten einer Aufgabenliste. Die Web-App verwendet die **Registrierungs- oder Anmelderichtlinie** für die Registrierung oder Anmeldung von Benutzern.
 
-**Web-API-Beispiel-App (TaskService):** Web-API, die die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste unterstützt. Die Web-API wird durch Azure AD B2C geschützt und von der Web-App aufgerufen.
+**Web-API-Beispiel-App (TaskService):** Web-API, die die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste unterstützt. Die Web-API wird per Azure AD B2C geschützt und von der Web-App aufgerufen.
 
 Die App muss geändert werden, um die App-Registrierung in Ihrem Mandanten zu verwenden. Außerdem müssen die von Ihnen erstellten Richtlinien konfiguriert werden. Die Beispiel-Web-App definiert die Konfigurationswerte als App-Einstellungen in der Datei „Web.config“. Gehen Sie zum Ändern der App-Einstellungen wie folgt vor:
 
@@ -176,9 +176,9 @@ Die App muss geändert werden, um die App-Registrierung in Ihrem Mandanten zu ve
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **TaskWebApp**, und klicken Sie anschließend auf **Als Startprojekt festlegen**.
 
-Drücken Sie**F5**, um die Web-App zu starten. Der Standardbrowser wird mit der lokalen Websiteadresse `https://localhost:44316/` geöffnet. 
+Drücken Sie **F5**, um die Web-App zu starten. Der Standardbrowser wird mit der lokalen Websiteadresse `https://localhost:44316/` geöffnet. 
 
-Die Beispiel-App unterstützt Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung. Im nächsten Abschnitt erfahren Sie, wie sich ein Benutzer mit einer E-Mail-Adresse für die App-Verwendung registriert. Die anderen Szenarien können Sie selbstständig ausprobieren.
+Die Beispiel-App unterstützt Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung. In diesem Tutorial wird beschrieben, wie ein Benutzer sich mit einer E-Mail-Adresse für die Nutzung der App anmeldet. Die anderen Szenarien können Sie selbstständig erkunden.
 
 ### <a name="sign-up-using-an-email-address"></a>Registrieren mit einer E-Mail-Adresse
 
@@ -205,4 +205,4 @@ Sie können Ihren Azure AD B2C-Mandanten für weitere Azure AD B2C-Tutorials ver
 In diesem Tutorial haben Sie gelernt, wie Sie einen Azure AD B2C-Mandanten und Richtlinien erstellen und wie Sie die Beispiel-Web-App für die Verwendung Ihres Azure AD B2C-Mandanten aktualisieren. Im nächsten Tutorial erfahren Sie, wie Sie eine durch Ihren Azure AD B2C-Mandanten geschützte ASP.NET-Web-API registrieren, konfigurieren und aufrufen.
 
 > [!div class="nextstepaction"]
-> [Schützen einer ASP.NET-Web-API mithilfe von Azure Active Directory B2C](active-directory-b2c-tutorials-web-api.md)
+> [Tutorial: Schützen einer ASP.NET-Web-API mithilfe von Azure Active Directory B2C](active-directory-b2c-tutorials-web-api.md)

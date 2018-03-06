@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen einer Spring Boot-Anwendung in Azure Service Fabric | Microsoft-Dokumentation
-description: "Bereitstellen einer Spring Boot-Anwendung für Azure Service Fabric mithilfe von „Spring Boot Getting Started“."
+description: "In diesem Schnellstart stellen Sie eine Spring Boot-Anwendung für Azure Service Fabric bereit, indem Sie eine Spring Boot-Beispielanwendung verwenden."
 services: service-fabric
 documentationcenter: java
 author: suhuruli
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8e57ed29560baeea6279a45e8769f4005c123b56
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ab860b8525bcb77d3ab35d3f649532713c661b61
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-a-spring-boot-application"></a>Bereitstellen einer Spring Boot-Anwendung
+# <a name="quickstart-deploy-a-java-spring-boot-application-to-azure"></a>Schnellstart: Bereitstellen einer Java Spring Boot-Anwendung in Azure
 Azure Service Fabric ist eine Plattform, mit der verteilte Systeme bereitgestellt und skalierbare und zuverlässige Microservices und Container verwaltet werden können. 
 
 In diesem Schnellstart wird gezeigt, wie Sie eine Spring Boot-Anwendung in Service Fabric bereitstellen. In diesem Schnellstart wird das Beispiel [Getting Started](https://spring.io/guides/gs/spring-boot/) von der Spring-Website verwendet. In dieser Schnellstartanleitung erfahren Sie anhand vertrauter Befehlszeilentools, wie Sie das Spring Boot-Beispiel als Service Fabric-Anwendung bereitstellen. Am Ende des Schnellstarts wird das Spring Boot Getting Started-Beispiel in Service Fabric ausgeführt. 
