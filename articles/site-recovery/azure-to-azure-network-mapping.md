@@ -12,7 +12,6 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-<<<<<<< HEAD
 ms.date: 02/27/2018
 =======
 <<<<<<< HEAD
@@ -23,6 +22,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
+<<<<<<< HEAD
 =======
 ms.date: 12/15/2017
 >>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
@@ -37,6 +37,8 @@ ms.lasthandoff: 02/28/2018
 ms.lasthandoff: 02/13/2018
 >>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 >>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
+=======
+>>>>>>> ffcb13bb5fc8687cd2f604cdad085442a2a65a08
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Zuordnen virtueller Netzwerke in verschiedenen Azure-Regionen
 
@@ -88,8 +90,8 @@ Wenn die Netzwerkzuordnung bereits erfolgt ist, können Sie das virtuelle Zielne
 
 
 ## <a name="subnet-selection"></a>Subnetzauswahl
-<<<<<<< HEAD
 Das Subnetz des virtuellen Zielcomputers wird basierend auf dem Namen des Subnetzes des virtuellen Quellcomputers ausgewählt. Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie der virtuelle Quellcomputer verfügbar ist, wird dieses Subnetz für den virtuellen Zielcomputer ausgewählt. Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das Subnetz als Zielsubnetz ausgewählt, das in der alphabetischen Reihenfolge an erster Stelle steht.
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 Das Subnetz des virtuellen Zielcomputers wird basierend auf dem Namen des Subnetzes des virtuellen Quellcomputers ausgewählt. Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie der virtuelle Quellcomputer verfügbar ist, wird dieses Subnetz für den virtuellen Zielcomputer ausgewählt. Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das Subnetz als Zielsubnetz ausgewählt, das in der alphabetischen Reihenfolge an erster Stelle steht.
@@ -97,6 +99,8 @@ Das Subnetz des virtuellen Zielcomputers wird basierend auf dem Namen des Subnet
 Das Subnetz des virtuellen Zielcomputers wird basierend auf dem Namen des Subnetzes des virtuellen Quellcomputers ausgewählt. Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie der virtuelle Quellcomputer verfügbar ist, wird dieses Subnetz für den virtuellen Zielcomputer ausgewählt. Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das Subnetz als Zielsubnetz ausgewählt, das in der alphabetischen Reihenfolge an erster Stelle steht. 
 >>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 >>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
+=======
+>>>>>>> ffcb13bb5fc8687cd2f604cdad085442a2a65a08
 
 Zum Ändern des Subnetzes rufen Sie die **Compute- und Netzwerkeinstellungen** für den virtuellen Computer auf.
 

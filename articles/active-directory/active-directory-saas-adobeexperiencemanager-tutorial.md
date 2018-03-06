@@ -143,8 +143,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
-<<<<<<< HEAD
 11. Klicken Sie auf **Account settings** > **Manage TrustStore** (Kontoeinstellungen > TrustStore verwalten).
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 11. Klicken Sie auf **Account settings** > **Manage TrustStore** (Kontoeinstellungen > TrustStore verwalten).
@@ -152,6 +152,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 11. Klicken Sie auf **Account settings** > **Manage TrustStore** (Kontoeinstellungen > Vertrauensspeicher verwalten).
 >>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 >>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
+=======
+>>>>>>> ffcb13bb5fc8687cd2f604cdad085442a2a65a08
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
@@ -191,8 +193,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Fügen Sie im Feld **IDP URL** (IdP-URL) den Wert der **URL für den SAML-SSO-Dienst** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-<<<<<<< HEAD
     c. Geben Sie im Feld **IDP Certificate Alias** (Alias des IdP-Zertifikats) den Wert von **Certificate Alias** (Zertifikatalias) ein, den Sie in TrustStore hinzugefügt haben.
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
     c. Geben Sie im Feld **IDP Certificate Alias** (Alias des IdP-Zertifikats) den Wert von **Certificate Alias** (Zertifikatalias) ein, den Sie in TrustStore hinzugefügt haben.
@@ -200,6 +202,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     c. Geben Sie im Feld **IDP Certificate Alias** (Alias des IdP-Zertifikats) den Wert von **Certificate Alias** (Zertifikatalias) ein, den Sie im Vertrauensspeicher hinzugefügt haben.
 >>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 >>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
+=======
+>>>>>>> ffcb13bb5fc8687cd2f604cdad085442a2a65a08
 
     d. Geben Sie im Feld **Security Provided Entity ID** (Sicherheits-Entitäts-ID) die eindeutige **SAML-Entitäts-ID** ein, die Sie im Azure-Portal konfiguriert haben.
 

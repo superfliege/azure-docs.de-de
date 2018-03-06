@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-<<<<<<< HEAD
 ms.openlocfilehash: 084d3e4244bc6f19797fadab93265291494cf066
 ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/27/2018
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 ms.openlocfilehash: 084d3e4244bc6f19797fadab93265291494cf066
@@ -37,6 +37,8 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 02/14/2018
 >>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 >>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
+=======
+>>>>>>> ffcb13bb5fc8687cd2f604cdad085442a2a65a08
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-Bindungen für Azure Functions
 

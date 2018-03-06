@@ -1,24 +1,24 @@
 ---
-title: "Azure-Portal: Erstellen eines Azure-Datenbank für PostgreSQL-Servers | Microsoft-Dokumentation"
+title: "Schnellstartanleitung: Erstellen eines Azure Database for PostgreSQL-Servers über das Azure-Portal"
 description: "Schnellstart-Anleitung zum Erstellen und Verwalten eines Azure-Datenbank für PostgreSQL-Servers über die Benutzeroberfläche des Azure-Portals."
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/03/2017
-ms.openlocfilehash: de35254183798dd0aea32b63eb0689d33ae5b247
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 02/28/2018
+ms.openlocfilehash: 83bdc6eba35f0deaaf541f2042854764ae513fb9
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Erstellen eines Azure-Datenbank für PostgreSQL-Servers im Azure-Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Schnellstartanleitung: Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal
 
-Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie in etwa fünf Minuten über das Azure-Portal einen Azure-Datenbank für PostgreSQL-Server erstellen.
+Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal in etwa fünf Minuten einen Azure Database for PostgreSQL-Server erstellen.
 
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -27,7 +27,7 @@ Browsen Sie zum [Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinfor
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Erstellen einer Azure-Datenbank für PostgreSQL-Server
 
-Eine Azure-Datenbank für PostgreSQL-Server wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-compute-unit-and-storage.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) erstellt.
+Ein Azure Database for PostgreSQL-Server wird mit einer konfigurierten Gruppe von [Compute- und Speicherressourcen](./concepts-pricing-tiers.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) erstellt.
 
 Führen Sie die folgenden Schritte aus, um einen Azure-Datenbank für PostgreSQL-Server zu erstellen:
 1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+).
@@ -36,28 +36,30 @@ Führen Sie die folgenden Schritte aus, um einen Azure-Datenbank für PostgreSQL
 
     ![Die Option „Azure-Datenbank für PostgreSQL“](./media/quickstart-create-database-portal/1-create-database.png)
 
-3. Geben Sie die folgenden Informationen in das Formular für den neuen Server ein, wie in der obigen Abbildung dargestellt:
+3. Geben Sie im Formular für den neuen Server folgende Informationen an:
+
+    ![Erstellen eines Servers](./media/quickstart-create-database-portal/3-create.png)
 
     Einstellung|Empfohlener Wert|BESCHREIBUNG
     ---|---|---
-    Servername |*mypgserver-20170401*|Ein eindeutiger Name, der Ihren Azure-Datenbank für PostgreSQL-Server identifiziert. Der Domänenname *postgres.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Er muss 3 bis 63 Zeichen umfassen.
-    Abonnement|Ihr Abonnement|Das Azure-Abonnement, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
+    Servername |*mydemoserver*|Ein eindeutiger Name, der Ihren Azure-Datenbank für PostgreSQL-Server identifiziert. Der Domänenname *postgres.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Er muss 3 bis 63 Zeichen umfassen.
+    Abonnement|Ihr Abonnementname|Das Azure-Abonnement, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
     Ressourcengruppe|*myresourcegroup*| Ein neuer Ressourcengruppenname oder ein bereits vorhandener Name aus Ihrem Abonnement
-    Serveradministratoranmeldung |*mylogin*| Ihr eigenes Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser,** **azure_pg_admin,** **admin,** **administrator,** **root,** **guest,** oder **public** lauten. Er kann nicht mit **pg_** beginnen.
-    Password |Beliebig | Ein neues Kennwort für das Serveradministratorkonto. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0–9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
-    Speicherort|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist
-    PostgreSQL-Version|Die neueste Version| Die neueste Version (es sei denn, Sie haben besondere Anforderungen).
-    Tarif | **Basic**, **50 Compute-Einheiten**, **50 GB** | Dienstebene und Leistungsstufe für Ihre neue Datenbank. Wählen Sie **Tarif**aus. Wählen Sie als Nächstes die Registerkarte **Basic** aus. Wählen Sie dann das linke Ende des Schiebereglers **Compute-Einheiten** aus, um für diese Schnellstartanleitung den kleinstmöglichen Wert festzulegen. Wählen Sie **OK** aus, um die Tarifauswahl zu speichern. Weitere Informationen erhalten Sie auf dem folgenden Screenshot. 
-    An Dashboard anheften | Prüfen | Ermöglicht die komfortable Nachverfolgung Ihres Servers auf der Titelseite des Dashboards im Portal.
+    Quelle auswählen | *Leer* | Wählen Sie *Leer* aus, um einen neuen Server ohne Vorlage zu erstellen. (Die Option *Sicherung* können Sie auswählen, wenn Sie einen Server auf der Grundlage einer Geosicherung eines vorhandenen Azure Database for PostgreSQL-Servers erstellen.)
+    Serveradministratoranmeldung |*myadmin*| Ihr eigenes Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest**, oder **public** lauten. Er kann nicht mit **pg_** beginnen.
+    Password |Ihr Kennwort| Ein neues Kennwort für das Serveradministratorkonto. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0–9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
+    Speicherort|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist.
+    Version|Die neueste Version| Die neueste PostgreSQL-Version (es sei denn, Sie haben besondere Anforderungen).
+    Tarif | **Universell**, **Gen 4**, **2 virtuelle Kerne**, **5 GB**, **7 Tage**, **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Tarif**aus. Klicken Sie als Nächstes auf die Registerkarte **Universell**. *Gen 4*, *2 virtuelle Kerne*, *5 GB* und *7 Tage* sind die Standardwerte für **Computegeneration**, **Virtueller Kern**, **Speicher** und **Aufbewahrungszeit für Sicherung**. Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
 
     > [!IMPORTANT]
     > Der hier angegebene Benutzername und das Kennwort für den Serveradministrator sind erforderlich, um später in diesem Schnellstart die Anmeldung auf dem Server und in den zugehörigen Datenbanken durchzuführen. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
 
-    ![Der Bereich „Tarif“](./media/quickstart-create-database-portal/2-service-tier.png)
+    ![Der Bereich „Tarif“](./media/quickstart-create-database-portal/2-pricing-tier.png)
 
-4. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung kann bis zu 20 Minuten dauern.
+4. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Dieser Vorgang kann einige Minuten dauern.
 
-5. Wählen Sie auf der Symbolleiste das Symbol **Benachrichtigungen** aus, um den Bereitstellungsprozess zu überwachen.
+5. Klicken Sie auf der Symbolleiste auf das Symbol **Benachrichtigungen** (eine Glocke), um den Bereitstellungsprozess zu überwachen. Nach Abschluss der Bereitstellung können Sie auf **An Dashboard anheften** klicken, um auf Ihrem Azure-Portal-Dashboard eine Kachel für diesen Server zu erstellen, über die Sie direkt zur **Übersicht** des Servers gelangen. Wenn Sie auf **Zu Ressource wechseln** klicken, wird die **Übersicht** des Servers geöffnet.
 
     ![Der Bereich „Benachrichtigungen“](./media/quickstart-create-database-portal/3-notifications.png)
    
@@ -67,15 +69,13 @@ Führen Sie die folgenden Schritte aus, um einen Azure-Datenbank für PostgreSQL
 
 Azure-Datenbank für PostgreSQL erstellt eine Firewall auf Serverebene. Sie verhindert, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen – es sei denn, Sie erstellen eine Regel, um die Firewall für bestimmte IP-Adressen zu öffnen. 
 
-1. Navigieren Sie nach Abschluss der Bereitstellung zu Ihrem Server. Bei Bedarf können Sie danach suchen. Wählen Sie beispielsweise im Menü auf der linken Seite die Option **Alle Ressourcen** aus. Geben Sie den Servernamen (beispielsweise **mypgserver-20170401**) ein, um nach dem neu erstellten Server zu suchen. Wählen Sie den Servernamen in der Liste mit den Suchergebnissen aus. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
+1. Navigieren Sie nach Abschluss der Bereitstellung zu Ihrem Server. Bei Bedarf können Sie danach suchen. Wählen Sie beispielsweise im Menü auf der linken Seite die Option **Alle Ressourcen** aus. Geben Sie den Servernamen (beispielsweise **mydemoserver**) ein, um nach dem neu erstellten Server zu suchen. Wählen Sie den Servernamen in der Liste mit den Suchergebnissen aus. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
  
     ![Suchen nach dem Servernamen](./media/quickstart-create-database-portal/4-locate.png)
 
 2. Wählen Sie auf der Serverseite die Option **Verbindungssicherheit** aus.
 
-    ![Sie Einstellung „Verbindungssicherheit“](./media/quickstart-create-database-portal/5-firewall-2.png)
-
-3. Wählen Sie unter der Überschrift **Firewallregeln** in der Spalte **Regelname** das leere Textfeld aus, um mit der Erstellung der Firewallregel zu beginnen. 
+3. Klicken Sie unter **Firewallregeln** in der Spalte **Regelname** auf das leere Textfeld, um mit der Erstellung der Firewallregel zu beginnen. 
 
     In dieser Schnellstartanleitung lassen Sie auf dem Server alle IP-Adressen zu. Füllen Sie das Textfeld in jeder Spalte mit den folgenden Werten aus:
 
@@ -83,10 +83,12 @@ Azure-Datenbank für PostgreSQL erstellt eine Firewall auf Serverebene. Sie verh
     ---|---|---
     AllowAllIps | 0.0.0.0 | 255.255.255.255
 
+     ![Festlegen von Firewallregeln](./media/quickstart-create-database-portal/5-firewall-2.png)
+
 4. Wählen Sie auf der oberen Symbolleiste der Seite **Verbindungssicherheit** die Option **Speichern** aus. Warten Sie, bis die Benachrichtigung mit dem Hinweis angezeigt wird, dass das Update der Verbindungssicherheit erfolgreich abgeschlossen wurde, bevor Sie fortfahren.
 
     > [!NOTE]
-    > Die Kommunikation für Verbindungen mit Azure-Datenbank für PostgreSQL erfolgt über Port 5432. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 5432 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Server herstellen, wenn Ihre IT-Abteilung Port 5432 öffnet.
+    > Die Kommunikation für Verbindungen mit Azure-Datenbank für PostgreSQL erfolgt über Port 5432. Wenn Sie versuchen, eine Verbindung von einem Unternehmensnetzwerk aus herzustellen, wird der ausgehende Datenverkehr über Port 5432 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Server herstellen, wenn Ihre IT-Abteilung Port 5432 öffnet.
     >
 
 ## <a name="get-the-connection-information"></a>Abrufen der Verbindungsinformationen
@@ -119,23 +121,23 @@ Es gibt verschiedene Anwendungen, mit denen Sie eine Verbindung mit Ihrem Azure-
     Mithilfe des folgenden Befehls wird beispielsweise eine Verbindung mit einem Beispielserver hergestellt:
 
     ```bash
-    psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres
+    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
     ```
 
-    psql-Parameter |Empfohlener Wert|BESCHREIBUNG
+    psql-Parameter |Wert|Beschreibung
     ---|---|---
-    --host | Servername | Der Servername, den Sie weiter oben beim Erstellen des Azure-Datenbank für PostgreSQL-Servers verwendet haben. Der dargestellte Beispielserver heißt **mypgserver-20170401.postgres.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.postgres.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
+    --host | Servername | Der Servername, den Sie weiter oben beim Erstellen des Azure-Datenbank für PostgreSQL-Servers verwendet haben. Der dargestellte Beispielserver heißt **mydemoserver.postgres.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.postgres.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
     --port | 5432 | Der Port zum Herstellen einer Verbindung mit dem Azure-Datenbank für PostgreSQL-Server 
     --username | Anmeldename des Serveradministrators |Der Anmeldename des Serveradministrators, den Sie zuvor beim Erstellen des Azure-Datenbank für PostgreSQL-Servers verwendet haben. Sollten Sie sich nicht an den Benutzernamen erinnern, können Sie die Verbindungsinformationen anhand der Schritten im vorherigen Abschnitt ermitteln. Zu verwendendes Format: *username@servername*.
     --dbname | *postgres* | Der für die erste Verbindung vom System generierte Standarddatenbankname. Später erstellen Sie dann Ihre eigene Datenbank.
 
     Nachdem Sie den psql-Befehl mit Ihren eigenen Parameterwerten ausgeführt haben, werden Sie zur Eingabe des Serveradministratorkennworts aufgefordert. Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. 
 
-    psql-Parameter |Empfohlener Wert|BESCHREIBUNG
+    psql-Parameter |Empfohlener Wert|Beschreibung
     ---|---|---
-    password | Ihr Administratorkennwort | Die für das Kennwort eingegebenen Zeichen werden in der Bash-Eingabeaufforderung nicht angezeigt. Drücken Sie nach der Eingabe aller Zeichen die **EINGABETASTE**, um die Authentifizierung durchzuführen und die Verbindung herzustellen.
+    password | Ihr Administratorkennwort | Die für das Kennwort eingegebenen Zeichen werden in der Bash-Eingabeaufforderung nicht angezeigt. Drücken Sie nach der Eingabe aller Zeichen die EINGABETASTE, um die Authentifizierung durchzuführen und die Verbindung herzustellen.
 
-    Nachdem die Verbindung hergestellt wurde, wird vom psql-Hilfsprogramm eine PostgreSQL-Eingabeaufforderung für die Eingabe von SQL-Befehlen angezeigt. In der Ausgabe der Erstverbindung wird unter Umständen eine Warnung angezeigt, wenn die Version des psql-Programms in Cloud Shell von der Version des Azure-Datenbank für PostgreSQL-Servers abweicht. 
+    Nachdem die Verbindung hergestellt wurde, wird vom psql-Hilfsprogramm eine PostgreSQL-Eingabeaufforderung für die Eingabe von SQL-Befehlen angezeigt. In der Ausgabe der Erstverbindung wird unter Umständen eine Warnung angezeigt, wenn die Version des psql-Programms in Cloud Shell von der Version des Azure Database for PostgreSQL-Servers abweicht. 
     
     psql-Beispielausgabe:
     ```bash
@@ -151,11 +153,11 @@ Es gibt verschiedene Anwendungen, mit denen Sie eine Verbindung mit Ihrem Azure-
     > [!TIP]
     > Wenn die Firewall nicht zum Zulassen der IP-Adresse von Cloud Shell konfiguriert ist, tritt der folgende Fehler auf:
     > 
-    > "psql: FATAL:  no pg_hba.conf entry for host "138.91.195.82", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required. Specify SSL options and retry.
+    > "psql: FATAL:  no pg_hba.conf entry for host "0.0.0.0", user "myadmin", database "postgres", SSL on FATAL: SSL connection is required. Specify SSL options and retry.
     > 
     > Vergewissern Sie sich zur Behebung des Fehlers, dass die Serverkonfiguration gemäß den Schritten im Abschnitt „Konfigurieren einer Firewallregel auf Serverebene“ in diesem Artikel durchgeführt wurde.
 
-4. Erstellen Sie eine leere Datenbank, indem Sie an der Eingabeaufforderung den folgenden Befehl eingeben:
+4. Erstellen Sie eine leere Datenbank namens „mypgsqldb“, indem Sie an der Eingabeaufforderung den folgenden Befehl eingeben:
     ```bash
     CREATE DATABASE mypgsqldb;
     ```
@@ -166,56 +168,57 @@ Es gibt verschiedene Anwendungen, mit denen Sie eine Verbindung mit Ihrem Azure-
     \c mypgsqldb
     ```
 
-6. Geben Sie `\q` ein, und drücken Sie anschließend die **EINGABETASTE**, um psql zu beenden. Anschließend können Sie Cloud Shell schließen.
+6. Geben Sie `\q` ein, und drücken Sie anschließend die EINGABETASTE, um psql zu beenden. Anschließend können Sie Cloud Shell schließen.
 
-Sie haben nun eine Verbindung mit dem Azure-Datenbank für PostgreSQL-Server hergestellt und eine leere Benutzerdatenbank erstellt. Im nächsten Abschnitt stellen Sie eine Verbindung über pgAdmin (ein anderes gängiges Tool) her.
+Sie haben über psql in Cloud Shell eine Verbindung mit dem Azure Database for PostgreSQL-Server hergestellt und eine leere Benutzerdatenbank erstellt. Im nächsten Abschnitt stellen Sie eine Verbindung über pgAdmin (ein anderes gängiges Tool) her.
 
-## <a name="connect-to-the-postgresql-database-by-using-pgadmin"></a>Herstellen einer Verbindung mit einer PostgreSQL-Datenbank mithilfe von pgAdmin
+## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>Herstellen einer Verbindung mit dem PostgreSQL-Server mithilfe von pgAdmin
 
-So stellen Sie eine Verbindung mit dem Azure-PostgreSQL-Server mithilfe des GUI-Tools pgAdmin her
-1. Öffnen Sie die Anwendung pgAdmin auf dem Clientcomputer. Sie können pgAdmin von der [pgAdmin-Website](http://www.pgadmin.org/) installieren.
+pgAdmin ist ein Open-Source-Tool, das zusammen mit PostgreSQL verwendet wird. Sie können pgAdmin von der [pgAdmin-Website](http://www.pgadmin.org/) installieren. Ihre pgAdmin-Version unterscheidet sich möglicherweise von der Version aus dieser Schnellanleitung. Weitere Informationen finden Sie bei Bedarf in der pgAdmin-Dokumentation.
 
-2. Wählen Sie auf der Dashboardseite unter dem Abschnitt **Quicklinks** das Symbol **Neuen Server hinzufügen** aus.
+1. Öffnen Sie die Anwendung pgAdmin auf dem Clientcomputer.
 
-3. Geben Sie im Dialogfeld **Erstellen – Server** auf der Registerkarte **Allgemein** einen eindeutigen Anzeigenamen für den Server ein, z.B. **Azure PostgreSQL Server**.
+2. Navigieren Sie über die Symbolleiste zu **Objekt**, zeigen Sie auf **Erstellen**, und klicken Sie auf **Server**.
+
+3. Geben Sie im Dialogfeld **Erstellen – Server** auf der Registerkarte **Allgemein** einen eindeutigen Anzeigenamen für den Server ein (beispielsweise **mydemoserver**).
 
     ![Die Registerkarte „Allgemein“](./media/quickstart-create-database-portal/9-pgadmin-create-server.png)
 
-4. Übernehmen Sie im Dialogfeld **Erstellen – Server** auf der Registerkarte **Verbindung** die angegebenen Einstellungen, und wählen Sie dann **Speichern** aus.
+4. Füllen Sie im Dialogfeld **Erstellen – Server** auf der Registerkarte **Verbindung** die folgende Einstellungstabelle aus.
 
    ![Die Registerkarte „Verbindung“](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    pgAdmin-Parameter |Empfohlener Wert|BESCHREIBUNG
+    pgAdmin-Parameter |Wert|Beschreibung
     ---|---|---
-    Hostname/Adresse | Servername | Der Servername, den Sie weiter oben beim Erstellen des Azure-Datenbank für PostgreSQL-Servers verwendet haben. Unser Beispielserver heißt **mypgserver-20170401.postgres.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.postgres.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
+    Hostname/Adresse | Servername | Der Servername, den Sie weiter oben beim Erstellen des Azure-Datenbank für PostgreSQL-Servers verwendet haben. Unser Beispielserver heißt **mydemoserver.postgres.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.postgres.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
     Port | 5432 | Der Port zum Herstellen einer Verbindung mit dem Azure-Datenbank für PostgreSQL-Server 
     Wartungsdatenbank | *postgres* | Der vom System generierte Standardname der Datenbank
     Username | Anmeldename des Serveradministrators | Der Anmeldename des Serveradministrators, den Sie zuvor beim Erstellen des Azure-Datenbank für PostgreSQL-Servers verwendet haben. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
     Password | Ihr Administratorkennwort | Das Kennwort, das Sie beim Erstellen des Servers weiter oben in dieser Schnellstartanleitung ausgewählt haben
     Rolle | Nicht ausfüllen | Zu diesem Zeitpunkt müssen Sie keinen Rollennamen angeben. Lassen Sie das Feld leer.
-    SSL-Modus | Erforderlich | In der Standardeinstellung werden alle Azure PostgreSQL-Server mit aktivierter SSL-Erzwingung erstellt. Weitere Informationen dazu, wie Sie das Erzwingen von SSL deaktivieren, finden Sie unter [Erzwingen von SSL](./concepts-ssl-connection-security.md).
+    SSL-Modus | *Anfordern* | Der SSL-Modus kann auf der Registerkarte „SSL“ von PgAdmin festgelegt werden. In der Standardeinstellung werden alle Azure Database for PostgreSQL-Server mit aktivierter SSL-Erzwingung erstellt. Informationen zum Deaktivieren der SSL-Erzwingung finden Sie unter [Konfigurieren von SSL-Konnektivität in Azure-Datenbank für PostgreSQL](./concepts-ssl-connection-security.md).
     
 5. Wählen Sie **Speichern**aus.
 
-6. Erweitern Sie im linken Bereich **Browser** den Knoten **Server**. Wählen Sie Ihren Server aus (z.B. **Azure PostgreSQL Server**). Durch Klicken stellen Sie eine Verbindung her.
+6. Erweitern Sie im linken Bereich **Browser** den Knoten **Server**. Wählen Sie Ihren Server aus (beispielsweise **mydemoserver**). Durch Klicken stellen Sie eine Verbindung her.
 
-7. Erweitern Sie den Serverknoten und anschließend darunter den Eintrag **Datenbanken**. Die Liste sollte Ihre vorhandene *postgres*-Datenbank und alle im vorherigen Abschnitt neu erstellten Benutzerdatenbanken, beispielsweise **mypgsqldb**, enthalten. Beachten Sie, dass Sie mit Azure-Datenbank für PostgreSQL mehrere Datenbanken pro Server erstellen können.
+7. Erweitern Sie den Serverknoten und anschließend darunter den Eintrag **Datenbanken**. Die Liste sollte Ihre Datenbank vom Typ *postgres* sowie andere Datenbanken enthalten, die Sie ggf. erstellt haben. Mit Azure Database for PostgreSQL können mehrere Datenbanken pro Server erstellt werden.
 
 8. Klicken Sie mit der rechten Maustaste auf **Datenbanken**, wählen Sie das Menü **Erstellen** und dann **Datenbank** aus.
 
-9. Geben Sie einen Datenbanknamen Ihrer Wahl in das Feld **Datenbank** ein, etwa **mypgsqldb** wie im gezeigten Beispiel.
+9. Geben Sie im Feld **Datenbank** einen Datenbanknamen Ihrer Wahl ein (beispielsweise **mypgsqldb2**).
 
-10. Wählen Sie im Listenfeld den **Besitzer** der Datenbank aus. Wählen Sie den Anmeldenamen des Serveradministrators aus (in diesem Beispiel **mylogin**).
+10. Wählen Sie im Listenfeld den **Besitzer** der Datenbank aus. Wählen Sie den Anmeldenamen des Serveradministrators aus (in diesem Beispiel **my admin**).
+
+   ![Erstellen einer Datenbank in pgadmin](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
 11. Wählen Sie **Speichern** aus, um eine neue leere Datenbank zu erstellen.
 
-12. Im Bereich **Browser** sehen Sie die erstellte Datenbank in der Liste der Datenbanken unter Ihrem Servernamen.
-
-    ![Der Bereich „Browser“](./media/quickstart-create-database-portal/11-pgadmin-database.png)
+12. Die erstellte Datenbank wird im Bereich **Browser** in der Liste der Datenbanken unter Ihrem Servernamen angezeigt.
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwei Arten bereinigt werden. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) einschließlich aller darin enthaltenen Ressourcen löschen. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die einzelne Serverressource.
+Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwei Arten bereinigt werden. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) einschließlich aller darin enthaltenen Ressourcen löschen. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die Serverressource.
 
 > [!TIP]
 > Andere Schnellstartanleitungen in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie weitere Schnellstartanleitungen verwenden möchten, überspringen Sie die Bereinigung der in dieser Schnellstartanleitung erstellten Ressourcen. Falls Sie nicht fortfahren möchten, können Sie die in dieser Schnellstartanleitung erstellten Ressourcen anhand der folgenden Schritte im Azure-Portal löschen.
@@ -232,7 +235,7 @@ So löschen Sie ausschließlich den neu erstellten Server
 
     ![Die Schaltfläche „Löschen“](./media/quickstart-create-database-portal/12-delete.png)
 
-3. Bestätigen Sie den Servernamen, den Sie löschen möchten, und zeigen Sie die betroffenen Datenbanken auf diesem Server an. Geben Sie den Servernamen (in diesem Beispiel **mypgserver-20170401**) in das Textfeld ein. Klicken Sie auf **Löschen**.
+3. Bestätigen Sie den Namen des Servers, den Sie löschen möchten, und zeigen Sie die betroffenen Datenbanken auf diesem Server an. Geben Sie den Servernamen (in diesem Beispiel **mydemoserver**) in das Textfeld ein. Klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
