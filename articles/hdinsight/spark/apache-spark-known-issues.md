@@ -17,6 +17,7 @@ ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
 <<<<<<< HEAD
+<<<<<<< HEAD
 ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
 ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
@@ -29,6 +30,13 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
 >>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
+=======
+ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/24/2018
+>>>>>>> badf78d3a696bb4bc2277e8b2840da1a5bb1178d
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Bekannte Probleme bei Apache Spark-Clustern unter HDInsight
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5657df412b1f2b7d4d43d7551289620ae4d77de2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ecf77a614922ef58cdfb2b2c8174f66e01ea9b46
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
@@ -55,7 +55,6 @@ Dieses Thema enthält Anleitungen zur Problembehandlung zum Beheben potenzieller
 
 - Durch eine Neuinstallation des Betriebssystems oder durch manuelles Aufheben der Registrierung und erneutes Registrieren wird in Azure AD möglicherweise eine neue Registrierung erstellt. Dies kann im Azure-Portal zu mehreren Einträgen auf der Registerkarte mit den Benutzerinformationen führen. 
 
-
 ## <a name="step-1-retrieve-the-registration-status"></a>Schritt 1: Abrufen des Registrierungsstatus 
 
 **So überprüfen Sie den Registrierungsstatus:**  
@@ -87,13 +86,14 @@ Wenn die Hybrideinbindung in Azure AD nicht erfolgreich war, enthält das Dialog
     
     1. Der angemeldete Benutzer ist kein Domänenbenutzer (sondern beispielsweise ein lokaler Benutzer). Eine Azure AD-Hybrideinbindung auf Geräten niedriger Ebene wird nur für Domänenbenutzer unterstützt.
     
-    2. „Autoworkplace.exe“ kann sich aus irgendeinem Grund nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Einige mögliche Gründe: Probleme bei ausgehenden Netzwerkverbindungen mit Azure AD-URLs (überprüfen Sie die Voraussetzungen) oder MFA ist für den Benutzer aktiviert/konfiguriert, aber WIAORMUTLIAUTHN ist auf dem Verbundserver nicht konfiguriert (überprüfen Sie die Konfigurationsschritte). Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch „Autoworkplace.exe“ daran gehindert wird, unbeaufsichtigt ein Token abzurufen. 
+    2. „Autoworkplace.exe“ kann sich aus irgendeinem Grund nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Einige mögliche Gründe: Probleme bei ausgehenden Netzwerkverbindungen mit Azure AD-URLs (überprüfen Sie die Voraussetzungen) oder MFA ist für den Benutzer aktiviert/konfiguriert, aber WIAORMUTLIAUTHN ist auf dem Verbundserver nicht konfiguriert (überprüfen Sie die Konfigurationsschritte). Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch „Autoworkplace.exe“ daran gehindert wird, unbeaufsichtigt ein Token abzurufen.
     
     3. Wenn die Organisation das nahtlose einmalige Anmelden von Azure AD verwendet, sind die folgenden URLs in den IE-Intraneteinstellungen des Geräts nicht vorhanden:
-    - https://autologon.microsoftazuread-sso.com
-    - https://aadg.windows.net.nsatc.net
     
-    Die Einstellung „Aktualisierungen der Statusleiste per Skript zulassen“ muss für die Intranetzone aktiviert sein.
+       - https://autologon.microsoftazuread-sso.com
+       - https://aadg.windows.net.nsatc.net
+    
+       Die Einstellung „Aktualisierungen der Statusleiste per Skript zulassen“ muss für die Intranetzone aktiviert sein.
 
 - Ein Kontingent wurde erreicht
 

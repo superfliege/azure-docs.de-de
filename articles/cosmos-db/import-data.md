@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 02/27/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 103f4200ea24c34c066a11c7b49676f51f252589
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 036683698c49b8acb8a83117ac823c90fef0b2b3
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Datenmigrationstool
 
@@ -61,7 +61,7 @@ Das Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschie
 Das Importtool enthält zwar eine grafische Benutzeroberfläche (dtui.exe), kann aber auch über die Befehlszeile (dt.exe) gesteuert werden. In der Tat gibt es eine Option, mit der nach dem Einrichten eines Imports über die Benutzeroberfläche zugeordnete Befehl ausgegeben werden kann. Quelldateien in Tabellenformat (z. B. SQL Server- oder CSV-Dateien) können so umgewandelt werden, dass während des Imports hierarchische Beziehungen (Filialdokumente) erstellt werden können. Hier erhalten Sie weitere Informationen zu Quelloptionen, Beispielbefehlszeilen zum Importieren aus jedem Quellformat, Zieloptionen und zum Anzeigen der Importergebnisse.
 
 ## <a id="Install"></a>Installation
-Der Quellcode des Migrationstools ist in GitHub in [diesem Repository](https://github.com/azure/azure-documentdb-datamigrationtool) und eine kompilierte Version ist im [Microsoft Download Center](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) verfügbar. Sie können die Projektmappe kompilieren oder einfach die kompilierte Version in ein Verzeichnis Ihrer Wahl herunterladen und extrahieren. Führen Sie anschließend eine dieser Dateien aus:
+Der Quellcode des Migrationstools ist auf GitHub in [diesem Repository](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar. Sie können die Lösung lokal herunterladen und kompilieren und dann eine der folgenden Dateien ausführen:
 
 * **Dtui.exe**: GUI-Version des Tools
 * **Dt.exe**: Befehlszeilenversion des Tools
@@ -261,7 +261,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren aus Amazon D
     dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<Azure Cosmos DB Endpoint>;AccountKey=<Azure Cosmos DB Key>;Database=<Azure Cosmos DB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 
 ## <a id="BlobImport"></a>Importieren aus Azure Blob Storage
-Mit den Importprogrammoptionen für JSON-Dateien, MongoDB-Exportdateien und die CSV-Dateien können Sie eine oder mehrere Dateien aus dem Azure-Blob-Speicher importieren. Nach Angabe von Blob-Container-URL und Kontoschlüssel geben Sie einen regulären Ausdruck ein, um die zu importierenden Dateien auszuwählen.
+Mit den Importprogrammoptionen für JSON-Dateien, MongoDB-Exportdateien und die CSV-Dateien können Sie eine oder mehrere Dateien aus Azure Blob Storage importieren. Nach Angabe von Blob-Container-URL und Kontoschlüssel geben Sie einen regulären Ausdruck ein, um die zu importierenden Dateien auszuwählen.
 
 ![Screenshot der Optionen für Blob-Dateiquellen](./media/import-data/blobsource.png)
 
@@ -487,7 +487,7 @@ Das Tool bietet folgende Richtlinienvorlagen:
 > 
 
 ## <a name="export-to-json-file"></a>Exportieren in JSON-Datei
-Mit dem Azure Cosmos DB-JSON-Exportprogramm können Sie alle verfügbaren Quelloptionen in eine JSON-Datei exportieren, die ein Array aus JSON-Dokumenten enthält. Sie können wählen, ob das Programm den Export verarbeiten soll oder ob Sie den resultierenden Migrationsbefehl anzeigen und den Befehl selbst ausführen möchten. Die generierte JSON-Datei kann lokal oder im Azure Blob-Speicher gespeichert werden.
+Mit dem Azure Cosmos DB-JSON-Exportprogramm können Sie alle verfügbaren Quelloptionen in eine JSON-Datei exportieren, die ein Array aus JSON-Dokumenten enthält. Sie können wählen, ob das Programm den Export verarbeiten soll oder ob Sie den resultierenden Migrationsbefehl anzeigen und den Befehl selbst ausführen möchten. Die generierte JSON-Datei kann lokal oder in Azure Blob Storage gespeichert werden.
 
 ![Screenshot der Option zum Erstellen lokaler Azure Cosmos DB JSON-Dateiexporte](./media/import-data/jsontarget.png)
 

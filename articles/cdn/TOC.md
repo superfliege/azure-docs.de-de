@@ -18,9 +18,9 @@
 ### [Konfigurieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
 ## Optimieren von Inhalten
 ### [Übersicht über die Optimierung](cdn-optimization-overview.md)
-#### [Optimierung großer Dateien](cdn-large-file-optimization.md)
-#### [Medienstreaming-Optimierung](cdn-media-streaming-optimization.md)
-#### [Beschleunigung dynamischer Websites](cdn-dynamic-site-acceleration.md)
+####[Optimierung großer Dateien](cdn-large-file-optimization.md)
+####[Medienstreaming-Optimierung](cdn-media-streaming-optimization.md)
+####[Beschleunigung dynamischer Websites](cdn-dynamic-site-acceleration.md)
  
 ## Verwalten
 ### [Verwalten mit Azure PowerShell](cdn-manage-powershell.md)

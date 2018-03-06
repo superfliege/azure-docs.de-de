@@ -14,6 +14,7 @@
 # Anleitung
 ## Planen und Entwerfen
 ### [Überlegungen zum Entwurf](virtual-machine-scale-sets-design-overview.md)
+### [Grundlegendes zu Instanz-IDs](virtual-machine-scale-sets-instance-ids.md)
 
 ## Erstellen einer Vorlage
 ### [Informationen zu Skalierungsgruppenvorlagen](virtual-machine-scale-sets-mvss-start.md)

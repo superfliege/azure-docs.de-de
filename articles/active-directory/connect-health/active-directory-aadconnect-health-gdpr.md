@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2018
 ms.author: billmath
-ms.openlocfilehash: b9a0b9027bbead00300040186e453933b3a7f46b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d66f717f546271a5e5c3c49d6cbaef1c190d18d8
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect-health"></a>DSGVO-Konformität und Azure AD Connect Health 
 
@@ -35,6 +35,8 @@ Azure AD Connect Health fällt in die Kategorie **Datenverarbeitung** der DSGVO-
 
 ## <a name="data-retention-policy"></a>Datenaufbewahrungsrichtlinie
 Azure AD Connect Health erstellt keine Berichte, führt keine Analysen aus und bietet keine Einblicke über 30 Tage hinaus. Aus diesem Grund erfolgt in Azure AD Connect Health keine Speicherung, Verarbeitung oder Beibehaltung von Daten über 30 Tage hinaus. Dieser Entwurf ist mit den DSGVO-Vorschriften, den Microsoft-Richtlinien für Datenschutz und Compliance und den Azure AD-Richtlinien zur Datenaufbewahrung konform. 
+
+Server mit aktiven **Fehlerbenachrichtigungen** des Typs **Die Daten des Integritätsdiensts sind nicht aktuell** für mehr als 30 aufeinander folgende Tage deuten darauf hin, dass während dieser Zeitspanne keine Daten Connect Health erreicht haben. Diese Server werden deaktiviert und nicht im Connect Health-Portal angezeigt. Um die Server erneut zu aktivieren, müssen Sie den Integritäts-Agent deinstallieren und dann [erneut installieren](active-directory-aadconnect-health-agent-install.md). Beachten Sie, dass dies nicht für **Warnungen** mit derselben Warnungstyp gilt. Warnungen geben an, dass ein Teil der Daten auf dem Server nicht vorhanden ist, für den Sie benachrichtigt werden. 
  
 ## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Deaktivieren der Datensammlung und Überwachung in Azure AD Connect Health
 Mithilfe von Azure AD Connect Health können Sie die Datensammlung für jeden überwachten Server einzeln oder für eine Instanz eines überwachten Diensts beenden. Sie können beispielsweise die Datensammlung für einzelne AD FS-Server (Active Directory Federation Services) beenden, die mit Azure AD Connect Health überwacht werden. Sie können auch die Datensammlung für die gesamte AD FS-Instanz beenden, die unter Verwendung von Azure AD Connect Health überwacht wird. In diesem Fall werden die entsprechenden Server nach dem Beenden der Datensammlung aus dem Azure AD Connect Health-Portal gelöscht. 
@@ -53,7 +55,7 @@ Wenn Sie die Datensammlung und die Überwachung für einen einzelnen überwachte
 - Alle Daten der Instanz des überwachten Diensts werden gemäß der Microsoft Azure-Datenaufbewahrungsrichtlinie gelöscht.
 
 ### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>Deaktivieren der Datensammlung und Überwachung für einen überwachten Server
-Weitere Informationen finden Sie unter [Entfernen eines Servers aus Azure AD Connect Health](active-directory-aadconnect-health-operations.md#to-delete-a-server-from-the-azure-ad-connect-health-service).
+Weitere Informationen finden Sie unter [Entfernen eines Servers aus Azure AD Connect Health](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service).
 
 ### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>Deaktivieren der Datensammlung und Überwachung für eine Instanz eines überwachten Diensts
 Weitere Informationen finden Sie unter [Entfernen einer Dienstinstanz aus Azure AD Connect Health](active-directory-aadconnect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service).

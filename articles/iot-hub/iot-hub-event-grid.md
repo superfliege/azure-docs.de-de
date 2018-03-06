@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 6123039ba5eeb720e0ca590fa69af915da91367c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7c75a65714898f27ab0008ad5a30a5714d7174f4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions---preview"></a>Reagieren auf Ereignisse in IoT Hub mithilfe von Event Grid zum Auslösen von Aktionen – Vorschau
 
@@ -28,14 +28,7 @@ Azure IoT Hub ist in Azure Event Grid integriert, sodass Sie Ereignisbenachricht
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Die Event Grid-Integration ist in der öffentlichen Vorschau und demzufolge in einer begrenzten Anzahl von Regionen verfügbar. Die Integration funktioniert für IoT Hubs, die sich in den folgenden Regionen befinden:
-
-* USA (Mitte)
-* USA (Ost)
-* USA (Ost) 2
-* USA, Westen-Mitte
-* USA (Westen)
-* USA, Westen 2
+Die Event Grid-Integration ist für IoT-Hubs verfügbar, die sich in den Regionen befinden, in denen Event Grid unterstützt wird. Die neueste Liste der Regionen finden Sie unter [Einführung in das Azure Event Grid][lnk-eg-overview]. 
 
 ## <a name="event-types"></a>Ereignistypen
 

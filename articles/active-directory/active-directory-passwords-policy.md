@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: ade7f1d3c868c2ce6ccedbbf11aaf7dc54706cff
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 48ec84cd01126f431f22457a4ace451e4d9bce42
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -86,8 +86,8 @@ Jedes Benutzerkonto, das sich bei Azure AD anmeldet, muss über ein eindeutiges,
 | Eigenschaft | UserPrincipalName-Richtlinien |
 | --- | --- |
 | Zulässige Zeichen |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> zu erstellen und zu verwalten. - \_ ! \# ^ \~</li></ul> |
-| Unzulässige Zeichen |<ul> <li>Jedes @-Zeichen, das nicht den Benutzernamen und die Domäne trennt.</li> <li>Darf keinen Punkt (.) unmittelbar vor dem @-Symbol enthalten.</li></ul> |
-| Längenbeschränkungen |<ul> <li>Die Gesamtlänge darf 113 Zeichen nicht überschreiten.</li><li>Vor dem @-Symbol sind bis zu 64 Zeichen zulässig.</li><li>Nach dem @-Symbol sind bis zu 48 Zeichen zulässig.</li></ul> |
+| Unzulässige Zeichen |<ul> <li>Jedes\@\"-Zeichen, das nicht den Benutzernamen und die Domäne trennt.</li> <li>Darf keinen Punkt (.) unmittelbar vor dem \@\"-Symbol enthalten.</li></ul> |
+| Längenbeschränkungen |<ul> <li>Die Gesamtlänge darf 113 Zeichen nicht überschreiten.</li><li>Vor dem \@\"-Symbol sind bis zu 64 Zeichen zulässig.</li><li>Nach dem \@\"-Symbol sind bis zu 48 Zeichen zulässig.</li></ul> |
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Kennwortrichtlinien, die nur für Cloudbenutzerkonten gelten
 
@@ -96,7 +96,7 @@ In der folgenden Tabelle sind die verfügbaren Kennwortrichtlinieneinstellungen 
 | Eigenschaft | Requirements (Anforderungen) |
 | --- | --- |
 | Zulässige Zeichen |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
-| Unzulässige Zeichen |<ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li> Nur für sichere Kennwörter: Dürfen keinen Punkt (.) unmittelbar vor dem @-Symbol enthalten.</li></ul> |
+| Unzulässige Zeichen |<ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li> Nur für sichere Kennwörter: Diese dürfen keinen Punkt (.) unmittelbar vor dem \@\"-Symbol enthalten.</li></ul> |
 | Kennworteinschränkungen |<ul><li>Mindestens 8 Zeichen und höchstens 16 Zeichen.</li><li>Nur für sichere Kennwörter: Muss drei der folgenden vier Elemente enthalten:<ul><li>Kleinbuchstaben</li><li>Großbuchstaben</li><li>Zahlen (0 bis 9)</li><li>Symbole (siehe die vorherigen Kennworteinschränkungen)</li></ul></li></ul> |
 | Zeitraum bis zum Ablauf des Kennworts |<ul><li>Standardwert: **90** Tage</li><li>Der Wert kann im Azure Active Directory-Modul für Windows PowerShell mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |
 | Benachrichtigung bei Ablauf des Kennworts |<ul><li>Standardwert: **14** Tage (bevor das Kennwort abläuft)</li><li>Der Wert kann mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |

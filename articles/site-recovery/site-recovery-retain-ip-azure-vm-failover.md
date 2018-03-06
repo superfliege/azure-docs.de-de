@@ -12,7 +12,6 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-<<<<<<< HEAD
 ms.date: 02/27/2018
 =======
 <<<<<<< HEAD
@@ -23,6 +22,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
+<<<<<<< HEAD
 =======
 ms.date: 02/06/2018
 >>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
@@ -37,6 +37,8 @@ ms.lasthandoff: 02/28/2018
 ms.lasthandoff: 02/09/2018
 >>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
 >>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
+=======
+>>>>>>> badf78d3a696bb4bc2277e8b2840da1a5bb1178d
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Beibehaltung von IP-Adressen für das Failover von virtuellen Azure-Computern
 

@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 02/22/2018
 ms.author: nitinme
-ms.openlocfilehash: 2be4477528c9109151c4737eabc16741cc020ce8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 87e60bcc097157c733c1e08356b7cd9ea48bb868
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Kernel für Jupyter-Notebook in Spark-Clustern in Azure HDInsight 
 
@@ -135,7 +135,11 @@ Sie können das Notebook **00 - [READ ME FIRST] Spark Magic Kernel Features** im
 
 ## <a name="where-are-the-notebooks-stored"></a>Wo werden die Notebooks gespeichert?
 
-Jupyter Notebooks werden in dem Speicherkonto gespeichert, das mit dem Cluster unter dem Ordner **/HdiNotebooks** verknüpft ist.  Der Zugriff auf Notebooks, Textdateien und Ordner, die Sie in Jupyter erstellen, erfolgt über das Speicherkonto.  Wenn Sie z.B. Jupyter verwenden, um einen Ordner **myfolder** und ein Notebook **myfolder/mynotebook.ipynb** zu erstellen, können Sie im Speicherkonto unter `/HdiNotebooks/myfolder/mynotebook.ipynb` auf dieses Notebook zugreifen.  Das gilt auch umgekehrt, d.h. wenn Sie ein Notebook direkt in Ihr Speicherkonto unter `/HdiNotebooks/mynotebook1.ipynb` hochladen, ist das Notebook auch von Jupyter aus sichtbar.  Die Notebooks verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
+Wenn Ihr Cluster Azure Storage als Standardspeicherkonto verwendet, werden Jupyter Notebooks unter dem Ordner **/HdiNotebooks** im Speicherkonto gespeichert.  Der Zugriff auf Notebooks, Textdateien und Ordner, die Sie in Jupyter erstellen, erfolgt über das Speicherkonto.  Wenn Sie z.B. Jupyter verwenden, um einen Ordner **myfolder** und ein Notebook **myfolder/mynotebook.ipynb** zu erstellen, können Sie im Speicherkonto unter `/HdiNotebooks/myfolder/mynotebook.ipynb` auf dieses Notebook zugreifen.  Das gilt auch umgekehrt, d.h. wenn Sie ein Notebook direkt in Ihr Speicherkonto unter `/HdiNotebooks/mynotebook1.ipynb` hochladen, ist das Notebook auch von Jupyter aus sichtbar.  Die Notebooks verbleiben im Speicherkonto, auch nachdem der Cluster gelöscht wurde.
+
+> [!NOTE]
+> HDInsight-Cluster mit Azure Data Lake Store als Standardspeicher speichern Notebooks nicht im zugehörigen Speicher.
+>
 
 Die Art, in der Notebooks im Speicherkonto gespeichert werden, ist mit HDFS kompatibel. Wenn Sie also eine SSH-Verbindung mit dem Cluster herstellen, können Sie Dateiverwaltungsbefehle wie im folgenden Codeausschnitt verwenden:
 
@@ -143,8 +147,7 @@ Die Art, in der Notebooks im Speicherkonto gespeichert werden, ist mit HDFS komp
     hdfs dfs –copyToLocal /HdiNotebooks                    # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
-
-Falls Probleme beim Zugriff auf das Speicherkonto für den Cluster auftreten, werden die Notebooks ebenfalls auf dem Hauptknoten `/var/lib/jupyter`gespeichert.
+Unabhängig davon, ob der Cluster Azure Storage oder Azure Data Lake Store als das Standardspeicherkonto verwendet, werden die Notebooks auch auf dem Clusterhauptknoten unter `/var/lib/jupyter` gespeichert.
 
 ## <a name="supported-browser"></a>Unterstützte Browser
 

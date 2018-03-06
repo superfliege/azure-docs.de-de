@@ -1,19 +1,19 @@
 ---
-title: "Migrieren der MySQL-Datenbank durch Sicherungen und Wiederherstellungen in Azure-Datenbank für MySQL | Microsoft-Dokumentation"
+title: Migrieren der MySQL-Datenbank mithilfe von Sicherungen und Wiederherstellungen auf Azure Database for MySQL
 description: "In diesem Artikel werden zwei Möglichkeiten zum Sichern und Wiederherstellen von Datenbanken in Ihrer Azure-Datenbank für MySQL beschrieben, indem Tools wie mysqldump, MySQL Workbench und PHPMyAdmin genutzt werden."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/27/2017
-ms.openlocfilehash: e962fd65244ceebfc7544dc5a1d1956dad811fea
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 02/28/2018
+ms.openlocfilehash: 0c5a6b6d971d434a52bf80da6b34d7f6949589bc
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen
 In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstellen von Datenbanken in Azure-Datenbank für MySQL beschrieben
@@ -33,8 +33,8 @@ Mithilfe von gängigen Hilfsprogrammen und Tools wie MySQL Workbench, mysqldump,
 Sie können MySQL-Hilfsprogramme wie mysqldump und mysqlpump verwenden, um Datenbanken in mehreren häufigen Szenarien zu sichern und in eine Azure MySQL-Datenbank zu laden. In anderen Szenarien können Sie stattdessen den Ansatz [Importieren/Exportieren](concepts-migrate-import-export.md) verwenden.
 
 - Verwenden Sie Sicherungen von Datenbankabbildern, wenn Sie die gesamte Datenbank migrieren. Diese Empfehlung gilt, wenn Sie eine große Menge von MySQL-Daten verschieben oder die Dienstunterbrechung für Live-Websites oder -Anwendungen minimieren möchten. 
--  Stellen Sie sicher, dass für alle Tabellen in der Datenbank das InnoDB-Speichermodul verwendet wird, wenn Daten in Azure-Datenbank für MySQL geladen werden. Azure-Datenbank für MySQL unterstützt nur das InnoDB-Speichermodul und daher keine alternativen Speichermodule. Wenn Ihre Tabellen mit anderen Speichermodulen konfiguriert werden, sollten Sie diese in das InnoDB-Modulformat konvertieren, bevor Sie die Migration zu Azure-Datenbank für MySQL durchführen.
-   Wenn Sie beispielsweise eine WordPress oder WebApp mit Verwendung der MyISAM-Tabellen nutzen, sollten Sie diese Tabellen zuerst konvertieren, indem Sie vor dem Wiederherstellen der Azure-Datenbank für MySQL die Migration zum InnoDB-Format durchführen. Verwenden Sie die `ENGINE=InnoDB`-Klausel zum Festlegen des Moduls, das beim Erstellen einer neuen Tabelle verwendet wird, und übertragen Sie die Daten vor der Wiederherstellung dann in die kompatible Tabelle. 
+-  Stellen Sie sicher, dass für alle Tabellen in der Datenbank die InnoDB-Speicher-Engine verwendet wird, wenn Daten in Azure Database for MySQL geladen werden. Azure Database for MySQL unterstützt nur die InnoDB-Speicher-Engine und bietet keine Unterstützung für alternative Speicher-Engines. Wenn Ihre Tabellen mit anderen Speicher-Engines konfiguriert werden, sollten Sie diese in das InnoDB-Engine-Format konvertieren, bevor Sie die Migration zu Azure Database for MySQL durchführen.
+   Wenn Sie beispielsweise eine WordPress oder WebApp mit Verwendung der MyISAM-Tabellen nutzen, sollten Sie diese Tabellen zuerst konvertieren, indem Sie vor dem Wiederherstellen der Azure-Datenbank für MySQL die Migration zum InnoDB-Format durchführen. Verwenden Sie die `ENGINE=InnoDB`-Klausel zum Festlegen der Engine, die beim Erstellen einer neuen Tabelle verwendet wird, und übertragen Sie die Daten vor der Wiederherstellung dann in die kompatible Tabelle. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
@@ -101,7 +101,7 @@ mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```
 In diesem Beispiel stellen Sie die Daten in der neu erstellten Datenbank auf dem Azure-Datenbank für MySQL-Server wieder her.
 ```bash
-$ mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p testdb < testdb_backup.sql
+$ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
 
 ## <a name="export-using-phpmyadmin"></a>Exportieren mithilfe von PHPMyAdmin
