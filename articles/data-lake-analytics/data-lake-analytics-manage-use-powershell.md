@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: 65bf5928428b21e98c893a9de8ca596329329411
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd81e9d6c91387b3873593b84e952ca4f2546c57
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -99,13 +99,13 @@ Rufen Sie Details zu einem Konto ab.
 Get-AdlAnalyticsAccount -Name $adla
 ```
 
-Überprüfen Sie, ob ein bestimmtes Data Lake Analytics-Konto vorhanden ist. Das Cmdlet gibt entweder `True` oder `False` zurück.
+Überprüfen Sie, ob ein bestimmtes Data Lake Analytics-Konto vorhanden ist. Das Cmdlet gibt entweder `$true` oder `$false` zurück.
 
 ```powershell
 Test-AdlAnalyticsAccount -Name $adla
 ```
 
-Überprüfen Sie, ob ein bestimmtes Data Lake Store-Konto vorhanden ist. Das Cmdlet gibt entweder `True` oder `False` zurück.
+Überprüfen Sie, ob ein bestimmtes Data Lake Store-Konto vorhanden ist. Das Cmdlet gibt entweder `$true` oder `$false` zurück.
 
 ```powershell
 Test-AdlStoreAccount -Name $adls
@@ -155,8 +155,6 @@ Entfernen Sie eine Firewallregel.
 Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
 ```
 
-
-
 Lassen Sie Azure-IP-Adressen zu.
 
 ```powershell
@@ -171,8 +169,8 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ## <a name="managing-data-sources"></a>Verwalten von Datenquellen
 Azure Data Lake Analytics unterstützt derzeit die folgenden Datenquellen:
 
-* [Azure Data Lake-Speicher](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage (in englischer Sprache)](../storage/common/storage-introduction.md)
+* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
+* [Azure Storage](../storage/common/storage-introduction.md)
 
 Beim Erstellen eines Analytics-Kontos müssen Sie ein Data Lake Store-Konto als Standarddatenquelle festlegen. Das Data Lake-Standardspeicherkonto dient zum Speichern von Auftragsmetadaten und -überwachungsprotokollen. Nachdem Sie ein Data Lake Analytics-Konto erstellt haben, können Sie zusätzliche Data Lake Store-Konten und/oder Speicherkonten hinzufügen. 
 
@@ -239,7 +237,6 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
 
-
 ### <a name="submit-a-file-as-a-u-sql-script"></a>Senden Sie eine Datei als U-SQL-Skript
 
 ```powershell
@@ -258,15 +255,13 @@ Die Ausgabe enthält die derzeit ausgeführten Aufträge sowie die Aufträge, di
 Get-AdlJob -Account $adla
 ```
 
-
-### <a name="list-a-specific-number-of-jobs"></a>Auflisten einer bestimmten Anzahl von Aufträgen
+### <a name="list-the-top-n-jobs"></a>Auflisten der Top N Aufträge
 
 Die Liste der Aufträge wird standardmäßig nach der Übermittlungszeit sortiert. Die zuletzt gesendeten Aufträge werden somit zuerst angezeigt. Im ADLA-Konto werden Aufträge standardmäßig 180 Tage lang beibehalten, mit dem Cmdlet „Get-AdlJob“ werden jedoch nur die ersten 500 Aufträge zurückgegeben. Verwenden Sie den Parameter „-Top“, um eine bestimmte Anzahl von Aufträgen aufzulisten.
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
-
 
 ### <a name="list-jobs-based-on-the-value-of-job-property"></a>Auflisten von Aufträgen basierend auf dem Wert der job-Eigenschaft
 
@@ -298,7 +293,7 @@ Verwenden Sie den Parameter `-Result`, um zu erkennen, ob die beendeten Aufträg
 * Abgebrochen
 * Fehler
 * Keine
-* Erfolgreich
+* Succeeded
 
 ``` powershell
 # List Successful jobs.
@@ -307,7 +302,6 @@ Get-AdlJob -Account $adla -State Ended -Result Succeeded
 # List Failed jobs.
 Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
-
 
 Mithilfe des Parameters `-Submitter` können Sie erkennen, wer einen Auftrag übermittelt hat.
 
@@ -338,7 +332,6 @@ Verwenden Sie das Cmdlet `Get-AdlJobPipeline`, um die Pipelineinformationen für
 
 ```powershell
 $pipelines = Get-AdlJobPipeline -Account $adla
-
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 

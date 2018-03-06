@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: billmath
-ms.openlocfilehash: 68b36e1806d3338b07d4c2c400de233aff270132
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect"></a>DSGVO-Konformität und Azure AD Connect 
 
@@ -33,7 +33,7 @@ Die Einhaltung der Datenschutz-Grundverordnung für Azure AD Connect-Installatio
 1.  Extrahieren von Daten für eine Person und Entfernen der Daten dieser Person aus Installationen auf Anforderung
 2.  Sicherstellen, dass keine Daten länger als 48 Stunden beibehalten werden
 
-Das Azure AD Connect-Team empfiehlt die zweite Option.  Der Grund ist die deutlich einfachere Implementierung und Verwaltung.
+Das Azure AD Connect-Team empfiehlt die zweite Option, da sie viel einfacher zu implementieren und zu verwalten ist.
 
 Ein Azure AD Connect-Synchronisierungsserver speichert die folgenden Daten, die für die DSGVO-Konformität relevant sind:
 1.  Daten über eine Person in der **Azure AD Connect-Datenbank**

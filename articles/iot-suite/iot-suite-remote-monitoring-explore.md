@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/15/2018
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 5bc01c7e70e6837989c6bebd843ba1f41c8c5aeb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 96d701860abcc645b37d0420fe352da2adeb992f
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung
 
@@ -114,7 +114,7 @@ Auf der Seite **Wartung** können Sie die Details der Regel anzeigen, über die 
 
     ![Seite „Wartung“ mit Liste der ausgelösten Alarme](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
-1. Der erste Alarm in der Liste ist der zuletzt aufgetretene Alarm. Klicken Sie auf den Alarm **Chiller Pressure** (Druck der Kältemaschine), um die zugeordneten Geräte und Telemetriedaten anzuzeigen. In den Telemetriedaten wird für die Kältemaschine ein hoher Druck angezeigt:
+1. Der erste Alarm in der Liste ist der zuletzt aufgetretene Alarm. Klicken Sie auf den Alarm **Chiller Pressure Too High** (Druck der Kältemaschine zu hoch), um die zugeordneten Geräte und Telemetriedaten anzuzeigen. In den Telemetriedaten wird für die Kältemaschine ein hoher Druck angezeigt:
 
     ![Seite „Wartung“ mit Telemetriedaten für den ausgewählten Alarm](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
 
@@ -159,12 +159,12 @@ Verwenden Sie die Seite **Geräte**, um die erforderlichen Aufgaben für die Ger
 
     ![Auswählen eines Geräts auf der Seite „Geräte“](media/iot-suite-remote-monitoring-explore/devicesselect.png)
 
-1. Klicken Sie auf die Schaltfläche **Schedule** (Zeitplan), und wählen Sie die Option **Firmwareupdate**. Geben Sie Werte für **Job name** (Auftragsname) und **Firmware URI** (Firmware-URI) ein. Wählen Sie **Übernehmen**, um den Auftrag zu planen, der jetzt ausgeführt werden soll:
+1. Klicken Sie auf die Schaltfläche **Schedule** (Zeitplan), und wählen Sie die Option **Firmwareupdate**. Geben Sie Werte für **Job name** (Auftragsname), **Firmware Version** (Firmwareversion) und **Firmware URI** (Firmware-URI) ein. Wählen Sie **Übernehmen**, um den Auftrag zu planen, der jetzt ausgeführt werden soll:
 
     ![Planen des Firmwareupdates für das Gerät](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
     > [!NOTE]
-    > Mit den simulierten Geräten können Sie eine beliebige URL als Wert für **Firmware URI** (Firmware-URI) verwenden. Von den simulierten Geräten wird nicht auf die URL zugegriffen.
+    > Mit den simulierten Geräten können Sie eine beliebige URL als Wert für **Firmware URI** (Firmware-URI) und jeden gewünschten wert für die **Firmware Version** (Firmwareversion) verwenden. Von den simulierten Geräten wird nicht auf die URL zugegriffen.
 
 1. Notieren Sie sich, wie viele Geräte von dem Auftrag betroffen sind, und wählen Sie **Übernehmen**:
 

@@ -1,66 +1,71 @@
 ---
-title: "Beschränkungen in Azure-Datenbank für PostgreSQL | Microsoft-Dokumentation"
-description: "Beschreibung der Einschränkungen in Azure-Datenbank für PostgreSQL"
+title: "Einschränkungen in Azure-Datenbank für PostgreSQL"
+description: "Dieser Artikel beschreibt die Einschränkungen in Azure Database for PostgreSQL, z.B. die Anzahl der Verbindungs- und Speichermoduloptionen."
 services: postgresql
 author: kamathsun
 ms.author: sukamat
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
-ms.custom: mvc
 ms.topic: article
-ms.date: 12/04/2017
-ms.openlocfilehash: 6dbed1a834d74047178a9f996683d65520047e66
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.date: 02/28/2018
+ms.openlocfilehash: ba05308039e9743dd207333476e61a45c0ca166a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
 Der Azure-Datenbank für PostgreSQL-Dienst ist in der öffentlichen Vorschau verfügbar. In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
 
-## <a name="service-tier-maximums"></a>Maximalwerte der Diensttarife
-Azure-Datenbank für PostgreSQL weist mehrere Diensttarife auf, aus denen Sie bei der Erstellung eines Servers wählen können. Weitere Informationen finden Sie unter [Überblick über die verfügbaren Funktionen in jedem Diensttarif](concepts-service-tiers.md).  
+## <a name="pricing-tier-maximums"></a>Maximalwerte der Tarife
+Azure Database for PostgreSQL stellt mehrere Tarife bereit, unter denen Sie bei der Erstellung eines Servers wählen können. Weitere Informationen finden Sie unter [Tarife für Azure Database for PostgreSQL](concepts-pricing-tiers.md).  
 
-In jedem Diensttarif ist eine maximale Anzahl von Verbindungen, Compute-Einheiten und Speicherkapazitäten während der Dienstvorschau verfügbar. Es gelten folgende Maximalwerte: 
+In jedem Tarif ist eine maximale Anzahl von Verbindungen, Compute-Einheiten und Speicherkapazitäten wie folgt verfügbar: 
 
-| | |
-| :------------------------- | :---------------- |
-| **Max. Anzahl von Verbindungen**        |                   |
-| 50 Compute-Einheiten (Basic)     | 55 Verbindungen    |
-| 100 Compute-Einheiten (Basic)    | 105 Verbindungen   |
-| 100 Compute-Einheiten (Standard) | 150 Verbindungen   |
-| 200 Compute-Einheiten (Standard) | 250 Verbindungen   |
-| 400 Compute-Einheiten (Standard) | 480 Verbindungen   |
-| 800 Compute-Einheiten (Standard) | 950 Verbindungen   |
-| **Max. Anzahl von Compute-Einheiten**      |                   |
-| Basic-Dienstebene         | 100 Compute-Einheiten |
-| Standard-Dienstebene      | 800 Compute-Einheiten |
-| **Max. Speicherkapazität**            |                   |
-| Basic-Dienstebene         | 1 TB              |
-| Standard-Dienstebene      | 1 TB              |
+|Preisstufe| Computegeneration| Virtuelle Kerne| Max. Anzahl von Verbindungen |
+|---|---|---|---|
+|Basic| Gen 4| 1| 50 |
+|Basic| Gen 4| 2| 100 |
+|Basic| Gen 5| 1| 50 |
+|Basic| Gen 5| 2| 100 |
+|Universell| Gen 4| 2| 150|
+|Universell| Gen 4| 4| 250|
+|Universell| Gen 4| 8| 480|
+|Universell| Gen 4| 16| 950|
+|Universell| Gen 4| 32| 1500|
+|Universell| Gen 5| 2| 150|
+|Universell| Gen 5| 4| 250|
+|Universell| Gen 5| 8| 480|
+|Universell| Gen 5| 16| 950|
+|Universell| Gen 5| 32| 1500|
+|Arbeitsspeicheroptimiert| Gen 5| 2| 150|
+|Arbeitsspeicheroptimiert| Gen 5| 4| 250|
+|Arbeitsspeicheroptimiert| Gen 5| 8| 480|
+|Arbeitsspeicheroptimiert| Gen 5| 16| 950|
+|Arbeitsspeicheroptimiert| Gen 5| 32| 1.900|
 
-Das Azure-System benötigt fünf Verbindungen, um den Azure Database for PostgreSQL-Server zu überwachen. Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgende Fehlermeldung angezeigt:
+Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.
 
+Das Azure-System benötigt fünf Verbindungen, um den Azure Database for PostgreSQL-Server zu überwachen. 
 
-## <a name="preview-functional-limitations"></a>Funktionale Beschränkungen der Vorschau
+## <a name="functional-limitations"></a>Funktionale Beschränkungen
 ### <a name="scale-operations"></a>Skalierungsvorgänge
-1.  Die dynamische Skalierung von Servern über verschiedene Diensttarife hinweg, d.h. ein Wechsel zwischen den Diensttarifen „Basic“ und „Standard“, wird derzeit nicht unterstützt.
-2.  Die dynamische bedarfsgesteuerte Steigerung des Speichers auf vorab erstellten Servern wird derzeit nicht unterstützt.
-3.  Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
+1.  Die dynamische Skalierung von Servern über verschiedene Tarife hinweg wird zurzeit nicht unterstützt. Wechsel zwischen den Tarifen „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“ werden also nicht unterstützt.
+2.  Die Verringerung der Größe des Serverspeichers wird zurzeit nicht unterstützt.
 
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
 - Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt.
 
 ### <a name="subscription-management"></a>Abonnementverwaltung
-- Die dynamische Verschiebung von vorab erstellten Servern zwischen Abonnement- und Ressourcengruppen wird derzeit nicht unterstützt.
+- Die dynamische Verschiebung von Servern zwischen Abonnement- und Ressourcengruppen wird zurzeit nicht unterstützt.
 
-### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
-1.  Die Wiederherstellung in anderen Diensttarifen und/oder Compute-Einheiten und Speichergrößen ist nicht zulässig.
+### <a name="point-in-time-restore-pitr"></a>Point-in-Time-Wiederherstellung (PITR)
+1.  Wenn Sie das PITR-Feature verwenden, wird der neue Server mit den gleichen Konfigurationen erstellt wie der Server, auf dem er basiert.
 2.  Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Thema [Informationen zu den verfügbaren Funktionen in jedem Tarif](concepts-service-tiers.md) lesen
-- Thema [Unterstützte PostgreSQL-Datenbankversionen ](concepts-supported-versions.md) lesen
-- Thema [Sichern und Wiederherstellen eines Servers in Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals](howto-restore-server-portal.md) durchgehen
+- Informationen zu den [verfügbaren Funktionen in jedem Tarif](concepts-pricing-tiers.md)
+- Informationen zu [unterstützten PostgreSQL-Datenbankversionen](concepts-supported-versions.md)
+- Informationen zum [Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL mithilfe des Azure-Portals](howto-restore-server-portal.md)

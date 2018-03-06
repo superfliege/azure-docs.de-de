@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 378330149aebc1936846472a522631308fe3eb80
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 506781ac83e75d558badbd3a8842533e314a8dfa
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Problembehandlung bei der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -145,15 +145,14 @@ Wenn auf einem Server ein Synchronisierungsfehler auftritt:
 <a id="replica-not-ready"></a>**Fehler bei der Synchronisierung: „0x80c8300f – Das Replikat ist nicht zum Ausführen des erforderlichen Vorgangs bereit“**  
 Dieses Problem ist zu erwarten, wenn Sie einen Cloudendpunkt erstellen und eine Azure-Dateifreigabe verwenden, die Daten enthält. Wenn die Ausführung eines Auftrags zum Erkennen von Änderungen auf der Azure-Dateifreigabe abgeschlossen ist (das kann bis zu 24 Stunden dauern), sollte die Synchronisierung anschließend ordnungsgemäß funktionieren.
 
-<a id="broken-sync-files"></a>**Beheben von Synchronisierungsfehlern bei einzelnen Dateien**  
-Wenn einzelne Dateien nicht synchronisiert werden können:
-1. Überprüfen Sie in der Ereignisanzeige die Betriebs- und Diagnoseereignisprotokolle unter „Anwendungen“ und „Dienste\Microsoft\FileSync\Agent“.
-2. Stellen Sie sicher, dass für die Datei keine Handles geöffnet sind.
 
     > [!NOTE]
-    > Die Azure-Dateisynchronisierung erfasst in regelmäßigen Abständen VSS-Momentaufnahmen, um Dateien mit offenen Handles zu synchronisieren.
+    > Azure File Sync periodically takes VSS snapshots to sync files that have open handles.
 
 Wir unterstützen derzeit nicht das Verschieben von Ressourcen in ein anderes Abonnement oder zu einem anderen Azure AD-Mandanten.  Wenn das Abonnement zu einem anderen Mandanten verschoben wird, kann unser Dienst aufgrund der Besitzeränderung nicht mehr auf die Azure-Dateifreigabe zugreifen. Wenn der Mandant geändert wird, müssen Sie die Serverendpunkte und den Cloudendpunkt löschen (Informationen zum Bereinigen der Azure-Dateifreigabe für die erneute Verwendung finden Sie im Abschnitt zur Verwaltung von Synchronisierungsgruppen) und die Synchronisierungsgruppe neu erstellen.
+
+<a id="doesnt-have-enough-free-space"></a>**Fehler „Dieser PC hat nicht genügend freien Speicherplatz“**  
+Wenn das Portal den Status „Dieser PC hat nicht genügend freien Speicherplatz“ anzeigt, kann es sein, dass weniger als 1 GB freier Speicherplatz auf dem Volume verbleibt.  Wenn z.B. ein Volume mit 1,5GB vorhanden ist, kann die Synchronisierung nur 0,5 GB verwenden. Wenn Sie auf dieses Problem stoßen, erweitern Sie die Größe des Volumes, das für den Serverendpunkt verwendet wird.
 
 ## <a name="cloud-tiering"></a>Cloudtiering 
 Es gibt beim Cloudtiering zwei Fehlerpfade:

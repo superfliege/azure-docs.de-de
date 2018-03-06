@@ -16,21 +16,21 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 2cb32ddc67060d9860d172b90cc399622c52b04b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 792b92731f89f3d0bab4f23221223e469ddf9550
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
 
-In diesem Artikel erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen. Nach dem Erstellen eines virtuellen Netzwerks stellen Sie zwei virtuelle Computer im virtuellen Netzwerk bereit, die privat untereinander kommunizieren.
+In diesem Artikel erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen. Nachdem Sie ein virtuelles Netzwerk erstellt haben, stellen Sie zwei virtuelle Computer im virtuellen Netzwerk bereit, um die private Netzwerkkommunikation zwischen ihnen zu testen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -66,9 +66,11 @@ Jedem virtuellen Netzwerk ist mindestens ein Adresspräfix zugewiesen. Da beim E
 
 Ein anderer Teil der zurückgegebenen Informationen ist der **addressPrefix** von *10.0.0.0/24* für das im Befehl angegebene Subnetz *default*. Ein virtuelles Netzwerk enthält null oder mehr Subnetze. Mit dem Befehl wurde ein einzelnes Subnetz namens *default* erstellt, es wurde jedoch kein Adresspräfix für das Subnetz angegeben. Wenn für ein virtuelles Netzwerk oder Subnetz kein Adresspräfix angegeben wird, definiert Azure standardmäßig 10.0.0.0/24 als Adresspräfix für das erste Subnetz. Daher umfasst das Subnetz 10.0.0.0 bis 10.0.0.254, es sind jedoch nur 10.0.0.4 bis 10.0.0.254 verfügbar, da Azure die ersten vier Adressen (0 bis 3) und die letzte Adresse in jedem Subnetz reserviert.
 
-## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
+## <a name="test-network-communication"></a>Testen der Netzwerkkommunikation
 
-In einem virtuellen Netzwerk können mehrere Arten von Azure-Ressourcen privat miteinander kommunizieren. Eine Art von Ressource, die Sie in einem virtuellen Netzwerk bereitstellen können, ist ein virtueller Computer. Erstellen Sie zwei virtuelle Computer in dem virtuellen Netzwerk, damit Sie die Funktionsweise der Kommunikation zwischen virtuellen Computern in einem virtuellen Netzwerk in einem späteren Schritt überprüfen und verstehen können.
+In einem virtuellen Netzwerk können mehrere Arten von Azure-Ressourcen privat miteinander kommunizieren. Eine Art von Ressource, die Sie in einem virtuellen Netzwerk bereitstellen können, ist ein virtueller Computer. Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk, damit Sie die private Kommunikation zwischen ihnen in einem späteren Schritt überprüfen können.
+
+### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
 Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer namens *myVm1* erstellt. Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`. Mit der Option `--no-wait` wird der virtuelle Computer im Hintergrund erstellt, sodass Sie mit dem nächsten Schritt fortfahren können.
 
@@ -110,7 +112,7 @@ Das Erstellen des virtuellen Computers dauert einige Minuten. Nachdem die virtue
 
 Im Beispiel hat **privateIpAddress** den Wert *10.0.0.5*. Azure DHCP wies dem virtuellen Computer automatisch *10.0.0.5* zu, da es sich dabei um die nächste verfügbare Adresse im Subnetz *default* handelte. Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem späteren Schritt über das Internet auf den virtuellen Computer zugegriffen. Die öffentliche IP-Adresse wird nicht innerhalb der Adresspräfixe des virtuellen Netzwerks oder des Subnetzes zugewiesen. Öffentliche IP-Adressen werden aus einem [Pool von jeder Azure-Region zugewiesenen Adressen](https://www.microsoft.com/download/details.aspx?id=41653) zugewiesen. Auch wenn Azure bekannt ist, welche öffentliche IP-Adresse einem virtuellen Computer zugewiesen ist, hat das auf einem virtuellen Computer ausgeführte Betriebssystem keine Informationen über die ihm zugewiesene öffentliche IP-Adresse.
 
-## <a name="connect-to-a-virtual-machine"></a>Herstellen einer Verbindung mit einem virtuellen Computer
+### <a name="connect-to-a-virtual-machine"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
 Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer *myVm2*. Ersetzen Sie `<publicIpAddress>` durch die öffentliche IP-Adresse des virtuellen Computers. Im Beispiel oben lautet die IP-Adresse *40.68.254.142*.
 
@@ -118,7 +120,7 @@ Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Compu
 ssh <publicIpAddress>
 ```
 
-## <a name="validate-communication"></a>Überprüfen der Kommunikation
+### <a name="validate-communication"></a>Überprüfen der Kommunikation
 
 Verwenden Sie den folgenden Befehl zum Bestätigen der Kommunikation mit *myVm1* von *myVm2* aus:
 
@@ -136,9 +138,11 @@ ping bing.com -c 4
 
 Sie erhalten vier Antworten von bing.com. Standardmäßig können alle Ressourcen in einem virtuellen Netzwerk in ausgehender Richtung mit dem Internet kommunizieren.
 
+Beenden Sie die SSH-Sitzung mit Ihrem virtuellen Computer.
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen. Beenden Sie die SSH-Sitzung mit Ihrem virtuellen Computer, und löschen Sie dann die Ressourcen.
+Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -146,8 +150,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie ein virtuelles Standardnetzwerk mit einem Subnetz und zwei virtuellen Computern bereitgestellt. Um zu erfahren, wie Sie ein benutzerdefiniertes virtuelles Netzwerk mit mehreren Subnetzen erstellen und grundlegende Verwaltungsaufgaben ausführen, fahren Sie mit dem Tutorial zum Erstellen und Verwalten eines benutzerdefinierten virtuellen Netzwerks fort.
-
+In diesem Artikel haben Sie ein virtuelles Standardnetzwerk mit einem Subnetz bereitgestellt. Um zu erfahren, wie Sie ein benutzerdefiniertes virtuelles Netzwerk mit mehreren Subnetzen erstellen, fahren Sie mit dem Tutorial zum Erstellen eines benutzerdefinierten virtuellen Netzwerks fort.
 
 > [!div class="nextstepaction"]
-> [Erstellen und Verwalten eines benutzerdefinierten virtuellen Netzwerks](virtual-networks-create-vnet-arm-pportal.md#azure-cli)
+> [Erstellen eines benutzerdefinierten virtuellen Netzwerks](virtual-networks-create-vnet-arm-pportal.md#azure-cli)

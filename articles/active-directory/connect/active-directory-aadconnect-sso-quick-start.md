@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 2d172b22d00f21062237a1af1742bad6a03c864c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -99,7 +99,7 @@ Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zo
    - **Wertname**: Die Azure AD-URL, an die die Kerberos-Tickets weitergeleitet werden.
    - **Wert** (Daten): **1** gibt die Intranetzone an.
 
-   Das Ergebnis sieht wie folgt aus:
+    Das Ergebnis sieht wie folgt aus:
 
     Wert: https://autologon.microsoftazuread-sso.com
   
@@ -125,11 +125,11 @@ Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zo
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (alle Plattformen)
 
-Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jeder Benutzer muss den Firefox-Einstellungen manuell die Azure AD-URLs mithilfe der folgenden Schritte hinzufügen:
+Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jeder Benutzer muss den Firefox-Einstellungen manuell die Azure AD-URL mithilfe der folgenden Schritte hinzufügen:
 1. Führen Sie Firefox aus, und geben Sie in die Adressleiste `about:config` ein. Schließen Sie alle Benachrichtigungen, die Sie sehen.
 2. Suchen Sie nach der Einstellung **network.negotiate-auth.trusted-uris**. In dieser Einstellung werden in Firefox die vertrauenswürdigen Sites für die Kerberos-Authentifizierung aufgeführt.
 3. Klicken Sie mit der rechten Maustaste, und wählen Sie dann **Ändern** aus.
-4. Geben Sie https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net in das Feld ein.
+4. Geben Sie https://autologon.microsoftazuread-sso.com in das Feld ein.
 5. Klicken Sie auf **OK**, und öffnen Sie den Browser erneut.
 
 #### <a name="safari-mac-os"></a>Safari (Mac OS)
@@ -138,7 +138,7 @@ Stellen Sie sicher, dass der Computer mit Mac OS in Azure AD eingebunden ist. An
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (alle Plattformen)
 
-Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) oder [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) in Ihrer Umgebung außer Kraft gesetzt haben, stellen Sie sicher, dass Sie auch die URLs von Azure AD („https://autologon.microsoftazuread-sso.com“ und „https://aadg.windows.net.nsatc.net“) zu ihnen hinzufügen.
+Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) oder [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) in Ihrer Umgebung außer Kraft gesetzt haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (https://autologon.microsoftazuread-sso.com) hinzufügen.
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome (nur Mac OS)
 

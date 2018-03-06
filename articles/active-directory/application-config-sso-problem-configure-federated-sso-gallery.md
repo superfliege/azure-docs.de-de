@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 86ddb91ae16da797e32c6e1a8a8b2cd8fca989a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens im Verbund für eine Azure AD-Kataloganwendung
 
@@ -61,7 +61,7 @@ Abrufen der für die Anwendung vorkonfigurierten Muster:
 
 10. Es gibt drei Möglichkeiten, um die unterstützten Muster für die Anwendung zu ermitteln:
 
-   * Im Textfeld werden die unterstützten Muster als Platzhalter angezeigt. *Beispiel:* <https://contoso.com>
+   * Im Textfeld werden die unterstützten Muster als Platzhalter angezeigt. *Beispiel:* <https://contoso.com>.
 
    * Wenn das Muster nicht unterstützt wird, wird ein rotes Ausrufezeichen angezeigt, wenn Sie versuchen, den Wert im Textfeld eingeben. Wenn Sie den Mauszeiger auf das rote Ausrufungszeichen halten, werden die unterstützten Muster angezeigt.
 
@@ -71,7 +71,7 @@ Wenn die Werte nicht mit den in Azure AD vorkonfigurierten Mustern übereinstimm
 
 -   Wenden Sie sich an den Hersteller der Anwendung, um Werte zu erhalten, die den in Azure AD vorkonfigurierten Mustern entsprechen.
 
--   Alternativ können Sie sich an das Azure AD-Team unter <aadapprequest@microsoft.com> wenden oder einen Kommentar zum Lernprogramm senden, um die Aktualisierung der unterstützten Muster für die Anwendung anzufordern.
+-   Alternativ können Sie sich an das Azure AD-Team unter <aadapprequest@microsoft.com> wenden oder einen Kommentar zum Tutorial senden, um die Aktualisierung der unterstützten Muster für die Anwendung anzufordern.
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Wo wird das Format für EntityID (Benutzer-ID) festgelegt?
 

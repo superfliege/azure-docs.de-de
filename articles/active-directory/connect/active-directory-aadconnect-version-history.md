@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 843582a980280a14f033c6d27965867c063039e2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 63ae975426f1057b178171ef89ce98402ff18725
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -36,8 +36,7 @@ Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates e
 Download | [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
 
 ## <a name="117490"></a>1.1.749.0
-Status: für ausgewählte Kunden veröffentlicht
-
+Status: Veröffentlicht für ausgewählte Kunden. Dieses Release wird zurzeit an einen kleinen und zufälligen Teil der AADConnect-Mandanten verteilt, die automatisches Upgrade aktiviert haben. Wir werden diese Mandantengruppe in den kommenden Wochen erweitern, bis 100 % unserer Kunden mit automatischem Upgrade dieses Release erhalten haben. Danach werden wir den Build für den allgemeinen Download unter dem oben genannten Downloadlink veröffentlichen (zurzeit geplant für Mitte März 2018).
 >[!NOTE]
 >Wenn das Upgrade auf diese neue Version abgeschlossen ist, wird automatisch ein vollständiger Synchronisierungs- und Importvorgang für den Azure AD-Connector und ein vollständiger Synchronisierungsvorgang für den AD-Connector ausgelöst. Da dies je nach Größe Ihrer Azure AD Connect-Umgebung einen längeren Zeitraum in Anspruch nehmen kann, stellen Sie sicher, dass Sie die notwendigen Schritte unternommen haben, um diesen Vorgang zu unterstützen. Nehmen Sie das Upgrade andernfalls zu einem passenderen Zeitpunkt vor.
 

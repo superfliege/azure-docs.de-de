@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect: Unterstützte Topologien | Microsoft-Dokumentation"
+title: "Azure AD Connect: Unterstützte Topologien | Microsoft Docs"
 description: "In diesem Thema werden unterstützte und nicht unterstützte Topologien für Azure AD Connect behandelt."
 services: active-directory
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 02/27/2018
 ms.author: billmath
-ms.openlocfilehash: 9a4f85b88959fb90f156779d09d168e0ddbe3da5
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8003951fb0c80bda56de4718cbe94526dc118b61
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
@@ -144,7 +144,9 @@ In dieser Topologie ist ein Azure AD Connect-Synchronisierungsserver mit jedem A
 
 Eine DNS-Domäne kann nur in einem einzelnen Azure AD-Mandanten registriert werden. Die UPNs der Benutzer im lokalen Active Directory müssen außerdem separate Namespaces verwenden. In der vorherigen Abbildung sind drei separate UPN-Suffixe in der lokalen Active Directory-Instanz registriert: contoso.com, fabrikam.com und wingtiptoys.com. Die Benutzer in jeder lokalen Active Directory-Domäne verwenden einen anderen Namespace.
 
-GALsync findet zwischen den Azure AD-Mandanteninstanzen nicht statt. Das Adressbuch in Exchange Online und Skype for Business zeigt nur Benutzer im gleichen Mandanten an.
+>[!NOTE]
+>Die Synchronisierung der globalen Adressliste (GalSync) erfolgt in dieser Topologie nicht automatisch und erfordert eine zusätzliche benutzerdefinierte MIM-Implementierung, um sicherzustellen, dass jeder Mandant über eine vollständige globale Adressliste (GAL) in Exchange Online und Skype for Business Online verfügt.
+
 
 Bei dieser Topologie liegen die folgenden Einschränkungen bei ansonsten unterstützten Szenarien vor:
 

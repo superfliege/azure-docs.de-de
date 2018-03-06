@@ -1,5 +1,5 @@
 ---
-title: Bedingter Zugriff mit Azure Active Directory | Microsoft-Dokumentation
+title: Bedingter Zugriff mit Azure Active Directory | Microsoft Docs
 description: Erfahren Sie, wie Ihnen der bedingte Zugriff in Azure Active Directory beim Verwalten des Zugriffs von einem zentralen Ort aus hilft.
 services: active-directory
 keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2018
+ms.date: 02/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 30c8911105e95860899385caf40f8a250c1c340e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e4a65d81a7dade9ae63a24657d15a97a3a588b2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Bedingter Zugriff in Azure Active Directory
 
@@ -45,11 +45,11 @@ Im Folgenden finden Sie einige allgemeine Überlegungen zum Zugriff, bei denen d
 
 
 
-- **[Anmelderisiko](active-directory-conditional-access-conditions.md#sign-in-risk)**: Azure AD Identity Protection erkennt Anmelderisiken. Wie schränken Sie den Zugriff ein, wenn ein erkanntes Anmelderisiko auf einen böswilligen Benutzer hindeutet? Was geschieht, wenn Sie einen fundierteren Beweis dafür benötigen, dass eine Anmeldung durch einen berechtigten Benutzer durchgeführt wurde, oder wenn Ihre Zweifel so stark sind, dass Sie für bestimmte Benutzer den Zugriff auf eine App blockieren möchten?
+- **[Anmelderisiko:](active-directory-conditional-access-conditions.md#sign-in-risk)** Azure AD Identity Protection erkennt Anmelderisiken. Wie schränken Sie den Zugriff ein, wenn ein erkanntes Anmelderisiko auf einen böswilligen Benutzer hindeutet? Was geschieht, wenn Sie einen fundierteren Beweis dafür benötigen, dass eine Anmeldung durch einen berechtigten Benutzer durchgeführt wurde, oder wenn Ihre Zweifel so stark sind, dass Sie für bestimmte Benutzer den Zugriff auf eine App blockieren möchten?
 
-- **[Netzwerkadresse](active-directory-conditional-access-locations.md)**: Der Zugriff auf Azure AD ist von überall aus möglich. Was geschieht, wenn ein Zugriffsversuch von einer Netzwerkadresse ausgeführt wird, die nicht durch Ihre IT-Abteilung kontrolliert wird? Die Kombination aus Benutzername und Kennwort ist vermutlich ausreichend als Nachweis der Identität für den Zugriff auf Ihre Ressourcen aus Ihrem Unternehmensnetzwerk. Was geschieht aber, wenn Sie einen stärkeren Nachweis der Identität für den Zugriff aus anderen, unerwarteten Ländern oder Regionen der Welt benötigen? Was geschieht, wenn Sie sogar alle Zugriffsversuche von bestimmten Standorten blockieren möchten?  
+- **[Netzwerkadresse:](active-directory-conditional-access-locations.md)** Der Zugriff auf Azure AD ist von überall aus möglich. Was geschieht, wenn ein Zugriffsversuch von einer Netzwerkadresse ausgeführt wird, die nicht durch Ihre IT-Abteilung kontrolliert wird? Die Kombination aus Benutzername und Kennwort ist vermutlich ausreichend als Nachweis der Identität für den Zugriff auf Ihre Ressourcen aus Ihrem Unternehmensnetzwerk. Was geschieht aber, wenn Sie einen stärkeren Nachweis der Identität für den Zugriff aus anderen, unerwarteten Ländern oder Regionen der Welt benötigen? Was geschieht, wenn Sie sogar alle Zugriffsversuche von bestimmten Standorten blockieren möchten?  
 
-- **[Geräteverwaltung](active-directory-conditional-access-conditions.md#device-platforms)**: In Azure AD können Benutzer über eine breite Palette von Geräten, einschließlich mobiler und persönlicher Geräte, auf Cloud-Apps zugreifen. Was geschieht, wenn Sie festlegen möchten, dass nur noch ein Zugriff durch Benutzer möglich ist, die von Ihrer IT-Abteilung verwaltete Geräte verwenden? Was geschieht, wenn Sie darüber hinaus den Zugriff auf Cloud-Apps in Ihrer Umgebung für bestimmte Gerätetypen blockieren möchten? 
+- **[Geräteverwaltung:](active-directory-conditional-access-conditions.md#device-platforms)** In Azure AD können Benutzer über eine breite Palette von Geräten, einschließlich mobiler und persönlicher Geräte, auf Cloud-Apps zugreifen. Was geschieht, wenn Sie festlegen möchten, dass nur noch ein Zugriff durch Benutzer möglich ist, die von Ihrer IT-Abteilung verwaltete Geräte verwenden? Was geschieht, wenn Sie darüber hinaus den Zugriff auf Cloud-Apps in Ihrer Umgebung für bestimmte Gerätetypen blockieren möchten? 
 
 - **[Clientanwendung](active-directory-conditional-access-conditions.md#client-apps)**: Heute können Sie mit verschiedenen Arten von Apps auf viele Cloud-Apps zugreifen, z.B. mit webbasierten Apps, mobilen Apps oder Desktop-Apps. Was geschieht, wenn ein Zugriffsversuch mithilfe eines Client-App-Typs durchgeführt wird, der bekannte Probleme verursacht? Was geschieht, wenn Sie für bestimmte App-Typen ein Gerät vorschreiben möchten, das von Ihrer IT-Abteilung verwaltet wird? 
 
@@ -67,9 +67,9 @@ Eine Richtlinie für bedingten Zugriff ist die Definition eines Zugriffsszenario
 
 **When this happens** (Wenn dies geschieht) definiert den Grund für das Auslösen der Richtlinie. Dieser Grund wird durch eine Gruppe von Bedingungen gekennzeichnet, die erfüllt wurden. Beim bedingten Zugriff von Azure AD spielen zwei Zuordnungsbedingungen eine besondere Rolle:
 
-- **[Benutzer](active-directory-conditional-access-conditions.md#users-and-groups)**: Dies ist der Benutzer, der einen Zugriffsversuch durchführt (**Wer**). 
+- **[Benutzer:](active-directory-conditional-access-conditions.md#users-and-groups)** Dies ist der Benutzer, der einen Zugriffsversuch durchführt (**Wer**). 
 
-- **[Cloud-Apps](active-directory-conditional-access-conditions.md#cloud-apps)**: Dies sind die Ziele des Zugriffsversuchs (**Was**).    
+- **[Cloud-Apps:](active-directory-conditional-access-conditions.md#cloud-apps)** Dies sind die Ziele des Zugriffsversuchs (**Was**).    
 
 Beide Bedingungen müssen in einer Richtlinie für bedingten Zugriff angegeben werden. Zusätzlich zu den beiden obligatorischen Bedingungen können Sie auch zusätzliche Bedingungen einfügen, die beschreiben, wie der Zugriffsversuch erfolgt. Gängige Beispiele sind mobile Geräte oder Standorte außerhalb des Unternehmensnetzwerks. Weitere Informationen finden Sie unter [Bedingungen beim bedingten Zugriff von Azure Active Directory](active-directory-conditional-access-conditions.md).   
 
@@ -108,7 +108,7 @@ Weitere Informationen erhalten Sie unter [Einrichten von SharePoint Online und E
 
 ### <a name="license-requirements-for-using-conditional-access"></a>Lizenzanforderungen für die Verwendung des bedingten Zugriffs
 
-Für die Verwendung des bedingten Zugriffs ist eine Enterprise Mobility + Security-Lizenz im Azure AD Premium-Tarif erforderlich. Informationen zur am besten geeigneten Lizenz für Ihre Anforderungen finden Sie unter [Enterprise Mobility + Security – Preise](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing).
+Für die Verwendung des bedingten Zugriffs ist eine Azure AD Premium-Lizenz erforderlich. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich der allgemein verfügbaren Features der Free, Basic und Premium Editionen](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 87513ef82b5f754669a3a21dd736ecab6fb26fba
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3bb023cfd94c7b87550d692101d30f922de80bf9
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure
 
@@ -26,28 +26,28 @@ Zum Überwachen und Verwalten virtueller oder physischer Computer in Ihrem lokal
 
 Der Agent ist auf einem überwachten Windows-Computer als Microsoft Monitoring Agent-Dienst aufgeführt. Der Microsoft Monitoring Agent-Dienst sammelt Ereignisse aus Protokolldateien und dem Windows-Ereignisprotokoll sowie Leistungsdaten und andere Telemetriedaten. Selbst wenn der Agent nicht mit dem Log Analytics-Dienst kommunizieren kann, an den er Berichte übermittelt, wird er weiterhin ausgeführt und stellt die gesammelten Daten in die Warteschlange auf dem Datenträger des überwachten Computers. Wenn die Verbindung wiederhergestellt wird, sendet der Microsoft Monitoring Agent-Dienst die gesammelten Daten an den Dienst.
 
-Der Agent kann mit einer der folgenden Methoden installiert werden. Bei den meisten Installationen wird zum Installieren verschiedener Gruppen von Computern je nach Bedarf eine Kombination dieser Methoden verwendet.
+Der Agent kann mit einer der folgenden Methoden installiert werden. Bei den meisten Installationen wird zum Installieren verschiedener Gruppen von Computern je nach Bedarf eine Kombination dieser Methoden verwendet.  Details zur Verwendung der einzelnen Methoden finden Sie weiter unten im Artikel.
 
 * Manuelle Installation: Das Setup wird mithilfe des Setup-Assistenten über die Befehlszeile auf dem Computer installiert oder mithilfe eines vorhandenen Tools zur Softwareverteilung bereitgestellt.
 * Azure Automation Desired State Configuration (DSC): Dabei wird DSC in Azure Automation mit einem Skript für Windows-Computer verwendet, die bereits in Ihrer Umgebung bereitgestellt sind.  
 * PowerShell-Skript:
 * Resource Manager-Vorlage für virtuelle Computer, auf denen Windows lokal in Azure Stack ausgeführt wird  
 
-Informationen zu den Netzwerk- und Systemanforderungen für die Bereitstellung des Windows-Agents finden Sie unter [Sammeln von Daten von Computern in Ihrer Umgebung mit Azure Log Analytics](log-analytics-concept-hybrid.md#prerequisites).
+Informationen zu den Netzwerk- und Systemanforderungen zum Bereitstellen des Windows-Agents finden Sie unter [Voraussetzungen für Windows-Computer](log-analytics-concept-hybrid.md#prerequisites).
 
 ## <a name="obtain-workspace-id-and-key"></a>Abrufen von Arbeitsbereichs-ID und -Schlüssel
-Vor der Installation von Microsoft Monitoring Agent für Windows benötigen Sie die Arbeitsbereichs-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich.  Diese Informationen sind mit jeder Installationsmethode beim Setup erforderlich, um den Agent ordnungsgemäß zu konfigurieren und sicherzustellen, dass er erfolgreich mit Log Analytics kommunizieren kann.  
+Vor der Installation von Microsoft Monitoring Agent für Windows benötigen Sie die Arbeitsbereichs-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich.  Diese Informationen sind mit jeder Installationsmethode beim Setup erforderlich, um den Agent ordnungsgemäß zu konfigurieren und sicherzustellen, dass er erfolgreich mit Log Analytics in der kommerziellen Azure-Cloud und der US Government-Cloud kommunizieren kann.  
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 2. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den Arbeitsbereich aus, für den der Agent für die Übermittlung von Berichten konfiguriert werden soll.
 3. Wählen Sie **Erweiterte Einstellungen**.<br><br> ![Erweiterte Einstellungen für Log Analytics](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. Wählen Sie **Verbundene Quellen** und dann **Windows Server** aus.   
-5. Der Wert rechts von **Arbeitsbereichs-ID** und **Primärschlüssel**. Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.   
+5. Kopieren Sie die **Arbeitsbereichs-ID** und den **Primärschlüssel**, und fügen Sie diese Angaben in Ihren bevorzugten Texteditor ein.    
    
-## <a name="install-the-agent-using-setup"></a>Installieren des Agents über Setup
-Mit den folgenden Schritten wird der Agent für Log Analytics in Azure und Azure Government Cloud mithilfe des Setups für Microsoft Monitoring Agent auf Ihrem Computer installiert und konfiguriert.  Das Setupprogramm für den Agent ist in der heruntergeladenen Datei enthalten und muss für folgende Vorgänge extrahiert werden. 
+## <a name="install-the-agent-using-setup-wizard"></a>Installieren des Agents mithilfe des Setup-Assistenten
+Mit den folgenden Schritten wird der Agent für Log Analytics in Azure und Azure Government Cloud mithilfe des Setup-Assistenten für Microsoft Monitoring Agent auf Ihrem Computer installiert und konfiguriert.  
 
-1. Wählen Sie auf der Seite **Windows-Server** die entsprechende Version für **Windows-Agent herunterladen** aus, um in Abhängigkeit von der Prozessorarchitektur des Windows-Betriebssystems herunterzuladen.
+1. Wählen Sie in Ihrem Log Analyics-Arbeitsbereich auf der Seite **Windows-Server**, auf die Sie zuvor navigiert sind, die entsprechende Version für **Windows-Agent herunterladen** aus, um den Download abhängig von der Prozessorarchitektur des Windows-Betriebssystems auszuführen.   
 2. Führen Sie Setup aus, um den Agent auf Ihrem Computer zu installieren.
 2. Klicken Sie auf der Seite **Willkommen**auf **Weiter**.
 3. Lesen Sie die Seite **Lizenzbedingungen** durch, und klicken Sie anschließend auf **Ich stimme zu**.
@@ -63,7 +63,7 @@ Mit den folgenden Schritten wird der Agent für Log Analytics in Azure und Azure
 Nach Abschluss wird der **Microsoft Monitoring Agent** in der **Systemsteuerung** angezeigt. Informationen zum Überprüfen, ob er Berichte an Log Analytics übermittelt, finden Sie unter [Überprüfen der Agent-Konnektivität mit Log Analytics](#verify-agent-connectivity-to-log-analytics). 
 
 ## <a name="install-the-agent-using-the-command-line"></a>Installieren des Agents über die Befehlszeile
-Die heruntergeladene Datei für den Agent ist ein eigenständiges Installationspaket, das mit IExpress erstellt wurde.  Das Setupprogramm für den Agent und die unterstützenden Dateien sind im Paket enthalten und müssen extrahiert werden, um eine ordnungsgemäße Installation über die in den folgenden Beispielen gezeigte Befehlszeile durchführen zu können.  Bei dieser Methode kann der Agent so konfiguriert werden, dass Berichte an die Azure Commercial Cloud und die Azure US Government Cloud übermittelt werden.  
+Die heruntergeladene Datei für den Agent ist ein eigenständiges Installationspaket, das mit IExpress erstellt wurde.  Das Setupprogramm für den Agent und die unterstützenden Dateien sind im Paket enthalten und müssen extrahiert werden, um eine ordnungsgemäße Installation über die in den folgenden Beispielen gezeigte Befehlszeile durchführen zu können.    
 
 >[!NOTE]
 >Wenn Sie einen Agent aktualisieren möchten, müssen Sie die Skripting-API für Log Analytics verwenden. Weitere Informationen finden Sie im Thema [Verwalten und Warten des Log Analytics-Agents für Windows und Linux](log-analytics-agent-manage.md).
@@ -84,13 +84,13 @@ In der folgenden Tabelle sind die spezifischen Log Analytics-Parameter aufgefüh
 2. Für die Installation des Agents im Hintergrund und seine Konfiguration zum Übermitteln von Berichten an einen Arbeitsbereich in der Azure Commercial-Cloud extrahieren Sie die Setupdateien aus dem Ordner und geben Folgendes ein: 
    
      ```dos
-    setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
    Zum Konfigurieren des Agents zum Übermitteln von Berichten an die Azure US Government-Cloud geben Sie Folgendes ein: 
 
      ```dos
-    setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Installieren des Agents mithilfe von DSC in Azure Automation
@@ -122,6 +122,7 @@ Den Produktcode können Sie mithilfe von „Orca.exe“ aus [Windows SDK Compone
         $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
         Import-DscResource -ModuleName xPSDesiredStateConfiguration
+        Import-DscResource –ModuleName PSDesiredStateConfiguration
 
         Node OMSnode {
             Service OIService
@@ -141,7 +142,7 @@ Den Produktcode können Sie mithilfe von „Orca.exe“ aus [Windows SDK Compone
                 Path  = $OIPackageLocalPath
                 Name = "Microsoft Monitoring Agent"
                 ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-                Arguments = '/C:Deploy"setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+                Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
                 DependsOn = "[xRemoteFile]OIPackage"
             }
         }

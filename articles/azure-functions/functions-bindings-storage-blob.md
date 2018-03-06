@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 9294d19ea78a2b9cf4282d627eddd16e6588d3ee
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e44261e8ee62ce6a91110da0ec0bc489c426f688
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
@@ -63,6 +63,8 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
+Die Zeichenfolge `{name}` im Blobtriggerpfad `samples-workitems/{name}` erstellt einen [Bindungsausdruck](functions-triggers-bindings.md#binding-expressions-and-patterns), den Sie im Funktionscode verwenden können, um auf den Dateinamen des auslösenden Blobs zuzugreifen. Weitere Informationen finden Sie unter [Blobnamensmuster](#trigger---blob-name-patterns) weiter unten in diesem Artikel.
+
 Weitere Informationen zum Attribut `BlobTrigger` finden Sie unter [Trigger: Attribute](#trigger---attributes).
 
 ### <a name="trigger---c-script-example"></a>Trigger: C#-Skriptbeispiel
@@ -79,14 +81,16 @@ Bindungsdaten in der Datei *function.json*:
             "name": "myBlob",
             "type": "blobTrigger",
             "direction": "in",
-            "path": "samples-workitems",
+            "path": "samples-workitems/{name}",
             "connection":"MyStorageAccountAppSetting"
         }
     ]
 }
 ```
 
-Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#trigger---configuration).
+Die Zeichenfolge `{name}` im Blobtriggerpfad `samples-workitems/{name}` erstellt einen [Bindungsausdruck](functions-triggers-bindings.md#binding-expressions-and-patterns), den Sie im Funktionscode verwenden können, um auf den Dateinamen des auslösenden Blobs zuzugreifen. Weitere Informationen finden Sie unter [Blobnamensmuster](#trigger---blob-name-patterns) weiter unten in diesem Artikel.
+
+Weitere Informationen zu den Dateieigenschaften von *function.json* finden Sie im Abschnitt [Konfiguration](#trigger---configuration), in dem diese Eigenschaften erläutert werden.
 
 C#-Skriptcode für die Bindung an `Stream`:
 
@@ -112,7 +116,7 @@ public static void Run(CloudBlockBlob myBlob, string name, TraceWriter log)
 
 ### <a name="trigger---javascript-example"></a>Trigger: JavaScript-Beispiel
 
-Das folgende Beispiel zeigt einen Blobtrigger in einer Datei vom Typ *function.json* sowie [JavaScript-Code] (functions-reference-node.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im Container `samples-workitems` ein Blob hinzugefügt oder aktualisiert wird.
+Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei *function.json* und [JavaScript-Code](functions-reference-node.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im Container `samples-workitems` ein Blob hinzugefügt oder aktualisiert wird.
 
 Die Datei *function.json* sieht wie folgt aus:
 
@@ -124,14 +128,16 @@ Die Datei *function.json* sieht wie folgt aus:
             "name": "myBlob",
             "type": "blobTrigger",
             "direction": "in",
-            "path": "samples-workitems",
+            "path": "samples-workitems/{name}",
             "connection":"MyStorageAccountAppSetting"
         }
     ]
 }
 ```
 
-Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#trigger---configuration).
+Die Zeichenfolge `{name}` im Blobtriggerpfad `samples-workitems/{name}` erstellt einen [Bindungsausdruck](functions-triggers-bindings.md#binding-expressions-and-patterns), den Sie im Funktionscode verwenden können, um auf den Dateinamen des auslösenden Blobs zuzugreifen. Weitere Informationen finden Sie unter [Blobnamensmuster](#trigger---blob-name-patterns) weiter unten in diesem Artikel.
+
+Weitere Informationen zu den Dateieigenschaften von *function.json* finden Sie im Abschnitt [Konfiguration](#trigger---configuration), in dem diese Eigenschaften erläutert werden.
 
 Der JavaScript-Code sieht wie folgt aus:
 
@@ -214,12 +220,13 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="trigger---usage"></a>Trigger: Verwendung
 
-Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `T paramName`, um auf die Blobdaten zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Eine Bindung kann mit folgenden Typen erstellt werden:
+In C#- und C#-Skripts können Sie die folgenden Parametertypen für das auslösende Blob verwenden:
 
 * `Stream`
 * `TextReader`
-* `Byte[]`
 * `string`
+* `Byte[]`
+* Ein als JSON serialisierbares POCO
 * `ICloudBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
 * `CloudBlockBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
 * `CloudPageBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
@@ -227,9 +234,9 @@ Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `T paramName`, um
 
 Wie angemerkt muss für einige dieser Typen in *function.json* die Bindungsrichtung `inout` angegeben werden. Diese Richtung wird vom Standard-Editor im Azure-Portal nicht unterstützt, sodass Sie den erweiterten Editor verwenden müssen.
 
-Wenn Textblobs erwartet werden, kann für die Bindung der .NET-Typ `string` verwendet werden. Dies wird nur empfohlen, wenn die Blobgröße klein ist, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter unten in diesem Artikel.
+Eine Bindung mit `string`, `Byte[]` oder POCO wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter unten in diesem Artikel.
 
-Verwenden Sie in JavaScript `context.bindings.<name>`, um auf die Eingabeblobdaten zuzugreifen.
+Verwenden Sie in JavaScript `context.bindings.<name from function.json>`, um auf die Eingabeblobdaten zuzugreifen.
 
 ## <a name="trigger---blob-name-patterns"></a>Trigger: Blobnamensmuster
 
@@ -276,13 +283,28 @@ Wenn der Blobname *{20140101}-soundfile.mp3* lautet, erhält die Variable `name`
 
 Der Blobtrigger stellt mehrere Metadateneigenschaften bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Werte haben die gleiche Semantik wie der Typ [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet).
 
-
 |Eigenschaft  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Der Pfad des auslösenden Blobs.|
 |`Uri`|`System.Uri`|Der Blob-URI für den primären Speicherort|
 |`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties)|Die Systemeigenschaften des Blobs |
 |`Metadata` |`IDictionary<string,string>`|Die benutzerdefinierten Metadaten für das Blob|
+
+Beispielsweise protokollieren die folgenden C#-Skript- und JavaScript-Beispiele den Pfad zum auslösenden Blob, einschließlich des Containers:
+
+```csharp
+public static void Run(string myBlob, string blobTrigger, TraceWriter log)
+{
+    log.Info($"Full blob path: {blobTrigger}");
+} 
+```
+
+```javascript
+module.exports = function (context, myBlob) {
+    context.log("Full blob path:", context.bindingData.blobTrigger);
+    context.done();
+};
+```
 
 ## <a name="trigger---blob-receipts"></a>Trigger: Blobbelege
 
@@ -316,9 +338,9 @@ Der Blobtrigger verwendet intern eine Warteschlange, sodass die maximal zulässi
 
 [Der Verbrauchstarif](functions-scale.md#how-the-consumption-plan-works) schränkt eine Funktions-App auf einem virtuellen Computer (VM) auf 1,5 GB an Arbeitsspeicher ein. Der Arbeitsspeicher wird von jeder parallel ausgeführten Funktionsinstanz und durch die Functions-Runtime selbst verwendet. Wenn eine durch einen Blob ausgelöste Funktion das gesamte Blob in den Arbeitsspeicher lädt, entspricht der maximal von dieser Funktion verwendete Arbeitsspeicher nur für Blobs dem 24-fachen der maximalen Blobgröße. Beispiel: Eine Funktions-App, die drei Funktionen mit Blobtrigger umfasst und die Standardeinstellungen verwendet, weist pro VM eine maximale Nebenläufigkeit von 3 × 24 = 72 Funktionsaufrufen auf.
 
-JavaScript-Funktionen laden das gesamte Blob in den Arbeitsspeicher, C#-Funktionen zeigen dieses Verhalten bei einer Bindung an `string`.
+JavaScript-Funktionen laden das gesamte Blob in den Arbeitsspeicher, C#-Funktionen zeigen dieses Verhalten bei einer Bindung an `string`, `Byte[]` oder POCO.
 
-## <a name="trigger---polling-for-large-containers"></a>Trigger: Abfragen für große Container
+## <a name="trigger---polling"></a>Trigger: Abruf
 
 Wenn der überwachte Blobcontainer mehr als 10.000 Blobs enthält, überprüft die Functions-Runtime Protokolldateien auf neue oder geänderte Blobs. Dieser Vorgang kann zu Verzögerungen führen. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Außerdem erfolgt das [Erstellen von Storage-Protokollen auf bestmögliche Weise](/rest/api/storageservices/About-Storage-Analytics-Logging). Es gibt keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn eine schnellere oder zuverlässigere Blobverarbeitung erforderlich ist, sollten Sie beim Erstellen des Blobs eine [Warteschlangennachricht](../storage/queues/storage-dotnet-how-to-use-queues.md) erstellen. Verwenden Sie dann einen [Warteschlangentrigger](functions-bindings-storage-queue.md) anstelle eines Blobtriggers für die Verarbeitung des Blobs. Eine andere Möglichkeit ist die Verwendung von Event Grid. Weitere Informationen finden Sie im Tutorial [Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
 
@@ -498,12 +520,12 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="input---usage"></a>Eingabe: Verwendung
 
-Greifen Sie in C#-Klassenbibliotheken auf das Blob zu, indem Sie einen Methodenparameter wie `Stream paramName` verwenden. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Eine Bindung kann mit folgenden Typen erstellt werden:
+In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Blobeingabebindung verwenden:
 
+* `Stream`
 * `TextReader`
 * `string`
 * `Byte[]`
-* `Stream`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
 * `ICloudBlob` (erfordert die Bindungsrichtung „inout“ in *function.json*)
@@ -513,9 +535,9 @@ Greifen Sie in C#-Klassenbibliotheken auf das Blob zu, indem Sie einen Methodenp
 
 Wie angemerkt muss für einige dieser Typen in *function.json* die Bindungsrichtung `inout` angegeben werden. Diese Richtung wird vom Standard-Editor im Azure-Portal nicht unterstützt, sodass Sie den erweiterten Editor verwenden müssen.
 
-Beim Lesen von Textblobs kann eine Bindung mit einem `string`-Typ erstellt werden. Dies wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden.
+Eine Bindung mit `string` oder `Byte[]` wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter oben in diesem Artikel.
 
-Verwenden Sie in JavaScript `context.bindings.<name>`, um auf die Blobdaten zuzugreifen.
+Verwenden Sie in JavaScript `context.bindings.<name from function.json>`, um auf die Blobdaten zuzugreifen.
 
 ## <a name="output"></a>Output
 
@@ -709,7 +731,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="output---usage"></a>Ausgabe: Verwendung
 
-Greifen Sie in C#-Klassenbibliotheken auf das Blob zu, indem Sie einen Methodenparameter wie `Stream paramName` verwenden. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Eine Bindung kann mit folgenden Typen erstellt werden:
+In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Blobausgabebindung verwenden:
 
 * `TextWriter`
 * `out string`
@@ -725,9 +747,12 @@ Greifen Sie in C#-Klassenbibliotheken auf das Blob zu, indem Sie einen Methodenp
 
 Wie angemerkt muss für einige dieser Typen in *function.json* die Bindungsrichtung `inout` angegeben werden. Diese Richtung wird vom Standard-Editor im Azure-Portal nicht unterstützt, sodass Sie den erweiterten Editor verwenden müssen.
 
-Beim Lesen von Textblobs kann eine Bindung mit einem `string`-Typ erstellt werden. Dies wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden.
+In asynchronen Funktionen verwenden Sie den Rückgabewert oder `IAsyncCollector` anstelle eines `out`-Parameters.
 
-Verwenden Sie in JavaScript `context.bindings.<name>`, um auf die Blobdaten zuzugreifen.
+Eine Bindung mit `string` oder `Byte[]` wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter oben in diesem Artikel.
+
+
+Verwenden Sie in JavaScript `context.bindings.<name from function.json>`, um auf die Blobdaten zuzugreifen.
 
 ## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
 
