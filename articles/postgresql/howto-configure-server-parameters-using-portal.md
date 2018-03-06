@@ -1,19 +1,19 @@
 ---
-title: Konfigurieren von Serverparametern in Azure Database for PostgreSQL mit dem Azure-Portal | Microsoft-Dokumentation
+title: Konfigurieren von Serverparametern in Azure Database for PostgreSQL mit dem Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie die Serverparameter in Azure Database for PostgreSQL mithilfe des Azure-Portals konfigurieren.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/08/2017
-ms.openlocfilehash: 9e8262fbfcde2e69a656e356a7ab241f2d5043ad
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.date: 02/28/2018
+ms.openlocfilehash: 6d43cac79c19e117385549b1678a464dc5731bd7
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-server-parameters-in-azure-portal"></a>Konfigurieren von Serverparametern im Azure-Portal
 Sie können Konfigurationsparameter für einen Azure Database for PostgreSQL-Server mit dem Azure-Portal auflisten, anzeigen und aktualisieren.
@@ -46,6 +46,6 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 ![Alle auf Standard zurücksetzen](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können sich über folgende Themen informieren:
+Sie erhalten Informationen zu folgenden Themen:
 - [Azure Database for PostgreSQL-Server](concepts-servers.md)
 - [Anpassen der Serverkonfigurationsparameter mithilfe der Azure CLI](howto-configure-server-parameters-using-cli.md)

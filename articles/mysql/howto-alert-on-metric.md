@@ -1,19 +1,19 @@
 ---
-title: "Konfigurieren von Warnungen zu Metriken für Azure Database for MySQL im Azure-Portal | Microsoft-Dokumentation"
+title: "Konfigurieren von Warnungen zu Metriken für Azure Database for MySQL im Azure-Portal"
 description: "In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Warnungen zu Metriken für Azure Database for MySQL konfigurieren und auf diese zugreifen."
 services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/24/2017
-ms.openlocfilehash: 5b4263e76f89ae27b9c9f317db3038def01e3e6b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 02/28/2018
+ms.openlocfilehash: 025e7089f797b0accf8ee7d14028e5b5ab23c113
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MySQL 
 
@@ -27,7 +27,7 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
 * [Befehlszeilenschnittstelle](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -45,10 +45,10 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
    ![Formular „Metrikwarnung hinzufügen“](./media/howto-alert-on-metric/2-add-rule-form.png)
 
-   | Einstellung | Beschreibung  |
+   | Einstellung | BESCHREIBUNG  |
    |---------|---------|
-   | Name | Geben Sie einen Namen für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
-   | Beschreibung | Geben Sie eine kurze Beschreibung für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
+   | NAME | Geben Sie einen Namen für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
+   | BESCHREIBUNG | Geben Sie eine kurze Beschreibung für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
    | Warnung bei | Wählen Sie für diese Art der Warnung die Option **Metriken** aus. |
    | Abonnement | Dieses Feld ist bereits mit dem Abonnement ausgefüllt, das Ihr Azure Database for MySQL hostet. |
    | Ressourcengruppe | Dieses Feld ist bereits mit der Ressourcengruppe für Ihr Azure Database for MySQL ausgefüllt. |

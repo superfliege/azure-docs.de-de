@@ -1,19 +1,19 @@
 ---
-title: "Konfigurieren der und Zugreifen auf die Serverprotokolle für PostgreSQL im Azure-Portal | Microsoft Docs"
+title: "Konfigurieren der Serverprotokolle für PostgreSQL und Zugreifen auf diese im Azure-Portal"
 description: In diesem Artikel wird beschrieben, wie Sie aus dem Azure-Portal die Serverprotokolle in Azure Database for PostgreSQL konfigurieren und auf diese zugreifen.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 10/19/2017
-ms.openlocfilehash: a2f67b21293a1a0456b27cad9043be01fdd5274a
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.date: 02/28/2018
+ms.openlocfilehash: aa9823c65b342f922ca78a51ecd3055dfac62869
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle im Azure-Portal
 
@@ -34,21 +34,15 @@ Konfigurieren Sie den Zugriff auf die Abfrage- und Fehlerprotokolle.
 
    ![Wählen Sie „Serverprotokolle“ aus, und wählen Sie dann „Klicken Sie hier zum Aktivieren“ aus.](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
-4. Wählen Sie die Überschrift **Klicken Sie hier, um Protokolle zu aktivieren und Protokollparameter zu konfigurieren** aus, um die Serverparametern anzuzeigen.
+4. Wählen Sie die Überschrift **Klicken Sie hier, um Protokolle zu aktivieren und Protokollparameter zu konfigurieren** aus, um die Serverparameter anzuzeigen.
 
-5. Wählen Sie die Erweiterung **Mehr anzeigen** aus, um eine erweiterte Liste der verfügbaren Parameter anzuzeigen. 
-
-   Weitere Informationen zu den Definitionen von Parametern finden Sie in der PostgreSQL-Dokumentation unter [Fehlerberichterstellung und Protokollierung](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
-
-   ![Kurze Liste der Protokollparameter. Klicken Sie auf „Mehr anzeigen“, um die vollständige Liste anzuzeigen.](./media/howto-configure-server-logs-in-portal/2-show-more.png)
-
-6. Ändern Sie die Parameter, die Sie anpassen müssen. Alle in dieser Sitzung vorgenommenen Änderungen werden in violett hervorgehoben.
+5. Ändern Sie die Parameter, die Sie anpassen müssen. Alle in dieser Sitzung vorgenommenen Änderungen werden in violett hervorgehoben.
 
    Nachdem Sie die Parameter geändert haben, klicken Sie auf **Speichern**. Sie können Ihre Änderungen auch **verwerfen**. 
 
    ![Vollständige Liste der Parameter mit zu speichernden oder zu verwerfenden Änderungen](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-7. Kehren Sie zur Liste der Protokolle zurück, indem Sie auf der Seite **Serverparameter** auf die **Schaltfläche „Schließen“** (X-Symbol) klicken.
+6. Kehren Sie zur Liste der Protokolle zurück, indem Sie auf der Seite **Serverparameter** auf die **Schaltfläche „Schließen“** (X-Symbol) klicken.
 
 ## <a name="view-list-and-download-logs"></a>Anzeigen der Liste und Herunterladen von Protokollen
 Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Protokolle anzeigen und einzelne Protokolldateien im Bereich „Serverprotokolle“ herunterladen. 

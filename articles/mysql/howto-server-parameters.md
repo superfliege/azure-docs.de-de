@@ -1,19 +1,19 @@
 ---
-title: "Konfigurieren von Serverparametern in Azure-Datenbank für MySQL | Microsoft-Dokumentation"
+title: Konfigurieren von Serverparametern in Azure Database for MySQL
 description: "In diesem Artikel wird beschrieben, wie Sie MySQL-Serverparameter in Azure Database for MySQL mithilfe des Azure-Portals konfigurieren können."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 01/25/2018
-ms.openlocfilehash: 59eeed42356a276c259bd8da55890b7ada67d729
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.date: 02/28/2018
+ms.openlocfilehash: b3510c616d2a9ba66cb83cb998c42e03fdbb0f2b
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal
 
@@ -22,10 +22,14 @@ Azure Database für MySQL unterstützt das Konfigurieren einiger Serverparameter
 ## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigieren Sie im Azure-Portal zu „Serverparameter“.
 1. Melden Sie sich beim Azure-Portal an, und suchen Sie dann nach Ihrem Azure Database for MySQL-Server.
 2. Klicken Sie im Abschnitt **EINSTELLUNGEN** auf **Serverparameter**, um die Seite „Serverparameter“ für Azure Database for MySQL zu öffnen.
-3. Suchen Sie die Einstellungen, die Sie anpassen möchten. Überprüfen Sie die Spalte **Beschreibung**, um den Zweck und die zulässigen Werte zu verstehen. 
-4. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
-
 ![Seite „Serverparameter“ im Azure-Portal](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+3. Suchen Sie die Einstellungen, die Sie anpassen möchten. Überprüfen Sie die Spalte **Beschreibung**, um den Zweck und die zulässigen Werte zu verstehen. 
+![Dropdownliste für Enumerierung](./media/howto-server-parameters/3-toggle_parameter.png)
+4. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
+![Änderungen speichern oder verwerfen](./media/howto-server-parameters/4-save_parameters.png)
+5. Wenn Sie neue Werte für die Parameter gespeichert haben, können Sie jederzeit alles zurück auf die Standardwerte setzen, indem Sie die Option **Alle auf Standard zurücksetzen** wählen.
+![Alle auf Standard zurücksetzen](./media/howto-server-parameters/5-reset_parameters.png)
+
 
 ## <a name="list-of-configurable-server-parameters"></a>Liste der konfigurierbaren Serverparameter
 
@@ -34,14 +38,27 @@ Die Liste der unterstützten Serverparameter wächst ständig. Verwenden Sie die
 ## <a name="nonconfigurable-server-parameters"></a>Nicht konfigurierbare Serverparameter
 „InnoDB-Pufferpool“ und „Max. Anzahl von Verbindungen“ können nicht konfiguriert werden und sind an Ihren [Tarif](concepts-service-tiers.md) gebunden. 
 
-| **Preisstufe** | **InnoDB-Pufferpool (MB)** | **Max. Anzahl von Verbindungen** |
-| :------------------------ | :-------- | :----------- |
-| Basic 50 | 1024 | 50 | 
-| Basic 100  | 2.560 | 100 | 
-| Standard 100 | 2.560 | 200 | 
-| Standard 200 | 5120 | 400 | 
-| Standard 400 | 10.240 | 800 | 
-| Standard 800 | 20.480 | 1600 |
+|**Tarif**| **Computegeneration**|**vCore(s)**|**InnoDB-Pufferpool (MB)**| **Max. Anzahl von Verbindungen**|
+|---|---|---|---|--|
+|Basic| Gen 4| 1| 1024| 50 |
+|Basic| Gen 4| 2| 2.560| 100 |
+|Basic| Gen 5| 1| 1024| 50 |
+|Basic| Gen 5| 2| 2.560| 100 |
+|Allgemeiner Zweck| Gen 4| 2| 2.560| 200|
+|Allgemeiner Zweck| Gen 4| 4| 5120| 400|
+|Allgemeiner Zweck| Gen 4| 8| 10.240| 800|
+|Allgemeiner Zweck| Gen 4| 16| 20.480| 1600|
+|Allgemeiner Zweck| Gen 4| 32| 40960| 3200|
+|Allgemeiner Zweck| Gen 5| 2| 2.560| 200|
+|Allgemeiner Zweck| Gen 5| 4| 5120| 400|
+|Allgemeiner Zweck| Gen 5| 8| 10.240| 800|
+|Allgemeiner Zweck| Gen 5| 16| 20.480| 1600|
+|Allgemeiner Zweck| Gen 5| 32| 40960| 3200|
+|Arbeitsspeicheroptimiert| Gen 5| 2| 7168| 600|
+|Arbeitsspeicheroptimiert| Gen 5| 4| 15360| 1250|
+|Arbeitsspeicheroptimiert| Gen 5| 8| 30720| 2500|
+|Arbeitsspeicheroptimiert| Gen 5| 16| 62464| 5.000|
+|Arbeitsspeicheroptimiert| Gen 5| 32| 125952| 10000| 
 
 Diese zusätzlichen Serverparameter sind im System nicht konfigurierbar:
 

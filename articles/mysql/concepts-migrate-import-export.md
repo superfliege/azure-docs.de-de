@@ -1,19 +1,19 @@
 ---
-title: "Importieren und Exportieren in bzw. aus Azure-Datenbank für MySQL | Microsoft-Dokumentation"
+title: Importieren und Exportieren in bzw. aus Azure Database for MySQL
 description: "In diesem Artikel werden gängige Möglichkeiten zum Importieren von Datenbanken in bzw. Exportieren von Datenbanken aus Azure-Datenbank für MySQL mithilfe von Tools wie MySQL Workbench erläutert."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/02/2017
-ms.openlocfilehash: 36ffa7082ce60093cbd90d0c12187e28f517646d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.date: 02/28/2018
+ms.openlocfilehash: f15811cd44e405ee33d9ba3d565c2982e71a80c0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrieren der MySQL-Datenbank durch Import und Export
 In diesem Artikel werden zwei gängige Vorgehensweisen beim Importieren von Daten zu bzw. Exportieren von Daten von einem Server für Azure-Datenbank für MySQL mithilfe von MySQL Workbench erläutert. 
@@ -48,9 +48,9 @@ Verwenden Sie in den folgenden Szenarien MySQL-Tools zum Importieren und Exporti
 - Wenn Sie andere Datenbankobjekte als Tabellen verschieben, müssen Sie diese Objekte explizit erstellen. Schließen Sie Einschränkungen (Primärschlüssel, Fremdschlüssel, Indizes), Sichten, Funktionen, Prozeduren, Trigger und andere Datenbankobjekte ein, die migriert werden sollen.
 - Erstellen Sie beim Migrieren von Daten aus anderen externen Datenquellen als einer MySQL-Datenbank Flatfiles, und importieren Sie diese mithilfe von [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
-Stellen Sie sicher, dass für alle Tabellen in der Datenbank das InnoDB-Speichermodul verwendet wird, wenn Sie Daten in Azure-Datenbank für MySQL laden. Azure-Datenbank für MySQL unterstützt nur das InnoDB-Speichermodul und daher keine alternativen Speichermodule. Wenn Ihre Tabellen alternative Speichermodule erfordern, müssen Sie sie so konvertieren, dass sie das Format des InnoDB-Moduls verwenden, ehe Sie die Migration nach Azure-Datenbank für MySQL ausführen. 
+Stellen Sie sicher, dass für alle Tabellen in der Datenbank die InnoDB-Speicher-Engine verwendet wird, wenn Sie Daten in Azure Database for MySQL laden. Azure Database for MySQL unterstützt nur die InnoDB-Speicher-Engine und bietet keine Unterstützung für alternative Speicher-Engines. Wenn Ihre Tabellen alternative Speicher-Engines erfordern, müssen Sie sie so konvertieren, dass sie das Format der InnoDB-Engine verwenden, ehe Sie die Migration zu Azure Database for MySQL ausführen. 
 
-Angenommen, Sie verfügen über eine WordPress- oder Web-App, die das MyISAM-Modul verwendet. In diesem Fall müssen Sie erst die Tabellen konvertieren, indem Sie die Daten in InnoDB-Tabellen migrieren. Führen Sie anschließend eine Wiederherstellung in Azure-Datenbank für MySQL aus. Verwenden Sie die `ENGINE=INNODB`-Klausel, um das Modul festzulegen, mit dem eine Tabelle erstellt wird, und übertragen Sie die Daten vor der Migration in die kompatible Tabelle. 
+Angenommen, Sie verfügen über eine WordPress- oder Web-App, die die MyISAM-Engine verwendet. In diesem Fall müssen Sie erst die Tabellen konvertieren, indem Sie die Daten in InnoDB-Tabellen migrieren. Führen Sie anschließend eine Wiederherstellung in Azure-Datenbank für MySQL aus. Verwenden Sie die `ENGINE=INNODB`-Klausel, um die Engine festzulegen, mit der eine Tabelle erstellt wird, und übertragen Sie die Daten vor der Migration in die kompatible Tabelle. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
@@ -86,7 +86,6 @@ Im folgenden Beispiel wird die Tabelle aus einer CSV-Datei importiert:
 1. Klicken Sie mit der rechten Maustaste auf die Tabelle der zu importierenden Datenbank. 
 2. Navigieren Sie zu der zu importierenden CSV-Datei, und wählen Sie sie aus. Klicken Sie anschließend auf **Weiter**. 
 3. Wählen Sie die Zieltabelle (neu oder vorhanden) aus, und aktivieren oder deaktivieren Sie das Kontrollkästchen **Truncate table before import** (Tabelle vor Import abschneiden). Klicken Sie auf **Weiter**.
-
 4. Wählen Sie die Codierung und die zu importierenden Spalten aus, und klicken Sie auf **Weiter**. 
 5. Klicken Sie auf der Seite **Daten importieren** auf **Weiter**. Der Assistent importiert die Daten entsprechend den ausgewählten Einstellungen.
 

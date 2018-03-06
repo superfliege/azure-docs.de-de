@@ -1,20 +1,20 @@
 ---
-title: Sichern und Wiederherstellen eines Servers in Azure Database for MySQL | Microsoft-Dokumentation
+title: Sichern und Wiederherstellen eines Servers in Azure Database for MySQL
 description: Erfahren Sie, wie Sie einen Server in Azure Database for MySQL mit der Azure-Befehlszeilenschnittstelle sichern und wiederherstellen.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/28/2017
-ms.openlocfilehash: 44b3c68b8df4006d3fe087e5ad4118d7616d3d9a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.date: 02/28/2018
+ms.openlocfilehash: b954e26c9ecb1767b971117fc9102e8573beaaac
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-by-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit der Azure-Befehlszeilenschnittstelle
 
@@ -32,7 +32,7 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 ## <a name="backup-happens-automatically"></a>Automatische Sicherung
 Bei der Verwendung von Azure Database for MySQL erstellt der Datenbankdienst automatisch alle fünf Minuten eine Sicherung des Diensts. 
 
-Für den Basic-Tarif sind die Sicherungen 7 Tage lang verfügbar. Für den Standard-Tarif sind die Sicherungen 35 Tage lang verfügbar. Weitere Informationen finden Sie unter [Optionen und Leistung von Azure Database for MySQL: Übersicht über die verfügbaren Funktionen in den einzelnen Tarifen](concepts-service-tiers.md).
+Für den Basic-Tarif sind die Sicherungen 7 Tage lang verfügbar. Für den Standard-Tarif sind die Sicherungen 35 Tage lang verfügbar. Weitere Informationen finden Sie unter [Optionen und Leistung von Azure Database for MySQL: Übersicht über die verfügbaren Funktionen in den einzelnen Tarifen](concepts-pricing-tiers.md).
 
 Mithilfe dieses automatischen Sicherungsfeatures können Sie einen Zustand des Servers und seiner Datenbanken zu einem früheren Datum oder Zeitpunkt wiederherstellen.
 
@@ -46,16 +46,16 @@ Verwenden Sie zur Wiederherstellung des Servers den Azure CLI-Befehl [az mysql s
 Geben Sie zum Wiederherstellen des Servers an der Azure CLI-Eingabeaufforderung den folgenden Befehl ein:
 
 ```azurecli-interactive
-az mysql server restore --resource-group myResourceGroup --name myserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server myserver4demo
+az mysql server restore --resource-group myresourcegroup --name myserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mydemoserver
 ```
 
 Für den Befehl `az mysql server restore` sind folgende Parameter erforderlich:
-| Einstellung | Empfohlener Wert | Beschreibung  |
+| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
-| resource-group | myResourceGroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
+| resource-group | myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | name | myserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Wählen Sie einen Zeitpunkt aus, dessen Zustand wiederhergestellt werden soll. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie `2017-04-13T05:59:00-08:00` verwenden. Sie können z.B. auch das UTC-Zulu-Format verwenden, `2017-04-13T13:59:00Z`. |
-| source-server | myserver4demo | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
+| source-server | mydemoserver | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
 
 Wenn Sie den Zustand eines Servers zu einem früheren Zeitpunkt wiederherstellen, wird ein neuer Server erstellt. Der ursprüngliche Server und seine Datenbanken aus dem angegebenen Zeitpunkt werden auf den neuen Server kopiert.
 

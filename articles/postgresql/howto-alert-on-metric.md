@@ -1,19 +1,19 @@
 ---
-title: "Konfigurieren von Warnungen zu Metriken für Azure Database for PostgreSQL im Azure-Portal | Microsoft-Dokumentation"
+title: "Konfigurieren von Warnungen zu Metriken für Azure Database for PostgreSQL im Azure-Portal"
 description: "In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Warnungen zu Metriken für Azure Database for PostgreSQL konfigurieren und auf diese zugreifen."
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 10/24/2017
-ms.openlocfilehash: 3a09be8131b57381eb470027a134109c116467ed
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 02/28/2018
+ms.openlocfilehash: b4b15998276dd6c32e9c15622aa0251c6c066085
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL 
 
@@ -27,7 +27,7 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
 * [Befehlszeilenschnittstelle](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -45,10 +45,10 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
    ![Formular „Metrikwarnung hinzufügen“](./media/howto-alert-on-metric/2-add-rule-form.png)
 
-   | Einstellung | Beschreibung  |
+   | Einstellung | BESCHREIBUNG  |
    |---------|---------|
-   | Name | Geben Sie einen Namen für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
-   | Beschreibung | Geben Sie eine kurze Beschreibung für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
+   | NAME | Geben Sie einen Namen für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
+   | BESCHREIBUNG | Geben Sie eine kurze Beschreibung für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
    | Warnung bei | Wählen Sie für diese Art der Warnung die Option **Metriken** aus. |
    | Abonnement | Dieses Feld ist bereits mit dem Abonnement ausgefüllt, das Ihr Azure Database for PostgreSQL hostet. |
    | Ressourcengruppe | Dieses Feld ist bereits mit der Ressourcengruppe für Ihr Azure Database for PostgreSQL ausgefüllt. |

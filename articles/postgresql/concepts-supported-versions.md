@@ -1,22 +1,22 @@
 ---
-title: "Unterstützte Versionen in Azure-Datenbank für PostgreSQL | Microsoft-Dokumentation"
+title: "Unterstützte Versionen in Azure Database for PostgreSQL"
 description: "Beschreibung der unterstützten Versionen in Azure-Datenbank für PostgreSQL"
 services: postgresql
 author: kamathsun
 ms.author: sukamat
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 646e95f5c3c7bc9bb175a5532435b28bb998b49b
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 02/28/2018
+ms.openlocfilehash: 2065631922d25deaa94601484da9b8de3fd62b22
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="supported-postgresql-database-versions"></a>Unterstützte PostgreSQL-Datenbankversionen
-Ziel von Microsoft ist die Unterstützung von n-2 Versionen des PostgreSQL-Moduls im Azure Database for PostgreSQL-Dienst. Das bedeutet, dass die derzeit veröffentlichte Hauptversion (n) und die zwei vorherigen Hauptversionen (-2) unterstützt werden.
+Ziel von Microsoft ist die Unterstützung von n-2 Versionen der PostgreSQL-Engine im Azure Database for PostgreSQL-Dienst. Das bedeutet, dass die derzeit veröffentlichte Hauptversion (n) und die zwei vorherigen Hauptversionen (-2) unterstützt werden.
 
 Azure-Datenbank für PostgreSQL unterstützt derzeit die folgenden Versionen:
 

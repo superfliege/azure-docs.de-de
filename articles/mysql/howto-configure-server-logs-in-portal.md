@@ -1,19 +1,19 @@
 ---
-title: "Konfigurieren der und Zugreifen auf die Serverprotokolle für Azure Database for MySQL im Azure-Portal | Microsoft-Dokumentation"
+title: "Konfigurieren von Serverprotokollen für Azure Database for MySQL und Zugreifen auf diese im Azure-Portal"
 description: In diesem Artikel wird beschrieben, wie Sie aus dem Azure-Portal die Serverprotokolle in Azure Database for MySQL konfigurieren und auf diese zugreifen.
 services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/19/2017
-ms.openlocfilehash: 89674c133b458c16fbdacd771be24830624dde7c
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.date: 02/28/2018
+ms.openlocfilehash: b68d92688b18e69f74c0e0a9b2e572795a288579
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle im Azure-Portal
 
@@ -26,7 +26,7 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung
 Konfigurieren Sie den Zugriff auf das MySQL-Protokoll für langsame Abfragen. 
 
-1. Melden Sie sich auf dem [Azure-Portal](http://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
 
 2. Wählen Sie Ihren Server für Azure Database for MySQL aus.
 
@@ -35,19 +35,13 @@ Konfigurieren Sie den Zugriff auf das MySQL-Protokoll für langsame Abfragen.
 
 4. Wählen Sie die Überschrift **Klicken Sie hier, um Protokolle zu aktivieren und Protokollparameter zu konfigurieren** aus, um die Serverparameter anzuzeigen.
 
-5. Wählen Sie die Erweiterung **Mehr anzeigen** aus, um eine erweiterte Liste der verfügbaren Parameter anzuzeigen. 
-
-   Weitere Informationen zu den Definitionen von Parametern finden Sie in der MySQL-Dokumentation unter [Protokolle](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
-
-   ![Auf „Mehr anzeigen“ klicken, um die vollständige Liste anzuzeigen](./media/howto-configure-server-logs-in-portal/2-show-more.png)
-
-6. Ändern Sie die Parameter, die Sie anpassen müssen. Alle in dieser Sitzung vorgenommenen Änderungen werden in violett hervorgehoben. 
+5. Ändern Sie die Parameter, die Sie anpassen müssen. Alle in dieser Sitzung vorgenommenen Änderungen werden in violett hervorgehoben. 
 
    Nachdem Sie die Parameter geändert haben, klicken Sie auf **Speichern**. Sie können Ihre Änderungen auch **verwerfen**.
 
    ![Auf „Speichern“ oder „Verwerfen“ klicken](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-7. Kehren Sie zur Liste der Protokolle zurück, indem Sie auf der Seite **Serverparameter** auf die **Schaltfläche „Schließen“** (X-Symbol) klicken.
+6. Kehren Sie zur Liste der Protokolle zurück, indem Sie auf der Seite **Serverparameter** auf die **Schaltfläche „Schließen“** (X-Symbol) klicken.
 
 ## <a name="view-list-and-download-logs"></a>Anzeigen der Liste und Herunterladen von Protokollen
 Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Protokolle anzeigen und einzelne Protokolldateien im Bereich „Serverprotokolle“ herunterladen. 
