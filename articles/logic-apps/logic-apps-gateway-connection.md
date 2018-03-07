@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 216745f9f540235ee48661eae922a5ae0e716e01
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5160913b2f08a04f0a985d8ddadd6641a664b258
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über Logik-Apps mit dem lokalen Datengateway
 
@@ -75,7 +75,7 @@ Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, müssen Si
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an. Achten Sie darauf, dass Sie die Azure-Geschäfts- oder -Schul-E-Mail-Adresse verwenden, mit der Sie das Gateway installiert haben.
 
-2. Navigieren Sie im Azure-Hauptmenü zu **Ressource erstellen** > **Unternehmensintegration** > **Lokales Datengateway**:
+2. Wählen Sie im Azure-Hauptmenü die Optionen **Ressource erstellen** > **Unternehmensintegration** > **Lokales Datengateway** aus.
 
    ![Nach „Lokales Datengateway“ suchen](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
@@ -107,9 +107,10 @@ Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, müssen Si
 
     ![Angeben von Details zum Erstellen Ihres lokalen Datengateways](./media/logic-apps-gateway-connection/createblade.png)
 
-    Zum Anzeigen Ihres Datengateways können Sie jederzeit über das Azure-Hauptmenü zu **Weitere Dienste**>**Enterprise-Integration**>**Lokale Datengateways** navigieren.
+    Um Ihr Datengateway jederzeit suchen oder anzeigen zu können, wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. 
+    Geben Sie im Suchfeld den Begriff „lokale Datengateways“ ein, und wählen Sie dann **Lokale Datengateways** aus.
 
-    ![Wechseln zu „Weitere Dienste“, „Unternehmensintegration“, „Lokale Datengateways“](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
+    ![Nach „Lokale Datengateways“ suchen](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
 <a name="connect-logic-app-gateway"></a>
 

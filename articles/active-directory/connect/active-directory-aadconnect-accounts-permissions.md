@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: billmath
-ms.openlocfilehash: cde406bd745fe61757eaa69c9fc0cfc98a42d205
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c10a069f5359dc148b103688355c859bd653b5d7
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:
@@ -44,7 +44,7 @@ In den Expresseinstellungen benötigt der Installations-Assistent Anmeldeinforma
 | Seite des Assistenten | Erfasste Anmeldeinformationen | Erforderliche Berechtigungen | Verwendung |
 | --- | --- | --- | --- |
 | N/V |Benutzer, der den Installations-Assistenten ausführt |Administrator des lokalen Servers |<li>Erstellt das lokale Konto, das als [Dienstkonto für das Synchronisierungsmodul](#azure-ad-connect-sync-service-account)verwendet wird. |
-| Mit Azure AD verbinden |Azure AD-Verzeichnisanmeldeinformationen |Globale Administratorrolle in Azure AD |<li>Aktivieren der Synchronisierung im Azure AD-Verzeichnis</li>  <li>Erstellen des [Azure AD-Kontos](#azure-ad-service-account), das für die fortlaufenden Synchronisierungsvorgänge in Azure AD verwendet wird</li> |
+| Stellen Sie eine Verbindung mit Azure AD her. |Azure AD-Verzeichnisanmeldeinformationen |Globale Administratorrolle in Azure AD |<li>Aktivieren der Synchronisierung im Azure AD-Verzeichnis</li>  <li>Erstellen des [Azure AD-Kontos](#azure-ad-service-account), das für die fortlaufenden Synchronisierungsvorgänge in Azure AD verwendet wird</li> |
 | Herstellen einer Verbindung mit AD DS |Lokale Active Directory-Anmeldeinformationen |Mitglied der  Gruppe „Unternehmensadministratoren“ in Active Directory |<li>Erstellt ein [Konto](#active-directory-account) in Active Directory und gewährt Zugriff darauf. Dieses erstellte Konto dient zum Lesen und Schreiben von Verzeichnisinformationen während der Synchronisierung.</li> |
 
 ### <a name="enterprise-admin-credentials"></a>Enterprise-Administratoranmeldeinfos
@@ -63,7 +63,7 @@ Das [Konto](#active-directory-account) , das für Lese- und Schreibvorgänge in 
 | Alle Eigenschaften lesen/schreiben: iNetOrgPerson |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: Gruppe |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: Kontakt |Importieren und Exchange-Hybridbereitstellung |
-| Zurücksetzen des Kennworts |Vorbereitung für das Aktivieren des Rückschreibens von Kennwörtern |
+| Kennwort zurücksetzen |Vorbereitung für das Aktivieren des Rückschreibens von Kennwörtern |
 
 ## <a name="custom-settings-installation"></a>Installation mit benutzerdefinierten Einstellungen
 In Azure AD Connect Version 1.1.524.0 und höher kann der Azure AD Connect-Assistent das Konto erstellen, dass zum Herstellen der Verbindung mit Active Directory verwendet wird.  In früheren Versionen muss das Konto vor der Installation erstellt werden. Die Berechtigungen, die Sie diesem Konto erteilen müssen, finden Sie unter [Erstellen des AD DS-Kontos](#create-the-ad-ds-account). 
@@ -72,7 +72,7 @@ In Azure AD Connect Version 1.1.524.0 und höher kann der Azure AD Connect-Assis
 | --- | --- | --- | --- |
 | N/V |Benutzer, der den Installations-Assistenten ausführt |<li>Administrator des lokalen Servers</li><li>Bei Verwendung einer vollständigen SQL Server-Instanz muss der Benutzer Systemadministrator (SA) in SQL sein.</li> |Erstellt standardmäßig das lokale Konto, das als [Dienstkonto für das Synchronisierungsmodul](#azure-ad-connect-sync-service-account)verwendet wird. Das Konto wird nur erstellt, wenn der Administrator kein bestimmtes Konto angibt. |
 | „Synchronisierungsdienste installieren“, Option „Dienstkonto“ |Anmeldeinformationen für Active Directory- oder lokale Konten |Benutzerberechtigungen werden vom Installations-Assistenten gewährt |Wenn der Administrator ein Konto angibt, wird dieses Konto als Dienstkonto für den Synchronisierungsdienst verwendet. |
-| Mit Azure AD verbinden |Azure AD-Verzeichnisanmeldeinformationen |Globale Administratorrolle in Azure AD |<li>Aktivieren der Synchronisierung im Azure AD-Verzeichnis</li>  <li>Erstellen des [Azure AD-Kontos](#azure-ad-service-account), das für die fortlaufenden Synchronisierungsvorgänge in Azure AD verwendet wird</li> |
+| Stellen Sie eine Verbindung mit Azure AD her. |Azure AD-Verzeichnisanmeldeinformationen |Globale Administratorrolle in Azure AD |<li>Aktivieren der Synchronisierung im Azure AD-Verzeichnis</li>  <li>Erstellen des [Azure AD-Kontos](#azure-ad-service-account), das für die fortlaufenden Synchronisierungsvorgänge in Azure AD verwendet wird</li> |
 | Verzeichnisse verbinden |Lokale Active Directory-Anmeldeinformationen für jede Gesamtstruktur, die mit Azure AD verbunden wird |Die Berechtigungen hängen davon ab, welche Funktionen Sie aktivieren, und sind unter [Create the AD DS account](#create-the-ad-ds-account) |Dieses Konto dient zum Lesen und Schreiben von Verzeichnisinformationen während der Synchronisierung. |
 | AD FS-Server |Für jeden Server in der Liste sammelt der Assistent Anmeldeinformationen, wenn die Anmeldeinformationen des Benutzers, der den Assistenten ausführt, nicht für die Verbindung ausreichen. |Domänenadministrator |Installieren und Konfigurieren der AD FS-Server-Rolle. |
 | Webanwendungsproxy-Server |Für jeden Server in der Liste sammelt der Assistent Anmeldeinformationen, wenn die Anmeldeinformationen des Benutzers, der den Assistenten ausführt, nicht für die Verbindung ausreichen. |Lokaler Administrator auf dem Zielcomputer |Installieren und Konfigurieren der WAP-Server-Rolle. |
@@ -90,7 +90,7 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 | Kennwortsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
 | Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
-| Rückschreiben von Kennwörtern |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../active-directory-passwords-writeback.md) für Benutzer dokumentiert sind |
+| Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../active-directory-passwords-writeback.md) für Benutzer dokumentiert sind |
 | Geräterückschreiben |Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md)beschrieben |
 | Gruppenrückschreiben |Lesen, Erstellen, Aktualisieren und Löschen von Gruppenobjekten für synchronisierte **Office 365-Gruppen**.  Weitere Informationen finden Sie unter [Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback).|
 
@@ -98,7 +98,7 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 Wenn Sie Azure AD Connect auf eine höhere Version aktualisieren, benötigen Sie folgende Berechtigungen:
 
 >[!IMPORTANT]
->Seit Build 1.1.484 tritt in Azure AD Connect ein Regressionsfehler auf, aufgrund dessen zum Aktualisieren der SQL-Datenbank Systemadministratorberechtigungen erforderlich sind.  Dieser Fehler tritt auch noch im aktuellen Bild 1.1.614 auf.  Für das Upgrade auf diesen Build benötigen Sie Systemadministratorberechtigungen.  dbo-Berechtigungen sind nicht ausreichend.  Wenn Sie versuchen, Azure AD Connect ohne Systemadministratorberechtigungen zu aktualisieren, tritt ein Fehler auf, und Azure AD Connect funktioniert anschließend nicht mehr ordnungsgemäß.  Microsoft ist sich dieses Problems bewusst und arbeitet an einer Lösung.
+>Seit Build 1.1.484 tritt in Azure AD Connect ein Regressionsfehler auf, aufgrund dessen zum Aktualisieren der SQL-Datenbank Systemadministratorberechtigungen erforderlich sind.  Dieser Fehler wurde in Build 1.1.647 behoben.  Für das Upgrade auf diesen Build benötigen Sie Systemadministratorberechtigungen.  dbo-Berechtigungen sind nicht ausreichend.  Wenn Sie versuchen, Azure AD Connect ohne Systemadministratorberechtigungen zu aktualisieren, tritt ein Fehler auf, und Azure AD Connect funktioniert anschließend nicht mehr ordnungsgemäß.  Microsoft ist sich dieses Problems bewusst und arbeitet an einer Lösung.
 
 
 | Prinzipal | Erforderliche Berechtigungen | Verwendung |
@@ -118,7 +118,7 @@ Wenn Sie benutzerdefinierte Einstellungen verwenden, sind Sie für das Erstellen
 ### <a name="azure-ad-connect-sync-service-account"></a>Azure AD Connect-Synchronisierungsdienstkonto
 Der Synchronisierungsdienst kann unter verschiedenen Konten ausgeführt werden. Er kann unter einem **virtuellen Dienstkonto** (VSA), einem **gruppenverwalteten Dienstkonto** (gMSA/sMSA) oder einem normalen Benutzerkonto ausgeführt werden. Die unterstützten Optionen wurden mit der Connect-Version von April 2017 geändert und treten in Kraft, wenn Sie eine Neuinstallation durchführen. Wenn Sie ein Upgrade von einer früheren Version von Azure AD Connect durchführen, sind diese zusätzlichen Optionen nicht verfügbar.
 
-| Kontotyp | Installationsoption | Beschreibung |
+| Kontotyp | Installationsoption | BESCHREIBUNG |
 | --- | --- | --- |
 | [Virtuelles Dienstkonto](#virtual-service-account) | Express und benutzerdefiniert, April 2017 und höher | Dies ist die Option für alle Expressinstallationen mit Ausnahme von Installationen auf einem Domänencontroller. Für benutzerdefinierte Installationen ist es die Standardoption, sofern keine andere Option verwendet wird. |
 | [Gruppenverwaltetes Dienstkonto](#group-managed-service-account) | Benutzerdefiniert, April 2017 und höher | Wenn Sie einen Remotecomputer mit SQL Server verwenden, empfehlen wir den Einsatz eines gruppenverwalteten Dienstkontos. |

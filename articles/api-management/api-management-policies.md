@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: d0d10096c004b50688ad5e6550bf248ceb5ef878
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: cb0304cae1b92578eb3c9230ae9faeecdf13d750
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).  
@@ -34,7 +34,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     -   [Limit call rate (Aufrufrate nach Schlüssel begrenzen)](api-management-access-restriction-policies.md#LimitCallRateByKey) – verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Schlüssel beschränkt wird.  
     -   [Beschränkung für Aufrufer-IP](api-management-access-restriction-policies.md#RestrictCallerIPs) – Filtert (erlaubt/blockiert) Aufrufe von bestimmten IP-Adressen und/oder Adressbereichen.  
     -   [Set usage quota by subscription (Nutzungskontingent nach Abonnement festlegen)](api-management-access-restriction-policies.md#SetUsageQuota) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Abonnements.  
-    -   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.  
+    -   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – Ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.  
     -   [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) – Erzwingt das Vorhandensein und die Gültigkeit eines JWT, das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.  
 -   [Erweiterte Richtlinien](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – bedingte Anwendung von Richtlinienanweisungen basierend auf der Auswertung von booleschen Ausdrücken.  
@@ -72,13 +72,9 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     -   [HTTP-Header setzen](api-management-transformation-policies.md#SetHTTPheader) – Weist einem vorhandenen Antwort- und/oder Anforderungsheader einen Wert zu oder fügt einen neuen Antwort- und/oder Anforderungsheader hinzu.  
     -   [Abfrageparameter setzen](api-management-transformation-policies.md#SetQueryStringParameter) – Fügt Abfrageparameter hinzu, löscht diese oder ersetzt deren Werte.  
     -   [URL umschreiben](api-management-transformation-policies.md#RewriteURL) – Konvertiert eine Anforderung-URL von der öffentlichen Form in die vom Webdienst erwartete Form.  
-    -   [XML mithilfe von XSLT transformieren](api-management-transformation-policies.md#XSLTransform) – Wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.  
+    -   [XML mithilfe von XSLT transformieren](api-management-transformation-policies.md#XSLTransform) – wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.  
 
-## <a name="video"></a>Video
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player]
-> 
-> 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:

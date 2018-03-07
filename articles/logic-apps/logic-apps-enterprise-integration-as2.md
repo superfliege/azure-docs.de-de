@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: fa61bbecc51c4f3163bd1cc077391bb102662297
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8c6dbc507cd1b79fe9424071bc3eb8bf24331a16
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von AS2-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
@@ -40,23 +40,22 @@ Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise
 
 1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an.  
 
-2.  Wählen Sie im Menü links **Alle Dienste** aus. Geben Sie im Suchfeld den Begriff **integration** als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
+2. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.
 
-    > [!TIP]
-    > Falls **Alle Dienste** nicht angezeigt wird, müssen Sie das Menü möglicherweise zuerst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
+   ![Suchen Ihres Integrationskontos](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
-    ![Alle Dienste, nach „Integration“ filtern, „Integrationskonten“ auswählen](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+   > [!TIP]
+   > Falls **Alle Dienste** nicht angezeigt wird, müssen Sie das Menü möglicherweise zuerst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Beschriftungen anzeigen** aus.
 
-3. Wählen Sie auf dem geöffneten Blatt **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
-Sollten keine Integrationskonten angezeigt werden, [erstellen Sie zunächst ein Konto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Alles über Integrationskonten").  
+3. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
 
-    ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+   ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
 4. Wählen Sie die Kachel **Vereinbarungen** aus. Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu.
 
     ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
-5. Wählen Sie auf dem geöffneten Blatt „Vereinbarungen“ die Option **Hinzufügen** aus.
+5. Wählen Sie unter **Vereinbarungen** die Option **Hinzufügen** aus.
 
     ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
@@ -166,13 +165,13 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 
 ## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
 
-1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf dem Blatt **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zum Blatt Ihres Integrationskontos zurückzukehren.
+1. Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf der Seite **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zu Ihrem Integrationskonto zurückzukehren.
 
     Die neu hinzugefügte Vereinbarung ist nun in der Liste **Vereinbarungen** enthalten.
 
-2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie auf dem Blatt Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. 
+2. Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** aus, und wählen Sie dann die Kachel **Vereinbarungen** aus. 
 
-    ![Kachel „Vereinbarungen“ auswählen, um alle Vereinbarungen anzuzeigen](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
+   ![Kachel „Vereinbarungen“ auswählen, um alle Vereinbarungen anzuzeigen](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
 ## <a name="view-the-swagger"></a>Anzeigen von Swagger
 Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/as2/). 

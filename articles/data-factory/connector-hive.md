@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8816885a7703e89c53bbfd839c9e7eb1337c3879
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e5acf32353f675a98b05692e352c3ca323588ac3
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopieren von Daten aus Hive mithilfe von Azure Data Factory 
 
@@ -48,7 +48,7 @@ Folgende Eigenschaften werden für den mit Hive verknüpften Dienst unterstützt
 | host | IP-Adresse oder Hostname des Hive-Servers, bei mehreren Hosts durch „;“ getrennt (nur wenn „serviceDiscoveryMode“ aktiviert ist).  | Ja |
 | port | Der TCP-Port, den der Hive-Server verwendet, um auf Clientverbindungen zu lauschen.  | Nein  |
 | serverType | Der Typ des Hive-Servers. <br/>Zulässige Werte: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nein  |
-| thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte: **Binary**, **SASL**, **HTTP ** | Nein  |
+| thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte: **Binary**, **SASL**, **HTTP** | Nein  |
 | authenticationType | Die Authentifizierungsmethode für den Zugriff auf den Hive-Server. <br/>Zulässige Werte: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ja |
 | serviceDiscoveryMode | „true“, um das Verwenden des Diensts ZooKeeper anzugeben, andernfalls „false“.  | Nein  |
 | zooKeeperNameSpace | Der Namespace für ZooKeeper, unter dem Hive Server 2-Knoten hinzugefügt werden.  | Nein  |

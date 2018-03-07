@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2017
+ms.date: 2/22/2017
 ms.author: rithorn
-ms.openlocfilehash: acdcf5b772cbaca1827663b49d5cc8cafa238108
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 54c7610f1a0d3de2503ef471ca9adc0db423f530
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Problembehandlung bei Unternehmenskostenansichten 
 
 Bei Unternehmensanmeldungen gibt es mehrere Einstellungen, die verhindern können, dass Benutzer der Anmeldung Kosten nicht anzeigen können.  Diese Einstellungen werden durch den Registrierungsadministrator verwaltet, oder den Partner, wenn die Registrierung nicht direkt bei Microsoft erworben wird.  In diesem Artikel erfahren Sie, um welche Einstellungen es geht, und wie sie sich auf die Anmeldung auswirken. Diese Einstellungen sind unabhängig von den [Azure-RBAC-Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure). 
 
-> [!Note]
-> Dieses Feature ist zurzeit als private Vorschau verfügbar. [Melden Sie sich hier](https://forms.office.com/Pages/DesignPage.aspx#FormId=v4j5cvGGr0GRqy180BHbR0YtfU6ham9OsGsPPYdu2xdUNk1BQUwzTkUyOVc5NUpCTFcwR0pIOVFETS4u) für die Vorschau an.     
 
 ## <a name="enabling-access-to-costs"></a>Aktivieren des Zugriffs auf Kosten
 
@@ -47,4 +45,3 @@ Wenn Sie beim Versuch, auf ein Abonnement oder eine Verwaltungsgruppe zuzugreife
 
 Wenden Sie sich an den Administrator des Abonnements oder der Verwaltungsgruppe, um Zugriff zu erhalten.  
 * Nutzen Sie für Abonnements das Dokument [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) als Referenz, um zu ermitteln, welche Rolle erforderlich ist.
-* Für Verwaltungsgruppen ist RBAC-Zugriff noch nicht verfügbar, wird jedoch bald verfügbar sein. Bitten Sie Ihren Enterprise Portal-Administrator, Ihnen den Zugriff zuzuweisen.   

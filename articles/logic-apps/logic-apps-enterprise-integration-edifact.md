@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: 68009b74a410f7e854de675a1d8d0c32e310d2c9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4b1ea9966add3cf0d5f75988f11cda57fa4e4cf6
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von EDIFACT-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
@@ -32,65 +32,63 @@ Bevor Sie EDIFACT-Nachrichten für Azure Logic Apps austauschen können, müssen
 
 Sie benötigen Folgendes:
 
-* Ein bereits definiertes und mit Ihrem Azure-Abonnement verknüpftes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md)  
+* Ein bereits definiertes und mit Ihrem Azure-Abonnement verknüpftes [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md)  
 * Mindestens zwei [Partner](logic-apps-enterprise-integration-partners.md), die bereits in Ihrem Integrationskonto definiert sind
 
 > [!NOTE]
 > Beim Erstellen einer Vereinbarung muss der Inhalt in den Nachrichten, die Sie an den Partner senden oder vom Partner empfangen, zum Vereinbarungstyp passen.
 
-Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-integration-accounts.md) und [Partner hinzugefügt](logic-apps-enterprise-integration-partners.md) haben, können Sie eine EDIFACT-Vereinbarung erstellen. Gehen Sie dazu wie folgt vor:
+Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und [Partner hinzugefügt](logic-apps-enterprise-integration-partners.md) haben, können Sie eine EDIFACT-Vereinbarung erstellen. Gehen Sie dazu wie folgt vor:
 
 ## <a name="create-an-edifact-agreement"></a>Erstellen einer EDIFACT-Vereinbarung 
 
-1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Alle Dienste** aus.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. 
 
-    > [!TIP]
-    > Sollte **Alle Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise zuerst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
+2. Wählen Sie im Azure-Hauptmenü **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.
 
-    ![Wählen Sie im linken Menü die Option „Alle Dienste“ aus.](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+   ![Suchen Ihres Integrationskontos](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
-2. Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.
+   > [!TIP]
+   > Falls **Alle Dienste** nicht angezeigt wird, müssen Sie das Menü unter Umständen zunächst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Beschriftungen anzeigen** aus.
 
-    ![Nach „Integration“ filtern, „Integrationskonten“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-3.png)
+3. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, unter dem Sie die Vereinbarung erstellen möchten.
 
-3. Wählen Sie auf dem geöffneten Blatt **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
-Sollten keine Integrationskonten angezeigt werden, [erstellen Sie zunächst ein Konto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Alles über Integrationskonten").  
+   ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-    ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+4. Klicken Sie auf **Vereinbarungen**. Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu.   
 
-4. Wählen Sie die Kachel **Vereinbarungen** aus. Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu.   
+   ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+5. Klicken Sie auf der Seite „Vereinbarungen“ auf **Hinzufügen**.
 
-5. Wählen Sie auf dem geöffneten Blatt „Vereinbarungen“ die Option **Hinzufügen** aus.
-
-    ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
 6. Geben Sie unter **Hinzufügen** im Feld **Name** einen Namen für Ihre Vereinbarung ein. Wählen Sie unter **Vertragstyp** die Option **EDIFACT** aus. Wählen Sie den **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** für Ihre Vereinbarung aus.
 
-    ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
+   ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-    | Eigenschaft | BESCHREIBUNG |
-    | --- | --- |
-    | NAME |Name der Vereinbarung |
-    | Vereinbarungstyp | Muss EDIFACT lauten. |
-    | Hostpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
-    | Hostidentität |Ein Bezeichner für den Hostpartner. |
-    | Gastpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Gastpartner stellt die Organisation dar, die Geschäfte mit dem Hostpartner tätigt. |
-    | Gastidentität |Ein Bezeichner für den Gastpartner. |
-    | Empfangseinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung empfangen werden. |
-    | Sendeeinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung gesendet werden. |
+   | Eigenschaft | BESCHREIBUNG |
+   | --- | --- |
+   | NAME |Name der Vereinbarung |
+   | Vereinbarungstyp | Muss EDIFACT lauten. |
+   | Hostpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
+   | Hostidentität |Ein Bezeichner für den Hostpartner. |
+   | Gastpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Gastpartner stellt die Organisation dar, die Geschäfte mit dem Hostpartner tätigt. |
+   | Gastidentität |Ein Bezeichner für den Gastpartner. |
+   | Empfangseinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung empfangen werden. |
+   | Sendeeinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung gesendet werden. |
+   ||| 
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurieren der Behandlung empfangener Nachrichten durch die Vereinbarung
 
 Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigurieren, wie die Vereinbarung eingehende Nachrichten identifizieren und behandeln soll, die im Rahmen dieser Vereinbarung von Ihrem Partner gesendet werden.
 
-1.  Wählen Sie unter **Hinzufügen** die Option **Empfangseinstellungen** aus.
+1. Wählen Sie unter **Hinzufügen** die Option **Empfangseinstellungen** aus.
 Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
 
-    **Empfangseinstellungen** ist in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Kontrollnummern“, „Überprüfung“ und „Interne Einstellungen“.
+   **Empfangseinstellungen** ist in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Kontrollnummern“, „Überprüfung“ und „Interne Einstellungen“.
 
-    ![Empfangseinstellungen konfigurieren](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+   ![Empfangseinstellungen konfigurieren](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
 2. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
 
@@ -240,13 +238,13 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 
 ## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
 
-1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf dem Blatt **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zum Blatt Ihres Integrationskontos zurückzukehren.
+1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf der Seite **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zum Integrationskonto zurückzukehren.
 
     Die neu hinzugefügte Vereinbarung ist nun in der Liste **Vereinbarungen** enthalten.
 
-2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie auf dem Blatt Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. 
+2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. 
 
-    ![Kachel „Vereinbarungen“ auswählen, um alle Vereinbarungen anzuzeigen](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="view-swagger-file"></a>Anzeigen der Swagger-Datei
 Informationen zum Anzeigen der Details zu Swagger für den EDIFACT-Connector finden Sie unter [EDIFACT](/connectors/edifact/).

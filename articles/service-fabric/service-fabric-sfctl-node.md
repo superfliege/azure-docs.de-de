@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: b94c5a7d6c3c74e1dd66559dea288238c35d664c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 50c7fe38d8bf7b14adf437f85c758e465e7d231d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 Ermöglicht es, Knoten zu verwalten, die einen Cluster bilden.
@@ -30,7 +30,7 @@ Ermöglicht es, Knoten zu verwalten, die einen Cluster bilden.
 |    disable       | Deaktiviert einen Service Fabric-Clusterknoten mit der angegebenen Deaktivierungsabsicht.|
 |    enable        | Aktiviert einen Service Fabric-Clusterknoten, der momentan deaktiviert ist.|
 |    health        | Ruft die Integrität eines Service Fabric-Knotens ab.|
-|    info          | Ruft die Liste der Knoten im Service Fabric-Cluster ab.|
+|    info          | Ruft die Informationen zu einem bestimmten Knoten im Service Fabric-Cluster ab.|
 |    list          | Ruft die Liste der Knoten im Service Fabric-Cluster ab.|
 |    load          | Ruft die Ladeinformationen eines Service Fabric-Knotens ab.|
 |    remove-state  | Benachrichtigt Service Fabric, dass der persistente Zustand auf einem Knoten dauerhaft entfernt wurde oder verloren gegangen ist.|
@@ -50,7 +50,7 @@ Deaktivieren Sie einen Service Fabric-Clusterknoten mit der angegebenen Deaktivi
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich]| Der Name des Knotens.|
-| --deactivation-intent | Beschreibt die Absicht oder den Grund für die Deaktivierung des Knotens. Die folgenden Werte sind möglich. – Pause: Gibt an, dass der Knoten angehalten werden soll. Der Wert ist gleich „1“. – Restart: Gibt an, dass die Absicht für den Knoten vorgesehen ist, der nach kurzer Zeit erneut gestartet werden soll. Der Wert ist gleich „2“. – RemoveData: Gibt an, dass die Absicht für den Knoten darin besteht, Daten zu entfernen. Der Wert ist gleich „3“. zu erstellen und zu verwalten.|
+| --deactivation-intent | Beschreibt die Absicht oder den Grund für die Deaktivierung des Knotens. |
 | --timeout -t       | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
@@ -109,7 +109,7 @@ Ruft die Integrität eines Service Fabric-Knotens ab. Verwenden Sie „EventsHea
 | --verbose                | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-node-info"></a>sfctl node info
-Ruft die Liste der Knoten im Service Fabric-Cluster ab.
+Ruft die Informationen zu einem bestimmten Knoten im Service Fabric-Cluster ab.
 
 Ruft die Informationen zu einem bestimmten Knoten im Service Fabric-Cluster ab. Die Antwort enthält den Namen, den Status, die ID, die Integrität, die Betriebszeit und weitere Details über den Knoten.
 
@@ -133,14 +133,14 @@ Ruft die Informationen zu einem bestimmten Knoten im Service Fabric-Cluster ab. 
 ## <a name="sfctl-node-list"></a>sfctl node list
 Ruft die Liste der Knoten im Service Fabric-Cluster ab.
 
-Der Knotenendpunkt gibt Informationen über die Knoten im Service Fabric-Cluster zurück. Die Antwort enthält den Namen, den Status, die ID, die Integrität, die Betriebszeit und weitere Details über den Knoten.
+Ruft die Liste der Knoten im Service Fabric-Cluster ab. Die Antwort enthält den Namen, den Status, die ID, die Integrität, die Betriebszeit und weitere Details über den Knoten.
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --continuation-token| Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen.      Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein.|
-| --node-status-filter| Ermöglicht ein Filtern des Knotens anhand des Knotenstatus (NodeStatus). Es werden nur die Knoten zurückgegeben, die dem angegebenen Filterwert entsprechen. Der Filterwert kann einer der folgenden Werte sein. – default: Dieser Filterwert stimmt mit allen Knoten außer denjenigen überein, die den Status „Unknown“ oder „Removed“ haben. – all: Dieser Filterwert entspricht allen Knoten. – up: Dieser Filterwert entspricht Knoten, die betriebsbereit (Up) sind. – down: Dieser Filterwert entspricht Knoten, die nicht betriebsbereit (Down) sind. – enabling: Dieser Filterwert entspricht Knoten, die derzeit die Schritte zum Aktivieren durchlaufen und den Status „Enabling“ haben. – disabling: Dieser Filterwert entspricht Knoten, die derzeit die Schritte zum Deaktivieren durchlaufen und den Status „Disabling“ haben. – disabled: Dieser Filterwert entspricht Knoten, die deaktiviert (Disabled) sind. – unknown: Dieser Filterwert entspricht Knoten, die den Status „Unbekannt“ (Unknown) haben. Ein Knoten hat den Status „Unbekannt“, wenn Service Fabric keine autoritativen Informationen zu diesem Knoten hat. Dies kann vorkommen, wenn das System zur Laufzeit von der Existenz eines Knotens erfährt. – removed: Dieser Filterwert entspricht Knoten, die den Status „Entfernt“ (Removed) haben. Hierbei handelt es sich um die Knoten, die mithilfe der RemoveNodeState-API aus dem Cluster entfernt wurden. zu erstellen und zu verwalten.      Standardwert: default.|
+| --node-status-filter| Ermöglicht ein Filtern des Knotens anhand des Knotenstatus (NodeStatus). Es werden nur die Knoten zurückgegeben, die dem angegebenen Filterwert entsprechen. Der Filterwert kann einer der folgenden Werte sein. Standardwert: default.|
 | --timeout -t     | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
@@ -156,7 +156,7 @@ Der Knotenendpunkt gibt Informationen über die Knoten im Service Fabric-Cluster
 ## <a name="sfctl-node-load"></a>sfctl node load
 Ruft die Lastinformationen eines Service Fabric-Knotens ab.
 
-Ruft die Lastinformationen eines Service Fabric-Knotens ab.
+Ruft die Informationen zum Laden eines Service Fabric-Knotens für alle Metriken ab, für die Last oder Kapazität definiert wurden.
 
 ### <a name="arguments"></a>Argumente
 
@@ -203,7 +203,7 @@ Startet einen Service Fabric-Clusterknoten neu, der bereits gestartet ist.
 Startet oder beendet einen Clusterknoten.
 
 Startet oder beendet einen Clusterknoten.  Ein Clusterknoten ist ein Prozess, nicht die Betriebssysteminstanz selbst.
-Um einen Knoten zu starten, übergeben Sie „Start“ an den Parameter „NodeTransitionType“. Um einen Knoten zu beenden, übergeben Sie „Stop“ an den Parameter „NodeTransitionType“. Diese API startet den Vorgang. Wenn die API zurückkehrt, ist der Übergang des Knotens möglicherweise noch nicht abgeschlossen. Rufen Sie „GetNodeTransitionProgress“ mit derselben „OperationId“ auf, um den Fortschritt des Vorgangs abzurufen. zu erstellen und zu verwalten.
+Um einen Knoten zu starten, übergeben Sie „Start“ an den Parameter „NodeTransitionType“. Um einen Knoten zu beenden, übergeben Sie „Stop“ an den Parameter „NodeTransitionType“. Diese API startet den Vorgang. Wenn die API zurückkehrt, ist der Übergang des Knotens möglicherweise noch nicht abgeschlossen. Rufen Sie „GetNodeTransitionProgress“ mit derselben „OperationId“ auf, um den Fortschritt des Vorgangs abzurufen. 
 
 ### <a name="arguments"></a>Argumente
 
@@ -211,7 +211,7 @@ Um einen Knoten zu starten, übergeben Sie „Start“ an den Parameter „NodeT
 | --- | --- |
 | --node-instance-id [erforderlich]| Die Knoteninstanz-ID des Zielknotens. Diese ID kann über die GetNodeInfo-API bestimmt werden.|
 | --node-name [erforderlich]| Der Name des Knotens.|
-| --node-transition-type [erforderlich]| Gibt den Typ des auszuführenden Übergangs an.                       „NodeTransitionType.Start“ startet einen angehaltenen Knoten.                       „NodeTransitionType.Stop“ beendet einen Knoten, der betriebsbereit ist. – Invalid: Reserviert.  Übergeben Sie diesen Wert nicht an die API. – Start: Übergang eines angehaltenen Knotens zu betriebsbereit. – Stop: Übergang eines betriebsbereiten Knotens zu angehalten. zu erstellen und zu verwalten.|
+| --node-transition-type [erforderlich]| Gibt den Typ des auszuführenden Übergangs an.                       „NodeTransitionType.Start“ startet einen angehaltenen Knoten.                       NodeTransitionType. Stop beendet einen Knoten, der ausgeführt wird. |
 | --operation-id [erforderlich]| Eine GUID, die einen Aufruf dieser API kennzeichnet.  Diese GUID wird in die entsprechende GetProgress-API übergeben.|
 | --stop-duration-in-seconds [erforderlich]| Die Dauer in Sekunden, die der Knoten angehalten bleiben soll.  Der Mindestwert ist 600, der Höchstwert 14400. Nach Ablauf dieser Zeit wird der Knoten automatisch wieder betriebsbereit.|
 | --timeout -t                      | Servertimeout in Sekunden.  Standardwert: 60.|

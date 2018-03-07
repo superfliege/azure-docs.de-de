@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 02/23/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7ceb4bf97c29a18d6879af55615eea46037c51ce
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 89513d6c1b9aa9f4709359d6d7681bff9c291618
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource Managers
 In diesem Lernprogramm erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), eine [Azure App Service-Web-App](http://go.microsoft.com/fwlink/?LinkId=529714) und eine Beispielwebanwendung bereitstellen und integrieren.
@@ -39,15 +39,13 @@ Nach Abschluss dieses Tutorials können Sie die folgenden Fragen beantworten:
 > 
 > 
 
-Vor dem Ausführen der Anweisungen zu diesem Lernprogramm, müssen Sie sicherstellen, dass Sie über Folgendes verfügen:
-
-* Ein Azure-Abonnement. Azure ist eine abonnementbasierte Plattform.  Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/), [Spezielle Angebote](https://azure.microsoft.com/pricing/member-offers/) oder [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
+Vor dem Ausführen der Anweisungen in diesem Tutorial, müssen Sie sicherstellen, dass Sie über ein Azure-Abonnement verfügen. Azure ist eine abonnementbasierte Plattform.  Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/), [Spezielle Angebote](https://azure.microsoft.com/pricing/member-offers/) oder [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a id="CreateDB"></a>Schritt 1: Herunterladen der Vorlagendateien
-Als Erstes laden wir die Vorlagendateien herunter, die in diesem Tutorial verwendet werden.
+Als Erstes laden wir die Vorlagendateien herunter, die für dieses Tutorial erforderlich sind.
 
 1. Laden Sie die Vorlage für das [Beispiel zum Erstellen eines Azure Cosmos DB-Kontos, zum Erstellen von Web-Apps und zum Bereitstellen einer Demoanwendung](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) in einen lokalen Ordner (beispielsweise „C:\Azure Cosmos DBTemplates“) herunter. Diese Vorlage stellt ein Azure Cosmos DB-Konto, eine App Service-Web-App und eine Webanwendung bereit.  Außerdem wird die Webanwendung automatisch so konfiguriert, dass sie eine Verbindung mit dem Azure Cosmos DB-Konto herstellt.
-2. Laden Sie die Vorlage für das [Beispiel zum Erstellen eines Azure Cosmos DB-Kontos und von Web-Apps](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) in einen lokalen Ordner (beispielsweise „C:\Azure Cosmos DBTemplates“) herunter. Mit dieser Vorlage werden ein Azure Cosmos DB-Konto und eine App Service-Web-App bereitgestellt; außerdem werden die Anwendungseinstellungen der Site so geändert, dass Azure Cosmos DB-Verbindungsinformationen problemlos angegeben werden können, eine Webanwendung ist jedoch nicht enthalten.  
+2. Laden Sie die Vorlage für das [Beispiel zum Erstellen eines Azure Cosmos DB-Kontos und von Web-Apps](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) in einen lokalen Ordner (beispielsweise „C:\Azure Cosmos DBTemplates“) herunter. Mit dieser Vorlage werden ein Azure Cosmos DB-Konto und eine App Service-Web-App bereitgestellt. Außerdem werden die Anwendungseinstellungen der Site so geändert, dass Azure Cosmos DB-Verbindungsinformationen problemlos angegeben werden können, eine Webanwendung ist jedoch nicht enthalten.  
 
 <a id="Build"></a>
 
@@ -55,7 +53,7 @@ Als Erstes laden wir die Vorlagendateien herunter, die in diesem Tutorial verwen
 Jetzt stellen wir unsere erste Vorlage bereit.
 
 > [!TIP]
-> Die Vorlage überprüft nicht, ob die unten eingegebenen Namen der Web-App und der Azure Cosmos DB-Kontoname (a) gültig und (b) verfügbar sind.  Sie sollten unbedingt die Verfügbarkeit der gewünschten Namen überprüfen, bevor Sie die Bereitstellung ausführen.
+> Die Vorlage überprüft nicht, ob die in die folgenden Vorlage eingegebenen Namen der Web-App und der Azure Cosmos DB-Kontoname (a) gültig und (b) verfügbar sind.  Sie sollten unbedingt die Verfügbarkeit der gewünschten Namen überprüfen, bevor Sie die Bereitstellung ausführen.
 > 
 > 
 
@@ -77,16 +75,13 @@ Jetzt stellen wir unsere erste Vorlage bereit.
     ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment5.png)
 6. Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen.** > **Kaufen** und anschließend auf **Erstellen**, um mit der Bereitstellung zu beginnen.  Wählen Sie **An Dashboard anheften** , damit die resultierende Bereitstellung auf Ihrer Azure-Portal-Startseite problemlos sichtbar ist.
    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment6.png)
-7. Wenn die Bereitstellung abgeschlossen ist, wird das Blatt der Ressourcengruppe geöffnet.
-   ![Screenshot des Blatts „Ressourcengruppe“](./media/create-website/TemplateDeployment7.png)  
+7. Wenn die Bereitstellung abgeschlossen ist, wird der Bereich der Ressourcengruppe geöffnet.
+   ![Screenshot des Bereichs „Ressourcengruppe“](./media/create-website/TemplateDeployment7.png)  
 8. Um die Anwendung zu verwenden, navigieren Sie zur Web-App-URL (im obigen Beispiel: http://mydemodocdbwebapp.azurewebsites.net).  Die folgende Webanwendung wird angezeigt:
    
    ![Todo-Beispielanwendung](./media/create-website/image2.png)
-9. Fahren Sie fort, erstellen Sie eine Reihe von Aufgaben in der Web-App, und kehren Sie dann zum Blatt der Ressourcengruppe im Azure-Portal zurück. Klicken Sie auf die Azure Cosmos DB-Kontoressource in der Liste „Ressourcen“ und dann auf **Abfrage-Explorer**.
-    ![Screenshot der Zusammenfassung mit der hervorgehobenen Web-App](./media/create-website/TemplateDeployment8.png)  
+9. Erstellen Sie nun eine Reihe von Aufgaben in der Web-App, und kehren Sie dann zum Bereich der Ressourcengruppe im Azure-Portal zurück. Klicken Sie auf die Azure Cosmos DB-Kontoressource in der Liste „Ressourcen“ und dann auf **Daten-Explorer**.
 10. Führen Sie die Standardabfrage „SELECT * FROM c“ aus, und überprüfen Sie die Ergebnisse.  Beachten Sie, dass die Abfrage die JSON-Darstellung der Aufgaben abgerufen hat, die Sie in Schritt 7 oben erstellt haben.  Sie können gerne mit Abfragen experimentieren. Führen Sie beispielsweise „SELECT * FROM c WHERE c.isComplete = true“ aus, um alle Aufgaben zurückzugeben, die als abgeschlossen gekennzeichnet wurden.
-    
-    ![Screenshot der Blätter „Abfrage-Explorer“ und „Ergebnisse“ mit Anzeige der Abfrageergebnisse](./media/create-website/image5.png)
 11. Erkunden Sie die Oberfläche des Azure Cosmos DB-Portals, oder ändern Sie die Todo-Beispielanwendung.  Wenn Sie fertig sind, stellen wir eine andere Vorlage bereit.
 
 <a id="Build"></a> 
@@ -117,8 +112,8 @@ Jetzt stellen wir unsere zweite Vorlage bereit.  Diese Vorlage zeigt Ihnen sehr 
     ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment5.png)
 6. Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen.** > **Kaufen** und anschließend auf **Erstellen**, um mit der Bereitstellung zu beginnen.  Wählen Sie **An Dashboard anheften** , damit die resultierende Bereitstellung auf Ihrer Azure-Portal-Startseite problemlos sichtbar ist.
    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment6.png)
-7. Wenn die Bereitstellung abgeschlossen ist, wird das Blatt der Ressourcengruppe geöffnet.
-   ![Screenshot des Blatts „Ressourcengruppe“](./media/create-website/TemplateDeployment7.png)  
+7. Wenn die Bereitstellung abgeschlossen ist, wird der Bereich der Ressourcengruppe geöffnet.
+   ![Screenshot des Bereichs „Ressourcengruppe“](./media/create-website/TemplateDeployment7.png)  
 8. Klicken Sie in der Liste „Ressourcen“ auf die Web-App-Ressource und anschließend auf **Anwendungseinstellungen**. ![Screenshot der Ressourcengruppe](./media/create-website/TemplateDeployment9.png)  
 9. Beachten Sie, dass Anwendungseinstellungen für den Azure Cosmos DB-Endpunkt und jeden der Azure Cosmos DB-Hauptschlüssel vorhanden sind.
 

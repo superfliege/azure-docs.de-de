@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: bd8b3d13754e981235cbce39e919f39228820426
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 47011bf2cfde268bb6248e54e98930f3a0b522e4
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von OAuth 2.0 in Azure API Management
 Viele APIs unterstützen [OAuth 2.0](http://oauth.net/2/) zum Schützen der API und um sicherzustellen, dass nur autorisierte Benutzer Zugriff erhalten und nur auf die Ressourcen zugreifen können, für die sie berechtigt sind. Um die interaktive Entwicklerkonsole von Azure API Management mit solchen APIs zu verwenden, ermöglicht der Dienst Ihnen das Konfigurieren Ihrer Dienstinstanz für die Zusammenarbeit mit einer OAuth 2.0-aktivierten API.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"> </a>Voraussetzungen
 Diese Anleitung beschreibt, wie Sie eine Instanz des API Management-Diensts zur Verwendung der OAuth 2.0-Autorisierung für Entwicklerkonten konfigurieren. Es wird jedoch nicht behandelt, wie Sie einen OAuth 2.0-Anbieter konfigurieren. Die Konfiguration ist je nach OAuth 2.0-Anbieter unterschiedlich, die Schritte sind jedoch ähnlich, und die beim Konfigurieren von OAuth 2.0 in Ihrer Instanz des API Management-Diensts erforderlichen Informationen sind gleich. In diesem Thema werden Beispiele zur Verwendung von Azure Active Directory als OAuth 2.0-Anbieter gezeigt.
 
 > [!NOTE]
@@ -134,9 +134,6 @@ Nun können Sie die gewünschten Werte für die restlichen Parameter konfigurier
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwendung von OAuth 2.0 und API Management finden Sie im folgenden Video und dem zugehörigen [Artikel](api-management-howto-protect-backend-with-aad.md).
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Protecting-Web-API-Backend-with-Azure-Active-Directory-and-API-Management/player]
-> 
-> 
 
 [api-management-management-console]: ./media/api-management-howto-oauth2/api-management-management-console.png
 [api-management-oauth2]: ./media/api-management-howto-oauth2/api-management-oauth2.png

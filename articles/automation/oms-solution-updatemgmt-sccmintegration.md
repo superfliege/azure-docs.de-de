@@ -1,58 +1,57 @@
 ---
-title: Updates mithilfe von SCCM-Sammlungen in der OMS-Updateverwaltung | Microsoft-Dokumentation
+title: "Verwalten von Updates für Ziele mithilfe von SCCM-Sammlungen in Azure Automation – Updateverwaltung | Microsoft Docs"
 description: "Dieser Artikel hilft Ihnen beim Konfigurieren von System Center Configuration Manager mit dieser Lösung, um Updates von über SCCM verwalteten Computern zu verwalten."
-services: operations-management-suite
+services: automation
 documentationcenter: 
 author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: operations-management-suite
+ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 02/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 4696f3b9602c1da01d9706f15f38cdf5bc0f3372
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: c1636ce84f6d0d228dcb15e62af4a88b50fd84bd
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="integrate-system-center-configuration-manager-with-oms-update-management"></a>Integrieren von System Center Configuration Manager und OMS-Updateverwaltung
+# <a name="integrate-system-center-configuration-manager-with-update-management"></a>Integrieren von System Center Configuration Manager in die Updateverwaltung
 
-Kunden, die in System Center Configuration Manager investiert haben, um PCs, Server und Mobilgeräte zu verwalten, profitieren auch von der Leistungsstärke und dem Funktionsumfang dieser Lösung bei der Verwaltung von Softwareupdates im Rahmen des Softwareupdateverwaltungs-Zyklus.  
+Kunden, die in System Center Configuration Manager investiert haben, um PCs, Server und Mobilgeräte zu verwalten, profitieren auch von der Leistungsstärke und dem Funktionsumfang dieser Lösung bei der Verwaltung von Softwareupdates im Rahmen des Softwareupdateverwaltungs-Zyklus.
 
-Aufbauend auf der bereits bestehenden Integration zwischen OMS und Configuration Manager können Sie Berichte für verwaltete Windows-Server erstellen und die Server verwalten, indem Sie Softwareupdatebereitstellungen in Configuration Manager erstellen und vorab bereitstellen. Sie können auch in der [Lösung für die Updateverwaltung in OMS](../operations-management-suite/oms-solution-update-management.md) den detaillierten Status abgeschlossener Updatebereitstellungen abrufen. Wenn Sie Configuration Manager zum Aktualisieren von Complianceberichten verwenden, aber nicht zum Verwalten von Updatebereitstellungen für Ihre Windows-Server, können Sie für die Berichterstellung weiterhin Configuration Manager verwenden, während Sicherheitsupdates mit der OMS-Updateverwaltungslösung verwaltet werden.
+Sie können Berichte für verwaltete Windows-Server erstellen und die Server aktualisieren, indem Sie Softwareupdatebereitstellungen in Configuration Manager erstellen und vorab bereitstellen. Außerdem können Sie den detaillierten Status abgeschlossener Updatebereitstellungen mithilfe der [Updateverwaltungslösung](automation-update-management.md) abrufen. Wenn Sie Configuration Manager zum Aktualisieren von Complianceberichten, aber nicht zum Verwalten von Updatebereitstellungen für Ihre Windows-Server verwenden, können Sie für die Berichterstellung weiterhin Configuration Manager nutzen, während Sicherheitsupdates mit der Updateverwaltungslösung verwaltet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Die [Updateverwaltungslösung](../operations-management-suite/oms-solution-update-management.md) muss zu Ihrem Log Analytics-Arbeitsbereich hinzugefügt und mit Ihrem Automation-Konto in der gleichen Ressourcengruppe und Region verknüpft sein.   
-* Windows-Server, die zurzeit von Ihrer System Center Configuration Manager-Umgebung verwaltet werden, müssen auch Berichte an den Log Analytics-Arbeitsbereich übermitteln, in dem die Updateverwaltungslösung aktiviert ist.  
-* Dieses Feature unterstützt System Center Configuration Manager Current Branch, Version 1606 und höher.  Informationen zum Integrieren der zentralen Configuration Manager-Verwaltungswebsite oder einer eigenständigen primären Website mit Log Analytics und zum Importieren von Sammlungen finden Sie unter [Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics](../log-analytics/log-analytics-sccm.md).  
+* Sie müssen Ihrem Automation-Konto die [Updateverwaltungslösung](automation-update-management.md) hinzugefügt haben.
+* Windows-Server, die zurzeit von Ihrer System Center Configuration Manager-Umgebung verwaltet werden, müssen auch Berichte an den Log Analytics-Arbeitsbereich übermitteln, in dem die Updateverwaltungslösung aktiviert ist.
+* Dieses Feature ist in System Center Configuration Manager Current Branch (Version 1606 und höher) aktiviert. Informationen zum Integrieren der zentralen Configuration Manager-Verwaltungswebsite oder einer eigenständigen primären Website mit Log Analytics und zum Importieren von Sammlungen finden Sie unter [Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics](../log-analytics/log-analytics-sccm.md).  
 * Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft-Update verfügen, wenn sie keine Sicherheitsupdates von Configuration Manager erhalten.   
 
-Wie Sie die in Azure IaaS gehosteten Clients mit Ihrer vorhandenen Configuration Manager-Umgebung verwalten, richtet sich primär nach der Verbindung zwischen Azure-Rechenzentren und Ihrer Infrastruktur. Diese Verbindung wirkt sich auf alle Designänderungen aus, die Sie an Ihrer Configuration Manager-Infrastruktur vornehmen müssen, und auf die Kosten, die anfallen, um diese Änderungen zu unterstützen.  Informationen zu den Planungsüberlegungen, die Sie berücksichtigen müssen, finden Sie unter [Configuration Manager in Azure – häufig gestellte Fragen](https://docs.microsoft.com/sccm/core/understand/configuration-manager-on-azure#networking).    
+Wie Sie die in Azure IaaS gehosteten Clients mit Ihrer vorhandenen Configuration Manager-Umgebung verwalten, richtet sich primär nach der Verbindung zwischen Azure-Rechenzentren und Ihrer Infrastruktur. Diese Verbindung wirkt sich auf alle Designänderungen aus, die Sie an Ihrer Configuration Manager-Infrastruktur vornehmen müssen, und auf die Kosten, die anfallen, um diese Änderungen zu unterstützen. Informationen zu den Planungsüberlegungen, die Sie berücksichtigen müssen, finden Sie unter [Configuration Manager in Azure – häufig gestellte Fragen](/sccm/core/understand/configuration-manager-on-azure#networking).
 
 ## <a name="configuration"></a>Konfiguration
 
 ### <a name="manage-software-updates-from-configuration-manager"></a>Verwalten von Softwareupdates von Configuration Manager 
 
-Führen Sie folgende Schritte aus, wenn Sie Updatebereitstellungen weiterhin über Configuration Manager verwalten möchten.  OMS stellt eine Verbindung mit Configuration Manager her, um Updates auf den Clientcomputern anzuwenden, die mit Ihrem Log Analytics-Arbeitsbereich verbunden sind. Die Updateinhalte sind im Cache der Clientcomputer verfügbar, so als würde die Bereitstellung von Configuration Manager verwaltet.  
+Führen Sie folgende Schritte aus, wenn Sie Updatebereitstellungen weiterhin über Configuration Manager verwalten möchten. Azure Automation stellt eine Verbindung mit Configuration Manager her, um Updates auf Clientcomputer anzuwenden, die mit Ihrem Log Analytics-Arbeitsbereich verbunden sind. Die Updateinhalte sind im Cache der Clientcomputer verfügbar, so als würde die Bereitstellung von Configuration Manager verwaltet.
 
-1. Erstellen Sie mithilfe des unter [Bereitstellen von Softwareupdates](https://docs.microsoft.com/sccm/sum/deploy-use/deploy-software-updates) beschriebenen Prozesses eine Softwareupdatebereitstellung von der Top-Level-Website in Ihrer Configuration Manager-Hierarchie.  Die einzige Einstellung, die anders konfiguriert werden muss als bei einer Standardbereitstellung, ist die Option **Softwareupdates nicht installieren**, um das Downloadverhalten des Bereitstellungspakets zu steuern. Dieses Verhalten wird von der OMS-Updateverwaltungslösung durch Erstellen einer geplanten Updatebereitstellung im nächsten Schritt gesteuert.  
+1. Erstellen Sie mithilfe des unter [Bereitstellen von Softwareupdates](/sccm/sum/deploy-use/deploy-software-updates) beschriebenen Prozesses eine Softwareupdatebereitstellung von der Top-Level-Website in Ihrer Configuration Manager-Hierarchie. Die einzige Einstellung, die anders konfiguriert werden muss als bei einer Standardbereitstellung, ist die Option **Softwareupdates nicht installieren**, um das Downloadverhalten des Bereitstellungspakets zu steuern. Dieses Verhalten wird von der Updateverwaltungslösung durch Erstellen einer geplanten Updatebereitstellung im nächsten Schritt gesteuert.
 
-1. Öffnen Sie im OMS-Portal das Dashboard der Updateverwaltung.  Erstellen Sie anhand der Schritte in [Erstellen einer Updatebereitstellung](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment) eine neue Bereitstellung, und wählen Sie aus der Dropdownliste eine geeignete Configuration Manager-Sammlung aus, die als OMS-Computergruppe dargestellt wird.  Berücksichtigen Sie dabei die folgenden wichtigen Punkte:
-    1. Wenn in der ausgewählten Configuration Manager-Gerätesammlung ein Wartungsfenster definiert ist, verwenden die Elemente der Sammlung dieses Fenster anstelle der Einstellung **Dauer**, die in der geplanten Bereitstellung in OMS definiert ist.
-    1. Elemente der Zielsammlung müssen über eine Verbindung mit dem Internet verfügen (entweder direkt, über einen Proxyserver oder über das OMS-Gateway).  
+1. Wählen Sie in Azure Automation die Option **Updateverwaltung** aus. Erstellen Sie anhand der unter [Erstellen einer Updatebereitstellung](automation-tutorial-update-management.md#schedule-an-update-deployment) beschriebenen Schritte eine neue Bereitstellung, und wählen Sie in der Dropdownliste **Typ** den Eintrag **Importierte Gruppen** aus, um die entsprechende Configuration Manager-Sammlung auszuwählen. Berücksichtigen Sie dabei die folgenden wichtigen Punkte: a. Wenn in der ausgewählten Configuration Manager-Gerätesammlung ein Wartungsfenster definiert ist, verwenden die Elemente der Sammlung dieses Fenster anstelle der Einstellung **Dauer**, die in der geplanten Bereitstellung definiert ist.
+    b. Elemente der Zielsammlung müssen über eine Verbindung mit dem Internet verfügen (entweder direkt, über einen Proxyserver oder über das OMS-Gateway).
 
-Nach Abschluss der Updatebereitstellung mit der OMS-Lösung installieren die Zielcomputer, die Mitglieder der ausgewählten Computergruppe sind, die Updates zum geplanten Zeitpunkt aus ihrem lokalen Clientcache.  Sie können den [Status der Updatebereitstellung anzeigen](../operations-management-suite/oms-solution-update-management.md#viewing-update-deployments), um die Ergebnisse Ihrer Bereitstellung zu überwachen.  
+Nach Abschluss der Updatebereitstellung über Azure Automation installieren die Zielcomputer, die Mitglieder der ausgewählten Computergruppe sind, die Updates zum geplanten Zeitpunkt aus ihrem lokalen Clientcache. Sie können den [Status der Updatebereitstellung anzeigen](automation-tutorial-update-management.md#view-results-of-an-update-deployment), um die Ergebnisse Ihrer Bereitstellung zu überwachen.
 
+### <a name="manage-software-updates-from-azure-automation"></a>Verwalten von Softwareupdates über Azure Automation
 
-### <a name="manage-software-updates-from-oms"></a>Verwalten von Softwareupdates über OMS
+Um Updates für virtuelle Windows Server-Computer zu verwalten, die Configuration Manager-Clients sind, müssen Sie die Clientrichtlinie so konfigurieren, dass die Funktion der Softwareupdateverwaltung für alle von dieser Lösung verwalteten Clients deaktiviert wird. Standardmäßig gelten Clienteinstellungen für alle Geräte in der Hierarchie. Weitere Informationen zu dieser Richtlinieneinstellung und ihrer Konfiguration finden Sie unter [Konfigurieren von Clienteinstellungen in System Center Configuration Manager](/sccm/core/clients/deploy/configure-client-settings).
 
-Um Updates für virtuelle Windows Server-Computer zu verwalten, die Configuration Manager-Clients sind, müssen Sie die Clientrichtlinie so konfigurieren, dass die Funktion der Softwareupdateverwaltung für alle von dieser Lösung verwalteten Clients deaktiviert wird.  Standardmäßig gelten Clienteinstellungen für alle Geräte in der Hierarchie.  Weitere Informationen zu dieser Richtlinieneinstellung und ihrer Konfiguration finden Sie unter [Konfigurieren von Clienteinstellungen in System Center Configuration Manager](https://docs.microsoft.com/sccm/core/clients/deploy/configure-client-settings).  
+Nachdem Sie diese Konfigurationsänderung vorgenommen haben, erstellen Sie anhand der unter [Erstellen einer Updatebereitstellung](automation-tutorial-update-management.md#schedule-an-update-deployment) beschriebenen Schritte eine neue Bereitstellung, und wählen Sie in der Dropdownliste **Typ** den Eintrag **Importierte Gruppen** aus, um die entsprechende Configuration Manager-Sammlung auszuwählen.
 
-Nachdem Sie dieses Konfigurationsänderung vorgenommen haben, erstellen Sie anhand der Schritte in [Erstellen einer Updatebereitstellung](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment) eine neue Bereitstellung, und wählen Sie aus der Dropdownliste eine geeignete Configuration Manager-Sammlung aus, die als OMS-Computergruppe dargestellt wird. 
-
+## <a name="next-steps"></a>Nächste Schritte

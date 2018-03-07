@@ -10,11 +10,11 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: f0c466c433701c295bde00258d9ff7fd267b71f7
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 467111978d43d35788276cf7a464496393e4599b
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Verteilte Optimierung von Hyperparametern mit Azure Machine Learning Workbench
 
@@ -37,21 +37,16 @@ Die Rastersuche unter Verwendung der Kreuzvalidierung kann sehr zeitaufwendig se
 
 * Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
 * Eine installierte Kopie der [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) nach dem [Schnellstarthandbuch zum Installieren und Erstellen](./quickstart-installation.md), um die Workbench zu installieren und Konten zu erstellen.
-* In diesem Szenario wird davon ausgegangen, dass Sie die Azure ML Workbench mit einem lokal installierten Docker-Modul unter Windows 10 oder macOS ausführen. 
+* In diesem Szenario wird davon ausgegangen, dass Sie die Azure ML Workbench mit einer lokal installierten Docker-Engine unter Windows 10 oder macOS ausführen. 
 * Um das Szenario mit einem Docker-Remotecontainer auszuführen, stellen Sie die Ubuntu Data Science Virtual Machine (DSVM) bereit. Befolgen Sie dazu die entsprechenden [Anweisungen](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Es wird empfohlen, einen virtuellen Computer mit mindestens 8 Kernen und 28 GB Arbeitsspeicher zu verwenden. D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf. 
-* Zum Ausführen dieses Szenarios mit einem Spark-Cluster stellen Sie anhand dieser [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) einen Azure HDInsight-Cluster bereit.   
-Es wird empfohlen, einen Cluster mit mindestens den folgenden Eigenschaften zu verwenden:
-    - 6 Workerknoten
+* Zum Ausführen dieses Szenarios mit einem Spark-Cluster stellen Sie anhand dieser [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) einen Spark HDInsight-Cluster bereit. Wir empfehlen die Verwendung eines Clusters mit der folgenden Konfiguration im Header- und Workerknoten:
+    - 4 Workerknoten
     - 8 Kerne
-    - 28 GB Arbeitsspeicher in Header- und Workerknoten D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf.       
-    - Es wird empfohlen, die folgenden Parameter zur Maximierung der Clusterleistung zu ändern:
-        - spark.executor.instances
-        - spark.executor.cores
-        - spark.executor.memory 
+    - 28 GB Arbeitsspeicher  
+      
+  D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf. 
 
-Sie können diese [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager) befolgen und die Definitionen im Abschnitt „custom spark defaults“ (benutzerdefinierte Spark-Standardwerte) bearbeiten.
-
-     **Troubleshooting**: Your Azure subscription might have a quota on the number of cores that can be used. The Azure portal does not allow the creation of cluster with the total number of cores exceeding the quota. To find you quota, go in the Azure portal to the Subscriptions section, click on the subscription used to deploy a cluster and then click on **Usage+quotas**. Usually quotas are defined per Azure region and you can choose to deploy the Spark cluster in a region where you have enough free cores. 
+     **Problembehandlung**: Für Ihr Azure-Abonnement gilt möglicherweise ein Kontingent hinsichtlich der Kerne, die verwendet werden können. Das Azure-Portal lässt keine Erstellung eines Clusters zu, dessen Gesamtzahl von Kernen das Kontingent überschreitet. Ermitteln Sie das Kontingent, indem Sie im Azure-Portal in den Abschnitt „Abonnements“ wechseln und dort auf das Abonnement zum Bereitstellen eines Clusters und anschließend auf **Nutzung + Kontingente** klicken. Im Allgemeinen sind Kontingente nach Azure-Regionen definiert, und Sie können den Spark-Cluster in einer Region bereitstellen, in dem eine ausreichende Anzahl freier Kerne zur Verfügung steht. 
 
 * Erstellen Sie ein Azure-Speicherkonto, mit dem das Dataset gespeichert wird. Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) zum Erstellen eines Speicherkontos.
 
@@ -118,7 +113,7 @@ mit der IP-Adresse, dem Benutzernamen und dem Kennwort in DSVM. Die IP-Adresse d
 
 Führen Sie zum Einrichten der Spark-Umgebung Folgendes in der CLI aus:
 
-    az ml computetarget attach cluster--name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> 
+    az ml computetarget attach cluster --name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> 
 
 mit dem Namen des Clusters, dem SSH-Benutzernamen und -Kennwort des Clusters. Der Standardwert des SSH-Benutzernamens lautet `sshuser`, es sei denn, Sie haben ihn während des Bereitstellens des Clusters geändert. Den Namen des Clusters finden Sie im Abschnitt „Eigenschaften“ der Clusterseite im Azure-Portal:
 
@@ -126,14 +121,20 @@ mit dem Namen des Clusters, dem SSH-Benutzernamen und -Kennwort des Clusters. De
 
 Wir verwenden das Paket „spark-sklearn“, um Spark als Ausführungsumgebung für die verteilte Optimierung von Hyperparametern einzurichten. Wir haben die Datei „spark_dependencies.yml“ geändert, um dieses Paket zu installieren, wenn die Spark-Ausführungsumgebung verwendet wird:
 
-    configuration: {}
+    configuration: 
+      #"spark.driver.cores": "8"
+      #"spark.driver.memory": "5200m"
+      #"spark.executor.instances": "128"
+      #"spark.executor.memory": "5200m"  
+      #"spark.executor.cores": "2"
+  
     repositories:
       - "https://mmlspark.azureedge.net/maven"
       - "https://spark-packages.org/packages"
     packages:
       - group: "com.microsoft.ml.spark"
         artifact: "mmlspark_2.11"
-        version: "0.7"
+        version: "0.7.91"
       - group: "databricks"
         artifact: "spark-sklearn"
         version: "0.2.0"
@@ -199,9 +200,9 @@ im CLI-Fenster ausgeführt werden.
 Da die lokale Umgebung zu klein zum Berechnen aller Featuresätze ist, wechseln wir zum Remote-DSVM, wo ein größerer Arbeitsspeicher verfügbar ist. Die Ausführung in DSVM erfolgt im Docker-Container, der von der AML Workbench verwaltet wird. Mit diesem DSVM können wir sämtliche Features berechnen, Modelle trainieren und Hyperparameter optimieren (siehe nächster Abschnitt). Die Datei „singleVM.py“ enthält den kompletten Code zum Berechnen und Modellieren von Features. Im nächsten Abschnitt wird veranschaulicht, wie „singleVM.py“ im Remote-DSVM ausgeführt wird. 
 
 ### <a name="tuning-hyperparameters-using-remote-dsvm"></a>Optimierung von Hyperparametern mit Remote-DSVM
-Wir verwenden die [xgboost](https://anaconda.org/conda-forge/xgboost)-Implementierung [1] der stufenweisen Strukturverstärkung. Mit dem Paket [scikit-learn](http://scikit-learn.org/) werden Hyperparameter von „xgboost“ optimiert. Obwohl „xgboost“ kein Teil des Pakets „scikit-learn“ ist, implementiert es die scikit-learn-API und kann daher zusammen mit Funktionen zum Optimieren von Hyperparametern von „scikit-learn“ verwendet werden. 
+Wir verwenden die [xgboost](https://anaconda.org/conda-forge/xgboost)-Implementierung [1] der stufenweisen Strukturverstärkung. Außerdem verwenden wir das Paket [scikit-learn](http://scikit-learn.org/), um die Hyperparameter von „xgboost“ zu optimieren. Obwohl „xgboost“ kein Teil des Pakets „scikit-learn“ ist, implementiert es die scikit-learn-API und kann daher zusammen mit Funktionen zum Optimieren von Hyperparametern von „scikit-learn“ verwendet werden. 
 
-„xgboost“ weist acht Hyperparameter auf:
+„xgboost“ weist acht Hyperparameter auf, die [hier](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md) beschrieben werden:
 * n_estimators
 * max_depth
 * reg_alpha
@@ -210,9 +211,8 @@ Wir verwenden die [xgboost](https://anaconda.org/conda-forge/xgboost)-Implementi
 * learning_rate
 * colsample\_by_level
 * subsample
-* Ziel: Eine Beschreibung dieser Hyperparameter finden Sie unter
-- http://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn- https://github.com/dmlc/xgboost/blob/master/doc/parameter.md). 
-- 
+* Ziel  
+ 
 Anfänglich verwenden wir das Remote-DSVM und optimieren Hyperparameter aus einem kleinen Raster von möglichen Werten:
 
     tuned_parameters = [{'n_estimators': [300,400], 'max_depth': [3,4], 'objective': ['multi:softprob'], 'reg_alpha': [1], 'reg_lambda': [1], 'colsample_bytree': [1],'learning_rate': [0.1], 'colsample_bylevel': [0.1,], 'subsample': [0.5]}]  
@@ -285,7 +285,7 @@ Mit einem Spark-Cluster werden Hyperparameter mit horizontaler Hochskalierung op
 
 Dieses Raster weist 16 Kombinationen von Werten der Hyperparameter auf. Da die fünffache Kreuzvalidierung angewendet wird, führen wir „xgboost“ 16x5=80 Mal aus.
 
-Das Paket „scikit-learn“ bietet keine native Unterstützung für das Optimieren von Hyperparametern mit einem Spark-Cluster. Diese Lücke wird zum Glück durch das Paket [spark-sklearn](https://spark-packages.org/package/databricks/spark-sklearn) von Databricks geschlossen. Dieses Paket stellt die GridSearchCV-Funktion bereit, die nahezu die gleiche API wie die GridSearchCV-Funktion in „scikit-learn“ aufweist. Zum Verwenden von „spark-sklearn“ und Optimieren von Hyperparametern mit Spark müssen wir einen Spark-Kontext erstellen:
+Das Paket „scikit-learn“ bietet keine native Unterstützung für das Optimieren von Hyperparametern mit einem Spark-Cluster. Diese Lücke wird zum Glück durch das Paket [spark-sklearn](https://spark-packages.org/package/databricks/spark-sklearn) von Databricks geschlossen. Dieses Paket stellt die GridSearchCV-Funktion bereit, die nahezu die gleiche API wie die GridSearchCV-Funktion in „scikit-learn“ aufweist. Zum Verwenden von „spark-sklearn“ und zum Optimieren von Hyperparametern mit Spark müssen wir einen Spark-Kontext erstellen.
 
     from pyspark import SparkContext
     sc = SparkContext.getOrCreate()

@@ -1,6 +1,6 @@
 ---
-title: Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten
-description: "Auflisten einer Anwendung, die einmaliges Anmelden unterstützt, im Azure Active Directory-Katalog | Microsoft Azure"
+title: Auflisten Ihrer Anwendung im Azure Active Directory-Anwendungskatalog | Microsoft-Dokumentation
+description: "Auflisten einer Anwendung, die einmaliges Anmelden unterstützt, im Azure Active Directory-App-Katalog"
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
@@ -15,47 +15,49 @@ ms.workload: identity
 ms.date: 01/09/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: feb09aa8f8e22ad6fbda6a490d251c500bedf3ee
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 502fb555bd3b381c9be0ff04e210cc07f9bf6cd8
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten
+# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
 
-##  <a name="what-is-azure-ad-app-gallery"></a>Was ist der Azure AD-App-Katalog?
+##  <a name="what-is-the-azure-ad-application-gallery"></a>Was ist der Azure AD-Anwendungskatalog?
 
-Azure AD ist ein cloudbasierter Identitätsdienst. [Azure AD-App-Katalog](https://azure.microsoft.com/marketplace/active-directory/all/) ist ein allgemeiner Store, in dem alle Anwendungsconnectors für einmaliges Anmelden und Benutzerbereitstellung veröffentlicht werden. Unsere gemeinsamen Kunden, die Azure AD als Identitätsanbieter einsetzen, suchen nach verschiedenen SaaS-Anwendungsconnectors, die hier veröffentlicht werden. IT-Administratoren fügen Connectors aus dem App-Katalog hinzu, konfigurieren diese und verwenden sie für einmaliges Anmelden und Bereitstellungen. Dabei unterstützt Azure AD alle wichtigen Verbundprotokolle wie SAML 2.0, OpenID Connect, OAuth und WS-Fed für einmaliges Anmelden. 
+Azure Active Directory (Azure AD) ist ein cloudbasierter Identitätsdienst. Der [Azure AD-Anwendungskatalog](https://azure.microsoft.com/marketplace/active-directory/all/) ist der Azure Marketplace-App-Store, in dem alle Anwendungsconnectors für einmaliges Anmelden und die Benutzerbereitstellung veröffentlicht werden. Kunden, die Azure AD als Identitätsanbieter verwenden, finden hier die veröffentlichten SaaS-Anwendungsconnectors. IT-Administratoren fügen Connectors aus dem App-Katalog hinzu und konfigurieren und verwenden diese dann für einmaliges Anmelden und die Bereitstellung. Azure AD unterstützt alle wichtigen Verbundprotokolle für einmaliges Anmelden, einschließlich SAML 2.0, OpenID Connect, OAuth und WS-Fed. 
 
-## <a name="what-are-the-benefits-of-listing-the-application-in-the-gallery"></a>Welche Vorteile bietet eine Auflistung der Anwendung im Katalog?
+## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>Welche Vorteile bietet eine Auflistung einer Anwendung im Katalog?
 
-*  Bestmögliches Kundenerlebnis beim einmaligen Anmelden
+*  Kunden finden so die bestmögliche Umgebung für einmaliges Anmelden.
 
-*  Einfache und minimale Konfiguration der Anwendung
+*  Die Konfiguration der Anwendung ist einfach und in wenigen Schritten erledigt. 
 
-*  Leichte Auffindbarkeit der Anwendung im Katalog durch den Kunden 
+*  Eine schnelle Suche findet Ihre Anwendung im Katalog.
 
-*  Die Nutzung dieser Integration ist unabhängig von der vorhandenen Azure AD-SKU (Free, Basic oder Premium).
+*  Azure AD-Kunden mit den Tarifen Free, Basic und Premium können diese Integration nutzen. 
 
-*  Tutorials zur schrittweisen Konfiguration für die gemeinsamen Kunden
+*  Gemeinsame Kunden erhalten ausführliche Tutorials zur Konfiguration. 
 
-*  Möglichkeit der Benutzerbereitstellung für dieselbe App bei Verwendung von SCIM
+*  Kunden, die SCIM verwenden, können für die gleiche App die Bereitstellung nutzen.
 
 
-##  <a name="what-are-the-pre-requisites"></a>Was sind die Voraussetzungen?
+##  <a name="prerequisites-implement-federation-protocol"></a>Voraussetzungen: Implementieren eines Verbundprotokolls
 
-Damit eine Anwendung in der Azure AD-Galerie aufgelistet werden kann, muss diese zunächst eines der von Azure AD unterstützten Verbundprotokolle implementieren. Lesen Sie die Geschäftsbedingungen des Azure AD-App-Katalogs. Je nachdem, welches Verbundprotokoll Sie verwenden, gehen Sie wie folgt vor: 
+Damit eine Anwendung im Azure AD-App-Katalog aufgelistet werden kann, müssen Sie zunächst eines der folgenden von Azure AD unterstützten Verbundprotokolle implementieren. Lesen Sie die Geschäftsbedingungen des Azure AD-App-Katalogs. 
 
-*   **OpenID Connect** – Erstellen Sie die mehrinstanzenfähige Anwendung in Azure AD, und implementieren Sie das [Azure AD-Genehmigungsframework](active-directory-integrating-applications.md#overview-of-the-consent-framework) für Ihre Anwendung. Senden Sie die Anmeldeanforderung an einen gemeinsamen Endpunkt, damit jeder Kunde der Anwendung zustimmen kann. Sie können den Benutzerzugriff des Kunden anhand der Mandanten-ID und der im Token erhaltenen UPN des Benutzers steuern. Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD diese [Anweisungen für Entwickler](active-directory-authentication-scenarios.md).
+*   **OpenID Connect:** Erstellen Sie die mehrinstanzenfähige Anwendung in Azure AD, und implementieren Sie das [Azure AD-Genehmigungsframework](active-directory-integrating-applications.md#overview-of-the-consent-framework) für Ihre Anwendung. Senden Sie die Anmeldeanforderung an einen gemeinsamen Endpunkt, damit jeder Kunde der Anwendung zustimmen kann. Sie können den Benutzerzugriff anhand der Mandanten-ID und des im Token erhaltenen UPN des Benutzers steuern. Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD die [Anweisungen für Entwickler](active-directory-authentication-scenarios.md).
 
-*   **SAML 2.0 oder WS-Fed** – Ihre Anwendung sollte über eine Funktion zur SAML/WS-Fed-SSO-Integration im SP- oder IDP-Modus verfügen. Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Dazu befolgen Sie diese [Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](../active-directory-saas-custom-apps.md).
+*   **SAML 2.0** oder **WS-Fed**: Ihre Anwendung sollte über eine Funktion zur SAML-/WS-Fed-SSO-Integration im SP- oder IDP-Modus verfügen. Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Befolgen Sie dazu die [Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](../active-directory-saas-custom-apps.md).
 
-*   **Kennwortbasiertes SSO** – Erstellen Sie eine Webanwendung mit HTML-Anmeldeseite, um das [kennwortbasierte einmalige Anmelden](../active-directory-appssoaccess-whatis.md) zu konfigurieren. Das kennwortbasierte einmalige Anmelden (auch als „Password Vaulting“ oder „Kennworttresor“ bezeichnet) ermöglicht es Ihnen, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Es ist auch für Szenarien nützlich, in denen mehrere Benutzer ein Konto gemeinsam verwenden müssen, wie z. B. bei den App-Konten für die sozialen Medien Ihrer Organisation. 
+*   **Kennwortbasiertes SSO:** Erstellen Sie eine Webanwendung mit HTML-Anmeldeseite, um das [kennwortbasierte einmalige Anmelden](../active-directory-appssoaccess-whatis.md) zu konfigurieren. Das kennwortbasierte einmalige Anmelden (auch als „Password Vaulting“ oder „Kennworttresor“ bezeichnet) ermöglicht es Ihnen, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Es ist auch für Szenarien nützlich, in denen mehrere Benutzer ein Konto gemeinsam verwenden müssen, wie z.B. bei den App-Konten für die sozialen Medien Ihrer Organisation. 
 
-## <a name="process-for-submitting-the-request-in-the-portal"></a>Prozess für die Übermittlung der Anforderung im Portal
+## <a name="submit-the-request-in-the-portal"></a>Übermitteln der Anforderung im Portal
 
-Nachdem Sie getestet haben, dass Ihre Anwendungsintegration mit Azure AD funktioniert, müssen Sie Ihre Anforderung für den Zugriff auf unser [Anwendungsnetzwerkportal](https://microsoft.sharepoint.com/teams/apponboarding/Apps) übermitteln. Wenn Sie über ein Office 365-Konto verfügen, können Sie sich damit bei diesem Portal anmelden. Verwenden Sie andernfalls Ihre Microsoft-ID (Live ID, Outlook, Hotmail usw.), um sich anzumelden. Auf der folgenden Seite können Sie Ihren Zugriff anfordern. Geben Sie in das Textfeld eine geschäftliche Begründung ein, und klicken Sie auf **Zugriff anfordern**. Unser Team wird alle Details prüfen und Ihnen den Zugriff entsprechend gewähren. Danach können Sie sich beim Portal anmelden und Ihre detaillierte Anforderung für die Anwendung übermitteln.
+Nachdem Sie getestet haben, dass Ihre Anwendungsintegration mit Azure AD funktioniert, übermitteln Sie Ihre Anforderung für den Zugriff auf unser [Anwendungsnetzwerkportal](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Wenn Sie über ein Office 365-Konto verfügen, verwenden Sie dieses für die Anmeldung bei diesem Portal. Verwenden Sie andernfalls Ihr Microsoft-Konto (z.B. Outlook oder Hotmail) für die Anmeldung.
+
+Nach der Anmeldung wird die folgende Seite angezeigt. Geben Sie eine geschäftliche Begründung für den Zugriff in das Textfeld ein, und wählen Sie dann **Zugriff anfordern** aus. Unser Team überprüft die Details und gewährt Ihnen entsprechend Zugriff. Danach können Sie sich beim Portal anmelden und Ihre detaillierte Anforderung für die Anwendung übermitteln.
 
 Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
@@ -63,15 +65,15 @@ Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-In
 
 ## <a name="timelines"></a>Zeitpläne
     
-*   Prozess der Auflistung einer SAML 2.0- oder WS-Fed-Anwendung in der Galerie: **7 bis 10 Werktage**
+Das Auflisten einer SAML 2.0- oder WS-Fed-Anwendung im Katalog dauert etwa 7 bis 10 Werktage.
 
    ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/active-directory-app-gallery-listing/timeline.png)
 
-*   Prozess der Auflistung einer OpenID Connect-Anwendung in der Galerie: **2 bis 5 Werktage**
+Das Auflisten einer OpenID Connect-Anwendung im Katalog dauert etwa 2 bis 5 Werktage.
 
    ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/active-directory-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Eskalationen
 
-Bei Eskalationen wenden Sie sich per E-Mail an das [Azure AD SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>), das sich umgehend bei Ihnen meldet.
+Für Eskalationen senden Sie eine E-Mail an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Wir melden uns so schnell wie möglich bei Ihnen.
 

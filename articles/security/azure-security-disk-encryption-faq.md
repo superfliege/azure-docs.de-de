@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 1144533cd64e80ed2b15c70732c94e332ea06c3d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: f3cb11bc13ad2561e62c096d840c0b8e4471d271
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Häufig gestellte Fragen zu Azure Disk Encryption
 
@@ -49,10 +49,11 @@ Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Azure Disk Encry
 | --- | --- |--- |
 | Ubuntu | 16.04-DAILY-LTS | Betriebssystem- und andere Datenträger |
 | Ubuntu | 14.04.5-DAILY-LTS | Betriebssystem- und andere Datenträger |
-| RHEL | 7.3 | Betriebssystem- und andere Datenträger |
-| RHEL | 7.2 | Betriebssystem- und andere Datenträger |
-| RHEL | 6,8 | Betriebssystem- und andere Datenträger |
-| RHEL | 6.7 | Datenträger |
+| RHEL | 7.4 | Datenträger* |
+| RHEL | 7.3 | Datenträger* |
+| RHEL | 7.2 | Datenträger* |
+| RHEL | 6,8 | Datenträger* |
+| RHEL | 6.7 | Datenträger* |
 | CentOS | 7.3 | Betriebssystem- und andere Datenträger |
 | CentOS | 7.2n | Betriebssystem- und andere Datenträger |
 | CentOS | 6,8 | Betriebssystem- und andere Datenträger |
@@ -67,6 +68,8 @@ Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Azure Disk Encry
 | SLES | HPC 12 | Datenträger |
 | SLES | Priorität: 11-SP4 | Datenträger |
 | SLES | 11 SP4 | Datenträger |
+
+*__ADE wird für RHEL für Datenträger unterstützt. Die aktuelle ADE-Implementierung funktioniert zwar für Betriebssystemdatenträger, wird aber derzeit nicht gemeinsam unterstützt. Microsoft und Red Hat arbeiten an einer gemeinsam unterstützten Lösung. In der Zwischenzeit können Sie das ADE-Whitepaper für die Verschlüsselung von Linux-Betriebssystemdatenträgern lesen. Sie finden es [hier](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption).__
 
 **F:** Wie sehen die ersten Schritte mit Azure Disk Encryption aus?
 

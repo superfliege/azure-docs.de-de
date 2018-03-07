@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 172ad5198f7c813ed114f9fe3caea3d6a5dc6a97
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 84f6f0c13e8c06aa934d98ecc3c3e4a61f95c641
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
@@ -65,7 +65,7 @@ Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sys
 Durch Erstellen eines Images direkt von einem virtuellen Computer lässt sich sicherstellen, dass das Image alle Datenträger umfasst, die dem virtuellen Computer zugeordnet sind, einschließlich des Betriebssystemdatenträgers und allen Datenträgern für Daten. In diesem Beispiel wird gezeigt, wie ein verwaltetes Image von einer VM mit verwalteten Datenträgern erstellt wird.
 
 
-Stellen Sie vor Beginn sicher, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
+Stellen Sie vor Beginn sicher, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren. (Überprüfen Sie mit `Get-Module`, welche Version Sie besitzen.)
 
 ```azurepowershell-interactive
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0

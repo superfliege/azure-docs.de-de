@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 422c19dfa9a204d98a898f76bc1af92a05c054d0
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ba67a2a20d3f3e8e9fbccb2674cea500bfbde3fb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Ermöglicht es, Replikate zu verwalten, die zu Servicepartitionen gehören.
@@ -64,7 +64,7 @@ Ruft die Details des Replikats ab, das auf einem Service Fabric-Knoten bereitges
 ## <a name="sfctl-replica-health"></a>sfctl replica health
 Ruft die Integrität eines zustandsbehafteten Service Fabric-Dienstreplikats oder einer zustandslosen Service Fabric-Dienstinstanz ab.
 
-Ruft die Integrität eines Service Fabric-Replikats ab. Verwenden Sie „EventsHealthStateFilter“, um die Sammlung der Integritätsereignisse (HealthEvents), die für das Replikat gemeldet wurden, anhand des Integritätsstatus zu filtern. zu erstellen und zu verwalten.
+Ruft die Integrität eines Service Fabric-Replikats ab. Verwenden Sie „EventsHealthStateFilter“, um die Sammlung der Integritätsereignisse (HealthEvents), die für das Replikat gemeldet wurden, anhand des Integritätsstatus zu filtern.
 
 ### <a name="arguments"></a>Argumente
 
@@ -82,7 +82,7 @@ Ruft die Integrität eines Service Fabric-Replikats ab. Verwenden Sie „EventsH
 | --debug                  | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o              | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                  | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                  | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
 | --verbose                | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-replica-info"></a>sfctl replica info
@@ -106,7 +106,7 @@ Die Antwort enthält die ID, die Rolle, den Status, die Integrität, den Knotenn
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
 | --verbose             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-replica-list"></a>sfctl replica list

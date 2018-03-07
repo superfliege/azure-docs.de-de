@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 20760650b093216a2929de580f5971c45e0534a8
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 9638c7148d4347bb9cbc9e48022037ee6cb983d7
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>Sichern virtueller Windows-Computern in Azure
 
@@ -46,7 +46,7 @@ Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt u
 ## <a name="create-a-backup"></a>Erstellen einer Sicherung
 Erstellen Sie eine einfache geplante tägliche Sicherung in einem Recovery Services-Tresor. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 
 3. Wählen Sie in der Liste eine zu sichernde VM aus.
 4. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Einstellungen** auf **Sicherung**. Das Blatt **Sicherung aktivieren** wird geöffnet.
@@ -104,7 +104,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Im nächsten Tutorial erhalten Sie Informationen zur Überwachung virtueller Computer.
 
 > [!div class="nextstepaction"]
-> [Überwachen virtueller Computer](tutorial-monitoring.md)
+> [Virtual machine governance with Azure PowerShell](tutorial-govern-resources.md) (Steuern von virtuellen Computern mit Azure PowerShell)
 
 
 

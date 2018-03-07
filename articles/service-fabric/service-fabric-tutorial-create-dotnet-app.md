@@ -1,11 +1,11 @@
--- title: Erstellen einer .NET-Anwendung für Service Fabric | Microsoft Docs description: Erfahren Sie, wie Sie eine Anwendung mit einem ASP.NET Core-Front-End und einem zustandsbehafteten zuverlässigen Dienst-Back-End erstellen und in einem Cluster bereitstellen.
+-- title: Erstellen einer .NET-Anwendung für Service Fabric | Microsoft-Dokumentation description: In diesem Tutorial erfahren Sie, wie Sie eine Anwendung mit einem ASP.NET Core-Front-End und einem zustandsbehafteten zuverlässigen Dienst-Back-End erstellen und in einem Cluster bereitstellen.
 services: service-fabric documentationcenter: .net author: rwike77 manager: timlt editor: ''
 
 ms.assetid: ms.service: service-fabric ms.devlang: dotNet ms.topic: tutorial ms.tgt_pltfrm: NA ms.workload: NA ms.date: 01/29/2018 ms.author: ryanwi ms.custom: mvc
 
 ---
 
-# <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
+# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 Dieses Tutorial ist der erste Teil einer Serie.  Hier erfahren Sie, wie Sie eine Azure Service Fabric-Anwendung mit einem ASP.NET Core-Web-API-Front-End und einem zustandsbehafteten Back-End-Dienst zum Speichern Ihrer Daten erstellen. Am Ende verfügen Sie über eine Abstimmungsanwendung mit einem ASP.NET Core-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](#walkthrough_anchor) fortfahren.
 
 ![Anwendungsdiagramm](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 885315b9f610d5f1703acd0f292f7b3347462b34
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: afa5c6a07432456d703020c0b8c5c3606478b8fe
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
 API Management bietet die Möglichkeit, den Zugriff auf den Back-End-Dienst einer API mithilfe von Clientzertifikaten abzusichern. Diese Anleitung beschreibt, wie Zertifikate im API-Herausgeberportal verwaltet werden und eine API zur Verwendung eines Zertifikats für den Zugriff auf ihren Back-End-Dienst konfiguriert wird.
 
 Weitere Informationen zur Verwaltung von Zertifikaten mit der API Management-REST-API finden Sie unter [Azure API Management-REST-API-Zertifikatsentität][Azure API Management REST API Certificate entity].
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"> </a>Voraussetzungen
 Diese Anleitung beschreibt, wie Sie Ihre Instanz des API Management-Diensts konfigurieren, um für den Zugriff auf den Back-End-Dienst einer API die Clientzertifikatauthentifizierung zu verwenden. Bevor Sie die Schritte in diesem Thema ausführen, müssen Sie Ihren Back-End-Dienst für die Clientzertifikatauthentifizierung konfiguriert haben und auf das Zertifikat und das Kennwort zum Hochladen in das API Management-Herausgeberportal zugreifen können (ausführliche Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure WebSites finden Sie in [diesem Artikel][to configure certificate authentication in Azure WebSites refer to this article]).
 
 ## <a name="step1"></a>Hochladen eines Clientzertifikats
@@ -114,13 +114,6 @@ Wenn Sie selbstsignierte Zertifikate verwenden, müssen Sie die Überprüfung de
 $context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
-
-## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absichern von Back-End-Diensten es gibt, z. B. HTTP-Standardauthentifizierung oder Authentifizierung mit gemeinsamem geheimen Schlüssel.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Last-mile-Security/player]
-> 
-> 
 
 [api-management-management-console]: ./media/api-management-howto-mutual-certificates/api-management-management-console.png
 [api-management-security-client-certificates]: ./media/api-management-howto-mutual-certificates/api-management-security-client-certificates.png

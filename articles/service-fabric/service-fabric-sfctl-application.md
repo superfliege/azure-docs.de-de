@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2018
+ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 345717e76097931f52354369e822af41133b34f0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3a10437d0a2d680e586ada6a87750a69453c1f0c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-application"></a>sfctl application
 Ermöglicht es, Anwendungen und Anwendungstypen zu erstellen, zu löschen und zu verwalten.
@@ -37,7 +37,7 @@ Ermöglicht es, Anwendungen und Anwendungstypen zu erstellen, zu löschen und zu
 | list         | Ruft die Liste der Anwendungen ab, die in dem Service Fabric-Cluster erstellt wurden und mit den Filtern übereinstimmen, die als Parameter angegeben sind.|
 | load | Ruft Lastinformationen zu einer Service Fabric-Anwendung ab. |
 | manifest     | Ruft das Manifest ab, das einen Anwendungstyp beschreibt.|
-| provision    | Stellt einen Service Fabric-Anwendungstyp mit dem Cluster bereit oder registriert einen Service Fabric-Anwendungstyp mit dem Cluster.|
+| provision    | Stellt einen Service Fabric-Anwendungstyp mithilfe des SFPKG-Pakets im externen Speicher oder mithilfe des Anwendungspakets im Imagespeicher im Cluster bereit oder registriert ihn.|
 | report-health| Sendet einen Integritätsbericht zu der Service Fabric-Anwendung.|
 | type         | Ruft die Liste der Anwendungstypen im Service Fabric-Cluster ab, die genau mit dem angegebenen Namen übereinstimmen.|
 | type-list    | Ruft die Liste der Anwendungstypen im Service Fabric-Cluster ab.|
@@ -99,6 +99,8 @@ Löscht eine vorhandene Service Fabric-Anwendung. Eine Anwendung muss erstellt w
 
 ## <a name="sfctl-application-deployed"></a>sfctl application deployed
 Ruft die Informationen zu einer Anwendung ab, die auf einem Service Fabric-Knoten bereitgestellt wird.
+
+Ruft die Informationen zu einer Anwendung ab, die auf einem Service Fabric-Knoten bereitgestellt wird.  Diese Abfrage gibt Systemanwendungsinformationen zurück, wenn die angegebene Anwendungs-ID für eine Systemanwendung steht. Die Ergebnisse umfassen bereitgestellte Anwendungen mit den Status „Aktiv“, „Aktiviert“ und „Herunterladen“. Für diese Abfrage muss der Knotenname einem Knoten im Cluster entsprechen. Die Abfrage führt zu einem Fehler, wenn der angegebene Knotenname auf keinen aktiven Service Fabric-Knoten im Cluster verweist.
      
 ### <a name="arguments"></a>Argumente
 
@@ -131,7 +133,7 @@ Gibt den Integritätsstatus der Service Fabric-Anwendung zurück. In der Antwort
 | --deployed-applications-health-state-filter| Ermöglicht es, die im Ergebnis der Anwendungsintegritätsabfrage zurückgegebenen Integritätsstatusobjekte der bereitgestellten Anwendungen anhand des Integritätsstatus zu filtern. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur bereitgestellte Anwendungen zurückgegeben, die dem Filter entsprechen. Alle bereitgestellten Anwendungen werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine kennzeichenbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, wird der Integritätsstatus der bereitgestellten Anwendungen zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warning (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“. – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
 | --events-health-state-filter            | Ermöglicht das Filtern der Collection zurückgegebener HealthEvent-Objekte anhand des Integritätsstatus. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Ereignisse zurückgegeben, die dem Filter entsprechen. Alle Ereignisse werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine kennzeichenbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, werden alle Ereignisse zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warnung (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“. – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
 | --exclude-health-statistics | Gibt an, ob die Integritätsstatistiken als Bestandteil des Abfrageergebnisses zurückgegeben werden sollen. Der Standardwert ist „FALSE“. Die Statistiken zeigen die Anzahl von untergeordneten Entitäten, die einen der Integritätsstatus „OK“, „Warning“ oder „Error“ haben.|
-| --services-health-state-filter          | Ermöglicht es, die Integritätsstatusobjekte der Dienste, die im Ergebnis einer Dienstintegritätsabfrage zurückgegeben werden, anhand des Integritätsstatus zu filtern. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Dienste zurückgegeben, die dem Filter entsprechen. Alle Dienste werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine kennzeichenbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise „6“, wird der Integritätsstatus der Dienste zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warning (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“. – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
+| --services-health-state-filter          | Ermöglicht es, die Integritätsstatusobjekte der Dienste, die im Ergebnis einer Dienstintegritätsabfrage zurückgegeben werden, anhand des Integritätsstatus zu filtern. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Dienste zurückgegeben, die dem Filter entsprechen. Alle Dienste werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine kennzeichenbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise „6“, wird der Integritätsstatus der Dienste zurückgegeben, für die HealthState den Wert für OK (2) oder Warning (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“. – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
 | --timeout -t                            | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
@@ -141,7 +143,7 @@ Gibt den Integritätsstatus der Service Fabric-Anwendung zurück. In der Antwort
 | --debug                                 | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                               | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                             | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                                 | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                                 | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
 | --verbose                               | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-info"></a>sfctl application info
@@ -164,22 +166,23 @@ Gibt die Informationen zu der Anwendung zurück, die im Service Fabric-Cluster e
 | --debug                      | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                    | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                  | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.             Standardwert: json.|
-| --query                      | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                      | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
 | --verbose                    | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-list"></a>sfctl application list
 Ruft die Liste der Anwendungen ab, die in dem Service Fabric-Cluster erstellt wurden und mit den Filtern übereinstimmen, die als Parameter angegeben sind.
 
-Ruft die Informationen zu den Anwendung ab, die im Service Fabric-Cluster erstellt wurden oder gerade erstellt werden und mit den Filtern übereinstimmen, die als Parameter angegebenen sind. Die Antwort enthält den Namen, den Typ, den Status, die Parameter und weitere Details über die Anwendung. Wenn die Anwendungen nicht auf eine Seite passen, werden sowohl eine Seite mit Ergebnissen als auch ein Fortsetzungstoken zurückgegeben, über das zur nächsten Seite gewechselt werden kann.
+Ruft die Informationen zu den Anwendung ab, die im Service Fabric-Cluster erstellt wurden oder gerade erstellt werden und mit den Filtern übereinstimmen, die als Parameter angegebenen sind. Die Antwort enthält den Namen, den Typ, den Status, die Parameter und weitere Details über die Anwendung. Wenn die Anwendungen nicht auf eine Seite passen, werden sowohl eine Seite mit Ergebnissen als auch ein Fortsetzungstoken zurückgegeben, über das zur nächsten Seite gewechselt werden kann. Die Filter ApplicationTypeName und ApplicationDefinitionKindFilter können nicht gleichzeitig angegeben werden.
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-|--application-definition-kind-filter| Wird zum Filtern nach „ApplicationDefinitionKind“ für Anwendungsabfragevorgänge verwendet. – Default: Standardwert. Filter, der mit Eingaben eines beliebigen Werts „ApplicationDefinitionKind“ übereinstimmt. Der Wert ist „0“. – All: Filter, der mit Eingaben eines beliebigen Werts „ApplicationDefinitionKind“ übereinstimmt. Der Wert ist gleich „65535“. – ServiceFabricApplicationDescription: Filter, der mit Eingaben übereinstimmt, für die „ApplicationDefinitionKind“ den Wert „ServiceFabricApplicationDescription“ hat. Der Wert ist gleich „1“. – Compose: Filter, der mit Eingaben übereinstimmt, für die „ApplicationDefinitionKind“ den Wert „Compose“ hat. Der Wert ist gleich „2“. Standardwert: 65535.|
+|--application-definition-kind-filter| Wird zum Filtern nach ApplicationDefinitionKind verwendet, um eine Service Fabric-Anwendung zu definieren. - Standard: Standardwert, der die gleiche Funktion hat wie die Auswahl von „All“. Der Wert ist „0“. – All: Filter, der mit Eingaben eines beliebigen Werts „ApplicationDefinitionKind“ übereinstimmt. Der Wert ist gleich „65535“. - ServiceFabricApplicationDescription: Filter, der mit Eingaben übereinstimmt, für die ApplicationDefinitionKind den Wert „ServiceFabricApplicationDescription“ hat. Der Wert ist gleich „1“. – Compose: Filter, der mit Eingaben übereinstimmt, für die „ApplicationDefinitionKind“ den Wert „Compose“ hat. Der Wert ist gleich „2“.|
 | --application-type-name      | Der Anwendungstypname, der zum Filtern der Anwendungen verwendet wird, die abgefragt werden sollen. Dieser Wert darf die Version des Anwendungstyps nicht enthalten.|
 | --continuation-token         | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein.|
 | --exclude-application-parameters| Das Flag, das angibt, ob die Anwendungsparameter aus dem Ergebnis ausgeschlossen werden sollen.|
+| --max-results|Die maximale Anzahl von Ergebnissen, die als Teil der seitenweisen Abfragen zurückgegeben werden sollen. Dieser Parameter definiert die obere Grenze für die Anzahl von zurückgegebenen Ergebnissen. Es können weniger Ergebnisse zurückgegeben werden, als dieser maximalen Anzahl entspricht. Dies ist der Fall, wenn die Ergebnisse wegen der Größenbeschränkungen, die für Meldungen in der Konfiguration definiert sind, nicht in die jeweilige Meldung passen. Ist dieser Parameter gleich null oder nicht angegeben, enthalten die seitenweisen Abfragen so viele Ergebnisse, wie in die Rückgabemeldung passen.|
 | --timeout -t                 | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
@@ -209,7 +212,7 @@ Gibt die Lastinformationen der Anwendung zurück, die im Service Fabric-Cluster 
 |--debug                    | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
     --help -h                  | Zeigt diese Hilfemeldung an und beendet.|
     --output -o                | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-    --query                    | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+    --query                    | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
     --verbose                  | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-manifest"></a>sfctl application manifest
@@ -232,20 +235,29 @@ Ruft das Manifest ab, das einen Anwendungstyp beschreibt. Die Antwort enthält d
 | --debug                           | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                         | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                       | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.                  Standardwert: json.|
-| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
 | --verbose                         | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-provision"></a>sfctl application provision
-Stellt einen Service Fabric-Anwendungstyp mit dem Cluster bereit oder registriert einen Service Fabric-Anwendungstyp mit dem Cluster.
+Stellt einen Service Fabric-Anwendungstyp mithilfe des SFPKG-Pakets im externen Speicher oder mithilfe des Anwendungspakets im Imagespeicher im Cluster bereit oder registriert ihn.
+
+Stellt einen Service Fabric-Anwendungstyp im Cluster bereit. Dies ist erforderlich, bevor neue Anwendungen instanziiert werden können. Der Bereitstellungsvorgang kann mit dem Anwendungspaket, das durch RelativePathInImageStore angegeben wird, oder mithilfe des URI des externen SFPKG-Pakets ausgeführt werden. Sofern nicht „--external-provision“ festgelegt wurde, erwartet dieser Befehl eine
+
+Bereitstellung per Imagespeicher.
         
-Stellt einen Service Fabric-Anwendungstyp mit dem Cluster bereit oder registriert einen Service Fabric-Anwendungstyp mit dem Cluster. Dies ist erforderlich, bevor neue Anwendungen instanziiert werden können.
+
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --application-type-build-path [erforderlich]| Der relative Imagespeicherpfad zu dem Anwendungspaket.|
-| --timeout -t                         | Servertimeout in Sekunden.  Standardwert: 60.|
+| --application-package-download-uri| Der Pfad zum SFPKG-Anwendungspaket, unter dem das Anwendungspaket über das HTTP- oder HTTPS-Protokoll heruntergeladen werden kann. Gilt nur für die Bereitstellung aus einem externen Speicher. Das Anwendungspaket kann in einem externen Speicher gespeichert werden, der den GET-Vorgang zum Herunterladen der Datei bereitstellt. Es werden die Protokolle HTTP und HTTPS unterstützt, und der Pfad muss Lesezugriff zulassen.|
+| --application-type-build-path       | Gilt nur für Imagespeicher zur Bereitstellung. Der relative Pfad für das Anwendungspaket im Imagespeicher, der während des vorherigen Uploadvorgangs angegeben wurde. |
+| --application-type-name| Gilt nur für die Bereitstellung aus einem externen Speicher. Der Anwendungstypname stellt den Namen des Anwendungstyps im Anwendungsmanifest dar.|
+| --application-type-version| Gilt nur für die Bereitstellung aus einem externen Speicher. Die Anwendungstypversion stellt die Version des Anwendungstyps im Anwendungsmanifest dar.|
+| --external-provision| Der Speicherort, von dem das Anwendungspaket registriert oder bereitgestellt werden kann. Gibt an, dass die Bereitstellung über ein Anwendungspaket erfolgt, das zuvor in einen externen Speicher hochgeladen wurde. Das Anwendungspaket endet mit der Erweiterung „.sfpkg“.|
+| --no-wait| Gibt an, ob die Bereitstellung asynchron erfolgen soll.  Bei Festlegung auf „true“ wird der Bereitstellungsvorgang beendet, wenn die Anforderung vom System akzeptiert wurde. Der Bereitstellungsvorgang wird dann ohne Zeitlimit fortgesetzt. Der Standardwert ist „false“. Bei großen Anwendungspaketen wird empfohlen, den Wert auf „true“ festzulegen.|
+| --timeout -t                      | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -254,20 +266,21 @@ Stellt einen Service Fabric-Anwendungstyp mit dem Cluster bereit oder registrier
 | --debug                              | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                            | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                          | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                              | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                              | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
 | --verbose                            | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-type"></a>sfctl application type
 
 Ruft die Liste der Anwendungstypen im Service Fabric-Cluster ab, die genau mit dem angegebenen Namen übereinstimmen.
 
-Gibt die Informationen über die Anwendungstypen zurück, die im Service Fabric-Cluster bereitgestellt oder zum Bereitstellen vorbereitet werden. Diese Ergebnisse bestehen aus Anwendungstypen, deren Namen genau mit dem übereinstimmen, der als Parameter angegeben ist, und die den angegebenen Abfrageparametern entsprechen. Es werden alle Versionen des Anwendungstyps zurückgegeben, der mit dem Namen des Anwendungstyps übereinstimmt. Dabei wird jede Version als ein Anwendungstyp zurückgegeben. Die Antwort enthält den Namen, die Version, den Status und weitere Details über den Anwendungstyp. Dies ist eine seitenweise Abfrage, d. h., wenn nicht alle Anwendungstypen auf eine Seite passen, werden sowohl eine Seite mit Ergebnissen als auch ein Fortsetzungstoken zurückgegeben, über das zur nächsten Seite gewechselt werden kann. Gibt es beispielsweise 10 Anwendungstypen, auf eine Seite passen aber nur die ersten 3 Anwendungstypen, oder ist die maximale Anzahl von Ergebnissen auf „3“ festgelegt, wird „3“ zurückgegeben. Wenn Sie auf den Rest der Ergebnisse zugreifen möchten, rufen Sie die anschließenden Seiten ab, indem Sie in der nächsten Abfrage das zurückgegebene Fortsetzungstoken verwenden. Es wird ein leeres Fortsetzungstoken zurückgegeben, wenn keine anschließenden Seiten vorhanden sind.
+Gibt die Informationen über die Anwendungstypen zurück, die im Service Fabric-Cluster bereitgestellt oder zum Bereitstellen vorbereitet werden. Diese Ergebnisse bestehen aus Anwendungstypen, deren Namen genau mit dem übereinstimmen, der als Parameter angegeben ist, und die den angegebenen Abfrageparametern entsprechen. Es werden alle Versionen des Anwendungstyps zurückgegeben, der mit dem Namen des Anwendungstyps übereinstimmt. Dabei wird jede Version als ein Anwendungstyp zurückgegeben. Die Antwort enthält den Namen, die Version, den Status und weitere Details über den Anwendungstyp. Dies ist eine seitenweise Abfrage, d. h., wenn nicht alle Anwendungstypen auf eine Seite passen, werden sowohl eine Seite mit Ergebnissen als auch ein Fortsetzungstoken zurückgegeben, über das zur nächsten Seite gewechselt werden kann. Wenn es beispielsweise 10 Anwendungstypen gibt, auf eine Seite aber nur die ersten 3 Anwendungstypen passen, oder die maximale Anzahl von Ergebnissen auf „3“ festgelegt wurde, wird „3“ zurückgegeben. Wenn Sie auf den Rest der Ergebnisse zugreifen möchten, rufen Sie die anschließenden Seiten ab, indem Sie in der nächsten Abfrage das zurückgegebene Fortsetzungstoken verwenden. Es wird ein leeres Fortsetzungstoken zurückgegeben, wenn keine anschließenden Seiten vorhanden sind.
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --application-type-name [erforderlich]| Der Name des Anwendungstyps.|
+| --application-type-version        | Die Version des Anwendungstyps.|
 | --continuation-token           | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein.|
 | --exclude-application-parameters  | Das Flag, das angibt, ob die Anwendungsparameter aus dem Ergebnis ausgeschlossen werden sollen.|
 | --max-results                  | Die maximale Anzahl von Ergebnissen, die als Teil der seitenweisen Abfragen zurückgegeben werden sollen. Dieser Parameter definiert die obere Grenze für die Anzahl von zurückgegebenen Ergebnissen. Es können weniger Ergebnisse zurückgegeben werden, als es dieser maximalen Anzahl entspricht. Dies ist der Fall, wenn die Ergebnisse wegen der Größenbeschränkungen, die für Meldungen in der Konfiguration definiert sind, nicht in die jeweilige Meldung passen. Ist dieser Parameter gleich null oder nicht angegeben, enthält die seitenweise Abfrage so viele Ergebnisse, wie in die Rückgabemeldung passen.|
@@ -293,7 +306,8 @@ Entfernt einen Service Fabric-Anwendungstyp aus dem Cluster oder hebt die Regist
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --application-type-name [erforderlich]| Der Name des Anwendungstyps.|
-| --application-type-version [erforderlich]| Die Anwendungstypversion.|
+| --application-type-version [erforderlich]| Die Version des Anwendungstyps, wie sie im Anwendungsmanifest definiert ist.|
+|--async-parameter                    | Das Flag gibt an, ob das Aufheben der Bereitstellung asynchron erfolgen soll. Bei Festlegung auf „true“ wird der Aufhebungsvorgang der Bereitstellung beendet, wenn die Anforderung vom System akzeptiert wurde. Der Vorgang der Aufhebung der Bereitstellung wird dann ohne Zeitlimit fortgesetzt. Der Standardwert ist „false“. Es wird jedoch empfohlen, den Wert für große bereitgestellte Anwendungspakete auf „true“ festzulegen.|
 | --timeout -t                      | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
@@ -303,7 +317,7 @@ Entfernt einen Service Fabric-Anwendungstyp aus dem Cluster oder hebt die Regist
 | --debug                           | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                         | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o                       | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.                  Standardwert: json.|
-| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query                           | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
 | --verbose                         | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-application-upgrade"></a>sfctl application upgrade
@@ -363,7 +377,7 @@ Optional kann der Uploadfortschritt für jede Datei im Paket angezeigt werden. D
 | --debug       | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h     | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o   | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query       | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query       | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
 | --verbose     | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 40b684fe5681123f3c32d3984b2725f97b427f1b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 9222fcebd51ff13e797f40f3fdb0ddaa955d2611
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -302,7 +302,7 @@ subnet/address | Subnetzadresse der VM | 2017-04-02
 subnet/prefix | Subnetzpräfix, Beispiel 24 | 2017-04-02 
 ipv6/ipAddress | Lokale IPv6-Adresse der VM | 2017-04-02 
 macAddress | VM-Mac-Adresse | 2017-04-02 
-scheduledevents | Derzeit in der öffentlichen Vorschau, siehe [scheduledevents](scheduled-events.md) | 2017-03-01
+scheduledevents | Siehe [scheduledevents](scheduled-events.md) | 2017-03-01
 
 ## <a name="example-scenarios-for-usage"></a>Beispielszenarien für die Verwendung  
 
@@ -411,4 +411,4 @@ Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
     
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die API [Geplante Ereignisse](scheduled-events.md) **in der Public Preview**, die vom Instanzmetadatendienst bereitgestellt wird.
+- Erfahren Sie mehr über [geplante Ereignisse](scheduled-events.md).

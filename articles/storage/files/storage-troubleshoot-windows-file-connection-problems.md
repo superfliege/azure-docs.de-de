@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
-ms.openlocfilehash: 5aacc8a920c9343c5efa89128aabb1505fc2d9aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 073d163e139c9fd400e4b3177c26d4ddb6228ed0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -164,6 +164,12 @@ Verwenden Sie eine der folgenden Lösungen:
 
 -   Binden Sie das Laufwerk vom selben Benutzerkonto ein, das auch die Anwendung enthält. Sie können ein Tool wie z.B. PsExec verwenden.
 - Übergeben Sie den Speicherkontonamen und -schlüssel an die Parameter des „net use“-Befehls.
+- Verwenden Sie die den Befehl cmdkey, um die Anmeldeinformationen in Credential Manager hinzuzufügen. Führen Sie dies über eine Befehlszeile im Kontext des Dienstkontos aus. Verwenden Sie dazu entweder eine interaktive Anmeldung oder „runas“.
+  
+  `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
+- Ordnen Sie die Freigabe direkt zu, ohne einen zugeordneten Laufwerkbuchstaben zu verwenden. Einige Anwendungen stellen möglicherweise nicht ordnungsgemäß die Verbindung mit dem Laufwerkbuchstaben wieder her, sodass die Verwendung des vollständigen UNC-Pfads zuverlässiger sein kann. 
+
+  `net use * \\storage-account-name.file.core.windows.net\share`
 
 Nachdem Sie die erforderlichen Schritte der Anleitung durchgeführt haben, erhalten Sie womöglich die folgende Fehlermeldung, wenn Sie „net use“ für das System- bzw. Netzwerkdienstkonto ausführen: „Systemfehler 1312 ist aufgetreten. Eine angegebene Anmeldesitzung ist nicht vorhanden. Sie wird möglicherweise bereits verwendet.“ Wenn dies auftritt, vergewissern Sie sich, dass der an „net use“ übergebene Benutzername Domäneninformationen enthält (z.B. „[Speicherkontoname].file.core.windows.net“).
 

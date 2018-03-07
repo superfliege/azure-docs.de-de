@@ -3,7 +3,7 @@ title: "Geplante Ereignisse für Linux-VMs in Azure | Microsoft-Dokumentation"
 description: "Planen Sie Ereignisse mit dem Azure-Metadatendienst für Ihre virtuellen Linux-Computer."
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: 
-author: zivraf
+author: ericrad
 manager: timlt
 editor: 
 tags: 
@@ -13,23 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2017
-ms.author: zivr
-ms.openlocfilehash: ae9955253647f3277729e7905baf7bb07645de42
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.date: 02/22/2018
+ms.author: ericrad
+ms.openlocfilehash: e697a8f1160aff5774dc416c81819220c316707a
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="azure-metadata-service-scheduled-events-preview-for-linux-vms"></a>Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Linux-VMs
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure-Metadatendienst: Geplante Ereignisse für Linux-VMs
 
-> [!NOTE] 
-> Die Vorschauen werden Ihnen zur Verfügung gestellt, wenn Sie die folgenden Nutzungsbedingungen akzeptieren. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-
-Das Feature für geplante Ereignisse ist ein untergeordneter Dienst des Azure-Metadatendiensts, der Ihren Anwendungen Zeit zur Vorbereitung auf die Wartung virtueller Computer gibt. Er stellt Informationen zu geplanten Wartungsereignissen (z.B. Neustart) bereit, damit Ihre Anwendung sich darauf vorbereiten und Unterbrechungen begrenzen kann. Der Dienst steht für alle Azure-VM-Typen zur Verfügung, einschließlich PaaS und IaaS unter Windows und Linux. 
+Scheduled Events ist ein Azure-Metadatendienst, der Ihren Anwendungen Zeit zur Vorbereitung auf die Wartung virtueller Computer gibt. Er stellt Informationen zu geplanten Wartungsereignissen (z.B. Neustart) bereit, damit Ihre Anwendung sich darauf vorbereiten und Unterbrechungen begrenzen kann. Der Dienst steht für alle Azure-VM-Typen zur Verfügung, einschließlich PaaS und IaaS unter Windows und Linux. 
 
 Informationen zu geplanten Ereignissen unter Windows finden Sie unter [Geplante Ereignisse für virtuelle Windows-Computer](../windows/scheduled-events.md).
+
+> [!Note] 
+> Scheduled Events ist in allen Azure-Regionen allgemein verfügbar. Informationen zu aktuellen Releases finden Sie unter [Version und regionale Verfügbarkeit](#version-and-region-availability).
 
 ## <a name="why-use-scheduled-events"></a>Was spricht für die Verwendung geplanter Ereignisse?
 
@@ -49,7 +48,7 @@ Geplante Ereignisse umfasst Ereignisse in den folgenden Anwendungsfällen:
 - Von der Plattform ausgelöste Wartungsaktionen (z.B. Update des Hostbetriebssystems)
 - Benutzerinitiierte Wartung (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
 
-## <a name="the-basics"></a>Grundlagen  
+## <a name="the-basics"></a>Die Grundlagen  
 
   Der Metadatendienst macht Informationen zu ausgeführten virtuellen Computern mithilfe eines innerhalb einer VM zugänglichen REST-Endpunkts verfügbar. Die Informationen stehen über eine nicht routingfähige IP-Adresse bereit, die außerhalb der VM nicht verfügbar gemacht wird.
 
@@ -62,47 +61,39 @@ Geplante Ereignisse werden übermittelt an:
 
 Überprüfen Sie deshalb anhand des Felds `Resources` in einem Ereignis, welche VMs betroffen sein werden.
 
-### <a name="discover-the-endpoint"></a>Ermitteln des Endpunkts
-Für VMs, die für virtuelle Netzwerke aktiviert sind, lautet der vollständige Name des Endpunkts für die neueste Version der geplanten Ereignisse folgendermaßen: 
+### <a name="endpoint-discovery"></a>Endpunktermittlung
+Für virtuelle Computer in VNETs ist der Metadatendienst über eine statische, nicht routingfähige IP-Adresse (`169.254.169.254`) verfügbar. Der vollständige Endpunkt für die neueste Version von Scheduled Events ist wie folgt: 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
-In Fällen, in denen ein virtueller Computer innerhalb eines virtuellen Netzwerks erstellt wird, ist der Metadatendienst über eine statische nicht routingfähige IP-Adresse verfügbar: `169.254.169.254`.
-Wenn der virtuelle Computer nicht innerhalb eines virtuellen Netzwerks erstellt wird – Standard für Clouddienste und klassische virtuelle Computer –, ist zusätzliche Logik erforderlich, um die zu verwendende IP-Adresse zu ermitteln. In diesem Beispiel erfahren Sie, wie Sie [den Hostendpunkt ermitteln](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
+Wenn der virtuelle Computer nicht innerhalb eines virtuellen Netzwerks erstellt wird (Standard für Clouddienste und klassische virtuelle Computer), ist zusätzliche Logik erforderlich, um die zu verwendende IP-Adresse zu ermitteln. In diesem Beispiel erfahren Sie, wie Sie [den Hostendpunkt ermitteln](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
-### <a name="versioning"></a>Versionsverwaltung 
-Das Feature für geplante Ereignisse ist versionsspezifisch. Die Versionen sind obligatorisch, und die aktuelle Version ist `2017-08-01`.
+### <a name="version-and-region-availability"></a>Version und regionale Verfügbarkeit
+Das Feature für geplante Ereignisse ist versionsspezifisch. Die Versionen sind obligatorisch. Die aktuelle Version ist `2017-08-01`.
 
-| Version | Versionshinweise | 
-| - | - | 
-| 2017-08-01 | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
-| 2017-03-01 | <li>Öffentliche Vorschauversion
+| Version | Releasetyp | Regionen | Versionsinformationen | 
+| - | - | - | - | 
+| 2017-08-01 | Allgemeine Verfügbarkeit | Alle | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
+| 2017-03-01 | Vorschau | Alle | <li>Erste Version
 
 
 > [!NOTE] 
 > In früheren Vorschauversionen von geplanten Ereignissen wird {latest} als „api-version“ unterstützt. Dieses Format wird nicht mehr unterstützt und wird zukünftig veraltet sein.
 
-### <a name="use-headers"></a>Verwenden von Headern
-Beim Abfragen des Metadatendiensts müssen Sie den Header `Metadata:true` angeben, um sicherzustellen, dass die Anforderung nicht unbeabsichtigt umgeleitet wurde. Der Header `Metadata:true` ist für alle Anforderungen für Geplante Ereignisse erforderlich. Wird der Header nicht in die Anforderung eingefügt, erhalten Sie vom Metadatendienst die Antwort „Ungültige Anforderung“.
+### <a name="enabling-and-disabling-scheduled-events"></a>Aktivieren und Deaktivieren von Scheduled Events
+Scheduled Events wird für Ihren Dienst aktiviert, wenn Sie zum ersten Mal Ereignisse anfordern. Beim ersten Aufruf ist eine um bis zu zwei Minuten verzögerte Antwort zu erwarten.
 
-### <a name="enable-scheduled-events"></a>Aktivieren geplanter Ereignisse
-Wenn Sie das Feature für geplante Ereignisse erstmals aufrufen, wird dieses Feature von Azure implizit auf Ihrer VM aktiviert. Daher ist beim ersten Aufruf eine um bis zu zwei Minuten verzögerte Antwort zu erwarten.
-
-> [!NOTE]
-> Geplante Ereignisse werden für Ihren Dienst automatisch deaktiviert, wenn dieser den Endpunkt einen Tag lang nicht aufruft. Wenn das Feature für geplante Ereignisse für Ihren Dienst deaktiviert wird, werden keine Ereignisse für die vom Benutzer initiierten Wartungen erstellt.
+Scheduled Events wird für Ihren Dienst deaktiviert, wenn 24 Stunden lang keine Anforderung erfolgt.
 
 ### <a name="user-initiated-maintenance"></a>Vom Benutzer ausgelöste Wartung
 Eine vom Benutzer über das Azure-Portal, die API, die CLI oder PowerShell initiierte Wartung eines virtuellen Computers führt zu einem geplanten Ereignis. Sie können anschließend die Logik zur Vorbereitung auf Wartungsmaßnahmen in Ihrer Anwendung testen und Ihre Anwendung auf die vom Benutzer initiierte Wartung vorbereiten.
 
 Wenn Sie eine VM neu starten, wird ein Ereignis vom Typ `Reboot` geplant. Wenn Sie eine VM neu bereitstellen, wird ein Ereignis vom Typ `Redeploy` geplant.
 
-> [!NOTE] 
-> Aktuell können maximal 100 vom Benutzer initiierte Wartungsvorgänge parallel geplant werden.
-
-> [!NOTE] 
-> Die vom Benutzer initiierte Wartung, die zu geplanten Ereignissen führt, kann zurzeit nicht konfiguriert werden. Die Konfigurierbarkeit ist für ein zukünftiges Release geplant.
-
 ## <a name="use-the-api"></a>Verwenden der API
+
+### <a name="headers"></a>Header
+Beim Abfragen des Metadatendiensts müssen Sie den Header `Metadata:true` angeben, um sicherzustellen, dass die Anforderung nicht unbeabsichtigt umgeleitet wurde. Der Header `Metadata:true` ist für alle Anforderungen für Geplante Ereignisse erforderlich. Wird der Header nicht in die Anforderung eingefügt, erhalten Sie vom Metadatendienst die Antwort „Ungültige Anforderung“.
 
 ### <a name="query-for-events"></a>Abfragen von Ereignissen
 Sie können geplante Ereignisse abfragen, indem Sie den folgenden Aufruf ausführen:
@@ -136,11 +127,11 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
 | EventId | Global eindeutiger Bezeichner für dieses Ereignis <br><br> Beispiel: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | Auswirkungen dieses Ereignisses <br><br> Werte: <br><ul><li> `Freeze`: Es ist geplant, dass die VM mehrere Sekunden lang angehalten wird. Die CPU wird angehalten, dies hat jedoch keine Auswirkungen auf Arbeitsspeicher, geöffnete Dateien oder Netzwerkverbindungen. <li>`Reboot`: Die VM ist für einen Neustart geplant. (Nicht persistierte Arbeitsspeicherdaten gehen verloren.) <li>`Redeploy`: Die VM ist für eine Verschiebung auf einen anderen Knoten geplant. (Kurzlebige Datenträger gehen verloren.) |
 | ResourceType | Typ der Ressource, auf die sich dieses Ereignis auswirkt. <br><br> Werte: <ul><li>`VirtualMachine`|
-| Resources| Liste der Ressourcen, auf die sich dieses Ereignis auswirkt. Die Liste enthält garantiert Computer aus maximal einer [Updatedomäne](manage-availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
+| angeben| Liste der Ressourcen, auf die sich dieses Ereignis auswirkt. Die Liste enthält garantiert Computer aus maximal einer [Updatedomäne](manage-availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
 | EventStatus | Status dieses Ereignisses <br><br> Werte: <ul><li>`Scheduled`: Dieses Ereignis erfolgt nach dem in der `NotBefore`-Eigenschaft angegebenen Zeitpunkt.<li>`Started`: Dieses Ereignis wurde gestartet.</ul> `Completed` oder ein ähnlicher Status wird nie angegeben. Das Ergebnis wird nicht länger zurückgegeben, wenn es abgeschlossen wurde.
 | NotBefore| Zeitpunkt, nach dem dieses Ereignis gestartet werden kann. <br><br> Beispiel: <br><ul><li> 2016-09-19T18:29:47Z  |
 
-### <a name="event-scheduling"></a>Ereignisplanung
+### <a name="event-scheduling"></a>Ereigniszeitplanung
 Jedes Ereignis wird, basierend auf dem Ereignistyp, mit einer minimalen Vorlaufzeit geplant. Diese Zeit ist in der `NotBefore`-Eigenschaft eines Ereignisses angegeben. 
 
 |EventType  | Mindestzeitspanne |
@@ -218,6 +209,7 @@ if __name__ == '__main__':
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte 
+- Auf Azure Friday können Sie eine [Demo zu Scheduled Events](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) ansehen. 
 - Überprüfen Sie die Codebeispiele für geplante Ereignisse im [GitHub-Repository mit Azure-Instanzmetadaten für geplante Ereignisse](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - Erfahren Sie mehr über die verfügbaren APIs im [Instanz-Metadatendienst](instance-metadata-service.md).
 - Erfahren Sie mehr über [Geplante Wartung für virtuelle Linux-Computer in Azure](planned-maintenance.md).

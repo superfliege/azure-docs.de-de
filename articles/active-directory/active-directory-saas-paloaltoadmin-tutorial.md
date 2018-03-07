@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e54630d97dee2388ffc9c8877faeac269df1609
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 60430f08f54232db619efd054ca3a7d9a44f4cdc
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Tutorial: Azure Active Directory-Integration mit Palo Alto Networks - Admin UI
 
@@ -106,11 +106,14 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Palo Alto Networks - Admin UI** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Palo Alto Networks - Admin UI](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_url.png)
-
+    ![SSO-Informationen zur Domäne und zu den URLs für Palo Alto Networks - Admin UI](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_general_show_advanced_url.png)
+    
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<Customer Firewall FQDN>/php/login.php`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<Customer Firewall FQDN>/SAML20/SP`
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<Customer Firewall FQDN>:443/SAML20/SP`
+    
+    c. Geben Sie im Textfeld **Antwort-URL** die Assertionsverbraucherdienst-URL (Assertion Consumer Service, ACS) in folgendem Format ein: `https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`.
+    
 
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Palo Alto Networks - Admin UI-Client](https://support.paloaltonetworks.com/support), um diese Werte zu erhalten. 
@@ -163,13 +166,71 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 11. Führen Sie im Fenster zum Importieren die folgenden Aktionen aus:
 
-    ![Konfigurieren des einmaligen Anmeldens für Palo Alto](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin3.png)
+    ![Konfigurieren des einmaligen Anmeldens für Palo Alto](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
-    a. Geben Sie im Textfeld **Profile Name** (Profilname) einen Namen ein, etwa „Azure AD Admin UI“.
+    a. Geben Sie im Textfeld **Profile Name** (Profilname) einen Namen ein, etwa „AzureAD Admin UI“.
     
     b. Klicken Sie unter **Identity Provider Metadata** (Metadaten des Identitätsanbieters) auf **Browse** (Durchsuchen), und wählen Sie die Datei „metadata.xml“ aus, die Sie aus dem Azure-Portal heruntergeladen haben.
     
-    c. Klicken Sie auf **OK**
+    c. Deaktivieren Sie **Validate Identity Provider Certificate** (Zertifikat des Identitätsanbieters überprüfen).
+    
+    d. Klicken Sie auf **OK**
+    
+    e. Committen Sie die Konfigurationen der Firewall, indem Sie auf die Schaltfläche **Commit** (Committen) klicken.
+
+12. Klicken Sie links auf der Navigationsleiste auf **SAML Identity Provider** (SAML-Identitätsanbieter), und klicken Sie dann auf das im vorherigen Schritt erstellte SAML-Identitätsanbieterprofil (z.B. „AzureAD Admin UI“). 
+    
+  ![Konfigurieren des einmaligen Anmeldens für Palo Alto Networks](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
+
+13. Führen Sie im Fenster **SAML Identity Provider Server Profile** (Profil des SAML-Identitätsanbieterservers) die folgenden Aktionen aus:
+
+  ![Konfigurieren des einmaligen Abmeldens für Palo Alto Networks](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
+  
+  a. Entfernen Sie im Textfeld **Identity Provider SLO URL** (SLO-URL des Identitätsanbieters) die zuvor importierte SLO-URL, und fügen Sie die folgende URL hinzu: `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
+  
+  b. Klicken Sie auf **OK**
+
+
+14. Klicken Sie auf der Administratoroberfläche für die Palo Alto Networks-Firewall auf **Device** (Gerät) und dann auf **Admin Roles** (Administratorrollen).
+
+15. Klicken Sie auf die Schaltfläche **Hinzufügen** . Geben Sie im Fenster für das Administratorrollenprofil einen Namen für die Administratorrolle ein (etwa „fwadmin“). Dieser Administratorrollenname sollte mit dem vom Identitätsanbieter gesendeten Attributnamen für die SAML-Administratorrolle übereinstimmen. In Schritt 5 wurden der Name und der Wert für die Administratorrolle erstellt. 
+
+  ![Konfigurieren der Administratorrolle für Palo Alto Networks](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
+  
+16. Klicken Sie auf der Administratoroberfläche der Firewall auf **Device** (Gerät) und dann auf **Authentication Profile** (Authentifizierungsprofil).
+
+17. Klicken Sie auf die Schaltfläche **Hinzufügen** . Führen Sie im Fenster „Authentication Profile“ (Authentifizierungsprofil) die folgenden Schritte aus: 
+
+ ![Konfigurieren des Palo Alto Networks-Authentifizierungsprofils](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
+
+   a. Geben Sie im Textfeld **Name** einen Namen ein, etwa „AzureSAML_Admin_AuthProfile“.
+    
+   b. Wählen Sie in der Dropdownliste **Type** (Typ) die Option **SAML** aus. 
+   
+   c. Wählen Sie in der Dropdownliste „IdP Server Profile“ (IdP-Serverprofil) das entsprechende SAML-Identitätsanbieterserver-Profil aus (etwa „AzureAD Admin UI“).
+   
+   c. Aktivieren Sie das Kontrollkästchen **Enable Single Logout** (Einmaliges Abmelden ermöglichen).
+    
+   d. Geben Sie im Textfeld „Admin Role Attribute“ (Administratorrollenattribut) den Attributnamen (z.B. „adminrole“) ein. 
+   
+   e. Klicken Sie auf die Registerkarte „Advanced“ (Erweitert) und dann im Bereich „Allow List“ (Zulassungsliste) auf die Schaltfläche **Add** (Hinzufügen). Wählen Sie alle oder bestimmte Benutzer und Gruppen aus, die sich mit diesem Profil authentifizieren können. Bei der Authentifizierung eines Benutzers gleicht die Firewall den zugewiesenen Benutzernamen bzw. die zugewiesene Gruppe mit den Einträgen in der Liste ab. Wenn Sie keine Einträge hinzufügen, können sich keine Benutzer authentifizieren.
+   
+   ![Konfigurieren des Palo Alto Networks-Authentifizierungsprofils](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_allowlist.png)
+   
+   f. Klicken Sie auf **OK**
+
+18. Damit Administratoren SAML-SSO mit Azure verwenden können, klicken Sie auf **Device** (Gerät) und dann auf **Setup**. Klicken Sie im Bereich „Setup“ auf die Registerkarte **Management** (Verwaltung) und dann unter **Authentication Settings** (Authentifizierungseinstellungen) auf das Zahnradsymbol. 
+
+ ![Konfigurieren der Palo Alto Networks-Authentifizierungseinstellungen](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
+
+19. Wählen Sie das in Schritt 17 erstellte SAML-Authentifizierungsprofil aus. (Beispiel: AzureSAML_Admin_AuthProfile)
+
+ ![Konfigurieren der Palo Alto Networks-Authentifizierungseinstellungen](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
+
+20. Klicken Sie auf **OK**
+
+21. Committen Sie die Konfiguration, indem Sie auf die Schaltfläche **Commit** (Committen) klicken.
+
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).

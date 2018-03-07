@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 02/27/2018
 ms.author: sethm
-ms.openlocfilehash: 89042badbfefc69582e7979a8379260a7b08d7da
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 07cbdd24368d66104ecdeb263983e3aaf3f219fe
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
@@ -76,14 +76,13 @@ Das Senden einer Nachricht an ein Service Bus-Relay wird als vollständiger Send
 Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln Nachrichten nicht als einzelne Nachrichten, sondern als Datenstrom, der durch das System fließt. Wenn Sie diese Bindung verwenden, erhalten nur der Sender und der Listener Einblick in das Framing der einzelnen Nachrichten, die gesendet/empfangen werden. Bei Relays, die die **netTCPRelay**-Bindung verwenden, werden zur Ermittlung abrechenbarer Nachrichten alle Daten als Datenstrom behandelt. In diesen Fall berechnet Service Bus die Gesamtmenge der über jedes einzelne Relay gesendeten oder empfangenen Daten für einen Zeitraum von 5 Minuten. Dann wird diese Gesamtmenge durch 64 KB dividiert, um die Anzahl von abrechenbaren Nachrichten für dieses Relay in diesem Zeitraum zu ermitteln.
 
 ## <a name="quotas"></a>Kontingente
-| Namen des Kontingents | Umfang | Typ | Verhalten beim Überschreiten | Wert |
-| --- | --- | --- | --- | --- |
-| Gleichzeitige Listener für ein Relay |Entität |statischen |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
-| Gleichzeitige Relay-Listener |Systemweit |statischen |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |2.000 |
-| Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Systemweit |statischen |- |5.000 |
-| Relayendpunkte pro Dienstnamespace |Systemweit |statischen |- |10.000 |
-| Nachrichtengröße für [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx)- und [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx)-Relays |Systemweit |statisch |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |64 KB |
-| Nachrichtengröße für [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx)- und [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx)-Relays |Systemweit |statischen |- |Unbegrenzt |
+| Namen des Kontingents | Umfang |  Notizen | Wert |
+| --- | --- | --- | --- |
+| Gleichzeitige Listener für ein Relay |Entität |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
+| Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Namespace |- |5.000 |
+| Relayendpunkte pro Dienstnamespace |Namespace |- |10.000 |
+| Nachrichtengröße für [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx)- und [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx)-Relays |Namespace |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |64 KB |
+| Nachrichtengröße für [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx)- und [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx)-Relays |Namespace |Keine Begrenzung der Nachrichtengröße. |Unbegrenzt |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Verfügt Relay über Verwendungskontingente?
 Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Wir wissen, dass Ihre Anforderungen diese Limits zuweilen überschreiten können. Wenden Sie sich an unseren Kundendienst, und teilen Sie uns Ihre Anforderungen mit, damit wir diese Werte entsprechend anpassen können. Für Service Bus gelten die folgenden aggregierten Nutzungskontingente:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: d6a19334b369c54ff6bad3404b4cf2ffe3b47c70
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: cc609d7c7b28fc4aef6eb1e25ee46fd77edd4102
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer
 Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z.B. die unterstützten Szenarien und die Benutzeroberflächen.
@@ -141,34 +141,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 > [!NOTE]
 > Für Windows Server 2008 R2 müssen Sie .NET Framework 4.5 installieren, bevor Sie die Verschlüsselung in Azure aktivieren. Sie können die Installation über Windows Update durchführen, indem Sie das optionale Update Microsoft .NET Framework 4.5.2 für Windows Server 2008 R2 x64-basierte Systeme ([KB2901983](https://support.microsoft.com/kb/2901983)) installieren.
 
-* Azure Disk Encryption wird für die folgenden auf dem Azure-Katalog basierenden Linux-Serverdistributionen und -Versionen unterstützt:
-
-| Linux-Distribution | Version | Für die Verschlüsselung unterstützter Volumetyp|
-| --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | Betriebssystem- und andere Datenträger |
-| Ubuntu | 14.04.5-DAILY-LTS | Betriebssystem- und andere Datenträger |
-| Ubuntu | 12.10 | Datenträger |
-| Ubuntu | 12.04 | Datenträger |
-| RHEL | 7.4 | Betriebssystem- und andere Datenträger |
-| RHEL | 7.3 | Betriebssystem- und andere Datenträger |
-| RHEL | LVM 7.3 | Betriebssystem- und andere Datenträger |
-| RHEL | 7.2 | Betriebssystem- und andere Datenträger |
-| RHEL | 6,8 | Betriebssystem- und andere Datenträger |
-| RHEL | 6.7 | Datenträger |
-| CentOS | 7.3 | Betriebssystem- und andere Datenträger |
-| CentOS | 7.2n | Betriebssystem- und andere Datenträger |
-| CentOS | 6,8 | Betriebssystem- und andere Datenträger |
-| CentOS | 7.1 | Datenträger |
-| CentOS | 7.0 | Datenträger |
-| CentOS | 6.7 | Datenträger |
-| CentOS | 6.6 | Datenträger |
-| CentOS | 6,5 | Datenträger |
-| openSUSE | 13.2 | Datenträger |
-| SLES | 12 SP1 | Datenträger |
-| SLES | 12-SP1 (Premium) | Datenträger |
-| SLES | HPC 12 | Datenträger |
-| SLES | 11-SP4 (Premium) | Datenträger |
-| SLES | 11 SP4 | Datenträger |
+* Azure Disk Encryption wird nur für bestimmte auf dem Azure-Katalog basierenden Linux-Serverdistributionen und -Versionen unterstützt.  Die Liste der derzeit unterstützten Versionen finden Sie in den [Häufig gestellten Fragen zu Azure Disk Encryption](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq).
 
 * Azure Disk Encryption setzt voraus, dass Ihr Schlüsseltresor und die VMs zur selben Azure-Region und zum selben Azure-Abonnement gehören.
 
@@ -1284,9 +1257,6 @@ Beim Anfügen des Betriebssystemdatenträgers müssen `$KeyEncryptionKey` und `$
             -DiskEncryptionKeyUrl $SecretUrl `
             -KeyEncryptionKeyVaultId $KeyVault.ResourceId `
             -KeyEncryptionKeyURL $KeyEncryptionKey.Id
-
-## <a name="download-this-guide"></a>Dieses Handbuch herunterladen
-Sie können diese Anleitung aus dem [TechNet-Katalog](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0) herunterladen.
 
 ## <a name="for-more-information"></a>Weitere Informationen
 [Explore Azure Disk Encryption with Azure PowerShell - Part 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0) (Erkunden von Azure Disk Encryption mit Azure PowerShell – Teil 1)  

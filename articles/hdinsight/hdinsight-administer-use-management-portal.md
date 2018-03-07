@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 77c47809a01e9ff2bb851163f9adf987738f98f6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0b34f861b306dc62cbdbf97378a1c370494bbb20
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Windows-basierten Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -294,7 +294,7 @@ Die HDInsight-Abfragekonsole umfasst die folgenden Features:
     ![HDInsight-Portal – YARN UI](./media/hdinsight-administer-use-management-portal/hdinsight-yarn-ui.png)
 
 ## <a name="run-hive-queries"></a>Ausführen von Hive-Abfragen
-Klicken Sie in der HDInsight-Abfragekonsole auf **Hive-Editor** , um Hive-Aufträge aus dem Portal auszuführen. Weitere Informationen hierzu finden Sie unter [Öffnen der HDInsight-Abfragekonsole](#open-hdinsight-query-console).
+Klicken Sie in der HDInsight-Abfragekonsole auf **Hive-Editor**, um Hive-Aufträge aus dem Portal auszuführen. Weitere Informationen hierzu finden Sie unter [Öffnen der HDInsight-Abfragekonsole](#open-hdinsight-query-console).
 
 ## <a name="monitor-jobs"></a>Überwachen von Aufträgen
 Klicken Sie in der HDInsight-Abfragekonsole auf **Auftragsverlauf** , um Aufträge aus dem Portal zu überwachen. Weitere Informationen hierzu finden Sie unter [Öffnen der HDInsight-Abfragekonsole](#open-hdinsight-query-console).

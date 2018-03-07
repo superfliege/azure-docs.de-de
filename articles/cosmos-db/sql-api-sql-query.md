@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: laviswa
-ms.openlocfilehash: 69466b15d2a37bee0353a283c9bab59563f3670e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8425c9eae1bb7b50edec1d36d4e7c80b49b243ac
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>SQL-Abfragen für Azure Cosmos DB
 
@@ -937,7 +937,7 @@ Die folgende Tabelle zeigt die Liste der unterstützten Aggregatfunktionen in de
 Aggregate können auch über die Ergebnisse einer Array-Iteration ausgeführt werden. Weitere Informationen finden Sie unter [Arrayiteration in Abfragen](#Iteration).
 
 > [!NOTE]
-> Beachten Sie bei der Verwendung des Abfrage-Explorers des Azure-Portals, dass Aggregationsabfragen möglicherweise die teilweise aggregierten Ergebnisse über eine Abfrageseite zurückgeben. Die SDKs erzeugen einen einzelnen kumulativen Wert für alle Seiten. 
+> Beachten Sie bei der Verwendung des Daten-Explorers des Azure-Portals, dass Aggregationsabfragen möglicherweise die teilweise aggregierten Ergebnisse über eine Abfrageseite zurückgeben. Die SDKs erzeugen einen einzelnen kumulativen Wert für alle Seiten. 
 > 
 > Zum Durchführen von Aggregationsabfragen mithilfe von Code benötigen Sie .NET SDK 1.12.0, .NET Core SDK 1.1.0 oder Java SDK 1.9.5 oder höher.    
 >

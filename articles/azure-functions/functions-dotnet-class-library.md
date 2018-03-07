@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 8a098d2ecc004b1593310579c47c53778858e799
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9e9aa8a36d363ce28d61c5ba3cfe758520a626cf
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -84,6 +84,31 @@ public static class SimpleExampleWithOutput
 }
 ```
 
+### <a name="order-of-parameters"></a>Reihenfolge der Parameter
+
+Die Reihenfolge der Parameter in der Funktionssignatur spielt keine Rolle. Beispielsweise können Sie Triggerparameter für Bindungen voran- oder nachstellen und den Parameter „logger“ vor oder nach Trigger- oder Bindungsparametern anordnen.
+
+### <a name="binding-expressions"></a>Bindungsausdrücke
+
+Sie können Bindungsausdrücke in Attributkonstruktorparametern und Funktionsparametern verwenden. Mit dem folgenden Code wird beispielsweise der Name der zu überwachenden Warteschlange für eine App-Einstellung abgerufen, und der Erstellungszeitpunkt der Warteschlangennachricht ist im Parameter `insertionTime` enthalten.
+
+```csharp
+public static class BindingExpressionsExample
+{
+    [FunctionName("LogQueueMessage")]
+    public static void Run(
+        [QueueTrigger("%queueappsetting%")] string myQueueItem,
+        DateTimeOffset insertionTime,
+        TraceWriter log)
+    {
+        log.Info($"Message content: {myQueueItem}");
+        log.Info($"Created at: {insertionTime}");
+    }
+}
+```
+
+Weitere Informationen finden Sie unter **Bindungsausdrücke und Muster** im Artikel [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md#binding-expressions-and-patterns).
+
 ### <a name="conversion-to-functionjson"></a>Konvertierung in „function.json“
 
 Im Buildprozess wird eine *function.json*-Datei in einem Funktionsordner im Ordner für Builds erstellt. Wie bereits erwähnt ist diese Datei nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. 
@@ -119,22 +144,7 @@ Jede Bindung hat ihre eigenen unterstützten Typen. Beispielsweise kann ein Blob
 
 ## <a name="binding-to-method-return-value"></a>Binden an den Rückgabewert einer Methode
 
-Sie können für eine Ausgabebindung den Rückgabewert einer Methode verwenden, wie dies im folgende Beispiel veranschaulicht ist:
-
-```csharp
-public static class ReturnValueOutputBinding
-{
-    [FunctionName("CopyQueueMessageUsingReturnValue")]
-    [return: Queue("myqueue-items-destination")]
-    public static string Run(
-        [QueueTrigger("myqueue-items-source-2")] string myQueueItem,
-        TraceWriter log)
-    {
-        log.Info($"C# function processed: {myQueueItem}");
-        return myQueueItem;
-    }
-}
-```
+Sie können einen Rückgabewert einer Methode für eine Ausgabebindung nutzen, indem Sie das Attribut auf den Rückgabewert einer Methode anwenden. Beispiele finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md#using-the-function-return-value).
 
 ## <a name="writing-multiple-output-values"></a>Schreiben von mehreren Ausgabewerten
 
@@ -202,18 +212,28 @@ public static class AsyncExample
 
 ## <a name="cancellation-tokens"></a>Abbruchtoken
 
-Einige Vorgänge erfordern ein ordnungsgemäßes Herunterfahren. Es empfiehlt sich grundsätzlich, Code zu schreiben, der Abstürze behandeln kann. In Fällen, in denen Anforderungen zum Herunterfahren verarbeitet werden sollen, definieren Sie ein typisiertes [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx)-Argument.  Ein `CancellationToken` wird angegeben, um zu signalisieren, dass das Herunterfahren des Hosts ausgelöst wird.
+Eine Funktion kann einen [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx)-Parameter annehmen, der es dem Betriebssystem ermöglicht, den Code vor dem Beenden der Funktion zu benachrichtigen. Sie können diese Benachrichtigung verwenden, um sicherzustellen, dass die Funktion nicht auf eine Weise unerwartet beendet wird, die die Daten in einem inkonsistenten Zustand hinterlässt.
+
+Das folgende Beispiel zeigt, wie Sie nach einer bevorstehenden Beendigung einer Funktion suchen.
 
 ```csharp
 public static class CancellationTokenExample
 {
-    [FunctionName("BlobCopy")]
-    public static async Task RunAsync(
-        [BlobTrigger("sample-images/{blobName}")] Stream blobInput,
-        [Blob("sample-images-copies/{blobName}", FileAccess.Write)] Stream blobOutput,
+    public static void Run(
+        [QueueTrigger("inputqueue")] string inputText,
+        TextWriter logger,
         CancellationToken token)
     {
-        await blobInput.CopyToAsync(blobOutput, 4096, token);
+        for (int i = 0; i < 100; i++)
+        {
+            if (token.IsCancellationRequested)
+            {
+                logger.WriteLine("Function was cancelled at iteration {0}", i);
+                break;
+            }
+            Thread.Sleep(5000);
+            logger.WriteLine("Normal processing for queue message={0}", inputText);
+        }
     }
 }
 ```

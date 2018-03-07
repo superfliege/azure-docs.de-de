@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/28/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8262162ce73176426057af4654f12614cac85472
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 103e4ca5ffd6c9dfe5043af9d8f75763705eb939
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell
 
@@ -403,7 +403,7 @@ Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 > Das Zugriffstoken läuft nach einer bestimmten Zeit ab. Die Verwendung eines gespeicherten Profils funktioniert also nur so lange, wie das Token gültig ist.
 >  
 
-Alternativ können Sie die REST-Vorgänge über PowerShell aufrufen, um sich anzumelden. Sie können das Zugriffstoken aus der Authentifizierungsantwort abrufen, um es in anderen Vorgängen zu verwenden. Ein Beispiel zum Abrufen des Zugriffstokens durch Aufrufen der REST-Vorgänge finden Sie unter [Generieren eines Zugriffstokens](resource-manager-rest-api.md#generating-an-access-token).
+Alternativ können Sie die REST-Vorgänge über PowerShell aufrufen, um sich anzumelden. Sie können das Zugriffstoken aus der Authentifizierungsantwort abrufen, um es in anderen Vorgängen zu verwenden. Ein Beispiel zum Abrufen des Zugriffstokens durch Aufrufen von REST-Vorgängen finden Sie unter [Erstellen der Anforderung](/rest/api/#create-the-request).
 
 ## <a name="debug"></a>Debuggen
 

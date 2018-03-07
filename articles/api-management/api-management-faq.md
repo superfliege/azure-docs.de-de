@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.

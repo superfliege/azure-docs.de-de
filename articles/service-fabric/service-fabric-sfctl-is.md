@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: b611a447dd6669a09ca16c816de74acd7f3e8c7e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d3a4c7a308bdf7132cebffc13a5e7214ec73eaf2
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-is"></a>sfctl is
 Ermöglicht es, Befehle an den Infrastrukturdienst abzufragen und zu senden.
@@ -34,14 +34,14 @@ Ermöglicht es, Befehle an den Infrastrukturdienst abzufragen und zu senden.
 ## <a name="sfctl-is-command"></a>sfctl is command
 Ruft einen Verwaltungsbefehl für die angegebene Infrastrukturdienstinstanz auf.
 
-Für Cluster, für die mindestens eine Instanz des Infrastrukturdiensts konfiguriert ist, bietet diese API eine Möglichkeit, infrastrukturspezifische Befehle an eine bestimmte Instanz des Infrastrukturdiensts zu senden. Die verfügbaren Befehle und ihre entsprechenden Antwortformate variieren je nach der Infrastruktur, auf der der Cluster ausgeführt wird. Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgesehen, direkt aus Ihrem Code verwendet zu werden. zu erstellen und zu verwalten.
+Für Cluster, für die mindestens eine Instanz des Infrastrukturdiensts konfiguriert ist, bietet diese API eine Möglichkeit, infrastrukturspezifische Befehle an eine bestimmte Instanz des Infrastrukturdiensts zu senden. Die verfügbaren Befehle und ihre entsprechenden Antwortformate variieren je nach der Infrastruktur, auf der der Cluster ausgeführt wird. Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgesehen, direkt aus Ihrem Code verwendet zu werden. 
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --command [erforderlich]| Der Text des Befehls, der aufgerufen werden soll. Der Inhalt des Befehls ist infrastrukturspezifisch.  Standardwert: is command.|
-| --service-id     | Die Identität des Infrastrukturdiensts. Dies ist der vollständige Name des Infrastrukturdiensts ohne das URI-Schema „fabric:“. Dieser Parameter ist nur für Cluster erforderlich, in denen mehrere Instanzen des Infrastrukturdiensts ausgeführt werden.|
+| --command [erforderlich]| Der Text des Befehls, der aufgerufen werden soll. Der Inhalt des Befehls ist infrastrukturspezifisch. |
+| --service-id     | Die Identität des Infrastrukturdiensts. Die ID ist der vollständige Name des Infrastrukturdiensts ohne das URI-Schema „fabric:“. Dieser Parameter ist nur für Cluster erforderlich, in denen mehrere Instanzen des Infrastrukturdiensts ausgeführt werden.|
 | --timeout -t     | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
@@ -63,8 +63,8 @@ Für Cluster, für die mindestens eine Instanz des Infrastrukturdiensts konfigur
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --command [erforderlich]| Der Text des Befehls, der aufgerufen werden soll. Der Inhalt des Befehls ist infrastrukturspezifisch.  Standardwert: is query.|
-| --service-id     | Die Identität des Infrastrukturdiensts. Dies ist der vollständige Name des Infrastrukturdiensts ohne das URI-Schema „fabric:“. Dieser Parameter ist nur für Cluster erforderlich, in denen mehrere Instanzen des Infrastrukturdiensts ausgeführt werden.|
+| --command [erforderlich]| Der Text des Befehls, der aufgerufen werden soll. Der Inhalt des Befehls ist infrastrukturspezifisch.|
+| --service-id     | Die Identität des Infrastrukturdiensts. Die ID ist der vollständige Name des Infrastrukturdiensts ohne das URI-Schema „fabric:“. Dieser Parameter ist nur für Cluster erforderlich, in denen mehrere Instanzen des Infrastrukturdiensts ausgeführt werden.|
 | --timeout -t     | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente

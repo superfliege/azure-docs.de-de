@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 5e94ba1a45bccefedfa0017ad0123942e66f70bb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 683ef1ebffaec74df95b454d717857d55b8026dd
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 
@@ -199,24 +199,7 @@ Die `#load`-Direktive kann nur mit *CSX*-Dateien verwendet werden, nicht mit *CS
 
 ## <a name="binding-to-method-return-value"></a>Binden an den Rückgabewert einer Methode
 
-Sie können für eine Ausgabebindung den Rückgabewert einer Methode verwenden, indem Sie den Namen `$return` in der Datei *function.json* verwenden:
-
-```json
-{
-    "type": "queue",
-    "direction": "out",
-    "name": "$return",
-    "queueName": "outqueue",
-    "connection": "MyStorageConnectionString",
-}
-```
-
-```csharp
-public static string Run(string input, TraceWriter log)
-{
-    return input;
-}
-```
+Sie können für eine Ausgabebindung den Rückgabewert einer Methode verwenden, indem Sie den Namen `$return` in der Datei *function.json* verwenden. Beispiele finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md#using-the-function-return-value).
 
 ## <a name="writing-multiple-output-values"></a>Schreiben von mehreren Ausgabewerten
 
@@ -264,17 +247,31 @@ public async static Task ProcessQueueMessageAsync(
 
 ## <a name="cancellation-tokens"></a>Abbruchtoken
 
-Einige Vorgänge erfordern ein ordnungsgemäßes Herunterfahren. Es empfiehlt sich grundsätzlich, Code zu schreiben, der Abstürze behandeln kann. In Fällen, in denen Anforderungen zum Herunterfahren verarbeitet werden sollen, definieren Sie ein typisiertes [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx)-Argument.  Ein `CancellationToken` wird angegeben, um zu signalisieren, dass das Herunterfahren des Hosts ausgelöst wird.
+Eine Funktion kann einen [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx)-Parameter annehmen, der es dem Betriebssystem ermöglicht, den Code vor dem Beenden der Funktion zu benachrichtigen. Sie können diese Benachrichtigung verwenden, um sicherzustellen, dass die Funktion nicht auf eine Weise unerwartet beendet wird, die die Daten in einem inkonsistenten Zustand hinterlässt.
+
+Das folgende Beispiel zeigt, wie nach einer bevorstehenden Beendigung einer Funktion suchen.
 
 ```csharp
-public async static Task ProcessQueueMessageAsyncCancellationToken(
-    string blobName,
-    Stream blobInput,
-    Stream blobOutput,
+using System;
+using System.IO;
+using System.Threading;
+
+public static void Run(
+    string inputText,
+    TextWriter logger,
     CancellationToken token)
+{
+    for (int i = 0; i < 100; i++)
     {
-        await blobInput.CopyToAsync(blobOutput, 4096, token);
+        if (token.IsCancellationRequested)
+        {
+            logger.WriteLine("Function was cancelled at iteration {0}", i);
+            break;
+        }
+        Thread.Sleep(5000);
+        logger.WriteLine("Normal processing for queue message={0}", inputText);
     }
+}
 ```
 
 ## <a name="importing-namespaces"></a>Importieren von Namespaces

@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 02/23/2018
 ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e4d143b4937a1f6c1c21783ae357dbe617816e73
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: d5d704dac58d65dd7d62bc3eca400f9541714d5d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
 
@@ -27,7 +27,7 @@ Azure AD-Anwendungsproxy stellt Ihre lokalen Apps Benutzern zur Verfügung, die 
 
 Die beste Möglichkeit sicherzustellen, dass Links sowohl innerhalb als auch außerhalb des Unternehmensnetzwerks identisch funktionieren, besteht darin, die externen URLs Ihrer Apps entsprechend ihren internen URLs zu konfigurieren. Arbeiten Sie mit [benutzerdefinierten Domänen](active-directory-application-proxy-custom-domains.md), um Ihre externen URLs so zu konfigurieren, dass sie den Namen Ihrer Unternehmensdomäne anstelle der standardmäßigen Anwendungsproxydomäne aufweisen.
 
-Wenn Sie in Ihrem Mandanten keine benutzerdefinierten Domänen verwenden können, sorgt die Linkübersetzungsfunktion des Anwendungsproxys dafür, dass Ihre Links unabhängig vom Standort der Benutzer funktionieren. Wenn Sie über Apps verfügen, die direkt auf interne Endpunkte oder Ports verweisen, können Sie diese internen URLs den veröffentlichten externen Anwendungsproxy-URLs zuordnen. Wenn die Linkübersetzung aktiviert ist, durchsucht der Anwendungsproxy HTML-, CSS- und ausgewählte JavaScript-Tags nach veröffentlichten internen Links. Diese werden anschließend vom Anwendungsproxy so übersetzt, dass die Benutzer ihre Arbeit ohne Unterbrechung fortsetzen können.
+Wenn Sie in Ihrem Mandanten keine benutzerdefinierten Domänen verwenden können, sorgt die Linkübersetzungsfunktion des Anwendungsproxys dafür, dass Ihre Links unabhängig vom Standort der Benutzer funktionieren. Wenn Sie über Apps verfügen, die direkt auf interne Endpunkte oder Ports verweisen, können Sie diese internen URLs den veröffentlichten externen Anwendungsproxy-URLs zuordnen. Wenn die Linkübersetzung aktiviert ist und der Anwendungsproxy HTML- und CSS-Tags nach veröffentlichten internen Links durchsucht, übersetzt der Anwendungsproxydienst sie, sodass bei Benutzern keine Unterbrechung stattfindet.
 
 >[!NOTE]
 >Die Linkübersetzung ist für Mandanten vorgesehen, die aus verschiedenen Gründen keine benutzerdefinierten Domänen verwenden können, damit sie über dieselben internen und externen URLs für ihre Apps verfügen. Bevor Sie dieses Feature aktivieren, finden Sie heraus, ob [benutzerdefinierte Domänen in Azure AD-Anwendungsproxy](active-directory-application-proxy-custom-domains.md) für Sie funktionieren.
@@ -64,7 +64,7 @@ Wenn Sie die Linkübersetzung für Vorteile aktivieren, werden die Links zu „A
 Zum Verbessern der Leistung und Sicherheit werden einige Links nicht übersetzt:
 
 - Links außerhalb von Codetags 
-- Links nicht in HTML, CSS oder JavaScript. 
+- Nicht in HTML- oder CSS-Tags enthaltene Links 
 - Interne Links, die von anderen Programmen geöffnet wurden Links, die über E-Mail oder Sofortnachrichten gesendet wurden oder in anderen Dokumenten enthalten sind, werden nicht übersetzt. Den Benutzern muss bekannt sein, dass sie zur externen URL navigieren müssen.
 
 Wenn Sie eines dieser beiden Szenarien unterstützen müssen, können Sie dieselben internen und externen URLs anstelle der Linkübersetzung verwenden.  
@@ -84,7 +84,7 @@ Wenn Ihre Benutzer auf diese Anwendung zugreifen, scannt der Proxy nun automatis
 
 ## <a name="send-feedback"></a>Feedback senden
 
-Wir sind auf Ihre Hilfe angewiesen, damit dieses Feature für alle Ihre Apps funktioniert. Wir durchsuchen mehr als 30 Tags in HTML und CSS und werten derzeit aus, welche JavaScript-Fälle unterstützt werden sollen. Wenn Sie ein Beispiel für generierte Links haben, die nicht übersetzt werden, senden Sie einen Codeausschnitt an [Anwendungsproxy-Feedback](mailto:aadapfeedback@microsoft.com). 
+Wir sind auf Ihre Hilfe angewiesen, damit dieses Feature für alle Ihre Apps funktioniert. Wir durchsuchen über 30 Tags in HTML und CSS. Wenn Sie ein Beispiel für generierte Links haben, die nicht übersetzt werden, senden Sie einen Codeausschnitt an [Anwendungsproxy-Feedback](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwenden von benutzerdefinierten Domänen mit Azure AD-Anwendungsproxy](active-directory-application-proxy-custom-domains.md), damit diese dieselbe interne und externe URL aufweisen

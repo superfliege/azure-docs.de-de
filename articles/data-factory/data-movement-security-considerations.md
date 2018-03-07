@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 898e6914a427b2e8864d97a7188eb718811ce263
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: ebe0523849b4709424e2f4bdac00f6bf98bf7cf4
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -150,8 +150,8 @@ Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und di
 | `*.servicebus.windows.net`    | 443, 80        | Erforderlich für die selbstgehostete Integrationslaufzeit, um Verbindungen mit Datenverschiebungsdiensten in Data Factory herzustellen. |
 | `*.core.windows.net`          | 443            | Wird von der selbstgehosteten Integrationslaufzeit verwendet, um Verbindungen mit dem Azure Storage-Konto herzustellen, wenn Sie das Feature [gestaffeltes Kopieren](copy-activity-performance.md#staged-copy) verwenden. |
 | `*.frontend.clouddatahub.net` | 443            | Erforderlich für die selbstgehostete Integrationslaufzeit, um Verbindungen mit dem Azure Data Factory-Dienst herzustellen. |
-| `*.database.windows.net`      | 1433           | (OPTIONAL) Erforderlich, wenn Ihr Ziel Azure SQL-Datenbank/Azure SQL Data Warehouse ist. Verwenden Sie das Feature „gestaffeltes Kopieren“ um Daten nach Azure SQL-Datenbank/Azure SQL Data Warehouse zu kopieren, ohne den Port 1433 zu öffnen. |
-| `*.azuredatalakestore.net`    | 443            | (OPTIONAL) Erforderlich, wenn Ihr Ziel Azure Data Lake Store ist. |
+| `*.database.windows.net`      | 1433           | (Optional:) Erforderlich, wenn Sie von bzw. nach Azure SQL-Datenbank/Azure SQL Data Warehouse kopieren. Verwenden Sie das Feature „gestaffeltes Kopieren“ um Daten nach Azure SQL-Datenbank/Azure SQL Data Warehouse zu kopieren, ohne den Port 1433 zu öffnen. |
+| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | (Optional:) Erforderlich, wenn Sie von bzw. nach Azure Data Lake Store kopieren |
 
 > [!NOTE] 
 > Möglicherweise müssen Sie Ports/Whitelistdomänen auf Ebene der Unternehmensfirewall verwalten, wie dies für die jeweiligen Datenquellen erforderlich ist. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure SQL Data Warehouse und Azure Data Lake Store als Beispiele verwendet.   

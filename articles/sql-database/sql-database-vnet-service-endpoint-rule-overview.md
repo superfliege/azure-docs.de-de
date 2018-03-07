@@ -17,11 +17,11 @@ ms.workload: On Demand
 ms.date: 02/20/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 33ce521903265f60715f66220c4d038cf6d86671
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c1bb1698723af60544b89f4b3168c44a32d31afd
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
@@ -127,6 +127,8 @@ Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s
 ## <a name="limitations"></a>Einschränkungen
 
 Bei Azure SQL-Datenbank gelten für Regeln für ein virtuelles Netzwerk folgende Einschränkungen:
+
+- Eine Web-App kann einer privaten IP in einem VNET/Subnetz zugeordnet werden. Auch wenn Dienstendpunkte im entsprechenden VNET/Subnetz aktiviert sind, haben Verbindungen zwischen der Web-App und dem Server keine VNET-/Subnetzquelle, sondern eine öffentliche Azure-IP-Quelle. Um die Verbindung zwischen einer Web-App und einem Server mit VNET-Firewallregeln zu ermöglichen, müssen Sie auf dem Server **alle Azure-Dienste zulassen**.
 
 - In der Firewall für Ihre SQL-Datenbank verweist jede Regel für ein virtuelles Netzwerk auf ein Subnetz. Alle Subnetze, auf die verwiesen wird, müssen in derselben geografischen Region gehostet werden, in der die SQL-Datenbank gehostet wird.
 

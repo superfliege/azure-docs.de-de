@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9d709a0ec2b7de985ac08fe9ee2935848e7a371c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 01dd1900fe765618e5da20bd289b9c3a021ea9a3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Ermöglicht es, Partitionen für jeden Dienst abzufragen und zu verwalten.
@@ -48,7 +48,7 @@ Ermöglicht es, Partitionen für jeden Dienst abzufragen und zu verwalten.
 Ruft die Integrität der angegebenen Service Fabric-Partition ab.
 
 Ruft die Integritätsinformationen der angegebenen Partition ab. Verwenden Sie „EventsHealthStateFilter“, um die Sammlung der Integritätsereignisse (HealthEvents), die für den Dienst gemeldet wurden, anhand des Integritätsstatus zu filtern.
-Verwenden Sie „ReplicasHealthStateFilter“, um die Auflistung der ReplicaHealthState-Objekte für die Partition zu filtern. Geben Sie eine Partition an, die im Integritätsspeicher nicht vorhanden ist, gibt dieses Cmdlet einen Fehler zurück. zu erstellen und zu verwalten.
+Verwenden Sie „ReplicasHealthStateFilter“, um die Auflistung der ReplicaHealthState-Objekte für die Partition zu filtern. Geben Sie eine Partition an, die im Integritätsspeicher nicht vorhanden ist, gibt dieses Cmdlet einen Fehler zurück.
 
 ### <a name="arguments"></a>Argumente
 
@@ -162,7 +162,7 @@ Veranlasst den Service Fabric-Cluster zu versuchen, eine bestimmte Partition wie
 ## <a name="sfctl-partition-restart"></a>sfctl partition restart
 Diese API startet einige oder alle Replikate oder Instanzen der angegebenen Partition neu.
 
-Diese API ist hilfreich zum Testen von Failover. Wird diese API für eine zustandslose Dienstpartition verwendet, muss „RestartPartitionMode“ gleich „AllReplicasOrInstances“ sein. Rufen Sie die GetPartitionRestartProgress-API mit der Vorgangs-ID (OperationId) auf, mit der Sie den Status (Fortschritt) abgerufen haben. zu erstellen und zu verwalten.
+Diese API ist hilfreich zum Testen von Failover. Wird diese API für eine zustandslose Dienstpartition verwendet, muss „RestartPartitionMode“ gleich „AllReplicasOrInstances“ sein. Rufen Sie die GetPartitionRestartProgress-API mit der Vorgangs-ID (OperationId) auf, mit der Sie den Status (Fortschritt) abgerufen haben.
 
 ### <a name="arguments"></a>Argumente
 
@@ -170,7 +170,7 @@ Diese API ist hilfreich zum Testen von Failover. Wird diese API für eine zustan
 | --- | --- |
 | --operation-id [erforderlich]| Eine GUID, die einen Aufruf dieser API kennzeichnet.  Diese GUID wird in die entsprechende GetProgress-API übergeben.|
 | --partition-id [erforderlich]| Die Identität (ID) der Partition.|
-| --restart-partition-mode [erforderlich]| – Invalid: Reserviert.  Übergeben Sie diesen Wert nicht an die API. – AllReplicasOrInstances: Alle Replikate oder Instanzen in der Partition werden gleichzeitig neu gestartet. – OnlyActiveSecondaries: Nur die sekundären Replikate werden neu gestartet. zu erstellen und zu verwalten.|
+| --restart-partition-mode [erforderlich]| Beschreibt, welche Partitionen neu gestartet werden.|
 | --service-id [erforderlich]| Die Identität (ID) des Diensts. Dies ist üblicherweise der vollständige Name des Diensts ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat der Dienst beispielsweise den Namen „fabric://meineapp/app1/dienst1“, hat die Dienstidentität in 6.0+ den Wert „meineapp~app1~dienst1“ und in früheren Versionen den Wert „meineapp/app1/dienst1“.|
 | --timeout -t                    | Servertimeout in Sekunden.  Standardwert: 60.|
 

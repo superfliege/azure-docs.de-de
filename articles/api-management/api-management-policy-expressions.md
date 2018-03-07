@@ -14,26 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: fb50ba3f292a390c45f1afe6259731d2b92cc335
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: a5bcd03e71a69928fa1e02a5286801c4933d17ef
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
-Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.  
-  
-> [!TIP]
->  Weitere Informationen zu Richtlinienausdrücken finden Sie im Video zu [Richtlinienausdrücken](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/).  
->   
->  Demonstrationen der Konfiguration von Richtlinien und der Verwendung von Richtlinienausdrücken finden Sie unter [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover-Episode 177 zu weiteren API Management-Funktionen mit Vlad Vinogradsky). Dieses Video enthält die folgenden Demonstrationen von Richtlinienausdrücken:  
->   
->  -   10:30 – Hier wird das Bereitstellen von Kontextinformationen für Ihren Back-End-Dienst gezeigt. Verwenden Sie die Richtlinien [Abfragezeichenfolgenparameter festlegen](api-management-transformation-policies.md#SetQueryStringParameter) und [HTTP-Header festlegen](api-management-transformation-policies.md#SetHTTPheader), um diese Informationen bereitzustellen. Bei 12:10 wird das Aufrufen eines Vorgangs im Entwicklerportal gezeigt, sodass Sie diese Richtlinien in Aktion sehen können.  
-> -   13:50 – Hier wird die Verwendung der Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) gezeigt, um den Zugriff auf Vorgänge basierend auf Tokenansprüchen vorab zu autorisieren. Spulen Sie bis 15:00 vor, um zu sehen, wie die Richtlinien im Richtlinien-Editor konfiguriert werden. Bei 18:50 wird das Aufrufen eines Vorgangs aus dem Entwicklerportal sowohl mit als auch ohne das benötigte Autorisierungstoken gezeigt.  
-> -   21:00 – Hier wird die Verwendung einer [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ablaufverfolgung veranschaulicht, um die Auswertung von Richtlinien und die Ergebnisse dieser Auswertungen anzuzeigen.  
-> -   25:25 – Hier wird gezeigt, wie Ausdrücke mit den Richtlinien [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache) und [In Cache speichern](api-management-caching-policies.md#StoreToCache) verwendet werden, um das Zwischenspeichern von Antworten für API Management zu konfigurieren. Legen Sie eine Dauer fest, die dem Zwischenspeichern von Antworten des Back-End-Diensts entspricht, wie in der `Cache-Control`-Anweisung des Back-End-Diensts angegeben.  
-> -   34:30 – Hier wird gezeigt, wie Inhalte gefiltert werden. Entfernen Sie Datenelemente mit den Richtlinien [Ablaufsteuerung](api-management-advanced-policies.md#choose) und [Text festlegen](api-management-transformation-policies.md#SetBody) aus der vom Back-End empfangenen Antwort. Beginnen Sie bei 31:50, um eine Übersicht über die [API „The Dark Sky Forecast“](https://developer.forecast.io/) zu erhalten, die für diese Demo verwendet wird.  
-> -   Informationen zum Herunterladen der in diesem Video verwendeten Richtlinienanweisungen finden Sie im Github-Repository unter [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).  
+Die in diesem Artikel erörterte Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.  
+
+Weitere Informationen finden Sie unter:
+
+- Erfahren Sie, wie Kontextinformationen für Ihren Back-End-Dienst bereitgestellt werden. Verwenden Sie die Richtlinien [Abfragezeichenfolgenparameter festlegen](api-management-transformation-policies.md#SetQueryStringParameter) und [HTTP-Header festlegen](api-management-transformation-policies.md#SetHTTPheader), um diese Informationen bereitzustellen.
+- Erfahren Sie, wie die Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) verwendet wird, um den Zugriff auf Vorgänge basierend auf Tokenansprüchen vorab zu autorisieren.   
+- Erfahren Sie, wie eine [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ablaufverfolgung verwendet wird, um die Auswertung von Richtlinien und die Ergebnisse dieser Auswertungen anzuzeigen.  
+- Erfahren Sie, wie Ausdrücke mit den Richtlinien [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache) und [In Cache speichern](api-management-caching-policies.md#StoreToCache) verwendet werden, um das Zwischenspeichern von Antworten für API Management zu konfigurieren. Legen Sie eine Dauer fest, die dem Zwischenspeichern von Antworten des Back-End-Diensts entspricht, wie in der `Cache-Control`-Anweisung des Back-End-Diensts angegeben.  
+- Erfahren Sie, wie Inhalte gefiltert werden. Entfernen Sie Datenelemente mit den Richtlinien [Ablaufsteuerung](api-management-advanced-policies.md#choose) und [Text festlegen](api-management-transformation-policies.md#SetBody) aus der vom Back-End empfangenen Antwort. 
+- Informationen zum Herunterladen der Richtlinienanweisungen finden Sie im Github-Repository unter [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).  
   
   
 ##  <a name="Syntax"></a> Syntax  
@@ -206,10 +203,7 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 |byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - zu entschlüsselnder Verschlüsselungstext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />Gibt Klartext zurück.|
 |byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - Eingabe – zu entschlüsselnder Verschlüsselungstext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
 
-## <a name="video"></a>Video
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player] 
->
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:

@@ -9,15 +9,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: c5566ec44a8bfed0a3e7207c2cebf21517573541
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: a03766f8a22399f7d72a01f8d744bfd1cef90ac3
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
-In diesem Artikel werden häufige Probleme beschrieben, die beim Installieren von Azure Site Recovery Mobility Service auf dem Quellserver zum Aktivieren des Schutzes auftreten können.
+In diesem Artikel werden allgemeine Probleme beschrieben, die beim Installieren von Azure Site Recovery Mobility Service auf dem Quellserver zum Aktivieren des Schutzes auftreten können.
 
 ## <a name="error-78007---the-requested-operation-could-not-be-completed"></a>Fehler 78007 – Der angeforderte Vorgang konnte nicht abgeschlossen werden.
 Dieser Fehler kann aus mehreren Gründen vom Dienst ausgelöst werden. Wählen Sie den entsprechenden Anbieterfehler aus, um das Problem weiter einzugrenzen.
@@ -36,58 +36,58 @@ Dieser Fehler kann aus mehreren Gründen vom Dienst ausgelöst werden. Wählen S
 
 **Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
 --- | --- | ---
-95105 </br>**Meldung:** Fehler bei der Pushinstallation des Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0856**. <br> Entweder ist die **Datei- und Druckerfreigabe** auf dem Quellcomputer nicht zulässig, oder es bestehen Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellcomputer.| Die **Datei- und Druckerfreigabe** ist nicht aktiviert. | Lassen Sie die **Datei- und Druckerfreigabe** auf dem Quellcomputer in der Windows-Firewall zu. Wählen Sie auf dem Quellcomputer unter **Windows-Firewall** > **Eine App oder ein Feature durch die Windows-Firewall zulassen** die Option **Datei- und Druckerfreigabe für alle Profile** aus. </br> Überprüfen Sie außerdem, ob die unten aufgeführten Voraussetzungen erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.<br> Weitere Informationen zur [Problembehandlung bei WMI-Problemen](#troubleshoot-wmi-issues).
+95105 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0856**. <br> Entweder ist die **Datei- und Druckerfreigabe** auf dem Quellcomputer nicht zulässig, oder es bestehen Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellcomputer.| Die **Datei- und Druckerfreigabe** ist nicht aktiviert. | Lassen Sie die **Datei- und Druckerfreigabe** auf dem Quellcomputer in der Windows-Firewall zu. Wählen Sie auf dem Quellcomputer unter **Windows-Firewall** > **Eine App oder ein Feature durch die Windows-Firewall zulassen** die Option **Datei- und Druckerfreigabe für alle Profile** aus. </br> Überprüfen Sie außerdem, ob die unten aufgeführten Voraussetzungen erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.<br> Weitere Informationen zur [Problembehandlung bei WMI-Problemen](#troubleshoot-wmi-issues).
 
 
 ## <a name="error-95107---protection-could-not-be-enabled-ep0858"></a>Fehler 95107 – Der Schutz konnte nicht aktiviert werden (EP0858).
 
 **Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
 --- | --- | ---
-95107 </br>**Meldung:** Fehler bei der Pushinstallation des Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0858**. <br> Entweder sind die Anmeldeinformationen für das Installieren von Mobility Service falsch, oder das Benutzerkonto verfügt nicht über ausreichende Berechtigungen. | Die auf dem Quellcomputer angegebenen Benutzeranmeldeinformationen zum Installieren von Mobility Service sind falsch. | Stellen Sie sicher, dass die für den Quellcomputer auf dem Konfigurationsserver angegebenen Anmeldeinformationen richtig sind. <br> Navigieren Sie zum Hinzufügen oder Bearbeiten von Benutzeranmeldeinformationen zum Konfigurationsserver, und wählen Sie **Cspsconfigtool** > **Konto verwalten** aus. </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.
+95107 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0858**. <br> Entweder sind die Anmeldeinformationen für das Installieren von Mobility Service falsch, oder das Benutzerkonto verfügt nicht über ausreichende Berechtigungen. | Die auf dem Quellcomputer angegebenen Benutzeranmeldeinformationen zum Installieren von Mobility Service sind falsch. | Stellen Sie sicher, dass die für den Quellcomputer auf dem Konfigurationsserver angegebenen Anmeldeinformationen richtig sind. <br> Navigieren Sie zum Hinzufügen oder Bearbeiten von Benutzeranmeldeinformationen zum Konfigurationsserver, und wählen Sie **Cspsconfigtool** > **Konto verwalten** aus. </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.
 
 
 ## <a name="error-95117---protection-could-not-be-enabled-ep0865"></a>Fehler 95117 – Der Schutz konnte nicht aktiviert werden (EP0865).
 
 **Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
 --- | --- | ---
-95117 </br>**Meldung:** Fehler bei der Pushinstallation des Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0865**. <br> Entweder wird der Quellcomputer nicht ausgeführt, oder es bestehen Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellcomputer. | Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellserver. | Überprüfen Sie die Verbindung zwischen dem Prozessserver und dem Quellserver. </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.|
+95117 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0865**. <br> Entweder wird der Quellcomputer nicht ausgeführt, oder es bestehen Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellcomputer. | Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellserver. | Überprüfen Sie die Verbindung zwischen dem Prozessserver und dem Quellserver. </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.|
 
 ## <a name="error-95103---protection-could-not-be-enabled-ep0854"></a>Fehler 95103 – Der Schutz konnte nicht aktiviert werden (EP0854).
 
 **Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
 --- | --- | ---
-95103 </br>**Meldung:** Fehler bei der Pushinstallation des Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0854**. <br> Entweder ist die Windows-Verwaltungsinstrumentation (WMI) auf dem Quellcomputer nicht zulässig, oder es bestehen Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellcomputer.| WMI ist in der Windows-Firewall blockiert. | Lassen Sie WMI in der Windows-Firewall zu. Wählen Sie unter **Windows-Firewall** > **Eine App oder ein Feature durch die Windows-Firewall zulassen** die Option **WMI für alle Profile** aus. </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.|
+95103 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0854**. <br> Entweder ist die Windows-Verwaltungsinstrumentation (WMI) auf dem Quellcomputer nicht zulässig, oder es bestehen Netzwerkverbindungsprobleme zwischen dem Prozessserver und dem Quellcomputer.| WMI ist in der Windows-Firewall blockiert. | Lassen Sie WMI in der Windows-Firewall zu. Wählen Sie unter **Windows-Firewall** > **Eine App oder ein Feature durch die Windows-Firewall zulassen** die Option **WMI für alle Profile** aus. </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.|
 
 ## <a name="error-95213---protection-could-not-be-enabled-ep0874"></a>Fehler 95213 – Der Schutz konnte nicht aktiviert werden (EP0874).
 
 **Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
 --- | --- | ---
-95213 </br>**Meldung:** Fehler beim Installieren des Mobility Service auf dem Quellcomputer „%SourceIP“, mit dem Fehlercode **EP0874**. <br> | Die Version des Betriebssystems wird auf dem Quellcomputer nicht unterstützt. <br>| Stellen Sie sicher, dass die Version des Betriebssystems auf dem Quellcomputer unterstützt wird. Weitere Informationen finden Sie in der [Supportmatrix](https://aka.ms/asr-os-support). </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](https://aka.ms/pushinstallerror) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.| 
+95213 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer „%SourceIP;“ mit dem Fehlercode **EP0874**. <br> | Die Version des Betriebssystems wird auf dem Quellcomputer nicht unterstützt. <br>| Stellen Sie sicher, dass die Version des Betriebssystems auf dem Quellcomputer unterstützt wird. Weitere Informationen finden Sie in der [Supportmatrix](https://aka.ms/asr-os-support). </br> Überprüfen Sie außerdem, ob die unten aufgeführten [Voraussetzungen](https://aka.ms/pushinstallerror) erfüllt sind, um die Pushinstallation erfolgreich abzuschließen.| 
 
 
 ## <a name="error-95108---protection-could-not-be-enabled-ep0859"></a>Fehler 95108 – Der Schutz konnte nicht aktiviert werden (EP0859).
 
 **Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
 --- | --- | ---
-95108 </br>**Meldung:** Fehler bei der Pushinstallation des Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0859**. <br>| Entweder sind die Anmeldeinformationen für das Installieren von Mobility Service falsch, oder das Benutzerkonto verfügt nicht über ausreichende Berechtigungen. <br>| Stellen Sie sicher, dass die bereitgestellten Anmeldeinformationen die Anmeldeinformationen für das **root**-Konto sind. Um Benutzeranmeldeinformationen hinzuzufügen oder zu bearbeiten, navigieren Sie zum Konfigurationsserver, und klicken Sie auf dem Desktop auf das Verknüpfungssymbol „Cspsconfigtool“. Klicken Sie auf „Konto verwalten“, um Anmeldeinformationen hinzuzufügen bzw. zu bearbeiten.|
+95108 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer mit dem Fehlercode **EP0859**. <br>| Entweder sind die Anmeldeinformationen für das Installieren von Mobility Service falsch, oder das Benutzerkonto verfügt nicht über ausreichende Berechtigungen. <br>| Stellen Sie sicher, dass die bereitgestellten Anmeldeinformationen die Anmeldeinformationen für das **root**-Konto sind. Um Benutzeranmeldeinformationen hinzuzufügen oder zu bearbeiten, navigieren Sie zum Konfigurationsserver, und klicken Sie auf dem Desktop auf das Verknüpfungssymbol **Cspsconfigtool**. Klicken Sie auf **Konto verwalten**, um Anmeldeinformationen hinzuzufügen bzw. zu bearbeiten.|
 
 ## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>Fehler 95265 – Der Schutz konnte nicht aktiviert werden (EP0902).
 
 **Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
 --- | --- | ---
-95265 </br>**Meldung:** Die Pushinstallation des Mobility Service auf dem Quellcomputer wurde erfolgreich durchgeführt. Der Quellcomputer muss jedoch neu gestartet werden, damit einige Systemänderungen wirksam werden. <br>| Eine ältere Version des Mobility Service wurde bereits auf dem Server installiert.| Die Replikation des virtuellen Computers wird nahtlos fortgesetzt.<br> Starten Sie den Server während des nächsten Wartungsfensters neu, um die Vorteile der neuen Mobility Service-Erweiterungen zu erhalten.|
+95265 </br>**Meldung:** Die Pushinstallation von Mobility Service auf dem Quellcomputer wurde erfolgreich durchgeführt. Der Quellcomputer muss jedoch neu gestartet werden, damit einige Systemänderungen wirksam werden. <br>| Eine ältere Version von Mobility Service wurde bereits auf dem Server installiert.| Die Replikation des virtuellen Computers wird nahtlos fortgesetzt.<br> Starten Sie den Server während des nächsten Wartungsfensters neu, um die Vorteile der neuen Mobility Service-Erweiterungen zu erhalten.|
 
 
 ## <a name="error-95224---protection-could-not-be-enabled-ep0883"></a>Fehler 95224 – Der Schutz konnte nicht aktiviert werden (EP0883).
 
 **Fehlercode** | **Mögliche Ursachen** | **Fehlerspezifische Empfehlungen**
 --- | --- | ---
-95224 </br>**Meldung:** Fehler bei der Pushinstallation des Mobility Service auf dem Quellcomputer „%SourceIP“, mit dem Fehlercode EP0883. Ein Neustart des Systems aufgrund einer vorherigen Installation bzw. eines Updates steht an.| Das System wurde nach der Deinstallation einer älteren bzw. inkompatiblen Version des Mobility Service nicht neu gestartet.| Stellen Sie sicher, dass keine Version des Mobility Service auf dem Server vorhanden ist. <br> Starten Sie den Server neu, und führen Sie den Auftrag zur Schutzaktivierung erneut aus.|
+95224 </br>**Meldung:** Fehler bei der Pushinstallation von Mobility Service auf dem Quellcomputer „%SourceIP;“ mit dem Fehlercode **EP0883**. Ein Neustart des Systems aufgrund einer vorherigen Installation bzw. eines Updates steht an.| Das System wurde nach der Deinstallation einer älteren bzw. inkompatiblen Version von Mobility Service nicht neu gestartet.| Stellen Sie sicher, dass keine Version von Mobility Service auf dem Server vorhanden ist. <br> Starten Sie den Server neu, und führen Sie den Auftrag zur Schutzaktivierung erneut aus.|
 
 ## <a name="resource-to-troubleshoot-push-installation-problems"></a>Ressource zur Behandlung von Problemen bei der Pushinstallation
 
 #### <a name="troubleshoot-file-and-print-sharing-issues"></a>Behandeln von Problemen bei der Datei- und Druckerfreigabe
-*  [Aktivieren oder Deaktivieren der Dateifreigabe mit der Gruppenrichtlinie](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
+* [Aktivieren oder Deaktivieren der Dateifreigabe mit der Gruppenrichtlinie](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
 * [Aktivieren der Datei- und Druckfreigabe über die Windows-Firewall](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
 
 #### <a name="troubleshoot-wmi-issues"></a>Behandeln von WMI-Problemen

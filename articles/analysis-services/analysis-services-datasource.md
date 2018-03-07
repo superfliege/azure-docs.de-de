@@ -13,82 +13,100 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 02/27/2018
 ms.author: owend
-ms.openlocfilehash: 33115ee35670407c3b046f70a5fbebc47284b4b9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e2f7e356b260c0e5af67d28811bd88a63a601312
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
-Azure Analysis Services-Server unterstützen das Herstellen von Verbindungen mit lokalen Datenquellen in der Organisation oder mit Datenquellen in der Cloud. Weitere unterstützte Datenquellen werden ständig hinzugefügt. Das Zurückkehren zu dieser Seite lohnt sich. 
 
-Die folgenden Datenquellen werden derzeit unterstützt:
+Im Assistenten zum Abrufen oder Importieren von Daten in Visual Studio werden Datenquellen und Connectors für Azure Analysis Services und SQL Server Analysis Services angezeigt. Es werden jedoch nicht alle angezeigten Datenquellen und Connectors in Azure Analysis Services unterstützt. Mit welchen Typen von Datenquellen Sie eine Verbindung herstellen können, ist von vielen Faktoren abhängig, z.B. Modellkompatibilitätsgrad, verfügbare Datenconnectors, Authentifizierungstyp, Anbieter und Unterstützung lokaler Datengateways. 
 
-| Cloud  |
-|---|
-| Azure Blob Storage*  |
-| Azure SQL-Datenbank  |
-| Azure Data Warehouse |
+## <a name="azure-data-sources"></a>Azure-Datenquellen
 
+|Datenquelle  |In-Memory  |DirectQuery  |
+|---------|---------|---------|
+|Azure SQL-Datenbank     |   Ja      |    Ja      |
+|Azure SQL Data Warehouse     |   Ja      |   Ja       |
+|Azure Blob Storage*     |   Ja       |    Nein       |
+|Azure Table Storage*    |   Ja       |    Nein       |
+|Azure Cosmos DB (Beta)*     |  Ja        |  Nein         |
+|Azure Data Lake Store*     |   Ja       |    Nein       |
+|Azure HDInsight HDFS*     |     Ja     |   Nein        |
+|Azure HDInsight Spark (Beta)*     |   Ja       |   Nein        |
+|Azure Database for MySQL (Vorschau)*     |   Ja       |   Nein       |
+|Azure Database for PostgreSQL (Vorschau)*     | Ja         |  Nein        |
+||||
 
-| Lokal  |   |   |   |
-|---|---|---|---|
-| Access-Datenbank  | Ordner* | Oracle-Datenbank  | Teradata-Datenbank |
-| Active Directory*  | JSON-Dokument*  | Postgre SQL-Datenbank*  |XML-Tabelle* |
-| Analysis Services  | Zeilen aus Binärdatei*  | SAP HANA*  |
-| Analytics Platform System  | MySQL Database  | SAP Business Warehouse*  | |
-| Dynamics CRM*  | OData-Feed*  | SharePoint*  |
-| Excel-Arbeitsmappe  | ODBC-Abfrage  | SQL-Datenbank  |
-| Exchange*  | OLE DB  | Sybase-Datenbank  |
+\* nur tabellarische Modelle mit Kompatibilitätsgrad 1400.
 
-\* nur tabellarische Modelle mit Kompatibilitätsgrad 1400. 
+**Anbieter**   
+In-Memory- und DirectQuery-Modelle, die eine Verbindung mit Azure-Datenquellen herstellen, verwenden den .NET Framework-Datenanbieter für SQL Server.
+
+## <a name="on-premises-data-sources"></a>Lokale Datenquellen
+
+Zum Herstellen einer Verbindung mit lokalen Datenquellen ist ein lokales Gateway erforderlich. Bei Verwendung eines Gateways müssen 64-Bit-Anbieter installiert sein.
+
+### <a name="in-memory-and-directquery"></a>In-Memory und DirectQuery
+
+|Datenquelle | In-Memory-Anbieter | DirectQuery-Anbieter |
+|  --- | --- | --- |
+| SQL Server |SQL Server Native Client 11.0, Microsoft OLE DB-Anbieter für SQL Server, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
+| SQL Server Data Warehouse |SQL Server Native Client 11.0, Microsoft OLE DB-Anbieter für SQL Server, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
+| Oracle |Microsoft OLE DB-Anbieter für Oracle, Oracle-Datenanbieter für .NET |Oracle-Datenanbieter für .NET | |
+| Teradata |OLE DB-Anbieter für Teradata, Teradata-Datenanbieter für .NET |Teradata-Datenanbieter für .NET | |
+| | | |
+
+\* nur tabellarische Modelle mit Kompatibilitätsgrad 1400.
+
+### <a name="in-memory-only"></a>Nur In-Memory
 
 > [!IMPORTANT]
-> Das Herstellen einer Verbindung mit lokalen Datenquellen erfordert ein auf einem Computer in Ihrer Umgebung installiertes [lokales Datengateway](analysis-services-gateway.md).
+> Die Anbietertests für die folgenden Datenquellen laufen noch. 
 
-## <a name="data-providers"></a>Datenanbieter
+|Datenquelle  |  
+|---------|---------|
+|Access-Datenbank     |  
+|Active Directory*     |  
+|Analysis Services     | 
+|Analytics Platform System     |  
+|Dynamics CRM*     |  
+|Excel-Arbeitsmappe     | 
+|Exchange*     |  
+|Ordner*     | 
+|JSON-Dokument*     |  
+|Zeilen aus Binärdatei*     | 
+|MySQL Database     | 
+|OData-Feed*     | 
+|ODBC-Abfrage     | 
+|OLE DB     |  
+|Postgre SQL-Datenbank*    | 
+|SAP HANA*    |   
+|SAP Business Warehouse*    |  
+|SharePoint*     |   
+|Sybase-Datenbank     |  
+|XML-Tabelle*    |  
+|||
+ 
+\* nur tabellarische Modelle mit Kompatibilitätsgrad 1400.
 
-Datenmodelle in Azure Analysis Services erfordern möglicherweise verschiedene Datenanbieter beim Verbinden mit bestimmten Datenquellen. Gelegentlich kann es vorkommen, dass tabellarische Modelle beim Herstellen einer Verbindung mit Datenquellen mithilfe von nativen Anbietern wie SQL Server Native Client (SQLNCLI11) einen Fehler zurückgeben.
+## <a name="specifying-a-different-provider"></a>Angeben eines anderen Herstellers
 
-Wenn Datenmodelle eine Verbindung mit einer Clouddatenquelle wie Azure SQL-Datenbank herstellen und dabei einen anderen nativen Anbieter als SQLOLEDB verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **„The provider 'SQLNCLI11.1' is not registered“** (Der Anbieter ‚SQLNCLI11.1‘ ist nicht registriert). Wenn ein Direktabfrage-Modell eine Verbindung mit lokalen Datenquellen herstellt und dabei native Anbieter verwendet, wird möglicherweise folgende Fehlermeldung angezeigt: **„Error creating OLE DB row set. Incorrect syntax near 'LIMIT'.“ (Fehler beim Erstellen eines OLE DB-Rowsets. Falsche Syntax bei 'LIMIT'.)**.
-
-Die folgenden Datenquellenanbieter werden für In-Memory- oder Direktabfrage-Datenmodelle beim Herstellen einer Verbindung mit lokalen Datenquellen oder Clouddatenquellen unterstützt:
-
-### <a name="cloud"></a>Cloud
-| **Datenquelle** | **In-Memory** | **DirectQuery** |
-|  --- | --- | --- |
-| Azure SQL Data Warehouse |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server |
-| Azure SQL-Datenbank |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server | |
-
-### <a name="on-premises-via-gateway"></a>Lokal (über Gateway)
-|**Datenquelle** | **In-Memory** | **DirectQuery** |
-|  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0 |.NET Framework-Datenanbieter für SQL Server |
-| SQL Server |Microsoft OLE DB-Anbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server | |
-| SQL Server |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server | |
-| Oracle |Microsoft OLE DB-Anbieter für Oracle |Oracle-Datenanbieter für .NET | |
-| Oracle |Oracle-Datenanbieter für .NET |Oracle-Datenanbieter für .NET | |
-| Teradata |OLE DB-Anbieter für Teradata |Teradata-Datenanbieter für .NET | |
-| Teradata |Teradata-Datenanbieter für .NET |Teradata-Datenanbieter für .NET | |
-| Analytics Platform System |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server | |
-
-> [!NOTE]
-> Bei Verwendung von lokalen Gateways müssen 64-Bit-Anbieter installiert sein.
-> 
-> 
+Datenmodelle in Azure Analysis Services erfordern möglicherweise verschiedene Datenanbieter beim Verbinden mit bestimmten Datenquellen. Gelegentlich kann es vorkommen, dass tabellarische Modelle beim Herstellen einer Verbindung mit Datenquellen mithilfe von nativen Anbietern wie SQL Server Native Client (SQLNCLI11) einen Fehler zurückgeben. Wenn Sie andere native Anbieter als SQLOLEDB verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Der Anbieter „SQLNCLI11.1“ ist nicht registriert**. Wenn ein DirectQuery-Modell eine Verbindung mit lokalen Datenquellen herstellt und Sie native Anbieter verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Error creating OLE DB row set. Incorrect syntax near „LIMIT“. (Fehler beim Erstellen eines OLE DB-Rowsets. Falsche Syntax bei „LIMIT“)**.
 
 Bei der Migration eines lokalen SQL Server Analysis Services-Tabellenmodells zu Azure Analysis Services muss möglicherweise der Anbieter gewechselt werden.
 
-**So geben Sie einen Datenquellenanbieter an**
+**So geben Sie einen Anbieter an**
 
 1. Klicken Sie unter SSDT > **Tabular Model Explorer** (Explorer für tabellarisches Modell)  > **Datenquellen** mit der rechten Maustaste auf eine Datenquellenverbindung, und klicken Sie anschließend auf **Datenquelle bearbeiten**.
 2. Klicken Sie unter **Verbindung bearbeiten** auf **Erweitert**, um das Fenster „Erweiterte Eigenschaften“ zu öffnen.
 3. Wählen Sie anschließend unter **Erweiterte Eigenschaften festlegen** > **Anbieter** den gewünschten Anbieter aus.
 
 ## <a name="impersonation"></a>Identitätswechsel
-In einigen Fällen muss möglicherweise ein anderes Identitätswechselkonto angegeben werden. Das Identitätswechselkonto kann in SSDT oder SSMS angegeben werden.
+In einigen Fällen muss möglicherweise ein anderes Identitätswechselkonto angegeben werden. Das Identitätswechselkonto kann in Visual Studio (SSDT) oder SSMS angegeben werden.
 
 Für lokale Datenquellen:
 
@@ -100,6 +118,6 @@ Für Clouddatenquellen:
 * Wenn Sie die SQL-Authentifizierung verwenden, sollte das Identitätswechselkonto ein Dienstkonto sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie lokale Datenquellen verwenden, müssen Sie das [lokale Gateway](analysis-services-gateway.md) installieren.   
-Weitere Informationen zum Verwalten des Servers in SSDT oder SSMS finden Sie unter [Verwalten des Servers](analysis-services-manage.md).
+[Lokales Gateway](analysis-services-gateway.md)   
+[Manage your server (Verwalten des Servers)](analysis-services-manage.md)   
 

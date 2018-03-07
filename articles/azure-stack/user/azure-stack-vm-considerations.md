@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2018
+ms.date: 02/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 59053e4beda48fd8474da675e50e02438c79a98e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2b39ff3665a4cc3aeddf81b83e0c90c7f770da72
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Aspekte von virtuellen Computern in Azure Stack
 
@@ -41,19 +41,25 @@ Bei virtuellen Computern handelt es sich hier um bedarfsgesteuerte, skalierbare 
 |VM-Skalierungsgruppen|Automatische Skalierung wird unterstützt|Automatische Skalierung wird nicht unterstützt<br>Fügen Sie einer Skalierungsgruppe mit dem Portal, Resource Manager-Vorlagen oder PowerShell weitere Instanzen hinzu.
 
 ## <a name="virtual-machine-sizes"></a>Größen virtueller Computer
+Azure erzwingt Ressourcengrenzwerte auf verschiedene Arten, um einen übermäßigen Ressourcenverbrauch auf dem lokalen Server und auf der Dienstebene zu vermeiden. Ohne Einschränkung der Ressourcennutzung durch die Mandanten wird die Leistung eines Mandanten unter Umständen durch den übermäßigen Ressourcenverbrauch eines benachbarten Mandanten (Noisy Neighbor) beeinträchtigt. 
+- Für ausgehenden Netzwerkdatenverkehr des virtuellen Computers gelten Bandbreitenobergrenzen. Die Obergrenzen in Azure Stack entsprechen den Obergrenzen in Azure.  
+- Für Speicherressourcen implementiert Azure Stack Speicher-IOPS-Grenzwerte, um den allgemeinen übermäßigen Ressourcenverbrauch durch Mandanten für Speicherzugriff zu vermeiden. 
+- Für virtuelle Computer mit mehreren angefügten Datenträgern ist der maximale Durchsatz für die einzelnen Datenträger 500 IOPS für HHDs und 2.300 IOPS für SSDs.
 
-Azure Stack unterstützt die folgenden Größen:
+Die folgende Tabelle enthält die in Azure Stack unterstützten virtuellen Computer sowie ihre Konfiguration:
 
-| Typ | Größe | Bereich der unterstützten Größen |
-| --- | --- | --- |
-|Allgemeiner Zweck |Basic A|A0 - A4|
-|Allgemeiner Zweck |Standard A|A0 - A7|
-|Allgemeiner Zweck |D-Serie|D1 - D4|
-|Allgemeiner Zweck |Dv2-Serie|D1_v2 - D5_v2|
-|Allgemeiner Zweck |DS-Serie|DS1 - DS4|
-|Allgemeiner Zweck |DSv2-Serie|DS1_v2 - DS5_v2|
-|Arbeitsspeicheroptimiert|DS-Serie|DS11 - DS14|
-|Arbeitsspeicheroptimiert |DSv2-Serie|DS11_v2 - DS14_v2|
+| Typ           | Größe          | Bereich der unterstützten Größen |
+| ---------------| ------------- | ------------------------ |
+|Allgemeiner Zweck |Basic A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
+|Allgemeiner Zweck |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
+|Allgemeiner Zweck |D-Serie       |[D1 - D4](azure-stack-vm-sizes.md#d-series)              |
+|Allgemeiner Zweck |Dv2-Serie     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
+|Allgemeiner Zweck |DS-Serie      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
+|Allgemeiner Zweck |DSv2-Serie    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dsv2-series)      |
+|Arbeitsspeicheroptimiert|D-Serie       |[D11 - D14](azure-stack-vm-sizes.md#mo-d)            |
+|Arbeitsspeicheroptimiert|DS-Serie      |[DS11 - DS14](azure-stack-vm-sizes.md#mo-ds)|
+|Arbeitsspeicheroptimiert|Dv2-Serie     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
+|Arbeitsspeicheroptimiert|DSv2-Serie -  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
 Die VM-Größen und ihre zugeordneten Ressourcenmengen sind für Azure Stack und Azure konsistent. Diese Konsistenz umfasst beispielsweise die Arbeitsspeichermenge, die Anzahl von Kernen und die Anzahl bzw. Größe von Datenträgern für Daten, die erstellt werden können. Die Leistung der gleichen VM-Größe in Azure Stack richtet sich aber nach den zugrunde liegenden Merkmalen der jeweiligen Azure Stack-Umgebung.
 

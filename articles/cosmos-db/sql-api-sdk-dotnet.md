@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/21/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 796a455ffb906a47ab4ac9ae069537b0d7a31156
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b9e81bbff7c09f3bfb60fcdeda5cd3c8faf23adc
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -53,6 +53,10 @@ ms.lasthandoff: 02/13/2018
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
+
+* Korrektur eines Fehlers, der bei Verwendung der Sitzungskonsistenzebene unter bestimmten Racebedingungen zu vorübergehenden Fehlern vom Typ „Microsoft.Azure.Documents.NotFoundException: Die Lesesitzung für das eingegebene Sitzungstoken ist nicht verfügbar“ geführt hat.
+
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
 * Die Regression wurde korrigiert, bei der „FeedOptions.MaxItemCount = -1“ einen System.ArithmeticException-Fehler mit dem Hinweis ausgelöst hat, dass die Seitengröße negativ ist.
@@ -285,6 +289,7 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.20.2](#1.20.2) |21. Februar 2018 |--- |
 | [1.20.1](#1.20.1) |05. Februar 2018 |--- |
 | [1.19.1](#1.19.1) |16. November 2017 |--- |
 | [1.19.0](#1.19.0) |10. November 2017 |--- |

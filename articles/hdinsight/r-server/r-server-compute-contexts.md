@@ -15,30 +15,30 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 4c839bf0c39bf10855f8a31770b82a04ed1ca457
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 8bc7767d9903761f3338b7825185171aad74de78
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>Rechenkontextoptionen für R Server in HDInsight
 
 Microsoft R Server für Azure HDInsight bestimmt durch Festlegen des Computekontexts, wie Aufrufe ausgeführt werden. In diesem Artikel werden die Optionen beschrieben, mit denen festgelegt werden kann, ob und wie die Ausführung in allen Kernen des Edgeknotens oder im HDInsight-Cluster parallelisiert werden.
 
-Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von ScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie über die Knoten des Clusters hinweg ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Rechenkontexte verwenden.
+Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von RevoScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie auf allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von RevoScaleR oder Spark-Computekontexte verwenden.
 
 ## <a name="microsoft-r-server-on-azure-hdinsight"></a>Microsoft R Server für Azure HDInsight
-[Microsoft R Server für Azure HDInsight](r-server-overview.md) bietet die neuesten Funktionen für die R-basierte Analyse. Die verwendeten Daten sind in einem HDFS-Container in Ihrem [Azure Blob Storage-Konto](../../storage/common/storage-introduction.md "Azure Blob Storage"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da R Server auf Open Source R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8000 Open Source R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](https://msdn.microsoft.com/microsoft-r/scaler/scaler) – dem in R Server enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
+[Microsoft R Server für Azure HDInsight](r-server-overview.md) bietet die neuesten Funktionen für die R-basierte Analyse. Die verwendeten Daten sind in einem HDFS-Container in Ihrem [Azure Blob Storage-Konto](../../storage/common/storage-introduction.md "Azure Blob Storage"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da R Server auf Open Source R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8000 Open Source R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) – dem in R Server enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Computekontexte für einen Edgeknoten
-Im Allgemeinen wird ein R-Skript, das in R Server auf dem Edgeknoten ausgeführt wird, im R-Interpreter auf diesem Knoten ausgeführt. Bei Schritten, in denen eine ScaleR-Funktion aufgerufen wird, ist dies nicht der Fall. Die ScaleR-Aufrufe werden in einer Computeumgebung ausgeführt, die dadurch bestimmt wird, wie Sie den ScaleR-Computekontext festlegen.  Wenn Sie Ihr R-Skript auf einem Edgeknoten ausführen, sind für den Computekontext folgende Werte möglich:
+Im Allgemeinen wird ein R-Skript, das in R Server auf dem Edgeknoten ausgeführt wird, im R-Interpreter auf diesem Knoten ausgeführt. Bei Schritten, in denen eine RevoScaleR-Funktion aufgerufen wird, ist dies nicht der Fall. Die RevoScaleR-Aufrufe werden in einer Compute-Umgebung ausgeführt, die dadurch bestimmt wird, wie Sie den RevoScaleR-Computekontext festlegen.  Wenn Sie Ihr R-Skript auf einem Edgeknoten ausführen, sind für den Computekontext folgende Werte möglich:
 
 - lokal sequenziell (*local*)
 - lokal parallel (*localpar*)
 - Map Reduce
 - Spark
 
-Die Optionen *local* und *localpar* unterscheiden sich nur darin, wie **rxExec**-Aufrufe ausgeführt werden. Beide führen andere „rx-function“-Aufrufe auf allen verfügbaren Knoten parallel aus, es sei denn, über die ScaleR-Option **numCoresToUse** ist etwas anderes angegeben. Beispiel: `rxOptions(numCoresToUse=6)`. Optionen für die parallele Ausführung ermöglichen eine optimale Leistung.
+Die Optionen *local* und *localpar* unterscheiden sich nur darin, wie **rxExec**-Aufrufe ausgeführt werden. Beide führen andere Aufrufe vom Typ „rx-function“ auf allen verfügbaren Knoten parallel aus, es sei denn, über die RevoScaleR-Option **numCoresToUse** ist etwas anderes angegeben. Beispiel: `rxOptions(numCoresToUse=6)`. Optionen für die parallele Ausführung ermöglichen eine optimale Leistung.
 
 In der folgenden Tabelle werden die verschiedenen Optionen für den Computekontext zur Ausführung von Aufrufen zusammengefasst:
 
@@ -72,16 +72,16 @@ Neben diesen Richtlinien sollten bei der Auswahl des Rechenkontexts die allgemei
 * Verwenden Sie den MapReduce-Computekontext nur, wenn bei einem Spark-Computekontext ein unüberwindliches Problem auftritt, da MapReduce meist langsamer ist.  
 
 ## <a name="inline-help-on-rxsetcomputecontext"></a>Integrierte Hilfe zu rxSetComputeContext
-Weitere Informationen und Beispiele zu ScaleR-Computekontexten finden Sie in der integrierten Hilfe von R unter der rxSetComputeContext-Methode. Beispiel:
+Weitere Informationen und Beispiele zu RevoScaleR-Computekontexten finden Sie in der integrierten Hilfe von R unter der rxSetComputeContext-Methode. Beispiel:
 
     > ?rxSetComputeContext
 
-Informationen finden Sie auch im [ScaleR Distributed Computing Guide](https://msdn.microsoft.com/microsoft-r/scaler-distributed-computing) (Handbuch zum verteilten Computing mit ScaleR) in der [MSDN-Bibliothek zu R Server](https://msdn.microsoft.com/library/mt674634.aspx).
+Sie können sich auch die [Übersicht über verteiltes Computing](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) in der [Dokumentation zu Machine Learning Server](https://docs.microsoft.com/machine-learning-server/) ansehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie die Optionen kennengelernt, mit denen festgelegt werden kann, ob und wie die Ausführung in allen Kernen des Edgeknotens oder im HDInsight-Cluster parallelisiert werden. Weitere Informationen zur Verwendung von R Server mit HDInsight-Clustern finden Sie unter den folgenden Themen:
 
-* [Übersicht über R Server in HDInsight](r-server-overview.md)
+* [Übersicht: R Server in HDInsight (Vorschau)](r-server-overview.md)
 * [Erste Schritte mit R Server für Hadoop](r-server-get-started.md)
 * [Azure Storage-Optionen für R Server in HDInsight](r-server-storage.md)
 

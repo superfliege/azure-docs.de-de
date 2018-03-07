@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
+ms.date: 02/22/2018
 ms.author: sethm
-ms.openlocfilehash: 6c92acee9d7609f4fedcddd40563b1a55fa08fac
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: be23d919b0c96d6c9b96ee328d1b18ad978a9dcc
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Verketten von Service Bus-Entitäten mit automatischer Weiterleitung
 
 Mit dem Service Bus-Feature *Automatische Weiterleitung* können Sie eine Warteschlange oder ein Abonnement mit einer weiteren Warteschlange oder einem Thema aus dem selben Namespace verketten. Wenn die automatische Weiterleitung aktiviert ist, entfernt Service Bus die Nachrichten automatisch, die in der ersten Warteschlange oder dem Abonnement (Quelle) platziert wurden, und fügt sie in die zweite Warteschlange oder das Thema (Ziel) ein. Beachten Sie, dass es weiterhin möglich ist, eine Nachricht direkt an die Zielentität zu senden. Es ist außerdem nicht möglich, eine Unterwarteschlange, z.B. eine Warteschlange für unzustellbare Nachrichten, mit einer anderen Warteschlange oder einem Thema zu verketten.
 
 ## <a name="using-auto-forwarding"></a>Verwenden der automatischen Weiterleitung
-Sie können die automatische Weiterleitung durch Festlegen der Eigenschaften [QueueDescription.ForwardTo][QueueDescription.ForwardTo] oder [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] der Objekte [QueueDescription][QueueDescription] oder [SubscriptionDescription][SubscriptionDescription] für die Quelle aktivieren, wie im folgenden Beispiel veranschaulicht.
+
+Sie können die automatische Weiterleitung durch Festlegen der Eigenschaften [QueueDescription.ForwardTo][QueueDescription.ForwardTo] oder [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] der Objekte [QueueDescription][QueueDescription] oder [SubscriptionDescription][SubscriptionDescription] für die Quelle aktivieren, wie im folgenden Beispiel veranschaulicht:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -35,7 +36,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 Die Zielentität muss vorhanden sein, wenn die Quellentität erstellt wird. Wenn die Zielentität nicht vorhanden ist, gibt Service Bus eine Ausnahme zurück, wenn die Quellentität erstellt werden soll.
 
-Sie können die automatische Weiterleitung zum Skalieren eines einzelnen Themas verwenden. Service Bus beschränkt die [Anzahl von Abonnements für ein bestimmtes Thema](service-bus-quotas.md) auf 2.000. Sie können weitere Abonnements durch Erstellen von Themen der zweiten Ebene aufnehmen. Hinweis: Selbst wenn Sie nicht durch die Service Bus-Beschränkung für die Anzahl der Abonnements gebunden sind, kann das Hinzufügen einer zweiten Ebene von Themen den Gesamtdurchsatz Ihres Themas verbessern.
+Sie können die automatische Weiterleitung zum Skalieren eines einzelnen Themas verwenden. Service Bus beschränkt die [Anzahl von Abonnements für ein bestimmtes Thema](service-bus-quotas.md) auf 2.000. Sie können weitere Abonnements durch Erstellen von Themen der zweiten Ebene aufnehmen. Selbst wenn Sie nicht durch die Service Bus-Beschränkung für die Anzahl der Abonnements gebunden sind, kann das Hinzufügen einer zweiten Ebene von Themen den Gesamtdurchsatz Ihres Themas verbessern.
 
 ![Szenario mit automatischer Weiterleitung][0]
 

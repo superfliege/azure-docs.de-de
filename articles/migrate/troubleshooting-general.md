@@ -4,13 +4,13 @@ description: "Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Di
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
-ms.date: 12/12/2017
+ms.date: 02/21/2018
 ms.author: raynew
-ms.openlocfilehash: 1fcc9e12e63eda73d53ae2085bc2a64d31ea2067
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 249de45dbd9bedf1b3c2d2a5957acf31d6c0d243
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -31,7 +31,7 @@ Wenn Sie URL-basierte Firewallproxys zur Steuerung ausgehender Verbindungen verw
 
 **Der Collector kann mit der Projekt-ID und dem Schlüssel, die ich aus dem Portal kopiert habe, keine Verbindung mit dem Projekt herstellen.**
 
-Stellen Sie sicher, dass Sie die richtigen Informationen kopiert und eingefügt haben. Installieren Sie Problembehandlung Microsoft Monitoring Agent (MMA) wie folgt:
+Stellen Sie sicher, dass Sie die richtigen Informationen kopiert und eingefügt haben. Installieren Sie zur Problembehandlung Microsoft Monitoring Agent (MMA), und vergewissern Sie sich, dass MMA eine Verbindung mit dem Projekt herstellen kann. Gehen Sie dazu wie folgt vor:
 
 1. Laden Sie [MMA](https://go.microsoft.com/fwlink/?LinkId=828603) auf den virtuellen Collector-Computer herunter.
 2. Doppelklicken Sie auf die heruntergeladenen Datei, um die Installation zu starten.
@@ -69,9 +69,9 @@ Zum Aktivieren der Erfassung von Datenträger- und Netzwerkleistungsdaten änder
 
 **Problem** | **Behebung**
 --- | ---
-Starttyp nicht unterstützt | Wechseln Sie zum BIOS, bevor Sie eine Migration ausführen.
+Nicht unterstützter Starttyp | Azure unterstützt keine virtuellen Computer mit dem Starttyp „EFI“. Vor einer Migration muss der Starttyp in „BIOS“ konvertiert werden. <br/><br/>Die entsprechenden virtuellen Computer können mit [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/tutorial-migrate-on-premises-to-azure) migriert werden, da Azure Site Recovery den Starttyp des virtuellen Computers im Rahmen der Migration in „BIOS“ konvertiert.
 Anzahl der Datenträger überschreitet den Grenzwert | Entfernen Sie nicht verwendete Datenträger vor der Migration vom Computer.
-Datenträgergröße überschreitet den Grenzwert | Verkleinern Sie Datenträger vor der Migration auf weniger als 4 TB. 
+Datenträgergröße überschreitet den Grenzwert | Azure unterstützt Datenträger mit einer Größe von bis zu 4 TB. Verkleinern Sie Datenträger vor der Migration auf weniger als 4 TB. 
 Datenträger am angegebenen Speicherort nicht verfügbar | Stellen Sie vor der Migration sicher, dass sich der Datenträger am Zielspeicherort befindet.
 Datenträger für die angegebene Redundanz nicht verfügbar | Der Datenträger muss den in den Bewertungseinstellungen definierten Redundanzspeichertyp verwenden (standardmäßig LRS).
 Datenträgereignung konnte aufgrund eines internen Fehlers nicht ermittelt werden | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen. 
@@ -83,12 +83,15 @@ Eignung konnte für mindestens einen Datenträger aufgrund eines internen Fehler
 Eignung konnte für mindestens einen Netzwerkadapter aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Kein virtueller Computer für erforderliche Speicherleistung gefunden. | Die erforderliche Speicherleistung (IOPS/Durchsatz) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie vor der Migration die Speicheranforderungen für den Computer.
 Kein virtueller Computer für erforderliche Netzwerkleistung gefunden. | Die erforderliche Netzwerkleistung (ein-/ausgehend) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie die Netzwerkanforderungen für den Computer. 
-Kein virtueller Computer für den angegebenen Tarif gefunden. | Überprüfen Sie die Tarifeinstellungen. 
+Für den angegebenen Tarif wurde kein virtueller Computer gefunden. | Wenn der Tarif auf „Standard“ festgelegt ist, sollten Sie den virtuellen Computer vor der Migration ggf. herabstufen. Ist der Tarif auf „Basic“ festgelegt, empfiehlt es sich unter Umständen, den Tarif der Bewertung in „Standard“ zu ändern. 
 Kein virtueller Computer am angegebenen Speicherort gefunden. | Geben Sie vor der Migration einen anderen Zielort an.
-Probleme bei der Unterstützung von Linux-Betriebssystemen | Stellen Sie sicher, dass Sie 64-Bit mit diesen unterstützten [Betriebssystemen](../virtual-machines/linux/endorsed-distros.md) ausführen.
-Probleme bei der Unterstützung von Windows-Betriebssystemen | Stellen Sie sicher, dass ein unterstütztes Betriebssystem ausführen. [Weitere Informationen](concepts-assessment-calculation.md#azure-suitability-analysis)
-Unbekanntes Betriebssystem. | Überprüfen Sie, ob in vCenter das richtige Betriebssystem angegeben ist, und wiederholen Sie den Ermittlungsprozess.
-Erfordert Visual Studio-Abonnement. | Windows-Clientbetriebssysteme werden nur in Visual Studio (MSDN)-Abonnements unterstützt.
+Unbekanntes Betriebssystem | Das Betriebssystem des virtuellen Computers wurde in vCenter Server als „Anderes“ angegeben, und Azure Migrate kann deshalb nicht beurteilen, ob der virtuelle Computer für Azure bereit ist. Vergewissern Sie sich, dass das Betriebssystem auf dem Computer von Azure [unterstützt](https://aka.ms/azureoslist) wird, bevor Sie den Computer migrieren.
+Bedingt unterstütztes Windows-Betriebssystem | Der Unterstützungszeitraum für das Betriebssystem ist abgelaufen. Für die [Unterstützung in Azure](https://aka.ms/WSosstatement) wird eine benutzerdefinierte Supportvereinbarung (Custom Support Agreement, CSA) benötigt. Führen Sie vor der Migration ggf. ein Upgrade des Betriebssystems durch.
+Nicht unterstütztes Windows-Betriebssystem | Azure unterstützt nur [bestimmte Windows-Betriebssystemversionen](https://aka.ms/WSosstatement). Führen Sie vor der Migration zu Azure ggf. ein Upgrade des Betriebssystems durch. 
+Bedingt unterstütztes Linux-Betriebssystem | Azure unterstützt nur [bestimmte Linux-Betriebssystemversionen](../virtual-machines/linux/endorsed-distros.md). Führen Sie vor der Migration zu Azure ggf. ein Upgrade des Betriebssystems durch.
+Nicht unterstütztes Linux-Betriebssystem | Der Computer startet zwar unter Umständen in Azure, das Betriebssystem wird von Azure jedoch nicht unterstützt. Führen Sie vor der Migration zu Azure ggf. ein Upgrade auf eine [unterstützte Linux-Version](../virtual-machines/linux/endorsed-distros.md) durch.
+Nicht unterstützte Bitanzahl für das Betriebssystem | Virtuelle Computer mit 32-Bit-Betriebssystem starten zwar unter Umständen in Azure, es empfiehlt sich jedoch, vor der Migration zu Azure ein Betriebssystemupgrade auf die 64-Bit-Version durchzuführen.
+Erfordert Visual Studio-Abonnement. | Auf dem Computer wird ein Windows-Clientbetriebssystem ausgeführt. Dies wird nur in Visual Studio-Abonnements unterstützt.
 
 
 ## <a name="collect-logs"></a>Erfassen von Protokollen

@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/21/2018
 ms.author: danlep
-ms.openlocfilehash: dc28c3a9d46baa8e8d2136ffccbb4e7ff6675b1e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 181e9bd7c17e4618edd63dd92d70947a61c68758
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -33,9 +33,11 @@ Dieser Artikel enthält Anweisungen und Anwendungsbeispiele für einige speziell
 
 ## <a name="subscription-and-account-limits"></a>Abonnements und Kontoeinschränkungen
 
-* **Kontingente** – Das [dedizierte Kernkontingent pro Batch-Konto](batch-quota-limit.md#resource-quotas) kann die Anzahl oder den Typ der Knoten, die Sie einem Batch-Pool hinzufügen können, beschränken. Besonders wahrscheinlich ist die Erreichung eines Kontingents bei einer Auswahl von RDMA-fähigen, GPU-fähigen oder sonstigen Größen für VMs mit mehreren Kernen. Dieses Kontingent beträgt standardmäßig 20 Kerne. Ein eigenes Kontingent gilt für [VMs mit niedriger Priorität](batch-low-pri-vms.md), sofern Sie diese verwenden. 
+* **Kontingente und Grenzwerte** – Das [dedizierte Kernkontingent pro Batch-Konto](batch-quota-limit.md#resource-quotas) kann die Anzahl oder den Typ der Knoten beschränken, die Sie einem Batch-Pool hinzufügen können. Besonders wahrscheinlich ist die Erreichung eines Kontingents bei einer Auswahl von RDMA-fähigen, GPU-fähigen oder sonstigen Größen für VMs mit mehreren Kernen. Ein eigenes Kontingent gilt für [VMs mit niedriger Priorität](batch-low-pri-vms.md), sofern Sie diese verwenden. 
 
-In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern.
+  Außerdem ist die Verwendung bestimmter VM-Familien in Ihrem Batch-Konto, z.B. NCv2 und ND, aufgrund einer Kapazitätsbegrenzung eingeschränkt. Die Verwendung dieser Familien ist nur möglich, indem für die Standardeinstellung „0 Kerne“ eine Kontingenterhöhung angefordert wird.  
+
+  In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern.
 
 * **Regionale Verfügbarkeit:** Rechenintensive virtuelle Computer sind möglicherweise nicht in den Regionen verfügbar, in denen Sie die Batch-Konten erstellen. Informationen dazu, welche Größen verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 
@@ -50,10 +52,10 @@ Die RDMA- und GPU-Funktionen rechenintensiver Größen werden nur unter bestimmt
 | Größe | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS,<br/>SUSE Linux Enterprise Server 12 HPC oder<br/>CentOS-basierter HPC<br/>(Azure Marketplace) | Intel MPI 5 | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
-| [NC-, NCv2-, ND-Serie*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla GPU (je nach Serie) | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder<br/>7.3 (CentOS-basiert)<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 9.1-Treiber | N/V | 
-| [NV-Serie](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder<br/>7.3 (CentOS-basiert)<br/>(Azure Marketplace) | NVIDIA GRID 4.3-Treiber | N/V |
+| [NC-, NCv2-, ND-Serie*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla GPU (je nach Serie) | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder 7.4 oder<br/>CentOS 7.3 oder 7.4<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit-Treiber | N/V | 
+| [NV-Serie](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID-Treiber | N/V |
 
-* RDMA-Konnektivität auf virtuellen NC24r-, NC24r_v2- und ND24r-Computern wird unter Ubuntu 16.04 LTS oder CentOS-basiertem 7.3 HPC (aus Azure Marketplace) mit Intel MPI unterstützt.
+* RDMA-Konnektivität auf virtuellen NC24r-, NC24rs_v2- und ND24r-Computern wird unter Ubuntu 16.04 LTS (von Azure Marketplace) mit Intel MPI unterstützt.
 
 
 
@@ -61,11 +63,11 @@ Die RDMA- und GPU-Funktionen rechenintensiver Größen werden nur unter bestimmt
 
 | Größe | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2 oder<br/>Windows Server 2012 (Azure Marketplace) | Microsoft MPI 2012 R2 oder höher oder<br/> Intel MPI 5<br/><br/>Azure-VM-Erweiterung HpcVMDrivers | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
-| [NC-, NCv2-, ND-Serie*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Windows Server 2016 oder <br/>Windows Server 2012 R2 (Azure Marketplace) | NVIDIA Tesla-Treiber oder CUDA Toolkit 9.1-Treiber| N/V | 
-| [NV-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 oder<br/>Windows Server 2012 R2 (Azure Marketplace) | NVIDIA GRID 4.3-Treiber | N/V |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2 oder<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 oder höher oder<br/> Intel MPI 5<br/><br/>Azure-VM-Erweiterung HpcVMDrivers | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
+| [NC-, NCv2-, ND-Serie*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Windows Server 2016 oder <br/>2012 R2 (Azure Marketplace) | NVIDIA Tesla-Treiber oder CUDA Toolkit-Treiber| N/V | 
+| [NV-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 oder<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID-Treiber | N/V |
 
-* RDMA-Konnektivität auf virtuellen NC24r-, NC24r_v2- und ND24r-Computern wird unter Windows Server 2012 R2 (aus Azure Marketplace) mit der Erweiterung HpcVMDrivers und Microsoft MPI oder Intel MPI unterstützt.
+* RDMA-Konnektivität auf virtuellen NC24r-, NC24rs_v2- und ND24rs-Computern wird unter Windows Server 2016 R2 oder Windows Server 2012 R2 (von Azure Marketplace) mit der Erweiterung HpcVMDrivers und Microsoft MPI oder Intel MPI unterstützt.
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows-Pools – Konfiguration „Clouddienst“
 
@@ -75,7 +77,7 @@ Die RDMA- und GPU-Funktionen rechenintensiver Größen werden nur unter bestimmt
 
 | Größe | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2,<br/>Windows Server 2012 oder<br/>Windows Server 2008 R2 (Gastbetriebssystemfamilie) | Microsoft MPI 2012 R2 oder höher oder<br/>Intel MPI 5<br/><br/>Azure-VM-Erweiterung HpcVMDrivers | Kommunikation zwischen Knoten aktivieren,<br/> parallele Taskausführung deaktivieren |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2, 2012 oder<br/>2008 R2 (Gastbetriebssystemfamilie) | Microsoft MPI 2012 R2 oder höher oder<br/>Intel MPI 5<br/><br/>Azure-VM-Erweiterung HpcVMDrivers | Kommunikation zwischen Knoten aktivieren,<br/> parallele Taskausführung deaktivieren |
 
 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 36b9379f88ce024c1dcbf9977a873d95076d10df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4388a1e933a0ebf211b5a7621c74b0622be41a4c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="log-analytics-for-azure-load-balancer"></a>Protokollanalysen für den Azure-Lastenausgleich
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 Sie können in Azure verschiedene Protokolltypen verwenden, um den Lastenausgleich zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 
 * **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge, die an Ihre Azure-Abonnements übermittelt werden, sowie deren Status anzuzeigen. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
-* **Warnereignisprotokolle** : Verwenden Sie dieses Protokoll, um Warnungen anzuzeigen, die vom Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.
+* **Warnereignisprotokolle**: Verwenden Sie dieses Protokoll, um Warnungen anzuzeigen, die vom Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.
 * **Integritätstestprotokolle**: Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
 
 > [!IMPORTANT]

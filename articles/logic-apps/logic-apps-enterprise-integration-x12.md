@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 7a274ad33b7181d238203290cf63937df5f13bbc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c644dd98d468a8c99625c45bad3f06031ff22b4e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von X12-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
@@ -31,37 +31,34 @@ Bevor Sie X12-Nachrichten für Azure Logic Apps austauschen können, müssen Sie
 
 Sie benötigen Folgendes:
 
-* Ein bereits definiertes und mit Ihrem Azure-Abonnement verknüpftes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md)
+* Ein bereits definiertes und mit Ihrem Azure-Abonnement verknüpftes [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md)
 * Mindestens zwei [Partner](../logic-apps/logic-apps-enterprise-integration-partners.md), die in Ihrem Integrationskonto definiert und mit der X12-Kennung unter **Geschäftsidentitäten** konfiguriert sind    
-* Ein erforderliches [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) zum Hochladen in Ihr [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md)
+* Ein erforderliches [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md), das Sie in Ihr Integrationskonto hochladen können
 
-Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-integration-accounts.md) und [Partner hinzugefügt](logic-apps-enterprise-integration-partners.md) haben sowie über ein geeignetes [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) verfügen, können Sie eine X12-Vereinbarung erstellen. Gehen Sie dazu wie folgt vor:
+Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und [Partner hinzugefügt](logic-apps-enterprise-integration-partners.md) haben sowie über ein geeignetes [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) verfügen, können Sie eine X12-Vereinbarung erstellen. Gehen Sie dazu wie folgt vor:
 
 ## <a name="create-an-x12-agreement"></a>Erstellen einer X12-Vereinbarung
 
-1.  Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. Wählen Sie im linken Menü die Option **Alle Dienste** aus. 
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. 
 
-    > [!TIP]
-    > Sollte **Alle Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise zuerst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
+2. Wählen Sie im Azure-Hauptmenü **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.  
 
-    ![Wählen Sie im linken Menü die Option „Alle Dienste“ aus.](./media/logic-apps-enterprise-integration-x12/account-1.png)
+   ![Suchen Ihres Integrationskontos](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
-2.  Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in der Ergebnisliste die Option **Integrationskonten** aus.  
+   > [!TIP]
+   > Falls **Alle Dienste** nicht angezeigt wird, müssen Sie das Menü möglicherweise zunächst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
 
-    ![Nach „Integration“ filtern, „Integrationskonten“ auswählen](./media/logic-apps-enterprise-integration-x12/account-2.png)
+3. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, dem Sie die Vereinbarung hinzufügen möchten.
 
-3. Wählen Sie auf dem geöffneten Blatt **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung hinzufügen möchten.
-Sollten keine Integrationskonten angezeigt werden, [erstellen Sie zunächst ein Konto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Alles über Integrationskonten").
-
-    ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-x12/account-3.png)
+   ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
 4. Wählen Sie **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu. 
 
-    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+   ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
-5. Wählen Sie auf dem geöffneten Blatt „Vereinbarungen“ die Option **Hinzufügen** aus.
+5. Wählen Sie unter **Vereinbarungen** die Option **Hinzufügen** aus.
 
-    ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
+   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
 6. Geben Sie unter **Hinzufügen** im Feld **Name** einen Namen für Ihre Vereinbarung ein. Wählen Sie als Vertragstyp die Option **X12** aus. Wählen Sie den **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** für Ihre Vereinbarung aus. Weitere Details zu den Eigenschaften finden Sie in der Tabelle in diesem Schritt.
 
@@ -291,13 +288,13 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 
 ## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
 
-1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf dem Blatt **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zum Blatt Ihres Integrationskontos zurückzukehren.
+1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf der Seite **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zur Seite Ihres Integrationskontos zurückzukehren.
 
     Die neu hinzugefügte Vereinbarung ist nun in der Liste **Vereinbarungen** enthalten.
 
-2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie auf dem Blatt Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus.
+2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus.
 
-    ![Kachel „Vereinbarungen“ auswählen, um alle Vereinbarungen anzuzeigen](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
 ## <a name="view-the-swagger"></a>Anzeigen von Swagger
 Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/x12/). 

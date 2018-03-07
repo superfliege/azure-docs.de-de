@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: d169645b9b701e611d27e0d984bf44b7ca85d2ad
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: b2b5427f037203e86f6b73610084993892ed4a37
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Verbinden von Excel mit Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers
 
@@ -46,7 +46,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 ## <a name="install-microsoft-hive-odbc-driver"></a>Installieren des Microsoft Hive ODBC-Treibers
 Laden Sie aus dem [Download Center][hive-odbc-driver-download] den Microsoft Hive ODBC-Treiber herunter, und installieren Sie ihn.
 
-Dieser Treiber kann unter 32- oder 64-Bit-Versionen von Windows 7, Windows 8, Windows 10, Windows Server 2008 R2 und Windows Server 2012 installiert werden. Er erlaubt eine Verbindung zu Azure HDInsight (Version 1.6 und höher) und Azure HDInsight Emulator (Version 1.0.0.0 und höher). Installieren Sie die Version, die der Version der Anwendung entspricht, in der Sie den ODBC-Treiber verwenden. In diesem Lernprogramm wird der Treiber aus Office Excel verwendet.
+Dieser Treiber kann unter 32- oder 64-Bit-Versionen von Windows 7, Windows 8, Windows 10, Windows Server 2008 R2 und Windows Server 2012 installiert werden. Der Treiber ermöglicht das Herstellen einer Verbindung mit Azure HDInsight. Installieren Sie die Version, die der Version der Anwendung entspricht, in der Sie den ODBC-Treiber verwenden. In diesem Lernprogramm wird der Treiber aus Office Excel verwendet.
 
 ## <a name="create-hive-odbc-data-source"></a>Erstellen einer Hive ODBC-Datenquelle
 Die folgenden Schritte zeigen Ihnen, wie Sie eine Hive-ODBC-Datenquelle erstellen können.

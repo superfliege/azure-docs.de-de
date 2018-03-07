@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: ed26abdb76083b9a18f79276ebf4294b4b6967b1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 472d61debff016cfd3df79bae1f63e176c14849d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -56,6 +56,8 @@ public static void Run(
 }
 ```
 
+Dieses Beispiel gilt für Version 1.x von Azure Functions. Lassen Sie bei 2.x den [accessRights-Parameter](#trigger---configuration) aus.
+ 
 ### <a name="trigger---c-script-example"></a>Trigger: C#-Skriptbeispiel
 
 Das folgende Beispiel zeigt eine Service Bus-Triggerbindung in einer Datei vom Typ *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion protokolliert eine Service Bus-Warteschlangennachricht.
@@ -150,7 +152,9 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
 
 * [ServiceBusTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusTriggerAttribute.cs) (definiert im NuGet-Paket [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus))
 
-  Der Konstruktor des Attributs nimmt den Namen der Warteschlange oder des Themas und des Abonnements an. Sie können auch die Zugriffsrechte der Verbindung angeben. Wenn Sie keine Zugriffsrechte angeben, ist der Standardwert `Manage`. Wie Sie die Einstellung für die Zugriffsrechte auswählen, wird im Abschnitt [Trigger: Konfiguration](#trigger---configuration) erläutert. Das folgende Beispiel zeigt das mit einem Zeichenfolgenparameter verwendete Attribut:
+  Der Konstruktor des Attributs nimmt den Namen der Warteschlange oder des Themas und des Abonnements an. In Version 1.x von Azure Functions können Sie auch die Zugriffsrechte der Verbindung angeben. Wenn Sie keine Zugriffsrechte angeben, ist der Standardwert `Manage`. Weitere Informationen finden Sie im Abschnitt [Trigger: Konfiguration](#trigger---configuration).
+
+  Das folgende Beispiel zeigt das mit einem Zeichenfolgenparameter verwendete Attribut:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -214,19 +218,20 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**topicName**|**TopicName**|Der Name des zu überwachenden Themas. Legen Sie diesen nur fest, wenn Sie ein Thema überwachen (nicht für eine Warteschlange).|
 |**subscriptionName**|**SubscriptionName**|Der Name des zu überwachenden Abonnements. Legen Sie diesen nur fest, wenn Sie ein Thema überwachen (nicht für eine Warteschlange).|
 |**Verbindung**|**Connection**|Der Name einer App-Einstellung, die die Service Bus-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyServiceBus“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyServiceBus“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Service Bus-Verbindungszeichenfolge aus der App-Einstellung „AzureWebJobsServiceBus“.<br><br>Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials) aus. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein. |
-|**accessRights**|**Access**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern.|
+|**accessRights**|**Access**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern. In Version 2.x von Azure Functions ist diese Eigenschaft nicht verfügbar, da die aktuelle Version des Storage SDK Verwaltungsvorgänge nicht unterstützt.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Trigger: Verwendung
 
-Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `string paramName`, um auf die Warteschlangen- oder Themanachricht zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Anstelle von `string` können Sie jeden der folgenden Typen verwenden:
+In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Warteschlangen- oder Themanachricht verwenden:
 
+* `string`: Wenn es sich bei der Nachricht um Text handelt.
 * `byte[]`: Nützlich für Binärdaten.
 * Ein benutzerdefinierter Typ: Wenn die Nachricht JSON enthält, versucht Azure Functions, die JSON-Daten zu deserialisieren.
 * `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx)-Methode zurück.
 
-Greifen Sie in JavaScript auf die Warteschlangen- oder Themanachricht mit `context.bindings.<name>` zu. `<name>` ist der Wert, der in der Eigenschaft `name` von *function.json* angegeben wird. Die Service Bus-Nachricht wird als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
+Greifen Sie in JavaScript auf die Warteschlangen- oder Themanachricht mit `context.bindings.<name from function.json>` zu. Die Service Bus-Nachricht wird als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
 
 ## <a name="trigger---poison-messages"></a>Trigger: Nicht verarbeitbare Nachrichten
 
@@ -452,22 +457,25 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**topicName**|**TopicName**|Der Name des zu überwachenden Themas. Legen Sie diesen nur fest, wenn Themanachrichten gesendet werden (nicht für eine Warteschlange).|
 |**subscriptionName**|**SubscriptionName**|Der Name des zu überwachenden Abonnements. Legen Sie diesen nur fest, wenn Themanachrichten gesendet werden (nicht für eine Warteschlange).|
 |**Verbindung**|**Connection**|Der Name einer App-Einstellung, die die Service Bus-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyServiceBus“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyServiceBus“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Service Bus-Verbindungszeichenfolge aus der App-Einstellung „AzureWebJobsServiceBus“.<br><br>Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials) aus. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein.|
-|**accessRights**|**Access** |Zugriffsberechtigungen für die Verbindungszeichenfolge. Mögliche Werte sind „manage“ und „listen“. Die Standardeinstellung ist „manage“. Dies zeigt an, dass die Verbindung über **Manage**-Berechtigungen verfügt. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über **Manage**-Berechtigungen verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern.|
+|**accessRights**|**Access**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern. In Version 2.x von Azure Functions ist diese Eigenschaft nicht verfügbar, da die aktuelle Version des Storage SDK Verwaltungsvorgänge nicht unterstützt.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>Ausgabe: Verwendung
 
-Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `out string paramName`, um auf die Warteschlange oder das Thema zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Sie können jeden der folgenden Parametertypen verwenden:
+In Azure Functions 1.x erstellt die Runtime die Warteschlange, falls sie nicht vorhanden ist und Sie `accessRights` auf `manage` festgelegt haben. In Functions-Version 2.x muss die Warteschlange oder das Thema bereits vorhanden sein. Wenn Sie eine nicht vorhandene Warteschlange oder ein nicht vorhandenes Thema angeben, tritt bei der Funktion ein Fehler auf. 
+
+In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Ausgabebindung verwenden:
 
 * `out T paramName` - `T` kann jeder JSON-serialisierbare Typ sein. Wenn der Parameterwert NULL ist, wenn die Funktion beendet wird, erstellt Functions die Nachricht mit einem NULL-Objekt.
 * `out string`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
 * `out byte[]`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
 * `out BrokeredMessage`: Wenn der Parameterwert NULL ist, sobald die Funktion beendet wird, erstellt Functions keine Nachricht.
+* `ICollector<T>` oder `IAsyncCollector<T>`: Zum Erstellen mehrerer Nachrichten. Beim Aufrufen der `Add`-Methode wird eine Nachricht erstellt.
 
-Für das Erstellen mehrerer Nachrichten in einer C#- oder C#-Skriptfunktion können Sie `ICollector<T>` oder `IAsyncCollector<T>` verwenden. Beim Aufrufen der `Add` -Methode wird eine Nachricht erstellt.
+In asynchronen Funktionen verwenden Sie den Rückgabewert oder `IAsyncCollector` anstelle eines `out`-Parameters.
 
-Greifen Sie in JavaScript auf die Warteschlange oder das Thema mit `context.bindings.<name>` zu. `<name>` ist der Wert, der in der Eigenschaft `name` von *function.json* angegeben wird. Sie können `context.binding.<name>` eine Zeichenfolge, ein Bytearray oder ein Javascript-Objekt (deserialisiert in JSON) zuweisen.
+Greifen Sie in JavaScript auf die Warteschlange oder das Thema mit `context.bindings.<name from function.json>` zu. Sie können `context.binding.<name>` eine Zeichenfolge, ein Bytearray oder ein Javascript-Objekt (deserialisiert in JSON) zuweisen.
 
 ## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
 

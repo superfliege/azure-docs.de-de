@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 8de3cc6665fc3861aedcf4f36cdce4a4a776e80d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5c4597ede16f01c36e147dc0d70acf4b4f5635e8
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps-Grenzwerte und -Konfiguration
 
@@ -58,15 +58,22 @@ Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen Connector
 
 Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 
-| NAME | Begrenzung | 
-| ---- | ----- | 
-| Ausführungsdauer | 90 Tage | 
-| Aufbewahrungsdauer im Speicher | 90 Tage ab der Startzeit der Ausführung | 
-| Min. Wiederholungsintervall | 1 Sekunde </br>Für Logik-Apps mit App Service-Plan: 15 Sekunden | 
-| Max. Wiederholungsintervall | 500 Tage | 
-||| 
+| NAME | Standard | Begrenzung |
+| ---- | ------- | ----- |
+| Ausführungsdauer   | 90 Tage | 7 bis 90 Tage |
+| Aufbewahrungsdauer im Speicher | 90 Tage ab der Startzeit der Ausführung |  7 bis 90 Tage ab der Startzeit der Ausführung |
+||||
 
 Wenn die Grenzwerte für die Ausführungsdauer oder Speicheraufbewahrung im normalen Verarbeitungsfluss überschritten werden sollen, [wenden Sie sich an das Produktteam](mailto://logicappsemail@microsoft.com), um Unterstützung im Hinblick auf Ihre Anforderungen zu erhalten.
+
+
+### <a name="recurrence-interval"></a>Wiederholungsintervall
+
+| NAME | Begrenzung |
+| ---- | ------- |
+| Min. Wiederholungsintervall | 1 Sekunde </br>Für Logik-Apps mit App Service-Plan: 15 Sekunden |
+| Max. Wiederholungsintervall | 500 Tage |
+|||
 
 ### <a name="looping-and-debatching-limits"></a>Grenzwerte für Schleifen und Auflösen von Batches
 

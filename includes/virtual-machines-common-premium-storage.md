@@ -35,7 +35,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
 
 * **Storage Premium-Datenträger**
 
-    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS- und FS-Serie. Sie haben die Wahl zwischen sieben Datenträgergrößen: P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1.024 GB), P40 (2.048 GB) und P50 (4.095 GB). Die Datenträgergrößen P4 und P6 werden aktuell nur für verwaltete Datenträger unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
+    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS-, Ls-, Fs- und Esv3-Serie. Sie haben die Wahl zwischen sieben Datenträgergrößen: P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1.024 GB), P40 (2.048 GB) und P50 (4.095 GB). Die Datenträgergrößen P4 und P6 werden aktuell nur für verwaltete Datenträger unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
 
 * **Premium-Seitenblobs**
 

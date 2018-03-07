@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 2694c25b0db7a4a0b9f527ec67e62fede5de6a80
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: f0a706a5a7724788d62479d1570fffac07ce6d54
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -63,7 +63,7 @@ Bei der Abfrage des Instanzmetadatendiensts müssen Sie den Header `Metadata: tr
 Instanzmetadaten stehen für die Ausführung von VMs zur Verfügung, die mit dem [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) erstellt/verwaltet werden. Über folgende Anforderung können Sie auf alle Datenkategorien einer Instanz eines virtuellen Computers zugreifen:
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
 ```
 
 > [!NOTE] 
@@ -81,7 +81,7 @@ API | Standarddatenformat | Andere Formate
 Um auf ein nicht standardmäßiges Antwortformat zuzugreifen, geben Sie das angeforderte Format als QueryString-Parameter in der Anforderung an. Beispiel:
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 ### <a name="security"></a>Sicherheit
@@ -149,7 +149,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 #### <a name="retrieving-public-ip-address"></a>Abrufen der öffentlichen IP-Adresse
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="retrieving-all-metadata-for-an-instance"></a>Abrufen aller Metadaten für eine Instanz
@@ -218,13 +218,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Die Instanzmetadaten können unter Windows über das PowerShell-Hilfsprogramm `curl` abgerufen werden: 
 
 ```bash
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-04-02 | select -ExpandProperty Content
+curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-08-01 | select -ExpandProperty Content
 ```
 
 Alternativ ist dies auch über das Cmdlet `Invoke-RestMethod` möglich:
     
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-04-02 -Method get 
+Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-08-01 -Method get 
 ```
 
 **Antwort**
@@ -302,7 +302,7 @@ subnet/address | Subnetzadresse der VM | 2017-04-02
 subnet/prefix | Subnetzpräfix, Beispiel 24 | 2017-04-02 
 ipv6/ipAddress | Lokale IPv6-Adresse der VM | 2017-04-02 
 macAddress | VM-Mac-Adresse | 2017-04-02 
-scheduledevents | Zurzeit als öffentliche Vorschauversion verfügbar. Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs](scheduled-events.md) | 2017-03-01
+scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs](scheduled-events.md) | 2017-03-01
 
 ## <a name="example-scenarios-for-usage"></a>Beispielszenarien für die Verwendung  
 
@@ -313,7 +313,7 @@ Als Dienstanbieter müssen Sie möglicherweise die Anzahl von VMs nachverfolgen,
 **Anforderung**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-04-02&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **Antwort**
@@ -330,7 +330,7 @@ Sie können diese Daten direkt über den Instanzmetadatendienst abfragen.
 **Anforderung**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-04-02&format=text" 
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text" 
 ```
 
 **Antwort**
@@ -346,7 +346,7 @@ Als Dienstanbieter erhalten Sie möglicherweise eine Supportanfrage, für die Si
 **Anforderung**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-04-02"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"
 ```
 
 **Antwort**
@@ -411,4 +411,4 @@ Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
     
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die API [Geplante Ereignisse](scheduled-events.md) **in der Public Preview**, die vom Instanzmetadatendienst bereitgestellt wird.
+- Erfahren Sie mehr über [geplante Ereignisse](scheduled-events.md).

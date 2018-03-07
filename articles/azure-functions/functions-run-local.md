@@ -1,5 +1,5 @@
 ---
-title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft-Dokumentation"
+title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft Docs"
 description: "Erfahren Sie, wie Sie Azure-Funktionen auf dem lokalen Computer codieren und testen, bevor Sie sie in Azure Functions ausführen."
 services: functions
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 8b85457c5df9fb15c7eebe8b6fe8fb904f9e6009
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f19fa1ac4dd970ca3df2c0fdbf8e0778e171c43d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Lokales Codieren und Testen von Azure Functions
 
@@ -105,6 +105,14 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 ```
 
 Verwenden Sie die Option `--no-source-control [-n]`, um das Projekt ohne lokales Git-Repository zu erstellen.
+
+## <a name="register-extensions"></a>Registrieren von Erweiterungen
+
+In Version 2.x der Azure Functions Runtime müssen Sie die in Ihrer Funktions-App verwendeten [Bindungserweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) explizit registrieren. 
+
+[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+
+Weitere Informationen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md#register-binding-extensions).
 
 ## <a name="local-settings-file"></a>Datei für lokale Einstellungen
 
@@ -311,6 +319,10 @@ Um z.B. eine HTTP-ausgelöste Funktion aufzurufen und Inhaltstext zu übergeben,
 ```
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
+
+### <a name="viewing-log-files-locally"></a>Lokales Anzeigen von Protokolldateien
+
+[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
 
 ## <a name="publish"></a>Veröffentlichen in Azure
 

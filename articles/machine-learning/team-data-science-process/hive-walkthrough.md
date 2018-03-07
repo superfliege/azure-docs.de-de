@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev
-ms.openlocfilehash: daf5168ba9a21a56d72fc14649c349b0fb63a167
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 4671493c23bfed72517e436dd6922f4ef8a213b0
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise wird der [Team Data Science-Prozess (TDSP)](overview.md) in einem durchgängigen Szenario verwendet. Es wird ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern, zu untersuchen und merkmalbezogen zu analysieren sowie ein Downsampling auf die Daten anzuwenden. Um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen, werden Modelle der Daten mit Azure Machine Learning entwickelt. 
@@ -104,10 +104,10 @@ Nachfolgend wird erläutert, wie Sie AzCopy zum Übertragen der Dateien verwende
 
 Ersetzen Sie in den folgenden AzCopy-Befehlen die folgenden Parameter durch die tatsächlichen Werte, die Sie beim Erstellen des Hadoop-Clusters und beim Entzippen der Dateien angegeben haben.
 
-* ***&#60;path_to_data_folder>***: Das Verzeichnis (einschließlich des Pfads) auf Ihrem Computer, das die extrahierten Datendateien enthält.  
-* ***&#60;storage account name of Hadoop cluster>***: Das Ihrem HDInsight-Cluster zugeordnete Speicherkonto.
-* ***&#60;default container of Hadoop cluster>***: Der von Ihrem Cluster verwendete Standardcontainer. Beachten Sie, dass der Name des Standardcontainers üblicherweise mit dem des Clusters übereinstimmt. Wenn der Cluster beispielsweise den Namen "abc123.azurehdinsight.net" verwendet, heißt der Standardcontainer "abc123".
-* ***&#60;storage account key>***: Der Schlüssel für das von Ihrem Cluster verwendete Speicherkonto.
+* ***<path_to_data_folder>***: Das Verzeichnis (einschließlich des Pfads) auf Ihrem Computer, das die extrahierten Datendateien enthält.  
+* ***<storage account name of Hadoop cluster>***: Das Ihrem HDInsight-Cluster zugeordnete Speicherkonto.
+* ***<default container of Hadoop cluster>***: Der von Ihrem Cluster verwendete Standardcontainer. Beachten Sie, dass der Name des Standardcontainers üblicherweise mit dem des Clusters übereinstimmt. Wenn der Cluster beispielsweise den Namen "abc123.azurehdinsight.net" verwendet, heißt der Standardcontainer "abc123".
+* ***<storage account key>***: Der Schlüssel für das von Ihrem Cluster verwendete Speicherkonto.
 
 Führen Sie über eine Eingabeaufforderung oder ein Windows PowerShell-Fenster die folgenden beiden AzCopy-Befehle aus.
 

@@ -11,24 +11,24 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2017
+ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: e93fe5af62893d361b6cc4adac42a7d172235978
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 15e7e811c7cb1777e34f1bfb629fa24a60f9e5cb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Exportieren von Azure Resource Manager-Vorlagen mit der Azure-CLI
 
 Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren.
 
-Es ist wichtig zu beachten, dass es zwei Möglichkeiten zum Exportieren einer Vorlage gibt:
+Beachten Sie, dass es zwei Möglichkeiten zum Exportieren einer Vorlage gibt:
 
-* Sie können die Vorlage exportieren, die Sie für eine Bereitstellung verwendet haben. Die exportierte Vorlage enthält alle Parameter und Variablen so, wie sie in der Originalvorlage angezeigt wurden. Dieser Ansatz ist sinnvoll, wenn Sie eine Vorlage abrufen müssen.
-* Sie können eine Vorlage exportieren, die den aktuellen Zustand der Ressourcengruppe darstellt. Die exportierte Vorlage basiert nicht auf einer Vorlage, die Sie für die Bereitstellung verwendet haben. Stattdessen wird eine Vorlage erstellt, bei der es sich um eine Momentaufnahme der Ressourcengruppe handelt. Die exportierte Vorlage verfügt über viele hartcodierte Werte und vermutlich nicht über so viele Parameter, wie Sie sonst definieren. Dieser Ansatz ist sinnvoll, wenn Sie die Ressourcengruppe geändert haben. Nun müssen Sie die Ressourcengruppe als Vorlage erfassen.
+* Sie können **die für eine Bereitstellung verwendete Vorlage exportieren**. Die exportierte Vorlage enthält alle Parameter und Variablen so, wie sie in der Originalvorlage angezeigt wurden. Dieser Ansatz ist sinnvoll, wenn Sie eine Vorlage abrufen müssen.
+* Sie können **eine generierte Vorlage exportieren, die den aktuellen Zustand der Ressourcengruppe darstellt**. Die exportierte Vorlage basiert nicht auf einer Vorlage, die Sie für die Bereitstellung verwendet haben. Stattdessen wird eine Vorlage erstellt, bei der es sich um eine „Momentaufnahme“ oder „Sicherung“ der Ressourcengruppe handelt. Die exportierte Vorlage verfügt über viele hartcodierte Werte und vermutlich nicht über so viele Parameter, wie Sie sonst definieren. Verwenden Sie diese Option, um Ressourcen in der gleichen Ressourcengruppe erneut bereitzustellen. Um diese Vorlage für eine andere Ressourcengruppe zu verwenden, müssen Sie sie möglicherweise erheblich ändern.
 
-In diesem Thema werden beide Ansätze beschrieben.
+In diesem Artikel werden beide Ansätze beschrieben.
 
 ## <a name="deploy-a-solution"></a>Bereitstellen einer Lösung
 
@@ -55,13 +55,13 @@ Damit wird die Vorlage zurückgegeben. Kopieren Sie die JSON, und speichern Sie 
 
 ## <a name="export-resource-group-as-template"></a>Exportieren einer Ressourcengruppe als Vorlage
 
-Statt eine Vorlage aus dem Bereitstellungsverlauf abzurufen, können Sie mithilfe des Befehls [az group export](/cli/azure/group#az_group_export) eine Vorlage abrufen, die den aktuellen Status einer Ressourcengruppe darstellt. Diesen Befehl können Sie verwenden, wenn Sie viele Änderungen an Ihrer Ressourcengruppe vorgenommen haben und keine vorhandene Vorlage alle Änderungen darstellt.
+Statt eine Vorlage aus dem Bereitstellungsverlauf abzurufen, können Sie mithilfe des Befehls [az group export](/cli/azure/group#az_group_export) eine Vorlage abrufen, die den aktuellen Status einer Ressourcengruppe darstellt. Diesen Befehl können Sie verwenden, wenn Sie viele Änderungen an Ihrer Ressourcengruppe vorgenommen haben und keine vorhandene Vorlage alle Änderungen darstellt. Sie dient als eine Momentaufnahme der Ressourcengruppe, die Sie verwenden können, um die erneute Bereitstellung in der gleichen Ressourcengruppe auszuführen. Um die exportierte Vorlage für andere Lösungen verwenden zu können, müssen Sie sie erheblich ändern.
 
 ```azurecli
 az group export --name ExampleGroup
 ```
 
-Damit wird die Vorlage zurückgegeben. Kopieren Sie die JSON, und speichern Sie sie als Datei. Beachten Sie, dass sich diese Vorlage von der Vorlage in GitHub unterscheidet. Sie weist andere Parameter und keine Variablen auf. Die Speicher-SKU und der Speicherort sind hartcodierte Werte. Im folgenden Beispiel ist die exportierte Vorlage dargestellt. Ihre Vorlage weist jedoch einen etwas anderen Parameternamen auf.
+Damit wird die Vorlage zurückgegeben. Kopieren Sie die JSON, und speichern Sie sie als Datei. Beachten Sie, dass sich diese Vorlage von der Vorlage in GitHub unterscheidet. Die Vorlage weist andere Parameter und keine Variablen auf. Die Speicher-SKU und der Speicherort sind hartcodierte Werte. Im folgenden Beispiel ist die exportierte Vorlage dargestellt. Ihre Vorlage weist jedoch einen etwas anderen Parameternamen auf.
 
 ```json
 {

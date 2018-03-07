@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 038cfb72cfc98fdddaca6751b321c11066527e56
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ff2f1dd89796a30d4e0fee0810ff45ff57f5f8bf
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-a-model-in-azure-portal"></a>Erstellen eines Modells im Azure-Portal
 
@@ -27,15 +27,19 @@ Das Feature Azure Analysis Services-Web-Designer (Vorschau) im Azure-Portal biet
 
 Beachten Sie, dass der Web-Designer eine **Vorschauversion** ist. Während immer neue Funktionen hinzugefügt werden, ist in der Vorschau die Funktionalität begrenzt. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 
 - Ein Azure Analysis Services-Server auf der Ebene „Standard“ oder „Developer“. Neue, mit dem Web-Designer erstellte Modelle, sind DirectQuery, die nur von diesen Ebenen unterstützt werden.
 - Eine Azure SQL-Datenbank, Azure SQL Data Warehouse oder eine Power BI Desktop-Datei (.pbix) als Datenquelle. Neue Modelle, die von Power BI Desktop-Dateien erstellt wurden, unterstützen Azure SQL-Datenbank, Azure SQL Data Warehouse, Oracle und Teradata-Datenquellen.
 - Ein SQL Server-Konto und -Kennwort für das Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Data Warehouse-Datenquellen.
 
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
+
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
 ## <a name="to-create-a-new-tabular-model"></a>Erstellen eines neuen tabellarischen Modellprojekts
 
-1. Klicken Sie auf dem Blatt **Übersicht** Ihres Servers auf **Web-Designer** und dann auf **Öffnen**.
+1. Klicken Sie auf dem Server unter **Übersicht** > **Web-Designer** auf **Öffnen**.
 
     ![Erstellen eines Modells im Azure-Portal](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
 

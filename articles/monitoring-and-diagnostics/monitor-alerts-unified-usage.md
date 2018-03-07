@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: 5e4068cc694b623f67d998f410f207356efd873f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b537bb42d43c4232c100061322e09bf492f2a20f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor – Warnungen (Vorschauversion)
 
@@ -28,11 +28,11 @@ In diesem Artikel wird erläutert, wie Sie im Azure-Portal mithilfe der neuen Ob
 - Kriterien: Eine bestimmte Bedingung oder Logik, die beim Vorkommen in einem Signal eine Aktion auslösen soll
 - Aktion: Eine bestimmte Form der Kontaktaufnahme, die an einen Empfänger einer Benachrichtigung (z.B. E-Mail, SMS oder Webhook) gesendet wird.
 
-Bei der Oberfläche „Warnungen (Vorschauversion)“ wird die Benennung **Protokollwarnungen** verwendet, um basierend auf [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) Warnungen zu beschreiben, bei dem das Signal eine benutzerdefinierte Abfrage darstellt. Die Metrikwarnungsfunktion, die in der bereits bestehenden Warnungsoberfläche als [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md) bezeichnet wird, lautet bei der Oberfläche „Warnungen (Vorschauversion)“ **Metrikwarnungen**. Einige Ressourcentypen bei *Metrikwarnungen* stellen für bestimmte Azure-Ressourcen [mehrdimensionale Metriken](monitoring-metric-charts.md) bereit, weshalb Warnungen für derartige Ressourcen durch zusätzliche Filter für Dimensionen spezifischer gestaltet werden können. Diese Warnungen werden als **mehrdimensionale Metrikwarnungen** bezeichnet.
+Bei der Oberfläche „Warnungen (Vorschauversion)“ wird die Bezeichnung **Protokollwarnungen** verwendet, um basierend auf [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Azure Application Insights](../application-insights/app-insights-analytics.md) Warnungen zu beschreiben, bei denen das Signal eine benutzerdefinierte Abfrage darstellt. Die Metrikwarnungsfunktion, die in der bereits bestehenden Warnungsoberfläche als [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md) bezeichnet wird, lautet bei der Oberfläche „Warnungen (Vorschauversion)“ **Metrikwarnungen**. Einige Ressourcentypen bei *Metrikwarnungen* stellen für bestimmte Azure-Ressourcen [mehrdimensionale Metriken](monitoring-metric-charts.md) bereit, weshalb Warnungen für derartige Ressourcen durch zusätzliche Filter für Dimensionen spezifischer gestaltet werden können. Diese Warnungen werden als **mehrdimensionale Metrikwarnungen** bezeichnet.
 Die Oberfläche „Warnungen (Vorschauversion)“ von Azure bietet außerdem eine einheitliche Ansicht für all Ihre Warnungsregeln und die Möglichkeit, diese über eine einzige Oberfläche zentral zu verwalten. Auch nicht aufgelöste Warnungen werden angezeigt. Weitere Informationen zur Funktionalität finden Sie unter [Azure-Warnungen (Vorschauversion) – Übersicht](monitoring-overview-unified-alerts.md).
 
 > [!NOTE]
-> Die Azure-Oberfläche „Warnungen (Vorschauversion)“ bietet zwar eine neue und verbesserte Oberfläche für die Erstellung von Warnungen in Azure, die vorhandene Oberfläche [Azure-Warnungen](monitoring-overview-alerts.md) steht jedoch nach wie vor für die Verwendung zur Verfügung.
+> Die Azure-Oberfläche „Warnungen (Vorschauversion)“ bietet zwar eine neue und verbesserte Oberfläche für die Erstellung von Warnungen in Azure, aber die vorhandene Oberfläche [Azure-Warnungen](monitoring-overview-alerts.md) steht nach wie vor für die Verwendung zur Verfügung.
 >
 
 Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „Warnungen (Vorschauversion)“ erläutert.
@@ -81,16 +81,13 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     ![Konfigurieren der Signallogik für mehrdimensionale Metriken](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *Protokollwarnungen:* Stellen Sie sicher, dass als **Ressourcentyp** eine Analysequelle wie *Log Analytics*/*Application Insights* ausgewählt ist, und klicken Sie nach Auswahl der entsprechenden **Ressource** auf *Fertig*. Klicken Sie als Nächstes auf die Schaltfläche **Kriterien hinzufügen**, um die Liste der für die Ressource verfügbaren Signaloptionen und die Option **Benutzerdefinierte Protokollsuche** für den ausgewählten Protokollüberwachungsdienst (etwa *Log Analytics*/*Application Insights*) aus der Signalliste anzuzeigen.
+8. *Protokollwarnungen:* Stellen Sie sicher, dass als **Ressourcentyp** eine Analysequelle wie *Log Analytics* oder *Application Insights* ausgewählt ist, und klicken Sie nach Auswahl der entsprechenden **Ressource** auf *Fertig*. Klicken Sie als Nächstes auf die Schaltfläche **Kriterien hinzufügen**, um die Liste mit den für die Ressource verfügbaren Signaloptionen und die Option **Benutzerdefinierte Protokollsuche** für den ausgewählten Protokollüberwachungsdienst (z.B. *Log Analytics* oder *Application Insights*) aus der Signalliste anzuzeigen.
 
    ![Auswählen einer Ressource – benutzerdefinierte Protokollsuche](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
-   > In der **Warnungsvorschau** werden gespeicherte Protokollsuchen als Signaltyp „Log (Saved Query)“ (Protokoll (gespeicherte Abfrage)) gespeichert, wenn als Ressource „Log Analytics“ ausgewählt wurde.
-   Auf diese Weise können Sie Ihre Abfrage in Analytics optimieren und zur späteren Verwendung speichern. Weitere Einzelheiten finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md). Anschließend können Sie Warnungsregeln direkt auf der Grundlage dieser Abfragen erstellen, wie auf dem folgenden Beispielbildschirm mit gespeicherten Suchvorgängen gezeigt:
-
-   ![Auswählen einer Ressource – benutzerdefinierte Protokollsuche](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+   > Über die Listen von „Warnungen (Vorschauversion)“ kann eine Analytics-Abfrage als Signaltyp **Log (Saved Query)** (Protokoll (gespeicherte Abfrage)) importiert werden. Dies ist in der obigen Abbildung dargestellt. Benutzer können Ihre Abfrage so in Analytics verfeinern und zur zukünftigen Nutzung in Warnungen speichern. Weitere Informationen zum Speichern von Abfragen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md) oder [Was ist Log Analytics?](../log-analytics/log-analytics-overview.md). 
 
 9.  *Protokollwarnungen*: Wenn Sie diese Option ausgewählt haben, können im Feld **Suchabfrage** Abfragen für Warnungen angegeben werden. Ist die Abfragesyntax falsch, wird eine Fehlermeldung in ROT angezeigt. Wenn die Abfragesyntax korrekt ist, werden für die angegebene Abfrage Referenzverlaufsdaten als Diagramm angezeigt. Dabei besteht die Möglichkeit, das Zeitfenster von den letzten sechs Stunden bis zur letzten Woche anzupassen.
 
@@ -125,7 +122,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
     Für **Protokollwarnungen** sind einige zusätzliche Funktionen zum Überschreiben der Standardaktionen verfügbar:
 
     - **E-Mail-Benachrichtigung**: Diese Option überschreibt den Betreff in der über die Aktionsgruppe gesendeten E-Mail. Sie können den Haupttext der E-Mail nicht ändern.
-    - **Benutzerdefinierte JSON-Nutzlast einschließen**: Diese Option überschreibt den von Aktionsgruppen verwendeten JSON-Webhook und ersetzt die Standardnutzlast stattdessen durch eine benutzerdefinierte Nutzlast. Ausführlichere Informationen zu Webhookformaten finden Sie unter [Webhook actions for log alert rules](monitor-alerts-unified-log-webhook.md) (Webhook-Aktionen für Protokollwarnungen).
+    - **Benutzerdefinierte JSON-Nutzlast einschließen**: Diese Option überschreibt den von Aktionsgruppen verwendeten JSON-Webhook und ersetzt die Standardnutzlast stattdessen durch eine benutzerdefinierte Nutzlast. Weitere Informationen zu Webhookformaten finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](monitor-alerts-unified-log-webhook.md).
 
         ![Aktionsüberschreibungen für Protokollwarnungen](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 
@@ -141,7 +138,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
 2. Das **Dashboard „Warnungen (Vorschauversion)“** wird angezeigt, auf dem alle Azure-Warnungen vereinheitlicht und auf einem zentralen ![Warnungsdashboard](./media/monitoring-overview-unified/alerts-preview-overview.png) angezeigt werden.
 3. Das Dashboard zeigt auf einem Blick folgende Elemente (von oben links nach rechts), auf die durch Klicken eine ausführliche Auflistung angezeigt wird:
-    - *Ausgelöste Warnungen*: Die gegenwärtige Anzahl der Warnungen, die die Logik erfüllt haben und den Zustand „Ausgelöst“ aufweisen
+    - *Ausgelöste Warnungen*: Die gegenwärtige Anzahl von Warnungen, die die Logik erfüllt haben und den Zustand „Ausgelöst“ aufweisen
     - *Warnungsregeln gesamt*: Die Anzahl der erstellten Warnungsregeln und auf niedrigster Textebene die Anzahl der derzeit aktivierten Regeln
 4. Es wird eine Liste aller ausgelösten Warnungen angezeigt, auf die der Benutzer zum Anzeigen von Details klicken kann.
 5. Zur Unterstützung bei der Suche nach bestimmten Warnungen können zusätzlich die Dropdownoptionen verwendet werden, um nach bestimmten Kriterien (*Abonnement, Ressourcengruppe und/oder Ressource*) zu filtern. Für nicht aufgelöste Warnungen ist zudem die Option *Warnungen filtern* verfügbar, um entsprechend des angegebenen Schlüsselworts über *Name, Warnungskriterien, Ressourcengruppe und Zielressource* nach bestimmten übereinstimmenden Warnungen zu suchen.

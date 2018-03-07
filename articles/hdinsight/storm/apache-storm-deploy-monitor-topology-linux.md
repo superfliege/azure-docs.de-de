@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: a972344e2b6205fbcf69d2969c42211ec5b24869
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 18b7b5d56acb4d9d0c2ed007f0521193e37d82e8
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight
 
@@ -89,7 +89,7 @@ Mithilfe der HDInsight-Tools können C#- oder hybride Topologien an Ihre Storm-C
     Dieser Befehl startet die WordCount-Beispieltopologie auf dem Cluster. Diese Topologie generiert nach dem Zufallsprinzip Sätze und zählt dann die Instanzen jedes Worts in den Sätzen.
 
    > [!NOTE]
-   > Wenn die Topologie an den Cluster gesendet wird, müssen Sie zuerst die JAR-Datei mit dem Cluster kopieren, bevor Sie den Befehl `storm` verwenden. Um die Datei auf den Cluster zu kopieren, können Sie den `scp`-Befehl verwenden. Beispiel: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
+   > Wenn die Topologie an den Cluster gesendet wird, müssen Sie zuerst die JAR-Datei mit dem Cluster kopieren, bevor Sie den Befehl `storm` verwenden. Um die Datei auf den Cluster zu kopieren, können Sie den `scp`-Befehl verwenden. Zum Beispiel, `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
    >
    > Das Beispiel "WordCount" und andere Storm-Starter-Beispiele sind unter `/usr/hdp/current/storm-client/contrib/storm-starter/`bereits auf dem Cluster enthalten.
 
@@ -226,7 +226,7 @@ Sie können den vollqualifizierten Domänennamen (FQDN) für den Clusterhauptkno
 
 * **Über eine SSH-Sitzung**: Verwenden Sie den Befehl `headnode -f` für eine SSH-Sitzung mit dem Cluster.
 * **Über Ambari Web**: Wählen Sie oben auf der Seite **Dienste** und dann **Storm**. Wählen Sie auf der Registerkarte **Zusammenfassung** die Option **Storm UI-Server**. Der vollqualifizierte Domänenname des Hosts, auf dem die Storm UI und die REST-API ausgeführt werden, wird oben auf der Seite angezeigt.
-* **Über die Ambari-REST-API**: Verwenden Sie den Befehl `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"`, um Informationen zu dem Knoten abzurufen, auf dem die Storm UI und die REST-API ausgeführt werden. Ersetzen Sie **PASSWORD** durch das Administratorkennwort für den Cluster. Ersetzen Sie **CLUSTERNAME** durch den Namen des Clusters. In der Antwort enthält der Eintrag „host_name“ den vollqualifizierten Domänennamen des Knotens.
+* **Über die Ambari-REST-API**: Verwenden Sie den Befehl `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"`, um Informationen zu dem Knoten abzurufen, auf dem die Storm UI und die REST-API ausgeführt werden. Ersetzen Sie **CLUSTERNAME** durch den Namen des Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort des Anmeldekontos (Administrator) ein. In der Antwort enthält der Eintrag „host_name“ den vollqualifizierten Domänennamen des Knotens.
 
 ### <a name="authentication"></a>Authentifizierung
 

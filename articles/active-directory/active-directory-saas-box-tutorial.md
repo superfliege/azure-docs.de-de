@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: b465993882563420652ef1ac8c623a1b9b7295ec
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: af43f4b2a11f217853a9160f473dea8c488ea852
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-box"></a>Tutorial: Azure Active Directory-Integration mit Box
 
@@ -114,7 +114,6 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
      
     > [!NOTE] 
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie den Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire), um diesen Wert zu erhalten. 
-
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/active-directory-saas-box-tutorial/tutorial_box_certificate.png) 
@@ -123,7 +122,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-box-tutorial/tutorial_general_400.png)
     
-6. Wenden Sie sich an das [Clientsupportteam von Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire), um das einmalige Anmelden für Ihre Anwendung konfigurieren zu lassen, und stellen Sie die heruntergeladene XML-Datei bereit.
+6. Führen Sie zum Konfigurieren von SSO für Ihre Anwendung die unter [Einrichten von SSO für Ihr Unternehmen](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown) beschriebenen Schritte aus.
+
+> [!NOTE] 
+> Wenn Sie keine SSO-Einstellungen für Ihr Box-Konto aktivieren können, müssen Sie sich an das [Box-Kundensupportteam](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) wenden und die heruntergeladene XML-Datei für das Team bereitstellen.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).

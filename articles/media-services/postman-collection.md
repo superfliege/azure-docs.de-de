@@ -1,11 +1,24 @@
- ---
-Titel: Importieren der Postman-Sammlung mit Azure On-Demand-Streaming-Vorgängen Beschreibung: Dieser Artikel enthält eine Definition der Postman-Sammlung für Azure Media Services REST-Aufrufe.
-Dienste: media-services documentationcenter: '' author: Juliako manager: cfowler editor: ''
-
-ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 01/04/2017 ms.author: juliako
-
 ---
-
+title: "Importieren der Postman-Sammlung mit Azure On-Demand-Streaming-Vorgängen"
+description: "Dieser Artikel enthält eine Definition der Postman-Sammlung für Azure Media Services- REST-Aufrufe."
+services: media-services
+documentationcenter: 
+author: Juliako
+manager: cfowler
+editor: 
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/04/2017
+ms.author: juliako
+ms.openlocfilehash: 0146f02df44d9b38f3a3f85c025ec42750a9c6e7
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/24/2018
+---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Importieren einer Postman-Sammlung mit On-Demand-Streaming-Vorgängen
 
 Dieser Artikel enthält eine Definition der **Postman**-Sammlung, die gruppierte HTTP-Anforderungen enthält, die Azure Media Services-REST-APIs aufrufen. Informationen zum Konfigurieren von **Postman**, sodass es zum Aufrufen von Media Services REST-APIs verwendet werden kann, finden Sie im Tutorial [Konfigurieren von Postman für Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md).

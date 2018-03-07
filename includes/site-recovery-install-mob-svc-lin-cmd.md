@@ -9,7 +9,7 @@
   ```
   sudo ./install -d <Install Location> -r MS -v VmWare -q
   ```
-3. Nach Abschluss der Installation muss Mobility Service auf dem Konfigurationsserver registriert werden. Führen Sie den folgenden Befehl aus, um Mobility Service beim Konfigurationsserver zu registrieren.
+3. Nach Abschluss der Installation muss Mobility Service auf dem Konfigurationsserver registriert werden. Führen Sie den folgenden Befehl aus, um Mobility Service beim Konfigurationsserver zu registrieren:
 
   ```
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
@@ -24,10 +24,10 @@ Usage:
 
 |Parameter|Typ|BESCHREIBUNG|Mögliche Werte|
 |-|-|-|-|
-|-r |Erforderlich|Gibt an, ob Mobility Service (MS) oder MasterTarget (MT) installiert werden soll|MS </br> MT|
+|-r |Erforderlich|Gibt an, ob Mobility Service (MS) oder MasterTarget (MT) installiert werden soll.|MS </br> MT|
 |-d angeben, |Optional|Installationsort des Mobilitätsdiensts|/usr/local/ASR|
-|-v|Erforderlich|Gibt die Plattform an, auf der Mobility Service installiert wird </br> </br>– **VMware: Verwenden Sie diesen Wert für die Installation von Mobility Service auf einem virtuellen Computer, der auf *VMware vSphere ESXi-Hosts*, *Hyper-V-Hosts und *physischen Servern* ausgeführt wird </br> – **Azure: Verwenden Sie diesen Wert, wenn Sie den Agent auf einem virtueller Azure-IaaS-Computer installieren| VMware </br> Azure|
-|-q|Optional|Gibt an, dass das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll| N/V|
+|-v|Erforderlich|Gibt die Plattform an, auf der Mobility Service installiert wird. </br> </br>- **VMware**: Verwenden Sie diesen Wert für die Installation von Mobility Service auf einem virtuellen Computer, der auf *VMware vSphere ESXi-Hosts*, *Hyper-V-Hosts* und *physischen Servern* ausgeführt wird. </br> - **Azure**: Verwenden Sie diesen Wert, wenn Sie einen Agent auf einem virtuellen Azure-IaaS-Computer installieren.| VMware </br> Azure|
+|-q|Optional|Gibt an, dass das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.| N/V|
 
 
 #### <a name="mobility-service-configuration-command-line"></a>Befehlszeile für die Mobility Service-Konfiguration

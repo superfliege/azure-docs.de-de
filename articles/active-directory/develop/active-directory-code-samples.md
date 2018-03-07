@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: mbaldwin
 ms.custom: aaddev
-ms.openlocfilehash: ba8356a018605331dc4b9cc9ff401929cd8793bf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f47f03594e64281b55161edb1c391ed0be83a73
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-active-directory-code-samples"></a>Azure Active Directory-Codebeispiele
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -33,7 +33,7 @@ Schreiben Sie Beiträge zu unseren Beispielen auf GitHub: [Microsoft Azure Activ
 ## <a name="web-browser-to-web-application"></a>Webbrowser zu Webanwendung
 Diese Beispiele zeigen, wie Sie eine Webanwendung schreiben, die den Browser des Benutzers zur Anmeldung bei Azure AD leitet.
 
-| Sprache/Plattform | Beispiel | Beschreibung |
+| Sprache/Plattform | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | C#/.NET |[WebApp-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) |Authentifiziert Benutzer eines Azure AD-Mandanten mithilfe von OpenID Connect (ASP.Net OpenID Connect OWIN-Middleware). |
 | C#/.NET |[WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |Eine mehrinstanzenfähige .NET MVC-Webanwendung zur Authentifizierung von Benutzern mehrerer Azure AD-Mandanten mithilfe von OpenID Connect (ASP.Net OpenID Connect OWIN-Middleware). |
@@ -42,14 +42,14 @@ Diese Beispiele zeigen, wie Sie eine Webanwendung schreiben, die den Browser des
 ## <a name="single-page-application-spa"></a>Single-Page-Anwendung (SPA)
 Dieses Beispiel zeigt, wie Sie eine Single-Page-Anwendung schreiben, die mit Azure AD gesichert ist.  
 
-| Sprache/Plattform | Beispiel | Beschreibung |
+| Sprache/Plattform | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | JavaScript, C#/.NET |[SinglePageApp-DotNet](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) |Sichert eine AngularJS-basierte, mit einem ASP.NET Web-API-Back-End implementierte Single-Page-Anwendung mithilfe von ADAL für JavaScript und Azure AD. |
 
 ## <a name="native-application-to-web-api"></a>Systemeigene Anwendung zu Web-API
 Diese Codebeispiele zeigen, wie Sie systemeigene Clientanwendungen erstellen, die von Azure AD gesicherte Web-APIs aufrufen. Dabei kommen [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) und [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) zum Einsatz.
 
-| Sprache/Plattform | Beispiel | Beschreibung |
+| Sprache/Plattform | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | JavaScript |[NativeClient-MultiTarget-Cordova](https://github.com/Azure-Samples/active-directory-cordova-multitarget) |Erstellt mithilfe des ADAL-Plug-Ins für Apache Cordova eine Apache Cordova-Anwendung, die eine Web-API aufruft und Azure AD für die Authentifizierung verwendet. |
 | C#/.NET |[NativeClient-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) |Eine .NET WPF-Anwendung, die eine mit Azure AD gesicherte Web-API aufruft. |
@@ -65,9 +65,9 @@ Diese Codebeispiele zeigen, wie Sie systemeigene Clientanwendungen erstellen, di
 | C#/.NET |[NativeClient-Headless-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-native-headless) |Eine systemeigene Anwendung, die eine nicht interaktive Authentifizierung durchführt und eine von Azure AD gesicherte Web-API aufruft. |
 
 ## <a name="web-application-to-web-api"></a>Webanwendung zu Web-API
-Diese Codebeispiele zeigen die Verwendung von [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) zum Erstellen von Webanwendungen, die von Azure AD gesicherte Web-APIs aufrufen.
+Diese Codebeispiele zeigen die Verwendung von [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) zum Erstellen von Webanwendungen, die von Azure AD geschützte Web-APIs aufrufen.
 
-| Sprache/Plattform | Beispiel | Beschreibung |
+| Sprache/Plattform | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | C#/.NET |[WebApp-WebAPI-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect) |Ruft eine Web-API mit den Berechtigungen des angemeldeten Benutzers auf. |
 | C#/.NET |[WebApp-WebAPI-OAuth2-AppIdentity-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity) |Ruft eine Web-API mit den Berechtigungen der Anwendung auf. |
@@ -78,20 +78,26 @@ Diese Codebeispiele zeigen die Verwendung von [OAuth 2.0 in Azure AD](https://
 ## <a name="server-or-daemon-application-to-web-api"></a>Server- oder Daemonanwendung zu Web-API
 Diese Codebeispiele zeigen die Erstellung einer Daemon- oder Serveranwendung, die Ressourcen unter Verwendung von [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) und [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) von einer Web-API abruft.
 
-| Sprache/Plattform | Beispiel | Beschreibung |
+| Sprache/Plattform | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | C#/.NET |[Daemon-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon) |Eine Konsolenanwendung, die eine Web-API aufruft. Die Clientanmeldeinformation ist ein Kennwort. |
 | C#/.NET |[Daemon-CertificateCredential-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) |Eine Konsolenanwendung, die eine Web-API aufruft. Die Clientanmeldeinformation ist ein Zertifikat. |
 
-## <a name="calling-azure-ad-graph-api"></a>Aufrufen der Azure AD Graph-API
-Dieses Codebeispiel zeigt, wie Sie Anwendungen erstellen, die die Azure AD Graph-API zum Lesen und Schreiben von Verzeichnisdaten aufrufen.
+## <a name="calling-microsoft-graph-api"></a>Aufrufen der Microsoft Graph-API
+Dieses Codebeispiel zeigt, wie Sie Anwendungen erstellen, die die Microsoft Graph-API zum Lesen und Schreiben von Verzeichnisdaten aufrufen.
 
-| Sprache/Plattform | Beispiel | Beschreibung |
+| Sprache/Plattform | Beispiel | BESCHREIBUNG |
+| --- | --- | --- |
+| C#/.NET |[WebApp-MSGraphAPI-DotNet](https://github.com/microsoftgraph/aspnet-snippets-sample) |Eine Webanwendung, die mithilfe der Microsoft Graph-API auf Azure AD-Verzeichnisdaten zugreift |
+| C#/.NET |[UWPApp-MSGraphAPI-DotNet](https://github.com/microsoftgraph/uwp-csharp-snippets-sample) |Diese Universelle Windows-Plattform-App veranschaulicht den Zugriff auf mehrere Ressourcen, einschließlich Microsoft Azure Active Directory- (AD) und Office 365-APIs, über Anforderungen an die Microsoft Graph-API in einer Windows 10-App. |
+
+## <a name="calling-azure-ad-graph-api"></a>Aufrufen der Azure AD Graph-API
+Diese Codebeispiele zeigen, wie Sie Anwendungen erstellen, die die Azure AD Graph-API zum Lesen und Schreiben von Verzeichnisdaten aufrufen.
+
+| Sprache/Plattform | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | Java |[WebApp-GraphAPI-Java](https://github.com/Azure-Samples/active-directory-java-graphapi-web) |Eine Webanwendung, die mithilfe der Graph-API auf Azure AD-Verzeichnisdaten zugreift. |
 | PHP |[WebApp-GraphAPI-PHP](https://github.com/Azure-Samples/active-directory-php-graphapi-web) |Eine Webanwendung, die mithilfe der Graph-API auf Azure AD-Verzeichnisdaten zugreift. |
-| C#/.NET |[WebApp-GraphAPI-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-web) |Eine Webanwendung, die mithilfe der Graph-API auf Azure AD-Verzeichnisdaten zugreift. |
-| C#/.NET |[ConsoleApp-GraphAPI-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-console) |Diese Konsolen-App veranschaulicht allgemeine Lese- und Schreibaufrufe an die Graph-API, die Ausführung der Benutzerlizenzzuweisung sowie die Aktualisierung des Miniaturfotos und der Links eines Benutzers. |
 | C#/.NET |[ConsoleApp-GraphAPI-DiffQuery-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-diffquery) |Eine Konsolenanwendung, die die differenzielle Abfrage in der Graph-API verwendet, um periodische Änderungen an Benutzerobjekten eines Azure AD-Mandanten abzurufen. |
 | C#/.NET |[WebApp-GraphAPI-DirectoryExtensions-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-directoryextensions-web) |Eine MVC-Anwendung, die auf der Grundlage von Graph-API-Abfragen ein einfaches Unternehmensorganigramm zu generiert. |
 | PHP |[WebApp-GraphAPI-DirectoryExtensions-PHP](https://github.com/Azure-Samples/active-directory-php-graphapi-directoryextensions-web) |Eine PHP-Anwendung, die die Graph-API aufruft, um eine Erweiterung zu registrieren und dann Werte im Erweiterungsattribut zu lesen, zu aktualisieren und zu löschen. |
@@ -99,7 +105,7 @@ Dieses Codebeispiel zeigt, wie Sie Anwendungen erstellen, die die Azure AD Graph
 ## <a name="authorization"></a>Autorisierung
 Diese Codebeispiele zeigen, wie Azure AD für die Autorisierung verwendet wird.
 
-| Sprache/Plattform | Beispiel | Beschreibung |
+| Sprache/Plattform | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | C#/.NET |[WebApp-GroupClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) |Führt die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) unter Verwendung von Azure Active Directory-Gruppenansprüchen in einer Anwendung durch, die in Azure AD integriert ist. |
 | C#/.NET |[WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) |Führt die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) unter Verwendung von Azure Active Directory-Anwendungsrollen in einer Anwendung durch, die in Azure AD integriert ist. |
@@ -107,7 +113,7 @@ Diese Codebeispiele zeigen, wie Azure AD für die Autorisierung verwendet wird.
 ## <a name="legacy-walkthroughs"></a>Ältere exemplarische Vorgehensweisen
 In diesen exemplarischen Vorgehensweisen wird zwar eine etwas ältere Technologie verwendet, sie können aber trotzdem von Interesse sein.
 
-| Sprache/Plattform | Beispiel | Beschreibung |
+| Sprache/Plattform | Beispiel | BESCHREIBUNG |
 | --- | --- | --- |
 | C#/.NET |[Rollen- und ACL-basierte Autorisierung in einer Microsoft Azure AD-Anwendung](http://go.microsoft.com/fwlink/?LinkId=331694) |Führt die rollen- und ACL-basierte Autorisierung in einer Anwendung durch, die in Azure AD integriert ist. |
 | C#/.NET |[AAL – Windows Store-App zu REST-Dienst – Authentifizierung](http://go.microsoft.com/fwlink/?LinkId=330605) |Verwendet [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) (ehemals AAL) für Windows Store Beta, um einer Windows Store-App Funktionen für die Benutzerauthentifizierung hinzuzufügen. |
@@ -124,7 +130,7 @@ In diesen exemplarischen Vorgehensweisen wird zwar eine etwas ältere Technologi
 | C#/.NET |[Sichern einer Windows Store-Anwendung und des REST-Webdiensts mithilfe von Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) |Erstellt eine einfache Web-API-Ressource und eine Windows Store-Clientanwendung mithilfe von Azure AD und [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md). |
 | C#/.NET |[Abfragen von Azure AD mithilfe der Graph-API](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-web) |Konfiguriert eine Microsoft .NET-Anwendung zur Verwendung der Graph-API von Azure AD für den Zugriff auf Daten aus einem Azure AD-Mandantenverzeichnis. |
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 ##### <a name="other-resources"></a>Weitere Ressourcen
 [Entwicklerhandbuch zu Azure Active Directory](active-directory-developers-guide.md)
 

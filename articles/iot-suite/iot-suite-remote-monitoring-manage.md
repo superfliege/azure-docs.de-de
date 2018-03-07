@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fab3fd4163141aadc06b385f5759c19eece7fd14
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 66005b78a368c15a463844b3f098eac9fd64f621
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>Verwalten und Konfigurieren von Geräten
 
@@ -42,11 +42,11 @@ Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es
 
 ## <a name="add-a-simulated-device"></a>Hinzufügen eines simulierten Geräts
 
-Navigieren Sie in der Lösung zur Seite **Devices** (Geräte), und wählen Sie **New Device** (Neues Gerät) aus. Wählen Sie im Bereich **New Device** (Neues Gerät) die Option **Simulated** (Simuliert) aus:
+Navigieren Sie in der Lösung zur Seite **Devices** (Geräte), und wählen Sie **+ New Device** (Neues Gerät) aus. Wählen Sie im Bereich **New Device** (Neues Gerät) die Option **Simulated** (Simuliert) aus:
 
 ![Bereitstellen eines simulierten Geräts](media/iot-suite-remote-monitoring-manage/devicesprovision.png)
 
-Behalten Sie die auf **1** festgelegte Anzahl der bereitzustellenden Geräte bei. Wählen Sie **Faulty Engine** (Fehlerhafte Engine) als **Device model** (Gerätemodell) und dann **Apply** (Übernehmen) aus, um das simulierte Gerät zu erstellen:
+Behalten Sie die auf **1** festgelegte Anzahl der bereitzustellenden Geräte bei. Wählen Sie das Gerätemodell **Faulty Engine** (Fehlerhafte Engine) und dann **Apply** (Übernehmen) aus, um das simulierte Gerät zu erstellen:
 
 ![Bereitstellen eines simulierten Engine-Geräts](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 

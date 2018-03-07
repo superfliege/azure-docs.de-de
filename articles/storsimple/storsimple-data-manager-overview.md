@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/16/2018
+ms.date: 02/26/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 8b0ff2c100878e568e0a4c67e79864006512bd78
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 4d27bc3660035ace25436a4f756c41e88200649d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Übersicht über die StorSimple Data Manager-Lösung
 
@@ -56,9 +56,9 @@ Der StorSimple Manager ist in den folgenden sieben Regionen verfügbar:
 
 Der StorSimple Manager kann hingegen zum Transformieren von Daten in den folgenden Regionen verwendet werden. 
 
-![Für Daten verfügbare Regionen](./media/storsimple-data-manager-overview/data-manager-job-definition-different-regions.png)
+![Für Daten verfügbare Regionen](./media/storsimple-data-manager-overview/data-manager-job-definition-different-regions-m.png)
 
-Diese Gruppe ist größer, da die Ressourcenbereitstellung in allen oben genannten Regionen den Transformationsvorgang in den folgenden Regionen aufrufen kann. Sofern Ihre Daten sich in einer der 26 Regionen befinden, können Sie daher Ihre Daten mit diesem Dienst transformieren.
+Diese Gruppe ist größer, da die Ressourcenbereitstellung in allen oben genannten Regionen den Transformationsvorgang in den folgenden Regionen aufrufen kann. Sofern sich Ihre Daten in einer der 19 Regionen befinden, können Sie daher Ihre Daten mit diesem Dienst transformieren.
 
 
 ## <a name="choosing-a-region"></a>Auswählen einer Region

@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 02/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06445845ef8f93a06cb4b52e07108965cc3b7f8a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 775db415e667729f6eecf8223a84f5ac0aa45c4c
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -39,9 +39,10 @@ Wenn Sie Produktionsworkloads in Batch ausführen möchten, müssen Sie möglich
 ## <a name="resource-quotas"></a>Ressourcenkontingente
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
-### <a name="quotas-in-user-subscription-mode"></a>Kontingente im Modus „Benutzerabonnement“
 
-Wenn Sie eine frühere Version der Batch-API verwendet haben, um ein Batch-Konto zu erstellen, bei dem der Poolzuordnungsmodus auf **Benutzerabonnement** festgelegt ist, werden Kontingente unterschiedlich angewendet. In diesem nicht mehr empfohlenen Modus werden Batch-VMs und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Das Kernkontingent von Azure Batch gilt nicht für Konten, die in diesem Modus erstellt werden. Stattdessen werden die Kontingente in Ihrem Abonnement für regionale Computekerne und andere Ressourcen angewendet. Weitere Informationen zu diesen Kontingenten finden Sie unter [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+### <a name="cores-quotas-in-user-subscription-mode"></a>Kontingente für Kerne im Modus „Benutzerabonnement“
+
+Wenn Sie ein Batch-Konto erstellen, bei dem der Poolzuordnungsmodus auf **Benutzerabonnement** festgelegt ist, werden Kontingente unterschiedlich angewendet. In diesem Modus werden Batch-VMs und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Die Kontingente für Kerne von Azure Batch gilt nicht für Konten, die in diesem Modus erstellt werden. Stattdessen werden die Kontingente in Ihrem Abonnement für regionale Computekerne und andere Ressourcen angewendet. Weitere Informationen zu diesen Kontingenten finden Sie unter [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 
 ## <a name="other-limits"></a>Andere Limits
 | **Ressource** | **Maximales Limit** |
@@ -87,7 +88,6 @@ Führen Sie die folgenden Schritte aus, um über das [Azure-Portal][portal] eine
     d. **Supportplan** > **Kontingentsupport – inbegriffen**
    
     Klicken Sie auf **Weiter**.
-
 4. Gehen Sie unter **Problem** wie folgt vor:
    
     a. Wählen Sie einen **Schweregrad** gemäß der [geschäftlichen Auswirkung][support_sev] aus.
@@ -95,7 +95,6 @@ Führen Sie die folgenden Schritte aus, um über das [Azure-Portal][portal] eine
     b. Geben Sie unter **Details**jedes Kontingent an, das Sie ändern möchten, sowie den Batch-Kontonamen und das neue Limit.
    
     Klicken Sie auf **Weiter**.
-
 5. Gehen Sie unter **Kontaktinformationen** wie folgt vor:
    
     a. Wählen Sie eine **bevorzugte Kontaktmethode**aus.

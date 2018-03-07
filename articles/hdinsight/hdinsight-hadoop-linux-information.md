@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 372e9465eec1a373ff2b59209673e65fa1f994b6
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4449dfa1b189f51292d24af884ba9d2addf1fe24
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -35,7 +35,7 @@ In vielen Schritten in diesem Dokument werden die folgenden Hilfsprogramme verwe
 
 * [cURL](https://curl.haxx.se/) – wird für die Kommunikation mit webbasierten Diensten verwendet
 * [jq](https://stedolan.github.io/jq/) – wird verwendet, um JSON-Dokumente zu analysieren
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) (Vorschau) – wird zur Remoteverwaltung von Azure-Diensten verwendet
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) – wird zur Remoteverwaltung von Azure-Diensten verwendet
 
 ## <a name="users"></a>Benutzer
 

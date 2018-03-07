@@ -9,18 +9,19 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 380d804f-a8c5-4b20-9762-593ec4da5a0d
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: 
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: d777d467b3f0d4ef6101dffa551ec5c85feb209c
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ROBOTS: NOINDEX
+ms.openlocfilehash: c89556cf66526f793ab81383e205ff45075385a3
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Entwickeln von C#-Topologien für Apache Storm mithilfe von Data Lake-Tools für Visual Studio
 
@@ -35,16 +36,13 @@ Um eine C#-Topologie mit einem Linux-basierten Cluster zu verwenden, müssen Sie
 
 | HDInsight-Version | Storm-Version | SCP.NET-Version | Mono-Standardversion |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3.3 |0.10.x |0.10.x.x</br>(nur in Windows-basiertem HDInsight) | NA |
+| 3.3 |0.10.x |0.10.x.x</br>(nur in Windows-basiertem HDInsight) | Nicht verfügbar |
 | 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
 | 3,5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
 | 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
 
 > [!IMPORTANT]
 > C#-Topologien in Linux-basierten Clustern müssen .NET 4.5 verwenden. Zudem muss Mono im HDInsight-Cluster ausgeführt werden. Überprüfen Sie die [Mono-Kompatibilität](http://www.mono-project.com/docs/about-mono/compatibility/) auf mögliche Inkompatibilitäten.
-
-> [!WARNING]
-> Wenn beim Erstellen von Projekten mit Version 1.0.0.x von SCP.NET Probleme auftreten, wenden Sie sich an den Microsoft-Support.
 
 ## <a name="install-visual-studio"></a>Installieren von Visual Studio
 
@@ -169,7 +167,7 @@ Ein Topologiebeispiel, die diese Komponente verwendet und mit Storm auf HDInsigh
 
    * **Fail** (nur transaktionale Topologie): verarbeitet Tupel, bei denen bei der Verarbeitung anderer Komponenten in der Topologie ein Fehler aufgetreten ist. Das Implementieren einer Fail-Methode ermöglicht es Ihnen, das Tupel erneut auszugeben, sodass es erneut verarbeitet werden kann.
 
-2. Ersetzen Sie den Inhalt der **Spout**-Klasse durch folgenden Text. Dieses Spout gibt einen Satz willkürlich in die Topologie aus.
+2. Ersetzen Sie den Inhalt der **Spout**-Klasse durch den folgenden Text: This spout randomly emits a sentence into the topology. (Dieses Spout gibt einen Satz willkürlich in die Topologie aus.)
 
     ```csharp
     private Context ctx;
@@ -290,7 +288,7 @@ Ein Topologiebeispiel, die diese Komponente verwendet und mit Storm auf HDInsigh
     }
     ```
 
-5. Öffnen Sie **Counter.cs**, und ersetzen Sie die Klasseninhalte durch Folgendes:
+5. Öffnen Sie **Counter.cs**, und ersetzen Sie die Klasseninhalte durch folgenden Code:
 
     ```csharp
     private Context ctx;
@@ -352,7 +350,7 @@ Spouts und Bolts werden in einem Diagramm angeordnet, das definiert, wie die Dat
 
 Sätze werden vom Spout ausgegeben und an Instanzen des Splitter-Bolts verteilt. Das Splitter-Bolt unterteilt Sätze in Wörter, die an das Counter-Bolt verteilt werden.
 
-Da die Wortanzahl lokal in der Counter-Instanz gespeichert wird, möchten wir sicherstellen, dass bestimmte Wörter an dieselbe Instanz des Counter-Bolts geleitet werden. Jede Instanz verfolgt bestimmte Wörter. Seit der Splitter-Bolt keinen Zustand verwaltet, ist es unerheblich, welche Instanz des Splitters welchen Satz empfängt.
+Da die Wortanzahl lokal in der Counter-Instanz gespeichert wird, sollten Sie sicherstellen, dass bestimmte Wörter an dieselbe Instanz des Counter-Bolts geleitet werden. Jede Instanz verfolgt bestimmte Wörter. Seit der Splitter-Bolt keinen Zustand verwaltet, ist es unerheblich, welche Instanz des Splitters welchen Satz empfängt.
 
 Öffnen Sie die Datei **Program.cs**. Die entscheidende Methode ist **GetTopologyBuilder**, mit der die an Storm gesendete Topologie definiert wird. Ersetzen Sie den Inhalt von **GetTopologyBuilder** durch Folgendes, um die zuvor beschriebene Topologie zu implementieren:
 
@@ -472,16 +470,16 @@ Erstellen Sie für ein Beispiel einer hybriden Topologie ein Projekt, und wähle
   > Diese Version veranschaulicht zudem, wie Sie Clojure-Code aus einer Textdatei als Java-Komponente verwenden.
 
 
-Um die Topologie zu wechseln, die beim Übermitteln des Projekts verwendet wird, verschieben Sie einfach vor der Übermittlung an den Cluster die Anweisung `[Active(true)]` in die Topologie, die Sie verwenden möchten.
+Um die Topologie zu wechseln, die beim Übermitteln des Projekts verwendet wird, verschieben Sie vor der Übermittlung an den Cluster die Anweisung `[Active(true)]` in die Topologie, die Sie verwenden möchten.
 
 > [!NOTE]
 > Alle erforderliche Java-Dateien werden im Rahmen dieses Projekts im Ordner **JavaDependency** bereitgestellt.
 
 Bedenken Sie beim Erstellen und Übermitteln einer hybriden Topologie Folgendes:
 
-* Sie müssen **JavaComponentConstructor** verwenden, um eine Instanz der Java-Klasse für einen Spout oder Bolt zu erstellen.
+* Verwenden Sie **JavaComponentConstructor**, um eine Instanz der Java-Klasse für einen Spout oder Bolt zu erstellen.
 
-* Sie sollten **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** zum Serialisieren von Daten in bzw. aus Java-Komponenten von Java-Objekten zu JSON verwenden.
+* Verwenden Sie **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** zum Serialisieren von Daten in bzw. aus Java-Komponenten von Java-Objekten zu JSON.
 
 * Beim Übermitteln der Topologie an den Server müssen Sie die Option **Zusätzliche Konfigurationen** verwenden, um die **Java-Dateipfade** anzugeben. Der angegebene Pfad muss sich in dem Verzeichnis befinden, das die JAR-Dateien mit den Java-Klassen enthält.
 
@@ -703,7 +701,7 @@ Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, 
 
 ### <a name="log-information"></a>Protokollieren von Informationen
 
-Sie können Informationen aus den Topologiekomponenten problemlos mithilfe von `Context.Logger` protokollieren. Das folgende Beispiel erzeugt z.B. einen informativen Protokolleintrag:
+Sie können Informationen aus den Topologiekomponenten problemlos mithilfe von `Context.Logger` protokollieren. Der folgende Befehl generiert beispielsweise einen informativen Protokolleintrag:
 
 ```csharp
 Context.Logger.Info("Component started");

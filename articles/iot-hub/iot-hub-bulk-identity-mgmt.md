@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: d2a6660b93fee1e1fc24269eb7075e5243ce88ed
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 699237c68258243b5f654f5dc57e616e3a22177a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Massenverwaltung von IoT Hub-Geräteidentitäten
 
@@ -49,7 +49,18 @@ JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasU
 > [!NOTE]
 > Um die **RegistryManager**-Klasse in Ihrem C#-Code zu verwenden, fügen Sie das **Microsoft.Azure.Devices**-NuGet-Paket Ihrem Projekt hinzu. Die **RegistryManager**-Klasse befindet sich im **Microsoft.Azure.Devices**-Namespace.
 
-Sie können die **RegistryManager**-Klasse verwenden, um den Status des **Auftrags** unter Verwendung der zurückgegebenen **JobProperties**-Metadaten abzufragen.
+Sie können die **RegistryManager**-Klasse verwenden, um den Status des **Auftrags** unter Verwendung der zurückgegebenen **JobProperties**-Metadaten abzufragen. Verwenden Sie zum Erstellen einer Instanz der **RegistryManager**-Klasse die **CreateFromConnectionString**-Methode:
+
+```csharp
+RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
+```
+
+So finden Sie die Verbindungszeichenfolge Ihres IoT-Hubs im Azure-Portal
+
+- Navigieren Sie zu Ihrem IoT Hub.
+- Klicken Sie auf **Freigegebene Zugriffsrichtlinien**.
+- Wählen Sie eine Richtlinie aus. Berücksichtigen Sie dabei die benötigten Berechtigungen.
+- Kopieren Sie die Verbindungszeichenfolge aus dem Bereich am rechten Bildschirmrand.
 
 Der folgende C#-Codeausschnitt zeigt, wie alle fünf Sekunden eine Abfrage erfolgt, um festzustellen, ob die Auftragsausführung beendet wurde:
 

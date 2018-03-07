@@ -1,25 +1,24 @@
 ---
-title: "Informationen zur Netzwerkzuordnung für die Replikation von Hyper-V-VMs in VMM-Clouds mit Azure Site Recovery | Microsoft Docs"
+title: "Informationen zur Netzwerkzuordnung für die Hyper-V-VM-Replikation (mit VMM) in Azure mit Site Recovery | Microsoft-Dokumentation"
 description: "Beschreibt, wie die Netzwerkzuordnung für die Replikation von Hyper-V-VMs in VMM-Clouds mit Azure Site Recovery eingerichtet wird."
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 02/22/2018
 ms.author: raynew
-ms.openlocfilehash: 5b8ebf3bd118a7b082949b3f3c6ef60a07641ba1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="about-network-mapping-for-hyper-v-vm-with-vmm-replication"></a>Informationen zur Netzwerkzuordnung für virtuelle Hyper-V-Computer mit VMM-Replikation 
+# <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Vorbereiten der Netzwerkzuordnung für die Hyper-V-VM-Replikation in Azure
 
 
-Dieser Artikel hilft Ihnen, die Netzwerkzuordnung bei der Replikation von Hyper-V-VMs in VMM-Clouds (System Center Virtual Machine Manager) mit dem [Azure Site Recovery-Dienst](site-recovery-overview.md) zu verstehen und zu planen.
+Dieser Artikel hilft Ihnen, die Netzwerkzuordnung bei der Replikation von Hyper-V-VMs in VMM-Clouds (System Center Virtual Machine Manager) in Azure oder an einem sekundären Standort mit dem [Azure Site Recovery-Dienst](site-recovery-overview.md) zu verstehen und vorzubereiten.
 
-Die Netzwerkzuordnung wird bei der Replikation von Hyper-V-VMs in einer VMM-Cloud in eine sekundäre VMM-Cloud oder nach Azure verwendet.
 
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>Vorbereiten der Netzwerkzuordnung für die Replikation nach Azure
 
@@ -123,4 +122,5 @@ Keine Änderung der Netzwerkeigenschaften von VM-2 nach dem Failover | VM-1 blei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Informationen](hyper-v-vmm-networking.md) zu IP-Adressen nach einem Failover an einen sekundären VMM-Standort.
+- [Informationen](hyper-v-vmm-networking.md) zu IP-Adressen nach einem Failover an einen sekundären VMM-Standort.
+- [Informationen](concepts-on-premises-to-azure-networking.md) zum Einrichten von IP-Adressen nach einem Failover auf Azure

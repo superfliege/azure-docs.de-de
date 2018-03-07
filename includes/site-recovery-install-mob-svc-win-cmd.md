@@ -25,15 +25,15 @@ Usage :
 UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
 ```
 
-| Parameter|Typ|Beschreibung|Mögliche Werte|
+| Parameter|Typ|BESCHREIBUNG|Mögliche Werte|
 |-|-|-|-|
-|/Role|Erforderlich|Gibt an, ob Mobility Service (MS) oder MasterTarget (MT) installiert werden soll|MS </br> MT|
-|/InstallLocation|Optional|Installationsort des Mobilitätsdiensts|Beliebiger Ordner auf dem Computer|
-|/Platform|Erforderlich|Gibt die Plattform an, auf der Mobility Service installiert wird </br> </br>- **VMware**: Verwenden Sie diesen Wert für die Installation von Mobility Service auf einem virtuellen Computer, der auf *VMware vSphere ESXi-Hosts*, *Hyper-V-Hosts* und *physischen Servern* ausgeführt wird </br> - **Azure**: Verwenden Sie diesen Wert, wenn Sie den Agent auf einem virtueller Azure-IaaS-Computer installieren| VMware </br> Azure|
-|/Silent|Optional|Gibt an, dass das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll| NA|
+|/Role|Erforderlich|Gibt an, ob Mobility Service (MS) oder MasterTarget (MT) installiert werden soll.|MS </br> MT|
+|/InstallLocation|Optional|Installationsort von Mobility Service|Beliebiger Ordner auf dem Computer|
+|/Platform|Erforderlich|Gibt die Plattform an, auf der Mobility Service installiert wird. </br> </br>- **VMware**: Verwenden Sie diesen Wert für die Installation von Mobility Service auf einem virtuellen Computer, der auf *VMware vSphere ESXi-Hosts*, *Hyper-V-Hosts* und *physischen Servern* ausgeführt wird. </br> - **Azure**: Verwenden Sie diesen Wert, wenn Sie einen Agent auf einem virtuellen Azure-IaaS-Computer installieren. | VMware </br> Azure|
+|/Silent|Optional|Gibt an, dass das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.| N/V|
 
 >[!TIP]
-> Die Setupprotokolle finden Sie unter: %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log
+> Die Setupprotokolle finden Sie unter „%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log“.
 
 #### <a name="mobility-service-registration-command-line-arguments"></a>Befehlszeilenargumente für die Mobility Service-Registrierung
 
@@ -42,11 +42,11 @@ Usage :
 UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
 ```
 
-  | Parameter|Typ|Beschreibung|Mögliche Werte|
+  | Parameter|Typ|BESCHREIBUNG|Mögliche Werte|
   |-|-|-|-|
   |/CSEndPoint |Erforderlich|IP-Adresse des Konfigurationsservers| Beliebige gültige IP-Adresse|
   |/PassphraseFilePath|Erforderlich|Speicherort der Passphrase |Beliebiger UNC- oder lokaler Dateipfad|
 
 
 >[!TIP]
-> Die AgentConfiguration-Protokolle finden Sie unter: %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log
+> Die Agent-Konfigurationsprotokolle finden Sie unter „%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log“.

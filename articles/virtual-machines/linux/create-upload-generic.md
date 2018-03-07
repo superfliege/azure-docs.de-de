@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: 771b3ffa0ece10e7373011536a12ed4cb1a1dd6d
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: ae266b0fc78083250c5d14ff2978cd59d394b202
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informationen zu nicht unterstützten Verteilungen
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Das Azure-Plattform-SLA gilt für virtuelle Computer unter dem Betriebssystem Linux nur dann, wenn eine der [bestätigten Distributionen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verwendet wird. Alle Linux-Verteilungen, die im Azure-Image-Katalog bereitgestellt werden, sind unterstützte Verteilungen mit der erforderlichen Konfiguration.
+Das Azure-Plattform-SLA gilt für virtuelle Computer unter dem Betriebssystem Linux nur dann, wenn eine der [bestätigten Distributionen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verwendet wird. Für diese bestätigten Distributionen werden Linux-Images in Azure Marketplace mit der erforderlichen Konfiguration bereitgestellt.
 
 * [Linux auf von Azure unterstützten Verteilungen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Unterstützung für Linux-Images in Microsoft Azure](https://support.microsoft.com/kb/2941892)

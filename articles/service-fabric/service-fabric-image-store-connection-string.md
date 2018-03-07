@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/10/2018
+ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 4b64331a4f25ce0cc01b2ee9f32633ab035e3131
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 3c34a3851dbb5c5258b3dc0cf35a510f62cbe14e
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Grundlegendes zur ImageStoreConnectionString-Einstellung
 
@@ -42,7 +42,9 @@ Der in der Produktion verwendete Anbietertyp ist der Imagespeicherdienst. Dabei 
 
 Durch das Hosten des Imagespeichers in einem Systemdienst innerhalb des Clusters selbst entfallen externe Abhängigkeiten für das Paketrepository, und wir erhalten mehr Kontrolle über den Speicherort. Künftige Verbesserungen rund um den Imagespeicher werden wahrscheinlich in erster Linie – wenn nicht ausschließlich – den Imagespeicheranbieter betreffen. Die Verbindungszeichenfolge für den Anbieter des Imagespeicherdiensts enthält keine eindeutigen Informationen, da der Client bereits mit dem Zielcluster verbunden ist. Dem Client muss nur bekannt sein, dass Protokolle für den Systemdienst verwendet werden müssen.
 
-Der Dateisystemanbieter wird während der Entwicklung anstelle des Imagespeicherdiensts für lokale One-Box-Cluster verwendet, um den Cluster etwas schneller zu starten. Der Unterschied ist in der Regel gering, aber für die meisten Entwickler eine nützliche Optimierung. Es ist auch mit den anderen Speicheranbietertypen möglich, einen lokalen One-Box-Cluster bereitzustellen, aber dazu besteht normalerweise kein Grund, weil der Entwicklungs-/Testworkflow unabhängig vom Anbieter gleich bleibt. Im Gegensatz zu dieser Nutzung gibt es die Anbieter „Dateisystem“ und „Azure Storage“ nur zur Legacyunterstützung.
+Der Dateisystemanbieter wird während der Entwicklung anstelle des Imagespeicherdiensts für lokale One-Box-Cluster verwendet, um den Cluster etwas schneller zu starten. Der Unterschied ist in der Regel gering, aber für die meisten Entwickler eine nützliche Optimierung. Es ist auch mit den anderen Speicheranbietertypen möglich, einen lokalen One-Box-Cluster bereitzustellen, aber dazu besteht normalerweise kein Grund, weil der Entwicklungs-/Testworkflow unabhängig vom Anbieter gleich bleibt. Der Azure Storage-Anbieter ist nur für die Unterstützung alter Cluster bestimmt, die vor der Einführung des Imagespeicher-Dienstanbieters bereitgestellt wurden.
+
+Darüber hinaus sollten weder der Dateisystemanbieter noch der Azure Storage-Anbieter für die gemeinsame Verwendung eines Imagespeichers durch mehrere Cluster verwendet werden – dies führt zu einer Beschädigung der Clusterkonfigurationsdaten, da alle Cluster widersprüchliche Daten in den Imagespeicher schreiben können. Verwenden Sie zum Freigeben von bereitgestellten Anwendungspaketen zwischen mehreren Clustern stattdessen [SFPKG][12]-Dateien. Diese können in beliebige externe Speicher mit einem Download-URI hochgeladen werden.
 
 Auch wenn ImageStoreConnectionString konfigurierbar ist, verwenden Sie daher in der Regel nur die Standardeinstellung. Beim Veröffentlichen in Azure mithilfe von Visual Studio wird der Parameter automatisch entsprechend für Sie festgelegt. Für die programmgesteuerte Bereitstellung für in Azure gehostete Cluster lautet die Verbindungszeichenfolge immer „fabric:ImageStore“. Im Zweifelsfall kann ihr Wert jedoch immer durch das Abrufen des Clustermanifests über [PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx) oder [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) überprüft werden. Sowohl lokale Test- als auch Produktionscluster sollten immer auch für die Verwendung des Anbieters für den Imagespeicherdienst konfiguriert werden.
 
@@ -55,4 +57,4 @@ Auch wenn ImageStoreConnectionString konfigurierbar ist, verwenden Sie daher in 
 
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-cluster-creation-via-portal.md
-
+[12]: service-fabric-package-apps.md#create-an-sfpkg

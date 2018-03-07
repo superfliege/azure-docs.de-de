@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/21/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c62ea8efe56186a2f3ee934823b4ea03775037b0
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: fe27577b73c26731647a217c249913d8332c0c59
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -59,7 +59,11 @@ Die Features des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuest
 > [!NOTE] 
 > Das Azure Cosmos DB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
 
-### <a name="a-name180181"></a><a name="1.8.0"/>1.8.1
+### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
+
+* Korrektur eines Fehlers, der bei Verwendung der Sitzungskonsistenzebene unter bestimmten Racebedingungen zu vorübergehenden Fehlern vom Typ „Microsoft.Azure.Documents.NotFoundException: Die Lesesitzung für das eingegebene Sitzungstoken ist nicht verfügbar“ geführt hat.
+
+### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 
 * Die Regression wurde korrigiert, bei der „FeedOptions.MaxItemCount = -1“ einen System.ArithmeticException-Fehler mit dem Hinweis ausgelöst hat, dass die Seitengröße negativ ist.
 * Eine neue ToString()-Funktion wurde zu „QueryMetrics“ hinzugefügt.
@@ -165,6 +169,7 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](http:
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.8.2](#1.8.2) |21. Februar 2018 |--- |
 | [1.8.1](#1.8.1) |05. Februar 2018 |--- |
 | [1.7.1](#1.7.1) |16. November 2017 |--- |
 | [1.7.0](#1.7.0) |10. November 2017 |--- |

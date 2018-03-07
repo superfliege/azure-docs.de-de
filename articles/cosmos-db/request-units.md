@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 02/23/2018
 ms.author: mimig
-ms.openlocfilehash: c7aadb4e535ed221f882f251324b6d4e633c2d5e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: b63c778f02b88bea4d68206f441aef7b32172c24
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 Jetzt verfügbar: [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner) in Azure Cosmos DB. Erfahren Sie mehr unter [Schätzen der Durchsatzanforderungen](request-units.md#estimating-throughput-needs).
@@ -44,7 +44,7 @@ Da es sich bei Azure Cosmos DB um eine Datenbank mit mehreren Modellen handelt, 
 ## <a name="request-units-and-request-charges"></a>Anforderungseinheiten und Anforderungsgebühren
 Azure Cosmos DB bietet eine schnelle, vorhersagbare Leistung durch die *Reservierung* von Ressourcen, die dem benötigten Durchsatz für Ihre Anwendung entsprechen.  Da sich Anwendungsauslastung und Zugriffsmuster mit der Zeit ändern, können Sie mit Azure Cosmos DB den Umfang des reservierten Durchsatzes, der Ihrer Anwendung zur Verfügung steht, ganz einfach erhöhen oder verringern.
 
-Bei Azure Cosmos DB wird der reservierte Durchsatz in Anforderungseinheiten pro Sekunde angegeben. Sie können sich Anforderungseinheiten als Währung für den Durchsatz vorstellen, wobei Sie eine Anzahl garantierter Anforderungseinheiten auf Sekundenbasis für Ihre Anwendung *reservieren* .  Jeder Vorgang in Azure Cosmos DB – das Schreiben eines Dokuments, das Durchführen einer Abfrage, das Aktualisieren eines Dokuments – beansprucht CPU, Arbeitsspeicher und IOPS.  Mit anderen Worten: Für jeden Vorgang fällt eine *Anforderungsgebühr* an, die in *Anforderungseinheiten* ausgedrückt wird.  Wenn Sie die Faktoren, die sich auf die berechneten Anforderungseinheiten auswirken, sowie die Durchsatzanforderungen Ihrer Anwendung genau kennen, können Sie die Kosten für Ihre Anwendung optimieren. Der Abfrage-Explorer ist auch ein hervorragendes Tool zum Testen des Kerns einer Abfrage.
+Bei Azure Cosmos DB wird der reservierte Durchsatz in Anforderungseinheiten pro Sekunde angegeben. Sie können sich Anforderungseinheiten als Währung für den Durchsatz vorstellen, wobei Sie eine Anzahl garantierter Anforderungseinheiten auf Sekundenbasis für Ihre Anwendung *reservieren* .  Jeder Vorgang in Azure Cosmos DB – das Schreiben eines Dokuments, das Durchführen einer Abfrage, das Aktualisieren eines Dokuments – beansprucht CPU, Arbeitsspeicher und IOPS.  Mit anderen Worten: Für jeden Vorgang fällt eine *Anforderungsgebühr* an, die in *Anforderungseinheiten* ausgedrückt wird.  Wenn Sie die Faktoren, die sich auf die berechneten Anforderungseinheiten auswirken, sowie die Durchsatzanforderungen Ihrer Anwendung genau kennen, können Sie die Kosten für Ihre Anwendung optimieren. Der Daten-Explorer im Azure-Portal ist auch ein hervorragendes Tool zum Testen des Kerns einer Abfrage.
 
 Wir empfehlen Ihnen, sich zunächst das folgende Video anzusehen, in dem Aravind Ramachandran Anforderungseinheiten erklärt und die vorhersagbare Leistung mit Azure Cosmos DB erläutert.
 
@@ -190,9 +190,7 @@ Die Verwendung des Tools ist einfach:
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Verwenden des Azure Cosmos DB-Antwortheaders „request-charge“
-Jede Antwort des Azure Cosmos DB-Diensts enthält einen benutzerdefinierten Header (`x-ms-request-charge`), der die für die Anforderung verbrauchten Anforderungseinheiten enthält. Auf diesen Header kann auch über die Azure Cosmos DB-SDKs zugegriffen werden. Im .Net SDK ist „RequestCharge“ eine Eigenschaft des ResourceResponse-Objekts.  Für Abfragen stellt der Azure Cosmos DB-Abfrage-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
-
-![Untersuchen der berechneten RUs im Abfrage-Explorer][1]
+Jede Antwort des Azure Cosmos DB-Diensts enthält einen benutzerdefinierten Header (`x-ms-request-charge`), der die für die Anforderung verbrauchten Anforderungseinheiten enthält. Auf diesen Header kann auch über die Azure Cosmos DB-SDKs zugegriffen werden. Im .Net SDK ist „RequestCharge“ eine Eigenschaft des ResourceResponse-Objekts.  Für Abfragen stellt der Azure Cosmos DB-Daten-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
 
 Vor diesem Hintergrund besteht eine Methode zum Abschätzen des von der Anwendung benötigten Durchsatzes darin, typische Vorgänge mit einem repräsentativen, von Ihrer Anwendung verwendeten Element auszuführen, dabei die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl von Vorgängen zu schätzen, die erwartungsgemäß pro Sekunde ausgeführt werden.  Stellen Sie sicher, dass auch typische Abfragen und die Nutzung von Azure Cosmos DB-Skripts gemessen und berücksichtigt werden.
 
@@ -358,7 +356,6 @@ Weitere Informationen zu Azure Cosmos DB finden Sie in der [Dokumentation](https
 
 Im Artikel [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md) finden Sie eine Einführung in Leistungs- und Skalierungstests mit Azure Cosmos DB.
 
-[1]: ./media/request-units/queryexplorer.png 
 [2]: ./media/request-units/RUEstimatorUpload.png
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png

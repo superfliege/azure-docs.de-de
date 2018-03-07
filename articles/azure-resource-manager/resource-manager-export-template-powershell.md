@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2017
+ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7543811eb9448222b6e7c266756e68debc7d54be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6e36e12717eea61477f55d2d98c00bff31ec643
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>Exportieren von Azure Resource Manager-Vorlagen mit PowerShell
 
 Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren.
 
-Es ist wichtig zu beachten, dass es zwei Möglichkeiten zum Exportieren einer Vorlage gibt:
+Beachten Sie, dass es zwei Möglichkeiten zum Exportieren einer Vorlage gibt:
 
-* Sie können die Vorlage exportieren, die Sie für eine Bereitstellung verwendet haben. Die exportierte Vorlage enthält alle Parameter und Variablen so, wie sie in der Originalvorlage angezeigt wurden. Dieser Ansatz ist sinnvoll, wenn Sie eine Vorlage abrufen müssen.
-* Sie können eine Vorlage exportieren, die den aktuellen Zustand der Ressourcengruppe darstellt. Die exportierte Vorlage basiert nicht auf einer Vorlage, die Sie für die Bereitstellung verwendet haben. Stattdessen wird eine Vorlage erstellt, bei der es sich um eine Momentaufnahme der Ressourcengruppe handelt. Die exportierte Vorlage verfügt über viele hartcodierte Werte und vermutlich nicht über so viele Parameter, wie Sie sonst definieren. Dieser Ansatz ist sinnvoll, wenn Sie die Ressourcengruppe geändert haben. Nun müssen Sie die Ressourcengruppe als Vorlage erfassen.
+* Sie können **die für eine Bereitstellung verwendete Vorlage exportieren**. Die exportierte Vorlage enthält alle Parameter und Variablen so, wie sie in der Originalvorlage angezeigt wurden. Dieser Ansatz ist sinnvoll, wenn Sie eine Vorlage abrufen müssen.
+* Sie können **eine generierte Vorlage exportieren, die den aktuellen Zustand der Ressourcengruppe darstellt**. Die exportierte Vorlage basiert nicht auf einer Vorlage, die Sie für die Bereitstellung verwendet haben. Stattdessen wird eine Vorlage erstellt, bei der es sich um eine „Momentaufnahme“ oder „Sicherung“ der Ressourcengruppe handelt. Die exportierte Vorlage verfügt über viele hartcodierte Werte und vermutlich nicht über so viele Parameter, wie Sie sonst definieren. Verwenden Sie diese Option, um Ressourcen in der gleichen Ressourcengruppe erneut bereitzustellen. Um diese Vorlage für eine andere Ressourcengruppe zu verwenden, müssen Sie sie möglicherweise erheblich ändern.
 
-In diesem Thema werden beide Ansätze beschrieben.
+In diesem Artikel werden beide Ansätze beschrieben.
 
 ## <a name="deploy-a-solution"></a>Bereitstellen einer Lösung
 
@@ -61,7 +61,7 @@ C:\Users\exampleuser\NewStorage.json
 
 ## <a name="export-resource-group-as-template"></a>Exportieren einer Ressourcengruppe als Vorlage
 
-Statt eine Vorlage aus dem Bereitstellungsverlauf abzurufen, können Sie mithilfe des Befehls [Export-AzureRmResourceGroup](/powershell/module/azurerm.resources/export-azurermresourcegroup) eine Vorlage abrufen, die den aktuellen Status einer Ressourcengruppe darstellt. Diesen Befehl können Sie verwenden, wenn Sie viele Änderungen an Ihrer Ressourcengruppe vorgenommen haben und keine vorhandene Vorlage alle Änderungen darstellt.
+Statt eine Vorlage aus dem Bereitstellungsverlauf abzurufen, können Sie mithilfe des Befehls [Export-AzureRmResourceGroup](/powershell/module/azurerm.resources/export-azurermresourcegroup) eine Vorlage abrufen, die den aktuellen Status einer Ressourcengruppe darstellt. Diesen Befehl können Sie verwenden, wenn Sie viele Änderungen an Ihrer Ressourcengruppe vorgenommen haben und keine vorhandene Vorlage alle Änderungen darstellt. Sie dient als eine Momentaufnahme der Ressourcengruppe, die Sie verwenden können, um die erneute Bereitstellung in der gleichen Ressourcengruppe auszuführen. Um die exportierte Vorlage für andere Lösungen verwenden zu können, müssen Sie sie erheblich ändern.
 
 ```powershell
 Export-AzureRmResourceGroup -ResourceGroupName ExampleGroup

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
-ms.openlocfilehash: bb8a81327163513ab721d2ad72da19173b59bc1f
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 43dc50d0a5381ace8bcfeb3cae39e249ba743876
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Tutorial: Azure Active Directory-Integration mit Rollbar
 
@@ -149,11 +149,14 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Klicken Sie auf **Speichern**.
 
-11. Nach dem Klicken auf die Schaltfläche „Speichern“ sieht der Bildschirm wie folgt aus. Führen Sie in diesem Abschnitt die folgenden Schritte aus:
+11. Nach dem Klicken auf die Schaltfläche „Speichern“ sieht der Bildschirm wie folgt aus:
     
     ![Konfiguration](./media/active-directory-saas-rollbar-tutorial/configure3.png)
+    > [!NOTE] 
+    > Zum Abschließen des folgenden Schritts müssen Sie sich zunächst selbst als Benutzer der Rollbar-App in Azure hinzufügen.
+    a. Wenn sich alle Benutzer über Azure authentifizieren sollen, klicken Sie auf **Über Identitätsanbieter anmelden**, damit eine erneute Authentifizierung über Azure erfolgt.  
 
-    a. Aktivieren Sie das Kontrollkästchen **Anmeldung über SAML-Identitätsanbieter vorschreiben**.
+    b.  Nachdem Sie zu dem Bildschirm zurückgekehrt sind, aktivieren Sie das Kontrollkästchen **Anmeldung über SAML-Identitätsanbieter vorschreiben**.
 
     b. Klicken Sie auf **Speichern**.
 

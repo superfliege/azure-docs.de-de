@@ -10,19 +10,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/26/2017
 ms.author: jingwang
-ms.openlocfilehash: 42643c73368597d1caea4aba12bc7b64b7440970
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 51318a6bb4f88759984531b005c65712b6817ec0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Speichern von Anmeldeinformationen in Azure Key Vault
 
-Sie können Anmeldeinformationen für Datenspeicher in einem [Azure Key Vault](../key-vault/key-vault-whatis.md)-Tresor speichern. Azure Data Factory ruft die Anmeldeinformationen ab, wenn eine Aktivität erfolgt, die den Datenspeicher verwendet.
+Sie können Anmeldeinformationen für Datenspeicher und Computervorgänge in einer [Azure Key Vault](../key-vault/key-vault-whatis.md)-Instanz speichern. Azure Data Factory ruft die Anmeldeinformationen ab, wenn eine Aktivität ausgeführt wird, die den Datenspeicher/Computevorgänge verwendet.
 
-Derzeit unterstützt eine Kopieraktivität mit allen Connectortypen diese Funktion. Ausführliche Informationen finden Sie im Abschnitt „Eigenschaften des verknüpften Diensts“ unter dem [jeweiligen Connectorthema](copy-activity-overview.md#supported-data-stores-and-formats). Unterstützung für andere Aktivitätstypen und den verknüpften Computedienst ist für die Zukunft geplant.
+Derzeit unterstützen mit Ausnahme von benutzerdefinierten Aktivitäten alle Aktivitätstypen dieses Feature. Lesen Sie insbesondere für die Connectorkonfiguration die Details im Abschnitt „Eigenschaften des verknüpften Diensts“ in den [Themen zu den einzelnen Connectors](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.

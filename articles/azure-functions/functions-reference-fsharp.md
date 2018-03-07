@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 314f528a1fcef2c7afb0eedba012023f3bc9502b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -35,7 +35,7 @@ Eine `.fsx` -Datei ist ein F#-Skript. Sie können sich dies wie ein F#-Projekt v
 Bei Verwendung der Endung `.fsx` für eine Azure-Funktion werden die üblicherweise erforderlichen Assemblys automatisch für Sie eingebunden, sodass Sie sich auf die Funktion konzentrieren können und sich nicht mit Codebausteinen beschäftigen müssen.
 
 ## <a name="binding-to-arguments"></a>Binden an Argumente
-Jede Bindung unterstützt eine Gruppe von Argumenten. Dies ist in der [Entwicklerreferenz zu Triggern und Bindungen in Azure Functions](functions-triggers-bindings.md) ausführlich beschrieben. Eine Argumentbindung, die von einem Blobtrigger beispielsweise unterstützt wird, ist ein POCO-Element. Dies kann mit einem F#-Eintrag ausgedrückt werden. Beispiel:
+Jede Bindung unterstützt eine Gruppe von Argumenten. Dies ist in der [Entwicklerreferenz zu Triggern und Bindungen in Azure Functions](functions-triggers-bindings.md) ausführlich beschrieben. Eine Argumentbindung, die von einem Blobtrigger beispielsweise unterstützt wird, ist ein POCO-Element. Dies kann mit einem F#-Eintrag ausgedrückt werden. Beispiel: 
 
 ```fsharp
 type Item = { Id: string }
@@ -49,7 +49,7 @@ Für Ihre F#-Azure-Funktion wird mindestens ein Argument verwendet. Wenn wir von
 
 Im obigen Beispiel ist `blob` ein Eingabeargument und `output` ein Ausgabeargument. Beachten Sie, dass wir `byref<>` für `output` verwendet haben (das Hinzufügen der Anmerkung `[<Out>]` ist nicht erforderlich). Mit dem Typ `byref<>` kann Ihre Funktion ändern, auf welchen Eintrag oder welches Objekt das Argument verweist.
 
-Wenn ein F#-Eintrag als Eingabetyp verwendet wird, muss die Eintragsdefinition mit `[<CLIMutable>]` gekennzeichnet werden. So kann das Azure Functions-Framework die Felder richtig festlegen, bevor der Eintrag an Ihre Funktion übergeben wird. Im Hintergrund generiert `[<CLIMutable>]` Setter für die Eintragseigenschaften. Beispiel:
+Wenn ein F#-Eintrag als Eingabetyp verwendet wird, muss die Eintragsdefinition mit `[<CLIMutable>]` gekennzeichnet werden. So kann das Azure Functions-Framework die Felder richtig festlegen, bevor der Eintrag an Ihre Funktion übergeben wird. Im Hintergrund generiert `[<CLIMutable>]` Setter für die Eintragseigenschaften. Beispiel: 
 
 ```fsharp
 [<CLIMutable>]
@@ -61,7 +61,7 @@ let Run(req: TestObject, log: TraceWriter) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-Eine F#-Klasse kann auch für in- und out-Argumente verwendet werden. Für eine Klasse benötigen Eigenschaften normalerweise „Getter“ und „Setter“. Beispiel:
+Eine F#-Klasse kann auch für in- und out-Argumente verwendet werden. Für eine Klasse benötigen Eigenschaften normalerweise „Getter“ und „Setter“. Beispiel: 
 
 ```fsharp
 type Item() =
@@ -74,7 +74,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Protokollierung
-Zum Protokollieren der Ausgabe in Ihren [Streamingprotokollen](../app-service/web-sites-enable-diagnostic-log.md) in F# sollte Ihre Funktion ein Argument vom Typ `TraceWriter` verwenden. Der Einheitlichkeit halber empfehlen wir Ihnen, diesem Argument den Namen `log`zu geben. Beispiel:
+Zum Protokollieren der Ausgabe in Ihren [Streamingprotokollen](../app-service/web-sites-enable-diagnostic-log.md) in F# sollte Ihre Funktion ein Argument vom Typ `TraceWriter` verwenden. Der Einheitlichkeit halber empfehlen wir Ihnen, diesem Argument den Namen `log`zu geben. Beispiel: 
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -124,7 +124,7 @@ Die folgenden Namespaces werden automatisch geöffnet:
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`.
+* `Microsoft.Azure.WebJobs.Host`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
 
 ## <a name="referencing-external-assemblies"></a>Verweise auf externe Assemblys
 Auf ähnliche Weise werden Framework-Assemblyverweise mit der `#r "AssemblyName"`-Direktive hinzugefügt.
@@ -164,7 +164,7 @@ Darüber hinaus stehen die folgenden besonderen Assemblys zur Verfügung, auf di
 Wenn Sie auf eine private Assembly verweisen müssen, können Sie die Assemblydatei in einen `bin`-Ordner relativ zu Ihrer Funktion hochladen und anhand des Dateinamens darauf verweisen (Beispiel: `#r "MyAssembly.dll"`). Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im folgenden Abschnitt zur Paketverwaltung.
 
 ## <a name="editor-prelude"></a>Editor-Einleitung
-Ein Editor, der F#-Compilerdienste unterstützt, besitzt keine Informationen zu den Namespaces und Assemblys, die in Azure Functions automatisch enthalten sind. Daher kann es nützlich sein, eine Einleitung einzufügen, die dem Editor als Unterstützung beim Suchen nach den von Ihnen verwendeten Assemblys und beim expliziten Öffnen von Namespaces dient. Beispiel:
+Ein Editor, der F#-Compilerdienste unterstützt, besitzt keine Informationen zu den Namespaces und Assemblys, die in Azure Functions automatisch enthalten sind. Daher kann es nützlich sein, eine Einleitung einzufügen, die dem Editor als Unterstützung beim Suchen nach den von Ihnen verwendeten Assemblys und beim expliziten Öffnen von Namespaces dient. Beispiel: 
 
 ```fsharp
 #if !COMPILED
@@ -172,7 +172,7 @@ Ein Editor, der F#-Compilerdienste unterstützt, besitzt keine Informationen zu 
 #r "Microsoft.Azure.WebJobs.Host.dll"
 #endif
 
-open Sytem
+open System
 open Microsoft.Azure.WebJobs.Host
 
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -184,7 +184,7 @@ Wenn Ihr Code von Azure Functions ausgeführt wird, wird die Quelle mit der Defi
 <a name="package"></a>
 
 ## <a name="package-management"></a>Paketverwaltung
-Um NuGet-Pakete in einer F#-Funktion zu verwenden, fügen Sie im Funktionsordner im Dateisystem der Funktionen-App die Datei `project.json` hinzu. Hier ist eine `project.json`-Beispieldatei angegeben, mit der ein NuGet-Paketverweis auf `Microsoft.ProjectOxford.Face` Version 1.1.0 hinzugefügt wird:
+Um NuGet-Pakete in einer F#-Funktion zu verwenden, fügen Sie dem Funktionsordner im Dateisystem der Funktions-App die Datei `project.json` hinzu. Hier ist eine `project.json`-Beispieldatei angegeben, mit der ein NuGet-Paketverweis auf `Microsoft.ProjectOxford.Face` Version 1.1.0 hinzugefügt wird:
 
 ```json
 {
@@ -238,7 +238,7 @@ let Run(timer: TimerInfo, log: TraceWriter) =
 ```
 
 ## <a name="reusing-fsx-code"></a>Wiederverwenden von .fsx-Code
-Sie können Code aus anderen `.fsx`-Dateien verwenden, indem Sie eine `#load`-Direktive nutzen. Beispiel:
+Sie können Code aus anderen `.fsx`-Dateien verwenden, indem Sie eine `#load`-Direktive nutzen. Beispiel: 
 
 `run.fsx`
 

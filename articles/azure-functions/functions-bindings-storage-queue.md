@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: ce28b6eea9843ce423b57e539a844b4dacb552aa
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e2f9c75ba6e43f93aeb742b9eceebf846ec85cbf
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue Storage-Bindungen für Azure Functions
 
@@ -234,16 +234,16 @@ Verwenden Sie in JavaScript `context.bindings.<name>`, um auf die Nutzlast des W
 
 ## <a name="trigger---message-metadata"></a>Trigger: Nachrichtenmetadaten
 
-Der Warteschlangentrigger stellt mehrere Metadateneigenschaften bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Die Werte haben die gleiche Semantik wie [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage).
+Der Warteschlangentrigger stellt mehrere [Metadateneigenschaften](functions-triggers-bindings.md#binding-expressions---trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Die Werte haben die gleiche Semantik wie [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage).
 
 |Eigenschaft|Typ|BESCHREIBUNG|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Die Warteschlangennutzlast (bei einer gültigen Zeichenfolge). Handelt es sich bei der Warteschlangennutzlast um eine Zeichenfolge, hat `QueueTrigger` den gleichen Wert wie die Variable, die durch die Eigenschaft `name` in *function.json* benannt wird.|
 |`DequeueCount`|`int`|Gibt an, wie oft diese Nachricht aus der Warteschlange entfernt wurde.|
-|`ExpirationTime`|`DateTimeOffset?`|Die Zeit, zu der die Nachricht abläuft.|
+|`ExpirationTime`|`DateTimeOffset`|Die Zeit, zu der die Nachricht abläuft.|
 |`Id`|`string`|ID der Warteschlangennachricht|
-|`InsertionTime`|`DateTimeOffset?`|Die Zeit, zu der die Nachricht der Warteschlange hinzugefügt wurde.|
-|`NextVisibleTime`|`DateTimeOffset?`|Die Zeit, zu der die Nachricht als Nächstes sichtbar wird.|
+|`InsertionTime`|`DateTimeOffset`|Die Zeit, zu der die Nachricht der Warteschlange hinzugefügt wurde.|
+|`NextVisibleTime`|`DateTimeOffset`|Die Zeit, zu der die Nachricht als Nächstes sichtbar wird.|
 |`PopReceipt`|`string`|Die POP-Bestätigung der Nachricht.|
 
 ## <a name="trigger---poison-messages"></a>Trigger: Nicht verarbeitbare Nachrichten
@@ -251,6 +251,18 @@ Der Warteschlangentrigger stellt mehrere Metadateneigenschaften bereit. Diese Ei
 Falls eine Funktion des Warteschlangentriggers nicht erfolgreich ausgeführt werden kann, versucht Azure Functions für eine bestimmte Warteschlangennachricht bis zu fünf Mal (einschließlich des ersten Versuchs), die Funktion auszuführen. Sind alle fünf Versuche nicht erfolgreich, fügt die Functions-Laufzeit einer Warteschlange namens *&lt;Name der Originalwarteschlange>-poison* eine Nachricht hinzu. Sie können eine Funktion schreiben, um Nachrichten aus der Warteschlange für nicht verarbeitete Nachrichten zu verarbeiten, indem Sie diese protokollieren oder eine Benachrichtigung senden, dass ein manueller Eingriff erforderlich ist.
 
 Überprüfen Sie zur manuellen Behandlung nicht verarbeitbarer Nachrichten den Wert [dequeueCount](#trigger---message-metadata) der Warteschlangennachricht.
+
+## <a name="trigger---polling-algorithm"></a>Trigger: Abrufalgorithmus
+
+Der Warteschlangentrigger implementiert einen zufälligen exponentiellen Backoffalgorithmus, um die Auswirkungen des Abfragens von Warteschlangen im Leerlauf auf Speichertransaktionskosten zu reduzieren.  Wenn eine Nachricht gefunden wird, wartet die Runtime zwei Sekunden und prüft dann, ob eine andere Meldung vorhanden ist. Wenn keine Nachricht gefunden wird, wartet sie ungefähr vier Sekunden vor dem erneuten Versuch. Nach aufeinander folgenden fehlgeschlagenen Versuchen, eine Warteschlangennachricht abzurufen, erhöht sich die Wartezeit immer mehr, bis die maximale Wartezeit, standardmäßig eine Minute, erreicht ist. Die maximale Wartezeit kann über die `maxPollingInterval`-Eigenschaft in der Datei [host.json](functions-host-json.md#queues) konfiguriert werden.
+
+## <a name="trigger---concurrency"></a>Trigger: Parallelität
+
+Wenn mehrere Warteschlangennachrichten warten, ruft der Warteschlangentrigger einen Batch mit Nachrichten ab und ruft parallel Funktionsinstanzen zur Verarbeitung auf. Standardmäßig ist die Batchgröße 16. Wenn die zu verarbeitende Anzahl 8 erreicht, ruft die Runtime einen weiteren Batch ab und beginnt mit der Verarbeitung dieser Nachrichten. Aus diesem Grund beträgt die maximale Anzahl der pro Funktion auf einem virtuellen Computer verarbeiteten parallelen Nachrichten 24. Dieser Grenzwert gilt separat für jede durch Warteschlangen ausgelöste Funktion auf jedem virtuellen Computer. Wenn die Funktions-App horizontal auf mehrere virtuelle Computer hochskaliert wird, wartet jeder virtuelle Computer auf Trigger und versucht, Funktionen auszuführen. Beispiel: Wenn eine Funktions-App auf drei virtuelle Computer horizontal hochskaliert wird, beträgt die standardmäßige maximale Anzahl von parallelen Instanzen einer durch Warteschlangen ausgelösten Funktion 72.
+
+Die Batchgröße und der Schwellenwert für das Abrufen eines neuen Batches können in der Datei [host.json](functions-host-json.md#queues) konfiguriert werden. Sie können die Batchgröße auf 1 festlegen, wenn Sie die parallele Ausführung von durch Warteschlangen ausgelösten Funktionen in einer Funktions-App minimieren möchten. Diese Einstellung verhindert Parallelität nur so lange, wie Ihre Funktions-App auf einem einzelnen virtuellen Computer ausgeführt wird. 
+
+Mit dem Warteschlangentrigger wird automatisch verhindert, dass eine Funktion Warteschlangennachrichten mehrfach verarbeitet. Daher müssen keine idempotenten Funktionen geschrieben werden.
 
 ## <a name="trigger---hostjson-properties"></a>Trigger: Eigenschaften von „host.json“
 

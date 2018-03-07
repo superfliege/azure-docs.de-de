@@ -12,16 +12,16 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 23adc7fa6ee53d1c5edd10b2772f8825dbcef2a8
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 7c8563539ca8507f05fa99fdeffbf511b1540a6a
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl"></a>sfctl 
-Befehle zum Verwalten von Service Fabric-Clustern und -Entitäten. Diese Version ist mit der Service Fabric 6.0 Runtime kompatibel. Befehle folgen dem Substantiv-Verb-Muster. Weitere Informationen finden Sie in den folgenden Untergruppen.
+Befehle zum Verwalten von Service Fabric-Clustern und -Entitäten. Diese Version ist mit der Service Fabric 6.1-Runtime kompatibel. Befehle folgen dem Substantiv-Verb-Muster. Weitere Informationen finden Sie in den folgenden Untergruppen.
 
 ## <a name="subgroups"></a>Untergruppen
 |Untergruppe|BESCHREIBUNG|
@@ -33,6 +33,7 @@ Befehle zum Verwalten von Service Fabric-Clustern und -Entitäten. Diese Version
 | [is](service-fabric-sfctl-is.md)      | Ermöglicht es, Befehle an den Infrastrukturdienst abzufragen und zu senden.|
 | [Node](service-fabric-sfctl-node.md)    | Ermöglicht es, Knoten zu verwalten, die einen Cluster bilden.|
 | [partition](service-fabric-sfctl-partition.md)  | Ermöglicht es, Partitionen für jeden Dienst abzufragen und zu verwalten.|
+| property  | Speichern und Abfragen von Eigenschaften unter Service Fabric-Namen.|
 | [rpm](service-fabric-sfctl-rpm.md)        | Ermöglicht es, Befehle an den Reparatur-Manager-Dienst abzufragen und zu senden.|
 | [replica](service-fabric-sfctl-replica.md) | Ermöglicht es, Replikate zu verwalten, die zu Servicepartitionen gehören.|
 | [service](service-fabric-sfctl-service.md) | Ermöglicht es, Dienste, Diensttypen und Dienstpakete zu erstellen, zu löschen und zu verwalten.|

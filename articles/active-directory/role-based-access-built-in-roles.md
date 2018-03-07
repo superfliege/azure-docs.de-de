@@ -11,15 +11,15 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 01/30/2018
+ms.date: 02/23/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 82fa6d3f04dc528c0e2d95dae82e7a7f8787ea7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e49f555b2ae972cd3a0437fc44d2331aaeb5e955
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure umfasst die folgenden integrierten Rollen, die Benutzern, Gruppen und Diensten zugewiesen werden können. Die Definitionen integrierter Rollen können nicht geändert werden. Sie können jedoch [benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md) zur Anpassung an die spezifischen Anforderungen Ihrer Organisation erstellen.
@@ -51,6 +51,7 @@ In diesem Artikel werden nur die heute vorhandenen verschiedenen Rollen behandel
 | [Mitwirkender von BizTalk](#biztalk-contributor) |Kann BizTalk-Dienste verwalten |
 | [Mitwirkender von ClearDB-MySQL-DB](#cleardb-mysql-db-contributor) |Kann ClearDB MySQL-Datenbanken verwalten |
 | [Mitwirkender](#contributor) |Kann alles außer den Zugriff verwalten |
+| [Cosmos DB-Rolle „Kontoleser“](#cosmos-db-account-reader-role) |Kann Azure Cosmos DB-Kontodaten lesen. |
 | [Mitwirkender von Data Factory](#data-factory-contributor) |Kann Data Factorys und darin enthaltene untergeordnete Ressourcen erstellen und verwalten. |
 | [DevTest Labs-Benutzer](#devtest-labs-user) |Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten und herunterfahren |
 | [DNS Zone Contributor](#dns-zone-contributor) |Kann DNS-Zonen und -Einträge verwalten |
@@ -311,6 +312,19 @@ Kann alles außer den Zugriff verwalten
 | --- | --- |
 | Microsoft.Authorization/*/Delete |Rollen und Rollenzuweisungen können nicht gelöscht werden. |
 | Microsoft.Authorization/*/Write |Rollen und Rollenzuweisungen können nicht erstellt werden. |
+
+### <a name="cosmos-db-account-reader-role"></a>Cosmos DB-Rolle „Kontoleser“
+Kann Azure Cosmos DB-Kontodaten lesen. Informationen zum Verwalten von Azure Cosmos DB-Konten finden Sie unter [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor).
+
+| **Aktionen** |  |
+| --- | --- |
+|Microsoft.Authorization/*/read|Lesen von Rollen und Rollenzuweisungen, kann die jedem Benutzer erteilten Berechtigungen lesen|
+|Microsoft.DocumentDB/*/read|Lesen einer beliebigen Sammlung|
+|Microsoft.DocumentDB/databaseAccounts/readonlykeys/action|Lesen des Bereichs mit schreibgeschützten Schlüsseln|
+|Microsoft.Insights/Metrics/read|Lesen von Speicherkontometriken|
+|Microsoft.Insights/MetricDefinitions/read|Lesen von Metrikdefinitionen|
+|Microsoft.Resources/subscriptions/resourceGroups/read|Lesen von Ressourcengruppen|
+|Microsoft.Support/*|Erstellen und Verwalten von Support-Tickets|
 
 ### <a name="data-factory-contributor"></a>Mitwirkender von Data Factory
 Erstellt und verwaltet Data Factorys und darin enthaltene untergeordnete Ressourcen.

@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/26/2018
 ms.author: sujayt
-ms.openlocfilehash: 73b8a28fa2f2b432f12a230be9326b6696d3908a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 4383286285f02bad1645344fab43f8b6bdb145cb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure
 
@@ -153,8 +153,8 @@ Temporärer Datenträger | Immer von der Replikation ausgeschlossen | Temporäre
 Datenänderungsrate auf dem Datenträger | Maximal 10 MBit/s pro Datenträger bei Storage Premium und 2 MBit/s pro Datenträger bei Storage Standard | Wenn die durchschnittliche Datenänderungsrate auf dem Datenträger dauerhaft über 10 MBit/s (bei Premium) und 2 MBit/s (bei Standard) liegt, kann die Replikation nicht folgen. Wenn nur gelegentlich eine große Datenmenge anfällt und die Datenänderungsrate zeitweise über 10 MBit/s (bei Premium) und 2 MBit/s (bei Standard) liegt und dann zurückgeht, kann die Replikation folgen. In diesem Fall kann es möglicherweise zu etwas verzögerten Wiederherstellungspunkten kommen.
 Datenträger in Standardspeicherkonten | Unterstützt |
 Datenträger in Storage Premium-Konten | Unterstützt | Wenn ein virtueller Computer Datenträger in Premium- und Standard-Speicherkonten aufweist, können Sie für jeden Datenträger ein eigenes Zielspeicherkonto auswählen, um sicherzustellen, dass die gleiche Speicherkonfiguration in der Zielregion vorhanden ist.
-Verwaltete Standard-Datenträger | Nicht unterstützt |  
-Verwaltete Premium-Datenträger | Nicht unterstützt |
+Verwaltete Standard-Datenträger | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. Government-Clouds werden momentan nicht unterstützt.  |  
+Verwaltete Premium-Datenträger | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. Government-Clouds werden momentan nicht unterstützt. |
 Speicherplätze | Unterstützt |         
 Verschlüsselung ruhender Daten (SSE) | Unterstützt | Für Cache- und Zielspeicherkonten können Sie ein Speicherkonto mit aktiviertem SSE auswählen.     
 Azure Disk Encryption (ADE) | Nicht unterstützt |

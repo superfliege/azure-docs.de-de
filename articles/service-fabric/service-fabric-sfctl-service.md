@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5c1f485812918397b5b52e650611032c9058e3ee
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5b30d3732ff00e5bb79e2d58a9f0b3e5b29dedf8
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-service"></a>sfctl service
 Ermöglicht es, Dienste, Diensttypen und Dienstpakete zu erstellen, zu löschen und zu verwalten.
@@ -34,6 +34,7 @@ Ermöglicht es, Dienste, Diensttypen und Dienstpakete zu erstellen, zu löschen 
 |    deployed-type  | Ruft die Informationen zu einem angegebenen Diensttyp der Anwendung ab, die auf einem Knoten in einem Service Fabric-Cluster bereitgestellt wird.|
 |    deployed-type-list| Ruft die Liste ab, die die Informationen zu den Diensttypen der Anwendungen enthält, die auf einem Knoten in einem Service Fabric-Cluster bereitgestellt werden.|
 |    Beschreibung    | Ruft die Beschreibung eines vorhandenen Service Fabric-Diensts ab.|
+|get-container-logs| Ruft die Containerprotokolle für Container ab, die auf einem Service Fabric-Knoten bereitgestellt wurden.|
 |    health         | Ruft die Integrität des angegebenen Service Fabric-Diensts ab.|
 |    info           | Ruft die Informationen zu dem speziellen Dienst ab, der zu einer Service Fabric-Anwendung gehört.|
 |    list           | Ruft die Informationen zu allen Diensten ab, die zu der Anwendung gehören, die durch die Anwendungs-ID angegeben ist.|
@@ -56,7 +57,7 @@ Erstellt den angegebenen Service Fabric-Dienst aus der Beschreibung.
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --app-id [erforderlich]| Die Identität (ID) der übergeordneten Anwendung. Dies ist üblicherweise die vollständige ID der Anwendung ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric://meineapp/app1“, hat die Anwendungsidentität in 6.0+ den Wert „meineapp~app1“ und in früheren Versionen den Wert „meineapp/app1“.|
+| --app-id [erforderlich]| Die Identität (ID) der übergeordneten Anwendung. Dies ist üblicherweise die vollständige ID der Anwendung ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric://meineapp/app1“, hat die Anwendungsidentität in 6.0 und höher den Wert „meineapp~app1“ und in früheren Versionen den Wert „meineapp/app1“.|
 | --name [erforderlich]| Der Name des Diensts. Dies muss ein untergeordnetes Element der Anwendungs-ID sein.           Dies ist der vollständige Name einschließlich des URI `fabric:`. Beispielsweise ist der Dienst `fabric:/A/B` ein untergeordnetes Element der Anwendung `fabric:/A`.|
 | --service-type [erforderlich]| Den Name des Diensttyps.|
 | --activation-mode     | Der Aktivierungsmodus für das Dienstpaket.|
@@ -143,7 +144,7 @@ Ruft die Beschreibung eines vorhandenen Service Fabric-Diensts ab. Ein Dienst mu
 ## <a name="sfctl-service-health"></a>sfctl service health
 Ruft die Integrität des angegebenen Service Fabric-Diensts ab.
 
-Ruft die Integritätsinformationen des angegebenen Diensts ab. Verwenden Sie „EventsHealthStateFilter“, um die Sammlung der Integritätsereignisse (HealthEvents), die für den Dienst gemeldet wurden, anhand des Integritätsstatus zu filtern. Verwenden Sie „PartitionsHealthStateFilter“, um die zurückgegebene Sammlung von Partitionen zu filtern. Geben Sie einen Dienst an, die im Integritätsspeicher nicht vorhanden ist, gibt dieses Cmdlet einen Fehler zurück. zu erstellen und zu verwalten.
+Ruft die Integritätsinformationen des angegebenen Diensts ab. Verwenden Sie „EventsHealthStateFilter“, um die Sammlung der Integritätsereignisse (HealthEvents), die für den Dienst gemeldet wurden, anhand des Integritätsstatus zu filtern. Verwenden Sie „PartitionsHealthStateFilter“, um die zurückgegebene Sammlung von Partitionen zu filtern. Geben Sie einen Dienst an, die im Integritätsspeicher nicht vorhanden ist, gibt dieses Cmdlet einen Fehler zurück.
 
 ### <a name="arguments"></a>Argumente
 
@@ -174,7 +175,7 @@ Gibt die Informationen zu dem angegebenen Dienst ab, der zu der angegebenen Serv
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --application-id [erforderlich]| Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric://meineapp/app1“, hat die Anwendungsidentität in 6.0+ den Wert „meineapp~app1“ und in früheren Versionen den Wert „meineapp/app1“.|
+| --application-id [erforderlich]| Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric://meineapp/app1“, hat die Anwendungsidentität in 6.0 und höher den Wert „meineapp~app1“ und in früheren Versionen den Wert „meineapp/app1“.|
 | --service-id [erforderlich]| Die Identität (ID) des Diensts. Dies ist üblicherweise der vollständige Name des Diensts ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat der Dienst beispielsweise den Namen „fabric://meineapp/app1/dienst1“, hat die Dienstidentität in 6.0+ den Wert „meineapp~app1~dienst1“ und in früheren Versionen den Wert „meineapp/app1/dienst1“.|
 | --timeout -t            | Servertimeout in Sekunden.  Standardwert: 60.|
 
@@ -197,7 +198,7 @@ Gibt die Informationen zu allen Diensten zurück, die zu der Anwendung gehören,
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --application-id [erforderlich]| Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric://meineapp/app1“, hat die Anwendungsidentität in 6.0+ den Wert „meineapp~app1“ und in früheren Versionen den Wert „meineapp/app1“.|
+| --application-id [erforderlich]| Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric://meineapp/app1“, hat die Anwendungsidentität in 6.0 und höher den Wert „meineapp~app1“ und in früheren Versionen den Wert „meineapp/app1“.|
 | --continuation-token    | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein.|
 | --service-type-name     | Der Diensttypname, der zum Filtern der Dienste verwendet wird, die abgefragt werden sollen.|
 | --timeout -t            | Servertimeout in Sekunden.  Standardwert: 60.|

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: 91ea23b732f520b02af7e9a9dd77ee62190a520c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: d72e10332263fac0b0ca0f937d394d2832d88781
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen
 Dieses Dokument veranschaulicht, wie Features für Daten in einem Azure HDInsight Hadoop-Cluster mithilfe von Hive-Abfragen erstellt werden. Diese Hive-Abfragen verwenden eingebettete Hive-UDFs (User Defined Function, benutzerdefinierte Funktion), für die die Skripts bereitgestellt werden.
@@ -93,14 +93,14 @@ Hive bietet eine Reihe von UDFs für die Verarbeitung von "datetime"-Feldern. In
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Bei dieser Hive-Abfrage wird vorausgesetzt, dass das *&#60;Datum/Uhrzeit-Feld>* im Standardformat für „datetime“ vorliegt.
+Bei dieser Hive-Abfrage wird vorausgesetzt, dass das *<datetime field>* im Standardformat für „datetime“ vorliegt.
 
 Liegt ein "datetime"-Feld nicht im Standardformat vor, muss zunächst das "datetime"-Feld in einen Unix-Zeitstempel konvertierten werden, der dann in eine "datetime"-Zeichenfolge im Standardformat konvertiert wird. Wenn "datetime" das Standardformat aufweist, können Sie die eingebetteten "datetime"-UDFs anwenden, um Funktionen zu extrahieren.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Wenn das *&#60;Datum/Uhrzeit-Feld>* bei dieser Abfrage das Muster *03/26/2015 12:04:39* hat, muss das *'&#60;Muster des Datum/Uhrzeit-Felds>'* `'MM/dd/yyyy HH:mm:ss'` sein. Zum Testen können Sie folgenden Code ausführen:
+Wenn in dieser Abfrage das *<datetime field>* ein Muster wie *03/26/2015 12:04:39* aufweist, sollte das *<pattern of the datetime field>'* wie folgt aussehen: `'MM/dd/yyyy HH:mm:ss'`. Zum Testen können Sie folgenden Code ausführen:
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -143,7 +143,7 @@ Eine vollständige Liste der eingebetteten Hive-UDFs finden Sie im Abschnitt **B
 ## <a name="tuning"></a> Weiterführende Themen: Optimieren von Hive-Parametern zur Verbesserung der Abfragegeschwindigkeit
 Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich möglicherweise nicht für die Hive-Abfragen und die von den Abfragen verarbeiteten Daten. In diesem Abschnitt werden einige Parameter beschrieben, mit denen Sie die Leistung der Hive-Abfragen optimieren können. Sie müssen die Abfragen zur Parameteroptimierung vor den Abfragen der Verarbeitungsdaten einfügen.
 
-1. **Java-Heapspeicher:** Für Abfragen, bei denen große Datasets zusammengeführt oder lange Datensätze verarbeitet werden, besteht ein typischer Fehler darin, dass **nicht genügend Heapspeicher verfügbar ist**. Dieser Fehler kann durch Festlegen der Parameter *mapreduce.map.java.opts* und *mapreduce.task.io.sort.mb* auf die gewünschten Werte vermieden werden. Beispiel:
+1. **Java-Heapspeicher:** Für Abfragen, bei denen große Datasets zusammengeführt oder lange Datensätze verarbeitet werden, besteht ein typischer Fehler darin, dass **nicht genügend Heapspeicher verfügbar ist**. Dieser Fehler kann durch Festlegen der Parameter *mapreduce.map.java.opts* und *mapreduce.task.io.sort.mb* auf die gewünschten Werte vermieden werden. Beispiel: 
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;

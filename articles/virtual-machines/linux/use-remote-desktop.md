@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 33b9c36d4600646c36a519e647bd8cc8b6d68666
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1aa75b87b01417b8864632b7a09539bd6be05d0b
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für diesen Artikel ist ein vorhandener virtueller Linux-Computer in Azure erforderlich. Wenn Sie eine VM erstellen müssen, verwenden Sie eine der folgenden Methoden:
+Für diesen Artikel ist ein vorhandener virtueller Ubuntu 16.04 LTS-Computer (VM) in Azure erforderlich. Wenn Sie eine VM erstellen müssen, verwenden Sie eine der folgenden Methoden:
 
 - Die [Azure CLI 2.0](quick-create-cli.md)
 - Das [Azure-Portal](quick-create-portal.md)
@@ -34,7 +34,7 @@ Für diesen Artikel ist ein vorhandener virtueller Linux-Computer in Azure erfor
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Installieren Sie eine Desktopumgebung auf Ihrem virtuellen Linux-Computer
 Auf den meisten virtuellen Linux-Computern in Azure ist standardmäßig keine Desktopumgebung installiert. Virtuelle Linux-Computer werden üblicherweise mithilfe von SSH-Verbindungen anstelle einer Desktopumgebung verwaltet. Unter Linux stehen verschiedene Desktopumgebungen zur Wahl. Je nach der gewählten Desktopumgebung werden 1 bis 2 GB Speicherplatz auf dem Datenträger und 5 bis 10 Minuten zum Installieren und Konfigurieren aller erforderlichen Pakete benötigt.
 
-Im folgenden Beispiel wird die schlanke [XFCE4](https://www.xfce.org/)-Desktopumgebung auf einem virtuellen Ubuntu-Computer installiert. Die Befehle für andere Distributionen weichen geringfügig ab (verwenden Sie beispielsweise `yum`, um unter Red Hat Enterprise Linux zu installieren und passende `selinux`-Regeln zu konfigurieren, oder verwenden Sie `zypper` für die Installation unter SUSE).
+Im folgenden Beispiel wird die schlanke [XFCE4](https://www.xfce.org/)-Desktopumgebung auf einem virtuellen Ubuntu 16.04 LTS-Computer (VM) installiert. Die Befehle für andere Distributionen weichen geringfügig ab (verwenden Sie beispielsweise `yum`, um unter Red Hat Enterprise Linux zu installieren und passende `selinux`-Regeln zu konfigurieren, oder verwenden Sie `zypper` für die Installation unter SUSE).
 
 Stellen Sie zuerst eine SSH-Verbindung mit Ihrer VM her. Im folgenden Beispiel wird eine Verbindung mit dem virtuellen Computer namens *myvm.westus.cloudapp.azure.com* mit dem Benutzernamen *azureuser* hergestellt:
 

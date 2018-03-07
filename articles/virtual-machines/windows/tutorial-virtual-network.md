@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/12/2017
+ms.date: 02/27/2018
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: 21f2d586a4c468071bec55c65005b35baf323fe7
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 3a59d85ea19ba6670ffbb60aa9b764560a3567a0
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Verwalten von virtuellen Azure-Netzwerken und virtuellen Windows-Computern mit Azure PowerShell
 
@@ -32,6 +32,14 @@ Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommuni
 > * Erstellen eines virtuellen Front-End-Computers
 > * Netzwerkdatenverkehr absichern
 > * Erstellen des virtuellen Back-End-Computers
+
+
+
+Für dieses Tutorial ist das AzureRM.Compute-Modul Version 4.3.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM.Compute` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+
+## <a name="vm-networking-overview"></a>Übersicht über VM-Netzwerke
+
+Virtuelle Azure-Netzwerke ermöglichen sichere Netzwerkverbindungen zwischen virtuellen Computern, dem Internet und anderen Azure-Diensten wie Azure SQL-Datenbank. Virtuelle Netzwerke werden in logische Segmente, sogenannte Subnetze, unterteilt. Subnetze dienen zur Steuerung des Netzwerkdatenflusses und als Sicherheitsgrenze. Bei der Bereitstellung eines virtuellen Computers ist in der Regel eine virtuelle Netzwerkschnittstelle enthalten, die an ein Subnetz angefügt ist.
 
 Während der Durchführung dieses Tutorials werden die folgenden Ressourcen erstellt:
 
@@ -47,11 +55,6 @@ Während der Durchführung dieses Tutorials werden die folgenden Ressourcen erst
 - *myBackendNic*: Die von *myBackendVM* für die Kommunikation mit *myFrontendVM* verwendete Netzwerkschnittstelle.
 - *myBackendVM*: Der virtuelle Computer, der Port 1433 für die Kommunikation mit *myFrontendVM* verwendet.
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
-
-## <a name="vm-networking-overview"></a>Übersicht über VM-Netzwerke
-
-Virtuelle Azure-Netzwerke ermöglichen sichere Netzwerkverbindungen zwischen virtuellen Computern, dem Internet und anderen Azure-Diensten wie Azure SQL-Datenbank. Virtuelle Netzwerke werden in logische Segmente, sogenannte Subnetze, unterteilt. Subnetze dienen zur Steuerung des Netzwerkdatenflusses und als Sicherheitsgrenze. Bei der Bereitstellung eines virtuellen Computers ist in der Regel eine virtuelle Netzwerkschnittstelle enthalten, die an ein Subnetz angefügt ist.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Erstellen eines virtuellen Netzwerks und des Subnetzes
 
@@ -122,7 +125,7 @@ Ein virtueller Computer muss für die Kommunikation in einem virtuellen Netzwerk
 $frontendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
-  -Name myFrontendNic `
+  -Name myFrontend `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id
 ```
@@ -133,38 +136,18 @@ Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5
 $cred = Get-Credential
 ```
 
-Erstellen Sie die virtuellen Computer mit [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig), [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem), [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk), [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) und [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
+Erstellen Sie die VMs mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
 
 ```azurepowershell-interactive
-$frontendVM = New-AzureRmVMConfig `
-    -VMName myFrontendVM `
-    -VMSize Standard_D1
-$frontendVM = Set-AzureRmVMOperatingSystem `
-    -VM $frontendVM `
-    -Windows `
-    -ComputerName myFrontendVM `
-    -Credential $cred `
-    -ProvisionVMAgent `
-    -EnableAutoUpdate
-$frontendVM = Set-AzureRmVMSourceImage `
-    -VM $frontendVM `
-    -PublisherName MicrosoftWindowsServer `
-    -Offer WindowsServer `
-    -Skus 2016-Datacenter `
-    -Version latest
-$frontendVM = Set-AzureRmVMOSDisk `
-    -VM $frontendVM `
-    -Name myFrontendOSDisk `
-    -DiskSizeInGB 128 `
-    -CreateOption FromImage `
-    -Caching ReadWrite
-$frontendVM = Add-AzureRmVMNetworkInterface `
-    -VM $frontendVM `
-    -Id $frontendNic.Id
 New-AzureRmVM `
-    -ResourceGroupName myRGNetwork `
-    -Location EastUS `
-    -VM $frontendVM
+   -Credential $cred `
+   -Name myFrontend `
+   -PublicIpAddressName myPublicIPAddress `
+   -ResourceGroupName myRGNetwork `
+   -Location "EastUS" `
+   -Size Standard_D1 `
+   -SubnetName myFrontendSubnet `
+   -VirtualNetworkName myVNet
 ```
 
 ## <a name="secure-network-traffic"></a>Netzwerkdatenverkehr absichern
@@ -264,7 +247,7 @@ Erstellen Sie *myBackendNic*:
 $backendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
-  -Name myBackendNic `
+  -Name myBackend `
   -SubnetId $vnet.Subnets[1].Id
 ```
 
@@ -274,38 +257,17 @@ Legen Sie mit „Get-Credential“ den Benutzernamen und das Kennwort für das A
 $cred = Get-Credential
 ```
 
-Erstellen Sie *myBackendVM*:
+Erstellen Sie *myBackendVM*.
 
 ```azurepowershell-interactive
-$backendVM = New-AzureRmVMConfig `
-  -VMName myBackendVM `
-  -VMSize Standard_D1
-$backendVM = Set-AzureRmVMOperatingSystem `
-  -VM $backendVM `
-  -Windows `
-  -ComputerName myBackendVM `
-  -Credential $cred `
-  -ProvisionVMAgent `
-  -EnableAutoUpdate
-$backendVM = Set-AzureRmVMSourceImage `
-  -VM $backendVM `
-  -PublisherName MicrosoftSQLServer `
-  -Offer SQL2016SP1-WS2016 `
-  -Skus Enterprise `
-  -Version latest
-$backendVM = Set-AzureRmVMOSDisk `
-  -VM $backendVM `
-  -Name myBackendOSDisk `
-  -DiskSizeInGB 128 `
-  -CreateOption FromImage `
-  -Caching ReadWrite
-$backendVM = Add-AzureRmVMNetworkInterface `
-  -VM $backendVM `
-  -Id $backendNic.Id
 New-AzureRmVM `
-  -ResourceGroupName myRGNetwork `
-  -Location EastUS `
-  -VM $backendVM
+   -Credential $cred `
+   -Name myBackend `
+   -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
+   -ResourceGroupName myRGNetwork `
+   -Location "EastUS" `
+   -SubnetName myFrontendSubnet `
+   -VirtualNetworkName myVNet
 ```
 
 In dem verwendeten Image ist SQL Server installiert, wird aber in diesem Tutorial nicht verwendet. SQL Server ist enthalten, damit Sie sehen, wie Sie einen virtuellen Computer für die Verarbeitung des Webdatenverkehrs und einen virtuellen Computer für die Verarbeitung der Datenbankverwaltung konfigurieren können.

@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 12/06/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 46d9ca0bf6c9ddf95c147fc2eb62d275c973845e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5ed517cf8d70cd279a55b79ad448709116cf511b
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Debuggen eines C#-Moduls mit Azure IoT Edge
 Dieser Artikel enthält detaillierte Anweisungen für die Verwendung von [Visual Studio Code](https://code.visualstudio.com/) als Hauptentwicklungstool zum Debuggen Ihrer Azure IoT Edge-Module.
@@ -47,7 +47,7 @@ Nach Abschluss des vorherigen Tutorials sollten Sie die folgenden Elemente vorbe
 
 2. Navigieren Sie in `launch.json` zum Abschnitt **Benutzerdefiniertes IoT Edge-Modul (.NET Core) debuggen**. Geben Sie unter **pipeArgs** einen Wert für `<container_name>` ein. Dieses sollte in diesem Tutorial das Format `filtermodule` aufweisen.
 
-    ![Screenshot des VS Code-Debugfensters](./media/how-to-debug-csharp-module/f5-debug-option.png)
+    ![Screenshot der VS Code-Datei „launch.json“](./media/how-to-debug-csharp-module/add-container-name.png)
 
 3. Navigieren Sie zu **Program.cs**. Fügen Sie einen Haltepunkt in `method static async Task<MessageResponse> FilterModule(Message message, object userContext)` hinzu.
 4. Drücken Sie erneut **F5**, und wählen Sie den Prozess aus, an den die Anfügung erfolgen soll. In diesem Tutorial sollte der Name des Prozesses `FilterModule.dll` sein.

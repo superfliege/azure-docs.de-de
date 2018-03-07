@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: f21561269e90e3643ef5d8d48ee28712ee7f611c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db6ad8b83ce34a8b86de822bc074e8a13345a1b4
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Einrichten eines Linux-Service Fabric-Clusters auf Ihrem Windows-Entwicklungscomputer
 
@@ -29,7 +29,6 @@ Linux-basierte Service Fabric-Cluster werden nicht nativ unter Windows ausgefüh
 
 * Mindestens 4 GB RAM
 * Neueste Version von [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
-* Zugriff auf ein [Docker-Containerimage](https://hub.docker.com/r/servicefabricoss/service-fabric-onebox/) vom Typ „Service Fabric One-box“
 
 >[!TIP]
 > * Sie können die in der offiziellen Docker-[Dokumentation](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) beschriebenen Schritte ausführen, um Docker auf Ihrem Windows-Computer zu installieren. 
@@ -42,7 +41,7 @@ Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzur
 1. Rufen Sie das Image per Pullvorgang aus dem Docker-Hub-Repository ab:
 
     ```powershell
-    docker pull servicefabricoss/service-fabric-onebox
+    docker pull microsoft/service-fabric-onebox
     ```
 
 2. Aktualisieren Sie wie folgt die Konfiguration des Docker-Daemons auf dem Host, und starten Sie den Docker-Daemon neu: 
@@ -58,11 +57,11 @@ Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzur
 3. Starten Sie eine Service Fabric-One-box-Containerinstanz mit dem Image:
 
     ```powershell
-    docker run -itd -p 19080:19080 --name sfonebox servicefabricoss/service-fabric-onebox
+    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
     ```
     >[!TIP]
     > * Indem Sie einen Namen für Ihre Containerinstanz angeben, verbessern Sie die Lesbarkeit. 
-    > * Wenn Ihre Anwendung an bestimmten Ports lauscht, müssen diese mit zusätzlichen Tags vom Typ „-p“ angegeben werden. Beispiel: Wenn Ihre Anwendung an Port 8080 lauscht, führen Sie „docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox servicefabricoss/service-fabric-onebox“ aus.
+    > * Wenn Ihre Anwendung an bestimmten Ports lauscht, müssen diese mit zusätzlichen Tags vom Typ „-p“ angegeben werden. Beispiel: Wenn Ihre Anwendung an Port 8080 lauscht, führen Sie „docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox“ aus.
 
 4. Melden Sie sich im interaktiven SSH-Modus am Docker-Container an:
 

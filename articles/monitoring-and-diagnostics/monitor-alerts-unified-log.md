@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: f6072e4e8a9ab72f677c35e498e31b5218579f1b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 438776e7f0885dbdb0d66ccdd18d854e14beb299
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Protokollwarnungen in Azure Monitor – Warnungen (Vorschauversion)
 Dieser Artikel enthält Details zur Funktionsweise von Warnungsregeln in Analytics-Abfragen auf der Azure-Oberfläche „Warnungen (Vorschauversion)“ und beschreibt die Unterschiede verschiedener Arten von Protokollwarnungsregeln.
@@ -27,11 +27,20 @@ Derzeit unterstützen Azure-Warnungen (Vorschau) Protokollwarnungen zu Abfragen 
 
 > [!WARNING]
 
-> Derzeit unterstützen Protokollwarnungen in Azure-Warnungen (Vorschau) keine arbeitsbereichs- oder App-übergreifenden Abfragen.
+> Protokollwarnungen in Azure-Warnungen (Vorschau) unterstützen derzeit keine arbeitsbereichs- oder App-übergreifenden Abfragen.
+
+Benutzer können ihre Abfragen zudem in der Analytics-Plattform ihrer Wahl in Azure optimieren und anschließend *die Abfrage speichern, um sie in Warnungen (Vorschau) zu importieren*. Vorgehensweise:
+- Für Application Insights: Überprüfen Sie die Abfrage und ihre Ergebnisse im Analytics-Portal. Speichern Sie sie dann unter einem eindeutigen Namen in *Freigegebene Abfragen*.
+- Für Log Analytics: Überprüfen Sie die Abfrage und ihre Ergebnisse in der Protokollsuche. Speichern Sie sie dann unter einem eindeutigen Namen in einer beliebigen Kategorie.
+
+Die gespeicherte Warnung wird daraufhin beim [Erstellen einer Protokollwarnung in Warnungen (Vorschau)](monitor-alerts-unified-usage.md) als Signaltyp **Protokoll (gespeicherte Abfrage)** aufgelistet, wie im folgenden Beispiel zu sehen: ![In Warnungen importierte gespeicherte Abfrage](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+
+> [!NOTE]
+> Die Verwendung von **Protokoll (gespeicherte Abfrage)** hat einen Import in Warnungen zur Folge. Das bedeutet, dass jegliche Änderung, die danach in Analytics vorgenommen wird, in den gespeicherten Warnungsregeln nicht berücksichtigt wird (und umgekehrt).
 
 ## <a name="log-alert-rules"></a>Protokollwarnungsregeln
 
-Warnungen werden mithilfe der Azure-Oberfläche „Warnungen (Vorschauversion)“ erstellt, für die in regelmäßigen Abständen automatisch Protokollabfragen ausgeführt werden.  Wenn die Ergebnisse der Protokollabfrage bestimmte Kriterien erfüllen, wird ein Warnungsdatensatz erstellt. Die Regel kann dann automatisch eine oder mehrere Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess wie das Ausführen von Runbooks mittels [Aktionsgruppen](monitoring-action-groups.md) aufzurufen.  Verschiedene Typen von Warnungsregeln verwenden für diese Analyse unterschiedliche Logik.
+Warnungen werden mithilfe der Azure-Oberfläche „Warnungen (Vorschauversion)“ erstellt, für die in regelmäßigen Abständen automatisch Protokollabfragen ausgeführt werden.  Wenn die Ergebnisse der Protokollabfrage bestimmte Kriterien erfüllen, wird ein Warnungsdatensatz erstellt. Die Regel kann dann automatisch Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess wie das Senden von Daten an eine externe Anwendung mit [JSON-basiertem Webhook](monitor-alerts-unified-log-webhook.md) unter Verwendung von [Aktionsgruppen](monitoring-action-groups.md) aufzurufen. Verschiedene Typen von Warnungsregeln verwenden für diese Analyse unterschiedliche Logik.
 
 Warnungsregeln werden anhand der folgenden Details definiert:
 
@@ -47,24 +56,26 @@ Es gibt zwei Typen von Warnungsregeln in Log Analytics.  Diese Typen werden in d
 
 Die Unterschiede zwischen den Warnungsregeltypen sind wie folgt.
 
-- Die Warnungsregel **Anzahl von Ergebnissen** erstellt stets eine einzelne Warnung, während die Warnungsregel **Metrische Maßeinheit** eine Warnung für jedes Objekt erzeugt, das den Schwellenwert überschreitet.
+- Warnungsregeln vom Typ „Anzahl von Ergebnissen“ erstellen stets eine einzelne Warnung, während die Warnungsregel **Metrische Maßeinheit** eine Warnung für jedes Objekt erzeugt, das den Schwellenwert überschreitet.
 - Warnungsregeln vom Typ **Anzahl von Ergebnissen** erzeugen eine Warnung, wenn der Schwellenwert ein einziges Mal überschritten wird. Warnungsregeln des Typs **Metrische Maßeinheit** können eine Warnung generieren, wenn der Schwellenwert in einem bestimmten Zeitintervall mit einer bestimmten Häufigkeit überschritten wird.
 
 ## <a name="number-of-results-alert-rules"></a>Warnungsregeln des Typs „Anzahl von Ergebnissen“
-Warnungsregeln des Typs **Anzahl von Ergebnissen** erzeugen eine einzige Warnung, wenn die von der Suchabfrage zurückgegebene Anzahl von Datensätze den angegebenen Schwellenwert überschreitet.
+Warnungsregeln des Typs **Anzahl von Ergebnissen** erzeugen eine einzige Warnung, wenn die von der Suchabfrage zurückgegebene Anzahl von Datensätze den angegebenen Schwellenwert überschreitet. Diese Art von Warnungsregel eignet sich optimal für Ereignisse wie Windows-Ereignisprotokolle, Syslog, WebApp-Antwort und benutzerdefinierte Protokolle.  Es kann ratsam sein, eine Warnung zu erstellen, wenn ein bestimmtes Fehlerereignis erstellt wird oder wenn mehrere Fehlerereignisse innerhalb eines bestimmten Zeitfensters erstellt werden.
 
-**Schwellenwert**: Der Schwellenwert für die Warnungsregel **Anzahl von Ergebnissen** ist größer oder kleiner als ein bestimmter Wert.  Eine Warnung wird erstellt, wenn die Anzahl der von der Protokollsuche zurückgegebenen Datensätze dieses Kriterium erfüllt.
+**Schwellenwert**: Der Schwellenwert für Warnungsregeln vom Typ „Anzahl von Ergebnissen“ ist größer oder kleiner als ein bestimmter Wert.  Eine Warnung wird erstellt, wenn die Anzahl der von der Protokollsuche zurückgegebenen Datensätze dieses Kriterium erfüllt.
 
-### <a name="scenarios"></a>Szenarien
-
-#### <a name="events"></a>Ereignisse
-Diese Art von Warnungsregel ist ideal für das Arbeiten mit Ereignissen wie Windows-Ereignisprotokollen, Syslog und benutzerdefinierten Protokollen.  Es kann ratsam sein, eine Warnung zu erstellen, wenn ein bestimmtes Fehlerereignis erstellt wird oder wenn mehrere Fehlerereignisse innerhalb eines bestimmten Zeitfensters erstellt werden.
-
-Legen Sie zum Auslösen einer Warnung aufgrund eines einzelnen Ereignisses die Anzahl von Ergebnissen auf einen Wert größer als 0 und sowohl die Häufigkeit als auch das Zeitfenster auf 5 Minuten fest.  Die Abfrage wird dann alle 5 Minuten ausgeführt. Außerdem wird eine Prüfung auf das Vorhandensein eines einzelnen Ereignisses durchgeführt, das seit der letzten Ausführung der Abfrage erstellt wurde.  Bei einem längeren Intervall verlängert sich ggf. der Zeitraum zwischen der Ereigniserfassung und der Warnungserstellung.
-
-Für einige Anwendungen wird unter Umständen gelegentlich ein Fehler protokolliert, für den nicht unbedingt eine Warnung ausgelöst werden muss.  Es kann beispielsweise sein, dass die Anwendung versucht, den Vorgang mit dem Fehler erneut durchzuführen, und dass der Vorgang dann erfolgreich ist.  In diesem Fall sollten Sie die Warnung ggf. nur erstellen, wenn mehrere Ereignisse innerhalb eines bestimmten Zeitfensters erstellt werden.  
+Wenn eine Warnung für ein einzelnes Ereignis generiert werden soll, legen Sie die Anzahl von Ergebnissen auf größer Null fest, und überprüfen Sie, ob seit der letzten Ausführung der Abfrage ein einzelnes Ereignis aufgetreten ist. Für einige Anwendungen wird unter Umständen gelegentlich ein Fehler protokolliert, für den nicht unbedingt eine Warnung ausgelöst werden muss.  Es kann beispielsweise sein, dass die Anwendung versucht, den Vorgang mit dem Fehler erneut durchzuführen, und dass der Vorgang dann erfolgreich ist.  In diesem Fall sollten Sie die Warnung ggf. nur erstellen, wenn mehrere Ereignisse innerhalb eines bestimmten Zeitfensters erstellt werden.  
 
 Es kann auch vorkommen, dass Sie eine Warnung erstellen möchten, ohne dass ein entsprechendes Ereignis vorliegt.  Für einen Prozess können beispielsweise regelmäßig Ereignisse protokolliert werden, um anzugeben, dass er richtig funktioniert.  Wenn innerhalb eines bestimmten Zeitfensters nicht eines dieser Ereignisse protokolliert wird, sollte eine Warnung erstellt werden.  In diesem Fall sollten Sie den Schwellenwert auf **Kleiner als 1** festlegen.
+
+### <a name="example"></a>Beispiel
+Angenommen, Sie möchten wissen, wann Ihre webbasierte App einem Benutzer eine Antwort mit dem Code 500 (interner Fehler) zurückgibt. Dazu erstellen Sie eine Warnungsregel mit den folgenden Details:  
+**Abfrage:** requests | where resultCode == "500"<br>
+**Zeitfenster**: 30 Minuten<br>
+**Warnungshäufigkeit**: Fünf Minuten<br>
+**Schwellenwert**: Größer Null<br>
+
+In diesem Fall wird die Abfrage alle fünf Minuten mit Daten für 30 Minuten ausgeführt, um nach Datensätzen mit dem Ergebniscode 500 zu suchen. Sobald ein solcher Datensatz gefunden wird, werden die Warnung und die konfigurierte Aktion ausgelöst.
 
 ## <a name="metric-measurement-alert-rules"></a>Warnungsregeln des Typs „Metrische Maßeinheit“
 
@@ -74,7 +85,7 @@ Warnungsregeln des Typs **Metrische Maßeinheit** erzeugen eine Warnung für jed
 
 > [!NOTE]
 
-> Die Aggregatfunktion in der Abfrage muss als „AggregatedValue“ benannt und aufgerufen werden und einen numerischen Wert bereitstellen.
+> Die Aggregatfunktion in der Abfrage muss als „AggregatedValue“ benannt und aufgerufen werden und einen numerischen Wert bereitstellen. 
 
 
 **Gruppenfeld**: Ein Datensatz mit einem aggregierten Wert wird für jede Instanz dieses Felds erstellt, und für jede kann eine Warnung generiert werden.  Wenn Sie beispielsweise eine Warnung für jeden Computer generieren möchten, wählen Sie **Computer**.   
@@ -84,6 +95,8 @@ Warnungsregeln des Typs **Metrische Maßeinheit** erzeugen eine Warnung für jed
 > Bei Warnungsregeln für Metrikmessungen, die auf Application Insights basieren, können Sie das Feld für die Gruppierung der Daten angeben. Verwenden Sie zu diesem Zweck die Option **Aggregieren auf** in der Regeldefinition.   
 
 **Intervall**: Definiert das Zeitintervall, über das die Daten aggregiert werden.  Bei Angabe von **Fünf Minuten** wird beispielsweise ein Datensatz für jede Instanz des Gruppenfelds erstellt, das für das für die Warnung angegebene Zeitfenster in 5-Minuten-Intervallen aggregiert wird.
+> [!NOTE]
+> In der Abfrage muss die Funktion „bin“ verwendet werden. Sollte die Verwendung der Funktion „bin“ zu ungleichen Zeitintervallen für das Zeitfenster führen, wird stattdessen die Funktion „bin_at“ verwendet, um sicherzustellen, dass ein Fixpunkt vorhanden ist.
 
 **Schwellenwert**: Der Schwellenwert für Warnungsregeln des Typs „Metrische Maßeinheit“ wird mittels eines Aggregatwerts und einer Anzahl von Verstößen definiert.  Wenn bei der Protokollsuche ein Datenpunkt diesen Wert überschreitet, gilt dies als Verstoß.  Wenn die Anzahl der Verstöße für ein beliebiges Objekt in den Ergebnissen den angegebenen Wert überschreitet, wird eine Warnung für dieses Objekt generiert.
 
@@ -104,6 +117,8 @@ Bei diesem Beispiel werden separate Warnungen für srv02 und srv03 erstellt, da 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Machen Sie sich mit [Webhookaktionen für Protokollwarnungen](monitor-alerts-unified-log-webhook.md) vertraut.
 * [Verschaffen Sie sich einen Überblick über Azure-Warnungen (Vorschauversion).](monitoring-overview-unified-alerts.md)
 * Erfahren Sie mehr über die [Verwendung von Azure-Warnungen (Vorschauversion).](monitor-alerts-unified-usage.md)
+* Informieren Sie sich ausführlicher über [Application Insights](../application-insights/app-insights-analytics.md).
 * Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md).    
