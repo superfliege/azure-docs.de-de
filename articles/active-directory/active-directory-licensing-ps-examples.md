@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
-ms.openlocfilehash: 82d4bdbe60fe403ea07ed958e9aec9dbf4e9fbb8
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 6a518f9c7ddb11de2b459d5d28c404316eb62355
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell-Beispiele für die gruppenbasierte Lizenzierung in Azure AD
 
@@ -27,6 +27,9 @@ Die vollständige Funktionalität für die gruppenbasierte Lizenzierung steht ü
 
 > [!NOTE]
 > Bevor Sie mit der Ausführung von Cmdlets beginnen, stellen Sie zuerst sicher, dass Sie durch Ausführen des Cmdlets `Connect-MsolService` eine Verbindung mit Ihrem Mandanten herstellen.
+
+>[!WARNING]
+>Dieser Code dient als Beispiel zu Demonstrationszwecken. Wenn Sie ihn in Ihrer Umgebung verwenden möchten, sollten Sie den Code zunächst in kleinerem Umfang oder in einem separaten Testmandanten testen. Passen Sie den Code hierzu ggf. an die spezifischen Anforderungen Ihrer Umgebung an.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>Anzeigen der einer Gruppe zugewiesenen Produktlizenzen
 Mit dem Cmdlet [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) können Sie das Gruppenobjekt abrufen und die Eigenschaft *Licenses* überprüfen: Dadurch werden alle Produktlizenzen aufgeführt, die der Gruppe zurzeit zugewiesen sind.
@@ -70,7 +73,7 @@ c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM
 ```
 
 ## <a name="get-statistics-for-groups-with-licenses"></a>Abrufen von Statistiken für Gruppen mit Lizenzen
-Sie können grundlegende Statistiken für Gruppen mit Lizenzen abrufen. Im folgenden Beispiel listen wir die gesamte Benutzeranzahl, die Anzahl von Benutzern mit bereits durch die Gruppe zugewiesenen Lizenzen und die Anzahl von Benutzern auf, für die durch die Gruppe keine Lizenzen zugewiesen werden konnten.
+Sie können grundlegende Statistiken für Gruppen mit Lizenzen abrufen. Im folgenden Beispiel listet das Skript die Gesamtbenutzeranzahl, die Anzahl von Benutzern mit bereits durch die Gruppe zugewiesenen Lizenzen und die Anzahl von Benutzern auf, für die durch die Gruppe keine Lizenzen zugewiesen werden konnten.
 
 ```
 #get all groups with licenses
@@ -167,7 +170,7 @@ ObjectId                             DisplayName      License Error
 ```
 ## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Abrufen aller Benutzer mit Lizenzfehlern im gesamten Mandanten
 
-Um alle Benutzer aufzulisten, die aus mindestens einer Gruppe Lizenzfehler aufweisen, kann das folgende Skript verwendet werden. Durch dieses Skript wird eine Zeile pro Benutzer und pro Lizenzfehler aufgeführt, sodass Sie die Quelle der einzelnen Fehler eindeutig identifizieren können.
+Mit dem folgenden Skript lassen sich alle Benutzer aus einer oder mehreren Gruppen abrufen, die Lizenzfehler aufweisen. Durch das Skript wird eine Zeile pro Benutzer und pro Lizenzfehler aufgeführt, sodass Sie die Quelle der einzelnen Fehler eindeutig identifizieren können.
 
 > [!NOTE]
 > Dieses Skript listet alle Benutzer im Mandanten auf, was für große Mandanten möglicherweise nicht optimal ist.
@@ -302,7 +305,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Entfernen direkter Lizenzen für Benutzer mit Gruppenlizenzen
 Dieses Skript dient zum Entfernen unnötiger direkter Lizenzen von Benutzern, die bereits dieselbe Lizenz von einer Gruppe erben, z.B. im Rahmen des [Übergangs zur gruppenbasierten Lizenzierung](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal).
 > [!NOTE]
-> Zunächst muss unbedingt sichergestellt werden, dass durch die zu entfernenden direkten Lizenzen nicht mehr Dienstfunktionen ermöglicht werden als durch die geerbten Lizenzen. Andernfalls wird durch das Entfernen der direkten Lizenz möglicherweise der Zugriff auf Dienste und Daten für Benutzer deaktiviert. Zurzeit ist es über PowerShell nicht möglich zu prüfen, welche Dienste durch geerbte bzw. durch direkte Lizenzen aktiviert werden. Im Skript geben wir die Mindestebene von Diensten an, von denen wir wissen, dass sie von Gruppen geerbt werden, und verwenden diese für die Überprüfung.
+> Zunächst muss unbedingt sichergestellt werden, dass durch die zu entfernenden direkten Lizenzen nicht mehr Dienstfunktionen ermöglicht werden als durch die geerbten Lizenzen. Andernfalls wird durch das Entfernen der direkten Lizenz möglicherweise der Zugriff auf Dienste und Daten für Benutzer deaktiviert. Zurzeit ist es über PowerShell nicht möglich zu prüfen, welche Dienste durch geerbte bzw. durch direkte Lizenzen aktiviert werden. Im Skript geben wir die Mindestebene von Diensten an, von denen wir wissen, dass sie von Gruppen geerbt werden, und verwenden diese für die Überprüfung, um sicherzustellen, dass Benutzer nicht unerwartet den Zugriff auf Dienste verlieren.
 
 ```
 #BEGIN: Helper functions used by the script
@@ -382,7 +385,7 @@ function GetDisabledPlansForSKU
 {
     Param([string]$skuId, [string[]]$enabledPlans)
 
-    $allPlans = Get-MsolAccountSku | where {$_.AccountSkuId -ieq $skuId} | Select -ExpandProperty ServiceStatus | Where {$_.ProvisioningStatus -ine "PendingActivation"} | Select -ExpandProperty ServicePlan | Select -ExpandProperty ServiceName
+    $allPlans = Get-MsolAccountSku | where {$_.AccountSkuId -ieq $skuId} | Select -ExpandProperty ServiceStatus | Where {$_.ProvisioningStatus -ine "PendingActivation" -and $_.ServicePlan.TargetClass -ieq "User"} | Select -ExpandProperty ServicePlan | Select -ExpandProperty ServiceName
     $disabledPlans = $allPlans | Where {$enabledPlans -inotcontains $_}
 
     return $disabledPlans
@@ -476,7 +479,7 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Features für die gruppenbasierte Lizenzverwaltung finden Sie in den folgenden Artikeln:
+Weitere Informationen zu den Features für die Lizenzverwaltung mithilfe von Gruppen finden Sie in den folgenden Artikeln:
 
 * [Was ist die gruppenbasierte Lizenzierung in Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)
 * [Zuweisen von Lizenzen zu einer Gruppe in Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md)
