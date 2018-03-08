@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 54b9c38d1122d898dd584a189b9ea2e3405dc6f5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 91461af20cdb189ab23671fee0f3dea182ec0bb1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine
 
@@ -50,7 +50,7 @@ Media Services unterstützt mehrere Möglichkeiten zur Autorisierung von Benutze
 
 Weitere Informationen finden Sie unter [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel](media-services-protect-with-aes128.md#configure_key_auth_policy).
 
-Damit die dynamische Verschlüsselung genutzt werden kann, müssen Sie über ein Medienobjekt verfügen, das eine Sammlung aus MP4-Dateien mit mehreren Bitraten oder Smooth Streaming-Quelldateien mit mehreren Bitraten enthält. Außerdem müssen Sie die Bereitstellungsrichtlinien für das Medienobjekt konfigurieren (weiter unten in diesem Thema beschrieben). Basierend auf dem angegebenen Format in der Streaming-URL stellt der On-Demand-Streaming-Server dann sicher, dass der Datenstrom im ausgewählten Protokoll übermittelt wird. Auf diese Weise werden die Dateien nur in einem Speicherformat gespeichert, und Sie zahlen auch nur für ein Format. Media Services reagiert auf die Anforderung eines Clients jeweils mit der richtigen HTTP-Antwort.
+Damit die dynamische Verschlüsselung genutzt werden kann, müssen Sie über ein Medienobjekt verfügen, das eine Sammlung aus MP4-Dateien mit mehreren Bitraten oder Smooth Streaming-Quelldateien mit mehreren Bitraten enthält. Außerdem müssen Sie die Übermittlungsrichtlinien für das Medienobjekt konfigurieren (weiter unten in diesem Thema beschrieben). Basierend auf dem angegebenen Format in der Streaming-URL stellt der On-Demand-Streaming-Server dann sicher, dass der Datenstrom im ausgewählten Protokoll übermittelt wird. Auf diese Weise werden die Dateien nur in einem Speicherformat gespeichert, und Sie zahlen auch nur für ein Format. Media Services reagiert auf die Anforderung eines Clients jeweils mit der richtigen HTTP-Antwort.
 
 Dieser Artikel ist für Entwickler hilfreich, die an Anwendungen arbeiten, bei denen mit mehreren DRMs, z.B. PlayReady und Widevine, geschützte Medien übermittelt werden. In diesem Artikel erfahren Sie, wie der PlayReady-Lizenzbereitstellungsdienst mit Autorisierungsrichtlinien so konfiguriert wird, dass nur autorisierte Clients PlayReady- oder Widevine-Lizenzen erhalten können. Es wird außerdem gezeigt, wie die dynamische Verschlüsselung mit PlayReady oder Widevine DRM über DASH genutzt wird.
 
@@ -74,7 +74,7 @@ Führen Sie die folgenden allgemeinen Schritte beim Schützen Ihrer Medienobjekt
 
     Beim Erstellen der Autorisierungsrichtlinie für den Inhaltsschlüssel müssen Sie die Bereitstellungsmethode (PlayReady oder Widevine) und die Einschränkungen (offen oder Token) angeben. Außerdem müssen Sie spezifische Informationen zum Typ der Schlüsselbereitstellung angeben, mit denen definiert wird, wie der Schlüssel für den Client bereitgestellt wird ([PlayReady](media-services-playready-license-template-overview.md)- oder [Widevine](media-services-widevine-license-template-overview.md)-Lizenzvorlage).
 
-5. Konfigurieren Sie die Bereitstellungsrichtlinie für ein Medienobjekt. Die Konfiguration der Bereitstellungsrichtlinie umfasst auch das Bereitstellungsprotokoll (z.B. „MPEG-DASH“, „HLS“, „Smooth Streaming“ oder „Alle“). Außerdem enthält die Konfiguration den Typ der dynamischen Verschlüsselung (z.B. allgemeine Verschlüsselung) und die URL für den Erwerb der PlayReady- oder Widevine-Lizenz.
+5. Konfigurieren der Übermittlungsrichtlinie für ein Medienobjekt. Die Konfiguration der Bereitstellungsrichtlinie umfasst auch das Bereitstellungsprotokoll (z.B. „MPEG-DASH“, „HLS“, „Smooth Streaming“ oder „Alle“). Außerdem enthält die Konfiguration den Typ der dynamischen Verschlüsselung (z.B. allgemeine Verschlüsselung) und die URL für den Erwerb der PlayReady- oder Widevine-Lizenz.
 
     Sie können für jedes Protokoll für das gleiche Medienobjekt jeweils eine andere Richtlinie anwenden. Beispielsweise können Sie die PlayReady-Verschlüsselung auf Smooth/DASH und einen AES Envelope auf HLS anwenden. Alle Protokolle, die nicht in einer Bereitstellungsrichtlinie definiert sind (wenn Sie z.B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme ist, wenn Sie überhaupt keine Bereitstellungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
 
@@ -114,10 +114,10 @@ Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Ben
 Weitere Informationen finden Sie unter [Konfigurieren von Autorisierungsrichtlinien für Inhaltsschlüssel](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption).
 
 ## <a id="configure_asset_delivery_policy"></a>Konfigurieren einer Bereitstellungsrichtlinie für Medienobjekte
-Konfigurieren Sie die Bereitstellungsrichtlinie für Medienobjekte. Die Konfiguration der Bereitstellungsrichtlinie für Medienobjekte umfasst Folgendes:
+Konfigurieren Sie die Übermittlungsrichtlinie für Medienobjekte. Die Konfiguration der Bereitstellungsrichtlinie für Medienobjekte umfasst Folgendes:
 
 * Die DRM-Lizenzerwerbs-URL.
-* Das Übermittlungsprotokoll für Medienobjekte (z.B. „MPEG-DASH“, „HLS“, „Smooth Streaming“ oder „Alle“).
+* Das Übermittlungsprotokoll für Medienobjekte (z. B. „MPEG-DASH“, „HLS“, „Smooth Streaming“ oder „Alle“).
 * Typ der dynamischen Verschlüsselung (in diesem Fall allgemeine Verschlüsselung).
 
 Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit .NET SDK](media-services-dotnet-configure-asset-delivery-policy.md).
@@ -126,7 +126,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlin
 Sie müssen die Streaming-URL für Smooth Streaming, DASH oder HLS für Ihre Benutzer bereitstellen.
 
 > [!NOTE]
-> Wenn Sie die Bereitstellungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie einen vorhandenen Locator löschen und einen neuen Locator erstellen.
+> Wenn Sie die Übermittlungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie alle vorhandenen Locators löschen und einen neuen Locator erstellen.
 >
 >
 
@@ -135,6 +135,7 @@ Anweisungen zum Veröffentlichen eines Medienobjekts und Erstellen einer Streami
 ## <a name="get-a-test-token"></a>Abrufen eines Testtokens
 Rufen Sie ein Testtoken ab, das auf der Tokeneinschränkung basiert, die für die Schlüsselautorisierungsrichtlinie verwendet wurde.
 
+```csharp
     // Deserializes a string containing an XML representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
@@ -145,7 +146,7 @@ Rufen Sie ein Testtoken ab, das auf der Tokeneinschränkung basiert, die für di
     //so you have to add it in front of the token string.
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
-
+```
 
 Sie können den [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) verwenden, um Ihren Datenstrom zu testen.
 
@@ -155,8 +156,10 @@ Sie können den [Azure Media Services Player](http://amsplayer.azurewebsites.net
 
 2. Fügen Sie den **appSettings** in Ihrer Datei „app.config“ die folgenden Elemente hinzu:
 
+```xml
         <add key="Issuer" value="http://testacs.com"/>
         <add key="Audience" value="urn:test"/>
+```
 
 ## <a name="example"></a>Beispiel
 
@@ -171,7 +174,7 @@ Weitere Informationen finden Sie unter [Verwalten von Medienobjekten und verwand
 
 Stellen Sie sicher, dass die Variablen so aktualisiert werden, dass sie auf die Ordner zeigen, in denen sich Ihre Eingabedateien befinden.
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;

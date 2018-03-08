@@ -3,26 +3,25 @@ title: Herstellen einer Verbindung von Storage-Explorer mit einem Azure Stack-Ab
 description: Erfahren Sie, wie Sie eine Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement herstellen.
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
+ms.date: 02/28/2018
 ms.author: xiaofmao
-ms.openlocfilehash: c7e6d70148d39fd74f6409a0a239833f8e9f7614
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: bad4b6b0d829fb68dc25e84406a453071a36476a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Herstellen einer Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Bei der Vorschauversion von Azure Storage-Explorer handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Stack-Speicherdaten arbeiten können. Es stehen mehrere Tools zum Verschieben von Daten in Azure Stack-Speicher und aus Azure Stack-Speicher heraus zur Verfügung. Weitere Informationen finden Sie unter [Tools for Azure Stack Storage](azure-stack-storage-transfer.md) (Tools für Azure Stack-Speicher).
 
@@ -57,16 +56,16 @@ Für das Azure Stack Development Kit müssen Sie das Stammzertifikat der Azure S
 
 6. Zeigen Sie im Menü **Bearbeiten** auf **SSL-Zertifikate**, und klicken Sie anschließend auf **Zertifikate importieren**. Suchen Sie im Dialogfeld für die Dateiauswahl nach dem Zertifikat, das Sie im vorherigen Schritt exportiert haben, und öffnen Sie es.
 
-    Nach dem Importieren werden Sie zum Neustarten des Speicher-Explorers aufgefordert.
+    Nach dem Importieren werden Sie zum Neustarten des Storage-Explorers aufgefordert.
 
-    ![Importieren des Zertifikats in den Speicher-Explorer (Vorschau)][27]
+    ![Importieren des Zertifikats in den Storage-Explorer (Vorschau)][27]
 
 Jetzt können Sie eine Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement herstellen.
 
 ### <a name="to-connect-an-azure-stack-subscription"></a>So stellen Sie eine Verbindung mit einem Azure Stack-Abonnement her
 
 
-1. Wählen Sie nach dem Neustart des Speicher-Explorers (Vorschau) das Menü **Bearbeiten** aus, und vergewissern Sie sich, dass die Option **Target Azure Stack** (Azure Stack als Ziel) aktiviert ist. Sollte die Option nicht aktiviert sein, aktivieren Sie sie, und starten Sie den Speicher-Explorer anschließend neu, damit die Änderung wirksam wird. Diese Konfiguration ist erforderlich, um die Kompatibilität mit Ihrer Azure Stack-Umgebung zu gewährleisten.
+1. Wählen Sie nach dem Neustart des Storage-Explorers (Vorschau) das Menü **Bearbeiten** aus, und vergewissern Sie sich, dass die Option **Target Azure Stack** (Azure Stack als Ziel) aktiviert ist. Sollte die Option nicht aktiviert sein, aktivieren Sie sie, und starten Sie den Storage-Explorer anschließend neu, damit die Änderung wirksam wird. Diese Konfiguration ist erforderlich, um die Kompatibilität mit Ihrer Azure Stack-Umgebung zu gewährleisten.
 
     ![Sicherstellen der Aktivierung von „Target Azure Stack“ (Azure Stack als Ziel)][28]
 

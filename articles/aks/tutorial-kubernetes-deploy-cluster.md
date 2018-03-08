@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bb8ad6d9defcbaef255065b20a9a9b542e74d73d
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 975069dbe9283c98482d7d0d5741a595ef323b35
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Bereitstellen eines Azure Container Service-Clusters (AKS)
 
@@ -49,59 +49,6 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 ```
 
 Nach einigen Minuten ist die Bereitstellung abgeschlossen, und es werden Informationen zur AKS-Bereitstellung im JSON-Format zurückgegeben.
-
-```azurecli
-{
-  "additionalProperties": {},
-  "agentPoolProfiles": [
-    {
-      "additionalProperties": {},
-      "count": 1,
-      "dnsPrefix": null,
-      "fqdn": null,
-      "name": "nodepool1",
-      "osDiskSizeGb": null,
-      "osType": "Linux",
-      "ports": null,
-      "storageProfile": "ManagedDisks",
-      "vmSize": "Standard_DS1_v2",
-      "vnetSubnetId": null
-    }
-    ...
-```
-
-## <a name="getting-information-about-your-cluster"></a>Abrufen von Informationen zu Ihrem Cluster
-
-Nachdem Ihr Cluster bereitgestellt wurde, können Sie `az aks show` verwenden, um Ihren Cluster abzufragen und wichtige Informationen abzurufen. Diese Daten können als Parameter verwendet werden, wenn für Ihren Cluster komplexere Vorgänge durchgeführt werden. Falls Sie beispielsweise Informationen zum Linux-Profil benötigen, das in Ihrem Cluster ausgeführt wird, können Sie den folgenden Befehl ausführen.
-
-```azurecli
-az aks show --name myAKSCluster --resource-group myResourceGroup --query "linuxProfile"
-
-{
-  "additionalProperties": {},
-  "adminUsername": "azureuser",
-  "ssh": {
-    "additionalProperties": {},
-    "publicKeys": [
-      {
-        "additionalProperties": {},
-        "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADA...
-      }
-    ]
-  }
-}
-```
-
-Es werden Informationen zum Administratorbenutzer und zu Ihren öffentlichen SSH-Schlüsseln angezeigt. Sie können auch ausführlichere Abfragen durchführen, indem Sie wie unten gezeigt JSON-Eigenschaften an Ihre Abfragezeichenfolge anfügen.
-
-```azurecli
-az aks show -n myakscluster  -g my-group --query "{name:agentPoolProfiles[0].name, nodeCount:agentPoolProfiles[0].count}"
-{
-  "name": "nodepool1",
-  "nodeCount": 1
-}
-```
-Dies ist hilfreich für den schnellen Zugriff auf Daten zu Ihrem bereitgestellten Cluster. Weitere Informationen zu JMESPath-Abfragen finden Sie [hier](http://jmespath.org/tutorial.html).
 
 ## <a name="install-the-kubectl-cli"></a>Installieren der Befehlszeilenschnittstelle „kubectl“
 
@@ -143,19 +90,19 @@ Die Authentifizierung muss zwischen dem AKS-Cluster und der ACR konfiguriert wer
 Rufen Sie zuerst die ID des Dienstprinzipals ab, das für den AKS konfiguriert ist. Aktualisieren Sie den Namen der Ressourcengruppe und den Namen des AKS-Clusters auf die Werte für Ihre Umgebung.
 
 ```azurecli
-$CLIENT_ID = $(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
+CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
 ```
 
 Rufen Sie die Ressourcen-ID für die ACR ab. Aktualisieren Sie den Registrierungsnamen auf den Namen Ihrer ACR und die Ressourcengruppe auf die Ressourcengruppe, in der sich die ACR befindet.
 
 ```azurecli
-$ACR_ID = $(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
+ACR_ID=$(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 Erstellen Sie die Rollenzuweisung, mit der der richtige Zugriff gewährt wird.
 
 ```azurecli
-az role assignment create --assignee $CLIENT_ID --role Contributor --scope $ACR_ID
+az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

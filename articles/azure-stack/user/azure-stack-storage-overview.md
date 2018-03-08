@@ -3,26 +3,25 @@ title: "Einführung zu Azure Stack-Speicher"
 description: Informationen zu Azure Stack-Speicher
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 092aba28-04bc-44c0-90e1-e79d82f4ff42
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: xiaofmao
-ms.openlocfilehash: 8777aa486a627cf8b2d8ba443e115638354d10da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/29/2018
+ms.author: mabrigg
+ms.openlocfilehash: dbc2ffb7540feb91b14c3d502e7f4007a0751ebd
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Einführung zu Azure Stack-Speicher
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 ## <a name="overview"></a>Übersicht
 Azure Stack-Speicher ist ein Satz von Cloudspeicherdiensten einschließlich Diensten für Blobs, Tabellen und Warteschlangen, die mit Azure Storage-Diensten übereinstimmen.
@@ -30,7 +29,7 @@ Azure Stack-Speicher ist ein Satz von Cloudspeicherdiensten einschließlich Dien
 ## <a name="azure-stack-storage-services"></a>Azure Stack-Speicherdienste
 Azure Stack-Speicher bietet die folgenden drei Dienste:
 
-* **Blob Storage** 
+* **Blob-Speicher** 
 
     Blob Storage dient zum Speichern unstrukturierter Objektdaten. Bei einem Blob kann es sich um einen beliebigen Text- oder Binärdatentyp handeln – also beispielsweise um ein Dokument, eine Mediendatei oder einen Anwendungs-Installer.
 * **Table Storage** 

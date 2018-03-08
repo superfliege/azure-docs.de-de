@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten | Microsof
 description: "In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit einer Kopieraktivität, indem Sie den von der Data Factory unterstützten Kopier-Assistenten verwenden."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: linda33wj
 manager: jhubbard
 editor: monicar
 ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 462038d21ea061e7cff8322ab4ce12f45844dca7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d971a4fd6fd4ac260523032de837ec7501eb242c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten
 > [!div class="op_single_selector"]
@@ -84,8 +84,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    1. Geben Sie unter **Aufgabenname** den Namen **CopyFromBlobToAzureSql** ein.
    2. Geben Sie eine **Beschreibung** ein (optional).
    3. Ändern Sie **Startdatum/-zeit** und **Enddatum/-zeit** so, dass das Enddatum auf den heutigen Tag und das Startdatum auf fünf Tage vor dem heutigen Tag festgelegt ist.  
-   4. Klicken Sie auf **Weiter**.
-  
+   4. Klicken Sie auf **Weiter**.  
       
       ![Copy Tool - Properties page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
 3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. 
@@ -121,8 +120,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    3. Wählen Sie Ihr Azure- **Abonnement**aus.  
    4. Wählen Sie **Servername** und **Datenbank** aus.
    5. Geben Sie **Benutzername** und **Kennwort** ein.
-   6. Klicken Sie auf **Weiter**.
-  
+   6. Klicken Sie auf **Weiter**.  
       
       ![Copy Tool - specify Azure SQL database](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. Wählen Sie auf der Seite **Tabellenzuordnung** für das Feld **Ziel** in der Dropdownliste die Option **emp** aus, und klicken Sie auf den **Pfeil nach unten** (optional), um das Schema und eine Vorschau der Daten anzuzeigen.

@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 10/26/2017
 ms.author: juliako
-ms.openlocfilehash: bbfe7fedb1d5216b8a159faa9543ade74176181f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cba1e58478f4bbdffb61566e53aa0b86138b7fc6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Erste Schritte mit dem Java-Client-SDK für Azure Media Services
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -66,6 +66,7 @@ Sie können eine Azure AD-Anwendung erstellen und die obigen Konfigurationswerte
 
 Im Code wird außerdem eine lokal gespeicherte Videodatei verwendet. Sie müssen den Code bearbeiten, um Ihre eigene lokale Datei zum Hochladen bereitzustellen.
 
+```java
     import java.io.*;
     import java.net.URI;
     import java.security.NoSuchAlgorithmException;
@@ -298,7 +299,7 @@ Im Code wird außerdem eine lokal gespeicherte Videodatei verwendet. Sie müssen
             }
         }
     }
-
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -306,7 +307,7 @@ Im Code wird außerdem eine lokal gespeicherte Videodatei verwendet. Sie müssen
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 Weitere Informationen zur Entwicklung von Java-Apps in Azure finden Sie unter [Azure Java Developer Center][Azure Java Developer Center] und [Azure für Java-Entwickler][Azure for Java developers].
 
 
