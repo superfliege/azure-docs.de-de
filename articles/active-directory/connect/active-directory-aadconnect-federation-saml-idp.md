@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: 46c65e0efdc91b70c5d0d2afdf83d7205efc8057
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/06/2018
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -74,7 +74,7 @@ Bindungen sind die transportbezogenen Kommunikationsparameter, die erforderlich 
 ## <a name="required-attributes"></a>Erforderliche Attribute
 Diese Tabelle zeigt die Anforderungen für bestimmte Attribute in der SAML 2.0-Benachrichtigung.
  
-|Attribut|Beschreibung|
+|Attribut|BESCHREIBUNG|
 | ----- | ----- |
 |NameID|Der Wert dieser Assertion muss mit der ImmutableID des Azure AD-Benutzers identisch sein. Er kann bis zu 64 alphanumerische Zeichen lang sein. Alle sicheren Nicht-HTML-Zeichen müssen codiert werden, z.B. ein „+“-Zeichen wird als „.2B“ angezeigt.|
 |IDPEmail|Der Benutzerprinzipalname (User Principal Name, UPN) ist in der SAML-Antwort als Element mit dem Namen „IDPEmail“ aufgeführt. Dieser ist der Benutzerprinzipalname des Benutzers in Azure AD/Office 365. Der UPN ist im E-Mail-Adressformat. Der UPN-Wert in Windows Office 365 (Azure Active Directory).|

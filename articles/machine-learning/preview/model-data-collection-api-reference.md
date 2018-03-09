@@ -4,18 +4,18 @@ description: "Referenz zur Modelldatensammlungs-API für Azure Machine Learning"
 services: machine-learning
 author: aashishb
 ms.author: aashishb
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 7a0fda8a44d13bcaba84b4124d9b693c05874154
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2de5e8bc8880fea5e7f57c88590e32a9fbb60ac6
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Referenz zur Modelldatensammlungs-API für Azure Machine Learning
 
@@ -53,22 +53,22 @@ dc = ModelDataCollector(model_name, identifier='default', feature_names=None, mo
 Siehe die Details unter „Klasse“ und „Parameter“:
 
 ### <a name="class"></a>Klasse
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 |--------------------|--------------------|
 | ModelDataCollector | Eine Klasse im Namespace „azureml.datacollector“. Eine Instanz dieser Klasse wird zum Sammeln von Modelldaten verwendet. Eine einzelne Bewertungsdatei kann mehrere „ModelDataCollector“-Klassen enthalten. Jede Instanz sollte zum Sammeln von Daten an einer einzelnen Stelle in der Bewertungsdatei verwendet werden, damit das Schema der gesammelten Daten konsistent bleibt (d.h. Eingaben und Vorhersage).|
 
 
 ### <a name="parameters"></a>Parameter
 
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 |-------------|------------|-------------------------|
-| model_name | string | Name des Modells, für das Daten gesammelt werden |
-| Bezeichner | string | Stelle im Code, die diese Daten identifiziert, d.h. „RawInput“ oder „Prediction“ |
+| model_name | Zeichenfolge | Name des Modells, für das Daten gesammelt werden |
+| Bezeichner | Zeichenfolge | Stelle im Code, die diese Daten identifiziert, d.h. „RawInput“ oder „Prediction“ |
 | feature_names | Liste von Zeichenfolgen | Liste von Featurenamen, die zum CSV-Header werden, falls angegeben |
-| model_management_account_id | string | Bezeichner des Modellverwaltungskontos, in dem dieses Modell gespeichert ist. Wird automatisch aufgefüllt, wenn Modelle über AML operationalisiert werden |
-| webservice_name | string | Name des Webdiensts, für den dieses Modell derzeit bereitgestellt ist. Wird automatisch aufgefüllt, wenn Modelle über AML operationalisiert werden |
-| model_id | string | Der eindeutige Bezeichner dieses Modells im Kontext eines Modellverwaltungskontos. Wird automatisch aufgefüllt, wenn Modelle über AML operationalisiert werden |
-| model_version | string | Versionsnummer dieses Modells im Kontext eines Modellverwaltungskontos. Wird automatisch aufgefüllt, wenn Modelle über AML operationalisiert werden |
+| model_management_account_id | Zeichenfolge | Bezeichner des Modellverwaltungskontos, in dem dieses Modell gespeichert ist. Wird automatisch aufgefüllt, wenn Modelle über AML operationalisiert werden |
+| webservice_name | Zeichenfolge | Name des Webdiensts, für den dieses Modell derzeit bereitgestellt ist. Wird automatisch aufgefüllt, wenn Modelle über AML operationalisiert werden |
+| model_id | Zeichenfolge | Der eindeutige Bezeichner dieses Modells im Kontext eines Modellverwaltungskontos. Wird automatisch aufgefüllt, wenn Modelle über AML operationalisiert werden |
+| model_version | Zeichenfolge | Versionsnummer dieses Modells im Kontext eines Modellverwaltungskontos. Wird automatisch aufgefüllt, wenn Modelle über AML operationalisiert werden |
 
 
 
@@ -83,15 +83,15 @@ Sie können die Modelldaten mithilfe einer Instanz der zuvor erstellten „Model
 Siehe die Details unter „Methode“ und „Parameter“:
 
 ### <a name="method"></a>Methode
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 |--------------------|--------------------|
 | collect | Dient zum Sammeln der Daten für eine Modelleingabe oder Vorhersage|
 
 
 ### <a name="parameters"></a>Parameter
 
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 |-------------|------------|-------------------------|
 | input_data | Mehrere Typen | Die zu sammelnden Daten (derzeit werden die Liste „types“, „numpy.array, pandas.DataFrame“ und „pyspark.sql.DataFrame“ akzeptiert). Bei Datenrahmentypen, wenn ein Header mit Featurenamen vorhanden ist, werden diese Informationen in das Datenziel eingefügt (ohne dass Featurenamen explizit an den „ModelDataCollector“-Konstruktor übergeben werden müssen) |
-| user_correlation_id | string | Optionaler Korrelationsbezeichner, der vom Benutzer zum Korrelieren dieser Vorhersage bereitgestellt werden kann |
+| user_correlation_id | Zeichenfolge | Optionaler Korrelationsbezeichner, der vom Benutzer zum Korrelieren dieser Vorhersage bereitgestellt werden kann |
 

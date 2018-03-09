@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 739e80633f828e8c14f024dc22971e7d8858cf78
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 03b9de7374880cdb2741821edae246bffaf3f921
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Verwenden von Azure Media Analytics zum Konvertieren von Textinhalten in Videodateien in digitalen Text
 ## <a name="overview"></a>Übersicht
@@ -37,11 +37,11 @@ Videodateien. Derzeit werden folgende Formate unterstützt: MP4, MOV und WMV.
 Aufgabenkonfiguration (Voreinstellung). Wenn Sie eine Aufgabe mit **Azure Media OCR**erstellen, müssen Sie mithilfe von JSON oder XML eine Konfigurationsvoreinstellung angeben. 
 
 >[!NOTE]
->Das OCR-Modul akzeptiert nur eine Bildregion von mindestens 40 Pixeln bis höchstens 32.000 Pixeln als gültige Eingabe für Höhe und Breite.
+>Die OCR-Engine akzeptiert nur eine Bildregion von mindestens 40 Pixeln bis höchstens 32.000 Pixeln als gültige Eingabe für Höhe und Breite.
 >
 
 ### <a name="attribute-descriptions"></a>Beschreibungen der Attribute
-| Attributname | Beschreibung |
+| Attributname | BESCHREIBUNG |
 | --- | --- |
 |AdvancedOutput| Wenn Sie „AdvancedOutput“ auf TRUE festlegen, enthält die JSON-Ausgabe (zusätzlich zu Ausdrücken und Bereichen) für jedes einzelne Wort Positionsdaten. Wenn Sie diese Details nicht anzeigen möchten, können Sie das Flag auf FALSE festlegen. Der Standardwert ist „false“. Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
 | Sprache |(Optional) Beschreibt die Sprache des Texts, nach dem gesucht wird. Eine der folgenden: AutoDetect (Standard), Arabisch, Chinesisch (traditionell), Chinesisch (vereinfacht), Dänisch, Deutsch, Englisch, Finnisch, Französisch, Griechisch, Italienisch, Japanisch, Koreanisch, Niederländisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Russisch, Schwedisch, Serbisch (kyrillisch), Serbisch (lateinisch), Slowakisch, Spanisch, Tschechisch, Türkisch, Ungarisch. |
@@ -51,6 +51,7 @@ Aufgabenkonfiguration (Voreinstellung). Wenn Sie eine Aufgabe mit **Azure Media 
 
 #### <a name="json-preset-example"></a>Beispiel für JSON-Voreinstellung
 
+```json
     {
         "Version":1.0, 
         "Options": 
@@ -69,8 +70,11 @@ Aufgabenkonfiguration (Voreinstellung). Wenn Sie eine Aufgabe mit **Azure Media 
              ]
         }
     }
+```
 
 #### <a name="xml-preset-example"></a>Beispiel für XML-Voreinstellung
+
+```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
     <VideoOcrPreset xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""http://www.windowsazure.com/media/encoding/Preset/2014/03"">
       <Options>
@@ -88,6 +92,7 @@ Aufgabenkonfiguration (Voreinstellung). Wenn Sie eine Aufgabe mit **Azure Media 
        <TextOrientation>Up</TextOrientation>
       </Options>
     </VideoOcrPreset>
+```
 
 ## <a name="ocr-output-files"></a>OCR-Ausgabedateien
 Die Ausgabe des OCR-Medienprozessors ist eine JSON-Datei.
@@ -97,7 +102,7 @@ Die Video OCR-Ausgabe liefert zeitsegmentierte Daten zu in Ihrem Video gefundene
 
 Die Ausgabe enthält die folgenden Attribute:
 
-| Element | Beschreibung |
+| Element | BESCHREIBUNG |
 | --- | --- |
 | Zeitskala |„Teilstriche“ pro Sekunde des Videos |
 | Offset |Zeitoffset für Zeitstempel In Version 1.0 von Video-APIs wird dies immer 0 sein. |
@@ -113,11 +118,12 @@ Die Ausgabe enthält die folgenden Attribute:
 | Language |Sprache des Texts innerhalb eines Bereichs |
 | orientation |Ausrichtung des Texts innerhalb eines Bereichs |
 | lines |Array von Zeilen des Texts innerhalb eines Bereichs |
-| Text |Der tatsächliche Text |
+| text |Der tatsächliche Text |
 
 ### <a name="json-output-example"></a>Beispiel für die JSON-Ausgabe
 Das folgende Ausgabebeispiel enthält die allgemeinen Videoinformationen und mehrere Videofragmente. Es enthält in jedem Videofragment alle Bereiche, die vom OCR-Medienprozessor samt Sprache und Textausrichtung erkannt werden. Der Bereich enthält auch alle Zeilen mit Wörtern in diesem Bereich samt Zeilentext, Zeilenposition und Informationen zu jedem Wort (Inhalt, Position und Konfidenz) in der jeweiligen Zeile. Es folgt ein Beispiel mit von mir hinzugefügten Inlinekommentaren.
 
+```json
     {
         "version": 1, 
         "timescale": 90000, 
@@ -170,12 +176,13 @@ Das folgende Ausgabebeispiel enthält die allgemeinen Videoinformationen und meh
             }
         ]
     }
+```
 
 ## <a name="net-sample-code"></a>.NET-Beispielcode
 
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
-1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
+1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
 2. Erstellen eines Auftrag mit einer OCR-Konfigurations-/Voreinstellungsdatei.
 3. Herunterladen der JSON-Ausgabedateien. 
    
@@ -185,7 +192,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 #### <a name="example"></a>Beispiel
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

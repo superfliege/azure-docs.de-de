@@ -1,54 +1,81 @@
 ---
-title: "Wiederherstellen eines Servers in Azure-Datenbank für MySQL | Microsoft-Dokumentation"
+title: Wiederherstellen eines Servers in Azure Database for MySQL
 description: "In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal einen Server in Azure-Datenbank für MySQL wiederherstellen."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: 6c1c0f8a0c0e59661b70b787b551b8cfdb024cda
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.openlocfilehash: 5bef3f11d0b546fbd6b1161b20d7dfb81e975f99
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit dem Azure-Portal
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit dem Azure-Portal
 
 ## <a name="backup-happens-automatically"></a>Automatische Sicherung
-Bei der Verwendung von Azure Database for MySQL erstellt der Datenbankdienst automatisch alle fünf Minuten eine Sicherung des Diensts. 
+Azure Database for MySQL-Server werden regelmäßig gesichert, um Wiederherstellungsfunktionen zu ermöglichen. Mithilfe dieses Features können Sie für den Server und alle dazugehörigen Datenbanken einen Zustand zu einem früheren Zeitpunkt auf einem neuen Server wiederherstellen.
 
-Die Sicherungen sind im Basic-Tarif sieben Tage und im Standard-Tarif 35 Tage lang verfügbar. Weitere Informationen finden Sie im Artikel zu den [Dienstebenen für Azure-Datenbank für MySQL](concepts-service-tiers.md).
+## <a name="prerequisites"></a>Voraussetzungen
+Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
+- Einen [Azure Database for MySQL-Server und eine Datenbank](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-Mithilfe dieses automatischen Sicherungsfeatures können Sie einen früheren Zustand des Servers und aller seiner Datenbanken wiederherstellen.
+## <a name="set-backup-configuration"></a>Festlegen der Sicherungskonfiguration
 
-## <a name="restore-in-the-azure-portal"></a>Wiederherstellen im Azure-Portal
-Mit Azure Database for MySQL können Sie den Zustand des Servers zu einem bestimmten Zeitpunkt und in einer neuen Kopie des Servers wiederherstellen. Sie können diesen neuen Server zur Wiederherstellung Ihrer Daten verwenden. 
+Bei der Erstellung des Servers treffen Sie im Fenster **Tarif** die Entscheidung, ob dafür lokal redundante oder georedundante Sicherungen erstellt werden sollen.
 
-Beispiel: Wenn eine Tabelle heute um 12 Uhr versehentlich gelöscht wurde, können Sie den Zustand von kurz vor 12 Uhr wiederherstellen und die fehlende Tabelle und die Daten aus der neuen Kopie des Servers abrufen.
+> [!NOTE]
+> Nachdem ein Server erstellt wurde, kann die Redundanzart (georedundant oder lokal redundant) nicht mehr gewechselt werden.
+>
+
+Bei der Erstellung eines Servers über das Azure-Portal wählen Sie im Fenster **Tarif** entweder **Lokal redundant** oder **Georedundant** für die Sicherungen Ihres Servers aus. Außerdem wählen Sie in diesem Fenster die **Aufbewahrungszeit für Sicherung** aus. Hier wird angegeben, wie lange die Sicherungen gespeichert werden sollen (in Tagen).
+
+   ![Tarif – Auswählen der Sicherungsredundanz](./media/howto-restore-server-portal/pricing-tier.png)
+
+Weitere Informationen zum Festlegen dieser Werte während der Erstellung finden Sie unter [Erstellen eines Servers für Azure Database for MySQL über das Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md).
+
+Die Option „Aufbewahrungszeit für Sicherung“ kann auf einem Server mit den folgenden Schritten geändert werden:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Wählen Sie Ihren Server für Azure Database for MySQL aus. Mit dieser Aktion wird die Seite **Übersicht** geöffnet.
+3. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Tarif**. Mit dem Schieberegler können Sie die **Aufbewahrungszeit für Sicherung** auf einen Wert zwischen 7 und 35 Tagen festlegen.
+Im folgenden Screenshot wurde der Wert auf 34 Tage erhöht.
+![Erhöhung der Aufbewahrungszeit für Sicherung](./media/howto-restore-server-portal/3-increase-backup-days.png)
+
+4. Klicken Sie auf **OK**, um die Änderung zu bestätigen.
+
+Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zurückliegenden Zeitraum eine Point-in-Time-Wiederherstellung durchgeführt werden kann, da dies auf den verfügbaren Sicherungen basiert. Die Point-in-Time-Wiederherstellung wird im folgenden Abschnitt näher beschrieben. 
+
+## <a name="point-in-time-restore-in-the-azure-portal"></a>Point-in-Time-Wiederherstellung im Azure-Portal
+Mit Azure Database for MySQL können Sie den Zustand des Servers zu einem bestimmten Zeitpunkt und auf einer neuen Kopie des Servers wiederherstellen. Sie können diesen neuen Server verwenden, um Ihre Daten wiederherzustellen, oder Ihre Clientanwendungen so einrichten, dass sie auf diesen neuen Server verweisen.
+
+Beispiel: Wenn eine Tabelle heute um 12 Uhr versehentlich gelöscht wurde, können Sie den Zustand von kurz vor 12 Uhr wiederherstellen und die fehlende Tabelle und die Daten von dieser neuen Kopie des Servers abrufen. Die Point-in-Time-Wiederherstellung wird nicht auf Datenbankebene, sondern auf der Serverebene durchgeführt.
 
 Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bestimmten Zeitpunkt wiederhergestellt:
+1. Wählen Sie im Azure-Portal Ihren Azure Database for MySQL-Server aus. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Klicken Sie in der Symbolleiste auf der Seite **Übersicht** des Servers auf **Wiederherstellen**.
 
-2. Suchen Sie den Server für Azure-Datenbank für MySQL. Wählen Sie im linken Bereich **Alle Ressourcen** und anschließend den Server in der Liste aus.
+   ![Azure Database for MySQL – Übersicht – Schaltfläche „Wiederherstellen“](./media/howto-restore-server-portal/2-server.png)
 
-3.  Klicken Sie oben auf dem Serverübersichtsblatt auf der Symbolleiste auf **Wiederherstellen**. Das Blatt „Wiederherstellen“ wird geöffnet.
-![Klicken auf die Schaltfläche „Wiederherstellen“](./media/howto-restore-server-portal/click-restore-button.png)
+3. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:
 
-4. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:
+   ![Azure Database for MySQL – Wiederherstellungsinformationen ](./media/howto-restore-server-portal/3-restore.png)
+  - **Wiederherstellungspunkt**: Wählen Sie den Zeitpunkt aus, für den der Zustand wiederhergestellt werden soll.
+  - **Zielserver**: Geben Sie einen Namen für den neuen Server an.
+  - **Standort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Wert für den Quellserver identisch.
+  - **Tarif**: Sie können diese Parameter nicht ändern, wenn Sie eine Point-in-Time-Wiederherstellung durchführen. Er ist mit dem Wert für den Quellserver identisch. 
 
-- **Wiederherstellungspunkt (UTC)**: Wählen Sie mithilfe der Datums- und Zeitauswahl einen Zeitpunkt aus, dessen Zustand wiederhergestellt werden soll. Die Zeit wird im UTC-Format angegeben, daher müssen Sie die Ortszeit wahrscheinlich in UTC umrechnen.
-- **Auf neuem Server wiederherstellen**: Geben Sie den Namen eines neuen Servers an, auf dem der vorhandene Server wiederhergestellt werden soll.
-- **Standort**: Die Region wird automatisch mit der Region des Quellservers ausgefüllt und kann nicht geändert werden.
-- **Tarif**: Als Tarif wird automatisch der gleiche Tarif wie für den Quellserver festgelegt, der hier nicht geändert werden kann. 
-![PITR-Wiederherstellung](./media/howto-restore-server-portal/pitr-restore.png)
+4. Klicken Sie auf **OK**, um den Zustand eines Servers zu einem bestimmten Zeitpunkt wiederherzustellen. 
 
-5. Klicken Sie auf **OK**, um den Zustand eines Servers zu einem bestimmten Zeitpunkt wiederherzustellen. 
+5. Suchen Sie nach Abschluss der Wiederherstellung den neuen erstellten Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
 
-6. Suchen Sie nach Abschluss der Wiederherstellung den neuen erstellten Server, um zu überprüfen, ob die Datenbanken wie erwartet wiederhergestellt wurden.
+>[!Note]
+>Beachten Sie Folgendes: Der neue Server, der durch die Point-in-Time-Wiederherstellung erstellt wurde, verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server zum gewählten Zeitpunkt gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Datenverbindungsbibliotheken für Azure Database for MySQL](concepts-connection-libraries.md)
+- Informieren Sie sich über die [Sicherungen](concepts-backup.md) des Diensts.
+- Informieren Sie sich über die Optionen in Bezug auf die [Geschäftskontinuität](concepts-business-continuity.md).

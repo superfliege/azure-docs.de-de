@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 14e5e7613fd5df650625cf8997d569b754ceb689
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 2f1ae92c05e02dffa22fb2c64c6c076a0adfc176
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten X.509-Geräts per Java-Gerät und Dienst-SDK sowie Registrierungsgruppen für den IoT Hub Device Provisioning-Dienst
 
@@ -39,9 +39,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
     > Für diesen Schritt ist [OpenSSL](https://www.openssl.org/) erforderlich. OpenSSL kann entweder über die Quelle erstellt und installiert oder über einen [Drittanbieter](https://wiki.openssl.org/index.php/Binaries) (z.B. [hier](https://sourceforge.net/projects/openssl/)) installiert werden. Sie können diesen Schritt überspringen, falls Sie Ihre _Stamm_-, _Zwischen_- und _Geräte_zertifikate bereits erstellt haben.
     >
 
-1. Erstellen Sie die Informationen für die Registrierungsgruppe:
-
-    1. Führen Sie **Schritt 1** und **Schritt 2** aus, um Ihre _Stamm_- und _Zwischen_zertifikate zu erstellen.
+    1. Führen Sie die ersten beiden Schritte aus, um Ihre _Stamm_- und _Zwischenzertifikate_ zu erstellen.
 
     1. Melden Sie sich am Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Provisioning-Dienst.
 
@@ -56,16 +54,16 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
 
         1. Wählen Sie das neu erstellte Zertifikat aus:
             - Klicken Sie auf **Prüfcode generieren**. Kopieren Sie den generierten Code.
-            - Führen Sie **Schritt 3** aus. Geben Sie den _Prüfcode_ ein, oder klicken Sie mit der rechten Maustaste, um ihn in Ihr aktives PowerShell-Fenster einzufügen.  Drücken Sie die **EINGABETASTE**.
+            - Führen Sie den Überprüfungsschritt aus. Geben Sie den _Prüfcode_ ein, oder klicken Sie mit der rechten Maustaste, um ihn in Ihr aktives PowerShell-Fenster einzufügen.  Drücken Sie die **EINGABETASTE**.
             - Wählen Sie im Azure-Portal die neu erstellte Datei **_verifyCert4.pem_** aus. Klicken Sie auf **Überprüfen**.
 
             ![Überprüfen des Zertifikats](./media/tutorial-group-enrollments/validate-certificate.png)
 
-1. Schließen Sie den Vorgang ab, indem Sie **Schritt 4** und **Schritt 5** ausführen, um Ihre Gerätezertifikate zu erstellen und die Ressourcen zu bereinigen.
+    1. Schließen Sie den Vorgang ab, indem Sie die Schritte zum Erstellen der Gerätezertifikate und zum Bereinigen der Ressourcen ausführen.
 
-> [!NOTE]
-> Stellen Sie beim Erstellen von Zertifikaten sicher, dass Sie für den Namen des Geräts nur Kleinbuchstaben und Zahlen sowie Bindestriche verwenden.
->
+    > [!NOTE]
+    > Stellen Sie beim Erstellen von Zertifikaten sicher, dass Sie für den Namen des Geräts nur Kleinbuchstaben und Zahlen sowie Bindestriche verwenden.
+    >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>Erstellen eines Geräteregistrierungseintrags

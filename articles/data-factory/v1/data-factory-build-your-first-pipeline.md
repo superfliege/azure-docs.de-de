@@ -3,7 +3,7 @@ title: 'Data Factory-Tutorial: erste Datenpipeline | Microsoft Docs'
 description: In diesem Azure Data Factory-Tutorial erfahren Sie, wie Sie eine Data Factory erstellen und planen, die Daten unter Verwendung eines Hive-Skripts in einem Hadoop-Cluster verarbeitet.
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: 
 ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 553750ce024929b285485c63156f8a8a23dff3ce
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 374eebfe35207f6e5264159dcb72abddc6de4598
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 1. Eine **Data Factory**. Eine Data Factory kann mindestens eine Datenpipeline enthalten, die Daten verschiebt und verarbeitet. 
 
     In diesem Tutorial erstellen Sie eine Pipeline in der Data Factory. 
-2. Erstellen einer **Pipeline** Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen (Beispiele: Kopieraktivität, HDInsight Hive-Aktivität). Dieses Beispiel verwendet die HDInsight-Hive-Aktivität, die ein Hive-Skript für einen HDInsight-Hadoop-Cluster ausführt. Das Skript erstellt zunächst eine Tabelle, die auf die Webprotokoll-Rohdaten im Azure-Blobspeicher verweist, und partitioniert die Rohdaten dann nach Jahr und Monat.
+2. Erstellen einer **Pipeline** Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen (Beispiele: Kopieraktivität, HDInsight Hive-Aktivität). Dieses Beispiel verwendet die HDInsight-Hive-Aktivität, die ein Hive-Skript für einen HDInsight-Hadoop-Cluster ausführt. Das Skript erstellt zunächst eine Tabelle, die auf die Webprotokoll-Rohdaten in Azure Blob Storage verweist, und partitioniert die Rohdaten dann nach Jahr und Monat.
 
     In diesem Tutorial verwendet die Pipeline die Hive-Aktivität zum Transformieren von Daten durch Ausführen einer Hive-Abfrage in einem Azure HDInsight Hadoop-Cluster. 
 3. Erstellen von **verknüpften Diensten**. Sie erstellen einen verknüpften Dienst, um einen Datenspeicher oder einen Computedienst mit der Data Factory zu verknüpfen. Ein Datenspeicher wie Azure Storage hält Ein-/Ausgabedaten von Aktivitäten in der Pipeline. Ein Computedienst (etwa ein HDInsight-Hadoop-Cluster) verarbeitet/transformiert Daten.
@@ -88,7 +88,7 @@ Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüll
 3. Laden Sie die Hive-Abfragedatei (**HQL**) herunter, und sehen Sie sie durch. Sie finden sie unter [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Diese Abfrage transformiert die Eingabedaten in Ausgabedaten. 
 4. Laden Sie die Beispieleingabedatei (**input.log**) herunter, und sehen Sie sie durch: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Erstellen Sie einen Blobcontainer namens **adfgetstarted** in Azure Blob Storage. 
-6. Laden Sie im Container **adfgetstarted** die Datei **partitionweblogs.hql** in den Ordner **script** hoch. Verwenden Sie Tools wie etwa den [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/). 
+6. Laden Sie im Container **adfgetstarted** die Datei **partitionweblogs.hql** in den Ordner **script** hoch. Verwenden Sie Tools wie etwa den [Microsoft Azure Storage-Explorer](http://storageexplorer.com/). 
 7. Laden Sie im Container **adfgetstarted** die Datei **input.log** in den Ordner **inputdata** hoch. 
 
 Nach dem Erfüllen der Voraussetzungen wählen Sie eines der folgenden Tools/SDKs aus, um das Tutorial auszuführen: 

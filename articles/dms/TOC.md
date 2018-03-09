@@ -6,6 +6,7 @@
 
 # Tutorials
 ## [Migrate SQL Server to Azure SQL (Migrieren von SQL Server zu Azure SQL-Datenbank)](tutorial-sql-server-to-azure-sql.md)
+## [Migrieren von SQL Server zu „Verwaltete Azure SQL-Datenbank-Instanz“](tutorial-sql-server-to-managed-instance.md)
 
 # Anleitungen
 ## [Migrieren von SQL Server mithilfe von PowerShell](howto-sql-server-to-azure-sql-powershell.md)
@@ -19,4 +20,4 @@
 ## [Übersicht über Voraussetzungen](pre-reqs.md)
 ## [Häufig gestellte Fragen](faq.md)
 ## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=database-migration)
-
+## [Netzwerktopologien für Migrationen vom Typ „Verwaltete Azure SQL-Datenbank-Instanz“](resource-network-topologies.md)

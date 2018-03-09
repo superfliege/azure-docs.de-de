@@ -3,7 +3,7 @@ title: Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 description: "Beschreibt, wie Sie große Datenmengen in einer Azure Data Factory-Pipeline verarbeiten, indem Sie die Parallelverarbeitungsfunktion von Azure Batch nutzen."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: monicar
 ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: af2c12cac5846ae1c4bc693bacaf72ab327fb87f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3b886babe07a0bd1fa725286b5471055fc626dc1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -91,7 +91,7 @@ Die Beispiellösung ist absichtlich einfach gehalten. Sie soll veranschaulichen,
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie schnell ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 #### <a name="azure-storage-account"></a>Azure-Speicherkonto
-Sie nutzen ein Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie kein Speicherkonto haben, lesen Sie [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Die Beispiellösung verwendet Blob Storage.
+Sie nutzen ein Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie kein Speicherkonto haben, lesen Sie [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Die Beispiellösung verwendet Blob-Speicher.
 
 #### <a name="azure-batch-account"></a>Azure Batch-Konto
 Erstellen Sie im [Azure-Portal](http://portal.azure.com/) ein Batch-Konto. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Batch-Kontos](../../batch/batch-account-create-portal.md). Notieren Sie den Namen und Kontoschlüssel des Batch-Kontos. Sie können auch das Cmdlet [New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) verwenden, um ein Batch-Konto zu erstellen. Unter [Verwalten von Batch-Ressourcen mit PowerShell-Cmdlets](../../batch/batch-powershell-cmdlets-get-started.md) erfahren Sie weitere Einzelheiten zur Verwendung dieses Cmdlets.
@@ -130,7 +130,7 @@ Sie verwenden [Azure Storage-Explorer 6](https://azurestorageexplorer.codeplex.c
 
    ![Ordner- und Unterordnerstruktur](./media/data-factory-data-processing-using-batch/image3.png)
 
-   `Inputfolder` und `outputfolder` sind in `mycontainer` Ordner der obersten Ebene. Der Ordner `inputfolder` enthält Unterordner mit Datums-/Uhrzeitstempeln (JJJJ-MM-TT-HH).
+   `Inputfolder`und `outputfolder` sind in `mycontainer` Ordner der obersten Ebene. Der Ordner `inputfolder` enthält Unterordner mit Datums-/Uhrzeitstempeln (JJJJ-MM-TT-HH).
 
    Wenn Sie Storage-Explorer verwenden, müssen Sie im nächsten Schritt Dateien mit Namen wie `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt` usw. hochladen. In diesem Schritt werden die Ordner automatisch erstellt.
 
@@ -170,8 +170,8 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 * Die Methode akzeptiert vier Parameter:
 
   * **LinkedServices**. Dieser Parameter ist eine aufzählbare Liste verknüpfter Dienste, die Ein- und Ausgabedatenquellen (z.B. Blob Storage) mit der Data Factory verknüpfen. In diesem Beispiel gibt es nur einen verknüpften Dienst des Typs „Azure Storage“, der sowohl für die Eingabe als auch die Ausgabe verwendet wird.
-  * **datasets**. Dieser Parameter ist eine aufzählbare Liste von Datasets. Sie können diesen Parameter zum Abrufen der Speicherorte und Schemas verwenden, die von den Eingabe- und Ausgabedatasets definiert werden.
-  * **activity**. Dieser Parameter stellt die aktuelle Compute-Entität dar. In diesem Fall ist dies ein Batch-Dienst.
+  * **Datasets**. Dieser Parameter ist eine aufzählbare Liste von Datasets. Sie können diesen Parameter zum Abrufen der Speicherorte und Schemas verwenden, die von den Eingabe- und Ausgabedatasets definiert werden.
+  * **Aktivität**. Dieser Parameter stellt die aktuelle Compute-Entität dar. In diesem Fall ist dies ein Batch-Dienst.
   * **Protokollierungstool**. Mit dem Protokollierungstool können Sie Debugkommentare schreiben, die dann als das Protokoll „User“ für die Pipeline angezeigt werden.
 * Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdefinierter Aktivitäten verwendet werden kann. Diese Funktion ist noch nicht implementiert, sodass von der Methode nur ein leeres Wörterbuch zurückgegeben wird.
 
@@ -457,7 +457,7 @@ Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der „Execut
     
     return blobDataset.FolderPath;
     ```
-5. Der Code ruft die **GetFileName**-Methode zum Abrufen des Dateinamens (Blob-Name) auf. Der Code ähnelt dem vorherigen Code zum Abrufen des Ordnerpfads.
+5. Der Code ruft die **GetFileName** -Methode zum Abrufen des Dateinamens (Blob-Name) auf. Der Code ähnelt dem vorherigen Code zum Abrufen des Ordnerpfads.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
@@ -798,7 +798,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer einzigen Aktivität, nä
    * **PackageFile** wird auf **customactivitycontainer/MyCustomActivity.zip** festgelegt. Das entspricht dem Format: \<container_für_zip-datei\>/\<name_der_zip-datei.zip\>.
    * Die benutzerdefinierte Aktivität verwendet **InputDataset** als Eingabe und **OutputDataset** als Ausgabe.
    * Die Eigenschaft **linkedServiceName** der benutzerdefinierten Aktivität zeigt auf **AzureBatchLinkedService**, was Data Factory mitteilt, dass die benutzerdefinierte Aktivität in Azure Batch ausgeführt werden muss.
-   * Die Einstellung **concurrency** ist wichtig. Wenn Sie den Standardwert 1 verwenden, auch wenn Sie über zwei oder mehr Computeknoten im Batch-Pool verfügen, werden die Slices nacheinander verarbeitet. Daher nutzen Sie nicht die Parallelverarbeitungsfunktion von Azure Batch. Wenn Sie **concurrency** (Parallelität) auf einen höheren Wert wie z. B. 2 festlegen, können zwei Slices (was zwei Aufgaben in Azure Batch entspricht) gleichzeitig verarbeitet werden. In diesem Fall werden die virtuellen Computer im Batch-Pool verwendet. Legen Sie daher Sie die „concurrency“-Eigenschaft entsprechend fest.
+   * Die Einstellung **Parallelität** ist wichtig. Wenn Sie den Standardwert 1 verwenden, auch wenn Sie über zwei oder mehr Computeknoten im Batch-Pool verfügen, werden die Slices nacheinander verarbeitet. Daher nutzen Sie nicht die Parallelverarbeitungsfunktion von Azure Batch. Wenn Sie **concurrency** (Parallelität) auf einen höheren Wert wie z. B. 2 festlegen, können zwei Slices (was zwei Aufgaben in Azure Batch entspricht) gleichzeitig verarbeitet werden. In diesem Fall werden die virtuellen Computer im Batch-Pool verwendet. Legen Sie daher Sie die „concurrency“-Eigenschaft entsprechend fest.
    * Nur eine Aufgabe (Slice) wird standardmäßig auf einer virtuellen Maschine zu einem beliebigen Zeitpunkt ausgeführt. Standardmäßig ist **Max. Tasks pro VM** für einen Batch-Pool auf 1 festgelegt ist. Als Teil der Voraussetzungen haben Sie einen Pool erstellt, bei dem diese Eigenschaft auf 2 festgelegt ist. Aus diesem Grund können zwei Data Factory-Slices auf einem virtuellen Computer gleichzeitig ausgeführt werden.
     - Die **isPaused**-Eigenschaft ist standardmäßig auf „false“ festgelegt. Die Pipeline wird in diesem Beispiel sofort ausgeführt, da die Slices in der Vergangenheit starten. Legen Sie diese Eigenschaft auf **true** fest, um die Pipeline anzuhalten, und legen Sie sie zum Neustart wieder auf **false** fest.
     -   Die Zeiten für **start** und **end** liegen fünf Stunden auseinander. Slices werden stündlich erstellt, sodass insgesamt fünf Slices von der Pipeline erstellt werden.
@@ -869,7 +869,7 @@ Der Data Factory-Dienst erstellt in Batch einen Auftrag mit dem Namen `adf-pooln
 
 ![Batch-Aufträge](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
-Bei jeder Aktivitätsausführung eines Slices wird eine Aufgabe im Auftrag erstellt. Wenn zehn Slices zur Verarbeitung bereitstehen, werden zehn Tasks im Auftrag erstellt. Sie können mehrere Slices parallel ausführen, wenn Sie über mehrere Computeknoten im Pool verfügen. Wenn die maximale Anzahl der Tasks pro Computeknoten auf mehr als 1 festgelegt ist, können mehrere Slices auf dem gleichen Computeknoten ausgeführt werden.
+Bei jeder Aktivitätsausführung eines Slices wird eine Aufgabe im Auftrag erstellt. Wenn zehn Slices zur Verarbeitung bereitstehen, werden zehn Tasks im Auftrag erstellt. Sie können mehrere Slices parallel ausführen, wenn Sie über mehrere Compute-Knoten im Pool verfügen. Wenn die maximale Anzahl der Tasks pro Computeknoten auf mehr als 1 festgelegt ist, können mehrere Slices auf dem gleichen Computeknoten ausgeführt werden.
 
 Dieses Beispiel umfasst fünf Slices, also fünf Tasks in Batch. Wenn die **concurrency**-Eigenschaft im JSON-Code der Pipeline in der Data Factory auf **5** und **Max. Tasks pro VM** im Batch-Pool mit **zwei** VMs auf **2** festgelegt ist, werden die Tasks schnell ausgeführt. (Prüfen Sie die Start- und Endzeit von Tasks.)
 
@@ -930,7 +930,7 @@ Das Debuggen umfasst einige grundlegende Verfahren.
 #### <a name="extend-the-sample"></a>Erweitern des Beispiels
 Sie können dieses Beispiel erweitern, um mehr über Data Factory- und Batch-Funktionen zu erfahren. Gehen Sie zum Verarbeiten von Slices in einem anderen Zeitbereich wie folgt vor:
 
-1. Fügen Sie die folgenden Unterordner `inputfolder` hinzu: 2015-11-16-05, 2015-11-16-06 201-11-16-07 2011-11-16-08 und 2015-11-16-09. Platzieren Sie in diesen Ordnern Eingabedateien. Ändern Sie die Endzeit für die Pipeline von `2015-11-16T05:00:00Z` in `2015-11-16T10:00:00Z`. Doppelklicken Sie in der **Diagrammansicht** auf **InputDataset**, und vergewissern Sie sich, dass die Eingabeslices bereit sind. Doppelklicken Sie auf **OuptutDataset**, um den Status der Ausgabeslices anzeigen. Wenn der Status **Bereit** lautet, überprüfen Sie den Ausgabeordner für die Ausgabedateien.
+1. Fügen Sie die folgenden Unterordner `inputfolder` hinzu: 2015-11-16-05, 2015-11-16-06 201-11-16-07 2011-11-16-08 und 2015-11-16-09. Platzieren Sie in diesen Ordnern Eingabedateien. Ändern Sie die Endzeit für die Pipeline von `2015-11-16T05:00:00Z` zu `2015-11-16T10:00:00Z`. Doppelklicken Sie in der **Diagrammansicht** auf **InputDataset**, und vergewissern Sie sich, dass die Eingabeslices bereit sind. Doppelklicken Sie auf **OuptutDataset**, um den Status der Ausgabeslices anzeigen. Wenn der Status **Bereit** lautet, überprüfen Sie den Ausgabeordner für die Ausgabedateien.
 
 2. Erhöhen oder verringern Sie die **concurrency**-Einstellung, um zu verstehen, wie sie sich auf die Leistung Ihrer Lösung, insbesondere auf die in Azure Batch erfolgte Verarbeitung, auswirkt. Siehe „Schritt 4: Erstellen und Ausführen der Pipeline mit einer benutzerdefinierten Aktivität“, um mehr über die **concurrency**-Einstellung zu erfahren.
 

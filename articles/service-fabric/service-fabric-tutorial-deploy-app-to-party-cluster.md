@@ -1,10 +1,10 @@
 ---
-title: "Bereitstellen einer Azure Service Fabric-Anwendung für einen Cluster | Microsoft-Dokumentation"
-description: In diesem Tutorial wird beschrieben, wie Sie eine Anwendung in einem Service Fabric-Cluster bereitstellen.
+title: "Bereitstellen einer Azure Service Fabric-Anwendung in einem Cluster über Visual Studio | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie über Visual Studio eine Anwendung in einem Cluster bereitstellen können."
 services: service-fabric
 documentationcenter: .net
-author: mikkelhegn
-manager: msfussell
+-author: mikkelhegn
+-manager: msfussell
 editor: 
 ms.assetid: 
 ms.service: service-fabric
@@ -12,29 +12,31 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2017
-ms.author: mikhegn
+ms.date: 02/21/2018
+ms.author: mikkelhegn
 ms.custom: mvc
-ms.openlocfilehash: 35ddf77b1e9a9b355ed2cee4731e3c5d87c4a701
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 21c991a4e3f9ae19a4ad4a96427fdc1c91c55a1c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>Tutorial: Bereitstellen einer Anwendung in einem Service Fabric-Cluster in Azure
-Dieses Tutorial ist der zweite Teil einer Tutorialreihe. Es wird beschrieben, wie Sie eine Azure Service Fabric-Anwendung für einen Cluster bereitstellen, der in Azure ausgeführt wird.
+Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie eine Azure Service Fabric-Anwendung direkt über Visual Studio in einem neuen Cluster in Azure bereitstellen.
 
-Im zweiten Teil der Tutorialreihe lernen Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes:
+> [!div class="checklist"]
+> * Erstellen eines Clusters über Visual Studio
+> * Bereitstellen einer Anwendung in einem Remotecluster mithilfe von Visual Studio
+
+
+In dieser Tutorialreihe lernen Sie Folgendes:
 > [!div class="checklist"]
 > * [Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)
 > * Bereitstellen der Anwendung in einem Remotecluster
 > * [Konfigurieren von CI/CD mit Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 
-In dieser Tutorialreihe lernen Sie Folgendes:
-> [!div class="checklist"]
-> * Bereitstellung einer Anwendung in einem Remotecluster mithilfe von Visual Studio
-> * Entfernen einer Anwendung aus einem Cluster mithilfe von Service Fabric Explorer
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
@@ -42,91 +44,63 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 - [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 - [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
 
-## <a name="download-the-voting-sample-application"></a>Laden Sie die Beispielanwendung „Voting“ herunter.
+## <a name="download-the-voting-sample-application"></a>Herunterladen der Beispielanwendung „Voting“
 Falls Sie die Beispielanwendung „Voting“ aus [Teil 1 dieser Tutorialreihe](service-fabric-tutorial-create-dotnet-app.md) nicht erstellt haben, können Sie sie herunterladen. Führen Sie in einem Befehlsfenster den folgenden Befehl aus, um das Beispiel-App-Repository auf Ihren lokalen Computer zu klonen.
 
 ```
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
-## <a name="set-up-a-party-cluster"></a>Einrichten eines Partyclusters
-Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Kostenlos!
+## <a name="deploy-the-sample-application"></a>Bereitstellen der Beispielanwendung
 
-Um Zugriff auf einen Partycluster zu erhalten, navigieren Sie zu dieser Website: http://aka.ms/tryservicefabric und befolgen Sie die Anweisungen. Sie benötigen ein Facebook- oder GitHub-Konto für den Zugriff auf einen Partycluster.
+### <a name="select-a-service-fabric-cluster-to-which-to-publish"></a>Auswählen eines Service Fabric-Clusters für die Veröffentlichung
+Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio in einem Cluster bereitstellen.
 
-Sie können einen eigenen Cluster statt des Partyclusters verwenden, wenn Sie möchten.  Das Web-Front-End von ASP.NET Core verwendet den Reverseproxy, um mit dem zustandsbehafteten Dienst-Back-End zu kommunizieren.  Für Partycluster und lokale Bereitstellungscluster ist der Reverseproxy standardmäßig aktiviert.  Wenn Sie die Beispielanwendung „Voting“ für Ihren eigenen Cluster bereitstellen, müssen Sie [den Reverseproxy im Cluster aktivieren](service-fabric-reverseproxy.md#setup-and-configuration).
+Für die Bereitstellung stehen zwei Optionen zur Verfügung:
+- Erstellen Sie einen Cluster über Visual Studio. Mit dieser Option können Sie direkt über Visual Studio einen sicheren Cluster mit Ihrer bevorzugten Konfiguration erstellen. Diese Art von Cluster ist ideal für Testszenarien, in denen Sie den Cluster erstellen und direkt in Visual Studio als Veröffentlichungsziel verwenden können.
+- Verwenden Sie einen bereits vorhandenen Cluster aus Ihrem Abonnement als Veröffentlichungsziel.
 
+In diesem Tutorial erfahren Sie, wie Sie einen Cluster über Visual Studio erstellen. Für die anderen Optionen können Sie Ihren Verbindungsendpunkt kopieren und einfügen oder ihn aus Ihrem Abonnement auswählen.
 > [!NOTE]
-> Partycluster werden nicht gesichert, sodass Ihre Anwendungen und Daten, die Sie in diesem abgelegt haben, möglicherweise für andere Personen sichtbar sind. Stellen Sie nichts bereit, das nicht von anderen gesehen werden soll. Lesen Sie die Nutzungsbedingungen für alle weiteren Details.
+> Viele Dienste verwenden den Reverseproxy, um miteinander zu kommunizieren. Bei Clustern, die über Visual Studio erstellt werden, sowie bei Partyclustern ist der Reverseproxy standardmäßig aktiviert.  Bei Verwendung eines bereits vorhandenen Clusters müssen Sie den [Reverseproxy im Cluster aktivieren](service-fabric-reverseproxy.md#setup-and-configuration).
 
-Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Das Zertifikat und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
+### <a name="deploy-the-app-to-the-service-fabric-cluster"></a>Bereitstellen der App im Service Fabric-Cluster
 
-![PFX-Zertifikat und Verbindungsendpunkt](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt, und klicken Sie anschließend auf **Veröffentlichen**.
 
-Installieren Sie das PFX-Zertifikat auf einem Windows-Computer im Zertifikatspeicher *CurrentUser\My*.
+2. Melden Sie sich unter Verwendung Ihres Azure-Kontos an, um auf Ihre Abonnements zugreifen zu können. Bei Verwendung eines Partyclusters ist dieser Schritt optional.
 
-```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
-\CurrentUser\My
+3. Wählen Sie in der Dropdownliste **Verbindungsendpunkt** die Option „<Create New Cluster...>“ aus.
+    
+    ![Dialogfeld „Veröffentlichen“](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+    
+4. Ändern Sie im Dialogfeld „Cluster erstellen“ die folgenden Einstellungen:
 
+    1. Geben Sie im Feld „Clustername“ den Namen Ihres Clusters sowie das gewünschte Abonnement und den gewünschten Standort an.
+    2. Optional: Ändern Sie ggf. die Knotenanzahl. Standardmäßig sind drei Knoten vorhanden (die Mindestanzahl zum Testen von Service Fabric-Szenarien).
+    3. Klicken Sie auf die Registerkarte „Zertifikat“. Geben Sie auf dieser Registerkarte ein Kennwort ein, um das Zertifikat Ihres Clusters zu schützen. Dieses Zertifikat trägt zum Schutz Ihres Clusters bei. Sie können auch den Pfad ändern, unter dem das Zertifikat gespeichert werden soll. Visual Studio kann das Zertifikat auch für Sie importieren. Dieser Schritt ist erforderlich, um die Anwendung im Cluster bereitstellen zu können.
+    4. Klicken Sie auf die Registerkarte „VM-Detail“. Geben Sie das Kennwort an, das Sie für die virtuellen Computer verwenden möchten, die den Cluster bilden. Die Kombination aus Benutzername und Kennwort kann zum Herstellen einer Remoteverbindung mit dem virtuellen Computer verwendet werden. Wählen Sie außerdem eine VM-Größe aus, und ändern Sie bei Bedarf das VM-Image.
+    5. Optional: Auf der Registerkarte „Erweitert“ können Sie die Liste der Ports ändern, die in dem Lastenausgleich geöffnet sein sollen, der zusammen mit dem Cluster erstellt wird. Sie können auch einen vorhandenen Application Insights-Schlüssel hinzufügen, der als Routingziel für Anwendungsprotokolldateien verwendet werden soll.
+    6. Klicken Sie nach Abschluss der Einstellungsänderungen auf die Schaltfläche „Erstellen“. Die Erstellung kann einige Minuten dauern. Im Ausgabefenster wird eine entsprechende Information angezeigt, wenn der Cluster vollständig erstellt wurde.
+    
+    ![Dialogfeld „Cluster erstellen“](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-  PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+4. Wenn der gewünschte Cluster bereit ist, klicken Sie mit der rechten Maustaste auf das Anwendungsprojekt, und klicken Sie anschließend auf **Veröffentlichen**.
 
-Thumbprint                                Subject
-----------                                -------
-3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
-```
+    Nach Abschluss der Veröffentlichung können Sie über den Browser eine Anforderung an die Anwendung senden.
 
-
-## <a name="deploy-the-app-to-the-azure"></a>Bereitstellen der Anwendung in Azure
-Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio für den Partycluster bereitstellen.
-
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und wählen Sie **Veröffentlichen**. 
-
-    ![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-containers/publish-app.png)
-
-2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und geben Sie die folgenden Informationen an.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des im vorherigen Schritt installierten Zertifikats entsprechen. Klicken Sie auf **Veröffentlichen**. 
-
-    Sobald die Veröffentlichung abgeschlossen ist, sollten Sie über den Browser eine Anforderung an die Anwendung senden können.
-
-3. Öffnen Sie Ihren bevorzugten Browser, und geben Sie die Clusteradresse ein (den Verbindungsendpunkt ohne die Portinformationen – also beispielsweise „win1kw5649s.westus.cloudapp.azure.com“).
+5. Öffnen Sie Ihren bevorzugten Browser, und geben Sie die Clusteradresse ein (den Verbindungsendpunkt ohne die Portinformationen – also beispielsweise „win1kw5649s.westus.cloudapp.azure.com“).
 
     Ihnen sollte nun das gleiche Ergebnis angezeigt werden wie bei der lokalen Ausführung der Anwendung.
 
     ![API-Antwort aus dem Cluster](./media/service-fabric-tutorial-deploy-app-to-party-cluster/response-from-cluster.png)
 
-## <a name="remove-the-application-from-a-cluster-using-service-fabric-explorer"></a>Entfernen einer Anwendung aus einem Cluster mithilfe von Service Fabric Explorer
-Service Fabric Explorer ist eine grafische Benutzeroberfläche, um Ihre Anwendungen in einem Service Fabric Cluster zu durchsuchen und zu verwalten.
-
-So entfernen Sie die Anwendung aus dem Partycluster:
-
-1. Navigieren Sie über den von der Party Cluster-Anmeldeseite bereitgestellten Link zu Service Fabric Explorer. Beispiel: „https://win1kw5649s.westus.cloudapp.azure.com:19080/Explorer/index.html“.
-
-2. Navigieren Sie in Service Fabric Explorer in der Strukturansicht auf der linken Seite zum Knoten **fabric:/Voting**.
-
-3. Klicken Sie auf der rechten Seite des Bereichs **Zusammenfassung** auf die Schaltfläche **Aktion**, und klicken Sie auf **Anwendung löschen**. Bestätigen Sie die Löschung der Anwendungsinstanz, um die Instanz Ihrer Anwendung zu entfernen, die im Cluster ausgeführt wird.
-
-![Anwendung in Service Fabric Explorer löschen](./media/service-fabric-tutorial-deploy-app-to-party-cluster/delete-application.png)
-
-## <a name="remove-the-application-type-from-a-cluster-using-service-fabric-explorer"></a>Entfernen des Anwendungstyps aus einem Cluster mithilfe von Service Fabric Explorer
-Anwendungen werden als Anwendungstypen in einem Service Fabric-Cluster bereitgestellt. Dadurch können Sie mehrere Instanzen und Versionen der Anwendung innerhalb des Clusters ausführen. Nachdem Sie die ausgeführte Instanz der Anwendung entfernt haben, kann auch der Typ entfernt werden, um die Bereinigung der Bereitstellung abzuschließen.
-
-Weitere Informationen zum Anwendungsmodell in Service Fabric finden Sie unter [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md).
-
-1. Navigieren Sie in der Strukturansicht zum Knoten **VotingType**.
-
-2. Klicken Sie auf der rechten Seite des Bereichs **Zusammenfassung** auf die Schaltfläche **Aktion**, und klicken Sie auf **Unprovision Type** (Bereitstellung des Typs aufheben). Bestätigen Sie die Aufhebung der Bereitstellung des Anwendungstyps.
-
-![Aufhebung der Bereitstellung des Anwendungstyps in Service Fabric Explorer](./media/service-fabric-tutorial-deploy-app-to-party-cluster/unprovision-type.png)
-
-Damit ist das Lernprogramm beendet.
-
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
+> * Erstellen eines Clusters über Visual Studio
 > * Bereitstellung einer Anwendung in einem Remotecluster mithilfe von Visual Studio
-> * Entfernen einer Anwendung aus einem Cluster mithilfe von Service Fabric Explorer
 
 Fahren Sie mit dem nächsten Tutorial fort:
 > [!div class="nextstepaction"]

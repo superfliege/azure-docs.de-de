@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 834dbbd0be30181de1a71df05d2867be0e1c59b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4928364ffd732f587e41a788c4d834e91339a7fc
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Überwachen von AD FS mithilfe von Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
@@ -51,7 +51,7 @@ Um zusätzliche Metriken auszuwählen, einen Zeitraum anzugeben oder die Gruppie
 | Anwendung | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Zielanwendung (vertrauende Seite). Diese Gruppierung ist nützlich, wenn Sie die prozentuale Verteilung des gesamten Datenverkehrs auf die verschiedenen Anwendungen anzeigen möchten. |
 |  Server |Gruppiert die Gesamtzahl von Anforderungen basierend auf dem Server, der die Anforderung verarbeitet hat. Diese Gruppierung ist nützlich, um die Lastverteilung für den gesamten Datenverkehr anzuzeigen.
 | In den Arbeitsplatz eingebunden |Gruppiert die Gesamtzahl von Anforderungen danach, ob sie von Geräten stammen, die mit einem Arbeitsbereich verknüpft (bekannt) sind. Diese Gruppierung ist nützlich, wenn auf Ihre Ressourcen über Geräte zugegriffen wird, die der Identitätsinfrastruktur unbekannt sind. |
-|  Authentication Method (Authentifizierungsmethode) | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Authentifizierungsmethode. Diese Gruppierung ist nützlich, wenn Sie wissen möchten, welche Authentifizierungsmethode in der Regel für die Authentifizierung verwendet wird. Folgende Authentifizierungsmethoden sind möglich:  <ol> <li>Integrierte Windows-Authentifizierung (Windows)</li> <li>Formularbasierte Authentifizierung (Forms)</li> <li>Einmaliges Anmelden (SSO)</li> <li>X509-Zertifikatauthentifizierung (Zertifikat)</li> <br>Wenn die Verbundserver die Anforderung mit einem SSO-Cookie empfangen, wird diese Anforderung als SSO-Anforderung eingestuft. In diesen Fällen wird, sofern es sich um ein gültiges Cookie handelt, der Benutzer nicht zur Eingabe von Anmeldeinformationen aufgefordert, sondern erhält nahtlos Zugriff auf die Anwendung. Dieses Verhalten ist üblich, wenn mehrere vertrauende Seiten von den Verbundservern geschützt werden. |
+|  Authentifizierungsmethode | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Authentifizierungsmethode. Diese Gruppierung ist nützlich, wenn Sie wissen möchten, welche Authentifizierungsmethode in der Regel für die Authentifizierung verwendet wird. Folgende Authentifizierungsmethoden sind möglich:  <ol> <li>Integrierte Windows-Authentifizierung (Windows)</li> <li>Formularbasierte Authentifizierung (Forms)</li> <li>Einmaliges Anmelden (SSO)</li> <li>X509-Zertifikatauthentifizierung (Zertifikat)</li> <br>Wenn die Verbundserver die Anforderung mit einem SSO-Cookie empfangen, wird diese Anforderung als SSO-Anforderung eingestuft. In diesen Fällen wird, sofern es sich um ein gültiges Cookie handelt, der Benutzer nicht zur Eingabe von Anmeldeinformationen aufgefordert, sondern erhält nahtlos Zugriff auf die Anwendung. Dieses Verhalten ist üblich, wenn mehrere vertrauende Seiten von den Verbundservern geschützt werden. |
 | Netzwerkadresse | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Netzwerkadresse des Benutzers. Dies kann entweder ein Intranet oder Extranet sein. Diese Gruppierung ist nützlich, wenn Sie die prozentuale Verteilung des eingehenden Datenverkehrs für Intranet und Extranet anzeigen möchten. |
 
 
@@ -95,7 +95,7 @@ In diesem Bericht können Sie ganz einfach auf die folgenden Informationen zugre
 * Gesamtanzahl fehlgeschlagener Anforderungen mit falschem Benutzernamen/Kennwort in den letzten 30 Tagen
 * Durchschnittliche Anzahl von Benutzern pro Tag, bei denen die Anmeldung wegen eines ungültigen Benutzernamens/Kennworts fehlschlägt.
 
-Wenn Sie auf diesen Bereich klicken, gelangen Sie zum Hauptberichtblatt, das zusätzliche Details enthält. Dieses Blatt enthält einen Graphen mit Trendinformationen zum Ermitteln einer Baseline für Anforderungen mit falschem Benutzernamen oder Kennwort. Außerdem wird die Liste mit den Top 50 der Benutzer mit Fehlversuchen angegeben.
+Wenn Sie auf diesen Bereich klicken, gelangen Sie zum Hauptberichtblatt, das zusätzliche Details enthält. Dieses Blatt enthält einen Graphen mit Trendinformationen zum Ermitteln einer Baseline für Anforderungen mit falschem Benutzernamen oder Kennwort. Außerdem wird die Liste mit den 50 Benutzern mit den meisten Fehlversuchen während der letzten Woche angegeben.
 
 Der Graph zeigt die folgenden Informationen:
 
@@ -107,7 +107,7 @@ Der Graph zeigt die folgenden Informationen:
 
 Der Bericht enthält die folgenden Informationen:
 
-| Berichtselement | Beschreibung |
+| Berichtselement | BESCHREIBUNG |
 | --- | --- |
 | Benutzer-ID |Die verwendete Benutzer-ID. Dies ist der Wert mit der Eingabe des Benutzers, also in einigen Fällen die Verwendung der falschen Benutzer-ID. |
 | Fehlgeschlagene Anmeldeversuche |Die Gesamtanzahl fehlgeschlagener Anmeldeversuche für die jeweilige Benutzer-ID. Die Tabelle ist nach der höchsten Anzahl fehlgeschlagener Versuche in absteigender Reihenfolge sortiert. |
@@ -115,7 +115,7 @@ Der Bericht enthält die folgenden Informationen:
 | Letzte Fehler-IP-Adresse |Zeigt die Client-IP-Adresse der letzten fehlerhaften Anforderung an. |
 
 > [!NOTE]
-> Der Bericht wird automatisch alle zwei Stunden mit den neuen gesammelten Informationen aktualisiert. Anmeldeversuche innerhalb der letzten zwei Stunden sind daher unter Umständen nicht im Bericht enthalten.
+> Der Bericht wird automatisch alle zwölf Stunden mit den neuen gesammelten Informationen aktualisiert. Anmeldeversuche innerhalb der letzten zwei Stunden sind daher unter Umständen nicht im Bericht enthalten.
 >
 >
 

@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: edb48cd8de9b1f7357c40cea73fa4b9a422cb8fa
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 38ad8a15fcc4077926e735e01f877a4ee66718ef
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="get-started-with-azure-notification-hubs-for-xamarinios-apps"></a>Erste Schritte mit Azure Notification Hubs für Xamarin.iOS-Apps
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -82,7 +82,7 @@ Der Notification Hub ist jetzt für die Arbeit mit APNS konfiguriert, und Sie be
 
 2. Geben Sie Ihren App-Namen und die Organisations-ID ein, und klicken Sie anschließend auf **Weiter** > **Erstellen**
 
-3. Doppelklicken Sie in der Projektmappenansicht auf *Into.plist*, und vergewissern Sie sich unter **Identität**, dass Ihre Paket-ID der ID entspricht, die beim Erstellen Ihres Bereitstellungsprofils verwendet wurde. Vergewissern Sie sich unter **Signierung**, dass unter **Team** Ihr Entwicklerkonto ausgewählt ist. Vergewissern Sie sich außerdem, dass das Kontrollkästchen für die automatische Signierungsverwaltung aktiviert ist und dass Ihr Signaturzertifikat und Ihr Bereitstellungsprofil automatisch ausgewählt wurden.
+3. Doppelklicken Sie in der Projektmappenansicht auf *Info.plist*, und vergewissern Sie sich unter **Identität**, dass Ihre Paket-ID der ID entspricht, die beim Erstellen Ihres Bereitstellungsprofils verwendet wurde. Vergewissern Sie sich unter **Signierung**, dass unter **Team** Ihr Entwicklerkonto ausgewählt ist. Vergewissern Sie sich außerdem, dass das Kontrollkästchen für die automatische Signierungsverwaltung aktiviert ist und dass Ihr Signaturzertifikat und Ihr Bereitstellungsprofil automatisch ausgewählt wurden.
 
     ![Visual Studio: iOS-App-Konfiguration][32]
 
@@ -207,7 +207,7 @@ Der Notification Hub ist jetzt für die Arbeit mit APNS konfiguriert, und Sie be
 ## <a name="sending-test-push-notifications"></a>Senden von Pushbenachrichtigungen zu Testzwecken
 Mit der Option *Testsendevorgang* im [Azure-Portal] können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
 
-![Azure-Portal: Testsendevorgang][30]
+![Azure-Portal – Testsendung][30]
 
 Pushbenachrichtigungen werden normalerweise mithilfe einer kompatiblen Bibliothek über einen Back-End-Dienst wie Mobile Apps oder ASP.NET gesendet. Falls für Ihr Back-End keine Bibliothek verfügbar ist, können Sie Benachrichtigungsmeldungen auch direkt über die REST-API senden.
 

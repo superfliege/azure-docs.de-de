@@ -1,0 +1,73 @@
+- name: Verwaltete Dienstidentität
+  href: overview.md
+  items:
+    - name: Konfigurieren des MSI für eine Azure-VM
+      items:
+        - name: Verwenden des Azure-Portals
+          href: qs-configure-portal-windows-vm.md
+        - name: Verwenden von PowerShell
+          href: qs-configure-powershell-windows-vm.md
+        - name: Verwenden der Azure-Befehlszeilenschnittstelle
+          href: qs-configure-cli-windows-vm.md
+        - name: Verwenden von Azure Resource Manager-Vorlagen
+          href: qs-configure-template-windows-vm.md
+        - name: Verwenden des Azure SDK
+          href: qs-configure-sdk-windows-vm.md
+    - name: Konfigurieren von MSI für Azure-VMSS
+      items:
+        - name: Verwenden des Azure-Portals
+          href: qs-configure-portal-windows-vmss.md
+        - name: Verwenden der Azure-Befehlszeilenschnittstelle
+          href: qs-configure-cli-windows-vmss.md
+        - name: Verwenden von Azure Resource Manager-Vorlagen
+          href: qs-configure-template-windows-vmss.md
+    - name: Gewähren des Zugriffs auf Resource Manager für eine VM- oder VMSS-MSI
+      items:
+        - name: Verwenden des Azure-Portals
+          href: howto-assign-access-portal.md
+        - name: Verwenden von PowerShell
+          href: howto-assign-access-powershell.md
+        - name: Verwenden der Azure-Befehlszeilenschnittstelle
+          href: howto-assign-access-cli.md
+    - name: Verwenden einer VM-MSI
+      items:
+        - name: Abrufen eines Zugriffstokens
+          href: how-to-use-vm-token.md
+        - name: 'Anmelden bei PowerShell, Azure CLI'
+          href: how-to-use-vm-sign-in.md
+        - name: Verwendung mit Azure-SDKs
+          href: how-to-use-vm-sdk.md
+    - name: Zugreifen auf Azure Data Lake Store per VM-MSI
+      items:
+        - name: Von einem virtuellen Windows-Computer
+          href: tutorial-windows-vm-access-datalake.md
+        - name: Von einem virtuellen Linux-Computer
+          href: tutorial-linux-vm-access-datalake.md
+    - name: Zugreifen auf Azure Resource Manager per VM-MSI
+      items:
+        - name: Von einem virtuellen Windows-Computer
+          href: tutorial-windows-vm-access-arm.md
+        - name: Von einem virtuellen Linux-Computer
+          href: tutorial-linux-vm-access-arm.md
+    - name: Zugreifen auf Azure SQL per VM-MSI
+      items:
+        - name: Von einem virtuellen Windows-Computer
+          href: tutorial-windows-vm-access-sql.md
+    - name: Zugreifen auf Azure-Speicher per VM-MSI
+      items:
+        - name: Von einem virtuellen Windows-Computer mithilfe eines Zugriffsschlüssels
+          href: tutorial-windows-vm-access-storage.md
+        - name: Von einem virtuellen Windows-Computer mithilfe einer SAS
+          href: tutorial-windows-vm-access-storage-sas.md
+        - name: Von einem virtuellen Linux-Computer mithilfe eines Zugriffsschlüssels
+          href: tutorial-linux-vm-access-storage.md
+        - name: Von einem virtuellen Linux-Computer mithilfe einer SAS
+          href: tutorial-linux-vm-access-storage-sas.md
+    - name: Verwenden einer VM-MSI für den Zugriff auf Azure Key Vault
+      items:
+        - name: Von einem virtuellen Windows-Computer
+          href: tutorial-windows-vm-access-nonaad.md
+        - name: Von einem virtuellen Linux-Computer
+          href: tutorial-linux-vm-access-nonaad.md
+    - name: Häufig gestellte Fragen und bekannte Probleme
+      href: known-issues.md

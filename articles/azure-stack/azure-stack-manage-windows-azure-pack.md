@@ -3,8 +3,8 @@ title: Verwalten von virtuellen Windows Azure Pack-Computern in Azure Stack | Mi
 description: "Erfahren Sie, wie Windows Azure Pack-VMs (WAP) über das Benutzerportal in Azure Stack verwaltet werden."
 services: azure-stack
 documentationcenter: 
-author: walterov
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 213c2792-d404-4b44-8340-235adf3f8f0b
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: walterov
-ms.openlocfilehash: b07a18055d149e20cd605a892063eccecf3df8a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: a7e4896c84938b392a86f4d9609c4932324c785d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="manage-windows-azure-pack-virtual-machines-from-azure-stack"></a>Verwalten von virtuellen Windows Azure Pack-Computern in Azure Stack
 
@@ -44,7 +44,7 @@ Beachten Sie bei dieser Vorschauversion des Connectors folgende Aspekte:
 * Bekannte Probleme werden unter [Problembehandlung bei Microsoft Azure Stack](azure-stack-troubleshooting.md) erläutert.
 
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 Die folgende Abbildung zeigt die Hauptkomponenten des Windows Azure Pack-Connectors:
 
 ![Komponenten des Windows Azure Pack-Connectors](media/azure-stack-manage-wap/image1.png)
@@ -93,7 +93,7 @@ Vor der Konfiguration des Windows Azure Pack-Connectors müssen Sie den Multiclo
 Um den Multicloudmodus zu aktivieren, müssen Sie nach der Bereitstellung von Azure Stack das Skript „Add-AzurePackConnector.ps1“ ausführen. In der folgenden Tabelle werden die Skriptparameter beschrieben:
 
 
-|  Parameter | Beschreibung | Beispiel |   
+|  Parameter | BESCHREIBUNG | Beispiel |   
 | -------- | ------------- | ------- |  
 | AzurePackClouds | URIs der Windows Azure Pack-Connectors. Diese URIs sollten den Windows Azure Pack-Mandantenportalen entsprechen. | @{CloudName = "AzurePack1"; CloudEndpoint = "https://waptenantportal1:40005"},@{CloudName = "AzurePack2"; CloudEndpoint = "https://waptenantportal2:40005"}<br><br>  (Standardmäßig ist der Portwert auf 40005 festgelegt.) |  
 | AzureStackCloudName | Bezeichnung für die lokale Azure Stack-Cloud.| "AzureStack" |
@@ -179,7 +179,7 @@ Verwenden Sie bei dieser Vorschauversion den Windows Azure Pack-Connector nur in
 
     f. Um die Konfiguration dieser drei Dienste fertig zu stellen, führen Sie zum Aktualisieren der Parameter der Datei „Web.config“ das Skript **Configure-WapConnector.ps1** aus.
 
-    |  Parameter | Beschreibung | Beispiel |   
+    |  Parameter | BESCHREIBUNG | Beispiel |   
     | -------- | ------------- | ------- |  
     | TenantPortalFQDN | Der FQDN des Windows Azure Pack-Mandantenportals. | tenant.contoso.com | 
     | TenantAPIFQDN | Der FQDN der Windows Azure Pack-Mandanten-API. | tenantapi.contoso.com  |
@@ -214,7 +214,7 @@ Verwenden Sie bei dieser Vorschauversion den Windows Azure Pack-Connector nur in
     f.  Wiederholen Sie Schritt 2 auf allen virtuellen Computern, auf denen die Mandanten-API ausgeführt wird.
 3. Führen Sie auf **nur einer** der Mandanten-API-VMs das Skript „Configure-TrustAzureStack.ps1“ aus, um eine Vertrauensstellung zwischen der Mandanten-API und der AD FS-Instanz in Azure Stack herzustellen. Sie müssen ein Konto mit SysAdmin-Zugriff auf die Datenbank „Microsoft.MgmtSvc.Store“ verwenden. Dieses Skript weist die folgenden Parameter auf:
 
-    | Parameter | Beschreibung | Beispiel |
+    | Parameter | BESCHREIBUNG | Beispiel |
     | --------- | ------------| ------- |
    | SqlServer | Der Name des SQL Servers, der die Datenbank „Microsoft.MgmtSvc.Store“ enthält. Dieser Parameter ist erforderlich. | SQLServer | 
    | DataFile | Die Ausgabedatei, die zuvor bei der Konfiguration des Multicloudmodus von Azure Stack generiert wurde. Dieser Parameter ist erforderlich. | AzurePack-06-27-15-50.txt | 

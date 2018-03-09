@@ -3,7 +3,7 @@ title: Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration |
 description: "Für die Azure Active Directory B2B-Kollaboration sind keine kostenpflichtigen Azure AD-Lizenzen erforderlich, aber es sind auch kostenpflichtige Features für B2B-Gastbenutzer erhältlich."
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,20 +14,20 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 08/09/2017
-ms.author: curtand
+ms.author: twooley
 ms.reviewer: sasubram
 ms.custom: it-pro
-ms.openlocfilehash: 664398eb71501ff450b785928992729f91740a19
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d4a739e5cb4dc4a6ccafac683fe913592f985ce2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration
 
 Mithilfe der Azure AD B2B-Zusammenarbeitsfunktionen können Sie Gastbenutzer für Ihren Azure AD-Mandanten einladen, um ihnen Zugriff auf Azure AD-Dienste und andere Ressourcen in Ihrer Organisation zu gewähren. Falls Sie den Zugriff auf kostenpflichtige Azure AD-Features ermöglichen möchten, müssen B2B-Zusammenarbeitsgastbenutzer mit entsprechenden Azure AD-Lizenzen lizenziert werden. 
 
-Dies bedeutet Folgendes:
+Dies gilt insbesondere in folgenden Fällen:
 * Für Gastbenutzer stehen ohne zusätzliche Lizenzen Azure AD Free-Funktionen zur Verfügung.
 * Wenn Sie B2B-Benutzern Zugriff auf kostenpflichtige Azure AD-Funktionen gewähren möchten, müssen Sie zur Unterstützung dieser B2B-Gastbenutzer über ausreichende Lizenzen verfügen.
 * Ein einladender Mandant mit einer kostenpflichtigen Azure AD-Lizenz besitzt B2B-Kollaborationsbenutzerrechte für weitere fünf B2B-Gastbenutzer, die für den Mandanten eingeladen wurden.
@@ -71,7 +71,7 @@ Ein B2B-Gastbenutzer ist ein Benutzer, der von einer Partnerorganisation für di
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Kollaboration:
+Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
 * [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md)

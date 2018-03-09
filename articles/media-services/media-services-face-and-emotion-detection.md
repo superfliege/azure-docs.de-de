@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 5741a484dcda05e3143b5f896ddee2e8591dabee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7a16745fc21d03f81ca6140ace54f84468749364
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gesichts- und Emotionenerkennung mit Azure Media Analytics
 ## <a name="overview"></a>Übersicht
@@ -48,7 +48,7 @@ Die API zur Gesichtserkennung und -nachverfolgung ermöglicht Gesichtspositionse
 
 Die erkannten und nachverfolgten Gesichter werden mit den Koordinaten (links, oben, Breite und Höhe) zurückgegeben, die die Position der Gesichter im Bild in Pixeln sowie eine Gesichts-ID angeben, die die Nachverfolgung einer einzelnen Person kenntlich macht. Gesichts-IDs können zurückgesetzt werden, wenn die Frontalansicht des Gesichts verloren geht oder im Frame überlappt wird, sodass einigen Personen möglicherweise mehrere IDs zugewiesen werden.
 
-## <a id="output_elements"></a>Elemente der Ausgabe-JSON-Datei
+## <a id="output_elements"></a>Elemente der JSON-Ausgabedatei
 
 [!INCLUDE [media-services-analytics-output-json](../../includes/media-services-analytics-output-json.md)]
 
@@ -64,21 +64,24 @@ Face Detector verwendet Techniken der Fragmentierung (wobei die Metadaten in zei
 ### <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
 Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. Die folgende Konfigurationsvoreinstellung ist nur zur Gesichtserkennung bestimmt.
 
+```json
     {
       "version":"1.0",
       "options":{
           "TrackingMode": "Fast"
       }
     }
+```
 
 #### <a name="attribute-descriptions"></a>Beschreibungen der Attribute
-| Attributname | Beschreibung |
+| Attributname | BESCHREIBUNG |
 | --- | --- |
 | Mode |Schneller: höhere Verarbeitungsgeschwindigkeit, aber weniger Genauigkeit (Standard).|
 
 ### <a name="json-output"></a>JSON-Ausgabe
 Das folgende Beispiel einer JSON-Ausgabe wurde abgeschnitten.
 
+```json
     {
     "version": 1,
     "timescale": 30000,
@@ -123,8 +126,8 @@ Das folgende Beispiel einer JSON-Ausgabe wurde abgeschnitten.
                 "height": 0.151389
             }
             ],
+```
 
-        . . . 
 
 ## <a name="emotion-detection-input-and-output-example"></a>Eingabe- und Ausgabebeispiel für Emotionenerkennung
 ### <a name="input-video"></a>Videoeingang
@@ -133,6 +136,7 @@ Das folgende Beispiel einer JSON-Ausgabe wurde abgeschnitten.
 ### <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
 Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. Die folgende Konfigurationsvoreinstellung gibt an, eine JSON-Datei auf Basis der Emotionenerkennung zu erstellen.
 
+```json
     {
       "version": "1.0",
       "options": {
@@ -141,10 +145,11 @@ Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie ei
         "aggregateEmotionIntervalMs": "342"
       }
     }
+```
 
 
 #### <a name="attribute-descriptions"></a>Beschreibungen der Attribute
-| Attributname | Beschreibung |
+| Attributname | BESCHREIBUNG |
 | --- | --- |
 | Mode |Faces: nur Gesichtserkennung.<br/>PerFaceEmotion: unabhängige Rückgabe der Emotionen für jede Gesichtserkennung.<br/>AggregateEmotion: Rückgabe der durchschnittlichen Emotionswerte für alle Gesichter im Frame. |
 | AggregateEmotionWindowMs |Bei Auswahl des Modus „AggregateEmotion“ verwenden. Gibt die Länge des Videos, das jeweils zum Produzieren eines Aggregierergebnisses verwendet wird, in Millisekunden an. |
@@ -161,6 +166,7 @@ Die folgenden Werte werden für Aggregierfenster und Intervalleinstellungen empf
 ### <a name="json-output"></a>JSON-Ausgabe
 JSON-Ausgabe für Emotionsaggregierung (abgeschnitten):
 
+```json
     {
      "version": 1,
      "timescale": 30000,
@@ -311,6 +317,7 @@ JSON-Ausgabe für Emotionsaggregierung (abgeschnitten):
                  "anger": 0,
                  "disgust": 0,
                  "fear": 0,
+```
 
 ## <a name="limitations"></a>Einschränkungen
 * Zu den unterstützten Eingabevideoformaten zählen MP4, MOV und WMV.
@@ -322,12 +329,14 @@ JSON-Ausgabe für Emotionsaggregierung (abgeschnitten):
 
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
-1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
+1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
 2. Erstellen eines Auftrags mit einer Gesichtserkennungsaufgabe auf Basis einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält: 
-   
-        {
-            "version": "1.0"
-        }
+
+    ```json
+            {
+                "version": "1.0"
+            }
+    ```
 3. Herunterladen der JSON-Ausgabedateien. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
@@ -336,7 +345,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 #### <a name="example"></a>Beispiel
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

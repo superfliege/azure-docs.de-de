@@ -1,9 +1,9 @@
 ---
-title: "Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu? | Microsoft Docs"
+title: "Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu? | Microsoft-Dokumentation"
 description: "Ein Administrator kann Ihrer Azure AD-Instanz Gastbenutzer über eine Partnerorganisation unter Verwendung der Azure Active Directory B2B-Zusammenarbeit hinzufügen."
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
-ms.author: sasubram
-ms.openlocfilehash: 43bf961e64d94ff57a3aeb395fbe134ef8b45a6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 42be57a81f75025686de022a3879f26598b1108d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-do-azure-active-directory-admins-add-b2b-collaboration-users"></a>Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?
 
@@ -59,7 +60,7 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 * [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-iw-add-users.md)
 * [Die Elemente der Einladungs-E-Mail von B2B-Zusammenarbeit](active-directory-b2b-invitation-email.md)
 * [B2B-Zusammenarbeit: Einlösen von Einladungen](active-directory-b2b-redemption-experience.md)
-* [Lizenzierung von Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
+* [Lizenzierung der Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
 * [Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-troubleshooting.md)
 * [Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-faq.md)
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)

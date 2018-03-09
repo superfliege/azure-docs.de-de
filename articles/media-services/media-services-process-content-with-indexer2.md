@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: adsolank;juliako;
-ms.openlocfilehash: 075daadae42340dfc9c7510a8010e337210e6e01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c78a4d2d3a1b0f84d488e7358c875c9708ac6107
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indizieren von Mediendateien mit Azure Media Indexer 2 Preview
 ## <a name="overview"></a>Übersicht
@@ -51,11 +51,12 @@ Ein Indizierungsauftrag kann Untertiteldateien in den folgenden Formaten generie
 
 Untertiteldateien in diesen Formaten können verwendet werden, um Hörgeschädigten Audio- und Videodateien zugänglich zu machen.
 
-## <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
+## <a name="task-configuration-preset"></a>Taskkonfiguration (Voreinstellung)
 Wenn Sie eine Indizierungsaufgabe mit **Azure Media Indexer 2 Preview**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben.
 
 Die folgende JSON legt verfügbare Parameter fest.
 
+```json
     {
       "version":"1.0",
       "Features":
@@ -69,6 +70,7 @@ Die folgende JSON legt verfügbare Parameter fest.
            "Type":"SpReco"
         }]
     }
+```
 
 ## <a name="supported-languages"></a>Unterstützte Sprachen
 Azure Media Indexer 2 Preview unterstützt Sprache in Text für die folgenden Sprachen (wenn Sie den Namen der Sprache in der Taskkonfiguration angeben, verwenden Sie einen 4-Zeichen-Code in Klammern, wie unten gezeigt):
@@ -94,22 +96,25 @@ Informationen zu den unterstützten Dateitypen finden Sie im Abschnitt zu den [u
 
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
-1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
+1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
 2. Erstellen eines Auftrags mit einer Indizierungsaufgabe anhand einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält:
-   
-        {
-          "version":"1.0",
-          "Features":
-            [
-               {
-               "Options": {
-                    "Formats":["WebVtt","ttml"],
-                    "Language":"enUs",
-                    "Type":"RecoOptions"
-               },
-               "Type":"SpReco"
-            }]
-        }
+
+    ```json
+            {
+            "version":"1.0",
+            "Features":
+                [
+                {
+                "Options": {
+                        "Formats":["WebVtt","ttml"],
+                        "Language":"enUs",
+                        "Type":"RecoOptions"
+                },
+                "Type":"SpReco"
+                }]
+            }
+    ```
+    
 3. Laden Sie die Ausgabedatei herunter. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
@@ -118,7 +123,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 #### <a name="example"></a>Beispiel
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

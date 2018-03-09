@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: 013c14c00096c9958a732d1f0eaacc9248f57da9
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 2d1a635c1e2bde140df19f8c26f6ae5a6978eff5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
 > [!div class="op_single_selector"]
@@ -76,7 +76,7 @@ In der folgenden Abbildung ist der oben beschriebene Workflow dargestellt. Hier 
 Im weiteren Verlauf dieses Artikels finden Sie Beschreibungen, Codebeispiele und Links zu Themen, die Informationen dazu enthalten, wie die oben beschriebenen Aufgaben ausgeführt werden.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
-Wenn Sie die Bereitstellungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie einen vorhandenen Locator löschen und einen neuen Locator erstellen.
+Wenn Sie die Übermittlungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie alle vorhandenen Locators löschen und einen neuen Locator erstellen.
 
 ## <a id="create_asset"></a>Erstellen eines Medienobjekts und Hochladen von Dateien in das Medienobjekt
 Damit Sie Ihre Videos verwalten, codieren und streamen können, müssen Sie Ihre Inhalte zuerst in Media Services hochladen. Nachdem dies geschehen ist, sind Ihre Inhalte sicher in der Cloud zur weiteren Verarbeitung und für das weitere Streaming gespeichert. 
@@ -117,7 +117,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlin
 Sie müssen die Streaming-URL für Smooth Streaming, DASH oder HLS für Ihre Benutzer bereitstellen.
 
 > [!NOTE]
-> Wenn Sie die Bereitstellungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie einen vorhandenen Locator löschen und einen neuen Locator erstellen.
+> Wenn Sie die Übermittlungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie alle vorhandenen Locators löschen und einen neuen Locator erstellen.
 > 
 > 
 
@@ -126,6 +126,7 @@ Anweisungen zum Veröffentlichen eines Medienobjekts und Erstellen einer Streami
 ## <a name="get-a-test-token"></a>Abrufen eines Testtokens
 Rufen Sie ein Testtoken ab, das auf der Tokeneinschränkung basiert, die für die Schlüsselautorisierungsrichtlinie verwendet wurde.
 
+```csharp
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate = 
@@ -136,6 +137,7 @@ Rufen Sie ein Testtoken ab, das auf der Tokeneinschränkung basiert, die für di
     //so you have to add it in front of the token string. 
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+```
 
 Sie können den [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) verwenden, um Ihren Datenstrom zu testen.
 
@@ -145,6 +147,7 @@ Im vorherigen Schritt haben Sie die URL erstellt, die auf eine Manifestdatei ver
 ### <a name="manifest-files"></a>Manifestdateien
 Der Client muss den URL-Wert aus der Manifestdatei extrahieren. Der URL-Wert enthält außerdem die Inhaltsschlüssel-ID („kid“). Dann versucht der Client, den Verschlüsselungsschlüssel vom Schlüsselübermittlungsdienst abzurufen. Der Client muss auch den IV-Wert extrahieren und damit den Datenstrom entschlüsseln. Der folgende Codeausschnitt zeigt das <Protection>-Element des Smooth Streaming-Manifests:
 
+```xml
     <Protection>
       <ProtectionHeader SystemID="B47B251A-2409-4B42-958E-08DBAE7B4EE9">
         <ContentProtection xmlns:sea="urn:mpeg:dash:schema:sea:2012" schemeIdUri="urn:mpeg:dash:sea:2012">
@@ -156,6 +159,7 @@ Der Client muss den URL-Wert aus der Manifestdatei extrahieren. Der URL-Wert ent
         </ContentProtection>
       </ProtectionHeader>
     </Protection>
+```
 
 Im Fall von HLS wird das Stammmanifest in Segmentdateien aufgeteilt. 
 
@@ -191,6 +195,7 @@ Wenn Sie eine der Segmentdateien in einem Text-Editor öffnen (z. B. „http://t
 
 Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-Schlüsselübermittlungsdienst senden, indem Sie einen aus dem Manifest extrahierten Schlüsselübermittlungs-URI und ein Token senden. (Das Abrufen einfacher Webtoken aus einem sicheren Tokendienst wird in diesem Thema nicht behandelt.)
 
+```csharp
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
     {
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(keyDeliveryUri);
@@ -230,6 +235,7 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
         Array.Copy(buffer, key, length);
         return key;
     }
+```
 
 ## <a name="protect-your-content-with-aes-128-by-using-net"></a>Schützen Ihrer Inhalte mit AES-128 mit .NET
 
@@ -239,8 +245,10 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
 
 2. Fügen Sie den „appSettings“ gemäß der Definition in Ihrer Datei „app.config“ die folgenden Elemente hinzu:
 
-        <add key="Issuer" value="http://testacs.com"/>
-        <add key="Audience" value="urn:test"/>
+    ```xml
+            <add key="Issuer" value="http://testacs.com"/>
+            <add key="Audience" value="urn:test"/>
+    ```
 
 ### <a id="example"></a>Beispiel
 
@@ -251,7 +259,9 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
 
 Stellen Sie sicher, dass die Variablen so aktualisiert werden, dass sie auf die Ordner zeigen, in denen sich Ihre Eingabedateien befinden.
 
+```csharp
     [!code-csharp[Main](../../samples-mediaservices-encryptionaes/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs)]
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

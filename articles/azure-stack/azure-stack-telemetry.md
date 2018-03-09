@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2017
+ms.date: 03/01/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 5cd8d4045764b753c5fdd81ade98d69c72709881
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87f7157f8ab826553d8fb638b9f28d5594f68ed6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack-Telemetriedaten
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack-Systemdaten (Telemetriedaten) werden über die Benutzererfahrung im verbundenen Modus automatisch an Microsoft hochgeladen. Die gesammelten Azure Stack-Telemetriedaten werden von Microsoft-Teams in erster Linie zum Optimieren der Kundenerfahrung sowie zum Analysieren der Sicherheit, Integrität, Qualität und Leistung genutzt.
 
@@ -38,11 +38,11 @@ Azure Stack-Telemetriedaten basieren auf der Komponente „Benutzererfahrung und
 > Zur Unterstützung des Telemetriedatenflusses muss Port 443 (HTTPS) in Ihrem Netzwerk geöffnet sein. Die Komponente „Benutzererfahrung und Telemetrie im verbundenen Modus“ stellt unter https://v10.vortex-win.data.microsoft.com eine Verbindung mit dem Datenverwaltungsdienst von Microsoft her. Außerdem stellt die Komponente „Benutzererfahrung und Telemetrie im verbundenen Modus“ eine Verbindung mit https://settings-win.data.microsoft.com her, um Konfigurationsinformationen herunterzuladen.
 
 ## <a name="privacy-considerations"></a>Datenschutzaspekte
-Der ETW-Dienst leitet Telemetriedaten an geschützten Cloudspeicher zurück. Der Zugriff auf Telemetriedaten beruht auf dem Prinzip der geringsten Rechte. Auf die Telemetriedaten können nur Microsoft-Mitarbeiter zugreifen, die aus geschäftlichen Gründen unbedingt darauf zugreifen müssen. Microsoft gibt keine persönlichen Daten von Kunden an Dritte weiter – es sei denn, dies geschieht auf Wunsch des Kunden oder im eingeschränkten Rahmen der [Datenschutzbestimmungen für Azure Stack](http://windows.microsoft.com/windows/preview-privacy-statement). Wir geben Geschäftsberichte mit aggregierten, anonymisierten Telemetrieinformationen an OEMs und Partner weiter. Entscheidungen zur Weitergabe von Daten werden von einem internen Microsoft-Team getroffen, das unter anderem Interessenvertreter für die Bereiche Datenschutz, Recht und Datenverwaltung umfasst.
+Der ETW-Dienst leitet Telemetriedaten an geschützten Cloudspeicher zurück. Der Zugriff auf Telemetriedaten beruht auf dem Prinzip der geringsten Rechte. Auf die Telemetriedaten können nur Microsoft-Mitarbeiter zugreifen, die aus geschäftlichen Gründen unbedingt darauf zugreifen müssen. Microsoft gibt keine persönlichen Kundendaten an Dritte weiter – es sei denn, dies geschieht auf Wunsch des Kunden oder im eingeschränkten Rahmen der [Datenschutzerklärung von Microsoft](https://privacy.microsoft.com/PrivacyStatement). Geschäftsberichte mit aggregierten, anonymisierten Telemetrieinformationen werden an OEMs und Partner weitergegeben. Entscheidungen zur Weitergabe von Daten werden von einem internen Microsoft-Team getroffen, das unter anderem Interessenvertreter für die Bereiche Datenschutz, Recht und Datenverwaltung umfasst.
 
 Bei Microsoft gilt das Prinzip der Informationsminimierung. Unser Ziel ist es, nur Informationen zu erfassen, die wir benötigen, und diese nur so lange zu speichern, wie dies zur Bereitstellung eines Diensts oder zu Analysezwecken erforderlich ist. Ein Großteil der Informationen zur Funktion des Azure Stack-Systems und der Azure-Dienste wird innerhalb von sechs Monaten gelöscht. Zusammengefasste oder aggregierte Daten werden für einen längeren Zeitraum gespeichert.
 
-Wir sind uns der hohen Bedeutung des Datenschutzes und der Sicherheit der Informationen unserer Kunden bewusst.  Azure Stack bietet daher ein durchdachtes und umfassendes Datenschutzkonzept für unsere Kunden. IT-Administratoren können Features und Datenschutzeinstellungen jederzeit anpassen. Wie setzen uns klar für Transparenz und Vertrauen ein:
+Wir sind uns der Bedeutung des Datenschutzes und der Sicherheit der Kundeninformationen bewusst.  Azure Stack bietet daher ein durchdachtes und umfassendes Datenschutzkonzept für unsere Kunden. IT-Administratoren können Features und Datenschutzeinstellungen jederzeit anpassen. Wie setzen uns klar für Transparenz und Vertrauen ein:
 - Wir informieren Kunden offen darüber, welche Arten von Daten erfasst werden.
 - Wir überlassen Unternehmenskunden die Kontrolle und ermöglichen ihnen die Anpassung ihrer eigenen Datenschutzeinstellungen.
 - Datenschutz und Sicherheit unserer Kunden haben für uns höchste Priorität.
@@ -59,7 +59,7 @@ Anhand von Telemetriedaten kann Microsoft auch besser nachvollziehen, wie Kunden
 Ein Beispiel hierfür wäre etwa die Kundennutzung von Containern, Speicher und Netzwerkkonfigurationen, die Azure Stack-Rollen zugeordnet sind. Wir nutzen die Einblicke auch, um Verbesserungen für einige unserer Verwaltungs- und Überwachungslösungen voranzutreiben und sie intelligenter zu machen.  Dadurch können Kunden Qualitätsprobleme besser diagnostizieren und Kosten sparen, da sie seltener beim Support von Microsoft anrufen müssen.
 
 ## <a name="manage-telemetry-collection"></a>Verwalten der Erfassung von Telemetriedaten
-Wir raten davon ab, die Telemetrie in Ihrer Organisation zu deaktivieren, da die bereitstellten Daten zur Verbesserung der Produktfunktionalität und -stabilität beitragen. Uns ist jedoch bewusst, dass eine Deaktivierung in bestimmten Szenarien erforderlich sein kann. 
+Es wird davon abgeraten, die Telemetrie in Ihrer Organisation zu deaktivieren, da die bereitstellten Daten zur Verbesserung der Produktfunktionalität und -stabilität beitragen. Uns ist jedoch bewusst, dass eine Deaktivierung in bestimmten Szenarien erforderlich sein kann. 
 
 In einem solchen Fall können Sie die Ebene der an Microsoft gesendeten Telemetriedaten konfigurieren – entweder mithilfe von Registrierungseinstellungen (vor der Bereitstellung) oder mithilfe der Telemetrieendpunkte (nach der Bereitstellung).
 
@@ -92,7 +92,7 @@ Die Telemetrieebenen sind kumulativ und in vier Ebenen (0–3) unterteilt:
  - Speicherattribute wie Laufwerkanzahl, Art und Größe
 - **Telemetriefunktion** einschließlich hochgeladener Ereignisse (in Prozent), gelöschter Ereignisse und Zeitpunkt des letzten Uploads
 - **Qualitätsbezogene Informationen**, die Microsoft einen grundlegenden Einblick in die Leistung von Azure Stack geben. Ein Beispiel wäre etwa die Anzahl kritischer Warnungen für eine bestimmte Hardwarekonfiguration.
-- **Kompatibilitätsdaten**, die Aufschluss darüber geben, welche Ressourcenanbieter in einem System und auf einem virtuellen Computer installiert sind, und die Identifizierung möglicher Kompatibilitätsprobleme ermöglichen.
+- **Kompatibilitätsdaten, die Aufschluss darüber geben, welche Ressourcenanbieter in einem System und auf einem virtuellen Computer installiert sind, und die Identifizierung möglicher Kompatibilitätsprobleme ermöglichen
 
 **2 (Erweitert)**. Zusätzliche Informationen, etwa zur Verwendung und Leistung des Betriebssystems und anderer Azure Stack-Dienste, sowie erweiterte Zuverlässigkeitsdaten und Daten der Ebenen „Standard“ und „Sicherheit“. 
 

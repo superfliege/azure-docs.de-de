@@ -47,9 +47,13 @@
           href: delete-cluster.md
     - name: Konfigurieren von Datenvolumes
       items:
-        - name: Azure Disks
+        - name: 'Kubernetes-Volume: Datenträger'
+          href: azure-disk-volume.md
+        - name: 'Kubernetes-Volume: Dateien'
+          href: azure-files-volume.md
+        - name: 'Persistentes Volume: Datenträger'
           href: azure-disks-dynamic-pv.md
-        - name: Azure Files
+        - name: 'Persistentes Volume: Dateien'
           href: azure-files-dynamic-pv.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
@@ -73,6 +77,8 @@
           href: integrate-azure.md
         - name: Continuous Deployment mit Jenkins
           href: jenkins-continuous-deployment.md
+        - name: Verwenden von OpenFaaS mit AKS
+          href: openfaas.md
     - name: Kubernetes-Grundlagen
       items:
         - name: Verwenden des Kubernetes-Dashboards

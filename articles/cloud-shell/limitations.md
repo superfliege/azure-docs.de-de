@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 21a050373a9901220e106534464a8c13565bb3d8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 245e2e1ca52e7d3c5bd22d5f2569e3e8d7ae6671
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Einschränkungen von Azure Cloud Shell
 
@@ -54,11 +54,11 @@ Cloud Shell ist für interaktive Anwendungsfälle konzipiert. Daher werden lange
 
 ### <a name="user-permissions"></a>Benutzerberechtigungen
 
-Berechtigungen werden als reguläre Benutzer ohne sudo-Zugriff festgelegt. Installationen außerhalb des Verzeichnisses `$Home` oder `clouddrive` werden nicht gespeichert.
+Berechtigungen werden als reguläre Benutzer ohne sudo-Zugriff festgelegt. Installationen außerhalb des Verzeichnisses `$Home` werden nicht gespeichert.
 
 ### <a name="editing-bashrc"></a>Bearbeiten von „.bashrc“
 
-Gehen Sie bei der Bearbeitung von „.bashrc“ vorsichtig vor, da sonst unerwartete Fehler mit Bash in Cloud Shell auftreten können.
+Gehen Sie bei der Bearbeitung von „.bashrc“ vorsichtig vor, da sonst unerwartete Fehler in Cloud Shell auftreten können.
 
 ## <a name="powershell-limitations"></a>PowerShell-Einschränkungen
 
@@ -68,7 +68,7 @@ Die Initialisierung von PowerShell in Azure Cloud Shell (Vorschauversion) kann i
 
 ### <a name="no-home-directory-persistence"></a>Keine $Home-Verzeichnispersistenz
 
-Von beliebigen Anwendungen (z.B.: git, vim usw.) in `$Home` geschriebene Daten bleiben zwischen PowerShell-Sitzungen nicht erhalten. Informationen zu einer Problemumgehung [finden Sie hier](troubleshooting.md#powershell-resolutions).
+Von beliebigen Anwendungen (z.B.: git, vim usw.) in `$Home` geschriebene Daten bleiben zwischen PowerShell-Sitzungen nicht erhalten. Informationen zu einer Problemumgehung [finden Sie hier](troubleshooting.md#powershell-troubleshooting).
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Standard-Dateispeicherort beim Erstellen vom Azure-Laufwerk:
 

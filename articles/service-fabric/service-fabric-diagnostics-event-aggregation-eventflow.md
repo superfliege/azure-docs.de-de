@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 69750db615460b3ac69ba9ffe707a970ca8e2e11
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fd4c28c2317356cbc6e3fd4d46a10509c029d530
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Ereignisaggregation und -sammlung mithilfe von EventFlow
 
@@ -32,12 +32,12 @@ EventFlow-Binärdateien sind als Gruppe von NuGet-Paketen verfügbar. Klicken Si
 
 Eine Liste verschiedener Pakete mit der Bezeichnung „Inputs“ und „Outputs“ wird angezeigt. EventFlow unterstützt mehrere verschiedene Protokollanbieter und Analysen. Der Dienst, von dem EventFlow gehostet wird, sollte – je nach Quelle und Ziel für die Anwendungsprotokolle – die richtigen Pakete enthalten. Neben dem ServiceFabric-Kernpaket wird mindestens auch ein konfiguriertes Input- und Output-Paket benötigt. Beispielsweise können Sie die folgenden Pakete hinzufügen, um EventSource-Ereignisse an Application Insights zu senden:
 
-* `Microsoft.Diagnostics.EventFlow.Input.EventSource` (zur Erfassung von Daten über die EventSource-Klasse des Diensts und über standardmäßige EventSources, z.B. *Microsoft-ServiceFabric-Services* und *Microsoft-ServiceFabric-Actors*)
-* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` (Wir senden die Protokolle an eine Azure Application Insights-Ressource.)
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` (zur Erfassung von Daten über die EventSource-Klasse des Diensts und über standardmäßige EventSources, z.B. *Microsoft-ServiceFabric-Services* und *Microsoft-ServiceFabric-Actors*)
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (Wir senden die Protokolle an eine Azure Application Insights-Ressource.)
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric` (Ermöglicht die Initialisierung der EventFlow-Pipeline über die Service Fabric-Dienstkonfiguration und meldet Probleme in Bezug auf das Senden von Diagnosedaten als Service Fabric-Integritätsberichte.)
 
 >[!NOTE]
->Für das `Microsoft.Diagnostics.EventFlow.Input.EventSource`-Paket muss das Dienstprojekt auf .NET Framework 4.6 oder höher ausgerichtet sein. Achten Sie darauf, in den Projekteigenschaften das richtige Zielframework festzulegen, bevor Sie dieses Paket installieren.
+>Für das `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`-Paket muss das Dienstprojekt auf .NET Framework 4.6 oder höher ausgerichtet sein. Achten Sie darauf, in den Projekteigenschaften das richtige Zielframework festzulegen, bevor Sie dieses Paket installieren.
 
 Nachdem alle Pakete installiert wurde, ist der nächste Schritt das Konfigurieren und Aktivieren von EventFlow im Dienst.
 

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -229,7 +229,7 @@ Befolgen Sie diese Anweisungen zum Konfigurieren der Bereitstellung von Benutzer
 
 **So konfigurieren Sie die Bereitstellung aus Workday in Active Directory**
 
-1.  Gehen Sie zu <https://portal.azure.com>.
+1.  Besuchen Sie <https://portal.azure.com>.
 
 2.  Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
 
@@ -484,7 +484,7 @@ In den folgenden Abschnitten wird das Einrichten einer Verbindung zwischen Workd
 
 **So konfigurieren Sie die Workday-zu-Azure Active Directory-Bereitstellung für reine Cloudbenutzer**
 
-1.  Navigieren Sie zu <https://portal.azure.com>.
+1.  Wechseln Sie zur Adresse <https://portal.azure.com>.
 
 2.  Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
 
@@ -589,7 +589,7 @@ Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mai
 
 **So konfigurieren Sie die Bereitstellung aus Workday in Active Directory**
 
-1.  Gehen Sie zu <https://portal.azure.com>.
+1.  Besuchen Sie <https://portal.azure.com>.
 
 2.  Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
 

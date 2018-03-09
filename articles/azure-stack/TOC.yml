@@ -10,6 +10,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: Versionshinweise zu integrierten Systemen
           items:
+            - name: Update 1802
+              href: azure-stack-update-1802.md
             - name: Update 1712
               href: azure-stack-update-1712.md
             - name: Update 1711
@@ -133,14 +135,18 @@
           href: azure-stack-monitor-health.md
         - name: Verwalten von Netzwerkressourcen
           href: azure-stack-viewing-public-ip-address-consumption.md
-        - name: Verwalten von Speicherressourcen
-          href: azure-stack-manage-storage-accounts.md
-        - name: Verwalten der Speicherkapazität
-          href: azure-stack-manage-storage-shares.md
         - name: Verwalten von virtuellen Computern mit Windows Azure Pack
           href: azure-stack-manage-windows-azure-pack.md
         - name: Starten und Beenden von Azure Stack
           href: azure-stack-start-and-stop.md
+        - name: Verwalten der Kapazität
+          items:
+            - name: Verwalten von Speicherressourcen
+              href: azure-stack-manage-storage-accounts.md
+            - name: Verwalten der Speicherkapazität
+              href: azure-stack-manage-storage-shares.md
+            - name: Verwalten der physischen Speicherkapazität für Azure Stack
+              href: azure-stack-manage-storage-physical-capacity.md
         - name: Austauschen von Hardware
           items:
             - name: Knotenaktionen
@@ -230,6 +236,10 @@
               href: azure-stack-app-service-deploy.md
             - name: Offlinebereitstellung von App Service
               href: azure-stack-app-service-deploy-offline.md
+            - name: Aktualisieren eines App Service-Ressourcenanbieters
+              href: azure-stack-app-service-update.md
+            - name: Offlineaktualisierung eines App Service-Ressourcenanbieters
+              href: azure-stack-app-service-update-offline.md
             - name: Hinzufügen weiterer Web-Workerrollen
               href: azure-stack-app-service-add-worker-roles.md
             - name: Konfigurieren von Bereitstellungsquellen

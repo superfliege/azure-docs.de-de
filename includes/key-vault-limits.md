@@ -13,6 +13,6 @@ Geheimnisse, Schlüssel für verwaltete Speicherkonten und Tresortransaktionen:
 | Alle Transaktionen |2000 |
 |
 
-Informationen zur Handhabung der Drosselung bei Überschreiten dieser Grenzwerte finden Sie unter [Anleitung zur Drosselung von Azure Key Vault](../key-vault/key-vault-ovw-throttling.md).
+Informationen zur Handhabung der Drosselung bei Überschreiten dieser Grenzwerte finden Sie unter [Anleitung zur Drosselung von Azure Key Vault](../articles/key-vault/key-vault-ovw-throttling.md).
 
 <sup>1</sup> Für alle Transaktionsarten gilt ein abonnementweites Limit (das Fünffache des Schlüsseltresorlimits.) „HSM – andere Transaktionen“ pro Abonnement ist beispielsweise auf 5.000 Transaktionen in 10 Sekunden pro Abonnent beschränkt.

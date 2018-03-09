@@ -73,6 +73,7 @@
 ### [Visualisieren von Netzwerk-Datenverkehrsmustern mithilfe von Open Source-Tools](network-watcher-using-open-source-tools.md)
 ## Analysieren von NSG-Flussprotokollen
 ### [Lesen von NSG-Datenflussprotokollen](network-watcher-read-nsg-flow-logs.md)
+### [Verwenden von Traffic Analytics](traffic-analytics.md)
 ### [Verwenden von Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ### [Verwenden von Elastic Stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [Verwenden von Grafana](network-watcher-nsg-grafana.md)

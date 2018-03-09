@@ -5,7 +5,7 @@
 ## [Übersicht und Architektur](hana-overview-architecture.md)
 ## [Infrastruktur und Konnektivität](hana-overview-infrastructure-connectivity.md)
 ## [Installieren von SAP HANA](hana-installation.md)
-## [Hohe Verfügbarkeit und Notfallwiederherstellung](hana-overview-high-availability-disaster-recovery.md)
+## [Hochverfügbarkeit und Notfallwiederherstellung](hana-overview-high-availability-disaster-recovery.md)
 ## [Problembehandlung und Überwachung](troubleshooting-monitoring.md)
 ## Anleitung
 ### [HA-Einrichtung mit STONITH](ha-setup-with-stonith.md)
@@ -14,7 +14,11 @@
 ## [SAP HANA-Einzelinstanzinstallation](hana-get-started.md)
 ## [Bereitstellungshandbuch für S/4 HANA oder BW/4 HANA SAP CAL](cal-s4h.md)
 ## [SAP HANA in Azure – Betriebshandbuch](hana-vm-operations.md)
-## [SAP HANA: Hohe Verfügbarkeit in Azure Virtual Machines](sap-hana-high-availability.md)
+## Verfügbarkeit von SAP HANA in Azure Virtual Machines
+### [Verfügbarkeit von SAP HANA in Azure: Übersicht](sap-hana-availability-overview.md)
+### [Verfügbarkeit von SAP HANA in Azure innerhalb einer Azure-Region](sap-hana-availability-one-region.md)
+### [Verfügbarkeit von SAP HANA in Azure in verschiedenen Azure-Regionen](sap-hana-availability-across-regions.md)
+## [Einrichten der SAP HANA-Systemreplikation auf virtuellen Azure-Computern](sap-hana-high-availability.md)
 ## [Übersicht über SAP HANA-Sicherungen](sap-hana-backup-guide.md)
 ## [SAP HANA-Sicherungen auf Dateiebene](sap-hana-backup-file-level.md)
 ## [SAP HANA-Sicherungen von Speichermomentaufnahmen](sap-hana-backup-storage-snapshots.md)
@@ -52,5 +56,5 @@
 ## [AAD-Integration in SAP Business ByDesign](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD-Integration in SAP HANA DBMS](../../../active-directory/active-directory-saas-saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[SAP Fiori Launchpad: SAML-SSO mit Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

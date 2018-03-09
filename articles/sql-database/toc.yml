@@ -45,12 +45,14 @@
       href: sql-database-design-first-database.md
     - name: '1: Entwerfen einer Datenbank mithilfe von .NET'
       href: sql-database-design-first-database-csharp.md
-    - name: '2: Migrieren einer SQL Server-Datenbank'
+    - name: '2: Migrieren zu SQL Server-Datenbank'
       href: sql-database-migrate-your-sql-server-database.md
     - name: '3: Sichern Ihrer SQL-Datenbank'
       href: sql-database-security-tutorial.md
     - name: '4: Implementieren einer geografisch verteilten Datenbank'
       href: sql-database-implement-geo-distributed-database.md
+    - name: '5: Erstellen einer verwalteten Instanz'
+      href: sql-database-managed-instance-tutorial-portal.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -61,26 +63,26 @@
       href: sql-database-powershell-samples.md
 - name: Konzepte
   items:
-    - name: Datenbankdienst
-      items:
-        - name: Server und Datenbanken
-          href: sql-database-servers-databases.md
-        - name: Dienstebenen
-          href: sql-database-service-tiers.md
-        - name: Ressourceneinschränkungen
-          href: sql-database-resource-limits.md
-        - name: Einzeldatenbanken
-          href: sql-database-single-database-resources.md
-        - name: Pools für elastische Datenbanken
-          href: sql-database-elastic-pool.md
-        - name: Verbindungsarchitektur
-          href: sql-database-connectivity-architecture.md
-        - name: DTUs und eDTUs
-          href: sql-database-what-is-a-dtu.md
-        - name: DTU-Vergleichstest
-          href: sql-database-benchmark-overview.md
-        - name: Allgemeine SQL Server-Features
-          href: sql-database-features.md
+    - name: Server und Datenbanken
+      href: sql-database-servers-databases.md
+    - name: Verwaltete Instanz
+      href: sql-database-managed-instance.md
+    - name: Dienstebenen
+      href: sql-database-service-tiers.md
+    - name: Ressourceneinschränkungen
+      href: sql-database-resource-limits.md
+    - name: Einzeldatenbanken
+      href: sql-database-single-database-resources.md
+    - name: Pools für elastische Datenbanken
+      href: sql-database-elastic-pool.md
+    - name: Verbindungsarchitektur
+      href: sql-database-connectivity-architecture.md
+    - name: DTUs und eDTUs
+      href: sql-database-what-is-a-dtu.md
+    - name: DTU-Vergleichstest
+      href: sql-database-benchmark-overview.md
+    - name: Allgemeine SQL Server-Features
+      href: sql-database-features.md
     - name: Hochverfügbarkeit
       href: sql-database-high-availability.md
     - name: Sicherheit
@@ -101,8 +103,10 @@
           href: sql-database-ssms-mfa-authentication.md
         - name: Überwachung
           href: sql-database-auditing.md
-        - name: Bedrohungserkennung
+        - name: 'Bedrohungserkennung: SQL-Datenbank'
           href: sql-database-threat-detection.md
+        - name: 'Bedrohungserkennung: Verwaltete Instanz'
+          href: sql-database-managed-instance-threat-detection.md
         - name: Tabellenüberwachung und TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Dynamische Datenmaskierung
@@ -137,11 +141,15 @@
           href: sql-database-disaster-recovery-drills.md
     - name: Migrieren zu SQL-Datenbank
       items:
-        - name: Übersicht
+        - name: Migrieren zu SQL-Datenbank
           href: sql-database-cloud-migrate.md
-        - name: T-SQL-Änderungen
+        - name: Migrieren zur verwalteten Instanz
+          href: sql-database-managed-instance-migrate.md
+        - name: T-SQL-Details für SQL-Datenbank
           href: sql-database-transact-sql-information.md
-        - name: Verwalten von Datenbanken nach der Migration
+        - name: T-SQL-Details für verwaltete Instanzen
+          href: sql-database-managed-instance-transact-sql-information.md
+        - name: Verwalten von SQL-Datenbank nach der Migration
           href: sql-database-manage-after-migration.md
     - name: Laden und Verschieben von Daten
       items:
@@ -265,6 +273,16 @@
           href: sql-database-elastic-query-horizontal-partitioning.md
         - name: Durchführen tabellenübergreifender Abfragen mit unterschiedlichen Schemas
           href: sql-database-elastic-query-vertical-partitioning.md
+    - name: Verwaltete Instanz
+      items:
+        - name: VNET-Konfiguration
+          href: sql-database-managed-instance-vnet-configuration.md
+        - name: Benutzerdefinierter DNS
+          href: sql-database-managed-instance-custom-dns.md
+        - name: Herstellen einer Verbindung mit Anwendungen
+          href: sql-database-managed-instance-connect-app.md
+        - name: Synchronisieren der Netzwerkkonfiguration
+          href: sql-database-managed-instance-sync-network-configuration.md
     - name: Sicherheit
       items:
         - name: Konfigurieren der Azure AD-Authentifizierung
@@ -472,4 +490,4 @@
     - name: Architekturcenter
       href: /azure/architecture/
     - name: Kundenstimmen
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
+      href: 'https://customers.microsoft.com/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'

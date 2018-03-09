@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: f19fa1ac4dd970ca3df2c0fdbf8e0778e171c43d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Lokales Codieren und Testen von Azure Functions
 
@@ -35,14 +35,6 @@ Wenn Sie ein Visual Studio C#-Entwickler sind, ist Azure Functions auch [in Visu
 
 >[!NOTE]  
 > Bevor Sie eine der Versionen installieren, müssen Sie [NodeJS installieren](https://docs.npmjs.com/getting-started/installing-node), das NPM enthält. Für Version 2.x der Tools werden nur Node.js 8.5 und höhere Versionen unterstützt. 
-
-### <a name="version-1x-runtime"></a>Laufzeit der Version 1.x
-
-Die ursprüngliche Version der Tools verwendet die Laufzeit von Functions 1.x. Diese Version verwendet das .NET Framework und wird nur auf Windows-Computern unterstützt. Verwenden Sie den folgenden Befehl, um die Tools der Version 1.x zu installieren:
-
-```bash
-npm install -g azure-functions-core-tools
-```
 
 ### <a name="version-2x-runtime"></a>Laufzeit der Version 2.x
 
@@ -69,6 +61,14 @@ Bei der Installation unter macOS und Linux müssen Sie möglicherweise wie folgt
 
 ```bash
 sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
+```
+
+### <a name="version-1x-runtime"></a>Laufzeit der Version 1.x
+
+Die ursprüngliche Version der Tools verwendet die Laufzeit von Functions 1.x. Diese Version verwendet das .NET Framework und wird nur auf Windows-Computern unterstützt. Verwenden Sie den folgenden Befehl, um die Tools der Version 1.x zu installieren:
+
+```bash
+npm install -g azure-functions-core-tools
 ```
 
 ## <a name="run-azure-functions-core-tools"></a>Ausführen der Azure Functions Core Tools

@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: d7e07104153aed36a3e426e053847551d2b2093c
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 761e7193cc64699e8aa25a1fd625ba45f65eed88
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>Tutorial: Klassifizieren von Iris – Teil 3: Bereitstellen eines Modells
 Bei Azure Machine Learning (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
 
-Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe. In diesem Tutorial verwenden Sie Machine Learning (Vorschauversion) für folgende Zwecke:
+Dieses Tutorial ist der **dritte Teil einer dreiteiligen Reihe**. In diesem Tutorial verwenden Sie Machine Learning (Vorschauversion) für folgende Zwecke:
 
 > [!div class="checklist"]
 > * Ermitteln der Modelldatei

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 726799e5d885f144d6e24ab88aaa022f95f0bdd8
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 5eca18ca2f34097d98ce947c61c635abc6ab27b8
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen
 
@@ -30,9 +30,9 @@ Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit Sicherheitsregeln, 
 ## <a name="nsg-resource"></a>NSG-Ressource
 NSGs haben die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Einschränkungen | Überlegungen |
+| Eigenschaft | BESCHREIBUNG | Einschränkungen | Überlegungen |
 | --- | --- | --- | --- |
-| Name |Name der NSG |Muss innerhalb der Region eindeutig sein.<br/>Kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten.<br/>Sie muss mit einem Buchstaben oder einer Zahl beginnen.<br/>Sie muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden.<br/>Darf nicht länger als 80 Zeichen sein. |Da Sie u.U. eine ganze Reihe von NSGs erstellen müssen, sollten Sie durch Ihre Benennungskonvention sicherstellen, dass sich die Funktion der NSGs leicht am Namen erkennen lässt. |
+| NAME |Name der NSG |Muss innerhalb der Region eindeutig sein.<br/>Kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten.<br/>Sie muss mit einem Buchstaben oder einer Zahl beginnen.<br/>Sie muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden.<br/>Darf nicht länger als 80 Zeichen sein. |Da Sie u.U. eine ganze Reihe von NSGs erstellen müssen, sollten Sie durch Ihre Benennungskonvention sicherstellen, dass sich die Funktion der NSGs leicht am Namen erkennen lässt. |
 | Region |Azure-[Region](https://azure.microsoft.com/regions), in der die NSG erstellt wird. |NSGs können nur Ressourcen zugeordnet werden, die sich in derselben Region wie die NSG befinden. |Informationen dazu, wie viele NSGs Sie pro Region verwenden können, finden Sie im Artikel [Einschränkungen bei Azure](../azure-subscription-service-limits.md#virtual-networking-limits-classic).|
 | Ressourcengruppe |Dies ist die [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups), in der die NSG enthalten ist. |Obwohl eine NSG in einer Ressourcengruppe enthalten ist, kann sie Ressourcen in beliebigen Ressourcengruppen zugeordnet werden, sofern die Ressource zu derselben Azure-Region wie die NSG gehört. |Ressourcengruppen werden verwendet, um mehrere Ressourcen gemeinsam als eine Bereitstellungseinheit zu verwalten.<br/>Unter Umständen ist es ratsam, NSGs mit den Ressourcen zu gruppieren, denen sie zugeordnet sind. |
 | Regeln |Mit Regeln für eingehenden und ausgehenden Datenverkehr wird definiert, welcher Datenverkehr zugelassen oder abgelehnt wird. | |Informationen hierzu finden Sie im Abschnitt [NSG-Regeln](#Nsg-rules) dieses Artikels. |
@@ -44,7 +44,7 @@ NSGs haben die folgenden Eigenschaften:
 ### <a name="nsg-rules"></a>NSG-Regeln
 NSG-Regeln enthalten die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Einschränkungen | Überlegungen |
+| Eigenschaft | BESCHREIBUNG | Einschränkungen | Überlegungen |
 | --- | --- | --- | --- |
 | **Name** |Name der Regel. |Muss innerhalb der Region eindeutig sein.<br/>Kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten.<br/>Sie muss mit einem Buchstaben oder einer Zahl beginnen.<br/>Sie muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden.<br/>Darf nicht länger als 80 Zeichen sein. |Da eine NSG mehrere Regeln enthalten kann, sollten Sie durch Ihre Benennungskonvention sicherstellen, dass sich die Funktion der Regel leicht am Namen erkennen lässt. |
 | **Protokoll** |Protokoll entsprechend der Regel: |TCP, UDP oder *. |Wenn als Protokoll „*“ verwendet wird, sind ICMP (nur Ost-West-Datenverkehr), UDP und TCP eingeschlossen, wodurch sich die Anzahl der erforderlichen Regeln verringern kann.<br/>Die Verwendung von „*“ kann auch ein zu weit gefasster Ansatz sein, sodass Sie „*“ nur nutzen sollten, wenn dies wirklich erforderlich ist. |
@@ -66,7 +66,7 @@ In der obigen Abbildung ist dargestellt, wie NSG-Regeln verarbeitet werden.
 Standardtags sind vom System bereitgestellte Bezeichner für eine Kategorie von IP-Adressen. In den Eigenschaften **Quelladresspräfix** und **Zieladresspräfix** von Regeln können Standardtags verwendet werden. Es gibt drei Standardtags, die Sie verwenden können:
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** für klassisch): Dieses Tag enthält den Adressraum des virtuellen Netzwerks (in Azure definierte CIDR-Bereiche), alle verbundenen lokalen Adressräume und verbundene Azure-VNets (lokale Netzwerke).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für klassisch): Dieses Tag symbolisiert den Lastenausgleich der Azure-Infrastruktur. Das Tag wird in eine Azure-Datencenter-IP umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für klassisch): Dieses Tag symbolisiert den Lastenausgleich der Azure-Infrastruktur. Das Tag wird in eine Azure-Datencenter-IP umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure Load Balancer fungiert.
 * **Internet** (Resource Manager) (**INTERNET** für klassisch): Dies ist das Tag für den IP-Adressraum, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Der Bereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein.
 
 ### <a name="default-rules"></a>Standardregeln
@@ -75,23 +75,23 @@ Alle NSGs enthalten eine Gruppe von Standardregeln. Die Standardregeln können z
 Mit den Standardregeln wird Datenverkehr wie folgt zugelassen und verweigert:
 - **Virtuelles Netzwerk:** Datenverkehr wird aus einem bzw. in ein virtuelles Netzwerk in ein- und ausgehender Richtung zugelassen.
 - **Internet:** Ausgehender Datenverkehr wird zugelassen, aber eingehender Datenverkehr wird blockiert.
-- **Lastenausgleich:** Lassen Sie für den Lastenausgleich (Load Balancer) von Azure die Überprüfung der Integrität der virtuellen Computer und der Rolleninstanzen zu. Sie können diese Regel außer Kraft setzen, wenn Sie keine Gruppe mit Lastenausgleich verwenden.
+- **Lastenausgleich:** Lassen Sie für Azure Load Balancer die Überprüfung der Integrität der virtuellen Computer und der Rolleninstanzen zu. Wenn Sie diese Regel außer Kraft setzen, tritt bei den Integritätstests von Azure Load Balancer ein Fehler auf, wodurch Ihr Dienst beeinträchtigt werden kann.
 
 **Eingehende Standardregeln**
 
-| Name | Priority | Quell-IP | Quellport | Ziel-IP | Zielport | Protokoll | Access |
+| NAME | Priorität | Quell-IP | Quellport | Ziel-IP | Zielport | Protokoll | Access |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | AllowVNetInBound |65000 | VirtualNetwork | * | VirtualNetwork | * | * | ZULASSEN |
 | AllowAzureLoadBalancerInBound | 65001 | AzureLoadBalancer | * | * | * | * | ZULASSEN |
-| DenyAllInBound |65500 | * | * | * | * | * | VERWEIGERN |
+| DenyAllInBound |65500 | * | * | * | * | * | Verweigern |
 
 **Ausgehende Standardregeln**
 
-| Name | Priority | Quell-IP | Quellport | Ziel-IP | Zielport | Protokoll | Access |
+| NAME | Priorität | Quell-IP | Quellport | Ziel-IP | Zielport | Protokoll | Access |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | AllowVnetOutBound | 65000 | VirtualNetwork | * | VirtualNetwork | * | * | ZULASSEN |
 | AllowInternetOutBound | 65001 | * | * | Internet | * | * | ZULASSEN |
-| DenyAllOutBound | 65500 | * | * | * | * | * | VERWEIGERN |
+| DenyAllOutBound | 65500 | * | * | * | * | * | Verweigern |
 
 ## <a name="associating-nsgs"></a>Zuordnen von NSGs
 Je nach verwendetem Bereitstellungsmodell können Sie eine NSG wie folgt einem virtuellen Computer, Netzwerkkarten (NICs) und Subnetzen zuordnen:
@@ -123,16 +123,16 @@ Sie können NSGs für das Resource Manager- oder das klassische Bereitstellungsm
 
 | Bereitstellungstool | Klassisch | Ressourcen-Manager |
 | --- | --- | --- |
-| Azure-Portal   | Nein | [Ja](virtual-networks-create-nsg-arm-pportal.md) |
+| Azure-Portal   | Nein  | [Ja](virtual-networks-create-nsg-arm-pportal.md) |
 | PowerShell     | [Ja](virtual-networks-create-nsg-classic-ps.md) | [Ja](virtual-networks-create-nsg-arm-ps.md) |
 | Azure-CLI **V1**   | [Ja](virtual-networks-create-nsg-classic-cli.md) | [Ja](virtual-networks-create-nsg-arm-cli.md) |
-| Azure-CLI **V2**   | Nein | [Ja](virtual-networks-create-nsg-arm-cli.md) |
-| Azure Resource Manager-Vorlage   | Nein  | [Ja](virtual-networks-create-nsg-arm-template.md) |
+| Azure-CLI **V2**   | Nein  | [Ja](virtual-networks-create-nsg-arm-cli.md) |
+| Azure Resource Manager-Vorlage   | Nein   | [Ja](virtual-networks-create-nsg-arm-template.md) |
 
 ## <a name="planning"></a>Planung
 Bevor Sie NSGs implementieren, müssen Sie folgende Fragen beantworten:
 
-1. Für welche Arten von Ressourcen möchten Sie Datenverkehr in ein- oder ausgehender Richtung filtern? Sie können Verbindungen mit Ressourcen herstellen, z.B. NICs (Resource Manager), VMs (klassisch), Cloud Services, App Service-Umgebungen und VM-Skalierungsgruppen. 
+1. Für welche Arten von Ressourcen möchten Sie Datenverkehr in ein- oder ausgehender Richtung filtern? Sie können Verbindungen mit Ressourcen herstellen, z.B. NICs (Resource Manager), VMs (klassisch), Cloud Services, App Service-Umgebungen und VM Scale Sets. 
 2. Sind die Ressourcen, für die Sie ein- und ausgehenden Datenverkehr filtern möchten, mit Subnetzen in vorhandenen VNets verbunden?
 
 Weitere Informationen zum Planen der Netzwerksicherheit in Azure finden Sie im Artikel [Microsoft Cloud Services und Netzwerksicherheit](../best-practices-network-security.md). 
@@ -140,7 +140,7 @@ Weitere Informationen zum Planen der Netzwerksicherheit in Azure finden Sie im A
 ## <a name="design-considerations"></a>Überlegungen zum Entwurf
 Nachdem Sie die Antworten auf die Fragen im Abschnitt [Planung](#Planning) kennen, können Sie sich mit den Informationen in den folgenden Abschnitten vertraut machen, bevor Sie Ihre NSGs definieren:
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 Die Anzahl von NSGs, die Sie in einem Abonnement verwenden können, und die Anzahl von Regeln pro NSG sind beschränkt. Weitere Informationen über die Einschränkungen finden Sie im Artikel zu den [Azure-Einschränkungen](../azure-subscription-service-limits.md#networking-limits) .
 
 ### <a name="vnet-and-subnet-design"></a>Entwurf von VNET und Subnetz
@@ -163,9 +163,10 @@ In NSG-Regeln kann derzeit als Protokoll nur *TCP* oder *UDP* angegeben werden. 
 ### <a name="load-balancers"></a>Load Balancer
 * Sehen Sie sich die Regeln für den Lastenausgleich und die Netzwerkadressübersetzung (Network Address Translation, NAT) für jeden Load Balancer an, der von Ihren Workloads verwendet wird. NAT-Regeln sind an einen Back-End-Pool gebunden, der NICs (Resource Manager) bzw. VMs/Cloud Services-Rolleninstanzen (klassisch) enthält. Ziehen Sie in Erwägung, eine NSG für jeden Back-End-Pool zu erstellen und dadurch nur den Datenverkehr zuzulassen, der den in den Load Balancern implementierten Regeln entspricht. Durch die Erstellung einer NSG für jeden Back-End-Pool wird sichergestellt, dass auch Datenverkehr, der direkt an den Back-End-Pool fließt (anstatt über den Load Balancer), gefiltert wird.
 * In klassischen Bereitstellungen erstellen Sie Endpunkte, die die Ports auf einem Load Balancer zu Ports auf den virtuellen Computern oder Rolleninstanzen zuordnen. Sie können auch den Resource Manager verwenden, um Ihren eigenen öffentlich zugänglichen Load Balancer zu erstellen. Der Zielport für eingehenden Datenverkehr ist der tatsächliche Port der VM oder Rolleninstanz, und nicht der Port, der von einem Load Balancer verfügbar gemacht wird. Beim Quellport und der Quelladresse für die Verbindung mit dem virtuellen Computer handelt es sich um einen Port und eine Adresse auf dem Remotecomputer im Internet, und nicht um den Port und die Adresse, die vom Load Balancer verfügbar gemacht werden.
-* Wenn Sie NSGs erstellen, um Datenverkehr zu filtern, der über einen internen Load Balancer (ILB) eingeht, stammen der angewendete Quellport und der Adressbereich vom Ausgangscomputer und nicht vom Load Balancer. Der Zielport und der Adressbereich stammen vom Zielcomputer, nicht vom Load Balancer.
+* Wenn Sie NSGs erstellen, um Datenverkehr zu filtern, der über Azure Load Balancer eingeht, stammen der angewendete Quellport und Adressbereich vom Ausgangscomputer und nicht vom Load Balancer-Front-End. Der Zielport und der Adressbereich stammen vom Zielcomputer, nicht vom Load Balancer-Front-End.
+* Wenn Sie das AzureLoadBalancer-Tag blockieren, tritt bei den Integritätstests von Azure Load Balancer ein Fehler auf, und Ihr Dienst wird unter Umständen beeinträchtigt.
 
-### <a name="other"></a>Sonstige
+### <a name="other"></a>Andere
 * Endpunktbasierte Zugriffssteuerungslisten (Access Control Lists, ACL) und NSGs werden auf derselben VM-Instanz nicht unterstützt. Wenn Sie eine NSG verwenden möchten und bereits eine Endpunkt-ACL eingerichtet ist, entfernen Sie zuerst die Endpunkt-ACL. Informationen zum Entfernen einer Endpunkt-ACL finden Sie im Artikel [Verwalten von Endpunkt-ACLs](virtual-networks-acl-powershell.md).
 * Im Resource Manager können Sie eine NSG verwenden, die einer NIC für VMs mit mehreren NICs zugeordnet ist, um die Verwaltung (Remotezugriff) pro NIC zu ermöglichen. Die Zuordnung eindeutiger NSGs zu den einzelnen NICs ermöglicht die Trennung von Datenverkehrstypen für die NICs.
 * Beim Filtern von Datenverkehr aus anderen VNETs müssen Sie ähnlich wie bei Load Balancern den Quelladressbereich des Remotecomputers verwenden und nicht das Gateway, das die VNETs verbindet.
@@ -193,65 +194,65 @@ Die Anforderungen 1 bis 6 (mit Ausnahme der Anforderungen 3 und 4) sind auf Subn
 ### <a name="frontend"></a>FrontEnd
 **Regeln für eingehenden Datenverkehr**
 
-| Regel | Access | Priority | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
+| Regel | Access | Priorität | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Allow-Inbound-HTTP-Internet | ZULASSEN | 100 | Internet | * | * | 80 | TCP |
 | Allow-Inbound-RDP-Internet | ZULASSEN | 200 | Internet | * | * | 3389 | TCP |
-| Deny-Inbound-All | VERWEIGERN | 300 | Internet | * | * | * | TCP |
+| Deny-Inbound-All | Verweigern | 300 | Internet | * | * | * | TCP |
 
 **Regeln für ausgehenden Datenverkehr**
 
-| Regel | Access | Priority | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
+| Regel | Access | Priorität | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Deny-Internet-All |VERWEIGERN |100 | * | * | Internet | * | * |
+| Deny-Internet-All |Verweigern |100 | * | * | Internet | * | * |
 
 ### <a name="backend"></a>BackEnd
 **Regeln für eingehenden Datenverkehr**
 
-| Regel | Access | Priority | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
+| Regel | Access | Priorität | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Deny-Internet-All | VERWEIGERN | 100 | Internet | * | * | * | * |
+| Deny-Internet-All | Verweigern | 100 | Internet | * | * | * | * |
 
 **Regeln für ausgehenden Datenverkehr**
 
-| Regel | Access | Priority | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
+| Regel | Access | Priorität | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Deny-Internet-All | VERWEIGERN | 100 | * | * | Internet | * | * |
+| Deny-Internet-All | Verweigern | 100 | * | * | Internet | * | * |
 
 Die folgenden NSGs werden erstellt und den NICs der folgenden VMs zugeordnet:
 
 ### <a name="web1"></a>WEB1
 **Regeln für eingehenden Datenverkehr**
 
-| Regel | Access | Priority | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
+| Regel | Access | Priorität | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Allow-Inbound-RDP-Internet | ZULASSEN | 100 | Internet | * | * | 3389 | TCP |
 | Allow-Inbound-HTTP-Internet | ZULASSEN | 200 | Internet | * | * | 80 | TCP |
 
 > [!NOTE]
-> Der Quelladressbereich für die obigen Regeln lautet **Internet** (nicht die virtuelle IP-Adresse des Load Balancers). Der Quellport ist „*“, nicht 500001. NAT-Regeln für Load Balancer sind nicht das Gleiche wie NSG-Sicherheitsregeln. NSG-Sicherheitsregeln beziehen sich immer auf die ursprüngliche Quelle und das endgültige Ziel des Datenverkehrs, und **nicht** auf den dazwischen angeordneten Load Balancer. 
+> Der Quelladressbereich für die obigen Regeln lautet **Internet** (nicht die virtuelle IP-Adresse des Load Balancers). Der Quellport ist „*“, nicht 500001. NAT-Regeln für Load Balancer sind nicht das Gleiche wie NSG-Sicherheitsregeln. NSG-Sicherheitsregeln beziehen sich immer auf die ursprüngliche Quelle und das endgültige Ziel des Datenverkehrs, und **nicht** auf den dazwischen angeordneten Load Balancer. Azure Load Balancer behält stets die Quell-IP-Adresse und den Port bei.
 > 
 > 
 
 ### <a name="web2"></a>WEB2
 **Regeln für eingehenden Datenverkehr**
 
-| Regel | Access | Priority | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
+| Regel | Access | Priorität | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Deny-Inbound-RDP-Internet | VERWEIGERN | 100 | Internet | * | * | 3389 | TCP |
+| Deny-Inbound-RDP-Internet | Verweigern | 100 | Internet | * | * | 3389 | TCP |
 | Allow-Inbound-HTTP-Internet | ZULASSEN | 200 | Internet | * | * | 80 | TCP |
 
 ### <a name="db-servers-management-nic"></a>DB-Server (Verwaltungs-NIC)
 **Regeln für eingehenden Datenverkehr**
 
-| Regel | Access | Priority | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
+| Regel | Access | Priorität | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Allow-Inbound-RDP-Front-end | ZULASSEN | 100 | 192.168.1.0/24 | * | * | 3389 | TCP |
 
 ### <a name="db-servers-database-traffic-nic"></a>DB-Server (NIC für Datenbank-Datenverkehr)
 **Regeln für eingehenden Datenverkehr**
 
-| Regel | Access | Priority | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
+| Regel | Access | Priorität | Quelladressbereich | Quellport | Zieladressbereich | Zielport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Allow-Inbound-SQL-Front-end | ZULASSEN | 100 | 192.168.1.0/24 | * | * | 1433 | TCP |
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 9b6dfec6465482efcbf55d0441e44a0278f44a22
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5f57edb33770acd7a97287d5cfd650b7fe8366f4
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-file-sync-agent-release-notes"></a>Versionshinweise zum Azure File Sync-Agent
 Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -30,11 +30,25 @@ Von Azure File Sync werden folgende Versionen unterstützt:
 
 | Agent-Versionsnummer | Herausgabedatum | Ende der Unterstützung |
 |----------------------|--------------|------------------|
+| 2.1.0.0 | 2018-02-28 | Aktuelle Version |
 | 2.0.11.0 | 2018-02-08 | Aktuelle Version |
 | 1.1.0.0 | 26.09.2017 | 2018-07-30 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-2100"></a>Agent-Version 2.1.0.0
+Die folgenden Versionshinweise betreffen die Agent-Version 2.1.0 vom 28. Februar 2018. Sie ergänzen die unten aufgeführten Versionshinweisen für Version 2.0.11.0.
+
+Spezifische Änderungen in diesem monatlichen Update:
+- Optimierte Verarbeitung des Clusterfailovers
+- Optimierte Verarbeitung von Tieringdateien für höhere Zuverlässigkeit
+- Ermöglichen der Agent-Installation auf Domänencontrollercomputern, die zu einer 2008R2-Domänenumgebung hinzugefügt wurden
+- Korrektur der Erstellung übermäßiger Diagnosen auf Servern mit zahlreichen Dateien
+- Verbesserung der Fehlerbehandlung für Sitzungsfehler
+- Verbesserung der Fehlerbehandlung für Dateiübertragungsfehler
+- Ändern des Standardintervalls für die Ausführung von Cloudtiering in eine Stunde (bei Aktivierung auf dem Serverendpunkt) 
+- Temporäres Blockieren der Verschiebung von Azure File Sync-Ressourcen (Speichersynchronisierungsdienst) in ein neues Azure-Abonnement
 
 ## <a name="agent-version-20110"></a>Agent-Version 2.0.11.0
 Die folgenden Versionshinweise betreffen die Agent-Version 2.0.11.0 vom 9. Februar 2018. 

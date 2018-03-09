@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: f7a8b60e26b42668e505b3d466bfc447d0cfb48b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 02bbeafd9cd8ca93f22cf9e1a2c107e01c082ba3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET
 
@@ -34,6 +34,7 @@ Die folgende JSON- und XML-Voreinstellung kann verwendet werden, um eine einzeln
 
 ### <a name="json-preset"></a>JSON-Voreinstellung
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -58,9 +59,11 @@ Die folgende JSON- und XML-Voreinstellung kann verwendet werden, um eine einzeln
         }
       ]
     }
+```
     
 ### <a name="xml-preset"></a>XML-Voreinstellung
 
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -79,6 +82,7 @@ Die folgende JSON- und XML-Voreinstellung kann verwendet werden, um eine einzeln
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-series-of-jpeg-images-preset"></a>Beispiel für die Voreinstellung „Eine Reihe von JPEG-Bildern“
 
@@ -86,6 +90,7 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um einen Satz vo
 
 ### <a name="json-preset"></a>JSON-Voreinstellung
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -113,9 +118,11 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um einen Satz vo
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>XML-Voreinstellung
     
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -135,6 +142,7 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um einen Satz vo
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Beispiel für die Voreinstellung „Ein Bild zu einem bestimmten Zeitstempel“
 
@@ -142,6 +150,7 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um ein einzelnes
 
 ### <a name="json-preset"></a>JSON-Voreinstellung
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -169,9 +178,10 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um ein einzelnes
         }
       ]
     }
-    
+```
+
 ### <a name="xml-preset"></a>XML-Voreinstellung
-    
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -191,7 +201,8 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um ein einzelnes
         </Output>
       </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Beispiel für die Voreinstellung „Miniaturansichten in unterschiedlichen Auflösungen“
 
 Mithilfe der folgenden Voreinstellung können Miniaturansichten in unterschiedlichen Auflösungen in einer Aufgabe generiert werden. In dem Beispiel generiert der Encoder bei den Positionen 5 % bis 95 % (in 10 %-Schritten, z. B. 5 %, 15 % usw.) der Eingabezeitachse zwei Bilder – ein Bild mit 100 % der Auflösung des Eingangsvideos und ein weiteres Bild mit einer Auflösung von 50 %.
@@ -200,6 +211,7 @@ Beachten Sie die Verwendung des Makros {Resolution} im Element „FileName“. D
 
 ### <a name="json-preset"></a>JSON-Voreinstellung
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -234,9 +246,10 @@ Beachten Sie die Verwendung des Makros {Resolution} im Element „FileName“. D
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>XML-Voreinstellung
-
+```xml
     <?xml version="1.0" encoding="utf-8"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
     <Encoding>
@@ -261,7 +274,8 @@ Beachten Sie die Verwendung des Makros {Resolution} im Element „FileName“. D
       </Output>
     </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Beispiel für das Generieren einer Miniaturansicht bei der Codierung
 
 In allen oben genannten Beispielen wurde erläutert, dass Sie eine Codierungsaufgabe, die nur Bilder erzeugt, übermitteln können. Jedoch ist die Video- bzw. Audiocodierung auch beim Generieren von Miniaturansichten möglich. Die folgende JSON- und XML-Voreinstellung weist **Media Encoder Standard** an, bei der Codierung eine Miniaturansicht zu generieren.
@@ -269,6 +283,7 @@ In allen oben genannten Beispielen wurde erläutert, dass Sie eine Codierungsauf
 ### <a id="json"></a>JSON-Voreinstellung
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Artikel.
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -328,10 +343,12 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
         }
       ]
     }
+```
 
 ### <a id="xml"></a>XML-Voreinstellung
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Artikel.
-    
+
+```csharp
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -381,6 +398,7 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
         </Output>
       </Outputs>
     </Preset>   
+```
 
 ## <a id="code_sample"></a>Codieren eines Videos und Generieren einer Miniaturansicht mit .NET
 
@@ -400,7 +418,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
 Im Artikel [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) erfahren Sie, wie Sie Ihre Entwicklungsumgebung einrichten.
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;
@@ -552,6 +570,6 @@ Sie können den [Status des Auftrags](media-services-check-job-progress.md) übe
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 

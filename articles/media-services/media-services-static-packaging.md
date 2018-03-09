@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: 33fb0a18ea3e5bfec044a216c8e6a78942e3af40
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: de6cbf954f175777407432845ece24ac49198e46
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Ausführen von Aufgaben zur statischen Paketerstellung mithilfe von Azure Media Packager
 > [!NOTE]
@@ -58,6 +58,7 @@ In diesem Abschnitt wird die Verarbeitung der Überprüfungsaufgabe erläutert. 
 
 Zum Überprüfen Ihrer MP4-Dateien mit Media Services Packager müssen Sie eine eigene Manifestdatei (ISM) erstellen und zusammen mit den Quelldateien in das Media Services-Konto hochladen. Im Folgenden ist ein Beispiel für die mit Media Encoder Standard generierte ISM-Datei dargestellt. Bei den Dateinamen wird zwischen Groß- und Kleinschreibung unterschieden. Stellen Sie außerdem sicher, dass der Text in der ISM-Datei mit UTF-8 codiert ist.
 
+```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
     <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
       <head>
@@ -76,11 +77,13 @@ Zum Überprüfen Ihrer MP4-Dateien mit Media Services Packager müssen Sie eine 
         </switch>
       </body>
     </smil>
+```
 
 Wenn Sie die MP4-Datei mit adaptiver Bitrate festgelegt haben, können Sie die dynamische Paketerstellung nutzen. Mit der dynamischen Paketerstellung können Datenströme ohne weitere Paketerstellung im angegebenen Protokoll übermittelt werden. Weitere Informationen finden Sie unter [Dynamische Paketerstellung](media-services-dynamic-packaging-overview.md).
 
 Im folgenden Codebeispiel werden Azure Media Services .NET SDK-Erweiterungen verwendet.  Ändern Sie den Code so, dass er auf den Ordner verweist, in dem sich Ihre MP4-Eingabedateien und die ISM-Datei befinden. Zudem muss er auf den Ordner verweisen, in dem sich die Datei "MediaPackager_ValidateTask.xml" befindet. Diese XML-Datei wird im Artikel [Taskvoreinstellung für Azure Media Packager](http://msdn.microsoft.com/library/azure/hh973635.aspx) definiert.
 
+```csharp
     using Microsoft.WindowsAzure.MediaServices.Client;
     using System;
     using System.Collections.Generic;
@@ -244,6 +247,7 @@ Im folgenden Codebeispiel werden Azure Media Services .NET SDK-Erweiterungen ver
             }
         }
     }
+```
 
 ## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>Verwenden der statischen Verschlüsselung zum Schützen von Smooth Streaming und MPEG DASH mit PlayReady
 Sie können wahlweise die [dynamische Verschlüsselung](media-services-protect-with-playready-widevine.md) (empfohlene Option) oder die statische Verschlüsselung (wie in diesem Abschnitt beschrieben) verwenden, wenn Sie Ihre Inhalte mit PlayReady schützen möchten.
@@ -263,6 +267,7 @@ Außerdem muss der Code auf den Speicherort Ihrer Dateien "MediaPackager_MP4ToSm
 
 Im Beispiel wird die "UpdatePlayReadyConfigurationXMLFile"-Methode definiert, die Sie für die dynamische Aktualisierung der Datei "MediaEncryptor_PlayReadyProtection.xml" verwenden können. Wenn der Schlüsselwert verfügbar ist, können Sie die "CommonEncryption.GeneratePlayReadyContentKey"-Methode zum Generieren des Inhaltsschlüssels basierend auf den Werten "keySeedValue" und "KeyId" verwenden.
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -694,6 +699,7 @@ Im Beispiel wird die "UpdatePlayReadyConfigurationXMLFile"-Methode definiert, di
             }
         }
     }
+```
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>Verwenden der statischen Verschlüsselung zum Schützen von HLSv3 mit AES-128
 Wenn Sie Ihre HLS-Inhalte mit AES-128 verschlüsseln möchten, können Sie wahlweise die dynamische Verschlüsselung (empfohlene Option) oder die statische Verschlüsselung (wie in diesem Abschnitt beschrieben) verwenden. Wenn Sie die dynamische Verschlüsselung verwenden möchten, finden Sie die entsprechenden Informationen unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-protect-with-aes128.md).
@@ -707,6 +713,7 @@ Wenn Sie Ihre HLS-Inhalte mit AES-128 verschlüsseln möchten, können Sie wahlw
 
 Im Beispiel in diesem Abschnitt wird eine Zwischendatei (in diesem Fall eine MP4-Datei) in MP4-Dateien mit mehreren Bitraten codiert. Anschließend werden die MP4-Dateien in Smooth Streaming gepackt. Smooth Streaming wird dann in HTTP Live Streaming (HLS) gepackt, das mit Advanced Encryption Standard (AES)-128-Bit-Streamverschlüsselung verschlüsselt ist. Ändern Sie den folgenden Code so, dass er auf den Ordner verweist, in dem sich Ihre MP4-Eingabedatei befindet. Außerdem muss der Code auf den Speicherort Ihrer Konfigurationsdateien "MediaPackager_MP4ToSmooth.xml" und "MediaPackager_SmoothToHLS.xml" verweisen. Die Definition für diese Dateien finden Sie im Artikel [Taskvoreinstellung für Azure Media Packager](http://msdn.microsoft.com/library/azure/hh973635.aspx).
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -975,6 +982,7 @@ Im Beispiel in diesem Abschnitt wird eine Zwischendatei (in diesem Fall eine MP4
             }
         }
     }
+```
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>Verwenden der statischen Verschlüsselung zum Schützen von HLSv3 mit PlayReady
 Sie können wahlweise die [dynamische Verschlüsselung](media-services-protect-with-playready-widevine.md) (empfohlene Option) oder die statische Verschlüsselung (wie in diesem Abschnitt beschrieben) verwenden, wenn Sie Ihre Inhalte mit PlayReady schützen möchten.
@@ -990,6 +998,7 @@ Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft P
 
 Ändern Sie den folgenden Code so, dass er auf den Ordner verweist, in dem sich Ihre MP4-Eingabedatei befindet. Außerdem muss der Code auf den Speicherort Ihrer Dateien "MediaPackager_MP4ToSmooth.xml", "MediaPackager_SmoothToHLS.xml" und "MediaEncryptor_PlayReadyProtection.xml" verweisen. Die Dateien „MediaPackager_MP4ToSmooth.xml“ und „MediaPackager_SmoothToHLS.xml“ werden im Thema [Taskvoreinstellung für Azure Media Packager](http://msdn.microsoft.com/library/azure/hh973635.aspx) und die Datei „MediaEncryptor_PlayReadyProtection.xml“ wird im Artikel [Taskvoreinstellung für Azure Media Encryptor](http://msdn.microsoft.com/library/azure/hh973610.aspx) definiert.
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -1452,6 +1461,7 @@ Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft P
 
         }
     }
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

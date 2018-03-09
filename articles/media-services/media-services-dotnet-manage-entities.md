@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: 5efe16a09808267d0797521f9e1df2b60aec9cbb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fd8f89bc842b33576dc0f85ab606dfe3628480ed
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -39,6 +39,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 ## <a name="get-an-asset-reference"></a>Abrufen eines Verweises auf ein Medienobjekt
 Eine häufige Aufgabe besteht darin, einen Verweis auf ein vorhandenes Medienobjekt in Media Services abzurufen. Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Verweis auf ein Medienobjekt aus der Sammlung der Medienobjekte für das Serverkontextobjekt auf Basis einer Medienobjekt-ID abrufen. Im folgenden Codebeispiel wird eine Linq-Abfrage zum Abrufen eines Verweises auf ein vorhandenes IAsset-Objekt verwendet.
 
+```csharp
     static IAsset GetAsset(string assetId)
     {
         // Use a LINQ Select query to get an asset.
@@ -51,10 +52,12 @@ Eine häufige Aufgabe besteht darin, einen Verweis auf ein vorhandenes Medienobj
 
         return asset;
     }
+```
 
 ## <a name="list-all-assets"></a>Auflisten aller Medienobjekte
 Wenn die Anzahl der Medienobjekte im Speicher steigt, ist es hilfreich, diese Medienobjekte aufzulisten. Im folgenden Codebeispiel wird veranschaulicht, wie Sie die Sammlung der Medienobjekte für das Serverkontextobjekt durchlaufen. Mit jedem Medienobjekt werden im Codebeispiel außerdem einige Eigenschaftswerte in die Konsole geschrieben. Beispielsweise kann jedes Medienobjekt zahlreiche Mediendateien enthalten. Im Codebeispiel werden alle Dateien aufgeführt, die den einzelnen Medienobjekten zugeordnet sind.
 
+```csharp
     static void ListAssets()
     {
         string waitMessage = "Building the list. This may take a few "
@@ -90,6 +93,7 @@ Wenn die Anzahl der Medienobjekte im Speicher steigt, ist es hilfreich, diese Me
         // Display output in console.
         Console.Write(builder.ToString());
     }
+```
 
 ## <a name="get-a-job-reference"></a>Abrufen eines Verweises auf einen Auftrag
 
@@ -97,6 +101,7 @@ Bei der Verarbeitung von Aufgaben in Media Services-Code müssen Sie häufig ein
 
 Möglicherweise müssen Sie einen Verweis auf einen Auftrag beim Starten eines Codierungsauftrags mit langer Laufzeit abrufen und den Auftragsstatus für einen Thread überprüfen. Wenn die Rückgabe der Methode in einem solchen Fall aus einem Thread erfolgt, müssen Sie einen aktualisierten Verweis auf einen Auftrag abrufen.
 
+```csharp
     static IJob GetJob(string jobId)
     {
         // Use a Linq select query to get an updated 
@@ -110,12 +115,14 @@ Möglicherweise müssen Sie einen Verweis auf einen Auftrag beim Starten eines C
 
         return job;
     }
+```
 
 ## <a name="list-jobs-and-assets"></a>Auflisten von Aufträgen und Medienobjekten
 Eine wichtige verwandte Aufgabe besteht darin, Medienobjekte mit dem zugehörigen Auftrag in Media Services aufzulisten. Im folgenden Codebeispiel wird veranschaulicht, wie Sie jedes IJob-Objekt auflisten. Anschließend werden für jeden Auftrag Eigenschaften zu dem Auftrag, alle verwandten Aufgaben sowie alle Eingabe- und alle Ausgabemedienobjekte angezeigt. Der Code in diesem Beispiel kann für viele andere Aufgaben hilfreich sein. Wenn Sie beispielsweise die Ausgabemedienobjekte eines oder mehrerer zuvor ausgeführter Codierungsaufträge auflisten möchten, veranschaulicht dieser Code, wie Sie auf die Ausgabemedienobjekte zugreifen. Wenn Sie über einen Verweis auf ein Ausgabemedienobjekt verfügen, können Sie den Inhalt dann für andere Benutzer oder Anwendungen bereitstellen, indem Sie ihn herunterladen oder URLs zur Verfügung stellen. 
 
 Weitere Informationen zu den Optionen für die Bereitstellung von Medienobjekten finden Sie unter [Bereitstellen von Medienobjekten mit dem Media Services SDK für .NET](media-services-deliver-streaming-content.md).
 
+```csharp
     // List all jobs on the server, and for each job, also list 
     // all tasks, all input assets, all output assets.
 
@@ -190,12 +197,14 @@ Weitere Informationen zu den Optionen für die Bereitstellung von Medienobjekten
         // Display output in console.
         Console.Write(builder.ToString());
     }
+```
 
 ## <a name="list-all-access-policies"></a>Auflisten aller Zugriffsrichtlinien
 In Media Services können Sie eine Zugriffsrichtlinie für ein Medienobjekt oder die zugehörigen Dateien definieren. Eine Zugriffsrichtlinie definiert die Berechtigungen für eine Datei oder ein Medienobjekt (den Zugriffstyp und die Dauer). Im Media Services-Code definieren Sie eine Zugriffsrichtlinie in der Regel, indem Sie ein IAccessPolicy-Objekt erstellen und dieses dann einem vorhandenen Medienobjekt zuordnen. Anschließend erstellen Sie ein ILocator-Objekt, über das Sie den direkten Zugriff auf Medienobjekte in Media Services bereitstellen können. Das Visual Studio-Projekt, das diese Dokumentationsreihe begleitet, enthält verschiedene Codebeispiele, die veranschaulichen, wie Zugriffsrichtlinien und Locators erstellt und Medienobjekten zugeordnet werden.
 
 Im folgenden Codebeispiel wird veranschaulicht, wie alle Zugriffsrichtlinien auf dem Server aufgelistet werden. Außerdem werden die Typen der jeweils zugeordneten Berechtigungen angezeigt. Eine weitere nützliche Methode zum Anzeigen der Zugriffsrichtlinien besteht darin, alle ILocator-Objekte auf dem Server aufzulisten. Dann können Sie für jeden Locator die zugeordnete Zugriffsrichtlinie auflisten, indem Sie die AccessPolicy-Eigenschaft verwenden.
 
+```csharp
     static void ListAllPolicies()
     {
         foreach (IAccessPolicy policy in _context.AccessPolicies)
@@ -208,6 +217,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie alle Zugriffsrichtlinien auf
 
         }
     }
+```
     
 ## <a name="limit-access-policies"></a>Einschränken von Zugriffsrichtlinien 
 
@@ -216,6 +226,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie alle Zugriffsrichtlinien auf
 
 Beispielsweise können Sie einen allgemeinen Satz von Richtlinien mit dem folgenden Code erstellen, der nur einmal in Ihrer Anwendung ausgeführt wird. Sie können IDs zur späteren Verwendung in einer Protokolldatei protokollieren:
 
+```csharp
     double year = 365.25;
     double week = 7;
     IAccessPolicy policyYear = _context.AccessPolicies.Create("One Year", TimeSpan.FromDays(year), AccessPermissions.Read);
@@ -225,9 +236,11 @@ Beispielsweise können Sie einen allgemeinen Satz von Richtlinien mit dem folgen
     Console.WriteLine("One year policy ID is: " + policyYear.Id);
     Console.WriteLine("100 year policy ID is: " + policy100Year.Id);
     Console.WriteLine("One week policy ID is: " + policyWeek.Id);
+```
 
 Anschließend können Sie die vorhandenen IDs wie folgt in Ihrem Code verwenden:
 
+```csharp
     const string policy1YearId = "nb:pid:UUID:2a4f0104-51a9-4078-ae26-c730f88d35cf";
 
 
@@ -247,6 +260,7 @@ Anschließend können Sie die vorhandenen IDs wie folgt in Ihrem Code verwenden:
         policy1Year,
         DateTime.UtcNow.AddMinutes(-5));
     Console.WriteLine("The locator base path is " + originLocator.BaseUri.ToString());
+```
 
 ## <a name="list-all-locators"></a>Auflisten aller Locators
 Ein Locator ist eine URL, die einen direkten Pfad für den Zugriff auf ein Medienobjekt zusammen mit den entsprechenden Berechtigungen bereitstellt, die durch die zugehörige Zugriffsrichtlinie des Locators definiert sind. Jedem Medienobjekt kann eine Sammlung von ILocator-Objekten über die Locators-Eigenschaft zugeordnet sein. Der Serverkontext enthält ebenfalls eine Locators-Sammlung, die alle Locators enthält.
@@ -255,6 +269,7 @@ Im folgenden Codebeispiel werden alle Locators auf dem Server aufgelistet. Für 
 
 Beachten Sie, dass ein Locator-Pfad für ein Medienobjekt nur eine Basis-URL des Medienobjekts ist. Um einen direkten Pfad zu den einzelnen Dateien zu erstellen, die ein Benutzer oder eine Anwendung durchsuchen könnte, muss dem Locator-Pfad im Code der spezifische Dateipfad hinzugefügt werden. Weitere Informationen hierzu finden Sie im Thema [Bereitstellen von Medienobjekten mit dem Media Services SDK für .NET](media-services-deliver-streaming-content.md).
 
+```csharp
     static void ListAllLocators()
     {
         foreach (ILocator locator in _context.Locators)
@@ -272,12 +287,14 @@ Beachten Sie, dass ein Locator-Pfad für ein Medienobjekt nur eine Basis-URL des
             Console.WriteLine("");
         }
     }
+```
 
 ## <a name="enumerating-through-large-collections-of-entities"></a>Auflisten von großen Auflistungen von Entitäten
 Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Sie müssen für das Auflisten großer Auflistungen von Entitäten „Skip“ und „Take“ verwenden. 
 
 Die folgende Funktion durchläuft alle Aufträge im bereitgestellten Media Services-Konto. Media Services gibt 1.000 Aufträge aus der Auftragsauflistung zurück. Die Funktion nutzt „Skip“ und „Take“, damit alle Aufträge aufgezählt werden (falls Sie mehr als 1.000 Aufträge in Ihrem Konto haben).
 
+```csharp
     static void ProcessJobs()
     {
         try
@@ -313,10 +330,12 @@ Die folgende Funktion durchläuft alle Aufträge im bereitgestellten Media Servi
             Console.WriteLine(ex.Message);
         }
     }
+```
 
 ## <a name="delete-an-asset"></a>Löschen eines Medienobjekts
 Im folgenden Beispiel wird ein Medienobjekt gelöscht.
 
+```csharp
     static void DeleteAsset( IAsset asset)
     {
         // delete the asset
@@ -327,12 +346,14 @@ Im folgenden Beispiel wird ein Medienobjekt gelöscht.
             Console.WriteLine("Deleted the Asset");
 
     }
+```
 
 ## <a name="delete-a-job"></a>Löschen eines Auftrags
 Um einen Auftrag zu löschen, müssen Sie den Status des Auftrags überprüfen, der in der State-Eigenschaft angegeben ist. Beendete oder abgebrochene Aufträge können gelöscht werden, während Aufträge mit einem bestimmten anderen Status, z. B. in der Warteschlange, geplant oder in Verarbeitung, zunächst abgebrochen werden müssen. Anschließend können sie gelöscht werden.
 
 Das folgende Codebeispiel zeigt eine Methode zum Löschen eines Auftrags, indem der Auftragsstatus überprüft und der Auftrag dann gelöscht wird, wenn er abgeschlossen oder abgebrochen wurde. Dieser Code benötigt die Informationen im vorherigen Abschnitt dieses Themas, um einen Verweis auf einen Job zu erhalten: Abrufen eines Verweises auf einen Auftrag.
 
+```csharp
     static void DeleteJob(string jobId)
     {
         bool jobDeleted = false;
@@ -377,11 +398,13 @@ Das folgende Codebeispiel zeigt eine Methode zum Löschen eines Auftrags, indem 
 
         }
     }
+```
 
 
 ## <a name="delete-an-access-policy"></a>Löschen einer Zugriffsrichtlinie
 Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Verweis auf eine Zugriffsrichtlinie auf Basis der ID abrufen und die Richtlinie dann löschen.
 
+```csharp
     static void DeleteAccessPolicy(string existingPolicyId)
     {
         // To delete a specific access policy, get a reference to the policy.  
@@ -395,7 +418,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Verweis auf eine Z
         policy.Delete();
 
     }
-
+```
 
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade

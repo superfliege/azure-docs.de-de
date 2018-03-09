@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: b0391bb627ab899960d38b4eaf4478a6cdb8bd0b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3354b0122b9025c5da2fb55439620a56c6c985d9
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Anpassen von Media Encoder Standard-Voreinstellungen
 
@@ -38,7 +38,7 @@ Speichern Sie das im Artikel [H264 Multiple Bitrate 720p](media-services-mes-pre
 
 Öffnen Sie die Datei **CustomPreset_JSON.json**, und entfernen Sie die ersten drei Ebenen von **H264Layers**, sodass die Datei wie folgt aussieht.
 
-    
+```json 
     {  
       "Version": 1.0,  
       "Codecs": [  
@@ -107,7 +107,7 @@ Speichern Sie das im Artikel [H264 Multiple Bitrate 720p](media-services-mes-pre
         }  
       ]  
     }  
-    
+```
 
 ## <a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
 
@@ -132,7 +132,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 #### <a name="example"></a>Beispiel   
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;
@@ -266,6 +266,6 @@ namespace CustomizeMESPresests
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 

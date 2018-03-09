@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 92c730addb69bc4d12708ccd789edce0c2336c80
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4f40c9364d02929fe5bb193b4e8eb0a0157d34d2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung
 ## <a name="overview"></a>Übersicht
@@ -41,14 +41,18 @@ Hier sind einige Beispiele für die Fähigkeiten des Azure Media Video Thumbnail
 ### <a name="video-thumbnail-result"></a>Ergebnis der Video-Miniaturansicht
 [Ergebnis der Video-Miniaturansicht](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-## <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
+## <a name="task-configuration-preset"></a>Taskkonfiguration (Voreinstellung)
 Beim Erstellen eines Video-Miniaturansichten-Tasks mit **Azure Media Video Thumbnails**müssen Sie eine Voreinstellungskonfiguration angeben. Das obige Miniaturansicht-Beispiel wurde mit der folgenden JSON-Basiskonfiguration erstellt:
 
-    {"version":"1.0"}
+```json
+    {
+        "version":"1.0"
+    }
+```
 
 Derzeit können Sie die folgenden Parameter ändern: 
 
-| Param | Beschreibung |
+| Param | BESCHREIBUNG |
 | --- | --- |
 | outputAudio |Gibt an, ob das resultierende Video Audiodaten enthält oder nicht. <br/>Zulässige Werte sind: TRUE oder FALSE. Der Standardwert ist TRUE. |
 | fadeInFadeOut |Gibt an, ob Übergänge zwischen den separaten bewegten Miniaturansichten verwendet werden oder nicht.  <br/>Zulässige Werte sind: TRUE oder FALSE.  Der Standardwert ist TRUE. |
@@ -63,6 +67,7 @@ Die folgende Tabelle beschreibt die Standarddauer, wenn **maxMotionThumbnailInSe
 
 Die folgende JSON legt verfügbare Parameter fest.
 
+```json
     {
         "version": "1.0",
         "options": {
@@ -71,22 +76,26 @@ Die folgende JSON legt verfügbare Parameter fest.
             "fadeInFadeOut": "true"
         }
     }
+```
 
 ## <a name="net-sample-code"></a>.NET-Beispielcode
 
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
-1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
+1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
 2. Erstellt einen Auftrag mit einer Video-Miniaturansicht anhand einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält: 
-   
-        {                
-            "version": "1.0",
-            "options": {
-                "outputAudio": "true",
-                "maxMotionThumbnailDurationInSecs": "30",
-                "fadeInFadeOut": "false"
+    
+    ```json
+            {                
+                "version": "1.0",
+                "options": {
+                    "outputAudio": "true",
+                    "maxMotionThumbnailDurationInSecs": "30",
+                    "fadeInFadeOut": "false"
+                }
             }
-        }
+    ```
+
 3. Sie die Ausgabedateien herunterladen. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
@@ -95,6 +104,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 #### <a name="example"></a>Beispiel
 
+```csharp
     using System;
     using System.Configuration;
     using System.IO;
@@ -262,6 +272,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
         }
     }
+```
 
 ### <a name="video-thumbnail-output"></a>Ausgabe der Video-Miniaturansicht
 [Ausgabe der Video-Miniaturansicht](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)

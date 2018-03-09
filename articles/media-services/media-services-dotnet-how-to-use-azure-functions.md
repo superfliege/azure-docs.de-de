@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: f99fe340b6cfebaafb04af9dba8abf9cb0f09a2b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 999f2cef7d70c4f1b45076300312664defdeb3f5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Entwickeln von Azure Functions mit Media Services
 
@@ -69,7 +69,7 @@ Nachdem die Funktionen-App bereitgestellt wurde, wird sie unter den Azure Functi
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Klicken Sie auf **Erstellen**. 
+4. Klicken Sie auf **Create**. 
 
 ## <a name="files"></a>Dateien
 
@@ -86,7 +86,7 @@ Die Datei „function.json“ definiert die Funktionsbindungen und weitere Konfi
 
 Ersetzen Sie den Inhalt der vorhandenen Datei „function.json“ durch den folgenden Code:
 
-```
+```json
 {
   "bindings": [
     {
@@ -107,7 +107,7 @@ Die Datei „project.json“ enthält die Abhängigkeiten. Hier sehen Sie ein Be
 
 Fügen Sie die folgende Definition der Datei „project.json“ hinzu. 
 
-```
+```json
 {
   "frameworks": {
     "net46":{
@@ -136,7 +136,7 @@ In der Praxis möchten Sie wahrscheinlich den Auftragsstatus nachverfolgen und I
 
 Ersetzen Sie den Inhalt der vorhandenen Datei „run.csx“ durch folgenden Code: Wenn Sie mit der Definition Ihrer Funktion fertig sind, klicken Sie auf **Speichern und ausführen**.
 
-```
+```csharp
 #r "Microsoft.WindowsAzure.Storage"
 #r "Newtonsoft.Json"
 #r "System.Web"

@@ -27,7 +27,8 @@
 ### [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 
 ## Bereitstellen
-### [Virtuelle Netzwerke](virtual-networks-create-vnet-arm-pportal.md)
+### Virtuelle Netzwerke
+#### [Azure portal](virtual-networks-create-vnet-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [Azure-CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
@@ -42,17 +43,20 @@
 ##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
 ##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)
 
-### Benutzerdefinierte Routen
-#### [Azure portal](create-user-defined-route-portal.md)
-#### [Azure PowerShell](virtual-network-create-udr-arm-ps.md)
-#### [Azure-CLI](virtual-network-create-udr-arm-cli.md)
+### Routentabellen
+#### [Azure portal](tutorial-create-route-table-portal.md)
+#### [Azure PowerShell](tutorial-create-route-table-powershell.md)
+#### [Azure-CLI](tutorial-create-route-table-cli.md)
 #### [Vorlage](virtual-network-create-udr-arm-template.md)
 #### Klassisch
 ##### [Azure PowerShell](virtual-network-create-udr-classic-ps.md)
 ##### [Azure-CLI](virtual-network-create-udr-classic-cli.md)
 
 ### Peering in virtuellen Netzwerken
-#### [Gleiches Bereitstellungsmodell – gleiches Abonnement](virtual-network-create-peering.md)
+#### Gleiches Bereitstellungsmodell – gleiches Abonnement
+##### [Azure portal](tutorial-connect-virtual-networks-portal.md)
+##### [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md)
+##### [Azure-CLI](tutorial-connect-virtual-networks-cli.md)
 #### [Gleiches Bereitstellungsmodell – andere Abonnements](create-peering-different-subscriptions.md)
 #### [Andere Bereitstellungsmodelle – gleiches Abonnement](create-peering-different-deployment-models.md)
 #### [Andere Bereitstellungsmodelle – andere Abonnements](create-peering-different-deployment-models-subscriptions.md)

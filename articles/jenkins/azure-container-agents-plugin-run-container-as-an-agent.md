@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 12/11/2017
+ms.date: 02/28/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 04a60bf021ec6e265a3880264386ad32ec7e8177
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 557b21340a0ba4e5381d7505b14a172aa3478b84
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="build-a-project-in-azure-using-jenkins-and-azure-container-instances"></a>Erstellen eines Projekts in Azure mithilfe von Jenkins und Azure Container Instances
 
@@ -69,7 +69,7 @@ In diesem Abschnitt wird das Festlegen der Jenkins-URL erläutert.
 
 1. Geben Sie unter **Jenkins Location** die URL des Jenkins-Servers ein.
 
-1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern**aus.
 
 ## <a name="update-jenkins-to-allow-java-network-launch-protocol-jnlp"></a>Aktualisieren von Jenkins zum Zulassen von JNLP (Java Network Launch Protocol)
 
@@ -87,7 +87,7 @@ Der Jenkins-Agent stellt über das JNLP (Java Network Launch Protocol) eine Verb
 
     ![Aktualisieren der globalen Sicherheitseinstellungen von Jenkins zum Zulassen von JNLP](./media/azure-container-agents-plugin-run-container-as-an-agent/jenkins-dashboard-set-jnlp.png)
 
-1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern**aus.
 
 1. Geben Sie über die Azure CLI 2.0 oder die Azure Cloud Shell den folgenden Befehl ein, um eine eingehende Regel für die Jenkins-Netzwerksicherheitsgruppe zu erstellen:
 
@@ -243,7 +243,7 @@ Nachdem das Azure Container Agents-Plug-In installiert wurde, führt Sie dieser 
 
     ![Definieren der Azure Container Instance-Aufbewahrungsstrategie](./media/azure-container-agents-plugin-run-container-as-an-agent/jenkins-dashboard-aci-retention-strategy.png)
 
-1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern**aus.
 
 ## <a name="create-the-spring-petclinic-application-job-in-jenkins"></a>Erstellen des Spring PetClinic-Anwendungsauftrags in Jenkins
 

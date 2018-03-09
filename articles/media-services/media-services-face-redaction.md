@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako;
-ms.openlocfilehash: 2e936379968f74eb8bea420916acea2b8d96bb24
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 73d2f7135e85b829b1ecbd9eb0264024df36244a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Bearbeiten von Gesichtern mit Azure Media Analytics
 ## <a name="overview"></a>Übersicht
@@ -33,7 +33,7 @@ Zusätzlich zu einem vollautomatischen Modus ist ein zweistufiger Workflow vorha
 ### <a name="combined-mode"></a>Kombinierter Modus
 Hierbei wird eine bearbeitete MP4-Datei ohne manuelle Eingabe automatisch erstellt.
 
-| Phase | Dateiname | Hinweise |
+| Phase | Dateiname | Notizen |
 | --- | --- | --- |
 | Eingabeasset |foo.bar |Video im WMV-, MOV- oder MP4-Format |
 | Eingabekonfiguration |Vorgangskonfiguration (Voreinstellung) |{'version':'1.0', 'options': {'mode':'combined'}} |
@@ -48,7 +48,7 @@ Hierbei wird eine bearbeitete MP4-Datei ohne manuelle Eingabe automatisch erstel
 ### <a name="analyze-mode"></a>Analysemodus
 Im Durchlauf **Analyze** des zweistufigen Workflows wird eine Videoeingabe verwendet, und es werden eine JSON-Datei mit Gesichtspositionen und JPG-Bilder für jedes erkannte Gesicht erstellt.
 
-| Phase | Dateiname | Hinweise |
+| Phase | Dateiname | Notizen |
 | --- | --- | --- |
 | Eingabeasset |foo.bar |Video im WMV-, MPV- oder MP4-Format |
 | Eingabekonfiguration |Vorgangskonfiguration (Voreinstellung) |{'version':'1.0', 'options': {'mode':'analyze'}} |
@@ -57,6 +57,7 @@ Im Durchlauf **Analyze** des zweistufigen Workflows wird eine Videoeingabe verwe
 
 #### <a name="output-example"></a>Ausgabebeispiel:
 
+```json
     {
       "version": 1,
       "timescale": 24000,
@@ -103,6 +104,7 @@ Im Durchlauf **Analyze** des zweistufigen Workflows wird eine Videoeingabe verwe
             ],
 
     … truncated
+```
 
 ### <a name="redact-mode"></a>Bearbeitungsmodus
 Im zweiten Durchlauf des Workflows wird eine größere Anzahl von Eingaben verwendet, die zu einem einzelnen Asset zusammengefasst werden müssen.
@@ -111,7 +113,7 @@ Hierzu gehören eine Liste mit den IDs für die Anwendung der Unschärfe, das ur
 
 In der Ausgabe des Analysedurchlaufs ist das Originalvideo nicht enthalten. Das Video muss in das Eingabeasset für die Aufgabe im Bearbeitungsmodus hochgeladen und als primäre Datei ausgewählt werden.
 
-| Phase | Dateiname | Hinweise |
+| Phase | Dateiname | Notizen |
 | --- | --- | --- |
 | Eingabeasset |foo.bar |Video im WMV-, MPV- oder MP4-Format. Dasselbe Video wie in Schritt 1. |
 | Eingabeasset |foo_annotations.json |Metadatendatei mit Anmerkungen aus Phase 1 mit optionalen Änderungen |
@@ -138,7 +140,9 @@ Untenstehend finden Sie Beispiele für Weichzeichnertypen.
 
 ### <a name="example-json"></a>JSON-Beispiel:
 
+```json
     {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
+```
 
 #### <a name="low"></a>Niedrig
 
@@ -170,10 +174,18 @@ Der Medienprozessor zur Gesichtsbearbeitung ermöglicht eine Gesichtspositionser
 
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
-1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
+1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
 2. Erstellen eines Auftrags mit einer Gesichtsbearbeitungsaufgabe auf Basis einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält: 
-   
-        {'version':'1.0', 'options': {'mode':'combined'}}
+
+    ```json
+            {
+                'version':'1.0',
+                'options': {
+                    'mode':'combined'
+                }
+            }
+    ```
+
 3. Herunterladen der JSON-Ausgabedateien. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
@@ -182,7 +194,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 #### <a name="example"></a>Beispiel
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

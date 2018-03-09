@@ -1,55 +1,77 @@
 ---
-title: "Wiederherstellen eines Servers in Azure-Datenbank für PostgreSQL | Microsoft-Dokumentation"
+title: Wiederherstellen eines Servers in Azure Database for PostgreSQL
 description: "In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal einen Server in Azure-Datenbank für PostgreSQL wiederherstellen."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 903fd2ff446e1963ab5cfcec745766188b74efcf
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 02/28/2018
+ms.openlocfilehash: 7607a3e60eec39de61c785b8ff75a9f11fa02d0c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL mit dem Azure-Portal
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL mit dem Azure-Portal
 
 ## <a name="backup-happens-automatically"></a>Automatische Sicherung
-Bei der Verwendung von Azure Database for PostgreSQL erstellt der Datenbankdienst automatisch alle fünf Minuten eine Sicherung des Servers. 
+Azure Database for PostgreSQL-Server werden regelmäßig gesichert, um Wiederherstellungsfunktionen zu ermöglichen. Mithilfe dieses Features können Sie für den Server und alle dazugehörigen Datenbanken einen Zustand zu einem früheren Zeitpunkt auf einem neuen Server wiederherstellen.
 
-Die Sicherungen sind im Basic-Tarif sieben Tage und im Standard-Tarif 35 Tage lang verfügbar. Weitere Informationen finden Sie im Artikel zu den [Dienstebenen für Azure-Datenbank für PostgreSQL](concepts-service-tiers.md).
+## <a name="set-backup-configuration"></a>Festlegen der Sicherungskonfiguration
 
-Mithilfe dieses automatischen Sicherungsfeatures können Sie einen früheren Zustand des Servers und aller seiner Datenbanken wiederherstellen.
+Bei der Erstellung des Servers treffen Sie im Fenster **Tarif** die Entscheidung, ob dafür lokal redundante oder georedundante Sicherungen erstellt werden sollen.
 
-## <a name="restore-in-the-azure-portal"></a>Wiederherstellen im Azure-Portal
-Mit Azure-Datenbank für PostgreSQL können Sie den Zustand des Servers zu einem bestimmten Zeitpunkt und auf einer neuen Kopie des Servers wiederherstellen. Sie können diesen neuen Server zur Wiederherstellung Ihrer Daten verwenden. 
+> [!NOTE]
+> Nachdem ein Server erstellt wurde, kann die Redundanzart (georedundant oder lokal redundant) nicht mehr gewechselt werden.
+>
 
-Beispiel: Wenn eine Tabelle heute um 12 Uhr versehentlich gelöscht wurde, können Sie den Zustand von kurz vor 12 Uhr wiederherstellen und die fehlende Tabelle und die Daten von dieser neuen Kopie des Servers abrufen.
+Bei der Erstellung eines Servers über das Azure-Portal wählen Sie im Fenster **Tarif** entweder **Lokal redundant** oder **Georedundant** für die Sicherungen Ihres Servers aus. Außerdem wählen Sie in diesem Fenster die **Aufbewahrungszeit für Sicherung** aus. Hier wird angegeben, wie lange die Sicherungen gespeichert werden sollen (in Tagen).
+
+   ![Tarif – Auswählen der Sicherungsredundanz](./media/howto-restore-server-portal/pricing-tier.png)
+
+Weitere Informationen zum Festlegen dieser Werte während der Erstellung finden Sie unter [Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal](quickstart-create-server-database-portal.md).
+
+Die Option „Aufbewahrungszeit für Sicherung“ kann für einen Server mit den folgenden Schritten geändert werden:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Wählen Sie Ihre Azure Database for PostgreSQL-Server aus. Mit dieser Aktion wird die Seite **Übersicht** geöffnet.
+3. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Tarif**. Mit dem Schieberegler können Sie die **Aufbewahrungszeit für Sicherung** auf einen Wert zwischen 7 und 35 Tagen festlegen.
+Im folgenden Screenshot wurde der Wert auf 34 Tage erhöht.
+![Erhöhung der Aufbewahrungszeit für Sicherung](./media/howto-restore-server-portal/3-increase-backup-days.png)
+
+4. Klicken Sie auf **OK**, um die Änderung zu bestätigen.
+
+Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zurückliegenden Zeitraum eine Point-in-Time-Wiederherstellung durchgeführt werden kann, da dies auf den verfügbaren Sicherungen basiert. Die Point-in-Time-Wiederherstellung wird im folgenden Abschnitt näher beschrieben. 
+
+## <a name="point-in-time-restore-in-the-azure-portal"></a>Point-in-Time-Wiederherstellung im Azure-Portal
+Mit Azure Database for PostgreSQL können Sie den Zustand des Servers zu einem bestimmten Zeitpunkt und als neue Kopie des Servers wiederherstellen. Sie können diesen neuen Server verwenden, um Ihre Daten wiederherzustellen, oder Ihre Clientanwendungen so einrichten, dass sie auf diesen neuen Server verweisen.
+
+Beispiel: Wenn eine Tabelle heute um 12 Uhr versehentlich gelöscht wurde, können Sie den Zustand von kurz vor 12 Uhr wiederherstellen und die fehlende Tabelle und die Daten von dieser neuen Kopie des Servers abrufen. Die Point-in-Time-Wiederherstellung wird nicht auf Datenbankebene, sondern auf der Serverebene durchgeführt.
 
 Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bestimmten Zeitpunkt wiederhergestellt:
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Suchen Sie den Server für Azure-Datenbank für PostgreSQL. Klicken Sie im Azure-Portal im linken Menü auf **All Resources** (Alle Ressourcen), und geben Sie den Namen des Servers ein (z.B. **mypgserver-20170401**), um nach dem vorhandenen Server zu suchen. Klicken Sie auf den im Suchergebnis aufgelisteten Servernamen. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
+1. Wählen Sie im Azure-Portal Ihren Azure Database for PostgreSQL-Server aus. 
 
-   ![Azure-Portal – Suchen nach Ihrem Server](media/postgresql-howto-restore-server-portal/1-locate.png)
+2. Klicken Sie in der Symbolleiste auf der Seite **Übersicht** des Servers auf **Wiederherstellen**.
 
-3. Klicken Sie auf der Symbolleiste auf der Übersichtsseite des Servers auf **Wiederherstellen**. Die Seite „Wiederherstellen“ wird geöffnet.
+   ![Azure-Datenbank für PostgreSQL – Übersicht – Schaltfläche „Wiederherstellen“](./media/howto-restore-server-portal/2-server.png)
 
-   ![Azure-Datenbank für PostgreSQL – Übersicht – Schaltfläche „Wiederherstellen“](./media/postgresql-howto-restore-server-portal/2_server.png)
+3. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:
 
-4. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:
-
-   ![Azure-Datenbank für PostgreSQL – Wiederherstellungsinformationen ](./media/postgresql-howto-restore-server-portal/3_restore.png)
-  - **Wiederherstellungspunkt**: Wählen Sie einen Zeitpunkt vor der Änderung des Servers aus.
-  - **Zielserver**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
+   ![Azure-Datenbank für PostgreSQL – Wiederherstellungsinformationen ](./media/howto-restore-server-portal/3-restore.png)
+  - **Wiederherstellungspunkt**: Wählen Sie den Zeitpunkt aus, für den der Zustand wiederhergestellt werden soll.
+  - **Zielserver**: Geben Sie einen Namen für den neuen Server an.
   - **Standort**: Sie können die Region nicht auswählen. Standardmäßig ist dieser Wert mit dem Wert für den Quellserver identisch.
-  - **Tarif**: Sie können diesen Wert beim Wiederherstellen eines Servers nicht ändern. Er ist mit dem Wert für den Quellserver identisch. 
+  - **Tarif**: Sie können diese Parameter nicht ändern, wenn Sie eine Point-in-Time-Wiederherstellung durchführen. Er ist mit dem Wert für den Quellserver identisch. 
 
-5. Klicken Sie auf **OK**, um den Zustand eines Servers zu einem bestimmten Zeitpunkt wiederherzustellen. 
+4. Klicken Sie auf **OK**, um den Zustand eines Servers zu einem bestimmten Zeitpunkt wiederherzustellen. 
 
-6. Suchen Sie nach Abschluss der Wiederherstellung den neuen erstellten Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
+5. Suchen Sie nach Abschluss der Wiederherstellung den neuen erstellten Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
+
+>[!Note]
+>Der neue Server, der durch die Point-in-Time-Wiederherstellung erstellt wurde, verfügt über den gleichen Serveradministrator-Anmeldenamen (und das dazugehörige Kennwort), der für den vorhandenen Server zum gewählten Zeitpunkt gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Datenverbindungsbibliotheken für die Azure-Datenbank für PostgreSQL](concepts-connection-libraries.md)
+- Informieren Sie sich über die [Sicherungen](concepts-backup.md) des Diensts.
+- Informieren Sie sich über die Optionen in Bezug auf die [Geschäftskontinuität](concepts-business-continuity.md).

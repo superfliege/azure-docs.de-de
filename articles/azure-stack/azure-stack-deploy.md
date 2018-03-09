@@ -12,20 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2017
+ms.date: 03/02/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 0fa0d00112e731a9f2effd453ba74f5561fca358
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 03682e7f5867360cc3d854f0dff2bc5d1c1c9619
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Voraussetzungen für die Azure Stack-Bereitstellung
 
 *Gilt für: Azure Stack Development Kit*
 
-Stellen Sie vor der Bereitstellung des [Azure Stack Development Kits](azure-stack-poc.md) sicher, dass Ihr Computer die folgenden Anforderungen erfüllt:
+Stellen Sie vor der Bereitstellung des [Azure Stack Development Kit (ASDK)](azure-stack-poc.md) sicher, dass der Development Kit-Hostcomputer die in diesem Artikel beschriebenen Anforderungen erfüllt.
 
+> [!NOTE]
+> Das ASDK muss auf einem physischen Hostcomputer installiert werden. Die Installation des ASDK auf einem virtuellen Azure-Computer wird nicht unterstützt.
 
 ## <a name="hardware"></a>Hardware
 | Komponente | Minimum | Empfohlen |
@@ -83,7 +85,7 @@ Wenn Sie die AD FS-Bereitstellungsoption nutzen, müssen Sie Azure Stack erneut 
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory-Konten
 Zum Bereitstellen von Azure Stack über ein Azure AD-Konto müssen Sie vor dem Ausführen des PowerShell-Bereitstellungsskripts ein Azure AD-Konto vorbereiten. Dieses Konto wird der globale Administrator für den Azure AD-Mandanten. Es wird zum Bereitzustellen und Delegieren von Anwendungen und Dienstprinzipalen für alle Azure Stack-Dienste verwendet, die mit Azure Active Directory und Graph-API interagieren. Es fungiert außerdem als Besitzer des Standardanbieterabonnements (den Sie später jedoch ändern können). Mit diesem Konto können Sie sich beim Administratorportal Ihres Azure Stack-Systems anmelden.
 
-1. Erstellen Sie ein Azure AD-Konto, das Verzeichnisadministrator für mindestens eine Azure AD-Instanz ist. Wenn Sie bereits eines haben, können Sie es verwenden. Andernfalls können Sie unter [http://azure.microsoft.com/de-de/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (<http://go.microsoft.com/fwlink/?LinkID=717821> für China) ein kostenloses Konto erstellen. Wenn Sie [Azure Stack zu einem späteren Zeitpunkt bei Azure registrieren](azure-stack-register.md) möchten, benötigen Sie auch ein Abonnement in diesem neu erstellten Konto.
+1. Erstellen Sie ein Azure AD-Konto, das Verzeichnisadministrator für mindestens eine Azure AD-Instanz ist. Wenn Sie bereits eines haben, können Sie es verwenden. Andernfalls können Sie unter [http://azure.microsoft.com/de-de/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (<http://go.microsoft.com/fwlink/?LinkID=717821>für China) ein kostenloses Konto erstellen. Wenn Sie [Azure Stack zu einem späteren Zeitpunkt bei Azure registrieren](azure-stack-register.md) möchten, benötigen Sie auch ein Abonnement in diesem neu erstellten Konto.
    
     Bewahren Sie diese Anmeldeinformationen zur Verwendung in Schritt 6 der [Bereitstellung des Development Kits](azure-stack-run-powershell-script.md) auf. Dieses *Dienstadministrator*-Konto kann Ressourcenclouds, Benutzerkonten, Mandantenpläne, Kontingente und Preise konfigurieren und verwalten. Im Portal ist es möglich, Websiteclouds und private Clouds mit virtuellen Computern sowie Pläne zu erstellen und Benutzerabonnements zu verwalten.
 2. [Erstellen](azure-stack-add-new-user-aad.md) Sie mindestens ein Konto, damit Sie sich als Mandant beim Development Kit anmelden können.
@@ -127,4 +129,3 @@ Azure Stack benötigt entweder direkten Zugriff auf das Internet oder über eine
 [Herunterladen des Bereitstellungspakets für das Azure Stack Development Kit](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
 [Bereitstellen des Azure Stack Development Kits](azure-stack-run-powershell-script.md)
-

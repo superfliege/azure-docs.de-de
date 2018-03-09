@@ -248,4 +248,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
 > * Suchen eines Point of Interest in der Nähe mithilfe des Suchdiensts
 
-Fahren Sie mit dem Tutorial [Route to a point of interest using Azure Location Based Services](./tutorial-route-location.md) fort, um zu erfahren, wie Sie mit Azure Location Based Services eine Route zum Point of Interest ermitteln. 
+Fahren Sie mit dem Tutorial [Route zu einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-route-location.md) fort, um zu erfahren, wie Sie mit Azure Location Based Services eine Route zum Point of Interest ermitteln. 

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/22/2018
+ms.date: 2/28/2018
 ms.author: brenduns
 ms.reviewer: 
-ms.openlocfilehash: 0f3e28f7726afab02211902b5ba2e478ae8065df
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7f2ec78da38f3c97fde810fb8fc965cfbb6fda08
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Identitätsarchitektur für Azure Stack
 Bevor Sie einen Identitätsanbieter für die Verwendung mit Azure Stack auswählen, sollten Sie sich mit den wichtigen Unterschieden zwischen den Optionen von Azure Active Directory (Azure AD) und Active Directory-Verbunddienste (AD FS) vertraut machen. 
@@ -32,7 +32,7 @@ Es kann sein, dass Ihre Optionen, einschließlich der Unterstützung mehrerer Ma
 |Funktion oder Szenario        |Azure AD  |AD FS  |
 |------------------------------|----------|-------|
 |Verbindung mit dem Internet vorhanden     |Ja       |Optional|
-|Unterstützung mehrerer Mandanten     |Ja       |Nein      |
+|Unterstützung mehrerer Mandanten     |Ja       |Nein       |
 |Marketplace-Syndikation       |Ja       |Ja. Die Nutzung des Tools für die [Marketplace-Offlinesyndikation](azure-stack-download-azure-marketplace-item.md#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) ist erforderlich.|
 |Unterstützung der Active Directory Authentication Library (ADAL) |Ja |Ja|
 |Unterstützung von Tools wie der Azure-Befehlszeilenschnittstelle (CLI), Visual Studio (VS) und PowerShell  |Ja |Ja|
@@ -86,7 +86,7 @@ Für diese Topologie gilt Folgendes:
 
   Für die Interaktion mit Ihrer AD-Instanz benötigt die Graph-API Benutzeranmeldeinformationen der AD-Instanz, die über eine entsprechende Leseberechtigung verfügen. 
   - Die integrierte AD FS-Instanz basiert auf Server 2016. 
-  - AD FS und AD müssen auf Server 2012 oder früher basieren. 
+  - AD FS und AD müssen auf Server 2012 oder höher basieren.  
   
   Zwischen Ihrer AD-Instanz und der integrierten AD FS-Instanz sind Interaktionen nicht auf OpenID Connect beschränkt, und es können alle gegenseitig unterstützten Protokolle verwendet werden.  
   - Benutzerkonten werden auf Ihrer lokalen AD-Instanz erstellt und verwaltet.

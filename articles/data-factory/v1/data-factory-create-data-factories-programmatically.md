@@ -3,7 +3,7 @@ title: Erstellen von Datenpipelines mithilfe des Azure .NET SDK | Microsoft-Doku
 description: "Erfahren Sie, wie Sie Azure Data Factorys mithilfe des Data Factory .NET SDK programmgesteuert erstellen, überwachen und verwalten."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: monicar
 ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 35041e148e52e5c567601c53dffac05c88d45ed5
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1ac3dd85b95e021581fbf86d590f3b43ee1cdacc
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Azure Data Factory .NET SDK
 > [!NOTE]
@@ -220,7 +220,7 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
     ```
 9. Fügen Sie den folgenden Code, mit dem **Eingabe- und Ausgabedatasets** erstellt werden, der **Main**-Methode hinzu.
 
-    Für den **FolderPath** des Eingabeblobs ist der Wert **adftutorial/** festgelegt, wobei **adftutorial** dem Namen des Containers im Blobspeicher entspricht. Wenn dieser Container nicht in Ihrem Azure-Blobspeicher enthalten ist, erstellen Sie einen Container mit dem Namen **adftutorial** und laden eine Textdatei in den Container hoch.
+    Für den **FolderPath** des Eingabeblobs ist der Wert **adftutorial/** festgelegt, wobei **adftutorial** dem Namen des Containers im Blobspeicher entspricht. Wenn dieser Container nicht in Azure Blob Storage enthalten ist, erstellen Sie einen Container mit dem Namen **adftutorial** und laden eine Textdatei in den Container hoch.
 
     Für den FolderPath des Ausgabeblobs ist **adftutorial/apifactoryoutput/{Slice}** festgelegt, wobei **Slice** auf Basis des Werts von **SliceStart** (Startdatum und -zeit für jeden Slice) dynamisch berechnet wird.
 
@@ -447,7 +447,7 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
 
 15. Erweitern Sie im Projektmappen-Explorer das Projekt **DataFactoryAPITestApp**, klicken Sie mit der rechten Maustaste auf **Verweise**, und klicken Sie auf **Verweis hinzufügen**. Aktivieren Sie das Kontrollkästchen für das `System.Configuration` -Assembly, und klicken Sie auf **OK**.
 15. Erstellen Sie die Konsolenanwendung. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**.
-16. Vergewissern Sie sich, dass sich mindestens eine Datei im "adftutorial"-Container im Azure Blob-Speicher befindet. Ist dies nicht der Fall, erstellen Sie die Datei "Emp.txt" mit folgendem Inhalt im Editor, und laden Sie sie anschließend in den "adftutorial"-Container hoch.
+16. Vergewissern Sie sich, dass sich mindestens eine Datei im adftutorial-Container in Azure Blob Storage befindet. Ist dies nicht der Fall, erstellen Sie die Datei "Emp.txt" mit folgendem Inhalt im Editor, und laden Sie sie anschließend in den "adftutorial"-Container hoch.
 
     ```
     John, Doe

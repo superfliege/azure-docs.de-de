@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: 91839d8f547340d55f6badb3350a393a48a13c7d
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 
@@ -78,7 +78,7 @@ when making changes in one don't forget the other two.
 
    ![Seite „WebJob hinzufügen“](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Einstellung      | Beispielwert   | Beschreibung  |
+   | Einstellung      | Beispielwert   | BESCHREIBUNG  |
    | ------------ | ----------------- | ------------ |
    | **Name** | myContinuousWebJob | Ein Name, der innerhalb einer App Service-App eindeutig ist. Muss mit einem Buchstaben oder einer Ziffer beginnen und darf nur die Sonderzeichen „-“ und „_“ enthalten. |
    | **Dateiupload** | ConsoleApp.zip | Eine *ZIP*-Datei, die die ausführbare Datei oder Skriptdatei sowie für die Ausführung des Programms oder Skripts erforderliche Hilfsdateien enthält. Die unterstützten Typen von ausführbarer Datei oder Skriptdatei werden im Abschnitt [Unterstützte Dateitypen](#acceptablefiles) aufgeführt. |
@@ -116,7 +116,7 @@ when making changes in one don't forget the other two.
 
    ![Seite „WebJob hinzufügen“](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Einstellung      | Beispielwert   | Beschreibung  |
+   | Einstellung      | Beispielwert   | BESCHREIBUNG  |
    | ------------ | ----------------- | ------------ |
    | **Name** | myTriggeredWebJob | Ein Name, der innerhalb einer App Service-App eindeutig ist. Muss mit einem Buchstaben oder einer Ziffer beginnen und darf nur die Sonderzeichen „-“ und „_“ enthalten.|
    | **Dateiupload** | ConsoleApp.zip | Eine *ZIP*-Datei, die die ausführbare Datei oder Skriptdatei sowie für die Ausführung des Programms oder Skripts erforderliche Hilfsdateien enthält. Die unterstützten Typen von ausführbarer Datei oder Skriptdatei werden im Abschnitt [Unterstützte Dateitypen](#acceptablefiles) aufgeführt. |
@@ -154,7 +154,7 @@ when making changes in one don't forget the other two.
 
    ![Seite „WebJob hinzufügen“](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Einstellung      | Beispielwert   | Beschreibung  |
+   | Einstellung      | Beispielwert   | BESCHREIBUNG  |
    | ------------ | ----------------- | ------------ |
    | **Name** | myScheduledWebJob | Ein Name, der innerhalb einer App Service-App eindeutig ist. Muss mit einem Buchstaben oder einer Ziffer beginnen und darf nur die Sonderzeichen „-“ und „_“ enthalten. |
    | **Dateiupload** | ConsoleApp.zip | Eine *ZIP*-Datei, die die ausführbare Datei oder Skriptdatei sowie für die Ausführung des Programms oder Skripts erforderliche Hilfsdateien enthält. Die unterstützten Typen von ausführbarer Datei oder Skriptdatei werden im Abschnitt [Unterstützte Dateitypen](#acceptablefiles) aufgeführt. |

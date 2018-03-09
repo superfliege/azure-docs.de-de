@@ -13,11 +13,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5a6e1b5bc377d3fc4ad47fdfb37da4853c3bb827
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7c94f59eaa079677223083339f111cf73b13632e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopieren vorhandener Blobs in ein Media Services-Medienobjekt
 In diesem Artikel wird erläutert, wie Blobs mithilfe von [Azure Media Services .NET SDK-Erweiterungen](https://github.com/Azure/azure-sdk-for-media-services-extensions/) aus einem Speicherkonto in ein neues Azure Media Services-Medienobjekt (AMS) kopiert werden.
@@ -51,7 +51,7 @@ Sie können die Schritte in diesem Artikel befolgen oder ein Beispiel mit dem in
 1. Richten Sie die Entwicklungsumgebung wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben ein. 
 2. Fügen Sie der CONFIG-Datei den Abschnitt „appSettings“ hinzu, und ändern Sie die Werte entsprechend Ihren Media Services-Konten, dem Zielspeicherkonto und der Quellmedienobjekt-ID.  
 
-```   
+```xml
 <appSettings>
     <add key="AMSSourceAADTenantDomain" value="tenant"/>
     <add key="AMSSourceRESTAPIEndpoint" value="endpoint"/>
@@ -77,7 +77,7 @@ Sie können die Schritte in diesem Artikel befolgen oder ein Beispiel mit dem in
 
 Der folgende Code verwendet die Erweiterungsmethode **IAsset.Copy**, um alle Dateien im Quellmedienobjekt mithilfe einer einzelnen Erweiterung in das Zielmedienobjekt zu kopieren.
 
-```
+```csharp
 using System;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using System.Linq;
@@ -167,7 +167,7 @@ namespace CopyExistingBlobsIntoAsset
 1. Richten Sie die Entwicklungsumgebung wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben ein. 
 2. Fügen Sie der CONFIG-Datei den appSettings-Abschnitt hinzu, und ändern Sie die Werte basierend auf dem Quellspeicher und den AMS-Zielkonten.
 
-```
+```xml
 <appSettings>
     <add key="SourceStorageAccountName" value="name" />
     <add key="SourceStorageAccountKey" value="key" />
@@ -189,7 +189,7 @@ Der folgende Code kopiert Blobs aus einem Speicherkonto in ein Media Services-Me
 >[!NOTE]
 >Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-dotnet-manage-entities.md#limit-access-policies).
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.Linq;
@@ -371,6 +371,7 @@ namespace CopyExistingBlobsIntoAsset
     }
 }
 ```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können nun Ihre hochgeladenen Medienobjekte codieren. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-portal-encode.md).

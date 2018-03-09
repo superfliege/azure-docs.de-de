@@ -3,9 +3,9 @@ title: Aufrufen von Spark-Programmen aus Azure Data Factory | Microsoft-Dokument
 description: "Erfahren Sie, wie Sie Spark-Programme mithilfe der MapReduce-Aktivität aus einer Azure Data Factory aufrufen."
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: sharonlo101
+manager: 
+editor: 
 ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f03c3b6e275c0bc97df9e687a20acf45956664d2
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b39e6012365c426e95a38d5c5a40790f584ba473
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -66,9 +66,9 @@ Dies sind die typischen Schritte zum Erstellen einer Data Factory-Pipeline mit e
 ### <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 Führen Sie die folgenden Schritte aus, um eine Data Factory zu erstellen:
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie **Neu** > **Daten + Analysen** > **Data Factory** aus.
+2. Klicken Sie auf **Neu** > **Daten + Analysen** > **Data Factory**.
 
 3. Geben Sie auf dem Blatt **Neue Data Factory** unter **Name** den Namen **SparkDF** ein.
 
@@ -100,7 +100,7 @@ In diesem Schritt verknüpfen Sie Ihr Speicherkonto mit Ihrer Data Factory. Ein 
 
 1. Wählen Sie auf dem Blatt **Data Factory** die Option **Verfassen und bereitstellen** aus. Der Data Factory-Editor wird angezeigt.
 
-2. Wählen Sie **Neuer Datenspeicher** aus, und wählen Sie dann **Azure Storage** aus.
+2. Klicken Sie auf **Neuer Datenspeicher** und dann auf **Azure Storage**.
 
    ![Neuer Datenspeicher](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
 
@@ -186,7 +186,7 @@ Das Ausgabedataset stellt den Treiber des Zeitplans dar (stündlich, täglich). 
 ### <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 In diesem Schritt erstellen Sie eine Pipeline mit einer HDInsightSpark-Aktivität. Zurzeit steuert das Ausgabedataset den Zeitplan, sodass Sie auch dann ein Ausgabedataset erstellen müssen, wenn die Aktivität keine Ausgabe generiert. Wenn die Aktivität keine Eingabe akzeptiert, können Sie das Erstellen des Eingabedatasets überspringen. Aus diesem Grund wird in diesem Beispiel kein Eingabedataset angegeben.
 
-1. Wählen Sie im Data Factory-Editor **Weitere** > **Neue Pipeline** aus.
+1. Klicken Sie im Data Factory-Editor auf **Weitere** > **Neue Pipeline**.
 
 2. Ersetzen Sie das Skript im Fenster „Entwurf-1“ durch das folgende Skript:
 
@@ -350,7 +350,7 @@ Erstellen Sie folgende Ordnerstruktur in dem Blobspeicher, auf den der verknüpf
 | path | BESCHREIBUNG | Erforderlich | Typ |
 | ---- | ----------- | -------- | ---- |
 | zu erstellen und zu verwalten. | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja | Ordner |
-| &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja | File |
+| &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja | Datei |
 | ./jars | Alle Dateien in diesem Ordner werden hochgeladen und im Java-CLASSPATH des Clusters platziert. | Nein  | Ordner |
 | ./pyFiles | Alle Dateien in diesem Ordner werden hochgeladen und im PYTHONPATH des Clusters platziert. | Nein  | Ordner |
 | ./files | Alle Dateien in diesem Ordner werden hochgeladen und im Executor-Arbeitsverzeichnis platziert. | Nein  | Ordner |

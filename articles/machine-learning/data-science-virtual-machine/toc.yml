@@ -8,6 +8,8 @@
       href: overview.md
     - name: Was ist die Deep Learning-VM?
       href: deep-learning-dsvm-overview.md
+    - name: Was ist die Data Science-VM mit Geo-KI?
+      href: geo-ai-dsvm-overview.md
 - name: Erste Schritte
   items:
     - name: Erstellen einer Data Science-VM für Windows
@@ -18,6 +20,8 @@
       href: linux-dsvm-intro.md
     - name: Erstellen einer Deep Learning-VM
       href: provision-deep-learning-dsvm.md
+    - name: Erstellen einer Data Science-VM mit Geo-KI
+      href: provision-geo-ai-dsvm.md
 - name: Anleitung
   items:
     - name: Verwenden einer Data Science-VM für Windows
@@ -26,6 +30,8 @@
       href: linux-dsvm-walkthrough.md
     - name: Verwenden einer Deep Learning-VM
       href: use-deep-learning-dsvm.md
+    - name: Verwenden einer Data Science-VM mit Geo-KI
+      href: use-geo-ai-dsvm.md
 - name: Verweis
   expanded: true
   items:

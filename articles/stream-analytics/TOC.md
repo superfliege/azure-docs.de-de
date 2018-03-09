@@ -58,13 +58,14 @@
 
 ## Problembehandlung
 ### [Handbuch zur Problembehandlung](stream-analytics-troubleshooting-guide.md)
+### [Allgemeine Fragen zur Problembehandlung](stream-analytics-common-troubleshooting-issues.md)
 ### [Blatt „Ressourcenintegrität“](stream-analytics-resource-health.md)
 ### [Auftragsdiagramm und Metriken](stream-analytics-job-diagram-with-metrics.md)
 ### [Debuggen von SELECT INTO](stream-analytics-select-into.md)
 ### [Überlegungen zur Ereignissortierung](stream-analytics-out-of-order-and-late-events.md)
 ### [Grenzwerte für Event Hub-Leser](stream-analytics-event-hub-consumer-groups.md)
 ### [Diagnoseprotokolle](stream-analytics-job-diagnostic-logs.md)
-### [Abrufen falsch formatierter Ereignisse](stream-analytics-malformed-events.md)
+
 
 ## Automatisieren
 ### [Verwenden des .NET-Verwaltungs SDK](stream-analytics-dotnet-management-sdk.md)

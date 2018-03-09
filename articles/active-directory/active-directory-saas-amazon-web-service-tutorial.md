@@ -346,7 +346,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Speichern Sie die Einstellung, indem Sie oben die Schaltfläche **Save** (Speichern) wählen.
  
-33. Stellen Sie sicher, dass Sie den Bereitstellungstatus in **Settings** (Einstellungen)**** aktivieren. Wählen Sie hierzu **On** (Ein), und wählen Sie dann oben die Schaltfläche **Save** (Speichern).
+33. Stellen Sie sicher, dass Sie den Bereitstellungstatus in **Settings** (Einstellungen) **aktivieren**. Wählen Sie hierzu **On** (Ein), und wählen Sie dann oben die Schaltfläche **Save** (Speichern).
 
     ![Benutzer hinzufügen](./media/active-directory-saas-amazon-web-service-tutorial/provisioning2.png)
 

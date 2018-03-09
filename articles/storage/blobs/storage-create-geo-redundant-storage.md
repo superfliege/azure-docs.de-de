@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 7b7625b3250d7e5b4cdb4090f34072eb58dda07c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5b1c443cae8481d98c32a3f4d9e3899621d1dd89
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Herstellen von Hochverfügbarkeit für Anwendungsdaten mit Azure Storage
 
@@ -69,7 +69,7 @@ Führen Sie die folgenden Schritte aus, um ein georedundantes Speicherkonto mit 
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Name** | mystorageaccount | ein eindeutiger Wert für Ihr Speicherkonto |
    | **Bereitstellungsmodell** | Ressourcen-Manager  | Azure Resource Manager enthält die neuesten Funktionen.|
-   | **Kontoart** | Allgemeiner Zweck | Weitere Informationen zu den unterschiedlichen Kontoarten finden Sie unter [Speicherkontentypen](../common/storage-introduction.md#types-of-storage-accounts). |
+   | **Kontoart** | StorageV2 | Weitere Informationen zu den unterschiedlichen Kontoarten finden Sie unter [Speicherkontentypen](../common/storage-introduction.md#types-of-storage-accounts). |
    | **Leistung** | Standard | Der Wert „Standard“ ist für das Beispielszenario ausreichend. |
    | **Replikation**| Georedundanter Speicher mit Lesezugriff (RA-GRS) | Diese Angabe ist erforderlich, damit das Beispiel funktioniert. |
    |**Sichere Übertragung erforderlich** | Deaktiviert| Für dieses Szenario ist keine sichere Übertragung notwendig. |
@@ -77,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um ein georedundantes Speicherkonto mit 
    |**ResourceGroup** | myResourceGroup |Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
    |**Location** | USA (Ost) | Wählen Sie einen Standort aus. |
 
-![Erstellen eines Speicherkontos](media/storage-create-geo-redundant-storage/figure1.png)
+![Erstellen eines Speicherkontos](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 

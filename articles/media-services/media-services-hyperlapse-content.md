@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: adsolank
-ms.openlocfilehash: 02f634c2af04b6b372642ab0e6a17a5d29f16450
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3163454213db0afb94e668e4c56924d7833d769
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapsing von Mediendateien mit Azure Media Hyperlapse
 Azure Media Hyperlapse ist ein Medienprozessor, der ruckelfreie Zeitraffervideos aus der Ich-Perspektive oder Action-Kamera-Inhalten erzeugt.  Als cloudbasiertes Pendant zu [Desktop Hyperlapse Pro von Microsoft Research und dem smartphonebasierten Hyperlapse Mobile](http://aka.ms/hyperlapse)nutzt Microsoft Hyperlapse für Azure Media Services die umfassende Skalierbarkeit der Medienverarbeitungsplattform von Azure Media Services zum horizontalen Skalieren und Parallelisieren der Hyperlapse-Massenverarbeitung.
@@ -38,16 +38,16 @@ Zuerst müssen Sie die gewünschte Eingabedatei in Azure Media Services hochlade
 ### <a id="configuration"></a>Konfigurationsvoreinstellung für Hyperlapse
 Sobald Ihre Inhalte sich in Ihrem Media Services-Konto befinden, müssen Sie die Konfigurationsvoreinstellung festlegen.  Die folgende Tabelle erläutert die benutzerdefinierten Felder:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | StartFrame |Der Frame, bei dem die Microsoft Hyperlapse-Verarbeitung beginnen soll. |
 | NumFrames |Die Anzahl der zu verarbeitenden Frames. |
-| Speed (Geschwindigkeit) |Der Faktor, mit dem das Eingabevideo beschleunigt werden soll. |
+| Geschwindigkeit |Der Faktor, mit dem das Eingabevideo beschleunigt werden soll. |
 
 Es folgt ein Beispiel einer geeigneten Konfigurationsdatei in XML und JSON:
 
 **XML-Voreinstellung:**
-
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
         <Sources>
@@ -57,9 +57,10 @@ Es folgt ein Beispiel einer geeigneten Konfigurationsdatei in XML und JSON:
             <Speed>12</Speed>
         </Options>
     </Preset>
+```
 
 **JSON-Voreinstellung:**
-
+```json
     {
         "Version":1.0,
         "Sources": [
@@ -73,6 +74,7 @@ Es folgt ein Beispiel einer geeigneten Konfigurationsdatei in XML und JSON:
             "Stabilize":false
         }
     }
+```
 
 ### <a id="sample_code"></a> Microsoft Hyperlapse mit dem AMS .NET SDK
 Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein Auftrag mit dem Azure Media Hyperlapse-Medienprozessor erstellt.
@@ -85,6 +87,7 @@ Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein 
 > 
 > 
 
+```csharp
         static bool RunHyperlapseJob(string input, string output, string hyperConfig)
         {
             // create asset with input file
@@ -197,6 +200,7 @@ Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein 
 
         return processor;
     }
+```
 
 ### <a id="file_types"></a>Unterstützte Dateitypen
 * MP4
