@@ -28,10 +28,7 @@
 #### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit PowerShell](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
 #### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit CLI](../load-balancer/load-balancer-get-started-internet-az-cli.md)
 
-### Öffentliche IP-Adresse
-#### [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit dem Azure-Portal](../virtual-network/create-public-ip-availability-zone-portal.md)
-#### [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit PowerShell](../virtual-network/create-public-ip-availability-zone-powershell.md)
-#### [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit CLI](../virtual-network/create-public-ip-availability-zone-cli.md)
+### [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL-Datenbank
 #### [Verfügbarkeitszonen mit SQL-Datenbank](../sql-database/sql-database-high-availability.md#availability-zones)

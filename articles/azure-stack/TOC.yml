@@ -236,10 +236,6 @@
               href: azure-stack-app-service-deploy.md
             - name: Offlinebereitstellung von App Service
               href: azure-stack-app-service-deploy-offline.md
-            - name: Aktualisieren eines App Service-Ressourcenanbieters
-              href: azure-stack-app-service-update.md
-            - name: Offlineaktualisierung eines App Service-Ressourcenanbieters
-              href: azure-stack-app-service-update-offline.md
             - name: Hinzufügen weiterer Web-Workerrollen
               href: azure-stack-app-service-add-worker-roles.md
             - name: Konfigurieren von Bereitstellungsquellen

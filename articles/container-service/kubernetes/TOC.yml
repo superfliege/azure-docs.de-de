@@ -9,7 +9,7 @@
   items:
     - name: Kubernetes in Azure
       href: container-service-kubernetes-walkthrough.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Erstellen von Containerimages
       href: container-service-tutorial-kubernetes-prepare-app.md
@@ -37,8 +37,6 @@
       href: container-service-kubernetes-ui.md
     - name: Verwenden von Helm-Diagrammen
       href: container-service-kubernetes-helm.md
-    - name: Verwenden von Jenkins mit ACS
-      href: container-service-kubernetes-jenkins.md
     - name: Dauerhafte Speicherung von Daten mit Azure Files
       href: ../../aks/azure-files.md?toc=%2fazure%2fcontainer-service%2fkubernetes%2ftoc.json
     - name: Verwenden von Draft mit ACS
@@ -63,7 +61,7 @@
           href: container-service-deploy-spring-boot-app-on-kubernetes.md
         - name: Bereitstellen einer Spring Boot-App unter Verwendung des fabric8 Maven-Plug-Ins
           href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/acs
@@ -71,7 +69,7 @@
       href: /powershell/module/azurerm.compute
     - name: REST
       href: /rest/api/container-service
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

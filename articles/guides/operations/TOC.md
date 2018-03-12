@@ -70,7 +70,7 @@
 ### [IP-Adressen in Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals](../../virtual-machines/windows/nsg-quickstart-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
-## [Speicher](azure-operations-guide.md#azure-storage)
+## [Storage](azure-operations-guide.md#azure-storage)
 
 ### [Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Erste Schritte mit Azure Blob Storage mit .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -78,7 +78,7 @@
 ### [Verwenden des Azure-Dateispeichers unter Linux](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Erste Schritte mit Azure Table Storage](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Erste Schritte mit Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
+### [Erstellen Sie ein Speicherkonto](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
 ### [Verwenden von Azure PowerShell mit Azure Storage](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure Storage](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Storage-Clienttools](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -88,15 +88,15 @@
 
 
 ## [Virtuelle Netzwerke](azure-operations-guide.md#azure-virtual-network)
-### [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Erstellen eines virtuellen Netzwerks über Azure PowerShell](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Erstellen eines virtuellen Netzwerks über Azure PowerShell](../../virtual-network/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle](../../virtual-network/quick-create-cli.md#create-a-virtual-network?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Tutorials für virtuelle Netzwerke
 #### [Lastenausgleich für virtuelle Computer](../../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Verbinden eines Computers mit einem virtuellen Netzwerk](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Nächste Schritte](azure-operations-guide.md#next-steps)
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
