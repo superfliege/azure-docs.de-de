@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: f2a07d58938ae77701d8df8099ec0aedf1524d6b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: def4f1cdcd173e26964f9be11266d0e1a20fcafa
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
 Azure Service Fabric-Komponenten erstellen direkt Integritätsberichte für alle Entitäten im Cluster. Im [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden Entitäten basierend auf den Systemberichten erstellt und gelöscht. Darüber hinaus werden sie in einer Hierarchie organisiert, in der Interaktionen zwischen den Entitäten erfasst werden.
@@ -31,7 +31,7 @@ Azure Service Fabric-Komponenten erstellen direkt Integritätsberichte für alle
 Die Systemintegritätsberichte sorgen für Transparenz in Bezug auf die Cluster- und Anwendungsfunktionen und weisen auf Probleme hin. Für Anwendungen und Dienste wird mit den Systemintegritätsberichten überprüft, ob Entitäten implementiert sind und sich aus Sicht von Service Fabric richtig verhalten. Die Berichte umfassen weder die Integritätsüberwachung der Geschäftslogik des Diensts noch die Erkennung von unterbrochenen Prozessen. Benutzerdienste können die Integritätsdaten um spezielle Informationen zu ihrer Logik erweitern.
 
 > [!NOTE]
-> Die von Watchdogs des Benutzers gesendeten Integritätsberichte werden erst angezeigt, *nachdem* die Systemkomponenten eine Entität erstellt haben. Wenn eine Entität gelöscht wird, werden vom Integritätsspeicher automatisch alle dazugehörigen Integritätsberichte gelöscht. Das gleiche gilt, wenn eine neue Instanz der Entität erstellt wird (z.B. eine neue zustandsbehaftete, persistente Dienstreplikatinstanz). Alle Berichte, die der alten Instanz zugeordnet sind, werden gelöscht und im Speicher bereinigt.
+> Die von Watchdogs des Benutzers gesendeten Integritätsberichte werden erst angezeigt, *nachdem* die Systemkomponenten eine Entität erstellt haben. Wenn eine Entität gelöscht wird, werden vom Integritätsspeicher automatisch alle dazugehörigen Integritätsberichte gelöscht. Dies gilt auch, wenn eine neue Instanz der Entität erstellt wird. Ein Beispiel hierfür ist, wenn eine neue zustandsbehaftete, persistente Dienstreplikatinstanz erstellt wird. Alle Berichte, die der alten Instanz zugeordnet sind, werden gelöscht und im Speicher bereinigt.
 > 
 > 
 
@@ -40,7 +40,7 @@ Die Systemkomponentenberichte werden über die Quelle identifiziert. Diese begin
 Nun sehen wir uns einige Systemberichte an, um zu verstehen, wodurch sie ausgelöst werden und wie mögliche Probleme behoben werden, die damit verbunden sind.
 
 > [!NOTE]
-> Service Fabric fügt weiterhin Berichte zu relevanten Bedingungen hinzu, die die Transparenz über die Abläufe im Cluster und die Anwendungen erhöhen. Die vorhandenen Berichte können durch ausführlichere Informationen ergänzt werden, um die Problembehandlung zu beschleunigen.
+> Service Fabric fügt weiterhin Berichte für relevante Bedingungen hinzu, die zu einer besseren Transparenz in Bezug auf die Vorgänge im Cluster und in den Anwendungen führen. Vorhandene Berichte können um zusätzliche Details erweitert werden, damit das Problem schneller behoben werden kann.
 > 
 > 
 
@@ -54,22 +54,25 @@ Im Bericht wird das Global Lease-Timeout als Gültigkeitsdauer (Time to Live, TT
 
 * **SourceId**: System.Federation
 * **Property**: Beginnt mit **Neighborhood** und enthält Knoteninformationen.
-* **Next steps**: Untersuchen Sie, warum die Nachbarschaft verloren geht. Überprüfen Sie beispielsweise die Kommunikation zwischen Clusterknoten.
+* **Nächste Schritte**: Untersuchen, warum es zu einem Verlust der Umgebung kommt. Überprüfen Sie beispielsweise die Kommunikation zwischen den Clusterknoten.
 
 ### <a name="rebuild"></a>Neu erstellen
 
-Der Dienst **Failover-Manager** (**FM**) verwaltet Informationen zu den Clusterknoten. Im Falle eines Datenverlusts im FM sind die Informationen zu den Clusterknoten unter Umständen nicht auf dem neuesten Stand. In diesem Fall wird für das System eine **Neuerstellung** durchgeführt, und **System.FM** sammelt Daten von allen Knoten im Cluster, um den Zustand neu zu erstellen. Manchmal kann die Neuerstellung aufgrund von Netzwerk- oder Knotenproblemen hängen bleiben oder angehalten werden. Das gleiche Problem kann beim **Failover-Manager-Master**-Dienst (**FMM**) auftreten. Der **FMM** ist ein zustandsloser Systemdienst, der die Position aller **FMs** im Cluster nachverfolgt. Der Primärknoten von **FMMs** ist immer der Knoten, dessen ID am nächsten bei 0 liegt. Wird dieser Knoten verworfen, wird eine **Neuerstellung** ausgelöst.
+Der Dienst Failover-Manager (FM) verwaltet Informationen zu den Clusterknoten. Im Falle eines Datenverlusts im FM sind die Informationen zu den Clusterknoten unter Umständen nicht auf dem neuesten Stand. In diesem Fall wird für das System eine Neuerstellung durchgeführt, und System.FM sammelt Daten von allen Knoten im Cluster, um den Zustand neu zu erstellen. Manchmal kann die Neuerstellung aufgrund von Netzwerk- oder Knotenproblemen hängen bleiben oder angehalten werden. Das gleiche Problem kann beim Dienst „Failover-Manager-Master“ (FMM) auftreten. Der FMM ist ein zustandsloser Systemdienst, der die Position aller FMs im Cluster nachverfolgt. Der Primärknoten eines FMM ist immer der Knoten, dessen ID am nächsten bei 0 liegt. Wird dieser Knoten verworfen, wird eine Neuerstellung ausgelöst.
 Im Falle einer dieser Bedingungen weist **System.FM** oder **System.FMM** mithilfe eines Fehlerberichts darauf hin. Die Neuerstellung kann in einer von zwei Phasen hängen bleiben:
 
-* Warten auf die Übertragung: **FM/FMM** wartet auf eine Antwort auf die Broadcastmeldung durch die anderen Knoten. **Nächste Schritte:** Überprüfen Sie, ob ein Netzwerkverbindungsfehler zwischen Knoten aufgetreten ist.   
-* Warten auf Knoten: **FM/FMM** hat von den anderen Knoten bereits eine Antwort auf die Broadcastmeldung erhalten und wartet auf die Antwort von bestimmten Knoten. Im Integritätsbericht sind die Knoten aufgeführt, auf deren Antwort **FM/FMM** wartet. **Nächste Schritte:** Überprüfen Sie die Netzwerkverbindung zwischen **FM/FMM** und den aufgeführten Knoten. Untersuchen Sie alle aufgeführten Knoten auf andere mögliche Probleme.
+* **Warten auf die Übertragung**: FM/FMM wartet auf eine Antwort auf die Broadcastmeldung durch die anderen Knoten.
+
+  * **Nächste Schritte:** Überprüfen Sie, ob ein Netzwerkverbindungsfehler zwischen Knoten aufgetreten ist.
+* **Warten auf Knoten**: FM/FMM hat von den anderen Knoten bereits eine Antwort auf die Broadcastmeldung erhalten und wartet auf die Antwort von bestimmten Knoten. Im Integritätsbericht sind die Knoten aufgeführt, auf deren Antwort FM/FMM wartet.
+   * **Nächste Schritte**: Überprüfen Sie die Netzwerkverbindung zwischen FM/FMM und den aufgeführten Knoten. Untersuchen Sie alle aufgeführten Knoten auf andere mögliche Probleme.
 
 * **SourceID**: „System.FM“ oder „System.FMM“
 * **Property**: Rebuild.
 * **Nächste Schritte:** Überprüfen Sie die Netzwerkverbindung zwischen den Knoten sowie den Zustand bestimmter Knoten, die in der Beschreibung des Integritätsberichts aufgeführt sind.
 
 ## <a name="node-system-health-reports"></a>Knoten-Systemintegritätsberichte
-**System.FM**steht für den Failover-Manager-Dienst und ist die Autorität, mit der die Informationen zu Clusterknoten verwaltet werden. Jeder Knoten sollte über einen Bericht von System.FM verfügen, in dem der Zustand angegeben wird. Die Knotenentitäten werden entfernt, wenn der Knotenstatus entfernt wird. Weitere Informationen finden Sie unter [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+System.FM steht für den Failover-Manager-Dienst und ist die Autorität, mit der die Informationen zu Clusterknoten verwaltet werden. Jeder Knoten sollte über einen Bericht von System.FM verfügen, in dem der Zustand angegeben wird. Die Knotenentitäten werden entfernt, wenn der Knotenstatus entfernt wird. Weitere Informationen finden Sie unter [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
 
 ### <a name="node-updown"></a>Knoten heraufgefahren/heruntergefahren
 System.FM meldet „OK“, wenn der Knoten dem Ring beitritt (betriebsbereit). Ein Fehler wird gemeldet, wenn der Knoten den Ring verlässt (nicht betriebsbereit, entweder aufgrund eines Upgrades oder eines Fehlers). Die vom Integritätsspeicher erstellte Integritätshierarchie wird für bereitgestellte Entitäten in Korrelation mit System.FM-Knotenberichten aktiv. Ein Knoten wird als virtuelles übergeordnetes Element aller bereitgestellten Entitäten angesehen. Die bereitgestellten Entitäten auf diesem Knoten werden über Abfragen verfügbar gemacht, wenn der Knoten von System.FM als aktiv gemeldet wird. Dabei wird die gleiche Instanz verwendet, die auch den Entitäten zugeordnet ist. Wenn System.FM meldet, dass der Knoten inaktiv ist oder als neue Instanz neu gestartet wurde, werden im Integritätsspeicher automatisch die bereitgestellten Entitäten bereinigt, die nur auf dem inaktiven Knoten oder der vorherigen Instanz des Knoten vorhanden sein können.
@@ -115,21 +118,21 @@ Der Service Fabric Load Balancer gibt eine Warnung aus, wenn eine Verletzung ein
 * **Next steps**: Überprüfen Sie die bereitgestellten Metriken, und zeigen Sie die aktuelle Kapazität auf dem Knoten an.
 
 ### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>Nichtübereinstimmung der Knotenkapazität für Ressourcenkontrollmetriken
-System.Hosting gibt eine Warnung aus, wenn definierte Knotenkapazitäten im Clustermanifest größer sind als die tatsächlichen Knotenkapazitäten für Ressourcenkontrollmetriken (Arbeitsspeicher und CPU-Kerne). Der Integritätsbericht wird angezeigt, wenn das erste Dienstpaket, das [Ressourcenkontrolle](service-fabric-resource-governance.md) verwendet, für einen angegebenen Knoten registriert wird.
+System.Hosting gibt eine Warnung aus, wenn definierte Knotenkapazitäten im Clustermanifest größer als die tatsächlichen Knotenkapazitäten für Ressourcenkontrollmetriken (Arbeitsspeicher und CPU-Kerne) sind. Ein Integritätsbericht wird angezeigt, wenn das erste Dienstpaket, für das die [Ressourcenkontrolle](service-fabric-resource-governance.md) verwendet wird, für einen angegebenen Knoten registriert wird.
 
 * **SourceId**: System.Hosting
-* **Eigenschaft**: ResourceGovernance
-* **Nächste Schritte**: Dies kann ein Problem darstellen, weil die Kontrolle von Dienstpaketen nicht wie erwartet erzwungen wird und [Ressourcenkontrolle](service-fabric-resource-governance.md) nicht ordnungsgemäß funktioniert. Aktualisieren Sie das Clustermanifest mit den richtigen Knotenkapazitäten für diese Metriken, oder geben Sie sie überhaupt nicht an, und lassen Sie Service Fabric verfügbare Ressourcen automatisch erkennen.
+* **Property**: **ResourceGovernance**.
+* **Nächste Schritte**: Dies kann problematisch sein, weil die Kontrolle von Dienstpaketen nicht wie erwartet erzwungen wird und die [Ressourcenkontrolle](service-fabric-resource-governance.md) nicht richtig funktioniert. Aktualisieren Sie das Clustermanifest mit den richtigen Knotenkapazitäten für diese Metriken, oder geben Sie sie nicht an, und lassen Sie verfügbare Ressourcen von Service Fabric automatisch erkennen.
 
 ## <a name="application-system-health-reports"></a>Systemintegritätsberichte für Anwendungen
-**System.CM**steht für den Cluster-Manager-Dienst und ist die Autorität, die die Informationen zu einer Anwendung verwaltet.
+System.CM steht für den Cluster-Manager-Dienst und ist die Autorität, die die Informationen zu einer Anwendung verwaltet.
 
 ### <a name="state"></a>State (Zustand)
 System.CM gibt die Meldung „OK“ aus, wenn die Anwendung erstellt oder aktualisiert wurde. Der Integritätsspeicher wird informiert, wenn die Anwendung gelöscht wurde, damit sie aus dem Speicher entfernt werden kann.
 
 * **SourceId**: System.CM
 * **Property**: State
-* **Nächste Schritte:** Wenn die Anwendung erstellt oder aktualisiert wurde, sollte sie den Cluster-Manager-Integritätsbericht enthalten. Überprüfen Sie andernfalls den Zustand der Anwendung, indem Sie eine Abfrage ausgeben (z.B. das PowerShell-Cmdlet **Get-ServiceFabricApplication -ApplicationName** *applicationName*).
+* **Nächste Schritte:** Wenn die Anwendung erstellt oder aktualisiert wurde, sollte sie den Cluster-Manager-Integritätsbericht enthalten. Überprüfen Sie andernfalls den Status der Anwendung, indem Sie eine Abfrage ausführen. Verwenden Sie beispielsweise das PowerShell-Cmdlet **Get-ServiceFabricApplication -ApplicationName** *applicationName*.
 
 Das folgende Beispiel zeigt das Zustandsereignis für die Anwendung **fabric:/WordCount** :
 
@@ -155,7 +158,7 @@ HealthEvents                    :
 ```
 
 ## <a name="service-system-health-reports"></a>Dienst-Systemintegritätsberichte
-**System.FM**steht für den Failover-Manager-Dienst und ist die Autorität, die die Informationen zu Diensten verwaltet.
+System.FMsteht für den Failover-Manager-Dienst und ist die Autorität, die die Informationen zu Diensten verwaltet.
 
 ### <a name="state"></a>State (Zustand)
 System.FM gibt die Meldung „OK“ aus, wenn der Dienst erstellt wurde. Die Entität wird aus dem Integritätsspeicher gelöscht, wenn der Dienst gelöscht wurde.
@@ -193,11 +196,11 @@ HealthEvents          :
 **System.PLB** meldet einen Fehler, wenn erkannt wird, dass das Aktualisieren eines Diensts, der mit einem anderen Dienst korreliert werden soll, zu einer Affinitätskette führt. Der Bericht wird gelöscht, wenn erfolgreich ein Update durchgeführt wurde.
 
 * **SourceId**: System.PLB
-* **Property:** ServiceDescription
+* **Property**: **ServiceDescription**.
 * **Nächste Schritte:** Überprüfen der korrelierten Dienstbeschreibungen.
 
 ## <a name="partition-system-health-reports"></a>Systemintegritätsberichte für Partitionen
-**System.FM**steht für den Failover-Manager-Dienst und ist die Autorität, die die Informationen zu den Dienstpartitionen verwaltet.
+System.FM steht für den Failover-Manager-Dienst und ist die Autorität, die die Informationen zu den Dienstpartitionen verwaltet.
 
 ### <a name="state"></a>State (Zustand)
 System.FM gibt die Meldung „OK“ aus, wenn die Partition erstellt wurde und fehlerfrei ist. Die Entität wird aus dem Integritätsspeicher gelöscht, wenn die Partition gelöscht wird.
@@ -407,7 +410,7 @@ HealthEvents          :
 ### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus, ReplicaCloseStatus, ReplicaChangeRoleStatus
 Mit dieser Eigenschaft werden Warnungen oder Fehler angegeben, wenn versucht wird, ein Replikat zu öffnen oder zu schließen oder die Rolle eines Replikats zu ändern. Weitere Informationen finden Sie unter [Replikatlebenszyklus](service-fabric-concepts-replica-lifecycle.md). Bei den Fehlern kann es sich um Ausnahmen handeln, die von den API-Aufrufen oder Abstürzen des Diensthostprozesses während dieser Zeit ausgelöst werden. Bei Fehlern aufgrund von API-Aufrufen aus dem C#-Code fügt Service Fabric die Ausnahme und Stapelüberwachung dem Integritätsbericht hinzu.
 
-Diese Integritätswarnungen werden ausgelöst, nachdem die Aktion einige Male (Anzahl abhängig von der Richtlinie) lokal wiederholt wurde. Service Fabric wiederholt die Aktion bis zum maximalen Schwellenwert. Wenn der maximale Schwellenwert erreicht wird, wird möglicherweise versucht, dies zu korrigieren. Dieser Versuch kann dazu führen, dass diese Warnungen gelöscht werden, da die Aktion auf diesem Knoten abgebrochen wird. Beispiel: Wenn ein Replikat auf einem Knoten nicht geöffnet werden kann, löst Service Fabric eine Integritätswarnung aus. Wenn das Replikat auch weiterhin nicht geöffnet werden kann, führt Service Fabric eine Selbstreparatur aus. Bei dieser Aktion wird eventuell versucht, denselben Vorgang auf einem anderen Knoten auszuführen. Dies führt dazu, dass die für dieses Replikat ausgelöste Warnung gelöscht wird. 
+Diese Integritätswarnungen werden ausgelöst, nachdem die Aktion einige Male (Anzahl abhängig von der Richtlinie) lokal wiederholt wurde. Service Fabric wiederholt die Aktion bis zum maximalen Schwellenwert. Wenn der maximale Schwellenwert erreicht wird, wird unter Umständen versucht, dies zu korrigieren. Dieser Versuch kann dazu führen, dass diese Warnungen gelöscht werden, da die Aktion auf diesem Knoten abgebrochen wird. Beispiel: Wenn ein Replikat auf einem Knoten nicht geöffnet werden kann, löst Service Fabric eine Integritätswarnung aus. Wenn das Replikat auch weiterhin nicht geöffnet werden kann, führt Service Fabric eine Selbstreparatur aus. Bei dieser Aktion wird eventuell versucht, denselben Vorgang auf einem anderen Knoten auszuführen. Dieser Versuch führt dazu, dass die für dieses Replikat ausgelöste Warnung gelöscht wird. 
 
 * **SourceId**: System.RA
 * **Property**: **ReplicaOpenStatus**, **ReplicaCloseStatus** und **ReplicaChangeRoleStatus**
@@ -506,7 +509,7 @@ Die Neukonfiguration kann aus folgenden Gründen unterbrochen sein:
 In seltenen Fällen ist die Neukonfiguration möglicherweise aufgrund von Kommunikations- oder anderen Problemen zwischen dem Knoten und dem Failover-Manager-Dienst unterbrochen.
 
 * **SourceId**: System.RA
-* **Property**: **Reconfiguration**
+* **Property**: Reconfiguration.
 * **Nächste Schritte:** Untersuchen Sie abhängig von der Beschreibung im Integritätsbericht die lokalen oder Remotereplikate.
 
 Das folgende Beispiel zeigt einen Integritätsbericht, bei dem eine Neukonfiguration für das lokale Replikat unterbrochen ist. In diesem Beispiel liegt dies daran, dass ein Dienst den Abbruchtoken nicht berücksichtigt.
@@ -622,7 +625,7 @@ HealthEvents          :
                         
 ```
 
-Die Eigenschaft und der Text geben an, welche API nicht ausgeführt wurde. Die nächsten durchzuführenden Schritte hängen von den jeweiligen nicht ausgeführten APIs ab. Jede API in *IStatefulServiceReplica* oder *IStatelessServiceInstance* ist normalerweise ein Fehler im Dienstcode. Im folgenden Abschnitt wird beschrieben, wie diese in das [Reliable Services-Modell](service-fabric-reliable-services-lifecycle.md) übertragen werden:
+Die Eigenschaft und der Text geben an, welche API nicht ausgeführt wurde. Die nächsten auszuführenden Schritte hängen von den jeweiligen nicht ausgeführten APIs ab. Jede API in *IStatefulServiceReplica* oder *IStatelessServiceInstance* ist normalerweise ein Fehler im Dienstcode. Im folgenden Abschnitt wird beschrieben, wie diese in das [Reliable Services-Modell](service-fabric-reliable-services-lifecycle.md) übertragen werden:
 
 - **IStatefulServiceReplica.Open**: Diese Warnung gibt an, dass ein Aufruf von `CreateServiceInstanceListeners` oder `ICommunicationListener.OpenAsync` oder sofern überschrieben von `OnOpenAsync` unterbrochen ist.
 
@@ -634,7 +637,7 @@ Die Eigenschaft und der Text geben an, welche API nicht ausgeführt wurde. Die n
 
 Andere API-Aufrufe, die unterbrochen werden können, befinden sich in der **IReplicator**-Schnittstelle. Beispiel: 
 
-- **IReplicator.CatchupReplicaSet**: Diese Warnung weist auf eine der beiden folgenden Zustände hin. Entweder sind nicht ausreichend aktive Replikate vorhanden (dies kann durch Prüfen des Replikatzustands der Replikate in der Partition oder im System.FM-Integritätsbericht für eine unterbrochene Neukonfiguration ermittelt werden) oder die Replikate bestätigen Vorgänge nicht. Mit dem PowerShell-Cmdlet `Get-ServiceFabricDeployedReplicaDetail` kann der Zustand aller Replikate ermittelt werden. Das Problem liegt bei den Replikaten, deren `LastAppliedReplicationSequenceNumber`-Wert unter dem `CommittedSequenceNumber`-Wert des primären Replikats liegt.
+- **IReplicator.CatchupReplicaSet**: Diese Warnung weist auf eine der beiden folgenden Zustände hin. Es sind nicht ausreichend aktive Replikate vorhanden. Dies kann durch Prüfen des Replikatzustands der Replikate in der Partition oder im System.FM-Integritätsbericht für eine unterbrochene Neukonfiguration ermittelt werden. Oder die Replikate bestätigen Vorgänge nicht. Mit dem PowerShell-Cmdlet `Get-ServiceFabricDeployedReplicaDetail` kann der Zustand aller Replikate ermittelt werden. Das Problem liegt bei den Replikaten, deren `LastAppliedReplicationSequenceNumber`-Wert unter dem `CommittedSequenceNumber`-Wert des primären Replikats liegt.
 
 - **IReplicator.BuildReplica(<Remote ReplicaId>)**: Diese Warnung weist auf ein Problem im Buildprozess hin. Weitere Informationen finden Sie unter [Replikatlebenszyklus](service-fabric-concepts-replica-lifecycle.md). Dies ist möglicherweise auf eine Fehlkonfiguration der Replikationsadresse zurückzuführen. Entsprechende Informationen finden Sie unter [Konfigurieren zustandsbehafteter Reliable Services](service-fabric-reliable-services-configuration.md) und [Angeben von Ressourcen in einem Dienstmanifest](service-fabric-service-manifest-resources.md). Ursache kann auch ein Problem mit dem Remoteknoten sein.
 
@@ -644,14 +647,14 @@ Andere API-Aufrufe, die unterbrochen werden können, befinden sich in der **IRep
 
 * **SourceId**: System.Replicator
 * **Property**: **PrimaryReplicationQueueStatus** oder **SecondaryReplicationQueueStatus**, je nach Replikatrolle.
-* **Nächste Schritte:** Gilt der Bericht für das primäre Element, überprüfen Sie die Verbindung zwischen den Knoten im Cluster. Wenn alle Verbindungen fehlerfrei sind, kann mindestens ein langsames sekundäres Element mit hoher Datenträgerwartezeit für die Anwendung auf Vorgänge vorhanden sein. Wurde der Bericht für das sekundäre Element erstellt, überprüfen Sie die zuerst die Datenträgernutzung und -leistung im Knoten und anschließend die ausgehende Verbindung vom langsamen Knoten zum primären Element.
+* **Nächste Schritte:** Gilt der Bericht für das primäre Element, überprüfen Sie die Verbindung zwischen den Knoten im Cluster. Wenn alle Verbindungen fehlerfrei sind, kann mindestens ein langsames sekundäres Element mit hoher Datenträgerwartezeit für die Anwendung auf Vorgänge vorhanden sein. Falls sich der Bericht auf dem sekundären Replikat befindet, sollten Sie zuerst die Datenträgerauslastung und -leistung auf dem Knoten überprüfen. Überprüfen Sie anschließend die ausgehende Verbindung vom langsamen Knoten zum primären Replikat.
 
 **RemoteReplicatorConnectionStatus:**
-**System.Replicator** für das primäre Replikat gibt eine Warnung aus, wenn bei der Verbindung mit einem sekundären Replikator (Remotereplikator) Fehler auftreten. Die Adresse des Remotereplikators wird in der Meldung des Berichts angezeigt. Dadurch kann einfacher erkannt werden, ob eine falsche Konfiguration übergeben wurde oder Netzwerkfehler zwischen den Replikatoren auftreten.
+**System.Replicator** für das primäre Replikat gibt eine Warnung aus, wenn bei der Verbindung mit einem sekundären Replikator (Remotereplikator) Fehler auftreten. Die Adresse des Remotereplikators wird in der Meldung des Berichts angezeigt. Dadurch kann einfacher erkannt werden, ob die falsche Konfiguration übergeben wurde oder ob Netzwerkfehler zwischen den Replikatoren auftreten.
 
 * **SourceId**: System.Replicator
-* **Property**: **RemoteReplicatorConnectionStatus**
-* **Nächste Schritte:** Überprüfen Sie die Fehlermeldung, und stellen Sie sicher, dass die Adresse des Remotereplikators richtig konfiguriert ist. (Wenn der Remotereplikator beispielsweise mit der Überwachungsadresse „localhost“ beginnt, ist er von außen nicht erreichbar.) Wenn die Adresse korrekt aussieht, überprüfen Sie die Verbindung zwischen dem primären Knoten und der Remoteadresse, um mögliche Netzwerkfehler zu ermitteln.
+* **Property**: **RemoteReplicatorConnectionStatus**.
+* **Nächste Schritte**: Überprüfen Sie die Fehlermeldung, und stellen Sie sicher, dass die Adresse des Remotereplikators richtig konfiguriert ist. Wenn der Remotereplikator beispielsweise mit der Überwachungsadresse „localhost“ beginnt, ist er von außen nicht erreichbar. Wenn die Adresse korrekt aussieht, sollten Sie die Verbindung zwischen dem primären Knoten und der Remoteadresse überprüfen, um mögliche Netzwerkfehler zu ermitteln.
 
 ### <a name="replication-queue-full"></a>Replikationswarteschlange ist voll
 **System.Replicator** gibt eine Warnung aus, wenn die Replikationswarteschlange voll ist. Beim primären Replikat ist die Replikationswarteschlange in der Regel voll, weil sekundäre Replikate beim Bestätigen von Vorgängen sehr langsam sind. Beim sekundären Element geschieht dies gewöhnlich, wenn der Dienst langsam beim Anwenden der Vorgänge ist. Die Warnung wird gelöscht, wenn die Warteschlange nicht mehr voll ist.
@@ -660,17 +663,17 @@ Andere API-Aufrufe, die unterbrochen werden können, befinden sich in der **IRep
 * **Property**: **PrimaryReplicationQueueStatus** oder **SecondaryReplicationQueueStatus**, je nach Replikatrolle.
 
 ### <a name="slow-naming-operations"></a>Langsame Naming-Vorgänge
-**System.NamingService** liefert Informationen zur Integrität des entsprechenden primären Replikats, wenn ein Benennungsvorgang zu lange dauert. Beispiele für Naming-Vorgänge sind [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) und [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Weitere Methoden finden Sie unter FabricClient (beispielsweise unter [Dienstverwaltungsmethoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) sowie unter [Eigenschaftsverwaltungsmethoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)).
+**System.NamingService** liefert Informationen zur Integrität des entsprechenden primären Replikats, wenn ein Benennungsvorgang zu lange dauert. Beispiele für Naming-Vorgänge sind [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) und [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Weitere Methoden finden Sie unter „FabricClient“. Beispielsweise unter [Dienstverwaltungsmethoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) oder [Eigenschaftsverwaltungsmethoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
 
 > [!NOTE]
-> Der Naming-Dienst löst die Dienstnamen in einen Speicherort im Cluster auf und ermöglicht Benutzern, Dienstnamen und -eigenschaften zu verwalten. Hierbei handelt es sich um einen partitionierten, persistenten Service Fabric-Dienst. Eine der Partitionen stellt den *Autoritätsbesitzer* dar, der Metadaten zu allen Service Fabric-Namen und -Diensten enthält. Die Service Fabric-Namen werden verschiedenen Partitionen (so genannten *Namensbesitzer*-Partitionen) zugeordnet, um die Erweiterung des Diensts zu ermöglichen. Weitere Informationen finden Sie unter [Service Fabric-Architektur](service-fabric-architecture.md).
+> Der Naming-Dienst löst die Dienstnamen in einen Speicherort im Cluster auf. Er ermöglicht es Benutzern, Dienstnamen und -eigenschaften zu verwalten. Hierbei handelt es sich um einen partitionierten, persistenten Service Fabric-Dienst. Eine der Partitionen stellt den *Autoritätsbesitzer* dar, der Metadaten zu allen Service Fabric-Namen und -Diensten enthält. Die Service Fabric-Namen werden verschiedenen Partitionen (so genannten *Namensbesitzer*-Partitionen) zugeordnet, um die Erweiterung des Diensts zu ermöglichen. Weitere Informationen finden Sie unter [Service Fabric-Architektur](service-fabric-architecture.md).
 > 
 > 
 
 Wenn ein Benennungsvorgang unerwartet lang dauert, wird der Vorgang im primären Replikat der Benennungsdienstpartition, die den Vorgang abwickelt, mit einem Warnungsbericht gekennzeichnet. Ist der Vorgang erfolgreich, wird die Warnung gelöscht. Wird der Vorgang mit einem Fehler abgeschlossen, enthält der Integritätsbericht Einzelheiten zu dem Fehler.
 
 * **SourceId**: System.NamingService
-* **Property**: Beginnt mit dem Präfix **Duration_** und identifiziert den langsamen Vorgang und den Service Fabric-Namen, auf den der Vorgang angewendet wird. Beispiel: Wenn die Diensterstellung für den Namen **fabric:/MyApp/MyService** zu lang dauert, lautet die Eigenschaft **Duration_AOCreateService.fabric:/MyApp/MyService**. „AO“ verweist auf die Rolle der Namenspartition für diesen Namen und Vorgang.
+* **Property**: Beginnt mit dem Präfix „**Duration_**“ und identifiziert den langsamen Vorgang und den Service Fabric-Namen, auf den der Vorgang angewendet wird. Beispiel: Wenn die Diensterstellung für den Namen **fabric:/MyApp/MyService** zu lang dauert, lautet die Eigenschaft **Duration_AOCreateService.fabric:/MyApp/MyService**. „AO“ verweist auf die Rolle der Namenspartition für diesen Namen und Vorgang.
 * **Next steps**: Überprüfen Sie, warum der Benennungsvorgang nicht erfolgreich ist. Bei jedem Vorgang können andere Ursachen vorliegen. So kann beispielsweise der Befehl zum Löschen des Diensts unterbrochen sein. Dies kann daran liegen, dass der Anwendungshost auf einem Knoten aufgrund eines Benutzerfehlers im Dienstcode immer wieder abstürzt.
 
 Im Anschluss sehen Sie ein Beispiel für einen Diensterstellungsvorgang. Der Vorgang dauerte länger als in der Konfiguration festgelegt. „AO“ wiederholt den Vorgang und sendet Arbeit an „NO“. „NO“ hat den letzten Vorgang mit TIMEOUT abgeschlossen. In diesem Fall wird sowohl für die „AO“- als auch für die „NO“-Rolle das gleiche Replikat als primäres Replikat verwendet.
@@ -727,7 +730,7 @@ HealthEvents          :
 System.Hosting gibt die Meldung „OK“ aus, wenn eine Anwendung auf dem Knoten aktiviert wurde. Andernfalls wird ein Fehler gemeldet.
 
 * **SourceId**: System.Hosting
-* **Property**: Activation (einschließlich der Rolloutversion)
+* **Property**: **Activation**, einschließlich der Rolloutversion.
 * **Nächste Schritte**: Falls die Anwendung fehlerhaft ist, untersuchen Sie, warum die Aktivierung nicht erfolgreich war.
 
 Das folgende Beispiel zeigt eine erfolgreiche Aktivierung:
@@ -758,11 +761,11 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Herunterladen
+### <a name="download"></a>Download
 System.Hosting meldet einen Fehler, wenn das Herunterladen des Anwendungspakets nicht erfolgreich war.
 
 * **SourceId**: System.Hosting
-* **Property**: **Download:***RolloutVersion*.
+* **Property**: **Download**, einschließlich der Rolloutversion.
 * **Nächste Schritte**: Untersuchen Sie, warum das Herunterladen auf dem Knoten nicht erfolgreich war.
 
 ## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage-Systemintegritätsberichte
@@ -779,7 +782,7 @@ System.Hosting gibt die Meldung „OK“ aus, wenn die Aktivierung des Dienstpak
 System.Hosting gibt für jedes Codepaket die Meldung „OK“ aus, wenn die Aktivierung erfolgreich ist. Wenn die Aktivierung nicht erfolgreich ist, wird gemäß Konfiguration eine Warnung ausgegeben. Wenn **CodePackage** nicht aktiviert werden kann oder mit einem Fehler beendet wird, der über den unter **CodePackageHealthErrorThreshold** konfigurierten Wert hinausgeht, meldet Hosting einen Fehler. Wenn ein Dienstpaket mehrere Codepakete enthält, wird jeweils ein eigener Aktivierungsbericht erstellt.
 
 * **SourceId**: System.Hosting
-* **Property**: Verwendet das Präfix **CodePackageActivation** und enthält den Namen des Codepakets sowie den Einstiegspunkt im Format **CodePackageActivation:***CodePackageName*:*SetupEntryPoint/EntryPoint*. Beispiel: **CodePackageActivation:Code:SetupEntryPoint**.
+* **Property**: Verwendet das Präfix **CodePackageActivation** und enthält den Namen des Codepakets sowie den Einstiegspunkt im Format *CodePackageActivation:CodePackageName:SetupEntryPoint/EntryPoint*. Beispiel: **CodePackageActivation:Code:SetupEntryPoint**.
 
 ### <a name="service-type-registration"></a>Diensttypregistrierung
 System.Hosting gibt die Meldung „OK“ aus, wenn der Diensttyp erfolgreich registriert wurde. Wenn die Registrierung nicht in der vorgegebenen Zeit erfolgt ist (gemäß Konfiguration mit **ServiceTypeRegistrationTimeout**), wird ein Fehler gemeldet. Nach Abschluss der Laufzeit wird die Registrierung des Diensttyps beim Knoten aufgehoben, und das Hosting gibt eine Warnung aus.
@@ -836,11 +839,11 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Herunterladen
+### <a name="download"></a>Download
 System.Hosting meldet einen Fehler, wenn das Herunterladen des Dienstpakets nicht erfolgreich war.
 
 * **SourceId**: System.Hosting
-* **Property**: **Download:***RolloutVersion*.
+* **Property**: **Download**, einschließlich der Rolloutversion.
 * **Nächste Schritte**: Untersuchen Sie, warum das Herunterladen auf dem Knoten nicht erfolgreich war.
 
 ### <a name="upgrade-validation"></a>Upgradeüberprüfung
@@ -851,18 +854,18 @@ System.Hosting meldet einen Fehler, wenn die Überprüfung während des Upgrades
 * **Description**: Verweist auf den aufgetretenen Fehler.
 
 ### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>Nicht definierte Kapazität des Knotens für Ressourcenkontrollmetriken
-System.Hosting gibt eine Warnung aus, wenn im Clustermanifest keine Knotenkapazitäten definiert sind und die Konfiguration für die automatische Erkennung deaktiviert ist. Service Fabric gibt eine Integritätswarnung aus, wenn ein Dienstpaket, das [Ressourcenkontrolle](service-fabric-resource-governance.md) verwendet, für einen angegebenen Knoten registriert wird.
+System.Hosting gibt eine Warnung aus, wenn im Clustermanifest keine Knotenkapazitäten definiert sind und die Konfiguration für die automatische Erkennung deaktiviert ist. Service Fabric löst eine Integritätswarnung aus, wenn ein Dienstpaket, für das die [Ressourcenkontrolle](service-fabric-resource-governance.md) verwendet wird, für einen angegebenen Knoten registriert wird.
 
 * **SourceId**: System.Hosting
-* **Eigenschaft**: ResourceGovernance
+* **Property**: **ResourceGovernance**.
 * **Nächste Schritte**: Die bevorzugte Methode für die Umgehung dieses Problems besteht darin, das Clustermanifest so zu ändern, dass die automatische Erkennung der verfügbaren Ressourcen aktiviert wird. Eine andere Möglichkeit besteht im Aktualisieren des Clustermanifests mit richtig angegebenen Knotenkapazitäten für diese Metriken.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Anzeigen von Service Fabric-Integritätsberichten](service-fabric-view-entities-aggregated-health.md)
+* [Anzeigen von Service Fabric-Integritätsberichten](service-fabric-view-entities-aggregated-health.md)
 
-[Melden und Überprüfen der Dienstintegrität](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+* [Melden und Überprüfen der Dienstintegrität](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
-[Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+* [Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
+* [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
