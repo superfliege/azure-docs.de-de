@@ -119,6 +119,8 @@
               href: azure-stack-deploy-template-powershell.md
             - name: Bereitstellen mit Visual Studio 2013
               href: azure-stack-deploy-template-visual-studio.md
+    - name: Aktivieren eines Cloud-Dienstanbieters
+      href: azure-stack-csp-enable-billing-usage-tracking.md
 - name: Verweis
   items:
     - name: Azure Stack PowerShell

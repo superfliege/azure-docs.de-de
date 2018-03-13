@@ -87,6 +87,8 @@
       items:
         - name: SSH-Knotenzugriff
           href: aks-ssh.md
+        - name: Abrufen von Kubelet-Protokollen
+          href: kubelet-logs.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

@@ -97,7 +97,7 @@
       items:
         - name: Bereitstellen der App
           items:
-            - name: Bereitstellen der ZIP-Datei
+            - name: Bereitstellen der ZIP- oder WAR-Datei
               href: app-service-deploy-zip.md
             - name: Bereitstellen über FTP
               href: app-service-deploy-ftp.md

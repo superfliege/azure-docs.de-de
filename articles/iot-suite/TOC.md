@@ -66,6 +66,7 @@
 ### [Erstellen eines neuen simulierten Geräts](iot-suite-remote-monitoring-test.md)
 ### [Anpassen der Lösung](iot-suite-remote-monitoring-customize.md)
 ### [Bereitstellen mit der Befehlszeilenschnittstelle](iot-suite-remote-monitoring-deploy-cli.md)
+### [Lokale Bereitstellung](iot-suite-remote-monitoring-deploy-local.md)
 ### Herstellen einer Verbindung mit einem physischen Gerät
 #### [C unter Windows](iot-suite-connecting-devices.md)
 #### [C unter Linux](iot-suite-connecting-devices-linux.md)

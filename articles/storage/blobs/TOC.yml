@@ -12,6 +12,8 @@
       href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Arbeiten mit Blobs – Azure-Portal
       href: storage-quickstart-blobs-portal.md
+    - name: Arbeiten mit Blobs – Storage-Explorer
+      href: storage-quickstart-blobs-storage-explorer.md
     - name: Arbeiten mit Blobs – PowerShell
       href: storage-quickstart-blobs-powershell.md
     - name: Arbeiten mit Blobs – CLI
@@ -28,8 +30,8 @@
       href: storage-quickstart-blobs-ruby.md
     - name: Arbeiten mit Blobs – Node.js
       href: storage-quickstart-blobs-nodejs.md
-    - name: Arbeiten mit Blobs – Storage-Explorer
-      href: storage-quickstart-blobs-storage-explorer.md
+    - name: Arbeiten mit Blobs – PHP
+      href: storage-quickstart-blobs-php.md
 - name: Tutorials
   items:
     - name: Hochladen und Verarbeiten eines Images

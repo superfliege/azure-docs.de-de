@@ -121,6 +121,10 @@
               href: app-insights-configuration-with-applicationinsights-config.md
             - name: Debuggen von Momentaufnahmen
               href: app-insights-snapshot-debugger.md
+        - name: ASP.NET Core
+          items:
+            - name: Profiler für Linux-App-Dienste
+              href: app-insights-profiler-aspnetcore-linux.md
         - name: J2EE
           items:
             - name: Protokollablaufverfolgungen

@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure-Kostenverwaltung – Dokumentation
+title: "Azure-Kostenverwaltung – Dokumentation"
 metadata:
-  title: 'Dokumentation für Kostenverwaltung – Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: 'Azure-Kostenverwaltung von Cloudyn ist eine Multi-Cloud-Kostenverwaltungslösung, die Ihnen das Verwenden von Azure und anderen Cloudressourcen erleichtert. Erfahren Sie, wie Sie Verbrauch und Kosten überprüfen, aktiv Kosten verwalten, Ausgaben vorhersagen und Kosten mit unseren Schnellstarts und Tutorials optimieren.'
+  title: "Dokumentation für Kostenverwaltung – Tutorials, API-Referenz | Microsoft-Dokumentation"
+  description: "Azure Cost Management ist eine Multicloud-Kostenverwaltungslösung, die Ihnen das Verwenden von Azure und anderen Cloudressourcen erleichtert. Erfahren Sie, wie Sie Verbrauch und Kosten überprüfen, aktiv Kosten verwalten, Ausgaben vorhersagen und Kosten mit unseren Schnellstarts und Tutorials optimieren."
   services: cost-management
   author: czeumault
   manager: carolz
@@ -13,28 +13,33 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/18/2017
   ms.author: carolz
+  ms.openlocfilehash: c88a093c75122c2ff32060ff2780bd4bf4d83f34
+  ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 03/09/2018
 abstract:
-  description: 'Azure-Kostenverwaltung von Cloudyn ist eine Multi-Cloud-Kostenverwaltungslösung, die Ihnen das optimale Verwenden und Verwalten von Azure und anderen Cloudressourcen erleichtert. Erfahren Sie, wie Sie Verbrauch und Kosten überprüfen, aktiv Kosten verwalten, Ausgaben vorhersagen und Kosten mit unseren Schnellstarts und Tutorials optimieren.'
+  description: "Azure Cost Management, eine durch das Microsoft-Tochterunternehmen Cloudyn lizenzierte Multicloud-Kostenverwaltungslösung, erleichtert Ihnen das optimale Verwenden und Verwalten von Azure und anderen Cloudressourcen. Erfahren Sie, wie Sie Verbrauch und Kosten überprüfen, aktiv Kosten verwalten, Ausgaben vorhersagen und Kosten mit unseren Schnellstarts und Tutorials optimieren."
 sections:
-  - title: Fünfminütige Schnellstarts
+- title: "Fünfminütige Schnellstarts"
+  items:
+  - type: paragraph
+    text: Erfahren Sie, wie Sie Ihre Azure-Vereinbarungs- oder Abonnementinformationen bei der Kostenverwaltung registrieren und beginnen, die Kostendaten anzuzeigen.
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Ihre Azure-Vereinbarungs- oder Abonnementinformationen bei der Kostenverwaltung registrieren und beginnen, die Kostendaten anzuzeigen.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Anzeigen von Kostendaten
-            href: quick-register-azure-sub
-  - title: Schritt-für-Schritt-Tutorials
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Anzeigen von Kostendaten
+      href: quick-register-azure-sub
+- title: "Schritt-für-Schritt-Tutorials"
+  items:
+  - type: paragraph
+    text: "Erfahren Sie, wie Sie Verbrauch und Kosten überprüfen, aktiv Kosten verwalten, Ausgaben vorhersagen und Kosten mit der Kostenverwaltung optimieren."
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Verbrauch und Kosten überprüfen, aktiv Kosten verwalten, Ausgaben vorhersagen und Kosten mit der Kostenverwaltung optimieren.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-review-usage">Review usage and costs to detect anomalies and efficiencies</a> (Überprüfen von Verbrauch und Kosten zum Erkennen von Anomalien und Effizienz)
-          - html: <a href="tutorial-user-access">Assign access to Cost Management data</a> (Zuweisen des Zugriffs auf die Kostenverwaltungsdaten)
-          - html: <a href="tutorial-forecast-spending">Vorhersage zukünftiger Ausgaben</a>
-          - html: <a href="tutorial-manage-costs">Verwalten von Kosten mit Kostenzuteilung sowie Showback- und Chargeback-Berichten</a>
+    - html: "<a href=\"tutorial-review-usage\">Review usage and costs to detect anomalies and efficiencies</a> (Überprüfen von Verbrauch und Kosten zum Erkennen von Anomalien und Effizienz)"
+    - html: <a href="tutorial-user-access">Assign access to Cost Management data</a> (Zuweisen des Zugriffs auf die Kostenverwaltungsdaten)
+    - html: "<a href=\"tutorial-forecast-spending\">Vorhersage zukünftiger Ausgaben</a>"
+    - html: <a href="tutorial-manage-costs">Verwalten von Kosten mit Kostenzuteilung sowie Showback- und Chargeback-Berichten</a>

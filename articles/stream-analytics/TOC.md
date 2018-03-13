@@ -4,83 +4,93 @@
 ## [Was ist Stream Analytics?](stream-analytics-introduction.md)
 ## [Storm und Stream Analytics im Vergleich](stream-analytics-comparison-storm.md)
 
-
 # Erste Schritte
 ## [Verarbeiten von IoT-Streamingdaten](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
 ## [Betrugsermittlung in Echtzeit](stream-analytics-real-time-fraud-detection.md)
 ## [Analysieren von Daten mit Power BI](stream-analytics-power-bi-dashboard.md)
 
-# Anleitung
+# Beispiele
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
 
-## Erstellen von Streaminglösungen
-### [Soziale Medien](stream-analytics-twitter-sentiment-analysis-trends.md)
-### [Echtzeitbewertung mit Machine Learning](stream-analytics-machine-learning-integration-tutorial.md)
-### [Ereignisverarbeitung in Echtzeit](stream-analytics-real-time-event-processing-reference-architecture.md)
-### [Stream Analytics on IoT Edge (preview) (Stream Analytics unter IoT Edge (Vorschauversion))](stream-analytics-edge.md)
-### [Benutzerhandbuch zur Anomalieerkennung in Azure (Vorschauversion)](stream-analytics-machine-learning-anomaly-detection.md)
-### [High frequency trading simulation with Stream Analytics (Hochfrequenzhandel-Simulation mit Stream Analytics)](stream-analytics-high-frequency-trading.md)
-### [Azure Functions mit Azure Stream Analytics](stream-analytics-with-azure-functions.md)
+# Konzepte
+## Eingabetypen für einen Auftrag
+### [Streamingdateneingaben](stream-analytics-define-inputs.md)
+### [Verweisdateneingaben](stream-analytics-use-reference-data.md)
+## [Ausgabetypen für einen Auftrag](stream-analytics-define-outputs.md)
+## [Fensterfunktionen](stream-analytics-window-functions.md)
+## [Kompatibilitätsgrad](stream-analytics-compatibility-level.md)
+## [Gängige Abfragemuster](stream-analytics-stream-analytics-query-patterns.md)
+## [Überlegungen zur Ereignissortierung](stream-analytics-out-of-order-and-late-events.md)
+
+
+# Anleitungen
 
 ## Erstellen von Aufträgen
-### [Erstellen von Eingaben](stream-analytics-define-inputs.md)
 ### [Testabfragen und Beispieleingabedaten](stream-analytics-sample-data-input.md)
-### [Gängige Abfragemuster](stream-analytics-stream-analytics-query-patterns.md)
-### [Fensterfunktionen](stream-analytics-window-functions.md)
-
-### [Verwenden von Referenzdaten](stream-analytics-use-reference-data.md)
 ### [Testen von Abfragen](stream-analytics-test-query.md)
-### [Integrieren von JavaScript-UDFs](stream-analytics-javascript-user-defined-functions.md)
-### [Integrieren von JavaScript-UDAs](stream-analytics-javascript-user-defined-aggregates.md)
-### [Integrieren von REST-API und Machine Learning](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
-### [Erstellen von Ausgaben](stream-analytics-define-outputs.md)
+### [Ausführen einer benutzerdefinierten JavaScript-Funktion](stream-analytics-javascript-user-defined-functions.md)
 ### [Ausgabe in Data Lake Store](stream-analytics-data-lake-output.md)
 ### [Ausgabe an Cosmos DB](stream-analytics-documentdb-output.md)
-
-## Verwenden von Visual Studio-Tools
-### [Installieren](stream-analytics-tools-for-visual-studio-install.md)
-### [Erste Schritte](stream-analytics-tools-for-visual-studio.md)
-### [Einrichten von CI-/CD-Pipelines](stream-analytics-tools-for-visual-studio-cicd.md)
-
-## Überwachen und Optimieren
-### [Hinzufügen von Warnungen](stream-analytics-set-up-alerts.md)
-### [Überwachen von Aufträgen](stream-analytics-monitoring.md)
-### [Programmgesteuertes Überwachen von Aufträgen](stream-analytics-monitor-jobs.md)
-### [Überwachen von Aufträgen mit PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
-### [Verstehen und Anpassen von Streamingeinheiten](stream-analytics-streaming-unit-consumption.md)
-### [Nutzen der Abfrageparallelisierung](stream-analytics-parallelization.md)
-### [Skalieren zur Steigerung des Durchsatzes](stream-analytics-scale-jobs.md)
-### [Skalieren für Machine Learning-Funktionen](stream-analytics-scale-with-machine-learning-functions.md)
+### [Konfigurieren von Warnungen](stream-analytics-set-up-alerts.md)
 
 ## Verwalten
-### [Rotieren von Anmeldeinformationen für Eingabe und Ausgabe](stream-analytics-login-credentials-inputs-outputs.md)
-### [Auftragszuverlässigkeit während Updates](stream-analytics-job-reliability.md)
-### [Konfigurieren des Kompatibilitätsgrads](stream-analytics-compatibility-level.md)
+### [Aktualisieren eines Auftrags](stream-analytics-job-reliability.md)
+### [Aktualisieren von Anmeldeinformationen](stream-analytics-login-credentials-inputs-outputs.md)
 
-## Problembehandlung
-### [Handbuch zur Problembehandlung](stream-analytics-troubleshooting-guide.md)
-### [Allgemeine Fragen zur Problembehandlung](stream-analytics-common-troubleshooting-issues.md)
-### [Blatt „Ressourcenintegrität“](stream-analytics-resource-health.md)
-### [Auftragsdiagramm und Metriken](stream-analytics-job-diagram-with-metrics.md)
-### [Debuggen von SELECT INTO](stream-analytics-select-into.md)
-### [Überlegungen zur Ereignissortierung](stream-analytics-out-of-order-and-late-events.md)
-### [Grenzwerte für Event Hub-Leser](stream-analytics-event-hub-consumer-groups.md)
-### [Diagnoseprotokolle](stream-analytics-job-diagnostic-logs.md)
+## Erstellen von Lösungen
+### [Twitter-Stimmungsanalyse](stream-analytics-twitter-sentiment-analysis-trends.md)
+### [Betrugsermittlung in Echtzeit](stream-analytics-real-time-fraud-detection.md)
+### [Ausführen von Aufträgen unter IoT Edge](stream-analytics-edge.md) 
+### [Ausführen eines benutzerdefinierten JavaScript-Aggregats](stream-analytics-javascript-user-defined-aggregates.md)
+### [Hochfrequenzhandel](stream-analytics-high-frequency-trading.md)
+### [Ausführen von Azure-Funktionen](stream-analytics-with-azure-functions.md)
 
+## Überwachen
+
+### [Überwachen von Aufträgen: Portal](stream-analytics-monitoring.md)
+### [Überwachen von Aufträgen: PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
+### [Überwachen von Aufträgen: Azure .NET SDK](stream-analytics-monitor-jobs.md)
+
+## Skalieren
+### [Skalieren mit Streamingeinheiten](stream-analytics-streaming-unit-consumption.md)
+### [Skalieren mit Abfrageparallelisierung](stream-analytics-parallelization.md)
+#### [Erhöhung des Durchsatzes](stream-analytics-scale-jobs.md)
+### [Skalieren mit ML-Funktionen](stream-analytics-scale-with-machine-learning-functions.md)
 
 ## Automatisieren
-### [Verwenden des .NET-Verwaltungs SDK](stream-analytics-dotnet-management-sdk.md)
-### [One-Click-Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
+### [Verwenden des .NET SDK](stream-analytics-dotnet-management-sdk.md)
+### [Verwenden von Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
+
+## Visual Studio-Tools
+### [Installieren von Tools](stream-analytics-tools-for-visual-studio-install.md)
+### [Entwickeln eines Cloudauftrags](stream-analytics-tools-for-visual-studio.md)
+### [Einrichten von CI-/CD-Pipelines](stream-analytics-tools-for-visual-studio-cicd.md)
+
+## Problembehandlung
+### [Schritte zur Problembehandlung](stream-analytics-troubleshooting-guide.md)
+### [Allgemeine Fragen zur Problembehandlung](stream-analytics-common-troubleshooting-issues.md)
+### [Auftragsdiagramm](stream-analytics-job-diagram-with-metrics.md)
+### [Diagnoseprotokolle](stream-analytics-job-diagnostic-logs.md)
+### [Überprüfen der Ressourcenintegrität](stream-analytics-resource-health.md)
+### [SELECT INTO-Anweisung](stream-analytics-select-into.md)
+### [Event Hub-Empfänger](stream-analytics-event-hub-consumer-groups.md)
+
+## Integrieren mit Machine Learning
+### [Stimmungsanalyse mit ML-Modellen](stream-analytics-machine-learning-integration-tutorial.md)
+### [Anomalieerkennung](stream-analytics-machine-learning-anomaly-detection.md)
+### [Verwenden von REST-APIs](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+
 
 # Verweis
-## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
 ## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
-## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998)
+## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [REST](/rest/api/streamanalytics)
 
 # angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](http://blogs.msdn.com/b/streamanalytics/)
+## [Videos](https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest)
 ## [Feedbackforum](http://feedback.azure.com/forums/270577-azure-stream-analytics)
 ## [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 ## [Preise](https://azure.microsoft.com/pricing/details/stream-analytics/)
@@ -89,3 +99,11 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=stream-analytics)
 ## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
+## [Fallstudien](https://azure.microsoft.com/case-studies/?service=stream-analytics)
+## [Ereignisverarbeitung in Echtzeit](stream-analytics-real-time-event-processing-reference-architecture.md)
+
+
+
+
+
+

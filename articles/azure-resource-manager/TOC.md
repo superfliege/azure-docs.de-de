@@ -44,7 +44,7 @@
 ## Verwalten
 ### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
-### [Azure portal](resource-group-portal.md)
+### [Azure-Portal](resource-group-portal.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
 ### [Erstellen von Verwaltungsgruppen](management-groups-create.md)
@@ -55,7 +55,7 @@
 ### Erstellen eines Dienstprinzipals
 #### [Azure PowerShell](resource-group-authenticate-service-principal.md)
 #### [Azure-CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Azure portal](resource-group-create-service-principal-portal.md)
+#### [Azure-Portal](resource-group-create-service-principal-portal.md)
 ### [Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md)
 ### [Sperren von Ressourcen](resource-group-lock-resources.md)
 
@@ -64,21 +64,20 @@
 ### [Bereitstellungsvorgänge anzeigen](resource-manager-deployment-operations.md)
 
 ## Problembehandlung
-### [Häufige Bereitstellungsfehler](resource-manager-common-deployment-errors.md)
-#### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
-#### [InvalidTemplate](resource-manager-invalid-template-errors.md)
-#### [Linux-Bereitstellungsprobleme](../virtual-machines/linux/troubleshoot-deploy-vm.md)
-#### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
-#### [NotFound](resource-manager-not-found-errors.md)
-#### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
-#### [Bereitstellungs- und Zuteilungsprobleme bei Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
-#### [Bereitstellungs- und Zuteilungsprobleme bei Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
-#### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
-#### [ReservedResourceName](resource-manager-reserved-resource-name.md)
-#### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
-#### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
-#### [Windows-Bereitstellungsprobleme](../virtual-machines/windows/troubleshoot-deploy-vm.md)
-### [Grundlegendes zu Bereitstellungsfehlern](resource-manager-troubleshoot-tips.md)
+### [Behandeln von Bereitstellungsfehlern](resource-manager-common-deployment-errors.md)
+### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
+### [InvalidTemplate](resource-manager-invalid-template-errors.md)
+### [Linux-Bereitstellungsprobleme](../virtual-machines/linux/troubleshoot-deploy-vm.md)
+### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
+### [NotFound](resource-manager-not-found-errors.md)
+### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
+### [Bereitstellungs- und Zuteilungsprobleme bei Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
+### [Bereitstellungs- und Zuteilungsprobleme bei Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
+### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+### [ReservedResourceName](resource-manager-reserved-resource-name.md)
+### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
+### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
+### [Windows-Bereitstellungsprobleme](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 
 # Verweis
 ## [Vorlagenformat](/azure/templates/)

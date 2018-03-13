@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 7308c8754198ea3e7533b8a9c378cfaac1b5bbd2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 18792d8dc8b232ad048db2440c5b52428c50f92e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt:
@@ -123,7 +123,7 @@ Im folgenden Diagramm sind zwei Beispiele für Kopieraktivitäten dargestellt:
 ![Zu verwendende Integrationslaufzeit](media/concepts-integration-runtime/which-integration-runtime-to-use.png)
 
 ## <a name="integration-runtime-location"></a>Ort der Integrationslaufzeit
-Am Data Factory-Standort werden die Metadaten der Data Factory gespeichert, und von diesem Standort wird auch die Auslösung der Pipeline initiiert. Derzeit werden die folgenden Data Factory-Standorte unterstützt: „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“. Eine Data Factory kann jedoch auf Datenspeicher und Compute Services in anderen Azure-Regionen zugreifen, um Daten zwischen Datenspeichern zu verschieben oder Daten mithilfe von Computediensten zu verarbeiten. Dieses Verhalten wird dadurch realisiert, dass die Integrationslaufzeit global in mehreren Regionen verfügbar ist, um für Datenkonformität, Effizienz und geringere Kosten für ausgehenden Netzwerkdatenverkehr zu sorgen.
+Am Data Factory-Standort werden die Metadaten der Data Factory gespeichert, und von diesem Standort wird auch die Auslösung der Pipeline initiiert. Derzeit werden die folgenden Data Factory-Standorte unterstützt: „USA, Osten“, „USA, Osten 2“, „Asien, Südosten“ und „Europa, Westen“. Eine Data Factory kann jedoch auf Datenspeicher und Compute Services in anderen Azure-Regionen zugreifen, um Daten zwischen Datenspeichern zu verschieben oder Daten mithilfe von Computediensten zu verarbeiten. Dieses Verhalten wird dadurch realisiert, dass die Integrationslaufzeit global in mehreren Regionen verfügbar ist, um für Datenkonformität, Effizienz und geringere Kosten für ausgehenden Netzwerkdatenverkehr zu sorgen.
 
 Mit dem Integrationslaufzeit-Standort wird der Standort der Back-End-Computeinstanz definiert. Somit ist dies auch der Standort, an dem die Datenverschiebung, Aktivitätsverteilung und SSIS-Paketausführung durchgeführt werden. Der Integrationslaufzeit-Standort kann sich vom Standort der Data Factory unterscheiden, zu der er gehört. Im folgenden Diagramm sind die Standorteinstellungen von Data Factory und die dazugehörigen Integrationslaufzeiten dargestellt:
 
@@ -176,7 +176,7 @@ Die selbstgehostete Integrationslaufzeit wird logisch unter der Data Factory reg
 Bei Verwendung zum Durchführen der Datenverschiebung extrahiert die selbstgehostete Integrationslaufzeit Daten aus der Quelle und schreibt sie an das Ziel.
 
 ### <a name="azure-ssis-ir"></a>Azure-SSIS-Integrationslaufzeit
-Die Auswahl des richtigen Standorts für Ihre Azure-SSIS-Integrationslaufzeit ist entscheidend, um für Ihre ETL-Workflows (Extrahieren-Transformieren-Laden) eine hohe Leistung zu erzielen.  Anfänglich sind zwei Standorte als Vorschau verfügbar („USA, Osten“ und „Europa, Norden“).
+Die Auswahl des richtigen Standorts für Ihre Azure-SSIS-Integrationslaufzeit ist entscheidend, um für Ihre ETL-Workflows (Extrahieren-Transformieren-Laden) eine hohe Leistung zu erzielen.  Sechs Standorte sind zunächst für die Vorschau verfügbar („USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „Australien, Osten“, „Europa, Norden“ und „Europa, Westen“).
 
 - Der Standort Ihrer Azure-SSIS-Integrationslaufzeit muss nicht dem Standort Ihrer Data Factory entsprechen, aber es sollte derselbe Standort wie für Ihren eigenen Server mit Azure SQL-Datenbank bzw. einer verwalteten Instanz (private Vorschauversion) sein, auf dem SSISDB gehostet werden soll. Ihre Azure-SSIS-Integrationslaufzeit kann dann leicht auf SSISDB zugreifen, ohne dass es zwischen unterschiedlichen Standorten zu übermäßig viel Datenverkehr kommt.
 - Wenn Sie nicht über einen vorhandenen Server mit Azure SQL-Datenbank bzw. einer verwalteten Instanz (private Vorschauversion) zum Hosten von SSISDB verfügen, aber über lokale Datenquellen bzw. -ziele, sollten Sie wie folgt vorgehen: Erstellen Sie einen neuen Server mit Azure SQL-Datenbank bzw. einer verwalteten Instanz (private Vorschauversion) am Standort eines VNET, das mit Ihrem lokalen Netzwerk verbunden ist.  Auf diese Weise können Sie Ihre Azure-SSIS-Integrationslaufzeit mit dem neuen Server mit Azure SQL-Datenbank bzw. einer verwalteten Instanz (private Vorschauversion) erstellen und den Beitritt zu diesem VNET durchführen – alles an einem Standort. Dies führt zu einer wirksamen Verringerung der Datenverschiebungen zwischen unterschiedlichen Standorten.
