@@ -35,6 +35,7 @@
 ### Konfigurieren von Remotedesktop
 #### [Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 ## Bereitstellen
 ### [Erstellen und Bereitstellen eines Clouddiensts im Portal](cloud-services-how-to-create-deploy-portal.md)
