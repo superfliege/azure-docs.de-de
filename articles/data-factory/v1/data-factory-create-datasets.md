@@ -16,10 +16,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 1733e953d9dd65a3d2b801e6c5ba5cfbb5f82920
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -285,7 +285,7 @@ Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder d
 ### <a name="validation-policies"></a>Überprüfungsrichtlinien
 | Richtlinienname | BESCHREIBUNG | Angewendet auf | Erforderlich | Standard |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |Überprüft, ob die Daten in **Azure Blob Storage** die minimalen Größenanforderungen (in MB) erfüllen. |Azure-Blobspeicher |Nein  |Nicht verfügbar |
+| minimumSizeMB |Überprüft, ob die Daten in **Azure Blob Storage** die minimalen Größenanforderungen (in MB) erfüllen. |Azure Blob Storage |Nein  |Nicht verfügbar |
 | minimumRows |Überprüft, ob die Daten in einer **Azure SQL-Datenbank** oder einer **Azure-Tabelle** die minimale Anzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure-Tabelle</li></ul> |Nein  |Nicht verfügbar |
 
 #### <a name="examples"></a>Beispiele

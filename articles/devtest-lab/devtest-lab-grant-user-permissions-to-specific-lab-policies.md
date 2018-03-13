@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: v-craic
 ms.openlocfilehash: f92ad5e991bdb066bb9680b4865501076d43f450
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien
 ## <a name="overview"></a>Übersicht

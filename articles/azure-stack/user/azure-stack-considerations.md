@@ -15,14 +15,14 @@ ms.topic: overview
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 695824ef2537a97ea0530f2c33ad24d5cd9e20f8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Wichtige Aspekte: Verwenden von Diensten oder Erstellen von Apps für Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In Bezug auf die Verwendung von Diensten oder die Erstellung von Apps für Azure Stack müssen Sie wissen, dass zwischen Azure Stack und Azure Unterschiede bestehen. Dieser Artikel enthält eine Übersicht über die wichtigsten Aspekte, die für die Nutzung von Azure Stack als Hybrid Cloud-Entwicklungsumgebung gelten.
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/10/2017
 ms.author: dkshir
 ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>PowerShell-Skripts zum Verwalten von X.509-Zertifikaten, die von einer Zertifizierungsstelle signiert sind
 
@@ -279,7 +279,7 @@ Führen Sie `New-CADevice "<yourTestDevice>"` unter Verwendung des Anzeigenamens
 
 ## <a name="clean-up-certificates"></a>Bereinigen von Zertifikaten
 
-Suchen Sie in der Startleiste oder App **Einstellungen** nach der Option **Computerzertifikate verwalten**, und wählen Sie sie aus. Entfernen Sie alle von der **Azure IoT-Zertifizierungsstelle TestOnly*** ausgestellten Zertifikate. Diese Zertifikate sollten in den folgenden drei Speicherorten vorhanden sein: 
+Suchen Sie in der Startleiste oder App **Einstellungen** nach der Option **Computerzertifikate verwalten**, und wählen Sie sie aus. Entfernen Sie alle ausgestellten Zertifikate ** Azure IoT Zertifizierungsstelle TestOnly ***. Diese Zertifikate sollten in den folgenden drei Speicherorten vorhanden sein: 
 
 * Zertifikate – Lokaler Computer > Eigene Zertifikate > Zertifikate
 * Zertifikate – Lokaler Computer > Vertrauenswürdige Stammzertifizierungsstellen > Zertifikate
