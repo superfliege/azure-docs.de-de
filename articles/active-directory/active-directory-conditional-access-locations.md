@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/11/2018
+ms.date: 03/01/2018
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 028a3f4411e6984b70e0f98c5cf3284e5be1c3b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.reviewer: calebb
+ms.openlocfilehash: c9712cf0cf20bbcfc089eb18896370f9e02eb571
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Standortbedingungen beim bedingten Zugriff in Azure Active Directory 
 
@@ -120,9 +120,12 @@ Mit dieser Option können Sie einen oder mehrere benannte Speicherorte auswähle
 
 Richtlinien für bedingten Zugriff werden in diesen Situationen ausgewertet: 
 
-- Ein Benutzer meldet sich erstmalig an 
+- Ein Benutzer meldet sich zum ersten Mal an einer Web-App, mobilen Anwendung oder Desktopanwendung an. 
 
-- Azure AD stellt ein Token für die Cloud-App aus, für die die Richtlinie zum bedingten Zugriff eingerichtet wurde. 
+- Für eine mobile Anwendung oder Desktopanwendung, für die die moderne Authentifizierung verwendet wird, wird ein Aktualisierungstoken zum Beschaffen eines neuen Zugriffstokens genutzt. Standardmäßig erfolgt dies einmal pro Stunde. 
+
+Für mobile Anwendungen und Desktopanwendungen mit moderner Authentifizierung bedeutet dies, dass eine Änderung des Netzwerkstandorts innerhalb von einer Stunde erkannt wird. Wenn für mobile Anwendungen und Desktopanwendungen keine moderne Authentifizierung genutzt wird, wird die Richtlinie auf jede Tokenanforderung angewendet. Die Häufigkeit der Anforderung kann basierend auf der Anwendung variieren. Ebenso wird die Richtlinie für Webanwendungen bei der ersten Anmeldung angewendet und gilt für die Lebensdauer der Webanwendungssitzung. Aufgrund von Unterschieden bei den Sitzungslebensdauern von Anwendungen variiert auch die Zeit zwischen den Richtlinienauswertungen. Die Richtlinie wird jedes Mal angewendet, wenn die Anwendung ein neues Anmeldetoken anfordert.
+
 
 Standardmäßig stellt Azure AD stündlich ein Token aus. Nach dem Verlassen des Unternehmensnetzwerks wird die Richtlinie für Anwendungen mit moderner Authentifizierung innerhalb einer Stunde durchgesetzt.
 

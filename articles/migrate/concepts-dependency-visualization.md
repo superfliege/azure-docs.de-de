@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: 886977764517f1fec89eee77fc3263d30ff9ab31
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: bcbb2ace6686e4052149a5dde1ed837a16c36bad
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 
@@ -34,6 +34,19 @@ Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnu
 Zur Verwendung der Abhängigkeitsvisualisierung müssen Sie Agents auf alle lokalen Computer, die Sie analysieren möchten, herunterladen und dort installieren.  
 
 ## <a name="do-i-need-to-pay-for-it"></a>Fallen dadurch Kosten an?
+
+Azure Migrate ist ohne Aufpreis erhältlich. Für die Nutzung der Abhängigkeitsvisualisierungsfeatures von Azure Migrate ist die Dienstzuordnung erforderlich. Bei der Erstellung eines Azure Migrate-Projekts wird von Azure Migrate in Ihrem Namen automatisch ein neuer Log Analytics-Arbeitsbereich erstellt.
+
+> [!NOTE]
+> Für das Feature für die Abhängigkeitsvisualisierung wird die Dienstzuordnung über einen Log Analytics-Arbeitsbereich verwendet. Seit dem 28. Februar 2018 ist das Feature mit der Ankündigung der allgemeinen Verfügbarkeit von Azure Migrate jetzt ohne weitere Kosten verfügbar. Sie müssen ein neues Projekt erstellen, um den kostenlosen Arbeitsbereich nutzen zu können. Für Arbeitsbereiche, die bereits vor der allgemeinen Verfügbarkeit vorhanden waren, können weiterhin Kosten anfallen. Daher empfehlen wir Ihnen, die Umstellung auf ein neues Projekt durchzuführen.
+
+1. Wenn Sie eine andere Lösung als die Dienstzuordnung in diesem Log Analytics-Arbeitsbereich verwenden, fallen die Log Analytics-Standardgebühren an. 
+2. Zur Unterstützung von Migrationsszenarien ohne weitere Kosten fallen für die Dienstzuordnungslösung in den ersten 180 Tagen nach der Erstellung des Azure Migrate-Projekts keine Kosten an. Danach werden die Standardgebühren berechnet.
+3. Nur der Arbeitsbereich, der im Rahmen der Projekterstellung erstellt wurde, kann kostenlos genutzt werden.
+
+Verwenden Sie beim Registrieren von Agents für den Arbeitsbereich die ID und den Schlüssel, die bzw. der auf der Seite mit Schritten für die Agent-Installation für das Projekt angegeben wurde. Es ist nicht möglich, einen vorhandenen Arbeitsbereich zu verwenden und dem Azure Migrate-Projekt zuzuordnen.
+
+Wenn das Azure Migrate-Projekt gelöscht wurde, wird der Arbeitsbereich nicht zusammen mit dem Projekt gelöscht. Nach dem Löschen des Projekts ist die Nutzung der Dienstzuordnung nicht mehr kostenlos, und für jeden Knoten werden Kosten gemäß des kostenpflichtigen Tarifs für den Log Analytics-Arbeitsbereich berechnet.
 
 Weitere Informationen zu den Preisen von Azure Migrate finden Sie [hier](https://azure.microsoft.com/pricing/details/azure-migrate/). 
 

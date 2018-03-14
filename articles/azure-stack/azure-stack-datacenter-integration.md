@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 03/02/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: f93fc95d6bed517cae3adb706f690941f97c366e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 25ef6ba9ff105486f39cee8b6181a8c63e64ec13
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Überlegungen zur Integration von Rechenzentren für integrierte Azure Stack-Systeme
 Wenn Sie an einem mit Azure Stack integrierten System interessiert sind, müsse Sie einige der wichtigsten Aspekte bei der Planung der Bereitstellung verstehen und wissen, wie das System in Ihr Rechenzentrum passt. Dieser Artikel bietet einen allgemeinen Überblick über diese Aspekte, damit Sie wichtige Infrastrukturentscheidungen für Ihr Azure Stack-System mit mehreren Knoten treffen können. Ein Verständnis dieser Aspekte hilft Ihnen bei der Zusammenarbeit mit Ihrem OEM-Hardwareanbieter, sobald dieser Azure Stack in Ihrem Rechenzentrum bereitstellt.  
@@ -30,6 +30,15 @@ Wenn Sie an einem mit Azure Stack integrierten System interessiert sind, müsse 
 Um Azure Stack bereitzustellen, müssen Sie Ihrem Lösungsanbieter vor dem Beginn der Bereitstellung Planungsinformationen bereitstellen, damit der Prozess schnell und reibungslos abläuft. Die benötigten Informationen reichen von Netzwerk-, Sicherheits- und Identitätsinformationen bis hin zu vielen wichtigen Entscheidungen, die möglicherweise Wissen aus vielen verschiedenen Bereichen und von verschiedenen Entscheidungsträgern erfordern. Daher müssen Sie möglicherweise Mitarbeiter aus mehreren Teams in Ihrem Unternehmen hinzuziehen, um sicherzustellen, dass Sie über alle erforderlichen Informationen verfügen, bevor die Bereitstellung beginnt. Es ist möglicherweise hilfreich, sich mit Ihrem Hardwarehersteller zu besprechen, während Sie diese Informationen sammeln, da er Ratschläge geben kann, die Ihnen bei Ihren Entscheidungen helfen.
 
 Während Sie die erforderlichen Informationen recherchieren und sammeln, müssen Sie möglicherweise vor der Bereitstellung einige Konfigurationsänderungen an Ihrer Netzwerkumgebung vornehmen. Dazu gehören die Reservierung von IP-Adressräumen für die Azure Stack-Lösung sowie die Konfiguration Ihrer Router, Switches und Firewalls zur Vorbereitung der Konnektivität mit den Switches der neuen Azure Stack-Lösung. Sichern Sie sich bei Ihrer Planung die Unterstützung der Fachbereichsexperten.
+
+## <a name="capacity-planning-considerations"></a>Aspekte der Kapazitätsplanung
+Beim Auswerten einer Azure Stack-Lösung für den Kauf müssen Entscheidungen in Bezug auf die Hardwarekonfiguration getroffen werden, die eine direkte Auswirkung auf die Gesamtkapazität der Azure Stack-Lösung haben. Hierzu gehört die übliche Auswahl von CPU, Arbeitsspeicherdichte, Speicherkonfiguration und Gesamtumfang der Lösung (z.B. Anzahl von Servern). Im Gegensatz zu einer herkömmlichen Virtualisierungslösung gilt die einfache Arithmetik dieser Komponenten zur Ermittlung der nutzbaren Kapazität nicht. Der erste Grund ist, dass Azure Stack so aufgebaut ist, dass die Infrastruktur- bzw. Verwaltungskomponenten in der Lösung selbst gehostet werden. Der zweite Grund ist, dass ein Teil der Lösungskapazität zur Unterstützung der Resilienz reserviert ist. Es geht um die Aktualisierung der Lösungssoftware auf eine Weise, bei der die Beeinträchtigung von Mandantenworkloads verringert wird. 
+
+Mit dem Tool [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) können Sie auf zwei Arten fundierte Entscheidungen zur Planung der Kapazität treffen: entweder per Auswahl eines Hardwareangebots und einer passenden Kombination von Ressourcen, oder per Definition der von Azure Stack auszuführenden Workload, um die verfügbaren Hardware-SKUs anzuzeigen, die dies unterstützen. Schließlich dient das Tool auch als Hilfe beim Treffen von Entscheidungen in Bezug auf die Azure Stack-Planung und -Konfiguration. 
+
+Es soll aber nicht als Ersatz für Ihre eigenen Untersuchungen und Analysen dienen.  Microsoft gewährt für die mit dem Tool bereitgestellten Informationen keine Zusicherungen oder Garantien, weder ausdrücklich noch konkludent.
+
+
 
 ## <a name="management-considerations"></a>Überlegungen zur Verwaltung
 Azure Stack ist ein geschlossenes System, bei dem die Infrastruktur aus Berechtigungs- und Netzwerksicht abgeriegelt ist. Dabei werden Netzwerk-Zugriffssteuerungslisten (ACLs) angewendet, um sämtlichen nicht autorisierten eingehenden Datenverkehr und sämtliche unnötige Kommunikation zwischen Infrastrukturkomponenten zu blockieren. Dadurch soll nicht autorisierten Benutzern der Zugriff auf das System verwehrt werden.

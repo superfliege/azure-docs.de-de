@@ -1,5 +1,5 @@
 ---
-title: "Herausgeberleitfaden für Azure Marketplace und AppSource"
+title: "Fördern des Unternehmenswachstums mit Azure Marketplace"
 description: "Schritt-für-Schritt-Anleitung und Veröffentlichung von Prüflisten für neue Herausgeber in Azure Marketplace"
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: 
@@ -14,74 +14,75 @@ ms.devlang:
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7135e5996071893acdd78d27acac19aac5249b67
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 51cc413d61e4951f28e9247efcee934af23572e5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
-#<a name="grow-your-business-with-azure-marketplace"></a>Fördern des Unternehmenswachstums mit Azure Marketplace
+# <a name="grow-your-business-by-using-the-azure-marketplace"></a>Fördern des Unternehmenswachstums mit Azure Marketplace
 
-Nach der Entwicklung der technischen Ressourcen für Ihre Marketplace-Auflistung können Sie die Anzahl der Benutzer, die Ihre App aufrufen, und die Nutzung Ihres Produkts durch folgende bewährte Marketingmethoden steigern. 
+Wenn Sie die technischen Ressourcen für Ihre Auflistung in Azure Marketplace entwickelt haben, können Sie die Anzahl der Benutzer, die Ihre App aufrufen, und die Nutzung Ihres Produkts durch folgende bewährte Marketingmethoden steigern. 
 
 >[!NOTE]
 >Informationen zum Veröffentlichungsprozess und den technischen Anforderungen finden Sie im [Herausgeberleitfaden für Azure Marketplace und AppSource](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide).
 
 ## <a name="how-marketing-helps"></a>Erfolg durch Marketing
 
-Mithilfe der folgenden bewährten Marketingmethoden können Sie Erfolge mit Markteinführungs- und Microsoft-Co-Selling-Initiativen erzielen sowie Ihre geschäftlichen Vorteile über Marketplace maximieren. Das [Microsoft Partner Network (MPN)](https://partner.microsoft.com/membership) ist Ihr Tor zu allen nicht zum Marketplace gehörenden Marketing- und programmgesteuerten Ressourcen. 
+Mit den folgenden bewährten Marketingmethoden können Sie Erfolge mit Markteinführungs- und Microsoft-Co-Selling-Initiativen erzielen. Zudem können Sie Ihre geschäftlichen Vorteile über Marketplace maximieren. Das [Microsoft Partner Network (MPN)](https://partner.microsoft.com/membership) ist Ihr Tor zu allen Marketing- und programmgesteuerten Ressourcen, die nicht zu Marketplace gehören. 
 
-Die Qualität Ihrer App-Veröffentlichung und die Verpflichtung zu kundenzentrierter Nachfragegenerierung und Partner-Engagement beeinflussen das Wachstum Ihres Kundenstamms. Das Engagement in diesen Aktivitäten hilft Microsoft, die Markteinführungsarbeit zu verstärken und Schlüssellösungen in allen Marketplace-Storefronts anzubieten. 
+Die Qualität Ihrer App-Veröffentlichung und Ihre Verpflichtung zu kundenorientierter Nachfragegenerierung und Partner-Engagement beeinflussen das Wachstum Ihres Kundenstamms. Das Engagement in diesen Aktivitäten hilft Microsoft, die Markteinführungsarbeit zu verstärken und Schlüssellösungen in allen Marketplace-Storefronts anzubieten. 
 
 Dieser Abschnitt führt Sie gemäß der folgenden Checkliste durch bewährte Marketing-Methoden für ein Angebot:
 
 - Ich habe meine Auflistung für hohe Besucherzahlen und Engagement optimiert.
-- Ich habe auf meiner Website unter Verwendung einer eindeutigen Angebotsseite Messaging erstellt, um hohe Besucherzahlen bei meiner Marketplace-Auflistung zu erzielen.
+- Ich habe auf meiner Website Messaging und eine eindeutige Angebotsseite Messaging erstellt, um hohe Besucherzahlen bei meiner Marketplace-Auflistung zu erzielen.
 - Ich habe eine Testversion oder ein anderes Testangebot veröffentlicht, damit Kunden mein Angebot live in Azure erleben können.
 - Ich habe eigene Marketing- und Werbeaktionskampagnen geplant und erstellt, um Aufmerksamkeit und Engagement zu wecken.
 - Ich habe die bedarfsgesteuerte Leadgenerierung aktiviert, sodass ich jedes Mal, wenn jemand aktiv ist, um meine Anwendung zu testen oder bereitzustellen, den Namen und die Kontaktinformationen des Kunden erhalte.
-- Ich habe Informationen über die Partnerressourcen erhalten, die mir über das [Microsoft Partner Network (MPN)](https://partner.microsoft.com/membership) zur Verfügung stehen, und eine Verbindung mit ihnen hergestellt.
+- Ich habe Informationen über die Partnerressourcen erhalten, die mir über das [Microsoft Partner Network](https://partner.microsoft.com/membership) zur Verfügung stehen, und eine Verbindung mit ihnen hergestellt.
 
 ### <a name="create-a-great-listing"></a>Erstellen einer großen Auflistung
 
-Ihre Auflistung im Marketplace kann manchmal die erste Interaktion mit einem potenziellen Kunden sein. Wie jeder erste Eindruck soll auch dieser positiv sein und weiteres Interesse Ihrer Zielgruppe wecken. Es gibt einige grundlegende Dinge, die Sie tun können, damit dieser erste Eindruck in Marketplace hervorragend ist!
+Ihre Auflistung im Marketplace ist manchmal die erste Interaktion mit einem potenziellen Kunden. Wie jeder erste Eindruck soll auch dieser positiv sein und weiteres Interesse Ihrer Zielgruppe wecken. Es gibt einige grundlegende Dinge, die Sie tun können, damit dieser erste Eindruck in Marketplace hervorragend ist:
 
 - **Auffindbarkeit:** Verwenden Sie in Ihrer Angebotsbeschreibung Schlüsselwörter und Begriffe, nach denen der Käufer sucht. 
 - **Visuelle Attraktivität:** Durch Veranschaulichung mit Bildern und Videos können Sie Benutzern besser Ihre wichtigsten Funktionen zeigen und ihnen einen Eindruck von ihrer Anwendung vermitteln. Überlegen Sie, was Sie anzeigen können, um Ihren Wertbeitrag darzustellen oder die wichtigsten Fragen des Käufers zu beantworten.
-- **Bieten Sie eine Erfahrung:** Kunden möchten testen, bevor sie kaufen. Leads, die aus Testversionen, Demos und anderen Testangeboten resultieren, führen in der Regel zu weiteren Abschlüssen. Je eindrucksvoller die Testerfahrung, die Sie bieten, desto sicherer der Lead, den Sie damit gewinnen. Wir haben festgestellt, dass mit Leads, die mit Testversionen gewonnen werden, (durchschnittlich) zu 40 % Geschäftsabschlüsse gemacht werden.
-- **Unterstützen Sie Ihre Zielgruppe beim Lernen:** Wir ermutigen Sie zwar, Ihren Übersichtsbereich klar und übersichtlich zu halten, doch gibt es noch ausreichend Platz, um auf zusätzliche Ressourcen zu Ihrem Produkt zu verweisen. Nutzen Sie diesen Platz, um kurz und präzise mitzuteilen, was Ihr Produkt kann, und wie es den Anforderungen Ihrer Kunden gerecht wird; scheuen Sie sich nicht, Ihre Kunden zu weiteren Materialien zu führen. Es ist ein Bonus, wenn diese Lernmaterialien oder Links zur Ihrer Inhaltsmarketingstrategie führen, sodass Sie ständig Leads „aufziehen“ können.
-- **Nutzen Sie Bewertungen und Kritiken:** Lassen Sie Ihr Produkt durch Ihre Kunden verkaufen. Die Fürsprache der Kunden kann der größte Verkaufsmotor sein, und die Kundenmeinung ist häufig die erste Informationsquelle potenzieller Käufer, bevor sie mehr über Ihr Produkt erfahren. Über mehrere positive Kritiken zu verfügen, hebt Ihr Angebot auch in Suchergebnissen und ausgewählten Schlüsselbereichen hervor.
+- **Bieten Sie eine Erfahrung:** Kunden möchten testen, bevor sie kaufen. Leads, die aus Testversionen, Demos und anderen Testangeboten resultieren, führen zu weiteren Abschlüssen. Je eindrucksvoller die Testerfahrung, die Sie bieten, desto sicherer der Lead, den Sie damit gewinnen. Wir haben festgestellt, dass mit Leads, die mit Testversionen gewonnen werden, (durchschnittlich) zu 40% Geschäftsabschlüsse erzielt werden.
+- **Unterstützen Sie Ihre Zielgruppe beim Lernen:** Wir ermutigen Sie zwar, Ihren Übersichtsbereich klar und übersichtlich zu halten, doch gibt es noch ausreichend Platz, um auf zusätzliche Ressourcen zu Ihrem Produkt zu verweisen. Nutzen Sie diesen Platz, um kurz und präzise mitzuteilen, was Ihr Produkt kann und wie es den Anforderungen Ihrer Kunden gerecht wird. Binden Sie Links zu weiterführenden Informationen ein. Besonders vorteilhaft ist es, wenn diese Lernmaterialien oder Links zur Ihrer Inhaltsmarketingstrategie führen, um Ihre Leads zu betreuen.
+- **Nutzen Sie Bewertungen und Kritiken:** Lassen Sie Ihr Produkt durch Ihre Kunden verkaufen. Die Fürsprache der Kunden kann der größte Verkaufsmotor sein, und die Kundenmeinung ist häufig die erste Informationsquelle potenzieller Käufer, bevor sie mehr über Ihr Produkt erfahren. Mit mehreren positiven Kritiken wird Ihr Angebot auch in Suchergebnissen und ausgewählten Schlüsselbereichen hervorgehen.
 
 ### <a name="build-a-great-landing-page"></a>Erstellen einer hervorragenden Angebotsseite
-Eine Angebotsseite auf der Website Ihres Unternehmens ist ein Tor von Ihren Nachfragegenerierungsaktivitäten zu Ihrer Marketplace-Auflistung in Azure Marketplace. 
+Eine Angebotsseite auf der Website Ihres Unternehmens ist der Schlüssel zu Ihren Nachfragegenerierungsaktivitäten für Ihre Auflistung in Azure Marketplace. 
 
-Beginnen Sie mit der Identifikation Ihre Ziele. Entscheiden Sie für Ihre Marketplace-Lösungen, wer Ihre Zielkunden sind, und welche Aktion sie ausführen sollen. Beispielaktionen wären „Testen Sie unsere Lösung“ oder „Holen Sie sich jetzt eine Lösung“. Ihre Angebotsseite kann für verschiedene Marketingtaktiken wie Ereignisse, Webcasts und soziale Medien bis zu Whitepapers, technischen Trainingssitzungen und Pressemitteilungen genutzt werden. Je konsistenter Ihr Messaging und Ihr Aktionsaufruf sind, desto einfacher ist Ihre Lösung zu finden.
+Beginnen Sie mit der Identifikation Ihre Ziele. Entscheiden Sie für Ihre Marketplace-Lösungen, wer Ihre Zielkunden sind, und welche Aktion sie ausführen sollen. Beispielaktionen wären „Testen Sie unsere Lösung“ oder „Holen Sie sich jetzt eine Lösung“. Ihre Angebotsseite kann für verschiedene Marketingtaktiken genutzt werden: z.B. Ereignisse, Webcasts, Social Media, Whitepapers, technische Trainingssitzungen und Pressemitteilungen. Je konsistenter Ihr Messaging und Ihr Aktionsaufruf sind, desto einfacher ist Ihre Lösung zu finden.
 
-Wenn Sie einen Kampagnenplan bereithalten, befolgen Sie diese bewährten Methoden, und beachten Sie, was beim Erstellen der Seite zu vermeiden ist, um die Wirksamkeit der Angebotsseite zu maximieren: 
+Wenn Sie bereits einen Kampagnenplan erstellt haben, befolgen Sie diese bewährten Methoden, und beachten Sie, was Sie vermeiden sollten, um die Wirkung der Angebotsseite zu maximieren: 
 
 
 |Bewährte Methode  |Was Sie vermeiden sollten  |
 |---------|---------|
-|**Bringen Sie zum Ausdruck, welches Kundenproblem Ihre Lösung löst, und wie Sie Azure hierzu nutzen**    |  Nicht zum Ausdruck bringen, wie Ihre Lösung und Azure zusammenarbeiten       |
+|**Bringen Sie zum Ausdruck, welches Kundenproblem Ihre Anwendung löst, und wie Sie Azure dafür einsetzen**    |  Nicht erläutern, wie Ihre Lösung und Azure zusammenarbeiten       |
 |**Erstellen Sie eine kurze, leicht zu merkende URL**    |    Lange URLs sind nicht einprägsam und schwer zu finden     |
-|**Fügen Sie relevanten visuellen Inhalt hinzu: Ein Kundenreferenzvideo oder Lösungsarchitektur sind bewährte Methoden**   |   Zu viel Text kann Ihre Zielgruppe abstoßen, sodass sie das Interesse an Ihrer Anwendung verliert      |
+|**Fügen Sie relevanten visuellen Inhalt hinzu, z.B. ein Kundenreferenzvideo oder eine Lösungsarchitektur**   |   Zu viel Text kann dazu führen, dass Ihre Zielgruppe das Interesse an Ihrer Anwendung verliert      |
 |**Erstellen Sie einen klaren Aktionsaufruf, um Besucher zu Ihrer Marketplace-Katalogseite zu führen**    |   Zu viele Links oder mögliche Aktionen auf der Seite       |
 |**Setzen Sie Ihren Aktionsaufruf in eine Titelzeile oder einen deutlichen Beschreibungsabschnitt**    |  Einbetten der Links zu Ihrer Marketplace-Auflistung in einen Textabsatz       |
-|**Recherchieren Sie die besten Schlüsselwörter und optimieren Sie die Seite für die Suche**    | Davon ausgehen, dass Ihr Produktname höhere Suchrangfolgen generiert        |
-|**Nutzen Sie Schlüsselwörter aus Ihren Werbekampagnen**    |  Die Verwendung vieler verschiedener Schlüsselwörter in Ihren Webeigenschaften schwächt Ihre Werbeinvestitionen       |
+|**Recherchieren Sie die besten Schlüsselwörter, und optimieren Sie die Seite für die Suche**    | Davon ausgehen, dass Ihr Produktname höhere Suchrangfolgen generiert        |
+|**Nutzen Sie Schlüsselwörter aus Ihren Werbekampagnen**    |  Viele verschiedener Schlüsselwörter in Ihren Webeigenschaften verwenden. Dies schwächt Ihre Werbeinvestitionen       |
 |**Setzen Sie relevante Produktnamen und Schlüsselwörter „über den Falz“**     | Benutzer müssen scrollen, um zu sehen, welches Produkt oder welche Lösung Sie präsentieren        |
-|**Verwenden Sie Markenkennzeichen (z.B. Azure Certified*) in Übereinstimmung mit den Microsoft-Brandingrichtlinien, um den Wert Ihrer Lösung zu bekräftigen**    |    Verwenden nicht genehmigter Microsoft-Markenkennzeichen     |
+|**Verwenden Sie Markenkennzeichen (z.B. Azure Certified) in Übereinstimmung mit den Microsoft-Brandingrichtlinien, um den Wert Ihrer Lösung zu bekräftigen**    |    Nicht genehmigte Microsoft-Markenkennzeichen verwenden     |
 
-* Hier erfahren Sie mehr über den [Azure Certified-Badge](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines/ ). Mitglieder des [Microsoft Partner Network (MPN)](https://partner.microsoft.com/en-us/membership/how-it-works) können möglicherweise über [Brand Central](https://microsoft.sharepoint.com/teams/brandcentral) auf zusätzliche Ressourcen für das Branding sowie auf das Tool [Logo Builder](https://logobuilder.partner.microsoft.com) zugreifen. Informieren Sie sich über eine Mitgliedschaft im [MPN](https://partner.microsoft.com/en-us/membership/how-it-works). 
+> [!NOTE]
+> Hier erfahren Sie mehr über den [Azure Certified-Badge](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines/ ). Mitglieder des [Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/how-it-works) können über [Brand Central](https://microsoft.sharepoint.com/teams/brandcentral) auf zusätzliche Ressourcen für das Branding sowie auf das Tool [Logo Builder](https://logobuilder.partner.microsoft.com) zugreifen. Informieren Sie sich über eine Mitgliedschaft im [MPN](https://partner.microsoft.com/en-us/membership/how-it-works). 
 
-### <a name="promoting-your-new-offer"></a>Förderung des Verkaufs Ihres neuen Angebots
+### <a name="promote-your-new-offer"></a>Bewerben Sie Ihr neues Angebot
 
-#### <a name="building-an-effective-marketing-campaign"></a>Erstellen einer effektiven Marketingkampagne
-Eine Marketingkampagne besteht aus einer Reihe von Verkaufsförderungsaktivitäten oder Marketingtaktiken, die Ihre Zielgruppe zu einer gewünschten Aktion veranlassen oder bei ihr ein bestimmtes Ergebnis erzielen sollen. Vor dem Entwerfen Ihre Kampagne sollten Sie folgende Voraussetzungen erfüllen:
+#### <a name="build-an-effective-marketing-campaign"></a>Erstellen einer effektiven Marketingkampagne
+Eine Marketingkampagne besteht aus einer Reihe von Verkaufsförderungsaktivitäten oder Marketingtaktiken, die Ihre Zielgruppe zu einer gewünschten Aktion veranlassen oder bei ihr ein bestimmtes Ergebnis erzielen sollen. Bevor Sie Ihre Kampagne entwerfen, sollten Sie die folgenden Schritte ausführen.
 
-#### <a name="know-your-audience"></a>Ihre Zielgruppe kennen
+##### <a name="know-your-audience"></a>Ihre Zielgruppe kennen
 
-Erstens, wer ist der Käufer, und wer ist die Schlüsselperson? Ihre Taktiken und Aktionsaufrufe können je nach Zielgruppe differieren. Stellen Sie diese Auswertungsfragen:
+Klären Sie zuerst, wer der Käufer und wer die Schlüsselperson ist. Ihre Taktiken und Aktionsaufrufe variieren möglicherweise je nach Zielgruppe. Stellen Sie diese Auswertungsfragen:
 
 - Wie viel Kontrolle besitzt der Käufer über die Kaufentscheidung? 
 - Wie viel Einfluss besitzt die Schlüsselperson? 
@@ -90,88 +91,105 @@ Erstens, wer ist der Käufer, und wer ist die Schlüsselperson? Ihre Taktiken un
 
 Wenn Sie die Antworten auf diese Fragen kennen, können Sie leichter entscheiden, wo Sie Ihr Geld investieren und wie Sie es verteilen müssen.
 
-#### <a name="define-where-your-audience-learns"></a>Definieren Sie, wo Ihre Zielgruppe sich informiert
+##### <a name="define-where-your-audience-learns"></a>Informationsquellen Ihrer Zielgruppe ermitteln
 
-Käufer haben 90 % ihres Entscheidungswegs zurückgelegt, wenn sie einen Markt besuchen. Käufer kommen so weit im Entscheidungsprozess, indem sie sich über Lösungen informieren und Optionen im voraus bewerten. Entwerfen Sie Eine Kampagne, die darauf abzielt, dort zu sein, wo Ihre Käufer und Schlüsselpersonen sich informieren. Jede Zielgruppe für jede Branche, jeden vertikalen Markt oder jede Kategorie ist anders. Informiert sich Ihre Zielgruppe online, per E-Mail, auf Messen, über soziale Medien oder in Gesprächen mit vertrauenswürdigen Ratgebern? Abhängig davon, wo und wie Ihre Zielgruppe sich informiert, sollten Sie Ihre Aktivitäten entwerfen und Ihr Marketingbudget entsprechend verteilen. Die Kombination dieser Taktiken wird Ihre Kampagnenstrategie.
+Käufer haben beim Besuch eines Marketplaces bereits 90% ihres Entscheidungswegs zurückgelegt. Käufer kommen so weit im Entscheidungsprozess, indem sie sich über Lösungen informieren und Optionen im voraus bewerten. Entwerfen Sie Eine Kampagne, die darauf abzielt, dort zu sein, wo Ihre Käufer und Schlüsselpersonen sich informieren. 
 
-#### <a name="create-clear-campaign-goals"></a>Erstellen klarer Kampagnenziele
+Jede Zielgruppe für jede Branche, jeden vertikalen Markt oder jede Kategorie ist anders. Informiert sich Ihre Zielgruppe online, per E-Mail, auf Messen, über soziale Medien oder in Gesprächen mit vertrauenswürdigen Ratgebern? Abhängig davon, wo und wie Ihre Zielgruppe sich informiert, sollten Sie Ihre Aktivitäten entwerfen und Ihr Marketingbudget entsprechend verteilen. Die Kombination dieser Taktiken wird Ihre Kampagnenstrategie.
 
-Sie müssen den Erfolg Ihrer Marketplace-Kampagne definieren und klare KPIs erstellen. Sie können mehrere Kampagnen mit verschiedenen Endzielen ausführen. Wir alle möchten unsere Verkäufe steigern. Das ultimative Endziel ist die Steigerung von Umsatz oder Kundenakquise. Allerdings können Ihre Marketingkampagnen an Ziele in anderen Phasen des Kaufzyklus gebunden sein.
+#### <a name="create-clear-campaign-goals"></a>Klare Kampagnenziele festlegen
 
-Wenn Sie z.B. Ihr Produkt neu in unserem Marketplace gestartet haben, finden Sie möglicherweise, dass sich am besten auf Zielgruppentraining und Leadgenerierung konzentrieren sollten. Erfolg könnte durch die Anzahl der von Ihrer Marketplace-Auflistung generierten Leads definiert werden. In diesem Fall würden sich Ihre Marketingtaktiken (und Angebotsseite) darauf konzentrieren, Kunden zu Ihrer Marketplace-Auflistung zu ziehen.
+Sie müssen den Erfolg Ihrer Marketplace-Kampagne definieren und klare KPIs erstellen. Sie führen möglicherweise mehrere Kampagnen mit verschiedenen Endzielen aus. Wir alle möchten unsere Verkäufe steigern. Im optimalen Fall steigern wir den Umsatz gewinnen Kunden. Allerdings sind Ihre Marketingkampagnen möglicherweise an Ziele in anderen Phasen des Kaufzyklus gebunden.
 
-Wenn Sie eine Testversion im Marketplace installiert haben und wissen, dass Ihr Produkt vor dem Kauf ein gewisses Maß an Engagement und Erfahrung erfordert, machen Sie möglicherweise die Anzahl heruntergeladener Testversionen zu Ihrem Kampagnenziel. In diesem Fall würde der CTA für Ihre Kampagnentaktiken sich scharf auf die Ermutigung zu einem Test im Marketplace konzentrieren. 
+Wenn Sie z.B. Ihr Produkt neu im Marketplace eingeführt haben, möchten Sie sich möglicherweise auf Zielgruppentraining und Leadgenerierung konzentrieren. Möglicherweise definieren Sie Erfolg anhand der Anzahl der Leads, die Sie durch Ihre Marketplace-Auflistung gewonnen haben. In diesem Fall liegt der Fokus Ihrer Marketingtaktiken (und Angebotsseite) darauf, Kunden auf Ihre Marketplace-Auflistung aufmerksam zu machen.
 
-Wenn Ihr Produkt oder Ihre Kategorie bekannter ist, und Sie Kauffunktionen im Marketplace eingerichtet haben, können Sie entscheiden, den Testschritt zu überspringen, und Ihre Zielgruppe direkt zur „Jetzt kaufen“-Verknüpfung im Marketplace zu leiten.
+Wenn Sie eine Testversion im Marketplace installiert haben und wissen, dass Ihr Produkt vor dem Kauf ein gewisses Maß an Engagement und Erfahrung erfordert, machen Sie möglicherweise die Anzahl heruntergeladener Testversionen zu Ihrem Kampagnenziel. In diesem Fall liegt der Fokus Ihrer Kampagnentaktiken darauf, Interessenten zu einem Test im Marketplace zu bewegen. 
 
-An einem fortgeschritteneren Punkt in der Geschichte Ihres Angebots können Sie entscheiden, Ihre Kampagnenaktivitäten auf das Upselling bei Ihrem Kundenstamm zu konzentrieren und in diesem Fall Aktionen zur Verkaufssteigerung im Marketplace vorantreiben. Ihre Taktiken würden sich darauf konzentrieren, Kunden zu ermutigen, „Jetzt im Marketplace zu kaufen". Der KPI könnte der im Marketplace generierte Umsatz sein.
+Wenn Ihr Produkt oder Ihre Kategorie etabliert ist und Sie Kauffunktionen im Marketplace eingerichtet haben, können Sie den Testschritt überspringen und Ihre Zielgruppe direkt zum Link „Jetzt kaufen“ im Marketplace leiten.
 
-Unabhängig von der Reife Ihres Angebots und den Zielen Ihrer Organisation ist der Schlüssel zur Maximierung der Wirksamkeit Ihrer Kampagne, sich auf dieses Ziel zu konzentrieren und einen Satz an diesem Ziel ausgerichteter integrierter Marketingtaktiken festzulegen.
+Zu einem späteren Zeitpunkt im Verlauf Ihres Angebots können Sie Ihre Kampagnenaktivitäten auf das Upselling bei Ihrem Kundenstamm konzentrieren und Aktionen zur Verkaufssteigerung im Marketplace vorantreiben. Der Fokus Ihre Taktiken liegt darauf, Kunden im Marketplace zu „Jetzt kaufen“ zu leiten. Ihr KPI könnte der im Marketplace generierte Umsatz sein.
 
-Da wir Teil eines neuen Herausgebers im Azure Marketplace sind, bieten wir Ihnen einige kostenlose Marketplace-GTM-Vorteile. Sie sollten genau überlegen, wie Sie diese Vorteile in Ihrer Kampagnenstrategie nutzen können. Teilen Sie unserem Marketingteam Ihre Marketplace-Kampagnenziele und Ihre gewünschte Zielgruppenaktion mit. Wir können diese Vorteile Ihrem Plan anpassen.
+Unabhängig vom Reifegrad Ihres Angebots und den Zielen Ihres Unternehmens lauten die Schlüssel zu einer erfolgreichen Kampagne stets:
 
-Weitere Markteinführungsunterstützung inklusive Vorlagen, Webinhalten, Training und Tools zur Förderung Ihres Geschäftswachstums finden Sie unter [www.MicrosoftGoToMarket.com](https://www.MicrosoftGoToMarket.com). Zusätzliche Inhalte zu Kampagnenerstellung und bewährten Marketingmethoden finden Sie unter [Smart Partner Marketing](https://partner.microsoft.com/en-US/smart-partner-marketing), einem Programm von Microsoft Partner Network.
+- Auf das Ziel fokussiert bleiben
+- Integrierte Marketingtaktiken auf dieses Ziel ausrichten
 
-#### <a name="marketplace-gtm-benefits"></a>Marketplace-GTM-Vorteile
+Da wir Teil eines neuen Herausgebers im Azure Marketplace sind, bieten wir Ihnen einige kostenlose Marketplace-GTM-Vorteile. Überlegen Sie genau, wie Sie diese Vorteile in Ihrer Kampagnenstrategie nutzen können. Teilen Sie unserem Marketingteam Ihre Marketplace-Kampagnenziele und Ihre gewünschte Zielgruppenaktion mit. Wir können diese Vorteile Ihrem Plan anpassen.
 
-Neue Auflistungen im Marketplace qualifizieren sich für kostenlose Marketplace-GTM-Vorteile. Sobald aufgelistet, wird unser Team von Marketingspezialisten zum Starten dieser Aktivitäten Kontakt mit Ihnen aufnehmen. Sie müssen nichts weiter tun, außer mit uns zusammenzuarbeiten, sobald wir Kontakt mit Ihnen aufnehmen. 
+Weitere Informationen zum Erstellen von Kampagnen und bewährten Methoden für das Marketing finden Sie unter [Smart Partner Marketing](https://partner.microsoft.com/en-US/smart-partner-marketing). Dies ist ein Programm des Microsoft Partner Network.
 
-Die Aktivitäten, die wir bereitstellen, unterscheiden sich je nach Ihrem Lösungsstatus in unserem Marketplace. Die Vorteile sind deutlich höher bei Angeboten, die mit einer Testversion oder Transaktionsfunktionen im Marketplace verbunden sind.
+#### <a name="take-advantage-of-marketplace-gtm-benefits"></a>Vorteile von Marketplace GTM nutzen
 
-Um die Wirkung dieser Aktivitäten zu maximieren, bitten wir Sie, Ihren Startplan zur Ausführung bereit zu halten. Sie können Ihre Angebotsseite für viele dieser Taktiken nutzen. 
+Neue Auflistungen im Marketplace qualifizieren sich für kostenlose Marketplace-GTM-Vorteile. Unsere Marketingspezialisten nehmen zum Start dieser Aktivitäten Kontakt mit Ihnen auf. Sie müssen nichts weiter tun, als sich auf unsere Kontaktaufnahme zu melden. 
+
+Unsere bereitgestellten Aktivitäten unterscheiden sich je nach Ihrem Lösungsstatus in unserem Marketplace. Die Vorteile sind deutlich höher, wenn Angebote mit einer Testversion oder Transaktionsfunktionen im Marketplace verbunden sind.
+
+Um die Wirkung dieser Aktivitäten zu maximieren, bitten wir Sie, Ihren Startplan zur Ausführung bereitzuhalten. Sie können Ihre Angebotsseite für viele dieser Taktiken nutzen. 
 
 >[!NOTE]
 >Der OCP-Katalog (One Commercial Partner-Katalog) ist ein Vorteil von Mitgliedern im Microsoft Partner Network. 
 
 ![Marketplace-GTM-Vorteile](./media/marketplace-publishers-guide/marketplace-gtm-promotion.png)
 
-Support inklusive Vorlagen, Webinhalten, Training und Tools zur Förderung Ihres Geschäfts finden Sie unter [Microsoft Go To Market](https://www.microsoftgotomarket.com).
+Weitere Informationen finden Sie unter [Microsoft Go To Market](https://www.microsoftgotomarket.com) (Microsoft-Markteinführung). Dort finden Sie die Vorlagen, Webinhalte, Training und Tools, die Ihr Unternehmen voranbringen.
 
-#### <a name="enable-lead-sharing"></a>Aktivieren des gemeinsamen Zugriffs auf Leads
+#### <a name="enable-lead-sharing"></a>Gemeinsamen Zugriff auf Leads aktivieren
 
-Stellen Sie sicher, dass die Leadverwaltung in Ihrem Marketplace-Angebot aktiviert ist, damit Sie die Kontaktdaten Ihrer Marketplace-Kunden erhalten. Diese Leads bilden die Grundlage für das Engagement für Bedarfsgenerierungskampagnen, Verkaufsaktivitäten durch Ihre Außendienstmitarbeiter und Informationen zur Leistung Ihres Angebots. 
+Stellen Sie sicher, dass die Leadverwaltung in Ihrem Marketplace-Angebot aktiviert ist, damit Sie die Kontaktdaten Ihrer Marketplace-Kunden erhalten. Diese Leads bilden die Grundlage für das Engagement für Nachfragegenerierungskampagnen, Verkaufsaktivitäten durch Ihre Außendienstmitarbeiter und Informationen zur Leistung Ihres Angebots. 
 
 Zu den bewährten Methoden für die Verwendung dieser Leads gehören:
 
-- Qualifizieren der Leads und ihre Bewertung als Verkaufschancen
-- Ihre Betreuung zum Eintritt in eine Vertriebspipeline
-- Ausrichten dieser Aktivitäten an Ihrer gesamten Marketingkampagnenstrategie
+- Qualifizieren der Leads und deren Bewertung als Verkaufschancen
+- Eröffnen einer neuen Vertriebspipeline durch deren Betreuung
+- Ausrichten dieser Aktivitäten auf Ihre allgemeine Marketingkampagnenstrategie
 
-Diese Leads demonstrieren zielgerichtetes Benutzerinteresse an Ihrem Marketplace-Angebot und Ihrer Technologie und sollten daher als Möglichkeit behandelt werden, potenziell hoch engagierte Kunden zu finden. Wenn ein Lead im Marketplace erstellt wird, wird ein ähnlicher Lead im Microsoft Field Seller-CRM erstellt. 
+Diese Leads zeigen gezieltes Interesse an Ihrem Marketplace-Angebot und Ihrer Technologie. Sie sollten sie als große Chance betrachten, interessierte Kunden zu finden. Beim Erstellen eines Leads im Marketplace wird ein ähnlicher Lead im Microsoft Field Seller-CRM erstellt. 
 
-Marketplace-Leads unterscheiden sich jedoch von Microsoft Seller-Qualified Leads, die ein Feature des Co-Selling-Programms sind. Im Folgenden erfahren Sie, wie Sie auf das Co-Sell-Programm zugreifen. 
+Marketplace-Leads unterscheiden sich jedoch von Microsoft Seller-Qualified Leads, die ein Feature des Co-Selling-Programms sind. Im nächsten Abschnitt erfahren Sie, wie Sie auf das Co-Selling-Programm zugreifen. 
 
-#### <a name="promote-your-business-through-microsoft"></a>Fördern Sie Ihr Geschäft mithilfe von Microsoft
+#### <a name="promote-your-business-through-microsoft"></a>Ihr Unternehmen mit Microsoft voranbringen
 
-Es gibt viele Personen und Teams bei Microsoft, deren einziges Ziel ist, unsere Partner zu unterstützen und Unstimmigkeiten, die im Verkauf mit uns auftreten, zu beseitigen. Nun sind Sie in unserem Marketplace aufgelistet und haben Zugriff auf unsere Marketplace-Programme und -Ressourcen. 
+Viele Personen und Teams bei Microsoft haben es sich zum Ziel gesetzt, unsere Partner zu unterstützen und eventuelle Unstimmigkeiten im Verkauf zu beseitigen. Da Sie in unserem Marketplace aufgelistet sind, haben Sie Zugriff auf die zugehörigen Programme und Ressourcen. 
 
-Wenn Sie sich nicht bereits beim [Microsoft Partner Network (MPN)](https://partner.microsoft.com) registriert haben, sollte dies der erste Schritt sein. MPN bietet einen Leitfaden für die Navigation in Microsoft von neuen Geschäftschancen, dem Herstellen einer Verbindung mit Teams oder Partnern bis zu Informationen zu Lösungen und Training, um Ihre Fertigkeiten zu ergänzen.
-Die besten nächsten Maßnahmen, die Sie ergreifen können, um Zugriff auf noch mehr Partnervorteile und Ressourcen zu bekommen, sind:
+Wenn Sie sich nicht bereits beim [Microsoft Partner Network](https://partner.microsoft.com) registriert haben, sollte dies der erste Schritt sein. Im MPN finden Leitfäden zu Themen wie diesen:
+- Neue Geschäftschancen
+- Interaktion mit Teams oder Partnern
+- Projektmappen und Schulungen zum Ausbauen von Kompetenzen
 
-1.  Nutzen Sie Ihre [Hauptvorteile](https://partner.microsoft.com/en-US/membership/core-benefits): Als Teil unseres Microsoft Partner Network genießen Sie einen Satz von Hauptvorteilen, mit denen Sie Zeit und Geld sparen können, während Sie Ihre Funktionen stärken, Kunden besser bedienen und Verbindungen herstellen, um Ihr vollständiges Geschäftspotenzial zu erreichen.
+Mit den folgenden Tipps können Sie von noch mehr Partnervorteilen und Ressourcen profitieren:
 
-2.  Verdienen Sie sich Ihre [Cloud-Plattformkompetenz](https://partner.microsoft.com/en-us/membership/cloud-platform-competency): Sich eine Kompetenz zu verdienen, ermöglicht Ihnen, sich innerhalb des umfangreichen Partnernetzwerks von Microsoft herauszustellen, als auch technische Kenntnisse und Kundenerfolg auf dem Markt zu zeigen. Sich eine Kompetenz zu verdienen, ist auch eine Voraussetzung für viele wichtige Partnerprogramme wie Co-Sell.
+1.  Nutzen Sie Ihre [zentralen Vorteile](https://partner.microsoft.com/en-US/membership/core-benefits).
+    Im Rahmen Ihrer Mitgliedschaft im Microsoft Partner Network profitieren Sie von zentralen Vorteilen, mit denen Sie Zeit und Geld sparen. Zudem können Sie Ihre Kompetenzen ausbauen, die Kunden besser betreuen und Kontakte knüpfen, um Ihr Geschäftspotenzial zu entfalten.
 
-3.  Werden Sie [Co-Sell-bereit](https://partner.microsoft.com/en-US/reach-customers/promote-your-business): Dieses Programm ermöglicht Ihnen die direkte Zusammenarbeit mit Microsoft-Verkäufern und anderen Partner bei Zielkundenchancen und Accountplanung. Ihre Lösung wird für unsere Verkäufer in ihrem Lösungskatalog sichtbar, und unseren Verkäufern werden die Zusammenarbeit und der Gewinn von Abschlüssen mit Ihnen honoriert.
+2.  Erwerben Sie Ihre [Cloud Platform-Kompetenz](https://partner.microsoft.com/en-us/membership/cloud-platform-competency).
+    Wenn Sie eine Kompetenz erlangen, können Sie sich im umfangreichen Partnernetzwerk von Microsoft hervorheben. Zudem steht eine erworbene Kompetenz für technische Kenntnisse und Kundenerfolg im Markt. Zudem sind Kompetenzen Voraussetzungen für viele wichtige Partnerprogramme wie Co-Selling.
 
-#### <a name="merchandising"></a>Verkaufsförderung 
-Im Rahmen des Veröffentlichungsvorgangs haben Sie überlegt, welchen Angebotstyp Sie erstellen, und hatten die Gelegenheit, eine Kategorie für Ihr Angebot in Azure Marketplace auszuwählen. Stellen Sie sicher, dass Sie eine Kategorie auswählen, die genau zu Ihrer Lösung passt, sodass sie genau potenziellen Kunden angezeigt wird. 
+3.  Machen Sie sich [bereit für Co-Selling](https://partner.microsoft.com/en-US/reach-customers/promote-your-business).
+    Dieses Programm ermöglicht Ihnen die direkte Zusammenarbeit mit Microsoft-Verkäufern und anderen Partnern bei Zielkundenchancen und Accountplanung. Unser Verkäufer können Ihre Lösung in ihrem Lösungskatalog sehen. Unsere Verkäufer werden für die Zusammenarbeit und den gemeinsamen Erfolg belohnt.
 
-In Azure Marketplace qualifizieren Sie sich für ausgewählte Apps, wenn Sie die Testversions- und Transaktionsfunktionalität aktivieren. Informieren Sie sich über die Marketplace-GTM-Vorteile, um zu wissen, wie ausgewählte Apps in den Kontext Ihrer GTM-Vorteile passen. 
+#### <a name="invest-in-merchandising"></a>In Verkaufsförderung investieren 
+Im Rahmen der Veröffentlichung haben Sie den zu erstellenden Angebotstyp und die Kategorie für Ihr Angebot im Azure Marketplace ausgewählt. Wählen Sie unbedingt eine Kategorie aus, die genau zu Ihrer Lösung passt, damit sie potenziellen Kunden korrekt angezeigt wird. 
 
-Als ausgewählte Apps werden Apps gewählt, die die größte Benutzerfreundlichkeit bieten und die sich durch qualitativ hochwertiges Partnermarketingengagement auszeichnen. Dazu gehören Klarheit der Auflistung, Zuverlässigkeit der Technologie und Wachstum der Kundenplattformnutzung sowie das Maß Ihres Engagements beim Erstellen qualitativ hochwertigen Marketingmaterials. 
+In Azure Marketplace qualifizieren Sie sich für ausgewählte Apps, wenn Sie die Funktion für Testversionen und Transaktionen aktivieren. Informieren Sie sich über die Marketplace-GTM-Vorteile, um zu erfahren, wie ausgewählte Apps in den Kontext Ihrer GTM-Vorteile passen. 
 
-Zur Maximierung der Auswahlchancen Ihrer App sollten Sie in den Erfolg Ihres Marketplace-Angebots investieren und die folgenden Ansätze berücksichtigen, um eine große Benutzerfreundlichkeit Ihres Angebots zu gewährleisten: 
+Als ausgewählte Apps qualifizieren sich Apps mit der größten Benutzerfreundlichkeit, die sich durch qualitativ hochwertiges Partnermarketingengagement auszeichnen. Zu den Kriterien zählen:
 
-- Stellen Sie sicher, dass Ihre Marketingartefakte hochgeladen und richtig angezeigt werden
-- Treten Sie dem [Microsoft Partner Network](https://partner.microsoft.com/membership) bei, und engagieren Sie sich im Partnerökosystem
-- Leiten Sie interessante Besucher zu Ihrem Angebot im Azure Marketplace, indem Sie anspruchsvolle Bedarfsgenerierungskampagnen erstellen
-- Stellen Sie sicher, dass alle Ihre Azure-Lösungen und Apps im Azure Marketplace verfügbar sind
-- Steigern Sie den Erwerb Ihrer Azure Marketplace-Angebote, indem Sie die Nachfrage ankurbeln, hochwertigen Kundendienst bieten und rechtzeitige Updates Ihres Produkts bereitstellen
+- Übersichtlichkeit der Auflistung
+- Zuverlässigkeit der Technologie
+- Vermehrte Nutzung der Kundenplattform
+- Ihr Engagement beim Erstellen von hochwertigem Marketingmaterial 
+
+Investieren Sie in den Erfolg Ihres Marketplace-Angebots, um die Chancen zu steigern, dass Ihre App ausgewählt wird. Mit den folgenden Ansätzen können Sie die Benutzerfreundlichkeit Ihrer App sicherstellen: 
+
+- Stellen Sie sicher, dass Ihre Marketinginhalte hochgeladen und richtig angezeigt werden.
+- Treten Sie dem [Microsoft Partner Network](https://partner.microsoft.com/membership) bei, und engagieren Sie sich im Partnerökosystem.
+- Leiten Sie interessante Besucher zu Ihrem Angebot im Azure Marketplace, indem Sie anspruchsvolle Nachfragegenerierungskampagnen erstellen.
+- Stellen Sie sicher, dass alle Ihre Azure-Lösungen und Apps im Azure Marketplace verfügbar sind.
+- Steigern Sie die Nutzung Ihrer Azure Marketplace-Angebote, indem Sie die Nachfrage fördern, hochwertigen Kundendienst bieten und rechtzeitige Updates Ihres Produkts bereitstellen.
 
 ## <a name="analytics-and-reporting"></a>Analysen und Berichte
 
-Im Abschnitt „Einblicke“ des Cloud-Partnerportals sehen Sie einen allgemeinen Überblick über die Leistung Ihres Angebots. In diesem Abschnitt sind folgende Berichte enthalten:  
+Im Insights-Abschnitt des Microsoft Cloud-Partnerportals erhalten Sie einen Überblick über die Leistung Ihres Angebots. In diesem Abschnitt sind folgende Berichte enthalten:  
 - Zusammenfassende Momentaufnahme von Aufträgen
 - Verwendung
 - Bereitstellungen
@@ -180,7 +198,7 @@ Im Abschnitt „Einblicke“ des Cloud-Partnerportals sehen Sie einen allgemeine
 - Aufträge und Nutzung als monatliche Zusammenfassung oder als Trendansicht für einen Zeitraum von sechs Monaten
 - Nutzung/Aufträge segmentiert nach mehreren Kriterien
 
-Ausführliche Berichte enthalten Kundeninformationen wie den Unternehmensnamen und den geografischen Standort (bis zur Postleitzahl), damit Sie Ihre Kunden vergleichen und Ihre Verkäufer entlohnen können. Folgende Kundenattribute werden von uns bereitgestellt:
+Ausführliche Berichte enthalten Kundeninformationen vom Unternehmensnamen über den geografischen Standort bis hin zur Postleitzahl. Sie können diese Informationen verwenden, um Ihre Kunden zu vergleichen und Ihre Verkäufer zu bezahlen. Folgende Kundenattribute werden von uns bereitgestellt:
 - Reseller
 - First Name (Vorname)
 - Last Name (Nachname)
@@ -196,6 +214,8 @@ Ausführliche Berichte enthalten Kundeninformationen wie den Unternehmensnamen u
 - Kommunikation/Kultur des Kunden
 - Postleitzahl des Kunden
 
-Die bewährte Methode für den Umgang mit den Informationen in diesem Bericht ist, sie mit Ihren eigenen internen Daten abzugleichen und zu verwenden, um bei Ihren Marketingkampagnenaktionen Prioritäten zu setzen. 
+Die bewährte Methode für die Informationen in diesen Berichten ist, sie mit Ihren eigenen internen Daten abzugleichen und zu verwenden. Verwenden Sie sie, um Prioritäten bei Ihren Marketingkampagnenaktionen zu setzen. 
 
-Der Abschnitt „Analyse“ von „Einblicke“ im Cloud-Partnerportal bietet eine umfangreiche Dashboardansicht basierend auf Power BI, die Ihnen ermöglicht, den Besuch auf Ihrer App-Detailseite anzuzeigen. Neue Features für dieses Dashboard werden laufend eingeführt. Im Cloud-Partnerportal ist auch eine Dokumentation zu Microsoft Campaigns enthalten, einem Mechanismus, mit dem Sie Kampagnen einrichten und im Portal verfolgen können.
+Der Analytics-Abschnitt im Insights-Bereich des Microsoft Cloud-Partnerportals bietet ein umfangreiches Dashboard auf Basis von Power BI. Auf diesem Dashboard können Sie den Datenverkehr auf Ihrer App-Detailseite anzeigen. Neue Features für dieses Dashboard werden laufend eingeführt. 
+
+Im Microsoft Cloud-Partnerportal finden Sie eine Dokumentation zu Microsoft Campaigns. Profitieren Sie davon, um Kampagnen einzurichten und im Portal zu verfolgen.
