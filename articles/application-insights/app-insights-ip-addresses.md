@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1bd4cee783944b0c6e0efcb7ec63c5a72bd13cc8
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9b48b17b214f6ff22c7c68421ba8c89104c8b4b1
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Von Application Insights und Log Analytics verwendete IP-Adressen
 Der Dienst [Azure Application Insights](app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
@@ -48,7 +48,7 @@ Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen we
 | Konfiguration |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Konfiguration |`auth.gfx.ms` | |`443` |
 | Konfiguration |`login.live.com` | |`443` |
-| Installation |`packages.nuget.org` | |`443` |
+| Installation |`packages.nuget.org`, `nuget.org`, `api.nuget.org` | |`443` |
 
 ## <a name="hockeyapp"></a>HockeyApp
 | Zweck | URL | IP | Ports |

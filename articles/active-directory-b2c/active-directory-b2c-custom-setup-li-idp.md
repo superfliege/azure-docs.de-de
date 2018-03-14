@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen von LinkedIn als Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -146,7 +146,7 @@ Definieren Sie LinkedIn als Anspruchsanbieter, indem Sie einen `<ClaimsProvider>
 
 4. Ersetzen Sie den Wert *client_id* durch Ihre LinkedIn-Anwendungsclient-ID.
 
-5. Speichern Sie die Datei.
+5. Speichern Sie die Datei .
 
 ## <a name="step-4-register-the-linkedin-account-claims-provider"></a>Schritt 4: Registrieren des LinkedIn Kontoanspruchsanbieters
 Sie haben den Identitätsanbieter eingerichtet. Er ist jedoch nicht in den Fenstern zur Registrierung oder Anmeldung verfügbar. Nun müssen Sie den LinkedIn-Kontoidentitätsanbieter der `SignUpOrSignIn`-User Journey Ihres Benutzers hinzufügen.

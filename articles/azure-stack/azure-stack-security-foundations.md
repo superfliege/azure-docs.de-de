@@ -3,8 +3,8 @@ title: "Grundlegendes zu Azure Stack-Sicherheitsmaßnahmen | Microsoft-Dokumenta
 description: "Als Dienstadministrator erhalten Sie Informationen zu Sicherheitsmaßnahmen, die auf Azure Stack angewendet werden"
 services: azure-stack
 documentationcenter: 
-author: Heathl17
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 106fcf7b0edc095a52e82d58ad48a73084b65d1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: fa0800f03d823769dcd9f01601689122b0d09ec5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Sicherheitsstatus der Azure Stack-Infrastruktur
 
-*Gilt für: integrierte Azure Stack-Systeme*
+*Gilt für: Integrierte Azure Stack-Systeme*
 
 Sicherheitsüberlegungen und Konformitätsbestimmungen gehören zu den wichtigsten Beweggründen für die Verwendung von Hybrid Clouds. Azure Stack wurde für diese Szenarien konzipiert, und es ist wichtig, bei der Einführung von Azure Stack über die bereits vorhandenen Sicherheitsmaßnahmen informiert zu sein.
 
@@ -31,10 +31,10 @@ In Azure Stack koexistieren zwei Sicherheitsstatusebenen. Die erste Ebene besteh
 ## <a name="security-approach"></a>Sicherheitsansatz
 Azure Stack wurde mit einem Sicherheitsstatus konzipiert, um moderne Bedrohungen abzuwehren und die Anforderungen der wichtigsten Konformitätsstandards zu erfüllen. Daraus resultiert, dass der Sicherheitsstatus der Azure Stack-Infrastruktur auf zwei Säulen ruht:
 
- - **Von einer Sicherheitsübertretung ausgehen.** Von der Annahme ausgehend, dass das System bereits verletzt wurde, konzentrieren wir uns auf das *Erkennen und Beschränken der Auswirkungen von Sicherheitsverletzungen*, anstatt nur zu versuchen, Angriffe zu verhindern. 
- - **Standardmäßig verstärkt.**  Da die Infrastruktur auf klar definierter Hardware und Software ausgeführt wird, *aktivieren, konfigurieren und überprüfen wir die Sicherheitsfunktionen*, deren Implementierung in der Regel dem Kunden überlassen ist.
+ - **Von einer Sicherheitsübertretung ausgehen.** Von der Annahme ausgehend, dass bereits eine systemseitige Sicherheitsverletzung vorliegt, konzentrieren wir uns auf das *Erkennen und Beschränken der Auswirkungen von Sicherheitsverletzungen*, anstatt nur zu versuchen, Angriffe zu verhindern. 
+ - **Standardmäßig verstärkt.**  Da die Infrastruktur auf klar definierter Hardware und Software ausgeführt wird, *aktivieren, konfigurieren und überprüfen wir die Sicherheitsfeatures*, deren Implementierung dem Kunden überlassen ist.
 
-Da Azure Stack als integriertes System geliefert wird, wird der Sicherheitsstatus der Azure Stack-Infrastruktur von Microsoft definiert.  Genau wie in Azure sind Mandanten dafür verantwortlich, den Sicherheitsstatus ihrer Mandantenworkloads zu definieren. Dieses Dokument vermittelt grundlegende Kenntnisse über den Sicherheitsstatus der Azure Stack-Infrastruktur.
+Da Azure Stack als integriertes System geliefert wird, wird der Sicherheitsstatus der Azure Stack-Infrastruktur von Microsoft definiert. Genau wie in Azure sind Mandanten dafür verantwortlich, den Sicherheitsstatus ihrer Mandantenworkloads zu definieren. Dieses Dokument vermittelt grundlegende Kenntnisse über den Sicherheitsstatus der Azure Stack-Infrastruktur.
 
 ## <a name="data-at-rest-encryption"></a>Verschlüsselung für ruhende Daten
 Alle Azure Stack-Infrastruktur- und Mandantendaten sind im Ruhezustand mit Bitlocker verschlüsselt. Diese Verschlüsselung bietet Schutz vor physischem Verlust bzw. Diebstahl von Azure Stack-Speicherkomponenten. 
@@ -71,7 +71,7 @@ Die Verwaltung in Azure Stack wird mit drei Einstiegspunkten gesteuert, von dene
 3. Für bestimmte Low-Level-Vorgänge wie Rechenzentrumsintegration oder Unterstützungsszenarien macht Azure Stack einen als [privilegierten Endpunkt](azure-stack-privileged-endpoint.md) bezeichneten PowerShell-Endpunkt verfügbar. Dieser Endpunkt macht nur einen zugelassenen Satz von Cmdlets verfügbar und wird gründlich überwacht.
 
 ## <a name="network-controls"></a>Netzwerksteuerungen
-Die Azure Stack-Infrastruktur umfasst mehrere Ebenen der Zugriffssteuerungsliste (Access Control List, ACL) für das Netzwerk.  Die ACLs verhindern unbefugten Zugriff auf die Infrastrukturkomponenten und begrenzen die Infrastrukturkommunikation auf die Pfade, die für ihr Funktionieren erforderlich sind. 
+Die Azure Stack-Infrastruktur umfasst mehrere Ebenen der Zugriffssteuerungsliste (Access Control List, ACL) für das Netzwerk. Die ACLs verhindern unbefugten Zugriff auf die Infrastrukturkomponenten und begrenzen die Infrastrukturkommunikation auf die Pfade, die für ihr Funktionieren erforderlich sind. 
 
 Netzwerk-ACLs werden in drei Ebenen durchgesetzt:
 1.  Top-of Rack-Switches

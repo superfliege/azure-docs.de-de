@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: d7c33dc0a3c1f01cc53a91e05feb33272cb21f47
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1266c7b6c1539f84eafea1007999fb4360184857
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen
 ## <a name="overview"></a>Übersicht
@@ -184,12 +184,12 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus zu den Abrechnungsmod
 | **Wird gestartet** |**Wird gestartet** |Nein (Übergangsstatus) |
 | **Wird ausgeführt** |**Bereit** (keine ausgeführten Programme)<p><p>oder<p>**Streaming** (mindestens ein ausgeführtes Programm) |Ja |
 | **Wird beendet** |**Wird beendet** |Nein (Übergangsstatus) |
-| **Beendet** |**Beendet** |Nein |
+| **Beendet** |**Beendet** |Nein  |
 
 ## <a id="cc_and_ads"></a>Untertitel und Werbeeinblendungen
 Die folgende Tabelle enthält die unterstützten Standards für Untertitel und Werbeeinblendungen.
 
-| Standard | Hinweise |
+| Standard | Notizen |
 | --- | --- |
 | CEA-708 und EIA-608 (708/608) |CEA-708 und EIA 608 sind Untertitelstandards für die USA und Kanada.<p><p>Derzeit werden Untertitel nur unterstützt, wenn sie im codierten Eingabedatenstrom übertragen werden. Sie müssen einen Live-Media Encoder verwenden, mit dem Untertitel nach dem Standard 608 oder 708 in den codierten Datenstrom eingefügt werden können, der an Media Services gesendet wird. Media Services sendet die Inhalte mit eingefügten Untertiteln an Ihre Zuschauer. |
 | TTML in ISMT (Smooth Streaming-Texttracks) |Die dynamische Paketerstellung von Media Services ermöglicht Ihren Clients das Streamen von Inhalten in einem der folgenden Formate: DASH, HLS oder Smooth Streaming. Wenn Sie Fragmentiertes MP4 (Smooth Streaming) mit Untertiteln in ISMT (Smooth Streaming-Texttracks) erfassen, kann der Datenstrom aber nur an Smooth Streaming-Clients gesendet werden. |
@@ -209,6 +209,10 @@ Wenn Sie mit einem lokalen Liveencoder einen Datenstrom mit Mehrfachbitrate an e
 Hier sind weitere Aspekte im Zusammenhang mit der Arbeit mit Kanälen und den zugehörigen Komponenten aufgeführt:
 
 * Rufen Sie bei jeder Neukonfiguration des Liveencoders die **Reset** -Methode für den Kanal auf. Bevor Sie den Kanal zurückzusetzen, müssen Sie das Programm beenden. Wenn Sie den Kanal zurückgesetzt haben, starten Sie das Programm neu.
+
+  > [!NOTE]
+  > Wenn Sie das Programm neu starten, müssen Sie es einem neuen Medienobjekt zuweisen und einen neuen Locator erstellen. 
+  
 * Ein Kanal kann nur beendet werden, wenn er den Status **Wird ausgeführt** aufweist und alle Programme im Kanal beendet wurden.
 * In der Standardeinstellung können Sie Ihrem Media Services-Konto nur bis zu fünf Kanäle hinzufügen. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md).
 * Es werden nur dann Gebühren berechnet, wenn sich der Kanal im Status **Wird ausgeführt** befindet. Weitere Informationen finden Sie im Abschnitt [Kanalstatus und Abrechnung](media-services-live-streaming-with-onprem-encoders.md#states).

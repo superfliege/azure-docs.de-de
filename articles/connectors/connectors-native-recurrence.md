@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9384752c7f12074aae6ff165241e954eb2a4a01e
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 0dead955f9eb723dfa232d3ce751498a09ce1b29
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="schedule-tasks-and-workflows-that-run-regularly-with-logic-apps"></a>Planen von regelmäßig ausgeführten Aufgaben und Workflows mit Logik-Apps
+# <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Erstellen und Planen von regelmäßig laufenden Tasks mit Azure Logic Apps
 
 Zum Planen von regelmäßig ausgeführten Aufgaben, Aktionen, Workloads oder Prozessen können Sie einen Logik-App-Workflow erstellen, der mit dem [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) **Zeitplan: Wiederholung** gestartet wird. Mit diesem Trigger können Sie ein Datum und eine Uhrzeit zum Starten der Wiederholung und einen Wiederholungszeitplan für die Durchführung von Aufgaben festlegen. Hier sind einige Beispiele angegeben:
 
@@ -109,7 +109,7 @@ Sie können diese Eigenschaften für den Wiederholungstrigger konfigurieren.
 
 ## <a name="json-example"></a>JSON-Beispiel
 
-Hier ist ein Beispiel für die Definition eines Wiederholungstriggers angegeben:
+Hier ist ein Beispiel für die [Definition eines Wiederholungstriggers](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger) angegeben:
 
 ``` json
 {

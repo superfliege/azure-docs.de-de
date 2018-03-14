@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 3c752573be7c07f800b0dce3d12d4dabd7328922
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2fd4c91a8151067c0e9cc9000c158e48cb2cd8a5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Verschlüsseln von Inhalten mit der Speicherverschlüsselung
 
@@ -29,7 +29,7 @@ Dieser Artikel bietet einen Überblick über die AMS-Speicherverschlüsselung un
 * Erstellen Sie einen Inhaltsschlüssel.
 * Erstellen Sie ein Medienobjekt. Legen Sie AssetCreationOption auf StorageEncryption fest, wenn Sie das Medienobjekt erstellen.
   
-     Verschlüsselte Medienobjekte müssen Inhaltsschlüsseln zugeordnet werden.
+     Verschlüsselte Medienobjekte werden Inhaltsschlüsseln zugeordnet.
 * Verknüpfen Sie den Inhaltsschlüssel mit dem Medienobjekt.  
 * Legen Sie die Parameter für die Verschlüsselung in den AssetFile-Entitäten fest.
 
@@ -44,60 +44,62 @@ Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Heade
 Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="storage-encryption-overview"></a>Übersicht über die Speicherverschlüsselung
-Die AMS-Speicherverschlüsselung wendet die Verschlüsselung im **AES-CTR-Modus** auf die gesamte Datei an.  AES-CTR ist eine Blockchiffre, die Daten beliebiger Länge ohne Auffüllen verschlüsseln kann. AES-CTR verschlüsselt einen Zählerblock mit dem AES-Algorithmus und kombiniert die Ausgabe von AES per XOR-Operation mit den zu verschlüsselnden oder zu entschlüsselnden Daten.  Der verwendete Zählerblock wird erstellt, indem der InitializationVector-Wert in die Bytes 0 bis 7 des Zählerwerts kopiert und die Bytes 8 bis 15 des Zählerwerts auf 0 gesetzt werden. Im 16 Byte langen Zählerblock werden die Bytes 8 bis 15 (also die niedrigstwertigen Bytes) als einfache 64-Bit-Ganzzahl ohne Vorzeichen verwendet, die für jeden nachfolgenden Block verarbeiteter Daten um eins erhöht wird. Die Reihenfolge der Netzwerkbytes wird beibehalten. Wenn diese Ganzzahl ihren Maximalwert erreicht (0xFFFFFFFFFFFFFFFF), wird durch weitere Erhöhung der Blockzähler auf Null zurückgesetzt (Bytes 8 bis 15), ohne Auswirkung auf die restlichen 64 Bits des Zählers (also Bytes 0 bis 7).   Um die Sicherheit der Verschlüsselung im AES-CTR-Modus zu gewährleisten, muss der InitializationVector-Wert jeder Schlüsselkennung für jeden Inhaltsschlüssel für jede Datei eindeutig sein, und die Dateien müssen weniger als 2^64 Blöcke lang sein.  Damit wird sichergestellt, dass ein Zählerwert nie mit einem vorhandenen Schlüssel wiederverwendet wird. Weitere Informationen zum CTR-Modus finden Sie auf [dieser Wiki-Seite](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (der Wiki-Artikel verwendet den Begriff „Nonce“ anstelle von „InitializationVector“).
+Die AMS-Speicherverschlüsselung wendet die Verschlüsselung im **AES-CTR-Modus** auf die gesamte Datei an.  AES-CTR ist eine Blockchiffre, die Daten beliebiger Länge ohne Auffüllen verschlüsseln kann. AES-CTR verschlüsselt einen Zählerblock mit dem AES-Algorithmus und kombiniert die Ausgabe von AES per XOR-Operation mit den zu verschlüsselnden oder zu entschlüsselnden Daten.  Der verwendete Zählerblock wird erstellt, indem der InitializationVector-Wert in die Bytes 0 bis 7 des Zählerwerts kopiert und die Bytes 8 bis 15 des Zählerwerts auf 0 gesetzt werden. Im 16 Byte langen Zählerblock werden die Bytes 8 bis 15 (also die niedrigstwertigen Bytes) als einfache 64-Bit-Ganzzahl ohne Vorzeichen verwendet, die für jeden nachfolgenden Block verarbeiteter Daten um eins erhöht wird. Die Reihenfolge der Netzwerkbytes wird beibehalten. Wenn diese Ganzzahl ihren Maximalwert erreicht (0xFFFFFFFFFFFFFFFF), wird durch weitere Erhöhung der Blockzähler auf Null zurückgesetzt (Bytes 8 bis 15), ohne Auswirkung auf die restlichen 64 Bits des Zählers (also Bytes 0 bis 7).   Um die Sicherheit der Verschlüsselung im AES-CTR-Modus zu gewährleisten, muss der InitializationVector-Wert jeder Schlüsselkennung für jeden Inhaltsschlüssel für jede Datei eindeutig sein, und die Dateien müssen weniger als 2^64 Blöcke lang sein.  Mit diesem eindeutigen Wert wird sichergestellt, dass ein Zählerwert nie mit einem vorhandenen Schlüssel wiederverwendet wird. Weitere Informationen zum CTR-Modus finden Sie auf [dieser Wiki-Seite](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (der Wiki-Artikel verwendet den Begriff „Nonce“ anstelle von „InitializationVector“).
 
 Verwenden Sie die **Speicherverschlüsselung** , um Ihre unverschlüsselten Inhalte lokal mithilfe der AES-256-Bit-Verschlüsselung zu verschlüsseln und sie dann in Azure Storage hochzuladen, wo sie verschlüsselt im Ruhezustand gespeichert werden. Medienobjekte, die durch Speicherverschlüsselung geschützt sind, werden automatisch entschlüsselt, vor der Codierung in einem verschlüsselten Dateisystem platziert und optional vor dem Hochladen als neues Ausgabemedienobjekt erneut verschlüsselt. Der primäre Anwendungsfall für Storage Encryption ist, wenn Sie Ihre qualitativ hochwertigen Eingabemediendateien mit starker Verschlüsselung beim Speichern im Ruhezustand auf dem Datenträger sichern möchten.
 
 Um ein speicherverschlüsseltes Medienobjekt zu übermitteln, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren und Media Services so mitteilen, wie die Inhalte bereitgestellt werden sollen. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie (AES, Common Encryption oder unverschlüsselt) gestreamt.
 
 ## <a name="create-contentkeys-used-for-encryption"></a>Erstellen von Inhaltsschlüsseln zur Verschlüsselung
-Verschlüsselte Medienobjekte müssen einem Speicherverschlüsselungsschlüssel zugeordnet werden. Bevor Sie die Medienobjektdateien erstellen, müssen Sie den Inhaltsschlüssel erstellen, der zur Verschlüsselung verwendet werden soll. In diesem Abschnitt wird beschrieben, wie ein Inhaltsschlüssel erstellt wird.
+Verschlüsselte Medienobjekte werden einem Speicherverschlüsselungsschlüssel zugeordnet. Erstellen Sie vor der Erstellung der Medienobjektdateien den Inhaltsschlüssel, der zur Verschlüsselung verwendet werden soll. In diesem Abschnitt wird beschrieben, wie ein Inhaltsschlüssel erstellt wird.
 
 Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüsseln, die Sie den zu verschlüsselnden Medienobjekten zuordnen. 
 
 1. Generieren Sie für die Speicherverschlüsselung einen 32-Byte-AES-Schlüssel nach dem Zufallsprinzip. 
    
-    Dies ist der Inhaltsschlüssel für Ihr Medienobjekt. Das bedeutet, dass alle mit diesem Medienobjekt verknüpften Dateien denselben Inhaltsschlüssel zur Entschlüsselung verwenden müssen. 
+    Der 32-Byte-AES-Schlüssel ist der Inhaltsschlüssel für Ihr Medienobjekt. Das bedeutet, dass alle mit diesem Medienobjekt verknüpften Dateien denselben Inhaltsschlüssel zur Entschlüsselung verwenden müssen. 
 2. Rufen Sie die [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid)-Methode und die [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey)-Methode auf, um das richtige X.509-Zertifikat zur Verschlüsselung Ihres Inhaltsschlüssels abzurufen.
 3. Verschlüsseln Sie Ihren Inhaltsschlüssel mit dem öffentlichen Schlüssel des X.509-Zertifikats. 
    
    Das Media Services .NET SDK verwendet RSA mit OAEP zur Verschlüsselung.  Ein .NET-Beispiel finden Sie in der [EncryptSymmetricKeyData-Funktion](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
 4. Erstellen Sie einen Prüfsummenwert, der mithilfe der Schlüsselkennung und des Inhaltsschlüssels berechnet wird. Im folgenden .NET-Beispiel wird die Prüfsumme anhand des GUID-Abschnitts der Schlüsselkennung und des unverschlüsselten Inhaltsschlüssels berechnet.
 
-        public static string CalculateChecksum(byte[] contentKey, Guid keyId)
-        {
-            const int ChecksumLength = 8;
-            const int KeyIdLength = 16;
-
-            byte[] encryptedKeyId = null;
-
-            // Checksum is computed by AES-ECB encrypting the KID
-            // with the content key.
-            using (AesCryptoServiceProvider rijndael = new AesCryptoServiceProvider())
+    ```csharp
+            public static string CalculateChecksum(byte[] contentKey, Guid keyId)
             {
-                rijndael.Mode = CipherMode.ECB;
-                rijndael.Key = contentKey;
-                rijndael.Padding = PaddingMode.None;
+                const int ChecksumLength = 8;
+                const int KeyIdLength = 16;
 
-                ICryptoTransform encryptor = rijndael.CreateEncryptor();
-                encryptedKeyId = new byte[KeyIdLength];
-                encryptor.TransformBlock(keyId.ToByteArray(), 0, KeyIdLength, encryptedKeyId, 0);
+                byte[] encryptedKeyId = null;
+
+                // Checksum is computed by AES-ECB encrypting the KID
+                // with the content key.
+                using (AesCryptoServiceProvider rijndael = new AesCryptoServiceProvider())
+                {
+                    rijndael.Mode = CipherMode.ECB;
+                    rijndael.Key = contentKey;
+                    rijndael.Padding = PaddingMode.None;
+
+                    ICryptoTransform encryptor = rijndael.CreateEncryptor();
+                    encryptedKeyId = new byte[KeyIdLength];
+                    encryptor.TransformBlock(keyId.ToByteArray(), 0, KeyIdLength, encryptedKeyId, 0);
+                }
+
+                byte[] retVal = new byte[ChecksumLength];
+                Array.Copy(encryptedKeyId, retVal, ChecksumLength);
+
+                return Convert.ToBase64String(retVal);
             }
+    ```
 
-            byte[] retVal = new byte[ChecksumLength];
-            Array.Copy(encryptedKeyId, retVal, ChecksumLength);
-
-            return Convert.ToBase64String(retVal);
-        }
-
-1. Erstellen Sie den Inhaltsschlüssel mit den Werten für **EncryptedContentKey** (in eine Base64-codierte Zeichenfolge konvertiert), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** und **Checksum**, die Sie in den vorherigen Schritten erhalten haben.
+5. Erstellen Sie den Inhaltsschlüssel mit den Werten für **EncryptedContentKey** (in eine Base64-codierte Zeichenfolge konvertiert), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** und **Checksum**, die Sie in den vorherigen Schritten erhalten haben.
 
     Bei der Speicherverschlüsselung sollten folgende Eigenschaften im Anforderungstext enthalten sein.
 
-    Eigenschaft im Anforderungstext    | Beschreibung
+    Eigenschaft im Anforderungstext    | BESCHREIBUNG
     ---|---
-    ID | Die ContentKey-ID, die wir selbst in folgendem Format generieren: „nb:kid:UUID:<NEW GUID>“.
-    ContentKeyType | Dies ist der Inhaltsschlüsseltyp für diesen Inhaltsschlüssel in Form einer Ganzzahl. Wir übergeben den Wert 1 für die Speicherverschlüsselung.
+    id | Die ContentKey-ID wird in folgendem Format generiert: „nb:kid:UUID:<NEW GUID>“.
+    ContentKeyType | Der Inhaltsschlüsseltyp ist eine Ganzzahl, die den Schlüssel definiert. Für das Speicherverschlüsselungsformat ist der Wert 1.
     EncryptedContentKey | Wir erstellen einen neuen Inhaltsschlüsselwert mit einer Länge von 256 Bits (32 Bytes). Der Schlüssel wird mithilfe des X.509-Speicherverschlüsselungszertifikats verschlüsselt, das wir von Microsoft Azure Media Services abrufen, indem wir eine HTTP-GET-Anforderung für die Methoden „GetProtectionKeyId“ und „GetProtectionKey“ ausführen. Folgender .NET-Code dient als Beispiel: die **EncryptSymmetricKeyData**-Methode, die [hier](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)definiert ist.
     ProtectionKeyId | Dies ist die Schutzschlüssel-ID für das X.509-Speicherverschlüsselungszertifikat, das zur Verschlüsselung des Inhaltsschlüssels verwendet wurde.
     ProtectionKeyType | Dies ist der Verschlüsselungstyp für den Schutzschlüssel, der zur Verschlüsselung des Inhaltsschlüssels verwendet wurde. In unserem Beispiel lautet der Wert "StorageEncryption(1)".
@@ -172,7 +174,7 @@ Antwort:
 ### <a name="create-the-content-key"></a>Erstellen des Inhaltsschlüssels
 Nachdem Sie das X.509-Zertifikat abgerufen und dessen öffentlichen Schlüssel zum Verschlüsseln Ihres Inhaltsschlüssels verwendet haben, erstellen Sie eine **ContentKey** -Entität und legen die entsprechenden Eigenschaftswerte fest.
 
-Beim Erstellen des Inhaltsschlüssels muss neben anderen Werten auch der Typ festgelegt werden. Bei der Speicherverschlüsselung lautet der Wert „1“. 
+Beim Erstellen des Inhaltsschlüssels muss neben anderen Werten auch der Typ festgelegt werden. Bei Verwendung der Speicherverschlüsselung sollte der Wert auf „1“ festgelegt werden. 
 
 Das folgende Beispiel zeigt, wie Sie einen **ContentKey** mit einem **ContentKeyType** erstellen, für den die Speicherverschlüsselung festgelegt („1“) und **ProtectionKeyType** auf „0“ festgelegt wurde. Dies zeigt an, dass es sich bei der Schutzschlüssel-ID um den X.509-Zertifikatfingerabdruck handelt.  
 
@@ -242,7 +244,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie ein Medienobjekt erstellen.
 
 **HTTP-Antwort**
 
-Im Erfolgsfall wird Folgendes zurückgegeben:
+Im Erfolgsfall wird die folgende Antwort zurückgegeben:
 
     HTP/1.1 201 Created
     Cache-Control: no-cache

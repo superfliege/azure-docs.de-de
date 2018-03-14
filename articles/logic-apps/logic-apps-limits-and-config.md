@@ -2,7 +2,7 @@
 title: "Grenzwerte und Konfiguration – Azure Logic Apps | Microsoft-Dokumentation"
 description: "Dienstlimits und Konfigurationswerte für Azure Logic Apps"
 services: logic-apps
-documentationcenter: .net,nodejs,java
+documentationcenter: 
 author: jeffhollan
 manager: anneta
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5c4597ede16f01c36e147dc0d70acf4b4f5635e8
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 54a35607e107a09188373cc5f71bb3068b4c6bab
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps-Grenzwerte und -Konfiguration
 
@@ -28,13 +28,13 @@ In diesem Artikel werden die aktuellen Grenzwerte und Konfigurationsdetails für
 
 ### <a name="http-request-limits"></a>Grenzwerte für HTTP-Anforderungen
 
-Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen Connectoraufruf.
+Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen einzelnen Connectoraufruf:
 
 #### <a name="timeout"></a>Timeout
 
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
-| Anforderungszeitlimit | 120 Sekunden | Bei Bedarf können ein [asynchrones Muster](../logic-apps/logic-apps-create-api-app.md) oder eine [Until-Schleife](logic-apps-loops-and-scopes.md) zur Kompensation verwendet werden. |
+| Anforderungszeitlimit | 120 Sekunden | Bei Bedarf können ein [asynchrones Muster](../logic-apps/logic-apps-create-api-app.md) oder eine [Until-Schleife](logic-apps-control-flow-loops.md) zur Kompensation verwendet werden. | 
 |||| 
 
 #### <a name="message-size"></a>Nachrichtengröße
@@ -56,28 +56,21 @@ Diese Grenzwerte gelten für eine einzelne HTTP-Anforderung oder einen Connector
 
 ### <a name="run-duration-and-retention"></a>Ausführungsdauer und Aufbewahrung
 
-Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
+Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
-| NAME | Standard | Begrenzung |
-| ---- | ------- | ----- |
-| Ausführungsdauer   | 90 Tage | 7 bis 90 Tage |
-| Aufbewahrungsdauer im Speicher | 90 Tage ab der Startzeit der Ausführung |  7 bis 90 Tage ab der Startzeit der Ausführung |
-||||
+| NAME | Begrenzung | 
+| ---- | ----- | 
+| Ausführungsdauer | 90 Tage | 
+| Aufbewahrungsdauer im Speicher | 90 Tage ab der Startzeit der Ausführung | 
+| Min. Wiederholungsintervall | 1 Sekunde </br>Für Logik-Apps mit App Service-Plan: 15 Sekunden | 
+| Max. Wiederholungsintervall | 500 Tage | 
+||| 
 
-Wenn die Grenzwerte für die Ausführungsdauer oder Speicheraufbewahrung im normalen Verarbeitungsfluss überschritten werden sollen, [wenden Sie sich an das Produktteam](mailto://logicappsemail@microsoft.com), um Unterstützung im Hinblick auf Ihre Anforderungen zu erhalten.
-
-
-### <a name="recurrence-interval"></a>Wiederholungsintervall
-
-| NAME | Begrenzung |
-| ---- | ------- |
-| Min. Wiederholungsintervall | 1 Sekunde </br>Für Logik-Apps mit App Service-Plan: 15 Sekunden |
-| Max. Wiederholungsintervall | 500 Tage |
-|||
+Wenn die Grenzwerte für die Ausführungsdauer oder Speicheraufbewahrung im normalen Verarbeitungsfluss überschritten werden sollen, [bitten Sie das Logic Apps-Team](mailto://logicappsemail@microsoft.com) um Unterstützung im Hinblick auf Ihre Anforderungen.
 
 ### <a name="looping-and-debatching-limits"></a>Grenzwerte für Schleifen und Auflösen von Batches
 
-Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
+Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
@@ -89,22 +82,22 @@ Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App.
 
 ### <a name="throughput-limits"></a>Durchsatzlimits
 
-Diese Grenzwerte gelten für die Ausführung einer einzelnen Logik-App-Ressource.
+Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App-Instanz:
 
 | NAME | Begrenzung | Notizen | 
 | ----- | ----- | ----- | 
-| Aktionsausführungen pro 5 Minuten | 100.000 |<p>Der Grenzwert kann durch Ausführen einer Logik-App im `High Througput`-Modus auf 300.000 erhöht werden. Der Modus mit hohem Durchsatz kann durch Festlegen der `operationOptions`-Eigenschaft unter `runtimeConfiguration` der Workflowressource auf `OptimizedForHighThroughput` konfiguriert werden. <p>Beachten Sie, dass sich dieser Modus für den hohen Durchsatz in der Vorschauphase befindet. Bei Bedarf kann eine Workload auch auf mehrere Apps verteilt werden. | 
+| Aktionsausführungen pro 5 Minuten | 100.000 | Um das Limit auf 300.000 zu erhöhen, führen Sie eine Logik-App im `High Througput`-Modus aus. Um den Modus mit hohem Durchsatz zu konfigurieren, legen Sie unter der `runtimeConfiguration` der Workflowressource die `operationOptions`-Eigenschaft auf `OptimizedForHighThroughput` fest. <p>**Hinweis**: Beachten Sie, dass sich dieser Modus für den hohen Durchsatz in der Vorschauphase befindet. Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
 | Gleichzeitige ausgehende Aufrufe für Aktionen | ca. 2.500 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
 | Endpunkt zur Laufzeit: Gleichzeitige eingehende Aufrufe |ca. 1.000 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
 | Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten  | 60.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
 | Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten| 45.000 |Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
 |||| 
 
-Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [wenden Sie sich an das Produktteam](mailto://logicappsemail@microsoft.com), um Unterstützung im Hinblick auf Ihre Anforderungen zu erhalten.
+Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [bitten Sie das Logic Apps-Team](mailto://logicappsemail@microsoft.com) um Unterstützung im Hinblick auf Ihre Anforderungen.
 
 ### <a name="logic-app-definition-limits"></a>Definitionslimits für die Logik-App
 
-Folgende Grenzwerte gelten für die Definition einer einzelnen Logik-App.
+Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
@@ -136,7 +129,7 @@ Folgende Grenzwerte gelten für benutzerdefinierte Connectors, die Sie über Web
 
 ### <a name="integration-account-limits"></a>Grenzwerte für Integrationskonten
 
-Die folgenden Grenzwerte gelten für Artefakte, die zu einem Integrationskonto hinzugefügt werden können.
+Hier sind die Grenzwerte für die Artefakte aufgeführt, die einem Integrationskonto hinzugefügt werden können.
 
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
@@ -155,7 +148,7 @@ Die folgenden Grenzwerte gelten für die Anzahl von Artefakten, die zu einem Int
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Vereinbarungen | 10 | | 
-| Andere Artefakttypen | 25 |Zu den Artefakttypen zählen Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt. | 
+| Andere Artefakttypen | 25 | Zu den Artefakttypen zählen Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt. | 
 |||| 
 
 #### <a name="standard-pricing-tier"></a>Tarif „Standard“
@@ -167,7 +160,7 @@ Die folgenden Grenzwerte gelten für die Anzahl von Artefakten, die zu einem Int
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>Nachrichtengröße für B2B-Protokolle (AS2, X12, EDIFACT)
 
-Folgende Grenzwerte gelten für B2B-Protokolle.
+Hier sind die Grenzwerte, die für B2B-Protokolle gelten:
 
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 

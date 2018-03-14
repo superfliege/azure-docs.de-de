@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 02/28/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 06690d5251954b204b28928b3fe670669000aa7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 287bc04660664facbe99d2cb80ae6c92e41c4111
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegieren von Angeboten in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Als Azure Stack-Bediener möchten Sie häufig andere Personen in die Lage versetzen, Angebote zu erstellen und Benutzer zu registrieren. Als Dienstanbieter z.B. müssen Sie Ihren Handelspartnern ermöglichen können, in Ihrem Auftrag Kunden zu registrieren und diese zu verwalten. Wenn Sie einer zentralen IT-Gruppe in einem Unternehmen angehören, möchten Sie vielleicht, dass Niederlassungen ohne Ihr Eingreifen Benutzer registrieren können.
+Als Azure Stack-Bediener möchten Sie häufig andere Personen in die Lage versetzen, Angebote zu erstellen und Benutzer zu registrieren. Als Dienstanbieter z.B. müssen Sie Ihren Vertriebspartnern ermöglichen können, in Ihrem Auftrag Kunden zu registrieren und diese zu verwalten. Wenn Sie einer zentralen IT-Gruppe in einem Unternehmen angehören, möchten Sie vielleicht, dass Niederlassungen ohne Ihr Eingreifen Benutzer registrieren können.
 
 Bei diesen Aufgaben ist die Delegierung eine nützliche Funktion, mit der Sie mehr Benutzer erreichen und verwalten können als bei einer direkten Bearbeitung. Die folgende Abbildung zeigt eine Ebene der Delegierung, Azure Stack unterstützt jedoch mehrere Ebenen. Delegierte Anbieter (Delegated Providers, DPs) wiederum können Aufgaben an andere Anbieter delegieren. Bis zu fünf Delegierungsebenen sind möglich.
 
@@ -58,7 +58,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie einen delegierten Anbiete
 
 ## <a name="set-up-roles"></a>Einrichten von Rollen
 
-Um einen delegierten Anbieter einzurichten, benötigen Sie zusätzlich zu Ihrem Azure Stack-Bedienerkonto weitere Azure AD-Konten. Wenn noch nicht über beiden folgenden Konten verfügen, erstellen Sie sie. Die Konten können zu einem beliebigen Azure AD-Benutzer gehören. Wir bezeichnen sie als delegierten Anbieter und Benutzer.
+Um einen delegierten Anbieter einzurichten, benötigen Sie zusätzlich zu Ihrem Azure Stack-Bedienerkonto weitere Azure AD-Konten. Wenn Sie noch nicht über diese beiden Konten verfügen, erstellen Sie sie. Die Konten können einem beliebigen Azure AD-Benutzer gehören und werden als delegierter Anbieter und Benutzer bezeichnet.
 
 | **Rolle** | **Organisatorische Rechte** |
 | --- | --- |
@@ -71,9 +71,9 @@ Um einen delegierten Anbieter einzurichten, benötigen Sie zusätzlich zu Ihrem 
 2. Erstellen Sie das Angebot, das Benutzern ermöglicht, delegierte Anbieter zu werden:
    
    a.  [Erstellen Sie einen Plan](azure-stack-create-plan.md).
-       Dieser Plan darf nur den Abonnementdienst enthalten. In diesem Artikel verwenden wir einen Plan namens **PlanForDelegation**.
+       Dieser Plan darf nur den Abonnementdienst enthalten. In diesem Artikel wird ein Plan namens **PlanForDelegation** verwendet.
    
-   b.  [Erstellen Sie ein Angebot](azure-stack-create-offer.md), das auf diesem Plan basiert. In diesem Artikel verwenden wir ein Angebot namens **OfferToDP**.
+   b.  [Erstellen Sie ein Angebot](azure-stack-create-offer.md), das auf diesem Plan basiert. In diesem Artikel wird ein Angebot namens **OfferToDP** verwendet.
    
    c.  Wenn die Erstellung des Angebots abgeschlossen ist, fügen Sie den delegierten Anbieter als Abonnenten diesem Angebot hinzu. Wählen Sie hierzu **Abonnements** > **Hinzufügen** > **Neues Mandantenabonnement**.
    
@@ -86,9 +86,9 @@ Um einen delegierten Anbieter einzurichten, benötigen Sie zusätzlich zu Ihrem 
 
 ## <a name="azure-stack-operator-creates-the-delegated-offer"></a>Erstellen des delegierten Angebots durch den Azure Stack-Bediener
 
-Sie haben jetzt einen delegierten Anbieter eingerichtet. Der nächste Schritt besteht darin, den Plan und das Angebot zu erstellen, den/das Sie delegieren möchten und den/das Ihre Kunden verwenden werden. Es ist eine gute Idee, das Angebot genau so zu definieren, wie es Ihren Kunden angezeigt werden soll, da der delegierte Anbieter den Plan und die darin enthaltenen Kontingente nicht ändern kann.
+Sie haben jetzt einen delegierten Anbieter eingerichtet. Der nächste Schritt besteht darin, den Plan und das Angebot zu erstellen, den/das Sie delegieren möchten und den/das Ihre Kunden verwenden werden. Es ist eine gute Idee, das Angebot genau so zu definieren, wie es Ihren Kunden angezeigt werden soll, da der delegierte Anbieter die Pläne und darin enthaltenen Kontingente nicht ändern kann.
 
-1. Melden Sie sich als Azure Stack-Bediener an, und [erstellen Sie einen Plan](azure-stack-create-plan.md) sowie ein darauf basierendes [Angebot](azure-stack-create-offer.md). In diesem Artikel verwenden wir ein Angebot namens **DelegatedOffer**.
+1. Melden Sie sich als Azure Stack-Bediener an, und [erstellen Sie einen Plan](azure-stack-create-plan.md) sowie ein darauf basierendes [Angebot](azure-stack-create-offer.md). In diesem Artikel wird ein Angebot namens **DelegatedOffer** verwendet.
    
    > [!NOTE]
    > Dieses Angebot muss nicht öffentlich sein. Falls gewünscht, können Sie es öffentlich machen. In den meisten Fällen empfiehlt sich jedoch, nur delegierte Anbieter darauf zugreifen zu lassen. Sobald Sie, wie in den folgenden Schritten beschrieben, ein privates Angebot delegieren, kann der delegierte Anbieter darauf zugreifen.
@@ -104,14 +104,14 @@ Sie haben jetzt einen delegierten Anbieter eingerichtet. Der nächste Schritt be
 
 ## <a name="delegated-provider-customizes-the-offer"></a>Anpassen des Angebots durch den delegierten Anbieter
 
-Melden Sie sich beim Benutzerportal als delegierter Anbieter an. Erstellen Sie dann ein neues Angebot mit dem delegierten Angebot als Vorlage.
+Melden Sie sich als delegierter Anbieter beim Benutzerportal an, und verwenden Sie das delegierte Angebot dann als Vorlage, um ein neues Angebot zu erstellen.
 
 1. Wählen Sie **Neu** > **Mandantenangebote + Pläne** > **Angebot**.
 
     ![Erstellen eines neuen Angebots](media/azure-stack-delegated-provider/image5.png)
 
 
-1. Weisen Sie dem Angebot einen Namen zu. Hier wählen wir **ResellerOffer**. Wählen Sie das delegierte Angebot aus, auf dem dieses Angebot basieren soll, und klicken Sie auf **Erstellen**.
+1. Weisen Sie dem Angebot einen Namen zu. In diesem Artikel wird **ResellerOffer** verwendet. Wählen Sie das delegierte Angebot aus, auf dem dieses Angebot basieren soll, und klicken Sie auf **Erstellen**.
    
    ![Zuweisen eines Namens](media/azure-stack-delegated-provider/image6.png)
 
@@ -122,7 +122,7 @@ Melden Sie sich beim Benutzerportal als delegierter Anbieter an. Erstellen Sie d
 
 2. Der delegierte Anbieter macht diese Angebote über die URL zu seinem eigenen Portal verfügbar. Diese Angebote werden nur im Portal mit delegierten Angeboten angezeigt. So suchen und ändern Sie diese URL:
    
-    a.  Wählen Sie **Durchsuchen** > **Weitere Dienste** >  **Abonnements**. Wählen Sie dann das Abonnement des delegierten Anbieters aus. In unserem Fall ist dies **DPSubscription** > **Eigenschaften**.
+    a.  Wählen Sie **Durchsuchen** > **Weitere Dienste** > **Abonnements**. Wählen Sie dann das Abonnement des delegierten Anbieters aus. Beispiel: **DPSubscription** > **Eigenschaften**.
    
     b.  Kopieren Sie die Portal-URL an einen anderen Ort, beispielsweise in Text-Editor.
    
@@ -134,7 +134,7 @@ Melden Sie sich beim Benutzerportal als delegierter Anbieter an. Erstellen Sie d
 1. Wechseln Sie in einem neuen Browserfenster zu der URL des Portals mit delegierten Angeboten, die Sie im vorherigen Schritt gespeichert haben. Melden Sie sich als Benutzer beim Portal an. 
    
    >[!NOTE]
-   > Verwenden Sie für diesen Schritt das Portal mit delegierten Angeboten. Andernfalls werden die delegierten Angebote nicht angezeigt.
+   >Die delegierten Angebote sind nur dann sichtbar, wenn Sie das delegierte Portal verwenden. 
 
 2. Wählen Sie auf dem Dashboard **Abonnement erwerben**. Sie sehen, dass dem Benutzer nur die delegierten Angebote angezeigt werden, die vom delegierten Anbieter erstellt wurden:
 

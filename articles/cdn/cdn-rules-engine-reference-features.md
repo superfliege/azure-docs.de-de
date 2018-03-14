@@ -1,6 +1,6 @@
 ---
-title: Features des Azure CDN-Regelmoduls | Microsoft-Dokumentation
-description: "Referenzdokumentation zu den Übereinstimmungsbedingungen und Features des Azure CDN-Regelmoduls"
+title: Features der Azure CDN-Regel-Engine | Microsoft-Dokumentation
+description: "Referenzdokumentation zu den Übereinstimmungsbedingungen und Features der Azure CDN-Regel-Engine."
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 858bc1dd2880583a3283522a01c9a48679b76296
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 949b957716af2d7dfd704b4fca48afb78d0fed1e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="azure-cdn-rules-engine-features"></a>Features des Azure CDN-Regelmoduls
+# <a name="azure-cdn-rules-engine-features"></a>Features der Azure CDN-Regel-Engine
 Dieser Artikel bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
 
-Der dritte Teil einer Regel ist das Feature. Ein Feature definiert die Art der Aktion, die auf die Art von Anforderung angewendet wird, die mithilfe verschiedener Übereinstimmungsbedingungen bestimmt wurde.
+Der dritte Teil einer Regel ist das Feature. Ein Feature definiert die Art der Aktion, die auf den Anforderungstyp angewendet wird, der mithilfe verschiedener Übereinstimmungsbedingungen bestimmt wurde.
 
 ## <a name="access-features"></a>Zugriffsfeatures
 
 Diese Features dienen zum Steuern des Zugriffs auf Inhalte.
 
 
-Name | Zweck
+NAME | Zweck
 -----|--------
 [Deny Access (403)](#deny-access-403) | Bestimmt, ob alle Anfragen mit der Antwort „403 – Verboten“ abgelehnt werden.
 [Token Auth](#token-auth) | Bestimmt, ob die tokenbasierte Authentifizierung auf eine Anforderung angewendet wird.
@@ -43,22 +43,22 @@ Name | Zweck
 
 Diese Features dienen zum Anpassen des Zeitpunkts und der Art der Zwischenspeicherung von Inhalten.
 
-Name | Zweck
+NAME | Zweck
 -----|--------
 [Bandwidth Parameters](#bandwidth-parameters) | Bestimmt, ob Parameter zur Bandbreitenbeschränkung (beispielsweise „ec_rate“ und „ec_prebuf“) aktiv sind.
 [Bandwidth Throttling](#bandwidth-throttling) | Schränkt die Bandbreite für die Antwort ein, die von den Edgeservern bereitgestellt wird.
 [Bypass Cache](#bypass-cache) | Bestimmt, ob die Anforderung das Zwischenspeichern umgehen soll.
 [Cache-Control Header Treatment](#cache-control-header-treatment) | Steuert die Generierung von `Cache-Control`-Headern durch den Edgeserver, wenn das Feature „External Max-Age“ aktiv ist.
-[Cache-Key Query String](#cache-key-query-string) | Bestimmt, ob der Cacheschlüssel Abfragezeichenfolgen-Parameter, die einer Anforderung zugeordnet sind, ein- oder ausschließt.
+[Cache-Key Query String](#cache-key-query-string) | Bestimmt, ob der Cacheschlüssel Abfragezeichenfolgenparameter, die einer Anforderung zugeordnet sind, ein- oder ausschließt.
 [Cache-Key Rewrite](#cache-key-rewrite) | Schreibt den einer Anforderung zugeordneten Cacheschlüssel neu.
 [Complete Cache Fill](#complete-cache-fill) | Bestimmt, was passiert, wenn eine Anforderung in einem teilweisen Cachefehler auf einem Edgeserver resultiert.
-[Compress File Types](#compress-file-types) | Definiert die Dateiformate, die auf dem Server komprimiert werden.
+[Compress File Types](#compress-file-types) | Definiert die Dateiformate für die Dateien, die auf dem Server komprimiert werden.
 [Default Internal Max-Age](#default-internal-max-age) | Bestimmt das Standardintervall für maximales Alter für die erneute Überprüfung des Caches von Edge- und Ursprungsserver.
 [Expires Header Treatment](#expires-header-treatment) | Steuert die Generierung von `Expires`-Headern durch einen Edgeserver, wenn das Feature „External Max-Age“ aktiv ist.
 [External Max-Age](#external-max-age) | Bestimmt das „max-age“-Intervall für die erneute Überprüfung des Caches von Browser und Edgeserver.
 [Force Internal Max-Age](#force-internal-max-age) | Bestimmt das „max-age“-Intervall für die erneute Überprüfung des Caches von Edge- und Ursprungsserver.
 [H.264 Support (HTTP Progressive Download)](#h264-support-http-progressive-download) | Bestimmt die Typen von H.264-Dateiformaten, die zum Streamen von Inhalten verwendet werden können.
-[Honor No-Cache Request](#honor-no-cache-request) | Bestimmt, ob „No-Cache“-Anforderungen eines HTTP-Clients an den Ursprungsserver weitergeleitet werden.
+[Honor No-Cache Request](#honor-no-cache-request) | Bestimmt, ob „no-cache“-Anforderungen eines HTTP-Clients an den Ursprungsserver weitergeleitet werden.
 [Ignore Origin No-Cache](#ignore-origin-no-cache) | Bestimmt, ob das CDN bestimmte Direktiven ignoriert, die von einem Ursprungsserver bereitgestellt werden.
 [Ignore Unsatisfiable Ranges](#ignore-unsatisfiable-ranges) | Bestimmt die Antwort, die an Clients zurückgegeben wird, wenn eine Anforderung den Statuscode „416: Angeforderter Bereich nicht erfüllbar“ generiert.
 [Internal Max-Stale](#internal-max-stale) | Steuert, wie lange nach Überschreiten der normalen Ablaufzeit ein Cacheobjekt von einem Edgeserver bereitgestellt werden kann, wenn der Edgeserver das Cacheobjekt nicht im Abgleich mit dem Ursprungsserver erneut überprüfen kann.
@@ -66,14 +66,14 @@ Name | Zweck
 [Prevalidate Cached Content](#prevalidate-cached-content) | Bestimmt, ob zwischengespeicherte Inhalte für eine frühzeitige erneute Überprüfung in Frage kommen, ehe ihre Gültigkeitsdauer abläuft.
 [Refresh Zero-Byte Cache Files](#refresh-zero-byte-cache-files) | Bestimmt, wie eine Anforderung eines HTTP-Clients eines Cacheobjekts mit 0 Byte von den Edgeservern verarbeitet wird.
 [Set Cacheable Status Codes](#set-cacheable-status-codes) | Definiert die Gruppe von Statuscodes, die in zwischengespeicherten Inhalten resultieren können.
-[Stale Content Delivery on Error](#stale-content-delivery-on-error) | Bestimmt, ob abgelaufene Cache-Inhalte übermittelt werden, wenn während der erneuten Überprüfung des Caches ein Fehler auftritt oder der angeforderte Inhalt vom Kundenursprungsserver abgerufen wird.
+[Stale Content Delivery on Error](#stale-content-delivery-on-error) | Bestimmt, ob abgelaufene zwischengespeicherte Inhalte übermittelt werden, wenn während der erneuten Überprüfung des Caches ein Fehler auftritt oder der angeforderte Inhalt vom Kundenursprungsserver abgerufen wird.
 [Stale While Revalidate](#stale-while-revalidate) | Verbessert die Leistung, indem den Edgeservern erlaubt wird, dem Anfordernden einen veralteten Client bereitzustellen, während die erneute Überprüfung erfolgt.
 
 ## <a name="comment-feature"></a>Kommentarfeatures
 
 Diese Funktion dient zum Bereitstellen zusätzlicher Informationen innerhalb einer Regel.
 
-Name | Zweck
+NAME | Zweck
 -----|--------
 [Comment](#comment) | Erlaubt das Hinzufügen eines Hinweises in einer Regel.
  
@@ -81,9 +81,9 @@ Name | Zweck
 
 Diese Features dienen zum Hinzufügen, Ändern oder Löschen von Headern in der Anforderung oder Antwort.
 
-Name | Zweck
+NAME | Zweck
 -----|--------
-[Age Response Header](#age-response-header) | Bestimmt, ob ein „Age Response Header“ in die Antwort eingeschlossen wird, die an den Anfordernden gesendet wird.
+[Age Response Header](#age-response-header) | Legt fest, ob ein „Age Response Header“ in die Antwort an die anfordernde Person einbezogen wird.
 [Debug Cache Response Headers](#debug-cache-response-headers) | Bestimmt, ob eine Antwort den „X-EC-Debug Response Header“ enthalten kann, der Informationen zur Cacherichtlinie für das angeforderte Objekt enthält.
 [Modify Client Request Header](#modify-client-request-header) | Dient zum Überschreiben, Anfügen oder Löschen eines Headers in einer Anforderung.
 [Modify Client Response Header](#modify-client-response-header) | Dient zum Überschreiben, Anfügen oder Löschen eines Headers in einer Antwort.
@@ -94,7 +94,7 @@ Name | Zweck
 
 Diese Features dienen zum Anpassen der Daten, die in unformatierten Protokolldateien gespeichert sind.
 
-Name | Zweck
+NAME | Zweck
 -----|--------
 [Custom Log Field 1](#custom-log-field-1) | Bestimmt das Format und den Inhalt, das/der dem benutzerdefinierten Protokollfeld in einer unformatierten Protokolldatei zugewiesen wird.
 [Log Query String](#log-query-string) | Bestimmt, ob eine Abfragezeichenfolge zusammen mit der URL in Zugriffsprotokollen gespeichert wird.
@@ -148,7 +148,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 Diese Funktionen dienen zum Steuern, wie das CDN mit einem Ursprungsserver kommuniziert.
 
-Name | Zweck
+NAME | Zweck
 -----|--------
 [Maximum Keep-Alive Requests](#maximum-keep-alive-requests) | Definiert die maximale Anzahl von Anforderungen für eine „Keep Alive“-Verbindung, bevor diese geschlossen wird.
 [Proxy Special Headers](#proxy-special-headers) | Definiert die CDN-spezifischen Anforderungsheader, die von einem Edgeserver an einen Ursprungsserver weitergeleitet werden.
@@ -158,7 +158,7 @@ Name | Zweck
 
 Diese Features bieten erweiterte Funktionalität für erfahrene Benutzer.
 
-Name | Zweck
+NAME | Zweck
 -----|--------
 [Cacheable HTTP Methods](#cacheable-http-methods) | Bestimmt zusätzliche HTTP-Methoden, die im Netzwerk zwischengespeichert werden können.
 [Cacheable Request Body Size](#cacheable-request-body-size) | Definiert den Schwellenwert zum Bestimmen, ob eine POST-Antwort zwischengespeichert werden kann.
@@ -169,7 +169,7 @@ Name | Zweck
 
 Diese Funktionen ermöglichen, dass eine Anforderung zu einer anderen URL umgeleitet bzw. in eine andere URL umgeschrieben wird.
 
-Name | Zweck
+NAME | Zweck
 -----|--------
 [Follow Redirects](#follow-redirects) | Bestimmt, ob Anforderungen zum Hostnamen umgeleitet werden können, der im „Location“-Header definiert ist, der vom Kundenursprungsserver zurückgegeben wird.
 [URL Redirect](#url-redirect) | Leitet Anfragen über den „Location“-Header weiter.
@@ -195,14 +195,14 @@ Deaktiviert | Der „Age Response Header“ wird aus der Antwort ausgeschlossen,
 
 ---
 ### <a name="bandwidth-parameters"></a>Bandwidth Parameters
-**Zweck:** Bestimmt, ob Parameter zur Bandbreitenbeschränkung (beispielsweise „ec_rate“ und „ec_prebuf“) aktiv sein werden.
+**Zweck**: Bestimmt, ob Parameter zur Bandbreiteneinschränkung (beispielsweise „ec_rate“ und „ec_prebuf“) aktiv sind.
 
-Parameter zur Bandbreitendrosselung legen fest, ob die Datenübertragungsrate für eine Clientanforderung auf eine benutzerdefinierte Rate beschränkt wird.
+Parameter zur Bandbreiteneinschränkung legen fest, ob die Datenübertragungsrate für eine Clientanforderung auf eine benutzerdefinierte Rate beschränkt wird.
 
 Wert|Ergebnis
 --|--
 Aktiviert|Erlaubt den Edgeservern, die Anforderungen der Bandbreitendrosselung zu berücksichtigen.
-Deaktiviert|Veranlasst die Edgeserver, Parameter zur Bandbreitendrosselung zu ignorieren. Der angeforderte Inhalt wird normal (also ohne Drosselung der Bandbreite) verarbeitet.
+Deaktiviert|Veranlasst die Edgeserver, Parameter zur Bandbreitendrosselung zu ignorieren. Der angeforderte Inhalt wird normal (also ohne Bandbreiteneinschränkung) verarbeitet.
 
 **Standardverhalten:** Aktiviert.
  
@@ -216,7 +216,7 @@ Deaktiviert|Veranlasst die Edgeserver, Parameter zur Bandbreitendrosselung zu ig
 
 Beide der folgenden Optionen müssen definiert werden, um die Bandbreitendrosselung ordnungsgemäß einzurichten.
 
-Option|Beschreibung
+Option|BESCHREIBUNG
 --|--
 Kbytes per second|Legen Sie diese Option auf die maximale Bandbreite (KB pro Sekunde) fest, die zum Übermitteln der Antwort verwendet werden kann.
 Prebuf seconds|Legen Sie diese Option auf die Anzahl von Sekunden fest, die die Edgeserver warten sollen, bis die Bandbreite gedrosselt wird. Der Zweck dieses Zeitraums mit uneingeschränkter Bandbreite besteht darin zu verhindern, dass bei einem Media Player aufgrund der Bandbreitendrosselung die Wiedergabe stottert oder Pufferprobleme auftreten.
@@ -308,23 +308,23 @@ Remove (Entfernen)| Diese Option stellt sicher, dass in der Headerantwort kein `
 
 ---
 ### <a name="cache-key-query-string"></a>Cache-Key Query String
-**Zweck:** Legt fest, ob im Cacheschlüssel Abfragezeichenfolgenparameter, die einer Anforderung zugeordnet sind, ein- oder ausgeschlossen werden.
+**Zweck**: Bestimmt, ob der Cacheschlüssel Abfragezeichenfolgenparameter, die einer Anforderung zugeordnet sind, ein- oder ausschließt.
 
 Wichtige Informationen:
 
-- Geben Sie mindestens einen Namen eines Abfragezeichenfolgenparameters an. Die Parameternamen müssen durch ein einzelnes Leerzeichen voneinander getrennt sein.
-- Diese Funktion legt fest, ob Abfragezeichenfolgenparameter in den Cacheschlüssel einbezogen oder davon ausgeschlossen werden. Unten werden zu jeder Option zusätzliche Informationen bereitgestellt.
+- Geben Sie mindestens einen Namen eines Abfragezeichenfolgenparameters an. Trennt die Parameternamen durch ein einzelnes Leerzeichen voneinander.
+- Dieses Feature legt fest, ob Abfragezeichenfolgenparameter in den Cacheschlüssel einbezogen oder davon ausgeschlossen werden. In der nachfolgenden Tabelle werden zu jeder Option zusätzliche Informationen bereitgestellt.
 
-Typ|Beschreibung
+Typ|BESCHREIBUNG
 --|--
  Include|  Gibt an, dass jeder angegebene Parameter in den Cacheschlüssel einbezogen werden soll. Ein eindeutiger Cacheschlüssel wird für jede Anforderung generiert, die einen eindeutigen Wert für einen in diesem Feature definierten Abfragezeichenfolgenparameter enthält. 
- Include All  |Gibt an, dass ein eindeutiger Cacheschlüssel für jede Anforderung an ein Asset erstellt wird, die eine eindeutige Abfragezeichenfolge enthält. Von dieser Art der Konfiguration wird in der Regel abgeraten, da sie zu einem geringen Prozentsatz an Cachetreffern führen könnte. Dadurch erhöht sich die Last auf dem Ursprungsserver, da er eine höhere Anzahl von Anforderungen verarbeiten muss. Diese Konfiguration dupliziert das Zwischenspeicherungsverhalten, das auf der Seite „Query-String Caching“ als „unique-cache“ bezeichnet wird. 
+ Include All  |Gibt an, dass ein eindeutiger Cacheschlüssel für jede Anforderung an ein Objekt erstellt wird, die eine eindeutige Abfragezeichenfolge enthält. Von dieser Art der Konfiguration wird in der Regel abgeraten, da sie zu einem geringen Prozentsatz an Cachetreffern führen könnte. Eine geringe Anzahl von Cachetreffern erhöht die Auslastung des Ursprungsservers, da er mehr Anforderungen verarbeiten muss. Diese Konfiguration dupliziert das Zwischenspeicherungsverhalten, das auf der Seite „Query-String Caching“ als „unique-cache“ bezeichnet wird. 
  Exclude | Gibt an, dass nur die angegebenen Parameter vom Cacheschlüssel ausgeschlossen werden. Alle anderen Abfragezeichenfolgenparameter werden in den Cacheschlüssel einbezogen. 
- Exclude All  |Gibt an, dass alle Abfragezeichenfolgenparameter aus dem Cacheschlüssel ausgeschlossen werden. Diese Konfiguration dupliziert das Standardzwischenspeicherungsverhalten, das auf der Seite „Query-String Caching“ als „standard-cache“ bezeichnet wird. 
+ Exclude All  |Gibt an, dass alle Abfragezeichenfolgenparameter aus dem Cacheschlüssel ausgeschlossen werden. Diese Konfiguration dupliziert das standardmäßige Zwischenspeicherungsverhalten, das auf der Seite „Query-String Caching“ als „standard-cache“ bezeichnet wird.  
 
-Durch die Leistungsfähigkeit des HTTP-Regelmoduls können Sie die Implementierung der Zwischenspeicherung von Abfragezeichenfolgen anpassen. Beispielsweise können Sie angeben, dass die Zwischenspeicherung von Abfragezeichenfolgen nur für bestimmte Standorte oder Dateitypen ausgeführt wird.
+Durch die Regel-Engine können Sie die Implementierung der Zwischenspeicherung von Abfragezeichenfolgen anpassen. Beispielsweise können Sie angeben, dass die Zwischenspeicherung von Abfragezeichenfolgen nur für bestimmte Standorte oder Dateitypen ausgeführt wird.
 
-Wenn Sie das Zwischenspeicherungsverhalten für Abfragezeichenfolgen duplizieren möchten, das auf der Seite „Query-String Caching“ als „no-cache“ bezeichnet wird, müssen Sie eine Regel erstellen, die eine Übereinstimmungsbedingung „URL Query Wildcard“ und ein Feature „Bypass Cache“ enthält. Die Übereinstimmungsbedingung „URL Query Wildcard“ muss auf ein Sternchen (*) festgelegt werden.
+Um das als „no-cache“ bezeichnete Verhalten für das Zwischenspeichern von Abfragezeichenfolgen auf der Seite „Query-String Caching“ zu duplizieren, erstellen Sie eine Regel, die eine Übereinstimmungsbedingung „URL Query Wildcard“ und ein Feature namens „Bypass Cache“ enthält. Legen Sie die Übereinstimmungsbedingung „URL Query Wildcard“ auf ein Sternchen (*) fest.
 
 #### <a name="sample-scenarios"></a>Beispielszenarien
 
@@ -387,7 +387,7 @@ Ein Cacheschlüssel ist der relative Pfad, der ein Asset zum Zweck der Zwischens
 
 Konfigurieren Sie dieses Feature durch Definieren der beiden folgenden Optionen:
 
-Option|Beschreibung
+Option|BESCHREIBUNG
 --|--
 Original Path| Definieren Sie den relativen Pfad für die Typen von Anforderungen, deren Cacheschlüssel umgeschrieben wird. Ein relativer Pfad kann durch Auswählen eines Basisursprungspfads und durch anschließendes Definieren eines Muster für reguläre Ausdrücke definiert werden.
 New Path|Definieren Sie den relativen Pfad für den neuen Cacheschlüssel. Ein relativer Pfad kann durch Auswählen eines Basisursprungspfads und durch anschließendes Definieren eines Muster für reguläre Ausdrücke definiert werden. Ein relativer Pfad kann durch die Verwendung von HTTP-Variablen dynamisch zusammengestellt werden.
@@ -398,7 +398,7 @@ New Path|Definieren Sie den relativen Pfad für den neuen Cacheschlüssel. Ein r
 </br>
 
 ---
-### <a name="comment"></a>Kommentar
+### <a name="comment"></a>Comment
 **Zweck:** Erlaubt das Hinzufügen eines Hinweises in einer Regel.
 
 Ein Einsatzbereich für dieses Feature besteht darin, zusätzliche Informationen zum allgemeinen Zweck einer Regel oder den Grund bereitzustellen, aus dem der Regel eine bestimmte Übereinstimmungsbedingung hinzugefügt wurde.
@@ -422,7 +422,7 @@ Ein Teilcachefehler beschreibt den Cachestatus für ein Asset, das nicht vollst�
 This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
 
 --->
-Ein Teilcachefehler tritt normalerweise auf, nachdem ein Benutzer einen Download abgebrochen hat, oder für Objekte, die ausschließlich über HTTP-Bereichsanforderungen angefordert werden. Dieses Feature eignet sich am besten für große Assets, die von den Benutzern in der Regel nicht komplett heruntergeladen werden (beispielsweise Videos). Dieses Feature ist daher auf der HTTP Large-Plattform standardmäßig aktiviert. Auf allen anderen Plattformen ist sie deaktiviert.
+Ein Teilcachefehler tritt normalerweise auf, nachdem ein Benutzer einen Download abgebrochen hat, oder für Objekte, die ausschließlich über HTTP-Bereichsanforderungen angefordert werden. Dieses Feature eignet sich am besten für große Objekte, die von den Benutzern in der Regel nicht komplett heruntergeladen werden (beispielsweise Videos). Dieses Feature ist daher auf der HTTP Large-Plattform standardmäßig aktiviert. Auf allen anderen Plattformen ist sie deaktiviert.
 
 Behalten Sie die Standardkonfiguration für die HTTP Large-Plattform bei, weil sie die Last auf Ihrem Kundenursprungsserver verringert und die Geschwindigkeit erhöht, mit der Ihre Kunden Ihre Inhalte herunterladen.
 
@@ -431,7 +431,7 @@ Aufgrund der Art und Weise, in der Cacheeinstellungen nachverfolgt werden, kann 
 Wert|Ergebnis
 --|--
 Aktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der Edgeserver gezwungen, einen Hintergrundabruf des Assets vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des Edgeservers.
-Deaktiviert|Verhindert, dass ein Edgeserver einen Hintergrundabruf des Assets ausführt. Dies bedeutet, dass die nächste Anforderung für das Asset aus der betreffenden Region dazu führt, dass ein Edgeserver es vom Kundenursprungsserver anfordert.
+Deaktiviert|Verhindert, dass ein Edgeserver einen Hintergrundabruf des Assets ausführt. Das Ergebnis: Die nächste Anforderung für das Objekt aus der betreffenden Region führt dazu, dass ein Edgeserver es vom Kundenursprungsserver anfordert.
 
 **Standardverhalten:** Aktiviert.
 
@@ -441,11 +441,11 @@ Deaktiviert|Verhindert, dass ein Edgeserver einen Hintergrundabruf des Assets au
 
 ---
 ### <a name="compress-file-types"></a>Compress File Types
-**Zweck:** Definiert die Dateiformate, die auf dem Server komprimiert werden.
+**Zweck**: Definiert die Dateiformate für die Dateien, die auf dem Server komprimiert werden.
 
 Ein Dateiformat kann anhand seines Internetmedientyps (beispielsweise „Content-Type“) angegeben werden. Der Internetmedientyp entspricht plattformunabhängigen Metadaten, die den Servern das Identifizieren des Dateiformats eines bestimmten Objekts ermöglichen. Eine Liste gängiger Internetmedientypen finden Sie unten.
 
-Internetmedientyp|Beschreibung
+Internetmedientyp|BESCHREIBUNG
 --|--
 text/plain|Nur-Text-Dateien
 text/html| HTML-Dateien
@@ -456,7 +456,7 @@ Wichtige Informationen:
 
 - Geben Sie mehrere Internetmedientypen an, indem Sie die einzelnen Typen durch ein einzelnes Leerzeichen voneinander trennen. 
 - Durch dieses Feature werden nur Objekte komprimiert, die weniger als 1 MB groß sind. Größere Objekte werden durch die Server nicht komprimiert.
-- Bestimmte Inhaltstypen wie Bild-, Video- und Audiomedienobjekte (beispielsweise JPG, MP3 und MP4) sind bereits komprimiert. Durch eine weitere Komprimierung dieser Assettypen wird die Dateigröße nicht merklich verringert. Aus diesem Grund wird empfohlen, die Komprimierung für diese Arten von Assets nicht zu aktivieren.
+- Bestimmte Inhaltstypen wie Bild-, Video- und Audiomedienobjekte (beispielsweise JPG, MP3 und MP4) sind bereits komprimiert. Da die Dateigröße durch eine weitere Komprimierung dieser Objekttypen nicht signifikant reduziert wird, wird davon abgeraten, die Komprimierung für diese zu aktivieren.
 - Platzhalterzeichen, wie z.B. Sternchen, werden nicht unterstützt.
 - Bevor Sie dieses Feature einer Regel hinzufügen, vergewissern Sie sich, dass die Option „Compression Disabled“ auf der Seite „Compression“ für die Plattform festgelegt ist, auf die diese Regel angewendet werden soll.
 
@@ -470,9 +470,9 @@ Wichtige Informationen:
 
 Dieses benutzerdefinierte Feld ermöglicht das Festlegen, welche Anforderungs- und Antwortheaderwerte in Ihren Protokolldateien gespeichert werden.
 
-Standardmäßig heißt das benutzerdefinierte Protokollfeld „x-ec_custom-1“. Der Name dieses Felds kann jedoch auf der Seite „Raw Log Settings“ angepasst werden.
+Standardmäßig heißt das benutzerdefinierte Protokollfeld „x-ec_custom-1“. Der Name dieses Felds kann auf der Seite „Raw Log Settings“ angepasst werden.
 
-Die Formatierung, die Sie beim Angeben von Anforderungs- und Antwortheadern verwenden müssen, ist unten definiert.
+Das Format zum Angeben der Anforderungs- und Antwortheader ist folgendermaßen definiert:
 
 Headertyp|Format|Beispiele
 -|-|-
@@ -482,9 +482,9 @@ Antwortheader|%{[ResponseHeader]()}[o]()| %{Age}o <br/> %{Content-Type}o <br/> %
 Wichtige Informationen:
 
 - Ein benutzerdefiniertes Protokollfeld kann eine beliebige Kombination aus Headerfeldern und Nur-Text enthalten.
-- Gültige Zeichen für dieses Feld sind: alphanumerische Zeichen (0–9, a–z und A–Z), Bindestriche, Doppelpunkte, Semikolons, Apostrophe, Kommas, Punkte, Unterstriche, Gleichheitszeichen, runde Klammern, eckige Klammern und Leerzeichen. Das Prozentzeichen und geschweifte Klammern sind nur zulässig, wenn sie zur Angabe eines Headerfelds verwendet werden.
+- Gültige Zeichen für dieses Feld sind: alphanumerische Zeichen (0–9, a–z und A–Z), Gedankenstriche, Doppelpunkte, Semikolons, Apostrophe, Kommas, Punkte, Unterstriche, Gleichheitszeichen, runde Klammern, eckige Klammern und Leerzeichen. Das Prozentzeichen und geschweifte Klammern sind nur zulässig, wenn sie zur Angabe eines Headerfelds verwendet werden.
 - Die Schreibweise für die einzelnen angegebenen Headerfelder muss mit dem gewünschten Anforderungs-/Antwortheadernamen übereinstimmen.
-- Wenn Sie mehrere Header angeben möchten, wird empfohlen, die einzelnen Header mit Trennzeichen anzugeben. Beispielsweise können Sie für jeden Header eine Abkürzung verwenden. Unten sehen Sie eine Beispielsyntax.
+- Wenn Sie mehrere Header angeben möchten, verwenden Sie zur Angabe der einzelnen Header eine Trennlinie. Beispielsweise können Sie für jeden Header eine Abkürzung verwenden:
     - AE: %{Accept-Encoding}i A: %{Authorization}i CT: %{Content-Type}o 
 
 **Standardwert:** -
@@ -495,7 +495,7 @@ Wichtige Informationen:
 
 ---
 ### <a name="debug-cache-response-headers"></a>Debug Cache Response Headers
-**Zweck:** Legt fest, ob eine Antwort den „X-EC-Debug Response Header“ enthalten kann, der Informationen zur Cacherichtlinie für das angeforderte Objekt enthält.
+**Zweck**: Legt fest, ob eine Antwort den „X-EC-Debug Response Header“ enthalten kann, der Informationen zur Cacherichtlinie für das angeforderte Objekt enthält.
 
 „Debug Cache Response Headers“ werden in die Antwort einbezogen, wenn die folgenden beiden Bedingungen erfüllt sind:
 
@@ -814,10 +814,12 @@ Anforderungen, die an einen Ursprungsserver weitergeleitet werden, spiegeln die 
 
 Für einen Anforderungsheader kann eine der folgenden Aktionen ausgeführt werden:
 
-Option|Beschreibung|Beispiel
+Option|BESCHREIBUNG|Beispiel
 -|-|-
-Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/> **Wert des Anforderungsheaders (HTTP-Regelmodul):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert1Wert2
-Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/>**Wert des Anforderungsheaders (HTTP-Regelmodul):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert2 <br/>
+Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/> 
+            **Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert1Wert2
+Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/>
+            **Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert2 <br/>
 Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungsheaders (Client):**Wert1 <br/> **Konfiguration von „Modify Client Request Header“:** Der betreffende Anforderungsheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Anforderungsheader wird nicht an den Ursprungsserver weitergeleitet.
 
 Wichtige Informationen:
@@ -852,10 +854,12 @@ Standardmäßig werden Werte für Antwortheader durch einen Ursprungsserver und 
 
 Für einen Antwortheader kann eine der folgenden Aktionen ausgeführt werden:
 
-Option|Beschreibung|Beispiel
+Option|BESCHREIBUNG|Beispiel
 -|-|-
-Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):**Wert1 <br/> **Wert des Antwortheaders (HTTP-Regelmodul):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert1Wert2
-Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**Wert1 <br/>**Wert des Antwortheaders (HTTP-Regelmodul):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert2 <br/>
+Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):**Wert1 <br/> 
+            **Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert1Wert2
+Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**Wert1 <br/>
+            **Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert2 <br/>
 Löschen|Löscht den angegebenen Antwortheader.|**Wert des Antwortheaders (Client):** Wert1 <br/> **Konfiguration von „Modify Client Response Header“:** Der betreffende Antwortheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Antwortheader wird nicht an die anfordernde Person weitergeleitet.
 
 Wichtige Informationen:
@@ -981,7 +985,7 @@ Wichtige Informationen:
 
 Die Headernamensoption definiert den Namen des benutzerdefinierten Anforderungsheaders, in dem die IP-Adresse des Clients gespeichert wird.
 
-Anhand dieses Features kann ein Kundenursprungsserver Client-IP-Adressen über einen benutzerdefinierten Anforderungsheader ermitteln. Wenn die Anforderung aus dem Cache bedient wird, wird der Ursprungsserver nicht über die IP-Adresse des Clients informiert. Aus diesem Grund wird empfohlen, dieses Feature mit ADN oder Assets zu verwenden, die nicht zwischengespeichert werden.
+Anhand dieses Features kann ein Kundenursprungsserver Client-IP-Adressen über einen benutzerdefinierten Anforderungsheader ermitteln. Wenn die Anforderung aus dem Cache bedient wird, wird der Ursprungsserver nicht über die IP-Adresse des Clients informiert. Aus diesem Grund wird empfohlen, dieses Feature mit Objekten zu verwenden, die nicht zwischengespeichert sind.
 
 Der angegebene Headername darf keinem der folgenden Namen entsprechen:
 
@@ -1056,7 +1060,7 @@ Deaktiviert| Stellt das Standardverhalten wieder her. Standardmäßig wird Ihrer
 
 Die verfügbaren Antwortcodes sind unten aufgeführt.
 
-Antwortcode|Antwortname|Beschreibung
+Antwortcode|Antwortname|BESCHREIBUNG
 ----------------|-----------|--------
 301|Permanent verschoben|Dieser Statuscode leitet nicht autorisierte Benutzer auf die URL um, die im Adressheader angegeben ist.
 302|Gefunden|Dieser Statuscode leitet nicht autorisierte Benutzer auf die URL um, die im Adressheader angegeben ist. Dieser Statuscode entspricht der Industriestandardmethode zum Ausführen einer Umleitung.
@@ -1145,7 +1149,7 @@ Deaktiviert|Ein Token kann als ein nicht definierter Abfragezeichenfolgenparamet
 
 Zur Konfiguration dieses Features müssen die folgenden Optionen festgelegt werden:
 
-Option|Beschreibung
+Option|BESCHREIBUNG
 -|-
 Code|Wählen Sie den Antwortcode aus, der an die anfordernde Person zurückgegeben wird.
 Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
@@ -1188,7 +1192,7 @@ Wichtige Informationen:
 
 - Zur Konfiguration dieses Features müssen die folgenden Optionen festgelegt werden:
 
-Option|Beschreibung
+Option|BESCHREIBUNG
 -|-
  Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/>     - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen. 
  Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - HTTP-Variablen <br/> <br/> Fügen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert anhand der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
@@ -1248,8 +1252,8 @@ Dieses Feature umfasst Übereinstimmungskriterien, die erfüllt sein müssen, be
 </br>
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Referenz zum Regelmodul](cdn-rules-engine-reference.md)
-* [Bedingte Ausdrücke des Regelmoduls](cdn-rules-engine-reference-conditional-expressions.md)
-* [Übereinstimmungsbedingungen des Regelmoduls](cdn-rules-engine-reference-match-conditions.md)
-* [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
-* [Übersicht über das Azure CDN](cdn-overview.md)
+* [Regel-Engine – Referenz](cdn-rules-engine-reference.md)
+* [Regel-Engine – bedingte Ausdrücke](cdn-rules-engine-reference-conditional-expressions.md)
+* [Übereinstimmungsbedingungen der Regel-Engine](cdn-rules-engine-reference-match-conditions.md)
+* [Überschreiben des HTTP-Verhaltens mithilfe der Regel-Engine](cdn-rules-engine.md)
+* [Übersicht über das Azure Content Delivery Network](cdn-overview.md)

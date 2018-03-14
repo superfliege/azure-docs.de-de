@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 02/28/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 89571468e7f74f45bc1b679737f634fa0c76fa07
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c42aaabd27afeb9e7fdd0b9add3de62a2d00eeaf
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Hinzufügen eines App Service-Ressourcenanbieters zu einer getrennten, durch AD FS gesicherten Azure Stack-Umgebung
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -81,10 +81,9 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
     5. Geben Sie den **Namen des Speicherkontos** ein, das App Service während der Installation erstellen soll. Dieser ist standardmäßig auf **appsvclocalstor** festgelegt.
     6. Klicken Sie auf **Weiter**.
 
-
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image03.png)
 
-8. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. In der Adresse der Dateifreigabe muss der vollqualifizierte Domänenname des Dateiservers (z.B. „\\\appservicefileserver.local.cloudapp.azurestack.external\websites“) oder die IP-Adresse (z.B. „\\\10.0.0.1\websites“) verwendet werden.
+8. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. Die Adresse der Dateifreigabe muss den vollqualifizierten Domänennamen Ihres Dateiservers oder die IP-Adresse verwenden. Beispiel: \\„\appservicefileserver.local.cloudapp.azurestack.external\websites“ oder \\„\10.0.0.1\websites“.
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image04.png)
 
@@ -94,7 +93,6 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
     3. Geben Sie im Feld **Kennwort für das Identitätsanwendungszertifikat** das Kennwort für das Zertifikat ein. Dieses Kennwort haben Sie erstellt, als Sie das Skript zum Erstellen des Zertifikats verwendet haben.
     4. Geben Sie im Feld **Azure Resource Manager-Stammzertifikatsdatei** den Speicherort der Zertifikatsdatei ein (oder navigieren Sie zu diesem).
     5. Klicken Sie auf **Weiter**.
-
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image05.png)
 
@@ -136,12 +134,10 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
 13. Wählen Sie im Feld **Plattformimage auswählen** aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für Windows Server 2016 aus. Klicken Sie auf **Weiter**.
 
-
 14. Auf der nächsten Seite:
      1. Geben Sie den Administratorbenutzernamen für den virtuellen Computer der Workerrolle und das zugehörige Kennwort ein.
      2. Geben Sie den Administratorbenutzernamen für den virtuellen Computer der anderen Rollen und das zugehörige Kennwort ein.
      3. Klicken Sie auf **Weiter**.
-
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image09.png)    
 

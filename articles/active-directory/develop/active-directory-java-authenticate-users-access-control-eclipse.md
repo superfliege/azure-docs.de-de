@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse
 Diese Anleitung zeigt, wie der Azure Access Control Service (ACS) im Azure Toolkit für Eclipse verwendet wird. Weitere Informationen zum ACS finden Sie im Abschnitt [Nächste Schritte](#next_steps) .
@@ -58,9 +58,10 @@ Wenn zwischen dem ACS und einem IP ein Vertrauensverhältnis konfiguriert worden
 
 **Verbundanbieter (Federation Provider, FP)** – Identitätsanbieter (IPs) kennen die Benutzer, authentifizieren Benutzer anhand ihrer Anmeldeinformationen und geben Ansprüche für Benutzer anhand der ihnen bekannten Informationen aus. Ein Verbundanbieter (FP) ist eine andere Art von Authentifizierungsstelle: Er authentifiziert Benutzer nicht direkt, sondern fungiert als Instanz zur Vermittlung der Authentifizierung zwischen einer RP und einer oder mehreren IP-Adressen. Sowohl IPs als auch FPs geben Sicherheitstokens aus. Daher verwenden Sie beide Security Token Services (STS). Der ACS ist ein FP.
 
-**ACS-Regelmodul** - Die Logik, die eingehende Tokens von vertrauenswürdigen IPs in Tokens transformiert, die von einer RP verwendet werden können, ist in Form einfacher Anspruchstransformationsregeln kodifiziert. Der ACS funktioniert als Regelmodul, das jede Transformationsregel anwendet, die Sie für Ihre RP festgelegt haben.
 
-**ACS-Namespace** - Ein Namespace ist eine Partition auf der obersten Ebene des ACS, die Sie zur Organisation Ihrer Einstellungen verwenden. Ein Namespace enthält eine Liste der IPs, denen Sie vertrauen, die Anwendungen der vertrauenden Seite, die Sie bereitstellen möchten, und die Regeln, die das Regelmodul auf eingehende Tokens anwenden soll. Ein Namespace weist verschiedene Endpunkte auf, die von der Anwendung und dem Entwickler verwendet werden, damit der ACS seine Funktion ausführt.
+            **ACS-Regel-Engine** – Die Logik, die eingehende Tokens von vertrauenswürdigen IPs in Tokens transformiert, die von einer RP verwendet werden können, ist in Form einfacher Anspruchstransformationsregeln kodifiziert. Der ACS funktioniert als Regel-Engine, die jede Transformationsregel anwendet, die Sie für Ihre RP festgelegt haben.
+
+**ACS-Namespace** - Ein Namespace ist eine Partition auf der obersten Ebene des ACS, die Sie zur Organisation Ihrer Einstellungen verwenden. Ein Namespace enthält eine Liste der IPs, denen Sie vertrauen, die Anwendungen der vertrauenden Seite, die Sie bereitstellen möchten, und die Regeln, die die Regel-Engine auf eingehende Tokens anwenden soll. Ein Namespace weist verschiedene Endpunkte auf, die von der Anwendung und dem Entwickler verwendet werden, damit der ACS seine Funktion ausführt.
 
 Die folgende Abbildung zeigt, wie die ACS-Authentifizierung bei einer Webanwendung abläuft:
 
@@ -71,7 +72,7 @@ Die folgende Abbildung zeigt, wie die ACS-Authentifizierung bei einer Webanwendu
 3. Der Client geht auf die Authentifizierungsseite des IPs und fordert den Benutzer auf, sich anzumelden.
 4. Wenn der Client authentifiziert ist (beispielsweise die Anmeldeinformationen eingegeben wurden), gibt der IP ein Sicherheitstoken aus.
 5. Nach der Ausgabe des Sicherheitstokens leitet der IP den Client an den ACS weiter und sendet das vom IP ausgegebene Sicherheitstoken an den ACS.
-6. Der ACS validiert das vom IP ausgegebene Token, gibt die in diesem Token enthaltenen Identitätsansprüche in das ACS-Regelmodul ein, berechnet die auszugebenden Identitätsansprüche und gibt ein neues Sicherheitstoken aus, das diese Ansprüche enthält.
+6. Der ACS validiert das vom IP ausgegebene Token, gibt die in diesem Token enthaltenen Identitätsansprüche in die ACS-Regel-Engine ein, berechnet die auszugebenden Identitätsansprüche und gibt ein neues Sicherheitstoken aus, das diese Ansprüche enthält.
 7. Der ACS leitet den Client an die RP weiter. Der Client sendet das vom ACS ausgegebene neue Sicherheitstoken an die RP. Die RP validiert die Signatur auf dem vom ACS ausgegebenen Sicherheitstoken, validiert die Ansprüche in diesem Token und gibt die ursprünglich angeforderte Seite zurück.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -94,7 +95,7 @@ Um mit der Verwendung des Access Control Service (ACS) in Azure beginnen zu kön
 4. Geben Sie einen Namen für den Namespace ein. Azure prüft, ob der Name eindeutig ist.
 5. Wählen Sie die Region aus, in der der Namespace verwendet wird. Verwenden Sie für die beste Leistung die Region, in der Sie ihre Anwendung einsetzen.
 6. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie für den ACS-Namespace verwenden möchten.
-7. Klicken Sie auf **Erstellen**.
+7. Klicken Sie auf **Create**.
 
 Azure erstellt und aktiviert den Namespace. Warten Sie, bis der Status des neuen Namespace auf **Aktiv** gesetzt wird, bevor Sie fortfahren. 
 

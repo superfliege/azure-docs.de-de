@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 629e0bbaa7c62ef5d381085588c6a99c203c41cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen von Twitter als OAuth1-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -132,7 +132,7 @@ Definieren Sie Twitter als Anspruchsanbieter, indem Sie in Ihrer Erweiterungsric
 
 4. Ersetzen Sie den Wert *client_id* durch den Anwendungsconsumerschlüssel Ihres Twitter-Kontos.
 
-5. Speichern Sie die Datei.
+5. Speichern Sie die Datei .
 
 ## <a name="step-4-register-the-twitter-account-claims-provider-to-your-sign-up-or-sign-in-user-journey"></a>Schritt 4: Registrieren des Twitter-Kontoanspruchsanbieters bei Ihrer User Journey für Registrierung oder Anmeldung
 Sie haben den Identitätsanbieter eingerichtet. Er ist jedoch nicht in den Fenstern zur Registrierung oder Anmeldung verfügbar. Nun müssen Sie den Identitätsanbieter des Twitter-Kontos Ihrer `SignUpOrSignIn`-User Journey hinzufügen.

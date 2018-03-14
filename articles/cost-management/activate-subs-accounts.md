@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2018
+ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: c2728545aeb202bdd216e00fd4a7e464e483b1da
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 66b2ef53e613a9c61eea17746a25357119cf6900
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktivieren von Azure-Abonnements und -Konten mit Azure Cost Management
 
@@ -56,7 +56,7 @@ Wenn Sie ein Konto hinzufügen oder ein Abonnement aktualisieren, gewähren Sie 
 
 ### <a name="update-a-subscription"></a>Aktualisieren eines Abonnements
 
-1. Wenn Sie ein _nicht aktiviertes_ Abonnement aktualisieren möchten, das bereits in der Kontoverwaltung von Azure Cost Management vorhanden ist, klicken Sie zum Bearbeiten auf das Stiftsymbol rechts neben _Mandanten-GUID_.
+1. Wenn Sie ein _nicht aktiviertes_ Abonnement aktualisieren möchten, das bereits in der Kontoverwaltung von Azure Cost Management vorhanden ist, klicken Sie zum Bearbeiten auf das Stiftsymbol rechts neben der übergeordneten _Mandanten-GUID_. Abonnements werden unter einem übergeordneten Mandanten zusammengefasst, aktivieren Sie Abonnements daher nicht einzeln.
     ![Abonnements neu ermitteln](./media/activate-subs-accounts/existing-sub.png)
 2. Geben Sie, falls erforderlich, die Mandanten-ID ein. Wenn Sie Ihre Mandanten-ID nicht kennen, führen Sie die folgenden Schritte aus, um sie nachzusehen:
     1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -86,13 +86,13 @@ Wenn Sie das Azure Cost Management-Portal zum ersten Mal verwenden, werden mögl
 
 - Im *Assistenten für die Einrichtung von Azure Cost Management*: **Der angegebene API-Schlüssel ist kein Schlüssel für die Registrierung auf der obersten Ebene**.
 - Im Enterprise Agreement-Portal: *Direkte Registrierung – Nein*.
-- Im Azure Cost Management-Portal: *Für die letzten 30 Tage wurden keine Nutzungsdaten gefunden. Wenden Sie sich an Ihren Distributor, um sicherzustellen, dass für Ihr Azure-Konto Markup aktiviert wurde.*
+- Im Cloudyn-Portal: *No usage data was found for the last 30 days. Wenden Sie sich an Ihren Distributor, um sicherzustellen, dass für Ihr Azure-Konto Markup aktiviert wurde.*
 
 Mit den obigen Fehlermeldungen wird angegeben, dass Sie über einen Handelspartner oder CSP ein Azure Enterprise Agreement (EA) erworben haben. Ihr Handelspartner oder CSP muss _Markup_ für Ihr Azure-Konto aktivieren, damit Sie Ihre Daten in Azure Cost Management anzeigen können.
 
 Sie können die Probleme wie folgt beheben:
 
-1. Ihr Handelspartner muss _Markup_ für Ihr Konto aktivieren. Anweisungen hierzu finden Sie im [Onboarding-Leitfaden für das Microsoft Azure Enterprise Portal (indirekte Registrierung)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
+1. Ihr Handelspartner muss _Markup_ für Ihr Konto aktivieren. Die Anleitung finden Sie unter [Indirect Customer Onboarding Guide (Anleitung für indirektes Kundenonboarding)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 2. Generieren Sie den Azure Enterprise Agreement-Schlüssel für die Verwendung mit Azure Cost Management. Entsprechende Anweisungen finden Sie unter [Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten](https://docs.microsoft.com/en-us/azure/cost-management/quick-register-ea).
 
 Cost Management kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend.

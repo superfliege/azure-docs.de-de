@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 310bea356ac611a92d9e3899da5d4fb19c50e94e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 277ed277b14886d386e097e0ce4bef8add5d4ba1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-deployment-sources"></a>Konfigurieren von Bereitstellungsquellen
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -56,7 +56,7 @@ Sie benötigen ein GitHub-Konto, um diese Aufgabe abzuschließen. Möglicherweis
 7.  Melden Sie sich im Browser auf einer neuen Registerkarte oder in einem neuen Fenster beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) als Dienstadministrator an.
 8.  Navigieren Sie zu **Resource Providers** (Ressourcenanbieter), und wählen Sie **App Service Resource Provider Admin** (Administrator von App Service-Ressourcenanbieter) aus.
 9. Klicken Sie auf **Source control configuration** (Konfiguration der Quellcodeverwaltung).
-10. Kopieren Sie die **Client-ID** und den **geheimen Clientschlüssel** in die entsprechenden Eingabefelder für GitHub.
+10. Kopieren Sie die **Client-ID** und das **Clientgeheimnis**, und fügen Sie sie in die entsprechenden Eingabefelder für GitHub ein.
 11. Klicken Sie auf **Speichern**.
 
 ## <a name="configure-bitbucket"></a>Konfigurieren von BitBucket
@@ -79,7 +79,7 @@ Sie benötigen ein Bitbucket-Konto, um diese Aufgabe abzuschließen. Möglicherw
 9.  Melden Sie sich im Browser auf einer neuen Registerkarte oder in einem neuen Fenster beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) als Dienstadministrator an.
 10.  Navigieren Sie zu **Resource Providers** (Ressourcenanbieter), und wählen Sie **App Service Resource Provider Admin** (Administrator von App Service-Ressourcenanbieter) aus.
 11. Klicken Sie auf **Source control configuration** (Konfiguration der Quellcodeverwaltung).
-12. Kopieren Sie den **Schlüssel** in das Eingabefeld **Client-ID** und das **Geheimnis** in das Eingabefeld **Client Secret** (Geheimer Clientschlüssel) für BitBucket.
+12. Kopieren Sie den **Schlüssel** und das **Geheimnis**, und fügen Sie sie in das Eingabefeld **Client-ID** bzw. das Eingabefeld **Clientgeheimnis** für BitBucket ein.
 13. Klicken Sie auf **Speichern**.
 
 
@@ -94,7 +94,8 @@ Sie benötigen für diese Aufgabe ein mit einem OneDrive-Konto verknüpftes Micr
 2. Klicken Sie unter **Meine Anwendungen** auf **App hinzufügen**.
 ![OneDrive-Anwendungen][10]
 3. Geben Sie für „Registrierung einer neuen Anwendung“ einen **Namen** wie **App Service in Azure Stack** ein, und klicken Sie auf **Anwendung erstellen**.
-4. Der nächste Bildschirm enthält die Eigenschaften der neuen Anwendung. Notieren Sie sich die **Anwendungs-ID**. ![OneDrive-Anwendungseigenschaften][11]
+4. Der nächste Bildschirm enthält die Eigenschaften der neuen Anwendung. Notieren Sie sich die **Anwendungs-ID**.
+![OneDrive-Anwendungseigenschaften][11]
 5. Klicken Sie unter **Anwendungsgeheimnisse** auf **Neues Kennwort generieren**. Notieren Sie sich das Kennwort in **Neues Kennwort wurde generiert**. Dies ist Ihr Anwendungsgeheimnis, das nach dem Klicken auf **OK** nicht mehr wiederhergestellt werden kann.
 6. Klicken Sie unter **Plattformen** auf **Plattform hinzufügen**, und wählen Sie **Web** aus.
 7. Geben Sie den **Umleitungs-URI** ein.  In einer Standardbereitstellung von Azure Stack hat die Umleitungs-URL das Format „https://portal.local.azurestack.external/tokenauthorize“. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „azurestack.local“ durch Ihre Domäne. ![OneDrive-Anwendung – Hinzufügen einer Webplattform][12]
@@ -106,7 +107,7 @@ Sie benötigen für diese Aufgabe ein mit einem OneDrive-Konto verknüpftes Micr
 10.  Melden Sie sich im Browser auf einer neuen Registerkarte oder in einem neuen Fenster beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) als Dienstadministrator an.
 11.  Navigieren Sie zu **Resource Providers** (Ressourcenanbieter), und wählen Sie **App Service Resource Provider Admin** (Administrator von App Service-Ressourcenanbieter) aus.
 12. Klicken Sie auf **Source control configuration** (Konfiguration der Quellcodeverwaltung).
-13. Kopieren Sie die **Anwendungs-ID** in das Eingabefeld **Client-ID** und das **Kennwort** in das Eingabefeld **Geheimer Clientschlüssel** für OneDrive.
+13. Kopieren Sie die **Anwendungs-ID** und das **Kennwort**, und fügen Sie sie in das Eingabefeld **Client-ID** bzw. das Eingabefeld **Clientgeheimnis** für OneDrive ein.
 14. Klicken Sie auf **Speichern**.
 
 ## <a name="configure-dropbox"></a>Konfigurieren von Dropbox
@@ -130,7 +131,7 @@ Sie benötigen für diese Aufgabe ein mit einem OneDrive-Konto verknüpftes Micr
 9.  Melden Sie sich im Browser auf einer neuen Registerkarte oder in einem neuen Fenster beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) als Dienstadministrator an.
 10.  Navigieren Sie zu **Resource Providers** (Ressourcenanbieter), und wählen Sie **App Service Resource Provider Admin** (Administrator von App Service-Ressourcenanbieter) aus.
 11. Klicken Sie auf **Source control configuration** (Konfiguration der Quellcodeverwaltung).
-12. Kopieren Sie den **Application Key** (Anwendungsschlüssel) in das Eingabefeld **Client-ID** und das **App secret** (App-Geheimnis) in das Eingabefeld **Geheimer Clientschlüssel** für Dropbox.
+12. Kopieren Sie die Werte von **Application Key** (Anwendungsschlüssel) und von **App secret** (App-Geheimnis), und fügen Sie sie in das Eingabefeld **Client-ID** bzw. das Eingabefeld **Clientgeheimnis** für Dropbox ein.
 13. Klicken Sie auf **Speichern**.
 
 

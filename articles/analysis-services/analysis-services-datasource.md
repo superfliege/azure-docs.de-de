@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: owend
-ms.openlocfilehash: e2f7e356b260c0e5af67d28811bd88a63a601312
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 9f2a4acdd0a2b29bc1485f62c0049f0065cbf711
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -48,7 +48,7 @@ In-Memory- und DirectQuery-Modelle, die eine Verbindung mit Azure-Datenquellen h
 
 ## <a name="on-premises-data-sources"></a>Lokale Datenquellen
 
-Zum Herstellen einer Verbindung mit lokalen Datenquellen ist ein lokales Gateway erforderlich. Bei Verwendung eines Gateways müssen 64-Bit-Anbieter installiert sein.
+Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-Server ist ein lokales Gateway erforderlich. Wenn Sie ein Gateway verwenden, sind 64-Bit-Anbieter erforderlich.
 
 ### <a name="in-memory-and-directquery"></a>In-Memory und DirectQuery
 
@@ -60,31 +60,26 @@ Zum Herstellen einer Verbindung mit lokalen Datenquellen ist ein lokales Gateway
 | Teradata |OLE DB-Anbieter für Teradata, Teradata-Datenanbieter für .NET |Teradata-Datenanbieter für .NET | |
 | | | |
 
-\* nur tabellarische Modelle mit Kompatibilitätsgrad 1400.
-
 ### <a name="in-memory-only"></a>Nur In-Memory
-
-> [!IMPORTANT]
-> Die Anbietertests für die folgenden Datenquellen laufen noch. 
 
 |Datenquelle  |  
 |---------|---------|
 |Access-Datenbank     |  
 |Active Directory*     |  
-|Analysis Services     | 
+|Analysis Services     |  
 |Analytics Platform System     |  
 |Dynamics CRM*     |  
-|Excel-Arbeitsmappe     | 
+|Excel-Arbeitsmappe     |  
 |Exchange*     |  
 |Ordner*     | 
 |JSON-Dokument*     |  
 |Zeilen aus Binärdatei*     | 
 |MySQL Database     | 
-|OData-Feed*     | 
+|OData-Feed*     |  
 |ODBC-Abfrage     | 
-|OLE DB     |  
+|OLE DB     |   
 |Postgre SQL-Datenbank*    | 
-|SAP HANA*    |   
+|SAP HANA*    |  
 |SAP Business Warehouse*    |  
 |SharePoint*     |   
 |Sybase-Datenbank     |  

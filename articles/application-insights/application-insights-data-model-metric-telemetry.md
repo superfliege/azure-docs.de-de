@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: bd09e2a21c25097fa4b378cb2dbe2787edbb1967
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 4139e3675e2202cc42b6b8d7ff7562e9c9d693bb
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metriktelemetrie: Application Insights-Datenmodell
 
@@ -31,7 +31,7 @@ Metrik, die System- und Prozessleistungsindikatoren darstellt:
 | **.NET-Name**             | **Plattformunabhängiger Name** | **REST-API-Name** | **Beschreibung**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | In Bearbeitung... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | Computer-CPU insgesamt
-| `\Memory\Available Bytes`                 | In Bearbeitung... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Auf Datenträger verfügbarer Speicher
+| `\Memory\Available Bytes`                 | In Bearbeitung... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Zeigt die Menge des physischen Speichers in Byte an, der für auf dem Computer ausgeführte Prozesse zur Verfügung steht. Diese wird durch Addieren der Menge des Speicherplatzes in den genullten, freien und Standbyspeicherlisten berechnet. Freier Speicher steht zur Verwendung bereit. Mit Leerdaten beschriebene Speicher bestehen aus Seiten von mit Nullen gefülltem Speicher, um zu verhindern, dass in nachfolgenden Prozessen Daten von vorherigen Prozessen angezeigt werden. Standbyspeicher sind Speicher, die aus dem Arbeitssatz eines Prozesses (dem physischen Speicher) bei der Übermittlung an einen Datenträger entfernt wurden, jedoch weiterhin für den Abruf verfügbar sind. Weitere Informationen finden Sie unter [Speicherobjekt](https://msdn.microsoft.com/library/ms804008.aspx).
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | In Bearbeitung... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | CPU des Prozesses, der die Anwendung hostet
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | In Bearbeitung... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | Vom Prozess, der die Anwendung hostet, belegter Arbeitsspeicher
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | In Bearbeitung... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | Rate der E/A-Vorgänge des Prozesses, der die Anwendung hostet
@@ -40,7 +40,7 @@ Metrik, die System- und Prozessleistungsindikatoren darstellt:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | In Bearbeitung... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | Durchschnittliche Ausführungszeit von Anforderungen
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | In Bearbeitung... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | Anzahl der Anforderungen, die in einer Warteschlange auf die Verarbeitung warten
 
-## <a name="name"></a>Name
+## <a name="name"></a>NAME
 
 Name der Metrik, der im Application Insights-Portal und auf der Benutzeroberfläche angezeigt werden soll. 
 

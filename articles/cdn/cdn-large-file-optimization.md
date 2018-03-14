@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 7a5d5d1d0de24ebb0a5115ede1e572f38454bd78
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e6266fdaaac6a1a1a5d3a5595c10f79fd9f01a7
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="large-file-download-optimization-via-the-azure-content-delivery-network"></a>Optimierung großer Dateidownloads über das Azure Content Delivery Network
+# <a name="large-file-download-optimization-via-azure-cdn"></a>Optimierung großer Dateidownloads über das Azure Content Delivery Network
 
 Die Dateigrößen von Inhalten, die über das Internet übermittelt werden, wachsen aufgrund von immer umfangreicherer Funktionalität, verbesserter Grafik und umfassenden Medieninhalten stetig weiter. Dieses Wachstum wird durch viele Faktoren gefördert, z.B. bessere Breitbandversorgung, größere kostengünstige Speichergeräte, vermehrte Nutzung von High-Definition-Videos und mit dem Internet verbundene Geräte (IoT). Für große Dateien bedarf es daher eines schnelleren und effizienteren Übermittlungsverfahrens, um eine reibungslose und angemessene Kundenerfahrung zu gewährleisten.
 
@@ -99,7 +99,7 @@ Mit dem Feature „Complete Cache Fill“ kann das CDN eine Datei im Cache ableg
 
 Complete Cache Fill ist für große Assets am nützlichsten. Normalerweise werden diese von Benutzern nicht von Anfang bis Ende heruntergeladen. Es wird ein progressiver Download verwendet. Standardmäßig wird der Edgeserver gezwungen, einen Hintergrundabruf des Assets vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des Edgeservers. Nachdem sich das vollständige Objekt im Cache befindet, kann der Edgeserver Bytebereichsanforderungen an das CDN für das zwischengespeicherte Objekt beantworten.
 
-Das Standardverhalten kann über das Regelmodul im Tarif Verizon Premium deaktiviert werden.
+Das Standardverhalten kann über die Regel-Engine im Tarif Verizon Premium deaktiviert werden.
 
 ### <a name="peer-cache-fill-hot-filing"></a>Peercache-Auffüllung bei häufig verwendeten Dateien
 

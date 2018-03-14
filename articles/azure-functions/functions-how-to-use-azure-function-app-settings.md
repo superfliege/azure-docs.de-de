@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.openlocfilehash: f174766d4ab909fea0feea517a17b9d648722c2a
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 2aa35cf814f8de2af89c6f7e0eda1f919301d6a3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Verwalten einer Funktionen-App im Azure-Portal 
 
@@ -119,7 +119,7 @@ Weitere Informationen zum Verwenden von App Service-Einstellungen finden Sie unt
 
 | | |
 |-|-|
-| ![API-Swagger-Definition für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions unterstützt Swagger, um Clients eine einfachere Nutzung Ihrer über HTTP ausgelösten Funktionen zu ermöglichen. Weitere Informationen zum Erstellen von API-Definitionen mit Swagger finden Sie unter [Erste Schritte mit API-Apps und Swagger in Azure](../app-service/app-service-web-tutorial-rest-api.md). Sie können zudem Functions-Proxys verwenden, um eine API-Oberfläche für mehrere Funktionen zu definieren. Weitere Informationen finden Sie unter [Arbeiten mit Proxys in Azure Functions](functions-proxies.md). |
+| ![API-Swagger-Definition für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions unterstützt Swagger, um Clients eine einfachere Nutzung Ihrer über HTTP ausgelösten Funktionen zu ermöglichen. Weitere Informationen zum Erstellen von API-Definitionen mit Swagger finden Sie unter [Hosten einer RESTful-API mit CORS in Azure App Service](../app-service/app-service-web-tutorial-rest-api.md). Sie können zudem Functions-Proxys verwenden, um eine API-Oberfläche für mehrere Funktionen zu definieren. Weitere Informationen finden Sie unter [Arbeiten mit Proxys in Azure Functions](functions-proxies.md). |
 
 ![Konfigurieren der API für die Funktionen-App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
 

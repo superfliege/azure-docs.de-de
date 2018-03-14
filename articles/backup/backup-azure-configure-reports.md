@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c6cc4ba95f440f09f11a93927fd67873f8813e8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f51d85da1bda0d9483883301b71c20e405724b9b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für Azure Backup mithilfe des Recovery Services-Tresors beschrieben, und es wird gezeigt, wie Sie auf diese Berichte mithilfe von PowerBI zugreifen können. Nachdem Sie diese Schritte ausgeführt haben, können Sie direkt in Power BI alle Berichte anzeigen, Berichte anpassen und erstellen. 
@@ -123,7 +123,7 @@ Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfigu
 
 2. **Wie häufig werden die Daten an das Speicherkonto und das Azure Backup-Inhaltspaket in Power BI per Push übermittelt?**
 
-   Nach dem Aktivieren dauert es etwa 24 Stunden, bis Daten an das Speicherkonto per Push übermittelt werden. Die Häufigkeit, mit der die Daten nach dem ersten Übermitteln aktualisiert werden, ist der folgenden Tabelle zu entnehmen. 
+   Nach dem Aktivieren dauert es etwa 24 Stunden, bis Daten an das Speicherkonto per Push übermittelt werden. Die Häufigkeit, mit der die Daten nach dem ersten Übermitteln aktualisiert werden, ist der folgenden Abbildung zu entnehmen. 
       * Daten bezüglich **Aufträgen, Warnungen, Sicherungselementen, Tresoren, geschützten Servern und Richtlinien** werden während des Protokollierens per Push an das Speicherkonto des Kunden übermittelt.
       * Daten bezüglich des **Speichers** werden alle 24 Stunden per Push an das Speicherkonto des Kunden übermittelt.
    

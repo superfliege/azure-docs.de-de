@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 836d56012afa9e5d5bdec35d85c37dd4b0b788ce
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: cdd1015f63e80b7ec51565c18f3440ce1828fb03
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 In diesem Artikel wird beschrieben, wie Sie eine vorhandene Skalierungsgruppe ändern. Sie erfahren unter anderem, wie Sie die Konfiguration der Skalierungsgruppe oder die Konfiguration der in der Skalierungsgruppe ausgeführten Anwendungen ändern, wie Sie die Verfügbarkeit verwalten und vieles mehr.
@@ -255,7 +255,7 @@ Sie können auch die [Azure SDKs](https://azure.microsoft.com/downloads/) verwen
 > Für Service Fabric-Cluster kann nur der Modus „Automatisch“ verwendet werden, das Update wird jedoch anders gehandhabt. Weitere Informationen zu Service Fabric-Updates finden Sie in der [Service Fabric-Dokumentation](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade).
 
 >[!NOTE]
-> Eine der Änderungen, die an globalen Skalierungsgruppeneigenschaften vorgenommen werden, entspricht nicht der Upgraderichtlinie. Hierbei handelt es sich um Änderungen am Betriebssystemprofil der Skalierungsgruppe (etwa am Administratorbenutzernamen und am Kennwort). Diese Änderungen gelten nur für virtuelle Computer, die nach der Änderung im Skalierungsgruppenmodell erstellt wurden. Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie ein Reimaging aller vorhandenen virtuellen Computer durchführen. Für dieses Reimaging können Sie Folgendes verwenden:
+> Eine der Änderungen, die an globalen Skalierungsgruppeneigenschaften vorgenommen werden, entspricht nicht der Upgraderichtlinie. Hierbei handelt es sich um Änderungen am Betriebssystemprofil der Skalierungsgruppe (etwa am Administratorbenutzernamen und am Kennwort). Diese Eigenschaften können nur in API-Version 2017-12-01 oder höher geändert werden. Diese Änderungen gelten nur für virtuelle Computer, die nach der Änderung im Skalierungsgruppenmodell erstellt wurden. Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie ein Reimaging aller vorhandenen virtuellen Computer durchführen. Für dieses Reimaging können Sie Folgendes verwenden:
 
 REST-API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage).)
 

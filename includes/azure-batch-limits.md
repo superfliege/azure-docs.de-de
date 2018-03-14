@@ -7,7 +7,7 @@
 | Pools pro Batch-Konto | 20 - 100 | 2500 |
 
 > [!NOTE]
-> Die Standardgrenzwerte variieren abhängig vom Abonnementtyp, den Sie zum Erstellen eines Batch-Kontos verwenden. Die angezeigten Kontingente für Kerne gelten für Batch-Konten im Batch-Dienstmodus.
+> Die Standardgrenzwerte variieren abhängig vom Abonnementtyp, den Sie zum Erstellen eines Batch-Kontos verwenden. Die angezeigten Kontingente für Kerne gelten für Batch-Konten im Batch-Dienstmodus. [Zeigen Sie die Kontingente in Ihrem Batch-Konto an](../articles/batch/batch-quota-limit.md#view-batch-quotas). 
 
 <sup>1</sup> Die Anzahl der dedizierten Kerne pro Batch-Konto kann erhöht werden, aber die maximale Anzahl ist nicht festgelegt. Wenden Sie sich an den Azure-Support, um Fragen der Erhöhung zu erörtern.
 

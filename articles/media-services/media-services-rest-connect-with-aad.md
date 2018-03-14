@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
 ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per REST
 
@@ -57,18 +57,18 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für den Zugriff auf die Media Services-API müssen Sie die folgenden Datenpunkte erfassen.
 
-|Einstellung|Beispiel|Beschreibung|
+|Einstellung|Beispiel|BESCHREIBUNG|
 |---|-------|-----|
 |Azure Active Directory-Mandantendomäne|microsoft.onmicrosoft.com|Ein STS-Endpunkt (Secure Token Service) für Azure AD wird unter Verwendung des folgenden Formats erstellt: https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Azure AD stellt ein JWT für den Ressourcenzugriff aus (ein Zugriffstoken).|
 |REST-API-Endpunkt|https://amshelloworld.restv2.westus.media.azure.net/api/|Dies ist der Endpunkt, über den alle Aufrufe der Media Services-REST-API in Ihrer Anwendung durchgeführt werden.|
 |Client-ID (Anwendungs-ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Client-ID der Azure AD-Anwendung. Die Client-ID ist erforderlich, um das Zugriffstoken abzurufen. |
-|Clientgeheimnis|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD-Anwendungsschlüssel (Clientgeheimnis). Das Clientgeheimnis ist erforderlich, um das Zugriffstoken abzurufen.|
+|Geheimer Clientschlüssel|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD-Anwendungsschlüssel (Clientgeheimnis). Das Clientgeheimnis ist erforderlich, um das Zugriffstoken abzurufen.|
 
 ### <a name="get-aad-auth-info-from-the-azure-portal"></a>Abrufen von AAD-Authentifizierungsinformationen aus dem Azure-Portal
 
 Führen Sie die folgenden Schritte aus, um die Informationen abzurufen:
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
 2. Navigieren zu Ihrer AMS-Instanz.
 3. Wählen Sie **API-Zugriff** aus.
 4. Klicken Sie auf **Verbindung mit Azure Media Services-API über Dienstprinzipal herstellen**.
@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um die Informationen abzurufen:
     1. Wählen Sie die Anwendung aus.
     2. Die **Client-ID** wird im Fenster rechts angezeigt. 
 
-    ![API-Zugriff](./media/connect-with-rest/existing-client-id.png).
+    ![API-Zugriff](./media/connect-with-rest/existing-client-id.png)zu erstellen und zu verwalten.
 
 7.  Rufen Sie den **Schlüssel** der Anwendung (das Clientgeheimnis) ab. 
 
@@ -147,7 +147,7 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API
         client_secret:{Your client secret that you got from your AAD Application's Keys}
         resource:https://rest.media.azure.net
 
-8. Klicken Sie auf **Send** (Senden).
+8. Klicken Sie auf **Senden**.
 
     ![Tokenabruf](./media/connect-with-rest/connect-with-rest04.png)
 
@@ -181,7 +181,7 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** auf die **Ass
         DataServiceVersion:3.0
         MaxDataServiceVersion:3.0
 
-7. Klicken Sie auf **Send** (Senden).
+7. Klicken Sie auf **Senden**.
 
 Die zurückgegebene Antwort enthält die Assets in Ihrem Konto.
 

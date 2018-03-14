@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: e1d623c831a912598db72ccd0242cf827c88ee6c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2a6fe85c2c3d6d4f44dc197db6c28ebbc2b1d431
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
@@ -318,7 +318,7 @@ Verwenden Sie ein Tool wie z.B. [Postman](https://www.getpostman.com/) oder [cUR
 http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={methodname}
 ``` 
 
-Der `functionName`-Parameter muss auf den Methodennamen und nicht auf den im `FunctionName`-Attribut angegebenen Namen festgelegt werden. Wenn in einem Projekt mehrere Funktionen vorhanden sind, müssen diese daher beim lokalen Testen der Event Grid-Trigger eindeutige Methodennamen aufweisen (und dürfen nicht allesamt mit `Run` benannt sein).
+Der `functionName`-Parameter muss der im `FunctionName`-Attribut angegebene Name sein.
 
 In den folgenden Screenshots sind die Header und der Anforderungstext in Postman dargestellt:
 
@@ -379,7 +379,7 @@ Erstellen Sie entsprechend dem folgenden Muster ein Event Grid-Abonnement des Ab
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={methodname}
 ``` 
 
-Der `functionName`-Parameter muss auf den Methodennamen und nicht auf den im `FunctionName`-Attribut angegebenen Namen festgelegt werden. Wenn in einem Projekt mehrere Funktionen vorhanden sind, müssen diese daher beim lokalen Testen der Event Grid-Trigger eindeutige Methodennamen aufweisen (und dürfen nicht allesamt mit `Run` benannt sein).
+Der `functionName`-Parameter muss der im `FunctionName`-Attribut angegebene Name sein.
 
 Beispiel für die Verwendung der Azure-Befehlszeilenschnittstelle:
 

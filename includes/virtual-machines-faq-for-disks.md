@@ -127,7 +127,7 @@ Ja, Sicherungen funktionieren reibungslos.
 
 Es sind keine Änderungen erforderlich. 
 
-**Wird die automatisierte Migration vorhandener VM-Skalierungsgruppen (VMSS) von nicht verwalteten Datenträgern zu Managed Disks unterstützt?**
+**Wird die automatisierte Migration einer vorhandenen VM Scale Sets-Instanz (VMSS) von nicht verwalteten Datenträgern zu Managed Disks unterstützt?**
 
 Nein. Sie können eine neue VMSS mit Managed Disks mithilfe des Images von Ihrer alten VMSS mit nicht verwalteten Datenträgern erstellen. 
 
@@ -141,7 +141,7 @@ Ja, Sie können ein Failover auf einem virtuellen Computer mit Managed Disks aus
 
 **Hat die Migration auf Azure-VMs, die mit Azure Site Recovery (ASR) geschützt sind, über die Azure-zu-Azure-Replikation irgendwelche Auswirkungen?**
 
-Ja. Der ASR-Azure-zu-Azure-Schutz wird für VMs mit Managed Disks nicht unterstützt. Er wird erst ab Ende des ersten Quartals 2018 unterstützt. 
+Ja. Derzeit ist ASR-Azure-zu-Azure-Schutz für virtuelle Computer mit verwalteten Datenträgern nur als Dienst in der öffentlichen Vorschau verfügbar.
 
 **Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, zu verwalteten Datenträgern migrieren?**
 
@@ -238,7 +238,7 @@ Sie müssen Ihrer vorhandenen Azure-Tools nicht aktualisieren, um Datenträger, 
 |Azure-CLI V1     | Versionsnummer 0.10.13: Version Mai 2017 oder höher|
 |AzCopy           | Versionsnummer 6.1.0: Version Juni 2017 oder höher|
 
-Die Unterstützung für Azure-CLI V2 und Azure-Speicher-Explorer ist bald verfügbar. 
+Die Unterstützung für Azure CLI V2 und den Azure Storage-Explorer ist bald verfügbar. 
 
 **Werden P4- und P6-Datenträgergrößen für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
 

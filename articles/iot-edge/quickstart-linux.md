@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 440b70f4d04728973d77e54e7f6303e1ad7fcd89
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 827fe91c14a44cbaf8a9bb5921e5c9962d984414
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux- oder macOS-Gerät – Vorschau
 
@@ -70,22 +70,22 @@ Erstellen Sie eine Geräteidentität für das simulierte Gerät, sodass es mit d
 Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie umfasst zwei Module. Erstens: Der IoT Edge-Agent erleichtert die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät. Zweitens: Der IoT Edge-Hub verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub. 
 
 Laden Sie auf dem Computer, auf dem das IoT Edge-Gerät ausgeführt wird, das IoT Edge-Steuerskript herunter:
-```cmd
+```bash
 sudo pip install -U azure-iot-edge-runtime-ctl
 ```
 
 Konfigurieren Sie die Runtime mit der Verbindungszeichenfolge für das IoT Edge-Gerät aus dem vorherigen Abschnitt:
-```cmd
+```bash
 sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 Starten Sie die Runtime:
-```cmd
+```bash
 sudo iotedgectl start
 ```
 
 Überprüfen Sie Docker, um festzustellen, ob der IoT Edge-Agent als Modul ausgeführt wird:
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -101,7 +101,7 @@ In diesem Schnellstart haben Sie ein neues IoT Edge-Gerät erstellt und die IoT 
 
 Öffnen Sie erneut eine Eingabeaufforderung auf dem Computer, auf dem das simulierte Gerät ausgeführt wird. Vergewissern Sie sich, dass das über die Cloud bereitgestellte Modul auf dem IoT Edge-Gerät ausgeführt wird:
 
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -109,7 +109,7 @@ sudo docker ps
 
 Zeigen Sie die vom tempSensor-Modul an die Cloud gesendeten Nachrichten an:
 
-```cmd
+```bash
 sudo docker logs -f tempSensor
 ```
 
@@ -118,6 +118,12 @@ sudo docker logs -f tempSensor
 Mithilfe des [IoT Hub-Explorer-Tools][lnk-iothub-explorer] können Sie auch die vom Gerät gesendete Telemetrie anzeigen. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie das von Ihnen erstellte simulierte Gerät zusammen mit den für die einzelnen Module gestarteten Docker-Containern entfernen möchten, verwenden Sie den folgenden Befehl: 
+
+```bash
+sudo iotedgectl uninstall
+```
 
 Wenn Sie den erstellten IoT Hub nicht mehr benötigen, können Sie mit dem Befehl [az iot hub delete][lnk-delete] die Ressource und alle damit verbundenen Geräte entfernen:
 

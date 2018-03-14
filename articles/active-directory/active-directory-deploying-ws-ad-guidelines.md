@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 2a6ac8d9c2f3694cf08357d6ccec874f7e076514
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 61f84233b90cb3c82ed928d59ad2a090f7eb50b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern
 In diesem Artikel werden die wichtigen Unterschiede zwischen der lokalen Bereitstellung von Windows Server Active Directory Domain Services (AD DS) und den Active Directory-Verbunddiensten (AD FS) und der Bereitstellung auf virtuellen Microsoft Azure-Computern beschrieben.
@@ -433,7 +433,7 @@ Verwenden Sie nicht SYSPREP, um DCs bereitzustellen oder zu klonen. Die Möglich
 Wählen Sie aus, wo Sie die Windows Server AD DS-Datenbank, Protokolle und SYSVOL anordnen. Sie müssen auf Azure-Datenträgern bereitgestellt werden.
 
 > [!NOTE]
-> Die Größe von Azure-Datenträgern ist auf 4 TB beschränkt.
+> Die Größe von Azure-Datenträgern ist auf 4 TB beschränkt.
 > 
 > 
 

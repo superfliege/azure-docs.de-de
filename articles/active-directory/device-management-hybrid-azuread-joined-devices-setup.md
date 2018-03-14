@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5eb53d13ed85093616f43b79b58d43ba62ffbd67
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -33,6 +33,8 @@ Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebun
 Bevor Sie beginnen, in Azure AD eingebundene Hybridgeräte in Ihrer Umgebung zu konfigurieren, sollten Sie sich mit den unterstützten Szenarien und den Einschränkungen vertraut machen.  
 
 Wenn Sie das [Systemvorbereitungstool (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)) verwenden, vergewissern Sie sich, dass Sie Images von einer Installation von Windows erstellen, die noch nicht bei Azure AD registriert wurde.
+
+Für alle in die Domäne eingebundenen Geräte, auf denen Windows 10 Anniversary Update und Windows Server 2016 ausgeführt wird, wird bei einem Neustart des Geräts oder der Anmeldung eines Benutzers eine automatische Registrierung bei Azure AD durchgeführt, sobald die unten beschriebenen Konfigurationsschritte durchgeführt wurden. Wenn dieses Verhalten zur automatischen Registrierung nicht erwünscht ist oder wenn ein kontrollierter Rollout gewünscht wird, aktivieren oder deaktivieren Sie zuerst selektiv das automatische Rollout (siehe Anweisungen im Abschnitt „Steuern der Bereitstellung und des Rollouts“), bevor Sie mit den anderen Konfigurationsschritten fortfahren.  
 
 In diesem Thema werden die folgenden Bezeichnungen verwendet, um die Lesbarkeit der Beschreibungen zu erleichtern: 
 
@@ -566,7 +568,8 @@ Um den Rollout von aktuellen Windows-Computern zu steuern, können Sie die Grupp
    > [!NOTE]
    > In früheren Versionen der Gruppenrichtlinien-Verwaltungskonsole hatte diese Gruppenrichtlinienvorlage einen anderen Namen. Navigieren Sie zu `Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`, falls Sie eine frühere Version der Konsole verwenden. 
 
-7. Wählen Sie **Aktiviert** aus, und klicken Sie dann auf **Übernehmen**.
+7. Wählen Sie **Aktiviert** aus, und klicken Sie dann auf **Übernehmen**. Sie müssen **Deaktiviert** auswählen, wenn Sie anhand der Richtlinie die durch diese Gruppenrichtlinie gesteuerten Geräte an der automatischen Registrierung bei Azure AD hindern möchten.
+
 8. Klicken Sie auf **OK**.
 9. Verknüpfen Sie das Gruppenrichtlinienobjekt jetzt mit einem Speicherort Ihrer Wahl. Sie können es beispielsweise mit einer bestimmten Organisationseinheit verknüpfen. Sie können es aber auch mit einer bestimmten Sicherheitsgruppe von Computern verbinden, die automatisch in Azure AD eingebunden werden. Um diese Richtlinie für alle in die Domäne eingebundenen Windows 10- und Windows Server 2016-Computer in Ihrer Organisation festzulegen, verknüpfen Sie das Gruppenrichtlinienobjekt mit der Domäne.
 

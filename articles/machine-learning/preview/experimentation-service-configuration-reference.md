@@ -5,16 +5,16 @@ services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: aaa9705aed59b5cf78100eda9997bb1ca74845b9
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 00e98ff07d144db791fcf074699614f1e664634b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning-Experimentieren-Dienst – Konfigurationsdateien
 
@@ -34,7 +34,7 @@ Es folgen die relevanten Dateien in diesem Ordner:
 ## <a name="condadependenciesyml"></a>conda_dependencies.yml
 Diese Datei ist eine [Conda-Umgebungsdatei](https://conda.io/docs/using/envs.html#create-environment-file-by-hand), die die Laufzeitversion und Pakete von Python angibt, von denen Ihr Code abhängt. Wenn Azure ML Workbench ein Skript in einem Docker-Container oder einem HDInsight-Cluster ausführt, wird eine [Conda-Umgebung](https://conda.io/docs/using/envs.html) für das ausgeführte Skript erstellt. 
 
-In dieser Datei geben Sie die Python-Pakete an, die das Skript für die Ausführung benötigt. Der Azure ML-Experimentieren-Dienst erstellt die Conda-Umgebung im Docker-Image gemäß Ihrer Abhängigkeitsliste. Die Paketliste hier muss von der Ausführungs-Engine erreichbar sein. Aus diesem Grund müssen Pakete in Kanälen aufgelistet werden, z.B.:
+In dieser Datei geben Sie die Python-Pakete an, die das Skript für die Ausführung benötigt. Der Azure ML-Experimentieren-Dienst erstellt die Conda-Umgebung gemäß Ihrer Abhängigkeitsliste. Die hier aufgeführten Pakete müssen von der Ausführungs-Engine etwa über folgende Kanäle erreichbar sein:
 
 * [continuum.io](https://anaconda.org/conda-forge/repo)
 * [PyPI](https://pypi.python.org/pypi)
@@ -43,7 +43,7 @@ In dieser Datei geben Sie die Python-Pakete an, die das Skript für die Ausführ
 * andere von der Ausführungs-Engine erreichbare Pakete
 
 >[!NOTE]
->Bei der Ausführung auf einem HDInsight-Cluster erstellt Azure ML Workbench nur für die Ausführung eine Conda-Umgebung. Dadurch können verschiedene Benutzer auf verschiedenen Python-Umgebungen im gleichen Cluster ausgeführt werden.  
+>Bei der Ausführung in einem HDInsight-Cluster erstellt Azure ML Workbench eine Conda-Umgebung für Ihre spezifische Ausführung. Dadurch können verschiedene Benutzer auf verschiedenen Python-Umgebungen im gleichen Cluster ausgeführt werden.  
 
 Hier ist ein Beispiel für eine typische **conda_dependencies.yml**-Datei.
 ```yaml
@@ -68,13 +68,13 @@ dependencies:
      - C:\temp\my_private_python_pkg.whl
 ```
 
-Azure ML Workbench verwendet die gleichen Conda-Umgebung ohne Neuerstellung, so lange die **conda_dependencies.yml** intakt bleibt. Wenn jedoch etwas in dieser Datei geändert wird, wird das Docker-Image neu erstellt.
+Azure ML Workbench verwendet die gleiche Conda-Umgebung ohne Neuerstellung, solange **conda_dependencies.yml** gleich bleibt. Wenn sich die Abhängigkeiten ändern, wird die Umgebung neu erstellt.
 
 >[!NOTE]
 >Wenn Sie die Ausführung im _lokalen_ Computekontext durchführen, wird die **conda_dependencies.yml**-Datei **nicht** verwendet. Sie müssen Paketabhängigkeiten für Ihre lokale Azure ML Workbench-Python-Umgebung manuell installieren.
 
 ## <a name="sparkdependenciesyml"></a>spark_dependencies.yml
-Diese Datei gibt den Spark-Anwendungsnamen an, wenn Sie ein PySpark-Skript und Spark-Pakete übermitteln, die installiert werden müssen. Sie können auch jedes öffentliche Maven-Repository sowie das Spark-Paket angeben, das in diesen Maven-Repositorys gefunden werden kann.
+Diese Datei gibt den Spark-Anwendungsnamen an, wenn Sie ein PySpark-Skript und Spark-Pakete übermitteln, die installiert werden müssen. Sie können auch ein öffentliches Maven-Repository sowie Spark-Pakete angeben, die sich in diesen Maven-Repositorys befinden.
 
 Beispiel: 
 
@@ -103,13 +103,13 @@ packages:
 ```
 
 >[!NOTE]
->Optimierungsparameter für Cluster wie Workergröße und Kerne gehören in den Abschnitt „Konfiguration“ in der Datei spark_dependecies.yml 
+>Optimierungsparameter für Cluster wie Workergröße und Kerne gehören in den Abschnitt „Konfiguration“ in der Datei „spark_dependecies.yml“. 
 
 >[!NOTE]
->Wenn Sie das Skript in der Python-Umgebung ausführen, wird die Datei *spark_dependencies.yml* ignoriert. Sie hat nur Auswirkungen, wenn Sie gegen Spark (entweder auf Docker oder dem HDInsight-Cluster) ausgeführt wird.
+>Wenn Sie das Skript in der Python-Umgebung ausführen, wird die Datei *spark_dependencies.yml* ignoriert. Sie hat nur Auswirkungen, wenn Sie für Spark (entweder im Docker- oder HDInsight-Cluster) ausgeführt wird.
 
 ## <a name="run-configuration"></a>Laufzeitkonfiguration
-Zum Angeben einer bestimmten Laufzeitkonfiguration ist ein Dateipaar erforderlich. Sie werden in der Regel mit einem CLI-Befehl generiert. Sie können jedoch auch bestehende klonen, neu benennen und bearbeiten.
+Um eine bestimmte Ausführungskonfiguration anzugeben, benötigen Sie eine COMPUTE- und eine RUNCONFIG-Datei. Diese Dateien werden in der Regel mit einem CLI-Befehl generiert. Sie können jedoch auch bestehende klonen, neu benennen und bearbeiten.
 
 ```azurecli
 # create a compute target pointing to a VM via SSH
@@ -125,10 +125,11 @@ Dieser Befehl erstellt ein Dateipaar auf der Grundlage des angegebenen Computezi
 > _Lokale_ oder _Docker_-Namen für die Laufzeitkonfigurationsdateien sind beliebig. Azure ML Workbench fügt diese zwei Laufzeitkonfigurationen hinzu, wenn Sie der Einfachheit halber ein leeres Projekt erstellen. Sie können „<run configuration name>runconfig“-Dateien umbenennen, die aus der Projektvorlage stammen, oder Sie erstellen neue Dateien mit den gewünschten Namen.
 
 ### <a name="compute-target-namecompute"></a>\<Computezielname> .compute
-Die Datei _\<Computezielname>.compute_ gibt Verbindungs- und Konfigurationsinformationen für das Computeziel an. Es ist eine Liste von Name/Wert-Paaren. Nachfolgend sehen Sie die unterstützten Einstellungen.
+Die Datei _\<Computezielname>.compute_ gibt Verbindungs- und Konfigurationsinformationen für das Computeziel an. Es ist eine Liste von Name/Wert-Paaren. Nachfolgend sehen Sie die unterstützten Einstellungen:
 
 **type**: Typ der Computeumgebung. Folgende Werte werden unterstützt:
   - local
+  - Remote
   - docker
   - remotedocker
   - cluster
@@ -147,6 +148,8 @@ Die Datei _\<Computezielname>.compute_ gibt Verbindungs- und Konfigurationsinfor
 **NvidiaDocker**: Wird dieses Flag auf _TRUE_ festgelegt, so weist es den Azure ML-Experimentieren-Dienst dazu an, den Befehl _nvidia-Docker_ anstelle des normalen _docker_-Befehls zu verwenden, um das Docker-Image zu starten. Die _Nvidia-Docker_-Engine gewährt dem Docker-Container Zugriff auf die GPU-Hardware. Die Einstellung ist erforderlich, wenn die GPU-Ausführung im Docker-Container stattfinden soll. Nur der Linux-Host unterstützt _Nvidia-docker_. Angenommen, die Linux-basierte DSVM in Azure wird mit _Nvidia-Docker_ bereitgestellt. _nvidia-docker_ wird ab jetzt unter Windows nicht unterstützt.
 
 **NativeSharedDirectory**: Diese Eigenschaft gibt das Basisverzeichnis (z.B.: _~/.azureml/share/_) an, in dem Dateien gespeichert werden können, um auf mehreren Ausführungen auf dem gleichen Computeziel freigegeben werden zu können. Wenn diese Einstellung für die Ausführung auf einem Docker-Container verwendet wird, muss _SharedVolumes_ auf TRUE festgelegt werden. Andernfalls schlägt die Ausführung fehl.
+
+**userManagedEnvironment**: Diese Eigenschaft gibt an, ob dieses Computeziel direkt vom Benutzer oder über den Experimentieren-Dienst verwaltet wird.  
 
 ### <a name="run-configuration-namerunconfig"></a>\<Name der Lauftzeitkonfigurationsdatei> runconfig
 _\<Ausführungskonfigurationsname>.runconfig_ gibt das Experimentausführungsverhalten von Azure ML an. Sie können verschiedene Ausführungsverhaltensweisen konfigurieren, etwa die Überwachung des Ausführungsverlaufs oder das zu verwendende Computeziel usw. Die Namen der Laufzeitkonfigurationsdateien werden zum Auffüllen der Dropdownliste des Ausführungskontexts in der Azure ML Workbench-Desktopanwendung verwendet.
@@ -171,7 +174,7 @@ EnvironmentVariables:
   "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
-Im Benutzercode kann auf diese Umgebungsvariablen zugegriffen werden. Mit dem folgenden Python-Code wird beispielsweise die Umgebungsvariable „EXAMPLE_ENV_VAR“ ausgegeben
+Im Benutzercode kann auf diese Umgebungsvariablen zugegriffen werden. Mit dem folgenden Python-Code wird beispielsweise die Umgebungsvariable „EXAMPLE_ENV_VAR“ ausgegeben:
 ```
 print(os.environ.get("EXAMPLE_ENV_VAR1"))
 ```
@@ -190,7 +193,7 @@ print(os.environ.get("EXAMPLE_ENV_VAR1"))
 
 **DataSourceSettings**: Dieser Konfigurationsabschnitt gibt die Einstellungen für die Datenquelle an. In diesem Abschnitt geben Benutzer an, welches vorhandene Datenbeispiel für eine bestimmte Datenquelle als Teil der Ausführung verwendet wird. 
 
-Die folgende Konfigurationseinstellung gibt an, dass das Beispiel mit dem Namen „MySample“ für die Datenquelle mit dem Namen „MyDataSource“ verwendet wird
+Die folgende Konfigurationseinstellung gibt an, dass das Beispiel mit dem Namen „MySample“ für die Datenquelle mit dem Namen „MyDataSource“ verwendet wird:
 ```
 DataSourceSettings:
     MyDataSource.dsource:

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 1fd3b2c251860e883519744b11fcfc2b925cd2fa
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 561729e5e495500222ccec5b4b536a3152cb25e3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Beheben von Bereitstellungsproblemen für Azure Container Instances
 
@@ -91,6 +91,10 @@ Die Ausgabe enthält die wichtigsten Eigenschaften Ihres Containers und die Bere
 ## <a name="common-deployment-issues"></a>Häufige Bereitstellungsprobleme
 
 Es gibt einige häufige Probleme, die die Ursache der meisten Bereitstellungsfehler sind.
+
+## <a name="image-version-not-supported"></a>Imageversion wird nicht unterstützt
+
+Wenn ein Image angegeben wird, das Azure Container Instances unterstützen kann, wird eine Fehlermeldung in Form von `ImageVersionNotSupported` zurückgegeben. Als Wert des Fehlers wird `The version of image '{0}' is not supported.` angezeigt. Dieser Fehler tritt zurzeit bei Windows 1709-Images auf, um die Verwendung eines LTS Windows-Image zu verhindern. An der Unterstützung für Windows 1709-Images wird gearbeitet.
 
 ## <a name="unable-to-pull-image"></a>Pullvorgang für Image nicht möglich
 

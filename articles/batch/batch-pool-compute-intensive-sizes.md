@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 03/01/2018
 ms.author: danlep
-ms.openlocfilehash: 181e9bd7c17e4618edd63dd92d70947a61c68758
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5a73e926b5979e573ccb0402ff2d23eae2463232
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -33,11 +33,11 @@ Dieser Artikel enthält Anweisungen und Anwendungsbeispiele für einige speziell
 
 ## <a name="subscription-and-account-limits"></a>Abonnements und Kontoeinschränkungen
 
-* **Kontingente und Grenzwerte** – Das [dedizierte Kernkontingent pro Batch-Konto](batch-quota-limit.md#resource-quotas) kann die Anzahl oder den Typ der Knoten beschränken, die Sie einem Batch-Pool hinzufügen können. Besonders wahrscheinlich ist die Erreichung eines Kontingents bei einer Auswahl von RDMA-fähigen, GPU-fähigen oder sonstigen Größen für VMs mit mehreren Kernen. Ein eigenes Kontingent gilt für [VMs mit niedriger Priorität](batch-low-pri-vms.md), sofern Sie diese verwenden. 
+* **Kontingente und Grenzwerte**: Das [Kernkontingent pro Batch-Konto](batch-quota-limit.md#resource-quotas) kann die Anzahl der Knoten einer bestimmten Größe beschränken, die Sie einem Batch-Pool hinzufügen können. Besonders wahrscheinlich ist die Erreichung eines Kontingents bei einer Auswahl von RDMA-fähigen, GPU-fähigen oder sonstigen Größen für VMs mit mehreren Kernen. 
 
-  Außerdem ist die Verwendung bestimmter VM-Familien in Ihrem Batch-Konto, z.B. NCv2 und ND, aufgrund einer Kapazitätsbegrenzung eingeschränkt. Die Verwendung dieser Familien ist nur möglich, indem für die Standardeinstellung „0 Kerne“ eine Kontingenterhöhung angefordert wird.  
+  Außerdem ist die Verwendung bestimmter VM-Familien in Ihrem Batch-Konto, z.B. NCv2, NCv3 und ND, aufgrund einer Kapazitätsbegrenzung eingeschränkt. Die Verwendung dieser Familien ist nur möglich, indem für die Standardeinstellung „0 Kerne“ eine Kontingenterhöhung angefordert wird.  
 
-  In diesem Fall können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](../azure-supportability/how-to-create-azure-support-request.md) und eine Erhöhung des Kontingents anfordern.
+  Wenn Sie müssen, [fordern Sie eine Erhöhung des Kontingents](batch-quota-limit.md#increase-a-quota) kostenlos an.
 
 * **Regionale Verfügbarkeit:** Rechenintensive virtuelle Computer sind möglicherweise nicht in den Regionen verfügbar, in denen Sie die Batch-Konten erstellen. Informationen dazu, welche Größen verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 
@@ -52,10 +52,10 @@ Die RDMA- und GPU-Funktionen rechenintensiver Größen werden nur unter bestimmt
 | Größe | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS,<br/>SUSE Linux Enterprise Server 12 HPC oder<br/>CentOS-basierter HPC<br/>(Azure Marketplace) | Intel MPI 5 | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
-| [NC-, NCv2-, ND-Serie*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla GPU (je nach Serie) | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder 7.4 oder<br/>CentOS 7.3 oder 7.4<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit-Treiber | N/V | 
-| [NV-Serie](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID-Treiber | N/V |
+| [NC-, NCv2-, NCv3-, ND-Serie*](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder 7.4 oder<br/>CentOS 7.3 oder 7.4<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit-Treiber | N/V | 
+| [NV-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID-Treiber | N/V |
 
-* RDMA-Konnektivität auf virtuellen NC24r-, NC24rs_v2- und ND24r-Computern wird unter Ubuntu 16.04 LTS (von Azure Marketplace) mit Intel MPI unterstützt.
+* RDMA-Verbindungen auf virtuellen Computern der RDMA-fähigen N-Serie erfordern möglicherweise [zusätzliche Konfiguration](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity), die je nach Verteilung variiert.
 
 
 
@@ -64,10 +64,10 @@ Die RDMA- und GPU-Funktionen rechenintensiver Größen werden nur unter bestimmt
 | Größe | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2 oder<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 oder höher oder<br/> Intel MPI 5<br/><br/>Azure-VM-Erweiterung HpcVMDrivers | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
-| [NC-, NCv2-, ND-Serie*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Windows Server 2016 oder <br/>2012 R2 (Azure Marketplace) | NVIDIA Tesla-Treiber oder CUDA Toolkit-Treiber| N/V | 
+| [NC-, NCv2-, NCv3-, ND-Serie*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Windows Server 2016 oder <br/>2012 R2 (Azure Marketplace) | NVIDIA Tesla-Treiber oder CUDA Toolkit-Treiber| N/V | 
 | [NV-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 oder<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID-Treiber | N/V |
 
-* RDMA-Konnektivität auf virtuellen NC24r-, NC24rs_v2- und ND24rs-Computern wird unter Windows Server 2016 R2 oder Windows Server 2012 R2 (von Azure Marketplace) mit der Erweiterung HpcVMDrivers und Microsoft MPI oder Intel MPI unterstützt.
+* RDMA-Konnektivität auf virtuellen Computern der RDMA-fähigen N-Serie wird unter Windows Server 2016 R2 oder Windows Server 2012 R2 (von Azure Marketplace) mit der Erweiterung HpcVMDrivers und Microsoft MPI oder Intel MPI unterstützt.
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows-Pools – Konfiguration „Clouddienst“
 
@@ -123,8 +123,8 @@ Um Windows-MPI-Anwendungen in einem Pool von Azure A8-Knoten auszuführen, müss
 
 Um CUDA-Anwendungen in einem Pool von Linux-NC-Knoten auszuführen, müssen Sie das CUDA Toolkit 9.0 auf den Knoten installieren. Das Toolkit installiert die erforderlichen NVIDIA Tesla-GPU-Treiber. Im Folgenden finden Sie Beispielschritte zum Bereitstellen eines benutzerdefinierten Images mit Ubuntu 16.04 LTS mit GPU-Treibern:
 
-1. Stellen Sie eine Azure-NC6-VM mit Ubuntu 16.04 LTS bereit. Sie können den virtuellen Computer beispielsweise in der Region „USA, Süden-Mitte“ erstellen. Erstellen Sie die VM unbedingt mit einem verwalteten Datenträger.
-2. Befolgen Sie die Schritte zum Herstellen der Verbindung mit dem virtuellen Computer und zum [Installieren der CUDA-Treiber](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms).
+1. Stellen Sie eine Azure-NC-Serien-VM mit Ubuntu 16.04 LTS bereit. Sie können den virtuellen Computer beispielsweise in der Region „USA, Süden-Mitte“ erstellen. Erstellen Sie die VM unbedingt mit einem verwalteten Datenträger.
+2. Befolgen Sie die Schritte zum Herstellen der Verbindung mit dem virtuellen Computer und zum [Installieren der CUDA-Treiber](../virtual-machines/linux/n-series-driver-setup.md).
 3. Heben Sie die Bereitstellung des Linux-Agents auf, und [erstellen Sie dann das Linux-VM-Image](../virtual-machines/linux/capture-image.md).
 4. Erstellen Sie ein Batch-Konto in einer Region, die NC-VMs unterstützt.
 5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-custom-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:

@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f061197cbe9fd52594d9fb000d8f3bcbd2d5285
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: ff694ee7c2ecf7f8ee5ea89902fa77efad3f501c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/22/2017
 
 > [!IMPORTANT]
 > 
-> Derzeit werden Abonnementübertragungen für kostenlose Testversionen oder [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/)-Abonnements (AIO) nicht unterstützt. Wie Sie dies umgehen können, erfahren Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+> Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-what-is.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert.
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Übertragen des Besitzes eines Azure-Abonnements
 
@@ -49,7 +49,12 @@ ms.lasthandoff: 12/22/2017
    ![Registerkarte „Azure-Kontoabonnements“](./media/billing-subscription-transfer/image1.png)
 1. Geben Sie den Empfänger an.
 
+   > [!IMPORTANT]
+   > 
+   > Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-what-is.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert.
+
    ![Dialogfeld „Abonnement übertragen“](./media/billing-subscription-transfer/image2.PNG)
+
 1. Der Empfänger erhält automatisch eine E-Mail mit einem Link für den Vorgang zum Akzeptieren.
 
    ![E-Mail zur Abonnementübertragung an den Empfänger](./media/billing-subscription-transfer/image3.png)
@@ -80,7 +85,7 @@ Der Unternehmensadministrator kann den Besitz von Abonnements in einer Registrie
 
 ## <a name="whats-supported"></a>Unterstützte Umstellungen:
 
-Die Self-Service-Abonnementübertragung ist für die in der folgenden Tabelle aufgeführten Angebote oder Abonnementtypen verfügbar. Zur Übertragung anderer Abonnements, z.B. [Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) oder Supportpläne, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Die Self-Service-Abonnementübertragung ist für die in der folgenden Tabelle aufgeführten Angebote oder Abonnementtypen verfügbar. Zurzeit können keine kostenlose Testversionen oder [AIO](https://azure.microsoft.com/offers/ms-azr-0111p/)-Abonnements (Azure in Open) übertragen werden. Wie Sie dies umgehen können, erfahren Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md). Zur Übertragung anderer Abonnements, z.B. [Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) oder Supportpläne, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 | Angebotsname                                                                             | Angebotsnummer |
 |----------------------------------------------------------------------------------------|--------------|

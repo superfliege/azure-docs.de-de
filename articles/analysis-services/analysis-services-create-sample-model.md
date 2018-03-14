@@ -1,6 +1,6 @@
 ---
-title: "Erstellen eines tabellarischen Beispielmodells für Ihren Azure Analysis Services-Server | Microsoft-Dokumentation"
-description: Erfahren Sie, wie Sie ein Beispielmodell in Azure Analysis Services erstellen.
+title: "Hinzufügen eines tabellarischen Beispielmodells für Ihre Azure Analysis Services-Serverinstanz | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie ein Beispielmodell in Azure Analysis Services hinzufügen."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -13,17 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2018
+ms.date: 02/28/2018
 ms.author: owend
-ms.openlocfilehash: 1cc36ebf4c410d4764eb28ab89d7f2a5e7749ae5
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: df83f5dd86d1edf857378ae69b16a86b57f9a2fe
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="tutorial-create-a-sample-model"></a>Tutorial: Erstellen eines Beispielmodells
+# <a name="tutorial-add-a-sample-model"></a>Tutorial: Hinzufügen eines Beispielmodells
 
-In diesem Tutorial erstellen Sie ein Adventure Works-Beispielmodell. Das Beispielmodell ist eine abgeschlossene Version des Datenmodellierungstutorials für Internetverkäufe in Adventure Works (1200). Ein Beispielmodell eignet sich zum Testen der Modellverwaltung, zum Herstellen einer Verbindung mit Tools und Clientanwendungen und zum Abfragen von Modelldaten.
+In diesem Tutorial fügen Sie ein Adventure Works-Beispielmodell Ihrer Serverinstanz hinzu. Das Beispielmodell ist eine abgeschlossene Version des Datenmodellierungstutorials für Internetverkäufe in Adventure Works (1200). Ein Beispielmodell eignet sich zum Testen der Modellverwaltung, zum Herstellen einer Verbindung mit Tools und Clientanwendungen und zum Abfragen von Modelldaten.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

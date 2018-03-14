@@ -1,24 +1,24 @@
 ---
-title: Grundlagen zu Kostenberichten in Azure Cost Management | Microsoft-Dokumentation
-description: In diesem Artikel erhalten Sie Informationen zur grundlegenden Struktur und den Funktionen von Cloudyn-Berichte.
+title: Grundlegendes zu Kostenverwaltungsberichten in Azure Cost Management | Microsoft-Dokumentation
+description: In diesem Artikel erhalten Sie Informationen zur grundlegenden Struktur und den Funktionen von Cloudyn-Kostenverwaltungsberichten.
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 38c1313f42a58403e158cad9c2930b6541da5adc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4effd63fbd9cb972a0d130826a7347dd34561792
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="understanding-cost-reports"></a>Grundlagen zu Kostenberichten
+# <a name="understanding-cost-management-reports"></a>Grundlegendes zu Kostenverwaltungsberichten
 
-In diesem Artikel erhalten Sie Informationen zur grundlegenden Struktur und den Funktionen von Cloudyn-Berichte. Die meisten Cloudyn-Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Nachdem Sie diesen Artikel gelesen haben, sind Sie zum Verwenden aller Berichte bereit. In den verschiedenen Berichten sind zahlreiche Standardfunktionen zur problemlosen Navigation in den Berichten verfügbar. Berichte können angepasst werden, und Sie haben die Wahl zwischen mehreren Optionen zum Berechnen und Anzeigen von Ergebnissen.
+In diesem Artikel erhalten Sie Informationen zur grundlegenden Struktur und den Funktionen von Cloudyn-Kostenverwaltungsberichten. Die meisten Cloudyn-Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Nachdem Sie diesen Artikel gelesen haben, sind Sie zum Verwenden aller Kostenverwaltungsberichte bereit. In den verschiedenen Berichten sind zahlreiche Standardfunktionen zur problemlosen Navigation in den Berichten verfügbar. Berichte können angepasst werden, und Sie haben die Wahl zwischen mehreren Optionen zum Berechnen und Anzeigen von Ergebnissen.
 
 ## <a name="report-fields-and-options"></a>Felder und Optionen von Berichten
 
@@ -131,6 +131,27 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
 14. **Aktionen**
 
     Verwenden Sie „Aktionen“ zum Speichern, Exportieren oder Planen des Berichts.
+
+## <a name="save-and-schedule-reports"></a>Speichern und Planen von Berichten
+
+Nachdem Sie einen Bericht erstellt haben, können Sie ihn zur späteren Verwendung speichern. Gespeicherte Berichte stehen unter **Meine Tools** > **Meine Berichte** zur Verfügung. Wenn Sie Änderungen an einen vorhandenen Bericht vornehmen und speichern, wird der Bericht als neue Version gespeichert. Sie können ihn aber auch als neuen Bericht speichern.
+
+### <a name="save-a-report-to-the-cloudyn-portal"></a>Speichern eines Berichts im Cloudyn-Portal
+
+Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann **Save to my reports** (Unter „Meine Berichte“ speichern) aus. Geben Sie dem Bericht einen Namen, und fügen Sie dann entweder Ihre eigene URL hinzu, oder verwenden Sie die automatisch erstellte URL. Sie haben die Option, den Bericht öffentlich für andere Personen Ihrer Organisation oder Ihre Entität **freizugeben**. Wenn Sie den Bericht nicht freigeben, bleibt er ein persönlicher Bericht, den nur Sie anzeigen können. Speichern Sie den Bericht.
+
+
+### <a name="save-a-report-to-cloud-provider-storage"></a>Speichern eines Berichts im Speicher eines Cloudanbieters
+
+Zum Speichern eines Berichts bei Ihrem Cloud-Dienstanbieter müssen Sie bereits ein Speicherkonto konfiguriert haben. Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann **Schedule report** (Bericht planen) aus. Geben Sie dem Bericht einen Namen, und fügen Sie dann entweder Ihre eigene URL hinzu, oder verwenden Sie die automatisch erstellte URL. Wählen Sie **Save to storage** (In Speicher speichern), und wählen Sie dann das Speicherkonto aus, oder fügen Sie ein neues hinzu. Geben Sie ein Präfix ein, das an den Namen der Berichtdatei angefügt wird. Wählen Sie entweder CSV oder JSON als Dateiformat aus, und speichern Sie dann den Bericht.
+
+### <a name="schedule-a-report"></a>Planen eines Berichts
+
+Sie können Sie Berichte in bestimmten Zeitabständen ausführen und diese an eine Empfängerliste oder das Speicherkonto eines Cloud-Dienstanbieters senden. Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann **Schedule report** (Bericht planen) aus. Sie können den Bericht per E-Mail senden und in einem Speicherkonto speichern. Wählen Sie unter **Zeitplan** das Intervall (täglich, wöchentlich oder monatlich) aus. Wählen Sie für wöchentliche und monatliche Intervalle den Tag oder die Daten für die Übermittlung sowie die Uhrzeit aus. Speichern Sie den geplanten Bericht. Wenn Sie das Excel-Berichtformat auswählen, wird der Bericht als Anlage gesendet. Wenn Sie E-Mail-Inhalt als Format auswählen, werden im Diagrammformat angezeigte Ergebnisse als Graph übermittelt.
+
+### <a name="export-a-report-as-a-csv-file"></a>Exportieren eines Berichts als CSV-Datei
+
+Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann **Export all report data** (Alle Berichtsdaten exportieren) aus. Ein Popupfenster wird angezeigt, und eine CSV-Datei wird heruntergeladen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

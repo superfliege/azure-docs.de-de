@@ -13,17 +13,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: dd422308ed728ed4e8bc35daee3bd50f0f02aaac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c391101c82868eb3c9cc92dc55c920fdbd5f4e8
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Erkennen von Bewegungen mit Azure Media Analytics
 ## <a name="overview"></a>Übersicht
 Mit dem Medienprozessor (MP) **Azure Media Motion Detector** können Sie effizient Ihrem Interesse entsprechende Abschnitte innerhalb eines ansonsten langen und ereignislosen Videos identifizieren. Mit Bewegungserkennung können in Aufnahmen statischer Kameras Abschnitte des Videos identifiziert werden, wo Bewegung auftritt. Es wird eine JSON-Datei generiert, die Metadaten mit Zeitstempeln und der Umgebungsregion des Ereignisses enthält.
 
-Diese für Sicherheitsvideoaufnahmen konzipierte Technologie kann Bewegung in relevante Ereignisse und falsch-positive Ergebnisse – z. B. Schatten und Beleuchtungsänderungen – kategorisieren. So können Sie Sicherheitswarnungen aus Kameraaufnahmen generieren, ohne unzählige irrelevante Ereignisse auswerten zu müssen, und sind in der Lage, Momente von Interesse aus sehr langen Überwachungsvideos zu extrahieren.
+Diese für Sicherheitsvideoaufnahmen konzipierte Technologie kann Bewegung in relevante Ereignisse und falsch-positive Ergebnisse – z. B. Schatten und Beleuchtungsänderungen – kategorisieren. So können Sie Sicherheitswarnungen aus Kameraaufnahmen generieren, ohne unzählige irrelevante Ereignisse auswerten zu müssen, und sind in der Lage, Momente von Interesse aus langen Überwachungsvideos zu extrahieren.
 
 Der MP **Azure Media Motion Detector** befindet sich derzeit in der Vorschauphase.
 
@@ -38,15 +38,17 @@ Wenn Sie eine Aufgabe mit **Azure Media Motion Detector**erstellen, müssen Sie 
 ### <a name="parameters"></a>Parameter
 Sie können die folgenden Parameter verwenden:
 
-| Name | Optionen | Beschreibung | Standard |
+| NAME | Optionen | BESCHREIBUNG | Standard |
 | --- | --- | --- | --- |
 | sensitivityLevel |Zeichenfolge: „low“, „medium“, „high“ |Legt die Vertraulichkeitsstufe fest, mit der Bewegungen gemeldet werden. Passen Sie diese Einstellung an, um die Anzahl falsch positiver Ergebnisse zu steuern. |„medium“ |
 | frameSamplingValue |Positive ganze Zahl |Legt fest, wie häufig der Algorithmus ausgeführt wird. 1 steht für jedes Bild, 2 steht für jedes zweite Bild usw. |1 |
 | detectLightChange |Boolescher Wert: „true“, „false“ |Legt fest, ob kleinere Änderungen in den Ergebnissen gemeldet werden. |„false“ |
 | mergeTimeThreshold |Xs-time: hh:mm:ss<br/>Beispiel: 00:00:03 |Gibt das Zeitfenster zwischen Bewegungsereignissen an, wenn zwei Ereignisse kombiniert und als ein Ereignis gemeldet werden. |00:00:00 |
-| detectionZones |Ein Array mit Erkennungszonen:<br/>- Eine Erkennungszone ist ein Array aus mindestens drei Punkten.<br/>- Ein Punkt ist eine x- und y-Koordinate zwischen 0 und 1. |Beschreibt die Liste mit den zu verwendenden polygonalen Erkennungszonen.<br/>Die Ergebnisse werden mit den Zonen als ID gemeldet, und die erste ID lautet 'id':0. |Einzelne Zone, die den gesamten Rahmen abdeckt. |
+| detectionZones |Ein Array mit Erkennungszonen:<br/>- Eine Erkennungszone ist ein Array aus mindestens drei Punkten.<br/>– Ein Punkt ist eine x- und y-Koordinate zwischen 0 und 1. |Beschreibt die Liste mit den zu verwendenden polygonalen Erkennungszonen.<br/>Die Ergebnisse werden mit den Zonen als ID gemeldet, und die erste ID lautet 'id':0. |Einzelne Zone, die den gesamten Rahmen abdeckt. |
 
 ### <a name="json-example"></a>JSON-Beispiel
+
+```json
     {
       "version": "1.0",
       "options": {
@@ -74,7 +76,7 @@ Sie können die folgenden Parameter verwenden:
         ]
       }
     }
-
+```
 
 ## <a name="motion-detector-output-files"></a>Motion Detector-Ausgabedateien
 Ein Bewegungserkennungsauftrag gibt eine JSON-Datei in das Ausgabeasset zurück, die die Bewegungswarnungen und ihre Kategorien im Video beschreibt. Die Datei enthält Informationen über Zeit und Dauer der erkannten Bewegung im Video.
@@ -89,15 +91,15 @@ Die Motion Detector-API stellt Indikatoren bereit, sobald bewegte Objekte in ein
 
 In der folgenden Tabelle werden die Elemente der Ausgabe-JSON-Datei beschrieben.
 
-| Element | Beschreibung |
+| Element | BESCHREIBUNG |
 | --- | --- |
 | Version |Dies bezieht sich auf die Version der Video-API. Die aktuelle Version ist 2. |
 | Zeitskala |„Ticks“ pro Sekunde des Videos. |
 | Offset |Dies ist der Zeitoffset für Zeitstempel in „Ticks“. In Version 1.0 von Video-APIs wird dies immer 0 sein. In zukünftigen Szenarien, die wir unterstützen, kann sich dieser Wert ändern. |
 | Framerate |Frames des Videos pro Sekunde. |
 | Width, Height |Bezieht sich auf die Breite und Höhe des Videos in Pixeln. |
-| Starten |Der Zeitstempel für den Start in „Ticks“. |
-| Dauer |Die Länge des Ereignisses in „Ticks“. |
+| Start |Der Zeitstempel für den Start in „Ticks“. |
+| Duration |Die Länge des Ereignisses in „Ticks“. |
 | Intervall |Das Intervall für jeden Eintrag im Ereignis in „Ticks“. |
 | Ereignisse |Jedes Ereignisfragment enthält die innerhalb dieser Zeitspanne erkannte Bewegung. |
 | Typ |Dies ist in der aktuellen Version immer ‘2’ für generische Bewegung. Diese Bezeichnung gibt Video-APIs die Flexibilität zum Kategorisieren der Bewegung in zukünftigen Versionen. |
@@ -107,8 +109,9 @@ In der folgenden Tabelle werden die Elemente der Ausgabe-JSON-Datei beschrieben.
 | Eckige Klammern ( [] ) |Jede Klammer stellt ein Intervall im Ereignis dar. Leere Klammern für ein Intervall bedeuten, dass keine Bewegung erkannt wurde. |
 | locations |Mit diesem neuen Eintrag wird unter den Ereignissen die Position aufgeführt, an der die Bewegung stattgefunden hat. Dies ist eine genauere Angabe als bei Erkennungszonen. |
 
-Unten ist ein Beispiel für eine JSON-Ausgabe angegeben:
+Das folgende JSON-Beispiel zeigt die Ausgabe:
 
+```json
     {
       "version": 2,
       "timescale": 23976,
@@ -150,8 +153,8 @@ Unten ist ein Beispiel für eine JSON-Ausgabe angegeben:
                 "regionId": 0
               }
             ],
+```
 
-    …
 ## <a name="limitations"></a>Einschränkungen
 * Zu den unterstützten Eingabevideoformaten zählen MP4, MOV und WMV.
 * Die Bewegungserkennung ist für Videos mit unbewegtem Hintergrund optimiert. Der Algorithmus konzentriert sich auf die Reduzierung falscher Alarme, wie Änderungen von Licht und Schatten.
@@ -161,36 +164,39 @@ Unten ist ein Beispiel für eine JSON-Ausgabe angegeben:
 
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
-1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
+1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
 2. Erstellen eines Auftrags mit einer Bewegungserkennungsaufgabe auf Basis einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält: 
    
-        {
-          "Version": "1.0",
-          "Options": {
-            "SensitivityLevel": "medium",
-            "FrameSamplingValue": 1,
-            "DetectLightChange": "False",
-            "MergeTimeThreshold":
-            "00:00:02",
-            "DetectionZones": [
-              [
-                {"x": 0, "y": 0},
-                {"x": 0.5, "y": 0},
-                {"x": 0, "y": 1}
-               ],
-              [
-                {"x": 0.3, "y": 0.3},
-                {"x": 0.55, "y": 0.3},
-                {"x": 0.8, "y": 0.3},
-                {"x": 0.8, "y": 0.55},
-                {"x": 0.8, "y": 0.8},
-                {"x": 0.55, "y": 0.8},
-                {"x": 0.3, "y": 0.8},
-                {"x": 0.3, "y": 0.55}
-              ]
-            ]
-          }
-        }
+    ```json
+            {
+            "Version": "1.0",
+            "Options": {
+                "SensitivityLevel": "medium",
+                "FrameSamplingValue": 1,
+                "DetectLightChange": "False",
+                "MergeTimeThreshold":
+                "00:00:02",
+                "DetectionZones": [
+                [
+                    {"x": 0, "y": 0},
+                    {"x": 0.5, "y": 0},
+                    {"x": 0, "y": 1}
+                ],
+                [
+                    {"x": 0.3, "y": 0.3},
+                    {"x": 0.55, "y": 0.3},
+                    {"x": 0.8, "y": 0.3},
+                    {"x": 0.8, "y": 0.55},
+                    {"x": 0.8, "y": 0.8},
+                    {"x": 0.55, "y": 0.8},
+                    {"x": 0.3, "y": 0.8},
+                    {"x": 0.3, "y": 0.55}
+                ]
+                ]
+            }
+            }
+    ```
+
 3. Herunterladen der JSON-Ausgabedateien. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
@@ -199,7 +205,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 #### <a name="example"></a>Beispiel
 
-```
+```csharp
 
 using System;
 using System.Configuration;

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: d4394463be02d067b8228099acd30a0421ce4be9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 570ef0b782e073220af8bc7299cc4ad388d47136
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -68,10 +68,9 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
     5. Geben Sie den **Namen des Speicherkontos** ein, das App Service während der Installation erstellen soll. Dieser ist standardmäßig auf **appsvclocalstor** festgelegt.
     6. Klicken Sie auf **Weiter**.
 
-
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image03.png)
 
-7. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. In der Adresse der Dateifreigabe muss der vollqualifizierte Domänenname des Dateiservers (z.B. „\\\appservicefileserver.local.cloudapp.azurestack.external\websites“) oder die IP-Adresse (z.B. „\\\10.0.0.1\websites“) verwendet werden.
+7. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. Die Adresse der Dateifreigabe muss den vollqualifizierten Domänennamen Ihres Dateiservers oder die IP-Adresse verwenden. Beispiel: \\„\appservicefileserver.local.cloudapp.azurestack.external\websites“ oder \\„\10.0.0.1\websites“.
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image04.png)
 
@@ -82,10 +81,9 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
     4. Geben Sie im Feld **Azure Resource Manager-Stammzertifikatsdatei** den Speicherort der Zertifikatsdatei ein (oder navigieren Sie zu diesem).
     5. Klicken Sie auf **Weiter**.
 
-
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image05.png)
 
-9. Klicken Sie für jede der drei Zertifikatsdateien auf **Durchsuchen**, und navigieren Sie zu der entsprechenden Zertifikatsdatei. Sie müssen das Kennwort für jedes Zertifikat angeben. Diese Zertifikate haben Sie im Schritt [Erstellen der erforderlichen Zertifikate](azure-stack-app-service-deploy.md#create-the-required-certificates) erstellt. Klicken Sie auf **Weiter**, nachdem Sie alle Informationen eingegeben haben.
+9. Klicken Sie für jede der drei Zertifikatsdateien auf **Durchsuchen**, und navigieren Sie zu der entsprechenden Zertifikatsdatei. Geben Sie das Kennwort für jedes Zertifikat an. Diese Zertifikate haben Sie im Schritt [Erstellen der erforderlichen Zertifikate](azure-stack-app-service-deploy.md#create-the-required-certificates) erstellt. Klicken Sie auf **Weiter**, nachdem Sie alle Informationen eingegeben haben.
 
     | Box | Beispielname für eine Zertifikatsdatei |
     | --- | --- |
@@ -123,12 +121,10 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
 12. Wählen Sie im Feld **Plattformimage auswählen** aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für Windows Server 2016 aus. Klicken Sie auf **Weiter**.
 
-
 13. Auf der nächsten Seite:
      1. Geben Sie den Administratorbenutzernamen für den virtuellen Computer der Workerrolle und das zugehörige Kennwort ein.
      2. Geben Sie den Administratorbenutzernamen für den virtuellen Computer der anderen Rollen und das zugehörige Kennwort ein.
      3. Klicken Sie auf **Weiter**.
-
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image09.png)    
 

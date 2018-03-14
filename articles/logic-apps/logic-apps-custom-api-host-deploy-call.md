@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: LADocs; stepsic
-ms.openlocfilehash: 3df59ec172b037daaeed9e3eb69ffb990d70d8a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7a240bf5b7ed5e7780b90f438d2e336ee79f0b3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="deploy-and-call-custom-apis-from-logic-app-workflows"></a>Bereitstellen und Aufrufen benutzerdefinierter APIs in Logik-App-Workflows
 
@@ -39,13 +39,13 @@ Bevor Sie Ihre benutzerdefinierte API über eine Logik-App aufrufen können, mü
 
    ![Verknüpfung mit der OpenAPI-Datei für Ihre benutzerdefinierte API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. Wählen Sie unter **API** den Eintrag **CORS** aus. Legen Sie die CORS-Richtlinie für **Zulässige Ursprünge** auf **„*“** (alle zulassen) fest.
+3. Wählen Sie unter **API** den Eintrag **CORS** aus. Legen Sie die CORS-Richtlinie für **Zulässige Ursprünge** auf **'*'** (alle zulassen) fest.
 
    Diese Einstellung lässt Anforderungen vom Logik-App-Designer zu.
 
    ![Zulassen von Anforderungen des Logik-App-Designers an Ihre benutzerdefinierte API](./media/logic-apps-custom-api-deploy-call/custom-api-cors.png)
 
-Weitere Informationen finden Sie unter [Erstellen einer Node.js-RESTful-API](../app-service/app-service-web-tutorial-rest-api.md).
+Weitere Informationen finden Sie unter [Hosten einer RESTful-API mit CORS in Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 ## <a name="call-your-custom-api-from-logic-app-workflows"></a>Aufrufen der benutzerdefinierten API über Workflows der Logik-App
 

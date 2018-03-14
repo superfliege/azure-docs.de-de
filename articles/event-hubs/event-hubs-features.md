@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2017
+ms.date: 03/02/2018
 ms.author: sethm
-ms.openlocfilehash: aa9fc3b03e24d0b4d1a7ecd9a945b67d8d182492
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: aaedb8ed2be85017b17a2015ff2fcaaf76c20058
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs-Features im Überblick
 
@@ -52,7 +52,7 @@ Sie müssen Herausgebernamen nicht im Voraus erstellen, jedoch müssen diese mit
 
 ## <a name="capture"></a>Erfassen
 
-Mit [Event Hubs Capture](event-hubs-capture-overview.md) lassen sich die Streamingdaten automatisch in Event Hubs aufzeichnen und in einem Blob Storage-Konto oder einem Azure Data Lake-Dienstkonto speichern. Sie können Event Hubs Capture im Azure-Portal aktivieren und eine Mindestgröße sowie ein Mindestzeitfenster für die Aufzeichnung angeben. Mit Event Hubs Capture legen Sie zum Speichern der aufgezeichneten Daten ein eigenes Azure Blob Storage-Konto und einen Container bzw. ein Azure Data Lake-Dienstkonto fest. Die aufgezeichneten Daten werden im Apache Avro-Format geschrieben.
+Mit [Event Hubs Capture](event-hubs-capture-overview.md) lassen sich die Streamingdaten automatisch in Event Hubs aufzeichnen und in einem Blob Storage-Konto oder einem Azure Data Lake-Dienstkonto speichern. Sie können Event Hubs Capture im Azure-Portal aktivieren und eine Mindestgröße sowie ein Mindestzeitfenster für die Aufzeichnung angeben. Mit Event Hubs Capture legen Sie ein eigenes Azure Blob Storage-Konto und einen Container bzw. ein Azure Data Lake-Dienstkonto fest, wovon eines zum Speichern der aufgezeichneten Daten verwendet wird. Die aufgezeichneten Daten werden im Apache Avro-Format geschrieben.
 
 ## <a name="partitions"></a>Partitionen
 
@@ -132,13 +132,13 @@ Nachdem eine AMQP 1.0-Sitzung und ein Link für eine bestimmte Partition geöff
 Ereignisdaten:
 * Offset
 * Sequenznummer
-* body
+* Body
 * Benutzereigenschaften
 * Systemeigenschaften
 
 Die Verwaltung des Offsets liegt in Ihrer Verantwortung.
 
-## <a name="capacity"></a>Kapazität
+## <a name="capacity"></a>Capacity
 
 Event Hubs verfügt über eine hochgradig skalierbare parallele Architektur. Zudem müssen beim Ändern der Größe und Skalierung mehrere Schlüsselfaktoren berücksichtigt werden.
 

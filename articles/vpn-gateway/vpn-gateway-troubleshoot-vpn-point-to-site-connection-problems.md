@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: bf20a0f15b1bc285a598c64c7e9f2de0082b2904
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 3884eec0e65f856be87505d45c25cad7d3742bab
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Punkt-zu-Standort-Verbindungsprobleme
 
@@ -40,7 +40,9 @@ Dieses Problem tritt auf, wenn das Clientzertifikat in **Zertifikate – Aktuell
 
 Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
 
-1. Stellen Sie sicher, dass sich die folgenden Zertifikate im richtigen Speicherort befinden:
+1. Öffnen Sie den Zertifikat-Manager: Klicken Sie auf **Start**, geben Sie **Computerzertifikate verwalten** ein, und klicken Sie dann in den Suchergebnissen auf **Computerzertifikate verwalten**.
+
+2. Stellen Sie sicher, dass sich die folgenden Zertifikate im richtigen Speicherort befinden:
 
     | Zertifikat | Speicherort |
     | ------------- | ------------- |
@@ -48,7 +50,7 @@ Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
     | Azuregateway-*GUID*.cloudapp.net  | Aktueller Benutzer\Vertrauenswürdige Stammzertifizierungsstellen|
     | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Lokaler Computer\Vertrauenswürdige Stammzertifizierungsstellen|
 
-2. Navigieren Sie zu „Users\<Benutzername>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>“, und installieren Sie manuell das Zertifikat (\*.CER-Datei) im Computerspeicher des Benutzers.
+3. Navigieren Sie zu „Users\<Benutzername>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>“, und installieren Sie manuell das Zertifikat (\*.CER-Datei) im Computerspeicher des Benutzers.
 
 Weitere Informationen zum Installieren des Clientzertifikats finden Sie unter [Generieren und Exportieren von Zertifikaten für Punkt-zu-Standort-Verbindungen mithilfe von PowerShell](vpn-gateway-certificates-point-to-site.md).
 

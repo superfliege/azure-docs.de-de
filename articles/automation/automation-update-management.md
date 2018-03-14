@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: gwallace
-ms.openlocfilehash: bb20137cc3ac8daf82ee21300be6981e09ce3fe0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 9280925cdd5cccf8d1d2f2b33a7de8523a07cd14
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -56,8 +56,8 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme aufgeführt:
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
-|WindowsServer 2008 und höher     | Unterstützt nur Updatebewertungen         |
-|Windows Server 2008 R2 SP1 und höher     |.NET Framework 4.5 und WMF 5.0 oder höher sind für Windows Server 2008 R2 SP1 erforderlich<br>Nano Server wird nicht unterstützt         |
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen         |
+|Windows Server 2008 R2 SP1 und höher     |.NET Framework 4.5 und WMF 5.0 oder höher sind für Windows Server 2008 R2 SP1 erforderlich        |
 |CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
@@ -70,7 +70,7 @@ In der folgenden Tabelle werden die Betriebssysteme aufgelistet, die nicht unter
 |Betriebssystem  |Notizen  |
 |---------|---------|
 |Windows-Client     | Clientbetriebssysteme (Windows 7, Windows 10 usw.) werden nicht unterstützt.        |
-|Nano Server     | Nano Server ist Teil von Windows 2016.        |
+|Windows Server 2016 Nano Server     | Nicht unterstützt       |
 
 ### <a name="client-requirements"></a>Clientanforderungen
 
@@ -207,12 +207,12 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Updatedatensä
 
 | Abfragen | BESCHREIBUNG |
 | --- | --- |
-|Update<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; project Computer, Title, KBID, Classification, PublishedDate |Alle Computer, auf denen Updates fehlen<br>Fügen Sie eine der folgenden Angaben hinzu, um das Betriebssystem einzugrenzen:<br>OSType = "Windows"<br>OSType == "Linux" |
-| Update<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; where Computer == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |Fehlende Updates für einen bestimmten Computer (Ersetzen Sie den Wert durch den Namen Ihres eigenen Computers.)|
-| Event<br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")<br>&#124; where UpdateState == "Needed" and Optional == false <br>&#124; distinct Computer)) |Fehlerereignisse für Computer, auf denen erforderliche kritische oder Sicherheitsupdates fehlen |
-| Update<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |Eindeutig identifizierbare fehlende Updates auf allen Computern | 
+|Aktualisieren<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; project Computer, Title, KBID, Classification, PublishedDate |Alle Computer, auf denen Updates fehlen<br>Fügen Sie eine der folgenden Angaben hinzu, um das Betriebssystem einzugrenzen:<br>OSType = "Windows"<br>OSType == "Linux" |
+| Aktualisieren<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; where Computer == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |Fehlende Updates für einen bestimmten Computer (Ersetzen Sie den Wert durch den Namen Ihres eigenen Computers.)|
+| Ereignis<br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")<br>&#124; where UpdateState == "Needed" and Optional == false <br>&#124; distinct Computer)) |Fehlerereignisse für Computer, auf denen erforderliche kritische oder Sicherheitsupdates fehlen |
+| Aktualisieren<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |Eindeutig identifizierbare fehlende Updates auf allen Computern | 
 | UpdateRunProgress<br>&#124; where InstallationStatus == "failed" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Computer mit Updates, bei denen während einer Updateausführung ein Fehler aufgetreten ist<br>Fügen Sie eine der folgenden Angaben hinzu, um das Betriebssystem einzugrenzen:<br>OSType = "Windows"<br>OSType == "Linux" | 
-| Update<br>&#124; where OSType == "Linux"<br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")<br>&#124; summarize AggregatedValue = count() by Computer |Liste aller Linux-Computer, für die ein Paketupdate zur Behebung von kritischen oder sicherheitsrelevanten Sicherheitsrisiken verfügbar ist | 
+| Aktualisieren<br>&#124; where OSType == "Linux"<br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")<br>&#124; summarize AggregatedValue = count() by Computer |Liste aller Linux-Computer, für die ein Paketupdate zur Behebung von kritischen oder sicherheitsrelevanten Sicherheitsrisiken verfügbar ist | 
 | UpdateRunProgress<br>&#124; where UpdateRunName == "DeploymentName"<br>&#124; summarize AggregatedValue = count() by Computer|Computer, die bei dieser Updateausführung aktualisiert wurden (Ersetzen Sie den Wert durch den Namen Ihrer Updatebereitstellung.) | 
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrieren in System Center Configuration Manager

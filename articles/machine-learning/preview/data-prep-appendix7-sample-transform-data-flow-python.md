@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 8146c2a41a2b8fc241131a42ec74227795867609
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: aa213a3b1a8949f0fca5e4bbb7ec5a6a775ae6ec
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>Beispiel für benutzerdefinierte Datenflusstransformationen (Python) 
 Der Name der Transformation im Menü ist **Transform Dataflow (Script)**. Lesen Sie vor diesem Anhang den Artikel [Python-Erweiterungen für die Datenvorbereitung](data-prep-python-extensibility-overview.md).
@@ -42,8 +42,8 @@ Formuliert die Daten neu, um eine Formel zur Reduzierung der Ausreißer in einer
 
 ## <a name="transform-data-flow"></a>Transformieren des Datenflusses
 ### <a name="fill-down"></a>Abwärtsgerichtetes Ausfüllen 
-Für das abwärtsgerichtete Ausfüllen sind zwei Transformationen erforderlich. Es werden Daten vorausgesetzt, die wie folgt aussehen:
 
+Für das abwärtsgerichtete Ausfüllen sind zwei Transformationen erforderlich. Es werden Daten vorausgesetzt, die wie in der folgenden Tabelle aussehen:
 
 |State (Zustand)         |City       |
 |--------------|-----------|
@@ -58,16 +58,17 @@ Für das abwärtsgerichtete Ausfüllen sind zwei Transformationen erforderlich. 
 |              |San Antonio|
 |              |Houston    |
 
-Erstellen Sie zuerst eine Transformation namens „Add Column (Script)“, die den folgenden Code enthält:
+1. Erstellen Sie eine Transformation namens „Add Column (Script)“ mit folgendem Code:
 ```python
     row['State'] if len(row['State']) > 0 else None
 ```
-Erstellen Sie dann eine Transformation namens „Transform Data Flow (Script)“, die den folgenden Code enthält:
+
+2. Erstellen Sie eine Transformation namens „Transform Data Flow (Script)“, die den folgenden Code enthält:
 ```python
     df = df.fillna( method='pad')
 ```
 
-Die Daten sehen nun folgendermaßen aus:
+Die Daten sehen nun wie in der folgenden Tabelle aus:
 
 |State (Zustand)         |newState         |City       |
 |--------------|--------------|-----------|

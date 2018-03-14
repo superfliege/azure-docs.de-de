@@ -12,17 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 03/01/2018
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 793f35bfd2e5e6b22e0804f01a69c0c20990d211
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: edc9a870257536235c2bef139dc4d1ead7dd7a8f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Einrichten von Azure Key Vault mit End-to-End-Schlüsselrotation und Überwachung
 ## <a name="introduction"></a>Einführung
 Nach Erstellen Ihres Schlüsseltresors können Sie Ihre Schlüssel und geheimen Schlüssel in diesem Tresor speichern. Ihre Anwendungen müssen Ihre Schlüssel und geheimen Schlüssel nicht mehr dauerhaft speichern, sondern fordern diese bei Bedarf aus dem Schlüsseltresor an. Dadurch können Sie Schlüssel und geheime Schlüssel ohne Auswirkungen auf das Verhalten Ihrer Anwendung aktualisieren, was eine Vielzahl von Möglichkeiten für die Verwaltung von Schlüsseln und geheimen Schlüsseln eröffnet.
+
+>[!IMPORTANT]
+> Die Beispiele in diesem Artikel werden lediglich zur Veranschaulichung bereitgestellt. Sie sind nicht für Produktionszwecke vorgesehen. 
 
 Dieser Artikel bietet eine exemplarische Vorgehensweise anhand eines Beispiels der Nutzung von Azure Key Vault zum Speichern eines geheimen Schlüssels. In diesem Fall handelt es sich um einen Azure Storage-Kontoschlüssel, auf den eine Anwendung zugreift. Außerdem wird die Implementierung einer geplanten Rotation dieses Speicherkontoschlüssels demonstriert. Schließlich werden Sie durch eine Demonstration der Überwachung der Schlüsseltresorprotokolle und Auslösung von Warnungen begleitet, wenn unerwartete Anforderungen erfolgen.
 

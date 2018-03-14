@@ -3,7 +3,7 @@ title: "Self-Service-Anmeldungsportal für Azure Active Directory B2B-Zusammenar
 description: "Die Azure Active Directory B2B-Zusammenarbeit ermöglicht Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und unterstützt so Ihre unternehmensübergreifenden Beziehungen."
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,20 +14,21 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/24/2017
-ms.author: sasubram
-ms.openlocfilehash: 28c93212e247dae23cfb35a587d0d6e87cb56a6f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: bb63a3b23bdcaac5c94d43bb8e7294a82b0c3fa0
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Self-Service-Anmeldungsportal für Azure AD B2B-Zusammenarbeit
 
-Kunden können mit den integrierten Features, die über das [Azure-Portal](https://portal.azure.com) für IT-Administratoren und den [Anwendungszugriffsbereich](https://myapps.microsoft.com) für Endbenutzer verfügbar gemacht werden, viele Aufgaben erledigen. Uns ist aber auch bewusst, dass Unternehmen den Einstellungsworkflow für B2B-Benutzer an die Bedürfnisse ihrer Organisation anpassen müssen. Sie können dies mit [unserer API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) vornehmen.
+Kunden können mit den integrierten Features, die über das [Azure-Portal](https://portal.azure.com) für IT-Administratoren und den [Anwendungszugriffsbereich](https://myapps.microsoft.com) für Endbenutzer verfügbar gemacht werden, viele Aufgaben erledigen. Uns ist aber auch bewusst, dass Unternehmen den Einstellungsworkflow für B2B-Benutzer an die Bedürfnisse ihrer Organisation anpassen müssen. Sie können dies mit [der Einladungs-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) vornehmen.
 
-Bei der Diskussion hierüber mit vielen unserer Kunden ist aufgefallen, dass eine Anforderung vor allen anderen genannt wird. Dabei geht es um den Fall, wenn die einladende Organisation die externen Mitarbeiter, die Zugriff auf ihre Ressourcen benötigen, möglicherweise nicht im Voraus kennt. Die Organisationen wünschen sich eine Möglichkeit, Benutzern von Partnerunternehmen die selbstständige Registrierung gemäß einigen Richtlinien der einladenden Organisation zu erlauben. Dieses Szenario ist über unsere APIs möglich. Deshalb haben wir genau dafür ein Projekt auf GitHub veröffentlicht: [GitHub-Beispielprojekt](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
+Bei der Diskussion hierüber mit Kunden ist aufgefallen, dass eine Anforderung vor allen anderen genannt wird. Dabei geht es um den Fall, wenn die einladende Organisation die externen Mitarbeiter, die Zugriff auf ihre Ressourcen benötigen, möglicherweise nicht im Voraus kennt. Die Organisationen wünschen sich eine Möglichkeit, Benutzern von Partnerunternehmen die selbstständige Registrierung gemäß einigen Richtlinien der einladenden Organisation zu erlauben. Dieses Szenario ist über die APIs möglich. Deshalb haben wir genau dafür ein Projekt auf GitHub veröffentlicht: [GitHub-Beispielprojekt](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
 
-Unser GitHub-Projekt zeigt, wie Organisationen unsere APIs verwenden können, um eine richtlinienbasierte Self-Service-Registrierungsfunktion für ihre vertrauenswürdigen Partner bereitzustellen, die Regeln für die zugelassenen Apps enthält. Partnerbenutzer erhalten so sicheren Zugriff auf die richtigen Ressourcen, wenn sie diesen benötigen, ohne dass eine Person in der einladenden Organisation sie manuell integrieren muss. Sie können das Projekt ganz einfach in einem Azure-Abonnement Ihrer Wahl bereitstellen.
+Dieses GitHub-Projekt zeigt, wie Organisationen die APIs verwenden können, um eine richtlinienbasierte Self-Service-Registrierungsfunktion für ihre vertrauenswürdigen Partner bereitzustellen, die Regeln für die zugelassenen Apps enthält. Partnerbenutzer erhalten so sicheren Zugriff auf die richtigen Ressourcen, wenn sie diesen benötigen, ohne dass eine Person in der einladenden Organisation sie manuell integrieren muss. Sie können das Projekt ganz einfach in einem Azure-Abonnement Ihrer Wahl bereitstellen.
 
 ## <a name="as-is-code"></a>Unveränderter Code
 
@@ -35,13 +36,13 @@ Denken Sie daran, dass dieser Code als ein Beispiel zur Veranschaulichung der Ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Kollaboration:
+Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 * [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md)
 * [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-iw-add-users.md)
 * [Die Elemente der Einladungs-E-Mail von B2B-Zusammenarbeit](active-directory-b2b-invitation-email.md)
 * [B2B-Zusammenarbeit: Einlösen von Einladungen](active-directory-b2b-redemption-experience.md)
-* [Lizenzierung von Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
+* [Lizenzierung der Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
 * [Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-troubleshooting.md)
 * [Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-faq.md)
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)

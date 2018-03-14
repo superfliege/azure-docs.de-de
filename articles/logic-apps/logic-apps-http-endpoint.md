@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: dab336da4e010d0a78de9a2bdd62536d8fdd9bf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: klam; LADocs
+ms.openlocfilehash: de4f4ee086fbf3799fcac1f1b008d9237b5e7a09
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps
 
@@ -30,12 +30,12 @@ Um HTTP-Endpunkte zu erstellen, können Sie diese Trigger hinzufügen, sodass Ih
 
 * [Anforderung](../connectors/connectors-native-reqres.md)
 
-* [API Connection Webhook](logic-apps-workflow-actions-triggers.md#api-connection-trigger)
+* [API Connection Webhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnection-trigger)
 
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > Unsere Beispiele verwenden zwar den Trigger **Request**, doch Sie können jeden der aufgelisteten HTTP-Trigger verwenden, und alle Prinzipien gelten gleichermaßen für die anderen Triggertypen.
+   > In diesen Beispielen wird zwar der Trigger **Request** verwendet, doch Sie können jeden der aufgelisteten HTTP-Trigger verwenden, und alle Prinzipien gelten gleichermaßen für die anderen Triggertypen.
 
 ## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>Einrichten eines HTTP-Endpunkts für Ihre Logik-App
 
@@ -166,6 +166,7 @@ Wenn Sie möchten, dass Ihre HTTP-Endpunkt-URL Parameter akzeptiert, passen Sie 
     `Hello 123456`
 
 <a name="generated-tokens"></a>
+
 ### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>Aus den JSON-Schemata für Ihre Logik-App generierte Token
 
 Wenn Sie in Ihrem **Request**-Trigger ein JSON-Schema angeben, generiert der Logik-App-Designer Token für Eigenschaften in diesem Schema. Diese Token können Sie dann zur Weitergabe von Daten über Ihren Logik-App-Workflow verwenden.
@@ -206,6 +207,9 @@ Sie können Workflows in Ihrer Logik-App schachteln, indem Sie andere Logik-Apps
 
 Nachdem Sie den HTTP-Endpunkt erstellt haben, können Sie Ihre Logik-App über eine `POST`-Methode mit der vollständigen URL aufrufen. Logik-Apps bieten integrierte Unterstützung für Direktzugriffs-Endpunkte.
 
+> [!NOTE] 
+> Um zu einem beliebigen Zeitpunkt manuell eine Logik-App auszuwählen, klicken Sie auf der Symbolleiste des Logik-App-Designers oder der Logik-App-Codeansicht auf **Ausführen**.
+
 ## <a name="reference-content-from-an-incoming-request"></a>Verweisen auf Inhalt von einer eingehenden Anforderung aus
 
 Wenn der Typ des Inhalts `application/json` ist, können Sie von der eingehenden Anforderung aus auf Eigenschaften verweisen. Andernfalls wird der Inhalt als einzelne binäre Einheit behandelt, die Sie an andere APIs übergeben können. Um innerhalb des Workflows auf diesen Inhalt zu verweisen, müssen Sie diesen Inhalt konvertieren. Wenn Sie beispielsweise `application/xml`-Inhalt übergeben, können Sie mit `@xpath()` eine XPath-Extrahierung durchführen oder mit `@json()` XML in JSON konvertieren. Erfahren Sie mehr über das [Arbeiten mit Inhaltstypen](../logic-apps/logic-apps-content-type.md).
@@ -234,13 +238,13 @@ Auf einige Anforderungen, die eine Logik-App starten, möchten Sie möglicherwei
 
 ### <a name="construct-the-response"></a>Erstellen der Antwort
 
-Sie können mehrere Header und jeden Inhaltstyp in den Antworthauptteil einbeziehen. In unserer Beispielantwort gibt der Header an, dass die Antwort den Inhaltstyp `application/json` hat, und der Hauptteil enthält `title` und `name` – je nach dem JSON-Schema, das zuvor für den **Request**-Trigger aktualisiert wurde.
+Sie können mehrere Header und jeden Inhaltstyp in den Antworthauptteil einbeziehen. In der Beispielantwort gibt der Header an, dass die Antwort den Inhaltstyp `application/json` aufweist, und der Hauptteil enthält `title` und `name` – je nach dem JSON-Schema, das zuvor für den **Request**-Trigger aktualisiert wurde.
 
 ![HTTP-Antwortaktion][3]
 
 Antworten haben folgende Eigenschaften:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | statusCode |Legt den HTTP-Statuscode für die Antwort auf die eingehende Anforderung fest. Dieser Code kann jeder gültige Statuscode sein, der mit 2xx, 4xx oder 5xx beginnt. Mit 3xx beginnende Statuscodes sind jedoch nicht zulässig. |
 | headers |Definiert eine beliebige Anzahl von Headern, die in die Antwort einbezogen werden sollen. |

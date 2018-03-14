@@ -13,26 +13,24 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/21/2017
+ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 568509eba47facfc5966d06dff5a1b32dce1008f
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 62e047d706bdc42abbe44340c87267e59eb84369
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
-Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines mit Azure Resource Manager bereitgestellten virtuellen Computers (VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt.  
-
-Der Azure Backup-Dienst bietet zwei Typen von Tresoren zum Schutz Ihrer virtuellen Computer: Sicherungstresore und Recovery Services-Tresore. Ein Sicherungstresor trägt zum Schutz von virtuellen Computern bei, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Ein Recovery Services-Tresor schützt *sowohl klassisch bereitgestellte als auch mit Resource Manager bereitgestellte virtuelle Computer*. Zum Schützen eines mit Resource Manager bereitgestellten virtuellen Computers müssen Sie einen Recovery Services-Tresor verwenden.
+Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines mit Azure Resource Manager bereitgestellten virtuellen Computers (VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt. Speichern Sie die Sicherungsdaten für den virtuellen Computer in einem Recovery Services-Tresor. Der Tresor enthält die Sicherungsdaten für klassische und vom Resource Manager bereitgestellte virtuelle Computer.
 
 > [!NOTE]
 > Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../azure-resource-manager/resource-manager-deployment-model.md).
 
-Bevor Sie einen mit Resource Manager bereitgestellten virtuellen Computer schützen oder sichern können, schaffen Sie folgende Voraussetzungen:
+Bevor Sie einen mit dem Resource Manager bereitgestellten virtuellen Computer schützen (oder sichern) können, stellen Sie sicher, dass folgende Voraussetzungen erfüllt sind:
 
-* Erstellen Sie einen Recovery Services-Tresor *am gleichen Ort, an dem sich Ihr virtueller Computer befindet*(oder geben Sie einen dort vorhandenen Recovery Services-Tresor an).
+* Erstellen Sie einen Recovery Services-Tresor *in derselben Region, in der sich Ihre VM befindet* (oder geben Sie einen dort vorhandenen Recovery Services-Tresor an).
 * Wählen Sie ein Szenario aus, definieren Sie die Sicherungsrichtlinie, und definieren Sie die zu schützenden Elemente.
 * Überprüfen Sie, ob ein VM-Agent auf dem virtuellen Computer installiert ist.
 * Überprüfen Sie die Netzwerkverbindung.
@@ -44,7 +42,7 @@ Wenn diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit d
  * **Linux**: Azure Backup unterstützt [eine Liste mit von Azure empfohlenen Verteilungen](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) mit Ausnahme von CoreOS Linux. 
  
     > [!NOTE] 
-    > Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Wir empfehlen diese Distributionen jedoch nicht für die Sicherung.
+    > Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Allerdings werden diese Distributionen nicht unterstützt.
  * **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers
@@ -54,16 +52,17 @@ Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen ve
 * Das Sichern virtueller Computer mit Datenträgern, die größer als 1.023 GB sind, wird nicht unterstützt.
 
   > [!NOTE]
-  > Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für virtuelle Computer mit Datenträgern, die größer sind als 1 TB. Einzelheiten entnehmen Sie dem Dokument für die [private Vorschauversion für die Unterstützung von Sicherungen virtueller Computer mit großen Datenträgern](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
+  > Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für VMs mit Datenträgern, die größer sind als 1 TB. Einzelheiten entnehmen Sie dem Dokument für die [private Vorschauversion für die Unterstützung von Sicherungen virtueller Computer mit großen Datenträgern](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
   >
 
 * Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
-* Das Sichern von virtuellen Computern nur über einen BitLocker-Verschlüsselungsschlüssel (BEK) wird nicht unterstützt. Das Sichern von virtuellen Linux-Computern, die mit Linux Unified Key Setup (LUKS) verschlüsselt sind, wird nicht unterstützt.
+* Das Sichern von virtuellen Linux-Computern, die mit Linux Unified Key Setup (LUKS) verschlüsselt sind, wird nicht unterstützt.
 * Das Sichern von virtuellen Computern, die freigegebene Clustervolumes (Cluster Shared Volumes, CSV) oder eine Konfiguration für Dateiserver mit horizontaler Skalierung enthalten, wird nicht empfohlen. Dafür müssen alle während einer Momentaufnahmenaufgabe in der Clusterkonfiguration enthaltenen virtuellen Computer berücksichtigt werden. Azure Backup unterstützt keine Multi-VM-Konsistenz. 
 * Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 * Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 * Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.
-* Die Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit angewendeten Netzwerkregeln wird derzeit nicht unterstützt. Stellen Sie beim Konfigurieren der Sicherung sicher, dass die Einstellungen für Firewalls und virtuelle Netzwerke für das Speicherkonto Zugriff von allen Netzwerken zulassen.
+* Die Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit angewendeten Netzwerkregeln wird nicht unterstützt. 
+* Stellen Sie beim Konfigurieren der Sicherung sicher, dass die Speicherkontoeinstellungen für **Firewalls und virtuelle Netzwerke** Zugriff von allen Netzwerken zulassen.
 * Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern. (Siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen.) Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
 * Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Das Wiederherstellen virtueller Computer mit den folgenden besonderen Netzwerkkonfigurationen wird nur über PowerShell unterstützt. Virtuelle Computer, die mit dem Wiederherstellungsworkflow der Benutzeroberfläche erstellt werden, weisen diese Netzwerkkonfigurationen nach dem Abschluss des Wiederherstellungsvorgangs nicht auf. Weitere Informationen finden Sie unter [Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
@@ -106,7 +105,7 @@ So erstellen Sie einen Recovery Services-Tresor
 Nachdem Sie Ihren Tresor erstellt haben, widmen wir uns nun dem Festlegen der Speicherreplikation.
 
 ## <a name="set-storage-replication"></a>Festlegen der Speicherreplikation
-Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihre primäre Sicherung handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen.
+Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie die Option mit dem georedundanten Speicher für Ihre primäre Sicherung bei. Wenn Sie eine günstigere und weniger langfristige Option wünschen, wählen Sie lokal redundanten Speicher.
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
@@ -126,9 +125,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 Nachdem Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Auswählen eines Sicherungsziels, Festlegen der Richtlinie und Definieren von zu schützenden Elementen
-Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen Computer registrieren, um sicherzustellen, dass alle neuen virtuellen Computer, die dem Abonnement hinzugefügt wurden, identifiziert werden. Bei diesem Vorgang wird Azure nach der Liste virtueller Computer im Abonnement abgefragt. Außerdem werden Informationen wie der Clouddienstname und die Region erfasst. 
-
-*Szenario* bezeichnet im Kontext des Azure-Portals das, was Sie dem Recovery Services-Tresor hinzufügen möchten. Die *Richtlinie* gibt die Häufigkeit und den Zeitpunkt für die Erstellung von Wiederherstellungspunkten an. Darüber hinaus enthält die Richtlinie die Beibehaltungsdauer für die Wiederherstellungspunkte.
+Bevor Sie einen virtuellen Computer mit einem Recovery Services-Tresor registrieren, führen Sie den Ermittlungsprozess aus, um alle neuen dem Abonnement hinzugefügte virtuellen Computer zu identifizieren. Während des Ermittlungsprozesses fragt Azure die Liste der virtuellen Computer im Abonnement ab. Wenn neue virtuelle Computer gefunden werden, werden im Portal der Clouddienstname und die zugeordnete Region angezeigt. Das *Szenario* bezeichnet im Kontext des Azure-Portals das, was Sie im Recovery Services-Tresor eingeben. Die *Richtlinie* gibt die Häufigkeit und den Zeitpunkt für die Erstellung von Wiederherstellungspunkten an. Darüber hinaus enthält die Richtlinie die Beibehaltungsdauer für die Wiederherstellungspunkte.
 
 1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 2 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, öffnen Sie das [Azure-Portal](https://portal.azure.com/). Wählen Sie im Menü **Hub** die Option **Weitere Dienste** aus.
 
@@ -170,7 +167,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
 
    ![Bereich „Virtuelle Computer auswählen“](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-   Der ausgewählte virtuelle Computer wird überprüft. Falls die erwarteten virtuellen Computer nicht angezeigt werden, sollten Sie überprüfen, ob sie sich am gleichen Azure-Standort wie der Recovery Services-Tresor befinden und nicht bereits in einem anderen Tresor geschützt werden. Der Standort des Recovery Services-Tresors wird auf dem Tresordashboard angezeigt.
+   Der ausgewählte virtuelle Computer wird überprüft. Falls die erwarteten virtuellen Computer nicht angezeigt werden, sollten Sie überprüfen, ob sie sich in der gleichen Azure-Region wie der Recovery Services-Tresor befinden. Wenn die virtuellen Computer dennoch nicht angezeigt werden, stellen Sie sicher, dass sie nicht bereits durch einen anderen Tresor geschützt sind. Die Region des Recovery Services-Tresors wird auf dem Tresordashboard angezeigt.
 
 6. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, wählen Sie im Bereich **Sicherung** die Option **Sicherung aktivieren**. Mit diesem Schritt wird die Richtlinie im Tresor und auf den virtuellen Computern bereitgestellt. Der erste Wiederherstellungspunkt für den virtuellen Computer wird in diesem Schritt nicht erstellt.
 

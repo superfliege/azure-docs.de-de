@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: c6c47d1f9776f9e45711d8139661255dcd44c2a1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f80de47f8e9ba326fc224a8bc09f8029b5afd1ca
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure Active Directory Domain Services: Beheben von Problemen bei der Konfiguration von Secure LDAP
 
@@ -51,6 +51,16 @@ Wenn Secure LDAP aktiviert ist, wird das Erstellen zusätzlicher Regeln empfohle
 > [!TIP]
 > Port 636 ist nicht die einzige Regel, die für Azure AD Domain Services reibungslos ausgeführt werden muss. Weitere Informationen finden Sie in den Artikeln [Netzwerkrichtlinien](active-directory-ds-networking.md) und [Problembehandlung für die Konfiguration von Netzwerksicherheitsgruppen](active-directory-ds-troubleshoot-nsg.md).
 >
+
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Secure LDAP-Zertifikat läuft ab
+
+**Warnmeldung:**
+
+*Das sichere LDAP-Zertifikat für die verwaltete Domäne läuft am XX ab.*
+
+**Problembehandlung**:
+
+Erstellen Sie ein neues sicheres LDAP-Zertifikat anhand der Schritte, die im Artikel [Konfigurieren von sicherem LDAP (LDAPS) für eine über Azure AD Domain Services verwaltete Domäne](active-directory-ds-admin-guide-configure-secure-ldap.md) beschrieben werden.
 
 ## <a name="contact-us"></a>Kontakt
 Wenden Sie sich an das Produktteam der Azure Active Directory Domain Services, um [Feedback zu geben oder Support zu erhalten](active-directory-ds-contact-us.md).

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: e44261e8ee62ce6a91110da0ec0bc489c426f688
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 6ef2719a100ff65d69caa8d05ccfee23851adbcb
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Blob Storage-Bindungen in Azure Fu
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> [Reine Blob Storage-Konten](../storage/common/storage-create-storage-account.md#blob-storage-accounts) werden nicht unterstützt. Blob Storage-Trigger und -Bindungen erfordern ein allgemeines Speicherkonto. 
+> [Reine Blob Storage-Konten](../storage/common/storage-create-storage-account.md#blob-storage-accounts) werden nicht für Blob Storage-Trigger unterstützt. Blob Storage-Trigger erfordern ein allgemeines Speicherkonto. Bei Eingabe- und Ausgabebindungen können Sie reine Blob Storage-Konten verwenden.
 
 ## <a name="trigger"></a>Trigger
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: e6eacdb437d28eb733da522280cb2c7d8c24d9ba
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8efc0bff4764a7265a5f1bcdd995979af0b22234
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse
 
@@ -31,21 +31,20 @@ Sie erhalten Informationen über öffentliche IP-Adressen und darüber, wie Sie 
 
 Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Abschnitten dieses Artikels durchführen:
 
-- Lesen Sie den Artikel zu [Einschränkungen bei Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits), um mehr über die Einschränkungen für öffentliche IP-Adressen zu erfahren.
-- Melden Sie sich mit einem Azure-Konto beim Azure-[Portal](https://portal.azure.com), der Azure-Befehlszeilenschnittstelle (CLI) oder bei Azure PowerShell an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
-- Wenn Sie PowerShell-Befehle verwenden, um Aufgaben in diesem Artikel durchzuführen, [installieren und konfigurieren Sie Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure PowerShell-Cmdlets installiert haben. Hilfe und Beispiele für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
-- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) verwenden, um Aufgaben in diesem Artikel durchzuführen, [installieren und konfigurieren Sie Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure CLI installiert haben. Hilfe zu den Befehlen der Befehlszeilenschnittstelle erhalten Sie durch Eingabe von `az <command> --help`. Anstatt die CLI und ihre Voraussetzungen zu installieren, können Sie die Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure CLI ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie die Cloud Shell verwenden möchten, klicken Sie oben im [Portal](https://portal.azure.com) auf die Cloud Shell-Schaltfläche **>_**.
+- Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
+- Öffnen Sie bei Verwendung des Portals die Seite „https://portal.azure.com“, und melden Sie sich mit Ihrem Azure-Konto an.
+- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.2.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.26 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Für öffentliche IP-Adressen fällt eine Schutzgebühr an. Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses). 
 
 ## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
-1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
-2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *öffentliche IP-Adresse* ein. Wenn **Öffentliche IP-Adressen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
-3. Klicken Sie auf dem Blatt **Öffentliche IP-Adresse** auf **+ Hinzufügen**.
-4. Das Blatt **Öffentliche IP-Adresse erstellen** wird angezeigt. Geben Sie hier direkt oder durch Auswählen Werte für die folgenden Einstellungen ein, und klicken Sie dann auf **Erstellen**:
+1. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *öffentliche IP-Adresse* ein. Wenn **Öffentliche IP-Adressen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+2. Klicken Sie auf dem Blatt **Öffentliche IP-Adresse** auf **+ Hinzufügen**.
+3. Das Blatt **Öffentliche IP-Adresse erstellen** wird angezeigt. Geben Sie hier direkt oder durch Auswählen Werte für die folgenden Einstellungen ein, und klicken Sie dann auf **Erstellen**:
 
-    |Einstellung|Erforderlich|Details|
+    |Einstellung|Erforderlich?|Details|
     |---|---|---|
     |SKU|Ja|Alle öffentlichen IP-Adressen, die vor der Einführung von SKUs erstellt wurden, sind öffentliche IP-Adressen für eine **Basic**-SKU.  Sie können die SKU nicht ändern, nachdem die öffentliche IP-Adresse erstellt wurde. Ein eigenständiger virtueller Computer, virtuelle Computer innerhalb einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppen können Basic- oder Standard-SKUs verwenden.  Das Mischen von SKUs zwischen virtuellen Computern in Verfügbarkeitsgruppen oder Skalierungsgruppen ist nicht zulässig. **Basic**-SKU: Wenn Sie eine öffentliche IP-Adresse in einer Region erstellen, die Verfügbarkeitszonen unterstützt, wird die Einstellung **Verfügbarkeitszone** standardmäßig auf *Keine* festgelegt. Sie können eine Verfügbarkeitszone auswählen, um eine bestimmte Zone für die öffentliche IP-Adresse zu gewährleisten. **Standard**-SKU: Eine öffentliche IP-Adresse für eine Standard-SKU kann dem Front-End eines virtuellen Computers oder Load Balancers zugeordnet werden. Wenn Sie eine öffentliche IP-Adresse in einer Region erstellen, die Verfügbarkeitszonen unterstützt, wird die Einstellung **Verfügbarkeitszone** standardmäßig auf *Zonenredundant* festgelegt. Weitere Informationen zu Verfügbarkeitszonen finden Sie im Abschnitt **Verfügbarkeitszone**. Die Standard-SKU ist erforderlich, wenn Sie die Adresse einem Standard-Load Balancer zuordnen. Weitere Informationen zum Standard-Load Balancer finden Sie unter [Azure Load Balancer Standard overview](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Übersicht über den Standard-Azure Load Balancer, in englischer Sprache). Die Standard-SKU befindet sich in der Vorschauversion. Vor dem Erstellen einer öffentlichen IP-Adresse für eine Standard-SKU müssen Sie die Schritte zum [Registrieren für die Vorschauversion der Standard-SKU](#register-for-the-standard-sku-preview) ausführen und die öffentliche IP-Adresse an einem unterstützten Standort (Region) erstellen. Eine Liste mit den unterstützten Standorten finden Sie unter [Region availability](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) (Regionale Verfügbarkeit, in englischer Sprache). Auf der Seite [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network) (Updates für Azure Virtual Network, in englischer Sprache) erhalten Sie außerdem zusätzlichen Support für Regionen. Wenn Sie der Netzwerkschnittstelle eines virtuellen Computers eine öffentliche IP-Adresse für eine Standard-SKU zuweisen, müssen Sie den geplanten Datenverkehr explizit mit einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) zulassen. Die Kommunikation mit der Ressource schlägt fehl, bis Sie eine Netzwerksicherheitsgruppe erstellen und zuordnen und den gewünschten Datenverkehr explizit zulassen.|
     |NAME|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
@@ -73,10 +72,9 @@ Obwohl das Portal die Option bietet, zwei öffentliche IP-Adressen zu erstellen 
 
 ## <a name="view-change-settings-for-or-delete-a-public-ip-address"></a>Anzeigen, Ändern von Einstellungen oder Löschen einer öffentlichen IP-Adresse
 
-1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
-2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *öffentliche IP-Adresse* ein. Wenn **Öffentliche IP-Adressen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
-3. Klicken Sie auf dem angezeigten Blatt **Öffentliche IP-Adressen** auf den Namen der öffentlichen IP-Adresse, deren Einstellungen Sie anzeigen, ändern oder die Sie löschen möchten.
-4. Führen Sie auf dem für die öffentliche IP-Adresse angezeigten Blatt eine der folgenden Optionen aus – je nachdem, ob Sie die öffentliche IP-Adresse anzeigen, löschen oder ändern möchten.
+1. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *öffentliche IP-Adresse* ein. Wenn **Öffentliche IP-Adressen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+2. Klicken Sie auf dem angezeigten Blatt **Öffentliche IP-Adressen** auf den Namen der öffentlichen IP-Adresse, deren Einstellungen Sie anzeigen, ändern oder die Sie löschen möchten.
+3. Führen Sie auf dem für die öffentliche IP-Adresse angezeigten Blatt eine der folgenden Optionen aus – je nachdem, ob Sie die öffentliche IP-Adresse anzeigen, löschen oder ändern möchten.
     - **Ansicht**: Im Abschnitt **Übersicht** des Blatts werden die wichtigsten Einstellungen für die öffentliche IP-Adresse angezeigt, darunter die zugeordnete Netzwerkschnittstelle (sofern die Adresse einer Netzwerkschnittstelle zugeordnet ist). Das Portal zeigt die Adressversion nicht an (IPv4 oder IPv6). Um Informationen zur Version zu erhalten, verwenden Sie den PowerShell- oder CLI-Befehl zum Anzeigen der öffentlichen IP-Adresse. Wenn die IP-Adressversion IPv6 lautet, wird die zugewiesene Adresse weder im Portal noch in PowerShell oder über die Befehlszeilenschnittstelle angezeigt. 
     - **Löschen:** Um die öffentliche IP-Adresse zu löschen, klicken Sie im Blattabschnitt **Übersicht** auf **Löschen**. Ist die Adresse zurzeit einer IP-Konfiguration zugeordnet, kann sie nicht gelöscht werden. Ist die Adresse zurzeit einer Konfiguration zugeordnet, klicken Sie auf **Trennen**, um die Adresse von der IP-Konfiguration zu trennen.
     - **Ändern:** Klicken Sie auf **Konfiguration**. Ändern Sie Einstellungen anhand der Informationen aus Schritt 4 des Abschnitts [Erstellen einer öffentlichen IP-Adresse](#create-a-public-ip-address) in diesem Artikel. Möchten Sie die Zuweisung für eine IPv4-Adresse von statisch in dynamisch ändern, müssen Sie die öffentliche IPv4-Adresse zunächst von der IP-Konfiguration trennen, der sie zugeordnet ist. Danach können Sie die Zuweisungsmethode in dynamisch ändern und auf **Zuordnen** klicken, um die IP-Adresse zur selben IP-Konfiguration oder zu einer anderen Konfiguration zuzuordnen. Sie können die Trennung aber auch beibehalten. Um eine öffentliche IP-Adresse von einer IP-Konfiguration zu trennen, klicken Sie in der **Übersicht** auf **Trennen**.
@@ -98,16 +96,12 @@ Obwohl das Portal die Option bietet, zwei öffentliche IP-Adressen zu erstellen 
 
 Bevor Sie eine öffentliche IP-Adresse für eine Standard-SKU erstellen können, müssen Sie sich für die Vorschauversion registrieren. Führen Sie die folgenden Schritte aus, um sich für die Vorschau zu registrieren:
 
-1. Installieren und konfigurieren Sie Azure [PowerShell](/powershell/azure/install-azurerm-ps).
-2. Führen Sie den Befehl `Get-Module -ListAvailable AzureRM` aus, um festzustellen, welche Version des AzureRM-Moduls Sie installiert haben. Es muss Version 4.4.0 oder höher installiert sein. Wenn dies nicht der Fall ist, können Sie die neueste Version aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureRM) installieren.
-3. Melden Sie sich mit dem Befehl `login-azurermaccount` bei Azure an.
-4. Geben Sie den folgenden Befehl ein, um sich für die Vorschau zu registrieren:
+1. Geben Sie in PowerShell den folgenden Befehl ein, um sich für die Vorschau zu registrieren:
    
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
     ```
-
-5. Bestätigen Sie, dass Sie für die Vorschauversion registriert sind, indem Sie folgenden Befehl eingeben:
+2. Bestätigen Sie, dass Sie für die Vorschauversion registriert sind, indem Sie folgenden Befehl eingeben:
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network

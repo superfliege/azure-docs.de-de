@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 7c34d7a225be63da95f664525b0366ff89b28838
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>Verwenden des Azure Stack-Portals
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Als Nutzer der Azure Stack-Dienste können Sie im Azure Stack-Portal öffentliche Angebote abonnieren und die Dienste nutzen, die über diese Angebote zur Verfügung gestellt werden. Wenn Sie das Azure-Portal bereits verwendet haben, sind Sie mit der Benutzeroberfläche schon vertraut.
 

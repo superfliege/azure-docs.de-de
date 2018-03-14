@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
-ms.openlocfilehash: 7d86d5e8547d977c07cfbb0597b74382172a8472
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13aee7bbbe58c0a4183eddc0881aaed8cbebd956
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -43,6 +43,14 @@ Der Speicheremulator stellt über die Windows-Authentifizierung eine Verbindung 
 Es bestehen einige Unterschiede in der Funktionsweise zwischen dem Speicheremulator und den Azure Storage-Diensten. Weitere Informationen zu diesen Unterschieden finden Sie im Abschnitt [Unterschiede zwischen dem Speicheremulator und Azure Storage](#differences-between-the-storage-emulator-and-azure-storage) weiter unten in diesem Artikel.
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>Starten und Initialisieren des Speicheremulators
+
+### <a name="run-the-azure-storage-emulator-in-dockerhttpshubdockercomrmicrosoftazure-storage-emulator"></a>[Ausführen des Azure-Speicheremulators in Docker](https://hub.docker.com/r/microsoft/azure-storage-emulator/)
+```
+docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-emulator
+```
+
+### <a name="using-sdk"></a>Verwenden des SDK
+
 So starten Sie den Azure-Speicheremulator
 1. Wählen Sie die Schaltfläche **Start** aus, oder drücken Sie die **Windows-Taste**.
 1. Geben Sie `Azure Storage Emulator` ein.
@@ -165,10 +173,10 @@ Ab Version 3.0 wird beim Starten des Speicheremulators ein Konsolenfenster angez
 ### <a name="command-line-syntax"></a>Befehlszeilensyntax
 `AzureStorageEmulator.exe [start] [stop] [status] [clear] [init] [help]`
 
-### <a name="options"></a>Options
+### <a name="options"></a>Optionen
 Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `/help` ein.
 
-| Option | Beschreibung | Befehl | Argumente |
+| Option | BESCHREIBUNG | Get-Help | Argumente |
 | --- | --- | --- | --- |
 | **Starten** |Startet den Speicheremulator. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: startet den Emulator im aktuellen Prozess, anstatt einen neuen Prozess zu erstellen. |
 | **Beenden** |Beendet den Speicheremulator. |`AzureStorageEmulator.exe stop` | |

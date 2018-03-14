@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 23f063d89c5030d440d50765eee9d121b4d8f5ba
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: e55dbe4bd8fde8293c7fcd681bb18967dc4edad6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
 In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
@@ -31,7 +31,7 @@ In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen 
 In den folgenden Schritten wird beschrieben, wie die neue Einstellung *MaxDiskQuotaInMB* zum Abschnitt *Diagnose* hinzugefügt wird.
 
 1. Rufen Sie die Seite https://resources.azure.com auf.
-2. Navigieren Sie zu Ihrem Abonnement, indem Sie **Abonnements** -> **Ressourcengruppen** -> **Microsoft.ServiceFabric** -> **\<Ihr Clustername** erweitern.
+2. Navigieren Sie zu Ihrem Abonnement. Erweitern Sie dazu **Abonnements** -> **\<Ihr Abonnement>** -> **Ressourcengruppen** -> **\<Ihre Ressourcengruppe>** -> **Anbieter** -> **Microsoft.ServiceFabric** -> **Cluster** -> **\<Name Ihres Clusters>**.
 3. Wählen Sie in der oberen rechten Ecke **Lesen/Schreiben** aus.
 4. Wählen Sie **Bearbeiten** aus, aktualisieren Sie das JSON-Element `fabricSettings`, und fügen Sie ein neues Element hinzu:
 
@@ -385,6 +385,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |CommonName2Ntlmx509StoreLocation|string, Standardwert L"LocalMachine"| statischen|Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
 |CommonName2Ntlmx509StoreName|string, Standardwert L"MY"|statischen| Der Speichername des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
 |CommonName2Ntlmx509CommonName|string, Standardwert L""|statischen|Der CN (allgemeiner Name) des X509-Zertifikats, der verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
+|GenerateV1CommonNameAccount| Boolesch, Standardwert TRUE|statischen|Gibt an, ob ein Konto mit dem V1-Generierungsalgorithmus für Benutzernamen erstellt werden soll. Ab Service Fabric-Version 6.1 wird immer ein Konto mit v2-Generierung erstellt. Das V1-Konto ist erforderlich für Upgrades von/auf Versionen, die die V2-Generierung (vor 6.1) nicht unterstützen.|
 
 ### <a name="section-name-imagestoreservice"></a>Name des Abschnitts: ImageStoreService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |

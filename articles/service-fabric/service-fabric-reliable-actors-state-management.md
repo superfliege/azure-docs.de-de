@@ -1,6 +1,6 @@
 ---
 title: Reliable Actors-Zustandsverwaltung | Microsoft Docs
-description: "Hier wird beschrieben, wie der Reliable Actors-Zustand für hohe Verfügbarkeit verwaltet, persistent gespeichert und repliziert wird."
+description: "Hier wird beschrieben, wie der Reliable Actors-Zustand für Hochverfügbarkeit verwaltet, persistent gespeichert und repliziert wird."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: fae68c9fb40951e3f7a6fce67d75872cecfc52bd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: f196b2e54efc5ecbbd93e48e1f115edb99e5c858
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors-Zustandsverwaltung
-Reliable Actors sind Singlethread-Objekte, die sich zum Kapseln von Logik und Zustand eignen. Da Akteure unter Reliable Services ausgeführt werden, können Sie den Zustand zuverlässig beibehalten, indem sie die gleiche Persistenz- und Replikationsmechanismen wie Reliable Services verwenden. Daher verlieren Akteure ihren Zustand nicht nach Fehlern, bei der Reaktivierung nach einer Garbage Collection oder beim Verschieben zwischen Knoten in einem Cluster aufgrund von Ressourcenausgleich oder Upgrades.
+Reliable Actors sind Singlethread-Objekte, die sich zum Kapseln von Logik und Zustand eignen. Da Akteure unter Reliable Services ausgeführt werden, können Sie den Zustand zuverlässig beibehalten, indem sie die gleichen Persistenz- und Replikationsmechanismen verwenden. Daher verlieren Akteure ihren Zustand nicht nach Fehlern, bei der Reaktivierung nach einer Garbage Collection oder beim Verschieben zwischen Knoten in einem Cluster aufgrund von Ressourcenausgleich oder Upgrades.
 
 ## <a name="state-persistence-and-replication"></a>Zustandspersistenz und -replikation
 Alle Reliable Actors werden als *zustandsbehaftet* betrachtet, da jeder Akteurinstanz eine eindeutige ID zugewiesen ist. Das bedeutet, dass wiederholte Aufrufe derselben Akteur-ID an dieselbe Akteurinstanz weitergeleitet werden. Bei einem zustandslosen System werden Clientaufrufe dagegen nicht unbedingt jedes Mal an denselben Server weitergeleitet. Aus diesem Grund sind Akteurdienste immer zustandsbehaftete Dienste.
 
 Obwohl Akteure als zustandsbehaftet gelten, bedeutet das nicht, dass sie den Zustand zuverlässig speichern müssen. Akteure können die Ebene der Zustandspersistenz und -replikation basierend auf ihren Datenspeicheranforderungen auswählen:
 
-* **Persistenter Zustand**: Der Zustand wird persistent auf einem Datenträger gespeichert, und es werden mindestens drei Replikate davon erstellt. Dies ist die dauerhafteste Option für die Zustandsspeicherung, mit der der Zustand bei einem vollständigen Clusterausfall beibehalten werden kann.
-* **Flüchtiger Zustand**: Es werden mindestens drei Replikate des Zustands erstellt, und der Zustand wird nur im Arbeitsspeicher gespeichert. Dadurch wird Ausfallsicherheit bei Knotenausfällen, Akteurausfällen, Upgrades und Ressourcenausgleich gewährleistet. Der Zustand wird jedoch nicht persistent auf einem Datenträger gespeichert. Wenn alle Replikate gleichzeitig verloren gehen, geht auch der Zustand verloren.
-* **Kein persistenter Zustand**: Der Zustand wird weder repliziert noch auf den Datenträger geschrieben. Diese Ebene eignet sich für Akteure, die den Zustand nicht zuverlässig beibehalten müssen.
+* **Persistenter Zustand**: Der Zustand wird persistent auf einem Datenträger gespeichert, und es werden mindestens drei Replikate davon erstellt. Der persistente Zustand ist die dauerhafteste Option für die Zustandsspeicherung, mit der der Zustand bei einem vollständigen Clusterausfall beibehalten werden kann.
+* **Flüchtiger Zustand**: Es werden mindestens drei Replikate des Zustands erstellt, und der Zustand wird nur im Arbeitsspeicher gespeichert. Mit dem flüchtigen Zustand wird Ausfallsicherheit bei Knotenausfällen, Akteurausfällen, Upgrades und Ressourcenausgleich gewährleistet. Der Zustand wird jedoch nicht persistent auf einem Datenträger gespeichert. Wenn alle Replikate gleichzeitig verloren gehen, geht auch der Zustand verloren.
+* **Kein persistenter Zustand**: Der Zustand wird weder repliziert noch auf den Datenträger geschrieben; nur für Akteure zu verwenden, die den Zustand nicht zuverlässig beibehalten müssen.
 
 Jede Persistenzebene stellt einfach einen anderen *Zustandsanbieter* und eine andere *Replikationskonfiguration* Ihres Diensts dar. Ob der Zustand auf einen Datenträger geschrieben wird, ist abhängig vom Zustandsanbieter – der Komponente in einer Reliable Services-Instanz, die den Zustand speichert. Die Replikation hängt davon ab, mit wie vielen Replikaten ein Dienst bereitgestellt wird. Wie bei Reliable Services können der Zustandsanbieter und die Replikatanzahl einfach manuell festgelegt werden. Das Akteurframework enthält ein Attribut, das bei Verwendung für einen Akteur automatisch einen Standardzustandsanbieter auswählt und Einstellungen für die Replikatanzahl erstellt, um eine der folgenden drei Persistenzeinstellungen zu erreichen. Das StatePersistence-Attribut wird nicht von abgeleiteten Klasse geerbt. Jeder Typ „Actor“ muss seinen „StatePersistence“-Grad angeben.
 
@@ -111,7 +111,7 @@ Schlüssel des Zustands-Managers müssen Zeichenfolgen sein. Werte sind generisc
 
 Der Zustands-Manager macht allgemeine Wörterbuchmethoden zum Verwalten des Zustands verfügbar. Diese ähneln den Methoden in Reliable Dictionary.
 
-### <a name="accessing-state"></a>Zugreifen auf den Zustand
+## <a name="accessing-state"></a>Zugreifen auf den Zustand
 Auf den Zustand kann nach Schlüssel über den Zustands-Manager zugegriffen werden. Alle Zustands-Manager-Methoden sind asynchron, da sie u.U. Datenträger-E/A erfordern, wenn Akteure über einen persistenten Zustand verfügen. Beim ersten Zugriff werden Zustandsobjekte im Arbeitsspeicher zwischengespeichert. Bei wiederholten Zugriffsvorgängen wird direkt aus dem Speicher auf Objekte zugegriffen, und die Rückgabe erfolgt synchron, ohne dass dabei Datenträger-E/A entstehen oder Aufwand für den asynchronen Kontextwechsel anfällt. In den folgenden Fällen wird ein Zustandsobjekt aus dem Cache entfernt:
 
 * Eine Akteurmethode löst nach dem Abrufen eines Objekts aus dem Zustands-Manager eine nicht behandelte Ausnahme aus.
@@ -193,7 +193,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-### <a name="saving-state"></a>Speichern des Zustands
+## <a name="saving-state"></a>Speichern des Zustands
 Mit den Abrufmethoden des Zustands-Managers wird ein Verweis auf ein Objekt im lokalen Speicher zurückgegeben. Eine Änderung dieses Objekts im lokalen Speicher bewirkt nicht, dass es dauerhaft gespeichert wird. Wenn ein Objekt vom Zustands-Manager abgerufen und geändert wird, muss es wieder in den Zustands-Manager eingefügt werden, damit es dauerhaft gespeichert wird.
 
 Der Zustand kann über eine nicht bedingte *Set`dictionary["key"] = value`-Methode eingefügt werden. Dies entspricht der Syntax* :
@@ -328,7 +328,7 @@ interface MyActor {
 }
 ```
 
-### <a name="removing-state"></a>Entfernen des Zustands
+## <a name="removing-state"></a>Entfernen des Zustands
 Der Zustand kann durch Aufrufen der *Remove*-Methode dauerhaft aus dem Zustands-Manager eines Akteurs entfernt werden. Diese Methode löst `KeyNotFoundException`(C#) oder `NoSuchElementException`(Java) aus, wenn sie versucht, einen Schlüssel zu entfernen, die nicht vorhanden ist.
 
 ```csharp
@@ -405,8 +405,19 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
+## <a name="best-practices"></a>Bewährte Methoden
+Hier finden einige empfohlene Vorgehensweisen und Tipps zur Problembehandlung für die Verwaltung des Akteurzustands.
+
+### <a name="make-the-actor-state-as-granular-as-possible"></a>Möglichst präziser Akteurzustand
+Dies ist besonders wichtig für die Leistung und Ressourcennutzung Ihrer Anwendung. Bei jedem Schreibvorgang im „benannten Zustand“ eines Akteurs bzw. einer Aktualisierung davon, wird der gesamte, diesem „benannten Zustand“ entsprechende Wert serialisiert und über das Netzwerk an die sekundären Replikate gesendet.  Die sekundären Replikate schreiben ihn auf die lokale Festplatte und senden die Antwort zurück an das primäre Replikat. Wenn das primäre Replikat Bestätigungen von einem Quorum von sekundären Replikaten empfängt, schreibt es den Zustand auf seine lokale Festplatte. Nehmen wir beispielsweise an, dass der Wert eine Klasse mit 20 Membern und einer Größe von 1 MB ist. Auch wenn nur einer der Klassenmember mit einer Größe von 1 KB geändert wurde, bezahlen Sie letztendlich die Kosten der Serialisierung sowie der Netzwerk- und Datenträger-Schreibvorgänge für die Gesamtgröße von 1 MB. Wenn der Wert eine Auflistung (z.B. eine Liste, ein Array oder Wörterbuch) ist, fallen ebenso die Kosten für die vollständige Auflistung an, wenn Sie einen der zugehörigen Member ändern. Die StateManager-Schnittstelle der Akteurklasse ist wie ein Wörterbuch. Zusätzlich zu diesem Wörterbuch müssen Sie immer die Datenstruktur modellieren, die den Akteurzustand darstellt.
+ 
+### <a name="correctly-manage-the-actors-life-cycle"></a>Vorschriftsmäßige Verwaltung des Akteur-Lebenszyklus
+Sie benötigen eindeutige Richtlinien zum Verwalten der Zustandsgröße in jeder Partition eines Akteurdiensts. Ihr Akteurdienst muss eine feste Anzahl von Akteuren aufweisen und diese soweit möglich wiederverwenden. Wenn Sie laufend neue Akteure erstellen, müssen Sie diese löschen, nachdem sie ihren Zweck erfüllt haben. Das Akteur-Framework speichert einige Metadaten zu jedem vorhandenen Akteur. Beim Löschen des gesamten Zustands eines Akteurs werden dessen Metadaten nicht entfernt. Sie müssen den Akteur löschen (siehe [Löschen von Akteuren und deren Zuständen](service-fabric-reliable-actors-lifecycle.md#deleting-actors-and-their-state)), um alle im System dazu gespeicherten Informationen zu entfernen. Als eine zusätzliche Überprüfung sollten Sie den Akteurdienst bisweilen abfragen (siehe [Aufzählen von Akteuren](service-fabric-reliable-actors-platform.md)), um sicherzustellen, dass die Anzahl von Akteuren innerhalb des erwarteten Bereichs liegt.
+ 
+Sollten Sie jemals feststellen, dass die Größe der Datenbankdatei eines Akteurdiensts die erwartete Größe überschreitet, stellen Sie sicher, dass die hier angegebenen Richtlinien eingehalten werden. Wenn Sie diese Richtlinien einhalten und die dennoch Probleme mit der Größe der Datenbankdatei auftreten, [öffnen Sie ein Supportticket](service-fabric-support.md) beim Produktteam, um Hilfe zu erhalten.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Zustand, der in Reliable Actors gespeichert wurde, muss serialisiert werden, bevor er in den Datenträger geschrieben und zur hohen Verfügbarkeit repliziert wird. Erfahren Sie mehr über [Typserialisierung von Actors](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+Zustand, der in Reliable Actors gespeichert wurde, muss serialisiert werden, bevor er in den Datenträger geschrieben und zur Hochverfügbarkeit repliziert wird. Erfahren Sie mehr über [Typserialisierung von Actors](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
 Und erfahren Sie mehr über [Diagnose und Leistungsüberwachung für Reliable Actors](service-fabric-reliable-actors-diagnostics.md).

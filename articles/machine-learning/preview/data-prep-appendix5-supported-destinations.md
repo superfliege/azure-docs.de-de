@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 18db3caf487375252ca50f3942d7bdf538367ba6
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 5451a5f525da845f97141a97241efb53ec42ff58
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="supported-data-exports-for-this-preview"></a>Unterstützte Datenexporte für diese Vorschau 
 Es können Exporte in verschiedene Formate durchgeführt werden. Bei diesen Formaten können die Zwischenergebnisse der Datenvorbereitung beibehalten werden, bevor sie in den restlichen Machine Learning-Workflow integriert werden.
@@ -61,6 +61,6 @@ Beim PARQUET-Format handelt es sich um ein relativ junges Format, das einige Ink
 ### <a name="local"></a>Lokal 
 Lokale Festplatte oder zugeordneter Netzwerkspeicherort.
 
-### <a name="azure-blob-storage"></a>Azure-Blobspeicher
+### <a name="azure-blob-storage"></a>Azure Blob Storage
 Azure Blob Storage erfordert ein Azure-Abonnement.
 

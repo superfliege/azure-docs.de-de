@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mahender; mblythe
-ms.openlocfilehash: 7482ca27c2edcb281180fb8fbbfb1884a515d379
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 2d7ef0d4b2669b774b1d218d244052083e883517
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/18/2017
 Analog dazu können Entwickler, die eine umfassendere Bereitstellung ihrer APIs in einer Organisation anstreben, ihre APIs für App- und Flow-Generatoren verfügbar machen. In diesem Thema wird beschrieben, wie eine in [Azure Functions](../azure-functions/functions-overview.md) oder [Azure App Service](../app-service/app-service-web-overview.md) integrierte API exportiert wird. Die exportierte API dient als *benutzerdefinierter Connector*, der wie ein integrierter Connector in PowerApps und Microsoft Flow verwendet wird.
 
 ## <a name="create-and-export-an-api-definition"></a>Erstellen und Exportieren einer API-Definition
-Vor dem Exportieren einer API müssen Sie die API mithilfe einer OpenAPI-Definition (ehemals als [Swagger](http://swagger.io/)-Datei bezeichnet) beschreiben. Diese Definition enthält Informationen zu den in einer API verfügbaren Vorgängen sowie zur Strukturierung der Anforderungs- und Antwortdaten für die API. PowerApps und Microsoft Flow können benutzerdefinierte Connectors für jede beliebige OpenAPI 2.0-Definition erstellen. In Azure Functions und Azure App Service ist die Unterstützung für das Erstellen, Hosten und Verwalten von OpenAPI-Definitionen bereits integriert. Weitere Informationen finden Sie unter [Build a Node.js RESTful API and deploy it to an API app in Azure](../app-service/app-service-web-tutorial-rest-api.md) (Erstellen einer Node.js-RESTful-API und Bereitstellen in einer API-App in Azure).
+Vor dem Exportieren einer API müssen Sie die API mithilfe einer OpenAPI-Definition (ehemals als [Swagger](http://swagger.io/)-Datei bezeichnet) beschreiben. Diese Definition enthält Informationen zu den in einer API verfügbaren Vorgängen sowie zur Strukturierung der Anforderungs- und Antwortdaten für die API. PowerApps und Microsoft Flow können benutzerdefinierte Connectors für jede beliebige OpenAPI 2.0-Definition erstellen. In Azure Functions und Azure App Service ist die Unterstützung für das Erstellen, Hosten und Verwalten von OpenAPI-Definitionen bereits integriert. Weitere Informationen finden Sie unter [Hosten einer RESTful-API mit CORS in Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
 > Sie können auch benutzerdefinierte Connectors in der Benutzeroberfläche von PowerApps und Microsoft Flow erstellen, ohne eine OpenAPI-Definition zu verwenden. Weitere Informationen finden Sie unter [Registrieren und Verwenden von benutzerdefinierten Connectors (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) und [Registrieren und Verwenden von benutzerdefinierten Connectors (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/).
