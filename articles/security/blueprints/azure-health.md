@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 41b36a25eab9c1564dc59a40acd7daefde888b7f
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 2bca630bb98b3d9c2be566fbd23ae3313c6a5a47
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI
 
@@ -40,21 +40,15 @@ Mit diesem Entwurf soll eine modulare Grundlage geschaffen werden, auf der sich 
 
 -   Kunden sind dafür verantwortlich, angemessene Sicherheits- und Konformitätsprüfungen für jede Lösung durchzuführen, die mit dieser grundlegenden Architektur erstellt wurde.
 
-Eine schnelle Übersicht über die Funktionsweise dieser Lösung finden Sie in diesem [Video](https://aka.ms/healthblueprintvideo), in dem die Bereitstellung erklärt und gezeigt wird.
-
 ## <a name="deploying-the-automation"></a>Bereitstellen der Automatisierung
 
 - Befolgen Sie die Anweisungen im Installationsleitfaden, um die Lösung bereitzustellen. 
 
 [![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
 
+Eine schnelle Übersicht über die Funktionsweise dieser Lösung finden Sie in diesem [Video](https://aka.ms/healthblueprintvideo), in dem die Bereitstellung erklärt und gezeigt wird.
+
 - Häufig gestellte Fragen (FAQ) finden Sie in der Anleitung [FAQ](https://aka.ms/healthblueprintfaq).
-
-
-## <a name="solution-components"></a>Lösungskomponenten
-
-
-Die grundlegende Architektur besteht aus den folgenden Komponenten:
 
 -   **Architekturdiagramm.** Das Diagramm zeigt die für den Entwurf verwendete Referenzarchitektur und das Anwendungsfall-Beispielszenario.
 
@@ -66,12 +60,16 @@ Die grundlegende Architektur besteht aus den folgenden Komponenten:
 -   Ein Skript zur Modulinstallation und zur Einrichtung für [globale Administratoren](/azure/active-directory/active-directory-assign-admin-roles-azure-portal). Mit diesem Skript werden die erforderlichen PowerShell-Module und globalen Administratorrollen installiert und wird geprüft, ob diese ordnungsgemäß konfiguriert sind. 
 -   Für die Bereitstellung der Lösung wird ein PowerShell-Installationsskript verwendet, das über eine ZIP-Datei zur Verfügung gestellt wird, die vordefinierte Demofunktionen enthält.
 
+## <a name="solution-components"></a>Lösungskomponenten
+
+
+Die grundlegende Architektur besteht aus den folgenden Komponenten:
 
 -   **[Bedrohungsmodell](https://aka.ms/healththreatmodel)** Ein umfassendes Bedrohungsmodell wird im tm7-Format für die Verwendung mit dem [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) bereitgestellt, das die Komponenten der Lösung, die Datenflüsse zwischen ihnen und die Vertrauensgrenzen zeigt. Das Modell kann Kunden dabei helfen, die potenziellen Risikopunkte in der Systeminfrastruktur bei der Entwicklung von Machine Learning-Komponenten oder anderen Änderungen zu verstehen.
 
--   **[Kundenzuständigkeitsmatrix](https://aka.ms/healthcrmblueprint)** Eine Microsoft Excel-Arbeitsmappe listet die relevanten HITRUST-Anforderungen auf und erläutert, wie Microsoft und der Kunde für die Erfüllung der jeweiligen Anforderungen verantwortlich sind.
+-   **[Kundenimplementierungsmatrix](https://aka.ms/healthcrmblueprint)** Eine Microsoft Excel-Arbeitsmappe listet die relevanten HITRUST-Anforderungen auf und erläutert, wie Microsoft und der Kunde für die Erfüllung der jeweiligen Anforderungen verantwortlich sind.
 
--   **[Überprüfung der Integrität. Die Lösung wurde von Coalfire Systems, Inc. geprüft. Die Konformitätsüberprüfung für das Gesundheitswesen (HIPAA und HITRUST) und Anleitung zur Implementierung enthält eine vom Prüfer verfasste Überprüfung der Lösung sowie Überlegungen für das Transformieren des Entwurfs in eine produktionsreife Bereitstellung.
+-   **[Überprüfung der Integrität.](https://aka.ms/healthreviewpaper)** Die Lösung wurde von Coalfire Systems, Inc. geprüft. Die Konformitätsüberprüfung für das Gesundheitswesen (HIPAA und HITRUST) und Anleitung\' zur Implementierung enthält eine vom Prüfer verfasste Überprüfung der Lösung sowie Überlegungen für das Transformieren des Entwurfs in eine produktionsreife Bereitstellung.
 
 # <a name="architectural-diagram"></a>Architekturdiagramm
 
@@ -216,7 +214,7 @@ In diesem Abschnitt werden die Standardkonfigurationen und Sicherheitsmaßnahmen
 
 **Authentifizierung:**
 
--   [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Alle Benutzer für die Lösung wurden in Azure Active Directory erstellt, so auch die Benutzer, die auf die SQL-Datenbank zugreifen.
+-   [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft\'. Alle Benutzer für die Lösung wurden in Azure Active Directory erstellt, so auch die Benutzer, die auf die SQL-Datenbank zugreifen.
 
 
 
@@ -258,7 +256,7 @@ In diesem Abschnitt werden die Standardkonfigurationen und Sicherheitsmaßnahmen
 
 ## <a name="ingest"></a>ERFASSEN 
 
-### <a name="azure-functions"></a>Azure Functions
+### <a name="azure-functions"></a>Azure-Funktionen
 Die Lösung wurde so konzipiert, dass sie [Azure Functions](/azure/azure-functions/) verwendet, um die in der Analysedemo verwendeten Verweildauerdaten zu verarbeiten. Es wurden drei Funktionalitäten in den Funktionen erstellt.
 
 **1. Massenimport von PHI-Patientendaten**
