@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: e8a6722c74f044b5310ce0fcb937002f5a1e8fa2
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6c3fb08a43bce6193aa0094992616a290129bac8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -39,7 +39,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 ## <a name="create-a-network-interface"></a>Erstellen einer Netzwerkschnittstelle
 
-Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine Netzwerkschnittstelle mit Standardeinstellungen. Wenn Sie lieber alle Netzwerkschnittstelleneinstellungen angeben möchten, können Sie eine Netzwerkschnittstelle mit benutzerdefinierten Einstellungen erstellen und beim Erstellen eines virtuellen Computers an diesen anfügen (mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle). Sie können auch eine Netzwerkschnittstelle erstellen und an einen vorhandenen virtuellen Computer anfügen (mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle). Weitere Informationen zum Erstellen eines virtuellen Computers mit einer vorhandenen Netzwerkschnittstelle oder zum Hinzufügen und Entfernen von Netzwerkschnittstellen bei vorhandenen virtuellen Computern finden Sie im Artikel [Hinzufügen oder Entfernen von Netzwerkschnittstellen](virtual-network-network-interface-vm.md). Vor dem Erstellen einer Netzwerkschnittstelle müssen Sie über ein [virtuelles Netzwerk](virtual-networks-create-vnet-arm-pportal.md) am selben Standort und im selben Abonnement verfügen, in dem Sie eine Netzwerkschnittstelle erstellen.
+Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine Netzwerkschnittstelle mit Standardeinstellungen. Wenn Sie lieber alle Netzwerkschnittstelleneinstellungen angeben möchten, können Sie eine Netzwerkschnittstelle mit benutzerdefinierten Einstellungen erstellen und beim Erstellen eines virtuellen Computers an diesen anfügen (mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle). Sie können auch eine Netzwerkschnittstelle erstellen und an einen vorhandenen virtuellen Computer anfügen (mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle). Weitere Informationen zum Erstellen eines virtuellen Computers mit einer vorhandenen Netzwerkschnittstelle oder zum Hinzufügen und Entfernen von Netzwerkschnittstellen bei vorhandenen virtuellen Computern finden Sie im Artikel [Hinzufügen oder Entfernen von Netzwerkschnittstellen](virtual-network-network-interface-vm.md). Vor dem Erstellen einer Netzwerkschnittstelle müssen Sie über ein [virtuelles Netzwerk](manage-virtual-network.md#create-a-virtual-network) am selben Standort und im selben Abonnement verfügen, in dem Sie eine Netzwerkschnittstelle erstellen.
 
 1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.

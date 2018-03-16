@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/16/2018
 ms.author: 
-ms.openlocfilehash: 5176f679971d542e67dfc6ff04a729fa52bc3f6e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6713580325450d7548e63c78af4d44c65653f884
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Sicherheit in Azure – bewährte Methoden und Muster
 
@@ -28,11 +28,12 @@ ms.lasthandoff: 02/22/2018
 * [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](azure-security-identity-management-best-practices.md)
 * [Bewährte Methoden für die Azure-Netzwerksicherheit](azure-security-network-security-best-practices.md)
 * [Bewährte Methoden für Azure Operational Security](azure-operational-security-best-practices.md)
-* [Bewährte Methoden für Azure PaaS](https://docs.microsoft.com/azure/security/security-paas-deployments) 
-* [Bewährte Methoden für die Azure Service Fabric-Sicherheit](security-best-practices-and-patterns.md)
-* [Bewährte Methoden für die Sicherheit virtueller Azure-Computer](azure-service-fabric-security-best-practices.md)
+* [Bewährte Methoden für Azure PaaS](security-paas-deployments.md) 
+* [Bewährte Methoden für die Azure Service Fabric-Sicherheit](azure-service-fabric-security-best-practices.md)
+* [Bewährte Methoden für die Sicherheit virtueller Azure-Computer](azure-security-best-practices-vms.md)
 * [Implementing a secure hybrid network architecture in Azure (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
-* [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)* [Schützen von PaaS-Datenbanken in Azure](security-paas-applications-using-sql.md)
+* [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)
+* [Schützen von PaaS-Datenbanken in Azure](security-paas-applications-using-sql.md)
 * [Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure App Service](security-paas-applications-using-app-services.md)
 * [Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure Storage](security-paas-applications-using-storage.md)
 * [Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure](azure-security-iaas.md)

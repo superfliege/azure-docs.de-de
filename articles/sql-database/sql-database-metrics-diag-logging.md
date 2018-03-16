@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 87bbbd1fdcb9afb59de0bda29e99e23e0b9ad104
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2d0a2d5966c8c99e7d71d97d4819d58a1474c2fe
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -385,7 +385,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |query_hash_s|Der Abfragehash der fehlerhaften Abfrage (falls vorhanden).|
 |query_plan_hash_s|Der Hash des Abfrageplans der fehlerhaften Abfrage (falls vorhanden).|
 
-Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com/en-us/library/cc645603.aspx).
+Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com/library/cc645603.aspx).
 
 ### <a name="database-wait-statistics-dataset"></a>Dataset zur Wartestatistik der Datenbank
 

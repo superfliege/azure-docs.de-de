@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa9861162e63714fc17d829816b25aa36e7df73b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0fa8ca130fdcbe408d75e7315ad5ebdb8caae94e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="resize-a-linux-virtual-machine-using-cli-20"></a>Ändern der Größe eines virtuellen Linux-Computers mithilfe von CLI 2.0
 
 Nachdem Sie einen virtuellen Computer (VM) bereitstellen, können Sie ihn zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe][vm-sizes] ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Sie müssen die Zuordnung aufheben, wenn die gewünschte Größe in dem Hardwarecluster nicht verfügbar ist, in dem der virtuelle Computer gehostet wird. In diesem Artikel wird erläutert, wie Sie mithilfe von Azure CLI 2.0 die Größe eines virtuellen Linux-Computer ändern. Sie können diese Schritte auch per [Azure CLI 1.0](change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 ## <a name="resize-a-vm"></a>Ändern der Größe eines virtuellen Computers
-Zum Ändern der Größe eines virtuellen Computers muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein.
+Zum Ändern der Größe eines virtuellen Computers muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein.
 
 1. Zeigen Sie mit [az vm list-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options) die Liste der verfügbaren VM-Größen in dem Hardwarecluster an, in dem der virtuelle Computer gehostet wird. Das folgende Beispiel listet VM-Größen für den virtuellen Computer `myVM` in der Region der Ressourcengruppe `myResourceGroup` auf:
    

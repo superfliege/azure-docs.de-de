@@ -5,13 +5,13 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/09/2018
 ms.author: raynew
-ms.openlocfilehash: bbad2a0ea1a58834eaf32e0d3286f6e8a794d364
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d58dfd482b66d90748f0ca661e56fa281c14598a
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für physische Server, die in Azure repliziert werden
 
@@ -30,7 +30,7 @@ Failover und Failback weisen vier Phasen auf:
 
 ## <a name="verify-server-properties"></a>Überprüfen der Servereigenschaften
 
-Überprüfen Sie die Servereigenschaften, und stellen Sie sicher, dass sie die [Azure-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) für Azure-VMs erfüllen.
+Überprüfen Sie die Servereigenschaften, und stellen Sie sicher, dass sie die [Azure-Anforderungen](vmware-physical-azure-support-matrix.md#replicated-machines) für Azure-VMs erfüllen.
 
 1. Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente**, und wählen Sie den Computer aus.
 
@@ -62,7 +62,7 @@ Der Prozessserver empfängt Daten von der Azure-VM und sendet Daten an den lokal
 
 - Wenn Sie über eine Azure ExpressRoute-Verbindung verfügen, können Sie zu Testzwecken den lokalen Prozessserver verwenden, der automatisch auf dem Konfigurationsserver installiert wird.
 - Wenn Sie über eine VPN-Verbindung verfügen, oder Sie das Failback in einer Produktionsumgebung ausführen, müssen Sie eine Azure-VM als Azure-basierten Prozessserver für Failback einrichten.
-- Um einen Prozessserver in Azure einzurichten, befolgen Sie die Anweisungen in [diesem Artikel](site-recovery-vmware-setup-azure-ps-resource-manager.md).
+- Um einen Prozessserver in Azure einzurichten, befolgen Sie die Anweisungen in [diesem Artikel](vmware-azure-set-up-process-server-azure.md).
 
 ## <a name="configure-the-master-target-server"></a>Konfigurieren des Masterzielservers
 

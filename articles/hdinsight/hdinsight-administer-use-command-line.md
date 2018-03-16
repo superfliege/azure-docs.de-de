@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: 491dbd157255dc4fa7f77178f9486959ba4847a1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: a6103c85747b2e76db7253de59b20f8b5d5a9433
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Hier erfahren Sie, wie Sie mit der [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) Hadoop-Cluster in Azure HDInsight verwalten. Die Azure-CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwendet werden, die Node.js unterstützen, inklusive Windows, Mac und Linux. HDInsight unterstützt derzeit nicht die [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview).
+Hier erfahren Sie, wie Sie mit der [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) Hadoop-Cluster in Azure HDInsight verwalten. Die Azure-CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwendet werden, die Node.js unterstützen, inklusive Windows, Mac und Linux. HDInsight unterstützt derzeit nicht die [Azure CLI 2.0](https://docs.microsoft.com/cli/azure).
 
 In diesem Artikel wird lediglich die Verwendung der Azure-CLI mit HDInsight behandelt. Eine allgemeine Anleitung zur Verwendung der Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle][azure-command-line-tools].
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 976ddf25a57dd1eff66e121c5a66bc31f664a9dc
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: b93b9a801b3e5e1fd869cda7f3d67554e2d03195
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Erste Schritte mit Azure Data Lake Store mithilfe der Azure CLI 2.0
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/10/2018
 
 Hier erfahren Sie, wie Sie mit Azure CLI 2.0 ein Azure Data Lake Store-Konto erstellen und einfache Vorgänge wie das Erstellen von Ordnern, das Hoch- und Herunterladen von Dateien oder das Löschen Ihres Kontos ausführen. Weitere Informationen zu Data Lake Store finden Sie unter [Übersicht über Data Lake Store](data-lake-store-overview.md).
 
-Azure CLI 2.0 ist die neue Befehlszeilenumgebung von Azure und dient zum Verwalten von Azure-Ressourcen. Sie kann unter macOS, Linux und Windows verwendet werden. Weitere Informationen finden Sie in der [Übersicht über Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview). In der [Referenz für Azure Data Lake Store CLI 2.0](https://docs.microsoft.com/cli/azure/dls) finden Sie außerdem eine umfassende Liste mit Befehlen und Syntax.
+Azure CLI 2.0 ist die neue Befehlszeilenumgebung von Azure und dient zum Verwalten von Azure-Ressourcen. Sie kann unter macOS, Linux und Windows verwendet werden. Weitere Informationen finden Sie in der [Übersicht über Azure CLI 2.0](https://docs.microsoft.com/cli/azure). In der [Referenz für Azure Data Lake Store CLI 2.0](https://docs.microsoft.com/cli/azure/dls) finden Sie außerdem eine umfassende Liste mit Befehlen und Syntax.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen

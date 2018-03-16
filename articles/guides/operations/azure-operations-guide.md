@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 4a913e188dd40b0306be375b016b9e8a3739ed72
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8d7cbe27e5acfe741aeb5ed85756bf3c7ce2160b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Einführung in Cloud Computing und Microsoft Azure
 
@@ -28,7 +28,7 @@ Dieser Leitfaden enthält eine Einführung in die wichtigsten Konzepte im Zusamm
 
 ## <a name="cloud-computing-overview"></a>Übersicht über Cloud Computing
 
-Cloud Computing stellt eine moderne Alternative zum herkömmlichen lokalen Datencenter dar. Anbieter von öffentlichen Clouds sorgen für die Bereitstellung und Verwaltung der gesamten Computing-Infrastruktur und der zugrunde liegenden Verwaltungssoftware. Bei diesen Anbietern sind viele unterschiedliche Clouddienste erhältlich. Ein Clouddienst kann hierbei ein virtueller Computer, ein Webserver oder ein in der Cloud gehostetes Datenbankmodul sein. Als Kunde eines Cloudanbieters leasen Sie diese Clouddienste je nach Bedarf. Auf diese Weise wandeln Sie die Investitionsaufwendungen für die Hardwarewartung in betriebliche Gesamtaufwendungen um. Außerdem bietet ein Clouddienst die folgenden Vorteile:
+Cloud Computing stellt eine moderne Alternative zum herkömmlichen lokalen Datencenter dar. Anbieter von öffentlichen Clouds sorgen für die Bereitstellung und Verwaltung der gesamten Computing-Infrastruktur und der zugrunde liegenden Verwaltungssoftware. Bei diesen Anbietern sind viele unterschiedliche Clouddienste erhältlich. Ein Clouddienst kann hierbei ein virtueller Computer, ein Webserver oder eine in der Cloud gehostete Datenbank-Engine sein. Als Kunde eines Cloudanbieters leasen Sie diese Clouddienste je nach Bedarf. Auf diese Weise wandeln Sie die Investitionsaufwendungen für die Hardwarewartung in betriebliche Gesamtaufwendungen um. Außerdem bietet ein Clouddienst die folgenden Vorteile:
 
 -   Schnelle Bereitstellung von großen Compute-Umgebungen
 
@@ -48,7 +48,7 @@ Mit der lokalen Infrastruktur haben Sie die vollständige Kontrolle über die be
 
 Microsoft verfügt bereits über viele Azure-Datencenter weltweit, und der Bau von weiteren Datencentern ist geplant. Außerdem erhöht Microsoft die Anzahl von unabhängigen Clouds in Regionen wie China und Deutschland. Nur die größten globalen Unternehmen können auf diese Weise Datencenter bereitstellen, sodass die Nutzung von Azure es für Unternehmen jeder Größe leicht macht, ihre Dienste in der Nähe ihrer Kunden bereitzustellen.
 
-Für kleine Unternehmen ist ein kostengünstiger Einstieg in Azure möglich, und es kann dann schnell skaliert werden, wenn die Anforderungen an die Computeleistung zunehmen. Größere Vorabinvestitionen in die Infrastruktur werden verhindert, und Sie können die Architektur Ihrer Systeme je nach Bedarf flexibel errichten und anpassen. Die Nutzung von Cloud Computing passt perfekt zur Dynamik und zum schnellen Wachstum von Startup-Unternehmen.
+Für kleine Unternehmen ist ein kostengünstiger Einstieg in Azure möglich, und es kann dann schnell skaliert werden, wenn die Anforderungen an die Computeleistung zunehmen. Größere Vorabinvestitionen in die Infrastruktur werden verhindert, und Sie können die Architektur Ihrer Systeme je nach Bedarf flexibel errichten und anpassen. Die Nutzung von Cloud Computing passt perfekt zur Dynamik und zur Fail-Fast-Fähigkeit beim Wachstum von Startup-Unternehmen.
 
 Weitere Informationen zu den verfügbaren Azure-Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
 
@@ -98,7 +98,7 @@ Dienste zum Speichern und Verwalten von Daten:
 
 -   Azure Storage (umfasst Azure-Dienste für Blob, Warteschlange, Tabelle und Datei)
 
--   Azure SQL-Datenbank
+-   Azure SQL-Datenbank
 
 -   Azure Cosmos DB
 
@@ -124,7 +124,7 @@ Dienste zum Erstellen und Betreiben von Anwendungen:
 
 Dienste für Netzwerke sowohl in Azure als auch zwischen Azure und lokalen Datencentern:
 
--   Azure Virtual Network
+-   Virtuelles Azure-Netzwerk
 
 -   Azure ExpressRoute
 
@@ -150,7 +150,7 @@ Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in ve
 
 Das Azure-Portal ist eine webbasierte Anwendung, die zum Erstellen, Verwalten und Entfernen von Azure-Ressourcen und -Diensten verwendet werden kann. Das Azure-Portal finden Sie unter „https://portal.azure.com“. Es enthält ein anpassbares Dashboard und Tools zum Verwalten der Azure-Ressourcen. Darüber hinaus werden Informationen zur Abrechnung für das Abonnement bereitgestellt. Weitere Informationen finden Sie unter [Übersicht über das Microsoft Azure-Portal](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) und [Verwalten von Azure-Ressourcen über das Portal](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 
 Bei Azure-Ressourcen handelt es sich um individuelle Compute-, Netzwerk-, Daten- oder App-Hosting-Dienste, die für ein Azure-Abonnement bereitgestellt wurden. Häufig verwendete Ressourcen sind virtuelle Computer, Speicherkonten oder SQL-Datenbanken. Azure-Dienste bestehen oft aus mehreren zusammengehörigen Azure-Ressourcen. Ein virtueller Azure-Computer kann beispielsweise Folgendes enthalten: VM, Speicherkonto, Netzwerkadapter und öffentliche IP-Adresse. Diese Ressourcen können einzeln oder als Gruppe erstellt, verwaltet und gelöscht werden. Azure-Ressourcen werden später in diesem Handbuch ausführlicher behandelt.
 
@@ -386,7 +386,7 @@ Für jeden Speichertyp gilt ein anderer Anwendungsfall.
 
 **Blob Storage** 
 
-Der Ausdruck *Blob* ist ein Akronym für *Binary Large Object*. Blobs sind unstrukturierte Dateien, also beispielsweise die Dateien, die Sie auf Ihrem Computer speichern. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet. Azure-Blobspeicher umfasst auch Azure Virtual Machines-Datenträger für Daten.
+Der Ausdruck *Blob* ist ein Akronym für *Binary Large Object*. Blobs sind unstrukturierte Dateien, also beispielsweise die Dateien, die Sie auf Ihrem Computer speichern. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet. Azure Blob Storage umfasst auch Azure Virtual Machines-Datenträger für Daten.
 
 Azure Storage unterstützt drei Arten von Blobs:
 
@@ -452,7 +452,7 @@ Beim Bereitstellen eines virtuellen Computers müssen Sie auch ein Speicherkonto
 
 **Speichertools**
 
-Auf Azure-Speicherkonten kann mit vielen unterschiedlichen Speicher-Explorern zugegriffen werden, z.B. Visual Studio Cloud-Explorer. Mit diesen Tools können Sie Speicherkonten und Daten durchsuchen. Weitere Informationen und eine Liste mit verfügbaren Speicher-Explorern finden Sie unter [Azure Storage-Clienttools](../../storage/common/storage-explorers.md).
+Auf Azure Storage-Konten kann mit vielen unterschiedlichen Storage-Explorern zugegriffen werden, z.B. Visual Studio Cloud-Explorer. Mit diesen Tools können Sie Speicherkonten und Daten durchsuchen. Weitere Informationen und eine Liste mit verfügbaren Storage-Explorern finden Sie unter [Azure Storage-Clienttools](../../storage/common/storage-explorers.md).
 
 **Storage-API**
 
@@ -466,7 +466,7 @@ Jedes Speicherkonto verfügt über zwei Authentifizierungsschlüssel: einen prim
 
 Wenn Sie anderen Benutzern kontrollierten Zugriff auf Ihre Speicherressourcen gewähren müssen, können Sie eine Shared Access Signature erstellen. Eine Shared Access Signature ist ein Token, das an eine URL angefügt werden kann und den delegierten Zugriff auf eine Speicherressource ermöglicht. Jeder Benutzer, der über dieses Token verfügt, kann während der Gültigkeitsdauer mit festgelegten Berechtigungen auf die Ressource zugreifen, auf die das Token verweist. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-## <a name="azure-virtual-network"></a>Azure Virtual Network
+## <a name="azure-virtual-network"></a>Virtuelles Azure-Netzwerk
 
 
 Virtuelle Netzwerke sind erforderlich, um die Kommunikation zwischen virtuellen Computern zu unterstützen. Sie können Subnetze, benutzerdefinierte IP-Adressen, DNS-Einstellungen, Sicherheitsfilter und den Lastenausgleich definieren. Durch Verwendung eines VPN-Gateways oder einer ExpressRoute-Verbindung können Sie virtuelle Azure-Netzwerke mit Ihren lokalen Netzwerken verbinden.
@@ -491,19 +491,19 @@ Es gibt mehrere Optionen zum Bereitstellen eines virtuellen Netzwerks.
 
 **Portal**
 
-Für die Bereitstellung eines virtuellen Azure-Netzwerks mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues virtuelles Netzwerk in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Wenn Sie im Portal einen neuen virtuellen Computer erstellen, können Sie ein vorhandenes virtuelles Netzwerk auswählen oder ein neues erstellen. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Für die Bereitstellung eines virtuellen Azure-Netzwerks mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues virtuelles Netzwerk in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Wenn Sie im Portal einen neuen virtuellen Computer erstellen, können Sie ein vorhandenes virtuelles Netzwerk auswählen oder ein neues erstellen. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../virtual-network/quick-create-portal.md).
 
 Zusätzlich zur Bereitstellung eines virtuellen Azure-Netzwerks mit dem Azure-Portal können Sie auch eine Azure Resource Manager-Vorlage über das Portal bereitstellen. Hierbei werden alle Ressourcen gemäß der Definition in der Vorlage, einschließlich aller Ressourcen des virtuellen Netzwerks, bereitgestellt und konfiguriert. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 **PowerShell**
 
-Die Bereitstellung eines virtuellen Azure-Netzwerks mithilfe von PowerShell ermöglicht eine vollständige Automatisierung der Bereitstellung von Speicherkonten. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks über PowerShell](../../virtual-network/virtual-networks-create-vnet-arm-ps.md).
+Die Bereitstellung eines virtuellen Azure-Netzwerks mithilfe von PowerShell ermöglicht eine vollständige Automatisierung der Bereitstellung von Speicherkonten. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks über PowerShell](../../virtual-network/quick-create-powershell.md).
 
 Zusätzlich zum individuellen Bereitstellen von Azure-Ressourcen können Sie das Azure PowerShell-Modul verwenden, um eine Azure Resource Manager-Vorlage bereitzustellen. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
 
 **Befehlszeilenschnittstelle**
 
-Wie beim PowerShell-Modul auch, ermöglicht die Azure-Befehlszeilenschnittstelle die Automatisierung der Bereitstellung und kann unter den Betriebssystemen Windows, OS X oder Linux verwendet werden. Sie können den Befehl **network vnet create** verwenden, um ein virtuelles Netzwerk zu erstellen. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle](../../virtual-network/virtual-networks-create-vnet-arm-cli.md).
+Wie beim PowerShell-Modul auch, ermöglicht die Azure-Befehlszeilenschnittstelle die Automatisierung der Bereitstellung und kann unter den Betriebssystemen Windows, OS X oder Linux verwendet werden. Sie können den Befehl **network vnet create** verwenden, um ein virtuelles Netzwerk zu erstellen. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle](../../virtual-network/quick-create-cli.md).
 
 Sie können die Azure CLI auch nutzen, um eine Azure Resource Manager-Vorlage bereitzustellen. Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md).
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 03a29faeed71334253f9aa5bc88653fd689cc55b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 20af28dd4caa6ee5487b9a2ed83715b9b16fad48
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Herunterladen einer Linux-VHD von Azure
 
@@ -43,7 +43,7 @@ Um die VHD als Image zum Erstellen von anderen VMs zu verwenden, führen Sie die
     exit 
     ```
 
-2. Melden Sie sich mit [az login](https://docs.microsoft.com/cli/azure/#az_login) bei Ihrem Azure-Konto an.
+2. Melden Sie sich mit [az login](https://docs.microsoft.com/cli/azure/reference-index#az_login) bei Ihrem Azure-Konto an.
 3. Beenden und Aufheben der Zuordnung für die VM
 
     ```azurecli

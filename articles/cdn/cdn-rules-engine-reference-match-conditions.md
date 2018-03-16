@@ -1,5 +1,5 @@
 ---
-title: "Übereinstimmungsbedingungen für die Azure CDN-Regel-Engine | Microsoft-Dokumentation"
+title: "Übereinstimmungsbedingungen der Azure CDN-Regel-Engine | Microsoft-Dokumentation"
 description: "Regel zu Übereinstimmungsbedingungen für die Azure Content Delivery Network-Regel-Engine."
 services: cdn
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 08845355be0bfb7e7dde52d19949fee4a68ed54b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: e4b7113f27e5e15d69dfdd1efd13e255ef4a8ab7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="match-conditions-for-the-azure-cdn-rules-engine"></a>Übereinstimmungsbedingungen für die Azure CDN-Regel-Engine
+# <a name="azure-cdn-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen der Azure CDN-Regel-Engine 
 Dieser Artikel enthält ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen für die [Regel-Engine](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).
 
 Der zweite Teil einer Regel ist die Übereinstimmungsbedingung. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die verschiedene sog. Features ausgeführt werden.
@@ -305,7 +305,7 @@ Wichtige Informationen:
 #### <a name="string-type"></a>Zeichenfolgentyp
 Eine WURFL-Funktion akzeptiert normalerweise eine beliebige Kombination von Zahlen, Buchstaben und Zeichen. Aufgrund der hohen Flexibilität dieser Funktion müssen Sie auswählen, wie der Wert, der dieser Übereinstimmungsbedingung zugeordnet ist, interpretiert wird. In der folgenden Tabelle sind die verfügbaren Optionen beschrieben:
 
-Typ     | Beschreibung
+Typ     | BESCHREIBUNG
 ---------|------------
 Literal  | Wählen Sie diese Option, um zu verhindern, dass die meisten Zeichen eine spezielle Bedeutung erhalten, indem der [Literalwert](cdn-rules-engine-reference.md#literal-values) verwendet wird.
 Platzhalter | Wählen Sie diese Option, um alle [Platzhalterzeichen]([Platzhalterwerte](cdn-rules-engine-reference.md#wildcard-values) zu nutzen.
@@ -867,10 +867,10 @@ Wichtige Informationen:
 #### <a name="sample-scenarios"></a>Beispielszenarien
 Im folgenden Beispiel wird veranschaulicht, wie diese Option in bestimmten Situationen funktioniert:
 
-Name      | Wert |  Ergebnis
+NAME      | Wert |  Ergebnis
 ----------|-------|--------
-User      | Joe   | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL „?user=joe“ lautet.
-User      | *     | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL den Parameter „User“ enthält.
+Benutzer      | Joe   | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL „?user=joe“ lautet.
+Benutzer      | *     | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL den Parameter „User“ enthält.
 Email Joe | *     | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL einen Email-Parameter enthält, der mit „Joe“ beginnt.
 
 [Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
@@ -959,7 +959,7 @@ Wichtige Informationen:
 #### <a name="sample-scenarios"></a>Beispielszenarien
 Im folgenden Beispiel wird veranschaulicht, wie diese Option in bestimmten Situationen funktioniert:
 
- Name                 | Beschreibung
+ NAME                 | BESCHREIBUNG
  ---------------------|------------
 user=joe              | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL „?user=joe“ lautet.
 \*user=\* \*optout=\* | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die CDN-URL-Abfrage entweder den Parameter „user“ oder „optout“ enthält.
@@ -973,6 +973,5 @@ user=joe              | Für dieses Muster ergibt sich eine Übereinstimmung, we
 * [Regel-Engine – Referenz](cdn-rules-engine-reference.md)
 * [Regel-Engine – bedingte Ausdrücke](cdn-rules-engine-reference-conditional-expressions.md)
 * [Regel-Engine – Features](cdn-rules-engine-reference-features.md)
-* 
-            [Überschreiben des HTTP-Standardverhaltens mithilfe der Regel-Engine](cdn-rules-engine.md)
+* [Überschreiben des HTTP-Standardverhaltens mithilfe der Regel-Engine](cdn-rules-engine.md)
 

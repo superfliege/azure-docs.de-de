@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: e0b835f4cbad9855bfb7ddccf2d9bf5b4bf88231
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>Problembehandlung bei Routen über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Obwohl in diesem Beispiel nur Systemrouten verwendet werden, können mit den gle
 ### <a name="view-effective-routes-for-a-virtual-machine"></a>Anzeigen der effektiven Routen für einen virtuellen Computer
 Führen Sie die folgenden Schritte aus, um die auf einen virtuellen Computer angewendeten Aggregatrouten anzuzeigen:
 
-1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an. Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an. Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Klicken Sie auf **Alle Dienste** und dann in der angezeigten Liste auf **Virtuelle Computer**.
 3. Wählen Sie in der angezeigten Liste einen virtuellen Computer für die Problembehandlung aus. Für den entsprechenden virtuellen Computer wird dann ein Blatt mit Optionen angezeigt.
 4. Klicken Sie auf **Diagnose und Problembehandlung**, und wählen Sie dann ein gängiges Problem aus. In diesem Beispiel wird **Ich kann keine Verbindung mit meinem virtuellen Windows-Computer herstellen** ausgewählt.
@@ -96,7 +96,7 @@ Weitere Szenarios zur Problembehandlung für die Tunnelerzwingung und Routenausw
 ### <a name="view-effective-routes-for-a-network-interface"></a>Anzeigen der effektiven Routen für eine Netzwerkschnittstelle
 Wenn der Netzwerkdatenverkehrsfluss für eine bestimmte Netzwerkschnittstelle (NIC) beeinträchtigt ist, können Sie die vollständige Liste der effektiven Routen für eine NIC direkt anzeigen. Führen Sie die folgenden Schritte aus, um die auf eine NIC angewendeten Aggregatrouten anzuzeigen:
 
-1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Klicken Sie auf **Alle Dienste** und dann auf **Netzwerkschnittstellen**.
 3. Suchen Sie in der Liste den Namen einer NIC, oder wählen Sie ihn in der angezeigten Liste aus. In diesem Beispiel wird **VM1-NIC1** ausgewählt.
 4. Wählen Sie auf dem Blatt **Netzwerkschnittstelle** die Option **Effective routes** (Effektive Routen) aus, wie in der folgenden Abbildung dargestellt:
@@ -116,7 +116,7 @@ In diesem Beispiel wird eine benutzerdefinierte Route (*UDRoute*) in einer Routi
 
 Führen Sie die folgenden Schritte aus, um die Aggregatrouten für eine Routingtabelle anzuzeigen:
 
-1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Klicken Sie auf **Alle Dienste** und dann auf **Routingtabellen**.
 3. Suchen Sie in der Liste die Routingtabelle, für die Sie Aggregatrouten anzeigen möchten, und wählen Sie sie aus. In diesem Beispiel wird **UDRouteTable** ausgewählt. Ein Blatt für die ausgewählte Routingtabelle wird angezeigt (siehe folgende Abbildung):
 

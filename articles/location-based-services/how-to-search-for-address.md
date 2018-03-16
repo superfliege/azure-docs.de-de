@@ -3,16 +3,16 @@ title: Suchen nach einer Adresse mit dem Suchdienst von Azure Location Based Ser
 description: Erfahren Sie, wie Sie mit dem Suchdienst von Azure Location Based Services (Vorschau) nach einer Adresse suchen.
 services: location-based-services
 keywords: "Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen."
-author: philmea
-ms.author: philmea
+author: kgremban
+ms.author: kgremban
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: cacaaab869d3a7752b5a750f01bbfbdaf79814f7
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: dd8026c55d71f6e421b976d8e7ae12f1cfd679a1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Suchen nach einer Adresse mit dem Suchdienst von Azure Location Based Services (Vorschau)
 Bei dem Suchdienst handelt es sich um eine für Entwickler konzipierte Gruppe von RESTful-APIs für die Suche nach Adressen, Orten, interessanten Orten, Brancheneinträgen und anderen geografischen Informationen. Der Suchdienst weist einer bestimmten Adresse, einer Querstraße, einem geografischen Objekt oder einem interessanten Ort (POI) einen Breiten- und Längengrad zu. Die von den APIs des Suchdiensts zurückgegebenen Werte für den Breiten- und Längengrad können als Parameter in anderen Azure Location Based Services verwendet werden, z.B. in den APIs für Routen oder den Datenverkehrsfluss.

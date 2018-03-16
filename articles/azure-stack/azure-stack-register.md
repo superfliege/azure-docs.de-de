@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/8/2018
+ms.date: 2/27/2018
 ms.author: jeffgilb
-ms.openlocfilehash: b58b3fc538d2237c12a860d268d550c4223155ba
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 8d520e1917d63b56a2adf3823ddbb741721fe751
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Registrieren Sie Azure Stack in Ihrem Azure-Abonnement.
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Sie können [Azure Stack](azure-stack-poc.md) in Azure registrieren, um Marketplace-Elemente aus Azure herunterzuladen und das Senden von Berichten zu Geschäftsdaten an Microsoft einzurichten.
 

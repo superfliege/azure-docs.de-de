@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 36ff6d8fc956f5c863884e4591cbcb2909fcb200
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ee43bfd85bdda16cb496ec938c266c72f0d5688b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-network-security-groups-using-the-azure-cli"></a>Verwalten von Netzwerksicherheitsgruppen mit der Azure CLI
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/09/2018
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
 ## <a name="prerequisite"></a>Voraussetzung
-Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#az_login) bei einem Azure-Konto an. 
+Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an. 
 
 ## <a name="view-existing-nsgs"></a>Anzeigen lassen vorhandener NSGs
 Führen Sie zum Anzeigen der Liste von NSGs in einer bestimmten Ressourcengruppe den Befehl [az network nsg list](/cli/azure/network/nsg#az_network_nsg_list) mit dem Ausgabeformat `-o table` aus:

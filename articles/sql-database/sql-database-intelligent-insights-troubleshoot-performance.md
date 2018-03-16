@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: cce112929ff2f4fb48c2c6e2ddc2d4eee743b790
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 0efb8b80bc98931f33991dc67f8f4aa1953bb491
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
@@ -101,7 +101,7 @@ Dieses Leistungsmuster ist ein Hinweis auf eine Verschlechterung der aktuellen D
 
 Eine hohe Arbeitsspeicherauslastung kennzeichnet eine Leistungsbedingung, bei der eine große Anzahl von Arbeitsthreads Speicherzuweisungen in der SQL-Datenbank anfordern. Dieses hohe Volumen verursacht eine hohe Arbeitsspeicherbelegung, aufgrund der die SQL-Datenbank den Arbeitsspeicher nicht effizient allen Workern zuweisen kann, die diesen anfordern. Eine der häufigsten Ursachen für dieses Problem bezieht sich einerseits auf die Menge des verfügbaren Arbeitsspeichers für die SQL-Datenbank. Andererseits führt eine erhöhte Workload zur Erhöhung der Arbeitsthreads sowie der Arbeitsspeicherauslastung.
 
-Eine schwerwiegendere Form der hohen Arbeitsspeicherauslastung wird als Arbeitsspeicherstau bezeichnet. Diese Bedingung gibt an, dass eine höhere Anzahl von Arbeitsthreads Arbeitsspeicherzuweisungen anfordern als Abfragen vorhanden sind, die den Speicher freigeben. Diese Anzahl von Arbeitsthreads, die Speicherzuweisungen anfordern, kann ebenfalls kontinuierlich ansteigen (sich aufstauen), da das SQL-Datenbankmodul nicht in der Lage ist, Arbeitsspeicher effizient zuzuteilen, um den Bedarf zu erfüllen. Der Arbeitsspeicherstau stellt eines der schwerwiegendsten Datenbankleistungsprobleme dar.
+Eine schwerwiegendere Form der hohen Arbeitsspeicherauslastung wird als Arbeitsspeicherstau bezeichnet. Diese Bedingung gibt an, dass eine höhere Anzahl von Arbeitsthreads Arbeitsspeicherzuweisungen anfordern als Abfragen vorhanden sind, die den Speicher freigeben. Diese Anzahl von Arbeitsthreads, die Speicherzuweisungen anfordern, kann ebenfalls kontinuierlich ansteigen (sich aufstauen), da die SQL-Datenbank-Engine nicht in der Lage ist, Arbeitsspeicher effizient zuzuteilen, um den Bedarf zu erfüllen. Der Arbeitsspeicherstau stellt eines der schwerwiegendsten Datenbankleistungsprobleme dar.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
@@ -119,9 +119,9 @@ Weitere Vorschläge zur Problembehandlung finden Sie unter [Memory Grants Medita
 
 Dieses Leistungsmuster deutet auf eine Verschlechterung der aktuellen Datenbankleistung hin, da im Vergleich zur Leistungsbaseline der letzten sieben Tage übermäßige Datenbanksperren festgestellt wurden. 
 
-In modernen Managementsystemen für relationale Datenbanken sind Sperren wesentlich für die Umsetzung von Multithreadsystemen. Bei diesen Systemen wird die Leistung maximiert, indem nach Möglichkeit mehrere gleichzeitige Workerprozesse und parallele Datenbanktransaktionen ausgeführt werden. Das Sperren bezieht sich in diesem Zusammenhang auf den integrierten Zugriffsmechanismus. Dabei kann nur ausschließlich eine Transaktion auf die benötigten Zeilen, Seiten, Tabellen und Dateien zugreifen, ohne in Konkurrenz zu anderen Transaktionen um Ressourcen zu treten. Wenn die Transaktion, die die Ressourcen für die Verwendung gesperrt hat, abgeschlossen ist, wird die Sperre für diese Ressourcen freigegeben. Daraufhin können andere Transaktionen auf die benötigen Ressourcen zugreifen. Weitere Informationen zu Sperren finden Sie unter [Sperren im Datenbankmodul](https://msdn.microsoft.com/library/ms190615.aspx).
+In modernen Managementsystemen für relationale Datenbanken sind Sperren wesentlich für die Umsetzung von Multithreadsystemen. Bei diesen Systemen wird die Leistung maximiert, indem nach Möglichkeit mehrere gleichzeitige Workerprozesse und parallele Datenbanktransaktionen ausgeführt werden. Das Sperren bezieht sich in diesem Zusammenhang auf den integrierten Zugriffsmechanismus. Dabei kann nur ausschließlich eine Transaktion auf die benötigten Zeilen, Seiten, Tabellen und Dateien zugreifen, ohne in Konkurrenz zu anderen Transaktionen um Ressourcen zu treten. Wenn die Transaktion, die die Ressourcen für die Verwendung gesperrt hat, abgeschlossen ist, wird die Sperre für diese Ressourcen freigegeben. Daraufhin können andere Transaktionen auf die benötigen Ressourcen zugreifen. Weitere Informationen zu Sperren finden Sie unter [Sperren in der Datenbank-Engine](https://msdn.microsoft.com/library/ms190615.aspx).
 
-Wenn Transaktionen, die vom SQL-Modul ausgeführt werden, längere Zeit auf den Zugriff auf Ressourcen warten, die gesperrt sind, wird die Ausführungszeit der Workload verlangsamt. 
+Wenn Transaktionen, die von der SQL-Engine ausgeführt werden, längere Zeit auf den Zugriff auf Ressourcen warten, die gesperrt sind, wird die Ausführungszeit der Workload verlangsamt. 
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
@@ -129,7 +129,7 @@ Das Diagnoseprotokoll gibt Details zu Sperren aus, die Sie als Grundlage für di
 
 Die einfachste und sicherste Möglichkeit, das Problem zu beseitigen, besteht darin, Transaktionen kurz zu halten und den Sperrumfang der aufwändigsten Abfragen zu verkleinern. Sie können eine große Anzahl von Vorgängen in kleinere Vorgänge aufteilen. Eine bewährte Methode zum Verringern des Umfangs von Abfragesperren ist, die Abfrage so effizient wie möglich zu gestalten. Reduzieren Sie umfangreiche Scanvorgänge, da sie die Wahrscheinlichkeit von Deadlocks erhöhen und sich negativ auf die allgemeine Datenbankleistung auswirken. Für ermittelte Abfragen, die Sperren verursachen, können Sie neue Indizes erstellen oder Spalten zum vorhandenen Index hinzufügen, um Tabellenscans zu vermeiden. 
 
-Weitere Vorschläge finden Sie unter [Behebung von Blockierungsproblemen, die durch eine Sperrenausweitung in SQL Server verursacht werden](https://support.microsoft.com/en-us/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
+Weitere Vorschläge finden Sie unter [Behebung von Blockierungsproblemen, die durch eine Sperrenausweitung in SQL Server verursacht werden](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
 
 ## <a name="increased-maxdop"></a>Erhöhter Wert für „Maximaler Grad an Parallelität“
 
@@ -289,7 +289,7 @@ Die Änderung der datenbankweit gültigen Konfiguration kann für jede einzelne 
 
 Das Diagnoseprotokoll gibt Änderungen an der datenbankweit gültigen Konfiguration aus, die vor Kurzem erfolgt sind und im Vergleich mit dem Workloadverhalten der vorherigen sieben Tage die Leistungsminderung verursacht haben. Sie können die Änderungen an der Konfiguration auf den vorherigen Wert zurücksetzen. Sie können auch die Werte einzeln optimieren, bis die gewünschte Leistungsstufe erreicht ist. Sie können auch Werte einer datenbankweit gültigen Konfiguration aus einer ähnlichen Datenbank mit zufriedenstellender Leistung kopieren. Wenn Sie die Leistungsprobleme nicht beheben können, setzen Sie SQL-Datenbank auf die Standardwerte zurück, und versuchen Sie eine Optimierung ausgehend von dieser Baseline.
 
-Weitere Informationen zum Optimieren der datenbankweit gültigen Konfiguration und zur T-SQL-Syntax zum Ändern der Konfiguration finden Sie unter [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](https://msdn.microsoft.com/en-us/library/mt629158.aspx).
+Weitere Informationen zum Optimieren der datenbankweit gültigen Konfiguration und zur T-SQL-Syntax zum Ändern der Konfiguration finden Sie unter [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 
 ## <a name="slow-client"></a>Langsamer Client
 

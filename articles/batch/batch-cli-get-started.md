@@ -15,17 +15,17 @@ ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11fad18c7b51625a29c58058aebd412cbf8cffdd
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e27d7f75dd3d0391f45805f4424248c8eac483c7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
 
 Azure CLI 2.0 ist die neue Befehlszeilenumgebung von Azure und dient zum Verwalten von Azure-Ressourcen. Sie kann unter macOS, Linux und Windows verwendet werden. Azure CLI 2.0 ist für die Verwaltung von Azure-Ressourcen über die Befehlszeile optimiert. Sie können die Azure CLI verwenden, um Ihre Azure Batch-Konten sowie Ressourcen wie Pools, Aufträge und Tasks zu verwalten. Mit der Azure CLI können Sie viele der Tasks per Skript ausführen, die Sie auch mit den Batch-APIs, dem Azure-Portal und den Batch PowerShell-Cmdlets durchführen.
 
-Dieser Artikel bietet eine Übersicht über die Verwendung der [Azure CLI, Version 2.0](https://docs.microsoft.com/cli/azure/overview) mit Batch. Eine Übersicht über die Verwendung der Befehlszeilenschnittstelle mit Azure finden Sie unter [Erste Schritte mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Dieser Artikel bietet eine Übersicht über die Verwendung der [Azure CLI, Version 2.0](https://docs.microsoft.com/cli/azure) mit Batch. Eine Übersicht über die Verwendung der Befehlszeilenschnittstelle mit Azure finden Sie unter [Erste Schritte mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
 Microsoft empfiehlt die neueste Version der Azure CLI: Version 2.0. Weitere Informationen zu Version 2.0 finden Sie unter [Azure Command Line 2.0 now generally available](https://azure.microsoft.com/blog/announcing-general-availability-of-vm-storage-and-network-azure-cli-2-0/) (Azure CLI 2.0 jetzt allgemein verfügbar).
 
@@ -69,7 +69,7 @@ Es gibt verschiedenen Möglichkeiten, sich bei Azure anzumelden. Diese werden de
 1. [Interaktiv anmelden](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_interactive_log_in). Melden Sie sich interaktiv an, wenn Sie Azure CLI-Befehle selbst an der Befehlszeile ausführen.
 2. [Anmelden mit einem Dienstprinzipal](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_logging_in_with_a_service_principal). Melden Sie sich mit einem Dienstprinzipal an, wenn Sie Azure CLI-Befehle über ein Skript oder aus einer Anwendung heraus ausführen.
 
-Im Rahmen dieses Artikels veranschaulichen wir die interaktive Anmeldung bei Azure. Geben Sie [az login](https://docs.microsoft.com/cli/azure/#az_login) an der Befehlszeile ein:
+Im Rahmen dieses Artikels veranschaulichen wir die interaktive Anmeldung bei Azure. Geben Sie [az login](https://docs.microsoft.com/cli/azure/reference-index#az_login) an der Befehlszeile ein:
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -178,7 +178,7 @@ Die folgenden Hinweise können beim Beheben von Problemen mit der Azure CLI helf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
+* Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
 * Weitere Informationen zu Batch-Ressourcen finden Sie in der [Übersicht über Azure Batch für Entwickler](batch-api-basics.md).
 * Weitere Informationen dazu, wie Sie mithilfe von Batch-Vorlagen Pools, Aufträge und Aufgaben ohne Programmieraufwand erstellen, finden Sie unter [Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung (Vorschau)](batch-cli-templates.md).
 

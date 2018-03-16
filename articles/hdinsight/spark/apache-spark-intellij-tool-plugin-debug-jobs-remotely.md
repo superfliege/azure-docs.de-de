@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: nitinme
 ms.openlocfilehash: 315a879368e522cc17eeff7be766f0c8a38d470b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Spark-Anwendungen über ein VPN
 
@@ -60,7 +60,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 2. Wählen Sie in der Ambari-Benutzeroberfläche die Option **Hosts** aus.
 
     ![Auswählen von „Hosts“ in Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-hosts.png)
-3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn**\*. Wählen Sie den ersten Hauptknoten aus.
+3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn***. Wählen Sie den ersten Hauptknoten aus.
 
     ![Suchen nach dem Hauptknoten in Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/cluster-headnodes.png)
 4. Kopieren Sie unten auf der angezeigten Seite im Bereich **Summary** (Zusammenfassung) die **IP-Adresse** des Hauptknotens und den **Hostnamen**.

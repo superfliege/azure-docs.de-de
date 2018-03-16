@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0639a2b7e71878103542d3e037040f8a7444976f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 095bfe328f3e3ed220de71b3410e34b9be86cff1
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>Ausführen von Anwendungen in Azure Container Service (AKS)
 
@@ -46,16 +46,10 @@ Rufen Sie den ACR-Anmeldeservernamen mit dem [az acr list][az-acr-list]-Befehl a
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Die Manifestdatei wurde vorab mit dem Serveranmeldenamen `microsoft` erstellt. Öffnen Sie die Datei mit einem Text-Editor. In diesem Beispiel wird die Datei mit `vi` geöffnet.
+Die Manifestdatei wurde vorab mit dem Serveranmeldenamen `microsoft` erstellt. Öffnen Sie die Datei mit einem Text-Editor. In diesem Beispiel wird die Datei mit `nano` geöffnet.
 
 ```console
-vi azure-vote-all-in-one-redis.yaml
-```
-
-In Windows können Sie alternativ Visual Studio Code verwenden.
-
-```console
-code azure-vote-all-in-one-redis.yaml
+nano azure-vote-all-in-one-redis.yaml
 ```
 
 Ersetzen Sie `microsoft` durch den ACR-Anmeldeservernamen. Dieser Wert befindet sich in Zeile **47** der Manifestdatei.

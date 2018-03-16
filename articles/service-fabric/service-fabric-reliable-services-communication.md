@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 209e657678b7f300f13fc16181a14d8ef422466d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 204280c8b81e5f751f3f0b609e04aba0a1cec381
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Gewusst wie: Verwenden der Reliable Services-Kommunikations-APIs
 Azure Service Fabric ist als Plattform vollständig unabhängig von der Kommunikation zwischen Diensten. Alle Protokolle und Stapel von UDP bis HTTP sind zulässig. Es liegt in der Entscheidung des Entwicklers, wie Dienste kommunizieren sollen. Das Reliable Services-Anwendungsframework stellt integrierte Kommunikationsstapel und APIs bereit, die Sie zum Erstellen Ihrer benutzerdefinierten Kommunikationskomponenten verwenden können.
@@ -76,10 +76,13 @@ public class MyStatelessService extends StatelessService {
 
 Zustandsbehaftete Dienste:
 
-> [!NOTE]
-> Zustandsbehaftete Reliable Services werden in Java noch nicht unterstützt.
->
->
+```java
+    @Override
+    protected List<ServiceReplicaListener> createServiceReplicaListeners() {
+        ...
+    }
+    ...
+```
 
 ```csharp
 class MyStatefulService : StatefulService
@@ -212,7 +215,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Für die Verbindung mit Diensten in unterschiedlichen Clustern kann ServicePartitionResolver mit einer Gruppe von Clustergatewayendpunkten erstellt werden. Dabei sind die Gatewayendpunkte lediglich verschiedene Endpunkte für die Verbindung mit dem gleichen Cluster. Beispiel:
+Für die Verbindung mit Diensten in unterschiedlichen Clustern kann ServicePartitionResolver mit einer Gruppe von Clustergatewayendpunkten erstellt werden. Dabei sind die Gatewayendpunkte lediglich verschiedene Endpunkte für die Verbindung mit dem gleichen Cluster. Beispiel: 
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");

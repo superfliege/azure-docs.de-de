@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: ae266b0fc78083250c5d14ff2978cd59d394b202
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 631557e0ad712827bb3375c4f152c0e2185fda18
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informationen zu nicht unterstützten Verteilungen
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -150,8 +150,6 @@ Der [Azure Linux-Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-ma
 * Ändern Sie die Kernel-Boot-Zeile in Grub oder Grub2, um die folgenden Parameter einzubinden. Dadurch wird zudem sichergestellt, dass alle Konsolennachrichten zum ersten seriellen Port gesendet werden. Dieser kann Azure bei der Behebung von Fehlern unterstützen:
   
         console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
-  
-    Dadurch wird zudem sichergestellt, dass alle Konsolennachrichten zum ersten seriellen Port gesendet werden. Dieser kann Azure bei der Behebung von Fehlern unterstützen.
   
     Neben den oben erwähnten Punkten wird es empfohlen, die folgenden Parameter zu *entfernen* , sofern sie vorhanden sind:
   

@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5bea41999f59fe8be7ae0a0bd5b726527beeddd5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 8cdfd80f436a9ef39426da9d3f2f76ae59677847
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="assign-a-user-assigned-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Zuweisen des Zugriffs auf eine Ressource mit einer vom Benutzer zugewiesenen MSI (Managed Service Identity, verwaltete Dienstidentität) mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -33,7 +33,7 @@ Nachdem Sie eine vom Benutzer zugewiesene MSI erstellt haben, können Sie der MS
 Für die Ausführung der CLI-Beispielskripts in diesem Tutorial stehen Ihnen zwei Möglichkeiten zur Verfügung:
 
 - Verwenden Sie [Azure Cloud Shell](~/articles/cloud-shell/overview.md) entweder vom Azure-Portal aus oder über die Schaltfläche „Ausprobieren“, die sich in der oberen rechten Ecke eines jeden Codeblocks befindet.
-- [Installieren Sie die neueste Version von CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. Melden Sie sich dann mit [az login](/cli/azure/#az_login) bei Azure an. Verwenden Sie ein Konto, das mit dem Azure-Abonnement verknüpft ist, unter dem Sie die vom Benutzer zugewiesene MSI und VM bereitstellen möchten:
+- [Installieren Sie die neueste Version von CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. Melden Sie sich dann mit [az login](/cli/azure/reference-index#az_login) bei Azure an. Verwenden Sie ein Konto, das mit dem Azure-Abonnement verknüpft ist, unter dem Sie die vom Benutzer zugewiesene MSI und VM bereitstellen möchten:
 
    ```azurecli
    az login

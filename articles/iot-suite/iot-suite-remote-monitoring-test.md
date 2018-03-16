@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 9f51c35be09af6f3a8dde7061dcf57a9c4cc9fdb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 563a5a1c177b1f18be18d9b3cc9f3f9a7ee8ae4a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-new-simulated-device"></a>Erstellen eines neuen simulierten Geräts
 
@@ -104,7 +104,7 @@ Führen Sie die folgenden Aufgaben durch, um Ihre Entwicklungsumgebung für das 
 
 Wählen Sie beim Erstellen Ihrer Lösung für die Remoteüberwachung unter [www.azureiotsuite.com](https://www.azureiotsuite.com) einen Lösungsnamen. Der Lösungsname dient als Name für die Azure-Ressourcengruppe, die die verschiedenen von der Lösung verwendeten bereitgestellten Ressourcen enthält. Die folgenden Befehle verwenden eine Ressourcengruppe mit dem Namen **Contoso-01**. Ersetzen Sie **Contoso-01** durch den Namen Ihrer Ressourcengruppe.
 
-Die folgenden Befehle verwenden den Befehl `az` von der [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Sie können die Azure CLI 2.0 auf Ihrem Entwicklungscomputer installieren oder [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) im [Azure-Portal](http://portal.azure.com) verwenden. Die Azure CLI 2.0 ist in Cloud Shell vorinstalliert.
+Die folgenden Befehle verwenden den Befehl `az` von der [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Sie können die Azure CLI 2.0 auf Ihrem Entwicklungscomputer installieren oder [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) im [Azure-Portal](http://portal.azure.com) verwenden. Die Azure CLI 2.0 ist in Cloud Shell vorinstalliert.
 
 1. Um den Namen der Ressourcengruppe zu überprüfen, die Remoteüberwachungsressourcen enthält, führen Sie den folgenden Befehl aus:
 

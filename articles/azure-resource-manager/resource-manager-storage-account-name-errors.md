@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc045827fbd38054a334ff22eb30e0db6a31bac8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c266e1073722733ec8b7353c6fdddc3ae341ab20
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>Beheben von Fehlern bei Speicherkontonamen
 
@@ -48,16 +48,12 @@ Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Z
 
 ## <a name="solution"></a>Lösung
 
-### <a name="solution-1"></a>Lösung 1
-
 Stellen Sie sicher, dass der Name des Speicherkontos eindeutig ist. Sie können einen eindeutigen Namen erstellen, indem Sie Ihre Benennungskonvention mit dem Ergebnis der [uniqueString](resource-group-template-functions-string.md#uniquestring) -Funktion verketten.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
-
-### <a name="solution-2"></a>Lösung 2
 
 Stellen Sie sicher, dass der Name des Speicherkontos maximal 24 Zeichen lang ist. Die Funktion [uniqueString](resource-group-template-functions-string.md#uniquestring) gibt 13 Zeichen zurück. Wenn Sie ein Präfix oder Postfix mit dem Ergebnis von **uniqueString** (eindeutige Zeichenfolge) verknüpfen, sollte der Wert maximal 11 Zeichen lang sein.
 
@@ -73,7 +69,5 @@ Stellen Sie sicher, dass der Name des Speicherkontos maximal 24 Zeichen lang ist
     }
 }
 ```
-
-### <a name="solution-3"></a>Lösung 3
 
 Stellen Sie sicher, dass der Name des Speicherkontos keine Großbuchstaben oder Sonderzeichen enthält.

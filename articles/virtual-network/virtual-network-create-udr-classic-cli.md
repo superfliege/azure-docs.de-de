@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 8fcb98723e7e872c932908e3456dc8680deb0901
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6bfdfcdde39d64d662bb6d2ea55fadca24d49091
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Steuern des Routings und Verwenden virtueller Geräte (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
 
 > [!div class="op_single_selector"]
-> * [PowerShell](virtual-network-create-udr-arm-ps.md)
-> * [Azure-Befehlszeilenschnittstelle](virtual-network-create-udr-arm-cli.md)
+> * [PowerShell](tutorial-create-route-table-powershell.md)
+> * [Azure-CLI](tutorial-create-route-table-cli.md)
 > * [Vorlage](virtual-network-create-udr-arm-template.md)
 > * [PowerShell (klassisch)](virtual-network-create-udr-classic-ps.md)
 > * [CLI (klassisch)](virtual-network-create-udr-classic-cli.md)
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/21/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Dieser Artikel gilt für das klassische Bereitstellungsmodell. Sie können auch [im Ressourcen-Manager-Bereitstellungsmodell das Routing steuern und virtuelle Geräte verwenden](virtual-network-create-udr-arm-cli.md).
+Dieser Artikel gilt für das klassische Bereitstellungsmodell. Sie können auch [im Ressourcen-Manager-Bereitstellungsmodell das Routing steuern und virtuelle Geräte verwenden](tutorial-create-route-table-cli.md).
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
@@ -132,7 +132,7 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz e
     azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
     ```
 
-3. Führen Sie den folgenden Befehl aus, um die oben erstellte Routingtabelle dem Subnetz **BackEnd** zuzuordnen:
+3. Führen Sie den Befehl aus, um die oben erstellte Routingtabelle dem Subnetz **BackEnd** zuzuordnen:
 
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd

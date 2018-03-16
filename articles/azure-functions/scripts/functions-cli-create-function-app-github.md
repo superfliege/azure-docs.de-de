@@ -9,11 +9,11 @@ ms.date: 04/27/2017
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: 382fbe8919a031ca29a32e708b12070c584ed21f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f013303cb99cc549cb0a8d72e2e9c60209008c67
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>Erstellen einer Funktionen-App und Bereitstellen von Funktionscode über GitHub
 
@@ -48,6 +48,6 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
 
 Weitere Azure Functions-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Functions](../functions-cli-samples.md).

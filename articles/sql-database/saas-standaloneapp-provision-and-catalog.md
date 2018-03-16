@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: billgib
-ms.openlocfilehash: a13eeb79320360da078ee19a61cc32a2e1f35354
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: dd43ede94d6f219f3b551091fc6e4b59f56386d1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Bereitstellen und Katalogisieren neuer Mandanten mithilfe des SaaS-Musters für eine Anwendung pro Mandant
 
@@ -31,7 +31,7 @@ Dieser Artikel setzt sich aus zwei Hauptteilen zusammen:
     * Im Tutorial wird die SaaS-Beispielanwendung Wingtip Tickets verwendet, die an das Muster für eine eigenständige Anwendung pro Mandant angepasst ist.
 
 ## <a name="standalone-application-per-tenant-pattern"></a>Muster für eine eigenständige Anwendung pro Mandant
-Das Muster für eine eigenständige Anwendung pro Mandant ist eines von mehreren Mustern für mehrinstanzenfähige SaaS-Anwendungen.  Bei diesem Muster wird für jeden Mandanten eine eigenständige Anwendung bereitgestellt. Die Anwendung besteht aus Komponenten auf Anwendungsebene und einer SQL-Datenbank.  Jede Mandantenanwendung kann im Abonnement des Anbieters bereitgestellt werden.  Alternativ bietet Azure ein [Programm für verwaltete Anwendungen](https://docs.microsoft.com/en-us/azure/managed-applications/overview), in dem eine Anwendung im Abonnement eines Mandanten bereitgestellt und vom Anbieter im Auftrag des Mandanten verwaltet werden kann. 
+Das Muster für eine eigenständige Anwendung pro Mandant ist eines von mehreren Mustern für mehrinstanzenfähige SaaS-Anwendungen.  Bei diesem Muster wird für jeden Mandanten eine eigenständige Anwendung bereitgestellt. Die Anwendung besteht aus Komponenten auf Anwendungsebene und einer SQL-Datenbank.  Jede Mandantenanwendung kann im Abonnement des Anbieters bereitgestellt werden.  Alternativ bietet Azure ein [Programm für verwaltete Anwendungen](https://docs.microsoft.com/azure/managed-applications/overview), in dem eine Anwendung im Abonnement eines Mandanten bereitgestellt und vom Anbieter im Auftrag des Mandanten verwaltet werden kann. 
 
    ![Muster für eine Anwendung pro Mandant](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -45,7 +45,7 @@ Obwohl die Anwendung und die Datenbank jedes Mandanten vollständig isoliert sin
 Der Mandantenkatalog enthält eine Zuordnung zwischen einer Mandanten-ID und einer Mandantendatenbank, sodass eine ID in einen Server- und Datenbanknamen aufgelöst werden kann.  In der Wingtip-SaaS-App wird die Mandanten-ID als Hash des Mandantennamens berechnet, doch können auch andere Schemas verwendet werden.  Zwar benötigen eigenständige Anwendungen den Katalog nicht zum Verwalten von Verbindungen, doch kann er verwendet werden, um andere Aktionen auf eine Gruppe von Mandantendatenbanken zu begrenzen. Beispielsweise kann eine elastische Abfrage den Katalog verwenden, um die Gruppe von Datenbanken zu bestimmen, auf die Abfragen für mandantenübergreifende Berichte verteilt werden.
 
 ## <a name="elastic-database-client-library"></a>Clientbibliothek für elastische Datenbanken
-In der Wingtip-Beispielanwendung wird der Katalog durch die Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-database-client-library) implementiert.  Die Bibliothek ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer Shardzuordnung, die in einer Datenbank gespeichert wird. Im Wingtip Tickets-Beispiel wird der Katalog in der Datenbank *Mandantenkatalog* gespeichert.  Der Shard ordnet einen Mandantenschlüssel dem Shard (Datenbank) zu, in dem die Daten dieses Mandanten gespeichert werden.  EDCL-Funktionen verwalten eine *globale Shardzuordnung*, die in Tabellen in der Datenbank *Mandantenkatalog* gespeichert ist, und eine *lokale Shardzuordnung*, die in jedem Shard gespeichert ist.
+In der Wingtip-Beispielanwendung wird der Katalog durch die Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) implementiert.  Die Bibliothek ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer Shardzuordnung, die in einer Datenbank gespeichert wird. Im Wingtip Tickets-Beispiel wird der Katalog in der Datenbank *Mandantenkatalog* gespeichert.  Der Shard ordnet einen Mandantenschlüssel dem Shard (Datenbank) zu, in dem die Daten dieses Mandanten gespeichert werden.  EDCL-Funktionen verwalten eine *globale Shardzuordnung*, die in Tabellen in der Datenbank *Mandantenkatalog* gespeichert ist, und eine *lokale Shardzuordnung*, die in jedem Shard gespeichert ist.
 
 EDCL-Funktionen können aus Anwendungen oder PowerShell-Skripts aufgerufen werden, um Einträge in der Shardzuordnung zu erstellen und zu verwalten. Andere EDCL-Funktionen können zum Abrufen der Gruppe von Shards oder zum Herstellen einer Verbindung mit der richtigen Datenbank für den angegebenen Mandantenschlüssel verwendet werden. 
     
@@ -69,7 +69,7 @@ Am Ende dieses Tutorials verfügen Sie über eine Reihe eigenständiger Mandante
 ## <a name="prerequisites"></a>Voraussetzungen
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind: 
 * Azure PowerShell ist installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Die drei Beispielmandantenanwendungen sind bereitgestellt. Informationen zum Bereitstellen dieser Anwendungen in weniger als fünf Minuten finden Sie unter [Bereitstellen und Untersuchen des Musters der eigenständigen SaaS-Anwendung Wingtip Tickets](https://docs.microsoft.com/en-us/azure/sql-database/saas-standaloneapp-get-started-deploy).
+* Die drei Beispielmandantenanwendungen sind bereitgestellt. Informationen zum Bereitstellen dieser Anwendungen in weniger als fünf Minuten finden Sie unter [Bereitstellen und Untersuchen des Musters der eigenständigen SaaS-Anwendung Wingtip Tickets](https://docs.microsoft.com/azure/sql-database/saas-standaloneapp-get-started-deploy).
 
 ## <a name="provision-the-catalog"></a>Bereitstellen des Katalogs
 In dieser Aufgabe erfahren Sie, wie Sie den Katalog bereitstellen, der zum Registrieren aller Mandantendatenbanken verwendet wird. In diesem Tutorial führen Sie folgende Schritte aus: 
@@ -149,4 +149,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Informationen zu Servern und Datenbanken, aus denen sich die App zusammensetzt
 > * Löschen von Beispielressourcen, um die zugehörige Abrechnung einzustellen
 
-Sie können untersuchen, wie der Katalog verwendet wird, um verschiedene mandantenübergreifende Szenarien mithilfe der Version für eine Datenbank pro Mandant der [Wingtip Tickets SaaS-Anwendung](https://docs.microsoft.com/en-us/azure/sql-database/saas-dbpertenant-wingtip-app-overview) zu unterstützen.  
+Sie können untersuchen, wie der Katalog verwendet wird, um verschiedene mandantenübergreifende Szenarien mithilfe der Version für eine Datenbank pro Mandant der [Wingtip Tickets SaaS-Anwendung](https://docs.microsoft.com/azure/sql-database/saas-dbpertenant-wingtip-app-overview) zu unterstützen.  

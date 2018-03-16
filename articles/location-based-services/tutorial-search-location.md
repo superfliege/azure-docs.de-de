@@ -3,8 +3,8 @@ title: Suchen mit Azure Location Based Services | Microsoft-Dokumentation
 description: "Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services"
 services: location-based-services
 keywords: 
-author: dsk-2015
-ms.author: dkshir
+author: kgremban
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: tutorial
 ms.service: location-based-services
@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 791992028d11633fc20f55ae1a34e7fcd442bf3a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f03cdd5491868b78de0514bb66184235dd7df5c2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="search-nearby-points-of-interest-using-azure-location-based-services"></a>Suchen nach Points of Interest in der Nähe mit Azure Location Based Services
 
@@ -248,4 +248,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
 > * Suchen eines Point of Interest in der Nähe mithilfe des Suchdiensts
 
-Fahren Sie mit dem Tutorial [Route zu einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-route-location.md) fort, um zu erfahren, wie Sie mit Azure Location Based Services eine Route zum Point of Interest ermitteln. 
+Fahren Sie mit dem Tutorial [Route to a point of interest using Azure Location Based Services](./tutorial-route-location.md) fort, um zu erfahren, wie Sie mit Azure Location Based Services eine Route zum Point of Interest ermitteln. 

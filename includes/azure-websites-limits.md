@@ -1,4 +1,4 @@
-| Ressource | Kostenlos | Shared (Vorschau) | Basic | Standard | Premium (Vorschau)</th> |
+| Ressource | Kostenlos | Shared (Vorschau) | Basic | Standard | Premium </th> |
 | --- | --- | --- | --- | --- | --- |
 | [Web-Apps, mobile Apps oder API-Apps](https://azure.microsoft.com/services/app-service/) pro [App Service-Plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |
 | [Logik-Apps](https://azure.microsoft.com/services/app-service/logic/) pro [App Service-Plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)</a><sup>1</sup> |10 |10 |10 |20 pro Kern |20 pro Kern |

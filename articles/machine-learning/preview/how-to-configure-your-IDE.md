@@ -5,16 +5,16 @@ services: machine-learning
 author: svankam
 ms.author: svankam
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: caafc626d42ea3f1514c36be04507adf31bbc5c9
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8a4bb8d825f89b08e9b7514d67ae2d2512cceec9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-configure-azure-machine-learning-workbench-to-work-with-an-ide"></a>Konfigurieren von Azure Machine Learning Workbench zum Arbeiten mit einer IDE 
 
@@ -41,7 +41,7 @@ Azure Machine Learning Workbench kann zum Arbeiten mit beliebten Python-IDEs (In
 * macOS – wählen Sie den .app-Pfad, z.B. „/Applications/PyCharm CE.app“, und die App fügt den Rest des Pfads für Sie an. Der vollständige Pfad zur ausführbaren Datei ist standardmäßig `/Applications/PyCharm CE.app/Contents/MacOS/pycharm`. Möglicherweise finden Sie PyCharm auch im bin-Ordner, `/usr/local/bin/charm`.
 
 ## <a name="open-project-in-ide"></a>Öffnen des Projekts in der IDE 
-Sobald die Konfiguration abgeschlossen ist, können Sie ein Azure Machine Learning-Projekt öffnen. Öffnen Sie dazu in Azure Machine Learning Workbench das Menü **File**, und klicken Sie dann auf **Open Project (<IDE-Name>)**. Diese Aktion öffnet das aktuell aktive Projekt in der konfigurierten IDE. _Hinweis: Wenn Sie sich nicht in einem Projekt befinden, ist **Open Project (<IDE-Name>)** deaktiviert._
+Sobald die Konfiguration abgeschlossen ist, können Sie ein Azure Machine Learning-Projekt öffnen. Öffnen Sie dazu in Azure Machine Learning Workbench das Menü **File**, und klicken Sie dann auf **Open Project (<IDE-Name>)**. Diese Aktion öffnet das aktuell aktive Projekt in der konfigurierten IDE.  _Hinweis: Wenn Sie sich nicht in einem Projekt befinden, ist **Open Project (<IDE-Name>)** deaktiviert._
 
 ## <a name="configuring-the-integrated-terminal-in-visual-studio-code"></a>Konfigurieren des integrierten Terminals in Visual Studio Code
 

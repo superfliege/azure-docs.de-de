@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: bwren
 ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.
@@ -59,11 +59,9 @@ Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einz
 
 1. Klicken Sie auf **Durchsuchen**, und navigieren Sie zu einer Beispieldatei.  Hinweis: Bei manchen Browsern ist diese Schaltfläche unter Umständen mit **Datei auswählen** beschriftet.
 2. Klicken Sie auf **Weiter**.
-
 3. Der Assistent für benutzerdefinierte Protokolle lädt die Datei hoch und führt die ermittelten Datensätze auf.
 4. Ändern Sie das Trennzeichen, das zur Identifizierung eines neuen Datensatzes verwendet wird, und wählen Sie das Trennzeichen aus, das für die Einträge in Ihrer Protokolldatei am besten geeignet ist.
 5. Klicken Sie auf **Weiter**.
-
 
 ### <a name="step-3-add-log-collection-paths"></a>Schritt 3: Hinzufügen von Protokollsammlungspfaden
 Definieren Sie für den Agent mindestens einen Pfad, an dem sich das benutzerdefinierte Protokoll befindet.  Sie können entweder einen bestimmten Pfad und Namen für die Protokolldatei angeben oder einen Pfad mit einem Platzhalter für den Namen verwenden.  Dadurch werden Anwendungen unterstützt, die täglich oder bei Erreichen einer bestimmten Dateigröße eine neue Datei erstellen.  Sie können auch mehrere Pfade für eine einzelne Protokolldatei angeben.

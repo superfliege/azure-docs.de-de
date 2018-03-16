@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/07/2018
+ms.date: 03/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b45d1287444d200727550a81ce72a19a417fe510
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: dc7ead9e7d55d1b22118774e98c741991e8af2d9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>Ausführen eines Failovers und Failbacks von Azure-VMs zwischen Azure-Regionen (Vorschau)
 
@@ -30,7 +30,7 @@ In diesem Tutorial wird beschrieben, wie für eine einzelne Azure-VM ein Failove
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Führen Sie unbedingt ein [Notfallwiederherstellungsverfahren](azure-to-azure-tutorial-dr-drill.md) durch, um zu überprüfen, ob alles wie erwartet funktioniert.
-- Überprüfen Sie die VM-Eigenschaften, bevor Sie das Testfailover ausführen. Die VM muss den [Azure-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) entsprechen.
+- Überprüfen Sie die VM-Eigenschaften, bevor Sie das Testfailover ausführen. Die VM muss den [Azure-Anforderungen](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions) entsprechen.
 
 ## <a name="run-a-failover-to-the-secondary-region"></a>Ausführen eines Failovers zur sekundären Region
 

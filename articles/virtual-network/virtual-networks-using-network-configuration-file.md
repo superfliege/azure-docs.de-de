@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f1e3ae26b6525f2235a6b0d53546b334dc027b94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1bb75b8bd1d525f3104fb517cb4a09b2e33caaca
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurieren eines virtuellen Netzwerks (klassisch) mithilfe einer Netzwerkkonfigurationsdatei
 > [!IMPORTANT]
@@ -56,7 +56,7 @@ Sie können PowerShell oder die Azure CLI verwenden, um eine Netzwerkkonfigurati
 
 ## <a name="create-or-modify-a-network-configuration-file"></a>Erstellen oder Ändern einer Netzwerkkonfigurationsdatei
 
-Bei der Netzwerkkonfigurationsdatei handelt es sich um eine XML-Datei (bei Verwendung von PowerShell) oder eine JSON-Datei (bei Verwendung der Azure CLI). Sie können die Datei in einem beliebigen Text- oder XML/JSON-Editor bearbeiten. Im Artikel [Azure Virtual Network Configuration Schema (Konfigurationsschema von Azure Virtual Network)](https://msdn.microsoft.com/library/azure/jj157100.aspx) finden Sie weitere Informationen für alle Einstellungen. Weitere Erläuterungen der Einstellungen finden Sie unter [Anzeigen von virtuellen Netzwerken und Einstellungen](virtual-network-manage-network.md#view-vnet). Die Änderungen, die Sie an der Datei vornehmen:
+Bei der Netzwerkkonfigurationsdatei handelt es sich um eine XML-Datei (bei Verwendung von PowerShell) oder eine JSON-Datei (bei Verwendung der Azure CLI). Sie können die Datei in einem beliebigen Text- oder XML/JSON-Editor bearbeiten. Im Artikel [Azure Virtual Network Configuration Schema (Konfigurationsschema von Azure Virtual Network)](https://msdn.microsoft.com/library/azure/jj157100.aspx) finden Sie weitere Informationen für alle Einstellungen. Weitere Erläuterungen der Einstellungen finden Sie unter [Anzeigen von virtuellen Netzwerken und Einstellungen](manage-virtual-network.md#view-virtual-networks-and-settings). Die Änderungen, die Sie an der Datei vornehmen:
 
 - müssen dem Schema entsprechen, oder es tritt ein Fehler beim Import der Netzwerkkonfigurationsdatei auf.
 - überschreiben alle vorhandenen Netzwerkeinstellungen für Ihr Abonnement, weshalb Sie beim Vornehmen von Änderungen sehr vorsichtig sein sollten. Verweisen Sie beispielsweise auf die folgenden Netzwerkkonfigurationsdateien. Angenommen, die ursprüngliche Datei enthielt zwei **VirtualNetworkSite**-Instanzen, und Sie haben diese geändert, wie in den Beispielen gezeigt. Wenn Sie die Datei importieren, löscht Azure das virtuelle Netzwerk für die **VirtualNetworkSite**-Instanz, die Sie in der Datei entfernt haben. Bei diesem vereinfachten Szenario wird davon ausgegangen, dass sich keine Ressourcen im virtuellen Netzwerk befanden. Wäre dies der Fall gewesen, hätte das virtuelle Netzwerk nicht gelöscht werden können, und es wäre ein Fehler beim Import aufgetreten.

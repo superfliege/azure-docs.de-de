@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/22/2017
 ms.author: raynew
 ms.openlocfilehash: 3b10765894501791004e3a9221363f196cc0c91d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Verfeinern einer Gruppe per Mapping von Gruppenabhängigkeiten
 
@@ -39,7 +39,6 @@ Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren
 3. Behalten Sie unter **Zielordner** den Standardinstallationsordner bei, oder ändern Sie ihn, und klicken Sie anschließend auf **Weiter**. 
 4. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics (OMS)** > **Weiter**. 
 5. Klicken Sie auf **Hinzufügen**, um einen neuen OMS-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
-
 
 
 Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren:

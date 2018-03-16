@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: e07b868883b0154ad38ba2f7f51dd2db663525a0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Verwenden von Azure Site Recovery zum Schützen von Active Directory und DNS
 
@@ -73,7 +73,7 @@ Um Auswirkungen auf Produktionsworkloads zu vermeiden, erfolgt das Testfailover 
 
 Bei den meisten Anwendungen muss ein Domänencontroller oder ein DNS-Server vorhanden sein. Bevor ein Failover für die Anwendung erfolgt, müssen Sie darum einen Domänencontroller im isolierten Netzwerk erstellen, der für das Testfailover verwendet werden soll. Die einfachste Möglichkeit hierzu besteht darin, mit Site Recovery eine VM zu replizieren, die einen Domänencontroller bzw. ein DNS hostet. Führen Sie dann ein Testfailover des virtuellen Domänencontrollercomputers aus, bevor Sie ein Testfailover des Wiederherstellungsplans für die Anwendung ausführen. Gehen Sie hierzu wie folgt vor:
 
-1. [Replizieren](site-recovery-replicate-vmware-to-azure.md) Sie mit Site Recovery den virtuellen Computer, der den Domänencontroller oder das DNS hostet.
+1. [Replizieren](vmware-azure-tutorial.md) Sie mit Site Recovery den virtuellen Computer, der den Domänencontroller oder das DNS hostet.
 2. Erstellen Sie ein isoliertes Netzwerk. Jedes in Azure erstellte virtuelle Netzwerk ist standardmäßig von anderen Netzwerken isoliert. Sie sollten denselben IP-Adressbereich für dieses Netzwerk verwenden, den Sie in Ihrem Produktionsnetzwerk verwenden. Aktivieren Sie nicht die Standort-zu-Standort-Konnektivität in diesem Netzwerk.
 3. Geben Sie eine DNS-IP-Adresse im isolierten Netzwerk an. Verwenden Sie die IP-Adresse, die der virtuelle DNS-Computer abrufen soll. Wenn Sie in Azure replizieren, geben Sie die IP-Adresse für den virtuellen Computer an, der bei einem Failover verwendet wird. Um die IP-Adresse einzugeben, wählen Sie im replizierten virtuellen Computer in den Einstellungen für **Compute und Netzwerk** die **Ziel-IP-** Einstellungen.
 

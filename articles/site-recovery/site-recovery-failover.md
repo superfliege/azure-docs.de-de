@@ -2,23 +2,17 @@
 title: Failover in Site Recovery | Microsoft Docs
 description: "Azure Site Recovery koordiniert Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server. Informieren Sie sich über das Failover zu Azure oder zu einem sekundären Rechenzentrum."
 services: site-recovery
-documentationcenter: 
-author: prateek9us
-manager: gauravd
-editor: 
-ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 09/25/2017
-ms.author: pratshar
-ms.openlocfilehash: afdab6e5ee5ae3bb8bc553afd93ff8f1ee18147f
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 03/09/2018
+ms.author: ponatara
+ms.openlocfilehash: f7a60cd82508629ad3cf46882564aa68995ba3e6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="failover-in-site-recovery"></a>Failover in Site Recovery
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer und physische Server, die per Site Recovery geschützt werden, ein Failover durchführen.
@@ -96,18 +90,18 @@ Die Auslösung eines Failovers ist mit den folgenden Schritten verbunden:
 In bestimmten Fällen erfordert das Failover virtueller Computer einen zusätzliche Zwischenschritt, der in der Regel ca. 8 bis 10 Minuten dauert. In den folgenden Fällen dauert die Zeit für den Failover länger als normal:
 
 * VMware-VMs mit Mobility Service-Version niedriger als 9.8
-* Physische Server 
+* Physische Server
 * VMware-Linux-VMs
 * Als physische Server geschützte Hyper-V-VMs
-* VMware-VMs, bei denen die folgenden Treiber nicht als Starttreiber vorhanden sind 
-    * storvsc 
-    * vmbus 
-    * storflt 
-    * intelide 
+* VMware-VMs, bei denen die folgenden Treiber nicht als Starttreiber vorhanden sind
+    * storvsc
+    * vmbus
+    * storflt
+    * intelide
     * atapi
 * VMware-VMs, bei denen der DHCP-Dienst nicht aktiviert ist, unabhängig davon, ob DHCP oder statischen IP-Adressen verwendet werden
 
-In allen anderen Fällen ist dieser Zwischenschritt nicht erforderlich und der Zeitaufwand für das Failover niedriger. 
+In allen anderen Fällen ist dieser Zwischenschritt nicht erforderlich und der Zeitaufwand für das Failover niedriger.
 
 
 
@@ -118,7 +112,7 @@ Es kann ratsam sein, bei einem Failover bestimmte Aktionen zu automatisieren. Hi
 
 ## <a name="post-failover-considerations"></a>Überlegungen nach dem Failover
 Orientieren Sie sich nach einem Failover an den folgenden Empfehlungen:
-### <a name="retaining-drive-letter-after-failover"></a>Beibehalten von Laufwerkbuchstaben nach einem Failover 
+### <a name="retaining-drive-letter-after-failover"></a>Beibehalten von Laufwerkbuchstaben nach einem Failover
 Wenn Sie nach dem Failover den Laufwerkbuchstaben des virtuellen Computers beibehalten möchten, können Sie die **SAN-Richtlinie** für den virtuellen Computer auf **OnlineAll** festlegen. [Weitere Informationen](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure)
 
 
@@ -126,8 +120,8 @@ Wenn Sie nach dem Failover den Laufwerkbuchstaben des virtuellen Computers beibe
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!WARNING]
-> Nachdem Sie das Failover für virtuelle Computer durchgeführt haben und das lokale Rechenzentrum verfügbar ist, sollten Sie virtuelle VMware-Computer im lokalen Rechenzentrum [**erneut schützen**](site-recovery-how-to-reprotect.md).
+> Nachdem Sie das Failover für virtuelle Computer durchgeführt haben und das lokale Rechenzentrum verfügbar ist, sollten Sie virtuelle VMware-Computer im lokalen Rechenzentrum [**erneut schützen**](vmware-azure-reprotect.md).
 
-Verwenden Sie die Option [**Geplantes Failover**](site-recovery-failback-from-azure-to-hyper-v.md), um für virtuelle Hyper-V-Computer ein **Failback** von Azure zum lokalen Standort durchzuführen.
+Verwenden Sie die Option [**Geplantes Failover**](hyper-v-azure-failback.md), um für virtuelle Hyper-V-Computer ein **Failback** von Azure zum lokalen Standort durchzuführen.
 
 Wenn Sie für einen virtuellen Hyper-V-Computer ein Failover in ein anderes lokales Datencenter durchgeführt haben, das von einem VMM-Server verwaltet wird, und das primäre Datencenter verfügbar ist, können Sie die Option **Umgekehrt replizieren** verwenden, um die Replikation zurück in das primäre Datencenter zu starten.

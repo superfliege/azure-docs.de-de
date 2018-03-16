@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: d3ce4d5c6766c41fe32164ebfe623ea8c06b58f9
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: e477ce9a5f9f35d88a6faeb68ee4e0403f64c030
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-network-security-overview"></a>Die Netzwerksicherheit in Azure im Überblick
 Microsoft Azure verfügt über eine robuste Netzwerkinfrastruktur zur Unterstützung der Konnektivitätsanforderungen Ihrer Anwendungen und Dienste. Netzwerkkonnektivität ist zwischen Ressourcen in Azure, zwischen lokalen und in Azure gehosteten Ressourcen und zu und aus dem Internet und Azure möglich.
@@ -218,7 +218,7 @@ Für die interne Namensauflösung stehen Ihnen zwei Optionen zur Verfügung:
 Weitere Informationen:
 
 * [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md)
-* [Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (VNet) verwendet werden](../virtual-network/virtual-network-manage-network.md#dns-servers)
+* [Verwalten von DNS-Servern, die von einem virtuellen Netzwerk (VNet) verwendet werden](../virtual-network/manage-virtual-network.md#change-dns-servers)
 
 Für die externe DNS-Auflösung stehen Ihnen zwei Optionen zur Verfügung:
 

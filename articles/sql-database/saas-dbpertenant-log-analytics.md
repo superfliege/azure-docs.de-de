@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 90510520e5f6bbfa8aea4026d7437a4a4881984f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7747092d5613a40fa0aff09cfbdfb9b786b37954
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics (OMS) mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank
 
@@ -132,7 +132,7 @@ Im OMS-Portal können Sie die Protokoll- und Metrikdaten im Arbeitsbereich weite
 
 Überwachung und Warnung in Log Analytics und OMS beruhen – im Gegensatz zu den Warnungen, die im Azure-Portal für jede Ressource definiert werden – auf Abfragen der Daten im Arbeitsbereich. Da Warnungen auf Abfragen beruhen, können Sie statt einer Warnung pro Datenbank eine einzige Warnung definieren, die alle Datenbanken abdeckt. Abfragen sind nur durch die im Arbeitsbereich verfügbaren Daten beschränkt.
 
-Weitere Informationen zum Abfragen und Festlegen von Warnungen mit OMS finden Sie unter [Arbeiten mit Warnungsregeln in Log Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-alerts-creating).
+Weitere Informationen zum Abfragen und Festlegen von Warnungen mit OMS finden Sie unter [Arbeiten mit Warnungsregeln in Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
 
 Die Rechnungsstellung für Log Analytics für SQL-Datenbank basiert auf dem jeweiligen Datenvolumen im Arbeitsbereich. In diesem Tutorial haben Sie einen kostenlosen Arbeitsbereich erstellt, der auf 500 MB pro Tag beschränkt ist. Sobald dieser Grenzwert erreicht wird, werden dem Arbeitsbereich keine Daten mehr hinzugefügt.
 

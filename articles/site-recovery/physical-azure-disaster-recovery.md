@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: d4c8dc8083fbffc46e94673230241075b763b444
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d460da197c6e9f0bface402d83d4788f8164cc9c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -32,8 +32,8 @@ In diesem Tutorial erfahren Sie, wie Sie die Notfallwiederherstellung von physis
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](physical-azure-architecture.md) verstehen.
-- Überprüfen Sie die [Supportanforderungen](site-recovery-support-matrix-to-azure.md) für alle Komponenten.
-- Überprüfen Sie, ob die Server, die Sie replizieren möchten, die [Azure-VM-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) erfüllen.
+- Überprüfen Sie die [Supportanforderungen](vmware-physical-secondary-support-matrix.md) für alle Komponenten.
+- Überprüfen Sie, ob die Server, die Sie replizieren möchten, die [Azure-VM-Anforderungen](vmware-physical-secondary-support-matrix.md#replicated-vm-support) erfüllen.
 - Bereiten Sie Azure vor. Sie benötigen ein Azure-Abonnement, ein virtuelles Azure-Netzwerk und ein Speicherkonto.
 - Vorbereiten eines Kontos für die automatische Installation des Mobility Service auf jedem Server, den Sie replizieren möchten.
 

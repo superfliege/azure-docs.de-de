@@ -18,10 +18,10 @@ ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: d3e14c18d5e4cd77f4c68d8a5d9d0b915e896695
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Apps, Berechtigungen und Zustimmung in Azure Active Directory
 In Azure Active Directory können Sie Ihrem Verzeichnis Anwendungen hinzufügen.  Die Anwendungen können je nach Art der Anwendung variieren.  Wählen Sie ein Verzeichnis und dann die Anwendungen aus, um sie im Portal anzuzeigen.

@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f4a1562983ffa68dbd6586a2ae3a569f766387b5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ec6d8d5327ec6d5ebb92e125cb4c52a7a929c0e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Erstellen eines (klassischen) virtuellen Netzwerks mit mehreren Subnetzen
 
 > [!IMPORTANT]
-> Azure bietet zwei [verschiedene Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für das Erstellen und Verwenden von Ressourcen: Resource Manager-Bereitstellung und klassische Bereitstellung. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen virtuellen Netzwerke die Erstellung mit dem [Resource Manager](virtual-networks-create-vnet-arm-pportal.md)-Bereitstellungsmodell.
+> Azure bietet zwei [verschiedene Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für das Erstellen und Verwenden von Ressourcen: Resource Manager-Bereitstellung und klassische Bereitstellung. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen virtuellen Netzwerke die Erstellung mit dem [Resource Manager](quick-create-portal.md)-Bereitstellungsmodell.
 
 In diesem Tutorial erfahren Sie, wie Sie ein einfaches (klassisches) virtuelles Azure-Netzwerk mit separaten öffentlichen und privaten Subnetzen erstellen. Sie können Azure-Ressourcen wie virtuelle Computer und Clouddienste in einem Subnetz erstellen. In (klassischen) virtuellen Netzwerken erstellte Ressourcen können miteinander und mit Ressourcen in anderen Netzwerken, die mit einem virtuellen Netzwerk verbunden sind, kommunizieren.
 
-Erfahren Sie mehr über alle Einstellungen für [virtuelle Netzwerke](virtual-network-manage-network.md) und [Subnetze](virtual-network-manage-subnet.md).
+Erfahren Sie mehr über alle Einstellungen für [virtuelle Netzwerke](manage-virtual-network.md) und [Subnetze](virtual-network-manage-subnet.md).
 
 > [!WARNING]
 > (Klassische) virtuelle Netzwerke werden von Azure sofort gelöscht, wenn ein [Abonnement deaktiviert wird](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Das Löschen (klassischer) virtueller Netzwerke erfolgt unabhängig davon, ob Ressourcen im Netzwerk vorhanden sind. Wenn Sie das Abonnement später wieder aktivieren, müssen sämtliche Ressourcen, die im virtuellen Netzwerk vorhanden waren, neu erstellt werden.
@@ -161,7 +161,7 @@ Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), ü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu allen Einstellungen für virtuelle Netzwerke und Subnetze finden Sie unter [Verwalten virtueller Netzwerke](virtual-network-manage-network.md) und [Verwalten von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md). Für unterschiedliche Anforderungen gibt es verschiedene Optionen für die Verwendung virtueller Netzwerke und Subnetze in einer Produktionsumgebung.
+- Informationen zu allen Einstellungen für virtuelle Netzwerke und Subnetze finden Sie unter [Verwalten virtueller Netzwerke](manage-virtual-network.md) und [Verwalten von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md). Für unterschiedliche Anforderungen gibt es verschiedene Optionen für die Verwendung virtueller Netzwerke und Subnetze in einer Produktionsumgebung.
 - Erstellen Sie [Netzwerksicherheitsgruppen](virtual-networks-nsg.md) für Subnetze, und wenden Sie sie an, um eingehenden und ausgehenden Subnetzdatenverkehr zu filtern.
 - Erstellen Sie einen virtuellen [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer, und verbinden Sie ihn mit einem virtuellen Netzwerk.
 - Zum Verbinden von zwei virtuellen Netzwerken im gleichen Azure-Standort erstellen Sie ein [Peering zwischen diesen virtuellen Netzwerken](create-peering-different-deployment-models.md). Sie können ein Peering zwischen einem virtuellen Netzwerk (Resource Manager) und einem (klassischen) virtuellen Netzwerk erstellen, nicht jedoch zwischen zwei (klassischen) virtuellen Netzwerken.

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: f94febfa1610795cd46b4315bbbbe56aa2bca861
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 7bd8d17d5a2c918f2bef770c224398e7332785f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Verwenden von Azure PowerShell mit Azure Storage
 
@@ -136,8 +136,6 @@ Verwenden Sie [Set-AzureRmStorageAccount](/powershell/module/azurerm.resources/S
 * Die **SKU** ist eine Replikationseinstellung für das Speicherkonto, z. B. LRS für „lokal redundanter Speicher“. Sie können z. B. von „Standard\_LRS“ zu „Standard\_GRS“ oder „Standard\_RAGRS“ wechseln. Beachten Sie, dass Sie „Standard\_ZRS“ oder „Premium\_LRS“ nicht in eine andere SKU ändern können (oder andere SKUs in diese beiden SKUs).
 
 * Die **Zugriffsebene** für Blob-Speicherkonten. Der Wert für die Zugriffsebene wird auf **heiß** oder **kalt** festgelegt. Dadurch können Sie Ihre Kosten minimieren, indem Sie die Zugriffsebene auf die Art und Weise ausrichten, wie Sie das Speicherkonto verwenden. Weitere Informationen finden Sie unter [Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
-
-* Die Einstellung für die Speicherdienstverschlüsselung für Blob-Speicher und/oder Dateispeicher. Weitere Informationen zur Speicherdienstverschlüsselung (Storage Service Encryption, SSE) finden Sie unter [Speicherdienstverschlüsselung](storage-service-encryption.md).
 
 * Gestatten Sie nur HTTPS-Datenverkehr. 
 

@@ -5,16 +5,16 @@ services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 2560ca144f8ce4041aa592554f9945ed546cc49b
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 15cdee0fb3994874c88b16bebec35f5eae9f8de2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Erstellen von DSVM- und HDI Spark-Clustern als Computeziele
 
@@ -148,7 +148,7 @@ $ az vm start -g <resource group name> -n <vm name>
 ```
 
 ## <a name="expand-the-dsvm-os-disk"></a>Erweitern des DSVM-Betriebssystemdatenträgers
-Ein virtueller Linux-Computer verfügt in Azure in der Regel über einen Betriebssystemdatenträger mit einer Größe von 30 GB. Wenn er als Computeziel für Azure ML verwendet wird, kann seine Kapazität schnell vom Docker-Modul aufgebraucht werden, das Docker-Images abruft und darüber hinaus Conda-Ebenen erstellt. Es ist daher ratsam, den Betriebssystemdatenträger zu vergrößern (z. B. 200 GB), um den Fehler zu vermeiden, dass der Datenträger voll ist, während Sie sich mitten in einer Ausführung befinden. Informationen zur einfachen Umsetzung über die Azure-CLI finden Sie unter [Erweitern virtueller Festplatten auf virtuellen Linux-Computern mit der Azure-CLI](../../virtual-machines/linux/expand-disks.md). 
+Ein virtueller Linux-Computer verfügt in Azure in der Regel über einen Betriebssystemdatenträger mit einer Größe von 30 GB. Wenn er als Computeziel für Azure ML verwendet wird, kann seine Kapazität schnell von der Docker-Engine aufgebraucht werden, das Docker-Images abruft und darüber hinaus Conda-Ebenen erstellt. Es ist daher ratsam, den Betriebssystemdatenträger zu vergrößern (z. B. 200 GB), um den Fehler zu vermeiden, dass der Datenträger voll ist, während Sie sich mitten in einer Ausführung befinden. Informationen zur einfachen Umsetzung über die Azure-CLI finden Sie unter [Erweitern virtueller Festplatten auf virtuellen Linux-Computern mit der Azure-CLI](../../virtual-machines/linux/expand-disks.md). 
 
 ## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Erstellen eines Apache Spark für Azure HDInsight-Clusters im Azure-Portal
 

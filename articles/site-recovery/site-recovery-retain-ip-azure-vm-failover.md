@@ -13,32 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
-=======
-<<<<<<< HEAD
-ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 28d772df384e620c7e82812adfa2bfa148401132
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 15f87ba87d90cee765f52d3188796bc1ff7b8a35
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
-<<<<<<< HEAD
-=======
-ms.date: 02/06/2018
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-ms.author: manayar
-ms.openlocfilehash: 28d772df384e620c7e82812adfa2bfa148401132
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: HT
-ms.contentlocale: de-DE
-<<<<<<< HEAD
-ms.lasthandoff: 02/28/2018
-=======
-ms.lasthandoff: 02/09/2018
->>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-=======
->>>>>>> badf78d3a696bb4bc2277e8b2840da1a5bb1178d
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Beibehaltung von IP-Adressen für das Failover von virtuellen Azure-Computern
 
@@ -108,7 +88,7 @@ Für VPN-Gateways werden öffentliche IP-Adressen und Gatewayhops verwendet, um 
 
 Dieses Feature befindet sich derzeit in der öffentlichen Vorschauphase und wird auf weitere Supportregionen erweitert, um die direkte Konnektivität von VM zu VM ohne Einbeziehung des öffentlichen Internets oder zusätzlicher Hops zu ermöglichen.
 
-Weitere Informationen finden Sie in der [Dokumentation zum Peering](../virtual-network/virtual-network-create-peering.md#register) und unter [Preise](https://azure.microsoft.com/en-us/pricing/details/virtual-network/).
+Weitere Informationen finden Sie in der [Dokumentation zum Peering](../virtual-network/tutorial-connect-virtual-networks-portal.md#register) und unter [Preise](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ## <a name="on-premises-to-azure-connectivity"></a>Konnektivität vom lokalen Standort mit Azure
 

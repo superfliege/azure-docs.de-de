@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/04/2017
+ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: d8c4f5431d8e2d406cd5b203b468c447d4dd6e17
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: dce374d85ef32fe1fbfc88502780fa2ad7a5eae4
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht
 Der erstellte Microsoft Excel-Bericht enthält die folgenden Tabellen:
@@ -132,16 +132,16 @@ Im Graphen ist die Übersicht über die geschätzten Gesamtkosten der Notfallwie
 ![Zusammenfassung „Cost Estimation“ (Kostenvorkalkulation)](media/site-recovery-vmware-deployment-planner-analyze-report/cost-estimation-summary-v2a.png)
 
 Die Zusammenfassung erleichtert das Verständnis der Kosten, die für Speicher, Compute, Netzwerk und Lizenz anfallen, wenn Sie Ihre gesamten kompatiblen VMs mit Azure Site Recovery in Azure schützen. Die Kosten werden für kompatible VMs berechnet, nicht für alle VMs, für die eine Profilerstellung durchgeführt wurde.  
- 
+
 Sie können die Kosten entweder monatlich oder jährlich anzeigen. Erfahren Sie mehr zu [unterstützten Zielregionen](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) und [unterstützten Währungen](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).
 
 **Cost by components** (Kosten nach Komponenten): Die Gesamtkosten für die Notfallwiederherstellung sind in vier Komponenten unterteilt: Compute, Speicher, Netzwerk und Azure Site Recovery-Lizenzkosten. Die Kosten werden basierend auf der Nutzung berechnet, die während der Replikations- und DR-Drillvorgänge für die Bereiche Compute, Speicher (Premium und Standard), konfigurierte ExpressRoute/VPN-Verbindung zwischen lokalem Standort und Azure sowie Azure Site Recovery-Lizenz anfallen.
 
-**Cost by states** (Kosten nach Zustand): Die Gesamtkosten für die Notfallwiederherstellung werden basierend auf zwei unterschiedlichen Zuständen kategorisiert: Replikation und DR-Drill. 
+**Cost by states** (Kosten nach Zustand): Die Gesamtkosten für die Notfallwiederherstellung werden basierend auf zwei unterschiedlichen Zuständen kategorisiert: Replikation und DR-Drill.
 
-**Replication cost** (Replikationskosten): Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und Azure Site Recovery-Lizenz enthalten. 
+**Replication cost** (Replikationskosten): Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und Azure Site Recovery-Lizenz enthalten.
 
-**DR-Drill cost** (Kosten für DR-Drills): Die Kosten, die bei Testfailovern anfallen. Während des Testfailovers startet Azure Site Recovery virtuelle Computer (VMs). Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab. 
+**DR-Drill cost** (Kosten für DR-Drills): Die Kosten, die bei Testfailovern anfallen. Während des Testfailovers startet Azure Site Recovery virtuelle Computer (VMs). Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab.
 
 **Azure storage cost per Month/Year** (Azure-Speicherkosten pro Monat/Jahr): Hier werden die Speichergesamtkosten angezeigt, die bei der Replikation und bei DR-Drills für Storage Premium und Standardspeicher anfallen.
 Sie können die ausführliche Kostenanalyse pro VM in der Tabelle [Cost Estimation](site-recovery-vmware-deployment-planner-cost-estimation.md) (Kostenvorkalkulation) anzeigen.
@@ -266,7 +266,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 **Boot Type** (Starttyp): Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten.  Derzeit unterstützt Azure Site Recovery Windows Server-EFI-VMs (Windows Server 2012, 2012 R2 und 2016), sofern die Anzahl von Partitionen auf dem Startdatenträger geringer als 4 ist und die Größe des Startsektors 512 Byte beträgt. Zum Schützen von EFI-VMs muss für den Azure Site Recovery Mobility Service die Version 9.13 oder höher verwendet werden. Für EFI-VMs wird nur das Failover unterstützt. Das Failback wird nicht unterstützt.
 
-**OS Type**: Dies ist der Betriebssystemtyp der VM. Hier kann Windows, Linux oder ein anderer Typ angegeben werden. Dies richtet sich nach der ausgewählten Vorlage für VMware vSphere während der Erstellung der VM. 
+**OS Type**: Dies ist der Betriebssystemtyp der VM. Hier kann Windows, Linux oder ein anderer Typ angegeben werden. Dies richtet sich nach der ausgewählten Vorlage für VMware vSphere während der Erstellung der VM.
 
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery-Grenzwerte
 Die folgende Tabelle enthält die Azure Site Recovery-Grenzwerte. Diese Grenzwerte basieren auf unseren Tests, können aber nicht alle möglichen E/A-Kombinationen für Anwendungen abdecken. Die tatsächlichen Ergebnisse können je nach Ihrer E/A-Mischung für die Anwendungen variieren. Auch nach der Planung der Bereitstellung ist es zum Erzielen der bestmöglichen Ergebnisse stets zu empfehlen, umfangreiche Anwendungstests per Testfailover durchzuführen, um sich ein eindeutiges Bild der Anwendungsleistung zu verschaffen.
@@ -282,15 +282,15 @@ Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |10 MB/s | 
 
 **Quell-Datenänderungsrate** | **Maximales Limit**
 ---|---
-Durchschnittliche Datenänderungsrate pro VM| 25 MB/s 
+Durchschnittliche Datenänderungsrate pro VM| 25 MB/s
 Spitzenänderungsrate für alle Datenträger auf einer VM | 54 MB/s
-Maximale Datenänderung pro Tag, die von einem Prozessserver unterstützt wird | 2 TB 
+Maximale Datenänderung pro Tag, die von einem Prozessserver unterstützt wird | 2 TB
 
 Dies sind Durchschnittswerte, bei denen eine E/A-Überlappung von 30% angenommen wird. Site Recovery kann einen höheren Durchsatz basierend auf dem Überlappungsverhältnis, höheren Schreibgrößen und dem tatsächlichen Workload-E/A-Verhalten verarbeiten. Für die obigen Zahlen wurde ein typischer Backlog von ca. fünf Minuten vorausgesetzt. Dies bedeutet, dass die Daten nach dem Hochladen verarbeitet werden und innerhalb von fünf Minuten ein Wiederherstellungspunkt erstellt wird.
 
 
 ## <a name="cost-estimation"></a>Cost Estimation (Kostenvorkalkulation)
-Erfahren Sie mehr über die [Kostenvorkalkulation](site-recovery-vmware-deployment-planner-cost-estimation.md). 
+Erfahren Sie mehr über die [Kostenvorkalkulation](site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

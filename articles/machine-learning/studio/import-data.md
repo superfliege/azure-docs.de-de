@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: garye;bradsev
 ms.openlocfilehash: eb22f516f298df9396ca809acaa9c8cb62589c2a
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Importieren von Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio
 Um Ihre eigenen Daten in Machine Learning Studio zum Entwickeln und Trainieren einer Predictive Analytics-Lösung zu verwenden, können Sie folgende Aktionen ausführen: 

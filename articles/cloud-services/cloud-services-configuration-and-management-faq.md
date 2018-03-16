@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
 ms.openlocfilehash: 916fbb436806c64ded9ebf9fdd9c57c42d0809f0
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
 
-Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltung von [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informationen zur Größe finden sie auch unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
+Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltung von [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informationen zur Größe finden sie auch unter [Größen für Clouddienste](cloud-services-sizes-specs.md) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-**Zertifikate**
+**Certificates**
 
 - [Warum ist die Zertifikatkette meines Clouddienst-SSL-Zertifikats unvollständig?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
 - [Welchen Zweck hat das „Windows Azure Tools Encryption Certificate for Extensions“ (Windows Azure Tools-Verschlüsselungszertifikat für Erweiterungen)?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
@@ -40,7 +40,7 @@ Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltun
 - [Welche Clouddienstfunktionen für die Anwendungsverwaltung und -überwachung sind im Azure-Portal geplant?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [Warum schreibt IIS keine Einträge mehr in das Protokollverzeichnis?](#why-does-iis-stop-writing-to-the-log-directory)
 
-**Netzwerkkonfiguration**
+**Network Configuration**
 
 - [Wie richte ich das Leerlauftimeout für Azure Load Balancer ein?](#how-do-i-set-the-idle-timeout-for-azure-load-balancer)
 - [Wie verknüpfe ich eine statische IP-Adresse mit meinem Clouddienst?](#how-do-i-associate-a-static-ip-address-to-my-cloud-service)
@@ -52,7 +52,7 @@ Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltun
 - [Können interne Microsoft-Techniker ohne Berechtigung eine Remotedesktopverbindung mit Clouddienstinstanzen herstellen?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
 - [Ich kann über die RDP-Datei keine Remotedesktopverbindung mit einer Clouddienst-VM herstellen. Ich erhalte folgenden Fehler: Authentifizierungsfehler (Code: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
-**Skalierung**
+**Skalieren**
 
 - [Ich kann nicht über X Instanzen hinaus skalieren.](#i-cannot-scale-beyond-x-instances)
 - [Wie kann ich die automatische Skalierung basierend auf Speichermetriken konfigurieren?](#how-can-i-configure-auto-scale-based-on-memory-metrics)
@@ -82,7 +82,7 @@ Diese Zertifikate werden automatisch erstellt, wenn dem Clouddienst eine Erweite
 
 Sie können diese Zertifikate ignorieren. Wenn Sie die Zertifikate bereinigen möchten, können Sie versuchen, sie alle zu löschen. Azure löst einen Fehler aus, wenn Sie versuchen ein Zertifikat zu löschen, das verwendet wird.
 
-### <a name="how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance"></a>Wie kann ich eine Zertifikatsignieranforderung (Certificate Signing Request, CSR) generieren, ohne eine RDP-Verbindung mit der Instanz herzustellen?
+### <a name="how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance"></a>Wie kann ich eine Zertifikatsignieranforderung (Certficate Signing Request, CSR) generieren, ohne eine RDP-Verbindung mit der Instanz herzustellen?
 
 Weitere Informationen finden Sie im folgenden Richtliniendokument:
 
@@ -123,7 +123,7 @@ Die Option zum Auswählen eines Blobs oder eines lokalen Speicherorts als CSDEF-
 
 Option zum Überwachen von Metriken auf Instanzebene. Zusätzliche Überwachungsfunktionen stehen unter [Überwachung von Clouddiensten](cloud-services-how-to-monitor.md) zur Verfügung.
 
-### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>Warum schreibt IIS keine Einträge mehr in das Protokollverzeichnis?
+### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>Warum beendet IIS das Schreiben in das Protokollverzeichnis?
 Sie haben das lokale Speicherkontingent für das Schreiben in das Protokollverzeichnis ausgeschöpft. Es gibt drei Möglichkeiten, dies zu korrigieren:
 * Aktivieren Sie die Diagnose für IIS und lassen Sie die Diagnose regelmäßig in einen Blob-Speicher verschieben.
 * Entfernen Sie Protokolldateien manuell aus dem Protokollierungsverzeichnis.
@@ -133,7 +133,7 @@ Weitere Informationen finden Sie in den folgenden Dokumenten:
 * [Speichern und Anzeigen von Diagnosedaten in Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 * [Im Clouddienst werden keine IIS-Protokolle mehr geschrieben.](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
-## <a name="network-configuration"></a>Netzwerkkonfiguration
+## <a name="network-configuration"></a>Network Configuration
 
 ### <a name="how-do-i-set-the-idle-timeout-for-azure-load-balancer"></a>Wie richte ich das Leerlauftimeout für Azure Load Balancer ein?
 Sie können das Timeout in der Dienstdefinitionsdatei (CSDEF) wie folgt angeben:
@@ -164,12 +164,12 @@ Sie müssen für das Erstellen einer reservierten IP-Adresse eine statische IP-A
 * [Zuordnen einer reservierten IP zu einer aktiven Bereitstellung](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
 * [Zuordnen einer reservierten IP zu einem Clouddienst mit einer Dienstkonfigurationsdatei](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Welche Features und Funktionen bieten grundlegende Azure-IPS/IDS und -DDoS?
+### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Welche Features und Funktionen bieten Azure Basic-IPS/IDS und DDoS?
 Azure verfügt über IPS/IDS in physischen Servern des Datencenters, um Bedrohungen abzuwehren. Darüber hinaus können Kunden Sicherheitslösungen von Drittanbietern bereitstellen, z.B. Web Application Firewalls, Netzwerkfirewalls, Antischadsoftware, Angriffserkennungs- und Eindringschutzsysteme (IDS/IPS) und weitere. Weitere Informationen finden Sie unter [Protect your data and assets and comply with global security standards (Schutz Ihrer Daten und Objekte in Übereinstimmung mit globalen Sicherheitsstandards)](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).
 
 Microsoft überwacht durchgehend Server, Netzwerke und Anwendungen, um Bedrohungen zu erkennen. Azure's mehrgleisiger Ansatz zur Verwaltung von Bedrohungen verwendet Angriffserkennung, Verhinderung von verteilten Denial-of-Service-Angriffen (DDoS), Penetrationstests, Verhaltensanalyse, Anomalieerkennung und Machine Learning, um den Schutz stetig zu verbessern und Risiken zu reduzieren. Microsoft Antimalware für Azure schützt Azure Cloud Services und virtuelle Computer. Darüber hinaus können Sie zusätzlich Sicherheitslösungen von Drittanbietern bereitstellen, z.B. Web Application Firewalls, Netzwerkfirewalls, Antischadsoftware, Angriffserkennungs- und Eindringschutzsysteme (IDS/IPS) und weitere.
 
-### <a name="how-to-enable-http2-on-cloud-services-vm"></a>Wie wird HTTP/2 für eine Cloud Services-VM aktiviert?
+### <a name="how-to-enable-http2-on-cloud-services-vm"></a>Wie wird HTTP/2 auf der Cloud Services-VM aktiviert?
 
 Windows 10 und Windows Server 2016 unterstützen HTTP/2 auf Client- und Serverseite. Wenn Ihr Client (Browser) über TLS eine Verbindung mit dem IIS-Server herstellt, wobei HTTP/2 über TLS-Erweiterungen ausgehandelt wird, müssen Sie keine Änderungen auf der Serverseite vornehmen. Dies liegt daran, weil über TLS standardmäßig der h2-14-Header gesendet wird, der die Verwendung von HTTP/2 festlegt. Wenn andererseits der Client einen Upgradeheader zum Upgrade auf HTTP/2 sendet, müssen Sie die folgende Änderung auf der Serverseite vornehmen, um sicherzustellen, dass das Upgrade funktioniert, und Sie eine HTTP/2-Verbindung erhalten. 
 
@@ -215,7 +215,7 @@ Dieser Fehler kann auftreten, wenn Sie die RDP-Datei eines Computers verwenden, 
 1. Klicken Sie mit der rechten Maustaste auf die heruntergeladene RDP-Datei, und wählen Sie **Bearbeiten** aus.
 2. Fügen Sie vor dem Benutzernamen das Präfix „&#92;“ hinzu. Verwenden Sie z. B. **.\username** anstelle von **username**.
 
-## <a name="scaling"></a>Skalierung
+## <a name="scaling"></a>Skalieren
 
 ### <a name="i-cannot-scale-beyond-x-instances"></a>Ich kann nicht über X Instanzen hinaus skalieren
 Für Ihr Azure-Abonnement gilt ein Limit hinsichtlich der Anzahl von Kernen, die Sie verwenden können. Wenn Sie alle verfügbaren Kerne verwendet haben, können Sie nicht höher skalieren. Beispiel: Wenn Ihr Limit bei 100 Kernen liegt, können Sie für Ihren Clouddienst 100 virtuelle Computerinstanzen der Größe A1 oder 50 virtuelle Computerinstanzen der Größe A2 einrichten.
@@ -272,9 +272,9 @@ Schreibvorgänge in das Laufwerk %aproot% werden nicht unterstützt. Wenn Sie ei
 
 Azure wird nichts in das Laufwerk %approot% schreiben. Sobald die VHD-Datei aus CSPKG erstellt und in den virtuellen Azure-Computer eingebunden wurde, kann nur noch die Anwendung in dieses Laufwerk schreiben. 
 
-Die Einstellungen für Journaling sind nicht konfigurierbar, daher lässt es sich nicht deaktivieren.
+Die Einstellungen für Journaling sind nicht konfigurierbar, also lässt es sich nicht deaktiveren.
 
-### <a name="how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way"></a>Wie kann ich meinen Cloud Services automatisch eine Antischadsoftware-Erweiterung hinzufügen?
+### <a name="how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way"></a>Wie kann ich eine Antischadsoftware-Erweiterung für meine Cloud Services automatisiert hinzufügen?
 
 Sie können mithilfe des PowerShell-Skripts im Starttask die Antischadsoftware-Erweiterung aktivieren. Führen Sie die Schritte in den folgenden Artikeln aus, um sie zu implementieren: 
  

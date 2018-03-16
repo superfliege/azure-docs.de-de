@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e2f988fd62753e1ebed702728dee7ede65c72c4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 96206482195cdcbd06ee2dafdc551f7b1f81d319
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Verwalten von Ressourcen mit Azure PowerShell
 
-[!include[Resource Manager governance introduction](../../includes/resource-manager-governance-intro.md)]
+[!INCLUDE [Resource Manager governance introduction](../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
@@ -30,7 +30,7 @@ Wenn Sie PowerShell lokal installieren und nutzen möchten, lesen Sie die Inform
 
 ## <a name="understand-scope"></a>Der Bereich
 
-[!include[Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
+[!INCLUDE [Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
 
 In diesem Artikel wenden Sie alle Verwaltungseinstellungen auf eine Ressourcengruppe an, Sie können diese Einstellungen also am Ende problemlos entfernen.
 
@@ -45,7 +45,7 @@ Die Ressourcengruppe ist derzeit leer.
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-[!include[Resource Manager governance policy](../../includes/resource-manager-governance-rbac.md)]
+[!INCLUDE [Resource Manager governance policy](../../includes/resource-manager-governance-rbac.md)]
 
 ### <a name="assign-a-role"></a>Zuweisen einer Rolle
 
@@ -55,7 +55,7 @@ In diesem Artikel stellen Sie einen virtuellen Computer und das zugehörige virt
 * [Mitwirkender von virtuellem Netzwerk](../active-directory/role-based-access-built-in-roles.md#network-contributor)
 * [Mitwirkender von Speicherkonto](../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
 
-Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../active-directory/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe zur entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch zu einer Rolle für einen bestimmten Bereich zuweisen. 
+Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../active-directory/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch zu einer Rolle für einen bestimmten Bereich zuweisen. 
 
 Das folgende Beispiel erstellt eine Gruppe und weist diese zur Rolle „Mitwirkender von virtuellen Computern“ für die Ressourcengruppe zu. Um den Befehl `New-AzureAdGroup` auszuführen, müssen Sie entweder die [Azure Cloud Shell](/azure/cloud-shell/overview) verwenden oder [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/).
 
@@ -73,7 +73,7 @@ In der Regel müssen Sie den Prozess für die Rollen **Mitwirkender von virtuell
 
 ## <a name="azure-policies"></a>Azure-Richtlinien
 
-[!include[Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
+[!INCLUDE [Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
 
 ### <a name="apply-policies"></a>Anwenden von Richtlinien
 
@@ -131,7 +131,7 @@ Nach Abschluss der Bereitstellung können Sie weitere Verwaltungseinstellungen a
 
 ## <a name="lock-resources"></a>Sperren von Ressourcen
 
-[!include[Resource Manager governance locks](../../includes/resource-manager-governance-locks.md)]
+[!INCLUDE [Resource Manager governance locks](../../includes/resource-manager-governance-locks.md)]
 
 ### <a name="lock-a-resource"></a>Sperren einer Ressource
 
@@ -154,11 +154,11 @@ Der virtuelle Computer kann nur gelöscht werden, wenn Sie die Sperre explizit e
 
 ## <a name="tag-resources"></a>Markieren von Ressourcen
 
-[!include[Resource Manager governance tags](../../includes/resource-manager-governance-tags.md)]
+[!INCLUDE [Resource Manager governance tags](../../includes/resource-manager-governance-tags.md)]
 
 ### <a name="tag-resources"></a>Markieren von Ressourcen
 
-[!include[Resource Manager governance tags Powershell](../../includes/resource-manager-governance-tags-powershell.md)]
+[!INCLUDE [Resource Manager governance tags Powershell](../../includes/resource-manager-governance-tags-powershell.md)]
 
 Um Tags auf einen virtuellen Computer anzuwenden, verwenden Sie folgenden Befehl:
 

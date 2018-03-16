@@ -12,13 +12,13 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
+ms.date: 03/09/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 986c3b62426949f1e4c2009aabbfec2f1130f821
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 4802215f903eb196afbf05637ad5e38dbbbc09a3
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
 In diesem Artikel wird beschrieben, wie Azure Site Recovery in Azure Automation integriert wird, um Sie bei der Erweiterung Ihrer Wiederherstellungspläne zu unterstützen. Mit Wiederherstellungsplänen kann die Wiederherstellung von VMs orchestriert werden, die mit Site Recovery geschützt werden. Wiederherstellungspläne können sowohl für die Replikation in eine sekundäre Cloud als auch für die Replikation in Azure genutzt werden. Darüber hinaus tragen Wiederherstellungspläne zu einer **durchgängig exakten**, **wiederholbaren** und **automatisierten** Wiederherstellung bei. Wenn Sie für Ihre VMs ein Failover zu Azure durchführen, wird die Integration mit Azure Automation auf Ihre Wiederherstellungspläne erweitert. Sie können sie zum Ausführen von Runbooks verwenden, die leistungsfähige Automatisierungsaufgaben ermöglichen.
@@ -193,7 +193,7 @@ Erstellen Sie für jeden Wiederherstellungsplan unabhängige Variablen, damit Si
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>Verwenden einer komplexen Variablen zum Speichern von weiteren Informationen
 
-Stellen Sie sich ein Szenario vor, bei dem mit nur einem Skript für bestimmte VMs eine öffentliche IP aktiviert werden soll. In einem anderen Szenario kann es sein, dass Sie verschiedene NSGs unterschiedlichen VMs (nicht auf allen VMs) zuordnen möchten. Sie können ein Skript erstellen, das für alle Wiederherstellungspläne wiederverwendet werden kann. Jeder Wiederherstellungsplan kann über eine variable Anzahl von VMs verfügen. Eine SharePoint-Wiederherstellung verfügt über zwei Front-Ends. Eine einfache Branchenanwendung (LOB-Anwendung) hat nur ein Front-End. Sie können nicht für jeden Wiederherstellungsplan separate Variablen erstellen. 
+Stellen Sie sich ein Szenario vor, bei dem mit nur einem Skript für bestimmte VMs eine öffentliche IP aktiviert werden soll. In einem anderen Szenario kann es sein, dass Sie verschiedene NSGs unterschiedlichen VMs (nicht auf allen VMs) zuordnen möchten. Sie können ein Skript erstellen, das für alle Wiederherstellungspläne wiederverwendet werden kann. Jeder Wiederherstellungsplan kann über eine variable Anzahl von VMs verfügen. Eine SharePoint-Wiederherstellung verfügt über zwei Front-Ends. Eine einfache Branchenanwendung (LOB-Anwendung) hat nur ein Front-End. Sie können nicht für jeden Wiederherstellungsplan separate Variablen erstellen.
 
 Im folgenden Beispiel verwenden wir ein neues Verfahren und erstellen eine [komplexe Variable](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) in den Azure Automation-Kontoassets. Hierzu geben Sie mehrere Werte an. Verwenden Sie Azure PowerShell, um die folgenden Schritte auszuführen:
 

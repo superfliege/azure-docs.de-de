@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 43b3f758fe7017c0ec949ba6e28b76438cf1bc13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee248cb656eeb54e259ff1adf45080a207b5a866
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Verwendung der Service Fabric-Plattform durch Reliable Actors
 In diesem Artikel wird die Funktionsweise von Reliable Actors auf der Azure Service Fabric-Plattform beschrieben. Reliable Actors arbeiten in einem Framework, das in einer Implementierung des zustandsbehafteten zuverlässigen Diensts gehostet wird, der als *Akteurdienst* bezeichnet wird. Der Akteurdienst enthält alle Komponenten, die zum Verwalten des Lebenszyklus und zum Übermitteln von Nachrichten für Ihre Akteure erforderlich sind:
@@ -41,9 +41,6 @@ In Reliable Services erbt der Dienst die `StatefulService`-Klasse. Diese Klasse 
 * Dienstsicherung und -wiederherstellung
 * Gemeinsame Verwendung von Funktionen für alle Akteure, z. B. ein Schaltkreisunterbrecher
 * Remoteprozeduraufrufe für den Akteurdienst selbst sowie für einzelne Akteure
-
-> [!NOTE]
-> Zustandsbehaftete Dienste werden unter Java/Linux derzeit nicht unterstützt.
 
 ### <a name="using-the-actor-service"></a>Verwenden des Akteurdiensts
 Akteurinstanzen haben Zugriff auf den Akteurdienst, in dem sie ausgeführt werden. Über den Akteurdienst können Akteurinstanzen den Dienstkontext programmgesteuert abrufen. Der Dienstkontext enthält die Partitions-ID, den Dienstnamen, den Anwendungsnamen und andere spezifische Informationen für die Service Fabric-Plattform:
@@ -68,7 +65,7 @@ CompletableFuture<?> MyActorMethod()
 ```
 
 
-Wie alle Reliable Services muss der Akteurdienst mit einem Diensttyp in der Service Fabric-Laufzeit registriert werden. Damit der Akteurdienst Ihre Akteurinstanzen ausführen kann, muss auch Ihr Akteurtyp beim Akteurdienst registriert werden. Die `ActorRuntime` -Registrierungsmethode führt dies für Akteure aus. Im einfachsten Fall müssen Sie nur den Akteurtyp registrieren, der Akteurdienst wird dann implizit mit den Standardeinstellungen verwendet:
+Wie alle Reliable Services muss der Akteurdienst mit einem Diensttyp in der Service Fabric-Laufzeit registriert werden. Damit der Akteurdienst Ihre Akteurinstanzen ausführen kann, muss auch Ihr Akteurtyp beim Akteurdienst registriert werden. Die `ActorRuntime` -Registrierungsmethode führt dies für Actors aus. Im einfachsten Fall müssen Sie nur den Akteurtyp registrieren, der Akteurdienst wird dann implizit mit den Standardeinstellungen verwendet:
 
 ```csharp
 static class Program

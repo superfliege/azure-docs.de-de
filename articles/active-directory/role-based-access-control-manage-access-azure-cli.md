@@ -1,5 +1,5 @@
 ---
-title: Verwalten der rollenbasierten Zugriffssteuerung (RBAC) mit der Azure-CLI | Microsoft-Dokumentation
+title: Verwalten der rollenbasierten Zugriffssteuerung (RBAC) mit der Azure-CLI | Microsoft Docs
 description: Erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) mit der Azure-Befehlszeilenschnittstelle verwalten, indem Sie Rollen und Rollenaktionen auflisten und Rollen im Kontext von Abonnements und Anwendungen zuweisen.
 services: active-directory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 5c099a7fd8848c2934603ec9b2db8947885226f9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6c9df11e528601d94cb72a8e3ef0868dc7781e12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle
 
@@ -28,13 +28,13 @@ ms.lasthandoff: 02/22/2018
 > * [REST-API](role-based-access-control-manage-access-rest.md)
 
 
-Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) definieren Sie den Zugriff für Benutzer, Gruppen und Dienstprinzipale durch Zuweisen von Rollen in einem bestimmten Kontext. In diesem Artikel wird beschrieben, wie Sie den Zugriff mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) verwalten.
+Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) definieren Sie den Zugriff für Benutzer, Gruppen und Dienstprinzipale durch Zuweisen von Rollen in einem bestimmten Bereich. In diesem Artikel wird beschrieben, wie Sie den Zugriff mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zur Verwaltung von RBAC mithilfe der Azure-Befehlszeilenschnittstelle müssen folgende Voraussetzungen erfüllt sein:
 
-* [Azure CLI 2.0](/cli/azure/overview). Sie können sie in Ihrem Browser mit [Azure Cloud Shell](../cloud-shell/overview.md) verwenden oder unter macOS, Linux und Windows [installieren](/cli/azure/install-azure-cli) und über die Befehlszeile ausführen.
+* [Azure CLI 2.0](/cli/azure). Sie können sie in Ihrem Browser mit [Azure Cloud Shell](../cloud-shell/overview.md) verwenden oder unter macOS, Linux und Windows [installieren](/cli/azure/install-azure-cli) und über die Befehlszeile ausführen.
 
 ## <a name="list-roles"></a>Auflisten der Rollen
 
@@ -190,7 +190,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
 ## <a name="list-access"></a>Auflisten des Zugriffs
 
-### <a name="list-role-assignments-for-a-user"></a>Auflisten von Rollenzuweisungen für einen Benutzer
+### <a name="list-role-assignments-for-a-user"></a>Liste von Rollenzuweisungen für einen Benutzer
 
 Zum Auflisten der Rollenzuweisungen für einen bestimmten Benutzer verwenden Sie [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list):
 
@@ -296,7 +296,7 @@ Im folgenden Beispiel wird einer Anwendung mit der Objekt-ID 44444444-4444-4444-
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-access"></a>Entfernen des Zugriffs
+## <a name="remove-access"></a>Zugriff entfernen
 
 ### <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
 

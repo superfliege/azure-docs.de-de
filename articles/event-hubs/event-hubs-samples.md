@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 03/05/2018
 ms.author: sethm
-ms.openlocfilehash: e037d0e291384849739825ae7ad59064a135db95
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a581b7039a3631b7f1dc35816175242f892bd7dd
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="event-hubs-samples"></a>Event Hubs-Beispiele 
 
@@ -61,10 +61,6 @@ Das Beispiel [Event Hubs Getting Started](https://code.msdn.microsoft.com/Servic
 
 Das Beispiel [Scale out event processing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) (Horizontales Hochskalieren der Ereignisverarbeitung) veranschaulicht die Verwendung des [Ereignisprozessorhosts](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) zum Verteilen der Workloads für die Event Hubs-Datenstromnutzung. Es zeigt zudem, wie die Objekte **EventProcessor** und **EventProcessorFactory** zum Verwalten des Ereignisdatenstroms implementiert werden. 
 
-### <a name="pull-web-data-into-an-event-hub"></a>Übertragen von Webdaten per Pull in einen Event Hub 
-
-Das Beispiel [Import data from the web](https://github.com/Azure-Samples/event-hubs-dotnet-importfromweb) (Importieren von Daten aus dem Web) veranschaulicht, wie Daten aus öffentlichen Feeds (z.B. aus den Verkehrsinformationen des Verkehrsministeriums) per Pull abgerufen und per Push an einen Event Hub übertragen werden.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu .NET Framework-Versionen finden Sie unter den folgenden Links:
@@ -75,5 +71,5 @@ Weitere Informationen zu .NET Framework-Versionen finden Sie unter den folgenden
 Weitere Informationen zu Event Hubs finden Sie in den folgenden Artikeln:
 
 - [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Erstellen eines Event Hubs](event-hubs-create.md)
+- [Event Hubs-Funktionen](event-hubs-features.md)
 - [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)

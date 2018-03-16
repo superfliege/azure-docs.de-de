@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 624c861db9bb318c368cef04965da0a73dd028d8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5fb7fd0be8b131ee098689b06c34c4e7c333801e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL Analytics (Vorschau) in Log Analytics
 
@@ -103,7 +103,7 @@ Klicken Sie auf die Kachel **Azure SQL Analytics**, um das Dashboard von Azure S
 
 Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Perspektive. Nach Auswahl der Perspektive wird der Drilldownbericht geöffnet.
 
-![Azure SQL-Analyse – Zeitlimits](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
+![Azure SQL-Analyse – Zeitlimits](./media/log-analytics-azure-sql/azure-sql-sol-metrics.png)
 
 Jede Perspektive bietet Zusammenfassungen zum Abonnement, Server, Pool für elastische Datenbanken und zur Datenbankebene. Darüber hinaus zeigt jede Perspektive auf der rechten Seite eine Perspektive an, die für den Bericht spezifisch ist. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown fortgesetzt.
 
@@ -148,13 +148,19 @@ Sie können problemlos Warnungen mit den Daten erstellen, die aus Azure SQL-Date
 *Hohe DTU in Azure SQL-Datenbank*
 
 ```
-AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
+AzureMetrics 
+| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" 
+| summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
+| render timechart
 ```
 
 *Hohe DTU in Pool für elastische Datenbanken in Azure SQL-Datenbank*
 
 ```
-AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
+AzureMetrics 
+| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" 
+| summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
+| render timechart
 ```
 
 Sie können diese warnungsbasierten Abfragen verwenden, um bei bestimmten Schwellenwerten für Azure SQL-Datenbanken und Pools für elastische Datenbanken eine Warnung auszugeben. So konfigurieren Sie eine Warnung für Ihren Log Analytics-Arbeitsbereich:
@@ -167,7 +173,7 @@ Sie können diese warnungsbasierten Abfragen verwenden, um bei bestimmten Schwel
 4. Führen Sie eine der Beispielabfragen aus.
 5. Klicken Sie in der Protokollsuche auf **Warnung**.  
 ![Erstellen einer Warnung in der Suche](./media/log-analytics-azure-sql/create-alert01.png)
-6. Konfigurieren Sie auf der Seite **Warnungsregel hinzufügen** die entsprechenden Eigenschaften und die spezifischen Schwellenwerte nach Bedarf, und klicken Sie dann auf **Speichern**.  
+6. Konfigurieren Sie auf der Seite **Warnungsregel hinzufügen** die entsprechenden Eigenschaften und die spezifischen Schwellenwerte nach Bedarf, und klicken Sie dann auf **Speichern**. 
 ![Warnungsregel hinzufügen](./media/log-analytics-azure-sql/create-alert02.png)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -16,17 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 02/05/2018
 ms.author: v-daljep
-ms.openlocfilehash: a1b10c1a12d9a9215022cc77615901a0e4d144f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 611c30639b5fb36bb08ebd3e73c90f8aa2bd09d4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-Mail-Benachrichtigungen zur automatischen Optimierung
 
 Die Optimierungsempfehlungen für SQL-Datenbank werden mit dem Feature [Automatische Optimierung](sql-database-automatic-tuning.md) von Azure SQL-Datenbank generiert. Diese Lösung überwacht und analysiert kontinuierlich die Workloads von SQL-Datenbanken und stellt Optimierungsempfehlungen für jede einzelne Datenbank im Hinblick auf Indexerstellung, Indexlöschung und Optimierung von Abfrageausführungsplänen bereit.
 
-Sie können die Empfehlungen zur automatischen Optimierung von SQL-Datenbank im [Azure-Portal](sql-database-advisor-portal.md) anzeigen oder mit [REST-API](https://docs.microsoft.com/en-us/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor)-Aufrufen oder [T-SQL](https://azure.microsoft.com/en-us/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)- und [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction)-Befehlen abrufen. In diesem Artikel wird ein PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet.
+Sie können die Empfehlungen zur automatischen Optimierung von SQL-Datenbank im [Azure-Portal](sql-database-advisor-portal.md) anzeigen oder mit [REST-API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor)-Aufrufen oder [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)- und [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction)-Befehlen abrufen. In diesem Artikel wird ein PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatisieren von E-Mail-Benachrichtigungen für Empfehlungen zur automatischen Optimierung
 
@@ -34,7 +34,7 @@ Die folgende Lösung automatisiert das Senden von E-Mail-Benachrichtigungen, die
 
 ## <a name="create-azure-automation-account"></a>Erstellen eines Azure Automation-Kontos
 
-Um Azure Automation verwenden zu können, müssen Sie zunächst ein Automation-Konto erstellen und dieses mit Azure-Ressourcen konfigurieren, um damit das PowerShell-Skript auszuführen. Weitere Informationen zu Azure Automation und den enthaltenen Funktionen finden Sie unter [Erste Schritte mit Azure Automation](https://docs.microsoft.com/en-us/azure/automation/automation-offering-get-started).
+Um Azure Automation verwenden zu können, müssen Sie zunächst ein Automation-Konto erstellen und dieses mit Azure-Ressourcen konfigurieren, um damit das PowerShell-Skript auszuführen. Weitere Informationen zu Azure Automation und den enthaltenen Funktionen finden Sie unter [Erste Schritte mit Azure Automation](https://docs.microsoft.com/azure/automation/automation-offering-get-started).
 
 Führen Sie diese Schritte aus, um ein Azure Automation-Konto zu erstellen, indem Sie im Marketplace die Automation-App auswählen und konfigurieren:
 
@@ -47,7 +47,7 @@ Führen Sie diese Schritte aus, um ein Azure Automation-Konto zu erstellen, inde
 
 - Klicken Sie innerhalb des Bereichs „Erstellen eines Automation-Kontos“ auf **Erstellen**.
 - Geben Sie die erforderliche Informationen an: Geben Sie einen Namen für dieses Automation-Konto ein, und wählen Sie Ihre Azure-Abonnement-ID und die Azure-Ressourcen, die für die Ausführung des PowerShell-Skripts verwendet werden sollen, aus.
-- Wählen Sie für **Ausführendes Azure-Konto erstellen** die Option **Ja** aus, um den Typ des Kontos, unter dem das PowerShell-Skript mithilfe von Azure Automation ausgeführt wird, zu konfigurieren. Weitere Informationen zu den Kontotypen finden Sie unter [Ausführendes Konto](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account).
+- Wählen Sie für **Ausführendes Azure-Konto erstellen** die Option **Ja** aus, um den Typ des Kontos, unter dem das PowerShell-Skript mithilfe von Azure Automation ausgeführt wird, zu konfigurieren. Weitere Informationen zu den Kontotypen finden Sie unter [Ausführendes Konto](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 - Schließen Sie die Erstellung des Automation-Kontos durch Klicken auf **Erstellen** ab.
 
 > [!TIP]
@@ -58,7 +58,7 @@ Wenn Sie über mehrere Azure-Abonnements verfügen, für die Sie die gleiche Aut
 
 ## <a name="update-azure-automation-modules"></a>Aktualisieren von Azure Automation-Modulen
 
-Das PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet die Befehle [Get-AzureRmResource](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Resources/Get-AzureRmResource) und [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction), für die ein Update der Azure-Module auf Version 4 oder höher erforderlich ist.
+Das PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet die Befehle [Get-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Get-AzureRmResource) und [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction), für die ein Update der Azure-Module auf Version 4 oder höher erforderlich ist.
 
 Befolgen Sie die folgenden Schritte zum Aktualisieren von Azure PowerShell-Modulen:
 
@@ -195,7 +195,7 @@ Zum Abschließen der Lösung erstellen Sie im letzten Schritt einen Automation-F
 2. **Azure Automation – Auftragsausgabe abrufen:** zum Abrufen der Ausgabe des ausgeführten PowerShell-Skripts
 3. **Office 365 Outlook – E-Mail senden:** zum Senden einer E-Mail-Nachricht. E-Mails werden mit dem Office 365-Konto der Person gesendet, die den Flow erstellt hat.
 
-Weitere Informationen zu den Funktionen von Microsoft Flow finden Sie unter [Erste Schritte mit Microsoft Flow](https://docs.microsoft.com/en-us/flow/getting-started).
+Weitere Informationen zu den Funktionen von Microsoft Flow finden Sie unter [Erste Schritte mit Microsoft Flow](https://docs.microsoft.com/flow/getting-started).
 
 Voraussetzung für diesen Schritt ist die Registrierung und Anmeldung beim [Microsoft Flow](https://flow.microsoft.com)-Konto. Führen Sie in der Lösung die folgenden Schritte aus, um einen **neuen Flow** einzurichten:
 

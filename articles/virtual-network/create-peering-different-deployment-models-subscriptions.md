@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 901bacd450561ee5eb4811320626d6ecbcc8c916
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: a65e49c465e83d2e76f33019984eec16331ed6ea
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke mithilfe verschiedener Bereitstellungsmodelle und Abonnements
 
@@ -29,7 +29,7 @@ Die Schritte zum Erstellen eines Peerings virtueller Netzwerke sind je nachdem u
 
 |Azure-Bereitstellungsmodell  | Azure-Abonnement  |
 |--------- |---------|
-|[Beide mit Resource Manager](virtual-network-create-peering.md) |Identisch|
+|[Beide mit Resource Manager](tutorial-connect-virtual-networks-portal.md) |Identisch|
 |[Beide mit Resource Manager](create-peering-different-subscriptions.md) |Unterschiedlich|
 |[Eines mit Resource Manager, das andere klassisch](create-peering-different-deployment-models.md) |identisch|
 

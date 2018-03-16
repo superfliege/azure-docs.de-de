@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: cbc4b8cdb0ff9255d0be02b998e67686921921ea
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: fd20405c284161a1a66493056f21c147efa632cb
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -32,7 +32,7 @@ Das Microsoft Azure-Glossar ist ein kompaktes Wörterbuch der Cloudterminologie 
 Ein Konto für den Zugriff auf ein Azure-Abonnement und dessen Verwaltung. Es wird häufig als Azure-Konto bezeichnet, kann aber ein vorhandenes Geschäfts-, Schul- oder Unikonto, ein persönliches Microsoft-Konto oder ein Office 365-Benutzername und -Kennwort sein. Sie können auch ein Konto für die Verwaltung eines Azure-Abonnements erstellen, wenn Sie sich für die [kostenlose Testversion](https://azure.microsoft.com) registrieren.  
 Weitere Informationen finden Sie unter [Registrieren für ein Azure-Abonnement mit Ihrem Office 365-Konto](billing/billing-use-existing-office-365-account-azure-subscription.md) sowie unter [Konten, die für die Anmeldung verwendet werden können](active-directory/active-directory-how-subscriptions-associated-directory.md).
 
-## <a name="api-app"></a>API-App
+## <a name="api-app"></a>Eine API-App
 Ein anderer Name für [App Service-App](#app-service-app).
 
 ## <a name="app-service-app"></a>App Service-App
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller 
 Eines der zwei [Bereitstellungsmodelle](resource-manager-deployment-model.md), die in Azure zum Bereitstellen von Ressourcen verwendet werden. (Das neue Modell ist Azure Resource Manager.) Einige Azure-Dienste unterstützen nur das Resource Manager-Bereitstellungsmodell, andere nur das klassische Bereitstellungsmodell und wieder andere unterstützen beide Modelle. Welches Modell bzw. welche Modelle der jeweilige Azure-Dienst unterstützt, können Sie der Dokumentation des entsprechenden Diensts entnehmen.
 
 ## <a name="cli"></a>Azure-Befehlszeilenschnittstelle (CLI)
-Eine Befehlszeilenschnittstelle zum Verwalten von Azure-Diensten unter Windows, macOS und Linux.  Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden. Weitere Informationen finden Sie unter [Azure CLI 2.0](/cli/azure/overview)
+Eine Befehlszeilenschnittstelle zum Verwalten von Azure-Diensten unter Windows, macOS und Linux.  Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden. Weitere Informationen finden Sie unter [Azure CLI 2.0](/cli/azure)
 
 ## <a name="powershell"></a>Azure PowerShell
 Eine Befehlszeilenschnittstelle zum Verwalten von Azure-Diensten über eine Befehlszeile auf einem Windows-PC. Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden.
@@ -90,10 +90,10 @@ Siehe [Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-de
 Das sichere Webportal zum Bereitstellen und Verwalten von Azure-Diensten.
 
 ## <a name="region"></a>region
-Ein Bereich innerhalb eines geografischen Raums ohne Überschreitung nationaler Grenzen, der mindestens ein Rechenzentrum umfasst. Preise, regionale Dienste und Angebotstypen werden auf Regionsebene zur Verfügung gestellt. Eine Region bildet üblicherweise ein Paar mit einer anderen Region, die mehrere Hundert Kilometer entfernt sein kann. Regionspaare können als Mechanismus zur Notfallwiederherstellung und in Szenarien mit hoher Verfügbarkeit eingesetzt werden. Wird auch als *Standort* bezeichnet.  
+Ein Bereich innerhalb eines geografischen Raums ohne Überschreitung nationaler Grenzen, der mindestens ein Rechenzentrum umfasst. Preise, regionale Dienste und Angebotstypen werden auf Regionsebene zur Verfügung gestellt. Eine Region bildet üblicherweise ein Paar mit einer anderen Region, die mehrere Hundert Kilometer entfernt sein kann. Regionspaare können als Mechanismus zur Notfallwiederherstellung und in Szenarien mit Hochverfügbarkeit eingesetzt werden. Wird auch als *Standort* bezeichnet.  
 Weitere Informationen finden Sie unter [Azure-Regionen](best-practices-availability-paired-regions.md).
 
-## <a name="resource"></a>Ressource
+## <a name="resource"></a>resource
 Ein Element, das Bestandteil Ihrer Azure-Lösung ist. Jeder Azure-Dienst ermöglicht Ihnen das Bereitstellen unterschiedlicher Ressourcentypen, z. B. Datenbanken oder virtuelle Computer.   
 Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](azure-resource-manager/resource-group-overview.md).
 

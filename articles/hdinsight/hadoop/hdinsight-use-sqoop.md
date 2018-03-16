@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: e2f4601daf9aa3537f9170c3516d62ab1bd602e5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: e96003de4a0dd4a5d8b060bb5883e51291827316
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Sqoop mit Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -72,7 +72,7 @@ In diesem Abschnitt wird gezeigt, wie Sie mit dem Azure-Portal und einer Azure R
 Wenn Sie den Cluster und die SQL-Datenbank lieber mit Azure PowerShell erstellen möchten, helfen Ihnen die Informationen in [Anhang A](#appendix-a---a-powershell-sample) weiter.
 
 > [!NOTE]
-> Der Import über eine Vorlage oder das Azure-Portal unterstützt nur das Importieren einer BACPAC-Datei aus dem Azure-Blobspeicher.
+> Der Import über eine Vorlage oder das Azure-Portal unterstützt nur das Importieren einer BACPAC-Datei aus Azure Blob Storage.
 
 **So konfigurieren Sie die Umgebung mit einer Ressourcenverwaltungsvorlage**
 1. Klicken Sie auf das folgende Bild, um eine Resource Manager-Vorlage im Azure-Portal zu öffnen.         
@@ -118,7 +118,7 @@ Wenn Sie die vorhandene Azure SQL-Datenbank oder Microsoft SQL Server verwenden 
   > 
   > 
   
-  * Informationen zum Erstellen und Konfigurieren eines virtuellen Netzwerks finden Sie unter [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+  * Informationen zum Erstellen und Konfigurieren eines virtuellen Netzwerks finden Sie unter [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../virtual-network/quick-create-portal.md).
     
     * Wenn Sie SQL Server in Ihrem Datencenter verwenden, müssen Sie das virtuelle Netzwerk entweder als *Standort-zu-Standort* oder als *Punkt-zu-Standort* konfigurieren.
       
@@ -212,7 +212,7 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
    
     Dies ist kein Problem für andere Beispiele, die diese Daten verwenden. Wir müssen die Ausnahmen jedoch beheben, bevor wir die Daten in die Azure SQL-Datenbank oder in SQL Server importieren können. Der Sqoop-Export schlägt fehl, wenn es eine leere Zeichenfolge oder eine Zeile mit weniger Elementen gibt, als in der Azure SQL-Datenbanktabelle Felder definiert sind. Die log4jlogs-Tabelle hat sieben Felder mit Zeichenfolgen.
    
-    Diese Prozedur erstellt eine neue Datei auf dem Cluster: tutorials/usesqoop/data/sample.log. Zur Untersuchung der geänderten Datendatei können Sie das Azure-Portal, ein Azure-Speicher-Explorer-Tool oder Azure Powershell verwenden. In [Erste Schritte mit HDInsight][hdinsight-get-started] finden Sie ein Codebeispiel für die Verwendung von Azure PowerShell zum Herunterladen einer Datei und zum Anzeigen von deren Inhalt.
+    Diese Prozedur erstellt eine neue Datei auf dem Cluster: tutorials/usesqoop/data/sample.log. Zur Untersuchung der geänderten Datendatei können Sie das Azure-Portal, ein Azure Storage-Explorer-Tool oder Azure PowerShell verwenden. In [Erste Schritte mit HDInsight][hdinsight-get-started] finden Sie ein Codebeispiel für die Verwendung von Azure PowerShell zum Herunterladen einer Datei und zum Anzeigen von deren Inhalt.
 6. Exportieren Sie eine Datendatei in die Azure SQL-Datenbank.
    
     Die Quelldatei ist „tutorials/usesqoop/data/sample.log“. Die Tabelle, in die die Daten exportiert werden, heißt „log4jlogs“.
@@ -228,7 +228,7 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
 7. Exportieren Sie eine Hive-Tabelle in die Azure SQL-Datenbank.
 8. Importieren Sie die Tabelle "mobiledata" in das HDInsight-Cluster.
    
-    Zur Untersuchung der geänderten Datendatei können Sie das Azure-Portal, ein Azure-Speicher-Explorer-Tool oder Azure Powershell verwenden.  In [Erste Schritte mit HDInsight][hdinsight-get-started] finden Sie ein Codebeispiel für die Verwendung von Azure PowerShell zum Herunterladen einer Datei und zum Anzeigen von deren Inhalt.
+    Zur Untersuchung der geänderten Datendatei können Sie das Azure-Portal, ein Azure Storage-Explorer-Tool oder Azure PowerShell verwenden.  In [Erste Schritte mit HDInsight][hdinsight-get-started] finden Sie ein Codebeispiel für die Verwendung von Azure PowerShell zum Herunterladen einer Datei und zum Anzeigen von deren Inhalt.
 
 ### <a name="the-powershell-sample"></a>Das PowerShell-Beispiel
 

@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 3cbc25099b99499a6186e57c155d195e75bd61bf
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 15ad240ea9b635cd7995bfae403a93e0b392850a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD
 
@@ -37,7 +37,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * Sie müssen mit verwalteten Datenträgern eine Azure-VM im Resource Manager-Bereitstellungsmodell erstellen. Wenn Sie keine Linux-VM erstellt haben, können Sie das [Portal](quick-create-portal.md), die [Azure CLI](quick-create-cli.md) oder [Resource Manager-Vorlagen](create-ssh-secured-vm-from-template.md) dazu verwenden. Konfigurieren Sie die VM den Anforderungen entsprechend. Sie können beispielsweise [Datenträger hinzufügen](add-disk.md), Updates einspielen und Anwendungen installieren. 
 
-* Zudem muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#az_login) bei einem Azure-Konto angemeldet sein.
+* Zudem muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein.
 
 ## <a name="quick-commands"></a>Schnellbefehle
 
@@ -143,4 +143,4 @@ Sie können mehrere virtuelle Computer aus dem Image des virtuellen Quellcompute
 - Führen Sie erneut die Schritte zum Aufheben der Bereitstellung, zum Aufheben der Zuordnung, zum Generalisieren und zum Erstellen eines Images aus.
 - Verwenden Sie dieses neue Image für zukünftige Bereitstellungen. Löschen Sie bei Bedarf das ursprüngliche Image.
 
-Weitere Informationen zum Verwalten Ihrer virtuellen Computer mit der Befehlszeilenschnittstelle finden Sie unter [Azure CLI 2.0](/cli/azure/overview).
+Weitere Informationen zum Verwalten Ihrer virtuellen Computer mit der Befehlszeilenschnittstelle finden Sie unter [Azure CLI 2.0](/cli/azure).

@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Azure DDoS-Schutzstandards mithilfe des Azure-Portals | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie die Azure DDoS-Schutzstandardtelemetrie in Azure Monitor verwenden, um einen Angriff zu entschärfen."
+title: Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Azure DDoS Protection Standard-Telemetrie in Azure Monitor verwenden, um einen Angriff zu entschärfen."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: ee418537fb52dbfb3eacca6e99d8572152a60910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 6a5ab1ba44197c0103e1e7d353a116dc01dfc163
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten des Azure DDoS-Schutzstandards mithilfe des Azure-Portals
+# <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals
 
-Erfahren Sie, wie Sie den DDoS-Schutz (Distributed Denial of Service) aktivieren oder deaktivieren und die Telemetrie von Azure DDoS-Schutz Standard verwenden, um einen DDoS-Angriff zu entschärfen. Der DDoS-Schutz Standard schützt Azure-Ressourcen wie virtuelle Computer, Lastenausgleichsmodule und Anwendungsgateways, denen eine [öffentliche Azure-IP-Adresse](virtual-network-public-ip-address.md) zugewiesen ist. Weitere Informationen zum DDoS-Schutz Standard und seinen Funktionen finden Sie unter [Übersicht über den DDoS-Schutz Standard](ddos-protection-overview.md). 
+Erfahren Sie, wie Sie den DDoS-Schutz (Distributed Denial of Service) aktivieren oder deaktivieren und die Telemetrie von Azure DDoS Protection Standard verwenden, um einen DDoS-Angriff zu entschärfen. DDoS Protection Standard schützt Azure-Ressourcen wie virtuelle Computer, Lastenausgleichsmodule und Anwendungsgateways, denen eine [öffentliche Azure-IP-Adresse](virtual-network-public-ip-address.md) zugewiesen ist. Weitere Informationen zum DDoS Protection Standard-Dienst und seinen Funktionen finden Sie unter [Übersicht über DDoS Protection Standard](ddos-protection-overview.md). 
 
 >[!IMPORTANT]
->Der Azure DDoS-Schutzstandard (DDoS-Schutz) befindet sich derzeit in der Vorschauversion. Der DDoS-Schutz wird von einer begrenzten Anzahl von Azure-Ressourcen unterstützt und ist nur in ausgewählten Regionen verfügbar. Eine Liste der verfügbaren Regionen finden Sie unter [Übersicht über den DDoS-Schutz Standard](ddos-protection-overview.md). Sie müssen sich während der eingeschränkten Vorschau [für den Dienst registrieren](http://aka.ms/ddosprotection), um den DDoS-Schutz für Ihr Abonnement zu aktivieren. Nach der Registrierung setzt sich das DDoS-Team von Azure mit Ihnen in Verbindung und führt Sie durch den Aktivierungsprozess. 
+>Azure DDoS Protection Standard (DDoS Protection) befindet sich derzeit in der Vorschauversion. DDoS Protection wird von einer begrenzten Anzahl von Azure-Ressourcen unterstützt und ist nur in ausgewählten Regionen verfügbar. Eine Liste der verfügbaren Regionen finden Sie unter [Übersicht über DDoS Protection Standard](ddos-protection-overview.md). Sie müssen sich während der eingeschränkten Vorschau [für den Dienst registrieren](http://aka.ms/ddosprotection), um DDoS Protection für Ihr Abonnement zu aktivieren. Nach der Registrierung setzt sich das DDoS-Team von Azure mit Ihnen in Verbindung und führt Sie durch den Aktivierungsprozess. 
 
-## <a name="enable-ddos-protection-standard---new-virtual-network"></a>Aktivieren von DDoS-Schutz Standard – Neues virtuelles Netzwerk
+## <a name="enable-ddos-protection-standard---new-virtual-network"></a>Aktivieren von DDoS Protection Standard – Neues virtuelles Netzwerk
 
 1. Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 2. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 3. Klicken Sie auf **Netzwerk** und anschließend auf **Virtuelles Netzwerk**.
-4. Erstellen Sie ein virtuelles Netzwerk mit den ausgewählten Einstellungen. Weitere Informationen zum Erstellen virtueller Netzwerke finden Sie unter [Erstellen eines virtuellen Netzwerks](virtual-networks-create-vnet-arm-pportal.md). Klicken Sie unter **DDoS-Schutz** auf **Aktiviert** und anschließend auf **Erstellen**. Wenn Sie **DDoS-Schutz** nicht angezeigt wird, ist Ihr Abonnement wahrscheinlich für das Feature nicht registriert. Sie müssen die [Registrierung](http://aka.ms/ddosprotection) abschließen und eine Benachrichtigung darüber erhalten, dass Ihr Abonnement für das Feature aktiviert wurde, bevor **DDoS-Schutz** angezeigt wird.
+4. Erstellen Sie ein virtuelles Netzwerk mit den ausgewählten Einstellungen. Weitere Informationen zum Erstellen virtueller Netzwerke finden Sie unter [Erstellen eines virtuellen Netzwerks](manage-virtual-network.md#create-a-virtual-network). Klicken Sie unter **DDoS-Schutz** auf **Aktiviert** und anschließend auf **Erstellen**. Wenn Sie **DDoS-Schutz** nicht angezeigt wird, ist Ihr Abonnement wahrscheinlich für das Feature nicht registriert. Sie müssen die [Registrierung](http://aka.ms/ddosprotection) abschließen und eine Benachrichtigung darüber erhalten, dass Ihr Abonnement für das Feature aktiviert wurde, bevor **DDoS-Schutz** angezeigt wird.
 
     ![Virtuelles Netzwerk erstellen](./media/ddos-protection-manage-portal/ddos-create-vnet.png)   
 
     > [!WARNING]
-    > Beim Auswählen einer Region wählen Sie eine unterstützte Region aus der Liste in der [Übersicht über den Azure DDoS-Schutz Standard](ddos-protection-overview.md) aus. Wenn Sie keine unterstützte Region auswählen, tritt beim Erstellen des virtuellen Netzwerks ein Fehler auf.
+    > Beim Auswählen einer Region wählen Sie eine unterstützte Region aus der Liste in der [Übersicht über Azure DDoS Protection Standard](ddos-protection-overview.md) aus. Wenn Sie keine unterstützte Region auswählen, tritt beim Erstellen des virtuellen Netzwerks ein Fehler auf.
 
-    Eine Warnung besagt, dass für die Aktivierung des DDoS-Schutzes Gebühren anfallen. Während der Vorschauphase fallen für den DDoS-Schutz keine Gebühren an. Gebühren fallen bei allgemeiner Verfügbarkeit an. Sie erhalten 30 Tage vor dem Start der Gebühren und der allgemeinen Verfügbarkeit eine Benachrichtigung.
+    Eine Warnung gibt an, dass für die Aktivierung von DDoS Protection Gebühren anfallen. Während der Vorschauphase fallen für DDoS Protection keine Gebühren an. Gebühren fallen bei allgemeiner Verfügbarkeit an. Sie erhalten 30 Tage vor dem Start der Gebühren und der allgemeinen Verfügbarkeit eine Benachrichtigung.
 
-## <a name="enable-ddos-protection-standard---existing-virtual-network"></a>Aktivieren von DDoS-Schutz Standard – Vorhandenes virtuelles Netzwerk 
+## <a name="enable-ddos-protection-standard---existing-virtual-network"></a>Aktivieren von DDoS Protection Standard – Vorhandenes virtuelles Netzwerk 
 
 1. Klicken Sie auf **Virtuelles Netzwerk** im Menü des Azure-Portals, und wählen Sie anschließend Ihr virtuelles Netzwerk aus.
-2. Klicken Sie auf **DDoS-Schutz** und in der Anzeige *DDoS-Schutz* auf **Aktiviert**. Anschließend klicken Sie auf **Speichern**. Wenn Sie **DDoS-Schutz** nicht angezeigt wird, ist Ihr Abonnement wahrscheinlich für das Feature nicht registriert. Sie müssen die [Registrierung](http://aka.ms/ddosprotection) abschließen und eine Benachrichtigung darüber erhalten, dass Ihr Abonnement für das Feature aktiviert wurde, bevor **DDoS-Schutz** angezeigt wird. 
+2. Klicken Sie auf **DDoS Protection** und in der Anzeige *DDoS Protection* auf **Aktiviert**. Anschließend klicken Sie auf **Speichern**. Wenn Sie **DDoS-Schutz** nicht angezeigt wird, ist Ihr Abonnement wahrscheinlich für das Feature nicht registriert. Sie müssen die [Registrierung](http://aka.ms/ddosprotection) abschließen und eine Benachrichtigung darüber erhalten, dass Ihr Abonnement für das Feature aktiviert wurde, bevor **DDoS-Schutz** angezeigt wird. 
 
     > [!WARNING]
-    > Das virtuelle Netzwerk muss in einer unterstützten Region vorhanden sein. Eine Liste der unterstützten Regionen finden Sie unter [Übersicht über den Azure DDoS-Schutz Standard](ddos-protection-overview.md).
+    > Das virtuelle Netzwerk muss in einer unterstützten Region vorhanden sein. Eine Liste der unterstützten Regionen finden Sie unter [Übersicht über Azure DDoS Protection Standard](ddos-protection-overview.md).
 
-    Eine Warnung besagt, dass für die Aktivierung des DDoS-Schutzes Gebühren anfallen. Während der Vorschauphase fallen für den DDoS-Schutz keine Gebühren an. Gebühren fallen bei allgemeiner Verfügbarkeit an. Sie erhalten 30 Tage vor dem Start der Gebühren und der allgemeinen Verfügbarkeit eine Benachrichtigung.
+    Eine Warnung gibt an, dass für die Aktivierung von DDoS Protection Gebühren anfallen. Während der Vorschauphase fallen für DDoS Protection keine Gebühren an. Gebühren fallen bei allgemeiner Verfügbarkeit an. Sie erhalten 30 Tage vor dem Start der Gebühren und der allgemeinen Verfügbarkeit eine Benachrichtigung.
 
-## <a name="disable-ddos-protection-on-a-virtual-network"></a>Deaktivieren des DDoS-Schutzes in einem virtuellen Netzwerk
+## <a name="disable-ddos-protection-on-a-virtual-network"></a>Deaktivieren von DDoS Protection in einem virtuellen Netzwerk
 
 1. Klicken Sie auf **Virtuelles Netzwerk** im Menü des Azure-Portals, und wählen Sie anschließend Ihr virtuelles Netzwerk aus.
-2. Klicken Sie auf **DDoS-Schutz** und in der Anzeige *DDoS-Schutz* auf **Deaktiviert**. Anschließend klicken Sie auf **Speichern**.
+2. Klicken Sie auf **DDoS Protection** und in der Anzeige *DDoS Protection* auf **Deaktiviert**. Anschließend klicken Sie auf **Speichern**.
 
-## <a name="configure-alerts-on-ddos-protection-metrics"></a>Konfigurieren von Warnungen in DDoS-Schutzmetriken
+## <a name="configure-alerts-on-ddos-protection-metrics"></a>Konfigurieren von Warnungen in DDoS Protection-Metriken
 
-Mithilfe der Warnungskonfiguration von Azure Monitor können Sie jede der verfügbaren DDoS-Schutzmetriken zum Warnen auswählen, wenn während eines Angriffs eine aktive Entschärfung vorhanden ist. Wenn die Bedingungen erfüllt sind, trifft eine E-Mail mit einer Warnung an der angegebenen Adresse ein.
+Mithilfe der Warnungskonfiguration von Azure Monitor können Sie jede der verfügbaren DDoS Protection-Metriken zum Warnen auswählen, wenn während eines Angriffs eine aktive Entschärfung vorhanden ist. Wenn die Bedingungen erfüllt sind, trifft eine E-Mail mit einer Warnung an der angegebenen Adresse ein.
 
 1. Klicken Sie auf **Überwachung** und anschließend auf **Metriken**.
 2. Wählen Sie in der Anzeige *Metriken* die Ressourcengruppe, den Ressourcentyp **Öffentliche IP-Adresse** und Ihre öffentliche Azure-IP-Adresse aus.
@@ -74,7 +74,7 @@ Mithilfe der Warnungskonfiguration von Azure Monitor können Sie jede der verfü
 
 Sie können auch mehr über das [Konfigurieren von Webhooks](../monitoring-and-diagnostics/insights-webhooks-alerts.md) und über [Logik-Apps](../logic-apps/logic-apps-overview.md) für die Erstellung von Warnungen erfahren.
 
-## <a name="configure-logging-on-ddos-protection-standard-metrics"></a>Konfigurieren der Protokollierung von Metriken des DDoS-Schutz Standard
+## <a name="configure-logging-on-ddos-protection-standard-metrics"></a>Konfigurieren der Protokollierung von DDoS Protection Standard-Metriken
 
 1. Klicken Sie auf **Überwachung** und anschließend auf **Diagnoseeinstellungen**.
 2. Wählen Sie in der Anzeige *Metriken* die Ressourcengruppe, den Ressourcentyp **Öffentliche IP-Adresse** und Ihre öffentliche Azure-IP-Adresse aus.
@@ -86,7 +86,7 @@ Es stehen drei Optionen für die Protokollierung zur Verfügung:
 - **An einen Event Hub streamen**: Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe von Event Hub. Dies ermöglicht die Integration mit Splunk und anderen SIEM-Systemen.
 - **An Log Analytics senden**: Schreibt Protokolle in den Dienst Azure OMS Log Analytics.
 
-## <a name="use-ddos-protection-telemetry"></a>Verwenden der DDoS-Schutztelemetrie
+## <a name="use-ddos-protection-telemetry"></a>Verwenden der DDoS Protection-Telemetrie
 
 Die Telemetrie für einen Angriff wird in Echtzeit durch Azure Monitor bereitgestellt. Die Telemetrie ist nur so lange verfügbar, wie eine öffentliche IP-Adresse der Entschärfung unterliegt. Vor oder nach der Entschärfung einer Attacke wird Ihnen keine Telemetrie angezeigt.
 

@@ -1,8 +1,23 @@
- ;--- Titel: Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites | Microsoft-Dokumentation Beschreibung: Richten Sie Webtests in Application Insights ein. Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert.
-services: application-insights documentationcenter: '' author: SoubhagyaDash manager: carmonm
-
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee ms.service: application-insights ms.workload: tbd ms.tgt_pltfrm: ibiza ms.devlang: na ms.topic: get-started-article ms.date: 02/09/2018 ms.author: sdash ; mbullwin
-
+---
+title: "Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites | Microsoft Docs"
+description: "Richten Sie Webtests in Application Insights ein. Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert."
+services: application-insights
+documentationcenter: 
+author: SoubhagyaDash
+manager: carmonm
+ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 02/09/2018
+ms.author: sdash ; mbullwin
+ms.openlocfilehash: d8d6c6a242f63ad891a8134657273ff73dfcde18
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 Nachdem Sie die Web-App oder Website an einen beliebigen Server bereitgestellt haben, können Sie Tests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.

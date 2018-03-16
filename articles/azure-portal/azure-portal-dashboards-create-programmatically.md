@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: d2131a9fbb8fcb77a00045924169420773893f91
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 0e84ff61346f2788cf475cee2783ba2056a091ad
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
 
@@ -27,7 +27,7 @@ In diesem Dokument wird der Vorgang der programmgesteuerten Erstellung und Verö
 
 ## <a name="overview"></a>Übersicht
 
-Freigegebene Dashboards in Azure sind [Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) genau wie virtuelle Computer und Speicherkonten.  Daher können sie zur einfacheren Ressourcenverwaltung programmgesteuert über die [Azure Resource Manager-REST-APIs](/rest/api/), die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/overview), [Azure PowerShell-Befehle](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0) und zusätzlich zu den APIs auch über viele Funktionen im [Azure-Portal](https://portal.azure.com) verwaltet werden.  
+Freigegebene Dashboards in Azure sind [Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) genau wie virtuelle Computer und Speicherkonten.  Daher können sie zur einfacheren Ressourcenverwaltung programmgesteuert über die [Azure Resource Manager-REST-APIs](/rest/api/), die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure), [Azure PowerShell-Befehle](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0) und zusätzlich zu den APIs auch über viele Funktionen im [Azure-Portal](https://portal.azure.com) verwaltet werden.  
 
 Alle diese APIs und Tools bieten Möglichkeiten zum Erstellen, Auflisten, Abrufen, Ändern und Löschen von Ressourcen.  Da Dashboards Ressourcen sind, können Sie Ihre bevorzugte API bzw. Ihr bevorzugtes Tool verwenden.
 

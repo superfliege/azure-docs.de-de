@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 61f84233b90cb3c82ed928d59ad2a090f7eb50b7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 7a56876dfa545d273807444b105de3645dd79d34
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern
 In diesem Artikel werden die wichtigen Unterschiede zwischen der lokalen Bereitstellung von Windows Server Active Directory Domain Services (AD DS) und den Active Directory-Verbunddiensten (AD FS) und der Bereitstellung auf virtuellen Microsoft Azure-Computern beschrieben.
@@ -51,7 +51,7 @@ Sie können das Paket [Azure Virtual Machine Readiness Assessment](https://www.m
 
 Wir empfehlen Ihnen, sich zunächst die Tutorials, Anleitungen und Videos zu den folgenden Themen anzusehen:
 
-* [Konfigurieren eines virtuellen Netzwerks nur für die Cloud im Azure-Portal](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
+* [Konfigurieren eines virtuellen Netzwerks nur für die Cloud im Azure-Portal](../virtual-network/quick-create-portal.md)
 * [Konfigurieren eines Site-to-Site-VPN im Azure-Portal](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 * [Installieren einer neuen Active Directory-Gesamtstruktur auf einem virtuellen Azure-Netzwerk](active-directory-new-forest-virtual-machine.md)
 * [Installieren eines Active Directory-Replikatdomänencontrollers in Azure](active-directory-install-replica-active-directory-domain-controller.md)

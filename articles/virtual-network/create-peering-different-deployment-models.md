@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 033d696f0d219fef66b4acd523f28a35afcf9929
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 8558593633de47ce67adbfe28dc8973fd21f1a4b
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Erstellen eines Peerings virtueller Netzwerke mithilfe verschiedener Bereitstellungsmodelle im selben Abonnement 
 
@@ -29,7 +29,7 @@ Die Schritte zum Erstellen eines Peerings virtueller Netzwerke sind je nachdem u
 
 |Azure-Bereitstellungsmodell  | Azure-Abonnement  |
 |--------- |---------|
-|[Beide mit Resource Manager](virtual-network-create-peering.md) |Identisch|
+|[Beide mit Resource Manager](tutorial-connect-virtual-networks-portal.md) |Identisch|
 |[Beide mit Resource Manager](create-peering-different-subscriptions.md) |Unterschiedlich|
 |[Eines mit Resource Manager, das andere klassisch](create-peering-different-deployment-models-subscriptions.md) |Unterschiedlich|
 
@@ -268,7 +268,7 @@ Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die S
 
 ## <a name="register"></a>Registrieren für die globale Vorschauversion für das Peering für virtuelle Netzwerke
 
-Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der Phase der allgemeinen Verfügbarkeit. Peering für virtuelle Netzwerke in unterschiedlichen Regionen befindet sich derzeit in der Vorschauphase. Verfügbare Regionen finden Sie unter [Azure-Updates](https://azure.microsoft.com/en-us/updates/?product=virtual-network). Für ein regionsübergreifendes Peering von virtuellen Netzwerken müssen Sie sich zunächst für die Vorschauversion registrieren. Führen Sie dazu mithilfe von Azure PowerShell oder über die Azure-Befehlszeilenschnittstelle, innerhalb des Abonnements, in dem sich die einzelnen virtuellen Netzwerke befinden, für die Sie das Peering durchführen möchten, die folgenden Schritte aus:
+Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der Phase der allgemeinen Verfügbarkeit. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen befindet sich derzeit in der Vorschauphase. Verfügbare Regionen finden Sie unter [Updates für virtuelle Netzwerke](https://azure.microsoft.com/en-us/updates/?product=virtual-network). Für ein regionsübergreifendes Peering von virtuellen Netzwerken müssen Sie sich zunächst für die Vorschauversion registrieren. Führen Sie dazu mithilfe von Azure PowerShell oder über die Azure-Befehlszeilenschnittstelle, innerhalb des Abonnements, in dem sich die einzelnen virtuellen Netzwerke befinden, für die Sie das Peering durchführen möchten, die folgenden Schritte aus:
 
 ### <a name="powershell"></a>PowerShell
 

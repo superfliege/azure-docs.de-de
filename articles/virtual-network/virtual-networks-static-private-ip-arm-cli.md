@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c936518c3cc431bb74dcdfe7f967687d3dc71e42
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a9fe7020719079e11150c62068650aa6ca17b056
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe der Azure CLI
 
@@ -35,13 +35,13 @@ Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie könn
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> Die folgenden Beispiele für Azure CLI-Befehle gehen von einer vorhandenen einfachen Umgebung aus. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-arm-cli.md)beschrieben.
+> Die folgenden Beispiele für Azure CLI-Befehle gehen von einer vorhandenen einfachen Umgebung aus. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](quick-create-cli.md)beschrieben.
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Angeben einer statischen privaten IP-Adresse beim Erstellen eines virtuellen Computers
 
 Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen Computer mit dem Namen *DNS01* und der statischen privaten IP-Adresse *192.168.1.101* zu erstellen, führen Sie die folgenden Schritte aus:
 
-1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#az_login) bei einem Azure-Konto an. 
+1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an. 
 
 2. Erstellen Sie mit dem Befehl [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse für den virtuellen Computer. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
 

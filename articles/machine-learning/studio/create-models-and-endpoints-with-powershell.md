@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: garye;haining
-ms.openlocfilehash: 44551908c31151e7d8945a3c7c03303b17d8f059
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.author: haining
+ms.openlocfilehash: 4a4c1c417dabf32aa3a23fef22078ada0d01d9fa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Erstellen vieler Machine Learning-Modelle und Webdienst-Endpunkte in nur einem Experiment mit PowerShell
 Dies ist ein Beispiel für ein häufiges Machine Learning-Problem: Sie möchten viele Modelle erstellen, die denselben Trainingsworkflow haben und für die derselbe Algorithmus verwendet wird. Aber Sie möchten, dass die Modelle unterschiedliche Trainingsdatasets als Eingabe haben. In diesem Artikel erfahren Sie, wie Sie dies in größerem Umfang in Azure Machine Learning Studio mit nur einem Experiment durchführen.
@@ -96,7 +96,7 @@ Sie haben jetzt zehn Endpunkte erstellt, die alle dasselbe trainierte Modell ent
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Aktualisieren der Endpunkte zur Verwendung separater Trainingsdatasets mit PowerShell
 Der nächste Schritt besteht darin, die Endpunkte mit Modellen zu aktualisieren, die basierend auf den individuellen Daten der einzelnen Kunden eindeutig trainiert wurden. Zuerst müssen Sie diese Modelle aber über den Webdienst **Bike Rental Training** erzeugen. Wir kehren zum Webdienst **Bike Rental Training** zurück. Sie müssen seinen BES-Endpunkt zehnmal mit zehn verschiedenen Trainingsdatasets aufrufen, um zehn verschiedene Modelle zu erzeugen. Hierfür verwenden Sie das PowerShell-Cmdlet **InovkeAmlWebServiceBESEndpoint**.
 
-Sie müssen außerdem Anmeldeinformationen für Ihr Blobspeicherkonto in `$configContent` bereitstellen. Dies erfolgt über die Felder `AccountName`, `AccountKey` und `RelativeLocation`. Der `AccountName` kann einer Ihrer Kontonamen sein, die im **Azure-Portal** angezeigt werden (Registerkarte*Speicher*). Nachdem Sie auf ein Speicherkonto geklickt haben, können Sie auf den `AccountKey` zugreifen, indem Sie unten auf die Schaltfläche **Zugriffsschlüssel verwalten** klicken und den *Primären Zugriffsschlüssel*kopieren. `RelativeLocation` ist der Pfad relativ zu Ihrem Speicher, in dem ein neues Modell gespeichert wird. Der Pfad `hai/retrain/bike_rental/` im folgenden Skript verweist beispielsweise auf einen Container namens `hai`, und `/retrain/bike_rental/` sind Unterordner. Derzeit können Sie keine Unterordner über die Portal-UI erstellen, aber dies ist mit [mehreren Azure-Speicher-Explorern](../../storage/common/storage-explorers.md) möglich. Es wird empfohlen, im Speicher wie folgt einen neuen Container zum Speichern der neuen trainierten Modelle (ILEARNER-Dateien) zu erstellen: Klicken Sie unten auf der Speicherseite auf die Schaltfläche **Hinzufügen**, und geben Sie dem Container den Namen `retrain`. Zusammengefasst beziehen sich die erforderlichen Änderungen am folgenden Skript auf `AccountName`, `AccountKey` und `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
+Sie müssen außerdem Anmeldeinformationen für Ihr Blobspeicherkonto in `$configContent` bereitstellen. Dies erfolgt über die Felder `AccountName`, `AccountKey` und `RelativeLocation`. Der `AccountName` kann einer Ihrer Kontonamen sein, die im **Azure-Portal** angezeigt werden (Registerkarte*Speicher*). Nachdem Sie auf ein Speicherkonto geklickt haben, können Sie auf den `AccountKey` zugreifen, indem Sie unten auf die Schaltfläche **Zugriffsschlüssel verwalten** klicken und den *Primären Zugriffsschlüssel*kopieren. `RelativeLocation` ist der Pfad relativ zu Ihrem Speicher, in dem ein neues Modell gespeichert wird. Der Pfad `hai/retrain/bike_rental/` im folgenden Skript verweist beispielsweise auf einen Container namens `hai`, und `/retrain/bike_rental/` sind Unterordner. Derzeit können Sie keine Unterordner über die Benutzeroberfläche des Portals erstellen, aber dies ist mit [mehreren Azure Storage-Explorern](../../storage/common/storage-explorers.md) möglich. Es wird empfohlen, im Speicher wie folgt einen neuen Container zum Speichern der neuen trainierten Modelle (ILEARNER-Dateien) zu erstellen: Klicken Sie unten auf der Speicherseite auf die Schaltfläche **Hinzufügen**, und geben Sie dem Container den Namen `retrain`. Zusammengefasst beziehen sich die erforderlichen Änderungen am folgenden Skript auf `AccountName`, `AccountKey` und `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service

@@ -3,8 +3,8 @@ title: "Ressourcennutzungs-API für Mandanten | Microsoft-Dokumentation"
 description: "Referenz für die Ressourcennutzungs-API, die Azure Stack-Nutzungsinformationen abruft"
 services: azure-stack
 documentationcenter: 
-author: AlfredoPizzirani
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: b9d7c7ee-e906-4978-92a3-a2c52df16c36
 ms.service: azure-stack
@@ -12,15 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2016
-ms.author: alfredop
-ms.openlocfilehash: f2eaf1c766d6c86741cf0fd561c131eacb34d782
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: bc0b9993119342f07c28ed0384c11ae0f15bc439
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tenant-resource-usage-api"></a>Ressourcennutzungs-API für Mandanten
+
 Ein Mandant kann die Mandanten-API verwenden, um seine eigenen Ressourcennutzungsdaten anzuzeigen. Diese API stimmt mit der Azure-Nutzungs-API überein, die sich aktuell in der öffentlichen Vorschau befindet.
 
 Sie können das PowerShell-Cmdlet **Get-UsageAggregates** von Windows verwenden, um Nutzungsdaten wie in Azure abzurufen.
@@ -44,7 +46,7 @@ Die Anforderung ruft detaillierte Nutzungsinformationen für das angeforderte Ab
 | *api-version* |Die Version des Protokolls, dass für diese Anforderung verwendet wird. Sie müssen 2015-06-01-preview verwenden. |
 | *fortsetzungsToken* |Das Token, das durch den letzten Aufruf des Anbieters der Nutzungs-API abgerufen wurde. Dieses Token ist erforderlich, wenn eine Antwort länger als 1000 Zeilen ist und als Textmarke für den Fortschritt fungiert. Falls nicht vorhanden, werden die Daten auf Grundlage der übergebenen Granularität vom Anfang des Tages oder der Stunde abgerufen. |
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&api-version=1.0
 
 ```json
@@ -83,6 +85,7 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 | *instanceData* |Schlüssel-Wert-Paare der genaueren Angaben zu der Instanz (in neuem Format):<br>  *resourceUri*: Vollqualifizierte Ressourcen-ID, die die Ressourcengruppen und den Instanznamen enthält <br>  *location*: Region, in der der Dienst ausgeführt wurde <br>  *tags*: Ressourcentags, die vom Benutzer angegeben werden <br>  *additionalInfo*: Weitere Angaben zur genutzten Ressource, z.B. die Betriebssystemversion oder der Imagetyp |
 | *quantity* |Menge der Ressourcennutzung, die in diesem Zeitraum aufgetreten ist |
 | *meterId* |Eindeutige ID der Verbrauchseinheit: Eine eindeutige ID für die verwendete Ressource (auch als *ResourceID* bezeichnet) |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Ressourcennutzungs-API für Anbieter](azure-stack-provider-resource-api.md)

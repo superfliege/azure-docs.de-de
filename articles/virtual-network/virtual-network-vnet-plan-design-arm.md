@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie virtuelle Netzwerke in Azure basierend
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: 9a0126235c9ff3fec05d7709bdee95ab4832a33b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecdc3a847821fd83718f9cfc42308667460feabc
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Planen und Entwerfen von Azure Virtual Networks
-Das Erstellen eines VNET zum Experimentieren ist einfach. Aber die Wahrscheinlichkeit ist hoch, dass Sie im Laufe der Zeit mehrere VNETs bereitstellen, um die Produktionsanforderungen Ihres Unternehmens zu erfüllen. Mit etwas Planungs- und Entwurfsarbeit können Sie beim Bereitstellen von VNETs und beim Herstellen einer Verbindung mit den Ressourcen effektiver vorgehen. Falls Sie mit VNETs noch nicht vertraut sind, sollten Sie sich die [Informationen zu VNETs](virtual-networks-overview.md) und die [Informationen zur Bereitstellung](virtual-networks-create-vnet-arm-pportal.md) durchlesen, bevor Sie fortfahren.
+Das Erstellen eines VNET zum Experimentieren ist einfach. Aber die Wahrscheinlichkeit ist hoch, dass Sie im Laufe der Zeit mehrere VNETs bereitstellen, um die Produktionsanforderungen Ihres Unternehmens zu erfüllen. Mit etwas Planungs- und Entwurfsarbeit können Sie beim Bereitstellen von VNETs und beim Herstellen einer Verbindung mit den Ressourcen effektiver vorgehen. Falls Sie mit VNETs noch nicht vertraut sind, sollten Sie sich die [Informationen zu VNETs](virtual-networks-overview.md) und die [Informationen zur Bereitstellung](quick-create-portal.md) durchlesen, bevor Sie fortfahren.
 
 ## <a name="plan"></a>Plan
 Ein gutes Verständnis von Azure-Abonnements, -Regionen und -Netzwerkressourcen ist wichtig, um erfolgreich zu sein. Sie können die unten angegebene Liste mit Überlegungen als Ausgangspunkt verwenden. Nachdem Sie sich damit vertraut gemacht haben, können Sie die Anforderungen für Ihren Netzwerkentwurf definieren.
@@ -58,10 +58,10 @@ Mit VNET- und Subnetzressourcen können Sie eine Sicherheitsbegrenzung für in A
 
 VNets umfassen die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Einschränkungen |
+| Eigenschaft | BESCHREIBUNG | Einschränkungen |
 | --- | --- | --- |
 | **name** |VNet-Name |Zeichenfolge mit bis zu 80 Zeichen. Sie kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten. Sie muss mit einem Buchstaben oder einer Zahl beginnen. Sie muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden. Sie kann Groß- oder Kleinbuchstaben enthalten. |
-| **location** |Azure-Standort (auch als Region bezeichnet). |Dies muss einer der gültigen Azure-Standorte sein. |
+| **Speicherort** |Azure-Standort (auch als Region bezeichnet). |Dies muss einer der gültigen Azure-Standorte sein. |
 | **addressSpace** |Auflistung der Adresspräfixe, aus denen das VNET besteht, in CIDR-Notation. |Es muss ein Array mit gültigen CIDR-Adressblöcken sein, einschließlich öffentlicher IP-Adressbereiche. |
 | **Subnetze** |Auflistung von Subnetzen, aus denen das VNet besteht |Siehe Tabelle mit den Subnetzeigenschaften unten. |
 | **dhcpOptions** |Objekt, das eine einzelne erforderliche Eigenschaft mit dem Namen **dnsServers**enthält. | |
@@ -71,10 +71,10 @@ Ein Subnetz ist eine untergeordnete Ressource eines VNet und hilft, die Segmente
 
 Subnetze umfassen die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Einschränkungen |
+| Eigenschaft | BESCHREIBUNG | Einschränkungen |
 | --- | --- | --- |
 | **name** |Subnetzname |Zeichenfolge mit bis zu 80 Zeichen. Sie kann Buchstaben, Zahlen, Unterstriche, Punkte und Bindestriche enthalten. Sie muss mit einem Buchstaben oder einer Zahl beginnen. Sie muss mit einem Buchstaben, einer Zahl oder einem Unterstrich enden. Sie kann Groß- oder Kleinbuchstaben enthalten. |
-| **location** |Azure-Standort (auch als Region bezeichnet). |Dies muss einer der gültigen Azure-Standorte sein. |
+| **Speicherort** |Azure-Standort (auch als Region bezeichnet). |Dies muss einer der gültigen Azure-Standorte sein. |
 | **addressPrefix** |Einzelnes Adresspräfix für das Subnetz in CIDR-Notation |Es muss ein einzelner CIDR-Block sein, der Teil von einem der VNET-Adressbereiche ist. |
 | **networkSecurityGroup** |Auf das Subnetz angewendete NSG | |
 | **routeTable** |Auf das Subnetz angewendete Routentabelle | |
@@ -208,16 +208,16 @@ Außerdem müssen Sie den Adressbereich für jedes VNET angeben. Da Sie Konnekti
 
 | **Abonnement** | **VNET** | **Azure-Region** | **Adressraum** |
 | --- | --- | --- | --- |
-| BU1 |ProdBU1US1 |USA (West) |172.16.0.0/16 |
+| BU1 |ProdBU1US1 |USA (Westen) |172.16.0.0/16 |
 | BU1 |ProdBU1US2 |USA (Ost) |172.17.0.0/16 |
 | BU1 |ProdBU1EU1 |Nordeuropa |172.18.0.0/16 |
-| BU1 |ProdBU1EU2 |Westeuropa |172.19.0.0/16 |
-| BU1 |TestDevBU1 |USA (West) |172.20.0.0/16 |
-| BU2 |TestDevBU2 |USA (West) |172.21.0.0/16 |
-| BU2 |ProdBU2US1 |USA (West) |172.22.0.0/16 |
+| BU1 |ProdBU1EU2 |Europa, Westen |172.19.0.0/16 |
+| BU1 |TestDevBU1 |USA (Westen) |172.20.0.0/16 |
+| BU2 |TestDevBU2 |USA (Westen) |172.21.0.0/16 |
+| BU2 |ProdBU2US1 |USA (Westen) |172.22.0.0/16 |
 | BU2 |ProdBU2US2 |USA (Ost) |172.23.0.0/16 |
 | BU2 |ProdBU2EU1 |Nordeuropa |172.24.0.0/16 |
-| BU2 |ProdBU2EU2 |Westeuropa |172.25.0.0/16 |
+| BU2 |ProdBU2EU2 |Europa, Westen |172.25.0.0/16 |
 
 **Anzahl der Subnetze und Netzwerksicherheitsgruppen**
 

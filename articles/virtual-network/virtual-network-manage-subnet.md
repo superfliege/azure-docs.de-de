@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: f8b60a27e760ae74c7f068844fad1ae0d4324366
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 902c0eee88f0de8a20b9c8bf9c0dae6e3c3a7d79
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke
 
-Erfahren Sie, wie Sie Subnetze virtueller Netzwerke hinzufügen, ändern oder löschen. Wenn Sie mit virtuellen Netzwerken nicht vertraut sind, sollten Sie vor dem Hinzufügen, Ändern oder Löschen eines Subnetzes die Artikel [Übersicht über Azure Virtual Network](virtual-networks-overview.md) und [Erstellen, Ändern oder Löschen von virtuellen Netzwerken](virtual-network-manage-network.md) lesen. Alle in einem virtuellen Netzwerk bereitgestellten Azure-Ressourcen werden in einem Subnetz innerhalb eines virtuellen Netzwerks bereitgestellt.
+Erfahren Sie, wie Sie Subnetze virtueller Netzwerke hinzufügen, ändern oder löschen. Wenn Sie mit virtuellen Netzwerken nicht vertraut sind, sollten Sie vor dem Hinzufügen, Ändern oder Löschen eines Subnetzes die Artikel [Übersicht über Azure Virtual Network](virtual-networks-overview.md) und [Erstellen, Ändern oder Löschen von virtuellen Netzwerken](manage-virtual-network.md) lesen. Alle in einem virtuellen Netzwerk bereitgestellten Azure-Ressourcen werden in einem Subnetz innerhalb eines virtuellen Netzwerks bereitgestellt.
  
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -36,7 +36,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 ## <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes
 
-1. Geben Sie oben im Portal *virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
+1. Geben Sie oben im Portal *Virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
 2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk aus, dem Sie ein Subnetz hinzufügen möchten.
 3. Wählen Sie unter **EINSTELLUNGEN** die Option **Subnetze** aus.
 4. Wählen Sie **+ Subnetz** aus.
@@ -44,7 +44,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
     - **Name:** Der Name muss innerhalb des virtuellen Netzwerks eindeutig sein.
     - **Adressbereich:** Der Bereich muss innerhalb des Adressraums für das virtuelle Netzwerk eindeutig sein. Der Bereich darf keine Überschneidungen mit anderen Subnetzadressbereichen innerhalb des virtuellen Netzwerks aufweisen. Der Adressraum muss mithilfe der CIDR-Notation (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing) angegeben werden. In einem virtuellen Netzwerk mit dem Adressraum 10.0.0.0/16 können Sie beispielsweise für ein Subnetz den Adressraum 10.0.0.0/24 definieren. Der kleinste Bereich, den Sie angeben können, ist /29, der acht IP-Adressen für das Subnetz bereitstellt. Azure reserviert die erste und letzte Adresse in jedem Subnetz aus Gründen der Protokollkonformität. Drei weitere Adressen sind für die Nutzung durch Azure-Dienste reserviert. Demzufolge führt das Einrichten eines Subnetzes mit dem Adressbereich /29 zu drei nutzbaren IP-Adressen im Subnetz. Wenn Sie ein virtuelles Netzwerk mit einem VPN-Gateway verbinden möchten, müssen Sie ein Gatewaysubnetz erstellen. Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) im Abschnitt „Gatewaysubnetz“. Unter bestimmten Bedingungen können Sie den Adressbereich ändern, nachdem das Subnetz hinzugefügt wurde. Informationen zum Ändern des Adressbereichs eines Subnetzes finden Sie im Abschnitt [Ändern der Subnetzeinstellungen](#change-subnet-settings).
     - **Netzwerksicherheitsgruppe:** Sie können einem Subnetz keine oder eine vorhandene Netzwerksicherheitsgruppe zuordnen, um ein- und ausgehenden Netzwerkdatenverkehr für das Subnetz zu filtern. Die Netzwerksicherheitsgruppe muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Erfahren Sie mehr über [Netzwerksicherheitsgruppen](security-overview.md) und das [Erstellen einer Netzwerksicherheitsgruppe](virtual-networks-create-nsg-arm-pportal.md).
-    - **Routingtabelle:** Sie können einem Subnetz keine oder eine vorhandene Routingtabelle zuordnen, um die Weiterleitung von Netzwerkdatenverkehr an andere Netzwerke zu steuern. Die Routingtabelle muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Erfahren Sie mehr über [Azure-Routing](virtual-networks-udr-overview.md) und das [Erstellen einer Routingtabelle](create-user-defined-route-portal.md).
+    - **Routingtabelle:** Sie können einem Subnetz keine oder eine vorhandene Routingtabelle zuordnen, um die Weiterleitung von Netzwerkdatenverkehr an andere Netzwerke zu steuern. Die Routingtabelle muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Erfahren Sie mehr über [Azure-Routing](virtual-networks-udr-overview.md) und das [Erstellen einer Routingtabelle](tutorial-create-route-table-portal.md).
     - **Dienstendpunkte:** Für ein Subnetz können keine oder mehrere Dienstendpunkte aktiviert sein. Zum Aktivieren eines Dienstendpunkts für einen Dienst wählen Sie Dienste, für die Sie Dienstendpunkte aktivieren möchten, in der Liste **Dienste** aus. Zum Entfernen eines Dienstendpunkts heben Sie die Auswahl des Diensts auf, für den der Dienstendpunkt entfernt werden soll. Weitere Informationen zu Dienstendpunkten finden Sie unter der Übersicht über [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md). Nach dem Aktivieren eines Dienstendpunkts für einen Dienst müssen Sie auch Netzwerkzugriff für das Subnetz für eine mit dem Dienst erstellte Ressource aktivieren. Beispiel: Wenn Sie den Dienstendpunkt für *Microsoft.Storage* aktivieren, müssen Sie auch Netzwerkzugriff auf alle Azure Storage-Konten aktivieren, auf die Netzwerkzugriff gewährt werden soll. Ausführliche Informationen zum Aktivieren des Netzwerkzugriffs auf Subnetze, für die ein Dienstendpunkt aktiviert ist, finden Sie in der Dokumentation zum jeweiligen Dienst, für den Sie den Dienstendpunkt aktiviert haben.
 6. Um das Subnetz dem ausgewählten virtuellen Netzwerk hinzuzufügen, wählen Sie **OK**.
 
@@ -74,7 +74,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 Sie können ein Subnetz erst löschen, wenn es keine Ressourcen mehr enthält. Falls das Subnetz noch Ressourcen enthält, müssen Sie diese Ressourcen zunächst löschen, bevor das Subnetz gelöscht werden kann. Die Schritte zum Löschen einer Ressource variieren abhängig von der Ressource. Informationen zum Löschen von Ressourcen in Subnetzen finden Sie in der Dokumentation zum jeweiligen Ressourcentyp, den Sie löschen möchten.
 
-1. Geben Sie oben im Portal *virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
+1. Geben Sie oben im Portal *Virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
 2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk mit dem Subnetz aus, das Sie löschen möchten.
 3. Wählen Sie unter **EINSTELLUNGEN** die Option **Subnetze** aus.
 4. Wählen Sie in der Liste der Subnetze auf der rechten Seite **...** für das Subnetz, das Sie löschen möchten.

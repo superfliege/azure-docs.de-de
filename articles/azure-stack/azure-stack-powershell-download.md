@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 02/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: e730df58c54f7804d77b052a699d827bb82e5204
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 219fd8e4e164df8c3002044719a90a7be56a9edf
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Herunterladen von Azure Stack-Tools von GitHub
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 **AzureStack-Tools** ist ein GitHub-Repository, das PowerShell-Module zum Verwalten und Bereitstellen von Ressourcen für Azure Stack hostet. Sie können diese PowerShell-Module in das Azure Stack Development Kit oder in einen Windows-basierten externen Client herunterladen und verwenden, wenn Sie planen, VPN-Konnektivität einzurichten. Um diese Tools zu erhalten, klonen Sie das GitHub-Repository, oder laden Sie den Ordner **AzureStack-Tools** herunter. Führen Sie dazu das folgende Skript aus:
 
@@ -31,6 +31,7 @@ ms.lasthandoff: 12/11/2017
 cd \
 
 # Download the tools archive.
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip
@@ -49,7 +50,7 @@ cd AzureStack-Tools-master
 
 Das Repository **AzureStack-Tools** umfasst PowerShell-Module, die die folgenden Funktionen für Azure Stack unterstützen:  
 
-| Funktionalität | Beschreibung | Wer kann dieses Modul verwenden? |
+| Funktionalität | BESCHREIBUNG | Wer kann dieses Modul verwenden? |
 | --- | --- | --- |
 | [Cloudfunktionen](user/azure-stack-validate-templates.md) | Verwenden Sie dieses Modul, um die Cloudfunktionen einer Cloud zu nutzen. Mithilfe dieses Moduls können Sie z.B. Cloudfunktionen wie die API-Version und Azure Resource Manager-Ressourcen abrufen. Mithilfe dieses Moduls können Sie auch die VM-Erweiterungen für Azure Stack und Azure-Clouds abrufen. | Cloudoperatoren und Benutzer |
 | [Azure Stack-Computeverwaltung](azure-stack-add-vm-image.md) | Mit diesem Modul können Sie dem Azure Stack-Marketplace ein VM-Image hinzufügen bzw. dieses daraus entfernen. | Cloudoperatoren |

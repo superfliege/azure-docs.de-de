@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 6965e80cf10b732d4d0a8fb78447f188c133979d
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 7b9901ee3478cb193c808b65d2dbbcf8b596a3c1
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="managed-service-identity-preview"></a>Verwaltete Dienstidentität (Vorschau)
 
@@ -62,17 +62,17 @@ Die verwaltete Dienstidentität der Webanwendung verfügt jetzt über Zugriff au
 
 ### <a name="run-the-app"></a>Ausführen der App
 
-Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendung. Sie können auch den Webanwendungscode aus [diesem GitHub-Repository](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity) verwenden. 
+Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendung. Sie können auch den Webanwendungscode aus [diesem GitHub-Repository](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity) verwenden.
 
 Die Seite „Default.aspx“ ist Ihre Zielseite. Sie finden den Code in der Datei „Default.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen**, mit denen eine Verbindung mit Service Bus hergestellt wird, um Nachrichten zu senden oder zu empfangen.
 
-Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) initialisiert wird. Der Code verwendet nicht den SAS-Tokenanbieter (Shared Access Signature), sondern erstellt mit dem Aufruf `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` einen Tokenanbieter für die verwaltete Dienstidentität. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom MSI-Kontext zu Service Bus und der Autorisierungshandshake werden automatisch vom Tokenanbieter verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
+Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) initialisiert wird. Der Code verwendet nicht den SAS-Tokenanbieter (Shared Access Signature), sondern erstellt mit dem Aufruf `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` einen Tokenanbieter für die verwaltete Dienstidentität. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom MSI-Kontext zu Service Bus und der Autorisierungshandshake werden automatisch vom Tokenanbieter verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
 
 Nachdem Sie diese Änderungen vorgenommen haben, veröffentlichen Sie die Anwendung und führen sie aus. Eine einfache Möglichkeit, die richtigen Veröffentlichungsdaten zu erhalten, besteht darin, ein Veröffentlichungsprofil herunterzuladen und in Visual Studio zu importieren:
 
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
-Um Nachrichten zu senden oder zu empfangen, geben Sie den Namen des Namespace und der von Ihnen erstellten Entität ein, und klicken Sie entweder auf **Senden** oder **Empfangen**. 
+Um Nachrichten zu senden oder zu empfangen, geben Sie den Namen des Namespace und der von Ihnen erstellten Entität ein, und klicken Sie entweder auf **Senden** oder **Empfangen**.
  
 Beachten Sie, dass die verwaltete Dienstidentität nur innerhalb der Azure-Umgebung und nur in der App Service-Bereitstellung funktioniert, in der Sie sie konfiguriert haben. Beachten Sie auch, dass verwaltete Dienstidentitäten derzeit noch nicht mit App Service-Bereitstellungsslots funktionieren.
 

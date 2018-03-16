@@ -6,18 +6,18 @@ author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
-ms.date: 01/03/2018
+ms.date: 03/02/2018
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: 78813cfbfc9d28e9578f1970083e17d423e071b5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Hybrididentitätslösungen
 Hybrid-Identitätslösungen mit [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ermöglichen es Ihnen, lokale Verzeichnisobjekte mit Azure AD zu synchronisieren, während Sie Ihre Benutzer weiterhin lokal verwalten. Die erste Entscheidung bei der Planung der Synchronisierung Ihres lokalen Windows Server Active Directory mit Azure AD ist, ob Sie synchronisierte Identitäten oder einen Identitätsverbund verwenden möchten. Mit synchronisierten Identitäten (und optional Kennworthashes) können Ihre Benutzer dasselbe Kennwort zum Zugreifen auf lokale und cloudbasierte Organisationsressourcen verwenden. Für die Anforderungen erweiterter Szenarien wie einmaliges Anmelden (Single-Sign-On, SSO) oder lokales MFA müssen Sie Active Directory-Verbunddienste (AD FS) für den Identitätsverbund bereitstellen. 
@@ -50,9 +50,6 @@ Die Pass-Through-Authentifizierung kann mit Azure AD Connect konfiguriert werden
 
 - Windows Server 2012 R2 oder höher
 - Mitglied einer Domäne in der Gesamtstruktur, über die Benutzer überprüft werden
-
-Die Pass-Through-Authentifizierung wird zurzeit nicht bei Verwendung von Windows 10-Geräten in Azure AD unterstützt. Sie können jedoch die Kennworthash-Synchronisierung als automatisches Fallback zur Unterstützung der genannten Windows 10- und Legacyclients verwenden. Während der Vorschau ist die Kennworthashsynchronisierung standardmäßig aktiviert, wenn die Pass-Through-Authentifizierung als Anmeldeoption in Azure AD Connect ausgewählt wird.
-
 
 ## <a name="federated-identity-ad-fs"></a>Identitätsverbund (AD FS)
 Zur besseren Steuerung des Zugriffs auf Office 365 und andere Clouddienste durch Benutzer können Sie die Verzeichnissynchronisierung mit einmaligem Anmelden (SSO) über [Active Directory-Verbunddienste (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server-2016) einrichten. Durch den Identitätsverbund der Anmeldevorgänge Ihrer Benutzer mit AD FS wird die Authentifizierung an einen lokalen Server delegiert, der die Anmeldeinformationen des Benutzers überprüft. In diesem Modell werden lokale Active Directory-Anmeldeinformationen niemals an Azure AD übergeben.

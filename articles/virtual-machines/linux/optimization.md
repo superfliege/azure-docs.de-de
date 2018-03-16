@@ -16,17 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: e143ed1e6bcece7efac9126c8e46408e7a88a5c0
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: d3ee98253a69580e5ecafb4e117ef93f7c981416
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimieren virtueller Linux-Computer in Azure
 Virtuelle Linux-Maschinen (VM) lassen sich einfach über die Befehlszeile oder über das Portal erstellen. In diesem Tutorial erfahren Sie, wie Sie mit virtuellen Computern im Rahmen der Microsoft Azure Platform optimale Ergebnisse erzielen. In diesem Thema wird eine Ubuntu Server-VM verwendet, aber Sie können virtuelle Linux-Computer auch mithilfe [Ihrer eigenen Images als Vorlagen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)erstellen.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Dieses Thema setzt voraus, dass Sie bereits über ein funktionierendes Azure-Abonnement verfügen ([Anmeldung für eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und einen virtuellen Computer in Ihrem Azure-Abonnement bereitgestellt haben. Stellen Sie sicher, dass die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert ist und dass Sie mit [az login](/cli/azure/#az_login) bei Ihrem Azure-Abonnement angemeldet sind, bevor Sie [einen virtuellen Computer erstellen](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Dieses Thema setzt voraus, dass Sie bereits über ein funktionierendes Azure-Abonnement verfügen ([Anmeldung für eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und einen virtuellen Computer in Ihrem Azure-Abonnement bereitgestellt haben. Stellen Sie sicher, dass die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert ist und dass Sie mit [az login](/cli/azure/reference-index#az_login) bei Ihrem Azure-Abonnement angemeldet sind, bevor Sie [einen virtuellen Computer erstellen](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Betriebssystem-Datenträger von Azure
 Nach dem Erstellen eines virtuellen Linux-Computers in Azure sind diesem zwei Datenträger zugeordnet. **/dev/sda** ist der Betriebssystem-Datenträger, **/dev/sdb** ist der temporäre Datenträger.  Verwenden Sie den Betriebssystem-Hauptdatenträger (**/dev/sda**) ausschließlich für das Betriebssystem. Er ist für den schnellen Start des virtuellen Computers optimiert und bietet keine gute Leistung für Ihre Workloads. Es empfiehlt sich, dem virtuellen Computer mindestens einen Datenträger anzufügen, um eine beständige und optimierte Datenspeicherung zu erhalten. 

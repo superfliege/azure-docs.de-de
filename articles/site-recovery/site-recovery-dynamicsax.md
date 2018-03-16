@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/09/2018
 ms.author: asgang
-ms.openlocfilehash: 8ffc4a5a573b1c5951fab98fb766aed36f626fe4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b390f6c62a6ddf8c800f79b42a36dac2c4f4c908
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Replizieren einer Dynamics AX-Anwendung mit mehreren Schichten mithilfe von Azure Site Recovery
 
@@ -57,7 +57,7 @@ Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Dynamic
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Aktivieren der Notfallwiederherstellung der Dynamics AX-Anwendung mithilfe von Site Recovery
 ### <a name="protect-your-dynamics-ax-application"></a>Schützen Sie Ihre Dynamics AX-Anwendung
-Um die vollständige Replikation und Wiederherstellung der Anwendung aktivieren zu können, muss jede Komponente von Dynamics AX geschützt werden. 
+Um die vollständige Replikation und Wiederherstellung der Anwendung aktivieren zu können, muss jede Komponente von Dynamics AX geschützt werden.
 
 ### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Einrichten der Replikation von Active Directory und DNS
 
@@ -98,7 +98,7 @@ Sie können den virtuellen Computer in den replizierten Elementen auswählen, um
 
 * Geben Sie bei Verwendung einer statischen IP-Adresse im Textfeld **Ziel-IP** die IP an, die vom virtuellen Computer genutzt werden soll.
 
-    ![Netzwerkeinstellungen ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png).
+    ![Netzwerkeinstellungen ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)zu erstellen und zu verwalten.
 
 
 ### <a name="5-create-a-recovery-plan"></a>5. Erstellen eines Wiederherstellungsplans
@@ -137,7 +137,7 @@ Fügen Sie (über Azure Automation) hinter der Application Object Server-VM-Grup
 
 ### <a name="perform-a-test-failover"></a>Ausführen eines Testfailovers
 
-Weitere spezifische Informationen zu Active Directory während des Testfailovers finden Sie im Begleithandbuch „Lösung für Notfallwiederherstellung für Active Directory“. 
+Weitere spezifische Informationen zu Active Directory während des Testfailovers finden Sie im Begleithandbuch „Lösung für Notfallwiederherstellung für Active Directory“.
 
 Weitere spezifische Informationen zu SQL Server während des Testfailovers finden Sie unter [Replizieren von Anwendungen mit SQL Server und Azure Site Recovery](site-recovery-sql.md).
 

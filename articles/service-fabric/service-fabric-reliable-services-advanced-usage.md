@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
+ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 694d75807d978ece6296b945bf348f08688d3b5d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 48504f258b13a7ff5f4c91db2d9de09269e92424
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="advanced-usage-of-the-reliable-services-programming-model"></a>Erweiterte Verwendung des Reliable Services-Programmiermodells
 Azure Service Fabric vereinfacht das Schreiben und Verwalten zuverlässiger zustandsloser und zustandsbehafteter Dienste (Reliable Services). In diesem Handbuch wird die erweiterte Verwendung von Reliable Services erläutert, die Ihnen mehr Kontrolle über und Flexibilität für Ihre Dienste ermöglicht. Machen Sie sich vor dem Lesen dieses Handbuchs mit dem [Reliable Services-Programmiermodell](service-fabric-reliable-services-introduction.md)vertraut.
@@ -40,11 +40,6 @@ Obwohl `RunAsync` in fast allen Fällen ausreichen sollte, sind die Ereignisse �
 * `void OnAbort() - C# / void onAbort() - Java` „OnAbort“ wird aufgerufen, wenn das Herunterfahren der Instanz des zustandslosen Diensts erzwungen wird. Diese Methode wird im Allgemeinen verwendet, wenn auf dem Knoten ein dauerhafter Fehler erkannt wird oder Service Fabric den Lebenszyklus der Dienstinstanz aufgrund von internen Fehlern nicht zuverlässig verwalten kann.
 
 ## <a name="stateful-service-replica-lifecycle"></a>Lebenszyklus des zustandsbehafteten Dienstreplikats
-
-> [!NOTE]
-> Zustandsbehaftete zuverlässige Dienste werden in Java noch nicht unterstützt.
->
->
 
 Der Lebenszyklus eines zustandsbehafteten Dienstsreplikats ist viel komplizierter als der einer zustandslosen Dienstinstanz. Zusätzlich zu den Ereignissen „Öffnen“, „Schließen“ und „Abbrechen“ durchläuft ein zustandsbehafteter Dienst während seiner Lebensdauer Rollenänderungen. Wenn ein zustandsbehaftetes Dienstreplikat die Rolle wechselt, wird das Ereignis `OnChangeRoleAsync` ausgelöst:
 

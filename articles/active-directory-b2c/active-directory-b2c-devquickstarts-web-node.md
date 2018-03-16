@@ -13,11 +13,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: xerners
-ms.openlocfilehash: b4a5db7e6769d7ebb0bcf0287b3a1bfb7932984a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 25a2bef2f3cc6f210c574f920164b8d69b0d90db
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Hinzufügen der Anmeldung bei einer Node.js-Web-App
 
@@ -32,7 +32,7 @@ Sie müssen folgende Schritte durchführen:
 3. Verwenden Sie Passport zur Ausgabe von An- und Abmeldeanforderungen für Azure AD.
 4. Drucken Sie die Benutzerdaten.
 
-Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS)verwaltet. Laden Sie dazu das [App-Gerüst als ZIP-Datei](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) herunter. Sie können das Gerüst auch klonen:
+Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS)verwaltet. Laden Sie dazu das [App-Gerüst als ZIP-Datei](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/master.zip) herunter. Sie können das Gerüst auch klonen:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git```
 
@@ -189,7 +189,7 @@ var findByEmail = function(email, fn) {
 
 ```
 
-Fügen Sie den Code hinzu, um das Express-Modul zu laden. Im Folgenden sehen Sie, dass die Standardmuster `/views` und `/routes` verwendet werden, die Express bereitstellt.
+Fügen Sie den Code hinzu, um die Express-Engine zu laden. Im Folgenden sehen Sie, dass die Standardmuster `/views` und `/routes` verwendet werden, die Express bereitstellt.
 
 ```javascript
 
@@ -216,7 +216,7 @@ app.configure(function() {
 
 ```
 
-Fügen Sie die `POST`-Routen hinzu, die die eigentlichen Anmeldeanforderungen an das Modul `passport-azure-ad` übergeben:
+Fügen Sie die `POST`-Routen hinzu, die die eigentlichen Anmeldeanforderungen an die Engine `passport-azure-ad` übergeben:
 
 ```javascript
 

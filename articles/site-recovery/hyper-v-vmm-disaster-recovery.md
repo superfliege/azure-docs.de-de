@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: bf6d7c8b831e670db9fff28218c8f36391a73c9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 13dcc0794c1d89bd27c79cbe6636397da4f008f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Einrichten der Notfallwiederherstellung für Hyper-V-VMs an einem sekundären lokalen Standort
 
@@ -33,9 +33,8 @@ Dieser Artikel veranschaulicht das Einrichten der Notfallwiederherstellung an ei
 So führen Sie dieses Szenario durch
 
 - Überprüfen Sie [Architektur und Komponenten des Szenarios](hyper-v-vmm-architecture.md).
-- Überprüfen Sie die [Supportanforderungen](site-recovery-support-matrix-to-sec-site.md) für alle Komponenten.
-- Stellen Sie sicher, dass VMM-Server und Hyper-V-Hosts den [Supportanforderungen](site-recovery-support-matrix-to-sec-site.md) entsprechen.
-- Überprüfen Sie, ob die virtuellen Computer, die Sie replizieren möchten, die Anforderungen für [Unterstützung replizierter Computer](site-recovery-support-matrix-to-sec-site.md#support-for-replicated-machine-os-versions) erfüllen.
+- Stellen Sie sicher, dass VMM-Server und Hyper-V-Hosts den [Supportanforderungen](hyper-v-vmm-secondary-support-matrix.md) entsprechen.
+- Überprüfen Sie, ob die virtuellen Computer, die Sie replizieren möchten, die Anforderungen für [Unterstützung replizierter Computer](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support) erfüllen.
 - Bereiten Sie VMM-Server für die Netzwerkzuordnung vor.
 
 ### <a name="prepare-for-network-mapping"></a>Bereiten Sie sich auf die Netzwerkzuordnung vor
@@ -96,7 +95,6 @@ Installieren Sie den Azure Site Recovery-Anbieter auf den VMM-Servern, und ermit
 
     ![Installationsspeicherort](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. Prüfen Sie unter **Tresorname**den Namen des Tresors, in dem der Server registriert wird. Klicken Sie auf **Weiter**.
-
 7. Geben Sie unter **Proxyverbindung** an, wie der auf dem VMM-Server ausgeführte Anbieter eine Verbindung mit Azure herstellen soll.
    - Der Anbieter kann entweder eine direkte oder eine proxybasierte Internetverbindung herstellen. Geben Sie ggf. Proxyeinstellungen an.
    - Bei Verwendung eines Proxys wird automatisch ein ausführendes VMM-Konto (DRAProxyAccount) mit den angegebenen Proxyanmeldeinformationen erstellt. Konfigurieren Sie den Proxyserver so, dass dieses Konto erfolgreich authentifiziert werden kann. Die Einstellungen für ausführende Konten können über die VMM-Konsole unter **Einstellungen** > **Sicherheit** > **Ausführende Konten** geändert werden.

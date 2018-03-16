@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 0319a7b9248dec9d7cdabba9c18a25463d94284b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 47cca0c3b6b7010323dd816cdb863c652516bfe5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics (OMS)
 Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Microsoft Operations Management Suite (OMS) Log Analytics-Arbeitsbereich senden. Auftragsprotokolle und -streams werden im Azure-Portal oder mit PowerShell für einzelne Aufträge angezeigt, d.h., Sie können einfache Untersuchen durchführen. Log Analytics bietet folgende Vorteile:
@@ -33,7 +33,7 @@ Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Microsof
 Zum Senden Ihrer Automation-Protokolle an Log Analytics benötigen Sie:
 
 * Die [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)-Version von November 2016 (v2.3.0) oder höher.
-* Einen Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md). 
+* Einen Log Analytics-Arbeitsbereich Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md). 
 * Die Ressourcen-ID für Ihr Azure Automation-Konto
 
 
@@ -69,7 +69,7 @@ Wenn Sie den *Namen* Ihres Automation-Kontos suchen müssen, wählen Sie im Azur
 
 Nach dem Ausführen dieses Skripts werden in Log Analytics innerhalb von zehn Minuten Datensätze neu geschriebener Auftragsprotokolle oder -streams angezeigt.
 
-Um die Protokolle anzuzeigen, führen Sie die folgende Abfrage in der Log Analytics-Protokollsuche durch: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION""`
+Um die Protokolle anzuzeigen, führen Sie die folgende Abfrage in der Log Analytics-Protokollsuche durch: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Überprüfen der Konfiguration
 Vergewissern Sie sich, dass Ihr Automation-Konto Protokolle an Ihren Log Analytics-Arbeitsbereich sendet. Überprüfen Sie hierzu mithilfe des folgenden PowerShell-Befehls, ob die Diagnose für das Automation-Konto ordnungsgemäß konfiguriert ist:
@@ -171,7 +171,7 @@ Sie erhalten einen besseren Einblick in den Status Ihrer Automation-Aufträge, w
 Log Analytics bietet eine höhere operative Transparenz für Ihre Automation-Aufträge, sodass schneller auf Vorfälle reagiert werden kann.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Erstellen verschiedener Suchabfragen und zum Überprüfen der Automation-Auftragsprotokolle mit Log Analytics finden Sie unter [Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md).
+* Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation-Auftragsprotokolle mit Log Analytics finden Sie unter [Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md).
 * Unter [Runbookausgabe und -meldungen](automation-runbook-output-and-messages.md) erfahren Sie, wie Sie die Ausgabe und Fehlermeldungen von Runbooks erstellen und abrufen.
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
 * Weitere Informationen zu OMS Log Analytics und Datenerfassungsquellen finden Sie unter [Herstellen einer Verbindung zwischen Azure-Speichern und Log Analytics](../log-analytics/log-analytics-azure-storage.md).

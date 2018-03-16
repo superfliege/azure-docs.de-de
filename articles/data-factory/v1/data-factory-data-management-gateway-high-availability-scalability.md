@@ -15,10 +15,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 195a1a4810de478b77538716fa8d1362428864d8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)
 > [!NOTE]

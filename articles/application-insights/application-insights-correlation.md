@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: e821a640d3d75e712c022bd681eb07b83da91911
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -98,7 +98,7 @@ Im [Leitfaden zu Aktivitäten](https://github.com/dotnet/corefx/blob/master/src/
 
 ASP.NET Core 2.0 unterstützt die Extraktion von HTTP-Headern und das Starten einer neuen Aktivität. 
 
-`System.Net.HttpClient` mit Startversion `<fill in>` unterstützt die automatische Injektion der Korrelations-HTTP-Header und die Nachverfolgung des HTTP-Aufrufs als Aktivität.
+`System.Net.HttpClient` mit Startversion `4.1.0` unterstützt die automatische Injektion der Korrelations-HTTP-Header und die Nachverfolgung des HTTP-Aufrufs als Aktivität.
 
 Für das klassische ASP.NET ist das neue HTTP-Modul [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) verfügbar. Dieses Modul implementiert Telemetriekorrelationen mithilfe von DiagnosticsSource. Es startet Aktivitäten basierend auf den eingehenden Anforderungs-Headern. Zudem werden Telemetriedaten aus den verschiedenen Phasen der Anforderungsverarbeitung korreliert. Dies gilt selbst für Fälle, in denen jede Phase der Verarbeitung in IIS in verschiedenen Verwaltungsthreads ausgeführt wird.
 
@@ -108,5 +108,5 @@ Das Application Insights SDK mit der Startversion `2.4.0-beta1` verwendet Diagno
 
 - [Schreiben benutzerdefinierter Telemetriedaten](app-insights-api-custom-events-metrics.md)
 - Integrieren Sie alle Komponenten Ihres Mikroservices in Application Insights. Überprüfen Sie die [unterstützten Plattformen](app-insights-platforms.md).
-- Informationen zu den Application Insights-Typen und zum Datenmodell finden Sie unter [Datenmodell](application-insights-data-model.md).
+- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](application-insights-data-model.md).
 - Informationen zum Erweitern und Filtern von Telemetriedaten finden Sie [hier](app-insights-api-filtering-sampling.md).

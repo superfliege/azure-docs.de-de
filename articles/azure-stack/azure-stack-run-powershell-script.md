@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/15/2017
+ms.date: 02/27/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 470a45aea253e1e238983527427b600117e413fe
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 6a5912117a475c7af028f01ea47a7042677992ca
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Bereitstellen des Azure Stack Development Kit
 
@@ -70,6 +70,7 @@ Bevor Sie das ASDK auf dem Hostcomputer installieren können, muss die ASDK-Umge
 3. Führen Sie das folgende Skript zum Herunterladen der Development Kit-Installationsdatei („asdk-installer.ps1“) aus dem [GitHub-Repository mit den Azure Stack-Tools](https://github.com/Azure/AzureStack-Tools) in den Ordner **C:\AzureStack_Installer** auf Ihrem Development Kit-Hostcomputer aus:
 
   ```powershell
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
   # Variables
   $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
   $LocalPath = 'C:\AzureStack_Installer'
@@ -91,7 +92,6 @@ Bevor Sie das ASDK auf dem Hostcomputer installieren können, muss die ASDK-Umge
     - **Zeitzone**: Legt die Zeitzone für den Development Kit-Host fest. Der Standardwert ist (UTC-8:00) Pacific Time (USA und Kanada).
     - **Statische IP-Konfiguration**: Legt für Ihre Bereitstellung die Verwendung einer statischen IP-Adresse fest. Andernfalls werden beim Neustart des Installationsprogramms in „cloudbuilder.vhdx“ die Netzwerkschnittstellen mit DHCP konfiguriert.
 11. Klicken Sie auf **Weiter**.
-
 12. Wenn Sie im vorherigen Schritt eine statische IP-Konfiguration ausgewählt haben, müssen Sie jetzt Folgendes tun:
     - Wählen Sie einen Netzwerkadapter aus. Stellen Sie sicher, dass Sie eine Verbindung mit dem Adapter herstellen können, bevor Sie auf **Weiter** klicken.
     - Stellen Sie sicher, dass die Werte für **IP-Adresse**, **Gateway** und **DNS** richtig sind, und klicken Sie dann auf **Weiter**.
@@ -120,8 +120,7 @@ Nachdem Sie den ASDK-Hostcomputer vorbereitet haben, kann das ASDK mit dem folge
   > [!TIP]
   > Besuchen Sie zum Ermitteln der IP-Adresse eines Zeitservers [pool.ntp.org](http:\\pool.ntp.org), oder pingen Sie „time.windows.com“. 
   
-8. Klicken Sie auf **Weiter**.
- 
+8. Klicken Sie auf **Weiter**. 
 9. Auf der Seite **Überprüfen von Netzwerkadaptereigenschaften** sehen Sie eine Statusanzeige. 
     - Wenn sie **Ein Update kann nicht heruntergeladen werden** anzeigt, befolgen Sie die Anweisungen auf der Seite.
     - Wenn sie **Abgeschlossen** anzeigt, klicken Sie auf **Weiter**.
@@ -218,7 +217,7 @@ Wenn für Ihre Umgebung DHCP **nicht** aktiviert ist, müssen Sie die folgenden 
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK „InstallAzureStackPOC.ps1“ – Optionale Parameter
-|Parameter|Erforderlich/Optional|Beschreibung|
+|Parameter|Erforderlich/Optional|BESCHREIBUNG|
 |-----|-----|-----|
 |AdminPassword|Erforderlich|Legt das lokale Administratorkonto und alle anderen Benutzerkonten auf allen virtuellen Computern fest, die im Rahmen der Development Kit-Bereitstellung erstellt werden. Dieses Kennwort muss mit dem Kennwort des lokalen Administrators auf dem Host übereinstimmen.|
 |InfraAzureDirectoryTenantName|Erforderlich|Legt das Mandantenverzeichnis fest. Verwenden Sie diesen Parameter, um ein bestimmtes Verzeichnis anzugeben, für das das AAD-Konto über Berechtigungen zum Verwalten mehrerer Verzeichnisse verfügt. Vollständiger Name eines AAD-Verzeichnismandanten im Format „.onmicrosoft.com“ oder einen von Azure AD überprüften benutzerdefinierten Domänennamen.|

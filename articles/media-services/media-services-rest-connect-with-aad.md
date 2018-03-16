@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
 ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per REST
 
@@ -59,7 +59,7 @@ Für den Zugriff auf die Media Services-API müssen Sie die folgenden Datenpunkt
 
 |Einstellung|Beispiel|BESCHREIBUNG|
 |---|-------|-----|
-|Azure Active Directory-Mandantendomäne|microsoft.onmicrosoft.com|Ein STS-Endpunkt (Secure Token Service) für Azure AD wird unter Verwendung des folgenden Formats erstellt: https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Azure AD stellt ein JWT für den Ressourcenzugriff aus (ein Zugriffstoken).|
+|Azure Active Directory-Mandantendomäne|microsoft.onmicrosoft.com|Ein STS-Endpunkt (Secure Token Service, Sicherheitstokendienst) für Azure AD wird unter Verwendung des folgenden Formats erstellt: https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Azure AD stellt ein JWT für den Ressourcenzugriff aus (ein Zugriffstoken).|
 |REST-API-Endpunkt|https://amshelloworld.restv2.westus.media.azure.net/api/|Dies ist der Endpunkt, über den alle Aufrufe der Media Services-REST-API in Ihrer Anwendung durchgeführt werden.|
 |Client-ID (Anwendungs-ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Client-ID der Azure AD-Anwendung. Die Client-ID ist erforderlich, um das Zugriffstoken abzurufen. |
 |Geheimer Clientschlüssel|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD-Anwendungsschlüssel (Clientgeheimnis). Das Clientgeheimnis ist erforderlich, um das Zugriffstoken abzurufen.|

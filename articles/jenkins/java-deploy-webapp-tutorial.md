@@ -11,11 +11,11 @@ ms.workload: web
 ms.date: 08/02/2017
 ms.author: routlaw
 ms.custom: Jenkins, devcenter
-ms.openlocfilehash: 40d7e822b586e6f6b4addcd7d4e107eda9f4ab11
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b2606acba341d4cfbc16314048e134fa30ff8606
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Einrichten von Continuous Integration und Continuous Deployment in Azure App Service mit Jenkins
 
@@ -37,7 +37,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Jenkins](https://jenkins.io/) mit konfigurierten Tools JDK und Maven. Wenn Sie kein Jenkins-System besitzen, erstellen Sie jetzt eins in Azure mithilfe der [Jenkins-Lösungsvorlage](/azure/jenkins/install-jenkins-solution-template).
 * Ein [GitHub](https://github.com)-Konto.
-* [Azure CLI 2.0](/cli/azure/overview), entweder über Ihre lokale Befehlszeilenschnittstelle oder in der [Azure Cloud Shell](/azure/cloud-shell/overview).
+* [Azure CLI 2.0](/cli/azure), entweder über Ihre lokale Befehlszeilenschnittstelle oder in der [Azure Cloud Shell](/azure/cloud-shell/overview).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -77,7 +77,7 @@ Richten Sie Jenkins so ein, dass [GitHub-Webhooks](https://developer.github.com/
 3. Wählen Sie im Abschnitt **Source code management** die Option **Git** aus, und geben Sie die `.git`-URL Ihres geforkten Repositorys ein, z.B. https://github.com/raisa/gs-spring-boot-docker.git.
 4. Wählen Sie im Bereich **Build Triggers** (Trigger erstellen) die Option **GitHub hook trigger for GITScm polling** (GitHub-Hooktrigger für GITScm-Abruf) aus.
 5. Wählen Sie im Abschnitt **Build** die Option **Add build step** und dann **Invoke top-level Maven targets** aus. Geben Sie `package` in das Feld **Goals** ein.
-6. Wählen Sie **Speichern** aus. Sie können Ihren Auftrag testen, indem Sie auf der Projektseite **Build Now** auswählen.
+6. Wählen Sie **Speichern**aus. Sie können Ihren Auftrag testen, indem Sie auf der Projektseite **Build Now** auswählen.
 
 ## <a name="configure-azure-app-service"></a>Konfigurieren von Azure App Service 
 

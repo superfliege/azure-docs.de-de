@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: b7210c944e2f99aacdc2f554409552007286c5da
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 0589f2efeaaafc35bcb9d869c391a0533fe6e502
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Was ist das Clouddienstmodell, und wie kann es gepackt werden?
 Ein Clouddienst wird aus drei Komponenten erstellt: aus der Dienstdefinition *(.csdef)*, der Dienstkonfiguration *(.cscfg)* und einem Dienstpaket *(.cspkg)*. Die beiden Dateien **ServiceDefinition.csdef** und **ServiceConfig.cscfg** sind XML-basiert und beschreiben die Struktur und Konfiguration des Clouddiensts; zusammen werden sie als Modell bezeichnet. Die Datei **ServicePackage.cspkg** ist eine ZIP-Datei, die auf der Grundlage der Datei **ServiceDefinition.csdef** generiert wird und unter anderem alle erforderlichen binärbasierten Abhängigkeiten enthält. In Azure wird ein Clouddienst aus der Datei **ServicePackage.cspkg** sowie der Datei **ServiceConfig.cscfg** erstellt.
@@ -142,7 +142,7 @@ Die Dienstkonfigurationsdatei wird nicht mit der Anwendung gepackt, sondern als 
 
 Ausführliche Informationen zu dem hier verwendeten XML-Schema finden Sie unter [Dienstkonfigurationsschema](https://msdn.microsoft.com/library/azure/ee758710.aspx). Im Folgenden werden die Elemente jedoch kurz erläutert:
 
-**Instanzen**  
+**Instances**  
 konfiguriert die Anzahl der ausgeführten Instanzen für die Rolle. Um zu verhindern, dass der Clouddienst während Aktualisierungen nicht verfügbar ist, empfiehlt es sich, mehrere Instanzen der Rollen mit Webzugriff bereitzustellen. Durch Bereitstellen mehrerer Instanzen erfüllen Sie die Richtlinien in der [Vereinbarung zum Servicelevel (SLA) für Azure Compute](http://azure.microsoft.com/support/legal/sla/), in der für Rollen mit Internetzugriff eine Verfügbarkeit der externen Verbindungen von 99,95 Prozent garantiert wird, wenn mindestens zwei Rolleninstanzen für einen Dienst bereitgestellt werden.
 
 **ConfigurationSettings**  
@@ -291,7 +291,7 @@ Ich verwende Visual Studio und möchte ...
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md
-[vs_remote]: ../vs-azure-tools-remote-desktop-roles.md
+[vs_remote]: cloud-services-role-enable-remote-desktop-visual-studio.md
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md

@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 11/27/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3ed3da2d9730d8c30d8170ddf40fe4895dfa5dec
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: d2cc760bf516e8ee96629886120a1bb092932a82
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Das Beheben von Fehlern bei Ressourcenkontingenten
 
@@ -47,9 +47,9 @@ please delete some resources of this type before creating a new one.
 Kontingente werden pro Ressourcengruppe, Abonnements, Konten und anderen Bereichen angewendet. Ihr Abonnement kann beispielsweise so konfiguriert werden, um die Anzahl der Kerne für eine Region zu begrenzen. Wenn Sie versuchen, einen virtuellen Computer mit mehr als der zulässigen Anzahl von Kernen bereitzustellen, erhalten Sie eine Fehlermeldung, die darauf hinweist, dass das Kontingent überschritten wurde.
 Die vollständigen Kontingentinformationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](../azure-subscription-service-limits.md).
 
-## <a name="solution"></a>Lösung
+## <a name="troubleshooting"></a>Problembehandlung
 
-### <a name="solution-1"></a>Lösung 1
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Verwenden Sie für Azure CLI den `az vm list-usage`-Befehl, um Kontingente für virtuelle Computer zu finden.
 
@@ -73,7 +73,7 @@ Ausgabe des Befehls:
 ]
 ```
 
-### <a name="solution-2"></a>Lösung 2
+### <a name="powershell"></a>PowerShell
 
 Verwenden Sie für PowerShell den Befehl **Get-AzureRmVMUsage**, um Kontingente für virtuelle Computer zu finden.
 
@@ -91,7 +91,7 @@ Total Regional Cores                         0   100 Count
 Virtual Machines                             0 10000 Count
 ```
 
-### <a name="solution-3"></a>Lösung 3
+## <a name="solution"></a>Lösung
 
 Wenn Sie eine Erhöhung des Kontingents anfordern möchten, rufen Sie das Portal auf, und reichen Sie ein Supportproblem ein. Fordern Sie im Supportproblem eine Erhöhung des Kontingents für die Region an, in der die Bereitstellung erfolgen soll.
 

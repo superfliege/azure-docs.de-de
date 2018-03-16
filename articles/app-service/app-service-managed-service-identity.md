@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 45fcbc3af02dd8afbd9581e8bc38ad10369a2747
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 736a82d282e5769fb403c66ffd5d44107c6d3218
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Informationen zum Verwenden der verwalteten Azure-Dienstidentität (öffentliche Vorschau) in App Service und Azure Functions
 
@@ -56,7 +56,7 @@ Um mithilfe der Azure CLI eine verwaltete Dienstidentität einzurichten, müssen
 
 In den folgenden Schritten werden Sie durch das Erstellen einer Web-App und das Zuweisen einer Identität zur App mithilfe der CLI geleitet:
 
-1. Melden Sie sich bei Verwendung der Azure CLI in einer lokalen Konsole zunächst mit [az login](/cli/azure/#az_login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie die Anwendung bereitstellen möchten:
+1. Melden Sie sich bei Verwendung der Azure CLI in einer lokalen Konsole zunächst mit [az login](/cli/azure/reference-index#az_login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie die Anwendung bereitstellen möchten:
 
     ```azurecli-interactive
     az login
@@ -126,13 +126,13 @@ Hierbei werden `<TENANTID>` und `<PRINCIPALID>` durch GUIDs ersetzt. Die Eigensc
 Eine App kann mithilfe ihrer Identität Tokens für andere Ressourcen abrufen, die durch AAD wie Azure Key Vault geschützt sind. Diese Tokens stellen die Anwendung dar, die auf die Ressource zugreift, nicht einen bestimmten Benutzer der Anwendung. 
 
 > [!IMPORTANT]
-> Sie müssen die Zielressource möglicherweise für den Zugriff über die Anwendung konfigurieren. Wenn Sie beispielsweise ein Token für Key Vault anfordern, müssen Sie sicherstellen, dass Sie eine Zugriffsrichtlinie hinzugefügt haben, die die Identität Ihrer Anwendung enthält. Andernfalls werden Ihre Aufrufe von Key Vault abgelehnt, auch wenn diese das Token enthalten. Informationen zu den Ressourcen, die Tokens für die verwaltete Dienstidentität unterstützen, finden Sie unter [Azure-Dienste mit Unterstützung für die Azure AD-Authentifizierung](../active-directory/msi-overview.md#which-azure-services-support-managed-service-identity).
+> Sie müssen die Zielressource möglicherweise für den Zugriff über die Anwendung konfigurieren. Wenn Sie beispielsweise ein Token für Key Vault anfordern, müssen Sie sicherstellen, dass Sie eine Zugriffsrichtlinie hinzugefügt haben, die die Identität Ihrer Anwendung enthält. Andernfalls werden Ihre Aufrufe von Key Vault abgelehnt, auch wenn diese das Token enthalten. Informationen zu den Ressourcen, die Tokens für die verwaltete Dienstidentität unterstützen, finden Sie unter [Azure-Dienste mit Unterstützung für die Azure AD-Authentifizierung](../active-directory/pp/msi-overview.md#which-azure-services-support-managed-service-identity).
 
 Zum Abrufen eines Tokens in App Service und Azure Functions ist ein einfaches REST-Protokoll verfügbar. Für .NET-Anwendungen bietet die Microsoft.Azure.Services.AppAuthentication-Bibliothek eine Abstraktion über dieses Protokoll und unterstützt eine lokale Entwicklungsumgebung.
 
 ### <a name="asal"></a>Verwendung der Microsoft.Azure.Services.AppAuthentication-Bibliothek für .NET
 
-Bei .NET-Anwendungen und -Funktionen stellt die einfachste Methode für die Arbeit mit einer verwalteten Dienstidentität das Microsoft.Azure.Services.AppAuthentication-Paket dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz]. In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
+Bei .NET-Anwendungen und -Funktionen stellt die einfachste Methode für die Arbeit mit einer verwalteten Dienstidentität das Microsoft.Azure.Services.AppAuthentication-Paket dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz]. In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
 
 1. Fügen Sie Ihrer Anwendung einen Verweis auf die NuGet-Pakete [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) und [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) hinzu.
 

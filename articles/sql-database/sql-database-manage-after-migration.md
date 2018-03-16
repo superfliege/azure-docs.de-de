@@ -18,11 +18,11 @@ ms.author: Joe.Sack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: b65236fb2d11473d626ee2602237ed4a49380702
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ee1d847e04e1f1fa0472d8702c7022d622b9fe0f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Neuer DBA in der Cloud – Verwalten Ihrer Datenbank in Azure SQL-Datenbank
 
@@ -41,7 +41,7 @@ In diesem Artikel werden wichtige Merkmale von Azure SQL DB als Plattform beschr
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Geschäftskontinuität und Notfallwiederherstellung (Business Continuity Disaster Recovery, BCDR)
 Dank der Funktionen für Geschäftskontinuität und Notfallwiederherstellung können Sie Ihre Geschäfte in einem Notfall wie gewohnt fortführen. Ein Notfall könnte auf Datenbankebene auftreten (ein Nutzer löscht z. B. versehentlich eine unternehmenswichtige Tabelle) oder das gesamte Rechenzentrum betreffen (bei einer regionalen Katastrophe wie einem Tsunami). 
 
-### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Wie werden Sicherungen unter SQL-Datenbank erstellt und verwaltet?
+### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Wie werden Sicherungen auf SQL-Datenbank erstellt und verwaltet?
 Sie erstellen unter Azure SQL DB keine Sicherungen, weil es nicht nötig ist. Ihre Datenbanken werden von SQL-Datenbank automatisch gesichert, sodass Sie sich nicht länger um das Planen, Erstellen und Verwalten von Sicherungen kümmern müssen. Die Plattform führt jede Woche eine vollständige Sicherung, alle paar Stunden eine differenzielle Sicherung und alle fünf Minuten eine Transaktionsprotokollsicherung durch. So ist gewährleistet, dass Daten nach einem Notfall effizient wiederhergestellt werden können und Datenverluste gering bleiben. Die erste vollständige Sicherung erfolgt direkt nach dem Erstellen einer Datenbank. Diese Sicherungen sind während eines bestimmten Zeitraums, der so genannten „Beibehaltungsdauer“, verfügbar, die abhängig von der gewählten Leistungsstufe variiert.  SQL-Datenbank bietet mit der [Zeitpunktwiederherstellung (Point in Time Recovery, PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) die Möglichkeit, Daten bis zu einem beliebigen Zeitpunkt innerhalb dieser Beibehaltungsdauer wiederherzustellen.
 
 |Leistungsstufe|Beibehaltungsdauer in Tagen|
@@ -51,7 +51,7 @@ Sie erstellen unter Azure SQL DB keine Sicherungen, weil es nicht nötig ist. Ih
 |Premium|35|
 |||
 
-Außerdem können Sie über das Feature für die [langfristige Aufbewahrung](sql-database-long-term-retention.md) (Long-Term Retention, LTR) Sicherungsdateien über einen wesentlich längeren Zeitraum (bis zu zehn Jahre) aufbewahren und Daten zu einem beliebigen Zeitpunkt innerhalb dieser Frist aus den Sicherungen wiederherstellen. Darüber hinaus werden Datenbanksicherungen auf georeplizierten Speichersystemen vorgehalten, um bei einer regionalen Katastrophe Datenresilienz zu gewährleisten. Die Sicherungen können auch in jeder Azure-Region zu einem beliebigen Zeitpunkt innerhalb der Beibehaltungsdauer wiederhergestellt werden. Weitere Informationen finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+Außerdem können Sie über das Feature für die [langfristige Aufbewahrung](sql-database-long-term-retention.md) (Long-Term Retention, LTR) Sicherungsdateien über einen wesentlich längeren Zeitraum (bis zu zehn Jahre) aufbewahren und Daten zu einem beliebigen Zeitpunkt innerhalb dieser Frist aus den Sicherungen wiederherstellen. Darüber hinaus werden Datenbanksicherungen auf georeplizierten Speichersystemen vorgehalten, um bei einer regionalen Katastrophe Datenresilienz zu gewährleisten. Die Sicherungen können auch in jeder Azure-Region zu einem beliebigen Zeitpunkt innerhalb der Beibehaltungsdauer wiederhergestellt werden. Weitere Informationen finden Sie unter [Business continuity overview (Übersicht über die Geschäftskontinuität)](sql-database-business-continuity.md).
 
 ### <a name="how-do-i-ensure-business-continuity-in-the-event-of-a-datacenter-level-disaster-or-regional-catastrophe"></a>Wie wird Geschäftskontinuität bei einem Notfall in den Rechenzentren oder einer regionalen Katastrophe gewährleistet?
 Da Ihre Datenbanksicherungen auf einem georeplizierten Speichersubsystem gespeichert werden, ist sichergestellt, dass Sie die Sicherungen bei einem regionalen Notfall in einer anderen Azure-Region wiederherstellen können. Dieser Vorgang wird als Geowiederherstellung bezeichnet. Das RPO (Recovery Point Objective) dafür beträgt im Allgemeinen weniger als 1 Stunde und die geschätzte Wiederherstellungszeit (Estimated Recovery Time, ERT – wenige Minuten bis Stunden).
@@ -130,10 +130,10 @@ Die Verschlüsselung bietet wirkungsvollen Schutz vor unbefugten Zugriffen auf s
 
 Ruhende Daten in den Daten- und Protokolldateien auf einem Speichersubsystem sind in SQL-Datenbank standardmäßig per [Transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) jederzeit vollständig verschlüsselt. Ihre Sicherungen werden ebenfalls verschlüsselt. Bei Verwendung von TDE sind keine Änderungen an den Anwendungen erforderlich, die auf diese Daten zugreifen. Wie der Name erkennen lässt, erfolgen die Verschlüsselung und Entschlüsselung transparent. Zum Schutz sensibler Daten, die aktiv oder ruhend sein können, bietet SQL-Datenbank eine Funktion namens [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE ist eine Form der clientseitigen Verschlüsselung, die sensible Spalten in Ihrer Datenbank verschlüsselt (sodass sie für Datenbankadministratoren und nicht autorisierte Benutzer als Chiffretext dargestellt werden). Der Server empfängt zunächst die verschlüsselten Daten. Der Schlüssel für die Always Encrypted-Verschlüsselung wird ebenfalls auf Clientseite gespeichert, damit die sensiblen Spalten nur von autorisierten Clients entschlüsselt werden können. Server- und Datenadministratoren haben keinen Zugriff auf die sensiblen Daten, da die Verschlüsselungsschlüssel auf dem Client gespeichert sind. AE wendet eine End-to-End-Verschlüsselung auf sensible Tabellenspalten an – von nicht autorisierten Clients bis zum physischen Datenträger. Da AE aktuell Übereinstimmungsvergleiche unterstützt, können DBAs im Rahmen ihrer SQL-Befehle weiterhin verschlüsselte Spalten abfragen. Diese Verschlüsselungsmethode kann mit einer Vielzahl von Schlüsselspeicheroptionen wie [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md), dem Windows-Zertifikatspeicher sowie lokalen Hardware-Sicherheitsmodulen verwendet werden.
 
-|**Merkmale**|**Always Encrypted**|**Transparent Data Encryption**|
+|**Merkmale**|**Always Encrypted**|**Transparente Datenverschlüsselung (TDE)**|
 |---|---|---|
-|**Umfang der Verschlüsselung**|End-to-End|Ruhende Daten|
-|**Datenbankserver kann auf sensible Daten zuzugreifen.**|Nein|Ja, da die Verschlüsselung ruhende Daten betrifft.|
+|**Umfang der Verschlüsselung**|Komplettlösung|Ruhende Daten|
+|**Datenbankserver kann auf sensible Daten zuzugreifen.**|Nein |Ja, da die Verschlüsselung ruhende Daten betrifft.|
 |**Zulässige T-SQL-Vorgänge**|Übereinstimmungsvergleich|Die gesamte T-SQL-Oberfläche ist verfügbar.|
 |**Sind zur Verwendung der Funktion Änderungen an Apps erforderlich?**|Wenig|Sehr wenig|
 |**Granularität der Verschlüsselung**|Spaltenebene|Datenbankebene|
@@ -148,7 +148,7 @@ Durch die [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-le
 
 ### <a name="how-do-i-manage-encryption-keys-in-the-cloud"></a>Wie werden Verschlüsselungsschlüssel in der Cloud verwaltet?
 
-Es gibt sowohl für die Methode Always Encrypted (clientseitige Verschlüsselung) als auch für Transparent Data Encryption (Verschlüsselung ruhender Daten) Optionen zur Schlüsselverwaltung. Es wird empfohlen, Verschlüsselungsschlüssel regelmäßig zu rotieren. Die Rotationsfrequenz sollte sowohl die internen Bestimmungen Ihrer Organisation als auch die Complianceanforderungen erfüllen.
+Es gibt sowohl für die Methode Always Encrypted (clienstseitige Verschlüsselung) als auch für Transparent Data Encryption (Verschlüsselung ruhender Daten) Optionen zur Schlüsselverwaltung. Es wird empfohlen, Verschlüsselungsschlüssel regelmäßig zu rotieren. Die Rotationsfrequenz sollte sowohl die internen Bestimmungen Ihrer Organisation als auch die Complianceanforderungen erfüllen.
 
 **Transparent Data Encryption** (TDE): Es gibt eine Zwei-Schlüssel-Hierarchie. Die Daten in allen Benutzerdatenbanken werden mit einem symmetrischen, für die Datenbank eindeutigen, AES 256-Datenbankverschlüsselungsschlüssel verschlüsselt, der wiederum von einem für den Server eindeutigen asymmetrischen RSA 2048-Masterschlüssel verschlüsselt wird. Der Hauptschlüssel kann wie folgt verwaltet werden:
 - Automatisch von der Plattform – SQL-Datenbank
@@ -195,9 +195,9 @@ Mit Azure Security Center können Sie Sicherheitsempfehlungen auf allgemeiner Ba
 
 ![Empfehlungen zum Pool für elastische Datenbanken](./media/sql-database-manage-after-migration/elastic-pool-recommendations.png) 
 
-Sie können die Analyse auch im Abschnitt „Ratgeber“ anzeigen:
+Sie können die Analyse auch im Abschnitt „Advisor“ anzeigen:
 
-![Empfehlungen zum Pool für elastische Datenbanken – Ratgeber](./media/sql-database-manage-after-migration/advisor-section.png)
+![Empfehlungen zum Pool für elastische Datenbanken – Advisor](./media/sql-database-manage-after-migration/advisor-section.png)
 
 ### <a name="how-do-i-monitor-the-performance-and-resource-utilization-in-sql-database"></a>Wie wird die Leistung und Ressourcenverwendung in SQL-Datenbank überwacht?
 
@@ -260,7 +260,7 @@ SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschäd
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Wie werden Daten zwischen SQL-Datenbank und SQL Server synchronisiert?
 Hier gibt mehrere Möglichkeiten: 
 - **[Datensynchronisierung](sql-database-sync-data.md)** – Diese Funktion unterstützt Sie bei der bidirektionalen Synchronisierung von Daten zwischen mehreren lokalen SQL Server-Datenbanken und SQL-Datenbank. Um Daten mit lokalen SQL Server-Datenbanken zu synchronisieren, müssen Sie den Synchronisierungs-Agent auf einem lokalen Computer installieren und konfigurieren und den ausgehenden TCP-Port 1433 öffnen.
-- **[Transaktionsreplikation](https://azure.microsoft.com/en-us/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – Mit der Transaktionsreplikation können Sie Ihre lokalen Daten mit Azure SQL DB synchronisieren. Dabei stellt die lokale Umgebung den Verleger und Azure SQL DB den Abonnenten dar. Zurzeit wird nur dieses Szenario unterstützt. Weitere Informationen dazu, wie Sie Daten mit minimaler Downtime aus der lokalen Infrastruktur zu Azure SQL migrieren, finden Sie unter [Verwenden der Transaktionsreplikation](sql-database-cloud-migrate.md#method-2-use-transactional-replication).
+- **[Transaktionsreplikation](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – Mit der Transaktionsreplikation können Sie Ihre lokalen Daten mit Azure SQL DB synchronisieren. Dabei stellt die lokale Umgebung den Verleger und Azure SQL DB den Abonnenten dar. Zurzeit wird nur dieses Szenario unterstützt. Weitere Informationen dazu, wie Sie Daten mit minimaler Downtime aus der lokalen Infrastruktur zu Azure SQL migrieren, finden Sie unter [Verwenden der Transaktionsreplikation](sql-database-cloud-migrate.md#method-2-use-transactional-replication).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu [SQL-Datenbank](sql-database-technical-overview.md)

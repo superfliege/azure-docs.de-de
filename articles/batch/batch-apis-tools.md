@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: danlep
-ms.openlocfilehash: 177601110dd7ec799dc4a350d1a8b88b9f6af4f1
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 0d3720d33de2237b0d8cce2ae56bcc7ccf6acc43
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Übersicht über Batch-APIs und -Tools
 
@@ -60,7 +60,7 @@ Die Azure Resource Manager-APIs für Batch ermöglichen den programmgesteuerten 
 Diese Befehlszeilentools bieten die gleiche Funktionalität wie die Batch-Dienst- und Batch Management-APIs: 
 
 * [Batch PowerShell-Cmdlets:][batch_ps] Mit den Azure Batch-Cmdlets im [Azure PowerShell](/powershell/azure/overview)-Modul können Sie Batch-Ressourcen mit PowerShell verwalten.
-* [Azure CLI 2.0:](/cli/azure/overview) Die Azure-Befehlszeilenschnittstelle (Azure CLI) ist ein plattformübergreifendes Toolset mit Shellbefehlen für die Interaktion mit vielen Azure-Diensten (beispielsweise dem Batch-Dienst und dem Batch Management-Dienst). Weitere Informationen zur Verwendung der Azure CLI mit Batch finden Sie unter [Verwalten von Batch-Ressourcen mit der Azure CLI](batch-cli-get-started.md).
+* [Azure CLI 2.0:](/cli/azure) Die Azure-Befehlszeilenschnittstelle (Azure CLI) ist ein plattformübergreifendes Toolset mit Shellbefehlen für die Interaktion mit vielen Azure-Diensten (beispielsweise dem Batch-Dienst und dem Batch Management-Dienst). Weitere Informationen zur Verwendung der Azure CLI mit Batch finden Sie unter [Verwalten von Batch-Ressourcen mit der Azure CLI](batch-cli-get-started.md).
 
 ## <a name="other-tools-for-application-development"></a>Weitere Tools für die Anwendungsentwicklung
 

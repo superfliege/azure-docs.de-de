@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/23/2018
+ms.date: 3/9/2018
 ms.author: masnider;
-ms.openlocfilehash: 3c583d99a63c13a0a2ab351f82a4f5ff6840788a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: cf647c078728c9fbe357fea5bef4aa6dfb86c975
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="reliable-services-overview"></a>Übersicht über Reliable Services
 Azure Service Fabric vereinfacht das Schreiben und Verwalten zustandsloser und zustandsbehafteter Dienste (Reliable Services). Dieses Thema behandelt Folgendes:
@@ -87,10 +87,6 @@ Zustandslose Dienste werden in Service Fabric beispielsweise häufig als Front-E
 Bei einem zustandsbehafteten Dienst muss ein gewisser Teil des Zustands konsistent und präsent sein, damit der Dienst funktioniert. Nehmen wir einen Dienst, der kontinuierlich einen gleitenden Durchschnitt eines Werts berechnet, der regelmäßig aktualisiert wird. Der Dienst benötigt zu diesem Zweck den aktuellen Satz eingehender, zu verarbeitender Anforderungen und den aktuellen Durchschnittswert. Jeder Dienst, der Informationen in einem externen Speicher abruft, verarbeitet und speichert (z. B. in einem modernen Azure-Blob- oder Tabellenspeicher), ist zustandsbehaftet. Er bewahrt seinen Zustand nur im externen Zustandsspeicher auf.
 
 Die meisten Dienste speichern heute ihren Zustand extern, da der externe Speicher die für den Zustand erforderliche Zuverlässigkeit, Verfügbarkeit, Skalierbarkeit und Konsistenz bietet. In Service Fabric müssen Dienste ihren Zustand nicht extern speichern. Service Fabric verarbeitet diese Anforderungen sowohl für den Dienstcode als auch für den Dienstzustand.
-
-> [!NOTE]
-> Unterstützung für statusbehaftete zuverlässige Dienste ist unter Linux (für C# oder Java) noch nicht verfügbar.
->
 
 Ein Beispiel: Sie möchten einen Dienst schreiben, der Bilder verarbeitet. Zu diesem Zweck übernimmt der Dienst das Bild und die Reihe von Konvertierungen, die für dieses Bild auszuführen sind. Der Dienst gibt einen Kommunikationslistener zurück (beispielsweise eine Web-API), der eine API wie `ConvertImage(Image i, IList<Conversion> conversions)` verfügbar macht. Wenn eine Anforderung eingeht, speichert der Dienst diese in einer `IReliableQueue` und gibt eine ID an den Client zurück, um die Anforderung nachzuverfolgen.
 

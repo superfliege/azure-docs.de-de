@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: maheshu
-ms.openlocfilehash: 7c84ac3318bbd63129b04711c62dc441b9d35285
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 858adf2b0a0431078561a6f0edf80860927f8233
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 
@@ -49,7 +49,7 @@ Die nächste Konfigurationsaufgabe besteht in der Erstellung eines virtuellen Az
   > [!WARNING]
   > Stellen Sie sicher, dass Sie einen Adressraum auswählen, der in dem privaten IP-Adressraum liegt. IP-Adressen, die Sie nicht besitzen und die sich im öffentlichen Adressraum befinden, führen zu Fehlern in Azure AD Domain Services.
 
-5. **Bestehendes virtuelles Netzwerk:** Wenn Sie planen, ein bestehendes virtuelles Netzwerk auszuwählen, [erstellen Sie ein dediziertes Subnetz mithilfe der Erweiterung für virtuelle Netzwerke](../virtual-network/virtual-networks-create-vnet-arm-pportal.md), und wählen Sie dieses Subnetz anschließend aus. Klicken Sie auf **Virtuelles Netzwerk**, um ein virtuelles Netzwerk auszuwählen. Klicken Sie auf **Subnetz**, um das dedizierte Subnetz in dem bestehenden virtuellen Netzwerk auszuwählen, in dem Ihre neue verwaltete Domäne aktiviert werden soll. Wenn Sie fertig sind, klicken Sie auf **OK**.
+5. **Bestehendes virtuelles Netzwerk:** Wenn Sie planen, ein bestehendes virtuelles Netzwerk auszuwählen, [erstellen Sie ein dediziertes Subnetz mithilfe der Erweiterung für virtuelle Netzwerke](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet), und wählen Sie dieses Subnetz anschließend aus. Klicken Sie auf **Virtuelles Netzwerk**, um ein virtuelles Netzwerk auszuwählen. Klicken Sie auf **Subnetz**, um das dedizierte Subnetz in dem bestehenden virtuellen Netzwerk auszuwählen, in dem Ihre neue verwaltete Domäne aktiviert werden soll. Wenn Sie fertig sind, klicken Sie auf **OK**.
 
     ![Auswählen eines Subnetzes innerhalb des virtuellen Netzwerks](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 

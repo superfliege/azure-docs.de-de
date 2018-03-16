@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 46b1be5bdd4fa400f437bca274e7f3f6e0dfec08
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 4d47b5426da5d857085991767faa5fb227476408
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure (ab Update 3)
 
@@ -78,7 +78,7 @@ In den folgenden Abschnitten werden die Konfigurationsvoraussetzungen für die S
 Bevor Sie das Cloudgerät bereitstellen, müssen Sie in Ihrer Umgebung die folgenden Vorbereitungen treffen:
 
 * Vergewissern Sie sich, dass in Ihrem Datencenter ein physisches Gerät der StorSimple 8000-Serie (Modell 8100 oder 8600) bereitgestellt und aktiv ist. Registrieren Sie dieses Gerät mit dem gleichen StorSimple-Geräte-Manager-Dienst, für den Sie eine StorSimple Cloud Appliance erstellen möchten.
-* [Konfigurieren Sie für das Cloudgerät ein virtuelles Netzwerk in Azure](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). Wenn Sie Storage Premium verwenden, müssen Sie ein virtuelles Netzwerk in einer Azure-Region erstellen, die Storage Premium unterstützt. Storage Premium-Regionen sind Regionen, die der Zeile „Disk Storage“ in der Liste [Azure-Produkte nach Region](https://azure.microsoft.com/regions/services/) entsprechen.
+* [Konfigurieren Sie für das Cloudgerät ein virtuelles Netzwerk in Azure](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Wenn Sie Storage Premium verwenden, müssen Sie ein virtuelles Netzwerk in einer Azure-Region erstellen, die Storage Premium unterstützt. Storage Premium-Regionen sind Regionen, die der Zeile „Disk Storage“ in der Liste [Azure-Produkte nach Region](https://azure.microsoft.com/regions/services/) entsprechen.
 * Es ist ratsam, die von Azure bereitgestellten DNS-Standardserver zu verwenden, anstatt einen eigenen DNS-Servernamen anzugeben. Wenn Ihr DNS-Servername ungültig ist oder der DNS-Server IP-Adressen nicht richtig auflösen kann, ist die Erstellung des Cloudgeräts nicht möglich.
 * Punkt-zu-Standort und Standort-zu-Standort sind optional, aber nicht erforderlich. Sie können diese Optionen gegebenenfalls für erweiterte Szenarios konfigurieren.
 * Sie können [virtuelle Azure-Computer](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (Hostserver) im virtuellen Netzwerk erstellen, die die vom Cloudgerät verfügbar gemachten Volumes verwenden können. Diese Server müssen die folgenden Anforderungen erfüllen:

@@ -5,16 +5,16 @@ services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: f5c75b95d9019c15bb402313ce7407fa9abb81d4
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Beibehalten von Änderungen und Arbeiten mit großen Dateien
 Mit dem Azure Machine Learning-Experimentieren-Dienst können Sie viele verschiedene Ausführungsziele konfigurieren. Einige Ziele sind lokale Ziele, z.B. ein lokaler Computer oder ein Docker-Container auf einem lokalen Computer. Andere Ziele sind Remoteziele, z.B. ein Docker-Container auf einem Remotecomputer oder ein HDInsight-Cluster. Weitere Informationen finden Sie unter [Übersicht über den Azure Machine Learning-Experimentieren-Ausführungsdienst](experimentation-service-configuration.md). 
@@ -146,7 +146,7 @@ Sie können Eingabedaten direkt in diesen Ordnern platzieren und erwarten, dass 
 Weitere Informationen finden Sie unter [Azure Machine Learning Workbench-Ausführungskonfigurationsdateien](experimentation-service-configuration-reference.md).
 
 >[!NOTE]
->Die Umgebungsvariable `AZUREML_NATIVE_SHARE_DIRECTORY` wird in einem HDInsight-Computekontext nicht unterstützt. Es ist aber einfach, das gleiche Ergebnis zu erreichen. Verwenden Sie hierzu explizit einen absoluten Azure-Blobspeicherpfad, um aus dem angefügten Blobspeicher zu lesen bzw. um darin zu schreiben.
+>Die Umgebungsvariable `AZUREML_NATIVE_SHARE_DIRECTORY` wird in einem HDInsight-Computekontext nicht unterstützt. Es ist aber einfach, das gleiche Ergebnis zu erreichen. Verwenden Sie hierzu explizit einen absoluten Azure Blob Storage-Pfad, um aus dem angefügten Blobspeicher zu lesen bzw. um darin zu schreiben.
 
 ## <a name="option-3-use-external-durable-storage"></a>Option 3: Verwenden des externen permanenten Speichers
 
@@ -156,7 +156,7 @@ Sie können externen permanenten Speicher verwenden, um den Zustand während der
 - Die Dateien müssen von Ausführungen über verschiedene Computeumgebungen hinweg freigegeben werden.
 - Außerdem müssen die Dateien den Computekontext selbst überleben können.
 
-Ein Ansatz dieser Art ist die Verwendung von Azure-Blobspeicher über Ihren Python- oder PySpark-Code. Hier ist ein kurzes Beispiel angegeben:
+Ein Ansatz dieser Art ist die Verwendung von Azure Blob Storage über Ihren Python- oder PySpark-Code. Hier ist ein kurzes Beispiel angegeben:
 
 ```python
 from azure.storage.blob import BlockBlobService
@@ -180,7 +180,7 @@ for name in glob.iglob('mydata.csv'):
     blob_service.create_blob_from_path(CONTAINER_NAME, 'single_file.csv', name)
 ```
 
-Nachfolgend sehen Sie ein kurzes Beispiel für das Anfügen eines beliebigen Azure-Blobspeichers an die HDI Spark-Runtime:
+Nachfolgend sehen Sie ein kurzes Beispiel für das Anfügen einer beliebigen Azure Blob Storage-Instanz an die HDI Spark-Runtime:
 ```python
 def attach_storage_container(spark, account, key):
     config = spark._sc._jsc.hadoopConfiguration()

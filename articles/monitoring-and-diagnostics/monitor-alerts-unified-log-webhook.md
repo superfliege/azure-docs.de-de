@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: ee7bdf03c96e078d0d64eeaaffc38ff61596d837
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5852eb099f6620656aa69e5085447c2a8b4e0c01
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Warnung in Azure (Vorschauversion) erstellt wird](monitor-alerts-unified-usage.md), haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung einer oder mehrerer Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -30,7 +30,7 @@ Mit Webhookaktionen können Sie einen externen Prozess über eine HTTP POST-Anfo
 
 Für Webhookaktionen sind die in der folgenden Tabelle aufgeführten Eigenschaften erforderlich:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Webhook-URL |Die URL des Webhooks. |
 | Benutzerdefinierte JSON-Nutzlast |Benutzerdefinierte Nutzlast zum Senden mit dem Webhook, wenn diese Option während der Warnungserstellung ausgewählt wird. Ausführliche Informationen finden Sie im Artikel zum [Verwalten von Warnungen mithilfe von Azure Alerts (Vorschauversion)](monitor-alerts-unified-usage.md) |
@@ -170,7 +170,7 @@ Im Folgenden sehen Sie eine Beispielnutzlast für eine benutzerdefinierte Webhoo
     
 
     {
-    "AlertRuleName":"AcmeRule","IncludeSearchResults":true,
+    "alertname":"AcmeRule","IncludeSearchResults":true,
     "SearchResult":
         {
         "tables":[

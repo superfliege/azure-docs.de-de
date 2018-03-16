@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: d05492425381649a7893b872c4b1c49e9f241b50
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4f4c4e9749eb5f0f6ba1950521f459f140cb5221
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -45,7 +45,7 @@ Jede Route enthält ein Adresspräfix und einen Typ des nächsten Hops. Wenn Dat
 
 Die in der obigen Tabelle aufgeführten Typen des nächsten Hops geben an, wie Datenverkehr von Azure weitergeleitet wird, der für das angegebene Adresspräfix bestimmt ist. Erklärungen zu den Typen des nächsten Hops:
 
-- **Virtuelles Netzwerk**: Leitet Datenverkehr zwischen Adressbereichen im [Adressraum](virtual-network-manage-network.md#add-address-spaces) eines virtuellen Netzwerks weiter. Azure erstellt eine Route mit einem Adresspräfix, das jeweils dem Adressbereich entspricht, der im Adressraum eines virtuellen Netzwerks definiert ist. Wenn für den Adressraum des virtuellen Netzwerks mehrere Adressbereiche definiert sind, erstellt Azure für jeden Adressbereich eine gesonderte Route. Azure leitet Datenverkehr automatisch zwischen Subnetzen weiter, indem die Routen verwendet werden, die für jeden Adressbereich erstellt wurden. Es ist nicht erforderlich, dass Sie Gateways für Azure definieren, um Datenverkehr zwischen Subnetzen weiterzuleiten. Ein virtuelles Netzwerk enthält zwar Subnetze, und jedes Subnetz verfügt über einen definierten Adressbereich, aber von Azure werden *keine* Standardrouten für Subnetzadressbereiche erstellt. Der Grund ist, dass jeder Subnetzadressbereich in einem Adressbereich des Adressraums eines virtuellen Netzwerks liegt.
+- **Virtuelles Netzwerk**: Leitet Datenverkehr zwischen Adressbereichen im [Adressraum](manage-virtual-network.md#add-or-remove-an-address-range) eines virtuellen Netzwerks weiter. Azure erstellt eine Route mit einem Adresspräfix, das jeweils dem Adressbereich entspricht, der im Adressraum eines virtuellen Netzwerks definiert ist. Wenn für den Adressraum des virtuellen Netzwerks mehrere Adressbereiche definiert sind, erstellt Azure für jeden Adressbereich eine gesonderte Route. Azure leitet Datenverkehr automatisch zwischen Subnetzen weiter, indem die Routen verwendet werden, die für jeden Adressbereich erstellt wurden. Es ist nicht erforderlich, dass Sie Gateways für Azure definieren, um Datenverkehr zwischen Subnetzen weiterzuleiten. Ein virtuelles Netzwerk enthält zwar Subnetze, und jedes Subnetz verfügt über einen definierten Adressbereich, aber von Azure werden *keine* Standardrouten für Subnetzadressbereiche erstellt. Der Grund ist, dass jeder Subnetzadressbereich in einem Adressbereich des Adressraums eines virtuellen Netzwerks liegt.
 
 - **Internet**: Leitet Datenverkehr, der vom Adresspräfix angegeben wird, in das Internet weiter. Für die Systemstandardroute wird das Adresspräfix 0.0.0.0/0 angegeben. Wenn Sie die Standardrouten von Azure nicht außer Kraft setzen, leitet Azure Datenverkehr für alle Adressen, die nicht von einem Adressbereich in einem virtuellen Netzwerk angegeben sind, in das Internet weiter. Es gilt aber folgende Ausnahme: Wenn die Zieladresse die Adresse von einem der Azure-Dienste ist, leitet Azure den Datenverkehr über das Azure-Backbonenetzwerk direkt an den Dienst weiter, und nicht in das Internet. Der Datenverkehr zwischen Azure-Diensten wird nicht über das Internet übertragen. Dies gilt unabhängig davon, in welcher Azure-Region das virtuelle Netzwerk vorhanden ist oder in welcher Azure-Region eine Instanz des Azure-Diensts bereitgestellt wird. Sie können die Standardsystemroute von Azure für das Adresspräfix 0.0.0.0/0 durch eine [benutzerdefinierte Route](#custom-routes) außer Kraft setzen.
 
@@ -250,7 +250,7 @@ Die Routentabelle für *Subnet2* enthält alle von Azure erstellten Standardrout
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Create a user-defined route table with routes and a network virtual appliance](create-user-defined-route-portal.md) (Erstellen einer benutzerdefinierten Routentabelle mit Routen und einem virtuellen Netzwerkgerät)
+- [Create a user-defined route table with routes and a network virtual appliance](tutorial-create-route-table-portal.md) (Erstellen einer benutzerdefinierten Routentabelle mit Routen und einem virtuellen Netzwerkgerät)
 - [Konfigurieren von BGP für Azure VPN Gateways mithilfe von PowerShell](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Use BGP with ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits) (Verwenden von BGP mit ExpressRoute)
 - [View all routes for a subnet](virtual-network-routes-troubleshoot-portal.md) (Anzeigen aller Routen für ein Subnetz). In einer benutzerdefinierten Routentabelle werden Ihnen nur die benutzerdefinierten Routen angezeigt, nicht die Standard- und BGP-Routen für ein Subnetz. Beim Anzeigen aller Routen werden die Standard-, BGP- und benutzerdefinierten Routen für das Subnetz angegeben, in dem sich eine Netzwerkschnittstelle befindet.

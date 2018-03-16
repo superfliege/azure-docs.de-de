@@ -16,10 +16,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a717ea57642c0fb56eec176542ae401f83af6841
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein und aus einem lokalen Dateisystem mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,7 +59,7 @@ Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
 1. Eine **Data Factory**. Eine Data Factory kann eine oder mehrere Pipelines enthalten. 
-2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus einem Azure-Blobspeicher in ein lokales Dateisystem kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr lokales Dateisystem und das Azure-Speicherkonto mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für ein lokales Dateisystem sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties).
+2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Azure Blob Storage in ein lokales Dateisystem kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr lokales Dateisystem und das Azure Storage-Konto mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für ein lokales Dateisystem sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties).
 3. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Außerdem erstellen Sie noch ein weiteres Dataset, um den Ordner und Dateinamen (optional) in Ihrem Dateisystem anzugeben. Informationen zu Dataset-Eigenschaften, die spezifisch für ein lokales Dateisystem sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
 4. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie BlobSource als Quelle und FileSystemSink als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang aus dem lokalen Dateisystem nach Azure Blob Storage durchführen, verwenden Sie entsprechend FileSystemSource und BlobSink in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für das lokale Dateisystem sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken.
 
@@ -83,8 +83,8 @@ Sie können ein lokales Dateisystem mithilfe eines verknüpften Diensts vom Typ 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Beispieldefinitionen für verknüpfte Dienste und Datasets
 | Szenario | Host in der Definition des verknüpften Diensts | folderPath in der Datasetdefinition |
 | --- | --- | --- |
-| Lokaler Ordner auf dem Datenverwaltungsgateway-Computer:  <br/><br/>Beispiele: D:\\\* oder D:\Ordner\Unterordner\\\* |D:\\\\ (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/> localhost (für ältere Versionen als Datenverwaltungsgateway 2.0) |.\\\\ oder Ordner\\\\Unterordner (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/>D:\\\\ oder D:\\\\Ordner\\\\Unterordner (für Gatewayversionen unter 2.0) |
-| Freigegebener Remoteordner: <br/><br/>Beispiele: \\\\MeinServer\\Freigabe\\\* oder \\\\MeinServer\\Freigabe\\Ordner\\Unterordner\\\* |\\\\\\\\MeinServer\\\\Freigabe |.\\\\ oder Ordner\\\\Unterordner |
+| Lokaler Ordner auf dem Datenverwaltungsgateway-Computer:  <br/><br/>Beispiele: D:\\\* oder D:\Ordner\Unterordner\\* |D:\\\\ (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/> localhost (für ältere Versionen als Datenverwaltungsgateway 2.0) |.\\\\ oder Ordner\\\\Unterordner (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/>D:\\\\ oder D:\\\\Ordner\\\\Unterordner (für Gatewayversionen unter 2.0) |
+| Freigegebener Remoteordner: <br/><br/>Beispiele: \\\\MeinServer\\Freigabe\\\* oder \\\\MeinServer\\Freigabe\\Ordner\\Unterordner\\* |\\\\\\\\MeinServer\\\\Freigabe |.\\\\ oder Ordner\\\\Unterordner |
 
 
 ### <a name="example-using-username-and-password-in-plain-text"></a>Beispiel: Mit "username" und "password" im Nur-Text-Format
@@ -205,7 +205,7 @@ Einzelheiten finden Sie im Artikel [Datei- und Komprimierungsformate in Azure Da
 ## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>JSON-Beispiele zum Kopieren von Daten in das bzw. aus dem Dateisystem
 Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen, wie Sie Daten in und aus einem lokalen Dateisystem und Azure Blob Storage kopieren. Allerdings können Sie mit der Kopier-Aktivität in Azure Data Factory.Daten *direkt* aus den Quellen in alle unter [Unterstützte Datenquellen und Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopieren.
 
-### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Beispiel: Kopieren von Daten aus einem lokalen Dateisystem in Azure Blog Storage
+### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Beispiel: Kopieren von Daten aus einem lokalen Dateisystem in Azure Blob Storage
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einem lokalen Dateisystem in Azure Blob Storage kopieren. Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
 * Einen verknüpften Dienst des Typs [OnPremisesFileServer](#linked-service-properties)

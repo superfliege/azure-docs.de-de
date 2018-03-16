@@ -1,8 +1,24 @@
--- title: Verwalten von Zertifikaten in einem Azure Service Fabric-Cluster | Microsoft-Dokumentation description: Hier wird beschrieben, wie Sie neue Zertifikate oder Rolloverzertifikate zu einem Service Fabric-Cluster hinzufügen und Zertifikate daraus entfernen.
-services: service-fabric documentationcenter: .net author: ChackDan manager: timlt editor: ''
-
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74 ms.service: service-fabric ms.devlang: dotnet ms.topic: article ms.tgt_pltfrm: na ms.workload: na ms.date: 02/23/2018 ms.author: chackdan
-
+---
+title: Verwalten von Zertifikaten in einem Azure Service Fabric-Cluster | Microsoft-Dokumentation
+description: "Es wird beschrieben, wie Sie neue Zertifikate hinzufügen, ein Rollover für Zertifikate durchführen und ein Zertifikat für einen Service Fabric-Cluster entfernen."
+services: service-fabric
+documentationcenter: .net
+author: ChackDan
+manager: timlt
+editor: 
+ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 02/23/2018
+ms.author: chackdan
+ms.openlocfilehash: 68654bd9b14857661b627bf6d6b1dfe2483019a4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.

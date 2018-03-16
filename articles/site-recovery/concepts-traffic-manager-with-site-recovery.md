@@ -5,20 +5,15 @@ services: site-recovery
 documentationcenter: 
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: 3192c67938fe118e79aa68ee6194e76f21d65d98
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8305a354588875926cab52a55d99d3a29bcfb509
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager mit Azure Site Recovery
 
@@ -49,11 +44,11 @@ Bei einem Notfall kann Unternehmen A ein [Failover](site-recovery-failover.md) n
 
 In Abhängigkeit von den Geschäftsanforderungen kann **Unternehmen A** eine höhere oder niedrigere [Testhäufigkeit](../traffic-manager/traffic-manager-monitoring.md) für Wechsel zwischen dem lokalen Standort und Azure bei einem Notfall festlegen und damit die Ausfallzeiten für Benutzer minimieren.
 
-Nach dem Beheben des Notfalls kann **Unternehmen A** mithilfe von Azure Site Recovery ein Failback von Azure zur lokalen Umgebung ([VMware](site-recovery-how-to-failback-azure-to-vmware.md) oder [Hyper-V](site-recovery-failback-from-azure-to-hyper-v.md)) ausführen. Wenn Traffic Manager daraufhin erkennt, dass der Endpunkt **Primary** wieder fehlerfrei ist, nutzt er automatisch den Endpunkt **Primary** in den DNS-Antworten.
+Nach dem Beheben des Notfalls kann **Unternehmen A** mithilfe von Azure Site Recovery ein Failback von Azure zur lokalen Umgebung ([VMware](vmware-azure-failback.md) oder [Hyper-V](hyper-v-azure-failback.md)) ausführen. Wenn Traffic Manager daraufhin erkennt, dass der Endpunkt **Primary** wieder fehlerfrei ist, nutzt er automatisch den Endpunkt **Primary** in den DNS-Antworten.
 
 ## <a name="on-premises-to-azure-migration"></a>Migration von einem lokalen Standort zu Azure
 
-Zusätzlich zur Notfallwiederherstellung ermöglicht Azure Site Recovery auch [Migrationen zu Azure](site-recovery-migrate-to-azure.md). Mithilfe der leistungsstarken Testfailover-Funktionen von Azure Site Recovery können Kunden ohne Auswirkungen auf ihre lokale Umgebung die Anwendungsleistung in Azure nutzen. Wenn Kunden dann eine Migration durchführen möchten, können sie vollständige Workloads gemeinsam migrieren oder eine graduelle Migration und Skalierung ausführen.
+Zusätzlich zur Notfallwiederherstellung ermöglicht Azure Site Recovery auch [Migrationen zu Azure](migrate-overview.md). Mithilfe der leistungsstarken Testfailover-Funktionen von Azure Site Recovery können Kunden ohne Auswirkungen auf ihre lokale Umgebung die Anwendungsleistung in Azure nutzen. Wenn Kunden dann eine Migration durchführen möchten, können sie vollständige Workloads gemeinsam migrieren oder eine graduelle Migration und Skalierung ausführen.
 
 Die [gewichtete](../traffic-manager/traffic-manager-configure-weighted-routing-method.md) Routingmethode von Azure Traffic Manager kann dazu verwendet werden, einen Teil des eingehenden Datenverkehrs nach Azure umzuleiten, während der Großteil weiterhin in die lokale Umgebung geleitet wird. Dieser Ansatz kann zu einer besseren Bewertung der Skalierung der Leistung führen, während Sie die Gewichtung in Richtung Azure erhöhen. So können Sie nach und nach einen größeren Anteil Ihrer Workloads zu Azure migrieren.
 

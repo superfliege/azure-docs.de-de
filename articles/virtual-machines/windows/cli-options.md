@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.openlocfilehash: 11d30931bd549f7e877264b4a33f8e06c6b1c802
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e54ea62b7b7a7adb4874866a540ed9a6a097fc42
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-the-azure-cli-on-windows"></a>Verwenden der Azure CLI unter Windows
 
 Die Azure-Befehlszeilenschnittstelle (CLI) stellt eine Befehlszeile und eine Skriptumgebung für das Erstellen und Verwalten von Azure-Ressourcen bereit. Die Azure CLI steht für macOS-, Linux- und Windows-Betriebssysteme zur Verfügung. Die CLI-Befehle sind für all diese Betriebssysteme identisch, die Skriptsyntax kann jedoch je nach Betriebssystem abweichen.
 
-In dieser Dokumentation wird erläutert, wie die Azure CLI unter Windows installiert und ausgeführt werden kann, und es werden Überlegungen zur Syntax beleuchtet. Eine ausführliche Erörterung der Azure CLI finden Sie in der [Azure CLI-Dokumentation]( https://docs.microsoft.com/cli/azure/overview).
+In dieser Dokumentation wird erläutert, wie die Azure CLI unter Windows installiert und ausgeführt werden kann, und es werden Überlegungen zur Syntax beleuchtet. Eine ausführliche Erörterung der Azure CLI finden Sie in der [Azure CLI-Dokumentation]( https://docs.microsoft.com/cli/azure).
 
 ## <a name="windows-subsystem-for-linux"></a>Windows-Subsystem für Linux
 
