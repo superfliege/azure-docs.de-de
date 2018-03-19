@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 06/28/2017
 ms.author: daredis
-ms.openlocfilehash: 90c03f1538197e1cd1c90165417a4ec74c9c5961
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 678f3ae09a57cbbbb486d256f81f0f58563b482c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Schützen der Azure SQL-Datenbank
 
@@ -187,7 +187,7 @@ Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schrei
 5. Klicken Sie auf **Speichern**.
 
 > [!IMPORTANT]
-> Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie dies über PowerShell oder die REST-API tun. Weitere Informationen finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md).
+> Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie hierfür PowerShell oder die REST-API verwenden. Weitere Informationen finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md).
 >
 
 ## <a name="enable-sql-database-threat-detection"></a>Aktivieren der Bedrohungserkennung der SQL-Datenbank
@@ -216,7 +216,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
 
     ![Überwachungsdatensätze](./media/sql-database-threat-detection-get-started/5_td_audit_records.png)
 
-7. Klicken Sie auf die Überwachungsdatensätze, um weitere Details zu den verdächtigen Datenbankaktivitäten (wie etwa SQL-Anweisung, Fehlerursache und Client-IP) anzuzeigen.
+7. Klicken Sie auf die Überwachungsdatensätze, um weitere Informationen zu den verdächtigen Datenbankaktivitäten (z.B. SQL-Anweisung, Fehlerursache und Client-IP) anzuzeigen.
 
     ![Datensatzdetails](./media/sql-database-security-tutorial/6_td_audit_record_details.png)
 

@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2017
+ms.date: 02/21/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 1dc099fa234e217b682c88f2214fe271c916eec2
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 7c4f030018f388302c3b60a41086bbd97c86513d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack-Speicher: Unterschiede und Überlegungen
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack-Speicher ist eine Reihe von Speicherclouddiensten in Microsoft Azure Stack. Der Azure Stack-Speicher bietet Blob-, Tabellen-, Warteschlangen- und Kontoverwaltungsfunktionen mit einer mit Azure konsistenten Semantik.
 
@@ -33,15 +33,17 @@ Dieser Artikel beschreibt die bekannten Unterschiede des Azure Stack-Speichers i
 | Feature | Azure (global) | Azure Stack |
 | --- | --- | --- |
 |File Storage|Cloudbasierte SMB-Dateifreigaben unterstützt|Noch nicht unterstützt
-|Azure Storage Service Encryption für ruhende Daten|256-Bit-AES-Verschlüsselung|Noch nicht unterstützt
-|Speicherkontotyp|Allgemeine Speicherkonten und Azure Blob Storage-Konten|Nur allgemein
-|Replikationsoptionen|Lokal redundanter Speicher, georedundanter Speicher, schreibgeschützter georedundanter Speicher und zonenredunanter Speicher|Lokal redundanter Speicher
-|Storage Premium|Vollständig unterstützt|Kann bereitgestellt werden, jedoch ohne Leistungsgrenzwerte oder Garantien
-|Verwaltete Datenträger|Unterstützung für Premium und Standard|Noch nicht unterstützt
+|Azure Storage Service Encryption für ruhende Daten|256-Bit-AES-Verschlüsselung|BitLocker-128-Bit-AES-Verschlüsselung
+|Speicherkontotyp|Allgemeine Speicherkonten und Azure Blob Storage-Konten|Nur allgemein.
+|Replikationsoptionen|Lokal redundanter Speicher, georedundanter Speicher, schreibgeschützter georedundanter Speicher und zonenredunanter Speicher|Lokal redundanter Speicher.
+|Storage Premium|Vollständig unterstützt|Kann bereitgestellt werden, aber ohne Leistungsgrenzwerte oder Garantien.
+|Verwaltete Datenträger|Unterstützung für Premium und Standard|Noch nicht unterstützt.
 |Blobname|1.024 Zeichen (2.048 Bytes)|880 Zeichen (1.760 Bytes)
-|Maximale Blockblobgröße|4,75 TB (100 MB X 50.000 Blöcke)|50.000 x 4 MB (ca. 195 GB)
-|Seitenblob-Momentaufnahmenkopie|Die Sicherung nicht verwalteter Azure-VM-Datenträger, die an einen ausgeführten virtuellen Computer angefügt sind, wird unterstützt.|Noch nicht unterstützt
-|Inkrementelle Momentaufnahmenkopie des Seitenblobs|Unterstützung für Premium- und Standard-Azure-Seitenblobs|Noch nicht unterstützt
+|Maximale Blockblobgröße|4,75 TB (100 MB x 50.000 Blöcke)|4,75 TB (100 MB x 50.000 Blöcke) für das Update 1802 oder eine neuere Version. 50.000 x 4 MB (ca. 195 GB) für vorherige Versionen.
+|Seitenblob-Momentaufnahmenkopie|Die Sicherung nicht verwalteter Azure-VM-Datenträger, die an einen ausgeführten virtuellen Computer angefügt sind, wird unterstützt.|Noch nicht unterstützt.
+|Inkrementelle Momentaufnahmenkopie des Seitenblobs|Unterstützung für Premium- und Standard-Azure-Seitenblobs|Noch nicht unterstützt.
+|Speicherebenen für Blobspeicher|Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“.|Noch nicht unterstützt.
+Vorläufiges Löschen für Blobspeicher|Vorschau|Noch nicht unterstützt.
 |Maximale Seitenblobgröße|8 TB|1 TB
 |Seitenblob – Seitengröße|512 Bytes|4 KB
 |Größe für Tabellenpartitionsschlüssel und Zeilenschlüssel|1.024 Zeichen (2.048 Bytes)|400 Zeichen (800 Bytes)
@@ -54,8 +56,38 @@ Es gibt auch einige Unterschiede zu Speichermetriken:
 ## <a name="api-version"></a>API-Version
 Die folgenden Versionen werden für Azure Stack-Speicher unterstützt:
 
-* Azure Storage-Datendienste: [REST-API-Version vom 05.04.2015](https://docs.microsoft.com/rest/api/storageservices/Version-2015-04-05?redirectedfrom=MSDN)
-* Azure Storage-Verwaltungsdienste: [Vorschau vom 01.05.2015, 15.06.2015 und 01.01.2016](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN) 
+Azure Storage-Dienst-APIs:
+
+Update 1802 oder neuer:
+ - [2017-04-17](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2017-04-17)
+ - [2016-05-31](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2016-05-31)
+ - [2015-12-11](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2015-12-11)
+ - [2015-07-08 ](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2015-07-08)
+ - [2015-04-05](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2015-04-05)
+
+Vorherige Versionen:
+ - [2015-04-05](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2015-04-05)
+
+
+Verwaltungs-APIs für Azure Storage-Dienste:
+
+ - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+
+## <a name="sdk-versions"></a>SDK-Versionen
+
+Die folgenden Clientbibliotheken werden für Azure Stack-Speicher unterstützt:
+
+| Clientbibliothek | Von Azure Stack unterstützte Version | Link                                                                                                                                                                                                                                                                                                                                     | Endpunktspezifikation       |
+|----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| .NET           | Von 6.2.0 bis 8.7.0          | NuGet-Paket:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | app.config-Datei              |
+| Java           | Von 4.1.0 bis 6.1.0           | Maven-Paket:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-java/releases                                                                                                                                                                    | Verbindungszeichenfolgen-Setup      |
+| Node.js        | Von 1.1.0 bis 2.7.0           | NPM-Link:<br>https://www.npmjs.com/package/azure-storage<br>(Beispiel: Führen Sie „npm install azure-storage@2.7.0“ aus.)<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-node/releases                                                                                                                                         | Dienstinstanzdeklaration |
+| C++            | Von 2.4.0 bis 3.1.0           | NuGet-Paket:<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | Verbindungszeichenfolgen-Setup      |
+| PHP            | Von 0.15.0 bis 1.0.0          | GitHub-Release:<br>https://github.com/Azure/azure-storage-php/releases<br> <br>Installation über Composer (Details siehe unten)                                                                                                                                                                                                                  | Verbindungszeichenfolgen-Setup      |
+| Python         | Von 0.30.0 bis 1.0.0          | GitHub-Release:<br>https://github.com/Azure/azure-storage-python/releases                                                                                                                                                                                                                                                                | Dienstinstanzdeklaration |
+| Ruby           | Von 0.12.1 bis 1.0.1          | RubyGems-Paket:<br>Allgemein:<br>https://rubygems.org/gems/azure-storage-common/<br>Blob: https://rubygems.org/gems/azure-storage-blob/<br>Queue: https://rubygems.org/gems/azure-storage-queue/<br>Table: https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-ruby/releases | Verbindungszeichenfolgen-Setup      |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

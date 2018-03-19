@@ -2,21 +2,22 @@
 title: Erste Schritte mit Azure Stack-Speicher-Entwicklungstools
 description: Anleitung zu ersten Schritten mit Azure Stack-Speicher-Entwicklungstools
 services: azure-stack
-author: xiaofmao
-ms.author: xiaofmao
-ms.date: 9/25/2017
+author: mabriggs
+ms.author: mabrigg
+ms.date: 02/21/2018
 ms.topic: get-started-article
 ms.service: azure-stack
-ms.openlocfilehash: 5b2898c64c0f1b5d804e63fa4e4e1218fa7a672c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: femila
+ms.reviewer: xiaofmao
+ms.openlocfilehash: 81c62fc569e9f758d08bfca0bdfc5bcc9ed5860f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Erste Schritte mit Azure Stack-Speicher-Entwicklungstools
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
-
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Microsoft Azure Stack bietet eine Reihe von Speicherdiensten einschließlich Azure Blob, Table und Queue Storage.
 
@@ -25,8 +26,37 @@ Dieser Artikel ist eine Kurzanleitung zum Einstieg in die Verwendung von Azure S
 Es gibt bekannte Unterschiede zwischen Azure Storage und Azure Stack-Speicher, einschließlich einiger besonderen Anforderungen für jede Plattform. Beispielsweise gelten bestimmte Clientbibliotheken- und Endpunktsuffix-Anforderungen für Azure Stack. Weitere Informationen finden Sie unter [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Azure-Clientbibliotheken
-Die unterstützte REST-API-Version für Azure Stack-Speicher ist 2015-04-05. Sie ist der neuesten Version der REST-API von Azure Storage nicht vollständig gleichgestellt. Daher müssen Sie bei Speicherclientbibliotheken auf die Version achten, die mit REST-API 2015-04-05 kompatibel ist.
 
+Die unterstützten REST-API-Versionen für Azure Stack-Speicher lauten 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 für das Update 1802 und neuere Versionen und 2015-04-05 für vorherige Versionen. Die Azure Stack-Endpunkte sind der neuesten Version der REST-API von Azure Storage nicht vollständig gleichgestellt. Bei den Speicherclientbibliotheken müssen Sie auf die Version achten, die mit der REST-API kompatibel ist.
+
+### <a name="1802-update-or-newer-versions"></a>Update 1802 oder neuere Versionen
+
+| Clientbibliothek | Von Azure Stack unterstützte Version | Link | Endpunktspezifikation |
+|----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| .NET | 8.7.0 | NuGet-Paket:<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | app.config-Datei |
+| Java | 6.1.0 | Maven-Paket:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | Verbindungszeichenfolgen-Setup |
+| Node.js | 2.7.0 | NPM-Link:<br>https://www.npmjs.com/package/azure-storage<br>(Ausführung: `npm install azure-storage@2.7.0`)<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | Dienstinstanzdeklaration |
+| C++ | 3.1.0 | NuGet-Paket:<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | Verbindungszeichenfolgen-Setup |
+| PHP | 1.0.0 | GitHub-Release:<br>Allgemein: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>Queue:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>Table: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Installation per Composer (siehe [Details weiter unten](#install-php-client-via-composer---current).) | Verbindungszeichenfolgen-Setup |
+| Python | 1.0.0 | GitHub-Release:<br>Allgemein:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common<br>Blob:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob<br>Queue:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-queue | Dienstinstanzdeklaration |
+| Ruby | 1.0.1 | RubyGems-Paket:<br>Allgemein:<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>Blob: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>Queue: https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>Table: https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>GitHub-Release:<br>Allgemein: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>Blob: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>Queue: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>Table: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | Verbindungszeichenfolgen-Setup |
+
+#### <a name="install-php-client-via-composer---current"></a>Installation des PHP-Clients per Composer – Aktuell
+
+Installation per Composer: (Blob als Beispiel verwenden).
+
+1. Erstellen Sie eine Datei mit dem Namen **composer.json** im Stammverzeichnis des Projekts mit folgendem Code:
+  ```php
+    {
+      "require": {
+      "Microsoft/azure-storage-blob":"1.0.0"
+      }
+    }
+  ```
+2. Laden Sie [composer.phar](http://getcomposer.org/composer.phar) in das Stammverzeichnis des Projekts herunter.
+3. Führen Sie `php composer.phar install` aus.
+
+### <a name="previous-versions"></a>Vorherige Versionen
 
 |Clientbibliothek|Von Azure Stack unterstützte Version|Link|Endpunktspezifikation|
 |---------|---------|---------|---------|
@@ -38,25 +68,23 @@ Die unterstützte REST-API-Version für Azure Stack-Speicher ist 2015-04-05. Sie
 |Python     |0.30.0|PIP-Paket:<br> [https://pypi.python.org/pypi/azure-storage/0.30.0](https://pypi.python.org/pypi/azure-storage/0.30.0)<br>(Ausführen: `pip install -v azure-storage==0.30.0)`<br><br>GitHub-Release:<br> [https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0](https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0)|Dienstinstanzdeklaration|
 |Ruby|0.12.1<br>Vorschau|RubyGems-Paket:<br> [https://rubygems.org/gems/azure-storage/versions/0.12.1.preview](https://rubygems.org/gems/azure-storage/versions/0.12.1.preview)<br><br>GitHub-Release:<br> [https://github.com/Azure/azure-storage-ruby/releases/tag/v0.12.1](https://github.com/Azure/azure-storage-ruby/releases/tag/v0.12.1)|Verbindungszeichenfolgen-Setup|
 
-> [!NOTE]
-> PHP-Details<br><br>
->So führen Sie eine Installation mit dem Composer durch:
->1. Erstellen Sie eine Datei mit dem Namen `composer.json` im Stammverzeichnis des Projekts mit folgendem Code:<br>
->
->   ```
->   {
->       "require":{
->           "Microsoft/azure-storage":"0.15.0"
->        }
->    }
->   ```
->
->2. Laden Sie [composer.phar](http://getcomposer.org/composer.phar) in das Stammverzeichnis des Projekts herunter.
->3. Führen Sie `php composer.phar install` aus.
->
+#### <a name="install-php-client-via-composer---previous"></a>Installation des PHP-Clients per Composer – Vorherige
 
+So führen Sie eine Installation mit dem Composer durch:
+
+1. Erstellen Sie eine Datei mit dem Namen **composer.json** im Stammverzeichnis des Projekts mit folgendem Code:
+  ```php
+    {
+          "require":{
+          "Microsoft/azure-storage":"0.15.0"
+          }
+    }
+  ```
+2. Laden Sie [composer.phar](http://getcomposer.org/composer.phar) in das Stammverzeichnis des Projekts herunter.
+3. Führen Sie `php composer.phar install` aus.
 
 ## <a name="endpoint-declaration"></a>Endpunktdeklaration
+
 Ein Azure Stack-Endpunkt besteht aus zwei Teilen: dem Namen einer Region und der Azure Stack-Domäne.
 Im Azure Stack Development Kit ist der Standardendpunkt **local.azurestack.external**.
 Wenn Sie sich über Ihren Endpunkt nicht sicher sind, wenden Sie sich an den Cloudadministrator.
@@ -142,10 +170,10 @@ Die folgenden Tutorials zu Azure Blob Storage gelten für Azure Stack. Beachten 
 
 * [Erste Schritte mit Azure Blob Storage mit .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Gewusst wie: Verwenden von Blob Storage mit Java](../../storage/blobs/storage-java-how-to-use-blob-storage.md)
-* [Verwenden von Blob Storage mit Node.js]../../storage/blobs/storage-nodejs-how-to-use-blob-storage.md)
+* [Gewusst wie: Verwenden von Blob Storage mit Node.js](../../storage/blobs/storage-nodejs-how-to-use-blob-storage.md)
 * [Verwenden des BLOB-Speichers mit C++](../../storage/blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Gewusst wie: Verwenden von Blob Storage mit PHP](../../storage/blobs/storage-php-how-to-use-blobs.md)
-* [Verwenden des Azure-Blob-Speichers mit Python](../../storage/blobs/storage-python-how-to-use-blob-storage.md)
+* [Verwenden von Azure Blob Storage mit Python](../../storage/blobs/storage-python-how-to-use-blob-storage.md)
 * [Gewusst wie: Verwenden von Blob Storage mit Ruby](../../storage/blobs/storage-ruby-how-to-use-blob-storage.md)
 
 ## <a name="queue-storage"></a>Queue Storage

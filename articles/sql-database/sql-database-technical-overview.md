@@ -13,19 +13,19 @@ ms.custom: overview
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 02/12/2018
+ms.date: 03/07/2018
 ms.workload: Active
 ms.author: carlrab
 ms.reviewer: carlrab
-ms.openlocfilehash: 1671cbe47b2aee53e4ec6d2bc731cbe4496ce586
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a1c4426acec8e9e006c2349b886297f45cc8ecb2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
 
-SQL-Datenbank ist ein relationaler Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. Sie bietet eine [dynamisch skalierbare Leistung](sql-database-service-tiers.md) und stellt Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](sql-database-in-memory.md) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur. 
+SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank verfügt über verwaltete [SQL-Einzeldatenbanken](sql-database-servers-databases.md), verwaltete SQL-Datenbanken in einem [Pool für elastische Datenbanken](sql-database-elastic-pool.md) und verwaltete SQL-Instanzen, die als [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) (öffentliche Vorschauversion) bezeichnet werden. Sie bietet eine [dynamisch skalierbare Leistung](sql-database-service-tiers.md) und stellt Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](sql-database-in-memory.md) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur. 
 
 SQL-Datenbank nutzt diese Codebasis gemeinsam mit der [Microsoft SQL Server-Datenbank-Engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). Mit der Cloud-First-Strategie von Microsoft werden die neuesten Funktionen von SQL Server zunächst in SQL-Datenbank und erst dann in SQL Server selbst veröffentlicht. Durch diesen Ansatz verfügen Sie immer über die neuesten Features von SQL Server – ohne den Mehraufwand für Patches oder Updates –, die in Millionen von Datenbanken getestet wurden. Informationen zu angekündigten neuen Funktionen finden Sie unter:
 
@@ -37,19 +37,22 @@ SQL-Datenbank nutzt diese Codebasis gemeinsam mit der [Microsoft SQL Server-Date
 
 SQL-Datenbank bietet eine vorhersagbare Leistung mit mehreren Serviceleveln, die eine dynamische Skalierung ohne Ausfallzeit, integrierte intelligente Optimierung, globale Skalierbarkeit und Verfügbarkeit sowie erweiterte Sicherheitsoptionen bieten – alles mit nahezu keinem Verwaltungsaufwand. Mit diesen Funktionen können Sie sich auf die schnelle Entwicklung von Apps und die Verkürzung des Zeitraums bis zur Markteinführung konzentrieren, anstatt wertvolle Zeit und Ressourcen für die Verwaltung von virtuellen Computern und der Infrastruktur aufwenden zu müssen. Der SQL-Datenbank-Dienst wird derzeit in 38 Rechenzentren auf der ganzen Welt ausgeführt – und regelmäßig werden neue online geschaltet. Dies ermöglicht die Ausführung Ihrer Datenbank in einem Rechenzentrum in Ihrer Nähe.
 
-> [!NOTE]
-> Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
+> [!IMPORTANT] Die verwaltete Azure SQL-Datenbank-Instanz befindet sich derzeit in der Vorschauphase und ist nur auf einer einzelnen Dienstebene verfügbar. Weitere Informationen finden Sie unter [What is a Managed Instance (preview)?](sql-database-managed-instance.md) (Was ist eine verwaltete Instanz (Vorschauversion)?).
 >
 
 ## <a name="scalable-performance-and-pools"></a>Skalierbare Leistung und Pools
 
 Bei SQL-Datenbank ist jede Datenbank von den anderen isoliert und damit portabel, außerdem besitzt jede eine eigene [Dienstebene](sql-database-service-tiers.md) mit einer garantierten Leistungsebene. SQL-Datenbank bietet unterschiedliche Leistungsebenen für unterschiedliche Anforderungen. Darüber hinaus können Datenbanken in Pools zusammengefasst werden, um die Verwendung von Ressourcen zu maximieren und damit Geld zu sparen.
 
+Bei einer verwalteten Azure SQL-Datenbank-Instanz ist jede Instanz von anderen Instanzen mit garantierten Ressourcen isoliert. Weitere Informationen finden Sie unter [What is a Managed Instance (preview)?](sql-database-managed-instance.md) (Was ist eine verwaltete Instanz (Vorschauversion)?). 
+
 ### <a name="adjust-performance-and-scale-without-downtime"></a>Anpassen von Leistung und Skalierung ohne Ausfallzeiten
 
 SQL-Datenbank bietet drei Dienstebenen zur Unterstützung von geringeren und aufwändigeren Datenbank-Workloads: Basic, Standard und Premium. Sie können zu geringen monatlichen Kosten Ihre erste App in einer kleinen Einzeldatenbank erstellen und dann manuell oder programmgesteuert jederzeit die Dienstebene (Tarif) ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
 
    ![Skalieren](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+
+Die verwaltete Azure SQL-Datenbank-Instanz befindet sich in der Vorschauphase und stellt eine einzelne Dienstebene bereit. Weitere Informationen finden Sie unter [What is a Managed Instance (preview)?](sql-database-managed-instance.md) (Was ist eine verwaltete Instanz (Vorschauversion)?).
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pools für elastische Datenbanken zum Maximieren der Ressourcenverwendung
 
@@ -58,6 +61,9 @@ Für viele Unternehmen und Anwendungen genügt es, wenn Einzeldatenbanken erstel
    ![Pools für elastische Datenbanken](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
 Bei Pools für elastische Datenbanken müssen Sie sich nicht darauf konzentrieren, die Datenbankleistung nach oben oder unten anzupassen, wenn der Ressourcenbedarf schwankt. Die im Pool zusammengefassten Datenbanken nutzen die Leistungsressourcen des Pools für elastische Datenbanken je nach Bedarf. In einem Pool zusammengefasste Datenbanken nutzen die Grenzwerte des Pools, überschreiten sie aber nicht. Ihre Kosten bleiben also vorhersagbar, auch wenn sich die Nutzung der einzelnen Datenbanken nicht prognostizieren lässt. Darüber hinaus können Sie [Datenbanken im Pool hinzufügen und entfernen](sql-database-elastic-pool-manage-portal.md)und so Ihre App von einigen wenigen auf Tausende Datenbanken skalieren, und das in einem kontrollierten Kostenrahmen. Sie können außerdem die minimalen und maximalen Ressourcen steuern, die für die Datenbanken im Pool verfügbar sind. So können Sie sicherstellen, dass keine Datenbank im Pool alle Poolressourcen verbraucht und dass jede Datenbank des Pools über ein garantiertes Minimum an Ressourcen verfügt. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die Pools für elastische Datenbanken verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+
+> [!IMPORTANT]
+> Für die verwaltete Azure SQL-Datenbank-Instanz werden Pools für elastische Datenbanken nicht unterstützt.
 
 ### <a name="blend-single-databases-with-pooled-databases"></a>Mischen von Einzeldatenbanken mit Datenbanken in Pools
 
@@ -83,6 +89,7 @@ Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rech
 - **[Point-in-Time-Wiederherstellungen:](sql-database-recovery-using-backups.md)** SQL-Datenbank unterstützt die Wiederherstellung zu einem beliebigen Zeitpunkt innerhalb der Vermerkdauer für automatische Sicherungen.
 - **[Aktive Georeplikation:](sql-database-geo-replication-overview.md)** Mit SQL-Datenbank können Sie bis zu vier lesbare sekundäre Datenbanken entweder im gleichen oder in weltweit verteilten Azure-Rechenzentren konfigurieren.  Wenn Sie beispielsweise über eine SaaS-Anwendung mit einer Katalogdatenbank verfügen, die eine große Anzahl gleichzeitiger schreibgeschützter Transaktionen umfasst, können Sie mithilfe der aktiven Georeplikation eine globale Skalierung für das Lesen aktivieren und so Engpässe in der primären Datenbank beseitigen, die durch hohe Workloads aufgrund der Lesevorgänge verursacht werden. 
 - **[Failovergruppen:](sql-database-geo-replication-overview.md)** SQL-Datenbank bietet eine hohe Verfügbarkeit und einen Lastenausgleich auf globaler Ebene, einschließlich transparenter Georeplikation und von Failovern großer Mengen von Datenbanken und Pools für elastische Datenbanken. Failovergruppen und die aktive Georeplikation erlauben das Erstellen von weltweit verteilten SaaS-Anwendungen mit minimalem Verwaltungsaufwand, bei dem alle komplexen Aufgaben für Überwachung, Weiterleitung und Failoverorchestrierung von SQL-Datenbank erledigt werden.
+- **[Zonenredundante Datenbanken](sql-database-high-availability.md)**: SQL-Datenbank ermöglicht Ihnen die Bereitstellung von Premium-Datenbanken oder Pools für elastische Premium-Datenbanken über mehrere Verfügbarkeitszonen hinweg. Premium-Datenbanken und Pools für elastische Premium-Datenbanken verfügen über mehrere redundante Replikate, um die Hochverfügbarkeit sicherzustellen. Die Anordnung dieser Replikate in mehreren Verfügbarkeitszonen sorgt für eine höhere Resilienz, z.B. die Möglichkeit der automatischen Wiederherstellung nach Ausfällen von Rechenzentren ohne Datenverlust. Diese Funktion steht derzeit als Vorschau zur Verfügung. 
 
 ## <a name="built-in-intelligence"></a>Integrierte Logik
 
@@ -158,7 +165,7 @@ SQL-Datenbank unterstützt das Erstellen von Anwendungen mit Python, Java, Node.
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Stellen Sie Fragen zur Datenbankverwaltung.
 - [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Stellen Sie Fragen zur Entwicklung.
-- [MSDN-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?category=sqlserver): Stellen Sie technische Fragen.
+- [MSDN-Foren](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Stellen Sie technische Fragen.
 - [Feedback](http://aka.ms/sqlfeedback): Hier können Sie Fehler melden und Features anfordern.
 - [Reddit](https://www.reddit.com/r/SQLServer/): Tauschen Sie sich über SQL Server aus.
 

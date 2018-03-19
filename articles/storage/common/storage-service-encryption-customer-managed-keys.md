@@ -1,128 +1,164 @@
 ---
-title: "Azure-Speicherdienstverschlüsselung mit vom Kunden verwalteten Schlüssel in Azure Key Vault | Microsoft-Dokumentation"
-description: "Mit der Azure-Speicherdienstverschlüsselung können Sie Ihren Azure Blob Storage auf Dienstseite beim Speichern von Daten verschlüsseln und wieder entschlüsseln, wenn Daten mit vom Kunden verwalteten Schlüsseln abgerufen werden."
+title: "Azure Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault | Microsoft-Dokumentation"
+description: "Mit Azure Storage Service Encryption können Sie Azure Blob Storage auf Dienstseite beim Speichern von Daten verschlüsseln und wieder entschlüsseln, wenn Daten mit von Kunden verwalteten Schlüsseln abgerufen werden."
 services: storage
-documentationcenter: .net
 author: lakasa
-manager: jahogg
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: 0a05a0d28899cc3db11f8fda8aec5bd6ed9bd5f8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b40858640d10e5661be420976520774bd50837cb
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Speicherdienstverschlüsselung mit vom Kunden verwalteten Schlüsseln in Azure Key Vault
+# <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 
-Es ist uns ein Anliegen, dass Microsoft Azure Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Konformitätsanforderungen Ihrer Organisation unterstützt.  Eine Funktion, mit der Sie Ihre ruhenden Daten schützen können, ist die Speicherdienstverschlüsselung (Storage Service Encryption, SSE), die Ihre Daten automatisch verschlüsselt, während sie in den Speicher geschrieben werden, und sie beim Abrufen auch wieder entschlüsselt. Die Ver- und Entschlüsselung erfolgt automatisch und vollständig transparent. Außerdem wird eine 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) verwendet, eine der stärksten verfügbaren Blockchiffren.
+Es ist uns ein Anliegen, dass Microsoft Azure Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Konformitätsanforderungen Ihrer Organisation unterstützt. Azure Storage schützt Ihre Daten mittels Storage Service Encryption (SSE). Damit werden die Daten beim Schreiben in den Speicher automatisch verschlüsselt und beim Abrufen auch wieder entschlüsselt. Die Ver- und Entschlüsselung erfolgt automatisch und transparent. Dabei wird mit der 256-Bit-[AES-Verschlüsselung](https://wikipedia.org/wiki/Advanced_Encryption_Standard) eine der stärksten verfügbaren Blockchiffren verwendet.
 
-Mit SSE können von Microsoft verwaltete oder eigene Verschlüsselungsschlüssel verwendet werden. In diesem Artikel werden die letztgenannten behandelt. Weitere Informationen zur Verwendung von von Microsoft verwalteten Schlüsseln oder SSE im Allgemeinen finden Sie unter [Azure-Speicherverschlüsselung für ruhende Daten](../storage-service-encryption.md).
+Mit SSE können von Microsoft verwaltete oder eigene Verschlüsselungsschlüssel verwendet werden. In diesem Artikel erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel verwenden. Weitere Informationen zur Verwendung von von Microsoft verwalteten Schlüsseln oder SSE im Allgemeinen finden Sie unter [Azure-Speicherverschlüsselung für ruhende Daten](storage-service-encryption.md).
 
-Damit Sie Ihre eigenen Verschlüsselungsschlüssel verwenden können, wird SSE für Blob Storage in Azure Key Vault (AKV) integriert. So haben Sie die Möglichkeit, Ihre eigenen Verschlüsselungsschlüssel zu erstellen und in AKV zu speichern oder mit AKV-APIs Verschlüsselungsschlüssel zu generieren. AKV bietet Ihnen nicht nur die Möglichkeit, Ihre Schlüssel zu verwalten und zu steuern, sondern auch die Verwendung der Schlüssel zu überwachen. 
+SSE für Blob und File Storage ist in Azure Key Vault integriert, sodass Sie Ihre Verschlüsselungsschlüssel in einem Schlüsseltresor verwalten können. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch Ihre Schlüssel und deren Verwendung verwalten und überwachen.
 
-Warum sollten Sie Ihre eigenen Schlüssel erstellen? Sie erhalten dadurch mehr Flexibilität, sodass Sie Zugriffssteuerelemente erstellen, drehen, deaktivieren und definieren können. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.
+Warum sollten Sie eigene Schlüssel erstellen? Benutzerdefinierte Schlüssel bieten Ihnen mehr Flexibilität, sodass Sie Zugriffssteuerelemente erstellen, drehen, deaktivieren und definieren können. Außerdem können Sie die Verschlüsselungsschlüssel prüfen, die Ihre Daten schützen.
 
-## <a name="sse-with-customer-managed-keys-preview"></a>Vorschauversion von SSE mit vom Kunden verwalteten Schlüsseln
+## <a name="get-started-with-customer-managed-keys"></a>Erste Schritte mit von Kunden verwalteten Schlüsseln
 
-Diese Funktion steht derzeit als Vorschau zur Verfügung. Um sie nutzen zu können, müssen Sie ein neues Speicherkonto erstellen. Den Schlüsseltresor und Schlüssel können Sie entweder neu erstellen oder bereits vorhandene verwenden. Das Speicherkonto und der Schlüsseltresor müssen sich in derselben Region befinden, dürfen aber zu verschiedenen Abonnements gehören.
+Um vom Kunden verwaltete Schüssel mit SSE zu verwalten, können Sie einen neuen Schlüsseltresor und Schlüssel erstellen oder bereits vorhandene verwenden. Das Speicherkonto und der Schlüsseltresor müssen sich in derselben Region befinden, dürfen aber zu verschiedenen Abonnements gehören. 
 
-Um an der SSE-Vorschauversion teilzunehmen, wenden Sie sich an [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com). Für die Teilnahme stellen wir Ihnen dann einen speziellen Link bereit.
+### <a name="step-1-create-a-storage-account"></a>Schritt 1: Erstellen eines Speicherkontos
 
-Weitere Informationen finden Sie in den [häufig gestellten Fragen](#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
+Erstellen Sie zuerst ein Speicherkonto, falls Sie noch kein Konto besitzen. Weitere Informationen finden Sie unter [Erstellen eines neuen Speicherkontos](storage-quickstart-create-account.md).
 
-> [!IMPORTANT]
-> Bevor Sie die Schritte in diesem Artikel ausführen, müssen Sie sich für die Vorschauversion registrieren. Ohne Zugriff auf die Vorschau, werden Sie diese Funktion im Portal nicht aktivieren können.
+### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Schritt 2: Aktivieren von SSE für Blob und File Storage
 
-## <a name="getting-started"></a>Erste Schritte
-## <a name="step-1-create-a-new-storage-accountstorage-create-storage-accountmd"></a>Schritt 1: [Erstellen eines neuen Speicherkontos](../storage-create-storage-account.md)
+Um SSE mit von Kunden verwalteten Schlüsseln zu aktivieren, müssen zwei Features für den Schlüsselschutz aktiviert werden:„Soft Delete“ (Vorläufig löschen) und „Do Not Purge“ (Nicht bereinigen). Mit diesen Einstellungen verhindern Sie versehentliches oder absichtliches Löschen der Schlüssel. Die maximale Beibehaltungsdauer der Schlüssel ist auf 90 Tage festgelegt, um Benutzer vor böswilligen Akteuren oder Ransomware Angriffe zu schützen.
 
-## <a name="step-2-enable-encryption"></a>Schritt 2: Aktivieren der Verschlüsselung
-Sie können die SSE über das [Azure-Portal](https://portal.azure.com) für das Speicherkonto aktivieren. Suchen Sie auf dem Blatt „Einstellungen“ für das Speicherkonto nach dem Abschnitt „Blob-Dienst“, wie in der nachstehenden Abbildung gezeigt, und klicken Sie auf „Verschlüsselung“.
+Wenn Sie von Kunden verwaltete Schlüssel für SSE automatisch aktivieren möchten, können Sie die [REST-API des Azure Storage-Ressourcenanbieters](https://docs.microsoft.com/rest/api/storagerp), die [Clientbibliothek des Speicherressourcenanbieters für .NET](https://docs.microsoft.com/dotnet/api), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) oder die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/storage/storage-azure-cli) verwenden.
+
+Um von Kunden-verwaltete Schlüssel mit SSE verwenden zu können, müssen Sie dem Speicherkonto eine Speicherkontoidentität zuweisen. Führen Sie den folgenden PowerShell-Befehl aus, um die Identität festzulegen:
+
+```powershell
+Set-AzureRmStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+```
+
+Führen Sie die folgenden PowerShell-Befehle aus, um „Soft Delete“ (Vorläufig löschen) und „Do Not Purge“ (Nicht bereinigen) zu aktivieren:
+
+```powershell
+($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
+enableSoftDelete -Value 'True'
+
+Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+$resource.Properties
+
+($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
+enablePurgeProtection -Value 'True'
+
+Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+$resource.Properties
+```
+
+### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>Schritt 3: Aktivieren der Verschlüsselung mit von Kunden verwalteten Schlüsseln
+
+Standardmäßig verwendet SSE von Microsoft verwaltete Schlüssel. Sie können SSE mit von Kunden verwalteten Schlüsseln für das Speicherkonto über das [Azure-Portal](https://portal.azure.com/) aktivieren. Klicken Sie auf dem Blatt **Einstellungen** Blatt für das Speicherkonto auf **Verschlüsselung**. Wählen Sie wie in der folgenden Abbildung die Option **Eigenen Schlüssel verwenden**.
 
 ![Portal-Screenshot mit der Verschlüsselungsoption](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
-<br/>*Aktivieren von SSE für den Blob-Dienst*
 
-Wenn Sie SSE programmgesteuert für ein Speicherkonto aktivieren oder deaktivieren möchten, können Sie die [REST-API des Azure Storage-Ressourcenanbieters](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN), die [Clientbibliothek des Speicherressourcenanbieters für .NET](https://docs.microsoft.com/dotnet/api/?redirectedfrom=MSDN), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.0.0) oder die [Azure-CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli) verwenden.
+### <a name="step-4-select-your-key"></a>Schritt 4: Auswählen Ihres Schlüssels
 
-Wenn Sie auf diesem Bildschirm das Kontrollkästchen „Eigenen Schlüssel verwenden“ nicht angezeigt wird, wurden Sie nicht für die Vorschau zugelassen. Senden Sie eine E-Mail an [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com), und fordern Sie eine Genehmigung an.
+Sie können Ihren Schlüssel als URI festlegen oder einen Schlüssel aus einem Schlüsseltresor angeben.
 
-![Screenshot des Portals mit der Verschlüsselungsvorschau](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
+#### <a name="specify-a-key-as-a-uri"></a>Festlegen eines Schlüssels als URI
 
-Standardmäßig verwendet SSE verwaltete Schlüssel von Microsoft. Aktivieren Sie das Kontrollkästchen, um Ihre eigenen Schlüssel zu verwenden. Anschließend können Sie entweder Ihren Schlüssel-URI angeben oder einen Schlüssel und Schlüsseltresor aus der Auswahl auswählen.
+Gehen Sie wie folgt vor, um Ihren Schlüssel über einen URI anzugeben:
 
-## <a name="step-3-select-your-key"></a>Schritt 3: Auswählen Ihres Schlüssels
+1. Wählen Sie die Option **Schlüssel-URI eingeben**.  
+2. Geben Sie den URI im Feld **Schlüssel-URI** ein.
 
-![Screenshot des Portals: Verschlüsselungsoption „Eigenen Schlüssel verwenden“](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
+    ![Screenshot des Portals: Verschlüsselungsoption „Schlüssel-URI eingeben“](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
 
-![Screenshot des Portals: Verschlüsselungsoption „Schlüssel-URI eingeben“](./media/storage-service-encryption-customer-managed-keys/ssecmk3.png)
+#### <a name="specify-a-key-from-a-key-vault"></a>Festlegen eines Schlüssels aus einem Schlüsseltresor 
 
-Wenn das Speicherkonto keinen Zugriff auf den Schlüsseltresor hat, können Sie den Speicherkonten mithilfe des folgenden Befehls in Azure PowerShell Zugriff auf den erforderlichen Schlüsseltresor gewähren.
+Gehen Sie wie folgt vor, um Ihren Schlüssel aus einem Schlüsseltresor anzugeben:
+
+1. Wählen Sie die Option **Select from Key Vault** (Aus Schlüsseltresor wählen).  
+2. Wählen Sie den Schlüsseltresor mit dem Schlüssel, den Sie verwenden möchten.
+3. Wählen Sie den Schlüssel aus dem Schlüsseltresor.
+
+    ![Screenshot des Portals: Verschlüsselungsoption „Eigenen Schlüssel verwenden“](./media/storage-service-encryption-customer-managed-keys/ssecmk3.png)
+
+Wenn das Speicherkonto keinen Zugriff auf den Schlüsseltresor hat, können Sie den Azure PowerShell-Befehl in der folgenden Abbildung ausführen, um Zugriff zu gewähren.
 
 ![Screenshot des Portals: Zugriff auf den Schlüsseltresor verweigert](./media/storage-service-encryption-customer-managed-keys/ssecmk4.png)
 
-Sie können den Zugriff auf das Speicherkonto auch über das Azure-Portal gewähren, indem Sie dort zu Azure Key Vault gehen.
+Sie können den Zugriff auch über das Azure-Portal gewähren. Navigieren Sie dazu im Azure-Portal zu Azure Key Vault, und gewähren Sie Zugriff auf das Speicherkonto.
 
-## <a name="step-4-copy-data-to-storage-account"></a>Schritt 4: Kopieren von Daten in das Speicherkonto
-Wenn Sie Daten in das neue Speicherkonto übertragen möchten, damit sie verschlüsselt werden, lesen Sie [Step 3: Copy data to storage account](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account) (Schritt 3: Kopieren von Daten in das Speicherkonto) im Artikel „Azure Storage Service Encryption for Data at Rest“ (Azure-Speicherdienstverschlüsselung für ruhende Daten).
+### <a name="step-5-copy-data-to-storage-account"></a>Schritt 5: Kopieren von Daten in das Speicherkonto
 
-## <a name="step-5-query-the-status-of-the-encrypted-data"></a>Schritt 5: Abfragen des Status der verschlüsselten Daten
-Weitere Informationen zum Abfragen des Status der verschlüsselten Daten finden Sie im Abschnitt [Step 4: Query the status of the encrypted data](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data) (Schritt 4: Abfragen des Status der verschlüsselten Daten) im Artikel „Azure Storage Service Encryption for Data at Rest“ (Azure-Speicherdienstverschlüsselung für ruhende Daten).
+Informationen dazu, wie Sie Daten zum Verschlüsseln in das neue Speicherkonto übertragen, finden Sie in Schritt 3 des Artikels [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md#step-3-copy-data-to-storage-account).
 
-## <a name="frequently-asked-questions-about-storage-service-encryption-for-data-at-rest"></a>Häufig gestellte Fragen zu Storage Service Encryption für ruhende Daten
-**F: Ich verwende die Storage Premium. Kann ich SSE mit vom Kunden verwalteten Schlüsseln verwenden?**
+### <a name="step-6-query-the-status-of-the-encrypted-data"></a>Schritt 6: Abfragen des Status der verschlüsselten Daten
 
-A: Ja. SSE mit von Microsoft verwalteten und vom Kunden verwalteten Schlüsseln wird sowohl im Standardspeicher als auch in Storage Premium unterstützt. 
+Informationen dazu, wie den Status der verschlüsselten Daten abfragen, finden Sie in Schritt 4 des Artikels [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md#step-4-query-the-status-of-the-encrypted-data).
 
-**F: Kann ich neue Speicherkonten, bei denen SSE und vom Kunden verwaltete Schlüssel aktiviert sind, mit Azure PowerShell und Azure-CLI erstellen?**
+## <a name="faq-for-sse-with-customer-managed-keys"></a>Häufig gestellte Fragen zu SSE mit von Kunden verwalteten Schlüsseln
+
+**F: Ich verwende Storage Premium. Kann ich SSE mit von Kunden verwalteten Schlüsseln verwenden?**
+
+A: Ja. SSE mit von Microsoft verwalteten und vom Kunden verwalteten Schlüsseln wird sowohl im Standardspeicher als auch in Storage Premium unterstützt.
+
+**F: Kann ich neue Speicherkonten, bei denen SSE und vom Kunden verwaltete Schlüssel aktiviert sind, mit Azure PowerShell und der Azure-Befehlszeilenschnittstelle erstellen?**
 
 A: Ja.
 
-**F: Wie viel teurer ist Azure Storage, wenn SSE mit vom Kunden verwalteten aktiviert ist?**
+**F: Wie viel teurer ist Azure Storage, wenn ich SSE mit von Kunden verwalteten Schlüsseln verwende?**
 
-A: Die Verwendung von Azure Key Vault ist nicht kostenlos. Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/en-us/pricing/details/key-vault/). Für SSE werden keine zusätzlichen Kosten in Rechnung gestellt.
+A: Die Verwendung von Azure Key Vault ist nicht kostenlos. Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). Es entstehen keine zusätzlichen Kosten für SSE, das für alle Speicherkonten aktiviert ist.
 
 **F: Kann ich den Zugriff auf die Verschlüsselungsschlüssel widerrufen?**
 
-A: Ja, Sie können den Zugriff jederzeit widerrufen. Dazu stehen Ihnen mehrere Möglichkeiten zur Verfügung. Weitere Informationen finden Sie unter [Azure Key Vault – PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) und [Azure Key Vault – CLI](https://docs.microsoft.com/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle Blobs im Speicherkonto blockiert, da Azure Storage keinen Zugriff mehr auf den Kontoverschlüsselungsschlüssel hat.
+A: Ja, Sie können den Zugriff jederzeit widerrufen. Dazu stehen Ihnen mehrere Möglichkeiten zur Verfügung. Weitere Informationen finden Sie unter [Azure Key Vault – PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) und [Azure Key Vault – CLI](https://docs.microsoft.com/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle Blobs im Speicherkonto blockiert, da Azure Storage keinen Zugriff mehr auf den Kontoverschlüsselungsschlüssel hat.
 
 **F: Kann ich ein Speicherkonto und einen Schlüssel in unterschiedlichen Regionen erstellen?**
 
-A: Nein, das Speicherkonto und der Schlüsseltresor/Schlüssel müssen sich in der gleichen Region befinden. 
+A: Nein, das Speicherkonto, Azure Key Vault und der Schlüssel müssen sich in der gleichen Region befinden.
 
-**F: Kann ich SSE mit vom Kunden verwalteten Schlüsseln aktivieren, während ich ein Speicherkonto erstelle?**
+**F: Kann ich von Kunden verwaltete Schlüssel für SSE aktivieren, während ich das Speicherkonto erstelle?**
 
-A: Nein. Wenn Sie SSE während der Erstellung des Speicherkontos aktivieren, können Sie nur von Microsoft verwaltete Schlüssel verwenden. Wenn Sie vom Kunden verwaltete Schlüssel verwenden möchten, müssen Sie die Speicherkontoeigenschaften aktualisieren. Sie können REST oder eine der Speicherclientbibliotheken verwenden, um Ihr Speicherkonto programmgesteuert zu aktualisieren, oder die Eigenschaften des Speicherkontos nach dem Erstellen mithilfe des Azure-Portals aktualisieren.
+A: Nein. Wenn Sie zuerst das Speicherkonto erstellen, sind nur von Microsoft verwaltete Schlüssel für SSE verfügbar. Sie müssen die Speicherkontoeigenschaften aktualisieren, um von Kunden verwaltete Schlüssel zu verwenden. Sie können REST oder eine der Speicherclientbibliotheken verwenden, um Ihr Speicherkonto programmgesteuert zu aktualisieren, oder die Eigenschaften des Speicherkontos nach dem Erstellen mithilfe des Azure-Portals aktualisieren.
 
-**F: Kann ich die Verschlüsselung während der Verwendung von SSE mit vom Kunden verwalteten Schlüsseln deaktivieren?**
+**F: Kann ich die Verschlüsselung deaktivieren, während ich vom Kunden verwaltete Schlüssel mit SSE deaktiviere?**
 
-A: Nein, die Verschlüsselung kann während der Verwendung von SSE mit vom Kunden verwalteten Schlüsseln nicht deaktiviert werden. Um die Verschlüsselung zu deaktivieren, müssen Sie von Microsoft verwaltete Schlüssel verwenden. Diesen Wechsel können Sie mithilfe des Azure-Portals oder mit PowerShell durchführen.
+A: Nein, Sie können die Verschlüsselung nicht deaktivieren. Die Verschlüsselung ist standardmäßig für alle Dienste aktiviert: Blob, File, Table und Queue Storage. Sie können auch zwischen von Microsoft verwalteten Schlüsseln und von Kunden verwalteten Schlüsseln wechseln und umgekehrt.
 
 **F: Ist SSE standardmäßig aktiviert, wenn ich ein neues Speicherkonto erstelle?**
 
-A: SSE ist nicht standardmäßig aktiviert. Sie können dieses Feature im Azure-Portal aktivieren. Außerdem können Sie dieses Feature programmgesteuert mit der Speicherressourcenanbieter-REST-API aktivieren. 
+A: Die Verschlüsselung ist standardmäßig für alle Speicherkonten und für alle Dienste aktiviert: Blob, File, Table und Queue Storage.
 
-**F: Ich kann für mein Speicherkonto keine Verschlüsselung aktivieren.**
+**F: Ich kann SSE nicht mit von Kunden verwalteten Schlüsseln für mein Speicherkonto aktivieren.**
 
-A: Handelt es sich um ein Resource Manager-Speicherkonto? Klassische Speicherkonten werden nicht unterstützt. SSE mit vom Kunden verwalteten Schlüsseln kann auch nur auf neu erstellten Resource Manager-Speicherkonten aktiviert werden.
+A: Handelt es sich um ein Azure Resource Manager-Speicherkonto? Klassische Speicherkonten unterstützen von Kunden verwaltete Schlüssel nicht. SSE mit von Kunden verwalteten Schlüsseln kann nur auf Resource Manager-Speicherkonten aktiviert werden.
 
-**F: Ist SSE mit vom Kunden verwalteten Schlüsseln nur in bestimmten Regionen zulässig?**
+**F: Wozu dienen die Optionen „Soft Delete“ (Vorläufig löschen) und „Do Not Purge“ (Nicht bereinigen)? Muss ich diese Einstellung aktivieren, um SSE mit von Kunden verwalteten Schlüsseln zu verwenden?**
 
-A: SSE ist nur in bestimmten Regionen für Blob Storage für diese Vorschau verfügbar. Senden Sie eine E-Mail an [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com), um Informationen über Verfügbarkeit und Details zur Vorschauversion zu erhalten. 
+A: „Soft Delete“ (Vorläufig löschen) und „Do Not Purge“ (Nicht bereinigen) müssen aktiviert werden, um von Kunden verwaltete Schlüssel zu verwenden. Mit diesen Einstellungen verhindern Sie versehentliches oder absichtliches Löschen der Schlüssel. Die maximale Beibehaltungsdauer der Schlüssel ist auf 90 Tage festgelegt, um Benutzer vor böswilligen Akteuren und Ransomware Angriffe zu schützen. Diese Einstellung kann nicht deaktiviert werden.
+
+**F: Ist SSE mit von Kunden verwalteten Schlüsseln nur in bestimmten Regionen zulässig?**
+
+A: SSE mit von Kunden verwalteten Schlüsseln ist in allen Regionen für Blob und File Storage verfügbar.
 
 **F: Wohin wende ich mich, wenn Probleme auftreten oder ich Feedback geben möchte?**
 
-A: Wenden Sie sich in allen Angelegenheiten, die Storage Service Encryption betreffen, an [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com). 
+A: Wenden Sie sich in allen Angelegenheiten, die Storage Service Encryption betreffen, an [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-*   Weitere Informationen zu allen Sicherheitsfunktionen, die Entwickler beim Erstellen sicherer Anwendungen unterstützen, finden Sie im [Azure Storage-Sicherheitsleitfaden](https://docs.microsoft.com/azure/storage/storage-security-guide).
-*   Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-whatis).
-*   Informationen zu den ersten Schritten mit Azure Key Vault finden Sie unter [Erste Schritte mit Azure Key Vault](../../key-vault/key-vault-get-started.md).
+-   Weitere Informationen zu allen Sicherheitsfunktionen, die Entwickler beim Erstellen sicherer Anwendungen unterstützen, finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
+
+-   Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-whatis).
+
+-   Informationen zu den ersten Schritten mit Azure Key Vault finden Sie unter [Erste Schritte mit Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).

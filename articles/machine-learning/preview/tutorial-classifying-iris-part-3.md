@@ -5,17 +5,17 @@ services: machine-learning
 author: raymondl
 ms.author: raymondl, j-martens, aashishb
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 761e7193cc64699e8aa25a1fd625ba45f65eed88
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: 13ddc0ef8c7eac86e6cd7abb684ce35ae18fba84
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>Tutorial: Klassifizieren von Iris – Teil 3: Bereitstellen eines Modells
 Bei Azure Machine Learning (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -43,9 +43,9 @@ Arbeiten Sie die ersten beiden Teile dieser Tutorial-Reihe durch:
 Hierzu benötigen Sie eine lokal installierte und ausgeführte Docker-Engine. Alternativ können Sie als Bereitstellungsziel einen Azure Container Service-Cluster in Azure verwenden.
 
 ## <a name="download-the-model-pickle-file"></a>Herunterladen der pickle-Modelldatei
-Im vorherigen Teil des Tutorials wurde das Skript **iris_sklearn.py** lokal in Machine Learning Workbench ausgeführt. Mit dieser Aktion wurde das Modell für die logistische Regression über das beliebte Python-Paket [pickle](https://docs.python.org/2/library/pickle.html) für die Objektserialisierung serialisiert. 
+Im vorherigen Teil des Tutorials wurde das Skript **iris_sklearn.py** lokal in Machine Learning Workbench ausgeführt. Mit dieser Aktion wurde das Modell für die logistische Regression über das beliebte Python-Paket [pickle](https://docs.python.org/3/library/pickle.html) für die Objektserialisierung serialisiert. 
 
-1. Öffnen Sie die Machine Learning Workbench-Anwendung. Öffnen Sie anschließend das Projekt **myIris**, das Sie im vorherigen Teil der Tutorialreihe erstellt haben.
+1. Öffnen Sie die Machine Learning Workbench-Anwendung. Öffnen Sie anschließend das Projekt **myIris**, das Sie in den vorherigen Teilen der Tutorialreihe erstellt haben.
 
 2. Wählen Sie nach dem Öffnen des Projekts im linken Bereich die Schaltfläche **Dateien** (Ordnersymbol), um die Dateiliste in Ihrem Projektordner zu öffnen.
 
@@ -79,7 +79,7 @@ Im vorherigen Teil des Tutorials wurde das Skript **iris_sklearn.py** lokal in M
    Weitere Informationen zum Ordner `outputs` finden Sie unter [Lesen und Schreiben großer Datendateien](how-to-read-write-files.md).
 
 ## <a name="get-the-scoring-script-and-schema-files"></a>Abrufen des Bewertungsskripts und von Schemadateien
-Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auch ein Bewertungsskript. Optional benötigen Sie ein Schema für die Webdienst-Eingabedaten. Mit dem Bewertungsskript wird die Datei **model.pkl** aus dem aktuellen Ordner geladen und zum Erzeugen einer neu vorhergesagten Iris-Klasse verwendet.
+Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auch ein Bewertungsskript. Optional benötigen Sie ein Schema für die Webdienst-Eingabedaten. Mit dem Bewertungsskript wird die Datei **model.pkl** aus dem aktuellen Ordner geladen und zum Erzeugen neuer Vorhersagen verwendet.
 
 1. Öffnen Sie die Machine Learning Workbench-Anwendung. Öffnen Sie anschließend das Projekt **myIris**, das Sie im vorherigen Teil der Tutorialreihe erstellt haben.
 
@@ -93,13 +93,13 @@ Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auc
 
 5. Mit diesem Skript wird im Abschnitt **outputs** eine JSON-Datei erstellt, mit der das für das Modell benötigte Eingabedatenschema erfasst wird.
 
-6. Beachten Sie den Bereich **Aufträge** rechts im Bereich **Projektdashboard**. Warten Sie, bis für den aktuellen Auftrag **score_iris.py** in Grün der Status **Abgeschlossen** angezeigt wird. Wählen Sie anschließend den Hyperlink **score_iris.py [1]** für die letzte Auftragsausführung aus, um die Ausführungsdetails für die Ausführung **score_iris.py** anzuzeigen. 
+6. Beachten Sie den Bereich **Aufträge** rechts im Bereich **Projektdashboard**. Warten Sie, bis für den aktuellen Auftrag **score_iris.py** in Grün der Status **Abgeschlossen** angezeigt wird. Wählen Sie anschließend den Hyperlink **score_iris.py** für die letzte Auftragsausführung aus, um die Ausführungsdetails anzuzeigen. 
 
 7. Wählen Sie im Bereich **Run Properties** (Ausführungseigenschaften) im Abschnitt **Ausgaben** die neu erstellte Datei **service_schema.json** aus. Aktivieren Sie das Kontrollkästchen neben dem Dateinamen, und wählen Sie anschließend **Herunterladen**. Speichern Sie die Datei im Stammverzeichnis Ihres Projekts.
 
 8. Wechseln Sie zurück zur vorherigen Registerkarte, auf der Sie das Skript **score_iris.py** geöffnet haben. Mit der Datensammlung können Sie Modelleingaben und Vorhersagen für den Webdienst erfassen. Die folgenden Schritte sind für die Datensammlung von besonderem Interesse.
 
-9. Sehen Sie sich den Code oben in der Dateiimportklasse **ModelDataCollector** an, da darin die Funktionalität für die Modelldatensammlung enthalten ist:
+9. Sehen Sie sich den Code oben in der Datei an, mit dem die **ModelDataCollector**-Klasse importiert wird, da darin die Funktionalität für die Modelldatensammlung enthalten ist:
 
    ```python
    from azureml.datacollector import ModelDataCollector
@@ -107,28 +107,25 @@ Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auc
 
 10. Die folgenden Codezeilen in der Funktion **init()** dienen zum Instanziieren von **ModelDataCollector**:
 
-      ```python
-      global inputs_dc, prediction_dc
-      inputs_dc = ModelDataCollector('model.pkl',identifier="inputs")
-      prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
-      ```
+    ```python
+    global inputs_dc, prediction_dc
+    inputs_dc = ModelDataCollector('model.pkl',identifier="inputs")
+    prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
+    ```
 
 11. Die folgenden Codezeilen in der Funktion **run(input_df)** dienen zum Sammeln der Eingabe- und Vorhersagedaten:
 
-      ```python
-      global clf2, inputs_dc, prediction_dc
-      inputs_dc.collect(input_df)
-      prediction_dc.collect(pred)
-      ```
+    ```python
+    inputs_dc.collect(input_df)
+    prediction_dc.collect(pred)
+    ```
 
 Als Nächstes können Sie Ihre Umgebung für die Operationalisierung des Modells vorbereiten.
-
-
 
 ## <a name="prepare-to-operationalize-locally"></a>Vorbereiten der lokalen Operationalisierung
 Verwenden Sie für Docker-Container auf Ihrem lokalen Computer die Bereitstellung vom Typ _Lokaler Modus_.
 
-Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker-Engine muss lokal ausgeführt werden, um die folgenden Schritte zum Operationalisieren des Modells auszuführen. Sie können das Flag `-h` am Ende von Befehlen verwenden, um Hilfe zu den Befehlen zu erhalten.
+Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker-Engine muss lokal ausgeführt werden, um die folgenden Schritte zum Operationalisieren des Modells auszuführen. Sie können das Flag `-h` am Ende jedes Befehls verwenden, um die entsprechende Hilfemeldung anzuzeigen.
 
 >[!NOTE]
 >Falls Sie nicht über eine lokale Docker-Engine verfügen, können Sie trotzdem fortfahren, indem Sie in Azure einen Cluster für die Bereitstellung erstellen. Stellen Sie lediglich sicher, dass Sie den Cluster nach Abschluss des Tutorials löschen, damit keine laufenden Gebühren anfallen.
@@ -140,13 +137,13 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker
 
 2. Erstellen Sie die Umgebung. Sie müssen diesen Schritt einmal pro Umgebung ausführen. Führen Sie ihn beispielsweise einmal für die Entwicklungsumgebung und einmal für die Produktionsumgebung aus. Verwenden Sie den _lokalen Modus_ für diese erste Umgebung. Sie können den Switch `-c` oder `--cluster` im folgenden Befehl später ausprobieren, um eine Umgebung im _Clustermodus_ einzurichten.
 
-   Für den folgenden Setupbefehl ist der Zugriffstyp „Mitwirkender“ für das Abonnement erforderlich. Wenn Sie nicht über die erforderlichen Berechtigungen verfügen, benötigen Sie zumindest Zugriff als Mitwirkender auf die Ressourcengruppe, in der die Bereitstellung erfolgt. Hierzu müssen Sie den Ressourcengruppennamen mithilfe des Flags `-g` als Teil des Setupbefehls angeben. 
+   Für den folgenden Setupbefehl ist der Zugriffstyp „Mitwirkender“ für das Abonnement erforderlich. Wenn Sie nicht über die erforderlichen Berechtigungen verfügen, benötigen Sie zumindest Zugriff als Mitwirkender auf die Ressourcengruppe, in der die Bereitstellung erfolgt. Im letzteren Fall müssen Sie den Ressourcengruppennamen mithilfe des Flags `-g` als Teil des Setupbefehls angeben. 
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>
    ```
    
-   Befolgen Sie die Anweisungen auf dem Bildschirm, um ein Speicherkonto zum Speichern von Docker-Images, eine Azure Container Registry zum Auflisten von Docker-Images und ein Azure Application Insights-Konto zum Erfassen von Telemetriedaten bereitzustellen. Wenn Sie den Switch `-c` verwendet haben, wird auch ein Container Service-Cluster erstellt.
+   Befolgen Sie die Anweisungen auf dem Bildschirm, um ein Speicherkonto zum Speichern von Docker-Images, eine Azure Container Registry zum Auflisten von Docker-Images und ein Azure Application Insights-Konto zum Erfassen von Telemetriedaten bereitzustellen. Wenn Sie den Switch `-c` verwenden, wird mit dem Befehl zusätzlich ein Container Service-Cluster erstellt.
    
    Der Clustername ist eine Möglichkeit, wie Sie die Umgebung identifizieren können. Der Standort sollte dem Standort des Kontos für die Modellverwaltung entsprechen, das Sie über das Azure-Portal erstellt haben.
 
@@ -160,8 +157,7 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker
 
    ![Bereitstellungsstatus](media/tutorial-classifying-iris/provisioning_state.png)
  
-   
-3. Erstellen Sie ein Modellverwaltungskonto. Dies ist eine einmalige Aufgabe.
+3. Erstellen Sie jetzt ein Konto für die Modellverwaltung, falls Sie dies nicht bereits in den vorherigen Teilen dieses Tutorials durchgeführt haben. Dies ist eine einmalige Aufgabe.
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
@@ -200,11 +196,13 @@ Sie können nun den Echtzeit-Webdienst erstellen.
 
    Die folgenden Switches werden für den Befehl **az ml service create realtime** verwendet:
 
-   * `-n`: Der App-Name, der nur Kleinbuchstaben enthalten darf.
-
    * `-f`: Der Dateiname des Bewertungsskripts.
 
    * `--model-file`: Die Modelldatei. In diesem Fall ist dies die pickle-Datei „model.pkl“.
+
+   * `-s`: Das Dienstschema. Es wurde im vorherigen Schritt generiert, indem das Skript **score_iris.py** lokal ausgeführt wurde.
+
+   * `-n`: Der App-Name, der nur Kleinbuchstaben enthalten darf.
 
    * `-r`: Die Runtime des Modells. In diesem Fall ist es ein Python-Modell. Gültige Runtimes sind `python` und `spark-py`.
 
@@ -215,11 +213,11 @@ Sie können nun den Echtzeit-Webdienst erstellen.
    >[!IMPORTANT]
    >Der Dienstname, bei dem es sich auch um den neuen Docker-Imagenamen handelt, darf nur Kleinbuchstaben enthalten. Andernfalls erhalten Sie eine Fehlermeldung. 
 
-2. Wenn Sie den Befehl ausführen, werden das Modell und die Bewertungsdatei in das Speicherkonto hochgeladen, das Sie bei der Umgebungseinrichtung erstellt haben. Während des Bereitstellungsprozesses wird ein Docker-Image mit Ihrem Modell, dem Schema und der Bewertungsdatei erstellt und per Pushvorgang in die Azure Container Registry übertragen: **\<ACR-Name\>.azureacr.io/\<Imagename\>:\<Version\>**. 
+2. Wenn Sie den Befehl ausführen, werden das Modell und die Bewertungsdateien in das Speicherkonto hochgeladen, das Sie bei der Umgebungseinrichtung erstellt haben. Während des Bereitstellungsprozesses wird ein Docker-Image mit Ihrem Modell, dem Schema und der Bewertungsdatei erstellt und per Pushvorgang in die Azure Container Registry übertragen: **\<ACR-Name\>.azureacr.io/\<Imagename\>:\<Version\>**. 
 
    Der Befehl überträgt dieses Image lokal auf Ihren Computer und startet basierend auf diesem Image dann einen Docker-Container. Wenn Ihre Umgebung im Clustermodus konfiguriert ist, wird der Docker-Container stattdessen im Azure Cloud Services-Kubernetes-Cluster bereitgestellt.
 
-   Im Rahmen der Bereitstellung wird auf Ihrem lokalen Computer ein HTTP-REST-Endpunkt für den Webdienst erstellt. Nach wenigen Minuten sollte der Befehl mit einer Erfolgsmeldung abgeschlossen und Ihr Webdienst betriebsbereit sein.
+   Im Rahmen der Bereitstellung wird auf Ihrem lokalen Computer ein HTTP-REST-Endpunkt für den Webdienst erstellt. Der Befehl sollte nach einigen Minuten mit einer Erfolgsmeldung abgeschlossen werden. Ihr Webdienst ist nun bereit für die Verwendung!
 
 3. Verwenden Sie den Befehl **docker ps**, um den ausgeführten Docker-Container anzuzeigen:
 
@@ -230,7 +228,7 @@ Sie können nun den Echtzeit-Webdienst erstellen.
 ## <a name="create-a-real-time-web-service-by-using-separate-commands"></a>Erstellen eines Echtzeit-Webdiensts mit separaten Befehlen
 Alternativ zum obigen Befehl **az ml service create realtime** können Sie die Schritte auch separat ausführen. 
 
-Registrieren Sie zuerst das Modell. Generieren Sie anschließend das Manifest, erstellen Sie das Docker-Image, und erstellen Sie den Webdienst. Bei diesem Schritt-für-Schritt-Ansatz können Sie bei jedem Schritt flexibler vorgehen. Außerdem können Sie die Entitäten wiederverwenden, die im vorherigen Schritt generiert wurden, und müssen die Entitäten nur bei Bedarf neu erstellen.
+Registrieren Sie zuerst das Modell. Generieren Sie anschließend das Manifest, erstellen Sie das Docker-Image, und erstellen Sie den Webdienst. Bei diesem Schritt-für-Schritt-Ansatz können Sie bei jedem Schritt flexibler vorgehen. Außerdem können Sie die Entitäten wiederverwenden, die in den vorherigen Schritten generiert wurden, und müssen die Entitäten nur bei Bedarf neu erstellen.
 
 1. Registrieren Sie das Modell, indem Sie den Namen der pickle-Datei angeben.
 
@@ -253,7 +251,7 @@ Registrieren Sie zuerst das Modell. Generieren Sie anschließend das Manifest, e
    Verwenden Sie zum Erstellen eines Docker-Images den folgenden Befehl, und geben Sie den Manifest-ID-Wert aus dem vorherigen Schritt an. Sie können die Conda-Abhängigkeiten optional auch mit dem Switch `-c` einbinden.
 
    ```azurecli
-   az ml image create -n irisimage --manifest-id <manifest ID> -c amlconfig\conda_dependencies.yml
+   az ml image create -n irisimage --manifest-id <manifest ID> -c aml_config\conda_dependencies.yml
    ```
    Mit diesem Befehl wird eine Docker-Image-ID generiert.
    
@@ -272,7 +270,7 @@ Sie können den Webdienst jetzt ausführen.
 
 Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahlen enthält, um den ausgeführten Webdienst **irisapp** zu testen.
 
-1. Der Webdienst enthält Beispieldaten. Bei Ausführung im lokalen Modus können Sie den Befehl **az ml service usage realtime** aufrufen. Mit diesem Aufruf wird ein Beispielbefehl für die Ausführung aufgerufen, der zum Testen des Diensts hilfreich ist. Außerdem wird mit diesem Aufruf die Bewertungs-URL abgerufen, mit der Sie den Dienst in Ihre eigene benutzerdefinierte App einbinden können.
+1. Der Webdienst enthält Beispieldaten. Bei Ausführung im lokalen Modus können Sie den Befehl **az ml service usage realtime** aufrufen. Mit diesem Aufruf wird ein Beispielbefehl für die Ausführung aufgerufen, den Sie zum Testen des Diensts verwenden können. Außerdem wird mit diesem Aufruf die Bewertungs-URL abgerufen, mit der Sie den Dienst in Ihre eigene benutzerdefinierte App einbinden können.
 
    ```azurecli
    az ml service usage realtime -i <web service ID>
@@ -284,7 +282,7 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
    az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
    ```
 
-   Die Ausgabe lautet **2**. Dies ist die vorhergesagte Klasse. (Sie erhalten unter Umständen ein anderes Ergebnis.) 
+   Die Ausgabe lautet **"Iris-setosa"**. Dies ist die vorhergesagte Klasse. (Sie erhalten unter Umständen ein anderes Ergebnis.) 
 
 ## <a name="view-the-collected-data-in-azure-blob-storage"></a>Anzeigen der gesammelten Daten in Azure Blob Storage
 
@@ -300,10 +298,10 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
    > Ermitteln Sie wie folgt, welches Speicherkonto verwendet wird:
    > 1. Öffnen Sie Machine Learning Workbench.
    > 2. Wählen Sie das Projekt aus, an dem Sie arbeiten.
-   > 3. Öffnen Sie im Menü **Datei** eine Befehlszeile.
+   > 3. Öffnen Sie im Menü **Datei** eine Eingabeaufforderung.
    > 4. Geben Sie an der Eingabeaufforderung `az ml env show -v` ein, und überprüfen Sie den Wert von *storage_account*. Dies ist der Name Ihres Speicherkontos.
 
-5. Wählen Sie nach dem Öffnen des Bereichs **Speicherkonto** in der Liste auf der linken Seite die Option **Container**. Suchen Sie nach dem Container mit dem Namen **modeldata**. 
+5. Wählen Sie nach dem Öffnen des Bereichs **Speicherkonto** im Abschnitt **Dienste** die Option **Blobs**. Suchen Sie nach dem Container mit dem Namen **modeldata**. 
  
    Falls keine Daten angezeigt werden, müssen Sie nach der ersten Webdienstanforderung unter Umständen bis zu zehn Minuten warten, bis die Daten in das Speicherkonto übertragen wurden und angezeigt werden.
 
@@ -323,12 +321,11 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
 
    * [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): Laden Sie die CSV-Daten in eine Hive-Tabelle, und führen Sie SQL-Abfragen direkt für die Blobs durch.
 
-   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): Erstellen Sie einen Dataframe mit einem hohen Anteil von CSV-Daten.
+   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): Erstellen Sie einen Datenrahmen mit einem hohen Anteil von CSV-Daten.
 
       ```python
       var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
       ```
-
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -344,7 +341,7 @@ In diesem dritten Teil der dreiteiligen Tutorialreihe wurde beschrieben, wie Sie
 > * Ausführen des Echtzeit-Webdiensts
 > * Untersuchen der Ausgabeblobdaten 
 
-Sie haben erfolgreich ein Trainingsskript in unterschiedlichen Computeumgebungen ausgeführt, ein Modell erstellt, das Modell serialisiert und es anschließend über einen Docker-basierten Webdienst operationalisiert. 
+Sie haben ein Trainingsskript erfolgreich in verschiedenen Computeumgebungen ausgeführt. Außerdem haben Sie ein Modell über einen Docker-basierten Webdienst erstellt, serialisiert und operationalisiert. 
 
 Nun können Sie die erweiterte Datenvorbereitung durchführen:
 > [!div class="nextstepaction"]

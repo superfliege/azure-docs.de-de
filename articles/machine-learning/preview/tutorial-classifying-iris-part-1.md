@@ -5,17 +5,17 @@ services: machine-learning
 author: hning86
 ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 12cba3d4acf0e6018cea6e76df9208bcf380d976
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: caddfff329d0e8f4c4007386b377ea56a51249a5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-classify-iris-part-1---preparing-the-data"></a>Tutorial: Klassifizieren von Iris – Teil 1: Vorbereiten der Daten
 
@@ -60,8 +60,8 @@ Wenn Sie die Schritte im Artikel [Erstellen von Vorschaukonten für Azure Machin
    Projektname | myIris |Geben Sie einen eindeutigen Namen ein, der Ihr Konto identifiziert. Sie können Ihren eigenen Namen verwenden oder einen Abteilungs- oder Projektnamen, der am besten zu dem Experiment passt. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. 
    Projektverzeichnis | c:\Temp\ | Geben Sie das Verzeichnis an, in dem das Projekt erstellt wird.
    Projektbeschreibung | _nicht ausfüllen_ | Optionales Feld für eine Beschreibung der Projekte.
-   Visualstudio.com |_nicht ausfüllen_ | Optionales Feld. Sie können ein Projekt zur Quellcodeverwaltung und Zusammenarbeit einem Git-Repository in Visual Studio Team Services zuordnen. Die entsprechende Vorgehensweise wird [hier](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo) erläutert. 
-   Arbeitsbereich | IrisGarden (falls vorhanden) | Wählen Sie einen Arbeitsbereich aus, den Sie im Azure-Portal für Ihr Experimentieren-Konto erstellt haben. <br/>Wenn Sie nach dem Schnellstart vorgegangen sind, sollten Sie einen Arbeitsbereich namens „IrisGarden“ haben. Wenn dies nicht der Fall ist, wählen Sie den Arbeitsbereich aus, den Sie bei der Erstellung Ihres Experimentieren-Kontos erstellt haben, oder einen anderen Arbeitsbereich, den Sie verwenden möchten.
+   Visualstudio.com GIT Repository URL (Git-Repository-URL für Visualstudio.com) |_nicht ausfüllen_ | Optionales Feld. Sie können ein Projekt zur Quellcodeverwaltung und Zusammenarbeit einem Git-Repository in Visual Studio Team Services zuordnen. Die entsprechende Vorgehensweise wird [hier](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo) erläutert. 
+   Ausgewählter Arbeitsbereich | IrisGarden (falls vorhanden) | Wählen Sie einen Arbeitsbereich aus, den Sie im Azure-Portal für Ihr Experimentieren-Konto erstellt haben. <br/>Wenn Sie nach dem Schnellstart vorgegangen sind, sollten Sie einen Arbeitsbereich namens „IrisGarden“ haben. Wenn dies nicht der Fall ist, wählen Sie den Arbeitsbereich aus, den Sie bei der Erstellung Ihres Experimentieren-Kontos erstellt haben, oder einen anderen Arbeitsbereich, den Sie verwenden möchten.
    Projektvorlage | Klassifizieren von Schwertlilien | Vorlagen enthalten Skripts und Daten, die Sie zum Erkunden des Produkts verwenden können. Diese Vorlage enthält die benötigten Skripts und Daten für diesen Schnellstart und andere Tutorials auf dieser Dokumentationswebsite. 
 
    ![Neues Projekt](media/tutorial-classifying-iris/new_project.png)
@@ -77,7 +77,7 @@ Als Nächstes können Sie die Daten untersuchen und mit der Datenaufbereitung in
 
 Dieses Datenaufbereitungspaket kann später an eine Laufzeit (beispielsweise „local-C#/CoreCLR“, „Scala/Spark“ oder „Scala/HDI“) übergeben werden. 
 
-1. Wählen Sie das Ordnersymbol aus, um die Dateiansicht zu öffnen, und wählen Sie anschließend **iris.csv**, um diese Datei zu öffnen.  
+1. Wählen Sie das Ordnersymbol aus, um die Dateiansicht zu öffnen, und wählen Sie anschließend **iris.csv**, um diese Datei zu öffnen.
 
    Die Datei enthält eine Tabelle mit fünf Spalten und 50 Zeilen. Bei vier Spalten handelt es sich um numerische Featurespalten. Die fünfte Spalte ist eine Zeichenfolgenzielspalte. Keine der Spalten besitzt einen Headernamen.
 
@@ -90,28 +90,25 @@ Dieses Datenaufbereitungspaket kann später an eine Laufzeit (beispielsweise „
 
    ![Datenansicht in Azure Machine Learning Workbench](media/tutorial-classifying-iris/data_view.png)
 
-3. Wählen Sie **Textdateien (*.csv, .json, .txt.,...)**, und klicken Sie auf **Weiter**.
+3. Wählen Sie **Textdateien (\*.csv, \*.json, \*.txt., ...)**, und klicken Sie auf **Weiter**.
    ![Datenquelle in Azure Machine Learning Workbench](media/tutorial-classifying-iris/data-source.png)
-   
 
-4. Navigieren Sie zur Datei **iris.csv**, und klicken Sie auf **Weiter**.  
+4. Navigieren Sie zur Datei **iris.csv**, und klicken Sie auf **Fertig stellen**. Hierbei werden Standardwerte für Parameter verwendet, z.B. in Bezug auf das Trennzeichen und die Datentypen.
 
    >[!IMPORTANT]
    >Achten Sie darauf, dass Sie für diese Übung die Datei **iris.csv** aus dem aktuellen Projektverzeichnis auswählen. Sonst kann es sein, dass die nachfolgenden Schritte fehlschlagen.
  
    ![Auswählen von „iris“](media/tutorial-classifying-iris/select_iris_csv.png)
    
-5. Übernehmen Sie die Standardwerte, und klicken Sie auf **Fertig stellen**.
-
-6. Eine neue Datei mit dem Namen **iris-1.dsource** wird erstellt. Die Datei ist mit dem Zusatz „-1“ eindeutig benannt, da das Beispielprojekt bereits über eine nicht nummerierte Datei **iris.dsource** verfügt.  
+5. Eine neue Datei mit dem Namen **iris-1.dsource** wird erstellt. Die Datei ist mit dem Zusatz „-1“ eindeutig benannt, da das Beispielprojekt bereits über eine nicht nummerierte Datei **iris.dsource** verfügt.  
 
    Die Datei wird geöffnet, und die Daten werden angezeigt. Diesem Dataset werden automatisch mehrere Spaltenüberschriften von **Column1** bis **Column5** hinzugefügt. Scrollen Sie nach unten, und beachten Sie, dass die letzte Zeile des Datasets leer ist. Die Zeile ist leer, weil die CSV-Datei einen zusätzlichen Zeilenumbruch enthält.
 
    ![Iris-Datenansicht](media/tutorial-classifying-iris/iris_data_view.png)
 
-1. Wählen Sie die Schaltfläche **Metriken**. Histogramme werden generiert und auf dem Bildschirm angezeigt.
+1. Wählen Sie die Schaltfläche **Metriken**. Histogramme werden generiert und angezeigt.
 
-   Durch Klicken auf die Schaltfläche **Daten** gelangen Sie wieder zur Datenansicht. 
+   Durch Klicken auf die Schaltfläche **Daten** gelangen Sie wieder zur Datenansicht.
    
    ![Iris-Datenansicht](media/tutorial-classifying-iris/iris_data_view_metrics.png)
 
@@ -121,7 +118,7 @@ Dieses Datenaufbereitungspaket kann später an eine Laufzeit (beispielsweise „
 
 8. Klicken Sie auf die Schaltfläche **Vorbereiten**, um mit der Erstellung eines Datenaufbereitungspakets zu beginnen. Das Dialogfeld **Vorbereiten** wird geöffnet. 
 
-   Das Beispielprojekt enthält standardmäßig eine Datenaufbereitungsdatei namens **iris.dprep**. 
+   Das Beispielprojekt enthält eine Datenaufbereitungsdatei mit dem Namen **iris.dprep**, die standardmäßig ausgewählt ist. 
 
    ![Iris-Datenansicht](media/tutorial-classifying-iris/prepare.png)
 
@@ -148,7 +145,7 @@ Dieses Datenaufbereitungspaket kann später an eine Laufzeit (beispielsweise „
    1. Klicken Sie mit der rechten Maustaste darauf, um sie auszuwählen. 
    1. Wählen Sie im Dropdownmenü die Option **Value Counts** (Wertanzahl). 
 
-   Daraufhin öffnet sich unterhalb der Daten der Bereich **Inspectors** (Inspektoren). Ein Histogramm mit vier Balken wird angezeigt. Die Zielspalte enthält die drei unterschiedlichen Werte **Iris_virginica**, **Iris_versicolor** und **Iris-setosa** und zusätzlich den Wert **(null)**.
+   Daraufhin öffnet sich unterhalb der Daten der Bereich **Inspectors** (Inspektoren). Ein Histogramm mit vier Balken wird angezeigt. Die Zielspalte enthält die vier unterschiedlichen Werte **Iris-virginica**, **Iris-versicolor**, **Iris-setosa** und **(null)**.
 
    ![Auswählen der Wertanzahl](media/tutorial-classifying-iris/value_count.png)
 
@@ -164,7 +161,7 @@ Dieses Datenaufbereitungspaket kann später an eine Laufzeit (beispielsweise „
 
    ![Schritte](media/tutorial-classifying-iris/steps.png)
 
-1. Schließen Sie den Editor für die Aufbereitung von Daten. Klicken Sie auf der Registerkarte **Iris-1** mit dem Diagrammsymbol auf das X-Symbol, um die Registerkarte zu schließen. Ihre Arbeit wird automatisch in der Datei **iris-1.dprep** unter der Überschrift **Data Preparations** (Datenvorbereitungen) gespeichert.
+1. Schließen Sie den Editor für die Aufbereitung von Daten. Klicken Sie auf der Registerkarte **iris-1** mit dem Diagrammsymbol auf das Symbol **X**, um die Registerkarte zu schließen. Ihre Arbeit wird automatisch in der Datei **iris-1.dprep** unter der Überschrift **Data Preparations** (Datenvorbereitungen) gespeichert.
 
    ![Close (Schließen)](media/tutorial-classifying-iris/close.png)
 
@@ -197,7 +194,7 @@ Dieses Datenaufbereitungspaket kann später an eine Laufzeit (beispielsweise „
    df.head(10)
    ```
 
-   Je nach Kontext, in dem dieser Code ausgeführt wird, stellt `df` eine Art von Datenrahmen dar. 
+   Je nach Kontext, in dem dieser Code ausgeführt wird, stellt `df` eine andere Art von Datenrahmen dar:
    + Bei der Ausführung für eine Python-Laufzeit wird ein [Pandas-Datenrahmen](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) verwendet.
    + Bei der Ausführung in einem Spark-Kontext wird ein [Spark-Datenrahmen](https://spark.apache.org/docs/latest/sql-programming-guide.html) verwendet. 
    

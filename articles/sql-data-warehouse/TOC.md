@@ -52,11 +52,12 @@
 ### [Elastische Abfrage für SQL-Datenbank](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 
-## Überwachen & optimieren
-### [Workloadverwaltung](resource-classes-for-workload-management.md)
+## Abfrageleistung
+### [Ressourcenklassen](resource-classes-for-workload-management.md)
 ### [Columnstore-Komprimierung](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
-### [Überwachen](sql-data-warehouse-manage-monitor.md)
-### [Problembehandlung](sql-data-warehouse-troubleshoot.md)
+
+## [Überwachen](sql-data-warehouse-manage-monitor.md)
+
 
 ## Entwickeln von Data Warehouses
 ### [Übersicht](sql-data-warehouse-overview-develop.md)
@@ -87,6 +88,8 @@
 #### [Benutzerdefinierte Schemas](sql-data-warehouse-develop-user-defined-schemas.md)
 #### [Variablenzuweisung](sql-data-warehouse-develop-variable-assignment.md)
 #### [Ansichten](sql-data-warehouse-develop-views.md)
+
+## [Problembehandlung](sql-data-warehouse-troubleshoot.md)
 
 # Anleitungen
 ## Features des Diensts

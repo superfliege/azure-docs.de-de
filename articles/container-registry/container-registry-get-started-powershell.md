@@ -6,18 +6,18 @@ author: neilpeterson
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 02/12/2018
+ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 80b5055dee35cd6efe62ee949c05aef386a3ba14
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 2bae45955cf3c2b157acce2544b1f35fbddd0170
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-an-azure-container-registry-using-powershell"></a>Erstellen einer Azure Container Registry-Instanz mit PowerShell
 
-Azure Container Registry ist ein verwalteter Docker-Containerregistrierungsdienst zum Speichern privater Docker-Containerimages. In diesem Leitfaden erfahren Sie, wie Sie mithilfe von PowerShell eine Azure Container Registry-Instanz erstellen.
+Azure Container Registry ist ein verwalteter Docker-Containerregistrierungsdienst zum Speichern privater Docker-Containerimages. Diese Anleitung enthält ausführliche Informationen zum Erstellen einer Azure Container Registry-Instanz mit PowerShell, Übertragen eines Containerimages per Pushvorgang in die Registrierung und Bereitstellen des Containers aus Ihrer Registrierung in Azure Container Instances (ACI).
 
 Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
@@ -59,7 +59,7 @@ $creds = Get-AzureRmContainerRegistryCredential -Registry $registry
 
 Verwenden Sie anschließend den Befehl [docker login][docker-login], um sich bei der ACR-Instanz anzumelden.
 
-```bash
+```powershell
 docker login $registry.LoginServer -u $creds.Username -p $creds.Password
 ```
 
@@ -69,31 +69,61 @@ Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück. Mögliche
 
 Um ein Image mithilfe von Push an Ihre Azure Container Registry-Instanz übertragen zu können, benötigen Sie zunächst ein Image. Führen Sie bei Bedarf den folgenden Befehl aus, um ein vorab erstelltes Image von Docker Hub abzurufen:
 
-```bash
+```powershell
 docker pull microsoft/aci-helloworld
 ```
 
-Das Image muss mit dem ACR-Anmeldeservernamen gekennzeichnet sein. Führen Sie den Befehl [Get-AzureRmContainerRegistry](/powershell/module/containerregistry/Get-AzureRmContainerRegistry) aus, um den Anmeldeservernamen der ACR-Instanz zurückzugeben.
+Das Image muss mit dem ACR-Anmeldeservernamen gekennzeichnet sein. Verwenden Sie hierfür den Befehl [docker tag][docker-tag]. 
 
 ```powershell
-Get-AzureRmContainerRegistry | Select Loginserver
+$image = $registry.LoginServer + "/aci-helloworld:v1"
+docker tag microsoft/aci-helloworld $image
 ```
 
-Markieren Sie das Image mithilfe des Befehls [docker tag][docker-tag]. Ersetzen Sie *acrLoginServer* durch den Anmeldeservernamen Ihrer ACR-Instanz.
+Verwenden Sie abschließend [docker push][docker-push], um das Image per Pushvorgang an die ACR zu übertragen.
 
-```bash
-docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
+```powershell
+docker push $image
 ```
 
-Nun können Sie die Images mithilfe von [docker push][docker-push] an die ACR-Instanz übertragen. Ersetzen Sie *acrLoginServer* durch den Anmeldeservernamen Ihrer ACR-Instanz.
+## <a name="deploy-image-to-aci"></a>Bereitstellen eines Images für ACI
+Konvertieren Sie die Anmeldeinformationen für die Registrierung zuerst in ein PSCredential-Objekt, um das Image als Containerinstanz in Azure Container Instances (ACI) bereitzustellen.
 
-```bash
-docker push <acrLoginServer>/aci-helloworld:v1
+```powershell
+$secpasswd = ConvertTo-SecureString $creds.Password -AsPlainText -Force
+$pscred = New-Object System.Management.Automation.PSCredential($creds.Username, $secpasswd)
 ```
+
+Führen Sie den folgenden Befehl aus, um das Containerimage aus der Containerregistrierung mit einem CPU-Kern und 1 GB Arbeitsspeicher bereitzustellen:
+
+```powershell
+New-AzureRmContainerGroup -ResourceGroup myResourceGroup -Name mycontainer -Image $image -Cpu 1 -MemoryInGB 1 -IpAddressType public -Port 80 -RegistryCredential $pscred
+```
+
+Sie sollten von Azure Resource Manager eine erste Antwort mit Details zu Ihrem Container erhalten. Wiederholen Sie den Befehl [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup], um den Status Ihres Containers zu überwachen und seine Ausführung zu verfolgen. Dieser Vorgang dauert normalerweise weniger als eine Minute.
+
+```powershell
+(Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).ProvisioningState
+```
+
+Beispielausgabe: `Succeeded`
+
+## <a name="view-the-application"></a>Anzeigen der Anwendung
+Nachdem die Bereitstellung für ACI erfolgreich abgeschlossen wurde, können Sie die öffentliche IP-Adresse des Containers mit dem Befehl [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] abrufen:
+
+```powershell
+(Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).IpAddress
+```
+
+Beispielausgabe: `"13.72.74.222"`
+
+Zum Anzeigen der ausgeführten Anwendung navigieren Sie in Ihrem bevorzugten Browser zur öffentlichen IP-Adresse. Das sollte in etwa so aussehen:
+
+![„Hello World“-Anwendung im Browser][qs-portal-15]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcengruppe, die ACR-Instanz und alle Containerimages nicht mehr benötigen, können Sie sie mit dem Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) entfernen.
+Wenn Sie die Ressourcengruppe, die Azure Container Registry und alle Azure Container Instances nicht mehr benötigen, können Sie sie mit dem Befehl [Remove-AzureRmResourceGroup][Remove-AzureRmResourceGroup] entfernen.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -101,7 +131,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Azure Container Registry-Instanz über die Azure-Befehlszeilenschnittstelle erstellt. Wenn Sie Azure Container Registry mit Azure Container Instances verwenden möchten, fahren Sie mit dem Tutorial zu Azure Container Instances fort.
+In dieser Schnellstartanleitung haben Sie eine Azure Container Registry mit der Azure CLI erstellt und eine Instanz davon in Azure Container Instances gestartet. Fahren Sie mit dem Azure Container Instances-Tutorial fort, um eingehendere Informationen zu ACI zu erhalten.
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances-Tutorial](../container-instances/container-instances-tutorial-prepare-app.md)
@@ -113,3 +143,10 @@ In dieser Schnellstartanleitung haben Sie eine Azure Container Registry-Instanz 
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
+
+<!-- Links - internal -->
+[Get-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/get-azurermcontainergroup
+[Remove-AzureRmResourceGroup]: /powershell/module/azurerm.resources/remove-azurermresourcegroup
+
+<!-- IMAGES> -->
+[qs-portal-15]: ./media/container-registry-get-started-portal/qs-portal-15.png

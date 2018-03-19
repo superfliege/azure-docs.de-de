@@ -3,7 +3,7 @@ title: Verwalten von Azure Stack-Speicherkonten | Microsoft-Dokumentation
 description: Informationen zum Suchen, Verwalten, Wiederherstellen und Freigeben von Azure Stack-Speicherkonten
 services: azure-stack
 documentationcenter: 
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: 
 ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 4/6/2017
-ms.author: brenduns
+ms.date: 02/22/2018
+ms.author: mabrigg
 ms.reviewer: anirudha
-ms.openlocfilehash: 3ef9a66095d0ed5fc865dc3c22961f9f7bdcedd9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 395cd113e21bf747c796ff28026f552f30656b47
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Verwalten von Speicherkonten in Azure Stack
 Erfahren Sie, wie Speicherkonten in Azure Stack verwaltet werden, um Speicherkapazität basierend auf Geschäftsanforderungen zu suchen, wiederherzustellen und freizugeben.
@@ -29,13 +29,13 @@ Die Liste der Speicherkonten in der Region kann in Azure Stack folgendermaßen a
 
 1. Navigieren Sie in einem Internetbrowser zu https://adminportal.local.azurestack.external.
 2. Melden Sie sich als Cloudbetreiber (mit den Anmeldeinformationen, die Sie während der Bereitstellung angegeben haben) beim Azure Stack-Verwaltungsportal an.
-3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten, z.B. **(lokal**).
+3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten, z.B. **(lokal)**.
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
 4. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Führen Sie dann auf dem Administratorblatt für Speicherressourcenanbieter einen Bildlauf nach unten zur Registerkarte **Speicherkonten** durch, und klicken Sie darauf.
+5. Führen Sie dann im Administratorbereich für Speicherressourcenanbieter einen Bildlauf nach unten zur Registerkarte **Speicherkonten** durch, und klicken Sie darauf.
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
@@ -52,34 +52,34 @@ Wenn Sie an einem bestimmten Speicherkonto interessiert sind, können Sie nur **
 
 **So filtern Sie Konten:**
 
-1. Klicken Sie oben auf dem Blatt auf **Filter**.
-2. Auf dem Blatt „Filter“ können Sie einen **Kontonamen**, eine **Abonnement-ID** oder einen **Status** angeben, um eine Feinabstimmung der angezeigten Liste mit Speicherkonten vorzunehmen. Nutzen Sie die Optionen je nach Bedarf.
+1. Klicken Sie oben im Bereich auf **Filter**.
+2. Im Bereich „Filter“ können Sie einen **Kontonamen**, eine „Abonnement-ID“ oder einen **Status** angeben, um eine Feinabstimmung der angezeigten Liste mit Speicherkonten vorzunehmen. Nutzen Sie die Optionen je nach Bedarf.
 3. Klicken Sie auf **Aktualisieren**. Die Liste sollte entsprechend aktualisiert werden.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
 4. Zum Zurücksetzen des Filters klicken Sie auf **Filter**, deaktivieren die Auswahl und aktualisieren die Liste erneut.
 
-Mit dem Suchfeld (oben auf Blatt mit der Speicherkontenliste) können Sie den ausgewählten Text in der Liste der Konten hervorheben. Dies ist äußerst praktisch, wenn der vollständige Name oder die ID nicht einfach verfügbar sind.
+Mit dem Suchfeld (oben im Bereich mit der Speicherkontenliste) können Sie den ausgewählten Text in der Liste mit den Konten hervorheben. Sie können diese Funktion nutzen, wenn der vollständige Name oder die ID nicht ohne Weiteres verfügbar ist.
 
 Hier können Sie Freitext verwenden, um das gewünschte Konto zu finden.
 
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>Überprüfen der Kontodetails
-Wenn Sie die Konten, die Sie anzeigen möchten, gefunden haben, können Sie auf ein Konto klicken, um bestimmte Details anzuzeigen. Ein neues Blatt mit Kontodetails wird geöffnet, darunter der Typ des Kontos, die Erstellungszeit, der Standort usw.
+Wenn Sie die Konten, die Sie anzeigen möchten, gefunden haben, können Sie auf ein Konto klicken, um bestimmte Details anzuzeigen. Ein neuer Bereich mit Kontodetails wird geöffnet, darunter der Typ des Kontos, die Erstellungszeit, der Standort usw.
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
 ## <a name="recover-a-deleted-account"></a>Wiederherstellen eines gelöschten Kontos
 Es gibt Situationen, in denen Sie ein gelöschtes Konto wiederherstellen müssen.
 
-In Azure Stack gibt es dazu eine sehr einfache Möglichkeit:
+In Azure Stack gibt es hierfür eine einfache Möglichkeit:
 
 1. Navigieren Sie zur Liste der Speicherkonten. Weitere Informationen finden Sie in diesem Thema unter [Suchen eines Speicherkontos](#find).
 2. Suchen Sie das gewünschte Konto in der Liste. Möglicherweise müssen Sie filtern.
 3. Überprüfen Sie den *Status* des Kontos. Dieser müsste **Gelöscht** lauten.
-4. Klicken Sie auf das Konto; daraufhin wird das Blatt „Kontodetails“ geöffnet.
-5. Klicken Sie oben auf diesem Blatt auf die Schaltfläche **Wiederherstellen**.
+4. Klicken Sie auf das Konto, um den Bereich mit den Kontodetails zu öffnen.
+5. Klicken Sie oben in diesem Bereich auf die Schaltfläche **Wiederherstellen**.
 6. Klicken Sie auf **Ja**, um zu bestätigen.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
@@ -93,10 +93,10 @@ In Azure Stack gibt es dazu eine sehr einfache Möglichkeit:
 ### <a name="some-gotchas"></a>Häufige Fehler
 * Der Status des gelöschten Kontos gibt an, dass es **aus der Aufbewahrung entfernt** wurde.
   
-  Dies bedeutet, dass der Aufbewahrungszeitraum für das gelöschte Konto überschritten ist und es möglicherweise nicht wiederhergestellt werden kann.
+  Die Entfernung aus der Aufbewahrung bedeutet, dass der Aufbewahrungszeitraum für das gelöschte Konto überschritten ist und es unter Umständen nicht wiederhergestellt werden kann.
 * Das gelöschte Konto wird nicht in der Liste der Benutzerkonten angezeigt.
   
-  Dies könnte bedeuten, dass für das gelöschte Konto bereits eine automatische Speicherbereinigung durchgeführt wurde. In diesem Fall kann es nicht wiederhergestellt werden. Siehe [Freigeben von Kapazität](#reclaim) in diesem Thema.
+  Ihr Konto wird in der Kontoliste ggf. nicht angezeigt, wenn für das gelöschte Konto bereits der Garbage Collection-Vorgang durchgeführt wurde. In diesem Fall kann es nicht wiederhergestellt werden. Siehe [Freigeben von Kapazität](#reclaim) in diesem Thema.
 
 ## <a name="set-the-retention-period"></a>Festlegen des Aufbewahrungszeitraums
 Die Einstellung für den Aufbewahrungszeitraum ermöglicht einem Cloudbetreiber das Festlegen eines Zeitraums in Tagen (zwischen 0 und 9999 Tage), in dem gelöschte Konten ggf. wiederhergestellt werden können. Der Standardaufbewahrungszeitraum ist auf 15 Tage festgelegt. Mit dem Wert „0“ wird festgelegt, dass alle gelöschten Konten sofort aus der Aufbewahrung entfernt und für die regelmäßige automatische Speicherbereinigung markiert werden.
@@ -107,7 +107,7 @@ Die Einstellung für den Aufbewahrungszeitraum ermöglicht einem Cloudbetreiber 
 2. Melden Sie sich als Cloudbetreiber (mit den Anmeldeinformationen, die Sie während der Bereitstellung angegeben haben) beim Azure Stack-Verwaltungsportal an.
 3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten, z.B. **(lokal**).
 4. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
-5. Klicken Sie oben auf **Einstellungen**, um das Einstellungsblatt zu öffnen.
+5. Klicken Sie oben auf **Einstellungen**, um den Bereich mit den Einstellungen zu öffnen.
 6. Klicken Sie auf **Konfiguration**, und bearbeiten Sie dann den Wert für den Aufbewahrungszeitraum.
 
    Legen Sie die Anzahl von Tagen fest, und speichern Sie sie.
@@ -122,8 +122,8 @@ Einer der Nebeneffekte eines Aufbewahrungszeitraums ist, dass ein gelöschtes Ko
 Sie können Kapazität entweder mithilfe des Azure-Portals oder mit PowerShell freigeben.
 
 **Freigeben von Kapazität mithilfe des Portals:**
-1. Navigieren Sie zum Blatt „Speicherkonten“. Siehe [Suchen eines Speicherkontos](#find).
-2. Klicken Sie oben auf dem Blatt auf **Speicherplatz freigeben**.
+1. Navigieren Sie zum Bereich „Speicherkonten“. Siehe [Suchen eines Speicherkontos](#find).
+2. Klicken Sie oben im Bereich auf **Speicherplatz freigeben**.
 3. Lesen Sie die Meldung, und klicken Sie dann auf **OK**.
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
@@ -148,11 +148,11 @@ Sie können auch PowerShell verwenden, um den Aufbewahrungszeitraum explizit au�
         Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
 
 
-Weitere Informationen finden Sie in der [Azure Stack PowerShell-Dokumentation.](https://msdn.microsoft.com/library/mt637964.aspx)
+Weitere Informationen finden Sie in der [Azure Stack-PowerShell-Dokumentation](https://msdn.microsoft.com/library/mt637964.aspx).
  
 
 ## <a name="migrate-a-container"></a>Migrieren eines Containers
-Aufgrund von ungleichmäßiger Speichernutzung durch Mandanten stellt ein Cloudbetreiber möglicherweise fest, dass mindestens ein zugrunde liegender Mandant mehr des gemeinsam genutzten Speicherplatzes belegt als andere. In diesem Fall kann der Cloudbetreiber versuchen, Speicherplatz auf der beanspruchten Freigabe freizugeben, indem einige Blob-Container zu einer anderen Freigabe migriert werden. 
+Aufgrund von ungleichmäßiger Speichernutzung durch Mandanten stellt ein Cloudbetreiber unter Umständen fest, dass mindestens ein zugrunde liegender Mandant einen größeren Teil des gemeinsam genutzten Speicherplatzes als andere Mandanten belegt. In diesem Fall kann der Cloudbetreiber versuchen, Speicherplatz auf der beanspruchten Freigabe freizugeben, indem einige Blob-Container zu einer anderen Freigabe migriert werden. 
 
 Sie müssen PowerShell verwenden, um Container zu migrieren.
 > [!NOTE]
@@ -209,7 +209,7 @@ Sie müssen PowerShell verwenden, um Container zu migrieren.
 
     ![](media/azure-stack-manage-storage-accounts/image16.png)
 
-    Sie können den Status des Migrationsabbruchs erneut überprüfen:
+    Sie können die Statusangaben zum Migrationsabbruch erneut überprüfen:
 
     `Get-ACSContainerMigrationStatus-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 

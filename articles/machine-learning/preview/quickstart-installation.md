@@ -5,17 +5,17 @@ services: machine-learning
 author: hning86
 ms.author: haining, raymondl, chhavib, j-martens
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 2/22/2018
-ms.openlocfilehash: 33ced510dc9579248b75fb21520d55bd747a6a5c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: ac206d7fdcf6aba1e0ab83f84d8c583d085a36fa
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>Schnellstart: Installation und erste Schritte mit Azure Machine Learning-Dienste
 Azure Machine Learning-Dienste (Vorschauversion) sind eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Sie stellt eine Hilfe für professionelle Datenanalysten dar, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -64,12 +64,12 @@ Verwenden des Azure-Portals für die Bereitstellung der Azure Machine Learning-K
    Ressourcengruppe | _Ihre Ressourcengruppe_ | Verwenden Sie eine vorhandene Ressourcengruppe in Ihrem Abonnement, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe für dieses Experimentieren-Konto zu erstellen. 
    Speicherort | _Die Region, die Ihren Benutzern am nächsten liegt_ | Wählen Sie den Standort aus, der Ihren Benutzern und den Datenressourcen am nächsten ist.
    Number of seats (Anzahl von Arbeitsplätzen) | 2 | Geben Sie die Anzahl von Arbeitsplätzen ein. Erfahren Sie, wie sich [Arbeitsplätze auf die Preise auswirken](https://azure.microsoft.com/pricing/details/machine-learning/).<br/><br/>Für diesen Schnellstart benötigen Sie nur zwei Arbeitsplätze. Arbeitsplätze können je nach Bedarf im Azure-Portal hinzugefügt oder entfernt werden.
-   Speicherkonto | _Eindeutiger Name_ | Wählen Sie **Neu erstellen**, und geben Sie einen Namen an, um ein [Azure-Speicherkonto](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal) zu erstellen. Oder wählen Sie die Option **Vorhandene verwenden** und dann Ihr vorhandenes Speicherkonto in der Dropdownliste aus. Das Speicherkonto ist erforderlich. Es wird zum Speichern von Projektartefakten und Ausführungsverlaufsdaten verwendet. 
+   Speicherkonto | _Eindeutiger Name_ | Wählen Sie **Neu erstellen**, und geben Sie einen Namen an, um ein [Azure-Speicherkonto](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal) zu erstellen. Der Name muss 3 bis 24 Zeichen lang sein und darf nur alphanumerische Zeichen enthalten. Wählen Sie alternativ hierzu die Option **Vorhandene verwenden** und dann Ihr vorhandenes Speicherkonto in der Dropdownliste. Das Speicherkonto ist erforderlich. Es wird zum Speichern von Projektartefakten und Ausführungsverlaufsdaten verwendet. 
    Workspace for Experimentation account (Arbeitsbereich für Experimentieren-Konto) | IrisGarden<br/>(in Tutorials verwendeter Name) | Geben Sie einen Namen für einen Arbeitsbereich für dieses Konto an. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
    Assign owner for the workspace (Besitzer für den Arbeitsbereich zuweisen) | _Ihr Konto_ | Wählen Sie Ihr eigenes Konto als Besitzer des Arbeitsbereichs aus.
    Erstellen eines Kontos für die Modellverwaltung | **check** |Erstellen Sie jetzt ein Modellverwaltungskonto, damit diese Ressource verfügbar ist, wenn Sie Ihre Modelle als Webdienste in Echtzeit bereitstellen und verwalten möchten. <br/><br/>Dieser Schritt ist zwar optional, es wird jedoch empfohlen, das Modellverwaltungskonto zur gleichen Zeit wie das Experimentieren-Konto zu erstellen.
    Kontoname | _Eindeutiger Name_ | Wählen Sie einen eindeutigen Namen, der Ihr Modellverwaltungskonto identifiziert. Sie können Ihren eigenen Namen verwenden oder einen Abteilungs- oder Projektnamen, der am besten zu dem Experiment passt. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. 
-   Model Management pricing tier (Modellverwaltungstarif) | **DEVTEST** | Wählen Sie **Es wurde kein Tarif ausgewählt**, um den Tarif für Ihr neues Konto für die Modellverwaltung anzugeben. Um Kosten zu sparen, können Sie den Tarif **DEVTEST** wählen, falls er für Ihr Abonnement verfügbar ist (eingeschränkte Verfügbarkeit). Wählen Sie andernfalls den Tarif S1, um Kosteneinsparungen zu erzielen. Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. 
+   Model Management pricing tier (Modellverwaltungstarif) | **DEVTEST** | Wählen Sie **Es wurde kein Tarif ausgewählt**, um den Tarif für Ihr neues Konto für die Modellverwaltung anzugeben. Um Kosten zu sparen, können Sie den Tarif **DEVTEST** wählen, falls er für Ihr Abonnement verfügbar ist (eingeschränkte Verfügbarkeit). Wählen Sie andernfalls den Tarif S1. Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. 
    An Dashboard anheften | _check_ | Wählen Sie die Option **An Dashboard anheften**, um das Machine Learning-Experimentieren-Konto komfortabel auf der Titelseite des Dashboards im Azure-Portal nachverfolgen zu können.
 
    ![Konfiguration des Machine Learning-Experimentieren-Kontos](media/quickstart-installation/portal-create-experimentation.png)
@@ -78,7 +78,7 @@ Verwenden des Azure-Portals für die Bereitstellung der Azure Machine Learning-K
 
    ![Konfiguration des Machine Learning-Experimentieren-Kontos](media/quickstart-installation/portal-create-experimentation-button.png)
 
-   Die Erstellung eines Kontos kann einige Momente dauern. Sie können den Status des Bereitstellungsprozesses überprüfen, indem Sie auf der Symbolleiste des Azure-Portals auf das Glockensymbol klicken.
+   Die Erstellung eines Kontos kann einige Momente dauern. Sie können den Status des Bereitstellungsprozesses überprüfen, indem Sie in der Symbolleiste des Azure-Portals auf das Benachrichtigungssymbol (Glocke) klicken.
    
    ![Benachrichtigungen im Azure-Portal](media/quickstart-installation/portal-notification.png)
 
@@ -110,30 +110,29 @@ Azure Machine Learning Workbench ist für Windows oder macOS verfügbar. Zeigen 
    
    | |Installationspfad zu Azure Machine Learning Workbench|
    |--------|------------------------------------------------|
-   |Windows|C:\Benutzer\<Benutzer>\AppData\Local\AmlWorkbench|
+   |Windows|C:\Users\\<Benutzer\>\AppData\Local\AmlWorkbench|
    |macOS|/Applications/Azure ML Workbench.app|
 
-   Das Installationsprogramm hat alle erforderlichen Abhängigkeiten wie Python, Miniconda und andere zugehörige Bibliotheken heruntergeladen und eingerichtet.    Diese Installation enthält auch das plattformübergreifende Azure-Befehlszeilentool (Azure CLI).
+   Das Installationsprogramm lädt alle erforderlichen Abhängigkeiten wie Python, Miniconda und andere zugehörige Bibliotheken herunter und richtet sie ein. Diese Installation enthält auch das plattformübergreifende Azure-Befehlszeilentool (Azure CLI).
 
-  
 1. Starten Sie Workbench durch Auswählen der Schaltfläche **Workbench starten** auf der letzten Anzeige des Installationsprogramms. 
 
-   Falls Sie das Installationsprogramm geschlossen haben, ist das kein Problem. 
-   + Unter Windows starten Sie es mithilfe der Desktopverknüpfung **Machine Learning Workbench**. 
+   Wenn Sie das Installationsprogramm geschlossen haben:
+   + Unter Windows starten Sie sie mithilfe der Desktopverknüpfung **Machine Learning Workbench**. 
    + Unter macOS wählen Sie im Launchpad **Azure ML Workbench**.
 
-1. Wählen Sie auf der ersten Anzeige **Anmelden** aus, um die Authentifizierung bei Azure Machine Learning Workbench durchzuführen. Verwenden Sie die gleichen Anmeldeinformationen, die Sie im Azure-Portal zum Erstellen der Experimentieren- und Modellverwaltungskonten verwendet haben. 
+1. Wählen Sie auf der ersten Seite die Option **Bei Microsoft anmelden** aus, um die Authentifizierung bei Azure Machine Learning Workbench durchzuführen. Verwenden Sie die gleichen Anmeldeinformationen, die Sie im Azure-Portal zum Erstellen der Experimentieren- und Modellverwaltungskonten verwendet haben. 
 
-   Sobald Sie angemeldet sind, verwendet Workbench das erste Experimentieren-Konto, das in Ihren Azure-Abonnements gefunden wird.  Workbench verwendet das erste Experimentieren-Konto, das gefunden wird, und zeigt alle Arbeitsbereiche und Projekte an, die diesem Konto zugeordnet sind. 
+   Nachdem Sie sich angemeldet haben, verwendet Workbench das erste Experimentieren-Konto, das in Ihren Azure-Abonnements gefunden wird, und zeigt alle Arbeitsbereiche und Projekte an, die diesem Konto zugeordnet sind. 
 
    >[!TIP]
    > Sie können über das Symbol unten links im Anwendungsfenster zu einem anderen Experimentieren-Konto wechseln.
 
 ## <a name="create-a-project-in-workbench"></a>Erstellen eines Projekts in Workbench
 
-In Azure Machine Learning ist ein Projekt der logische Container für die gesamte Arbeit, die beim Lösen eines Problems anfällt. Es ist einem einzelnen Dateiordner auf dem lokalen Datenträger zugeordnet, dem Sie Dateien und Unterordner hinzufügen können. 
+In Azure Machine Learning ist ein Projekt der logische Container für die gesamte Arbeit, die beim Lösen eines Problems anfällt. Es ist einem einzelnen Ordner auf dem lokalen Datenträger zugeordnet, dem Sie Dateien und Unterordner hinzufügen können. 
 
-Hier erstellen wir ein neues Workbench-Projekt mithilfe einer Vorlage, die das [Schwertlilien-DataSet](https://en.wikipedia.org/wiki/iris_flower_data_set) beinhaltet. In den Tutorials, die sich an diesem Schnellstart orientieren, werden diese Daten zum Erstellen eines Modells verwendet, das den Typ einer Schwertlilie basierend auf einigen ihrer physischen Merkmale vorhersagt.  
+Hier erstellen wir ein neues Workbench-Projekt mithilfe einer Vorlage, die das [Schwertlilien-DataSet](https://en.wikipedia.org/wiki/Iris_flower_data_set) beinhaltet. In den Tutorials, die sich an diesem Schnellstart orientieren, werden diese Daten zum Erstellen eines Modells verwendet, das den Typ einer Schwertlilie basierend auf einigen ihrer physischen Merkmale vorhersagt.  
 
 1. Wenn Azure Machine Learning Workbench geöffnet ist, wählen Sie im Bereich **PROJEKTE** das Pluszeichen (+) aus und wählen dann **Neues Projekt**.  
 
@@ -146,8 +145,8 @@ Hier erstellen wir ein neues Workbench-Projekt mithilfe einer Vorlage, die das [
    Projektname | myIris |Geben Sie einen eindeutigen Namen ein, der Ihr Konto identifiziert. Sie können Ihren eigenen Namen verwenden oder einen Abteilungs- oder Projektnamen, der am besten zu dem Experiment passt. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. 
    Projektverzeichnis | c:\Temp\ | Geben Sie das Verzeichnis an, in dem das Projekt erstellt wird.
    Projektbeschreibung | _nicht ausfüllen_ | Optionales Feld für eine Beschreibung der Projekte.
-   Visualstudio.com |_nicht ausfüllen_ | Optionales Feld. Zur Quellcodeverwaltung und Zusammenarbeit kann ein Projekt optional einem Git-Repository in Visual Studio Team Services zugeordnet werden. [Hier erfahren Sie, wie Sie das Verfahren einrichten](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
-   Arbeitsbereich | IrisGarden (falls vorhanden) | Wählen Sie einen Arbeitsbereich aus, den Sie im Azure-Portal für Ihr Experimentieren-Konto erstellt haben. <br/>Wenn Sie nach dem Schnellstart vorgegangen sind, sollten Sie einen Arbeitsbereich namens „IrisGarden“ haben. Wenn dies nicht der Fall ist, wählen Sie den Arbeitsbereich aus, den Sie bei der Erstellung Ihres Experimentieren-Kontos erstellt haben, oder einen anderen Arbeitsbereich, den Sie verwenden möchten.
+   Visualstudio.com GIT Repository URL (Git-Repository-URL für Visualstudio.com) |_nicht ausfüllen_ | Optionales Feld. Zur Quellcodeverwaltung und Zusammenarbeit kann ein Projekt optional einem Git-Repository in Visual Studio Team Services zugeordnet werden. [Hier erfahren Sie, wie Sie das Verfahren einrichten](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
+   Ausgewählter Arbeitsbereich | IrisGarden (falls vorhanden) | Wählen Sie einen Arbeitsbereich aus, den Sie im Azure-Portal für Ihr Experimentieren-Konto erstellt haben. <br/>Wenn Sie nach dem Schnellstart vorgegangen sind, sollten Sie einen Arbeitsbereich namens „IrisGarden“ haben. Wenn dies nicht der Fall ist, wählen Sie den Arbeitsbereich aus, den Sie bei der Erstellung Ihres Experimentieren-Kontos erstellt haben, oder einen anderen Arbeitsbereich, den Sie verwenden möchten.
    Projektvorlage | Klassifizieren von Schwertlilien | Vorlagen enthalten Skripts und Daten, die Sie zum Erkunden des Produkts verwenden können. Diese Vorlage enthält die benötigten Skripts und Daten für diesen Schnellstart und andere Tutorials auf dieser Dokumentationswebsite. 
 
    ![Neues Projekt](media/tutorial-classifying-iris/new_project.png)
@@ -159,7 +158,7 @@ Hier erstellen wir ein neues Workbench-Projekt mithilfe einer Vorlage, die das [
 
 ## <a name="run-a-python-script"></a>Ausführen eines Python-Skripts
 
-Jetzt können Sie das Skript **iris_sklearn.py** auf Ihrem lokalen Computer ausführen. Dieses Skript ist standardmäßig in der Projektvorlage **Klassifizieren von Schwertlilien** enthalten. Das Skript erstellt ein Modell mit dem Algorithmus für [logistische Regression](https://en.wikipedia.org/wiki/logistic_regression) aus der beliebten Python-Bibliothek [scikit-learn](http://scikit-learn.org/stable/index.html).
+Jetzt können Sie das Skript **iris_sklearn.py** auf Ihrem lokalen Computer ausführen. Dieses Skript ist standardmäßig in der Projektvorlage **Klassifizieren von Schwertlilien** enthalten. Mit dem Skript wird ein Modell für die [logistische Regression](https://en.wikipedia.org/wiki/Logistic_regression) erstellt, indem die beliebte Python-Bibliothek [scikit-learn](http://scikit-learn.org/stable/index.html) verwendet wird.
 
 1. Wählen Sie oben auf der Seite **Projektdashboard** die Option **Lokal** als Ausführungsziel und dann **iris_sklearn.py** als auszuführendes Skript aus. Diese Werte sind standardmäßig bereits ausgewählt. 
 
@@ -167,21 +166,21 @@ Jetzt können Sie das Skript **iris_sklearn.py** auf Ihrem lokalen Computer ausf
 
    ![Befehlsleiste](media/quickstart-installation/run_control.png)
 
-1. Geben Sie im Textfeld **Argumente** den Wert **0,01** ein. Diese Zahl wird im Skriptcode verwendet, um die Regularisierungsrate festzulegen. Mit diesem Wert wird konfiguriert, wie das Modell für die lineare Regression trainiert wird. 
+1. Geben Sie im Textfeld **Argumente** den Wert **0,01** ein. Dieser Wert entspricht der Regularisierungsrate und wird im Skript verwendet, um das Modell für die logistische Regression zu konfigurieren. 
 
-1. Wählen Sie **Ausführen**, um die Ausführung des Skripts auf Ihrem Computer zu starten. Der Auftrag **Iris_sklearn** wird sofort im Panel **Aufträge** auf der rechten Seite angezeigt, sodass Sie die Ausführung des Skripts überwachen können.
+1. Wählen Sie **Ausführen**, um die Ausführung des Skripts auf Ihrem Computer zu starten. Der Auftrag **iris_sklearn.py** wird sofort im Panel **Aufträge** auf der rechten Seite angezeigt, sodass Sie die Ausführung des Skripts überwachen können.
 
    Glückwunsch! Sie haben in Azure Machine Learning Workbench erfolgreich ein Python-Skript ausgeführt.
 
-1. Wiederholen Sie die Schritte 2 bis 3 mehrmals mit verschiedenen Argumentwerten im Bereich von **0,001** bis **10**. Jede Auftragsausführung wird im Bereich **Aufträge** angezeigt.
+1. Wiederholen Sie die Schritte 2 bis 3 mehrmals mit verschiedenen Argumentwerten im Bereich von **0,001** bis **10** (z.B. in Zehnerpotenzen). Jede Ausführung wird im Bereich **Aufträge** angezeigt.
 
-1. Überprüfen Sie den Ausführungsverlauf durch Auswahl der Ansicht **Ausführungen** und dann **iris_sklearn.py** in der Ausführungsliste, um den Ausführungsverlauf für dieses Skript anzuzeigen. 
+1. Untersuchen Sie den Ausführungsverlauf, indem Sie die Ansicht **Ausführungen** und dann **iris_sklearn.py** in der Liste mit den Ausführungen verwenden. 
 
    ![Dashboard des Ausführungsverlaufs](media/quickstart-installation/run_view.png)
 
-   Darin werden alle Ausführungen angezeigt, die für **iris_sklearn.py** erfolgt sind. Auf dem Dashboard mit dem Ausführungsverlauf werden darüber hinaus die wichtigsten Metriken, eine Reihe von Standarddiagrammen und eine Liste der Metriken für jede Ausführung angezeigt. 
+   In dieser Ansicht werden alle Ausführungen angezeigt, die für **iris_sklearn.py** erfolgt sind. Auf dem Dashboard mit dem Ausführungsverlauf werden darüber hinaus die wichtigsten Metriken, eine Reihe von Standarddiagrammen und eine Liste der Metriken für jede Ausführung angezeigt. 
 
-1. Sie können diese Ansicht anpassen, indem Sie die Konfigurationen mithilfe der Zahnrad- oder Filtersymbole sortieren, filtern und anpassen.
+1. Sie können diese Ansicht anpassen, indem Sie die Konfigurationen mithilfe der Zahnrad- und Filtersymbole sortieren, filtern und anpassen.
 
    ![Metriken und Diagramme](media/quickstart-installation/run_dashboard.png)
 
@@ -191,9 +190,9 @@ Jetzt können Sie das Skript **iris_sklearn.py** auf Ihrem lokalen Computer ausf
 
 Die Azure Machine Learning-Befehlszeilenschnittstelle (CLI) wird ebenfalls installiert. Die CLI-Schnittstelle ermöglicht den Zugriff auf und die Interaktion mit Ihren Azure Machine Learning-Diensten mithilfe der `az`-Befehle, um alle erforderlichen Aufgaben für einen vollständigen Data Science-Workflow durchzuführen. [Weitere Informationen.](tutorial-iris-azure-cli.md)
 
-Starten Sie die CLI „azure-cli-ml“ über die Workbench-Symbolleiste mit **Datei--> Eingabeaufforderung öffnen**.
+Sie können die Azure Machine Learning-CLI über die Workbench-Symbolleiste über **Datei → Eingabeaufforderung öffnen** starten.
 
-Mit dem Argument „--help“ erhalten Sie in der CLI „azure-cli-ml“ Hilfe zu Befehlen.
+Mit dem Argument „--help“ erhalten Sie in der Azure Machine Learning-CLI Hilfe zu Befehlen.
 
 ```az ml --help```
 
@@ -202,7 +201,7 @@ Mit dem Argument „--help“ erhalten Sie in der CLI „azure-cli-ml“ Hilfe z
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie haben jetzt die erforderlichen Azure Machine Learning-Konten erstellt und die Azure Machine Learning Workbench-Anwendung installiert. In dieser Anwendung haben Sie ein neues Projekt erstellt, ein Skript ausgeführt und den Ausführungsverlauf des Skripts untersucht.
+Sie haben jetzt die erforderlichen Azure Machine Learning-Konten erstellt und die Azure Machine Learning Workbench-Anwendung installiert. Außerdem haben Sie ein neues Projekt erstellt, ein Skript ausgeführt und den Ausführungsverlauf des Skripts untersucht.
 
 Eine ausführlichere Erläuterung dieses Workflows, u.a. Informationen zum Bereitstellen des Schwertlilienmodells als Webdienst, finden Sie im Tutorial zum *Klassifizieren von Schwertlilien*. Dieses Tutorial in voller Länge enthält ausführliche Schritte für die [Datenvorbereitung](tutorial-classifying-iris-part-1.md), das [Experimentieren](tutorial-classifying-iris-part-2.md) und die [Modellverwaltung](tutorial-classifying-iris-part-3.md). 
 
@@ -210,4 +209,4 @@ Eine ausführlichere Erläuterung dieses Workflows, u.a. Informationen zum Berei
 > [Tutorial: Klassifizieren von Schwertlilien (Teil 1)](tutorial-classifying-iris-part-1.md)
 
 >[!NOTE]
-> Sie verfügen zwar jetzt über ein Modellverwaltungskonto, Ihre Umgebung ist jedoch noch nicht für die Bereitstellung von Webdiensten eingerichtet.  Erfahren Sie, wie die [Bereitstellungsumgebung](deployment-setup-configuration.md) eingerichtet wird.
+> Sie haben zwar Ihr Modellverwaltungskonto erstellt, aber Ihre Umgebung ist noch nicht für die Bereitstellung von Webdiensten eingerichtet. Erfahren Sie, wie die [Bereitstellungsumgebung](deployment-setup-configuration.md) eingerichtet wird.
