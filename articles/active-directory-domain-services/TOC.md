@@ -22,7 +22,6 @@
 ## [Überprüfen der Integrität einer verwalteten Domäne](active-directory-ds-check-health.md)
 ## [Verwenden von Azure AD Domain Services in Azure CSP-Abonnements](active-directory-ds-csp.md)
 ## [Enable Azure AD Domain Services using PowerShell (Aktivieren von Azure AD Domain Services mit PowerShell)](active-directory-ds-enable-using-powershell.md)
-## [Überprüfen der Domänenintegrität](active-directory-ds-check-health.md)
 ## Beitreten zu einer verwalteten Domäne
 ### [Virtueller Windows Server-Computer](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [Virtueller Windows Server-Computer aus einer Vorlage](active-directory-ds-join-windows-vm-template.md)

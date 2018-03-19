@@ -37,6 +37,8 @@
       href: container-instances-using-azure-container-registry.md
     - name: Ausführen von Aufgaben in Containern
       href: container-instances-restart-policy.md
+    - name: Festlegen von Umgebungsvariablen
+      href: container-instances-environment-variables.md
     - name: Behandeln von Bereitstellungsproblemen
       href: container-instances-troubleshooting.md
     - name: Konfigurieren von Datenvolumes

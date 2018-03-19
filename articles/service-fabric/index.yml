@@ -15,11 +15,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/03/2017
   ms.author: carolz
-  ms.openlocfilehash: b9f76a98894485f48d495f32f352672784b86316
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: f2f85dfb82e62dd60c469abfdd87faa9cad43454
+  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 03/16/2018
 abstract:
   description: "Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices und Container vereinfacht. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Service Fabric verwenden."
 sections:
@@ -58,6 +58,7 @@ sections:
     style: unordered
     items:
     - html: <a href="service-fabric-tutorial-create-dotnet-app">Bereitstellen einer .NET-Anwendung</a>
+    - html: <a href="service-fabric-tutorial-create-java-app">Bereitstellen einer Java-Anwendung</a>
     - html: <a href="service-fabric-host-app-in-a-container">Packen einer vorhandenen .NET-Anwendung in Container</a>
     - html: <a href="service-fabric-tutorial-create-container-images">Erstellen einer Linux-Containeranwendung</a>
     - html: Erstellen und Verwalten eines <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a>- oder <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a>-Clusters
