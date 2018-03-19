@@ -57,14 +57,16 @@
 ## [Azure AD-App-Katalog](active-directory-app-gallery-listing.md)
 ## [Office 365-Verkäuferdashboard](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 ## Arbeiten mit Visual Studio
-### [Erste Schritte mit verbundenen Visual Studio-Diensten](vs-active-directory-dotnet-getting-started.md)
+### [Verwenden des verbundenen Active Directory-Diensts](vs-active-directory-add-connected-service.md)
+### [Erste Schritte mit .NET MVC-Projekten](vs-active-directory-dotnet-getting-started.md)
+### [Was ist mit meinem .NET MVC-Projekt passiert?](vs-active-directory-dotnet-what-happened.md)
+### [Erste Schritte mit WebAPI-Projekten](vs-active-directory-webapi-getting-started.md)
+### [Was ist mit meinem WebAPI-Projekt passiert?](vs-active-directory-webapi-what-happened.md)
 ### [Fehler während der Authentifizierungserkennung](vs-active-directory-error.md)
-### [Erste Schritte mit WebApi](vs-active-directory-webapi-getting-started.md)
-### [Was ist mit meinem Web-API-Projekt passiert?](vs-active-directory-webapi-what-happened.md)
 ## [ADFS für Windows Server](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 ## [ACS-Migration](active-directory-acs-migration.md)
 ## [Bewährte Methoden für die Fehlerbehandlung für ADAL](active-directory-devhowto-adal-error-handling.md)
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Authentifizierungsbibliotheken (ADAL)](active-directory-authentication-libraries.md)
 ## [Artikel mit Codebeispielen](active-directory-code-samples.md)
@@ -99,7 +101,7 @@
 #### [NodeJS-Web-App](active-directory-v2-devquickstarts-node-web.md)
 ## Anleitungen
 ### [Registrieren einer App](active-directory-v2-app-registration.md)
-## Referenz
+## Verweis
 ### [Authentifizierungsbibliotheken](active-directory-v2-libraries.md)
 ### [v2.0-Authentifizierungsprotokolle](active-directory-v2-protocols.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
@@ -110,7 +112,7 @@
 #### [Tokenreferenz](active-directory-v2-tokens.md)
 #### [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md)
 ### [Bereiche](active-directory-v2-scopes.md)
-# Ressourcen
+# angeben
 ## [Hilfe](active-directory-develop-help-support.md)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

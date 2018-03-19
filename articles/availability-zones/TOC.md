@@ -22,8 +22,9 @@
 ### VM-Skalierungsgruppen
 #### [Erstellen einer Skalierungsgruppe in einer Verfügbarkeitszone](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 
-### Load Balancer
+### Lastenausgleichsmodul
 #### [Was ist der Load Balancer?](../load-balancer/load-balancer-standard-overview.md)
+#### [Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md)
 #### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit dem Azure-Portal](../load-balancer/load-balancer-get-started-internet-az-portal.md)
 #### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit PowerShell](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
 #### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit CLI](../load-balancer/load-balancer-get-started-internet-az-cli.md)

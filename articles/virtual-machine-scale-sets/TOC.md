@@ -38,6 +38,7 @@
 #### [Verwenden von Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md)
 ### [Verwenden umfangreicher Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md)
 ### [Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger](virtual-machine-scale-sets-convert-template-to-md.md)
+### [Verwenden von niedriger Priorität](virtual-machine-scale-sets-use-low-priority.md)
 
 ## Verwalten
 ### Allgemeine Verwaltungsaufgaben

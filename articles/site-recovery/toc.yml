@@ -67,6 +67,8 @@
       items:
         - name: Replikation in Azure
           items:
+            - name: Allgemeine Fragen zur Replikation von VMware in Azure
+              href: vmware-azure-common-questions.md
             - name: VMware/physisch zu Azure – Supportmatrix
               href: vmware-physical-azure-support-matrix.md
             - name: VMware-zu-Azure-Architektur
@@ -77,6 +79,8 @@
               href: vmware-azure-multi-tenant-overview.md
             - name: Informationen zum Mobilitätsdienst
               href: vmware-azure-install-mobility-service.md
+            - name: Optionen für Failbackstandorte
+              href: concepts-types-of-failback.md
         - name: Replikation an einem sekundären Standort
           items:
             - name: VMware/lokal zu sekundärem Standort – Supportmatrix
@@ -117,7 +121,7 @@
               href: azure-to-azure-about-networking.md
             - name: Vorbereiten der Netzwerkzuordnung für die Notfallwiederherstellung für virtuelle Azure-Computer
               href: azure-to-azure-network-mapping.md
-            - name: Einrichten der IP-Adressierung nach einem Failover von virtuellen Azure-Computern
+            - name: Einrichten der IP-Adressierung für Failover
               href: site-recovery-retain-ip-azure-vm-failover.md
         - name: Notfallwiederherstellung
           items:
@@ -139,7 +143,7 @@
           items:
             - name: Verwalten von Netzwerkschnittstellen für die Replikation zwischen einem lokalen Standort und Azure
               href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
-            - name: Einrichten der IP-Adressierung nach einem Failover auf Azure
+            - name: Einrichten der IP-Adressierung für Failover
               href: concepts-on-premises-to-azure-networking.md
         - name: Kapazitätsplanung
           items:
@@ -241,7 +245,7 @@
           items:
             - name: Verwalten von Netzwerkschnittstellen für die Replikation zwischen einem lokalen Standort und Azure
               href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
-            - name: Einrichten der IP-Adressierung nach einem Failover auf Azure
+            - name: Einrichten der IP-Adressierung für Failover
               href: concepts-on-premises-to-azure-networking.md
         - name: Kapazitätsplanung
           items:
@@ -255,8 +259,6 @@
                   href: hyper-v-deployment-planner-analyze-report.md
                 - name: Analysieren der Kostenvorkalkulation
                   href: hyper-v-deployment-planner-cost-estimation.md
-            - name: Leistungsskalierungstests für die Hyper-V-Replikation an einem sekundären Standort
-              href: hyper-v-vmm-performance-results.md
         - name: Notfallwiederherstellung
           items:
             - name: Einrichten der Hyper-V-Replikation in Azure (ohne VMM) mit PowerShell
@@ -295,12 +297,14 @@
           href: hyper-v-vmm-powershell-resource-manager.md
         - name: Ausführen eines Notfallwiederherstellungsverfahrens für virtuelle Hyper-V-Computer an einem sekundären Standort
           href: hyper-v-vmm-test-failover.md
-        - name: Einrichten der IP-Adressierung nach einem Failover auf einen sekundären Standort
+        - name: Einrichten der IP-Adressierung für Failover
           href: hyper-v-vmm-networking.md
         - name: Hinzufügen von VMM-Skripts zu Wiederherstellungsplänen
           href: hyper-v-vmm-recovery-script.md
         - name: Durchführen von Failover und Failback zwischen lokalen Standorten
           href: hyper-v-vmm-failover-failback.md
+        - name: Leistungsskalierungstests für die Hyper-V-Replikation an einem sekundären Standort
+          href: hyper-v-vmm-performance-results.md
     - name: Replizieren von Apps
       items:
         - name: Active Directory und DNS

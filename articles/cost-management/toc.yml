@@ -21,7 +21,9 @@
       href: tutorial-forecast-spending.md
     - name: 3 – Verwalten von Kosten
       href: tutorial-manage-costs.md
-    - name: 4 – Steuern des Zugriffs auf Daten
+    - name: 4 – Optimieren von reservierten Instanzen
+      href: tutorial-optimize-reserved-instances.md
+    - name: 5 – Steuern des Zugriffs auf Daten
       href: tutorial-user-access.md
 - name: Konzepte
   items:

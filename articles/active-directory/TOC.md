@@ -190,11 +190,10 @@
 #### [Berichterstellung zur automatischen Benutzerbereitstellung](active-directory-saas-provisioning-reporting.md)
 #### [Problembehandlung bei der Benutzerbereitstellung](active-directory-application-provisioning-content-map.md)
 
-
-
 ### [Remotezugriff auf Apps mit dem Anwendungsproxy](active-directory-application-proxy-get-started.md)
 #### Erste Schritte
 ##### [Aktivieren der App-Proxy](active-directory-application-proxy-enable.md)
+##### [Unterstützung der DSGVO](active-directory-application-proxy-gdpr.md)
 ##### [Veröffentlichen von Apps](application-proxy-publish-azure-portal.md)
 ##### [Benutzerdefinierte Domänen](active-directory-application-proxy-custom-domains.md)
 #### [Einmaliges Anmelden](application-proxy-sso-overview.md)

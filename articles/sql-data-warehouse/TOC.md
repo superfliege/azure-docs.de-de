@@ -18,7 +18,7 @@
 
 
 # Tutorials
-## [1: Laden von Daten aus einem Blob](load-data-from-azure-blob-storage-using-polybase.md)
+## [1: Laden von „WideWorldImporters“](load-data-wideworldimportersdw.md)
 
 # Konzepte
 ## Features des Diensts
@@ -101,6 +101,7 @@
 
 
 ## Laden und Verschieben von Daten
+### [Taxidaten für New York](load-data-from-azure-blob-storage-using-polybase.md)
 ### [Öffentliche Contoso-Daten](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)

@@ -232,14 +232,22 @@
               href: azure-stack-app-service-capacity-planning.md
             - name: Bevor Sie beginnen
               href: azure-stack-app-service-before-you-get-started.md
+            - name: Weiterverteilen von Azure App Service in Azure Stack in Fehlerdomänen
+              href: azure-stack-app-service-fault-domain-update.md
             - name: Bereitstellen eines App Service-Ressourcenanbieters
               href: azure-stack-app-service-deploy.md
             - name: Offlinebereitstellung von App Service
               href: azure-stack-app-service-deploy-offline.md
+            - name: Aktualisieren von App Service
+              href: azure-stack-app-service-update.md
+            - name: Offlineaktualisierung von App Service
+              href: azure-stack-app-service-update-offline.md
             - name: Hinzufügen weiterer Web-Workerrollen
               href: azure-stack-app-service-add-worker-roles.md
             - name: Konfigurieren von Bereitstellungsquellen
               href: azure-stack-app-service-configure-deployment-sources.md
+            - name: Versionshinweise zu Update 1 von App Service
+              href: azure-stack-app-service-release-notes-update-one.md
         - name: Auffüllen des Marketplace
           items:
             - name: Marketplace-Übersicht

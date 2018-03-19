@@ -11,6 +11,7 @@
 ## [IPv6-Unterstützung](load-balancer-ipv6-overview.md)
 ## [Mehrere VIPs](load-balancer-multivip-overview.md)
 ## [Grundlegendes zu ausgehenden Verbindungen](load-balancer-outbound-connections.md)
+## [Load Balancer im Standard-Tarif und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md)
 
 # Erste Schritte
 
@@ -49,6 +50,7 @@
 ### [Beheben von Problemen mit Azure Load Balancer](load-balancer-troubleshoot.md)
 
 ## Artikel zum klassischen Bereitstellungsmodell
+### [Ausgehende Verbindungen (klassisch)](load-balancer-outbound-connections-classic.md)
 ### [Konfigurieren des internen Lastenausgleichs für Clouddienste](load-balancer-get-started-ilb-classic-cloud.md)
 #### [Konfigurieren des internen Lastenausgleichs für Clouddienste (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
 #### [Konfigurieren des internen Lastenausgleichs für Clouddienste (CLI)](load-balancer-get-started-ilb-classic-cli.md)
