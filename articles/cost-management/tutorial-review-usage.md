@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e8f09a90ae9a4dd54d81335de2494f0dcbe09485
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 558dcd65051c0134a87205dcd8bbf432d7763fd2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
 
 # <a name="tutorial-review-usage-and-costs"></a>Tutorial: Überprüfen der Nutzung und der Kosten
 
-Die Azure-Kostenverwaltung von Cloudyn zeigt Nutzung und Kosten auf, sodass Sie Trends nachverfolgen, Ineffizienz erkennen und Warnungen erstellen können. Alle Nutzungs- und Kostendaten werden in Cloudyn-Dashboards und -Berichten angezeigt. In den Beispielen dieses Tutorials erhalten Sie schrittweise Anleitungen zum Überprüfen von Nutzung und Kosten anhand von Dashboards und Berichten. In diesem Tutorial lernen Sie Folgendes:
+Azure Cost Management zeigt die Nutzung und Kosten auf, sodass Sie Trends nachverfolgen, Ineffizienzen erkennen und Warnungen erstellen können. Alle Nutzungs- und Kostendaten werden in Cloudyn-Dashboards und -Berichten angezeigt. In den Beispielen dieses Tutorials erhalten Sie schrittweise Anleitungen zum Überprüfen von Nutzung und Kosten anhand von Dashboards und Berichten. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Nachverfolgen der Nutzung und der Kosten
@@ -57,7 +57,7 @@ Im vorherigen Beispiel fielen ab dem 31.08.2017 geringere Ausgaben als davor an.
 
 Im Beispiel wird klar ersichtlich, dass die Kosten für Azure Storage ab dem 31.08.2017 abfielen, während die Ausgaben für andere Azure-Dienste unverändert blieben. Wodurch wurde diese Kostensenkung verursacht? In diesem Beispiel waren einige Mitarbeiter im Urlaub und somit nicht am Arbeitsplatz, sodass sie den Storage-Dienst nicht nutzten.
 
-Ein Videotutorial über das Nachverfolgen der Nutzung und der Kostentrends finden Sie unter [Analyzing your cloud billing data vs. time with Azure Cost Management Powered by Cloudyn (Analysieren Ihrer Cloudabrechnungsdaten in einem bestimmten Zeitraum mit Azure Cost Management von Cloudyn)](https://youtu.be/7LsVPHglM0g).
+Ein Videotutorial zur Nachverfolgung von Nutzungs- und Kostentrends finden Sie unter [Analyzing your cloud billing data vs. time with Azure Cost Management](https://youtu.be/7LsVPHglM0g) (Analysieren Ihrer Cloudabrechnungsdaten im Vergleich zur Abrechnung anhand von Zeitintervallen mit Azure Cost Management).
 
 ## <a name="detect-usage-inefficiencies"></a>Erkennen von Ineffizienz bei der Nutzung
 
@@ -81,7 +81,7 @@ Zeigen Sie die IDs der VM-Instanz an, indem Sie auf das Pluszeichen neben **List
 
 ![Liste der Kandidaten](./media/tutorial-review-usage/sizing03.png)
 
-Ein Videotutorial zum Ermitteln von Ineffizienzen bei der Nutzung finden Sie unter [Optimizing VM Size in Azure Cost Management Powered by Cloudyn (Optimieren der Größe des virtuellen Computers in Azure Cost Management von Cloudyn)](https://youtu.be/1xaZBNmV704).
+Ein Videotutorial zum Ermitteln von Ineffizienzen bei der Nutzung finden Sie unter [Optimizing VM Size in Azure Cost Management](https://youtu.be/1xaZBNmV704) (Optimieren der VM-Größe in Azure Cost Management).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Erstellen von Warnungen für ungewöhnliche Ausgaben
 

@@ -13,7 +13,7 @@
 | **Datenbank** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |✓ | |✓ |✓  |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |✓ | |✓ |✓  |
 | &nbsp; |[Drill (Betaversion)](../articles/data-factory/connector-drill.md) |✓ | |✓ |✓  |
-| &nbsp; |[Google BigQuery (Betaversion)](../articles/data-factory/connector-google-bigquery.md) |✓ | |✓ |✓  |
+| &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |✓ | |✓ |✓  |
 | &nbsp; |[Greenplum (Betaversion)](../articles/data-factory/connector-greenplum.md) |✓ | |✓ |✓  |
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |✓ | |✓ |✓  |
 | &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |✓ | |✓ |✓  |
@@ -61,7 +61,7 @@
 | &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[SAP Cloud for Customer (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |✓ | |✓ |✓ |
-| &nbsp; |[ServiceNow (Betaversion)](../articles/data-factory/connector-servicenow.md) |✓ | |✓ |✓  |
+| &nbsp; |[ServiceNow](../articles/data-factory/connector-servicenow.md) |✓ | |✓ |✓  |
 | &nbsp; |[Shopify (Betaversion)](../articles/data-factory/connector-shopify.md) |✓ | |✓ |✓  |
 | &nbsp; |[Square (Betaversion)](../articles/data-factory/connector-square.md) |✓ | |✓ |✓  |
 | &nbsp; |[Webtabelle (HTML-Tabelle)](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |

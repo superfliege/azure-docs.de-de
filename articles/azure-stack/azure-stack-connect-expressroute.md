@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: brenduns
 ms.reviewer: 
-ms.openlocfilehash: 8ec733c01b19f01951d0b53265daaef32c3afe73
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 544fc1bcc9212fd38938d58447f5050df2a08796
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-azure-stack-to-azure-using-expressroute"></a>Herstellen einer Verbindung von Azure Stack zu Azure mithilfe von ExpressRoute
 
@@ -273,7 +273,7 @@ Die Azure-Netzwerkinfrastruktur im Beispiel ist wie folgt konfiguriert:
 3. Erstellen Sie das Spoke-VNET und das Subnetz über den Adressbereich 10.100.0.0/16.
 
 
-Weitere Informationen zur Erstellung von virtuellen Netzwerken in Azure finden Sie unter [Erstellen eines virtuellen Netzwerks mit mehreren Subnetzen](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Weitere Informationen zum Erstellen virtueller Netzwerke in Azure finden Sie unter [Create a virtual network](../virtual-network/manage-virtual-network.md#create-a-virtual-network) (Erstellen eines virtuellen Netzwerks).
 
 ### <a name="configure-an-expressroute-circuit"></a>Konfigurieren einer ExpressRoute-Verbindung
 

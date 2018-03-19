@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2fedd615733e3bf51469d3b69d5fe51e3e99087e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 227601858dbe07e6cb774a2d24878ddca05aaf56
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="monitor-azure-container-service-aks"></a>Überwachen von Azure Container Service (AKS)
 
@@ -56,11 +56,19 @@ Zum Konfigurieren des Lösungs-Agents auf den Kubernetes-Knoten werden die ID un
 
 Klicken Sie zum Abrufen dieser Werte auf den **OMS-Arbeitsbereich** im linken Menü der Containerlösung. Klicken Sie anschließend auf **Erweiterte Einstellungen**, und notieren Sie sich die **Arbeitsbereich-ID** und den **Primärschlüssel**.
 
+## <a name="create-kubernetes-secret"></a>Erstellen eines Kubernetes-Geheimnisses
+
+Speichern Sie die OMS-Arbeitsbereichseinstellungen mit dem Befehl [kubectl create secret][kubectl-create-secret] in einem Kubernetes-Geheimnis namens `omsagent-secret`. Aktualisieren `WORKSPACE_ID` mit der ID Ihres OMS-Arbeitsbereichs und `WORKSPACE_KEY` mit dem Arbeitsbereichsschlüssel.
+
+```console
+kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
+```
+
 ## <a name="configure-monitoring-agents"></a>Konfigurieren der Überwachungs-Agents
 
 Die folgende Kubernetes-Manifestdatei kann zum Konfigurieren der Containerüberwachungs-Agents in einem Kubernetes-Cluster verwendet werden. Mit der Datei wird ein Kubernetes-[DaemonSet][kubernetes-daemonset] erstellt, das einen einzelnen Pod auf jedem Clusterknoten ausführt.
 
-Speichern Sie den folgenden Text in einer Datei mit dem Namen `oms-daemonset.yaml`, und ersetzen Sie die Platzhalterwerte für `WSID` und `KEY` durch die ID und den Schlüssel Ihres Log Analytics-Arbeitsbereichs.
+Speichern Sie den folgenden Text in einer Datei mit dem Namen `oms-daemonset.yaml`.
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -72,34 +80,30 @@ spec:
   metadata:
    labels:
     app: omsagent
-    agentVersion: 1.4.0-12
-    dockerProviderVersion: 10.0.0-25
+    agentVersion: 1.4.3-174
+    dockerProviderVersion: 1.0.0-30
   spec:
    containers:
-     - name: omsagent
+     - name: omsagent 
        image: "microsoft/oms"
        imagePullPolicy: Always
-       env:
-       - name: WSID
-         value: <WSID>
-       - name: KEY
-         value: <KEY>
        securityContext:
          privileged: true
        ports:
        - containerPort: 25225
-         protocol: TCP
+         protocol: TCP 
        - containerPort: 25224
          protocol: UDP
        volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-sock
-        - mountPath: /var/opt/microsoft/omsagent/state/containerhostname
-          name: container-hostname
-        - mountPath: /var/log
+        - mountPath: /var/log 
           name: host-log
-        - mountPath: /var/lib/docker/containers/
-          name: container-log
+        - mountPath: /etc/omsagent-secret
+          name: omsagent-secret
+          readOnly: true
+        - mountPath: /var/lib/docker/containers 
+          name: containerlog-path  
        livenessProbe:
         exec:
          command:
@@ -109,26 +113,26 @@ spec:
         initialDelaySeconds: 60
         periodSeconds: 60
    nodeSelector:
-    beta.kubernetes.io/os: linux
+    beta.kubernetes.io/os: linux    
    # Tolerate a NoSchedule taint on master that ACS Engine sets.
    tolerations:
     - key: "node-role.kubernetes.io/master"
       operator: "Equal"
       value: "true"
-      effect: "NoSchedule"
+      effect: "NoSchedule"     
    volumes:
-    - name: docker-sock
+    - name: docker-sock 
       hostPath:
        path: /var/run/docker.sock
-    - name: container-hostname
-      hostPath:
-       path: /etc/hostname
     - name: host-log
       hostPath:
-       path: /var/log
-    - name: container-log
+       path: /var/log 
+    - name: omsagent-secret
+      secret:
+       secretName: omsagent-secret
+    - name: containerlog-path
       hostPath:
-       path: /var/lib/docker/containers/
+       path: /var/lib/docker/containers    
 ```
 
 Erstellen Sie das DaemonSet mit dem folgenden Befehl:
@@ -175,6 +179,7 @@ Fahren Sie mit dem nächsten Tutorial fort, um mehr über die Aktualisierung von
 > [Kubernetes aktualisieren][aks-tutorial-upgrade]
 
 <!-- LINKS - external -->
+[kubectl-create-secret]: https://kubernetes.io/docs/concepts/configuration/secret/
 [kubernetes-daemonset]: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
 
 <!-- LINKS - internal -->

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: 7c384f07ec6b71596dcdbc5b7214fa7ce65d0b7d
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 23281067021dd6e4b8959fe73f3c8a11a651d9d2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -35,7 +35,7 @@ Die Verwendung von VNET-Peering bietet unter anderem folgende Vorteile:
 
 ## <a name="requirements-constraints"></a>Anforderungen und Einschränkungen
 
-* Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der Phase der allgemeinen Verfügbarkeit. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen befindet sich für „USA, Westen-Mitte“, „Kanada, Mitte“, „USA, Westen 2“, „Korea, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Kanada, Osten“, „Indien, Süden“, „Indien, Mitte“ und „Indien, Westen“ derzeit in der Vorschauphase. Vor dem Durchführen des Peerings für virtuelle Netzwerke in unterschiedlichen Regionen müssen Sie [Ihr Abonnement zuerst für die Vorschauversion registrieren](virtual-network-create-peering.md#register). Beim Erstellen eines Peerings zwischen virtuellen Netzwerken in unterschiedlichen Regionen tritt ein Fehler auf, wenn Sie die Registrierung für die Vorschauversion noch nicht durchgeführt haben.
+* Das Peering von virtuellen Netzwerken in derselben Region befindet sich in der Phase der allgemeinen Verfügbarkeit. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen befindet sich für „USA, Westen-Mitte“, „Kanada, Mitte“, „USA, Westen 2“, „Korea, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Kanada, Osten“, „Indien, Süden“, „Indien, Mitte“ und „Indien, Westen“ derzeit in der Vorschauphase. Vor dem Durchführen des Peerings für virtuelle Netzwerke in unterschiedlichen Regionen müssen Sie [Ihr Abonnement zuerst für die Vorschauversion registrieren](tutorial-connect-virtual-networks-powershell.md#register). Beim Erstellen eines Peerings zwischen virtuellen Netzwerken in unterschiedlichen Regionen tritt ein Fehler auf, wenn Sie die Registrierung für die Vorschauversion noch nicht durchgeführt haben.
     > [!WARNING]
     > Regionsübergreifend erstellte Peerings virtueller Netzwerke bieten ggf. nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Peerings in einer allgemein verfügbaren Version. Peerings virtueller Netzwerke weisen unter Umständen eingeschränkte Funktionen auf und stehen ggf. nicht in allen Azure-Regionen zur Verfügung. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network) .
 
@@ -85,7 +85,7 @@ Wenn die virtuellen Netzwerke, die gemeinsam eine einzelne ExpressRoute-Verbindu
 
 ## <a name="permissions"></a>Berechtigungen
 
-Das VNET-Peering ist ein privilegierter Vorgang. Es ist eine separate Funktion des VirtualNetworks-Namespace. Einem Benutzer können bestimmte Rechte für die Autorisierung des Peerings erteilt werden. Ein Benutzer mit Lese-/Schreibzugriff auf das virtuelle Netzwerk erbt diese Rechte automatisch.
+Das VNET-Peering ist ein privilegierter Vorgang. Es ist eine separate Funktion im VirtualNetworks-Namespace. Einem Benutzer können bestimmte Rechte für die Autorisierung des Peerings erteilt werden. Ein Benutzer mit Lese-/Schreibzugriff auf das virtuelle Netzwerk erbt diese Rechte automatisch.
 
 Ein Administrator oder privilegierter Benutzer der Peeringfunktion kann einen Peeringvorgang für ein anderes virtuelles Netzwerk initiieren. Die mindestens erforderliche Berechtigungsebene ist „Netzwerkmitwirkender“. Wenn eine übereinstimmende Anforderung für das Peering auf der anderen Seite vorhanden ist und weitere Anforderungen erfüllt sind, kommt das Peering zustande.
 
@@ -126,7 +126,7 @@ Für ein- und ausgehenden Datenverkehr, der eine VNET-Peeringverbindung verwende
 
     |Azure-Bereitstellungsmodell  | Abonnement  |
     |---------|---------|
-    |Beide mit Resource Manager |[Gleich](virtual-network-create-peering.md)|
+    |Beide mit Resource Manager |[Gleich](tutorial-connect-virtual-networks-portal.md)|
     | |[Unterschiedlich](create-peering-different-subscriptions.md)|
     |Einmal Resource Manager, einmal klassisch     |[Gleich](create-peering-different-deployment-models.md)|
     | |[Unterschiedlich](create-peering-different-deployment-models-subscriptions.md)|

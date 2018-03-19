@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 975069dbe9283c98482d7d0d5741a595ef323b35
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d02229739e3f358e4a6510dfbb0585939e947f9c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Bereitstellen eines Azure Container Service-Clusters (AKS)
 
@@ -85,7 +85,7 @@ Nach Abschluss des Tutorials verfügen Sie über einen AKS-Cluster, der für die
 
 ## <a name="configure-acr-authentication"></a>Konfigurieren der ACR-Authentifizierung
 
-Die Authentifizierung muss zwischen dem AKS-Cluster und der ACR konfiguriert werden. Dies umfasst auch das Gewähren der richtigen Rechte zum Pullen von Images aus der ACR für die ACS-Identität.
+Die Authentifizierung muss zwischen dem AKS-Cluster und der ACR konfiguriert werden. Dies umfasst auch das Gewähren der richtigen Rechte zum Pullen von Images aus der ACR für die AKS-Identität.
 
 Rufen Sie zuerst die ID des Dienstprinzipals ab, das für den AKS konfiguriert ist. Aktualisieren Sie den Namen der Ressourcengruppe und den Namen des AKS-Clusters auf die Werte für Ihre Umgebung.
 

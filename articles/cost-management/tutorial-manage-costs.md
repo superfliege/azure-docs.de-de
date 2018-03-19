@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7e9f11e702dbbe8864f8a0c307777c922e5f028d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 238964540bffaf8d05148c587462256ce20d87f4
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Tutorial: Verwalten von Kosten mit Azure Cost Management
 
-Sie verwalten die Kosten und erstellen Showback-Berichte in Azure Cost Management von Cloudyn, indem Sie die Kosten basierend auf Tags zuteilen. Beim Prozess der Kostenzuteilung werden Kosten Ihren verbrauchten Cloudressourcen zugewiesen. Die Kosten werden vollständig zugeteilt, wenn Ihre gesamten Ressourcen mit Tags kategorisiert sind. Nachdem die Kosten zugeteilt wurden, können Sie für Ihre Benutzer über Dashboards und Berichte Showback- oder Chargeback-Informationen bereitstellen. Es kann aber sein, dass viele Ressourcen kein Tag aufweisen oder nicht mit einem Tag versehen werden können, wenn Sie mit der Nutzung von Cost Management beginnen.
+Sie verwalten die Kosten und erstellen Showback-Berichte in Azure Cost Management, indem Sie die Kosten basierend auf Tags zuteilen. Beim Prozess der Kostenzuteilung werden Kosten Ihren verbrauchten Cloudressourcen zugewiesen. Die Kosten werden vollständig zugeteilt, wenn Ihre gesamten Ressourcen mit Tags kategorisiert sind. Nachdem die Kosten zugeteilt wurden, können Sie für Ihre Benutzer über Dashboards und Berichte Showback- oder Chargeback-Informationen bereitstellen. Es kann aber sein, dass viele Ressourcen kein Tag aufweisen oder nicht mit einem Tag versehen werden können, wenn Sie mit der Nutzung von Cost Management beginnen.
 
 Beispielsweise bemühen Sie sich um die Erstattung von Engineering-Kosten. Sie müssen in der Lage sein, für Ihr Engineering-Team darzustellen, dass Sie basierend auf den Ressourcenkosten einen bestimmten Betrag benötigen. Sie können einen Bericht mit allen verbrauchten Ressourcen präsentieren, die über das Tag *Engineering* verfügen.
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: b91d1c1eb452ade005fceb095f8d9e62b28a14ac
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 35dc83dea7dc1310852437cd7eede32cfa890e8f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>Einführung in Apache Kafka in HDInsight
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/28/2018
 
 Kafka in HDInsight umfasst die folgenden Features:
 
-* __Vereinbarung zum Servicelevel (SLA) mit 99% Verfügbarkeit von Kafka__: Weitere Informationen finden Sie im Dokument [SLA für HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
+* __Vereinbarung zum Servicelevel (SLA) mit 99,9 % Verfügbarkeit von Kafka__: Weitere Informationen finden Sie im Dokument [SLA für HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
 * __Fehlertoleranz und Rackinformationen__: Kafka basiert auf einem Konzept mit einem eindimensionalen Rack, das in bestimmten Umgebungen gut funktioniert. Doch in Umgebungen wie Azure ist ein Rack in zwei Dimensionen unterteilt – in Updatedomänen (UDs) und Fehlerdomänen (FDs). Microsoft stellt Tools bereit, mit denen sichergestellt werden kann, dass für Kafka-Partitionen und -Replikate in Bezug auf die UDs und FDs ein Ausgleich erzielt wird. 
 

@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über Azure-Kostenverwaltung von Cloudyn | Microsoft-Dokumentation"
-description: "Azure-Kostenverwaltung von Cloudyn ist eine Multi-Cloud-Kostenverwaltungslösung, die Ihnen das Verwenden von Azure und anderen Cloudressourcen erleichtert."
+title: "Übersicht über Azure Cost Management | Microsoft-Dokumentation"
+description: "Azure Cost Management ist eine Multicloud-Kostenverwaltungslösung, die Ihnen das Verwenden von Azure und anderen Cloudressourcen erleichtert."
 services: cost-management
 keywords: 
 author: bandersmsft
@@ -10,17 +10,17 @@ ms.topic: overview
 ms.service: cost-management
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f09bb135d4521325ab3e3e12af2f69d862434b75
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e2f12a989eb275e645c8b3bde3494928c5cbdb47
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-azure-cost-management"></a>Was ist Azure-Kostenverwaltung?
 
-Azure-Kostenverwaltung von Cloudyn ermöglicht Ihnen das Nachverfolgen der Cloudnutzung und der Ausgaben für Ihre Azure-Ressourcen und andere Cloudanbieter, einschließlich AWS und Google. Leicht verständliche Dashboardberichte unterstützen Sie bei der Kostenzuteilung sowie bei Showbacks und verbrauchsbasierten Kostenzuteilungen. Die Kostenverwaltung unterstützt Sie beim Optimieren der Ausgaben für Ihre Cloud, indem nicht ausgelastete Ressourcen ermittelt werden, die Sie dann verwalten und anpassen können.
+Azure Cost Management (lizenziert von Cloudyn, einer Tochtergesellschaft von Microsoft) ermöglicht Ihnen das Nachverfolgen der Cloudnutzung und der Ausgaben für Ihre Azure-Ressourcen sowie andere Cloudanbieter, einschließlich AWS und Google. Leicht verständliche Dashboardberichte unterstützen Sie bei der Kostenzuteilung sowie bei Showbacks und verbrauchsbasierten Kostenzuteilungen. Die Kostenverwaltung unterstützt Sie beim Optimieren der Ausgaben für Ihre Cloud, indem nicht ausgelastete Ressourcen ermittelt werden, die Sie dann verwalten und anpassen können.
 
-Ein Einführungsvideo finden Sie unter [Introduction to Azure Cost Management by Cloudyn](https://youtu.be/NWIRny6Wpsk) (Einführung in das Azure Cost Management mit Cloudyn).
+Ein Einführungsvideo finden Sie unter [Introduction to Azure Cost Management](https://youtu.be/NWIRny6Wpsk) (Einführung in Azure Cost Management).
 
 ## <a name="monitor-usage-and-spending"></a>Überwachen der Nutzung und Ausgaben
 

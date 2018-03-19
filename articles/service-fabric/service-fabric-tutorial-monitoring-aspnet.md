@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 26cca3604faa46e7398b24a2e8c25a6ad9650c18
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0f51b52d9f4d5c8979ba636311e63089c11cd114
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric
 Dieses Tutorial ist der vierte Teil einer Serie. Es beschreibt die Schritte zur Einrichtung von Überwachung und Diagnose für eine ASP.NET Core-Anwendung, die auf einem Service Fabric-Cluster mithilfe von Application Insights ausgeführt wird. Aus der Anwendung, die im ersten Teil des Tutorials erstellt wurde ([Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)), werden Telemetriedaten gesammelt. 
@@ -104,15 +104,16 @@ Folgende Schritte sind für das Einrichten des NuGet-Pakets erforderlich:
     Dadurch wird der *Dienstkontext* zu Ihrer Telemetrie hinzugefügt, durch den Sie die Quelle Ihrer Telemetrie in Application Insights besser nachvollziehen können. Ihre geschachtelte *return*-Anweisung in *VotingWeb.cs* sollte folgendermaßen aussehen:
     
     ```csharp
-    return new WebHostBuilder().UseWebListener()
+    return new WebHostBuilder()
+        .UseKestrel()
         .ConfigureServices(
             services => services
+                .AddSingleton<HttpClient>(new HttpClient())
+                .AddSingleton<FabricClient>(new FabricClient())
                 .AddSingleton<StatelessServiceContext>(serviceContext)
-                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
-                .AddSingleton<HttpClient>())
+                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
-        .UseApplicationInsights()
         .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
         .UseUrls(url)
         .Build();
@@ -126,8 +127,8 @@ Folgende Schritte sind für das Einrichten des NuGet-Pakets erforderlich:
         .ConfigureServices(
             services => services
                 .AddSingleton<StatefulServiceContext>(serviceContext)
-                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
-                .AddSingleton<IReliableStateManager>(this.StateManager))
+                .AddSingleton<IReliableStateManager>(this.StateManager)
+                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
         .UseApplicationInsights()
@@ -233,6 +234,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Hinzufügen von benutzerdefinierten Ereignissen mithilfe der Application Insights-API
 
 Da Sie nun die Einrichtung der Überwachung und Diagnose für Ihre ASP.NET-Anwendung abgeschlossen haben, probieren Sie Folgendes aus:
-- [Explore monitoring and diagnostics in Service Fabric (Erkunden der Überwachung und Diagnose in Service Fabric)](service-fabric-diagnostics-overview.md)
+- [Erkunden Sie die Überwachung und Diagnose in Service Fabric.](service-fabric-diagnostics-overview.md)
 - [Service Fabric event analysis with Application Insights (Service Fabric-Ereignisanalyse mit Application Insights)](service-fabric-diagnostics-event-analysis-appinsights.md)
 - Weitere Informationen zu Application Insights finden Sie unter [Application Insights Documentation (Dokumentation zu Application Insights)](https://docs.microsoft.com/azure/application-insights/)

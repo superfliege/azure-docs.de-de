@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4928364ffd732f587e41a788c4d834e91339a7fc
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f363119ae75a1adb5a01d584de70fba0f3852dfc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Überwachen von AD FS mithilfe von Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
@@ -115,9 +115,12 @@ Der Bericht enthält die folgenden Informationen:
 | Letzte Fehler-IP-Adresse |Zeigt die Client-IP-Adresse der letzten fehlerhaften Anforderung an. |
 
 > [!NOTE]
-> Der Bericht wird automatisch alle zwölf Stunden mit den neuen gesammelten Informationen aktualisiert. Anmeldeversuche innerhalb der letzten zwei Stunden sind daher unter Umständen nicht im Bericht enthalten.
+> Der Bericht wird automatisch alle zwölf Stunden mit den neuen gesammelten Informationen aktualisiert. Anmeldeversuche innerhalb der letzten 12 Stunden sind daher unter Umständen nicht im Bericht enthalten.
 >
 >
+
+### <a name="risky-ip-report"></a>Bericht über riskante IP-Adressen 
+Vorschauversion in Kürze verfügbar.
 
 ## <a name="related-links"></a>Verwandte Links
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

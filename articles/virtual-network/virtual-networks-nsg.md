@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 5eca18ca2f34097d98ce947c61c635abc6ab27b8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bd15b7786552d21c8791eeb307aa8c87066b2bcd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen
 
 Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit virtuellen Azure-Netzwerken (VNet) verbunden sind, zugelassen oder abgelehnt wird. NSGs können Subnetzen, einzelnen VMs (klassisch) oder einzelnen Netzwerkschnittstellen (NICs), die mit VMs (Resource Manager) verbunden sind, zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die Regeln für alle Ressourcen, die mit dem Subnetz verbunden sind. Der Datenverkehr kann weiter eingeschränkt werden, indem eine NSG außerdem einer VM oder NIC zugeordnet wird.
-
+ 
 > [!NOTE]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung beider Modelle, Microsoft empfiehlt jedoch für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
@@ -98,7 +98,7 @@ Je nach verwendetem Bereitstellungsmodell können Sie eine NSG wie folgt einem v
 
 * **VM (nur klassisch):** Sicherheitsregeln werden auf den gesamten ein- und ausgehenden Datenverkehr der VM angewendet. 
 * **NIC (nur Resource Manager):** Sicherheitsregeln werden auf den gesamten ein- und ausgehenden Datenverkehr der NIC angewendet, die der NSG zugeordnet ist. Bei einer VM mit mehreren NICs können Sie auf jede NIC unterschiedliche NSGs oder die gleiche NSG anwenden. 
-* **Subnetz (Resource Manager und klassisch):** Sicherheitsregeln werden auf den gesamten ein- und ausgehenden Datenverkehr der Ressourcen angewendet, die mit dem VNet verbunden sind.
+* **Subnetz (Resource Manager und klassisch):** Sicherheitsregeln werden auf den gesamten ein- und ausgehenden Datenverkehr der Ressourcen angewendet, die mit dem Subnetz verbunden sind.
 
 Sie können verschiedene NSGs einem virtuellen Computer (oder einer Netzwerkkarte, abhängig vom Bereitstellungsmodell) und dem Subnetz zuordnen, mit dem eine Netzwerkkarte oder ein virtueller Computer verbunden ist. Sicherheitsregeln werden für jede NSG nach Priorität in der folgenden Reihenfolge auf den Datenverkehr angewendet:
 

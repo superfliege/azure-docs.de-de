@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0e2edc946c5d6ada1049fbd6a960ec138f7088f2
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6434eb9780eefdcd492273f11f8675668d8d6479
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Tutorial: Zuweisen des Zugriffs auf Kostenverwaltungsdaten
 
@@ -54,7 +54,7 @@ Typische Benutzer, die Zugriff auf Kostenverwaltungsdaten wie Dashboards oder Be
 
 ![Neuen Benutzer mit Benutzerzugriff erstellen](.\media\tutorial-user-access\new-user-access.png)
 
-Ein Videotutorial über das Hinzufügen von Benutzern finden Sie unter [Adding Users to Azure Cost Management Powered by Cloudyn (Hinzufügen von Benutzern zu Azure Cost Management von Cloudyn)](https://youtu.be/Nzn7GLahx30).
+Ein Videotutorial zum Hinzufügen von Benutzern finden Sie unter [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Hinzufügen von Benutzern zu Azure Cost Management).
 
 ## <a name="create-entities"></a>Erstellen von Entitäten
 
@@ -75,9 +75,9 @@ Klicken Sie neben **Entities** (Entitäten) auf **Add Entity** (Entität hinzuf�
 **Speichern** Sie nach Abschluss die Entität.
 
 
-Ein Videotutorial über das Erstellen einer Kostenentitätshierarchie finden Sie unter [Creating a Cost Entity Hierarchy in Azure Cost Management Powered by Cloudyn (Erstellen einer Kostenentitätshierarchie in Azure Cost Management von Cloudyn)](https://youtu.be/dAd9G7u0FmU).
+Ein Videotutorial zum Erstellen einer Kostenentitätshierarchie finden Sie unter [Creating a Cost Entity Hierarchy in Azure Cost Management](https://youtu.be/dAd9G7u0FmU) (Erstellen einer Kostenentitätshierarchie in Azure Cost Management).
 
-Wenn Sie ein Nutzer von Azure Enterprise Agreement sind, finden Sie ein Videotutorial über das Zuordnen von Konten und Abonnements zu Entitäten unter [Connecting to Azure Resource Manager with Azure Cost Management Powered by Cloudyn (Herstellen einer Verbindung mit Azure Resource Manager mit Azure Cost Management von Cloudyn)](https://youtu.be/oCIwvfBB6kk).
+Wenn Sie über ein Azure Enterprise Agreement verfügen, finden Sie ein Videotutorial zum Zuordnen von Konten und Abonnements zu Entitäten unter [Connecting to Azure Resource Manager with Azure Cost Management](https://youtu.be/oCIwvfBB6kk) (Herstellen einer Verbindung mit Azure Resource Manager mit Azure Cost Management).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

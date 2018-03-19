@@ -11,11 +11,11 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 555d05c6cd5e804e5f80ecb8df77237fd8270105
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4b9cb7923b177c73f83a7ac17b1022a5455c7f30
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Erstellen einer Funktion in Linux mit einem benutzerdefinierten Image (Vorschau)
 
@@ -108,7 +108,7 @@ Stellen Sie sicher, dass das erstellte Image funktioniert, indem Sie das Docker-
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 ```
 
-Wenn das benutzerdefinierte Image in einem lokalen Docker-Container ausgeführt wird, überprüfen Sie, dass die Funktions-App und der Container korrekt ausgeführt werden, indem Sie zu <http://localhost:8080> navigieren.
+Wenn das benutzerdefinierte Image in einem lokalen Docker-Container ausgeführt wird, überprüfen Sie, ob die Funktions-App und der Container korrekt funktionieren, indem Sie zu <http://localhost:8080> navigieren.
 
 ![Funktions-App lokal testen.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -127,7 +127,7 @@ docker login --username <docker-id>
 Eine „login succeeded“-Meldung bestätigt Ihre erfolgreiche Anmeldung. Nach der Anmeldung können Sie das Image mit dem [docker push](https://docs.docker.com/engine/reference/commandline/push/)-Befehl per Push an Docker-Hub übertragen.
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0 .
+docker push <docker-id>/mydockerimage:v1.0.0
 ```
 
 Überprüfen Sie anhand der Befehlsausgabe, ob der Pushvorgang erfolgreich war.

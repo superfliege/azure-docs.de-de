@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 3cc667286e9c643f31d9c704a8a2dfac18312bb3
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 5ade9eca4b16e4864ec4e9d7bc6977c1e8322daa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des Node.js-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 
@@ -62,7 +62,7 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
     ```
 
     > [!NOTE]
-    > Die Installation der obigen Pakete kann zu einigen bekannten Problemen führen. Um diese zu beheben, führen Sie an einer Eingabeaufforderung `npm install --global --production windows-build-tools` im Modus **Als Administrator ausführen** aus, führen Sie `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140` aus (nachdem Sie den Pfad durch Ihre installierte Version ersetzt haben), und führen Sie anschließend die oben aufgeführten Installationsbefehle erneut aus.
+    > Die Installation der obigen Pakete kann zu einigen bekannten Problemen führen. Um diese Probleme zu beheben, führen Sie an einer Eingabeaufforderung `npm install --global --production windows-build-tools` im Modus **Als Administrator ausführen** aus. Führen Sie `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140` aus, nachdem Sie den Pfad durch Ihre installierte Version ersetzt haben, und führen Sie anschließend die obigen Installationsbefehle erneut aus.
     >
 
 1. Installieren Sie die folgenden Pakete mit den während der Registrierung verwendeten Komponenten:
@@ -81,7 +81,7 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
     > In den folgenden Beispielen werden die Transportkomponenten `azure-iot-provisioning-device-http` und `azure-iot-device-mqtt` verwendet.
     > 
 
-    Die Komponenten können alle gemeinsam installiert werden. Führen Sie dazu an Ihrer Eingabeaufforderung im Ordner **registereddevice** den folgenden Befehl aus:
+    Die Pakete können alle gleichzeitig installiert werden. Führen Sie dazu an der Eingabeaufforderung im Ordner **registereddevice** den folgenden Befehl aus:
 
         ```cmd/sh
         npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device

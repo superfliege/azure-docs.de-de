@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6b5c16e5b4136acc06c4ace4b16e8eb0e3522d24
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung in Azure
 
@@ -86,7 +86,7 @@ Vergewissern Sie sich, dass der virtuelle Computer die Azure-Anforderungen in de
 **VM-Name** | Zwischen 1 und 63 Zeichen.<br/><br/> Ist auf Buchstaben, Zahlen und Bindestriche beschränkt. Der VM-Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.
 **VM-Typ** | Generation 1 – Linux oder Windows<br/><br/>Generation 2 – nur Windows
 
-Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden. Eine vollständige Liste der unterstützten Versionen finden Sie in der [Site Recovery-Supportmatrix](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions).
+Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden. Eine vollständige Liste der unterstützten Versionen finden Sie in der [Supportmatrix für VMware und physische Server](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
 

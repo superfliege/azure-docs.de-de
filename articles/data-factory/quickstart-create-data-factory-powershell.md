@@ -1,6 +1,6 @@
 ---
 title: Kopieren von Daten in Blob Storage mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: Erstellen Sie eine Azure Data Factory, um Daten von einem Ordner in einen anderen Ordner in Azure Blob Storage oder an einen anderen Speicherort in derselben Blob Storage-Instanz zu kopieren.
+description: Erstellen Sie eine Azure Data Factory, um Daten von einem Speicherort in Azure Blob Storage an einen anderen Speicherort zu kopieren.
 services: data-factory
 documentationcenter: 
 author: linda33wj

@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 01/07/2018
+ms.date: 03/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4cc5d849630114577709f8373d08f0ce659e7e65
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 57b191a5dbdea487a0105c6af2866cdc037864e2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="about-site-recovery"></a>Informationen zu Azure Site Recovery
 
@@ -57,8 +57,8 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 --- | ---
 **Replikationsszenarien** | Replizieren Sie virtuelle Azure-Computer aus einer Azure-Region in eine andere.<br/><br/>  Replizieren Sie lokale virtuelle VMware-Computer, virtuelle Hyper-V-Computer und physische Server (Windows und Linux) in Azure.<br/><br/> Replizieren Sie lokale virtuelle VMware-Computer, von System Center VMM verwaltete virtuelle Hyper-V-Computer und physische Server an einem sekundären Standort.
 **Regionen** | Informationen zu unterstützten Regionen für Site Recovery finden Sie [hier](https://azure.microsoft.com/regions/services/). |
-**Replizierte Computer** | Überprüfen Sie die Replikationsanforderungen für [virtuelle Azure-Computer](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions), [lokale virtuelle Computer](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) und [physische Server](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions).
-**VMware-Server/-Hosts** | Virtuelle VMware-Computer, die Sie replizieren möchten, können sich auf [unterstützten vSphere-Hosts/vCenter-Servern](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) befinden.
+**Replizierte Computer** | Überprüfen Sie die Replikationsanforderungen für die Replikation von [Azure-VMs](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions), [lokale VMware-VMs und physische Server](vmware-physical-azure-support-matrix.md#replicated-machines) sowie [lokale Hyper-V-VMs](hyper-v-azure-support-matrix.md#replicated-vms).
+**VMware-Server/-Hosts** | VMware-VMs, die Sie replizieren möchten, können sich auf [unterstützten Host- und Virtualisierungsservern](vmware-physical-azure-support-matrix.md) befinden.
 **Workloads** | Sie können jede Workload replizieren, die auf einem für die Replikation geeigneten Computer ausgeführt wird. Darüber hinaus hat das Site Recovery-Team App-spezifische Tests für eine [Reihe von Apps](site-recovery-workload.md#workload-summary) durchgeführt.
 
 

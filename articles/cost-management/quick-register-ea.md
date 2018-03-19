@@ -1,6 +1,6 @@
 ---
 title: Registrieren Ihres Azure Enterprise Agreements bei der Azure Kostenverwaltung | Microsoft Docs
-description: Verwenden Sie Ihr Enterprise Agreement, um sich bei der Azure-Kostenverwaltung von Cloudyn zu registrieren.
+description: Verwenden Sie Ihr Enterprise Agreement, um sich bei Azure Cost Management zu registrieren.
 services: cost-management
 keywords: 
 author: bandersmsft
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 1b552ba5a0c3afd066e2ac62c8b3a90dd7696185
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 75ae3aabf51a14ceb3326e7f3cee3e20d9b98579
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten
 
-Sie verwenden Ihr Enterprise Agreement, um sich bei der Azure-Kostenverwaltung von Cloudyn zu registrieren. Ihre Registrierung stellt den Zugriff auf das Cloudyn-Portal bereit. In diesem Schnellstart wird der Registrierungsvorgang ausführlich erläutert, der zum Erstellen eines Cloudyn-Testabonnements und zum Anmelden beim Cloudyn-Portal erforderlich ist. Es wird auch gezeigt, wie die Anzeige von Kostendaten sofort gestartet werden kann.
+Sie verwenden Ihr Enterprise Agreement, um sich bei Azure Cost Management zu registrieren. Durch die Registrierung erhalten Sie Zugriff auf das Cloudyn-Portal. In diesem Schnellstart wird der Registrierungsvorgang ausführlich erläutert, der zum Erstellen eines Cloudyn-Testabonnements und zum Anmelden beim Cloudyn-Portal erforderlich ist. Es wird auch gezeigt, wie die Anzeige von Kostendaten sofort gestartet werden kann.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -41,13 +41,13 @@ Sie verwenden Ihr Enterprise Agreement, um sich bei der Azure-Kostenverwaltung v
 7. Unter **Andere Beteiligte einladen** können Sie Benutzer hinzufügen, indem Sie ihre E-Mail-Adressen eingeben. Klicken Sie auf **Weiter**, wenn Sie fertig sind. Je nach Größe Ihrer Azure-Registrierung kann es bis zu 24 Stunden dauern, bis Ihre gesamten Abrechnungsdaten Cloudyn hinzugefügt wurden.
 8. Klicken Sie auf **Zu Cloudyn wechseln**, um das Cloudyn-Portal zu öffnen. Auf der Seite **Cloudkontenverwaltung** sollten Ihre registrierten EA-Kontoinformationen angezeigt werden.
 
-Ein Videotutorial über das Registrieren von Enterprise Agreement finden Sie unter [How to Find Your EA Enrollment ID and API Key for use in Azure Cost Management Powered by Cloudyn (Suchen Ihrer EA-Registrierungs-ID und Ihres API-Schlüssels für die Verwendung in Azure Cost Management von Cloudyn)](https://youtu.be/u_phLs_udig).
+Ein Videotutorial zur Registrierung Ihres Enterprise Agreements finden Sie unter [How to Find Your EA Enrollment ID and API Key for use in Azure Cost Management](https://youtu.be/u_phLs_udig) (Ermitteln Ihrer EA-Registrierungs-ID und Ihres API-Schlüssels zur Verwendung in Azure Cost Management).
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie Ihre Azure Enterprise Agreement-Informationen verwendet, um sich bei der Kostenverwaltung zu registrieren. Außerdem haben Sie sich am Cloudyn-Portal angemeldet und die Anzeige von Kostendaten gestartet. Weitere Informationen zur Azure-Kostenverwaltung von Cloudyn finden Sie im Tutorial zur Kostenverwaltung.
+In diesem Schnellstart haben Sie Ihre Azure Enterprise Agreement-Informationen verwendet, um sich bei der Kostenverwaltung zu registrieren. Außerdem haben Sie sich beim Cloudyn-Portal angemeldet und die Anzeige von Kostendaten gestartet. Weitere Informationen zu Azure Cost Management finden Sie im Tutorial zu Cost Management.
 
 > [!div class="nextstepaction"]
 > [Überprüfen der Nutzung und der Kosten](./tutorial-review-usage.md)

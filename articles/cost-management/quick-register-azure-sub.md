@@ -1,6 +1,6 @@
 ---
 title: Registrieren Ihres Azure-Abonnements bei der Azure-Kostenverwaltung | Microsoft-Dokumentation
-description: Verwenden Sie Ihr Azure-Abonnement, um sich bei der Azure-Kostenverwaltung von Cloudyn zu registrieren.
+description: Verwenden Sie Ihr Azure-Abonnement, um sich bei Azure Cost Management zu registrieren.
 services: cost-management
 keywords: 
 author: bandersmsft
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 666919e37ffa3bb039fc9387737b8e6c3789311a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b7c1fee3276d98b6b7c611a09133804c1253384a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Registrieren eines einzelnen Azure-Abonnements und Anzeigen von Kostendaten
 
-Mithilfe Ihres Azure-Abonnements können Sie sich bei der Azure-Kostenverwaltung von Cloudyn registrieren. Durch die Registrierung erhalten Sie Zugriff auf das Cloudyn-Portal. In diesem Schnellstart wird der Registrierungsvorgang ausführlich erläutert, der zum Erstellen eines Cloudyn-Testabonnements und zum Anmelden beim Cloudyn-Portal erforderlich ist. Es wird auch gezeigt, wie die Anzeige von Kostendaten sofort gestartet werden kann.
+Sie verwenden Ihr Azure-Abonnement, um sich bei Azure Cost Management zu registrieren. Durch die Registrierung erhalten Sie Zugriff auf das Cloudyn-Portal. In diesem Schnellstart wird der Registrierungsvorgang ausführlich erläutert, der zum Erstellen eines Cloudyn-Testabonnements und zum Anmelden beim Cloudyn-Portal erforderlich ist. Es wird auch gezeigt, wie die Anzeige von Kostendaten sofort gestartet werden kann.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -40,13 +40,13 @@ Mithilfe Ihres Azure-Abonnements können Sie sich bei der Azure-Kostenverwaltung
 9. Klicken Sie auf **Zu Cloudyn wechseln**, um das Cloudyn-Portal zu öffnen. Auf der Seite **Kontenverwaltung** sollten die Kontoinformationen Ihres Azure-Abonnements angezeigt werden.  
     ![Kontenverwaltung](./media/quick-register-azure-sub/accounts-mgt.png)
 
-Ein Videotutorial über das Registrieren Ihres Azure-Abonnements finden Sie unter [Finding your Directory GUID and Rate ID for use in Azure Cost Management Powered by Cloudyn (Suchen Ihrer Directory-GUID und Rate-ID für die Verwendung in Azure Cost Management von Cloudyn)](https://youtu.be/PaRjnyaNGMI).
+Ein Videotutorial zur Registrierung Ihres Azure-Abonnements finden Sie unter [Finding your Directory GUID and Rate ID for use in Azure Cost Management](https://youtu.be/PaRjnyaNGMI) (Ermitteln Ihrer Verzeichnis-GUID und Rate-ID zur Verwendung in Azure Cost Management).
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie Ihre Azure-Abonnementinformationen verwendet, um sich bei der Kostenverwaltung zu registrieren. Außerdem haben Sie sich beim Cloudyn-Portal angemeldet und die Anzeige von Kostendaten gestartet. Weitere Informationen zur Azure-Kostenverwaltung von Cloudyn finden Sie im Tutorial zur Kostenverwaltung.
+In diesem Schnellstart haben Sie Ihre Azure-Abonnementinformationen verwendet, um sich bei der Kostenverwaltung zu registrieren. Außerdem haben Sie sich beim Cloudyn-Portal angemeldet und die Anzeige von Kostendaten gestartet. Weitere Informationen zu Azure Cost Management finden Sie im Tutorial zu Cost Management.
 
 > [!div class="nextstepaction"]
 > [Überprüfen der Nutzung und der Kosten](./tutorial-review-usage.md)

@@ -5,13 +5,13 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2017
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: f7dc5e2df95a64685a8b70d25e839c371d4fc2de
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 2ac15e4da411efa6f018a3e3fb620023bc8964cc
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Durchführen eines Notfallwiederherstellungsverfahrens in Azure
 
@@ -30,7 +30,7 @@ Dies ist das vierte Tutorial in einer Reihe. In diesem Tutorial wird davon ausge
 
 ## <a name="verify-vm-properties"></a>Überprüfen von VM-Eigenschaften
 
-Bevor Sie ein Testfailover ausführen, überprüfen Sie die VM-Eigenschaften, und stellen Sie sicher, dass der virtuelle Computer die [Azure-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) erfüllt.
+Überprüfen Sie vor dem Ausführen eines Testfailovers die VM-Eigenschaften, und stellen Sie sicher, dass die Hyper-V-VM [hyper-v-azure-support-matrix.md#replicated-vms], die [VMware-VM oder der physische Server](vmware-physical-azure-support-matrix.md#replicated-machines) die Azure-Anforderungen erfüllt.
 
 1. Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
 2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Informationen zu virtuellen Computern, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Klicken Sie auf **Eigenschaften**, um weitere Details anzuzeigen.
@@ -66,4 +66,4 @@ In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Durchführen von Failover und Failback für lokale VMware-VMs](tutorial-vmware-to-azure-failover-failback.md)
+> [Durchführen von Failover und Failback für lokale VMware-VMs](vmware-azure-tutorial-failover-failback.md)
