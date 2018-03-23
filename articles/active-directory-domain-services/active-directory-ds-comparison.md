@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
 ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>So entscheiden Sie, ob die Azure AD Domain Services für Ihren Anwendungsfall geeignet sind
 Mit den Azure AD Domain Services können Sie Ihre Workloads in Azure-Infrastrukturdiensten bereitstellen, ohne sich über die Wartung der Identitätsinfrastruktur in Azure Gedanken machen zu müssen. Dieser verwaltete Dienst unterscheidet sich von einer typischen Windows Server Active Directory-Bereitstellung, die Sie selbst bereitstellen und verwalten. Der Dienst ist einfach bereitzustellen und bietet eine automatisierte Systemüberwachung und Wartung. Wir verbessern den Dienst fortlaufend, um Unterstützung für gängige Bereitstellungsszenarios hinzuzufügen.
@@ -34,21 +34,21 @@ Die folgende Tabelle dient als Entscheidungshilfe bei der Auswahl zwischen der V
 
 | **Feature** | **Azure AD Domain Services** | **„Do-It-Yourself“ AD in Azure-VMs** |
 | --- |:---:|:---:|
-| [**Verwalteter Dienst**](active-directory-ds-comparison.md#managed-service) |**&amp;#x2713;** |**&amp;#x2715;** |
-| [**Sichere Bereitstellungen**](active-directory-ds-comparison.md#secure-deployments) |**&amp;#x2713;** |Der Administrator muss die Bereitstellung absichern. |
-| [**DNS-Server**](active-directory-ds-comparison.md#dns-server) |**&amp;#x2713;** (verwalteter Dienst) |**&amp;#x2713;** |
-| [**Domain or Enterprise administrator privileges**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&amp;#x2715;** |**&amp;#x2713;** |
-| [**Domänenbeitritt**](active-directory-ds-comparison.md#domain-join) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**Domänenauthentifizierung mithilfe von NTLM und Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&amp;#x2713;** |**&amp;#x2713;** |
+| [**Verwalteter Dienst**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&amp;#x2715;** |
+| [**Sichere Bereitstellungen**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Der Administrator muss die Bereitstellung absichern. |
+| [**DNS-Server**](active-directory-ds-comparison.md#dns-server) |**&#x2713;** (verwalteter Dienst) |**&#x2713;** |
+| [**Domain or Enterprise administrator privileges**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&amp;#x2715;** |**&#x2713;** |
+| [**Domänenbeitritt**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
+| [**Domänenauthentifizierung mithilfe von NTLM und Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Eingeschränkte Kerberos-Delegierung**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|Ressourcenbasiert|Ressourcen- und kontobasiert|
-| [**Benutzerdefinierte OE-Struktur**](active-directory-ds-comparison.md#custom-ou-structure) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**Schemaerweiterungen**](active-directory-ds-comparison.md#schema-extensions) |**&amp;#x2715;** |**&amp;#x2713;** |
-| [**AD-Domänen-/Gesamtstrukturvertrauensstellungen**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&amp;#x2715;** |**&amp;#x2713;** |
-| [**LDAP read**](active-directory-ds-comparison.md#ldap-read) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**Sicheres LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**LDAP write**](active-directory-ds-comparison.md#ldap-write) |**&amp;#x2715;** |**&amp;#x2713;** |
-| [**Group Policy**](active-directory-ds-comparison.md#group-policy) |**&amp;#x2713;** |**&amp;#x2713;** |
-| [**Geografisch verteilte Bereitstellungen**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&amp;#x2715;** |**&amp;#x2713;** |
+| [**Benutzerdefinierte OE-Struktur**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
+| [**Schemaerweiterungen**](active-directory-ds-comparison.md#schema-extensions) |**&amp;#x2715;** |**&#x2713;** |
+| [**AD-Domänen-/Gesamtstrukturvertrauensstellungen**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&amp;#x2715;** |**&#x2713;** |
+| [**LDAP read**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
+| [**Sicheres LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
+| [**LDAP write**](active-directory-ds-comparison.md#ldap-write) |**&amp;#x2715;** |**&#x2713;** |
+| [**Group Policy**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
+| [**Geografisch verteilte Bereitstellungen**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&amp;#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>Verwalteter Dienst
 Azure AD Domain Services-Domänen werden von Microsoft verwaltet. Sie müssen sich weder um Patches, Updates, Überwachung oder Sicherung noch um die Gewährleistung der Verfügbarkeit Ihrer Domäne kümmern. Diese Verwaltungsaufgaben werden als Dienst von Microsoft Azure für Ihre verwalteten Domänen angeboten.

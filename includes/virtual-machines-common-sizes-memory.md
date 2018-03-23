@@ -1,4 +1,19 @@
-
+---
+title: Includedatei
+description: Includedatei
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: azcspmt;jonbeck;cynthn
+ms.custom: include file
+ms.openlocfilehash: 3652e26bb775ae6ac1897bea529e7ae69d77cdbd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/16/2018
+---
 Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
 * Die M-Serie bietet die höchste vCPU-Anzahl (bis zu 128 vCPUs) und den größten Arbeitsspeicher (bis zu 3,8 TiB) für die virtuellen Computer in der Cloud.  Dies ist ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.

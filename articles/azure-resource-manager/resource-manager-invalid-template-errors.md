@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1c6712eaf17cf55c1422baca355ce99ed319df28
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9626b3caaa7188a4e9a37f83d1fbf091951714f4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Beheben von Fehlern aufgrund ungültiger Vorlagen
 
@@ -38,6 +38,8 @@ Die Fehlermeldung hängt vom Typ des Fehlers ab.
 
 Dieser Fehler kann aus verschiedenen Arten von Fehlern entstehen. Normalerweise handelt es sich um einen Syntax- oder Strukturfehler in der Vorlage.
 
+<a id="syntax-error" />
+
 ## <a name="solution-1---syntax-error"></a>Lösung 1 – Syntaxfehler
 
 Wenn Sie eine Fehlermeldung erhalten, die auf eine fehlerhafte Vorlagenüberprüfung hinweist, ist in Ihrer Vorlage möglicherweise ein Syntaxproblem vorhanden.
@@ -56,6 +58,8 @@ Solche Fehler können sehr leicht passieren, da Vorlagenausdrücke recht kompliz
 Wenn Sie nicht die passende Syntax bereitstellen, erzeugt die Vorlage einen Wert, der nicht Ihrer Absicht entspricht.
 
 Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax. Verwenden Sie ggf. einen JSON-Editor, der Sie auf Syntaxfehler aufmerksam machen kann (z.B. [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) oder [Visual Studio Code](resource-manager-vs-code.md)).
+
+<a id="incorrect-segment-lengths" />
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>Lösung 2 – falsche Segmentlängen
 
@@ -116,6 +120,8 @@ Die richtige Angabe der Segmente kann bei Resource Manager-Typen problematisch s
 }
 ```
 
+<a id="parameter-not-valid" />
+
 ## <a name="solution-3---parameter-is-not-valid"></a>Lösung 3 – Parameter ungültig
 
 Wenn Sie einen Parameterwert angeben, der nicht einem der zulässigen Werte entspricht, erhalten Sie eine Fehlermeldung der folgenden Art:
@@ -129,9 +135,13 @@ part of the allowed values
 
 Überprüfen Sie die zulässigen Werte in der Vorlage, und geben Sie während der Bereitstellung einen gültigen Wert an. Weitere Informationen zu zulässigen Parameterwerten finden Sie im [Abschnitt „Parameters“ von Azure Resource Manager-Vorlagen](resource-manager-templates-parameters.md).
 
+<a id="too-many-resource-groups" />
+
 ## <a name="solution-4---too-many-target-resource-groups"></a>Lösung 4 – zu viele Zielressourcengruppen
 
 Wenn Sie mehr als fünf Zielressourcengruppen in einer einzelnen Bereitstellung angeben, wird dieser Fehler angezeigt. Sie sollten entweder die Anzahl der Ressourcengruppen in Ihrer Bereitstellung konsolidieren oder einige der Vorlagen als separate Bereitstellungen bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](resource-manager-cross-resource-group-deployment.md).
+
+<a id="circular-dependency" />
 
 ## <a name="solution-5---circular-dependency-detected"></a>Lösung 5 – Ringabhängigkeit erkannt
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: mabrigg
 ms.openlocfilehash: 1a482f1d2f3eef8775bb7b64d4f6749f69fa5471
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack Update 1710 (Build 20171020.1)
 

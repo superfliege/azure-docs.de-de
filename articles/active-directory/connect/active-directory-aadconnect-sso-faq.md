@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: 15155ecaf17ae309a218bb1f51a4757e5338f64c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8a91960f150e9298515cd52fe192ec1abdd89f9c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)
 
@@ -75,7 +75,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
 ### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>Schritt 1: Rufen Sie die Liste der AD-Gesamtstrukturen ab, für die das nahtlose einmalige Anmelden aktiviert wurde.
 
 1. Laden Sie zuerst den [Microsoft Online Services-Anmeldeassistenten](http://go.microsoft.com/fwlink/?LinkID=286152) herunter, und installieren Sie ihn.
-2. Laden Sie anschließend das [Azure Active Directory-Modul für Windows PowerShell (64 Bit)](http://go.microsoft.com/fwlink/p/?linkid=236297)herunter, und installieren Sie es.
+2. Laden Sie anschließend das [Azure Active Directory-Modul für Windows PowerShell (64 Bit)](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)herunter, und installieren Sie es.
 3. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
 4. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
 5. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.

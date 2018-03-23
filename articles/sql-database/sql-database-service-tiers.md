@@ -1,26 +1,19 @@
 ---
 title: Azure SQL-Datenbank-Dienst | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Dienstebenen für Einzel- und Pooldatenbanken, um verschiedene Leistungsstufen und Speichergrößen bereitzustellen.
-keywords: ''
 services: sql-database
-documentationcenter: ''
 author: CarlRabeler
-manager: jhubbard
-editor: ''
-ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 02/28/2018
+ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: ebfd44098a81b4a9d8863623458460ceb25f0d5d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6153616de763eee1b20fff40d38816eca8b455de
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Wie heißen die Dienstebenen von SQL-Datenbank?
 

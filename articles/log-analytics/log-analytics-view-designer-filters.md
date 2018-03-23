@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: bwren
 ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="filters-in-log-analytics-views"></a>Filter in Log Analytics-Ansichten
 Mit **Filtern** in einer [Log Analytics-Ansicht](log-analytics-view-designer.md) können Benutzer die Daten in der Ansicht anhand des Werts einer bestimmten Eigenschaft filtern, ohne die Ansicht selbst zu ändern.  Beispielsweise können Sie Benutzern Ihrer Ansicht ermöglichen, die Ansicht nach Daten nur von einem bestimmten Computer oder eine Gruppe von Computern zu filtern.  Sie können mehrere Filter für eine einzelne Ansicht erstellen, um Benutzern das Filtern nach mehreren Eigenschaften zu ermöglichen.  Dieser Artikel beschreibt, wie Sie Filter verwenden und einer benutzerdefinierten Ansicht hinzufügen.
@@ -40,7 +40,7 @@ Erstellen Sie einen Filter über die Registerkarte **Filter**, wenn Sie [eine An
 
 In der folgenden Tabelle werden die Einstellungen für Filter beschrieben.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:---|:---|
 | Feldname | Der Name des zum Filtern verwendeten Felds.  Dieser muss dem Zusammenfassungsfeld unter **Werte abfragen** entsprechen. |
 | Werte abfragen | Die Abfrage, die zum Auffüllen der Filterdropdownliste für den Benutzer ausgeführt werden soll.  Hierfür muss [Zusammenfassen](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) oder [Verschieden](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/distinct-operator) verwendet werden, um eindeutige Werte für ein bestimmtes Feld bereitzustellen, und die Abfrage muss dem **Feldnamen** entsprechen.  Sie können [Sortieren](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator) verwenden, um die dem Benutzer angezeigten Werte zu sortieren. |

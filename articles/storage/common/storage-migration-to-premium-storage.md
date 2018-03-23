@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
 
@@ -99,7 +99,7 @@ Um die virtuelle Festplatten (VHDs) für die Migration vorzubereiten, benötigen
 
 * Ein Azure-Abonnement, ein Speicherkonto und einen Container im Speicherkonto, in den die virtuelle Festplatte kopiert werden soll. Beachten Sie, dass das Zielspeicherkonto je nach Ihren Anforderung ein Standard- oder Premium-Speicherkonto sein kann.
 * Ein Tool zum Generalisieren der VHD, wenn Sie mehrere VM-Instanzen daraus erstellen möchten. Beispiel: Sysprep für Windows oder virt-sysprep für Ubuntu.
-* Ein Tool für den Upload der VHD-Datei in das Speicherkonto. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md), oder verwenden Sie einen [Azure-Speicher-Explorer](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). In dieser Anleitung wird erläutert, wie Sie Ihre VHD mit dem Tool AzCopy kopieren.
+* Ein Tool für den Upload der VHD-Datei in das Speicherkonto. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md), oder verwenden Sie einen [Azure Storage-Explorer](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). In dieser Anleitung wird erläutert, wie Sie Ihre VHD mit dem Tool AzCopy kopieren.
 
 > [!NOTE]
 > Bei Wahl der synchronen Kopieroption mit AzCopy kopieren Sie die VHD im Hinblick auf eine optimale Leistung, indem Sie eines dieser Tools auf einem virtuellen Azure-Computer ausführen, der sich in der gleichen Region wie das Zielspeicherkonto befindet. Wenn Sie eine VDH von einem virtuellen Azure-Computer in einer anderen Region kopieren, kann dies die Leistung beeinträchtigen.
@@ -291,7 +291,7 @@ Details zur Verwendung des Tools AzCopy finden Sie unter [Übertragen von Daten 
 Sie können virtuelle Festplatten zudem mit den folgenden Tools in ein Speicherkonto hochladen:
 
 * [Azure Storage Copy Blob-API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-* [Azure-Speicher-Explorer: Hochladen von Blobs](https://azurestorageexplorer.codeplex.com/)
+* [Azure Storage-Explorer: Hochladen von Blobs](https://azurestorageexplorer.codeplex.com/)
 * [Speicher-Import/Export Service REST-API-Referenz](https://msdn.microsoft.com/library/dn529096.aspx)
 
 > [!NOTE]

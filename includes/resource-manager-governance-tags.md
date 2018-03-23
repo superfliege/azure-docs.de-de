@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/16/2018
+ms.date: 03/13/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 13aa40331849c775898913129f8048a06a1f8456
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 69c67f437d2f0b7bd6c1f5311eb5ba1d962d889a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 Durch Anwenden von Tags können Sie Ihre Azure-Ressourcen logisch nach Kategorien organisieren. Jedes Tag besteht aus einem Namen und einem Wert. So können Sie beispielsweise den Namen „Umgebung“ und den Wert „Produktion“ auf alle Ressourcen in der Produktion anwenden.
 
@@ -24,4 +24,4 @@ Für Tags gelten folgende Einschränkungen:
 * Der Tagname ist auf 512 Zeichen beschränkt und der Tagwert auf 256 Zeichen. Bei Speicherkonten ist der Tagname auf 128 Zeichen beschränkt und der Tagwert auf 256 Zeichen.
 * Auf die Ressourcengruppe angewendete Tags werden nicht von den in dieser Ressourcengruppe enthaltenen Ressourcen geerbt.
 * Tags können nicht auf klassische Ressourcen wie Cloud Services angewendet werden.
-* Diese Zeichen werden nicht unterstützt: `<`, `>`, `%`, `&`, `\\`, `?`, `/`
+* Tag-Namen dürfen die folgenden Zeichen nicht enthalten: `<`, `>`, `%`, `&`, `\`, `?`, `/`

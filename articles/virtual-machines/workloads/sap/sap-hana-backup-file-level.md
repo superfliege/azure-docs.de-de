@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 ms.openlocfilehash: 5db0ceb1648b5afa278e1cbe1c42fce8033bfdc1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA-Sicherung mit Azure Backup auf Dateiebene
 
@@ -156,6 +156,6 @@ Auf diesem Screenshot ist zu sehen, dass die Quellverzeichnisstruktur auf dem vi
 Das Speichern von SAP HANA-Sicherungsdateien in Azure-Dateien wird möglicherweise interessant, wenn dies von SAP HANA-Dateisicherungen direkt unterstützt wird. Interessant wird es auch, wenn Azure-Dateien über NFS eingebunden werden können und die Kontingentgrenze deutlich mehr als 5 TB beträgt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Backup guide for SAP HANA on Azure Virtual Machines](sap-hana-backup-guide.md) (Sicherungshandbuch für SAP HANA in Azure Virtual Machines) enthält eine Übersicht und Informationen zu den ersten Schritten.
+* [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](sap-hana-backup-guide.md) enthält eine Übersicht und Informationen zu den ersten Schritten.
 * In [SAP HANA backup based on storage snapshots](sap-hana-backup-storage-snapshots.md) (SAP HANA-Sicherung auf der Grundlage von Speichermomentaufnahmen) wird die auf Speichermomentaufnahmen basierende Sicherungsoption behandelt.
-* Informationen zur Erzielung von hoher Verfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
+* Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).

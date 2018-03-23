@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 ms.openlocfilehash: 9e5b124643b753f404ba6012d3df998f567be59a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Sicherungsanleitung für SAP HANA in Azure Virtual Machines
 
@@ -188,7 +188,7 @@ Eine Testtabelle wurde mit Daten gefüllt, um für die Datensicherung eine Gesam
 
 ### <a name="test-tool-to-copy-files-directly-to-azure-storage"></a>Testtool zum direkten Kopieren von Dateien in den Azure-Speicher
 
-Zum direkten Übertragen von SAP HANA-Sicherungsdateien in den Azure-Blobspeicher oder auf Azure-Dateifreigaben wurde das Tool blobxfer verwendet. Es unterstützt beide Ziele und kann aufgrund seiner Befehlszeilenschnittstelle leicht in Automatisierungsskripts integriert werden. Das Tool blobxfer ist auf [GitHub](https://github.com/Azure/blobxfer) verfügbar.
+Zum direkten Übertragen von SAP HANA-Sicherungsdateien in Azure Blob Storage oder auf Azure-Dateifreigaben wurde das Tool blobxfer verwendet. Es unterstützt beide Ziele und kann aufgrund seiner Befehlszeilenschnittstelle leicht in Automatisierungsskripts integriert werden. Das Tool blobxfer ist auf [GitHub](https://github.com/Azure/blobxfer) verfügbar.
 
 ### <a name="test-backup-size-estimation"></a>Testen der Schätzung der Sicherungsgröße
 
@@ -233,4 +233,4 @@ Basierend auf den Testergebnissen sind in den folgenden Tabellen die Vor- und Na
 ## <a name="next-steps"></a>Nächste Schritte
 * Unter [SAP HANA-Sicherung mit Azure Backup auf Dateiebene](sap-hana-backup-file-level.md) wird die dateibasierte Sicherung beschrieben.
 * In [SAP HANA backup based on storage snapshots](sap-hana-backup-storage-snapshots.md) (SAP HANA-Sicherung auf der Grundlage von Speichermomentaufnahmen) wird die auf Speichermomentaufnahmen basierende Sicherungsoption behandelt.
-* Informationen zur Erzielung von hoher Verfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
+* Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="templates"></a>Vorlagen
 ## <a name="overview"></a>Übersicht
@@ -114,7 +114,7 @@ Vorlagen sind auf das XML- oder JSON-Dokumentformat beschränkt. Außerdem könn
 
 In der folgenden Tabelle wird die in Vorlagen zulässige Sprache gezeigt:
 
-| Ausdruck | Beschreibung |
+| Ausdruck | BESCHREIBUNG |
 | --- | --- |
 | $(prop) |Verweist auf eine Ereigniseigenschaft mit dem angegebenen Namen. Bei Eigenschaftennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden. Dieser Ausdruck wird in den Textwert der Eigenschaft oder in eine leere Zeichenfolge aufgelöst, wenn die Eigenschaft nicht vorhanden ist. |
 | $(prop, n) |Wie oben, allerdings wird der Text bei n Zeichen explizit abgeschnitten. Bei $(title, 20) wird der Inhalt der title-Eigenschaft beispielsweise nach 20 Zeichen abgeschnitten. |
@@ -139,7 +139,7 @@ Folgendes ist beispielsweise keine gültige XML-Vorlage:
     </tile>
 
 
-Wie oben erläutert, müssen Ausdrücke bei Verwendung der Verkettung in geschweifte Klammern eingeschlossen werden. Beispiel:
+Wie oben erläutert, müssen Ausdrücke bei Verwendung der Verkettung in geschweifte Klammern eingeschlossen werden. Beispiel: 
 
     <tile>
       <visual>

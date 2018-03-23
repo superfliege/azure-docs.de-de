@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8ef85c098058c97e5ec6d758fcf1dab5b1a87786
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)
 
@@ -112,7 +112,7 @@ tenant = interne Enumeration von Vorgängen beim Bereitstellen eines Mandanten
 
 Sie sehen, dass für die HANA-Freigabe und „usr/sap“ dasselbe Volume verwendet wird. Die Nomenklatur der Bereitstellungspunkte enthält sowohl die System-ID der HANA-Instanzen als auch die Bereitstellungsnummer. Bei Bereitstellungen für zentrales Skalieren ist nur eine Bereitstellung (Mount) vorhanden, z.B. „mnt00001“. Bei der Bereitstellung für horizontales Skalieren werden so viele „Mounts“ verwendet, wie Worker und Masterknoten vorhanden sind. Für die Umgebung für horizontales Skalieren werden Daten-, Protokoll- und Protokollsicherungsvolumes gemeinsam genutzt und jeweils an die Knoten der Konfiguration für horizontales Skalieren angefügt. Für Konfigurationen mit mehreren SAP-Instanzen wird ein anderer Satz mit Volumes erstellt und an die Einheit von HANA (große Instanzen) angefügt.
 
-Während Sie das Dokument lesen und sich eine Einheit von HANA (große Instanzen) ansehen, werden Sie feststellen, dass die Einheiten mit einem ziemlich großzügigen Datenträgervolume für „HANA/data“ bereitgestellt werden und dass es das Volume „HANA/log/backup“ gibt. Wir haben „HANA/data“ so großzügig dimensioniert, weil für die Speichermomentaufnahmen, die Ihnen als Kunde angeboten werden, dasselbe Datenträgervolume verwendet wird. Dies bedeutet Folgendes: Je mehr Speichermomentaufnahmen Sie erstellen, desto mehr Speicherplatz wird von Momentaufnahmen in Ihren zugewiesenen Speichervolumes verbraucht. Das Volume „HANA/log/backup“ ist nicht für die Speicherung von Datenbanksicherungen vorgesehen. Seine Größe ist so ausgelegt, dass es als Sicherungsvolume für Sicherungen von HANA-Transaktionsprotokollen verwendet werden kann. Für zukünftige Versionen des Speichermomentaufnahmen-Self-Service ist für dieses spezielle Volume geplant, häufigere Momentaufnahmen zu verwenden. Hieraus ergeben sich auch häufigere Replikationen zum Notfallwiederherstellungsstandort, wenn Sie die Notfallwiederherstellungsfunktionalität nutzen möchten, die von der HANA (große Instanzen)-Infrastruktur bereitgestellt wird. Ausführlichere Informationen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Während Sie das Dokument lesen und sich eine Einheit von HANA (große Instanzen) ansehen, werden Sie feststellen, dass die Einheiten mit einem ziemlich großzügigen Datenträgervolume für „HANA/data“ bereitgestellt werden und dass es das Volume „HANA/log/backup“ gibt. Wir haben „HANA/data“ so großzügig dimensioniert, weil für die Speichermomentaufnahmen, die Ihnen als Kunde angeboten werden, dasselbe Datenträgervolume verwendet wird. Dies bedeutet Folgendes: Je mehr Speichermomentaufnahmen Sie erstellen, desto mehr Speicherplatz wird von Momentaufnahmen in Ihren zugewiesenen Speichervolumes verbraucht. Das Volume „HANA/log/backup“ ist nicht für die Speicherung von Datenbanksicherungen vorgesehen. Seine Größe ist so ausgelegt, dass es als Sicherungsvolume für Sicherungen von HANA-Transaktionsprotokollen verwendet werden kann. Für zukünftige Versionen des Speichermomentaufnahmen-Self-Service ist für dieses spezielle Volume geplant, häufigere Momentaufnahmen zu verwenden. Hieraus ergeben sich auch häufigere Replikationen zum Notfallwiederherstellungsstandort, wenn Sie die Notfallwiederherstellungsfunktionalität nutzen möchten, die von der HANA (große Instanzen)-Infrastruktur bereitgestellt wird. Ausführlichere Informationen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 Zusätzlich zu dem bereitgestellten Speicher können Sie weitere Speicherkapazität in Schritten von 1 TB erwerben. Dieser zusätzliche Speicher kann HANA (große Instanzen) als neue Volumes hinzugefügt werden.
 
@@ -156,7 +156,7 @@ Der Auslagerungsbereich des bereitgestellten Betriebssystemimage ist gemäß [SA
 
 [SUSE Linux Enterprise Server 12 SP1 for SAP Applications](https://www.suse.com/products/sles-for-sap/hana) ist die Distribution von Linux, die für SAP HANA in Azure (große Instanzen) installiert wird. Diese besondere Distribution bietet &quot;standardmäßig&quot; SAP-spezifische Funktionen (einschließlich vorab festgelegter Parameter für die effektive Ausführung von SAP unter SLES).
 
-Auf der SUSE-Website unter [Ressourcen Library/White Papers](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) und unter [SAP on SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) im SAP Community Network (SCN) finden Sie verschiedene nützliche Ressourcen zur Bereitstellung von SAP HANA unter SLES (einschließlich u.a. zur Einrichtung für hohe Verfügbarkeit und Sicherheitshärtung für den SAP-Betrieb).
+Auf der SUSE-Website unter [Ressourcen Library/White Papers](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) und unter [SAP on SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) im SAP Community Network (SCN) finden Sie verschiedene nützliche Ressourcen zur Bereitstellung von SAP HANA unter SLES (einschließlich u.a. zur Einrichtung für Hochverfügbarkeit und Sicherheitshärtung für den SAP-Betrieb).
 
 Zusätzliche und nützliche Links zu SAP unter SUSE:
 

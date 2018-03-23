@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv;heeldin
 ms.openlocfilehash: c8ddc7732999ae555323bebaef60aa34c8f2ec17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="testability-actions"></a>Testability-Aktionen
 Zur Simulierung einer unzuverlässigen Infrastruktur bietet Azure Service Fabric Ihnen, dem Entwickler, die Möglichkeit, verschiedene Ausfälle und Statusübergänge aus der Praxis zu simulieren. Diese werden als Testability-Aktionen verfügbar gemacht. Bei den Aktionen handelt es sich um Low-Level-APIs, die eine bestimmte Fault Injection, einen Statusübergang oder eine Überprüfung bewirken. Diese Aktionen können von Ihnen zu umfassenden Testszenarien für Ihre Dienste kombiniert werden.
@@ -36,7 +36,7 @@ Testability-Aktionen sind nach zwei Hauptbereichen (Buckets) klassifiziert:
 Führen Sie zur besseren Überprüfung der Qualität die Dienst- und Unternehmensworkload aus, während Sie verschiedene ordnungsgemäße und nicht ordnungsgemäße Fehler auslösen. Bei nicht ordnungsgemäßen Fehlern werden Szenarien simuliert, bei denen der Dienstprozess mitten in einem Workflow abrupt beendet wird. Auf diese Weise wird der Wiederherstellungspfad getestet, nachdem das Dienstreplikat von Service Fabric wiederhergestellt wurde. Dies ist eine Hilfe beim Testen der Datenkonsistenz und der richtigen Beibehaltung des Dienstzustands nach Ausfällen. Bei den anderen (ordnungsgemäßen) Fehlern wird getestet, ob der Dienst richtig auf Replikate reagiert, die von Service Fabric verschoben werden. Hierbei wird auch die Behandlung des Abbruchs in der RunAsync-Methode getestet. Der Dienst muss überprüfen, ob das Abbruchtoken festgelegt ist, den Status korrekt speichern und die RunAsync-Methode beenden.
 
 ## <a name="testability-actions-list"></a>Liste mit Testability-Aktionen
-| Aktion | Beschreibung | Verwaltete API | PowerShell-Cmdlet | Ordnungsgemäße und nicht ordnungsgemäße Fehler |
+| anzuzeigen. | BESCHREIBUNG | Verwaltete API | PowerShell-Cmdlet | Ordnungsgemäße und nicht ordnungsgemäße Fehler |
 | --- | --- | --- | --- | --- |
 | CleanTestState |Entfernt alle Testzustände aus dem Cluster, falls es zu einem fehlerhaften Herunterfahren des Testtreibers kommt. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nicht zutreffend |
 | InvokeDataLoss |Verursacht einen Datenverlust für eine Dienstpartition. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Ordnungsgemäß |

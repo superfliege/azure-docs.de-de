@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: bwren
 ms.openlocfilehash: 9c487ab33859ae453a0074ef0344f61de19c7b4d
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Übergang zur neuen Azure Log Analytics-Abfragesprache
 In Log Analytics wurde vor kurzem eine neue Abfragesprache implementiert.  Dieser Artikel unterstützt Sie beim Übergang zur neuen Abfragesprache für Log Analytics, wenn Sie bereits mit der bisherigen Sprache vertraut sind.
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 
 
 ## <a name="language-converter"></a>Sprachkonverter
@@ -32,7 +32,7 @@ Wenn Sie mit der bisherigen Log Analytics-Abfragesprache vertraut sind, ist die 
 ![Sprachkonverter](media/log-analytics-log-search-upgrade/language-converter.png)
 
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 Die [Dokumentationswebsite für die Log Analytics-Abfragesprache](https://docs.loganalytics.io) bietet alle Ressourcen, die Sie für einen schnellen Einstieg in die neue Sprache benötigen.  Dies schließt Tutorials, Beispiele und eine vollständige Sprachreferenz ein.
 
 
@@ -40,7 +40,7 @@ Die [Dokumentationswebsite für die Log Analytics-Abfragesprache](https://docs.l
 
 Die folgende Tabelle zeigt einen Vergleich zwischen verschiedenen häufigen Abfragen für äquivalente Befehle in der neuen und der alten Abfragesprache in Azure Log Analytics.
 
-| Beschreibung | Alt | Neu |
+| BESCHREIBUNG | Alt | Neu |
 |:--|:--|:--|
 | Alle Tabellen durchsuchen      | error | Suchen Sie „Fehler“ (ohne Berücksichtigung von Groß-/Kleinschreibung) |
 | Auswählen von Daten aus einer Tabelle | Type=Event |  Ereignis |
@@ -50,10 +50,10 @@ Die folgende Tabelle zeigt einen Vergleich zwischen verschiedenen häufigen Abfr
 |                        | Type=Event Computer=contains("contoso") | Event &#124; where Computer contains "contoso" (ohne Berücksichtigung von Groß-/Kleinschreibung)<br>Event &#124; where Computer contains_cs "Contoso" (unter Berücksichtigung von Groß-/Kleinschreibung) |
 |                        | Type=Event Computer=RegEx("@contoso@")  | Event &#124; where Computer matches regex ".*contoso*" |
 | Datumsvergleich        | Type=Event TimeGenerated > NOW-1DAYS | Event &#124; where TimeGenerated > ago(1d) |
-|                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Event &#124; where TimeGenerated between (datetime(2017-05-01) .. datetime(2017-05-31)) |
-| Boolescher Vergleich     | Type=Heartbeat IsGatewayInstalled=false  | Heartbeat \| where IsGatewayInstalled == false |
-| Sortieren                   | Type=Event &#124; sort Computer asc, EventLog desc, EventLevelName asc | Event \| sort by Computer asc, EventLog desc, EventLevelName asc |
-| Unterscheiden               | Type=Event &#124; dedup Computer \| select Computer | Event &#124; summarize by Computer, EventLog |
+|                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Event &amp;#124; where TimeGenerated between (datetime(2017-05-01) . datetime(2017-05-31)) |
+| Boolescher Vergleich     | Type=Heartbeat IsGatewayInstalled=false  | Takt \| , in denen IsGatewayInstalled == "false" |
+| Sortieren                   | Type=Event &#124; sort Computer asc, EventLog desc, EventLevelName asc | Ereignis \| Sortieren nach Computer Asc, EventLog "DESC", "eventlevelname" Asc |
+| Unterscheiden               | Typ = Ereignis &#124; Bei der Deduplizierung Computer \| Computer auswählen | Event &#124; summarize by Computer, EventLog |
 | Erweitern von Spalten         | Type=Perf CounterName="% Processor Time" &#124; EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION | Perf &#124; where CounterName == "% Processor Time" \| extend Utilization = iff(CounterValue > 50, "HIGH", "LOW") |
 | Aggregation            | Type=Event &#124; measure count() as Count by Computer | Event &#124; summarize Count = count() by Computer |
 |                                | Type=Perf ObjectName=Processor CounterName="% Processor Time" &#124; measure avg(CounterValue) by Computer interval 5minute | Perf &#124; where ObjectName=="Processor" and CounterName=="% Processor Time" &#124; summarize avg(CounterValue) by Computer, bin(TimeGenerated, 5min) |

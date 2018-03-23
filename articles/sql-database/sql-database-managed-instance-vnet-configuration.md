@@ -3,18 +3,18 @@ title: Verwaltete Azure SQL-Datenbank-Instanz – VNET-Konfiguration | Microsoft
 description: In diesem Thema werden die Konfigurationsoptionen für ein virtuelles Netzwerk (VNET) mit einer verwalteten Azure SQL-Datenbank-Instanz beschrieben.
 services: sql-database
 author: srdjan-bozovic
-manager: cguyer
+manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 1a839a9bb2355da9451816828f6f9f0e99f43f5e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e724a660f8ba2373cefdabe8595908b7bb42f4d6
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -33,7 +33,7 @@ Planen Sie die Bereitstellung einer verwalteten Instanz im virtuellen Netzwerk, 
 
    Wenn Sie die Verwendung eines vorhandenen virtuellen Netzwerks beabsichtigen, müssen Sie diese Netzwerkkonfiguration ändern, um Ihre verwaltete Instanz einzubeziehen. Weitere Informationen finden Sie unter [Ändern eines vorhandenen virtuellen Netzwerks für die verwaltete Instanz](#modify-an-existing-virtual-network-for-managed-instances). 
 
-   Wenn Sie vorhaben, ein neues virtuelles Netzwerk zu erstellen, lesen Sie [Erstellen eines neuen virtuellen Netzwerks für die verwaltete Instanz](#create-new-virtual-network-for-managed-instances).
+   Wenn Sie vorhaben, ein neues virtuelles Netzwerk zu erstellen, lesen Sie [Erstellen eines neuen virtuellen Netzwerks für die verwaltete Instanz](#create-a-new-virtual-network-for-managed-instances).
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
